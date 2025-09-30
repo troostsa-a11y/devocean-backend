@@ -24,8 +24,8 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
   return (
     <>
       {/* Top bar with contact & language/currency */}
-      <div className="topbar bg-[#1a5c7a] text-white border-b border-[#267b9e]">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
+      <div className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 py-2 flex items-center justify-between text-xs sm:text-sm">
           <div className="hidden md:flex items-center gap-4">
             <a href="tel:+258844182252" className="flex items-center gap-1 hover:text-[#f0d3b3] transition-colors">
               <Phone size={14} /> +258 84 418 2252
@@ -35,11 +35,11 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             </a>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="bg-white/20 text-white border-white/30 rounded px-2 py-1 text-sm hover:bg-white/30 transition-colors"
+              className="bg-white/20 text-white border-white/30 rounded px-1.5 sm:px-2 py-1 text-xs sm:text-sm hover:bg-white/30 transition-colors"
             >
               <option value="en">EN</option>
               <option value="pt">PT</option>
@@ -53,7 +53,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="bg-white/20 text-white border-white/30 rounded px-2 py-1 text-sm hover:bg-white/30 transition-colors"
+              className="bg-white/20 text-white border-white/30 rounded px-1.5 sm:px-2 py-1 text-xs sm:text-sm hover:bg-white/30 transition-colors"
             >
               <option value="USD">USD</option>
               <option value="MZN">MZN</option>
@@ -67,11 +67,11 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
       {/* Main header */}
       <header className="bg-white/90 backdrop-blur border-b">
-        <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <a href="#home" onClick={(e) => handleAnchorNav(e, '#home')} className="flex items-center gap-3">
-              <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
-              <span className="font-semibold">DEVOCEAN Lodge</span>
+        <nav className="max-w-7xl mx-auto px-2 sm:px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a href="#home" onClick={(e) => handleAnchorNav(e, '#home')} className="flex items-center gap-2 sm:gap-3">
+              <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-8 w-8 sm:h-9 sm:w-9 rounded-full object-cover" loading="eager" />
+              <span className="font-semibold text-sm sm:text-base">DEVOCEAN Lodge</span>
             </a>
           </div>
 
@@ -110,12 +110,12 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
           {/* Burger */}
           <button
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border"
+            className="md:hidden inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border"
             onClick={() => setMenuOpen(v => !v)}
             aria-expanded={menuOpen}
             aria-controls="mnav"
           >
-            <Menu />
+            <Menu className="w-5 h-5" />
           </button>
         </nav>
 
