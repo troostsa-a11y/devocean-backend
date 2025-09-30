@@ -109,7 +109,13 @@ ${sanitizedMessage}
     res.json({ success: true, message: "Email sent successfully" });
   } catch (error) {
     console.error("Email error:", error);
-    res.status(500).json({ error: "Failed to send email" });
+    console.error("Error details:", error.message);
+    console.error("SMTP Config:", {
+      host: process.env.MAIL_HOST,
+      port: process.env.MAIL_PORT,
+      user: process.env.MAIL_USERNAME ? "***configured***" : "MISSING",
+    });
+    res.status(500).json({ error: "Failed to send email", details: error.message });
   }
 });
 
