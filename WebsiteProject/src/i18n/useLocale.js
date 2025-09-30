@@ -86,7 +86,7 @@ function pickInitialCurrency(langBase) {
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
   if (byCC && ALLOWED_CURRENCIES.includes(byCC)) return byCC;
 
-  return "EUR";
+  return "USD";
 }
 
 // Dynamically load translations for a specific language
@@ -145,7 +145,7 @@ export function useLocale() {
   };
 
   const setCurrency = (newCur) => {
-    const clamped = clampCur(newCur) || "EUR";
+    const clamped = clampCur(newCur) || "USD";
     setCurrencyState(clamped);
     localStorage.setItem("site.currency", clamped);
   };
