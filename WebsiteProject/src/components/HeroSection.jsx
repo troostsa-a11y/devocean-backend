@@ -16,7 +16,7 @@ export default function HeroSection({ images = [], ui, bookUrl }) {
     list.length ? setIdx(((i % list.length) + list.length) % list.length) : null;
 
   return (
-    <section id="home" className="relative overflow-hidden min-h-[70vh] flex items-center">
+    <section id="home" className="relative overflow-hidden min-h-screen flex items-center">
       {/* Brand fallback */}
       <div className="absolute inset-0 bg-[#9e4b13]" />
 
