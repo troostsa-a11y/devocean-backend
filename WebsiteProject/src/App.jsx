@@ -26,7 +26,10 @@ export default function App() {
       document.documentElement.style.setProperty("--stack-h", `${stack}px`);
     };
 
+    // Run immediately and after a short delay to ensure DOM is ready
     recalc();
+    setTimeout(recalc, 100);
+    
     window.addEventListener("resize", recalc, { passive: true });
     return () => window.removeEventListener("resize", recalc);
   }, []);
