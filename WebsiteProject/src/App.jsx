@@ -56,7 +56,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header with topbar (sticky via CSS) */}
+      {/* Header with topbar (fixed via CSS) */}
       <Header
         ui={ui}
         lang={lang}
@@ -65,6 +65,9 @@ export default function App() {
         onCurrencyChange={setCurrency}
         bookUrl={bookUrl}
       />
+
+      {/* Spacer for fixed header */}
+      <div style={{ height: 'var(--stack-h)' }} />
 
       {/* Page content */}
       <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} />
