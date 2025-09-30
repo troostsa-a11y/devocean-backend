@@ -93,7 +93,7 @@ ${sanitizedMessage}
     `.trim();
 
     // Send email with safe address objects
-    await transporter.sendMail({
+    const mailOptions = {
       from: {
         name: process.env.MAIL_FROM_NAME || "DEVOCEAN Lodge",
         address: process.env.MAIL_FROM_EMAIL || "info@devoceanlodge.com"
@@ -108,7 +108,15 @@ ${sanitizedMessage}
       },
       subject: `Contact Form - ${sanitizedName}`,
       text: emailBody,
-    });
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    
+    console.log("✅ Email sent successfully!");
+    console.log("From:", mailOptions.from.address);
+    console.log("To:", mailOptions.to.address);
+    console.log("Subject:", mailOptions.subject);
+    console.log("Message ID:", info.messageId);
 
     res.json({ success: true, message: "Email sent successfully" });
   } catch (error) {
