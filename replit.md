@@ -27,11 +27,33 @@ Preferred communication style: Simple, everyday language.
 - Extracted content data into separate content.js module for better maintainability
 - Reduced App.jsx from 2,458 lines to ~70 lines while preserving all functionality including multi-language support and booking integration
 
+**Secure Email Integration:**
+- Replaced insecure .secrets folder with Replit environment secrets (9 MAIL_* variables)
+- Created Express backend with /api/contact endpoint in WebsiteProject/server.js
+- Implemented security measures: CRLF injection prevention, email validation, input sanitization
+- Updated ContactSection.jsx with proper fetch API integration and loading/success/error states
+- Created start.js wrapper for cross-directory npm compatibility
+
 **Performance Improvements:**
 - Images load only when entering viewport (IntersectionObserver)
 - Translation files load dynamically based on language selection
 - Optimized bundle splitting for better caching
 - Reduced initial bundle size through lazy loading
+
+## Running the Application
+
+**Local Development (Recommended):**
+```bash
+cd WebsiteProject
+npm run dev
+```
+Server will start on http://localhost:5000
+
+**Replit Environment:**
+The Replit workflow is configured to run `npm run dev` from the root directory. Due to path resolution limitations, if the workflow fails, run manually from WebsiteProject/:
+```bash
+cd WebsiteProject && npm run dev
+```
 
 ## System Architecture
 
