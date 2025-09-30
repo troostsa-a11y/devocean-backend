@@ -1,0 +1,741 @@
+/**
+ * /legal/i18n/strings.js
+ * Keyed i18n dictionary for DEVOCEAN legal pages.
+ * UI labels: LEGAL_UI
+ * Page keys: privacy, cookies, terms, gdpr, cric
+ */
+(function () {
+  window.LEGAL_UI = {
+    en: { back: "Back to Home", updated: "Last updated" },
+    nl: { back: "Terug naar Home", updated: "Laatst bijgewerkt" },
+    pt: { back: "Voltar à Página Inicial", updated: "Última atualização" },
+    fr: { back: "Retour à l’accueil", updated: "Dernière mise à jour" },
+    it: { back: "Torna alla Home", updated: "Ultimo aggiornamento" },
+    de: { back: "Zur Startseite", updated: "Zuletzt aktualisiert" },
+    es: { back: "Volver al inicio", updated: "Última actualización" }
+  };
+
+  window.LEGAL_DICT = {
+    /* ===== ENGLISH (base) ===== */
+    en: {
+      privacy: {
+        title: "Privacy Policy",
+        who: { title: "Who we are", body: "DEVOCEAN Lodge is a brand from TERRAfrique LDA…" },
+        collect: {
+          title: "What we collect", items: [
+            "Contact data: name, email, phone, country/region.",
+            "Booking data: dates, party size, preferences, payment status.",
+            "Communications you send us.",
+            "Usage/device data (see Cookie Policy)."
+          ]
+        },
+        use: {
+          title: "How we use your data", items: [
+            "To manage bookings and provide services.",
+            "To communicate about your stay, policies and offers (opt-in).",
+            "To improve our site and services (analytics, security).",
+            "To comply with legal/financial obligations."
+          ]
+        },
+        share: {
+          title: "When we share data", items: [
+            "Payment providers and booking platforms, as needed to fulfil your booking.",
+            "Service providers under contract (IT/hosting/analytics).",
+            "Authorities where required by law."
+          ]
+        },
+        retention: { title: "Retention", body: "We keep data only as long as necessary for the purposes above or as required by law." },
+        rights: {
+          title: "Your rights", items: [
+            "Access, correction, deletion.",
+            "Objection/restriction to processing.",
+            "Data portability where applicable.",
+            "Withdraw consent at any time."
+          ]
+        },
+        contact: { title: "Contact", body: "Questions? Email legal@devoceanlodge.com or write to TERRAfrique LDA, Ponta do Ouro, Mozambique." }
+      },
+
+      cookies: {
+        title: "Cookie Policy",
+        intro: { title: "Overview", body: "We use essential, functional and analytics cookies to operate our site and improve your experience." },
+        types: {
+          title: "Types of cookies", items: [
+            "Essential: required for core site functions.",
+            "Functional: remember choices (e.g. language).",
+            "Analytics: help us understand site usage (aggregated)."
+          ]
+        },
+        manage: { title: "Managing cookies", body: "You can control cookies in your browser settings. Blocking some cookies may affect site functionality." },
+        third: { title: "Third-party cookies", body: "Some pages may load content from third parties that set their own cookies. See their policies for details." },
+        contact: { title: "Contact", body: "For questions about cookies, contact legal@devoceanlodge.com." }
+      },
+
+      terms: {
+        title: "Terms & Conditions",
+        intro: { title: "Scope", body: "These Terms govern accommodation and related services provided by DEVOCEAN Lodge (TERRAfrique LDA). By booking, you agree to these Terms." },
+        booking: {
+          title: "Bookings", items: [
+            "Provide accurate guest information and arrival/departure dates.",
+            "Special requests are subject to availability and confirmation."
+          ]
+        },
+        payment: {
+          title: "Prices & Payment", items: [
+            "Rates shown are per unit/night unless stated otherwise.",
+            "Deposits and settlement methods will be confirmed during booking."
+          ]
+        },
+        cancel: { title: "Cancellations & No-shows", body: "Cancellation terms are disclosed at booking time and on your confirmation. No-show may forfeit deposit." },
+        conduct: {
+          title: "Guest conduct", items: [
+            "Respect property rules, staff, other guests and local community.",
+            "No unlawful activities on the premises."
+          ]
+        },
+        liability: { title: "Liability", body: "To the extent permitted by law, we are not liable for indirect or unforeseeable losses." },
+        changes: { title: "Changes to these Terms", body: "We may update Terms from time to time. The posted version applies to your stay." },
+        law: { title: "Governing law", body: "Mozambican law applies, subject to mandatory local consumer rules." },
+        contact: { title: "Contact", body: "Questions? legal@devoceanlodge.com." }
+      },
+
+      gdpr: {
+        title: "GDPR Notice",
+        controller: { title: "Controller", body: "TERRAfrique LDA is the data controller for bookings made directly with us." },
+        bases: {
+          title: "Legal bases", items: [
+            "Contract: to fulfil your booking.",
+            "Legal obligation: invoicing, tax compliance.",
+            "Legitimate interests: security, service improvement.",
+            "Consent: marketing communications."
+          ]
+        },
+        rights: { title: "EU/EEA rights", body: "EU/EEA residents have rights of access, rectification, erasure, restriction, portability and objection." },
+        dpo: { title: "Contact", body: "For GDPR matters email legal@devoceanlodge.com." },
+        transfers: { title: "International transfers", body: "Where data is transferred outside the EEA, we use appropriate safeguards where required." }
+      },
+
+      cric: {
+        title: "Consumer Information",
+        intro: { title: "Overview", body: "This page summarises key consumer information and cooling-off/cancellation rights where applicable under local law." },
+        contact: { title: "Contact", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+    },
+
+    /* ===== DUTCH ===== */
+    nl: {
+      privacy: {
+        title: "Privacybeleid",
+        who: { title: "Wie wij zijn", body: "DEVOCEAN Lodge is een merk van TERRAfrique LDA…" },
+        collect: {
+          title: "Welke gegevens we verzamelen", items: [
+            "Contactgegevens: naam, e-mail, telefoon, land/regio.",
+            "Boekingsgegevens: data, groepsgrootte, voorkeuren, betalingsstatus.",
+            "Communicatie die je ons toestuurt.",
+            "Gebruik-/apparaatgegevens (zie Cookiebeleid)."
+          ]
+        },
+        use: {
+          title: "Hoe we je gegevens gebruiken", items: [
+            "Voor het beheren van boekingen en het leveren van diensten.",
+            "Voor communicatie over je verblijf, beleid en aanbiedingen (opt-in).",
+            "Voor verbetering van onze site en diensten (analytics, beveiliging).",
+            "Voor naleving van wettelijke/financiële verplichtingen."
+          ]
+        },
+        share: {
+          title: "Wanneer we gegevens delen", items: [
+            "Betaalproviders en boekingsplatforms, voor het afhandelen van je boeking.",
+            "Dienstverleners onder contract (IT/hosting/analytics).",
+            "Autoriteiten waar wettelijk vereist."
+          ]
+        },
+        retention: { title: "Bewaartermijn", body: "We bewaren gegevens alleen zo lang als nodig voor bovenstaande doelen of wettelijk vereist." },
+        rights: {
+          title: "Jouw rechten", items: [
+            "Inzage, correctie, verwijdering.",
+            "Bezwaar/beperking van verwerking.",
+            "Overdraagbaarheid waar van toepassing.",
+            "Intrekken van toestemming op elk moment."
+          ]
+        },
+        contact: { title: "Contact", body: "Vragen? Mail legal@devoceanlodge.com of schrijf naar TERRAfrique LDA, Ponta do Ouro, Mozambique." }
+      },
+      cookies: {
+        title: "Cookiebeleid",
+        intro: { title: "Overzicht", body: "We gebruiken essentiële, functionele en analytische cookies om onze site te laten werken en je ervaring te verbeteren." },
+        types: {
+          title: "Soorten cookies", items: [
+            "Essentieel: noodzakelijk voor kernfuncties.",
+            "Functioneel: onthouden keuzes (bijv. taal).",
+            "Analytisch: inzicht in gebruik (geaggregeerd)."
+          ]
+        },
+        manage: { title: "Cookies beheren", body: "Je kunt cookies beheren via je browserinstellingen. Het blokkeren van sommige cookies kan functionaliteit beïnvloeden." },
+        third: { title: "Cookies van derden", body: "Sommige pagina’s laden inhoud van derden die eigen cookies plaatsen. Zie hun beleid voor details." },
+        contact: { title: "Contact", body: "Vragen over cookies? legal@devoceanlodge.com." }
+      },
+      terms: {
+        title: "Algemene Voorwaarden",
+        intro: { title: "Reikwijdte", body: "Deze Voorwaarden zijn van toepassing op accommodatie en aanverwante diensten van DEVOCEAN Lodge (TERRAfrique LDA). Door te boeken ga je akkoord." },
+        booking: {
+          title: "Boekingen", items: [
+            "Geef juiste gastinformatie en aankomst-/vertrekdata.",
+            "Bijzondere wensen onder voorbehoud van beschikbaarheid en bevestiging."
+          ]
+        },
+        payment: {
+          title: "Prijzen & Betaling", items: [
+            "Tarieven per unit/nacht tenzij anders vermeld.",
+            "Aanbetalingen en betaalmethoden worden bij boeking bevestigd."
+          ]
+        },
+        cancel: { title: "Annuleringen & No-shows", body: "Voorwaarden staan bij de boeking en op je bevestiging. No-show kan aanbetaling kosten." },
+        conduct: {
+          title: "Gastgedrag", items: [
+            "Respecteer huisregels, personeel, gasten en gemeenschap.",
+            "Geen onrechtmatige activiteiten op het terrein."
+          ]
+        },
+        liability: { title: "Aansprakelijkheid", body: "Voor zover wettelijk toegestaan, geen aansprakelijkheid voor indirecte of onvoorzienbare schade." },
+        changes: { title: "Wijzigingen", body: "We kunnen Voorwaarden aanpassen. De gepubliceerde versie is van toepassing." },
+        law: { title: "Toepasselijk recht", body: "Mozambikaans recht, onverminderd dwingend consumentenrecht." },
+        contact: { title: "Contact", body: "Vragen? legal@devoceanlodge.com." }
+      },
+      gdpr: {
+        title: "AVG-kennisgeving",
+        controller: { title: "Verwerkingsverantwoordelijke", body: "TERRAfrique LDA is verwerkingsverantwoordelijke voor directe boekingen." },
+        bases: {
+          title: "Rechtsgronden", items: [
+            "Overeenkomst: uitvoeren van je boeking.",
+            "Wettelijke plicht: facturatie, belasting.",
+            "Gerechtvaardigd belang: veiligheid, verbetering.",
+            "Toestemming: marketingcommunicatie."
+          ]
+        },
+        rights: { title: "Rechten EU/EER", body: "Recht op inzage, rectificatie, wissing, beperking, overdraagbaarheid en bezwaar." },
+        dpo: { title: "Contact", body: "AVG-vragen: legal@devoceanlodge.com." },
+        transfers: { title: "Doorgiften", body: "Bij doorgifte buiten de EER passen we waar vereist passende waarborgen toe." }
+      },
+      cric: {
+        title: "Consumenteninformatie",
+        intro: { title: "Overzicht", body: "Samenvatting van kerninformatie en mogelijke bedenktijd/annuleringsrechten volgens lokaal recht." },
+        contact: { title: "Contact", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+    },
+
+    /* ===== PORTUGUESE (BR) ===== */
+    pt: {
+      privacy: {
+        title: "Política de Privacidade",
+        who: { title: "Quem somos", body: "DEVOCEAN Lodge é uma marca da TERRAfrique LDA…" },
+        collect: {
+          title: "Quais dados coletamos", items: [
+            "Dados de contato: nome, e-mail, telefone, país/região.",
+            "Dados de reserva: datas, tamanho do grupo, preferências, status de pagamento.",
+            "Comunicações que você nos envia.",
+            "Dados de uso/dispositivo (veja a Política de Cookies)."
+          ]
+        },
+        use: {
+          title: "Como usamos seus dados", items: [
+            "Gerenciar reservas e prestar serviços.",
+            "Comunicar sobre sua estadia, políticas e ofertas (opt-in).",
+            "Aprimorar nosso site e serviços (analytics, segurança).",
+            "Cumprir obrigações legais/financeiras."
+          ]
+        },
+        share: {
+          title: "Quando compartilhamos dados", items: [
+            "Provedores de pagamento e plataformas de reserva, conforme necessário para a sua reserva.",
+            "Fornecedores contratados (TI/hospedagem/analytics).",
+            "Autoridades quando exigido por lei."
+          ]
+        },
+        retention: { title: "Retenção", body: "Mantemos os dados apenas pelo tempo necessário para as finalidades acima ou conforme exigido por lei." },
+        rights: {
+          title: "Seus direitos", items: [
+            "Acesso, correção, exclusão.",
+            "Oposição/restrição ao tratamento.",
+            "Portabilidade de dados quando aplicável.",
+            "Revogar o consentimento a qualquer momento."
+          ]
+        },
+        contact: { title: "Contato", body: "Dúvidas? legal@devoceanlodge.com." }
+      },
+      cookies: {
+        title: "Política de Cookies",
+        intro: { title: "Visão geral", body: "Usamos cookies essenciais, funcionais e de análise para operar o site e melhorar sua experiência." },
+        types: {
+          title: "Tipos de cookies", items: [
+            "Essenciais: necessários para funções básicas.",
+            "Funcionais: lembram escolhas (ex.: idioma).",
+            "Análise: ajudam a entender o uso do site (agregado)."
+          ]
+        },
+        manage: { title: "Gerenciar cookies", body: "Você pode controlar cookies nas configurações do navegador. Bloqueios podem afetar funcionalidades." },
+        third: { title: "Cookies de terceiros", body: "Algumas páginas carregam conteúdo de terceiros que definem seus próprios cookies. Consulte as políticas deles." },
+        contact: { title: "Contato", body: "Dúvidas sobre cookies? legal@devoceanlodge.com." }
+      },
+      terms: {
+        title: "Termos e Condições",
+        intro: { title: "Âmbito", body: "Estes Termos regem hospedagem e serviços correlatos oferecidos pela DEVOCEAN Lodge (TERRAfrique LDA). Ao reservar, você concorda." },
+        booking: {
+          title: "Reservas", items: [
+            "Forneça informações corretas do hóspede e datas de chegada/saída.",
+            "Pedidos especiais dependem de disponibilidade e confirmação."
+          ]
+        },
+        payment: {
+          title: "Preços e Pagamento", items: [
+            "Diárias por unidade/noite, salvo indicação em contrário.",
+            "Depósitos e meios de pagamento são confirmados na reserva."
+          ]
+        },
+        cancel: { title: "Cancelamentos e No-show", body: "As condições constam na reserva e na confirmação. No-show pode implicar perda do depósito." },
+        conduct: {
+          title: "Conduta do hóspede", items: [
+            "Respeite as regras da casa, equipe, outros hóspedes e comunidade local.",
+            "É proibido praticar atos ilícitos nas dependências."
+          ]
+        },
+        liability: { title: "Responsabilidade", body: "Na medida permitida por lei, não nos responsabilizamos por perdas indiretas ou imprevisíveis." },
+        changes: { title: "Alterações", body: "Podemos atualizar estes Termos. A versão publicada aplica-se à sua estadia." },
+        law: { title: "Lei aplicável", body: "Direito moçambicano, observadas normas imperativas locais de consumo." },
+        contact: { title: "Contato", body: "Dúvidas? legal@devoceanlodge.com." }
+      },
+      gdpr: {
+        title: "Aviso GDPR",
+        controller: { title: "Controlador", body: "TERRAfrique LDA é a controladora para reservas diretas." },
+        bases: {
+          title: "Bases legais", items: [
+            "Contrato: executar sua reserva.",
+            "Obrigação legal: faturamento, tributos.",
+            "Interesse legítimo: segurança, melhoria do serviço.",
+            "Consentimento: comunicações de marketing."
+          ]
+        },
+        rights: { title: "Direitos na UE/EEE", body: "Titulares têm direitos de acesso, retificação, exclusão, limitação, portabilidade e objeção." },
+        dpo: { title: "Contato", body: "Assuntos GDPR: legal@devoceanlodge.com." },
+        transfers: { title: "Transferências internacionais", body: "Quando houver transferência para fora do EEE, aplicamos salvaguardas adequadas quando exigido." }
+      },
+      cric: {
+        title: "Informações ao Consumidor",
+        intro: { title: "Visão geral", body: "Resumo de informações essenciais e eventuais direitos de arrependimento/cancelamento conforme a lei local." },
+        contact: { title: "Contato", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+    },
+
+    /* ===== FRENCH ===== */
+    fr: {
+      privacy: {
+        title: "Politique de confidentialité",
+        who: { title: "Qui nous sommes", body: "DEVOCEAN Lodge est une marque de TERRAfrique LDA…" },
+        collect: {
+          title: "Données que nous collectons", items: [
+            "Données de contact : nom, e-mail, téléphone, pays/région.",
+            "Données de réservation : dates, taille du groupe, préférences, statut de paiement.",
+            "Communications que vous nous envoyez.",
+            "Données d’utilisation/appareil (voir la Politique relative aux cookies)."
+          ]
+        },
+        use: {
+          title: "Comment nous utilisons vos données", items: [
+            "Gérer les réservations et fournir les services.",
+            "Communiquer au sujet de votre séjour, des politiques et des offres (opt-in).",
+            "Améliorer notre site et nos services (analytique, sécurité).",
+            "Respecter les obligations légales/financières."
+          ]
+        },
+        share: {
+          title: "Quand nous partageons des données", items: [
+            "Prestataires de paiement et plateformes de réservation, si nécessaire pour exécuter votre réservation.",
+            "Fournisseurs sous contrat (IT/hébergement/analyse).",
+            "Autorités lorsque la loi l’exige."
+          ]
+        },
+        retention: { title: "Durée de conservation", body: "Nous conservons les données uniquement pendant la durée nécessaire aux finalités ci-dessus ou requise par la loi." },
+        rights: {
+          title: "Vos droits", items: [
+            "Accès, rectification, suppression.",
+            "Opposition/limitation du traitement.",
+            "Portabilité des données lorsque applicable.",
+            "Retirer votre consentement à tout moment."
+          ]
+        },
+        contact: { title: "Contact", body: "Des questions ? legal@devoceanlodge.com ou TERRAfrique LDA, Ponta do Ouro, Mozambique." }
+      },
+      cookies: {
+        title: "Politique relative aux cookies",
+        intro: { title: "Aperçu", body: "Nous utilisons des cookies essentiels, fonctionnels et d’analyse pour faire fonctionner notre site et améliorer votre expérience." },
+        types: {
+          title: "Types de cookies", items: [
+            "Essentiels : nécessaires aux fonctions de base du site.",
+            "Fonctionnels : mémorisent vos choix (p. ex. la langue).",
+            "Analyse : nous aident à comprendre l’utilisation du site (agrégées)."
+          ]
+        },
+        manage: { title: "Gestion des cookies", body: "Vous pouvez contrôler les cookies dans les paramètres de votre navigateur. Le blocage de certains cookies peut affecter les fonctionnalités du site." },
+        third: { title: "Cookies tiers", body: "Certaines pages chargent du contenu de tiers qui déposent leurs propres cookies. Consultez leurs politiques pour plus de détails." },
+        contact: { title: "Contact", body: "Questions sur les cookies ? legal@devoceanlodge.com." }
+      },
+      terms: {
+        title: "Conditions générales",
+        intro: { title: "Champ d’application", body: "Ces Conditions régissent l’hébergement et les services associés fournis par DEVOCEAN Lodge (TERRAfrique LDA). En réservant, vous acceptez ces Conditions." },
+        booking: {
+          title: "Réservations", items: [
+            "Fournissez des informations exactes sur les clients et les dates d’arrivée/départ.",
+            "Les demandes particulières sont soumises à disponibilité et confirmation."
+          ]
+        },
+        payment: {
+          title: "Prix & Paiement", items: [
+            "Les tarifs indiqués s’entendent par unité/nuit sauf indication contraire.",
+            "Les arrhes et les modalités de paiement sont confirmées lors de la réservation."
+          ]
+        },
+        cancel: { title: "Annulations & Non-présentation", body: "Les conditions d’annulation sont précisées au moment de la réservation et sur votre confirmation. En cas de non-présentation, l’acompte peut être perdu." },
+        conduct: {
+          title: "Conduite des clients", items: [
+            "Respectez le règlement intérieur, le personnel, les autres clients et la communauté locale.",
+            "Aucune activité illicite dans l’établissement."
+          ]
+        },
+        liability: { title: "Responsabilité", body: "Dans la mesure permise par la loi, nous déclinons toute responsabilité pour les pertes indirectes ou imprévisibles." },
+        changes: { title: "Modifications", body: "Nous pouvons mettre à jour ces Conditions. La version publiée s’applique à votre séjour." },
+        law: { title: "Droit applicable", body: "Le droit mozambicain s’applique, sous réserve des règles impératives locales de protection des consommateurs." },
+        contact: { title: "Contact", body: "Questions ? legal@devoceanlodge.com." }
+      },
+      gdpr: {
+        title: "Notice RGPD",
+        controller: { title: "Responsable du traitement", body: "TERRAfrique LDA est le responsable du traitement pour les réservations effectuées directement auprès de nous." },
+        bases: {
+          title: "Bases juridiques", items: [
+            "Contrat : exécuter votre réservation.",
+            "Obligation légale : facturation, conformité fiscale.",
+            "Intérêts légitimes : sécurité, amélioration du service.",
+            "Consentement : communications marketing."
+          ]
+        },
+        rights: { title: "Droits dans l’UE/EEE", body: "Les résidents de l’UE/EEE disposent de droits d’accès, rectification, effacement, limitation, portabilité et opposition." },
+        dpo: { title: "Contact", body: "Pour les questions RGPD : legal@devoceanlodge.com." },
+        transfers: { title: "Transferts internationaux", body: "Lorsque des données sont transférées hors de l’EEE, nous appliquons, le cas échéant, des garanties appropriées." }
+      },
+      cric: {
+        title: "Information consommateur",
+        intro: { title: "Aperçu", body: "Cette page résume les informations essentielles pour les consommateurs et les droits de rétractation/annulation applicables en vertu du droit local." },
+        contact: { title: "Contact", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+
+    },
+
+    /* ===== ITALIAN ===== */
+    it: {
+      privacy: {
+        title: "Informativa sulla privacy",
+        who: { title: "Chi siamo", body: "DEVOCEAN Lodge è un marchio di TERRAfrique LDA…" },
+        collect: {
+          title: "Quali dati raccogliamo", items: [
+            "Dati di contatto: nome, e-mail, telefono, paese/regione.",
+            "Dati di prenotazione: date, dimensione del gruppo, preferenze, stato del pagamento.",
+            "Comunicazioni che ci invii.",
+            "Dati di utilizzo/dispositivo (vedi Informativa sui cookie)."
+          ]
+        },
+        use: {
+          title: "Come utilizziamo i tuoi dati", items: [
+            "Gestire le prenotazioni e fornire i servizi.",
+            "Comunicare sul tuo soggiorno, sulle politiche e sulle offerte (opt-in).",
+            "Migliorare il sito e i servizi (analisi, sicurezza).",
+            "Assolvere obblighi legali/contabili."
+          ]
+        },
+        share: {
+          title: "Quando condividiamo i dati", items: [
+            "Provider di pagamento e piattaforme di prenotazione, quando necessario per evadere la prenotazione.",
+            "Fornitori sotto contratto (IT/hosting/analytics).",
+            "Autorità quando richiesto dalla legge."
+          ]
+        },
+        retention: { title: "Conservazione", body: "Conserviamo i dati solo per il tempo necessario alle finalità sopra indicate o come richiesto dalla legge." },
+        rights: {
+          title: "I tuoi diritti", items: [
+            "Accesso, rettifica, cancellazione.",
+            "Opposizione/limitazione del trattamento.",
+            "Portabilità dei dati dove applicabile.",
+            "Revocare il consenso in qualsiasi momento."
+          ]
+        },
+        contact: { title: "Contatti", body: "Domande? legal@devoceanlodge.com o TERRAfrique LDA, Ponta do Ouro, Mozambico." }
+      },
+      cookies: {
+        title: "Informativa sui cookie",
+        intro: { title: "Panoramica", body: "Utilizziamo cookie essenziali, funzionali e di analisi per far funzionare il sito e migliorare l’esperienza." },
+        types: {
+          title: "Tipi di cookie", items: [
+            "Essenziali: necessari per le funzioni di base.",
+            "Funzionali: ricordano le scelte (es. lingua).",
+            "Analitici: ci aiutano a comprendere l’utilizzo del sito (in forma aggregata)."
+          ]
+        },
+        manage: { title: "Gestione dei cookie", body: "Puoi controllare i cookie dalle impostazioni del browser. Il blocco di alcuni cookie può influire sulle funzionalità del sito." },
+        third: { title: "Cookie di terze parti", body: "Alcune pagine caricano contenuti di terze parti che impostano i propri cookie. Consulta le loro informative per i dettagli." },
+        contact: { title: "Contatti", body: "Domande sui cookie? legal@devoceanlodge.com." }
+      },
+      terms: {
+        title: "Termini e Condizioni",
+        intro: { title: "Ambito di applicazione", body: "Questi Termini disciplinano l’alloggio e i servizi correlati forniti da DEVOCEAN Lodge (TERRAfrique LDA). Con la prenotazione, accetti questi Termini." },
+        booking: {
+          title: "Prenotazioni", items: [
+            "Fornisci informazioni corrette sugli ospiti e le date di arrivo/partenza.",
+            "Le richieste speciali sono soggette a disponibilità e conferma."
+          ]
+        },
+        payment: {
+          title: "Prezzi e Pagamenti", items: [
+            "Le tariffe si intendono per unità/notte salvo diversa indicazione.",
+            "Acconti e modalità di pagamento vengono confermati in fase di prenotazione."
+          ]
+        },
+        cancel: { title: "Cancellazioni e No-show", body: "Le condizioni di cancellazione sono indicate al momento della prenotazione e nella conferma. Il no-show può comportare la perdita dell’acconto." },
+        conduct: {
+          title: "Comportamento degli ospiti", items: [
+            "Rispettare il regolamento della struttura, il personale, gli altri ospiti e la comunità locale.",
+            "Nessuna attività illecita nei locali."
+          ]
+        },
+        liability: { title: "Responsabilità", body: "Nei limiti consentiti dalla legge, non siamo responsabili per perdite indirette o imprevedibili." },
+        changes: { title: "Modifiche", body: "Possiamo aggiornare i Termini di volta in volta. Si applica la versione pubblicata." },
+        law: { title: "Legge applicabile", body: "Si applica la legge mozambicana, fatte salve le norme imperative locali a tutela dei consumatori." },
+        contact: { title: "Contatti", body: "Domande? legal@devoceanlodge.com." }
+      },
+      gdpr: {
+        title: "Informativa GDPR",
+        controller: { title: "Titolare del trattamento", body: "TERRAfrique LDA è il titolare del trattamento per le prenotazioni effettuate direttamente presso di noi." },
+        bases: {
+          title: "Basi giuridiche", items: [
+            "Contratto: eseguire la tua prenotazione.",
+            "Obbligo legale: fatturazione, conformità fiscale.",
+            "Interesse legittimo: sicurezza, miglioramento del servizio.",
+            "Consenso: comunicazioni di marketing."
+          ]
+        },
+        rights: { title: "Diritti UE/SEE", body: "I residenti nell’UE/SEE hanno diritti di accesso, rettifica, cancellazione, limitazione, portabilità e opposizione." },
+        dpo: { title: "Contatti", body: "Per questioni GDPR: legal@devoceanlodge.com." },
+        transfers: { title: "Trasferimenti internazionali", body: "Quando i dati vengono trasferiti al di fuori del SEE, applichiamo, se richiesto, garanzie adeguate." }
+      },
+      cric: {
+        title: "Informazioni per il consumatore",
+        intro: { title: "Panoramica", body: "Questa pagina riassume le principali informazioni per i consumatori e gli eventuali diritti di recesso/annullamento previsti dalla legge locale." },
+        contact: { title: "Contatti", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+
+    },
+
+    /* ===== GERMAN ===== */
+    de: {
+      privacy: {
+        title: "Datenschutzerklärung",
+        who: { title: "Wer wir sind", body: "DEVOCEAN Lodge ist eine Marke von TERRAfrique LDA…" },
+        collect: {
+          title: "Welche Daten wir erheben", items: [
+            "Kontaktdaten: Name, E-Mail, Telefon, Land/Region.",
+            "Buchungsdaten: Daten, Gruppengröße, Präferenzen, Zahlungsstatus.",
+            "Kommunikation, die Sie uns schicken.",
+            "Nutzungs-/Gerätedaten (siehe Cookie-Richtlinie)."
+          ]
+        },
+        use: {
+          title: "Wie wir Ihre Daten verwenden", items: [
+            "Zur Verwaltung von Buchungen und zur Erbringung unserer Leistungen.",
+            "Zur Kommunikation über Ihren Aufenthalt, Richtlinien und Angebote (Opt-in).",
+            "Zur Verbesserung unserer Website und Dienste (Analyse, Sicherheit).",
+            "Zur Erfüllung gesetzlicher/finanzieller Pflichten."
+          ]
+        },
+        share: {
+          title: "Wann wir Daten teilen", items: [
+            "Zahlungsdienstleister und Buchungsplattformen, soweit zur Erfüllung Ihrer Buchung notwendig.",
+            "Dienstleister auf Vertragsbasis (IT/Hosting/Analyse).",
+            "Behörden, sofern gesetzlich vorgeschrieben."
+          ]
+        },
+        retention: { title: "Aufbewahrung", body: "Wir bewahren Daten nur so lange auf, wie es für die oben genannten Zwecke erforderlich ist oder gesetzlich vorgeschrieben." },
+        rights: {
+          title: "Ihre Rechte", items: [
+            "Auskunft, Berichtigung, Löschung.",
+            "Widerspruch/Einschränkung der Verarbeitung.",
+            "Datenübertragbarkeit, soweit anwendbar.",
+            "Widerruf einer Einwilligung jederzeit."
+          ]
+        },
+        contact: { title: "Kontakt", body: "Fragen? legal@devoceanlodge.com oder TERRAfrique LDA, Ponta do Ouro, Mosambik." }
+      },
+      cookies: {
+        title: "Cookie-Richtlinie",
+        intro: { title: "Überblick", body: "Wir verwenden essentielle, funktionale und Analyse-Cookies, um unsere Website zu betreiben und Ihre Nutzererfahrung zu verbessern." },
+        types: {
+          title: "Arten von Cookies", items: [
+            "Essentiell: erforderlich für grundlegende Funktionen.",
+            "Funktional: merkt sich Ihre Auswahl (z. B. Sprache).",
+            "Analyse: hilft uns, die Nutzung der Website zu verstehen (aggregiert)."
+          ]
+        },
+        manage: { title: "Cookies verwalten", body: "Sie können Cookies in den Browsereinstellungen steuern. Das Blockieren bestimmter Cookies kann die Funktionalität beeinträchtigen." },
+        third: { title: "Cookies von Drittanbietern", body: "Einige Seiten laden Inhalte von Drittanbietern, die eigene Cookies setzen. Beachten Sie deren Richtlinien für Details." },
+        contact: { title: "Kontakt", body: "Fragen zu Cookies? legal@devoceanlodge.com." }
+      },
+      terms: {
+        title: "Allgemeine Geschäftsbedingungen",
+        intro: { title: "Geltungsbereich", body: "Diese Bedingungen regeln Unterkunft und damit verbundene Leistungen von DEVOCEAN Lodge (TERRAfrique LDA). Mit der Buchung stimmen Sie diesen Bedingungen zu." },
+        booking: {
+          title: "Buchungen", items: [
+            "Geben Sie korrekte Gästedaten sowie An- und Abreisedaten an.",
+            "Sonderwünsche vorbehaltlich Verfügbarkeit und Bestätigung."
+          ]
+        },
+        payment: {
+          title: "Preise & Zahlung", items: [
+            "Preise gelten pro Einheit/Nacht, sofern nicht anders angegeben.",
+            "Anzahlungen und Zahlungsarten werden bei der Buchung bestätigt."
+          ]
+        },
+        cancel: { title: "Stornierungen & Nichterscheinen", body: "Stornobedingungen werden bei der Buchung und in Ihrer Bestätigung mitgeteilt. Bei Nichterscheinen kann die Anzahlung verfallen." },
+        conduct: {
+          title: "Gästeverhalten", items: [
+            "Respektieren Sie Hausordnung, Personal, andere Gäste und die lokale Gemeinschaft.",
+            "Keine unerlaubten Aktivitäten auf dem Gelände."
+          ]
+        },
+        liability: { title: "Haftung", body: "Soweit gesetzlich zulässig, haften wir nicht für indirekte oder unvorhersehbare Verluste." },
+        changes: { title: "Änderungen", body: "Wir können diese Bedingungen gelegentlich aktualisieren. Es gilt die veröffentlichte Fassung." },
+        law: { title: "Anwendbares Recht", body: "Es gilt mosambikanisches Recht, unbeschadet zwingender lokaler Verbraucherschutzvorschriften." },
+        contact: { title: "Kontakt", body: "Fragen? legal@devoceanlodge.com." }
+      },
+      gdpr: {
+        title: "DSGVO-Hinweis",
+        controller: { title: "Verantwortlicher", body: "TERRAfrique LDA ist Verantwortlicher für direkt bei uns getätigte Buchungen." },
+        bases: {
+          title: "Rechtsgrundlagen", items: [
+            "Vertrag: Erfüllung Ihrer Buchung.",
+            "Rechtliche Pflicht: Rechnungsstellung, Steuerkonformität.",
+            "Berechtigtes Interesse: Sicherheit, Serviceverbesserung.",
+            "Einwilligung: Marketing-Kommunikation."
+          ]
+        },
+        rights: { title: "Rechte in der EU/EWR", body: "Einwohner der EU/EWR haben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch." },
+        dpo: { title: "Kontakt", body: "Für DSGVO-Anliegen: legal@devoceanlodge.com." },
+        transfers: { title: "Internationale Übermittlungen", body: "Bei Übermittlungen außerhalb des EWR setzen wir erforderlichenfalls geeignete Garantien ein." }
+      },
+      cric: {
+        title: "Verbraucherinformationen",
+        intro: { title: "Überblick", body: "Diese Seite fasst wichtige Verbraucherinformationen und etwaige Widerrufs-/Stornorechte nach lokalem Recht zusammen." },
+        contact: { title: "Kontakt", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+
+    },
+
+    /* ===== SPANISH ===== */
+    es: {
+      privacy: {
+        title: "Política de Privacidad",
+        who: { title: "Quiénes somos", body: "DEVOCEAN Lodge es una marca de TERRAfrique LDA…" },
+        collect: {
+          title: "Qué datos recopilamos", items: [
+            "Datos de contacto: nombre, correo, teléfono, país/región.",
+            "Datos de reserva: fechas, tamaño del grupo, preferencias, estado de pago.",
+            "Comunicaciones que nos envías.",
+            "Datos de uso/dispositivo (consulta la Política de Cookies)."
+          ]
+        },
+        use: {
+          title: "Cómo usamos tus datos", items: [
+            "Gestionar reservas y prestar los servicios.",
+            "Comunicarnos sobre tu estancia, políticas y ofertas (con consentimiento).",
+            "Mejorar nuestro sitio y servicios (analítica, seguridad).",
+            "Cumplir obligaciones legales/financieras."
+          ]
+        },
+        share: {
+          title: "Cuándo compartimos datos", items: [
+            "Proveedores de pago y plataformas de reservas, cuando sea necesario para tu reserva.",
+            "Proveedores bajo contrato (TI/alojamiento/analítica).",
+            "Autoridades cuando lo exige la ley."
+          ]
+        },
+        retention: { title: "Conservación", body: "Conservamos los datos solo el tiempo necesario para las finalidades anteriores o según lo exija la ley." },
+        rights: {
+          title: "Tus derechos", items: [
+            "Acceso, rectificación, supresión.",
+            "Oposición/restricción del tratamiento.",
+            "Portabilidad de los datos cuando corresponda.",
+            "Retirar el consentimiento en cualquier momento."
+          ]
+        },
+        contact: { title: "Contacto", body: "¿Preguntas? legal@devoceanlodge.com o TERRAfrique LDA, Ponta do Ouro, Mozambique." }
+      },
+      cookies: {
+        title: "Política de Cookies",
+        intro: { title: "Resumen", body: "Usamos cookies esenciales, funcionales y de análisis para hacer funcionar el sitio y mejorar tu experiencia." },
+        types: {
+          title: "Tipos de cookies", items: [
+            "Esenciales: necesarias para funciones básicas.",
+            "Funcionales: recuerdan tus preferencias (p. ej., idioma).",
+            "Analítica: nos ayuda a entender el uso del sitio (en forma agregada)."
+          ]
+        },
+        manage: { title: "Gestión de cookies", body: "Puedes controlar las cookies en la configuración del navegador. Bloquear algunas puede afectar funcionalidades del sitio." },
+        third: { title: "Cookies de terceros", body: "Algunas páginas cargan contenido de terceros que establecen sus propias cookies. Consulta sus políticas para más detalles." },
+        contact: { title: "Contacto", body: "Dudas sobre cookies: legal@devoceanlodge.com." }
+      },
+      terms: {
+        title: "Términos y Condiciones",
+        intro: { title: "Alcance", body: "Estos Términos rigen el alojamiento y los servicios relacionados prestados por DEVOCEAN Lodge (TERRAfrique LDA). Al reservar, aceptas estos Términos." },
+        booking: {
+          title: "Reservas", items: [
+            "Proporciona información precisa del huésped y fechas de llegada/salida.",
+            "Las solicitudes especiales están sujetas a disponibilidad y confirmación."
+          ]
+        },
+        payment: {
+          title: "Precios y Pago", items: [
+            "Las tarifas se indican por unidad/noche salvo indicación en contrario.",
+            "Los depósitos y los métodos de pago se confirman durante la reserva."
+          ]
+        },
+        cancel: { title: "Cancelaciones y No-show", body: "Las condiciones de cancelación se comunican al reservar y en tu confirmación. El no-show puede implicar la pérdida del depósito." },
+        conduct: {
+          title: "Conducta del huésped", items: [
+            "Respeta las normas de la propiedad, al personal, a otros huéspedes y a la comunidad local.",
+            "No realizar actividades ilícitas en las instalaciones."
+          ]
+        },
+        liability: { title: "Responsabilidad", body: "En la medida permitida por la ley, no nos hacemos responsables de pérdidas indirectas o imprevisibles." },
+        changes: { title: "Cambios", body: "Podemos actualizar estos Términos periódicamente. Se aplica la versión publicada." },
+        law: { title: "Ley aplicable", body: "Se aplica la ley mozambiqueña, sin perjuicio de las normas locales imperativas de consumo." },
+        contact: { title: "Contacto", body: "¿Preguntas? legal@devoceanlodge.com." }
+      },
+      gdpr: {
+        title: "Aviso RGPD",
+        controller: { title: "Responsable del tratamiento", body: "TERRAfrique LDA es el responsable del tratamiento para las reservas realizadas directamente con nosotros." },
+        bases: {
+          title: "Bases legales", items: [
+            "Contrato: cumplir tu reserva.",
+            "Obligación legal: facturación, cumplimiento fiscal.",
+            "Intereses legítimos: seguridad, mejora del servicio.",
+            "Consentimiento: comunicaciones de marketing."
+          ]
+        },
+        rights: { title: "Derechos en la UE/EEE", body: "Los residentes de la UE/EEE tienen derechos de acceso, rectificación, supresión, limitación, portabilidad y oposición." },
+        dpo: { title: "Contacto", body: "Para temas de RGPD: legal@devoceanlodge.com." },
+        transfers: { title: "Transferencias internacionales", body: "Cuando los datos se transfieren fuera del EEE, aplicamos las garantías adecuadas cuando sea necesario." }
+      },
+      cric: {
+        title: "Información al consumidor",
+        intro: { title: "Resumen", body: "Esta página resume la información clave para el consumidor y los derechos de desistimiento/cancelación aplicables según la legislación local." },
+        contact: { title: "Contacto", body: "TERRAfrique LDA – legal@devoceanlodge.com" }
+      }
+
+    }
+  };
+})();

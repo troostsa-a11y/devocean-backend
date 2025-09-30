@@ -1,0 +1,84 @@
+<script>
+/**
+ * /legal/legal-i18n.js
+ * Hydrates standalone legal pages using LEGAL_UI (labels) + LEGAL_DICT (content).
+ * Language priority: ?lang=xx > localStorage('site.lang') > navigator.language > 'en'
+ * Page key: data-page on <body> OR inferred from file name (privacy/cookies/terms/gdpr/cric).
+ */
+(function () {
+  // --- Language resolve ---
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  const stored  = localStorage.getItem('site.lang');
+  const nav     = (navigator.language || 'en').slice(0,2).toLowerCase();
+  let lang      = (urlLang || stored || nav || 'en').toLowerCase();
+
+  const UI   = (window.LEGAL_UI   && window.LEGAL_UI[lang])   ? window.LEGAL_UI[lang]   : window.LEGAL_UI?.en || {};
+  const DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) ? window.LEGAL_DICT[lang] : window.LEGAL_DICT?.en || {};
+
+  // if chosen lang missing in either dict, fall back to EN for that part while keeping labels if available
+  if (!window.LEGAL_UI?.[lang])   { lang = 'en'; }
+  document.documentElement.setAttribute('lang', lang);
+
+  // --- Page key resolve ---
+  const body     = document.body || document.querySelector('body');
+  let pageKey    = body?.getAttribute('data-page');
+  if (!pageKey) {
+    const m = (location.pathname.match(/\/legal\/([^./]+)\.html/i) || []);
+    pageKey = (m[1] || '').toLowerCase(); // privacy | cookies | terms | gdpr | cric
+  }
+
+  // --- Helpers ---
+  const bySel = (sel) => Array.from(document.querySelectorAll(sel));
+  const safe  = (v) => (v == null ? '' : v);
+
+  // --- UI labels (Back / Updated) ---
+  const backEl    = document.querySelector('[data-role="back-link"]');
+  if (backEl && UI.back) backEl.textContent = UI.back;
+
+  const updLblEl  = document.querySelector('[data-role="updated-label"]');
+  if (updLblEl && UI.updated) updLblEl.textContent = UI.updated;
+
+  // --- Title ---
+  const pageDict = DICT[pageKey] || {};
+  const title    = pageDict.title || '';
+  const h1       = document.querySelector('[data-role="page-title"]');
+  const titleTag = document.querySelector('title');
+  if (h1 && title) h1.textContent = title;
+  if (titleTag && title) titleTag.textContent = title;
+
+  // --- Sections ---
+  // Markup convention:
+  // <section data-section="who">
+  //   <h2 data-part="title"></h2>
+  //   <p  data-part="body"></p>
+  //   <ul data-part="items"></ul>
+  // </section>
+  bySel('[data-section]').forEach(sec => {
+    const key = sec.getAttribute('data-section');
+    const data = pageDict[key] || {};
+    const t  = sec.querySelector('[data-part="title"]');
+    const p  = sec.querySelector('[data-part="body"]');
+    const ul = sec.querySelector('[data-part="items"]');
+
+    if (t && data.title) t.textContent = data.title;
+
+    if (p) {
+      // Prefer explicit body; otherwise keep existing HTML as fallback
+      if (typeof data.body === 'string' && data.body.trim() !== '') {
+        p.textContent = data.body; // (plain text; use innerHTML if you intentionally include markup in strings)
+      }
+    }
+
+    if (ul) {
+      ul.innerHTML = '';
+      if (Array.isArray(data.items)) {
+        data.items.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = String(item);
+          ul.appendChild(li);
+        });
+      }
+    }
+  });
+})();
+</script>

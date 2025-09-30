@@ -1,0 +1,57 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# 1) Serve everything under /legal/ as plain files (no SPA rewrite)
+RewriteCond %{REQUEST_URI} ^/legal/ [NC]
+RewriteRule ^ - [L]
+
+# 2) SPA fallback for everything else (only when file/dir doesn't exist)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+
+Redirect 301 /privacy.html /legal/privacy.html
+Redirect 301 /cookies.html /legal/cookies.html
+Redirect 301 /terms.html   /legal/terms.html
+Redirect 301 /GDPR.html    /legal/GDPR.html
+Redirect 301 /CRIC.html    /legal/CRIC.html
+
+# Cache strings.js for 7 days
+<FilesMatch "strings\.js$">
+  Header set Cache-Control "public, max-age=604800, immutable"
+</FilesMatch>
+
+# --- Long cache for versioned static assets (1 year) ---
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp           "access plus 1 year"
+  ExpiresByType image/jpeg           "access plus 1 year"
+  ExpiresByType image/png            "access plus 1 year"
+  ExpiresByType image/gif            "access plus 1 year"
+  ExpiresByType image/svg+xml        "access plus 1 year"
+  ExpiresByType image/x-icon         "access plus 1 year"
+  ExpiresByType font/woff2           "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript      "access plus 1 year"
+  ExpiresByType text/css             "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Cache static assets for 1 year, let browsers keep them if unchanged
+  <FilesMatch "\.(?:ico|jpe?g|png|gif|webp|svg|css|js|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML should NOT be cached long (allow quick updates)
+  <FilesMatch "\.html?$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # Optional: flat files that can change occasionally
+  <FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+</IfModule>
+
