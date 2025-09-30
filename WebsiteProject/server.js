@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import nodemailer from 'nodemailer';
 import { createServer as createViteServer } from 'vite';
