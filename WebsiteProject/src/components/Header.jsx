@@ -24,13 +24,13 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
   return (
     <>
       {/* Top bar with contact & language/currency */}
-      <div className="topbar bg-slate-900 text-slate-200 border-b border-slate-700">
+      <div className="topbar bg-[#1a5c7a] text-white border-b border-[#267b9e]">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+258844182252" className="flex items-center gap-1 hover:text-white">
+            <a href="tel:+258844182252" className="flex items-center gap-1 hover:text-[#f0d3b3] transition-colors">
               <Phone size={14} /> +258 84 418 2252
             </a>
-            <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1 hover:text-white">
+            <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1 hover:text-[#f0d3b3] transition-colors">
               <Mail size={14} /> info@devoceanlodge.com
             </a>
           </div>
@@ -39,7 +39,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="bg-slate-800 text-slate-200 border-slate-700 rounded px-2 py-1 text-sm"
+              className="bg-white/20 text-white border-white/30 rounded px-2 py-1 text-sm hover:bg-white/30 transition-colors"
             >
               <option value="en">EN</option>
               <option value="pt">PT</option>
@@ -53,7 +53,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="bg-slate-800 text-slate-200 border-slate-700 rounded px-2 py-1 text-sm"
+              className="bg-white/20 text-white border-white/30 rounded px-2 py-1 text-sm hover:bg-white/30 transition-colors"
             >
               <option value="USD">USD</option>
               <option value="MZN">MZN</option>
