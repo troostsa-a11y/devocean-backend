@@ -49,17 +49,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Fixed stack: topbar + header */}
-      <div className="sticky top-0 z-50">
-        <Header
-          ui={ui}
-          lang={lang}
-          currency={currency}
-          onLangChange={setLang}
-          onCurrencyChange={setCurrency}
-          bookUrl={bookUrl}
-        />
-      </div>
+      {/* Header with topbar (sticky via CSS) */}
+      <Header
+        ui={ui}
+        lang={lang}
+        currency={currency}
+        onLangChange={setLang}
+        onCurrencyChange={setCurrency}
+        bookUrl={bookUrl}
+      />
 
       {/* Page content */}
       <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} />
