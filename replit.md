@@ -34,6 +34,14 @@ Preferred communication style: Simple, everyday language.
 - Updated ContactSection.jsx with proper fetch API integration and loading/success/error states
 - Created start.js wrapper for cross-directory npm compatibility
 
+**Fixed Header Navigation (RESOLVED):**
+- Converted sticky positioned headers to fixed positioning for better reliability
+- Topbar (brown bar) and main header now use position: fixed with proper z-index layering
+- Implemented differential scroll-margin-top: #home scrolls to top (0), other sections offset by header stack height
+- Hero section changed to min-h-screen with dynamic padding to accommodate fixed headers
+- Navigation now works perfectly: Accueil scrolls to top with hero visible, all other sections align below headers without gaps
+- Solution: CSS changes to index.css (fixed positioning, scroll margins) and HeroSection.jsx (full screen height)
+
 **Performance Improvements:**
 - Images load only when entering viewport (IntersectionObserver)
 - Translation files load dynamically based on language selection
