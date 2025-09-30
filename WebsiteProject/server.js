@@ -145,9 +145,13 @@ ${sanitizedMessage}
     };
 
     const bookNowText = {
-      en: "Book your stay", pt: "Reserve sua estadia", nl: "Boek uw verblijf",
-      fr: "Réservez votre séjour", it: "Prenota il tuo soggiorno",
-      de: "Buchen Sie Ihren Aufenthalt", es: "Reserve su estancia",
+      en: "Book your stay", pt: "Reservar", nl: "Boek je verblijf",
+      fr: "Réserver", it: "Prenota", de: "Jetzt buchen", es: "Reservar",
+    };
+
+    const sincerelyText = {
+      en: "Sincerely", pt: "Atenciosamente", nl: "Met vriendelijke groet",
+      fr: "Cordialement", it: "Cordialmente", de: "Mit freundlichen Grüßen", es: "Cordialmente",
     };
 
     // Build localized booking URL
@@ -158,16 +162,45 @@ ${sanitizedMessage}
     const hrLocale = localeMap[sanitizedLang] || 'en-US';
     const bookingUrl = `https://book.devoceanlodge.com/bv3/search?locale=${hrLocale}&currency=${sanitizedCurrency}`;
 
-    const autoReplyBody = `
+    // Escape HTML function
+    const escapeHtml = (text) => {
+      return text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    };
+
+    // HTML version of auto-reply (professional format)
+    const autoReplyHtml = `
+<div style="font:16px/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a">
+  <p>${escapeHtml(greetings[sanitizedLang] || greetings.en)} ${escapeHtml(sanitizedName)},</p>
+  <p>${escapeHtml(autoReplyMessages[sanitizedLang] || autoReplyMessages.en)}</p>
+  <p style="margin:20px 0">
+    <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px">${escapeHtml(bookNowText[sanitizedLang] || bookNowText.en)}</a>
+  </p>
+  <div style="margin-top:20px;color:#475569">
+    <p>${escapeHtml(sincerelyText[sanitizedLang] || sincerelyText.en)},</p>
+    <p><strong>Sean</strong><br>DEVOCEAN Lodge<br><em>'You're Worth It'</em><br>
+    <a href="https://devoceanlodge.com" style="color:#9e4b13;text-decoration:none">www.devoceanlodge.com</a></p>
+  </div>
+</div>
+    `.trim();
+
+    // Plain text version
+    const autoReplyText = `
 ${greetings[sanitizedLang] || greetings.en} ${sanitizedName},
 
 ${autoReplyMessages[sanitizedLang] || autoReplyMessages.en}
 
 ${bookNowText[sanitizedLang] || bookNowText.en}: ${bookingUrl}
 
-—
+${sincerelyText[sanitizedLang] || sincerelyText.en},
+Sean
 DEVOCEAN Lodge
-Ponta do Ouro, Mozambique
+'You're Worth It'
+https://devoceanlodge.com
     `.trim();
 
     // Only send auto-reply if email is valid (not no-reply/bounce addresses)
@@ -187,7 +220,8 @@ Ponta do Ouro, Mozambique
             address: process.env.MAIL_FROM_EMAIL || "info@devoceanlodge.com"
           },
           subject: autoReplySubjects[sanitizedLang] || autoReplySubjects.en,
-          text: autoReplyBody,
+          html: autoReplyHtml,
+          text: autoReplyText,
           headers: {
             'Auto-Submitted': 'auto-replied',
             'X-Auto-Response-Suppress': 'All'

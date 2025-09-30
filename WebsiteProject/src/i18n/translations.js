@@ -30,6 +30,7 @@ export const UI = {
       name: "Name", email: "Email", checkin: "Check-in", checkout: "Check-out", message: "Message", send: "Send",
       consent: "By submitting you agree to be contacted about your inquiry.",
       phName: "Your name", phEmail: "your@email.com", phMsg: "Tell us about your trip…",
+      success: "Thank you! Your message has been sent. Check your email for a confirmation.",
     },
     galleryHeading: "Gallery",
     footer: {
@@ -77,6 +78,7 @@ export const UI = {
       name: "Nome", email: "Email", checkin: "Check-in", checkout: "Check-out", message: "Mensagem", send: "Enviar",
       consent: "Ao enviar, concorda em ser contactado sobre o seu pedido.",
       phName: "O seu nome", phEmail: "voce@email.com", phMsg: "Conte-nos sobre a sua viagem…",
+      success: "Obrigado! A sua mensagem foi enviada. Verifique o seu email para uma confirmação.",
     },
     galleryHeading: "Galeria",
     footer: {
@@ -124,6 +126,7 @@ export const UI = {
       name: "Naam", email: "E-mail", checkin: "Inchecken", checkout: "Uitchecken", message: "Bericht", send: "Verzenden",
       consent: "Door te verzenden ga je akkoord dat we contact met je opnemen over je aanvraag.",
       phName: "Je naam", phEmail: "jij@email.com", phMsg: "Vertel iets over je reis…",
+      success: "Bedankt! Je bericht is verzonden. Controleer je email voor een bevestiging.",
     },
     galleryHeading: "Galerij",
     footer: {
@@ -230,7 +233,8 @@ export const UI = {
         "En envoyant, vous acceptez d'être contacté au sujet de votre demande.",
       phName: "Votre nom",
       phEmail: "vous@email.com",
-      phMsg: "Parlez-nous de votre voyage…"
+      phMsg: "Parlez-nous de votre voyage…",
+      success: "Merci ! Votre message a été envoyé. Vérifiez votre email pour une confirmation."
     },
     galleryHeading: "Galerie",
     footer: {
@@ -279,6 +283,7 @@ export const UI = {
       name: "Nome", email: "E-mail", checkin: "Check-in", checkout: "Check-out", message: "Messaggio", send: "Invia",
       consent: "Inviando accetti di essere contattato riguardo alla tua richiesta.",
       phName: "Il tuo nome", phEmail: "tu@email.com", phMsg: "Raccontaci del tuo viaggio…",
+      success: "Grazie! Il tuo messaggio è stato inviato. Controlla la tua email per una conferma.",
     },
     galleryHeading: "Galleria",
     footer: {
@@ -325,6 +330,7 @@ export const UI = {
       name: "Name", email: "E-Mail", checkin: "Check-in", checkout: "Check-out", message: "Nachricht", send: "Senden",
       consent: "Mit dem Absenden stimmen Sie zu, kontaktiert zu werden.",
       phName: "Ihr Name", phEmail: "sie@email.com", phMsg: "Erzählen Sie uns von Ihrer Reise…",
+      success: "Vielen Dank! Ihre Nachricht wurde gesendet. Überprüfen Sie Ihre E-Mail für eine Bestätigung.",
     },
     galleryHeading: "Galerie",
     footer: {
@@ -372,6 +378,7 @@ export const UI = {
       consent: "Al enviar, aceptas que te contactemos.",
       phName: "Tu nombre", phEmail: "tu@email.com",
       phMsg: "Cuéntanos sobre tu viaje…",
+      success: "¡Gracias! Tu mensaje ha sido enviado. Revisa tu correo para una confirmación.",
     },
     galleryHeading: "Galería",
     footer: {
