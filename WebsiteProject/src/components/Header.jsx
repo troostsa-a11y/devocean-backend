@@ -71,7 +71,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
       </div>
 
       {/* Main header */}
-      <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white/90 backdrop-blur border-b">
+      <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a href="#home" className="flex items-center gap-3">

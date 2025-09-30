@@ -27,7 +27,7 @@
 section[id],
 [id][data-anchor],
 h1[id], h2[id], h3[id], h4[id] {
-  scroll-margin-top: calc(var(--stack-h) + 8px);
+  scroll-margin-top: calc(var(--stack-h) + 12px);
 }
 
 /* ------------------ Global interactions ------------------ */
@@ -48,11 +48,7 @@ textarea:focus-visible,
 /* Smooth scrolling + ensure anchored sections clear sticky stack */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--stack-h);
-}
-
-section[id] {
-  scroll-margin-top: calc(var(--stack-h) + 6px);
+  scroll-padding-top: calc(var(--stack-h) + 12px);
 }
 
 /* ------------------ Topbar (brown) ------------------ */
