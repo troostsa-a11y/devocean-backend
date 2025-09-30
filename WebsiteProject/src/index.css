@@ -45,10 +45,14 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
-/* Smooth scrolling + ensure anchored sections clear sticky stack */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--stack-h) + 12px);
+}
+
+/* Home section should scroll to top (behind fixed headers) */
+#home {
+  scroll-margin-top: 0;
 }
 
 /* ------------------ Topbar (brown) ------------------ */
