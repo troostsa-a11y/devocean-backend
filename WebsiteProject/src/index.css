@@ -23,8 +23,8 @@
   }
 }
 
-/* make in-page anchors stop below your fixed header stack */
-section[id],
+/* make in-page anchors stop below your fixed header stack (except home) */
+section[id]:not(#home),
 [id][data-anchor],
 h1[id], h2[id], h3[id], h4[id] {
   scroll-margin-top: calc(var(--stack-h) + 12px);
