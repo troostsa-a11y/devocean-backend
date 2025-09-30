@@ -41,7 +41,6 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               <select
                 value={lang}
                 onChange={(e) => onLangChange(e.target.value)}
-                className="bg-transparent border-0 text-white cursor-pointer"
               >
                 <option value="en">EN</option>
                 <option value="pt">PT</option>
@@ -56,7 +55,6 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="bg-transparent border-0 text-white cursor-pointer"
             >
               <option value="USD">USD</option>
               <option value="MZN">MZN</option>
