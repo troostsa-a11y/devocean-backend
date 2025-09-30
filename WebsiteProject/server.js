@@ -112,11 +112,95 @@ ${sanitizedMessage}
 
     const info = await transporter.sendMail(mailOptions);
     
-    console.log("✅ Email sent successfully!");
+    console.log("✅ Main email sent successfully!");
     console.log("From:", mailOptions.from.address);
     console.log("To:", mailOptions.to.address);
     console.log("Subject:", mailOptions.subject);
     console.log("Message ID:", info.messageId);
+
+    // Send auto-reply to customer (localized confirmation)
+    const autoReplyMessages = {
+      en: "Thanks for reaching out to DEVOCEAN Lodge. We've received your message and will get back to you shortly.",
+      pt: "Obrigado por entrar em contato com o DEVOCEAN Lodge. Recebemos sua mensagem e entraremos em contato em breve.",
+      nl: "Bedankt voor je bericht aan DEVOCEAN Lodge. We nemen snel contact op.",
+      fr: "Merci d'avoir contacté DEVOCEAN Lodge. Nous vous répondrons prochainement.",
+      it: "Grazie per aver contattato DEVOCEAN Lodge. Ti risponderemo a breve.",
+      de: "Danke für Ihre Nachricht an DEVOCEAN Lodge. Wir melden uns bald.",
+      es: "Gracias por contactarnos en DEVOCEAN Lodge. Nos pondremos en contacto pronto.",
+    };
+
+    const autoReplySubjects = {
+      en: "Thanks — DEVOCEAN Lodge",
+      pt: "Obrigado — DEVOCEAN Lodge",
+      nl: "Bedankt — DEVOCEAN Lodge",
+      fr: "Merci — DEVOCEAN Lodge",
+      it: "Grazie — DEVOCEAN Lodge",
+      de: "Danke — DEVOCEAN Lodge",
+      es: "Gracias — DEVOCEAN Lodge",
+    };
+
+    const greetings = {
+      en: "Hi", pt: "Olá", nl: "Hoi", fr: "Bonjour",
+      it: "Ciao", de: "Hallo", es: "Hola",
+    };
+
+    const bookNowText = {
+      en: "Book your stay", pt: "Reserve sua estadia", nl: "Boek uw verblijf",
+      fr: "Réservez votre séjour", it: "Prenota il tuo soggiorno",
+      de: "Buchen Sie Ihren Aufenthalt", es: "Reserve su estancia",
+    };
+
+    // Build localized booking URL
+    const localeMap = {
+      en: 'en-US', pt: 'pt-BR', nl: 'nl-NL', fr: 'fr-FR',
+      it: 'it-IT', de: 'de-DE', es: 'es-ES'
+    };
+    const hrLocale = localeMap[sanitizedLang] || 'en-US';
+    const bookingUrl = `https://book.devoceanlodge.com/bv3/search?locale=${hrLocale}&currency=${sanitizedCurrency}`;
+
+    const autoReplyBody = `
+${greetings[sanitizedLang] || greetings.en} ${sanitizedName},
+
+${autoReplyMessages[sanitizedLang] || autoReplyMessages.en}
+
+${bookNowText[sanitizedLang] || bookNowText.en}: ${bookingUrl}
+
+—
+DEVOCEAN Lodge
+Ponta do Ouro, Mozambique
+    `.trim();
+
+    // Only send auto-reply if email is valid (not no-reply/bounce addresses)
+    if (!/^(no-?reply|postmaster|mailer-daemon|bounce)/i.test(sanitizedEmail)) {
+      try {
+        const autoReplyOptions = {
+          from: {
+            name: "DEVOCEAN Lodge",
+            address: process.env.MAIL_FROM_EMAIL || "info@devoceanlodge.com"
+          },
+          to: {
+            name: sanitizedName,
+            address: sanitizedEmail
+          },
+          replyTo: {
+            name: process.env.MAIL_FROM_NAME || "DEVOCEAN Lodge",
+            address: process.env.MAIL_FROM_EMAIL || "info@devoceanlodge.com"
+          },
+          subject: autoReplySubjects[sanitizedLang] || autoReplySubjects.en,
+          text: autoReplyBody,
+          headers: {
+            'Auto-Submitted': 'auto-replied',
+            'X-Auto-Response-Suppress': 'All'
+          }
+        };
+
+        await transporter.sendMail(autoReplyOptions);
+        console.log("✅ Auto-reply sent to:", sanitizedEmail);
+      } catch (autoReplyError) {
+        console.error("⚠️ Auto-reply failed:", autoReplyError.message);
+        // Don't fail the main request if auto-reply fails
+      }
+    }
 
     res.json({ success: true, message: "Email sent successfully" });
   } catch (error) {
