@@ -18,10 +18,10 @@ export default function HeroSection({ images = [], ui, bookUrl }) {
   return (
     <section id="home" className="relative overflow-hidden min-h-[70vh] flex items-center">
       {/* Brand fallback */}
-      <div className="absolute inset-0 z-0 bg-[#9e4b13]" />
+      <div className="absolute inset-0 bg-[#9e4b13]" />
 
       {/* Slides */}
-      <div className="absolute inset-0 z-10">
+      <div className="absolute inset-0">
         {list.map((src, i) => (
           <LazyImage
             key={src}
@@ -35,10 +35,10 @@ export default function HeroSection({ images = [], ui, bookUrl }) {
       </div>
 
       {/* Dim overlay */}
-      <div className="absolute inset-0 z-20 bg-black/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-30 max-w-7xl mx-auto px-4 py-24 md:py-40 text-white w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-24 md:py-40 text-white w-full">
         <h1 className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight">{ui.hero.title}</h1>
         <p className="mt-4 md:text-xl max-w-2xl">{ui.hero.subtitle}</p>
         <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -67,7 +67,7 @@ export default function HeroSection({ images = [], ui, bookUrl }) {
       {/* Controls */}
       {list.length > 1 && (
         <>
-          <div className="absolute z-40 bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+          <div className="absolute z-20 bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
             {list.map((_, i) => (
               <button
                 key={i}
@@ -79,12 +79,12 @@ export default function HeroSection({ images = [], ui, bookUrl }) {
           </div>
           <button
             onClick={() => go(idx - 1)}
-            className="absolute z-40 left-3 bottom-3 px-3 py-1.5 rounded-full bg-black/30 text-white text-sm"
+            className="absolute z-20 left-3 bottom-3 px-3 py-1.5 rounded-full bg-black/30 text-white text-sm"
             aria-label="Previous slide"
           >‹</button>
           <button
             onClick={() => go(idx + 1)}
-            className="absolute z-40 right-3 bottom-3 px-3 py-1.5 rounded-full bg-black/30 text-white text-sm"
+            className="absolute z-20 right-3 bottom-3 px-3 py-1.5 rounded-full bg-black/30 text-white text-sm"
             aria-label="Next slide"
           >›</button>
         </>
