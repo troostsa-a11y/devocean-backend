@@ -80,7 +80,8 @@ export default defineConfig({
   
   // Optimize dev server
   server: {
-    port: 5173,
+    host: '0.0.0.0',
+    port: 5000,
     strictPort: false,
     hmr: {
       overlay: true,

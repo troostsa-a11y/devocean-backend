@@ -499,9 +499,7 @@ export const L10N = {
     experiences: {
       diving: { title: "Duiken", desc: "Offshore riffen met rijk zeeleven." },
       dolphins: { title: "Dolfijnzwemmen", desc: "Ethische ontmoetingen met lokale dolfijnen." },
-      lighthouse: { title: "Vuurtor
-
-enwandeling", desc: "Klim de heuvel naar de oude vuurtoren voor wijds uitzicht." },
+      lighthouse: { title: "Vuurtorenwandeling", desc: "Klim de heuvel naar de oude vuurtoren voor wijds uitzicht." },
       seafari: { title: "Zeesafari's", desc: "Oceaansafari's voor walvissen (mei–okt) en meer." },
       safari: { title: "Wildsafari's", desc: "Bosavonturen op korte rijafstand." },
       fishing: { title: "Strand & Zeevissen", desc: "Van kustworpen tot offshore charters." },
