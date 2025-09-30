@@ -36,7 +36,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 border border-white/40 rounded px-2 py-1">
               <Globe2 size={16} />
               <select
                 value={lang}
@@ -55,6 +55,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
+              className="border border-white/40 rounded px-2 py-1"
             >
               <option value="USD">USD</option>
               <option value="MZN">MZN</option>
