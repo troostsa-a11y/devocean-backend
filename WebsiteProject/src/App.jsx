@@ -66,9 +66,6 @@ export default function App() {
         bookUrl={bookUrl}
       />
 
-      {/* Spacer for fixed header */}
-      <div style={{ height: 'var(--stack-h)' }} />
-
       {/* Page content */}
       <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} />
       <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} />
