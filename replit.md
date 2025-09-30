@@ -55,6 +55,21 @@ Preferred communication style: Simple, everyday language.
 - Optimized bundle splitting for better caching
 - Reduced initial bundle size through lazy loading
 
+**Final Refinements & Verification (September 30, 2025):**
+- **Currency Default Fixed:** Changed fallback currency from EUR to USD in useLocale.js (pickInitialCurrency and setCurrency functions) to properly default to EN/USD when browser locale cannot be determined
+- **Page Information Audit:** Verified all contact details, links, and information across the website:
+  - Phone: +258 84 418 2252 (WhatsApp: https://wa.me/258844182252)
+  - Email: info@devoceanlodge.com
+  - All 8 social media links verified (Facebook, Instagram, Google Maps, X, LinkedIn, TikTok, Pinterest, YouTube)
+  - All 6 experience operator partner links confirmed functional
+  - All 5 legal pages present and linked correctly (privacy.html, cookies.html, terms.html, GDPR.html, CRIC.html)
+  - CookieYes banner properly integrated with Cookie Settings link
+- **GTM Integration Verified:** Confirmed Google Tag Manager implementation is complete and correct:
+  - GTM container ID GTM-532W3HH2 loaded asynchronously with noscript fallback
+  - Consent Mode v2 properly configured with regional defaults (deny for EEA/EFTA/GB, grant elsewhere)
+  - CookieYes banner syncs user consent to GTM dataLayer
+  - Implementation consistent across main app (index.html) and all legal pages
+
 ## Running the Application
 
 **Local Development (Recommended):**
