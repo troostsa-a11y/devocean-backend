@@ -68,7 +68,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
       </div>
 
       {/* Main header */}
-      <header className="sticky top-[var(--topbar-h)] z-40 bg-white/90 backdrop-blur border-b">
+      <header className="sticky top-[var(--topbar-h)] z-50 bg-white/90 backdrop-blur border-b">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a href="#home" onClick={(e) => handleAnchorNav(e, '#home')} className="flex items-center gap-3">
@@ -149,7 +149,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               href={bookUrl}
               target="_blank"
               rel="noreferrer"
-              className="block m-4 text-center btn-cta px-4 py-2 rounded-2xl bg-[#9e4b13] text-white"
+              className="block m-4 text-center btn-cta px-4 py-2 rounded-xl bg-[#9e4b13] text-white"
               onClick={() => setMenuOpen(false)}
             >
               {ui.contact.bookNow}
