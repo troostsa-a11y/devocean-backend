@@ -27,7 +27,7 @@
 section[id]:not(#home),
 [id][data-anchor],
 h1[id], h2[id], h3[id], h4[id] {
-  scroll-margin-top: var(--stack-h);
+  scroll-margin-top: var(--stack-h) !important;
 }
 
 /* ------------------ Global interactions ------------------ */
@@ -52,7 +52,7 @@ html {
 
 /* Home section should scroll to top (behind fixed headers) */
 #home {
-  scroll-margin-top: 0;
+  scroll-margin-top: 0 !important;
 }
 
 /* ------------------ Topbar (brown) ------------------ */
