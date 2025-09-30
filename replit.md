@@ -33,6 +33,13 @@ Preferred communication style: Simple, everyday language.
 - Implemented security measures: CRLF injection prevention, email validation, input sanitization
 - Updated ContactSection.jsx with proper fetch API integration and loading/success/error states
 - Created start.js wrapper for cross-directory npm compatibility
+- **Auto-reply functionality:** System now sends two emails per submission:
+  1. Main inquiry email to lodge owner (MAIL_TO_EMAIL)
+  2. Localized auto-reply confirmation to customer with personalized greeting and booking link
+  - Auto-reply supports all 7 languages with localized subject lines and messages
+  - Includes booking URL with correct locale and currency parameters
+  - Smart filtering prevents replies to no-reply/bounce addresses
+  - Independent error handling ensures main email succeeds even if auto-reply fails
 
 **Fixed Header Navigation (RESOLVED):**
 - Converted sticky positioned headers to fixed positioning for better reliability
