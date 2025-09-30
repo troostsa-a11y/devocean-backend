@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
 
@@ -22,9 +23,9 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
   };
 
   return (
-    <div id="nav-stack" className="w-full relative z-50">
+    <>
       {/* Top bar with contact & language/currency */}
-      <div className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
+      <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
           {/* Desktop: Full contact info */}
           <div className="hidden md:flex items-center gap-4">
@@ -39,7 +40,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           {/* Mobile: Icon-only contact */}
           <div className="flex md:hidden items-center gap-3">
             <a href="https://wa.me/258844182252" target="_blank" rel="noreferrer" className="flex items-center gap-1" aria-label="WhatsApp">
-              <Phone size={16} />
+              <FaWhatsapp size={16} />
             </a>
             <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1" aria-label="Email">
               <Mail size={16} />
@@ -168,6 +169,6 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           </div>
         )}
       </header>
-    </div>
+    </>
   );
 }

@@ -22,13 +22,17 @@ export default function App() {
     const recalc = () => {
       const topbar = document.querySelector(".topbar");
       const header = document.querySelector("header");
-      const stack = (topbar?.offsetHeight || 0) + (header?.offsetHeight || 0);
+      if (!topbar || !header) return;
+      
+      const stack = topbar.offsetHeight + header.offsetHeight;
       document.documentElement.style.setProperty("--stack-h", `${stack}px`);
+      document.documentElement.style.setProperty("--topbar-h", `${topbar.offsetHeight}px`);
     };
 
-    // Run immediately and after a short delay to ensure DOM is ready
+    // Run immediately and after delays to ensure proper calculation
     recalc();
     setTimeout(recalc, 100);
+    setTimeout(recalc, 500);
     
     window.addEventListener("resize", recalc, { passive: true });
     return () => window.removeEventListener("resize", recalc);
