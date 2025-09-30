@@ -85,9 +85,7 @@ export default defineConfig({
     strictPort: false,
     hmr: {
       overlay: true,
-      host: true,
     },
-    allowedHosts: 'all',
   },
   
   // Optimize dependencies
