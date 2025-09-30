@@ -8,18 +8,9 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleAnchorNav = (e, href) => {
-    const id = href.startsWith('#') ? href.slice(1) : '';
-    const el = id ? document.getElementById(id) : null;
-
-    if (el) {
-      e.preventDefault();
-      const rectTop = el.getBoundingClientRect().top + window.scrollY;
-      const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--stack-h')) || 0;
-      window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
-
-      const newUrl = `${window.location.pathname}${window.location.search}#${id}`;
-      window.history.replaceState({}, '', newUrl);
-    }
+    // Let the browser handle smooth scrolling natively
+    // The CSS scroll-margin-top will handle the offset
+    setMenuOpen(false);
   };
 
   return (
@@ -83,7 +74,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
       <header className="sticky top-[var(--topbar-h)] z-50 bg-white/90 backdrop-blur border-b">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href="#home" onClick={(e) => handleAnchorNav(e, '#home')} className="flex items-center gap-3">
+            <a href="#home" className="flex items-center gap-3">
               <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
               <span className="font-semibold">DEVOCEAN Lodge</span>
             </a>
@@ -104,7 +95,6 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 <a
                   href={href}
                   className="hover:text-[#9e4b13]"
-                  onClick={(e) => handleAnchorNav(e, href)}
                 >
                   {ui.nav[k]}
                 </a>
@@ -149,10 +139,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 key={k}
                 href={href}
                 className="block px-4 py-3 hover:bg-slate-50"
-                onClick={(e) => {
-                  setMenuOpen(false);
-                  handleAnchorNav(e, href);
-                }}
+                onClick={() => setMenuOpen(false)}
               >
                 {ui.nav[k]}
               </a>
