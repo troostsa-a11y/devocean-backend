@@ -65,6 +65,14 @@ app.post("/api/contact", async (req, res) => {
                     process.env.MAIL_SECURE === "1" || 
                     port === 465;
     
+    // Debug: Check if credentials are loaded
+    if (!process.env.MAIL_USERNAME || !process.env.MAIL_PASSWORD) {
+      console.error("❌ Missing credentials:");
+      console.error("MAIL_USERNAME:", process.env.MAIL_USERNAME ? "✓ present" : "❌ MISSING");
+      console.error("MAIL_PASSWORD:", process.env.MAIL_PASSWORD ? "✓ present" : "❌ MISSING");
+      return res.status(500).json({ error: "Email credentials not configured" });
+    }
+    
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
       port,
