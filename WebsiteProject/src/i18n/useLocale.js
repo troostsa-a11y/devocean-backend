@@ -108,23 +108,29 @@ export function useLocale() {
 
   const [ui, setUi] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [initialLoadDone, setInitialLoadDone] = useState(false);
 
   // Load translations when language changes
   useEffect(() => {
     let cancelled = false;
 
-    setLoading(true);
+    // Only show loading spinner on initial load, not on language switch
+    if (!initialLoadDone) {
+      setLoading(true);
+    }
+
     loadTranslations(lang).then((translations) => {
       if (!cancelled) {
         setUi(translations);
         setLoading(false);
+        setInitialLoadDone(true);
       }
     });
 
     return () => {
       cancelled = true;
     };
-  }, [lang]);
+  }, [lang, initialLoadDone]);
 
   useEffect(() => {
     document.documentElement.setAttribute("lang", lang);

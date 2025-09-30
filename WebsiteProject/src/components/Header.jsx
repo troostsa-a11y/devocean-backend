@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, Phone, Mail, Globe } from 'lucide-react';
+import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
 
@@ -37,7 +37,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1">
-              <Globe size={16} />
+              <Globe2 size={16} />
               <select
                 value={lang}
                 onChange={(e) => onLangChange(e.target.value)}
