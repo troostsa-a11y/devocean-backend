@@ -15,7 +15,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 export default function App() {
-  const { lang, currency, setLang, setCurrency, ui, loading, bookingLocale, dateLocale } = useLocale();
+  const { lang, currency, setLang, setCurrency, ui, bookingLocale, dateLocale } = useLocale();
 
   // Layout recalculation for sticky header
   useEffect(() => {
@@ -34,18 +34,6 @@ export default function App() {
   const bookUrl = buildBookingUrl(bookingLocale, currency);
   const units = localizeUnits(lang);
   const experiences = localizeExperiences(lang);
-
-  // Show loading state while translations load
-  if (loading || !ui) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-          <p className="mt-4 text-slate-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen flex flex-col">

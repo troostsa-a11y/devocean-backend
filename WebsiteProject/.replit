@@ -1,0 +1,9 @@
+run = "cd WebsiteProject && npm run dev"
+entrypoint = "WebsiteProject/src/App.jsx"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+build = ["cd", "WebsiteProject", "&&", "npm", "run", "build"]
+run = ["cd", "WebsiteProject", "&&", "npm", "run", "preview"]
