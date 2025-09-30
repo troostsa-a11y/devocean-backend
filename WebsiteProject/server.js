@@ -1,4 +1,4 @@
-import 'dotenv/config';
+import dotenv from 'dotenv';
 import express from 'express';
 import nodemailer from 'nodemailer';
 import { createServer as createViteServer } from 'vite';
@@ -6,6 +6,9 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Load .env file explicitly
+dotenv.config({ path: join(__dirname, '.env') });
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
