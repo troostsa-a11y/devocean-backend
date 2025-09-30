@@ -18,11 +18,48 @@ const socialIcons = {
 export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale }) {
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
+  const [formState, setFormState] = useState({ status: 'idle', message: '' }); // idle, sending, success, error
   const inRef = useRef(null);
   const outRef = useRef(null);
 
   const todayISO = new Date().toISOString().slice(0, 10);
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${MAP.lat},${MAP.lng}`;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormState({ status: 'sending', message: '' });
+
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
+      checkin_iso: formData.get('checkin_iso'),
+      checkout_iso: formData.get('checkout_iso'),
+      currency: formData.get('currency'),
+      lang: formData.get('lang'),
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setFormState({ status: 'success', message: ui.form.success || 'Message sent successfully!' });
+        e.target.reset();
+        setCheckin("");
+        setCheckout("");
+      } else {
+        const error = await response.json();
+        setFormState({ status: 'error', message: error.error || 'Failed to send message' });
+      }
+    } catch (error) {
+      setFormState({ status: 'error', message: 'Network error. Please try again.' });
+    }
+  };
 
   return (
     <section id="contact" className="max-w-7xl mx-auto px-4 py-16">
@@ -78,7 +115,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
 
         {/* Right: form */}
         <div className="contact-form justify-self-start w-[92vw] max-w-[22rem] sm:w-full sm:max-w-lg md:w-full md:max-w-none mx-auto md:ml-auto rounded-2xl border shadow p-4 sm:p-6 bg-white overflow-hidden">
-          <form action="/contact.php" method="post" className="grid gap-4" autoComplete="on">
+          <form onSubmit={handleSubmit} className="grid gap-4" autoComplete="on">
             <input type="hidden" name="lang" value={lang} />
             <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
             <input type="hidden" name="checkin_iso" value={checkin || ""} />
@@ -177,9 +214,21 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
               />
             </div>
 
-            <button type="submit" className="btn-cta px-4 py-2 rounded-2xl bg-[#9e4b13] text-white hover:shadow">
-              {ui.form.send}
+            <button 
+              type="submit" 
+              disabled={formState.status === 'sending'}
+              className="btn-cta px-4 py-2 rounded-2xl bg-[#9e4b13] text-white hover:shadow disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {formState.status === 'sending' ? 'Sending...' : ui.form.send}
             </button>
+
+            {formState.status === 'success' && (
+              <p className="text-sm text-green-600 font-medium">{formState.message}</p>
+            )}
+            {formState.status === 'error' && (
+              <p className="text-sm text-red-600 font-medium">{formState.message}</p>
+            )}
+
             <p className="text-xs text-slate-500">{ui.form.consent}</p>
           </form>
         </div>
