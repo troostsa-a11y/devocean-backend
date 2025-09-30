@@ -27,7 +27,7 @@
 section[id]:not(#home),
 [id][data-anchor],
 h1[id], h2[id], h3[id], h4[id] {
-  scroll-margin-top: calc(var(--stack-h) + 12px);
+  scroll-margin-top: var(--stack-h);
 }
 
 /* ------------------ Global interactions ------------------ */
