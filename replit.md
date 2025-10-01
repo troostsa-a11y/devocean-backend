@@ -70,6 +70,17 @@ Preferred communication style: Simple, everyday language.
   - CookieYes banner syncs user consent to GTM dataLayer
   - Implementation consistent across main app (index.html) and all legal pages
 
+**Code Cleanup (October 1, 2025):**
+- **CookieYes Migration to GTM:** Removed legacy CookieYes code now that consent management is handled through Google Tag Manager:
+  - Removed CookieYes CDN preconnect link from index.html
+  - Removed CookieYes banner script tag from index.html and all legal pages
+  - Removed CookieYes bridge script that synced consent to dataLayer (now handled by GTM)
+  - Removed non-functional "Cookie Settings" button from Footer.jsx
+  - Removed non-functional cookie settings button from cookies.html
+  - Consent Mode v2 defaults retained (still required for GTM)
+  - GTM configuration unchanged and fully functional
+  - Cleaner codebase with consent management centralized in GTM
+
 ## Running the Application
 
 **Local Development (Recommended):**
