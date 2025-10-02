@@ -95,9 +95,11 @@ Preferred communication style: Simple, everyday language.
 
 **Security:**
 - Google reCAPTCHA v3 (invisible verification on contact form with server-side validation)
-  - Action validation prevents token reuse across forms
+  - Site key: 6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L (configured for devoceanlodge.com and localhost)
+  - Action validation prevents token reuse across forms (action='contact_form')
   - Score-based bot detection: Rejects < 0.3, logs 0.3-0.5 for monitoring
   - RECAPTCHA_SECRET_KEY stored securely in environment secrets
+  - **Domain restriction**: To enable reCAPTCHA on staging/test environments, add the domain to the allowed list in Google reCAPTCHA admin console
 
 **Email Service:**
 - Secure email integration with auto-reply functionality for contact form submissions.
