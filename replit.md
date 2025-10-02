@@ -8,115 +8,23 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 
 Preferred communication style: Simple, everyday language.
 
-## Recent Changes (September 30, 2025)
-
-**Major Code Optimization Completed:**
-- Refactored monolithic 2,458-line App.jsx into 9 modular components:
-  - Header.jsx - Navigation and language/currency selection
-  - HeroSection.jsx - Hero slider with brand images
-  - AccommodationsSection.jsx - Accommodation unit cards
-  - ExperiencesSection.jsx - Activity and experience cards
-  - TodoSection.jsx - Things to do section
-  - GallerySection.jsx - Photo gallery grid
-  - LocationSection.jsx - Google Maps integration
-  - ContactSection.jsx - Contact form
-  - Footer.jsx - Footer with navigation links
-- Implemented dynamic i18n loading - translations now load on-demand per language instead of bundling all 7 languages upfront
-- Created LazyImage component with IntersectionObserver for performance-optimized image loading across all sections
-- Optimized Vite configuration with manual code splitting (react-vendor, i18n-vendor, motion, icons, translations chunks)
-- Extracted content data into separate content.js module for better maintainability
-- Reduced App.jsx from 2,458 lines to ~70 lines while preserving all functionality including multi-language support and booking integration
-
-**Secure Email Integration:**
-- Replaced insecure .secrets folder with Replit environment secrets (9 MAIL_* variables)
-- Created Express backend with /api/contact endpoint in WebsiteProject/server.js
-- Implemented security measures: CRLF injection prevention, email validation, input sanitization
-- Updated ContactSection.jsx with proper fetch API integration and loading/success/error states
-- Created start.js wrapper for cross-directory npm compatibility
-- **Auto-reply functionality:** System now sends two emails per submission:
-  1. Main inquiry email to lodge owner (MAIL_TO_EMAIL)
-  2. Localized auto-reply confirmation to customer with personalized greeting and booking link
-  - Auto-reply supports all 7 languages with localized subject lines and messages
-  - Includes booking URL with correct locale and currency parameters
-  - Smart filtering prevents replies to no-reply/bounce addresses
-  - Independent error handling ensures main email succeeds even if auto-reply fails
-
-**Fixed Header Navigation (RESOLVED):**
-- Converted sticky positioned headers to fixed positioning for better reliability
-- Topbar (brown bar) and main header now use position: fixed with proper z-index layering
-- Implemented differential scroll-margin-top: #home scrolls to top (0), other sections offset by header stack height
-- Hero section changed to min-h-screen with dynamic padding to accommodate fixed headers
-- Navigation now works perfectly: Accueil scrolls to top with hero visible, all other sections align below headers without gaps
-- Solution: CSS changes to index.css (fixed positioning, scroll margins) and HeroSection.jsx (full screen height)
-
-**Performance Improvements:**
-- Images load only when entering viewport (IntersectionObserver)
-- Translation files load dynamically based on language selection
-- Optimized bundle splitting for better caching
-- Reduced initial bundle size through lazy loading
-
-**Final Refinements & Verification (September 30, 2025):**
-- **Currency Default Fixed:** Changed fallback currency from EUR to USD in useLocale.js (pickInitialCurrency and setCurrency functions) to properly default to EN/USD when browser locale cannot be determined
-- **Page Information Audit:** Verified all contact details, links, and information across the website:
-  - Phone: +258 84 418 2252 (WhatsApp: https://wa.me/258844182252)
-  - Email: info@devoceanlodge.com
-  - All 8 social media links verified (Facebook, Instagram, Google Maps, X, LinkedIn, TikTok, Pinterest, YouTube)
-  - All 6 experience operator partner links confirmed functional
-  - All 5 legal pages present and linked correctly (privacy.html, cookies.html, terms.html, GDPR.html, CRIC.html)
-  - CookieYes banner properly integrated with Cookie Settings link
-- **GTM Integration Verified:** Confirmed Google Tag Manager implementation is complete and correct:
-  - GTM container ID GTM-532W3HH2 loaded asynchronously with noscript fallback
-  - Consent Mode v2 properly configured with regional defaults (deny for EEA/EFTA/GB, grant elsewhere)
-  - CookieYes banner syncs user consent to GTM dataLayer
-  - Implementation consistent across main app (index.html) and all legal pages
-
-**Code Cleanup (October 1, 2025):**
-- **CookieYes Migration to GTM:** Removed legacy CookieYes code now that consent management is handled through Google Tag Manager:
-  - Removed CookieYes CDN preconnect link from index.html
-  - Removed CookieYes banner script tag from index.html and all legal pages
-  - Removed CookieYes bridge script that synced consent to dataLayer (now handled by GTM)
-  - Removed non-functional "Cookie Settings" button from Footer.jsx
-  - Removed non-functional cookie settings button from cookies.html
-  - Consent Mode v2 defaults retained (still required for GTM)
-  - GTM configuration unchanged and fully functional
-  - Cleaner codebase with consent management centralized in GTM
-
-## Running the Application
-
-**Local Development (Recommended):**
-```bash
-cd WebsiteProject
-npm run dev
-```
-Server will start on http://localhost:5000
-
-**Replit Environment:**
-The Replit workflow is configured to run `npm run dev` from the root directory. Due to path resolution limitations, if the workflow fails, run manually from WebsiteProject/:
-```bash
-cd WebsiteProject && npm run dev
-```
-
 ## System Architecture
 
 ### Frontend Architecture
 
 **Framework & Build System:**
-- React 18 with TypeScript for component-based UI development
-- Vite as the build tool and development server with HMR support
-- Wouter for client-side routing (lightweight alternative to React Router)
+- React 18 with TypeScript
+- Vite as the build tool
+- Wouter for client-side routing
 
-**UI Component Library:**
-- shadcn/ui components with Tailwind CSS styling (New York variant)
-- Radix UI primitives for accessible, unstyled component foundations
-- Class Variance Authority (CVA) for component variant management
-- Lucide React for icon components
-
-**Styling Approach:**
-- Tailwind CSS utility-first framework with custom design tokens
-- CSS variables for theme customization (light/dark mode support)
-- Custom color palette: Ocean Blue (primary), Warm Sand, Deep Teal, Sunset Orange
+**UI Component Library & Styling:**
+- shadcn/ui components with Tailwind CSS (New York variant)
+- Radix UI primitives for accessibility
+- Class Variance Authority (CVA) for component variants
+- Lucide React for icons
+- Custom color palette: Ocean Blue, Warm Sand, Deep Teal, Sunset Orange
 - Responsive design with mobile-first breakpoints
-- Custom elevation utilities (hover-elevate, active-elevate) for interactive elements
+- Custom elevation utilities for interactive elements
 
 **State Management & Data Fetching:**
 - TanStack Query (React Query) for server state management
@@ -124,158 +32,110 @@ cd WebsiteProject && npm run dev
 - Custom hooks for mobile detection and toast notifications
 
 **Internationalization:**
-- Two separate i18n implementations:
-  1. Main app: React-based i18n with lazy-loaded translations (WebsiteProject/src/i18n/)
-  2. Legacy/static pages: Vanilla JavaScript i18n system (legal pages)
+- React-based i18n with lazy-loaded translations (7 languages)
+- Vanilla JavaScript i18n for legacy/static legal pages
 - Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish
 - Currency support: USD, MZN, ZAR, EUR, GBP with browser-based inference
 - Date localization with dd/mm/yyyy format preference
 
+**Performance Optimizations:**
+- Dynamic translation loading
+- IntersectionObserver-based image lazy loading
+- Optimized bundle splitting (react-vendor, i18n-vendor, motion, icons, translations chunks)
+- Preconnect hints for external resources
+- Hero first image eager loading, subsequent images lazy loaded
+
 ### Backend Architecture
 
 **Server Framework:**
-- Express.js for HTTP server and API routing
+- Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation)
 - Custom middleware for request logging and error handling
-- Session management using connect-pg-simple (PostgreSQL session store)
-
-**Development Environment:**
-- Vite middleware integration for HMR in development
-- Separate development and production build processes
-- Runtime error overlay for development debugging
 
 **Storage Layer:**
-- In-memory storage implementation (MemStorage class) as the default
-- Interface-based design (IStorage) allowing easy swap to database persistence
-- Currently implements basic user CRUD operations
+- In-memory storage implementation (MemStorage class) as default, designed for easy swap to database persistence.
 
-**Database Schema (Prepared but not actively used):**
-- Drizzle ORM configured for PostgreSQL
-- Schema defines users table with UUID primary keys
-- Zod schemas for input validation
-- Migration system ready (drizzle-kit configured)
+**Database Schema (Prepared):**
+- Drizzle ORM configured for PostgreSQL with Zod schemas for input validation.
 
 ### Project Structure
 
 **Dual Project Setup:**
 - `/WebsiteProject/`: Optimized React/Vite marketing website (main site)
 - `/client/` and `/server/`: Full-stack application template (not actively used)
-- Asset management via Vite aliases (@, @shared, @assets)
 
 **WebsiteProject Component Organization:**
-- Main App: `/WebsiteProject/src/App.jsx` (orchestrates all sections)
-- Components: `/WebsiteProject/src/components/` (9 modular components)
-  - Header.jsx, HeroSection.jsx, AccommodationsSection.jsx, ExperiencesSection.jsx
-  - TodoSection.jsx, GallerySection.jsx, LocationSection.jsx, ContactSection.jsx, Footer.jsx
-  - LazyImage.jsx (IntersectionObserver-based image loading)
-- i18n System: `/WebsiteProject/src/i18n/`
-  - translations.js (7 language dictionaries)
-  - useLocale.js (dynamic translation loading hook)
-  - localize.js (localization helper functions)
-- Data: `/WebsiteProject/src/data/content.js` (images, contact info, operators)
-- Utils: `/WebsiteProject/src/utils/localize.js` (booking URL generation)
+- Modular components for Header, HeroSection, AccommodationsSection, ExperiencesSection, TodoSection, GallerySection, LocationSection, ContactSection, Footer, and LazyImage.
+- i18n System: translations.js, useLocale.js, localize.js
+- Data: `/WebsiteProject/src/data/content.js`
 
 ### Design System
 
 **Typography:**
-- Inter font family from Google Fonts
-- Weight range: 300-900 with italic variants
-- Hierarchical sizing for headings, body text, and accent text
+- Inter font family from Google Fonts.
 
 **Component Patterns:**
-- Card-based layouts for accommodation and activity listings
-- Image-first design with aspect ratios (4/3 for cards)
-- Expandable detail sections with smooth transitions
-- Overlay gradients on hero images for text readability
+- Card-based layouts, image-first design, expandable detail sections, overlay gradients.
 
 **Interaction Design:**
-- Hover states with subtle zoom effects on images (scale-105)
-- Focus-visible outlines using brand color
-- Smooth scroll behavior for anchor navigation
-- Sticky header with scroll offset compensation (scroll-margin-top)
+- Hover states with subtle zoom effects, focus-visible outlines, smooth scroll behavior, sticky header.
 
 ## External Dependencies
 
 ### Third-Party Services
 
 **Analytics & Consent Management:**
-- Google Tag Manager with Consent Mode v2 implementation
-- CookieYes for GDPR-compliant cookie consent management
-- Region-specific consent defaults (EEA + EFTA + GB vs. rest of world)
+- Google Tag Manager with Consent Mode v2.
+- CookieYes for GDPR-compliant cookie consent management (integrated via GTM).
 
 **Booking Integration:**
-- External booking engine at book.devoceanlodge.com
-- Parameterized URLs with locale and currency support
-- Deep linking from accommodation cards and CTAs
+- External booking engine at book.devoceanlodge.com with parameterized URLs.
 
 **Maps & Location:**
-- Google Maps embed for property location
-- Google Maps Directions API integration
-- Coordinates: -26.841994852732736, 32.88504331196165
+- Google Maps embed for property location and Directions API integration.
+
+**Security:**
+- Google reCAPTCHA v3 (invisible verification on contact form with server-side validation)
+  - Action validation prevents token reuse across forms
+  - Score-based bot detection: Rejects < 0.3, logs 0.3-0.5 for monitoring
+  - RECAPTCHA_SECRET_KEY stored securely in environment secrets
+
+**Email Service:**
+- Secure email integration with auto-reply functionality for contact form submissions.
 
 ### NPM Packages
 
 **Core Framework:**
-- react, react-dom: UI rendering
-- express: Server framework
-- drizzle-orm, drizzle-zod: Database ORM and validation
-- pg: PostgreSQL client (for session store)
+- react, react-dom
+- express
+- drizzle-orm, drizzle-zod (for potential future database integration)
+- pg (for session store)
 
 **UI & Styling:**
-- tailwindcss, autoprefixer, postcss: Styling infrastructure
-- @radix-ui/*: Accessible component primitives
-- framer-motion: Animation library
-- lucide-react: Icon library
+- tailwindcss, autoprefixer, postcss
+- @radix-ui/*
+- framer-motion
+- lucide-react
 
 **Developer Tools:**
-- vite, @vitejs/plugin-react: Build tooling
-- @replit/vite-plugin-*: Replit-specific development plugins
-- typescript: Type checking
+- vite, @vitejs/plugin-react
+- @replit/vite-plugin-*
+- typescript
 
 **Data Management:**
-- @tanstack/react-query: Server state management
-- zod: Runtime type validation
-- nanoid: Unique ID generation
+- @tanstack/react-query
+- zod
+- nanoid
 
 **Routing & Forms:**
-- wouter: Client-side routing
-- react-hook-form: Form state management
+- wouter
+- react-hook-form
 
 ### Asset Management
 
 **Static Assets:**
-- Stock images stored in `/attached_assets/stock_images/`
-- Photo gallery in `/WebsiteProject/public/photos/`
-- Logo and branding assets
-- Vite alias configuration for clean imports (@assets)
+- Stock images, photo gallery, logo, and branding assets.
+- Vite alias configuration for asset imports.
 
 **Legal Documents:**
-- Static HTML pages for legal compliance (privacy, cookies, terms, GDPR, CRIC)
-- Standalone i18n system for legal pages with inline styles
-- Robots.txt and sitemap.xml for SEO
-
-### Performance Optimizations
-
-**Build Configuration:**
-- Manual chunk splitting for optimal caching:
-  - react-vendor: React core libraries
-  - motion: Framer Motion animations
-  - icons: Lucide React icons
-  - i18n-vendor: i18n dependencies
-  - translations: Dynamically loaded per language
-- Asset organization by file type (images, fonts, media)
-- Esbuild minification for production builds
-- Source maps disabled in production
-- Compression and build size optimization
-
-**Loading Strategies:**
-- Dynamic translation loading: Only the selected language loads, not all 7 languages
-- IntersectionObserver-based image lazy loading: Images load when entering viewport
-- Preconnect hints for external resources (Google Fonts, Maps, booking engine)
-- Font optimization with Google Fonts preconnect
-- Hero first image eager loading, subsequent images lazy loaded
-- Logo images eager loading for immediate brand display
-
-**Code Organization for Performance:**
-- Modular component structure enables better tree shaking
-- Separated data and logic for improved maintainability
-- Reduced main bundle size from monolithic 2,458-line file to modular ~70-line orchestration
+- Static HTML pages for legal compliance (privacy, cookies, terms, GDPR, CRIC).
+- Robots.txt and sitemap.xml.

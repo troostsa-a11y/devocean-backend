@@ -32,13 +32,23 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
     const formData = new FormData(e.target);
     
     try {
-      // Execute reCAPTCHA v3
+      // Execute reCAPTCHA v3 with ready() wrapper
       if (!window.grecaptcha) {
         throw new Error('reCAPTCHA not loaded');
       }
 
-      const recaptchaToken = await window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY, { 
-        action: 'contact_form' 
+      const recaptchaToken = await new Promise((resolve, reject) => {
+        window.grecaptcha.ready(async () => {
+          try {
+            const token = await window.grecaptcha.execute(
+              import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY, 
+              { action: 'contact_form' }
+            );
+            resolve(token);
+          } catch (error) {
+            reject(error);
+          }
+        });
       });
 
       const data = {
@@ -68,6 +78,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         setFormState({ status: 'error', message: error.error || 'Failed to send message' });
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       setFormState({ status: 'error', message: 'Network error. Please try again.' });
     }
   };

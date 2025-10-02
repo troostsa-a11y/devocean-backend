@@ -62,11 +62,21 @@ app.post("/api/contact", async (req, res) => {
       return res.status(400).json({ error: "reCAPTCHA verification failed" });
     }
 
-    // Optional: Check score for v3 (0.0 to 1.0, higher is better)
-    if (recaptchaResult.score && recaptchaResult.score < 0.5) {
-      console.warn('Low reCAPTCHA score:', recaptchaResult.score);
-      // Could reject or flag for manual review
-      // For now, we'll allow it but log it
+    // Verify action matches expected value to prevent token reuse
+    if (recaptchaResult.action !== 'contact_form') {
+      console.warn('reCAPTCHA action mismatch:', recaptchaResult.action, 'expected: contact_form');
+      return res.status(400).json({ error: "Invalid security token" });
+    }
+
+    // Check score for v3 (0.0 to 1.0, higher is better)
+    // Reject scores below 0.3 as likely bots, log scores 0.3-0.5 as suspicious
+    if (recaptchaResult.score !== undefined) {
+      if (recaptchaResult.score < 0.3) {
+        console.warn('reCAPTCHA score too low (bot detected):', recaptchaResult.score);
+        return res.status(400).json({ error: "Security verification failed. Please try again." });
+      } else if (recaptchaResult.score < 0.5) {
+        console.warn('Low reCAPTCHA score (suspicious):', recaptchaResult.score, 'from:', email);
+      }
     }
 
     // Validate required fields
@@ -283,7 +293,13 @@ const PORT = process.env.PORT || 5000;
 
 // In development, use Vite dev server
 const vite = await createViteServer({
-  server: { middlewareMode: true },
+  server: { 
+    middlewareMode: true,
+    host: true,
+    hmr: {
+      host: false
+    }
+  },
   appType: 'spa',
   root: __dirname,
 });
