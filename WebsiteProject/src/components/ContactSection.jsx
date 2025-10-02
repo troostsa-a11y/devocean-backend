@@ -252,6 +252,8 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                 id="message"
                 name="message"
                 rows={4}
+                minLength={20}
+                maxLength={2000}
                 className="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
                 placeholder={ui.form.phMsg}
               />
