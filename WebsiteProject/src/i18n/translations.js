@@ -25,7 +25,7 @@ export const UI = {
         "Secure parking • Local cafés & markets nearby",
       ],
     },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "Call", email: "Email", directions: "Directions", bookNow: "Book now" },
+    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "Call", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
     form: {
       name: "Name", email: "Email", checkin: "Check-in", checkout: "Check-out", message: "Message", send: "Send",
       consent: "By submitting you agree to be contacted about your inquiry.",
@@ -73,7 +73,7 @@ export const UI = {
         "Estacionamento seguro • Cafés e mercados locais por perto",
       ],
     },
-    contact: { headline: "Contato & Reservas", blurb: "Dúvidas, datas, pedidos especiais ou grupos – teremos prazer em ajudar.", call: "Ligar", email: "Email", directions: "Como chegar", bookNow: "Reservar" },
+    contact: { headline: "Contato & Reservas", blurb: "Dúvidas, datas, pedidos especiais ou grupos – teremos prazer em ajudar.", call: "Ligar", email: "Email", directions: "Como chegar", bookNow: "Tarifas & Disponibilidade" },
     form: {
       name: "Nome", email: "Email", checkin: "Check-in", checkout: "Check-out", message: "Mensagem", send: "Enviar",
       consent: "Ao enviar, concorda em ser contactado sobre o seu pedido.",
@@ -121,7 +121,7 @@ export const UI = {
         "Beveiligde parking • Lokale cafés & marktjes dichtbij",
       ],
     },
-    contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "Bellen", email: "E-mail", directions: "Route", bookNow: "Nu boeken" },
+    contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "Bellen", email: "E-mail", directions: "Route", bookNow: "Tarieven & Beschikbaarheid" },
     form: {
       name: "Naam", email: "E-mail", checkin: "Inchecken", checkout: "Uitchecken", message: "Bericht", send: "Verzenden",
       consent: "Door te verzenden ga je akkoord dat we contact met je opnemen over je aanvraag.",
@@ -220,7 +220,7 @@ export const UI = {
       call: "Appeler",
       email: "E-mail",
       directions: "Itinéraire",
-      bookNow: "Réserver"
+      bookNow: "Tarifs & Disponibilité"
     },
     form: {
       name: "Nom",
@@ -278,7 +278,7 @@ export const UI = {
         "Parcheggio sicuro • Caffè e mercatini locali nelle vicinanze",
       ],
     },
-    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "Chiama", email: "E-mail", directions: "Indicazioni", bookNow: "Prenota" },
+    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "Chiama", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
     form: {
       name: "Nome", email: "E-mail", checkin: "Check-in", checkout: "Check-out", message: "Messaggio", send: "Invia",
       consent: "Inviando accetti di essere contattato riguardo alla tua richiesta.",
@@ -325,7 +325,7 @@ export const UI = {
         "Bewachter Parkplatz • Lokale Cafés & Märkte in der Nähe",
       ],
     },
-    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "Anrufen", email: "E-Mail", directions: "Anfahrt", bookNow: "Buchen" },
+    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "Anrufen", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
     form: {
       name: "Name", email: "E-Mail", checkin: "Check-in", checkout: "Check-out", message: "Nachricht", send: "Senden",
       consent: "Mit dem Absenden stimmen Sie zu, kontaktiert zu werden.",
@@ -372,7 +372,7 @@ export const UI = {
         "Aparcamiento seguro • Cafés y mercados locales cercanos",
       ],
     },
-    contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "Llamar", email: "Correo", directions: "Cómo llegar", bookNow: "Reservar" },
+    contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "Llamar", email: "Correo", directions: "Cómo llegar", bookNow: "Tarifas & Disponibilidad" },
     form: {
       name: "Nombre", email: "Correo", checkin: "Check-in", checkout: "Check-out", message: "Mensaje", send: "Enviar",
       consent: "Al enviar, aceptas que te contactemos.",
