@@ -1,6 +1,6 @@
 // Base content data (images, accommodations, experiences)
 export const IMG = {
-  logo: "/Logo2.png",
+  logo: "/images/Logo2.png",
   units: {
     safari: "/photos/units/safari-tent.jpg",
     comfort: "/photos/units/comfort-tent.jpg",
