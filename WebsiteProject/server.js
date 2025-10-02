@@ -225,17 +225,15 @@ ${sanitizedMessage}
     // HTML version of auto-reply (professional format)
     const autoReplyHtml = `
 <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#0f172a;max-width:600px">
-  <p style="margin-bottom:16px">${escapeHtml(greetings[sanitizedLang] || greetings.en)} ${escapeHtml(sanitizedName)},</p>
-  <p style="margin-bottom:24px">${escapeHtml(autoReplyMessages[sanitizedLang] || autoReplyMessages.en)}</p>
-  <div style="margin-top:32px">
-    <p style="margin-bottom:12px">${escapeHtml(sincerelyText[sanitizedLang] || sincerelyText.en)},</p>
-    <a href="https://devoceanlodge.com" style="display:inline-block;margin:16px 0">
-      <img src="https://devoceanlodge.com/images/signature.png" alt="Sean's signature" style="max-width:200px;height:auto;display:block" />
-    </a>
-    <p style="margin:24px 0 0 0">
-      <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:500">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
-    </p>
-  </div>
+  <p style="margin:0 0 16px 0">${escapeHtml(greetings[sanitizedLang] || greetings.en)} ${escapeHtml(sanitizedName)},</p>
+  <p style="margin:0 0 24px 0">${escapeHtml(autoReplyMessages[sanitizedLang] || autoReplyMessages.en)}</p>
+  <p style="margin:32px 0 12px 0">${escapeHtml(sincerelyText[sanitizedLang] || sincerelyText.en)},</p>
+  <a href="https://devoceanlodge.com" style="display:inline-block;margin:16px 0;text-decoration:none">
+    <img src="https://devoceanlodge.com/images/signature.png" alt="Sean's signature" style="width:350px;max-width:100%;height:auto;display:block;border:0" />
+  </a>
+  <p style="margin:24px 0 0 0">
+    <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:500">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
+  </p>
 </div>
     `.trim();
 
