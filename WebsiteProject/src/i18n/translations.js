@@ -27,7 +27,7 @@ export const UI = {
     },
     contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "Call", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
     form: {
-      name: "Name", email: "Email", checkin: "Check-in", checkout: "Check-out", message: "Message", send: "Send",
+      name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", message: "Message", send: "Send",
       consent: "By submitting you agree to be contacted about your inquiry.",
       phName: "Your name", phEmail: "your@email.com", phMsg: "Tell us about your trip…",
       success: "Thank you! Your message has been sent. Check your email for a confirmation.",
@@ -75,7 +75,7 @@ export const UI = {
     },
     contact: { headline: "Contato & Reservas", blurb: "Dúvidas, datas, pedidos especiais ou grupos – teremos prazer em ajudar.", call: "Ligar", email: "Email", directions: "Como chegar", bookNow: "Tarifas & Disponibilidade" },
     form: {
-      name: "Nome", email: "Email", checkin: "Check-in", checkout: "Check-out", message: "Mensagem", send: "Enviar",
+      name: "Nome", email: "Email", stayLabel: "Interessado em ficar:", checkin: "De", checkout: "Até", message: "Mensagem", send: "Enviar",
       consent: "Ao enviar, concorda em ser contactado sobre o seu pedido.",
       phName: "O seu nome", phEmail: "voce@email.com", phMsg: "Conte-nos sobre a sua viagem…",
       success: "Obrigado! A sua mensagem foi enviada. Verifique o seu email para uma confirmação.",
@@ -123,7 +123,7 @@ export const UI = {
     },
     contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "Bellen", email: "E-mail", directions: "Route", bookNow: "Tarieven & Beschikbaarheid" },
     form: {
-      name: "Naam", email: "E-mail", checkin: "Inchecken", checkout: "Uitchecken", message: "Bericht", send: "Verzenden",
+      name: "Naam", email: "E-mail", stayLabel: "Geïnteresseerd in verblijf:", checkin: "Van", checkout: "Tot", message: "Bericht", send: "Verzenden",
       consent: "Door te verzenden ga je akkoord dat we contact met je opnemen over je aanvraag.",
       phName: "Je naam", phEmail: "jij@email.com", phMsg: "Vertel iets over je reis…",
       success: "Bedankt! Je bericht is verzonden. Controleer je email voor een bevestiging.",
@@ -225,8 +225,9 @@ export const UI = {
     form: {
       name: "Nom",
       email: "E-mail",
-      checkin: "Arrivée",
-      checkout: "Départ",
+      stayLabel: "Intéressé par un séjour :",
+      checkin: "Du",
+      checkout: "Au",
       message: "Message",
       send: "Envoyer",
       consent:
@@ -280,7 +281,7 @@ export const UI = {
     },
     contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "Chiama", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
     form: {
-      name: "Nome", email: "E-mail", checkin: "Check-in", checkout: "Check-out", message: "Messaggio", send: "Invia",
+      name: "Nome", email: "E-mail", stayLabel: "Interessato a soggiornare:", checkin: "Dal", checkout: "Al", message: "Messaggio", send: "Invia",
       consent: "Inviando accetti di essere contattato riguardo alla tua richiesta.",
       phName: "Il tuo nome", phEmail: "tu@email.com", phMsg: "Raccontaci del tuo viaggio…",
       success: "Grazie! Il tuo messaggio è stato inviato. Controlla la tua email per una conferma.",
@@ -327,7 +328,7 @@ export const UI = {
     },
     contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "Anrufen", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
     form: {
-      name: "Name", email: "E-Mail", checkin: "Check-in", checkout: "Check-out", message: "Nachricht", send: "Senden",
+      name: "Name", email: "E-Mail", stayLabel: "Interessiert an einem Aufenthalt:", checkin: "Von", checkout: "Bis", message: "Nachricht", send: "Senden",
       consent: "Mit dem Absenden stimmen Sie zu, kontaktiert zu werden.",
       phName: "Ihr Name", phEmail: "sie@email.com", phMsg: "Erzählen Sie uns von Ihrer Reise…",
       success: "Vielen Dank! Ihre Nachricht wurde gesendet. Überprüfen Sie Ihre E-Mail für eine Bestätigung.",
@@ -374,7 +375,7 @@ export const UI = {
     },
     contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "Llamar", email: "Correo", directions: "Cómo llegar", bookNow: "Tarifas & Disponibilidad" },
     form: {
-      name: "Nombre", email: "Correo", checkin: "Check-in", checkout: "Check-out", message: "Mensaje", send: "Enviar",
+      name: "Nombre", email: "Correo", stayLabel: "Interesado en alojarse:", checkin: "Desde", checkout: "Hasta", message: "Mensaje", send: "Enviar",
       consent: "Al enviar, aceptas que te contactemos.",
       phName: "Tu nombre", phEmail: "tu@email.com",
       phMsg: "Cuéntanos sobre tu viaje…",

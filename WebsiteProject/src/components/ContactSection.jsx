@@ -169,59 +169,62 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="relative min-w-0">
-                <label htmlFor="checkin_visible" className="text-xs sm:text-sm text-slate-600">{ui.form.checkin}</label>
-                <input
-                  id="checkin_visible"
-                  type="text"
-                  readOnly
-                  value={checkin ? toDDMMYYYY(checkin) : ""}
-                  onClick={() => {
-                    if (inRef.current?.showPicker) inRef.current.showPicker();
-                    else inRef.current?.focus();
-                  }}
-                  placeholder="dd/mm/yyyy"
-                  className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
-                />
-                <input
-                  ref={inRef}
-                  type="date"
-                  lang={dateLocale}
-                  value={checkin}
-                  onChange={(e) => setCheckin(e.target.value)}
-                  min={todayISO}
-                  className="absolute inset-0 opacity-0 pointer-events-none"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                />
-              </div>
+            <div>
+              <p className="text-sm text-slate-600 mb-2">{ui.form.stayLabel}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="relative min-w-0">
+                  <label htmlFor="checkin_visible" className="text-xs sm:text-sm text-slate-600">{ui.form.checkin}</label>
+                  <input
+                    id="checkin_visible"
+                    type="text"
+                    readOnly
+                    value={checkin ? toDDMMYYYY(checkin) : ""}
+                    onClick={() => {
+                      if (inRef.current?.showPicker) inRef.current.showPicker();
+                      else inRef.current?.focus();
+                    }}
+                    placeholder="dd/mm/yyyy"
+                    className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
+                  />
+                  <input
+                    ref={inRef}
+                    type="date"
+                    lang={dateLocale}
+                    value={checkin}
+                    onChange={(e) => setCheckin(e.target.value)}
+                    min={todayISO}
+                    className="absolute inset-0 opacity-0 pointer-events-none"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  />
+                </div>
 
-              <div className="relative min-w-0">
-                <label htmlFor="checkout_visible" className="text-xs sm:text-sm text-slate-600">{ui.form.checkout}</label>
-                <input
-                  id="checkout_visible"
-                  type="text"
-                  readOnly
-                  value={checkout ? toDDMMYYYY(checkout) : ""}
-                  onClick={() => {
-                    if (outRef.current?.showPicker) outRef.current.showPicker();
-                    else outRef.current?.focus();
-                  }}
-                  placeholder="dd/mm/yyyy"
-                  className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
-                />
-                <input
-                  ref={outRef}
-                  type="date"
-                  lang={dateLocale}
-                  value={checkout}
-                  onChange={(e) => setCheckout(e.target.value)}
-                  min={checkin || todayISO}
-                  className="absolute inset-0 opacity-0 pointer-events-none"
-                  tabIndex={-1}
-                  aria-hidden="true"
-                />
+                <div className="relative min-w-0">
+                  <label htmlFor="checkout_visible" className="text-xs sm:text-sm text-slate-600">{ui.form.checkout}</label>
+                  <input
+                    id="checkout_visible"
+                    type="text"
+                    readOnly
+                    value={checkout ? toDDMMYYYY(checkout) : ""}
+                    onClick={() => {
+                      if (outRef.current?.showPicker) outRef.current.showPicker();
+                      else outRef.current?.focus();
+                    }}
+                    placeholder="dd/mm/yyyy"
+                    className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
+                  />
+                  <input
+                    ref={outRef}
+                    type="date"
+                    lang={dateLocale}
+                    value={checkout}
+                    onChange={(e) => setCheckout(e.target.value)}
+                    min={checkin || todayISO}
+                    className="absolute inset-0 opacity-0 pointer-events-none"
+                    tabIndex={-1}
+                    aria-hidden="true"
+                  />
+                </div>
               </div>
             </div>
 
