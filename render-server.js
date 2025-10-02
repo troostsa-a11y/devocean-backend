@@ -35,7 +35,7 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
-// Verify reCAPTCHA token
+// Verify reCAPTCHA token with timeout
 async function verifyRecaptcha(token) {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   
@@ -45,10 +45,36 @@ async function verifyRecaptcha(token) {
 
   const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
   
-  const response = await fetch(verifyUrl, { method: 'POST' });
-  const data = await response.json();
+  // Add timeout to prevent hanging
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
   
-  return data;
+  try {
+    const response = await fetch(verifyUrl, { 
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
+    clearTimeout(timeoutId);
+    
+    if (!response.ok) {
+      throw new Error(`reCAPTCHA API returned ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('reCAPTCHA verification response:', JSON.stringify(data));
+    return data;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error.name === 'AbortError') {
+      console.error('reCAPTCHA verification timeout');
+      throw new Error('reCAPTCHA verification timeout');
+    }
+    console.error('reCAPTCHA verification error:', error);
+    throw error;
+  }
 }
 
 // Email endpoint for contact form
