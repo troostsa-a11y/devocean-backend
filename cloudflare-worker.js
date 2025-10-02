@@ -168,7 +168,7 @@ ${sanitizedMessage}
       en: "Thanks for reaching out to DEVOCEAN Lodge. We've received your message and will get back to you shortly.",
       pt: 'Obrigado por entrar em contato com o DEVOCEAN Lodge. Recebemos sua mensagem e entraremos em contato em breve.',
       nl: 'Bedankt voor je bericht aan DEVOCEAN Lodge. We nemen snel contact op.',
-      fr: 'Merci d'avoir contacté DEVOCEAN Lodge. Nous vous répondrons prochainement.',
+      fr: "Merci d'avoir contacté DEVOCEAN Lodge. Nous vous répondrons prochainement.",
       it: 'Grazie per aver contattato DEVOCEAN Lodge. Ti risponderemo a breve.',
       de: 'Danke für Ihre Nachricht an DEVOCEAN Lodge. Wir melden uns bald.',
       es: 'Gracias por contactarnos en DEVOCEAN Lodge. Nos pondremos en contacto pronto.',
