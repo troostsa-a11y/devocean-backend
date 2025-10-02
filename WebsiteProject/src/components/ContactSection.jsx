@@ -30,17 +30,28 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
     setFormState({ status: 'sending', message: '' });
 
     const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message'),
-      checkin_iso: formData.get('checkin_iso'),
-      checkout_iso: formData.get('checkout_iso'),
-      currency: formData.get('currency'),
-      lang: formData.get('lang'),
-    };
-
+    
     try {
+      // Execute reCAPTCHA v3
+      if (!window.grecaptcha) {
+        throw new Error('reCAPTCHA not loaded');
+      }
+
+      const recaptchaToken = await window.grecaptcha.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY, { 
+        action: 'contact_form' 
+      });
+
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+        checkin_iso: formData.get('checkin_iso'),
+        checkout_iso: formData.get('checkout_iso'),
+        currency: formData.get('currency'),
+        lang: formData.get('lang'),
+        recaptcha_token: recaptchaToken,
+      };
+
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
