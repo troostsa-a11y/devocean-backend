@@ -296,6 +296,7 @@ const vite = await createViteServer({
   server: { 
     middlewareMode: true,
     host: true,
+    allowedHosts: true,
     hmr: {
       host: false
     }
