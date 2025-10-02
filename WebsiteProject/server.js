@@ -189,13 +189,18 @@ ${sanitizedMessage}
       it: "Ciao", de: "Hallo", es: "Hola",
     };
 
-    const bookNowText = {
-      en: "Book your stay", pt: "Reservar", nl: "Boek je verblijf",
-      fr: "Réserver", it: "Prenota", de: "Jetzt buchen", es: "Reservar",
+    const ratesButtonText = {
+      en: "Rates & Availability", 
+      pt: "Tarifas & Disponibilidade", 
+      nl: "Tarieven & Beschikbaarheid",
+      fr: "Tarifs & Disponibilité", 
+      it: "Tariffe & Disponibilità", 
+      de: "Preise & Verfügbarkeit", 
+      es: "Tarifas & Disponibilidad",
     };
 
     const sincerelyText = {
-      en: "Sincerely", pt: "Atenciosamente", nl: "Met vriendelijke groet",
+      en: "Warm regards", pt: "Atenciosamente", nl: "Met vriendelijke groet",
       fr: "Cordialement", it: "Cordialmente", de: "Mit freundlichen Grüßen", es: "Cordialmente",
     };
 
@@ -219,16 +224,20 @@ ${sanitizedMessage}
 
     // HTML version of auto-reply (professional format)
     const autoReplyHtml = `
-<div style="font:16px/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#0f172a">
-  <p>${escapeHtml(greetings[sanitizedLang] || greetings.en)} ${escapeHtml(sanitizedName)},</p>
-  <p>${escapeHtml(autoReplyMessages[sanitizedLang] || autoReplyMessages.en)}</p>
-  <p style="margin:20px 0">
-    <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:10px 14px;border-radius:12px">${escapeHtml(bookNowText[sanitizedLang] || bookNowText.en)}</a>
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#0f172a;max-width:600px">
+  <p style="margin-bottom:16px">${escapeHtml(greetings[sanitizedLang] || greetings.en)} ${escapeHtml(sanitizedName)},</p>
+  <p style="margin-bottom:24px">${escapeHtml(autoReplyMessages[sanitizedLang] || autoReplyMessages.en)}</p>
+  <p style="margin:24px 0">
+    <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:500">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
   </p>
-  <div style="margin-top:20px;color:#475569">
-    <p>${escapeHtml(sincerelyText[sanitizedLang] || sincerelyText.en)},</p>
-    <p><strong>Sean</strong><br>DEVOCEAN Lodge<br><em>'You're Worth It'</em><br>
-    <a href="https://devoceanlodge.com" style="color:#9e4b13;text-decoration:none">www.devoceanlodge.com</a></p>
+  <div style="margin-top:32px">
+    <p style="margin-bottom:12px">${escapeHtml(sincerelyText[sanitizedLang] || sincerelyText.en)},</p>
+    <img src="https://devoceanlodge.com/images/signature.png" alt="Sean's signature" style="max-width:200px;height:auto;margin:16px 0" />
+    <p style="margin-top:8px;color:#64748b;font-size:14px">
+      <strong>DEVOCEAN Lodge</strong><br>
+      <em>'You're Worth It'</em><br>
+      <a href="https://devoceanlodge.com" style="color:#9e4b13;text-decoration:none">www.devoceanlodge.com</a>
+    </p>
   </div>
 </div>
     `.trim();
@@ -239,10 +248,10 @@ ${greetings[sanitizedLang] || greetings.en} ${sanitizedName},
 
 ${autoReplyMessages[sanitizedLang] || autoReplyMessages.en}
 
-${bookNowText[sanitizedLang] || bookNowText.en}: ${bookingUrl}
+${ratesButtonText[sanitizedLang] || ratesButtonText.en}: ${bookingUrl}
 
 ${sincerelyText[sanitizedLang] || sincerelyText.en},
-Sean
+
 DEVOCEAN Lodge
 'You're Worth It'
 https://devoceanlodge.com
