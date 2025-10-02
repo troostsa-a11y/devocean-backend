@@ -33,20 +33,28 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
     const formData = new FormData(e.target);
     
     try {
-      // Execute reCAPTCHA v3 with ready() wrapper
+      // Execute reCAPTCHA v3 with ready() wrapper and timeout
       if (!window.grecaptcha) {
         throw new Error('reCAPTCHA not loaded');
       }
 
       const recaptchaToken = await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          reject(new Error('reCAPTCHA timeout - please refresh the page and try again'));
+        }, 10000); // 10 second timeout
+
         window.grecaptcha.ready(async () => {
           try {
-            const token = await window.grecaptcha.execute(
-              import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY, 
-              { action: 'contact_form' }
-            );
+            const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY;
+            console.log('Executing reCAPTCHA with site key:', siteKey);
+            
+            const token = await window.grecaptcha.execute(siteKey, { action: 'contact_form' });
+            clearTimeout(timeout);
+            console.log('reCAPTCHA token generated successfully');
             resolve(token);
           } catch (error) {
+            clearTimeout(timeout);
+            console.error('reCAPTCHA execution error:', error);
             reject(error);
           }
         });
@@ -82,7 +90,8 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setFormState({ status: 'error', message: 'Network error. Please try again.' });
+      const errorMessage = error.message || 'Network error. Please try again.';
+      setFormState({ status: 'error', message: errorMessage });
     }
   };
 
