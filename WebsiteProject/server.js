@@ -29,10 +29,45 @@ function isValidEmail(email) {
   return emailRegex.test(email);
 }
 
+// Verify reCAPTCHA token
+async function verifyRecaptcha(token) {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  
+  if (!secretKey) {
+    throw new Error('RECAPTCHA_SECRET_KEY not configured');
+  }
+
+  const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
+  
+  const response = await fetch(verifyUrl, { method: 'POST' });
+  const data = await response.json();
+  
+  return data;
+}
+
 // Email endpoint for contact form
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, message, checkin_iso, checkout_iso, currency, lang } = req.body;
+    const { name, email, message, checkin_iso, checkout_iso, currency, lang, recaptcha_token } = req.body;
+
+    // Verify reCAPTCHA token
+    if (!recaptcha_token) {
+      return res.status(400).json({ error: "reCAPTCHA verification required" });
+    }
+
+    const recaptchaResult = await verifyRecaptcha(recaptcha_token);
+    
+    if (!recaptchaResult.success) {
+      console.error('reCAPTCHA verification failed:', recaptchaResult);
+      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+    }
+
+    // Optional: Check score for v3 (0.0 to 1.0, higher is better)
+    if (recaptchaResult.score && recaptchaResult.score < 0.5) {
+      console.warn('Low reCAPTCHA score:', recaptchaResult.score);
+      // Could reject or flag for manual review
+      // For now, we'll allow it but log it
+    }
 
     // Validate required fields
     if (!name || !email || !message) {
