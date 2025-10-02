@@ -48,7 +48,7 @@ async function verifyRecaptcha(token) {
 // Email endpoint for contact form
 app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, message, checkin_iso, checkout_iso, currency, lang, recaptcha_token } = req.body;
+    const { name, email, message, checkin_iso, checkout_iso, unit, currency, lang, recaptcha_token } = req.body;
 
     // Verify reCAPTCHA token
     if (!recaptcha_token) {
@@ -100,8 +100,21 @@ app.post("/api/contact", async (req, res) => {
     // Sanitize optional fields
     const sanitizedCheckin = checkin_iso ? sanitizeHeader(checkin_iso).slice(0, 20) : "";
     const sanitizedCheckout = checkout_iso ? sanitizeHeader(checkout_iso).slice(0, 20) : "";
+    const sanitizedUnit = unit ? sanitizeHeader(unit).slice(0, 100) : "";
     const sanitizedCurrency = currency ? sanitizeHeader(currency).slice(0, 10) : "EUR";
     const sanitizedLang = lang ? sanitizeHeader(lang).slice(0, 10) : "en";
+    
+    // Language code to full name mapping
+    const languageNames = {
+      en: "English",
+      pt: "Portuguese",
+      nl: "Dutch",
+      fr: "French",
+      it: "Italian",
+      de: "German",
+      es: "Spanish"
+    };
+    const fullLanguageName = languageNames[sanitizedLang] || sanitizedLang;
 
     // Create email transporter using environment secrets
     const port = parseInt(process.env.MAIL_PORT || "465");
@@ -121,17 +134,18 @@ app.post("/api/contact", async (req, res) => {
     });
 
     // Build email content
-    const checkinText = sanitizedCheckin ? `Check-in: ${sanitizedCheckin}` : "";
-    const checkoutText = sanitizedCheckout ? `Check-out: ${sanitizedCheckout}` : "";
-    const datesText = checkinText || checkoutText ? `\n\n${checkinText}\n${checkoutText}` : "";
+    const checkinText = sanitizedCheckin ? `From: ${sanitizedCheckin}` : "";
+    const checkoutText = sanitizedCheckout ? `Until: ${sanitizedCheckout}` : "";
+    const datesText = checkinText || checkoutText ? `\n${checkinText}\n${checkoutText}` : "";
+    const unitText = sanitizedUnit ? `\nPreferred unit: ${sanitizedUnit}` : "";
     
     const emailBody = `
 New contact form submission from DEVOCEAN Lodge website:
 
 Name: ${sanitizedName}
 Email: ${sanitizedEmail}
-Language: ${sanitizedLang}
-Currency: ${sanitizedCurrency}${datesText}
+Language: ${fullLanguageName}
+Currency: ${sanitizedCurrency}${datesText}${unitText}
 
 Message:
 ${sanitizedMessage}
@@ -249,7 +263,15 @@ ${sanitizedMessage}
   </tr>
   <tr>
     <td style="padding:24px 0 0 0">
-      <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background-color:#9e4b13;color:#ffffff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:500;font-size:16px">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
+      <!--[if mso]>
+      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${escapeHtml(bookingUrl)}" style="height:44px;v-text-anchor:middle;width:220px;" arcsize="18%" strokecolor="#9e4b13" fillcolor="#9e4b13">
+        <w:anchorlock/>
+        <center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:500;">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</center>
+      </v:roundrect>
+      <![endif]-->
+      <!--[if !mso]><!-->
+      <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background-color:#9e4b13;color:#ffffff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:500;font-size:16px;font-family:Arial,sans-serif">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
+      <!--<![endif]-->
     </td>
   </tr>
 </table>
