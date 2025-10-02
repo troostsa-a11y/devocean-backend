@@ -18,6 +18,7 @@ const socialIcons = {
 export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale }) {
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
+  const [unit, setUnit] = useState("");
   const [formState, setFormState] = useState({ status: 'idle', message: '' }); // idle, sending, success, error
   const inRef = useRef(null);
   const outRef = useRef(null);
@@ -73,6 +74,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         e.target.reset();
         setCheckin("");
         setCheckout("");
+        setUnit("");
       } else {
         const error = await response.json();
         setFormState({ status: 'error', message: error.error || 'Failed to send message' });
@@ -142,6 +144,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
             <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
             <input type="hidden" name="checkin_iso" value={checkin || ""} />
             <input type="hidden" name="checkout_iso" value={checkout || ""} />
+            <input type="hidden" name="unit" value={unit} />
             <input type="hidden" name="currency" value={currency} />
 
             <div>
@@ -226,6 +229,21 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                   />
                 </div>
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="unit" className="text-sm text-slate-600">{ui.form.unitLabel}</label>
+              <select
+                id="unit"
+                value={unit}
+                onChange={(e) => setUnit(e.target.value)}
+                className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
+              >
+                <option value="">-</option>
+                {ui.form.units.map((unitOption, index) => (
+                  <option key={index} value={unitOption}>{unitOption}</option>
+                ))}
+              </select>
             </div>
 
             <div>
