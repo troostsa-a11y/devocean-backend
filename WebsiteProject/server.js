@@ -227,16 +227,13 @@ ${sanitizedMessage}
 <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#0f172a;max-width:600px">
   <p style="margin-bottom:16px">${escapeHtml(greetings[sanitizedLang] || greetings.en)} ${escapeHtml(sanitizedName)},</p>
   <p style="margin-bottom:24px">${escapeHtml(autoReplyMessages[sanitizedLang] || autoReplyMessages.en)}</p>
-  <p style="margin:24px 0">
-    <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:500">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
-  </p>
   <div style="margin-top:32px">
     <p style="margin-bottom:12px">${escapeHtml(sincerelyText[sanitizedLang] || sincerelyText.en)},</p>
-    <img src="https://devoceanlodge.com/images/signature.png" alt="Sean's signature" style="max-width:200px;height:auto;margin:16px 0" />
-    <p style="margin-top:8px;color:#64748b;font-size:14px">
-      <strong>DEVOCEAN Lodge</strong><br>
-      <em>'You're Worth It'</em><br>
-      <a href="https://devoceanlodge.com" style="color:#9e4b13;text-decoration:none">www.devoceanlodge.com</a>
+    <a href="https://devoceanlodge.com" style="display:inline-block;margin:16px 0">
+      <img src="https://devoceanlodge.com/images/signature.png" alt="Sean's signature" style="max-width:200px;height:auto;display:block" />
+    </a>
+    <p style="margin:24px 0 0 0">
+      <a href="${escapeHtml(bookingUrl)}" style="display:inline-block;background:#9e4b13;color:#fff;text-decoration:none;padding:12px 24px;border-radius:8px;font-weight:500">${escapeHtml(ratesButtonText[sanitizedLang] || ratesButtonText.en)}</a>
     </p>
   </div>
 </div>
@@ -248,13 +245,12 @@ ${greetings[sanitizedLang] || greetings.en} ${sanitizedName},
 
 ${autoReplyMessages[sanitizedLang] || autoReplyMessages.en}
 
-${ratesButtonText[sanitizedLang] || ratesButtonText.en}: ${bookingUrl}
-
 ${sincerelyText[sanitizedLang] || sincerelyText.en},
 
 DEVOCEAN Lodge
-'You're Worth It'
 https://devoceanlodge.com
+
+${ratesButtonText[sanitizedLang] || ratesButtonText.en}: ${bookingUrl}
     `.trim();
 
     // Only send auto-reply if email is valid (not no-reply/bounce addresses)
