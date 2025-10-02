@@ -58,6 +58,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         message: formData.get('message'),
         checkin_iso: formData.get('checkin_iso'),
         checkout_iso: formData.get('checkout_iso'),
+        unit: formData.get('unit'),
         currency: formData.get('currency'),
         lang: formData.get('lang'),
         recaptcha_token: recaptchaToken,
