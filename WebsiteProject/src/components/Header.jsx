@@ -40,7 +40,9 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 if (window.dataLayer) {
                   window.dataLayer.push({
                     event: 'whatsapp_click',
-                    button_location: 'header_mobile'
+                    button_location: 'header_mobile',
+                    language: lang,
+                    currency: currency
                   });
                 }
               }}
