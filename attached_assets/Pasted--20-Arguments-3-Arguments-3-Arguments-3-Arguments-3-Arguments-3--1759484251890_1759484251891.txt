@@ -1,0 +1,73 @@
+(20) [Arguments(3), {…}, Arguments(3), Arguments(3), {…}, {…}, {…}, {…}, Arguments(3), Arguments(3), {…}, {…}, {…}, Arguments(2), Arguments(2), Arguments(3), Arguments(3), {…}, Arguments(3), {…}, push: ƒ]
+0
+: 
+Arguments(3) ['set', 'developer_id.dYzg1YT', true, gtm.uniqueEventId: 1, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+1
+: 
+{gtm.start: 1759483745777, event: 'gtm.js', gtm.uniqueEventId: 4}
+2
+: 
+Arguments(3) ['consent', 'default', {…}, gtm.uniqueEventId: 5, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+3
+: 
+Arguments(3) ['consent', 'default', {…}, gtm.uniqueEventId: 6, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+4
+: 
+{event: 'gtm.dom', gtm.uniqueEventId: 7}
+5
+: 
+{event: 'gtm.scrollDepth', gtm.scrollThreshold: 90, gtm.scrollUnits: 'percent', gtm.scrollDirection: 'vertical', gtm.triggers: '11', …}
+6
+: 
+{event: 'gtm.load', gtm.uniqueEventId: 14}
+7
+: 
+{event: 'gtm.scrollDepth', gtm.scrollThreshold: 90, gtm.scrollUnits: 'percent', gtm.scrollDirection: 'vertical', gtm.triggers: '18', …}
+8
+: 
+Arguments(3) ['set', 'developer_id.dY2Q2ZW', true, gtm.uniqueEventId: 21, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+9
+: 
+Arguments(3) ['consent', 'update', {…}, gtm.uniqueEventId: 22, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+10
+: 
+{event: 'cookie_consent_update', gtm.uniqueEventId: 23}
+11
+: 
+{event: 'gtm.historyChange-v2', gtm.historyChangeSource: 'replaceState', gtm.oldUrlFragment: '', gtm.newUrlFragment: '', gtm.oldHistoryState: {…}, …}
+12
+: 
+{gtm.start: 1759483748069, event: 'gtm.js', gtm.uniqueEventId: 25}
+13
+: 
+Arguments(2) ['js', Fri Oct 03 2025 11:29:08 GMT+0200 (South Africa Standard Time), gtm.uniqueEventId: 26, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+14
+: 
+Arguments(2) ['config', 'G-8FHW1T6F9F', gtm.uniqueEventId: 27, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+15
+: 
+Arguments(3) ['event', 'begin_checkout', {…}, gtm.uniqueEventId: 28, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+16
+: 
+Arguments(3) ['event', 'add_payment_info', {…}, gtm.uniqueEventId: 29, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+17
+: 
+{event: 'gtm.historyChange-v2', gtm.historyChangeSource: 'pushState', gtm.oldUrlFragment: '', gtm.newUrlFragment: '', gtm.oldHistoryState: {…}, …}
+18
+: 
+Arguments(3) ['event', 'purchase', {…}, gtm.uniqueEventId: 31, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+19
+: 
+{event: 'gtm.historyChange-v2', gtm.historyChangeSource: 'replaceState', gtm.oldUrlFragment: '', gtm.newUrlFragment: '', gtm.oldHistoryState: {…}, …}
+push
+: 
+ƒ ()
+length
+: 
+20
+na
+: 
+(...)
+[[Prototype]]
+: 
+Array(0)
