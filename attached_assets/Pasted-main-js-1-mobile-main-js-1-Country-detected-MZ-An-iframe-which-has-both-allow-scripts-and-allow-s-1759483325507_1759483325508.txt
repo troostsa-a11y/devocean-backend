@@ -1,0 +1,707 @@
+main.js:1 mobile
+main.js:1 Country detected: MZ
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+main.js:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+e.insertBefore @ main.js:1
+e.insertBefore @ main.js:1
+yi @ main.js:1
+_i @ main.js:1
+zi @ main.js:1
+Oi @ main.js:1
+Yi @ main.js:1
+e.insert @ main.js:1
+e.createEmbeddedView @ main.js:1
+e._updateView @ main.js:1
+set @ main.js:1
+Ea @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+pl @ main.js:1
+Dl @ main.js:1
+(anonymous) @ main.js:1
+updateDirectives @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+e.detectChanges @ main.js:1
+(anonymous) @ main.js:1
+e.tick @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+next @ main.js:1
+i @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+t.next @ main.js:1
+t.emit @ main.js:1
+Wn @ main.js:1
+Pn @ main.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+Promise.then
+(anonymous) @ polyfills.js:1
+t @ polyfills.js:1
+N.t.then @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+s @ main.js:1
+a @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+Promise.then
+(anonymous) @ polyfills.js:1
+t @ polyfills.js:1
+N.t.then @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+s @ main.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+ce @ main.js:1
+e.getCountryFromIP @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+ce @ main.js:1
+e.setFallbackCountry @ main.js:1
+e @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Be @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Be @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Sa @ main.js:1
+Ra @ main.js:1
+Pa @ main.js:1
+wa @ main.js:1
+sl @ main.js:1
+rl @ main.js:1
+Al @ main.js:1
+t.create @ main.js:1
+t.create @ main.js:1
+e.bootstrap @ main.js:1
+(anonymous) @ main.js:1
+e._moduleDoBootstrap @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+t.then @ polyfills.js:1
+e.appInitializer @ main.js:1
+e.runInitializers @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+e.bootstrapModuleFactory @ main.js:1
+zUnb @ main.js:1
+l @ runtime.js:1
+0 @ main.js:1
+l @ runtime.js:1
+n @ runtime.js:1
+r @ runtime.js:1
+(anonymous) @ main.js:1
+/api/v1/bv3/orders/pixel/search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-10-03&checkout_date=2025-10-04&day_count=1&room_count=1&total_adult=2&total_child=0&rooms%5B0%5D%5Badult_count%5D=2&rooms%5B0%5D%5Bguest_count%5D=2&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=2&guest_rooms%5B0%5D%5Bguest_count%5D=2&guest_rooms%5B0%5D%5Bchild_count%5D=0&guest_rooms%5B0%5D%5Bchild_ages%5D=undefined&pixel_page=search&modalOpen=1:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+/api/v1/bv3/orders/pixel/search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-29&checkout_date=2025-11-30&day_count=1&room_count=1&total_adult=2&total_child=0&rooms%5B0%5D%5Badult_count%5D=2&rooms%5B0%5D%5Bguest_count%5D=2&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=2&guest_rooms%5B0%5D%5Bguest_count%5D=2&guest_rooms%5B0%5D%5Bchild_count%5D=0&&pixel_page=search&search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_count%22:1,%22room_count%22:1,%22total_adult%22:2,%22total_child%22:0,%22rooms%22:%5B%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%5D,%22guest_rooms%22:%7B%220%22:%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%7D%7D:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+main.js:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+e.insertBefore @ main.js:1
+e.insertBefore @ main.js:1
+yi @ main.js:1
+_i @ main.js:1
+zi @ main.js:1
+Oi @ main.js:1
+Yi @ main.js:1
+e.insert @ main.js:1
+e.createEmbeddedView @ main.js:1
+e._updateView @ main.js:1
+set @ main.js:1
+Ea @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+pl @ main.js:1
+Dl @ main.js:1
+(anonymous) @ main.js:1
+updateDirectives @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+e.detectChanges @ main.js:1
+(anonymous) @ main.js:1
+e.tick @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+next @ main.js:1
+i @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+t.next @ main.js:1
+t.emit @ main.js:1
+Wn @ main.js:1
+onHasTask @ main.js:1
+t.hasTask @ polyfills.js:1
+t._updateTaskCount @ polyfills.js:1
+e._updateTaskCount @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+main.js:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+e.insertBefore @ main.js:1
+e.insertBefore @ main.js:1
+yi @ main.js:1
+_i @ main.js:1
+zi @ main.js:1
+Oi @ main.js:1
+Yi @ main.js:1
+e.insert @ main.js:1
+e.createEmbeddedView @ main.js:1
+e._updateView @ main.js:1
+set @ main.js:1
+Ea @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+pl @ main.js:1
+Dl @ main.js:1
+(anonymous) @ main.js:1
+updateDirectives @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+e.detectChanges @ main.js:1
+(anonymous) @ main.js:1
+e.tick @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+next @ main.js:1
+i @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+t.next @ main.js:1
+t.emit @ main.js:1
+Wn @ main.js:1
+onHasTask @ main.js:1
+t.hasTask @ polyfills.js:1
+t._updateTaskCount @ polyfills.js:1
+e._updateTaskCount @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+/api/v1/bv3/orders/pixel/payment?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-29&checkout_date=2025-11-30&day_count=1&room_count=1&total_adult=2&total_child=0&rooms%5B0%5D%5Badult_count%5D=2&rooms%5B0%5D%5Bguest_count%5D=2&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=2&guest_rooms%5B0%5D%5Bguest_count%5D=2&guest_rooms%5B0%5D%5Bchild_count%5D=0&&pixel_page=payment&o_number=R811671493&o_token=92ce43e44a58687fc0e9af716f484d24:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+main.js:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+e.insertBefore @ main.js:1
+e.insertBefore @ main.js:1
+yi @ main.js:1
+_i @ main.js:1
+zi @ main.js:1
+Oi @ main.js:1
+Yi @ main.js:1
+e.insert @ main.js:1
+e.createEmbeddedView @ main.js:1
+e._updateView @ main.js:1
+set @ main.js:1
+Ea @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+pl @ main.js:1
+Dl @ main.js:1
+(anonymous) @ main.js:1
+updateDirectives @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+e.detectChanges @ main.js:1
+(anonymous) @ main.js:1
+e.tick @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+next @ main.js:1
+i @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+t.next @ main.js:1
+t.emit @ main.js:1
+Wn @ main.js:1
+onHasTask @ main.js:1
+t.hasTask @ polyfills.js:1
+t._updateTaskCount @ polyfills.js:1
+e._updateTaskCount @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+c @ rocket-loader.min.js:1
+summary?success=1&api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-10-03&…:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+The resource <URL> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+search?modalOpen=1:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/search?search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_count%22:1,%22room_count%22:1,%22total_adult%22:2,%22total_child%22:0,%22rooms%22:%5B%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%5D,%22guest_rooms%22:%7B%220%22:%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%7D%7D:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/search?search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_count%22:1,%22room_count%22:1,%22total_adult%22:2,%22total_child%22:0,%22rooms%22:%5B%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%5D,%22guest_rooms%22:%7B%220%22:%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%7D%7D:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/search?search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_count%22:1,%22room_count%22:1,%22total_adult%22:2,%22total_child%22:0,%22rooms%22:%5B%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%5D,%22guest_rooms%22:%7B%220%22:%7B%22adult_count%22:2,%22guest_count%22:2,%22child_count%22:0,%22child_ages%22:%5B%5D%7D%7D%7D:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/payment:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/payment:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/payment:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/payment:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/summary?success=1&o_number=R811671493&o_token=92ce43e44a58687fc0e9af716f484d24:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/summary?o_number=R811671493&o_token=92ce43e44a58687fc0e9af716f484d24:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+/bv3/summary?o_number=R811671493&o_token=92ce43e44a58687fc0e9af716f484d24:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+VM1404:929 Blocked form submission to 'https://www.facebook.com/tr/' because the form's frame is sandboxed and the 'allow-forms' permission is not set.
+HTMLFormElement.submit @ VM1404:929
+Sr.HTMLFormElement.submit @ VM1404:662
+(anonymous) @ VM1405 fbevents.js:242
+g @ VM1405 fbevents.js:286
+c @ VM1400 rocket-loader.min.js:1
+e @ VM1405 fbevents.js:242
+o @ VM1405 fbevents.js:126
+x @ VM1405 fbevents.js:240
+c @ VM1405 fbevents.js:48
+o @ VM1405 fbevents.js:236
+value @ VM1405 fbevents.js:116
+value @ VM1405 fbevents.js:116
+value @ VM1405 fbevents.js:116
+value @ VM1405 fbevents.js:116
+Ba @ VM1405 fbevents.js:378
+Sa @ VM1405 fbevents.js:378
+(anonymous) @ VM1405 fbevents.js:378
+(anonymous) @ VM1405 fbevents.js:128
+s @ VM1405 fbevents.js:286
+each @ VM1405 fbevents.js:286
+value @ VM1405 fbevents.js:128
+value @ VM1405 fbevents.js:128
+value @ VM1405 fbevents.js:116
+plugin @ VM1407 231778828344239:207
+value @ VM1405 fbevents.js:206
+Xa.a.registerPlugin @ VM1405 fbevents.js:378
+(anonymous) @ VM1407 231778828344239:146
