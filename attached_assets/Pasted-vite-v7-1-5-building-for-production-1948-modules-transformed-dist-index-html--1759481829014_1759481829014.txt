@@ -1,0 +1,55 @@
+vite v7.1.5 building for production...
+✓ 1948 modules transformed.
+dist/index.html                           12.79 kB │ gzip:  4.33 kB
+dist/assets/css/index-DIdFrwfB.css        17.87 kB │ gzip:  4.46 kB
+dist/assets/js/vendor-CUmjr5gI.js          9.58 kB │ gzip:  4.05 kB
+dist/assets/js/translations-DTPBjQaq.js   36.44 kB │ gzip: 12.89 kB
+dist/assets/js/index-BJyrYRSd.js          37.22 kB │ gzip: 11.08 kB
+dist/assets/js/motion-BYjMBwY2.js        108.53 kB │ gzip: 35.63 kB
+dist/assets/js/react-vendor-Df9a-WKl.js  150.74 kB │ gzip: 48.29 kB
+✓ built in 34.23s
+npm notice
+npm notice New major version of npm available! 10.9.3 -> 11.6.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.6.1
+npm notice To update run: npm install -g npm@11.6.1
+npm notice
+PS C:\development\websiteproject> npm install -g npm@11.6.1
+
+added 1 package in 16s
+
+28 packages are looking for funding
+  run `npm fund` for details
+PS C:\development\websiteproject> npm fund
+devoceanlodge@0.0.1
++-- https://dotenvx.com
+|   `-- dotenv@17.2.3
++-- https://opencollective.com/express
+| | `-- express@4.21.2
+| +-- https://github.com/sponsors/sindresorhus
+| |   `-- merge-descriptors@1.0.3, @alloc/quick-lru@5.2.0, binary-extensions@2.3.0, string-width@5.1.2
+| +-- https://github.com/sponsors/ljharb
+| |   `-- qs@6.13.0, side-channel@1.1.0, object-inspect@1.13.4, side-channel-list@1.0.0, side-channel-map@1.0.1, call-bound@1.0.4, function-bind@1.1.2, get-intrinsic@1.3.0, gopd@1.2.0, has-symbols@1.1.0, side-channel-weakmap@1.0.2, resolve@1.22.10, is-core-module@2.16.1, supports-preserve-symlinks-flag@1.0.0
+| `-- https://github.com/sponsors/feross
+|     `-- safe-buffer@5.2.1, run-parallel@1.2.0, queue-microtask@1.2.3
++-- https://locize.com
+|   `-- i18next@25.5.2
++-- https://opencollective.com/postcss/
+| | `-- autoprefixer@10.4.21, postcss@8.5.6, postcss-js@4.0.1, postcss-load-config@4.0.2, postcss-nested@6.2.0
+| `-- https://github.com/sponsors/rawify
+|     `-- fraction.js@4.3.7
++-- https://github.com/vitejs/vite?sponsor=1
+| | `-- vite@7.1.5
+| +-- https://github.com/sponsors/jonschlinkert
+| |   `-- picomatch@4.0.3, picomatch@2.3.1
+| `-- https://github.com/sponsors/SuperchupuDev
+|     `-- tinyglobby@0.2.15
++-- https://opencollective.com/babel
+| | `-- @babel/core@7.28.4
+| `-- https://opencollective.com/browserslist
+|     `-- browserslist@4.26.0, caniuse-lite@1.0.30001741, update-browserslist-db@1.1.3
++-- https://paulmillr.com/funding/
+|   `-- chokidar@3.6.0
++-- https://github.com/sponsors/antonk52
+|   `-- lilconfig@3.1.3
+`-- https://github.com/sponsors/isaacs
+    `-- glob@10.4.5, foreground-child@3.3.1, signal-exit@4.1.0, jackspeak@3.4.3, minimatch@9.0.5, path-scurry@1.11.1
