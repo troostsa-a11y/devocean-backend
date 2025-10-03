@@ -67,8 +67,8 @@ export default function App() {
       />
 
       {/* Page content */}
-      <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} />
-      <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} />
+      <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
+      <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
       <ExperiencesSection experiences={experiences} ui={ui} />
       <TodoSection ui={ui} />
       <GallerySection ui={ui} />

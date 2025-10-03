@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import LazyImage from './LazyImage';
 
-export default function AccommodationsSection({ units, ui, bookUrl }) {
+export default function AccommodationsSection({ units, ui, bookUrl, lang, currency }) {
   return (
     <section id="stay" className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex items-end justify-between gap-6">
@@ -16,6 +16,16 @@ export default function AccommodationsSection({ units, ui, bookUrl }) {
           rel="noreferrer"
           className="btn-cta hidden md:inline-block px-4 py-2 rounded-xl bg-[#9e4b13] text-white shadow hover:shadow-md"
           aria-label={ui.contact.bookNow}
+          onClick={() => {
+            if (window.dataLayer) {
+              window.dataLayer.push({
+                event: 'reservation_complete',
+                button_location: 'accommodations_section',
+                language: lang,
+                currency: currency
+              });
+            }
+          }}
         >
           {ui.contact.bookNow}
         </a>

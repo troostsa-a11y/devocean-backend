@@ -30,7 +30,21 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
           {/* Mobile: Icon-only contact */}
           <div className="flex md:hidden items-center gap-3">
-            <a href="https://wa.me/258844182252" target="_blank" rel="noreferrer" className="flex items-center gap-1" aria-label="WhatsApp">
+            <a 
+              href="https://wa.me/258844182252" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="flex items-center gap-1" 
+              aria-label="WhatsApp"
+              onClick={() => {
+                if (window.dataLayer) {
+                  window.dataLayer.push({
+                    event: 'whatsapp_click',
+                    button_location: 'header_mobile'
+                  });
+                }
+              }}
+            >
               <FaWhatsapp size={16} />
             </a>
             <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1" aria-label="Email">
@@ -106,6 +120,16 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 target="_blank"
                 rel="noreferrer"
                 className="btn-cta px-4 py-2 rounded-xl bg-[#9e4b13] text-white"
+                onClick={() => {
+                  if (window.dataLayer) {
+                    window.dataLayer.push({
+                      event: 'reservation_complete',
+                      button_location: 'header_desktop',
+                      language: lang,
+                      currency: currency
+                    });
+                  }
+                }}
               >
                 {ui.contact.bookNow}
               </a>
@@ -149,7 +173,17 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               target="_blank"
               rel="noreferrer"
               className="block m-4 text-center btn-cta px-4 py-2 rounded-xl bg-[#9e4b13] text-white"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => {
+                setMenuOpen(false);
+                if (window.dataLayer) {
+                  window.dataLayer.push({
+                    event: 'reservation_complete',
+                    button_location: 'header_mobile',
+                    language: lang,
+                    currency: currency
+                  });
+                }
+              }}
             >
               {ui.contact.bookNow}
             </a>

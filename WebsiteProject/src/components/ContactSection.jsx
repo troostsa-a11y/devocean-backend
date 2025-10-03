@@ -80,6 +80,19 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
 
       if (response.ok) {
         setFormState({ status: 'success', message: ui.form.success || 'Message sent successfully!' });
+        
+        // GTM event: contact form submission
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            event: 'contact_submit',
+            form_type: 'contact',
+            language: lang,
+            currency: currency,
+            has_dates: !!(checkin && checkout),
+            has_unit: !!unit
+          });
+        }
+        
         e.target.reset();
         setCheckin("");
         setCheckout("");
@@ -121,6 +134,16 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
             rel="noreferrer"
             className="btn-cta mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#9e4b13] text-white shadow hover:shadow-md"
             aria-label={ui.contact.bookNow}
+            onClick={() => {
+              if (window.dataLayer) {
+                window.dataLayer.push({
+                  event: 'reservation_complete',
+                  button_location: 'contact_section',
+                  language: lang,
+                  currency: currency
+                });
+              }
+            }}
           >
             <CalendarCheck2 size={18} />
             {ui.contact.bookNow}

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Star } from 'lucide-react';
 import LazyImage from './LazyImage';
 
-export default function HeroSection({ images = [], ui, bookUrl }) {
+export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
   const [idx, setIdx] = useState(0);
   const list = Array.isArray(images) ? images.filter(Boolean) : [];
 
@@ -47,6 +47,16 @@ export default function HeroSection({ images = [], ui, bookUrl }) {
             target="_blank"
             rel="noreferrer"
             className="btn-cta w-full sm:w-auto px-5 py-3 rounded-2xl bg-[#9e4b13] text-white shadow hover:shadow-lg text-center"
+            onClick={() => {
+              if (window.dataLayer) {
+                window.dataLayer.push({
+                  event: 'reservation_complete',
+                  button_location: 'hero_section',
+                  language: lang,
+                  currency: currency
+                });
+              }
+            }}
           >
             {ui.hero.ctaPrimary}
           </a>
