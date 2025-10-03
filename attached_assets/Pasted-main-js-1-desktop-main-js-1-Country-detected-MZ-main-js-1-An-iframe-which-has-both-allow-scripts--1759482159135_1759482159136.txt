@@ -1,0 +1,156 @@
+main.js:1 desktop
+main.js:1 Country detected: MZ
+main.js:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+e.insertBefore @ main.js:1
+/api/v1/bv3/orders/pixel/search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-10-03&checkout_date=2025-10-04&day_count=1&room_count=1&total_adult=2&total_child=0&rooms%5B0%5D%5Badult_count%5D=2&rooms%5B0%5D%5Bguest_count%5D=2&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=2&guest_rooms%5B0%5D%5Bguest_count%5D=2&guest_rooms%5B0%5D%5Bchild_count%5D=0&guest_rooms%5B0%5D%5Bchild_ages%5D=undefined&pixel_page=search&o_number=R920593259&o_token=8482d03c511283797421ffc7c853f043&locale=en-US&currency=USD&_gl=1*d02v1z*_gcl_au*MjEwNjk1ODg0My4xNzU5NDQyNjE2:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+/api/v1/bv3/orders/pixel/search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-10-03&checkout_date=2025-10-04&day_count=1&room_count=1&total_adult=2&total_child=0&rooms%5B0%5D%5Badult_count%5D=2&rooms%5B0%5D%5Bguest_count%5D=2&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=2&guest_rooms%5B0%5D%5Bguest_count%5D=2&guest_rooms%5B0%5D%5Bchild_count%5D=0&guest_rooms%5B0%5D%5Bchild_ages%5D=undefined&pixel_page=search&o_number=R920593259&o_token=8482d03c511283797421ffc7c853f043&locale=en-US&currency=USD&_gl=1*d02v1z*_gcl_au*MjEwNjk1ODg0My4xNzU5NDQyNjE2:4 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-u1HS/DCenUrUetJhRsijAWKAGYAJRWbOhBL4158tWLY='), or a nonce ('nonce-...') is required to enable inline execution.
+
+/api/v1/bv3/orders/pixel/search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-10-03&checkout_date=2025-10-04&day_count=1&room_count=1&total_adult=2&total_child=0&rooms%5B0%5D%5Badult_count%5D=2&rooms%5B0%5D%5Bguest_count%5D=2&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=2&guest_rooms%5B0%5D%5Bguest_count%5D=2&guest_rooms%5B0%5D%5Bchild_count%5D=0&guest_rooms%5B0%5D%5Bchild_ages%5D=undefined&pixel_page=search&o_number=R920593259&o_token=8482d03c511283797421ffc7c853f043&locale=en-US&currency=USD&_gl=1*d02v1z*_gcl_au*MjEwNjk1ODg0My4xNzU5NDQyNjE2:5 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-YpGMMt9+OAzvGhhnEnlHDL0bmi6HGx+FAt6HObYh6nA='), or a nonce ('nonce-...') is required to enable inline execution.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+nik2/:823 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-rnafOkE8P7p2EgtBZNqzOUWTRNoNOB2UXVafzLk4/0I='), or a nonce ('nonce-...') is required to enable inline execution.
+
+nik2/:823 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-STzfpn01fXD07MkuiA/kIClgFlTf9/020MPsypaUEbQ='), or a nonce ('nonce-...') is required to enable inline execution.
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+rocket-loader.min.js:1 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-tisphMgrqWq4Gtj3tWYebfAqpCaROtIJaHhQQ1C/8Fo='), or a nonce ('nonce-...') is required to enable inline execution.
+
+rocket-loader.min.js:1 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-QGrwNptG83kiQRFGNCGoeS6k4YMGoYPRz/8g+jQAxb4='), or a nonce ('nonce-...') is required to enable inline execution.
+
+rocket-loader.min.js:1 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-Yj2OiaaaA5aD2kROKDJ768G2w5UA9gCb6ShsIt4RyYA='), or a nonce ('nonce-...') is required to enable inline execution.
+
+rocket-loader.min.js:1 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-2KLWL8qokGJOovod7Ft11LddHUevMjiI08uQlxIQD/o='), or a nonce ('nonce-...') is required to enable inline execution.
+
+rocket-loader.min.js:1 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-AbpHGcgLb+kRsJGnwFEktk7uzpZOCcBY74+YBdrKVGs='), or a nonce ('nonce-...') is required to enable inline execution.
+
+rocket-loader.min.js:1 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-Y4S+KdCMTRgLq9Z6M1+0Pzis/eH391qiTTBIKIYvr8Y='), or a nonce ('nonce-...') is required to enable inline execution.
+
+vcd15cbe7772f49c399c6a5babf22c1241717689176015:1 [Report Only] Refused to connect to 'https://book.devoceanlodge.com/cdn-cgi/rum?' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+gtm.js?id=GTM-TNMZ72&l=hrBv3DataLayer:827 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-ezSWHEOAWwrIxevqcm5Z+4N98RoiHsCJpayTOYr6iKY='), or a nonce ('nonce-...') is required to enable inline execution.
+
+vcd15cbe7772f49c399c6a5babf22c1241717689176015:1 [Report Only] Refused to connect to 'https://book.devoceanlodge.com/cdn-cgi/rum?' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+vcd15cbe7772f49c399c6a5babf22c1241717689176015:1 [Report Only] Refused to connect to 'https://book.devoceanlodge.com/cdn-cgi/rum?' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-29&checkout_da…:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+nik2/?id=G-6VSN8FE1ET&cx=c&gtm=4e5a11:936 Blocked form submission to 'https://www.facebook.com/tr/' because the form's frame is sandboxed and the 'allow-forms' permission is not set.
+HTMLFormElement.submit @ nik2/?id=G-6VSN8FE1ET&cx=c&gtm=4e5a11:936
+search?search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_co…:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+main.js:1 mobile
+search?search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_co…:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+search?search=%7B%22checkin_date%22:%222025-11-29%22,%22checkout_date%22:%222025-11-30%22,%22day_co…:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
