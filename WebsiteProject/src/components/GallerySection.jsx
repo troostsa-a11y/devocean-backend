@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
 
@@ -8,7 +8,7 @@ export default function GallerySection({ ui }) {
       <h2 className="text-3xl md:text-4xl font-bold">{ui.galleryHeading}</h2>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
         {IMG.gallery.map((src, i) => (
-          <motion.div
+          <m.div
             key={i}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -20,7 +20,7 @@ export default function GallerySection({ ui }) {
               alt={`DEVOCEAN Lodge gallery ${i + 1}`}
               className="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition"
             />
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>

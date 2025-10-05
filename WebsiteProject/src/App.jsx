@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { LazyMotion, domAnimation } from 'framer-motion';
 import { useLocale } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
@@ -55,32 +56,34 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header with topbar (fixed via CSS) */}
-      <Header
-        ui={ui}
-        lang={lang}
-        currency={currency}
-        onLangChange={setLang}
-        onCurrencyChange={setCurrency}
-        bookUrl={bookUrl}
-      />
+    <LazyMotion features={domAnimation} strict>
+      <div className="min-h-screen flex flex-col">
+        {/* Header with topbar (fixed via CSS) */}
+        <Header
+          ui={ui}
+          lang={lang}
+          currency={currency}
+          onLangChange={setLang}
+          onCurrencyChange={setCurrency}
+          bookUrl={bookUrl}
+        />
 
-      {/* Page content */}
-      <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
-      <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
-      <ExperiencesSection experiences={experiences} ui={ui} />
-      <TodoSection ui={ui} />
-      <GallerySection ui={ui} />
-      <LocationSection ui={ui} />
-      <ContactSection
-        ui={ui}
-        lang={lang}
-        currency={currency}
-        bookUrl={bookUrl}
-        dateLocale={dateLocale}
-      />
-      <Footer units={units} experiences={experiences} ui={ui} />
-    </div>
+        {/* Page content */}
+        <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
+        <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
+        <ExperiencesSection experiences={experiences} ui={ui} />
+        <TodoSection ui={ui} />
+        <GallerySection ui={ui} />
+        <LocationSection ui={ui} />
+        <ContactSection
+          ui={ui}
+          lang={lang}
+          currency={currency}
+          bookUrl={bookUrl}
+          dateLocale={dateLocale}
+        />
+        <Footer units={units} experiences={experiences} ui={ui} />
+      </div>
+    </LazyMotion>
   );
 }

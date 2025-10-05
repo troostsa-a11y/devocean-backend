@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { EXPERIENCE_OPERATORS } from '../data/content';
 import LazyImage from './LazyImage';
 
@@ -11,7 +11,7 @@ export default function ExperiencesSection({ experiences, ui }) {
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {experiences.map((c, idx) => (
-            <motion.div
+            <m.div
               key={c.key}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -26,7 +26,7 @@ export default function ExperiencesSection({ experiences, ui }) {
                 <h3 className="font-semibold">{c.title}</h3>
                 <p className="mt-1 text-sm text-slate-600">{c.desc}</p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 

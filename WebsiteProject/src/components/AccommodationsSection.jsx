@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import LazyImage from './LazyImage';
 
@@ -33,7 +33,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
 
       <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {units.map((u, idx) => (
-          <motion.div
+          <m.div
             key={u.key}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                 </ul>
               </details>
             </div>
-          </motion.div>
+          </m.div>
         ))}
       </div>
     </section>
