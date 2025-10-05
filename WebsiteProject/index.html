@@ -7,6 +7,38 @@
   <meta name="theme-color" content="#9e4b13" />
   <title>DEVOCEAN Lodge | Ponta do Ouro, Mozambique – Eco-friendly stays near the beach</title>
 
+  <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // EU+UK = denied by default
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted',
+      region: [
+        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
+        'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB'
+      ]
+    });
+
+    // Everywhere else = granted
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted'
+    });
+  </script>
+
   <!-- Perf hints for tag loaders & external services -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
   <link rel="preconnect" href="https://www.google.com" crossorigin>
@@ -115,38 +147,6 @@
       // Detect engagement via time on page (20 seconds)
       setTimeout(fireEngagement, 20000);
     })();
-  </script>
-
-  <!-- Consent Mode v2 Defaults (MUST be before GTM) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-
-    // EU+UK = denied by default
-    gtag('consent', 'default', {
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'denied',
-      functionality_storage: 'granted',
-      personalization_storage: 'granted',
-      security_storage: 'granted',
-      region: [
-        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
-        'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB'
-      ]
-    });
-
-    // Everywhere else = granted
-    gtag('consent', 'default', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'granted',
-      analytics_storage: 'granted',
-      functionality_storage: 'granted',
-      personalization_storage: 'granted',
-      security_storage: 'granted'
-    });
   </script>
 
   <!-- Google Tag Manager (GTM-532W3HH2) - Delayed 4s for performance -->
