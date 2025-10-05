@@ -22,28 +22,48 @@ This guide shows you how to configure your Google Tag Manager container to only 
 
 ## 📋 How It Works
 
-The code I added to your website now fires a `user_engaged` event when:
+The code I added to your website now fires these events:
+
+**`user_engaged` event** fires when:
 1. User scrolls past 25% of the page, OR
 2. User clicks anywhere, OR  
 3. User stays on page for 10 seconds
 
-You'll configure GTM tags to wait for this event before loading heavy scripts.
+**`marketing_allowed` event** (NEW) fires when:
+- BOTH user engagement AND ad consent are granted
+- This ensures marketing scripts respect GDPR/consent while optimizing performance
+
+You can configure GTM tags to use either:
+- **Option A (Recommended):** `marketing_allowed` trigger (waits for both consent + engagement)
+- **Option B:** `user_engaged` trigger (just waits for engagement, consent handled separately)
 
 ---
 
 ## 🔧 GTM Configuration Steps
 
-### Step 1: Create the User Engaged Trigger
+### Step 1: Create the Optimization Triggers
 
+**Option A - Recommended (Consent + Engagement):**
 1. **Log into Google Tag Manager** (https://tagmanager.google.com)
 2. Go to your **GTM-532W3HH2** container
 3. Click **Triggers** → **New**
-4. Name it: `User Engaged`
+4. Name it: `Marketing Allowed`
 5. **Trigger Configuration:**
+   - Trigger Type: **Custom Event**
+   - Event name: `marketing_allowed`
+   - This trigger fires on: **All Custom Events**
+6. **Save**
+
+**Option B - Alternative (Just Engagement):**
+1. Click **Triggers** → **New**
+2. Name it: `User Engaged`
+3. **Trigger Configuration:**
    - Trigger Type: **Custom Event**
    - Event name: `user_engaged`
    - This trigger fires on: **All Custom Events**
-6. **Save**
+4. **Save**
+
+💡 **Recommendation:** Use `Marketing Allowed` for better GDPR compliance - it ensures marketing scripts only load when user has both engaged AND consented.
 
 ---
 
@@ -70,16 +90,16 @@ For EACH tag identified above:
 2. **Look at the Triggering section**
 3. If it says "All Pages" or "Container Loaded":
    - Click the trigger
-   - **Change to:** `User Engaged` (the trigger you created)
+   - **Change to:** `Marketing Allowed` (recommended) OR `User Engaged`
 4. **Save**
 
 **Example for Google Ads tag:**
 - Before: Fires on "All Pages"  
-- After: Fires on "User Engaged"
+- After: Fires on "Marketing Allowed"
 
 **Example for Facebook Pixel:**
 - Before: Fires on "Container Loaded"
-- After: Fires on "User Engaged"
+- After: Fires on "Marketing Allowed"
 
 ---
 
@@ -100,9 +120,10 @@ For EACH tag identified above:
 3. **Observe the timeline:**
    - ✅ Google Analytics fires immediately (good)
    - ✅ Google Ads/Facebook tags are "Not Fired" initially
-   - **Scroll down 25%** or **click something**
+   - **Accept cookies** (if prompted) AND **scroll down 25%** or **click something**
    - ✅ `user_engaged` event fires
-   - ✅ Google Ads/Facebook tags fire after engagement
+   - ✅ `marketing_allowed` event fires (after both consent + engagement)
+   - ✅ Google Ads/Facebook tags fire after marketing_allowed event
 
 ### In PageSpeed Insights:
 
