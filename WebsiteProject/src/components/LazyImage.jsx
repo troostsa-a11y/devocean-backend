@@ -9,20 +9,13 @@ export default function LazyImage({
   placeholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f3f4f6" width="400" height="300"/%3E%3C/svg%3E',
   ...props
 }) {
-  const [desktopSrc, setDesktopSrc] = useState(placeholder);
-  const [mobileSrc, setMobileSrc] = useState(placeholder);
+  const [desktopSrc, setDesktopSrc] = useState(loading === 'eager' ? src : placeholder);
+  const [mobileSrc, setMobileSrc] = useState(loading === 'eager' && srcMobile ? srcMobile : placeholder);
   const [imageLoaded, setImageLoaded] = useState(false);
   const imgRef = useRef(null);
 
   useEffect(() => {
-    if (!src) return;
-
-    // For eager loading, load immediately
-    if (loading === 'eager') {
-      setDesktopSrc(src);
-      if (srcMobile) setMobileSrc(srcMobile);
-      return;
-    }
+    if (!src || loading === 'eager') return;
 
     // For lazy loading, use IntersectionObserver
     const observer = new IntersectionObserver(
@@ -53,7 +46,9 @@ export default function LazyImage({
   if (srcMobile) {
     return (
       <picture>
-        <source media="(max-width: 768px)" srcSet={mobileSrc} />
+        {mobileSrc && mobileSrc !== placeholder && (
+          <source media="(max-width: 768px)" srcSet={mobileSrc} />
+        )}
         <img
           ref={imgRef}
           src={desktopSrc}
