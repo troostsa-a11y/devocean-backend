@@ -39,6 +39,41 @@
     });
   </script>
 
+  <!-- User Engagement Detection for GTM optimization -->
+  <script>
+    (function() {
+      let engaged = false;
+      
+      function fireEngagement() {
+        if (engaged) return;
+        engaged = true;
+        
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'user_engaged',
+          engagement_type: 'interaction'
+        });
+      }
+      
+      // Detect engagement via scroll (past 25% of page)
+      let scrollFired = false;
+      window.addEventListener('scroll', function() {
+        if (scrollFired) return;
+        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        if (scrollPercent > 25) {
+          scrollFired = true;
+          fireEngagement();
+        }
+      }, { passive: true });
+      
+      // Detect engagement via any click
+      document.addEventListener('click', fireEngagement, { once: true, passive: true });
+      
+      // Detect engagement via time on page (10 seconds)
+      setTimeout(fireEngagement, 10000);
+    })();
+  </script>
+
   <!-- Google Tag Manager (GTM-532W3HH2) - Delayed 4s for performance -->
   <script>
     // Delay GTM loading by 4 seconds to improve initial page load
