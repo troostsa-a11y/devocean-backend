@@ -44,6 +44,8 @@ Preferred communication style: Simple, everyday language.
 - Optimized bundle splitting (react-vendor, i18n-vendor, motion, icons, translations chunks)
 - Preconnect hints for external resources
 - Hero first image eager loading, subsequent images lazy loaded
+- **Framer Motion**: Using LazyMotion with domAnimation features for ~20-25 KiB bundle savings
+- **GTM Optimization**: 4-second delayed load + user engagement detection for deferred marketing tag firing
 
 ### Backend Architecture
 
@@ -84,8 +86,14 @@ Preferred communication style: Simple, everyday language.
 ### Third-Party Services
 
 **Analytics & Consent Management:**
-- Google Tag Manager with Consent Mode v2.
-- CookieYes for GDPR-compliant cookie consent management (integrated via GTM).
+- Google Tag Manager (GTM-532W3HH2) with Consent Mode v2
+  - GTM loads with 4-second delay for initial page load optimization
+  - Consent defaults set in HTML before GTM loads (best practice for 2024)
+  - User engagement detection fires 'marketing_allowed' event after scroll/click/20s + ad consent granted
+- CookieYes for GDPR-compliant cookie consent management (integrated via GTM)
+  - CookieYes CMP (loader) tag with priority 100
+  - CookieYes Consent Mode Bridge updates consent when users interact
+  - **Known Issue**: Console warning "A tag read consent before a default was set" appears due to CookieYes GTM template reading consent during GTM bootstrap. Functionally working correctly. Ticket filed with CookieYes support.
 
 **Booking Integration:**
 - External booking engine at book.devoceanlodge.com with parameterized URLs.
