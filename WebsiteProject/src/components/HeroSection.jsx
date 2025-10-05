@@ -25,11 +25,15 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         {list.map((img, i) => {
           const src = typeof img === 'string' ? img : img.desktop;
           const srcMobile = typeof img === 'object' ? img.mobile : undefined;
+          const srcWebP = typeof img === 'object' ? img.desktopWebP : undefined;
+          const srcMobileWebP = typeof img === 'object' ? img.mobileWebP : undefined;
           return (
             <LazyImage
               key={src}
               src={src}
               srcMobile={srcMobile}
+              srcWebP={srcWebP}
+              srcMobileWebP={srcMobileWebP}
               alt={`Hero slide ${i + 1}`}
               className="absolute inset-0 w-full h-full object-cover object-center"
               style={{ opacity: i === idx ? 1 : 0 }}

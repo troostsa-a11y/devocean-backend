@@ -22,13 +22,38 @@ export const IMG = {
   ],
 };
 
-// Hero images with mobile-optimized versions
+// Hero images with mobile-optimized and WebP versions
 export const HERO_IMAGES = [
-  { desktop: "/photos/hero01.jpg", mobile: "/photos/hero01-mobile.jpg" },
-  { desktop: "/photos/hero02.jpg", mobile: "/photos/hero02-mobile.jpg" },
-  { desktop: "/photos/hero03.jpg", mobile: "/photos/hero03-mobile.jpg" },
-  { desktop: "/photos/hero04.jpg", mobile: "/photos/hero04-mobile.jpg" },
-  { desktop: "/photos/hero05.jpg", mobile: "/photos/hero05-mobile.jpg" },
+  { 
+    desktop: "/photos/hero01.jpg", 
+    mobile: "/photos/hero01-mobile.jpg",
+    desktopWebP: "/photos/hero01.webp",
+    mobileWebP: "/photos/hero01-mobile.webp"
+  },
+  { 
+    desktop: "/photos/hero02.jpg", 
+    mobile: "/photos/hero02-mobile.jpg",
+    desktopWebP: "/photos/hero02.webp",
+    mobileWebP: "/photos/hero02-mobile.webp"
+  },
+  { 
+    desktop: "/photos/hero03.jpg", 
+    mobile: "/photos/hero03-mobile.jpg",
+    desktopWebP: "/photos/hero03.webp",
+    mobileWebP: "/photos/hero03-mobile.webp"
+  },
+  { 
+    desktop: "/photos/hero04.jpg", 
+    mobile: "/photos/hero04-mobile.jpg",
+    desktopWebP: "/photos/hero04.webp",
+    mobileWebP: "/photos/hero04-mobile.webp"
+  },
+  { 
+    desktop: "/photos/hero05.jpg", 
+    mobile: "/photos/hero05-mobile.jpg",
+    desktopWebP: "/photos/hero05.webp",
+    mobileWebP: "/photos/hero05-mobile.webp"
+  },
 ];
 
 export const UNIT_BASE = [
