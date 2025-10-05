@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Phone, Mail, MapPin, CalendarCheck2, Facebook, Instagram, Bird, Briefcase, Pin, Music, PlayCircle } from 'lucide-react';
 import { toDDMMYYYY } from '../utils/localize';
 import { EMAIL, PHONE, MAP } from '../data/content';
@@ -22,6 +22,38 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
   const [formState, setFormState] = useState({ status: 'idle', message: '' }); // idle, sending, success, error
   const inRef = useRef(null);
   const outRef = useRef(null);
+  const sectionRef = useRef(null);
+  const recaptchaLoadedRef = useRef(false);
+
+  // Lazy load reCAPTCHA when section becomes visible
+  useEffect(() => {
+    if (recaptchaLoadedRef.current) return;
+
+    // Feature detection: use IntersectionObserver if available, otherwise load immediately
+    if (!window.IntersectionObserver || !sectionRef.current) {
+      // Fallback: load immediately for older browsers
+      recaptchaLoadedRef.current = true;
+      if (window.loadRecaptcha) {
+        window.loadRecaptcha().catch(err => console.error('reCAPTCHA load error:', err));
+      }
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !recaptchaLoadedRef.current) {
+          recaptchaLoadedRef.current = true;
+          if (window.loadRecaptcha) {
+            window.loadRecaptcha().catch(err => console.error('reCAPTCHA load error:', err));
+          }
+        }
+      },
+      { rootMargin: '100px' } // Start loading 100px before section is visible
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const todayISO = new Date().toISOString().slice(0, 10);
   const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${MAP.lat},${MAP.lng}`;
@@ -33,7 +65,11 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
     const formData = new FormData(e.target);
     
     try {
-      // Execute reCAPTCHA v3 with ready() wrapper and timeout
+      // Ensure reCAPTCHA is loaded
+      if (!window.grecaptcha && window.loadRecaptcha) {
+        await window.loadRecaptcha();
+      }
+
       if (!window.grecaptcha) {
         throw new Error('reCAPTCHA not loaded');
       }
@@ -109,7 +145,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
   };
 
   return (
-    <section id="contact" className="max-w-7xl mx-auto px-4 py-16">
+    <section id="contact" ref={sectionRef} className="max-w-7xl mx-auto px-4 py-16">
       <div className="grid md:grid-cols-2 gap-8 items-start justify-items-center md:justify-items-stretch">
         {/* Left: text & CTAs */}
         <div className="w-full">

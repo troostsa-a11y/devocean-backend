@@ -39,22 +39,49 @@
     });
   </script>
 
-  <!-- Google Tag Manager (GTM-532W3HH2) -->
+  <!-- Google Tag Manager (GTM-532W3HH2) - Delayed 4s for performance -->
   <script>
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
+    // Delay GTM loading by 4 seconds to improve initial page load
+    setTimeout(function() {
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
+    }, 4000);
   </script>
   <!-- End GTM -->
 
-  <!-- Google reCAPTCHA v3 -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L" async defer></script>
-
+  <!-- reCAPTCHA v3 (lazy loaded when contact form visible) -->
   <script>
     window.RECAPTCHA_SITE_KEY = '6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L';
+    
+    // Lazy loader for reCAPTCHA
+    window.loadRecaptcha = (function() {
+      let promise = null;
+      
+      return function() {
+        if (promise) return promise;
+        
+        if (window.grecaptcha) {
+          promise = Promise.resolve(window.grecaptcha);
+          return promise;
+        }
+        
+        promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://www.google.com/recaptcha/api.js?render=' + window.RECAPTCHA_SITE_KEY;
+          script.async = true;
+          script.defer = true;
+          script.onload = () => resolve(window.grecaptcha);
+          script.onerror = () => reject(new Error('Failed to load reCAPTCHA'));
+          document.head.appendChild(script);
+        });
+        
+        return promise;
+      };
+    })();
   </script>
   <!-- SEO etc. -->
   <meta name="color-scheme" content="light dark" />
