@@ -2,13 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function LazyImage({
   src,
+  srcMobile,
   alt,
   className = '',
   loading = 'lazy',
   placeholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f3f4f6" width="400" height="300"/%3E%3C/svg%3E',
   ...props
 }) {
-  const [imageSrc, setImageSrc] = useState(placeholder);
+  const [desktopSrc, setDesktopSrc] = useState(placeholder);
+  const [mobileSrc, setMobileSrc] = useState(placeholder);
   const [imageLoaded, setImageLoaded] = useState(false);
   const imgRef = useRef(null);
 
@@ -17,7 +19,8 @@ export default function LazyImage({
 
     // For eager loading, load immediately
     if (loading === 'eager') {
-      setImageSrc(src);
+      setDesktopSrc(src);
+      if (srcMobile) setMobileSrc(srcMobile);
       return;
     }
 
@@ -26,7 +29,8 @@ export default function LazyImage({
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setImageSrc(src);
+            setDesktopSrc(src);
+            if (srcMobile) setMobileSrc(srcMobile);
             observer.disconnect();
           }
         });
@@ -43,12 +47,32 @@ export default function LazyImage({
     return () => {
       if (observer) observer.disconnect();
     };
-  }, [src, loading]);
+  }, [src, srcMobile, loading]);
 
+  // Use picture element for responsive images if mobile source is provided
+  if (srcMobile) {
+    return (
+      <picture>
+        <source media="(max-width: 768px)" srcSet={mobileSrc} />
+        <img
+          ref={imgRef}
+          src={desktopSrc}
+          alt={alt}
+          className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
+          onLoad={() => setImageLoaded(true)}
+          loading={loading}
+          decoding="async"
+          {...props}
+        />
+      </picture>
+    );
+  }
+
+  // Fallback to regular img if no mobile source
   return (
     <img
       ref={imgRef}
-      src={imageSrc}
+      src={desktopSrc}
       alt={alt}
       className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
       onLoad={() => setImageLoaded(true)}

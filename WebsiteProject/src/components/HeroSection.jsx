@@ -22,16 +22,21 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
       {/* Slides */}
       <div className="absolute inset-0">
-        {list.map((src, i) => (
-          <LazyImage
-            key={src}
-            src={src}
-            alt={`Hero slide ${i + 1}`}
-            className="absolute inset-0 w-full h-full object-cover object-center"
-            style={{ opacity: i === idx ? 1 : 0 }}
-            loading={i === 0 ? "eager" : "lazy"}
-          />
-        ))}
+        {list.map((img, i) => {
+          const src = typeof img === 'string' ? img : img.desktop;
+          const srcMobile = typeof img === 'object' ? img.mobile : undefined;
+          return (
+            <LazyImage
+              key={src}
+              src={src}
+              srcMobile={srcMobile}
+              alt={`Hero slide ${i + 1}`}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ opacity: i === idx ? 1 : 0 }}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          );
+        })}
       </div>
 
       {/* Dim overlay */}

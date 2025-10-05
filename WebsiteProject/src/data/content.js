@@ -22,12 +22,13 @@ export const IMG = {
   ],
 };
 
+// Hero images with mobile-optimized versions
 export const HERO_IMAGES = [
-  "/photos/hero01.jpg",
-  "/photos/hero02.jpg",
-  "/photos/hero03.jpg",
-  "/photos/hero04.jpg",
-  "/photos/hero05.jpg",
+  { desktop: "/photos/hero01.jpg", mobile: "/photos/hero01-mobile.jpg" },
+  { desktop: "/photos/hero02.jpg", mobile: "/photos/hero02-mobile.jpg" },
+  { desktop: "/photos/hero03.jpg", mobile: "/photos/hero03-mobile.jpg" },
+  { desktop: "/photos/hero04.jpg", mobile: "/photos/hero04-mobile.jpg" },
+  { desktop: "/photos/hero05.jpg", mobile: "/photos/hero05-mobile.jpg" },
 ];
 
 export const UNIT_BASE = [
