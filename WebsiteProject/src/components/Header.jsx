@@ -19,7 +19,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
       <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
           {/* Desktop: Full contact info */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             <a href="tel:+258844182252" className="flex items-center gap-1">
               <Phone size={14} /> +258 84 418 2252
             </a>
@@ -28,8 +28,8 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             </a>
           </div>
 
-          {/* Mobile: Icon-only contact */}
-          <div className="flex md:hidden items-center gap-3">
+          {/* Mobile/Tablet: Icon-only contact */}
+          <div className="flex lg:hidden items-center gap-3">
             <a 
               href="https://wa.me/258844182252" 
               target="_blank" 
@@ -96,8 +96,8 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             </a>
           </div>
 
-          {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-6">
+          {/* Desktop nav (large screens only) */}
+          <ul className="hidden lg:flex items-center gap-6">
             {[
               ["home", "#home"],
               ["stay", "#stay"],
@@ -138,9 +138,9 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             </li>
           </ul>
 
-          {/* Burger */}
+          {/* Burger (mobile & tablet) */}
           <button
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border"
+            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border"
             onClick={() => setMenuOpen(v => !v)}
             aria-expanded={menuOpen}
             aria-controls="mnav"
@@ -149,9 +149,9 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           </button>
         </nav>
 
-        {/* Mobile menu */}
+        {/* Mobile/Tablet menu */}
         {menuOpen && (
-          <div id="mnav" className="md:hidden border-t bg-white">
+          <div id="mnav" className="lg:hidden border-t bg-white">
             {[
               ["home", "#home"],
               ["stay", "#stay"],
