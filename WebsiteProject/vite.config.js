@@ -1,9 +1,46 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// Custom plugin to inline CSS only (not JS)
+function inlineCSSPlugin() {
+  return {
+    name: 'inline-css',
+    enforce: 'post',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, { bundle }) {
+        if (!bundle) return html;
+        
+        // Find CSS files in the bundle
+        const cssFiles = Object.keys(bundle).filter(name => name.endsWith('.css'));
+        
+        // Inline each CSS file
+        cssFiles.forEach(cssFileName => {
+          const cssAsset = bundle[cssFileName];
+          if (cssAsset.type === 'asset' && typeof cssAsset.source === 'string') {
+            const cssContent = cssAsset.source;
+            
+            // Replace the link tag with inline style
+            const linkPattern = new RegExp(
+              `<link[^>]*href="[^"]*${cssFileName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>`,
+              'g'
+            );
+            html = html.replace(linkPattern, `<style>${cssContent}</style>`);
+            
+            // Remove the CSS file from bundle so it's not emitted
+            delete bundle[cssFileName];
+          }
+        });
+        
+        return html;
+      },
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), inlineCSSPlugin()],
   
   build: {
     // Enable minification with esbuild (faster than terser)
