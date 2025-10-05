@@ -1,0 +1,38 @@
+# Cloudflare Pages cache headers for DEVOCEAN Lodge
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# Cache static assets with long lifetimes for repeat visits
+/photos/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache JavaScript and CSS bundles (with hash in filename)
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache fonts with long lifetime
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Don't cache HTML (always fresh for updates)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Main page
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Security headers for all pages
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
