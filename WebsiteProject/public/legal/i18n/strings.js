@@ -387,6 +387,79 @@
           body: "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken, Technologien, rechtlichen Anforderungen oder anderen Faktoren widerzuspiegeln."
         }
       }
+    },
+
+    terms: {
+      title: "Allgemeine Geschäftsbedingungen",
+      updatedDate: "06 Okt 2025",
+      termsBadge: {
+        title: "Wichtiger rechtlicher Hinweis:",
+        body: "Diese Bedingungen regeln Ihre Nutzung unserer Dienstleistungen und Website. Bitte lesen Sie sie sorgfältig durch, bevor Sie eine Buchung vornehmen."
+      },
+      quickLinks: {
+        title: "Schnelllinks",
+        links: [
+          { id: "intro", text: "Geltungsbereich" },
+          { id: "booking", text: "Buchungen" },
+          { id: "payment", text: "Preise & Zahlung" },
+          { id: "cancel", text: "Stornierung & Nichterscheinen" },
+          { id: "conduct", text: "Gastverhalten" },
+          { id: "force-majeure", text: "Höhere Gewalt" },
+          { id: "liability", text: "Haftung" },
+          { id: "intellectual-property", text: "Geistiges Eigentum" },
+          { id: "disputes", text: "Streitbeilegung" },
+          { id: "changes", text: "Änderungen" },
+          { id: "law", text: "Anwendbares Recht" },
+          { id: "contact", text: "Kontakt" }
+        ]
+      },
+      sections: {
+        intro: {
+          title: "Geltungsbereich",
+          body: "Diese Bedingungen regeln die Unterbringung und damit verbundene Dienstleistungen, die von DEVOCEAN Lodge (TERRAfrique LDA) bereitgestellt werden. Mit der Buchung stimmen Sie diesen Bedingungen zu."
+        },
+        booking: {
+          title: "Buchungen",
+          items: [
+            "Geben Sie genaue Gästeinformationen sowie An- und Abreisedaten an",
+            "Sonderwünsche unterliegen der Verfügbarkeit und Bestätigung"
+          ]
+        },
+        payment: {
+          title: "Preise & Zahlung",
+          items: [
+            "Die angegebenen Preise gelten pro Einheit/Nacht, sofern nicht anders angegeben",
+            "Anzahlungen und Zahlungsmethoden werden während der Buchung bestätigt"
+          ]
+        },
+        cancel: {
+          title: "Stornierung & Nichterscheinen",
+          body: "Die Stornierungsbedingungen werden zum Zeitpunkt der Buchung und in Ihrer Bestätigung offengelegt."
+        },
+        conduct: {
+          title: "Gastverhalten",
+          items: [
+            "Respektieren Sie die Hausordnung, das Personal, andere Gäste und die lokale Gemeinschaft",
+            "Keine rechtswidrigen Aktivitäten auf dem Gelände"
+          ]
+        },
+        liability: {
+          title: "Haftung",
+          body: "Soweit gesetzlich zulässig, haften wir nicht für indirekte oder unvorhersehbare Verluste."
+        },
+        changes: {
+          title: "Änderungen dieser Bedingungen",
+          body: "Wir können die Bedingungen von Zeit zu Zeit aktualisieren. Die veröffentlichte Version gilt für Ihren Aufenthalt."
+        },
+        law: {
+          title: "Anwendbares Recht",
+          body: "Es gilt mosambikanisches Recht, vorbehaltlich zwingender lokaler Verbraucherschutzbestimmungen."
+        },
+        contact: {
+          title: "Kontakt",
+          body: 'Fragen? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
     }
   };
 
@@ -482,6 +555,79 @@
           body: "We kunnen dit privacybeleid van tijd tot tijd bijwerken om veranderingen in onze praktijken, technologie, wettelijke vereisten of andere factoren weer te geven."
         }
       }
+    },
+
+    terms: {
+      title: "Algemene voorwaarden",
+      updatedDate: "06 okt 2025",
+      termsBadge: {
+        title: "Belangrijke juridische kennisgeving:",
+        body: "Deze voorwaarden regelen uw gebruik van onze diensten en website. Lees ze zorgvuldig door voordat u een boeking maakt."
+      },
+      quickLinks: {
+        title: "Snelkoppelingen",
+        links: [
+          { id: "intro", text: "Toepassingsgebied" },
+          { id: "booking", text: "Boekingen" },
+          { id: "payment", text: "Prijzen & Betaling" },
+          { id: "cancel", text: "Annuleringen & No-shows" },
+          { id: "conduct", text: "Gastgedrag" },
+          { id: "force-majeure", text: "Overmacht" },
+          { id: "liability", text: "Aansprakelijkheid" },
+          { id: "intellectual-property", text: "Intellectueel eigendom" },
+          { id: "disputes", text: "Geschillenbeslechting" },
+          { id: "changes", text: "Wijzigingen" },
+          { id: "law", text: "Toepasselijk recht" },
+          { id: "contact", text: "Contact" }
+        ]
+      },
+      sections: {
+        intro: {
+          title: "Toepassingsgebied",
+          body: "Deze voorwaarden regelen accommodatie en gerelateerde diensten die worden geleverd door DEVOCEAN Lodge (TERRAfrique LDA). Door te boeken, gaat u akkoord met deze voorwaarden."
+        },
+        booking: {
+          title: "Boekingen",
+          items: [
+            "Verstrek nauwkeurige gastinformatie en aankomst-/vertrekdata",
+            "Speciale verzoeken zijn afhankelijk van beschikbaarheid en bevestiging"
+          ]
+        },
+        payment: {
+          title: "Prijzen & Betaling",
+          items: [
+            "Getoonde prijzen zijn per eenheid/nacht tenzij anders vermeld",
+            "Aanbetaling en betaalmethoden worden tijdens de boeking bevestigd"
+          ]
+        },
+        cancel: {
+          title: "Annuleringen & No-shows",
+          body: "Annuleringsvoorwaarden worden bekendgemaakt tijdens het boeken en in uw bevestiging."
+        },
+        conduct: {
+          title: "Gastgedrag",
+          items: [
+            "Respecteer de regels van de accommodatie, personeel, andere gasten en de lokale gemeenschap",
+            "Geen onwettige activiteiten op het terrein"
+          ]
+        },
+        liability: {
+          title: "Aansprakelijkheid",
+          body: "Voor zover wettelijk toegestaan, zijn wij niet aansprakelijk voor indirecte of onvoorziene verliezen."
+        },
+        changes: {
+          title: "Wijzigingen in deze voorwaarden",
+          body: "We kunnen de voorwaarden van tijd tot tijd bijwerken. De gepubliceerde versie is van toepassing op uw verblijf."
+        },
+        law: {
+          title: "Toepasselijk recht",
+          body: "Mozambikaans recht is van toepassing, met inachtneming van verplichte lokale consumentenregels."
+        },
+        contact: {
+          title: "Contact",
+          body: 'Vragen? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
     }
   };
 
@@ -575,6 +721,79 @@
         updates: {
           title: "Atualizações da política",
           body: "Podemos atualizar esta política de privacidade periodicamente para refletir mudanças nas nossas práticas, tecnologia, requisitos legais ou outros fatores."
+        }
+      }
+    },
+
+    terms: {
+      title: "Termos e Condições",
+      updatedDate: "06 out 2025",
+      termsBadge: {
+        title: "Aviso legal importante:",
+        body: "Estes termos regem o uso dos nossos serviços e website. Por favor, leia-os cuidadosamente antes de fazer uma reserva."
+      },
+      quickLinks: {
+        title: "Links rápidos",
+        links: [
+          { id: "intro", text: "Âmbito" },
+          { id: "booking", text: "Reservas" },
+          { id: "payment", text: "Preços e Pagamento" },
+          { id: "cancel", text: "Cancelamentos e Não comparências" },
+          { id: "conduct", text: "Conduta do hóspede" },
+          { id: "force-majeure", text: "Força maior" },
+          { id: "liability", text: "Responsabilidade" },
+          { id: "intellectual-property", text: "Propriedade intelectual" },
+          { id: "disputes", text: "Resolução de litígios" },
+          { id: "changes", text: "Alterações" },
+          { id: "law", text: "Lei aplicável" },
+          { id: "contact", text: "Contacto" }
+        ]
+      },
+      sections: {
+        intro: {
+          title: "Âmbito",
+          body: "Estes Termos regem o alojamento e serviços relacionados fornecidos pelo DEVOCEAN Lodge (TERRAfrique LDA). Ao fazer uma reserva, você concorda com estes Termos."
+        },
+        booking: {
+          title: "Reservas",
+          items: [
+            "Forneça informações precisas sobre os hóspedes e datas de chegada/partida",
+            "Pedidos especiais estão sujeitos à disponibilidade e confirmação"
+          ]
+        },
+        payment: {
+          title: "Preços e Pagamento",
+          items: [
+            "As tarifas apresentadas são por unidade/noite, salvo indicação em contrário",
+            "Depósitos e métodos de pagamento serão confirmados durante a reserva"
+          ]
+        },
+        cancel: {
+          title: "Cancelamentos e Não comparências",
+          body: "Os termos de cancelamento são divulgados no momento da reserva e na sua confirmação."
+        },
+        conduct: {
+          title: "Conduta do hóspede",
+          items: [
+            "Respeite as regras da propriedade, o pessoal, outros hóspedes e a comunidade local",
+            "Não são permitidas atividades ilegais nas instalações"
+          ]
+        },
+        liability: {
+          title: "Responsabilidade",
+          body: "Na medida permitida por lei, não somos responsáveis por perdas indiretas ou imprevisíveis."
+        },
+        changes: {
+          title: "Alterações a estes Termos",
+          body: "Podemos atualizar os Termos periodicamente. A versão publicada aplica-se à sua estadia."
+        },
+        law: {
+          title: "Lei aplicável",
+          body: "Aplica-se a lei moçambicana, sujeita às regras locais obrigatórias de proteção do consumidor."
+        },
+        contact: {
+          title: "Contacto",
+          body: 'Questões? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
     }
@@ -675,6 +894,79 @@
           body: "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre pour refléter les changements dans nos pratiques, la technologie, les exigences légales ou d'autres facteurs."
         }
       }
+    },
+
+    terms: {
+      title: "Conditions Générales",
+      updatedDate: "06 oct 2025",
+      termsBadge: {
+        title: "Avis juridique important :",
+        body: "Ces conditions régissent votre utilisation de nos services et de notre site Web. Veuillez les lire attentivement avant de faire une réservation."
+      },
+      quickLinks: {
+        title: "Liens rapides",
+        links: [
+          { id: "intro", text: "Portée" },
+          { id: "booking", text: "Réservations" },
+          { id: "payment", text: "Prix et Paiement" },
+          { id: "cancel", text: "Annulations et Absences" },
+          { id: "conduct", text: "Conduite des clients" },
+          { id: "force-majeure", text: "Force majeure" },
+          { id: "liability", text: "Responsabilité" },
+          { id: "intellectual-property", text: "Propriété intellectuelle" },
+          { id: "disputes", text: "Résolution des litiges" },
+          { id: "changes", text: "Modifications" },
+          { id: "law", text: "Loi applicable" },
+          { id: "contact", text: "Contact" }
+        ]
+      },
+      sections: {
+        intro: {
+          title: "Portée",
+          body: "Ces Conditions régissent l'hébergement et les services connexes fournis par DEVOCEAN Lodge (TERRAfrique LDA). En effectuant une réservation, vous acceptez ces Conditions."
+        },
+        booking: {
+          title: "Réservations",
+          items: [
+            "Fournissez des informations précises sur les clients et les dates d'arrivée/départ",
+            "Les demandes spéciales sont soumises à disponibilité et confirmation"
+          ]
+        },
+        payment: {
+          title: "Prix et Paiement",
+          items: [
+            "Les tarifs indiqués sont par unité/nuit sauf indication contraire",
+            "Les acomptes et méthodes de paiement seront confirmés lors de la réservation"
+          ]
+        },
+        cancel: {
+          title: "Annulations et Absences",
+          body: "Les conditions d'annulation sont divulguées au moment de la réservation et dans votre confirmation."
+        },
+        conduct: {
+          title: "Conduite des clients",
+          items: [
+            "Respectez les règles de la propriété, le personnel, les autres clients et la communauté locale",
+            "Aucune activité illégale sur les lieux"
+          ]
+        },
+        liability: {
+          title: "Responsabilité",
+          body: "Dans la mesure permise par la loi, nous ne sommes pas responsables des pertes indirectes ou imprévisibles."
+        },
+        changes: {
+          title: "Modifications de ces Conditions",
+          body: "Nous pouvons mettre à jour les Conditions de temps en temps. La version publiée s'applique à votre séjour."
+        },
+        law: {
+          title: "Loi applicable",
+          body: "Le droit mozambicain s'applique, sous réserve des règles locales obligatoires de protection des consommateurs."
+        },
+        contact: {
+          title: "Contact",
+          body: 'Des questions ? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
     }
   };
 
@@ -770,6 +1062,79 @@
           body: "Potremmo aggiornare questa informativa sulla privacy di tanto in tanto per riflettere cambiamenti nelle nostre pratiche, tecnologia, requisiti legali o altri fattori."
         }
       }
+    },
+
+    terms: {
+      title: "Termini e Condizioni",
+      updatedDate: "06 ott 2025",
+      termsBadge: {
+        title: "Avviso legale importante:",
+        body: "Questi termini regolano l'uso dei nostri servizi e del sito web. Si prega di leggerli attentamente prima di effettuare una prenotazione."
+      },
+      quickLinks: {
+        title: "Link rapidi",
+        links: [
+          { id: "intro", text: "Ambito" },
+          { id: "booking", text: "Prenotazioni" },
+          { id: "payment", text: "Prezzi e Pagamento" },
+          { id: "cancel", text: "Cancellazioni e Mancate presentazioni" },
+          { id: "conduct", text: "Comportamento degli ospiti" },
+          { id: "force-majeure", text: "Forza maggiore" },
+          { id: "liability", text: "Responsabilità" },
+          { id: "intellectual-property", text: "Proprietà intellettuale" },
+          { id: "disputes", text: "Risoluzione delle controversie" },
+          { id: "changes", text: "Modifiche" },
+          { id: "law", text: "Legge applicabile" },
+          { id: "contact", text: "Contatto" }
+        ]
+      },
+      sections: {
+        intro: {
+          title: "Ambito",
+          body: "Questi Termini regolano l'alloggio e i servizi correlati forniti da DEVOCEAN Lodge (TERRAfrique LDA). Effettuando una prenotazione, accetti questi Termini."
+        },
+        booking: {
+          title: "Prenotazioni",
+          items: [
+            "Fornire informazioni accurate sugli ospiti e date di arrivo/partenza",
+            "Le richieste speciali sono soggette a disponibilità e conferma"
+          ]
+        },
+        payment: {
+          title: "Prezzi e Pagamento",
+          items: [
+            "Le tariffe mostrate sono per unità/notte salvo diversa indicazione",
+            "Depositi e metodi di pagamento saranno confermati durante la prenotazione"
+          ]
+        },
+        cancel: {
+          title: "Cancellazioni e Mancate presentazioni",
+          body: "I termini di cancellazione sono comunicati al momento della prenotazione e nella conferma."
+        },
+        conduct: {
+          title: "Comportamento degli ospiti",
+          items: [
+            "Rispettare le regole della struttura, il personale, gli altri ospiti e la comunità locale",
+            "Nessuna attività illegale nei locali"
+          ]
+        },
+        liability: {
+          title: "Responsabilità",
+          body: "Nella misura consentita dalla legge, non siamo responsabili per perdite indirette o imprevedibili."
+        },
+        changes: {
+          title: "Modifiche a questi Termini",
+          body: "Potremmo aggiornare i Termini di tanto in tanto. La versione pubblicata si applica al tuo soggiorno."
+        },
+        law: {
+          title: "Legge applicabile",
+          body: "Si applica la legge mozambicana, soggetta alle norme locali obbligatorie di tutela dei consumatori."
+        },
+        contact: {
+          title: "Contatto",
+          body: 'Domande? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
     }
   };
 
@@ -863,6 +1228,79 @@
         updates: {
           title: "Actualizaciones de la política",
           body: "Podemos actualizar esta política de privacidad de vez en cuando para reflejar cambios en nuestras prácticas, tecnología, requisitos legales u otros factores."
+        }
+      }
+    },
+
+    terms: {
+      title: "Términos y Condiciones",
+      updatedDate: "06 oct 2025",
+      termsBadge: {
+        title: "Aviso legal importante:",
+        body: "Estos términos rigen el uso de nuestros servicios y sitio web. Por favor, léalos detenidamente antes de hacer una reserva."
+      },
+      quickLinks: {
+        title: "Enlaces rápidos",
+        links: [
+          { id: "intro", text: "Alcance" },
+          { id: "booking", text: "Reservas" },
+          { id: "payment", text: "Precios y Pago" },
+          { id: "cancel", text: "Cancelaciones y Ausencias" },
+          { id: "conduct", text: "Conducta del huésped" },
+          { id: "force-majeure", text: "Fuerza mayor" },
+          { id: "liability", text: "Responsabilidad" },
+          { id: "intellectual-property", text: "Propiedad intelectual" },
+          { id: "disputes", text: "Resolución de disputas" },
+          { id: "changes", text: "Cambios" },
+          { id: "law", text: "Ley aplicable" },
+          { id: "contact", text: "Contacto" }
+        ]
+      },
+      sections: {
+        intro: {
+          title: "Alcance",
+          body: "Estos Términos rigen el alojamiento y los servicios relacionados proporcionados por DEVOCEAN Lodge (TERRAfrique LDA). Al hacer una reserva, acepta estos Términos."
+        },
+        booking: {
+          title: "Reservas",
+          items: [
+            "Proporcione información precisa sobre los huéspedes y fechas de llegada/salida",
+            "Las solicitudes especiales están sujetas a disponibilidad y confirmación"
+          ]
+        },
+        payment: {
+          title: "Precios y Pago",
+          items: [
+            "Las tarifas mostradas son por unidad/noche a menos que se indique lo contrario",
+            "Los depósitos y métodos de pago se confirmarán durante la reserva"
+          ]
+        },
+        cancel: {
+          title: "Cancelaciones y Ausencias",
+          body: "Los términos de cancelación se revelan en el momento de la reserva y en su confirmación."
+        },
+        conduct: {
+          title: "Conducta del huésped",
+          items: [
+            "Respetar las reglas de la propiedad, el personal, otros huéspedes y la comunidad local",
+            "No se permiten actividades ilegales en las instalaciones"
+          ]
+        },
+        liability: {
+          title: "Responsabilidad",
+          body: "En la medida permitida por la ley, no somos responsables de pérdidas indirectas o imprevistas."
+        },
+        changes: {
+          title: "Cambios en estos Términos",
+          body: "Podemos actualizar los Términos de vez en cuando. La versión publicada se aplica a su estadía."
+        },
+        law: {
+          title: "Ley aplicable",
+          body: "Se aplica la ley mozambiqueña, sujeta a las normas locales obligatorias de protección del consumidor."
+        },
+        contact: {
+          title: "Contacto",
+          body: '¿Preguntas? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
     }
