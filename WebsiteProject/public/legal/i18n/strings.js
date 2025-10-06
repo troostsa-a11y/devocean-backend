@@ -38,8 +38,12 @@
           { id: "collect", text: "Data Collection" },
           { id: "use", text: "Data Usage" },
           { id: "share", text: "Data Sharing" },
+          { id: "security", text: "Security" },
+          { id: "retention", text: "Retention" },
           { id: "rights", text: "Your Rights" },
-          { id: "security", text: "Security" }
+          { id: "transfers", text: "International Transfers" },
+          { id: "contact", text: "Contact" },
+          { id: "updates", text: "Policy Updates" }
         ]
       },
       sections: {
@@ -130,6 +134,14 @@
         contact: {
           title: "Contact our privacy team",
           body: 'If you have any questions, concerns, or requests regarding this Privacy Policy or the processing of your personal information, or if you wish to exercise any of your privacy rights, please contact us at:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Phone:</strong> +258 8441 82252<br><strong>Postal Address:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>We will respond to your request in accordance with applicable data protection law. For grievances or concerns about the processing of your information, you may also contact our Data Protection Officer at the email address above.'
+        },
+        transfers: {
+          title: "International Data Transfers",
+          body: "As we operate in multiple jurisdictions, your data may be transferred to and processed in countries outside of your residence. We ensure such transfers comply with applicable data protection laws through adequacy decisions by the European Commission, Standard Contractual Clauses (SCCs), appropriate security safeguards, and transparency about transfer locations."
+        },
+        updates: {
+          title: "Policy Updates",
+          body: "We may update this privacy policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes through email notifications for registered users, prominent notices on our website, and an updated 'last updated' date. We encourage you to periodically review this policy to stay informed about how we protect your information."
         }
       }
     },
