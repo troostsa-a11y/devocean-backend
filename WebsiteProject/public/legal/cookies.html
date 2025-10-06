@@ -29,6 +29,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height, 240px) + 8px);
     }
 
     body {
@@ -62,10 +63,27 @@
       outline-offset: 2px;
     }
 
+    .quick-nav-link:focus {
+      outline: none;
+    }
+
+    .quick-nav-link:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
     main {
       max-width: 900px;
       margin: 0 auto;
-      padding: 0 auto calc(50vh + 40px);
+      padding: 0 16px calc(50vh + 40px);
+    }
+    
+    main > :not(.sticky-header) {
+      margin-top: 0;
+    }
+    
+    main > section:first-of-type {
+      margin-top: calc(var(--header-height, 240px) + 20px);
     }
 
     body.loading section[data-section] {
@@ -85,9 +103,6 @@
       margin: 0 auto;
     }
 
-    section[data-section] {
-      scroll-margin-top: calc(var(--header-height, 240px) + 8px);
-    }
 
     a[data-role="back-link"] {
       display: inline-flex;
@@ -193,35 +208,34 @@
     }
 
     .quick-nav {
-      background: rgba(158, 75, 19, 0.05);
-      border: 1px solid rgba(158, 75, 19, 0.2);
-      border-radius: 8px;
-      padding: 12px;
-      margin: 16px 0 0 0;
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
     }
 
     .quick-nav h3 {
-      margin: 0 0 10px 0;
-      font-size: 14px;
-      font-weight: 600;
+      margin: 0 0 12px 0;
+      font-size: 16px;
       color: var(--brand);
     }
 
     .quick-nav-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
 
     .quick-nav-link {
       display: inline-block;
-      padding: 4px 10px;
-      background: white;
+      padding: 6px 12px;
+      background: var(--card-bg);
       border: 1px solid var(--card-br);
       border-radius: 6px;
       text-decoration: none;
       color: var(--text);
-      font-size: 13px;
+      font-size: 14px;
       transition: all 0.2s ease;
     }
 
@@ -655,45 +669,43 @@
       }
     }
 
+    // Set immediately
+    setStickyHeaderHeight();
+
     document.addEventListener('DOMContentLoaded', function() {
       setStickyHeaderHeight();
 
+      // Add click handlers to quick nav links
       const quickNavLinks = document.querySelectorAll('.quick-nav-link');
       
       quickNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          scrollToSection(targetId);
+          const href = this.getAttribute('href');
+          const sectionId = href.slice(1); // Remove the #
+          const element = document.getElementById(sectionId);
+          
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Update URL without scrolling
+            history.pushState(null, null, href);
+          }
         });
       });
 
       // Handle hash on page load
       if (window.location.hash) {
         setTimeout(() => {
-          const targetId = window.location.hash.substring(1);
-          scrollToSection(targetId);
+          const sectionId = window.location.hash.slice(1);
+          const element = document.getElementById(sectionId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }, 100);
       }
     });
     
     window.addEventListener('resize', setStickyHeaderHeight);
-    
-    // Function to scroll to a section with proper offset
-    function scrollToSection(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
-        const offset = 8;
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        const offsetPosition = elementPosition - headerHeight - offset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
 
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
