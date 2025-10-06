@@ -142,10 +142,52 @@
       margin: 0 0 10px 18px;
     }
 
+    .quick-nav {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
     @media print {
       .skip-link,
       a[data-role="back-link"],
-      .copy-link {
+      .copy-link,
+      .quick-nav {
         display: none !important;
       }
       
@@ -183,6 +225,19 @@
         opacity: 1;
         margin-bottom: 12px;
         display: inline-block;
+      }
+      
+      .quick-nav {
+        position: static;
+        margin: 0 0 20px 0;
+      }
+      
+      .quick-nav-links {
+        flex-direction: column;
+      }
+      
+      .quick-nav-link {
+        text-align: center;
       }
     }
   </style>
@@ -244,6 +299,14 @@
       <span data-role="updated-date"></span>
     </p>
 
+    <nav class="quick-nav" aria-label="Quick navigation">
+      <h3>Quick Links</h3>
+      <div class="quick-nav-links">
+        <a href="#intro" class="quick-nav-link">Overview</a>
+        <a href="#contact" class="quick-nav-link">Contact</a>
+      </div>
+    </nav>
+
     <section data-section="intro" id="intro">
       <button class="copy-link" onclick="copySectionLink('intro')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title">Overview</h2>
@@ -274,6 +337,26 @@
         console.error('Failed to copy link:', err);
       });
     }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+      
+      quickNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 100;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
   </script>
 </body>
 

@@ -195,9 +195,13 @@
     }
 
     .cookie-banner-info::before {
-      content: "🍪";
-      font-size: 24px;
+      content: "";
+      width: 24px;
+      height: 24px;
       flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Ccircle cx='8' cy='10' r='1.5'%3E%3C/circle%3E%3Ccircle cx='15' cy='15' r='1.5'%3E%3C/circle%3E%3Ccircle cx='12' cy='18' r='1'%3E%3C/circle%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     .btn {
