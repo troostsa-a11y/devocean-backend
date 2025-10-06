@@ -620,14 +620,32 @@
       }
     }
     
-    // Set immediately and enable smooth scroll only after header height is calculated
+    // Set header height immediately and multiple times to ensure it's stable
     setStickyHeaderHeight();
-    setTimeout(() => {
-      document.documentElement.classList.add('smooth-scroll-ready');
-    }, 100);
+    
+    let isHeaderHeightStable = false;
+    
+    // Set on load and after short delays to ensure proper calculation
+    window.addEventListener('DOMContentLoaded', () => {
+      setStickyHeaderHeight();
+      setTimeout(setStickyHeaderHeight, 50);
+      setTimeout(setStickyHeaderHeight, 150);
+      setTimeout(() => {
+        setStickyHeaderHeight();
+        isHeaderHeightStable = true;
+        document.documentElement.classList.add('smooth-scroll-ready');
+      }, 350);
+      
+      // Handle hash navigation after header height is stable
+      if (window.location.hash) {
+        setTimeout(() => {
+          scrollToSection(window.location.hash.slice(1));
+        }, 400);
+      }
+    });
     
     // Add click handlers to quick nav links immediately (before DOMContentLoaded)
-    // This prevents any native anchor behavior on first click
+    // Wait for header height to be stable before scrolling
     document.addEventListener('click', function(e) {
       const link = e.target.closest('.quick-nav-link');
       if (link && link.hasAttribute('href')) {
@@ -635,25 +653,16 @@
         e.stopPropagation();
         const href = link.getAttribute('href');
         const sectionId = href.slice(1);
-        scrollToSection(sectionId);
+        
+        // If header height is not yet stable, wait a bit
+        if (!isHeaderHeightStable) {
+          setTimeout(() => scrollToSection(sectionId), 50);
+        } else {
+          scrollToSection(sectionId);
+        }
         history.pushState(null, null, href);
       }
     }, true); // Use capture phase to ensure we catch it first
-    
-    // Set on load and after short delays to ensure proper calculation
-    window.addEventListener('DOMContentLoaded', () => {
-      setStickyHeaderHeight();
-      setTimeout(setStickyHeaderHeight, 50);
-      setTimeout(setStickyHeaderHeight, 150);
-      setTimeout(setStickyHeaderHeight, 300);
-      
-      // Handle hash navigation after header height is calculated
-      if (window.location.hash) {
-        setTimeout(() => {
-          scrollToSection(window.location.hash.slice(1));
-        }, 350);
-      }
-    });
     
     window.addEventListener('resize', setStickyHeaderHeight);
     
@@ -661,16 +670,17 @@
     function scrollToSection(sectionId) {
       const element = document.getElementById(sectionId);
       if (element) {
-        // Force header height recalculation before scrolling to ensure accuracy
-        setStickyHeaderHeight();
-        
+        // Get the current header height without recalculating (to avoid layout shifts)
         const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
         const offset = 8;
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - headerHeight - offset;
         
+        // Ensure we don't scroll to negative positions
+        const finalPosition = Math.max(0, offsetPosition);
+        
         window.scrollTo({
-          top: offsetPosition,
+          top: finalPosition,
           behavior: 'smooth'
         });
       }
