@@ -650,14 +650,42 @@
       // Handle hash navigation after header height is calculated
       if (window.location.hash) {
         setTimeout(() => {
-          const element = document.querySelector(window.location.hash);
-          if (element) {
-            element.scrollIntoView();
-          }
+          scrollToSection(window.location.hash.slice(1));
         }, 350);
       }
+      
+      // Add click handlers to quick nav links after they're created by legal-i18n.js
+      setTimeout(() => {
+        document.querySelectorAll('.quick-nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            const sectionId = href.slice(1); // Remove the #
+            scrollToSection(sectionId);
+            // Update URL without scrolling
+            history.pushState(null, null, href);
+          });
+        });
+      }, 400);
     });
+    
     window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Function to scroll to a section with proper offset
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
+        const offset = 8; // Extra spacing
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
 
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
