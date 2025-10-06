@@ -90,6 +90,7 @@ Preferred communication style: Simple, everyday language.
   - GTM loads with 4-second delay for initial page load optimization
   - Consent defaults set in HTML before GTM loads (best practice for 2024)
   - User engagement detection fires 'marketing_allowed' event after scroll/click/20s + ad consent granted
+  - **Additional 3-second delay for Google Ads conversion tracking** (total ~7s delay) to reduce main-thread blocking
 - CookieYes for GDPR-compliant cookie consent management (integrated via GTM)
   - CookieYes CMP (loader) tag with priority 100
   - CookieYes Consent Mode Bridge updates consent when users interact

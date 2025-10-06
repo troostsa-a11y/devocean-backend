@@ -55,11 +55,16 @@
       function checkMarketingAllowed() {
         if (engaged && consentGranted && !marketingAllowedFired) {
           marketingAllowedFired = true;
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'marketing_allowed',
-            timestamp: Date.now()
-          });
+          
+          // Additional 3-second delay specifically for ads conversion tracking
+          // This reduces main-thread blocking from Google Ads tags
+          setTimeout(function() {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              event: 'marketing_allowed',
+              timestamp: Date.now()
+            });
+          }, 3000);
         }
       }
       
