@@ -472,22 +472,6 @@
     })();
   </script>
 
-  <script>
-    (function() {
-      function updateHeaderHeight() {
-        const header = document.querySelector('.sticky-header');
-        if (header) {
-          const height = header.offsetHeight;
-          document.documentElement.style.setProperty('--header-height', height + 'px');
-        }
-      }
-      
-      updateHeaderHeight();
-      window.addEventListener('resize', updateHeaderHeight);
-      window.addEventListener('load', updateHeaderHeight);
-    })();
-  </script>
-
   <script src="/legal/i18n/strings.js?v=13"></script>
   <script src="/legal/legal-i18n.js?v=13"></script>
 
@@ -622,6 +606,65 @@
   </main>
 
   <script>
+    // Dynamically calculate sticky header height
+    function setStickyHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        const height = stickyHeader.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+        console.log('Header height set to:', height + 'px');
+      }
+    }
+    
+    // Set immediately
+    setStickyHeaderHeight();
+    
+    // Set on load and after short delays to ensure proper calculation
+    window.addEventListener('DOMContentLoaded', () => {
+      setStickyHeaderHeight();
+      setTimeout(setStickyHeaderHeight, 50);
+      setTimeout(setStickyHeaderHeight, 150);
+      setTimeout(setStickyHeaderHeight, 300);
+      
+      // Handle hash navigation after header height is calculated
+      if (window.location.hash) {
+        setTimeout(() => {
+          scrollToSection(window.location.hash.slice(1));
+        }, 350);
+      }
+      
+      // Add click handlers to quick nav links
+      setTimeout(() => {
+        document.querySelectorAll('.quick-nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            const sectionId = href.slice(1);
+            scrollToSection(sectionId);
+            history.pushState(null, null, href);
+          });
+        });
+      }, 400);
+    });
+    
+    window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Function to scroll to a section with proper offset
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
+        const offset = 8;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
       
@@ -711,23 +754,11 @@
         if (document.querySelector('[data-part].hydrated')) {
           document.body.classList.remove('loading');
           clearInterval(checkI18n);
-          
-          const header = document.querySelector('.sticky-header');
-          if (header) {
-            const height = header.offsetHeight;
-            document.documentElement.style.setProperty('--header-height', height + 'px');
-          }
         }
       }, 100);
 
       setTimeout(() => {
         document.body.classList.remove('loading');
-        
-        const header = document.querySelector('.sticky-header');
-        if (header) {
-          const height = header.offsetHeight;
-          document.documentElement.style.setProperty('--header-height', height + 'px');
-        }
       }, 3000);
     });
 
