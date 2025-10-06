@@ -119,13 +119,21 @@ export function useLocale() {
       setLoading(true);
     }
 
-    loadTranslations(lang).then((translations) => {
-      if (!cancelled) {
-        setUi(translations);
-        setLoading(false);
-        setInitialLoadDone(true);
-      }
-    });
+    loadTranslations(lang)
+      .then((translations) => {
+        if (!cancelled) {
+          setUi(translations);
+          setLoading(false);
+          setInitialLoadDone(true);
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          console.error('Failed to load translations:', err);
+          setLoading(false);
+          setInitialLoadDone(true);
+        }
+      });
 
     return () => {
       cancelled = true;
