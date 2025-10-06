@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const https = require('https');
+import https from 'https';
 
 const INDEXNOW_KEY = '4339cd9fe9f2766ae7f04b21f3848dec';
 const HOST = 'devoceanlodge.com';
