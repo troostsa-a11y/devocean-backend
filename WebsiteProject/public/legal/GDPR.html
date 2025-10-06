@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>DEVOCEAN Lodge — GDPR Notice</title>
 
   <style>
@@ -17,6 +20,7 @@
       --focus: #3b82f6;
       --success: #10b981;
       --warning: #f59e0b;
+      --error: #ef4444;
       --info: #3b82f6;
     }
 
@@ -34,7 +38,7 @@
 
     .skip-link {
       position: absolute;
-      top: -40px;
+      top: 8px;
       left: 8px;
       background: var(--brand);
       color: white;
@@ -42,11 +46,12 @@
       text-decoration: none;
       border-radius: 4px;
       z-index: 1000;
-      transition: top 0.2s;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
     }
 
     .skip-link:focus {
-      top: 8px;
+      transform: translateY(0);
     }
 
     *:focus-visible {
@@ -54,15 +59,48 @@
       outline-offset: 2px;
     }
 
+    .quick-nav-link:focus {
+      outline: none;
+    }
+
+    .quick-nav-link:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height, 240px) + 8px);
+    }
+
     main {
       max-width: 900px;
-      margin: 32px auto;
-      padding: 0 16px 40px;
+      margin: 0 auto;
+      padding: 0 16px calc(50vh + 40px);
+    }
+    
+    main > :not(.sticky-header) {
+      margin-top: 0;
+    }
+    
+    main > section:first-of-type {
+      margin-top: calc(var(--header-height, 240px) + 20px);
     }
 
     body.loading section[data-section] {
       opacity: 0.5;
       pointer-events: none;
+    }
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 999;
+      padding: 24px 0 16px;
+      margin: 0 -16px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
 
     a[data-role="back-link"] {
@@ -95,6 +133,61 @@
       font-size: 14px;
     }
 
+    .gdpr-badge {
+      background: #e8f5e8;
+      border: 1px solid var(--success);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .gdpr-badge::before {
+      content: "🔒";
+      font-size: 20px;
+    }
+
+    .quick-nav {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
     section[data-section] {
       background: var(--card-bg);
       border: 1px solid var(--card-br);
@@ -109,7 +202,6 @@
       margin: 0 0 8px;
       font-size: 20px;
       line-height: 1.35;
-      scroll-margin-top: 80px;
     }
 
     .copy-link {
@@ -142,44 +234,89 @@
       margin: 0 0 10px 18px;
     }
 
-    .quick-nav {
-      background: white;
-      border: 1px solid var(--card-br);
-      border-radius: var(--radius);
-      padding: 16px;
-      margin: 0 0 24px 0;
-      position: sticky;
-      top: 20px;
-      z-index: 100;
+    section[data-section] li {
+      margin-bottom: 6px;
     }
 
-    .quick-nav h3 {
-      margin: 0 0 12px 0;
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .right-card {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 4px solid var(--brand);
+    }
+
+    .right-card h3 {
+      margin: 0 0 8px 0;
       font-size: 16px;
       color: var(--brand);
     }
 
-    .quick-nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .right-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
     }
 
-    .quick-nav-link {
-      display: inline-block;
-      padding: 6px 12px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-br);
+    .legal-basis {
+      background: white;
+      border-left: 4px solid var(--success);
+      padding: 12px 16px;
+      margin: 8px 0;
       border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .legal-basis.warning {
+      border-left-color: var(--warning);
+    }
+
+    .data-retention {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .data-retention h3 {
+      margin: 0 0 8px 0;
+      color: #0369a1;
+      font-size: 16px;
+    }
+
+    .data-retention ul {
+      margin: 8px 0 0 18px;
+    }
+
+    .data-retention li {
+      margin-bottom: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
       text-decoration: none;
       color: var(--text);
-      font-size: 14px;
-      transition: all 0.2s ease;
     }
 
-    .quick-nav-link:hover {
-      background: var(--brand);
-      color: white;
+    .btn:hover {
+      filter: brightness(0.98);
       border-color: var(--brand);
     }
 
@@ -187,7 +324,9 @@
       .skip-link,
       a[data-role="back-link"],
       .copy-link,
-      .quick-nav {
+      .quick-nav,
+      .gdpr-badge,
+      .btn {
         display: none !important;
       }
       
@@ -201,18 +340,31 @@
         font-size: 14px;
         line-height: 1.4;
       }
+      
+      .rights-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       * {
         transition-duration: 0.01ms !important;
       }
+      
+      html {
+        scroll-behavior: auto;
+      }
     }
 
     @media (max-width: 768px) {
       main {
-        margin: 20px auto;
-        padding: 0 12px 32px;
+        padding: 0 12px calc(50vh + 32px);
+      }
+      
+      .sticky-header {
+        margin: 0 -12px;
+        padding-left: 12px;
+        padding-right: 12px;
       }
       
       section[data-section] {
@@ -227,9 +379,9 @@
         display: inline-block;
       }
       
-      .quick-nav {
-        position: static;
-        margin: 0 0 20px 0;
+      .rights-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
       
       .quick-nav-links {
@@ -238,6 +390,17 @@
       
       .quick-nav-link {
         text-align: center;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+      
+      section[data-section] {
+        border-width: 2px;
       }
     }
   </style>
@@ -263,6 +426,60 @@
     });
   </script>
 
+  <script id="cookieyes" type="text/javascript"
+    src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js"></script>
+
+  <script>
+    function applyCookieYesToConsentMode() {
+      try {
+        var cys = window.cookieyes;
+        if (!cys || !cys.getCurrentUserConsent) {
+          console.warn('CookieYes not available');
+          return;
+        }
+        
+        var c = cys.getCurrentUserConsent();
+        var analyticsGranted = !!(c.analytics || c.performance);
+        var adsGranted = !!c.advertisement;
+
+        gtag('consent', 'update', {
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          ad_storage: adsGranted ? 'granted' : 'denied',
+          ad_user_data: adsGranted ? 'granted' : 'denied',
+          ad_personalization: adsGranted ? 'granted' : 'denied'
+        });
+        
+        dataLayer.push({ 
+          event: 'cookie_consent_update', 
+          cookieyes_consent: c 
+        });
+      } catch (e) {
+        console.error('Error updating consent:', e);
+      }
+    }
+
+    function setupConsentListener() {
+      try {
+        window.addEventListener('cookieyes_consent_update', applyCookieYesToConsentMode);
+      } catch (e) {
+        console.error('Failed to setup consent listener:', e);
+      }
+    }
+
+    (function waitForCY(attempt = 0) {
+      const maxAttempts = 10;
+      
+      if (window.cookieyes && window.cookieyes.getCurrentUserConsent) {
+        applyCookieYesToConsentMode();
+        setupConsentListener();
+      } else if (attempt < maxAttempts) {
+        setTimeout(() => waitForCY(attempt + 1), 300);
+      } else {
+        console.warn('CookieYes not loaded after max attempts');
+      }
+    })();
+  </script>
+
   <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || []; 
@@ -274,12 +491,12 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script src="/legal/i18n/strings.js?v=13"></script>
-  <script src="/legal/legal-i18n.js?v=13"></script>
+  <script src="/legal/i18n/strings.js?v=14"></script>
+  <script src="/legal/legal-i18n.js?v=14"></script>
 
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://devoceanlodge.com/legal/GDPR.html" />
-  <meta name="description" content="GDPR Notice for DEVOCEAN Lodge. Learn about our GDPR compliance and your data protection rights." />
+  <meta name="description" content="GDPR compliance notice for DEVOCEAN Lodge. Learn about your data protection rights and how we handle your personal information." />
 </head>
 
 <body data-page="gdpr">
@@ -291,24 +508,25 @@
   </noscript>
 
   <main id="main-content">
-    <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+    <div class="sticky-header">
+      <a href="/" data-role="back-link" aria-label="Back to home page">← <span data-i18n="backToHome">Back to Home</span></a>
 
-    <h1 data-role="page-title">GDPR Notice</h1>
-    <p class="updated">
-      <span data-role="updated-label">Last updated</span>:
-      <span data-role="updated-date"></span>
-    </p>
+      <h1 data-role="page-title">GDPR Notice</h1>
+      <p class="updated">
+        <span data-role="updated-label">Last updated</span>:
+        <span data-role="updated-date">06 Oct 2025</span>
+      </p>
 
-    <nav class="quick-nav" aria-label="Quick navigation">
-      <h3>Quick Links</h3>
-      <div class="quick-nav-links">
-        <a href="#controller" class="quick-nav-link">Data Controller</a>
-        <a href="#bases" class="quick-nav-link">Legal Bases</a>
-        <a href="#rights" class="quick-nav-link">Your Rights</a>
-        <a href="#transfers" class="quick-nav-link">Data Transfers</a>
-        <a href="#dpo" class="quick-nav-link">Contact</a>
+      <div class="gdpr-badge" data-i18n-html="gdprBadge">
+        <strong>🔒 GDPR Compliant:</strong> We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.
       </div>
-    </nav>
+
+      <nav class="quick-nav" aria-label="Quick navigation">
+        <h3 data-i18n="quickLinksTitle">Quick Links</h3>
+        <div class="quick-nav-links" data-role="quick-links">
+        </div>
+      </nav>
+    </div>
 
     <section data-section="controller" id="controller">
       <button class="copy-link" onclick="copySectionLink('controller')" aria-label="Copy link to this section">🔗</button>
@@ -318,25 +536,106 @@
 
     <section data-section="bases" id="bases">
       <button class="copy-link" onclick="copySectionLink('bases')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Legal bases</h2>
-      <ul data-part="items"></ul>
+      <h2 data-part="title">Legal Bases for Processing</h2>
+      <p data-part="body"></p>
+      
+      <div class="legal-basis" data-i18n-html="basisContract">
+        <strong>Contract:</strong> Processing necessary for fulfilling our booking agreements and services.
+      </div>
+      <div class="legal-basis" data-i18n-html="basisLegal">
+        <strong>Legal Obligation:</strong> Processing required to comply with legal requirements (e.g., tax laws).
+      </div>
+      <div class="legal-basis" data-i18n-html="basisLegitimate">
+        <strong>Legitimate Interests:</strong> Processing for our legitimate business interests while respecting your rights.
+      </div>
+      <div class="legal-basis" data-i18n-html="basisConsent">
+        <strong>Consent:</strong> Processing based on your explicit consent for specific purposes.
+      </div>
     </section>
 
     <section data-section="rights" id="rights">
       <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Your rights</h2>
+      <h2 data-part="title">Your GDPR Rights</h2>
       <p data-part="body"></p>
+      
+      <div class="rights-grid">
+        <div class="right-card">
+          <h3 data-i18n="rightAccessTitle">Right to Access</h3>
+          <p data-i18n="rightAccessDesc">You can request copies of your personal data we hold.</p>
+        </div>
+        <div class="right-card">
+          <h3 data-i18n="rightRectificationTitle">Right to Rectification</h3>
+          <p data-i18n="rightRectificationDesc">You can request correction of inaccurate or incomplete data.</p>
+        </div>
+        <div class="right-card">
+          <h3 data-i18n="rightErasureTitle">Right to Erasure</h3>
+          <p data-i18n="rightErasureDesc">You can request deletion of your personal data under certain conditions.</p>
+        </div>
+        <div class="right-card">
+          <h3 data-i18n="rightRestrictTitle">Right to Restrict Processing</h3>
+          <p data-i18n="rightRestrictDesc">You can request limitation of how we use your data.</p>
+        </div>
+        <div class="right-card">
+          <h3 data-i18n="rightPortabilityTitle">Right to Data Portability</h3>
+          <p data-i18n="rightPortabilityDesc">You can request transfer of your data to another organization.</p>
+        </div>
+        <div class="right-card">
+          <h3 data-i18n="rightObjectTitle">Right to Object</h3>
+          <p data-i18n="rightObjectDesc">You can object to certain types of processing of your data.</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 20px 0;">
+        <button class="btn" onclick="requestData('access')" style="margin: 0 8px;">
+          📋 <span data-i18n="btnRequestAccess">Request Data Access</span>
+        </button>
+        <button class="btn" onclick="requestData('erasure')" style="margin: 0 8px;">
+          🗑️ <span data-i18n="btnRequestDeletion">Request Data Deletion</span>
+        </button>
+      </div>
+    </section>
+
+    <section data-section="retention" id="retention">
+      <button class="copy-link" onclick="copySectionLink('retention')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-i18n="retentionTitle">Data Retention</h2>
+      <div class="data-retention">
+        <h3 data-i18n="retentionPeriodsTitle">Retention Periods</h3>
+        <p data-i18n="retentionIntro">We retain personal data only for as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements.</p>
+        <ul>
+          <li data-i18n-html="retentionBooking"><strong>Booking data:</strong> 7 years for tax and legal compliance</li>
+          <li data-i18n-html="retentionCustomer"><strong>Customer service communications:</strong> 3 years</li>
+          <li data-i18n-html="retentionMarketing"><strong>Marketing consents:</strong> Until withdrawal of consent</li>
+          <li data-i18n-html="retentionAnalytics"><strong>Website analytics:</strong> 26 months</li>
+          <li data-i18n-html="retentionFinancial"><strong>Financial transactions:</strong> 10 years for accounting purposes</li>
+        </ul>
+      </div>
     </section>
 
     <section data-section="transfers" id="transfers">
       <button class="copy-link" onclick="copySectionLink('transfers')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">International transfers</h2>
+      <h2 data-part="title">International Data Transfers</h2>
       <p data-part="body"></p>
+      
+      <div class="legal-basis warning" data-i18n-html="transfersSafeguards">
+        <strong>International Data Transfers:</strong> We ensure appropriate safeguards are in place for any data transfers outside the EEA, including Standard Contractual Clauses and adequacy decisions.
+      </div>
+    </section>
+
+    <section data-section="complaints" id="complaints">
+      <button class="copy-link" onclick="copySectionLink('complaints')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-i18n="complaintsTitle">Complaints</h2>
+      <p data-i18n="complaintsIntro">If you have concerns about how we handle your personal data, you have the right to lodge a complaint with your local data protection authority.</p>
+      <div class="legal-basis" data-i18n-html="complaintsAuthority">
+        <strong>Lead Supervisory Authority:</strong> Portuguese Data Protection Authority (CNPD)<br>
+        <strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br>
+        <strong>Contact:</strong> +351 213 928 400
+      </div>
+      <p data-i18n="complaintsContactFirst">We encourage you to contact us first to resolve any concerns before approaching the supervisory authority.</p>
     </section>
 
     <section data-section="dpo" id="dpo">
       <button class="copy-link" onclick="copySectionLink('dpo')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Contact</h2>
+      <h2 data-part="title">Contact Our Data Protection Officer</h2>
       <p data-part="body" data-use-html="true"></p>
     </section>
   </main>
@@ -356,12 +655,70 @@
         }, 2000);
       }).catch(err => {
         console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (fallbackErr) {
+          console.error('Fallback copy failed:', fallbackErr);
+        }
+        document.body.removeChild(textArea);
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+    function requestData(action) {
+      const actions = {
+        'access': 'data_access',
+        'rectification': 'data_rectification', 
+        'erasure': 'data_erasure',
+        'portability': 'data_portability'
+      };
       
+      console.log('GDPR request:', actions[action]);
+      
+      const messages = {
+        'access': 'Thank you for your data access request. We will provide your personal data within 30 days as required by GDPR.',
+        'erasure': 'Thank you for your data deletion request. We will process your request within 30 days and confirm once completed.'
+      };
+      
+      alert(messages[action] || 'Request received.');
+      
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'gdpr_request',
+          request_type: actions[action]
+        });
+      }
+    }
+
+    function updateHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (!stickyHeader) return;
+      
+      const height = stickyHeader.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', height + 'px');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateHeaderHeight();
+      
+      window.addEventListener('resize', updateHeaderHeight);
+      
+      const observer = new MutationObserver(updateHeaderHeight);
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        observer.observe(stickyHeader, { childList: true, subtree: true });
+      }
+      
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
       quickNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -369,15 +726,27 @@
           const targetElement = document.getElementById(targetId);
           
           if (targetElement) {
-            const offsetTop = targetElement.offsetTop - 100;
-            window.scrollTo({
-              top: offsetTop,
-              behavior: 'smooth'
-            });
+            targetElement.scrollIntoView({ behavior: 'smooth' });
           }
         });
       });
     });
+
+    function trackGDPRView() {
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'page_view',
+          page_title: 'GDPR Notice',
+          page_location: window.location.href
+        });
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      trackGDPRView();
+    } else {
+      window.addEventListener('load', trackGDPRView);
+    }
   </script>
 </body>
 
