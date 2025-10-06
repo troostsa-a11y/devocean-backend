@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>DEVOCEAN Lodge — Company & Contact</title>
+
+  <style>
+    :root {
+      --brand: #9e4b13;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card-bg: #f8fafc;
+      --card-br: #e5e7eb;
+      --radius: 16px;
+      --focus: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 8px;
+      background: var(--brand);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      border-radius: 4px;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 8px;
+    }
+
+    *:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px 40px;
+    }
+
+    body.loading section[data-section] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    a[data-role="back-link"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+      transition: filter 0.2s ease;
+    }
+
+    a[data-role="back-link"]:hover {
+      filter: brightness(0.95);
+    }
+
+    h1[data-role="page-title"] {
+      margin: 18px 0 8px;
+      font-size: clamp(28px, 4vw, 32px);
+      line-height: 1.25;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 14px;
+    }
+
+    section[data-section] {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 18px 18px 8px;
+      margin: 18px 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+    }
+
+    section[data-section] h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.35;
+      scroll-margin-top: 80px;
+    }
+
+    .copy-link {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    section[data-section]:hover .copy-link {
+      opacity: 1;
+    }
+
+    .copy-link:hover {
+      background: rgba(0,0,0,0.05);
+    }
+
+    section[data-section] p {
+      margin: 0 0 12px;
+    }
+
+    section[data-section] ul {
+      margin: 0 0 10px 18px;
+    }
+
+    .company-info {
+      background: white;
+      border-left: 4px solid var(--brand);
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 8px;
+    }
+
+    .company-info dt {
+      font-weight: 600;
+      color: var(--brand);
+      margin-top: 12px;
+    }
+
+    .company-info dt:first-child {
+      margin-top: 0;
+    }
+
+    .company-info dd {
+      margin: 4px 0 0 0;
+      padding: 0;
+    }
+
+    .company-info a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .company-info a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-badge {
+      background: #e8f5e8;
+      border: 1px solid #10b981;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 0 0 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-badge::before {
+      content: "🏢";
+      font-size: 20px;
+    }
+
+    @media print {
+      .skip-link,
+      a[data-role="back-link"],
+      .copy-link {
+        display: none !important;
+      }
+      
+      section[data-section] {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        background: white !important;
+      }
+      
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      
+      .company-info {
+        border-left: 4px solid #666;
+      }
+      
+      .contact-badge {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin: 20px auto;
+        padding: 0 12px 32px;
+      }
+      
+      section[data-section] {
+        padding: 16px 16px 8px;
+        margin: 16px 0;
+      }
+      
+      .copy-link {
+        position: static;
+        opacity: 1;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+      
+      .company-info {
+        padding: 12px;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+      
+      section[data-section] {
+        border-width: 2px;
+      }
+    }
+  </style>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    const EEA_AND_GB = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO", "GB"];
+    
+    gtag('consent', 'default', {
+      ad_storage: 'denied', 
+      ad_user_data: 'denied',
+      ad_personalization: 'denied', 
+      analytics_storage: 'denied',
+      regions: EEA_AND_GB
+    });
+    
+    gtag('consent', 'default', {
+      ad_storage: 'granted', 
+      ad_user_data: 'granted',
+      ad_personalization: 'granted', 
+      analytics_storage: 'granted'
+    });
+  </script>
+
+  <script id="cookieyes" type="text/javascript"
+    src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js"></script>
+
+  <script>
+    function applyCookieYesToConsentMode() {
+      try {
+        var cys = window.cookieyes;
+        if (!cys || !cys.getCurrentUserConsent) {
+          console.warn('CookieYes not available');
+          return;
+        }
+        
+        var c = cys.getCurrentUserConsent();
+        var analyticsGranted = !!(c.analytics || c.performance);
+        var adsGranted = !!c.advertisement;
+
+        gtag('consent', 'update', {
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          ad_storage: adsGranted ? 'granted' : 'denied',
+          ad_user_data: adsGranted ? 'granted' : 'denied',
+          ad_personalization: adsGranted ? 'granted' : 'denied'
+        });
+        
+        dataLayer.push({ 
+          event: 'cookie_consent_update', 
+          cookieyes_consent: c 
+        });
+      } catch (e) {
+        console.error('Error updating consent:', e);
+      }
+    }
+
+    function setupConsentListener() {
+      try {
+        window.addEventListener('cookieyes_consent_update', applyCookieYesToConsentMode);
+      } catch (e) {
+        console.error('Failed to setup consent listener:', e);
+      }
+    }
+
+    (function waitForCY(attempt = 0) {
+      const maxAttempts = 10;
+      
+      if (window.cookieyes && window.cookieyes.getCurrentUserConsent) {
+        applyCookieYesToConsentMode();
+        setupConsentListener();
+      } else if (attempt < maxAttempts) {
+        setTimeout(() => waitForCY(attempt + 1), 300);
+      } else {
+        console.warn('CookieYes not loaded after max attempts');
+      }
+    })();
+  </script>
+
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; 
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true; 
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
+  </script>
+
+  <script>
+    (function() {
+      try {
+        var SUP = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
+        var lang = localStorage.getItem("site.lang");
+
+        document.body.classList.add('loading');
+
+        if (!lang || lang === "null") {
+          var nav = String(navigator.language || "en").toLowerCase();
+          var base = nav.split("-")[0];
+          
+          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
+          if (base === "pt-pt" || base === "pt-br") base = "pt";
+          if (SUP.indexOf(base) === -1) base = "en";
+          
+          localStorage.setItem("site.lang", base);
+          lang = base;
+        }
+
+        if (!localStorage.getItem("site.lang_source")) {
+          localStorage.setItem("site.lang_source", "auto");
+        }
+
+        if (!localStorage.getItem("site.currency")) {
+          var cc = (navigator.language || "").toUpperCase().split("-")[1] || "";
+          var CC2CUR = {
+            US: "USD", GB: "GBP",
+            NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
+            ZA: "ZAR", MZ: "MZN"
+          };
+          var cur = CC2CUR[cc] || (lang === "ptmz" ? "MZN" : "EUR");
+          localStorage.setItem("site.currency", cur);
+        }
+
+        document.documentElement.setAttribute("lang", lang || "en");
+      } catch (e) {
+        console.error('Error in language detection:', e);
+        document.documentElement.setAttribute("lang", "en");
+      }
+    })();
+  </script>
+
+  <script src="/legal/i18n/strings.js?v=11"></script>
+  <script src="/legal/legal-i18n.js?v=11"></script>
+
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/cric.html" />
+  <meta name="description" content="Company registration information and contact details for DEVOCEAN Lodge." />
+</head>
+
+<body data-page="cric">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+      style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+  </noscript>
+
+  <main id="main-content">
+    <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+
+    <h1 data-role="page-title">CRIC — Company & Contact</h1>
+    <p class="updated">
+      <span data-role="updated-label">Last updated</span>:
+      <span data-role="updated-date">27 Sep 2025</span>
+    </p>
+
+    <div class="contact-badge">
+      <strong>Official Company Information:</strong> Complete business registration details and contact information for DEVOCEAN Lodge.
+    </div>
+
+    <section data-section="intro" id="intro">
+      <button class="copy-link" onclick="copySectionLink('intro')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Overview</h2>
+      <p data-part="body"></p>
+      
+      <div class="company-info" data-company-details>
+        <dl>
+          <dt data-part="company-name-label">Company Name</dt>
+          <dd data-part="company-name">DEVOCEAN Lodge Lda.</dd>
+          
+          <dt data-part="registration-label">Commercial Registration</dt>
+          <dd data-part="registration-number">123456789</dd>
+          
+          <dt data-part="vat-label">VAT Number</dt>
+          <dd data-part="vat-number">PT123456789</dd>
+          
+          <dt data-part="legal-form-label">Legal Form</dt>
+          <dd data-part="legal-form">Limited Liability Company</dd>
+          
+          <dt data-part="capital-label">Share Capital</dt>
+          <dd data-part="capital-amount">€50,000.00</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section data-section="contact" id="contact">
+      <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Contact</h2>
+      <p data-part="body" data-use-html="true"></p>
+      
+      <div class="company-info">
+        <dl>
+          <dt data-part="address-label">Registered Address</dt>
+          <dd data-part="company-address">
+            Praia do Tofo,<br>
+            Inhambane Province,<br>
+            Mozambique
+          </dd>
+          
+          <dt data-part="email-label">Email</dt>
+          <dd>
+            <a href="mailto:info@devoceanlodge.com" data-part="company-email">
+              info@devoceanlodge.com
+            </a>
+          </dd>
+          
+          <dt data-part="phone-label">Phone</dt>
+          <dd>
+            <a href="tel:+258841234567" data-part="company-phone">
+              +258 84 123 4567
+            </a>
+          </dd>
+          
+          <dt data-part="business-hours-label">Business Hours</dt>
+          <dd data-part="business-hours">
+            Monday - Sunday: 7:00 AM - 10:00 PM<br>
+            Front Desk: 24/7 for guests
+          </dd>
+        </dl>
+      </div>
+    </section>
+
+    <section data-section="emergency" id="emergency">
+      <button class="copy-link" onclick="copySectionLink('emergency')" aria-label="Copy link to this section">🔗</button>
+      <h2>Emergency Contact</h2>
+      <div class="company-info">
+        <dl>
+          <dt>Emergency Phone</dt>
+          <dd>
+            <a href="tel:+258851234567">+258 85 123 4567</a>
+            <br><small>For urgent matters outside business hours</small>
+          </dd>
+          
+          <dt>Emergency Email</dt>
+          <dd>
+            <a href="mailto:emergency@devoceanlodge.com">emergency@devoceanlodge.com</a>
+          </dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (fallbackErr) {
+          console.error('Fallback copy failed:', fallbackErr);
+        }
+        document.body.removeChild(textArea);
+      });
+    }
+
+    function trackContactClick(type) {
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'contact_click',
+          contact_type: type
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactLinks = document.querySelectorAll('.company-info a[href^="tel"], .company-info a[href^="mailto"]');
+      
+      contactLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          const type = this.getAttribute('href').startsWith('tel') ? 'phone' : 'email';
+          trackContactClick(type);
+        });
+      });
+    });
+
+    window.setSiteLocale = window.setSiteLocale || function (opts) {
+      function normLang(s) { 
+        s = String(s || '').toLowerCase().replace('_', '-'); 
+        if (s === 'pt-mz') s = 'ptmz'; 
+        if (s === 'pt-pt' || s === 'pt-br') s = 'pt'; 
+        if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2); 
+        return s || 'en'; 
+      }
+      
+      function clampCur(c) { 
+        if (!c) return null; 
+        c = String(c).toUpperCase().replace(/[^A-Z]/g, ''); 
+        return c.length === 3 ? c : null; 
+      }
+      
+      try {
+        if (opts && opts.lang) {
+          localStorage.setItem('site.lang', normLang(opts.lang));
+        }
+        if (opts && opts.currency) {
+          localStorage.setItem('site.currency', clampCur(opts.currency) || 'EUR');
+        }
+        localStorage.setItem('site.lang_source', 'user');
+        document.body.classList.add('loading');
+      } catch (e) {
+        console.error('Error setting locale:', e);
+      }
+      
+      location.reload();
+    };
+
+    window.addEventListener('DOMContentLoaded', function() {
+      const checkI18n = setInterval(() => {
+        if (document.querySelector('[data-part].hydrated')) {
+          document.body.classList.remove('loading');
+          clearInterval(checkI18n);
+        }
+      }, 100);
+
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+      }, 3000);
+    });
+
+    window.addEventListener('error', function(e) {
+      if (e.message.includes('i18n') || e.filename.includes('legal-i18n')) {
+        console.error('i18n error detected, falling back to English');
+        document.body.classList.remove('loading');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const companyStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "Hotel",
+        "name": "DEVOCEAN Lodge",
+        "description": "Luxury beachfront accommodation in Tofo, Mozambique",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Praia do Tofo",
+          "addressLocality": "Inhambane",
+          "addressCountry": "MZ"
+        },
+        "telephone": "+258841234567",
+        "email": "info@devoceanlodge.com",
+        "url": "https://devoceanlodge.com",
+        "priceRange": "$$$",
+        "openingHours": "Mo-Su 07:00-22:00"
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(companyStructuredData);
+      document.head.appendChild(script);
+    });
+  </script>
+</body>
+
+</html>
