@@ -711,11 +711,23 @@
         if (document.querySelector('[data-part].hydrated')) {
           document.body.classList.remove('loading');
           clearInterval(checkI18n);
+          
+          const header = document.querySelector('.sticky-header');
+          if (header) {
+            const height = header.offsetHeight;
+            document.documentElement.style.setProperty('--header-height', height + 'px');
+          }
         }
       }, 100);
 
       setTimeout(() => {
         document.body.classList.remove('loading');
+        
+        const header = document.querySelector('.sticky-header');
+        if (header) {
+          const height = header.offsetHeight;
+          document.documentElement.style.setProperty('--header-height', height + 'px');
+        }
       }, 3000);
     });
 
