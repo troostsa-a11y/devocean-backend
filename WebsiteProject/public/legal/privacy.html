@@ -184,6 +184,14 @@
       font-size: 14px;
     }
 
+    .sticky-header {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      background: white;
+      padding-bottom: 4px;
+    }
+
     .privacy-badge {
       background: #e8f5e8;
       border: 1px solid var(--success);
@@ -193,9 +201,6 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      position: sticky;
-      top: 20px;
-      z-index: 101;
     }
 
     .privacy-badge::before {
@@ -255,9 +260,6 @@
       border-radius: var(--radius);
       padding: 16px;
       margin: 0 0 24px 0;
-      position: sticky;
-      top: 90px;
-      z-index: 100;
     }
 
     .quick-nav h3 {
@@ -445,14 +447,16 @@
       <span data-role="updated-date"></span>
     </p>
 
-    <div class="privacy-badge">
-      <strong>Your Privacy Matters:</strong> We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information.
-    </div>
+    <div class="sticky-header">
+      <div class="privacy-badge">
+        <strong>Your Privacy Matters:</strong> We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information.
+      </div>
 
-    <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
-      <h3 data-part="title">Quick Links</h3>
-      <div class="quick-nav-links" data-part="links"></div>
-    </nav>
+      <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
+        <h3 data-part="title">Quick Links</h3>
+        <div class="quick-nav-links" data-part="links"></div>
+      </nav>
+    </div>
 
     <section data-section="who" id="who">
       <button class="copy-link" onclick="copySectionLink('who')" aria-label="Copy link to this section">🔗</button>
