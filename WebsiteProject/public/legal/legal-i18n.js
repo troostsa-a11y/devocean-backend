@@ -141,6 +141,7 @@
       var t = sec.querySelector('[data-part="title"]');
       var p = sec.querySelector('[data-part="body"]');
       var ul = sec.querySelector('[data-part="items"]');
+      var f = sec.querySelector('[data-part="footer"]');
 
       if (t && data.title) t.textContent = data.title;
 
@@ -160,6 +161,14 @@
             li.textContent = String(item);
             ul.appendChild(li);
           });
+        }
+      }
+
+      if (f) {
+        if (typeof data.footer === "string" && data.footer.trim() !== "") {
+          f.textContent = data.footer;
+        } else if (f.parentNode) {
+          f.parentNode.removeChild(f);
         }
       }
     });

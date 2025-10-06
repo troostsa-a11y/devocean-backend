@@ -45,7 +45,7 @@
       sections: {
         who: {
           title: "Who we are",
-          body: "DEVOCEAN Lodge is a brand of TERRAfrique LDA. We operate eco-friendly accommodation in Ponta do Ouro, Mozambique. We are committed to protecting your privacy and ensuring that your personal data is collected and used properly, lawfully, and transparently."
+          body: "DEVOCEAN Lodge is operated by TERRAfrique LDA, a company registered in Mozambique. Our registered address is Rua C, Parcela 12, Maputo 1118, Mozambique. We operate eco-friendly beach accommodation in Ponta do Ouro, Mozambique. We are committed to protecting your privacy and ensuring that your personal data is collected, processed, and used properly, lawfully, and transparently in accordance with applicable data protection laws. By accessing or using our website and services, you consent to the collection and use of your information as described in this Privacy Policy."
         },
         collect: {
           title: "What personal data we collect",
@@ -92,10 +92,15 @@
         share: {
           title: "When we share data",
           items: [
-            "Payment providers and booking platforms, as needed to fulfil your booking",
-            "Service providers under contract (IT/hosting/analytics)",
-            "Authorities where required by law"
-          ]
+            "Payment providers and booking platforms to process your reservations and payments",
+            "Analytics services to understand website usage and improve our services",
+            "Advertising services for targeted marketing (only with your consent)",
+            "IT service providers, hosting providers, and technical support vendors under strict confidentiality agreements",
+            "Legal authorities when required by law, regulation, court order, or other legal process",
+            "To enforce our agreements or protect our rights, property, or safety",
+            "In the event of a merger, acquisition, or sale of assets, your information may be transferred to the new owner"
+          ],
+          footer: "We require all third parties to respect the security of your personal data and use it only for the purposes for which it was transferred. We do not allow third parties to use your personal data for their own purposes and only permit them to process your data for specified purposes in accordance with our instructions."
         },
         security: {
           title: "Security measures",
@@ -109,7 +114,7 @@
         },
         retention: {
           title: "Data retention",
-          body: "We keep data only as long as necessary for the purposes above or as required by law. Typically, booking data is retained for 7 years for tax purposes, marketing data until you opt-out."
+          body: "We will retain your personal information for as long as necessary to fulfill the purposes for which it was collected, as detailed in this Privacy Policy. Generally, we retain personal data for up to 1 year after your last interaction with us, unless a longer retention period is required or permitted by law. We may need to retain certain information for longer periods for specific reasons including: record-keeping and reporting in accordance with applicable law (typically 7 years for financial and tax records), enforcement of legal rights, fraud prevention, and dispute resolution. Once the retention period expires, your personal data will be securely deleted or anonymized. Residual anonymous information and aggregate information, which does not identify you directly or indirectly, may be stored indefinitely for statistical and analytical purposes."
         },
         rights: {
           title: "Your privacy rights",
@@ -124,7 +129,7 @@
         },
         contact: {
           title: "Contact our privacy team",
-          body: 'For privacy-related inquiries or to exercise your rights, contact us at: <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a> or write to TERRAfrique LDA, Ponta do Ouro, Mozambique.'
+          body: 'If you have any questions, concerns, or requests regarding this Privacy Policy or the processing of your personal information, or if you wish to exercise any of your privacy rights, please contact us at:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Phone:</strong> +258 8441 82252<br><strong>Postal Address:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>We will respond to your request in accordance with applicable data protection law. For grievances or concerns about the processing of your information, you may also contact our Data Protection Officer at the email address above.'
         }
       }
     },
