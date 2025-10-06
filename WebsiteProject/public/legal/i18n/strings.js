@@ -644,6 +644,78 @@
           }
         }
       }
+    },
+
+    gdpr: {
+      title: "DSGVO-Hinweis",
+      updatedDate: "06 Okt 2025",
+      backToHome: "Zur Startseite",
+      quickLinksTitle: "Schnelllinks",
+      gdprBadge: '<strong>DSGVO-konform:</strong> Wir verpflichten uns, Ihre personenbezogenen Daten zu schützen und Ihre Datenschutzrechte gemäß der Datenschutz-Grundverordnung zu respektieren.',
+      quickLinks: {
+        title: "Schnelllinks",
+        links: [
+          { id: "controller", text: "Verantwortlicher" },
+          { id: "bases", text: "Rechtsgrundlagen" },
+          { id: "rights", text: "Ihre Rechte" },
+          { id: "retention", text: "Datenspeicherung" },
+          { id: "transfers", text: "Datenübermittlungen" },
+          { id: "complaints", text: "Beschwerden" }
+        ]
+      },
+      sections: {
+        controller: {
+          title: "Datenverantwortlicher",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), eingetragen unter Rua C, Parcela 12, Maputo 1118, Mosambik, fungiert als Datenverantwortlicher für Ihre personenbezogenen Daten, die über unsere Dienste erhoben werden."
+        },
+        bases: {
+          title: "Rechtsgrundlagen für die Verarbeitung",
+          body: "Wir verarbeiten Ihre personenbezogenen Daten auf Grundlage folgender Rechtsgrundlagen gemäß DSGVO:"
+        },
+        rights: {
+          title: "Ihre DSGVO-Rechte",
+          body: "Als betroffene Person gemäß DSGVO haben Sie folgende Rechte in Bezug auf Ihre personenbezogenen Daten:"
+        },
+        transfers: {
+          title: "Internationale Datenübermittlungen",
+          body: "Wenn wir Ihre Daten außerhalb des Europäischen Wirtschaftsraums (EWR) übermitteln, stellen wir sicher, dass angemessene Schutzmaßnahmen zum Schutz Ihrer Informationen vorhanden sind. Dies kann die Verwendung von Standardvertragsklauseln umfassen, die von der Europäischen Kommission genehmigt wurden, oder die Übermittlung von Daten in Länder mit Angemessenheitsbeschlüssen."
+        },
+        dpo: {
+          title: "Kontaktieren Sie unseren Datenschutzbeauftragten",
+          body: 'Für alle DSGVO-bezogenen Fragen oder zur Ausübung Ihrer Rechte wenden Sie sich bitte an unseren Datenschutzbeauftragten unter <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Wir werden auf Ihre Anfrage innerhalb von 30 Tagen antworten, wie von der DSGVO vorgeschrieben.'
+        }
+      },
+      basisContract: '<strong>Vertrag:</strong> Verarbeitung erforderlich zur Erfüllung unserer Buchungsvereinbarungen und Dienstleistungen.',
+      basisLegal: '<strong>Rechtliche Verpflichtung:</strong> Verarbeitung erforderlich zur Einhaltung gesetzlicher Anforderungen (z.B. Steuergesetze).',
+      basisLegitimate: '<strong>Berechtigte Interessen:</strong> Verarbeitung für unsere berechtigten Geschäftsinteressen unter Wahrung Ihrer Rechte.',
+      basisConsent: '<strong>Einwilligung:</strong> Verarbeitung basierend auf Ihrer ausdrücklichen Einwilligung für bestimmte Zwecke.',
+      rightAccessTitle: 'Auskunftsrecht',
+      rightAccessDesc: 'Sie können Kopien Ihrer von uns gespeicherten personenbezogenen Daten anfordern.',
+      rightRectificationTitle: 'Recht auf Berichtigung',
+      rightRectificationDesc: 'Sie können die Korrektur ungenauer oder unvollständiger Daten verlangen.',
+      rightErasureTitle: 'Recht auf Löschung',
+      rightErasureDesc: 'Sie können unter bestimmten Bedingungen die Löschung Ihrer personenbezogenen Daten verlangen.',
+      rightRestrictTitle: 'Recht auf Einschränkung der Verarbeitung',
+      rightRestrictDesc: 'Sie können die Einschränkung der Verwendung Ihrer Daten verlangen.',
+      rightPortabilityTitle: 'Recht auf Datenübertragbarkeit',
+      rightPortabilityDesc: 'Sie können die Übertragung Ihrer Daten an eine andere Organisation verlangen.',
+      rightObjectTitle: 'Widerspruchsrecht',
+      rightObjectDesc: 'Sie können gegen bestimmte Arten der Verarbeitung Ihrer Daten Widerspruch einlegen.',
+      btnRequestAccess: 'Datenzugriff anfordern',
+      btnRequestDeletion: 'Datenlöschung anfordern',
+      retentionTitle: 'Datenspeicherung',
+      retentionPeriodsTitle: 'Aufbewahrungsfristen',
+      retentionIntro: 'Wir speichern personenbezogene Daten nur so lange, wie es zur Erfüllung der Zwecke erforderlich ist, für die sie erhoben wurden, einschließlich rechtlicher, buchhalterischer oder Berichtspflichten.',
+      retentionBooking: '<strong>Buchungsdaten:</strong> 7 Jahre für steuerliche und rechtliche Compliance',
+      retentionCustomer: '<strong>Kundendienst-Kommunikation:</strong> 3 Jahre',
+      retentionMarketing: '<strong>Marketing-Einwilligungen:</strong> Bis zum Widerruf der Einwilligung',
+      retentionAnalytics: '<strong>Website-Analysen:</strong> 26 Monate',
+      retentionFinancial: '<strong>Finanztransaktionen:</strong> 10 Jahre für Buchhaltungszwecke',
+      transfersSafeguards: '<strong>Internationale Datenübermittlungen:</strong> Wir stellen sicher, dass für alle Datenübermittlungen außerhalb des EWR angemessene Schutzmaßnahmen vorhanden sind, einschließlich Standardvertragsklauseln und Angemessenheitsbeschlüsse.',
+      complaintsTitle: 'Beschwerden',
+      complaintsIntro: 'Wenn Sie Bedenken hinsichtlich der Handhabung Ihrer personenbezogenen Daten haben, haben Sie das Recht, eine Beschwerde bei Ihrer örtlichen Datenschutzbehörde einzureichen.',
+      complaintsAuthority: '<strong>Federführende Aufsichtsbehörde:</strong> Portugiesische Datenschutzbehörde (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Kontakt:</strong> +351 213 928 400',
+      complaintsContactFirst: 'Wir ermutigen Sie, uns zuerst zu kontaktieren, um Bedenken zu klären, bevor Sie sich an die Aufsichtsbehörde wenden.'
     }
   };
 
@@ -900,6 +972,78 @@
           }
         }
       }
+    },
+
+    gdpr: {
+      title: "AVG-kennisgeving",
+      updatedDate: "06 okt 2025",
+      backToHome: "Terug naar Home",
+      quickLinksTitle: "Snelkoppelingen",
+      gdprBadge: '<strong>AVG-conform:</strong> Wij zijn toegewijd aan het beschermen van uw persoonlijke gegevens en het respecteren van uw privacyrechten onder de Algemene Verordening Gegevensbescherming.',
+      quickLinks: {
+        title: "Snelkoppelingen",
+        links: [
+          { id: "controller", text: "Verwerkingsverantwoordelijke" },
+          { id: "bases", text: "Rechtsgrondslagen" },
+          { id: "rights", text: "Uw rechten" },
+          { id: "retention", text: "Gegevensbewaring" },
+          { id: "transfers", text: "Gegevensoverdrachten" },
+          { id: "complaints", text: "Klachten" }
+        ]
+      },
+      sections: {
+        controller: {
+          title: "Verwerkingsverantwoordelijke",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), geregistreerd op Rua C, Parcela 12, Maputo 1118, Mozambique, treedt op als verwerkingsverantwoordelijke voor uw persoonlijke informatie die via onze diensten wordt verzameld."
+        },
+        bases: {
+          title: "Rechtsgrondslagen voor verwerking",
+          body: "Wij verwerken uw persoonlijke gegevens op basis van de volgende rechtsgrondslagen onder de AVG:"
+        },
+        rights: {
+          title: "Uw AVG-rechten",
+          body: "Als betrokkene onder de AVG heeft u de volgende rechten met betrekking tot uw persoonlijke gegevens:"
+        },
+        transfers: {
+          title: "Internationale gegevensoverdrachten",
+          body: "Wanneer wij uw gegevens buiten de Europese Economische Ruimte (EER) overdragen, zorgen wij ervoor dat passende waarborgen aanwezig zijn om uw informatie te beschermen. Dit kan het gebruik van Standaardcontractbepalingen omvatten die door de Europese Commissie zijn goedgekeurd, of het overdragen van gegevens naar landen met adequaatheidsbeslissingen."
+        },
+        dpo: {
+          title: "Neem contact op met onze Functionaris Gegevensbescherming",
+          body: 'Voor alle AVG-gerelateerde vragen of om uw rechten uit te oefenen, neem contact op met onze Functionaris Gegevensbescherming via <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Wij zullen binnen 30 dagen op uw verzoek reageren, zoals vereist door de AVG.'
+        }
+      },
+      basisContract: '<strong>Contract:</strong> Verwerking noodzakelijk voor het nakomen van onze boekingsovereenkomsten en diensten.',
+      basisLegal: '<strong>Wettelijke verplichting:</strong> Verwerking vereist om te voldoen aan wettelijke vereisten (bijv. belastingwetten).',
+      basisLegitimate: '<strong>Gerechtvaardigde belangen:</strong> Verwerking voor onze gerechtvaardigde bedrijfsbelangen met respect voor uw rechten.',
+      basisConsent: '<strong>Toestemming:</strong> Verwerking op basis van uw uitdrukkelijke toestemming voor specifieke doeleinden.',
+      rightAccessTitle: 'Recht op toegang',
+      rightAccessDesc: 'U kunt kopieën van uw persoonlijke gegevens die wij bewaren opvragen.',
+      rightRectificationTitle: 'Recht op rectificatie',
+      rightRectificationDesc: 'U kunt correctie van onjuiste of onvolledige gegevens aanvragen.',
+      rightErasureTitle: 'Recht op wissen',
+      rightErasureDesc: 'U kunt onder bepaalde voorwaarden verwijdering van uw persoonlijke gegevens aanvragen.',
+      rightRestrictTitle: 'Recht op beperking van verwerking',
+      rightRestrictDesc: 'U kunt beperking aanvragen van hoe wij uw gegevens gebruiken.',
+      rightPortabilityTitle: 'Recht op gegevensoverdraagbaarheid',
+      rightPortabilityDesc: 'U kunt overdracht van uw gegevens naar een andere organisatie aanvragen.',
+      rightObjectTitle: 'Recht op bezwaar',
+      rightObjectDesc: 'U kunt bezwaar maken tegen bepaalde soorten verwerking van uw gegevens.',
+      btnRequestAccess: 'Gegevenstoegang aanvragen',
+      btnRequestDeletion: 'Gegevensverwijdering aanvragen',
+      retentionTitle: 'Gegevensbewaring',
+      retentionPeriodsTitle: 'Bewaringstermijnen',
+      retentionIntro: 'Wij bewaren persoonlijke gegevens alleen zolang als nodig is om de doeleinden te vervullen waarvoor ze zijn verzameld, inclusief wettelijke, boekhoudkundige of rapportagevereisten.',
+      retentionBooking: '<strong>Boekingsgegevens:</strong> 7 jaar voor belasting- en wettelijke naleving',
+      retentionCustomer: '<strong>Klantendienst communicatie:</strong> 3 jaar',
+      retentionMarketing: '<strong>Marketingtoestemmingen:</strong> Tot intrekking van toestemming',
+      retentionAnalytics: '<strong>Website-analyses:</strong> 26 maanden',
+      retentionFinancial: '<strong>Financiële transacties:</strong> 10 jaar voor boekhoudkundige doeleinden',
+      transfersSafeguards: '<strong>Internationale gegevensoverdrachten:</strong> Wij zorgen ervoor dat passende waarborgen aanwezig zijn voor alle gegevensoverdrachten buiten de EER, inclusief Standaardcontractbepalingen en adequaatheidsbeslissingen.',
+      complaintsTitle: 'Klachten',
+      complaintsIntro: 'Als u zorgen heeft over hoe wij uw persoonlijke gegevens behandelen, heeft u het recht om een klacht in te dienen bij uw lokale gegevensbeschermingsautoriteit.',
+      complaintsAuthority: '<strong>Leidende toezichthoudende autoriteit:</strong> Portugese Autoriteit Gegevensbescherming (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contact:</strong> +351 213 928 400',
+      complaintsContactFirst: 'Wij moedigen u aan om eerst contact met ons op te nemen om eventuele zorgen op te lossen voordat u de toezichthoudende autoriteit benadert.'
     }
   };
 
@@ -1156,6 +1300,78 @@
           }
         }
       }
+    },
+
+    gdpr: {
+      title: "Aviso RGPD",
+      updatedDate: "06 out 2025",
+      backToHome: "Voltar à Página Inicial",
+      quickLinksTitle: "Links rápidos",
+      gdprBadge: '<strong>Conformidade RGPD:</strong> Estamos comprometidos em proteger os seus dados pessoais e respeitar os seus direitos de privacidade ao abrigo do Regulamento Geral sobre a Proteção de Dados.',
+      quickLinks: {
+        title: "Links rápidos",
+        links: [
+          { id: "controller", text: "Responsável" },
+          { id: "bases", text: "Fundamentos Legais" },
+          { id: "rights", text: "Os seus direitos" },
+          { id: "retention", text: "Retenção de dados" },
+          { id: "transfers", text: "Transferências de dados" },
+          { id: "complaints", text: "Reclamações" }
+        ]
+      },
+      sections: {
+        controller: {
+          title: "Responsável pelo Tratamento de Dados",
+          body: "A TERRAfrique LDA (DEVOCEAN Lodge), registada na Rua C, Parcela 12, Maputo 1118, Moçambique, atua como responsável pelo tratamento das suas informações pessoais recolhidas através dos nossos serviços."
+        },
+        bases: {
+          title: "Fundamentos Legais para o Tratamento",
+          body: "Tratamos os seus dados pessoais com base nos seguintes fundamentos legais ao abrigo do RGPD:"
+        },
+        rights: {
+          title: "Os seus direitos ao abrigo do RGPD",
+          body: "Como titular de dados ao abrigo do RGPD, tem os seguintes direitos relativos aos seus dados pessoais:"
+        },
+        transfers: {
+          title: "Transferências Internacionais de Dados",
+          body: "Quando transferimos os seus dados para fora do Espaço Económico Europeu (EEE), garantimos que existem salvaguardas adequadas para proteger as suas informações. Isto pode incluir o uso de Cláusulas Contratuais Tipo aprovadas pela Comissão Europeia ou a transferência de dados para países com decisões de adequação."
+        },
+        dpo: {
+          title: "Contacte o nosso Encarregado de Proteção de Dados",
+          body: 'Para quaisquer questões relacionadas com o RGPD ou para exercer os seus direitos, contacte o nosso Encarregado de Proteção de Dados em <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Responderemos ao seu pedido dentro de 30 dias, conforme exigido pelo RGPD.'
+        }
+      },
+      basisContract: '<strong>Contrato:</strong> Tratamento necessário para cumprir os nossos acordos de reserva e serviços.',
+      basisLegal: '<strong>Obrigação Legal:</strong> Tratamento exigido para cumprir requisitos legais (por exemplo, leis fiscais).',
+      basisLegitimate: '<strong>Interesses Legítimos:</strong> Tratamento para os nossos interesses comerciais legítimos, respeitando os seus direitos.',
+      basisConsent: '<strong>Consentimento:</strong> Tratamento baseado no seu consentimento explícito para fins específicos.',
+      rightAccessTitle: 'Direito de Acesso',
+      rightAccessDesc: 'Pode solicitar cópias dos seus dados pessoais que detemos.',
+      rightRectificationTitle: 'Direito de Retificação',
+      rightRectificationDesc: 'Pode solicitar a correção de dados incorretos ou incompletos.',
+      rightErasureTitle: 'Direito ao Apagamento',
+      rightErasureDesc: 'Pode solicitar a eliminação dos seus dados pessoais sob certas condições.',
+      rightRestrictTitle: 'Direito à Limitação do Tratamento',
+      rightRestrictDesc: 'Pode solicitar a limitação de como usamos os seus dados.',
+      rightPortabilityTitle: 'Direito à Portabilidade dos Dados',
+      rightPortabilityDesc: 'Pode solicitar a transferência dos seus dados para outra organização.',
+      rightObjectTitle: 'Direito de Oposição',
+      rightObjectDesc: 'Pode opor-se a certos tipos de tratamento dos seus dados.',
+      btnRequestAccess: 'Solicitar Acesso aos Dados',
+      btnRequestDeletion: 'Solicitar Eliminação de Dados',
+      retentionTitle: 'Retenção de Dados',
+      retentionPeriodsTitle: 'Períodos de Retenção',
+      retentionIntro: 'Retemos dados pessoais apenas pelo tempo necessário para cumprir os fins para os quais foram recolhidos, incluindo requisitos legais, contabilísticos ou de reporte.',
+      retentionBooking: '<strong>Dados de reserva:</strong> 7 anos para conformidade fiscal e legal',
+      retentionCustomer: '<strong>Comunicações de atendimento ao cliente:</strong> 3 anos',
+      retentionMarketing: '<strong>Consentimentos de marketing:</strong> Até à retirada do consentimento',
+      retentionAnalytics: '<strong>Análises do website:</strong> 26 meses',
+      retentionFinancial: '<strong>Transações financeiras:</strong> 10 anos para fins contabilísticos',
+      transfersSafeguards: '<strong>Transferências Internacionais de Dados:</strong> Garantimos que existem salvaguardas adequadas para todas as transferências de dados fora do EEE, incluindo Cláusulas Contratuais Tipo e decisões de adequação.',
+      complaintsTitle: 'Reclamações',
+      complaintsIntro: 'Se tiver preocupações sobre como tratamos os seus dados pessoais, tem o direito de apresentar uma reclamação à sua autoridade local de proteção de dados.',
+      complaintsAuthority: '<strong>Autoridade de Supervisão Principal:</strong> Comissão Nacional de Proteção de Dados (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contacto:</strong> +351 213 928 400',
+      complaintsContactFirst: 'Encorajamos que nos contacte primeiro para resolver quaisquer preocupações antes de abordar a autoridade de supervisão.'
     }
   };
 
@@ -1415,6 +1631,78 @@
           }
         }
       }
+    },
+
+    gdpr: {
+      title: "Avis RGPD",
+      updatedDate: "06 oct 2025",
+      backToHome: "Retour à l'accueil",
+      quickLinksTitle: "Liens rapides",
+      gdprBadge: '<strong>Conforme au RGPD:</strong> Nous nous engageons à protéger vos données personnelles et à respecter vos droits à la vie privée conformément au Règlement Général sur la Protection des Données.',
+      quickLinks: {
+        title: "Liens rapides",
+        links: [
+          { id: "controller", text: "Responsable" },
+          { id: "bases", text: "Fondements juridiques" },
+          { id: "rights", text: "Vos droits" },
+          { id: "retention", text: "Conservation des données" },
+          { id: "transfers", text: "Transferts de données" },
+          { id: "complaints", text: "Réclamations" }
+        ]
+      },
+      sections: {
+        controller: {
+          title: "Responsable du traitement des données",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), enregistrée à Rua C, Parcela 12, Maputo 1118, Mozambique, agit en tant que responsable du traitement de vos informations personnelles collectées via nos services."
+        },
+        bases: {
+          title: "Fondements juridiques du traitement",
+          body: "Nous traitons vos données personnelles sur la base des fondements juridiques suivants en vertu du RGPD :"
+        },
+        rights: {
+          title: "Vos droits en vertu du RGPD",
+          body: "En tant que personne concernée en vertu du RGPD, vous disposez des droits suivants concernant vos données personnelles :"
+        },
+        transfers: {
+          title: "Transferts internationaux de données",
+          body: "Lorsque nous transférons vos données en dehors de l'Espace Économique Européen (EEE), nous veillons à ce que des garanties appropriées soient en place pour protéger vos informations. Cela peut inclure l'utilisation de Clauses Contractuelles Types approuvées par la Commission européenne ou le transfert de données vers des pays bénéficiant de décisions d'adéquation."
+        },
+        dpo: {
+          title: "Contactez notre Délégué à la Protection des Données",
+          body: 'Pour toute question relative au RGPD ou pour exercer vos droits, veuillez contacter notre Délégué à la Protection des Données à l\'adresse <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Nous répondrons à votre demande dans les 30 jours comme l\'exige le RGPD.'
+        }
+      },
+      basisContract: '<strong>Contrat:</strong> Traitement nécessaire pour exécuter nos accords de réservation et services.',
+      basisLegal: '<strong>Obligation légale:</strong> Traitement requis pour se conformer aux exigences légales (par exemple, lois fiscales).',
+      basisLegitimate: '<strong>Intérêts légitimes:</strong> Traitement pour nos intérêts commerciaux légitimes tout en respectant vos droits.',
+      basisConsent: '<strong>Consentement:</strong> Traitement basé sur votre consentement explicite pour des finalités spécifiques.',
+      rightAccessTitle: 'Droit d\'accès',
+      rightAccessDesc: 'Vous pouvez demander des copies de vos données personnelles que nous détenons.',
+      rightRectificationTitle: 'Droit de rectification',
+      rightRectificationDesc: 'Vous pouvez demander la correction de données inexactes ou incomplètes.',
+      rightErasureTitle: 'Droit à l\'effacement',
+      rightErasureDesc: 'Vous pouvez demander la suppression de vos données personnelles sous certaines conditions.',
+      rightRestrictTitle: 'Droit à la limitation du traitement',
+      rightRestrictDesc: 'Vous pouvez demander la limitation de l\'utilisation de vos données.',
+      rightPortabilityTitle: 'Droit à la portabilité des données',
+      rightPortabilityDesc: 'Vous pouvez demander le transfert de vos données vers une autre organisation.',
+      rightObjectTitle: 'Droit d\'opposition',
+      rightObjectDesc: 'Vous pouvez vous opposer à certains types de traitement de vos données.',
+      btnRequestAccess: 'Demander l\'accès aux données',
+      btnRequestDeletion: 'Demander la suppression des données',
+      retentionTitle: 'Conservation des données',
+      retentionPeriodsTitle: 'Périodes de conservation',
+      retentionIntro: 'Nous conservons les données personnelles uniquement aussi longtemps que nécessaire pour remplir les finalités pour lesquelles elles ont été collectées, y compris les exigences légales, comptables ou de reporting.',
+      retentionBooking: '<strong>Données de réservation:</strong> 7 ans pour la conformité fiscale et légale',
+      retentionCustomer: '<strong>Communications du service client:</strong> 3 ans',
+      retentionMarketing: '<strong>Consentements marketing:</strong> Jusqu\'au retrait du consentement',
+      retentionAnalytics: '<strong>Analyses du site Web:</strong> 26 mois',
+      retentionFinancial: '<strong>Transactions financières:</strong> 10 ans à des fins comptables',
+      transfersSafeguards: '<strong>Transferts internationaux de données:</strong> Nous veillons à ce que des garanties appropriées soient en place pour tous les transferts de données en dehors de l\'EEE, y compris les Clauses Contractuelles Types et les décisions d\'adéquation.',
+      complaintsTitle: 'Réclamations',
+      complaintsIntro: 'Si vous avez des préoccupations concernant la manière dont nous traitons vos données personnelles, vous avez le droit de déposer une réclamation auprès de votre autorité locale de protection des données.',
+      complaintsAuthority: '<strong>Autorité de contrôle chef de file:</strong> Autorité portugaise de protection des données (CNPD)<br><strong>Site Web:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contact:</strong> +351 213 928 400',
+      complaintsContactFirst: 'Nous vous encourageons à nous contacter d\'abord pour résoudre toute préoccupation avant d\'approcher l\'autorité de contrôle.'
     }
   };
 
@@ -1671,6 +1959,78 @@
           }
         }
       }
+    },
+
+    gdpr: {
+      title: "Avviso GDPR",
+      updatedDate: "06 ott 2025",
+      backToHome: "Torna alla Home",
+      quickLinksTitle: "Link rapidi",
+      gdprBadge: '<strong>Conforme al GDPR:</strong> Ci impegniamo a proteggere i tuoi dati personali e a rispettare i tuoi diritti alla privacy ai sensi del Regolamento Generale sulla Protezione dei Dati.',
+      quickLinks: {
+        title: "Link rapidi",
+        links: [
+          { id: "controller", text: "Titolare" },
+          { id: "bases", text: "Basi giuridiche" },
+          { id: "rights", text: "I tuoi diritti" },
+          { id: "retention", text: "Conservazione dei dati" },
+          { id: "transfers", text: "Trasferimenti di dati" },
+          { id: "complaints", text: "Reclami" }
+        ]
+      },
+      sections: {
+        controller: {
+          title: "Titolare del trattamento dei dati",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), registrata a Rua C, Parcela 12, Maputo 1118, Mozambico, agisce come titolare del trattamento delle tue informazioni personali raccolte tramite i nostri servizi."
+        },
+        bases: {
+          title: "Basi giuridiche per il trattamento",
+          body: "Trattiamo i tuoi dati personali sulla base delle seguenti basi giuridiche ai sensi del GDPR:"
+        },
+        rights: {
+          title: "I tuoi diritti ai sensi del GDPR",
+          body: "In qualità di interessato ai sensi del GDPR, hai i seguenti diritti relativi ai tuoi dati personali:"
+        },
+        transfers: {
+          title: "Trasferimenti internazionali di dati",
+          body: "Quando trasferiamo i tuoi dati al di fuori dello Spazio Economico Europeo (SEE), garantiamo che siano in atto misure di salvaguardia adeguate per proteggere le tue informazioni. Ciò può includere l'uso di Clausole Contrattuali Standard approvate dalla Commissione Europea o il trasferimento di dati in paesi con decisioni di adeguatezza."
+        },
+        dpo: {
+          title: "Contatta il nostro Responsabile della Protezione dei Dati",
+          body: 'Per qualsiasi domanda relativa al GDPR o per esercitare i tuoi diritti, contatta il nostro Responsabile della Protezione dei Dati all\'indirizzo <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Risponderemo alla tua richiesta entro 30 giorni come richiesto dal GDPR.'
+        }
+      },
+      basisContract: '<strong>Contratto:</strong> Trattamento necessario per adempiere ai nostri accordi di prenotazione e servizi.',
+      basisLegal: '<strong>Obbligo legale:</strong> Trattamento richiesto per conformarsi ai requisiti legali (ad esempio, leggi fiscali).',
+      basisLegitimate: '<strong>Interessi legittimi:</strong> Trattamento per i nostri legittimi interessi commerciali nel rispetto dei tuoi diritti.',
+      basisConsent: '<strong>Consenso:</strong> Trattamento basato sul tuo consenso esplicito per scopi specifici.',
+      rightAccessTitle: 'Diritto di accesso',
+      rightAccessDesc: 'Puoi richiedere copie dei tuoi dati personali che deteniamo.',
+      rightRectificationTitle: 'Diritto di rettifica',
+      rightRectificationDesc: 'Puoi richiedere la correzione di dati inesatti o incompleti.',
+      rightErasureTitle: 'Diritto alla cancellazione',
+      rightErasureDesc: 'Puoi richiedere la cancellazione dei tuoi dati personali a determinate condizioni.',
+      rightRestrictTitle: 'Diritto alla limitazione del trattamento',
+      rightRestrictDesc: 'Puoi richiedere la limitazione di come utilizziamo i tuoi dati.',
+      rightPortabilityTitle: 'Diritto alla portabilità dei dati',
+      rightPortabilityDesc: 'Puoi richiedere il trasferimento dei tuoi dati a un\'altra organizzazione.',
+      rightObjectTitle: 'Diritto di opposizione',
+      rightObjectDesc: 'Puoi opporti a determinati tipi di trattamento dei tuoi dati.',
+      btnRequestAccess: 'Richiedi accesso ai dati',
+      btnRequestDeletion: 'Richiedi cancellazione dati',
+      retentionTitle: 'Conservazione dei dati',
+      retentionPeriodsTitle: 'Periodi di conservazione',
+      retentionIntro: 'Conserviamo i dati personali solo per il tempo necessario a soddisfare le finalità per cui sono stati raccolti, inclusi i requisiti legali, contabili o di reporting.',
+      retentionBooking: '<strong>Dati di prenotazione:</strong> 7 anni per conformità fiscale e legale',
+      retentionCustomer: '<strong>Comunicazioni del servizio clienti:</strong> 3 anni',
+      retentionMarketing: '<strong>Consensi di marketing:</strong> Fino alla revoca del consenso',
+      retentionAnalytics: '<strong>Analisi del sito web:</strong> 26 mesi',
+      retentionFinancial: '<strong>Transazioni finanziarie:</strong> 10 anni per scopi contabili',
+      transfersSafeguards: '<strong>Trasferimenti internazionali di dati:</strong> Garantiamo che siano in atto misure di salvaguardia adeguate per tutti i trasferimenti di dati al di fuori del SEE, incluse le Clausole Contrattuali Standard e le decisioni di adeguatezza.',
+      complaintsTitle: 'Reclami',
+      complaintsIntro: 'Se hai dubbi su come trattiamo i tuoi dati personali, hai il diritto di presentare un reclamo alla tua autorità locale per la protezione dei dati.',
+      complaintsAuthority: '<strong>Autorità di controllo principale:</strong> Autorità portoghese per la protezione dei dati (CNPD)<br><strong>Sito web:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contatto:</strong> +351 213 928 400',
+      complaintsContactFirst: 'Ti invitiamo a contattarci prima per risolvere eventuali preoccupazioni prima di rivolgerti all\'autorità di controllo.'
     }
   };
 
@@ -1927,6 +2287,78 @@
           }
         }
       }
+    },
+
+    gdpr: {
+      title: "Aviso RGPD",
+      updatedDate: "06 oct 2025",
+      backToHome: "Volver al inicio",
+      quickLinksTitle: "Enlaces rápidos",
+      gdprBadge: '<strong>Conforme al RGPD:</strong> Estamos comprometidos a proteger tus datos personales y respetar tus derechos de privacidad bajo el Reglamento General de Protección de Datos.',
+      quickLinks: {
+        title: "Enlaces rápidos",
+        links: [
+          { id: "controller", text: "Responsable" },
+          { id: "bases", text: "Bases legales" },
+          { id: "rights", text: "Tus derechos" },
+          { id: "retention", text: "Retención de datos" },
+          { id: "transfers", text: "Transferencias de datos" },
+          { id: "complaints", text: "Quejas" }
+        ]
+      },
+      sections: {
+        controller: {
+          title: "Responsable del tratamiento de datos",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), registrada en Rua C, Parcela 12, Maputo 1118, Mozambique, actúa como responsable del tratamiento de tu información personal recopilada a través de nuestros servicios."
+        },
+        bases: {
+          title: "Bases legales para el tratamiento",
+          body: "Tratamos tus datos personales basándonos en las siguientes bases legales bajo el RGPD:"
+        },
+        rights: {
+          title: "Tus derechos bajo el RGPD",
+          body: "Como interesado bajo el RGPD, tienes los siguientes derechos con respecto a tus datos personales:"
+        },
+        transfers: {
+          title: "Transferencias internacionales de datos",
+          body: "Cuando transferimos tus datos fuera del Espacio Económico Europeo (EEE), garantizamos que existan las salvaguardias adecuadas para proteger tu información. Esto puede incluir el uso de Cláusulas Contractuales Tipo aprobadas por la Comisión Europea o la transferencia de datos a países con decisiones de adecuación."
+        },
+        dpo: {
+          title: "Contacta con nuestro Delegado de Protección de Datos",
+          body: 'Para cualquier pregunta relacionada con el RGPD o para ejercer tus derechos, contacta con nuestro Delegado de Protección de Datos en <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Responderemos a tu solicitud dentro de los 30 días requeridos por el RGPD.'
+        }
+      },
+      basisContract: '<strong>Contrato:</strong> Tratamiento necesario para cumplir nuestros acuerdos de reserva y servicios.',
+      basisLegal: '<strong>Obligación legal:</strong> Tratamiento requerido para cumplir con requisitos legales (por ejemplo, leyes fiscales).',
+      basisLegitimate: '<strong>Intereses legítimos:</strong> Tratamiento para nuestros intereses comerciales legítimos respetando tus derechos.',
+      basisConsent: '<strong>Consentimiento:</strong> Tratamiento basado en tu consentimiento explícito para propósitos específicos.',
+      rightAccessTitle: 'Derecho de acceso',
+      rightAccessDesc: 'Puedes solicitar copias de tus datos personales que conservamos.',
+      rightRectificationTitle: 'Derecho de rectificación',
+      rightRectificationDesc: 'Puedes solicitar la corrección de datos inexactos o incompletos.',
+      rightErasureTitle: 'Derecho de supresión',
+      rightErasureDesc: 'Puedes solicitar la eliminación de tus datos personales bajo ciertas condiciones.',
+      rightRestrictTitle: 'Derecho a la limitación del tratamiento',
+      rightRestrictDesc: 'Puedes solicitar la limitación de cómo usamos tus datos.',
+      rightPortabilityTitle: 'Derecho a la portabilidad de datos',
+      rightPortabilityDesc: 'Puedes solicitar la transferencia de tus datos a otra organización.',
+      rightObjectTitle: 'Derecho de oposición',
+      rightObjectDesc: 'Puedes oponerte a ciertos tipos de tratamiento de tus datos.',
+      btnRequestAccess: 'Solicitar acceso a datos',
+      btnRequestDeletion: 'Solicitar eliminación de datos',
+      retentionTitle: 'Retención de datos',
+      retentionPeriodsTitle: 'Períodos de retención',
+      retentionIntro: 'Conservamos los datos personales solo durante el tiempo necesario para cumplir los propósitos para los que fueron recopilados, incluidos los requisitos legales, contables o de informes.',
+      retentionBooking: '<strong>Datos de reserva:</strong> 7 años para cumplimiento fiscal y legal',
+      retentionCustomer: '<strong>Comunicaciones de atención al cliente:</strong> 3 años',
+      retentionMarketing: '<strong>Consentimientos de marketing:</strong> Hasta la retirada del consentimiento',
+      retentionAnalytics: '<strong>Análisis del sitio web:</strong> 26 meses',
+      retentionFinancial: '<strong>Transacciones financieras:</strong> 10 años para fines contables',
+      transfersSafeguards: '<strong>Transferencias internacionales de datos:</strong> Garantizamos que existan las salvaguardias adecuadas para todas las transferencias de datos fuera del EEE, incluidas las Cláusulas Contractuales Tipo y decisiones de adecuación.',
+      complaintsTitle: 'Quejas',
+      complaintsIntro: 'Si tienes preocupaciones sobre cómo manejamos tus datos personales, tienes derecho a presentar una queja ante tu autoridad local de protección de datos.',
+      complaintsAuthority: '<strong>Autoridad de supervisión principal:</strong> Autoridad Portuguesa de Protección de Datos (CNPD)<br><strong>Sitio web:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contacto:</strong> +351 213 928 400',
+      complaintsContactFirst: 'Te animamos a contactarnos primero para resolver cualquier preocupación antes de acudir a la autoridad de supervisión.'
     }
   };
   
