@@ -377,15 +377,19 @@
 
     cric: {
       title: "CRIC — Company & Contact",
-      updatedDate: "06 Oct 2025",
+      updatedDate: "27 Sep 2025",
       sections: {
         intro: {
           title: "Overview",
-          body: "Summary of company and contact information, and where to request statutory details if required."
+          body: "Complete business registration details and contact information for DEVOCEAN Lodge."
         },
         contact: {
           title: "Contact",
-          body: 'TERRAfrique LDA — <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>'
+          body: 'For general inquiries, bookings, and information about our services, please use the contact details provided below.'
+        },
+        emergency: {
+          title: "Emergency Contact",
+          body: "For urgent matters outside business hours, please use our emergency contact details."
         }
       }
     }
@@ -716,6 +720,25 @@
       complaintsIntro: 'Wenn Sie Bedenken hinsichtlich der Handhabung Ihrer personenbezogenen Daten haben, haben Sie das Recht, eine Beschwerde bei Ihrer örtlichen Datenschutzbehörde einzureichen.',
       complaintsAuthority: '<strong>Federführende Aufsichtsbehörde:</strong> Portugiesische Datenschutzbehörde (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Kontakt:</strong> +351 213 928 400',
       complaintsContactFirst: 'Wir ermutigen Sie, uns zuerst zu kontaktieren, um Bedenken zu klären, bevor Sie sich an die Aufsichtsbehörde wenden.'
+    },
+
+    cric: {
+      title: "CRIC — Unternehmen & Kontakt",
+      updatedDate: "27 Sep 2025",
+      sections: {
+        intro: {
+          title: "Überblick",
+          body: "Vollständige Firmenregistrierungsdaten und Kontaktinformationen für DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Kontakt",
+          body: 'Für allgemeine Anfragen, Buchungen und Informationen zu unseren Dienstleistungen verwenden Sie bitte die unten angegebenen Kontaktdaten.'
+        },
+        emergency: {
+          title: "Notkontakt",
+          body: "Für dringende Angelegenheiten außerhalb der Geschäftszeiten verwenden Sie bitte unsere Notkontaktdaten."
+        }
+      }
     }
   };
 
@@ -1044,6 +1067,25 @@
       complaintsIntro: 'Als u zorgen heeft over hoe wij uw persoonlijke gegevens behandelen, heeft u het recht om een klacht in te dienen bij uw lokale gegevensbeschermingsautoriteit.',
       complaintsAuthority: '<strong>Leidende toezichthoudende autoriteit:</strong> Portugese Autoriteit Gegevensbescherming (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contact:</strong> +351 213 928 400',
       complaintsContactFirst: 'Wij moedigen u aan om eerst contact met ons op te nemen om eventuele zorgen op te lossen voordat u de toezichthoudende autoriteit benadert.'
+    },
+
+    cric: {
+      title: "CRIC — Bedrijf & Contact",
+      updatedDate: "27 sep 2025",
+      sections: {
+        intro: {
+          title: "Overzicht",
+          body: "Volledige bedrijfsregistratiegegevens en contactinformatie voor DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Contact",
+          body: 'Voor algemene vragen, boekingen en informatie over onze diensten, gebruik de onderstaande contactgegevens.'
+        },
+        emergency: {
+          title: "Noodcontact",
+          body: "Voor urgente zaken buiten kantooruren, gebruik onze noodcontactgegevens."
+        }
+      }
     }
   };
 
@@ -1372,6 +1414,25 @@
       complaintsIntro: 'Se tiver preocupações sobre como tratamos os seus dados pessoais, tem o direito de apresentar uma reclamação à sua autoridade local de proteção de dados.',
       complaintsAuthority: '<strong>Autoridade de Supervisão Principal:</strong> Comissão Nacional de Proteção de Dados (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contacto:</strong> +351 213 928 400',
       complaintsContactFirst: 'Encorajamos que nos contacte primeiro para resolver quaisquer preocupações antes de abordar a autoridade de supervisão.'
+    },
+
+    cric: {
+      title: "CRIC — Empresa & Contacto",
+      updatedDate: "27 set 2025",
+      sections: {
+        intro: {
+          title: "Visão Geral",
+          body: "Dados completos de registo da empresa e informações de contacto para DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Contacto",
+          body: 'Para consultas gerais, reservas e informações sobre os nossos serviços, utilize os dados de contacto fornecidos abaixo.'
+        },
+        emergency: {
+          title: "Contacto de Emergência",
+          body: "Para assuntos urgentes fora do horário comercial, utilize os nossos dados de contacto de emergência."
+        }
+      }
     }
   };
 
@@ -1703,6 +1764,25 @@
       complaintsIntro: 'Si vous avez des préoccupations concernant la manière dont nous traitons vos données personnelles, vous avez le droit de déposer une réclamation auprès de votre autorité locale de protection des données.',
       complaintsAuthority: '<strong>Autorité de contrôle chef de file:</strong> Autorité portugaise de protection des données (CNPD)<br><strong>Site Web:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contact:</strong> +351 213 928 400',
       complaintsContactFirst: 'Nous vous encourageons à nous contacter d\'abord pour résoudre toute préoccupation avant d\'approcher l\'autorité de contrôle.'
+    },
+
+    cric: {
+      title: "CRIC — Entreprise & Contact",
+      updatedDate: "27 sep 2025",
+      sections: {
+        intro: {
+          title: "Aperçu",
+          body: "Informations complètes sur l'enregistrement de l'entreprise et coordonnées de DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Contact",
+          body: 'Pour les demandes générales, les réservations et les informations sur nos services, veuillez utiliser les coordonnées fournies ci-dessous.'
+        },
+        emergency: {
+          title: "Contact d'urgence",
+          body: "Pour les questions urgentes en dehors des heures d'ouverture, veuillez utiliser nos coordonnées d'urgence."
+        }
+      }
     }
   };
 
@@ -2031,6 +2111,25 @@
       complaintsIntro: 'Se hai dubbi su come trattiamo i tuoi dati personali, hai il diritto di presentare un reclamo alla tua autorità locale per la protezione dei dati.',
       complaintsAuthority: '<strong>Autorità di controllo principale:</strong> Autorità portoghese per la protezione dei dati (CNPD)<br><strong>Sito web:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contatto:</strong> +351 213 928 400',
       complaintsContactFirst: 'Ti invitiamo a contattarci prima per risolvere eventuali preoccupazioni prima di rivolgerti all\'autorità di controllo.'
+    },
+
+    cric: {
+      title: "CRIC — Azienda & Contatto",
+      updatedDate: "27 set 2025",
+      sections: {
+        intro: {
+          title: "Panoramica",
+          body: "Dati completi di registrazione aziendale e informazioni di contatto per DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Contatto",
+          body: 'Per richieste generali, prenotazioni e informazioni sui nostri servizi, utilizzare i dati di contatto forniti di seguito.'
+        },
+        emergency: {
+          title: "Contatto di emergenza",
+          body: "Per questioni urgenti al di fuori dell'orario lavorativo, utilizzare i nostri dati di contatto di emergenza."
+        }
+      }
     }
   };
 
@@ -2359,6 +2458,25 @@
       complaintsIntro: 'Si tienes preocupaciones sobre cómo manejamos tus datos personales, tienes derecho a presentar una queja ante tu autoridad local de protección de datos.',
       complaintsAuthority: '<strong>Autoridad de supervisión principal:</strong> Autoridad Portuguesa de Protección de Datos (CNPD)<br><strong>Sitio web:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contacto:</strong> +351 213 928 400',
       complaintsContactFirst: 'Te animamos a contactarnos primero para resolver cualquier preocupación antes de acudir a la autoridad de supervisión.'
+    },
+
+    cric: {
+      title: "CRIC — Empresa & Contacto",
+      updatedDate: "27 sep 2025",
+      sections: {
+        intro: {
+          title: "Resumen",
+          body: "Datos completos de registro empresarial e información de contacto para DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Contacto",
+          body: 'Para consultas generales, reservas e información sobre nuestros servicios, utilice los datos de contacto proporcionados a continuación.'
+        },
+        emergency: {
+          title: "Contacto de emergencia",
+          body: "Para asuntos urgentes fuera del horario comercial, utilice nuestros datos de contacto de emergencia."
+        }
+      }
     }
   };
   
