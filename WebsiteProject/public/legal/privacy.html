@@ -613,22 +613,19 @@
   </main>
 
   <script>
-    // Calculate and set the actual sticky header height
+    // Use a fixed, reliable scroll offset
     function setStickyHeaderHeight() {
-      const stickyHeader = document.querySelector('.sticky-header');
-      if (stickyHeader) {
-        const height = stickyHeader.offsetHeight;
-        document.documentElement.style.setProperty('--header-height', height + 'px');
-      }
+      // Set to a fixed value that accounts for the sticky header
+      // This prevents jumping caused by dynamic calculations
+      document.documentElement.style.setProperty('--header-height', '190px');
     }
+    
+    // Set immediately
+    setStickyHeaderHeight();
     
     // Set on load and when window resizes
     window.addEventListener('DOMContentLoaded', setStickyHeaderHeight);
     window.addEventListener('resize', setStickyHeaderHeight);
-    
-    // Also set after content is hydrated (give i18n time to load)
-    setTimeout(setStickyHeaderHeight, 100);
-    setTimeout(setStickyHeaderHeight, 500);
 
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
