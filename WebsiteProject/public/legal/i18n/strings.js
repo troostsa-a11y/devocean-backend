@@ -148,32 +148,88 @@
 
     cookies: {
       title: "Cookie Policy",
-      updatedDate: "06 Oct 2025",
+      effectiveDate: "September 19, 2025",
+      lastUpdated: "October 06, 2025",
+      managePreferences: "Manage Your Cookie Preferences:",
+      manageText: "You can control which cookies we use through our cookie banner or your browser settings.",
+      cookieSettingsBtn: "Cookie Settings",
+      quickLinks: {
+        title: "Quick Links",
+        links: [
+          { id: "what", text: "What are cookies" },
+          { id: "how", text: "How we use cookies" },
+          { id: "necessary", text: "Necessary" },
+          { id: "functional", text: "Functional" },
+          { id: "analytics", text: "Analytics" },
+          { id: "advertisement", text: "Advertisement" },
+          { id: "manage", text: "Manage preferences" }
+        ]
+      },
       sections: {
-        intro: {
-          title: "Overview",
-          body: "This Cookie Policy explains how DEVOCEAN Lodge uses cookies and similar technologies to recognize you when you visit our website. It explains what these technologies are and why we use them, as well as your rights to control our use of them."
+        what: {
+          title: "What are cookies?",
+          body: "This Cookie Policy explains what cookies are, how we use them, the types of cookies we use (i.e., the information we collect using cookies and how that information is used), and how to manage your cookie settings.<br><br>Cookies are small text files used to store small pieces of information. They are stored on your device when a website loads in your browser. These cookies help ensure that the website functions properly, enhance security, provide a better user experience, and analyse performance to identify what works and where improvements are needed."
         },
-        types: {
-          title: "Types of cookies",
-          items: [
-            "Essential: required for core site functions",
-            "Functional: remember choices (e.g. language)",
-            "Analytics: help us understand site usage (aggregated)",
-            "Advertising: used for marketing (only if you consent)"
+        how: {
+          title: "How do we use cookies?",
+          body: "Like most online services, our website uses both first-party and third-party cookies for various purposes. First-party cookies are primarily necessary for the website to function properly and do not collect any personally identifiable data.<br><br>The third-party cookies used on our website primarily help us understand how the website performs, track how you interact with it, keep our services secure, deliver relevant advertisements, and enhance your overall user experience while improving the speed of your future interactions with our website."
+        },
+        necessary: {
+          title: "Necessary Cookies",
+          description: "Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.",
+          tableHeaders: { cookie: "Cookie", duration: "Duration", description: "Description" },
+          cookies: [
+            { name: "currency", duration: "session", desc: "This cookie is used to store the currency preference of the user." },
+            { name: "_sh_session_", duration: "session", desc: "Description is currently not available." },
+            { name: "loccur", duration: "session", desc: "Description is currently not available." },
+            { name: "country_code", duration: "session", desc: "No description available." },
+            { name: "b_locale", duration: "session", desc: "Description is currently not available." },
+            { name: "checkout_currency", duration: "session", desc: "Description is currently not available." }
+          ]
+        },
+        functional: {
+          title: "Functional Cookies",
+          description: "Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.",
+          tableHeaders: { cookie: "Cookie", duration: "Duration", description: "Description" },
+          cookies: [
+            { name: "locale", duration: "session", desc: "Facebook sets this cookie to enhance the user's browsing experience on the website, and to provide the user with relevant advertising while using Facebook's social media platforms." }
+          ]
+        },
+        analytics: {
+          title: "Analytics Cookies",
+          description: "Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.",
+          tableHeaders: { cookie: "Cookie", duration: "Duration", description: "Description" },
+          cookies: [
+            { name: "_ga", duration: "1 year 1 month 4 days", desc: "Google Analytics sets this cookie to calculate visitor, session and campaign data and track site usage for the site's analytics report. The cookie stores information anonymously and assigns a randomly generated number to recognise unique visitors." },
+            { name: "_ga_*", duration: "1 year 1 month 4 days", desc: "Google Analytics sets this cookie to store and count page views." },
+            { name: "_gid", duration: "1 day", desc: "Google Analytics sets this cookie to store information on how visitors use a website while also creating an analytics report of the website's performance. Some of the collected data includes the number of visitors, their source, and the pages they visit anonymously." },
+            { name: "_gat_UA-*", duration: "1 minute", desc: "Google Analytics sets this cookie for user behaviour tracking." },
+            { name: "pardot", duration: "past", desc: "The pardot cookie is set while the visitor is logged in as a Pardot user. The cookie indicates an active session and is not used for tracking." }
+          ]
+        },
+        advertisement: {
+          title: "Advertisement Cookies",
+          description: "Advertisement cookies are used to provide visitors with customised advertisements based on the pages you visited previously and to analyse the effectiveness of the ad campaigns.",
+          tableHeaders: { cookie: "Cookie", duration: "Duration", description: "Description" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 months", desc: "Google Tag Manager sets this cookie to experiment advertisement efficiency of websites using their services." },
+            { name: "test_cookie", duration: "15 minutes", desc: "doubleclick.net sets this cookie to determine if the user's browser supports cookies." },
+            { name: "_fbp", duration: "3 months", desc: "Facebook sets this cookie to store and track interactions." },
+            { name: "IDE", duration: "1 year 24 days", desc: "Google DoubleClick IDE cookies store information about how the user uses the website to present them with relevant ads according to the user profile." }
           ]
         },
         manage: {
-          title: "Managing cookies",
-          body: "You can control cookies in your browser settings or via the banner. Blocking some cookies may affect site functionality."
-        },
-        third: {
-          title: "Third-party cookies",
-          body: "Some pages may load content from third parties that set their own cookies. See their policies for details."
-        },
-        contact: {
-          title: "Contact",
-          body: 'For questions about cookies, contact <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+          title: "Manage cookie preferences",
+          consentTitle: "Consent Preferences",
+          consentText: "You can modify your cookie settings anytime by clicking the 'Consent Preferences' button above. This will allow you to revisit the cookie consent banner and update your preferences or withdraw your consent immediately.",
+          browserText: "Additionally, different browsers offer various methods to block and delete cookies used by websites. You can adjust your browser settings to block or delete cookies. Below are links to support documents on how to manage and delete cookies in major web browsers.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "If you are using a different web browser, please refer to its official support documentation."
+          }
         }
       }
     },
@@ -460,6 +516,94 @@
           body: 'Fragen? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
+    },
+
+    cookies: {
+      title: "Cookie-Richtlinie",
+      effectiveDate: "19. September 2025",
+      lastUpdated: "06. Oktober 2025",
+      managePreferences: "Verwalten Sie Ihre Cookie-Einstellungen:",
+      manageText: "Sie können steuern, welche Cookies wir über unser Cookie-Banner oder Ihre Browsereinstellungen verwenden.",
+      cookieSettingsBtn: "Cookie-Einstellungen",
+      quickLinks: {
+        title: "Schnellzugriff",
+        links: [
+          { id: "what", text: "Was sind Cookies" },
+          { id: "how", text: "Wie wir Cookies verwenden" },
+          { id: "necessary", text: "Notwendig" },
+          { id: "functional", text: "Funktional" },
+          { id: "analytics", text: "Analytisch" },
+          { id: "advertisement", text: "Werbung" },
+          { id: "manage", text: "Einstellungen verwalten" }
+        ]
+      },
+      sections: {
+        what: {
+          title: "Was sind Cookies?",
+          body: "Diese Cookie-Richtlinie erklärt, was Cookies sind, wie wir sie verwenden, welche Arten von Cookies wir verwenden (d.h. welche Informationen wir mithilfe von Cookies sammeln und wie diese Informationen verwendet werden) und wie Sie Ihre Cookie-Einstellungen verwalten können.<br><br>Cookies sind kleine Textdateien, die verwendet werden, um kleine Informationen zu speichern. Sie werden auf Ihrem Gerät gespeichert, wenn eine Website in Ihrem Browser geladen wird. Diese Cookies helfen sicherzustellen, dass die Website ordnungsgemäß funktioniert, die Sicherheit zu erhöhen, eine bessere Benutzererfahrung zu bieten und die Leistung zu analysieren, um zu ermitteln, was funktioniert und wo Verbesserungen erforderlich sind."
+        },
+        how: {
+          title: "Wie verwenden wir Cookies?",
+          body: "Wie die meisten Online-Dienste verwendet unsere Website sowohl Erst- als auch Drittanbieter-Cookies für verschiedene Zwecke. Erstanbieter-Cookies sind in erster Linie erforderlich, damit die Website ordnungsgemäß funktioniert, und sammeln keine personenbezogenen Daten.<br><br>Die auf unserer Website verwendeten Drittanbieter-Cookies helfen uns in erster Linie zu verstehen, wie die Website funktioniert, wie Sie mit ihr interagieren, unsere Dienste sicher zu halten, relevante Werbung zu liefern und Ihre allgemeine Benutzererfahrung zu verbessern, während die Geschwindigkeit Ihrer zukünftigen Interaktionen mit unserer Website verbessert wird."
+        },
+        necessary: {
+          title: "Notwendige Cookies",
+          description: "Notwendige Cookies sind erforderlich, um die grundlegenden Funktionen dieser Website zu aktivieren, z.B. um eine sichere Anmeldung zu ermöglichen oder Ihre Zustimmungseinstellungen anzupassen. Diese Cookies speichern keine personenbezogenen Daten.",
+          tableHeaders: { cookie: "Cookie", duration: "Dauer", description: "Beschreibung" },
+          cookies: [
+            { name: "currency", duration: "Sitzung", desc: "Dieses Cookie wird verwendet, um die Währungspräferenz des Benutzers zu speichern." },
+            { name: "_sh_session_", duration: "Sitzung", desc: "Beschreibung ist derzeit nicht verfügbar." },
+            { name: "loccur", duration: "Sitzung", desc: "Beschreibung ist derzeit nicht verfügbar." },
+            { name: "country_code", duration: "Sitzung", desc: "Keine Beschreibung verfügbar." },
+            { name: "b_locale", duration: "Sitzung", desc: "Beschreibung ist derzeit nicht verfügbar." },
+            { name: "checkout_currency", duration: "Sitzung", desc: "Beschreibung ist derzeit nicht verfügbar." }
+          ]
+        },
+        functional: {
+          title: "Funktionale Cookies",
+          description: "Funktionale Cookies helfen bei der Ausführung bestimmter Funktionen, wie z.B. dem Teilen von Inhalten der Website auf Social-Media-Plattformen, dem Sammeln von Feedback und anderen Drittanbieterfunktionen.",
+          tableHeaders: { cookie: "Cookie", duration: "Dauer", description: "Beschreibung" },
+          cookies: [
+            { name: "locale", duration: "Sitzung", desc: "Facebook setzt dieses Cookie, um das Surferlebnis des Benutzers auf der Website zu verbessern und dem Benutzer relevante Werbung anzuzeigen, während er die Social-Media-Plattformen von Facebook nutzt." }
+          ]
+        },
+        analytics: {
+          title: "Analytische Cookies",
+          description: "Analytische Cookies werden verwendet, um zu verstehen, wie Besucher mit der Website interagieren. Diese Cookies helfen dabei, Informationen zu Metriken wie Anzahl der Besucher, Absprungrate, Traffic-Quelle usw. bereitzustellen.",
+          tableHeaders: { cookie: "Cookie", duration: "Dauer", description: "Beschreibung" },
+          cookies: [
+            { name: "_ga", duration: "1 Jahr 1 Monat 4 Tage", desc: "Google Analytics setzt dieses Cookie, um Besucher-, Sitzungs- und Kampagnendaten zu berechnen und die Websitenutzung für den Analysebericht der Website zu verfolgen. Das Cookie speichert Informationen anonym und weist eine zufällig generierte Nummer zu, um eindeutige Besucher zu erkennen." },
+            { name: "_ga_*", duration: "1 Jahr 1 Monat 4 Tage", desc: "Google Analytics setzt dieses Cookie, um Seitenaufrufe zu speichern und zu zählen." },
+            { name: "_gid", duration: "1 Tag", desc: "Google Analytics setzt dieses Cookie, um Informationen darüber zu speichern, wie Besucher eine Website nutzen, und erstellt gleichzeitig einen Analysebericht über die Leistung der Website. Einige der gesammelten Daten umfassen die Anzahl der Besucher, deren Quelle und die Seiten, die sie anonym besuchen." },
+            { name: "_gat_UA-*", duration: "1 Minute", desc: "Google Analytics setzt dieses Cookie für die Verfolgung des Benutzerverhaltens." },
+            { name: "pardot", duration: "Vergangenheit", desc: "Das Pardot-Cookie wird gesetzt, während der Besucher als Pardot-Benutzer angemeldet ist. Das Cookie zeigt eine aktive Sitzung an und wird nicht für Tracking verwendet." }
+          ]
+        },
+        advertisement: {
+          title: "Werbe-Cookies",
+          description: "Werbe-Cookies werden verwendet, um Besuchern maßgeschneiderte Werbung basierend auf den zuvor besuchten Seiten bereitzustellen und die Wirksamkeit der Werbekampagnen zu analysieren.",
+          tableHeaders: { cookie: "Cookie", duration: "Dauer", description: "Beschreibung" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 Monate", desc: "Google Tag Manager setzt dieses Cookie, um die Werbeeffizienz von Websites zu testen, die ihre Dienste nutzen." },
+            { name: "test_cookie", duration: "15 Minuten", desc: "doubleclick.net setzt dieses Cookie, um festzustellen, ob der Browser des Benutzers Cookies unterstützt." },
+            { name: "_fbp", duration: "3 Monate", desc: "Facebook setzt dieses Cookie, um Interaktionen zu speichern und zu verfolgen." },
+            { name: "IDE", duration: "1 Jahr 24 Tage", desc: "Google DoubleClick IDE-Cookies speichern Informationen darüber, wie der Benutzer die Website nutzt, um ihm relevante Anzeigen gemäß dem Benutzerprofil zu präsentieren." }
+          ]
+        },
+        manage: {
+          title: "Cookie-Einstellungen verwalten",
+          consentTitle: "Zustimmungspräferenzen",
+          consentText: "Sie können Ihre Cookie-Einstellungen jederzeit ändern, indem Sie auf die Schaltfläche 'Zustimmungspräferenzen' oben klicken. Dadurch können Sie das Cookie-Zustimmungsbanner erneut aufrufen und Ihre Präferenzen aktualisieren oder Ihre Zustimmung sofort widerrufen.",
+          browserText: "Darüber hinaus bieten verschiedene Browser verschiedene Methoden zum Blockieren und Löschen von Cookies, die von Websites verwendet werden. Sie können Ihre Browsereinstellungen anpassen, um Cookies zu blockieren oder zu löschen. Nachfolgend finden Sie Links zu Support-Dokumenten zum Verwalten und Löschen von Cookies in gängigen Webbrowsern.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Wenn Sie einen anderen Webbrowser verwenden, lesen Sie bitte die offizielle Support-Dokumentation."
+          }
+        }
+      }
     }
   };
 
@@ -628,6 +772,94 @@
           body: 'Vragen? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
+    },
+
+    cookies: {
+      title: "Cookiebeleid",
+      effectiveDate: "19 september 2025",
+      lastUpdated: "06 oktober 2025",
+      managePreferences: "Beheer uw cookievoorkeuren:",
+      manageText: "U kunt bepalen welke cookies we gebruiken via onze cookiebanner of uw browserinstellingen.",
+      cookieSettingsBtn: "Cookie-instellingen",
+      quickLinks: {
+        title: "Snelkoppelingen",
+        links: [
+          { id: "what", text: "Wat zijn cookies" },
+          { id: "how", text: "Hoe we cookies gebruiken" },
+          { id: "necessary", text: "Noodzakelijk" },
+          { id: "functional", text: "Functioneel" },
+          { id: "analytics", text: "Analytisch" },
+          { id: "advertisement", text: "Advertenties" },
+          { id: "manage", text: "Voorkeuren beheren" }
+        ]
+      },
+      sections: {
+        what: {
+          title: "Wat zijn cookies?",
+          body: "Dit cookiebeleid legt uit wat cookies zijn, hoe we ze gebruiken, welke soorten cookies we gebruiken (d.w.z. welke informatie we verzamelen met behulp van cookies en hoe die informatie wordt gebruikt) en hoe u uw cookie-instellingen kunt beheren.<br><br>Cookies zijn kleine tekstbestanden die worden gebruikt om kleine stukjes informatie op te slaan. Ze worden op uw apparaat opgeslagen wanneer een website in uw browser wordt geladen. Deze cookies helpen ervoor te zorgen dat de website goed werkt, de beveiliging te verbeteren, een betere gebruikerservaring te bieden en de prestaties te analyseren om te bepalen wat werkt en waar verbeteringen nodig zijn."
+        },
+        how: {
+          title: "Hoe gebruiken we cookies?",
+          body: "Net als de meeste online diensten gebruikt onze website zowel first-party als third-party cookies voor verschillende doeleinden. First-party cookies zijn voornamelijk nodig om de website goed te laten werken en verzamelen geen persoonlijk identificeerbare gegevens.<br><br>De third-party cookies die op onze website worden gebruikt, helpen ons voornamelijk te begrijpen hoe de website presteert, hoe u ermee omgaat, onze diensten veilig te houden, relevante advertenties te leveren en uw algemene gebruikerservaring te verbeteren terwijl de snelheid van uw toekomstige interacties met onze website wordt verbeterd."
+        },
+        necessary: {
+          title: "Noodzakelijke cookies",
+          description: "Noodzakelijke cookies zijn vereist om de basisfuncties van deze site mogelijk te maken, zoals het bieden van veilige inlogmogelijkheden of het aanpassen van uw toestemmingsvoorkeuren. Deze cookies slaan geen persoonlijk identificeerbare gegevens op.",
+          tableHeaders: { cookie: "Cookie", duration: "Duur", description: "Beschrijving" },
+          cookies: [
+            { name: "currency", duration: "sessie", desc: "Deze cookie wordt gebruikt om de valutavoorkeur van de gebruiker op te slaan." },
+            { name: "_sh_session_", duration: "sessie", desc: "Beschrijving is momenteel niet beschikbaar." },
+            { name: "loccur", duration: "sessie", desc: "Beschrijving is momenteel niet beschikbaar." },
+            { name: "country_code", duration: "sessie", desc: "Geen beschrijving beschikbaar." },
+            { name: "b_locale", duration: "sessie", desc: "Beschrijving is momenteel niet beschikbaar." },
+            { name: "checkout_currency", duration: "sessie", desc: "Beschrijving is momenteel niet beschikbaar." }
+          ]
+        },
+        functional: {
+          title: "Functionele cookies",
+          description: "Functionele cookies helpen bij het uitvoeren van bepaalde functionaliteiten, zoals het delen van de inhoud van de website op sociale mediaplatforms, het verzamelen van feedback en andere functies van derden.",
+          tableHeaders: { cookie: "Cookie", duration: "Duur", description: "Beschrijving" },
+          cookies: [
+            { name: "locale", duration: "sessie", desc: "Facebook plaatst deze cookie om de browse-ervaring van de gebruiker op de website te verbeteren en om de gebruiker relevante advertenties te bieden tijdens het gebruik van de sociale mediaplatforms van Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Analytische cookies",
+          description: "Analytische cookies worden gebruikt om te begrijpen hoe bezoekers omgaan met de website. Deze cookies helpen informatie te verstrekken over statistieken zoals het aantal bezoekers, bouncepercentage, verkeersbron, enz.",
+          tableHeaders: { cookie: "Cookie", duration: "Duur", description: "Beschrijving" },
+          cookies: [
+            { name: "_ga", duration: "1 jaar 1 maand 4 dagen", desc: "Google Analytics plaatst deze cookie om bezoeker-, sessie- en campagnegegevens te berekenen en het sitegebruik bij te houden voor het analyserapport van de site. De cookie slaat informatie anoniem op en wijst een willekeurig gegenereerd nummer toe om unieke bezoekers te herkennen." },
+            { name: "_ga_*", duration: "1 jaar 1 maand 4 dagen", desc: "Google Analytics plaatst deze cookie om paginaweergaven op te slaan en te tellen." },
+            { name: "_gid", duration: "1 dag", desc: "Google Analytics plaatst deze cookie om informatie op te slaan over hoe bezoekers een website gebruiken en creëert tegelijkertijd een analyserapport van de prestaties van de website. Sommige van de verzamelde gegevens omvatten het aantal bezoekers, hun bron en de pagina's die ze anoniem bezoeken." },
+            { name: "_gat_UA-*", duration: "1 minuut", desc: "Google Analytics plaatst deze cookie voor het bijhouden van gebruikersgedrag." },
+            { name: "pardot", duration: "verleden", desc: "De pardot-cookie wordt ingesteld terwijl de bezoeker is ingelogd als een Pardot-gebruiker. De cookie geeft een actieve sessie aan en wordt niet gebruikt voor tracking." }
+          ]
+        },
+        advertisement: {
+          title: "Advertentiecookies",
+          description: "Advertentiecookies worden gebruikt om bezoekers aangepaste advertenties te bieden op basis van de pagina's die u eerder heeft bezocht en om de effectiviteit van de advertentiecampagnes te analyseren.",
+          tableHeaders: { cookie: "Cookie", duration: "Duur", description: "Beschrijving" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 maanden", desc: "Google Tag Manager plaatst deze cookie om de advertentie-efficiëntie van websites die hun diensten gebruiken te testen." },
+            { name: "test_cookie", duration: "15 minuten", desc: "doubleclick.net plaatst deze cookie om te bepalen of de browser van de gebruiker cookies ondersteunt." },
+            { name: "_fbp", duration: "3 maanden", desc: "Facebook plaatst deze cookie om interacties op te slaan en bij te houden." },
+            { name: "IDE", duration: "1 jaar 24 dagen", desc: "Google DoubleClick IDE-cookies slaan informatie op over hoe de gebruiker de website gebruikt om hen relevante advertenties te presenteren volgens het gebruikersprofiel." }
+          ]
+        },
+        manage: {
+          title: "Cookievoorkeuren beheren",
+          consentTitle: "Toestemmingsvoorkeuren",
+          consentText: "U kunt uw cookie-instellingen op elk moment wijzigen door op de knop 'Toestemmingsvoorkeuren' hierboven te klikken. Hiermee kunt u de banner voor cookietoestemming opnieuw bezoeken en uw voorkeuren bijwerken of uw toestemming onmiddellijk intrekken.",
+          browserText: "Daarnaast bieden verschillende browsers verschillende methoden om cookies die door websites worden gebruikt te blokkeren en te verwijderen. U kunt uw browserinstellingen aanpassen om cookies te blokkeren of te verwijderen. Hieronder vindt u links naar ondersteuningsdocumenten over het beheren en verwijderen van cookies in belangrijke webbrowsers.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Als u een andere webbrowser gebruikt, raadpleeg dan de officiële ondersteuningsdocumentatie."
+          }
+        }
+      }
     }
   };
 
@@ -794,6 +1026,94 @@
         contact: {
           title: "Contacto",
           body: 'Questões? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    cookies: {
+      title: "Política de Cookies",
+      effectiveDate: "19 de setembro de 2025",
+      lastUpdated: "06 de outubro de 2025",
+      managePreferences: "Gerir as suas preferências de cookies:",
+      manageText: "Pode controlar quais cookies utilizamos através do nosso banner de cookies ou das configurações do seu navegador.",
+      cookieSettingsBtn: "Definições de Cookies",
+      quickLinks: {
+        title: "Links rápidos",
+        links: [
+          { id: "what", text: "O que são cookies" },
+          { id: "how", text: "Como usamos cookies" },
+          { id: "necessary", text: "Necessários" },
+          { id: "functional", text: "Funcionais" },
+          { id: "analytics", text: "Analíticos" },
+          { id: "advertisement", text: "Publicitários" },
+          { id: "manage", text: "Gerir preferências" }
+        ]
+      },
+      sections: {
+        what: {
+          title: "O que são cookies?",
+          body: "Esta Política de Cookies explica o que são cookies, como os utilizamos, os tipos de cookies que utilizamos (ou seja, a informação que recolhemos através de cookies e como essa informação é utilizada), e como gerir as suas configurações de cookies.<br><br>Cookies são pequenos ficheiros de texto utilizados para armazenar pequenas informações. São armazenados no seu dispositivo quando um website é carregado no seu navegador. Estes cookies ajudam a garantir que o website funciona corretamente, melhoram a segurança, proporcionam uma melhor experiência ao utilizador e analisam o desempenho para identificar o que funciona e onde são necessárias melhorias."
+        },
+        how: {
+          title: "Como usamos cookies?",
+          body: "Como a maioria dos serviços online, o nosso website utiliza cookies próprios e de terceiros para vários fins. Os cookies próprios são principalmente necessários para que o website funcione corretamente e não recolhem dados pessoalmente identificáveis.<br><br>Os cookies de terceiros utilizados no nosso website ajudam-nos principalmente a compreender como o website funciona, como interage com ele, mantém os nossos serviços seguros, fornece anúncios relevantes e melhora a sua experiência geral de utilizador, melhorando a velocidade das suas futuras interações com o nosso website."
+        },
+        necessary: {
+          title: "Cookies Necessários",
+          description: "Os cookies necessários são necessários para ativar as funcionalidades básicas deste site, como fornecer login seguro ou ajustar as suas preferências de consentimento. Estes cookies não armazenam dados pessoalmente identificáveis.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "currency", duration: "sessão", desc: "Este cookie é usado para armazenar a preferência de moeda do utilizador." },
+            { name: "_sh_session_", duration: "sessão", desc: "Descrição não disponível atualmente." },
+            { name: "loccur", duration: "sessão", desc: "Descrição não disponível atualmente." },
+            { name: "country_code", duration: "sessão", desc: "Sem descrição disponível." },
+            { name: "b_locale", duration: "sessão", desc: "Descrição não disponível atualmente." },
+            { name: "checkout_currency", duration: "sessão", desc: "Descrição não disponível atualmente." }
+          ]
+        },
+        functional: {
+          title: "Cookies Funcionais",
+          description: "Os cookies funcionais ajudam a executar certas funcionalidades, como partilhar o conteúdo do website em plataformas de redes sociais, recolher feedback e outras funcionalidades de terceiros.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "locale", duration: "sessão", desc: "O Facebook define este cookie para melhorar a experiência de navegação do utilizador no website e fornecer anúncios relevantes ao usar as plataformas de redes sociais do Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Cookies Analíticos",
+          description: "Os cookies analíticos são usados para entender como os visitantes interagem com o website. Estes cookies ajudam a fornecer informações sobre métricas como número de visitantes, taxa de rejeição, fonte de tráfego, etc.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "_ga", duration: "1 ano 1 mês 4 dias", desc: "O Google Analytics define este cookie para calcular dados de visitantes, sessões e campanhas e rastrear o uso do site para o relatório de análise do site. O cookie armazena informações anonimamente e atribui um número gerado aleatoriamente para reconhecer visitantes únicos." },
+            { name: "_ga_*", duration: "1 ano 1 mês 4 dias", desc: "O Google Analytics define este cookie para armazenar e contar visualizações de página." },
+            { name: "_gid", duration: "1 dia", desc: "O Google Analytics define este cookie para armazenar informações sobre como os visitantes usam um website enquanto também cria um relatório de análise do desempenho do website. Alguns dos dados coletados incluem o número de visitantes, sua fonte e as páginas que visitam anonimamente." },
+            { name: "_gat_UA-*", duration: "1 minuto", desc: "O Google Analytics define este cookie para rastreamento do comportamento do utilizador." },
+            { name: "pardot", duration: "passado", desc: "O cookie pardot é definido enquanto o visitante está logado como utilizador Pardot. O cookie indica uma sessão ativa e não é usado para rastreamento." }
+          ]
+        },
+        advertisement: {
+          title: "Cookies Publicitários",
+          description: "Os cookies publicitários são usados para fornecer aos visitantes anúncios personalizados com base nas páginas que visitou anteriormente e para analisar a eficácia das campanhas publicitárias.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 meses", desc: "O Google Tag Manager define este cookie para experimentar a eficiência publicitária de websites que usam seus serviços." },
+            { name: "test_cookie", duration: "15 minutos", desc: "O doubleclick.net define este cookie para determinar se o navegador do utilizador suporta cookies." },
+            { name: "_fbp", duration: "3 meses", desc: "O Facebook define este cookie para armazenar e rastrear interações." },
+            { name: "IDE", duration: "1 ano 24 dias", desc: "Os cookies Google DoubleClick IDE armazenam informações sobre como o utilizador usa o website para apresentar anúncios relevantes de acordo com o perfil do utilizador." }
+          ]
+        },
+        manage: {
+          title: "Gerir preferências de cookies",
+          consentTitle: "Preferências de Consentimento",
+          consentText: "Pode modificar as suas configurações de cookies a qualquer momento clicando no botão 'Preferências de Consentimento' acima. Isso permitirá que revisite o banner de consentimento de cookies e atualize suas preferências ou retire seu consentimento imediatamente.",
+          browserText: "Além disso, diferentes navegadores oferecem vários métodos para bloquear e eliminar cookies usados por websites. Pode ajustar as configurações do seu navegador para bloquear ou eliminar cookies. Abaixo estão links para documentos de suporte sobre como gerir e eliminar cookies nos principais navegadores da web.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Se estiver a usar um navegador diferente, consulte a documentação de suporte oficial."
+          }
         }
       }
     }
@@ -967,6 +1287,94 @@
           body: 'Des questions ? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
+    },
+
+    cookies: {
+      title: "Politique relative aux cookies",
+      effectiveDate: "19 septembre 2025",
+      lastUpdated: "06 octobre 2025",
+      managePreferences: "Gérez vos préférences en matière de cookies :",
+      manageText: "Vous pouvez contrôler les cookies que nous utilisons via notre bannière de cookies ou les paramètres de votre navigateur.",
+      cookieSettingsBtn: "Paramètres des cookies",
+      quickLinks: {
+        title: "Liens rapides",
+        links: [
+          { id: "what", text: "Que sont les cookies" },
+          { id: "how", text: "Comment nous utilisons les cookies" },
+          { id: "necessary", text: "Nécessaires" },
+          { id: "functional", text: "Fonctionnels" },
+          { id: "analytics", text: "Analytiques" },
+          { id: "advertisement", text: "Publicitaires" },
+          { id: "manage", text: "Gérer les préférences" }
+        ]
+      },
+      sections: {
+        what: {
+          title: "Que sont les cookies ?",
+          body: "Cette Politique relative aux cookies explique ce que sont les cookies, comment nous les utilisons, les types de cookies que nous utilisons (c'est-à-dire les informations que nous collectons à l'aide de cookies et comment ces informations sont utilisées), et comment gérer vos paramètres de cookies.<br><br>Les cookies sont de petits fichiers texte utilisés pour stocker de petites informations. Ils sont stockés sur votre appareil lorsqu'un site Web est chargé dans votre navigateur. Ces cookies aident à garantir que le site Web fonctionne correctement, améliorent la sécurité, offrent une meilleure expérience utilisateur et analysent les performances pour identifier ce qui fonctionne et où des améliorations sont nécessaires."
+        },
+        how: {
+          title: "Comment utilisons-nous les cookies ?",
+          body: "Comme la plupart des services en ligne, notre site Web utilise à la fois des cookies propriétaires et des cookies tiers à diverses fins. Les cookies propriétaires sont principalement nécessaires au bon fonctionnement du site Web et ne collectent aucune donnée personnellement identifiable.<br><br>Les cookies tiers utilisés sur notre site Web nous aident principalement à comprendre les performances du site Web, à suivre la manière dont vous interagissez avec lui, à sécuriser nos services, à diffuser des publicités pertinentes et à améliorer votre expérience utilisateur globale tout en améliorant la vitesse de vos futures interactions avec notre site Web."
+        },
+        necessary: {
+          title: "Cookies nécessaires",
+          description: "Les cookies nécessaires sont requis pour activer les fonctionnalités de base de ce site, telles que la connexion sécurisée ou l'ajustement de vos préférences de consentement. Ces cookies ne stockent aucune donnée personnellement identifiable.",
+          tableHeaders: { cookie: "Cookie", duration: "Durée", description: "Description" },
+          cookies: [
+            { name: "currency", duration: "session", desc: "Ce cookie est utilisé pour stocker la préférence de devise de l'utilisateur." },
+            { name: "_sh_session_", duration: "session", desc: "Description actuellement non disponible." },
+            { name: "loccur", duration: "session", desc: "Description actuellement non disponible." },
+            { name: "country_code", duration: "session", desc: "Aucune description disponible." },
+            { name: "b_locale", duration: "session", desc: "Description actuellement non disponible." },
+            { name: "checkout_currency", duration: "session", desc: "Description actuellement non disponible." }
+          ]
+        },
+        functional: {
+          title: "Cookies fonctionnels",
+          description: "Les cookies fonctionnels aident à exécuter certaines fonctionnalités telles que le partage du contenu du site Web sur les plateformes de médias sociaux, la collecte de commentaires et d'autres fonctionnalités tierces.",
+          tableHeaders: { cookie: "Cookie", duration: "Durée", description: "Description" },
+          cookies: [
+            { name: "locale", duration: "session", desc: "Facebook définit ce cookie pour améliorer l'expérience de navigation de l'utilisateur sur le site Web et pour fournir à l'utilisateur des publicités pertinentes lors de l'utilisation des plateformes de médias sociaux de Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Cookies analytiques",
+          description: "Les cookies analytiques sont utilisés pour comprendre comment les visiteurs interagissent avec le site Web. Ces cookies aident à fournir des informations sur des métriques telles que le nombre de visiteurs, le taux de rebond, la source de trafic, etc.",
+          tableHeaders: { cookie: "Cookie", duration: "Durée", description: "Description" },
+          cookies: [
+            { name: "_ga", duration: "1 an 1 mois 4 jours", desc: "Google Analytics définit ce cookie pour calculer les données sur les visiteurs, les sessions et les campagnes et suivre l'utilisation du site pour le rapport d'analyse du site. Le cookie stocke les informations de manière anonyme et attribue un numéro généré aléatoirement pour reconnaître les visiteurs uniques." },
+            { name: "_ga_*", duration: "1 an 1 mois 4 jours", desc: "Google Analytics définit ce cookie pour stocker et compter les pages vues." },
+            { name: "_gid", duration: "1 jour", desc: "Google Analytics définit ce cookie pour stocker des informations sur la façon dont les visiteurs utilisent un site Web tout en créant également un rapport d'analyse des performances du site Web. Certaines des données collectées incluent le nombre de visiteurs, leur source et les pages qu'ils visitent de manière anonyme." },
+            { name: "_gat_UA-*", duration: "1 minute", desc: "Google Analytics définit ce cookie pour le suivi du comportement des utilisateurs." },
+            { name: "pardot", duration: "passé", desc: "Le cookie pardot est défini lorsque le visiteur est connecté en tant qu'utilisateur Pardot. Le cookie indique une session active et n'est pas utilisé pour le suivi." }
+          ]
+        },
+        advertisement: {
+          title: "Cookies publicitaires",
+          description: "Les cookies publicitaires sont utilisés pour fournir aux visiteurs des publicités personnalisées basées sur les pages que vous avez visitées précédemment et pour analyser l'efficacité des campagnes publicitaires.",
+          tableHeaders: { cookie: "Cookie", duration: "Durée", description: "Description" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 mois", desc: "Google Tag Manager définit ce cookie pour expérimenter l'efficacité publicitaire des sites Web utilisant leurs services." },
+            { name: "test_cookie", duration: "15 minutes", desc: "doubleclick.net définit ce cookie pour déterminer si le navigateur de l'utilisateur prend en charge les cookies." },
+            { name: "_fbp", duration: "3 mois", desc: "Facebook définit ce cookie pour stocker et suivre les interactions." },
+            { name: "IDE", duration: "1 an 24 jours", desc: "Les cookies Google DoubleClick IDE stockent des informations sur la façon dont l'utilisateur utilise le site Web pour lui présenter des publicités pertinentes selon le profil utilisateur." }
+          ]
+        },
+        manage: {
+          title: "Gérer les préférences en matière de cookies",
+          consentTitle: "Préférences de consentement",
+          consentText: "Vous pouvez modifier vos paramètres de cookies à tout moment en cliquant sur le bouton 'Préférences de consentement' ci-dessus. Cela vous permettra de revoir la bannière de consentement aux cookies et de mettre à jour vos préférences ou de retirer votre consentement immédiatement.",
+          browserText: "De plus, différents navigateurs offrent diverses méthodes pour bloquer et supprimer les cookies utilisés par les sites Web. Vous pouvez ajuster les paramètres de votre navigateur pour bloquer ou supprimer les cookies. Vous trouverez ci-dessous des liens vers des documents d'assistance sur la gestion et la suppression des cookies dans les principaux navigateurs Web.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Si vous utilisez un navigateur Web différent, veuillez consulter sa documentation d'assistance officielle."
+          }
+        }
+      }
     }
   };
 
@@ -1135,6 +1543,94 @@
           body: 'Domande? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
+    },
+
+    cookies: {
+      title: "Politica sui cookie",
+      effectiveDate: "19 settembre 2025",
+      lastUpdated: "06 ottobre 2025",
+      managePreferences: "Gestisci le tue preferenze sui cookie:",
+      manageText: "Puoi controllare quali cookie utilizziamo tramite il nostro banner dei cookie o le impostazioni del browser.",
+      cookieSettingsBtn: "Impostazioni cookie",
+      quickLinks: {
+        title: "Link rapidi",
+        links: [
+          { id: "what", text: "Cosa sono i cookie" },
+          { id: "how", text: "Come usiamo i cookie" },
+          { id: "necessary", text: "Necessari" },
+          { id: "functional", text: "Funzionali" },
+          { id: "analytics", text: "Analitici" },
+          { id: "advertisement", text: "Pubblicitari" },
+          { id: "manage", text: "Gestisci preferenze" }
+        ]
+      },
+      sections: {
+        what: {
+          title: "Cosa sono i cookie?",
+          body: "Questa Politica sui cookie spiega cosa sono i cookie, come li utilizziamo, i tipi di cookie che utilizziamo (cioè le informazioni che raccogliamo tramite i cookie e come vengono utilizzate tali informazioni) e come gestire le impostazioni dei cookie.<br><br>I cookie sono piccoli file di testo utilizzati per memorizzare piccole informazioni. Vengono memorizzati sul tuo dispositivo quando un sito Web viene caricato nel tuo browser. Questi cookie aiutano a garantire che il sito Web funzioni correttamente, migliorano la sicurezza, forniscono una migliore esperienza utente e analizzano le prestazioni per identificare cosa funziona e dove sono necessari miglioramenti."
+        },
+        how: {
+          title: "Come usiamo i cookie?",
+          body: "Come la maggior parte dei servizi online, il nostro sito Web utilizza cookie di prima parte e di terze parti per vari scopi. I cookie di prima parte sono principalmente necessari per il corretto funzionamento del sito Web e non raccolgono dati personalmente identificabili.<br><br>I cookie di terze parti utilizzati sul nostro sito Web ci aiutano principalmente a capire come funziona il sito Web, come interagisci con esso, mantieni i nostri servizi sicuri, fornisci pubblicità pertinenti e migliori la tua esperienza utente complessiva migliorando la velocità delle tue future interazioni con il nostro sito Web."
+        },
+        necessary: {
+          title: "Cookie necessari",
+          description: "I cookie necessari sono richiesti per abilitare le funzionalità di base di questo sito, come fornire l'accesso sicuro o regolare le preferenze di consenso. Questi cookie non memorizzano dati personalmente identificabili.",
+          tableHeaders: { cookie: "Cookie", duration: "Durata", description: "Descrizione" },
+          cookies: [
+            { name: "currency", duration: "sessione", desc: "Questo cookie viene utilizzato per memorizzare la preferenza di valuta dell'utente." },
+            { name: "_sh_session_", duration: "sessione", desc: "Descrizione attualmente non disponibile." },
+            { name: "loccur", duration: "sessione", desc: "Descrizione attualmente non disponibile." },
+            { name: "country_code", duration: "sessione", desc: "Nessuna descrizione disponibile." },
+            { name: "b_locale", duration: "sessione", desc: "Descrizione attualmente non disponibile." },
+            { name: "checkout_currency", duration: "sessione", desc: "Descrizione attualmente non disponibile." }
+          ]
+        },
+        functional: {
+          title: "Cookie funzionali",
+          description: "I cookie funzionali aiutano a eseguire determinate funzionalità come la condivisione del contenuto del sito Web su piattaforme di social media, la raccolta di feedback e altre funzionalità di terze parti.",
+          tableHeaders: { cookie: "Cookie", duration: "Durata", description: "Descrizione" },
+          cookies: [
+            { name: "locale", duration: "sessione", desc: "Facebook imposta questo cookie per migliorare l'esperienza di navigazione dell'utente sul sito Web e per fornire all'utente pubblicità pertinente durante l'utilizzo delle piattaforme di social media di Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Cookie analitici",
+          description: "I cookie analitici vengono utilizzati per capire come i visitatori interagiscono con il sito Web. Questi cookie aiutano a fornire informazioni su metriche come il numero di visitatori, la frequenza di rimbalzo, la fonte di traffico, ecc.",
+          tableHeaders: { cookie: "Cookie", duration: "Durata", description: "Descrizione" },
+          cookies: [
+            { name: "_ga", duration: "1 anno 1 mese 4 giorni", desc: "Google Analytics imposta questo cookie per calcolare i dati di visitatori, sessioni e campagne e tracciare l'utilizzo del sito per il rapporto di analisi del sito. Il cookie memorizza le informazioni in modo anonimo e assegna un numero generato casualmente per riconoscere i visitatori unici." },
+            { name: "_ga_*", duration: "1 anno 1 mese 4 giorni", desc: "Google Analytics imposta questo cookie per memorizzare e contare le visualizzazioni di pagina." },
+            { name: "_gid", duration: "1 giorno", desc: "Google Analytics imposta questo cookie per memorizzare informazioni su come i visitatori utilizzano un sito Web creando anche un rapporto di analisi delle prestazioni del sito Web. Alcuni dei dati raccolti includono il numero di visitatori, la loro fonte e le pagine che visitano in modo anonimo." },
+            { name: "_gat_UA-*", duration: "1 minuto", desc: "Google Analytics imposta questo cookie per il tracciamento del comportamento dell'utente." },
+            { name: "pardot", duration: "passato", desc: "Il cookie pardot viene impostato mentre il visitatore è connesso come utente Pardot. Il cookie indica una sessione attiva e non viene utilizzato per il tracciamento." }
+          ]
+        },
+        advertisement: {
+          title: "Cookie pubblicitari",
+          description: "I cookie pubblicitari vengono utilizzati per fornire ai visitatori pubblicità personalizzate in base alle pagine che hai visitato in precedenza e per analizzare l'efficacia delle campagne pubblicitarie.",
+          tableHeaders: { cookie: "Cookie", duration: "Durata", description: "Descrizione" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 mesi", desc: "Google Tag Manager imposta questo cookie per sperimentare l'efficienza pubblicitaria dei siti Web che utilizzano i loro servizi." },
+            { name: "test_cookie", duration: "15 minuti", desc: "doubleclick.net imposta questo cookie per determinare se il browser dell'utente supporta i cookie." },
+            { name: "_fbp", duration: "3 mesi", desc: "Facebook imposta questo cookie per memorizzare e tracciare le interazioni." },
+            { name: "IDE", duration: "1 anno 24 giorni", desc: "I cookie Google DoubleClick IDE memorizzano informazioni su come l'utente utilizza il sito Web per presentargli annunci pertinenti in base al profilo utente." }
+          ]
+        },
+        manage: {
+          title: "Gestisci le preferenze sui cookie",
+          consentTitle: "Preferenze di consenso",
+          consentText: "Puoi modificare le impostazioni dei cookie in qualsiasi momento facendo clic sul pulsante 'Preferenze di consenso' sopra. Ciò ti consentirà di rivisitare il banner di consenso dei cookie e aggiornare le tue preferenze o ritirare il tuo consenso immediatamente.",
+          browserText: "Inoltre, diversi browser offrono vari metodi per bloccare ed eliminare i cookie utilizzati dai siti Web. Puoi regolare le impostazioni del browser per bloccare o eliminare i cookie. Di seguito sono riportati i collegamenti ai documenti di supporto su come gestire ed eliminare i cookie nei principali browser Web.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Se stai utilizzando un browser Web diverso, consulta la documentazione di supporto ufficiale."
+          }
+        }
+      }
     }
   };
 
@@ -1301,6 +1797,94 @@
         contact: {
           title: "Contacto",
           body: '¿Preguntas? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    cookies: {
+      title: "Política de cookies",
+      effectiveDate: "19 de septiembre de 2025",
+      lastUpdated: "06 de octubre de 2025",
+      managePreferences: "Gestione sus preferencias de cookies:",
+      manageText: "Puede controlar qué cookies utilizamos a través de nuestro banner de cookies o la configuración de su navegador.",
+      cookieSettingsBtn: "Configuración de cookies",
+      quickLinks: {
+        title: "Enlaces rápidos",
+        links: [
+          { id: "what", text: "Qué son las cookies" },
+          { id: "how", text: "Cómo usamos las cookies" },
+          { id: "necessary", text: "Necesarias" },
+          { id: "functional", text: "Funcionales" },
+          { id: "analytics", text: "Analíticas" },
+          { id: "advertisement", text: "Publicitarias" },
+          { id: "manage", text: "Gestionar preferencias" }
+        ]
+      },
+      sections: {
+        what: {
+          title: "¿Qué son las cookies?",
+          body: "Esta Política de cookies explica qué son las cookies, cómo las usamos, los tipos de cookies que usamos (es decir, la información que recopilamos mediante cookies y cómo se utiliza esa información), y cómo gestionar su configuración de cookies.<br><br>Las cookies son pequeños archivos de texto utilizados para almacenar pequeñas piezas de información. Se almacenan en su dispositivo cuando un sitio web se carga en su navegador. Estas cookies ayudan a garantizar que el sitio web funcione correctamente, mejoran la seguridad, proporcionan una mejor experiencia de usuario y analizan el rendimiento para identificar qué funciona y dónde se necesitan mejoras."
+        },
+        how: {
+          title: "¿Cómo usamos las cookies?",
+          body: "Como la mayoría de los servicios en línea, nuestro sitio web utiliza cookies de origen y de terceros para diversos fines. Las cookies de origen son principalmente necesarias para que el sitio web funcione correctamente y no recopilan datos personalmente identificables.<br><br>Las cookies de terceros utilizadas en nuestro sitio web nos ayudan principalmente a comprender cómo funciona el sitio web, cómo interactúa con él, mantener nuestros servicios seguros, ofrecer anuncios relevantes y mejorar su experiencia general de usuario mientras mejoramos la velocidad de sus futuras interacciones con nuestro sitio web."
+        },
+        necessary: {
+          title: "Cookies necesarias",
+          description: "Las cookies necesarias son necesarias para habilitar las funciones básicas de este sitio, como proporcionar inicio de sesión seguro o ajustar sus preferencias de consentimiento. Estas cookies no almacenan datos personalmente identificables.",
+          tableHeaders: { cookie: "Cookie", duration: "Duración", description: "Descripción" },
+          cookies: [
+            { name: "currency", duration: "sesión", desc: "Esta cookie se utiliza para almacenar la preferencia de moneda del usuario." },
+            { name: "_sh_session_", duration: "sesión", desc: "Descripción actualmente no disponible." },
+            { name: "loccur", duration: "sesión", desc: "Descripción actualmente no disponible." },
+            { name: "country_code", duration: "sesión", desc: "Sin descripción disponible." },
+            { name: "b_locale", duration: "sesión", desc: "Descripción actualmente no disponible." },
+            { name: "checkout_currency", duration: "sesión", desc: "Descripción actualmente no disponible." }
+          ]
+        },
+        functional: {
+          title: "Cookies funcionales",
+          description: "Las cookies funcionales ayudan a realizar ciertas funcionalidades como compartir el contenido del sitio web en plataformas de redes sociales, recopilar comentarios y otras características de terceros.",
+          tableHeaders: { cookie: "Cookie", duration: "Duración", description: "Descripción" },
+          cookies: [
+            { name: "locale", duration: "sesión", desc: "Facebook establece esta cookie para mejorar la experiencia de navegación del usuario en el sitio web y para proporcionar al usuario publicidad relevante mientras usa las plataformas de redes sociales de Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Cookies analíticas",
+          description: "Las cookies analíticas se utilizan para comprender cómo los visitantes interactúan con el sitio web. Estas cookies ayudan a proporcionar información sobre métricas como el número de visitantes, la tasa de rebote, la fuente de tráfico, etc.",
+          tableHeaders: { cookie: "Cookie", duration: "Duración", description: "Descripción" },
+          cookies: [
+            { name: "_ga", duration: "1 año 1 mes 4 días", desc: "Google Analytics establece esta cookie para calcular datos de visitantes, sesiones y campañas y rastrear el uso del sitio para el informe de análisis del sitio. La cookie almacena información de forma anónima y asigna un número generado aleatoriamente para reconocer visitantes únicos." },
+            { name: "_ga_*", duration: "1 año 1 mes 4 días", desc: "Google Analytics establece esta cookie para almacenar y contar vistas de página." },
+            { name: "_gid", duration: "1 día", desc: "Google Analytics establece esta cookie para almacenar información sobre cómo los visitantes usan un sitio web mientras también crea un informe de análisis del rendimiento del sitio web. Algunos de los datos recopilados incluyen el número de visitantes, su fuente y las páginas que visitan de forma anónima." },
+            { name: "_gat_UA-*", duration: "1 minuto", desc: "Google Analytics establece esta cookie para el seguimiento del comportamiento del usuario." },
+            { name: "pardot", duration: "pasado", desc: "La cookie pardot se establece mientras el visitante está conectado como usuario de Pardot. La cookie indica una sesión activa y no se utiliza para rastreo." }
+          ]
+        },
+        advertisement: {
+          title: "Cookies publicitarias",
+          description: "Las cookies publicitarias se utilizan para proporcionar a los visitantes anuncios personalizados basados en las páginas que visitó anteriormente y para analizar la efectividad de las campañas publicitarias.",
+          tableHeaders: { cookie: "Cookie", duration: "Duración", description: "Descripción" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 meses", desc: "Google Tag Manager establece esta cookie para experimentar con la eficiencia publicitaria de sitios web que utilizan sus servicios." },
+            { name: "test_cookie", duration: "15 minutos", desc: "doubleclick.net establece esta cookie para determinar si el navegador del usuario admite cookies." },
+            { name: "_fbp", duration: "3 meses", desc: "Facebook establece esta cookie para almacenar y rastrear interacciones." },
+            { name: "IDE", duration: "1 año 24 días", desc: "Las cookies Google DoubleClick IDE almacenan información sobre cómo el usuario utiliza el sitio web para presentarle anuncios relevantes según el perfil del usuario." }
+          ]
+        },
+        manage: {
+          title: "Gestionar preferencias de cookies",
+          consentTitle: "Preferencias de consentimiento",
+          consentText: "Puede modificar su configuración de cookies en cualquier momento haciendo clic en el botón 'Preferencias de consentimiento' arriba. Esto le permitirá revisar el banner de consentimiento de cookies y actualizar sus preferencias o retirar su consentimiento inmediatamente.",
+          browserText: "Además, diferentes navegadores ofrecen varios métodos para bloquear y eliminar cookies utilizadas por sitios web. Puede ajustar la configuración de su navegador para bloquear o eliminar cookies. A continuación se encuentran enlaces a documentos de soporte sobre cómo gestionar y eliminar cookies en los principales navegadores web.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Si está utilizando un navegador web diferente, consulte su documentación de soporte oficial."
+          }
         }
       }
     }
