@@ -137,11 +137,12 @@
     // Sections
     document.querySelectorAll("[data-section]").forEach(function (sec) {
       var key = sec.getAttribute("data-section");
-      var data = (pageDict.sections && pageDict.sections[key]) || {};
+      var data = (key === "quickLinks" ? pageDict[key] : (pageDict.sections && pageDict.sections[key])) || {};
       var t = sec.querySelector('[data-part="title"]');
       var p = sec.querySelector('[data-part="body"]');
       var ul = sec.querySelector('[data-part="items"]');
       var f = sec.querySelector('[data-part="footer"]');
+      var linksContainer = sec.querySelector('[data-part="links"]');
 
       if (t && data.title) t.textContent = data.title;
 
@@ -162,6 +163,17 @@
             ul.appendChild(li);
           });
         }
+      }
+
+      if (linksContainer && Array.isArray(data.links)) {
+        linksContainer.innerHTML = "";
+        data.links.forEach(function (link) {
+          var a = document.createElement("a");
+          a.href = "#" + link.id;
+          a.className = "quick-nav-link";
+          a.textContent = link.text;
+          linksContainer.appendChild(a);
+        });
       }
 
       if (f) {
