@@ -4,6 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>DEVOCEAN Lodge — Terms & Conditions</title>
 
   <style>
@@ -18,6 +21,7 @@
       --success: #10b981;
       --warning: #f59e0b;
       --error: #ef4444;
+      --info: #3b82f6;
     }
 
     * {
@@ -34,7 +38,7 @@
 
     .skip-link {
       position: absolute;
-      top: -40px;
+      top: 8px;
       left: 8px;
       background: var(--brand);
       color: white;
@@ -42,11 +46,12 @@
       text-decoration: none;
       border-radius: 4px;
       z-index: 1000;
-      transition: top 0.2s;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
     }
 
     .skip-link:focus {
-      top: 8px;
+      transform: translateY(0);
     }
 
     *:focus-visible {
@@ -54,10 +59,32 @@
       outline-offset: 2px;
     }
 
+    .quick-nav-link:focus {
+      outline: none;
+    }
+
+    .quick-nav-link:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height, 240px) + 8px);
+    }
+
     main {
       max-width: 900px;
-      margin: 32px auto;
-      padding: 0 16px 40px;
+      margin: 0 auto;
+      padding: 0 16px calc(50vh + 40px);
+    }
+    
+    main > :not(.sticky-header) {
+      margin-top: 0;
+    }
+    
+    main > section:first-of-type {
+      margin-top: calc(var(--header-height, 240px) + 20px);
     }
 
     body.loading section[data-section] {
@@ -95,22 +122,6 @@
       font-size: 14px;
     }
 
-    .terms-badge {
-      background: #e8f5e8;
-      border: 1px solid var(--success);
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin: 0 0 24px 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .terms-badge::before {
-      content: "📝";
-      font-size: 20px;
-    }
-
     section[data-section] {
       background: var(--card-bg);
       border: 1px solid var(--card-br);
@@ -121,11 +132,14 @@
       position: relative;
     }
 
+    section[data-section] {
+      scroll-margin-top: calc(var(--header-height, 240px) + 8px);
+    }
+
     section[data-section] h2 {
       margin: 0 0 8px;
       font-size: 20px;
       line-height: 1.35;
-      scroll-margin-top: 80px;
     }
 
     .copy-link {
@@ -263,15 +277,40 @@
       font-size: 16px;
     }
 
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: white;
+      padding: 20px 16px 12px 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .terms-badge {
+      background: #e8f5e8;
+      border: 1px solid var(--success);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 0 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .terms-badge::before {
+      content: "📝";
+      font-size: 20px;
+    }
+
     .quick-nav {
       background: white;
       border: 1px solid var(--card-br);
       border-radius: var(--radius);
       padding: 16px;
       margin: 0 0 24px 0;
-      position: sticky;
-      top: 20px;
-      z-index: 100;
     }
 
     .quick-nav h3 {
@@ -304,13 +343,31 @@
       border-color: var(--brand);
     }
 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+      border-color: var(--brand);
+    }
+
     @media print {
 
       .skip-link,
       a[data-role="back-link"],
       .copy-link,
       .quick-nav,
-      .terms-badge {
+      .terms-badge,
+      .btn {
         display: none !important;
       }
 
@@ -341,12 +398,12 @@
         margin: 20px auto;
         padding: 0 12px 32px;
       }
-
+      
       section[data-section] {
         padding: 16px 16px 8px;
         margin: 16px 0;
       }
-
+      
       .copy-link {
         position: static;
         opacity: 1;
@@ -358,16 +415,16 @@
         grid-template-columns: 1fr;
         gap: 12px;
       }
-
+      
       .quick-nav {
         position: static;
         margin: 0 0 20px 0;
       }
-
+      
       .quick-nav-links {
         flex-direction: column;
       }
-
+      
       .quick-nav-link {
         text-align: center;
       }
@@ -488,25 +545,25 @@
   </noscript>
 
   <main id="main-content">
-    <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+    <div class="sticky-header">
+      <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
 
-    <h1 data-role="page-title">Terms & Conditions</h1>
-    <p class="updated">
-      <span data-role="updated-label">Last updated</span>:
-      <span data-role="updated-date"></span>
-    </p>
+      <h1 data-role="page-title">Terms & Conditions</h1>
+      <p class="updated">
+        <span data-role="updated-label">Last updated</span>:
+        <span data-role="updated-date"></span>
+      </p>
 
-    <div class="terms-badge">
-      <strong>Important Legal Notice:</strong> These terms govern your use of our services and website. Please read them
-      carefully before making a booking.
-    </div>
+      <div class="terms-badge">
+        <strong>Important Legal Notice:</strong> These terms govern your use of our services and website. Please read them
+        carefully before making a booking.
+      </div>
 
-    <section data-section="quickLinks">
-      <nav class="quick-nav" aria-label="Quick navigation">
+      <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
         <h3 data-part="title">Quick Links</h3>
         <div class="quick-nav-links" data-part="links"></div>
       </nav>
-    </section>
+    </div>
 
     <section data-section="intro" id="intro">
       <button class="copy-link" onclick="copySectionLink('intro')" aria-label="Copy link to this section">🔗</button>
@@ -664,42 +721,83 @@
   </main>
 
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set sticky header height as CSS variable
+      function setStickyHeaderHeight() {
+        const header = document.querySelector('.sticky-header');
+        if (header) {
+          const height = header.offsetHeight;
+          document.documentElement.style.setProperty('--header-height', height + 'px');
+        }
+      }
+
+      setStickyHeaderHeight();
+
+      // Wait for i18n to populate quick links before adding event listeners
+      setTimeout(() => {
+        const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+        
+        quickNavLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            scrollToSection(targetId);
+          });
+        });
+      }, 400);
+    });
+    
+    window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Function to scroll to a section with proper offset
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
+        const offset = 8; // Extra spacing
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
-
+      
       navigator.clipboard.writeText(url).then(() => {
         const button = event.target;
         const originalText = button.innerHTML;
         button.innerHTML = '✓ Copied!';
         button.style.opacity = '1';
-
+        
         setTimeout(() => {
           button.innerHTML = originalText;
         }, 2000);
       }).catch(err => {
         console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          button.style.opacity = '1';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (err2) {
+          console.error('Fallback copy failed:', err2);
+        }
+        document.body.removeChild(textArea);
       });
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
-      
-      quickNavLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          
-          if (targetElement) {
-            const offsetTop = targetElement.offsetTop - 100;
-            window.scrollTo({
-              top: offsetTop,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
   </script>
 </body>
 
