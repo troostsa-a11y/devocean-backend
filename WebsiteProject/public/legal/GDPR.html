@@ -534,6 +534,16 @@
       </nav>
     </div>
 
+    <script>
+      (function() {
+        const stickyHeader = document.querySelector('.sticky-header');
+        if (stickyHeader) {
+          const height = stickyHeader.offsetHeight;
+          document.documentElement.style.setProperty('--header-height', height + 'px');
+        }
+      })();
+    </script>
+
     <section data-section="controller" id="controller">
       <button class="copy-link" onclick="copySectionLink('controller')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title">Data Controller</h2>
