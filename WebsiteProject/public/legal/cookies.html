@@ -15,6 +15,9 @@
       --card-br: #e5e7eb;
       --radius: 16px;
       --focus: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #3b82f6;
     }
 
     * {
@@ -139,10 +142,90 @@
       margin: 0 0 10px 18px;
     }
 
+    .quick-nav {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    .cookie-banner-info {
+      background: #fff7ed;
+      border: 1px solid var(--warning);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0 0 24px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .cookie-banner-info::before {
+      content: "🍪";
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+      border-color: var(--brand);
+    }
+
     @media print {
       .skip-link,
       a[data-role="back-link"],
-      .copy-link {
+      .copy-link,
+      .quick-nav,
+      .cookie-banner-info,
+      .btn {
         display: none !important;
       }
       
@@ -181,6 +264,19 @@
         margin-bottom: 12px;
         display: inline-block;
       }
+      
+      .quick-nav {
+        position: static;
+        margin: 0 0 20px 0;
+      }
+      
+      .quick-nav-links {
+        flex-direction: column;
+      }
+      
+      .quick-nav-link {
+        text-align: center;
+      }
     }
   </style>
 
@@ -205,60 +301,6 @@
     });
   </script>
 
-  <script id="cookieyes" type="text/javascript"
-    src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js"></script>
-
-  <script>
-    function applyCookieYesToConsentMode() {
-      try {
-        var cys = window.cookieyes;
-        if (!cys || !cys.getCurrentUserConsent) {
-          console.warn('CookieYes not available');
-          return;
-        }
-        
-        var c = cys.getCurrentUserConsent();
-        var analyticsGranted = !!(c.analytics || c.performance);
-        var adsGranted = !!c.advertisement;
-
-        gtag('consent', 'update', {
-          analytics_storage: analyticsGranted ? 'granted' : 'denied',
-          ad_storage: adsGranted ? 'granted' : 'denied',
-          ad_user_data: adsGranted ? 'granted' : 'denied',
-          ad_personalization: adsGranted ? 'granted' : 'denied'
-        });
-        
-        dataLayer.push({ 
-          event: 'cookie_consent_update', 
-          cookieyes_consent: c 
-        });
-      } catch (e) {
-        console.error('Error updating consent:', e);
-      }
-    }
-
-    function setupConsentListener() {
-      try {
-        window.addEventListener('cookieyes_consent_update', applyCookieYesToConsentMode);
-      } catch (e) {
-        console.error('Failed to setup consent listener:', e);
-      }
-    }
-
-    (function waitForCY(attempt = 0) {
-      const maxAttempts = 10;
-      
-      if (window.cookieyes && window.cookieyes.getCurrentUserConsent) {
-        applyCookieYesToConsentMode();
-        setupConsentListener();
-      } else if (attempt < maxAttempts) {
-        setTimeout(() => waitForCY(attempt + 1), 300);
-      } else {
-        console.warn('CookieYes not loaded after max attempts');
-      }
-    })();
-  </script>
-
   <script>
     (function (w, d, s, l, i) {
       w[l] = w[l] || []; 
@@ -270,12 +312,12 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script src="/legal/i18n/strings.js?v=12"></script>
-  <script src="/legal/legal-i18n.js?v=12"></script>
+  <script src="/legal/i18n/strings.js?v=13"></script>
+  <script src="/legal/legal-i18n.js?v=13"></script>
 
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://devoceanlodge.com/legal/cookies.html" />
-  <meta name="description" content="Cookie Policy for DEVOCEAN Lodge. Learn about how we use cookies and manage your preferences." />
+  <meta name="description" content="Cookie Policy for DEVOCEAN Lodge. Learn about the cookies we use on our website." />
 </head>
 
 <body data-page="cookies">
@@ -294,6 +336,28 @@
       <span data-role="updated-label">Last updated</span>:
       <span data-role="updated-date"></span>
     </p>
+
+    <div class="cookie-banner-info">
+      <div>
+        <strong>Manage Your Cookie Preferences:</strong> You can control which cookies we use through our cookie banner or your browser settings.
+        <div style="margin-top: 12px;">
+          <button class="btn" onclick="openCookieSettings()">
+            🍪 Cookie Settings
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="quick-nav" aria-label="Quick navigation">
+      <h3>Quick Links</h3>
+      <div class="quick-nav-links">
+        <a href="#intro" class="quick-nav-link">Overview</a>
+        <a href="#types" class="quick-nav-link">Cookie Types</a>
+        <a href="#manage" class="quick-nav-link">Manage Cookies</a>
+        <a href="#third" class="quick-nav-link">Third-Party</a>
+        <a href="#contact" class="quick-nav-link">Contact</a>
+      </div>
+    </nav>
 
     <section data-section="intro" id="intro">
       <button class="copy-link" onclick="copySectionLink('intro')" aria-label="Copy link to this section">🔗</button>
@@ -343,6 +407,39 @@
         console.error('Failed to copy link:', err);
       });
     }
+
+    function openCookieSettings() {
+      try {
+        if (window.cookieyes) {
+          cookieyes.openSettings();
+        } else {
+          console.warn('Cookie settings not available');
+          alert('Cookie settings are currently unavailable. Please manage cookies in your browser settings.');
+        }
+      } catch (error) {
+        console.error('Error opening cookie settings:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+      
+      quickNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 100;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
   </script>
 </body>
 
