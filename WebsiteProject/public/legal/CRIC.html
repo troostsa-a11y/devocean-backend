@@ -653,6 +653,9 @@
     function scrollToSection(sectionId) {
       const element = document.getElementById(sectionId);
       if (element) {
+        // Force header height recalculation before scrolling to ensure accuracy
+        setStickyHeaderHeight();
+        
         const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
         const offset = 8;
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
