@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>DEVOCEAN Lodge — Privacy Policy</title>
+
+  <style>
+    :root {
+      --brand: #9e4b13;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card-bg: #f8fafc;
+      --card-br: #e5e7eb;
+      --radius: 16px;
+      --focus: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --info: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 8px;
+      background: var(--brand);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      border-radius: 4px;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 8px;
+    }
+
+    *:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px 40px;
+    }
+
+    body.loading section[data-section] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    a[data-role="back-link"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+      transition: filter 0.2s ease;
+    }
+
+    a[data-role="back-link"]:hover {
+      filter: brightness(0.95);
+    }
+
+    h1[data-role="page-title"] {
+      margin: 18px 0 8px;
+      font-size: clamp(28px, 4vw, 32px);
+      line-height: 1.25;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 14px;
+    }
+
+    section[data-section] {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 18px 18px 8px;
+      margin: 18px 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+    }
+
+    section[data-section] h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.35;
+      scroll-margin-top: 80px;
+    }
+
+    .copy-link {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    section[data-section]:hover .copy-link {
+      opacity: 1;
+    }
+
+    .copy-link:hover {
+      background: rgba(0,0,0,0.05);
+    }
+
+    section[data-section] p {
+      margin: 0 0 12px;
+    }
+
+    section[data-section] ul {
+      margin: 0 0 10px 18px;
+    }
+
+    .data-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .data-category {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 4px solid var(--info);
+    }
+
+    .data-category h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      color: var(--info);
+    }
+
+    .data-category ul {
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .data-category li {
+      margin: 4px 0;
+      font-size: 14px;
+    }
+
+    .privacy-badge {
+      background: #e8f5e8;
+      border: 1px solid var(--success);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 0 0 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .privacy-badge::before {
+      content: "🔒";
+      font-size: 20px;
+    }
+
+    .legal-basis {
+      background: white;
+      border-left: 4px solid var(--success);
+      padding: 12px 16px;
+      margin: 8px 0;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .data-flow {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .data-flow h3 {
+      margin: 0 0 12px 0;
+      color: #0369a1;
+      font-size: 16px;
+    }
+
+    .data-flow ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .data-flow li {
+      margin: 8px 0;
+    }
+
+    .security-measures {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .security-measures h3 {
+      margin: 0 0 8px 0;
+      color: #16a34a;
+      font-size: 16px;
+    }
+
+    .quick-nav {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+      border-color: var(--brand);
+    }
+
+    @media print {
+      .skip-link,
+      a[data-role="back-link"],
+      .copy-link,
+      .quick-nav,
+      .privacy-badge,
+      .btn {
+        display: none !important;
+      }
+      
+      section[data-section] {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        background: white !important;
+      }
+      
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      
+      .data-categories {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin: 20px auto;
+        padding: 0 12px 32px;
+      }
+      
+      section[data-section] {
+        padding: 16px 16px 8px;
+        margin: 16px 0;
+      }
+      
+      .copy-link {
+        position: static;
+        opacity: 1;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+      
+      .data-categories {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .quick-nav {
+        position: static;
+        margin: 0 0 20px 0;
+      }
+      
+      .quick-nav-links {
+        flex-direction: column;
+      }
+      
+      .quick-nav-link {
+        text-align: center;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+      
+      section[data-section] {
+        border-width: 2px;
+      }
+    }
+  </style>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    const EEA_AND_GB = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO", "GB"];
+    
+    gtag('consent', 'default', {
+      ad_storage: 'denied', 
+      ad_user_data: 'denied',
+      ad_personalization: 'denied', 
+      analytics_storage: 'denied',
+      regions: EEA_AND_GB
+    });
+    
+    gtag('consent', 'default', {
+      ad_storage: 'granted', 
+      ad_user_data: 'granted',
+      ad_personalization: 'granted', 
+      analytics_storage: 'granted'
+    });
+  </script>
+
+  <script id="cookieyes" type="text/javascript"
+    src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js"></script>
+
+  <script>
+    function applyCookieYesToConsentMode() {
+      try {
+        var cys = window.cookieyes;
+        if (!cys || !cys.getCurrentUserConsent) {
+          console.warn('CookieYes not available');
+          return;
+        }
+        
+        var c = cys.getCurrentUserConsent();
+        var analyticsGranted = !!(c.analytics || c.performance);
+        var adsGranted = !!c.advertisement;
+
+        gtag('consent', 'update', {
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          ad_storage: adsGranted ? 'granted' : 'denied',
+          ad_user_data: adsGranted ? 'granted' : 'denied',
+          ad_personalization: adsGranted ? 'granted' : 'denied'
+        });
+        
+        dataLayer.push({ 
+          event: 'cookie_consent_update', 
+          cookieyes_consent: c 
+        });
+      } catch (e) {
+        console.error('Error updating consent:', e);
+      }
+    }
+
+    function setupConsentListener() {
+      try {
+        window.addEventListener('cookieyes_consent_update', applyCookieYesToConsentMode);
+      } catch (e) {
+        console.error('Failed to setup consent listener:', e);
+      }
+    }
+
+    (function waitForCY(attempt = 0) {
+      const maxAttempts = 10;
+      
+      if (window.cookieyes && window.cookieyes.getCurrentUserConsent) {
+        applyCookieYesToConsentMode();
+        setupConsentListener();
+      } else if (attempt < maxAttempts) {
+        setTimeout(() => waitForCY(attempt + 1), 300);
+      } else {
+        console.warn('CookieYes not loaded after max attempts');
+      }
+    })();
+  </script>
+
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; 
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true; 
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
+  </script>
+
+  <script>
+    (function() {
+      try {
+        var SUP = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
+        var lang = localStorage.getItem("site.lang");
+
+        document.body.classList.add('loading');
+
+        if (!lang || lang === "null") {
+          var nav = String(navigator.language || "en").toLowerCase();
+          var base = nav.split("-")[0];
+          
+          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
+          if (base === "pt-pt" || base === "pt-br") base = "pt";
+          if (SUP.indexOf(base) === -1) base = "en";
+          
+          localStorage.setItem("site.lang", base);
+          lang = base;
+        }
+
+        if (!localStorage.getItem("site.lang_source")) {
+          localStorage.setItem("site.lang_source", "auto");
+        }
+
+        if (!localStorage.getItem("site.currency")) {
+          var cc = (navigator.language || "").toUpperCase().split("-")[1] || "";
+          var CC2CUR = {
+            US: "USD", GB: "GBP",
+            NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
+            ZA: "ZAR", MZ: "MZN"
+          };
+          var cur = CC2CUR[cc] || (lang === "ptmz" ? "MZN" : "EUR");
+          localStorage.setItem("site.currency", cur);
+        }
+
+        document.documentElement.setAttribute("lang", lang || "en");
+      } catch (e) {
+        console.error('Error in language detection:', e);
+        document.documentElement.setAttribute("lang", "en");
+      }
+    })();
+  </script>
+
+  <script src="/legal/i18n/strings.js?v=11"></script>
+  <script src="/legal/legal-i18n.js?v=11"></script>
+
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/privacy.html" />
+  <meta name="description" content="Privacy Policy for DEVOCEAN Lodge. Learn how we collect, use, and protect your personal data in compliance with privacy regulations." />
+</head>
+
+<body data-page="privacy">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+      style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+  </noscript>
+
+  <main id="main-content">
+    <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+
+    <h1 data-role="page-title">Privacy Policy</h1>
+    <p class="updated">
+      <span data-role="updated-label">Last updated</span>:
+      <span data-role="updated-date">27 Sep 2025</span>
+    </p>
+
+    <div class="privacy-badge">
+      <strong>Your Privacy Matters:</strong> We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information.
+    </div>
+
+    <nav class="quick-nav" aria-label="Quick navigation">
+      <h3>Quick Links</h3>
+      <div class="quick-nav-links">
+        <a href="#who" class="quick-nav-link">Who We Are</a>
+        <a href="#collect" class="quick-nav-link">Data Collection</a>
+        <a href="#use" class="quick-nav-link">Data Usage</a>
+        <a href="#share" class="quick-nav-link">Data Sharing</a>
+        <a href="#rights" class="quick-nav-link">Your Rights</a>
+        <a href="#security" class="quick-nav-link">Security</a>
+      </div>
+    </nav>
+
+    <section data-section="who" id="who">
+      <button class="copy-link" onclick="copySectionLink('who')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Who we are</h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="collect" id="collect">
+      <button class="copy-link" onclick="copySectionLink('collect')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">What we collect</h2>
+      <ul data-part="items"></ul>
+      
+      <div class="data-categories">
+        <div class="data-category">
+          <h3>Personal Information</h3>
+          <ul>
+            <li>Name, contact details</li>
+            <li>Passport/ID information</li>
+            <li>Payment information</li>
+            <li>Booking preferences</li>
+          </ul>
+        </div>
+        <div class="data-category">
+          <h3>Technical Data</h3>
+          <ul>
+            <li>IP address, device information</li>
+            <li>Browser type and version</li>
+            <li>Website usage analytics</li>
+            <li>Cookie data (with consent)</li>
+          </ul>
+        </div>
+        <div class="data-category">
+          <h3>Communication Data</h3>
+          <ul>
+            <li>Email correspondence</li>
+            <li>Customer service requests</li>
+            <li>Feedback and reviews</li>
+            <li>Marketing preferences</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="use" id="use">
+      <button class="copy-link" onclick="copySectionLink('use')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">How we use your data</h2>
+      <ul data-part="items"></ul>
+      
+      <div class="data-flow">
+        <h3>Data Processing Flow</h3>
+        <ol>
+          <li><strong>Collection:</strong> We collect only necessary data for specific purposes</li>
+          <li><strong>Processing:</strong> Data is processed according to legal bases and your consent</li>
+          <li><strong>Storage:</strong> Secure storage with access controls and encryption</li>
+          <li><strong>Usage:</strong> Used only for stated purposes and legal requirements</li>
+          <li><strong>Retention:</strong> Kept only as long as necessary, then securely deleted</li>
+        </ol>
+      </div>
+
+      <div class="legal-basis">
+        <strong>Legal Bases for Processing:</strong> We process your data based on contractual necessity, legal obligations, legitimate interests, and your consent where required.
+      </div>
+    </section>
+
+    <section data-section="share" id="share">
+      <button class="copy-link" onclick="copySectionLink('share')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">When we share data</h2>
+      <ul data-part="items"></ul>
+    </section>
+
+    <section data-section="security" id="security">
+      <button class="copy-link" onclick="copySectionLink('security')" aria-label="Copy link to this section">🔗</button>
+      <h2>Security Measures</h2>
+      <div class="security-measures">
+        <h3>How We Protect Your Data</h3>
+        <p>We implement appropriate technical and organizational measures to ensure a level of security appropriate to the risk:</p>
+        <ul>
+          <li>Encryption of sensitive data in transit and at rest</li>
+          <li>Regular security assessments and penetration testing</li>
+          <li>Access controls and authentication mechanisms</li>
+          <li>Staff training on data protection and privacy</li>
+          <li>Secure data backup and disaster recovery procedures</li>
+        </ul>
+      </div>
+    </section>
+
+    <section data-section="retention" id="retention">
+      <button class="copy-link" onclick="copySectionLink('retention')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Retention</h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="rights" id="rights">
+      <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Your rights</h2>
+      <ul data-part="items"></ul>
+      
+      <div class="data-categories">
+        <div class="data-category">
+          <h3>Access & Control</h3>
+          <ul>
+            <li>Right to access your data</li>
+            <li>Right to rectification</li>
+            <li>Right to erasure</li>
+            <li>Right to restrict processing</li>
+          </ul>
+        </div>
+        <div class="data-category">
+          <h3>Portability & Objection</h3>
+          <ul>
+            <li>Right to data portability</li>
+            <li>Right to object to processing</li>
+            <li>Right to withdraw consent</li>
+            <li>Right to lodge complaints</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 16px 0;">
+        <button class="btn" onclick="openPrivacySettings()" style="display: inline-flex; align-items: center; gap: 8px;">
+          🛡️ Manage Privacy Settings
+        </button>
+      </div>
+    </section>
+
+    <section data-section="transfers" id="transfers">
+      <button class="copy-link" onclick="copySectionLink('transfers')" aria-label="Copy link to this section">🔗</button>
+      <h2>International Data Transfers</h2>
+      <p>As we operate in multiple jurisdictions, your data may be transferred to and processed in countries outside of your residence. We ensure such transfers comply with applicable data protection laws through:</p>
+      <ul>
+        <li>Adequacy decisions by the European Commission</li>
+        <li>Standard Contractual Clauses (SCCs)</li>
+        <li>Appropriate security safeguards</li>
+        <li>Transparency about transfer locations</li>
+      </ul>
+    </section>
+
+    <section data-section="contact" id="contact">
+      <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Contact</h2>
+      <p data-part="body" data-use-html="true"></p>
+    </section>
+
+    <section data-section="updates" id="updates">
+      <button class="copy-link" onclick="copySectionLink('updates')" aria-label="Copy link to this section">🔗</button>
+      <h2>Policy Updates</h2>
+      <p>We may update this privacy policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes through:</p>
+      <ul>
+        <li>Email notifications for registered users</li>
+        <li>Prominent notices on our website</li>
+        <li>Updated "last updated" date</li>
+      </ul>
+      <p>We encourage you to periodically review this policy to stay informed about how we protect your information.</p>
+    </section>
+  </main>
+
+  <script>
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (fallbackErr) {
+          console.error('Fallback copy failed:', fallbackErr);
+        }
+        document.body.removeChild(textArea);
+      });
+    }
+
+    function openPrivacySettings() {
+      try {
+        if (window.cookieyes) {
+          cookieyes.openSettings();
+        } else {
+          console.warn('Privacy settings not available');
+          alert('Privacy settings are currently unavailable. Please contact us directly for privacy-related requests.');
+        }
+      } catch (error) {
+        console.error('Error opening privacy settings:', error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+      
+      quickNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 100;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    function trackPrivacyView() {
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'privacy_policy_viewed',
+          page_location: window.location.pathname
+        });
+      }
+    }
+
+    window.setSiteLocale = window.setSiteLocale || function (opts) {
+      function normLang(s) { 
+        s = String(s || '').toLowerCase().replace('_', '-'); 
+        if (s === 'pt-mz') s = 'ptmz'; 
+        if (s === 'pt-pt' || s === 'pt-br') s = 'pt'; 
+        if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2); 
+        return s || 'en'; 
+      }
+      
+      function clampCur(c) { 
+        if (!c) return null; 
+        c = String(c).toUpperCase().replace(/[^A-Z]/g, ''); 
+        return c.length === 3 ? c : null; 
+      }
+      
+      try {
+        if (opts && opts.lang) {
+          localStorage.setItem('site.lang', normLang(opts.lang));
+        }
+        if (opts && opts.currency) {
+          localStorage.setItem('site.currency', clampCur(opts.currency) || 'EUR');
+        }
+        localStorage.setItem('site.lang_source', 'user');
+        document.body.classList.add('loading');
+      } catch (e) {
+        console.error('Error setting locale:', e);
+      }
+      
+      location.reload();
+    };
+
+    window.addEventListener('DOMContentLoaded', function() {
+      trackPrivacyView();
+      
+      const checkI18n = setInterval(() => {
+        if (document.querySelector('[data-part].hydrated')) {
+          document.body.classList.remove('loading');
+          clearInterval(checkI18n);
+        }
+      }, 100);
+
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+      }, 3000);
+    });
+
+    window.addEventListener('error', function(e) {
+      if (e.message.includes('i18n') || e.filename.includes('legal-i18n')) {
+        console.error('i18n error detected, falling back to English');
+        document.body.classList.remove('loading');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const privacyStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "PrivacyPolicy",
+        "name": "Privacy Policy",
+        "description": "Privacy policy for DEVOCEAN Lodge detailing data collection, usage, and protection practices",
+        "publisher": {
+          "@type": "Hotel",
+          "name": "DEVOCEAN Lodge"
+        },
+        "datePublished": "2025-09-27",
+        "dateModified": "2025-09-27",
+        "about": {
+          "@type": "Thing",
+          "name": "Data Privacy"
+        }
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(privacyStructuredData);
+      document.head.appendChild(script);
+    });
+  </script>
+</body>
+
+</html>

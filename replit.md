@@ -148,6 +148,7 @@ Preferred communication style: Simple, everyday language.
 - vite, @vitejs/plugin-react
 - @replit/vite-plugin-*
 - typescript
+- wrangler (Cloudflare Pages deployment)
 
 **Data Management:**
 - @tanstack/react-query
@@ -167,3 +168,22 @@ Preferred communication style: Simple, everyday language.
 **Legal Documents:**
 - Static HTML pages for legal compliance (privacy, cookies, terms, GDPR, CRIC).
 - Robots.txt and sitemap.xml.
+
+## Deployment Workflow
+
+**Direct Deployment from Replit to Cloudflare Pages:**
+- Wrangler CLI configured for direct deployment
+- Project name: `devocean-lodge` (Cloudflare Pages)
+- Configuration file: `WebsiteProject/wrangler.toml`
+- Authentication: `CLOUDFLARE_API_TOKEN` environment variable (requires User→Memberships→Read, User→User Details→Read, Account→Cloudflare Pages→Edit permissions)
+
+**Deployment Commands:**
+```bash
+cd WebsiteProject
+npm run build    # Build optimized production files
+npm run deploy   # Deploy to Cloudflare Pages (devoceanlodge.com)
+```
+
+**No longer required:**
+- GitHub commits for deployment
+- Render backend deployment (backend now at https://devocean-api.onrender.com for API endpoints only)
