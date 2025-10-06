@@ -24,6 +24,7 @@ export const UI = {
         "15 min to Ponta Malongane • 25 min to Kosi Bay border",
         "Secure parking • Local cafés & markets nearby",
       ],
+      viewMap: "View Interactive Map",
     },
     contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "Call", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
     form: {
@@ -80,6 +81,7 @@ export const UI = {
         "15 min até Ponta Malongane • 25 min até fronteira de Kosi Bay",
         "Estacionamento seguro • Cafés e mercados locais por perto",
       ],
+      viewMap: "Ver Mapa Interativo",
     },
     contact: { headline: "Contato & Reservas", blurb: "Dúvidas, datas, pedidos especiais ou grupos – teremos prazer em ajudar.", call: "Ligar", email: "Email", directions: "Como chegar", bookNow: "Tarifas & Disponibilidade" },
     form: {
@@ -136,6 +138,7 @@ export const UI = {
         "15 min naar Ponta Malongane • 25 min naar grens Kosi Bay",
         "Beveiligde parking • Lokale cafés & marktjes dichtbij",
       ],
+      viewMap: "Bekijk interactieve kaart",
     },
     contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "Bellen", email: "E-mail", directions: "Route", bookNow: "Tarieven & Beschikbaarheid" },
     form: {
@@ -235,7 +238,8 @@ export const UI = {
         "Ville de Ponta do Ouro, à deux pas de la plage",
         "15 min de Ponta Malongane • 25 min de la frontière de Kosi Bay",
         "Parking sécurisé • Cafés & marchés locaux à proximité"
-      ]
+      ],
+      viewMap: "Voir la carte interactive",
     },
     contact: {
       headline: "Contact & Réservation",
@@ -309,6 +313,7 @@ export const UI = {
         "15 min per Ponta Malongane • 25 min al confine di Kosi Bay",
         "Parcheggio sicuro • Caffè e mercatini locali nelle vicinanze",
       ],
+      viewMap: "Visualizza mappa interattiva",
     },
     contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "Chiama", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
     form: {
@@ -364,6 +369,7 @@ export const UI = {
         "15 Min. nach Ponta Malongane • 25 Min. zur Grenze Kosi Bay",
         "Bewachter Parkplatz • Lokale Cafés & Märkte in der Nähe",
       ],
+      viewMap: "Interaktive Karte anzeigen",
     },
     contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "Anrufen", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
     form: {
@@ -419,6 +425,7 @@ export const UI = {
         "15 min a Ponta Malongane • 25 min a la frontera de Kosi Bay",
         "Aparcamiento seguro • Cafés y mercados locales cercanos",
       ],
+      viewMap: "Ver mapa interactivo",
     },
     contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "Llamar", email: "Correo", directions: "Cómo llegar", bookNow: "Tarifas & Disponibilidad" },
     form: {

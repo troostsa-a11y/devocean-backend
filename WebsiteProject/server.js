@@ -331,6 +331,41 @@ ${ratesButtonText[sanitizedLang] || ratesButtonText.en}: ${bookingUrl}
   }
 });
 
+// Static map endpoint (keeps API key secure on server)
+app.get("/api/static-map", async (req, res) => {
+  try {
+    const { lat, lng, zoom = 13 } = req.query;
+    
+    if (!lat || !lng) {
+      return res.status(400).json({ error: "Missing lat/lng parameters" });
+    }
+
+    const apiKey = process.env.GOOGLE_MAPS_API_KEY;
+    
+    if (!apiKey) {
+      console.error('GOOGLE_MAPS_API_KEY not configured');
+      return res.status(500).json({ error: "Map service not configured" });
+    }
+
+    const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=800x400&scale=2&maptype=roadmap&markers=color:0x0EA5E9%7C${lat},${lng}&key=${apiKey}`;
+
+    const response = await fetch(staticMapUrl);
+    
+    if (!response.ok) {
+      throw new Error(`Google Maps API error: ${response.status}`);
+    }
+
+    const imageBuffer = await response.arrayBuffer();
+    
+    res.set('Content-Type', 'image/png');
+    res.set('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
+    res.send(Buffer.from(imageBuffer));
+  } catch (error) {
+    console.error("Static map error:", error.message);
+    res.status(500).json({ error: "Failed to generate map" });
+  }
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 

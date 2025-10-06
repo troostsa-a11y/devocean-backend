@@ -1,8 +1,13 @@
-import { MapPin } from 'lucide-react';
-import { mapEmbed } from '../utils/localize';
+import { useState } from 'react';
+import { MapPin, Map as MapIcon } from 'lucide-react';
+import { mapEmbed, directionsUrl } from '../utils/localize';
 import { MAP } from '../data/content';
 
 export default function LocationSection({ ui }) {
+  const [showInteractiveMap, setShowInteractiveMap] = useState(false);
+
+  const staticMapUrl = `/api/static-map?lat=${MAP.lat}&lng=${MAP.lng}&zoom=${MAP.zoom}`;
+
   return (
     <section id="location" className="bg-slate-50 border-y">
       <div className="max-w-7xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8">
@@ -17,15 +22,35 @@ export default function LocationSection({ ui }) {
             ))}
           </ul>
         </div>
-        <div className="rounded-2xl overflow-hidden border shadow">
-          <iframe
-            title="DEVOCEAN Lodge Map"
-            src={mapEmbed(MAP.lat, MAP.lng, MAP.zoom)}
-            className="w-full h-80"
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <div className="rounded-2xl overflow-hidden border shadow relative">
+          {!showInteractiveMap ? (
+            <>
+              <img
+                src={staticMapUrl}
+                alt="DEVOCEAN Lodge Location Map"
+                className="w-full h-80 object-cover"
+                loading="lazy"
+              />
+              <button
+                onClick={() => setShowInteractiveMap(true)}
+                className="absolute inset-0 flex items-center justify-center bg-slate-900/40 hover:bg-slate-900/50 transition-colors group"
+                data-testid="button-load-map"
+              >
+                <span className="bg-white text-slate-900 px-6 py-3 rounded-lg font-semibold flex items-center gap-2 shadow-lg group-hover:scale-105 transition-transform">
+                  <MapIcon size={20} />
+                  {ui.location.viewMap || 'View Interactive Map'}
+                </span>
+              </button>
+            </>
+          ) : (
+            <iframe
+              title="DEVOCEAN Lodge Map"
+              src={mapEmbed(MAP.lat, MAP.lng, MAP.zoom)}
+              className="w-full h-80"
+              allowFullScreen
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          )}
         </div>
       </div>
     </section>
