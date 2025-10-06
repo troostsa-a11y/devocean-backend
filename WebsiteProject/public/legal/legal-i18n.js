@@ -164,11 +164,15 @@
       }
     });
 
-    // Stamp date if empty
+    // Stamp date
     var updDate = document.querySelector('[data-role="updated-date"]');
-    if (updDate && !updDate.textContent.trim()) {
-      var d = new Date(), m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-      updDate.textContent = String(d.getDate()).padStart(2, "0") + " " + m[d.getMonth()] + " " + d.getFullYear();
+    if (updDate) {
+      if (pageDict.updatedDate) {
+        updDate.textContent = pageDict.updatedDate;
+      } else if (!updDate.textContent.trim()) {
+        var d = new Date(), m = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        updDate.textContent = String(d.getDate()).padStart(2, "0") + " " + m[d.getMonth()] + " " + d.getFullYear();
+      }
     }
 
     // Public API: user override + persist + cookies

@@ -25,8 +25,7 @@
   // -------- ENGLISH (base/fallback) --------
   window.LEGAL_DICT.en = {
     privacy: {
-      pageTitle: "Privacy Policy",
-      updatedLabel: "Last updated",
+      title: "Privacy Policy",
       updatedDate: "06 Oct 2025",
       privacyBadge: {
         title: "Your Privacy Matters:",
@@ -83,13 +82,7 @@
         },
         use: {
           title: "How we use your data",
-          intro: "Data Processing Flow:",
-          flow: [
-            { step: "Collection:", text: "We collect only necessary data for specific purposes" },
-            { step: "Processing:", text: "Data is processed according to legal bases and your consent" },
-            { step: "Storage:", text: "Secure storage with access controls and encryption" }
-          ],
-          purposes: [
+          items: [
             "Manage bookings and provide services",
             "Communicate about your stay, policies and offers (opt-in)",
             "Improve our site and services (analytics, security)",
@@ -137,8 +130,7 @@
     },
 
     cookies: {
-      pageTitle: "Cookie Policy",
-      updatedLabel: "Last updated",
+      title: "Cookie Policy",
       updatedDate: "06 Oct 2025",
       sections: {
         intro: {
@@ -170,8 +162,7 @@
     },
 
     terms: {
-      pageTitle: "Terms & Conditions",
-      updatedLabel: "Last updated",
+      title: "Terms & Conditions",
       updatedDate: "06 Oct 2025",
       sections: {
         intro: {
@@ -223,8 +214,7 @@
     },
 
     gdpr: {
-      pageTitle: "GDPR Notice",
-      updatedLabel: "Last updated",
+      title: "GDPR Notice",
       updatedDate: "06 Oct 2025",
       sections: {
         controller: {
@@ -256,8 +246,7 @@
     },
 
     cric: {
-      pageTitle: "CRIC — Company & Contact",
-      updatedLabel: "Last updated",
+      title: "CRIC — Company & Contact",
       updatedDate: "06 Oct 2025",
       sections: {
         intro: {
