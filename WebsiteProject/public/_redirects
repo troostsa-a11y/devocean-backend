@@ -1,0 +1,15 @@
+# Cloudflare Pages redirects
+# Static files should NOT fallback to index.html
+
+# Serve .txt files as-is (IndexNow key, robots.txt)
+/*.txt  /:splat  200
+
+# Serve static HTML pages as-is
+/privacy.html  /privacy.html  200
+/cookies.html  /cookies.html  200
+/terms.html  /terms.html  200
+/GDPR.html  /GDPR.html  200
+/CRIC.html  /CRIC.html  200
+
+# SPA fallback for everything else
+/*  /index.html  200
