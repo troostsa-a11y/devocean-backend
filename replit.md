@@ -99,7 +99,12 @@ Preferred communication style: Simple, everyday language.
 - External booking engine at book.devoceanlodge.com with parameterized URLs.
 
 **Maps & Location:**
-- Google Maps embed for property location and Directions API integration.
+- Google Maps embed for property location and Directions API integration
+- **Lazy-loaded implementation** (~120 KiB JavaScript savings):
+  - Static preview image loaded first
+  - Interactive map loads only when user clicks "View Interactive Map" button
+  - Server-side proxy endpoint `/api/static-map` for static preview (API key secured on server)
+  - Requires `GOOGLE_MAPS_API_KEY` environment variable for static map preview
 
 **Security:**
 - Google reCAPTCHA v3 (invisible verification on contact form with server-side validation)
