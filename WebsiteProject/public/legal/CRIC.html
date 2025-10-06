@@ -68,8 +68,12 @@
     }
 
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
       scroll-padding-top: calc(var(--header-height, 240px) + 8px);
+    }
+    
+    html.smooth-scroll-ready {
+      scroll-behavior: smooth;
     }
 
     main {
@@ -616,8 +620,11 @@
       }
     }
     
-    // Set immediately
+    // Set immediately and enable smooth scroll only after header height is calculated
     setStickyHeaderHeight();
+    setTimeout(() => {
+      document.documentElement.classList.add('smooth-scroll-ready');
+    }, 100);
     
     // Add click handlers to quick nav links immediately (before DOMContentLoaded)
     // This prevents any native anchor behavior on first click
