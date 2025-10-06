@@ -4,22 +4,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>DEVOCEAN Lodge — Legal</title>
+  <title>DEVOCEAN Lodge — Consumer Rights</title>
 
-  <!-- ====== Inline styles to match your previous layout ====== -->
   <style>
     :root {
       --brand: #9e4b13;
-      /* DEVOCEAN brown */
       --text: #1f2937;
-      /* slate-800 */
       --muted: #6b7280;
-      /* slate-500/600 */
       --card-bg: #f8fafc;
-      /* very light panel */
       --card-br: #e5e7eb;
-      /* subtle border */
       --radius: 16px;
+      --focus: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -27,6 +26,29 @@
       font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
       color: var(--text);
       background: #fff;
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 8px;
+      background: var(--brand);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      border-radius: 4px;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 8px;
+    }
+
+    *:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
     }
 
     main {
@@ -35,9 +57,15 @@
       padding: 0 16px 40px;
     }
 
-    /* Back button pill */
+    body.loading section[data-section] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
     a[data-role="back-link"] {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 14px;
       border-radius: 9999px;
       text-decoration: none;
@@ -45,39 +73,62 @@
       color: #fff;
       background: var(--brand);
       box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+      transition: filter 0.2s ease;
     }
 
     a[data-role="back-link"]:hover {
       filter: brightness(0.95);
     }
 
-    /* H1 */
     h1[data-role="page-title"] {
       margin: 18px 0 8px;
-      font-size: 32px;
+      font-size: clamp(28px, 4vw, 32px);
       line-height: 1.25;
     }
 
-    /* Updated line */
     .updated {
       color: var(--muted);
       margin: 0 0 18px;
       font-size: 14px;
     }
 
-    /* Section card */
     section[data-section] {
       background: var(--card-bg);
       border: 1px solid var(--card-br);
       border-radius: var(--radius);
       padding: 18px 18px 8px;
       margin: 18px 0;
+      transition: opacity 0.3s ease;
+      position: relative;
     }
 
     section[data-section] h2 {
       margin: 0 0 8px;
       font-size: 20px;
       line-height: 1.35;
+      scroll-margin-top: 80px;
+    }
+
+    .copy-link {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    section[data-section]:hover .copy-link {
+      opacity: 1;
+    }
+
+    .copy-link:hover {
+      background: rgba(0,0,0,0.05);
     }
 
     section[data-section] p {
@@ -87,121 +138,139 @@
     section[data-section] ul {
       margin: 0 0 10px 18px;
     }
+
+    @media print {
+      .skip-link,
+      a[data-role="back-link"],
+      .copy-link {
+        display: none !important;
+      }
+      
+      section[data-section] {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        background: white !important;
+      }
+      
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin: 20px auto;
+        padding: 0 12px 32px;
+      }
+      
+      section[data-section] {
+        padding: 16px 16px 8px;
+        margin: 16px 0;
+      }
+      
+      .copy-link {
+        position: static;
+        opacity: 1;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+    }
   </style>
 
-  <!-- 1) Consent Mode v2 defaults (BEFORE GTM) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     const EEA_AND_GB = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO", "GB"];
-    // Deny by default in EEA/GB
+    
     gtag('consent', 'default', {
-      ad_storage: 'denied', ad_user_data: 'denied',
-      ad_personalization: 'denied', analytics_storage: 'denied',
+      ad_storage: 'denied', 
+      ad_user_data: 'denied',
+      ad_personalization: 'denied', 
+      analytics_storage: 'denied',
       regions: EEA_AND_GB
     });
-    // Grant elsewhere (adjust to your policy if needed)
+    
     gtag('consent', 'default', {
-      ad_storage: 'granted', ad_user_data: 'granted',
-      ad_personalization: 'granted', analytics_storage: 'granted'
+      ad_storage: 'granted', 
+      ad_user_data: 'granted',
+      ad_personalization: 'granted', 
+      analytics_storage: 'granted'
     });
   </script>
 
-
-
-  <!-- 4) Google Tag Manager -->
   <script>
     (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      w[l] = w[l] || []; 
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
       var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      j.async = true; 
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script>
-    /* Seed language/currency before hydrator runs */
-    (function () {
-      try {
-        var SUP = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"]; // include Moz PT flavor
+  <script src="/legal/i18n/strings.js?v=12"></script>
+  <script src="/legal/legal-i18n.js?v=12"></script>
 
-        // ---- language ----
-        var lang = localStorage.getItem("site.lang");
-        if (!lang || lang === "null") {
-          var nav = String(navigator.language || "en").toLowerCase(); // e.g. "pt-mz", "de-de"
-          var base = nav.split("-")[0];                               // "pt", "de"
-          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";      // Mozambican PT
-          if (base === "pt-pt" || base === "pt-br") base = "pt";      // collapse
-          if (SUP.indexOf(base) === -1) base = "en";
-          localStorage.setItem("site.lang", base);
-          lang = base;
-        }
-        if (!localStorage.getItem("site.lang_source")) {
-          localStorage.setItem("site.lang_source", "auto");
-        }
-
-        // ---- currency ----
-        if (!localStorage.getItem("site.currency")) {
-          var cc = (navigator.language || "").toUpperCase().split("-")[1] || "";
-          var CC2CUR = {
-            US: "USD", GB: "GBP",
-            NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
-            ZA: "ZAR", MZ: "MZN"
-          };
-          var cur = CC2CUR[cc] || (lang === "ptmz" ? "MZN" : "EUR");
-          localStorage.setItem("site.currency", cur);
-        }
-
-        // reflect on <html lang="">
-        document.documentElement.setAttribute("lang", lang || "en");
-      } catch (e) { }
-    })();
-  </script>
-
-  <!-- 5) i18n dictionaries + hydrator (keep order) -->
-  <script src="/legal/i18n/strings.js?v=10"></script>
-  <script src="/legal/legal-i18n.js?v=10"></script>
-
-  <!-- SEO basics -->
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://devoceanlodge.com/legal/cric.html" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/CRIC.html" />
+  <meta name="description" content="Consumer Rights Information for DEVOCEAN Lodge guests." />
 </head>
 
 <body data-page="cric">
-  <!-- GTM (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <main>
-    <a href="/" data-role="back-link">← Back to Home</a>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+      style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+  </noscript>
 
-    <h1 data-role="page-title">CRIC — Company & Contact</h1>
+  <main id="main-content">
+    <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+
+    <h1 data-role="page-title">Consumer Rights</h1>
     <p class="updated">
       <span data-role="updated-label">Last updated</span>:
-      <span data-role="updated-date">27 Sep 2025</span>
+      <span data-role="updated-date"></span>
     </p>
 
-    <section data-section="intro">
-      <h2 data-part="title">Overview</h2>
+    <section data-section="intro" id="intro">
+      <button class="copy-link" onclick="copySectionLink('intro')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Introduction</h2>
       <p data-part="body"></p>
     </section>
 
-    <section data-section="contact">
+    <section data-section="contact" id="contact">
+      <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title">Contact</h2>
       <p data-part="body" data-use-html="true"></p>
     </section>
   </main>
+
   <script>
-    window.setSiteLocale = window.setSiteLocale || function (opts) {
-      function normLang(s) { s = String(s || '').toLowerCase().replace('_', '-'); if (s === 'pt-mz') s = 'ptmz'; if (s === 'pt-pt' || s === 'pt-br') s = 'pt'; if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2); return s || 'en'; }
-      function clampCur(c) { if (!c) return null; c = String(c).toUpperCase().replace(/[^A-Z]/g, ''); return c.length === 3 ? c : null; }
-      try {
-        if (opts && opts.lang) localStorage.setItem('site.lang', normLang(opts.lang));
-        if (opts && opts.currency) localStorage.setItem('site.currency', clampCur(opts.currency) || 'EUR');
-        localStorage.setItem('site.lang_source', 'user');
-      } catch (e) { }
-      location.reload();
-    };
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+      });
+    }
   </script>
 </body>
 
