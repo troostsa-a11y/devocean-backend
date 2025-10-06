@@ -69,7 +69,7 @@
     }
 
     html {
-      scroll-padding-top: 280px;
+      scroll-padding-top: var(--header-height, 240px);
     }
 
     main {
@@ -124,7 +124,7 @@
     }
 
     section[data-section] {
-      scroll-margin-top: 280px;
+      scroll-margin-top: var(--header-height, 240px);
     }
 
     section[data-section] h2 {
@@ -613,6 +613,23 @@
   </main>
 
   <script>
+    // Calculate and set the actual sticky header height
+    function setStickyHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        const height = stickyHeader.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', height + 'px');
+      }
+    }
+    
+    // Set on load and when window resizes
+    window.addEventListener('DOMContentLoaded', setStickyHeaderHeight);
+    window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Also set after content is hydrated (give i18n time to load)
+    setTimeout(setStickyHeaderHeight, 100);
+    setTimeout(setStickyHeaderHeight, 500);
+
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
       
