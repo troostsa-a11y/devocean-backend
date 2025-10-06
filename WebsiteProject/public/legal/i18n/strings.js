@@ -332,6 +332,16 @@
           ],
           footer: "Wir verlangen von allen Dritten, die Sicherheit Ihrer persönlichen Daten zu respektieren und sie nur für die Zwecke zu verwenden, für die sie übermittelt wurden."
         },
+        security: {
+          title: "Sicherheitsmaßnahmen",
+          intro: "Wir nehmen Datensicherheit ernst und implementieren:",
+          measures: [
+            "Verschlüsselung von Daten bei der Übertragung und im Ruhezustand",
+            "Regelmäßige Sicherheitsaudits und Updates",
+            "Zugriffskontrollen und Authentifizierung",
+            "Schulungen des Personals zum Datenschutz"
+          ]
+        },
         retention: {
           title: "Datenaufbewahrung",
           body: "Wir bewahren Ihre persönlichen Daten so lange auf, wie es zur Erfüllung der Zwecke erforderlich ist, für die sie erhoben wurden. Im Allgemeinen bewahren wir personenbezogene Daten bis zu 1 Jahr nach Ihrer letzten Interaktion mit uns auf, es sei denn, eine längere Aufbewahrungsfrist ist gesetzlich vorgeschrieben oder zulässig."
@@ -417,6 +427,16 @@
           ],
           footer: "We vereisen dat alle derden de beveiliging van uw persoonlijke gegevens respecteren en deze alleen gebruiken voor de doeleinden waarvoor ze zijn overgedragen."
         },
+        security: {
+          title: "Beveiligingsmaatregelen",
+          intro: "We nemen gegevensbeveiliging serieus en implementeren:",
+          measures: [
+            "Versleuteling van gegevens tijdens verzending en in rust",
+            "Regelmatige beveiligingsaudits en updates",
+            "Toegangscontroles en authenticatie",
+            "Training van personeel in gegevensbescherming"
+          ]
+        },
         retention: {
           title: "Gegevensbewaring",
           body: "We bewaren uw persoonlijke informatie zo lang als nodig is om de doeleinden te vervullen waarvoor deze werd verzameld. Over het algemeen bewaren we persoonlijke gegevens tot 1 jaar na uw laatste interactie met ons, tenzij een langere bewaartermijn wettelijk vereist of toegestaan is."
@@ -501,6 +521,16 @@
             "No caso de uma fusão, aquisição ou venda de ativos, as suas informações podem ser transferidas para o novo proprietário"
           ],
           footer: "Exigimos que todos os terceiros respeitem a segurança dos seus dados pessoais e os utilizem apenas para os fins para os quais foram transferidos."
+        },
+        security: {
+          title: "Medidas de segurança",
+          intro: "Levamos a segurança dos dados a sério e implementamos:",
+          measures: [
+            "Encriptação de dados em trânsito e em repouso",
+            "Auditorias de segurança e atualizações regulares",
+            "Controlos de acesso e autenticação",
+            "Formação do pessoal sobre proteção de dados"
+          ]
         },
         retention: {
           title: "Retenção de dados",
@@ -590,6 +620,16 @@
           ],
           footer: "Nous exigeons de tous les tiers qu'ils respectent la sécurité de vos données personnelles et ne les utilisent que pour les fins pour lesquelles elles ont été transférées."
         },
+        security: {
+          title: "Mesures de sécurité",
+          intro: "Nous prenons la sécurité des données au sérieux et mettons en œuvre :",
+          measures: [
+            "Chiffrement des données en transit et au repos",
+            "Audits de sécurité et mises à jour réguliers",
+            "Contrôles d'accès et authentification",
+            "Formation du personnel à la protection des données"
+          ]
+        },
         retention: {
           title: "Conservation des données",
           body: "Nous conserverons vos informations personnelles aussi longtemps que nécessaire pour remplir les objectifs pour lesquels elles ont été collectées. En général, nous conservons les données personnelles jusqu'à 1 an après votre dernière interaction avec nous, sauf si une période de conservation plus longue est requise ou autorisée par la loi."
@@ -675,6 +715,16 @@
           ],
           footer: "Richiediamo a tutti i terzi di rispettare la sicurezza dei tuoi dati personali e di utilizzarli solo per gli scopi per cui sono stati trasferiti."
         },
+        security: {
+          title: "Misure di sicurezza",
+          intro: "Prendiamo sul serio la sicurezza dei dati e implementiamo:",
+          measures: [
+            "Crittografia dei dati in transito e a riposo",
+            "Audit di sicurezza e aggiornamenti regolari",
+            "Controlli di accesso e autenticazione",
+            "Formazione del personale sulla protezione dei dati"
+          ]
+        },
         retention: {
           title: "Conservazione dei dati",
           body: "Conserveremo le tue informazioni personali per il tempo necessario a soddisfare gli scopi per cui sono state raccolte. In generale, conserviamo i dati personali fino a 1 anno dopo la tua ultima interazione con noi, a meno che non sia richiesto o consentito dalla legge un periodo di conservazione più lungo."
@@ -759,6 +809,16 @@
             "En caso de una fusión, adquisición o venta de activos, tu información puede ser transferida al nuevo propietario"
           ],
           footer: "Requerimos que todos los terceros respeten la seguridad de tus datos personales y los utilicen solo para los fines para los que fueron transferidos."
+        },
+        security: {
+          title: "Medidas de seguridad",
+          intro: "Nos tomamos en serio la seguridad de los datos e implementamos:",
+          measures: [
+            "Cifrado de datos en tránsito y en reposo",
+            "Auditorías de seguridad y actualizaciones regulares",
+            "Controles de acceso y autenticación",
+            "Capacitación del personal sobre protección de datos"
+          ]
         },
         retention: {
           title: "Retención de datos",
