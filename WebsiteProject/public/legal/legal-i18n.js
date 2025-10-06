@@ -156,13 +156,20 @@
 
       if (ul) {
         ul.innerHTML = "";
-        if (Array.isArray(data.items)) {
-          data.items.forEach(function (item) {
+        var itemsArray = data.items || data.measures;
+        if (Array.isArray(itemsArray)) {
+          itemsArray.forEach(function (item) {
             var li = document.createElement("li");
             li.textContent = String(item);
             ul.appendChild(li);
           });
         }
+      }
+
+      // Handle intro (for security section)
+      var intro = sec.querySelector('[data-part="intro"]');
+      if (intro && data.intro) {
+        intro.textContent = data.intro;
       }
 
       if (linksContainer && Array.isArray(data.links)) {
