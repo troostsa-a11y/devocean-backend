@@ -39,6 +39,9 @@ function submitToIndexNow(urls) {
     if (res.statusCode === 200) {
       console.log('✅ Successfully submitted URLs to IndexNow');
       console.log(`   Submitted ${urls.length} URL(s)`);
+    } else if (res.statusCode === 202) {
+      console.log('✅ URLs accepted and queued for processing');
+      console.log(`   Submitted ${urls.length} URL(s) - key validation pending`);
     } else {
       console.log('❌ Submission failed');
     }
