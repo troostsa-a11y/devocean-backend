@@ -186,13 +186,8 @@
     }
 
     .privacy-badge::before {
-      content: "";
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2316a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'%3E%3C/path%3E%3C/svg%3E");
-      background-size: contain;
-      background-repeat: no-repeat;
+      content: "🔒";
+      font-size: 20px;
     }
 
     .legal-basis {
@@ -282,12 +277,30 @@
       border-color: var(--brand);
     }
 
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+      border-color: var(--brand);
+    }
+
     @media print {
       .skip-link,
       a[data-role="back-link"],
       .copy-link,
       .quick-nav,
-      .privacy-badge {
+      .privacy-badge,
+      .btn {
         display: none !important;
       }
       
@@ -347,6 +360,17 @@
       
       .quick-nav-link {
         text-align: center;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+      
+      section[data-section] {
+        border-width: 2px;
       }
     }
   </style>
@@ -419,8 +443,12 @@
         <a href="#collect" class="quick-nav-link">Data Collection</a>
         <a href="#use" class="quick-nav-link">Data Usage</a>
         <a href="#share" class="quick-nav-link">Data Sharing</a>
-        <a href="#rights" class="quick-nav-link">Your Rights</a>
         <a href="#security" class="quick-nav-link">Security</a>
+        <a href="#retention" class="quick-nav-link">Retention</a>
+        <a href="#rights" class="quick-nav-link">Your Rights</a>
+        <a href="#transfers" class="quick-nav-link">International Transfers</a>
+        <a href="#contact" class="quick-nav-link">Contact</a>
+        <a href="#updates" class="quick-nav-link">Policy Updates</a>
       </div>
     </nav>
 
@@ -433,6 +461,7 @@
     <section data-section="collect" id="collect">
       <button class="copy-link" onclick="copySectionLink('collect')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title">What we collect</h2>
+      <ul data-part="items"></ul>
       
       <div class="data-categories">
         <div class="data-category">
@@ -476,7 +505,13 @@
           <li><strong>Collection:</strong> We collect only necessary data for specific purposes</li>
           <li><strong>Processing:</strong> Data is processed according to legal bases and your consent</li>
           <li><strong>Storage:</strong> Secure storage with access controls and encryption</li>
+          <li><strong>Usage:</strong> Used only for stated purposes and legal requirements</li>
+          <li><strong>Retention:</strong> Kept only as long as necessary, then securely deleted</li>
         </ol>
+      </div>
+
+      <div class="legal-basis">
+        <strong>Legal Bases for Processing:</strong> We process your data based on contractual necessity, legal obligations, legitimate interests, and your consent where required.
       </div>
     </section>
 
@@ -491,6 +526,7 @@
       <h2>Security Measures</h2>
       <div class="security-measures">
         <h3>How We Protect Your Data</h3>
+        <p>We implement appropriate technical and organizational measures to ensure a level of security appropriate to the risk:</p>
         <ul>
           <li>Encryption of sensitive data in transit and at rest</li>
           <li>Regular security assessments and penetration testing</li>
@@ -511,12 +547,63 @@
       <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title">Your rights</h2>
       <ul data-part="items"></ul>
+      
+      <div class="data-categories">
+        <div class="data-category">
+          <h3>Access & Control</h3>
+          <ul>
+            <li>Right to access your data</li>
+            <li>Right to rectification</li>
+            <li>Right to erasure</li>
+            <li>Right to restrict processing</li>
+          </ul>
+        </div>
+        <div class="data-category">
+          <h3>Portability & Objection</h3>
+          <ul>
+            <li>Right to data portability</li>
+            <li>Right to object to processing</li>
+            <li>Right to withdraw consent</li>
+            <li>Right to lodge complaints</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 16px 0;">
+        <button class="btn" onclick="openPrivacySettings()" style="display: inline-flex; align-items: center; gap: 8px;">
+          🛡️ Manage Privacy Settings
+        </button>
+      </div>
+    </section>
+
+    <section data-section="transfers" id="transfers">
+      <button class="copy-link" onclick="copySectionLink('transfers')" aria-label="Copy link to this section">🔗</button>
+      <h2>International Data Transfers</h2>
+      <p>As we operate in multiple jurisdictions, your data may be transferred to and processed in countries outside of your residence. We ensure such transfers comply with applicable data protection laws through:</p>
+      <ul>
+        <li>Adequacy decisions by the European Commission</li>
+        <li>Standard Contractual Clauses (SCCs)</li>
+        <li>Appropriate security safeguards</li>
+        <li>Transparency about transfer locations</li>
+      </ul>
     </section>
 
     <section data-section="contact" id="contact">
       <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title">Contact</h2>
       <p data-part="body" data-use-html="true"></p>
+    </section>
+
+    <section data-section="updates" id="updates">
+      <button class="copy-link" onclick="copySectionLink('updates')" aria-label="Copy link to this section">🔗</button>
+      <h2>Policy Updates</h2>
+      <p>We may update this privacy policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes through:</p>
+      <ul>
+        <li>Email notifications for registered users</li>
+        <li>Prominent notices on our website</li>
+        <li>Updated "last updated" date</li>
+      </ul>
+      <p>We encourage you to periodically review this policy to stay informed about how we protect your information.</p>
     </section>
   </main>
 
@@ -535,7 +622,32 @@
         }, 2000);
       }).catch(err => {
         console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          button.style.opacity = '1';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (err2) {
+          console.error('Fallback copy failed:', err2);
+        }
+        document.body.removeChild(textArea);
       });
+    }
+
+    function openPrivacySettings() {
+      if (window.cookieyes && typeof window.cookieyes.showSettings === 'function') {
+        window.cookieyes.showSettings();
+      } else {
+        alert('Privacy settings are not available at the moment. Please try again later.');
+      }
     }
   </script>
 </body>
