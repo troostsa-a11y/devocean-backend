@@ -141,9 +141,13 @@
     if (titleTag && title) titleTag.textContent = "DEVOCEAN Lodge — " + title;
 
     // Sections
+    console.log('[legal-i18n] pageDict:', pageDict);
+    console.log('[legal-i18n] pageDict.sections:', pageDict.sections);
     document.querySelectorAll("[data-section]").forEach(function (sec) {
       var key = sec.getAttribute("data-section");
-      var data = pageDict[key] || {};
+      console.log('[legal-i18n] Processing section:', key);
+      var data = (pageDict.sections && pageDict.sections[key]) || {};
+      console.log('[legal-i18n] Section data:', data);
       var t = sec.querySelector('[data-part="title"]');
       var p = sec.querySelector('[data-part="body"]');
       var ul = sec.querySelector('[data-part="items"]');
