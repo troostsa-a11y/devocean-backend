@@ -219,7 +219,7 @@
         },
         cancel: {
           title: "Cancellations & No-shows",
-          body: "Cancellation terms are disclosed at booking time and on your confirmation. No-show may forfeit deposit."
+          body: "Cancellation terms are disclosed at booking time and on your confirmation."
         },
         conduct: {
           title: "Guest conduct",
