@@ -79,7 +79,6 @@
       left: 0;
       right: 0;
       background: white;
-      border-bottom: 1px solid var(--card-br);
       padding: 16px;
       z-index: 100;
       max-width: 900px;
@@ -668,6 +667,14 @@
           scrollToSection(targetId);
         });
       });
+
+      // Handle hash on page load
+      if (window.location.hash) {
+        setTimeout(() => {
+          const targetId = window.location.hash.substring(1);
+          scrollToSection(targetId);
+        }, 100);
+      }
     });
     
     window.addEventListener('resize', setStickyHeaderHeight);
@@ -677,7 +684,7 @@
       const element = document.getElementById(sectionId);
       if (element) {
         const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
-        const offset = 8; // Extra spacing
+        const offset = 8;
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = elementPosition - headerHeight - offset;
         
