@@ -103,19 +103,13 @@
 
   /* ---------- hydration ---------- */
   onReady(function () {
-    console.log('[legal-i18n] Starting hydration...');
     var lang = readLS("site.lang") || normLang(navigator.language);
-    console.log('[legal-i18n] Language:', lang);
 
     // Dicts with English fallback
     var UI_EN = (window.LEGAL_UI && window.LEGAL_UI.en) || {};
     var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT.en) || {};
     var UI = (window.LEGAL_UI && window.LEGAL_UI[lang]) || UI_EN;
     var DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) || DICT_EN;
-    console.log('[legal-i18n] LEGAL_UI loaded:', !!window.LEGAL_UI);
-    console.log('[legal-i18n] LEGAL_DICT loaded:', !!window.LEGAL_DICT);
-    console.log('[legal-i18n] UI:', UI);
-    console.log('[legal-i18n] DICT:', DICT);
 
     // Determine page key
     var body = document.body;
@@ -141,13 +135,9 @@
     if (titleTag && title) titleTag.textContent = "DEVOCEAN Lodge — " + title;
 
     // Sections
-    console.log('[legal-i18n] pageDict:', pageDict);
-    console.log('[legal-i18n] pageDict.sections:', pageDict.sections);
     document.querySelectorAll("[data-section]").forEach(function (sec) {
       var key = sec.getAttribute("data-section");
-      console.log('[legal-i18n] Processing section:', key);
       var data = (pageDict.sections && pageDict.sections[key]) || {};
-      console.log('[legal-i18n] Section data:', data);
       var t = sec.querySelector('[data-part="title"]');
       var p = sec.querySelector('[data-part="body"]');
       var ul = sec.querySelector('[data-part="items"]');
