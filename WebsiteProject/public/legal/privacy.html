@@ -58,6 +58,10 @@
       outline-offset: 2px;
     }
 
+    html {
+      scroll-padding-top: 160px;
+    }
+
     main {
       max-width: 900px;
       margin: 32px auto;
@@ -109,11 +113,14 @@
       position: relative;
     }
 
+    section[data-section] {
+      scroll-margin-top: 160px;
+    }
+
     section[data-section] h2 {
       margin: 0 0 8px;
       font-size: 20px;
       line-height: 1.35;
-      scroll-margin-top: 120px;
     }
 
     .copy-link {
