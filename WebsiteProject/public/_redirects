@@ -1,8 +1,9 @@
 # Cloudflare Pages redirects
-# Static files should NOT fallback to index.html
+# IMPORTANT: Order matters - specific rules first, catch-all last
 
-# Serve .txt files as-is (IndexNow key, robots.txt)
-/*.txt  /:splat  200
+# Serve specific .txt files (do NOT redirect)
+/4339cd9fe9f2766ae7f04b21f3848dec.txt  /4339cd9fe9f2766ae7f04b21f3848dec.txt  200
+/robots.txt  /robots.txt  200
 
 # Serve static HTML pages as-is
 /privacy.html  /privacy.html  200
