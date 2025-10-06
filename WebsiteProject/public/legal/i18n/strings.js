@@ -308,7 +308,7 @@
       updatedDate: "06 Oct 2025",
       backToHome: "Back to Home",
       quickLinksTitle: "Quick Links",
-      gdprBadge: '<strong>🔒 GDPR Compliant:</strong> We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.',
+      gdprBadge: '<strong>GDPR Compliant:</strong> We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.',
       quickLinks: {
         title: "Quick Links",
         links: [
