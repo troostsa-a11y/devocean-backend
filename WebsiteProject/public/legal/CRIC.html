@@ -619,6 +619,20 @@
     // Set immediately
     setStickyHeaderHeight();
     
+    // Add click handlers to quick nav links immediately (before DOMContentLoaded)
+    // This prevents any native anchor behavior on first click
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('.quick-nav-link');
+      if (link && link.hasAttribute('href')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const href = link.getAttribute('href');
+        const sectionId = href.slice(1);
+        scrollToSection(sectionId);
+        history.pushState(null, null, href);
+      }
+    }, true); // Use capture phase to ensure we catch it first
+    
     // Set on load and after short delays to ensure proper calculation
     window.addEventListener('DOMContentLoaded', () => {
       setStickyHeaderHeight();
@@ -632,19 +646,6 @@
           scrollToSection(window.location.hash.slice(1));
         }, 350);
       }
-      
-      // Add click handlers to quick nav links
-      setTimeout(() => {
-        document.querySelectorAll('.quick-nav-link').forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const href = link.getAttribute('href');
-            const sectionId = href.slice(1);
-            scrollToSection(sectionId);
-            history.pushState(null, null, href);
-          });
-        });
-      }, 400);
     });
     
     window.addEventListener('resize', setStickyHeaderHeight);
