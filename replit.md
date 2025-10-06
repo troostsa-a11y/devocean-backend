@@ -112,6 +112,18 @@ Preferred communication style: Simple, everyday language.
 **Email Service:**
 - Secure email integration with auto-reply functionality for contact form submissions.
 
+**SEO & Search Indexing:**
+- IndexNow protocol implementation for instant search engine indexing
+  - API Key: 4339cd9fe9f2766ae7f04b21f3848dec
+  - Submission script: `WebsiteProject/indexnow-submit.js`
+  - Cloudflare Pages Functions used to serve `.txt` files (bypasses SPA routing)
+    - `functions/[key].txt.js` - Serves IndexNow key file as plain text
+    - `functions/robots.txt.js` - Serves robots.txt with Bing AI content signals
+  - Robots.txt includes Content-signal directives (search=yes, ai-train=no) and AI bot restrictions
+  - 202 response = Success (URLs accepted and queued for indexing)
+- SEO optimizations: 54-char title, 149-char meta description, static H1 tag for crawlers
+- Sitemap.xml for comprehensive site structure crawling
+
 ### NPM Packages
 
 **Core Framework:**
