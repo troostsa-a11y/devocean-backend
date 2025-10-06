@@ -633,6 +633,7 @@
       if (stickyHeader) {
         const height = stickyHeader.offsetHeight;
         document.documentElement.style.setProperty('--header-height', `${height}px`);
+        console.log('Header height set to:', height + 'px');
       }
     }
     
@@ -644,6 +645,17 @@
       setStickyHeaderHeight();
       setTimeout(setStickyHeaderHeight, 50);
       setTimeout(setStickyHeaderHeight, 150);
+      setTimeout(setStickyHeaderHeight, 300);
+      
+      // Handle hash navigation after header height is calculated
+      if (window.location.hash) {
+        setTimeout(() => {
+          const element = document.querySelector(window.location.hash);
+          if (element) {
+            element.scrollIntoView();
+          }
+        }, 350);
+      }
     });
     window.addEventListener('resize', setStickyHeaderHeight);
 
