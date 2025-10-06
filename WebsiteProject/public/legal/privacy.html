@@ -69,7 +69,8 @@
     }
 
     html {
-      scroll-padding-top: var(--header-height, 240px);
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height, 240px) + 8px);
     }
 
     main {
@@ -132,7 +133,7 @@
     }
 
     section[data-section] {
-      scroll-margin-top: var(--header-height, 240px);
+      scroll-margin-top: calc(var(--header-height, 240px) + 8px);
     }
 
     section[data-section] h2 {
