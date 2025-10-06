@@ -199,7 +199,8 @@
       top: 0;
       z-index: 100;
       background: white;
-      padding: 20px 0 4px 0;
+      padding: 20px 0 12px 0;
+      border-bottom: 1px solid var(--card-br);
     }
 
     .privacy-badge {
@@ -613,18 +614,24 @@
   </main>
 
   <script>
-    // Use a fixed, reliable scroll offset
+    // Dynamically calculate sticky header height
     function setStickyHeaderHeight() {
-      // Set to a fixed value that accounts for the sticky header
-      // This prevents jumping caused by dynamic calculations
-      document.documentElement.style.setProperty('--header-height', '190px');
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        const height = stickyHeader.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+      }
     }
     
     // Set immediately
     setStickyHeaderHeight();
     
-    // Set on load and when window resizes
-    window.addEventListener('DOMContentLoaded', setStickyHeaderHeight);
+    // Set on load and after short delays to ensure proper calculation
+    window.addEventListener('DOMContentLoaded', () => {
+      setStickyHeaderHeight();
+      setTimeout(setStickyHeaderHeight, 50);
+      setTimeout(setStickyHeaderHeight, 150);
+    });
     window.addEventListener('resize', setStickyHeaderHeight);
 
     function copySectionLink(sectionId) {
