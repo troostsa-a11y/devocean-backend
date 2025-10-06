@@ -103,13 +103,19 @@
 
   /* ---------- hydration ---------- */
   onReady(function () {
+    console.log('[legal-i18n] Starting hydration...');
     var lang = readLS("site.lang") || normLang(navigator.language);
+    console.log('[legal-i18n] Language:', lang);
 
     // Dicts with English fallback
     var UI_EN = (window.LEGAL_UI && window.LEGAL_UI.en) || {};
     var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT.en) || {};
     var UI = (window.LEGAL_UI && window.LEGAL_UI[lang]) || UI_EN;
     var DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) || DICT_EN;
+    console.log('[legal-i18n] LEGAL_UI loaded:', !!window.LEGAL_UI);
+    console.log('[legal-i18n] LEGAL_DICT loaded:', !!window.LEGAL_DICT);
+    console.log('[legal-i18n] UI:', UI);
+    console.log('[legal-i18n] DICT:', DICT);
 
     // Determine page key
     var body = document.body;
