@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>DEVOCEAN Lodge — Terms & Conditions</title>
+
+  <style>
+    :root {
+      --brand: #9e4b13;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card-bg: #f8fafc;
+      --card-br: #e5e7eb;
+      --radius: 16px;
+      --focus: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --error: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 8px;
+      background: var(--brand);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      border-radius: 4px;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 8px;
+    }
+
+    *:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 16px 40px;
+    }
+
+    body.loading section[data-section] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    a[data-role="back-link"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .04);
+      transition: filter 0.2s ease;
+    }
+
+    a[data-role="back-link"]:hover {
+      filter: brightness(0.95);
+    }
+
+    h1[data-role="page-title"] {
+      margin: 18px 0 8px;
+      font-size: clamp(28px, 4vw, 32px);
+      line-height: 1.25;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 14px;
+    }
+
+    section[data-section] {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 18px 18px 8px;
+      margin: 18px 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+    }
+
+    section[data-section] h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.35;
+      scroll-margin-top: 80px;
+    }
+
+    .copy-link {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: transparent;
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    section[data-section]:hover .copy-link {
+      opacity: 1;
+    }
+
+    .copy-link:hover {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    section[data-section] p {
+      margin: 0 0 12px;
+    }
+
+    section[data-section] ul {
+      margin: 0 0 10px 18px;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .policy-card {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: 8px;
+      padding: 16px;
+      border-left: 4px solid var(--brand);
+    }
+
+    .policy-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .policy-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .cancellation-tiers {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .cancellation-tiers h3 {
+      margin: 0 0 12px 0;
+      color: #ea580c;
+      font-size: 16px;
+    }
+
+    .tier {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #fed7aa;
+    }
+
+    .tier:last-child {
+      border-bottom: none;
+    }
+
+    .tier-period {
+      font-weight: 600;
+    }
+
+    .tier-charge {
+      color: var(--error);
+      font-weight: 600;
+    }
+
+    .important-notice {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+      border-left: 4px solid var(--error);
+    }
+
+    .important-notice h3 {
+      margin: 0 0 8px 0;
+      color: var(--error);
+      font-size: 16px;
+    }
+
+    .intellectual-property {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .intellectual-property h3 {
+      margin: 0 0 8px 0;
+      color: #0369a1;
+      font-size: 16px;
+    }
+
+    .dispute-resolution {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .dispute-resolution h3 {
+      margin: 0 0 8px 0;
+      color: #16a34a;
+      font-size: 16px;
+    }
+
+    .terms-badge {
+      background: #e8f5e8;
+      border: 1px solid var(--success);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin: 0 0 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .terms-badge::before {
+      content: "📝";
+      font-size: 20px;
+    }
+
+    .quick-nav {
+      background: white;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+
+    @media print {
+
+      .skip-link,
+      a[data-role="back-link"],
+      .copy-link,
+      .quick-nav,
+      .terms-badge {
+        display: none !important;
+      }
+
+      section[data-section] {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        background: white !important;
+      }
+
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      main {
+        margin: 20px auto;
+        padding: 0 12px 32px;
+      }
+
+      section[data-section] {
+        padding: 16px 16px 8px;
+        margin: 16px 0;
+      }
+
+      .copy-link {
+        position: static;
+        opacity: 1;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+
+      .policy-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .quick-nav {
+        position: static;
+        margin: 0 0 20px 0;
+      }
+
+      .quick-nav-links {
+        flex-direction: column;
+      }
+
+      .quick-nav-link {
+        text-align: center;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+
+      section[data-section] {
+        border-width: 2px;
+      }
+    }
+  </style>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    const EEA_AND_GB = ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV", "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "IS", "LI", "NO", "GB"];
+
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      regions: EEA_AND_GB
+    });
+
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted'
+    });
+  </script>
+
+  <script id="cookieyes" type="text/javascript"
+    src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js"></script>
+
+  <script>
+    function applyCookieYesToConsentMode() {
+      try {
+        var cys = window.cookieyes;
+        if (!cys || !cys.getCurrentUserConsent) {
+          console.warn('CookieYes not available');
+          return;
+        }
+
+        var c = cys.getCurrentUserConsent();
+        var analyticsGranted = !!(c.analytics || c.performance);
+        var adsGranted = !!c.advertisement;
+
+        gtag('consent', 'update', {
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          ad_storage: adsGranted ? 'granted' : 'denied',
+          ad_user_data: adsGranted ? 'granted' : 'denied',
+          ad_personalization: adsGranted ? 'granted' : 'denied'
+        });
+
+        dataLayer.push({
+          event: 'cookie_consent_update',
+          cookieyes_consent: c
+        });
+      } catch (e) {
+        console.error('Error updating consent:', e);
+      }
+    }
+
+    function setupConsentListener() {
+      try {
+        window.addEventListener('cookieyes_consent_update', applyCookieYesToConsentMode);
+      } catch (e) {
+        console.error('Failed to setup consent listener:', e);
+      }
+    }
+
+    (function waitForCY(attempt = 0) {
+      const maxAttempts = 10;
+
+      if (window.cookieyes && window.cookieyes.getCurrentUserConsent) {
+        applyCookieYesToConsentMode();
+        setupConsentListener();
+      } else if (attempt < maxAttempts) {
+        setTimeout(() => waitForCY(attempt + 1), 300);
+      } else {
+        console.warn('CookieYes not loaded after max attempts');
+      }
+    })();
+  </script>
+
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
+  </script>
+
+  <script>
+    (function () {
+      try {
+        var SUP = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
+        var lang = localStorage.getItem("site.lang");
+
+        document.body.classList.add('loading');
+
+        if (!lang || lang === "null") {
+          var nav = String(navigator.language || "en").toLowerCase();
+          var base = nav.split("-")[0];
+
+          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
+          if (base === "pt-pt" || base === "pt-br") base = "pt";
+          if (SUP.indexOf(base) === -1) base = "en";
+
+          localStorage.setItem("site.lang", base);
+          lang = base;
+        }
+
+        if (!localStorage.getItem("site.lang_source")) {
+          localStorage.setItem("site.lang_source", "auto");
+        }
+
+        if (!localStorage.getItem("site.currency")) {
+          var cc = (navigator.language || "").toUpperCase().split("-")[1] || "";
+          var CC2CUR = {
+            US: "USD", GB: "GBP",
+            NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
+            ZA: "ZAR", MZ: "MZN"
+          };
+          var cur = CC2CUR[cc] || (lang === "ptmz" ? "MZN" : "EUR");
+          localStorage.setItem("site.currency", cur);
+        }
+
+        document.documentElement.setAttribute("lang", lang || "en");
+      } catch (e) {
+        console.error('Error in language detection:', e);
+        document.documentElement.setAttribute("lang", "en");
+      }
+    })();
+  </script>
+
+  <script src="/legal/i18n/strings.js?v=11"></script>
+  <script src="/legal/legal-i18n.js?v=11"></script>
+
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/terms.html" />
+  <meta name="description"
+    content="Terms and Conditions for DEVOCEAN Lodge. Booking policies, cancellation terms, guest conduct, and liability information." />
+</head>
+
+<body data-page="terms">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+      style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+  </noscript>
+
+  <main id="main-content">
+    <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+
+    <h1 data-role="page-title">Terms & Conditions</h1>
+    <p class="updated">
+      <span data-role="updated-label">Last updated</span>:
+      <span data-role="updated-date">27 Sep 2025</span>
+    </p>
+
+    <div class="terms-badge">
+      <strong>Important Legal Notice:</strong> These terms govern your use of our services and website. Please read them
+      carefully before making a booking.
+    </div>
+
+    <nav class="quick-nav" aria-label="Quick navigation">
+      <h3>Quick Links</h3>
+      <div class="quick-nav-links">
+        <a href="#booking" class="quick-nav-link">Bookings</a>
+        <a href="#payment" class="quick-nav-link">Prices & Payment</a>
+        <a href="#cancel" class="quick-nav-link">Cancellations</a>
+        <a href="#conduct" class="quick-nav-link">Guest Conduct</a>
+        <a href="#force-majeure" class="quick-nav-link">Force Majeure</a>
+        <a href="#disputes" class="quick-nav-link">Dispute Resolution</a>
+      </div>
+    </nav>
+
+    <section data-section="intro" id="intro">
+      <button class="copy-link" onclick="copySectionLink('intro')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Scope</h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="booking" id="booking">
+      <button class="copy-link" onclick="copySectionLink('booking')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Bookings</h2>
+      <ul data-part="items"></ul>
+
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>Reservation Requirements</h3>
+          <p>Valid ID and credit card required for all bookings. Minimum age: 18 years.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Check-in/Check-out</h3>
+          <p>Check-in: 2:00 PM | Check-out: 11:00 AM. Early/late requests subject to availability.</p>
+        </div>
+        <div class="policy-card">
+          <h3>Group Bookings</h3>
+          <p>Special terms apply for groups of 6+ rooms. Contact us for group rates and policies.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-section="payment" id="payment">
+      <button class="copy-link" onclick="copySectionLink('payment')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Prices & Payment</h2>
+      <ul data-part="items"></ul>
+
+      <div class="important-notice">
+        <h3>Payment Information</h3>
+        <p>All prices are in EUR unless otherwise stated. Currency conversion rates are approximate and subject to
+          change. A valid credit card is required to secure your reservation. Additional charges may apply for
+          incidental expenses.</p>
+      </div>
+    </section>
+
+    <section data-section="cancel" id="cancel">
+      <button class="copy-link" onclick="copySectionLink('cancel')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Cancellations & No-shows</h2>
+      <p data-part="body"></p>
+
+      <div class="cancellation-tiers">
+        <h3>Cancellation Charges</h3>
+        <div class="tier">
+          <span class="tier-period">More than 30 days before arrival</span>
+          <span class="tier-charge">Full refund</span>
+        </div>
+        <div class="tier">
+          <span class="tier-period">15-30 days before arrival</span>
+          <span class="tier-charge">50% refund</span>
+        </div>
+        <div class="tier">
+          <span class="tier-period">7-14 days before arrival</span>
+          <span class="tier-charge">25% refund</span>
+        </div>
+        <div class="tier">
+          <span class="tier-period">Less than 7 days before arrival</span>
+          <span class="tier-charge">No refund</span>
+        </div>
+      </div>
+
+      <div class="important-notice">
+        <h3>No-Show Policy</h3>
+        <p>Guests who fail to arrive on the scheduled check-in date without prior notification will be considered
+          no-shows. The full booking amount will be charged, and the reservation will be cancelled.</p>
+      </div>
+    </section>
+
+    <section data-section="conduct" id="conduct">
+      <button class="copy-link" onclick="copySectionLink('conduct')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Guest conduct</h2>
+      <ul data-part="items"></ul>
+
+      <div class="important-notice">
+        <h3>Zero Tolerance Policy</h3>
+        <p>We maintain a zero tolerance policy for disruptive behavior, illegal activities, or damage to property.
+          Violations may result in immediate eviction without refund and may lead to legal action.</p>
+      </div>
+    </section>
+
+    <section data-section="force-majeure" id="force-majeure">
+      <button class="copy-link" onclick="copySectionLink('force-majeure')"
+        aria-label="Copy link to this section">🔗</button>
+      <h2>Force Majeure</h2>
+      <p>We are not liable for failure to perform obligations due to circumstances beyond our reasonable control,
+        including but not limited to:</p>
+      <ul>
+        <li>Natural disasters, extreme weather conditions</li>
+        <li>Government restrictions, travel bans</li>
+        <li>Civil unrest, war, terrorism</li>
+        <li>Pandemics, epidemics, health emergencies</li>
+        <li>Utility failures, infrastructure breakdowns</li>
+      </ul>
+      <p>In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided
+        according to applicable laws and circumstances.</p>
+    </section>
+
+    <section data-section="liability" id="liability">
+      <button class="copy-link" onclick="copySectionLink('liability')"
+        aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Liability</h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="intellectual-property" id="intellectual-property">
+      <button class="copy-link" onclick="copySectionLink('intellectual-property')"
+        aria-label="Copy link to this section">🔗</button>
+      <h2>Intellectual Property</h2>
+      <div class="intellectual-property">
+        <h3>Copyright Notice</h3>
+        <p>All content on this website, including text, graphics, logos, and images, is the property of DEVOCEAN Lodge
+          and protected by international copyright laws. Unauthorized use, reproduction, or distribution is prohibited.
+        </p>
+        <p>The DEVOCEAN Lodge name, logo, and all related marks are trademarks and may not be used without written
+          permission.</p>
+      </div>
+    </section>
+
+    <section data-section="disputes" id="disputes">
+      <button class="copy-link" onclick="copySectionLink('disputes')" aria-label="Copy link to this section">🔗</button>
+      <h2>Dispute Resolution</h2>
+      <div class="dispute-resolution">
+        <h3>Resolution Process</h3>
+        <p>We aim to resolve any disputes amicably. Please contact us first to attempt resolution. If unresolved,
+          disputes shall be settled through mediation before pursuing legal action.</p>
+        <p><strong>Governing Law:</strong> Portuguese law shall govern these terms and any disputes.</p>
+        <p><strong>Jurisdiction:</strong> Courts of Lisbon, Portugal shall have exclusive jurisdiction.</p>
+        <p><strong>Mediation:</strong> Parties agree to attempt mediation through an accredited mediator before
+          initiating legal proceedings.</p>
+      </div>
+    </section>
+
+    <section data-section="changes" id="changes">
+      <button class="copy-link" onclick="copySectionLink('changes')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Changes to these Terms</h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="law" id="law">
+      <button class="copy-link" onclick="copySectionLink('law')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Governing law</h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="contact" id="contact">
+      <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title">Contact</h2>
+      <p data-part="body" data-use-html="true"></p>
+    </section>
+  </main>
+
+  <script>
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (fallbackErr) {
+          console.error('Fallback copy failed:', fallbackErr);
+        }
+        document.body.removeChild(textArea);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+
+      quickNavLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            const offsetTop = targetElement.offsetTop - 100;
+            window.scrollTo({
+              top: offsetTop,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    function trackTermsView() {
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'terms_viewed',
+          page_location: window.location.pathname
+        });
+      }
+    }
+
+    function calculateCancellationFee(daysBeforeArrival) {
+      if (daysBeforeArrival > 30) return 'Full refund';
+      if (daysBeforeArrival > 15) return '50% refund';
+      if (daysBeforeArrival > 7) return '25% refund';
+      return 'No refund';
+    }
+
+    window.setSiteLocale = window.setSiteLocale || function (opts) {
+      function normLang(s) {
+        s = String(s || '').toLowerCase().replace('_', '-');
+        if (s === 'pt-mz') s = 'ptmz';
+        if (s === 'pt-pt' || s === 'pt-br') s = 'pt';
+        if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2);
+        return s || 'en';
+      }
+
+      function clampCur(c) {
+        if (!c) return null;
+        c = String(c).toUpperCase().replace(/[^A-Z]/g, '');
+        return c.length === 3 ? c : null;
+      }
+
+      try {
+        if (opts && opts.lang) {
+          localStorage.setItem('site.lang', normLang(opts.lang));
+        }
+        if (opts && opts.currency) {
+          localStorage.setItem('site.currency', clampCur(opts.currency) || 'EUR');
+        }
+        localStorage.setItem('site.lang_source', 'user');
+        document.body.classList.add('loading');
+      } catch (e) {
+        console.error('Error setting locale:', e);
+      }
+
+      location.reload();
+    };
+
+    window.addEventListener('DOMContentLoaded', function () {
+      trackTermsView();
+
+      const checkI18n = setInterval(() => {
+        if (document.querySelector('[data-part].hydrated')) {
+          document.body.classList.remove('loading');
+          clearInterval(checkI18n);
+        }
+      }, 100);
+
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+      }, 3000);
+    });
+
+    window.addEventListener('error', function (e) {
+      if (e.message.includes('i18n') || e.filename.includes('legal-i18n')) {
+        console.error('i18n error detected, falling back to English');
+        document.body.classList.remove('loading');
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const termsStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "TermsAndConditions",
+        "name": "Terms and Conditions",
+        "description": "Booking terms and conditions for DEVOCEAN Lodge",
+        "publisher": {
+          "@type": "Hotel",
+          "name": "DEVOCEAN Lodge"
+        },
+        "datePublished": "2025-09-27",
+        "dateModified": "2025-09-27"
+      };
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(termsStructuredData);
+      document.head.appendChild(script);
+    });
+  </script>
+</body>
+
+</html>

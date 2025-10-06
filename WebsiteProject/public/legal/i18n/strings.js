@@ -181,6 +181,23 @@
     terms: {
       title: "Terms & Conditions",
       updatedDate: "06 Oct 2025",
+      quickLinks: {
+        title: "Quick Links",
+        links: [
+          { id: "intro", text: "Scope" },
+          { id: "booking", text: "Bookings" },
+          { id: "payment", text: "Prices & Payment" },
+          { id: "cancel", text: "Cancellations" },
+          { id: "conduct", text: "Guest Conduct" },
+          { id: "force-majeure", text: "Force Majeure" },
+          { id: "liability", text: "Liability" },
+          { id: "intellectual-property", text: "Intellectual Property" },
+          { id: "disputes", text: "Dispute Resolution" },
+          { id: "changes", text: "Changes" },
+          { id: "law", text: "Governing Law" },
+          { id: "contact", text: "Contact" }
+        ]
+      },
       sections: {
         intro: {
           title: "Scope",
