@@ -1559,7 +1559,37 @@
           body: "DEVOCEAN Lodge est exploité par TERRAfrique LDA, une société enregistrée au Mozambique. Notre adresse enregistrée est Rua C, Parcela 12, Maputo 1118, Mozambique. Nous exploitons des hébergements de plage écologiques à Ponta do Ouro, Mozambique. Nous nous engageons à protéger votre vie privée et à garantir que vos données personnelles sont collectées, traitées et utilisées de manière appropriée, légale et transparente conformément aux lois applicables sur la protection des données."
         },
         collect: {
-          title: "Quelles données personnelles nous collectons"
+          title: "Quelles données personnelles nous collectons",
+          intro: "Nous collectons différents types d'informations pour fournir et améliorer nos services :",
+          categories: [
+            {
+              title: "Informations personnelles",
+              items: [
+                "Nom, coordonnées",
+                "Informations de passeport/pièce d'identité",
+                "Informations de paiement",
+                "Préférences de réservation"
+              ]
+            },
+            {
+              title: "Données techniques",
+              items: [
+                "Adresse IP, informations sur l'appareil",
+                "Type et version du navigateur",
+                "Analyses d'utilisation du site Web",
+                "Données de cookies (avec consentement)"
+              ]
+            },
+            {
+              title: "Données de communication",
+              items: [
+                "Correspondance par e-mail",
+                "Demandes de service client",
+                "Commentaires et avis",
+                "Préférences marketing"
+              ]
+            }
+          ]
         },
         use: {
           title: "Comment nous utilisons vos données",
@@ -1595,7 +1625,7 @@
         },
         retention: {
           title: "Conservation des données",
-          body: "Nous conserverons vos informations personnelles aussi longtemps que nécessaire pour remplir les objectifs pour lesquels elles ont été collectées. En général, nous conservons les données personnelles jusqu'à 1 an après votre dernière interaction avec nous, sauf si une période de conservation plus longue est requise ou autorisée par la loi."
+          body: "Nous conserverons vos informations personnelles aussi longtemps que nécessaire pour remplir les objectifs pour lesquels elles ont été collectées, comme détaillé dans cette politique de confidentialité. En général, nous conservons les données personnelles jusqu'à 1 an après votre dernière interaction avec nous, sauf si une période de conservation plus longue est requise ou autorisée par la loi. Nous pouvons avoir besoin de conserver certaines informations pendant des périodes plus longues pour des raisons spécifiques, notamment : la tenue de registres et les rapports conformément à la loi applicable (généralement 7 ans pour les dossiers financiers et fiscaux), l'application des droits légaux, la prévention de la fraude et la résolution des litiges. Une fois la période de conservation expirée, vos données personnelles seront supprimées de manière sécurisée ou anonymisées. Les informations anonymes résiduelles et les informations agrégées, qui ne vous identifient pas directement ou indirectement, peuvent être stockées indéfiniment à des fins statistiques et analytiques."
         },
         rights: {
           title: "Vos droits en matière de confidentialité",
@@ -1610,15 +1640,15 @@
         },
         contact: {
           title: "Contactez notre équipe de confidentialité",
-          body: 'Si vous avez des questions, des préoccupations ou des demandes concernant cette politique de confidentialité ou le traitement de vos informations personnelles, veuillez nous contacter à :<br><br><strong>Email :</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Téléphone :</strong> +258 8441 82252<br><strong>Adresse postale :</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique'
+          body: 'Si vous avez des questions, des préoccupations ou des demandes concernant cette politique de confidentialité ou le traitement de vos informations personnelles, ou si vous souhaitez exercer l\'un de vos droits en matière de confidentialité, veuillez nous contacter à :<br><br><strong>Email :</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Téléphone :</strong> +258 8441 82252<br><strong>Adresse postale :</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>Nous répondrons à votre demande conformément à la loi applicable sur la protection des données. Pour les plaintes ou préoccupations concernant le traitement de vos informations, vous pouvez également contacter notre Délégué à la Protection des Données à l\'adresse e-mail ci-dessus.'
         },
         transfers: {
           title: "Transferts internationaux de données",
-          body: "Comme nous opérons dans plusieurs juridictions, vos données peuvent être transférées et traitées dans des pays en dehors de votre résidence. Nous veillons à ce que ces transferts respectent les lois applicables sur la protection des données."
+          body: "Comme nous opérons dans plusieurs juridictions, vos données peuvent être transférées et traitées dans des pays en dehors de votre résidence. Nous veillons à ce que ces transferts respectent les lois applicables sur la protection des données par le biais de décisions d'adéquation de la Commission européenne, de clauses contractuelles types (CCT), de garanties de sécurité appropriées et de transparence sur les lieux de transfert."
         },
         updates: {
           title: "Mises à jour de la politique",
-          body: "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre pour refléter les changements dans nos pratiques, la technologie, les exigences légales ou d'autres facteurs."
+          body: "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre pour refléter les changements dans nos pratiques, la technologie, les exigences légales ou d'autres facteurs. Nous vous informerons de tout changement important par le biais de notifications par e-mail pour les utilisateurs enregistrés, d'avis bien visibles sur notre site Web et d'une date de mise à jour actualisée. Nous vous encourageons à consulter régulièrement cette politique pour rester informé de la manière dont nous protégeons vos informations."
         }
       }
     },
@@ -1906,7 +1936,37 @@
           body: "DEVOCEAN Lodge è gestito da TERRAfrique LDA, una società registrata in Mozambico. Il nostro indirizzo registrato è Rua C, Parcela 12, Maputo 1118, Mozambico. Gestiamo alloggi ecologici sulla spiaggia a Ponta do Ouro, Mozambico. Ci impegniamo a proteggere la tua privacy e a garantire che i tuoi dati personali siano raccolti, trattati e utilizzati in modo appropriato, legale e trasparente in conformità con le leggi applicabili sulla protezione dei dati."
         },
         collect: {
-          title: "Quali dati personali raccogliamo"
+          title: "Quali dati personali raccogliamo",
+          intro: "Raccogliamo diversi tipi di informazioni per fornire e migliorare i nostri servizi:",
+          categories: [
+            {
+              title: "Informazioni personali",
+              items: [
+                "Nome, dettagli di contatto",
+                "Informazioni passaporto/documento d'identità",
+                "Informazioni di pagamento",
+                "Preferenze di prenotazione"
+              ]
+            },
+            {
+              title: "Dati tecnici",
+              items: [
+                "Indirizzo IP, informazioni sul dispositivo",
+                "Tipo e versione del browser",
+                "Analisi dell'utilizzo del sito Web",
+                "Dati dei cookie (con consenso)"
+              ]
+            },
+            {
+              title: "Dati di comunicazione",
+              items: [
+                "Corrispondenza via e-mail",
+                "Richieste di servizio clienti",
+                "Feedback e recensioni",
+                "Preferenze di marketing"
+              ]
+            }
+          ]
         },
         use: {
           title: "Come utilizziamo i tuoi dati",
@@ -1942,7 +2002,7 @@
         },
         retention: {
           title: "Conservazione dei dati",
-          body: "Conserveremo le tue informazioni personali per il tempo necessario a soddisfare gli scopi per cui sono state raccolte. In generale, conserviamo i dati personali fino a 1 anno dopo la tua ultima interazione con noi, a meno che non sia richiesto o consentito dalla legge un periodo di conservazione più lungo."
+          body: "Conserveremo le tue informazioni personali per il tempo necessario a soddisfare gli scopi per cui sono state raccolte, come dettagliato in questa Informativa sulla privacy. In generale, conserviamo i dati personali fino a 1 anno dopo la tua ultima interazione con noi, a meno che non sia richiesto o consentito dalla legge un periodo di conservazione più lungo. Potremmo dover conservare determinate informazioni per periodi più lunghi per motivi specifici, tra cui: tenuta dei registri e reporting in conformità con la legge applicabile (tipicamente 7 anni per i registri finanziari e fiscali), applicazione dei diritti legali, prevenzione delle frodi e risoluzione delle controversie. Una volta scaduto il periodo di conservazione, i tuoi dati personali saranno eliminati in modo sicuro o resi anonimi. Le informazioni anonime residue e le informazioni aggregate, che non ti identificano direttamente o indirettamente, possono essere conservate indefinitamente per scopi statistici e analitici."
         },
         rights: {
           title: "I tuoi diritti sulla privacy",
@@ -1957,15 +2017,15 @@
         },
         contact: {
           title: "Contatta il nostro team privacy",
-          body: 'Se hai domande, preoccupazioni o richieste riguardanti questa Informativa sulla privacy o il trattamento delle tue informazioni personali, contattaci all\'indirizzo:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefono:</strong> +258 8441 82252<br><strong>Indirizzo postale:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambico'
+          body: 'Se hai domande, preoccupazioni o richieste riguardanti questa Informativa sulla privacy o il trattamento delle tue informazioni personali, o se desideri esercitare uno dei tuoi diritti sulla privacy, contattaci all\'indirizzo:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefono:</strong> +258 8441 82252<br><strong>Indirizzo postale:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambico<br><br>Risponderemo alla tua richiesta in conformità con la legge applicabile sulla protezione dei dati. Per reclami o preoccupazioni sul trattamento delle tue informazioni, puoi anche contattare il nostro Responsabile della Protezione dei Dati all\'indirizzo e-mail sopra indicato.'
         },
         transfers: {
           title: "Trasferimenti internazionali di dati",
-          body: "Poiché operiamo in più giurisdizioni, i tuoi dati potrebbero essere trasferiti ed elaborati in paesi al di fuori della tua residenza. Garantiamo che tali trasferimenti rispettino le leggi applicabili sulla protezione dei dati."
+          body: "Poiché operiamo in più giurisdizioni, i tuoi dati potrebbero essere trasferiti ed elaborati in paesi al di fuori della tua residenza. Garantiamo che tali trasferimenti rispettino le leggi applicabili sulla protezione dei dati attraverso decisioni di adeguatezza della Commissione europea, clausole contrattuali standard (SCC), garanzie di sicurezza appropriate e trasparenza sulle sedi di trasferimento."
         },
         updates: {
           title: "Aggiornamenti della politica",
-          body: "Potremmo aggiornare questa informativa sulla privacy di tanto in tanto per riflettere cambiamenti nelle nostre pratiche, tecnologia, requisiti legali o altri fattori."
+          body: "Potremmo aggiornare questa informativa sulla privacy di tanto in tanto per riflettere cambiamenti nelle nostre pratiche, tecnologia, requisiti legali o altri fattori. Ti informeremo di eventuali modifiche sostanziali tramite notifiche via e-mail per gli utenti registrati, avvisi ben visibili sul nostro sito Web e una data di aggiornamento aggiornata. Ti incoraggiamo a consultare regolarmente questa politica per rimanere informato su come proteggiamo le tue informazioni."
         }
       }
     },
@@ -2253,7 +2313,37 @@
           body: "DEVOCEAN Lodge es operado por TERRAfrique LDA, una empresa registrada en Mozambique. Nuestra dirección registrada es Rua C, Parcela 12, Maputo 1118, Mozambique. Operamos alojamiento ecológico en la playa en Ponta do Ouro, Mozambique. Estamos comprometidos a proteger su privacidad y garantizar que sus datos personales se recopilen, procesen y utilicen de manera adecuada, legal y transparente de acuerdo con las leyes aplicables de protección de datos."
         },
         collect: {
-          title: "Qué datos personales recopilamos"
+          title: "Qué datos personales recopilamos",
+          intro: "Recopilamos diferentes tipos de información para proporcionar y mejorar nuestros servicios:",
+          categories: [
+            {
+              title: "Información personal",
+              items: [
+                "Nombre, datos de contacto",
+                "Información de pasaporte/identificación",
+                "Información de pago",
+                "Preferencias de reserva"
+              ]
+            },
+            {
+              title: "Datos técnicos",
+              items: [
+                "Dirección IP, información del dispositivo",
+                "Tipo y versión del navegador",
+                "Análisis de uso del sitio web",
+                "Datos de cookies (con consentimiento)"
+              ]
+            },
+            {
+              title: "Datos de comunicación",
+              items: [
+                "Correspondencia por correo electrónico",
+                "Solicitudes de servicio al cliente",
+                "Comentarios y reseñas",
+                "Preferencias de marketing"
+              ]
+            }
+          ]
         },
         use: {
           title: "Cómo usamos tus datos",
@@ -2289,7 +2379,7 @@
         },
         retention: {
           title: "Retención de datos",
-          body: "Conservaremos tu información personal durante el tiempo necesario para cumplir los propósitos para los que fue recopilada. Generalmente, conservamos los datos personales hasta 1 año después de tu última interacción con nosotros, a menos que se requiera o permita un período de retención más largo por ley."
+          body: "Conservaremos tu información personal durante el tiempo necesario para cumplir los propósitos para los que fue recopilada, como se detalla en esta Política de privacidad. Generalmente, conservamos los datos personales hasta 1 año después de tu última interacción con nosotros, a menos que se requiera o permita un período de retención más largo por ley. Es posible que necesitemos conservar cierta información durante períodos más largos por razones específicas, que incluyen: mantenimiento de registros e informes de acuerdo con la ley aplicable (generalmente 7 años para registros financieros y fiscales), aplicación de derechos legales, prevención de fraude y resolución de disputas. Una vez que expire el período de retención, tus datos personales se eliminarán de forma segura o se anonimizarán. La información anónima residual y la información agregada, que no te identifica directa o indirectamente, puede almacenarse indefinidamente para fines estadísticos y analíticos."
         },
         rights: {
           title: "Tus derechos de privacidad",
@@ -2304,15 +2394,15 @@
         },
         contact: {
           title: "Contacta con nuestro equipo de privacidad",
-          body: 'Si tienes alguna pregunta, inquietud o solicitud relacionada con esta Política de privacidad o el procesamiento de tu información personal, contáctanos en:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Teléfono:</strong> +258 8441 82252<br><strong>Dirección postal:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique'
+          body: 'Si tienes alguna pregunta, inquietud o solicitud relacionada con esta Política de privacidad o el procesamiento de tu información personal, o si deseas ejercer alguno de tus derechos de privacidad, contáctanos en:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Teléfono:</strong> +258 8441 82252<br><strong>Dirección postal:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>Responderemos a tu solicitud de acuerdo con la ley de protección de datos aplicable. Para quejas o inquietudes sobre el procesamiento de tu información, también puedes contactar a nuestro Delegado de Protección de Datos en la dirección de correo electrónico anterior.'
         },
         transfers: {
           title: "Transferencias internacionales de datos",
-          body: "Como operamos en múltiples jurisdicciones, tus datos pueden ser transferidos y procesados en países fuera de tu residencia. Nos aseguramos de que dichas transferencias cumplan con las leyes aplicables de protección de datos."
+          body: "Como operamos en múltiples jurisdicciones, tus datos pueden ser transferidos y procesados en países fuera de tu residencia. Nos aseguramos de que dichas transferencias cumplan con las leyes aplicables de protección de datos a través de decisiones de adecuación de la Comisión Europea, Cláusulas Contractuales Estándar (CCE), salvaguardias de seguridad apropiadas y transparencia sobre las ubicaciones de transferencia."
         },
         updates: {
           title: "Actualizaciones de la política",
-          body: "Podemos actualizar esta política de privacidad de vez en cuando para reflejar cambios en nuestras prácticas, tecnología, requisitos legales u otros factores."
+          body: "Podemos actualizar esta política de privacidad de vez en cuando para reflejar cambios en nuestras prácticas, tecnología, requisitos legales u otros factores. Te notificaremos sobre cualquier cambio importante mediante notificaciones por correo electrónico para usuarios registrados, avisos destacados en nuestro sitio web y una fecha de actualización actualizada. Te recomendamos que revises esta política periódicamente para mantenerte informado sobre cómo protegemos tu información."
         }
       }
     },
