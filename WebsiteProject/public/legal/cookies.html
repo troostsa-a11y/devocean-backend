@@ -868,11 +868,22 @@
             mobileLink.href = link.href;
             mobileLink.textContent = link.textContent;
             mobileLink.onclick = function(e) {
-              // Close menu after a short delay to allow navigation
+              e.preventDefault();
+              const targetId = this.href.split('#')[1];
+              
+              // Close menu first
+              mobileNav.classList.remove('show');
+              btn.setAttribute('aria-expanded', 'false');
+              
+              // Wait for menu to close, then navigate
               setTimeout(() => {
-                mobileNav.classList.remove('show');
-                btn.setAttribute('aria-expanded', 'false');
-              }, 100);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                  targetElement.scrollIntoView({ behavior: 'smooth' });
+                  // Update URL hash
+                  history.replaceState(null, null, '#' + targetId);
+                }
+              }, 150);
             };
             mobileNav.appendChild(mobileLink);
           });
