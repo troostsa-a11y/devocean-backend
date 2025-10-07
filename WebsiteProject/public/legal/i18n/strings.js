@@ -1982,25 +1982,58 @@
           items: [
             "Fournissez des informations précises sur les clients et les dates d'arrivée/départ",
             "Les demandes spéciales sont soumises à disponibilité et confirmation"
-          ]
+          ],
+          reservationReq: {
+            title: "Conditions de Réservation",
+            body: "Pièce d'identité valide et carte de crédit requises pour toutes les réservations. Âge minimum : 18 ans."
+          },
+          checkinCheckout: {
+            title: "Enregistrement/Départ",
+            body: "Enregistrement : 14h00 | Départ : 11h00. Demandes anticipées/tardives sous réserve de disponibilité."
+          },
+          groupBookings: {
+            title: "Réservations de Groupe",
+            body: "Des conditions spéciales s'appliquent aux groupes de 6+ chambres. Contactez-nous pour les tarifs et politiques de groupe."
+          }
         },
         payment: {
           title: "Prix et Paiement",
           items: [
             "Les tarifs indiqués sont par unité/nuit sauf indication contraire",
             "Les acomptes et méthodes de paiement seront confirmés lors de la réservation"
-          ]
+          ],
+          paymentInfo: {
+            title: "Informations de Paiement",
+            body: "Tous les prix sont en EUR sauf indication contraire. Les taux de change sont approximatifs et sujets à changement. Une carte de crédit valide est requise pour garantir votre réservation. Des frais supplémentaires peuvent s'appliquer pour les dépenses accessoires."
+          }
         },
         cancel: {
           title: "Annulations et Absences",
-          body: "Les conditions d'annulation sont divulguées au moment de la réservation et dans votre confirmation."
+          body: "Les conditions d'annulation sont divulguées au moment de la réservation et dans votre confirmation.",
+          cancellationCharges: {
+            title: "Frais d'Annulation",
+            tiers: [
+              { period: "Plus de 30 jours avant l'arrivée", charge: "Remboursement complet" },
+              { period: "15-30 jours avant l'arrivée", charge: "Remboursement de 50%" },
+              { period: "7-14 jours avant l'arrivée", charge: "Remboursement de 25%" },
+              { period: "Moins de 7 jours avant l'arrivée", charge: "Aucun remboursement" }
+            ]
+          },
+          noshowPolicy: {
+            title: "Politique de Non-présentation",
+            body: "Les clients qui ne se présentent pas à la date d'enregistrement prévue sans notification préalable seront considérés comme des non-présentations. Le montant total de la réservation sera facturé et la réservation sera annulée."
+          }
         },
         conduct: {
           title: "Conduite des clients",
           items: [
             "Respectez les règles de la propriété, le personnel, les autres clients et la communauté locale",
             "Aucune activité illégale sur les lieux"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Politique de Tolérance Zéro",
+            body: "Nous maintenons une politique de tolérance zéro pour les comportements perturbateurs, les activités illégales ou les dommages à la propriété. Les violations peuvent entraîner une expulsion immédiate sans remboursement et peuvent donner lieu à des poursuites judiciaires."
+          }
         },
 
         "force-majeure": {
@@ -2400,25 +2433,58 @@
           items: [
             "Fornire informazioni accurate sugli ospiti e date di arrivo/partenza",
             "Le richieste speciali sono soggette a disponibilità e conferma"
-          ]
+          ],
+          reservationReq: {
+            title: "Requisiti di Prenotazione",
+            body: "Documento d'identità valido e carta di credito richiesti per tutte le prenotazioni. Età minima: 18 anni."
+          },
+          checkinCheckout: {
+            title: "Check-in/Check-out",
+            body: "Check-in: ore 14:00 | Check-out: ore 11:00. Richieste anticipate/tardive soggette a disponibilità."
+          },
+          groupBookings: {
+            title: "Prenotazioni di Gruppo",
+            body: "Si applicano condizioni speciali per gruppi di 6+ camere. Contattateci per tariffe e politiche di gruppo."
+          }
         },
         payment: {
           title: "Prezzi e Pagamento",
           items: [
             "Le tariffe mostrate sono per unità/notte salvo diversa indicazione",
             "Depositi e metodi di pagamento saranno confermati durante la prenotazione"
-          ]
+          ],
+          paymentInfo: {
+            title: "Informazioni di Pagamento",
+            body: "Tutti i prezzi sono in EUR salvo diversa indicazione. I tassi di cambio sono approssimativi e soggetti a variazioni. È richiesta una carta di credito valida per garantire la prenotazione. Potrebbero applicarsi costi aggiuntivi per spese accessorie."
+          }
         },
         cancel: {
           title: "Cancellazioni e Mancate presentazioni",
-          body: "I termini di cancellazione sono comunicati al momento della prenotazione e nella conferma."
+          body: "I termini di cancellazione sono comunicati al momento della prenotazione e nella conferma.",
+          cancellationCharges: {
+            title: "Costi di Cancellazione",
+            tiers: [
+              { period: "Più di 30 giorni prima dell'arrivo", charge: "Rimborso completo" },
+              { period: "15-30 giorni prima dell'arrivo", charge: "Rimborso del 50%" },
+              { period: "7-14 giorni prima dell'arrivo", charge: "Rimborso del 25%" },
+              { period: "Meno di 7 giorni prima dell'arrivo", charge: "Nessun rimborso" }
+            ]
+          },
+          noshowPolicy: {
+            title: "Politica di Mancata Presentazione",
+            body: "Gli ospiti che non si presentano alla data di check-in prevista senza preavviso saranno considerati mancate presentazioni. L'importo totale della prenotazione verrà addebitato e la prenotazione verrà annullata."
+          }
         },
         conduct: {
           title: "Comportamento degli ospiti",
           items: [
             "Rispettare le regole della struttura, il personale, gli altri ospiti e la comunità locale",
             "Nessuna attività illegale nei locali"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Politica di Tolleranza Zero",
+            body: "Manteniamo una politica di tolleranza zero per comportamenti molesti, attività illegali o danni alla proprietà. Le violazioni possono comportare l'espulsione immediata senza rimborso e possono portare ad azioni legali."
+          }
         },
 
         "force-majeure": {
@@ -2818,25 +2884,58 @@
           items: [
             "Proporcione información precisa sobre los huéspedes y fechas de llegada/salida",
             "Las solicitudes especiales están sujetas a disponibilidad y confirmación"
-          ]
+          ],
+          reservationReq: {
+            title: "Requisitos de Reserva",
+            body: "Se requiere identificación válida y tarjeta de crédito para todas las reservas. Edad mínima: 18 años."
+          },
+          checkinCheckout: {
+            title: "Entrada/Salida",
+            body: "Entrada: 14:00 | Salida: 11:00. Solicitudes tempranas/tardías sujetas a disponibilidad."
+          },
+          groupBookings: {
+            title: "Reservas de Grupo",
+            body: "Se aplican condiciones especiales para grupos de 6+ habitaciones. Contáctenos para tarifas y políticas de grupo."
+          }
         },
         payment: {
           title: "Precios y Pago",
           items: [
             "Las tarifas mostradas son por unidad/noche a menos que se indique lo contrario",
             "Los depósitos y métodos de pago se confirmarán durante la reserva"
-          ]
+          ],
+          paymentInfo: {
+            title: "Información de Pago",
+            body: "Todos los precios están en EUR a menos que se indique lo contrario. Los tipos de cambio son aproximados y están sujetos a cambios. Se requiere una tarjeta de crédito válida para garantizar su reserva. Pueden aplicarse cargos adicionales por gastos imprevistos."
+          }
         },
         cancel: {
           title: "Cancelaciones y Ausencias",
-          body: "Los términos de cancelación se revelan en el momento de la reserva y en su confirmación."
+          body: "Los términos de cancelación se revelan en el momento de la reserva y en su confirmación.",
+          cancellationCharges: {
+            title: "Cargos por Cancelación",
+            tiers: [
+              { period: "Más de 30 días antes de la llegada", charge: "Reembolso completo" },
+              { period: "15-30 días antes de la llegada", charge: "Reembolso del 50%" },
+              { period: "7-14 días antes de la llegada", charge: "Reembolso del 25%" },
+              { period: "Menos de 7 días antes de la llegada", charge: "Sin reembolso" }
+            ]
+          },
+          noshowPolicy: {
+            title: "Política de No Presentación",
+            body: "Los huéspedes que no lleguen en la fecha de entrada programada sin notificación previa serán considerados no presentados. Se cobrará el monto total de la reserva y la reserva será cancelada."
+          }
         },
         conduct: {
           title: "Conducta del huésped",
           items: [
             "Respetar las reglas de la propiedad, el personal, otros huéspedes y la comunidad local",
             "No se permiten actividades ilegales en las instalaciones"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Política de Tolerancia Cero",
+            body: "Mantenemos una política de tolerancia cero para comportamientos disruptivos, actividades ilegales o daños a la propiedad. Las violaciones pueden resultar en desalojo inmediato sin reembolso y pueden dar lugar a acciones legales."
+          }
         },
 
         "force-majeure": {
