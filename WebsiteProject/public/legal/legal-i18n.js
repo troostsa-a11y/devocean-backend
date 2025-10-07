@@ -348,7 +348,7 @@
                 periodSpan.className = 'tier-period';
                 periodSpan.textContent = tier.period || '';
                 var chargeSpan = document.createElement('span');
-                chargeSpan.className = 'tier-charge';
+                chargeSpan.className = tier.chargeClass ? 'tier-charge ' + tier.chargeClass : 'tier-charge';
                 chargeSpan.textContent = tier.charge || '';
                 tierDiv.appendChild(periodSpan);
                 tierDiv.appendChild(chargeSpan);
