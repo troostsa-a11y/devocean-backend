@@ -303,11 +303,21 @@
           body: "Cancellation terms are disclosed at booking time and on your confirmation.",
           cancellationCharges: {
             title: "Cancellation Charges",
-            tiers: [
-              { period: "More than 30 days before arrival", charge: "Full refund" },
-              { period: "15-30 days before arrival", charge: "50% refund" },
-              { period: "7-14 days before arrival", charge: "25% refund" },
-              { period: "Less than 7 days before arrival", charge: "No refund" }
+            plans: [
+              {
+                planName: "Semi-flexible rate plan:",
+                tiers: [
+                  { period: "30 days or more before arrival", charge: "Full refund" },
+                  { period: "29 days or less before arrival", charge: "50% cancellation fee" }
+                ]
+              },
+              {
+                planName: "Non refundable rate plan:",
+                tiers: [
+                  { period: "Until 24 hours after reservation", charge: "Full refund" },
+                  { period: "In all other circumstances", charge: "No refund but the right to modify the date of arrival once under the condition of paying the difference in case the new date has a higher rate." }
+                ]
+              }
             ]
           },
           noshowPolicy: {
@@ -735,11 +745,21 @@
           body: "Die Stornierungsbedingungen werden zum Zeitpunkt der Buchung und in Ihrer Bestätigung offengelegt.",
           cancellationCharges: {
             title: "Stornierungsgebühren",
-            tiers: [
-              { period: "Mehr als 30 Tage vor Anreise", charge: "Vollständige Rückerstattung" },
-              { period: "15-30 Tage vor Anreise", charge: "50% Rückerstattung" },
-              { period: "7-14 Tage vor Anreise", charge: "25% Rückerstattung" },
-              { period: "Weniger als 7 Tage vor Anreise", charge: "Keine Rückerstattung" }
+            plans: [
+              {
+                planName: "Halbflexibler Tarif:",
+                tiers: [
+                  { period: "30 Tage oder mehr vor Anreise", charge: "Vollständige Rückerstattung" },
+                  { period: "29 Tage oder weniger vor Anreise", charge: "50% Stornierungsgebühr" }
+                ]
+              },
+              {
+                planName: "Nicht erstattungsfähiger Tarif:",
+                tiers: [
+                  { period: "Bis 24 Stunden nach der Reservierung", charge: "Vollständige Rückerstattung" },
+                  { period: "In allen anderen Umständen", charge: "Keine Rückerstattung, aber das Recht, das Anreisedatum einmal zu ändern, unter der Bedingung, den Preisunterschied zu zahlen, falls das neue Datum einen höheren Tarif hat." }
+                ]
+              }
             ]
           },
           noshowPolicy: {
@@ -1261,11 +1281,21 @@
           body: "Annuleringsvoorwaarden worden bekendgemaakt tijdens het boeken en in uw bevestiging.",
           cancellationCharges: {
             title: "Annuleringskosten",
-            tiers: [
-              { period: "Meer dan 30 dagen voor aankomst", charge: "Volledige terugbetaling" },
-              { period: "15-30 dagen voor aankomst", charge: "50% terugbetaling" },
-              { period: "7-14 dagen voor aankomst", charge: "25% terugbetaling" },
-              { period: "Minder dan 7 dagen voor aankomst", charge: "Geen terugbetaling" }
+            plans: [
+              {
+                planName: "Semi-flexibel tarief:",
+                tiers: [
+                  { period: "30 dagen of meer voor aankomst", charge: "Volledige terugbetaling" },
+                  { period: "29 dagen of minder voor aankomst", charge: "50% annuleringskosten" }
+                ]
+              },
+              {
+                planName: "Niet-restitueerbaar tarief:",
+                tiers: [
+                  { period: "Tot 24 uur na reservering", charge: "Volledige terugbetaling" },
+                  { period: "In alle andere omstandigheden", charge: "Geen terugbetaling maar het recht om de aankomstdatum eenmaal te wijzigen onder de voorwaarde het verschil te betalen als de nieuwe datum een hoger tarief heeft." }
+                ]
+              }
             ]
           },
           noshowPolicy: {
@@ -1787,11 +1817,21 @@
           body: "Os termos de cancelamento são divulgados no momento da reserva e na sua confirmação.",
           cancellationCharges: {
             title: "Encargos de Cancelamento",
-            tiers: [
-              { period: "Mais de 30 dias antes da chegada", charge: "Reembolso total" },
-              { period: "15-30 dias antes da chegada", charge: "Reembolso de 50%" },
-              { period: "7-14 dias antes da chegada", charge: "Reembolso de 25%" },
-              { period: "Menos de 7 dias antes da chegada", charge: "Sem reembolso" }
+            plans: [
+              {
+                planName: "Tarifa semi-flexível:",
+                tiers: [
+                  { period: "30 dias ou mais antes da chegada", charge: "Reembolso total" },
+                  { period: "29 dias ou menos antes da chegada", charge: "Taxa de cancelamento de 50%" }
+                ]
+              },
+              {
+                planName: "Tarifa não reembolsável:",
+                tiers: [
+                  { period: "Até 24 horas após a reserva", charge: "Reembolso total" },
+                  { period: "Em todas as outras circunstâncias", charge: "Sem reembolso, mas o direito de modificar a data de chegada uma vez sob a condição de pagar a diferença caso a nova data tenha uma tarifa mais alta." }
+                ]
+              }
             ]
           },
           noshowPolicy: {
@@ -2314,11 +2354,21 @@
           body: "Les conditions d'annulation sont divulguées au moment de la réservation et dans votre confirmation.",
           cancellationCharges: {
             title: "Frais d'Annulation",
-            tiers: [
-              { period: "Plus de 30 jours avant l'arrivée", charge: "Remboursement complet" },
-              { period: "15-30 jours avant l'arrivée", charge: "Remboursement de 50%" },
-              { period: "7-14 jours avant l'arrivée", charge: "Remboursement de 25%" },
-              { period: "Moins de 7 jours avant l'arrivée", charge: "Aucun remboursement" }
+            plans: [
+              {
+                planName: "Tarif semi-flexible:",
+                tiers: [
+                  { period: "30 jours ou plus avant l'arrivée", charge: "Remboursement complet" },
+                  { period: "29 jours ou moins avant l'arrivée", charge: "Frais d'annulation de 50%" }
+                ]
+              },
+              {
+                planName: "Tarif non remboursable:",
+                tiers: [
+                  { period: "Jusqu'à 24 heures après la réservation", charge: "Remboursement complet" },
+                  { period: "Dans toutes les autres circonstances", charge: "Aucun remboursement mais le droit de modifier la date d'arrivée une fois à condition de payer la différence si la nouvelle date a un tarif plus élevé." }
+                ]
+              }
             ]
           },
           noshowPolicy: {
@@ -2791,11 +2841,21 @@
           body: "I termini di cancellazione sono comunicati al momento della prenotazione e nella conferma.",
           cancellationCharges: {
             title: "Costi di Cancellazione",
-            tiers: [
-              { period: "Più di 30 giorni prima dell'arrivo", charge: "Rimborso completo" },
-              { period: "15-30 giorni prima dell'arrivo", charge: "Rimborso del 50%" },
-              { period: "7-14 giorni prima dell'arrivo", charge: "Rimborso del 25%" },
-              { period: "Meno di 7 giorni prima dell'arrivo", charge: "Nessun rimborso" }
+            plans: [
+              {
+                planName: "Tariffa semi-flessibile:",
+                tiers: [
+                  { period: "30 giorni o più prima dell'arrivo", charge: "Rimborso completo" },
+                  { period: "29 giorni o meno prima dell'arrivo", charge: "Commissione di cancellazione del 50%" }
+                ]
+              },
+              {
+                planName: "Tariffa non rimborsabile:",
+                tiers: [
+                  { period: "Fino a 24 ore dopo la prenotazione", charge: "Rimborso completo" },
+                  { period: "In tutte le altre circostanze", charge: "Nessun rimborso ma il diritto di modificare la data di arrivo una volta a condizione di pagare la differenza nel caso in cui la nuova data abbia una tariffa più alta." }
+                ]
+              }
             ]
           },
           noshowPolicy: {
@@ -3268,11 +3328,21 @@
           body: "Los términos de cancelación se revelan en el momento de la reserva y en su confirmación.",
           cancellationCharges: {
             title: "Cargos por Cancelación",
-            tiers: [
-              { period: "Más de 30 días antes de la llegada", charge: "Reembolso completo" },
-              { period: "15-30 días antes de la llegada", charge: "Reembolso del 50%" },
-              { period: "7-14 días antes de la llegada", charge: "Reembolso del 25%" },
-              { period: "Menos de 7 días antes de la llegada", charge: "Sin reembolso" }
+            plans: [
+              {
+                planName: "Tarifa semi-flexible:",
+                tiers: [
+                  { period: "30 días o más antes de la llegada", charge: "Reembolso completo" },
+                  { period: "29 días o menos antes de la llegada", charge: "Cargo por cancelación del 50%" }
+                ]
+              },
+              {
+                planName: "Tarifa no reembolsable:",
+                tiers: [
+                  { period: "Hasta 24 horas después de la reserva", charge: "Reembolso completo" },
+                  { period: "En todas las demás circunstancias", charge: "Sin reembolso pero el derecho de modificar la fecha de llegada una vez bajo la condición de pagar la diferencia en caso de que la nueva fecha tenga una tarifa más alta." }
+                ]
+              }
             ]
           },
           noshowPolicy: {

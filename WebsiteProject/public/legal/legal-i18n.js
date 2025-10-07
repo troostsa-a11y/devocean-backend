@@ -321,13 +321,44 @@
         }
       });
 
-      // Handle cancellation charges with tiers
+      // Handle cancellation charges with tiers or plans
       var cancellationCharges = sec.querySelector('[data-part="cancellationCharges"]');
       if (cancellationCharges && data.cancellationCharges) {
         var ccTitle = cancellationCharges.querySelector('[data-part="title"]');
         var tierList = cancellationCharges.querySelector('[data-part="tiers"]');
         if (ccTitle && data.cancellationCharges.title) ccTitle.textContent = data.cancellationCharges.title;
-        if (tierList && Array.isArray(data.cancellationCharges.tiers)) {
+        
+        // Support new structure with multiple plans
+        if (tierList && Array.isArray(data.cancellationCharges.plans)) {
+          tierList.innerHTML = '';
+          data.cancellationCharges.plans.forEach(function(plan) {
+            // Create plan name header
+            if (plan.planName) {
+              var planHeader = document.createElement('h4');
+              planHeader.className = 'plan-name';
+              planHeader.textContent = plan.planName;
+              tierList.appendChild(planHeader);
+            }
+            // Create tiers for this plan
+            if (Array.isArray(plan.tiers)) {
+              plan.tiers.forEach(function(tier) {
+                var tierDiv = document.createElement('div');
+                tierDiv.className = 'tier';
+                var periodSpan = document.createElement('span');
+                periodSpan.className = 'tier-period';
+                periodSpan.textContent = tier.period || '';
+                var chargeSpan = document.createElement('span');
+                chargeSpan.className = 'tier-charge';
+                chargeSpan.textContent = tier.charge || '';
+                tierDiv.appendChild(periodSpan);
+                tierDiv.appendChild(chargeSpan);
+                tierList.appendChild(tierDiv);
+              });
+            }
+          });
+        }
+        // Fallback for old structure with single tiers array
+        else if (tierList && Array.isArray(data.cancellationCharges.tiers)) {
           tierList.innerHTML = '';
           data.cancellationCharges.tiers.forEach(function(tier) {
             var tierDiv = document.createElement('div');
