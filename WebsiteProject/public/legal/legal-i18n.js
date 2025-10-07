@@ -166,10 +166,16 @@
         }
       }
 
-      // Handle intro (for security section)
+      // Handle intro (for security section and GDPR sections)
       var intro = sec.querySelector('[data-part="intro"]');
       if (intro && data.intro) {
         intro.textContent = data.intro;
+      }
+
+      // Handle periodsTitle (for retention section)
+      var periodsTitle = sec.querySelector('[data-part="periodsTitle"]');
+      if (periodsTitle && data.periodsTitle) {
+        periodsTitle.textContent = data.periodsTitle;
       }
 
       // Handle description (for cookie sections)
@@ -251,6 +257,68 @@
         } else if (f.parentNode) {
           f.parentNode.removeChild(f);
         }
+      }
+    });
+
+    // Handle legal basis items (GDPR page)
+    document.querySelectorAll("[data-basis]").forEach(function(basis) {
+      var key = basis.getAttribute("data-basis");
+      var basisData = pageDict.legalBases && pageDict.legalBases[key];
+      if (basisData) {
+        var t = basis.querySelector('[data-part="title"]');
+        var b = basis.querySelector('[data-part="body"]');
+        if (t && basisData.title) t.textContent = basisData.title;
+        if (b && basisData.body) b.textContent = basisData.body;
+      }
+    });
+
+    // Handle rights cards (GDPR page)
+    document.querySelectorAll("[data-right]").forEach(function(right) {
+      var key = right.getAttribute("data-right");
+      var rightData = pageDict.rights && pageDict.rights[key];
+      if (rightData) {
+        var t = right.querySelector('[data-part="title"]');
+        var b = right.querySelector('[data-part="body"]');
+        if (t && rightData.title) t.textContent = rightData.title;
+        if (b && rightData.body) b.textContent = rightData.body;
+      }
+    });
+
+    // Handle buttons (GDPR page)
+    document.querySelectorAll("[data-button]").forEach(function(btn) {
+      var key = btn.getAttribute("data-button");
+      var btnData = pageDict.buttons && pageDict.buttons[key];
+      if (btnData) {
+        var txt = btn.querySelector('[data-part="text"]');
+        if (txt && btnData.text) txt.textContent = btnData.text;
+      }
+    });
+
+    // Handle safeguards (GDPR page)
+    document.querySelectorAll("[data-safeguards]").forEach(function(safeguard) {
+      var key = safeguard.getAttribute("data-safeguards");
+      var safeguardData = pageDict.safeguards && pageDict.safeguards[key];
+      if (safeguardData) {
+        var t = safeguard.querySelector('[data-part="title"]');
+        var b = safeguard.querySelector('[data-part="body"]');
+        if (t && safeguardData.title) t.textContent = safeguardData.title;
+        if (b && safeguardData.body) b.textContent = safeguardData.body;
+      }
+    });
+
+    // Handle authority info (GDPR page)
+    document.querySelectorAll("[data-authority]").forEach(function(auth) {
+      var key = auth.getAttribute("data-authority");
+      var authData = pageDict.authority && pageDict.authority[key];
+      if (authData) {
+        var t = auth.querySelector('[data-part="title"]');
+        var n = auth.querySelector('[data-part="name"]');
+        var wl = auth.querySelector('[data-part="websiteLabel"]');
+        var cl = auth.querySelector('[data-part="contactLabel"]');
+        if (t && authData.title) t.textContent = authData.title;
+        if (n && authData.name) n.textContent = authData.name;
+        if (wl && authData.websiteLabel) wl.textContent = authData.websiteLabel;
+        if (cl && authData.contactLabel) cl.textContent = authData.contactLabel;
       }
     });
 
