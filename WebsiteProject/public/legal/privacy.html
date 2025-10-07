@@ -397,6 +397,7 @@
       display: none;
       background: white;
       border-top: 1px solid #e0e0e0;
+      margin: 8px -16px 0 -16px;
     }
 
     .mobile-quick-nav.show {
@@ -577,11 +578,11 @@
         <h3 data-part="title">Quick Links</h3>
         <div class="quick-nav-links" data-part="links"></div>
       </nav>
-    </div>
 
-    <!-- Mobile dropdown menu -->
-    <div id="mobile-nav" class="mobile-quick-nav">
-      <!-- Links will be populated by JavaScript -->
+      <!-- Mobile dropdown menu -->
+      <div id="mobile-nav" class="mobile-quick-nav">
+        <!-- Links will be populated by JavaScript -->
+      </div>
     </div>
 
     <section data-section="who" id="who">
@@ -835,26 +836,28 @@
       const btn = document.querySelector('.mobile-menu-btn');
       const isOpen = mobileNav.classList.contains('show');
       
-      // Populate menu from desktop links (re-populate each time to ensure we have latest links)
-      mobileNav.innerHTML = '';
-      const desktopLinks = document.querySelectorAll('.quick-nav-links a');
-      if (desktopLinks.length > 0) {
-        desktopLinks.forEach(link => {
-          const mobileLink = document.createElement('a');
-          mobileLink.href = link.href;
-          mobileLink.textContent = link.textContent;
-          mobileLink.onclick = function(e) {
-            mobileNav.classList.remove('show');
-            btn.setAttribute('aria-expanded', 'false');
-          };
-          mobileNav.appendChild(mobileLink);
-        });
-      }
-      
       if (isOpen) {
         mobileNav.classList.remove('show');
         btn.setAttribute('aria-expanded', 'false');
       } else {
+        // Populate menu from desktop links before opening
+        mobileNav.innerHTML = '';
+        const desktopLinks = document.querySelectorAll('.quick-nav-links a');
+        if (desktopLinks.length > 0) {
+          desktopLinks.forEach(link => {
+            const mobileLink = document.createElement('a');
+            mobileLink.href = link.href;
+            mobileLink.textContent = link.textContent;
+            mobileLink.onclick = function(e) {
+              // Close menu after a short delay to allow navigation
+              setTimeout(() => {
+                mobileNav.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+              }, 100);
+            };
+            mobileNav.appendChild(mobileLink);
+          });
+        }
         mobileNav.classList.add('show');
         btn.setAttribute('aria-expanded', 'true');
       }
