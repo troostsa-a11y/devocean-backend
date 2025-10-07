@@ -425,7 +425,37 @@
           body: "DEVOCEAN Lodge wird von TERRAfrique LDA betrieben, einem in Mosambik registrierten Unternehmen. Unsere registrierte Adresse ist Rua C, Parcela 12, Maputo 1118, Mosambik. Wir betreiben umweltfreundliche Strandunterkünfte in Ponta do Ouro, Mosambik. Wir verpflichten uns, Ihre Privatsphäre zu schützen und sicherzustellen, dass Ihre persönlichen Daten in Übereinstimmung mit den geltenden Datenschutzgesetzen ordnungsgemäß, rechtmäßig und transparent erhoben, verarbeitet und verwendet werden."
         },
         collect: {
-          title: "Welche personenbezogenen Daten wir erheben"
+          title: "Welche personenbezogenen Daten wir erheben",
+          intro: "Wir erheben verschiedene Arten von Informationen, um unsere Dienstleistungen bereitzustellen und zu verbessern:",
+          categories: [
+            {
+              title: "Persönliche Informationen",
+              items: [
+                "Name, Kontaktdaten",
+                "Reisepass-/Ausweisinformationen",
+                "Zahlungsinformationen",
+                "Buchungspräferenzen"
+              ]
+            },
+            {
+              title: "Technische Daten",
+              items: [
+                "IP-Adresse, Geräteinformationen",
+                "Browsertyp und -version",
+                "Website-Nutzungsanalysen",
+                "Cookie-Daten (mit Zustimmung)"
+              ]
+            },
+            {
+              title: "Kommunikationsdaten",
+              items: [
+                "E-Mail-Korrespondenz",
+                "Kundendienstanfragen",
+                "Feedback und Bewertungen",
+                "Marketingpräferenzen"
+              ]
+            }
+          ]
         },
         use: {
           title: "Wie wir Ihre Daten verwenden",
@@ -461,7 +491,7 @@
         },
         retention: {
           title: "Datenaufbewahrung",
-          body: "Wir bewahren Ihre persönlichen Daten so lange auf, wie es zur Erfüllung der Zwecke erforderlich ist, für die sie erhoben wurden. Im Allgemeinen bewahren wir personenbezogene Daten bis zu 1 Jahr nach Ihrer letzten Interaktion mit uns auf, es sei denn, eine längere Aufbewahrungsfrist ist gesetzlich vorgeschrieben oder zulässig."
+          body: "Wir bewahren Ihre persönlichen Daten so lange auf, wie es zur Erfüllung der Zwecke erforderlich ist, für die sie erhoben wurden, wie in dieser Datenschutzrichtlinie beschrieben. Im Allgemeinen bewahren wir personenbezogene Daten bis zu 1 Jahr nach Ihrer letzten Interaktion mit uns auf, es sei denn, eine längere Aufbewahrungsfrist ist gesetzlich vorgeschrieben oder zulässig. Wir müssen möglicherweise bestimmte Informationen aus bestimmten Gründen für längere Zeiträume aufbewahren, einschließlich: Aufzeichnung und Berichterstattung gemäß geltendem Recht (in der Regel 7 Jahre für Finanz- und Steuerunterlagen), Durchsetzung rechtlicher Rechte, Betrugsprävention und Streitbeilegung. Sobald die Aufbewahrungsfrist abläuft, werden Ihre persönlichen Daten sicher gelöscht oder anonymisiert. Verbleibende anonyme Informationen und aggregierte Informationen, die Sie nicht direkt oder indirekt identifizieren, können unbegrenzt für statistische und analytische Zwecke gespeichert werden."
         },
         rights: {
           title: "Ihre Datenschutzrechte",
@@ -476,15 +506,15 @@
         },
         contact: {
           title: "Kontaktieren Sie unser Datenschutz-Team",
-          body: 'Bei Fragen, Bedenken oder Anfragen zu dieser Datenschutzrichtlinie oder der Verarbeitung Ihrer personenbezogenen Daten kontaktieren Sie uns bitte unter:<br><br><strong>E-Mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Postanschrift:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mosambik'
+          body: 'Bei Fragen, Bedenken oder Anfragen zu dieser Datenschutzrichtlinie oder der Verarbeitung Ihrer personenbezogenen Daten, oder wenn Sie eines Ihrer Datenschutzrechte ausüben möchten, kontaktieren Sie uns bitte unter:<br><br><strong>E-Mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Postanschrift:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mosambik<br><br>Wir werden auf Ihre Anfrage gemäß dem geltenden Datenschutzrecht antworten. Bei Beschwerden oder Bedenken bezüglich der Verarbeitung Ihrer Informationen können Sie auch unseren Datenschutzbeauftragten unter der oben genannten E-Mail-Adresse kontaktieren.'
         },
         transfers: {
           title: "Internationale Datenübermittlungen",
-          body: "Da wir in mehreren Gerichtsbarkeiten tätig sind, können Ihre Daten in Länder außerhalb Ihres Wohnsitzes übertragen und dort verarbeitet werden. Wir stellen sicher, dass solche Übermittlungen den geltenden Datenschutzgesetzen entsprechen."
+          body: "Da wir in mehreren Gerichtsbarkeiten tätig sind, können Ihre Daten in Länder außerhalb Ihres Wohnsitzes übertragen und dort verarbeitet werden. Wir stellen sicher, dass solche Übermittlungen den geltenden Datenschutzgesetzen entsprechen durch Angemessenheitsbeschlüsse der Europäischen Kommission, Standardvertragsklauseln (SCCs), angemessene Sicherheitsvorkehrungen und Transparenz über Übertragungsorte."
         },
         updates: {
           title: "Richtlinien-Updates",
-          body: "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken, Technologien, rechtlichen Anforderungen oder anderen Faktoren widerzuspiegeln."
+          body: "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren, um Änderungen in unseren Praktiken, Technologien, rechtlichen Anforderungen oder anderen Faktoren widerzuspiegeln. Wir werden Sie über wesentliche Änderungen durch E-Mail-Benachrichtigungen für registrierte Benutzer, auffällige Hinweise auf unserer Website und ein aktualisiertes Datum der letzten Aktualisierung informieren. Wir empfehlen Ihnen, diese Richtlinie regelmäßig zu überprüfen, um darüber informiert zu bleiben, wie wir Ihre Informationen schützen."
         }
       }
     },
