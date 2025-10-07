@@ -802,7 +802,37 @@
           body: "DEVOCEAN Lodge wordt geëxploiteerd door TERRAfrique LDA, een bedrijf geregistreerd in Mozambique. Ons geregistreerde adres is Rua C, Parcela 12, Maputo 1118, Mozambique. We exploiteren milieuvriendelijke strandaccommodaties in Ponta do Ouro, Mozambique. We zijn toegewijd aan het beschermen van uw privacy en zorgen ervoor dat uw persoonlijke gegevens op de juiste, wettige en transparante manier worden verzameld, verwerkt en gebruikt in overeenstemming met de geldende wetgeving inzake gegevensbescherming."
         },
         collect: {
-          title: "Welke persoonlijke gegevens we verzamelen"
+          title: "Welke persoonlijke gegevens we verzamelen",
+          intro: "We verzamelen verschillende soorten informatie om onze diensten te leveren en te verbeteren:",
+          categories: [
+            {
+              title: "Persoonlijke informatie",
+              items: [
+                "Naam, contactgegevens",
+                "Paspoort-/ID-informatie",
+                "Betalingsinformatie",
+                "Boekingsvoorkeuren"
+              ]
+            },
+            {
+              title: "Technische gegevens",
+              items: [
+                "IP-adres, apparaatinformatie",
+                "Browsertype en -versie",
+                "Website-gebruiksanalyses",
+                "Cookiegegevens (met toestemming)"
+              ]
+            },
+            {
+              title: "Communicatiegegevens",
+              items: [
+                "E-mailcorrespondentie",
+                "Klantenserviceverzoeken",
+                "Feedback en beoordelingen",
+                "Marketingvoorkeuren"
+              ]
+            }
+          ]
         },
         use: {
           title: "Hoe we uw gegevens gebruiken",
@@ -838,7 +868,7 @@
         },
         retention: {
           title: "Gegevensbewaring",
-          body: "We bewaren uw persoonlijke informatie zo lang als nodig is om de doeleinden te vervullen waarvoor deze werd verzameld. Over het algemeen bewaren we persoonlijke gegevens tot 1 jaar na uw laatste interactie met ons, tenzij een langere bewaartermijn wettelijk vereist of toegestaan is."
+          body: "We bewaren uw persoonlijke informatie zo lang als nodig is om de doeleinden te vervullen waarvoor deze werd verzameld, zoals beschreven in dit privacybeleid. Over het algemeen bewaren we persoonlijke gegevens tot 1 jaar na uw laatste interactie met ons, tenzij een langere bewaartermijn wettelijk vereist of toegestaan is. We kunnen bepaalde informatie voor langere perioden moeten bewaren om specifieke redenen, waaronder: registratie en rapportage in overeenstemming met de toepasselijke wetgeving (doorgaans 7 jaar voor financiële en fiscale gegevens), handhaving van juridische rechten, fraudepreventie en geschillenbeslechting. Zodra de bewaartermijn is verstreken, worden uw persoonlijke gegevens veilig verwijderd of geanonimiseerd. Resterende anonieme informatie en geaggregeerde informatie, die u niet direct of indirect identificeert, kan onbeperkt worden bewaard voor statistische en analytische doeleinden."
         },
         rights: {
           title: "Uw privacyrechten",
@@ -853,15 +883,15 @@
         },
         contact: {
           title: "Neem contact op met ons privacyteam",
-          body: 'Als u vragen, zorgen of verzoeken heeft met betrekking tot dit privacybeleid of de verwerking van uw persoonlijke informatie, neem dan contact met ons op via:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefoon:</strong> +258 8441 82252<br><strong>Postadres:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique'
+          body: 'Als u vragen, zorgen of verzoeken heeft met betrekking tot dit privacybeleid of de verwerking van uw persoonlijke informatie, of als u een van uw privacyrechten wilt uitoefenen, neem dan contact met ons op via:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefoon:</strong> +258 8441 82252<br><strong>Postadres:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>We zullen op uw verzoek reageren in overeenstemming met de toepasselijke wetgeving inzake gegevensbescherming. Voor klachten of zorgen over de verwerking van uw informatie kunt u ook contact opnemen met onze functionaris voor gegevensbescherming op het bovenstaande e-mailadres.'
         },
         transfers: {
           title: "Internationale gegevensoverdrachten",
-          body: "Omdat we in meerdere rechtsgebieden opereren, kunnen uw gegevens worden overgedragen naar en verwerkt in landen buiten uw woonplaats. We zorgen ervoor dat dergelijke overdrachten voldoen aan de toepasselijke wetgeving inzake gegevensbescherming."
+          body: "Omdat we in meerdere rechtsgebieden opereren, kunnen uw gegevens worden overgedragen naar en verwerkt in landen buiten uw woonplaats. We zorgen ervoor dat dergelijke overdrachten voldoen aan de toepasselijke wetgeving inzake gegevensbescherming door adequaatheidsbeslissingen van de Europese Commissie, standaard contractuele clausules (SCC's), passende beveiligingsmaatregelen en transparantie over overdrachtslocaties."
         },
         updates: {
           title: "Beleidsupdates",
-          body: "We kunnen dit privacybeleid van tijd tot tijd bijwerken om veranderingen in onze praktijken, technologie, wettelijke vereisten of andere factoren weer te geven."
+          body: "We kunnen dit privacybeleid van tijd tot tijd bijwerken om veranderingen in onze praktijken, technologie, wettelijke vereisten of andere factoren weer te geven. We zullen u op de hoogte stellen van wezenlijke wijzigingen via e-mailmeldingen voor geregistreerde gebruikers, prominente kennisgevingen op onze website en een bijgewerkte datum van 'laatst bijgewerkt'. We moedigen u aan om dit beleid regelmatig te bekijken om op de hoogte te blijven van hoe we uw informatie beschermen."
         }
       }
     },
@@ -1149,7 +1179,37 @@
           body: "O DEVOCEAN Lodge é operado pela TERRAfrique LDA, uma empresa registada em Moçambique. O nosso endereço registado é Rua C, Parcela 12, Maputo 1118, Moçambique. Operamos alojamento ecológico de praia em Ponta do Ouro, Moçambique. Estamos comprometidos em proteger a sua privacidade e garantir que os seus dados pessoais sejam recolhidos, processados e utilizados de forma adequada, legal e transparente, de acordo com as leis aplicáveis de proteção de dados."
         },
         collect: {
-          title: "Que dados pessoais recolhemos"
+          title: "Que dados pessoais recolhemos",
+          intro: "Recolhemos diferentes tipos de informação para fornecer e melhorar os nossos serviços:",
+          categories: [
+            {
+              title: "Informação pessoal",
+              items: [
+                "Nome, detalhes de contacto",
+                "Informação de passaporte/ID",
+                "Informação de pagamento",
+                "Preferências de reserva"
+              ]
+            },
+            {
+              title: "Dados técnicos",
+              items: [
+                "Endereço IP, informação do dispositivo",
+                "Tipo e versão do navegador",
+                "Análises de uso do site",
+                "Dados de cookies (com consentimento)"
+              ]
+            },
+            {
+              title: "Dados de comunicação",
+              items: [
+                "Correspondência por e-mail",
+                "Pedidos de serviço ao cliente",
+                "Feedback e avaliações",
+                "Preferências de marketing"
+              ]
+            }
+          ]
         },
         use: {
           title: "Como usamos os seus dados",
@@ -1185,7 +1245,7 @@
         },
         retention: {
           title: "Retenção de dados",
-          body: "Reteremos as suas informações pessoais pelo tempo necessário para cumprir os propósitos para os quais foram recolhidas. Geralmente, retemos dados pessoais por até 1 ano após a sua última interação connosco, a menos que um período de retenção mais longo seja exigido ou permitido por lei."
+          body: "Reteremos as suas informações pessoais pelo tempo necessário para cumprir os propósitos para os quais foram recolhidas, conforme detalhado nesta Política de Privacidade. Geralmente, retemos dados pessoais por até 1 ano após a sua última interação connosco, a menos que um período de retenção mais longo seja exigido ou permitido por lei. Podemos precisar de reter certas informações por períodos mais longos por razões específicas, incluindo: manutenção de registos e relatórios de acordo com a lei aplicável (tipicamente 7 anos para registos financeiros e fiscais), aplicação de direitos legais, prevenção de fraude e resolução de litígios. Uma vez expirado o período de retenção, os seus dados pessoais serão eliminados de forma segura ou anonimizados. Informações anónimas residuais e informações agregadas, que não o identificam direta ou indiretamente, podem ser armazenadas indefinidamente para fins estatísticos e analíticos."
         },
         rights: {
           title: "Os seus direitos de privacidade",
@@ -1200,15 +1260,15 @@
         },
         contact: {
           title: "Contacte a nossa equipa de privacidade",
-          body: 'Se tiver alguma pergunta, preocupação ou pedido relacionado com esta Política de Privacidade ou o processamento das suas informações pessoais, por favor contacte-nos em:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefone:</strong> +258 8441 82252<br><strong>Morada postal:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Moçambique'
+          body: 'Se tiver alguma pergunta, preocupação ou pedido relacionado com esta Política de Privacidade ou o processamento das suas informações pessoais, ou se desejar exercer algum dos seus direitos de privacidade, por favor contacte-nos em:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefone:</strong> +258 8441 82252<br><strong>Morada postal:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Moçambique<br><br>Responderemos ao seu pedido de acordo com a lei de proteção de dados aplicável. Para queixas ou preocupações sobre o processamento das suas informações, pode também contactar o nosso Encarregado de Proteção de Dados no endereço de email acima.'
         },
         transfers: {
           title: "Transferências internacionais de dados",
-          body: "Como operamos em várias jurisdições, os seus dados podem ser transferidos e processados em países fora da sua residência. Garantimos que essas transferências cumpram as leis aplicáveis de proteção de dados."
+          body: "Como operamos em várias jurisdições, os seus dados podem ser transferidos e processados em países fora da sua residência. Garantimos que essas transferências cumpram as leis aplicáveis de proteção de dados através de decisões de adequação da Comissão Europeia, Cláusulas Contratuais Tipo (CCT), salvaguardas de segurança apropriadas e transparência sobre os locais de transferência."
         },
         updates: {
           title: "Atualizações da política",
-          body: "Podemos atualizar esta política de privacidade periodicamente para refletir mudanças nas nossas práticas, tecnologia, requisitos legais ou outros fatores."
+          body: "Podemos atualizar esta política de privacidade periodicamente para refletir mudanças nas nossas práticas, tecnologia, requisitos legais ou outros fatores. Notificaremos sobre quaisquer alterações materiais através de notificações por email para utilizadores registados, avisos proeminentes no nosso website e uma data atualizada de 'última atualização'. Encorajamos a revisão periódica desta política para se manter informado sobre como protegemos as suas informações."
         }
       }
     },
