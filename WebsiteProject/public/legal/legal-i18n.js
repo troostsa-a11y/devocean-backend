@@ -160,7 +160,7 @@
         if (Array.isArray(itemsArray)) {
           itemsArray.forEach(function (item) {
             var li = document.createElement("li");
-            li.textContent = String(item);
+            li.innerHTML = String(item);
             ul.appendChild(li);
           });
         }
