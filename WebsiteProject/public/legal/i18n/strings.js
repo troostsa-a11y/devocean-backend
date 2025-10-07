@@ -9,14 +9,14 @@
 (function () {
   // -------- UI labels (top bar / timestamp) --------
   window.LEGAL_UI = {
-    en:   { back: "Home",           updated: "Last updated" },
-    de:   { back: "Startseite",     updated: "Zuletzt aktualisiert" },
-    nl:   { back: "Home",           updated: "Laatst bijgewerkt" },
-    pt:   { back: "Início",         updated: "Última atualização" },
-    ptmz: { back: "Início",         updated: "Última atualização" },
-    fr:   { back: "Accueil",        updated: "Dernière mise à jour" },
-    it:   { back: "Home",           updated: "Ultimo aggiornamento" },
-    es:   { back: "Inicio",         updated: "Última actualización" }
+    en:   { back: "Back to Home",           updated: "Last updated" },
+    de:   { back: "Zur Startseite",         updated: "Zuletzt aktualisiert" },
+    nl:   { back: "Terug naar Home",        updated: "Laatst bijgewerkt" },
+    pt:   { back: "Voltar à Página Inicial",updated: "Última atualização" },
+    ptmz: { back: "Voltar à Página Inicial",updated: "Última atualização" },
+    fr:   { back: "Retour à l'accueil",     updated: "Dernière mise à jour" },
+    it:   { back: "Torna alla Home",        updated: "Ultimo aggiornamento" },
+    es:   { back: "Volver al inicio",       updated: "Última actualización" }
   };
 
   // Root dict
@@ -306,7 +306,7 @@
     gdpr: {
       title: "GDPR Notice",
       updatedDate: "06 Oct 2025",
-      backToHome: "Home",
+      backToHome: "Back to Home",
       quickLinksTitle: "Quick Links",
       gdprBadge: '<strong>GDPR Compliant:</strong> We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.',
       quickLinks: {
@@ -653,7 +653,7 @@
     gdpr: {
       title: "DSGVO-Hinweis",
       updatedDate: "06 Okt 2025",
-      backToHome: "Startseite",
+      backToHome: "Zur Startseite",
       quickLinksTitle: "Schnelllinks",
       gdprBadge: '<strong>DSGVO-konform:</strong> Wir verpflichten uns, Ihre personenbezogenen Daten zu schützen und Ihre Datenschutzrechte gemäß der Datenschutz-Grundverordnung zu respektieren.',
       quickLinks: {
@@ -1000,7 +1000,7 @@
     gdpr: {
       title: "AVG-kennisgeving",
       updatedDate: "06 okt 2025",
-      backToHome: "Home",
+      backToHome: "Terug naar Home",
       quickLinksTitle: "Snelkoppelingen",
       gdprBadge: '<strong>AVG-conform:</strong> Wij zijn toegewijd aan het beschermen van uw persoonlijke gegevens en het respecteren van uw privacyrechten onder de Algemene Verordening Gegevensbescherming.',
       quickLinks: {
@@ -1347,7 +1347,7 @@
     gdpr: {
       title: "Aviso RGPD",
       updatedDate: "06 out 2025",
-      backToHome: "Início",
+      backToHome: "Voltar à Página Inicial",
       quickLinksTitle: "Links rápidos",
       gdprBadge: '<strong>Conformidade RGPD:</strong> Estamos comprometidos em proteger os seus dados pessoais e respeitar os seus direitos de privacidade ao abrigo do Regulamento Geral sobre a Proteção de Dados.',
       quickLinks: {
@@ -1697,7 +1697,7 @@
     gdpr: {
       title: "Avis RGPD",
       updatedDate: "06 oct 2025",
-      backToHome: "Accueil",
+      backToHome: "Retour à l'accueil",
       quickLinksTitle: "Liens rapides",
       gdprBadge: '<strong>Conforme au RGPD:</strong> Nous nous engageons à protéger vos données personnelles et à respecter vos droits à la vie privée conformément au Règlement Général sur la Protection des Données.',
       quickLinks: {
@@ -2044,7 +2044,7 @@
     gdpr: {
       title: "Avviso GDPR",
       updatedDate: "06 ott 2025",
-      backToHome: "Home",
+      backToHome: "Torna alla Home",
       quickLinksTitle: "Link rapidi",
       gdprBadge: '<strong>Conforme al GDPR:</strong> Ci impegniamo a proteggere i tuoi dati personali e a rispettare i tuoi diritti alla privacy ai sensi del Regolamento Generale sulla Protezione dei Dati.',
       quickLinks: {
@@ -2391,7 +2391,7 @@
     gdpr: {
       title: "Aviso RGPD",
       updatedDate: "06 oct 2025",
-      backToHome: "Inicio",
+      backToHome: "Volver al inicio",
       quickLinksTitle: "Enlaces rápidos",
       gdprBadge: '<strong>Conforme al RGPD:</strong> Estamos comprometidos a proteger tus datos personales y respetar tus derechos de privacidad bajo el Reglamento General de Protección de Datos.',
       quickLinks: {

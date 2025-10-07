@@ -357,32 +357,33 @@
       }
     }
 
-    /* Mobile menu icon button */
-    .menu-icon {
+    /* Mobile menu toggle button */
+    .menu-toggle {
       display: none;
-      position: fixed;
-      top: 16px;
-      right: 16px;
       background: var(--brand);
       color: white;
       border: none;
-      border-radius: 50%;
-      width: 48px;
-      height: 48px;
+      border-radius: 8px;
+      padding: 8px 16px;
       cursor: pointer;
-      font-size: 24px;
+      font-size: 14px;
+      font-weight: 600;
       align-items: center;
+      gap: 8px;
+      width: 100%;
       justify-content: center;
-      z-index: 1001;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
-    .menu-icon:hover {
+    .menu-toggle:hover {
       filter: brightness(0.95);
     }
 
-    .menu-icon:active {
-      transform: scale(0.95);
+    .menu-toggle-icon {
+      transition: transform 0.2s ease;
+    }
+
+    .menu-toggle.active .menu-toggle-icon {
+      transform: rotate(180deg);
     }
 
     @media (max-width: 768px) {
@@ -401,17 +402,8 @@
         margin: 0 0 8px;
       }
 
-      /* Show compact badge on mobile with only bold text */
+      /* Hide decorative badge on mobile to save space */
       .gdpr-badge {
-        padding: 8px 12px;
-        font-size: 13px;
-      }
-      
-      .gdpr-badge::before {
-        font-size: 16px;
-      }
-
-      .badge-description {
         display: none;
       }
 
@@ -436,26 +428,17 @@
         gap: 12px;
       }
       
-      /* Show menu icon and overlay quick nav on mobile */
-      .menu-icon {
+      /* Show toggle button and hide quick nav by default on mobile */
+      .menu-toggle {
         display: flex;
+        margin: 0 0 8px 0;
       }
 
       .quick-nav {
         display: none;
-        position: fixed;
-        top: 80px;
-        right: 16px;
-        left: 16px;
-        margin: 0;
-        padding: 16px;
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
+        position: static;
+        margin: 0 0 8px 0;
+        padding: 12px;
       }
 
       .quick-nav.show {
@@ -464,36 +447,18 @@
 
       .quick-nav h3 {
         font-size: 14px;
-        margin: 0 0 12px 0;
+        margin: 0 0 8px 0;
       }
       
       .quick-nav-links {
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
       }
       
       .quick-nav-link {
         text-align: center;
-        padding: 10px 12px;
-        font-size: 14px;
-        background: var(--card-bg);
-        border-radius: 8px;
-      }
-
-      .quick-nav-link:hover {
-        background: var(--card-br);
-      }
-    }
-
-    /* Desktop - Quick nav always visible */
-    @media (min-width: 769px) {
-      .quick-nav {
-        display: block !important;
-        margin-top: calc(var(--header-height, 240px) + 16px);
-      }
-      
-      .menu-icon {
-        display: none !important;
+        padding: 8px 12px;
+        font-size: 13px;
       }
     }
 
@@ -595,8 +560,8 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script src="/legal/i18n/strings.js?v=15"></script>
-  <script src="/legal/legal-i18n.js?v=15"></script>
+  <script src="/legal/i18n/strings.js?v=14"></script>
+  <script src="/legal/legal-i18n.js?v=14"></script>
 
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://devoceanlodge.com/legal/GDPR.html" />
@@ -613,7 +578,7 @@
 
   <main id="main-content">
     <div class="sticky-header">
-      <a href="/" data-role="back-link" aria-label="Home">← <span data-i18n="backToHome">Home</span></a>
+      <a href="/" data-role="back-link" aria-label="Back to home page">← <span data-i18n="backToHome">Back to Home</span></a>
 
       <h1 data-role="page-title">GDPR Notice</h1>
       <p class="updated">
@@ -622,25 +587,26 @@
       </p>
 
       <div class="gdpr-badge" data-i18n-html="gdprBadge">
-        <strong>GDPR Compliant:</strong> <span class="badge-description">We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.</span>
+        <strong>GDPR Compliant:</strong> We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.
       </div>
+
+      <button class="menu-toggle" onclick="toggleQuickNav()" aria-expanded="false" aria-controls="quick-nav">
+        <span>Quick Links</span>
+        <span class="menu-toggle-icon">▼</span>
+      </button>
+
+      <nav id="quick-nav" class="quick-nav" aria-label="Quick navigation">
+        <h3 data-i18n="quickLinksTitle">Quick Links</h3>
+        <div class="quick-nav-links">
+          <a href="#controller" class="quick-nav-link">Controller</a>
+          <a href="#bases" class="quick-nav-link">Legal Bases</a>
+          <a href="#rights" class="quick-nav-link">Your Rights</a>
+          <a href="#retention" class="quick-nav-link">Data Retention</a>
+          <a href="#transfers" class="quick-nav-link">Data Transfers</a>
+          <a href="#complaints" class="quick-nav-link">Complaints</a>
+        </div>
+      </nav>
     </div>
-
-    <button class="menu-icon" onclick="toggleQuickNav()" aria-expanded="false" aria-controls="quick-nav" aria-label="Toggle quick navigation menu">
-      ☰
-    </button>
-
-    <nav id="quick-nav" class="quick-nav" aria-label="Quick navigation">
-      <h3 data-i18n="quickLinksTitle">Quick Links</h3>
-      <div class="quick-nav-links">
-        <a href="#controller" class="quick-nav-link">Controller</a>
-        <a href="#bases" class="quick-nav-link">Legal Bases</a>
-        <a href="#rights" class="quick-nav-link">Your Rights</a>
-        <a href="#retention" class="quick-nav-link">Data Retention</a>
-        <a href="#transfers" class="quick-nav-link">Data Transfers</a>
-        <a href="#complaints" class="quick-nav-link">Complaints</a>
-      </div>
-    </nav>
 
     <script>
       (function() {
@@ -800,30 +766,19 @@
 
     function toggleQuickNav() {
       const quickNav = document.getElementById('quick-nav');
-      const menuIcon = document.querySelector('.menu-icon');
+      const toggle = document.querySelector('.menu-toggle');
       const isVisible = quickNav.classList.contains('show');
       
       if (isVisible) {
         quickNav.classList.remove('show');
-        menuIcon.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('active');
       } else {
         quickNav.classList.add('show');
-        menuIcon.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('active');
       }
     }
-
-    // Auto-close menu when any link is clicked
-    document.addEventListener('DOMContentLoaded', function() {
-      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
-      quickNavLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          const quickNav = document.getElementById('quick-nav');
-          const menuIcon = document.querySelector('.menu-icon');
-          quickNav.classList.remove('show');
-          menuIcon.setAttribute('aria-expanded', 'false');
-        });
-      });
-    });
 
     function requestData(action) {
       const actions = {
