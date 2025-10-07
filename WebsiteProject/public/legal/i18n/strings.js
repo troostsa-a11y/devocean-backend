@@ -110,10 +110,11 @@
           title: "Security measures",
           intro: "We take data security seriously and implement:",
           measures: [
-            "Encryption of data in transit and at rest",
-            "Regular security audits and updates",
-            "Access controls and authentication",
-            "Staff training on data protection"
+            "Encryption of sensitive data in transit and at rest",
+            "Regular security assessments and penetration testing",
+            "Access controls and authentication mechanisms",
+            "Staff training on data protection and privacy",
+            "Secure data backup and disaster recovery procedures"
           ]
         },
         retention: {
@@ -634,10 +635,11 @@
           title: "Sicherheitsmaßnahmen",
           intro: "Wir nehmen Datensicherheit ernst und implementieren:",
           measures: [
-            "Verschlüsselung von Daten bei der Übertragung und im Ruhezustand",
-            "Regelmäßige Sicherheitsaudits und Updates",
-            "Zugriffskontrollen und Authentifizierung",
-            "Schulungen des Personals zum Datenschutz"
+            "Verschlüsselung sensibler Daten bei der Übertragung und im Ruhezustand",
+            "Regelmäßige Sicherheitsbewertungen und Penetrationstests",
+            "Zugriffskontrollen und Authentifizierungsmechanismen",
+            "Schulungen des Personals zum Datenschutz und zur Privatsphäre",
+            "Sichere Datensicherung und Notfallwiederherstellungsverfahren"
           ]
         },
         retention: {
