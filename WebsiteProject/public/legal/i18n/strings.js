@@ -376,8 +376,6 @@
     gdpr: {
       title: "GDPR Notice",
       updatedDate: "06 Oct 2025",
-      backToHome: "Back to Home",
-      quickLinksTitle: "Quick Links",
       quickLinks: {
         title: "Quick Links",
         links: [
@@ -406,46 +404,98 @@
           title: "Your GDPR Rights",
           body: "As a data subject under GDPR, you have the following rights regarding your personal data:"
         },
+        retention: {
+          title: "Data Retention",
+          periodsTitle: "Retention Periods",
+          intro: "We retain personal data only for as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements.",
+          items: [
+            "<strong>Booking data:</strong> 7 years for tax and legal compliance",
+            "<strong>Customer service communications:</strong> 3 years",
+            "<strong>Marketing consents:</strong> Until withdrawal of consent",
+            "<strong>Website analytics:</strong> 26 months",
+            "<strong>Financial transactions:</strong> 10 years for accounting purposes"
+          ]
+        },
         transfers: {
           title: "International Data Transfers",
           body: "When we transfer your data outside the European Economic Area (EEA), we ensure appropriate safeguards are in place to protect your information. This may include the use of Standard Contractual Clauses approved by the European Commission or transferring data to countries with adequacy decisions."
+        },
+        complaints: {
+          title: "Complaints",
+          intro: "If you have concerns about how we handle your personal data, you have the right to lodge a complaint with your local data protection authority.",
+          footer: "We encourage you to contact us first to resolve any concerns before approaching the supervisory authority."
         },
         dpo: {
           title: "Contact Our Data Protection Officer",
           body: 'For any GDPR-related questions or to exercise your rights, please contact our Data Protection Officer at <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. We will respond to your request within 30 days as required by GDPR.'
         }
       },
-      basisContract: '<strong>Contract:</strong> Processing necessary for fulfilling our booking agreements and services.',
-      basisLegal: '<strong>Legal Obligation:</strong> Processing required to comply with legal requirements (e.g., tax laws).',
-      basisLegitimate: '<strong>Legitimate Interests:</strong> Processing for our legitimate business interests while respecting your rights.',
-      basisConsent: '<strong>Consent:</strong> Processing based on your explicit consent for specific purposes.',
-      rightAccessTitle: 'Right to Access',
-      rightAccessDesc: 'You can request copies of your personal data we hold.',
-      rightRectificationTitle: 'Right to Rectification',
-      rightRectificationDesc: 'You can request correction of inaccurate or incomplete data.',
-      rightErasureTitle: 'Right to Erasure',
-      rightErasureDesc: 'You can request deletion of your personal data under certain conditions.',
-      rightRestrictTitle: 'Right to Restrict Processing',
-      rightRestrictDesc: 'You can request limitation of how we use your data.',
-      rightPortabilityTitle: 'Right to Data Portability',
-      rightPortabilityDesc: 'You can request transfer of your data to another organization.',
-      rightObjectTitle: 'Right to Object',
-      rightObjectDesc: 'You can object to certain types of processing of your data.',
-      btnRequestAccess: 'Request Data Access',
-      btnRequestDeletion: 'Request Data Deletion',
-      retentionTitle: 'Data Retention',
-      retentionPeriodsTitle: 'Retention Periods',
-      retentionIntro: 'We retain personal data only for as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements.',
-      retentionBooking: '<strong>Booking data:</strong> 7 years for tax and legal compliance',
-      retentionCustomer: '<strong>Customer service communications:</strong> 3 years',
-      retentionMarketing: '<strong>Marketing consents:</strong> Until withdrawal of consent',
-      retentionAnalytics: '<strong>Website analytics:</strong> 26 months',
-      retentionFinancial: '<strong>Financial transactions:</strong> 10 years for accounting purposes',
-      transfersSafeguards: '<strong>International Data Transfers:</strong> We ensure appropriate safeguards are in place for any data transfers outside the EEA, including Standard Contractual Clauses and adequacy decisions.',
-      complaintsTitle: 'Complaints',
-      complaintsIntro: 'If you have concerns about how we handle your personal data, you have the right to lodge a complaint with your local data protection authority.',
-      complaintsAuthority: '<strong>Lead Supervisory Authority:</strong> Portuguese Data Protection Authority (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contact:</strong> +351 213 928 400',
-      complaintsContactFirst: 'We encourage you to contact us first to resolve any concerns before approaching the supervisory authority.'
+      legalBases: {
+        contract: {
+          title: "Contract:",
+          body: "Processing necessary for fulfilling our booking agreements and services."
+        },
+        legal: {
+          title: "Legal Obligation:",
+          body: "Processing required to comply with legal requirements (e.g., tax laws)."
+        },
+        legitimate: {
+          title: "Legitimate Interests:",
+          body: "Processing for our legitimate business interests while respecting your rights."
+        },
+        consent: {
+          title: "Consent:",
+          body: "Processing based on your explicit consent for specific purposes."
+        }
+      },
+      rights: {
+        access: {
+          title: "Right to Access",
+          body: "You can request copies of your personal data we hold."
+        },
+        rectification: {
+          title: "Right to Rectification",
+          body: "You can request correction of inaccurate or incomplete data."
+        },
+        erasure: {
+          title: "Right to Erasure",
+          body: "You can request deletion of your personal data under certain conditions."
+        },
+        restrict: {
+          title: "Right to Restrict Processing",
+          body: "You can request limitation of how we use your data."
+        },
+        portability: {
+          title: "Right to Data Portability",
+          body: "You can request transfer of your data to another organization."
+        },
+        object: {
+          title: "Right to Object",
+          body: "You can object to certain types of processing of your data."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Request Data Access"
+        },
+        erasure: {
+          text: "Request Data Deletion"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "International Data Transfers:",
+          body: "We ensure appropriate safeguards are in place for any data transfers outside the EEA, including Standard Contractual Clauses and adequacy decisions."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Lead Supervisory Authority:",
+          name: "Portuguese Data Protection Authority (CNPD)",
+          websiteLabel: "Website:",
+          contactLabel: "Contact:"
+        }
+      }
     },
 
     cric: {
