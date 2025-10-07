@@ -448,9 +448,9 @@
       background: #ffffff;
       border-top: 1px solid #e0e0e0;
       border-bottom: 1px solid #e0e0e0;
-      margin: 8px -16px 0 -16px;
-      padding-bottom: 8px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      margin: 8px 0 0 0;
+      padding: 8px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .mobile-quick-nav.show {
@@ -597,8 +597,8 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script src="/legal/i18n/strings.js?v=30"></script>
-  <script src="/legal/legal-i18n.js?v=30"></script>
+  <script src="/legal/i18n/strings.js?v=31"></script>
+  <script src="/legal/legal-i18n.js?v=31"></script>
 
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://devoceanlodge.com/legal/terms.html" />
@@ -857,6 +857,7 @@
       if (isOpen) {
         mobileNav.classList.remove('show');
         btn.setAttribute('aria-expanded', 'false');
+        setTimeout(() => setStickyHeaderHeight(), 50);
       } else {
         // Populate menu from desktop links before opening
         mobileNav.innerHTML = '';
@@ -887,6 +888,7 @@
         }
         mobileNav.classList.add('show');
         btn.setAttribute('aria-expanded', 'true');
+        setTimeout(() => setStickyHeaderHeight(), 50);
       }
     }
   </script>
