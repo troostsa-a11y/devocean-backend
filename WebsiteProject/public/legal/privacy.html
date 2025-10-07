@@ -364,7 +364,7 @@
       }
     }
 
-    /* Mobile menu icon button */
+    /* Mobile menu icon button - hidden on desktop */
     .menu-icon {
       display: none;
       position: fixed;
@@ -382,6 +382,17 @@
       justify-content: center;
       z-index: 1001;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Desktop - Quick nav always visible */
+    @media (min-width: 769px) {
+      .quick-nav {
+        display: block !important;
+      }
+      
+      .menu-icon {
+        display: none !important;
+      }
     }
 
     .menu-icon:hover {
