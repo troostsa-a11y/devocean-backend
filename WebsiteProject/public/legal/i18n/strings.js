@@ -168,7 +168,7 @@
       },
       sections: {
         badge: {
-          title: "Manage Your Cookie Preferences:",
+          title: "About cookies",
           body: "You can control which cookies we use through our cookie banner or your browser settings."
         },
         what: {
@@ -832,7 +832,7 @@
       title: "Cookie-Richtlinie",
       effectiveDate: "19. September 2025",
       lastUpdated: "06. Oktober 2025",
-      managePreferences: "Verwalten Sie Ihre Cookie-Einstellungen:",
+      managePreferences: "Über Cookies:",
       manageText: "Sie können steuern, welche Cookies wir über unser Cookie-Banner oder Ihre Browsereinstellungen verwenden.",
       cookieSettingsBtn: "Cookie-Einstellungen",
       quickLinks: {
@@ -849,7 +849,7 @@
       },
       sections: {
         badge: {
-          title: "Verwalten Sie Ihre Cookie-Einstellungen:",
+          title: "Über Cookies",
           body: "Sie können steuern, welche Cookies wir verwenden, über unser Cookie-Banner oder Ihre Browser-Einstellungen."
         },
         what: {
@@ -1368,7 +1368,7 @@
       title: "Cookiebeleid",
       effectiveDate: "19 september 2025",
       lastUpdated: "06 oktober 2025",
-      managePreferences: "Beheer uw cookievoorkeuren:",
+      managePreferences: "Over cookies:",
       manageText: "U kunt bepalen welke cookies we gebruiken via onze cookiebanner of uw browserinstellingen.",
       cookieSettingsBtn: "Cookie-instellingen",
       quickLinks: {
@@ -1385,7 +1385,7 @@
       },
       sections: {
         badge: {
-          title: "Beheer uw cookievoorkeuren:",
+          title: "Over cookies",
           body: "U kunt bepalen welke cookies we gebruiken via onze cookiebanner of uw browserinstellingen."
         },
         what: {
@@ -1902,7 +1902,7 @@
       title: "Política de Cookies",
       effectiveDate: "19 de setembro de 2025",
       lastUpdated: "06 de outubro de 2025",
-      managePreferences: "Gerir as suas preferências de cookies:",
+      managePreferences: "Sobre cookies:",
       manageText: "Pode controlar quais cookies utilizamos através do nosso banner de cookies ou das configurações do seu navegador.",
       cookieSettingsBtn: "Definições de Cookies",
       quickLinks: {
@@ -1919,7 +1919,7 @@
       },
       sections: {
         badge: {
-          title: "Gerir as suas preferências de cookies:",
+          title: "Sobre cookies",
           body: "Pode controlar quais cookies usamos através do nosso banner de cookies ou das configurações do seu navegador."
         },
         what: {
@@ -2458,7 +2458,7 @@
       },
       sections: {
         badge: {
-          title: "Gérer vos préférences de cookies:",
+          title: "À propos des cookies",
           body: "Vous pouvez contrôler quels cookies nous utilisons via notre bannière de cookies ou les paramètres de votre navigateur."
         },
         what: {
@@ -2945,7 +2945,7 @@
       },
       sections: {
         badge: {
-          title: "Gestisci le tue preferenze sui cookie:",
+          title: "Informazioni sui cookie",
           body: "Puoi controllare quali cookie utilizziamo tramite il nostro banner sui cookie o le impostazioni del tuo browser."
         },
         what: {
@@ -3432,7 +3432,7 @@
       },
       sections: {
         badge: {
-          title: "Administrar sus preferencias de cookies:",
+          title: "Acerca de las cookies",
           body: "Puede controlar qué cookies usamos a través de nuestro banner de cookies o la configuración de su navegador."
         },
         what: {
