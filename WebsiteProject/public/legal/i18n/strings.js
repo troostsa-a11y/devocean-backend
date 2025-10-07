@@ -336,7 +336,7 @@
             "Pandemics, epidemics, health emergencies",
             "Utility failures, infrastructure breakdowns"
           ],
-          footer: "In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided according to applicable laws and circumstances."
+          footer: "In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided according to applicable laws and circumstances. However all damages and costs that are or could have been covered by generally available cancellation and travel insurance packages are excluded from our liability."
         },
         liability: {
           title: "Liability",
@@ -769,7 +769,7 @@
             "Pandemien, Epidemien, Gesundheitsnotfälle",
             "Versorgungsausfälle, Infrastrukturausfälle"
           ],
-          footer: "In solchen Fällen bieten wir nach Möglichkeit alternative Termine oder Gutscheine an. Rückerstattungen erfolgen gemäß den geltenden Gesetzen und Umständen."
+          footer: "In solchen Fällen bieten wir nach Möglichkeit alternative Termine oder Gutscheine an. Rückerstattungen erfolgen gemäß den geltenden Gesetzen und Umständen. Allerdings sind alle Schäden und Kosten, die durch allgemein verfügbare Reiserücktritts- und Reiseversicherungen gedeckt sind oder hätten gedeckt werden können, von unserer Haftung ausgeschlossen."
         },
         liability: {
           title: "Haftung",
@@ -1295,7 +1295,7 @@
             "Pandemieën, epidemieën, gezondheidsnoodgevallen",
             "Storingen in nutsvoorzieningen, infrastructuurdefecten"
           ],
-          footer: "In dergelijke gevallen bieden we waar mogelijk alternatieve data of tegoedbonnen aan. Terugbetalingen worden verstrekt volgens toepasselijke wetten en omstandigheden."
+          footer: "In dergelijke gevallen bieden we waar mogelijk alternatieve data of tegoedbonnen aan. Terugbetalingen worden verstrekt volgens toepasselijke wetten en omstandigheden. Echter zijn alle schades en kosten die gedekt zijn of hadden kunnen worden gedekt door algemeen beschikbare annulerings- en reisverzekeringspakketten uitgesloten van onze aansprakelijkheid."
         },
         liability: {
           title: "Aansprakelijkheid",
@@ -1820,7 +1820,7 @@
             "Pandemias, epidemias, emergências de saúde",
             "Falhas de serviços públicos, avarias de infraestrutura"
           ],
-          footer: "Nestes casos, ofereceremos datas alternativas ou vales de crédito sempre que possível. Os reembolsos serão fornecidos de acordo com as leis aplicáveis e as circunstâncias."
+          footer: "Nestes casos, ofereceremos datas alternativas ou vales de crédito sempre que possível. Os reembolsos serão fornecidos de acordo com as leis aplicáveis e as circunstâncias. No entanto, todos os danos e custos que sejam ou pudessem ter sido cobertos por pacotes de seguro de cancelamento e viagem geralmente disponíveis estão excluídos da nossa responsabilidade."
         },
         liability: {
           title: "Responsabilidade",
@@ -2348,7 +2348,7 @@
             "Pandémies, épidémies, urgences sanitaires",
             "Pannes de services publics, défaillances d'infrastructure"
           ],
-          footer: "Dans de tels cas, nous proposerons des dates alternatives ou des bons de crédit dans la mesure du possible. Les remboursements seront effectués conformément aux lois applicables et aux circonstances."
+          footer: "Dans de tels cas, nous proposerons des dates alternatives ou des bons de crédit dans la mesure du possible. Les remboursements seront effectués conformément aux lois applicables et aux circonstances. Cependant, tous les dommages et coûts qui sont ou auraient pu être couverts par des forfaits d'assurance annulation et voyage généralement disponibles sont exclus de notre responsabilité."
         },
         liability: {
           title: "Responsabilité",
@@ -2825,7 +2825,7 @@
             "Pandemie, epidemie, emergenze sanitarie",
             "Guasti ai servizi pubblici, malfunzionamenti delle infrastrutture"
           ],
-          footer: "In tali casi, offriremo date alternative o voucher di credito quando possibile. I rimborsi saranno forniti in conformità con le leggi applicabili e le circostanze."
+          footer: "In tali casi, offriremo date alternative o voucher di credito quando possibile. I rimborsi saranno forniti in conformità con le leggi applicabili e le circostanze. Tuttavia, tutti i danni e i costi che sono o avrebbero potuto essere coperti da pacchetti assicurativi di cancellazione e viaggio generalmente disponibili sono esclusi dalla nostra responsabilità."
         },
         liability: {
           title: "Responsabilità",
@@ -3302,7 +3302,7 @@
             "Pandemias, epidemias, emergencias sanitarias",
             "Fallos en servicios públicos, averías de infraestructura"
           ],
-          footer: "En tales casos, ofreceremos fechas alternativas o vales de crédito cuando sea posible. Los reembolsos se proporcionarán de acuerdo con las leyes aplicables y las circunstancias."
+          footer: "En tales casos, ofreceremos fechas alternativas o vales de crédito cuando sea posible. Los reembolsos se proporcionarán de acuerdo con las leyes aplicables y las circunstancias. Sin embargo, todos los daños y costos que estén o pudieran haber estado cubiertos por paquetes de seguro de cancelación y viaje generalmente disponibles están excluidos de nuestra responsabilidad."
         },
         liability: {
           title: "Responsabilidad",

@@ -38,7 +38,7 @@ Preferred communication style: Simple, everyday language.
 - Currency support: USD, MZN, ZAR, EUR, GBP with browser-based inference
 - Date localization with dd/mm/yyyy format preference
 - Badge translations: All legal pages now properly localized with badge content in sections.badge for all 8 languages (v=20)
-- Terms page translations: Complete translations for Force Majeure, Intellectual Property, and Dispute Resolution sections added for all 8 languages
+- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections added for all 8 languages
 
 **Performance Optimizations:**
 - Dynamic translation loading
