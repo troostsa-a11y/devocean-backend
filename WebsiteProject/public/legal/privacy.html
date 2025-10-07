@@ -442,13 +442,11 @@
 
       /* Badge on mobile - match section header size (20px) */
       .privacy-badge {
-        display: block;
         padding: 8px 12px;
         margin: 0 0 12px 0;
-      }
-      
-      .privacy-badge::before {
-        display: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
       }
       
       .privacy-badge [data-part="body"] {

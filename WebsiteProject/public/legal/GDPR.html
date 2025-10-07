@@ -435,13 +435,11 @@
 
       /* Badge on mobile - match section header size (20px) */
       .gdpr-badge {
-        display: block;
         padding: 8px 12px;
         margin: 0 0 12px 0;
-      }
-      
-      .gdpr-badge::before {
-        display: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
       }
       
       .gdpr-badge [data-part="body"] {

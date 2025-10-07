@@ -378,13 +378,11 @@
 
       /* Badge on mobile - match section header size (20px) */
       .contact-badge {
-        display: block;
         padding: 8px 12px;
         margin: 0 0 12px 0;
-      }
-      
-      .contact-badge::before {
-        display: none;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
       }
       
       .contact-badge [data-part="body"] {
