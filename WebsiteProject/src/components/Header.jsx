@@ -76,11 +76,11 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               onChange={(e) => onCurrencyChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1"
             >
-              <option value="USD">USD</option>
-              <option value="MZN">MZN</option>
-              <option value="ZAR">ZAR</option>
-              <option value="EUR">EUR</option>
-              <option value="GBP">GBP</option>
+              <option value="USD">Dollar</option>
+              <option value="MZN">Meticais</option>
+              <option value="ZAR">Rand</option>
+              <option value="EUR">Euro</option>
+              <option value="GBP">Pound</option>
             </select>
           </div>
         </div>
