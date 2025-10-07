@@ -524,49 +524,6 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script>
-    (function() {
-      try {
-        var SUP = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
-        var lang = localStorage.getItem("site.lang");
-
-        document.body.classList.add('loading');
-
-        if (!lang || lang === "null") {
-          var nav = String(navigator.language || "en").toLowerCase();
-          var base = nav.split("-")[0];
-          
-          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
-          if (base === "pt-pt" || base === "pt-br") base = "pt";
-          if (SUP.indexOf(base) === -1) base = "en";
-          
-          localStorage.setItem("site.lang", base);
-          lang = base;
-        }
-
-        if (!localStorage.getItem("site.lang_source")) {
-          localStorage.setItem("site.lang_source", "auto");
-        }
-
-        if (!localStorage.getItem("site.currency")) {
-          var cc = (navigator.language || "").toUpperCase().split("-")[1] || "";
-          var CC2CUR = {
-            US: "USD", GB: "GBP",
-            NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
-            ZA: "ZAR", MZ: "MZN"
-          };
-          var cur = CC2CUR[cc] || (lang === "ptmz" ? "MZN" : "EUR");
-          localStorage.setItem("site.currency", cur);
-        }
-
-        document.documentElement.setAttribute("lang", lang || "en");
-      } catch (e) {
-        console.error('Error in language detection:', e);
-        document.documentElement.setAttribute("lang", "en");
-      }
-    })();
-  </script>
-
   <script src="/legal/i18n/strings.js?v=15"></script>
   <script src="/legal/legal-i18n.js?v=17"></script>
 
