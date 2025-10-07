@@ -908,28 +908,6 @@
       }
     }
 
-    function openCookieSettings() {
-      // Try different CookieYes API methods
-      if (window.cookieyes) {
-        if (typeof window.cookieyes.showWidget === 'function') {
-          window.cookieyes.showWidget();
-        } else if (typeof window.cookieyes.openPreferenceCenter === 'function') {
-          window.cookieyes.openPreferenceCenter();
-        } else if (typeof window.cookieyes.showSettings === 'function') {
-          window.cookieyes.showSettings();
-        } else {
-          // Fallback: trigger the banner element
-          const banner = document.querySelector('.cky-btn-revisit-wrapper');
-          if (banner) {
-            banner.click();
-          } else {
-            console.warn('CookieYes widget not found');
-          }
-        }
-      } else {
-        console.warn('CookieYes not loaded yet. This feature only works on production domain (devoceanlodge.com)');
-      }
-    }
   </script>
 </body>
 

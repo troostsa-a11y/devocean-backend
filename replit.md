@@ -95,10 +95,11 @@ Preferred communication style: Simple, everyday language.
   - Consent defaults set in HTML before GTM loads (best practice for 2024)
   - User engagement detection fires 'marketing_allowed' event after scroll/click/20s + ad consent granted
   - **Additional 3-second delay for Google Ads conversion tracking** (total ~7s delay) to reduce main-thread blocking
-- CookieYes for GDPR-compliant cookie consent management (integrated via GTM on main site only)
-  - CookieYes CMP (loader) tag with priority 100
-  - CookieYes Consent Mode Bridge updates consent when users interact
-  - **CookieYes removed from legal pages** (privacy, terms, cookies, GDPR, CRIC) to eliminate 403 errors - only loaded on main marketing site
+- CookieYes for GDPR-compliant cookie consent management
+  - **Fully managed via GTM** - no direct CookieYes code in any HTML files
+  - CookieYes CMP (loader) tag with priority 100 (loaded through GTM)
+  - CookieYes Consent Mode Bridge updates consent when users interact (loaded through GTM)
+  - All consent management logic handled by GTM tags, not page-level scripts
 
 **Booking Integration:**
 - External booking engine at book.devoceanlodge.com with parameterized URLs.

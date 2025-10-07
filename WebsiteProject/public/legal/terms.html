@@ -584,59 +584,7 @@
     });
   </script>
 
-  <script>
-  <!-- CookieYes script removed from legal pages - only needed on main site -->
-
-  <script>
-    function applyCookieYesToConsentMode() {
-      try {
-        var cys = window.cookieyes;
-        if (!cys || !cys.getCurrentUserConsent) {
-          console.warn('CookieYes not available');
-          return;
-        }
-
-        var c = cys.getCurrentUserConsent();
-        var analyticsGranted = !!(c.analytics || c.performance);
-        var adsGranted = !!c.advertisement;
-
-        gtag('consent', 'update', {
-          analytics_storage: analyticsGranted ? 'granted' : 'denied',
-          ad_storage: adsGranted ? 'granted' : 'denied',
-          ad_user_data: adsGranted ? 'granted' : 'denied',
-          ad_personalization: adsGranted ? 'granted' : 'denied'
-        });
-
-        dataLayer.push({
-          event: 'cookie_consent_update',
-          cookieyes_consent: c
-        });
-      } catch (e) {
-        console.error('Error updating consent:', e);
-      }
-    }
-
-    function setupConsentListener() {
-      try {
-        window.addEventListener('cookieyes_consent_update', applyCookieYesToConsentMode);
-      } catch (e) {
-        console.error('Failed to setup consent listener:', e);
-      }
-    }
-
-    (function waitForCY(attempt = 0) {
-      const maxAttempts = 10;
-
-      if (window.cookieyes && window.cookieyes.getCurrentUserConsent) {
-        applyCookieYesToConsentMode();
-        setupConsentListener();
-      } else if (attempt < maxAttempts) {
-        setTimeout(() => waitForCY(attempt + 1), 300);
-      } else {
-        console.warn('CookieYes not loaded after max attempts');
-      }
-    })();
-  </script>
+  <!-- CookieYes code removed - all consent management handled via GTM -->
 
   <script>
     (function (w, d, s, l, i) {
