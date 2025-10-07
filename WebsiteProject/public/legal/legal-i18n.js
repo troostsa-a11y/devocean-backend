@@ -140,7 +140,7 @@
       var data = (key === "quickLinks" ? pageDict[key] : (pageDict.sections && pageDict.sections[key])) || {};
       var t = sec.querySelector('[data-part="title"]');
       var p = sec.querySelector('[data-part="body"]');
-      var ul = sec.querySelector('[data-part="items"]');
+      var ul = sec.querySelector('[data-part="items"]') || sec.querySelector('[data-part="measures"]');
       var f = sec.querySelector('[data-part="footer"]');
       var linksContainer = sec.querySelector('[data-part="links"]');
 
