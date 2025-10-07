@@ -501,6 +501,14 @@
     cric: {
       title: "CRIC — Company & Contact",
       updatedDate: "27 Sep 2025",
+      quickLinks: {
+        title: "Quick Links",
+        links: [
+          { id: "intro", text: "Overview" },
+          { id: "contact", text: "Contact" },
+          { id: "emergency", text: "Emergency" }
+        ]
+      },
       sections: {
         badge: {
           title: "Official Company Information:",
@@ -518,7 +526,24 @@
           title: "Emergency Contact",
           body: "For urgent matters outside business hours, please use our emergency contact details."
         }
-      }
+      },
+      labels: {
+        companyName: "Company Name",
+        registration: "Commercial Registration",
+        vat: "VAT Number (NUIT)",
+        license: "Business License (Alvará)",
+        legalForm: "Legal Form",
+        capital: "Share Capital",
+        address: "Registered Address",
+        email: "Email",
+        phone: "Phone",
+        businessHours: "Business Hours",
+        emergencyPhone: "Emergency Phone",
+        emergencyEmail: "Emergency Email"
+      },
+      legalForm: "Limited Liability Company",
+      businessHours: "Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday & Sunday: 8:00 AM - 12:00 PM<br>Front Desk: 6:00 AM - 10:00 PM (for guests)",
+      emergencyPhoneNote: "For urgent matters outside business hours"
     }
   };
 
@@ -1001,6 +1026,14 @@
     cric: {
       title: "CRIC — Unternehmen & Kontakt",
       updatedDate: "27 Sep 2025",
+      quickLinks: {
+        title: "Schnelllinks",
+        links: [
+          { id: "intro", text: "Überblick" },
+          { id: "contact", text: "Kontakt" },
+          { id: "emergency", text: "Notfall" }
+        ]
+      },
       sections: {
         badge: {
           title: "Offizielle Firmeninformationen:",
@@ -1018,7 +1051,24 @@
           title: "Notkontakt",
           body: "Für dringende Angelegenheiten außerhalb der Geschäftszeiten verwenden Sie bitte unsere Notkontaktdaten."
         }
-      }
+      },
+      labels: {
+        companyName: "Firmenname",
+        registration: "Handelsregistereintrag",
+        vat: "Umsatzsteuer-ID (NUIT)",
+        license: "Gewerbeerlaubnis (Alvará)",
+        legalForm: "Rechtsform",
+        capital: "Stammkapital",
+        address: "Geschäftsadresse",
+        email: "E-Mail",
+        phone: "Telefon",
+        businessHours: "Geschäftszeiten",
+        emergencyPhone: "Notrufnummer",
+        emergencyEmail: "Not-E-Mail"
+      },
+      legalForm: "Gesellschaft mit beschränkter Haftung",
+      businessHours: "Montag - Freitag: 8:00 - 18:00 Uhr<br>Samstag & Sonntag: 8:00 - 12:00 Uhr<br>Rezeption: 6:00 - 22:00 Uhr (für Gäste)",
+      emergencyPhoneNote: "Für dringende Angelegenheiten außerhalb der Geschäftszeiten"
     }
   };
 
@@ -1501,6 +1551,14 @@
     cric: {
       title: "CRIC — Bedrijf & Contact",
       updatedDate: "27 sep 2025",
+      quickLinks: {
+        title: "Snelkoppelingen",
+        links: [
+          { id: "intro", text: "Overzicht" },
+          { id: "contact", text: "Contact" },
+          { id: "emergency", text: "Noodgeval" }
+        ]
+      },
       sections: {
         badge: {
           title: "Officiële bedrijfsinformatie:",
@@ -1518,7 +1576,24 @@
           title: "Noodcontact",
           body: "Voor urgente zaken buiten kantooruren, gebruik onze noodcontactgegevens."
         }
-      }
+      },
+      labels: {
+        companyName: "Bedrijfsnaam",
+        registration: "Handelsregister",
+        vat: "BTW-nummer (NUIT)",
+        license: "Bedrijfsvergunning (Alvará)",
+        legalForm: "Rechtsvorm",
+        capital: "Aandelenkapitaal",
+        address: "Geregistreerd adres",
+        email: "E-mail",
+        phone: "Telefoon",
+        businessHours: "Openingstijden",
+        emergencyPhone: "Noodnummer",
+        emergencyEmail: "Nood-e-mail"
+      },
+      legalForm: "Besloten vennootschap",
+      businessHours: "Maandag - Vrijdag: 8:00 - 18:00<br>Zaterdag & Zondag: 8:00 - 12:00<br>Receptie: 6:00 - 22:00 (voor gasten)",
+      emergencyPhoneNote: "Voor urgente zaken buiten kantooruren"
     }
   };
 
@@ -1999,6 +2074,14 @@
     cric: {
       title: "CRIC — Empresa & Contacto",
       updatedDate: "27 set 2025",
+      quickLinks: {
+        title: "Links rápidos",
+        links: [
+          { id: "intro", text: "Visão Geral" },
+          { id: "contact", text: "Contacto" },
+          { id: "emergency", text: "Emergência" }
+        ]
+      },
       sections: {
         badge: {
           title: "Informações oficiais da empresa:",
@@ -2016,7 +2099,24 @@
           title: "Contacto de Emergência",
           body: "Para assuntos urgentes fora do horário comercial, utilize os nossos dados de contacto de emergência."
         }
-      }
+      },
+      labels: {
+        companyName: "Nome da Empresa",
+        registration: "Registo Comercial",
+        vat: "Número de IVA (NUIT)",
+        license: "Licença Comercial (Alvará)",
+        legalForm: "Forma Jurídica",
+        capital: "Capital Social",
+        address: "Endereço Registado",
+        email: "E-mail",
+        phone: "Telefone",
+        businessHours: "Horário de Funcionamento",
+        emergencyPhone: "Telefone de Emergência",
+        emergencyEmail: "E-mail de Emergência"
+      },
+      legalForm: "Sociedade de Responsabilidade Limitada",
+      businessHours: "Segunda - Sexta: 8:00 - 18:00<br>Sábado & Domingo: 8:00 - 12:00<br>Receção: 6:00 - 22:00 (para hóspedes)",
+      emergencyPhoneNote: "Para assuntos urgentes fora do horário comercial"
     }
   };
 
@@ -2453,6 +2553,14 @@
     cric: {
       title: "CRIC — Entreprise & Contact",
       updatedDate: "27 sep 2025",
+      quickLinks: {
+        title: "Liens rapides",
+        links: [
+          { id: "intro", text: "Aperçu" },
+          { id: "contact", text: "Contact" },
+          { id: "emergency", text: "Urgence" }
+        ]
+      },
       sections: {
         badge: {
           title: "Informations officielles de l'entreprise:",
@@ -2470,7 +2578,24 @@
           title: "Contact d'urgence",
           body: "Pour les questions urgentes en dehors des heures d'ouverture, veuillez utiliser nos coordonnées d'urgence."
         }
-      }
+      },
+      labels: {
+        companyName: "Nom de l'entreprise",
+        registration: "Immatriculation commerciale",
+        vat: "Numéro de TVA (NUIT)",
+        license: "Licence commerciale (Alvará)",
+        legalForm: "Forme juridique",
+        capital: "Capital social",
+        address: "Adresse enregistrée",
+        email: "E-mail",
+        phone: "Téléphone",
+        businessHours: "Heures d'ouverture",
+        emergencyPhone: "Téléphone d'urgence",
+        emergencyEmail: "E-mail d'urgence"
+      },
+      legalForm: "Société à responsabilité limitée",
+      businessHours: "Lundi - Vendredi : 8h00 - 18h00<br>Samedi & Dimanche : 8h00 - 12h00<br>Réception : 6h00 - 22h00 (pour les clients)",
+      emergencyPhoneNote: "Pour les questions urgentes en dehors des heures d'ouverture"
     }
   };
 
@@ -2904,6 +3029,14 @@
     cric: {
       title: "CRIC — Azienda & Contatto",
       updatedDate: "27 set 2025",
+      quickLinks: {
+        title: "Collegamenti rapidi",
+        links: [
+          { id: "intro", text: "Panoramica" },
+          { id: "contact", text: "Contatto" },
+          { id: "emergency", text: "Emergenza" }
+        ]
+      },
       sections: {
         badge: {
           title: "Informazioni ufficiali dell'azienda:",
@@ -2921,7 +3054,24 @@
           title: "Contatto di emergenza",
           body: "Per questioni urgenti al di fuori dell'orario lavorativo, utilizzare i nostri dati di contatto di emergenza."
         }
-      }
+      },
+      labels: {
+        companyName: "Nome dell'azienda",
+        registration: "Registrazione commerciale",
+        vat: "Partita IVA (NUIT)",
+        license: "Licenza commerciale (Alvará)",
+        legalForm: "Forma giuridica",
+        capital: "Capitale sociale",
+        address: "Indirizzo registrato",
+        email: "E-mail",
+        phone: "Telefono",
+        businessHours: "Orari di apertura",
+        emergencyPhone: "Telefono di emergenza",
+        emergencyEmail: "E-mail di emergenza"
+      },
+      legalForm: "Società a responsabilità limitata",
+      businessHours: "Lunedì - Venerdì: 8:00 - 18:00<br>Sabato & Domenica: 8:00 - 12:00<br>Reception: 6:00 - 22:00 (per gli ospiti)",
+      emergencyPhoneNote: "Per questioni urgenti al di fuori dell'orario lavorativo"
     }
   };
 
@@ -3355,6 +3505,14 @@
     cric: {
       title: "CRIC — Empresa & Contacto",
       updatedDate: "27 sep 2025",
+      quickLinks: {
+        title: "Enlaces rápidos",
+        links: [
+          { id: "intro", text: "Resumen" },
+          { id: "contact", text: "Contacto" },
+          { id: "emergency", text: "Emergencia" }
+        ]
+      },
       sections: {
         badge: {
           title: "Información oficial de la empresa:",
@@ -3372,7 +3530,24 @@
           title: "Contacto de emergencia",
           body: "Para asuntos urgentes fuera del horario comercial, utilice nuestros datos de contacto de emergencia."
         }
-      }
+      },
+      labels: {
+        companyName: "Nombre de la empresa",
+        registration: "Registro comercial",
+        vat: "Número de IVA (NUIT)",
+        license: "Licencia comercial (Alvará)",
+        legalForm: "Forma legal",
+        capital: "Capital social",
+        address: "Dirección registrada",
+        email: "Correo electrónico",
+        phone: "Teléfono",
+        businessHours: "Horario comercial",
+        emergencyPhone: "Teléfono de emergencia",
+        emergencyEmail: "Correo electrónico de emergencia"
+      },
+      legalForm: "Sociedad de responsabilidad limitada",
+      businessHours: "Lunes - Viernes: 8:00 - 18:00<br>Sábado & Domingo: 8:00 - 12:00<br>Recepción: 6:00 - 22:00 (para huéspedes)",
+      emergencyPhoneNote: "Para asuntos urgentes fuera del horario comercial"
     }
   };
   

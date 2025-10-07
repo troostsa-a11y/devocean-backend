@@ -1,0 +1,26 @@
+German (de):
+      quickLinks: {
+        title: "Schnelllinks",
+        links: [
+          { id: "intro", text: "Überblick" },
+          { id: "contact", text: "Kontakt" },
+          { id: "emergency", text: "Notfall" }
+        ]
+      },
+      labels: {
+        companyName: "Firmenname",
+        registration: "Handelsregistereintrag",
+        vat: "Umsatzsteuer-ID (NUIT)",
+        license: "Gewerbeerlaubnis (Alvará)",
+        legalForm: "Rechtsform",
+        capital: "Stammkapital",
+        address: "Geschäftsadresse",
+        email: "E-Mail",
+        phone: "Telefon",
+        businessHours: "Geschäftszeiten",
+        emergencyPhone: "Notrufnummer",
+        emergencyEmail: "Not-E-Mail"
+      },
+      legalForm: "Gesellschaft mit beschränkter Haftung",
+      businessHours: "Montag - Freitag: 8:00 - 18:00 Uhr<br>Samstag & Sonntag: 8:00 - 12:00 Uhr<br>Rezeption: 6:00 - 22:00 Uhr (für Gäste)",
+      emergencyPhoneNote: "Für dringende Angelegenheiten außerhalb der Geschäftszeiten"

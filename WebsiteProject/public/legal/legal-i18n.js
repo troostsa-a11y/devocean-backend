@@ -382,6 +382,48 @@
       }
     });
 
+    // Handle CRIC labels (company information labels)
+    if (pageDict.labels) {
+      var labelMap = {
+        'company-name-label': 'companyName',
+        'registration-label': 'registration',
+        'vat-label': 'vat',
+        'license-label': 'license',
+        'legal-form-label': 'legalForm',
+        'capital-label': 'capital',
+        'address-label': 'address',
+        'email-label': 'email',
+        'phone-label': 'phone',
+        'business-hours-label': 'businessHours',
+        'emergency-phone-label': 'emergencyPhone',
+        'emergency-email-label': 'emergencyEmail'
+      };
+      
+      Object.keys(labelMap).forEach(function(attr) {
+        var el = document.querySelector('[data-part="' + attr + '"]');
+        var key = labelMap[attr];
+        if (el && pageDict.labels[key]) {
+          el.textContent = pageDict.labels[key];
+        }
+      });
+    }
+
+    // Handle CRIC values (legal form, business hours, emergency note)
+    var legalFormEl = document.querySelector('[data-part="legal-form"]');
+    if (legalFormEl && pageDict.legalForm) {
+      legalFormEl.textContent = pageDict.legalForm;
+    }
+
+    var businessHoursEl = document.querySelector('[data-part="business-hours"]');
+    if (businessHoursEl && pageDict.businessHours) {
+      businessHoursEl.innerHTML = pageDict.businessHours;
+    }
+
+    var emergencyNoteEl = document.querySelector('[data-part="emergency-phone-note"]');
+    if (emergencyNoteEl && pageDict.emergencyPhoneNote) {
+      emergencyNoteEl.textContent = pageDict.emergencyPhoneNote;
+    }
+
     // Stamp date
     var updDate = document.querySelector('[data-role="updated-date"]');
     if (updDate) {
