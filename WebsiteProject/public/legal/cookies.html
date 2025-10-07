@@ -337,9 +337,53 @@
       }
     }
 
+    /* Mobile menu toggle button */
+    .menu-toggle {
+      display: none;
+      background: var(--brand);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .menu-toggle:hover {
+      filter: brightness(0.95);
+    }
+
+    .menu-toggle-icon {
+      transition: transform 0.2s ease;
+    }
+
+    .menu-toggle.active .menu-toggle-icon {
+      transform: rotate(180deg);
+    }
+
     @media (max-width: 768px) {
       .sticky-header {
         padding: 12px;
+      }
+
+      h1[data-role="page-title"] {
+        font-size: 24px;
+        margin: 12px 0 4px;
+      }
+
+      .updated {
+        font-size: 12px;
+        margin: 0 0 8px;
+      }
+
+      /* Hide decorative badge on mobile to save space */
+      .cookie-banner-info {
+        display: none;
       }
 
       main {
@@ -358,12 +402,37 @@
         display: inline-block;
       }
       
+      /* Show toggle button and hide quick nav by default on mobile */
+      .menu-toggle {
+        display: flex;
+        margin: 0 0 8px 0;
+      }
+
+      .quick-nav {
+        display: none;
+        position: static;
+        margin: 0 0 8px 0;
+        padding: 12px;
+      }
+
+      .quick-nav.show {
+        display: block;
+      }
+
+      .quick-nav h3 {
+        font-size: 14px;
+        margin: 0 0 8px 0;
+      }
+      
       .quick-nav-links {
         flex-direction: column;
+        gap: 6px;
       }
       
       .quick-nav-link {
         text-align: center;
+        padding: 8px 12px;
+        font-size: 13px;
       }
 
       .cookie-table {
@@ -459,7 +528,12 @@
         </div>
       </div>
 
-      <nav class="quick-nav" aria-label="Quick navigation">
+      <button class="menu-toggle" onclick="toggleQuickNav()" aria-expanded="false" aria-controls="quick-nav">
+        <span>Quick Links</span>
+        <span class="menu-toggle-icon">▼</span>
+      </button>
+
+      <nav id="quick-nav" class="quick-nav" aria-label="Quick navigation">
         <h3>Quick Links</h3>
         <div class="quick-nav-links">
           <a href="#what" class="quick-nav-link">What are cookies</a>
@@ -742,6 +816,22 @@
         }
         document.body.removeChild(textArea);
       });
+    }
+
+    function toggleQuickNav() {
+      const quickNav = document.getElementById('quick-nav');
+      const toggle = document.querySelector('.menu-toggle');
+      const isVisible = quickNav.classList.contains('show');
+      
+      if (isVisible) {
+        quickNav.classList.remove('show');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('active');
+      } else {
+        quickNav.classList.add('show');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('active');
+      }
     }
 
     function openCookieSettings() {
