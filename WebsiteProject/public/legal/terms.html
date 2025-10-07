@@ -904,14 +904,15 @@
       const btn = document.querySelector('.mobile-menu-btn');
       const isOpen = mobileNav.classList.contains('show');
       
-      // Populate menu on first open
-      if (!mobileNav.hasChildNodes()) {
-        const desktopLinks = document.querySelectorAll('.quick-nav-links a');
+      // Populate menu from desktop links (re-populate each time to ensure we have latest links)
+      mobileNav.innerHTML = '';
+      const desktopLinks = document.querySelectorAll('.quick-nav-links a');
+      if (desktopLinks.length > 0) {
         desktopLinks.forEach(link => {
           const mobileLink = document.createElement('a');
           mobileLink.href = link.href;
           mobileLink.textContent = link.textContent;
-          mobileLink.onclick = function() {
+          mobileLink.onclick = function(e) {
             mobileNav.classList.remove('show');
             btn.setAttribute('aria-expanded', 'false');
           };
