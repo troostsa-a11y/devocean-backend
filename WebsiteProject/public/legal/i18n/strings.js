@@ -9,14 +9,14 @@
 (function () {
   // -------- UI labels (top bar / timestamp) --------
   window.LEGAL_UI = {
-    en:   { back: "Back to Home",           updated: "Last updated" },
-    de:   { back: "Zur Startseite",         updated: "Zuletzt aktualisiert" },
-    nl:   { back: "Terug naar Home",        updated: "Laatst bijgewerkt" },
-    pt:   { back: "Voltar à Página Inicial",updated: "Última atualização" },
-    ptmz: { back: "Voltar à Página Inicial",updated: "Última atualização" },
-    fr:   { back: "Retour à l'accueil",     updated: "Dernière mise à jour" },
-    it:   { back: "Torna alla Home",        updated: "Ultimo aggiornamento" },
-    es:   { back: "Volver al inicio",       updated: "Última actualización" }
+    en:   { back: "Home",                   updated: "Last updated" },
+    de:   { back: "Startseite",             updated: "Zuletzt aktualisiert" },
+    nl:   { back: "Home",                   updated: "Laatst bijgewerkt" },
+    pt:   { back: "Início",                 updated: "Última atualização" },
+    ptmz: { back: "Início",                 updated: "Última atualização" },
+    fr:   { back: "Accueil",                updated: "Dernière mise à jour" },
+    it:   { back: "Home",                   updated: "Ultimo aggiornamento" },
+    es:   { back: "Inicio",                 updated: "Última actualización" }
   };
 
   // Root dict
