@@ -258,6 +258,31 @@
           f.parentNode.removeChild(f);
         }
       }
+
+      // Handle nested copyright structure (for intellectual-property)
+      var copyright = sec.querySelector('[data-part="copyright"]');
+      if (copyright && data.copyright) {
+        var copyrightTitle = copyright.querySelector('[data-part="title"]');
+        var copyrightBody = copyright.querySelector('[data-part="body"]');
+        if (copyrightTitle && data.copyright.title) copyrightTitle.textContent = data.copyright.title;
+        if (copyrightBody && data.copyright.body) copyrightBody.textContent = data.copyright.body;
+      }
+
+      // Handle nested process structure (for disputes)
+      var process = sec.querySelector('[data-part="process"]');
+      if (process && data.process) {
+        var processTitle = process.querySelector('[data-part="title"]');
+        var processBody = process.querySelector('[data-part="body"]');
+        var processLaw = process.querySelector('[data-part="law"]');
+        var processJurisdiction = process.querySelector('[data-part="jurisdiction"]');
+        var processMediation = process.querySelector('[data-part="mediation"]');
+        
+        if (processTitle && data.process.title) processTitle.textContent = data.process.title;
+        if (processBody && data.process.body) processBody.textContent = data.process.body;
+        if (processLaw && data.process.law) processLaw.textContent = data.process.law;
+        if (processJurisdiction && data.process.jurisdiction) processJurisdiction.textContent = data.process.jurisdiction;
+        if (processMediation && data.process.mediation) processMediation.textContent = data.process.mediation;
+      }
     });
 
     // Handle legal basis items (GDPR page)

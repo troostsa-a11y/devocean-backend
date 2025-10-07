@@ -623,8 +623,8 @@
     })(window, document, 'script', 'dataLayer', 'GTM-532W3HH2');
   </script>
 
-  <script src="/legal/i18n/strings.js?v=18"></script>
-  <script src="/legal/legal-i18n.js?v=18"></script>
+  <script src="/legal/i18n/strings.js?v=20"></script>
+  <script src="/legal/legal-i18n.js?v=20"></script>
 
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://devoceanlodge.com/legal/terms.html" />
@@ -761,18 +761,10 @@
     <section data-section="force-majeure" id="force-majeure">
       <button class="copy-link" onclick="copySectionLink('force-majeure')"
         aria-label="Copy link to this section">🔗</button>
-      <h2>Force Majeure</h2>
-      <p>We are not liable for failure to perform obligations due to circumstances beyond our reasonable control,
-        including but not limited to:</p>
-      <ul>
-        <li>Natural disasters, extreme weather conditions</li>
-        <li>Government restrictions, travel bans</li>
-        <li>Civil unrest, war, terrorism</li>
-        <li>Pandemics, epidemics, health emergencies</li>
-        <li>Utility failures, infrastructure breakdowns</li>
-      </ul>
-      <p>In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided
-        according to applicable laws and circumstances.</p>
+      <h2 data-part="title">Force Majeure</h2>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
+      <p data-part="footer"></p>
     </section>
 
     <section data-section="liability" id="liability">
@@ -785,28 +777,22 @@
     <section data-section="intellectual-property" id="intellectual-property">
       <button class="copy-link" onclick="copySectionLink('intellectual-property')"
         aria-label="Copy link to this section">🔗</button>
-      <h2>Intellectual Property</h2>
-      <div class="intellectual-property">
-        <h3>Copyright Notice</h3>
-        <p>All content on this website, including text, graphics, logos, and images, is the property of DEVOCEAN Lodge
-          and protected by international copyright laws. Unauthorized use, reproduction, or distribution is prohibited.
-        </p>
-        <p>The DEVOCEAN Lodge name, logo, and all related marks are trademarks and may not be used without written
-          permission.</p>
+      <h2 data-part="title">Intellectual Property</h2>
+      <div class="intellectual-property" data-part="copyright">
+        <h3 data-part="title">Copyright Notice</h3>
+        <p data-part="body"></p>
       </div>
     </section>
 
     <section data-section="disputes" id="disputes">
       <button class="copy-link" onclick="copySectionLink('disputes')" aria-label="Copy link to this section">🔗</button>
-      <h2>Dispute Resolution</h2>
-      <div class="dispute-resolution">
-        <h3>Resolution Process</h3>
-        <p>We aim to resolve any disputes amicably. Please contact us first to attempt resolution. If unresolved,
-          disputes shall be settled through mediation before pursuing legal action.</p>
-        <p><strong>Governing Law:</strong> Mozambican law shall govern these terms and any disputes.</p>
-        <p><strong>Jurisdiction:</strong> Courts of Maputo, Mozambique shall have exclusive jurisdiction.</p>
-        <p><strong>Mediation:</strong> Parties agree to attempt mediation through an accredited mediator before
-          initiating legal proceedings.</p>
+      <h2 data-part="title">Dispute Resolution</h2>
+      <div class="dispute-resolution" data-part="process">
+        <h3 data-part="title">Resolution Process</h3>
+        <p data-part="body"></p>
+        <p data-part="law"></p>
+        <p data-part="jurisdiction"></p>
+        <p data-part="mediation"></p>
       </div>
     </section>
 

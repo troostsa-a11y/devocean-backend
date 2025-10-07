@@ -292,9 +292,38 @@
             "No unlawful activities on the premises"
           ]
         },
+        "force-majeure": {
+          title: "Force Majeure",
+          intro: "We are not liable for failure to perform obligations due to circumstances beyond our reasonable control, including but not limited to:",
+          items: [
+            "Natural disasters, extreme weather conditions",
+            "Government restrictions, travel bans",
+            "Civil unrest, war, terrorism",
+            "Pandemics, epidemics, health emergencies",
+            "Utility failures, infrastructure breakdowns"
+          ],
+          footer: "In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided according to applicable laws and circumstances."
+        },
         liability: {
           title: "Liability",
           body: "To the extent permitted by law, we are not liable for indirect or unforeseeable losses."
+        },
+        "intellectual-property": {
+          title: "Intellectual Property",
+          copyright: {
+            title: "Copyright Notice",
+            body: "All content on this website, including text, graphics, logos, and images, is the property of DEVOCEAN Lodge and protected by international copyright laws. Unauthorized use, reproduction, or distribution is prohibited. The DEVOCEAN Lodge name, logo, and all related marks are trademarks and may not be used without written permission."
+          }
+        },
+        disputes: {
+          title: "Dispute Resolution",
+          process: {
+            title: "Resolution Process",
+            body: "We aim to resolve any disputes amicably. Please contact us first to attempt resolution. If unresolved, disputes shall be settled through mediation before pursuing legal action.",
+            law: "Governing Law: Mozambican law shall govern these terms and any disputes.",
+            jurisdiction: "Jurisdiction: Courts of Maputo, Mozambique shall have exclusive jurisdiction.",
+            mediation: "Mediation: Parties agree to attempt mediation through an accredited mediator before initiating legal proceedings."
+          }
         },
         changes: {
           title: "Changes to these Terms",
@@ -586,9 +615,40 @@
             "Keine rechtswidrigen Aktivitäten auf dem Gelände"
           ]
         },
+
+        "force-majeure": {
+          title: "Höhere Gewalt",
+          intro: "Wir haften nicht für die Nichterfüllung von Verpflichtungen aufgrund von Umständen, die außerhalb unserer angemessenen Kontrolle liegen, einschließlich, aber nicht beschränkt auf:",
+          items: [
+            "Naturkatastrophen, extreme Wetterbedingungen",
+            "Regierungsbeschränkungen, Reiseverbote",
+            "Bürgerunruhen, Krieg, Terrorismus",
+            "Pandemien, Epidemien, Gesundheitsnotfälle",
+            "Versorgungsausfälle, Infrastrukturausfälle"
+          ],
+          footer: "In solchen Fällen bieten wir nach Möglichkeit alternative Termine oder Gutscheine an. Rückerstattungen erfolgen gemäß den geltenden Gesetzen und Umständen."
+        },
         liability: {
           title: "Haftung",
           body: "Soweit gesetzlich zulässig, haften wir nicht für indirekte oder unvorhersehbare Verluste."
+        },
+
+        "intellectual-property": {
+          title: "Geistiges Eigentum",
+          copyright: {
+            title: "Urheberrechtshinweis",
+            body: "Alle Inhalte auf dieser Website, einschließlich Text, Grafiken, Logos und Bilder, sind Eigentum von DEVOCEAN Lodge und durch internationale Urheberrechtsgesetze geschützt. Unbefugte Nutzung, Reproduktion oder Verbreitung ist verboten. Der Name DEVOCEAN Lodge, das Logo und alle zugehörigen Marken sind Warenzeichen und dürfen nicht ohne schriftliche Genehmigung verwendet werden."
+          }
+        },
+        disputes: {
+          title: "Streitbeilegung",
+          process: {
+            title: "Lösungsprozess",
+            body: "Wir streben an, Streitigkeiten gütlich beizulegen. Bitte kontaktieren Sie uns zunächst, um eine Lösung zu versuchen. Wenn nicht gelöst, werden Streitigkeiten durch Mediation beigelegt, bevor rechtliche Schritte eingeleitet werden.",
+            law: "Anwendbares Recht: Mosambikanisches Recht regelt diese Bedingungen und alle Streitigkeiten.",
+            jurisdiction: "Gerichtsstand: Die Gerichte von Maputo, Mosambik haben ausschließliche Zuständigkeit.",
+            mediation: "Mediation: Die Parteien verpflichten sich, vor Einleitung rechtlicher Schritte eine Mediation durch einen akkreditierten Mediator zu versuchen."
+          }
         },
         changes: {
           title: "Änderungen dieser Bedingungen",
@@ -973,9 +1033,40 @@
             "Geen onwettige activiteiten op het terrein"
           ]
         },
+
+        "force-majeure": {
+          title: "Overmacht",
+          intro: "Wij zijn niet aansprakelijk voor het niet nakomen van verplichtingen als gevolg van omstandigheden buiten onze redelijke controle, waaronder maar niet beperkt tot:",
+          items: [
+            "Natuurrampen, extreme weersomstandigheden",
+            "Overheidsbeperkingen, reisverboden",
+            "Burgerlijke onrust, oorlog, terrorisme",
+            "Pandemieën, epidemieën, gezondheidsnoodgevallen",
+            "Storingen in nutsvoorzieningen, infrastructuurdefecten"
+          ],
+          footer: "In dergelijke gevallen bieden we waar mogelijk alternatieve data of tegoedbonnen aan. Terugbetalingen worden verstrekt volgens toepasselijke wetten en omstandigheden."
+        },
         liability: {
           title: "Aansprakelijkheid",
           body: "Voor zover wettelijk toegestaan, zijn wij niet aansprakelijk voor indirecte of onvoorziene verliezen."
+        },
+
+        "intellectual-property": {
+          title: "Intellectueel eigendom",
+          copyright: {
+            title: "Auteursrechtverklaring",
+            body: "Alle inhoud op deze website, inclusief tekst, afbeeldingen, logo's en beelden, is eigendom van DEVOCEAN Lodge en beschermd door internationale auteursrechtwetten. Ongeautoriseerd gebruik, reproductie of distributie is verboden. De naam DEVOCEAN Lodge, het logo en alle gerelateerde merken zijn handelsmerken en mogen niet worden gebruikt zonder schriftelijke toestemming."
+          }
+        },
+        disputes: {
+          title: "Geschillenbeslechting",
+          process: {
+            title: "Oplossingsproces",
+            body: "We streven ernaar geschillen minnelijk op te lossen. Neem eerst contact met ons op om tot een oplossing te komen. Indien onopgelost, worden geschillen beslecht via bemiddeling voordat juridische stappen worden ondernomen.",
+            law: "Toepasselijk recht: Mozambikaans recht is van toepassing op deze voorwaarden en eventuele geschillen.",
+            jurisdiction: "Jurisdictie: De rechtbanken van Maputo, Mozambique hebben exclusieve jurisdictie.",
+            mediation: "Bemiddeling: Partijen komen overeen om bemiddeling via een geaccrediteerde bemiddelaar te proberen voordat juridische procedures worden gestart."
+          }
         },
         changes: {
           title: "Wijzigingen in deze voorwaarden",
@@ -1360,9 +1451,38 @@
             "Não são permitidas atividades ilegais nas instalações"
           ]
         },
+        "force-majeure": {
+          title: "Força Maior",
+          intro: "Não somos responsáveis pela falha em cumprir obrigações devido a circunstâncias além do nosso controlo razoável, incluindo mas não limitado a:",
+          items: [
+            "Desastres naturais, condições meteorológicas extremas",
+            "Restrições governamentais, proibições de viagem",
+            "Distúrbios civis, guerra, terrorismo",
+            "Pandemias, epidemias, emergências de saúde",
+            "Falhas de serviços públicos, avarias de infraestrutura"
+          ],
+          footer: "Nestes casos, ofereceremos datas alternativas ou vales de crédito sempre que possível. Os reembolsos serão fornecidos de acordo com as leis aplicáveis e as circunstâncias."
+        },
         liability: {
           title: "Responsabilidade",
           body: "Na medida permitida por lei, não somos responsáveis por perdas indiretas ou imprevisíveis."
+        },
+        "intellectual-property": {
+          title: "Propriedade Intelectual",
+          copyright: {
+            title: "Aviso de Direitos de Autor",
+            body: "Todo o conteúdo deste website, incluindo texto, gráficos, logotipos e imagens, é propriedade do DEVOCEAN Lodge e está protegido pelas leis internacionais de direitos de autor. O uso, reprodução ou distribuição não autorizados são proibidos. O nome DEVOCEAN Lodge, logotipo e todas as marcas relacionadas são marcas registadas e não podem ser utilizados sem permissão por escrito."
+          }
+        },
+        disputes: {
+          title: "Resolução de Litígios",
+          process: {
+            title: "Processo de Resolução",
+            body: "Procuramos resolver quaisquer litígios de forma amigável. Por favor, contacte-nos primeiro para tentar a resolução. Se não for resolvido, os litígios serão resolvidos através de mediação antes de prosseguir com ação legal.",
+            law: "Lei Aplicável: A lei moçambicana regerá estes termos e quaisquer litígios.",
+            jurisdiction: "Jurisdição: Os tribunais de Maputo, Moçambique terão jurisdição exclusiva.",
+            mediation: "Mediação: As partes concordam em tentar a mediação através de um mediador credenciado antes de iniciar processos legais."
+          }
         },
         changes: {
           title: "Alterações a estes Termos",
@@ -1750,9 +1870,40 @@
             "Aucune activité illégale sur les lieux"
           ]
         },
+
+        "force-majeure": {
+          title: "Force Majeure",
+          intro: "Nous ne sommes pas responsables du non-respect de nos obligations en raison de circonstances indépendantes de notre volonté raisonnable, y compris mais sans s'y limiter:",
+          items: [
+            "Catastrophes naturelles, conditions météorologiques extrêmes",
+            "Restrictions gouvernementales, interdictions de voyager",
+            "Troubles civils, guerre, terrorisme",
+            "Pandémies, épidémies, urgences sanitaires",
+            "Pannes de services publics, défaillances d'infrastructure"
+          ],
+          footer: "Dans de tels cas, nous proposerons des dates alternatives ou des bons de crédit dans la mesure du possible. Les remboursements seront effectués conformément aux lois applicables et aux circonstances."
+        },
         liability: {
           title: "Responsabilité",
           body: "Dans la mesure permise par la loi, nous ne sommes pas responsables des pertes indirectes ou imprévisibles."
+        },
+
+        "intellectual-property": {
+          title: "Propriété intellectuelle",
+          copyright: {
+            title: "Avis de droit d'auteur",
+            body: "Tout le contenu de ce site web, y compris le texte, les graphiques, les logos et les images, est la propriété de DEVOCEAN Lodge et protégé par les lois internationales sur le droit d'auteur. L'utilisation, la reproduction ou la distribution non autorisées sont interdites. Le nom DEVOCEAN Lodge, le logo et toutes les marques associées sont des marques déposées et ne peuvent être utilisés sans autorisation écrite."
+          }
+        },
+        disputes: {
+          title: "Résolution des litiges",
+          process: {
+            title: "Processus de résolution",
+            body: "Nous visons à résoudre tout litige à l'amiable. Veuillez nous contacter en premier lieu pour tenter une résolution. Si non résolu, les litiges seront réglés par médiation avant d'engager une action en justice.",
+            law: "Droit applicable: Le droit mozambicain régira ces conditions et tout litige.",
+            jurisdiction: "Juridiction: Les tribunaux de Maputo, Mozambique auront juridiction exclusive.",
+            mediation: "Médiation: Les parties conviennent de tenter une médiation par un médiateur accrédité avant d'engager une procédure judiciaire."
+          }
         },
         changes: {
           title: "Modifications de ces Conditions",
@@ -2137,9 +2288,40 @@
             "Nessuna attività illegale nei locali"
           ]
         },
+
+        "force-majeure": {
+          title: "Forza Maggiore",
+          intro: "Non siamo responsabili per il mancato adempimento degli obblighi a causa di circostanze al di fuori del nostro ragionevole controllo, tra cui ma non limitato a:",
+          items: [
+            "Disastri naturali, condizioni meteorologiche estreme",
+            "Restrizioni governative, divieti di viaggio",
+            "Disordini civili, guerra, terrorismo",
+            "Pandemie, epidemie, emergenze sanitarie",
+            "Guasti ai servizi pubblici, malfunzionamenti delle infrastrutture"
+          ],
+          footer: "In tali casi, offriremo date alternative o voucher di credito quando possibile. I rimborsi saranno forniti in conformità con le leggi applicabili e le circostanze."
+        },
         liability: {
           title: "Responsabilità",
           body: "Nella misura consentita dalla legge, non siamo responsabili per perdite indirette o imprevedibili."
+        },
+
+        "intellectual-property": {
+          title: "Proprietà intellettuale",
+          copyright: {
+            title: "Avviso sul diritto d'autore",
+            body: "Tutti i contenuti di questo sito web, inclusi testo, grafica, loghi e immagini, sono di proprietà di DEVOCEAN Lodge e protetti dalle leggi internazionali sul diritto d'autore. L'uso, la riproduzione o la distribuzione non autorizzati sono vietati. Il nome DEVOCEAN Lodge, il logo e tutti i marchi correlati sono marchi registrati e non possono essere utilizzati senza autorizzazione scritta."
+          }
+        },
+        disputes: {
+          title: "Risoluzione delle controversie",
+          process: {
+            title: "Processo di risoluzione",
+            body: "Miriamo a risolvere eventuali controversie in modo amichevole. Si prega di contattarci prima di tentare la risoluzione. Se non risolta, le controversie saranno risolte tramite mediazione prima di intraprendere azioni legali.",
+            law: "Legge applicabile: La legge mozambicana regolerà questi termini e qualsiasi controversia.",
+            jurisdiction: "Giurisdizione: I tribunali di Maputo, Mozambico avranno giurisdizione esclusiva.",
+            mediation: "Mediazione: Le parti concordano di tentare la mediazione tramite un mediatore accreditato prima di avviare procedimenti legali."
+          }
         },
         changes: {
           title: "Modifiche a questi Termini",
@@ -2524,9 +2706,40 @@
             "No se permiten actividades ilegales en las instalaciones"
           ]
         },
+
+        "force-majeure": {
+          title: "Fuerza Mayor",
+          intro: "No somos responsables por el incumplimiento de obligaciones debido a circunstancias fuera de nuestro control razonable, incluyendo pero no limitado a:",
+          items: [
+            "Desastres naturales, condiciones meteorológicas extremas",
+            "Restricciones gubernamentales, prohibiciones de viaje",
+            "Disturbios civiles, guerra, terrorismo",
+            "Pandemias, epidemias, emergencias sanitarias",
+            "Fallos en servicios públicos, averías de infraestructura"
+          ],
+          footer: "En tales casos, ofreceremos fechas alternativas o vales de crédito cuando sea posible. Los reembolsos se proporcionarán de acuerdo con las leyes aplicables y las circunstancias."
+        },
         liability: {
           title: "Responsabilidad",
           body: "En la medida permitida por la ley, no somos responsables de pérdidas indirectas o imprevistas."
+        },
+
+        "intellectual-property": {
+          title: "Propiedad intelectual",
+          copyright: {
+            title: "Aviso de derechos de autor",
+            body: "Todo el contenido de este sitio web, incluidos texto, gráficos, logotipos e imágenes, es propiedad de DEVOCEAN Lodge y está protegido por las leyes internacionales de derechos de autor. El uso, reproducción o distribución no autorizados están prohibidos. El nombre DEVOCEAN Lodge, el logotipo y todas las marcas relacionadas son marcas registradas y no pueden usarse sin permiso por escrito."
+          }
+        },
+        disputes: {
+          title: "Resolución de disputas",
+          process: {
+            title: "Proceso de resolución",
+            body: "Aspiramos a resolver cualquier disputa de manera amigable. Por favor, contáctenos primero para intentar la resolución. Si no se resuelve, las disputas se resolverán mediante mediación antes de emprender acciones legales.",
+            law: "Ley aplicable: La ley mozambiqueña regirá estos términos y cualquier disputa.",
+            jurisdiction: "Jurisdicción: Los tribunales de Maputo, Mozambique tendrán jurisdicción exclusiva.",
+            mediation: "Mediación: Las partes acuerdan intentar la mediación a través de un mediador acreditado antes de iniciar procedimientos legales."
+          }
         },
         changes: {
           title: "Cambios en estos Términos",

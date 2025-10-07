@@ -37,7 +37,8 @@ Preferred communication style: Simple, everyday language.
 - Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish
 - Currency support: USD, MZN, ZAR, EUR, GBP with browser-based inference
 - Date localization with dd/mm/yyyy format preference
-- Badge translations: All legal pages now properly localized with badge content in sections.badge for all 8 languages (v=18)
+- Badge translations: All legal pages now properly localized with badge content in sections.badge for all 8 languages (v=20)
+- Terms page translations: Complete translations for Force Majeure, Intellectual Property, and Dispute Resolution sections added for all 8 languages
 
 **Performance Optimizations:**
 - Dynamic translation loading
