@@ -376,9 +376,25 @@
         margin: 0 0 8px;
       }
 
-      /* Hide decorative badge on mobile to save space */
+      /* Simplified badge on mobile - bold text only */
       .contact-badge {
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0 0 12px;
+      }
+      
+      .contact-badge::before {
         display: none;
+      }
+      
+      .contact-badge span {
+        display: none;
+      }
+      
+      .contact-badge strong {
+        font-size: 14px;
+        color: var(--brand);
       }
 
       /* Show mobile menu button, hide desktop quick nav */

@@ -412,8 +412,29 @@
         margin: 0 0 8px;
       }
 
-      /* Hide decorative badge on mobile to save space */
+      /* Simplified badge on mobile - bold text only, hide button */
       .cookie-banner-info {
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0 0 12px;
+      }
+      
+      .cookie-banner-info div {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .cookie-banner-info span {
+        display: none;
+      }
+      
+      .cookie-banner-info strong {
+        font-size: 14px;
+        color: var(--brand);
+      }
+      
+      .cookie-banner-info .btn {
         display: none;
       }
 
@@ -880,10 +901,25 @@
     }
 
     function openCookieSettings() {
-      if (window.cookieyes && typeof window.cookieyes.showSettings === 'function') {
-        window.cookieyes.showSettings();
+      // Try different CookieYes API methods
+      if (window.cookieyes) {
+        if (typeof window.cookieyes.showWidget === 'function') {
+          window.cookieyes.showWidget();
+        } else if (typeof window.cookieyes.openPreferenceCenter === 'function') {
+          window.cookieyes.openPreferenceCenter();
+        } else if (typeof window.cookieyes.showSettings === 'function') {
+          window.cookieyes.showSettings();
+        } else {
+          // Fallback: trigger the banner element
+          const banner = document.querySelector('.cky-btn-revisit-wrapper');
+          if (banner) {
+            banner.click();
+          } else {
+            console.warn('CookieYes widget not found');
+          }
+        }
       } else {
-        alert('Cookie settings are not available at the moment. Please try again later.');
+        console.warn('CookieYes not loaded yet. This feature only works on production domain (devoceanlodge.com)');
       }
     }
   </script>
