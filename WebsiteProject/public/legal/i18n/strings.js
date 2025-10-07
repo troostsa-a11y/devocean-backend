@@ -27,10 +27,6 @@
     privacy: {
       title: "Privacy Policy",
       updatedDate: "06 Oct 2025",
-      privacyBadge: {
-        title: "Your Privacy Matters:",
-        body: "We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information."
-      },
       quickLinks: {
         title: "Quick Links",
         links: [
@@ -47,6 +43,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Your Privacy Matters:",
+          body: "We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information."
+        },
         who: {
           title: "Who we are",
           body: "DEVOCEAN Lodge is operated by TERRAfrique LDA, a company registered in Mozambique. Our registered address is Rua C, Parcela 12, Maputo 1118, Mozambique. We operate eco-friendly beach accommodation in Ponta do Ouro, Mozambique. We are committed to protecting your privacy and ensuring that your personal data is collected, processed, and used properly, lawfully, and transparently in accordance with applicable data protection laws. By accessing or using our website and services, you consent to the collection and use of your information as described in this Privacy Policy."
@@ -166,6 +166,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Manage Your Cookie Preferences:",
+          body: "You can control which cookies we use through our cookie banner or your browser settings."
+        },
         what: {
           title: "What are cookies?",
           body: "This Cookie Policy explains what cookies are, how we use them, the types of cookies we use (i.e., the information we collect using cookies and how that information is used), and how to manage your cookie settings.<br><br>Cookies are small text files used to store small pieces of information. They are stored on your device when a website loads in your browser. These cookies help ensure that the website functions properly, enhance security, provide a better user experience, and analyse performance to identify what works and where improvements are needed."
@@ -255,6 +259,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Important Legal Notice:",
+          body: "These terms govern your use of our services and website. Please read them carefully before making a booking."
+        },
         intro: {
           title: "Scope",
           body: "These Terms govern accommodation and related services provided by DEVOCEAN Lodge (TERRAfrique LDA). By booking, you agree to these Terms."
@@ -308,7 +316,6 @@
       updatedDate: "06 Oct 2025",
       backToHome: "Back to Home",
       quickLinksTitle: "Quick Links",
-      gdprBadge: '<strong>GDPR Compliant:</strong> We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.',
       quickLinks: {
         title: "Quick Links",
         links: [
@@ -321,6 +328,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "GDPR Compliant:",
+          body: "We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation."
+        },
         controller: {
           title: "Data Controller",
           body: "TERRAfrique LDA (DEVOCEAN Lodge), registered at Rua C, Parcela 12, Maputo 1118, Mozambique, acts as the data controller for your personal information collected through our services."
@@ -379,6 +390,10 @@
       title: "CRIC — Company & Contact",
       updatedDate: "27 Sep 2025",
       sections: {
+        badge: {
+          title: "Official Company Information:",
+          body: "Complete business registration details and contact information for DEVOCEAN Lodge."
+        },
         intro: {
           title: "Overview",
           body: "Complete business registration details and contact information for DEVOCEAN Lodge."
@@ -399,12 +414,7 @@
   window.LEGAL_DICT.de = {
     privacy: {
       title: "Datenschutzrichtlinie",
-      updatedDate: "06 Okt 2025",
-      privacyBadge: {
-        title: "Ihr Datenschutz ist wichtig:",
-        body: "Wir verpflichten uns, Ihre persönlichen Daten zu schützen und transparent darüber zu sein, wie wir sie erheben, verwenden und schützen."
-      },
-      quickLinks: {
+      updatedDate: "06 Okt 2025",      quickLinks: {
         title: "Schnelllinks",
         links: [
           { id: "who", text: "Wer wir sind" },
@@ -420,6 +430,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Ihr Datenschutz ist wichtig:",
+          body: "Wir verpflichten uns, Ihre persönlichen Daten zu schützen und transparent darüber zu sein, wie wir sie erheben, verwenden und schützen."
+        },
         who: {
           title: "Wer wir sind",
           body: "DEVOCEAN Lodge wird von TERRAfrique LDA betrieben, einem in Mosambik registrierten Unternehmen. Unsere registrierte Adresse ist Rua C, Parcela 12, Maputo 1118, Mosambik. Wir betreiben umweltfreundliche Strandunterkünfte in Ponta do Ouro, Mosambik. Wir verpflichten uns, Ihre Privatsphäre zu schützen und sicherzustellen, dass Ihre persönlichen Daten in Übereinstimmung mit den geltenden Datenschutzgesetzen ordnungsgemäß, rechtmäßig und transparent erhoben, verarbeitet und verwendet werden."
@@ -521,12 +535,7 @@
 
     terms: {
       title: "Allgemeine Geschäftsbedingungen",
-      updatedDate: "06 Okt 2025",
-      termsBadge: {
-        title: "Wichtiger rechtlicher Hinweis:",
-        body: "Diese Bedingungen regeln Ihre Nutzung unserer Dienstleistungen und Website. Bitte lesen Sie sie sorgfältig durch, bevor Sie eine Buchung vornehmen."
-      },
-      quickLinks: {
+      updatedDate: "06 Okt 2025",      quickLinks: {
         title: "Schnelllinks",
         links: [
           { id: "intro", text: "Geltungsbereich" },
@@ -544,6 +553,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Wichtiger rechtlicher Hinweis:",
+          body: "Diese Bedingungen regeln Ihre Nutzung unserer Dienstleistungen und Website. Bitte lesen Sie sie sorgfältig durch, bevor Sie eine Buchung vornehmen."
+        },
         intro: {
           title: "Geltungsbereich",
           body: "Diese Bedingungen regeln die Unterbringung und damit verbundene Dienstleistungen, die von DEVOCEAN Lodge (TERRAfrique LDA) bereitgestellt werden. Mit der Buchung stimmen Sie diesen Bedingungen zu."
@@ -612,6 +625,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Verwalten Sie Ihre Cookie-Einstellungen:",
+          body: "Sie können steuern, welche Cookies wir verwenden, über unser Cookie-Banner oder Ihre Browser-Einstellungen."
+        },
         what: {
           title: "Was sind Cookies?",
           body: "Diese Cookie-Richtlinie erklärt, was Cookies sind, wie wir sie verwenden, welche Arten von Cookies wir verwenden (d.h. welche Informationen wir mithilfe von Cookies sammeln und wie diese Informationen verwendet werden) und wie Sie Ihre Cookie-Einstellungen verwalten können.<br><br>Cookies sind kleine Textdateien, die verwendet werden, um kleine Informationen zu speichern. Sie werden auf Ihrem Gerät gespeichert, wenn eine Website in Ihrem Browser geladen wird. Diese Cookies helfen sicherzustellen, dass die Website ordnungsgemäß funktioniert, die Sicherheit zu erhöhen, eine bessere Benutzererfahrung zu bieten und die Leistung zu analysieren, um zu ermitteln, was funktioniert und wo Verbesserungen erforderlich sind."
@@ -698,6 +715,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "DSGVO-konform:",
+          body: "Wir verpflichten uns, Ihre personenbezogenen Daten zu schützen und Ihre Datenschutzrechte gemäß der Datenschutz-Grundverordnung zu respektieren."
+        },
         controller: {
           title: "Datenverantwortlicher",
           body: "TERRAfrique LDA (DEVOCEAN Lodge), eingetragen unter Rua C, Parcela 12, Maputo 1118, Mosambik, fungiert als Datenverantwortlicher für Ihre personenbezogenen Daten, die über unsere Dienste erhoben werden."
@@ -756,6 +777,10 @@
       title: "CRIC — Unternehmen & Kontakt",
       updatedDate: "27 Sep 2025",
       sections: {
+        badge: {
+          title: "Offizielle Firmeninformationen:",
+          body: "Vollständige Firmenregistrierungsdaten und Kontaktinformationen für DEVOCEAN Lodge."
+        },
         intro: {
           title: "Überblick",
           body: "Vollständige Firmenregistrierungsdaten und Kontaktinformationen für DEVOCEAN Lodge."
@@ -776,12 +801,7 @@
   window.LEGAL_DICT.nl = {
     privacy: {
       title: "Privacybeleid",
-      updatedDate: "06 okt 2025",
-      privacyBadge: {
-        title: "Uw privacy is belangrijk:",
-        body: "We zijn toegewijd aan het beschermen van uw persoonlijke gegevens en transparant te zijn over hoe we deze verzamelen, gebruiken en beveiligen."
-      },
-      quickLinks: {
+      updatedDate: "06 okt 2025",      quickLinks: {
         title: "Snelkoppelingen",
         links: [
           { id: "who", text: "Wie we zijn" },
@@ -797,6 +817,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Uw privacy is belangrijk:",
+          body: "Wij zijn toegewijd aan het beschermen van uw persoonlijke gegevens en transparant te zijn over hoe we deze verzamelen, gebruiken en beschermen."
+        },
         who: {
           title: "Wie we zijn",
           body: "DEVOCEAN Lodge wordt geëxploiteerd door TERRAfrique LDA, een bedrijf geregistreerd in Mozambique. Ons geregistreerde adres is Rua C, Parcela 12, Maputo 1118, Mozambique. We exploiteren milieuvriendelijke strandaccommodaties in Ponta do Ouro, Mozambique. We zijn toegewijd aan het beschermen van uw privacy en zorgen ervoor dat uw persoonlijke gegevens op de juiste, wettige en transparante manier worden verzameld, verwerkt en gebruikt in overeenstemming met de geldende wetgeving inzake gegevensbescherming."
@@ -898,12 +922,7 @@
 
     terms: {
       title: "Algemene voorwaarden",
-      updatedDate: "06 okt 2025",
-      termsBadge: {
-        title: "Belangrijke juridische kennisgeving:",
-        body: "Deze voorwaarden regelen uw gebruik van onze diensten en website. Lees ze zorgvuldig door voordat u een boeking maakt."
-      },
-      quickLinks: {
+      updatedDate: "06 okt 2025",      quickLinks: {
         title: "Snelkoppelingen",
         links: [
           { id: "intro", text: "Toepassingsgebied" },
@@ -921,6 +940,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Belangrijke juridische mededeling:",
+          body: "Deze voorwaarden regelen uw gebruik van onze diensten en website. Lees ze zorgvuldig door voordat u een boeking maakt."
+        },
         intro: {
           title: "Toepassingsgebied",
           body: "Deze voorwaarden regelen accommodatie en gerelateerde diensten die worden geleverd door DEVOCEAN Lodge (TERRAfrique LDA). Door te boeken, gaat u akkoord met deze voorwaarden."
@@ -989,6 +1012,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Beheer uw cookievoorkeuren:",
+          body: "U kunt bepalen welke cookies we gebruiken via onze cookiebanner of uw browserinstellingen."
+        },
         what: {
           title: "Wat zijn cookies?",
           body: "Dit cookiebeleid legt uit wat cookies zijn, hoe we ze gebruiken, welke soorten cookies we gebruiken (d.w.z. welke informatie we verzamelen met behulp van cookies en hoe die informatie wordt gebruikt) en hoe u uw cookie-instellingen kunt beheren.<br><br>Cookies zijn kleine tekstbestanden die worden gebruikt om kleine stukjes informatie op te slaan. Ze worden op uw apparaat opgeslagen wanneer een website in uw browser wordt geladen. Deze cookies helpen ervoor te zorgen dat de website goed werkt, de beveiliging te verbeteren, een betere gebruikerservaring te bieden en de prestaties te analyseren om te bepalen wat werkt en waar verbeteringen nodig zijn."
@@ -1075,6 +1102,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "AVG-conform:",
+          body: "Wij zijn toegewijd aan het beschermen van uw persoonlijke gegevens en het respecteren van uw privacyrechten onder de Algemene Verordening Gegevensbescherming."
+        },
         controller: {
           title: "Verwerkingsverantwoordelijke",
           body: "TERRAfrique LDA (DEVOCEAN Lodge), geregistreerd op Rua C, Parcela 12, Maputo 1118, Mozambique, treedt op als verwerkingsverantwoordelijke voor uw persoonlijke informatie die via onze diensten wordt verzameld."
@@ -1133,6 +1164,10 @@
       title: "CRIC — Bedrijf & Contact",
       updatedDate: "27 sep 2025",
       sections: {
+        badge: {
+          title: "Officiële bedrijfsinformatie:",
+          body: "Volledige bedrijfsregistratiegegevens en contactinformatie voor DEVOCEAN Lodge."
+        },
         intro: {
           title: "Overzicht",
           body: "Volledige bedrijfsregistratiegegevens en contactinformatie voor DEVOCEAN Lodge."
@@ -1153,12 +1188,7 @@
   window.LEGAL_DICT.pt = {
     privacy: {
       title: "Política de Privacidade",
-      updatedDate: "06 out 2025",
-      privacyBadge: {
-        title: "A sua privacidade é importante:",
-        body: "Estamos comprometidos em proteger os seus dados pessoais e ser transparentes sobre como os recolhemos, usamos e protegemos."
-      },
-      quickLinks: {
+      updatedDate: "06 out 2025",      quickLinks: {
         title: "Links rápidos",
         links: [
           { id: "who", text: "Quem somos" },
@@ -1174,6 +1204,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "A sua privacidade é importante:",
+          body: "Estamos comprometidos em proteger os seus dados pessoais e ser transparentes sobre como os recolhemos, utilizamos e protegemos."
+        },
         who: {
           title: "Quem somos",
           body: "O DEVOCEAN Lodge é operado pela TERRAfrique LDA, uma empresa registada em Moçambique. O nosso endereço registado é Rua C, Parcela 12, Maputo 1118, Moçambique. Operamos alojamento ecológico de praia em Ponta do Ouro, Moçambique. Estamos comprometidos em proteger a sua privacidade e garantir que os seus dados pessoais sejam recolhidos, processados e utilizados de forma adequada, legal e transparente, de acordo com as leis aplicáveis de proteção de dados."
@@ -1275,12 +1309,7 @@
 
     terms: {
       title: "Termos e Condições",
-      updatedDate: "06 out 2025",
-      termsBadge: {
-        title: "Aviso legal importante:",
-        body: "Estes termos regem o uso dos nossos serviços e website. Por favor, leia-os cuidadosamente antes de fazer uma reserva."
-      },
-      quickLinks: {
+      updatedDate: "06 out 2025",      quickLinks: {
         title: "Links rápidos",
         links: [
           { id: "intro", text: "Âmbito" },
@@ -1298,6 +1327,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Aviso legal importante:",
+          body: "Estes termos regem a sua utilização dos nossos serviços e website. Por favor, leia-os atentamente antes de fazer uma reserva."
+        },
         intro: {
           title: "Âmbito",
           body: "Estes Termos regem o alojamento e serviços relacionados fornecidos pelo DEVOCEAN Lodge (TERRAfrique LDA). Ao fazer uma reserva, você concorda com estes Termos."
@@ -1366,6 +1399,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Gerir as suas preferências de cookies:",
+          body: "Pode controlar quais cookies usamos através do nosso banner de cookies ou das configurações do seu navegador."
+        },
         what: {
           title: "O que são cookies?",
           body: "Esta Política de Cookies explica o que são cookies, como os utilizamos, os tipos de cookies que utilizamos (ou seja, a informação que recolhemos através de cookies e como essa informação é utilizada), e como gerir as suas configurações de cookies.<br><br>Cookies são pequenos ficheiros de texto utilizados para armazenar pequenas informações. São armazenados no seu dispositivo quando um website é carregado no seu navegador. Estes cookies ajudam a garantir que o website funciona corretamente, melhoram a segurança, proporcionam uma melhor experiência ao utilizador e analisam o desempenho para identificar o que funciona e onde são necessárias melhorias."
@@ -1452,6 +1489,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Conformidade RGPD:",
+          body: "Estamos comprometidos em proteger os seus dados pessoais e respeitar os seus direitos de privacidade ao abrigo do Regulamento Geral sobre a Proteção de Dados."
+        },
         controller: {
           title: "Responsável pelo Tratamento de Dados",
           body: "A TERRAfrique LDA (DEVOCEAN Lodge), registada na Rua C, Parcela 12, Maputo 1118, Moçambique, atua como responsável pelo tratamento das suas informações pessoais recolhidas através dos nossos serviços."
@@ -1510,6 +1551,10 @@
       title: "CRIC — Empresa & Contacto",
       updatedDate: "27 set 2025",
       sections: {
+        badge: {
+          title: "Informações oficiais da empresa:",
+          body: "Detalhes completos de registo comercial e informações de contacto para o DEVOCEAN Lodge."
+        },
         intro: {
           title: "Visão Geral",
           body: "Dados completos de registo da empresa e informações de contacto para DEVOCEAN Lodge."
@@ -1533,12 +1578,7 @@
   window.LEGAL_DICT.fr = {
     privacy: {
       title: "Politique de confidentialité",
-      updatedDate: "06 oct 2025",
-      privacyBadge: {
-        title: "Votre vie privée compte :",
-        body: "Nous nous engageons à protéger vos données personnelles et à être transparents sur la manière dont nous les collectons, les utilisons et les protégeons."
-      },
-      quickLinks: {
+      updatedDate: "06 oct 2025",      quickLinks: {
         title: "Liens rapides",
         links: [
           { id: "who", text: "Qui nous sommes" },
@@ -1554,6 +1594,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Votre vie privée est importante:",
+          body: "Nous nous engageons à protéger vos données personnelles et à être transparents sur la façon dont nous les collectons, utilisons et protégeons."
+        },
         who: {
           title: "Qui nous sommes",
           body: "DEVOCEAN Lodge est exploité par TERRAfrique LDA, une société enregistrée au Mozambique. Notre adresse enregistrée est Rua C, Parcela 12, Maputo 1118, Mozambique. Nous exploitons des hébergements de plage écologiques à Ponta do Ouro, Mozambique. Nous nous engageons à protéger votre vie privée et à garantir que vos données personnelles sont collectées, traitées et utilisées de manière appropriée, légale et transparente conformément aux lois applicables sur la protection des données."
@@ -1655,12 +1699,7 @@
 
     terms: {
       title: "Conditions Générales",
-      updatedDate: "06 oct 2025",
-      termsBadge: {
-        title: "Avis juridique important :",
-        body: "Ces conditions régissent votre utilisation de nos services et de notre site Web. Veuillez les lire attentivement avant de faire une réservation."
-      },
-      quickLinks: {
+      updatedDate: "06 oct 2025",      quickLinks: {
         title: "Liens rapides",
         links: [
           { id: "intro", text: "Portée" },
@@ -1678,6 +1717,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Avis juridique important:",
+          body: "Ces conditions régissent votre utilisation de nos services et de notre site web. Veuillez les lire attentivement avant de faire une réservation."
+        },
         intro: {
           title: "Portée",
           body: "Ces Conditions régissent l'hébergement et les services connexes fournis par DEVOCEAN Lodge (TERRAfrique LDA). En effectuant une réservation, vous acceptez ces Conditions."
@@ -1746,6 +1789,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Gérer vos préférences de cookies:",
+          body: "Vous pouvez contrôler quels cookies nous utilisons via notre bannière de cookies ou les paramètres de votre navigateur."
+        },
         what: {
           title: "Que sont les cookies ?",
           body: "Cette Politique relative aux cookies explique ce que sont les cookies, comment nous les utilisons, les types de cookies que nous utilisons (c'est-à-dire les informations que nous collectons à l'aide de cookies et comment ces informations sont utilisées), et comment gérer vos paramètres de cookies.<br><br>Les cookies sont de petits fichiers texte utilisés pour stocker de petites informations. Ils sont stockés sur votre appareil lorsqu'un site Web est chargé dans votre navigateur. Ces cookies aident à garantir que le site Web fonctionne correctement, améliorent la sécurité, offrent une meilleure expérience utilisateur et analysent les performances pour identifier ce qui fonctionne et où des améliorations sont nécessaires."
@@ -1832,6 +1879,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Conforme au RGPD:",
+          body: "Nous nous engageons à protéger vos données personnelles et à respecter vos droits à la vie privée conformément au Règlement Général sur la Protection des Données."
+        },
         controller: {
           title: "Responsable du traitement des données",
           body: "TERRAfrique LDA (DEVOCEAN Lodge), enregistrée à Rua C, Parcela 12, Maputo 1118, Mozambique, agit en tant que responsable du traitement de vos informations personnelles collectées via nos services."
@@ -1890,6 +1941,10 @@
       title: "CRIC — Entreprise & Contact",
       updatedDate: "27 sep 2025",
       sections: {
+        badge: {
+          title: "Informations officielles de l'entreprise:",
+          body: "Détails complets d'enregistrement commercial et informations de contact pour DEVOCEAN Lodge."
+        },
         intro: {
           title: "Aperçu",
           body: "Informations complètes sur l'enregistrement de l'entreprise et coordonnées de DEVOCEAN Lodge."
@@ -1910,12 +1965,7 @@
   window.LEGAL_DICT.it = {
     privacy: {
       title: "Informativa sulla privacy",
-      updatedDate: "06 ott 2025",
-      privacyBadge: {
-        title: "La tua privacy è importante:",
-        body: "Ci impegniamo a proteggere i tuoi dati personali e ad essere trasparenti su come li raccogliamo, usiamo e proteggiamo."
-      },
-      quickLinks: {
+      updatedDate: "06 ott 2025",      quickLinks: {
         title: "Link rapidi",
         links: [
           { id: "who", text: "Chi siamo" },
@@ -1931,6 +1981,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "La tua privacy è importante:",
+          body: "Ci impegniamo a proteggere i tuoi dati personali e ad essere trasparenti su come li raccogliamo, utilizziamo e proteggiamo."
+        },
         who: {
           title: "Chi siamo",
           body: "DEVOCEAN Lodge è gestito da TERRAfrique LDA, una società registrata in Mozambico. Il nostro indirizzo registrato è Rua C, Parcela 12, Maputo 1118, Mozambico. Gestiamo alloggi ecologici sulla spiaggia a Ponta do Ouro, Mozambico. Ci impegniamo a proteggere la tua privacy e a garantire che i tuoi dati personali siano raccolti, trattati e utilizzati in modo appropriato, legale e trasparente in conformità con le leggi applicabili sulla protezione dei dati."
@@ -2032,12 +2086,7 @@
 
     terms: {
       title: "Termini e Condizioni",
-      updatedDate: "06 ott 2025",
-      termsBadge: {
-        title: "Avviso legale importante:",
-        body: "Questi termini regolano l'uso dei nostri servizi e del sito web. Si prega di leggerli attentamente prima di effettuare una prenotazione."
-      },
-      quickLinks: {
+      updatedDate: "06 ott 2025",      quickLinks: {
         title: "Link rapidi",
         links: [
           { id: "intro", text: "Ambito" },
@@ -2055,6 +2104,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Avviso legale importante:",
+          body: "Questi termini regolano l'utilizzo dei nostri servizi e del sito web. Si prega di leggerli attentamente prima di effettuare una prenotazione."
+        },
         intro: {
           title: "Ambito",
           body: "Questi Termini regolano l'alloggio e i servizi correlati forniti da DEVOCEAN Lodge (TERRAfrique LDA). Effettuando una prenotazione, accetti questi Termini."
@@ -2123,6 +2176,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Gestisci le tue preferenze sui cookie:",
+          body: "Puoi controllare quali cookie utilizziamo tramite il nostro banner sui cookie o le impostazioni del tuo browser."
+        },
         what: {
           title: "Cosa sono i cookie?",
           body: "Questa Politica sui cookie spiega cosa sono i cookie, come li utilizziamo, i tipi di cookie che utilizziamo (cioè le informazioni che raccogliamo tramite i cookie e come vengono utilizzate tali informazioni) e come gestire le impostazioni dei cookie.<br><br>I cookie sono piccoli file di testo utilizzati per memorizzare piccole informazioni. Vengono memorizzati sul tuo dispositivo quando un sito Web viene caricato nel tuo browser. Questi cookie aiutano a garantire che il sito Web funzioni correttamente, migliorano la sicurezza, forniscono una migliore esperienza utente e analizzano le prestazioni per identificare cosa funziona e dove sono necessari miglioramenti."
@@ -2209,6 +2266,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Conforme al GDPR:",
+          body: "Ci impegniamo a proteggere i tuoi dati personali e a rispettare i tuoi diritti alla privacy ai sensi del Regolamento Generale sulla Protezione dei Dati."
+        },
         controller: {
           title: "Titolare del trattamento dei dati",
           body: "TERRAfrique LDA (DEVOCEAN Lodge), registrata a Rua C, Parcela 12, Maputo 1118, Mozambico, agisce come titolare del trattamento delle tue informazioni personali raccolte tramite i nostri servizi."
@@ -2267,6 +2328,10 @@
       title: "CRIC — Azienda & Contatto",
       updatedDate: "27 set 2025",
       sections: {
+        badge: {
+          title: "Informazioni ufficiali dell'azienda:",
+          body: "Dettagli completi di registrazione aziendale e informazioni di contatto per DEVOCEAN Lodge."
+        },
         intro: {
           title: "Panoramica",
           body: "Dati completi di registrazione aziendale e informazioni di contatto per DEVOCEAN Lodge."
@@ -2287,12 +2352,7 @@
   window.LEGAL_DICT.es = {
     privacy: {
       title: "Política de privacidad",
-      updatedDate: "06 oct 2025",
-      privacyBadge: {
-        title: "Tu privacidad importa:",
-        body: "Estamos comprometidos a proteger tus datos personales y ser transparentes sobre cómo los recopilamos, usamos y protegemos."
-      },
-      quickLinks: {
+      updatedDate: "06 oct 2025",      quickLinks: {
         title: "Enlaces rápidos",
         links: [
           { id: "who", text: "Quiénes somos" },
@@ -2308,6 +2368,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Su privacidad es importante:",
+          body: "Estamos comprometidos a proteger sus datos personales y ser transparentes sobre cómo los recopilamos, usamos y protegemos."
+        },
         who: {
           title: "Quiénes somos",
           body: "DEVOCEAN Lodge es operado por TERRAfrique LDA, una empresa registrada en Mozambique. Nuestra dirección registrada es Rua C, Parcela 12, Maputo 1118, Mozambique. Operamos alojamiento ecológico en la playa en Ponta do Ouro, Mozambique. Estamos comprometidos a proteger su privacidad y garantizar que sus datos personales se recopilen, procesen y utilicen de manera adecuada, legal y transparente de acuerdo con las leyes aplicables de protección de datos."
@@ -2409,12 +2473,7 @@
 
     terms: {
       title: "Términos y Condiciones",
-      updatedDate: "06 oct 2025",
-      termsBadge: {
-        title: "Aviso legal importante:",
-        body: "Estos términos rigen el uso de nuestros servicios y sitio web. Por favor, léalos detenidamente antes de hacer una reserva."
-      },
-      quickLinks: {
+      updatedDate: "06 oct 2025",      quickLinks: {
         title: "Enlaces rápidos",
         links: [
           { id: "intro", text: "Alcance" },
@@ -2432,6 +2491,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Aviso legal importante:",
+          body: "Estos términos rigen su uso de nuestros servicios y sitio web. Por favor, léalos detenidamente antes de hacer una reserva."
+        },
         intro: {
           title: "Alcance",
           body: "Estos Términos rigen el alojamiento y los servicios relacionados proporcionados por DEVOCEAN Lodge (TERRAfrique LDA). Al hacer una reserva, acepta estos Términos."
@@ -2500,6 +2563,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Administrar sus preferencias de cookies:",
+          body: "Puede controlar qué cookies usamos a través de nuestro banner de cookies o la configuración de su navegador."
+        },
         what: {
           title: "¿Qué son las cookies?",
           body: "Esta Política de cookies explica qué son las cookies, cómo las usamos, los tipos de cookies que usamos (es decir, la información que recopilamos mediante cookies y cómo se utiliza esa información), y cómo gestionar su configuración de cookies.<br><br>Las cookies son pequeños archivos de texto utilizados para almacenar pequeñas piezas de información. Se almacenan en su dispositivo cuando un sitio web se carga en su navegador. Estas cookies ayudan a garantizar que el sitio web funcione correctamente, mejoran la seguridad, proporcionan una mejor experiencia de usuario y analizan el rendimiento para identificar qué funciona y dónde se necesitan mejoras."
@@ -2586,6 +2653,10 @@
         ]
       },
       sections: {
+        badge: {
+          title: "Conforme al RGPD:",
+          body: "Estamos comprometidos a proteger sus datos personales y respetar sus derechos de privacidad bajo el Reglamento General de Protección de Datos."
+        },
         controller: {
           title: "Responsable del tratamiento de datos",
           body: "TERRAfrique LDA (DEVOCEAN Lodge), registrada en Rua C, Parcela 12, Maputo 1118, Mozambique, actúa como responsable del tratamiento de tu información personal recopilada a través de nuestros servicios."
@@ -2644,6 +2715,10 @@
       title: "CRIC — Empresa & Contacto",
       updatedDate: "27 sep 2025",
       sections: {
+        badge: {
+          title: "Información oficial de la empresa:",
+          body: "Detalles completos de registro comercial e información de contacto para DEVOCEAN Lodge."
+        },
         intro: {
           title: "Resumen",
           body: "Datos completos de registro empresarial e información de contacto para DEVOCEAN Lodge."

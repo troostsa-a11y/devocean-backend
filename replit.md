@@ -33,10 +33,11 @@ Preferred communication style: Simple, everyday language.
 
 **Internationalization:**
 - React-based i18n with lazy-loaded translations (7 languages)
-- Vanilla JavaScript i18n for legacy/static legal pages
+- Vanilla JavaScript i18n for legacy/static legal pages with dynamic data-section/data-part attribute system
 - Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish
 - Currency support: USD, MZN, ZAR, EUR, GBP with browser-based inference
 - Date localization with dd/mm/yyyy format preference
+- Badge translations: All legal pages now properly localized with badge content in sections.badge for all 8 languages (v=18)
 
 **Performance Optimizations:**
 - Dynamic translation loading
