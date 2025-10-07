@@ -1161,10 +1161,11 @@
           title: "Beveiligingsmaatregelen",
           intro: "We nemen gegevensbeveiliging serieus en implementeren:",
           measures: [
-            "Versleuteling van gegevens tijdens verzending en in rust",
-            "Regelmatige beveiligingsaudits en updates",
-            "Toegangscontroles en authenticatie",
-            "Training van personeel in gegevensbescherming"
+            "Versleuteling van gevoelige gegevens tijdens verzending en in rust",
+            "Regelmatige beveiligingsbeoordelingen en penetratietests",
+            "Toegangscontroles en authenticatiemechanismen",
+            "Training van personeel in gegevensbescherming en privacy",
+            "Veilige gegevensback-up en noodherstelprocedures"
           ]
         },
         retention: {
@@ -1686,10 +1687,11 @@
           title: "Medidas de segurança",
           intro: "Levamos a segurança dos dados a sério e implementamos:",
           measures: [
-            "Encriptação de dados em trânsito e em repouso",
-            "Auditorias de segurança e atualizações regulares",
-            "Controlos de acesso e autenticação",
-            "Formação do pessoal sobre proteção de dados"
+            "Encriptação de dados sensíveis em trânsito e em repouso",
+            "Avaliações de segurança regulares e testes de penetração",
+            "Controlos de acesso e mecanismos de autenticação",
+            "Formação do pessoal sobre proteção de dados e privacidade",
+            "Procedimentos seguros de backup de dados e recuperação de desastres"
           ]
         },
         retention: {
@@ -2212,10 +2214,11 @@
           title: "Mesures de sécurité",
           intro: "Nous prenons la sécurité des données au sérieux et mettons en œuvre :",
           measures: [
-            "Chiffrement des données en transit et au repos",
-            "Audits de sécurité et mises à jour réguliers",
-            "Contrôles d'accès et authentification",
-            "Formation du personnel à la protection des données"
+            "Chiffrement des données sensibles en transit et au repos",
+            "Évaluations de sécurité régulières et tests de pénétration",
+            "Contrôles d'accès et mécanismes d'authentification",
+            "Formation du personnel à la protection des données et à la confidentialité",
+            "Procédures sécurisées de sauvegarde des données et de reprise après sinistre"
           ]
         },
         retention: {
@@ -2688,10 +2691,11 @@
           title: "Misure di sicurezza",
           intro: "Prendiamo sul serio la sicurezza dei dati e implementiamo:",
           measures: [
-            "Crittografia dei dati in transito e a riposo",
-            "Audit di sicurezza e aggiornamenti regolari",
-            "Controlli di accesso e autenticazione",
-            "Formazione del personale sulla protezione dei dati"
+            "Crittografia dei dati sensibili in transito e a riposo",
+            "Valutazioni di sicurezza regolari e test di penetrazione",
+            "Controlli di accesso e meccanismi di autenticazione",
+            "Formazione del personale sulla protezione dei dati e sulla privacy",
+            "Procedure sicure di backup dei dati e ripristino di emergenza"
           ]
         },
         retention: {
@@ -3164,10 +3168,11 @@
           title: "Medidas de seguridad",
           intro: "Nos tomamos en serio la seguridad de los datos e implementamos:",
           measures: [
-            "Cifrado de datos en tránsito y en reposo",
-            "Auditorías de seguridad y actualizaciones regulares",
-            "Controles de acceso y autenticación",
-            "Capacitación del personal sobre protección de datos"
+            "Cifrado de datos sensibles en tránsito y en reposo",
+            "Evaluaciones de seguridad regulares y pruebas de penetración",
+            "Controles de acceso y mecanismos de autenticación",
+            "Capacitación del personal sobre protección de datos y privacidad",
+            "Procedimientos seguros de respaldo de datos y recuperación ante desastres"
           ]
         },
         retention: {
