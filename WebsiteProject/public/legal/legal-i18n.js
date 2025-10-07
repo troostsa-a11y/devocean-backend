@@ -353,6 +353,14 @@
                 tierDiv.appendChild(periodSpan);
                 tierDiv.appendChild(chargeSpan);
                 tierList.appendChild(tierDiv);
+                
+                // Add subtext if present
+                if (tier.subtext) {
+                  var subtextDiv = document.createElement('div');
+                  subtextDiv.className = 'tier-subtext';
+                  subtextDiv.textContent = tier.subtext;
+                  tierList.appendChild(subtextDiv);
+                }
               });
             }
           });
