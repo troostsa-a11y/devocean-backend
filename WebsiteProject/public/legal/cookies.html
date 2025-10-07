@@ -418,17 +418,25 @@
         margin: 0 0 8px;
       }
 
-      /* Badge on mobile - match section header size (20px) */
+      /* Badge on mobile - narrower with responsive sizing */
       .cookie-banner-info {
-        padding: 8px 12px;
+        padding: 6px 10px;
         margin: 0 0 12px 0;
         display: flex;
         align-items: flex-start;
-        gap: 12px;
+        gap: 8px;
+      }
+      
+      /* Smaller icon on mobile */
+      .cookie-banner-info::before {
+        width: 18px;
+        height: 18px;
+        background-size: 18px;
       }
       
       .cookie-banner-info div {
         max-width: 100%;
+        flex: 1;
       }
       
       .cookie-banner-info [data-part="body"] {
@@ -436,7 +444,7 @@
       }
       
       .cookie-banner-info strong {
-        font-size: 20px;
+        font-size: clamp(18px, 5vw, 20px);
         line-height: 1.35;
         font-weight: 600;
         display: block;

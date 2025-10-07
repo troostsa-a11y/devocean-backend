@@ -433,13 +433,19 @@
         margin: 0 0 8px;
       }
 
-      /* Badge on mobile - match section header size (20px) */
+      /* Badge on mobile - narrower with responsive sizing */
       .gdpr-badge {
-        padding: 8px 12px;
+        padding: 6px 10px;
         margin: 0 0 12px 0;
         display: flex;
         align-items: flex-start;
-        gap: 12px;
+        gap: 8px;
+      }
+      
+      /* Smaller icon on mobile */
+      .gdpr-badge::before {
+        font-size: 18px;
+        line-height: 18px;
       }
       
       .gdpr-badge [data-part="body"] {
@@ -447,11 +453,12 @@
       }
       
       .gdpr-badge strong {
-        font-size: 20px;
+        font-size: clamp(18px, 5vw, 20px);
         line-height: 1.35;
         font-weight: 600;
         word-wrap: break-word;
         overflow-wrap: break-word;
+        flex: 1;
       }
 
       /* Show mobile menu button, hide desktop quick nav */
