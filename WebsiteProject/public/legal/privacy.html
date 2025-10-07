@@ -440,21 +440,9 @@
         margin: 0 0 8px;
       }
 
-      /* Simplified badge on mobile - bold text only */
+      /* Badge on mobile - keep styling, show only bold text */
       .privacy-badge {
-        background: transparent;
-        border: none;
-        padding: 0;
-        margin: 0 0 12px;
-      }
-      
-      .privacy-badge::before {
-        display: none;
-      }
-      
-      .privacy-badge strong {
-        font-size: 14px;
-        color: var(--brand);
+        /* Keep all desktop badge styling, only hide the non-bold content */
       }
 
       /* Show mobile menu button, hide desktop quick nav */
