@@ -37,7 +37,9 @@ Preferred communication style: Simple, everyday language.
 - Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish
 - Currency support: USD, MZN, ZAR, EUR, GBP with browser-based inference
 - Date localization with dd/mm/yyyy format preference
-- Badge translations: All legal pages now properly localized with badge content in sections.badge for all 8 languages (v=20)
+- Badge translations: All legal pages properly localized with "About cookies" badge in all 8 languages (v=30)
+  - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
+  - Badge text only shown on mobile (body hidden, button removed)
 - Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections added for all 8 languages
 
 **Performance Optimizations:**
@@ -93,10 +95,10 @@ Preferred communication style: Simple, everyday language.
   - Consent defaults set in HTML before GTM loads (best practice for 2024)
   - User engagement detection fires 'marketing_allowed' event after scroll/click/20s + ad consent granted
   - **Additional 3-second delay for Google Ads conversion tracking** (total ~7s delay) to reduce main-thread blocking
-- CookieYes for GDPR-compliant cookie consent management (integrated via GTM)
+- CookieYes for GDPR-compliant cookie consent management (integrated via GTM on main site only)
   - CookieYes CMP (loader) tag with priority 100
   - CookieYes Consent Mode Bridge updates consent when users interact
-  - **Known Issue**: Console warning "A tag read consent before a default was set" appears due to CookieYes GTM template reading consent during GTM bootstrap. Functionally working correctly. Ticket filed with CookieYes support.
+  - **CookieYes removed from legal pages** (privacy, terms, cookies, GDPR, CRIC) to eliminate 403 errors - only loaded on main marketing site
 
 **Booking Integration:**
 - External booking engine at book.devoceanlodge.com with parameterized URLs.
