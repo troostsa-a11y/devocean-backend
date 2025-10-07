@@ -61,13 +61,13 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 value={lang}
                 onChange={(e) => onLangChange(e.target.value)}
               >
-                <option value="en">EN</option>
-                <option value="pt">PT</option>
-                <option value="nl">NL</option>
-                <option value="fr">FR</option>
-                <option value="it">IT</option>
-                <option value="de">DE</option>
-                <option value="es">ES</option>
+                <option value="en">English</option>
+                <option value="pt">Português</option>
+                <option value="nl">Nederlands</option>
+                <option value="fr">Français</option>
+                <option value="it">Italiano</option>
+                <option value="de">Deutsch</option>
+                <option value="es">Español</option>
               </select>
             </div>
 
