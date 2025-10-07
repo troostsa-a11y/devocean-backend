@@ -876,9 +876,6 @@
     gdpr: {
       title: "DSGVO-Hinweis",
       updatedDate: "06 Okt 2025",
-      backToHome: "Zur Startseite",
-      quickLinksTitle: "Schnelllinks",
-      gdprBadge: '<strong>DSGVO-konform:</strong> Wir verpflichten uns, Ihre personenbezogenen Daten zu schützen und Ihre Datenschutzrechte gemäß der Datenschutz-Grundverordnung zu respektieren.',
       quickLinks: {
         title: "Schnelllinks",
         links: [
@@ -907,46 +904,98 @@
           title: "Ihre DSGVO-Rechte",
           body: "Als betroffene Person gemäß DSGVO haben Sie folgende Rechte in Bezug auf Ihre personenbezogenen Daten:"
         },
+        retention: {
+          title: "Datenspeicherung",
+          periodsTitle: "Aufbewahrungsfristen",
+          intro: "Wir speichern personenbezogene Daten nur so lange, wie es zur Erfüllung der Zwecke erforderlich ist, für die sie erhoben wurden, einschließlich rechtlicher, buchhalterischer oder Berichtspflichten.",
+          items: [
+            "<strong>Buchungsdaten:</strong> 7 Jahre für steuerliche und rechtliche Compliance",
+            "<strong>Kundendienst-Kommunikation:</strong> 3 Jahre",
+            "<strong>Marketing-Einwilligungen:</strong> Bis zum Widerruf der Einwilligung",
+            "<strong>Website-Analysen:</strong> 26 Monate",
+            "<strong>Finanztransaktionen:</strong> 10 Jahre für Buchhaltungszwecke"
+          ]
+        },
         transfers: {
           title: "Internationale Datenübermittlungen",
           body: "Wenn wir Ihre Daten außerhalb des Europäischen Wirtschaftsraums (EWR) übermitteln, stellen wir sicher, dass angemessene Schutzmaßnahmen zum Schutz Ihrer Informationen vorhanden sind. Dies kann die Verwendung von Standardvertragsklauseln umfassen, die von der Europäischen Kommission genehmigt wurden, oder die Übermittlung von Daten in Länder mit Angemessenheitsbeschlüssen."
+        },
+        complaints: {
+          title: "Beschwerden",
+          intro: "Wenn Sie Bedenken hinsichtlich der Handhabung Ihrer personenbezogenen Daten haben, haben Sie das Recht, eine Beschwerde bei Ihrer örtlichen Datenschutzbehörde einzureichen.",
+          footer: "Wir ermutigen Sie, uns zuerst zu kontaktieren, um Bedenken zu klären, bevor Sie sich an die Aufsichtsbehörde wenden."
         },
         dpo: {
           title: "Kontaktieren Sie unseren Datenschutzbeauftragten",
           body: 'Für alle DSGVO-bezogenen Fragen oder zur Ausübung Ihrer Rechte wenden Sie sich bitte an unseren Datenschutzbeauftragten unter <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Wir werden auf Ihre Anfrage innerhalb von 30 Tagen antworten, wie von der DSGVO vorgeschrieben.'
         }
       },
-      basisContract: '<strong>Vertrag:</strong> Verarbeitung erforderlich zur Erfüllung unserer Buchungsvereinbarungen und Dienstleistungen.',
-      basisLegal: '<strong>Rechtliche Verpflichtung:</strong> Verarbeitung erforderlich zur Einhaltung gesetzlicher Anforderungen (z.B. Steuergesetze).',
-      basisLegitimate: '<strong>Berechtigte Interessen:</strong> Verarbeitung für unsere berechtigten Geschäftsinteressen unter Wahrung Ihrer Rechte.',
-      basisConsent: '<strong>Einwilligung:</strong> Verarbeitung basierend auf Ihrer ausdrücklichen Einwilligung für bestimmte Zwecke.',
-      rightAccessTitle: 'Auskunftsrecht',
-      rightAccessDesc: 'Sie können Kopien Ihrer von uns gespeicherten personenbezogenen Daten anfordern.',
-      rightRectificationTitle: 'Recht auf Berichtigung',
-      rightRectificationDesc: 'Sie können die Korrektur ungenauer oder unvollständiger Daten verlangen.',
-      rightErasureTitle: 'Recht auf Löschung',
-      rightErasureDesc: 'Sie können unter bestimmten Bedingungen die Löschung Ihrer personenbezogenen Daten verlangen.',
-      rightRestrictTitle: 'Recht auf Einschränkung der Verarbeitung',
-      rightRestrictDesc: 'Sie können die Einschränkung der Verwendung Ihrer Daten verlangen.',
-      rightPortabilityTitle: 'Recht auf Datenübertragbarkeit',
-      rightPortabilityDesc: 'Sie können die Übertragung Ihrer Daten an eine andere Organisation verlangen.',
-      rightObjectTitle: 'Widerspruchsrecht',
-      rightObjectDesc: 'Sie können gegen bestimmte Arten der Verarbeitung Ihrer Daten Widerspruch einlegen.',
-      btnRequestAccess: 'Datenzugriff anfordern',
-      btnRequestDeletion: 'Datenlöschung anfordern',
-      retentionTitle: 'Datenspeicherung',
-      retentionPeriodsTitle: 'Aufbewahrungsfristen',
-      retentionIntro: 'Wir speichern personenbezogene Daten nur so lange, wie es zur Erfüllung der Zwecke erforderlich ist, für die sie erhoben wurden, einschließlich rechtlicher, buchhalterischer oder Berichtspflichten.',
-      retentionBooking: '<strong>Buchungsdaten:</strong> 7 Jahre für steuerliche und rechtliche Compliance',
-      retentionCustomer: '<strong>Kundendienst-Kommunikation:</strong> 3 Jahre',
-      retentionMarketing: '<strong>Marketing-Einwilligungen:</strong> Bis zum Widerruf der Einwilligung',
-      retentionAnalytics: '<strong>Website-Analysen:</strong> 26 Monate',
-      retentionFinancial: '<strong>Finanztransaktionen:</strong> 10 Jahre für Buchhaltungszwecke',
-      transfersSafeguards: '<strong>Internationale Datenübermittlungen:</strong> Wir stellen sicher, dass für alle Datenübermittlungen außerhalb des EWR angemessene Schutzmaßnahmen vorhanden sind, einschließlich Standardvertragsklauseln und Angemessenheitsbeschlüsse.',
-      complaintsTitle: 'Beschwerden',
-      complaintsIntro: 'Wenn Sie Bedenken hinsichtlich der Handhabung Ihrer personenbezogenen Daten haben, haben Sie das Recht, eine Beschwerde bei Ihrer örtlichen Datenschutzbehörde einzureichen.',
-      complaintsAuthority: '<strong>Federführende Aufsichtsbehörde:</strong> Portugiesische Datenschutzbehörde (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Kontakt:</strong> +351 213 928 400',
-      complaintsContactFirst: 'Wir ermutigen Sie, uns zuerst zu kontaktieren, um Bedenken zu klären, bevor Sie sich an die Aufsichtsbehörde wenden.'
+      legalBases: {
+        contract: {
+          title: "Vertrag:",
+          body: "Verarbeitung erforderlich zur Erfüllung unserer Buchungsvereinbarungen und Dienstleistungen."
+        },
+        legal: {
+          title: "Rechtliche Verpflichtung:",
+          body: "Verarbeitung erforderlich zur Einhaltung gesetzlicher Anforderungen (z.B. Steuergesetze)."
+        },
+        legitimate: {
+          title: "Berechtigte Interessen:",
+          body: "Verarbeitung für unsere berechtigten Geschäftsinteressen unter Wahrung Ihrer Rechte."
+        },
+        consent: {
+          title: "Einwilligung:",
+          body: "Verarbeitung basierend auf Ihrer ausdrücklichen Einwilligung für bestimmte Zwecke."
+        }
+      },
+      rights: {
+        access: {
+          title: "Auskunftsrecht",
+          body: "Sie können Kopien Ihrer von uns gespeicherten personenbezogenen Daten anfordern."
+        },
+        rectification: {
+          title: "Recht auf Berichtigung",
+          body: "Sie können die Korrektur ungenauer oder unvollständiger Daten verlangen."
+        },
+        erasure: {
+          title: "Recht auf Löschung",
+          body: "Sie können unter bestimmten Bedingungen die Löschung Ihrer personenbezogenen Daten verlangen."
+        },
+        restrict: {
+          title: "Recht auf Einschränkung der Verarbeitung",
+          body: "Sie können die Einschränkung der Verwendung Ihrer Daten verlangen."
+        },
+        portability: {
+          title: "Recht auf Datenübertragbarkeit",
+          body: "Sie können die Übertragung Ihrer Daten an eine andere Organisation verlangen."
+        },
+        object: {
+          title: "Widerspruchsrecht",
+          body: "Sie können gegen bestimmte Arten der Verarbeitung Ihrer Daten Widerspruch einlegen."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Datenzugriff anfordern"
+        },
+        erasure: {
+          text: "Datenlöschung anfordern"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Internationale Datenübermittlungen:",
+          body: "Wir stellen sicher, dass für alle Datenübermittlungen außerhalb des EWR angemessene Schutzmaßnahmen vorhanden sind, einschließlich Standardvertragsklauseln und Angemessenheitsbeschlüsse."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Federführende Aufsichtsbehörde:",
+          name: "Portugiesische Datenschutzbehörde (CNPD)",
+          websiteLabel: "Website:",
+          contactLabel: "Kontakt:"
+        }
+      }
     },
 
     cric: {
@@ -1327,9 +1376,6 @@
     gdpr: {
       title: "AVG-kennisgeving",
       updatedDate: "06 okt 2025",
-      backToHome: "Terug naar Home",
-      quickLinksTitle: "Snelkoppelingen",
-      gdprBadge: '<strong>AVG-conform:</strong> Wij zijn toegewijd aan het beschermen van uw persoonlijke gegevens en het respecteren van uw privacyrechten onder de Algemene Verordening Gegevensbescherming.',
       quickLinks: {
         title: "Snelkoppelingen",
         links: [
@@ -1358,46 +1404,98 @@
           title: "Uw AVG-rechten",
           body: "Als betrokkene onder de AVG heeft u de volgende rechten met betrekking tot uw persoonlijke gegevens:"
         },
+        retention: {
+          title: "Gegevensbewaring",
+          periodsTitle: "Bewaringstermijnen",
+          intro: "Wij bewaren persoonlijke gegevens alleen zolang als nodig is om de doeleinden te vervullen waarvoor ze zijn verzameld, inclusief wettelijke, boekhoudkundige of rapportagevereisten.",
+          items: [
+            "<strong>Boekingsgegevens:</strong> 7 jaar voor belasting- en wettelijke naleving",
+            "<strong>Klantendienst communicatie:</strong> 3 jaar",
+            "<strong>Marketingtoestemmingen:</strong> Tot intrekking van toestemming",
+            "<strong>Website-analyses:</strong> 26 maanden",
+            "<strong>Financiële transacties:</strong> 10 jaar voor boekhoudkundige doeleinden"
+          ]
+        },
         transfers: {
           title: "Internationale gegevensoverdrachten",
           body: "Wanneer wij uw gegevens buiten de Europese Economische Ruimte (EER) overdragen, zorgen wij ervoor dat passende waarborgen aanwezig zijn om uw informatie te beschermen. Dit kan het gebruik van Standaardcontractbepalingen omvatten die door de Europese Commissie zijn goedgekeurd, of het overdragen van gegevens naar landen met adequaatheidsbeslissingen."
+        },
+        complaints: {
+          title: "Klachten",
+          intro: "Als u zorgen heeft over hoe wij uw persoonlijke gegevens behandelen, heeft u het recht om een klacht in te dienen bij uw lokale gegevensbeschermingsautoriteit.",
+          footer: "Wij moedigen u aan om eerst contact met ons op te nemen om eventuele zorgen op te lossen voordat u de toezichthoudende autoriteit benadert."
         },
         dpo: {
           title: "Neem contact op met onze Functionaris Gegevensbescherming",
           body: 'Voor alle AVG-gerelateerde vragen of om uw rechten uit te oefenen, neem contact op met onze Functionaris Gegevensbescherming via <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Wij zullen binnen 30 dagen op uw verzoek reageren, zoals vereist door de AVG.'
         }
       },
-      basisContract: '<strong>Contract:</strong> Verwerking noodzakelijk voor het nakomen van onze boekingsovereenkomsten en diensten.',
-      basisLegal: '<strong>Wettelijke verplichting:</strong> Verwerking vereist om te voldoen aan wettelijke vereisten (bijv. belastingwetten).',
-      basisLegitimate: '<strong>Gerechtvaardigde belangen:</strong> Verwerking voor onze gerechtvaardigde bedrijfsbelangen met respect voor uw rechten.',
-      basisConsent: '<strong>Toestemming:</strong> Verwerking op basis van uw uitdrukkelijke toestemming voor specifieke doeleinden.',
-      rightAccessTitle: 'Recht op toegang',
-      rightAccessDesc: 'U kunt kopieën van uw persoonlijke gegevens die wij bewaren opvragen.',
-      rightRectificationTitle: 'Recht op rectificatie',
-      rightRectificationDesc: 'U kunt correctie van onjuiste of onvolledige gegevens aanvragen.',
-      rightErasureTitle: 'Recht op wissen',
-      rightErasureDesc: 'U kunt onder bepaalde voorwaarden verwijdering van uw persoonlijke gegevens aanvragen.',
-      rightRestrictTitle: 'Recht op beperking van verwerking',
-      rightRestrictDesc: 'U kunt beperking aanvragen van hoe wij uw gegevens gebruiken.',
-      rightPortabilityTitle: 'Recht op gegevensoverdraagbaarheid',
-      rightPortabilityDesc: 'U kunt overdracht van uw gegevens naar een andere organisatie aanvragen.',
-      rightObjectTitle: 'Recht op bezwaar',
-      rightObjectDesc: 'U kunt bezwaar maken tegen bepaalde soorten verwerking van uw gegevens.',
-      btnRequestAccess: 'Gegevenstoegang aanvragen',
-      btnRequestDeletion: 'Gegevensverwijdering aanvragen',
-      retentionTitle: 'Gegevensbewaring',
-      retentionPeriodsTitle: 'Bewaringstermijnen',
-      retentionIntro: 'Wij bewaren persoonlijke gegevens alleen zolang als nodig is om de doeleinden te vervullen waarvoor ze zijn verzameld, inclusief wettelijke, boekhoudkundige of rapportagevereisten.',
-      retentionBooking: '<strong>Boekingsgegevens:</strong> 7 jaar voor belasting- en wettelijke naleving',
-      retentionCustomer: '<strong>Klantendienst communicatie:</strong> 3 jaar',
-      retentionMarketing: '<strong>Marketingtoestemmingen:</strong> Tot intrekking van toestemming',
-      retentionAnalytics: '<strong>Website-analyses:</strong> 26 maanden',
-      retentionFinancial: '<strong>Financiële transacties:</strong> 10 jaar voor boekhoudkundige doeleinden',
-      transfersSafeguards: '<strong>Internationale gegevensoverdrachten:</strong> Wij zorgen ervoor dat passende waarborgen aanwezig zijn voor alle gegevensoverdrachten buiten de EER, inclusief Standaardcontractbepalingen en adequaatheidsbeslissingen.',
-      complaintsTitle: 'Klachten',
-      complaintsIntro: 'Als u zorgen heeft over hoe wij uw persoonlijke gegevens behandelen, heeft u het recht om een klacht in te dienen bij uw lokale gegevensbeschermingsautoriteit.',
-      complaintsAuthority: '<strong>Leidende toezichthoudende autoriteit:</strong> Portugese Autoriteit Gegevensbescherming (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contact:</strong> +351 213 928 400',
-      complaintsContactFirst: 'Wij moedigen u aan om eerst contact met ons op te nemen om eventuele zorgen op te lossen voordat u de toezichthoudende autoriteit benadert.'
+      legalBases: {
+        contract: {
+          title: "Contract:",
+          body: "Verwerking noodzakelijk voor het nakomen van onze boekingsovereenkomsten en diensten."
+        },
+        legal: {
+          title: "Wettelijke verplichting:",
+          body: "Verwerking vereist om te voldoen aan wettelijke vereisten (bijv. belastingwetten)."
+        },
+        legitimate: {
+          title: "Gerechtvaardigde belangen:",
+          body: "Verwerking voor onze gerechtvaardigde bedrijfsbelangen met respect voor uw rechten."
+        },
+        consent: {
+          title: "Toestemming:",
+          body: "Verwerking op basis van uw uitdrukkelijke toestemming voor specifieke doeleinden."
+        }
+      },
+      rights: {
+        access: {
+          title: "Recht op toegang",
+          body: "U kunt kopieën van uw persoonlijke gegevens die wij bewaren opvragen."
+        },
+        rectification: {
+          title: "Recht op rectificatie",
+          body: "U kunt correctie van onjuiste of onvolledige gegevens aanvragen."
+        },
+        erasure: {
+          title: "Recht op wissen",
+          body: "U kunt onder bepaalde voorwaarden verwijdering van uw persoonlijke gegevens aanvragen."
+        },
+        restrict: {
+          title: "Recht op beperking van verwerking",
+          body: "U kunt beperking aanvragen van hoe wij uw gegevens gebruiken."
+        },
+        portability: {
+          title: "Recht op gegevensoverdraagbaarheid",
+          body: "U kunt overdracht van uw gegevens naar een andere organisatie aanvragen."
+        },
+        object: {
+          title: "Recht op bezwaar",
+          body: "U kunt bezwaar maken tegen bepaalde soorten verwerking van uw gegevens."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Gegevenstoegang aanvragen"
+        },
+        erasure: {
+          text: "Gegevensverwijdering aanvragen"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Internationale gegevensoverdrachten:",
+          body: "Wij zorgen ervoor dat passende waarborgen aanwezig zijn voor alle gegevensoverdrachten buiten de EER, inclusief Standaardcontractbepalingen en adequaatheidsbeslissingen."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Leidende toezichthoudende autoriteit:",
+          name: "Portugese Autoriteit Gegevensbescherming (CNPD)",
+          websiteLabel: "Website:",
+          contactLabel: "Contact:"
+        }
+      }
     },
 
     cric: {
@@ -1776,9 +1874,6 @@
     gdpr: {
       title: "Aviso RGPD",
       updatedDate: "06 out 2025",
-      backToHome: "Voltar à Página Inicial",
-      quickLinksTitle: "Links rápidos",
-      gdprBadge: '<strong>Conformidade RGPD:</strong> Estamos comprometidos em proteger os seus dados pessoais e respeitar os seus direitos de privacidade ao abrigo do Regulamento Geral sobre a Proteção de Dados.',
       quickLinks: {
         title: "Links rápidos",
         links: [
@@ -1807,46 +1902,98 @@
           title: "Os seus direitos ao abrigo do RGPD",
           body: "Como titular de dados ao abrigo do RGPD, tem os seguintes direitos relativos aos seus dados pessoais:"
         },
+        retention: {
+          title: "Retenção de Dados",
+          periodsTitle: "Períodos de Retenção",
+          intro: "Retemos dados pessoais apenas pelo tempo necessário para cumprir os fins para os quais foram recolhidos, incluindo requisitos legais, contabilísticos ou de reporte.",
+          items: [
+            "<strong>Dados de reserva:</strong> 7 anos para conformidade fiscal e legal",
+            "<strong>Comunicações de atendimento ao cliente:</strong> 3 anos",
+            "<strong>Consentimentos de marketing:</strong> Até à retirada do consentimento",
+            "<strong>Análises do website:</strong> 26 meses",
+            "<strong>Transações financeiras:</strong> 10 anos para fins contabilísticos"
+          ]
+        },
         transfers: {
           title: "Transferências Internacionais de Dados",
           body: "Quando transferimos os seus dados para fora do Espaço Económico Europeu (EEE), garantimos que existem salvaguardas adequadas para proteger as suas informações. Isto pode incluir o uso de Cláusulas Contratuais Tipo aprovadas pela Comissão Europeia ou a transferência de dados para países com decisões de adequação."
+        },
+        complaints: {
+          title: "Reclamações",
+          intro: "Se tiver preocupações sobre como tratamos os seus dados pessoais, tem o direito de apresentar uma reclamação à sua autoridade local de proteção de dados.",
+          footer: "Encorajamos que nos contacte primeiro para resolver quaisquer preocupações antes de abordar a autoridade de supervisão."
         },
         dpo: {
           title: "Contacte o nosso Encarregado de Proteção de Dados",
           body: 'Para quaisquer questões relacionadas com o RGPD ou para exercer os seus direitos, contacte o nosso Encarregado de Proteção de Dados em <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Responderemos ao seu pedido dentro de 30 dias, conforme exigido pelo RGPD.'
         }
       },
-      basisContract: '<strong>Contrato:</strong> Tratamento necessário para cumprir os nossos acordos de reserva e serviços.',
-      basisLegal: '<strong>Obrigação Legal:</strong> Tratamento exigido para cumprir requisitos legais (por exemplo, leis fiscais).',
-      basisLegitimate: '<strong>Interesses Legítimos:</strong> Tratamento para os nossos interesses comerciais legítimos, respeitando os seus direitos.',
-      basisConsent: '<strong>Consentimento:</strong> Tratamento baseado no seu consentimento explícito para fins específicos.',
-      rightAccessTitle: 'Direito de Acesso',
-      rightAccessDesc: 'Pode solicitar cópias dos seus dados pessoais que detemos.',
-      rightRectificationTitle: 'Direito de Retificação',
-      rightRectificationDesc: 'Pode solicitar a correção de dados incorretos ou incompletos.',
-      rightErasureTitle: 'Direito ao Apagamento',
-      rightErasureDesc: 'Pode solicitar a eliminação dos seus dados pessoais sob certas condições.',
-      rightRestrictTitle: 'Direito à Limitação do Tratamento',
-      rightRestrictDesc: 'Pode solicitar a limitação de como usamos os seus dados.',
-      rightPortabilityTitle: 'Direito à Portabilidade dos Dados',
-      rightPortabilityDesc: 'Pode solicitar a transferência dos seus dados para outra organização.',
-      rightObjectTitle: 'Direito de Oposição',
-      rightObjectDesc: 'Pode opor-se a certos tipos de tratamento dos seus dados.',
-      btnRequestAccess: 'Solicitar Acesso aos Dados',
-      btnRequestDeletion: 'Solicitar Eliminação de Dados',
-      retentionTitle: 'Retenção de Dados',
-      retentionPeriodsTitle: 'Períodos de Retenção',
-      retentionIntro: 'Retemos dados pessoais apenas pelo tempo necessário para cumprir os fins para os quais foram recolhidos, incluindo requisitos legais, contabilísticos ou de reporte.',
-      retentionBooking: '<strong>Dados de reserva:</strong> 7 anos para conformidade fiscal e legal',
-      retentionCustomer: '<strong>Comunicações de atendimento ao cliente:</strong> 3 anos',
-      retentionMarketing: '<strong>Consentimentos de marketing:</strong> Até à retirada do consentimento',
-      retentionAnalytics: '<strong>Análises do website:</strong> 26 meses',
-      retentionFinancial: '<strong>Transações financeiras:</strong> 10 anos para fins contabilísticos',
-      transfersSafeguards: '<strong>Transferências Internacionais de Dados:</strong> Garantimos que existem salvaguardas adequadas para todas as transferências de dados fora do EEE, incluindo Cláusulas Contratuais Tipo e decisões de adequação.',
-      complaintsTitle: 'Reclamações',
-      complaintsIntro: 'Se tiver preocupações sobre como tratamos os seus dados pessoais, tem o direito de apresentar uma reclamação à sua autoridade local de proteção de dados.',
-      complaintsAuthority: '<strong>Autoridade de Supervisão Principal:</strong> Comissão Nacional de Proteção de Dados (CNPD)<br><strong>Website:</strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br><strong>Contacto:</strong> +351 213 928 400',
-      complaintsContactFirst: 'Encorajamos que nos contacte primeiro para resolver quaisquer preocupações antes de abordar a autoridade de supervisão.'
+      legalBases: {
+        contract: {
+          title: "Contrato:",
+          body: "Tratamento necessário para cumprir os nossos acordos de reserva e serviços."
+        },
+        legal: {
+          title: "Obrigação Legal:",
+          body: "Tratamento exigido para cumprir requisitos legais (por exemplo, leis fiscais)."
+        },
+        legitimate: {
+          title: "Interesses Legítimos:",
+          body: "Tratamento para os nossos interesses comerciais legítimos, respeitando os seus direitos."
+        },
+        consent: {
+          title: "Consentimento:",
+          body: "Tratamento baseado no seu consentimento explícito para fins específicos."
+        }
+      },
+      rights: {
+        access: {
+          title: "Direito de Acesso",
+          body: "Pode solicitar cópias dos seus dados pessoais que detemos."
+        },
+        rectification: {
+          title: "Direito de Retificação",
+          body: "Pode solicitar a correção de dados incorretos ou incompletos."
+        },
+        erasure: {
+          title: "Direito ao Apagamento",
+          body: "Pode solicitar a eliminação dos seus dados pessoais sob certas condições."
+        },
+        restrict: {
+          title: "Direito à Limitação do Tratamento",
+          body: "Pode solicitar a limitação de como usamos os seus dados."
+        },
+        portability: {
+          title: "Direito à Portabilidade dos Dados",
+          body: "Pode solicitar a transferência dos seus dados para outra organização."
+        },
+        object: {
+          title: "Direito de Oposição",
+          body: "Pode opor-se a certos tipos de tratamento dos seus dados."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Solicitar Acesso aos Dados"
+        },
+        erasure: {
+          text: "Solicitar Eliminação de Dados"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Transferências Internacionais de Dados:",
+          body: "Garantimos que existem salvaguardas adequadas para todas as transferências de dados fora do EEE, incluindo Cláusulas Contratuais Tipo e decisões de adequação."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Autoridade de Supervisão Principal:",
+          name: "Comissão Nacional de Proteção de Dados (CNPD)",
+          websiteLabel: "Website:",
+          contactLabel: "Contacto:"
+        }
+      }
     },
 
     cric: {
