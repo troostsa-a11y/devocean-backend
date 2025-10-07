@@ -875,22 +875,12 @@
               mobileNav.classList.remove('show');
               btn.setAttribute('aria-expanded', 'false');
               
-              // Wait for menu to close, then navigate
+              // Wait for menu to close, recalculate header height, then navigate
               setTimeout(() => {
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                  // Manually calculate scroll position to account for header
-                  const elementPosition = targetElement.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - 220;
-                  
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  });
-                  
-                  // Update URL hash
-                  history.replaceState(null, null, '#' + targetId);
-                }
+                requestAnimationFrame(() => {
+                  setStickyHeaderHeight();
+                  scrollToSection(targetId);
+                });
               }, 150);
             };
             mobileNav.appendChild(mobileLink);
