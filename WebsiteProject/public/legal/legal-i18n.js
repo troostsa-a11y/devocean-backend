@@ -172,6 +172,68 @@
         intro.textContent = data.intro;
       }
 
+      // Handle description (for cookie sections)
+      var desc = sec.querySelector('[data-part="description"]');
+      if (desc && data.description) {
+        desc.textContent = data.description;
+      }
+
+      // Handle consentTitle (for manage section)
+      var consentTitle = sec.querySelector('[data-part="consentTitle"]');
+      if (consentTitle && data.consentTitle) {
+        consentTitle.textContent = data.consentTitle;
+      }
+
+      // Handle consentText (for manage section)
+      var consentText = sec.querySelector('[data-part="consentText"]');
+      if (consentText && data.consentText) {
+        consentText.textContent = data.consentText;
+      }
+
+      // Handle browserText (for manage section)
+      var browserText = sec.querySelector('[data-part="browserText"]');
+      if (browserText && data.browserText) {
+        browserText.textContent = data.browserText;
+      }
+
+      // Handle cookie tables (for cookie sections)
+      var cookieTable = sec.querySelector('.cookie-table');
+      if (cookieTable && data.tableHeaders && Array.isArray(data.cookies)) {
+        // Update table headers
+        var thead = cookieTable.querySelector('thead tr');
+        if (thead && data.tableHeaders) {
+          thead.innerHTML = '';
+          var th1 = document.createElement('th');
+          th1.textContent = data.tableHeaders.cookie || 'Cookie';
+          var th2 = document.createElement('th');
+          th2.textContent = data.tableHeaders.duration || 'Duration';
+          var th3 = document.createElement('th');
+          th3.textContent = data.tableHeaders.description || 'Description';
+          thead.appendChild(th1);
+          thead.appendChild(th2);
+          thead.appendChild(th3);
+        }
+        
+        // Update table body with cookie data
+        var tbody = cookieTable.querySelector('tbody');
+        if (tbody) {
+          tbody.innerHTML = '';
+          data.cookies.forEach(function(cookie) {
+            var tr = document.createElement('tr');
+            var td1 = document.createElement('td');
+            td1.textContent = cookie.name || '';
+            var td2 = document.createElement('td');
+            td2.textContent = cookie.duration || '';
+            var td3 = document.createElement('td');
+            td3.textContent = cookie.desc || '';
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tbody.appendChild(tr);
+          });
+        }
+      }
+
       if (linksContainer && Array.isArray(data.links)) {
         linksContainer.innerHTML = "";
         data.links.forEach(function (link) {
