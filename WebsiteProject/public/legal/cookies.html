@@ -337,33 +337,32 @@
       }
     }
 
-    /* Mobile menu toggle button */
-    .menu-toggle {
+    /* Mobile menu icon button */
+    .menu-icon {
       display: none;
+      position: fixed;
+      top: 16px;
+      right: 16px;
       background: var(--brand);
       color: white;
       border: none;
-      border-radius: 8px;
-      padding: 8px 16px;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
       cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 24px;
       align-items: center;
-      gap: 8px;
-      width: 100%;
       justify-content: center;
+      z-index: 1001;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
-    .menu-toggle:hover {
+    .menu-icon:hover {
       filter: brightness(0.95);
     }
 
-    .menu-toggle-icon {
-      transition: transform 0.2s ease;
-    }
-
-    .menu-toggle.active .menu-toggle-icon {
-      transform: rotate(180deg);
+    .menu-icon:active {
+      transform: scale(0.95);
     }
 
     @media (max-width: 768px) {
@@ -381,8 +380,17 @@
         margin: 0 0 8px;
       }
 
-      /* Hide decorative badge on mobile to save space */
+      /* Show compact badge on mobile with only bold text */
       .cookie-banner-info {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+      
+      .cookie-banner-info::before {
+        font-size: 16px;
+      }
+
+      .badge-description {
         display: none;
       }
 
@@ -402,17 +410,26 @@
         display: inline-block;
       }
       
-      /* Show toggle button and hide quick nav by default on mobile */
-      .menu-toggle {
+      /* Show menu icon and overlay quick nav on mobile */
+      .menu-icon {
         display: flex;
-        margin: 0 0 8px 0;
       }
 
       .quick-nav {
         display: none;
-        position: static;
-        margin: 0 0 8px 0;
-        padding: 12px;
+        position: fixed;
+        top: 80px;
+        right: 16px;
+        left: 16px;
+        margin: 0;
+        padding: 16px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .quick-nav.show {
@@ -421,18 +438,24 @@
 
       .quick-nav h3 {
         font-size: 14px;
-        margin: 0 0 8px 0;
+        margin: 0 0 12px 0;
       }
       
       .quick-nav-links {
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
       }
       
       .quick-nav-link {
         text-align: center;
-        padding: 8px 12px;
-        font-size: 13px;
+        padding: 10px 12px;
+        font-size: 14px;
+        background: var(--card-bg);
+        border-radius: 8px;
+      }
+
+      .quick-nav-link:hover {
+        background: var(--card-br);
       }
 
       .cookie-table {
@@ -518,34 +541,31 @@
       </p>
 
       <div class="cookie-banner-info">
-        <div>
-          <strong>Manage Your Cookie Preferences:</strong> You can control which cookies we use through our cookie banner or your browser settings.
-          <div style="margin-top: 12px;">
-            <button class="btn" onclick="openCookieSettings()">
-              🍪 Cookie Settings
-            </button>
-          </div>
+        <strong>Manage Your Cookie Preferences:</strong> <span class="badge-description">You can control which cookies we use through our cookie banner or your browser settings.</span>
+        <div style="margin-top: 8px;">
+          <button class="btn" onclick="openCookieSettings()">
+            🍪 Cookie Settings
+          </button>
         </div>
       </div>
-
-      <button class="menu-toggle" onclick="toggleQuickNav()" aria-expanded="false" aria-controls="quick-nav">
-        <span>Quick Links</span>
-        <span class="menu-toggle-icon">▼</span>
-      </button>
-
-      <nav id="quick-nav" class="quick-nav" aria-label="Quick navigation">
-        <h3>Quick Links</h3>
-        <div class="quick-nav-links">
-          <a href="#what" class="quick-nav-link">What are cookies</a>
-          <a href="#how" class="quick-nav-link">How we use cookies</a>
-          <a href="#necessary" class="quick-nav-link">Necessary</a>
-          <a href="#functional" class="quick-nav-link">Functional</a>
-          <a href="#analytics" class="quick-nav-link">Analytics</a>
-          <a href="#advertisement" class="quick-nav-link">Advertisement</a>
-          <a href="#manage" class="quick-nav-link">Manage preferences</a>
-        </div>
-      </nav>
     </div>
+
+    <button class="menu-icon" onclick="toggleQuickNav()" aria-expanded="false" aria-controls="quick-nav" aria-label="Toggle quick navigation menu">
+      ☰
+    </button>
+
+    <nav id="quick-nav" class="quick-nav" aria-label="Quick navigation">
+      <h3>Quick Links</h3>
+      <div class="quick-nav-links">
+        <a href="#what" class="quick-nav-link">What are cookies</a>
+        <a href="#how" class="quick-nav-link">How we use cookies</a>
+        <a href="#necessary" class="quick-nav-link">Necessary</a>
+        <a href="#functional" class="quick-nav-link">Functional</a>
+        <a href="#analytics" class="quick-nav-link">Analytics</a>
+        <a href="#advertisement" class="quick-nav-link">Advertisement</a>
+        <a href="#manage" class="quick-nav-link">Manage preferences</a>
+      </div>
+    </nav>
 
     <section data-section="what" id="what">
       <button class="copy-link" onclick="copySectionLink('what')" aria-label="Copy link to this section">🔗</button>
@@ -820,19 +840,30 @@
 
     function toggleQuickNav() {
       const quickNav = document.getElementById('quick-nav');
-      const toggle = document.querySelector('.menu-toggle');
+      const menuIcon = document.querySelector('.menu-icon');
       const isVisible = quickNav.classList.contains('show');
       
       if (isVisible) {
         quickNav.classList.remove('show');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.classList.remove('active');
+        menuIcon.setAttribute('aria-expanded', 'false');
       } else {
         quickNav.classList.add('show');
-        toggle.setAttribute('aria-expanded', 'true');
-        toggle.classList.add('active');
+        menuIcon.setAttribute('aria-expanded', 'true');
       }
     }
+
+    // Auto-close menu when any link is clicked
+    document.addEventListener('DOMContentLoaded', function() {
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+      quickNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          const quickNav = document.getElementById('quick-nav');
+          const menuIcon = document.querySelector('.menu-icon');
+          quickNav.classList.remove('show');
+          menuIcon.setAttribute('aria-expanded', 'false');
+        });
+      });
+    });
 
     function openCookieSettings() {
       if (window.cookieyes && typeof window.cookieyes.showSettings === 'function') {
