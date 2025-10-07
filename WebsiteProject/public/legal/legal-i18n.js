@@ -283,6 +283,41 @@
         if (processJurisdiction && data.process.jurisdiction) processJurisdiction.textContent = data.process.jurisdiction;
         if (processMediation && data.process.mediation) processMediation.textContent = data.process.mediation;
       }
+
+      // Handle embedded notices (reservationReq, checkinCheckout, groupBookings, paymentInfo, noshowPolicy, zeroTolerance)
+      ['reservationReq', 'checkinCheckout', 'groupBookings', 'paymentInfo', 'noshowPolicy', 'zeroTolerance'].forEach(function(noticeKey) {
+        var notice = sec.querySelector('[data-part="' + noticeKey + '"]');
+        if (notice && data[noticeKey]) {
+          var noticeTitle = notice.querySelector('[data-part="title"]');
+          var noticeBody = notice.querySelector('[data-part="body"]');
+          if (noticeTitle && data[noticeKey].title) noticeTitle.textContent = data[noticeKey].title;
+          if (noticeBody && data[noticeKey].body) noticeBody.textContent = data[noticeKey].body;
+        }
+      });
+
+      // Handle cancellation charges with tiers
+      var cancellationCharges = sec.querySelector('[data-part="cancellationCharges"]');
+      if (cancellationCharges && data.cancellationCharges) {
+        var ccTitle = cancellationCharges.querySelector('[data-part="title"]');
+        var tierList = cancellationCharges.querySelector('[data-part="tiers"]');
+        if (ccTitle && data.cancellationCharges.title) ccTitle.textContent = data.cancellationCharges.title;
+        if (tierList && Array.isArray(data.cancellationCharges.tiers)) {
+          tierList.innerHTML = '';
+          data.cancellationCharges.tiers.forEach(function(tier) {
+            var tierDiv = document.createElement('div');
+            tierDiv.className = 'tier';
+            var periodSpan = document.createElement('span');
+            periodSpan.className = 'tier-period';
+            periodSpan.textContent = tier.period || '';
+            var chargeSpan = document.createElement('span');
+            chargeSpan.className = 'tier-charge';
+            chargeSpan.textContent = tier.charge || '';
+            tierDiv.appendChild(periodSpan);
+            tierDiv.appendChild(chargeSpan);
+            tierList.appendChild(tierDiv);
+          });
+        }
+      }
     });
 
     // Handle legal basis items (GDPR page)

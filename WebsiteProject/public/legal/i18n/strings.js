@@ -272,25 +272,58 @@
           items: [
             "Provide accurate guest information and arrival/departure dates",
             "Special requests are subject to availability and confirmation"
-          ]
+          ],
+          reservationReq: {
+            title: "Reservation Requirements",
+            body: "Valid ID and credit card required for all bookings. Minimum age: 18 years."
+          },
+          checkinCheckout: {
+            title: "Check-in/Check-out",
+            body: "Check-in: 2:00 PM | Check-out: 11:00 AM. Early/late requests subject to availability."
+          },
+          groupBookings: {
+            title: "Group Bookings",
+            body: "Special terms apply for groups of 6+ rooms. Contact us for group rates and policies."
+          }
         },
         payment: {
           title: "Prices & Payment",
           items: [
             "Rates shown are per unit/night unless stated otherwise",
             "Deposits and settlement methods will be confirmed during booking"
-          ]
+          ],
+          paymentInfo: {
+            title: "Payment Information",
+            body: "All prices are in EUR unless otherwise stated. Currency conversion rates are approximate and subject to change. A valid credit card is required to secure your reservation. Additional charges may apply for incidental expenses."
+          }
         },
         cancel: {
           title: "Cancellations & No-shows",
-          body: "Cancellation terms are disclosed at booking time and on your confirmation."
+          body: "Cancellation terms are disclosed at booking time and on your confirmation.",
+          cancellationCharges: {
+            title: "Cancellation Charges",
+            tiers: [
+              { period: "More than 30 days before arrival", charge: "Full refund" },
+              { period: "15-30 days before arrival", charge: "50% refund" },
+              { period: "7-14 days before arrival", charge: "25% refund" },
+              { period: "Less than 7 days before arrival", charge: "No refund" }
+            ]
+          },
+          noshowPolicy: {
+            title: "No-Show Policy",
+            body: "Guests who fail to arrive on the scheduled check-in date without prior notification will be considered no-shows. The full booking amount will be charged, and the reservation will be cancelled."
+          }
         },
         conduct: {
           title: "Guest conduct",
           items: [
             "Respect property rules, staff, other guests and the local community",
             "No unlawful activities on the premises"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Zero Tolerance Policy",
+            body: "We maintain a zero tolerance policy for disruptive behavior, illegal activities, or damage to property. Violations may result in immediate eviction without refund and may lead to legal action."
+          }
         },
         "force-majeure": {
           title: "Force Majeure",
@@ -595,25 +628,58 @@
           items: [
             "Geben Sie genaue Gästeinformationen sowie An- und Abreisedaten an",
             "Sonderwünsche unterliegen der Verfügbarkeit und Bestätigung"
-          ]
+          ],
+          reservationReq: {
+            title: "Reservierungsanforderungen",
+            body: "Gültiger Ausweis und Kreditkarte erforderlich für alle Buchungen. Mindestalter: 18 Jahre."
+          },
+          checkinCheckout: {
+            title: "Check-in/Check-out",
+            body: "Check-in: 14:00 Uhr | Check-out: 11:00 Uhr. Frühe/späte Anfragen vorbehaltlich Verfügbarkeit."
+          },
+          groupBookings: {
+            title: "Gruppenbuchungen",
+            body: "Spezielle Bedingungen gelten für Gruppen ab 6+ Zimmern. Kontaktieren Sie uns für Gruppentarife und -richtlinien."
+          }
         },
         payment: {
           title: "Preise & Zahlung",
           items: [
             "Die angegebenen Preise gelten pro Einheit/Nacht, sofern nicht anders angegeben",
             "Anzahlungen und Zahlungsmethoden werden während der Buchung bestätigt"
-          ]
+          ],
+          paymentInfo: {
+            title: "Zahlungsinformationen",
+            body: "Alle Preise sind in EUR, sofern nicht anders angegeben. Währungsumrechnungskurse sind ungefähr und können sich ändern. Eine gültige Kreditkarte ist erforderlich, um Ihre Reservierung zu sichern. Zusätzliche Gebühren können für Nebenkosten anfallen."
+          }
         },
         cancel: {
           title: "Stornierung & Nichterscheinen",
-          body: "Die Stornierungsbedingungen werden zum Zeitpunkt der Buchung und in Ihrer Bestätigung offengelegt."
+          body: "Die Stornierungsbedingungen werden zum Zeitpunkt der Buchung und in Ihrer Bestätigung offengelegt.",
+          cancellationCharges: {
+            title: "Stornierungsgebühren",
+            tiers: [
+              { period: "Mehr als 30 Tage vor Anreise", charge: "Vollständige Rückerstattung" },
+              { period: "15-30 Tage vor Anreise", charge: "50% Rückerstattung" },
+              { period: "7-14 Tage vor Anreise", charge: "25% Rückerstattung" },
+              { period: "Weniger als 7 Tage vor Anreise", charge: "Keine Rückerstattung" }
+            ]
+          },
+          noshowPolicy: {
+            title: "Nichterscheinungsrichtlinie",
+            body: "Gäste, die am geplanten Check-in-Datum ohne vorherige Benachrichtigung nicht erscheinen, gelten als Nichterscheinung. Der volle Buchungsbetrag wird berechnet und die Reservierung wird storniert."
+          }
         },
         conduct: {
           title: "Gastverhalten",
           items: [
             "Respektieren Sie die Hausordnung, das Personal, andere Gäste und die lokale Gemeinschaft",
             "Keine rechtswidrigen Aktivitäten auf dem Gelände"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Null-Toleranz-Richtlinie",
+            body: "Wir verfolgen eine Null-Toleranz-Richtlinie bei störendem Verhalten, illegalen Aktivitäten oder Sachbeschädigung. Verstöße können zu sofortiger Ausweisung ohne Rückerstattung führen und können rechtliche Schritte nach sich ziehen."
+          }
         },
 
         "force-majeure": {
@@ -1013,25 +1079,58 @@
           items: [
             "Verstrek nauwkeurige gastinformatie en aankomst-/vertrekdata",
             "Speciale verzoeken zijn afhankelijk van beschikbaarheid en bevestiging"
-          ]
+          ],
+          reservationReq: {
+            title: "Reserveringsvereisten",
+            body: "Geldig ID en creditcard vereist voor alle boekingen. Minimumleeftijd: 18 jaar."
+          },
+          checkinCheckout: {
+            title: "Inchecken/Uitchecken",
+            body: "Inchecken: 14:00 uur | Uitchecken: 11:00 uur. Vroege/late verzoeken afhankelijk van beschikbaarheid."
+          },
+          groupBookings: {
+            title: "Groepsboekingen",
+            body: "Speciale voorwaarden zijn van toepassing op groepen van 6+ kamers. Neem contact met ons op voor groepstarieven en beleid."
+          }
         },
         payment: {
           title: "Prijzen & Betaling",
           items: [
             "Getoonde prijzen zijn per eenheid/nacht tenzij anders vermeld",
             "Aanbetaling en betaalmethoden worden tijdens de boeking bevestigd"
-          ]
+          ],
+          paymentInfo: {
+            title: "Betalingsinformatie",
+            body: "Alle prijzen zijn in EUR tenzij anders vermeld. Valutawisselkoersen zijn bij benadering en kunnen wijzigen. Een geldige creditcard is vereist om uw reservering te garanderen. Extra kosten kunnen van toepassing zijn voor bijkomende kosten."
+          }
         },
         cancel: {
           title: "Annuleringen & No-shows",
-          body: "Annuleringsvoorwaarden worden bekendgemaakt tijdens het boeken en in uw bevestiging."
+          body: "Annuleringsvoorwaarden worden bekendgemaakt tijdens het boeken en in uw bevestiging.",
+          cancellationCharges: {
+            title: "Annuleringskosten",
+            tiers: [
+              { period: "Meer dan 30 dagen voor aankomst", charge: "Volledige terugbetaling" },
+              { period: "15-30 dagen voor aankomst", charge: "50% terugbetaling" },
+              { period: "7-14 dagen voor aankomst", charge: "25% terugbetaling" },
+              { period: "Minder dan 7 dagen voor aankomst", charge: "Geen terugbetaling" }
+            ]
+          },
+          noshowPolicy: {
+            title: "No-show beleid",
+            body: "Gasten die niet arriveren op de geplande incheckdatum zonder voorafgaande kennisgeving worden beschouwd als no-shows. Het volledige boekingsbedrag wordt in rekening gebracht en de reservering wordt geannuleerd."
+          }
         },
         conduct: {
           title: "Gastgedrag",
           items: [
             "Respecteer de regels van de accommodatie, personeel, andere gasten en de lokale gemeenschap",
             "Geen onwettige activiteiten op het terrein"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Nultolerantiebeleid",
+            body: "We hanteren een nultolerantiebeleid voor storend gedrag, illegale activiteiten of schade aan eigendommen. Overtredingen kunnen leiden tot onmiddellijke uitzetting zonder terugbetaling en kunnen leiden tot juridische stappen."
+          }
         },
 
         "force-majeure": {
@@ -1431,25 +1530,58 @@
           items: [
             "Forneça informações precisas sobre os hóspedes e datas de chegada/partida",
             "Pedidos especiais estão sujeitos à disponibilidade e confirmação"
-          ]
+          ],
+          reservationReq: {
+            title: "Requisitos de Reserva",
+            body: "Documento de identificação válido e cartão de crédito obrigatórios para todas as reservas. Idade mínima: 18 anos."
+          },
+          checkinCheckout: {
+            title: "Check-in/Check-out",
+            body: "Check-in: 14:00 | Check-out: 11:00. Pedidos de check-in antecipado/tardio sujeitos a disponibilidade."
+          },
+          groupBookings: {
+            title: "Reservas de Grupo",
+            body: "Termos especiais aplicam-se a grupos de 6+ quartos. Contacte-nos para tarifas e políticas de grupo."
+          }
         },
         payment: {
           title: "Preços e Pagamento",
           items: [
             "As tarifas apresentadas são por unidade/noite, salvo indicação em contrário",
             "Depósitos e métodos de pagamento serão confirmados durante a reserva"
-          ]
+          ],
+          paymentInfo: {
+            title: "Informações de Pagamento",
+            body: "Todos os preços são em EUR, salvo indicação em contrário. As taxas de conversão de moeda são aproximadas e sujeitas a alterações. É necessário um cartão de crédito válido para garantir a sua reserva. Podem aplicar-se encargos adicionais para despesas acessórias."
+          }
         },
         cancel: {
           title: "Cancelamentos e Não comparências",
-          body: "Os termos de cancelamento são divulgados no momento da reserva e na sua confirmação."
+          body: "Os termos de cancelamento são divulgados no momento da reserva e na sua confirmação.",
+          cancellationCharges: {
+            title: "Encargos de Cancelamento",
+            tiers: [
+              { period: "Mais de 30 dias antes da chegada", charge: "Reembolso total" },
+              { period: "15-30 dias antes da chegada", charge: "Reembolso de 50%" },
+              { period: "7-14 dias antes da chegada", charge: "Reembolso de 25%" },
+              { period: "Menos de 7 dias antes da chegada", charge: "Sem reembolso" }
+            ]
+          },
+          noshowPolicy: {
+            title: "Política de Não Comparência",
+            body: "Os hóspedes que não chegarem na data de check-in agendada sem notificação prévia serão considerados não comparências. O valor total da reserva será cobrado e a reserva será cancelada."
+          }
         },
         conduct: {
           title: "Conduta do hóspede",
           items: [
             "Respeite as regras da propriedade, o pessoal, outros hóspedes e a comunidade local",
             "Não são permitidas atividades ilegais nas instalações"
-          ]
+          ],
+          zeroTolerance: {
+            title: "Política de Tolerância Zero",
+            body: "Mantemos uma política de tolerância zero para comportamentos perturbadores, atividades ilegais ou danos à propriedade. As violações podem resultar em expulsão imediata sem reembolso e podem levar a ações legais."
+          }
         },
         "force-majeure": {
           title: "Força Maior",
