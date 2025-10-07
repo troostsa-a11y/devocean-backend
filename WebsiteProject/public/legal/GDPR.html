@@ -418,9 +418,19 @@
         padding: 12px;
       }
 
+      /* Title and menu button on same line */
+      .title-menu-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 12px 0 4px;
+      }
+
       h1[data-role="page-title"] {
         font-size: 24px;
-        margin: 12px 0 4px;
+        margin: 0;
+        flex: 1;
       }
 
       .updated {
@@ -439,6 +449,11 @@
       }
 
       .quick-nav {
+        display: none !important;
+      }
+
+      /* Hide copy link buttons on mobile */
+      .copy-link {
         display: none !important;
       }
 
@@ -582,7 +597,18 @@
     <div class="sticky-header">
       <a href="/" data-role="back-link" aria-label="Back to home page">← <span data-i18n="backToHome">Back to Home</span></a>
 
-      <h1 data-role="page-title">GDPR Notice</h1>
+      <div class="title-menu-row">
+        <h1 data-role="page-title">GDPR Notice</h1>
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
       <p class="updated">
         <span data-role="updated-label">Last updated</span>:
         <span data-role="updated-date">06 Oct 2025</span>
@@ -604,15 +630,6 @@
           <a href="#complaints" class="quick-nav-link">Complaints</a>
         </div>
       </nav>
-
-      <!-- Mobile menu button -->
-      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <line x1="3" y1="12" x2="21" y2="12"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <line x1="3" y1="18" x2="21" y2="18"/>
-        </svg>
-      </button>
     </div>
 
     <!-- Mobile dropdown menu -->
