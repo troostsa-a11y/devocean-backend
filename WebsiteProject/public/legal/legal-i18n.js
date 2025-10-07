@@ -172,6 +172,32 @@
         intro.textContent = data.intro;
       }
 
+      // Handle categories (for privacy collect section)
+      var categoriesContainer = sec.querySelector('[data-part="categories"]');
+      if (categoriesContainer && Array.isArray(data.categories)) {
+        categoriesContainer.innerHTML = "";
+        data.categories.forEach(function(category) {
+          var categoryDiv = document.createElement('div');
+          categoryDiv.className = 'data-category';
+          
+          var categoryTitle = document.createElement('h3');
+          categoryTitle.textContent = category.title || '';
+          categoryDiv.appendChild(categoryTitle);
+          
+          if (Array.isArray(category.items)) {
+            var categoryList = document.createElement('ul');
+            category.items.forEach(function(item) {
+              var li = document.createElement('li');
+              li.textContent = item;
+              categoryList.appendChild(li);
+            });
+            categoryDiv.appendChild(categoryList);
+          }
+          
+          categoriesContainer.appendChild(categoryDiv);
+        });
+      }
+
       // Handle periodsTitle (for retention section)
       var periodsTitle = sec.querySelector('[data-part="periodsTitle"]');
       if (periodsTitle && data.periodsTitle) {

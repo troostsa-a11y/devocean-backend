@@ -579,12 +579,12 @@
       </p>
 
       <div class="privacy-badge" data-section="badge">
-        <strong data-part="title">Your Privacy Matters:</strong> <span data-part="body">We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information.</span>
+        <strong data-part="title"></strong> <span data-part="body"></span>
       </div>
 
       <!-- Desktop quick links -->
       <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
-        <h3 data-part="title">Quick Links</h3>
+        <h3 data-part="title"></h3>
         <div class="quick-nav-links" data-part="links"></div>
       </nav>
 
@@ -596,143 +596,69 @@
 
     <section data-section="who" id="who">
       <button class="copy-link" onclick="copySectionLink('who')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Who we are</h2>
+      <h2 data-part="title"></h2>
       <p data-part="body"></p>
     </section>
 
     <section data-section="collect" id="collect">
       <button class="copy-link" onclick="copySectionLink('collect')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">What we collect</h2>
-      <ul data-part="items"></ul>
-      
-      <div class="data-categories">
-        <div class="data-category">
-          <h3>Personal Information</h3>
-          <ul>
-            <li>Name, contact details</li>
-            <li>Passport/ID information</li>
-            <li>Payment information</li>
-            <li>Booking preferences</li>
-          </ul>
-        </div>
-        <div class="data-category">
-          <h3>Technical Data</h3>
-          <ul>
-            <li>IP address, device information</li>
-            <li>Browser type and version</li>
-            <li>Website usage analytics</li>
-            <li>Cookie data (with consent)</li>
-          </ul>
-        </div>
-        <div class="data-category">
-          <h3>Communication Data</h3>
-          <ul>
-            <li>Email correspondence</li>
-            <li>Customer service requests</li>
-            <li>Feedback and reviews</li>
-            <li>Marketing preferences</li>
-          </ul>
-        </div>
-      </div>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <div class="data-categories" data-part="categories"></div>
     </section>
 
     <section data-section="use" id="use">
       <button class="copy-link" onclick="copySectionLink('use')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">How we use your data</h2>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
       <ul data-part="items"></ul>
-      
-      <div class="data-flow">
-        <h3>Data Processing Flow</h3>
-        <ol>
-          <li><strong>Collection:</strong> We collect only necessary data for specific purposes</li>
-          <li><strong>Processing:</strong> Data is processed according to legal bases and your consent</li>
-          <li><strong>Storage:</strong> Secure storage with access controls and encryption</li>
-          <li><strong>Usage:</strong> Used only for stated purposes and legal requirements</li>
-          <li><strong>Retention:</strong> Kept only as long as necessary, then securely deleted</li>
-        </ol>
-      </div>
-
-      <div class="legal-basis">
-        <strong>Legal Bases for Processing:</strong> We process your data based on contractual necessity, legal obligations, legitimate interests, and your consent where required.
-      </div>
     </section>
 
     <section data-section="share" id="share">
       <button class="copy-link" onclick="copySectionLink('share')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">When we share data</h2>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
       <ul data-part="items"></ul>
       <p data-part="footer" style="margin-top: 16px; padding: 12px; background: #f0f9ff; border-left: 4px solid #0369a1; border-radius: 6px; font-size: 14px;"></p>
     </section>
 
     <section data-section="security" id="security">
       <button class="copy-link" onclick="copySectionLink('security')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Security Measures</h2>
+      <h2 data-part="title"></h2>
       <div class="security-measures">
-        <h3 data-part="intro">How We Protect Your Data</h3>
-        <ul data-part="measures">
-          <li>Encryption of sensitive data in transit and at rest</li>
-          <li>Regular security assessments and penetration testing</li>
-          <li>Access controls and authentication mechanisms</li>
-          <li>Staff training on data protection and privacy</li>
-          <li>Secure data backup and disaster recovery procedures</li>
-        </ul>
+        <h3 data-part="intro"></h3>
+        <ul data-part="measures"></ul>
       </div>
     </section>
 
     <section data-section="retention" id="retention">
       <button class="copy-link" onclick="copySectionLink('retention')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Retention</h2>
+      <h2 data-part="title"></h2>
       <p data-part="body"></p>
     </section>
 
     <section data-section="rights" id="rights">
       <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Your rights</h2>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
       <ul data-part="items"></ul>
-      
-      <div class="data-categories">
-        <div class="data-category">
-          <h3>Access & Control</h3>
-          <ul>
-            <li>Right to access your data</li>
-            <li>Right to rectification</li>
-            <li>Right to erasure</li>
-            <li>Right to restrict processing</li>
-          </ul>
-        </div>
-        <div class="data-category">
-          <h3>Portability & Objection</h3>
-          <ul>
-            <li>Right to data portability</li>
-            <li>Right to object to processing</li>
-            <li>Right to withdraw consent</li>
-            <li>Right to lodge complaints</li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="text-align: center; margin: 16px 0;">
-        <button class="btn" onclick="openPrivacySettings()" style="display: inline-flex; align-items: center; gap: 8px;">
-          🛡️ Manage Privacy Settings
-        </button>
-      </div>
     </section>
 
     <section data-section="transfers" id="transfers">
       <button class="copy-link" onclick="copySectionLink('transfers')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">International Data Transfers</h2>
+      <h2 data-part="title"></h2>
       <p data-part="body"></p>
     </section>
 
     <section data-section="contact" id="contact">
       <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Contact</h2>
+      <h2 data-part="title"></h2>
       <p data-part="body" data-use-html="true"></p>
     </section>
 
     <section data-section="updates" id="updates">
       <button class="copy-link" onclick="copySectionLink('updates')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title">Policy Updates</h2>
+      <h2 data-part="title"></h2>
       <p data-part="body"></p>
     </section>
   </main>
