@@ -68,19 +68,34 @@
       transform: translateY(48px);
     }
 
-    *:focus-visible {
-      outline: 2px solid var(--focus);
+    /* Focus styles */
+    *:focus-visible { outline: none; }
+
+    a:focus,
+    a:focus-visible,
+    button:focus,
+    button:focus-visible,
+    [role="button"]:focus,
+    [role="button"]:focus-visible,
+    input:focus,
+    input:focus-visible,
+    select:focus,
+    select:focus-visible,
+    textarea:focus,
+    textarea:focus-visible {
+      outline: 2px solid #fff;
       outline-offset: 2px;
     }
 
-    .quick-nav-link:focus {
+    [id]:target,
+    section:focus,
+    section:focus-visible,
+    h2:focus,
+    h2:focus-visible {
       outline: none;
     }
 
-    .quick-nav-link:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 2px;
-    }
+    .quick-nav-link { -webkit-tap-highlight-color: rgba(255,255,255,0); }
 
     main {
       max-width: 900px;
