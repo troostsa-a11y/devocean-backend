@@ -8,6 +8,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 
 Preferred communication style: Simple, everyday language.
 
+**Build and Deployment:**
+- **IMPORTANT:** Only build (`npm run build`) and deploy to Cloudflare when explicitly instructed by the user
+- Do NOT automatically build/deploy after making changes
+- Wait for explicit user confirmation before deploying
+
 ## System Architecture
 
 ### Frontend Architecture
