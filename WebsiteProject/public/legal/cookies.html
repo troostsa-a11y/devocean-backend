@@ -1,9 +1,9 @@
 <html lang="en"><head><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
 (window,'GTM-532W3HH2','google_tags_first_party');</script><script>(function(w,d,s,l){w[l]=w[l]||[];(function(){w[l].push(arguments);})('set', 'developer_id.dYzg1YT', true);
-		w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s);j.async=true;j.src='/nik2/';
-		f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer');</script>
+                w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s);j.async=true;j.src='/nik2/';
+                f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer');</script>
   <meta charset="utf-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -787,9 +787,145 @@
     </section>
   </main>
 
-  
+  <script>
+    // Dynamically calculate sticky header height
+    function setStickyHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        const height = stickyHeader.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+        console.log('Header height set to:', height + 'px');
+      }
+    }
+    
+    // Set immediately
+    setStickyHeaderHeight();
+    
+    // Set on load and after short delays to ensure proper calculation
+    window.addEventListener('DOMContentLoaded', () => {
+      setStickyHeaderHeight();
+      setTimeout(setStickyHeaderHeight, 50);
+      setTimeout(setStickyHeaderHeight, 150);
+      setTimeout(setStickyHeaderHeight, 300);
+      
+      // Handle hash navigation after header height is calculated
+      if (window.location.hash) {
+        setTimeout(() => {
+          scrollToSection(window.location.hash.slice(1));
+        }, 350);
+      }
+      
+      // Add click handlers to quick nav links after they're created by legal-i18n.js
+      setTimeout(() => {
+        document.querySelectorAll('.quick-nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            const sectionId = href.slice(1); // Remove the #
+            scrollToSection(sectionId);
+            // Update URL without scrolling
+            history.pushState(null, null, href);
+          });
+        });
+      }, 400);
+    });
+    
+    window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Function to scroll to a section with proper offset
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
+        const offset = 8; // Extra spacing
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          button.style.opacity = '1';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (err2) {
+          console.error('Fallback copy failed:', err2);
+        }
+        document.body.removeChild(textArea);
+      });
+    }
 
 
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobile-nav');
+      const btn = document.querySelector('.mobile-menu-btn');
+      const isOpen = mobileNav.classList.contains('show');
+      
+      if (isOpen) {
+        mobileNav.classList.remove('show');
+        btn.setAttribute('aria-expanded', 'false');
+        setTimeout(() => setStickyHeaderHeight(), 50);
+      } else {
+        // Populate menu from desktop links before opening
+        mobileNav.innerHTML = '';
+        const desktopLinks = document.querySelectorAll('.quick-nav-links a');
+        if (desktopLinks.length > 0) {
+          desktopLinks.forEach(link => {
+            const mobileLink = document.createElement('a');
+            mobileLink.href = link.href;
+            mobileLink.textContent = link.textContent;
+            mobileLink.onclick = function(e) {
+              e.preventDefault();
+              const targetId = this.href.split('#')[1];
+              
+              // Close menu first
+              mobileNav.classList.remove('show');
+              btn.setAttribute('aria-expanded', 'false');
+              
+              // Wait for menu to close, recalculate header height, then navigate
+              setTimeout(() => {
+                requestAnimationFrame(() => {
+                  setStickyHeaderHeight();
+                  scrollToSection(targetId);
+                });
+              }, 150);
+            };
+            mobileNav.appendChild(mobileLink);
+          });
+        }
+        mobileNav.classList.add('show');
+        btn.setAttribute('aria-expanded', 'true');
+        setTimeout(() => setStickyHeaderHeight(), 50);
+      }
+    }
+  </script>
+</body>
 
-
-</body></html>
+</html>
