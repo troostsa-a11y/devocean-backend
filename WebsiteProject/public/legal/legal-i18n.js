@@ -26,6 +26,7 @@
     // Prefer hint for FIRST language, then region, then fallback
     var HINT = {
       "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR", "pt": "EUR",
+      "sv": "SEK",
       "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR"
     };
     var first = (list[0] || "").toLowerCase();
@@ -47,7 +48,8 @@
     var CC2CUR = {
       US: "USD", GB: "GBP",
       NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
-      ZA: "ZAR", MZ: "MZN"
+      ZA: "ZAR", MZ: "MZN",
+      SE: "SEK"
     };
 
     var cur = HINT[first] ||
@@ -72,7 +74,7 @@
 
   /* ---------- dynamic AUTO seeding BEFORE hydration ---------- */
   (function seed() {
-    var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
+    var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz", "sv"];
     var src = readLS("site.lang_source") || "auto";
     var lang = readLS("site.lang");
     var cur = readLS("site.currency");
