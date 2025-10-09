@@ -1095,6 +1095,21 @@
   window.addEventListener('resize', ()=>{
     document.documentElement.style.setProperty('--header-height', (header? header.offsetHeight : 0) + 'px');
   });
+
+  // Accessibility: Close mobile menu with Escape key
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      const mobileNav = document.getElementById('mobile-nav');
+      const btn = document.querySelector('.mobile-menu-btn');
+      if(mobileNav && mobileNav.classList.contains('show')){
+        mobileNav.classList.remove('show');
+        if(btn){
+          btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
+        }
+      }
+    }
+  });
 })();
 </script>
 

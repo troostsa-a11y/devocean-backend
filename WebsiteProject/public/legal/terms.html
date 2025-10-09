@@ -1035,6 +1035,21 @@
   }, 400); // Wait for i18n to populate links
 
   window.addEventListener('resize', updateHeaderHeight);
+
+  // Accessibility: Close mobile menu with Escape key
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      const mobileNav = document.getElementById('mobile-nav');
+      const btn = document.querySelector('.mobile-menu-btn');
+      if(mobileNav && mobileNav.classList.contains('show')){
+        mobileNav.classList.remove('show');
+        if(btn){
+          btn.setAttribute('aria-expanded', 'false');
+          btn.focus();
+        }
+      }
+    }
+  });
 })();
 </script>
 
