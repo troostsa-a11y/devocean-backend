@@ -19,7 +19,7 @@ const LANG_TO_CURRENCY_HINT = {
 
 // Booking engine locale mapping
 export const LOCALE_BY_LANG = {
-  en: "en-US", pt: "pt-BR", nl: "nl-NL",
+  en: "en-GB", pt: "pt-BR", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv",
 };
 
@@ -167,7 +167,7 @@ export function useLocale() {
     setCurrency,
     ui,
     loading,
-    bookingLocale: LOCALE_BY_LANG[lang] || "en-US",
+    bookingLocale: LOCALE_BY_LANG[lang] || "en-GB",
     dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
   };
 }
