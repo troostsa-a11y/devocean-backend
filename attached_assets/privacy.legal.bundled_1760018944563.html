@@ -9,10 +9,10 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <title>DEVOCEAN Lodge — GDPR Notice</title>
-  <meta name="description" content="GDPR compliance notice for DEVOCEAN Lodge. Learn about your data protection rights and how we handle your personal information." />
+  <title>DEVOCEAN Lodge — Integritetspolicy</title>
+  <meta name="description" content="Privacy Policy for DEVOCEAN Lodge. Learn how we collect, use, and protect your personal data." />
   <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://devoceanlodge.com/legal/GDPR.html" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/privacy.html" />
 
   <!-- Performance: preconnect / dns-prefetch -->
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
@@ -647,30 +647,7 @@
       overflow-wrap: break-word;
       word-break: break-word;
       hyphens: auto;
-      min-width: 0;
-    }
-
-    /* Keep consistency with cookies.html */
-    @media (max-width: 400px) {
-      .title-menu-row { gap: 8px; }
-      h1[data-role="page-title"] { font-size: clamp(20px, 5.5vw, 24px); }
-    }
-  
-/* Scrollspy active state */
-.quick-nav-links .quick-nav-link.active {
-  background: #eef2ff;
-  border-color: #6366f1;
-  color: #3730a3;
-}
-.mobile-quick-nav a.active {
-  background: #eef2ff;
-  color: #3730a3;
-}
-
-</style>
-</head>
-
-<body data-page="gdpr">
+<body data-page="privacy">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <noscript>
@@ -680,158 +657,184 @@
 
   <main id="main-content">
     <div class="sticky-header">
-      <div class="header-inner">
-        <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+            <div class="header-inner">
+                <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+                <div class="title-menu-row">
+                    <h1 data-role="page-title">Privacy Policy</h1>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false"
+                        aria-controls="mobile-nav" aria-label="Toggle menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
 
-        <div class="title-menu-row">
-          <h1 data-role="page-title">GDPR Notice</h1>
-          <!-- Mobile menu button -->
-          <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
-        </div>
+      <p class="updated">
+        <span data-role="updated-label">Last updated</span>:
+        <span data-role="updated-date"></span>
+      </p>
 
-        <p class="updated">
-          <span data-role="updated-label">Last updated</span>:
-          <span data-role="updated-date">06 Oct 2025</span>
-        </p>
+      <div class="cookie-banner-info" data-section="badge">
+        <strong data-part="title"></strong> <span data-part="body"></span>
+      </div>
 
-        <div class="gdpr-badge" data-section="badge">
-          <strong data-part="title"></strong> <span data-part="body"></span>
-        </div>
+      <!-- Desktop quick links -->
+      <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
+        <h3 data-part="title"></h3>
+        <div class="quick-nav-links" data-part="links">
 
-        <!-- Desktop quick links -->
-        <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
-          <h3 data-part="title"></h3>
-          <div class="quick-nav-links" data-part="links"></div>
-        </nav>
+          <a href="#who" class="quick-nav-link">Vilka vi är</a>
+          <a href="#collect" class="quick-nav-link">Datainsamling</a>
+          <a href="#use" class="quick-nav-link">Dataanvändning</a>
+          <a href="#share" class="quick-nav-link">Datadelning</a>
+          <a href="#security" class="quick-nav-link">Säkerhet</a>
+          <a href="#retention" class="quick-nav-link">Lagring</a>
+          <a href="#rights" class="quick-nav-link">Dina rättigheter</a>
+          <a href="#transfers" class="quick-nav-link">Internationella överföringar</a>
+          <a href="#contact" class="quick-nav-link">Kontakt</a>
+          <a href="#updates" class="quick-nav-link">Uppdateringar</a>
 
-        <!-- Mobile dropdown menu -->
-        <div id="mobile-nav" class="mobile-quick-nav"></div>
+</div>
+      </nav>
+
+      <!-- Mobile dropdown menu -->
+      <div id="mobile-nav" class="mobile-quick-nav">
+        <!-- Links will be populated by JavaScript -->
       </div>
     </div>
 
-    <script>
-      (function() {
-        const stickyHeader = document.querySelector('.sticky-header');
-        if (stickyHeader) {
-          const height = stickyHeader.offsetHeight;
-          document.documentElement.style.setProperty('--header-height', height + 'px');
-        }
-      })();
-    </script>
-
-    <section data-section="controller" id="controller">
-      <button class="copy-link" onclick="copySectionLink('controller')" aria-label="Copy link to this section">🔗</button>
+    <section data-section="who" id="who">
+      <button class="copy-link" onclick="copySectionLink('who')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title"></h2>
       <p data-part="body"></p>
     </section>
 
-    <section data-section="bases" id="bases">
-      <button class="copy-link" onclick="copySectionLink('bases')" aria-label="Copy link to this section">🔗</button>
+    <section data-section="collect" id="collect">
+      <button class="copy-link" onclick="copySectionLink('collect')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title"></h2>
-      <p data-part="body"></p>
-      
-      <div class="legal-basis" data-basis="contract">
-        <strong data-part="title"></strong> <span data-part="body"></span>
-      </div>
-      <div class="legal-basis" data-basis="legal">
-        <strong data-part="title"></strong> <span data-part="body"></span>
-      </div>
-      <div class="legal-basis" data-basis="legitimate">
-        <strong data-part="title"></strong> <span data-part="body"></span>
-      </div>
-      <div class="legal-basis" data-basis="consent">
-        <strong data-part="title"></strong> <span data-part="body"></span>
-      </div>
+      <p data-part="intro"></p>
+      <div class="data-categories" data-part="categories"></div>
     </section>
 
-    <section data-section="rights" id="rights">
-      <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
+    <section data-section="use" id="use">
+      <button class="copy-link" onclick="copySectionLink('use')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title"></h2>
-      <p data-part="body"></p>
-      
-      <div class="rights-grid">
-        <div class="right-card" data-right="access">
-          <h3 data-part="title"></h3>
-          <p data-part="body"></p>
-        </div>
-        <div class="right-card" data-right="rectification">
-          <h3 data-part="title"></h3>
-          <p data-part="body"></p>
-        </div>
-        <div class="right-card" data-right="erasure">
-          <h3 data-part="title"></h3>
-          <p data-part="body"></p>
-        </div>
-        <div class="right-card" data-right="restrict">
-          <h3 data-part="title"></h3>
-          <p data-part="body"></p>
-        </div>
-        <div class="right-card" data-right="portability">
-          <h3 data-part="title"></h3>
-          <p data-part="body"></p>
-        </div>
-        <div class="right-card" data-right="object">
-          <h3 data-part="title"></h3>
-          <p data-part="body"></p>
-        </div>
-      </div>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
+    </section>
 
-      <div style="text-align: center; margin: 20px 0;" data-section="buttons">
-        <button class="btn" onclick="requestData('access')" style="margin: 0 8px;" data-button="access">
-          📋 <span data-part="text"></span>
-        </button>
-        <button class="btn" onclick="requestData('erasure')" style="margin: 0 8px;" data-button="erasure">
-          🗑️ <span data-part="text"></span>
-        </button>
+    <section data-section="share" id="share">
+      <button class="copy-link" onclick="copySectionLink('share')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
+      <p data-part="footer" style="margin-top: 16px; padding: 12px; background: #f0f9ff; border-left: 4px solid #0369a1; border-radius: 6px; font-size: 14px;"></p>
+    </section>
+
+    <section data-section="security" id="security">
+      <button class="copy-link" onclick="copySectionLink('security')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <div class="security-measures">
+        <h3 data-part="intro"></h3>
+        <ul data-part="measures"></ul>
       </div>
     </section>
 
     <section data-section="retention" id="retention">
       <button class="copy-link" onclick="copySectionLink('retention')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title"></h2>
-      <div class="data-retention">
-        <h3 data-part="periodsTitle"></h3>
-        <p data-part="intro"></p>
-        <ul data-part="items"></ul>
-      </div>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="rights" id="rights">
+      <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
     </section>
 
     <section data-section="transfers" id="transfers">
       <button class="copy-link" onclick="copySectionLink('transfers')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title"></h2>
       <p data-part="body"></p>
-      
-      <div class="legal-basis warning" data-safeguards="international">
-        <strong data-part="title"></strong> <span data-part="body"></span>
-      </div>
     </section>
 
-    <section data-section="complaints" id="complaints">
-      <button class="copy-link" onclick="copySectionLink('complaints')" aria-label="Copy link to this section">🔗</button>
-      <h2 data-part="title"></h2>
-      <p data-part="intro"></p>
-      <div class="legal-basis" data-authority="lead">
-        <strong data-part="title"></strong> <span data-part="name"></span><br>
-        <strong data-part="websiteLabel"></strong> <a href="https://www.cnpd.pt" target="_blank">www.cnpd.pt</a><br>
-        <strong data-part="contactLabel"></strong> +351 213 928 400
-      </div>
-      <p data-part="footer"></p>
-    </section>
-
-    <section data-section="dpo" id="dpo">
-      <button class="copy-link" onclick="copySectionLink('dpo')" aria-label="Copy link to this section">🔗</button>
+    <section data-section="contact" id="contact">
+      <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
       <h2 data-part="title"></h2>
       <p data-part="body" data-use-html="true"></p>
+    </section>
+
+    <section data-section="updates" id="updates">
+      <button class="copy-link" onclick="copySectionLink('updates')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="body"></p>
     </section>
   </main>
 
   <script>
+    // Dynamically calculate sticky header height
+    function setStickyHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        const height = stickyHeader.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+        console.log('Header height set to:', height + 'px');
+      }
+    }
+    
+    // Set immediately
+    setStickyHeaderHeight();
+    
+    // Set on load and after short delays to ensure proper calculation
+    window.addEventListener('DOMContentLoaded', () => {
+      setStickyHeaderHeight();
+      setTimeout(setStickyHeaderHeight, 50);
+      setTimeout(setStickyHeaderHeight, 150);
+      setTimeout(setStickyHeaderHeight, 300);
+      
+      // Handle hash navigation after header height is calculated
+      if (window.location.hash) {
+        setTimeout(() => {
+          scrollToSection(window.location.hash.slice(1));
+        }, 350);
+      }
+      
+      // Add click handlers to quick nav links after they're created by legal-i18n.js
+      setTimeout(() => {
+        document.querySelectorAll('.quick-nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            const sectionId = href.slice(1); // Remove the #
+            scrollToSection(sectionId);
+            // Update URL without scrolling
+            history.pushState(null, null, href);
+          });
+        });
+      }, 400);
+    });
+    
+    window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Function to scroll to a section with proper offset
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
+        const offset = 8; // Extra spacing
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
     function copySectionLink(sectionId) {
       const url = window.location.origin + window.location.pathname + '#' + sectionId;
       
@@ -855,15 +858,17 @@
           const button = event.target;
           const originalText = button.innerHTML;
           button.innerHTML = '✓ Copied!';
+          button.style.opacity = '1';
           setTimeout(() => {
             button.innerHTML = originalText;
           }, 2000);
-        } catch (fallbackErr) {
-          console.error('Fallback copy failed:', fallbackErr);
+        } catch (err2) {
+          console.error('Fallback copy failed:', err2);
         }
         document.body.removeChild(textArea);
       });
     }
+
 
     function toggleMobileMenu() {
       const mobileNav = document.getElementById('mobile-nav');
@@ -907,194 +912,11 @@
         setTimeout(() => setStickyHeaderHeight(), 50);
       }
     }
-
-    function requestData(action) {
-      const actions = {
-        'access': 'data_access',
-        'rectification': 'data_rectification', 
-        'erasure': 'data_erasure',
-        'portability': 'data_portability'
-      };
-      
-      console.log('GDPR request:', actions[action]);
-      
-      const messages = {
-        'access': 'Thank you for your data access request. We will provide your personal data within 30 days as required by GDPR.',
-        'erasure': 'Thank you for your data deletion request. We will process your request within 30 days and confirm once completed.'
-      };
-      
-      alert(messages[action] || 'Request received.');
-      
-      if (window.dataLayer) {
-        dataLayer.push({
-          event: 'gdpr_request',
-          request_type: actions[action]
-        });
-      }
-    }
-
-    function updateHeaderHeight() {
-      const stickyHeader = document.querySelector('.sticky-header');
-      if (!stickyHeader) return;
-      
-      const height = stickyHeader.offsetHeight;
-      document.documentElement.style.setProperty('--header-height', height + 'px');
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      updateHeaderHeight();
-      
-      window.addEventListener('resize', updateHeaderHeight);
-      
-      const observer = new MutationObserver(updateHeaderHeight);
-      const stickyHeader = document.querySelector('.sticky-header');
-      if (stickyHeader) {
-        observer.observe(stickyHeader, { childList: true, subtree: true });
-      }
-      
-      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
-      quickNavLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href').substring(1);
-          const targetElement = document.getElementById(targetId);
-          
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
-    });
-
-    function trackGDPRView() {
-      if (window.dataLayer) {
-        dataLayer.push({
-          event: 'page_view',
-          page_title: 'GDPR Notice',
-          page_location: window.location.href
-        });
-      }
-    }
-
-    if (document.readyState === 'complete') {
-      trackGDPRView();
-    } else {
-      window.addEventListener('load', trackGDPRView);
-    }
   </script>
 
-<script>
-// --- Enhancements: scrollspy, smooth scroll with offset, hash updates ---
-(function(){
-  const header = document.querySelector('.sticky-header');
-  const linksContainer = document.querySelector('.quick-nav-links');
-  const mobileNav = document.getElementById('mobile-nav');
 
-  function getHeaderOffset(){
-    const h = header ? header.offsetHeight : 0;
-    const cssVar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
-    return Math.max(h, cssVar);
-  }
 
-  function scrollToSection(id){
-    const el = document.getElementById(id);
-    if(!el) return;
-    const headerOffset = getHeaderOffset();
-    const rect = el.getBoundingClientRect();
-    const targetY = window.scrollY + rect.top - headerOffset - 8;
-    window.scrollTo({ top: targetY, behavior: 'smooth' });
-  }
-
-  // Wire desktop quick-links
-  if (linksContainer){
-    linksContainer.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e){
-        e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
-        scrollToSection(id);
-        history.replaceState(null, '', '#' + id);
-      });
-    });
-  }
-
-  // Build mobile links from desktop and wire them
-  function rebuildMobile(){
-    if(!linksContainer || !mobileNav) return;
-    mobileNav.innerHTML = '';
-    linksContainer.querySelectorAll('a').forEach(link => {
-      const a = document.createElement('a');
-      a.href = link.getAttribute('href');
-      a.textContent = link.textContent;
-      a.addEventListener('click', (e)=>{
-        e.preventDefault();
-        const id = a.getAttribute('href').slice(1);
-        mobileNav.classList.remove('show');
-        const btn = document.querySelector('.mobile-menu-btn');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-        history.replaceState(null, '', '#' + id);
-        requestAnimationFrame(()=>scrollToSection(id));
-      });
-      mobileNav.appendChild(a);
-    });
-  }
-  rebuildMobile();
-
-  // Scrollspy
-  const sections = Array.from(document.querySelectorAll('main section[id]'));
-  const linkMap = new Map();
-  function mapLinks(){
-    document.querySelectorAll('.quick-nav-links a, .mobile-quick-nav a').forEach(a => {
-      const id = (a.getAttribute('href')||'').replace('#','');
-      if(id) {
-        if(!linkMap.has(id)) linkMap.set(id, []);
-        linkMap.get(id).push(a);
-      }
-    });
-  }
-  mapLinks();
-
-  function setActive(id){
-    document.querySelectorAll('.quick-nav-link, .mobile-quick-nav a').forEach(a => {
-      a.classList.remove('active');
-      a.removeAttribute('aria-current');
-    });
-    (linkMap.get(id) || []).forEach(a => {
-      a.classList.add('active');
-      a.setAttribute('aria-current', 'location');
-    });
-  }
-
-  const observer = new IntersectionObserver((entries)=>{
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .sort((a,b)=> a.boundingClientRect.top - b.boundingClientRect.top);
-    if (visible.length){
-      const id = visible[0].target.id;
-      setActive(id);
-      history.replaceState(null, '', '#' + id);
-    }
-  }, {
-    rootMargin: `-${getHeaderOffset()+12}px 0px -70% 0px`,
-    threshold: [0.1, 0.6]
-  });
-
-  sections.forEach(sec => observer.observe(sec));
-
-  // On load with hash
-  if (window.location.hash){
-    const id = window.location.hash.slice(1);
-    setTimeout(()=>{
-      setActive(id);
-      scrollToSection(id);
-    }, 150);
-  }
-
-  window.addEventListener('resize', ()=>{
-    document.documentElement.style.setProperty('--header-height', (header? header.offsetHeight : 0) + 'px');
-  });
-})();
-</script>
-
+<script src="assets/legal.min.js"></script>
 </body>
 
 </html>

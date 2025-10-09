@@ -995,8 +995,14 @@
     mapLinks();
 
     function setActive(id){
-      document.querySelectorAll('.quick-nav-link, .mobile-quick-nav a').forEach(a => a.classList.remove('active'));
-      (linkMap.get(id) || []).forEach(a => a.classList.add('active'));
+      document.querySelectorAll('.quick-nav-link, .mobile-quick-nav a').forEach(a => {
+        a.classList.remove('active');
+        a.removeAttribute('aria-current');
+      });
+      (linkMap.get(id) || []).forEach(a => {
+        a.classList.add('active');
+        a.setAttribute('aria-current', 'location');
+      });
     }
 
     const observer = new IntersectionObserver((entries)=>{
