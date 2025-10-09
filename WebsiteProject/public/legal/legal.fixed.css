@@ -83,6 +83,7 @@ h2:focus-visible {
 main {
   max-width: 900px;
   margin: 0 auto;
+  margin-top: calc(var(--header-height));
   padding: 0 16px calc(50vh + 40px);
 }
 
@@ -825,17 +826,23 @@ section[data-section] ul {
 /* === Sticky header: single source of truth for offset === */
 :root { --header-height: 0px; }
 
-/* Make the content start below the sticky header (first block after header) */
-.sticky-header + * { padding-top: calc(var(--header-height) + 20px); }
-
-/* Make ALL anchor targets land below the sticky header */
-[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
-
-/* Mobile too (if your header changes height on mobile) */
-@media (max-width: 768px) {
-  .sticky-header + * { padding-top: calc(var(--header-height) + 20px); }
-  [id] { scroll-margin-top: calc(var(--header-height) + 8px); }
+/* Use scroll-padding instead of element padding - more reliable */
+html {
+  scroll-padding-top: calc(var(--header-height) + 8px);
+  scroll-behavior: auto !important;
 }
 
-/* Avoid fighting with JS smooth scrolling */
-html { scroll-behavior: auto !important; }
+/* Make ALL anchor targets land below the sticky header */
+[id] {
+  scroll-margin-top: calc(var(--header-height) + 8px);
+}
+
+/* Mobile: same approach */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: calc(var(--header-height) + 8px);
+  }
+  [id] {
+    scroll-margin-top: calc(var(--header-height) + 8px);
+  }
+}
