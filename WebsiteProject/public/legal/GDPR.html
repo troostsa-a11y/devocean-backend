@@ -671,7 +671,10 @@
 </head>
 
 <body data-page="gdpr">
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a href="#main-content" class="skip-link"
+      onclick="const m=document.getElementById('main-content'); if(m){m.setAttribute('tabindex','-1'); m.focus();}">
+      Skip to main content
+  </a>
 
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
@@ -679,7 +682,7 @@
   </noscript>
 
   <main id="main-content">
-    <div class="sticky-header">
+    <header class="sticky-header">
       <div class="header-inner">
         <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
 
@@ -713,7 +716,7 @@
         <!-- Mobile dropdown menu -->
         <div id="mobile-nav" class="mobile-quick-nav"></div>
       </div>
-    </div>
+    </header>
 
     <script>
       (function() {
