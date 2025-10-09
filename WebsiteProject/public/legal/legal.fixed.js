@@ -111,12 +111,18 @@ if ('scrollRestoration' in history) {
         var btn = document.querySelector('.mobile-menu-btn');
         if (btn) btn.setAttribute('aria-expanded', 'false');
         
-        history.replaceState(null, '', '#' + id);
-        var el = document.getElementById(id);
-        if (!el) return;
-        var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
-        var y = window.scrollY + el.getBoundingClientRect().top - h - 8;
-        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        // Recalculate header height after menu closes (fixes white space)
+        requestAnimationFrame(function() {
+          setHeaderVar();
+          
+          // Now scroll with updated header height
+          history.replaceState(null, '', '#' + id);
+          var el = document.getElementById(id);
+          if (!el) return;
+          var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+          var y = window.scrollY + el.getBoundingClientRect().top - h - 8;
+          window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        });
       });
       mobileNav.appendChild(a);
     });
