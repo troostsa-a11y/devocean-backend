@@ -2,7 +2,7 @@
 
 ## Overview
 
-DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. The application is a full-stack web platform featuring a marketing website with accommodation listings, experience showcases, contact forms, and a multi-language interface. The project supports internationalization (i18n) with 7 languages and includes legal/compliance pages for GDPR, cookies, and privacy policies.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. The application is a full-stack web platform featuring a marketing website with accommodation listings, experience showcases, contact forms, and a multi-language interface. The project supports internationalization (i18n) with 9 languages (including Swedish and Portuguese variants) and includes legal/compliance pages for GDPR, cookies, and privacy policies.
 
 ## User Preferences
 
@@ -37,15 +37,15 @@ Preferred communication style: Simple, everyday language.
 - Custom hooks for mobile detection and toast notifications
 
 **Internationalization:**
-- React-based i18n with lazy-loaded translations (7 languages)
+- React-based i18n with lazy-loaded translations (9 languages including Swedish)
 - Vanilla JavaScript i18n for legacy/static legal pages with dynamic data-section/data-part attribute system
-- Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish
-- Currency support: USD, MZN, ZAR, EUR, GBP with browser-based inference
+- Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish, Swedish
+- Currency support: USD, MZN, ZAR, EUR, GBP, SEK with browser-based inference
 - Date localization with dd/mm/yyyy format preference
-- Badge translations: All legal pages properly localized with "About cookies" badge in all 8 languages (v=30)
+- Badge translations: All legal pages properly localized with "About cookies" badge in all 9 languages (v=30)
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)
-- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections added for all 8 languages
+- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections added for all 9 languages
 
 **Performance Optimizations:**
 - Dynamic translation loading
