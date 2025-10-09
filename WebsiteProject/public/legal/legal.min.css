@@ -17,7 +17,6 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--header-height, 240px) + 8px);
 }
 
 body {
@@ -544,7 +543,7 @@ section[data-section] ul {
 /* Mobile: use the calculated header height for anchor offset */
 @media (max-width: 768px) {
   html {
-    scroll-padding-top: var(--header-height, 220px);
+    scroll-behavior: smooth;
   }
 
   /* Make sure the content below is pushed down by the header height */
