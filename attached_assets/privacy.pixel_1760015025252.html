@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Encoding & basic meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>DEVOCEAN Lodge — Privacy Policy</title>
+  <meta name="description" content="Privacy Policy for DEVOCEAN Lodge. Learn how we collect, use, and protect your personal data." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/privacy.html" />
+
+  <!-- Performance: preconnect / dns-prefetch -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin />
+  <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+  <!-- Consent defaults BEFORE GTM loads -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    const EEA_AND_GB = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB"];
+
+    // Default denied for EEA/GB
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      regions: EEA_AND_GB
+    });
+
+    // Default granted for other regions (adjust to your policy)
+    gtag("consent", "default", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted"
+    });
+  </script>
+
+  <!-- Google Tag Manager (single, canonical snippet) -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-532W3HH2");
+  </script>
+
+  <!-- Legal i18n (non-blocking) -->
+  <script defer src="/legal/i18n/strings.js?v=38"></script>
+  <script defer src="/legal/legal-i18n.js?v=38"></script>
+
+  <style>
+    :root {
+      --brand: #9e4b13;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card-bg: #f8fafc;
+      --card-br: #e5e7eb;
+      --radius: 16px;
+      --focus: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height, 240px) + 8px);
+    }
+
+    body {
+      margin: 0;
+      font:
+        16px/1.6 system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Helvetica,
+        Arial,
+        "Apple Color Emoji",
+        "Segoe UI Emoji";
+      color: var(--text);
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      text-decoration: none;
+    }
+
+    /* Focus styles */
+    *:focus-visible {
+      outline: none;
+    }
+
+    a:focus,
+    a:focus-visible,
+    button:focus,
+    button:focus-visible,
+    [role="button"]:focus,
+    [role="button"]:focus-visible,
+    input:focus,
+    input:focus-visible,
+    select:focus,
+    select:focus-visible,
+    textarea:focus,
+    textarea:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    [id]:target,
+    section:focus,
+    section:focus-visible,
+    h2:focus,
+    h2:focus-visible {
+      outline: none;
+    }
+
+    .quick-nav-link {
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px calc(50vh + 40px);
+    }
+
+    main>section:first-of-type {
+      margin-top: calc(var(--header-height, 240px) + 20px);
+    }
+
+    body.loading section[data-section] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Sticky header: full-bleed shell */
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #fff;
+      border: none;
+      padding: 0;
+      max-width: none;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Centered inner content to match <main> */
+    .sticky-header .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px 16px 8px;
+      overflow-x: hidden;
+    }
+
+    /* Push the first element AFTER the sticky header down by the header height */
+    .sticky-header+* {
+      margin-top: calc(var(--header-height, 240px) + 20px);
+    }
+
+    a[data-role="back-link"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: filter 0.2s ease;
+    }
+
+    a[data-role="back-link"]:hover {
+      filter: brightness(0.95);
+    }
+
+    h1[data-role="page-title"] {
+      margin: 18px 0 8px;
+      font-size: clamp(28px, 4vw, 32px);
+      line-height: 1.25;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 14px;
+    }
+
+    .cookie-banner-info {
+      background: #fff7ed;
+      border: none;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .cookie-banner-info::before {
+      content: "";
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Ccircle cx='8' cy='10' r='1.5'%3E%3C/circle%3E%3Ccircle cx='15' cy='15' r='1.5'%3E%3C/circle%3E%3Ccircle cx='12' cy='18' r='1'%3E%3C/circle%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    section[data-section] {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 18px 18px 8px;
+      margin: 18px 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+    }
+
+    section[data-section] h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    section[data-section] h3 {
+      margin: 16px 0 8px;
+      font-size: 17px;
+      color: var(--brand);
+    }
+
+    .copy-link {
+      display: none;
+    }
+
+    section[data-section] p {
+      margin: 0 0 12px;
+    }
+
+    section[data-section] ul {
+      margin: 0 0 10px 18px;
+    }
+
+    .quick-nav {
+      background: #fff;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
+    /* Skip link: hidden until keyboard focus (no first-paint flash) */
+    .skip-link {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      padding: 8px 12px;
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--card-br);
+      border-radius: 4px;
+      text-decoration: none;
+      z-index: 1000;
+
+      /* visually hidden until focused */
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .skip-link:focus {
+      clip: auto;
+      clip-path: none;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      white-space: normal;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+    }
+
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    .cookie-table th {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      padding: 10px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--brand);
+    }
+
+    .cookie-table td {
+      border: 1px solid var(--card-br);
+      padding: 10px;
+    }
+
+    .cookie-table tr:nth-child(even) {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .browser-links {
+      margin: 12px 0;
+    }
+
+    .browser-links a {
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .browser-links a:hover {
+      border-bottom-color: var(--brand);
+    }
+
+    @media print {
+
+      .skip-link,
+      a[data-role="back-link"],
+      .copy-link,
+      .quick-nav,
+      .cookie-banner-info,
+      .btn {
+        display: none !important;
+      }
+
+      section[data-section] {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        background: white !important;
+      }
+
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Mobile menu button (hamburger icon) */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .mobile-menu-btn:hover {
+      background-color: #9e4b13;
+    }
+
+    .mobile-menu-btn:hover svg {
+      stroke: white;
+    }
+
+    .mobile-menu-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--brand);
+      stroke-width: 2;
+      fill: none;
+      transition: stroke 0.2s;
+    }
+
+    /* Mobile dropdown menu */
+    .mobile-quick-nav {
+      display: none;
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      margin: 8px 0 0 0;
+      padding: 8px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-quick-nav.show {
+      display: block;
+    }
+
+    .mobile-quick-nav a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background-color 0.2s;
+      font-size: 13px;
+      line-height: 1.4;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      max-width: 100%;
+    }
+
+    .mobile-quick-nav a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .mobile-quick-nav a:last-child {
+      border-bottom: none;
+    }
+
+    /* Desktop: restore original spacing */
+    @media (min-width: 768px) {
+      .sticky-header .header-inner {
+        padding: 20px 16px 12px;
+      }
+    }
+
+    /* Mobile: use the calculated header height for anchor offset */
+    @media (max-width: 768px) {
+      html {
+        scroll-padding-top: var(--header-height, 220px);
+      }
+
+      /* Make sure the content below is pushed down by the header height */
+      .sticky-header+* {
+        margin-top: calc(var(--header-height, 240px) + 20px);
+      }
+
+      /* Title and menu button on same line */
+      .title-menu-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 12px 0 4px;
+      }
+
+      h1[data-role="page-title"] {
+        font-size: 24px;
+        margin: 0;
+        flex: 1;
+      }
+
+      .updated {
+        font-size: 12px;
+        margin: 0 0 8px;
+      }
+
+      /* Badge on mobile - narrower with responsive sizing */
+      .cookie-banner-info {
+        padding: 6px 10px;
+        margin: 0 0 12px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      /* Smaller icon on mobile */
+      .cookie-banner-info::before {
+        width: 18px;
+        height: 18px;
+        background-size: 18px;
+      }
+
+      .cookie-banner-info div {
+        max-width: 100%;
+        flex: 1;
+      }
+
+      .cookie-banner-info [data-part="body"] {
+        display: none;
+      }
+
+      .cookie-banner-info strong {
+        font-size: clamp(18px, 5vw, 20px);
+        line-height: 1.35;
+        font-weight: 600;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        flex: 1;
+      }
+
+      /* Show mobile menu button, hide desktop quick nav */
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .quick-nav {
+        display: none !important;
+      }
+
+      /* Prevent iOS Safari's tap highlight flash */
+      .quick-nav-link,
+      .mobile-quick-nav a {
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      }
+
+      /* Hide copy link buttons on mobile */
+      .copy-link {
+        display: none !important;
+      }
+
+      main {
+        padding: 0 12px calc(50vh + 40px);
+      }
+
+      section[data-section] {
+        padding: 16px 16px 8px;
+        margin: 16px 0;
+      }
+
+      .copy-link {
+        position: static;
+        opacity: 1;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+
+      .cookie-table {
+        font-size: 12px;
+      }
+
+      .cookie-table th,
+      .cookie-table td {
+        padding: 6px;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+
+      section[data-section] {
+        border-width: 2px;
+      }
+    }
+
+    /* Make the title row flex correctly on very narrow screens */
+    .title-menu-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .title-menu-row h1 {
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+<body data-page="privacy">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+      style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+  </noscript>
+
+  <main id="main-content">
+    <div class="sticky-header">
+  <div class="header-inner">
+      <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+
+      <div class="title-menu-row">
+        <h1 data-role="page-title">Privacy Policy</h1>
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <p class="updated">
+        <span data-role="updated-label">Last updated</span>:
+        <span data-role="updated-date"></span>
+      </p>
+
+      <div class="cookie-banner-info" data-section="badge">
+        <strong data-part="title"></strong> <span data-part="body"></span>
+      </div>
+
+      <!-- Desktop quick links -->
+      <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
+        <h3 data-part="title"></h3>
+        <div class="quick-nav-links" data-part="links"></div>
+      </nav>
+
+      <!-- Mobile dropdown menu -->
+      <div id="mobile-nav" class="mobile-quick-nav">
+        <!-- Links will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <section data-section="who" id="who">
+      <button class="copy-link" onclick="copySectionLink('who')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="collect" id="collect">
+      <button class="copy-link" onclick="copySectionLink('collect')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <div class="data-categories" data-part="categories"></div>
+    </section>
+
+    <section data-section="use" id="use">
+      <button class="copy-link" onclick="copySectionLink('use')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
+    </section>
+
+    <section data-section="share" id="share">
+      <button class="copy-link" onclick="copySectionLink('share')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
+      <p data-part="footer" style="margin-top: 16px; padding: 12px; background: #f0f9ff; border-left: 4px solid #0369a1; border-radius: 6px; font-size: 14px;"></p>
+    </section>
+
+    <section data-section="security" id="security">
+      <button class="copy-link" onclick="copySectionLink('security')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <div class="security-measures">
+        <h3 data-part="intro"></h3>
+        <ul data-part="measures"></ul>
+      </div>
+    </section>
+
+    <section data-section="retention" id="retention">
+      <button class="copy-link" onclick="copySectionLink('retention')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="rights" id="rights">
+      <button class="copy-link" onclick="copySectionLink('rights')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="intro"></p>
+      <ul data-part="items"></ul>
+    </section>
+
+    <section data-section="transfers" id="transfers">
+      <button class="copy-link" onclick="copySectionLink('transfers')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="body"></p>
+    </section>
+
+    <section data-section="contact" id="contact">
+      <button class="copy-link" onclick="copySectionLink('contact')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="body" data-use-html="true"></p>
+    </section>
+
+    <section data-section="updates" id="updates">
+      <button class="copy-link" onclick="copySectionLink('updates')" aria-label="Copy link to this section">🔗</button>
+      <h2 data-part="title"></h2>
+      <p data-part="body"></p>
+    </section>
+  </main>
+
+  <script>
+    // Dynamically calculate sticky header height
+    function setStickyHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        const height = stickyHeader.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${height}px`);
+        console.log('Header height set to:', height + 'px');
+      }
+    }
+    
+    // Set immediately
+    setStickyHeaderHeight();
+    
+    // Set on load and after short delays to ensure proper calculation
+    window.addEventListener('DOMContentLoaded', () => {
+      setStickyHeaderHeight();
+      setTimeout(setStickyHeaderHeight, 50);
+      setTimeout(setStickyHeaderHeight, 150);
+      setTimeout(setStickyHeaderHeight, 300);
+      
+      // Handle hash navigation after header height is calculated
+      if (window.location.hash) {
+        setTimeout(() => {
+          scrollToSection(window.location.hash.slice(1));
+        }, 350);
+      }
+      
+      // Add click handlers to quick nav links after they're created by legal-i18n.js
+      setTimeout(() => {
+        document.querySelectorAll('.quick-nav-link').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            const sectionId = href.slice(1); // Remove the #
+            scrollToSection(sectionId);
+            // Update URL without scrolling
+            history.pushState(null, null, href);
+          });
+        });
+      }, 400);
+    });
+    
+    window.addEventListener('resize', setStickyHeaderHeight);
+    
+    // Function to scroll to a section with proper offset
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const headerHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 240;
+        const offset = 8; // Extra spacing
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerHeight - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          button.style.opacity = '1';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (err2) {
+          console.error('Fallback copy failed:', err2);
+        }
+        document.body.removeChild(textArea);
+      });
+    }
+
+
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobile-nav');
+      const btn = document.querySelector('.mobile-menu-btn');
+      const isOpen = mobileNav.classList.contains('show');
+      
+      if (isOpen) {
+        mobileNav.classList.remove('show');
+        btn.setAttribute('aria-expanded', 'false');
+        setTimeout(() => setStickyHeaderHeight(), 50);
+      } else {
+        // Populate menu from desktop links before opening
+        mobileNav.innerHTML = '';
+        const desktopLinks = document.querySelectorAll('.quick-nav-links a');
+        if (desktopLinks.length > 0) {
+          desktopLinks.forEach(link => {
+            const mobileLink = document.createElement('a');
+            mobileLink.href = link.href;
+            mobileLink.textContent = link.textContent;
+            mobileLink.onclick = function(e) {
+              e.preventDefault();
+              const targetId = this.href.split('#')[1];
+              
+              // Close menu first
+              mobileNav.classList.remove('show');
+              btn.setAttribute('aria-expanded', 'false');
+              
+              // Wait for menu to close, recalculate header height, then navigate
+              setTimeout(() => {
+                requestAnimationFrame(() => {
+                  setStickyHeaderHeight();
+                  scrollToSection(targetId);
+                });
+              }, 150);
+            };
+            mobileNav.appendChild(mobileLink);
+          });
+        }
+        mobileNav.classList.add('show');
+        btn.setAttribute('aria-expanded', 'true');
+        setTimeout(() => setStickyHeaderHeight(), 50);
+      }
+    }
+  </script>
+</body>
+
+</html>
