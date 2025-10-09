@@ -18,12 +18,6 @@
 
 html {
   /* scroll-behavior removed - JS handles scrolling precisely */
-  scroll-behavior: auto;
-}
-
-/* Offset anchor links to account for sticky header */
-[id] {
-  scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
 body {
@@ -89,7 +83,7 @@ h2:focus-visible {
 main {
   max-width: 900px;
   margin: 0 auto;
-  padding: calc(var(--header-height) + 20px) 16px calc(50vh + 40px);
+  padding: 0 16px calc(50vh + 40px);
 }
 
 body.loading section[data-section] {
@@ -827,3 +821,21 @@ section[data-section] ul {
   background: #eef2ff;
   color: #3730a3;
 }
+
+/* === Sticky header: single source of truth for offset === */
+:root { --header-height: 0px; }
+
+/* Make the content start below the sticky header (first block after header) */
+.sticky-header + * { padding-top: calc(var(--header-height) + 20px); }
+
+/* Make ALL anchor targets land below the sticky header */
+[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
+
+/* Mobile too (if your header changes height on mobile) */
+@media (max-width: 768px) {
+  .sticky-header + * { padding-top: calc(var(--header-height) + 20px); }
+  [id] { scroll-margin-top: calc(var(--header-height) + 8px); }
+}
+
+/* Avoid fighting with JS smooth scrolling */
+html { scroll-behavior: auto !important; }

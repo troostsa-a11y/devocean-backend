@@ -1,64 +1,40 @@
-// Utility functions for copy link and mobile menu toggle
-function copySectionLink(sectionId) {
- const url = window.location.origin + window.location.pathname + '#' + sectionId;
- 
- navigator.clipboard.writeText(url).then(() => {
- const button = event.target;
- const originalText = button.innerHTML;
- button.innerHTML = '✓ Copied!';
- button.style.opacity = '1';
- 
- setTimeout(() => {
- button.innerHTML = originalText;
- }, 2000);
- }).catch(err => {
- console.error('Failed to copy link:', err);
- const textArea = document.createElement('textarea');
- textArea.value = url;
- document.body.appendChild(textArea);
- textArea.select();
- try {
- document.execCommand('copy');
- const button = event.target;
- const originalText = button.innerHTML;
- button.innerHTML = '✓ Copied!';
- button.style.opacity = '1';
- setTimeout(() => {
- button.innerHTML = originalText;
- }, 2000);
- } catch (err2) {
- console.error('Fallback copy failed:', err2);
- }
- document.body.removeChild(textArea);
- });
+Below is a copy-paste final patch that combines the strengths of both approaches:
+
+CSS uses scroll-margin-top so anchor jumps (including hash on page load) land below the sticky header.
+
+The header offset still comes from a single variable (--header-height) so it works with dynamic/i18n headers.
+
+JS measures the header early + whenever it changes, wires quick-links immediately, and corrects deep links once without smoothing.
+
+1) Final CSS (paste at the end of /legal/legal.fixed.css)
+/* === Sticky header: single source of truth for offset === */
+:root { --header-height: 0px; }
+
+/* Make the content start below the sticky header (first block after header) */
+.sticky-header + * { padding-top: calc(var(--header-height) + 20px); }
+
+/* Make ALL anchor targets land below the sticky header */
+[id] { scroll-margin-top: calc(var(--header-height) + 8px); }
+
+/* Mobile too (if your header changes height on mobile) */
+@media (max-width: 768px) {
+  .sticky-header + * { padding-top: calc(var(--header-height) + 20px); }
+  [id] { scroll-margin-top: calc(var(--header-height) + 8px); }
 }
-function toggleMobileMenu() {
- const mobileNav = document.getElementById('mobile-nav');
- const btn = document.querySelector('.mobile-menu-btn');
- const isOpen = mobileNav.classList.contains('show');
- const header = document.querySelector('.sticky-header');
- 
- function updateHeaderHeight() {
- if (header) {
- const height = header.offsetHeight;
- document.documentElement.style.setProperty('--header-height', height + 'px');
- }
- }
- 
- if (isOpen) {
- mobileNav.classList.remove('show');
- btn.setAttribute('aria-expanded', 'false');
- setTimeout(updateHeaderHeight, 50);
- } else {
- mobileNav.classList.add('show');
- btn.setAttribute('aria-expanded', 'true');
- setTimeout(updateHeaderHeight, 50);
- }
-}
-// Prevent browser scroll restoration
-if ('scrollRestoration' in history) {
- history.scrollRestoration = 'manual';
-}
+
+/* Avoid fighting with JS smooth scrolling */
+html { scroll-behavior: auto !important; }
+
+
+✔️ Also ensure there are no remaining rules like:
+
+.sticky-header + * { padding-top: 20px; } (remove them)
+
+html { scroll-behavior: smooth; } (remove or overridden by the auto !important above)
+
+2) Final JS bootstrap (paste at the end of /legal/legal.fixed.js)
+
+Plain JS only — do not paste <script>...</script> tags into the .js file.
 
 /* === Sticky header & quick-links bootstrap (final) === */
 (function () {
@@ -122,3 +98,25 @@ if ('scrollRestoration' in history) {
     });
   }
 })();
+
+Important cleanup (in your existing JS)
+
+Remove any start-up delays that gate navigation (e.g., setTimeout(..., 600), 500, 300, 200) → set them to 0 or delete if redundant.
+
+Remove lines like if (!navigationReady) return;.
+
+3 quick sanity checks
+
+In DevTools Console after load:
+
+getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+
+
+→ should be > 0px.
+
+In Elements, the first element after .sticky-header must show:
+
+padding-top: calc(var(--header-height) + 20px)
+
+
+Go directly to /privacy.html#who (and #collect) → the section top should be fully visible below the header; you can scroll all the way to the top; quick links work on the first click (desktop & mobile).
