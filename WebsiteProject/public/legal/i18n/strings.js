@@ -3817,67 +3817,141 @@
       quickLinks: {
         title: "Snabblänkar",
         links: [
-          { id: "agreement", text: "Avtal" },
-          { id: "booking", text: "Bokning & Betalning" },
-          { id: "cancellation", text: "Avbokning" },
+          { id: "intro", text: "Omfattning" },
+          { id: "booking", text: "Bokningar" },
+          { id: "payment", text: "Priser & Betalning" },
+          { id: "cancel", text: "Avbokningar" },
           { id: "conduct", text: "Gästbeteende" },
+          { id: "force-majeure", text: "Force Majeure" },
           { id: "liability", text: "Ansvar" },
-          { id: "force", text: "Force Majeure" },
-          { id: "ip", text: "Immateriella rättigheter" },
-          { id: "disputes", text: "Tvistlösning" }
+          { id: "intellectual-property", text: "Immateriella rättigheter" },
+          { id: "disputes", text: "Tvistlösning" },
+          { id: "changes", text: "Ändringar" },
+          { id: "law", text: "Tillämplig lag" },
+          { id: "contact", text: "Kontakt" }
         ]
       },
       sections: {
         badge: {
-          title: "Bokningsvillkor:",
-          body: "Vänligen läs dessa villkor noggrant innan du gör en reservation. Genom att boka hos oss godkänner du dessa villkor."
+          title: "Viktigt juridiskt meddelande:",
+          body: "Dessa villkor styr din användning av våra tjänster och webbplats. Vänligen läs dem noggrant innan du gör en bokning."
         },
-        agreement: {
-          title: "Avtal om villkor",
-          body: "Genom att besöka vår webbplats, göra en bokning eller använda våra tjänster godkänner du att vara bunden av dessa villkor. Om du inte godkänner någon del av dessa villkor, vänligen använd inte våra tjänster. Dessa villkor gäller alla besökare, användare och gäster på DEVOCEAN Lodge som drivs av TERRAfrique LDA."
+        intro: {
+          title: "Omfattning",
+          body: "Dessa villkor reglerar boende och relaterade tjänster som tillhandahålls av DEVOCEAN Lodge (TERRAfrique LDA). Genom att boka godkänner du dessa villkor."
         },
         booking: {
-          title: "Bokning och betalning",
-          body: "Alla bokningar är föremål för tillgänglighet och bekräftelse av DEVOCEAN Lodge. En bokning är endast bekräftad när du får ett bekräftelsemail från oss. Full betalning eller en deposition (enligt specifikation vid bokning) krävs för att säkra din reservation. Betalning kan göras via vårt säkra online-bokningssystem eller genom överenskomna betalningsmetoder. Priser anges i vald valuta och kan ändras utan föregående meddelande tills bokningen bekräftas."
-        },
-        cancellation: {
-          title: "Avbokningspolicy",
-          intro: "Vår avbokningspolicy är följande:",
+          title: "Bokningar",
           items: [
-            "Avbokningar gjorda 30+ dagar före incheckning: Full återbetalning minus 10% administrativ avgift",
-            "Avbokningar gjorda 15-29 dagar före incheckning: 50% återbetalning",
-            "Avbokningar gjorda mindre än 15 dagar före incheckning: Ingen återbetalning",
-            "Uteblivande: Ingen återbetalning"
+            "Tillhandahåll korrekt gästinformation och ankomst-/avresedatum",
+            "Särskilda önskemål är föremål för tillgänglighet och bekräftelse"
           ],
-          footer: "För att avboka en bokning, kontakta oss på info@devoceanlodge.com med din bokningsreferens. Återbetalningar kommer att behandlas inom 14 arbetsdagar till den ursprungliga betalningsmetoden."
+          reservationReq: {
+            title: "Bokningskrav",
+            body: "Giltigt ID och kreditkort krävs för alla bokningar. Minimiålder: 18 år."
+          },
+          checkinCheckout: {
+            title: "Incheckning/Utcheckning",
+            body: "Incheckning: 14:00 | Utcheckning: 11:00. Tidiga/sena förfrågningar är föremål för tillgänglighet."
+          },
+          groupBookings: {
+            title: "Gruppbokningar",
+            body: "Särskilda villkor gäller för grupper på 6+ rum. Kontakta oss för grupppriser och policyer."
+          }
+        },
+        payment: {
+          title: "Priser & Betalning",
+          items: [
+            "Priser som visas är per enhet/natt om inte annat anges",
+            "Depositioner och avräkningsmetoder kommer att bekräftas under bokningen"
+          ],
+          paymentInfo: {
+            title: "Betalningsinformation",
+            body: "Alla priser är i EUR om inte annat anges. Valutakursomräkningar är ungefärliga och kan ändras. Ett giltigt kreditkort krävs för att säkra din reservation. Ytterligare avgifter kan tillkomma för tillfälliga kostnader."
+          }
+        },
+        cancel: {
+          title: "Avbokningar & Uteblivanden",
+          body: "Avbokningsvillkor upplyses vid bokningstillfället och på din bekräftelse.",
+          cancellationCharges: {
+            title: "Avbokningsavgifter",
+            plans: [
+              {
+                planName: "Semi-flexibel prisplan:",
+                tiers: [
+                  { period: "30 dagar eller mer före ankomst", charge: "Full återbetalning" },
+                  { period: "29 dagar eller mindre före ankomst", charge: "50% avbokningsavgift" }
+                ]
+              },
+              {
+                planName: "Ej återbetalningsbar prisplan:",
+                tiers: [
+                  { period: "Upp till 24 timmar efter reservation", charge: "Full återbetalning" },
+                  { period: "Under alla andra omständigheter", subtext: "Rätten att ändra ankomstdatum en gång under förutsättning att skillnaden betalas om det nya datumet har en högre taxa, annars", charge: "Ingen återbetalning", chargeClass: "no-refund-red" }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: "Uteblivandepolicy",
+            body: "Gäster som inte anländer på det planerade incheckningsdatumet utan föregående meddelande kommer att betraktas som uteblivna. Det fulla bokningsbeloppet kommer att debiteras och reservationen kommer att annulleras."
+          }
         },
         conduct: {
-          title: "Gästbeteende och ansvar",
-          intro: "Gäster förväntas:",
+          title: "Gästbeteende",
           items: [
-            "Respektera andra gäster, personal och fastigheten",
-            "Följa alla säkerhetsriktlinjer och lodgens regler",
-            "Rapportera eventuella skador eller problem omedelbart",
-            "Inte delta i olagliga aktiviteter på området",
-            "Följa lokala lagar och seder"
+            "Respektera fastighetens regler, personal, andra gäster och det lokala samhället",
+            "Inga olagliga aktiviteter på området"
           ],
-          footer: "Vi förbehåller oss rätten att avsluta en gästs vistelse utan återbetalning om dessa standarder överträds. Gäster är ansvariga för eventuella skador orsakade på fastigheten eller dess innehåll under deras vistelse. Avgifter för skador kommer att dras från depositionen eller faktureras separat."
+          zeroTolerance: {
+            title: "Nolltoleranspolicy",
+            body: "Vi upprätthåller en nolltoleranspolicy för störande beteende, olagliga aktiviteter eller skada på egendom. Överträdelser kan leda till omedelbar avhysning utan återbetalning och kan leda till rättsliga åtgärder."
+          }
+        },
+        "force-majeure": {
+          title: "Force Majeure",
+          intro: "Vi är inte ansvariga för underlåtenhet att utföra åtaganden på grund av omständigheter utanför vår rimliga kontroll, inklusive men inte begränsat till:",
+          items: [
+            "Naturkatastrofer, extrema väderförhållanden",
+            "Regeringsbegränsningar, reseförbud",
+            "Civil oro, krig, terrorism",
+            "Pandemier, epidemier, hälsonödsituationer",
+            "Infrastrukturfel, störningar i allmänna tjänster"
+          ],
+          footer: "I sådana fall kommer vi att erbjuda alternativa datum eller kreditvouchers när det är möjligt. Återbetalningar kommer att tillhandahållas enligt tillämpliga lagar och omständigheter. Dock är alla skador och kostnader som är eller kunde ha varit täckta av allmänt tillgängliga avboknings- och reseförsäkringspaket undantagna från vårt ansvar."
         },
         liability: {
-          title: "Ansvarsbegränsning",
-          body: "DEVOCEAN Lodge och TERRAfrique LDA ska inte hållas ansvariga för: Förlust, stöld eller skada på personliga tillhörigheter; Skador som uppstått under din vistelse förutom där de orsakats av vår vårdslöshet; Olägenheter eller förluster på grund av omständigheter utanför vår kontroll (strömavbrott, naturkatastrofer, etc.); Aktiviteter eller tjänster som tillhandahålls av tredjepartsoperatörer. Vi rekommenderar starkt att alla gäster skaffar omfattande reseförsäkring som täcker avbokning, medicinska kostnader, personligt ansvar och förlust av personliga tillhörigheter. Även om vi upprätthåller fastigheten till höga säkerhetsstandarder, deltar gäster i alla aktiviteter på egen risk."
+          title: "Ansvar",
+          body: "I den utsträckning som lagen tillåter är vi inte ansvariga för indirekta eller oförutsebara förluster."
         },
-        force: {
-          title: "Force Majeure",
-          body: "Vi ska inte hållas ansvariga för eventuell underlåtenhet att utföra våra skyldigheter där sådan underlåtenhet beror på omständigheter utanför vår rimliga kontroll, inklusive men inte begränsat till: naturkatastrofer (översvämningar, jordbävningar, stormar), krig, civil oro eller terroristaktiviteter, regeringsbegränsningar eller förordningar, pandemier eller folkhälsonödsituationer, infrastrukturfel (el, vatten, telekommunikation). Under sådana omständigheter förbehåller vi oss rätten att avboka eller ändra bokningar. Om vi avbokar på grund av force majeure kommer vi att erbjuda full återbetalning eller möjligheten att omboka. Observera att reseförsäkring vanligtvis utesluter täckning för 'kända händelser' - vi rekommenderar starkt att köpa omfattande reseförsäkring omedelbart efter bokning för att säkerställa maximal täckning för oförutsedda omständigheter."
-        },
-        ip: {
+        "intellectual-property": {
           title: "Immateriella rättigheter",
-          body: "Allt innehåll på vår webbplats, inklusive text, grafik, logotyper, bilder och programvara, är egendom tillhörande DEVOCEAN Lodge / TERRAfrique LDA eller dess innehållsleverantörer och skyddas av lagar om immateriella rättigheter. Du får inte reproducera, distribuera, modifiera eller skapa härledda verk från något innehåll utan vårt uttryckliga skriftliga tillstånd. Fotografier tagna av gäster får endast användas för personliga ändamål. Kommersiell användning av bilder eller innehåll relaterat till DEVOCEAN Lodge kräver föregående skriftligt samtycke."
+          copyright: {
+            title: "Upphovsrättsmeddelande",
+            body: "Allt innehåll på denna webbplats, inklusive text, grafik, logotyper och bilder, är egendom tillhörande DEVOCEAN Lodge och skyddas av internationella upphovsrättslagar. Obehörig användning, reproduktion eller distribution är förbjuden. DEVOCEAN Lodge-namnet, logotypen och alla relaterade märken är varumärken och får inte användas utan skriftligt tillstånd."
+          }
         },
         disputes: {
-          title: "Tvistlösning och tillämplig lag",
-          body: "Dessa villkor styrs av och tolkas i enlighet med Moçambiques lagar. Eventuella tvister som uppstår från dessa villkor eller din vistelse ska först försöka lösas genom förhandlingar i god tro. Om en lösning inte kan nås inom 30 dagar ska tvisten bli föremål för den exklusiva jurisdiktionen för Moçambiques domstolar. För konsumenttvister inom EU kan du också använda EU:s onlineplattform för tvistlösning."
+          title: "Tvistlösning",
+          process: {
+            title: "Lösningsprocess",
+            body: "Vi strävar efter att lösa eventuella tvister i godo. Vänligen kontakta oss först för att försöka lösa problemet. Om det inte löses ska tvister lösas genom medling innan rättsliga åtgärder vidtas.",
+            law: "Tillämplig lag: Moçambikansk lag ska styra dessa villkor och eventuella tvister.",
+            jurisdiction: "Jurisdiktion: Domstolarna i Maputo, Moçambique ska ha exklusiv jurisdiktion.",
+            mediation: "Medling: Parterna går med på att försöka medling genom en ackrediterad medlare innan rättsliga förfaranden inleds."
+          }
+        },
+        changes: {
+          title: "Ändringar av dessa villkor",
+          body: "Vi kan uppdatera villkoren från tid till annan. Den publicerade versionen gäller för din vistelse."
+        },
+        law: {
+          title: "Tillämplig lag",
+          body: "Moçambikansk lag gäller, med förbehåll för obligatoriska lokala konsumentregler."
+        },
+        contact: {
+          title: "Kontakt",
+          body: 'Frågor? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
         }
       }
     },
