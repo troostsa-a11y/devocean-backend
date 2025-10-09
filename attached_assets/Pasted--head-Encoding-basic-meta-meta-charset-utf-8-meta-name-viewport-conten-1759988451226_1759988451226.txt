@@ -1,0 +1,69 @@
+<head>
+  <!-- Encoding & basic meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>DEVOCEAN Lodge — Cookie Policy</title>
+  <meta name="description" content="Cookie Policy for DEVOCEAN Lodge. Learn about the cookies we use on our website and how to manage them." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/cookies.html" />
+
+  <!-- Performance: preconnect / dns-prefetch for 3rd parties you load -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin />
+  <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
+  <!-- Optional (if GA hits fire outside GTM on your site): -->
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+  <!-- Consent defaults BEFORE GTM loads -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    const EEA_AND_GB = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB"];
+
+    // Default denied for EEA/GB
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      regions: EEA_AND_GB
+    });
+
+    // Default granted for other regions (adjust to your policy)
+    gtag("consent", "default", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted"
+    });
+  </script>
+
+  <!-- Google Tag Manager (single, canonical snippet) -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-532W3HH2");
+  </script>
+
+  <!-- Your page CSS (KEEP your existing styles here, unchanged) -->
+  <style>
+    /* paste your existing <style> ... </style> contents here */
+  </style>
+
+  <!-- Legal i18n (non-blocking) -->
+  <script defer src="/legal/i18n/strings.js?v=36"></script>
+  <script defer src="/legal/legal-i18n.js?v=36"></script>
+</head>
