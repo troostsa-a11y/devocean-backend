@@ -264,6 +264,10 @@ section[data-section] {
   position: relative;
 }
 
+section[data-section]:first-of-type {
+  margin-top: 20px;
+}
+
 section[data-section] h2 {
   margin: 0 0 12px;
   font-size: 20px;
@@ -761,6 +765,10 @@ section[data-section] ul {
   section[data-section] {
     padding: 16px 16px 8px;
     margin: 16px 0;
+  }
+
+  section[data-section]:first-of-type {
+    margin-top: 20px;
   }
 
   .copy-link {
