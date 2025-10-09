@@ -115,7 +115,7 @@ body.loading section[data-section] {
 
 /* Push the first element AFTER the sticky header down by the header height */
 .sticky-header+* {
-  margin-top: calc(var(--header-height, 240px) + 20px);
+  padding-top: calc(var(--header-height, 240px) + 20px);
 }
 
 a[data-role="back-link"] {
@@ -548,7 +548,7 @@ section[data-section] ul {
 
   /* Make sure the content below is pushed down by the header height */
   .sticky-header+* {
-    margin-top: calc(var(--header-height, 240px) + 20px);
+    padding-top: calc(var(--header-height, 240px) + 20px);
   }
 
   /* Title and menu button on same line */
