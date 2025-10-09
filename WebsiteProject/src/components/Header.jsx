@@ -68,6 +68,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 <option value="it">Italiano</option>
                 <option value="de">Deutsch</option>
                 <option value="es">Español</option>
+                <option value="sv">Svenska</option>
               </select>
             </div>
 
@@ -81,6 +82,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               <option value="ZAR">Rand</option>
               <option value="EUR">Euro</option>
               <option value="GBP">Pound</option>
+              <option value="SEK">Krona</option>
             </select>
           </div>
         </div>
