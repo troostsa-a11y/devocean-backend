@@ -1,0 +1,929 @@
+<head>
+  <!-- Encoding & basic meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>DEVOCEAN Lodge — Cookie Policy</title>
+  <meta name="description" content="Cookie Policy for DEVOCEAN Lodge. Learn about the cookies we use on our website and how to manage them." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/cookies.html" />
+
+  <!-- Performance: preconnect / dns-prefetch -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin />
+  <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+  <!-- Consent defaults BEFORE GTM loads -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    const EEA_AND_GB = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB"];
+
+    // Default denied for EEA/GB
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      regions: EEA_AND_GB
+    });
+
+    // Default granted for other regions (adjust to your policy)
+    gtag("consent", "default", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted"
+    });
+  </script>
+
+  <!-- Google Tag Manager (single, canonical snippet) -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-532W3HH2");
+  </script>
+
+  <!-- Your current CSS (inlined exactly as provided) -->
+  <style>
+        :root {
+            --brand: #9e4b13;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --card-bg: #f8fafc;
+            --card-br: #e5e7eb;
+            --radius: 16px;
+            --focus: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--header-height, 240px) + 8px);
+        }
+
+        body {
+            margin: 0;
+            font:
+                16px/1.6 system-ui,
+                -apple-system,
+                Segoe UI,
+                Roboto,
+                Helvetica,
+                Arial,
+                "Apple Color Emoji",
+                "Segoe UI Emoji";
+            color: var(--text);
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            text-decoration: none;
+        }
+
+        /* --- Focus styling: whitelist interactive elements --- */
+
+        /* Focus styles */
+        *:focus-visible {
+            outline: none;
+        }
+
+        a:focus,
+        a:focus-visible,
+        button:focus,
+        button:focus-visible,
+        [role="button"]:focus,
+        [role="button"]:focus-visible,
+        input:focus,
+        input:focus-visible,
+        select:focus,
+        select:focus-visible,
+        textarea:focus,
+        textarea:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+        [id]:target,
+        section:focus,
+        section:focus-visible,
+        h2:focus,
+        h2:focus-visible {
+            outline: none;
+        }
+
+        .quick-nav-link {
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        }
+
+
+        /* 3) Ensure quick-links always use the white ring */
+        .quick-nav-link:focus,
+        .quick-nav-link:focus-visible {
+            outline: 2px solid #fff;
+            outline-offset: 2px;
+        }
+
+        /* 4) Never outline hash targets (sections/headings) */
+        [id]:target,
+        section:focus,
+        section:focus-visible,
+        h2:focus,
+        h2:focus-visible {
+            outline: none;
+        }
+
+        /* 5) Remove iOS tap flash on quick links */
+        .quick-nav-link {
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px calc(50vh + 40px);
+        }
+
+        /*   main> :not(.sticky-header) { */
+        /*       margin-top: 0;           */
+        /*   }                            */
+
+        main>section:first-of-type {
+            margin-top: calc(var(--header-height, 240px) + 20px);
+        }
+
+        body.loading section[data-section] {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Sticky header: full-bleed shell */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: #fff;
+            border: none;
+            padding: 0;
+            /* padding now lives on .header-inner */
+            max-width: none;
+            /* ensure full width on mobile */
+            margin: 0;
+            /* no centering on the shell */
+        }
+
+        a[data-role="back-link"] {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #fff;
+            background: var(--brand);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            transition: filter 0.2s ease;
+        }
+
+        a[data-role="back-link"]:hover {
+            filter: brightness(0.95);
+        }
+
+        h1[data-role="page-title"] {
+            margin: 18px 0 8px;
+            font-size: clamp(28px, 4vw, 32px);
+            line-height: 1.25;
+        }
+
+        .updated {
+            color: var(--muted);
+            margin: 0 0 18px;
+            font-size: 14px;
+        }
+
+        .cookie-banner-info {
+            background: #fff7ed;
+            border: none;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 0 0 16px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .cookie-banner-info::before {
+            content: "";
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Ccircle cx='8' cy='10' r='1.5'%3E%3C/circle%3E%3Ccircle cx='15' cy='15' r='1.5'%3E%3C/circle%3E%3Ccircle cx='12' cy='18' r='1'%3E%3C/circle%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        section[data-section] {
+            background: var(--card-bg);
+            border: 1px solid var(--card-br);
+            border-radius: var(--radius);
+            padding: 18px 18px 8px;
+            margin: 18px 0;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        section[data-section] h2 {
+            margin: 0 0 12px;
+            font-size: 20px;
+            line-height: 1.35;
+        }
+
+        section[data-section] h3 {
+            margin: 16px 0 8px;
+            font-size: 17px;
+            color: var(--brand);
+        }
+
+        .copy-link {
+            display: none;
+        }
+
+        section[data-section] p {
+            margin: 0 0 12px;
+        }
+
+        section[data-section] ul {
+            margin: 0 0 10px 18px;
+        }
+
+        .quick-nav {
+            background: white;
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 0 0 24px 0;
+        }
+
+        .quick-nav h3 {
+            margin: 0 0 12px 0;
+            font-size: 16px;
+            color: var(--brand);
+        }
+
+        .quick-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .quick-nav-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-br);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        :root {
+            --card-bg: #f8fafc;
+            --card-br: #e5e7eb;
+            --radius: 16px;
+        }
+
+        .quick-nav {
+            background: #fff;
+            border: 1px solid var(--card-br);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 0 0 24px 0;
+            /* optional, matches privacy.html spacing */
+        }
+
+        .quick-nav-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-br);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .quick-nav-link:hover {
+            background: var(--brand);
+            color: #fff;
+            border-color: var(--brand);
+        }
+
+        .quick-nav-link:hover {
+            background: var(--brand);
+            color: white;
+            border-color: var(--brand);
+        }
+
+        :root {
+            --card-bg: #f8fafc;
+            --card-br: #e5e7eb;
+            --radius: 16px;
+        }
+
+        .quick-nav {
+            background: #fff;
+            border: 1px solid var(--card-br);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin: 0 0 24px 0;
+            /* optional, matches privacy.html spacing */
+        }
+
+        .quick-nav-link {
+            display: inline-block;
+            padding: 6px 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-br);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 14px;
+            transition: all .2s ease;
+        }
+
+        .quick-nav-link:hover {
+            background: var(--brand);
+            color: #fff;
+            border-color: var(--brand);
+        }
+
+        /* Skip link: hidden until keyboard focus (no first-paint flash) */
+        .skip-link {
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            padding: 8px 12px;
+            background: #fff;
+            color: var(--text);
+            border: 1px solid var(--card-br);
+            border-radius: 4px;
+            text-decoration: none;
+            z-index: 1000;
+
+            /* visually hidden until focused */
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .skip-link:focus {
+            clip: auto;
+            clip-path: none;
+            width: auto;
+            height: auto;
+            overflow: visible;
+            white-space: normal;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid var(--card-br);
+            background: #fff;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            filter: brightness(0.98);
+        }
+
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .cookie-table th {
+            background: var(--card-bg);
+            border: 1px solid var(--card-br);
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--brand);
+        }
+
+        .cookie-table td {
+            border: 1px solid var(--card-br);
+            padding: 10px;
+        }
+
+        .cookie-table tr:nth-child(even) {
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .browser-links {
+            margin: 12px 0;
+        }
+
+        .browser-links a {
+            color: var(--brand);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .browser-links a:hover {
+            border-bottom-color: var(--brand);
+        }
+
+        @media print {
+
+            .skip-link,
+            a[data-role="back-link"],
+            .copy-link,
+            .quick-nav,
+            .cookie-banner-info,
+            .btn {
+                display: none !important;
+            }
+
+            section[data-section] {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                background: white !important;
+            }
+
+            body {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Mobile menu button (hamburger icon) */
+        .mobile-menu-btn {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 0;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: #9e4b13;
+        }
+
+        .mobile-menu-btn:hover svg {
+            stroke: white;
+        }
+
+        .mobile-menu-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--brand);
+            stroke-width: 2;
+            fill: none;
+            transition: stroke 0.2s;
+        }
+
+        /* Mobile dropdown menu */
+        .mobile-quick-nav {
+            display: none;
+            background: #ffffff;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            margin: 8px 0 0 0;
+            padding: 8px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-quick-nav.show {
+            display: block;
+        }
+
+        .mobile-quick-nav a {
+            display: block;
+            padding: 10px 16px;
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+            font-size: 13px;
+            line-height: 1.4;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            hyphens: auto;
+            max-width: 100%;
+        }
+
+        .mobile-quick-nav a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .mobile-quick-nav a:last-child {
+            border-bottom: none;
+        }
+
+        /* Sticky header: full-bleed shell */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: #fff;
+            border: none;
+            padding: 0;
+            /* no padding on the shell */
+            max-width: none;
+            /* shell is full width */
+            margin: 0;
+        }
+
+        /* Centered inner content to match <main> */
+        .sticky-header .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 16px 8px;
+            /* mobile-friendly padding lives here */
+        }
+
+        /* Push the first element AFTER the sticky header down by the header height */
+        .sticky-header+* {
+            margin-top: calc(var(--header-height, 240px) + 20px);
+        }
+
+        /* Desktop: restore your original spacing */
+        @media (min-width: 768px) {
+            .sticky-header .header-inner {
+                padding: 20px 16px 12px;
+            }
+        }
+
+        /* Mobile: use the calculated header height for anchor offset */
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: var(--header-height, 220px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 220px;
+            }
+
+            /* Make sure the content below is pushed down by the header height */
+            .sticky-header+* {
+                margin-top: calc(var(--header-height, 240px) + 20px);
+            }
+
+            /* Title and menu button on same line */
+            .title-menu-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                margin: 12px 0 4px;
+            }
+
+            h1[data-role="page-title"] {
+                font-size: 24px;
+                margin: 0;
+                flex: 1;
+            }
+
+            .updated {
+                font-size: 12px;
+                margin: 0 0 8px;
+            }
+
+            /* Badge on mobile - narrower with responsive sizing */
+            .cookie-banner-info {
+                padding: 6px 10px;
+                margin: 0 0 12px 0;
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+            }
+
+            /* Smaller icon on mobile */
+            .cookie-banner-info::before {
+                width: 18px;
+                height: 18px;
+                background-size: 18px;
+            }
+
+            .cookie-banner-info div {
+                max-width: 100%;
+                flex: 1;
+            }
+
+            .cookie-banner-info [data-part="body"] {
+                display: none;
+            }
+
+            .cookie-banner-info strong {
+                font-size: clamp(18px, 5vw, 20px);
+                line-height: 1.35;
+                font-weight: 600;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                flex: 1;
+            }
+
+            /* Show mobile menu button, hide desktop quick nav */
+            .mobile-menu-btn {
+                display: inline-flex;
+            }
+
+            .quick-nav {
+                display: none !important;
+            }
+
+            /* Prevent iOS Safari’s tap highlight flash */
+            .quick-nav-link,
+            .mobile-quick-nav a {
+                -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            }
+
+            /* Hide copy link buttons on mobile */
+            .copy-link {
+                display: none !important;
+            }
+
+            main {
+                padding: 0 12px calc(50vh + 40px);
+            }
+
+            section[data-section] {
+                padding: 16px 16px 8px;
+                margin: 16px 0;
+            }
+
+            .copy-link {
+                position: static;
+                opacity: 1;
+                margin-bottom: 12px;
+                display: inline-block;
+            }
+
+            .cookie-table {
+                font-size: 12px;
+            }
+
+            .cookie-table th,
+            .cookie-table td {
+                padding: 6px;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            :root {
+                --card-br: #000;
+                --text: #000;
+            }
+
+            section[data-section] {
+                border-width: 2px;
+            }
+        }
+
+        /* --- A23 narrow-screen fixes (no layout changes elsewhere) --- */
+
+        /* Keep header full-bleed and inner content constrained */
+        .sticky-header {
+            overflow-x: hidden;
+        }
+
+        .sticky-header .header-inner {
+            overflow-x: hidden;
+        }
+
+        /* Make the title row flex correctly on very narrow screens */
+        .title-menu-row {
+            display: flex;
+            /* ensure it's flex even if earlier CSS changed it */
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Let the title wrap instead of pushing the menu button off-screen */
+        .title-menu-row h1[data-role="page-title"] {
+            flex: 1 1 auto;
+            /* title takes remaining space */
+            min-width: 0;
+            /* CRITICAL: allow flex item to shrink */
+            margin: 0;
+            overflow-wrap: anywhere;
+            /* wrap long words if needed */
+        }
+
+        /* Keep the menu button visible and fixed-size */
+        .mobile-menu-btn {
+            flex: 0 0 auto;
+            /* do not shrink */
+            margin-left: 12px;
+        }
+
+        /* Keep the badge inside the inner column */
+        .sticky-header .cookie-banner-info {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Slightly tighten the header on very small screens */
+        @media (max-width: 380px) {
+            .sticky-header .header-inner {
+                padding: 10px 12px 8px;
+            }
+
+            h1[data-role="page-title"] {
+                font-size: 22px;
+            }
+
+            /* optional, reduces overflow risk */
+        }
+
+        /* --- A23 / narrow-screen width alignment --- */
+
+        /* Make <main> use the same side padding as the header inner */
+        @media (max-width: 768px) {
+            main {
+                /* match .sticky-header .header-inner */
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+
+            /* Ensure cards span the full column width (no accidental side margins) */
+            section[data-section] {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        /* Ultra-narrow safety (<= 380px) – keep header & content perfectly aligned */
+        @media (max-width: 380px) {
+            .sticky-header .header-inner {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+
+            main {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        /* --- Single source of truth for side padding on narrow screens --- */
+        :root {
+            --page-pad: 12px;
+        }
+
+        @media (max-width: 380px) {
+            :root {
+                --page-pad: 10px;
+            }
+
+            /* ultra-narrow safety */
+        }
+
+        /* The sticky header is a full-bleed shell; all padding goes on .header-inner */
+        .sticky-header {
+            padding: 0 !important;
+            /* ensure no padding on the shell */
+            max-width: none;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Header inner width/padding = content width/padding */
+        .sticky-header .header-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: var(--page-pad) !important;
+            padding-right: var(--page-pad) !important;
+            /* keep your existing top/bottom padding if you like */
+            padding-top: 12px;
+            padding-bottom: 8px;
+            box-sizing: border-box;
+        }
+
+        /* Content column uses the same side padding */
+        @media (max-width: 768px) {
+            main {
+                padding-left: var(--page-pad) !important;
+                padding-right: var(--page-pad) !important;
+            }
+
+            section[data-section] {
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        /* Keep the title/menu row robust on very narrow screens */
+        .title-menu-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .title-menu-row h1[data-role="page-title"] {
+            flex: 1 1 auto;
+            min-width: 0;
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .mobile-menu-btn {
+            flex: 0 0 auto;
+        }
+
+        /* Make long URLs wrap inside the Manage section/browser links */
+        .browser-links,
+        .browser-links p,
+        .browser-links a {
+            overflow-wrap: anywhere;
+            /* modern */
+            word-break: break-word;
+            /* fallback */
+            hyphens: auto;
+            /* allow soft hyphens where possible */
+            max-width: 100%;
+        }
+
+        /* Ensure sections can never overflow the column on narrow screens */
+        @media (max-width: 768px) {
+            section[data-section] {
+                box-sizing: border-box;
+                max-width: 100%;
+            }
+        }
+
+        /* Optional: if any inline code/pre or tables appear, keep them inside */
+        section[data-section] pre,
+        section[data-section] code,
+        section[data-section] table {
+            max-width: 100%;
+            overflow-x: auto;
+        }
+  </style>
+
+  <!-- Legal i18n (non-blocking) -->
+  <script defer src="/legal/i18n/strings.js?v=36"></script>
+  <script defer src="/legal/legal-i18n.js?v=36"></script>
+</head>
