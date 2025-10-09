@@ -17,10 +17,10 @@ const LANG_TO_CURRENCY_HINT = {
   "en-gb": "GBP", "en-us": "USD",
 };
 
-// Booking engine locale mapping
+// Booking engine locale mapping (Hotelrunner uses 2-letter ISO codes)
 export const LOCALE_BY_LANG = {
-  en: "en-US", pt: "pt-BR", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE",
+  en: "en", pt: "pt", nl: "nl",
+  fr: "fr", it: "it", de: "de", es: "es", sv: "sv",
 };
 
 // Native date pickers: force dd/mm/yyyy display
@@ -167,7 +167,7 @@ export function useLocale() {
     setCurrency,
     ui,
     loading,
-    bookingLocale: LOCALE_BY_LANG[lang] || "en-US",
+    bookingLocale: LOCALE_BY_LANG[lang] || "en",
     dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
   };
 }
