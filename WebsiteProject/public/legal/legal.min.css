@@ -479,6 +479,14 @@ section[data-section] ul {
   stroke: white;
 }
 
+.mobile-menu-btn:focus,
+.mobile-menu-btn:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  position: relative;
+  z-index: 1;
+}
+
 .mobile-menu-btn svg {
   width: 20px;
   height: 20px;
@@ -793,7 +801,7 @@ section[data-section] ul {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .title-menu-row h1 {
