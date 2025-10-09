@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Encoding & basic meta -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+
+  <title>DEVOCEAN Lodge — Cookiepolicy</title>
+  <meta name="description" content="Cookie Policy for DEVOCEAN Lodge. Learn about the cookies we use on our website and how to manage them." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://devoceanlodge.com/legal/cookies.html" />
+
+  <!-- Performance: preconnect / dns-prefetch -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="preconnect" href="https://static.cloudflareinsights.com" crossorigin />
+  <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
+  <link rel="dns-prefetch" href="//www.google-analytics.com" />
+
+  <!-- Consent defaults BEFORE GTM loads -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    const EEA_AND_GB = ["AT","BE","BG","HR","CY","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE","IS","LI","NO","GB"];
+
+    // Default denied for EEA/GB
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+      regions: EEA_AND_GB
+    });
+
+    // Default granted for other regions (adjust to your policy)
+    gtag("consent", "default", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted"
+    });
+  </script>
+
+  <!-- Google Tag Manager (single, canonical snippet) -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-532W3HH2");
+  </script>
+
+  <!-- Legal i18n (non-blocking) -->
+  <script defer src="/legal/i18n/strings.js?v=38"></script>
+  <script defer src="/legal/legal-i18n.js?v=38"></script>
+
+  <style>
+    :root {
+      --brand: #9e4b13;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card-bg: #f8fafc;
+      --card-br: #e5e7eb;
+      --radius: 16px;
+      --focus: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #3b82f6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-height, 240px) + 8px);
+    }
+
+    body {
+      margin: 0;
+      font:
+        16px/1.6 system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        Helvetica,
+        Arial,
+        "Apple Color Emoji",
+        "Segoe UI Emoji";
+      color: var(--text);
+      background: #fff;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      text-decoration: none;
+    }
+
+    /* Focus styles */
+    *:focus-visible {
+      outline: none;
+    }
+
+    a:focus,
+    a:focus-visible,
+    button:focus,
+    button:focus-visible,
+    [role="button"]:focus,
+    [role="button"]:focus-visible,
+    input:focus,
+    input:focus-visible,
+    select:focus,
+    select:focus-visible,
+    textarea:focus,
+    textarea:focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    [id]:target,
+    section:focus,
+    section:focus-visible,
+    h2:focus,
+    h2:focus-visible {
+      outline: none;
+    }
+
+    .quick-nav-link {
+      -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 16px calc(50vh + 40px);
+    }
+
+    main>section:first-of-type {
+      margin-top: calc(var(--header-height, 240px) + 20px);
+    }
+
+    body.loading section[data-section] {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    /* Sticky header: full-bleed shell */
+    .sticky-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #fff;
+      border: none;
+      padding: 0;
+      max-width: none;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Centered inner content to match <main> */
+    .sticky-header .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 12px 16px 8px;
+      overflow-x: hidden;
+    }
+
+    /* Push the first element AFTER the sticky header down by the header height */
+    .sticky-header+* {
+      margin-top: calc(var(--header-height, 240px) + 20px);
+    }
+
+    a[data-role="back-link"] {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      background: var(--brand);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      transition: filter 0.2s ease;
+    }
+
+    a[data-role="back-link"]:hover {
+      filter: brightness(0.95);
+    }
+
+    h1[data-role="page-title"] {
+      margin: 18px 0 8px;
+      font-size: clamp(28px, 4vw, 32px);
+      line-height: 1.25;
+    }
+
+    .updated {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: 14px;
+    }
+
+    .cookie-banner-info {
+      background: #fff7ed;
+      border: none;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .cookie-banner-info::before {
+      content: "";
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23f59e0b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Ccircle cx='8' cy='10' r='1.5'%3E%3C/circle%3E%3Ccircle cx='15' cy='15' r='1.5'%3E%3C/circle%3E%3Ccircle cx='12' cy='18' r='1'%3E%3C/circle%3E%3C/svg%3E");
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    section[data-section] {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 18px 18px 8px;
+      margin: 18px 0;
+      transition: opacity 0.3s ease;
+      position: relative;
+    }
+
+    section[data-section] h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    section[data-section] h3 {
+      margin: 16px 0 8px;
+      font-size: 17px;
+      color: var(--brand);
+    }
+
+    .copy-link {
+      display: none;
+    }
+
+    section[data-section] p {
+      margin: 0 0 12px;
+    }
+
+    section[data-section] ul {
+      margin: 0 0 10px 18px;
+    }
+
+    .quick-nav {
+      background: #fff;
+      border: 1px solid var(--card-br);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin: 0 0 24px 0;
+    }
+
+    .quick-nav h3 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+      color: var(--brand);
+    }
+
+    .quick-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .quick-nav-link {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      border-radius: 6px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-nav-link:hover {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
+    /* Skip link: hidden until keyboard focus (no first-paint flash) */
+    .skip-link {
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      padding: 8px 12px;
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--card-br);
+      border-radius: 4px;
+      text-decoration: none;
+      z-index: 1000;
+
+      /* visually hidden until focused */
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .skip-link:focus {
+      clip: auto;
+      clip-path: none;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      white-space: normal;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--card-br);
+      background: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+    }
+
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+
+    .cookie-table th {
+      background: var(--card-bg);
+      border: 1px solid var(--card-br);
+      padding: 10px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--brand);
+    }
+
+    .cookie-table td {
+      border: 1px solid var(--card-br);
+      padding: 10px;
+    }
+
+    .cookie-table tr:nth-child(even) {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .browser-links {
+      margin: 12px 0;
+    }
+
+    .browser-links a {
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+      word-break: break-all;
+      overflow-wrap: break-word;
+      display: inline-block;
+      max-width: 100%;
+    }
+
+    .browser-links a:hover {
+      border-bottom-color: var(--brand);
+    }
+
+    @media print {
+
+      .skip-link,
+      a[data-role="back-link"],
+      .copy-link,
+      .quick-nav,
+      .cookie-banner-info,
+      .btn {
+        display: none !important;
+      }
+
+      section[data-section] {
+        break-inside: avoid;
+        border: 1px solid #ccc;
+        background: white !important;
+      }
+
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Mobile menu button (hamburger icon) */
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: white;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 0;
+      transition: background-color 0.2s;
+    }
+
+    .mobile-menu-btn:hover {
+      background-color: #9e4b13;
+    }
+
+    .mobile-menu-btn:hover svg {
+      stroke: white;
+    }
+
+    .mobile-menu-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--brand);
+      stroke-width: 2;
+      fill: none;
+      transition: stroke 0.2s;
+    }
+
+    /* Mobile dropdown menu */
+    .mobile-quick-nav {
+      display: none;
+      background: #ffffff;
+      border-top: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
+      margin: 8px 0 0 0;
+      padding: 8px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-quick-nav.show {
+      display: block;
+    }
+
+    .mobile-quick-nav a {
+      display: block;
+      padding: 10px 16px;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background-color 0.2s;
+      font-size: 13px;
+      line-height: 1.4;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      max-width: 100%;
+    }
+
+    .mobile-quick-nav a:hover {
+      background-color: #f5f5f5;
+    }
+
+    .mobile-quick-nav a:last-child {
+      border-bottom: none;
+    }
+
+    /* Desktop: restore original spacing */
+    @media (min-width: 768px) {
+      .sticky-header .header-inner {
+        padding: 20px 16px 12px;
+      }
+    }
+
+    /* Mobile: use the calculated header height for anchor offset */
+    @media (max-width: 768px) {
+      html {
+        scroll-padding-top: var(--header-height, 220px);
+      }
+
+      /* Make sure the content below is pushed down by the header height */
+      .sticky-header+* {
+        margin-top: calc(var(--header-height, 240px) + 20px);
+      }
+
+      /* Title and menu button on same line */
+      .title-menu-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 12px 0 4px;
+      }
+
+      h1[data-role="page-title"] {
+        font-size: 24px;
+        margin: 0;
+        flex: 1;
+      }
+
+      .updated {
+        font-size: 12px;
+        margin: 0 0 8px;
+      }
+
+      /* Badge on mobile - narrower with responsive sizing */
+      .cookie-banner-info {
+        padding: 6px 10px;
+        margin: 0 0 12px 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+
+      /* Smaller icon on mobile */
+      .cookie-banner-info::before {
+        width: 18px;
+        height: 18px;
+        background-size: 18px;
+      }
+
+      .cookie-banner-info div {
+        max-width: 100%;
+        flex: 1;
+      }
+
+      .cookie-banner-info [data-part="body"] {
+        display: none;
+      }
+
+      .cookie-banner-info strong {
+        font-size: clamp(18px, 5vw, 20px);
+        line-height: 1.35;
+        font-weight: 600;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        flex: 1;
+      }
+
+      /* Show mobile menu button, hide desktop quick nav */
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .quick-nav {
+        display: none !important;
+      }
+
+      /* Prevent iOS Safari's tap highlight flash */
+      .quick-nav-link,
+      .mobile-quick-nav a {
+        -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+      }
+
+      /* Hide copy link buttons on mobile */
+      .copy-link {
+        display: none !important;
+      }
+
+      main {
+        padding: 0 12px calc(50vh + 40px);
+      }
+
+      section[data-section] {
+        padding: 16px 16px 8px;
+        margin: 16px 0;
+      }
+
+      .copy-link {
+        position: static;
+        opacity: 1;
+        margin-bottom: 12px;
+        display: inline-block;
+      }
+
+      .cookie-table {
+        font-size: 12px;
+      }
+
+      .cookie-table th,
+      .cookie-table td {
+        padding: 6px;
+      }
+    }
+
+    @media (prefers-contrast: high) {
+      :root {
+        --card-br: #000;
+        --text: #000;
+      }
+
+      section[data-section] {
+        border-width: 2px;
+      }
+    }
+
+    /* Make the title row flex correctly on very narrow screens */
+    .title-menu-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    .title-menu-row h1 {
+      overflow-wrap: break-word;
+      word-break: break-word;
+      hyphens: auto;
+      min-width: 0;
+    }
+
+    @media (max-width: 400px) {
+      .title-menu-row {
+        gap: 8px;
+      }
+
+      h1[data-role="page-title"] {
+        font-size: clamp(20px, 5.5vw, 24px);
+      }
+    }
+  
+/* Scrollspy active state */
+.quick-nav-links .quick-nav-link.active {
+  background: #eef2ff;
+  border-color: #6366f1;
+  color: #3730a3;
+}
+.mobile-quick-nav a.active {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
+</style>
+</head>
+
+<body data-page="cookies">
+    <a href="#main-content" class="skip-link"
+        onclick="const m=document.getElementById('main-content'); if(m){m.setAttribute('tabindex','-1'); m.focus();}">
+        Skip to main content
+    </a>
+
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+            style="display:none;visibility:hidden" title="Google Tag Manager"></iframe>
+    </noscript>
+
+    <main id="main-content">
+        <div class="sticky-header">
+            <div class="header-inner">
+                <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+                <div class="title-menu-row">
+                    <h1 data-role="page-title">Cookie Policy</h1>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false"
+                        aria-controls="mobile-nav" aria-label="Toggle menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="updated">
+                    <span>Effective date: September 19, 2025</span><br />
+                    <span>Last updated: October 06, 2025</span>
+                </p>
+
+                <div class="cookie-banner-info" data-section="badge">
+                    <div>
+                        <strong data-part="title">Manage Your Cookie Preferences:</strong>
+                        <span data-part="body">You can control which cookies we use through our cookie banner or your
+                            browser settings.</span>
+                    </div>
+                </div>
+
+                <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
+                    <h3 data-part="title">Quick Links</h3>
+                    <div class="quick-nav-links" data-part="links">
+                        <a href="#what" class="quick-nav-link">What are cookies</a>
+                        <a href="#how" class="quick-nav-link">How we use cookies</a>
+                        <a href="#necessary" class="quick-nav-link">Necessary</a>
+                        <a href="#functional" class="quick-nav-link">Functional</a>
+                        <a href="#analytics" class="quick-nav-link">Analytics</a>
+                        <a href="#advertisement" class="quick-nav-link">Advertisement</a>
+                        <a href="#manage" class="quick-nav-link">Manage preferences</a>
+                    </div>
+                </nav>
+
+                <div id="mobile-nav" class="mobile-quick-nav"></div>
+            </div>
+        </div>
+
+        <section data-section="what" id="what">
+            <button class="copy-link" onclick="copySectionLink('what')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">What are cookies?</h2>
+            <p data-part="body" data-use-html="true">
+                This Cookie Policy explains what cookies are, how we use
+                them, the types of cookies we use (i.e., the information we
+                collect using cookies and how that information is used), and
+                how to manage your cookie settings.<br /><br />Cookies are
+                small text files used to store small pieces of information.
+                They are stored on your device when a website loads in your
+                browser. These cookies help ensure that the website
+                functions properly, enhance security, provide a better user
+                experience, and analyse performance to identify what works
+                and where improvements are needed.
+            </p>
+        </section>
+
+        <section data-section="how" id="how">
+            <button class="copy-link" onclick="copySectionLink('how')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">How do we use cookies?</h2>
+            <p data-part="body" data-use-html="true">
+                Like most online services, our website uses both first-party
+                and third-party cookies for various purposes. First-party
+                cookies are primarily necessary for the website to function
+                properly and do not collect any personally identifiable
+                data.<br /><br />The third-party cookies used on our website
+                primarily help us understand how the website performs, track
+                how you interact with it, keep our services secure, deliver
+                relevant advertisements, and enhance your overall user
+                experience while improving the speed of your future
+                interactions with our website.
+            </p>
+        </section>
+
+        <section data-section="necessary" id="necessary">
+            <button class="copy-link" onclick="copySectionLink('necessary')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">Necessary Cookies</h2>
+            <p data-part="description">
+                Necessary cookies are required to enable the basic features
+                of this site, such as providing secure log-in or adjusting
+                your consent preferences. These cookies do not store any
+                personally identifiable data.
+            </p>
+
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Cookie</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>currency</td>
+                        <td>session</td>
+                        <td>
+                            This cookie is used to store the currency
+                            preference of the user.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>_sh_session_</td>
+                        <td>session</td>
+                        <td>Description is currently not available.</td>
+                    </tr>
+                    <tr>
+                        <td>loccur</td>
+                        <td>session</td>
+                        <td>Description is currently not available.</td>
+                    </tr>
+                    <tr>
+                        <td>country_code</td>
+                        <td>session</td>
+                        <td>No description available.</td>
+                    </tr>
+                    <tr>
+                        <td>b_locale</td>
+                        <td>session</td>
+                        <td>Description is currently not available.</td>
+                    </tr>
+                    <tr>
+                        <td>checkout_currency</td>
+                        <td>session</td>
+                        <td>Description is currently not available.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-section="functional" id="functional">
+            <button class="copy-link" onclick="copySectionLink('functional')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">Functional Cookies</h2>
+            <p data-part="description">
+                Functional cookies help perform certain functionalities like
+                sharing the content of the website on social media
+                platforms, collecting feedback, and other third-party
+                features.
+            </p>
+
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Cookie</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>locale</td>
+                        <td>session</td>
+                        <td>
+                            Facebook sets this cookie to enhance the user's
+                            browsing experience on the website, and to
+                            provide the user with relevant advertising while
+                            using Facebook's social media platforms.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-section="analytics" id="analytics">
+            <button class="copy-link" onclick="copySectionLink('analytics')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">Analytics Cookies</h2>
+            <p data-part="description">
+                Analytical cookies are used to understand how visitors
+                interact with the website. These cookies help provide
+                information on metrics such as the number of visitors,
+                bounce rate, traffic source, etc.
+            </p>
+
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Cookie</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>_ga</td>
+                        <td>1 year 1 month 4 days</td>
+                        <td>
+                            Google Analytics sets this cookie to calculate
+                            visitor, session and campaign data and track
+                            site usage for the site's analytics report. The
+                            cookie stores information anonymously and
+                            assigns a randomly generated number to recognise
+                            unique visitors.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>_ga_*</td>
+                        <td>1 year 1 month 4 days</td>
+                        <td>
+                            Google Analytics sets this cookie to store and
+                            count page views.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>_gid</td>
+                        <td>1 day</td>
+                        <td>
+                            Google Analytics sets this cookie to store
+                            information on how visitors use a website while
+                            also creating an analytics report of the
+                            website's performance. Some of the collected
+                            data includes the number of visitors, their
+                            source, and the pages they visit anonymously.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>_gat_UA-*</td>
+                        <td>1 minute</td>
+                        <td>
+                            Google Analytics sets this cookie for user
+                            behaviour tracking.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>pardot</td>
+                        <td>past</td>
+                        <td>
+                            The pardot cookie is set while the visitor is
+                            logged in as a Pardot user. The cookie indicates
+                            an active session and is not used for tracking.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-section="advertisement" id="advertisement">
+            <button class="copy-link" onclick="copySectionLink('advertisement')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">Advertisement Cookies</h2>
+            <p data-part="description">
+                Advertisement cookies are used to provide visitors with
+                customised advertisements based on the pages you visited
+                previously and to analyse the effectiveness of the ad
+                campaigns.
+            </p>
+
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Cookie</th>
+                        <th>Duration</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>_gcl_au</td>
+                        <td>3 months</td>
+                        <td>
+                            Google Tag Manager sets this cookie to
+                            experiment advertisement efficiency of websites
+                            using their services.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>test_cookie</td>
+                        <td>15 minutes</td>
+                        <td>
+                            doubleclick.net sets this cookie to determine if
+                            the user's browser supports cookies.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>_fbp</td>
+                        <td>3 months</td>
+                        <td>
+                            Facebook sets this cookie to store and track
+                            interactions.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>IDE</td>
+                        <td>1 year 24 days</td>
+                        <td>
+                            Google DoubleClick IDE cookies store information
+                            about how the user uses the website to present
+                            them with relevant ads according to the user
+                            profile.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section data-section="manage" id="manage">
+            <button class="copy-link" onclick="copySectionLink('manage')" aria-label="Copy link to this section">
+                🔗
+            </button>
+            <h2 data-part="title">Manage cookie preferences</h2>
+
+            <h3 data-part="consentTitle">Consent Preferences</h3>
+            <p data-part="consentText">
+                You can modify your cookie settings anytime by clicking the
+                'Consent Preferences' button above. This will allow you to
+                revisit the cookie consent banner and update your
+                preferences or withdraw your consent immediately.
+            </p>
+
+            <p data-part="browserText">
+                Additionally, different browsers offer various methods to
+                block and delete cookies used by websites. You can adjust
+                your browser settings to block or delete cookies. Below are
+                links to support documents on how to manage and delete
+                cookies in major web browsers.
+            </p>
+
+            <div class="browser-links">
+                <p>
+                    <strong>Chrome:</strong>
+                    <a href="https://support.google.com/accounts/answer/32050" target="_blank"
+                        rel="noopener noreferrer">https://support.google.com/accounts/answer/32050</a>
+                </p>
+
+                <p>
+                    <strong>Safari:</strong>
+                    <a href="https://support.apple.com/en-in/guide/safari/sfri11471/mac" target="_blank"
+                        rel="noopener noreferrer">https://support.apple.com/en-in/guide/safari/sfri11471/mac</a>
+                </p>
+
+                <p>
+                    <strong>Firefox:</strong>
+                    <a href="https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox?redirectslug=delete-cookies-remove-info-websites-stored&amp;redirectlocale=en-US"
+                        target="_blank"
+                        rel="noopener noreferrer">https://support.mozilla.org/en-US/kb/clear-cookies-and-site-data-firefox</a>
+                </p>
+
+                <p>
+                    <strong>Internet Explorer:</strong>
+                    <a href="https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc"
+                        target="_blank"
+                        rel="noopener noreferrer">https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc</a>
+                </p>
+
+                <p>
+                    If you are using a different web browser, please refer
+                    to its official support documentation.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // --- Header height → CSS var for smooth anchor offset
+        function setStickyHeaderHeight() {
+            const stickyHeader = document.querySelector('.sticky-header');
+            if (!stickyHeader) return;
+            const height = stickyHeader.offsetHeight;
+            document.documentElement.style.setProperty('--header-height', `${height}px`);
+        }
+
+        // Ensure there's exactly one #mobile-nav and it's inside the sticky header
+        function dedupeMobileNav() {
+            const header = document.querySelector('.sticky-header');
+            if (!header) return;
+            const headerNav = header.querySelector('#mobile-nav');
+
+            // Remove any duplicate #mobile-nav outside the header
+            document.querySelectorAll('#mobile-nav').forEach((el) => {
+                if (el !== headerNav) el.remove();
+            });
+        }
+
+        // Smooth scroll to section accounting for sticky header height
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (!element) return;
+
+            const headerHeight =
+                parseFloat(
+                    getComputedStyle(document.documentElement).getPropertyValue('--header-height')
+                ) || 240;
+
+            const offset = 8; // breathing room
+            const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerHeight - offset;
+
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+
+        // Copy a deep link to a section
+        function copySectionLink(sectionId) {
+            const url = `${window.location.origin}${window.location.pathname}#${sectionId}`;
+            navigator.clipboard.writeText(url).then(() => {
+                const button = event.target;
+                const originalText = button.innerHTML;
+                button.innerHTML = '✓ Copied!';
+                button.style.opacity = '1';
+                setTimeout(() => (button.innerHTML = originalText), 2000);
+            }).catch(() => {
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    const button = event.target;
+                    const originalText = button.innerHTML;
+                    button.innerHTML = '✓ Copied!';
+                    button.style.opacity = '1';
+                    setTimeout(() => (button.innerHTML = originalText), 2000);
+                } finally {
+                    document.body.removeChild(textArea);
+                }
+            });
+        }
+
+        // Toggle + populate the mobile quick menu (scoped to the header)
+        function toggleMobileMenu() {
+            const header = document.querySelector('.sticky-header');
+            if (!header) return;
+
+            const mobileNav = header.querySelector('#mobile-nav');
+            const btn = header.querySelector('.mobile-menu-btn');
+            const linksContainer = header.querySelector('.quick-nav-links');
+            if (!mobileNav || !btn || !linksContainer) return;
+
+            const isOpen = mobileNav.classList.contains('show');
+
+            if (isOpen) {
+                mobileNav.classList.remove('show');
+                btn.setAttribute('aria-expanded', 'false');
+                requestAnimationFrame(setStickyHeaderHeight);
+            } else {
+                // Rebuild list from desktop quick links
+                mobileNav.innerHTML = '';
+                linksContainer.querySelectorAll('a').forEach((link) => {
+                    const href = link.getAttribute('href');  // attribute, not full URL
+                    const text = link.textContent || href;
+
+                    const mobileLink = document.createElement('a');
+                    mobileLink.setAttribute('href', href);
+                    mobileLink.textContent = text;
+
+                    mobileLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = href && href.includes('#') ? href.split('#')[1] : '';
+                        // Close menu
+                        mobileNav.classList.remove('show');
+                        btn.setAttribute('aria-expanded', 'false');
+
+                        // Recalc height, then scroll
+                        setTimeout(() => {
+                            requestAnimationFrame(() => {
+                                setStickyHeaderHeight();
+                                if (targetId) scrollToSection(targetId);
+                                if (href) history.pushState(null, '', href);
+                            });
+                        }, 150);
+                    });
+
+                    mobileNav.appendChild(mobileLink);
+                });
+
+                mobileNav.classList.add('show');
+                btn.setAttribute('aria-expanded', 'true');
+                requestAnimationFrame(setStickyHeaderHeight);
+            }
+        }
+
+        // --- Init
+        // Set immediately (helps avoid first-paint jump)
+        setStickyHeaderHeight();
+
+        // Re-calc on load/resize/orientation
+        window.addEventListener('load', setStickyHeaderHeight);
+        window.addEventListener('resize', setStickyHeaderHeight);
+        window.addEventListener('orientationchange', setStickyHeaderHeight);
+
+        // Dedup nav on load
+        dedupeMobileNav();
+
+        // --- Handle anchor links in desktop quick nav
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.quick-nav-link').forEach((link) => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    const targetId = href && href.includes('#') ? href.split('#')[1] : '';
+                    if (targetId) scrollToSection(targetId);
+                    if (href) history.pushState(null, '', href);
+                });
+            });
+
+            // Scroll to section if hash in URL on page load
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                setTimeout(() => {
+                    requestAnimationFrame(() => {
+                        setStickyHeaderHeight();
+                        scrollToSection(targetId);
+                    });
+                }, 100);
+            }
+        });
+    </script>
+
+<script>
+// --- Enhancements for cookies page: scrollspy, smooth scroll, hash updates
+(function(){
+  const header = document.querySelector('.sticky-header');
+  const linksContainer = document.querySelector('.quick-nav-links');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  function getHeaderOffset(){
+    const h = header ? header.offsetHeight : 0;
+    const cssVar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+    return Math.max(h, cssVar);
+  }
+
+  function scrollToSection(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    const headerOffset = getHeaderOffset();
+    const rect = el.getBoundingClientRect();
+    const targetY = window.scrollY + rect.top - headerOffset - 8;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+  }
+
+  // Wire desktop quick-links
+  if (linksContainer){
+    linksContainer.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href').slice(1);
+        scrollToSection(id);
+        history.replaceState(null, '', '#' + id);
+      });
+    });
+  }
+
+  // Build mobile links from desktop and wire them
+  function rebuildMobile(){
+    if(!linksContainer || !mobileNav) return;
+    mobileNav.innerHTML = '';
+    linksContainer.querySelectorAll('a').forEach(link => {
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent;
+      a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href').slice(1);
+        mobileNav.classList.remove('show');
+        history.replaceState(null, '', '#' + id);
+        requestAnimationFrame(()=>scrollToSection(id));
+      });
+      mobileNav.appendChild(a);
+    });
+  }
+  rebuildMobile();
+
+  // Scrollspy
+  const sections = Array.from(document.querySelectorAll('main section[id]'));
+  const linkMap = new Map();
+  function mapLinks(){
+    document.querySelectorAll('.quick-nav-links a, .mobile-quick-nav a').forEach(a => {
+      const id = (a.getAttribute('href')||'').replace('#','');
+      if(id) {
+        if(!linkMap.has(id)) linkMap.set(id, []);
+        linkMap.get(id).push(a);
+      }
+    });
+  }
+  mapLinks();
+
+  function setActive(id){
+    document.querySelectorAll('.quick-nav-link, .mobile-quick-nav a').forEach(a => a.classList.remove('active'));
+    (linkMap.get(id) || []).forEach(a => a.classList.add('active'));
+  }
+
+  const observer = new IntersectionObserver((entries)=>{
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a,b)=> a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible.length){
+      const id = visible[0].target.id;
+      setActive(id);
+      history.replaceState(null, '', '#' + id);
+    }
+  }, {
+    rootMargin: `-${getHeaderOffset()+12}px 0px -70% 0px`,
+    threshold: [0.1, 0.6]
+  });
+
+  sections.forEach(sec => observer.observe(sec));
+
+  // On load with hash
+  if (window.location.hash){
+    const id = window.location.hash.slice(1);
+    setTimeout(()=>{
+      setActive(id);
+      scrollToSection(id);
+    }, 150);
+  }
+
+  window.addEventListener('resize', ()=>{
+    document.documentElement.style.setProperty('--header-height', (header? header.offsetHeight : 0) + 'px');
+  });
+})();
+</script>
+
+</body>
+
+</html>
