@@ -46,7 +46,6 @@ Preferred communication style: Simple, everyday language.
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)
 - Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections added for all 9 languages
-- **Known Issue (Oct 2025):** Swedish legal pages (privacy, terms, GDPR, CRIC) show blank/white on production due to CookieYes DOM clearing - cookies.html works correctly. User researching solution.
 
 **Performance Optimizations:**
 - Dynamic translation loading

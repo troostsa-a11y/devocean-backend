@@ -647,6 +647,17 @@
       overflow-wrap: break-word;
       word-break: break-word;
       hyphens: auto;
+      min-width: 0;
+    }
+
+    /* Keep consistency with cookies.html */
+    @media (max-width: 400px) {
+      .title-menu-row { gap: 8px; }
+      h1[data-role="page-title"] { font-size: clamp(20px, 5.5vw, 24px); }
+    }
+  </style>
+</head>
+
 <body data-page="terms">
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
