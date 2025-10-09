@@ -86,7 +86,7 @@
             <div class="header-inner">
                 <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
                 <div class="title-menu-row">
-                    <h1 data-role="page-title">Cookie Policy</h1>
+                    <h1 data-role="page-title"></h1>
                     <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false"
                         aria-controls="mobile-nav" aria-label="Toggle menu">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -98,29 +98,17 @@
                 </div>
 
                 <p class="updated">
-                    <span>Effective date: September 19, 2025</span><br />
-                    <span>Last updated: October 06, 2025</span>
+                    <span data-role="updated-label"></span>:
+                    <span data-role="updated-date"></span>
                 </p>
 
                 <div class="cookie-banner-info" data-section="badge">
-                    <div>
-                        <strong data-part="title">Manage Your Cookie Preferences:</strong>
-                        <span data-part="body">You can control which cookies we use through our cookie banner or your
-                            browser settings.</span>
-                    </div>
+                    <strong data-part="title"></strong> <span data-part="body"></span>
                 </div>
 
                 <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
-                    <h3 data-part="title">Quick Links</h3>
-                    <div class="quick-nav-links" data-part="links">
-                        <a href="#what" class="quick-nav-link">What are cookies</a>
-                        <a href="#how" class="quick-nav-link">How we use cookies</a>
-                        <a href="#necessary" class="quick-nav-link">Necessary</a>
-                        <a href="#functional" class="quick-nav-link">Functional</a>
-                        <a href="#analytics" class="quick-nav-link">Analytics</a>
-                        <a href="#advertisement" class="quick-nav-link">Advertisement</a>
-                        <a href="#manage" class="quick-nav-link">Manage preferences</a>
-                    </div>
+                    <h3 data-part="title"></h3>
+                    <div class="quick-nav-links" data-part="links"></div>
                 </nav>
 
                 <div id="mobile-nav" class="mobile-quick-nav"></div>
@@ -131,51 +119,24 @@
             <button class="copy-link" onclick="copySectionLink('what')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">What are cookies?</h2>
-            <p data-part="body" data-use-html="true">
-                This Cookie Policy explains what cookies are, how we use
-                them, the types of cookies we use (i.e., the information we
-                collect using cookies and how that information is used), and
-                how to manage your cookie settings.<br /><br />Cookies are
-                small text files used to store small pieces of information.
-                They are stored on your device when a website loads in your
-                browser. These cookies help ensure that the website
-                functions properly, enhance security, provide a better user
-                experience, and analyse performance to identify what works
-                and where improvements are needed.
-            </p>
+            <h2 data-part="title"></h2>
+            <p data-part="body" data-use-html="true"></p>
         </section>
 
         <section data-section="how" id="how">
             <button class="copy-link" onclick="copySectionLink('how')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">How do we use cookies?</h2>
-            <p data-part="body" data-use-html="true">
-                Like most online services, our website uses both first-party
-                and third-party cookies for various purposes. First-party
-                cookies are primarily necessary for the website to function
-                properly and do not collect any personally identifiable
-                data.<br /><br />The third-party cookies used on our website
-                primarily help us understand how the website performs, track
-                how you interact with it, keep our services secure, deliver
-                relevant advertisements, and enhance your overall user
-                experience while improving the speed of your future
-                interactions with our website.
-            </p>
+            <h2 data-part="title"></h2>
+            <p data-part="body" data-use-html="true"></p>
         </section>
 
         <section data-section="necessary" id="necessary">
             <button class="copy-link" onclick="copySectionLink('necessary')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">Necessary Cookies</h2>
-            <p data-part="description">
-                Necessary cookies are required to enable the basic features
-                of this site, such as providing secure log-in or adjusting
-                your consent preferences. These cookies do not store any
-                personally identifiable data.
-            </p>
+            <h2 data-part="title"></h2>
+            <p data-part="description"></p>
 
             <table class="cookie-table">
                 <thead>
@@ -227,13 +188,8 @@
             <button class="copy-link" onclick="copySectionLink('functional')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">Functional Cookies</h2>
-            <p data-part="description">
-                Functional cookies help perform certain functionalities like
-                sharing the content of the website on social media
-                platforms, collecting feedback, and other third-party
-                features.
-            </p>
+            <h2 data-part="title"></h2>
+            <p data-part="description"></p>
 
             <table class="cookie-table">
                 <thead>
@@ -262,13 +218,8 @@
             <button class="copy-link" onclick="copySectionLink('analytics')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">Analytics Cookies</h2>
-            <p data-part="description">
-                Analytical cookies are used to understand how visitors
-                interact with the website. These cookies help provide
-                information on metrics such as the number of visitors,
-                bounce rate, traffic source, etc.
-            </p>
+            <h2 data-part="title"></h2>
+            <p data-part="description"></p>
 
             <table class="cookie-table">
                 <thead>
@@ -336,13 +287,8 @@
             <button class="copy-link" onclick="copySectionLink('advertisement')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">Advertisement Cookies</h2>
-            <p data-part="description">
-                Advertisement cookies are used to provide visitors with
-                customised advertisements based on the pages you visited
-                previously and to analyse the effectiveness of the ad
-                campaigns.
-            </p>
+            <h2 data-part="title"></h2>
+            <p data-part="description"></p>
 
             <table class="cookie-table">
                 <thead>
@@ -396,7 +342,7 @@
             <button class="copy-link" onclick="copySectionLink('manage')" aria-label="Copy link to this section">
                 🔗
             </button>
-            <h2 data-part="title">Manage cookie preferences</h2>
+            <h2 data-part="title"></h2>
 
             <h3 data-part="consentTitle">Consent Preferences</h3>
             <p data-part="consentText">
