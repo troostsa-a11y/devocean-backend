@@ -112,21 +112,22 @@
 
   /* ---------- hydration ---------- */
   onReady(function () {
-    var lang = readLS("site.lang") || normLang(navigator.language);
-    
-    // DEBUG: Log language detection
-    console.log("[Legal i18n] Language detected:", lang);
-    console.log("[Legal i18n] localStorage site.lang:", readLS("site.lang"));
-    console.log("[Legal i18n] localStorage site.lang_source:", readLS("site.lang_source"));
-    console.log("[Legal i18n] Available LEGAL_DICT languages:", window.LEGAL_DICT ? Object.keys(window.LEGAL_DICT) : "LEGAL_DICT not loaded");
+    try {
+      var lang = readLS("site.lang") || normLang(navigator.language);
+      
+      // DEBUG: Log language detection
+      console.log("[Legal i18n] Language detected:", lang);
+      console.log("[Legal i18n] localStorage site.lang:", readLS("site.lang"));
+      console.log("[Legal i18n] localStorage site.lang_source:", readLS("site.lang_source"));
+      console.log("[Legal i18n] Available LEGAL_DICT languages:", window.LEGAL_DICT ? Object.keys(window.LEGAL_DICT) : "LEGAL_DICT not loaded");
 
-    // Dicts with English fallback
-    var UI_EN = (window.LEGAL_UI && window.LEGAL_UI.en) || {};
-    var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT.en) || {};
-    var UI = (window.LEGAL_UI && window.LEGAL_UI[lang]) || UI_EN;
-    var DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) || DICT_EN;
-    
-    console.log("[Legal i18n] Using language dictionary:", lang, "Found:", !!window.LEGAL_DICT[lang]);
+      // Dicts with English fallback
+      var UI_EN = (window.LEGAL_UI && window.LEGAL_UI.en) || {};
+      var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT.en) || {};
+      var UI = (window.LEGAL_UI && window.LEGAL_UI[lang]) || UI_EN;
+      var DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) || DICT_EN;
+      
+      console.log("[Legal i18n] Using language dictionary:", lang, "Found:", !!window.LEGAL_DICT[lang]);
 
     // Determine page key
     var body = document.body;
@@ -529,5 +530,8 @@
       setPrefCookies(L, C || "EUR");
       location.reload(); // rehydrate in chosen language
     };
+    } catch (e) {
+      console.error("[Legal i18n] Hydration error (continuing anyway):", e);
+    }
   });
 })();
