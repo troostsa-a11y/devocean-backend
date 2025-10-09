@@ -146,11 +146,21 @@ if ('scrollRestoration' in history) {
   wireDesktopLinks();
   rebuildMobileMenu();
   
-  // Watch for link changes (i18n populating links)
-  new MutationObserver(function(){ 
-    wireDesktopLinks();
-    rebuildMobileMenu();
-  }).observe(document.body || document.documentElement, { subtree:true, childList:true });
+  // Watch ONLY the desktop quick-nav-links container for changes (i18n populating links)
+  var desktopLinksContainer = document.querySelector('.quick-nav-links');
+  if (desktopLinksContainer) {
+    var linkObserver = new MutationObserver(function(mutations){ 
+      var hasNewLinks = false;
+      mutations.forEach(function(mutation) {
+        if (mutation.addedNodes.length > 0) hasNewLinks = true;
+      });
+      if (hasNewLinks) {
+        wireDesktopLinks();
+        rebuildMobileMenu();
+      }
+    });
+    linkObserver.observe(desktopLinksContainer, { childList: true, subtree: true });
+  }
 
   // If opening on a deep link, correct once instantly (no smooth)
   if (window.location.hash) {
