@@ -235,6 +235,15 @@ if ('scrollRestoration' in history) {
  window.addEventListener('load', setHeaderVar, {once:true});
  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(setHeaderVar); }
  window.addEventListener('resize', setHeaderVar);
+ 
+ // Watch for DOM mutations in header (i18n content injection)
+ if (header) {
+  var headerObserver = new MutationObserver(function(mutations){
+   // Re-measure header when content is added/changed
+   setHeaderVar();
+  });
+  headerObserver.observe(header, { childList: true, subtree: true, characterData: true });
+ }
  function getHeaderOffset(){
  var cssVar = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
  var n = parseInt(cssVar) || (header ? header.offsetHeight : 0) || 0;
