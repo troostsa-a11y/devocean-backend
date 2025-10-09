@@ -1,0 +1,54 @@
+Let’s lock this down with two things:
+
+ready-to-use HTML files that point to the patched assets
+
+a short, practical checklist to catch any remaining causes
+
+1) Drop-in pages (wired to the fixed assets)
+
+Use these as your canonical versions; they reference assets/legal.fixed.css + assets/legal.fixed.js.
+
+Privacy → privacy.legal.deploy.html
+
+Cookies → cookies.legal.deploy.html
+
+Terms → terms.legal.deploy.html
+
+GDPR → gdpr.legal.deploy.html
+
+CRIC → cric.legal.deploy.html
+
+And the patched shared assets (from earlier):
+
+CSS → assets/legal.fixed.css
+
+JS → assets/legal.fixed.js
+
+Place the two files in your site under /assets/ and upload the five HTMLs.
+
+2) Quick “it still misbehaves” checklist
+
+If anything still looks off after swapping in the deploy files + fixed assets:
+
+Confirm the asset paths resolve:
+
+Open DevTools → Network → reload. You should see assets/legal.fixed.css and assets/legal.fixed.js 200-OK.
+
+Ensure no other CSS sets html { scroll-behavior: smooth; } (search your global CSS). We removed it from the shared bundle so JS can control the exact offset.
+
+Check the CSS var on first paint: in Console run
+getComputedStyle(document.documentElement).getPropertyValue('--header-height') — it should be > 0px after load. If it’s 0px, there’s likely a different header selector; make sure the header has the class .sticky-header.
+
+Verify one sticky header only. Duplicate fixed headers or extra top banners will throw off the offset.
+
+Inspect the first section’s top padding (in Elements): the element immediately following the sticky header should have a padding-top: calc(var(--header-height) + 20px).
+
+If landing on a deep hash URL (e.g., /privacy.html#rights), the JS performs a one-time instant correction; make sure no external script later auto-scrolls.
+
+If you want, I can also:
+
+inline a super-small early script tag before your other scripts that sets --header-height even sooner (usually not necessary now), or
+
+scan your layout CSS for any remaining scroll-behavior:smooth or global overflow that could block the top scroll.
+
+Tell me where you’re deploying (path prefix for /assets/), and I’ll re-point all five HTML files accordingly so you can just upload and go.
