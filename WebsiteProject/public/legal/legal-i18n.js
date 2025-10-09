@@ -78,20 +78,25 @@
     var src = readLS("site.lang_source") || "auto";
     var lang = readLS("site.lang");
     var cur = readLS("site.currency");
+    
+    console.log("[Legal i18n SEED] Initial values - source:", src, "lang:", lang, "currency:", cur);
 
     if (!readLS("site.lang_source")) { writeLS("site.lang_source", "auto"); src = "auto"; }
 
     if (src === "auto") {
       var navLang = normLang(navigator.language);
       if (SUPPORTED.indexOf(navLang) === -1) navLang = "en";
+      console.log("[Legal i18n SEED] AUTO mode - setting lang to browser:", navLang);
       writeLS("site.lang", navLang);
       writeLS("site.currency", inferCurrency(navLang));
       lang = navLang;
       cur = readLS("site.currency");
     } else {
+      console.log("[Legal i18n SEED] USER mode - using stored lang:", lang);
       if (!lang) {
         lang = normLang(navigator.language);
         if (SUPPORTED.indexOf(lang) === -1) lang = "en";
+        console.log("[Legal i18n SEED] No stored lang, fallback to:", lang);
         writeLS("site.lang", lang);
       }
       if (!cur) {
@@ -99,6 +104,8 @@
         writeLS("site.currency", cur);
       }
     }
+    
+    console.log("[Legal i18n SEED] Final values - lang:", lang, "currency:", cur);
 
     try { document.documentElement.setAttribute("lang", lang || "en"); } catch (_) { }
   })();
@@ -106,12 +113,20 @@
   /* ---------- hydration ---------- */
   onReady(function () {
     var lang = readLS("site.lang") || normLang(navigator.language);
+    
+    // DEBUG: Log language detection
+    console.log("[Legal i18n] Language detected:", lang);
+    console.log("[Legal i18n] localStorage site.lang:", readLS("site.lang"));
+    console.log("[Legal i18n] localStorage site.lang_source:", readLS("site.lang_source"));
+    console.log("[Legal i18n] Available LEGAL_DICT languages:", window.LEGAL_DICT ? Object.keys(window.LEGAL_DICT) : "LEGAL_DICT not loaded");
 
     // Dicts with English fallback
     var UI_EN = (window.LEGAL_UI && window.LEGAL_UI.en) || {};
     var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT.en) || {};
     var UI = (window.LEGAL_UI && window.LEGAL_UI[lang]) || UI_EN;
     var DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) || DICT_EN;
+    
+    console.log("[Legal i18n] Using language dictionary:", lang, "Found:", !!window.LEGAL_DICT[lang]);
 
     // Determine page key
     var body = document.body;
