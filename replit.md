@@ -105,6 +105,14 @@ Preferred communication style: Simple, everyday language.
   - CookieYes CMP (loader) tag with priority 100 (loaded through GTM)
   - CookieYes Consent Mode Bridge updates consent when users interact (loaded through GTM)
   - All consent management logic handled by GTM tags, not page-level scripts
+- **Legal Pages Optimization (Oct 2025):**
+  - Consolidated head section across all 5 legal pages (cookies, privacy, terms, GDPR, CRIC)
+  - Removed 4+ duplicate GTM scripts, now single canonical GTM snippet per page
+  - Consent Mode v2 defaults set BEFORE GTM loads (GDPR compliance best practice)
+  - Performance hints: preconnect/dns-prefetch for GTM, Cloudflare Insights, Google Analytics
+  - Deferred i18n scripts (non-blocking page load)
+  - Deduplicated CSS (removed 3x duplicate :root, .quick-nav definitions)
+  - Accessible focus styles using `var(--focus)` blue outline visible on all backgrounds
 
 **Booking Integration:**
 - External booking engine at book.devoceanlodge.com with parameterized URLs.
