@@ -16,7 +16,8 @@
     ptmz: { back: "Início",                 updated: "Última atualização" },
     fr:   { back: "Accueil",                updated: "Dernière mise à jour" },
     it:   { back: "Home",                   updated: "Ultimo aggiornamento" },
-    es:   { back: "Inicio",                 updated: "Última actualización" }
+    es:   { back: "Inicio",                 updated: "Última actualización" },
+    sv:   { back: "Hem",                    updated: "Senast uppdaterad" }
   };
 
   // Root dict
@@ -3625,6 +3626,365 @@
       legalForm: "Sociedad de responsabilidad limitada",
       businessHours: "Lunes - Viernes: 8:00 - 18:00<br>Sábado & Domingo: 8:00 - 12:00<br>Recepción: 6:00 - 22:00 (para huéspedes)",
       emergencyPhoneNote: "Para asuntos urgentes fuera del horario comercial"
+    }
+  };
+
+  // -------- SWEDISH --------
+  window.LEGAL_DICT.sv = {
+    privacy: {
+      title: "Integritetspolicy",
+      updatedDate: "06 okt 2025",
+      quickLinks: {
+        title: "Snabblänkar",
+        links: [
+          { id: "who", text: "Vilka vi är" },
+          { id: "collect", text: "Datainsamling" },
+          { id: "use", text: "Dataanvändning" },
+          { id: "share", text: "Datadelning" },
+          { id: "security", text: "Säkerhet" },
+          { id: "retention", text: "Lagring" },
+          { id: "rights", text: "Dina rättigheter" },
+          { id: "transfers", text: "Internationella överföringar" },
+          { id: "contact", text: "Kontakt" },
+          { id: "updates", text: "Uppdateringar" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Din integritet är viktig:",
+          body: "Vi är dedikerade till att skydda dina personuppgifter och vara transparenta om hur vi samlar in, använder och skyddar din information."
+        },
+        who: {
+          title: "Vilka vi är",
+          body: "DEVOCEAN Lodge drivs av TERRAfrique LDA, ett företag registrerat i Moçambique. Vår registrerade adress är Rua C, Parcela 12, Maputo 1118, Moçambique. Vi driver miljövänligt strandboende i Ponta do Ouro, Moçambique. Vi är dedikerade till att skydda din integritet och säkerställa att dina personuppgifter samlas in, behandlas och används korrekt, lagligt och transparent i enlighet med tillämpliga dataskyddslagar. Genom att besöka eller använda vår webbplats och tjänster samtycker du till insamling och användning av din information enligt denna integritetspolicy."
+        },
+        collect: {
+          title: "Vilka personuppgifter vi samlar in",
+          intro: "Vi samlar in olika typer av information för att tillhandahålla och förbättra våra tjänster:",
+          categories: [
+            {
+              title: "Personlig information",
+              items: [
+                "Namn, kontaktuppgifter",
+                "Pass-/ID-information",
+                "Betalningsinformation",
+                "Bokningspreferenser"
+              ]
+            },
+            {
+              title: "Teknisk data",
+              items: [
+                "IP-adress, enhetsinformation",
+                "Webbläsartyp och version",
+                "Webbplatsanvändningsanalys",
+                "Cookie-data (med samtycke)"
+              ]
+            },
+            {
+              title: "Kommunikationsdata",
+              items: [
+                "E-postkorrespondens",
+                "Kundserviceförfrågningar",
+                "Feedback och recensioner",
+                "Marknadsföringspreferenser"
+              ]
+            }
+          ]
+        },
+        use: {
+          title: "Hur vi använder dina data",
+          items: [
+            "Hantera bokningar och tillhandahålla tjänster",
+            "Kommunicera om din vistelse, policies och erbjudanden (opt-in)",
+            "Förbättra vår webbplats och tjänster (analys, säkerhet)",
+            "Uppfylla juridiska/ekonomiska skyldigheter"
+          ]
+        },
+        share: {
+          title: "När vi delar data",
+          items: [
+            "Betalningsleverantörer och bokningsplattformar för att behandla dina reservationer och betalningar",
+            "Analystjänster för att förstå webbplatsanvändning och förbättra våra tjänster",
+            "Annonstjänster för riktad marknadsföring (endast med ditt samtycke)",
+            "IT-tjänsteleverantörer, hostingleverantörer och teknisk support under strikta sekretessavtal",
+            "Rättsmyndigheter när det krävs enligt lag, förordning, domstolsbeslut eller annan rättslig process",
+            "För att upprätthålla våra avtal eller skydda våra rättigheter, egendom eller säkerhet",
+            "Vid en fusion, förvärv eller försäljning av tillgångar kan din information överföras till den nya ägaren"
+          ],
+          footer: "Vi kräver att alla tredje parter respekterar säkerheten för dina personuppgifter och endast använder dem för de ändamål för vilka de överfördes. Vi tillåter inte tredje parter att använda dina personuppgifter för sina egna syften och tillåter endast att de behandlar dina data för specificerade ändamål i enlighet med våra instruktioner."
+        },
+        security: {
+          title: "Säkerhetsåtgärder",
+          intro: "Vi tar datasäkerhet på allvar och implementerar:",
+          measures: [
+            "Kryptering av känslig data under överföring och lagring",
+            "Regelbundna säkerhetsutvärderingar och penetrationstester",
+            "Åtkomstkontroller och autentiseringsmekanismer",
+            "Personalutbildning om dataskydd och integritet",
+            "Säker datasäkerhetskopiering och katastrofåterställningsprocedurer"
+          ]
+        },
+        retention: {
+          title: "Datalagring",
+          body: "Vi behåller din personliga information så länge som nödvändigt för att uppfylla de ändamål för vilka den samlades in, enligt beskrivning i denna integritetspolicy. Generellt behåller vi personuppgifter i upp till 1 år efter din senaste interaktion med oss, såvida inte en längre lagringsperiod krävs eller tillåts enligt lag. Vi kan behöva behålla viss information under längre perioder av specifika skäl inklusive: registerföring och rapportering i enlighet med tillämplig lag (vanligtvis 7 år för finansiella och skattemässiga register), upprätthållande av juridiska rättigheter, bedrägeriförebyggande och tvistlösning. När lagringsperioden löper ut kommer dina personuppgifter att raderas säkert eller anonymiseras. Återstående anonym information och aggregerad information, som inte identifierar dig direkt eller indirekt, kan lagras på obestämd tid för statistiska och analytiska ändamål."
+        },
+        rights: {
+          title: "Dina integritetsrättigheter",
+          items: [
+            "Rätt att få tillgång till dina personuppgifter",
+            "Rätt att korrigera felaktig data",
+            "Rätt att radera dina personuppgifter",
+            "Rätt att begränsa eller motsätta sig behandling",
+            "Rätt till dataportabilitet",
+            "Rätt att återkalla samtycke"
+          ]
+        },
+        contact: {
+          title: "Kontakta vårt integritetsteam",
+          body: 'Om du har några frågor, funderingar eller förfrågningar angående denna integritetspolicy eller behandlingen av din personliga information, eller om du vill utöva någon av dina integritetsrättigheter, vänligen kontakta oss på:<br><br><strong>E-post:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Postadress:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Moçambique<br><br>Vi kommer att svara på din förfrågan i enlighet med tillämplig dataskyddslag. För klagomål eller farhågor om behandlingen av din information kan du också kontakta vår dataskyddsombud på e-postadressen ovan.'
+        },
+        transfers: {
+          title: "Internationella dataöverföringar",
+          body: "Eftersom vi verkar i flera jurisdiktioner kan dina data överföras till och behandlas i länder utanför din hemvist. Vi säkerställer att sådana överföringar följer tillämpliga dataskyddslagar genom lämplighetsbeslut från Europeiska kommissionen, standardavtalsklausuler (SCC), lämpliga säkerhetsåtgärder och transparens om överföringsplatser."
+        },
+        updates: {
+          title: "Uppdateringar av policyn",
+          body: "Vi kan uppdatera denna integritetspolicy från tid till annan för att återspegla förändringar i vår praxis, teknik, juridiska krav eller andra faktorer. Vi kommer att meddela dig om väsentliga ändringar genom e-postmeddelanden för registrerade användare, tydliga meddelanden på vår webbplats och ett uppdaterat 'senast uppdaterad'-datum. Vi uppmuntrar dig att regelbundet granska denna policy för att hålla dig informerad om hur vi skyddar din information."
+        }
+      }
+    },
+
+    cookies: {
+      title: "Cookiepolicy",
+      effectiveDate: "19 september 2025",
+      lastUpdated: "06 oktober 2025",
+      managePreferences: "Hantera dina cookieinställningar:",
+      manageText: "Du kan kontrollera vilka cookies vi använder genom vår cookie-banner eller dina webbläsarinställningar.",
+      cookieSettingsBtn: "Cookieinställningar",
+      quickLinks: {
+        title: "Snabblänkar",
+        links: [
+          { id: "what", text: "Vad är cookies" },
+          { id: "how", text: "Hur vi använder cookies" },
+          { id: "necessary", text: "Nödvändiga" },
+          { id: "functional", text: "Funktionella" },
+          { id: "analytics", text: "Analys" },
+          { id: "advertisement", text: "Annonsering" },
+          { id: "manage", text: "Hantera preferenser" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Om cookies",
+          body: "Du kan kontrollera vilka cookies vi använder genom vår cookie-banner eller dina webbläsarinställningar."
+        },
+        what: {
+          title: "Vad är cookies?",
+          body: "Denna cookiepolicy förklarar vad cookies är, hur vi använder dem, vilka typer av cookies vi använder (dvs. vilken information vi samlar in med cookies och hur den informationen används), och hur du hanterar dina cookieinställningar.<br /><br />Cookies är små textfiler som används för att lagra små informationsbitar. De lagras på din enhet när en webbplats laddas i din webbläsare. Dessa cookies hjälper till att säkerställa att webbplatsen fungerar korrekt, förbättra säkerheten, ge en bättre användarupplevelse och analysera prestanda för att identifiera vad som fungerar och var förbättringar behövs."
+        },
+        how: {
+          title: "Hur använder vi cookies?",
+          body: "Liksom de flesta onlinetjänster använder vår webbplats både förstaparts- och tredjepartscookies för olika ändamål. Förstapartscookies är främst nödvändiga för att webbplatsen ska fungera korrekt och samlar inte in några personligt identifierbara data.<br /><br />Tredjepartscookiesen som används på vår webbplats hjälper oss främst att förstå hur webbplatsen presterar, spåra hur du interagerar med den, hålla våra tjänster säkra, leverera relevanta annonser och förbättra din övergripande användarupplevelse samtidigt som hastigheten på dina framtida interaktioner med vår webbplats förbättras."
+        },
+        necessary: {
+          title: "Nödvändiga cookies",
+          description: "Nödvändiga cookies krävs för att aktivera de grundläggande funktionerna på denna webbplats, såsom att tillhandahålla säker inloggning eller justera dina samtyckespr preferenser. Dessa cookies lagrar ingen personligt identifierbar data."
+        },
+        functional: {
+          title: "Funktionella cookies",
+          description: "Funktionella cookies hjälper till att utföra vissa funktioner som att dela webbplatsens innehåll på sociala medieplattformar, samla in feedback och andra tredjepartsfunktioner."
+        },
+        analytics: {
+          title: "Analyscookies",
+          description: "Analyscookies används för att förstå hur besökare interagerar med webbplatsen. Dessa cookies hjälper till att ge information om mätvärden som antal besökare, avvisningsfrekvens, trafikkälla, etc."
+        },
+        advertisement: {
+          title: "Annonscookies",
+          description: "Annonscookies används för att ge besökare anpassade annonser baserat på de sidor du besökt tidigare och för att analysera annons kampanjernas effektivitet."
+        },
+        manage: {
+          title: "Hantera cookieinställningar",
+          consentTitle: "Samtyckespr preferenser",
+          consentText: "Du kan när som helst ändra dina cookieinställningar genom att klicka på knappen 'Samtyckespr preferenser' ovan. Detta gör att du kan återbesöka cookie-samtyckesbannern och uppdatera dina preferenser eller återkalla ditt samtycke omedelbart.",
+          browserText: "Dessutom erbjuder olika webbläsare olika metoder för att blockera och radera cookies som används av webbplatser. Du kan justera dina webbläsarinställningar för att blockera eller radera cookies. Nedan finns länkar till supportdokument om hur du hanterar och raderar cookies i större webbläsare."
+        }
+      }
+    },
+
+    terms: {
+      title: "Villkor",
+      updatedDate: "06 okt 2025",
+      quickLinks: {
+        title: "Snabblänkar",
+        links: [
+          { id: "agreement", text: "Avtal" },
+          { id: "booking", text: "Bokning & Betalning" },
+          { id: "cancellation", text: "Avbokning" },
+          { id: "conduct", text: "Gästbeteende" },
+          { id: "liability", text: "Ansvar" },
+          { id: "force", text: "Force Majeure" },
+          { id: "ip", text: "Immateriella rättigheter" },
+          { id: "disputes", text: "Tvistlösning" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Bokningsvillkor:",
+          body: "Vänligen läs dessa villkor noggrant innan du gör en reservation. Genom att boka hos oss godkänner du dessa villkor."
+        },
+        agreement: {
+          title: "Avtal om villkor",
+          body: "Genom att besöka vår webbplats, göra en bokning eller använda våra tjänster godkänner du att vara bunden av dessa villkor. Om du inte godkänner någon del av dessa villkor, vänligen använd inte våra tjänster. Dessa villkor gäller alla besökare, användare och gäster på DEVOCEAN Lodge som drivs av TERRAfrique LDA."
+        },
+        booking: {
+          title: "Bokning och betalning",
+          body: "Alla bokningar är föremål för tillgänglighet och bekräftelse av DEVOCEAN Lodge. En bokning är endast bekräftad när du får ett bekräftelsemail från oss. Full betalning eller en deposition (enligt specifikation vid bokning) krävs för att säkra din reservation. Betalning kan göras via vårt säkra online-bokningssystem eller genom överenskomna betalningsmetoder. Priser anges i vald valuta och kan ändras utan föregående meddelande tills bokningen bekräftas."
+        },
+        cancellation: {
+          title: "Avbokningspolicy",
+          intro: "Vår avbokningspolicy är följande:",
+          items: [
+            "Avbokningar gjorda 30+ dagar före incheckning: Full återbetalning minus 10% administrativ avgift",
+            "Avbokningar gjorda 15-29 dagar före incheckning: 50% återbetalning",
+            "Avbokningar gjorda mindre än 15 dagar före incheckning: Ingen återbetalning",
+            "Uteblivande: Ingen återbetalning"
+          ],
+          footer: "För att avboka en bokning, kontakta oss på info@devoceanlodge.com med din bokningsreferens. Återbetalningar kommer att behandlas inom 14 arbetsdagar till den ursprungliga betalningsmetoden."
+        },
+        conduct: {
+          title: "Gästbeteende och ansvar",
+          intro: "Gäster förväntas:",
+          items: [
+            "Respektera andra gäster, personal och fastigheten",
+            "Följa alla säkerhetsriktlinjer och lodgens regler",
+            "Rapportera eventuella skador eller problem omedelbart",
+            "Inte delta i olagliga aktiviteter på området",
+            "Följa lokala lagar och seder"
+          ],
+          footer: "Vi förbehåller oss rätten att avsluta en gästs vistelse utan återbetalning om dessa standarder överträds. Gäster är ansvariga för eventuella skador orsakade på fastigheten eller dess innehåll under deras vistelse. Avgifter för skador kommer att dras från depositionen eller faktureras separat."
+        },
+        liability: {
+          title: "Ansvarsbegränsning",
+          body: "DEVOCEAN Lodge och TERRAfrique LDA ska inte hållas ansvariga för: Förlust, stöld eller skada på personliga tillhörigheter; Skador som uppstått under din vistelse förutom där de orsakats av vår vårdslöshet; Olägenheter eller förluster på grund av omständigheter utanför vår kontroll (strömavbrott, naturkatastrofer, etc.); Aktiviteter eller tjänster som tillhandahålls av tredjepartsoperatörer. Vi rekommenderar starkt att alla gäster skaffar omfattande reseförsäkring som täcker avbokning, medicinska kostnader, personligt ansvar och förlust av personliga tillhörigheter. Även om vi upprätthåller fastigheten till höga säkerhetsstandarder, deltar gäster i alla aktiviteter på egen risk."
+        },
+        force: {
+          title: "Force Majeure",
+          body: "Vi ska inte hållas ansvariga för eventuell underlåtenhet att utföra våra skyldigheter där sådan underlåtenhet beror på omständigheter utanför vår rimliga kontroll, inklusive men inte begränsat till: naturkatastrofer (översvämningar, jordbävningar, stormar), krig, civil oro eller terroristaktiviteter, regeringsbegränsningar eller förordningar, pandemier eller folkhälsonödsituationer, infrastrukturfel (el, vatten, telekommunikation). Under sådana omständigheter förbehåller vi oss rätten att avboka eller ändra bokningar. Om vi avbokar på grund av force majeure kommer vi att erbjuda full återbetalning eller möjligheten att omboka. Observera att reseförsäkring vanligtvis utesluter täckning för 'kända händelser' - vi rekommenderar starkt att köpa omfattande reseförsäkring omedelbart efter bokning för att säkerställa maximal täckning för oförutsedda omständigheter."
+        },
+        ip: {
+          title: "Immateriella rättigheter",
+          body: "Allt innehåll på vår webbplats, inklusive text, grafik, logotyper, bilder och programvara, är egendom tillhörande DEVOCEAN Lodge / TERRAfrique LDA eller dess innehållsleverantörer och skyddas av lagar om immateriella rättigheter. Du får inte reproducera, distribuera, modifiera eller skapa härledda verk från något innehåll utan vårt uttryckliga skriftliga tillstånd. Fotografier tagna av gäster får endast användas för personliga ändamål. Kommersiell användning av bilder eller innehåll relaterat till DEVOCEAN Lodge kräver föregående skriftligt samtycke."
+        },
+        disputes: {
+          title: "Tvistlösning och tillämplig lag",
+          body: "Dessa villkor styrs av och tolkas i enlighet med Moçambiques lagar. Eventuella tvister som uppstår från dessa villkor eller din vistelse ska först försöka lösas genom förhandlingar i god tro. Om en lösning inte kan nås inom 30 dagar ska tvisten bli föremål för den exklusiva jurisdiktionen för Moçambiques domstolar. För konsumenttvister inom EU kan du också använda EU:s onlineplattform för tvistlösning."
+        }
+      }
+    },
+
+    gdpr: {
+      title: "GDPR-meddelande",
+      updatedDate: "06 okt 2025",
+      quickLinks: {
+        title: "Snabblänkar",
+        links: [
+          { id: "scope", text: "GDPR-tillämpning" },
+          { id: "legal", text: "Rättslig grund" },
+          { id: "rights", text: "Dina rättigheter" },
+          { id: "requests", text: "Dataförfrågningar" },
+          { id: "lodge", text: "Lämna in klagomål" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "EU-dataskydd:",
+          body: "Dina rättigheter enligt den allmänna dataskyddsförordningen (GDPR) när du använder våra tjänster."
+        },
+        scope: {
+          title: "GDPR-tillämpning och tillämplighet",
+          body: "Detta GDPR-meddelande gäller om du är en individ i Europeiska ekonomiska samarbetsområdet (EES) eller Storbritannien. Det kompletterar vår integritetspolicy och förklarar dina rättigheter enligt den allmänna dataskyddsförordningen (GDPR). DEVOCEAN Lodge (drivet av TERRAfrique LDA) behandlar personuppgifter för EU/UK-invånare i enlighet med GDPR-krav, även om vi är baserade i Moçambique."
+        },
+        legal: {
+          title: "Rättslig grund för behandling",
+          intro: "Vi behandlar dina personuppgifter under följande rättsliga grunder:",
+          items: [
+            "Avtalsuppfyllelse: För att uppfylla vårt bokningsavtal med dig",
+            "Berättigade intressen: För att förbättra våra tjänster och förhindra bedrägeri",
+            "Rättslig skyldighet: För att uppfylla skatte- och ekonomiska registreringskrav",
+            "Samtycke: För marknadsföringskommunikation och icke-nödvändiga cookies (du kan när som helst återkalla samtycke)"
+          ]
+        },
+        rights: {
+          title: "Dina GDPR-rättigheter",
+          intro: "Enligt GDPR har du rätt till:",
+          items: [
+            "Tillgång: Begära en kopia av dina personuppgifter vi har",
+            "Rättelse: Korrigera felaktig eller ofullständig data",
+            "Radering ('Rätt att bli glömd'): Begära radering av dina data",
+            "Begränsning: Begränsa hur vi använder dina data under vissa omständigheter",
+            "Dataportabilitet: Ta emot dina data i ett överförbart format",
+            "Invändning: Invända mot behandling baserad på berättigade intressen eller för direktmarknadsföring",
+            "Automatiserat beslutsfattande: Inte bli föremål för beslut som enbart baseras på automatiserad behandling",
+            "Återkalla samtycke: Återkalla samtycke när som helst där behandling baseras på samtycke"
+          ]
+        },
+        requests: {
+          title: "Göra en begäran om registerutdrag",
+          body: "För att utöva någon av dina GDPR-rättigheter, vänligen kontakta oss på info@devoceanlodge.com med 'GDPR-begäran' i ämnesraden. Vänligen inkludera: Ditt fullständiga namn och kontaktuppgifter; Den specifika rättighet du vill utöva; Eventuella relevanta detaljer för att hjälpa oss hitta dina data. Vi kommer att svara på din begäran inom en månad. I komplexa fall kan vi förlänga detta med ytterligare två månader och kommer att informera dig om förseningen. Vi kan begära ytterligare information för att verifiera din identitet innan vi behandlar din begäran. Det finns ingen avgift för att göra en begäran såvida den inte är uppenbart ogrundad eller överdriven, i vilket fall vi kan ta ut en rimlig administrativ avgift."
+        },
+        lodge: {
+          title: "Rätt att lämna in klagomål",
+          body: "Om du anser att vi inte har hanterat dina personuppgifter i enlighet med GDPR har du rätt att lämna in ett klagomål till en tillsynsmyndighet. Du kan klaga till dataskyddsmyndigheten i: Ditt hemland inom EU/UK; Din arbetsplats inom EU/UK; Platsen där du tror att dataskyddsöverträdelsen inträffade. För en lista över EU:s dataskyddsmyndigheter, besök: https://edpb.europa.eu/about-edpb/board/members_en. Vi skulle uppskatta möjligheten att hantera dina problem innan du kontaktar en tillsynsmyndighet, så vänligen kontakta oss först på info@devoceanlodge.com."
+        }
+      }
+    },
+
+    cric: {
+      title: "Företag & Kontakt",
+      updatedDate: "06 okt 2025",
+      quickLinks: {
+        title: "Snabblänkar",
+        links: [
+          { id: "company", text: "Företagsinformation" },
+          { id: "contact", text: "Kontaktuppgifter" },
+          { id: "consumer", text: "Konsumenträttigheter" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Företagsinformation:",
+          body: "Registreringsuppgifter och kontaktinformation för DEVOCEAN Lodge."
+        },
+        company: {
+          title: "Företagsinformation",
+          body: "Fullständiga företagsregistreringsuppgifter och kontaktinformation för DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Kontakt",
+          body: 'För allmänna förfrågningar, bokningar och information om våra tjänster, använd kontaktuppgifterna nedan.'
+        },
+        emergency: {
+          title: "Nödkontakt",
+          body: "För brådskande ärenden utanför kontorstid, använd våra nödkontaktuppgifter."
+        }
+      },
+      labels: {
+        companyName: "Företagsnamn",
+        registration: "Företagsregistrering",
+        vat: "Momsregistreringsnummer (NUIT)",
+        license: "Affärslicens (Alvará)",
+        legalForm: "Juridisk form",
+        capital: "Aktiekapital",
+        address: "Registrerad adress",
+        email: "E-post",
+        phone: "Telefon",
+        businessHours: "Öppettider",
+        emergencyPhone: "Nödtelefon",
+        emergencyEmail: "Nöd-e-post"
+      },
+      legalForm: "Aktiebolag med begränsat ansvar",
+      businessHours: "Måndag - Fredag: 8:00 - 18:00<br>Lördag & Söndag: 8:00 - 12:00<br>Reception: 6:00 - 22:00 (för gäster)",
+      emergencyPhoneNote: "För brådskande ärenden utanför kontorstid"
     }
   };
   
