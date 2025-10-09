@@ -87,9 +87,44 @@ if ('scrollRestoration' in history) {
       .observe(header, { subtree: true, childList: true, characterData: true });
   }
 
-  // Wire desktop & mobile quick links immediately (no gating)
-  function wireLinks(root){
-    (root || document).querySelectorAll('.quick-nav-links a[href^="#"], .mobile-quick-nav a[href^="#"]')
+  // Populate mobile menu from desktop links
+  function rebuildMobileMenu() {
+    var desktopLinks = document.querySelector('.quick-nav-links');
+    var mobileNav = document.getElementById('mobile-nav');
+    if (!desktopLinks || !mobileNav) return;
+    
+    var links = desktopLinks.querySelectorAll('a[href^="#"]');
+    if (links.length === 0) return;
+    
+    mobileNav.innerHTML = '';
+    links.forEach(function(link) {
+      var a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = link.textContent;
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        var id = (a.getAttribute('href') || '').slice(1);
+        if (!id) return;
+        
+        // Close mobile menu
+        mobileNav.classList.remove('show');
+        var btn = document.querySelector('.mobile-menu-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        
+        history.replaceState(null, '', '#' + id);
+        var el = document.getElementById(id);
+        if (!el) return;
+        var h = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+        var y = window.scrollY + el.getBoundingClientRect().top - h - 8;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      });
+      mobileNav.appendChild(a);
+    });
+  }
+
+  // Wire desktop quick links
+  function wireDesktopLinks(){
+    document.querySelectorAll('.quick-nav-links a[href^="#"]')
       .forEach(function(a){
         if (a.__wired) return;
         a.__wired = true;
@@ -106,9 +141,16 @@ if ('scrollRestoration' in history) {
         });
       });
   }
-  wireLinks();
-  new MutationObserver(function(){ wireLinks(document); })
-    .observe(document.body || document.documentElement, { subtree:true, childList:true });
+  
+  // Initial wire and rebuild
+  wireDesktopLinks();
+  rebuildMobileMenu();
+  
+  // Watch for link changes (i18n populating links)
+  new MutationObserver(function(){ 
+    wireDesktopLinks();
+    rebuildMobileMenu();
+  }).observe(document.body || document.documentElement, { subtree:true, childList:true });
 
   // If opening on a deep link, correct once instantly (no smooth)
   if (window.location.hash) {
