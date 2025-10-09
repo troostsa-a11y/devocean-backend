@@ -3957,58 +3957,127 @@
     },
 
     gdpr: {
-      title: "GDPR-meddelande",
+      title: "GDPR-information",
       updatedDate: "06 okt 2025",
       quickLinks: {
         title: "Snabblänkar",
         links: [
-          { id: "scope", text: "GDPR-tillämpning" },
-          { id: "legal", text: "Rättslig grund" },
+          { id: "controller", text: "Personuppgiftsansvarig" },
+          { id: "bases", text: "Rättslig grund" },
           { id: "rights", text: "Dina rättigheter" },
-          { id: "requests", text: "Dataförfrågningar" },
-          { id: "lodge", text: "Lämna in klagomål" }
+          { id: "retention", text: "Lagringstider" },
+          { id: "transfers", text: "Internationella överföringar" },
+          { id: "complaints", text: "Klagomål" },
+          { id: "dpo", text: "Kontakt (GDPR)" }
         ]
       },
       sections: {
         badge: {
-          title: "EU-dataskydd:",
-          body: "Dina rättigheter enligt den allmänna dataskyddsförordningen (GDPR) när du använder våra tjänster."
+          title: "GDPR-kompatibel:",
+          body: "Vi är dedikerade till att skydda dina personuppgifter och respektera dina integritetsrättigheter enligt den allmänna dataskyddsförordningen."
         },
-        scope: {
-          title: "GDPR-tillämpning och tillämplighet",
-          body: "Detta GDPR-meddelande gäller om du är en individ i Europeiska ekonomiska samarbetsområdet (EES) eller Storbritannien. Det kompletterar vår integritetspolicy och förklarar dina rättigheter enligt den allmänna dataskyddsförordningen (GDPR). DEVOCEAN Lodge (drivet av TERRAfrique LDA) behandlar personuppgifter för EU/UK-invånare i enlighet med GDPR-krav, även om vi är baserade i Moçambique."
+        controller: {
+          title: "Personuppgiftsansvarig",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), registrerat på Rua C, Parcela 12, Maputo 1118, Moçambique, agerar som personuppgiftsansvarig för dina personuppgifter som samlas in genom våra tjänster."
         },
-        legal: {
+        bases: {
           title: "Rättslig grund för behandling",
-          intro: "Vi behandlar dina personuppgifter under följande rättsliga grunder:",
-          items: [
-            "Avtalsuppfyllelse: För att uppfylla vårt bokningsavtal med dig",
-            "Berättigade intressen: För att förbättra våra tjänster och förhindra bedrägeri",
-            "Rättslig skyldighet: För att uppfylla skatte- och ekonomiska registreringskrav",
-            "Samtycke: För marknadsföringskommunikation och icke-nödvändiga cookies (du kan när som helst återkalla samtycke)"
-          ]
+          body: "Vi behandlar dina personuppgifter baserat på följande rättsliga grunder enligt GDPR:"
         },
         rights: {
           title: "Dina GDPR-rättigheter",
-          intro: "Enligt GDPR har du rätt till:",
+          body: "Som registrerad under GDPR har du följande rättigheter angående dina personuppgifter:"
+        },
+        retention: {
+          title: "Datalagring",
+          periodsTitle: "Lagringstider",
+          intro: "Vi behåller personuppgifter endast så länge som nödvändigt för att uppfylla de ändamål för vilka de samlades in, inklusive juridiska, redovisnings- eller rapporteringskrav.",
           items: [
-            "Tillgång: Begära en kopia av dina personuppgifter vi har",
-            "Rättelse: Korrigera felaktig eller ofullständig data",
-            "Radering ('Rätt att bli glömd'): Begära radering av dina data",
-            "Begränsning: Begränsa hur vi använder dina data under vissa omständigheter",
-            "Dataportabilitet: Ta emot dina data i ett överförbart format",
-            "Invändning: Invända mot behandling baserad på berättigade intressen eller för direktmarknadsföring",
-            "Automatiserat beslutsfattande: Inte bli föremål för beslut som enbart baseras på automatiserad behandling",
-            "Återkalla samtycke: Återkalla samtycke när som helst där behandling baseras på samtycke"
+            "<strong>Bokningsdata:</strong> 7 år för skatte- och juridisk efterlevnad",
+            "<strong>Kundtjänstkommunikation:</strong> 3 år",
+            "<strong>Marknadsföringssamtycke:</strong> Tills samtycke återkallas",
+            "<strong>Webbplatsanalys:</strong> 26 månader",
+            "<strong>Finansiella transaktioner:</strong> 10 år för redovisningsändamål"
           ]
         },
-        requests: {
-          title: "Göra en begäran om registerutdrag",
-          body: "För att utöva någon av dina GDPR-rättigheter, vänligen kontakta oss på info@devoceanlodge.com med 'GDPR-begäran' i ämnesraden. Vänligen inkludera: Ditt fullständiga namn och kontaktuppgifter; Den specifika rättighet du vill utöva; Eventuella relevanta detaljer för att hjälpa oss hitta dina data. Vi kommer att svara på din begäran inom en månad. I komplexa fall kan vi förlänga detta med ytterligare två månader och kommer att informera dig om förseningen. Vi kan begära ytterligare information för att verifiera din identitet innan vi behandlar din begäran. Det finns ingen avgift för att göra en begäran såvida den inte är uppenbart ogrundad eller överdriven, i vilket fall vi kan ta ut en rimlig administrativ avgift."
+        transfers: {
+          title: "Internationella dataöverföringar",
+          body: "När vi överför dina data utanför Europeiska ekonomiska samarbetsområdet (EES) säkerställer vi att lämpliga skyddsåtgärder finns på plats för att skydda din information. Detta kan inkludera användning av standardavtalsklausuler godkända av Europeiska kommissionen eller överföring av data till länder med adekvat skyddsnivå."
         },
-        lodge: {
-          title: "Rätt att lämna in klagomål",
-          body: "Om du anser att vi inte har hanterat dina personuppgifter i enlighet med GDPR har du rätt att lämna in ett klagomål till en tillsynsmyndighet. Du kan klaga till dataskyddsmyndigheten i: Ditt hemland inom EU/UK; Din arbetsplats inom EU/UK; Platsen där du tror att dataskyddsöverträdelsen inträffade. För en lista över EU:s dataskyddsmyndigheter, besök: https://edpb.europa.eu/about-edpb/board/members_en. Vi skulle uppskatta möjligheten att hantera dina problem innan du kontaktar en tillsynsmyndighet, så vänligen kontakta oss först på info@devoceanlodge.com."
+        complaints: {
+          title: "Klagomål",
+          intro: "Om du har farhågor om hur vi hanterar dina personuppgifter har du rätt att lämna in ett klagomål till din lokala dataskyddsmyndighet.",
+          footer: "Vi uppmuntrar dig att kontakta oss först för att lösa eventuella problem innan du vänder dig till tillsynsmyndigheten."
+        },
+        dpo: {
+          title: "Kontakta vårt dataskyddsombud",
+          body: 'För GDPR-relaterade frågor eller för att utöva dina rättigheter, vänligen kontakta vårt dataskyddsombud på <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Vi kommer att svara på din begäran inom 30 dagar enligt GDPR-kraven.'
+        }
+      },
+      legalBases: {
+        contract: {
+          title: "Avtal:",
+          body: "Behandling nödvändig för att uppfylla våra bokningsavtal och tjänster."
+        },
+        legal: {
+          title: "Rättslig skyldighet:",
+          body: "Behandling som krävs för att uppfylla juridiska krav (t.ex. skattelagar)."
+        },
+        legitimate: {
+          title: "Berättigade intressen:",
+          body: "Behandling för våra legitima affärsintressen samtidigt som vi respekterar dina rättigheter."
+        },
+        consent: {
+          title: "Samtycke:",
+          body: "Behandling baserad på ditt uttryckliga samtycke för specifika ändamål."
+        }
+      },
+      rights: {
+        access: {
+          title: "Rätt till tillgång",
+          body: "Du kan begära kopior av dina personuppgifter vi innehar."
+        },
+        rectification: {
+          title: "Rätt till rättelse",
+          body: "Du kan begära korrigering av felaktig eller ofullständig data."
+        },
+        erasure: {
+          title: "Rätt till radering",
+          body: "Du kan begära radering av dina personuppgifter under vissa villkor."
+        },
+        restrict: {
+          title: "Rätt att begränsa behandling",
+          body: "Du kan begära begränsning av hur vi använder dina data."
+        },
+        portability: {
+          title: "Rätt till dataportabilitet",
+          body: "Du kan begära överföring av dina data till en annan organisation."
+        },
+        object: {
+          title: "Rätt att invända",
+          body: "Du kan invända mot vissa typer av behandling av dina data."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Begär datatillgång"
+        },
+        erasure: {
+          text: "Begär dataradering"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Internationella dataöverföringar:",
+          body: "Vi säkerställer att lämpliga skyddsåtgärder finns på plats för alla dataöverföringar utanför EES, inklusive standardavtalsklausuler och adekvata skyddsbeslut."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Ledande tillsynsmyndighet:",
+          name: "Portugisiska dataskyddsmyndigheten (CNPD)",
+          websiteLabel: "Webbplats:",
+          contactLabel: "Kontakt:"
         }
       }
     },

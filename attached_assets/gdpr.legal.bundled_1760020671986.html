@@ -9,8 +9,8 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
 
-  <title>DEVOCEAN Lodge — GDPR Notice</title>
-  <meta name="description" content="GDPR compliance notice for DEVOCEAN Lodge. Learn about your data protection rights and how we handle your personal information." />
+  <title>DEVOCEAN Lodge — GDPR‑information</title>
+  <meta name="description" content="GDPR‑information för DEVOCEAN Lodge. Läs om dina dataskyddsrättigheter och hur vi hanterar dina personuppgifter." />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="https://devoceanlodge.com/legal/GDPR.html" />
 
@@ -61,20 +61,14 @@
   </script>
 
   <!-- Legal i18n (non-blocking) -->
-  <script defer src="/legal/i18n/strings.js?v=39"></script>
+  <script defer src="/legal/i18n/strings.js?v=38"></script>
   <script defer src="/legal/legal-i18n.js?v=38"></script>
 
-  <!-- Legal page styles -->
-  <link rel="stylesheet" href="/legal/legal.min.css?v=1">
-
-
+  <link rel="stylesheet" href="assets/legal.min.css" />
 </head>
 
 <body data-page="gdpr">
-  <a href="#main-content" class="skip-link"
-      onclick="const m=document.getElementById('main-content'); if(m){m.setAttribute('tabindex','-1'); m.focus();}">
-      Skip to main content
-  </a>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
@@ -82,24 +76,23 @@
   </noscript>
 
   <main id="main-content">
-    <header class="sticky-header">
-      <div class="header-inner">
-        <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
-
-        <div class="title-menu-row">
-          <h1 data-role="page-title">GDPR Notice</h1>
-          <!-- Mobile menu button -->
-          <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle menu">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          </button>
-        </div>
+    <div class="sticky-header">
+            <div class="header-inner">
+                <a href="/" data-role="back-link" aria-label="Back to home page">← Back to Home</a>
+                <div class="title-menu-row">
+                    <h1 data-role="page-title">GDPR‑information</h1>
+                    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false"
+                        aria-controls="mobile-nav" aria-label="Toggle menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <line x1="3" y1="12" x2="21" y2="12"></line>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <line x1="3" y1="18" x2="21" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
 
         <p class="updated">
-          <span data-role="updated-label">Last updated</span>:
+          <span data-role="updated-label">Senast uppdaterad</span>:
           <span data-role="updated-date">06 Oct 2025</span>
         </p>
 
@@ -110,13 +103,21 @@
         <!-- Desktop quick links -->
         <nav class="quick-nav" aria-label="Quick navigation" data-section="quickLinks">
           <h3 data-part="title"></h3>
-          <div class="quick-nav-links" data-part="links"></div>
+          <div class="quick-nav-links" data-part="links">
+            <a href="#controller" class="quick-nav-link">Personuppgiftsansvarig</a>
+            <a href="#bases" class="quick-nav-link">Rättslig grund</a>
+            <a href="#rights" class="quick-nav-link">Dina rättigheter</a>
+            <a href="#retention" class="quick-nav-link">Lagringstider</a>
+            <a href="#transfers" class="quick-nav-link">Internationella överföringar</a>
+            <a href="#complaints" class="quick-nav-link">Klagomål</a>
+            <a href="#dpo" class="quick-nav-link">Kontakt (GDPR)</a>
+</div>
         </nav>
 
         <!-- Mobile dropdown menu -->
         <div id="mobile-nav" class="mobile-quick-nav"></div>
       </div>
-    </header>
+    </div>
 
     <script>
       (function() {
@@ -234,9 +235,161 @@
     </section>
   </main>
 
-  <!-- Legal page scripts -->
-  <script src="/legal/legal.min.js?v=1"></script>
+  <script>
+    function copySectionLink(sectionId) {
+      const url = window.location.origin + window.location.pathname + '#' + sectionId;
+      
+      navigator.clipboard.writeText(url).then(() => {
+        const button = event.target;
+        const originalText = button.innerHTML;
+        button.innerHTML = '✓ Copied!';
+        button.style.opacity = '1';
+        
+        setTimeout(() => {
+          button.innerHTML = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy link:', err);
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          const button = event.target;
+          const originalText = button.innerHTML;
+          button.innerHTML = '✓ Copied!';
+          setTimeout(() => {
+            button.innerHTML = originalText;
+          }, 2000);
+        } catch (fallbackErr) {
+          console.error('Fallback copy failed:', fallbackErr);
+        }
+        document.body.removeChild(textArea);
+      });
+    }
 
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobile-nav');
+      const btn = document.querySelector('.mobile-menu-btn');
+      const isOpen = mobileNav.classList.contains('show');
+      
+      if (isOpen) {
+        mobileNav.classList.remove('show');
+        btn.setAttribute('aria-expanded', 'false');
+        setTimeout(() => setStickyHeaderHeight(), 50);
+      } else {
+        // Populate menu from desktop links before opening
+        mobileNav.innerHTML = '';
+        const desktopLinks = document.querySelectorAll('.quick-nav-links a');
+        if (desktopLinks.length > 0) {
+          desktopLinks.forEach(link => {
+            const mobileLink = document.createElement('a');
+            mobileLink.href = link.href;
+            mobileLink.textContent = link.textContent;
+            mobileLink.onclick = function(e) {
+              e.preventDefault();
+              const targetId = this.href.split('#')[1];
+              
+              // Close menu first
+              mobileNav.classList.remove('show');
+              btn.setAttribute('aria-expanded', 'false');
+              
+              // Wait for menu to close, recalculate header height, then navigate
+              setTimeout(() => {
+                requestAnimationFrame(() => {
+                  setStickyHeaderHeight();
+                  scrollToSection(targetId);
+                });
+              }, 150);
+            };
+            mobileNav.appendChild(mobileLink);
+          });
+        }
+        mobileNav.classList.add('show');
+        btn.setAttribute('aria-expanded', 'true');
+        setTimeout(() => setStickyHeaderHeight(), 50);
+      }
+    }
+
+    function requestData(action) {
+      const actions = {
+        'access': 'data_access',
+        'rectification': 'data_rectification', 
+        'erasure': 'data_erasure',
+        'portability': 'data_portability'
+      };
+      
+      console.log('GDPR request:', actions[action]);
+      
+      const messages = {
+        'access': 'Thank you for your data access request. We will provide your personal data within 30 days as required by GDPR.',
+        'erasure': 'Thank you for your data deletion request. We will process your request within 30 days and confirm once completed.'
+      };
+      
+      alert(messages[action] || 'Request received.');
+      
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'gdpr_request',
+          request_type: actions[action]
+        });
+      }
+    }
+
+    function updateHeaderHeight() {
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (!stickyHeader) return;
+      
+      const height = stickyHeader.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', height + 'px');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateHeaderHeight();
+      
+      window.addEventListener('resize', updateHeaderHeight);
+      
+      const observer = new MutationObserver(updateHeaderHeight);
+      const stickyHeader = document.querySelector('.sticky-header');
+      if (stickyHeader) {
+        observer.observe(stickyHeader, { childList: true, subtree: true });
+      }
+      
+      const quickNavLinks = document.querySelectorAll('.quick-nav-link');
+      quickNavLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+    });
+
+    function trackGDPRView() {
+      if (window.dataLayer) {
+        dataLayer.push({
+          event: 'page_view',
+          page_title: 'GDPR Notice',
+          page_location: window.location.href
+        });
+      }
+    }
+
+    if (document.readyState === 'complete') {
+      trackGDPRView();
+    } else {
+      window.addEventListener('load', trackGDPRView);
+    }
+  </script>
+
+
+
+<script src="assets/legal.min.js"></script>
 </body>
 
 </html>
