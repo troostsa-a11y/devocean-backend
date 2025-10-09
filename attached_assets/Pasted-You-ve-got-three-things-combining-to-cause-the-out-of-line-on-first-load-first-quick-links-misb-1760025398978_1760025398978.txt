@@ -1,0 +1,134 @@
+You’ve got three things combining to cause the “out-of-line on first load” + “first quick links misbehave” + “can’t scroll further up” symptoms:
+
+Top padding uses a large fallback before JS runs
+
+Your layout pushes the content down by calc(var(--header-height, 240px) + 20px). On first paint, --header-height isn’t set yet, so the browser uses the 240px fallback. If your real header is taller (e.g., after i18n fills the title/links), the section top sits under the fixed header until JS updates the variable, which looks like misalignment and can feel like “can’t scroll further up.” 
+
+legal.min (1)
+
+Smooth scroll is enabled both in CSS and in JS
+
+You set html { scroll-behavior: smooth; } and you call window.scrollTo({behavior: 'smooth'}) in JS. Double smoothing during hash/anchor handling can produce slightly wrong first offsets and delayed settling (especially while header height changes). 
+
+legal.min (1)
+
+ 
+
+legal.min (1)
+
+Quick-links are gated for ~600ms and observers don’t activate immediately
+
+The script blocks quick-link clicks until navigationReady === true and delays setup by 600ms to wait for i18n. During that window, clicks are ignored; initial scrollspy also waits to enable, so the “first” links feel broken/misaligned until the delayed init completes. 
+
+legal.min (1)
+
+Minimal fix (safe & targeted)
+A) CSS: remove the risky fallback and avoid double smoothing
+
+Define the var up front and drop the 240px fallback:
+
+Add (near the top):
+:root { --header-height: 0px; }
+
+Change:
+.sticky-header+* { padding-top: calc(var(--header-height) + 20px); }
+
+Remove CSS smooth scroll (let JS handle it precisely):
+Delete html { scroll-behavior: smooth; } (and the duplicate in the mobile media query). 
+
+legal.min (1)
+
+Why: no oversized top gap on first paint; no “dueling” smooth scroll.
+
+B) JS: set header height ASAP, then wire links immediately
+
+In legal.min.js:
+
+Set the CSS var as early as possible, and keep it fresh:
+
+Call updateHeaderHeight() on:
+
+immediate run (already there),
+
+DOMContentLoaded,
+
+load,
+
+resize (already there),
+
+document.fonts?.ready.then(updateHeaderHeight) (fonts can change header height).
+
+Replace the 600ms hard wait with “ready when content exists”:
+
+Keep the MutationObserver for quick-link population, but wire clicks immediately and remove the navigationReady guard (or set it to true as soon as links exist).
+
+When landing with a #hash, do an instant first correction (no smooth), then enable smooth + observer:
+
+First scroll: window.scrollTo({ top: targetY, behavior: 'auto' });
+
+After that, use the existing smooth behavior. 
+
+legal.min (1)
+
+Concrete edits (unminified for clarity):
+
+// after const header = ...
+function updateHeaderHeight(){
+  if (header) {
+    const h = header.offsetHeight;
+    document.documentElement.style.setProperty('--header-height', h + 'px');
+  }
+}
+updateHeaderHeight();
+document.addEventListener('DOMContentLoaded', updateHeaderHeight);
+window.addEventListener('load', updateHeaderHeight);
+if (document.fonts && document.fonts.ready) { document.fonts.ready.then(updateHeaderHeight); }
+
+// Remove the navigationReady gating OR set it true as soon as links exist
+let navigationReady = false;
+
+// ...inside the setTimeout or, better, immediately after building links:
+if (linksContainer){
+  linksContainer.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      const id = this.getAttribute('href').slice(1);
+      scrollToSection(id);               // keep smooth behavior here
+      history.replaceState(null, '', '#' + id);
+    });
+  });
+  navigationReady = true; // <-- allow clicks immediately once links are present
+}
+
+// Hash on load: do one "auto" (non-smooth) correction first
+if (window.location.hash){
+  const id = window.location.hash.slice(1);
+  setTimeout(()=>{
+    updateHeaderHeight();
+    const el = document.getElementById(id);
+    if (el){
+      const headerOffset = getHeaderOffset();
+      const rect = el.getBoundingClientRect();
+      const targetY = Math.max(0, window.scrollY + rect.top - headerOffset - 8);
+      window.scrollTo({ top: targetY, behavior: 'auto' }); // instant correction
+    }
+    // then enable observer etc. right away
+    observerEnabled = true; 
+    navigationReady = true;
+  }, 0);
+}
+
+
+(Those are the specific spots in legal.min.js where the 600ms delay and navigationReady guard currently live, plus the offset logic.) 
+
+legal.min (1)
+
+Why this fixes all three symptoms
+
+With --header-height starting at 0px (and set immediately), the first section won’t be shoved down by a wrong 240px guess. The top of content aligns with the real header height as soon as it’s measurable. 
+
+legal.min (1)
+
+Removing CSS smooth scroll eliminates timing fights with JS’s smooth scroll, avoiding “stuck” top positions or off-by-some-pixels first offsets.
+
+Dropping the 600ms gate means quick links respond right away, and the single instant correction for the initial #hash prevents the “first click looks wrong” impression.

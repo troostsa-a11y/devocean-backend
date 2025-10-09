@@ -17,7 +17,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior removed - JS handles smooth scrolling precisely */
 }
 
 body {
@@ -544,7 +544,7 @@ section[data-section] ul {
 /* Mobile: use the calculated header height for anchor offset */
 @media (max-width: 768px) {
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior removed - JS handles smooth scrolling precisely */
   }
 
   /* Make sure the content below is pushed down by the header height */
