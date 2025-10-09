@@ -86,10 +86,6 @@ main {
   padding: 0 16px calc(50vh + 40px);
 }
 
-main>section:first-of-type {
-  margin-top: calc(var(--header-height, 240px) + 20px);
-}
-
 body.loading section[data-section] {
   opacity: 0.5;
   pointer-events: none;
