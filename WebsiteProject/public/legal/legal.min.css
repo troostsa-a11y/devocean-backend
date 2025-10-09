@@ -114,9 +114,9 @@ body.loading section[data-section] {
   overflow-x: hidden;
 }
 
-/* Push the first element AFTER the sticky header down by the header height */
+/* Small fixed spacer below sticky header (JS handles offset calculation) */
 .sticky-header+* {
-  padding-top: calc(var(--header-height) + 20px);
+  padding-top: 20px;
 }
 
 a[data-role="back-link"] {
@@ -547,9 +547,9 @@ section[data-section] ul {
     /* scroll-behavior removed - JS handles smooth scrolling precisely */
   }
 
-  /* Make sure the content below is pushed down by the header height */
+  /* Small fixed spacer below sticky header (JS handles offset calculation) */
   .sticky-header+* {
-    padding-top: calc(var(--header-height) + 20px);
+    padding-top: 20px;
   }
 
   /* Title and menu button on same line */
