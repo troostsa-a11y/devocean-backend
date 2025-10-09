@@ -467,11 +467,11 @@ export const UI = {
       headline: "Att göra i Ponta do Ouro",
       note: "För dykning, snorkling, delfin-/val-safaris och fisketurer, se arrangörerna nedan.",
       items: [
-        { title: "Fyrlvandring & Lua Do Mar", body: "Vandra till den gamla fyren för panoramautsikt. Fortsätt till Lua Do Mar-restaurangen på dynen. Ofta kan du se delfiner året runt, valar (maj–okt) och sköldpaddor (dec–jan). Var uppmärksam på tidvattnet: undvik strandvägen från 3 timmar före till 3 timmar efter högvatten; vågor kan trycka dig mot klippor." },
-        { title: "Promenad till Ponta Malongane", body: "Gå längs stranden till nästa by. Halvvägs leder trappor genom bananträd till Campismo Nino Pub & Restaurant med fantastisk utsikt. Nära buktövergången leder en stig till Sky Island där du kan prova skärmflygning. Berömda pubar i Malongane: Drunken Clam och Sunset Shack. Återvänd via stranden eller den sandiga 4×4-vägen." },
+        { title: "Fyrlvandring & Lua Do Mar", body: "Vandra till den gamla fyren för panoramautsikt. Fortsätt till restaurangen Lua Do Mar på dynen. Ofta kan du se delfiner året runt, valar (maj–okt) och sköldpaddor (dec–jan). Var uppmärksam på tidvattnet: undvik strandvägen från 3 timmar före till 3 timmar efter högvatten; vågor kan trycka dig mot klipporna." },
+        { title: "Promenad till Ponta Malongane", body: "Gå längs stranden till nästa by. Halvvägs leder trappor genom bananträd till Campismo Nino Pub & Restaurant med fantastisk utsikt. Nära buktövergången finns en stig till Sky Island där skärmflygning erbjuds. Kända pubar i Malongane: Drunken Clam och Sunset Shack. Återvänd via stranden eller den sandiga 4×4-vägen." },
         { title: "Surf, dykning & havsforskning", body: "Surfbrädeuthyrning vid Beach Bar; flera dykcenter i byn och ett delfin-/valforskningscenter." },
-        { title: "Äta & koppla av i närheten", body: "Det finns cirka 16 pubar och restauranger inom 500 m från DEVOCEAN. För en avkopplande helkroppsmassage, fråga efter Lisa (LIZ-Way Massage)." },
-        { title: "Fyrhjulingsuthyrning", body: "Ibland finns privata uthyrningar från lokalbefolkningen. Typisk kostnad: cirka MZN 2000 per timme (kan variera)." },
+        { title: "Ät & koppla av i närheten", body: "Det finns cirka 16 pubar och restauranger inom 500 m från DEVOCEAN. För en avkopplande helkroppsmassage, fråga efter Lisa (LIZ-Way Massage)." },
+        { title: "Fyrhjulingsuthyrning", body: "Ibland finns privata uthyrningar från lokalbor. Typisk kostnad: cirka MZN 2000 per timme (kan variera)." },
       ],
     },
     gallery: { headline: "Galleri" },
@@ -486,7 +486,7 @@ export const UI = {
     },
     contact: { headline: "Kontakta oss", blurb: "Frågor? Vi finns här för att hjälpa dig. Hör av dig så svarar vi så snart som möjligt.", call: "Ring oss", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka nu" },
     form: {
-      name: "Namn", email: "E-post", stayLabel: "Intresserad av vistelse:", checkin: "Från", checkout: "Till",
+      name: "Ditt namn", email: "E-postadress", stayLabel: "Intresserad av vistelse:", checkin: "Från", checkout: "Till",
       unitLabel: "Min föredragna enhet är:",
       units: [
         "Safaritält - delat badrum",
@@ -494,8 +494,8 @@ export const UI = {
         "Trädgårdsstuga - AC inverter",
         "Halmtak-chalet - AC inverter"
       ],
-      message: "Meddelande", send: "Skicka",
-      consent: "Genom att skicka samtycker du till att kontaktas om din förfrågan.",
+      message: "Ditt meddelande", send: "Skicka meddelande",
+      consent: "Genom att skicka samtycker du till vår integritetspolicy och våra villkor.",
       phName: "Ditt namn", phEmail: "din@epost.se", phMsg: "Berätta mer om dina önskemål...",
       success: "Tack! Ditt meddelande har skickats. Kontrollera din e-post för bekräftelse.",
     },
