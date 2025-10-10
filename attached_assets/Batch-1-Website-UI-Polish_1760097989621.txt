@@ -1,0 +1,278 @@
+================================================================================
+BATCH 1: WEBSITE UI - POLISH TRANSLATIONS
+DEVOCEAN LODGE
+================================================================================
+
+Instructions:
+- Translate each English text to Polish
+- Keep place names unchanged (Ponta do Ouro, Lua Do Mar, etc.)
+- Preserve formatting markers like line breaks
+- Fill in the "POLISH:" fields
+
+================================================================================
+SECTION 1: NAVIGATION
+================================================================================
+
+001. Home
+POLISH: Strona główna
+
+002. Stay
+POLISH: Pobyt
+
+003. Experiences
+POLISH: Doświadczenia
+
+004. What to do
+POLISH: Co robić
+
+005. Gallery
+POLISH: Galeria
+
+006. Location
+POLISH: Lokalizacja
+
+007. Contact
+POLISH: Kontakt
+
+================================================================================
+SECTION 2: HERO SECTION
+================================================================================
+
+008. Title: DEVOCEAN Lodge
+POLISH: DEVOCEAN Lodge (keep as is)
+
+009. Subtitle: Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.
+POLISH: Ekologiczne pobyty kilkaset metrów od plaży w Ponta do Ouro, południowy Mozambik.
+
+010. Button: Book your stay
+POLISH: Zarezerwuj swój pobyt
+
+011. Button: Explore the lodge
+POLISH: Poznaj lodge
+
+012. Badge: Guest-loved comfort & value
+POLISH: Komfort i wartość uwielbiane przez gości
+
+================================================================================
+SECTION 3: STAY WITH US
+================================================================================
+
+013. Headline: Stay with us
+POLISH: Zostań z nami
+
+014. Description: Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.
+POLISH: Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.
+
+015. Button: More details
+POLISH: Więcej szczegółów
+
+================================================================================
+SECTION 4: EXPERIENCES
+================================================================================
+
+016. Headline: Experiences
+POLISH: Doświadczenia
+
+017. Description: Ocean and forest adventures right on your doorstep.
+POLISH: Przygody nad oceanem i w lesie tuż za progiem.
+
+018. Label: Trusted local operators:
+POLISH: Zaufani lokalni operatorzy:
+
+================================================================================
+SECTION 5: WHAT TO DO IN PONTA DO OURO
+================================================================================
+
+019. Headline: What to do in Ponta do Ouro
+POLISH: Co robić w Ponta do Ouro
+
+020. Note: For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.
+POLISH: W przypadku nurkowania, wycieczek z rurką, safari z delfinami/wielorybami i czarterów wędkarskich, zobacz dostawców poniżej.
+
+--- Activity 1 ---
+021. Title: Lighthouse hike & Lua Do Mar
+POLISH: Wędrówka do latarni morskiej i Lua Do Mar
+
+022. Body: Hike to the Old Lighthouse for panoramic views. Continue to Lua Do Mar Restaurant on the dune. Often spot dolphins year-round, whales (May–Oct) and turtles (Dec–Jan). Mind the tide: avoid the beach route from 3 hours before to 3 hours after high tide; rogue waves can push you against rocks.
+POLISH: Wędruj do Starej Latarni Morskiej, aby podziwiać panoramiczne widoki. Kontynuuj do restauracji Lua Do Mar na wydmie. Często można zobaczyć delfiny przez cały rok, wieloryby (maj–październik) i żółwie (grudzień–styczeń). Uważaj na przypływy: unikaj trasy plażowej od 3 godzin przed do 3 godzin po przypływie; nieoczekiwane fale mogą przycisnąć cię do skał.
+
+--- Activity 2 ---
+023. Title: Walk to Ponta Malongane
+POLISH: Spacer do Ponta Malongane
+
+024. Body: Beach-walk along the shore to the next village. Midway, stairs through banana trees lead to Campismo Nino Pub & Restaurant with great views. Near the bay transition, a path to Sky Island offers paragliding. Famous pubs in Malongane: Drunken Clam and Sunset Shack. Return via beach or the sandy 4×4 road.
+POLISH: Spacer plażą wzdłuż brzegu do następnej wioski. W połowie drogi schody przez bananowce prowadzą do pubu i restauracji Campismo Nino z pięknymi widokami. W pobliżu przejścia na zatokę ścieżka do Sky Island oferuje paralotniarstwo. Słynne puby w Malongane: Drunken Clam i Sunset Shack. Powrót plażą lub piaszczystą drogą 4×4.
+
+--- Activity 3 ---
+025. Title: Surf, dive & ocean research
+POLISH: Surfing, nurkowanie i badania oceaniczne
+
+026. Body: Surfboard rentals at the Beach Bar; several dive centers in the village and a dolphin/whale research center.
+POLISH: Wypożyczalnia desek surfingowych w Beach Bar; kilka centrów nurkowych w wiosce oraz centrum badań nad delfinami i wielorybami.
+
+--- Activity 4 ---
+027. Title: Eat & unwind nearby
+POLISH: Jedz i relaksuj się w pobliżu
+
+028. Body: There are ~16 pubs and restaurants within 500 m of DEVOCEAN. For a relaxing full-body massage, ask for Lisa (LIZ-Way Massage).
+POLISH: W promieniu 500 m od DEVOCEAN znajduje się około 16 pubów i restauracji. Na relaksujący masaż całego ciała zapytaj o Lisę (LIZ-Way Massage).
+
+--- Activity 5 ---
+029. Title: Quad bike rentals
+POLISH: Wypożyczalnia quadów
+
+030. Body: Occasional private rentals from locals. Typical rate: around MZN 2000 per hour (negotiation varies).
+POLISH: Okazjonalne wypożyczanie od lokalnych mieszkańców. Typowa stawka: około 2000 MZN za godzinę (negocjacje różne).
+
+================================================================================
+SECTION 6: GALLERY
+================================================================================
+
+031. Headline: Gallery
+POLISH: Galeria
+
+================================================================================
+SECTION 7: LOCATION
+================================================================================
+
+032. Headline: Location
+POLISH: Lokalizacja
+
+033. Description: Ponta do Ouro – Matutuíne District, Southern Mozambique.
+POLISH: Ponta do Ouro – Dystrykt Matutuíne, południowy Mozambik.
+
+034. Ponta do Ouro town, a short walk from the beach
+POLISH: Miasto Ponta do Ouro, krótki spacer od plaży
+
+035. 15 min to Ponta Malongane • 25 min to Kosi Bay border
+POLISH: 15 minut do Ponta Malongane • 25 minut do granicy Kosi Bay
+
+036. Secure parking • Local cafés & markets nearby
+POLISH: Bezpieczny parking • Lokalne kawiarnie i rynki w pobliżu
+
+037. View Interactive Map
+POLISH: Zobacz interaktywną mapę
+
+================================================================================
+SECTION 8: CONTACT & BOOKING
+================================================================================
+
+038. Headline: Contact & Booking
+POLISH: Kontakt i rezerwacje
+
+039. Description: Questions, dates, special requests or group bookings – we're happy to help.
+POLISH: Pytania, daty, specjalne życzenia lub rezerwacje grupowe – chętnie pomożemy.
+
+040. Call
+POLISH: Zadzwoń
+
+041. Email
+POLISH: E-mail
+
+042. Directions
+POLISH: Wskazówki dojazdu
+
+043. Rates & Availability
+POLISH: Ceny i dostępność
+
+================================================================================
+SECTION 9: CONTACT FORM
+================================================================================
+
+044. Name
+POLISH: Imię
+
+045. Email
+POLISH: E-mail
+
+046. Interested in staying:
+POLISH: Zainteresowany pobytem:
+
+047. From (check-in)
+POLISH: Od (zameldowanie)
+
+048. Until (checkout)
+POLISH: Do (wymeldowanie)
+
+049. My preferred unit is:
+POLISH: Preferowana jednostka to:
+
+050. Safari Tent - shared bathroom
+POLISH: Namiot Safari - wspólna łazienka
+
+051. Comfort Tent - private bathroom
+POLISH: Namiot Komfort - prywatna łazienka
+
+052. Garden Cottage - inverter AC
+POLISH: Domek Ogrodowy - klimatyzacja inwerterowa
+
+053. Thatched Chalet - inverter AC
+POLISH: Chata z Dachem z Trawy - klimatyzacja inwerterowa
+
+054. Message
+POLISH: Wiadomość
+
+055. Send
+POLISH: Wyślij
+
+056. By submitting you agree to be contacted about your inquiry.
+POLISH: Przesyłając, zgadzasz się na kontakt w sprawie swojego zapytania.
+
+057. Placeholder: Your name
+POLISH: Twoje imię
+
+058. Placeholder: your@email.com
+POLISH: twoj@email.com
+
+059. Placeholder: Tell us more about your wishes...
+POLISH: Opowiedz nam więcej o swoich życzeniach...
+
+060. Success: Thank you! Your message has been sent. Check your email for a confirmation.
+POLISH: Sukces: Dziękujemy! Twoja wiadomość została wysłana. Sprawdź swój e-mail, aby potwierdzić.
+
+================================================================================
+SECTION 10: GALLERY
+================================================================================
+
+061. Gallery
+POLISH: Galeria
+
+================================================================================
+SECTION 11: FOOTER
+================================================================================
+
+062. All rights reserved.
+POLISH: Wszelkie prawa zastrzeżone.
+
+063. Family-run eco-hospitality and community projects in Southern Mozambique.
+POLISH: Rodzinna eko-gościnność i projekty społecznościowe w południowym Mozambiku.
+
+================================================================================
+SECTION 12: LEGAL MENU (Footer)
+================================================================================
+
+064. Legal
+POLISH: Prawne
+
+065. Privacy Policy
+POLISH: Polityka prywatności
+
+066. Cookie Policy
+POLISH: Polityka cookies
+
+067. Terms & Conditions
+POLISH: Regulamin
+
+068. GDPR Info
+POLISH: Informacje o RODO
+
+069. Consumer Rights & Contact
+POLISH: Prawa konsumenta i kontakt
+
+070. Cookie Settings
+POLISH: Ustawienia cookies
+
+================================================================================
+END OF BATCH 1
+Total items: 70
+================================================================================
