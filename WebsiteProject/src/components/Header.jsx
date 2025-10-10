@@ -10,7 +10,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
   // Define regions with metadata
   const regions = {
-    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN', 'ZAR'] },
+    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
     asia: { name: 'Asia', short: 'AS', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
     africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
