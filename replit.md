@@ -42,23 +42,23 @@ Preferred communication style: Simple, everyday language.
 - Custom hooks for mobile detection and toast notifications
 
 **Internationalization:**
-- React-based i18n with lazy-loaded translations (9 languages including Swedish)
+- React-based i18n with lazy-loaded translations (10 languages including Swedish and Polish)
 - Vanilla JavaScript i18n for legacy/static legal pages with dynamic data-section/data-part attribute system
-- Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish, Swedish
-- Currency support: USD, MZN, ZAR, EUR, GBP, SEK with browser-based inference
+- Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish, Swedish, Polish
+- Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference
 - Date localization with dd/mm/yyyy format preference
 - **Region-based language selector** with 5 continents (Europe, Asia, Americas, Africa, Oceania)
-  - Dynamic language filtering: Europe (all 8 languages), Asia (English), Americas (English/Spanish/French), Africa (English/French), Oceania (English)
+  - Dynamic language filtering: Europe (all 9 languages including Polish), Asia (English), Americas (English/Spanish/French), Africa (English/French), Oceania (English)
   - Currency filtering: Meticais (MZN) restricted to Africa region only
   - Auto-switch to English when current language unavailable in selected region
 - **Header dropdown styling**: Fixed-width selectors with consistent design (optimized for mobile)
   - Region: 45px button showing globe icon + 2-letter abbreviation (EU, AS, AM, AF, OC), 90px dropdown with full region names (Americas is widest)
-  - Language: 120px (fits "Nederlands", widest option)
-  - Currency: 95px (fits "Meticais", widest option)
-- Badge translations: All legal pages properly localized with "About cookies" badge in all 9 languages (v=30)
+  - Language: 75px
+  - Currency: 60px
+- Badge translations: All legal pages properly localized with "About cookies" badge in all languages (v=30)
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)
-- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections added for all 9 languages
+- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections (Polish translations pending)
 
 **Performance Optimizations:**
 - Dynamic translation loading

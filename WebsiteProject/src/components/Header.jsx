@@ -10,7 +10,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
   // Define regions with metadata
   const regions = {
-    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'ZAR'] },
+    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN', 'ZAR'] },
     asia: { name: 'Asia', short: 'AS', languages: ['en'], currencies: ['USD', 'EUR', 'GBP', 'SEK'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
     africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
@@ -146,6 +146,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               {regions[selectedRegion].languages.includes('de') && <option value="de">Deutsch</option>}
               {regions[selectedRegion].languages.includes('es') && <option value="es">Español</option>}
               {regions[selectedRegion].languages.includes('sv') && <option value="sv">Svenska</option>}
+              {regions[selectedRegion].languages.includes('pl') && <option value="pl">Polski</option>}
             </select>
 
             <select
@@ -159,6 +160,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               {regions[selectedRegion].currencies.includes('EUR') && <option value="EUR">Euro</option>}
               {regions[selectedRegion].currencies.includes('GBP') && <option value="GBP">Pound</option>}
               {regions[selectedRegion].currencies.includes('SEK') && <option value="SEK">Krona</option>}
+              {regions[selectedRegion].currencies.includes('PLN') && <option value="PLN">Zloty</option>}
             </select>
           </div>
         </div>
