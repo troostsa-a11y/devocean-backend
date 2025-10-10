@@ -1,0 +1,202 @@
+
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║    Translated with Cockatoo | cockatoo.com                                    ║
+║    Limited preview. Upgrade to translate the full file.                       ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+================================================================================
+ZESTAW 1: INTERFEJS STRONY INTERNETOWEJ – TŁUMACZENIA POLSKIE
+DEVOCEAN LODGE
+================================================================================
+Instrukcje:
+- Przetłumacz każdy tekst z angielskiego na polski
+- Zachowaj nazwy miejsc bez zmian (Ponta do Ouro, Lua Do Mar, itp.)
+- Zachowaj znaczniki formatowania, takie jak podziały wierszy
+- Wypełnij pola "POLSKI:"
+================================================================================
+SEKCJA 1: NAWIGACJA
+================================================================================
+001. Strona główna
+POLSKI:
+002. Noclegi
+POLSKI:
+003. Atrakcje
+POLSKI:
+004. Co robić?
+POLSKI:
+005. Galeria
+POLSKI:
+006. Lokalizacja
+POLSKI:
+007. Kontakt
+POLSKI:
+================================================================================
+SEKCJA 2: SEKCJA WSTĘPNA
+================================================================================
+008. Tytuł: DEVOCEAN Lodge
+POLSKI: DEVOCEAN Lodge (zostawić bez zmian)
+009. Podtytuł: Ekologiczne noclegi kilkaset metrów od plaży w Ponta do Ouro, w południowym Mozambiku.
+POLSKI:
+010. Przycisk: Zarezerwuj pobyt
+POLSKI:
+011. Przycisk: Odkryj lodge
+POLSKI:
+012. Odznaka: Ulubione przez gości – komfort i dobra cena
+POLSKI:
+================================================================================
+SEKCJA 3: ZOSTAŃ Z NAMI
+================================================================================
+013. Nagłówek: Zostań z nami
+POLISH:
+014. Opis: Wybierz swój styl: namioty wśród natury lub przytulne chalety i domki – wszystko z ciepłą, rodzinną gościnnością.
+POLISH:
+015. Przycisk: Więcej szczegółów
+POLISH:
+================================================================================
+SEKCJA 4: WRAŻENIA
+================================================================================
+016. Nagłówek: Doświadczenia
+POLSKI:
+017. Opis: Przygody oceaniczne i leśne tuż za progiem.
+POLSKI:
+018. Etykieta: Zaufani lokalni operatorzy:
+POLSKI:
+================================================================================
+SEKCJA 5: CO ROBIĆ W PONTA DO OURO
+================================================================================
+019. Nagłówek: Co robić w Ponta do Ouro
+POLSKI:
+020. Uwaga: W sprawie nurkowania, wycieczek z rurką, rejsów obserwacyjnych delfinów/wielorybów oraz czarterów wędkarskich, zobacz oferty poniżej.
+POLSKI:
+--- Aktywność 1 ---
+021. Tytuł: Wędrówka do latarni morskiej i Lua Do Mar
+POLSKI:
+022. Opis: Wędrówka do Starej Latarni Morskiej na panoramiczne widoki. Kontynuuj do restauracji Lua Do Mar na wydmie. Często można tu zobaczyć delfiny przez cały rok, wieloryby (maj–październik) i żółwie (grudzień–styczeń). Uważaj na przypływ: unikaj trasy plażowej od 3 godzin przed do 3 godzin po przypływie; fale sztormowe mogą zepchnąć cię na skały.
+POLSKI:
+--- Aktywność 2 ---
+023. Tytuł: Spacer do Ponta Malongane
+POLSKI:
+024. Opis: Spacer plażą wzdłuż brzegu do następnej wioski. W połowie drogi schody wśród bananowców prowadzą do Campismo Nino Pub & Restaurant z pięknymi widokami. W pobliżu przejścia zatoką ścieżka na Sky Island oferuje paralotniarstwo. Znane puby w Malongane: Drunken Clam i Sunset Shack. Powrót plażą lub piaszczystą drogą dla samochodów 4×4.
+POLSKI:
+--- Aktywność 3 ---
+025. Tytuł: Surfing, nurkowanie i badania oceanu
+POLSKI:
+026. Opis: Wypożyczalnia desek surfingowych w Beach Bar; kilka centrów nurkowych we wsi oraz ośrodek badawczy delfinów i wielorybów.
+POLSKI:
+--- Aktywność 4 ---
+027. Tytuł: Jedzenie i relaks w okolicy
+POLSKI:
+028. Treść: W promieniu 500 m od DEVOCEAN znajduje się około 16 pubów i restauracji. Jeśli chcesz się zrelaksować podczas masażu całego ciała, zapytaj o Lisę (LIZ-Way Massage).
+POLSKI:
+--- Aktywność 5 ---
+029. Tytuł: Wypożyczalnie quadów
+POLSKI:
+030. Treść: Okazjonalne prywatne wypożyczenia od mieszkańców. Typowa stawka: około 2000 MZN za godzinę (cena do negocjacji).
+POLSKI:
+================================================================================
+SECTION 6: GALLERY
+================================================================================
+031. Headline: Gallery
+POLISH:
+================================================================================
+SECTION 7: LOCATION
+================================================================================
+032. Headline: Location
+POLISH:
+033. Description: Ponta do Ouro – Matutuíne District, Southern Mozambique.
+POLSKI:
+034. Miasteczko Ponta do Ouro, kilka kroków od plaży
+POLSKI:
+035. 15 min do Ponta Malongane • 25 min do granicy Kosi Bay
+POLSKI:
+036. Bezpieczny parking • Lokalne kawiarnie i targowiska w pobliżu
+POLSKI:
+037. Zobacz interaktywną mapę
+POLSKI:
+================================================================================
+SEKCJA 8: KONTAKT I REZERWACJE
+================================================================================
+038. Nagłówek: Kontakt i rezerwacje
+POLISH:
+039. Opis: Pytania, terminy, specjalne prośby lub rezerwacje grupowe – chętnie pomożemy.
+POLISH:
+040. Zadzwoń
+POLISH:
+041. Napisz e-mail
+POLISH:
+042. Wskazówki dojazdu
+POLISH:
+043. Ceny i dostępność
+POLISH:
+================================================================================
+SEKCJA 9: FORMULARZ KONTAKTOWY
+================================================================================
+044. Imię i nazwisko
+POLISH:
+045. Adres e-mail
+POLSKI:
+046. Interesuje mnie pobyt:
+POLSKI:
+047. Od (check-in)
+POLSKI:
+048. Do (checkout)
+POLSKI:
+049. Preferowany przeze mnie rodzaj zakwaterowania:
+POLSKI:
+050. Namiot safari – wspólna łazienka
+POLSKI:
+051. Namiast Comfort – prywatna łazienka
+POLSKI:
+052. Domek ogrodowy – klimatyzacja inwerterowa
+POLSKI:
+053. Chata z dachem strzechowym – klimatyzacja inwerterowa
+POLSKI:
+054. Wiadomość
+POLSKI:
+055. Wyślij
+POLISH:
+056. Przesyłając formularz, wyrażasz zgodę na kontakt w sprawie Twojego zapytania.
+POLISH:
+057. Wypełnij: Twoje imię i nazwisko
+POLISH:
+058. Wypełnij: twój@email.com
+POLISH:
+059. Wypełnij: Opisz nam swoje oczekiwania…
+POLISH:
+060. Sukces: Dziękujemy! Twoja wiadomość została wysłana. Sprawdź swoją skrzynkę e-mail, aby potwierdzić.
+POLISH:
+================================================================================
+SEKCJA 10: GALERIA
+================================================================================
+061. Galeria
+POLISH:
+================================================================================
+SEKCJA 11: STOPKA
+================================================================================
+062. Wszelkie prawa zastrzeżone.
+POLISH:
+063. Eko-hotelarstwo prowadzone przez rodzinę i projekty społeczne w południowym Mozambiku.
+POLISH:
+================================================================================
+SEKCJA 12: MENU PRAWNE (Stopka)
+================================================================================
+064. Informacje prawne
+POLISH:
+065. Polityka prywatności
+POLISH:
+066. Polityka cookies
+POLISH:
+067. Regulamin
+POLISH:
+068. Informacje RODO
+POLISH:
+069. Prawa konsumenckie i kontakt
+POLISH:
+070. Ustawienia cookies
+POLISH:
+================================================================================
+KONIEC PARTII 1
+Całkowita liczba elementów: 70
+================================================================================
