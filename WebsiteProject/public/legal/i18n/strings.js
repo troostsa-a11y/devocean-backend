@@ -317,7 +317,7 @@
                 planName: "Non refundable rate plan:",
                 tiers: [
                   { period: "Until 24 hours after reservation", charge: "Full refund" },
-                  { period: "In all other circumstances", subtext: "The right to modify the date of arrival once under the condition of paying the difference in case the new date has a higher rate", charge: "No refund", chargeClass: "no-refund-red" }
+                  { period: "In all other circumstances", subtext: "The right to modify the date of arrival once under the condition of paying the difference in case the new date has a higher rate.", charge: "No refund", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -759,7 +759,7 @@
                 planName: "Nicht erstattungsfähiger Tarif:",
                 tiers: [
                   { period: "Bis 24 Stunden nach der Reservierung", charge: "Vollständige Rückerstattung" },
-                  { period: "In allen anderen Umständen", subtext: "Das Recht, das Anreisedatum einmal zu ändern, unter der Bedingung, den Preisunterschied zu zahlen, falls das neue Datum einen höheren Tarif hat", charge: "Keine Rückerstattung", chargeClass: "no-refund-red" }
+                  { period: "In allen anderen Umständen", subtext: "Das Recht, das Anreisedatum einmal zu ändern, unter der Bedingung, den Preisunterschied zu zahlen, falls das neue Datum einen höheren Tarif hat.", charge: "Keine Rückerstattung", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -1295,7 +1295,7 @@
                 planName: "Niet-restitueerbaar tarief:",
                 tiers: [
                   { period: "Tot 24 uur na reservering", charge: "Volledige terugbetaling" },
-                  { period: "In alle andere omstandigheden", subtext: "Het recht om de aankomstdatum eenmaal te wijzigen onder de voorwaarde het verschil te betalen als de nieuwe datum een hoger tarief heeft", charge: "Geen terugbetaling", chargeClass: "no-refund-red" }
+                  { period: "In alle andere omstandigheden", subtext: "Het recht om de aankomstdatum eenmaal te wijzigen onder de voorwaarde het verschil te betalen als de nieuwe datum een hoger tarief heeft.", charge: "Geen terugbetaling", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -1833,7 +1833,7 @@
                 planName: "Tarifa não reembolsável:",
                 tiers: [
                   { period: "Até 24 horas após a reserva", charge: "Reembolso total" },
-                  { period: "Em todas as outras situações", subtext: "O direito de modificar a data de chegada uma vez sob a condição de pagar a diferença caso a nova data tenha uma tarifa mais alta", charge: "Sem reembolso", chargeClass: "no-refund-red" }
+                  { period: "Em todas as outras situações", subtext: "O direito de modificar a data de chegada uma vez sob a condição de pagar a diferença caso a nova data tenha uma tarifa mais alta.", charge: "Sem reembolso", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -2456,7 +2456,7 @@
                 planName: "Tarif non remboursable:",
                 tiers: [
                   { period: "Jusqu'à 24 heures après la réservation", charge: "Remboursement complet" },
-                  { period: "Dans toutes les autres circonstances", subtext: "Le droit de modifier la date d'arrivée une fois à condition de payer la différence si la nouvelle date a un tarif plus élevé", charge: "Aucun remboursement", chargeClass: "no-refund-red" }
+                  { period: "Dans toutes les autres circonstances", subtext: "Le droit de modifier la date d'arrivée une fois à condition de payer la différence si la nouvelle date a un tarif plus élevé.", charge: "Aucun remboursement", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -2943,7 +2943,7 @@
                 planName: "Tariffa non rimborsabile:",
                 tiers: [
                   { period: "Fino a 24 ore dopo la prenotazione", charge: "Rimborso completo" },
-                  { period: "In tutte le altre circostanze", subtext: "Il diritto di modificare la data di arrivo una volta a condizione di pagare la differenza nel caso in cui la nuova data abbia una tariffa più alta", charge: "Nessun rimborso", chargeClass: "no-refund-red" }
+                  { period: "In tutte le altre circostanze", subtext: "Il diritto di modificare la data di arrivo una volta a condizione di pagare la differenza nel caso in cui la nuova data abbia una tariffa più alta.", charge: "Nessun rimborso", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -3430,7 +3430,7 @@
                 planName: "Tarifa no reembolsable:",
                 tiers: [
                   { period: "Hasta 24 horas después de la reserva", charge: "Reembolso completo" },
-                  { period: "En todas las demás circunstancias", subtext: "El derecho de modificar la fecha de llegada una vez bajo la condición de pagar la diferencia en caso de que la nueva fecha tenga una tarifa más alta", charge: "Sin reembolso", chargeClass: "no-refund-red" }
+                  { period: "En todas las demás circunstancias", subtext: "El derecho de modificar la fecha de llegada una vez bajo la condición de pagar la diferencia en caso de que la nueva fecha tenga una tarifa más alta.", charge: "Sin reembolso", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -3976,7 +3976,7 @@
                 planName: "Ej återbetalningsbar prisplan:",
                 tiers: [
                   { period: "Upp till 24 timmar efter reservation", charge: "Full återbetalning" },
-                  { period: "Under alla andra omständigheter", subtext: "Rätten att ändra ankomstdatum en gång under förutsättning att skillnaden betalas om det nya datumet har en högre taxa", charge: "Ingen återbetalning", chargeClass: "no-refund-red" }
+                  { period: "Under alla andra omständigheter", subtext: "Rätten att ändra ankomstdatum en gång under förutsättning att skillnaden betalas om det nya datumet har en högre taxa.", charge: "Ingen återbetalning", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -4513,7 +4513,7 @@
                 planName: 'Plan taryfowy bezzwrotny:',
                 tiers: [
                   { period: 'Do 24 godzin po rezerwacji', charge: 'Pełny zwrot' },
-                  { period: 'We wszystkich innych okolicznościach', subtext: 'Prawo do jednorazowej modyfikacji daty przyjazdu pod warunkiem zapłaty różnicy, jeśli nowa data ma wyższą stawkę', charge: 'Brak zwrotu', chargeClass: 'no-refund-red' }
+                  { period: 'We wszystkich innych okolicznościach', subtext: 'Prawo do jednorazowej modyfikacji daty przyjazdu pod warunkiem zapłaty różnicy, jeśli nowa data ma wyższą stawkę.', charge: 'Brak zwrotu', chargeClass: 'no-refund-red' }
                 ]
               }
             ]
