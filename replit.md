@@ -48,7 +48,7 @@ Preferred communication style: Simple, everyday language.
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference
 - Date localization with dd/mm/yyyy format preference
 - **Region-based language selector** with 5 continents (Europe, Asia, Americas, Africa, Oceania)
-  - Dynamic language filtering: Europe (all 9 languages including Polish), Asia (English), Americas (English/Spanish/French), Africa (English/French), Oceania (English)
+  - Dynamic language filtering: Europe (all 9 languages including Polish), Asia (English), Americas (English/Spanish/French), Africa (English/French/Portuguese), Oceania (English)
   - Currency filtering: Meticais (MZN) restricted to Africa region only
   - Auto-switch to English when current language unavailable in selected region
 - **Header dropdown styling**: Fixed-width selectors with consistent design (optimized for mobile)
