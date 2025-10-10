@@ -271,6 +271,27 @@ h1[data-role="page-title"] {
   background-repeat: no-repeat;
 }
 
+.cric-badge {
+  background: #cffafe;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cric-badge::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2306b6d4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'%3E%3C/circle%3E%3Cline x1='12' y1='16' x2='12' y2='12'%3E%3C/line%3E%3Cline x1='12' y1='8' x2='12.01' y2='8'%3E%3C/line%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 section[data-section] {
   background: var(--card-bg);
   border: 1px solid var(--card-br);
@@ -451,6 +472,7 @@ section[data-section] ul {
   .contact-badge,
   .terms-banner-info,
   .gdpr-badge,
+  .cric-badge,
   .btn {
     display: none !important;
   }
@@ -775,6 +797,39 @@ section[data-section] ul {
   }
 
   .gdpr-badge strong {
+    font-size: clamp(18px, 5vw, 20px);
+    line-height: 1.35;
+    font-weight: 600;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1;
+  }
+
+  /* CRIC badge on mobile */
+  .cric-badge {
+    padding: 6px 10px;
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cric-badge::before {
+    width: 18px;
+    height: 18px;
+    background-size: 18px;
+  }
+
+  .cric-badge div {
+    max-width: 100%;
+    flex: 1;
+  }
+
+  .cric-badge [data-part="body"] {
+    display: none;
+  }
+
+  .cric-badge strong {
     font-size: clamp(18px, 5vw, 20px);
     line-height: 1.35;
     font-weight: 600;
