@@ -65,6 +65,12 @@ Preferred communication style: Simple, everyday language.
   - ✅ Batch 3: Cookies Policy (51 items) - **COMPLETED & INTEGRATED** into legal i18n system (page title, dates, quick links, badge, all cookie sections with tables, manage preferences, browser links)
   - ✅ Batch 4: Terms + GDPR + CRIC (173 items) - **COMPLETED & INTEGRATED** into legal i18n system (Terms: scope, bookings, payment, cancellations, conduct, force majeure, liability, IP, disputes; GDPR: controller, legal bases, rights, retention, transfers, complaints; CRIC: company info, contact, emergency)
 
+- **Portuguese (Mozambican) Translation Status**: 4 batch TXT files created with 366 total items for translation
+  - ⏳ Batch 1: Website UI (70 items) - awaiting translation
+  - ⏳ Batch 2: Privacy Policy (72 items) - awaiting translation
+  - ⏳ Batch 3: Cookies Policy (51 items) - awaiting translation (includes cookie names, durations, browser links)
+  - ⏳ Batch 4: Terms + GDPR + CRIC (173 items) - awaiting translation
+
 **Performance Optimizations:**
 - Dynamic translation loading
 - IntersectionObserver-based image lazy loading

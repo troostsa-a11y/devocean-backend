@@ -1,0 +1,809 @@
+================================================
+BATCH 4: TERMS + GDPR + CRIC - PORTUGUESE (MOZAMBICAN)
+================================================
+Total items: 173
+Language code: pt (ptmz variant)
+Target: WebsiteProject/public/legal/i18n/strings.js
+
+INSTRUCTIONS:
+- Translate to Portuguese with Mozambican flavor/terminology
+- Keep HTML tags intact (e.g., <a href>, </a>, <br>)
+- Keep email addresses unchanged
+- Maintain legal terminology accuracy
+- Use Mozambican Portuguese spelling where applicable
+
+================================================
+PART A: TERMS & CONDITIONS (80 items)
+================================================
+
+================================================
+A1: PAGE METADATA (3 items)
+================================================
+
+1. terms.title
+English: "Terms and Conditions"
+Portuguese (MZ): 
+
+2. terms.updatedDate
+English: "October 6, 2025"
+Portuguese (MZ): 
+
+3. terms.quickLinks.title
+English: "Quick Links"
+Portuguese (MZ): 
+
+================================================
+A2: QUICK LINKS (12 items)
+================================================
+
+4. Quick link: Scope
+English: "Scope"
+Portuguese (MZ): 
+
+5. Quick link: Bookings
+English: "Bookings"
+Portuguese (MZ): 
+
+6. Quick link: Pricing and Payment
+English: "Pricing and Payment"
+Portuguese (MZ): 
+
+7. Quick link: Cancellations
+English: "Cancellations"
+Portuguese (MZ): 
+
+8. Quick link: Guest Conduct
+English: "Guest Conduct"
+Portuguese (MZ): 
+
+9. Quick link: Force Majeure
+English: "Force Majeure"
+Portuguese (MZ): 
+
+10. Quick link: Liability
+English: "Liability"
+Portuguese (MZ): 
+
+11. Quick link: Intellectual Property
+English: "Intellectual Property"
+Portuguese (MZ): 
+
+12. Quick link: Dispute Resolution
+English: "Dispute Resolution"
+Portuguese (MZ): 
+
+13. Quick link: Changes
+English: "Changes"
+Portuguese (MZ): 
+
+14. Quick link: Governing Law
+English: "Governing Law"
+Portuguese (MZ): 
+
+15. Quick link: Contact
+English: "Contact"
+Portuguese (MZ): 
+
+================================================
+A3: BADGE (2 items)
+================================================
+
+16. terms.sections.badge.title
+English: "Important Legal Notice:"
+Portuguese (MZ): 
+
+17. terms.sections.badge.body
+English: "These terms govern your use of our services and website. Please read them carefully before making a booking."
+Portuguese (MZ): 
+
+================================================
+A4: SCOPE (2 items)
+================================================
+
+18. terms.sections.intro.title
+English: "Scope"
+Portuguese (MZ): 
+
+19. terms.sections.intro.body
+English: "These Terms and Conditions govern accommodation and related services provided by DEVOCEAN Lodge (TERRAfrique LDA). By making a booking, you agree to these Terms."
+Portuguese (MZ): 
+
+================================================
+A5: BOOKINGS (10 items)
+================================================
+
+20. terms.sections.booking.title
+English: "Bookings and Reservations"
+Portuguese (MZ): 
+
+21. Booking item 1
+English: "Provide accurate guest information and arrival/departure dates"
+Portuguese (MZ): 
+
+22. Booking item 2
+English: "Special requests are subject to availability and confirmation"
+Portuguese (MZ): 
+
+23. terms.sections.booking.reservationReq.title
+English: "Reservation Requirements"
+Portuguese (MZ): 
+
+24. terms.sections.booking.reservationReq.body
+English: "Valid ID and credit card required for all bookings. Minimum age: 18 years."
+Portuguese (MZ): 
+
+25. terms.sections.booking.checkinCheckout.title
+English: "Check-in/Check-out"
+Portuguese (MZ): 
+
+26. terms.sections.booking.checkinCheckout.body
+English: "Check-in: 2:00 PM | Check-out: 11:00 AM. Early/late requests subject to availability."
+Portuguese (MZ): 
+
+27. terms.sections.booking.groupBookings.title
+English: "Group Bookings"
+Portuguese (MZ): 
+
+28. terms.sections.booking.groupBookings.body
+English: "Special terms apply to groups of 6+ rooms. Contact us for group rates and policies."
+Portuguese (MZ): 
+
+================================================
+A6: PRICING AND PAYMENT (6 items)
+================================================
+
+29. terms.sections.payment.title
+English: "Pricing and Payment"
+Portuguese (MZ): 
+
+30. Payment item 1
+English: "Rates shown are per unit/night unless otherwise stated"
+Portuguese (MZ): 
+
+31. Payment item 2
+English: "Deposits and settlement methods will be confirmed at booking"
+Portuguese (MZ): 
+
+32. terms.sections.payment.paymentInfo.title
+English: "Payment Information"
+Portuguese (MZ): 
+
+33. terms.sections.payment.paymentInfo.body
+English: "All prices are in EUR unless otherwise stated. Currency conversion rates are approximate and subject to change. Valid credit card required to secure reservation. Additional charges may apply for incidentals."
+Portuguese (MZ): 
+
+================================================
+A7: CANCELLATIONS (15 items)
+================================================
+
+34. terms.sections.cancel.title
+English: "Cancellations and No-Shows"
+Portuguese (MZ): 
+
+35. terms.sections.cancel.body
+English: "Cancellation terms are disclosed at time of booking and in your confirmation."
+Portuguese (MZ): 
+
+36. terms.sections.cancel.cancellationCharges.title
+English: "Cancellation Charges"
+Portuguese (MZ): 
+
+37. Plan name: Semi-Flex Rate Plan
+English: "Semi-Flex Rate Plan:"
+Portuguese (MZ): 
+
+38. Semi-Flex tier 1: period
+English: "30 days or more before arrival"
+Portuguese (MZ): 
+
+39. Semi-Flex tier 1: charge
+English: "Full refund"
+Portuguese (MZ): 
+
+40. Semi-Flex tier 2: period
+English: "29 days or less before arrival"
+Portuguese (MZ): 
+
+41. Semi-Flex tier 2: charge
+English: "50% cancellation fee"
+Portuguese (MZ): 
+
+42. Plan name: Non-Refundable Rate Plan
+English: "Non-Refundable Rate Plan:"
+Portuguese (MZ): 
+
+43. Non-Refundable tier 1: period
+English: "Up to 24 hours after booking"
+Portuguese (MZ): 
+
+44. Non-Refundable tier 1: charge
+English: "Full refund"
+Portuguese (MZ): 
+
+45. Non-Refundable tier 2: period
+English: "All other circumstances"
+Portuguese (MZ): 
+
+46. Non-Refundable tier 2: subtext
+English: "Right to one-time modification of arrival date subject to payment of difference if new date has higher rate, otherwise"
+Portuguese (MZ): 
+
+47. Non-Refundable tier 2: charge
+English: "No refund"
+Portuguese (MZ): 
+
+48. terms.sections.cancel.noshowPolicy.title
+English: "No-Show Policy"
+Portuguese (MZ): 
+
+49. terms.sections.cancel.noshowPolicy.body
+English: "Guests who fail to arrive on their scheduled check-in date without prior notice will be considered a no-show. The full booking amount will be charged and the reservation cancelled."
+Portuguese (MZ): 
+
+================================================
+A8: GUEST CONDUCT (6 items)
+================================================
+
+50. terms.sections.conduct.title
+English: "Guest Conduct"
+Portuguese (MZ): 
+
+51. Conduct item 1
+English: "Respect property rules, staff, other guests, and local community"
+Portuguese (MZ): 
+
+52. Conduct item 2
+English: "No illegal activities on premises"
+Portuguese (MZ): 
+
+53. terms.sections.conduct.zeroTolerance.title
+English: "Zero Tolerance Policy"
+Portuguese (MZ): 
+
+54. terms.sections.conduct.zeroTolerance.body
+English: "We maintain a zero-tolerance policy for disruptive behavior, illegal activities, or property damage. Violations may result in immediate eviction without refund and may lead to legal action."
+Portuguese (MZ): 
+
+================================================
+A9: FORCE MAJEURE (8 items)
+================================================
+
+55. terms.sections['force-majeure'].title
+English: "Force Majeure"
+Portuguese (MZ): 
+
+56. terms.sections['force-majeure'].intro
+English: "We are not liable for failure to perform obligations due to circumstances beyond our reasonable control, including but not limited to:"
+Portuguese (MZ): 
+
+57. Force majeure item 1
+English: "Natural disasters, extreme weather conditions"
+Portuguese (MZ): 
+
+58. Force majeure item 2
+English: "Government restrictions, travel bans"
+Portuguese (MZ): 
+
+59. Force majeure item 3
+English: "Civil unrest, war, terrorism"
+Portuguese (MZ): 
+
+60. Force majeure item 4
+English: "Pandemics, epidemics, health emergencies"
+Portuguese (MZ): 
+
+61. Force majeure item 5
+English: "Utility failures, infrastructure breakdowns"
+Portuguese (MZ): 
+
+62. terms.sections['force-majeure'].footer
+English: "In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided in accordance with applicable regulations and circumstances. However, any damages and costs that are or could be covered by generally available cancellation and travel insurance packages are excluded from our liability."
+Portuguese (MZ): 
+
+================================================
+A10: LIABILITY (2 items)
+================================================
+
+63. terms.sections.liability.title
+English: "Liability"
+Portuguese (MZ): 
+
+64. terms.sections.liability.body
+English: "To the extent permitted by law, we are not liable for indirect or unforeseeable losses."
+Portuguese (MZ): 
+
+================================================
+A11: INTELLECTUAL PROPERTY (3 items)
+================================================
+
+65. terms.sections['intellectual-property'].title
+English: "Intellectual Property"
+Portuguese (MZ): 
+
+66. terms.sections['intellectual-property'].copyright.title
+English: "Copyright Notice"
+Portuguese (MZ): 
+
+67. terms.sections['intellectual-property'].copyright.body
+English: "All content on this website, including text, graphics, logos, and images, is the property of DEVOCEAN Lodge and protected by international copyright laws. Unauthorized use, reproduction, or distribution is prohibited. The DEVOCEAN Lodge name, logo, and all related marks are trademarks and may not be used without written permission."
+Portuguese (MZ): 
+
+================================================
+A12: DISPUTE RESOLUTION (7 items)
+================================================
+
+68. terms.sections.disputes.title
+English: "Dispute Resolution"
+Portuguese (MZ): 
+
+69. terms.sections.disputes.process.title
+English: "Resolution Process"
+Portuguese (MZ): 
+
+70. terms.sections.disputes.process.body
+English: "We strive to resolve disputes amicably. Please contact us first to attempt resolution. If unresolved, disputes will be settled through mediation before legal action."
+Portuguese (MZ): 
+
+71. Governing Law label
+English: "Governing Law: Mozambican law governs these terms and any disputes."
+Portuguese (MZ): 
+
+72. Jurisdiction label
+English: "Jurisdiction: Courts in Maputo, Mozambique have exclusive jurisdiction."
+Portuguese (MZ): 
+
+73. Mediation label
+English: "Mediation: Parties agree to attempt mediation through an accredited mediator before initiating court proceedings."
+Portuguese (MZ): 
+
+================================================
+A13: CHANGES TO TERMS (2 items)
+================================================
+
+74. terms.sections.changes.title
+English: "Changes to These Terms"
+Portuguese (MZ): 
+
+75. terms.sections.changes.body
+English: "We may update these Terms from time to time. The posted version applies to your stay."
+Portuguese (MZ): 
+
+================================================
+A14: GOVERNING LAW (2 items)
+================================================
+
+76. terms.sections.law.title
+English: "Governing Law"
+Portuguese (MZ): 
+
+77. terms.sections.law.body
+English: "Mozambican law applies, subject to mandatory local consumer protections."
+Portuguese (MZ): 
+
+================================================
+A15: CONTACT (2 items)
+================================================
+
+78. terms.sections.contact.title
+English: "Contact"
+Portuguese (MZ): 
+
+79. terms.sections.contact.body
+English: "Questions? <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
+Portuguese (MZ): 
+
+================================================
+PART B: GDPR NOTICE (62 items)
+================================================
+
+================================================
+B1: PAGE METADATA (3 items)
+================================================
+
+80. gdpr.title
+English: "GDPR Notice"
+Portuguese (MZ): 
+
+81. gdpr.updatedDate
+English: "October 6, 2025"
+Portuguese (MZ): 
+
+82. gdpr.quickLinks.title
+English: "Quick Links"
+Portuguese (MZ): 
+
+================================================
+B2: QUICK LINKS (6 items)
+================================================
+
+83. Quick link: Data Controller
+English: "Data Controller"
+Portuguese (MZ): 
+
+84. Quick link: Legal Bases
+English: "Legal Bases"
+Portuguese (MZ): 
+
+85. Quick link: Your Rights
+English: "Your Rights"
+Portuguese (MZ): 
+
+86. Quick link: Data Retention
+English: "Data Retention"
+Portuguese (MZ): 
+
+87. Quick link: Data Transfers
+English: "Data Transfers"
+Portuguese (MZ): 
+
+88. Quick link: Complaints
+English: "Complaints"
+Portuguese (MZ): 
+
+================================================
+B3: BADGE (2 items)
+================================================
+
+89. gdpr.sections.badge.title
+English: "GDPR Compliant:"
+Portuguese (MZ): 
+
+90. gdpr.sections.badge.body
+English: "We are committed to protecting your personal data and respecting your privacy rights in accordance with the General Data Protection Regulation."
+Portuguese (MZ): 
+
+================================================
+B4: DATA CONTROLLER (2 items)
+================================================
+
+91. gdpr.sections.controller.title
+English: "Data Controller"
+Portuguese (MZ): 
+
+92. gdpr.sections.controller.body
+English: "TERRAfrique LDA (DEVOCEAN Lodge), registered at Rua C, Parcela 12, Maputo 1118, Mozambique, acts as the data controller for your personal information collected through our services."
+Portuguese (MZ): 
+
+================================================
+B5: LEGAL BASES (7 items)
+================================================
+
+93. gdpr.sections.bases.title
+English: "Legal Bases for Processing"
+Portuguese (MZ): 
+
+94. gdpr.sections.bases.body
+English: "We process your personal data based on the following legal grounds under GDPR:"
+Portuguese (MZ): 
+
+95. Legal basis: Contract
+English: "Contract: Processing necessary to fulfill our booking contracts and services."
+Portuguese (MZ): 
+
+96. Legal basis: Legal Obligation
+English: "Legal Obligation: Processing required to comply with legal requirements (e.g., tax laws)."
+Portuguese (MZ): 
+
+97. Legal basis: Legitimate Interests
+English: "Legitimate Interests: Processing for our legitimate business interests while respecting your rights."
+Portuguese (MZ): 
+
+98. Legal basis: Consent
+English: "Consent: Processing based on your explicit consent for specific purposes."
+Portuguese (MZ): 
+
+================================================
+B6: YOUR GDPR RIGHTS (17 items)
+================================================
+
+99. gdpr.sections.rights.title
+English: "Your GDPR Rights"
+Portuguese (MZ): 
+
+100. gdpr.sections.rights.body
+English: "As a data subject under GDPR, you have the following rights regarding your personal data:"
+Portuguese (MZ): 
+
+101. Right card 1: title
+English: "Right to Access"
+Portuguese (MZ): 
+
+102. Right card 1: body
+English: "You can request a copy of your personal data we hold."
+Portuguese (MZ): 
+
+103. Right card 2: title
+English: "Right to Rectification"
+Portuguese (MZ): 
+
+104. Right card 2: body
+English: "You can request correction of inaccurate or incomplete data."
+Portuguese (MZ): 
+
+105. Right card 3: title
+English: "Right to Erasure"
+Portuguese (MZ): 
+
+106. Right card 3: body
+English: "You can request deletion of your personal data in certain circumstances."
+Portuguese (MZ): 
+
+107. Right card 4: title
+English: "Right to Restrict Processing"
+Portuguese (MZ): 
+
+108. Right card 4: body
+English: "You can request restriction of how we use your data."
+Portuguese (MZ): 
+
+109. Right card 5: title
+English: "Right to Data Portability"
+Portuguese (MZ): 
+
+110. Right card 5: body
+English: "You can request transfer of your data to another organization."
+Portuguese (MZ): 
+
+111. Right card 6: title
+English: "Right to Object"
+Portuguese (MZ): 
+
+112. Right card 6: body
+English: "You can object to certain types of processing of your data."
+Portuguese (MZ): 
+
+113. Button: Request Data Access
+English: "Request Data Access"
+Portuguese (MZ): 
+
+114. Button: Request Data Deletion
+English: "Request Data Deletion"
+Portuguese (MZ): 
+
+================================================
+B7: DATA RETENTION (7 items)
+================================================
+
+115. gdpr.sections.retention.title
+English: "Data Retention"
+Portuguese (MZ): 
+
+116. gdpr.sections.retention.subtitle
+English: "Retention Periods"
+Portuguese (MZ): 
+
+117. gdpr.sections.retention.intro
+English: "We retain personal data only as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements."
+Portuguese (MZ): 
+
+118. Retention period 1
+English: "Booking data: 7 years for tax and legal compliance"
+Portuguese (MZ): 
+
+119. Retention period 2
+English: "Customer service communications: 3 years"
+Portuguese (MZ): 
+
+120. Retention period 3
+English: "Marketing consents: Until consent is withdrawn"
+Portuguese (MZ): 
+
+121. Retention period 4
+English: "Website analytics: 26 months"
+Portuguese (MZ): 
+
+122. Retention period 5
+English: "Financial transactions: 10 years for accounting purposes"
+Portuguese (MZ): 
+
+================================================
+B8: INTERNATIONAL TRANSFERS (4 items)
+================================================
+
+123. gdpr.sections.transfers.title
+English: "International Data Transfers"
+Portuguese (MZ): 
+
+124. gdpr.sections.transfers.body
+English: "When we transfer your data outside the European Economic Area (EEA), we ensure appropriate safeguards are in place to protect your information. This may include using Standard Contractual Clauses approved by the European Commission or transferring data to countries with adequacy decisions."
+Portuguese (MZ): 
+
+125. gdpr.sections.transfers.notice.title
+English: "International Data Transfers:"
+Portuguese (MZ): 
+
+126. gdpr.sections.transfers.notice.body
+English: "We ensure appropriate safeguards for any data transfers outside the EEA, including Standard Contractual Clauses and adequacy decisions."
+Portuguese (MZ): 
+
+================================================
+B9: COMPLAINTS (6 items)
+================================================
+
+127. gdpr.sections.complaints.title
+English: "Complaints"
+Portuguese (MZ): 
+
+128. gdpr.sections.complaints.intro
+English: "If you have concerns about how we handle your personal data, you have the right to lodge a complaint with your local data protection authority."
+Portuguese (MZ): 
+
+129. Lead supervisory authority label
+English: "Lead Supervisory Authority:"
+Portuguese (MZ): 
+
+130. Authority name
+English: "Portuguese Data Protection Authority (CNPD)"
+Portuguese (MZ): 
+
+131. Website label
+English: "Website:"
+Portuguese (MZ): 
+
+132. Contact label
+English: "Contact:"
+Portuguese (MZ): 
+
+133. gdpr.sections.complaints.footer
+English: "We encourage you to contact us first to resolve any concerns before approaching a supervisory authority."
+Portuguese (MZ): 
+
+================================================
+B10: DPO CONTACT (2 items)
+================================================
+
+134. gdpr.sections.dpo.title
+English: "Contact Our Data Protection Officer"
+Portuguese (MZ): 
+
+135. gdpr.sections.dpo.body
+English: "For any GDPR-related questions or to exercise your rights, please contact our Data Protection Officer at <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. We will respond to your request within 30 days as required by GDPR."
+Portuguese (MZ): 
+
+================================================
+PART C: CRIC / COMPANY & CONTACT (31 items)
+================================================
+
+================================================
+C1: PAGE METADATA (3 items)
+================================================
+
+136. cric.title
+English: "CRIC — Company & Contact"
+Portuguese (MZ): 
+
+137. cric.updatedDate
+English: "September 27, 2025"
+Portuguese (MZ): 
+
+138. cric.quickLinks.title
+English: "Quick Links"
+Portuguese (MZ): 
+
+================================================
+C2: QUICK LINKS (3 items)
+================================================
+
+139. Quick link: Overview
+English: "Overview"
+Portuguese (MZ): 
+
+140. Quick link: Contact
+English: "Contact"
+Portuguese (MZ): 
+
+141. Quick link: Emergency
+English: "Emergency"
+Portuguese (MZ): 
+
+================================================
+C3: BADGE (2 items)
+================================================
+
+142. cric.sections.badge.title
+English: "Official Company Information:"
+Portuguese (MZ): 
+
+143. cric.sections.badge.body
+English: "Full business registration details and contact information for DEVOCEAN Lodge."
+Portuguese (MZ): 
+
+================================================
+C4: OVERVIEW (9 items)
+================================================
+
+144. cric.sections.overview.title
+English: "Overview"
+Portuguese (MZ): 
+
+145. cric.sections.overview.body
+English: "Full business registration details and contact information for DEVOCEAN Lodge."
+Portuguese (MZ): 
+
+146. Detail label: Company Name
+English: "Company Name"
+Portuguese (MZ): 
+
+147. Detail label: Commercial Registration
+English: "Commercial Registration"
+Portuguese (MZ): 
+
+148. Detail label: VAT Number (NUIT)
+English: "VAT Number (NUIT)"
+Portuguese (MZ): 
+
+149. Detail label: Business License (Alvará)
+English: "Business License (Alvará)"
+Portuguese (MZ): 
+
+150. Detail label: Legal Form
+English: "Legal Form"
+Portuguese (MZ): 
+
+151. Detail value: Legal Form
+English: "Limited Liability Company"
+Portuguese (MZ): 
+
+152. Detail label: Share Capital
+English: "Share Capital"
+Portuguese (MZ): 
+
+================================================
+C5: CONTACT (6 items)
+================================================
+
+153. cric.sections.contact.title
+English: "Contact"
+Portuguese (MZ): 
+
+154. cric.sections.contact.body
+English: "For general inquiries, bookings, and information about our services, please use the contact details below."
+Portuguese (MZ): 
+
+155. Contact label: Registered Address
+English: "Registered Address"
+Portuguese (MZ): 
+
+156. Contact label: Email
+English: "Email"
+Portuguese (MZ): 
+
+157. Contact label: Phone
+English: "Phone"
+Portuguese (MZ): 
+
+158. Contact label: Business Hours
+English: "Business Hours"
+Portuguese (MZ): 
+
+159. Contact value: Business Hours
+English: "Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday & Sunday: 8:00 AM - 12:00 PM<br>Reception: 6:00 AM - 10:00 PM (for guests)"
+Portuguese (MZ): 
+
+================================================
+C6: EMERGENCY CONTACT (8 items)
+================================================
+
+160. cric.sections.emergency.title
+English: "Emergency Contact"
+Portuguese (MZ): 
+
+161. cric.sections.emergency.body
+English: "For urgent matters outside business hours, please use our emergency contact details."
+Portuguese (MZ): 
+
+162. Emergency label: Emergency Phone
+English: "Emergency Phone"
+Portuguese (MZ): 
+
+163. Emergency subtitle: Emergency Phone
+English: "For urgent matters outside business hours"
+Portuguese (MZ): 
+
+164. Emergency label: Emergency Email
+English: "Emergency Email"
+Portuguese (MZ): 
+
+================================================
+END OF BATCH 4
+================================================
