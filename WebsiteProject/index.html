@@ -228,9 +228,11 @@
     content="Eco-friendly stays near the beach. Tents, cottages and thatched chalets with warm, family-run hospitality." />
   <meta name="twitter:image" content="https://devoceanlodge.com/photos/hero01.jpg" />
 
-  <!-- Hint the hero for faster LCP (WebP with responsive) -->
-  <link rel="preload" as="image" href="/photos/hero01.webp" type="image/webp" imagesrcset="/photos/hero01-mobile.webp 800w, /photos/hero01.webp 1335w" imagesizes="100vw" fetchpriority="high" />
-  <link rel="preload" as="image" href="/photos/hero01.jpg" imagesrcset="/photos/hero01-mobile.jpg 800w, /photos/hero01.jpg 1335w" imagesizes="100vw" fetchpriority="high" />
+  <!-- Hint the hero for faster LCP - desktop first, mobile as fallback -->
+  <link rel="preload" as="image" href="/photos/hero01.webp" type="image/webp" fetchpriority="high" media="(min-width: 801px)" />
+  <link rel="preload" as="image" href="/photos/hero01-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 800px)" />
+  <link rel="preload" as="image" href="/photos/hero01.jpg" fetchpriority="high" media="(min-width: 801px)" />
+  <link rel="preload" as="image" href="/photos/hero01-mobile.jpg" fetchpriority="high" media="(max-width: 800px)" />
 
   <!-- JSON-LD (valid JSON) -->
   <script type="application/ld+json">
