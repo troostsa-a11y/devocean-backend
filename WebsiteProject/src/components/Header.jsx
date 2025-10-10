@@ -97,7 +97,8 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           <div className="flex items-center gap-3">
             {/* Region selector */}
             <div className="flex items-center gap-1">
-              <Globe2 size={16} />
+              <Globe2 size={20} />
+              <span className="text-xs font-semibold">{regions[selectedRegion].short}</span>
               <select
                 value={selectedRegion}
                 onChange={(e) => handleRegionChange(e.target.value)}
