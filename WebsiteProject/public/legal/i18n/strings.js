@@ -1759,20 +1759,21 @@
 
     terms: {
       title: "Termos e Condições",
-      updatedDate: "06 out 2025",      quickLinks: {
-        title: "Links rápidos",
+      updatedDate: "06 Out 2025",
+      quickLinks: {
+        title: "Ligações Rápidas",
         links: [
           { id: "intro", text: "Âmbito" },
           { id: "booking", text: "Reservas" },
           { id: "payment", text: "Preços e Pagamento" },
-          { id: "cancel", text: "Cancelamentos e Não comparências" },
-          { id: "conduct", text: "Conduta do hóspede" },
-          { id: "force-majeure", text: "Força maior" },
+          { id: "cancel", text: "Cancelamentos" },
+          { id: "conduct", text: "Conduta dos Hóspedes" },
+          { id: "force-majeure", text: "Força Maior" },
           { id: "liability", text: "Responsabilidade" },
-          { id: "intellectual-property", text: "Propriedade intelectual" },
-          { id: "disputes", text: "Resolução de litígios" },
+          { id: "intellectual-property", text: "Propriedade Intelectual" },
+          { id: "disputes", text: "Resolução de Disputas" },
           { id: "changes", text: "Alterações" },
-          { id: "law", text: "Lei aplicável" },
+          { id: "law", text: "Lei Aplicável" },
           { id: "contact", text: "Contacto" }
         ]
       },
@@ -1859,11 +1860,11 @@
           items: [
             "Desastres naturais, condições meteorológicas extremas",
             "Restrições governamentais, proibições de viagem",
-            "Distúrbios civis, guerra, terrorismo",
+            "Agitação civil, guerra, terrorismo",
             "Pandemias, epidemias, emergências de saúde",
-            "Falhas de serviços públicos, avarias de infraestrutura"
+            "Falhas de utilidades, quebras de infraestrutura"
           ],
-          footer: "Nestes casos, ofereceremos datas alternativas ou vales de crédito sempre que possível. Os reembolsos serão fornecidos de acordo com as leis aplicáveis e as circunstâncias. No entanto, todos os danos e custos que sejam ou pudessem ter sido cobertos por pacotes de seguro de cancelamento e viagem geralmente disponíveis estão excluídos da nossa responsabilidade."
+          footer: "Nesses casos, ofereceremos datas alternativas ou vouchers de crédito onde possível. Reembolsos serão fornecidos de acordo com as leis aplicáveis e circunstâncias. No entanto, todos os danos e custos que são ou poderiam ter sido cobertos por pacotes de seguro de cancelamento e viagem geralmente disponíveis estão excluídos da nossa responsabilidade."
         },
         liability: {
           title: "Responsabilidade",
@@ -1887,8 +1888,8 @@
           }
         },
         changes: {
-          title: "Alterações a estes Termos",
-          body: "Podemos atualizar os Termos periodicamente. A versão publicada aplica-se à sua estadia."
+          title: "Alterações a Estes Termos",
+          body: "Podemos actualizar os Termos de tempos a tempos. A versão publicada aplica-se à sua estadia."
         },
         law: {
           title: "Lei aplicável",
@@ -1994,35 +1995,35 @@
     },
 
     gdpr: {
-      title: "Aviso RGPD",
-      updatedDate: "06 out 2025",
+      title: "Aviso RODO",
+      updatedDate: "06 Out 2025",
       quickLinks: {
-        title: "Links rápidos",
+        title: "Ligações Rápidas",
         links: [
-          { id: "controller", text: "Responsável" },
-          { id: "bases", text: "Fundamentos Legais" },
-          { id: "rights", text: "Os seus direitos" },
-          { id: "retention", text: "Retenção de dados" },
-          { id: "transfers", text: "Transferências de dados" },
+          { id: "controller", text: "Controlador" },
+          { id: "bases", text: "Bases Legais" },
+          { id: "rights", text: "Os Seus Direitos" },
+          { id: "retention", text: "Retenção de Dados" },
+          { id: "transfers", text: "Transferências de Dados" },
           { id: "complaints", text: "Reclamações" }
         ]
       },
       sections: {
         badge: {
-          title: "Conformidade RGPD:",
-          body: "Estamos comprometidos em proteger os seus dados pessoais e respeitar os seus direitos de privacidade ao abrigo do Regulamento Geral sobre a Proteção de Dados."
+          title: "Compatível com RODO:",
+          body: "Estamos comprometidos em proteger os seus dados pessoais e respeitar os seus direitos de privacidade sob o Regulamento Geral de Protecção de Dados."
         },
         controller: {
-          title: "Responsável pelo Tratamento de Dados",
-          body: "A TERRAfrique LDA (DEVOCEAN Lodge), registada na Rua C, Parcela 12, Maputo 1118, Moçambique, atua como responsável pelo tratamento das suas informações pessoais recolhidas através dos nossos serviços."
+          title: "Controlador de Dados",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), registada em Rua C, Parcela 12, Maputo 1118, Moçambique, actua como controlador de dados para as suas informações pessoais recolhidas através dos nossos serviços."
         },
         bases: {
-          title: "Fundamentos Legais para o Tratamento",
-          body: "Tratamos os seus dados pessoais com base nos seguintes fundamentos legais ao abrigo do RGPD:"
+          title: "Bases Legais para Processamento",
+          body: "Processamos os seus dados pessoais com base nos seguintes fundamentos legais sob o RODO:"
         },
         rights: {
-          title: "Os seus direitos ao abrigo do RGPD",
-          body: "Como titular de dados ao abrigo do RGPD, tem os seguintes direitos relativos aos seus dados pessoais:"
+          title: "Os Seus Direitos RODO",
+          body: "Como sujeito de dados sob o RODO, tem os seguintes direitos relativamente aos seus dados pessoais:"
         },
         retention: {
           title: "Retenção de Dados",
@@ -2120,9 +2121,9 @@
 
     cric: {
       title: "CRIC — Empresa & Contacto",
-      updatedDate: "27 set 2025",
+      updatedDate: "27 Set 2025",
       quickLinks: {
-        title: "Links rápidos",
+        title: "Ligações Rápidas",
         links: [
           { id: "intro", text: "Visão Geral" },
           { id: "contact", text: "Contacto" },
@@ -2131,28 +2132,28 @@
       },
       sections: {
         badge: {
-          title: "Informações oficiais da empresa:",
-          body: "Detalhes completos de registo comercial e informações de contacto para o DEVOCEAN Lodge."
+          title: "Informação Oficial da Empresa:",
+          body: "Detalhes completos de registo empresarial e informação de contacto para o DEVOCEAN Lodge."
         },
         intro: {
           title: "Visão Geral",
-          body: "Dados completos de registo da empresa e informações de contacto para DEVOCEAN Lodge."
+          body: "Detalhes completos de registo empresarial e informação de contacto para o DEVOCEAN Lodge."
         },
         contact: {
           title: "Contacto",
-          body: 'Para consultas gerais, reservas e informações sobre os nossos serviços, utilize os dados de contacto fornecidos abaixo.'
+          body: 'Para inquéritos gerais, reservas e informação sobre os nossos serviços, por favor use os detalhes de contacto fornecidos abaixo.'
         },
         emergency: {
           title: "Contacto de Emergência",
-          body: "Para assuntos urgentes fora do horário comercial, utilize os nossos dados de contacto de emergência."
+          body: "Para assuntos urgentes fora do horário de funcionamento, por favor use os nossos detalhes de contacto de emergência."
         }
       },
       labels: {
         companyName: "Nome da Empresa",
         registration: "Registo Comercial",
         vat: "Número de IVA (NUIT)",
-        license: "Licença Comercial (Alvará)",
-        legalForm: "Forma Jurídica",
+        license: "Licença Empresarial (Alvará)",
+        legalForm: "Forma Legal",
         capital: "Capital Social",
         address: "Endereço Registado",
         email: "E-mail",
@@ -2162,8 +2163,8 @@
         emergencyEmail: "E-mail de Emergência"
       },
       legalForm: "Sociedade de Responsabilidade Limitada",
-      businessHours: "Segunda - Sexta: 8:00 - 18:00<br>Sábado & Domingo: 8:00 - 12:00<br>Receção: 6:00 - 22:00 (para hóspedes)",
-      emergencyPhoneNote: "Para assuntos urgentes fora do horário comercial"
+      businessHours: "Segunda - Sexta: 8:00 - 18:00<br>Sábado & Domingo: 8:00 - 12:00<br>Recepção: 6:00 - 22:00 (para hóspedes)",
+      emergencyPhoneNote: "Para assuntos urgentes fora do horário de funcionamento"
     },
 
     cookies: {
