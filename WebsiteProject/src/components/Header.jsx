@@ -86,7 +86,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
             </a>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
             {/* Region selector */}
             <div className="relative flex items-center gap-1">
               <Globe2 size={20} />
