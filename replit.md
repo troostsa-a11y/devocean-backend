@@ -13,6 +13,11 @@ Preferred communication style: Simple, everyday language.
 - Do NOT automatically build/deploy after making changes
 - Wait for explicit user confirmation before deploying
 
+**Testing:**
+- **IMPORTANT:** Only run browser tests (run_test tool) when explicitly instructed by the user
+- Do NOT automatically run tests after making changes
+- Wait for explicit user confirmation before testing
+
 ## System Architecture
 
 ### Frontend Architecture
