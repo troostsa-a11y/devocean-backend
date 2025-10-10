@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv"];
-const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK"];
+const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl"];
+const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN"];
 
 const CC_TO_CURRENCY = {
   US: "USD", GB: "GBP",
@@ -9,24 +9,26 @@ const CC_TO_CURRENCY = {
   PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
   ZA: "ZAR", MZ: "MZN",
   SE: "SEK",
+  PL: "PLN",
 };
 
 const LANG_TO_CURRENCY_HINT = {
   "nl": "EUR", "de": "EUR", "fr": "EUR", "pt": "EUR", "es": "EUR", "it": "EUR",
   "sv": "SEK",
+  "pl": "PLN",
   "en-gb": "GBP", "en-us": "USD",
 };
 
 // Booking engine locale mapping
 export const LOCALE_BY_LANG = {
   en: "en-GB", pt: "pt-BR", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl-PL",
 };
 
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
   en: "en-GB", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL",
 };
 
 function normLang(raw) {
