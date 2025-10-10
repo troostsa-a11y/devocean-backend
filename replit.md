@@ -67,9 +67,16 @@ Preferred communication style: Simple, everyday language.
 
 - **Portuguese (Mozambican) Translation Status**: 4 batch TXT files created with 366 total items for translation
   - ✅ Batch 1: Website UI (70 items) - **COMPLETED & INTEGRATED** into translations.js (navigation, hero, stay, experiences, todo, gallery, location, contact form, footer, legal menu with Mozambican Portuguese flavor)
+    - **Cultural Enhancements**: Added "machamba local" (local farm) references in stay description and activities for authentic Mozambican cultural flavor
   - ✅ Batch 2: Privacy Policy (72 items) - **COMPLETED & INTEGRATED** into legal i18n system (all sections, quick links, badge, data collection/usage/sharing, security, retention, rights, transfers, contact, updates with Mozambican Portuguese spelling)
+    - **Cultural Enhancements**: Changed "circunstâncias" → "situações" in formal legal contexts (cancellation policies, force majeure) to reflect Mozambican Portuguese semantic use for circumstances implying challenges
   - ✅ Batch 3: Cookies Policy (51 items) - **COMPLETED & INTEGRATED** into legal i18n system (page title, dates, quick links, badge, all cookie sections with tables, manage preferences, browser links with Mozambican Portuguese spelling)
+    - **Cultural Enhancements**: Added "machamba digital" (digital farm) metaphor in "What are cookies?" section for accessibility in Mozambican context with varying tech literacy
   - ✅ Batch 4: Terms + GDPR + CRIC (173 items) - **COMPLETED & INTEGRATED** into legal i18n system (Terms: scope, bookings, payment, cancellations with "Não-Comparências", conduct, force majeure with insurance exclusion clause, liability, IP, disputes; GDPR: "Aviso RODO", controller, bases, rights with Mozambican terminology; CRIC: company info with "Licença Empresarial", contact, emergency with Mozambican spelling including "actualizar", "Ligações Rápidas", "Agitação civil", "vouchers")
+    - **Cultural Enhancements**: 
+      - Terms - Guest Conduct: Added "madala" (respectful elder term) to emphasize cultural respect: "como um madala que honra a sua casa"
+      - GDPR - Complaints: Added Mozambican data protection law context alongside GDPR/CNPD references
+      - CRIC: Local business terms already integrated (NUIT for tax ID, Alvará for business license)
 
 **Performance Optimizations:**
 - Dynamic translation loading

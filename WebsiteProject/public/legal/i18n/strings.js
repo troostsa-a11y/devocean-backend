@@ -1846,7 +1846,7 @@
         conduct: {
           title: "Conduta do hóspede",
           items: [
-            "Respeite as regras da propriedade, o pessoal, outros hóspedes e a comunidade local",
+            "Respeite as regras da propriedade, o pessoal, outros hóspedes e a comunidade local – como um madala que honra a sua casa",
             "Não são permitidas atividades ilegais nas instalações"
           ],
           zeroTolerance: {
@@ -2043,7 +2043,7 @@
         },
         complaints: {
           title: "Reclamações",
-          intro: "Se tiver preocupações sobre como tratamos os seus dados pessoais, tem o direito de apresentar uma reclamação à sua autoridade local de proteção de dados.",
+          intro: "Se tiver preocupações sobre como tratamos os seus dados pessoais, tem o direito de apresentar uma reclamação à sua autoridade local de proteção de dados. Em Moçambique, seguimos as leis locais de protecção de dados juntamente com as normas do RODO.",
           footer: "Encorajamos que nos contacte primeiro para resolver quaisquer preocupações antes de abordar a autoridade de supervisão."
         },
         dpo: {
