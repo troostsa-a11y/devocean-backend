@@ -21,7 +21,7 @@ const LANG_TO_CURRENCY_HINT = {
 
 // Booking engine locale mapping
 export const LOCALE_BY_LANG = {
-  en: "en-GB", pt: "pt-BR", nl: "nl-NL",
+  en: "en-GB", pt: "pt-PT", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl",
 };
 

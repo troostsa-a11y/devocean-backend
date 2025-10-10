@@ -139,7 +139,8 @@ Preferred communication style: Simple, everyday language.
   - Accessible focus styles using `var(--focus)` blue outline visible on all backgrounds
 
 **Booking Integration:**
-- External booking engine at book.devoceanlodge.com with parameterized URLs.
+- External booking engine at book.devoceanlodge.com with parameterized URLs
+- Portuguese locale configured for **European Portuguese (pt-PT)**: https://book.devoceanlodge.com/bv3/search?locale=pt-PT&currency=EUR
 
 **Maps & Location:**
 - Google Maps embed for property location and Directions API integration
