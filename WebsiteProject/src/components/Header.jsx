@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
 
-export default function Header({ ui, lang, currency, onLangChange, onCurrencyChange, bookUrl }) {
+export default function Header({ ui, lang, currency, region, onLangChange, onCurrencyChange, onRegionChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
@@ -17,33 +17,24 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
     oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
   };
 
-  // Determine initial region based on current language
-  const getRegionForLanguage = (language) => {
-    // Priority: if language is only in one region, use that
-    // Otherwise default to Europe (most languages)
-    for (const [regionKey, regionData] of Object.entries(regions)) {
-      if (regionData.languages.includes(language) && regionKey !== 'europe') {
-        // Check if language is exclusive to this region
-        const exclusiveToRegion = !regions.europe.languages.includes(language) || 
-                                   Object.values(regions).filter(r => r.languages.includes(language)).length === 1;
-        if (exclusiveToRegion) return regionKey;
-      }
-    }
-    return 'europe'; // Default to Europe
-  };
-
-  const [selectedRegion, setSelectedRegion] = useState(getRegionForLanguage(lang));
-
-  const handleRegionChange = (region) => {
-    setSelectedRegion(region);
+  const handleRegionChange = (newRegion) => {
+    onRegionChange(newRegion);
     
     // If current language is not available in the new region, switch to English
-    if (!regions[region].languages.includes(lang)) {
+    if (!regions[newRegion].languages.includes(lang)) {
       onLangChange('en');
     }
     
+    // Special case: Portuguese + Africa region → auto-switch to MZN
+    if (lang === 'pt' && newRegion === 'africa' && currency !== 'MZN') {
+      onCurrencyChange('MZN');
+    }
+    // Special case: Portuguese + Europe region → auto-switch to EUR
+    else if (lang === 'pt' && newRegion === 'europe' && currency !== 'EUR') {
+      onCurrencyChange('EUR');
+    }
     // If current currency is not available in the new region, switch to USD
-    if (!regions[region].currencies.includes(currency)) {
+    else if (!regions[newRegion].currencies.includes(currency)) {
       onCurrencyChange('USD');
     }
   };
@@ -104,7 +95,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 className="border border-white/40 rounded px-2 py-1 w-[40px] text-left"
                 aria-label="Select region"
               >
-                {regions[selectedRegion].short}
+                {regions[region].short}
               </button>
               
               {regionMenuOpen && (
@@ -114,7 +105,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                     onClick={() => setRegionMenuOpen(false)}
                   />
                   <div className="absolute left-0 top-full mt-1 bg-[#8B4513] text-white rounded py-1 w-[90px] z-50">
-                    {Object.entries(regions).map(([key, region]) => (
+                    {Object.entries(regions).map(([key, regionData]) => (
                       <button
                         key={key}
                         onClick={() => {
@@ -122,10 +113,10 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                           setRegionMenuOpen(false);
                         }}
                         className={`w-full text-left px-3 py-2 hover:bg-[#6B3410] transition-colors ${
-                          selectedRegion === key ? 'bg-blue-600' : ''
+                          region === key ? 'bg-blue-600' : ''
                         }`}
                       >
-                        {region.name}
+                        {regionData.name}
                       </button>
                     ))}
                   </div>
@@ -138,15 +129,15 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               onChange={(e) => onLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[75px] text-white"
             >
-              {regions[selectedRegion].languages.includes('en') && <option value="en">English</option>}
-              {regions[selectedRegion].languages.includes('pt') && <option value="pt">Português</option>}
-              {regions[selectedRegion].languages.includes('nl') && <option value="nl">Nederlands</option>}
-              {regions[selectedRegion].languages.includes('fr') && <option value="fr">Français</option>}
-              {regions[selectedRegion].languages.includes('it') && <option value="it">Italiano</option>}
-              {regions[selectedRegion].languages.includes('de') && <option value="de">Deutsch</option>}
-              {regions[selectedRegion].languages.includes('es') && <option value="es">Español</option>}
-              {regions[selectedRegion].languages.includes('sv') && <option value="sv">Svenska</option>}
-              {regions[selectedRegion].languages.includes('pl') && <option value="pl">Polski</option>}
+              {regions[region].languages.includes('en') && <option value="en">English</option>}
+              {regions[region].languages.includes('pt') && <option value="pt">Português</option>}
+              {regions[region].languages.includes('nl') && <option value="nl">Nederlands</option>}
+              {regions[region].languages.includes('fr') && <option value="fr">Français</option>}
+              {regions[region].languages.includes('it') && <option value="it">Italiano</option>}
+              {regions[region].languages.includes('de') && <option value="de">Deutsch</option>}
+              {regions[region].languages.includes('es') && <option value="es">Español</option>}
+              {regions[region].languages.includes('sv') && <option value="sv">Svenska</option>}
+              {regions[region].languages.includes('pl') && <option value="pl">Polski</option>}
             </select>
 
             <select
@@ -154,13 +145,13 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               onChange={(e) => onCurrencyChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[60px] text-white"
             >
-              {regions[selectedRegion].currencies.includes('USD') && <option value="USD">Dollar</option>}
-              {regions[selectedRegion].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
-              {regions[selectedRegion].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
-              {regions[selectedRegion].currencies.includes('EUR') && <option value="EUR">Euro</option>}
-              {regions[selectedRegion].currencies.includes('GBP') && <option value="GBP">Pound</option>}
-              {regions[selectedRegion].currencies.includes('SEK') && <option value="SEK">Krona</option>}
-              {regions[selectedRegion].currencies.includes('PLN') && <option value="PLN">Zloty</option>}
+              {regions[region].currencies.includes('USD') && <option value="USD">Dollar</option>}
+              {regions[region].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
+              {regions[region].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
+              {regions[region].currencies.includes('EUR') && <option value="EUR">Euro</option>}
+              {regions[region].currencies.includes('GBP') && <option value="GBP">Pound</option>}
+              {regions[region].currencies.includes('SEK') && <option value="SEK">Krona</option>}
+              {regions[region].currencies.includes('PLN') && <option value="PLN">Zloty</option>}
             </select>
           </div>
         </div>

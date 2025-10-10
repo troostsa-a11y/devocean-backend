@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl"];
 const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN"];
+const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
 const CC_TO_CURRENCY = {
   US: "USD", GB: "GBP",
@@ -19,10 +20,18 @@ const LANG_TO_CURRENCY_HINT = {
   "en-gb": "GBP", "en-us": "USD",
 };
 
-// Booking engine locale mapping
+// Booking engine locale mapping (base, can be overridden by region)
 export const LOCALE_BY_LANG = {
   en: "en-GB", pt: "pt-PT", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl",
+};
+
+// Region-specific locale overrides for Portuguese
+export const getBookingLocaleForRegion = (lang, region) => {
+  if (lang === 'pt' && region === 'africa') {
+    return 'pt-BR'; // African Portuguese uses Brazilian locale
+  }
+  return LOCALE_BY_LANG[lang] || "en-GB";
 };
 
 // Native date pickers: force dd/mm/yyyy display
@@ -92,6 +101,15 @@ function pickInitialCurrency(langBase) {
   return "USD";
 }
 
+function pickInitialRegion(langBase) {
+  const saved = localStorage.getItem("site.region");
+  if (saved && SUPPORTED_REGIONS.includes(saved)) return saved;
+  
+  // Default region based on language
+  // Portuguese defaults to Europe (most common)
+  return "europe";
+}
+
 // Dynamically load translations for a specific language
 async function loadTranslations(lang) {
   const { UI } = await import('./translations.js');
@@ -107,6 +125,11 @@ export function useLocale() {
   const [currency, setCurrencyState] = useState(() => {
     const stored = localStorage.getItem("site.currency");
     return stored && ALLOWED_CURRENCIES.includes(stored) ? stored : pickInitialCurrency(lang);
+  });
+
+  const [region, setRegionState] = useState(() => {
+    const stored = localStorage.getItem("site.region");
+    return stored && SUPPORTED_REGIONS.includes(stored) ? stored : pickInitialRegion(lang);
   });
 
   const [ui, setUi] = useState(null);
@@ -161,14 +184,23 @@ export function useLocale() {
     localStorage.setItem("site.currency", clamped);
   };
 
+  const setRegion = (newRegion) => {
+    if (SUPPORTED_REGIONS.includes(newRegion)) {
+      setRegionState(newRegion);
+      localStorage.setItem("site.region", newRegion);
+    }
+  };
+
   return {
     lang,
     currency,
+    region,
     setLang,
     setCurrency,
+    setRegion,
     ui,
     loading,
-    bookingLocale: LOCALE_BY_LANG[lang] || "en-GB",
+    bookingLocale: getBookingLocaleForRegion(lang, region),
     dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
   };
 }
