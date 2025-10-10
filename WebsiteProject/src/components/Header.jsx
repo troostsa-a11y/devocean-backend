@@ -127,7 +127,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[75px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[95px] text-white"
             >
               {regions[region].languages.includes('en') && <option value="en">English</option>}
               {regions[region].languages.includes('pt') && <option value="pt">Português</option>}
