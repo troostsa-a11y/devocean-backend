@@ -51,10 +51,10 @@ Preferred communication style: Simple, everyday language.
   - Dynamic language filtering: Europe (all 8 languages), Asia (English), Americas (English/Spanish/French), Africa (English/French), Oceania (English)
   - Currency filtering: Meticais (MZN) restricted to Africa region only
   - Auto-switch to English when current language unavailable in selected region
-- **Header dropdown styling**: Fixed-width selectors with consistent design
-  - Region: 60px button showing globe icon + 2-letter abbreviation (EU, AS, AM, AF, OC), 100px dropdown with full region names (Europe, Americas, Asia, Africa, Oceania)
+- **Header dropdown styling**: Fixed-width selectors with consistent design (optimized for mobile)
+  - Region: 50px button showing globe icon + 2-letter abbreviation (EU, AS, AM, AF, OC), 90px dropdown with full region names (Americas is widest)
   - Language: 120px (fits "Nederlands", widest option)
-  - Currency: 100px (fits all currency names)
+  - Currency: 95px (fits "Meticais", widest option)
 - Badge translations: All legal pages properly localized with "About cookies" badge in all 9 languages (v=30)
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)

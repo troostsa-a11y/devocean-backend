@@ -101,7 +101,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               <Globe2 size={20} />
               <button
                 onClick={() => setRegionMenuOpen(!regionMenuOpen)}
-                className="border border-white/40 rounded px-2 py-1 w-[60px] text-left"
+                className="border border-white/40 rounded px-2 py-1 w-[50px] text-left"
                 aria-label="Select region"
               >
                 {regions[selectedRegion].short}
@@ -113,7 +113,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                     className="fixed inset-0 z-40" 
                     onClick={() => setRegionMenuOpen(false)}
                   />
-                  <div className="absolute left-0 top-full mt-1 bg-[#8B4513] text-white rounded py-1 w-[100px] z-50">
+                  <div className="absolute left-0 top-full mt-1 bg-[#8B4513] text-white rounded py-1 w-[90px] z-50">
                     {Object.entries(regions).map(([key, region]) => (
                       <button
                         key={key}
@@ -151,7 +151,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[100px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[95px] text-white"
             >
               {regions[selectedRegion].currencies.includes('USD') && <option value="USD">Dollar</option>}
               {regions[selectedRegion].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
