@@ -17,7 +17,8 @@
     fr:   { back: "Accueil",                updated: "Dernière mise à jour" },
     it:   { back: "Home",                   updated: "Ultimo aggiornamento" },
     es:   { back: "Inicio",                 updated: "Última actualización" },
-    sv:   { back: "Hem",                    updated: "Senast uppdaterad" }
+    sv:   { back: "Hem",                    updated: "Senast uppdaterad" },
+    pl:   { back: "Strona główna",          updated: "Ostatnia aktualizacja" }
   };
 
   // Root dict
@@ -4128,6 +4129,132 @@
       legalForm: "Aktiebolag med begränsat ansvar",
       businessHours: "Måndag - Fredag: 8:00 - 18:00<br>Lördag & Söndag: 8:00 - 12:00<br>Reception: 6:00 - 22:00 (för gäster)",
       emergencyPhoneNote: "För brådskande ärenden utanför kontorstid"
+    }
+  };
+
+  // -------- POLISH --------
+  window.LEGAL_DICT.pl = {
+    privacy: {
+      title: "Polityka prywatności",
+      updatedDate: "06 października 2025",
+      quickLinks: {
+        title: "Szybkie linki",
+        links: [
+          { id: "who", text: "Kim jesteśmy" },
+          { id: "collect", text: "Zbieranie danych" },
+          { id: "use", text: "Wykorzystanie danych" },
+          { id: "share", text: "Udostępnianie danych" },
+          { id: "security", text: "Bezpieczeństwo" },
+          { id: "retention", text: "Przechowywanie danych" },
+          { id: "rights", text: "Twoje prawa" },
+          { id: "transfers", text: "Międzynarodowe przekazywanie danych" },
+          { id: "contact", text: "Kontakt" },
+          { id: "updates", text: "Aktualizacje polityki" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Twoja prywatność jest ważna:",
+          body: "Jesteśmy zaangażowani w ochronę Twoich danych osobowych i przejrzystość w kwestii tego, jak zbieramy, wykorzystujemy i zabezpieczamy Twoje informacje."
+        },
+        who: {
+          title: "Kim jesteśmy",
+          body: "DEVOCEAN Lodge jest prowadzony przez TERRAfrique LDA, firmę zarejestrowaną w Mozambiku. Nasz adres rejestrowy to Rua C, Parcela 12, Maputo 1118, Mozambik. Prowadzimy ekologiczne zakwaterowanie plażowe w Ponta do Ouro, Mozambik. Jesteśmy zaangażowani w ochronę Twojej prywatności i zapewnienie, że Twoje dane osobowe są zbierane, przetwarzane i wykorzystywane prawidłowo, zgodnie z prawem i przejrzyście, zgodnie z obowiązującymi przepisami o ochronie danych. Korzystając z naszej strony internetowej i usług, wyrażasz zgodę na zbieranie i wykorzystywanie Twoich informacji zgodnie z opisem w niniejszej Polityce prywatności."
+        },
+        collect: {
+          title: "Jakie dane osobowe zbieramy",
+          intro: "Zbieramy różne rodzaje informacji, aby świadczyć i ulepszać nasze usługi:",
+          categories: [
+            {
+              title: "Dane osobowe",
+              items: [
+                "Imię i nazwisko, dane kontaktowe",
+                "Informacje o paszporcie/dowodzie osobistym",
+                "Informacje o płatnościach",
+                "Preferencje rezerwacji"
+              ]
+            },
+            {
+              title: "Dane techniczne",
+              items: [
+                "Adres IP, informacje o urządzeniu",
+                "Typ i wersja przeglądarki",
+                "Analiza użytkowania strony internetowej",
+                "Dane z plików cookie (za zgodą)"
+              ]
+            },
+            {
+              title: "Dane komunikacyjne",
+              items: [
+                "Korespondencja e-mailowa",
+                "Wnioski obsługi klienta",
+                "Opinie i recenzje",
+                "Preferencje marketingowe"
+              ]
+            }
+          ]
+        },
+        use: {
+          title: "Jak wykorzystujemy Twoje dane",
+          items: [
+            "Zarządzanie rezerwacjami i świadczenie usług",
+            "Komunikacja dotycząca Twojego pobytu, zasad i ofert (za zgodą)",
+            "Ulepszanie naszej strony i usług (analityka, bezpieczeństwo)",
+            "Zachowanie zgodności z obowiązkami prawnymi/finansowymi"
+          ]
+        },
+        share: {
+          title: "Kiedy udostępniamy dane",
+          items: [
+            "Dostawcy płatności i platformy rezerwacyjne w celu przetwarzania Twoich rezerwacji i płatności",
+            "Usługi analityczne w celu zrozumienia użytkowania strony internetowej i ulepszania naszych usług",
+            "Usługi reklamowe dla marketingu celowanego (tylko za Twoją zgodą)",
+            "Dostawcy usług IT, dostawcy hostingu i dostawcy wsparcia technicznego na podstawie ścisłych umów o poufności",
+            "Organy prawne, gdy jest to wymagane przez prawo, regulacje, nakaz sądowy lub inny proces prawny",
+            "W celu egzekwowania naszych umów lub ochrony naszych praw, własności lub bezpieczeństwa",
+            "W przypadku fuzji, przejęcia lub sprzedaży aktywów Twoje informacje mogą zostać przekazane nowemu właścicielowi"
+          ],
+          footer: "Wymagamy od wszystkich stron trzecich szanowania bezpieczeństwa Twoich danych osobowych i wykorzystywania ich tylko w celach, dla których zostały przekazane. Nie pozwalamy stronom trzecim na wykorzystywanie Twoich danych osobowych do ich własnych celów i zezwalamy im jedynie na przetwarzanie Twoich danych w określonych celach zgodnie z naszymi instrukcjami."
+        },
+        security: {
+          title: "Środki bezpieczeństwa",
+          intro: "Poważnie traktujemy bezpieczeństwo danych i stosujemy:",
+          measures: [
+            "Szyfrowanie wrażliwych danych podczas przesyłania i przechowywania",
+            "Regularne oceny bezpieczeństwa i testy penetracyjne",
+            "Kontrola dostępu i mechanizmy uwierzytelniania",
+            "Szkolenia personelu z zakresu ochrony danych i prywatności",
+            "Bezpieczne procedury tworzenia kopii zapasowych danych i odzyskiwania po awarii"
+          ]
+        },
+        retention: {
+          title: "Przechowywanie danych",
+          body: "Będziemy przechowywać Twoje dane osobowe tak długo, jak jest to konieczne do realizacji celów, dla których zostały zebrane, zgodnie z opisem w niniejszej Polityce prywatności. Zazwyczaj przechowujemy dane osobowe przez okres do 1 roku od ostatniej interakcji z nami, chyba że dłuższy okres przechowywania jest wymagany lub dozwolony przez prawo. Możemy potrzebować przechowywać pewne informacje przez dłuższy czas z określonych powodów, w tym: prowadzenia dokumentacji i raportowania zgodnie z obowiązującym prawem (zazwyczaj 7 lat dla dokumentacji finansowej i podatkowej), egzekwowania praw prawnych, zapobiegania oszustwom i rozwiązywania sporów. Po upływie okresu przechowywania Twoje dane osobowe zostaną bezpiecznie usunięte lub zanonimizowane. Pozostałe informacje anonimowe i zagregowane, które nie identyfikują Cię bezpośrednio lub pośrednio, mogą być przechowywane bezterminowo w celach statystycznych i analitycznych."
+        },
+        rights: {
+          title: "Twoje prawa do prywatności",
+          items: [
+            "Prawo do dostępu do Twoich danych osobowych",
+            "Prawo do poprawienia niedokładnych danych",
+            "Prawo do usunięcia Twoich danych osobowych",
+            "Prawo do ograniczenia lub sprzeciwu wobec przetwarzania",
+            "Prawo do przenoszenia danych",
+            "Prawo do wycofania zgody"
+          ]
+        },
+        contact: {
+          title: "Skontaktuj się z naszym zespołem ds. prywatności",
+          body: 'Jeśli masz jakiekolwiek pytania, wątpliwości lub wnioski dotyczące niniejszej Polityki prywatności lub przetwarzania Twoich danych osobowych, lub jeśli chcesz skorzystać z jakichkolwiek swoich praw do prywatności, prosimy o kontakt pod adresem:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Adres pocztowy:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambik<br><br>Odpowiemy na Twoje żądanie zgodnie z obowiązującymi przepisami o ochronie danych. W przypadku skarg lub wątpliwości dotyczących przetwarzania Twoich informacji możesz również skontaktować się z naszym Inspektorem Ochrony Danych pod powyższym adresem e-mail.'
+        },
+        transfers: {
+          title: "Międzynarodowe przekazywanie danych",
+          body: "Ponieważ działamy w wielu jurysdykcjach, Twoje dane mogą być przekazywane i przetwarzane w krajach poza miejscem Twojego zamieszkania. Zapewniamy, że takie przekazywanie jest zgodne z obowiązującymi przepisami o ochronie danych poprzez decyzje o odpowiednim poziomie ochrony wydane przez Komisję Europejską, Standardowe Klauzule Umowne (SCC), odpowiednie zabezpieczenia bezpieczeństwa oraz przejrzystość dotyczącą lokalizacji przekazywania."
+        },
+        updates: {
+          title: "Aktualizacje polityki",
+          body: 'Możemy od czasu do czasu aktualizować niniejszą politykę prywatności, aby odzwierciedlić zmiany w naszych praktykach, technologii, wymogach prawnych lub innych czynnikach. Poinformujemy Cię o wszelkich istotnych zmianach za pośrednictwem powiadomień e-mailowych dla zarejestrowanych użytkowników, wyraźnych powiadomień na naszej stronie internetowej oraz zaktualizowanej daty „ostatniej aktualizacji". Zachęcamy do okresowego przeglądania tej polityki, aby być na bieżąco z tym, jak chronimy Twoje informacje.'
+        }
+      }
     }
   };
   
