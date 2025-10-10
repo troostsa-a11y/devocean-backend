@@ -1833,7 +1833,7 @@
                 planName: "Tarifa não reembolsável:",
                 tiers: [
                   { period: "Até 24 horas após a reserva", charge: "Reembolso total" },
-                  { period: "Em todas as outras circunstâncias", subtext: "O direito de modificar a data de chegada uma vez sob a condição de pagar a diferença caso a nova data tenha uma tarifa mais alta, caso contrário", charge: "Sem reembolso", chargeClass: "no-refund-red" }
+                  { period: "Em todas as outras situações", subtext: "O direito de modificar a data de chegada uma vez sob a condição de pagar a diferença caso a nova data tenha uma tarifa mais alta, caso contrário", charge: "Sem reembolso", chargeClass: "no-refund-red" }
                 ]
               }
             ]
@@ -1856,7 +1856,7 @@
         },
         "force-majeure": {
           title: "Força Maior",
-          intro: "Não somos responsáveis pela falha em cumprir obrigações devido a circunstâncias além do nosso controlo razoável, incluindo mas não limitado a:",
+          intro: "Não somos responsáveis pela falha em cumprir obrigações devido a situações além do nosso controlo razoável, incluindo mas não limitado a:",
           items: [
             "Desastres naturais, condições meteorológicas extremas",
             "Restrições governamentais, proibições de viagem",
@@ -1864,7 +1864,7 @@
             "Pandemias, epidemias, emergências de saúde",
             "Falhas de utilidades, quebras de infraestrutura"
           ],
-          footer: "Nesses casos, ofereceremos datas alternativas ou vouchers de crédito onde possível. Reembolsos serão fornecidos de acordo com as leis aplicáveis e circunstâncias. No entanto, todos os danos e custos que são ou poderiam ter sido cobertos por pacotes de seguro de cancelamento e viagem geralmente disponíveis estão excluídos da nossa responsabilidade."
+          footer: "Nesses casos, ofereceremos datas alternativas ou vouchers de crédito onde possível. Reembolsos serão fornecidos de acordo com as leis aplicáveis e situações. No entanto, todos os danos e custos que são ou poderiam ter sido cobertos por pacotes de seguro de cancelamento e viagem geralmente disponíveis estão excluídos da nossa responsabilidade."
         },
         liability: {
           title: "Responsabilidade",
