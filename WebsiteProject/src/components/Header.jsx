@@ -8,6 +8,42 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
+  // Define regions with metadata
+  const regions = {
+    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv'] },
+    asia: { name: 'Asia', short: 'AS', languages: ['en'] },
+    americas: { name: 'Americas', short: 'AM', languages: ['en', 'es'] },
+    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr'] },
+    oceania: { name: 'Oceania', short: 'OC', languages: ['en'] }
+  };
+
+  // Determine initial region based on current language
+  const getRegionForLanguage = (language) => {
+    // Priority: if language is only in one region, use that
+    // Otherwise default to Europe (most languages)
+    for (const [regionKey, regionData] of Object.entries(regions)) {
+      if (regionData.languages.includes(language) && regionKey !== 'europe') {
+        // Check if language is exclusive to this region
+        const exclusiveToRegion = !regions.europe.languages.includes(language) || 
+                                   Object.values(regions).filter(r => r.languages.includes(language)).length === 1;
+        if (exclusiveToRegion) return regionKey;
+      }
+    }
+    return 'europe'; // Default to Europe
+  };
+
+  const [selectedRegion, setSelectedRegion] = useState(getRegionForLanguage(lang));
+
+  const handleRegionChange = (region) => {
+    setSelectedRegion(region);
+    setRegionMenuOpen(false);
+    
+    // If current language is not available in the new region, switch to English
+    if (!regions[region].languages.includes(lang)) {
+      onLangChange('en');
+    }
+  };
+
   const handleAnchorNav = (e, href) => {
     // Let the browser handle smooth scrolling natively
     // The CSS scroll-margin-top will handle the offset
@@ -65,6 +101,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 aria-expanded={regionMenuOpen}
               >
                 <Globe2 size={20} className="hover:scale-110 transition-transform" />
+                <span className="text-xs font-semibold hidden sm:inline">{regions[selectedRegion].short}</span>
               </button>
               
               {regionMenuOpen && (
@@ -74,21 +111,13 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                     onClick={() => setRegionMenuOpen(false)}
                   />
                   <div className="absolute right-0 top-full mt-1 bg-white text-gray-800 rounded-lg shadow-lg py-1 min-w-[160px] z-50">
-                    {[
-                      { name: 'Europe', value: 'europe' },
-                      { name: 'Asia', value: 'asia' },
-                      { name: 'Americas', value: 'americas' },
-                      { name: 'Africa', value: 'africa' },
-                      { name: 'Oceania', value: 'oceania' },
-                    ].map((region) => (
+                    {Object.entries(regions).map(([key, region]) => (
                       <button
-                        key={region.value}
-                        onClick={() => {
-                          setRegionMenuOpen(false);
-                          // Handle region selection (can be expanded later)
-                          console.log('Selected region:', region.value);
-                        }}
-                        className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
+                        key={key}
+                        onClick={() => handleRegionChange(key)}
+                        className={`w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors ${
+                          selectedRegion === key ? 'bg-blue-50 font-semibold' : ''
+                        }`}
                       >
                         {region.name}
                       </button>
@@ -103,14 +132,14 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                 value={lang}
                 onChange={(e) => onLangChange(e.target.value)}
               >
-                <option value="en">English</option>
-                <option value="pt">Português</option>
-                <option value="nl">Nederlands</option>
-                <option value="fr">Français</option>
-                <option value="it">Italiano</option>
-                <option value="de">Deutsch</option>
-                <option value="es">Español</option>
-                <option value="sv">Svenska</option>
+                {regions[selectedRegion].languages.includes('en') && <option value="en">English</option>}
+                {regions[selectedRegion].languages.includes('pt') && <option value="pt">Português</option>}
+                {regions[selectedRegion].languages.includes('nl') && <option value="nl">Nederlands</option>}
+                {regions[selectedRegion].languages.includes('fr') && <option value="fr">Français</option>}
+                {regions[selectedRegion].languages.includes('it') && <option value="it">Italiano</option>}
+                {regions[selectedRegion].languages.includes('de') && <option value="de">Deutsch</option>}
+                {regions[selectedRegion].languages.includes('es') && <option value="es">Español</option>}
+                {regions[selectedRegion].languages.includes('sv') && <option value="sv">Svenska</option>}
               </select>
             </div>
 
