@@ -101,11 +101,11 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               <select
                 value={selectedRegion}
                 onChange={(e) => handleRegionChange(e.target.value)}
-                className="border border-white/40 rounded px-2 py-1 w-[80px]"
+                className="border border-white/40 rounded px-2 py-1 w-[100px]"
                 aria-label="Select region"
               >
                 {Object.entries(regions).map(([key, region]) => (
-                  <option key={key} value={key}>{region.short}</option>
+                  <option key={key} value={key}>{region.name}</option>
                 ))}
               </select>
             </div>
