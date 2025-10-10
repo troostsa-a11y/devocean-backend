@@ -168,7 +168,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
           </div>
 
           {/* Desktop nav (large screens only) */}
-          <ul className="hidden lg:flex items-center gap-6">
+          <ul className="hidden lg:flex items-center gap-3">
             {[
               ["home", "#home"],
               ["stay", "#stay"],
