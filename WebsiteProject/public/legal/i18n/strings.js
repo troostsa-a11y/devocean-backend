@@ -2164,6 +2164,92 @@
       legalForm: "Sociedade de Responsabilidade Limitada",
       businessHours: "Segunda - Sexta: 8:00 - 18:00<br>Sábado & Domingo: 8:00 - 12:00<br>Receção: 6:00 - 22:00 (para hóspedes)",
       emergencyPhoneNote: "Para assuntos urgentes fora do horário comercial"
+    },
+
+    cookies: {
+      title: "Política de Cookies",
+      effectiveDate: "19 de Setembro de 2025",
+      lastUpdated: "06 de Outubro de 2025",
+      quickLinks: {
+        title: "Ligações Rápidas",
+        links: [
+          { id: "what", text: "O que são cookies" },
+          { id: "how", text: "Como utilizamos cookies" },
+          { id: "necessary", text: "Necessários" },
+          { id: "functional", text: "Funcionais" },
+          { id: "analytics", text: "Analíticos" },
+          { id: "advertisement", text: "Publicitários" },
+          { id: "manage", text: "Gerir preferências" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Sobre cookies",
+          body: "Pode controlar quais cookies utilizamos através do nosso banner de cookies ou das configurações do seu navegador."
+        },
+        what: {
+          title: "O que são cookies?",
+          body: "Esta Política de Cookies explica o que são cookies, como os utilizamos, os tipos de cookies que utilizamos (i.e., a informação que recolhemos usando cookies e como essa informação é utilizada), e como gerir as suas configurações de cookies.<br><br>Cookies são pequenos ficheiros de texto usados para armazenar pequenos pedaços de informação. São armazenados no seu dispositivo quando um website carrega no seu navegador. Estes cookies ajudam a garantir que o website funciona correctamente, melhoram a segurança, fornecem uma melhor experiência ao utilizador e analisam o desempenho para identificar o que funciona e onde são necessárias melhorias."
+        },
+        how: {
+          title: "Como utilizamos cookies?",
+          body: "Como a maioria dos serviços online, o nosso website utiliza tanto cookies de primeira parte como de terceiros para vários fins. Os cookies de primeira parte são principalmente necessários para que o website funcione correctamente e não recolhem quaisquer dados identificáveis pessoalmente.<br><br>Os cookies de terceiros usados no nosso website ajudam-nos principalmente a compreender como o website desempenha, rastrear como interage com ele, manter os nossos serviços seguros, fornecer anúncios relevantes e melhorar a sua experiência geral ao utilizador, melhorando a velocidade das suas futuras interacções com o nosso website."
+        },
+        necessary: {
+          title: "Cookies Necessários",
+          description: "Cookies necessários são requeridos para activar as funcionalidades básicas deste site, como fornecer login seguro ou ajustar as suas preferências de consentimento. Estes cookies não armazenam quaisquer dados identificáveis pessoalmente.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "currency", duration: "sessão", desc: "Este cookie é usado para armazenar a preferência de moeda do utilizador." },
+            { name: "session", duration: "sessão", desc: "Descrição actualmente não disponível." },
+            { name: "outros", duration: "sessão", desc: "Nenhuma descrição disponível." }
+          ]
+        },
+        functional: {
+          title: "Cookies Funcionais",
+          description: "Cookies funcionais ajudam a realizar certas funcionalidades como partilhar o conteúdo do website em plataformas de redes sociais, recolher feedback, e outras funcionalidades de terceiros.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "locale", duration: "sessão", desc: "O Facebook define este cookie para melhorar a experiência de navegação do utilizador no website, e para fornecer ao utilizador publicidade relevante enquanto usa as plataformas de redes sociais do Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Cookies Analíticos",
+          description: "Cookies analíticos são usados para compreender como os visitantes interagem com o website. Estes cookies ajudam a fornecer informação sobre métricas como o número de visitantes, taxa de rejeição, fonte de tráfego, etc.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "_ga", duration: "1 ano 1 mês 4 dias", desc: "O Google Analytics define este cookie para calcular dados de visitantes, sessões e campanhas e rastrear o uso do site para o relatório analítico do site. O cookie armazena informação anonimamente e atribui um número gerado aleatoriamente para reconhecer visitantes únicos." },
+            { name: "_ga_*", duration: "1 ano 1 mês 4 dias", desc: "O Google Analytics define este cookie para armazenar e contar visualizações de páginas." },
+            { name: "_gid", duration: "1 dia", desc: "O Google Analytics define este cookie para armazenar informação sobre como os visitantes usam um website enquanto cria um relatório analítico do desempenho do website. Alguns dos dados recolhidos incluem o número de visitantes, a sua fonte, e as páginas que visitam anonimamente." },
+            { name: "_gat_UA-*", duration: "1 minuto", desc: "O Google Analytics define este cookie para rastreamento do comportamento do utilizador." },
+            { name: "pardot", duration: "passado", desc: "O cookie pardot é definido enquanto o visitante está logado como utilizador Pardot. O cookie indica uma sessão activa e não é usado para rastreamento." }
+          ]
+        },
+        advertisement: {
+          title: "Cookies Publicitários",
+          description: "Cookies publicitários são usados para fornecer aos visitantes anúncios personalizados com base nas páginas que visitou anteriormente e para analisar a efectividade das campanhas publicitárias.",
+          tableHeaders: { cookie: "Cookie", duration: "Duração", description: "Descrição" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 meses", desc: "O Google Tag Manager define este cookie para experimentar a eficiência publicitária de websites que usam os seus serviços." },
+            { name: "test_cookie", duration: "15 minutos", desc: "doubleclick.net define este cookie para determinar se o navegador do utilizador suporta cookies." },
+            { name: "_fbp", duration: "3 meses", desc: "O Facebook define este cookie para armazenar e rastrear interacções." },
+            { name: "IDE", duration: "1 ano 24 dias", desc: "Cookies Google DoubleClick IDE armazenam informação sobre como o utilizador usa o website para apresentar-lhes anúncios relevantes de acordo com o perfil do utilizador." }
+          ]
+        },
+        manage: {
+          title: "Gerir preferências de cookies",
+          consentTitle: "Preferências de Consentimento",
+          consentText: "Pode modificar as suas configurações de cookies a qualquer momento clicando no botão 'Preferências de Consentimento' acima. Isto permitir-lhe-á revisitar o banner de consentimento de cookies e actualizar as suas preferências ou retirar o seu consentimento imediatamente.",
+          browserText: "Adicionalmente, diferentes navegadores oferecem vários métodos para bloquear e eliminar cookies usados por websites. Pode ajustar as configurações do seu navegador para bloquear ou eliminar cookies. Abaixo estão ligações para documentos de suporte sobre como gerir e eliminar cookies nos principais navegadores web.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Se estiver a usar um navegador web diferente, por favor consulte a sua documentação oficial de suporte."
+          }
+        }
+      }
     }
   };
 

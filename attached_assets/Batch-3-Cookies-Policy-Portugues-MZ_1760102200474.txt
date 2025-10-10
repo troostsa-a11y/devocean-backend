@@ -1,0 +1,212 @@
+================================================================================
+BATCH 3: COOKIE POLICY PAGE - MOZAMBICAN PORTUGUESE TRANSLATIONS
+DEVOCEAN LODGE
+================================================================================
+
+Instructions:
+- Translate each section to Mozambican Portuguese
+- Preserve HTML tags like <br>
+- Keep technical cookie names unchanged
+- Fill in "PORTUGUESE:" fields
+
+================================================================================
+GENERAL UI ELEMENTS
+================================================================================
+
+001. Page Title: Cookie Policy
+PORTUGUESE: Política de Cookies
+
+002. Effective Date: September 19, 2025
+PORTUGUESE: Data de Entrada em Vigor: 19 de Setembro de 2025
+
+003. Last Updated: October 06, 2025
+PORTUGUESE: Última Actualização: 06 de Outubro de 2025
+
+004. Back to Home
+PORTUGUESE: Voltar à Página Inicial
+
+================================================================================
+QUICK LINKS MENU
+================================================================================
+
+005. Quick Links
+PORTUGUESE: Ligações Rápidas
+
+006. What are cookies
+PORTUGUESE: O que são cookies
+
+007. How we use cookies
+PORTUGUESE: Como utilizamos cookies
+
+008. Necessary
+PORTUGUESE: Necessários
+
+009. Functional
+PORTUGUESE: Funcionais
+
+010. Analytics
+PORTUGUESE: Analíticos
+
+011. Advertisement
+PORTUGUESE: Publicitários
+
+012. Manage preferences
+PORTUGUESE: Gerir preferências
+
+================================================================================
+BADGE/ALERT
+================================================================================
+
+013. Badge Title: About cookies
+PORTUGUESE: Sobre cookies
+
+014. Badge Body: You can control which cookies we use through our cookie banner or your browser settings.
+PORTUGUESE: Pode controlar quais cookies utilizamos através do nosso banner de cookies ou das configurações do seu navegador.
+
+================================================================================
+SECTION: WHAT ARE COOKIES?
+================================================================================
+
+015. Heading: What are cookies?
+PORTUGUESE: O que são cookies?
+
+016. Body (with HTML): This Cookie Policy explains what cookies are, how we use them, the types of cookies we use (i.e., the information we collect using cookies and how that information is used), and how to manage your cookie settings.<br><br>Cookies are small text files used to store small pieces of information. They are stored on your device when a website loads in your browser. These cookies help ensure that the website functions properly, enhance security, provide a better user experience, and analyse performance to identify what works and where improvements are needed.
+
+PORTUGUESE: Esta Política de Cookies explica o que são cookies, como os utilizamos, os tipos de cookies que utilizamos (i.e., a informação que recolhemos usando cookies e como essa informação é utilizada), e como gerir as suas configurações de cookies.<br><br>Cookies são pequenos ficheiros de texto usados para armazenar pequenos pedaços de informação. São armazenados no seu dispositivo quando um website carrega no seu navegador. Estes cookies ajudam a garantir que o website funcione correctamente, melhoram a segurança, proporcionam uma melhor experiência ao utilizador, e analisam o desempenho para identificar o que funciona e onde são necessárias melhorias.
+
+================================================================================
+SECTION: HOW DO WE USE COOKIES?
+================================================================================
+
+017. Heading: How do we use cookies?
+PORTUGUESE: Como utilizamos cookies?
+
+018. Body (with HTML): Like most online services, our website uses both first-party and third-party cookies for various purposes. First-party cookies are primarily necessary for the website to function properly and do not collect any personally identifiable data.<br><br>The third-party cookies used on our website primarily help us understand how the website performs, track how you interact with it, keep our services secure, deliver relevant advertisements, and enhance your overall user experience while improving the speed of your future interactions with our website.
+
+PORTUGUESE: Como a maioria dos serviços online, o nosso website utiliza tanto cookies de primeira parte como de terceiros para vários fins. Os cookies de primeira parte são principalmente necessários para que o website funcione correctamente e não recolhem quaisquer dados identificáveis pessoalmente.<br><br>Os cookies de terceiros usados no nosso website ajudam-nos principalmente a compreender como o website desempenha, rastrear como interage com ele, manter os nossos serviços seguros, entregar anúncios relevantes, e melhorar a sua experiência geral de utilizador enquanto melhora a velocidade das suas interacções futuras com o nosso website.
+
+================================================================================
+SECTION: NECESSARY COOKIES
+================================================================================
+
+019. Heading: Necessary Cookies
+PORTUGUESE: Cookies Necessários
+
+020. Description: Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.
+PORTUGUESE: Cookies necessários são requeridos para activar as funcionalidades básicas deste site, como fornecer login seguro ou ajustar as suas preferências de consentimento. Estes cookies não armazenam quaisquer dados identificáveis pessoalmente.
+
+--- TABLE HEADERS ---
+021. Cookie (table header)
+PORTUGUESE: Cookie
+
+022. Duration (table header)
+PORTUGUESE: Duração
+
+023. Description (table header)
+PORTUGUESE: Descrição
+
+--- COOKIE DESCRIPTIONS (keep cookie names as is) ---
+024. currency cookie: This cookie is used to store the currency preference of the user.
+PORTUGUESE: Este cookie é usado para armazenar a preferência de moeda do utilizador.
+
+025. session cookies: Description is currently not available.
+PORTUGUESE: Descrição actualmente não disponível.
+
+026. No description available.
+PORTUGUESE: Nenhuma descrição disponível.
+
+================================================================================
+SECTION: FUNCTIONAL COOKIES
+================================================================================
+
+027. Heading: Functional Cookies
+PORTUGUESE: Cookies Funcionais
+
+028. Description: Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.
+PORTUGUESE: Cookies funcionais ajudam a realizar certas funcionalidades como partilhar o conteúdo do website em plataformas de redes sociais, recolher feedback, e outras funcionalidades de terceiros.
+
+029. locale cookie: Facebook sets this cookie to enhance the user's browsing experience on the website, and to provide the user with relevant advertising while using Facebook's social media platforms.
+PORTUGUESE: O Facebook define este cookie para melhorar a experiência de navegação do utilizador no website, e para fornecer ao utilizador publicidade relevante enquanto usa as plataformas de redes sociais do Facebook.
+
+================================================================================
+SECTION: ANALYTICS COOKIES
+================================================================================
+
+030. Heading: Analytics Cookies
+PORTUGUESE: Cookies Analíticos
+
+031. Description: Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.
+PORTUGUESE: Cookies analíticos são usados para compreender como os visitantes interagem com o website. Estes cookies ajudam a fornecer informação sobre métricas como o número de visitantes, taxa de rejeição, fonte de tráfego, etc.
+
+032. _ga cookie: Google Analytics sets this cookie to calculate visitor, session and campaign data and track site usage for the site's analytics report. The cookie stores information anonymously and assigns a randomly generated number to recognise unique visitors.
+PORTUGUESE: O Google Analytics define este cookie para calcular dados de visitantes, sessões e campanhas e rastrear o uso do site para o relatório analítico do site. O cookie armazena informação anonimamente e atribui um número gerado aleatoriamente para reconhecer visitantes únicos.
+
+033. _ga_* cookie: Google Analytics sets this cookie to store and count page views.
+PORTUGUESE: O Google Analytics define este cookie para armazenar e contar visualizações de páginas.
+
+034. _gid cookie: Google Analytics sets this cookie to store information on how visitors use a website while also creating an analytics report of the website's performance. Some of the collected data includes the number of visitors, their source, and the pages they visit anonymously.
+PORTUGUESE: O Google Analytics define este cookie para armazenar informação sobre como os visitantes usam um website enquanto cria um relatório analítico do desempenho do website. Alguns dos dados recolhidos incluem o número de visitantes, a sua fonte, e as páginas que visitam anonimamente.
+
+035. _gat_UA-* cookie: Google Analytics sets this cookie for user behaviour tracking.
+PORTUGUESE: O Google Analytics define este cookie para rastreamento do comportamento do utilizador.
+
+036. pardot cookie: The pardot cookie is set while the visitor is logged in as a Pardot user. The cookie indicates an active session and is not used for tracking.
+PORTUGUESE: O cookie pardot é definido enquanto o visitante está logado como utilizador Pardot. O cookie indica uma sessão activa e não é usado para rastreamento.
+
+================================================================================
+SECTION: ADVERTISEMENT COOKIES
+================================================================================
+
+037. Heading: Advertisement Cookies
+PORTUGUESE: Cookies Publicitários
+
+038. Description: Advertisement cookies are used to provide visitors with customised advertisements based on the pages you visited previously and to analyse the effectiveness of the ad campaigns.
+PORTUGUESE: Cookies publicitários são usados para fornecer aos visitantes anúncios personalizados com base nas páginas que visitou anteriormente e para analisar a efectividade das campanhas publicitárias.
+
+039. _gcl_au cookie: Google Tag Manager sets this cookie to experiment advertisement efficiency of websites using their services.
+PORTUGUESE: O Google Tag Manager define este cookie para experimentar a eficiência publicitária de websites que usam os seus serviços.
+
+040. test_cookie: doubleclick.net sets this cookie to determine if the user's browser supports cookies.
+PORTUGUESE: doubleclick.net define este cookie para determinar se o navegador do utilizador suporta cookies.
+
+041. _fbp cookie: Facebook sets this cookie to store and track interactions.
+PORTUGUESE: O Facebook define este cookie para armazenar e rastrear interacções.
+
+042. IDE cookie: Google DoubleClick IDE cookies store information about how the user uses the website to present them with relevant ads according to the user profile.
+PORTUGUESE: Cookies Google DoubleClick IDE armazenam informação sobre como o utilizador usa o website para apresentar-lhes anúncios relevantes de acordo com o perfil do utilizador.
+
+================================================================================
+SECTION: MANAGE COOKIE PREFERENCES
+================================================================================
+
+043. Heading: Manage cookie preferences
+PORTUGUESE: Gerir preferências de cookies
+
+044. Consent Preferences (subheading)
+PORTUGUESE: Preferências de Consentimento
+
+045. Consent Text: You can modify your cookie settings anytime by clicking the 'Consent Preferences' button above. This will allow you to revisit the cookie consent banner and update your preferences or withdraw your consent immediately.
+PORTUGUESE: Pode modificar as suas configurações de cookies a qualquer momento clicando no botão 'Preferências de Consentimento' acima. Isto permitir-lhe-á revisitar o banner de consentimento de cookies e actualizar as suas preferências ou retirar o seu consentimento imediatamente.
+
+046. Browser Settings Text: Additionally, different browsers offer various methods to block and delete cookies used by websites. You can adjust your browser settings to block or delete cookies. Below are links to support documents on how to manage and delete cookies in major web browsers.
+PORTUGUESE: Adicionalmente, diferentes navegadores oferecem vários métodos para bloquear e eliminar cookies usados por websites. Pode ajustar as configurações do seu navegador para bloquear ou eliminar cookies. Abaixo estão ligações para documentos de suporte sobre como gerir e eliminar cookies nos principais navegadores web.
+
+047. Chrome
+PORTUGUESE: Chrome
+
+048. Safari
+PORTUGUESE: Safari
+
+049. Firefox
+PORTUGUESE: Firefox
+
+050. Internet Explorer
+PORTUGUESE: Internet Explorer
+
+051. If you are using a different web browser, please refer to its official support documentation.
+PORTUGUESE: Se estiver a usar um navegador web diferente, por favor consulte a sua documentação oficial de suporte.
+
+================================================================================
+END OF BATCH 3
+Total items: 51
+================================================================================
