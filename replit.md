@@ -7,9 +7,10 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 ## User Preferences
 
 **Build and Deployment:**
-- **IMPORTANT:** Only build (`npm run build`) and deploy to Cloudflare when explicitly instructed by the user
-- Do NOT automatically build/deploy after making changes
-- Wait for explicit user confirmation before deploying
+- **⚠️ CRITICAL:** NEVER build (`npm run build`) or deploy to Cloudflare without explicit user confirmation
+- **⚠️ CRITICAL:** After making ANY changes, STOP and wait for user to explicitly say "build and deploy" or similar confirmation
+- Do NOT assume deployment is wanted just because changes are complete
+- The user will explicitly instruct when to build and deploy
 
 **Testing:**
 - **IMPORTANT:** Only run browser tests (run_test tool) when explicitly instructed by the user

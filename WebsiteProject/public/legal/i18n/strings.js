@@ -297,7 +297,7 @@
           ],
           paymentInfo: {
             title: "Payment Information",
-            body: "All prices are in EUR unless otherwise stated. Currency conversion rates are approximate and subject to change. A valid credit card is required to secure your reservation. Additional charges may apply for incidental expenses."
+            body: "All prices are in USD unless otherwise stated. Currency conversion rates are approximate and subject to change. A valid credit card is required to secure your reservation. Additional charges may apply for incidental expenses."
           }
         },
         cancel: {
@@ -739,7 +739,7 @@
           ],
           paymentInfo: {
             title: "Zahlungsinformationen",
-            body: "Alle Preise sind in EUR, sofern nicht anders angegeben. Währungsumrechnungskurse sind ungefähr und können sich ändern. Eine gültige Kreditkarte ist erforderlich, um Ihre Reservierung zu sichern. Zusätzliche Gebühren können für Nebenkosten anfallen."
+            body: "Alle Preise sind in USD, sofern nicht anders angegeben. Währungsumrechnungskurse sind ungefähr und können sich ändern. Eine gültige Kreditkarte ist erforderlich, um Ihre Reservierung zu sichern. Zusätzliche Gebühren können für Nebenkosten anfallen."
           }
         },
         cancel: {
@@ -1275,7 +1275,7 @@
           ],
           paymentInfo: {
             title: "Betalingsinformatie",
-            body: "Alle prijzen zijn in EUR tenzij anders vermeld. Valutawisselkoersen zijn bij benadering en kunnen wijzigen. Een geldige creditcard is vereist om uw reservering te garanderen. Extra kosten kunnen van toepassing zijn voor bijkomende kosten."
+            body: "Alle prijzen zijn in USD tenzij anders vermeld. Valutawisselkoersen zijn bij benadering en kunnen wijzigen. Een geldige creditcard is vereist om uw reservering te garanderen. Extra kosten kunnen van toepassing zijn voor bijkomende kosten."
           }
         },
         cancel: {
@@ -1813,7 +1813,7 @@
           ],
           paymentInfo: {
             title: "Informações de Pagamento",
-            body: "Todos os preços são em EUR, salvo indicação em contrário. As taxas de conversão de moeda são aproximadas e sujeitas a alterações. É necessário um cartão de crédito válido para garantir a sua reserva. Podem aplicar-se encargos adicionais para despesas acessórias."
+            body: "Todos os preços são em USD, salvo indicação em contrário. As taxas de conversão de moeda são aproximadas e sujeitas a alterações. É necessário um cartão de crédito válido para garantir a sua reserva. Podem aplicar-se encargos adicionais para despesas acessórias."
           }
         },
         cancel: {
@@ -2436,7 +2436,7 @@
           ],
           paymentInfo: {
             title: "Informations de Paiement",
-            body: "Tous les prix sont en EUR sauf indication contraire. Les taux de change sont approximatifs et sujets à changement. Une carte de crédit valide est requise pour garantir votre réservation. Des frais supplémentaires peuvent s'appliquer pour les dépenses accessoires."
+            body: "Tous les prix sont en USD sauf indication contraire. Les taux de change sont approximatifs et sujets à changement. Une carte de crédit valide est requise pour garantir votre réservation. Des frais supplémentaires peuvent s'appliquer pour les dépenses accessoires."
           }
         },
         cancel: {
@@ -2923,7 +2923,7 @@
           ],
           paymentInfo: {
             title: "Informazioni di Pagamento",
-            body: "Tutti i prezzi sono in EUR salvo diversa indicazione. I tassi di cambio sono approssimativi e soggetti a variazioni. È richiesta una carta di credito valida per garantire la prenotazione. Potrebbero applicarsi costi aggiuntivi per spese accessorie."
+            body: "Tutti i prezzi sono in USD salvo diversa indicazione. I tassi di cambio sono approssimativi e soggetti a variazioni. È richiesta una carta di credito valida per garantire la prenotazione. Potrebbero applicarsi costi aggiuntivi per spese accessorie."
           }
         },
         cancel: {
@@ -3410,7 +3410,7 @@
           ],
           paymentInfo: {
             title: "Información de Pago",
-            body: "Todos los precios están en EUR a menos que se indique lo contrario. Los tipos de cambio son aproximados y están sujetos a cambios. Se requiere una tarjeta de crédito válida para garantizar su reserva. Pueden aplicarse cargos adicionales por gastos imprevistos."
+            body: "Todos los precios están en USD a menos que se indique lo contrario. Los tipos de cambio son aproximados y están sujetos a cambios. Se requiere una tarjeta de crédito válida para garantizar su reserva. Pueden aplicarse cargos adicionales por gastos imprevistos."
           }
         },
         cancel: {
@@ -3956,7 +3956,7 @@
           ],
           paymentInfo: {
             title: "Betalningsinformation",
-            body: "Alla priser är i EUR om inte annat anges. Valutakursomräkningar är ungefärliga och kan ändras. Ett giltigt kreditkort krävs för att säkra din reservation. Ytterligare avgifter kan tillkomma för tillfälliga kostnader."
+            body: "Alla priser är i USD om inte annat anges. Valutakursomräkningar är ungefärliga och kan ändras. Ett giltigt kreditkort krävs för att säkra din reservation. Ytterligare avgifter kan tillkomma för tillfälliga kostnader."
           }
         },
         cancel: {
@@ -4493,7 +4493,7 @@
           ],
           paymentInfo: {
             title: 'Informacje o płatnościach',
-            body: 'Wszystkie ceny są w EUR, chyba że określono inaczej. Kursy przeliczeniowe walut są przybliżone i mogą ulec zmianie. Wymagana ważna karta kredytowa do zabezpieczenia rezerwacji. Dodatkowe opłaty mogą dotyczyć kosztów incydentalnych.'
+            body: 'Wszystkie ceny są w USD, chyba że określono inaczej. Kursy przeliczeniowe walut są przybliżone i mogą ulec zmianie. Wymagana ważna karta kredytowa do zabezpieczenia rezerwacji. Dodatkowe opłaty mogą dotyczyć kosztów incydentalnych.'
           }
         },
         cancel: {
