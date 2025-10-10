@@ -6,6 +6,7 @@ import LazyImage from './LazyImage';
 
 export default function Header({ ui, lang, currency, onLangChange, onCurrencyChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
   // Define regions with metadata
   const regions = {
@@ -96,18 +97,40 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
           <div className="flex items-center gap-3">
             {/* Region selector */}
-            <div className="flex items-center gap-1">
+            <div className="relative flex items-center gap-1">
               <Globe2 size={20} />
-              <select
-                value={selectedRegion}
-                onChange={(e) => handleRegionChange(e.target.value)}
-                className="border border-white/40 rounded px-2 py-1 w-[100px]"
+              <button
+                onClick={() => setRegionMenuOpen(!regionMenuOpen)}
+                className="border border-white/40 rounded px-2 py-1 w-[60px] text-left"
                 aria-label="Select region"
               >
-                {Object.entries(regions).map(([key, region]) => (
-                  <option key={key} value={key}>{region.name}</option>
-                ))}
-              </select>
+                {regions[selectedRegion].short}
+              </button>
+              
+              {regionMenuOpen && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-40" 
+                    onClick={() => setRegionMenuOpen(false)}
+                  />
+                  <div className="absolute left-0 top-full mt-1 bg-white text-gray-800 rounded shadow-lg py-1 w-[100px] z-50">
+                    {Object.entries(regions).map(([key, region]) => (
+                      <button
+                        key={key}
+                        onClick={() => {
+                          handleRegionChange(key);
+                          setRegionMenuOpen(false);
+                        }}
+                        className={`w-full text-left px-3 py-2 hover:bg-gray-100 transition-colors ${
+                          selectedRegion === key ? 'bg-blue-50 font-semibold' : ''
+                        }`}
+                      >
+                        {region.name}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
             <select

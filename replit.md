@@ -52,7 +52,7 @@ Preferred communication style: Simple, everyday language.
   - Currency filtering: Meticais (MZN) restricted to Africa region only
   - Auto-switch to English when current language unavailable in selected region
 - **Header dropdown styling**: Fixed-width selectors with consistent design
-  - Region: 80px (globe icon + 2-letter abbreviation: EU, AS, AM, AF, OC)
+  - Region: 60px button showing globe icon + 2-letter abbreviation (EU, AS, AM, AF, OC), 100px dropdown with full region names (Europe, Americas, Asia, Africa, Oceania)
   - Language: 120px (fits "Nederlands", widest option)
   - Currency: 100px (fits all currency names)
 - Badge translations: All legal pages properly localized with "About cookies" badge in all 9 languages (v=30)
