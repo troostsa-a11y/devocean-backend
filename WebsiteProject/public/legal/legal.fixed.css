@@ -229,7 +229,7 @@ h1[data-role="page-title"] {
   background-repeat: no-repeat;
 }
 
-.terms-badge {
+.terms-banner-info {
   background: #e0e7ff;
   border: none;
   border-radius: 8px;
@@ -240,7 +240,7 @@ h1[data-role="page-title"] {
   gap: 12px;
 }
 
-.terms-badge::before {
+.terms-banner-info::before {
   content: "";
   width: 24px;
   height: 24px;
@@ -449,7 +449,7 @@ section[data-section] ul {
   .cookie-banner-info,
   .privacy-badge,
   .contact-badge,
-  .terms-badge,
+  .terms-banner-info,
   .gdpr-badge,
   .btn {
     display: none !important;
@@ -717,8 +717,8 @@ section[data-section] ul {
     flex: 1;
   }
 
-  /* Terms badge on mobile */
-  .terms-badge {
+  /* Terms banner on mobile */
+  .terms-banner-info {
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
@@ -726,22 +726,22 @@ section[data-section] ul {
     gap: 8px;
   }
 
-  .terms-badge::before {
+  .terms-banner-info::before {
     width: 18px;
     height: 18px;
     background-size: 18px;
   }
 
-  .terms-badge div {
+  .terms-banner-info div {
     max-width: 100%;
     flex: 1;
   }
 
-  .terms-badge [data-part="body"] {
+  .terms-banner-info [data-part="body"] {
     display: none;
   }
 
-  .terms-badge strong {
+  .terms-banner-info strong {
     font-size: clamp(18px, 5vw, 20px);
     line-height: 1.35;
     font-weight: 600;
