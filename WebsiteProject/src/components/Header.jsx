@@ -6,7 +6,6 @@ import LazyImage from './LazyImage';
 
 export default function Header({ ui, lang, currency, onLangChange, onCurrencyChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
   // Define regions with metadata
   const regions = {
@@ -96,42 +95,19 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Region selector dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setRegionMenuOpen(!regionMenuOpen)}
-                className="flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
+            {/* Region selector */}
+            <div className="flex items-center gap-1">
+              <Globe2 size={20} />
+              <select
+                value={selectedRegion}
+                onChange={(e) => handleRegionChange(e.target.value)}
+                className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
                 aria-label="Select region"
-                aria-expanded={regionMenuOpen}
               >
-                <Globe2 size={20} />
-                <span className="text-xs font-semibold">{regions[selectedRegion].short}</span>
-              </button>
-              
-              {regionMenuOpen && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setRegionMenuOpen(false)}
-                  />
-                  <div className="absolute right-0 top-full mt-1 bg-white text-gray-800 rounded-lg shadow-lg py-1 min-w-[160px] z-50">
-                    {Object.entries(regions).map(([key, region]) => (
-                      <button
-                        key={key}
-                        onClick={() => {
-                          handleRegionChange(key);
-                          setRegionMenuOpen(false);
-                        }}
-                        className={`w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors ${
-                          selectedRegion === key ? 'bg-blue-50 font-semibold' : ''
-                        }`}
-                      >
-                        {region.name}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
+                {Object.entries(regions).map(([key, region]) => (
+                  <option key={key} value={key}>{region.short}</option>
+                ))}
+              </select>
             </div>
 
             <select
