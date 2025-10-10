@@ -143,13 +143,13 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[60px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[80px] text-white"
             >
-              {regions[region].currencies.includes('USD') && <option value="USD">Dollar</option>}
+              {regions[region].currencies.includes('USD') && <option value="USD">US-Dollar</option>}
               {regions[region].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
               {regions[region].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
               {regions[region].currencies.includes('EUR') && <option value="EUR">Euro</option>}
-              {regions[region].currencies.includes('GBP') && <option value="GBP">Pound</option>}
+              {regions[region].currencies.includes('GBP') && <option value="GBP">GB-Pound</option>}
               {regions[region].currencies.includes('SEK') && <option value="SEK">Krona</option>}
               {regions[region].currencies.includes('PLN') && <option value="PLN">Zloty</option>}
             </select>
