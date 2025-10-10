@@ -101,7 +101,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               <Globe2 size={20} />
               <button
                 onClick={() => setRegionMenuOpen(!regionMenuOpen)}
-                className="border border-white/40 rounded px-2 py-1 w-[43px] text-left"
+                className="border border-white/40 rounded px-2 py-1 w-[40px] text-left"
                 aria-label="Select region"
               >
                 {regions[selectedRegion].short}
