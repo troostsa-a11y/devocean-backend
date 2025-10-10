@@ -44,7 +44,7 @@ Preferred communication style: Simple, everyday language.
 **Internationalization:**
 - React-based i18n with lazy-loaded translations (10 languages including Swedish and Polish)
 - Vanilla JavaScript i18n for legacy/static legal pages with dynamic data-section/data-part attribute system
-- Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish, Swedish, Polish
+- Supported languages: English, Portuguese (pt-mz/pt-br/pt-pt all map to standard Portuguese), Dutch, French, Italian, German, Spanish, Swedish, Polish
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference
 - Date localization with dd/mm/yyyy format preference
 - **Region-based language selector** with 5 continents (Europe, Asia, Americas, Africa, Oceania)

@@ -35,8 +35,7 @@ function normLang(raw) {
   if (!raw) return "en";
   let s = String(raw).toLowerCase();
   if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
-  if (s === "pt-mz") s = "ptmz";
-  if (s === "pt-pt" || s === "pt-br") s = "pt";
+  if (s === "pt-mz" || s === "pt-pt" || s === "pt-br") s = "pt";
   return SUPPORTED_LANGS.includes(s) ? s : "en";
 }
 
