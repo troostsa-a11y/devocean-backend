@@ -32,6 +32,23 @@ function copySectionLink(sectionId) {
  document.body.removeChild(textArea);
  });
 }
+
+function requestData(type) {
+ const email = 'info@devoceanlodge.com';
+ const subjects = {
+   access: 'GDPR Data Access Request',
+   erasure: 'GDPR Data Deletion Request'
+ };
+ const bodies = {
+   access: 'Hello,\n\nI would like to request access to my personal data in accordance with GDPR Article 15.\n\nPlease provide:\n- All personal data you hold about me\n- Categories of data processed\n- Purposes of processing\n- Recipients of the data\n- Retention periods\n\nThank you.',
+   erasure: 'Hello,\n\nI would like to request the deletion of my personal data in accordance with GDPR Article 17 (Right to Erasure).\n\nPlease delete all personal data you hold about me and confirm once completed.\n\nThank you.'
+ };
+ 
+ const subject = encodeURIComponent(subjects[type] || 'GDPR Request');
+ const body = encodeURIComponent(bodies[type] || '');
+ 
+ window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+}
 function toggleMobileMenu() {
  const mobileNav = document.getElementById('mobile-nav');
  const btn = document.querySelector('.mobile-menu-btn');
