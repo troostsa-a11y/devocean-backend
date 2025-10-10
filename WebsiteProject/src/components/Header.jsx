@@ -101,7 +101,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
               <select
                 value={selectedRegion}
                 onChange={(e) => handleRegionChange(e.target.value)}
-                className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
+                className="border border-white/40 rounded px-2 py-1 w-[80px]"
                 aria-label="Select region"
               >
                 {Object.entries(regions).map(([key, region]) => (
@@ -113,7 +113,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
+              className="border border-white/40 rounded px-2 py-1 w-[120px]"
             >
               {regions[selectedRegion].languages.includes('en') && <option value="en">English</option>}
               {regions[selectedRegion].languages.includes('pt') && <option value="pt">Português</option>}
@@ -128,7 +128,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
+              className="border border-white/40 rounded px-2 py-1 w-[100px]"
             >
               {regions[selectedRegion].currencies.includes('USD') && <option value="USD">Dollar</option>}
               {regions[selectedRegion].currencies.includes('MZN') && <option value="MZN">Meticais</option>}

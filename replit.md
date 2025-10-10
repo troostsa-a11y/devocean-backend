@@ -47,6 +47,14 @@ Preferred communication style: Simple, everyday language.
 - Supported languages: English, Portuguese (including Mozambique variant), Dutch, French, Italian, German, Spanish, Swedish
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK with browser-based inference
 - Date localization with dd/mm/yyyy format preference
+- **Region-based language selector** with 5 continents (Europe, Asia, Americas, Africa, Oceania)
+  - Dynamic language filtering: Europe (all 8 languages), Asia (English), Americas (English/Spanish/French), Africa (English/French), Oceania (English)
+  - Currency filtering: Meticais (MZN) restricted to Africa region only
+  - Auto-switch to English when current language unavailable in selected region
+- **Header dropdown styling**: Fixed-width selectors with consistent design
+  - Region: 80px (globe icon + 2-letter abbreviation: EU, AS, AM, AF, OC)
+  - Language: 120px (fits "Nederlands", widest option)
+  - Currency: 100px (fits all currency names)
 - Badge translations: All legal pages properly localized with "About cookies" badge in all 9 languages (v=30)
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)
