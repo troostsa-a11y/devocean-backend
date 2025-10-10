@@ -166,6 +166,27 @@ h1[data-role="page-title"] {
   background-repeat: no-repeat;
 }
 
+.privacy-banner-info {
+  background: #f3e8ff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.privacy-banner-info::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a855f7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'%3E%3C/path%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 .cookie-banner-info {
   background: #fff7ed;
   border: none;
@@ -622,6 +643,39 @@ section[data-section] ul {
   }
 
   .privacy-badge strong {
+    font-size: clamp(18px, 5vw, 20px);
+    line-height: 1.35;
+    font-weight: 600;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    flex: 1;
+  }
+
+  /* Privacy banner info on mobile */
+  .privacy-banner-info {
+    padding: 6px 10px;
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .privacy-banner-info::before {
+    width: 18px;
+    height: 18px;
+    background-size: 18px;
+  }
+
+  .privacy-banner-info div {
+    max-width: 100%;
+    flex: 1;
+  }
+
+  .privacy-banner-info [data-part="body"] {
+    display: none;
+  }
+
+  .privacy-banner-info strong {
     font-size: clamp(18px, 5vw, 20px);
     line-height: 1.35;
     font-weight: 600;
