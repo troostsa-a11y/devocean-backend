@@ -113,7 +113,7 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                     className="fixed inset-0 z-40" 
                     onClick={() => setRegionMenuOpen(false)}
                   />
-                  <div className="absolute left-0 top-full mt-1 bg-white text-gray-800 rounded shadow-lg py-1 w-[100px] z-50">
+                  <div className="absolute left-0 top-full mt-1 bg-white text-black rounded border border-gray-300 py-1 w-[100px] z-50">
                     {Object.entries(regions).map(([key, region]) => (
                       <button
                         key={key}
@@ -121,8 +121,8 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
                           handleRegionChange(key);
                           setRegionMenuOpen(false);
                         }}
-                        className={`w-full text-left px-3 py-2 hover:bg-gray-100 transition-colors ${
-                          selectedRegion === key ? 'bg-blue-50 font-semibold' : ''
+                        className={`w-full text-left px-3 py-2 hover:bg-blue-600 hover:text-white transition-colors ${
+                          selectedRegion === key ? 'bg-blue-600 text-white' : ''
                         }`}
                       >
                         {region.name}
