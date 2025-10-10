@@ -4347,6 +4347,287 @@
           }
         }
       }
+    },
+
+    terms: {
+      title: 'Regulamin',
+      updatedDate: '06 października 2025',
+      quickLinks: {
+        title: 'Szybkie linki',
+        links: [
+          { id: 'intro', text: 'Zakres' },
+          { id: 'booking', text: 'Rezerwacje' },
+          { id: 'payment', text: 'Ceny i płatności' },
+          { id: 'cancel', text: 'Anulacje' },
+          { id: 'conduct', text: 'Zachowanie gości' },
+          { id: 'force-majeure', text: 'Siła wyższa' },
+          { id: 'liability', text: 'Odpowiedzialność' },
+          { id: 'intellectual-property', text: 'Własność intelektualna' },
+          { id: 'disputes', text: 'Rozstrzyganie sporów' },
+          { id: 'changes', text: 'Zmiany' },
+          { id: 'law', text: 'Prawo właściwe' },
+          { id: 'contact', text: 'Kontakt' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: 'Ważna informacja prawna:',
+          body: 'Niniejsze warunki regulują korzystanie z naszych usług i strony internetowej. Prosimy o dokładne ich przeczytanie przed dokonaniem rezerwacji.'
+        },
+        intro: {
+          title: 'Zakres',
+          body: 'Niniejsze Warunki regulują zakwaterowanie i powiązane usługi świadczone przez DEVOCEAN Lodge (TERRAfrique LDA). Dokonując rezerwacji, zgadzasz się na te Warunki.'
+        },
+        booking: {
+          title: 'Rezerwacje',
+          items: [
+            'Podaj dokładne informacje o gościach oraz daty przyjazdu/wyjazdu',
+            'Specjalne prośby podlegają dostępności i potwierdzeniu'
+          ],
+          reservationReq: {
+            title: 'Wymagania rezerwacji',
+            body: 'Wymagany ważny dowód tożsamości i karta kredytowa dla wszystkich rezerwacji. Minimalny wiek: 18 lat.'
+          },
+          checkinCheckout: {
+            title: 'Zameldowanie/wymeldowanie',
+            body: 'Zameldowanie: 14:00 | Wymeldowanie: 11:00. Wczesne/późne prośby podlegają dostępności.'
+          },
+          groupBookings: {
+            title: 'Rezerwacje grupowe',
+            body: 'Specjalne warunki dotyczą grup 6+ pokoi. Skontaktuj się z nami w sprawie stawek i zasad grupowych.'
+          }
+        },
+        payment: {
+          title: 'Ceny i płatności',
+          items: [
+            'Pokazane stawki są za jednostkę/noc, chyba że określono inaczej',
+            'Depozyty i metody rozliczenia zostaną potwierdzone podczas rezerwacji'
+          ],
+          paymentInfo: {
+            title: 'Informacje o płatnościach',
+            body: 'Wszystkie ceny są w EUR, chyba że określono inaczej. Kursy przeliczeniowe walut są przybliżone i mogą ulec zmianie. Wymagana ważna karta kredytowa do zabezpieczenia rezerwacji. Dodatkowe opłaty mogą dotyczyć kosztów incydentalnych.'
+          }
+        },
+        cancel: {
+          title: 'Anulacje i niepojawienie się',
+          body: 'Warunki anulacji są ujawniane w momencie rezerwacji i w potwierdzeniu.',
+          cancellationCharges: {
+            title: 'Opłaty za anulację',
+            plans: [
+              {
+                planName: 'Plan taryfowy półelastyczny:',
+                tiers: [
+                  { period: '30 dni lub więcej przed przyjazdem', charge: 'Pełny zwrot' },
+                  { period: '29 dni lub mniej przed przyjazdem', charge: '50% opłaty za anulację' }
+                ]
+              },
+              {
+                planName: 'Plan taryfowy bezzwrotny:',
+                tiers: [
+                  { period: 'Do 24 godzin po rezerwacji', charge: 'Pełny zwrot' },
+                  { period: 'We wszystkich innych okolicznościach', subtext: 'Prawo do jednorazowej modyfikacji daty przyjazdu pod warunkiem zapłaty różnicy, jeśli nowa data ma wyższą stawkę, w przeciwnym razie', charge: 'Brak zwrotu', chargeClass: 'no-refund-red' }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: 'Polityka niepojawienia się',
+            body: 'Goście, którzy nie przyjadą w zaplanowanej dacie zameldowania bez uprzedniego powiadomienia, będą uważani za niepojawionych. Pełna kwota rezerwacji zostanie obciążona, a rezerwacja anulowana.'
+          }
+        },
+        conduct: {
+          title: 'Zachowanie gości',
+          items: [
+            'Szanuj zasady obiektu, personel, innych gości i lokalną społeczność',
+            'Brak nielegalnych działań na terenie obiektu'
+          ],
+          zeroTolerance: {
+            title: 'Polityka zero tolerancji',
+            body: 'Stosujemy politykę zero tolerancji dla zakłócającego zachowania, nielegalnych działań lub uszkodzenia mienia. Naruszenia mogą skutkować natychmiastowym wyrzuceniem bez zwrotu i mogą prowadzić do działań prawnych.'
+          }
+        },
+        'force-majeure': {
+          title: 'Siła wyższa',
+          intro: 'Nie ponosimy odpowiedzialności za niewykonanie zobowiązań z powodu okoliczności poza naszą rozsądną kontrolą, w tym między innymi:',
+          items: [
+            'Katastrofy naturalne, ekstremalne warunki pogodowe',
+            'Ograniczenia rządowe, zakazy podróży',
+            'Zamieszki cywilne, wojna, terroryzm',
+            'Pandemie, epidemie, nagłe przypadki zdrowotne',
+            'Awarie mediów, awarie infrastruktury'
+          ],
+          footer: 'W takich przypadkach zaoferujemy alternatywne daty lub vouchery kredytowe, gdzie to możliwe. Zwroty zostaną udzielone zgodnie z obowiązującymi przepisami i okolicznościami. Jednak wszystkie szkody i koszty, które są lub mogły być pokryte przez ogólnie dostępne pakiety ubezpieczeń anulacyjnych i podróżnych, są wyłączone z naszej odpowiedzialności.'
+        },
+        liability: {
+          title: 'Odpowiedzialność',
+          body: 'W zakresie dozwolonym przez prawo, nie ponosimy odpowiedzialności za pośrednie lub nieprzewidywalne straty.'
+        },
+        'intellectual-property': {
+          title: 'Własność intelektualna',
+          copyright: {
+            title: 'Informacja o prawach autorskich',
+            body: 'Cała zawartość tej strony internetowej, w tym tekst, grafika, logo i obrazy, jest własnością DEVOCEAN Lodge i chroniona międzynarodowymi prawami autorskimi. Nieautoryzowane użycie, reprodukcja lub dystrybucja jest zabroniona. Nazwa DEVOCEAN Lodge, logo i wszystkie powiązane znaki są znakami towarowymi i nie mogą być używane bez pisemnej zgody.'
+          }
+        },
+        disputes: {
+          title: 'Rozstrzyganie sporów',
+          process: {
+            title: 'Proces rozstrzygania',
+            body: 'Staramy się rozstrzygać spory polubownie. Prosimy o kontakt w pierwszej kolejności w celu próby rozwiązania. Jeśli nierozstrzygnięte, spory zostaną rozstrzygnięte poprzez mediację przed podjęciem działań prawnych.',
+            law: 'Prawo właściwe: Prawo mozambickie reguluje niniejsze warunki i wszelkie spory.',
+            jurisdiction: 'Jurysdykcja: Sądy w Maputo, Mozambik mają wyłączną jurysdykcję.',
+            mediation: 'Mediacja: Strony zgadzają się na próbę mediacji poprzez akredytowanego mediatora przed wszczęciem postępowania sądowego.'
+          }
+        },
+        changes: {
+          title: 'Zmiany w niniejszych Warunkach',
+          body: 'Możemy od czasu do czasu aktualizować Warunki. Opublikowana wersja dotyczy Twojego pobytu.'
+        },
+        law: {
+          title: 'Prawo właściwe',
+          body: 'Stosuje się prawo mozambickie, z zastrzeżeniem obowiązkowych lokalnych zasad konsumenckich.'
+        },
+        contact: {
+          title: 'Kontakt',
+          body: 'Pytania? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    gdpr: {
+      title: 'Informacja o RODO',
+      updatedDate: '06 października 2025',
+      quickLinks: {
+        title: 'Szybkie linki',
+        links: [
+          { id: 'controller', text: 'Administrator' },
+          { id: 'bases', text: 'Podstawy prawne' },
+          { id: 'rights', text: 'Twoje prawa' },
+          { id: 'retention', text: 'Przechowywanie danych' },
+          { id: 'transfers', text: 'Przekazywanie danych' },
+          { id: 'complaints', text: 'Skargi' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: 'Zgodny z RODO:',
+          body: 'Jesteśmy zaangażowani w ochronę Twoich danych osobowych i szanowanie Twoich praw do prywatności zgodnie z Ogólnym Rozporządzeniem o Ochronie Danych.'
+        },
+        controller: {
+          title: 'Administrator danych',
+          body: 'TERRAfrique LDA (DEVOCEAN Lodge), zarejestrowana pod adresem Rua C, Parcela 12, Maputo 1118, Mozambik, działa jako administrator danych dla Twoich informacji osobowych zbieranych poprzez nasze usługi.'
+        },
+        bases: {
+          title: 'Podstawy prawne przetwarzania',
+          body: 'Przetwarzamy Twoje dane osobowe na podstawie następujących podstaw prawnych zgodnie z RODO:',
+          items: [
+            { label: 'Umowa:', text: 'Przetwarzanie niezbędne do realizacji naszych umów rezerwacyjnych i usług.' },
+            { label: 'Obowiązek prawny:', text: 'Przetwarzanie wymagane do spełnienia wymogów prawnych (np. prawa podatkowe).' },
+            { label: 'Prawnie uzasadnione interesy:', text: 'Przetwarzanie dla naszych prawnie uzasadnionych interesów biznesowych z poszanowaniem Twoich praw.' },
+            { label: 'Zgoda:', text: 'Przetwarzanie na podstawie Twojej wyraźnej zgody na określone cele.' }
+          ]
+        },
+        rights: {
+          title: 'Twoje prawa wynikające z RODO',
+          body: 'Jako osoba, której dane dotyczą zgodnie z RODO, masz następujące prawa dotyczące Twoich danych osobowych:',
+          cards: [
+            { title: 'Prawo dostępu', body: 'Możesz zażądać kopii Twoich danych osobowych, które przechowujemy.' },
+            { title: 'Prawo do sprostowania', body: 'Możesz zażądać korekty niedokładnych lub niekompletnych danych.' },
+            { title: 'Prawo do usunięcia', body: 'Możesz zażądać usunięcia Twoich danych osobowych w określonych warunkach.' },
+            { title: 'Prawo do ograniczenia przetwarzania', body: 'Możesz zażądać ograniczenia sposobu, w jaki używamy Twoich danych.' },
+            { title: 'Prawo do przenoszenia danych', body: 'Możesz zażądać przeniesienia Twoich danych do innej organizacji.' },
+            { title: 'Prawo do sprzeciwu', body: 'Możesz sprzeciwić się pewnym typom przetwarzania Twoich danych.' }
+          ],
+          buttons: {
+            access: 'Zażądaj dostępu do danych',
+            delete: 'Zażądaj usunięcia danych'
+          }
+        },
+        retention: {
+          title: 'Przechowywanie danych',
+          subtitle: 'Okresy przechowywania',
+          intro: 'Przechowujemy dane osobowe tylko tak długo, jak jest to konieczne do realizacji celów, dla których zostały zebrane, w tym wymogów prawnych, księgowych lub sprawozdawczych.',
+          periods: [
+            'Dane rezerwacyjne: 7 lat dla zgodności podatkowej i prawnej',
+            'Komunikacja obsługi klienta: 3 lata',
+            'Zgody marketingowe: Do wycofania zgody',
+            'Analityka strony internetowej: 26 miesięcy',
+            'Transakcje finansowe: 10 lat dla celów księgowych'
+          ]
+        },
+        transfers: {
+          title: 'Międzynarodowe przekazywanie danych',
+          body: 'Gdy przekazujemy Twoje dane poza Europejski Obszar Gospodarczy (EOG), zapewniamy odpowiednie zabezpieczenia w celu ochrony Twoich informacji. Może to obejmować użycie Standardowych Klauzul Umownych zatwierdzonych przez Komisję Europejską lub przekazywanie danych do krajów z decyzjami o odpowiednim poziomie ochrony.',
+          notice: {
+            title: 'Międzynarodowe przekazywanie danych:',
+            body: 'Zapewniamy odpowiednie zabezpieczenia dla wszelkich przekazywań danych poza EOG, w tym Standardowe Klauzule Umowne i decyzje o odpowiednim poziomie ochrony.'
+          }
+        },
+        complaints: {
+          title: 'Skargi',
+          intro: 'Jeśli masz obawy co do sposobu, w jaki obsługujemy Twoje dane osobowe, masz prawo złożyć skargę do lokalnego organu ochrony danych.',
+          authority: {
+            label: 'Wiodący organ nadzorczy:',
+            name: 'Portugalski Organ Ochrony Danych (CNPD)',
+            websiteLabel: 'Strona internetowa:',
+            contactLabel: 'Kontakt:'
+          },
+          footer: 'Zachęcamy do kontaktu z nami w pierwszej kolejności w celu rozwiązania wszelkich obaw przed zwróceniem się do organu nadzorczego.'
+        },
+        dpo: {
+          title: 'Skontaktuj się z naszym inspektorem ochrony danych',
+          body: 'W przypadku jakichkolwiek pytań związanych z RODO lub w celu skorzystania z Twoich praw, prosimy o kontakt z naszym Inspektorem Ochrony Danych pod adresem <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Odpowiemy na Twoje żądanie w ciągu 30 dni, zgodnie z wymogami RODO.'
+        }
+      }
+    },
+
+    cric: {
+      title: 'CRIC — Firma i kontakt',
+      updatedDate: '27 września 2025',
+      quickLinks: {
+        title: 'Szybkie linki',
+        links: [
+          { id: 'overview', text: 'Przegląd' },
+          { id: 'contact', text: 'Kontakt' },
+          { id: 'emergency', text: 'Nagłe wypadki' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: 'Oficjalne informacje o firmie:',
+          body: 'Pełne szczegóły rejestracji biznesowej i informacje kontaktowe dla DEVOCEAN Lodge.'
+        },
+        overview: {
+          title: 'Przegląd',
+          body: 'Pełne szczegóły rejestracji biznesowej i informacje kontaktowe dla DEVOCEAN Lodge.',
+          details: [
+            { label: 'Nazwa firmy', value: '' },
+            { label: 'Rejestracja handlowa', value: '' },
+            { label: 'Numer VAT (NUIT)', value: '' },
+            { label: 'Licencja biznesowa (Alvará)', value: '' },
+            { label: 'Forma prawna', value: 'Spółka z ograniczoną odpowiedzialnością' },
+            { label: 'Kapitał zakładowy', value: '' }
+          ]
+        },
+        contact: {
+          title: 'Kontakt',
+          body: 'W przypadku ogólnych zapytań, rezerwacji i informacji o naszych usługach, prosimy o użycie poniższych danych kontaktowych.',
+          details: [
+            { label: 'Adres rejestrowy', value: '' },
+            { label: 'E-mail', value: '' },
+            { label: 'Telefon', value: '' },
+            { label: 'Godziny pracy', value: 'Poniedziałek - piątek: 8:00 - 18:00<br>Sobota i niedziela: 8:00 - 12:00<br>Recepcja: 6:00 - 22:00 (dla gości)' }
+          ]
+        },
+        emergency: {
+          title: 'Kontakt w nagłych wypadkach',
+          body: 'W przypadku pilnych spraw poza godzinami pracy, prosimy o użycie naszych danych kontaktowych w nagłych wypadkach.',
+          details: [
+            { label: 'Telefon awaryjny', value: '', subtitle: 'W przypadku pilnych spraw poza godzinami pracy' },
+            { label: 'E-mail awaryjny', value: '' }
+          ]
+        }
+      }
     }
   };
   

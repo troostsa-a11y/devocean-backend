@@ -58,12 +58,12 @@ Preferred communication style: Simple, everyday language.
 - Badge translations: All legal pages properly localized with "About cookies" badge in all languages (v=30)
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)
-- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections (Polish translations pending)
+- Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections in all 9 languages including Polish
 - **Polish Translation Status**: 4 batch TXT files created with 366 total items for translation
   - ✅ Batch 1: Website UI (70 items) - **COMPLETED & INTEGRATED** into translations.js (navigation, hero, stay, experiences, todo, gallery, location, contact form, footer, legal menu, accommodation units, experiences)
   - ✅ Batch 2: Privacy Policy (72 items) - **COMPLETED & INTEGRATED** into legal i18n system (all sections, quick links, badge, data collection/usage/sharing, security, retention, rights, transfers, contact, updates)
   - ✅ Batch 3: Cookies Policy (51 items) - **COMPLETED & INTEGRATED** into legal i18n system (page title, dates, quick links, badge, all cookie sections with tables, manage preferences, browser links)
-  - ⏳ Batch 4: Terms + GDPR + CRIC (173 items) - awaiting translation
+  - ✅ Batch 4: Terms + GDPR + CRIC (173 items) - **COMPLETED & INTEGRATED** into legal i18n system (Terms: scope, bookings, payment, cancellations, conduct, force majeure, liability, IP, disputes; GDPR: controller, legal bases, rights, retention, transfers, complaints; CRIC: company info, contact, emergency)
 
 **Performance Optimizations:**
 - Dynamic translation loading

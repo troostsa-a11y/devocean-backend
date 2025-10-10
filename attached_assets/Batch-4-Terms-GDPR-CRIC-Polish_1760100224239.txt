@@ -1,0 +1,655 @@
+================================================================================
+BATCH 4: TERMS & CONDITIONS + GDPR + CRIC - POLISH TRANSLATIONS
+DEVOCEAN LODGE
+================================================================================
+
+This batch combines 3 legal pages:
+• Part A: Terms & Conditions
+• Part B: GDPR Notice
+• Part C: Consumer Rights & Contact (CRIC)
+
+Instructions:
+- Translate each section to Polish
+- Preserve HTML tags like <strong>, <br>, <a href="">
+- Keep company details, addresses, phone numbers unchanged
+- Fill in "POLISH:" fields
+
+================================================================================
+PART A: TERMS & CONDITIONS
+================================================================================
+
+GENERAL UI ELEMENTS
+--------------------------------------------------------------------------------
+
+A001. Page Title: Terms & Conditions
+POLISH: Regulamin
+
+A002. Last updated
+POLISH: Ostatnia aktualizacja
+
+A003. Updated Date: 06 Oct 2025
+POLISH: 06 października 2025
+
+A004. Back to Home
+POLISH: Powrót do strony głównej
+
+QUICK LINKS MENU
+--------------------------------------------------------------------------------
+
+A005. Quick Links
+POLISH: Szybkie linki
+
+A006. Scope
+POLISH: Zakres
+
+A007. Bookings
+POLISH: Rezerwacje
+
+A008. Prices & Payment
+POLISH: Ceny i płatności
+
+A009. Cancellations
+POLISH: Anulacje
+
+A010. Guest Conduct
+POLISH: Zachowanie gości
+
+A011. Force Majeure
+POLISH: Siła wyższa
+
+A012. Liability
+POLISH: Odpowiedzialność
+
+A013. Intellectual Property
+POLISH: Własność intelektualna
+
+A014. Dispute Resolution
+POLISH: Rozstrzyganie sporów
+
+A015. Changes
+POLISH: Zmiany
+
+A016. Governing Law
+POLISH: Prawo właściwe
+
+A017. Contact
+POLISH: Kontakt
+
+BADGE/ALERT
+--------------------------------------------------------------------------------
+
+A018. Badge Title: Important Legal Notice:
+POLISH: Ważna informacja prawna:
+
+A019. Badge Body: These terms govern your use of our services and website. Please read them carefully before making a booking.
+POLISH: Niniejsze warunki regulują korzystanie z naszych usług i strony internetowej. Prosimy o dokładne ich przeczytanie przed dokonaniem rezerwacji.
+
+SECTION: SCOPE
+--------------------------------------------------------------------------------
+
+A020. Heading: Scope
+POLISH: Zakres
+
+A021. Body: These Terms govern accommodation and related services provided by DEVOCEAN Lodge (TERRAfrique LDA). By booking, you agree to these Terms.
+POLISH: Niniejsze Warunki regulują zakwaterowanie i powiązane usługi świadczone przez DEVOCEAN Lodge (TERRAfrique LDA). Dokonując rezerwacji, zgadzasz się na te Warunki.
+
+SECTION: BOOKINGS
+--------------------------------------------------------------------------------
+
+A022. Heading: Bookings
+POLISH: Rezerwacje
+
+A023. Provide accurate guest information and arrival/departure dates
+POLISH: Podaj dokładne informacje o gościach oraz daty przyjazdu/wyjazdu
+
+A024. Special requests are subject to availability and confirmation
+POLISH: Specjalne prośby podlegają dostępności i potwierdzeniu
+
+A025. Reservation Requirements (card title)
+POLISH: Wymagania rezerwacji
+
+A026. Valid ID and credit card required for all bookings. Minimum age: 18 years.
+POLISH: Wymagany ważny dowód tożsamości i karta kredytowa dla wszystkich rezerwacji. Minimalny wiek: 18 lat.
+
+A027. Check-in/Check-out (card title)
+POLISH: Zameldowanie/wymeldowanie
+
+A028. Check-in: 2:00 PM | Check-out: 11:00 AM. Early/late requests subject to availability.
+POLISH: Zameldowanie: 14:00 | Wymeldowanie: 11:00. Wczesne/późne prośby podlegają dostępności.
+
+A029. Group Bookings (card title)
+POLISH: Rezerwacje grupowe
+
+A030. Special terms apply for groups of 6+ rooms. Contact us for group rates and policies.
+POLISH: Specjalne warunki dotyczą grup 6+ pokoi. Skontaktuj się z nami w sprawie stawek i zasad grupowych.
+
+SECTION: PRICES & PAYMENT
+--------------------------------------------------------------------------------
+
+A031. Heading: Prices & Payment
+POLISH: Ceny i płatności
+
+A032. Rates shown are per unit/night unless stated otherwise
+POLISH: Pokazane stawki są za jednostkę/noc, chyba że określono inaczej
+
+A033. Deposits and settlement methods will be confirmed during booking
+POLISH: Depozyty i metody rozliczenia zostaną potwierdzone podczas rezerwacji
+
+A034. Payment Information (notice title)
+POLISH: Informacje o płatnościach
+
+A035. All prices are in EUR unless otherwise stated. Currency conversion rates are approximate and subject to change. A valid credit card is required to secure your reservation. Additional charges may apply for incidental expenses.
+POLISH: Wszystkie ceny są w EUR, chyba że określono inaczej. Kursy przeliczeniowe walut są przybliżone i mogą ulec zmianie. Wymagana ważna karta kredytowa do zabezpieczenia rezerwacji. Dodatkowe opłaty mogą dotyczyć kosztów incydentalnych.
+
+SECTION: CANCELLATIONS & NO-SHOWS
+--------------------------------------------------------------------------------
+
+A036. Heading: Cancellations & No-shows
+POLISH: Anulacje i niepojawienie się
+
+A037. Cancellation terms are disclosed at booking time and on your confirmation.
+POLISH: Warunki anulacji są ujawniane w momencie rezerwacji i w potwierdzeniu.
+
+A038. Cancellation Charges (subheading)
+POLISH: Opłaty za anulację
+
+A039. Semi-flexible rate plan:
+POLISH: Plan taryfowy półelastyczny:
+
+A040. 30 days or more before arrival
+POLISH: 30 dni lub więcej przed przyjazdem
+
+A041. Full refund
+POLISH: Pełny zwrot
+
+A042. 29 days or less before arrival
+POLISH: 29 dni lub mniej przed przyjazdem
+
+A043. 50% cancellation fee
+POLISH: 50% opłaty za anulację
+
+A044. Non refundable rate plan:
+POLISH: Plan taryfowy bezzwrotny:
+
+A045. Until 24 hours after reservation
+POLISH: Do 24 godzin po rezerwacji
+
+A046. In all other circumstances
+POLISH: We wszystkich innych okolicznościach
+
+A047. The right to modify the date of arrival once under the condition of paying the difference in case the new date has a higher rate, otherwise
+POLISH: Prawo do jednorazowej modyfikacji daty przyjazdu pod warunkiem zapłaty różnicy, jeśli nowa data ma wyższą stawkę, w przeciwnym razie
+
+A048. No refund
+POLISH: Brak zwrotu
+
+A049. No-Show Policy (notice title)
+POLISH: Polityka niepojawienia się
+
+A050. Guests who fail to arrive on the scheduled check-in date without prior notification will be considered no-shows. The full booking amount will be charged, and the reservation will be cancelled.
+POLISH: Goście, którzy nie przyjadą w zaplanowanej dacie zameldowania bez uprzedniego powiadomienia, będą uważani za niepojawionych. Pełna kwota rezerwacji zostanie obciążona, a rezerwacja anulowana.
+
+SECTION: GUEST CONDUCT
+--------------------------------------------------------------------------------
+
+A051. Heading: Guest conduct
+POLISH: Zachowanie gości
+
+A052. Respect property rules, staff, other guests and the local community
+POLISH: Szanuj zasady obiektu, personel, innych gości i lokalną społeczność
+
+A053. No unlawful activities on the premises
+POLISH: Brak nielegalnych działań na terenie obiektu
+
+A054. Zero Tolerance Policy (notice title)
+POLISH: Polityka zero tolerancji
+
+A055. We maintain a zero tolerance policy for disruptive behavior, illegal activities, or damage to property. Violations may result in immediate eviction without refund and may lead to legal action.
+POLISH: Stosujemy politykę zero tolerancji dla zakłócającego zachowania, nielegalnych działań lub uszkodzenia mienia. Naruszenia mogą skutkować natychmiastowym wyrzuceniem bez zwrotu i mogą prowadzić do działań prawnych.
+
+SECTION: FORCE MAJEURE
+--------------------------------------------------------------------------------
+
+A056. Heading: Force Majeure
+POLISH: Siła wyższa
+
+A057. Intro: We are not liable for failure to perform obligations due to circumstances beyond our reasonable control, including but not limited to:
+POLISH: Nie ponosimy odpowiedzialności za niewykonanie zobowiązań z powodu okoliczności poza naszą rozsądną kontrolą, w tym między innymi:
+
+A058. Natural disasters, extreme weather conditions
+POLISH: Katastrofy naturalne, ekstremalne warunki pogodowe
+
+A059. Government restrictions, travel bans
+POLISH: Ograniczenia rządowe, zakazy podróży
+
+A060. Civil unrest, war, terrorism
+POLISH: Zamieszki cywilne, wojna, terroryzm
+
+A061. Pandemics, epidemics, health emergencies
+POLISH: Pandemie, epidemie, nagłe przypadki zdrowotne
+
+A062. Utility failures, infrastructure breakdowns
+POLISH: Awarie mediów, awarie infrastruktury
+
+A063. Footer: In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided according to applicable laws and circumstances. However all damages and costs that are or could have been covered by generally available cancellation and travel insurance packages are excluded from our liability.
+POLISH: W takich przypadkach zaoferujemy alternatywne daty lub vouchery kredytowe, gdzie to możliwe. Zwroty zostaną udzielone zgodnie z obowiązującymi przepisami i okolicznościami. Jednak wszystkie szkody i koszty, które są lub mogły być pokryte przez ogólnie dostępne pakiety ubezpieczeń anulacyjnych i podróżnych, są wyłączone z naszej odpowiedzialności.
+
+SECTION: LIABILITY
+--------------------------------------------------------------------------------
+
+A064. Heading: Liability
+POLISH: Odpowiedzialność
+
+A065. Body: To the extent permitted by law, we are not liable for indirect or unforeseeable losses.
+POLISH: W zakresie dozwolonym przez prawo, nie ponosimy odpowiedzialności za pośrednie lub nieprzewidywalne straty.
+
+SECTION: INTELLECTUAL PROPERTY
+--------------------------------------------------------------------------------
+
+A066. Heading: Intellectual Property
+POLISH: Własność intelektualna
+
+A067. Copyright Notice (subheading)
+POLISH: Informacja o prawach autorskich
+
+A068. All content on this website, including text, graphics, logos, and images, is the property of DEVOCEAN Lodge and protected by international copyright laws. Unauthorized use, reproduction, or distribution is prohibited. The DEVOCEAN Lodge name, logo, and all related marks are trademarks and may not be used without written permission.
+POLISH: Cała zawartość tej strony internetowej, w tym tekst, grafika, logo i obrazy, jest własnością DEVOCEAN Lodge i chroniona międzynarodowymi prawami autorskimi. Nieautoryzowane użycie, reprodukcja lub dystrybucja jest zabroniona. Nazwa DEVOCEAN Lodge, logo i wszystkie powiązane znaki są znakami towarowymi i nie mogą być używane bez pisemnej zgody.
+
+SECTION: DISPUTE RESOLUTION
+--------------------------------------------------------------------------------
+
+A069. Heading: Dispute Resolution
+POLISH: Rozstrzyganie sporów
+
+A070. Resolution Process (subheading)
+POLISH: Proces rozstrzygania
+
+A071. We aim to resolve any disputes amicably. Please contact us first to attempt resolution. If unresolved, disputes shall be settled through mediation before pursuing legal action.
+POLISH: Staramy się rozstrzygać spory polubownie. Prosimy o kontakt w pierwszej kolejności w celu próby rozwiązania. Jeśli nierozstrzygnięte, spory zostaną rozstrzygnięte poprzez mediację przed podjęciem działań prawnych.
+
+A072. Governing Law: Mozambican law shall govern these terms and any disputes.
+POLISH: Prawo właściwe: Prawo mozambickie reguluje niniejsze warunki i wszelkie spory.
+
+A073. Jurisdiction: Courts of Maputo, Mozambique shall have exclusive jurisdiction.
+POLISH: Jurysdykcja: Sądy w Maputo, Mozambik mają wyłączną jurysdykcję.
+
+A074. Mediation: Parties agree to attempt mediation through an accredited mediator before initiating legal proceedings.
+POLISH: Mediacja: Strony zgadzają się na próbę mediacji poprzez akredytowanego mediatora przed wszczęciem postępowania sądowego.
+
+SECTION: CHANGES TO THESE TERMS
+--------------------------------------------------------------------------------
+
+A075. Heading: Changes to these Terms
+POLISH: Zmiany w niniejszych Warunkach
+
+A076. We may update Terms from time to time. The posted version applies to your stay.
+POLISH: Możemy od czasu do czasu aktualizować Warunki. Opublikowana wersja dotyczy Twojego pobytu.
+
+SECTION: GOVERNING LAW
+--------------------------------------------------------------------------------
+
+A077. Heading: Governing law
+POLISH: Prawo właściwe
+
+A078. Mozambican law applies, subject to mandatory local consumer rules.
+POLISH: Stosuje się prawo mozambickie, z zastrzeżeniem obowiązkowych lokalnych zasad konsumenckich.
+
+SECTION: CONTACT
+--------------------------------------------------------------------------------
+
+A079. Heading: Contact
+POLISH: Kontakt
+
+A080. Body (with HTML): Questions? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.
+POLISH: Pytania? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.
+
+================================================================================
+PART B: GDPR NOTICE
+================================================================================
+
+GENERAL UI ELEMENTS
+--------------------------------------------------------------------------------
+
+B001. Page Title: GDPR Notice
+POLISH: Informacja o RODO
+
+B002. Last updated
+POLISH: Ostatnia aktualizacja
+
+B003. Updated Date: 06 Oct 2025
+POLISH: 06 października 2025
+
+B004. Back to Home
+POLISH: Powrót do strony głównej
+
+QUICK LINKS MENU
+--------------------------------------------------------------------------------
+
+B005. Quick Links
+POLISH: Szybkie linki
+
+B006. Controller
+POLISH: Administrator
+
+B007. Legal Bases
+POLISH: Podstawy prawne
+
+B008. Your Rights
+POLISH: Twoje prawa
+
+B009. Data Retention
+POLISH: Przechowywanie danych
+
+B010. Data Transfers
+POLISH: Przekazywanie danych
+
+B011. Complaints
+POLISH: Skargi
+
+BADGE/ALERT
+--------------------------------------------------------------------------------
+
+B012. Badge Title: GDPR Compliant:
+POLISH: Zgodny z RODO:
+
+B013. Badge Body: We are committed to protecting your personal data and respecting your privacy rights under the General Data Protection Regulation.
+POLISH: Jesteśmy zaangażowani w ochronę Twoich danych osobowych i szanowanie Twoich praw do prywatności zgodnie z Ogólnym Rozporządzeniem o Ochronie Danych.
+
+SECTION: DATA CONTROLLER
+--------------------------------------------------------------------------------
+
+B014. Heading: Data Controller
+POLISH: Administrator danych
+
+B015. Body: TERRAfrique LDA (DEVOCEAN Lodge), registered at Rua C, Parcela 12, Maputo 1118, Mozambique, acts as the data controller for your personal information collected through our services.
+POLISH: TERRAfrique LDA (DEVOCEAN Lodge), zarejestrowana pod adresem Rua C, Parcela 12, Maputo 1118, Mozambik, działa jako administrator danych dla Twoich informacji osobowych zbieranych poprzez nasze usługi.
+
+SECTION: LEGAL BASES FOR PROCESSING
+--------------------------------------------------------------------------------
+
+B016. Heading: Legal Bases for Processing
+POLISH: Podstawy prawne przetwarzania
+
+B017. Intro: We process your personal data based on the following legal grounds under GDPR:
+POLISH: Przetwarzamy Twoje dane osobowe na podstawie następujących podstaw prawnych zgodnie z RODO:
+
+B018. Contract: (legal basis label)
+POLISH: Umowa:
+
+B019. Processing necessary for fulfilling our booking agreements and services.
+POLISH: Przetwarzanie niezbędne do realizacji naszych umów rezerwacyjnych i usług.
+
+B020. Legal Obligation: (legal basis label)
+POLISH: Obowiązek prawny:
+
+B021. Processing required to comply with legal requirements (e.g., tax laws).
+POLISH: Przetwarzanie wymagane do spełnienia wymogów prawnych (np. prawa podatkowe).
+
+B022. Legitimate Interests: (legal basis label)
+POLISH: Prawnie uzasadnione interesy:
+
+B023. Processing for our legitimate business interests while respecting your rights.
+POLISH: Przetwarzanie dla naszych prawnie uzasadnionych interesów biznesowych z poszanowaniem Twoich praw.
+
+B024. Consent: (legal basis label)
+POLISH: Zgoda:
+
+B025. Processing based on your explicit consent for specific purposes.
+POLISH: Przetwarzanie na podstawie Twojej wyraźnej zgody na określone cele.
+
+SECTION: YOUR GDPR RIGHTS
+--------------------------------------------------------------------------------
+
+B026. Heading: Your GDPR Rights
+POLISH: Twoje prawa wynikające z RODO
+
+B027. Intro: As a data subject under GDPR, you have the following rights regarding your personal data:
+POLISH: Jako osoba, której dane dotyczą zgodnie z RODO, masz następujące prawa dotyczące Twoich danych osobowych:
+
+B028. Right to Access (card title)
+POLISH: Prawo dostępu
+
+B029. You can request copies of your personal data we hold.
+POLISH: Możesz zażądać kopii Twoich danych osobowych, które przechowujemy.
+
+B030. Right to Rectification (card title)
+POLISH: Prawo do sprostowania
+
+B031. You can request correction of inaccurate or incomplete data.
+POLISH: Możesz zażądać korekty niedokładnych lub niekompletnych danych.
+
+B032. Right to Erasure (card title)
+POLISH: Prawo do usunięcia
+
+B033. You can request deletion of your personal data under certain conditions.
+POLISH: Możesz zażądać usunięcia Twoich danych osobowych w określonych warunkach.
+
+B034. Right to Restrict Processing (card title)
+POLISH: Prawo do ograniczenia przetwarzania
+
+B035. You can request limitation of how we use your data.
+POLISH: Możesz zażądać ograniczenia sposobu, w jaki używamy Twoich danych.
+
+B036. Right to Data Portability (card title)
+POLISH: Prawo do przenoszenia danych
+
+B037. You can request transfer of your data to another organization.
+POLISH: Możesz zażądać przeniesienia Twoich danych do innej organizacji.
+
+B038. Right to Object (card title)
+POLISH: Prawo do sprzeciwu
+
+B039. You can object to certain types of processing of your data.
+POLISH: Możesz sprzeciwić się pewnym typom przetwarzania Twoich danych.
+
+B040. Request Data Access (button text)
+POLISH: Zażądaj dostępu do danych
+
+B041. Request Data Deletion (button text)
+POLISH: Zażądaj usunięcia danych
+
+SECTION: DATA RETENTION
+--------------------------------------------------------------------------------
+
+B042. Heading: Data Retention
+POLISH: Przechowywanie danych
+
+B043. Retention Periods (subheading)
+POLISH: Okresy przechowywania
+
+B044. Intro: We retain personal data only for as long as necessary to fulfill the purposes for which it was collected, including legal, accounting, or reporting requirements.
+POLISH: Przechowujemy dane osobowe tylko tak długo, jak jest to konieczne do realizacji celów, dla których zostały zebrane, w tym wymogów prawnych, księgowych lub sprawozdawczych.
+
+B045. Booking data: 7 years for tax and legal compliance
+POLISH: Dane rezerwacyjne: 7 lat dla zgodności podatkowej i prawnej
+
+B046. Customer service communications: 3 years
+POLISH: Komunikacja obsługi klienta: 3 lata
+
+B047. Marketing consents: Until withdrawal of consent
+POLISH: Zgody marketingowe: Do wycofania zgody
+
+B048. Website analytics: 26 months
+POLISH: Analityka strony internetowej: 26 miesięcy
+
+B049. Financial transactions: 10 years for accounting purposes
+POLISH: Transakcje finansowe: 10 lat dla celów księgowych
+
+SECTION: INTERNATIONAL DATA TRANSFERS
+--------------------------------------------------------------------------------
+
+B050. Heading: International Data Transfers
+POLISH: Międzynarodowe przekazywanie danych
+
+B051. Body: When we transfer your data outside the European Economic Area (EEA), we ensure appropriate safeguards are in place to protect your information. This may include the use of Standard Contractual Clauses approved by the European Commission or transferring data to countries with adequacy decisions.
+POLISH: Gdy przekazujemy Twoje dane poza Europejski Obszar Gospodarczy (EOG), zapewniamy odpowiednie zabezpieczenia w celu ochrony Twoich informacji. Może to obejmować użycie Standardowych Klauzul Umownych zatwierdzonych przez Komisję Europejską lub przekazywanie danych do krajów z decyzjami o odpowiednim poziomie ochrony.
+
+B052. International Data Transfers: (notice label)
+POLISH: Międzynarodowe przekazywanie danych:
+
+B053. We ensure appropriate safeguards are in place for any data transfers outside the EEA, including Standard Contractual Clauses and adequacy decisions.
+POLISH: Zapewniamy odpowiednie zabezpieczenia dla wszelkich przekazywań danych poza EOG, w tym Standardowe Klauzule Umowne i decyzje o odpowiednim poziomie ochrony.
+
+SECTION: COMPLAINTS
+--------------------------------------------------------------------------------
+
+B054. Heading: Complaints
+POLISH: Skargi
+
+B055. Intro: If you have concerns about how we handle your personal data, you have the right to lodge a complaint with your local data protection authority.
+POLISH: Jeśli masz obawy co do sposobu, w jaki obsługujemy Twoje dane osobowe, masz prawo złożyć skargę do lokalnego organu ochrony danych.
+
+B056. Lead Supervisory Authority: (label)
+POLISH: Wiodący organ nadzorczy:
+
+B057. Portuguese Data Protection Authority (CNPD)
+POLISH: Portugalski Organ Ochrony Danych (CNPD)
+
+B058. Website: (label)
+POLISH: Strona internetowa:
+
+B059. Contact: (label)
+POLISH: Kontakt:
+
+B060. We encourage you to contact us first to resolve any concerns before approaching the supervisory authority.
+POLISH: Zachęcamy do kontaktu z nami w pierwszej kolejności w celu rozwiązania wszelkich obaw przed zwróceniem się do organu nadzorczego.
+
+SECTION: CONTACT DPO
+--------------------------------------------------------------------------------
+
+B061. Heading: Contact Our Data Protection Officer
+POLISH: Skontaktuj się z naszym inspektorem ochrony danych
+
+B062. Body (with HTML): For any GDPR-related questions or to exercise your rights, please contact our Data Protection Officer at <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. We will respond to your request within 30 days as required by GDPR.
+POLISH: W przypadku jakichkolwiek pytań związanych z RODO lub w celu skorzystania z Twoich praw, prosimy o kontakt z naszym Inspektorem Ochrony Danych pod adresem <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Odpowiemy na Twoje żądanie w ciągu 30 dni, zgodnie z wymogami RODO.
+
+================================================================================
+PART C: CONSUMER RIGHTS & CONTACT (CRIC)
+================================================================================
+
+GENERAL UI ELEMENTS
+--------------------------------------------------------------------------------
+
+C001. Page Title: CRIC — Company & Contact
+POLISH: CRIC — Firma i kontakt
+
+C002. Last updated
+POLISH: Ostatnia aktualizacja
+
+C003. Updated Date: 27 Sep 2025
+POLISH: 27 września 2025
+
+C004. Back to Home
+POLISH: Powrót do strony głównej
+
+QUICK LINKS MENU
+--------------------------------------------------------------------------------
+
+C005. Quick Links
+POLISH: Szybkie linki
+
+C006. Overview
+POLISH: Przegląd
+
+C007. Contact
+POLISH: Kontakt
+
+C008. Emergency
+POLISH: Nagłe wypadki
+
+BADGE/ALERT
+--------------------------------------------------------------------------------
+
+C009. Badge Title: Official Company Information:
+POLISH: Oficjalne informacje o firmie:
+
+C010. Badge Body: Complete business registration details and contact information for DEVOCEAN Lodge.
+POLISH: Pełne szczegóły rejestracji biznesowej i informacje kontaktowe dla DEVOCEAN Lodge.
+
+SECTION: OVERVIEW
+--------------------------------------------------------------------------------
+
+C011. Heading: Overview
+POLISH: Przegląd
+
+C012. Body: Complete business registration details and contact information for DEVOCEAN Lodge.
+POLISH: Pełne szczegóły rejestracji biznesowej i informacje kontaktowe dla DEVOCEAN Lodge.
+
+C013. Company Name (label)
+POLISH: Nazwa firmy
+
+C014. Commercial Registration (label)
+POLISH: Rejestracja handlowa
+
+C015. VAT Number (NUIT) (label)
+POLISH: Numer VAT (NUIT)
+
+C016. Business License (Alvará) (label)
+POLISH: Licencja biznesowa (Alvará)
+
+C017. Legal Form (label)
+POLISH: Forma prawna
+
+C018. Limited Liability Company
+POLISH: Spółka z ograniczoną odpowiedzialnością
+
+C019. Share Capital (label)
+POLISH: Kapitał zakładowy
+
+SECTION: CONTACT
+--------------------------------------------------------------------------------
+
+C020. Heading: Contact
+POLISH: Kontakt
+
+C021. Body: For general inquiries, bookings, and information about our services, please use the contact details provided below.
+POLISH: W przypadku ogólnych zapytań, rezerwacji i informacji o naszych usługach, prosimy o użycie poniższych danych kontaktowych.
+
+C022. Registered Address (label)
+POLISH: Adres rejestrowy
+
+C023. Email (label)
+POLISH: E-mail
+
+C024. Phone (label)
+POLISH: Telefon
+
+C025. Business Hours (label)
+POLISH: Godziny pracy
+
+C026. Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday & Sunday: 8:00 AM - 12:00 PM<br>Front Desk: 6:00 AM - 10:00 PM (for guests)
+POLISH: Poniedziałek - piątek: 8:00 - 18:00<br>Sobota i niedziela: 8:00 - 12:00<br>Recepcja: 6:00 - 22:00 (dla gości)
+
+SECTION: EMERGENCY CONTACT
+--------------------------------------------------------------------------------
+
+C027. Heading: Emergency Contact
+POLISH: Kontakt w nagłych wypadkach
+
+C028. Body: For urgent matters outside business hours, please use our emergency contact details.
+POLISH: W przypadku pilnych spraw poza godzinami pracy, prosimy o użycie naszych danych kontaktowych w nagłych wypadkach.
+
+C029. Emergency Phone (label)
+POLISH: Telefon awaryjny
+
+C030. For urgent matters outside business hours
+POLISH: W przypadku pilnych spraw poza godzinami pracy
+
+C031. Emergency Email (label)
+POLISH: E-mail awaryjny
+
+================================================================================
+END OF BATCH 4
+Part A (Terms): 80 items
+Part B (GDPR): 62 items
+Part C (CRIC): 31 items
+Total items: 173
+================================================================================
+
+GRAND TOTAL ALL BATCHES:
+Batch 1: 70 items
+Batch 2: 72 items
+Batch 3: 51 items
+Batch 4: 173 items
+TOTAL: 366 items to translate
+================================================================================
