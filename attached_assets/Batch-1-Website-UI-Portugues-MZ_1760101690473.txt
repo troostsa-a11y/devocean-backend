@@ -1,0 +1,278 @@
+================================================================================
+BATCH 1: WEBSITE UI - MOZAMBICAN PORTUGUESE TRANSLATIONS
+DEVOCEAN LODGE
+================================================================================
+
+Instructions:
+- Translate each English text to Mozambican Portuguese
+- Keep place names unchanged (Ponta do Ouro, Lua Do Mar, etc.)
+- Preserve formatting markers like line breaks
+- Fill in the "PORTUGUESE:" fields
+
+================================================================================
+SECTION 1: NAVIGATION
+================================================================================
+
+001. Home
+PORTUGUESE: Início
+
+002. Stay
+PORTUGUESE: Estadia
+
+003. Experiences
+PORTUGUESE: Experiências
+
+004. What to do
+PORTUGUESE: O que fazer
+
+005. Gallery
+PORTUGUESE: Galeria
+
+006. Location
+PORTUGUESE: Localização
+
+007. Contact
+PORTUGUESE: Contacto
+
+================================================================================
+SECTION 2: HERO SECTION
+================================================================================
+
+008. Title: DEVOCEAN Lodge
+PORTUGUESE: DEVOCEAN Lodge (keep as is)
+
+009. Subtitle: Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.
+PORTUGUESE: Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.
+
+010. Button: Book your stay
+PORTUGUESE: Reserve a sua estadia
+
+011. Button: Explore the lodge
+PORTUGUESE: Explore o lodge
+
+012. Badge: Guest-loved comfort & value
+PORTUGUESE: Conforto e valor adorados pelos hóspedes
+
+================================================================================
+SECTION 3: STAY WITH US
+================================================================================
+
+013. Headline: Stay with us
+PORTUGUESE: Fique connosco
+
+014. Description: Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.
+PORTUGUESE: Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa.
+
+015. Button: More details
+PORTUGUESE: Mais detalhes
+
+================================================================================
+SECTION 4: EXPERIENCES
+================================================================================
+
+016. Headline: Experiences
+PORTUGUESE: Experiências
+
+017. Description: Ocean and forest adventures right on your doorstep.
+PORTUGUESE: Aventuras no oceano e na floresta mesmo à sua porta.
+
+018. Label: Trusted local operators:
+PORTUGUESE: Operadores locais de confiança:
+
+================================================================================
+SECTION 5: WHAT TO DO IN PONTA DO OURO
+================================================================================
+
+019. Headline: What to do in Ponta do Ouro
+PORTUGUESE: O que fazer em Ponta do Ouro
+
+020. Note: For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.
+PORTUGUESE: Para mergulho, viagens de snorkel, safaris marítimos com golfinhos/baleias e charters de pesca, veja os fornecedores abaixo.
+
+--- Activity 1 ---
+021. Title: Lighthouse hike & Lua Do Mar
+PORTUGUESE: Caminhada ao farol e Lua Do Mar
+
+022. Body: Hike to the Old Lighthouse for panoramic views. Continue to Lua Do Mar Restaurant on the dune. Often spot dolphins year-round, whales (May–Oct) and turtles (Dec–Jan). Mind the tide: avoid the beach route from 3 hours before to 3 hours after high tide; rogue waves can push you against rocks.
+PORTUGUESE: Caminhe até ao Antigo Farol para vistas panorâmicas. Continue até ao Restaurante Lua Do Mar na duna. Muitas vezes aviste golfinhos durante todo o ano, baleias (maio–outubro) e tartarugas (dezembro–janeiro). Atenção à maré: evite a rota da praia de 3 horas antes a 3 horas após a maré alta; ondas imprevisíveis podem empurrá-lo contra as rochas.
+
+--- Activity 2 ---
+023. Title: Walk to Ponta Malongane
+PORTUGUESE: Caminhada até Ponta Malongane
+
+024. Body: Beach-walk along the shore to the next village. Midway, stairs through banana trees lead to Campismo Nino Pub & Restaurant with great views. Near the bay transition, a path to Sky Island offers paragliding. Famous pubs in Malongane: Drunken Clam and Sunset Shack. Return via beach or the sandy 4×4 road.
+PORTUGUESE: Caminhada pela praia ao longo da costa até à próxima aldeia. A meio caminho, escadas através de bananeiras levam ao Pub & Restaurante Campismo Nino com ótimas vistas. Perto da transição da baía, um caminho para Sky Island oferece parapente. Pubs famosos em Malongane: Drunken Clam e Sunset Shack. Regresso pela praia ou pela estrada arenosa 4×4.
+
+--- Activity 3 ---
+025. Title: Surf, dive & ocean research
+PORTUGUESE: Surf, mergulho e pesquisa oceânica
+
+026. Body: Surfboard rentals at the Beach Bar; several dive centers in the village and a dolphin/whale research center.
+PORTUGUESE: Aluguer de pranchas de surf no Beach Bar; vários centros de mergulho na aldeia e um centro de pesquisa de golfinhos/baleias.
+
+--- Activity 4 ---
+027. Title: Eat & unwind nearby
+PORTUGUESE: Comer e relaxar nas proximidades
+
+028. Body: There are ~16 pubs and restaurants within 500 m of DEVOCEAN. For a relaxing full-body massage, ask for Lisa (LIZ-Way Massage).
+PORTUGUESE: Há cerca de 16 pubs e restaurantes dentro de 500 m do DEVOCEAN. Para uma massagem relaxante de corpo inteiro, pergunte por Lisa (LIZ-Way Massage).
+
+--- Activity 5 ---
+029. Title: Quad bike rentals
+PORTUGUESE: Aluguer de quadriciclos
+
+030. Body: Occasional private rentals from locals. Typical rate: around MZN 2000 per hour (negotiation varies).
+PORTUGUESE: Alugueres privados ocasionais de locais. Taxa típica: cerca de 2000 MZN por hora (negociação varia).
+
+================================================================================
+SECTION 6: GALLERY
+================================================================================
+
+031. Headline: Gallery
+PORTUGUESE: Galeria
+
+================================================================================
+SECTION 7: LOCATION
+================================================================================
+
+032. Headline: Location
+PORTUGUESE: Localização
+
+033. Description: Ponta do Ouro – Matutuíne District, Southern Mozambique.
+PORTUGUESE: Ponta do Ouro – Distrito de Matutuíne, sul de Moçambique.
+
+034. Ponta do Ouro town, a short walk from the beach
+PORTUGUESE: Cidade de Ponta do Ouro, a uma curta caminhada da praia
+
+035. 15 min to Ponta Malongane • 25 min to Kosi Bay border
+PORTUGUESE: 15 min até Ponta Malongane • 25 min até à fronteira de Kosi Bay
+
+036. Secure parking • Local cafés & markets nearby
+PORTUGUESE: Estacionamento seguro • Cafés e mercados locais nas proximidades
+
+037. View Interactive Map
+PORTUGUESE: Ver mapa interativo
+
+================================================================================
+SECTION 8: CONTACT & BOOKING
+================================================================================
+
+038. Headline: Contact & Booking
+PORTUGUESE: Contacto e reserva
+
+039. Description: Questions, dates, special requests or group bookings – we're happy to help.
+PORTUGUESE: Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.
+
+040. Call
+PORTUGUESE: Ligar
+
+041. Email
+PORTUGUESE: E-mail
+
+042. Directions
+PORTUGUESE: Indicações
+
+043. Rates & Availability
+PORTUGUESE: Tarifas e disponibilidade
+
+================================================================================
+SECTION 9: CONTACT FORM
+================================================================================
+
+044. Name
+PORTUGUESE: Nome
+
+045. Email
+PORTUGUESE: E-mail
+
+046. Interested in staying:
+PORTUGUESE: Interessado em ficar:
+
+047. From (check-in)
+PORTUGUESE: De (check-in)
+
+048. Until (checkout)
+PORTUGUESE: Até (checkout)
+
+049. My preferred unit is:
+PORTUGUESE: A minha unidade preferida é:
+
+050. Safari Tent - shared bathroom
+PORTUGUESE: Tenda Safari - casa de banho partilhada
+
+051. Comfort Tent - private bathroom
+PORTUGUESE: Tenda Conforto - casa de banho privada
+
+052. Garden Cottage - inverter AC
+PORTUGUESE: Cottage de Jardim - AC inversor
+
+053. Thatched Chalet - inverter AC
+PORTUGUESE: Chalé de Palha - AC inversor
+
+054. Message
+PORTUGUESE: Mensagem
+
+055. Send
+PORTUGUESE: Enviar
+
+056. By submitting you agree to be contacted about your inquiry.
+PORTUGUESE: Ao submeter, concorda em ser contactado sobre a sua consulta.
+
+057. Placeholder: Your name
+PORTUGUESE: O seu nome
+
+058. Placeholder: your@email.com
+PORTUGUESE: seu@email.com
+
+059. Placeholder: Tell us more about your wishes...
+PORTUGUESE: Conte-nos mais sobre os seus desejos...
+
+060. Success: Thank you! Your message has been sent. Check your email for a confirmation.
+PORTUGUESE: Sucesso: Obrigado! A sua mensagem foi enviada. Verifique o seu e-mail para confirmação.
+
+================================================================================
+SECTION 10: GALLERY
+================================================================================
+
+061. Gallery
+PORTUGUESE: Galeria
+
+================================================================================
+SECTION 11: FOOTER
+================================================================================
+
+062. All rights reserved.
+PORTUGUESE: Todos os direitos reservados.
+
+063. Family-run eco-hospitality and community projects in Southern Mozambique.
+PORTUGUESE: Hospitalidade ecológica gerida pela família e projetos comunitários no sul de Moçambique.
+
+================================================================================
+SECTION 12: LEGAL MENU (Footer)
+================================================================================
+
+064. Legal
+PORTUGUESE: Legal
+
+065. Privacy Policy
+PORTUGUESE: Política de Privacidade
+
+066. Cookie Policy
+PORTUGUESE: Política de Cookies
+
+067. Terms & Conditions
+PORTUGUESE: Termos e Condições
+
+068. GDPR Info
+PORTUGUESE: Informação RODO
+
+069. Consumer Rights & Contact
+PORTUGUESE: Direitos do Consumidor e Contacto
+
+070. Cookie Settings
+PORTUGUESE: Configurações de Cookies
+
+================================================================================
+END OF BATCH 1
+Total items: 70
+================================================================================
