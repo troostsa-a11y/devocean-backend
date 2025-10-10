@@ -1,0 +1,287 @@
+================================================================================
+BATCH 2: PRIVACY POLICY PAGE - POLISH TRANSLATIONS
+DEVOCEAN LODGE
+================================================================================
+
+Instructions:
+- Translate each section to Polish
+- Preserve HTML tags like <strong>, <br>, <a href="">
+- Keep email addresses and URLs unchanged
+- Fill in "POLISH:" fields
+
+================================================================================
+GENERAL UI ELEMENTS
+================================================================================
+
+001. Page Title: Privacy Policy
+POLISH: 
+
+002. Last updated: Last updated
+POLISH: 
+
+003. Updated Date: 06 Oct 2025
+POLISH: 
+
+004. Back to Home
+POLISH: 
+
+================================================================================
+QUICK LINKS MENU
+================================================================================
+
+005. Quick Links (heading)
+POLISH: 
+
+006. Who We Are
+POLISH: 
+
+007. Data Collection
+POLISH: 
+
+008. Data Usage
+POLISH: 
+
+009. Data Sharing
+POLISH: 
+
+010. Security
+POLISH: 
+
+011. Retention
+POLISH: 
+
+012. Your Rights
+POLISH: 
+
+013. International Transfers
+POLISH: 
+
+014. Contact
+POLISH: 
+
+015. Policy Updates
+POLISH: 
+
+================================================================================
+BADGE/ALERT
+================================================================================
+
+016. Badge Title: Your Privacy Matters:
+POLISH: 
+
+017. Badge Body: We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information.
+POLISH: 
+
+================================================================================
+SECTION: WHO WE ARE
+================================================================================
+
+018. Heading: Who we are
+POLISH: 
+
+019. Body: DEVOCEAN Lodge is operated by TERRAfrique LDA, a company registered in Mozambique. Our registered address is Rua C, Parcela 12, Maputo 1118, Mozambique. We operate eco-friendly beach accommodation in Ponta do Ouro, Mozambique. We are committed to protecting your privacy and ensuring that your personal data is collected, processed, and used properly, lawfully, and transparently in accordance with applicable data protection laws. By accessing or using our website and services, you consent to the collection and use of your information as described in this Privacy Policy.
+POLISH: 
+
+================================================================================
+SECTION: WHAT PERSONAL DATA WE COLLECT
+================================================================================
+
+020. Heading: What personal data we collect
+POLISH: 
+
+021. Intro: We collect different types of information to provide and improve our services:
+POLISH: 
+
+--- Category 1: Personal Information ---
+022. Category Title: Personal Information
+POLISH: 
+
+023. Name, contact details
+POLISH: 
+
+024. Passport/ID information
+POLISH: 
+
+025. Payment information
+POLISH: 
+
+026. Booking preferences
+POLISH: 
+
+--- Category 2: Technical Data ---
+027. Category Title: Technical Data
+POLISH: 
+
+028. IP address, device information
+POLISH: 
+
+029. Browser type and version
+POLISH: 
+
+030. Website usage analytics
+POLISH: 
+
+031. Cookie data (with consent)
+POLISH: 
+
+--- Category 3: Communication Data ---
+032. Category Title: Communication Data
+POLISH: 
+
+033. Email correspondence
+POLISH: 
+
+034. Customer service requests
+POLISH: 
+
+035. Feedback and reviews
+POLISH: 
+
+036. Marketing preferences
+POLISH: 
+
+================================================================================
+SECTION: HOW WE USE YOUR DATA
+================================================================================
+
+037. Heading: How we use your data
+POLISH: 
+
+038. Manage bookings and provide services
+POLISH: 
+
+039. Communicate about your stay, policies and offers (opt-in)
+POLISH: 
+
+040. Improve our site and services (analytics, security)
+POLISH: 
+
+041. Comply with legal/financial obligations
+POLISH: 
+
+================================================================================
+SECTION: WHEN WE SHARE DATA
+================================================================================
+
+042. Heading: When we share data
+POLISH: 
+
+043. Payment providers and booking platforms to process your reservations and payments
+POLISH: 
+
+044. Analytics services to understand website usage and improve our services
+POLISH: 
+
+045. Advertising services for targeted marketing (only with your consent)
+POLISH: 
+
+046. IT service providers, hosting providers, and technical support vendors under strict confidentiality agreements
+POLISH: 
+
+047. Legal authorities when required by law, regulation, court order, or other legal process
+POLISH: 
+
+048. To enforce our agreements or protect our rights, property, or safety
+POLISH: 
+
+049. In the event of a merger, acquisition, or sale of assets, your information may be transferred to the new owner
+POLISH: 
+
+050. Footer Text: We require all third parties to respect the security of your personal data and use it only for the purposes for which it was transferred. We do not allow third parties to use your personal data for their own purposes and only permit them to process your data for specified purposes in accordance with our instructions.
+POLISH: 
+
+================================================================================
+SECTION: SECURITY MEASURES
+================================================================================
+
+051. Heading: Security measures
+POLISH: 
+
+052. Intro: We take data security seriously and implement:
+POLISH: 
+
+053. Encryption of sensitive data in transit and at rest
+POLISH: 
+
+054. Regular security assessments and penetration testing
+POLISH: 
+
+055. Access controls and authentication mechanisms
+POLISH: 
+
+056. Staff training on data protection and privacy
+POLISH: 
+
+057. Secure data backup and disaster recovery procedures
+POLISH: 
+
+================================================================================
+SECTION: DATA RETENTION
+================================================================================
+
+058. Heading: Data retention
+POLISH: 
+
+059. Body: We will retain your personal information for as long as necessary to fulfill the purposes for which it was collected, as detailed in this Privacy Policy. Generally, we retain personal data for up to 1 year after your last interaction with us, unless a longer retention period is required or permitted by law. We may need to retain certain information for longer periods for specific reasons including: record-keeping and reporting in accordance with applicable law (typically 7 years for financial and tax records), enforcement of legal rights, fraud prevention, and dispute resolution. Once the retention period expires, your personal data will be securely deleted or anonymized. Residual anonymous information and aggregate information, which does not identify you directly or indirectly, may be stored indefinitely for statistical and analytical purposes.
+POLISH: 
+
+================================================================================
+SECTION: YOUR PRIVACY RIGHTS
+================================================================================
+
+060. Heading: Your privacy rights
+POLISH: 
+
+061. Right to access your personal data
+POLISH: 
+
+062. Right to correct inaccurate data
+POLISH: 
+
+063. Right to delete your personal data
+POLISH: 
+
+064. Right to restrict or object to processing
+POLISH: 
+
+065. Right to data portability
+POLISH: 
+
+066. Right to withdraw consent
+POLISH: 
+
+================================================================================
+SECTION: INTERNATIONAL DATA TRANSFERS
+================================================================================
+
+067. Heading: International Data Transfers
+POLISH: 
+
+068. Body: As we operate in multiple jurisdictions, your data may be transferred to and processed in countries outside of your residence. We ensure such transfers comply with applicable data protection laws through adequacy decisions by the European Commission, Standard Contractual Clauses (SCCs), appropriate security safeguards, and transparency about transfer locations.
+POLISH: 
+
+================================================================================
+SECTION: CONTACT OUR PRIVACY TEAM
+================================================================================
+
+069. Heading: Contact our privacy team
+POLISH: 
+
+070. Body (with HTML): If you have any questions, concerns, or requests regarding this Privacy Policy or the processing of your personal information, or if you wish to exercise any of your privacy rights, please contact us at:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Phone:</strong> +258 8441 82252<br><strong>Postal Address:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>We will respond to your request in accordance with applicable data protection law. For grievances or concerns about the processing of your information, you may also contact our Data Protection Officer at the email address above.
+
+POLISH: 
+
+================================================================================
+SECTION: POLICY UPDATES
+================================================================================
+
+071. Heading: Policy Updates
+POLISH: 
+
+072. Body: We may update this privacy policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes through email notifications for registered users, prominent notices on our website, and an updated 'last updated' date. We encourage you to periodically review this policy to stay informed about how we protect your information.
+POLISH: 
+
+================================================================================
+END OF BATCH 2
+Total items: 72
+================================================================================

@@ -59,6 +59,11 @@ Preferred communication style: Simple, everyday language.
   - Mobile badge styling: 14px font (matches section headers), compact 6px vertical padding
   - Badge text only shown on mobile (body hidden, button removed)
 - Terms page translations: Complete translations for Force Majeure (including insurance exclusion clause), Intellectual Property, and Dispute Resolution sections (Polish translations pending)
+- **Polish Translation Templates**: 4 batch TXT files created with 366 total items for translation
+  - Batch 1: Website UI (70 items) - navigation, hero, stay, experiences, todo, gallery, location, contact form, footer, legal menu
+  - Batch 2: Privacy Policy (72 items) - complete privacy page translations
+  - Batch 3: Cookies Policy (51 items) - complete cookies page translations
+  - Batch 4: Terms + GDPR + CRIC (173 items) - all 3 remaining legal pages combined
 
 **Performance Optimizations:**
 - Dynamic translation loading
