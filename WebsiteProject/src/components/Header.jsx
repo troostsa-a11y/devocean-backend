@@ -6,15 +6,14 @@ import LazyImage from './LazyImage';
 
 export default function Header({ ui, lang, currency, onLangChange, onCurrencyChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
   // Define regions with metadata
   const regions = {
-    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv'] },
-    asia: { name: 'Asia', short: 'AS', languages: ['en'] },
-    americas: { name: 'Americas', short: 'AM', languages: ['en', 'es'] },
-    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr'] },
-    oceania: { name: 'Oceania', short: 'OC', languages: ['en'] }
+    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'ZAR'] },
+    asia: { name: 'Asia', short: 'AS', languages: ['en'], currencies: ['USD', 'EUR', 'GBP', 'SEK'] },
+    americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
+    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
+    oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
   };
 
   // Determine initial region based on current language
@@ -36,11 +35,15 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
 
   const handleRegionChange = (region) => {
     setSelectedRegion(region);
-    setRegionMenuOpen(false);
     
     // If current language is not available in the new region, switch to English
     if (!regions[region].languages.includes(lang)) {
       onLangChange('en');
+    }
+    
+    // If current currency is not available in the new region, switch to USD
+    if (!regions[region].currencies.includes(currency)) {
+      onCurrencyChange('USD');
     }
   };
 
@@ -92,68 +95,47 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Region selector dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setRegionMenuOpen(!regionMenuOpen)}
-                className="flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
-                aria-label="Select region"
-                aria-expanded={regionMenuOpen}
-              >
-                <Globe2 size={20} className="hover:scale-110 transition-transform" />
-                <span className="text-xs font-semibold hidden sm:inline">{regions[selectedRegion].short}</span>
-              </button>
-              
-              {regionMenuOpen && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setRegionMenuOpen(false)}
-                  />
-                  <div className="absolute right-0 top-full mt-1 bg-white text-gray-800 rounded-lg shadow-lg py-1 min-w-[160px] z-50">
-                    {Object.entries(regions).map(([key, region]) => (
-                      <button
-                        key={key}
-                        onClick={() => handleRegionChange(key)}
-                        className={`w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors ${
-                          selectedRegion === key ? 'bg-blue-50 font-semibold' : ''
-                        }`}
-                      >
-                        {region.name}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
-
-            <div className="flex items-center border border-white/40 rounded px-2 py-1">
+            {/* Region selector */}
+            <div className="flex items-center gap-1">
+              <Globe2 size={16} />
               <select
-                value={lang}
-                onChange={(e) => onLangChange(e.target.value)}
+                value={selectedRegion}
+                onChange={(e) => handleRegionChange(e.target.value)}
+                className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
+                aria-label="Select region"
               >
-                {regions[selectedRegion].languages.includes('en') && <option value="en">English</option>}
-                {regions[selectedRegion].languages.includes('pt') && <option value="pt">Português</option>}
-                {regions[selectedRegion].languages.includes('nl') && <option value="nl">Nederlands</option>}
-                {regions[selectedRegion].languages.includes('fr') && <option value="fr">Français</option>}
-                {regions[selectedRegion].languages.includes('it') && <option value="it">Italiano</option>}
-                {regions[selectedRegion].languages.includes('de') && <option value="de">Deutsch</option>}
-                {regions[selectedRegion].languages.includes('es') && <option value="es">Español</option>}
-                {regions[selectedRegion].languages.includes('sv') && <option value="sv">Svenska</option>}
+                {Object.entries(regions).map(([key, region]) => (
+                  <option key={key} value={key}>{region.name}</option>
+                ))}
               </select>
             </div>
 
             <select
+              value={lang}
+              onChange={(e) => onLangChange(e.target.value)}
+              className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
+            >
+              {regions[selectedRegion].languages.includes('en') && <option value="en">English</option>}
+              {regions[selectedRegion].languages.includes('pt') && <option value="pt">Português</option>}
+              {regions[selectedRegion].languages.includes('nl') && <option value="nl">Nederlands</option>}
+              {regions[selectedRegion].languages.includes('fr') && <option value="fr">Français</option>}
+              {regions[selectedRegion].languages.includes('it') && <option value="it">Italiano</option>}
+              {regions[selectedRegion].languages.includes('de') && <option value="de">Deutsch</option>}
+              {regions[selectedRegion].languages.includes('es') && <option value="es">Español</option>}
+              {regions[selectedRegion].languages.includes('sv') && <option value="sv">Svenska</option>}
+            </select>
+
+            <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1"
+              className="border border-white/40 rounded px-2 py-1 min-w-[110px]"
             >
-              <option value="USD">Dollar</option>
-              <option value="MZN">Meticais</option>
-              <option value="ZAR">Rand</option>
-              <option value="EUR">Euro</option>
-              <option value="GBP">Pound</option>
-              <option value="SEK">Krona</option>
+              {regions[selectedRegion].currencies.includes('USD') && <option value="USD">Dollar</option>}
+              {regions[selectedRegion].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
+              {regions[selectedRegion].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
+              {regions[selectedRegion].currencies.includes('EUR') && <option value="EUR">Euro</option>}
+              {regions[selectedRegion].currencies.includes('GBP') && <option value="GBP">Pound</option>}
+              {regions[selectedRegion].currencies.includes('SEK') && <option value="SEK">Krona</option>}
             </select>
           </div>
         </div>
