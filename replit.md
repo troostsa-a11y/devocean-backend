@@ -67,7 +67,7 @@ Preferred communication style: Simple, everyday language.
 
 - **Portuguese (Mozambican) Translation Status**: 4 batch TXT files created with 366 total items for translation
   - ✅ Batch 1: Website UI (70 items) - **COMPLETED & INTEGRATED** into translations.js (navigation, hero, stay, experiences, todo, gallery, location, contact form, footer, legal menu with Mozambican Portuguese flavor)
-  - ⏳ Batch 2: Privacy Policy (72 items) - awaiting translation
+  - ✅ Batch 2: Privacy Policy (72 items) - **COMPLETED & INTEGRATED** into legal i18n system (all sections, quick links, badge, data collection/usage/sharing, security, retention, rights, transfers, contact, updates with Mozambican Portuguese spelling)
   - ⏳ Batch 3: Cookies Policy (51 items) - awaiting translation (includes cookie names, durations, browser links)
   - ⏳ Batch 4: Terms + GDPR + CRIC (173 items) - awaiting translation
 

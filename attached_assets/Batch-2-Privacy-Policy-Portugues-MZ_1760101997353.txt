@@ -1,0 +1,287 @@
+================================================================================
+BATCH 2: PRIVACY POLICY PAGE - MOZAMBICAN PORTUGUESE TRANSLATIONS
+DEVOCEAN LODGE
+================================================================================
+
+Instructions:
+- Translate each section to Mozambican Portuguese
+- Preserve HTML tags like <strong>, <br>, <a href="">
+- Keep email addresses and URLs unchanged
+- Fill in "PORTUGUESE:" fields
+
+================================================================================
+GENERAL UI ELEMENTS
+================================================================================
+
+001. Page Title: Privacy Policy
+PORTUGUESE: Política de Privacidade
+
+002. Last updated: Last updated
+PORTUGUESE: Última actualização
+
+003. Updated Date: 06 Oct 2025
+PORTUGUESE: 06 Out 2025
+
+004. Back to Home
+PORTUGUESE: Voltar à Página Inicial
+
+================================================================================
+QUICK LINKS MENU
+================================================================================
+
+005. Quick Links (heading)
+PORTUGUESE: Ligações Rápidas
+
+006. Who We Are
+PORTUGUESE: Quem Somos
+
+007. Data Collection
+PORTUGUESE: Recolha de Dados
+
+008. Data Usage
+PORTUGUESE: Utilização de Dados
+
+009. Data Sharing
+PORTUGUESE: Partilha de Dados
+
+010. Security
+PORTUGUESE: Segurança
+
+011. Retention
+PORTUGUESE: Retenção
+
+012. Your Rights
+PORTUGUESE: Os Seus Direitos
+
+013. International Transfers
+PORTUGUESE: Transferências Internacionais
+
+014. Contact
+PORTUGUESE: Contacto
+
+015. Policy Updates
+PORTUGUESE: Actualizações da Política
+
+================================================================================
+BADGE/ALERT
+================================================================================
+
+016. Badge Title: Your Privacy Matters:
+PORTUGUESE: A Sua Privacidade Importa:
+
+017. Badge Body: We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information.
+PORTUGUESE: Estamos comprometidos em proteger os seus dados pessoais e em ser transparentes sobre como recolhemos, utilizamos e salvaguardamos as suas informações.
+
+================================================================================
+SECTION: WHO WE ARE
+================================================================================
+
+018. Heading: Who we are
+PORTUGUESE: Quem somos
+
+019. Body: DEVOCEAN Lodge is operated by TERRAfrique LDA, a company registered in Mozambique. Our registered address is Rua C, Parcela 12, Maputo 1118, Mozambique. We operate eco-friendly beach accommodation in Ponta do Ouro, Mozambique. We are committed to protecting your privacy and ensuring that your personal data is collected, processed, and used properly, lawfully, and transparently in accordance with applicable data protection laws. By accessing or using our website and services, you consent to the collection and use of your information as described in this Privacy Policy.
+PORTUGUESE: O DEVOCEAN Lodge é operado pela TERRAfrique LDA, uma empresa registada em Moçambique. O nosso endereço registado é Rua C, Parcela 12, Maputo 1118, Moçambique. Operamos alojamento ecológico na praia em Ponta do Ouro, Moçambique. Estamos comprometidos em proteger a sua privacidade e em garantir que os seus dados pessoais sejam recolhidos, processados e utilizados de forma adequada, legal e transparente, de acordo com as leis de protecção de dados aplicáveis. Ao aceder ou utilizar o nosso website e serviços, consente na recolha e utilização das suas informações conforme descrito nesta Política de Privacidade.
+
+================================================================================
+SECTION: WHAT PERSONAL DATA WE COLLECT
+================================================================================
+
+020. Heading: What personal data we collect
+PORTUGUESE: Que dados pessoais recolhemos
+
+021. Intro: We collect different types of information to provide and improve our services:
+PORTUGUESE: Recolhemos diferentes tipos de informação para fornecer e melhorar os nossos serviços:
+
+--- Category 1: Personal Information ---
+022. Category Title: Personal Information
+PORTUGUESE: Informação Pessoal
+
+023. Name, contact details
+PORTUGUESE: Nome, detalhes de contacto
+
+024. Passport/ID information
+PORTUGUESE: Informação de passaporte/ID
+
+025. Payment information
+PORTUGUESE: Informação de pagamento
+
+026. Booking preferences
+PORTUGUESE: Preferências de reserva
+
+--- Category 2: Technical Data ---
+027. Category Title: Technical Data
+PORTUGUESE: Dados Técnicos
+
+028. IP address, device information
+PORTUGUESE: Endereço IP, informação do dispositivo
+
+029. Browser type and version
+PORTUGUESE: Tipo e versão do navegador
+
+030. Website usage analytics
+PORTUGUESE: Análise de utilização do website
+
+031. Cookie data (with consent)
+PORTUGUESE: Dados de cookies (com consentimento)
+
+--- Category 3: Communication Data ---
+032. Category Title: Communication Data
+PORTUGUESE: Dados de Comunicação
+
+033. Email correspondence
+PORTUGUESE: Correspondência por e-mail
+
+034. Customer service requests
+PORTUGUESE: Pedidos de serviço ao cliente
+
+035. Feedback and reviews
+PORTUGUESE: Feedback e avaliações
+
+036. Marketing preferences
+PORTUGUESE: Preferências de marketing
+
+================================================================================
+SECTION: HOW WE USE YOUR DATA
+================================================================================
+
+037. Heading: How we use your data
+PORTUGUESE: Como utilizamos os seus dados
+
+038. Manage bookings and provide services
+PORTUGUESE: Gerir reservas e fornecer serviços
+
+039. Communicate about your stay, policies and offers (opt-in)
+PORTUGUESE: Comunicar sobre a sua estadia, políticas e ofertas (opt-in)
+
+040. Improve our site and services (analytics, security)
+PORTUGUESE: Melhorar o nosso site e serviços (análise, segurança)
+
+041. Comply with legal/financial obligations
+PORTUGUESE: Cumprir obrigações legais/financeiras
+
+================================================================================
+SECTION: WHEN WE SHARE DATA
+================================================================================
+
+042. Heading: When we share data
+PORTUGUESE: Quando partilhamos dados
+
+043. Payment providers and booking platforms to process your reservations and payments
+PORTUGUESE: Fornecedores de pagamento e plataformas de reserva para processar as suas reservas e pagamentos
+
+044. Analytics services to understand website usage and improve our services
+PORTUGUESE: Serviços de análise para compreender a utilização do website e melhorar os nossos serviços
+
+045. Advertising services for targeted marketing (only with your consent)
+PORTUGUESE: Serviços de publicidade para marketing direcionado (apenas com o seu consentimento)
+
+046. IT service providers, hosting providers, and technical support vendors under strict confidentiality agreements
+PORTUGUESE: Fornecedores de serviços de TI, fornecedores de alojamento e fornecedores de suporte técnico sob acordos de confidencialidade rigorosos
+
+047. Legal authorities when required by law, regulation, court order, or other legal process
+PORTUGUESE: Autoridades legais quando exigido por lei, regulamento, ordem judicial ou outro processo legal
+
+048. To enforce our agreements or protect our rights, property, or safety
+PORTUGUESE: Para fazer cumprir os nossos acordos ou proteger os nossos direitos, propriedade ou segurança
+
+049. In the event of a merger, acquisition, or sale of assets, your information may be transferred to the new owner
+PORTUGUESE: No caso de fusão, aquisição ou venda de activos, as suas informações podem ser transferidas para o novo proprietário
+
+050. Footer Text: We require all third parties to respect the security of your personal data and use it only for the purposes for which it was transferred. We do not allow third parties to use your personal data for their own purposes and only permit them to process your data for specified purposes in accordance with our instructions.
+PORTUGUESE: Exigimos que todas as terceiras partes respeitem a segurança dos seus dados pessoais e os utilizem apenas para os fins para os quais foram transferidos. Não permitimos que terceiras partes utilizem os seus dados pessoais para os seus próprios fins e apenas permitimos que processem os seus dados para fins especificados de acordo com as nossas instruções.
+
+================================================================================
+SECTION: SECURITY MEASURES
+================================================================================
+
+051. Heading: Security measures
+PORTUGUESE: Medidas de segurança
+
+052. Intro: We take data security seriously and implement:
+PORTUGUESE: Levamos a segurança dos dados a sério e implementamos:
+
+053. Encryption of sensitive data in transit and at rest
+PORTUGUESE: Encriptação de dados sensíveis em trânsito e em repouso
+
+054. Regular security assessments and penetration testing
+PORTUGUESE: Avaliações regulares de segurança e testes de penetração
+
+055. Access controls and authentication mechanisms
+PORTUGUESE: Controlos de acesso e mecanismos de autenticação
+
+056. Staff training on data protection and privacy
+PORTUGUESE: Formação do pessoal em protecção de dados e privacidade
+
+057. Secure data backup and disaster recovery procedures
+PORTUGUESE: Procedimentos seguros de cópia de segurança de dados e recuperação de desastres
+
+================================================================================
+SECTION: DATA RETENTION
+================================================================================
+
+058. Heading: Data retention
+PORTUGUESE: Retenção de dados
+
+059. Body: We will retain your personal information for as long as necessary to fulfill the purposes for which it was collected, as detailed in this Privacy Policy. Generally, we retain personal data for up to 1 year after your last interaction with us, unless a longer retention period is required or permitted by law. We may need to retain certain information for longer periods for specific reasons including: record-keeping and reporting in accordance with applicable law (typically 7 years for financial and tax records), enforcement of legal rights, fraud prevention, and dispute resolution. Once the retention period expires, your personal data will be securely deleted or anonymized. Residual anonymous information and aggregate information, which does not identify you directly or indirectly, may be stored indefinitely for statistical and analytical purposes.
+PORTUGUESE: Retemos as suas informações pessoais pelo tempo necessário para cumprir os fins para os quais foram recolhidas, conforme detalhado nesta Política de Privacidade. Geralmente, retemos dados pessoais até 1 ano após a sua última interacção connosco, a menos que um período de retenção mais longo seja exigido ou permitido por lei. Podemos precisar de reter certas informações por períodos mais longos por razões específicas, incluindo: manutenção de registos e relatórios de acordo com a lei aplicável (tipicamente 7 anos para registos financeiros e fiscais), aplicação de direitos legais, prevenção de fraude e resolução de disputas. Uma vez expirado o período de retenção, os seus dados pessoais serão eliminados de forma segura ou anonimizados. Informações anónimas residuais e informações agregadas, que não o identificam directamente ou indirectamente, podem ser armazenadas indefinidamente para fins estatísticos e analíticos.
+
+================================================================================
+SECTION: YOUR PRIVACY RIGHTS
+================================================================================
+
+060. Heading: Your privacy rights
+PORTUGUESE: Os seus direitos de privacidade
+
+061. Right to access your personal data
+PORTUGUESE: Direito de aceder aos seus dados pessoais
+
+062. Right to correct inaccurate data
+PORTUGUESE: Direito de corrigir dados inexactos
+
+063. Right to delete your personal data
+PORTUGUESE: Direito de eliminar os seus dados pessoais
+
+064. Right to restrict or object to processing
+PORTUGUESE: Direito de restringir ou opor-se ao processamento
+
+065. Right to data portability
+PORTUGUESE: Direito à portabilidade de dados
+
+066. Right to withdraw consent
+PORTUGUESE: Direito de retirar o consentimento
+
+================================================================================
+SECTION: INTERNATIONAL DATA TRANSFERS
+================================================================================
+
+067. Heading: International Data Transfers
+PORTUGUESE: Transferências Internacionais de Dados
+
+068. Body: As we operate in multiple jurisdictions, your data may be transferred to and processed in countries outside of your residence. We ensure such transfers comply with applicable data protection laws through adequacy decisions by the European Commission, Standard Contractual Clauses (SCCs), appropriate security safeguards, and transparency about transfer locations.
+PORTUGUESE: Como operamos em múltiplas jurisdições, os seus dados podem ser transferidos e processados em países fora da sua residência. Garantimos que tais transferências cumpram as leis de protecção de dados aplicáveis através de decisões de adequação da Comissão Europeia, Cláusulas Contratuais Padrão (SCCs), salvaguardas de segurança apropriadas e transparência sobre os locais de transferência.
+
+================================================================================
+SECTION: CONTACT OUR PRIVACY TEAM
+================================================================================
+
+069. Heading: Contact our privacy team
+PORTUGUESE: Contacte a nossa equipa de privacidade
+
+070. Body (with HTML): If you have any questions, concerns, or requests regarding this Privacy Policy or the processing of your personal information, or if you wish to exercise any of your privacy rights, please contact us at:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Phone:</strong> +258 8441 82252<br><strong>Postal Address:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>We will respond to your request in accordance with applicable data protection law. For grievances or concerns about the processing of your information, you may also contact our Data Protection Officer at the email address above.
+
+PORTUGUESE: Se tiver alguma questão, preocupação ou pedido relativo a esta Política de Privacidade ou ao processamento das suas informações pessoais, ou se desejar exercer algum dos seus direitos de privacidade, por favor contacte-nos em:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefone:</strong> +258 8441 82252<br><strong>Endereço Postal:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Moçambique<br><br>Responderemos ao seu pedido de acordo com a lei de protecção de dados aplicável. Para reclamações ou preocupações sobre o processamento das suas informações, pode também contactar o nosso Responsável pela Protecção de Dados no endereço de e-mail acima.
+
+================================================================================
+SECTION: POLICY UPDATES
+================================================================================
+
+071. Heading: Policy Updates
+PORTUGUESE: Actualizações da Política
+
+072. Body: We may update this privacy policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes through email notifications for registered users, prominent notices on our website, and an updated 'last updated' date. We encourage you to periodically review this policy to stay informed about how we protect your information.
+PORTUGUESE: Podemos actualizar esta política de privacidade de tempos a tempos para reflectir mudanças nas nossas práticas, tecnologia, requisitos legais ou outros factores. Notificaremos de quaisquer mudanças materiais através de notificações por e-mail para utilizadores registados, avisos proeminentes no nosso website e uma data de 'última actualização' actualizada. Encorajamo-lo a rever periodicamente esta política para se manter informado sobre como protegemos as suas informações.
+
+================================================================================
+END OF BATCH 2
+Total items: 72
+================================================================================
