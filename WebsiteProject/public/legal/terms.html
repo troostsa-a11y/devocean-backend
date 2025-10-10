@@ -34,15 +34,21 @@
       ad_user_data: "denied",
       ad_personalization: "denied",
       analytics_storage: "denied",
+      functionality_storage: "granted",
+      personalization_storage: "granted",
+      security_storage: "granted",
       regions: EEA_AND_GB
     });
 
-    // Default granted for other regions (adjust to your policy)
+    // Default granted for other regions
     gtag("consent", "default", {
       ad_storage: "granted",
       ad_user_data: "granted",
       ad_personalization: "granted",
-      analytics_storage: "granted"
+      analytics_storage: "granted",
+      functionality_storage: "granted",
+      personalization_storage: "granted",
+      security_storage: "granted"
     });
   </script>
 
