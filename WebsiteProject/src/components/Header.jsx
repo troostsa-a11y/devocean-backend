@@ -6,6 +6,7 @@ import LazyImage from './LazyImage';
 
 export default function Header({ ui, lang, currency, onLangChange, onCurrencyChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
   const handleAnchorNav = (e, href) => {
     // Let the browser handle smooth scrolling natively
@@ -55,7 +56,48 @@ export default function Header({ ui, lang, currency, onLangChange, onCurrencyCha
           </div>
 
           <div className="flex items-center gap-3">
-            <Globe2 size={16} />
+            {/* Region selector dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setRegionMenuOpen(!regionMenuOpen)}
+                className="flex items-center gap-1 px-2 py-1 rounded hover:bg-white/10 transition-colors"
+                aria-label="Select region"
+                aria-expanded={regionMenuOpen}
+              >
+                <Globe2 size={20} className="hover:scale-110 transition-transform" />
+              </button>
+              
+              {regionMenuOpen && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-40" 
+                    onClick={() => setRegionMenuOpen(false)}
+                  />
+                  <div className="absolute right-0 top-full mt-1 bg-white text-gray-800 rounded-lg shadow-lg py-1 min-w-[160px] z-50">
+                    {[
+                      { name: 'Europe', value: 'europe' },
+                      { name: 'Asia', value: 'asia' },
+                      { name: 'Americas', value: 'americas' },
+                      { name: 'Africa', value: 'africa' },
+                      { name: 'Oceania', value: 'oceania' },
+                    ].map((region) => (
+                      <button
+                        key={region.value}
+                        onClick={() => {
+                          setRegionMenuOpen(false);
+                          // Handle region selection (can be expanded later)
+                          console.log('Selected region:', region.value);
+                        }}
+                        className="w-full text-left px-4 py-2 hover:bg-gray-100 transition-colors"
+                      >
+                        {region.name}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
             <div className="flex items-center border border-white/40 rounded px-2 py-1">
               <select
                 value={lang}
