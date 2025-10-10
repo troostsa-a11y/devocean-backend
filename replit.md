@@ -62,7 +62,7 @@ Preferred communication style: Simple, everyday language.
 - **Polish Translation Status**: 4 batch TXT files created with 366 total items for translation
   - ✅ Batch 1: Website UI (70 items) - **COMPLETED & INTEGRATED** into translations.js (navigation, hero, stay, experiences, todo, gallery, location, contact form, footer, legal menu, accommodation units, experiences)
   - ✅ Batch 2: Privacy Policy (72 items) - **COMPLETED & INTEGRATED** into legal i18n system (all sections, quick links, badge, data collection/usage/sharing, security, retention, rights, transfers, contact, updates)
-  - ⏳ Batch 3: Cookies Policy (51 items) - awaiting translation
+  - ✅ Batch 3: Cookies Policy (51 items) - **COMPLETED & INTEGRATED** into legal i18n system (page title, dates, quick links, badge, all cookie sections with tables, manage preferences, browser links)
   - ⏳ Batch 4: Terms + GDPR + CRIC (173 items) - awaiting translation
 
 **Performance Optimizations:**

@@ -4255,6 +4255,98 @@
           body: 'Możemy od czasu do czasu aktualizować niniejszą politykę prywatności, aby odzwierciedlić zmiany w naszych praktykach, technologii, wymogach prawnych lub innych czynnikach. Poinformujemy Cię o wszelkich istotnych zmianach za pośrednictwem powiadomień e-mailowych dla zarejestrowanych użytkowników, wyraźnych powiadomień na naszej stronie internetowej oraz zaktualizowanej daty „ostatniej aktualizacji". Zachęcamy do okresowego przeglądania tej polityki, aby być na bieżąco z tym, jak chronimy Twoje informacje.'
         }
       }
+    },
+
+    cookies: {
+      title: 'Polityka plików cookie',
+      effectiveDate: '19 września 2025 r.',
+      lastUpdated: '6 października 2025 r.',
+      managePreferences: 'Zarządzaj preferencjami plików cookie:',
+      manageText: 'Możesz kontrolować, które pliki cookie używamy za pośrednictwem naszego banera cookie lub ustawień przeglądarki.',
+      cookieSettingsBtn: 'Ustawienia plików cookie',
+      quickLinks: {
+        title: 'Szybkie linki',
+        links: [
+          { id: 'what', text: 'Czym są pliki cookie' },
+          { id: 'how', text: 'Jak używamy plików cookie' },
+          { id: 'necessary', text: 'Niezbędne' },
+          { id: 'functional', text: 'Funkcjonalne' },
+          { id: 'analytics', text: 'Analityczne' },
+          { id: 'advertisement', text: 'Reklamowe' },
+          { id: 'manage', text: 'Zarządzaj preferencjami' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: 'O plikach cookie',
+          body: 'Możesz kontrolować, które pliki cookie używamy za pośrednictwem naszego banera cookie lub ustawień przeglądarki.'
+        },
+        what: {
+          title: 'Czym są pliki cookie?',
+          body: 'Niniejsza Polityka plików cookie wyjaśnia, czym są pliki cookie, jak ich używamy, typy plików cookie, których używamy (tj. informacje, które zbieramy za pomocą plików cookie i jak te informacje są używane), oraz jak zarządzać ustawieniami plików cookie.<br><br>Pliki cookie to małe pliki tekstowe używane do przechowywania małych fragmentów informacji. Są one przechowywane na Twoim urządzeniu, gdy strona internetowa ładuje się w Twojej przeglądarce. Te pliki cookie pomagają zapewnić prawidłowe działanie strony internetowej, zwiększają bezpieczeństwo, zapewniają lepsze doświadczenie użytkownika i analizują wydajność, aby zidentyfikować, co działa i gdzie potrzebne są ulepszenia.'
+        },
+        how: {
+          title: 'Jak używamy plików cookie?',
+          body: 'Podobnie jak większość usług online, nasza strona internetowa używa zarówno plików cookie pierwszej strony, jak i plików cookie stron trzecich do różnych celów. Pliki cookie pierwszej strony są przede wszystkim niezbędne do prawidłowego funkcjonowania strony internetowej i nie zbierają żadnych danych identyfikujących osobę.<br><br>Pliki cookie stron trzecich używane na naszej stronie internetowej pomagają nam przede wszystkim zrozumieć, jak strona internetowa działa, jak z nią wchodzisz w interakcję, zapewniają bezpieczeństwo naszych usług, dostarczają odpowiednie reklamy i poprawiają ogólne doświadczenie użytkownika, jednocześnie poprawiając szybkość Twoich przyszłych interakcji z naszą stroną internetową.'
+        },
+        necessary: {
+          title: 'Niezbędne pliki cookie',
+          description: 'Niezbędne pliki cookie są wymagane do włączenia podstawowych funkcji tej strony, takich jak zapewnienie bezpiecznego logowania lub dostosowanie preferencji zgody. Te pliki cookie nie przechowują żadnych danych identyfikujących osobę.',
+          tableHeaders: { cookie: 'Plik cookie', duration: 'Czas trwania', description: 'Opis' },
+          cookies: [
+            { name: 'currency', duration: 'session', desc: 'Ten plik cookie służy do przechowywania preferencji walutowych użytkownika.' },
+            { name: '_sh_session_', duration: 'session', desc: 'Opis jest obecnie niedostępny.' },
+            { name: 'loccur', duration: 'session', desc: 'Opis jest obecnie niedostępny.' },
+            { name: 'country_code', duration: 'session', desc: 'Brak dostępnego opisu.' },
+            { name: 'b_locale', duration: 'session', desc: 'Opis jest obecnie niedostępny.' },
+            { name: 'checkout_currency', duration: 'session', desc: 'Opis jest obecnie niedostępny.' }
+          ]
+        },
+        functional: {
+          title: 'Funkcjonalne pliki cookie',
+          description: 'Funkcjonalne pliki cookie pomagają wykonywać pewne funkcje, takie jak udostępnianie treści strony internetowej na platformach mediów społecznościowych, zbieranie opinii oraz inne funkcje stron trzecich.',
+          tableHeaders: { cookie: 'Plik cookie', duration: 'Czas trwania', description: 'Opis' },
+          cookies: [
+            { name: 'locale', duration: 'session', desc: 'Facebook ustawia ten plik cookie, aby poprawić doświadczenie przeglądania użytkownika na stronie internetowej oraz dostarczyć użytkownikowi odpowiednie reklamy podczas korzystania z platform mediów społecznościowych Facebooka.' }
+          ]
+        },
+        analytics: {
+          title: 'Analityczne pliki cookie',
+          description: 'Analityczne pliki cookie służą do zrozumienia, jak odwiedzający interagują ze stroną internetową. Te pliki cookie pomagają dostarczać informacje na temat metryk, takich jak liczba odwiedzających, współczynnik odrzuceń, źródło ruchu itp.',
+          tableHeaders: { cookie: 'Plik cookie', duration: 'Czas trwania', description: 'Opis' },
+          cookies: [
+            { name: '_ga', duration: '1 rok 1 miesiąc 4 dni', desc: 'Google Analytics ustawia ten plik cookie, aby obliczać dane dotyczące odwiedzających, sesji i kampanii oraz śledzić użycie strony dla raportu analitycznego strony. Plik cookie przechowuje informacje anonimowo i przypisuje losowo wygenerowany numer, aby rozpoznać unikalnych odwiedzających.' },
+            { name: '_ga_*', duration: '1 rok 1 miesiąc 4 dni', desc: 'Google Analytics ustawia ten plik cookie, aby przechowywać i liczyć wyświetlenia stron.' },
+            { name: '_gid', duration: '1 dzień', desc: 'Google Analytics ustawia ten plik cookie, aby przechowywać informacje o tym, jak odwiedzający używają strony internetowej, jednocześnie tworząc raport analityczny wydajności strony. Niektóre z zbieranych danych obejmują liczbę odwiedzających, ich źródło oraz strony, które odwiedzają anonimowo.' },
+            { name: '_gat_UA-*', duration: '1 minuta', desc: 'Google Analytics ustawia ten plik cookie do śledzenia zachowania użytkownika.' },
+            { name: 'pardot', duration: 'przeszłość', desc: 'Plik cookie pardot jest ustawiany, gdy odwiedzający jest zalogowany jako użytkownik Pardot. Plik cookie wskazuje na aktywną sesję i nie jest używany do śledzenia.' }
+          ]
+        },
+        advertisement: {
+          title: 'Reklamowe pliki cookie',
+          description: 'Reklamowe pliki cookie służą do dostarczania odwiedzającym spersonalizowanych reklam na podstawie wcześniej odwiedzonych stron oraz do analizowania skuteczności kampanii reklamowych.',
+          tableHeaders: { cookie: 'Plik cookie', duration: 'Czas trwania', description: 'Opis' },
+          cookies: [
+            { name: '_gcl_au', duration: '3 miesiące', desc: 'Google Tag Manager ustawia ten plik cookie, aby eksperymentować ze skutecznością reklam stron internetowych korzystających z ich usług.' },
+            { name: 'test_cookie', duration: '15 minut', desc: 'doubleclick.net ustawia ten plik cookie, aby sprawdzić, czy przeglądarka użytkownika obsługuje pliki cookie.' },
+            { name: '_fbp', duration: '3 miesiące', desc: 'Facebook ustawia ten plik cookie, aby przechowywać i śledzić interakcje.' },
+            { name: 'IDE', duration: '1 rok 24 dni', desc: 'Pliki cookie Google DoubleClick IDE przechowują informacje o tym, jak użytkownik korzysta ze strony internetowej, aby prezentować mu odpowiednie reklamy zgodnie z profilem użytkownika.' }
+          ]
+        },
+        manage: {
+          title: 'Zarządzaj preferencjami plików cookie',
+          consentTitle: 'Preferencje zgody',
+          consentText: 'Możesz w dowolnym momencie zmodyfikować ustawienia plików cookie, klikając przycisk „Preferencje zgody" powyżej. Pozwoli to na ponowne odwiedzenie banera zgody na pliki cookie i zaktualizowanie preferencji lub natychmiastowe wycofanie zgody.',
+          browserText: 'Dodatkowo różne przeglądarki oferują różne metody blokowania i usuwania plików cookie używanych przez strony internetowe. Możesz dostosować ustawienia przeglądarki, aby blokować lub usuwać pliki cookie. Poniżej znajdują się linki do dokumentów wsparcia dotyczących zarządzania i usuwania plików cookie w głównych przeglądarkach internetowych.',
+          browsers: {
+            chrome: 'Chrome',
+            safari: 'Safari',
+            firefox: 'Firefox',
+            ie: 'Internet Explorer',
+            other: 'Jeśli używasz innej przeglądarki internetowej, prosimy o odniesienie się do jej oficjalnej dokumentacji wsparcia.'
+          }
+        }
+      }
     }
   };
   
