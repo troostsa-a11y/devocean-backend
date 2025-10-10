@@ -140,7 +140,11 @@ Preferred communication style: Simple, everyday language.
 
 **Booking Integration:**
 - External booking engine at book.devoceanlodge.com with parameterized URLs
-- Portuguese locale configured for **European Portuguese (pt-PT)**: https://book.devoceanlodge.com/bv3/search?locale=pt-PT&currency=EUR
+- **Region-aware Portuguese booking URLs:**
+  - **Europe region**: locale=pt-PT, currency=EUR (European Portuguese)
+  - **Africa region**: locale=pt-BR, currency=MZN (Mozambican Portuguese with Brazilian locale)
+  - Automatic currency switching when Portuguese users change regions
+  - Region state persists in localStorage
 
 **Maps & Location:**
 - Google Maps embed for property location and Directions API integration
