@@ -9,16 +9,16 @@
 (function () {
   // -------- UI labels (top bar / timestamp) --------
   window.LEGAL_UI = {
-    en:   { back: "Home",                   updated: "Last updated" },
-    de:   { back: "Startseite",             updated: "Zuletzt aktualisiert" },
-    nl:   { back: "Home",                   updated: "Laatst bijgewerkt" },
-    pt:   { back: "Início",                 updated: "Última atualização" },
-    ptmz: { back: "Início",                 updated: "Última atualização" },
-    fr:   { back: "Accueil",                updated: "Dernière mise à jour" },
-    it:   { back: "Home",                   updated: "Ultimo aggiornamento" },
-    es:   { back: "Inicio",                 updated: "Última actualización" },
-    sv:   { back: "Hem",                    updated: "Senast uppdaterad" },
-    pl:   { back: "Strona główna",          updated: "Ostatnia aktualizacja" }
+    en:   { backButton: "Back",             back: "Home",                   updated: "Last updated" },
+    de:   { backButton: "Zurück",           back: "Startseite",             updated: "Zuletzt aktualisiert" },
+    nl:   { backButton: "Terug",            back: "Home",                   updated: "Laatst bijgewerkt" },
+    pt:   { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
+    ptmz: { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
+    fr:   { backButton: "Retour",           back: "Accueil",                updated: "Dernière mise à jour" },
+    it:   { backButton: "Indietro",         back: "Home",                   updated: "Ultimo aggiornamento" },
+    es:   { backButton: "Volver",           back: "Inicio",                 updated: "Última actualización" },
+    sv:   { backButton: "Tillbaka",         back: "Hem",                    updated: "Senast uppdaterad" },
+    pl:   { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" }
   };
 
   // Root dict
