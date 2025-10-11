@@ -30,7 +30,7 @@ export async function onRequest() {
 # BEGIN Cloudflare Managed content
 
 User-Agent: *
-Content-signal: search=yes,ai-train=no
+Content-signal: search=yes,ai-input=no,ai-train=no
 Allow: /
 
 User-agent: Amazonbot
