@@ -73,8 +73,10 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
                   window.dataLayer.push({
                     event: 'whatsapp_click',
                     button_location: 'header_mobile',
+                    page_path: window.location.pathname,
                     language: lang,
-                    currency: currency
+                    currency: currency,
+                    contact_method: 'whatsapp'
                   });
                 }
               }}
