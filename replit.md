@@ -81,6 +81,9 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 **Booking Integration:**
 - External booking engine at book.devoceanlodge.com with parameterized URLs for locale and currency.
 - Region-aware Portuguese booking URLs for tailored user experience.
+- Legal pages support smart back navigation from Hotelrunner via query parameters (e.g., `?return=https://book.devoceanlodge.com/bv3/payment`).
+  - Cache-busting versioning for JavaScript (currently v=46) and CSS (currently v=43) to ensure fresh updates.
+  - sessionStorage-based referrer tracking for reliable cross-site navigation.
 
 **Maps & Location:**
 - Google Maps embed for property location, utilizing a lazy-loaded interactive map with a static preview.
