@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Locale Detection Test - DEVOCEAN Lodge</title>
+  <style>
+    body { font-family: system-ui; padding: 20px; max-width: 1200px; margin: 0 auto; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+    th { background-color: #f0f0f0; font-weight: 600; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    .error { color: #dc2626; font-weight: 600; }
+    .success { color: #16a34a; font-weight: 600; }
+    .warning { color: #ea580c; font-weight: 600; }
+    h1 { color: #1e40af; }
+    .region { font-weight: 600; color: #059669; }
+    .note { background: #fef3c7; padding: 10px; border-left: 4px solid #f59e0b; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h1>🌍 DEVOCEAN Lodge - Locale & Currency Detection Test</h1>
+  
+  <div class="note">
+    <strong>Detection Logic:</strong>
+    <ol>
+      <li><strong>Priority 1:</strong> Region code (e.g., pt-MZ → MZ → MZN)</li>
+      <li><strong>Priority 2:</strong> Language hint (e.g., de → EUR)</li>
+      <li><strong>Priority 3:</strong> Special case for ptmz language → MZN</li>
+      <li><strong>Priority 4:</strong> Fallback to USD</li>
+    </ol>
+  </div>
+
+  <h2>Test Results</h2>
+  <table id="results">
+    <thead>
+      <tr>
+        <th>Browser Locale</th>
+        <th>Detected Language</th>
+        <th>Region Code</th>
+        <th>Currency</th>
+        <th>Detection Method</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Copy the exact detection logic from index.html
+    var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz", "sv", "pl"];
+
+    function normLang(nav) {
+      nav = String(nav || "en").toLowerCase();
+      var base = nav.split("-")[0];
+      if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
+      if (base === "pt-pt" || base === "pt-br") base = "pt";
+      if (SUPPORTED.indexOf(base) === -1) base = "en";
+      return base;
+    }
+
+    function inferCurrency(langNow, browserLocale) {
+      var list = [browserLocale];
+      
+      var HINT = {
+        "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR",
+        "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR"
+      };
+      var first = (list[0] || "").toLowerCase();
+
+      var region = null;
+      for (var i = 0; i < list.length; i++) {
+        var s = String(list[i] || "").toUpperCase();
+        var m = s.match(/-([A-Z]{2})$/);
+        if (m) { region = m[1]; break; }
+      }
+
+      var CC2CUR = {
+        US: "USD", GB: "GBP",
+        NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
+        ZA: "ZAR", MZ: "MZN", AO: "USD", BW: "USD", ZW: "USD", NA: "USD"
+      };
+
+      var method = "";
+      var cur = null;
+      
+      if (region && CC2CUR[region]) {
+        cur = CC2CUR[region];
+        method = "Region Code (" + region + ")";
+      } else if (HINT[first]) {
+        cur = HINT[first];
+        method = "Language Hint (" + first + ")";
+      } else if (langNow === "ptmz") {
+        cur = "MZN";
+        method = "Special Case (ptmz)";
+      } else {
+        cur = "USD";
+        method = "Fallback";
+      }
+
+      cur = String(cur || "USD").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 3);
+      return { currency: cur || "USD", method: method, region: region || "—" };
+    }
+
+    // Test cases organized by region
+    const testCases = [
+      // Africa - Mozambique
+      { locale: "pt-MZ", expected: "MZN", description: "Mozambique Portuguese" },
+      { locale: "en-MZ", expected: "MZN", description: "Mozambique English" },
+      
+      // Africa - South Africa
+      { locale: "en-ZA", expected: "ZAR", description: "South Africa English" },
+      { locale: "af-ZA", expected: "ZAR", description: "South Africa Afrikaans" },
+      
+      // Africa - Other
+      { locale: "pt-AO", expected: "USD", description: "Angola Portuguese" },
+      { locale: "en-BW", expected: "USD", description: "Botswana English" },
+      { locale: "en-ZW", expected: "USD", description: "Zimbabwe English" },
+      { locale: "en-NA", expected: "USD", description: "Namibia English" },
+      
+      // Europe - Portugal
+      { locale: "pt-PT", expected: "EUR", description: "Portugal Portuguese" },
+      { locale: "pt", expected: "USD", description: "Portuguese (no region)" },
+      
+      // Europe - Other EU
+      { locale: "de-DE", expected: "EUR", description: "Germany German" },
+      { locale: "nl-NL", expected: "EUR", description: "Netherlands Dutch" },
+      { locale: "fr-FR", expected: "EUR", description: "France French" },
+      { locale: "it-IT", expected: "EUR", description: "Italy Italian" },
+      { locale: "es-ES", expected: "EUR", description: "Spain Spanish" },
+      { locale: "nl-BE", expected: "EUR", description: "Belgium Dutch" },
+      { locale: "fr-BE", expected: "EUR", description: "Belgium French" },
+      { locale: "de-AT", expected: "EUR", description: "Austria German" },
+      { locale: "fi-FI", expected: "EUR", description: "Finland Finnish" },
+      { locale: "el-GR", expected: "EUR", description: "Greece Greek" },
+      { locale: "ga-IE", expected: "EUR", description: "Ireland Irish" },
+      
+      // Europe - Non-EUR
+      { locale: "en-GB", expected: "GBP", description: "UK English" },
+      { locale: "sv-SE", expected: "USD", description: "Sweden Swedish" },
+      { locale: "pl-PL", expected: "USD", description: "Poland Polish" },
+      
+      // Americas
+      { locale: "en-US", expected: "USD", description: "USA English" },
+      { locale: "pt-BR", expected: "USD", description: "Brazil Portuguese" },
+      { locale: "es-MX", expected: "USD", description: "Mexico Spanish" },
+      { locale: "es-AR", expected: "USD", description: "Argentina Spanish" },
+      
+      // Asia
+      { locale: "en-IN", expected: "USD", description: "India English" },
+      { locale: "zh-CN", expected: "USD", description: "China Chinese" },
+      { locale: "ja-JP", expected: "USD", description: "Japan Japanese" },
+      
+      // Oceania
+      { locale: "en-AU", expected: "USD", description: "Australia English" },
+      { locale: "en-NZ", expected: "USD", description: "New Zealand English" },
+      
+      // Edge cases
+      { locale: "en", expected: "USD", description: "English (no region)" },
+      { locale: "de", expected: "EUR", description: "German (no region)" },
+      { locale: "fr", expected: "EUR", description: "French (no region)" },
+    ];
+
+    // Run tests
+    const tbody = document.querySelector('#results tbody');
+    testCases.forEach(test => {
+      const lang = normLang(test.locale);
+      const result = inferCurrency(lang, test.locale);
+      const match = result.currency === test.expected;
+      
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td><strong>${test.locale}</strong><br><small>${test.description}</small></td>
+        <td>${lang}</td>
+        <td>${result.region}</td>
+        <td><strong>${result.currency}</strong></td>
+        <td><small>${result.method}</small></td>
+        <td class="${match ? 'success' : 'error'}">${match ? '✓ PASS' : '✗ FAIL (expected ' + test.expected + ')'}</td>
+      `;
+      tbody.appendChild(row);
+    });
+
+    // Summary
+    const total = testCases.length;
+    const passed = testCases.filter(test => {
+      const lang = normLang(test.locale);
+      const result = inferCurrency(lang, test.locale);
+      return result.currency === test.expected;
+    }).length;
+
+    const summary = document.createElement('div');
+    summary.className = passed === total ? 'note' : 'error';
+    summary.innerHTML = `<h3>Summary: ${passed}/${total} tests passed</h3>`;
+    document.querySelector('h2').after(summary);
+  </script>
+</body>
+</html>
