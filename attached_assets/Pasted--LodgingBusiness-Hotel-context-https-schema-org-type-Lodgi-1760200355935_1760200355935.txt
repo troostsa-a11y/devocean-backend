@@ -1,0 +1,112 @@
+{
+  "LodgingBusiness,Hotel": {
+    "@context": "https://schema.org",
+    "@type": [
+      "LodgingBusiness",
+      "Hotel"
+    ],
+    "@id": "https://devoceanlodge.com/#lodge",
+    "name": "DEVOCEAN Lodge",
+    "brand": {
+      "@type": "Brand",
+      "name": "TERRAfrique LDA"
+    },
+    "url": "https://devoceanlodge.com/",
+    "logo": "https://devoceanlodge.com/images/Logo2.png",
+    "image": [
+      "https://devoceanlodge.com/photos/hero01.jpg",
+      "https://devoceanlodge.com/photos/hero02.jpg",
+      "https://devoceanlodge.com/photos/hero03.jpg",
+      "https://devoceanlodge.com/photos/hero04.jpg",
+      "https://devoceanlodge.com/photos/hero05.jpg"
+    ],
+    "description": "Eco-friendly lodge in Ponta do Ouro, Southern Mozambique — safari tents, thatched chalet and garden cottage a few minutes from the beach.",
+    "email": "info@devoceanlodge.com",
+    "telephone": "+258 84 418 2252",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua C, parcela 12, 1118",
+      "addressLocality": "Ponta do Ouro",
+      "addressRegion": "Matutuine",
+      "postalCode": "1118",
+      "addressCountry": "MZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.841994852732736,
+      "longitude": 32.88504331196165
+    },
+    "hasMap": "https://www.google.com/maps?q=-26.841994852732736,32.88504331196165&z=13&output=embed",
+    "checkinTime": "14:00",
+    "checkoutTime": "10:00",
+    "priceRange": "$$",
+    "petsAllowed": false,
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Eco-friendly lodging",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Free high-speed Wi-Fi",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Breakfast available",
+        "value": true
+      }
+    ],
+    "availableLanguage": [
+      {
+        "@type": "Language",
+        "name": "English",
+        "alternateName": "en"
+      },
+      {
+        "@type": "Language",
+        "name": "Portuguese",
+        "alternateName": "pt"
+      },
+      {
+        "@type": "Language",
+        "name": "Dutch",
+        "alternateName": "nl"
+      },
+      {
+        "@type": "Language",
+        "name": "French",
+        "alternateName": "fr"
+      },
+      {
+        "@type": "Language",
+        "name": "German",
+        "alternateName": "de"
+      }
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "Mozambique"
+    },
+    "sameAs": [
+      "https://www.facebook.com/devoceanmz/",
+      "https://www.instagram.com/devoceanmz/",
+      "https://x.com/DEVOCEANMZ",
+      "https://www.linkedin.com/company/devocean-lodge",
+      "https://www.tiktok.com/@devoceanlodge",
+      "https://www.pinterest.com/devoceansa/",
+      "https://www.youtube.com/@DEVOCEAN_MZ"
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://book.devoceanlodge.com/bv3/search"
+      },
+      "result": {
+        "@type": "LodgingReservation"
+      }
+    }
+  }
+}
