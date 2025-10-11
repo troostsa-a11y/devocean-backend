@@ -327,7 +327,7 @@
             : [navigator.language].filter(Boolean);
 
           var HINT = {
-            "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR", "pt": "EUR",
+            "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR",
             "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR"
           };
           var first = (list[0] || "").toLowerCase();
@@ -349,11 +349,12 @@
           var CC2CUR = {
             US: "USD", GB: "GBP",
             NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
-            ZA: "ZAR", MZ: "MZN"
+            ZA: "ZAR", MZ: "MZN", AO: "USD", BW: "USD", ZW: "USD", NA: "USD"
           };
 
-          var cur = HINT[first] ||
-            (region && CC2CUR[region]) ||
+          // Priority: 1) Region code, 2) Language hint, 3) Special case for ptmz, 4) USD fallback
+          var cur = (region && CC2CUR[region]) ||
+            HINT[first] ||
             (langNow === "ptmz" ? "MZN" : "USD");
 
           cur = String(cur || "USD").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 3);
