@@ -70,10 +70,10 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
                 }
               }}
             >
-              <FaWhatsapp size={14} /> +258 84 418 2252
+              <FaWhatsapp size={20} /> +258 84 418 2252
             </a>
             <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1">
-              <Mail size={14} /> info@devoceanlodge.com
+              <Mail size={20} /> info@devoceanlodge.com
             </a>
           </div>
 
@@ -98,10 +98,10 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
                 }
               }}
             >
-              <FaWhatsapp size={16} />
+              <FaWhatsapp size={20} />
             </a>
             <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1" aria-label="Email">
-              <Mail size={16} />
+              <Mail size={20} />
             </a>
           </div>
 
