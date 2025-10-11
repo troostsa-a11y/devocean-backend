@@ -7,11 +7,11 @@ const HOST = 'devoceanlodge.com';
 
 const allUrls = [
   'https://devoceanlodge.com/',
-  'https://devoceanlodge.com/privacy.html',
-  'https://devoceanlodge.com/cookies.html',
-  'https://devoceanlodge.com/terms.html',
-  'https://devoceanlodge.com/GDPR.html',
-  'https://devoceanlodge.com/CRIC.html'
+  'https://devoceanlodge.com/legal/privacy.html',
+  'https://devoceanlodge.com/legal/cookies.html',
+  'https://devoceanlodge.com/legal/terms.html',
+  'https://devoceanlodge.com/legal/GDPR.html',
+  'https://devoceanlodge.com/legal/CRIC.html'
 ];
 
 function submitToIndexNow(urls) {
