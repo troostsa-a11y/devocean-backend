@@ -1,3 +1,18 @@
+// Smart back button that handles external referrers (like Hotelrunner)
+function smartBack() {
+  // Check if there's browser history to go back to
+  if (window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+    // Same-site navigation - use browser back
+    window.history.back();
+  } else if (document.referrer) {
+    // External referrer (like Hotelrunner) - redirect to referrer
+    window.location.href = document.referrer;
+  } else {
+    // No referrer - go to home page
+    window.location.href = '/';
+  }
+}
+
 // Utility functions for copy link and mobile menu toggle
 function copySectionLink(sectionId) {
  const url = window.location.origin + window.location.pathname + '#' + sectionId;
