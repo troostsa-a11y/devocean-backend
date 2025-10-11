@@ -123,9 +123,11 @@
     }
     var pageDict = (DICT && DICT[pageKey]) || {};
 
-    // Labels
-    var backEl = document.querySelector('[data-role="back-link"]');
-    if (backEl && UI.back) backEl.textContent = UI.back;
+    // Labels - translate all data-i18n elements
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (UI[key]) el.textContent = UI[key];
+    });
 
     var updLbl = document.querySelector('[data-role="updated-label"]');
     if (updLbl && UI.updated) updLbl.textContent = UI.updated;
