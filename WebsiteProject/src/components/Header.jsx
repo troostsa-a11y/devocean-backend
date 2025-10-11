@@ -52,8 +52,25 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
           {/* Desktop: Full contact info */}
           <div className="hidden lg:flex items-center gap-4">
-            <a href="tel:+258844182252" className="flex items-center gap-1">
-              <Phone size={14} /> +258 84 418 2252
+            <a 
+              href="https://wa.me/258844182252" 
+              target="_blank" 
+              rel="noreferrer" 
+              className="flex items-center gap-1"
+              onClick={() => {
+                if (window.dataLayer) {
+                  window.dataLayer.push({
+                    event: 'whatsapp_click',
+                    button_location: 'header_desktop',
+                    page_path: window.location.pathname,
+                    language: lang,
+                    currency: currency,
+                    contact_method: 'whatsapp'
+                  });
+                }
+              }}
+            >
+              <FaWhatsapp size={14} /> +258 84 418 2252
             </a>
             <a href="mailto:info@devoceanlodge.com" className="flex items-center gap-1">
               <Mail size={14} /> info@devoceanlodge.com

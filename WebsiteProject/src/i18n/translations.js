@@ -26,7 +26,7 @@ export const UI = {
       ],
       viewMap: "View Interactive Map",
     },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "Call", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
+    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
     form: {
       name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
       unitLabel: "My preferred unit is:", 
@@ -83,7 +83,7 @@ export const UI = {
       ],
       viewMap: "Ver mapa interativo",
     },
-    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "Ligar", email: "E-mail", directions: "Indicações", bookNow: "Tarifas e disponibilidade" },
+    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Tarifas e disponibilidade" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessado em ficar:", checkin: "De (check-in)", checkout: "Até (checkout)",
       unitLabel: "A minha unidade preferida é:",
@@ -140,7 +140,7 @@ export const UI = {
       ],
       viewMap: "Bekijk interactieve kaart",
     },
-    contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "Bellen", email: "E-mail", directions: "Route", bookNow: "Tarieven & Beschikbaarheid" },
+    contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Tarieven & Beschikbaarheid" },
     form: {
       name: "Naam", email: "E-mail", stayLabel: "Geïnteresseerd in verblijf:", checkin: "Van", checkout: "Tot",
       unitLabel: "Mijn voorkeur gaat uit naar:",
@@ -245,7 +245,7 @@ export const UI = {
       headline: "Contact & Réservation",
       blurb:
         "Questions, dates, demandes spéciales ou groupes – nous sommes là pour vous aider.",
-      call: "Appeler",
+      call: "WhatsApp",
       email: "E-mail",
       directions: "Itinéraire",
       bookNow: "Tarifs & Disponibilité"
@@ -315,7 +315,7 @@ export const UI = {
       ],
       viewMap: "Visualizza mappa interattiva",
     },
-    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "Chiama", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
+    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "WhatsApp", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessato a soggiornare:", checkin: "Dal", checkout: "Al",
       unitLabel: "La mia sistemazione preferita è:",
@@ -371,7 +371,7 @@ export const UI = {
       ],
       viewMap: "Interaktive Karte anzeigen",
     },
-    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "Anrufen", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
+    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "WhatsApp", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
     form: {
       name: "Name", email: "E-Mail", stayLabel: "Interessiert an einem Aufenthalt:", checkin: "Von", checkout: "Bis",
       unitLabel: "Meine bevorzugte Unterkunft ist:",
@@ -427,7 +427,7 @@ export const UI = {
       ],
       viewMap: "Ver mapa interactivo",
     },
-    contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "Llamar", email: "Correo", directions: "Cómo llegar", bookNow: "Tarifas & Disponibilidad" },
+    contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "WhatsApp", email: "Correo", directions: "Cómo llegar", bookNow: "Tarifas & Disponibilidad" },
     form: {
       name: "Nombre", email: "Correo", stayLabel: "Interesado en alojarse:", checkin: "Desde", checkout: "Hasta",
       unitLabel: "Mi alojamiento preferido es:",
@@ -484,7 +484,7 @@ export const UI = {
       ],
       viewMap: "Visa interaktiv karta",
     },
-    contact: { headline: "Kontakta oss", blurb: "Frågor? Vi finns här för att hjälpa dig. Hör av dig så svarar vi så snart som möjligt.", call: "Ring oss", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka nu" },
+    contact: { headline: "Kontakta oss", blurb: "Frågor? Vi finns här för att hjälpa dig. Hör av dig så svarar vi så snart som möjligt.", call: "WhatsApp", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka nu" },
     form: {
       name: "Ditt namn", email: "E-postadress", stayLabel: "Intresserad av vistelse:", checkin: "Från", checkout: "Till",
       unitLabel: "Min föredragna enhet är:",
@@ -541,7 +541,7 @@ export const UI = {
       ],
       viewMap: "Zobacz interaktywną mapę",
     },
-    contact: { headline: "Kontakt i rezerwacje", blurb: "Pytania, daty, specjalne życzenia lub rezerwacje grupowe – chętnie pomożemy.", call: "Zadzwoń", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Ceny i dostępność" },
+    contact: { headline: "Kontakt i rezerwacje", blurb: "Pytania, daty, specjalne życzenia lub rezerwacje grupowe – chętnie pomożemy.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Ceny i dostępność" },
     form: {
       name: "Imię", email: "E-mail", stayLabel: "Zainteresowany pobytem:", checkin: "Od (zameldowanie)", checkout: "Do (wymeldowanie)",
       unitLabel: "Preferowana jednostka to:",

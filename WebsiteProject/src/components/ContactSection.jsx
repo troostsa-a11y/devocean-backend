@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Phone, Mail, MapPin, CalendarCheck2, Facebook, Instagram, Bird, Briefcase, Pin, Music, PlayCircle } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import { toDDMMYYYY } from '../utils/localize';
 import { EMAIL, PHONE, MAP } from '../data/content';
 import { SOCIAL_LINKS } from '../data/content';
@@ -153,8 +154,25 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
           <p className="mt-2 text-slate-600 max-w-xl">{ui.contact.blurb}</p>
 
           <div className="mt-6 flex flex-wrap gap-3">
-            <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border">
-              <Phone size={18} /> {ui.contact.call}
+            <a 
+              href={`https://wa.me/${PHONE.replace(/[\s\+]/g, '')}`} 
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border"
+              onClick={() => {
+                if (window.dataLayer) {
+                  window.dataLayer.push({
+                    event: 'whatsapp_click',
+                    button_location: 'contact_section',
+                    page_path: window.location.pathname,
+                    language: lang,
+                    currency: currency,
+                    contact_method: 'whatsapp'
+                  });
+                }
+              }}
+            >
+              <FaWhatsapp size={18} /> {ui.contact.call}
             </a>
             <a href={`mailto:${EMAIL}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 border">
               <Mail size={18} /> {ui.contact.email}
