@@ -1,12 +1,28 @@
+// Store the referring URL when page loads (before any redirects)
+(function() {
+  if (document.referrer && !sessionStorage.getItem('legalPageReferrer')) {
+    sessionStorage.setItem('legalPageReferrer', document.referrer);
+  }
+})();
+
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
-  // Check if there's browser history to go back to
-  if (window.history.length > 1 && document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+  // Try to get the stored referrer first (more reliable than document.referrer)
+  const storedReferrer = sessionStorage.getItem('legalPageReferrer');
+  const referrer = storedReferrer || document.referrer;
+  
+  // Clear the stored referrer after using it
+  if (storedReferrer) {
+    sessionStorage.removeItem('legalPageReferrer');
+  }
+  
+  // Check if there's browser history to go back to (internal navigation)
+  if (window.history.length > 1 && referrer && referrer.indexOf(window.location.host) !== -1) {
     // Same-site navigation - use browser back
     window.history.back();
-  } else if (document.referrer) {
+  } else if (referrer) {
     // External referrer (like Hotelrunner) - redirect to referrer
-    window.location.href = document.referrer;
+    window.location.href = referrer;
   } else {
     // No referrer - go to home page
     window.location.href = '/';
