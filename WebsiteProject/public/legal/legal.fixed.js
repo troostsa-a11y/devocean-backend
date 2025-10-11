@@ -1,13 +1,19 @@
 // Store the referring URL when page loads (before any redirects)
 (function() {
-  if (document.referrer && !sessionStorage.getItem('legalPageReferrer')) {
+  // Check for return URL in query parameter first (most reliable)
+  const urlParams = new URLSearchParams(window.location.search);
+  const returnUrl = urlParams.get('return') || urlParams.get('returnUrl') || urlParams.get('back');
+  
+  if (returnUrl) {
+    sessionStorage.setItem('legalPageReferrer', returnUrl);
+  } else if (document.referrer && !sessionStorage.getItem('legalPageReferrer')) {
     sessionStorage.setItem('legalPageReferrer', document.referrer);
   }
 })();
 
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
-  // Try to get the stored referrer first (more reliable than document.referrer)
+  // Try to get the stored referrer first (most reliable)
   const storedReferrer = sessionStorage.getItem('legalPageReferrer');
   const referrer = storedReferrer || document.referrer;
   

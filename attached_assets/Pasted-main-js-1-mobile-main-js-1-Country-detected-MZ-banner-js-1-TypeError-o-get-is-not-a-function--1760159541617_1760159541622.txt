@@ -1,0 +1,679 @@
+main.js:1 mobile
+main.js:1 Country detected: MZ
+banner.js:1 TypeError: o.get is not a function
+    at _ (banner.js:1:121833)
+    at g (banner.js:1:121609)
+    at d (banner.js:1:121424)
+    at ve (banner.js:1:153253)
+    at banner.js:1:156147
+    at Ee (banner.js:1:156382)
+overrideMethod @ hook.js:608
+Ee @ banner.js:1
+await in Ee
+we @ banner.js:1
+t.invoke @ polyfills.js:1
+e.runGuarded @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+attributes
+(anonymous) @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+e.publish_event @ main.js:1
+(anonymous) @ main.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+invoke @ polyfills.js:1
+n.args.<computed> @ polyfills.js:1
+setTimeout
+u @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+e.ngOnInit @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+pl @ main.js:1
+Dl @ main.js:1
+(anonymous) @ main.js:1
+updateDirectives @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+e.detectChanges @ main.js:1
+(anonymous) @ main.js:1
+e.tick @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+next @ main.js:1
+i @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+t.next @ main.js:1
+t.emit @ main.js:1
+Wn @ main.js:1
+onHasTask @ main.js:1
+t.hasTask @ polyfills.js:1
+t._updateTaskCount @ polyfills.js:1
+e._updateTaskCount @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+Promise.then
+(anonymous) @ polyfills.js:1
+t @ polyfills.js:1
+N.t.then @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+s @ main.js:1
+a @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+Promise.then
+(anonymous) @ polyfills.js:1
+t @ polyfills.js:1
+N.t.then @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+s @ main.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+ce @ main.js:1
+e.getCountryFromIP @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+ce @ main.js:1
+e.setFallbackCountry @ main.js:1
+e @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Be @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Be @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Sa @ main.js:1
+Ra @ main.js:1
+Pa @ main.js:1
+wa @ main.js:1
+sl @ main.js:1
+rl @ main.js:1
+Al @ main.js:1
+t.create @ main.js:1
+t.create @ main.js:1
+e.bootstrap @ main.js:1
+(anonymous) @ main.js:1
+e._moduleDoBootstrap @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+t.then @ polyfills.js:1
+e.appInitializer @ main.js:1
+e.runInitializers @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+e.bootstrapModuleFactory @ main.js:1
+zUnb @ main.js:1
+l @ runtime.js:1
+0 @ main.js:1
+l @ runtime.js:1
+n @ runtime.js:1
+r @ runtime.js:1
+(anonymous) @ main.js:1
+main.js:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+e.insertBefore @ main.js:1
+e.insertBefore @ main.js:1
+yi @ main.js:1
+_i @ main.js:1
+zi @ main.js:1
+Oi @ main.js:1
+Yi @ main.js:1
+e.insert @ main.js:1
+e.createEmbeddedView @ main.js:1
+e._updateView @ main.js:1
+set @ main.js:1
+Ea @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+pl @ main.js:1
+Dl @ main.js:1
+(anonymous) @ main.js:1
+updateDirectives @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+gl @ main.js:1
+ul @ main.js:1
+Ol @ main.js:1
+ml @ main.js:1
+ul @ main.js:1
+e.detectChanges @ main.js:1
+(anonymous) @ main.js:1
+e.tick @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+next @ main.js:1
+i @ main.js:1
+t.__tryOrUnsub @ main.js:1
+t.next @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+t.next @ main.js:1
+t.emit @ main.js:1
+Wn @ main.js:1
+Pn @ main.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+e.invokeTask @ polyfills.js:1
+m @ polyfills.js:1
+b @ polyfills.js:1
+XMLHttpRequest.send
+y @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMacroTask @ polyfills.js:1
+p @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+D.i.<computed> @ polyfills.js:1
+(anonymous) @ main.js:1
+e._trySubscribe @ main.js:1
+e.subscribe @ main.js:1
+e.call @ main.js:1
+e.subscribe @ main.js:1
+(anonymous) @ main.js:1
+a @ main.js:1
+t._innerSub @ main.js:1
+t._tryNext @ main.js:1
+t._next @ main.js:1
+t.next @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+Promise.then
+(anonymous) @ polyfills.js:1
+t @ polyfills.js:1
+N.t.then @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+s @ main.js:1
+a @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+Promise.then
+(anonymous) @ polyfills.js:1
+t @ polyfills.js:1
+N.t.then @ polyfills.js:1
+P @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+s @ main.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+ce @ main.js:1
+e.getCountryFromIP @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+t @ polyfills.js:1
+ce @ main.js:1
+e.setFallbackCountry @ main.js:1
+e @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Be @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Be @ main.js:1
+factory @ main.js:1
+(anonymous) @ main.js:1
+Vi @ main.js:1
+ji @ main.js:1
+e.get @ main.js:1
+Sa @ main.js:1
+Ra @ main.js:1
+Pa @ main.js:1
+wa @ main.js:1
+sl @ main.js:1
+rl @ main.js:1
+Al @ main.js:1
+t.create @ main.js:1
+t.create @ main.js:1
+e.bootstrap @ main.js:1
+(anonymous) @ main.js:1
+e._moduleDoBootstrap @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+(anonymous) @ polyfills.js:1
+t.invokeTask @ polyfills.js:1
+onInvokeTask @ main.js:1
+t.invokeTask @ polyfills.js:1
+e.runTask @ polyfills.js:1
+g @ polyfills.js:1
+Promise.then
+v @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+onScheduleTask @ polyfills.js:1
+t.scheduleTask @ polyfills.js:1
+e.scheduleTask @ polyfills.js:1
+e.scheduleMicroTask @ polyfills.js:1
+D @ polyfills.js:1
+t.then @ polyfills.js:1
+e.appInitializer @ main.js:1
+e.runInitializers @ main.js:1
+(anonymous) @ main.js:1
+(anonymous) @ main.js:1
+t.invoke @ polyfills.js:1
+onInvoke @ main.js:1
+t.invoke @ polyfills.js:1
+e.run @ polyfills.js:1
+e.run @ main.js:1
+e.bootstrapModuleFactory @ main.js:1
+zUnb @ main.js:1
+l @ runtime.js:1
+0 @ main.js:1
+l @ runtime.js:1
+n @ runtime.js:1
+r @ runtime.js:1
+(anonymous) @ main.js:1
+/api/v1/bv3/orders/pixel/search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_date=2025-11-20&day_count=1&room_count=1&total_adult=1&total_child=0&rooms%5B0%5D%5Badult_count%5D=1&rooms%5B0%5D%5Bguest_count%5D=1&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=1&guest_rooms%5B0%5D%5Bguest_count%5D=1&guest_rooms%5B0%5D%5Bchild_count%5D=0&&pixel_page=search&o_number=R769833828&o_token=631bcb00e253cf465b80615eb52ca3ad&locale=nl-NL&currency=EUR&_gl=1*19xvw0g*_gcl_au*MTgxNDYyMzgzNy4xNzYwMDI5MTk5:1 An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing.
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:4 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-u1HS/DCenUrUetJhRsijAWKAGYAJRWbOhBL4158tWLY='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_date=2025-11-20&day_count=1&room_count=1&total_adult=1&total_child=0&rooms%5B0%5D%5Badult_count%5D=1&rooms%5B0%5D%5Bguest_count%5D=1&rooms%5B0%5D%5Bchild_count%5D=0&&guest_rooms%5B0%5D%5Badult_count%5D=1&guest_rooms%5B0%5D%5Bguest_count%5D=1&guest_rooms%5B0%5D%5Bchild_count%5D=0&&pixel_page=search&o_number=R769833828&o_token=631bcb00e253cf465b80615eb52ca3ad&locale=nl-NL&currency=EUR&_gl=1*19xvw0g*_gcl_au*MTgxNDYyMzgzNy4xNzYwMDI5MTk5:5 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-YpGMMt9+OAzvGhhnEnlHDL0bmi6HGx+FAt6HObYh6nA='), or a nonce ('nonce-...') is required to enable inline execution.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+[Report Only] Refused to load the script '<URL>' because it violates the following Content Security Policy directive: "script-src 'none'". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:10 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-DlOuW6vXFqE4aQjqZK0RbXsxX2yLsNqc9JdHrn73ayM='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:11 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-su8s/HHkDd4NljGC+JsOC07y8JvlCmsbKAiFFK2+uBo='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:17 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-0ycuXbNC1aG8x801EnwAgBENma4rl/HZoThz3v+iJfQ='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:44 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-2KLWL8qokGJOovod7Ft11LddHUevMjiI08uQlxIQD/o='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:64 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-AbpHGcgLb+kRsJGnwFEktk7uzpZOCcBY74+YBdrKVGs='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:73 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-P8/yDr/t+tmzwUbEh6S0eN15mtb4TkKeY3Bp2rlIlF0='), or a nonce ('nonce-...') is required to enable inline execution.
+
+search?api_key=7518391247a27ce412d421ffe241c6ffd3f52e7c4b26e993&checkin_date=2025-11-19&checkout_da…:99 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-Y4S+KdCMTRgLq9Z6M1+0Pzis/eH391qiTTBIKIYvr8Y='), or a nonce ('nonce-...') is required to enable inline execution.
+
+nik2/:846 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-STzfpn01fXD07MkuiA/kIClgFlTf9/020MPsypaUEbQ='), or a nonce ('nonce-...') is required to enable inline execution.
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+[Report Only] Refused to connect to '<URL>' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+gtm.js?id=GTM-TNMZ72&l=hrBv3DataLayer:827 [Report Only] Refused to execute inline script because it violates the following Content Security Policy directive: "script-src 'none'". Either the 'unsafe-inline' keyword, a hash ('sha256-ezSWHEOAWwrIxevqcm5Z+4N98RoiHsCJpayTOYr6iKY='), or a nonce ('nonce-...') is required to enable inline execution.
+
+vcd15cbe7772f49c399c6a5babf22c1241717689176015:1 [Report Only] Refused to connect to 'https://book.devoceanlodge.com/cdn-cgi/rum?' because it violates the following Content Security Policy directive: "connect-src 'none'".
+
+search?locale=nl-NL&currency=EUR&_gl=1*19xvw0g*_gcl_au*MTgxNDYyMzgzNy4xNzYwMDI5MTk5:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+search?locale=nl-NL&currency=EUR&_gl=1*19xvw0g*_gcl_au*MTgxNDYyMzgzNy4xNzYwMDI5MTk5:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+search?locale=nl-NL&currency=EUR&_gl=1*19xvw0g*_gcl_au*MTgxNDYyMzgzNy4xNzYwMDI5MTk5:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+search?locale=nl-NL&currency=EUR&_gl=1*19xvw0g*_gcl_au*MTgxNDYyMzgzNy4xNzYwMDI5MTk5:1 The resource https://book.devoceanlodge.com/bv3/favicon.ico was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.
