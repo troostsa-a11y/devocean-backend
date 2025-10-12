@@ -36,8 +36,8 @@ const CC_TO_CONTINENT = {
 // Meridian-based continent detection using GMT offsets
 const CONTINENT_MERIDIANS = {
   americas: { base: -7, min: -11, max: -3 },
-  africa: { base: 1, min: -1, max: 3 },
-  europe: { base: 1, min: -1, max: 3 },
+  africa: { base: 2, min: -1, max: 3 },    // Base at +2 for South Africa, East Africa
+  europe: { base: 1, min: -1, max: 3 },    // Base at +1 for Central Europe
   asia: { base: 7, min: 2, max: 12 },
   oceania: { base: 9, min: 8, max: 10 },
 };
@@ -105,17 +105,27 @@ function getTimezoneContinent() {
     // Get UTC offset in hours (e.g., -5 for EST, +2 for SAST)
     const offset = -new Date().getTimezoneOffset() / 60;
     
+    // Priority order for tie-breaking (when multiple continents match)
+    const priority = { europe: 0, africa: 1, asia: 2, americas: 3, oceania: 4 };
+    
     // Find all continents that match this offset range
     const matches = [];
     for (const [continent, meridian] of Object.entries(CONTINENT_MERIDIANS)) {
       if (offset >= meridian.min && offset <= meridian.max) {
-        matches.push({ continent, distance: Math.abs(offset - meridian.base) });
+        matches.push({ 
+          continent, 
+          distance: Math.abs(offset - meridian.base),
+          priority: priority[continent] || 999
+        });
       }
     }
     
-    // If matches found, return the one with closest meridian
+    // Sort by distance first, then by priority for ties
     if (matches.length > 0) {
-      matches.sort((a, b) => a.distance - b.distance);
+      matches.sort((a, b) => {
+        if (a.distance !== b.distance) return a.distance - b.distance;
+        return a.priority - b.priority;
+      });
       return matches[0].continent;
     }
   } catch { }
