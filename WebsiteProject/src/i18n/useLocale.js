@@ -163,19 +163,30 @@ function pickInitialLang() {
 
 function pickInitialCurrency(langBase) {
   const saved = localStorage.getItem("site.currency");
+  console.log('[Currency Detection] Saved currency:', saved);
   if (saved && ALLOWED_CURRENCIES.includes(saved)) return saved;
 
   // Priority 1: Check country code from browser languages (ZA → ZAR, MZ → MZN)
   const cc = getRegionFromNavigator();
   console.log('[Currency Detection] Country Code:', cc, 'Currency:', CC_TO_CURRENCY[cc]);
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
-  if (byCC && ALLOWED_CURRENCIES.includes(byCC)) return byCC;
+  if (byCC && ALLOWED_CURRENCIES.includes(byCC)) {
+    console.log('[Currency Detection] Returning currency from country code:', byCC);
+    return byCC;
+  }
 
   // Priority 2: Check language hints
-  if (langBase && LANG_TO_CURRENCY_HINT[langBase]) return LANG_TO_CURRENCY_HINT[langBase];
+  if (langBase && LANG_TO_CURRENCY_HINT[langBase]) {
+    console.log('[Currency Detection] Returning from lang hint:', LANG_TO_CURRENCY_HINT[langBase]);
+    return LANG_TO_CURRENCY_HINT[langBase];
+  }
   const nav = (navigator.language || "").toLowerCase();
-  if (LANG_TO_CURRENCY_HINT[nav]) return LANG_TO_CURRENCY_HINT[nav];
+  if (LANG_TO_CURRENCY_HINT[nav]) {
+    console.log('[Currency Detection] Returning from nav hint:', LANG_TO_CURRENCY_HINT[nav]);
+    return LANG_TO_CURRENCY_HINT[nav];
+  }
 
+  console.log('[Currency Detection] Defaulting to USD');
   return "USD";
 }
 
