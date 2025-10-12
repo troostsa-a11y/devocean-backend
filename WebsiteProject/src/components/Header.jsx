@@ -230,7 +230,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
 
           {/* Burger (mobile & tablet) */}
           <button
-            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border hover:bg-[#9e4b13] hover:text-white transition-colors"
+            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors"
             onClick={() => setMenuOpen(v => !v)}
             aria-expanded={menuOpen}
             aria-controls="mnav"
