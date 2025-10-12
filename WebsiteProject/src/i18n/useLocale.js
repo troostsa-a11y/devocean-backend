@@ -167,6 +167,7 @@ function pickInitialCurrency(langBase) {
 
   // Priority 1: Check country code from browser languages (ZA → ZAR, MZ → MZN)
   const cc = getRegionFromNavigator();
+  console.log('[Currency Detection] Country Code:', cc, 'Currency:', CC_TO_CURRENCY[cc]);
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
   if (byCC && ALLOWED_CURRENCIES.includes(byCC)) return byCC;
 
