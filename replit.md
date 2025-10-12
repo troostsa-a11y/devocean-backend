@@ -54,6 +54,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
 - **Smart Geolocation:** Automatic continent detection with African market prioritization - scans ALL browser languages to find African country codes (ZA, MZ, etc.) even when en-US appears first. Falls back to timezone meridian detection, then Europe default.
+- **Currency Detection Fix (Oct 12):** Fixed useState initialization bug where `lang` variable was undefined during currency/region detection. Now properly calls `pickInitialLang()` to ensure correct language context during initialization.
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**
