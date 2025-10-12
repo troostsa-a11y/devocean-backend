@@ -33,28 +33,13 @@ const CC_TO_CONTINENT = {
   AU: "oceania", NZ: "oceania", FJ: "oceania",
 };
 
-// Map timezone identifiers to continents for fallback detection
-const TIMEZONE_TO_CONTINENT = {
-  // Africa
-  "Africa/": "africa",
-  // Americas
-  "America/": "americas",
-  "US/": "americas",
-  "Canada/": "americas",
-  "Brazil/": "americas",
-  "Chile/": "americas",
-  "Mexico/": "americas",
-  // Asia
-  "Asia/": "asia",
-  "Indian/": "asia",
-  // Europe
-  "Europe/": "europe",
-  "GMT": "europe",
-  "UTC": "europe",
-  // Oceania
-  "Australia/": "oceania",
-  "Pacific/": "oceania",
-  "Antarctica/": "oceania",
+// Meridian-based continent detection using GMT offsets
+const CONTINENT_MERIDIANS = {
+  americas: { base: -7, min: -11, max: -3 },
+  africa: { base: 1, min: -1, max: 3 },
+  europe: { base: 1, min: -1, max: 3 },
+  asia: { base: 7, min: 2, max: 12 },
+  oceania: { base: 9, min: 8, max: 10 },
 };
 
 const LANG_TO_CURRENCY_HINT = {
@@ -117,13 +102,21 @@ function getRegionFromNavigator() {
 
 function getTimezoneContinent() {
   try {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    if (!timezone) return null;
+    // Get UTC offset in hours (e.g., -5 for EST, +2 for SAST)
+    const offset = -new Date().getTimezoneOffset() / 60;
     
-    for (const [prefix, continent] of Object.entries(TIMEZONE_TO_CONTINENT)) {
-      if (timezone.startsWith(prefix)) {
-        return continent;
+    // Find all continents that match this offset range
+    const matches = [];
+    for (const [continent, meridian] of Object.entries(CONTINENT_MERIDIANS)) {
+      if (offset >= meridian.min && offset <= meridian.max) {
+        matches.push({ continent, distance: Math.abs(offset - meridian.base) });
       }
+    }
+    
+    // If matches found, return the one with closest meridian
+    if (matches.length > 0) {
+      matches.sort((a, b) => a.distance - b.distance);
+      return matches[0].continent;
     }
   } catch { }
   return null;
