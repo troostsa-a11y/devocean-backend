@@ -88,6 +88,8 @@ function getRegionFromNavigator() {
     ? navigator.languages
     : [navigator.language].filter(Boolean);
 
+  console.warn('[DEVOCEAN Browser Debug] Languages:', list);
+
   // Collect all country codes from browser languages
   const countryCodes = [];
   for (const l of list) {
@@ -95,22 +97,34 @@ function getRegionFromNavigator() {
     if (m) countryCodes.push(m[1]);
   }
   
+  console.warn('[DEVOCEAN Browser Debug] Country codes found:', countryCodes);
+  
   // Priority 1: Look for African country codes (target market)
   const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA'];
   for (const cc of countryCodes) {
-    if (africanCodes.includes(cc)) return cc;
+    if (africanCodes.includes(cc)) {
+      console.warn('[DEVOCEAN Browser Debug] ✓ Found African code:', cc);
+      return cc;
+    }
   }
   
   // Priority 2: Return first country code found
-  if (countryCodes.length > 0) return countryCodes[0];
+  if (countryCodes.length > 0) {
+    console.warn('[DEVOCEAN Browser Debug] Using first code:', countryCodes[0]);
+    return countryCodes[0];
+  }
   
   // Priority 3: Try Intl.DateTimeFormat locale
   try {
     const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
     const m = loc.toUpperCase().match(/-([A-Z]{2})/);
-    if (m) return m[1];
+    if (m) {
+      console.warn('[DEVOCEAN Browser Debug] Using Intl code:', m[1]);
+      return m[1];
+    }
   } catch { }
   
+  console.warn('[DEVOCEAN Browser Debug] ⚠️ No country code found');
   return null;
 }
 
@@ -163,24 +177,35 @@ function pickInitialLang() {
 
 function pickInitialCurrency(langBase) {
   const saved = localStorage.getItem("site.currency");
-  if (saved && ALLOWED_CURRENCIES.includes(saved)) return saved;
+  console.warn('[DEVOCEAN Currency Debug] Saved:', saved, 'Lang:', langBase);
+  
+  if (saved && ALLOWED_CURRENCIES.includes(saved)) {
+    console.warn('[DEVOCEAN Currency Debug] Using saved currency:', saved);
+    return saved;
+  }
 
   // Priority 1: Check country code from ALL browser languages (prioritizes African codes)
   const cc = getRegionFromNavigator();
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
+  console.warn('[DEVOCEAN Currency Debug] Country code:', cc, '→ Currency:', byCC);
+  
   if (byCC && ALLOWED_CURRENCIES.includes(byCC)) {
+    console.warn('[DEVOCEAN Currency Debug] ✓ Using currency from country code:', byCC);
     return byCC;
   }
 
   // Priority 2: Check language hints
   if (langBase && LANG_TO_CURRENCY_HINT[langBase]) {
+    console.warn('[DEVOCEAN Currency Debug] Using lang hint:', LANG_TO_CURRENCY_HINT[langBase]);
     return LANG_TO_CURRENCY_HINT[langBase];
   }
   const nav = (navigator.language || "").toLowerCase();
   if (LANG_TO_CURRENCY_HINT[nav]) {
+    console.warn('[DEVOCEAN Currency Debug] Using nav hint:', LANG_TO_CURRENCY_HINT[nav]);
     return LANG_TO_CURRENCY_HINT[nav];
   }
 
+  console.warn('[DEVOCEAN Currency Debug] ⚠️ Defaulting to USD');
   return "USD";
 }
 
