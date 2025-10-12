@@ -115,6 +115,20 @@ function getRegionFromNavigator() {
   return null;
 }
 
+function getTimezoneContinent() {
+  try {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (!timezone) return null;
+    
+    for (const [prefix, continent] of Object.entries(TIMEZONE_TO_CONTINENT)) {
+      if (timezone.startsWith(prefix)) {
+        return continent;
+      }
+    }
+  } catch { }
+  return null;
+}
+
 function pickInitialLang() {
   const stored = localStorage.getItem("site.lang");
   if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
