@@ -33,6 +33,30 @@ const CC_TO_CONTINENT = {
   AU: "oceania", NZ: "oceania", FJ: "oceania",
 };
 
+// Map timezone identifiers to continents for fallback detection
+const TIMEZONE_TO_CONTINENT = {
+  // Africa
+  "Africa/": "africa",
+  // Americas
+  "America/": "americas",
+  "US/": "americas",
+  "Canada/": "americas",
+  "Brazil/": "americas",
+  "Chile/": "americas",
+  "Mexico/": "americas",
+  // Asia
+  "Asia/": "asia",
+  "Indian/": "asia",
+  // Europe
+  "Europe/": "europe",
+  "GMT": "europe",
+  "UTC": "europe",
+  // Oceania
+  "Australia/": "oceania",
+  "Pacific/": "oceania",
+  "Antarctica/": "oceania",
+};
+
 const LANG_TO_CURRENCY_HINT = {
   "nl": "EUR", "de": "EUR", "fr": "EUR", "pt": "EUR", "es": "EUR", "it": "EUR",
   "sv": "SEK",
