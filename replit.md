@@ -41,7 +41,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Vanilla JavaScript i18n for static legal pages.
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
-- **Smart Geolocation:** Automatic continent detection via country code mapping (browser locale) - South Africa correctly maps to Africa, US to Americas, etc. Falls back to Europe if undetected.
+- **Smart Geolocation:** Automatic continent detection with African market prioritization - scans ALL browser languages to find African country codes (ZA, MZ, etc.) even when en-US appears first. Falls back to timezone meridian detection, then Europe default.
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**

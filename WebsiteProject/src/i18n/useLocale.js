@@ -88,15 +88,29 @@ function getRegionFromNavigator() {
     ? navigator.languages
     : [navigator.language].filter(Boolean);
 
+  // Collect all country codes from browser languages
+  const countryCodes = [];
   for (const l of list) {
     const m = String(l || "").toUpperCase().match(/-([A-Z]{2})/);
-    if (m) return m[1];
+    if (m) countryCodes.push(m[1]);
   }
+  
+  // Priority 1: Look for African country codes (target market)
+  const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA'];
+  for (const cc of countryCodes) {
+    if (africanCodes.includes(cc)) return cc;
+  }
+  
+  // Priority 2: Return first country code found
+  if (countryCodes.length > 0) return countryCodes[0];
+  
+  // Priority 3: Try Intl.DateTimeFormat locale
   try {
     const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
     const m = loc.toUpperCase().match(/-([A-Z]{2})/);
     if (m) return m[1];
   } catch { }
+  
   return null;
 }
 
