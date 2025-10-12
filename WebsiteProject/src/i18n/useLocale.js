@@ -243,12 +243,12 @@ export function useLocale() {
 
   const [currency, setCurrencyState] = useState(() => {
     const stored = localStorage.getItem("site.currency");
-    return stored && ALLOWED_CURRENCIES.includes(stored) ? stored : pickInitialCurrency(lang);
+    return stored && ALLOWED_CURRENCIES.includes(stored) ? stored : pickInitialCurrency(pickInitialLang());
   });
 
   const [region, setRegionState] = useState(() => {
     const stored = localStorage.getItem("site.region");
-    return stored && SUPPORTED_REGIONS.includes(stored) ? stored : pickInitialRegion(lang);
+    return stored && SUPPORTED_REGIONS.includes(stored) ? stored : pickInitialRegion(pickInitialLang());
   });
 
   const [ui, setUi] = useState(null);
