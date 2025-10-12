@@ -165,13 +165,15 @@ function pickInitialCurrency(langBase) {
   const saved = localStorage.getItem("site.currency");
   if (saved && ALLOWED_CURRENCIES.includes(saved)) return saved;
 
-  if (langBase && LANG_TO_CURRENCY_HINT[langBase]) return LANG_TO_CURRENCY_HINT[langBase];
-  const nav = (navigator.language || "").toLowerCase();
-  if (LANG_TO_CURRENCY_HINT[nav]) return LANG_TO_CURRENCY_HINT[nav];
-
+  // Priority 1: Check country code from browser languages (ZA → ZAR, MZ → MZN)
   const cc = getRegionFromNavigator();
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
   if (byCC && ALLOWED_CURRENCIES.includes(byCC)) return byCC;
+
+  // Priority 2: Check language hints
+  if (langBase && LANG_TO_CURRENCY_HINT[langBase]) return LANG_TO_CURRENCY_HINT[langBase];
+  const nav = (navigator.language || "").toLowerCase();
+  if (LANG_TO_CURRENCY_HINT[nav]) return LANG_TO_CURRENCY_HINT[nav];
 
   return "USD";
 }
