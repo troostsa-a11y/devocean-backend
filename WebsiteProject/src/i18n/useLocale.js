@@ -13,6 +13,26 @@ const CC_TO_CURRENCY = {
   PL: "PLN",
 };
 
+// Map country codes to continents
+const CC_TO_CONTINENT = {
+  // Europe
+  GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
+  DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
+  FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
+  DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
+  // Africa
+  ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
+  ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
+  // Americas
+  US: "americas", CA: "americas", MX: "americas", BR: "americas", AR: "americas",
+  CL: "americas", CO: "americas", PE: "americas",
+  // Asia
+  CN: "asia", JP: "asia", KR: "asia", IN: "asia", TH: "asia",
+  SG: "asia", MY: "asia", ID: "asia", PH: "asia", VN: "asia",
+  // Oceania
+  AU: "oceania", NZ: "oceania", FJ: "oceania",
+};
+
 const LANG_TO_CURRENCY_HINT = {
   "nl": "EUR", "de": "EUR", "fr": "EUR", "pt": "EUR", "es": "EUR", "it": "EUR",
   "sv": "SEK",
@@ -105,8 +125,13 @@ function pickInitialRegion(langBase) {
   const saved = localStorage.getItem("site.region");
   if (saved && SUPPORTED_REGIONS.includes(saved)) return saved;
   
-  // Default region based on language
-  // Portuguese defaults to Europe (most common)
+  // Try to detect continent from country code
+  const cc = getRegionFromNavigator();
+  if (cc && CC_TO_CONTINENT[cc]) {
+    return CC_TO_CONTINENT[cc];
+  }
+  
+  // Fallback to Europe as default
   return "europe";
 }
 
