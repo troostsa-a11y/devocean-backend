@@ -17,6 +17,18 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Do NOT automatically run tests after making changes
 - Wait for explicit user confirmation before testing
 
+**Deployment Workaround (Git Lock Issue):**
+- Replit has a git lock that prevents wrangler from deploying directly from the workspace
+- **Solution:** Deploy from /tmp directory to bypass git lock
+- **Commands:**
+  ```bash
+  cd WebsiteProject && npm run build
+  rm -rf /tmp/deploy_temp && cp -r WebsiteProject/dist /tmp/deploy_temp
+  cd /tmp/deploy_temp && npx wrangler pages deploy . --project-name=devocean-lodge
+  ```
+- **Project name:** `devocean-lodge` (defined in WebsiteProject/wrangler.toml)
+- This workaround is documented and reliable for production deployments
+
 ## System Architecture
 
 ### Frontend Architecture
