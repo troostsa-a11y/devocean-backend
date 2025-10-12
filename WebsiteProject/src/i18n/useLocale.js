@@ -169,7 +169,13 @@ function pickInitialRegion(langBase) {
     return CC_TO_CONTINENT[cc];
   }
   
-  // Fallback to Europe as default
+  // Fallback: Try timezone-based detection
+  const tzContinent = getTimezoneContinent();
+  if (tzContinent) {
+    return tzContinent;
+  }
+  
+  // Final fallback to Europe as default
   return "europe";
 }
 
