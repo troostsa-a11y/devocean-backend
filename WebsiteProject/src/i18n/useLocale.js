@@ -20,6 +20,9 @@ const CC_TO_CONTINENT = {
   DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
   FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
   DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
+  RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
+  SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
+  CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
   ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
@@ -38,8 +41,8 @@ const CONTINENT_MERIDIANS = {
   americas: { base: -7, min: -11, max: -3 },
   africa: { base: 2, min: -1, max: 3 },    // Base at +2 for South Africa, East Africa
   europe: { base: 1, min: -1, max: 3 },    // Base at +1 for Central Europe
-  asia: { base: 7, min: 2, max: 12 },
-  oceania: { base: 9, min: 8, max: 10 },
+  asia: { base: 9, min: 2, max: 12 },      // Base at +9 for Japan/Korea (major market)
+  oceania: { base: 11, min: 10, max: 13 }, // Australia East/NZ/Pacific (UTC+10 to +13)
 };
 
 const LANG_TO_CURRENCY_HINT = {
