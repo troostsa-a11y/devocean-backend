@@ -30,7 +30,7 @@ export async function onRequest() {
 # BEGIN Cloudflare Managed content
 
 User-Agent: *
-Content-signal: search=yes,ai-input=no,ai-train=no
+Content-signal: search=yes,ai-train=no
 Allow: /
 
 User-agent: Amazonbot
@@ -58,6 +58,9 @@ User-agent: meta-externalagent
 Disallow: /
 
 # END Cloudflare Managed Content
+
+User-agent: *
+Allow: /
 
 Sitemap: https://devoceanlodge.com/sitemap.xml`;
 
