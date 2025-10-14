@@ -230,10 +230,12 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
 
           {/* Burger (mobile & tablet) */}
           <button
+            data-testid="button-mobile-menu"
             className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors"
             onClick={() => setMenuOpen(v => !v)}
             aria-expanded={menuOpen}
             aria-controls="mnav"
+            aria-label="Toggle menu"
           >
             <Menu />
           </button>
@@ -241,7 +243,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
 
         {/* Mobile/Tablet menu */}
         {menuOpen && (
-          <div id="mnav" className="lg:hidden border-t bg-white">
+          <div id="mnav" data-testid="menu-mobile-nav" className="lg:hidden border-t bg-white">
             {[
               ["home", "#home"],
               ["stay", "#stay"],
@@ -254,6 +256,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               <a
                 key={k}
                 href={href}
+                data-testid={`link-mobile-${k}`}
                 className="block px-4 py-3 hover:bg-slate-50"
                 onClick={() => setMenuOpen(false)}
               >
@@ -264,6 +267,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               href={bookUrl}
               target="_blank"
               rel="noreferrer"
+              data-testid="button-mobile-book-now"
               className="block m-4 text-center btn-cta px-4 py-2 rounded-xl bg-[#9e4b13] text-white"
               onClick={() => {
                 setMenuOpen(false);
