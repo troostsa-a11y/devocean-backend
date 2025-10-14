@@ -111,10 +111,10 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 
 **SEO & Search Indexing:**
 - IndexNow protocol implementation for instant search engine indexing.
-- Cloudflare Pages Functions for serving IndexNow key file and robots.txt.
-- SEO optimizations including meta descriptions, titles, and AI bot directives in robots.txt.
+- Cloudflare Pages Functions for serving IndexNow key file.
+- SEO optimizations including meta descriptions, titles, and comprehensive Open Graph tags.
 - **Legal Pages SEO (Oct 12):** Enhanced all legal page meta tags with unique 200+ character descriptions, keyword-rich titles, and location-specific content (Ponta do Ouro, Mozambique) to resolve Microsoft Clarity/Bing Webmaster SEO warnings about short/duplicate meta descriptions.
-- **Robots.txt Enhancement (Oct 12):** Implemented Microsoft-recommended content signal format with `Content-signal: search=yes,ai-train=no` header, explicit AI bot blocking (GPTBot, ClaudeBot, Google-Extended, etc.), and EU copyright directive reference for legal content protection.
+- **Robots.txt (Oct 14):** Fully managed by Cloudflare's built-in robots.txt feature. Custom Pages Function removed to avoid duplication. Cloudflare handles AI bot blocking and content signal directives.
 
 ### NPM Packages
 
