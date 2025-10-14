@@ -63,6 +63,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**
+- **Critical Translations Pattern (Oct 14):** Mobile menu renders instantly with synchronous 2KB navigation translations inlined in main bundle. Full 17.6KB translation bundle loads progressively in background. Eliminates "nothing happens" delays on slow 2G/3G connections (common in Africa/Mozambique).
+  - Header uses critical nav immediately on load
+  - UI clears during language switch to force instant critical nav update
+  - Page content waits for full translations to prevent placeholder text/undefined errors
+  - Adds +1.8KB to main bundle but provides instant interactivity
 - Dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting.
 - Framer Motion using LazyMotion for bundle size reduction.
 - GTM with a 4-second delayed load and user engagement detection.
@@ -102,7 +107,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - External booking engine at book.devoceanlodge.com with parameterized URLs for locale and currency.
 - Region-aware Portuguese booking URLs for tailored user experience.
 - Legal pages support smart back navigation from Hotelrunner via query parameters (e.g., `?return=https://book.devoceanlodge.com/bv3/payment`).
-  - Cache-busting versioning for JavaScript (currently v=46) and CSS (currently v=43) to ensure fresh updates.
+  - Cache-busting versioning for JavaScript (currently v=48) and CSS (currently v=43) to ensure fresh updates.
   - sessionStorage-based referrer tracking for reliable cross-site navigation.
 
 **Maps & Location:**
