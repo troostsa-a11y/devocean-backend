@@ -53,18 +53,19 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Vanilla JavaScript i18n for static legal pages.
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
-- **Smart Geolocation:** Automatic continent detection with African market prioritization - scans ALL browser languages to find African country codes (ZA, MZ, etc.) even when en-US appears first. Falls back to timezone meridian detection, then Europe default.
+- **IP-Based Geolocation (Oct 14):** Cloudflare automatically injects visitor country code via middleware for accurate region detection. Browser language detection serves as fallback for local development. Eliminates French-in-Asia and eSwatini mapping issues.
 - **Currency Detection Fix (Oct 12):** Fixed useState initialization bug where `lang` variable was undefined during currency/region detection. Now properly calls `pickInitialLang()` to ensure correct language context during initialization.
 - **Continent Mapping Fixes (Oct 14):** 
   - Added Bosnia-Herzegovina (BA) → Europe and Japan (JP) → Asia
   - Added missing African countries: eSwatini (SZ), Reunion (RE), Mauritius (MU), Seychelles (SC), Lesotho (LS)
   - Fixed timezone overlap causing grey screens: Africa (UTC+0 to +4), Europe (UTC-1 to +2), Asia (UTC+3 to +12) now have distinct non-overlapping ranges
   - Resolves Mozambique and Vietnam grey screen issues in Microsoft Clarity
-- **Region Detection Priority Fix (Oct 14):**
-  - Changed detection order: African codes → Timezone → Browser locale → Europe default
-  - Fixes French browsers in Asia being mapped to Europe (now uses timezone)
-  - Ensures eSwatini (SZ) always maps to Africa via explicit check
-  - Prioritizes geographic reality (timezone) over browser language hints
+- **Cloudflare IP Geolocation (Oct 14):**
+  - Middleware injects country code from request.cf.country into HTML as window.__CF_COUNTRY__
+  - Frontend prioritizes IP-based country detection over browser language hints
+  - Browser detection kept as fallback for local development
+  - Fixes French-in-Asia (uses actual location) and eSwatini issues (accurate country mapping)
+  - Production benefits: Free, instant, accurate, no external API needed
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**
@@ -112,7 +113,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - External booking engine at book.devoceanlodge.com with parameterized URLs for locale and currency.
 - Region-aware Portuguese booking URLs for tailored user experience.
 - Legal pages support smart back navigation from Hotelrunner via query parameters (e.g., `?return=https://book.devoceanlodge.com/bv3/payment`).
-  - Cache-busting versioning for JavaScript (currently v=48) and CSS (currently v=43) to ensure fresh updates.
+  - Cache-busting versioning for JavaScript (currently v=49) and CSS (currently v=43) to ensure fresh updates.
   - sessionStorage-based referrer tracking for reliable cross-site navigation.
 
 **Maps & Location:**
