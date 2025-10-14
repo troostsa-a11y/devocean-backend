@@ -16,7 +16,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 export default function App() {
-  const { lang, currency, region, setLang, setCurrency, setRegion, ui, loading, bookingLocale, dateLocale } = useLocale();
+  const { lang, currency, region, setLang, setCurrency, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale } = useLocale();
 
   // Layout recalculation for sticky header
   useEffect(() => {
@@ -43,24 +43,12 @@ export default function App() {
   const units = localizeUnits(lang);
   const experiences = localizeExperiences(lang);
 
-  // Show loading state while translations load
-  if (loading || !ui) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-          <p className="mt-4 text-slate-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <LazyMotion features={domAnimation} strict>
       <div className="min-h-screen flex flex-col">
-        {/* Header with topbar (fixed via CSS) */}
+        {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical */}
         <Header
-          ui={ui}
+          ui={ui || criticalUI}
           lang={lang}
           currency={currency}
           region={region}
@@ -70,8 +58,17 @@ export default function App() {
           bookUrl={bookUrl}
         />
 
-        {/* Page content */}
-        <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
+        {/* Page content - wait for full translations */}
+        {loading || !ui ? (
+          <div className="flex-1 flex items-center justify-center">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
+              <p className="mt-4 text-slate-600">Loading...</p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
         <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
         <ExperiencesSection experiences={experiences} ui={ui} />
         <TodoSection ui={ui} />
@@ -85,6 +82,8 @@ export default function App() {
           dateLocale={dateLocale}
         />
         <Footer units={units} experiences={experiences} ui={ui} />
+          </>
+        )}
       </div>
     </LazyMotion>
   );

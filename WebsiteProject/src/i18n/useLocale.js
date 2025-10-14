@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { CRITICAL_NAV } from './critical.js';
 
 const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl"];
 const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN"];
@@ -239,6 +240,29 @@ async function loadTranslations(lang) {
   return UI[lang] || UI.en;
 }
 
+// Build minimal UI object with critical nav for instant rendering
+function getCriticalUI(lang) {
+  const nav = CRITICAL_NAV[lang] || CRITICAL_NAV.en;
+  return {
+    nav: {
+      home: nav.home,
+      stay: nav.stay,
+      experiences: nav.experiences,
+      todo: nav.todo,
+      gallery: nav.gallery,
+      location: nav.location,
+      contact: nav.contact
+    },
+    contact: {
+      bookNow: nav.bookNow
+    },
+    // Minimal placeholders for other sections (will be replaced when full translations load)
+    hero: { ctaPrimary: nav.bookNow },
+    stay: { moreDetails: "..." },
+    form: { send: "..." }
+  };
+}
+
 export function useLocale() {
   const [lang, setLangState] = useState(() => {
     const stored = localStorage.getItem("site.lang");
@@ -255,18 +279,23 @@ export function useLocale() {
     return stored && SUPPORTED_REGIONS.includes(stored) ? stored : pickInitialRegion(pickInitialLang());
   });
 
+  // Initialize with critical nav for header (immediate render)
+  const [criticalUI, setCriticalUI] = useState(() => getCriticalUI(lang));
   const [ui, setUi] = useState(null);
   const [loading, setLoading] = useState(true);
   const [initialLoadDone, setInitialLoadDone] = useState(false);
 
-  // Load translations when language changes
+  // Update critical UI when language changes
+  useEffect(() => {
+    setCriticalUI(getCriticalUI(lang));
+  }, [lang]);
+
+  // Load full translations
   useEffect(() => {
     let cancelled = false;
 
-    // Only show loading spinner on initial load, not on language switch
-    if (!initialLoadDone) {
-      setLoading(true);
-    }
+    setLoading(true);
+    setUi(null); // Clear UI immediately so Header falls back to criticalUI during load
 
     loadTranslations(lang)
       .then((translations) => {
@@ -322,6 +351,7 @@ export function useLocale() {
     setCurrency,
     setRegion,
     ui,
+    criticalUI, // Provide critical nav separately for header
     loading,
     bookingLocale: getBookingLocaleForRegion(lang, region),
     dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
