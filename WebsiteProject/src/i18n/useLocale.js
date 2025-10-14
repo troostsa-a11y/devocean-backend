@@ -88,7 +88,14 @@ function clampCur(cur) {
   return c.length === 3 ? c : null;
 }
 
-function getRegionFromNavigator() {
+function getCountryCode() {
+  // Priority 1: Use Cloudflare's IP-based country detection (production)
+  if (typeof window !== 'undefined' && window.__CF_COUNTRY__) {
+    console.warn('[DEVOCEAN GeoIP] ✓ Using Cloudflare country:', window.__CF_COUNTRY__);
+    return window.__CF_COUNTRY__;
+  }
+  
+  // Priority 2: Fall back to browser language detection (local dev)
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
@@ -104,7 +111,7 @@ function getRegionFromNavigator() {
   
   console.warn('[DEVOCEAN Browser Debug] Country codes found:', countryCodes);
   
-  // Priority 1: Look for African country codes (target market)
+  // Look for African country codes first (target market)
   const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA', 'SZ', 'RE', 'MU', 'SC', 'LS'];
   for (const cc of countryCodes) {
     if (africanCodes.includes(cc)) {
@@ -113,13 +120,13 @@ function getRegionFromNavigator() {
     }
   }
   
-  // Priority 2: Return first country code found
+  // Return first country code found
   if (countryCodes.length > 0) {
     console.warn('[DEVOCEAN Browser Debug] Using first code:', countryCodes[0]);
     return countryCodes[0];
   }
   
-  // Priority 3: Try Intl.DateTimeFormat locale
+  // Try Intl.DateTimeFormat locale
   try {
     const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
     const m = loc.toUpperCase().match(/-([A-Z]{2})/);
@@ -189,8 +196,8 @@ function pickInitialCurrency(langBase) {
     return saved;
   }
 
-  // Priority 1: Check country code from ALL browser languages (prioritizes African codes)
-  const cc = getRegionFromNavigator();
+  // Priority 1: Check country code (Cloudflare IP or browser hint)
+  const cc = getCountryCode();
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
   console.warn('[DEVOCEAN Currency Debug] Country code:', cc, '→ Currency:', byCC);
   
@@ -218,25 +225,20 @@ function pickInitialRegion(langBase) {
   const saved = localStorage.getItem("site.region");
   if (saved && SUPPORTED_REGIONS.includes(saved)) return saved;
   
-  // Priority 1: Check for African country codes (target market)
-  const cc = getRegionFromNavigator();
-  const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA', 'SZ', 'RE', 'MU', 'SC', 'LS'];
-  if (cc && africanCodes.includes(cc)) {
-    console.warn('[DEVOCEAN Region Debug] ✓ Using African code:', cc, '→ africa');
-    return 'africa';
+  // Get country code (Cloudflare IP-based or browser fallback)
+  const cc = getCountryCode();
+  
+  // Priority 1: Use country code → continent mapping (most accurate)
+  if (cc && CC_TO_CONTINENT[cc]) {
+    console.warn('[DEVOCEAN Region Debug] ✓ Using country code:', cc, '→', CC_TO_CONTINENT[cc]);
+    return CC_TO_CONTINENT[cc];
   }
   
-  // Priority 2: Use timezone-based detection (geographic reality)
+  // Priority 2: Use timezone-based detection (fallback for unmapped countries)
   const tzContinent = getTimezoneContinent();
   if (tzContinent) {
     console.warn('[DEVOCEAN Region Debug] ✓ Using timezone continent:', tzContinent);
     return tzContinent;
-  }
-  
-  // Priority 3: Fall back to browser country code (weak hint)
-  if (cc && CC_TO_CONTINENT[cc]) {
-    console.warn('[DEVOCEAN Region Debug] ✓ Using browser country code:', cc, '→', CC_TO_CONTINENT[cc]);
-    return CC_TO_CONTINENT[cc];
   }
   
   // Final fallback to Europe as default
