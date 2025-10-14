@@ -26,6 +26,7 @@ const CC_TO_CONTINENT = {
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
   ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
+  SZ: "africa", RE: "africa", MU: "africa", SC: "africa", LS: "africa",
   // Americas
   US: "americas", CA: "americas", MX: "americas", BR: "americas", AR: "americas",
   CL: "americas", CO: "americas", PE: "americas",
@@ -38,10 +39,10 @@ const CC_TO_CONTINENT = {
 
 // Meridian-based continent detection using GMT offsets
 const CONTINENT_MERIDIANS = {
-  americas: { base: -7, min: -11, max: -3 },
-  africa: { base: 2, min: -1, max: 3 },    // Base at +2 for South Africa, East Africa
-  europe: { base: 1, min: -1, max: 3 },    // Base at +1 for Central Europe
-  asia: { base: 9, min: 2, max: 12 },      // Base at +9 for Japan/Korea (major market)
+  americas: { base: -5, min: -11, max: -3 },
+  africa: { base: 2, min: 0, max: 4 },     // Base at +2 for South Africa, East Africa (UTC+0 to +4)
+  europe: { base: 1, min: -1, max: 2 },    // Base at +1 for Central Europe (UTC-1 to +2)
+  asia: { base: 7, min: 3, max: 12 },      // Base at +7 for SE Asia, shift to avoid overlap (UTC+3 to +12)
   oceania: { base: 11, min: 10, max: 13 }, // Australia East/NZ/Pacific (UTC+10 to +13)
 };
 
@@ -103,7 +104,7 @@ function getRegionFromNavigator() {
   console.warn('[DEVOCEAN Browser Debug] Country codes found:', countryCodes);
   
   // Priority 1: Look for African country codes (target market)
-  const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA'];
+  const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA', 'SZ', 'RE', 'MU', 'SC', 'LS'];
   for (const cc of countryCodes) {
     if (africanCodes.includes(cc)) {
       console.warn('[DEVOCEAN Browser Debug] ✓ Found African code:', cc);

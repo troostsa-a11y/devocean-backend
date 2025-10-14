@@ -55,7 +55,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Region-based language and currency selector with dynamic filtering based on continents.
 - **Smart Geolocation:** Automatic continent detection with African market prioritization - scans ALL browser languages to find African country codes (ZA, MZ, etc.) even when en-US appears first. Falls back to timezone meridian detection, then Europe default.
 - **Currency Detection Fix (Oct 12):** Fixed useState initialization bug where `lang` variable was undefined during currency/region detection. Now properly calls `pickInitialLang()` to ensure correct language context during initialization.
-- **Continent Mapping Fix (Oct 14):** Corrected Bosnia-Herzegovina (BA) → Europe and Japan (JP) → Asia mappings for accurate Microsoft Clarity analytics and regional detection.
+- **Continent Mapping Fixes (Oct 14):** 
+  - Added Bosnia-Herzegovina (BA) → Europe and Japan (JP) → Asia
+  - Added missing African countries: eSwatini (SZ), Reunion (RE), Mauritius (MU), Seychelles (SC), Lesotho (LS)
+  - Fixed timezone overlap causing grey screens: Africa (UTC+0 to +4), Europe (UTC-1 to +2), Asia (UTC+3 to +12) now have distinct non-overlapping ranges
+  - Resolves Mozambique and Vietnam grey screen issues in Microsoft Clarity
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**
