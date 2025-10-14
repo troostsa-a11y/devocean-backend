@@ -60,6 +60,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - Added missing African countries: eSwatini (SZ), Reunion (RE), Mauritius (MU), Seychelles (SC), Lesotho (LS)
   - Fixed timezone overlap causing grey screens: Africa (UTC+0 to +4), Europe (UTC-1 to +2), Asia (UTC+3 to +12) now have distinct non-overlapping ranges
   - Resolves Mozambique and Vietnam grey screen issues in Microsoft Clarity
+- **Region Detection Priority Fix (Oct 14):**
+  - Changed detection order: African codes → Timezone → Browser locale → Europe default
+  - Fixes French browsers in Asia being mapped to Europe (now uses timezone)
+  - Ensures eSwatini (SZ) always maps to Africa via explicit check
+  - Prioritizes geographic reality (timezone) over browser language hints
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**

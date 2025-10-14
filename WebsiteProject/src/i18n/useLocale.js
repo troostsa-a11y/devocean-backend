@@ -218,19 +218,29 @@ function pickInitialRegion(langBase) {
   const saved = localStorage.getItem("site.region");
   if (saved && SUPPORTED_REGIONS.includes(saved)) return saved;
   
-  // Try to detect continent from country code
+  // Priority 1: Check for African country codes (target market)
   const cc = getRegionFromNavigator();
-  if (cc && CC_TO_CONTINENT[cc]) {
-    return CC_TO_CONTINENT[cc];
+  const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA', 'SZ', 'RE', 'MU', 'SC', 'LS'];
+  if (cc && africanCodes.includes(cc)) {
+    console.warn('[DEVOCEAN Region Debug] ✓ Using African code:', cc, '→ africa');
+    return 'africa';
   }
   
-  // Fallback: Try timezone-based detection
+  // Priority 2: Use timezone-based detection (geographic reality)
   const tzContinent = getTimezoneContinent();
   if (tzContinent) {
+    console.warn('[DEVOCEAN Region Debug] ✓ Using timezone continent:', tzContinent);
     return tzContinent;
   }
   
+  // Priority 3: Fall back to browser country code (weak hint)
+  if (cc && CC_TO_CONTINENT[cc]) {
+    console.warn('[DEVOCEAN Region Debug] ✓ Using browser country code:', cc, '→', CC_TO_CONTINENT[cc]);
+    return CC_TO_CONTINENT[cc];
+  }
+  
   // Final fallback to Europe as default
+  console.warn('[DEVOCEAN Region Debug] ⚠️ Defaulting to europe');
   return "europe";
 }
 
