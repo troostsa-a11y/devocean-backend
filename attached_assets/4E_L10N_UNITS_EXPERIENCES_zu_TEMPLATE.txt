@@ -1,0 +1,103 @@
+================================================================================
+DEVOCEAN LODGE - L10N TRANSLATIONS (Units & Experiences)
+================================================================================
+File: WebsiteProject/src/i18n/translations.js (L10N section, lines 1891-1943)
+LANGUAGE CODE: zu
+
+INSTRUCTIONS:
+- Translate accommodation units and experiences into Zulu
+- Keep technical terms (Twin/King, A/C, m²) as-is or adapt naturally
+- This replaces the English placeholders currently in the code
+
+================================================================================
+UNITS (ACCOMMODATIONS)
+================================================================================
+
+SAFARI TENT
+-----------
+title = "Safari Tent"
+short = "12 m² canvas tent on 3×6 m platform. Twin/King, fan, power outlets, mosquito net, private deck. Shared bathrooms."
+details[0] = "Two single beds (or King) with side tables and lamps"
+details[1] = "Mosquito net • powerful fan • power outlets"
+details[2] = "Private deck with palm-leaf chairs"
+details[3] = "Shared facilities: hot/cold showers and toilets"
+
+COMFORT TENT
+------------
+title = "Comfort Tent"
+short = "12 m² tent with more privacy (side/back walls), private deck and private bathroom under thatch roof."
+details[0] = "Twin/King setup with practical lighting"
+details[1] = "Mosquito net • powerful fan • power outlets"
+details[2] = "Wooden deck with chairs"
+details[3] = "Private bathroom (shower, toilet, sink) under thatch roof"
+
+GARDEN COTTAGE
+--------------
+title = "Garden Cottage"
+short = "Airy cottage with queen bed, A/C (inverter), desk and table, private deck and bathroom in rondavel."
+details[0] = "Queen bed • desk and dining table"
+details[1] = "Inverter A/C (cool/heat) • dimmable main light"
+details[2] = "Rondavel bathroom (shower, sink, toilet)"
+details[3] = "Wooden deck with camping chairs"
+
+THATCHED CHALET
+---------------
+title = "Thatched Chalet"
+short = "Quiet, romantic small chalet amongst palm trees. A/C, private bathroom, deck, Twin/King."
+details[0] = "Peaceful setting under palm trees • air conditioning"
+details[1] = "Private bathroom (shower, sink, toilet)"
+details[2] = "Twin/King beds with side tables"
+details[3] = "Private deck with palm-leaf chairs"
+
+================================================================================
+EXPERIENCES
+================================================================================
+
+DIVING
+------
+title = "Diving"
+desc = "Offshore reefs with rich marine life."
+
+SWIM WITH DOLPHINS
+------------------
+title = "Swim with Dolphins"
+desc = "Ethical encounters with resident dolphins."
+
+LIGHTHOUSE HIKE
+---------------
+title = "Lighthouse Hike"
+desc = "Climb the hill to the old lighthouse for sweeping views."
+
+OCEAN SAFARIS
+-------------
+title = "Ocean Safaris"
+desc = "Sea safaris for whales (May–Oct) and more."
+
+LAND SAFARIS
+------------
+title = "Land Safaris"
+desc = "Bush adventures a short drive away."
+
+BEACH & DEEP-SEA FISHING
+------------------------
+title = "Beach & Deep-Sea Fishing"
+desc = "From shore casting to offshore charters."
+
+SURFBOARDS & LESSONS
+--------------------
+title = "Surfboards & Lessons"
+desc = "Catch the waves or learn the basics."
+
+================================================================================
+NOTES FOR TRANSLATOR:
+================================================================================
+- "Twin/King" refers to bed configurations (can keep as-is or translate naturally)
+- "A/C" = Air Conditioning
+- "Rondavel" is a traditional round hut (common term in Southern Africa, may keep as-is)
+- "m²" = square meters
+- Keep bullet points (•) as separators in details arrays
+- Technical amenities (fan, power outlets, etc.) can be translated or kept recognizable
+
+================================================================================
+END OF L10N TEMPLATE
+================================================================================
