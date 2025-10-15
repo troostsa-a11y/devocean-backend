@@ -23,7 +23,8 @@
     zh:   { backButton: "返回",             back: "首页",                   updated: "最后更新" },
     ru:   { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" },
     af:   { backButton: "Terug",            back: "Tuis",                   updated: "Laaste opdatering" },
-    zu:   { backButton: "Buyela emuva",     back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" }
+    zu:   { backButton: "Buyela emuva",     back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" },
+    sw:   { backButton: "Rudi nyuma",       back: "Nyumbani",               updated: "Ilisasishwa Mwisho" }
   };
 
   // Root dict
