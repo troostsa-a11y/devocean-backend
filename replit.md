@@ -72,8 +72,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - Resolves Mozambique and Vietnam grey screen issues in Microsoft Clarity
 - **Cloudflare IP Geolocation (Oct 14-15):**
   - Middleware injects country code from request.cf.country into HTML as window.__CF_COUNTRY__
-  - Frontend prioritizes IP-based country detection over browser language hints
-  - Browser detection kept as fallback for local development
+  - Frontend uses IP-based country detection exclusively (no browser fallbacks)
+  - If Cloudflare fails, defaults to Europe region (extremely rare scenario)
   - Comprehensive country mapping: 80+ countries across all continents
   - Cache versioning (v2) invalidates old browser-based cached regions
   - Fixes French-in-Asia, eSwatini, UAE, Bosnia Herzegovina, and other mapping issues
@@ -81,6 +81,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - **Critical Fix (Oct 15):** Build script now copies functions/ directory to dist/ so middleware deploys properly
   - **Hotelrunner Locale Fix (Oct 15):** isiZulu changed from en-ZA to en-GB locale (Hotelrunner doesn't support Zulu)
   - **Currency Flash Fix (Oct 15):** Added English currency fallbacks to critical UI to prevent dropdown text switching during load
+  - **Simplified Detection (Oct 15):** Removed browser locale fallback - relies 100% on Cloudflare IP, defaults to Europe if unavailable
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**

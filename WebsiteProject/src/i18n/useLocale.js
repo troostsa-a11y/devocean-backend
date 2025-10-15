@@ -120,22 +120,12 @@ function clampCur(cur) {
 }
 
 function getCountryCode() {
-  // Priority 1: Use Cloudflare's IP-based country detection (production)
+  // Use Cloudflare's IP-based country detection (production only)
   if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
     return window.__CF_COUNTRY__;
   }
   
-  // Priority 2: For local dev only, try Intl.DateTimeFormat locale as hint
-  // NOTE: We do NOT extract from navigator.languages because those indicate
-  // language preference (e.g., "en-US"), NOT actual location
-  try {
-    const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
-    const m = loc.toUpperCase().match(/-([A-Z]{2})/);
-    if (m) {
-      return m[1];
-    }
-  } catch { }
-  
+  // No fallback - if Cloudflare fails, return null and default to Europe
   return null;
 }
 
