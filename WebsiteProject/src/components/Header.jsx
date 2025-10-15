@@ -73,22 +73,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
   const handleLangChange = (newLang) => {
     onLangChange(newLang);
     
-    // Global language-currency pairs (always switch regardless of region)
-    if (newLang === 'ja' && currency !== 'JPY') {
-      onCurrencyChange('JPY');
-    }
-    else if (newLang === 'zh' && currency !== 'CNY') {
-      onCurrencyChange('CNY');
-    }
-    else if (newLang === 'ru' && currency !== 'RUB') {
-      onCurrencyChange('RUB');
-    }
-    else if (newLang === 'sw' && currency !== 'TZS') {
-      onCurrencyChange('TZS');
-    }
-    // Region-based language-currency auto-switching
+    // Auto-switch to language-specific currencies when available in current region
     // Africa region
-    else if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
+    if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
       onCurrencyChange('MZN');
     }
     else if (newLang === 'en' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
@@ -99,6 +86,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     }
     else if (newLang === 'zu' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
       onCurrencyChange('ZAR');
+    }
+    else if (newLang === 'sw' && region === 'africa' && regions[region].currencies.includes('TZS') && currency !== 'TZS') {
+      onCurrencyChange('TZS');
     }
     // Europe region
     else if (newLang === 'en' && region === 'europe' && regions[region].currencies.includes('GBP') && currency !== 'GBP') {
@@ -112,6 +102,16 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     }
     else if (newLang === 'pl' && region === 'europe' && regions[region].currencies.includes('PLN') && currency !== 'PLN') {
       onCurrencyChange('PLN');
+    }
+    // Asia region
+    else if (newLang === 'ja' && region === 'asia' && regions[region].currencies.includes('JPY') && currency !== 'JPY') {
+      onCurrencyChange('JPY');
+    }
+    else if (newLang === 'zh' && region === 'asia' && regions[region].currencies.includes('CNY') && currency !== 'CNY') {
+      onCurrencyChange('CNY');
+    }
+    else if (newLang === 'ru' && region === 'asia' && regions[region].currencies.includes('RUB') && currency !== 'RUB') {
+      onCurrencyChange('RUB');
     }
   };
 
