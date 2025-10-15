@@ -25,23 +25,30 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
       onLangChange('en');
     }
     
-    // Special case: Portuguese + Africa region → auto-switch to MZN
+    // Africa region language-currency auto-switching
     if (lang === 'pt' && newRegion === 'africa' && currency !== 'MZN') {
       onCurrencyChange('MZN');
     }
-    // Special case: Portuguese + Europe region → auto-switch to EUR
+    else if (lang === 'en' && newRegion === 'africa' && currency !== 'ZAR') {
+      onCurrencyChange('ZAR');
+    }
+    // Europe region language-currency auto-switching
     else if (lang === 'pt' && newRegion === 'europe' && currency !== 'EUR') {
       onCurrencyChange('EUR');
     }
-    // Special case: Japanese + Asia region → auto-switch to JPY
+    else if (lang === 'sv' && newRegion === 'europe' && currency !== 'SEK') {
+      onCurrencyChange('SEK');
+    }
+    else if (lang === 'pl' && newRegion === 'europe' && currency !== 'PLN') {
+      onCurrencyChange('PLN');
+    }
+    // Asia region language-currency auto-switching
     else if (lang === 'ja' && newRegion === 'asia' && currency !== 'JPY') {
       onCurrencyChange('JPY');
     }
-    // Special case: Chinese + Asia region → auto-switch to CNY
     else if (lang === 'zh' && newRegion === 'asia' && currency !== 'CNY') {
       onCurrencyChange('CNY');
     }
-    // Special case: Russian + Asia region → auto-switch to RUB
     else if (lang === 'ru' && newRegion === 'asia' && currency !== 'RUB') {
       onCurrencyChange('RUB');
     }
@@ -55,7 +62,25 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     onLangChange(newLang);
     
     // Auto-switch to language-specific currencies when available in current region
-    if (newLang === 'ja' && region === 'asia' && regions[region].currencies.includes('JPY') && currency !== 'JPY') {
+    // Africa region
+    if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
+      onCurrencyChange('MZN');
+    }
+    else if (newLang === 'en' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
+      onCurrencyChange('ZAR');
+    }
+    // Europe region
+    else if (newLang === 'pt' && region === 'europe' && regions[region].currencies.includes('EUR') && currency !== 'EUR') {
+      onCurrencyChange('EUR');
+    }
+    else if (newLang === 'sv' && region === 'europe' && regions[region].currencies.includes('SEK') && currency !== 'SEK') {
+      onCurrencyChange('SEK');
+    }
+    else if (newLang === 'pl' && region === 'europe' && regions[region].currencies.includes('PLN') && currency !== 'PLN') {
+      onCurrencyChange('PLN');
+    }
+    // Asia region
+    else if (newLang === 'ja' && region === 'asia' && regions[region].currencies.includes('JPY') && currency !== 'JPY') {
       onCurrencyChange('JPY');
     }
     else if (newLang === 'zh' && region === 'asia' && regions[region].currencies.includes('CNY') && currency !== 'CNY') {
@@ -63,12 +88,6 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     }
     else if (newLang === 'ru' && region === 'asia' && regions[region].currencies.includes('RUB') && currency !== 'RUB') {
       onCurrencyChange('RUB');
-    }
-    else if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
-      onCurrencyChange('MZN');
-    }
-    else if (newLang === 'pt' && region === 'europe' && regions[region].currencies.includes('EUR') && currency !== 'EUR') {
-      onCurrencyChange('EUR');
     }
   };
 
