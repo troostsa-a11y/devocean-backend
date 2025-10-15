@@ -119,8 +119,16 @@ export default function Footer({ units, experiences, ui }) {
             <li><a className="hover:text-white" href="/legal/CRIC.html">{ui?.legal?.cric ?? "Consumer Rights & Contact"}</a></li>
             <li>
               <a 
+                href="#"
                 className="hover:text-white cursor-pointer" 
-                onClick={(e) => { e.preventDefault(); if (window.revisitCkyConsent) window.revisitCkyConsent(); }}
+                onClick={(e) => { 
+                  e.preventDefault(); 
+                  if (typeof window.revisitCkyConsent === 'function') {
+                    window.revisitCkyConsent();
+                  } else {
+                    console.warn('CookieYes not loaded yet');
+                  }
+                }}
               >
                 {ui?.legal?.ccpa ?? "Do Not Sell My Info"}
               </a>
