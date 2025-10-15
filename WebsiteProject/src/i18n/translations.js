@@ -571,6 +571,176 @@ export const UI = {
       manage: "Ustawienia cookies",
     }
   },
+
+  ja: {
+    nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
+    stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細" },
+    experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
+    todo: {
+      headline: "Ponta do Ouroですること",
+      note: "ダイビング、シュノーケルトリップ、ドルフィン/ホエールセーファリ、フィッシングチャーターについては、以下のプロバイダーをご覧ください。",
+      items: [
+        { title: "灯台ハイク & Lua Do Mar", body: "Old Lighthouseへのハイクでパノラマビューを楽しむ。Lua Do Mar Restaurantの砂丘まで続き、一年中ドルフィンを、5月–10月にホエール、12月–1月にウミガメをよく見かけます。潮の満ち引きに注意：高潮の3時間前から3時間後までビーチルートを避け、ローグウェーブが岩に押しつける可能性があります。" },
+        { title: "Ponta Malonganeへの散策", body: "海岸沿いのビーチウォークで次の村へ。中途でバナナの木を通る階段がCampismo Nino Pub & Restaurantに続き、素晴らしい景色。湾の移行近くでSky Islandへの道があり、パラグライディングが可能。Malonganeの有名パブ：Drunken ClamとSunset Shack。ビーチまたは砂の4×4道路で戻る。" },
+        { title: "サーフ、ダイブ & オーシャンリサーチ", body: "Beach Barでサーフボードレンタル；村に複数のダイブセンターとドルフィン/ホエールリサーチセンター。" },
+        { title: "近くで食事 & リラックス", body: "DEVOCEANから500m以内に約16のバーとレストラン。リラックスした全身マッサージにはLisa（LIZ-Way Massage）をリクエスト。" },
+        { title: "クアッドバイクレンタル", body: "地元からの偶発的なプライベートレンタル。通常料金：約MZN 2000/時間（交渉による）。" },
+      ],
+    },
+    gallery: { headline: "ギャラリー" },
+    galleryHeading: "ギャラリー",
+    location: {
+      headline: "場所", blurb: "Ponta do Ouro – Matutuíne地区、モザンビーク南部。",
+      items: [
+        "Ponta do Ouro町、ビーチから短い散策",
+        "Ponta Malonganeまで15分 • Kosi Bay国境まで25分",
+        "セキュアパーキング • 近くの地元カフェ & マーケット",
+      ],
+      viewMap: "インタラクティブマップを表示",
+    },
+    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
+    form: {
+      name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
+      unitLabel: "好みのユニット：",
+      units: [
+        "Safari Tent - 共有バスルーム",
+        "Comfort Tent - プライベートバスルーム",
+        "Garden Cottage - インバーターエアコン",
+        "Thatched Chalet - インバーターエアコン"
+      ],
+      message: "メッセージ", send: "送信",
+      consent: "送信により、お問い合わせについて連絡されることに同意します。",
+      phName: "お名前", phEmail: "your@email.com", phMsg: "ご希望について詳しくお知らせください...",
+      success: "ありがとうございます！メッセージが送信されました。確認のためメールをご確認ください。",
+    },
+    footer: {
+      rights: "すべての権利を保有。",
+      desc: "モザンビーク南部のファミリーレートなエコホスピタリティとコミュニティプロジェクト。",
+    },
+    legal: {
+      title: "法的",
+      privacy: "プライバシーポリシー",
+      cookies: "Cookieポリシー",
+      terms: "利用規約",
+      gdpr: "GDPR情報",
+      cric: "消費者権利 & 連絡先",
+      manage: "Cookie設定",
+    }
+  },
+
+  zh: {
+    nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
+    stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情" },
+    experiences: { headline: "体验", blurb: "海洋与森林冒险就在您家门口。", operators: "值得信赖的本地运营商：" },
+    todo: {
+      headline: "蓬塔多奥罗的活动",
+      note: "有关潜水、浮潜、 dolphin/whale seafaris 和 fishing charters，请查看以下提供商。",
+      items: [
+        { title: "灯塔远足 & Lua Do Mar", body: "徒步前往Old Lighthouse欣赏全景。继续前往沙丘上的Lua Do Mar Restaurant。全年常见海豚，5月至10月有鲸鱼，12月至1月有海龟。注意潮汐：高潮前后3小时避开海滩路线；大浪可能将您推向岩石。" },
+        { title: "步行前往蓬塔马隆加内", body: "沿海岸海滩步行至下一个村庄。中途，穿过香蕉树的楼梯通往Campismo Nino酒吧和餐厅，景色优美。靠近海湾过渡处，有一条通往Sky Island的小路，可以滑翔伞。马隆加内著名的酒吧：Drunken Clam和Sunset Shack。通过海滩或沙地4×4道路返回。" },
+        { title: "冲浪、潜水和海洋研究", body: "Beach Bar提供冲浪板租赁；村里有多个潜水中心和海豚/鲸鱼研究中心。" },
+        { title: "附近用餐和放松", body: "DEVOCEAN周围500米内约有16家酒吧和餐厅。如需放松的全身按摩，可咨询Lisa（LIZ-Way Massage）。" },
+        { title: "四轮摩托车租赁", body: "偶尔有当地人提供私人租赁。典型价格：每小时约MZN 2000（价格可协商）。" },
+      ],
+    },
+    gallery: { headline: "图库" },
+    location: {
+      headline: "位置", blurb: "蓬塔多奥罗 – 莫桑比克南部马图图伊内区。",
+      items: [
+        "蓬塔多奥罗镇，距海滩仅几步之遥",
+        "15分钟至蓬塔马隆加内 • 25分钟至科西湾边境",
+        "安全停车 • 附近有当地咖啡馆和市场",
+      ],
+      viewMap: "查看互动地图",
+    },
+    contact: { headline: "联系方式与预订", blurb: "如有疑问、日期、特殊要求或团体预订，我们乐意为您提供帮助。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "价格与空房情况" },
+    form: {
+      name: "姓名", email: "电子邮件", stayLabel: "有兴趣入住：", checkin: "从", checkout: "到", 
+      unitLabel: "我偏好的单位是：",
+      units: [
+        "Safari 帐篷 - 共享浴室",
+        "舒适帐篷 - 私人浴室",
+        "花园别墅 - 变频空调",
+        "茅草小木屋 - 变频空调"
+      ],
+      message: "留言", send: "发送",
+      consent: "提交即表示您同意我们就您的询问与您联系。",
+      phName: "您的姓名", phEmail: "your@email.com", phMsg: "告诉我们更多您的愿望...",
+      success: "谢谢！您的消息已发送。请检查您的电子邮件以获取确认。",
+    },
+    footer: {
+      rights: "保留所有权利。",
+      desc: "莫桑比克南部的家庭式环保款待与社区项目。",
+    },
+    legal: {
+      title: "法律",
+      privacy: "隐私政策",
+      cookies: "Cookie 政策",
+      terms: "条款与条件",
+      gdpr: "GDPR 信息",
+      cric: "消费者权利与联系方式",
+      manage: "Cookie 设置",
+    }
+  },
+
+  ru: {
+    nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
+    stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее" },
+    experiences: { headline: "Впечатления", blurb: "Приключения на море и в лесу прямо у вашего порога.", operators: "Надежные местные операторы:" },
+    todo: {
+      headline: "Чем заняться в Пonta do Ouro",
+      note: "Для дайвинга, сноркелинга, сафари с дельфинами/китами и рыболовных чартеров смотрите поставщиков ниже.",
+      items: [
+        { title: "Поход к маяку и Lua Do Mar", body: "Отправляйтесь в поход к Старому маяку, чтобы насладиться панорамными видами. Продолжите путь к ресторану Lua Do Mar на дюне. Часто можно увидеть дельфинов круглый год, китов (май–октябрь) и черепах (декабрь–январь). Учитывайте приливы: избегайте пляжного маршрута за 3 часа до и после высокого прилива; мощные волны могут прижать вас к скалам." },
+        { title: "Прогулка до Пonta Malongane", body: "Прогулка по пляжу до соседней деревни. На полпути лестница через банановые деревья ведет к пабу и ресторану Campismo Nino с отличными видами. Ближе к заливу есть путь к Sky Island для парапланеризма. Известные пабы в Malongane: Drunken Clam и Sunset Shack. Возвращайтесь по пляжу или песчаной дороге для 4×4." },
+        { title: "Серфинг, дайвинг и исследования океана", body: "Аренда досок для серфинга в Beach Bar; несколько дайвинг-центров в деревне и центр исследования дельфинов/китов." },
+        { title: "Еда и отдых поблизости", body: "В радиусе 500 м от DEVOCEAN около 16 пабов и ресторанов. Для расслабляющего массажа всего тела обратитесь к Лизе (LIZ-Way Massage)." },
+        { title: "Аренда квадроциклов", body: "Иногда доступна частная аренда у местных. Обычная ставка: около MZN 2000 в час (цена зависит от переговоров)." },
+      ],
+    },
+    gallery: { headline: "Галерея" },
+    galleryHeading: "Галерея",
+    location: {
+      headline: "Местоположение", blurb: "Пonta do Ouro — район Матутуине, Южный Мозамбик.",
+      items: [
+        "Город Пonta do Ouro, в нескольких минутах ходьбы от пляжа",
+        "15 минут до Пonta Malongane • 25 минут до границы Kosi Bay",
+        "Безопасная парковка • Местные кафе и рынки поблизости",
+      ],
+      viewMap: "Посмотреть интерактивную карту",
+    },
+    contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Тарифы и доступность" },
+    form: {
+      name: "Имя", email: "Электронная почта", stayLabel: "Заинтересованы в проживании:", checkin: "С", checkout: "До", 
+      unitLabel: "Предпочитаемый тип номера:",
+      units: [
+        "Safari Tent — общая ванная комната",
+        "Comfort Tent — отдельная ванная комната",
+        "Garden Cottage — инверторный кондиционер",
+        "Thatched Chalet — инверторный кондиционер"
+      ],
+      message: "Сообщение", send: "Отправить",
+      consent: "Отправляя форму, вы соглашаетесь на контакт по вашему запросу.",
+      phName: "Ваше имя", phEmail: "your@email.com", phMsg: "Расскажите подробнее о ваших пожеланиях...",
+      success: "Спасибо! Ваше сообщение отправлено. Проверьте почту для подтверждения.",
+    },
+    footer: {
+      rights: "Все права защищены.",
+      desc: "Семейное экологичное гостеприимство и общественные проекты в Южном Мозамбике.",
+    },
+    legal: {
+      title: "Юридическая информация",
+      privacy: "Политика конфиденциальности",
+      cookies: "Политика использования cookies",
+      terms: "Условия и положения",
+      gdpr: "Информация GDPR",
+      cric: "Права потребителей и контакты",
+      manage: "Настройки cookies",
+    }
+  },
 };
 
 //Todo: can be lazy loaded per language
