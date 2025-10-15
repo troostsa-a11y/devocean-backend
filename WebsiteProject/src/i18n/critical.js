@@ -109,6 +109,6 @@ export const CRITICAL_NAV = {
     gallery: "ギャラリー",
     location: "場所",
     contact: "連絡先",
-    bookNow: "予約"
+    bookNow: "今すぐ予約"
   }
 };
