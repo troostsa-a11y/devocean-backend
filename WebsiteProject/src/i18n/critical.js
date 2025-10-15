@@ -139,6 +139,6 @@ export const CRITICAL_NAV = {
     gallery: "Galery",
     location: "Ligging",
     contact: "Kontak",
-    bookNow: "Tariewe en beskikbaarheid"
+    bookNow: "Bespreek nou"
   }
 };
