@@ -7048,6 +7048,151 @@
             }
           }
         }
+      },
+
+      terms: {
+        title: "Imigomo kanye nezimo",
+        updatedDate: "06 Okthoba 2025",
+        quickLinks: {
+          title: "Izixhumanisi ezisheshayo",
+          links: [
+            { id: "intro", text: "Ububanzi" },
+            { id: "booking", text: "Ukubhuka" },
+            { id: "payment", text: "Amanani kanye nenkokhelo" },
+            { id: "cancel", text: "Ukuhoxiswa" },
+            { id: "conduct", text: "Ukuziphatha kwezivakashi" },
+            { id: "force-majeure", text: "Amandla angaphezu kwamandla" },
+            { id: "liability", text: "Isibopho" },
+            { id: "intellectual-property", text: "Impahla yobuhlakani" },
+            { id: "disputes", text: "Ukuxazululwa kwezingxabano" },
+            { id: "changes", text: "Izinguquko" },
+            { id: "law", text: "Umthetho olawulayo" },
+            { id: "contact", text: "Xhumana" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Isaziso esibalulekile sezomthetho:",
+            body: "Le migomo ilawula ukusetshenziswa kwezinsizakalo zethu kanye newebhusayithi. Sicela uyifunde ngokucophelela ngaphambi kokubhuka."
+          },
+          intro: {
+            title: "Ububanzi",
+            body: "Le migomo ilawula indawo yokuhlala kanye nezinsizakalo ezihambisanayo ezinikezwa yi-DEVOCEAN Lodge (TERRAfrique LDA). Ngokubhuka, uyavuma le migomo."
+          },
+          booking: {
+            title: "Ukubhuka",
+            items: [
+              "Nikeza ulwazi lwezivakashi olulungile kanye nezinsuku zokufika/zokuphuma",
+              "Izicelo ezikhethekile zixhomeke ekutholakaleni nasekuqinisekisweni"
+            ],
+            reservationReq: {
+              title: "Izidingo zokubhuka",
+              body: "Ikhadi likazisi elivumelekile kanye nekhadi lesikweletu kuyadingeka kuzo zonke izibhukhi. Iminyaka encane: 18."
+            },
+            checkinCheckout: {
+              title: "Ukungena/Ukuphuma",
+              body: "Ukungena: 2:00 PM | Ukuphuma: 11:00 AM. Izicelo zangaphambi kwesikhathi/ezasekuqaleni zixhomeke ekutholakaleni."
+            },
+            groupBookings: {
+              title: "Ukubhuka kweqembu",
+              body: "Imigomo ekhethekile isebenza kumaqembu anamagumbi ayisithupha noma ngaphezulu. Xhumana nathi ukuze uthole amanani amaqembu kanye nezinqubomgomo."
+            }
+          },
+          payment: {
+            title: "Amanani kanye nenkokhelo",
+            items: [
+              "Amanani aboniswayo aweyunithi/ngobusuku ngaphandle uma kushiwo ngenye indlela",
+              "Ama-deposit kanye nezindlela zokukhokha zizoqinisekiswa ngesikhathi sokubhuka"
+            ],
+            paymentInfo: {
+              title: "Ulwazi lwenkokhelo",
+              body: "Zonke izintengo zise-USD ngaphandle uma kushiwo ngenye indlela. Amanani okuguqulwa kwemali ayalinganiselwa futhi angashintsha. Ikhadi lesikweletu elivumelekile liyadingeka ukuze kuvikeleke ukubhuka kwakho. Izindleko ezengeziwe zingase zisetshenziswe ezindlekweni ezingalindelekile."
+            }
+          },
+          cancel: {
+            title: "Ukuhoxiswa kanye nokungafiki",
+            body: "Imigomo yokuhoxiswa izodalulwa ngesikhathi sokubhuka kanye nasesiqinisekisweni sakho.",
+            cancellationCharges: {
+              title: "Izindleko zokuhoxiswa",
+              plans: [
+                {
+                  planName: "Uhlelo lwentengo oluguquguqukayo:",
+                  tiers: [
+                    { period: "Izinsuku ezingama-30 noma ngaphezulu ngaphambi kokufika", charge: "Imbuyiselo ephelele" },
+                    { period: "Izinsuku ezingama-29 noma ngaphansi ngaphambi kokufika", charge: "Inkokhelo yokuhoxiswa engu-50%" }
+                  ]
+                },
+                {
+                  planName: "Uhlelo lwentengo olungabuyiselwa:",
+                  tiers: [
+                    { period: "Kuze kube ngamahora angama-24 ngemuva kokubhuka", charge: "Imbuyiselo ephelele" },
+                    { period: "Kuzo zonke ezinye izimo", charge: "Akukho mbuyiselo", subtext: "Ilungelo lokushintsha usuku lokufika kanye nje ngaphansi kwemibandela yokukhokha umehluko wentengo yezinsuku ezintsha." }
+                  ]
+                }
+              ]
+            },
+            noshowPolicy: {
+              title: "Inqubomgomo yokungafiki",
+              body: "Izivakashi ezingafikanga ngosuku lokungena oluhleliwe ngaphandle kwesaziso sangaphambili zizothathwa njengezingafikanga. Kuzokhokhiswa inani eliphelele, futhi ukubhuka kuzokhanselwa."
+            }
+          },
+          conduct: {
+            title: "Ukuziphatha kwezivakashi",
+            items: [
+              "Hlonipha imithetho yendawo, abasebenzi, ezinye izivakashi kanye nomphakathi wendawo",
+              "Akukho misebenzi engekho emthethweni endaweni"
+            ],
+            zeroTolerance: {
+              title: "Inqubomgomo yokungabekezeleli",
+              body: "Sigcina inqubomgomo yokungabekezeleli ukuziphatha okuphazamisayo, imisebenzi engekho emthethweni, noma ukulimaza impahla. Ukwephula kungase kuholele ekuxoshweni ngokushesha ngaphandle kwembuyiselo futhi kungase kuholele ezenzweni zomthetho."
+            }
+          },
+          "force-majeure": {
+            title: "Amandla angaphezu kwamandla",
+            intro: "Asinaso isibopho sokwehluleka ukufeza izibopho ngenxa yezimo ezingaphezu kwamandla ethu, okuhlanganisa kodwa okungagcini lapho:",
+            items: [
+              "Izinhlekelele zemvelo, izimo zezulu ezeqile",
+              "Imingcele kahulumeni, ukuvinjelwa kokuhamba",
+              "Iziyaluyalu zomphakathi, impi, ubuphekula",
+              "Ubhubhane, izifo ezithathelwanayo, izimo eziphuthumayo zezempilo",
+              "Ukwehluleka kwezinsiza, ukuhlukana kwengqalasizinda"
+            ],
+            footer: "Kulezi zimo, sizonikeza izinsuku ezihlukile noma amavawusha esikweletu lapho kukhona. Imbuyiselo izohlinzekwa ngokuhambisana nemithetho esetshenziswayo kanye nezimo. Kodwa-ke, zonke izindleko kanye nezindleko ezingase zihlanganiswe noma ebezingahlanganiswa yimishwalense ejwayelekile yokuhoxiswa kanye nohambo zikhishiwe esibophweni lethu."
+          },
+          liability: {
+            title: "Isibopho",
+            body: "Ngokwezinga elivunyelwe ngumthetho, asinaso isibopho sokulahlekelwa okungaqondile noma okungabonakali."
+          },
+          "intellectual-property": {
+            title: "Impahla yobuhlakani",
+            copyright: {
+              title: "Isaziso selungelo lobunikazi",
+              body: "Konke okuqukethwe kule webhusayithi, okuhlanganisa umbhalo, izithombe, ama-logo, kanye nezithombe, kuyimpahla ye-DEVOCEAN Lodge futhi kuvikelwe yimithetho yamalungelo obunikazi yamazwe ngamazwe. Ukusetshenziswa, ukukhiqiza kabusha, noma ukusatshalaliswa ngaphandle kwemvume akwavunyelwe. Igama le-DEVOCEAN Lodge, i-logo, kanye nazo zonke izimpawu ezihlobene ziwuphawu lokuhweba futhi azikwazi ukusetshenziswa ngaphandle kwemvume ebhaliwe."
+            }
+          },
+          disputes: {
+            title: "Ukuxazululwa kwezingxabano",
+            process: {
+              title: "Inqubo yokuxazulula",
+              body: "Sihlose ukuxazulula noma yiziphi izingxabano ngokuthula. Sicela uxhumane nathi kuqala ukuze uzame ukuxazulula. Uma kungaxazululwanga, izingxabano zizoxazululwa ngokulamula ngaphambi kokuthatha izinyathelo zomthetho.",
+              law: "Umthetho olawulayo: Le migomo kanye nanoma yiziphi izingxabano zizolawulwa umthetho waseMozambique.",
+              jurisdiction: "Indawo yezomthetho: Izinkantolo zaseMaputo, eMozambique zizoba negunya elikhethekile.",
+              mediation: "Ukulamula: Izinhlangothi ziyavuma ukuzama ukulamula ngomlamuli ovumelekile ngaphambi kokuqala izinqubo zomthetho."
+            }
+          },
+          changes: {
+            title: "Izinguquko kule migomo",
+            body: "Singashintsha imigomo ngezikhathi ezithile. Inguqulo eshicilelwe isebenza ekuhlaleni kwakho."
+          },
+          law: {
+            title: "Umthetho olawulayo",
+            body: "Umthetho waseMozambique uyasebenza, kuye ngemithetho yendawo yezomthetho."
+          },
+          contact: {
+            title: "Imininingwane yoxhumano",
+            body: "Uma unemibuzo mayelana nale migomo, sicela uxhumane nathi ku-<a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
+          }
+        }
       }
     }
   };

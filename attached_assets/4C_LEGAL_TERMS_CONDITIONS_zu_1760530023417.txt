@@ -1,0 +1,144 @@
+================================================================================
+DEVOCEAN LODGE - TERMS & CONDITIONS TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (terms section)
+LANGUAGE CODE: zu
+
+================================================================================
+HEADER
+================================================================================
+title = "Imigomo kanye nezimo"
+updatedDate = "06 Okthoba 2025"
+
+quickLinks.title = "Izixhumanisi ezisheshayo"
+quickLinks[0] = "Ububanzi"
+quickLinks[1] = "Ukubhuka"
+quickLinks[2] = "Amanani kanye nenkokhelo"
+quickLinks[3] = "Ukuhoxiswa"
+quickLinks[4] = "Ukuziphatha kwezivakashi"
+quickLinks[5] = "Amandla angaphezu kwamandla"
+quickLinks[6] = "Isibopho"
+quickLinks[7] = "Impahla yobuhlakani"
+quickLinks[8] = "Ukuxazululwa kwezingxabano"
+quickLinks[9] = "Izinguquko"
+quickLinks[10] = "Umthetho olawulayo"
+quickLinks[11] = "Xhumana"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Isaziso esibalulekile sezomthetho:"
+badge.body = "Le migomo ilawula ukusetshenziswa kwezinsizakalo zethu kanye newebhusayithi. Sicela uyifunde ngokucophelela ngaphambi kokubhuka."
+
+================================================================================
+SCOPE
+================================================================================
+intro.title = "Ububanzi"
+intro.body = "Le migomo ilawula indawo yokuhlala kanye nezinsizakalo ezihambisanayo ezinikezwa yi-DEVOCEAN Lodge (TERRAfrique LDA). Ngokubhuka, uyavuma le migomo."
+
+================================================================================
+BOOKINGS
+================================================================================
+booking.title = "Ukubhuka"
+booking.items[0] = "Nikeza ulwazi lwezivakashi olulungile kanye nezinsuku zokufika/zokuphuma"
+booking.items[1] = "Izicelo ezikhethekile zixhomeke ekutholakaleni nasekuqinisekisweni"
+
+booking.reservationReq.title = "Izidingo zokubhuka"
+booking.reservationReq.body = "Ikhadi likazisi elivumelekile kanye nekhadi lesikweletu kuyadingeka kuzo zonke izibhukhi. Iminyaka encane: 18."
+
+booking.checkinCheckout.title = "Ukungena/Ukuphuma"
+booking.checkinCheckout.body = "Ukungena: 2:00 PM | Ukuphuma: 11:00 AM. Izicelo zangaphambi kwesikhathi/ezasekuqaleni zixhomeke ekutholakaleni."
+
+booking.groupBookings.title = "Ukubhuka kweqembu"
+booking.groupBookings.body = "Imigomo ekhethekile isebenza kumaqembu anamagumbi ayisithupha noma ngaphezulu. Xhumana nathi ukuze uthole amanani amaqembu kanye nezinqubomgomo."
+
+================================================================================
+PRICES & PAYMENT
+================================================================================
+payment.title = "Amanani kanye nenkokhelo"
+payment.items[0] = "Amanani aboniswayo aweyunithi/ngobusuku ngaphandle uma kushiwo ngenye indlela"
+payment.items[1] = "Ama-deposit kanye nezindlela zokukhokha zizoqinisekiswa ngesikhathi sokubhuka"
+
+payment.paymentInfo.title = "Ulwazi lwenkokhelo"
+payment.paymentInfo.body = "Zonke izintengo zise-USD ngaphandle uma kushiwo ngenye indlela. Amanani okuguqulwa kwemali ayalinganiselwa futhi angashintsha. Ikhadi lesikweletu elivumelekile liyadingeka ukuze kuvikeleke ukubhuka kwakho. Izindleko ezengeziwe zingase zisetshenziswe ezindlekweni ezingalindelekile."
+
+================================================================================
+CANCELLATIONS & NO-SHOWS
+================================================================================
+cancel.title = "Ukuhoxiswa kanye nokungafiki"
+cancel.body = "Imigomo yokuhoxiswa izodalulwa ngesikhathi sokubhuka kanye nasesiqinisekisweni sakho."
+
+cancel.cancellationCharges.title = "Izindleko zokuhoxiswa"
+
+cancel.cancellationCharges.plans[0].planName = "Uhlelo lwentengo oluguquguqukayo:"
+cancel.cancellationCharges.plans[0].tiers[0].period = "Izinsuku ezingama-30 noma ngaphezulu ngaphambi kokufika"
+cancel.cancellationCharges.plans[0].tiers[0].charge = "Imbuyiselo ephelele"
+cancel.cancellationCharges.plans[0].tiers[1].period = "Izinsuku ezingama-29 noma ngaphansi ngaphambi kokufika"
+cancel.cancellationCharges.plans[0].tiers[1].charge = "Inkokhelo yokuhoxiswa engu-50%"
+
+cancel.cancellationCharges.plans[1].planName = "Uhlelo lwentengo olungabuyiselwa:"
+cancel.cancellationCharges.plans[1].tiers[0].period = "Kuze kube ngamahora angama-24 ngemuva kokubhuka"
+cancel.cancellationCharges.plans[1].tiers[0].charge = "Imbuyiselo ephelele"
+cancel.cancellationCharges.plans[1].tiers[1].period = "Kuzo zonke ezinye izimo"
+cancel.cancellationCharges.plans[1].tiers[1].subtext = "Ilungelo lokushintsha usuku lokufika kanye nje ngaphansi kwemibandela yokukhokha umehluko wentengo yezinsuku ezintsha."
+cancel.cancellationCharges.plans[1].tiers[1].charge = "Akukho mbuyiselo"
+
+cancel.noshowPolicy.title = "Inqubomgomo yokungafiki"
+cancel.noshowPolicy.body = "Izivakashi ezingafikanga ngosuku lokungena oluhleliwe ngaphandle kwesaziso sangaphambili zizothathwa njengezingafikanga. Kuzokhokhiswa inani eliphelele, futhi ukubhuka kuzokhanselwa."
+
+================================================================================
+GUEST CONDUCT
+================================================================================
+conduct.title = "Ukuziphatha kwezivakashi"
+conduct.items[0] = "Hlonipha imithetho yendawo, abasebenzi, ezinye izivakashi kanye nomphakathi wendawo"
+conduct.items[1] = "Akukho misebenzi engekho emthethweni endaweni"
+
+conduct.zeroTolerance.title = "Inqubomgomo yokungabekezeleli"
+conduct.zeroTolerance.body = "Sigcina inqubomgomo yokungabekezeleli ukuziphatha okuphazamisayo, imisebenzi engekho emthethweni, noma ukulimaza impahla. Ukwephula kungase kuholele ekuxoshweni ngokushesha ngaphandle kwembuyiselo futhi kungase kuholele ezenzweni zomthetho."
+
+================================================================================
+FORCE MAJEURE
+================================================================================
+force-majeure.title = "Amandla angaphezu kwamandla"
+force-majeure.intro = "Asinaso isibopho sokwehluleka ukufeza izibopho ngenxa yezimo ezingaphezu kwamandla ethu, okuhlanganisa kodwa okungagcini lapho:"
+force-majeure.items[0] = "Izinhlekelele zemvelo, izimo zezulu ezeqile"
+force-majeure.items[1] = "Imingcele kahulumeni, ukuvinjelwa kokuhamba"
+force-majeure.items[2] = "Iziyaluyalu zomphakathi, impi, ubuphekula"
+force-majeure.items[3] = "Ubhubhane, izifo ezithathelwanayo, izimo eziphuthumayo zezempilo"
+force-majeure.items[4] = "Ukwehluleka kwezinsiza, ukuhlukana kwengqalasizinda"
+force-majeure.footer = "Kulezi zimo, sizonikeza izinsuku ezihlukile noma amavawusha esikweletu lapho kukhona. Imbuyiselo izohlinzekwa ngokuhambisana nemithetho esetshenziswayo kanye nezimo. Kodwa-ke, zonke izindleko kanye nezindleko ezingase zihlanganiswe noma ebezingahlanganiswa yimishwalense ejwayelekile yokuhoxiswa kanye nohambo zikhishiwe esibophweni sethu."
+
+================================================================================
+LIABILITY
+================================================================================
+liability.title = "Isibopho"
+liability.body = "Ngokwezinga elivunyelwe ngumthetho, asinaso isibopho sokulahlekelwa okungaqondile noma okungabonakali."
+
+================================================================================
+INTELLECTUAL PROPERTY
+================================================================================
+intellectual-property.title = "Impahla yobuhlakani"
+intellectual-property.copyright.title = "Isaziso selungelo lobunikazi"
+intellectual-property.copyright.body = "Konke okuqukethwe kule webhusayithi, okuhlanganisa umbhalo, izithombe, ama-logo, kanye nezithombe, kuyimpahla ye-DEVOCEAN Lodge futhi kuvikelwe yimithetho yamalungelo obunikazi yamazwe ngamazwe. Ukusetshenziswa, ukukhiqiza kabusha, noma ukusatshalaliswa ngaphandle kwemvume akwavunyelwe. Igama le-DEVOCEAN Lodge, i-logo, kanye nazo zonke izimpawu ezihlobene ziwuphawu lokuhweba futhi azikwazi ukusetshenziswa ngaphandle kwemvume ebhaliwe."
+
+================================================================================
+DISPUTE RESOLUTION
+================================================================================
+disputes.title = "Ukuxazululwa kwezingxabano"
+disputes.process.title = "Inqubo yokuxazulula"
+disputes.process.body = "Sihlose ukuxazulula noma yiziphi izingxabano ngokuthula. Sicela uxhumane nathi kuqala ukuze uzame ukuxazulula. Uma kungaxazululwanga, izingxabano zizoxazululwa ngokulamula ngaphambi kokuthatha izinyathelo zomthetho."
+disputes.process.law = "Umthetho olawulayo: Le migomo kanye nanoma yiziphi izingxabano zizolawulwa umthetho waseMozambique."
+disputes.process.jurisdiction = "Indawo yezomthetho: Izinkantolo zaseMaputo, eMozambique zizoba negunya elikhethekile."
+disputes.process.mediation = "Ukulamula: Izinhlangothi ziyavuma ukuzama ukulamula ngomlamuli ovumelekile ngaphambi kokuqala izinqubo zomthetho."
+
+================================================================================
+CHANGES TO THESE TERMS
+================================================================================
+changes.title = "Izinguquko kule migomo"
+changes.body = "Singashintsha imigomo ngezikhathi ezithile. Inguqulo eshicilelwe isebenza ekuhlaleni kwakho."
+
+================================================================================
+GOVERNING LAW
+================================================================================
+law.title = "Umthetho olawulayo"
+law.body = "Umthetho waseMozambique uyasebenza, kuye ngemithetho yendawo y
