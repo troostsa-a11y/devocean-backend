@@ -76,6 +76,12 @@ const LANG_TO_CURRENCY_HINT = {
   "nl": "EUR", "de": "EUR", "fr": "EUR", "pt": "EUR", "es": "EUR", "it": "EUR",
   "sv": "SEK",
   "pl": "PLN",
+  "ja": "JPY",
+  "zh": "CNY",
+  "ru": "RUB",
+  "af": "ZAR",
+  "zu": "ZAR",
+  "sw": "TZS",
   "en-gb": "GBP", "en-us": "USD",
 };
 
