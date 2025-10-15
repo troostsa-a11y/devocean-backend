@@ -129,6 +129,6 @@ export const CRITICAL_NAV = {
     gallery: "Галерея",
     location: "Местоположение",
     contact: "Контакты",
-    bookNow: "Забронировать"
+    bookNow: "Цены и наличие"
   }
 };

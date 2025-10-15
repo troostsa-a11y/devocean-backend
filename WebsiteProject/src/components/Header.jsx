@@ -226,7 +226,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
           </div>
 
           {/* Desktop nav (large screens only) */}
-          <ul className="hidden lg:flex items-center gap-6">
+          <ul className={`hidden lg:flex items-center ${lang === 'ru' ? 'gap-3 text-sm' : 'gap-6'}`}>
             {[
               ["home", "#home"],
               ["stay", "#stay"],
@@ -239,7 +239,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               <li key={k}>
                 <a
                   href={href}
-                  className="hover:text-[#9e4b13]"
+                  className="hover:text-[#9e4b13] whitespace-nowrap"
                 >
                   {ui.nav[k]}
                 </a>
@@ -250,7 +250,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
                 href={bookUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-cta px-4 py-2 rounded-xl bg-[#9e4b13] text-white"
+                className={`btn-cta ${lang === 'ru' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
                 onClick={() => {
                   if (window.dataLayer) {
                     window.dataLayer.push({
