@@ -1,0 +1,67 @@
+================================================================================
+DEVOCEAN LODGE - CRIC (COMPANY & CONTACT) TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cric section)
+LANGUAGE CODE: zu
+
+================================================================================
+HEADER
+================================================================================
+title = "I-CRIC — Inkampani kanye noxhumano"
+updatedDate = "27 Septhemba 2025"
+
+quickLinks.title = "Izixhumanisi ezisheshayo"
+quickLinks[0] = "Uhlolojikelele"
+quickLinks[1] = "Imininingwane yoxhumano"
+quickLinks[2] = "Ukuxhumana okuphuthumayo"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Ulwazi olusemthethweni lwenkampani:"
+badge.body = "Imininingwane ephelele yokubhaliswa kwebhizinisi kanye nolwazi lokuxhumana lwe-DEVOCEAN Lodge."
+
+================================================================================
+OVERVIEW
+================================================================================
+intro.title = "Uhlolojikelele"
+intro.body = "Imininingwane ephelele yokubhaliswa kwebhizinisi kanye nolwazi lokuxhumana lwe-DEVOCEAN Lodge."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Imininingwane yoxhumano"
+contact.body = "Ngemibuzo ejwayelekile, ukubhuka kanye nolwazi mayelana nezinsizakalo zethu, sicela usebenzise imininingwane yokuxhumana elandelayo."
+
+================================================================================
+EMERGENCY
+================================================================================
+emergency.title = "Ukuxhumana okuphuthumayo"
+emergency.body = "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza, sicela usebenzise imininingwane yethu yoxhumano ephuthumayo."
+
+================================================================================
+LABELS (Field Names)
+================================================================================
+labels.companyName = "Igama lenkampani"
+labels.registration = "Ukubhaliswa kwebhizinisi"
+labels.vat = "Inombolo ye-NUIT (VAT)"
+labels.license = "Ilayisensi yebhizinisi (Alvará)"
+labels.legalForm = "Ifomu elisemthethweni"
+labels.capital = "Imali eyisisekelo"
+labels.address = "Ikheli elibhalisiwe"
+labels.email = "I-imeyili"
+labels.phone = "Ucingo"
+labels.businessHours = "Amahora okusebenza"
+labels.emergencyPhone = "Ucingo oluphuthumayo"
+labels.emergencyEmail = "I-imeyili ephuthumayo"
+
+================================================================================
+STATIC VALUES
+================================================================================
+legalForm = "Inkampani enomkhawulo"
+businessHours = "UMsombuluko - uLwesihlanu: 8:00 - 18:00<br>iSonto kanye neSonto: 8:00 - 12:00<br>Ideski lokwamukela: 6:00 - 22:00 (kwezivakashi)"
+emergencyPhoneNote = "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza"
+
+================================================================================
+END OF CRIC
+================================================================================

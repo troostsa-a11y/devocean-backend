@@ -7306,6 +7306,56 @@
             body: "Nganoma yimiphi imibuzo ehlobene ne-GDPR, noma ukuze usebenzise amalungelo akho, sicela uxhumane nesikhulu sethu sokuvikela idatha ngekheli le-imeyili elithi <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Sizophendula esicelweni sakho phakathi kwezinsuku ezingama-30, njengoba kudingwa yi-GDPR."
           }
         }
+      },
+
+      cric: {
+        title: "I-CRIC — Inkampani kanye noxhumano",
+        updatedDate: "27 Septhemba 2025",
+        quickLinks: {
+          title: "Izixhumanisi ezisheshayo",
+          links: [
+            { id: "intro", text: "Uhlolojikelele" },
+            { id: "contact", text: "Imininingwane yoxhumano" },
+            { id: "emergency", text: "Ukuxhumana okuphuthumayo" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Ulwazi olusemthethweni lwenkampani:",
+            body: "Imininingwane ephelele yokubhaliswa kwebhizinisi kanye nolwazi lokuxhumana lwe-DEVOCEAN Lodge."
+          },
+          intro: {
+            title: "Uhlolojikelele",
+            body: "Imininingwane ephelele yokubhaliswa kwebhizinisi kanye nolwazi lokuxhumana lwe-DEVOCEAN Lodge."
+          },
+          contact: {
+            title: "Imininingwane yoxhumano",
+            body: "Ngemibuzo ejwayelekile, ukubhuka kanye nolwazi mayelana nezinsizakalo zethu, sicela usebenzise imininingwane yokuxhumana elandelayo."
+          },
+          emergency: {
+            title: "Ukuxhumana okuphuthumayo",
+            body: "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza, sicela usebenzise imininingwane yethu yoxhumano ephuthumayo."
+          }
+        },
+        labels: {
+          companyName: "Igama lenkampani",
+          registration: "Ukubhaliswa kwebhizinisi",
+          vat: "Inombolo ye-NUIT (VAT)",
+          license: "Ilayisensi yebhizinisi (Alvará)",
+          legalForm: "Ifomu elisemthethweni",
+          capital: "Imali eyisisekelo",
+          address: "Ikheli elibhalisiwe",
+          email: "I-imeyili",
+          phone: "Ucingo",
+          businessHours: "Amahora okusebenza",
+          emergencyPhone: "Ucingo oluphuthumayo",
+          emergencyEmail: "I-imeyili ephuthumayo"
+        },
+        values: {
+          legalForm: "Inkampani enomkhawulo",
+          businessHours: "UMsombuluko - uLwesihlanu: 8:00 - 18:00<br>iSonto kanye neSonto: 8:00 - 12:00<br>Ideski lokwamukela: 6:00 - 22:00 (kwezivakashi)",
+          emergencyPhoneNote: "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza"
+        }
       }
     }
   };
