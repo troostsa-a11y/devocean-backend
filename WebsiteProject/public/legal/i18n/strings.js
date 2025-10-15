@@ -19,7 +19,8 @@
     es:   { backButton: "Volver",           back: "Inicio",                 updated: "Última actualización" },
     sv:   { backButton: "Tillbaka",         back: "Hem",                    updated: "Senast uppdaterad" },
     pl:   { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" },
-    ja:   { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" }
+    ja:   { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" },
+    zh:   { backButton: "返回",             back: "首页",                   updated: "最后更新" }
   };
 
   // Root dict
@@ -5241,6 +5242,484 @@
           details: [
             { label: '緊急電話', value: '', subtitle: '営業時間外の緊急事項向け' },
             { label: '緊急メール', value: '' }
+          ]
+        }
+      }
+    }
+  };
+
+  // -------- CHINESE (Mandarin, Simplified) --------
+  window.LEGAL_DICT.zh = {
+    privacy: {
+      title: '隐私政策',
+      updatedDate: '2025年10月6日',
+      quickLinks: {
+        title: '快速链接',
+        links: [
+          { id: 'who', text: '我们是谁' },
+          { id: 'collect', text: '数据收集' },
+          { id: 'use', text: '数据使用' },
+          { id: 'share', text: '数据共享' },
+          { id: 'security', text: '安全' },
+          { id: 'retention', text: '保留' },
+          { id: 'rights', text: '您的权利' },
+          { id: 'transfers', text: '国际转移' },
+          { id: 'contact', text: '联系方式' },
+          { id: 'updates', text: '政策更新' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: '您的隐私至关重要：',
+          body: '我们致力于保护您的个人数据，并对我们如何收集、使用和保护您的信息保持透明。'
+        },
+        who: {
+          title: '我们是谁',
+          body: 'DEVOCEAN Lodge 由在莫桑比克注册的 TERRAfrique LDA 运营。注册地址为莫桑比克马普托 Rua C, Parcela 12, Maputo 1118。我们在莫桑比克蓬塔多奥罗运营环保海滩住宿。我们致力于保护您的隐私，确保根据适用数据保护法适当、合法、透明地收集、处理和使用您的个人数据。使用我们的网站和服务即表示您同意本隐私政策中描述的信息收集和使用。'
+        },
+        collect: {
+          title: '我们收集的个人数据',
+          intro: '我们收集不同类型的信息以提供和改进我们的服务：',
+          categories: [
+            {
+              title: '个人信息',
+              items: ['姓名、联系方式', '护照/身份证信息', '支付信息', '预订偏好']
+            },
+            {
+              title: '技术数据',
+              items: ['IP 地址、设备信息', '浏览器类型和版本', '网站使用分析', 'Cookie 数据（需同意）']
+            },
+            {
+              title: '通信数据',
+              items: ['电子邮件通信', '客户服务请求', '反馈和评论', '营销偏好']
+            }
+          ]
+        },
+        use: {
+          title: '我们如何使用您的数据',
+          items: [
+            '管理预订和提供服务',
+            '关于您的住宿、政策和优惠的沟通（需选择加入）',
+            '改进我们的网站和服务（分析、安全）',
+            '遵守法律/财务义务'
+          ]
+        },
+        share: {
+          title: '何时共享数据',
+          items: [
+            '用于处理您的预订和付款的支付提供商和预订平台',
+            '用于了解网站使用情况和改进服务的分析服务',
+            '用于定向营销的广告服务（仅在您同意的情况下）',
+            '在严格保密协议下的 IT 服务提供商、托管提供商和技术支持供应商',
+            '在法律、法规、法院命令或其他法律程序要求的情况下，向法律当局共享',
+            '执行合同或保护权利、财产、安全',
+            '在合并、收购、资产出售的情况下，将信息转移给新所有者'
+          ],
+          footer: '我们要求所有第三方尊重个人数据的安全性，并仅用于传输的目的。第三方不得将个人数据用于其自身目的，仅允许按照我们的指示为指定目的进行处理。'
+        },
+        security: {
+          title: '安全措施',
+          intro: '我们认真对待数据安全，并实施以下措施：',
+          measures: [
+            '传输和存储中的敏感数据加密',
+            '定期安全评估和渗透测试',
+            '访问控制和认证机制',
+            '员工数据保护和隐私培训',
+            '安全数据备份和灾难恢复程序'
+          ]
+        },
+        retention: {
+          title: '数据保留',
+          body: '我们将根据本隐私政策中详述的收集目的所需的时间保留您的个人信息。通常，我们会在您最后一次与我们互动后保留个人数据 1 年，除非法律要求或允许更长的保留期限。我们可能因特定原因需要更长时间保留信息，包括：根据适用法律进行记录保存和报告（通常财务和税务记录为 7 年）、执行法律权利、防止欺诈和解决争议。保留期限结束后，您的个人数据将被安全删除或匿名化。不直接或间接识别您身份的剩余匿名信息和汇总信息可能无限期存储用于统计和分析目的。'
+        },
+        rights: {
+          title: '您的隐私权利',
+          items: [
+            '访问个人数据的权利',
+            '纠正不准确数据的权利',
+            '删除个人数据的权利',
+            '限制或反对处理的权利',
+            '数据可携性的权利',
+            '撤回同意的权利'
+          ]
+        },
+        transfers: {
+          title: '国际数据转移',
+          body: '由于我们在多个司法管辖区运营，您的数据可能被转移到您居住国以外的国家并在其中处理。我们通过欧盟委员会的充分性决定、标准合同条款（SCC）、适当的安全保障措施以及转移地点的透明性，确保此类转移符合适用数据保护法。'
+        },
+        contact: {
+          title: '联系我们的隐私团队',
+          body: '如对本隐私政策或个人信息的处理有任何疑问、顾虑、请求，或希望行使您的隐私权利，请通过以下方式联系我们：<br><br><strong>电子邮件：</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>电话：</strong> +258 8441 82252<br><strong>邮寄地址：</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>我们将根据适用数据保护法在合理的时间内（通常在收到请求后 30 天内）响应您的请求。'
+        },
+        updates: {
+          title: '政策更新',
+          body: '我们可能会不时更新本隐私政策，以反映我们的做法、技术、法律要求或其他因素的变化。我们将通过注册用户的电子邮件通知、网站上的显著通知以及更新的"最后更新"日期通知您任何重大变化。我们建议您定期查看本政策，以了解我们如何保护您的信息。'
+        }
+      }
+    },
+
+    cookies: {
+      title: 'Cookie 政策',
+      effectiveDate: '2025年9月19日',
+      lastUpdated: '2025年10月6日',
+      managePreferences: '管理您的 Cookie 偏好：',
+      manageText: '您可以通过我们的 Cookie 横幅或浏览器设置控制我们使用的 Cookie。',
+      cookieSettingsBtn: 'Cookie 设置',
+      quickLinks: {
+        title: '快速链接',
+        links: [
+          { id: 'what', text: '什么是 Cookie' },
+          { id: 'how', text: '我们如何使用 Cookie' },
+          { id: 'necessary', text: '必要' },
+          { id: 'functional', text: '功能' },
+          { id: 'analytics', text: '分析' },
+          { id: 'advertisement', text: '广告' },
+          { id: 'manage', text: '管理偏好' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: '关于 Cookie',
+          body: '您可以通过我们的 Cookie 横幅或浏览器设置控制我们使用的 Cookie。'
+        },
+        what: {
+          title: '什么是 Cookie？',
+          body: '本 Cookie 政策解释了什么是 Cookie，我们如何使用它们，我们使用的 Cookie 类型（即使用 Cookie 收集的信息及其使用方式），以及如何管理您的 Cookie 设置。<br><br>Cookie 是用于存储少量信息的小型文本文件。它们在网站加载到您的浏览器时存储在您的设备上。这些 Cookie 有助于确保网站正常运行、增强安全性、提供更好的用户体验，并通过分析性能来确定哪些方面运作良好及需要改进的地方。'
+        },
+        how: {
+          title: '我们如何使用 Cookie？',
+          body: '与大多数在线服务一样，我们的网站出于各种目的使用第一方和第三方 Cookie。第一方 Cookie 主要用于确保网站正常运行，不收集任何可识别个人身份的数据。<br><br>我们网站上使用的第三方 Cookie 主要用于了解网站的表现、跟踪您与网站的互动、保持服务安全、提供相关广告、提升您的整体用户体验，并加快您未来与我们网站的互动速度。'
+        },
+        necessary: {
+          title: '必要 Cookie',
+          description: '必要 Cookie 是启用本网站基本功能（如提供安全登录或调整您的同意偏好）所需的。这些 Cookie 不存储任何可识别个人身份的数据。',
+          tableHeaders: { cookie: 'Cookie', duration: '持续时间', description: '描述' },
+          cookies: [
+            { name: 'DEVOCEAN_CURRENCY', duration: '365 天', desc: '此 Cookie 用于存储用户的货币偏好。' },
+            { name: 'cookieyes-consent', duration: '1 年', desc: '目前无描述可用。' },
+            { name: 'rc::a', duration: '持久', desc: '目前无描述可用。' },
+            { name: 'rc::c', duration: '会话', desc: '无描述可用。' },
+            { name: 'li_gc', duration: '180 天', desc: '目前无描述可用。' },
+            { name: 'rc::b', duration: '会话', desc: '目前无描述可用。' }
+          ]
+        },
+        functional: {
+          title: '功能 Cookie',
+          description: '功能 Cookie 有助于执行某些功能，如在社交媒体平台上分享网站内容、收集反馈以及其他第三方功能。',
+          tableHeaders: { cookie: 'Cookie', duration: '持续时间', description: '描述' },
+          cookies: [
+            { name: '_fbp', duration: '3 个月', desc: 'Facebook 设置此 Cookie 以提升用户在网站上的浏览体验，并在使用 Facebook 的社交媒体平台时提供相关广告。' }
+          ]
+        },
+        analytics: {
+          title: '分析 Cookie',
+          description: '分析 Cookie 用于了解访问者如何与网站互动。这些 Cookie 有助于提供有关访问者数量、跳出率、流量来源等指标的信息。',
+          tableHeaders: { cookie: 'Cookie', duration: '持续时间', description: '描述' },
+          cookies: [
+            { name: '_ga', duration: '1 年 1 个月 4 天', desc: 'Google Analytics 设置此 Cookie 以计算访问者、会话和活动数据，并跟踪网站使用情况以生成网站分析报告。Cookie 匿名存储信息，并分配一个随机生成的编号以识别唯一访问者。' },
+            { name: '_gat_gtag_UA_*', duration: '1 分钟', desc: 'Google Analytics 设置此 Cookie 以存储和计数页面浏览量。' },
+            { name: '_gid', duration: '1 天', desc: 'Google Analytics 设置此 Cookie 以存储访问者如何使用网站的信息，同时生成网站性能分析报告。收集的部分数据包括访问者数量、来源以及匿名访问的页面。' },
+            { name: '_ga_*', duration: '1 年 1 个月 4 天', desc: 'Google Analytics 为用户行为跟踪设置此 Cookie。' },
+            { name: 'visitor_id*-hash', duration: '10 年', desc: '当访问者以 Pardot 用户身份登录时，设置 pardot Cookie。此 Cookie 表示活跃会话，不用于跟踪。' }
+          ]
+        },
+        advertisement: {
+          title: '广告 Cookie',
+          description: '广告 Cookie 用于根据您之前访问的页面为访问者提供定制广告，并分析广告活动的有效性。',
+          tableHeaders: { cookie: 'Cookie', duration: '持续时间', description: '描述' },
+          cookies: [
+            { name: '_gcl_au', duration: '3 个月', desc: 'Google Tag Manager 设置此 Cookie 以测试使用其服务的网站的广告效率。' },
+            { name: 'test_cookie', duration: '15 分钟', desc: 'doubleclick.net 设置此 Cookie 以确定用户的浏览器是否支持 Cookie。' },
+            { name: 'fr', duration: '3 个月', desc: 'Facebook 设置此 Cookie 以存储和跟踪互动。' },
+            { name: 'IDE', duration: '1 年 24 天', desc: 'Google DoubleClick IDE Cookie 存储用户如何使用网站的信息，以根据用户简介呈现相关广告。' }
+          ]
+        },
+        manage: {
+          title: '管理 Cookie 偏好',
+          consentTitle: '同意偏好',
+          consentText: '您可以随时通过点击上方的"同意偏好"按钮修改您的 Cookie 设置。这将允许您重新访问 Cookie 同意横幅并更新您的偏好或立即撤回您的同意。',
+          browserText: '此外，不同浏览器提供多种方法来阻止和删除网站使用的 Cookie。您可以调整浏览器设置以阻止或删除 Cookie。以下是主要网络浏览器中管理和删除 Cookie 的支持文档链接。',
+          browsers: {
+            chrome: 'Chrome',
+            safari: 'Safari',
+            firefox: 'Firefox',
+            ie: 'Internet Explorer',
+            other: '如果您使用其他网络浏览器，请参阅其官方支持文档。'
+          }
+        }
+      }
+    },
+
+    terms: {
+      title: '条款与条件',
+      updatedDate: '2025年10月6日',
+      quickLinks: {
+        title: '快速链接',
+        links: [
+          { id: 'intro', text: '范围' },
+          { id: 'booking', text: '预订' },
+          { id: 'payment', text: '价格与支付' },
+          { id: 'cancel', text: '取消' },
+          { id: 'conduct', text: '宾客行为' },
+          { id: 'force-majeure', text: '不可抗力' },
+          { id: 'liability', text: '责任' },
+          { id: 'intellectual-property', text: '知识产权' },
+          { id: 'disputes', text: '争议解决' },
+          { id: 'changes', text: '变更' },
+          { id: 'law', text: '适用法律' },
+          { id: 'contact', text: '联系方式' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: '重要法律通知：',
+          body: '这些条款规范您对我们服务和网站的使用。请在预订前仔细阅读。'
+        },
+        intro: {
+          title: '范围',
+          body: '这些条款规范 DEVOCEAN Lodge（TERRAfrique LDA）提供的住宿及相关服务。预订即表示您同意这些条款。'
+        },
+        booking: {
+          title: '预订',
+          items: [
+            '提供准确的宾客信息和到达/离开日期',
+            '特殊请求视可用性和确认情况而定'
+          ],
+          reservationReq: {
+            title: '预订要求',
+            body: '所有预订需提供有效身份证和信用卡。最低年龄：18岁。'
+          },
+          checkinCheckout: {
+            title: '入住/退房',
+            body: '入住：下午2:00 | 退房：上午11:00。提前/延迟请求视可用性而定。'
+          },
+          groupBookings: {
+            title: '团体预订',
+            body: '6 间以上房间的团体适用特殊条款。请联系我们了解团体价格和政策。'
+          }
+        },
+        payment: {
+          title: '价格与支付',
+          items: [
+            '除非另有说明，显示的价格为每单位/每晚',
+            '存款和结算方式将在预订时确认'
+          ],
+          paymentInfo: {
+            title: '支付信息',
+            body: '除非另有说明，所有价格以美元计价。货币转换率仅为近似值，可能会发生变化。确保预订需提供有效信用卡。额外费用可能适用于临时开支。'
+          }
+        },
+        cancel: {
+          title: '取消与未到',
+          body: '取消条款将在预订时和确认函中披露。',
+          cancellationCharges: {
+            title: '取消费用',
+            plans: [
+              {
+                planName: '半灵活价格计划：',
+                tiers: [
+                  { period: '到达前30天或更早', charge: '全额退款' },
+                  { period: '到达前29天或更近', charge: '50% 取消费用' }
+                ]
+              },
+              {
+                planName: '不可退款价格计划：',
+                tiers: [
+                  { period: '预订后24小时内', charge: '全额退款' },
+                  { period: '所有其他情况', charge: '不予退款', subtext: '在支付新日期差价的条件下，有一次更改到达日期的权利。' }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: '未到政策',
+            body: '未在计划入住日期到达且未提前通知的宾客将被视为未到，将收取全额费用，预订将被取消。'
+          }
+        },
+        conduct: {
+          title: '宾客行为',
+          items: [
+            '尊重设施规则、员工、其他宾客和当地社区',
+            '禁止在场所内进行非法活动'
+          ],
+          zeroTolerance: {
+            title: '零容忍政策',
+            body: '我们对破坏性行为、非法活动或财产损害采取零容忍政策。违反可能导致立即驱逐（不予退款）并可能采取法律行动。'
+          }
+        },
+        forceMajeure: {
+          title: '不可抗力',
+          intro: '对于超出我们合理控制范围的情况导致无法履行义务，我们不承担责任，包括但不限于：',
+          items: [
+            '自然灾害、极端天气条件',
+            '政府限制、旅行禁令',
+            '内乱、战争、恐怖主义',
+            '流行病、大流行、卫生紧急情况',
+            '公用事业故障、基础设施崩溃'
+          ],
+          footer: '在这种情况下，我们将尽可能提供替代日期或信用券。根据适用法律和情况提供退款。然而，所有可能由一般可用的取消和旅行保险套餐覆盖的损害和费用均不在我们的责任范围内。'
+        },
+        liability: {
+          title: '责任',
+          body: '在法律允许的范围内，我们对间接或不可预见的损失不承担责任。'
+        },
+        intellectualProperty: {
+          title: '知识产权',
+          copyright: {
+            title: '版权通知',
+            body: '本网站的所有内容，包括文本、图形、标志和图片，均为 DEVOCEAN Lodge 的财产，受国际版权法保护。未经授权的使用、复制或分发均被禁止。DEVOCEAN Lodge 名称、标志及所有相关标记均为商标，未经书面许可不得使用。'
+          }
+        },
+        disputes: {
+          title: '争议解决',
+          process: {
+            title: '解决流程',
+            body: '我们旨在友好解决任何争议。请首先联系我们尝试解决。如未解决，争议将在采取法律行动前通过调解解决。',
+            law: '适用法律：这些条款及任何争议均受莫桑比克法律管辖。',
+            jurisdiction: '管辖权：莫桑比克马普托法院具有专属管辖权。',
+            mediation: '调解：双方同意在提起法律诉讼前尝试通过认证调解人进行调解。'
+          }
+        },
+        changes: {
+          title: '这些条款的变更',
+          body: '我们可能不时更新条款。发布的版本适用于您的住宿。'
+        },
+        law: {
+          title: '适用法律',
+          body: '适用莫桑比克法律，受强制性当地消费者规则约束。'
+        },
+        contact: {
+          title: '联系方式',
+          body: '有疑问？请联系 <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>。'
+        }
+      }
+    },
+
+    gdpr: {
+      title: 'GDPR 通知',
+      updatedDate: '2025年10月6日',
+      quickLinks: {
+        title: '快速链接',
+        links: [
+          { id: 'controller', text: '数据控制者' },
+          { id: 'bases', text: '处理法律依据' },
+          { id: 'rights', text: '您的权利' },
+          { id: 'retention', text: '数据保留' },
+          { id: 'transfers', text: '数据转移' },
+          { id: 'complaints', text: '投诉' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: '符合 GDPR：',
+          body: '我们致力于根据《通用数据保护条例》保护您的个人数据并尊重您的隐私权。'
+        },
+        controller: {
+          title: '数据控制者',
+          body: 'TERRAfrique LDA（DEVOCEAN Lodge），注册地址为莫桑比克马普托 Rua C, Parcela 12, Maputo 1118，负责通过我们的服务收集的您的个人信息的数据控制者。'
+        },
+        bases: {
+          title: '处理法律依据',
+          body: '我们根据 GDPR 的以下法律依据处理您的个人数据：',
+          legalBases: [
+            { title: '合同：', body: '履行我们的预订协议和服务所需的处理。' },
+            { title: '法律义务：', body: '遵守法律要求（例如税务法）所需的处理。' },
+            { title: '合法利益：', body: '在尊重您的权利的同时，为我们的合法商业利益进行处理。' },
+            { title: '同意：', body: '基于您对特定目的的明确同意进行处理。' }
+          ]
+        },
+        rights: {
+          title: '您的 GDPR 权利',
+          body: '作为 GDPR 下的数据主体，您对您的个人数据拥有以下权利：',
+          items: [
+            { title: '访问权', body: '您可以请求我们持有的您的个人数据的副本。' },
+            { title: '更正权', body: '您可以请求更正不准确或不完整的数据。' },
+            { title: '删除权', body: '在特定条件下，您可以请求删除您的个人数据。' },
+            { title: '限制处理权', body: '您可以请求限制我们使用您的数据的方式。' },
+            { title: '数据可携性权', body: '您可以请求将您的数据转移到其他组织。' },
+            { title: '反对权', body: '您可以反对某些类型的数据处理。' }
+          ],
+          buttons: {
+            access: { text: '请求数据访问' },
+            erasure: { text: '请求数据删除' }
+          }
+        },
+        retention: {
+          title: '数据保留',
+          periodsTitle: '保留期限',
+          intro: '我们仅在实现收集目的所需的期限内保留个人数据，包括法律、会计或报告要求。',
+          items: [
+            '<strong>预订数据：</strong> 为税务和法律合规保留 7 年',
+            '<strong>客户服务通信：</strong> 保留 3 年',
+            '<strong>营销同意：</strong> 直到撤回同意',
+            '<strong>网站分析：</strong> 保留 26 个月',
+            '<strong>财务交易：</strong> 为会计目的保留 10 年'
+          ]
+        },
+        transfers: {
+          title: '国际数据转移',
+          body: '当我们将您的数据转移到欧洲经济区（EEA）以外时，我们确保采取适当的保护措施来保护您的信息。这可能包括使用欧盟委员会批准的标准合同条款或将数据转移到具有充分性决定的国家。',
+          notice: {
+            title: '国际数据转移：',
+            body: '我们在国际转移数据时确保采取适当的保护措施，包括使用标准合同条款或确保充分性决定。'
+          }
+        },
+        complaints: {
+          title: '投诉',
+          intro: '如果您对我们处理您的个人数据有任何顾虑，您有权向当地数据保护机构提出投诉。',
+          footer: '我们鼓励您在联系监管机构之前先与我们联系，以解决任何顾虑。'
+        },
+        dpo: {
+          title: '联系我们的数据保护官',
+          body: '对于任何 GDPR 相关问题或行使您的权利，请通过 <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a> 联系我们的数据保护官。我们将根据 GDPR 要求在 30 天内响应您的请求。'
+        }
+      }
+    },
+
+    cric: {
+      title: 'CRIC — 公司与联系方式',
+      updatedDate: '2025年9月27日',
+      quickLinks: {
+        title: '快速链接',
+        links: [
+          { id: 'overview', text: '概览' },
+          { id: 'contact', text: '联系方式' },
+          { id: 'emergency', text: '紧急情况' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: '官方公司信息：',
+          body: 'DEVOCEAN Lodge 的完整商业注册详情和联系信息。'
+        },
+        overview: {
+          title: '概览',
+          body: 'DEVOCEAN Lodge 的完整商业注册详情和联系信息。',
+          details: [
+            { label: '公司名称', value: '' },
+            { label: '商业注册', value: '' },
+            { label: '增值税号（NUIT）', value: '' },
+            { label: '营业执照（Alvará）', value: '' },
+            { label: '法人形式', value: '有限责任公司' },
+            { label: '股本', value: '' }
+          ]
+        },
+        contact: {
+          title: '联系方式',
+          body: '有关一般咨询、预订和服务信息，请使用以下提供的联系方式。',
+          details: [
+            { label: '注册地址', value: '' },
+            { label: '电子邮件', value: '' },
+            { label: '电话', value: '' },
+            { label: '营业时间', value: '周一至周五：上午8:00 - 下午6:00<br>周六和周日：上午8:00 - 中午12:00<br>前台：上午6:00 - 晚上10:00（仅限宾客）' }
+          ]
+        },
+        emergency: {
+          title: '紧急联系',
+          body: '对于营业时间外的紧急事务，请使用我们的紧急联系方式。',
+          details: [
+            { label: '紧急电话', value: '', subtitle: '用于营业时间外的紧急事务' },
+            { label: '紧急电子邮件', value: '' }
           ]
         }
       }
