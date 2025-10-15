@@ -1,0 +1,103 @@
+================================================================================
+DEVOCEAN LODGE - L10N TRANSLATIONS (Units & Experiences)
+================================================================================
+File: WebsiteProject/src/i18n/translations.js (L10N section, lines 1891-1943)
+LANGUAGE CODE: zu
+
+INSTRUCTIONS:
+- Translate accommodation units and experiences into Zulu
+- Keep technical terms (Twin/King, A/C, m²) as-is or adapt naturally
+- This replaces the English placeholders currently in the code
+
+================================================================================
+UNITS (ACCOMMODATIONS)
+================================================================================
+
+SAFARI TENT
+-----------
+title = "Itende leSafari"
+short = "Itende le-canvas elingu-12 m² esiteji esingu-3×6 m. I-Twin/King, isiphephetha-moya, izintambo zikagesi, inet ye-mosquito, idekhi yangasese."
+details[0] = "Imibhede emibili eyodwa (noma i-King) enezitebhili eziseceleni nezibane"
+details[1] = "Inet ye-mosquito • isiphephetha-moya esinamandla • izintambo zikagesi"
+details[2] = "Idekhi yangasese enezitulo zezintende zephamu"
+details[3] = "Izinsiza zokuhlanganyela: izihlambi ezishisayo/ezibandayo nezindlu zangasese"
+
+COMFORT TENT
+------------
+title = "Itende Lokunethezeka"
+short = "Itende elingu-12 m² elinokuvikeleka okwengeziwe (izindonga eziphuma emaceleni/ngemuva), idekhi yangasese kanye nendawo yokugezela yangasese ngaphansi kophahla lwezintende."
+details[0] = "Ukusetshenziswa kwe-Twin/King ngezibane ezisebenzayo"
+details[1] = "Inet ye-mosquito • isiphephetha-moya esinamandla • izintambo zikagesi"
+details[2] = "Idekhi yokhuni enezitulo"
+details[3] = "Indawo yokugezela yangasese (ishawa, indlu yangasese, usinki) ngaphansi kophahla lwezintende"
+
+GARDEN COTTAGE
+--------------
+title = "Indlu Yengadi"
+short = "Indlu enomoya enombhede we-queen, i-A/C (inverter), ideski netafula, idekhi yangasese kanye nendawo yokugezela e-rondavel."
+details[0] = "Umbhede we-queen • ideski netafula lokudlela"
+details[1] = "I-A/C ye-inverter (ukupholisa/ukufudumeza) • ukukhanya okuyinhloko okungaguquki"
+details[2] = "Indawo yokugezela ye-rondavel (ishawa, usinki, indlu yangasese)"
+details[3] = "Idekhi yokhuni enezitulo zokukhempela"
+
+THATCHED CHALET
+---------------
+title = "I-Chalet Yezintende"
+short = "I-chalet encane, yothando phakathi kwezihlahla zesundu. I-A/C, indawo yokugezela yangasese, idekhi, i-Twin/King."
+details[0] = "Indawo enokuthula ngaphansi kwezihlahla zesundu • i-air conditioning"
+details[1] = "Indawo yokugezela yangasese (ishawa, usinki, indlu yangasese)"
+details[2] = "Imibhede ye-Twin/King enezitebhili eziseceleni"
+details[3] = "Idekhi yangasese enezitulo zezintende zephamu"
+
+================================================================================
+EXPERIENCES
+================================================================================
+
+DIVING
+------
+title = "Ukudayiva"
+desc = "Ama-reef angaphesheya kolwandle anezilwane zasolwandle ezinhlobonhlobo."
+
+SWIM WITH DOLPHINS
+------------------
+title = "Ukubhukuda Namadophini"
+desc = "Ukuhlangana okunobulungisa namadophini abahlala khona."
+
+LIGHTHOUSE HIKE
+---------------
+title = "Ukuqwala Intaba yeLighthouse"
+desc = "Khuphuka igquma uye etiyeni elidala lesibane ukuze uthole umbono omkhulu."
+
+OCEAN SAFARIS
+-------------
+title = "Ama-Safari Olwandle"
+desc = "Ama-safari olwandle okuthola imikhomo (Meyi–Okthoba) nokunye."
+
+LAND SAFARIS
+------------
+title = "Ama-Safari Omhlaba"
+desc = "Ama-adventure ehlathini ngokushayela isikhathi esifushane."
+
+BEACH & DEEP-SEA FISHING
+------------------------
+title = "Ukudoba Ogwini Lolwandle kanye Nokudoba Ejulile"
+desc = "Kusuka ekuphoseleni ogwini kuya kuma-charters aphesheya kolwandle."
+
+SURFBOARDS & LESSONS
+--------------------
+title = "Amabhodi Okusefa kanye Nezifundo"
+desc = "Bamba amagagasi noma ufundiswe izinto zokuqala."
+
+================================================================================
+NOTES FOR TRANSLATOR:
+================================================================================
+- "Twin/King" refers to bed configurations (can keep as-is or translate naturally)
+- "A/C" = Air Conditioning
+- "Rondavel" is a traditional round hut (common term in Southern Africa, may keep as-is)
+- "m²" = square meters
+- Keep bullet points (•) as separators in details arrays
+- Technical amenities (fan, power outlets, etc.) can be translated or kept recognizable
+
+================================================================================
+END OF L10N TEMPLATE
+================================================================================
