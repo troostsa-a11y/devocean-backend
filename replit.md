@@ -2,7 +2,7 @@
 
 ## Overview
 
-DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 12 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 13 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
 
 ## User Preferences
 
@@ -49,10 +49,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Local component state with React hooks
 
 **Internationalization:**
-- React-based i18n with lazy-loaded translations across 12 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Japanese, Mandarin Chinese).
+- React-based i18n with lazy-loaded translations across 13 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Japanese, Mandarin Chinese, Russian).
 - Vanilla JavaScript i18n for static legal pages.
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY, CNY with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
+- **Russian Language Support (Oct 15):** Complete Russian (ru) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with ru-RU locale. Russia (RU) mapped to Europe region. Europe region now supports English, Portuguese, Dutch, French, Italian, German, Spanish, Swedish, Polish, and Russian (Русский).
 - **Mandarin Chinese Language Support (Oct 15):** Complete Mandarin Chinese (zh) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with zh-CN locale and CNY currency. Auto-switches to CNY when Chinese language + Asia region selected. Asia region now supports English, Japanese (日本語), and Chinese (中文).
 - **Japanese Language Support (Oct 15):** Complete Japanese (ja) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with ja-JP locale and JPY currency. Auto-switches to JPY when Japanese language + Asia region selected.
 - **IP-Based Geolocation (Oct 14):** Cloudflare automatically injects visitor country code via middleware for accurate region detection. Browser language detection serves as fallback for local development. Eliminates French-in-Asia and eSwatini mapping issues.
