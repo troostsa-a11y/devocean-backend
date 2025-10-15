@@ -1,0 +1,67 @@
+================================================================================
+DEVOCEAN LODGE - CRIC (COMPANY & CONTACT) TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cric section)
+LANGUAGE CODE: sw
+
+================================================================================
+HEADER
+================================================================================
+title = "CRIC — Kampuni na Mawasiliano"
+updatedDate = "27 Septemba 2025"
+
+quickLinks.title = "Viungo vya Haraka"
+quickLinks[0] = "Muhtasari"
+quickLinks[1] = "Maelezo ya Mawasiliano"
+quickLinks[2] = "Mawasiliano ya Dharura"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Taarifa za Kisheria za Kampuni:"
+badge.body = "Maelezo kamili ya usajili wa Biashara na taarifa za mawasiliano za DEVOCEAN Lodge."
+
+================================================================================
+OVERVIEW
+================================================================================
+intro.title = "Muhtasari"
+intro.body = "Maelezo kamili ya usajili wa Biashara na taarifa za mawasiliano za DEVOCEAN Lodge."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Maelezo ya Mawasiliano"
+contact.body = "Kwa maswali ya jumla, uwekaji nafasi na taarifa kuhusu huduma zetu, tafadhali tumia maelezo ya mawasiliano yafuatayo."
+
+================================================================================
+EMERGENCY
+================================================================================
+emergency.title = "Mawasiliano ya Dharura"
+emergency.body = "Kwa maswala ya dharura nje ya saa za kazi, tafadhali tumia maelezo yetu ya mawasiliano ya dharura."
+
+================================================================================
+LABELS (Field Names)
+================================================================================
+labels.companyName = "Jina la Kampuni"
+labels.registration = "Usajili wa Biashara"
+labels.vat = "Nambari ya NUIT (VAT)"
+labels.license = "Leseni ya Biashara (Alvará)"
+labels.legalForm = "Fomu ya Kisheria"
+labels.capital = "Mtaji"
+labels.address = "Anwani Iliyosajiliwa"
+labels.email = "Barua pepe"
+labels.phone = "Simu"
+labels.businessHours = "Saa za Biashara"
+labels.emergencyPhone = "Simu ya Dharura"
+labels.emergencyEmail = "Barua pepe ya Dharura"
+
+================================================================================
+STATIC VALUES
+================================================================================
+legalForm = "Kampuni ya Dhima ya Muda"
+businessHours = "Jumatatu - Ijumaa: 8:00 - 18:00<br>Jumamosi na Jumapili: 8:00 - 12:00<br>Meza ya Kupokea: 6:00 - 22:00 (kwa wageni)"
+emergencyPhoneNote = "Kwa maswala ya dharura nje ya saa za kazi"
+
+================================================================================
+END OF CRIC
+================================================================================

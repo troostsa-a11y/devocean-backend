@@ -7836,6 +7836,56 @@
             body: "Kwa maswali yoyote yanayohusiana na GDPR, au ili kutumia haki zako, tafadhali wasiliana na afisa wetu wa ulinzi wa data kwa <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Tutajibu ombi lako ndani ya siku 30, kama inavyohitajika na GDPR."
           }
         }
+      },
+
+      cric: {
+        title: "CRIC — Kampuni na Mawasiliano",
+        updatedDate: "27 Septemba 2025",
+        quickLinks: {
+          title: "Viungo vya Haraka",
+          links: [
+            { id: "intro", text: "Muhtasari" },
+            { id: "contact", text: "Maelezo ya Mawasiliano" },
+            { id: "emergency", text: "Mawasiliano ya Dharura" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Taarifa za Kisheria za Kampuni:",
+            body: "Maelezo kamili ya usajili wa Biashara na taarifa za mawasiliano za DEVOCEAN Lodge."
+          },
+          intro: {
+            title: "Muhtasari",
+            body: "Maelezo kamili ya usajili wa Biashara na taarifa za mawasiliano za DEVOCEAN Lodge."
+          },
+          contact: {
+            title: "Maelezo ya Mawasiliano",
+            body: "Kwa maswali ya jumla, uwekaji nafasi na taarifa kuhusu huduma zetu, tafadhali tumia maelezo ya mawasiliano yafuatayo."
+          },
+          emergency: {
+            title: "Mawasiliano ya Dharura",
+            body: "Kwa maswala ya dharura nje ya saa za kazi, tafadhali tumia maelezo yetu ya mawasiliano ya dharura."
+          }
+        },
+        labels: {
+          companyName: "Jina la Kampuni",
+          registration: "Usajili wa Biashara",
+          vat: "Nambari ya NUIT (VAT)",
+          license: "Leseni ya Biashara (Alvará)",
+          legalForm: "Fomu ya Kisheria",
+          capital: "Mtaji",
+          address: "Anwani Iliyosajiliwa",
+          email: "Barua pepe",
+          phone: "Simu",
+          businessHours: "Saa za Biashara",
+          emergencyPhone: "Simu ya Dharura",
+          emergencyEmail: "Barua pepe ya Dharura"
+        },
+        values: {
+          legalForm: "Kampuni ya Dhima ya Muda",
+          businessHours: "Jumatatu - Ijumaa: 8:00 - 18:00<br>Jumamosi na Jumapili: 8:00 - 12:00<br>Meza ya Kupokea: 6:00 - 22:00 (kwa wageni)",
+          emergencyPhoneNote: "Kwa maswala ya dharura nje ya saa za kazi"
+        }
       }
     }
   };
