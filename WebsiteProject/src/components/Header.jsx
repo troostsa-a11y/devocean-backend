@@ -113,21 +113,21 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               onChange={(e) => onLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
             >
-              {regions[region].languages.includes('en') && <option value="en">English</option>}
-              {regions[region].languages.includes('pt') && <option value="pt">Português</option>}
-              {regions[region].languages.includes('nl') && <option value="nl">Nederlands</option>}
-              {regions[region].languages.includes('fr') && <option value="fr">Français</option>}
-              {regions[region].languages.includes('it') && <option value="it">Italiano</option>}
-              {regions[region].languages.includes('de') && <option value="de">Deutsch</option>}
-              {regions[region].languages.includes('es') && <option value="es">Español</option>}
-              {regions[region].languages.includes('sv') && <option value="sv">Svenska</option>}
-              {regions[region].languages.includes('pl') && <option value="pl">Polski</option>}
-              {regions[region].languages.includes('af') && <option value="af">Afrikaans</option>}
-              {regions[region].languages.includes('zu') && <option value="zu">isiZulu</option>}
-              {regions[region].languages.includes('sw') && <option value="sw">Kiswahili</option>}
-              {regions[region].languages.includes('ru') && <option value="ru">Русский</option>}
-              {regions[region].languages.includes('ja') && <option value="ja">日本語</option>}
-              {regions[region].languages.includes('zh') && <option value="zh">中文</option>}
+              {regions[region]?.languages.includes('en') && <option value="en">English</option>}
+              {regions[region]?.languages.includes('pt') && <option value="pt">Português</option>}
+              {regions[region]?.languages.includes('nl') && <option value="nl">Nederlands</option>}
+              {regions[region]?.languages.includes('fr') && <option value="fr">Français</option>}
+              {regions[region]?.languages.includes('it') && <option value="it">Italiano</option>}
+              {regions[region]?.languages.includes('de') && <option value="de">Deutsch</option>}
+              {regions[region]?.languages.includes('es') && <option value="es">Español</option>}
+              {regions[region]?.languages.includes('sv') && <option value="sv">Svenska</option>}
+              {regions[region]?.languages.includes('pl') && <option value="pl">Polski</option>}
+              {regions[region]?.languages.includes('af') && <option value="af">Afrikaans</option>}
+              {regions[region]?.languages.includes('zu') && <option value="zu">isiZulu</option>}
+              {regions[region]?.languages.includes('sw') && <option value="sw">Kiswahili</option>}
+              {regions[region]?.languages.includes('ru') && <option value="ru">Русский</option>}
+              {regions[region]?.languages.includes('ja') && <option value="ja">日本語</option>}
+              {regions[region]?.languages.includes('zh') && <option value="zh">中文</option>}
             </select>
           </div>
         </div>
