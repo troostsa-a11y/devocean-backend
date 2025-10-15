@@ -1,0 +1,154 @@
+================================================================================
+DEVOCEAN LODGE - TERMS & CONDITIONS TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (terms section)
+LANGUAGE CODE: [xx]
+
+================================================================================
+HEADER
+================================================================================
+title = "Terms & Conditions"
+updatedDate = "06 Oct 2025"
+
+quickLinks.title = "Quick Links"
+quickLinks[0] = "Scope"
+quickLinks[1] = "Bookings"
+quickLinks[2] = "Prices & Payment"
+quickLinks[3] = "Cancellations"
+quickLinks[4] = "Guest Conduct"
+quickLinks[5] = "Force Majeure"
+quickLinks[6] = "Liability"
+quickLinks[7] = "Intellectual Property"
+quickLinks[8] = "Dispute Resolution"
+quickLinks[9] = "Changes"
+quickLinks[10] = "Governing Law"
+quickLinks[11] = "Contact"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Important Legal Notice:"
+badge.body = "These terms govern your use of our services and website. Please read them carefully before making a booking."
+
+================================================================================
+SCOPE
+================================================================================
+intro.title = "Scope"
+intro.body = "These Terms govern accommodation and related services provided by DEVOCEAN Lodge (TERRAfrique LDA). By booking, you agree to these Terms."
+
+================================================================================
+BOOKINGS
+================================================================================
+booking.title = "Bookings"
+booking.items[0] = "Provide accurate guest information and arrival/departure dates"
+booking.items[1] = "Special requests are subject to availability and confirmation"
+
+booking.reservationReq.title = "Reservation Requirements"
+booking.reservationReq.body = "Valid ID and credit card required for all bookings. Minimum age: 18 years."
+
+booking.checkinCheckout.title = "Check-in/Check-out"
+booking.checkinCheckout.body = "Check-in: 2:00 PM | Check-out: 11:00 AM. Early/late requests subject to availability."
+
+booking.groupBookings.title = "Group Bookings"
+booking.groupBookings.body = "Special terms apply for groups of 6+ rooms. Contact us for group rates and policies."
+
+================================================================================
+PRICES & PAYMENT
+================================================================================
+payment.title = "Prices & Payment"
+payment.items[0] = "Rates shown are per unit/night unless stated otherwise"
+payment.items[1] = "Deposits and settlement methods will be confirmed during booking"
+
+payment.paymentInfo.title = "Payment Information"
+payment.paymentInfo.body = "All prices are in USD unless otherwise stated. Currency conversion rates are approximate and subject to change. A valid credit card is required to secure your reservation. Additional charges may apply for incidental expenses."
+
+================================================================================
+CANCELLATIONS & NO-SHOWS
+================================================================================
+cancel.title = "Cancellations & No-shows"
+cancel.body = "Cancellation terms are disclosed at booking time and on your confirmation."
+
+cancel.cancellationCharges.title = "Cancellation Charges"
+
+cancel.cancellationCharges.plans[0].planName = "Semi-flexible rate plan:"
+cancel.cancellationCharges.plans[0].tiers[0].period = "30 days or more before arrival"
+cancel.cancellationCharges.plans[0].tiers[0].charge = "Full refund"
+cancel.cancellationCharges.plans[0].tiers[1].period = "29 days or less before arrival"
+cancel.cancellationCharges.plans[0].tiers[1].charge = "50% cancellation fee"
+
+cancel.cancellationCharges.plans[1].planName = "Non refundable rate plan:"
+cancel.cancellationCharges.plans[1].tiers[0].period = "Until 24 hours after reservation"
+cancel.cancellationCharges.plans[1].tiers[0].charge = "Full refund"
+cancel.cancellationCharges.plans[1].tiers[1].period = "In all other circumstances"
+cancel.cancellationCharges.plans[1].tiers[1].subtext = "The right to modify the date of arrival once under the condition of paying the difference in case the new date has a higher rate."
+cancel.cancellationCharges.plans[1].tiers[1].charge = "No refund"
+
+cancel.noshowPolicy.title = "No-Show Policy"
+cancel.noshowPolicy.body = "Guests who fail to arrive on the scheduled check-in date without prior notification will be considered no-shows. The full booking amount will be charged, and the reservation will be cancelled."
+
+================================================================================
+GUEST CONDUCT
+================================================================================
+conduct.title = "Guest conduct"
+conduct.items[0] = "Respect property rules, staff, other guests and the local community"
+conduct.items[1] = "No unlawful activities on the premises"
+
+conduct.zeroTolerance.title = "Zero Tolerance Policy"
+conduct.zeroTolerance.body = "We maintain a zero tolerance policy for disruptive behavior, illegal activities, or damage to property. Violations may result in immediate eviction without refund and may lead to legal action."
+
+================================================================================
+FORCE MAJEURE
+================================================================================
+force-majeure.title = "Force Majeure"
+force-majeure.intro = "We are not liable for failure to perform obligations due to circumstances beyond our reasonable control, including but not limited to:"
+force-majeure.items[0] = "Natural disasters, extreme weather conditions"
+force-majeure.items[1] = "Government restrictions, travel bans"
+force-majeure.items[2] = "Civil unrest, war, terrorism"
+force-majeure.items[3] = "Pandemics, epidemics, health emergencies"
+force-majeure.items[4] = "Utility failures, infrastructure breakdowns"
+force-majeure.footer = "In such cases, we will offer alternative dates or credit vouchers where possible. Refunds will be provided according to applicable laws and circumstances. However all damages and costs that are or could have been covered by generally available cancellation and travel insurance packages are excluded from our liability."
+
+================================================================================
+LIABILITY
+================================================================================
+liability.title = "Liability"
+liability.body = "To the extent permitted by law, we are not liable for indirect or unforeseeable losses."
+
+================================================================================
+INTELLECTUAL PROPERTY
+================================================================================
+intellectual-property.title = "Intellectual Property"
+intellectual-property.copyright.title = "Copyright Notice"
+intellectual-property.copyright.body = "All content on this website, including text, graphics, logos, and images, is the property of DEVOCEAN Lodge and protected by international copyright laws. Unauthorized use, reproduction, or distribution is prohibited. The DEVOCEAN Lodge name, logo, and all related marks are trademarks and may not be used without written permission."
+
+================================================================================
+DISPUTE RESOLUTION
+================================================================================
+disputes.title = "Dispute Resolution"
+disputes.process.title = "Resolution Process"
+disputes.process.body = "We aim to resolve any disputes amicably. Please contact us first to attempt resolution. If unresolved, disputes shall be settled through mediation before pursuing legal action."
+disputes.process.law = "Governing Law: Mozambican law shall govern these terms and any disputes."
+disputes.process.jurisdiction = "Jurisdiction: Courts of Maputo, Mozambique shall have exclusive jurisdiction."
+disputes.process.mediation = "Mediation: Parties agree to attempt mediation through an accredited mediator before initiating legal proceedings."
+
+================================================================================
+CHANGES TO THESE TERMS
+================================================================================
+changes.title = "Changes to these Terms"
+changes.body = "We may update Terms from time to time. The posted version applies to your stay."
+
+================================================================================
+GOVERNING LAW
+================================================================================
+law.title = "Governing law"
+law.body = "Mozambican law applies, subject to mandatory local consumer rules."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Contact"
+contact.body = 'Questions? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+
+================================================================================
+END OF TERMS & CONDITIONS
+================================================================================

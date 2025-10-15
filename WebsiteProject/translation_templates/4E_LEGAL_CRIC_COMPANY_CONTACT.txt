@@ -1,0 +1,67 @@
+================================================================================
+DEVOCEAN LODGE - CRIC (COMPANY & CONTACT) TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cric section)
+LANGUAGE CODE: [xx]
+
+================================================================================
+HEADER
+================================================================================
+title = "CRIC — Company & Contact"
+updatedDate = "27 Sep 2025"
+
+quickLinks.title = "Quick Links"
+quickLinks[0] = "Overview"
+quickLinks[1] = "Contact"
+quickLinks[2] = "Emergency"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Official Company Information:"
+badge.body = "Complete business registration details and contact information for DEVOCEAN Lodge."
+
+================================================================================
+OVERVIEW
+================================================================================
+intro.title = "Overview"
+intro.body = "Complete business registration details and contact information for DEVOCEAN Lodge."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Contact"
+contact.body = 'For general inquiries, bookings, and information about our services, please use the contact details provided below.'
+
+================================================================================
+EMERGENCY
+================================================================================
+emergency.title = "Emergency Contact"
+emergency.body = "For urgent matters outside business hours, please use our emergency contact details."
+
+================================================================================
+LABELS (Field Names)
+================================================================================
+labels.companyName = "Company Name"
+labels.registration = "Commercial Registration"
+labels.vat = "VAT Number (NUIT)"
+labels.license = "Business License (Alvará)"
+labels.legalForm = "Legal Form"
+labels.capital = "Share Capital"
+labels.address = "Registered Address"
+labels.email = "Email"
+labels.phone = "Phone"
+labels.businessHours = "Business Hours"
+labels.emergencyPhone = "Emergency Phone"
+labels.emergencyEmail = "Emergency Email"
+
+================================================================================
+STATIC VALUES
+================================================================================
+legalForm = "Limited Liability Company"
+businessHours = "Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday & Sunday: 8:00 AM - 12:00 PM<br>Front Desk: 6:00 AM - 10:00 PM (for guests)"
+emergencyPhoneNote = "For urgent matters outside business hours"
+
+================================================================================
+END OF CRIC
+================================================================================

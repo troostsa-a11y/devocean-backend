@@ -1,0 +1,131 @@
+================================================================================
+DEVOCEAN LODGE - PRIVACY POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (privacy section)
+LANGUAGE CODE: [xx]
+
+================================================================================
+HEADER
+================================================================================
+title = "Privacy Policy"
+updatedDate = "06 Oct 2025"
+
+quickLinks.title = "Quick Links"
+quickLinks[0] = "Who We Are"
+quickLinks[1] = "Data Collection"
+quickLinks[2] = "Data Usage"
+quickLinks[3] = "Data Sharing"
+quickLinks[4] = "Security"
+quickLinks[5] = "Retention"
+quickLinks[6] = "Your Rights"
+quickLinks[7] = "International Transfers"
+quickLinks[8] = "Contact"
+quickLinks[9] = "Policy Updates"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Your Privacy Matters:"
+badge.body = "We are committed to protecting your personal data and being transparent about how we collect, use, and safeguard your information."
+
+================================================================================
+WHO WE ARE
+================================================================================
+who.title = "Who we are"
+who.body = "DEVOCEAN Lodge is operated by TERRAfrique LDA, a company registered in Mozambique. Our registered address is Rua C, Parcela 12, Maputo 1118, Mozambique. We operate eco-friendly beach accommodation in Ponta do Ouro, Mozambique. We are committed to protecting your privacy and ensuring that your personal data is collected, processed, and used properly, lawfully, and transparently in accordance with applicable data protection laws. By accessing or using our website and services, you consent to the collection and use of your information as described in this Privacy Policy."
+
+================================================================================
+DATA COLLECTION
+================================================================================
+collect.title = "What personal data we collect"
+collect.intro = "We collect different types of information to provide and improve our services:"
+
+collect.categories[0].title = "Personal Information"
+collect.categories[0].items[0] = "Name, contact details"
+collect.categories[0].items[1] = "Passport/ID information"
+collect.categories[0].items[2] = "Payment information"
+collect.categories[0].items[3] = "Booking preferences"
+
+collect.categories[1].title = "Technical Data"
+collect.categories[1].items[0] = "IP address, device information"
+collect.categories[1].items[1] = "Browser type and version"
+collect.categories[1].items[2] = "Website usage analytics"
+collect.categories[1].items[3] = "Cookie data (with consent)"
+
+collect.categories[2].title = "Communication Data"
+collect.categories[2].items[0] = "Email correspondence"
+collect.categories[2].items[1] = "Customer service requests"
+collect.categories[2].items[2] = "Feedback and reviews"
+collect.categories[2].items[3] = "Marketing preferences"
+
+================================================================================
+DATA USAGE
+================================================================================
+use.title = "How we use your data"
+use.items[0] = "Manage bookings and provide services"
+use.items[1] = "Communicate about your stay, policies and offers (opt-in)"
+use.items[2] = "Improve our site and services (analytics, security)"
+use.items[3] = "Comply with legal/financial obligations"
+
+================================================================================
+DATA SHARING
+================================================================================
+share.title = "When we share data"
+share.items[0] = "Payment providers and booking platforms to process your reservations and payments"
+share.items[1] = "Analytics services to understand website usage and improve our services"
+share.items[2] = "Advertising services for targeted marketing (only with your consent)"
+share.items[3] = "IT service providers, hosting providers, and technical support vendors under strict confidentiality agreements"
+share.items[4] = "Legal authorities when required by law, regulation, court order, or other legal process"
+share.items[5] = "To enforce our agreements or protect our rights, property, or safety"
+share.items[6] = "In the event of a merger, acquisition, or sale of assets, your information may be transferred to the new owner"
+share.footer = "We require all third parties to respect the security of your personal data and use it only for the purposes for which it was transferred. We do not allow third parties to use your personal data for their own purposes and only permit them to process your data for specified purposes in accordance with our instructions."
+
+================================================================================
+SECURITY
+================================================================================
+security.title = "Security measures"
+security.intro = "We take data security seriously and implement:"
+security.measures[0] = "Encryption of sensitive data in transit and at rest"
+security.measures[1] = "Regular security assessments and penetration testing"
+security.measures[2] = "Access controls and authentication mechanisms"
+security.measures[3] = "Staff training on data protection and privacy"
+security.measures[4] = "Secure data backup and disaster recovery procedures"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "Data retention"
+retention.body = "We will retain your personal information for as long as necessary to fulfill the purposes for which it was collected, as detailed in this Privacy Policy. Generally, we retain personal data for up to 1 year after your last interaction with us, unless a longer retention period is required or permitted by law. We may need to retain certain information for longer periods for specific reasons including: record-keeping and reporting in accordance with applicable law (typically 7 years for financial and tax records), enforcement of legal rights, fraud prevention, and dispute resolution. Once the retention period expires, your personal data will be securely deleted or anonymized. Residual anonymous information and aggregate information, which does not identify you directly or indirectly, may be stored indefinitely for statistical and analytical purposes."
+
+================================================================================
+YOUR RIGHTS
+================================================================================
+rights.title = "Your privacy rights"
+rights.items[0] = "Right to access your personal data"
+rights.items[1] = "Right to correct inaccurate data"
+rights.items[2] = "Right to delete your personal data"
+rights.items[3] = "Right to restrict or object to processing"
+rights.items[4] = "Right to data portability"
+rights.items[5] = "Right to withdraw consent"
+
+================================================================================
+INTERNATIONAL TRANSFERS
+================================================================================
+transfers.title = "International Data Transfers"
+transfers.body = "As we operate in multiple jurisdictions, your data may be transferred to and processed in countries outside of your residence. We ensure such transfers comply with applicable data protection laws through adequacy decisions by the European Commission, Standard Contractual Clauses (SCCs), appropriate security safeguards, and transparency about transfer locations."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Contact our privacy team"
+contact.body = 'If you have any questions, concerns, or requests regarding this Privacy Policy or the processing of your personal information, or if you wish to exercise any of your privacy rights, please contact us at:<br><br><strong>Email:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Phone:</strong> +258 8441 82252<br><strong>Postal Address:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>We will respond to your request in accordance with applicable data protection law. For grievances or concerns about the processing of your information, you may also contact our Data Protection Officer at the email address above.'
+
+================================================================================
+POLICY UPDATES
+================================================================================
+updates.title = "Policy Updates"
+updates.body = "We may update this privacy policy from time to time to reflect changes in our practices, technology, legal requirements, or other factors. We will notify you of any material changes through email notifications for registered users, prominent notices on our website, and an updated 'last updated' date. We encourage you to periodically review this policy to stay informed about how we protect your information."
+
+================================================================================
+END OF PRIVACY POLICY
+================================================================================

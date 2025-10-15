@@ -1,0 +1,130 @@
+================================================================================
+DEVOCEAN LODGE - MAIN UI TRANSLATIONS BATCH FILE
+================================================================================
+Instructions: Translate all text in quotes. Keep structure markers unchanged.
+File: WebsiteProject/src/i18n/translations.js
+
+LANGUAGE CODE: [xx]  (e.g., en, pt, nl, fr, it, de, es, sv, pl, ptmz)
+
+================================================================================
+NAVIGATION
+================================================================================
+nav.home = "Home"
+nav.stay = "Stay"
+nav.experiences = "Experiences"
+nav.todo = "What to do"
+nav.gallery = "Gallery"
+nav.location = "Location"
+nav.contact = "Contact"
+
+================================================================================
+HERO SECTION
+================================================================================
+hero.title = "DEVOCEAN Lodge"
+hero.subtitle = "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique."
+hero.ctaPrimary = "Book your stay"
+hero.ctaSecondary = "Explore the lodge"
+hero.badge = "Guest-loved comfort & value"
+
+================================================================================
+STAY SECTION
+================================================================================
+stay.headline = "Stay with us"
+stay.blurb = "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality."
+stay.moreDetails = "More details"
+
+================================================================================
+EXPERIENCES SECTION
+================================================================================
+experiences.headline = "Experiences"
+experiences.blurb = "Ocean and forest adventures right on your doorstep."
+experiences.operators = "Trusted local operators:"
+
+================================================================================
+WHAT TO DO SECTION
+================================================================================
+todo.headline = "What to do in Ponta do Ouro"
+todo.note = "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below."
+
+todo.items[0].title = "Lighthouse hike & Lua Do Mar"
+todo.items[0].body = "Hike to the Old Lighthouse for panoramic views. Continue to Lua Do Mar Restaurant on the dune. Often spot dolphins year-round, whales (May–Oct) and turtles (Dec–Jan). Mind the tide: avoid the beach route from 3 hours before to 3 hours after high tide; rogue waves can push you against rocks."
+
+todo.items[1].title = "Walk to Ponta Malongane"
+todo.items[1].body = "Beach-walk along the shore to the next village. Midway, stairs through banana trees lead to Campismo Nino Pub & Restaurant with great views. Near the bay transition, a path to Sky Island offers paragliding. Famous pubs in Malongane: Drunken Clam and Sunset Shack. Return via beach or the sandy 4×4 road."
+
+todo.items[2].title = "Surf, dive & ocean research"
+todo.items[2].body = "Surfboard rentals at the Beach Bar; several dive centers in the village and a dolphin/whale research center."
+
+todo.items[3].title = "Eat & unwind nearby"
+todo.items[3].body = "There are ~16 pubs and restaurants within 500 m of DEVOCEAN. For a relaxing full-body massage, ask for Lisa (LIZ-Way Massage)."
+
+todo.items[4].title = "Quad bike rentals"
+todo.items[4].body = "Occasional private rentals from locals. Typical rate: around MZN 2000 per hour (negotiation varies)."
+
+================================================================================
+GALLERY SECTION
+================================================================================
+gallery.headline = "Gallery"
+galleryHeading = "Gallery"
+
+================================================================================
+LOCATION SECTION
+================================================================================
+location.headline = "Location"
+location.blurb = "Ponta do Ouro – Matutuíne District, Southern Mozambique."
+location.items[0] = "Ponta do Ouro town, a short walk from the beach"
+location.items[1] = "15 min to Ponta Malongane • 25 min to Kosi Bay border"
+location.items[2] = "Secure parking • Local cafés & markets nearby"
+location.viewMap = "View Interactive Map"
+
+================================================================================
+CONTACT SECTION
+================================================================================
+contact.headline = "Contact & Booking"
+contact.blurb = "Questions, dates, special requests or group bookings – we're happy to help."
+contact.call = "WhatsApp"
+contact.email = "Email"
+contact.directions = "Directions"
+contact.bookNow = "Rates & Availability"
+
+================================================================================
+CONTACT FORM
+================================================================================
+form.name = "Name"
+form.email = "Email"
+form.stayLabel = "Interested in staying:"
+form.checkin = "From"
+form.checkout = "Until"
+form.unitLabel = "My preferred unit is:"
+form.units[0] = "Safari Tent - shared bathroom"
+form.units[1] = "Comfort Tent - private bathroom"
+form.units[2] = "Garden Cottage - inverter AC"
+form.units[3] = "Thatched Chalet - inverter AC"
+form.message = "Message"
+form.send = "Send"
+form.consent = "By submitting you agree to be contacted about your inquiry."
+form.phName = "Your name"
+form.phEmail = "your@email.com"
+form.phMsg = "Tell us more about your wishes..."
+form.success = "Thank you! Your message has been sent. Check your email for a confirmation."
+
+================================================================================
+FOOTER
+================================================================================
+footer.rights = "All rights reserved."
+footer.desc = "Family-run eco-hospitality and community projects in Southern Mozambique."
+
+================================================================================
+LEGAL MENU
+================================================================================
+legal.title = "Legal"
+legal.privacy = "Privacy Policy"
+legal.cookies = "Cookie Policy"
+legal.terms = "Terms & Conditions"
+legal.gdpr = "GDPR Info"
+legal.cric = "Consumer Rights & Contact"
+legal.manage = "Cookie Settings"
+
+================================================================================
+END OF MAIN UI TRANSLATIONS
+================================================================================
