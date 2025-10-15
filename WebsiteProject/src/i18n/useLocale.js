@@ -116,48 +116,19 @@ function getCountryCode() {
     return window.__CF_COUNTRY__;
   }
   
-  // Priority 2: Fall back to browser language detection (local dev)
-  const list = (navigator.languages && navigator.languages.length)
-    ? navigator.languages
-    : [navigator.language].filter(Boolean);
-
-  console.warn('[DEVOCEAN Browser Debug] Languages:', list);
-
-  // Collect all country codes from browser languages
-  const countryCodes = [];
-  for (const l of list) {
-    const m = String(l || "").toUpperCase().match(/-([A-Z]{2})/);
-    if (m) countryCodes.push(m[1]);
-  }
-  
-  console.warn('[DEVOCEAN Browser Debug] Country codes found:', countryCodes);
-  
-  // Look for African country codes first (target market)
-  const africanCodes = ['ZA', 'MZ', 'KE', 'TZ', 'UG', 'ZW', 'BW', 'NA', 'EG', 'MA', 'SZ', 'RE', 'MU', 'SC', 'LS'];
-  for (const cc of countryCodes) {
-    if (africanCodes.includes(cc)) {
-      console.warn('[DEVOCEAN Browser Debug] ✓ Found African code:', cc);
-      return cc;
-    }
-  }
-  
-  // Return first country code found
-  if (countryCodes.length > 0) {
-    console.warn('[DEVOCEAN Browser Debug] Using first code:', countryCodes[0]);
-    return countryCodes[0];
-  }
-  
-  // Try Intl.DateTimeFormat locale
+  // Priority 2: For local dev only, try Intl.DateTimeFormat locale as hint
+  // NOTE: We do NOT extract from navigator.languages because those indicate
+  // language preference (e.g., "en-US"), NOT actual location
   try {
     const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
     const m = loc.toUpperCase().match(/-([A-Z]{2})/);
     if (m) {
-      console.warn('[DEVOCEAN Browser Debug] Using Intl code:', m[1]);
+      console.warn('[DEVOCEAN Browser Debug] Using Intl locale hint:', m[1]);
       return m[1];
     }
   } catch { }
   
-  console.warn('[DEVOCEAN Browser Debug] ⚠️ No country code found');
+  console.warn('[DEVOCEAN Browser Debug] ⚠️ No country code found, will use timezone detection');
   return null;
 }
 
