@@ -1,20 +1,20 @@
 import { useState } from 'react';
-import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
+import { Menu, Phone, Mail } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
 
-export default function Header({ ui, lang, currency, region, onLangChange, onCurrencyChange, onRegionChange, bookUrl }) {
+export default function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
-  // Define regions with metadata
+  // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
-    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
-    asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh', 'ru'], currencies: ['USD', 'JPY', 'CNY', 'RUB', 'EUR', 'GBP'] },
-    americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
-    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt', 'af', 'zu', 'sw'], currencies: ['USD', 'MZN', 'ZAR', 'TZS', 'KES', 'EUR', 'GBP'] },
-    oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
+    europe: { name: 'Europe', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'] },
+    asia: { name: 'Asia', languages: ['en', 'ja', 'zh', 'ru'] },
+    americas: { name: 'Americas', languages: ['en', 'es', 'fr'] },
+    africa: { name: 'Africa', languages: ['en', 'fr', 'pt', 'af', 'zu', 'sw'] },
+    oceania: { name: 'Oceania', languages: ['en'] }
   };
 
   const handleRegionChange = (newRegion) => {
@@ -23,95 +23,6 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     // If current language is not available in the new region, switch to English
     if (!regions[newRegion].languages.includes(lang)) {
       onLangChange('en');
-    }
-    
-    // Africa region language-currency auto-switching
-    if (lang === 'pt' && newRegion === 'africa' && currency !== 'MZN') {
-      onCurrencyChange('MZN');
-    }
-    else if (lang === 'en' && newRegion === 'africa' && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (lang === 'af' && newRegion === 'africa' && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (lang === 'zu' && newRegion === 'africa' && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (lang === 'sw' && newRegion === 'africa' && currency !== 'TZS') {
-      onCurrencyChange('TZS');
-    }
-    // Europe region language-currency auto-switching
-    else if (lang === 'en' && newRegion === 'europe' && currency !== 'GBP') {
-      onCurrencyChange('GBP');
-    }
-    else if (lang === 'pt' && newRegion === 'europe' && currency !== 'EUR') {
-      onCurrencyChange('EUR');
-    }
-    else if (lang === 'sv' && newRegion === 'europe' && currency !== 'SEK') {
-      onCurrencyChange('SEK');
-    }
-    else if (lang === 'pl' && newRegion === 'europe' && currency !== 'PLN') {
-      onCurrencyChange('PLN');
-    }
-    // Asia region language-currency auto-switching
-    else if (lang === 'ja' && newRegion === 'asia' && currency !== 'JPY') {
-      onCurrencyChange('JPY');
-    }
-    else if (lang === 'zh' && newRegion === 'asia' && currency !== 'CNY') {
-      onCurrencyChange('CNY');
-    }
-    else if (lang === 'ru' && newRegion === 'asia' && currency !== 'RUB') {
-      onCurrencyChange('RUB');
-    }
-    // If current currency is not available in the new region, switch to USD
-    else if (!regions[newRegion].currencies.includes(currency)) {
-      onCurrencyChange('USD');
-    }
-  };
-
-  const handleLangChange = (newLang) => {
-    onLangChange(newLang);
-    
-    // Auto-switch to language-specific currencies when available in current region
-    // Africa region
-    if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
-      onCurrencyChange('MZN');
-    }
-    else if (newLang === 'en' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (newLang === 'af' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (newLang === 'zu' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (newLang === 'sw' && region === 'africa' && regions[region].currencies.includes('TZS') && currency !== 'TZS') {
-      onCurrencyChange('TZS');
-    }
-    // Europe region
-    else if (newLang === 'en' && region === 'europe' && regions[region].currencies.includes('GBP') && currency !== 'GBP') {
-      onCurrencyChange('GBP');
-    }
-    else if (newLang === 'pt' && region === 'europe' && regions[region].currencies.includes('EUR') && currency !== 'EUR') {
-      onCurrencyChange('EUR');
-    }
-    else if (newLang === 'sv' && region === 'europe' && regions[region].currencies.includes('SEK') && currency !== 'SEK') {
-      onCurrencyChange('SEK');
-    }
-    else if (newLang === 'pl' && region === 'europe' && regions[region].currencies.includes('PLN') && currency !== 'PLN') {
-      onCurrencyChange('PLN');
-    }
-    // Asia region
-    else if (newLang === 'ja' && region === 'asia' && regions[region].currencies.includes('JPY') && currency !== 'JPY') {
-      onCurrencyChange('JPY');
-    }
-    else if (newLang === 'zh' && region === 'asia' && regions[region].currencies.includes('CNY') && currency !== 'CNY') {
-      onCurrencyChange('CNY');
-    }
-    else if (newLang === 'ru' && region === 'asia' && regions[region].currencies.includes('RUB') && currency !== 'RUB') {
-      onCurrencyChange('RUB');
     }
   };
 
@@ -182,46 +93,24 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
           </div>
 
           <div className="flex items-center gap-1.5">
-            {/* Region selector */}
-            <div className="relative flex items-center gap-1">
-              <Globe2 size={20} />
-              <button
-                onClick={() => setRegionMenuOpen(!regionMenuOpen)}
-                className="border border-white/40 rounded px-2 py-1 w-[40px] text-left"
-                aria-label="Select region"
-              >
-                {regions[region].short}
-              </button>
-              
-              {regionMenuOpen && (
-                <>
-                  <div 
-                    className="fixed inset-0 z-40" 
-                    onClick={() => setRegionMenuOpen(false)}
-                  />
-                  <div className="absolute left-0 top-full mt-1 bg-[#8B4513] text-white rounded py-1 w-[90px] z-50">
-                    {Object.entries(regions).map(([key, regionData]) => (
-                      <button
-                        key={key}
-                        onClick={() => {
-                          handleRegionChange(key);
-                          setRegionMenuOpen(false);
-                        }}
-                        className={`w-full text-left px-3 py-2 hover:bg-[#6B3410] transition-colors ${
-                          region === key ? 'bg-blue-600' : ''
-                        }`}
-                      >
-                        {regionData.name}
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+            {/* Region selector - same width as language dropdown */}
+            <select
+              value={region}
+              onChange={(e) => handleRegionChange(e.target.value)}
+              className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
+              aria-label="Select region"
+            >
+              {Object.entries(regions).map(([key, regionData]) => (
+                <option key={key} value={key}>
+                  {regionData.name}
+                </option>
+              ))}
+            </select>
 
+            {/* Language selector */}
             <select
               value={lang}
-              onChange={(e) => handleLangChange(e.target.value)}
+              onChange={(e) => onLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
             >
               {regions[region].languages.includes('en') && <option value="en">English</option>}
@@ -239,25 +128,6 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               {regions[region].languages.includes('ru') && <option value="ru">Русский</option>}
               {regions[region].languages.includes('ja') && <option value="ja">日本語</option>}
               {regions[region].languages.includes('zh') && <option value="zh">中文</option>}
-            </select>
-
-            <select
-              value={currency}
-              onChange={(e) => onCurrencyChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[82px] text-white"
-            >
-              {regions[region].currencies.includes('USD') && <option value="USD">{ui.currencies?.USD || 'US-Dollar'}</option>}
-              {regions[region].currencies.includes('JPY') && <option value="JPY">{ui.currencies?.JPY || 'Yen'}</option>}
-              {regions[region].currencies.includes('CNY') && <option value="CNY">{ui.currencies?.CNY || 'Yuan'}</option>}
-              {regions[region].currencies.includes('RUB') && <option value="RUB">{ui.currencies?.RUB || 'Ruble'}</option>}
-              {regions[region].currencies.includes('MZN') && <option value="MZN">{ui.currencies?.MZN || 'Meticais'}</option>}
-              {regions[region].currencies.includes('ZAR') && <option value="ZAR">{ui.currencies?.ZAR || 'Rand'}</option>}
-              {regions[region].currencies.includes('TZS') && <option value="TZS">{ui.currencies?.TZS || 'TZ Shilling'}</option>}
-              {regions[region].currencies.includes('KES') && <option value="KES">{ui.currencies?.KES || 'KE Shilling'}</option>}
-              {regions[region].currencies.includes('EUR') && <option value="EUR">{ui.currencies?.EUR || 'Euro'}</option>}
-              {regions[region].currencies.includes('GBP') && <option value="GBP">{ui.currencies?.GBP || 'GB-Pound'}</option>}
-              {regions[region].currencies.includes('SEK') && <option value="SEK">{ui.currencies?.SEK || 'Krona'}</option>}
-              {regions[region].currencies.includes('PLN') && <option value="PLN">{ui.currencies?.PLN || 'Zloty'}</option>}
             </select>
           </div>
         </div>

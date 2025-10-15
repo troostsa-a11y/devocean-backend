@@ -16,7 +16,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 export default function App() {
-  const { lang, currency, region, setLang, setCurrency, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
+  const { lang, currency, region, setLang, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
 
   // Layout recalculation for sticky header
   useEffect(() => {
@@ -53,7 +53,6 @@ export default function App() {
           currency={currency}
           region={region}
           onLangChange={setLang}
-          onCurrencyChange={setCurrency}
           onRegionChange={setRegion}
           bookUrl={bookUrl}
         />
