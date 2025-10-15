@@ -18,7 +18,8 @@
     it:   { backButton: "Indietro",         back: "Home",                   updated: "Ultimo aggiornamento" },
     es:   { backButton: "Volver",           back: "Inicio",                 updated: "Última actualización" },
     sv:   { backButton: "Tillbaka",         back: "Hem",                    updated: "Senast uppdaterad" },
-    pl:   { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" }
+    pl:   { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" },
+    ja:   { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" }
   };
 
   // Root dict
