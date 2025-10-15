@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { LazyMotion, domAnimation } from 'framer-motion';
-import { useLocale } from './i18n/useLocale';
+import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
 
@@ -16,7 +16,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 
 export default function App() {
-  const { lang, currency, region, setLang, setCurrency, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale } = useLocale();
+  const { lang, currency, region, setLang, setCurrency, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
 
   // Layout recalculation for sticky header
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function App() {
     return () => window.removeEventListener("resize", recalc);
   }, []);
 
-  const bookUrl = buildBookingUrl(bookingLocale, currency);
+  const bookUrl = buildBookingUrl(bookingLocale, currency, countryCode, CC_TO_CURRENCY);
   const units = localizeUnits(lang);
   const experiences = localizeExperiences(lang);
 

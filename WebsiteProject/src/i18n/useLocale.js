@@ -5,11 +5,14 @@ const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "
 const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN", "JPY", "CNY", "RUB"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
-const CC_TO_CURRENCY = {
+export const CC_TO_CURRENCY = {
   US: "USD", GB: "GBP",
   NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR",
   PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
   ZA: "ZAR", MZ: "MZN",
+  // Southern African countries
+  LS: "LSL", BW: "BWP", NA: "NAD", SZ: "SZL", ZM: "ZMW", MW: "MWK", 
+  ZW: "USD", TZ: "TZS", KE: "KES",
   SE: "SEK",
   PL: "PLN",
   JP: "JPY",
@@ -34,9 +37,10 @@ const CC_TO_CONTINENT = {
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
   ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
   SZ: "africa", RE: "africa", MU: "africa", SC: "africa", LS: "africa",
-  AO: "africa", GH: "africa", NG: "africa", ET: "africa", SD: "africa",
-  DZ: "africa", TN: "africa", LY: "africa", SN: "africa", CI: "africa",
-  CM: "africa", RW: "africa", BI: "africa", SO: "africa", DJ: "africa",
+  ZM: "africa", MW: "africa", AO: "africa", GH: "africa", NG: "africa", 
+  ET: "africa", SD: "africa", DZ: "africa", TN: "africa", LY: "africa", 
+  SN: "africa", CI: "africa", CM: "africa", RW: "africa", BI: "africa", 
+  SO: "africa", DJ: "africa",
   
   // Americas
   US: "americas", CA: "americas", MX: "americas", BR: "americas", AR: "americas",
@@ -382,5 +386,6 @@ export function useLocale() {
     loading,
     bookingLocale: getBookingLocaleForRegion(lang, region),
     dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
+    countryCode: getCountryCode(), // Expose country code for booking URL
   };
 }

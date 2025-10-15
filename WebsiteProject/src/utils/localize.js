@@ -37,5 +37,8 @@ export const mapEmbed = (lat, lng, zoom = 13) =>
 export const directionsUrl = (lat, lng) =>
   `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 
-export const buildBookingUrl = (locale, currency) =>
-  `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}`;
+export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
+  // Use country-specific currency if available, otherwise use selected currency
+  const bookingCurrency = (countryCode && ccToCurrency[countryCode]) || currency;
+  return `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${bookingCurrency}`;
+};
