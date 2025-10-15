@@ -27,6 +27,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   cd /tmp/deploy_temp && npx wrangler pages deploy . --project-name=devocean-lodge
   ```
 - **Project name:** `devocean-lodge` (defined in WebsiteProject/wrangler.toml)
+- **IMPORTANT:** Build script automatically copies `functions/` to `dist/` for Cloudflare Pages Functions (middleware)
 - This workaround is documented and reliable for production deployments
 
 ## System Architecture
@@ -69,7 +70,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - Added missing African countries: eSwatini (SZ), Reunion (RE), Mauritius (MU), Seychelles (SC), Lesotho (LS)
   - Fixed timezone overlap causing grey screens: Africa (UTC+0 to +4), Europe (UTC-1 to +2), Asia (UTC+3 to +12) now have distinct non-overlapping ranges
   - Resolves Mozambique and Vietnam grey screen issues in Microsoft Clarity
-- **Cloudflare IP Geolocation (Oct 14):**
+- **Cloudflare IP Geolocation (Oct 14-15):**
   - Middleware injects country code from request.cf.country into HTML as window.__CF_COUNTRY__
   - Frontend prioritizes IP-based country detection over browser language hints
   - Browser detection kept as fallback for local development
@@ -77,6 +78,9 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - Cache versioning (v2) invalidates old browser-based cached regions
   - Fixes French-in-Asia, eSwatini, UAE, Bosnia Herzegovina, and other mapping issues
   - Production benefits: Free, instant, accurate, no external API needed
+  - **Critical Fix (Oct 15):** Build script now copies functions/ directory to dist/ so middleware deploys properly
+  - **Hotelrunner Locale Fix (Oct 15):** isiZulu changed from en-ZA to en-GB locale (Hotelrunner doesn't support Zulu)
+  - **Currency Flash Fix (Oct 15):** Added English currency fallbacks to critical UI to prevent dropdown text switching during load
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**
