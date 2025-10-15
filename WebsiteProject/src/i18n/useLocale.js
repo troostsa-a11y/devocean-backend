@@ -14,7 +14,7 @@ const CC_TO_CURRENCY = {
   PL: "PLN",
 };
 
-// Map country codes to continents
+// Map country codes to continents (comprehensive)
 const CC_TO_CONTINENT = {
   // Europe
   GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
@@ -24,18 +24,35 @@ const CC_TO_CONTINENT = {
   RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
   SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
   CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
+  UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
+  ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
+  
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
   ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
   SZ: "africa", RE: "africa", MU: "africa", SC: "africa", LS: "africa",
+  AO: "africa", GH: "africa", NG: "africa", ET: "africa", SD: "africa",
+  DZ: "africa", TN: "africa", LY: "africa", SN: "africa", CI: "africa",
+  CM: "africa", RW: "africa", BI: "africa", SO: "africa", DJ: "africa",
+  
   // Americas
   US: "americas", CA: "americas", MX: "americas", BR: "americas", AR: "americas",
-  CL: "americas", CO: "americas", PE: "americas",
-  // Asia
+  CL: "americas", CO: "americas", PE: "americas", VE: "americas", EC: "americas",
+  UY: "americas", PY: "americas", BO: "americas", CR: "americas", PA: "americas",
+  GT: "americas", HN: "americas", SV: "americas", NI: "americas", CU: "americas",
+  DO: "americas", HT: "americas", JM: "americas", TT: "americas", BB: "americas",
+  
+  // Asia & Middle East
   CN: "asia", JP: "asia", KR: "asia", IN: "asia", TH: "asia",
   SG: "asia", MY: "asia", ID: "asia", PH: "asia", VN: "asia",
+  AE: "asia", SA: "asia", QA: "asia", KW: "asia", BH: "asia",
+  OM: "asia", IL: "asia", JO: "asia", LB: "asia", TR: "asia",
+  PK: "asia", BD: "asia", LK: "asia", NP: "asia", MM: "asia",
+  KH: "asia", LA: "asia", MN: "asia", KZ: "asia", UZ: "asia",
+  
   // Oceania
-  AU: "oceania", NZ: "oceania", FJ: "oceania",
+  AU: "oceania", NZ: "oceania", FJ: "oceania", PG: "oceania", NC: "oceania",
+  PF: "oceania", WS: "oceania", TO: "oceania", VU: "oceania", SB: "oceania",
 };
 
 // Meridian-based continent detection using GMT offsets
@@ -222,27 +239,36 @@ function pickInitialCurrency(langBase) {
 }
 
 function pickInitialRegion(langBase) {
+  // Check localStorage but validate it's not corrupted
   const saved = localStorage.getItem("site.region");
-  if (saved && SUPPORTED_REGIONS.includes(saved)) return saved;
+  const savedVersion = localStorage.getItem("site.region.version");
+  
+  // Version 2: IP-based geolocation (Oct 2024)
+  // Clear old cached values from browser-based detection
+  if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "2") {
+    console.warn('[DEVOCEAN Region Debug] Using saved region (v2):', saved);
+    return saved;
+  }
   
   // Get country code (Cloudflare IP-based or browser fallback)
   const cc = getCountryCode();
+  console.warn('[DEVOCEAN Region Debug] Country code from Cloudflare/Browser:', cc);
   
   // Priority 1: Use country code → continent mapping (most accurate)
   if (cc && CC_TO_CONTINENT[cc]) {
-    console.warn('[DEVOCEAN Region Debug] ✓ Using country code:', cc, '→', CC_TO_CONTINENT[cc]);
+    console.warn('[DEVOCEAN Region Debug] ✓ Mapped to continent:', CC_TO_CONTINENT[cc]);
     return CC_TO_CONTINENT[cc];
   }
   
   // Priority 2: Use timezone-based detection (fallback for unmapped countries)
   const tzContinent = getTimezoneContinent();
   if (tzContinent) {
-    console.warn('[DEVOCEAN Region Debug] ✓ Using timezone continent:', tzContinent);
+    console.warn('[DEVOCEAN Region Debug] ⚠️ Country', cc, 'not mapped! Using timezone:', tzContinent);
     return tzContinent;
   }
   
   // Final fallback to Europe as default
-  console.warn('[DEVOCEAN Region Debug] ⚠️ Defaulting to europe');
+  console.warn('[DEVOCEAN Region Debug] ⚠️ No detection worked, defaulting to europe');
   return "europe";
 }
 
@@ -352,6 +378,7 @@ export function useLocale() {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
       setRegionState(newRegion);
       localStorage.setItem("site.region", newRegion);
+      localStorage.setItem("site.region.version", "2"); // Mark as IP-based version
     }
   };
 
