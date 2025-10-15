@@ -66,6 +66,7 @@ export const UI = {
       gdpr: "GDPR Info",
       cric: "Consumer Rights & Contact",
       manage: "Cookie Settings",
+      ccpa: "Do Not Sell My Info",
     }
   },
 
@@ -135,6 +136,7 @@ export const UI = {
       gdpr: "Informação RODO",
       cric: "Direitos do Consumidor e Contacto",
       manage: "Configurações de Cookies",
+      ccpa: "Não Vender Minhas Informações",
     }
   },
 
@@ -203,6 +205,7 @@ export const UI = {
       gdpr: "GDPR-informatie",
       cric: "Consumentenrechten & contact",
       manage: "Cookie-instellingen",
+      ccpa: "Verkoop Mijn Info Niet",
     }
   },
 
@@ -334,7 +337,8 @@ export const UI = {
       terms: "Conditions générales",
       gdpr: "Infos RGPD",
       cric: "Droits du consommateur & contact",
-      manage: "Paramètres des cookies"
+      manage: "Paramètres des cookies",
+      ccpa: "Ne Vendez Pas Mes Infos",
     }
   },
 
@@ -403,6 +407,7 @@ export const UI = {
       gdpr: "Informazioni GDPR",
       cric: "Diritti dei consumatori & contatti",
       manage: "Impostazioni cookie",
+      ccpa: "Non Vendere Le Mie Info",
     }
   },
 
@@ -471,6 +476,7 @@ export const UI = {
       gdpr: "DSGVO-Informationen",
       cric: "Verbraucherrechte & Kontakt",
       manage: "Cookie-Einstellungen",
+      ccpa: "Verkaufen Sie Meine Daten Nicht",
     }
   },
 
@@ -540,6 +546,7 @@ export const UI = {
       gdpr: "Información GDPR",
       cric: "Derechos del consumidor & contacto",
       manage: "Configuración de cookies",
+      ccpa: "No Vender Mi Información",
     }
   },
 
@@ -609,6 +616,7 @@ export const UI = {
       gdpr: "GDPR-information",
       cric: "Konsumenträttigheter & Kontakt",
       manage: "Cookieinställningar",
+      ccpa: "Sälj Inte Min Info",
     }
   },
 
@@ -678,6 +686,7 @@ export const UI = {
       gdpr: "Informacje o RODO",
       cric: "Prawa konsumenta i kontakt",
       manage: "Ustawienia cookies",
+      ccpa: "Nie Sprzedawaj Moich Danych",
     }
   },
 
@@ -747,6 +756,7 @@ export const UI = {
       gdpr: "GDPR情報",
       cric: "消費者権利 & 連絡先",
       manage: "Cookie設定",
+      ccpa: "個人情報を売却しないで",
     }
   },
 
@@ -815,6 +825,7 @@ export const UI = {
       gdpr: "GDPR 信息",
       cric: "消费者权利与联系方式",
       manage: "Cookie 设置",
+      ccpa: "不要出售我的信息",
     }
   },
 
@@ -884,6 +895,7 @@ export const UI = {
       gdpr: "Информация GDPR",
       cric: "Права потребителей и контакты",
       manage: "Настройки cookies",
+      ccpa: "Не Продавайте Мои Данные",
     }
   },
 
@@ -953,6 +965,7 @@ export const UI = {
       gdpr: "GDPR Inligting",
       cric: "Verbruikersregte en Kontakte",
       manage: "Koekie-instellings",
+      ccpa: "Moenie My Info Verkoop Nie",
     }
   },
 
@@ -1022,6 +1035,7 @@ export const UI = {
       gdpr: "Ulwazi lwe-GDPR",
       cric: "Amalungelo omthengi kanye noxhumano",
       manage: "Izilungiselelo zama-Cookie",
+      ccpa: "Ungathengisi Ulwazi Lwami",
     }
   },
 
@@ -1057,7 +1071,7 @@ export const UI = {
       units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],
     },
     footer: { rights: "Haki zote zimehifadhiwa.", desc: "Ukaribu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji." },
-    legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi" },
+    legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi", ccpa: "Usiuze Taarifa Zangu" },
     currencies: { USD: "Dola za Marekani", MZN: "Meticais", ZAR: "Rand", EUR: "Euro", GBP: "Pauni ya GB", SEK: "Krona", PLN: "Zloty", JPY: "Yen", CNY: "Yuan", RUB: "Ruble", TZS: "Shilingi ya Tanzania", KES: "Shilingi ya Kenya" },
     galleryHeading: "Matunzio",
   },
@@ -1632,6 +1646,7 @@ export const L10N = {
       gdpr: "GDPR情報",
       cric: "消費者権利 & 連絡先",
       manage: "Cookie設定",
+      ccpa: "個人情報を売却しないで",
     }
   },
 
@@ -1750,6 +1765,7 @@ export const L10N = {
       gdpr: "GDPR 信息",
       cric: "消费者权利与联系方式",
       manage: "Cookie 设置",
+      ccpa: "不要出售我的信息",
     }
   },
 
@@ -1868,6 +1884,7 @@ export const L10N = {
       gdpr: "Информация GDPR",
       cric: "Права потребителей и контакты",
       manage: "Настройки cookies",
+      ccpa: "Не Продавайте Мои Данные",
     }
   },
 
@@ -2011,7 +2028,7 @@ export const L10N = {
       units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],
     },
     footer: { rights: "Haki zote zimehifadhiwa.", desc: "Ukaribu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji." },
-    legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi" },
+    legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi", ccpa: "Usiuze Taarifa Zangu" },
     currencies: { USD: "Dola za Marekani", MZN: "Meticais", ZAR: "Rand", EUR: "Euro", GBP: "Pauni ya GB", SEK: "Krona", PLN: "Zloty", JPY: "Yen", CNY: "Yuan", RUB: "Ruble", TZS: "Shilingi ya Tanzania", KES: "Shilingi ya Kenya" },
     galleryHeading: "Matunzio",
     units: {

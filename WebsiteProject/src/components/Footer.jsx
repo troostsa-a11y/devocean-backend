@@ -117,6 +117,14 @@ export default function Footer({ units, experiences, ui }) {
             <li><a className="hover:text-white" href="/legal/terms.html">{ui?.legal?.terms ?? "Terms & Conditions"}</a></li>
             <li><a className="hover:text-white" href="/legal/GDPR.html">{ui?.legal?.gdpr ?? "GDPR Info"}</a></li>
             <li><a className="hover:text-white" href="/legal/CRIC.html">{ui?.legal?.cric ?? "Consumer Rights & Contact"}</a></li>
+            <li>
+              <a 
+                className="hover:text-white cursor-pointer" 
+                onClick={(e) => { e.preventDefault(); if (window.revisitCkyConsent) window.revisitCkyConsent(); }}
+              >
+                {ui?.legal?.ccpa ?? "Do Not Sell My Info"}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
