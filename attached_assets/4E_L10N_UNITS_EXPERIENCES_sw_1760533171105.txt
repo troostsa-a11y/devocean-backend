@@ -1,0 +1,103 @@
+================================================================================
+DEVOCEAN LODGE - L10N TRANSLATIONS (Units & Experiences)
+================================================================================
+File: WebsiteProject/src/i18n/translations.js (L10N section, lines 1891-1943)
+LANGUAGE CODE: sw
+
+INSTRUCTIONS:
+- Translate accommodation units and experiences into Swahili
+- Keep technical terms (Twin/King, A/C, m²) as-is or adapt naturally
+- This replaces the English placeholders currently in the code
+
+================================================================================
+UNITS (ACCOMMODATIONS)
+================================================================================
+
+SAFARI TENT
+-----------
+title = "Hema la Safari"
+short = "Hema la canvas la 12 m² kwenye jukwaa la 3×6 m. Twin/King, feni, vifaa vya umeme, neti ya mbu, dekhi ya faragha."
+details[0] = "Vitanda viwili vya mtu mmoja (au King) vyenye meza za pembeni na taa"
+details[1] = "Neti ya mbu • feni yenye nguvu • vifaa vya umeme"
+details[2] = "Dekhi ya faragha yenye viti vya majani ya michikichi"
+details[3] = "Vifaa vya pamoja: bafu za maji ya moto/baridi na vyoo"
+
+COMFORT TENT
+------------
+title = "Hema la Starehe"
+short = "Hema la 12 m² lenye faragha zaidi (kuta za pembeni/nyuma), dekhi ya faragha na bafu ya faragha chini ya paa la nyasi."
+details[0] = "Mpangilio wa Twin/King na taa za vitendo"
+details[1] = "Neti ya mbu • feni yenye nguvu • vifaa vya umeme"
+details[2] = "Dekhi ya mbao yenye viti"
+details[3] = "Bafu ya faragha (shawa, choo, sinki) chini ya paa la nyasi"
+
+GARDEN COTTAGE
+--------------
+title = "Nyumba ya Bustani"
+short = "Nyumba yenye hewa safi na kitanda cha queen, A/C (inverter), dawati na meza, dekhi ya faragha na bafu katika rondavel."
+details[0] = "Kitanda cha queen • dawati na meza ya kulia"
+details[1] = "A/C ya inverter (baridi/joto) • taa ya msingi inayoweza kubadilishwa"
+details[2] = "Bafu ya rondavel (shawa, sinki, choo)"
+details[3] = "Dekhi ya mbao yenye viti vya kambi"
+
+THATCHED CHALET
+---------------
+title = "Chalet ya Nyasi"
+short = "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. A/C, bafu ya faragha, dekhi, Twin/King."
+details[0] = "Mazingira ya amani chini ya miti ya michikichi • A/C"
+details[1] = "Bafu ya faragha (shawa, sinki, choo)"
+details[2] = "Vitanda vya Twin/King vyenye meza za pembeni"
+details[3] = "Dekhi ya faragha yenye viti vya majani ya michikichi"
+
+================================================================================
+EXPERIENCES
+================================================================================
+
+DIVING
+------
+title = "Kupiga Mbizi"
+desc = "Miamba ya baharini yenye viumbe hai vya baharini vingi."
+
+SWIM WITH DOLPHINS
+------------------
+title = "Kuogelea na Pomboo"
+desc = "Mwingiliano wa kimaadili na pomboo wa kawaida."
+
+LIGHTHOUSE HIKE
+---------------
+title = "Kupanda Mlima wa Taa"
+desc = "Panda mlima hadi taa ya zamani ya bahari kwa maono ya kuvutia."
+
+OCEAN SAFARIS
+-------------
+title = "Safari za Baharini"
+desc = "Safari za baharini kwa nyangumi (Mei–Oktoba) na zaidi."
+
+LAND SAFARIS
+------------
+title = "Safari za Nchi Kavu"
+desc = "Matukio ya msituni kwa safari fupi ya gari."
+
+BEACH & DEEP-SEA FISHING
+------------------------
+title = "Uvuvi wa Ufukweni na Bahari ya Kina"
+desc = "Kutoka kwa kurusha kwenye ufukwe hadi safari za bahari ya kina."
+
+SURFBOARDS & LESSONS
+--------------------
+title = "Mbao za Kuteleza na Mafunzo"
+desc = "Shika mawimbi au jifunze misingi."
+
+================================================================================
+NOTES FOR TRANSLATOR:
+================================================================================
+- "Twin/King" refers to bed configurations (can keep as-is or translate naturally)
+- "A/C" = Air Conditioning
+- "Rondavel" is a traditional round hut (common term in Southern Africa, may keep as-is)
+- "m²" = square meters
+- Keep bullet points (•) as separators in details arrays
+- Technical amenities (fan, power outlets, etc.) can be translated or kept recognizable
+
+================================================================================
+END OF L10N TEMPLATE
+================================================================================
