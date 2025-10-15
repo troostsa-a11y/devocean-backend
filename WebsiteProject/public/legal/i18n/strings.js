@@ -6815,6 +6815,132 @@
           }
         }
       }
+    },
+
+    // -------- ZULU --------
+    zu: {
+      privacy: {
+        title: "Inqubomgomo yobumfihlo",
+        updatedDate: "06 Okthoba 2025",
+        quickLinks: {
+          title: "Izixhumanisi ezisheshayo",
+          links: [
+            { id: "who", text: "Thina singobani" },
+            { id: "collect", text: "Ukuqoqwa kwedatha" },
+            { id: "use", text: "Ukusetshenziswa kwedatha" },
+            { id: "share", text: "Ukwabelana ngedatha" },
+            { id: "security", text: "Ukuphepha" },
+            { id: "retention", text: "Ukugcinwa" },
+            { id: "rights", text: "Amalungelo akho" },
+            { id: "transfers", text: "Ukudluliswa kwamanye amazwe" },
+            { id: "contact", text: "Imininingwane yoxhumano" },
+            { id: "updates", text: "Ukubuyekezwa kwenqubomgomo" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Ubumfihlo bakho bubalulekile:",
+            body: "Sizibophezele ekuvikeleni idatha yakho yomuntu siqu futhi sibe sobala mayelana nendlela esiyiqoqa, siyisebenzise, futhi siyivikele ngayo imininingwane yakho."
+          },
+          who: {
+            title: "Thina singobani",
+            body: "I-DEVOCEAN Lodge iqhutshwa yi-TERRAfrique LDA, inkampani ebhaliswe eMozambique. Ikheli lethu elibhalisiwe: Rua C, Parcela 12, Maputo 1118, eMozambique. Sisebenzisa indawo yokuhlala enobungani bemvelo ogwini lwasePonta do Ouro, eMozambique. Sizibophezele ekuvikeleni ubumfihlo bakho futhi siqinisekise ukuqoqwa, ukucutshungulwa, kanye nokusetshenziswa kwedatha yakho yomuntu siqu ngendlela efanele, esemthethweni, futhi esobala ngokuhambisana nemithetho evikela idatha esetshenziswayo. Ngokufinyelela noma ukusebenzisa iwebhusayithi yethu nezinsizakalo, uyavuma ukuqoqwa nokusetshenziswa kolwazi lwakho njengoba kuchazwe kule Nqubomgomo yobumfihlo."
+          },
+          collect: {
+            title: "Idatha yomuntu siqu esiyiqoqayo",
+            intro: "Siqoqa izinhlobo ezahlukene zolwazi ukuze sinikeze futhi sithuthukise izinsizakalo zethu:",
+            categories: [
+              {
+                title: "Ulwazi lomuntu siqu",
+                items: [
+                  "Igama, imininingwane yokuxhumana",
+                  "Ulwazi lwephasipoti/ikadi likazisi",
+                  "Ulwazi lokukhokha",
+                  "Okuthandwayo kokubhuka"
+                ]
+              },
+              {
+                title: "Idatha yezobuchwepheshe",
+                items: [
+                  "Ikheli le-IP, ulwazi lwedivayisi",
+                  "Uhlobo nesiphequluli sesiphequluli",
+                  "Ukuhlaziywa kokusetshenziswa kwewebhusayithi",
+                  "Idatha yama-Cookie (ngemvume yakho)"
+                ]
+              },
+              {
+                title: "Idatha yokuxhumana",
+                items: [
+                  "Ukxhumana nge-imeyili",
+                  "Izicelo zensizakalo yamakhasimende",
+                  "Imibono kanye nokuphawula",
+                  "Okuthandwayo kokumaketha"
+                ]
+              }
+            ]
+          },
+          use: {
+            title: "Sisebenzisa kanjani idatha yakho",
+            items: [
+              "Ukuphatha ukubhuka kanye nokunikeza izinsizakalo",
+              "Ukuxhumana mayelana nokuhlala kwakho, izinqubomgomo kanye neminikelo (ngokuzikhethela)",
+              "Ukuthuthukisa iwebhusayithi yethu nezinsizakalo (ukuhlaziya, ukuphepha)",
+              "Ukuhambisana nezibopho zomthetho/zezezimali"
+            ]
+          },
+          share: {
+            title: "Sabelana nini ngedatha",
+            items: [
+              "Abahlinzeki bokukhokha kanye nezinkundla zokubhuka ukuze kucutshungulwe ukubhuka kwakho nezinkokhelo",
+              "Izinsizakalo zokuhlaziya ukuze kuqondwe ukusetshenziswa kwewebhusayithi nokuthuthukisa izinsizakalo zethu",
+              "Izinsizakalo zokukhangisa zokukhangisa okukhombe kuwe (kuphela ngemvume yakho)",
+              "Abahlinzeki bezinsizakalo ze-IT, abahlinzeki bokusingatha kanye nabaxhasi bezobuchwepheshe ngaphansi kwezivumelwano zokugcina ubumfihlo",
+              "Ukwabelana neziphathimandla zomthetho uma kudingeka ngumthetho, umthethonqubo, umyalelo wenkantolo noma ezinye izinqubo zomthetho",
+              "Ukufeza izinkontileka noma ukuvikela amalungelo, impahla, ukuphepha",
+              "Ukudlulisa ulwazi kumnikazi omusha uma kuba nokuhlanganiswa, ukuthengwa, noma ukuthengiswa kwezimpahla"
+            ],
+            footer: "Sifuna ukuthi zonke izinkampani zangaphandle zihloniphe ukuphepha kwedatha yomuntu siqu futhi ziyisebenzisele izinhloso zokudlulisa kuphela. Izinkampani zangaphandle azivunyelwe ukusebenzisa idatha yomuntu siqu ngezinhloso zazo, kuphela ukuze zicubungule ngokwemiyalelo yethu ngezinhloso ezichaziwe."
+          },
+          security: {
+            title: "Izinyathelo zokuphepha",
+            intro: "Sithatha ukuphepha kwedatha ngokungathí sina futhi sisebenzisa lezi zinyathelo ezilandelayo:",
+            measures: [
+              "Ukubethela idatha ebucayi ngesikhathi sokudluliswa nokugcinwa",
+              "Ukuhlola ukuphepha njalo kanye nokuhlolwa kokungena",
+              "Ukuphatha ukufinyelela kanye nezindlela zokuqinisekisa",
+              "Ukuqeqesha abasebenzi ngokuvikela idatha kanye nobumfihlo",
+              "Ukulondolozwa kwedatha okuphephile kanye nezinqubo zokubuyisela emuva uma kuba nezinkinga"
+            ]
+          },
+          retention: {
+            title: "Ukugcinwa kwedatha",
+            body: "Sigcina idatha yakho yomuntu siqu kuphela isikhathi esidingekayo ukufeza izinhloso eyaqoqwa ngazo. Ngokuvamile, sigcina idatha yomuntu siqu unyaka ongu-1 ngemuva kokuxhumana kwakho kokugcina nathi, ngaphandle uma umthetho udinga noma uvumela isikhathi eside sokugcina. Singagcina ulwazi oluthile isikhathi eside ngezizathu ezithile, okuhlanganisa: ukugcina amarekhodi kanye nokubika ngokuhambisana nomthetho ofanele (imvamisa amarekhodi ezezimali kanye nentela ango-7 unyaka); ukuqinisekisa amalungelo omthetho, ukuvikela ubugebengu kanye nokuxazulula izingxabano. Uma isikhathi sokugcina siphela, idatha yakho yomuntu siqu izosuswa noma inikwe igama elingaziwa ngendlela ephephile. Ulwazi olungaziwa kanye nolwazi oluhlanganisiwe olungakuchazi ngqo noma ngokungaqondile lungagcinwa unomphelo ngezinhloso zezibalo kanye nokuhlaziya."
+          },
+          rights: {
+            title: "Amalungelo akho obumfihlo",
+            items: [
+              "Ilungelo lokufinyelela idatha yakho yomuntu siqu",
+              "Ilungelo lokulungisa idatha engalungile",
+              "Ilungelo lokususa idatha yakho yomuntu siqu",
+              "Ilungelo lokunciphisa noma lokuphikisa ukucutshungulwa",
+              "Ilungelo lokuphatheka kwedatha",
+              "Ilungelo lokuhoxisa imvume"
+            ]
+          },
+          transfers: {
+            title: "Ukudluliswa kwedatha kwamanye amazwe",
+            body: "Njengoba sisebenza ezindaweni eziningi zomthetho, idatha yakho ingase idluliselwe futhi icutshungulwe emazweni angaphandle kwezwe lakho lokuhlala. Siqinisekisa ukuthi ukudlulisa okunjalo kuhambisana nemithetho evikela idatha esetshenziswayo ngokusebenzisa izinqumo zokwanele zeKhomishini yaseYurophu, izinkontileka ezijwayelekile (SCC), izinyathelo zokuphepha ezifanele kanye nokuba sobala ngezindawo zokudlulisa."
+          },
+          contact: {
+            title: "Xhumana neqembu lethu lobumfihlo",
+            body: "Uma unemibuzo, ukukhathazeka, izicelo, noma ufisa ukusebenzisa amalungelo akho obumfihlo mayelana nale Nqubomgomo yobumfihlo noma ukucutshungulwa kwedatha yakho yomuntu siqu, sicela uxhumane nathi ngalezi zindlela ezilandelayo:<br><br><strong>I-imeyili:</strong> <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a><br><br><strong>Ucingo:</strong> +258 8441 82252<br><strong>Ikheli leposi:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>eMozambique<br><br>Sizophendula isicelo sakho ngokuhambisana nomthetho ovikela idatha osetshenziswayo. Uma unezikhalazo noma ukukhathazeka mayelana nokucutshungulwa kolwazi lwakho, ungaxhumana ne-Data Protection Officer yethu kule kheli le-imeyili elingenhla."
+          },
+          updates: {
+            title: "Ukubuyekezwa kwenqubomgomo",
+            body: "Singabuyekeza le Nqubomgomo yobumfihlo ngezikhathi ezithile ukuze ibonise izinguquko emikhubeni yethu, ubuchwepheshe, izidingo zomthetho noma ezinye izici. Sizokwazisa ngezinguquko ezibalulekile ngezaziso ze-imeyili kubasebenzisi ababhalisiwe, izaziso ezigqamile kwiwebhusayithi yethu kanye nosuku lokubuyekezwa kokugcina. Sincoma ukuthi ubuyekeze le nqubomgomo njalo ukuze wazi ukuthi sivikela kanjani ulwazi lwakho."
+          }
+        }
+      }
     }
   };
   
