@@ -1,0 +1,114 @@
+================================================================================
+DEVOCEAN LODGE - GDPR NOTICE TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (gdpr section)
+LANGUAGE CODE: sw
+
+================================================================================
+HEADER
+================================================================================
+title = "Taarifa ya GDPR"
+updatedDate = "06 Oktoba 2025"
+
+quickLinks.title = "Viungo vya Haraka"
+quickLinks[0] = "Mudu wa Data"
+quickLinks[1] = "Msingi wa Kisheria"
+quickLinks[2] = "Haki Zako"
+quickLinks[3] = "Uhifadhi wa Data"
+quickLinks[4] = "Uhamisho wa Data"
+quickLinks[5] = "Malalamiko"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Kuzingatia GDPR:"
+badge.body = "Tumejitolea kulinda data yako ya kibinafsi na kuheshimu haki zako za faragha kwa mujibu wa Kanuni za Ulinzi wa Data za Jumla."
+
+================================================================================
+DATA CONTROLLER
+================================================================================
+controller.title = "Mudu wa Data"
+controller.body = "TERRAfrique LDA (DEVOCEAN Lodge), iliyosajiliwa katika Rua C, Parcela 12, Maputo 1118, Msumbiji, inafanya kazi kama mdudu wa data kwa taarifa zako za kibinafsi zilizokusanywa kupitia huduma zetu."
+
+================================================================================
+LEGAL BASES FOR PROCESSING
+================================================================================
+bases.title = "Msingi wa Kisheria wa Uchakataji"
+bases.body = "Tunachakata data yako ya kibinafsi kwa msingi wa kisheria ufuatao kwa mujibu wa GDPR:"
+
+legalBases.contract.title = "Mkataba:"
+legalBases.contract.body = "Uchakataji unaohitajika ili kutimiza makubaliano yetu ya uwekaji nafasi na utoaji wa huduma."
+
+legalBases.legal.title = "Wajibu wa Kisheria:"
+legalBases.legal.body = "Uchakataji unaohitajika ili kuzingatia mahitaji ya kisheria (kwa mfano, sheria ya kodi)."
+
+legalBases.legitimate.title = "Masilahi ya Halali:"
+legalBases.legitimate.body = "Uchakataji katika masilahi yetu ya Biashara ya halali huku tukiheshimu haki zako."
+
+legalBases.consent.title = "Idhini:"
+legalBases.consent.body = "Uchakataji unaotegemea idhini yako ya wazi kwa madhumuni maalum."
+
+================================================================================
+YOUR GDPR RIGHTS
+================================================================================
+rights.title = "Haki Zako za GDPR"
+rights.body = "Kama mtu wa data chini ya GDPR, una haki zifuatazo kuhusiana na data yako ya kibinafsi:"
+
+rights.access.title = "Haki ya Kupata"
+rights.access.body = "Unaweza kuomba nakala za data yako ya kibinafsi tunayohifadhi."
+
+rights.rectification.title = "Haki ya Kurekebisha"
+rights.rectification.body = "Unaweza kuomba kurekebishwa kwa data isiyo sahihi au isiyokamilika."
+
+rights.erasure.title = "Haki ya Kufuta"
+rights.erasure.body = "Unaweza kuomba kufutwa kwa data yako ya kibinafsi chini ya hali fulani."
+
+rights.restrict.title = "Haki ya Kupunguza Uchakataji"
+rights.restrict.body = "Unaweza kuomba kupunguza matumizi ya data yako."
+
+rights.portability.title = "Haki ya Kubeba Data"
+rights.portability.body = "Unaweza kuomba uhamisho wa data yako kwa shirika lingine."
+
+rights.object.title = "Haki ya Kupinga"
+rights.object.body = "Unaweza kupinga aina fulani za uchakataji wa data yako."
+
+buttons.access.text = "Omba Upatikanaji wa Data"
+buttons.erasure.text = "Omba Ufutaji wa Data"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "Uhifadhi wa Data"
+retention.periodsTitle = "Vipindi vya Kuhifadhi"
+retention.intro = "Tunahifadhi data yako ya kibinafsi kwa muda unaohitajika tu ili kutimiza madhumuni yaliyokusanywa, ikiwa ni pamoja na mahitaji ya kisheria, ya uhasibu, au ya kuripoti."
+retention.items[0] = "<strong>Data ya Uwekaji Nafasi:</strong> Miaka 7 ili kuzingatia mahitaji ya kodi na ya kisheria"
+retention.items[1] = "<strong>Mawasiliano ya Huduma kwa Wateja:</strong> Miaka 3"
+retention.items[2] = "<strong>Idhini ya Uuzaji:</strong> Hadi utakapoondoa idhini"
+retention.items[3] = "<strong>Uchambuzi wa Tovuti:</strong> Miezi 26"
+retention.items[4] = "<strong>Muamala wa Kifedha:</strong> Miaka 10 kwa madhumuni ya uhasibu"
+
+================================================================================
+INTERNATIONAL DATA TRANSFERS
+================================================================================
+transfers.title = "Uhamisho wa Data wa Kimataifa"
+transfers.body = "Wakati tunahamisha data yako nje ya Eneo la Kiuchumi la Ulaya (EEA), tunahakikisha kuwa kuna hatua za ulinzi zinazofaa kwa taarifa zako. Hii inaweza kujumuisha kutumia mikataba ya kawaida iliyoidhinishwa na Tume ya Ulaya au kuhamisha data kwa nchi zenye maamuzi ya kutosha."
+
+safeguards.international.title = "Uhamisho wa Data wa Kimataifa:"
+safeguards.international.body = "Tunahakikisha kuwa kuna hatua za ulinzi zinazofaa zinapotumika wakati wa uhamisho wa data wa kimataifa, ikiwa ni pamoja na kutumia mikataba ya kawaida au kuhakikisha maamuzi ya kutosha."
+
+================================================================================
+COMPLAINTS
+================================================================================
+complaints.title = "Malalamiko"
+complaints.intro = "Ikiwa una wasiwasi kuhusu jinsi tunavyoshughulikia data yako ya kibinafsi, una haki ya kuwasilisha malalamiko kwa mamlaka ya ulinzi wa data ya ndani."
+complaints.footer = "Tunapendekeza uwasiliane nasi kwanza ili kujaribu kutatua masuala yoyote kabla ya kuwasiliana na mamlaka ya usimamizi."
+
+================================================================================
+DATA PROTECTION OFFICER
+================================================================================
+dpo.title = "Wasiliana na Afisa wetu wa Ulinzi wa Data"
+dpo.body = "Kwa maswali yoyote yanayohusiana na GDPR, au ili kutumia haki zako, tafadhali wasiliana na afisa wetu wa ulinzi wa data kwa <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Tutajibu ombi lako ndani ya siku 30, kama inavyohitajika na GDPR."
+
+================================================================================
+END OF GDPR NOTICE
+================================================================================

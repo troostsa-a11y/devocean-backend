@@ -7723,6 +7723,119 @@
             body: "Maswali? <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
           }
         }
+      },
+
+      gdpr: {
+        title: "Taarifa ya GDPR",
+        updatedDate: "06 Oktoba 2025",
+        quickLinks: {
+          title: "Viungo vya Haraka",
+          links: [
+            { id: "controller", text: "Mudu wa Data" },
+            { id: "bases", text: "Msingi wa Kisheria" },
+            { id: "rights", text: "Haki Zako" },
+            { id: "retention", text: "Uhifadhi wa Data" },
+            { id: "transfers", text: "Uhamisho wa Data" },
+            { id: "complaints", text: "Malalamiko" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Kuzingatia GDPR:",
+            body: "Tumejitolea kulinda data yako ya kibinafsi na kuheshimu haki zako za faragha kwa mujibu wa Kanuni za Ulinzi wa Data za Jumla."
+          },
+          controller: {
+            title: "Mudu wa Data",
+            body: "TERRAfrique LDA (DEVOCEAN Lodge), iliyosajiliwa katika Rua C, Parcela 12, Maputo 1118, Msumbiji, inafanya kazi kama mdudu wa data kwa taarifa zako za kibinafsi zilizokusanywa kupitia huduma zetu."
+          },
+          bases: {
+            title: "Msingi wa Kisheria wa Uchakataji",
+            body: "Tunachakata data yako ya kibinafsi kwa msingi wa kisheria ufuatao kwa mujibu wa GDPR:",
+            legalBases: {
+              contract: {
+                title: "Mkataba:",
+                body: "Uchakataji unaohitajika ili kutimiza makubaliano yetu ya uwekaji nafasi na utoaji wa huduma."
+              },
+              legal: {
+                title: "Wajibu wa Kisheria:",
+                body: "Uchakataji unaohitajika ili kuzingatia mahitaji ya kisheria (kwa mfano, sheria ya kodi)."
+              },
+              legitimate: {
+                title: "Masilahi ya Halali:",
+                body: "Uchakataji katika masilahi yetu ya Biashara ya halali huku tukiheshimu haki zako."
+              },
+              consent: {
+                title: "Idhini:",
+                body: "Uchakataji unaotegemea idhini yako ya wazi kwa madhumuni maalum."
+              }
+            }
+          },
+          rights: {
+            title: "Haki Zako za GDPR",
+            body: "Kama mtu wa data chini ya GDPR, una haki zifuatazo kuhusiana na data yako ya kibinafsi:",
+            list: {
+              access: {
+                title: "Haki ya Kupata",
+                body: "Unaweza kuomba nakala za data yako ya kibinafsi tunayohifadhi."
+              },
+              rectification: {
+                title: "Haki ya Kurekebisha",
+                body: "Unaweza kuomba kurekebishwa kwa data isiyo sahihi au isiyokamilika."
+              },
+              erasure: {
+                title: "Haki ya Kufuta",
+                body: "Unaweza kuomba kufutwa kwa data yako ya kibinafsi chini ya hali fulani."
+              },
+              restrict: {
+                title: "Haki ya Kupunguza Uchakataji",
+                body: "Unaweza kuomba kupunguza matumizi ya data yako."
+              },
+              portability: {
+                title: "Haki ya Kubeba Data",
+                body: "Unaweza kuomba uhamisho wa data yako kwa shirika lingine."
+              },
+              object: {
+                title: "Haki ya Kupinga",
+                body: "Unaweza kupinga aina fulani za uchakataji wa data yako."
+              }
+            },
+            buttons: {
+              access: { text: "Omba Upatikanaji wa Data" },
+              erasure: { text: "Omba Ufutaji wa Data" }
+            }
+          },
+          retention: {
+            title: "Uhifadhi wa Data",
+            periodsTitle: "Vipindi vya Kuhifadhi",
+            intro: "Tunahifadhi data yako ya kibinafsi kwa muda unaohitajika tu ili kutimiza madhumuni yaliyokusanywa, ikiwa ni pamoja na mahitaji ya kisheria, ya uhasibu, au ya kuripoti.",
+            items: [
+              "<strong>Data ya Uwekaji Nafasi:</strong> Miaka 7 ili kuzingatia mahitaji ya kodi na ya kisheria",
+              "<strong>Mawasiliano ya Huduma kwa Wateja:</strong> Miaka 3",
+              "<strong>Idhini ya Uuzaji:</strong> Hadi utakapoondoa idhini",
+              "<strong>Uchambuzi wa Tovuti:</strong> Miezi 26",
+              "<strong>Muamala wa Kifedha:</strong> Miaka 10 kwa madhumuni ya uhasibu"
+            ]
+          },
+          transfers: {
+            title: "Uhamisho wa Data wa Kimataifa",
+            body: "Wakati tunahamisha data yako nje ya Eneo la Kiuchumi la Ulaya (EEA), tunahakikisha kuwa kuna hatua za ulinzi zinazofaa kwa taarifa zako. Hii inaweza kujumuisha kutumia mikataba ya kawaida iliyoidhinishwa na Tume ya Ulaya au kuhamisha data kwa nchi zenye maamuzi ya kutosha.",
+            safeguards: {
+              international: {
+                title: "Uhamisho wa Data wa Kimataifa:",
+                body: "Tunahakikisha kuwa kuna hatua za ulinzi zinazofaa zinapotumika wakati wa uhamisho wa data wa kimataifa, ikiwa ni pamoja na kutumia mikataba ya kawaida au kuhakikisha maamuzi ya kutosha."
+              }
+            }
+          },
+          complaints: {
+            title: "Malalamiko",
+            intro: "Ikiwa una wasiwasi kuhusu jinsi tunavyoshughulikia data yako ya kibinafsi, una haki ya kuwasilisha malalamiko kwa mamlaka ya ulinzi wa data ya ndani.",
+            footer: "Tunapendekeza uwasiliane nasi kwanza ili kujaribu kutatua masuala yoyote kabla ya kuwasiliana na mamlaka ya usimamizi."
+          },
+          dpo: {
+            title: "Wasiliana na Afisa wetu wa Ulinzi wa Data",
+            body: "Kwa maswali yoyote yanayohusiana na GDPR, au ili kutumia haki zako, tafadhali wasiliana na afisa wetu wa ulinzi wa data kwa <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Tutajibu ombi lako ndani ya siku 30, kama inavyohitajika na GDPR."
+          }
+        }
       }
     }
   };
