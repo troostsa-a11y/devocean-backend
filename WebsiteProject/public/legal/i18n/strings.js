@@ -7358,6 +7358,131 @@
           emergencyPhoneNote: "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza"
         }
       }
+    },
+
+    sw: {
+      privacy: {
+        title: "Sera ya Faragha",
+        updatedDate: "06 Oktoba 2025",
+        quickLinks: {
+          title: "Viungo vya Haraka",
+          links: [
+            { id: "who", text: "Sisi ni nani" },
+            { id: "collect", text: "Ukusanyaji wa Data" },
+            { id: "use", text: "Matumizi ya Data" },
+            { id: "share", text: "Kushiriki Data" },
+            { id: "security", text: "Usalama" },
+            { id: "retention", text: "Uhifadhi" },
+            { id: "rights", text: "Haki Zako" },
+            { id: "transfers", text: "Uhamisho wa Kimataifa" },
+            { id: "contact", text: "Mawasiliano" },
+            { id: "updates", text: "Sasisho za Sera" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Faragha yako ni muhimu:",
+            body: "Tumejitolea kulinda data yako ya kibinafsi na kuwa wazi kuhusu jinsi tunavyokusanya, kutumia, na kulinda taarifa zako."
+          },
+          who: {
+            title: "Sisi ni nani",
+            body: "DEVOCEAN Lodge inaendeshwa na TERRAfrique LDA, kampuni iliyosajiliwa nchini Msumbiji. Anwani yetu iliyosajiliwa: Rua C, Parcela 12, Maputo 1118, Msumbiji. Tunaendesha malazi yanayofaa na mazingira kwenye ufukwe wa Ponta do Ouro, Msumbiji. Tumejitolea kulinda faragha yako na kuhakikisha ukusanyaji, uchukuzi, na matumizi ya data yako ya kibinafsi kwa njia inayofaa, halali, na ya wazi kwa mujibu wa sheria zinazolinda data zinazotumika. Kutumia tovuti yetu na huduma inamaanisha unakubali ukusanyaji na matumizi ya taarifa zako kama ilivyoelezwa katika Sera hii ya Faragha."
+          },
+          collect: {
+            title: "Data ya kibinafsi tunayokusanya",
+            intro: "Tunakusanya aina tofauti za taarifa ili kutoa na kuboresha huduma zetu:",
+            categories: [
+              {
+                title: "Taarifa za Kibinafsi",
+                items: [
+                  "Jina, maelezo ya mawasiliano",
+                  "Taarifa za pasipoti/kadi ya kitambulisho",
+                  "Taarifa za malipo",
+                  "Mapendeleo ya kuweka nafasi"
+                ]
+              },
+              {
+                title: "Data ya Kiufundi",
+                items: [
+                  "Anwani ya IP, maelezo ya kifaa",
+                  "Aina na toleo la kivinjari",
+                  "Uchambuzi wa matumizi ya tovuti",
+                  "Data ya vidakuzi (kwa idhini yako)"
+                ]
+              },
+              {
+                title: "Data ya Mawasiliano",
+                items: [
+                  "Mawasiliano ya barua pepe",
+                  "Maombi ya huduma kwa wateja",
+                  "Maoni na maoni",
+                  "Mapendeleo ya uuzaji"
+                ]
+              }
+            ]
+          },
+          use: {
+            title: "Jinsi tunavyotumia data yako",
+            items: [
+              "Kudhibiti uwekaji nafasi na kutoa huduma",
+              "Kuwasiliana kuhusu kukaa kwako, sera, na ofa (kwa hiari)",
+              "Kuboresha tovuti yetu na huduma (uchambuzi, usalama)",
+              "Kuzingatia wajibu wa kisheria/kifedha"
+            ]
+          },
+          share: {
+            title: "Wakati tunashiriki data",
+            items: [
+              "Watoa huduma za malipo na majukwaa ya kuweka nafasi ili kuchakata uwekaji nafasi na malipo yako",
+              "Huduma za uchambuzi ili kuelewa matumizi ya tovuti na kuboresha huduma zetu",
+              "Huduma za utangazaji kwa utangazaji uliolengwa (tu kwa idhini yako)",
+              "Watoa huduma za IT, watoa huduma za mwenyeji na wasaidizi wa kiufundi chini ya makubaliano ya faragha",
+              "Kushiriki na mamlaka za kisheria inapohitajika na sheria, udhibiti, amri ya mahakama au taratibu nyingine za kisheria",
+              "Kutimiza mikataba au kulinda haki, mali, usalama",
+              "Kuhamisha taarifa kwa mmiliki mpya ikiwa kuna muungano, ununuzi, au uuzaji wa mali"
+            ],
+            footer: "Tunahitaji makampuni yote ya nje yaheshimu usalama wa data ya kibinafsi na kuitumia kwa madhumuni ya uhamisho tu. Makampuni ya nje hayaruhusiwi kutumia data ya kibinafsi kwa madhumuni yao, tu kwa kuchakata kwa mujibu wa maagizo yetu kwa madhumuni yaliyotajwa."
+          },
+          security: {
+            title: "Hatua za Usalama",
+            intro: "Tunachukua usalama wa data kwa uzito na tunatumia hatua zifuatazo:",
+            measures: [
+              "Usimbaji wa data nyeti wakati wa uhamisho na uhifadhi",
+              "Tathmini za usalama za mara kwa mara na majaribio ya kupenya",
+              "Udhibiti wa upatikanaji na mifumo ya uthibitishaji",
+              "Mafunzo ya wafanyakazi kuhusu ulinzi wa data na faragha",
+              "Hifadhi salama ya data na taratibu za kurejesha baada ya shida"
+            ]
+          },
+          retention: {
+            title: "Uhifadhi wa Data",
+            body: "Tunahifadhi data yako ya kibinafsi kwa muda unaohitajika tu ili kutimiza madhumuni yaliyokusanywa. Kwa ujumla, tunahifadhi data ya kibinafsi kwa mwaka 1 baada ya mwingiliano wako wa mwisho nasi, isipokuwa sheria inaruhusu au inahitaji muda mrefu wa kuhifadhi. Tunaweza kuhifadhi taarifa fulani kwa muda mrefu kwa sababu fulani, ikiwa ni pamoja na: kuhifadhi rekodi na kuripoti kwa mujibu wa sheria inayotumika (kawaida rekodi za kifedha na za kodi kwa miaka 7), kutimiza wajibu wa kisheria, kusuluhisha migogoro, na kutimiza makubaliano yetu."
+          },
+          rights: {
+            title: "Haki Zako za Faragha",
+            items: [
+              "Haki ya kupata data yako ya kibinafsi",
+              "Haki ya kurekebisha data isiyo sahihi",
+              "Haki ya kufuta data yako ya kibinafsi",
+              "Haki ya kupunguza au kupinga uchakataji",
+              "Haki ya kubeba data",
+              "Haki ya kuondoa idhini"
+            ]
+          },
+          transfers: {
+            title: "Uhamisho wa Data wa Kimataifa",
+            body: "Kwa kuwa tunaendesha katika maeneo tofauti ya kisheria, data yako inaweza kuhamishwa na kuchakatwa katika nchi nje ya nchi yako ya makazi. Tunahakikisha kuwa uhamisho kama huo unazingatia sheria zinazolinda data zinazotumika kwa kutumia maamuzi ya kutosha ya Tume ya Ulaya, mikataba ya kawaida (SCC), hatua za usalama zinazofaa na uwazi kuhusu maeneo ya uhamisho."
+          },
+          contact: {
+            title: "Wasiliana na Timu yetu ya Faragha",
+            body: "Ikiwa una maswali, wasiwasi, maombi, au unataka kutumia haki zako za faragha kuhusiana na Sera hii ya Faragha au uchakataji wa data yako ya kibinafsi, tafadhali wasiliana nasi kupitia njia zifuatazo:<br><br><strong>Barua pepe:</strong> <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a><br><strong>Simu:</strong> +258 8441 82252<br><strong>Anwani ya Posta:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Msumbiji<br><br>Tutajibu maombi yako ndani ya siku 30, kama inavyohitajika na sheria zinazolinda data zinazotumika."
+          },
+          updates: {
+            title: "Sasisho za Sera",
+            body: "Tunaweza kusasisha Sera hii ya Faragha mara kwa mara ili kuakisi mabadiliko katika mbinu zetu, teknolojia, mahitaji ya kisheria au mambo mengine. Tutakuarifu kuhusu mabadiliko ya maana kupitia arifa za barua pepe kwa watumiaji waliosajiliwa, arifa za wazi kwenye tovuti yetu na tarehe ya sasisho la mwisho. Tunapendekeza upitie sera hii mara kwa mara ili kujua jinsi tunavyolinda taarifa zako."
+          }
+        }
+      }
     }
   };
   
