@@ -120,9 +120,12 @@ function clampCur(cur) {
 }
 
 function getCountryCode() {
+  // Debug: Always log what Cloudflare provides
+  console.warn('[DEVOCEAN GeoIP Debug] window.__CF_COUNTRY__ =', typeof window !== 'undefined' ? window.__CF_COUNTRY__ : 'undefined');
+  
   // Priority 1: Use Cloudflare's IP-based country detection (production)
-  if (typeof window !== 'undefined' && window.__CF_COUNTRY__) {
-    console.warn('[DEVOCEAN GeoIP] ✓ Using Cloudflare country:', window.__CF_COUNTRY__);
+  if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
+    console.warn('[DEVOCEAN GeoIP] ✓ Using Cloudflare IP country:', window.__CF_COUNTRY__);
     return window.__CF_COUNTRY__;
   }
   
@@ -133,7 +136,7 @@ function getCountryCode() {
     const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
     const m = loc.toUpperCase().match(/-([A-Z]{2})/);
     if (m) {
-      console.warn('[DEVOCEAN Browser Debug] Using Intl locale hint:', m[1]);
+      console.warn('[DEVOCEAN Browser Debug] ⚠️ Cloudflare failed, using Intl locale hint:', m[1]);
       return m[1];
     }
   } catch { }
