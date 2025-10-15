@@ -83,6 +83,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - **Currency Flash Fix (Oct 15):** Added English currency fallbacks to critical UI to prevent dropdown text switching during load
   - **Simplified Detection (Oct 15):** Removed browser locale fallback - relies 100% on Cloudflare IP, defaults to Europe if unavailable
   - **Auto-Currency Assignment (Oct 15):** Removed manual currency selection. Currency now auto-assigned based on visitor's country legal tender via comprehensive CC_TO_CURRENCY mapping (80+ countries). Hotelrunner integration automatically uses detected currency. Region selector shows full continent names (Africa, Europe, Asia, Americas, Oceania) in dropdown matching language selector width. Fallback currency is USD (Hotelrunner base) if country detection fails.
+  - **US English Support (Oct 15):** Added English (US) language option separate from English (UK). US visitors automatically get en-US locale with USD currency. Both use same translations but different Hotelrunner locales (en-US vs en-GB). Americas region shows both English options.
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
 **Performance Optimizations:**

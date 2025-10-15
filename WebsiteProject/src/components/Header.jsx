@@ -12,7 +12,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
   const regions = {
     europe: { name: 'Europe', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'] },
     asia: { name: 'Asia', languages: ['en', 'ja', 'zh', 'ru'] },
-    americas: { name: 'Americas', languages: ['en', 'es', 'fr'] },
+    americas: { name: 'Americas', languages: ['en-us', 'en', 'es', 'fr'] },
     africa: { name: 'Africa', languages: ['en', 'fr', 'pt', 'af', 'zu', 'sw'] },
     oceania: { name: 'Oceania', languages: ['en'] }
   };
@@ -114,7 +114,8 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               onChange={(e) => onLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
             >
-              {regions[region]?.languages.includes('en') && <option value="en">English</option>}
+              {regions[region]?.languages.includes('en-us') && <option value="en-us">English (US)</option>}
+              {regions[region]?.languages.includes('en') && <option value="en">English (UK)</option>}
               {regions[region]?.languages.includes('pt') && <option value="pt">Português</option>}
               {regions[region]?.languages.includes('nl') && <option value="nl">Nederlands</option>}
               {regions[region]?.languages.includes('fr') && <option value="fr">Français</option>}

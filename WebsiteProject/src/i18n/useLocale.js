@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
-const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af", "zu", "sw"];
+const SUPPORTED_LANGS = ["en", "en-us", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
 // Comprehensive country-to-currency mapping (legal tender for each country)
@@ -101,7 +101,7 @@ const CONTINENT_MERIDIANS = {
 
 // Booking engine locale mapping (base, can be overridden by region)
 export const LOCALE_BY_LANG = {
-  en: "en-GB", pt: "pt-PT", nl: "nl-NL",
+  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "en-GB",
 };
 
@@ -115,13 +115,18 @@ export const getBookingLocaleForRegion = (lang, region) => {
 
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
-  en: "en-GB", pt: "pt-PT", nl: "nl-NL",
+  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU", af: "af-ZA", zu: "en-GB", sw: "sw-KE",
 };
 
 function normLang(raw) {
   if (!raw) return "en";
   let s = String(raw).toLowerCase();
+  
+  // Special case: keep en-us as is
+  if (s === "en-us") return "en-us";
+  
+  // Handle other locale codes
   if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
   if (s === "pt-mz" || s === "pt-pt" || s === "pt-br") s = "pt";
   return SUPPORTED_LANGS.includes(s) ? s : "en";
@@ -179,12 +184,26 @@ function pickInitialLang() {
   const stored = localStorage.getItem("site.lang");
   if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
 
+  // Auto-detect US visitors via IP and default to en-us
+  const cc = getCountryCode();
+  if (cc === "US") {
+    return "en-us";
+  }
+
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
 
   for (const l of list) {
-    const base = String(l || "").toLowerCase().split("-")[0];
+    const lower = String(l || "").toLowerCase();
+    
+    // Special case: detect US English browser language
+    if (lower === "en-us" || lower.startsWith("en-us")) {
+      return "en-us";
+    }
+    
+    // Standard language detection
+    const base = lower.split("-")[0];
     if (SUPPORTED_LANGS.includes(base)) return base;
   }
   return "en";
@@ -235,12 +254,16 @@ function pickInitialRegion(langBase) {
 // Dynamically load translations for a specific language
 async function loadTranslations(lang) {
   const { UI } = await import('./translations.js');
-  return UI[lang] || UI.en;
+  // Use "en" translations for "en-us" (same language, different locale)
+  const translationKey = lang === "en-us" ? "en" : lang;
+  return UI[translationKey] || UI.en;
 }
 
 // Build minimal UI object with critical nav for instant rendering
 function getCriticalUI(lang) {
-  const nav = CRITICAL_NAV[lang] || CRITICAL_NAV.en;
+  // Use "en" critical nav for "en-us" (same language, different locale)
+  const navKey = lang === "en-us" ? "en" : lang;
+  const nav = CRITICAL_NAV[navKey] || CRITICAL_NAV.en;
   return {
     nav: {
       home: nav.home,
