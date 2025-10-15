@@ -1,0 +1,67 @@
+================================================================================
+DEVOCEAN LODGE - CRIC (COMPANY & CONTACT) TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cric section)
+LANGUAGE CODE: af
+
+================================================================================
+HEADER
+================================================================================
+title = "CRIC — Maatskappy en Kontak"
+updatedDate = "27 September 2025"
+
+quickLinks.title = "Vinnige Skakels"
+quickLinks[0] = "Oorsig"
+quickLinks[1] = "Kontakbesonderhede"
+quickLinks[2] = "Noodkontak"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Amptelike Maatskappyinligting:"
+badge.body = "Volledige besigheidsregistrasiebesonderhede en kontakinligting vir DEVOCEAN Lodge."
+
+================================================================================
+OVERVIEW
+================================================================================
+intro.title = "Oorsig"
+intro.body = "Volledige besigheidsregistrasiebesonderhede en kontakinligting vir DEVOCEAN Lodge."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Kontakbesonderhede"
+contact.body = "Vir algemene navrae, besprekings en inligting oor ons dienste, gebruik asseblief die kontakbesonderhede hieronder."
+
+================================================================================
+EMERGENCY
+================================================================================
+emergency.title = "Noodkontak"
+emergency.body = "Vir dringende sake buite werksure, gebruik asseblief ons noodkontakbesonderhede."
+
+================================================================================
+LABELS (Field Names)
+================================================================================
+labels.companyName = "Maatskappy Naam"
+labels.registration = "Besigheidsregistrasie"
+labels.vat = "BTW Nommer (NUIT)"
+labels.license = "Besigheidslisensie (Alvará)"
+labels.legalForm = "Regsvorm"
+labels.capital = "Kapitaal"
+labels.address = "Geregistreerde Adres"
+labels.email = "E-pos"
+labels.phone = "Telefoon"
+labels.businessHours = "Besigheidsure"
+labels.emergencyPhone = "Noodtelefoon"
+labels.emergencyEmail = "Nood E-pos"
+
+================================================================================
+STATIC VALUES
+================================================================================
+legalForm = "Beperkte Aanspreeklikheidsmaatskappy"
+businessHours = "Maandag - Vrydag: 8:00 - 18:00<br>Saterdag en Sondag: 8:00 - 12:00<br>Ontvangs: 6:00 - 22:00 (vir gaste)"
+emergencyPhoneNote = "Vir dringende sake buite werksure"
+
+================================================================================
+END OF CRIC
+================================================================================

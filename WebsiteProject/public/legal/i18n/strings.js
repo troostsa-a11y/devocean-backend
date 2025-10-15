@@ -6764,6 +6764,55 @@
             body: "Vir enige navrae rakende GDPR, of om jou regte uit te oefen, kontak asseblief ons databeskermingsbeampte by <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Ons sal op jou versoek reageer binne 30 dae, soos deur GDPR vereis."
           }
         }
+      },
+
+      cric: {
+        title: "CRIC — Maatskappy en Kontak",
+        updatedDate: "27 September 2025",
+        quickLinks: {
+          title: "Vinnige Skakels",
+          links: [
+            { id: "overview", text: "Oorsig" },
+            { id: "contact", text: "Kontakbesonderhede" },
+            { id: "emergency", text: "Noodkontak" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Amptelike Maatskappyinligting:",
+            body: "Volledige besigheidsregistrasiebesonderhede en kontakinligting vir DEVOCEAN Lodge."
+          },
+          overview: {
+            title: "Oorsig",
+            body: "Volledige besigheidsregistrasiebesonderhede en kontakinligting vir DEVOCEAN Lodge.",
+            details: [
+              { label: "Maatskappy Naam", value: "" },
+              { label: "Besigheidsregistrasie", value: "" },
+              { label: "BTW Nommer (NUIT)", value: "" },
+              { label: "Besigheidslisensie (Alvará)", value: "" },
+              { label: "Regsvorm", value: "Beperkte Aanspreeklikheidsmaatskappy" },
+              { label: "Kapitaal", value: "" }
+            ]
+          },
+          contact: {
+            title: "Kontakbesonderhede",
+            body: "Vir algemene navrae, besprekings en inligting oor ons dienste, gebruik asseblief die kontakbesonderhede hieronder.",
+            details: [
+              { label: "Geregistreerde Adres", value: "" },
+              { label: "E-pos", value: "" },
+              { label: "Telefoon", value: "" },
+              { label: "Besigheidsure", value: "Maandag - Vrydag: 8:00 - 18:00<br>Saterdag en Sondag: 8:00 - 12:00<br>Ontvangs: 6:00 - 22:00 (vir gaste)" }
+            ]
+          },
+          emergency: {
+            title: "Noodkontak",
+            body: "Vir dringende sake buite werksure, gebruik asseblief ons noodkontakbesonderhede.",
+            details: [
+              { label: "Noodtelefoon", value: "", subtitle: "Vir dringende sake buite werksure" },
+              { label: "Nood E-pos", value: "" }
+            ]
+          }
+        }
       }
     }
   };
