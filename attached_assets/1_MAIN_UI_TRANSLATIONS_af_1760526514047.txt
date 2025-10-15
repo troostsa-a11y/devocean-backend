@@ -1,0 +1,130 @@
+================================================================================
+DEVOCEAN LODGE - MAIN UI TRANSLATIONS BATCH FILE
+================================================================================
+Instructions: Translate all text in quotes. Keep structure markers unchanged.
+File: WebsiteProject/src/i18n/translations.js
+
+LANGUAGE CODE: af
+
+================================================================================
+NAVIGATION
+================================================================================
+nav.home = "Tuis"
+nav.stay = "Verblyf"
+nav.experiences = "Ervarings"
+nav.todo = "Wat om te doen"
+nav.gallery = "Galery"
+nav.location = "Ligging"
+nav.contact = "Kontak"
+
+================================================================================
+HERO SECTION
+================================================================================
+hero.title = "DEVOCEAN Lodge"
+hero.subtitle = "Eko-vriendelike verblyf 'n paar honderd meter vanaf die strand in Ponta do Ouro, Suid-Mosambiek."
+hero.ctaPrimary = "Bespreek jou verblyf"
+hero.ctaSecondary = "Verken die Lodge"
+hero.badge = "Gerief en waarde, geliefd deur gaste"
+
+================================================================================
+STAY SECTION
+================================================================================
+stay.headline = "Bly by ons"
+stay.blurb = "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid."
+stay.moreDetails = "Meer besonderhede"
+
+================================================================================
+EXPERIENCES SECTION
+================================================================================
+experiences.headline = "Ervarings"
+experiences.blurb = "See- en bosavonture reg voor jou deur."
+experiences.operators = "Betroubare plaaslike operateurs:"
+
+================================================================================
+WHAT TO DO SECTION
+================================================================================
+todo.headline = "Wat om te doen in Ponta do Ouro"
+todo.note = "Vir duik, snorkel, dolfyn-/walvis-safari's en visvang-charters, kyk na die verskaffers hieronder."
+
+todo.items[0].title = "Stap na die vuurtoring en Lua Do Mar"
+todo.items[0].body = "Stap na die Ou Vuurtoring vir panoramiese uitsigte. Gaan voort na die Lua Do Mar restaurant op die duin. Dolfyne word dikwels deur die jaar gesien, walvisse (Mei–Oktober) en skilpaaie (Desember–Januarie). Wees bedag op getye: vermy die strandroete 3 uur voor en na hooggety; golwe kan jou teen die rotse vasdruk."
+
+todo.items[1].title = "Stap na Ponta Malongane"
+todo.items[1].body = "Stap langs die strand na die aangrensende dorpie. Halfpad lei 'n trap deur piesangbome na die Campismo Nino kroeg en restaurant met uitstekende uitsigte. Nader aan die baai is daar 'n pad na Sky Island vir sweefvlieg. Bekende kroeë in Malongane: Drunken Clam en Sunset Shack. Keer terug via die strand of die 4×4 sandpad."
+
+todo.items[2].title = "Branderplankry, duik en see-ondersoeke"
+todo.items[2].body = "Huur branderplanke by Beach Bar; verskeie duiksentrums in die dorpie en 'n dolfyn-/walvis-navorsingsentrum."
+
+todo.items[3].title = "Eet en ontspan naby"
+todo.items[3].body = "Binne 500 m van DEVOCEAN is daar ongeveer 16 kroeë en restaurante. Vir 'n ontspannende vollyfmassering, bespreek by Lisa (LIZ-Way Massage)."
+
+todo.items[4].title = "Vierwielmotorfietsverhuring"
+todo.items[4].body = "Soms beskikbaar by plaaslike privaatverhuurders. Gewone tarief: ongeveer MZN 2000 per uur (prys afhanklik van onderhandeling)."
+
+================================================================================
+GALLERY SECTION
+================================================================================
+gallery.headline = "Galery"
+galleryHeading = "Galery"
+
+================================================================================
+LOCATION SECTION
+================================================================================
+location.headline = "Ligging"
+location.blurb = "Ponta do Ouro — Matutuine-distrik, Suid-Mosambiek."
+location.items[0] = "Ponta do Ouro dorpie, minute se stap vanaf die strand"
+location.items[1] = "15 minute na Ponta Malongane • 25 minute na Kosi Bay-grens"
+location.items[2] = "Veilige parkering • Plaaslike kafees en markte naby"
+location.viewMap = "Bekyk interaktiewe kaart"
+
+================================================================================
+CONTACT SECTION
+================================================================================
+contact.headline = "Kontak en Bespreking"
+contact.blurb = "Vrae, datums, spesiale versoeke of groepbesprekings — ons help graag."
+contact.call = "WhatsApp"
+contact.email = "E-pos"
+contact.directions = "Aanwysings"
+contact.bookNow = "Tariewe en beskikbaarheid"
+
+================================================================================
+CONTACT FORM
+================================================================================
+form.name = "Naam"
+form.email = "E-pos"
+form.stayLabel = "Belangstel in verblyf:"
+form.checkin = "Van"
+form.checkout = "Tot"
+form.unitLabel = "Voorkeur kamer tipe:"
+form.units[0] = "Safari Tent — gedeelde badkamer"
+form.units[1] = "Comfort Tent — privaat badkamer"
+form.units[2] = "Tuin Kothuis — inverter lugversorger"
+form.units[3] = "Rietdak Chalet — inverter lugversorger"
+form.message = "Boodskap"
+form.send = "Stuur"
+form.consent = "Deur die vorm in te dien, stem jy in tot kontak rakende jou navraag."
+form.phName = "Jou naam"
+form.phEmail = "jou@epos.com"
+form.phMsg = "Vertel ons meer oor jou versoeke..."
+form.success = "Dankie! Jou boodskap is gestuur. Kyk jou e-pos vir bevestiging."
+
+================================================================================
+FOOTER
+================================================================================
+footer.rights = "Alle regte voorbehou."
+footer.desc = "Gesinsvriendelike eko-gasvryheid en gemeenskapsprojekte in Suid-Mosambiek."
+
+================================================================================
+LEGAL MENU
+================================================================================
+legal.title = "Regsinligting"
+legal.privacy = "Privaatheidsbeleid"
+legal.cookies = "Koekiebeleid"
+legal.terms = "Voorwaardes en Bepalings"
+legal.gdpr = "GDPR Inligting"
+legal.cric = "Verbruikersregte en Kontakte"
+legal.manage = "Koekie-instellings"
+
+================================================================================
+END OF MAIN UI TRANSLATIONS
+================================================================================

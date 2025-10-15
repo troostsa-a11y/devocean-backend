@@ -2,7 +2,7 @@
 
 ## Overview
 
-DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 13 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 14 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
 
 ## User Preferences
 
@@ -49,14 +49,15 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Local component state with React hooks
 
 **Internationalization:**
-- React-based i18n with lazy-loaded translations across 13 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Japanese, Mandarin Chinese, Russian).
+- React-based i18n with lazy-loaded translations across 14 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Japanese, Mandarin Chinese, Russian).
 - Vanilla JavaScript i18n for static legal pages.
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY, CNY, RUB with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
 - **Russian Language Support (Oct 15):** Complete Russian (ru) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with `locale=ru&currency=RUB` parameters. Auto-switches to RUB when Russian language selected in Asia region (manual override available). Russia (RU) mapped to Asia region.
 - **Mandarin Chinese Language Support (Oct 15):** Complete Mandarin Chinese (zh) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with zh-CN locale and CNY currency. Auto-switches to CNY when Chinese language selected in Asia region (manual override available).
 - **Japanese Language Support (Oct 15):** Complete Japanese (ja) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with ja-JP locale and JPY currency. Auto-switches to JPY when Japanese language selected in Asia region (manual override available).
-- **Currency Auto-Switching (Oct 15):** Intelligent currency pairing with language selection - Japanese→JPY, Chinese→CNY, Russian→RUB automatically when in Asia region. Users retain full manual override capability.
+- **Afrikaans Language Support (Oct 15):** Complete Afrikaans (af) translations added for Africa region including main UI, critical nav, experiences, and units. Hotelrunner booking integration configured with af-ZA locale. Auto-switches to ZAR when Afrikaans language selected in Africa region (manual override available).
+- **Currency Auto-Switching (Oct 15):** Intelligent currency pairing with language selection - Japanese→JPY, Chinese→CNY, Russian→RUB, Afrikaans→ZAR automatically when in respective regions. Users retain full manual override capability.
 - **IP-Based Geolocation (Oct 14):** Cloudflare automatically injects visitor country code via middleware for accurate region detection. Browser language detection serves as fallback for local development. Eliminates French-in-Asia and eSwatini mapping issues.
 - **Currency Detection Fix (Oct 12):** Fixed useState initialization bug where `lang` variable was undefined during currency/region detection. Now properly calls `pickInitialLang()` to ensure correct language context during initialization.
 - **Continent Mapping Fixes (Oct 14):** 

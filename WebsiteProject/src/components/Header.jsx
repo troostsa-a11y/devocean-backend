@@ -13,7 +13,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
     asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh', 'ru'], currencies: ['USD', 'JPY', 'CNY', 'RUB', 'EUR', 'GBP'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
-    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
+    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt', 'af'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
     oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
   };
 
@@ -30,6 +30,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
       onCurrencyChange('MZN');
     }
     else if (lang === 'en' && newRegion === 'africa' && currency !== 'ZAR') {
+      onCurrencyChange('ZAR');
+    }
+    else if (lang === 'af' && newRegion === 'africa' && currency !== 'ZAR') {
       onCurrencyChange('ZAR');
     }
     // Europe region language-currency auto-switching
@@ -70,6 +73,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
       onCurrencyChange('MZN');
     }
     else if (newLang === 'en' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
+      onCurrencyChange('ZAR');
+    }
+    else if (newLang === 'af' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
       onCurrencyChange('ZAR');
     }
     // Europe region
@@ -215,6 +221,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               {regions[region].languages.includes('es') && <option value="es">Español</option>}
               {regions[region].languages.includes('sv') && <option value="sv">Svenska</option>}
               {regions[region].languages.includes('pl') && <option value="pl">Polski</option>}
+              {regions[region].languages.includes('af') && <option value="af">Afrikaans</option>}
               {regions[region].languages.includes('ru') && <option value="ru">Русский</option>}
               {regions[region].languages.includes('ja') && <option value="ja">日本語</option>}
               {regions[region].languages.includes('zh') && <option value="zh">中文</option>}

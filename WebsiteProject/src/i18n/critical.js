@@ -130,5 +130,15 @@ export const CRITICAL_NAV = {
     location: "Местоположение",
     contact: "Контакты",
     bookNow: "Цены и наличие"
+  },
+  af: {
+    home: "Tuis",
+    stay: "Verblyf",
+    experiences: "Ervarings",
+    todo: "Wat om te doen",
+    gallery: "Galery",
+    location: "Ligging",
+    contact: "Kontak",
+    bookNow: "Tariewe en beskikbaarheid"
   }
 };
