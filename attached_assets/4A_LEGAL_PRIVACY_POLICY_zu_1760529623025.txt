@@ -1,0 +1,131 @@
+================================================================================
+DEVOCEAN LODGE - PRIVACY POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (privacy section)
+LANGUAGE CODE: zu
+
+================================================================================
+HEADER
+================================================================================
+title = "Inqubomgomo yobumfihlo"
+updatedDate = "06 Okthoba 2025"
+
+quickLinks.title = "Izixhumanisi ezisheshayo"
+quickLinks[0] = "Thina singobani"
+quickLinks[1] = "Ukuqoqwa kwedatha"
+quickLinks[2] = "Ukusetshenziswa kwedatha"
+quickLinks[3] = "Ukwabelana ngedatha"
+quickLinks[4] = "Ukuphepha"
+quickLinks[5] = "Ukugcinwa"
+quickLinks[6] = "Amalungelo akho"
+quickLinks[7] = "Ukudluliswa kwamanye amazwe"
+quickLinks[8] = "Imininingwane yoxhumano"
+quickLinks[9] = "Ukubuyekezwa kwenqubomgomo"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Ubumfihlo bakho bubalulekile:"
+badge.body = "Sizibophezele ekuvikeleni idatha yakho yomuntu siqu futhi sibe sobala mayelana nendlela esiyiqoqa, siyisebenzise, futhi siyivikele ngayo imininingwane yakho."
+
+================================================================================
+WHO WE ARE
+================================================================================
+who.title = "Thina singobani"
+who.body = "I-DEVOCEAN Lodge iqhutshwa yi-TERRAfrique LDA, inkampani ebhaliswe eMozambique. Ikheli lethu elibhalisiwe: Rua C, Parcela 12, Maputo 1118, eMozambique. Sisebenzisa indawo yokuhlala enobungani bemvelo ogwini lwasePonta do Ouro, eMozambique. Sizibophezele ekuvikeleni ubumfihlo bakho futhi siqinisekise ukuqoqwa, ukucutshungulwa, kanye nokusetshenziswa kwedatha yakho yomuntu siqu ngendlela efanele, esemthethweni, futhi esobala ngokuhambisana nemithetho evikela idatha esetshenziswayo. Ukusebenzisa iwebhusayithi yethu nezinsizakalo kusho ukuthi uyavuma ukuqoqwa nokusetshenziswa kolwazi njengoba kuchazwe kule Nqubomgomo yobumfihlo."
+
+================================================================================
+DATA COLLECTION
+================================================================================
+collect.title = "Idatha yomuntu siqu esiyiqoqayo"
+collect.intro = "Siqoqa izinhlobo ezahlukene zolwazi ukuze sinikeze futhi sithuthukise izinsizakalo zethu:"
+
+collect.categories[0].title = "Ulwazi lomuntu siqu"
+collect.categories[0].items[0] = "Igama, imininingwane yokuxhumana"
+collect.categories[0].items[1] = "Ulwazi lwephasipoti/ikadi likazisi"
+collect.categories[0].items[2] = "Ulwazi lokukhokha"
+collect.categories[0].items[3] = "Okuthandwayo kokubhuka"
+
+collect.categories[1].title = "Idatha yezobuchwepheshe"
+collect.categories[1].items[0] = "Ikheli le-IP, ulwazi lwedivayisi"
+collect.categories[1].items[1] = "Uhlobo nesiphequluli sesiphequluli"
+collect.categories[1].items[2] = "Ukuhlaziywa kokusetshenziswa kwewebhusayithi"
+collect.categories[1].items[3] = "Idatha yama-Cookie (ngemvume yakho)"
+
+collect.categories[2].title = "Idatha yokuxhumana"
+collect.categories[2].items[0] = "Ukxhumana nge-imeyili"
+collect.categories[2].items[1] = "Izicelo zensizakalo yamakhasimende"
+collect.categories[2].items[2] = "Imibono kanye nokuphawula"
+collect.categories[2].items[3] = "Okuthandwayo kokumaketha"
+
+================================================================================
+DATA USAGE
+================================================================================
+use.title = "Sisebenzisa kanjani idatha yakho"
+use.items[0] = "Ukuphatha ukubhuka kanye nokunikeza izinsizakalo"
+use.items[1] = "Ukuxhumana mayelana nokuhlala kwakho, izinqubomgomo kanye neminikelo (ngokuzikhethela)"
+use.items[2] = "Ukuthuthukisa iwebhusayithi yethu nezinsizakalo (ukuhlaziya, ukuphepha)"
+use.items[3] = "Ukuhambisana nezibopho zomthetho/zezezimali"
+
+================================================================================
+DATA SHARING
+================================================================================
+share.title = "Sabelana nini ngedatha"
+share.items[0] = "Abahlinzeki bokukhokha kanye nezinkundla zokubhuka ukuze kucutshungulwe ukubhuka kwakho nezinkokhelo"
+share.items[1] = "Izinsizakalo zokuhlaziya ukuze kuqondwe ukusetshenziswa kwewebhusayithi nokuthuthukisa izinsizakalo zethu"
+share.items[2] = "Izinsizakalo zokukhangisa zokukhangisa okukhombe kuwe (kuphela ngemvume yakho)"
+share.items[3] = "Abahlinzeki bezinsizakalo ze-IT, abahlinzeki bokusingatha kanye nabaxhasi bezobuchwepheshe ngaphansi kwezivumelwano zokugcina ubumfihlo"
+share.items[4] = "Ukwabelana neziphathimandla zomthetho uma kudingeka ngumthetho, umthethonqubo, umyalelo wenkantolo noma ezinye izinqubo zomthetho"
+share.items[5] = "Ukufeza izinkontileka noma ukuvikela amalungelo, impahla, ukuphepha"
+share.items[6] = "Ukudlulisa ulwazi kumnikazi omusha uma kuba nokuhlanganiswa, ukuthengwa, noma ukuthengiswa kwezimpahla"
+share.footer = "Sifuna ukuthi zonke izinkampani zangaphandle zihloniphe ukuphepha kwedatha yomuntu siqu futhi ziyisebenzisele izinhloso zokudlulisa kuphela. Izinkampani zangaphandle azivunyelwe ukusebenzisa idatha yomuntu siqu ngezinhloso zazo, kuphela ukuze zicubungule ngokwemiyalelo yethu ngezinhloso ezichaziwe."
+
+================================================================================
+SECURITY
+================================================================================
+security.title = "Izinyathelo zokuphepha"
+security.intro = "Sithatha ukuphepha kwedatha ngokungathí sina futhi sisebenzisa lezi zinyathelo ezilandelayo:"
+security.measures[0] = "Ukubethela idatha ebucayi ngesikhathi sokudluliswa nokugcinwa"
+security.measures[1] = "Ukuhlola ukuphepha njalo kanye nokuhlolwa kokungena"
+security.measures[2] = "Ukuphatha ukufinyelela kanye nezindlela zokuqinisekisa"
+security.measures[3] = "Ukuqeqesha abasebenzi ngokuvikela idatha kanye nobumfihlo"
+security.measures[4] = "Ukulondolozwa kwedatha okuphephile kanye nezinqubo zokubuyisela emuva uma kuba nezinkinga"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "Ukugcinwa kwedatha"
+retention.body = "Sigcina idatha yakho yomuntu siqu kuphela isikhathi esidingekayo ukufeza izinhloso eyaqoqwa ngazo. Ngokuvamile, sigcina idatha yomuntu siqu unyaka ongu-1 ngemuva kokuxhumana kwakho kokugcina nathi, ngaphandle uma umthetho udinga noma uvumela isikhathi eside sokugcina. Singagcina ulwazi oluthile isikhathi eside ngezizathu ezithile, okuhlanganisa: ukugcina amarekhodi kanye nokubika ngokuhambisana nomthetho ofanele (imvamisa amarekhodi ezezimali kanye nentela angu-7 eminyaka), ukufeza amalungelo omthetho, ukuvimbela ukukhwabanisa kanye nokuxazulula izingxabano. Ngemuva kwesikhathi sokugcina, idatha yakho yomuntu siqu izosuswa ngokuphephile noma ifakwe incazelo engaziwa. Ulwazi olushiyekile olungaziwa kanye nolwazi oluhlanganisiwe, olungeke lukukhombe ngokuqondile noma ngokungaqondile, lungagcinwa unomphela ngezinhloso zezibalo kanye nokuhlaziya."
+
+================================================================================
+YOUR RIGHTS
+================================================================================
+rights.title = "Amalungelo akho obumfihlo"
+rights.items[0] = "Ilungelo lokufinyelela idatha yakho yomuntu siqu"
+rights.items[1] = "Ilungelo lokulungisa idatha engalungile"
+rights.items[2] = "Ilungelo lokususa idatha yakho yomuntu siqu"
+rights.items[3] = "Ilungelo lokunciphisa noma lokuphikisa ukucutshungulwa"
+rights.items[4] = "Ilungelo lokuphatheka kwedatha"
+rights.items[5] = "Ilungelo lokuhoxisa imvume"
+
+================================================================================
+INTERNATIONAL TRANSFERS
+================================================================================
+transfers.title = "Ukudluliswa kwedatha kwamanye amazwe"
+transfers.body = "Njengoba sisebenza ezindaweni eziningi zomthetho, idatha yakho ingase idluliselwe futhi icutshungulwe emazweni angaphandle kwezwe lakho lokuhlala. Siqinisekisa ukuthi ukudlulisa okunjalo kuhambisana nemithetho evikela idatha esetshenziswayo ngokusebenzisa izinqumo zokwanele zeKhomishini yaseYurophu, izinkontileka ezijwayelekile (SCC), izinyathelo zokuphepha ezifanele kanye nokuba sobala ngezindawo zokudlulisa."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Xhumana neqembu lethu lobumfihlo"
+contact.body = "Uma unemibuzo, ukukhathazeka, izicelo, noma ufisa ukusebenzisa amalungelo akho obumfihlo mayelana nale Nqubomgomo yobumfihlo noma ukucutshungulwa kwedatha yakho yomuntu siqu, sicela uxhumane nathi ngalezi zindlela ezilandelayo:<br><br><strong>I-imeyili:</strong> <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a><br><strong>Ucingo:</strong> +258 8441 82252<br><strong>Ikheli leposi:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambique<br><br>Sizophendula esicelweni sakho ngokuhambisana nemithetho evikela idatha esetshenziswayo. Uma unganeliseki noma ukhathazekile ngokuphathwa kolwazi lwakho, ungaxhumana nesikhulu sethu sokuvikela idatha ngekheli le-imeyili elingenhla."
+
+================================================================================
+POLICY UPDATES
+================================================================================
+updates.title = "Ukubuyekezwa kwenqubomgomo"
+updates.body = "Singabuyekeza le Nqubomgomo yobumfihlo ngezikhathi ezithile ukuze ibonise izinguquko emikhubeni yethu, ubuchwepheshe, izidingo zomthetho noma ezinye izici. Sizokwazisa ngezinguquko ezibalulekile ngezaziso ze-imeyili kubasebenzisi ababhalisiwe, izaziso ezigqamile kwiwebhusayithi yethu kanye nosuku lokubuyekezwa kokugcina. Sincoma ukuthi ubuyekeze le nqubomgomo njalo ukuze wazi ukuthi sivikela kanjani ulwazi lwakho."
+
+================================================================================
+END OF PRIVACY POLICY
+================================================================================
