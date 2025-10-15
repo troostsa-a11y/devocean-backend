@@ -7482,6 +7482,98 @@
             body: "Tunaweza kusasisha Sera hii ya Faragha mara kwa mara ili kuakisi mabadiliko katika mbinu zetu, teknolojia, mahitaji ya kisheria au mambo mengine. Tutakuarifu kuhusu mabadiliko ya maana kupitia arifa za barua pepe kwa watumiaji waliosajiliwa, arifa za wazi kwenye tovuti yetu na tarehe ya sasisho la mwisho. Tunapendekeza upitie sera hii mara kwa mara ili kujua jinsi tunavyolinda taarifa zako."
           }
         }
+      },
+
+      cookies: {
+        title: "Sera ya Vidakuzi",
+        effectiveDate: "19 Septemba 2025",
+        lastUpdated: "06 Oktoba 2025",
+        managePreferences: "Dhibiti mapendeleo yako ya vidakuzi:",
+        manageText: "Unaweza kudhibiti ni vidakuzi vipi tunavyotumia kupitia bango letu la vidakuzi au mipangilio ya kivinjari chako.",
+        cookieSettingsBtn: "Mipangilio ya Vidakuzi",
+        quickLinks: {
+          title: "Viungo vya Haraka",
+          links: [
+            { id: "what", text: "Vidakuzi ni nini" },
+            { id: "how", text: "Jinsi tunavyotumia Vidakuzi" },
+            { id: "necessary", text: "Vya Lazima" },
+            { id: "functional", text: "Vya Utendaji" },
+            { id: "analytics", text: "Vya Uchambuzi" },
+            { id: "advertisement", text: "Vya Utangazaji" },
+            { id: "manage", text: "Dhibiti Mapendeleo" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Kuhusu Vidakuzi",
+            body: "Unaweza kudhibiti ni vidakuzi vipi tunavyotumia kupitia bango letu la vidakuzi au mipangilio ya kivinjari chako."
+          },
+          what: {
+            title: "Vidakuzi ni nini?",
+            body: "Sera hii ya Vidakuzi inaelezea vidakuzi ni nini, jinsi tunavyovitumia, aina za vidakuzi tunazotumia (yaani, taarifa tunazokusanya kwa kutumia vidakuzi na jinsi taarifa hiyo inavyotumika), na jinsi ya kudhibiti mipangilio yako ya vidakuzi.<br><br>Vidakuzi ni faili ndogo za maandishi zinazotumwa kuhifadhi kiasi kidogo cha taarifa. Zinahifadhiwa kwenye kifaa chako wakati tovuti inapopakiwa kwenye kivinjari chako. Vidakuzi hivi vinatusaidia kuhakikisha tovuti inafanya kazi vizuri, iwe salama zaidi, kutoa uzoefu bora wa mtumiaji, na kuelewa jinsi tovuti inavyofanya kazi na kuchambua nini kinafanya kazi na ni wapi kinahitaji kuboresha."
+          },
+          how: {
+            title: "Jinsi tunavyotumia Vidakuzi?",
+            body: "Kama huduma nyingi za mtandaoni, tovuti yetu inatumia vidakuzi vya kwanza na vya tatu kwa madhumuni mbalimbali. Vidakuzi vya kwanza vinahitajika zaidi ili tovuti ifanye kazi vizuri na havikusanyi data inayoweza kukutambua kibinafsi.<br><br>Vidakuzi vya tatu vinavyotumika kwenye tovuti yetu vinatusaidia hasa kuelewa jinsi tovuti inavyofanya kazi, jinsi unavyoingiliana nayo, kuweka huduma zetu salama, kutoa matangazo yanayofaa, na kuboresha uzoefu wako wa mtumiaji kwa ujumla."
+          },
+          necessary: {
+            title: "Vidakuzi vya Lazima",
+            description: "Vidakuzi vya lazima vinahitajika ili kuwezesha vipengele vya msingi vya tovuti hii, kama kutoa kuingia salama au kurekebisha mapendeleo yako ya idhini. Vidakuzi hivi havihifadhi data inayoweza kukutambua kibinafsi.",
+            tableHeaders: { cookie: "Vidakuzi", duration: "Muda", description: "Maelezo" },
+            cookies: [
+              { name: "site.currency", duration: "1 year", desc: "Vidakuzi hivi vinatumika kuhifadhi mapendeleo ya sarafu ya mtumiaji." },
+              { name: "CookieYes Consent", duration: "1 year", desc: "Maelezo hayapatikani kwa sasa." },
+              { name: "cookieyes-consent", duration: "1 year", desc: "Maelezo hayapatikani kwa sasa." },
+              { name: "cky-action", duration: "1 year", desc: "Hakuna maelezo yanayopatikana." },
+              { name: "cky-consent", duration: "1 year", desc: "Maelezo hayapatikani kwa sasa." },
+              { name: "cookieyes-other", duration: "1 year", desc: "Maelezo hayapatikani kwa sasa." }
+            ]
+          },
+          functional: {
+            title: "Vidakuzi vya Utendaji",
+            description: "Vidakuzi vya utendaji vinatusaidia kufanya kazi za aina fulani kama kushiriki maudhui ya tovuti kwenye majukwaa ya mitandao ya kijamii, kukusanya maoni, na vipengele vingine vya tatu.",
+            tableHeaders: { cookie: "Vidakuzi", duration: "Muda", description: "Maelezo" },
+            cookies: [
+              { name: "_fbp", duration: "3 months", desc: "Facebook inaweka vidakuzi hivi ili kuboresha uzoefu wa mtumiaji wa tovuti na kutoa mtumiaji matangazo yanayofaa wakati anatumia majukwaa ya kijamii ya Facebook." }
+            ]
+          },
+          analytics: {
+            title: "Vidakuzi vya Uchambuzi",
+            description: "Vidakuzi vya uchambuzi vinatumika kuelewa jinsi wageni wanavyoingiliana na tovuti. Vidakuzi hivi vinatusaidia kutoa taarifa kuhusu vipimo kama vile idadi ya wageni, kiwango cha kurudi nyuma, chanzo cha trafiki, n.k.",
+            tableHeaders: { cookie: "Vidakuzi", duration: "Muda", description: "Maelezo" },
+            cookies: [
+              { name: "_ga", duration: "2 years", desc: "Google Analytics inaweka vidakuzi hivi ili kuhesabu data ya wageni, kikao na data ya kampeni na kufuatilia matumizi ya tovuti kwa ripoti ya uchambuzi wa tovuti. Vidakuzi vinahifadhi taarifa bila kujulikana na vinatoa nambari iliyozalishwa kwa nasibu ili kutambua wageni wa kipekee." },
+              { name: "_gat_gtag_*", duration: "1 minute", desc: "Google Analytics inaweka vidakuzi hivi ili kuhifadhi na kuhesabu maonyesho ya kurasa." },
+              { name: "_gid", duration: "1 day", desc: "Google Analytics inaweka vidakuzi hivi ili kuhifadhi taarifa kuhusu jinsi wageni wanavyotumia tovuti huku pia ikiunda ripoti ya uchambuzi wa utendaji wa tovuti. Baadhi ya data inayokusanywa inajumuisha idadi ya wageni, chanzo chao, na kurasa wanazotembelea bila kujulikana." },
+              { name: "_ga_*", duration: "2 years", desc: "Google Analytics inaweka vidakuzi hivi ili kufuatilia tabia za watumiaji." },
+              { name: "pardot", duration: "session", desc: "Vidakuzi vya pardot vinawekwa wakati mgeni anaingia kama mtumiaji wa Pardot. Vidakuzi vinaonyesha kikao kinachofanya kazi na havitumiki kwa kufuatilia." }
+            ]
+          },
+          advertisement: {
+            title: "Vidakuzi vya Utangazaji",
+            description: "Vidakuzi vya utangazaji vinatumika kuwapa wageni matangazo yaliyobinafsishwa kulingana na kurasa ulizotembelea hapo awali na kuchambua ufanisi wa kampeni za utangazaji.",
+            tableHeaders: { cookie: "Vidakuzi", duration: "Muda", description: "Maelezo" },
+            cookies: [
+              { name: "_gcl_au", duration: "3 months", desc: "Google Tag Manager inaweka vidakuzi hivi ili kujaribu ufanisi wa utangazaji wa tovuti zinazotumia huduma zake." },
+              { name: "test_cookie", duration: "15 minutes", desc: "doubleclick.net inaweka vidakuzi hivi ili kubaini ikiwa kivinjari cha mtumiaji kinasaidia vidakuzi." },
+              { name: "_fbc", duration: "2 years", desc: "Facebook inaweka vidakuzi hivi ili kuhifadhi na kufuatilia mwingiliano." },
+              { name: "IDE", duration: "1 year 24 days", desc: "Vidakuzi vya Google DoubleClick IDE vinahifadhi taarifa kuhusu jinsi mtumiaji anavyotumia tovuti ili kutoa matangazo yanayofaa kulingana na wasifu wa mtumiaji." }
+            ]
+          },
+          manage: {
+            title: "Dhibiti Mapendeleo ya Vidakuzi",
+            consentTitle: "Mapendeleo ya Idhini",
+            consentText: "Unaweza kubadilisha mipangilio yako ya vidakuzi wakati wowote kwa kubofya kitufe cha 'Mapendeleo ya Idhini' hapo juu. Hii itakuruhusu kurudi kwenye bango la idhini ya vidakuzi na kusasisha mapendeleo yako au kuondoa idhini yako mara moja.",
+            browserText: "Zaidi ya hayo, vivinjari tofauti hutoa mbinu tofauti za kuzuia na kufuta vidakuzi vinavyotumika na tovuti. Unaweza kubadilisha mipangilio ya kivinjari chako ili kuzuia au kufuta vidakuzi. Hapa chini kuna viungo vya hati za usaidizi za kudhibiti na kufuta vidakuzi kutoka kwa vivinjari vya wavuti vya msingi.",
+            browsers: {
+              chrome: "Chrome",
+              safari: "Safari",
+              firefox: "Firefox",
+              ie: "Internet Explorer",
+              other: "Ikiwa unatumia kivinjari kingine cha wavuti, tafadhali rejea hati zake rasmi za usaidizi."
+            }
+          }
+        }
       }
     }
   };
