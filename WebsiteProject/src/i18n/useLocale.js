@@ -2,22 +2,49 @@ import { useState, useEffect } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
 const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af", "zu", "sw"];
-const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN", "JPY", "CNY", "RUB", "TZS", "KES"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
+// Comprehensive country-to-currency mapping (legal tender for each country)
 export const CC_TO_CURRENCY = {
-  US: "USD", GB: "GBP",
-  NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR",
-  PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
-  ZA: "ZAR", MZ: "MZN",
-  // Southern African countries
-  LS: "LSL", BW: "BWP", NA: "NAD", SZ: "SZL", ZM: "ZMW", MW: "MWK", 
-  ZW: "USD", TZ: "TZS", KE: "KES",
-  SE: "SEK",
-  PL: "PLN",
-  JP: "JPY",
-  CN: "CNY",
+  // Europe
+  GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", 
+  DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", AT: "EUR",
+  FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK",
+  DK: "DKK", CH: "CHF", CZ: "CZK", HU: "HUF", RO: "RON",
+  RS: "RSD", HR: "EUR", SI: "EUR", BA: "BAM", BG: "BGN",
+  SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR",
+  CY: "EUR", LU: "EUR", IS: "ISK", LI: "CHF", MC: "EUR",
+  UA: "UAH", BY: "BYN", MD: "MDL", AL: "ALL", MK: "MKD",
+  ME: "EUR", XK: "EUR", AD: "EUR", SM: "EUR", VA: "EUR",
+  
+  // Africa
+  ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX",
+  ZW: "USD", BW: "BWP", NA: "NAD", EG: "EGP", MA: "MAD",
+  SZ: "SZL", RE: "EUR", MU: "MUR", SC: "SCR", LS: "LSL",
+  ZM: "ZMW", MW: "MWK", AO: "AOA", GH: "GHS", NG: "NGN", 
+  ET: "ETB", SD: "SDG", DZ: "DZD", TN: "TND", LY: "LYD", 
+  SN: "XOF", CI: "XOF", CM: "XAF", RW: "RWF", BI: "BIF", 
+  SO: "SOS", DJ: "DJF",
+  
+  // Americas
+  US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS",
+  CL: "CLP", CO: "COP", PE: "PEN", VE: "VES", EC: "USD",
+  UY: "UYU", PY: "PYG", BO: "BOB", CR: "CRC", PA: "PAB",
+  GT: "GTQ", HN: "HNL", SV: "USD", NI: "NIO", CU: "CUP",
+  DO: "DOP", HT: "HTG", JM: "JMD", TT: "TTD", BB: "BBD",
+  
+  // Asia & Middle East
+  CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB",
+  SG: "SGD", MY: "MYR", ID: "IDR", PH: "PHP", VN: "VND",
+  AE: "AED", SA: "SAR", QA: "QAR", KW: "KWD", BH: "BHD",
+  OM: "OMR", IL: "ILS", JO: "JOD", LB: "LBP", TR: "TRY",
+  PK: "PKR", BD: "BDT", LK: "LKR", NP: "NPR", MM: "MMK",
+  KH: "KHR", LA: "LAK", MN: "MNT", KZ: "KZT", UZ: "UZS",
   RU: "RUB",
+  
+  // Oceania
+  AU: "AUD", NZ: "NZD", FJ: "FJD", PG: "PGK", NC: "XPF",
+  PF: "XPF", WS: "WST", TO: "TOP", VU: "VUV", SB: "SBD",
 };
 
 // Map country codes to continents (comprehensive)
@@ -70,19 +97,6 @@ const CONTINENT_MERIDIANS = {
   europe: { base: 1, min: -1, max: 2 },    // Base at +1 for Central Europe (UTC-1 to +2)
   asia: { base: 7, min: 3, max: 12 },      // Base at +7 for SE Asia, shift to avoid overlap (UTC+3 to +12)
   oceania: { base: 11, min: 10, max: 13 }, // Australia East/NZ/Pacific (UTC+10 to +13)
-};
-
-const LANG_TO_CURRENCY_HINT = {
-  "nl": "EUR", "de": "EUR", "fr": "EUR", "pt": "EUR", "es": "EUR", "it": "EUR",
-  "sv": "SEK",
-  "pl": "PLN",
-  "ja": "JPY",
-  "zh": "CNY",
-  "ru": "RUB",
-  "af": "ZAR",
-  "zu": "ZAR",
-  "sw": "TZS",
-  "en-gb": "GBP", "en-us": "USD",
 };
 
 // Booking engine locale mapping (base, can be overridden by region)
@@ -176,31 +190,17 @@ function pickInitialLang() {
   return "en";
 }
 
-function pickInitialCurrency(langBase) {
-  const saved = localStorage.getItem("site.currency");
-  
-  if (saved && ALLOWED_CURRENCIES.includes(saved)) {
-    return saved;
-  }
-
-  // Priority 1: Check country code (Cloudflare IP or browser hint)
+function pickInitialCurrency() {
+  // Auto-assign currency based on Cloudflare IP country detection
+  // No manual selection allowed - currency is determined by visitor's location
   const cc = getCountryCode();
-  const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
   
-  if (byCC && ALLOWED_CURRENCIES.includes(byCC)) {
-    return byCC;
+  if (cc && CC_TO_CURRENCY[cc]) {
+    return CC_TO_CURRENCY[cc];
   }
-
-  // Priority 2: Check language hints
-  if (langBase && LANG_TO_CURRENCY_HINT[langBase]) {
-    return LANG_TO_CURRENCY_HINT[langBase];
-  }
-  const nav = (navigator.language || "").toLowerCase();
-  if (LANG_TO_CURRENCY_HINT[nav]) {
-    return LANG_TO_CURRENCY_HINT[nav];
-  }
-
-  return "USD";
+  
+  // Default to EUR for Europe if country detection fails
+  return "EUR";
 }
 
 function pickInitialRegion(langBase) {
@@ -282,10 +282,8 @@ export function useLocale() {
     return stored && SUPPORTED_LANGS.includes(stored) ? stored : pickInitialLang();
   });
 
-  const [currency, setCurrencyState] = useState(() => {
-    const stored = localStorage.getItem("site.currency");
-    return stored && ALLOWED_CURRENCIES.includes(stored) ? stored : pickInitialCurrency(pickInitialLang());
-  });
+  // Currency is auto-assigned based on IP location - no manual selection allowed
+  const [currency] = useState(() => pickInitialCurrency());
 
   const [region, setRegionState] = useState(() => {
     // Only trust localStorage if it has the correct version (IP-based)
@@ -356,12 +354,6 @@ export function useLocale() {
     document.documentElement.setAttribute("lang", normalized);
   };
 
-  const setCurrency = (newCur) => {
-    const clamped = clampCur(newCur) || "USD";
-    setCurrencyState(clamped);
-    localStorage.setItem("site.currency", clamped);
-  };
-
   const setRegion = (newRegion) => {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
       setRegionState(newRegion);
@@ -373,10 +365,9 @@ export function useLocale() {
 
   return {
     lang,
-    currency,
+    currency, // Auto-assigned based on IP, read-only
     region,
     setLang,
-    setCurrency,
     setRegion,
     ui,
     criticalUI, // Provide critical nav separately for header
