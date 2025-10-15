@@ -1,0 +1,119 @@
+================================================================================
+DEVOCEAN LODGE - COOKIE POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cookies section)
+LANGUAGE CODE: af
+
+NOTE: Cookie table technical details (cookie names, durations) generally don't need translation.
+Only translate descriptive text and category titles.
+
+================================================================================
+HEADER
+================================================================================
+title = "Koekiebeleid"
+effectiveDate = "19 September 2025"
+lastUpdated = "06 Oktober 2025"
+managePreferences = "Bestuur jou koekie-voorkeure:"
+manageText = "Jy kan beheer watter koekies ons gebruik deur ons koekie-banier of jou blaaier-instellings."
+cookieSettingsBtn = "Koekie-instellings"
+
+quickLinks.title = "Vinnige Skakels"
+quickLinks[0] = "Wat is koekies"
+quickLinks[1] = "Hoe ons koekies gebruik"
+quickLinks[2] = "Noodsaaklik"
+quickLinks[3] = "Funksioneel"
+quickLinks[4] = "Analities"
+quickLinks[5] = "Advertensies"
+quickLinks[6] = "Bestuur Voorkeure"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Oor koekies"
+badge.body = "Jy kan beheer watter koekies ons gebruik deur ons koekie-banier of jou blaaier-instellings."
+
+================================================================================
+WHAT ARE COOKIES
+================================================================================
+what.title = "Wat is koekies?"
+what.body = "Hierdie Koekiebeleid verduidelik wat koekies is, hoe ons dit gebruik, watter tipes koekies ons gebruik (d.w.s. watter inligting ons deur koekies versamel en hoe daardie inligting gebruik word), en hoe om koekie-instellings te bestuur.<br><br>Koekies is klein tekslêers wat gebruik word om klein hoeveelhede inligting te stoor. Hulle word op jou toestel gestoor wanneer die webwerf in jou blaaier gelaai word. Hierdie koekies help om die webwerf korrek te laat funksioneer, dit veiliger te maak, 'n beter gebruikerservaring te bied, en om werkverrigting te ontleed om te bepaal wat werk en waar verbeterings nodig is."
+
+================================================================================
+HOW WE USE COOKIES
+================================================================================
+how.title = "Hoe ons koekies gebruik?"
+how.body = "Soos die meeste aanlyndienste, gebruik ons webwerf beide eerste- en derdeparty-koekies vir verskeie doeleindes. Eerste-party koekies is meestal nodig vir die webwerf om korrek te funksioneer en versamel nie persoonlik identifiseerbare data nie.<br><br>Derdeparty-koekies wat op ons webwerf gebruik word, help hoofsaaklik om te verstaan hoe die webwerf presteer, hoe jy met dit interaksie het, om ons dienste veilig te hou, om relevante advertensies te lewer en om jou gebruikerservaring te verbeter en jou toekomstige interaksies met ons webwerf te versnel."
+
+================================================================================
+NECESSARY COOKIES
+================================================================================
+necessary.title = "Noodsaaklike Koekies"
+necessary.description = "Noodsaaklike koekies word vereis om basiese funksies van hierdie webwerf te aktiveer, soos veilige aanmelding of die aanpassing van jou toestemmingvoorkeure. Hierdie koekies bevat geen persoonlik identifiseerbare data nie."
+necessary.tableHeaders.cookie = "Koekie"
+necessary.tableHeaders.duration = "Duur"
+necessary.tableHeaders.description = "Beskrywing"
+
+# Cookie table entries (translate descriptions only):
+necessary.cookies[0].desc = "Hierdie koekie word gebruik om die gebruiker se geldeenheidvoorkeure te stoor."
+necessary.cookies[1].desc = "Beskrywing tans nie beskikbaar nie."
+necessary.cookies[2].desc = "Beskrywing tans nie beskikbaar nie."
+necessary.cookies[3].desc = "Geen beskrywing beskikbaar nie."
+necessary.cookies[4].desc = "Beskrywing tans nie beskikbaar nie."
+necessary.cookies[5].desc = "Beskrywing tans nie beskikbaar nie."
+
+================================================================================
+FUNCTIONAL COOKIES
+================================================================================
+functional.title = "Funksionele Koekies"
+functional.description = "Funksionele koekies help om sekere funksies uit te voer, soos die deel van webwerf-inhoud op sosiale media platforms, die versameling van terugvoer en ander derdeparty-funksies."
+functional.tableHeaders.cookie = "Koekie"
+functional.tableHeaders.duration = "Duur"
+functional.tableHeaders.description = "Beskrywing"
+
+functional.cookies[0].desc = "Facebook stel hierdie koekie om die gebruikerservaring op die webwerf te verbeter en om relevante advertensies te lewer tydens die gebruik van Facebook se sosiale platforms."
+
+================================================================================
+ANALYTICS COOKIES
+================================================================================
+analytics.title = "Analitiese Koekies"
+analytics.description = "Analitiese koekies word gebruik om te verstaan hoe besoekers met die webwerf interaksie het. Hierdie koekies verskaf inligting oor maatstawwe soos die aantal besoekers, weieringskoers, verkeersbron, ens."
+analytics.tableHeaders.cookie = "Koekie"
+analytics.tableHeaders.duration = "Duur"
+analytics.tableHeaders.description = "Beskrywing"
+
+analytics.cookies[0].desc = "Google Analytics stel hierdie koekie om besoeker-, sessie- en veldtogdata te bereken en webwerfgebruik vir die webwerf se analiseverslag te volg. Die koekie stoor inligting anoniem en ken 'n ewekansig gegenereerde nommer toe om unieke besoekers te herken."
+analytics.cookies[1].desc = "Google Analytics stel hierdie koekie om bladsykyke te stoor en te tel."
+analytics.cookies[2].desc = "Google Analytics stel hierdie koekie om inligting te stoor oor hoe besoekers die webwerf gebruik, asook om 'n analiseverslag van die webwerf se prestasie te skep. Versamelde data sluit die aantal besoekers, hul bron en die bladsye wat anoniem besoek is, in."
+analytics.cookies[3].desc = "Google Analytics stel hierdie koekie om gebruikersgedrag te volg."
+analytics.cookies[4].desc = "Pardot koekie word gestel terwyl die besoeker aangemeld is as 'n Pardot-gebruiker. Die koekie dui op 'n aktiewe sessie en word nie vir opsporing gebruik nie."
+
+================================================================================
+ADVERTISEMENT COOKIES
+================================================================================
+advertisement.title = "Advertensie Koekies"
+advertisement.description = "Advertensie koekies word gebruik om besoekers te voorsien van gepersonaliseerde advertensies gebaseer op voorheen besoekte bladsye en om die doeltreffendheid van advertensieveldtogte te ontleed."
+advertisement.tableHeaders.cookie = "Koekie"
+advertisement.tableHeaders.duration = "Duur"
+advertisement.tableHeaders.description = "Beskrywing"
+
+advertisement.cookies[0].desc = "Google Tag Manager stel hierdie koekie om te eksperimenteer met advertensiedoeltreffendheid van webwerwe wat hul dienste gebruik."
+advertisement.cookies[1].desc = "doubleclick.net stel hierdie koekie om te bepaal of die gebruiker se blaaier koekies ondersteun."
+advertisement.cookies[2].desc = "Facebook stel hierdie koekie om interaksies te stoor en te volg."
+advertisement.cookies[3].desc = "Google DoubleClick IDE koekies stoor inligting oor hoe die gebruiker die webwerf gebruik om relevante advertensies volgens die gebruiker se profiel te lewer."
+
+================================================================================
+MANAGE PREFERENCES
+================================================================================
+manage.title = "Bestuur Koekie-voorkeure"
+manage.consentTitle = "Toestemming Instellings"
+manage.consentText = "Jy kan jou koekie-instellings enige tyd verander deur op die 'Toestemming Instellings' knoppie hierbo te klik. Dit sal jou toelaat om die koekie-toestemming banier te heropen en jou voorkeure op te dateer of jou toestemming onmiddellik terug te trek."
+manage.browserText = "Daarbenewens bied verskillende blaaiers verskillende metodes om koekies wat deur webwerwe gebruik word te blokkeer en uit te vee. Jy kan die instellings van jou blaaier verander om koekies te blokkeer of uit te vee. Hieronder is skakels na ondersteuningsdokumente oor die bestuur en verwydering van koekies in die belangrikste webblaaiers."
+manage.browsers.chrome = "Chrome"
+manage.browsers.safari = "Safari"
+manage.browsers.firefox = "Firefox"
+manage.browsers.ie = "Internet Explorer"
+manage.browsers.other = "As jy 'n ander webblaaier gebruik, raadpleeg asseblief sy amptelike ondersteuningsdokumente."
+
+================================================================================
+END OF COOKIE POLICY
+================================================================================

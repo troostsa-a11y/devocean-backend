@@ -6400,6 +6400,114 @@
             body: "Ons kan hierdie Privaatheidsbeleid van tyd tot tyd opdateer om veranderinge in ons praktyke, tegnologieë, wettige vereistes of ander faktore te weerspieël. Ons sal jou in kennis stel van wesenlike veranderinge deur e-poskennisgewings aan geregistreerde gebruikers, opvallende aankondigings op ons webwerf en 'n opgedateerde laaste opdateringsdatum. Ons beveel aan dat jy hierdie beleid periodiek hersien om op hoogte te bly van hoe ons jou inligting beskerm."
           }
         }
+      },
+
+      cookies: {
+        title: "Koekiebeleid",
+        effectiveDate: "19 September 2025",
+        lastUpdated: "06 Oktober 2025",
+        managePreferences: "Bestuur jou koekie-voorkeure:",
+        manageText: "Jy kan beheer watter koekies ons gebruik deur ons koekie-banier of jou blaaier-instellings.",
+        cookieSettingsBtn: "Koekie-instellings",
+        quickLinks: {
+          title: "Vinnige Skakels",
+          links: [
+            { id: "what", text: "Wat is koekies" },
+            { id: "how", text: "Hoe ons koekies gebruik" },
+            { id: "necessary", text: "Noodsaaklik" },
+            { id: "functional", text: "Funksioneel" },
+            { id: "analytics", text: "Analities" },
+            { id: "advertisement", text: "Advertensies" },
+            { id: "manage", text: "Bestuur Voorkeure" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Oor koekies",
+            body: "Jy kan beheer watter koekies ons gebruik deur ons koekie-banier of jou blaaier-instellings."
+          },
+          what: {
+            title: "Wat is koekies?",
+            body: "Hierdie Koekiebeleid verduidelik wat koekies is, hoe ons dit gebruik, watter tipes koekies ons gebruik (d.w.s. watter inligting ons deur koekies versamel en hoe daardie inligting gebruik word), en hoe om koekie-instellings te bestuur.<br><br>Koekies is klein tekslêers wat gebruik word om klein hoeveelhede inligting te stoor. Hulle word op jou toestel gestoor wanneer die webwerf in jou blaaier gelaai word. Hierdie koekies help om die webwerf korrek te laat funksioneer, dit veiliger te maak, 'n beter gebruikerservaring te verskaf, te verstaan hoe die webwerf presteer en om te ontleed wat werk en waar dit verbeter moet word."
+          },
+          how: {
+            title: "Hoe ons koekies gebruik?",
+            body: "Soos die meeste aanlyndienste, gebruik ons webwerf beide eerste- en derdeparty-koekies vir verskeie doeleindes. Eerste-party koekies is meestal nodig vir die webwerf om korrek te funksioneer en versamel nie persoonlik identifiseerbare data nie.<br><br>Derdeparty-koekies wat op ons webwerf gebruik word, help hoofsaaklik om te verstaan hoe die webwerf presteer, hoe jy met dit interaksie het, om ons dienste veilig te hou, om relevante advertensies te lewer en om jou gebruikerservaring te verbeter en jou toekomstige interaksies met ons webwerf te help versnel."
+          },
+          necessary: {
+            title: "Noodsaaklike Koekies",
+            description: "Noodsaaklike koekies word vereis om basiese funksies van hierdie webwerf te aktiveer, soos veilige aanmelding of die aanpassing van jou toestemmingvoorkeure. Hierdie koekies bevat geen persoonlik identifiseerbare data nie.",
+            tableHeaders: {
+              cookie: "Koekie",
+              duration: "Duur",
+              description: "Beskrywing"
+            },
+            cookies: [
+              { name: "currency", duration: "1 year", desc: "Hierdie koekie word gebruik om die gebruiker se geldeenheidvoorkeure te stoor." },
+              { name: "CookieConsent", duration: "1 year", desc: "Beskrywing tans nie beskikbaar nie." },
+              { name: "test_cookie", duration: "15 minutes", desc: "Beskrywing tans nie beskikbaar nie." },
+              { name: "rc::a", duration: "never", desc: "Geen beskrywing beskikbaar nie." },
+              { name: "rc::c", duration: "session", desc: "Beskrywing tans nie beskikbaar nie." },
+              { name: "li_gc", duration: "6 months", desc: "Beskrywing tans nie beskikbaar nie." }
+            ]
+          },
+          functional: {
+            title: "Funksionele Koekies",
+            description: "Funksionele koekies help om sekere funksies uit te voer, soos die deel van webwerf-inhoud op sosiale media platforms, die versameling van terugvoer en ander derdeparty-funksies.",
+            tableHeaders: {
+              cookie: "Koekie",
+              duration: "Duur",
+              description: "Beskrywing"
+            },
+            cookies: [
+              { name: "_fbp", duration: "3 months", desc: "Facebook stel hierdie koekie om die gebruikerservaring op die webwerf te verbeter en om relevante advertensies te lewer tydens die gebruik van Facebook se sosiale platforms." }
+            ]
+          },
+          analytics: {
+            title: "Analitiese Koekies",
+            description: "Analitiese koekies word gebruik om te verstaan hoe besoekers met die webwerf interaksie het. Hierdie koekies verskaf inligting oor maatstawwe soos die aantal besoekers, weieringskoers, verkeersbron, ens.",
+            tableHeaders: {
+              cookie: "Koekie",
+              duration: "Duur",
+              description: "Beskrywing"
+            },
+            cookies: [
+              { name: "_ga", duration: "1 year 1 month 4 days", desc: "Google Analytics stel hierdie koekie om besoeker-, sessie- en veldtogdata te bereken en webwerfgebruik vir die webwerf se analiseverslag te volg. Die koekie stoor inligting anoniem en ken 'n ewekansig gegenereerde nommer toe om unieke besoekers te herken." },
+              { name: "_gat_gtag_UA_*", duration: "1 minute", desc: "Google Analytics stel hierdie koekie om bladsykyke te stoor en te tel." },
+              { name: "_gid", duration: "1 day", desc: "Google Analytics stel hierdie koekie om inligting te stoor oor hoe besoekers die webwerf gebruik, asook om 'n analiseverslag van die webwerf se prestasie te skep. Versamelde data sluit die aantal besoekers, hul bron en die bladsye wat anoniem besoek is, in." },
+              { name: "_ga_*", duration: "1 year 1 month 4 days", desc: "Google Analytics stel hierdie koekie om gebruikersgedrag te volg." },
+              { name: "visitor_id*-hash", duration: "10 years", desc: "Pardot koekie word gestel terwyl die besoeker aangemeld is as 'n Pardot-gebruiker. Die koekie dui op 'n aktiewe sessie en word nie vir opsporing gebruik nie." }
+            ]
+          },
+          advertisement: {
+            title: "Advertensie Koekies",
+            description: "Advertensie koekies word gebruik om besoekers te voorsien van gepersonaliseerde advertensies gebaseer op voorheen besoekte bladsye en om die doeltreffendheid van advertensieveldtogte te ontleed.",
+            tableHeaders: {
+              cookie: "Koekie",
+              duration: "Duur",
+              description: "Beskrywing"
+            },
+            cookies: [
+              { name: "_gcl_au", duration: "3 months", desc: "Google Tag Manager stel hierdie koekie om te eksperimenteer met advertensiedoeltreffendheid van webwerwe wat hul dienste gebruik." },
+              { name: "test_cookie", duration: "15 minutes", desc: "doubleclick.net stel hierdie koekie om te bepaal of die gebruiker se blaaier koekies ondersteun." },
+              { name: "_fbp", duration: "3 months", desc: "Facebook stel hierdie koekie om interaksies te stoor en te volg." },
+              { name: "IDE", duration: "1 year 24 days", desc: "Google DoubleClick IDE koekies stoor inligting oor hoe die gebruiker die webwerf gebruik om relevante advertensies volgens die gebruiker se profiel te lewer." }
+            ]
+          },
+          manage: {
+            title: "Bestuur Koekie-voorkeure",
+            consentTitle: "Toestemming Instellings",
+            consentText: "Jy kan jou koekie-instellings enige tyd verander deur op die 'Toestemming Instellings' knoppie hierbo te klik. Dit sal jou toelaat om die koekie-toestemming banier te heropen en jou voorkeure op te dateer of jou toestemming onmiddellik terug te trek.",
+            browserText: "Daarbenewens bied verskillende blaaiers verskillende metodes om koekies wat deur webwerwe gebruik word te blokkeer en uit te vee. Jy kan die instellings van jou blaaier verander om koekies te blokkeer of uit te vee. Hieronder is skakels na ondersteuningsdokumente oor die bestuur en verwydering van koekies in die belangrikste webblaaiers.",
+            browsers: {
+              chrome: "Chrome",
+              safari: "Safari",
+              firefox: "Firefox",
+              ie: "Internet Explorer",
+              other: "As jy 'n ander webblaaier gebruik, raadpleeg asseblief sy amptelike ondersteuningsdokumente."
+            }
+          }
+        }
       }
     }
   };
