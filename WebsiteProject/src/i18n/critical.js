@@ -140,5 +140,15 @@ export const CRITICAL_NAV = {
     location: "Ligging",
     contact: "Kontak",
     bookNow: "Bespreek nou"
+  },
+  zu: {
+    home: "Ikhaya",
+    stay: "Ukuhlala",
+    experiences: "Okuhlangenwe nakho",
+    todo: "Okumele ukwenze",
+    gallery: "Igalari",
+    location: "Indawo",
+    contact: "Xhumana nathi",
+    bookNow: "Bhukha manje"
   }
 };

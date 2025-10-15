@@ -1887,4 +1887,58 @@ export const L10N = {
       surfing: { title: "Branderplanke & Lesse", desc: "Vang die golwe of leer die basiese beginsels." },
     },
   },
+
+  zu: {
+    units: {
+      safari: {
+        title: "Safari Tent",
+        short: "12 m² canvas tent on 3×6 m platform. Twin/King, fan, power outlets, mosquito net, private deck. Shared bathrooms.",
+        details: [
+          "Two single beds (or King) with side tables and lamps",
+          "Mosquito net • powerful fan • power outlets",
+          "Private deck with palm-leaf chairs",
+          "Shared facilities: hot/cold showers and toilets",
+        ],
+      },
+      comfort: {
+        title: "Comfort Tent",
+        short: "12 m² tent with more privacy (side/back walls), private deck and private bathroom under thatch roof.",
+        details: [
+          "Twin/King setup with practical lighting",
+          "Mosquito net • powerful fan • power outlets",
+          "Wooden deck with chairs",
+          "Private bathroom (shower, toilet, sink) under thatch roof",
+        ],
+      },
+      cottage: {
+        title: "Garden Cottage",
+        short: "Airy cottage with queen bed, A/C (inverter), desk and table, private deck and bathroom in rondavel.",
+        details: [
+          "Queen bed • desk and dining table",
+          "Inverter A/C (cool/heat) • dimmable main light",
+          "Rondavel bathroom (shower, sink, toilet)",
+          "Wooden deck with camping chairs",
+        ],
+      },
+      chalet: {
+        title: "Thatched Chalet",
+        short: "Quiet, romantic small chalet amongst palm trees. A/C, private bathroom, deck, Twin/King.",
+        details: [
+          "Peaceful setting under palm trees • air conditioning",
+          "Private bathroom (shower, sink, toilet)",
+          "Twin/King beds with side tables",
+          "Private deck with palm-leaf chairs",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Diving", desc: "Offshore reefs with rich marine life." },
+      dolphins: { title: "Swim with Dolphins", desc: "Ethical encounters with resident dolphins." },
+      lighthouse: { title: "Lighthouse Hike", desc: "Climb the hill to the old lighthouse for sweeping views." },
+      seafari: { title: "Ocean Safaris", desc: "Sea safaris for whales (May–Oct) and more." },
+      safari: { title: "Land Safaris", desc: "Bush adventures a short drive away." },
+      fishing: { title: "Beach & Deep-Sea Fishing", desc: "From shore casting to offshore charters." },
+      surfing: { title: "Surfboards & Lessons", desc: "Catch the waves or learn the basics." },
+    },
+  },
 };

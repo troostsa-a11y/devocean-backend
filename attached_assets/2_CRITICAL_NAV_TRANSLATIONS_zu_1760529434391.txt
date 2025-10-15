@@ -1,0 +1,26 @@
+================================================================================
+DEVOCEAN LODGE - CRITICAL NAVIGATION TRANSLATIONS BATCH FILE
+================================================================================
+Instructions: Translate all text in quotes. Keep structure markers unchanged.
+File: WebsiteProject/src/i18n/critical.js
+
+IMPORTANT: These are loaded synchronously for instant mobile menu rendering.
+Keep translations SHORT and concise for optimal performance.
+
+LANGUAGE CODE: zu
+
+================================================================================
+CRITICAL NAVIGATION (Loads instantly, 2KB bundle)
+================================================================================
+home = "Ikhaya"
+stay = "Ukuhlala"
+experiences = "Okuhlangenwe nakho"
+todo = "Okumele ukwenze"
+gallery = "Igalari"
+location = "Indawo"
+contact = "Xhumana nathi"
+bookNow = "Bhukha manje"
+
+================================================================================
+END OF CRITICAL NAV TRANSLATIONS
+================================================================================
