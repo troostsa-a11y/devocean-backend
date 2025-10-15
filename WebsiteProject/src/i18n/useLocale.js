@@ -376,7 +376,8 @@ export function useLocale() {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
       setRegionState(newRegion);
       localStorage.setItem("site.region", newRegion);
-      localStorage.setItem("site.region.version", "2"); // Mark as IP-based version
+      localStorage.setItem("site.region.version", "2");
+      localStorage.setItem("site.region.source", "user"); // Mark as user-selected
     }
   };
 
