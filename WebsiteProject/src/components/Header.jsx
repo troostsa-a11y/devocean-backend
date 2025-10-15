@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, Phone, Mail } from 'lucide-react';
+import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
@@ -93,6 +93,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
           </div>
 
           <div className="flex items-center gap-1.5">
+            <Globe2 size={20} />
             {/* Region selector - same width as language dropdown */}
             <select
               value={region}
