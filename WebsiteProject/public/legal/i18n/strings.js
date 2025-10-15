@@ -6508,6 +6508,151 @@
             }
           }
         }
+      },
+
+      terms: {
+        title: "Voorwaardes en Bepalings",
+        updatedDate: "06 Oktober 2025",
+        quickLinks: {
+          title: "Vinnige Skakels",
+          links: [
+            { id: "intro", text: "Toepassingsomvang" },
+            { id: "booking", text: "Besprekings" },
+            { id: "payment", text: "Pryse en Betaling" },
+            { id: "cancel", text: "Kansellasie" },
+            { id: "conduct", text: "Gastegedrag" },
+            { id: "force-majeure", text: "Oormag" },
+            { id: "liability", text: "Aanspreeklikheid" },
+            { id: "intellectual-property", text: "Intellektuele Eiendom" },
+            { id: "disputes", text: "Geskilbeslegting" },
+            { id: "changes", text: "Veranderinge" },
+            { id: "law", text: "Toepaslike Reg" },
+            { id: "contact", text: "Kontakte" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Belangrike Regskennisgewing:",
+            body: "Hierdie voorwaardes reguleer die gebruik van ons dienste en webwerf. Lees dit asseblief sorgvuldig deur voor bespreek."
+          },
+          intro: {
+            title: "Toepassingsomvang",
+            body: "Hierdie Voorwaardes reguleer verblyf en verwante dienste wat deur DEVOCEAN Lodge (TERRAfrique LDA) verskaf word. Deur te bespreek, stem jy in tot hierdie Voorwaardes."
+          },
+          booking: {
+            title: "Besprekings",
+            items: [
+              "Verskaf akkurate gaste-inligting en aankoms/vertrek datums",
+              "Spesiale versoeke is onderhewig aan beskikbaarheid en bevestiging"
+            ],
+            reservationReq: {
+              title: "Bespreekvereistes",
+              body: "Geldige identifikasie en 'n kredietkaart word vereis vir alle besprekings. Minimum ouderdom: 18."
+            },
+            checkinCheckout: {
+              title: "In- en Uitklok",
+              body: "Inklok: 14:00 | Uitklok: 11:00. Versoeke vir vroeë inklok of laat uitklok is onderhewig aan beskikbaarheid."
+            },
+            groupBookings: {
+              title: "Groepbesprekings",
+              body: "Spesiale voorwaardes geld vir groepe van 6 kamers of meer. Kontak ons vir groepstariewe en -beleide."
+            }
+          },
+          payment: {
+            title: "Pryse en Betaling",
+            items: [
+              "Aangehaalde tariewe is per kamer/nag, tensy anders aangedui",
+              "Deposito's en betaalmetodes sal tydens bespreking bevestig word"
+            ],
+            paymentInfo: {
+              title: "Betalingsinligting",
+              body: "Alle pryse is in VSA-dollars, tensy anders aangedui. Wisselkoerse is benaderd en kan verander. 'n Geldige kredietkaart word vereis om jou bespreking te beveilig. Addisionele kostes kan van toepassing wees op onvoorsiene uitgawes."
+            }
+          },
+          cancel: {
+            title: "Kansellasie en Nie-opdaag",
+            body: "Kansellasievoorwaardes word tydens bespreking en in jou bevestiging uiteengesit.",
+            cancellationCharges: {
+              title: "Kansellasiefooie",
+              plans: [
+                {
+                  planName: "Buigsame Tariefplan:",
+                  tiers: [
+                    { period: "30 dae of meer voor aankoms", charge: "Volle terugbetaling" },
+                    { period: "29 dae of minder voor aankoms", charge: "50% kansellasiefooi" }
+                  ]
+                },
+                {
+                  planName: "Nie-terugbetaalbare Tariefplan:",
+                  tiers: [
+                    { period: "Binne 24 uur na bespreking", charge: "Volle terugbetaling" },
+                    { period: "In alle ander gevalle", subtext: "Reg op eenmalige verandering van aankomsdatum onderhewig aan betaling van die prysverskil vir nuwe datums.", charge: "Geen terugbetaling" }
+                  ]
+                }
+              ]
+            },
+            noshowPolicy: {
+              title: "Nie-opdaag Beleid",
+              body: "Gaste wat nie op die geskeduleerde aankomsdatum opdaag sonder vooraf kennisgewing nie, word as nie-opdaag beskou. Die volle bedrag word gehef, en die bespreking word gekanselleer."
+            }
+          },
+          conduct: {
+            title: "Gastegedrag",
+            items: [
+              "Respekteer eiendomsreëls, personeel, ander gaste en die plaaslike gemeenskap",
+              "Geen onwettige aktiwiteite op die perseel nie"
+            ],
+            zeroTolerance: {
+              title: "Nul Verdraagsaamheidsbeleid",
+              body: "Ons handhaaf 'n nul verdraagsaamheidsbeleid vir ontwrigtende gedrag, onwettige aktiwiteite of skade aan eiendom. Oortreding kan lei tot onmiddellike uitsetting sonder terugbetaling en wettige aksies."
+            }
+          },
+          "force-majeure": {
+            title: "Oormag",
+            intro: "Ons is nie aanspreeklik vir die onvermoë om verpligtinge na te kom weens omstandighede buite ons redelike beheer nie, insluitend maar nie beperk tot:",
+            items: [
+              "Natuurrampe, uiterste weersomstandighede",
+              "Regeringsbeperkings, reisverbod",
+              "Burgerlike onrus, oorlog, terrorisme",
+              "Pandemieë, epidemies, gesondheidsnoodgevalle",
+              "Diensonderbrekings, infrastruktuur mislukkings"
+            ],
+            footer: "In sulke gevalle sal ons alternatiewe datums of kredietbewyse aanbied waar moontlik. Terugbetalings sal verskaf word in ooreenstemming met toepaslike wette en omstandighede. Alle verliese en uitgawes wat gedek word of gedek kon word deur standaard kansellasie- en reisversekering is egter uitgesluit van ons aanspreeklikheid."
+          },
+          liability: {
+            title: "Aanspreeklikheid",
+            body: "Binne die perke wat deur die wet toegelaat word, is ons nie aanspreeklik vir indirekte of gevolgskade nie."
+          },
+          "intellectual-property": {
+            title: "Intellektuele Eiendom",
+            copyright: {
+              title: "Kopiereg Kennisgewing",
+              body: "Alle inhoud op hierdie webwerf, insluitend teks, grafika, logo's en beelde, is die eiendom van DEVOCEAN Lodge en word beskerm deur internasionale kopieregwette. Ongeoutoriseerde gebruik, reproduksie of verspreiding is verbode. Die naam DEVOCEAN Lodge, logo en alle verwante merke is handelsmerke en mag nie sonder skriftelike toestemming gebruik word nie."
+            }
+          },
+          disputes: {
+            title: "Geskilbeslegting",
+            process: {
+              title: "Beslegtingsproses",
+              body: "Ons streef daarna om enige dispute vreedsaam op te los. Kontak ons asseblief eers vir pogings tot oplossing. Indien nie opgelos nie, moet dispute deur bemiddeling opgelos word voordat hofstappe geneem word.",
+              law: "Toepaslike Reg: Hierdie voorwaardes en enige dispute word gereguleer deur die wetgewing van Mosambiek.",
+              jurisdiction: "Jurisdiksie: Howe in Maputo, Mosambiek, het eksklusiewe jurisdiksie.",
+              mediation: "Bemiddeling: Partye stem in om bemiddeling te probeer deur 'n geakkrediteerde bemiddelaar voordat regsprosedures begin word."
+            }
+          },
+          changes: {
+            title: "Veranderinge aan hierdie Voorwaardes",
+            body: "Ons kan die Voorwaardes van tyd tot tyd opdateer. Die gepubliseerde weergawe is van toepassing op jou verblyf."
+          },
+          law: {
+            title: "Toepaslike Reg",
+            body: "Mosambiek se wetgewing is van toepassing, met inagneming van verpligte plaaslike verbruikersbeskermingsreëls."
+          },
+          contact: {
+            title: "Kontakte",
+            body: "Vrae? <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
+          }
+        }
       }
     }
   };
