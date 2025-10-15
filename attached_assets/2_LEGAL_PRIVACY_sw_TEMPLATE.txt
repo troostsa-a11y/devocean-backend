@@ -1,0 +1,83 @@
+================================================================================
+DEVOCEAN LODGE - PRIVACY POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (privacy section)
+LANGUAGE CODE: sw
+
+================================================================================
+HEADER
+================================================================================
+title = "Privacy Policy"
+updatedDate = "27 September 2025"
+
+quickLinks.title = "Quick Links"
+quickLinks[0] = "Who we are"
+quickLinks[1] = "Data we collect"
+quickLinks[2] = "How we use data"
+quickLinks[3] = "Sharing & Transfers"
+quickLinks[4] = "Your rights"
+quickLinks[5] = "Security"
+quickLinks[6] = "Cookies"
+quickLinks[7] = "Third-party links"
+quickLinks[8] = "Policy updates"
+quickLinks[9] = "Contact us"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Your privacy matters:"
+badge.body = "We're committed to protecting your personal information and being transparent about how we use it."
+
+================================================================================
+SECTIONS (Translate section titles and bodies)
+================================================================================
+
+[1] WHO WE ARE
+intro.title = "Who We Are"
+intro.body = "DEVOCEAN Lodge ("we", "our", "us") is an eco-friendly beach accommodation located in Ponta do Ouro, Mozambique. This Privacy Policy explains how we collect, use, and protect your personal information when you use our website or services."
+
+[2] DATA WE COLLECT
+collection.title = "Information We Collect"
+collection.body = "We collect information you provide directly (name, email, booking details), automatically (IP address, browser type, cookies), and from third parties (booking platforms, payment processors)."
+
+[3] HOW WE USE DATA
+usage.title = "How We Use Your Information"
+usage.body = "We use your information to process bookings, communicate with you, improve our services, comply with legal obligations, and (with your consent) send marketing communications."
+
+[4] SHARING & TRANSFERS
+sharing.title = "Sharing and International Transfers"
+sharing.body = "We may share your information with service providers (booking platforms, payment processors, analytics), legal authorities when required, and business successors. Data may be transferred internationally with appropriate safeguards."
+
+[5] YOUR RIGHTS
+rights.title = "Your Privacy Rights"
+rights.intro = "You have the right to:"
+rights.items[0] = "Access your personal data"
+rights.items[1] = "Correct inaccurate information"
+rights.items[2] = "Request deletion of your data"
+rights.items[3] = "Object to processing"
+rights.items[4] = "Request data portability"
+rights.items[5] = "Withdraw consent at any time"
+
+[6] SECURITY
+security.title = "Data Security"
+security.body = "We implement appropriate technical and organizational measures to protect your personal information, including encryption, access controls, and regular security assessments."
+
+[7] COOKIES
+cookies.title = "Cookies and Tracking"
+cookies.body = "We use cookies and similar technologies for essential functionality, analytics, and marketing (with your consent). See our Cookie Policy for details."
+
+[8] THIRD-PARTY LINKS
+thirdParty.title = "Third-Party Links"
+thirdParty.body = "Our website may contain links to third-party websites. We are not responsible for their privacy practices."
+
+[9] POLICY UPDATES
+updates.title = "Changes to This Policy"
+updates.body = "We may update this Privacy Policy periodically. We will notify you of significant changes via email or website notice."
+
+[10] CONTACT
+contact.title = "Contact Us"
+contact.body = "For privacy questions or to exercise your rights, contact us at <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
+
+================================================================================
+END OF PRIVACY POLICY
+================================================================================

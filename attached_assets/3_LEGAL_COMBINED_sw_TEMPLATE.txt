@@ -1,0 +1,155 @@
+================================================================================
+DEVOCEAN LODGE - LEGAL PAGES TEMPLATES (COOKIES, TERMS, GDPR, CRIC)
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js
+LANGUAGE CODE: sw
+
+This file contains 4 legal pages. Translate each section completely.
+
+================================================================================
+A. COOKIE POLICY
+================================================================================
+cookies.title = "Cookie Policy"
+cookies.updatedDate = "27 September 2025"
+
+cookies.quickLinks.title = "Quick Links"
+cookies.quickLinks[0] = "What are cookies"
+cookies.quickLinks[1] = "Cookies we use"
+cookies.quickLinks[2] = "Manage cookies"
+cookies.quickLinks[3] = "Contact us"
+
+cookies.sections.badge.title = "Cookie usage:"
+cookies.sections.badge.body = "We use cookies to enhance your browsing experience and analyze site traffic."
+
+cookies.sections.intro.title = "What Are Cookies"
+cookies.sections.intro.body = "Cookies are small text files stored on your device that help us provide and improve our services."
+
+cookies.sections.usage.title = "Cookies We Use"
+cookies.sections.usage.essential = "**Essential Cookies:** Required for website functionality"
+cookies.sections.usage.analytics = "**Analytics Cookies:** Help us understand how visitors use our site (Google Analytics, Microsoft Clarity)"
+cookies.sections.usage.marketing = "**Marketing Cookies:** Used for advertising (requires consent)"
+cookies.sections.usage.preferences = "**Preference Cookies:** Remember your language and currency settings"
+
+cookies.sections.manage.title = "Managing Cookies"
+cookies.sections.manage.body = "You can manage cookie preferences through our consent banner or browser settings. Blocking essential cookies may affect website functionality."
+
+cookies.sections.contact.title = "Contact Us"
+cookies.sections.contact.body = "For cookie-related questions: <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>"
+
+================================================================================
+B. TERMS AND CONDITIONS
+================================================================================
+terms.title = "Terms and Conditions"
+terms.updatedDate = "27 September 2025"
+
+terms.quickLinks.title = "Quick Links"
+terms.quickLinks[0] = "Acceptance"
+terms.quickLinks[1] = "Booking & Payment"
+terms.quickLinks[2] = "Cancellation"
+terms.quickLinks[3] = "Guest Responsibilities"
+terms.quickLinks[4] = "Liability"
+terms.quickLinks[5] = "Intellectual Property"
+
+terms.sections.badge.title = "Terms of Service:"
+terms.sections.badge.body = "Please read these terms carefully before booking your stay."
+
+terms.sections.acceptance.title = "Acceptance of Terms"
+terms.sections.acceptance.body = "By using our website or booking accommodation, you agree to these Terms and Conditions."
+
+terms.sections.booking.title = "Booking and Payment"
+terms.sections.booking.body = "Bookings are confirmed upon payment. Prices are in the displayed currency and include applicable taxes unless stated otherwise."
+
+terms.sections.cancellation.title = "Cancellation Policy"
+terms.sections.cancellation.body = "Cancellations must be made according to our published cancellation policy. Refunds depend on cancellation timing."
+
+terms.sections.guest.title = "Guest Responsibilities"
+terms.sections.guest.body = "Guests must respect property rules, other guests, and local laws. Damage to property may result in charges."
+
+terms.sections.liability.title = "Limitation of Liability"
+terms.sections.liability.body = "We are not liable for losses beyond our reasonable control, including weather events, personal belongings, or third-party services."
+
+terms.sections.ip.title = "Intellectual Property"
+terms.sections.ip.body = "All content on this website is our property or used with permission. Unauthorized use is prohibited."
+
+================================================================================
+C. GDPR NOTICE
+================================================================================
+gdpr.title = "GDPR Compliance Notice"
+gdpr.updatedDate = "27 September 2025"
+
+gdpr.quickLinks.title = "Quick Links"
+gdpr.quickLinks[0] = "Legal basis"
+gdpr.quickLinks[1] = "Your rights"
+gdpr.quickLinks[2] = "Data retention"
+gdpr.quickLinks[3] = "Complaints"
+gdpr.quickLinks[4] = "Contact DPO"
+
+gdpr.sections.badge.title = "GDPR Compliance:"
+gdpr.sections.badge.body = "We process your data in compliance with the General Data Protection Regulation (GDPR)."
+
+gdpr.sections.legal.title = "Legal Basis for Processing"
+gdpr.sections.legal.body = "We process personal data based on: contract performance (bookings), legal obligations (tax records), legitimate interests (business operations), and consent (marketing)."
+
+gdpr.sections.rights.title = "Your GDPR Rights"
+gdpr.sections.rights.intro = "Under GDPR, you have the right to:"
+gdpr.sections.rights.items[0] = "Access your personal data"
+gdpr.sections.rights.items[1] = "Rectify inaccurate data"
+gdpr.sections.rights.items[2] = "Erasure (right to be forgotten)"
+gdpr.sections.rights.items[3] = "Restrict processing"
+gdpr.sections.rights.items[4] = "Data portability"
+gdpr.sections.rights.items[5] = "Object to processing"
+gdpr.sections.rights.items[6] = "Withdraw consent"
+
+gdpr.sections.retention.title = "Data Retention"
+gdpr.sections.retention.body = "We retain personal data only as long as necessary for the purposes outlined in our Privacy Policy or as required by law."
+
+gdpr.sections.complaints.title = "Complaints"
+gdpr.sections.complaints.intro = "If you have concerns about how we handle your data, you have the right to lodge a complaint with your local data protection authority."
+gdpr.sections.complaints.footer = "We encourage you to contact us first to try to resolve any issues before contacting the supervisory authority."
+
+gdpr.sections.dpo.title = "Contact Our Data Protection Officer"
+gdpr.sections.dpo.body = "For any GDPR-related questions or to exercise your rights, please contact our Data Protection Officer at <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. We will respond to your request within 30 days, as required by GDPR."
+
+================================================================================
+D. CRIC (COMPANY & CONTACT INFO)
+================================================================================
+cric.title = "CRIC — Company & Contact Information"
+cric.updatedDate = "27 September 2025"
+
+cric.quickLinks.title = "Quick Links"
+cric.quickLinks[0] = "Overview"
+cric.quickLinks[1] = "Contact information"
+cric.quickLinks[2] = "Emergency contact"
+
+cric.sections.badge.title = "Legal company information:"
+cric.sections.badge.body = "Complete business registration and contact details for DEVOCEAN Lodge."
+
+cric.sections.intro.title = "Overview"
+cric.sections.intro.body = "Complete business registration and contact information for DEVOCEAN Lodge."
+
+cric.sections.contact.title = "Contact Information"
+cric.sections.contact.body = "For general inquiries, bookings, and information about our services, please use the following contact details."
+
+cric.sections.emergency.title = "Emergency Contact"
+cric.sections.emergency.body = "For urgent matters outside business hours, please use our emergency contact information."
+
+cric.labels.companyName = "Company name"
+cric.labels.registration = "Business registration"
+cric.labels.vat = "NUIT number (VAT)"
+cric.labels.license = "Business license (Alvará)"
+cric.labels.legalForm = "Legal form"
+cric.labels.capital = "Share capital"
+cric.labels.address = "Registered address"
+cric.labels.email = "Email"
+cric.labels.phone = "Phone"
+cric.labels.businessHours = "Business hours"
+cric.labels.emergencyPhone = "Emergency phone"
+cric.labels.emergencyEmail = "Emergency email"
+
+cric.values.legalForm = "Limited liability company"
+cric.values.businessHours = "Monday - Friday: 8:00 - 18:00<br>Saturday & Sunday: 8:00 - 12:00<br>Reception desk: 6:00 - 22:00 (for guests)"
+cric.values.emergencyPhoneNote = "For urgent matters outside business hours"
+
+================================================================================
+END OF LEGAL PAGES TEMPLATES
+================================================================================

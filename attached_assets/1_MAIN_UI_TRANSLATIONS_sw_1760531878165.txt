@@ -1,0 +1,130 @@
+================================================================================
+DEVOCEAN LODGE - MAIN UI TRANSLATIONS BATCH FILE
+================================================================================
+Instructions: Translate all text in quotes. Keep structure markers unchanged.
+File: WebsiteProject/src/i18n/translations.js
+
+LANGUAGE CODE: sw
+
+================================================================================
+NAVIGATION
+================================================================================
+nav.home = "Nyumbani"
+nav.stay = "Kukaa"
+nav.experiences = "Uzoefu"
+nav.todo = "Cha kufanya"
+nav.gallery = "Matunzio"
+nav.location = "Mahali"
+nav.contact = "Wasiliana nasi"
+
+================================================================================
+HERO SECTION
+================================================================================
+hero.title = "DEVOCEAN Lodge"
+hero.subtitle = "Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji."
+hero.ctaPrimary = "Weka nafasi yako ya kukaa"
+hero.ctaSecondary = "Chunguza Lodge"
+hero.badge = "Raha na thamani inayopendwa na wageni"
+
+================================================================================
+STAY SECTION
+================================================================================
+stay.headline = "Kaa nasi"
+stay.blurb = "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia."
+stay.moreDetails = "Maelezo zaidi"
+
+================================================================================
+EXPERIENCES SECTION
+================================================================================
+experiences.headline = "Uzoefu"
+experiences.blurb = "Matukio ya baharini na msituni yapo karibu na mlango wako."
+experiences.operators = "Watoa huduma wa ndani wanaotegemewa:"
+
+================================================================================
+WHAT TO DO SECTION
+================================================================================
+todo.headline = "Cha kufanya huko Ponta do Ouro"
+todo.note = "Kwa kupiga mbizi, kuogelea chini ya maji, safari za pomboo/nyangumi na boti za kuvua samaki, angalia watoa huduma wafuatao."
+
+todo.items[0].title = "Tembea kwa miguu hadi Taa ya Bahari na Lua Do Mar"
+todo.items[0].body = "Tembea hadi taa ya zamani ya bahari ili kufurahia maono ya panoramiki. Endelea hadi mgahawa wa Lua Do Mar ulio kwenye kilima cha mchanga. Pomboo mara nyingi huonekana mwaka mzima, nyangumi kutoka Mei hadi Oktoba, na kasa kutoka Desemba hadi Januari. Jihadharini na mawimbi: epuka njia ya ufukweni siku 3 kabla na baada ya wimbi la juu; mawimbi yanaweza kukusukuma kwenye miamba."
+
+todo.items[1].title = "Tembea kwa miguu hadi Ponta Malongane"
+todo.items[1].body = "Tembea kando ya ufukweni hadi kijiji cha karibu. Nusu ya njia, ngazi zinazopita kwenye msitu wa migomba zinaongoza kwenye baa na mgahawa wa Campismo Nino wenye maono mazuri. Karibu na mpito wa ghuba, kuna njia inayoelekea Sky Island kwa ajili ya kuruka kwa parachuti. Baa maarufu za Malongane: Drunken Clam na Sunset Shack. Rudi kupitia ufukweni au barabara ya mchanga ya 4x4."
+
+todo.items[2].title = "Kupiga mbizi, kuogelea chini ya maji na uchunguzi wa baharini"
+todo.items[2].body = "Baa ya Ufukweni inatoa upangishaji wa mbao za kuteleza; vituo kadhaa vya kupiga mbizi mjini na kituo cha uchunguzi wa pomboo/nyangumi."
+
+todo.items[3].title = "Kula na kupumzika karibu"
+todo.items[3].body = "Ndani ya mita 500 za DEVOCEAN kuna karibu baa na mikahawa 16. Ikiwa unahitaji masaji ya mwili mzima ya kupumzika, weka nafasi na Lisa (LIZ-Way Massage)."
+
+todo.items[4].title = "Upangishaji wa pikipiki za magurudumu manne"
+todo.items[4].body = "Wakati mwingine hukodishwa na wamiliki wa kibinafsi wa ndani. Bei ya kawaida: karibu MZN 2000 kwa saa (inategemea majadiliano)."
+
+================================================================================
+GALLERY SECTION
+================================================================================
+gallery.headline = "Matunzio"
+galleryHeading = "Matunzio"
+
+================================================================================
+LOCATION SECTION
+================================================================================
+location.headline = "Mahali"
+location.blurb = "Ponta do Ouro - Wilaya ya Matutuine, Kusini mwa Msumbiji."
+location.items[0] = "Mji wa Ponta do Ouro, umbali wa dakika chache kutoka ufukweni"
+location.items[1] = "Dakika 15 hadi Ponta Malongane • Dakika 25 hadi mpaka wa Kosi Bay"
+location.items[2] = "Maegesho salama • Mikahawa ya ndani na masoko yapo karibu"
+location.viewMap = "Tazama ramani inayofanya kazi"
+
+================================================================================
+CONTACT SECTION
+================================================================================
+contact.headline = "Wasiliana na Uwekaji Nafasi"
+contact.blurb = "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia."
+contact.call = "WhatsApp"
+contact.email = "Barua pepe"
+contact.directions = "Maelekezo"
+contact.bookNow = "Bei na upatikanaji"
+
+================================================================================
+CONTACT FORM
+================================================================================
+form.name = "Jina"
+form.email = "Barua pepe"
+form.stayLabel = "Unavutiwa na kukaa:"
+form.checkin = "Tarehe ya kuingia"
+form.checkout = "Tarehe ya kutoka"
+form.unitLabel = "Aina ya chumba ninayopendelea:"
+form.units[0] = "Hema la Safari - bafuni ya pamoja"
+form.units[1] = "Hema la Starehe - bafuni ya faragha"
+form.units[2] = "Nyumba ya Bustani - kiyoyozi cha inverter"
+form.units[3] = "Chalet ya Nyasi - kiyoyozi cha inverter"
+form.message = "Ujumbe"
+form.send = "Tuma"
+form.consent = "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako."
+form.phName = "Jina lako"
+form.phEmail = "your@email.com"
+form.phMsg = "Tuambie zaidi kuhusu maombi yako..."
+form.success = "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho."
+
+================================================================================
+FOOTER
+================================================================================
+footer.rights = "Haki zote zimehifadhiwa."
+footer.desc = "Ukarimu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji."
+
+================================================================================
+LEGAL MENU
+================================================================================
+legal.title = "Taarifa za Kisheria"
+legal.privacy = "Sera ya Faragha"
+legal.cookies = "Sera ya Vidakuzi"
+legal.terms = "Masharti na Vigezo"
+legal.gdpr = "Taarifa za GDPR"
+legal.cric = "Haki za Wateja na Mawasiliano"
+legal.manage = "Mipangilio ya Vidakuzi"
+
+================================================================================
+END OF MAIN UI TRANSLATIONS
+================================================================================

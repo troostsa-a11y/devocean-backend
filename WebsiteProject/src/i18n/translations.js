@@ -1941,4 +1941,92 @@ export const L10N = {
       surfing: { title: "Amabhodi Okusefa kanye Nezifundo", desc: "Bamba amagagasi noma ufundiswe izinto zokuqala." },
     },
   },
+
+  sw: {
+    nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji.", ctaPrimary: "Weka nafasi yako ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni" },
+    stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi" },
+    experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:" },
+    todo: {
+      headline: "Cha kufanya huko Ponta do Ouro",
+      note: "Kwa kupiga mbizi, kuogelea chini ya maji, safari za pomboo/nyangumi na boti za kuvua samaki, angalia watoa huduma wafuatao.",
+      items: [
+        { title: "Tembea kwa miguu hadi Taa ya Bahari na Lua Do Mar", body: "Tembea hadi taa ya zamani ya bahari ili kufurahia maono ya panoramiki. Endelea hadi mgahawa wa Lua Do Mar ulio kwenye kilima cha mchanga. Pomboo mara nyingi huonekana mwaka mzima, nyangumi kutoka Mei hadi Oktoba, na kasa kutoka Desemba hadi Januari. Jihadharini na mawimbi: epuka njia ya ufukweni siku 3 kabla na baada ya wimbi la juu; mawimbi yanaweza kukusukuma kwenye miamba." },
+        { title: "Tembea kwa miguu hadi Ponta Malongane", body: "Tembea kando ya ufukweni hadi kijiji cha karibu. Nusu ya njia, ngazi zinazopita kwenye msitu wa migomba zinaongoza kwenye baa na mgahawa wa Campismo Nino wenye maono mazuri. Karibu na mpito wa ghuba, kuna njia inayoelekea Sky Island kwa ajili ya kuruka kwa parachuti. Baa maarufu za Malongane: Drunken Clam na Sunset Shack. Rudi kupitia ufukweni au barabara ya mchanga ya 4x4." },
+        { title: "Kupiga mbizi, kuogelea chini ya maji na uchunguzi wa baharini", body: "Baa ya Ufukweni inatoa upangishaji wa mbao za kuteleza; vituo kadhaa vya kupiga mbizi mjini na kituo cha uchunguzi wa pomboo/nyangumi." },
+        { title: "Kula na kupumzika karibu", body: "Ndani ya mita 500 za DEVOCEAN kuna karibu baa na mikahawa 16. Ikiwa unahitaji masaji ya mwili mzima ya kupumzika, weka nafasi na Lisa (LIZ-Way Massage)." },
+        { title: "Upangishaji wa pikipiki za magurudumu manne", body: "Wakati mwingine hukodishwa na wamiliki wa kibinafsi wa ndani. Bei ya kawaida: karibu MZN 2000 kwa saa (inategemea majadiliano)." },
+      ],
+    },
+    gallery: { headline: "Matunzio" },
+    location: {
+      headline: "Mahali", blurb: "Ponta do Ouro - Wilaya ya Matutuine, Kusini mwa Msumbiji.",
+      items: [
+        "Mji wa Ponta do Ouro, umbali wa dakika chache kutoka ufukweni",
+        "Dakika 15 hadi Ponta Malongane • Dakika 25 hadi mpaka wa Kosi Bay",
+        "Maegesho salama • Mikahawa ya ndani na masoko yapo karibu",
+      ],
+      viewMap: "Tazama ramani inayofanya kazi",
+    },
+    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Bei na upatikanaji" },
+    form: {
+      name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
+      units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],
+    },
+    footer: { rights: "Haki zote zimehifadhiwa.", desc: "Ukaribu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji." },
+    legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi" },
+    currencies: { USD: "Dola za Marekani", MZN: "Meticais", ZAR: "Rand", EUR: "Euro", GBP: "Pauni ya GB", SEK: "Krona", PLN: "Zloty", JPY: "Yen", CNY: "Yuan", RUB: "Ruble", TZS: "Shilingi ya Tanzania", KES: "Shilingi ya Kenya" },
+    galleryHeading: "Matunzio",
+    units: {
+      safari: {
+        title: "Safari Tent",
+        short: "12 m² canvas tent on 3×6 m platform. Twin/King, fan, power outlets, mosquito net, private deck. Shared bathrooms.",
+        details: [
+          "Two single beds (or King) with side tables and lamps",
+          "Mosquito net • powerful fan • power outlets",
+          "Private deck with palm-leaf chairs",
+          "Shared facilities: hot/cold showers and toilets",
+        ],
+      },
+      comfort: {
+        title: "Comfort Tent",
+        short: "12 m² tent with more privacy (side/back walls), private deck and private bathroom under thatch roof.",
+        details: [
+          "Twin/King setup with practical lighting",
+          "Mosquito net • powerful fan • power outlets",
+          "Wooden deck with chairs",
+          "Private bathroom (shower, toilet, sink) under thatch roof",
+        ],
+      },
+      cottage: {
+        title: "Garden Cottage",
+        short: "Airy cottage with queen bed, A/C (inverter), desk and table, private deck and bathroom in rondavel.",
+        details: [
+          "Queen bed • desk and dining table",
+          "Inverter A/C (cool/heat) • dimmable main light",
+          "Rondavel bathroom (shower, sink, toilet)",
+          "Wooden deck with camping chairs",
+        ],
+      },
+      chalet: {
+        title: "Thatched Chalet",
+        short: "Quiet, romantic small chalet amongst palm trees. A/C, private bathroom, deck, Twin/King.",
+        details: [
+          "Peaceful setting under palm trees • air conditioning",
+          "Private bathroom (shower, sink, toilet)",
+          "Twin/King beds with side tables",
+          "Private deck with palm-leaf chairs",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Diving", desc: "Offshore reefs with rich marine life." },
+      dolphins: { title: "Swim with Dolphins", desc: "Ethical encounters with resident dolphins." },
+      lighthouse: { title: "Lighthouse Hike", desc: "Climb the hill to the old lighthouse for sweeping views." },
+      seafari: { title: "Ocean Safaris", desc: "Sea safaris for whales (May–Oct) and more." },
+      safari: { title: "Land Safaris", desc: "Bush adventures a short drive away." },
+      fishing: { title: "Beach & Deep-Sea Fishing", desc: "From shore casting to offshore charters." },
+      surfing: { title: "Surfboards & Lessons", desc: "Catch the waves or learn the basics." },
+    },
+  },
 };

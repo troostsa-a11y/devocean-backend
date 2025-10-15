@@ -2,7 +2,7 @@
 
 ## Overview
 
-DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 15 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 16 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
 
 ## User Preferences
 
@@ -49,7 +49,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Local component state with React hooks
 
 **Internationalization:**
-- React-based i18n with lazy-loaded translations across 15 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Japanese, Mandarin Chinese, Russian).
+- React-based i18n with lazy-loaded translations across 16 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Swahili, Japanese, Mandarin Chinese, Russian).
 - Vanilla JavaScript i18n for static legal pages.
 - Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY, CNY, RUB with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
@@ -58,6 +58,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Japanese Language Support (Oct 15):** Complete Japanese (ja) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with ja-JP locale and JPY currency. Auto-switches to JPY when Japanese language selected in Asia region (manual override available).
 - **Afrikaans Language Support (Oct 15):** Complete Afrikaans (af) translations added for Africa region including main UI, critical nav, experiences, and units. Hotelrunner booking integration configured with af-ZA locale. Auto-switches to ZAR when Afrikaans language selected in Africa region (manual override available).
 - **Zulu Language Support (Oct 15):** Complete Zulu (zu) translations added including main UI, critical nav, legal UI labels, ALL 5 legal pages (Privacy Policy, Cookie Policy, Terms & Conditions, GDPR Notice, CRIC), and full L10N (4 accommodation units + 7 experiences). Since Hotelrunner doesn't support Zulu, forwards to en-GB locale with ZAR currency. Auto-switches to ZAR when Zulu language selected in Africa region (manual override available). **100% translation coverage achieved.**
+- **Swahili Language Support (Oct 15):** Main UI translations integrated for East Africa region. Swahili (sw) added to Africa region with automatic TZS (Tanzanian Shilling) currency switching. Language selector displays "Kiswahili". Hotelrunner booking configured with en-GB locale + TZS/KES currency support. Critical nav included for instant mobile menu. Additional currencies TZS and KES added to Africa region for Tanzania/Kenya visitors. Legal pages and L10N templates prepared for completion.
 - **Southern African Country-Specific Currencies (Oct 15):** Intelligent Hotelrunner booking integration now uses country-specific currency codes for Southern African countries based on IP geolocation. Lesotho→LSL, Botswana→BWP, Namibia→NAD, eSwatini→SZL, Zambia→ZMW, Malawi→MWK, Zimbabwe→USD (special case), Tanzania→TZS, Kenya→KES. All countries default to English with menu override option. Users can still manually select different currencies.
 - **Currency Auto-Switching (Oct 15):** Intelligent currency pairing with language selection - Japanese→JPY, Chinese→CNY, Russian→RUB, Afrikaans→ZAR automatically when in respective regions. Users retain full manual override capability.
 - **IP-Based Geolocation (Oct 14):** Cloudflare automatically injects visitor country code via middleware for accurate region detection. Browser language detection serves as fallback for local development. Eliminates French-in-Asia and eSwatini mapping issues.

@@ -13,7 +13,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
     asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh', 'ru'], currencies: ['USD', 'JPY', 'CNY', 'RUB', 'EUR', 'GBP'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
-    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt', 'af', 'zu'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
+    africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt', 'af', 'zu', 'sw'], currencies: ['USD', 'MZN', 'ZAR', 'TZS', 'KES', 'EUR', 'GBP'] },
     oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
   };
 
@@ -37,6 +37,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     }
     else if (lang === 'zu' && newRegion === 'africa' && currency !== 'ZAR') {
       onCurrencyChange('ZAR');
+    }
+    else if (lang === 'sw' && newRegion === 'africa' && currency !== 'TZS') {
+      onCurrencyChange('TZS');
     }
     // Europe region language-currency auto-switching
     else if (lang === 'en' && newRegion === 'europe' && currency !== 'GBP') {
@@ -83,6 +86,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     }
     else if (newLang === 'zu' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
       onCurrencyChange('ZAR');
+    }
+    else if (newLang === 'sw' && region === 'africa' && regions[region].currencies.includes('TZS') && currency !== 'TZS') {
+      onCurrencyChange('TZS');
     }
     // Europe region
     else if (newLang === 'en' && region === 'europe' && regions[region].currencies.includes('GBP') && currency !== 'GBP') {
@@ -229,6 +235,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               {regions[region].languages.includes('pl') && <option value="pl">Polski</option>}
               {regions[region].languages.includes('af') && <option value="af">Afrikaans</option>}
               {regions[region].languages.includes('zu') && <option value="zu">isiZulu</option>}
+              {regions[region].languages.includes('sw') && <option value="sw">Kiswahili</option>}
               {regions[region].languages.includes('ru') && <option value="ru">Русский</option>}
               {regions[region].languages.includes('ja') && <option value="ja">日本語</option>}
               {regions[region].languages.includes('zh') && <option value="zh">中文</option>}
@@ -245,6 +252,8 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               {regions[region].currencies.includes('RUB') && <option value="RUB">{ui.currencies?.RUB || 'Ruble'}</option>}
               {regions[region].currencies.includes('MZN') && <option value="MZN">{ui.currencies?.MZN || 'Meticais'}</option>}
               {regions[region].currencies.includes('ZAR') && <option value="ZAR">{ui.currencies?.ZAR || 'Rand'}</option>}
+              {regions[region].currencies.includes('TZS') && <option value="TZS">{ui.currencies?.TZS || 'TZ Shilling'}</option>}
+              {regions[region].currencies.includes('KES') && <option value="KES">{ui.currencies?.KES || 'KE Shilling'}</option>}
               {regions[region].currencies.includes('EUR') && <option value="EUR">{ui.currencies?.EUR || 'Euro'}</option>}
               {regions[region].currencies.includes('GBP') && <option value="GBP">{ui.currencies?.GBP || 'GB-Pound'}</option>}
               {regions[region].currencies.includes('SEK') && <option value="SEK">{ui.currencies?.SEK || 'Krona'}</option>}
