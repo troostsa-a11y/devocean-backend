@@ -1968,7 +1968,7 @@ export const L10N = {
       ],
       viewMap: "Tazama ramani inayofanya kazi",
     },
-    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Bei na upatikanaji" },
+    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Weka nafasi sasa" },
     form: {
       name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
       units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],

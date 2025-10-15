@@ -159,6 +159,6 @@ export const CRITICAL_NAV = {
     gallery: "Matunzio",
     location: "Mahali",
     contact: "Wasiliana nasi",
-    bookNow: "Bei na upatikanaji"
+    bookNow: "Weka nafasi sasa"
   }
 };
