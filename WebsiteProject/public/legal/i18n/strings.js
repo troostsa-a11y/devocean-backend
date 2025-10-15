@@ -5195,6 +5195,55 @@
           body: 'GDPR関連の質問や権利行使については、データ保護担当者に<a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>までご連絡ください。GDPRで定められた通り、30日以内にご依頼に対応します。'
         }
       }
+    },
+
+    cric: {
+      title: 'CRIC — 会社と連絡先',
+      updatedDate: '2025年9月27日',
+      quickLinks: {
+        title: 'クイックリンク',
+        links: [
+          { id: 'overview', text: '概要' },
+          { id: 'contact', text: '連絡先' },
+          { id: 'emergency', text: '緊急' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: '公式会社情報:',
+          body: 'DEVOCEAN Lodgeの完全な事業登録詳細および連絡情報。'
+        },
+        overview: {
+          title: '概要',
+          body: 'DEVOCEAN Lodgeの完全な事業登録詳細および連絡情報。',
+          details: [
+            { label: '会社名', value: '' },
+            { label: '商業登録', value: '' },
+            { label: 'VAT番号（NUIT）', value: '' },
+            { label: '事業ライセンス（Alvará）', value: '' },
+            { label: '法人形態', value: '有限責任会社' },
+            { label: '株式資本', value: '' }
+          ]
+        },
+        contact: {
+          title: '連絡先',
+          body: '一般的なお問い合わせ、予約、サービス情報については、以下の連絡先詳細を使用してください。',
+          details: [
+            { label: '登録住所', value: '' },
+            { label: 'メール', value: '' },
+            { label: '電話', value: '' },
+            { label: '営業時間', value: '月曜日 - 金曜日: 午前8:00 - 午後6:00<br>土曜日 & 日曜日: 午前8:00 - 正午12:00<br>フロントデスク: 午前6:00 - 午後10:00（ゲスト向け）' }
+          ]
+        },
+        emergency: {
+          title: '緊急連絡先',
+          body: '営業時間外の緊急事項については、緊急連絡先詳細を使用してください。',
+          details: [
+            { label: '緊急電話', value: '', subtitle: '営業時間外の緊急事項向け' },
+            { label: '緊急メール', value: '' }
+          ]
+        }
+      }
     }
   };
   
