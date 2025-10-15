@@ -22,10 +22,15 @@ function smartBack() {
     sessionStorage.removeItem('legalPageReferrer');
   }
   
-  // Always redirect to referrer or home (works better in iframes than history.back)
-  if (referrer) {
+  // Check if there's browser history to go back to (internal navigation)
+  if (window.history.length > 1 && referrer && referrer.indexOf(window.location.host) !== -1) {
+    // Same-site navigation - use browser back
+    window.history.back();
+  } else if (referrer) {
+    // External referrer (like Hotelrunner) - redirect to referrer
     window.location.href = referrer;
   } else {
+    // No referrer - go to home page
     window.location.href = '/';
   }
 }
