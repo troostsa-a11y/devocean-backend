@@ -1,0 +1,131 @@
+================================================================================
+DEVOCEAN LODGE - PRIVACY POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (privacy section)
+LANGUAGE CODE: af
+
+================================================================================
+HEADER
+================================================================================
+title = "Privaatheidsbeleid"
+updatedDate = "06 Oktober 2025"
+
+quickLinks.title = "Vinnige Skakels"
+quickLinks[0] = "Wie ons is"
+quickLinks[1] = "Data Versameling"
+quickLinks[2] = "Data Gebruik"
+quickLinks[3] = "Data Deling"
+quickLinks[4] = "Sekuriteit"
+quickLinks[5] = "Berging"
+quickLinks[6] = "Jou Regte"
+quickLinks[7] = "Internasionale Oordragte"
+quickLinks[8] = "Kontakte"
+quickLinks[9] = "Beleid Opdaterings"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Jou privaatheid is belangrik:"
+badge.body = "Ons is daartoe verbind om jou persoonlike data te beskerm en deursigtig te wees oor hoe ons jou inligting versamel, gebruik en beskerm."
+
+================================================================================
+WHO WE ARE
+================================================================================
+who.title = "Wie ons is"
+who.body = "DEVOCEAN Lodge word bedryf deur TERRAfrique LDA, 'n maatskappy geregistreer in Mosambiek. Ons geregistreerde adres: Rua C, Parcela 12, Maputo 1118, Mosambiek. Ons bied eko-vriendelike verblyf aan die strand in Ponta do Ouro, Mosambiek. Ons is verbind tot die beskerming van jou privaatheid en die versekering dat jou persoonlike data op 'n gepaste, wettige en deursigtige wyse versamel, verwerk en gebruik word in ooreenstemming met toepaslike databeskermingswette. Deur ons webwerf en dienste te gebruik, stem jy in tot die versameling en gebruik van jou inligting in ooreenstemming met hierdie Privaatheidsbeleid."
+
+================================================================================
+DATA COLLECTION
+================================================================================
+collect.title = "Watter persoonlike data ons versamel"
+collect.intro = "Ons versamel verskeie tipes inligting om ons dienste te lewer en te verbeter:"
+
+collect.categories[0].title = "Persoonlike Inligting"
+collect.categories[0].items[0] = "Naam, kontakbesonderhede"
+collect.categories[0].items[1] = "Paspoort/identiteitsinligting"
+collect.categories[0].items[2] = "Betalinginligting"
+collect.categories[0].items[3] = "Besprekingsvoorkeure"
+
+collect.categories[1].title = "Tegniese Data"
+collect.categories[1].items[0] = "IP-adres, toestelinligting"
+collect.categories[1].items[1] = "Blaaier tipe en weergawe"
+collect.categories[1].items[2] = "Webwerf gebruiksanalise"
+collect.categories[1].items[3] = "Koekie data (met jou toestemming)"
+
+collect.categories[2].title = "Kommunikasie Data"
+collect.categories[2].items[0] = "E-pos korrespondensie"
+collect.categories[2].items[1] = "Kliëntediens versoeke"
+collect.categories[2].items[2] = "Terugvoer en kommentaar"
+collect.categories[2].items[3] = "Bemarkingsvoorkeure"
+
+================================================================================
+DATA USAGE
+================================================================================
+use.title = "Hoe ons jou data gebruik"
+use.items[0] = "Bestuur van besprekings en lewering van dienste"
+use.items[1] = "Kommunikasie oor jou verblyf, beleide en aanbiedinge (met jou toestemming)"
+use.items[2] = "Verbetering van ons webwerf en dienste (analise, sekuriteit)"
+use.items[3] = "Nakoming van wettige/finansiële verpligtinge"
+
+================================================================================
+DATA SHARING
+================================================================================
+share.title = "Wanneer ons data deel"
+share.items[0] = "Betalingverskaffers en besprekingplatforms om jou besprekings en betalings te verwerk"
+share.items[1] = "Analisedienste om webwerfgebruik te verstaan en ons dienste te verbeter"
+share.items[2] = "Advertensiedienste vir geteikende reklame (slegs met jou toestemming)"
+share.items[3] = "IT-dienste, gasheer- en tegniese ondersteuningsverskaffers onder streng privaatheidsooreenkomste"
+share.items[4] = "Wettige owerhede in geval van wetlike, regulatoriese, hofbevel of ander wettige prosesse"
+share.items[5] = "Uitvoering van kontrakte of beskerming van regte, eiendom, sekuriteit"
+share.items[6] = "Oordrag van inligting aan nuwe eienaars in geval van samesmelting, verkryging of verkoop van bates"
+share.footer = "Ons vereis dat alle derde partye die sekuriteit van persoonlike data respekteer en dit slegs vir oordragdoeleindes gebruik. Derde partye word nie toegelaat om persoonlike data vir hul eie doeleindes te gebruik nie, slegs om dit te verwerk in ooreenstemming met ons instruksies."
+
+================================================================================
+SECURITY
+================================================================================
+security.title = "Sekuriteitsmaatreëls"
+security.intro = "Ons neem databeskerming ernstig op en pas die volgende maatreëls toe:"
+security.measures[0] = "Enkripsie van sensitiewe data tydens oordrag en berging"
+security.measures[1] = "Gereelde sekuriteitsbeoordelings en penetrasietoetse"
+security.measures[2] = "Toegangsbeheer en verifikasiemeganismes"
+security.measures[3] = "Personeelopleiding oor databeskerming en privaatheid"
+security.measures[4] = "Veilige data-rugsteun en herstelprosedures"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "Data Berging"
+retention.body = "Ons bewaar jou persoonlike inligting slegs vir die tydperk wat nodig is om die doeleindes te vervul soos uiteengesit in hierdie Privaatheidsbeleid. Oor die algemeen behou ons persoonlike data vir 1 jaar na jou laaste interaksie met ons, tensy 'n langer bergingstydperk wettiglik vereis of toegelaat word. Ons kan sekere inligting langer hou vir spesifieke redes, insluitend: rekordhouding en rapportering in ooreenstemming met toepaslike wetgewing (gewoonlik 7 jaar vir finansiële en belastingrekords), uitvoering van wettige regte, voorkoming van bedrog en oplossing van dispute. Na die bergingstydperk sal jou persoonlike data veilig uitgevee of geanonimiseer word. Residuele anonieme inligting en saamgevoegde data, wat jou nie direk of indirek identifiseer nie, kan onbepaald vir statistiese en analitiese doeleindes behou word."
+
+================================================================================
+YOUR RIGHTS
+================================================================================
+rights.title = "Jou Privaatheidsregte"
+rights.items[0] = "Reg op toegang tot jou persoonlike data"
+rights.items[1] = "Reg om onakkurate data reg te stel"
+rights.items[2] = "Reg om jou persoonlike data uit te vee"
+rights.items[3] = "Reg om verwerking te beperk of daarteen beswaar te maak"
+rights.items[4] = "Reg op data-oordraagbaarheid"
+rights.items[5] = "Reg om toestemming terug te trek"
+
+================================================================================
+INTERNATIONAL TRANSFERS
+================================================================================
+transfers.title = "Internasionale Data-oordragte"
+transfers.body = "Aangesien ons in verskeie jurisdiksies opereer, kan jou data oorgedra en verwerk word in lande buite jou land van verblyf. Ons verseker dat sulke oordragte voldoen aan toepaslike databeskermingswette deur Europese Kommissie se voldoende besluite, standaard kontraktuele klousules (SCC), gepaste sekuriteitsmaatreëls en deursigtigheid oor oordragplekke."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Kontak ons Privaatheidspan"
+contact.body = "Indien jy vrae, bekommernisse of versoeke het rakende hierdie Privaatheidsbeleid of die verwerking van jou persoonlike data, of indien jy jou privaatheidsregte wil uitoefen, kontak ons asseblief by:<br><br><strong>E-pos:</strong> <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a><br><strong>Telefoon:</strong> +258 8441 82252<br><strong>Posadres:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mosambiek<br><br>Ons sal op jou versoek reageer in ooreenstemming met toepaslike databeskermingswette. Indien jy klagtes of bekommernisse het oor die hantering van jou inligting, kan jy ook ons databeskermingsbeampte kontak by die bogenoemde e-posadres."
+
+================================================================================
+POLICY UPDATES
+================================================================================
+updates.title = "Beleid Opdaterings"
+updates.body = "Ons kan hierdie Privaatheidsbeleid van tyd tot tyd opdateer om veranderinge in ons praktyke, tegnologieë, wettige vereistes of ander faktore te weerspieël. Ons sal jou in kennis stel van wesenlike veranderinge deur e-poskennisgewings aan geregistreerde gebruikers, opvallende aankondigings op ons webwerf en 'n opgedateerde laaste opdateringsdatum. Ons beveel aan dat jy hierdie beleid periodiek hersien om op hoogte te bly van hoe ons jou inligting beskerm."
+
+================================================================================
+END OF PRIVACY POLICY
+================================================================================
