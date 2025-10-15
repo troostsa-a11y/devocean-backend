@@ -28,7 +28,6 @@ const CC_TO_CONTINENT = {
   CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
   UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
   ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
-  RU: "europe",
   
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
@@ -52,6 +51,7 @@ const CC_TO_CONTINENT = {
   OM: "asia", IL: "asia", JO: "asia", LB: "asia", TR: "asia",
   PK: "asia", BD: "asia", LK: "asia", NP: "asia", MM: "asia",
   KH: "asia", LA: "asia", MN: "asia", KZ: "asia", UZ: "asia",
+  RU: "asia",
   
   // Oceania
   AU: "oceania", NZ: "oceania", FJ: "oceania", PG: "oceania", NC: "oceania",

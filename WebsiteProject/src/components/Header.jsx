@@ -10,8 +10,8 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
 
   // Define regions with metadata
   const regions = {
-    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl', 'ru'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
-    asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh'], currencies: ['USD', 'JPY', 'CNY', 'EUR', 'GBP'] },
+    europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
+    asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh', 'ru'], currencies: ['USD', 'JPY', 'CNY', 'EUR', 'GBP'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
     africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
     oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
