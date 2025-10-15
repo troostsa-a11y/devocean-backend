@@ -199,8 +199,8 @@ function pickInitialCurrency() {
     return CC_TO_CURRENCY[cc];
   }
   
-  // Default to EUR for Europe if country detection fails
-  return "EUR";
+  // Default to USD (Hotelrunner base currency) if country detection fails
+  return "USD";
 }
 
 function pickInitialRegion(langBase) {
