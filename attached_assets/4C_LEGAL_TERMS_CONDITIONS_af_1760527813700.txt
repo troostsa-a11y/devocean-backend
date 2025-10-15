@@ -1,0 +1,154 @@
+================================================================================
+DEVOCEAN LODGE - TERMS & CONDITIONS TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (terms section)
+LANGUAGE CODE: af
+
+================================================================================
+HEADER
+================================================================================
+title = "Voorwaardes en Bepalings"
+updatedDate = "06 Oktober 2025"
+
+quickLinks.title = "Vinnige Skakels"
+quickLinks[0] = "Toepassingsomvang"
+quickLinks[1] = "Besprekings"
+quickLinks[2] = "Pryse en Betaling"
+quickLinks[3] = "Kansellasie"
+quickLinks[4] = "Gastegedrag"
+quickLinks[5] = "Oormag"
+quickLinks[6] = "Aanspreeklikheid"
+quickLinks[7] = "Intellektuele Eiendom"
+quickLinks[8] = "Ges kilbeslegting"
+quickLinks[9] = "Veranderinge"
+quickLinks[10] = "Toepaslike Reg"
+quickLinks[11] = "Kontakte"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Belangrike Regskennisgewing:"
+badge.body = "Hierdie voorwaardes reguleer die gebruik van ons dienste en webwerf. Lees dit asseblief sorgvuldig deur voor bespreek."
+
+================================================================================
+SCOPE
+================================================================================
+intro.title = "Toepassingsomvang"
+intro.body = "Hierdie Voorwaardes reguleer verblyf en verwante dienste wat deur DEVOCEAN Lodge (TERRAfrique LDA) verskaf word. Deur te bespreek, stem jy in tot hierdie Voorwaardes."
+
+================================================================================
+BOOKINGS
+================================================================================
+booking.title = "Besprekings"
+booking.items[0] = "Verskaf akkurate gaste-inligting en aankoms/vertrek datums"
+booking.items[1] = "Spesiale versoeke is onderhewig aan beskikbaarheid en bevestiging"
+
+booking.reservationReq.title = "Bespreekvereistes"
+booking.reservationReq.body = "Geldige identifikasie en 'n kredietkaart word vereis vir alle besprekings. Minimum ouderdom: 18."
+
+booking.checkinCheckout.title = "In- en Uitklok"
+booking.checkinCheckout.body = "Inklok: 14:00 | Uitklok: 11:00. Versoeke vir vroeë inklok of laat uitklok is onderhewig aan beskikbaarheid."
+
+booking.groupBookings.title = "Groepbesprekings"
+booking.groupBookings.body = "Spesiale voorwaardes geld vir groepe van 6 kamers of meer. Kontak ons vir groepstariewe en -beleide."
+
+================================================================================
+PRICES & PAYMENT
+================================================================================
+payment.title = "Pryse en Betaling"
+payment.items[0] = "Aangehaalde tariewe is per kamer/nag, tensy anders aangedui"
+payment.items[1] = "Deposito's en betaalmetodes sal tydens bespreking bevestig word"
+
+payment.paymentInfo.title = "Betalingsinligting"
+payment.paymentInfo.body = "Alle pryse is in VSA-dollars, tensy anders aangedui. Wisselkoerse is benaderd en kan verander. 'n Geldige kredietkaart word vereis om jou bespreking te beveilig. Addisionele kostes kan van toepassing wees op onvoorsiene uitgawes."
+
+================================================================================
+CANCELLATIONS & NO-SHOWS
+================================================================================
+cancel.title = "Kansellasie en Nie-opdaag"
+cancel.body = "Kansellasievoorwaardes word tydens bespreking en in jou bevestiging uiteengesit."
+
+cancel.cancellationCharges.title = "Kansellasiefooie"
+
+cancel.cancellationCharges.plans[0].planName = "Buigsame Tariefplan:"
+cancel.cancellationCharges.plans[0].tiers[0].period = "30 dae of meer voor aankoms"
+cancel.cancellationCharges.plans[0].tiers[0].charge = "Volle terugbetaling"
+cancel.cancellationCharges.plans[0].tiers[1].period = "29 dae of minder voor aankoms"
+cancel.cancellationCharges.plans[0].tiers[1].charge = "50% kansellasiefooi"
+
+cancel.cancellationCharges.plans[1].planName = "Nie-terugbetaalbare Tariefplan:"
+cancel.cancellationCharges.plans[1].tiers[0].period = "Binne 24 uur na bespreking"
+cancel.cancellationCharges.plans[1].tiers[0].charge = "Volle terugbetaling"
+cancel.cancellationCharges.plans[1].tiers[1].period = "In alle ander gevalle"
+cancel.cancellationCharges.plans[1].tiers[1].subtext = "Reg op eenmalige verandering van aankomsdatum onderhewig aan betaling van die prysverskil vir nuwe datums."
+cancel.cancellationCharges.plans[1].tiers[1].charge = "Geen terugbetaling"
+
+cancel.noshowPolicy.title = "Nie-opdaag Beleid"
+cancel.noshowPolicy.body = "Gaste wat nie op die geskeduleerde aankomsdatum opdaag sonder vooraf kennisgewing nie, word as nie-opdaag beskou. Die volle bedrag word gehef, en die bespreking word gekanselleer."
+
+================================================================================
+GUEST CONDUCT
+================================================================================
+conduct.title = "Gastegedrag"
+conduct.items[0] = "Respekteer eiendomsreëls, personeel, ander gaste en die plaaslike gemeenskap"
+conduct.items[1] = "Geen onwettige aktiwiteite op die perseel nie"
+
+conduct.zeroTolerance.title = "Nul Verdraagsaamheidsbeleid"
+conduct.zeroTolerance.body = "Ons handhaaf 'n nul verdraagsaamheidsbeleid vir ontwrigtende gedrag, onwettige aktiwiteite of skade aan eiendom. Oortreding kan lei tot onmiddellike uitsetting sonder terugbetaling en wettige aksies."
+
+================================================================================
+FORCE MAJEURE
+================================================================================
+force-majeure.title = "Oormag"
+force-majeure.intro = "Ons is nie aanspreeklik vir die onvermoë om verpligtinge na te kom weens omstandighede buite ons redelike beheer nie, insluitend maar nie beperk tot:"
+force-majeure.items[0] = "Natuurrampe, uiterste weersomstandighede"
+force-majeure.items[1] = "Regeringsbeperkings, reisverbod"
+force-majeure.items[2] = "Burgerlike onrus, oorlog, terrorisme"
+force-majeure.items[3] = "Pandemieë, epidemies, gesondheidsnoodgevalle"
+force-majeure.items[4] = "Diensonderbrekings, infrastruktuur mislukkings"
+force-majeure.footer = "In sulke gevalle sal ons alternatiewe datums of kredietbewyse aanbied waar moontlik. Terugbetalings sal verskaf word in ooreenstemming met toepaslike wette en omstandighede. Alle verliese en uitgawes wat gedek word of gedek kon word deur standaard kansellasie- en reisversekering is egter uitgesluit van ons aanspreeklikheid."
+
+================================================================================
+LIABILITY
+================================================================================
+liability.title = "Aanspreeklikheid"
+liability.body = "Binne die perke wat deur die wet toegelaat word, is ons nie aanspreeklik vir indirekte of gevolgskade nie."
+
+================================================================================
+INTELLECTUAL PROPERTY
+================================================================================
+intellectual-property.title = "Intellektuele Eiendom"
+intellectual-property.copyright.title = "Kopiereg Kennisgewing"
+intellectual-property.copyright.body = "Alle inhoud op hierdie webwerf, insluitend teks, grafika, logo's en beelde, is die eiendom van DEVOCEAN Lodge en word beskerm deur internasionale kopieregwette. Ongeoutoriseerde gebruik, reproduksie of verspreiding is verbode. Die naam DEVOCEAN Lodge, logo en alle verwante merke is handelsmerke en mag nie sonder skriftelike toestemming gebruik word nie."
+
+================================================================================
+DISPUTE RESOLUTION
+================================================================================
+disputes.title = "Ges kilbeslegting"
+disputes.process.title = "Beslegtingsproses"
+disputes.process.body = "Ons streef daarna om enige dispute vreedsaam op te los. Kontak ons asseblief eers vir pogings tot oplossing. Indien nie opgelos nie, moet dispute deur bemiddeling opgelos word voordat hofstappe geneem word."
+disputes.process.law = "Toepaslike Reg: Hierdie voorwaardes en enige dispute word gereguleer deur die wetgewing van Mosambiek."
+disputes.process.jurisdiction = "Jurisdiksie: Howe in Maputo, Mosambiek, het eksklusiewe jurisdiksie."
+disputes.process.mediation = "Bemiddeling: Partye stem in om bemiddeling te probeer deur 'n geakkrediteerde bemiddelaar voordat regsprosedures begin word."
+
+================================================================================
+CHANGES TO THESE TERMS
+================================================================================
+changes.title = "Veranderinge aan hierdie Voorwaardes"
+changes.body = "Ons kan die Voorwaardes van tyd tot tyd opdateer. Die gepubliseerde weergawe is van toepassing op jou verblyf."
+
+================================================================================
+GOVERNING LAW
+================================================================================
+law.title = "Toepaslike Reg"
+law.body = "Mosambiek se wetgewing is van toepassing, met inagneming van verpligte plaaslike verbruikersbeskermingsreëls."
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "Kontakte"
+contact.body = "Vrae? <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
+
+================================================================================
+END OF TERMS & CONDITIONS
+================================================================================
