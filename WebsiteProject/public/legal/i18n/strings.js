@@ -21,7 +21,8 @@
     pl:   { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" },
     ja:   { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" },
     zh:   { backButton: "返回",             back: "首页",                   updated: "最后更新" },
-    ru:   { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" }
+    ru:   { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" },
+    af:   { backButton: "Terug",            back: "Tuis",                   updated: "Laaste opdatering" }
   };
 
   // Root dict

@@ -1,0 +1,18 @@
+================================================================================
+DEVOCEAN LODGE - LEGAL PAGE UI LABELS BATCH FILE
+================================================================================
+Instructions: Translate all text in quotes. Keep structure markers unchanged.
+File: WebsiteProject/public/legal/i18n/strings.js (LEGAL_UI section)
+
+LANGUAGE CODE: af
+
+================================================================================
+LEGAL PAGE UI LABELS
+================================================================================
+backButton = "Terug"
+back = "Tuis"
+updated = "Laaste opdatering"
+
+================================================================================
+END OF LEGAL UI LABELS
+================================================================================
