@@ -313,8 +313,21 @@ export function useLocale() {
   });
 
   const [region, setRegionState] = useState(() => {
+    // Only trust localStorage if it has the correct version (IP-based)
     const stored = localStorage.getItem("site.region");
-    return stored && SUPPORTED_REGIONS.includes(stored) ? stored : pickInitialRegion(pickInitialLang());
+    const version = localStorage.getItem("site.region.version");
+    
+    if (stored && SUPPORTED_REGIONS.includes(stored) && version === "2") {
+      return stored;
+    }
+    
+    // Clear old cached value and detect fresh
+    if (stored && version !== "2") {
+      localStorage.removeItem("site.region");
+      localStorage.removeItem("site.region.version");
+    }
+    
+    return pickInitialRegion(pickInitialLang());
   });
 
   // Initialize with critical nav for header (immediate render)
