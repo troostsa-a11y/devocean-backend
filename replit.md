@@ -59,7 +59,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 ## External Dependencies
 
 ### Third-Party Services
-- **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes for GDPR/CCPA-compliant cookie consent, Microsoft Clarity for session recording with consent management.
+- **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af) via GTM Template for GDPR/CCPA-compliant cookie consent, Microsoft Clarity for session recording with consent management.
 - **Booking Integration:** External booking engine at `book.devoceanlodge.com` with parameterized URLs for locale and currency, region-aware Portuguese URLs, and smart back navigation from Hotelrunner.
 - **Maps & Location:** Google Maps embed for property location (lazy-loaded interactive map with static preview).
 - **Security:** Google reCAPTCHA v3 for invisible verification on contact forms with server-side validation.
