@@ -120,12 +120,8 @@ function clampCur(cur) {
 }
 
 function getCountryCode() {
-  // Debug: Always log what Cloudflare provides
-  console.warn('[DEVOCEAN GeoIP Debug] window.__CF_COUNTRY__ =', typeof window !== 'undefined' ? window.__CF_COUNTRY__ : 'undefined');
-  
   // Priority 1: Use Cloudflare's IP-based country detection (production)
   if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
-    console.warn('[DEVOCEAN GeoIP] ✓ Using Cloudflare IP country:', window.__CF_COUNTRY__);
     return window.__CF_COUNTRY__;
   }
   
@@ -136,12 +132,10 @@ function getCountryCode() {
     const loc = new Intl.DateTimeFormat().resolvedOptions().locale || "";
     const m = loc.toUpperCase().match(/-([A-Z]{2})/);
     if (m) {
-      console.warn('[DEVOCEAN Browser Debug] ⚠️ Cloudflare failed, using Intl locale hint:', m[1]);
       return m[1];
     }
   } catch { }
   
-  console.warn('[DEVOCEAN Browser Debug] ⚠️ No country code found, will use timezone detection');
   return null;
 }
 
@@ -194,35 +188,28 @@ function pickInitialLang() {
 
 function pickInitialCurrency(langBase) {
   const saved = localStorage.getItem("site.currency");
-  console.warn('[DEVOCEAN Currency Debug] Saved:', saved, 'Lang:', langBase);
   
   if (saved && ALLOWED_CURRENCIES.includes(saved)) {
-    console.warn('[DEVOCEAN Currency Debug] Using saved currency:', saved);
     return saved;
   }
 
   // Priority 1: Check country code (Cloudflare IP or browser hint)
   const cc = getCountryCode();
   const byCC = (cc && CC_TO_CURRENCY[cc]) || null;
-  console.warn('[DEVOCEAN Currency Debug] Country code:', cc, '→ Currency:', byCC);
   
   if (byCC && ALLOWED_CURRENCIES.includes(byCC)) {
-    console.warn('[DEVOCEAN Currency Debug] ✓ Using currency from country code:', byCC);
     return byCC;
   }
 
   // Priority 2: Check language hints
   if (langBase && LANG_TO_CURRENCY_HINT[langBase]) {
-    console.warn('[DEVOCEAN Currency Debug] Using lang hint:', LANG_TO_CURRENCY_HINT[langBase]);
     return LANG_TO_CURRENCY_HINT[langBase];
   }
   const nav = (navigator.language || "").toLowerCase();
   if (LANG_TO_CURRENCY_HINT[nav]) {
-    console.warn('[DEVOCEAN Currency Debug] Using nav hint:', LANG_TO_CURRENCY_HINT[nav]);
     return LANG_TO_CURRENCY_HINT[nav];
   }
 
-  console.warn('[DEVOCEAN Currency Debug] ⚠️ Defaulting to USD');
   return "USD";
 }
 
@@ -234,29 +221,24 @@ function pickInitialRegion(langBase) {
   // Version 2: IP-based geolocation (Oct 2024)
   // Clear old cached values from browser-based detection
   if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "2") {
-    console.warn('[DEVOCEAN Region Debug] Using saved region (v2):', saved);
     return saved;
   }
   
   // Get country code (Cloudflare IP-based or browser fallback)
   const cc = getCountryCode();
-  console.warn('[DEVOCEAN Region Debug] Country code from Cloudflare/Browser:', cc);
   
   // Priority 1: Use country code → continent mapping (most accurate)
   if (cc && CC_TO_CONTINENT[cc]) {
-    console.warn('[DEVOCEAN Region Debug] ✓ Mapped to continent:', CC_TO_CONTINENT[cc]);
     return CC_TO_CONTINENT[cc];
   }
   
   // Priority 2: Use timezone-based detection (fallback for unmapped countries)
   const tzContinent = getTimezoneContinent();
   if (tzContinent) {
-    console.warn('[DEVOCEAN Region Debug] ⚠️ Country', cc, 'not mapped! Using timezone:', tzContinent);
     return tzContinent;
   }
   
   // Final fallback to Europe as default
-  console.warn('[DEVOCEAN Region Debug] ⚠️ No detection worked, defaulting to europe');
   return "europe";
 }
 
