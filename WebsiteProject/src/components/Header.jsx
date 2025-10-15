@@ -33,6 +33,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
       onCurrencyChange('ZAR');
     }
     // Europe region language-currency auto-switching
+    else if (lang === 'en' && newRegion === 'europe' && currency !== 'GBP') {
+      onCurrencyChange('GBP');
+    }
     else if (lang === 'pt' && newRegion === 'europe' && currency !== 'EUR') {
       onCurrencyChange('EUR');
     }
@@ -70,6 +73,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
       onCurrencyChange('ZAR');
     }
     // Europe region
+    else if (newLang === 'en' && region === 'europe' && regions[region].currencies.includes('GBP') && currency !== 'GBP') {
+      onCurrencyChange('GBP');
+    }
     else if (newLang === 'pt' && region === 'europe' && regions[region].currencies.includes('EUR') && currency !== 'EUR') {
       onCurrencyChange('EUR');
     }
