@@ -265,7 +265,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
           </div>
 
           {/* Desktop nav (large screens only) */}
-          <ul className={`hidden lg:flex items-center ${lang === 'ru' ? 'gap-3 text-sm' : 'gap-6'}`}>
+          <ul className={`hidden lg:flex items-center ${lang === 'ru' || lang === 'zu' ? 'gap-3 text-sm' : 'gap-6'}`}>
             {[
               ["home", "#home"],
               ["stay", "#stay"],
@@ -289,7 +289,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
                 href={bookUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`btn-cta ${lang === 'ru' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
+                className={`btn-cta ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
                 onClick={() => {
                   if (window.dataLayer) {
                     window.dataLayer.push({
