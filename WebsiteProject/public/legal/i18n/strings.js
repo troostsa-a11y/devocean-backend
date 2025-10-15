@@ -5080,6 +5080,121 @@
           body: 'ご質問は？ <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>。'
         }
       }
+    },
+
+    gdpr: {
+      title: 'GDPR通知',
+      updatedDate: '2025年10月6日',
+      quickLinks: {
+        title: 'クイックリンク',
+        links: [
+          { id: 'controller', text: '管理者' },
+          { id: 'bases', text: '処理の法的根拠' },
+          { id: 'rights', text: 'お客様の権利' },
+          { id: 'retention', text: 'データ保持' },
+          { id: 'transfers', text: 'データ転送' },
+          { id: 'complaints', text: '苦情' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: 'GDPR準拠:',
+          body: '一般データ保護規則（GDPR）に基づき、お客様の個人データを保護し、プライバシー権を尊重することに取り組んでいます。'
+        },
+        controller: {
+          title: 'データ管理者',
+          body: 'TERRAfrique LDA（DEVOCEAN Lodge）は、モザンビークのRua C, Parcela 12, Maputo 1118に登録されており、当社のサービスを通じて収集されるお客様の個人情報のデータ管理者として機能します。'
+        },
+        bases: {
+          title: '処理の法的根拠',
+          body: 'GDPRに基づく以下の法的根拠により、お客様の個人データを処理します：',
+          legalBases: {
+            contract: {
+              title: '契約:',
+              body: '予約契約およびサービスの履行に必要な処理。'
+            },
+            legal: {
+              title: '法的義務:',
+              body: '法的要件（例：税法）への準拠に必要な処理。'
+            },
+            legitimate: {
+              title: '正当な利益:',
+              body: 'お客様の権利を尊重しつつ、当社の正当な事業利益のための処理。'
+            },
+            consent: {
+              title: '同意:',
+              body: '特定の目的に対する明示的な同意に基づく処理。'
+            }
+          }
+        },
+        rights: {
+          title: 'お客様のGDPR権利',
+          body: 'GDPRに基づくデータ主体として、お客様の個人データに関する以下の権利をお持ちです：',
+          access: {
+            title: 'アクセス権',
+            body: '当社が保有するお客様の個人データのコピーを要求できます。'
+          },
+          rectification: {
+            title: '訂正権',
+            body: '不正確または不完全なデータの修正を要求できます。'
+          },
+          erasure: {
+            title: '消去権',
+            body: '特定の条件下で、お客様の個人データの削除を要求できます。'
+          },
+          restrict: {
+            title: '処理の制限権',
+            body: 'データの使用方法の制限を要求できます。'
+          },
+          portability: {
+            title: 'データポータビリティ権',
+            body: 'データを別の組織に転送することを要求できます。'
+          },
+          object: {
+            title: '異議申し立て権',
+            body: 'データの特定の種類の処理に異議を申し立てることができます。'
+          },
+          buttons: {
+            access: { text: 'データアクセスを要求' },
+            erasure: { text: 'データ削除を要求' }
+          }
+        },
+        retention: {
+          title: 'データ保持',
+          periodsTitle: '保持期間',
+          intro: '収集目的を果たすために必要な期間、法的・会計・報告要件を含む限り、個人データを保持します。',
+          items: [
+            '<strong>予約データ:</strong> 税務および法的準拠のため7年間',
+            '<strong>カスタマーサービス通信:</strong> 3年間',
+            '<strong>マーケティング同意:</strong> 同意の撤回まで',
+            '<strong>ウェブサイト分析:</strong> 26ヶ月',
+            '<strong>財務取引:</strong> 会計目的のため10年間'
+          ]
+        },
+        transfers: {
+          title: '国際データ転送',
+          body: '欧州経済領域（EEA）外にデータを転送する場合、欧州委員会が承認した標準契約条項の使用や、十分性決定を受けた国への転送を含む、適切な保護措置を確保します。',
+          notice: {
+            title: '国際データ転送:',
+            body: '国際的なデータ転送時に、標準契約条項の使用や十分性決定の確保を含む適切な保護措置を講じます。'
+          }
+        },
+        complaints: {
+          title: '苦情',
+          intro: '個人データの取り扱いに関する懸念がある場合、地元のデータ保護当局に苦情を申し立てる権利があります。',
+          authority: {
+            label: '主要な監督当局:',
+            name: 'ポルトガルデータ保護当局（CNPD）',
+            websiteLabel: 'ウェブサイト:',
+            contactLabel: '連絡先:'
+          },
+          footer: '監督当局に連絡する前に、懸念事項を解決するため、まず当社にご連絡いただくことをお勧めします。'
+        },
+        dpo: {
+          title: 'データ保護担当者への連絡',
+          body: 'GDPR関連の質問や権利行使については、データ保護担当者に<a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>までご連絡ください。GDPRで定められた通り、30日以内にご依頼に対応します。'
+        }
+      }
     }
   };
   
