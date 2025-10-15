@@ -90,5 +90,25 @@ export const CRITICAL_NAV = {
     location: "Lokalizacja",
     contact: "Kontakt",
     bookNow: "Rezerwuj"
+  },
+  ptmz: {
+    home: "Início",
+    stay: "Alojamento",
+    experiences: "Experiências",
+    todo: "O que fazer",
+    gallery: "Galeria",
+    location: "Localização",
+    contact: "Contato",
+    bookNow: "Reserve já"
+  },
+  ja: {
+    home: "ホーム",
+    stay: "宿泊",
+    experiences: "体験",
+    todo: "アクティビティ",
+    gallery: "ギャラリー",
+    location: "場所",
+    contact: "連絡先",
+    bookNow: "予約"
   }
 };
