@@ -1,0 +1,114 @@
+================================================================================
+DEVOCEAN LODGE - GDPR NOTICE TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (gdpr section)
+LANGUAGE CODE: af
+
+================================================================================
+HEADER
+================================================================================
+title = "GDPR Kennisgewing"
+updatedDate = "06 Oktober 2025"
+
+quickLinks.title = "Vinnige Skakels"
+quickLinks[0] = "Data Beheerder"
+quickLinks[1] = "Regsbasisse"
+quickLinks[2] = "Jou Regte"
+quickLinks[3] = "Data Berging"
+quickLinks[4] = "Data Oordrag"
+quickLinks[5] = "Klachte"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "GDPR Nakoming:"
+badge.body = "Ons is daartoe verbind om jou persoonlike data te beskerm en jou privaatheidsregte te respekteer in ooreenstemming met die Algemene Databeskermingsregulasie."
+
+================================================================================
+DATA CONTROLLER
+================================================================================
+controller.title = "Data Beheerder"
+controller.body = "TERRAfrique LDA (DEVOCEAN Lodge), geregistreer by Rua C, Parcela 12, Maputo 1118, Mosambiek, tree op as die databestuurder vir jou persoonlike inligting wat deur ons dienste versamel word."
+
+================================================================================
+LEGAL BASES FOR PROCESSING
+================================================================================
+bases.title = "Regsbasisse vir Verwerking"
+bases.body = "Ons verwerk jou persoonlike data op die volgende regsgronde in ooreenstemming met GDPR:"
+
+legalBases.contract.title = "Kontrak:"
+legalBases.contract.body = "Verwerking wat nodig is om ons ooreenkomste vir besprekings en die lewering van dienste na te kom."
+
+legalBases.legal.title = "Wettige Verpligting:"
+legalBases.legal.body = "Verwerking wat nodig is om aan wettige vereistes te voldoen (byvoorbeeld belastingwetgewing)."
+
+legalBases.legitimate.title = "Legitieme Belange:"
+legalBases.legitimate.body = "Verwerking in ons wettige besigheidsbelange terwyl ons jou regte respekteer."
+
+legalBases.consent.title = "Toestemming:"
+legalBases.consent.body = "Verwerking gebaseer op jou uitdruklike toestemming vir spesifieke doeleindes."
+
+================================================================================
+YOUR GDPR RIGHTS
+================================================================================
+rights.title = "Jou GDPR Regte"
+rights.body = "As 'n datavak onder GDPR, het jy die volgende regte met betrekking tot jou persoonlike data:"
+
+rights.access.title = "Reg op Toegang"
+rights.access.body = "Jy kan kopieë versoek van jou persoonlike data wat ons hou."
+
+rights.rectification.title = "Reg op Regstelling"
+rights.rectification.body = "Jy kan versoek om onakkurate of onvolledige data reg te stel."
+
+rights.erasure.title = "Reg op Verwydering"
+rights.erasure.body = "Jy kan versoek om jou persoonlike data uit te vee onder sekere voorwaardes."
+
+rights.restrict.title = "Reg om Verwerking te Beperk"
+rights.restrict.body = "Jy kan versoek om die gebruik van jou data te beperk."
+
+rights.portability.title = "Reg op Data Oordraagbaarheid"
+rights.portability.body = "Jy kan versoek dat jou data na 'n ander organisasie oorgedra word."
+
+rights.object.title = "Reg om Beswaar te Maak"
+rights.object.body = "Jy kan beswaar maak teen sekere tipes verwerking van jou data."
+
+buttons.access.text = "Versoek Toegang tot Data"
+buttons.erasure.text = "Versoek Verwydering van Data"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "Data Berging"
+retention.periodsTitle = "Bergingsperiodes"
+retention.intro = "Ons bewaar jou persoonlike data slegs vir die tydperk wat nodig is om die doeleindes waarvoor dit versamel is te vervul, insluitend wettige, boekhoudkundige of rapporteringsvereistes."
+retention.items[0] = "<strong>Besprekingsdata:</strong> 7 jaar om aan belasting- en wettige vereistes te voldoen"
+retention.items[1] = "<strong>Kliëntediens Kommunikasie:</strong> 3 jaar"
+retention.items[2] = "<strong>Bemarking Toestemming:</strong> Totdat toestemming teruggetrek word"
+retention.items[3] = "<strong>Webwerf Analise:</strong> 26 maande"
+retention.items[4] = "<strong>Finansiële Transaksies:</strong> 10 jaar vir boekhoudkundige doeleindes"
+
+================================================================================
+INTERNATIONAL DATA TRANSFERS
+================================================================================
+transfers.title = "Internasionale Data-oordragte"
+transfers.body = "Wanneer ons jou data buite die Europese Ekonomiese Area (EEA) oordra, verseker ons dat gepaste beskermingsmaatreëls vir jou inligting in plek is. Dit kan die gebruik van standaard kontraktuele klousules insluit wat deur die Europese Kommissie goedgekeur is, of die oordrag van data na lande met voldoende besluite."
+
+safeguards.international.title = "Internasionale Data-oordragte:"
+safeguards.international.body = "Ons verseker dat gepaste beskermingsmaatreëls in plek is tydens internasionale data-oordragte, insluitend die gebruik van standaard kontraktuele klousules of die versekering van voldoende besluite."
+
+================================================================================
+COMPLAINTS
+================================================================================
+complaints.title = "Klachte"
+complaints.intro = "Indien jy bekommernisse het oor hoe ons jou persoonlike data hanteer, het jy die reg om 'n klag by die plaaslike databeskermingsowerheid in te dien."
+complaints.footer = "Ons beveel aan dat jy eers met ons kontak maak om enige kwessies te probeer oplos voordat jy die toesighoudende owerheid kontak."
+
+================================================================================
+DATA PROTECTION OFFICER
+================================================================================
+dpo.title = "Kontak Ons Databeskermingsbeampte"
+dpo.body = "Vir enige navrae rakende GDPR, of om jou regte uit te oefen, kontak asseblief ons databeskermingsbeampte by <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Ons sal op jou versoek reageer binne 30 dae, soos deur GDPR vereis."
+
+================================================================================
+END OF GDPR NOTICE
+================================================================================

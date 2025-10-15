@@ -6653,6 +6653,117 @@
             body: "Vrae? <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
           }
         }
+      },
+
+      gdpr: {
+        title: "GDPR Kennisgewing",
+        updatedDate: "06 Oktober 2025",
+        quickLinks: {
+          title: "Vinnige Skakels",
+          links: [
+            { id: "controller", text: "Data Beheerder" },
+            { id: "bases", text: "Regsbasisse" },
+            { id: "rights", text: "Jou Regte" },
+            { id: "retention", text: "Data Berging" },
+            { id: "transfers", text: "Data Oordrag" },
+            { id: "complaints", text: "Klachte" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "GDPR Nakoming:",
+            body: "Ons is daartoe verbind om jou persoonlike data te beskerm en jou privaatheidsregte te respekteer in ooreenstemming met die Algemene Databeskermingsregulasie."
+          },
+          controller: {
+            title: "Data Beheerder",
+            body: "TERRAfrique LDA (DEVOCEAN Lodge), geregistreer by Rua C, Parcela 12, Maputo 1118, Mosambiek, tree op as die databestuurder vir jou persoonlike inligting wat deur ons dienste versamel word."
+          },
+          bases: {
+            title: "Regsbasisse vir Verwerking",
+            body: "Ons verwerk jou persoonlike data op die volgende regsgronde in ooreenstemming met GDPR:",
+            legalBases: [
+              {
+                title: "Kontrak:",
+                body: "Verwerking wat nodig is om ons ooreenkomste vir besprekings en die lewering van dienste na te kom."
+              },
+              {
+                title: "Wettige Verpligting:",
+                body: "Verwerking wat nodig is om aan wettige vereistes te voldoen (byvoorbeeld belastingwetgewing)."
+              },
+              {
+                title: "Legitieme Belange:",
+                body: "Verwerking in ons wettige besigheidsbelange terwyl ons jou regte respekteer."
+              },
+              {
+                title: "Toestemming:",
+                body: "Verwerking gebaseer op jou uitdruklike toestemming vir spesifieke doeleindes."
+              }
+            ]
+          },
+          rights: {
+            title: "Jou GDPR Regte",
+            body: "As 'n datavak onder GDPR, het jy die volgende regte met betrekking tot jou persoonlike data:",
+            items: [
+              {
+                title: "Reg op Toegang",
+                body: "Jy kan kopieë versoek van jou persoonlike data wat ons hou."
+              },
+              {
+                title: "Reg op Regstelling",
+                body: "Jy kan versoek om onakkurate of onvolledige data reg te stel."
+              },
+              {
+                title: "Reg op Verwydering",
+                body: "Jy kan versoek om jou persoonlike data uit te vee onder sekere voorwaardes."
+              },
+              {
+                title: "Reg om Verwerking te Beperk",
+                body: "Jy kan versoek om die gebruik van jou data te beperk."
+              },
+              {
+                title: "Reg op Data Oordraagbaarheid",
+                body: "Jy kan versoek dat jou data na 'n ander organisasie oorgedra word."
+              },
+              {
+                title: "Reg om Beswaar te Maak",
+                body: "Jy kan beswaar maak teen sekere tipes verwerking van jou data."
+              }
+            ],
+            buttons: {
+              access: "Versoek Toegang tot Data",
+              erasure: "Versoek Verwydering van Data"
+            }
+          },
+          retention: {
+            title: "Data Berging",
+            periodsTitle: "Bergingsperiodes",
+            intro: "Ons bewaar jou persoonlike data slegs vir die tydperk wat nodig is om die doeleindes waarvoor dit versamel is te vervul, insluitend wettige, boekhoudkundige of rapporteringsvereistes.",
+            items: [
+              "<strong>Besprekingsdata:</strong> 7 jaar om aan belasting- en wettige vereistes te voldoen",
+              "<strong>Kliëntediens Kommunikasie:</strong> 3 jaar",
+              "<strong>Bemarking Toestemming:</strong> Totdat toestemming teruggetrek word",
+              "<strong>Webwerf Analise:</strong> 26 maande",
+              "<strong>Finansiële Transaksies:</strong> 10 jaar vir boekhoudkundige doeleindes"
+            ]
+          },
+          transfers: {
+            title: "Internasionale Data-oordragte",
+            body: "Wanneer ons jou data buite die Europese Ekonomiese Area (EEA) oordra, verseker ons dat gepaste beskermingsmaatreëls vir jou inligting in plek is. Dit kan die gebruik van standaard kontraktuele klousules insluit wat deur die Europese Kommissie goedgekeur is, of die oordrag van data na lande met voldoende besluite.",
+            notice: {
+              title: "Internasionale Data-oordragte:",
+              body: "Ons verseker dat gepaste beskermingsmaatreëls in plek is tydens internasionale data-oordragte, insluitend die gebruik van standaard kontraktuele klousules of die versekering van voldoende besluite."
+            }
+          },
+          complaints: {
+            title: "Klachte",
+            intro: "Indien jy bekommernisse het oor hoe ons jou persoonlike data hanteer, het jy die reg om 'n klag by die plaaslike databeskermingsowerheid in te dien.",
+            footer: "Ons beveel aan dat jy eers met ons kontak maak om enige kwessies te probeer oplos voordat jy die toesighoudende owerheid kontak."
+          },
+          dpo: {
+            title: "Kontak Ons Databeskermingsbeampte",
+            body: "Vir enige navrae rakende GDPR, of om jou regte uit te oefen, kontak asseblief ons databeskermingsbeampte by <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Ons sal op jou versoek reageer binne 30 dae, soos deur GDPR vereis."
+          }
+        }
       }
     }
   };
