@@ -120,15 +120,7 @@ export default function Footer({ units, experiences, ui }) {
             <li>
               <a 
                 href="#"
-                className="hover:text-white cursor-pointer" 
-                onClick={(e) => { 
-                  e.preventDefault(); 
-                  if (typeof window.revisitCkyConsent === 'function') {
-                    window.revisitCkyConsent();
-                  } else {
-                    console.warn('CookieYes not loaded yet');
-                  }
-                }}
+                className="cky-banner-element hover:text-white cursor-pointer"
               >
                 {ui?.legal?.ccpa ?? "Do Not Sell My Info"}
               </a>
