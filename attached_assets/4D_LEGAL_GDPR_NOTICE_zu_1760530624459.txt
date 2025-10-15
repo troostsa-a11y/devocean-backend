@@ -1,0 +1,114 @@
+================================================================================
+DEVOCEAN LODGE - GDPR NOTICE TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (gdpr section)
+LANGUAGE CODE: zu
+
+================================================================================
+HEADER
+================================================================================
+title = "Isaziso se-GDPR"
+updatedDate = "06 Okthoba 2025"
+
+quickLinks.title = "Izixhumanisi ezisheshayo"
+quickLinks[0] = "Umlawuli wedatha"
+quickLinks[1] = "Izisekelo zomthetho"
+quickLinks[2] = "Amalungelo akho"
+quickLinks[3] = "Ukugcinwa kwedatha"
+quickLinks[4] = "Ukudluliswa kwedatha"
+quickLinks[5] = "Izikhala"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Ukuhambisana ne-GDPR:"
+badge.body = "Sizibophezele ekuvikeleni idatha yakho yomuntu siqu futhi sihloniphe amalungelo akho obumfihlo ngokuhambisana ne-General Data Protection Regulation."
+
+================================================================================
+DATA CONTROLLER
+================================================================================
+controller.title = "Umlawuli wedatha"
+controller.body = "I-TERRAfrique LDA (DEVOCEAN Lodge), ebhaliswe ekhelini elithi Rua C, Parcela 12, Maputo 1118, eMozambique, isebenza njengomlawuli wedatha yolwazi lwakho lomuntu siqu oluqoqwe ngezinsizakalo zethu."
+
+================================================================================
+LEGAL BASES FOR PROCESSING
+================================================================================
+bases.title = "Izisekelo zomthetho zokucubungula"
+bases.body = "Sicubungula idatha yakho yomuntu siqu ngezisekelo zomthetho ezilandelayo ngokuhambisana ne-GDPR:"
+
+legalBases.contract.title = "Inkontileka:"
+legalBases.contract.body = "Ukucubungula okudingekayo ukuze kufezwe izivumelwano zethu zokubhuka kanye nokuhlinzeka ngezinsizakalo."
+
+legalBases.legal.title = "Isibopho somthetho:"
+legalBases.legal.body = "Ukucubungula okudingekayo ukuze kuhambisane nezidingo zomthetho (isibonelo, umthetho wentela)."
+
+legalBases.legitimate.title = "Izintshisekelo ezisemthethweni:"
+legalBases.legitimate.body = "Ukucubungula okusezintshisakelweni zethu zebhizinisi ezisemthethweni kuyilapho sihlonipha amalungelo akho."
+
+legalBases.consent.title = "Imvume:"
+legalBases.consent.body = "Ukucubungula okusekelwe emvumeni yakho ecacile ngezinhloso ezithile."
+
+================================================================================
+YOUR GDPR RIGHTS
+================================================================================
+rights.title = "Amalungelo akho nge-GDPR"
+rights.body = "Njengomuntu wedatha ngaphansi kwe-GDPR, unawo amalungelo alandelayo mayelana nedatha yakho yomuntu siqu:"
+
+rights.access.title = "Ilungelo lokufinyelela"
+rights.access.body = "Ungacela amakhophi edatha yakho yomuntu siqu esiyigcinayo."
+
+rights.rectification.title = "Ilungelo lokulungisa"
+rights.rectification.body = "Ungacela ukulungiswa kwedatha engalungile noma engaphelele."
+
+rights.erasure.title = "Ilungelo lokususa"
+rights.erasure.body = "Ungacela ukususwa kwedatha yakho yomuntu siqu ngaphansi kwezimo ezithile."
+
+rights.restrict.title = "Ilungelo lokunciphisa ukucubungula"
+rights.restrict.body = "Ungacela ukunciphisa ukusetshenziswa kwedatha yakho."
+
+rights.portability.title = "Ilungelo lokuphatheka kwedatha"
+rights.portability.body = "Ungacela ukudluliswa kwedatha yakho kwenye inhlangano."
+
+rights.object.title = "Ilungelo lokuphikisa"
+rights.object.body = "Ungaphikisa izinhlobo ezithile zokucubungula idatha yakho."
+
+buttons.access.text = "Cela ukufinyelela idatha"
+buttons.erasure.text = "Cela ukususwa kwedatha"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "Ukugcinwa kwedatha"
+retention.periodsTitle = "Izikhathi zokugcina"
+retention.intro = "Sigcina idatha yakho yomuntu siqu kuphela isikhathi esidingekayo ukufeza izinhloso eyaqoqwa ngazo, kuhlanganise nezidingo zomthetho, zokubalwa kwezimali, noma zokubika."
+retention.items[0] = "<strong>Idatha yokubhuka:</strong> Iminyaka engu-7 ukuze kuhambisane nezidingo zentela nezomthetho"
+retention.items[1] = "<strong>Ukuxhumana kwensizakalo yamakhasimende:</strong> Iminyaka emi-3"
+retention.items[2] = "<strong>Imvume yokumaketha:</strong> Kuze kube yilapho uhoxisa imvume"
+retention.items[3] = "<strong>Ukuhlaziywa kwewebhusayithi:</strong> Izinyanga ezingama-26"
+retention.items[4] = "<strong>Ukuthengiselana kwezezimali:</strong> Iminyaka eyi-10 ngezinhloso zokubalwa kwezimali"
+
+================================================================================
+INTERNATIONAL DATA TRANSFERS
+================================================================================
+transfers.title = "Ukudluliswa kwedatha kwamanye amazwe"
+transfers.body = "Uma sidlulisa idatha yakho ngaphandle kwe-European Economic Area (EEA), siqinisekisa ukuthi kunezinyathelo zokuvikela ezifanele zolwazi lwakho. Lokhu kungahlanganisa ukusetshenziswa kwezinkontileka ezijwayelekile ezivunywe yi-European Commission noma ukudlulisela idatha emazweni anezinqumo zokwanele."
+
+safeguards.international.title = "Ukudluliswa kwedatha kwamanye amazwe:"
+safeguards.international.body = "Siqinisekisa ukuthi kunezinyathelo zokuvikela ezifanele lapho sidlulisa idatha kwamanye amazwe, kuhlanganise ukusetshenziswa kwezinkontileka ezijwayelekile noma ukuqinisekisa izinqumo zokwanele."
+
+================================================================================
+COMPLAINTS
+================================================================================
+complaints.title = "Izikhala"
+complaints.intro = "Uma unokukhathazeka mayelana nendlela esiphetha ngayo idatha yakho yomuntu siqu, unelungelo lokufaka isikhalazo esigungwini sokuvikela idatha sendawo."
+complaints.footer = "Sincoma ukuthi uxhumane nathi kuqala ukuze uzame ukuxazulula noma yiziphi izinkinga ngaphambi kokuthinta isigungu esiphethe."
+
+================================================================================
+DATA PROTECTION OFFICER
+================================================================================
+dpo.title = "Xhumana nesikhulu sethu sokuvikela idatha"
+dpo.body = "Nganoma yimiphi imibuzo ehlobene ne-GDPR, noma ukuze usebenzise amalungelo akho, sicela uxhumane nesikhulu sethu sokuvikela idatha ngekheli le-imeyili elithi <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Sizophendula esicelweni sakho phakathi kwezinsuku ezingama-30, njengoba kudingwa yi-GDPR."
+
+================================================================================
+END OF GDPR NOTICE
+================================================================================

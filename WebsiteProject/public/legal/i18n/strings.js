@@ -7193,6 +7193,119 @@
             body: "Uma unemibuzo mayelana nale migomo, sicela uxhumane nathi ku-<a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
           }
         }
+      },
+
+      gdpr: {
+        title: "Isaziso se-GDPR",
+        updatedDate: "06 Okthoba 2025",
+        quickLinks: {
+          title: "Izixhumanisi ezisheshayo",
+          links: [
+            { id: "controller", text: "Umlawuli wedatha" },
+            { id: "bases", text: "Izisekelo zomthetho" },
+            { id: "rights", text: "Amalungelo akho" },
+            { id: "retention", text: "Ukugcinwa kwedatha" },
+            { id: "transfers", text: "Ukudluliswa kwedatha" },
+            { id: "complaints", text: "Izikhala" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Ukuhambisana ne-GDPR:",
+            body: "Sizibophezele ekuvikeleni idatha yakho yomuntu siqu futhi sihloniphe amalungelo akho obumfihlo ngokuhambisana ne-General Data Protection Regulation."
+          },
+          controller: {
+            title: "Umlawuli wedatha",
+            body: "I-TERRAfrique LDA (DEVOCEAN Lodge), ebhaliswe ekhelini elithi Rua C, Parcela 12, Maputo 1118, eMozambique, isebenza njengomlawuli wedatha yolwazi lwakho lomuntu siqu oluqoqwe ngezinsizakalo zethu."
+          },
+          bases: {
+            title: "Izisekelo zomthetho zokucubungula",
+            body: "Sicubungula idatha yakho yomuntu siqu ngezisekelo zomthetho ezilandelayo ngokuhambisana ne-GDPR:",
+            legalBases: {
+              contract: {
+                title: "Inkontileka:",
+                body: "Ukucubungula okudingekayo ukuze kufezwe izivumelwano zethu zokubhuka kanye nokuhlinzeka ngezinsizakalo."
+              },
+              legal: {
+                title: "Isibopho somthetho:",
+                body: "Ukucubungula okudingekayo ukuze kuhambisane nezidingo zomthetho (isibonelo, umthetho wentela)."
+              },
+              legitimate: {
+                title: "Izintshisekelo ezisemthethweni:",
+                body: "Ukucubungula okusezintshisakelweni zethu zebhizinisi ezisemthethweni kuyilapho sihlonipha amalungelo akho."
+              },
+              consent: {
+                title: "Imvume:",
+                body: "Ukucubungula okusekelwe emvumeni yakho ecacile ngezinhloso ezithile."
+              }
+            }
+          },
+          rights: {
+            title: "Amalungelo akho nge-GDPR",
+            body: "Njengomuntu wedatha ngaphansi kwe-GDPR, unawo amalungelo alandelayo mayelana nedatha yakho yomuntu siqu:",
+            list: {
+              access: {
+                title: "Ilungelo lokufinyelela",
+                body: "Ungacela amakhophi edatha yakho yomuntu siqu esiyigcinayo."
+              },
+              rectification: {
+                title: "Ilungelo lokulungisa",
+                body: "Ungacela ukulungiswa kwedatha engalungile noma engaphelele."
+              },
+              erasure: {
+                title: "Ilungelo lokususa",
+                body: "Ungacela ukususwa kwedatha yakho yomuntu siqu ngaphansi kwezimo ezithile."
+              },
+              restrict: {
+                title: "Ilungelo lokunciphisa ukucubungula",
+                body: "Ungacela ukunciphisa ukusetshenziswa kwedatha yakho."
+              },
+              portability: {
+                title: "Ilungelo lokuphatheka kwedatha",
+                body: "Ungacela ukudluliswa kwedatha yakho kwenye inhlangano."
+              },
+              object: {
+                title: "Ilungelo lokuphikisa",
+                body: "Ungaphikisa izinhlobo ezithile zokucubungula idatha yakho."
+              }
+            },
+            buttons: {
+              access: { text: "Cela ukufinyelela idatha" },
+              erasure: { text: "Cela ukususwa kwedatha" }
+            }
+          },
+          retention: {
+            title: "Ukugcinwa kwedatha",
+            periodsTitle: "Izikhathi zokugcina",
+            intro: "Sigcina idatha yakho yomuntu siqu kuphela isikhathi esidingekayo ukufeza izinhloso eyaqoqwa ngazo, kuhlanganise nezidingo zomthetho, zokubalwa kwezimali, noma zokubika.",
+            items: [
+              "<strong>Idatha yokubhuka:</strong> Iminyaka engu-7 ukuze kuhambisane nezidingo zentela nezomthetho",
+              "<strong>Ukuxhumana kwensizakalo yamakhasimende:</strong> Iminyaka emi-3",
+              "<strong>Imvume yokumaketha:</strong> Kuze kube yilapho uhoxisa imvume",
+              "<strong>Ukuhlaziywa kwewebhusayithi:</strong> Izinyanga ezingama-26",
+              "<strong>Ukuthengiselana kwezezimali:</strong> Iminyaka eyi-10 ngezinhloso zokubalwa kwezimali"
+            ]
+          },
+          transfers: {
+            title: "Ukudluliswa kwedatha kwamanye amazwe",
+            body: "Uma sidlulisa idatha yakho ngaphandle kwe-European Economic Area (EEA), siqinisekisa ukuthi kunezinyathelo zokuvikela ezifanele zolwazi lwakho. Lokhu kungahlanganisa ukusetshenziswa kwezinkontileka ezijwayelekile ezivunywe yi-European Commission noma ukudlulisela idatha emazweni anezinqumo zokwanele.",
+            safeguards: {
+              international: {
+                title: "Ukudluliswa kwedatha kwamanye amazwe:",
+                body: "Siqinisekisa ukuthi kunezinyathelo zokuvikela ezifanele lapho sidlulisa idatha kwamanye amazwe, kuhlanganise ukusetshenziswa kwezinkontileka ezijwayelekile noma ukuqinisekisa izinqumo zokwanele."
+              }
+            }
+          },
+          complaints: {
+            title: "Izikhala",
+            intro: "Uma unokukhathazeka mayelana nendlela esiphetha ngayo idatha yakho yomuntu siqu, unelungelo lokufaka isikhalazo esigungwini sokuvikela idatha sendawo.",
+            footer: "Sincoma ukuthi uxhumane nathi kuqala ukuze uzame ukuxazulula noma yiziphi izinkinga ngaphambi kokuthinta isigungu esiphethe."
+          },
+          dpo: {
+            title: "Xhumana nesikhulu sethu sokuvikela idatha",
+            body: "Nganoma yimiphi imibuzo ehlobene ne-GDPR, noma ukuze usebenzise amalungelo akho, sicela uxhumane nesikhulu sethu sokuvikela idatha ngekheli le-imeyili elithi <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>. Sizophendula esicelweni sakho phakathi kwezinsuku ezingama-30, njengoba kudingwa yi-GDPR."
+          }
+        }
       }
     }
   };
