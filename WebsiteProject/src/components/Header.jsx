@@ -11,7 +11,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
   // Define regions with metadata
   const regions = {
     europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
-    asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh', 'ru'], currencies: ['USD', 'JPY', 'CNY', 'EUR', 'GBP'] },
+    asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja', 'zh', 'ru'], currencies: ['USD', 'JPY', 'CNY', 'RUB', 'EUR', 'GBP'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
     africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
     oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
@@ -41,9 +41,34 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     else if (lang === 'zh' && newRegion === 'asia' && currency !== 'CNY') {
       onCurrencyChange('CNY');
     }
+    // Special case: Russian + Asia region → auto-switch to RUB
+    else if (lang === 'ru' && newRegion === 'asia' && currency !== 'RUB') {
+      onCurrencyChange('RUB');
+    }
     // If current currency is not available in the new region, switch to USD
     else if (!regions[newRegion].currencies.includes(currency)) {
       onCurrencyChange('USD');
+    }
+  };
+
+  const handleLangChange = (newLang) => {
+    onLangChange(newLang);
+    
+    // Auto-switch to language-specific currencies when available in current region
+    if (newLang === 'ja' && region === 'asia' && regions[region].currencies.includes('JPY') && currency !== 'JPY') {
+      onCurrencyChange('JPY');
+    }
+    else if (newLang === 'zh' && region === 'asia' && regions[region].currencies.includes('CNY') && currency !== 'CNY') {
+      onCurrencyChange('CNY');
+    }
+    else if (newLang === 'ru' && region === 'asia' && regions[region].currencies.includes('RUB') && currency !== 'RUB') {
+      onCurrencyChange('RUB');
+    }
+    else if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
+      onCurrencyChange('MZN');
+    }
+    else if (newLang === 'pt' && region === 'europe' && regions[region].currencies.includes('EUR') && currency !== 'EUR') {
+      onCurrencyChange('EUR');
     }
   };
 
@@ -153,7 +178,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
 
             <select
               value={lang}
-              onChange={(e) => onLangChange(e.target.value)}
+              onChange={(e) => handleLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[95px] text-white"
             >
               {regions[region].languages.includes('en') && <option value="en">English</option>}
@@ -178,6 +203,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               {regions[region].currencies.includes('USD') && <option value="USD">US-Dollar</option>}
               {regions[region].currencies.includes('JPY') && <option value="JPY">Yen</option>}
               {regions[region].currencies.includes('CNY') && <option value="CNY">Yuan</option>}
+              {regions[region].currencies.includes('RUB') && <option value="RUB">Ruble</option>}
               {regions[region].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
               {regions[region].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
               {regions[region].currencies.includes('EUR') && <option value="EUR">Euro</option>}
