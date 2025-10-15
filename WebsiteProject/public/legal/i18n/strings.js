@@ -4843,6 +4843,98 @@
           body: '慣行、技術、法的要件、その他の要因の変更を反映するため、プライバシーポリシーを随時更新する可能性があります。登録ユーザーのメール通知、ウェブサイトの目立つお知らせ、更新された「最終更新日」を通じて、重要な変更をお知らせします。情報の保護方法について最新情報を得るため、定期的にこのポリシーを確認することをお勧めします。'
         }
       }
+    },
+
+    cookies: {
+      title: 'Cookieポリシー',
+      effectiveDate: '2025年9月19日',
+      lastUpdated: '2025年10月6日',
+      managePreferences: 'Cookie設定を管理:',
+      manageText: 'Cookieバナーまたはブラウザ設定を通じて、使用するCookieを制御できます。',
+      cookieSettingsBtn: 'Cookie設定',
+      quickLinks: {
+        title: 'クイックリンク',
+        links: [
+          { id: 'what', text: 'Cookieとは' },
+          { id: 'how', text: 'Cookieの使用方法' },
+          { id: 'necessary', text: '必須' },
+          { id: 'functional', text: '機能' },
+          { id: 'analytics', text: '分析' },
+          { id: 'advertisement', text: '広告' },
+          { id: 'manage', text: '設定管理' }
+        ]
+      },
+      sections: {
+        badge: {
+          title: 'Cookieについて',
+          body: 'Cookieバナーまたはブラウザ設定を通じて、使用するCookieを制御できます。'
+        },
+        what: {
+          title: 'Cookieとは何ですか？',
+          body: 'このCookieポリシーは、Cookieとは何か、私たちがどのように使用するか、使用するCookieの種類（Cookieを使用して収集する情報およびその使用方法）、Cookie設定の管理方法を説明します。<br><br>Cookieは、小さなテキストファイルで、小さな情報を保存するために使用されます。ウェブサイトがブラウザにロードされるとデバイスに保存されます。これらのCookieは、ウェブサイトの機能を適切に働かせ、より安全にし、ユーザー体験を向上させ、何がうまくいって何がうまくいかないかを理解し、改善すべき点を知るのに役立ちます。'
+        },
+        how: {
+          title: 'Cookieをどのように使用しますか？',
+          body: 'ほとんどのオンラインサービスと同様に、当社のウェブサイトはさまざまな目的でファーストパーティおよびサードパーティCookieを使用します。ファーストパーティCookieは主にウェブサイトの適切な機能に必要で、個人を特定できるデータを収集しません。<br><br>当社のウェブサイトで使用されるサードパーティCookieは、主にウェブサイトのパフォーマンスの理解、ウェブサイトとのインタラクション、サービスのセキュリティ維持、お客様に関連する広告の提供、そして全体的により良いユーザー体験の提供に使用され、ウェブサイトとの将来のインタラクションを迅速化するのに役立ちます。'
+        },
+        necessary: {
+          title: '必須Cookie',
+          description: '必須Cookieはこのサイトの基本機能（セキュアなログインや同意設定の調整など）を有効にするために必要です。これらのCookieは個人を特定できるデータを保存しません。',
+          tableHeaders: { cookie: 'Cookie', duration: '期間', description: '説明' },
+          cookies: [
+            { name: 'preferredCurrency', duration: '1 year', desc: 'このCookieは、使用者の通貨設定を保存するために使用されます。' },
+            { name: 'cookieyes-consent', duration: '1 year', desc: '説明は現在利用できません。' },
+            { name: 'cky-action', duration: 'Session', desc: '説明は現在利用できません。' },
+            { name: 'cookieyes-necessary', duration: '1 year', desc: '説明が利用できません。' },
+            { name: 'cookieyes-functional', duration: '1 year', desc: '説明は現在利用できません。' },
+            { name: 'cookieyes-analytics', duration: '1 year', desc: '説明は現在利用できません。' }
+          ]
+        },
+        functional: {
+          title: '機能Cookie',
+          description: '機能Cookieは、ソーシャルメディアでのコンテンツ共有、フィードバック収集、その他のサードパーティ機能などの特定の機能を実行するのを支援します。',
+          tableHeaders: { cookie: 'Cookie', duration: '期間', description: '説明' },
+          cookies: [
+            { name: '_fbp', duration: '3 months', desc: 'FacebookはこのCookieを設定して、ウェブサイト上のユーザーの閲覧体験を向上させ、Facebookのソーシャルメディアプラットフォームを使用する際に関連広告を提供します。' }
+          ]
+        },
+        analytics: {
+          title: '分析Cookie',
+          description: '分析Cookieは、訪問者がウェブサイトとどのようにインタラクトするかを理解するために使用されます。これらのCookieは、訪問者数、リバウンド率、トラフィックソースなどのメトリクスに関する情報を提供します。',
+          tableHeaders: { cookie: 'Cookie', duration: '期間', description: '説明' },
+          cookies: [
+            { name: '_ga', duration: '1 year 1 month 4 days', desc: 'Google AnalyticsはこのCookieを設定して、訪問者、セッション、キャンペーンデータを計算し、サイト使用を追跡してサイトの分析レポートを作成します。Cookieは匿名で情報を保存し、ユニークな訪問者を認識するためにランダムに生成された番号を割り当てます。' },
+            { name: '_gat', duration: '1 minute', desc: 'Google AnalyticsはこのCookieを設定して、ページビューを保存およびカウントします。' },
+            { name: '_gid', duration: '1 day', desc: 'Google AnalyticsはこのCookieを設定して、訪問者がウェブサイトをどのように使用するかの情報を保存し、ウェブサイトのパフォーマンス分析レポートを作成します。収集されたデータの一部には、訪問者数、ソース、匿名で訪問したページが含まれます。' },
+            { name: '_ga_*', duration: '1 year 1 month 4 days', desc: 'Google AnalyticsはこのCookieをユーザー行動追跡のために設定します。' },
+            { name: 'pardot', duration: 'Session', desc: '訪問者がPardotユーザーとしてログインしている間、pardot Cookieが設定されます。このCookieはアクティブセッションを示し、追跡には使用されません。' }
+          ]
+        },
+        advertisement: {
+          title: '広告Cookie',
+          description: '広告Cookieは、以前に訪問したページに基づくカスタマイズされた広告を提供し、広告キャンペーンの効果を分析するために使用されます。',
+          tableHeaders: { cookie: 'Cookie', duration: '期間', description: '説明' },
+          cookies: [
+            { name: '_gcl_au', duration: '3 months', desc: 'Google Tag ManagerはこのCookieを設定して、サービスを使用するウェブサイトの広告効率をテストします。' },
+            { name: 'test_cookie', duration: '15 minutes', desc: 'doubleclick.netはこのCookieを設定して、使用者のブラウザがCookieをサポートするかを判断します。' },
+            { name: 'fr', duration: '3 months', desc: 'FacebookはこのCookieを設定して、インタラクションを保存および追跡します。' },
+            { name: 'IDE', duration: '1 year 24 days', desc: 'Google DoubleClick IDE Cookieは、使用者がウェブサイトをどのように使用するかの情報を保存し、ユーザー プロファイルに基づく関連広告を提示します。' }
+          ]
+        },
+        manage: {
+          title: 'Cookie設定を管理',
+          consentTitle: '同意設定',
+          consentText: '上記の「同意設定」ボタンをクリックして、いつでもCookie設定を変更できます。これにより、Cookie同意バナーを再表示し、設定を更新または同意を即時撤回できます。',
+          browserText: 'さらに、さまざまなブラウザはウェブサイトで使用されるCookieのブロックおよび削除のためのさまざまな方法を提供します。ブラウザ設定を調整してCookieをブロックまたは削除できます。主なウェブブラウザでのCookieの管理および削除方法のサポートドキュメントへのリンクを以下に示します。',
+          browsers: {
+            chrome: 'Chrome',
+            safari: 'Safari',
+            firefox: 'Firefox',
+            ie: 'Internet Explorer',
+            other: '別のウェブブラウザを使用している場合、公式サポートドキュメントを参照してください。'
+          }
+        }
+      }
     }
   };
   
