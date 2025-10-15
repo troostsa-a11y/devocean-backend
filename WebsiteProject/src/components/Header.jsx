@@ -222,7 +222,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
             <select
               value={lang}
               onChange={(e) => handleLangChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[95px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
             >
               {regions[region].languages.includes('en') && <option value="en">English</option>}
               {regions[region].languages.includes('pt') && <option value="pt">Português</option>}
@@ -244,7 +244,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
             <select
               value={currency}
               onChange={(e) => onCurrencyChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[80px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[82px] text-white"
             >
               {regions[region].currencies.includes('USD') && <option value="USD">{ui.currencies?.USD || 'US-Dollar'}</option>}
               {regions[region].currencies.includes('JPY') && <option value="JPY">{ui.currencies?.JPY || 'Yen'}</option>}
