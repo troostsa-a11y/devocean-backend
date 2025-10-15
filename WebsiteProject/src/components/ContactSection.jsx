@@ -273,7 +273,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                       if (inRef.current?.showPicker) inRef.current.showPicker();
                       else inRef.current?.focus();
                     }}
-                    placeholder="dd/mm/yyyy"
+                    placeholder={ui.form.phDate || "dd/mm/yyyy"}
                     className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
                   />
                   <input
@@ -300,7 +300,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                       if (outRef.current?.showPicker) outRef.current.showPicker();
                       else outRef.current?.focus();
                     }}
-                    placeholder="dd/mm/yyyy"
+                    placeholder={ui.form.phDate || "dd/mm/yyyy"}
                     className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
                   />
                   <input
