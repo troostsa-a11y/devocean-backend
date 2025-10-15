@@ -5727,10 +5727,12 @@
           ]
         }
       }
-    },
+    }
+  };
 
-    ru: {
-      privacy: {
+  // -------- RUSSIAN --------
+  window.LEGAL_DICT.ru = {
+    privacy: {
         title: 'Политика конфиденциальности',
         updatedDate: '06 октября 2025',
         quickLinks: {
@@ -6277,11 +6279,12 @@
           }
         }
       }
-    },
+    }
+  };
 
-    // -------- AFRIKAANS --------
-    af: {
-      privacy: {
+  // -------- AFRIKAANS --------
+  window.LEGAL_DICT.af = {
+    privacy: {
         title: "Privaatheidsbeleid",
         updatedDate: "06 Oktober 2025",
         quickLinks: {
@@ -6816,11 +6819,12 @@
           }
         }
       }
-    },
+    }
+  };
 
-    // -------- ZULU --------
-    zu: {
-      privacy: {
+  // -------- ZULU --------
+  window.LEGAL_DICT.zu = {
+    privacy: {
         title: "Inqubomgomo yobumfihlo",
         updatedDate: "06 Okthoba 2025",
         quickLinks: {
@@ -7358,10 +7362,12 @@
           emergencyPhoneNote: "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza"
         }
       }
-    },
+    }
+  };
 
-    sw: {
-      privacy: {
+  // -------- SWAHILI --------
+  window.LEGAL_DICT.sw = {
+    privacy: {
         title: "Sera ya Faragha",
         updatedDate: "06 Oktoba 2025",
         quickLinks: {
