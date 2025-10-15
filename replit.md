@@ -1,7 +1,6 @@
 # DEVOCEAN Lodge Website
 
 ## Overview
-
 DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 16 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
 
 ## User Preferences
@@ -33,132 +32,47 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 ## System Architecture
 
 ### Frontend Architecture
-
-**Framework & Build System:**
-- React 18 with TypeScript
-- Vite as the build tool
-- Wouter for client-side routing
-
-**UI Component Library & Styling:**
-- shadcn/ui components with Tailwind CSS (New York variant)
-- Radix UI primitives for accessibility
-- Custom color palette: Ocean Blue, Warm Sand, Deep Teal, Sunset Orange
-- Responsive design with mobile-first breakpoints
-
-**State Management & Data Fetching:**
-- TanStack Query (React Query) for server state management
-- Local component state with React hooks
-
-**Internationalization:**
-- React-based i18n with lazy-loaded translations across 16 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Swahili, Japanese, Mandarin Chinese, Russian).
-- Vanilla JavaScript i18n for static legal pages.
-- Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY, CNY, RUB with browser-based inference.
-- Region-based language and currency selector with dynamic filtering based on continents.
-- **Russian Language Support (Oct 15):** Complete Russian (ru) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with `locale=ru&currency=RUB` parameters. Auto-switches to RUB when Russian language selected in Asia region (manual override available). Russia (RU) mapped to Asia region.
-- **Mandarin Chinese Language Support (Oct 15):** Complete Mandarin Chinese (zh) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with zh-CN locale and CNY currency. Auto-switches to CNY when Chinese language selected in Asia region (manual override available).
-- **Japanese Language Support (Oct 15):** Complete Japanese (ja) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with ja-JP locale and JPY currency. Auto-switches to JPY when Japanese language selected in Asia region (manual override available).
-- **Afrikaans Language Support (Oct 15):** Complete Afrikaans (af) translations added for Africa region including main UI, critical nav, experiences, and units. Hotelrunner booking integration configured with af-ZA locale. Auto-switches to ZAR when Afrikaans language selected in Africa region (manual override available).
-- **Zulu Language Support (Oct 15):** Complete Zulu (zu) translations added including main UI, critical nav, legal UI labels, ALL 5 legal pages (Privacy Policy, Cookie Policy, Terms & Conditions, GDPR Notice, CRIC), and full L10N (4 accommodation units + 7 experiences). Since Hotelrunner doesn't support Zulu, forwards to en-GB locale with ZAR currency. Auto-switches to ZAR when Zulu language selected in Africa region (manual override available). **100% translation coverage achieved.**
-- **Swahili Language Support (Oct 15):** Complete Swahili (sw) translations added including main UI, critical nav, legal UI labels, ALL 5 legal pages (Privacy Policy, Cookie Policy, Terms & Conditions, GDPR Notice, CRIC), and full L10N (4 accommodation units + 7 experiences). Swahili added to Africa region with automatic TZS (Tanzanian Shilling) currency switching. Language selector displays "Kiswahili". Hotelrunner booking configured with **sw** locale. Additional currencies TZS and KES added to Africa region for Tanzania/Kenya visitors. Menu spacing optimized (gap-3 text-sm) for longer Swahili translations. **100% translation coverage achieved.**
-- **Legal Translations Structural Fix (Oct 15):** Fixed critical structural issue where 4 newest language legal dictionaries (Russian, Afrikaans, Zulu, Swahili) were incorrectly nested inside Chinese dictionary instead of being top-level window.LEGAL_DICT entries. Corrected all syntax errors (duplicate closing braces). Shortened Back button text: Zulu "Emuva", Swahili "Nyuma". All 16 languages now have proper legal page support with identical functionality.
-- **Southern African Country-Specific Currencies (Oct 15):** Intelligent Hotelrunner booking integration now uses country-specific currency codes for Southern African countries based on IP geolocation. Lesotho→LSL, Botswana→BWP, Namibia→NAD, eSwatini→SZL, Zambia→ZMW, Malawi→MWK, Zimbabwe→USD (special case), Tanzania→TZS, Kenya→KES. All countries default to English with menu override option. Users can still manually select different currencies.
-- **Currency Auto-Switching (Oct 15):** Intelligent currency pairing with language selection - Japanese→JPY, Chinese→CNY, Russian→RUB, Afrikaans→ZAR automatically when in respective regions. Users retain full manual override capability.
-- **IP-Based Geolocation (Oct 14):** Cloudflare automatically injects visitor country code via middleware for accurate region detection. Browser language detection serves as fallback for local development. Eliminates French-in-Asia and eSwatini mapping issues.
-- **Currency Detection Fix (Oct 12):** Fixed useState initialization bug where `lang` variable was undefined during currency/region detection. Now properly calls `pickInitialLang()` to ensure correct language context during initialization.
-- **Continent Mapping Fixes (Oct 14):** 
-  - Added Bosnia-Herzegovina (BA) → Europe and Japan (JP) → Asia
-  - Added missing African countries: eSwatini (SZ), Reunion (RE), Mauritius (MU), Seychelles (SC), Lesotho (LS)
-  - Fixed timezone overlap causing grey screens: Africa (UTC+0 to +4), Europe (UTC-1 to +2), Asia (UTC+3 to +12) now have distinct non-overlapping ranges
-  - Resolves Mozambique and Vietnam grey screen issues in Microsoft Clarity
-- **Cloudflare IP Geolocation (Oct 14-15):**
-  - Middleware injects country code from request.cf.country into HTML as window.__CF_COUNTRY__
-  - Frontend uses IP-based country detection exclusively (no browser fallbacks)
-  - If Cloudflare fails, defaults to Europe region (extremely rare scenario)
-  - Comprehensive country mapping: 80+ countries across all continents
-  - Cache versioning (v2) invalidates old browser-based cached regions
-  - Fixes French-in-Asia, eSwatini, UAE, Bosnia Herzegovina, and other mapping issues
-  - Production benefits: Free, instant, accurate, no external API needed
-  - **Critical Fix (Oct 15):** Build script now copies functions/ directory to dist/ so middleware deploys properly
-  - **Hotelrunner Locale Fix (Oct 15):** isiZulu changed from en-ZA to en-GB locale (Hotelrunner doesn't support Zulu)
-  - **Currency Flash Fix (Oct 15):** Added English currency fallbacks to critical UI to prevent dropdown text switching during load
-  - **Simplified Detection (Oct 15):** Removed browser locale fallback - relies 100% on Cloudflare IP, defaults to Europe if unavailable
-  - **Auto-Currency Assignment (Oct 15):** Removed manual currency selection. Currency now auto-assigned based on visitor's country legal tender via comprehensive CC_TO_CURRENCY mapping (80+ countries). Hotelrunner integration automatically uses detected currency. Region selector shows full continent names (Africa, Europe, Asia, Americas, Oceania) in dropdown matching language selector width. Fallback currency is USD (Hotelrunner base) if country detection fails.
-  - **US English Support (Oct 15):** Added English (US) language option separate from English (UK). US visitors automatically get en-US locale with USD currency. Both use same translations but different Hotelrunner locales (en-US vs en-GB). Americas region shows both English options.
-- Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
-
-**Performance Optimizations:**
-- **Critical Translations Pattern (Oct 14):** Mobile menu renders instantly with synchronous 2KB navigation translations inlined in main bundle. Full 17.6KB translation bundle loads progressively in background. Eliminates "nothing happens" delays on slow 2G/3G connections (common in Africa/Mozambique).
-  - Header uses critical nav immediately on load
-  - UI clears during language switch to force instant critical nav update
-  - Page content waits for full translations to prevent placeholder text/undefined errors
-  - Adds +1.8KB to main bundle but provides instant interactivity
-- Dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting.
-- Framer Motion using LazyMotion for bundle size reduction.
-- GTM with a 4-second delayed load and user engagement detection.
+- **Framework & Build System:** React 18 with TypeScript, Vite, Wouter for routing.
+- **UI & Styling:** shadcn/ui components, Tailwind CSS (New York variant), Radix UI primitives, custom color palette (Ocean Blue, Warm Sand, Deep Teal, Sunset Orange), responsive mobile-first design.
+- **State Management:** TanStack Query for server state, React hooks for local state.
+- **Internationalization:**
+    - React-based i18n with lazy-loaded translations for 16 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Swahili, Japanese, Mandarin Chinese, Russian).
+    - Vanilla JavaScript i18n for static legal pages.
+    - Currency support for USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY, CNY, RUB, TZS, KES with browser-based inference and region-based selection.
+    - Full translation coverage for all legal pages and content across all 16 languages.
+    - Intelligent currency pairing with language selection (e.g., Japanese→JPY, Chinese→CNY, Russian→RUB, Afrikaans→ZAR) with manual override.
+    - Cloudflare IP Geolocation for accurate region and country detection (`window.__CF_COUNTRY__`), with a fallback to Europe. Comprehensive country mapping for 80+ countries.
+    - Auto-currency assignment based on visitor's country legal tender via `CC_TO_CURRENCY` mapping.
+    - US English support (`en-US`) with USD currency, distinct from UK English.
+    - CCPA compliance with "Do Not Sell My Info" footer link and CookieYes integration for US visitors.
+- **Performance Optimizations:** Critical Translations Pattern for instant mobile menu rendering, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion using LazyMotion, GTM with delayed load.
 
 ### Backend Architecture
-
-**Server Framework:**
-- Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation).
-
-**Storage Layer:**
-- In-memory storage implementation (MemStorage class) for flexibility, designed for future database integration.
-
-**Database Schema:**
-- Drizzle ORM configured for PostgreSQL with Zod schemas for input validation.
+- **Server Framework:** Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation).
+- **Storage Layer:** In-memory storage (`MemStorage`) designed for future database integration.
+- **Database Schema:** Drizzle ORM configured for PostgreSQL with Zod schemas for input validation.
 
 ### Project Structure
-
-**Dual Project Setup:**
-- `/WebsiteProject/`: Optimized React/Vite marketing website.
-- `/client/` and `/server/`: Placeholder for a full-stack application template.
-
-**Design System:**
-- **Typography:** Inter font family.
-- **Component Patterns:** Card-based layouts, image-first design, expandable detail sections.
-- **Interaction Design:** Hover states, focus-visible outlines, smooth scroll, sticky header.
+- **Dual Project Setup:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template placeholder).
+- **Design System:** Inter font family, card-based layouts, image-first design, expandable detail sections, hover states, focus-visible outlines, smooth scroll, sticky header.
 
 ## External Dependencies
 
 ### Third-Party Services
-
-**Analytics & Consent Management:**
-- Google Tag Manager (GTM-532W3HH2) with Consent Mode v2 for analytics and cookie consent.
-- CookieYes for GDPR-compliant cookie consent, managed via GTM.
-- **Microsoft Clarity Integration (Oct 13):** Custom "User Engaged" trigger (4s delay, fires once) with `analytics_storage` consent requirement. Official "All Pages" tag paused to prevent conflicts and blank recordings for EU users who haven't consented.
-
-**Booking Integration:**
-- External booking engine at book.devoceanlodge.com with parameterized URLs for locale and currency.
-- Region-aware Portuguese booking URLs for tailored user experience.
-- Legal pages support smart back navigation from Hotelrunner via query parameters (e.g., `?return=https://book.devoceanlodge.com/bv3/payment`).
-  - Cache-busting versioning for JavaScript (currently v=50) and CSS (currently v=43) to ensure fresh updates.
-  - sessionStorage-based referrer tracking for reliable cross-site navigation.
-
-**Maps & Location:**
-- Google Maps embed for property location, utilizing a lazy-loaded interactive map with a static preview.
-
-**Security:**
-- Google reCAPTCHA v3 for invisible verification on contact forms with server-side validation.
-
-**Email Service:**
-- Secure email integration with auto-reply for contact form submissions.
-
-**SEO & Search Indexing:**
-- IndexNow protocol implementation for instant search engine indexing.
-- Cloudflare Pages Functions for serving IndexNow key file.
-- SEO optimizations including meta descriptions, titles, and comprehensive Open Graph tags.
-- **Legal Pages SEO (Oct 12):** Enhanced all legal page meta tags with unique 200+ character descriptions, keyword-rich titles, and location-specific content (Ponta do Ouro, Mozambique) to resolve Microsoft Clarity/Bing Webmaster SEO warnings about short/duplicate meta descriptions.
-- **Robots.txt (Oct 14):** Fully managed by Cloudflare's built-in robots.txt feature. Custom Pages Function removed to avoid duplication. Cloudflare handles AI bot blocking and content signal directives.
+- **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes for GDPR/CCPA-compliant cookie consent, Microsoft Clarity for session recording with consent management.
+- **Booking Integration:** External booking engine at `book.devoceanlodge.com` with parameterized URLs for locale and currency, region-aware Portuguese URLs, and smart back navigation from Hotelrunner.
+- **Maps & Location:** Google Maps embed for property location (lazy-loaded interactive map with static preview).
+- **Security:** Google reCAPTCHA v3 for invisible verification on contact forms with server-side validation.
+- **Email Service:** Secure email integration with auto-reply for contact form submissions.
+- **SEO & Search Indexing:** IndexNow protocol for instant search engine indexing via Cloudflare Pages Functions, comprehensive SEO meta tags, titles, Open Graph tags. Cloudflare's built-in `robots.txt` management.
 
 ### NPM Packages
-
-**Core Framework:** `react`, `react-dom`, `express`, `drizzle-orm`, `drizzle-zod`, `pg`.
-**UI & Styling:** `tailwindcss`, `@radix-ui/*`, `framer-motion`, `lucide-react`.
-**Developer Tools:** `vite`, `@vitejs/plugin-react`, `@replit/vite-plugin-*`, `typescript`, `wrangler`.
-**Data Management:** `@tanstack/react-query`, `zod`, `nanoid`.
-**Routing & Forms:** `wouter`, `react-hook-form`.
+- **Core:** `react`, `react-dom`, `express`, `drizzle-orm`, `drizzle-zod`, `pg`.
+- **UI & Styling:** `tailwindcss`, `@radix-ui/*`, `framer-motion`, `lucide-react`.
+- **Developer Tools:** `vite`, `@vitejs/plugin-react`, `@replit/vite-plugin-*`, `typescript`, `wrangler`.
+- **Data Management:** `@tanstack/react-query`, `zod`, `nanoid`.
+- **Routing & Forms:** `wouter`, `react-hook-form`.
 
 ### Asset Management
-
-- **Static Assets:** Stock images, photo gallery, logo, and branding assets.
+- **Static Assets:** Stock images, photo gallery, logo, branding assets.
 - **Legal Documents:** Static HTML pages for compliance (privacy, cookies, terms, GDPR, CRIC).
