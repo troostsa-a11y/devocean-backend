@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
-const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af"];
+const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af", "zu"];
 const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN", "JPY", "CNY", "RUB"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
@@ -82,7 +82,7 @@ const LANG_TO_CURRENCY_HINT = {
 // Booking engine locale mapping (base, can be overridden by region)
 export const LOCALE_BY_LANG = {
   en: "en-GB", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB",
 };
 
 // Region-specific locale overrides for Portuguese
@@ -96,7 +96,7 @@ export const getBookingLocaleForRegion = (lang, region) => {
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
   en: "en-GB", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU", af: "af-ZA",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU", af: "af-ZA", zu: "en-GB",
 };
 
 function normLang(raw) {

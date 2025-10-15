@@ -1,0 +1,130 @@
+================================================================================
+DEVOCEAN LODGE - MAIN UI TRANSLATIONS BATCH FILE
+================================================================================
+Instructions: Translate all text in quotes. Keep structure markers unchanged.
+File: WebsiteProject/src/i18n/translations.js
+
+LANGUAGE CODE: zu
+
+================================================================================
+NAVIGATION
+================================================================================
+nav.home = "Ikhaya"
+nav.stay = "Ukuhlala"
+nav.experiences = "Okuhlangenwe nakho"
+nav.todo = "Okumele ukwenze"
+nav.gallery = "Igalari"
+nav.location = "Indawo"
+nav.contact = "Xhumana nathi"
+
+================================================================================
+HERO SECTION
+================================================================================
+hero.title = "DEVOCEAN Lodge"
+hero.subtitle = "Indawo yokuhlala enobungani bemvelo emamitha ambalwa ukusuka ogwini lwasePonta do Ouro, eNingizimu yeMozambique."
+hero.ctaPrimary = "Bhukha indawo yakho yokuhlala"
+hero.ctaSecondary = "Hlola iLodge"
+hero.badge = "Ukunethezeka kanye nenani elithandwa izivakashi"
+
+================================================================================
+STAY SECTION
+================================================================================
+stay.headline = "Hlala nathi"
+stay.blurb = "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni."
+stay.moreDetails = "Imininingwane eyengeziwe"
+
+================================================================================
+EXPERIENCES SECTION
+================================================================================
+experiences.headline = "Okuhlangenwe nakho"
+experiences.blurb = "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho."
+experiences.operators = "Abahlinzeki basekhaya abathenjwayo:"
+
+================================================================================
+WHAT TO DO SECTION
+================================================================================
+todo.headline = "Okumele ukwenze ePonta do Ouro"
+todo.note = "Ngokushushuluza, ukubhukuda ngaphansi kwamanzi, amaholidi omkhomo/amahhashi kanye nezikebhe zokudoba, bheka abahlinzeki abalandelayo."
+
+todo.items[0].title = "Ukuhamba ngezinyawo kuya eLighthouse kanye neLua Do Mar"
+todo.items[0].body = "Hamba uye esibani esidala ukuze ujabulele ukubukwa kwe-panorama. Qhubeka uye endaweni yokudlela iLua Do Mar esidunjini. Amadophini avame ukubonakala unyaka wonke, amahhashi ngoMeyi kuya ku-Okthoba, kanye nezimfudu ngoDisemba kuya kuJanuwari. Qaphela amagagasi: gwema umzila wolwandle ezinsukwini ezi-3 ngaphambi nangemuva kwegagasi eliphezulu; amagagasi angase akuphushele emadwaleni."
+
+todo.items[1].title = "Ukuhamba ngezinyawo kuya ePonta Malongane"
+todo.items[1].body = "Hamba ngasogwini uye edolobhaneni elilandelayo. Phakathi nendlela, izitebhisi ezidlula ehlathini lobhanana ziholela ebha kanye nendawo yokudlela iCampismo Nino enokubukwa okuhle. Eduze kwe-bay transition, kukhona indlela eya eSky Island yokuparagliding. Amabha adumile eMalongane: iDrunken Clam kanye neSunset Shack. Buyela emuva nge-beach noma ngomgwaqo wesihlabathi we-4×4."
+
+todo.items[2].title = "Ukushushuluza, ukushayela ngaphansi kwamanzi kanye nocwaningo lwasolwandle"
+todo.items[2].body = "I-Beach Bar inikeza ukuqashwa kwamabhodi okushushuluza; izikhungo zokushayela ngaphansi kwamanzi eziningi edolobheni kanye nesikhungo socwaningo lwamadophini/amahhashi."
+
+todo.items[3].title = "Ukudla kanye nokuphumula eduze"
+todo.items[3].body = "Ngaphakathi kwe-500m ye-DEVOCEAN kunezindawo zokudlela kanye namabha angaba yizi-16. Uma ufuna ukumassaja okupholile komzimba wonke, bhukha noLisa (LIZ-Way Massage)."
+
+todo.items[4].title = "Ukuqashwa kwezithuthuthu ezinezinyawo"
+todo.items[4].body = "Ngezikhathi ezithile abantu bendawo banikeza ukuqasha okuzimele. Intengo ejwayelekile: cishe i-MZN 2000 ngehora (kuye ngokuxoxisana)."
+
+================================================================================
+GALLERY SECTION
+================================================================================
+gallery.headline = "Igalari"
+galleryHeading = "Igalari"
+
+================================================================================
+LOCATION SECTION
+================================================================================
+location.headline = "Indawo"
+location.blurb = "IPonta do Ouro - isifunda saseMatutuine, eNingizimu yeMozambique."
+location.items[0] = "Idolobha lasePonta do Ouro, uhamba ngeminyango uya ogwini"
+location.items[1] = "Imizuzu eyi-15 ukuya ePonta Malongane • Imizuzu eyi-25 ukuya emngceleni weKosi Bay"
+location.items[2] = "Indawo yokupaka ephephile • Amakhefi endawo kanye nezimakethe ziseduze"
+location.viewMap = "Buka imephu esebenzayo"
+
+================================================================================
+CONTACT SECTION
+================================================================================
+contact.headline = "Xhumana kanye nokubhuka"
+contact.blurb = "Imibuzo, izinsuku, izicelo ezikhethekile noma ukubhuka kweqembu - siyajabula ukusiza."
+contact.call = "WhatsApp"
+contact.email = "I-imeyili"
+contact.directions = "Izinkomba zokuya"
+contact.bookNow = "Amanani kanye nokutholakala"
+
+================================================================================
+CONTACT FORM
+================================================================================
+form.name = "Igama"
+form.email = "I-imeyili"
+form.stayLabel = "Ujabulele ukuhlala:"
+form.checkin = "Usuku lokungena"
+form.checkout = "Usuku lokuphuma"
+form.unitLabel = "Uhlobo lwegumbi engiluthandayo:"
+form.units[0] = "Itende leSafari - igumbi lokugezela elabiwe"
+form.units[1] = "Itende lokunethezeka - igumbi lokugezela elizimele"
+form.units[2] = "Indlu yasegadini - isiphephetha-moya esiguqukayo"
+form.units[3] = "I-Chalet enotshani - isiphephetha-moya esiguqukayo"
+form.message = "Umyalezo"
+form.send = "Thumela"
+form.consent = "Ngokuthumela, uyavuma ukuthi sixhumane nawe mayelana nombuzo wakho."
+form.phName = "Igama lakho"
+form.phEmail = "your@email.com"
+form.phMsg = "Sitshele kabanzi ngezifiso zakho..."
+form.success = "Siyabonga! Umyalezo wakho uthunyelwe. Hlola i-imeyili yakho ukuze uthole isiqinisekiso."
+
+================================================================================
+FOOTER
+================================================================================
+footer.rights = "Zonke izivakashi zigodliwe."
+footer.desc = "Ukungenisa izihambi okunobungani bemvelo kanye nemiklamo yomphakathi eNingizimu yeMozambique."
+
+================================================================================
+LEGAL MENU
+================================================================================
+legal.title = "Ezomthetho"
+legal.privacy = "Inqubomgomo yobumfihlo"
+legal.cookies = "Inqubomgomo yama-Cookie"
+legal.terms = "Imigomo kanye nezimo"
+legal.gdpr = "Ulwazi lwe-GDPR"
+legal.cric = "Amalungelo omthengi kanye noxhumano"
+legal.manage = "Izilungiselelo zama-Cookie"
+
+================================================================================
+END OF MAIN UI TRANSLATIONS
+================================================================================
