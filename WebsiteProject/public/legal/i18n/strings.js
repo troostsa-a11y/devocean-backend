@@ -7574,6 +7574,155 @@
             }
           }
         }
+      },
+
+      terms: {
+        title: "Masharti na Vigezo",
+        updatedDate: "06 Oktoba 2025",
+        quickLinks: {
+          title: "Viungo vya Haraka",
+          links: [
+            { id: "intro", text: "Wigo" },
+            { id: "booking", text: "Uwekaji Nafasi" },
+            { id: "payment", text: "Bei na Malipo" },
+            { id: "cancel", text: "Kughairi" },
+            { id: "conduct", text: "Tabia za Wageni" },
+            { id: "force-majeure", text: "Nguvu za Juu" },
+            { id: "liability", text: "Wajibu" },
+            { id: "intellectual-property", text: "Mali ya Kiakili" },
+            { id: "disputes", text: "Utatuzi wa Migogoro" },
+            { id: "changes", text: "Mabadiliko" },
+            { id: "law", text: "Sheria ya Kuongoza" },
+            { id: "contact", text: "Wasiliana" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Taarifa za Kisheria za Muhimu:",
+            body: "Masharti haya yanadhibiti matumizi ya huduma zetu na tovuti. Tafadhali yasome kwa makini kabla ya kuweka nafasi."
+          },
+          intro: {
+            title: "Wigo",
+            body: "Masharti haya yanadhibiti malazi na huduma zinazohusiana zinazotolewa na DEVOCEAN Lodge (TERRAfrique LDA). Kwa kuweka nafasi, unakubali masharti haya."
+          },
+          booking: {
+            title: "Uwekaji Nafasi",
+            items: [
+              "Toa taarifa sahihi za wageni na tarehe za kuwasili/kutoka",
+              "Maombi ya pekee yanategemea upatikanaji na uthibitisho"
+            ],
+            reservationReq: {
+              title: "Mahitaji ya Uwekaji Nafasi",
+              body: "Kitambulisho halali na kadi ya mkopo zinahitajika kwa uwekaji nafasi wote. Umri wa chini: 18."
+            },
+            checkinCheckout: {
+              title: "Kuingia/Kutoka",
+              body: "Kuingia: 2:00 PM | Kutoka: 11:00 AM. Maombi ya kuingia mapema au kutoka kwa kuchelewa yanategemea upatikanaji."
+            },
+            groupBookings: {
+              title: "Uwekaji Nafasi wa Kikundi",
+              body: "Masharti ya pekee yanatumika kwa vikundi vya vyumba sita au zaidi. Wasiliana nasi kwa bei za vikundi na sera."
+            }
+          },
+          payment: {
+            title: "Bei na Malipo",
+            items: [
+              "Bei zilizotajwa ni za kila chumba kwa usiku isipokuwa zisemwe vinginevyo",
+              "Amana na mbinu za malipo zitathibitishwa wakati wa kuweka nafasi"
+            ],
+            paymentInfo: {
+              title: "Taarifa za Malipo",
+              body: "Bei zote ziko katika USD isipokuwa zisemwe vinginevyo. Viwango vya ubadilishaji wa sarafu ni makadirio na vinaweza kubadilika. Kadi ya mkopo halali inahitajika ili kuweka nafasi yako salama. Gharama za ziada zinaweza kutumika kwa gharama zisizotarajiwa."
+            }
+          },
+          cancel: {
+            title: "Kughairi na Kutofika",
+            body: "Masharti ya kughairi yatatolewa wakati wa kuweka nafasi na katika uthibitisho wako.",
+            cancellationCharges: {
+              title: "Ada za Kughairi",
+              plans: [
+                {
+                  planName: "Mpango wa Bei Inayoweza Kubadilika:",
+                  tiers: [
+                    { period: "Siku 30 au zaidi kabla ya kuwasili", charge: "Rufaa kamili" },
+                    { period: "Siku 29 au chini kabla ya kuwasili", charge: "Ada ya kughairi ya 50%" }
+                  ]
+                },
+                {
+                  planName: "Mpango wa Bei Usioweza Kurudishwa:",
+                  tiers: [
+                    { period: "Ndani ya saa 24 baada ya kuweka nafasi", charge: "Rufaa kamili" },
+                    {
+                      period: "Katika hali zote zingine",
+                      charge: "Hakuna rufaa",
+                      subtext: "Haki ya kubadilisha tarehe ya kuwasili mara moja chini ya masharti ya kulipa tofauti ya bei ya tarehe mpya."
+                    }
+                  ]
+                }
+              ]
+            },
+            noshowPolicy: {
+              title: "Sera ya Kutofika",
+              body: "Wageni ambao hawafiki kwenye tarehe ya kuwasili iliyopangwa bila taarifa ya awali watachukuliwa kuwa hawajafika. Kiasi kamili kitatozwa, na uwekaji nafasi utaghairiwa."
+            }
+          },
+          conduct: {
+            title: "Tabia za Wageni",
+            items: [
+              "Heshimu sheria za mali, wafanyakazi, wageni wengine na jamii ya ndani",
+              "Hakuna shughuli zisizo za kisheria kwenye eneo"
+            ],
+            zeroTolerance: {
+              title: "Sera ya Kukosa Uvumilivu",
+              body: "Tunaweka sera ya kukosa uvumilivu kwa tabia zinazovuruga, shughuli zisizo za kisheria, au uharibifu wa mali. Ukiukaji unaweza kusababisha kufukuzwa mara moja bila rufaa na unaweza kusababisha hatua za kisheria."
+            }
+          },
+          "force-majeure": {
+            title: "Nguvu za Juu",
+            intro: "Hatuwajibiki kwa kushindwa kutimiza wajibu kutokana na hali zisizo chini ya udhibiti wetu wa busara, ikiwa ni pamoja na lakini sio mdogo kwa:",
+            items: [
+              "Maafa ya asili, hali mbaya za hewa",
+              "Vizuizi vya serikali, marufuku ya kusafiri",
+              "Machafuko ya umma, vita, ugaidi",
+              "Magonjwa ya milipuko, magonjwa yanayoambukiza, dharura za afya",
+              "Kushindwa kwa huduma, kutofaulu kwa miundombinu"
+            ],
+            footer: "Katika hali kama hizi, tutatoa tarehe mbadala au vocha za mkopo inapowezekana. Rufaa zitapewa kwa mujibu wa sheria zinazotumika na hali. Hata hivyo, hasara na gharama zote ambazo zingeweza kufunikwa au hazikufunikwa na bima ya kawaida ya kughairi na ya kusafiri hazijajumuishwa kwenye wajibu wetu."
+          },
+          liability: {
+            title: "Wajibu",
+            body: "Kwa kiwango kinachoruhusiwa na sheria, hatuwajibiki kwa hasara zisizo za moja kwa moja au za matokeo."
+          },
+          "intellectual-property": {
+            title: "Mali ya Kiakili",
+            copyright: {
+              title: "Taarifa ya Hati Miliki",
+              body: "Yote yaliyomo kwenye tovuti hii, ikiwa ni pamoja na maandishi, michoro, nembo, na picha, ni mali ya DEVOCEAN Lodge na inalindwa na sheria za hati miliki za kimataifa. Matumizi yasiyoruhusiwa, uzalishaji, au usambazaji hayaruhusiwi. Jina la DEVOCEAN Lodge, nembo, na alama zote zinazohusiana ni alama za biashara na haziwezi kutumika bila idhini ya maandishi."
+            }
+          },
+          disputes: {
+            title: "Utatuzi wa Migogoro",
+            process: {
+              title: "Mchakato wa Utatuzi",
+              body: "Tunalenga kusuluhisha migogoro yoyote kwa amani. Tafadhali wasiliana nasi kwanza ili kujaribu kutatua. Ikiwa haijatatuliwa, migogoro itasuluhishwa kupitia upatanishi kabla ya kuchukua hatua za kisheria.",
+              law: "Sheria ya Kuongoza: Masharti haya na migogoro yoyote itadhibitiwa na sheria ya Msumbiji.",
+              jurisdiction: "Mamlaka ya Kisheria: Mahakama za Maputo, Msumbiji zitakuwa na mamlaka ya pekee.",
+              mediation: "Upatanishi: Pande zinakubali kujaribu upatanishi kwa mpatanishi aliyeidhinishwa kabla ya kuanza taratibu za kisheria."
+            }
+          },
+          changes: {
+            title: "Mabadiliko ya Masharti Haya",
+            body: "Tunaweza kubadilisha Masharti mara kwa mara. Toleo lililochapishwa linatumika kwa kukaa kwako."
+          },
+          law: {
+            title: "Sheria ya Kuongoza",
+            body: "Sheria ya Msumbiji inatumika, kwa kuzingatia sheria za kulinda watumiaji za ndani."
+          },
+          contact: {
+            title: "Wasiliana",
+            body: "Maswali? <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>."
+          }
+        }
       }
     }
   };
