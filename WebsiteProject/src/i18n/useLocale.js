@@ -78,7 +78,7 @@ const LANG_TO_CURRENCY_HINT = {
 // Booking engine locale mapping (base, can be overridden by region)
 export const LOCALE_BY_LANG = {
   en: "en-GB", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru",
 };
 
 // Region-specific locale overrides for Portuguese
