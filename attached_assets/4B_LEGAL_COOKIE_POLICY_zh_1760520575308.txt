@@ -1,0 +1,119 @@
+================================================================================
+DEVOCEAN LODGE - COOKIE POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cookies section)
+LANGUAGE CODE: zh
+
+NOTE: Cookie table technical details (cookie names, durations) generally don't need translation.
+Only translate descriptive text and category titles.
+
+================================================================================
+HEADER
+================================================================================
+title = "Cookie 政策"
+effectiveDate = "2025年9月19日"
+lastUpdated = "2025年10月6日"
+managePreferences = "管理您的 Cookie 偏好："
+manageText = "您可以通过我们的 Cookie 横幅或浏览器设置控制我们使用的 Cookie。"
+cookieSettingsBtn = "Cookie 设置"
+
+quickLinks.title = "快速链接"
+quickLinks[0] = "什么是 Cookie"
+quickLinks[1] = "我们如何使用 Cookie"
+quickLinks[2] = "必要"
+quickLinks[3] = "功能"
+quickLinks[4] = "分析"
+quickLinks[5] = "广告"
+quickLinks[6] = "管理偏好"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "关于 Cookie"
+badge.body = "您可以通过我们的 Cookie 横幅或浏览器设置控制我们使用的 Cookie。"
+
+================================================================================
+WHAT ARE COOKIES
+================================================================================
+what.title = "什么是 Cookie？"
+what.body = "本 Cookie 政策解释了什么是 Cookie，我们如何使用它们，我们使用的 Cookie 类型（即使用 Cookie 收集的信息及其使用方式），以及如何管理您的 Cookie 设置。<br><br>Cookie 是用于存储少量信息的小型文本文件。它们在网站加载到您的浏览器时存储在您的设备上。这些 Cookie 有助于确保网站正常运行、增强安全性、提供更好的用户体验，并通过分析性能来确定哪些有效，哪些需要改进。"
+
+================================================================================
+HOW WE USE COOKIES
+================================================================================
+how.title = "我们如何使用 Cookie？"
+how.body = "与大多数在线服务一样，我们的网站出于各种目的使用第一方和第三方 Cookie。第一方 Cookie 主要用于确保网站正常运行，不收集任何可识别个人身份的数据。<br><br>我们网站上使用的第三方 Cookie 主要用于了解网站的表现、跟踪您与网站的互动、保持服务安全、提供相关广告、提升您的整体用户体验，并加快您未来与我们网站的互动速度。"
+
+================================================================================
+NECESSARY COOKIES
+================================================================================
+necessary.title = "必要 Cookie"
+necessary.description = "必要 Cookie 是启用本网站基本功能（如提供安全登录或调整您的同意偏好）所需的。这些 Cookie 不存储任何可识别个人身份的数据。"
+necessary.tableHeaders.cookie = "Cookie"
+necessary.tableHeaders.duration = "持续时间"
+necessary.tableHeaders.description = "描述"
+
+# Cookie table entries (translate descriptions only):
+necessary.cookies[0].desc = "此 Cookie 用于存储用户的货币偏好。"
+necessary.cookies[1].desc = "目前无描述可用。"
+necessary.cookies[2].desc = "目前无描述可用。"
+necessary.cookies[3].desc = "无描述可用。"
+necessary.cookies[4].desc = "目前无描述可用。"
+necessary.cookies[5].desc = "目前无描述可用。"
+
+================================================================================
+FUNCTIONAL COOKIES
+================================================================================
+functional.title = "功能 Cookie"
+functional.description = "功能 Cookie 有助于执行某些功能，如在社交媒体平台上分享网站内容、收集反馈以及其他第三方功能。"
+functional.tableHeaders.cookie = "Cookie"
+functional.tableHeaders.duration = "持续时间"
+functional.tableHeaders.description = "描述"
+
+functional.cookies[0].desc = "Facebook 设置此 Cookie 以提升用户在网站上的浏览体验，并在使用 Facebook 的社交媒体平台时提供相关广告。"
+
+================================================================================
+ANALYTICS COOKIES
+================================================================================
+analytics.title = "分析 Cookie"
+analytics.description = "分析 Cookie 用于了解访问者如何与网站互动。这些 Cookie 有助于提供有关访问者数量、跳出率、流量来源等指标的信息。"
+analytics.tableHeaders.cookie = "Cookie"
+analytics.tableHeaders.duration = "持续时间"
+analytics.tableHeaders.description = "描述"
+
+analytics.cookies[0].desc = "Google Analytics 设置此 Cookie 以计算访问者、会话和活动数据，并跟踪网站使用情况以生成网站分析报告。Cookie 匿名存储信息，并分配一个随机生成的编号以识别唯一访问者。"
+analytics.cookies[1].desc = "Google Analytics 设置此 Cookie 以存储和计数页面浏览量。"
+analytics.cookies[2].desc = "Google Analytics 设置此 Cookie 以存储访问者如何使用网站的信息，同时生成网站性能分析报告。收集的部分数据包括访问者数量、来源以及匿名访问的页面。"
+analytics.cookies[3].desc = "Google Analytics 为用户行为跟踪设置此 Cookie。"
+analytics.cookies[4].desc = "当访问者以 Pardot 用户身份登录时，设置 pardot Cookie。此 Cookie 表示活跃会话，不用于跟踪。"
+
+================================================================================
+ADVERTISEMENT COOKIES
+================================================================================
+advertisement.title = "广告 Cookie"
+advertisement.description = "广告 Cookie 用于根据您之前访问的页面为访问者提供定制广告，并分析广告活动的有效性。"
+advertisement.tableHeaders.cookie = "Cookie"
+advertisement.tableHeaders.duration = "持续时间"
+advertisement.tableHeaders.description = "描述"
+
+advertisement.cookies[0].desc = "Google Tag Manager 设置此 Cookie 以测试使用其服务的网站的广告效率。"
+advertisement.cookies[1].desc = "doubleclick.net 设置此 Cookie 以确定用户的浏览器是否支持 Cookie。"
+advertisement.cookies[2].desc = "Facebook 设置此 Cookie 以存储和跟踪互动。"
+advertisement.cookies[3].desc = "Google DoubleClick IDE Cookie 存储用户如何使用网站的信息，以根据用户简介呈现相关广告。"
+
+================================================================================
+MANAGE PREFERENCES
+================================================================================
+manage.title = "管理 Cookie 偏好"
+manage.consentTitle = "同意偏好"
+manage.consentText = "您可以随时通过点击上方的“同意偏好”按钮修改您的 Cookie 设置。这将允许您重新访问 Cookie 同意横幅并更新您的偏好或立即撤回您的同意。"
+manage.browserText = "此外，不同浏览器提供多种方法来阻止和删除网站使用的 Cookie。您可以调整浏览器设置以阻止或删除 Cookie。以下是主要网络浏览器中管理和删除 Cookie 的支持文档链接。"
+manage.browsers.chrome = "Chrome"
+manage.browsers.safari = "Safari"
+manage.browsers.firefox = "Firefox"
+manage.browsers.ie = "Internet Explorer"
+manage.browsers.other = "如果您使用其他网络浏览器，请参阅其官方支持文档。"
+
+================================================================================
+END OF COOKIE POLICY
+================================================================================

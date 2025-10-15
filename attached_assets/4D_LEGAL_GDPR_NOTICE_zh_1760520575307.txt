@@ -1,0 +1,114 @@
+================================================================================
+DEVOCEAN LODGE - GDPR NOTICE TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (gdpr section)
+LANGUAGE CODE: zh
+
+================================================================================
+HEADER
+================================================================================
+title = "GDPR 通知"
+updatedDate = "2025年10月6日"
+
+quickLinks.title = "快速链接"
+quickLinks[0] = "数据控制者"
+quickLinks[1] = "处理法律依据"
+quickLinks[2] = "您的权利"
+quickLinks[3] = "数据保留"
+quickLinks[4] = "数据转移"
+quickLinks[5] = "投诉"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "符合 GDPR："
+badge.body = "我们致力于根据《通用数据保护条例》保护您的个人数据并尊重您的隐私权。"
+
+================================================================================
+DATA CONTROLLER
+================================================================================
+controller.title = "数据控制者"
+controller.body = "TERRAfrique LDA（DEVOCEAN Lodge），注册地址为莫桑比克马普托 Rua C, Parcela 12, Maputo 1118，负责通过我们的服务收集的您的个人信息的数据控制者。"
+
+================================================================================
+LEGAL BASES FOR PROCESSING
+================================================================================
+bases.title = "处理法律依据"
+bases.body = "我们根据 GDPR 的以下法律依据处理您的个人数据："
+
+legalBases.contract.title = "合同："
+legalBases.contract.body = "履行我们的预订协议和服务所需的处理。"
+
+legalBases.legal.title = "法律义务："
+legalBases.legal.body = "遵守法律要求（例如税务法）所需的处理。"
+
+legalBases.legitimate.title = "合法利益："
+legalBases.legitimate.body = "在尊重您的权利的同时，为我们的合法商业利益进行处理。"
+
+legalBases.consent.title = "同意："
+legalBases.consent.body = "基于您对特定目的的明确同意进行处理。"
+
+================================================================================
+YOUR GDPR RIGHTS
+================================================================================
+rights.title = "您的 GDPR 权利"
+rights.body = "作为 GDPR 下的数据主体，您对您的个人数据拥有以下权利："
+
+rights.access.title = "访问权"
+rights.access.body = "您可以请求我们持有的您的个人数据的副本。"
+
+rights.rectification.title = "更正权"
+rights.rectification.body = "您可以请求更正不准确或不完整的数据。"
+
+rights.erasure.title = "删除权"
+rights.erasure.body = "在特定条件下，您可以请求删除您的个人数据。"
+
+rights.restrict.title = "限制处理权"
+rights.restrict.body = "您可以请求限制我们使用您的数据的方式。"
+
+rights.portability.title = "数据可携性权"
+rights.portability.body = "您可以请求将您的数据转移到其他组织。"
+
+rights.object.title = "反对权"
+rights.object.body = "您可以反对某些类型的数据处理。"
+
+buttons.access.text = "请求数据访问"
+buttons.erasure.text = "请求数据删除"
+
+================================================================================
+DATA RETENTION
+================================================================================
+retention.title = "数据保留"
+retention.periodsTitle = "保留期限"
+retention.intro = "我们仅在实现收集目的所需的期限内保留个人数据，包括法律、会计或报告要求。"
+retention.items[0] = "<strong>预订数据：</strong> 为税务和法律合规保留 7 年"
+retention.items[1] = "<strong>客户服务通信：</strong> 保留 3 年"
+retention.items[2] = "<strong>营销同意：</strong> 直到撤回同意"
+retention.items[3] = "<strong>网站分析：</strong> 保留 26 个月"
+retention.items[4] = "<strong>财务交易：</strong> 为会计目的保留 10 年"
+
+================================================================================
+INTERNATIONAL DATA TRANSFERS
+================================================================================
+transfers.title = "国际数据转移"
+transfers.body = "当我们将您的数据转移到欧洲经济区（EEA）以外时，我们确保采取适当的保护措施来保护您的信息。这可能包括使用欧盟委员会批准的标准合同条款或将数据转移到具有充分性决定的国家。"
+
+safeguards.international.title = "国际数据转移："
+safeguards.international.body = "我们在国际转移数据时确保采取适当的保护措施，包括使用标准合同条款或确保充分性决定。"
+
+================================================================================
+COMPLAINTS
+================================================================================
+complaints.title = "投诉"
+complaints.intro = "如果您对我们处理您的个人数据有任何顾虑，您有权向当地数据保护机构提出投诉。"
+complaints.footer = "我们鼓励您在联系监管机构之前先与我们联系，以解决任何顾虑。"
+
+================================================================================
+DATA PROTECTION OFFICER
+================================================================================
+dpo.title = "联系我们的数据保护官"
+dpo.body = "对于任何 GDPR 相关问题或行使您的权利，请通过 <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a> 联系我们的数据保护官。我们将根据 GDPR 要求在 30 天内响应您的请求。"
+
+================================================================================
+END OF GDPR NOTICE
+================================================================================

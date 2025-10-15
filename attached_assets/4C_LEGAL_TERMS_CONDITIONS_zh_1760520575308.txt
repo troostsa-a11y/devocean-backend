@@ -1,0 +1,154 @@
+================================================================================
+DEVOCEAN LODGE - TERMS & CONDITIONS TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (terms section)
+LANGUAGE CODE: zh
+
+================================================================================
+HEADER
+================================================================================
+title = "条款与条件"
+updatedDate = "2025年10月6日"
+
+quickLinks.title = "快速链接"
+quickLinks[0] = "范围"
+quickLinks[1] = "预订"
+quickLinks[2] = "价格与支付"
+quickLinks[3] = "取消"
+quickLinks[4] = "宾客行为"
+quickLinks[5] = "不可抗力"
+quickLinks[6] = "责任"
+quickLinks[7] = "知识产权"
+quickLinks[8] = "争议解决"
+quickLinks[9] = "变更"
+quickLinks[10] = "适用法律"
+quickLinks[11] = "联系方式"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "重要法律通知："
+badge.body = "这些条款规范您对我们服务和网站的使用。请在预订前仔细阅读。"
+
+================================================================================
+SCOPE
+================================================================================
+intro.title = "范围"
+intro.body = "这些条款规范 DEVOCEAN Lodge（TERRAfrique LDA）提供的住宿及相关服务。预订即表示您同意这些条款。"
+
+================================================================================
+BOOKINGS
+================================================================================
+booking.title = "预订"
+booking.items[0] = "提供准确的宾客信息和到达/离开日期"
+booking.items[1] = "特殊请求视可用性和确认情况而定"
+
+booking.reservationReq.title = "预订要求"
+booking.reservationReq.body = "所有预订需提供有效身份证和信用卡。最低年龄：18岁。"
+
+booking.checkinCheckout.title = "入住/退房"
+booking.checkinCheckout.body = "入住：下午2:00 | 退房：上午11:00。提前/延迟请求视可用性而定。"
+
+booking.groupBookings.title = "团体预订"
+booking.groupBookings.body = "6 间以上房间的团体适用特殊条款。请联系我们了解团体价格和政策。"
+
+================================================================================
+PRICES & PAYMENT
+================================================================================
+payment.title = "价格与支付"
+payment.items[0] = "除非另有说明，显示的价格为每单位/每晚"
+payment.items[1] = "存款和结算方式将在预订时确认"
+
+payment.paymentInfo.title = "支付信息"
+payment.paymentInfo.body = "除非另有说明，所有价格以美元计价。货币转换率仅为近似值，可能会发生变化。确保预订需提供有效信用卡。额外费用可能适用于临时开支。"
+
+================================================================================
+CANCELLATIONS & NO-SHOWS
+================================================================================
+cancel.title = "取消与未到"
+cancel.body = "取消条款将在预订时和确认函中披露。"
+
+cancel.cancellationCharges.title = "取消费用"
+
+cancel.cancellationCharges.plans[0].planName = "半灵活价格计划："
+cancel.cancellationCharges.plans[0].tiers[0].period = "到达前30天或更早"
+cancel.cancellationCharges.plans[0].tiers[0].charge = "全额退款"
+cancel.cancellationCharges.plans[0].tiers[1].period = "到达前29天或更近"
+cancel.cancellationCharges.plans[0].tiers[1].charge = "50% 取消费用"
+
+cancel.cancellationCharges.plans[1].planName = "不可退款价格计划："
+cancel.cancellationCharges.plans[1].tiers[0].period = "预订后24小时内"
+cancel.cancellationCharges.plans[1].tiers[0].charge = "全额退款"
+cancel.cancellationCharges.plans[1].tiers[1].period = "所有其他情况"
+cancel.cancellationCharges.plans[1].tiers[1].subtext = "在支付新日期差价的条件下，有一次更改到达日期的权利。"
+cancel.cancellationCharges.plans[1].tiers[1].charge = "不予退款"
+
+cancel.noshowPolicy.title = "未到政策"
+cancel.noshowPolicy.body = "未在计划入住日期到达且未提前通知的宾客将被视为未到，将收取全额费用，预订将被取消。"
+
+================================================================================
+GUEST CONDUCT
+================================================================================
+conduct.title = "宾客行为"
+conduct.items[0] = "尊重设施规则、员工、其他宾客和当地社区"
+conduct.items[1] = "禁止在场所内进行非法活动"
+
+conduct.zeroTolerance.title = "零容忍政策"
+conduct.zeroTolerance.body = "我们对破坏性行为、非法活动或财产损害采取零容忍政策。违反可能导致立即驱逐（不予退款）并可能采取法律行动。"
+
+================================================================================
+FORCE MAJEURE
+================================================================================
+force-majeure.title = "不可抗力"
+force-majeure.intro = "对于超出我们合理控制范围的情况导致无法履行义务，我们不承担责任，包括但不限于："
+force-majeure.items[0] = "自然灾害、极端天气条件"
+force-majeure.items[1] = "政府限制、旅行禁令"
+force-majeure.items[2] = "内乱、战争、恐怖主义"
+force-majeure.items[3] = "流行病、大流行、卫生紧急情况"
+force-majeure.items[4] = "公用事业故障、基础设施崩溃"
+force-majeure.footer = "在这种情况下，我们将尽可能提供替代日期或信用券。根据适用法律和情况提供退款。然而，所有可能由一般可用的取消和旅行保险套餐覆盖的损害和费用均不在我们的责任范围内。"
+
+================================================================================
+LIABILITY
+================================================================================
+liability.title = "责任"
+liability.body = "在法律允许的范围内，我们对间接或不可预见的损失不承担责任。"
+
+================================================================================
+INTELLECTUAL PROPERTY
+================================================================================
+intellectual-property.title = "知识产权"
+intellectual-property.copyright.title = "版权通知"
+intellectual-property.copyright.body = "本网站的所有内容，包括文本、图形、标志和图片，均为 DEVOCEAN Lodge 的财产，受国际版权法保护。未经授权的使用、复制或分发均被禁止。DEVOCEAN Lodge 名称、标志及所有相关标记均为商标，未经书面许可不得使用。"
+
+================================================================================
+DISPUTE RESOLUTION
+================================================================================
+disputes.title = "争议解决"
+disputes.process.title = "解决流程"
+disputes.process.body = "我们旨在友好解决任何争议。请首先联系我们尝试解决。如未解决，争议将在采取法律行动前通过调解解决。"
+disputes.process.law = "适用法律：这些条款及任何争议均受莫桑比克法律管辖。"
+disputes.process.jurisdiction = "管辖权：莫桑比克马普托法院具有专属管辖权。"
+disputes.process.mediation = "调解：双方同意在提起法律诉讼前尝试通过认证调解人进行调解。"
+
+================================================================================
+CHANGES TO THESE TERMS
+================================================================================
+changes.title = "这些条款的变更"
+changes.body = "我们可能不时更新条款。发布的版本适用于您的住宿。"
+
+================================================================================
+GOVERNING LAW
+================================================================================
+law.title = "适用法律"
+law.body = "适用莫桑比克法律，受强制性当地消费者规则约束。"
+
+================================================================================
+CONTACT
+================================================================================
+contact.title = "联系方式"
+contact.body = "有疑问？请联系 <a href=\"mailto:legal@devoceanlodge.com\">legal@devoceanlodge.com</a>。"
+
+================================================================================
+END OF TERMS & CONDITIONS
+================================================================================

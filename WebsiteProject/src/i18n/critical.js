@@ -110,5 +110,15 @@ export const CRITICAL_NAV = {
     location: "場所",
     contact: "連絡先",
     bookNow: "今すぐ予約"
+  },
+  zh: {
+    home: "首页",
+    stay: "住宿",
+    experiences: "体验",
+    todo: "活动",
+    gallery: "图库",
+    location: "位置",
+    contact: "联系我们",
+    bookNow: "立即预订"
   }
 };
