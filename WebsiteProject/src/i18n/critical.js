@@ -120,5 +120,15 @@ export const CRITICAL_NAV = {
     location: "位置",
     contact: "联系我们",
     bookNow: "立即预订"
+  },
+  ru: {
+    home: "Главная",
+    stay: "Проживание",
+    experiences: "Впечатления",
+    todo: "Чем заняться",
+    gallery: "Галерея",
+    location: "Местоположение",
+    contact: "Контакты",
+    bookNow: "Забронировать"
   }
 };
