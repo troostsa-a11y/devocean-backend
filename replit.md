@@ -64,7 +64,9 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
   - Middleware injects country code from request.cf.country into HTML as window.__CF_COUNTRY__
   - Frontend prioritizes IP-based country detection over browser language hints
   - Browser detection kept as fallback for local development
-  - Fixes French-in-Asia (uses actual location) and eSwatini issues (accurate country mapping)
+  - Comprehensive country mapping: 80+ countries across all continents
+  - Cache versioning (v2) invalidates old browser-based cached regions
+  - Fixes French-in-Asia, eSwatini, UAE, Bosnia Herzegovina, and other mapping issues
   - Production benefits: Free, instant, accurate, no external API needed
 - Comprehensive translation of legal pages (Privacy Policy, Cookies Policy, Terms, GDPR, CRIC) including cultural enhancements for Mozambican Portuguese.
 
@@ -113,7 +115,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - External booking engine at book.devoceanlodge.com with parameterized URLs for locale and currency.
 - Region-aware Portuguese booking URLs for tailored user experience.
 - Legal pages support smart back navigation from Hotelrunner via query parameters (e.g., `?return=https://book.devoceanlodge.com/bv3/payment`).
-  - Cache-busting versioning for JavaScript (currently v=49) and CSS (currently v=43) to ensure fresh updates.
+  - Cache-busting versioning for JavaScript (currently v=50) and CSS (currently v=43) to ensure fresh updates.
   - sessionStorage-based referrer tracking for reliable cross-site navigation.
 
 **Maps & Location:**
