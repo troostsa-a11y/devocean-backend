@@ -6940,6 +6940,114 @@
             body: "Singabuyekeza le Nqubomgomo yobumfihlo ngezikhathi ezithile ukuze ibonise izinguquko emikhubeni yethu, ubuchwepheshe, izidingo zomthetho noma ezinye izici. Sizokwazisa ngezinguquko ezibalulekile ngezaziso ze-imeyili kubasebenzisi ababhalisiwe, izaziso ezigqamile kwiwebhusayithi yethu kanye nosuku lokubuyekezwa kokugcina. Sincoma ukuthi ubuyekeze le nqubomgomo njalo ukuze wazi ukuthi sivikela kanjani ulwazi lwakho."
           }
         }
+      },
+
+      cookies: {
+        title: "Inqubomgomo yama-Cookie",
+        effectiveDate: "19 Septhemba 2025",
+        lastUpdated: "06 Okthoba 2025",
+        managePreferences: "Phatha izintandokazi zakho zama-Cookie:",
+        manageText: "Ungalawula ukuthi yimaphi ama-Cookie esiwasebenzisayo ngesibhengezo sethu sama-Cookie noma izilungiselelo zesiphequluli sakho.",
+        cookieSettingsBtn: "Izilungiselelo zama-Cookie",
+        quickLinks: {
+          title: "Izixhumanisi ezisheshayo",
+          links: [
+            { id: "what", text: "Ayini ama-Cookie" },
+            { id: "how", text: "Sisebenzisa kanjani ama-Cookie" },
+            { id: "necessary", text: "Adingekayo" },
+            { id: "functional", text: "Okusebenzayo" },
+            { id: "analytics", text: "Ukuhlaziya" },
+            { id: "advertisement", text: "Ukukhangisa" },
+            { id: "manage", text: "Phatha izintandokazi" }
+          ]
+        },
+        sections: {
+          badge: {
+            title: "Mayelana nama-Cookie",
+            body: "Ungalawula ukuthi yimaphi ama-Cookie esiwasebenzisayo ngesibhengezo sethu sama-Cookie noma izilungiselelo zesiphequluli sakho."
+          },
+          what: {
+            title: "Ayini ama-Cookie?",
+            body: "Le Nqubomgomo yama-Cookie ichaza ukuthi ayini ama-Cookie, ukuthi siwasebenzisa kanjani, izinhlobo zama-Cookie esiwasebenzisayo (okungukuthi ulwazi esiluqoqayo ngokusebenzisa ama-Cookie kanye nokuthi lolo lwazi lusetshenziswa kanjani), kanye nendlela yokuphatha izilungiselelo zakho zama-Cookie.<br><br>Ama-Cookie amafayela ombhalo amancane asetshenziselwa ukugcina ulwazi oluncane. Agcinwa kudivayisi yakho lapho iwebhusayithi ilayishwa esipheqululini sakho. Lawa ma-Cookie asisisiza ekwenza iwebhusayithi isebenze kahle, isebenze kangcono, inikeze ulwazi lokuhlaziya kanye nokuthuthukisa ukuhlangenwe nakho komsebenzisi."
+          },
+          how: {
+            title: "Sisebenzisa kanjani ama-Cookie?",
+            body: "Njengezinsizakalo eziningi ze-inthanethi, iwebhusayithi yethu isebenzisa ama-Cookie okuqala kanye nama-Cookie esithathu ngezinhloso ezahlukene. Ama-Cookie okuqala adingeka kakhulu ukuze iwebhusayithi isebenze kahle futhi awaqoqi idatha engakhomba umuntu siqu.<br><br>Ama-Cookie esithathu asetshenziswa kwiwebhusayithi yethu asisiza ikakhulukazi ekuqondeni ukuthi iwebhusayithi isebenza kanjani, ukulandelela ukuthi uxhumana kanjani nayo, ukugcina izinsizakalo zethu ziphephile kanye nokunikeza okukhangisayo okufanele kakhulu kuwe, okwenza isipiliyoni sakho nalewebhusayithi sibe ngcono futhi sishesha ukututhukisa ukuhlangenwe nakho komsebenzisi."
+          },
+          necessary: {
+            title: "Ama-Cookie adingekayo",
+            description: "Ama-Cookie adingekayo ayadingeka ukuze anikeze izici eziyisisekelo zalesi sayithi, njengokuhlinzeka ngokungena okuphephile noma ukulungisa izintandokazi zakho zemvume. Lawa ma-Cookie awagcini idatha engakhomba umuntu siqu.",
+            tableHeaders: {
+              cookie: "Cookie",
+              duration: "Isikhathi",
+              description: "Incazelo"
+            },
+            cookies: [
+              { name: "CookieConsent", duration: "1 year", desc: "Leli Cookie lisetshenziselwa ukugcina izintandokazi zemali yomsebenzisi." },
+              { name: "rc::a", duration: "Persistent", desc: "Incazelo ayikatholakali okwamanje." },
+              { name: "rc::c", duration: "Session", desc: "Incazelo ayikatholakali okwamanje." },
+              { name: "li_gc", duration: "6 months", desc: "Ayikho incazelo etholakalayo." },
+              { name: "test_cookie", duration: "15 minutes", desc: "Incazelo ayikatholakali okwamanje." },
+              { name: "CONSENT", duration: "2 years", desc: "Incazelo ayikatholakali okwamanje." }
+            ]
+          },
+          functional: {
+            title: "Ama-Cookie okusebenzayo",
+            description: "Ama-Cookie okusebenzayo asisiza ekwenzeni izinto ezithile njengokwabelana ngokuqukethwe kwewebhusayithi ezinkundleni zokuxhumana, ukuqoqa impendulo, kanye nezinye izici zesithathu.",
+            tableHeaders: {
+              cookie: "Cookie",
+              duration: "Isikhathi",
+              description: "Incazelo"
+            },
+            cookies: [
+              { name: "_fbp", duration: "3 months", desc: "I-Facebook isetha leli Cookie ukuze ithuthukise ulwazi lomsebenzisi lokudlulisa kwiwebhusayithi, futhi inikeze umsebenzisi ngokukhangisa okufanelekile ngenkathi esebenzisa izinkundla zokuxhumana ze-Facebook." }
+            ]
+          },
+          analytics: {
+            title: "Ama-Cookie okuhlaziya",
+            description: "Ama-Cookie okuhlaziya asetshenziselwa ukuqonda ukuthi izivakashi zixhumana kanjani newebhusayithi. Lawa ma-Cookie asisiza ekuhlinzekeni ulwazi ngezilinganiso ezifana nenani lezivakashi, izinga lokugxuma, umthombo wethrafikhi, njll.",
+            tableHeaders: {
+              cookie: "Cookie",
+              duration: "Isikhathi",
+              description: "Incazelo"
+            },
+            cookies: [
+              { name: "_ga", duration: "2 years", desc: "I-Google Analytics isetha leli Cookie ukuze libale idatha yesivakashi, iseshini kanye nedatha yomkhankaso futhi lilandelele ukusetshenziswa kwesayithi ukuze kwenziwe umbiko wokuhlaziya wesayithi. I-Cookie igcina ulwazi ngokungaziwa futhi inikeza inombolo eyakhiwe ngokungahleliwe ukuze ibone izivakashi ezihlukile." },
+              { name: "_gat_gtag_UA_*", duration: "1 minute", desc: "I-Google Analytics isetha leli Cookie ukuze ligcine futhi libale ukubukwa kwekhasi." },
+              { name: "_gid", duration: "1 day", desc: "I-Google Analytics isetha leli Cookie ukuze ligcine ulwazi lokuthi izivakashi zisebenzisa kanjani iwebhusayithi kuyilapho futhi lidala umbiko wokuhlaziya wokusebenza kwewebhusayithi. Ezinye zedatha eqoqiwe zifaka inani lezivakashi, umthombo wazo, kanye namakhasi abavakashele ngokungaziwa." },
+              { name: "_ga_*", duration: "2 years", desc: "I-Google Analytics isetha leli Cookie ukuze lilandelele ukuziphatha komsebenzisi." },
+              { name: "visitor_id*", duration: "10 years", desc: "I-Cookie ye-pardot isethwa ngenkathi isivakashi singene njengomsebenzisi we-Pardot. I-Cookie ikhombisa iseshini esebenzayo futhi ayisetshenziselwa ukulandela." }
+            ]
+          },
+          advertisement: {
+            title: "Ama-Cookie okukhangisa",
+            description: "Ama-Cookie okukhangisa asetshenziselwa ukuhlinzeka izivakashi ngokukhangisa okwenziwe ngokwezifiso ngokuya ngamakhasi owavakashele ngaphambilini kanye nokuhlaziya ukusebenza kahle kwemikhankaso yokukhangisa.",
+            tableHeaders: {
+              cookie: "Cookie",
+              duration: "Isikhathi",
+              description: "Incazelo"
+            },
+            cookies: [
+              { name: "_gcl_au", duration: "3 months", desc: "I-Google Tag Manager isetha leli Cookie ukuze ihlele ukusebenza kahle kokukhangisa kwewebhusayithi ezisebenzisa izinsizakalo zayo." },
+              { name: "test_cookie", duration: "15 minutes", desc: "I-doubleclick.net isetha leli Cookie ukuze inqume ukuthi isiphequluli somsebenzisi siyawasekela yini ama-Cookie." },
+              { name: "fr", duration: "3 months", desc: "I-Facebook isetha leli Cookie ukuze ligcine futhi lilandelele ukuxhumana." },
+              { name: "IDE", duration: "1 year 24 days", desc: "Ama-Cookie e-Google DoubleClick IDE agcina ulwazi lokuthi umsebenzisi usebenzisa kanjani iwebhusayithi ukuze anikeze ngokukhangisa okufanelekile ngokuya ngephrofayili yomsebenzisi." }
+            ]
+          },
+          manage: {
+            title: "Phatha izintandokazi zama-Cookie",
+            consentTitle: "Izintandokazi zemvume",
+            consentText: "Ungashintsha izilungiselelo zakho zama-Cookie noma nini ngokuchofoza inkinobho ethi 'Izintandokazi zemvume' ngenhla. Lokhu kuzokuvumela ukuthi uphinde uvakashele isibhengezo semvume yama-Cookie futhi ubuyekeze izintandokazi zakho noma uhoxise imvume yakho ngokushesha.",
+            browserText: "Ngaphezu kwalokho, iziphequluli ezahlukene zinikeza izindlela ezahlukene zokuvimba nokususa ama-Cookie asetshenziswa amawebhusayithi. Ungashintsha izilungiselelo zesiphequluli sakho ukuze uvimbe noma ususe ama-Cookie. Ngezansi kunezixhumanisi zemibhalo exhasayo yokuphatha nokususa ama-Cookie ezinhlotsheni ezinkulu zesiphequluli.",
+            browsers: {
+              chrome: "Chrome",
+              safari: "Safari",
+              firefox: "Firefox",
+              ie: "Internet Explorer",
+              other: "Uma usebenzisa esinye isiphequluli sewebhu, sicela ubheke imibhalo yayo esemthethweni exhasayo."
+            }
+          }
+        }
       }
     }
   };

@@ -1,0 +1,119 @@
+================================================================================
+DEVOCEAN LODGE - COOKIE POLICY TRANSLATIONS
+================================================================================
+File: WebsiteProject/public/legal/i18n/strings.js (cookies section)
+LANGUAGE CODE: zu
+
+NOTE: Cookie table technical details (cookie names, durations) generally don't need translation.
+Only translate descriptive text and category titles.
+
+================================================================================
+HEADER
+================================================================================
+title = "Inqubomgomo yama-Cookie"
+effectiveDate = "19 Septhemba 2025"
+lastUpdated = "06 Okthoba 2025"
+managePreferences = "Phatha izintandokazi zakho zama-Cookie:"
+manageText = "Ungalawula ukuthi yimaphi ama-Cookie esiwasebenzisayo ngesibhengezo sethu sama-Cookie noma izilungiselelo zesiphequluli sakho."
+cookieSettingsBtn = "Izilungiselelo zama-Cookie"
+
+quickLinks.title = "Izixhumanisi ezisheshayo"
+quickLinks[0] = "Ayini ama-Cookie"
+quickLinks[1] = "Sisebenzisa kanjani ama-Cookie"
+quickLinks[2] = "Adingekayo"
+quickLinks[3] = "Okusebenzayo"
+quickLinks[4] = "Ukuhlaziya"
+quickLinks[5] = "Ukukhangisa"
+quickLinks[6] = "Phatha izintandokazi"
+
+================================================================================
+BADGE
+================================================================================
+badge.title = "Mayelana nama-Cookie"
+badge.body = "Ungalawula ukuthi yimaphi ama-Cookie esiwasebenzisayo ngesibhengezo sethu sama-Cookie noma izilungiselelo zesiphequluli sakho."
+
+================================================================================
+WHAT ARE COOKIES
+================================================================================
+what.title = "Ayini ama-Cookie?"
+what.body = "Le Nqubomgomo yama-Cookie ichaza ukuthi ayini ama-Cookie, ukuthi siwasebenzisa kanjani, izinhlobo zama-Cookie esiwasebenzisayo (okungukuthi ulwazi esiluqoqayo ngokusebenzisa ama-Cookie kanye nokuthi lolo lwazi lusetshenziswa kanjani), kanye nendlela yokuphatha izilungiselelo zakho zama-Cookie.<br><br>Ama-Cookie amafayela ombhalo amancane asetshenziselwa ukugcina ulwazi oluncane. Agcinwa kudivayisi yakho lapho iwebhusayithi ilayishwa esipheqululini sakho. Lawa ma-Cookie asisiza ekuqinisekiseni ukuthi iwebhusayithi isebenza kahle, ukuthuthukisa ukuphepha, ukuhlinzeka ngolwazi olungcono lomsebenzisi, kanye nokuhlaziya ukusebenza ukuze kutholwe ukuthi kusebenza kahle futhi lapho kudingeka ukuthuthukiswa khona."
+
+================================================================================
+HOW WE USE COOKIES
+================================================================================
+how.title = "Sisebenzisa kanjani ama-Cookie?"
+how.body = "Njengezinsizakalo eziningi ze-inthanethi, iwebhusayithi yethu isebenzisa ama-Cookie okuqala kanye nama-Cookie esithathu ngezinhloso ezahlukene. Ama-Cookie okuqala adingeka kakhulu ukuze iwebhusayithi isebenze kahle futhi awaqoqi idatha engakhomba umuntu siqu.<br><br>Ama-Cookie esithathu asetshenziswa kwiwebhusayithi yethu asisiza ikakhulukazi ekuqondeni ukuthi iwebhusayithi isebenza kanjani, ukulandelela ukuthi uxhumana kanjani nayo, ukugcina izinsizakalo zethu ziphephile, ukuhlinzeka ngokukhangisa okufanelekile, kanye nokuthuthukisa ulwazi lwakho lomsebenzisi jikelele kanye nokusheshisa ukuxhumana kwakho kwesikhathi esizayo newebhusayithi yethu."
+
+================================================================================
+NECESSARY COOKIES
+================================================================================
+necessary.title = "Ama-Cookie adingekayo"
+necessary.description = "Ama-Cookie adingekayo ayadingeka ukuze anikeze izici eziyisisekelo zalesi sayithi, njengokuhlinzeka ngokungena okuphephile noma ukulungisa izintandokazi zakho zemvume. Lawa ma-Cookie awagcini idatha engakhomba umuntu siqu."
+necessary.tableHeaders.cookie = "Cookie"
+necessary.tableHeaders.duration = "Isikhathi"
+necessary.tableHeaders.description = "Incazelo"
+
+# Cookie table entries (translate descriptions only):
+necessary.cookies[0].desc = "Leli Cookie lisetshenziselwa ukugcina izintandokazi zemali yomsebenzisi."
+necessary.cookies[1].desc = "Incazelo ayikatholakali okwamanje."
+necessary.cookies[2].desc = "Incazelo ayikatholakali okwamanje."
+necessary.cookies[3].desc = "Ayikho incazelo etholakalayo."
+necessary.cookies[4].desc = "Incazelo ayikatholakali okwamanje."
+necessary.cookies[5].desc = "Incazelo ayikatholakali okwamanje."
+
+================================================================================
+FUNCTIONAL COOKIES
+================================================================================
+functional.title = "Ama-Cookie okusebenzayo"
+functional.description = "Ama-Cookie okusebenzayo asisiza ekwenzeni izinto ezithile njengokwabelana ngokuqukethwe kwewebhusayithi ezinkundleni zokuxhumana, ukuqoqa impendulo, kanye nezinye izici zesithathu."
+functional.tableHeaders.cookie = "Cookie"
+functional.tableHeaders.duration = "Isikhathi"
+functional.tableHeaders.description = "Incazelo"
+
+functional.cookies[0].desc = "I-Facebook isetha leli Cookie ukuze ithuthukise ulwazi lomsebenzisi lokudlulisa kwiwebhusayithi, futhi inikeze umsebenzisi ngokukhangisa okufanelekile ngenkathi esebenzisa izinkundla zokuxhumana ze-Facebook."
+
+================================================================================
+ANALYTICS COOKIES
+================================================================================
+analytics.title = "Ama-Cookie okuhlaziya"
+analytics.description = "Ama-Cookie okuhlaziya asetshenziselwa ukuqonda ukuthi izivakashi zixhumana kanjani newebhusayithi. Lawa ma-Cookie asisiza ekuhlinzekeni ulwazi ngezilinganiso ezifana nenani lezivakashi, izinga lokugxuma, umthombo wethrafikhi, njll."
+analytics.tableHeaders.cookie = "Cookie"
+analytics.tableHeaders.duration = "Isikhathi"
+analytics.tableHeaders.description = "Incazelo"
+
+analytics.cookies[0].desc = "I-Google Analytics isetha leli Cookie ukuze libale idatha yesivakashi, iseshini kanye nedatha yomkhankaso futhi lilandelele ukusetshenziswa kwesayithi ukuze kwenziwe umbiko wokuhlaziya wesayithi. I-Cookie igcina ulwazi ngokungaziwa futhi inikeza inombolo eyakhiwe ngokungahleliwe ukuze ibone izivakashi ezihlukile."
+analytics.cookies[1].desc = "I-Google Analytics isetha leli Cookie ukuze ligcine futhi libale ukubukwa kwekhasi."
+analytics.cookies[2].desc = "I-Google Analytics isetha leli Cookie ukuze ligcine ulwazi lokuthi izivakashi zisebenzisa kanjani iwebhusayithi kuyilapho futhi lidala umbiko wokuhlaziya wokusebenza kwewebhusayithi. Ezinye zedatha eqoqiwe zifaka inani lezivakashi, umthombo wazo, kanye namakhasi abavakashele ngokungaziwa."
+analytics.cookies[3].desc = "I-Google Analytics isetha leli Cookie ukuze lilandelele ukuziphatha komsebenzisi."
+analytics.cookies[4].desc = "I-Cookie ye-pardot isethwa ngenkathi isivakashi singene njengomsebenzisi we-Pardot. I-Cookie ikhombisa iseshini esebenzayo futhi ayisetshenziselwa ukulandela."
+
+================================================================================
+ADVERTISEMENT COOKIES
+================================================================================
+advertisement.title = "Ama-Cookie okukhangisa"
+advertisement.description = "Ama-Cookie okukhangisa asetshenziselwa ukuhlinzeka izivakashi ngokukhangisa okwenziwe ngokwezifiso ngokuya ngamakhasi owavakashele ngaphambilini kanye nokuhlaziya ukusebenza kahle kwemikhankaso yokukhangisa."
+advertisement.tableHeaders.cookie = "Cookie"
+advertisement.tableHeaders.duration = "Isikhathi"
+advertisement.tableHeaders.description = "Incazelo"
+
+advertisement.cookies[0].desc = "I-Google Tag Manager isetha leli Cookie ukuze ihlole ukusebenza kahle kokukhangisa kwewebhusayithi ezisebenzisa izinsizakalo zayo."
+advertisement.cookies[1].desc = "I-doubleclick.net isetha leli Cookie ukuze inqume ukuthi isiphequluli somsebenzisi siyawasekela yini ama-Cookie."
+advertisement.cookies[2].desc = "I-Facebook isetha leli Cookie ukuze ligcine futhi lilandelele ukuxhumana."
+advertisement.cookies[3].desc = "Ama-Cookie e-Google DoubleClick IDE agcina ulwazi lokuthi umsebenzisi usebenzisa kanjani iwebhusayithi ukuze anikeze ngokukhangisa okufanelekile ngokuya ngephrofayili yomsebenzisi."
+
+================================================================================
+MANAGE PREFERENCES
+================================================================================
+manage.title = "Phatha izintandokazi zama-Cookie"
+manage.consentTitle = "Izintandokazi zemvume"
+manage.consentText = "Ungashintsha izilungiselelo zakho zama-Cookie noma nini ngokuchofoza inkinobho ethi 'Izintandokazi zemvume' ngenhla. Lokhu kuzokuvumela ukuthi uphinde uvakashele isibhengezo semvume yama-Cookie futhi ubuyekeze izintandokazi zakho noma uhoxise imvume yakho ngokushesha."
+manage.browserText = "Ngaphezu kwalokho, iziphequluli ezahlukene zinikeza izindlela ezahlukene zokuvimba nokususa ama-Cookie asetshenziswa amawebhusayithi. Ungashintsha izilungiselelo zesiphequluli sakho ukuze uvimbe noma ususe ama-Cookie. Ngezansi kunezixhumanisi zemibhalo exhasayo yokuphatha nokususa ama-Cookie ezinhlotsheni ezinkulu zesiphequluli."
+manage.browsers.chrome = "Chrome"
+manage.browsers.safari = "Safari"
+manage.browsers.firefox = "Firefox"
+manage.browsers.ie = "Internet Explorer"
+manage.browsers.other = "Uma usebenzisa esinye isiphequluli sewebhu, sicela ubheke imibhalo yayo esemthethweni exhasayo."
+
+================================================================================
+END OF COOKIE POLICY
+================================================================================
