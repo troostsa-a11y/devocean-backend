@@ -74,7 +74,7 @@
 
   /* ---------- dynamic AUTO seeding BEFORE hydration ---------- */
   (function seed() {
-    var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz", "sv"];
+    var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz", "sv", "pl", "ja", "zh", "ru", "af", "zu", "sw"];
     var src = readLS("site.lang_source") || "auto";
     var lang = readLS("site.lang");
     var cur = readLS("site.currency");
