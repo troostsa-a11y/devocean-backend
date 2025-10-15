@@ -13,34 +13,19 @@
 
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
-  console.log('[smartBack] Function called');
-  
   // Try to get the stored referrer first (most reliable)
   const storedReferrer = sessionStorage.getItem('legalPageReferrer');
   const referrer = storedReferrer || document.referrer;
-  
-  console.log('[smartBack] Stored referrer:', storedReferrer);
-  console.log('[smartBack] Document referrer:', document.referrer);
-  console.log('[smartBack] Final referrer:', referrer);
-  console.log('[smartBack] History length:', window.history.length);
   
   // Clear the stored referrer after using it
   if (storedReferrer) {
     sessionStorage.removeItem('legalPageReferrer');
   }
   
-  // Check if there's browser history to go back to (internal navigation)
-  if (window.history.length > 1 && referrer && referrer.indexOf(window.location.host) !== -1) {
-    // Same-site navigation - use browser back
-    console.log('[smartBack] Using browser back()');
-    window.history.back();
-  } else if (referrer) {
-    // External referrer (like Hotelrunner) - redirect to referrer
-    console.log('[smartBack] Redirecting to referrer:', referrer);
+  // Always redirect to referrer or home (works better in iframes than history.back)
+  if (referrer) {
     window.location.href = referrer;
   } else {
-    // No referrer - go to home page
-    console.log('[smartBack] No referrer, going to home page');
     window.location.href = '/';
   }
 }
