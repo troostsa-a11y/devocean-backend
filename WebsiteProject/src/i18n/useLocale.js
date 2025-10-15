@@ -282,6 +282,21 @@ function getCriticalUI(lang) {
     contact: {
       bookNow: nav.bookNow
     },
+    // English currency fallbacks to prevent flash when full translations load
+    currencies: {
+      USD: "US-Dollar",
+      JPY: "Yen",
+      CNY: "RMB",
+      RUB: "Ruble",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      TZS: "TZ Shilling",
+      KES: "KE Shilling",
+      EUR: "Euro",
+      GBP: "GB-Pound",
+      SEK: "Krona",
+      PLN: "Zloty"
+    },
     // Minimal placeholders for other sections (will be replaced when full translations load)
     hero: { ctaPrimary: nav.bookNow },
     stay: { moreDetails: "..." },
