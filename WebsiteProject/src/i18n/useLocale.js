@@ -102,7 +102,7 @@ const CONTINENT_MERIDIANS = {
 // Booking engine locale mapping (base, can be overridden by region)
 export const LOCALE_BY_LANG = {
   en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "sw-KE",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "sw",
 };
 
 // Region-specific locale overrides for Portuguese
