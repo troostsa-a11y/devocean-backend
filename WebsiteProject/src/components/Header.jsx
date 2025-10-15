@@ -11,7 +11,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
   // Define regions with metadata
   const regions = {
     europe: { name: 'Europe', short: 'EU', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'], currencies: ['USD', 'EUR', 'GBP', 'SEK', 'PLN'] },
-    asia: { name: 'Asia', short: 'AS', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] },
+    asia: { name: 'Asia', short: 'AS', languages: ['en', 'ja'], currencies: ['USD', 'JPY', 'EUR', 'GBP'] },
     americas: { name: 'Americas', short: 'AM', languages: ['en', 'es', 'fr'], currencies: ['USD', 'EUR', 'GBP'] },
     africa: { name: 'Africa', short: 'AF', languages: ['en', 'fr', 'pt'], currencies: ['USD', 'MZN', 'ZAR', 'EUR', 'GBP'] },
     oceania: { name: 'Oceania', short: 'OC', languages: ['en'], currencies: ['USD', 'EUR', 'GBP'] }
@@ -32,6 +32,10 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     // Special case: Portuguese + Europe region → auto-switch to EUR
     else if (lang === 'pt' && newRegion === 'europe' && currency !== 'EUR') {
       onCurrencyChange('EUR');
+    }
+    // Special case: Japanese + Asia region → auto-switch to JPY
+    else if (lang === 'ja' && newRegion === 'asia' && currency !== 'JPY') {
+      onCurrencyChange('JPY');
     }
     // If current currency is not available in the new region, switch to USD
     else if (!regions[newRegion].currencies.includes(currency)) {
@@ -157,6 +161,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               {regions[region].languages.includes('es') && <option value="es">Español</option>}
               {regions[region].languages.includes('sv') && <option value="sv">Svenska</option>}
               {regions[region].languages.includes('pl') && <option value="pl">Polski</option>}
+              {regions[region].languages.includes('ja') && <option value="ja">日本語</option>}
             </select>
 
             <select
@@ -165,6 +170,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               className="border border-white/40 rounded px-2 py-1 w-[80px] text-white"
             >
               {regions[region].currencies.includes('USD') && <option value="USD">US-Dollar</option>}
+              {regions[region].currencies.includes('JPY') && <option value="JPY">Yen</option>}
               {regions[region].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
               {regions[region].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
               {regions[region].currencies.includes('EUR') && <option value="EUR">Euro</option>}

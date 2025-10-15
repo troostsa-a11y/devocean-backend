@@ -49,10 +49,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Local component state with React hooks
 
 **Internationalization:**
-- React-based i18n with lazy-loaded translations across 10 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish).
+- React-based i18n with lazy-loaded translations across 11 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Japanese).
 - Vanilla JavaScript i18n for static legal pages.
-- Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN with browser-based inference.
+- Currency support: USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY with browser-based inference.
 - Region-based language and currency selector with dynamic filtering based on continents.
+- **Japanese Language Support (Oct 15):** Complete Japanese (ja) translations added including main UI, critical nav, and all 5 legal pages. Hotelrunner booking integration configured with ja-JP locale and JPY currency. Auto-switches to JPY when Japanese language + Asia region selected.
 - **IP-Based Geolocation (Oct 14):** Cloudflare automatically injects visitor country code via middleware for accurate region detection. Browser language detection serves as fallback for local development. Eliminates French-in-Asia and eSwatini mapping issues.
 - **Currency Detection Fix (Oct 12):** Fixed useState initialization bug where `lang` variable was undefined during currency/region detection. Now properly calls `pickInitialLang()` to ensure correct language context during initialization.
 - **Continent Mapping Fixes (Oct 14):** 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
 const SUPPORTED_LANGS = ["en", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja"];
-const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN"];
+const ALLOWED_CURRENCIES = ["USD", "MZN", "ZAR", "EUR", "GBP", "SEK", "PLN", "JPY"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
 const CC_TO_CURRENCY = {
@@ -12,6 +12,7 @@ const CC_TO_CURRENCY = {
   ZA: "ZAR", MZ: "MZN",
   SE: "SEK",
   PL: "PLN",
+  JP: "JPY",
 };
 
 // Map country codes to continents (comprehensive)
