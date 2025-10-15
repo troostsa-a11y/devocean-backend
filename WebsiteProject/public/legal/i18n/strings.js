@@ -6279,8 +6279,7 @@
           }
         }
       }
-    }
-  };
+    };
 
   // -------- AFRIKAANS --------
   window.LEGAL_DICT.af = {
@@ -6819,8 +6818,7 @@
           }
         }
       }
-    }
-  };
+    };
 
   // -------- ZULU --------
   window.LEGAL_DICT.zu = {
@@ -7362,8 +7360,7 @@
           emergencyPhoneNote: "Ngemibuzo ephuthumayo ngaphandle kwamahora okusebenza"
         }
       }
-    }
-  };
+    };
 
   // -------- SWAHILI --------
   window.LEGAL_DICT.sw = {
@@ -7893,7 +7890,6 @@
           emergencyPhoneNote: "Kwa maswala ya dharura nje ya saa za kazi"
         }
       }
-    }
-  };
+    };
   
 })();
