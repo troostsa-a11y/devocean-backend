@@ -200,16 +200,16 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
               onChange={(e) => onCurrencyChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[80px] text-white"
             >
-              {regions[region].currencies.includes('USD') && <option value="USD">US-Dollar</option>}
-              {regions[region].currencies.includes('JPY') && <option value="JPY">Yen</option>}
-              {regions[region].currencies.includes('CNY') && <option value="CNY">Yuan</option>}
-              {regions[region].currencies.includes('RUB') && <option value="RUB">Ruble</option>}
-              {regions[region].currencies.includes('MZN') && <option value="MZN">Meticais</option>}
-              {regions[region].currencies.includes('ZAR') && <option value="ZAR">Rand</option>}
-              {regions[region].currencies.includes('EUR') && <option value="EUR">Euro</option>}
-              {regions[region].currencies.includes('GBP') && <option value="GBP">GB-Pound</option>}
-              {regions[region].currencies.includes('SEK') && <option value="SEK">Krona</option>}
-              {regions[region].currencies.includes('PLN') && <option value="PLN">Zloty</option>}
+              {regions[region].currencies.includes('USD') && <option value="USD">{ui.currencies?.USD || 'US-Dollar'}</option>}
+              {regions[region].currencies.includes('JPY') && <option value="JPY">{ui.currencies?.JPY || 'Yen'}</option>}
+              {regions[region].currencies.includes('CNY') && <option value="CNY">{ui.currencies?.CNY || 'Yuan'}</option>}
+              {regions[region].currencies.includes('RUB') && <option value="RUB">{ui.currencies?.RUB || 'Ruble'}</option>}
+              {regions[region].currencies.includes('MZN') && <option value="MZN">{ui.currencies?.MZN || 'Meticais'}</option>}
+              {regions[region].currencies.includes('ZAR') && <option value="ZAR">{ui.currencies?.ZAR || 'Rand'}</option>}
+              {regions[region].currencies.includes('EUR') && <option value="EUR">{ui.currencies?.EUR || 'Euro'}</option>}
+              {regions[region].currencies.includes('GBP') && <option value="GBP">{ui.currencies?.GBP || 'GB-Pound'}</option>}
+              {regions[region].currencies.includes('SEK') && <option value="SEK">{ui.currencies?.SEK || 'Krona'}</option>}
+              {regions[region].currencies.includes('PLN') && <option value="PLN">{ui.currencies?.PLN || 'Zloty'}</option>}
             </select>
           </div>
         </div>

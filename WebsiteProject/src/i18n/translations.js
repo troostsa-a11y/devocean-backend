@@ -46,6 +46,18 @@ export const UI = {
       rights: "All rights reserved.",
       desc: "Family-run eco-hospitality and community projects in Southern Mozambique.",
     },
+    currencies: {
+      USD: "US-Dollar",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Ruble",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "GB-Pound",
+      SEK: "Krona",
+      PLN: "Zloty"
+    },
     legal: {
       title: "Legal",
       privacy: "Privacy Policy",
@@ -103,6 +115,18 @@ export const UI = {
       rights: "Todos os direitos reservados.",
       desc: "Hospitalidade ecológica gerida pela família e projetos comunitários no sul de Moçambique.",
     },
+    currencies: {
+      USD: "Dólar",
+      JPY: "Iene",
+      CNY: "Yuan",
+      RUB: "Rublo",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Libra",
+      SEK: "Coroa",
+      PLN: "Zloty"
+    },
     legal: {
       title: "Legal",
       privacy: "Política de Privacidade",
@@ -158,6 +182,18 @@ export const UI = {
     galleryHeading: "Galerij",
     footer: {
       rights: "Alle rechten voorbehouden.", desc: "Familie-gerunde, milieuvriendelijke gastvrijheid en gemeenschapsprojecten in Zuid-Mozambique.",
+    },
+    currencies: {
+      USD: "US-Dollar",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Roebel",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Pond",
+      SEK: "Kroon",
+      PLN: "Zloty"
     },
     legal: {
       title: "Juridisch",
@@ -279,6 +315,18 @@ export const UI = {
       desc:
         "Hôtellerie familiale et écoresponsable, avec des projets communautaires dans le sud du Mozambique."
     },
+    currencies: {
+      USD: "Dollar US",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Rouble",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Livre",
+      SEK: "Couronne",
+      PLN: "Zloty"
+    },
     legal: {
       title: "Mentions légales",
       privacy: "Politique de confidentialité",
@@ -335,6 +383,18 @@ export const UI = {
     footer: {
       rights: "Tutti i diritti riservati.", desc: "Ospitalità eco a conduzione familiare e progetti comunitari nel sud del Mozambico.",
     },
+    currencies: {
+      USD: "Dollaro",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Rublo",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Sterlina",
+      SEK: "Corona",
+      PLN: "Zloty"
+    },
     legal: {
       title: "Legale",
       privacy: "Informativa sulla privacy",
@@ -390,6 +450,18 @@ export const UI = {
     galleryHeading: "Galerie",
     footer: {
       rights: "Alle Rechte vorbehalten.", desc: "Familiengeführte, umweltfreundliche Gastfreundschaft und Gemeinschaftsprojekte im Süden Mosambiks.",
+    },
+    currencies: {
+      USD: "US-Dollar",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Rubel",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Pfund",
+      SEK: "Krone",
+      PLN: "Zloty"
     },
     legal: {
       title: "Rechtliches",
@@ -448,6 +520,18 @@ export const UI = {
     footer: {
       rights: "Todos los derechos reservados.", desc: "Hospitalidad ecológica familiar y proyectos comunitarios en el sur de Mozambique.",
     },
+    currencies: {
+      USD: "Dólar",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Rublo",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Libra",
+      SEK: "Corona",
+      PLN: "Zloty"
+    },
     legal: {
       title: "Legal",
       privacy: "Política de privacidad",
@@ -504,6 +588,18 @@ export const UI = {
     footer: {
       rights: "Alla rättigheter förbehållna.",
       desc: "Familjeägd, miljövänlig gästfrihet och samhällsprojekt i södra Moçambique.",
+    },
+    currencies: {
+      USD: "US-Dollar",
+      JPY: "Yen",
+      CNY: "Yuan",
+      RUB: "Rubel",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Pund",
+      SEK: "Krona",
+      PLN: "Zloty"
     },
     legal: {
       title: "Juridiskt",
@@ -562,6 +658,18 @@ export const UI = {
       rights: "Wszelkie prawa zastrzeżone.",
       desc: "Rodzinna eko-gościnność i projekty społecznościowe w południowym Mozambiku.",
     },
+    currencies: {
+      USD: "Dolar",
+      JPY: "Jen",
+      CNY: "Juan",
+      RUB: "Rubel",
+      MZN: "Meticais",
+      ZAR: "Rand",
+      EUR: "Euro",
+      GBP: "Funt",
+      SEK: "Korona",
+      PLN: "Złoty"
+    },
     legal: {
       title: "Prawne",
       privacy: "Polityka prywatności",
@@ -619,6 +727,18 @@ export const UI = {
       rights: "すべての権利を保有。",
       desc: "モザンビーク南部のファミリーレートなエコホスピタリティとコミュニティプロジェクト。",
     },
+    currencies: {
+      USD: "米ドル",
+      JPY: "円",
+      CNY: "人民元",
+      RUB: "ルーブル",
+      MZN: "メティカル",
+      ZAR: "ランド",
+      EUR: "ユーロ",
+      GBP: "ポンド",
+      SEK: "クローナ",
+      PLN: "ズウォティ"
+    },
     legal: {
       title: "法的",
       privacy: "プライバシーポリシー",
@@ -674,6 +794,18 @@ export const UI = {
     footer: {
       rights: "保留所有权利。",
       desc: "莫桑比克南部的家庭式环保款待与社区项目。",
+    },
+    currencies: {
+      USD: "美元",
+      JPY: "日元",
+      CNY: "人民币",
+      RUB: "卢布",
+      MZN: "梅蒂卡尔",
+      ZAR: "兰特",
+      EUR: "欧元",
+      GBP: "英镑",
+      SEK: "克朗",
+      PLN: "兹罗提"
     },
     legal: {
       title: "法律",
@@ -731,6 +863,18 @@ export const UI = {
     footer: {
       rights: "Все права защищены.",
       desc: "Семейное экологичное гостеприимство и общественные проекты в Южном Мозамбике.",
+    },
+    currencies: {
+      USD: "Доллар",
+      JPY: "Иена",
+      CNY: "Юань",
+      RUB: "Рубль",
+      MZN: "Метикал",
+      ZAR: "Ранд",
+      EUR: "Евро",
+      GBP: "Фунт",
+      SEK: "Крона",
+      PLN: "Злотый"
     },
     legal: {
       title: "Юридическая информация",
@@ -1411,6 +1555,18 @@ export const L10N = {
       rights: "保留所有权利。",
       desc: "莫桑比克南部的家庭式环保款待与社区项目。",
     },
+    currencies: {
+      USD: "美元",
+      JPY: "日元",
+      CNY: "人民币",
+      RUB: "卢布",
+      MZN: "梅蒂卡尔",
+      ZAR: "兰特",
+      EUR: "欧元",
+      GBP: "英镑",
+      SEK: "克朗",
+      PLN: "兹罗提"
+    },
     legal: {
       title: "法律",
       privacy: "隐私政策",
@@ -1516,6 +1672,18 @@ export const L10N = {
     footer: {
       rights: "Все права защищены.",
       desc: "Семейное экологичное гостеприимство и общественные проекты в Южном Мозамбике.",
+    },
+    currencies: {
+      USD: "Доллар",
+      JPY: "Иена",
+      CNY: "Юань",
+      RUB: "Рубль",
+      MZN: "Метикал",
+      ZAR: "Ранд",
+      EUR: "Евро",
+      GBP: "Фунт",
+      SEK: "Крона",
+      PLN: "Злотый"
     },
     legal: {
       title: "Юридическая информация",
