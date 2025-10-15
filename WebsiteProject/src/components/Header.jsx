@@ -74,21 +74,22 @@ export default function Header({ ui, lang, currency, region, onLangChange, onCur
     onLangChange(newLang);
     
     // Auto-switch to language-specific currencies when available in current region
+    // African-specific languages (Zulu, Swahili, Afrikaans) always use their currencies regardless of region
+    if (newLang === 'zu' && currency !== 'ZAR') {
+      onCurrencyChange('ZAR');
+    }
+    else if (newLang === 'sw' && currency !== 'TZS') {
+      onCurrencyChange('TZS');
+    }
+    else if (newLang === 'af' && currency !== 'ZAR') {
+      onCurrencyChange('ZAR');
+    }
     // Africa region
-    if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
+    else if (newLang === 'pt' && region === 'africa' && regions[region].currencies.includes('MZN') && currency !== 'MZN') {
       onCurrencyChange('MZN');
     }
     else if (newLang === 'en' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
       onCurrencyChange('ZAR');
-    }
-    else if (newLang === 'af' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (newLang === 'zu' && region === 'africa' && regions[region].currencies.includes('ZAR') && currency !== 'ZAR') {
-      onCurrencyChange('ZAR');
-    }
-    else if (newLang === 'sw' && region === 'africa' && regions[region].currencies.includes('TZS') && currency !== 'TZS') {
-      onCurrencyChange('TZS');
     }
     // Europe region
     else if (newLang === 'en' && region === 'europe' && regions[region].currencies.includes('GBP') && currency !== 'GBP') {
