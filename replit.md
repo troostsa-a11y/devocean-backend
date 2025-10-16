@@ -38,11 +38,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Internationalization:**
     - React-based i18n with lazy-loaded translations for 16 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Swahili, Japanese, Mandarin Chinese, Russian).
     - Vanilla JavaScript i18n for static legal pages.
-    - Currency support for USD, MZN, ZAR, EUR, GBP, SEK, PLN, JPY, CNY, RUB, TZS, KES with browser-based inference and region-based selection.
+    - **Language Detection:** Multi-tier system prioritizing localStorage → browser language → IP-based country mapping (`CC_TO_LANGUAGE`) → English fallback. Ensures Japanese visitors see Japanese content even with English-configured browsers.
+    - **Currency Detection:** Auto-assignment based on visitor's country legal tender via `CC_TO_CURRENCY` mapping (e.g., JP→JPY, CN→CNY, RU→RUB).
     - Full translation coverage for all legal pages and content across all 16 languages.
-    - Intelligent currency pairing with language selection (e.g., Japanese→JPY, Chinese→CNY, Russian→RUB, Afrikaans→ZAR) with manual override.
+    - Intelligent currency pairing with language selection with manual override capability.
     - Cloudflare IP Geolocation for accurate region and country detection (`window.__CF_COUNTRY__`), with a fallback to Europe. Comprehensive country mapping for 80+ countries.
-    - Auto-currency assignment based on visitor's country legal tender via `CC_TO_CURRENCY` mapping.
     - US English support (`en-US`) with USD currency, distinct from UK English.
     - CCPA compliance with "Do Not Sell My Info" footer link and CookieYes integration for US visitors.
 - **Performance Optimizations:** Critical Translations Pattern for instant mobile menu rendering, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion using LazyMotion, GTM with delayed load.

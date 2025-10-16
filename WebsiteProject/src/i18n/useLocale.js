@@ -90,6 +90,58 @@ const CC_TO_CONTINENT = {
   PF: "oceania", WS: "oceania", TO: "oceania", VU: "oceania", SB: "oceania",
 };
 
+// Map country codes to primary language (IP-based fallback)
+const CC_TO_LANGUAGE = {
+  // English-speaking countries
+  US: "en-us", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en", 
+  ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en", 
+  SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en", 
+  BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
+  
+  // Portuguese-speaking countries
+  PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
+  
+  // Dutch-speaking countries
+  NL: "nl", BE: "nl", SR: "nl",
+  
+  // French-speaking countries  
+  FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr", 
+  SN: "fr", CI: "fr", CM: "fr", DJ: "fr", NC: "fr", PF: "fr",
+  
+  // Italian-speaking countries
+  IT: "it", SM: "it", VA: "it",
+  
+  // German-speaking countries
+  DE: "de", AT: "de", LI: "de",
+  
+  // Spanish-speaking countries
+  ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
+  CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
+  HN: "es", PY: "es", SV: "es", NI: "es", CR: "es", PA: "es",
+  UY: "es", GQ: "es",
+  
+  // Swedish-speaking countries
+  SE: "sv", FI: "sv",
+  
+  // Polish-speaking countries
+  PL: "pl",
+  
+  // Japanese-speaking countries
+  JP: "ja",
+  
+  // Chinese-speaking countries/regions
+  CN: "zh", HK: "zh", TW: "zh", SG: "zh",
+  
+  // Russian-speaking countries
+  RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
+  
+  // Afrikaans-speaking countries
+  ZA: "af", NA: "af",
+  
+  // Swahili-speaking countries
+  KE: "sw", TZ: "sw", UG: "sw",
+};
+
 // Meridian-based continent detection using GMT offsets
 const CONTINENT_MERIDIANS = {
   americas: { base: -5, min: -11, max: -3 },
@@ -184,12 +236,10 @@ function pickInitialLang() {
   const stored = localStorage.getItem("site.lang");
   if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
 
-  // Auto-detect US visitors via IP and default to en-us
+  // Get country code for IP-based fallback
   const cc = getCountryCode();
-  if (cc === "US") {
-    return "en-us";
-  }
 
+  // Check browser language preferences first
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
@@ -206,6 +256,14 @@ function pickInitialLang() {
     const base = lower.split("-")[0];
     if (SUPPORTED_LANGS.includes(base)) return base;
   }
+
+  // Fallback: Use IP-based country → language mapping
+  // This catches visitors with non-local browser settings (e.g., English browser in Japan)
+  if (cc && CC_TO_LANGUAGE[cc]) {
+    return CC_TO_LANGUAGE[cc];
+  }
+
+  // Final fallback to English
   return "en";
 }
 
