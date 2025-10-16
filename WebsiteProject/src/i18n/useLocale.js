@@ -94,7 +94,7 @@ const CC_TO_CONTINENT = {
 const CC_TO_LANGUAGE = {
   // English-speaking countries
   US: "en-us", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en", 
-  ZA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en", 
+  ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en", 
   SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en", 
   BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
   
@@ -134,9 +134,6 @@ const CC_TO_LANGUAGE = {
   
   // Russian-speaking countries
   RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
-  
-  // Afrikaans-speaking countries
-  NA: "af",
   
   // Swahili-speaking countries
   KE: "sw", TZ: "sw", UG: "sw",
