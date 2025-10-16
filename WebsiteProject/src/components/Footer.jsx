@@ -18,6 +18,19 @@ export default function Footer({ units, experiences, ui }) {
     }
   };
 
+  // Countries that require cookie consent (GDPR/CCPA)
+  const CONSENT_REQUIRED_COUNTRIES = [
+    // EU/EEA (GDPR)
+    'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
+    'IS', 'LI', 'NO', // EEA non-EU
+    'GB', // UK (GDPR)
+    'US', // USA (CCPA)
+  ];
+
+  // Check if user is from a country that requires consent
+  const countryCode = typeof window !== 'undefined' ? window.__CF_COUNTRY__ : null;
+  const showConsentLink = !countryCode || CONSENT_REQUIRED_COUNTRIES.includes(countryCode);
+
   return (
     <footer className="bg-slate-900 text-slate-200">
       <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-5 gap-8">
@@ -117,14 +130,16 @@ export default function Footer({ units, experiences, ui }) {
             <li><a className="hover:text-white" href="/legal/terms.html">{ui?.legal?.terms ?? "Terms & Conditions"}</a></li>
             <li><a className="hover:text-white" href="/legal/GDPR.html">{ui?.legal?.gdpr ?? "GDPR Info"}</a></li>
             <li><a className="hover:text-white" href="/legal/CRIC.html">{ui?.legal?.cric ?? "Consumer Rights & Contact"}</a></li>
-            <li>
-              <a 
-                href="#"
-                className="cky-banner-element hover:text-white cursor-pointer"
-              >
-                {ui?.legal?.ccpa ?? "Do Not Sell My Info"}
-              </a>
-            </li>
+            {showConsentLink && (
+              <li>
+                <a 
+                  href="#"
+                  className="cky-banner-element hover:text-white cursor-pointer"
+                >
+                  {ui?.legal?.ccpa ?? "Do Not Sell My Info"}
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
