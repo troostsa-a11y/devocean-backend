@@ -373,24 +373,54 @@ async function applyTranslations(lang) {
       const unitData = translations[unitType];
       console.log('Applying unit translations for:', unitType, lang);
       
-      // Update title
-      const titleEl = document.querySelector('.dl-title');
-      if (titleEl && unitData.title) {
-        // Keep the existing HTML structure but update just the text content
-        titleEl.innerHTML = unitData.title.replace(' + ', ' <span>+</span> ');
+      // Update eyebrow (unit type badge)
+      const eyebrowEl = document.querySelector('.dl-eyebrow');
+      if (eyebrowEl && unitData.title) {
+        eyebrowEl.textContent = unitData.title;
       }
       
-      // Update short description (subtitle)
+      // Update main title - try to preserve any + symbol styling
+      const titleEl = document.querySelector('.dl-title');
+      if (titleEl && unitData.title) {
+        // If title contains '+', wrap it in span for styling
+        if (unitData.title.includes(' + ')) {
+          titleEl.innerHTML = unitData.title.replace(' + ', ' <span>+</span> ');
+        } else {
+          titleEl.textContent = unitData.title;
+        }
+      }
+      
+      // Update short description (hero subtitle)
       const subEl = document.querySelector('.dl-sub');
       if (subEl && unitData.shortDescription) {
         subEl.textContent = unitData.shortDescription;
       }
       
-      // Update detailed features if available
+      // Update all bullet points with detailedFeatures
       if (unitData.detailedFeatures && Array.isArray(unitData.detailedFeatures)) {
-        // This would require more specific HTML structure mapping
-        // For now, log that we have the data
-        console.log('Unit features available:', unitData.detailedFeatures.length);
+        const bulletLists = document.querySelectorAll('ul.dl-proofs');
+        let featureIndex = 0;
+        
+        bulletLists.forEach(list => {
+          const items = list.querySelectorAll('li');
+          items.forEach(item => {
+            if (featureIndex < unitData.detailedFeatures.length) {
+              // Preserve the icon span, just update the text
+              const iconSpan = item.querySelector('.i');
+              const feature = unitData.detailedFeatures[featureIndex];
+              
+              if (iconSpan) {
+                item.innerHTML = iconSpan.outerHTML + ' ' + feature;
+              } else {
+                item.textContent = feature;
+              }
+              
+              featureIndex++;
+            }
+          });
+        });
+        
+        console.log(`Updated ${featureIndex} features from ${unitData.detailedFeatures.length} available`);
       }
     }
   }
