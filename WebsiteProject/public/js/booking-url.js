@@ -6,29 +6,23 @@
 
 // Booking engine locale mapping (matches React app)
 const LOCALE_BY_LANG = {
-  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
+  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", 
-  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-za": "af-ZA", zu: "en-GB", sw: "sw",
+  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw",
 };
 
 /**
- * Get booking locale with smart currency-based mapping
- * Mirrors the React app's getBookingLocale() function
- * Note: Hotelrunner only supports pt-PT and pt-BR (not pt-MZ)
+ * Get booking locale - direct mapping from language code
+ * Note: Hotelrunner supports pt-PT and pt-BR
  */
 function getBookingLocale(lang, currency) {
-  // Handle Portuguese - use region-aware locale (Hotelrunner only supports pt-PT and pt-BR)
-  if (lang === 'pt') {
-    if (currency === 'EUR') return 'pt-PT'; // Portugal
-    return 'pt-BR'; // Brazil, Mozambique, Angola (use Brazilian variant)
+  // Direct mapping for all languages (including pt-PT and pt-BR)
+  if (LOCALE_BY_LANG[lang]) {
+    return LOCALE_BY_LANG[lang];
   }
   
-  // Handle English - distinguish US from UK
-  if (lang === 'en-us') return 'en-US';
-  if (lang === 'en') return 'en-GB';
-  
-  // Standard language mappings (Afrikaans always af-ZA, currency is separate parameter)
-  return LOCALE_BY_LANG[lang] || "en-GB";
+  // Fallback to UK English
+  return "en-GB";
 }
 
 /**

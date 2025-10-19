@@ -5,20 +5,20 @@
 
 // Supported languages (must match main site)
 const SUPPORTED_LANGS = [
-  "en", "en-us", "pt", "nl", "fr", "it", "de", "es",
-  "sv", "pl", "af", "zu", "sw", "ja", "zh", "ru"
+  "en", "en-US", "pt-PT", "pt-BR", "nl", "fr", "it", "de", "es",
+  "sv", "pl", "af-ZA", "zu", "sw", "ja", "zh", "ru"
 ];
 
 // Map country codes to primary language (IP-based fallback)
 const CC_TO_LANGUAGE = {
   // English-speaking countries
-  US: "en-us", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
+  US: "en-US", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
   ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en",
   SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en",
   BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
   
   // Portuguese-speaking countries
-  PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
+  PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
   
   // Dutch-speaking countries
   NL: "nl", BE: "nl", SR: "nl",
@@ -202,18 +202,22 @@ const TRANSLATIONS = {
 // Detect language
 function detectLanguage() {
   // 1. Check localStorage
-  const stored = localStorage.getItem('site.language');
+  const stored = localStorage.getItem('site.lang');
   if (stored && SUPPORTED_LANGS.includes(stored)) {
     return stored;
   }
 
   // 2. Check browser language
   const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-  if (SUPPORTED_LANGS.includes(browserLang)) {
-    return browserLang;
-  }
   
-  // Check if it's a variant (e.g., "en-GB" → "en")
+  // Special cases: preserve specific language-region codes with proper capitalization
+  if (browserLang === "en-us" || browserLang.startsWith("en-us")) return "en-US";
+  if (browserLang === "af-za" || browserLang.startsWith("af-za")) return "af-ZA";
+  if (browserLang === "pt-pt" || browserLang.startsWith("pt-pt")) return "pt-PT";
+  if (browserLang === "pt-br" || browserLang.startsWith("pt-br")) return "pt-BR";
+  if (browserLang === "pt-mz" || browserLang.startsWith("pt-mz")) return "pt-BR";
+  
+  // Check if it's a base language we support
   const baseLang = browserLang.split('-')[0];
   if (SUPPORTED_LANGS.includes(baseLang)) {
     return baseLang;
@@ -250,29 +254,37 @@ function detectCurrency() {
 // Get locale for Hotelrunner
 function getHotelrunnerLocale(lang) {
   const localeMap = {
-    'en': 'en-US',
-    'en-us': 'en-US',
-    'pt': 'pt-PT',
+    'en': 'en-GB',
+    'en-US': 'en-US',
+    'pt-PT': 'pt-PT',
+    'pt-BR': 'pt-BR',
     'nl': 'nl-NL',
     'fr': 'fr-FR',
     'it': 'it-IT',
     'de': 'de-DE',
     'es': 'es-ES',
-    'sv': 'sv-SE',
-    'pl': 'pl-PL',
-    'af': 'af-ZA',
-    'zu': 'en-US',
-    'sw': 'en-US',
+    'sv': 'sv',
+    'pl': 'pl',
+    'af-ZA': 'af-ZA',
+    'zu': 'en-GB',
+    'sw': 'sw',
     'ja': 'ja-JP',
     'zh': 'zh-CN',
-    'ru': 'ru-RU'
+    'ru': 'ru'
   };
-  return localeMap[lang] || 'en-US';
+  return localeMap[lang] || 'en-GB';
 }
 
 // Apply translations to page
 function applyTranslations(lang) {
-  const t = TRANSLATIONS.common[lang] || TRANSLATIONS.common['en'];
+  // Map language-region codes to base language keys for translations
+  const translationKey = 
+    (lang === "en-US") ? "en" :
+    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
+    (lang === "af-ZA") ? "af" :
+    lang;
+  
+  const t = TRANSLATIONS.common[translationKey] || TRANSLATIONS.common['en'];
   
   // Update common text elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
