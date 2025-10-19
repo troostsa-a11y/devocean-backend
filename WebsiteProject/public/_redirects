@@ -12,5 +12,25 @@
 /GDPR.html  /GDPR.html  200
 /CRIC.html  /CRIC.html  200
 
+# Hotelrunner locale redirects (from booking engine back navigation)
+/af-ZA  /?lang=af&currency=ZAR  302
+/en-GB  /?lang=en&currency=GBP  302
+/en-US  /?lang=en-us&currency=USD  302
+/pt-PT  /?lang=pt&currency=EUR  302
+/pt-BR  /?lang=pt&currency=BRL  302
+/pt-MZ  /?lang=pt&currency=MZN  302
+/nl-NL  /?lang=nl&currency=EUR  302
+/fr-FR  /?lang=fr&currency=EUR  302
+/it-IT  /?lang=it&currency=EUR  302
+/de-DE  /?lang=de&currency=EUR  302
+/es-ES  /?lang=es&currency=EUR  302
+/sv-SE  /?lang=sv&currency=SEK  302
+/pl-PL  /?lang=pl&currency=PLN  302
+/ja-JP  /?lang=ja&currency=JPY  302
+/zh-CN  /?lang=zh&currency=CNY  302
+/ru-RU  /?lang=ru&currency=RUB  302
+/zu-ZA  /?lang=zu&currency=ZAR  302
+/sw-TZ  /?lang=sw&currency=TZS  302
+
 # SPA fallback for everything else
 /*  /index.html  200
