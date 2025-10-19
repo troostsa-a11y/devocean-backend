@@ -167,6 +167,14 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
             ))}
             <li>
               <a
+                href="/story.html"
+                className="hover:text-[#9e4b13] whitespace-nowrap"
+              >
+                {ui.stay?.ourStory || "Our Story"}
+              </a>
+            </li>
+            <li>
+              <a
                 href={bookUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -222,6 +230,14 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
                 {ui.nav[k]}
               </a>
             ))}
+            <a
+              href="/story.html"
+              data-testid="link-mobile-story"
+              className="block px-4 py-3 hover:bg-slate-50"
+              onClick={() => setMenuOpen(false)}
+            >
+              {ui.stay?.ourStory || "Our Story"}
+            </a>
             <a
               href={bookUrl}
               target="_blank"
