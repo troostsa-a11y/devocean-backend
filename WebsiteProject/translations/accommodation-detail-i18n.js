@@ -229,28 +229,45 @@ function normLang(raw) {
   return "en-GB";
 }
 
+// Get URL parameter
+function getUrlParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
 // Detect language
 function detectLanguage() {
-  // 1. Check localStorage
+  // 1. Check URL parameter (for navigation from main site)
+  const urlLang = getUrlParam('lang');
+  if (urlLang) {
+    const normalized = normLang(urlLang);
+    if (SUPPORTED_LANGS.includes(normalized)) {
+      // Store in localStorage for consistency
+      localStorage.setItem('site.lang', normalized);
+      return normalized;
+    }
+  }
+
+  // 2. Check localStorage
   const stored = localStorage.getItem('site.lang');
   if (stored && SUPPORTED_LANGS.includes(stored)) {
     return stored;
   }
 
-  // 2. Check browser language
+  // 3. Check browser language
   const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
   const normalized = normLang(browserLang);
   if (SUPPORTED_LANGS.includes(normalized)) {
     return normalized;
   }
 
-  // 3. Check Cloudflare IP geolocation
+  // 4. Check Cloudflare IP geolocation
   const countryCode = window.__CF_COUNTRY__ || null;
   if (countryCode && CC_TO_LANGUAGE[countryCode]) {
     return CC_TO_LANGUAGE[countryCode];
   }
 
-  // 4. Default to English
+  // 5. Default to English
   return 'en-GB';
 }
 
