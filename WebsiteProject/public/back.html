@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Returning to DEVOCEAN Lodge...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+      padding: 2rem;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .message {
+      font-size: 1.125rem;
+      opacity: 0.9;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      margin: 2rem auto;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">DEVOCEAN Lodge</div>
+    <div class="spinner"></div>
+    <div class="message">Taking you back...</div>
+  </div>
+
+  <script>
+    (function() {
+      // Try to get return_url from current page URL first (if Hotelrunner supports passing it)
+      const urlParams = new URLSearchParams(window.location.search);
+      const returnUrl = urlParams.get('return_url');
+      
+      if (returnUrl) {
+        // If we have a return_url parameter, use it directly
+        window.location.href = decodeURIComponent(returnUrl);
+        return;
+      }
+      
+      // Otherwise, try to extract language/currency from referrer
+      const referrer = document.referrer;
+      let targetUrl = 'https://devoceanlodge.com/';
+      
+      if (referrer && referrer.includes('devoceanlodge.com')) {
+        // Parse the referrer URL to extract lang/currency parameters
+        try {
+          const refUrl = new URL(referrer);
+          const refParams = new URLSearchParams(refUrl.search);
+          const lang = refParams.get('lang');
+          const currency = refParams.get('currency');
+          
+          // Also check hash parameters (for #stay?lang=ja&currency=JPY)
+          if (!lang && refUrl.hash) {
+            const hashMatch = refUrl.hash.match(/[?&]lang=([^&]+)/);
+            const currencyMatch = refUrl.hash.match(/[?&]currency=([^&]+)/);
+            
+            if (hashMatch && currencyMatch) {
+              targetUrl = `https://devoceanlodge.com/?lang=${hashMatch[1]}&currency=${currencyMatch[1]}`;
+            }
+          } else if (lang && currency) {
+            targetUrl = `https://devoceanlodge.com/?lang=${lang}&currency=${currency}`;
+          }
+        } catch (e) {
+          // If parsing fails, just go to homepage
+          console.error('Error parsing referrer:', e);
+        }
+      }
+      
+      // Redirect after a brief moment for visual feedback
+      setTimeout(function() {
+        window.location.href = targetUrl;
+      }, 300);
+    })();
+  </script>
+</body>
+</html>
