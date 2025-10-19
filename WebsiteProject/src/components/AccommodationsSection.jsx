@@ -6,18 +6,20 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
   return (
     <section id="stay" className="max-w-7xl mx-auto px-4 py-16">
       <div className="flex items-end justify-between gap-6">
-        <div>
+        <div className="flex-1">
           <h2 className="text-3xl md:text-4xl font-bold">{ui.stay.headline}</h2>
-          <p className="mt-2 text-slate-600 max-w-2xl">
-            {ui.stay.blurb}{' '}
+          <div className="mt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <p className="text-slate-600 max-w-2xl">
+              {ui.stay.blurb}
+            </p>
             <a 
               href="/story.html" 
-              className="text-[#9e4b13] hover:underline font-medium"
+              className="text-[#9e4b13] hover:underline font-medium whitespace-nowrap sm:ml-auto"
               data-testid="link-our-story"
             >
               {ui.stay.ourStory} →
             </a>
-          </p>
+          </div>
         </div>
         <a
           href={bookUrl}
