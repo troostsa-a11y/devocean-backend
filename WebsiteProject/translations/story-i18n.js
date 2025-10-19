@@ -315,14 +315,19 @@ async function loadTranslations(lang) {
     if (!response.ok) throw new Error('Failed to load translations');
     const data = await response.json();
     
-    // Map language codes to JSON keys
-    // JSON has: en, en-US, pt-PT, pt-BR, pt-MZ, af, zu, sw, etc.
+    // Map language codes to story JSON keys
+    // Story JSON has: en, en-US, pt-PT, pt-BR, nl, fr, it, de, es, sv, pl, ja, zh, ru, af, zu, sw
+    // Our system uses same base codes, so direct match works for most
     const translationKey = 
-      (lang === "af-ZA") ? "af" : // af-ZA → af (JSON only has "af")
-      lang; // All others use direct match (en-US, pt-PT, pt-BR exist in JSON)
+      (lang === "af-ZA") ? "af" : // af-ZA → af
+      lang; // Direct match: en, en-US, pt-PT, pt-BR, nl, fr, it, de, es, sv, pl, ja, zh, ru, zu, sw
     
     console.log('Loading story translations for:', lang, '→', translationKey);
-    return data[translationKey] || data['en']; // Fallback to English if language not found
+    const translations = data[translationKey];
+    if (!translations) {
+      console.warn('No translations found for', translationKey, 'falling back to English');
+    }
+    return translations || data['en']; // Fallback to English if language not found
   } catch (error) {
     console.error('Error loading translations:', error);
     return null;
