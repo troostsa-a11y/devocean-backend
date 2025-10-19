@@ -315,8 +315,11 @@ function getHotelrunnerLocale(lang) {
 
 // Apply translations to page
 function applyTranslations(lang) {
+  console.log('Accommodation page detected language:', lang);
+  
   // Direct lookup - translation keys now match language codes
   const t = TRANSLATIONS.common[lang] || TRANSLATIONS.common['en-GB'];
+  console.log('Loading accommodation translations for:', lang, 'Found:', !!t);
   
   // Update common text elements
   document.querySelectorAll('[data-i18n]').forEach(el => {

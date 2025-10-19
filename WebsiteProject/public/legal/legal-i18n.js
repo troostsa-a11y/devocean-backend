@@ -121,16 +121,45 @@
     try { document.documentElement.setAttribute("lang", lang || "en-GB"); } catch (_) { }
   })();
 
+  // Get URL parameter
+  function getUrlParam(name) {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    } catch (_) {
+      return null;
+    }
+  }
+
   /* ---------- hydration ---------- */
   onReady(function () {
     try {
-      var lang = readLS("site.lang") || normLang(navigator.language);
+      // Priority 1: Check URL parameter (for navigation with ?lang=)
+      var urlLang = getUrlParam('lang');
+      var lang;
+      if (urlLang) {
+        lang = normLang(urlLang);
+        var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
+        if (SUPPORTED.indexOf(lang) !== -1) {
+          // Store in localStorage for consistency
+          writeLS("site.lang", lang);
+        } else {
+          lang = readLS("site.lang") || normLang(navigator.language);
+        }
+      } else {
+        // Priority 2: Check localStorage
+        lang = readLS("site.lang") || normLang(navigator.language);
+      }
 
+      console.log('Legal page detected language:', lang, 'URL param:', urlLang);
+      
       // Dicts with English fallback
       var UI_EN = (window.LEGAL_UI && window.LEGAL_UI["en-GB"]) || {};
       var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT["en-GB"]) || {};
       var UI = (window.LEGAL_UI && window.LEGAL_UI[lang]) || UI_EN;
       var DICT = (window.LEGAL_DICT && window.LEGAL_DICT[lang]) || DICT_EN;
+      
+      console.log('Legal translations loaded:', { hasUI: !!UI, hasDict: !!DICT, UIkeys: Object.keys(UI || {}), dictKeys: Object.keys(DICT || {}) });
 
     // Determine page key
     var body = document.body;
