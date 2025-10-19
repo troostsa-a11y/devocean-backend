@@ -286,40 +286,41 @@ export const UI = {
     units: {
       safari: {
         title: "Safaritent",
-        short: "Ervaar de perfecte balans tussen comfort en avontuur. Geplaatst op een ruime 3×6 m platform, heeft deze 12 m² canvas tent beschermende zij- en achterwanden – die u privacy en beschutting bieden terwijl u dicht bij de natuur blijft.",
+        short: "Basiscomfort in de natuur. Gedeelde badkamer, twin/kingbed.",
         details: [
-          "Platform: 3×6 m • Tent: 12 m²",
-          "Zij- & achterwand voor privacy en beschutting",
-          "Muggennet op alle ramen & deuren"
+          "Twee eenpersoonsbedden (of king) met nachtkastjes en lampen",
+          "Muggennet • krachtige ventilator • stopcontacten",
+          "Privé terras met palmbladenstoelen",
+          "Gedeelde faciliteiten: warme/koude douches en toiletten"
         ],
       },
       comfort: {
         title: "Comforttent",
-        short: "Voor gasten die de natuur-omringde vibe waarderen maar extra afzondering en gemak willen, is de Comfort Safaritent een upgrade op onze klassieke canvas ervaring.",
+        short: "Ruime upgrade tent met privé badkamer, twin/kingbed en terras.",
         details: [
-          "Tent: 12 m² op privé platform",
-          "Extra privacy: 2 zijwanden + achterwand",
-          "Muggennet op alle ramen & deuren"
+          "Twin/kingbed opstelling met praktische verlichting",
+          "Tafel, stoelen • terras (met stoelen)",
+          "Privé badkamer in rieten dak hut"
         ],
       },
       cottage: {
         title: "Tuin Cottage",
-        short: "Genesteld in onze weelderige tropische tuin, combineert de Tuin Cottage rustieke elegantie met huiselijk comfort. Een rood Romeins tegel dak en hoog wit plafond met donkere houten balken creëren een ruime, luchtige toevlucht vol karakter.",
+        short: "Ruime cottage met kingbed, inverter AC, bureau en eettafel, privé terras en hutten badkamer.",
         details: [
-          "Rood Romeins tegel dak",
-          "Hoog wit plafond met donkere balken",
-          "Terracotta vloer & warme muurtinten",
-          "Privé terras met zitplaatsen"
+          "Kingbed • bureau & eettafel",
+          "Inverter airco (koelen/verwarmen) • dimbaar hoofdlicht",
+          "Hut badkamer (douche, wastafel, toilet)",
+          "Houten dek met kampeerstoelen"
         ],
       },
       chalet: {
         title: "Rieten Chalet",
-        short: "Verborgen in een afgelegen hoek van het terrein, biedt het Rieten Chalet een rustige, romantische toevlucht. Beschaduwd door palmen, strelitzia, acacia, varens en Indiase amandelbomen, dompelt het u onder in de natuur zonder comfort of privacy op te offeren.",
+        short: "Rustig, romantisch klein chalet onder palmen. AC, privé badkamer, terras. Twin/king.",
         details: [
-          "Rieten dak • bluegum paal structuur",
-          "Herfstleien vloer • natuurlijke tinten",
-          "Omringd door palmen, varens & strelitzia",
-          "Privé terras met zitplaatsen"
+          "Rustige locatie onder palmen • airco",
+          "Privé badkamer (douche, wastafel, toilet)",
+          "Twin/kingbed en nachtkastjes",
+          "Privé terras met palmbladenstoelen"
         ],
       },
     },
@@ -428,40 +429,41 @@ export const UI = {
     units: {
       safari: {
         title: "Tente Safari",
-        short: "Découvrez l'équilibre parfait entre confort et aventure. Installée sur une plateforme spacieuse de 3×6 m, cette tente en toile de 12 m² dispose de murs latéraux et arrière protecteurs – vous offrant intimité et abri tout en restant proche de la nature.",
+        short: "Confort de base en pleine nature. Salle de bain partagée, lits twin/king.",
         details: [
-          "Plateforme : 3×6 m • Tente : 12 m²",
-          "Murs latéraux & arrière pour intimité et abri",
-          "Filet anti-moustiques sur toutes les fenêtres & portes"
+          "Deux lits simples (ou king) avec tables de chevet et lampes",
+          "Moustiquaire • ventilateur puissant • prises électriques",
+          "Terrasse privée avec chaises en feuilles de palmier",
+          "Installations partagées : douches chaudes/froides et toilettes"
         ],
       },
       comfort: {
         title: "Tente Confort",
-        short: "Pour les invités qui aiment l'ambiance immergée dans la nature mais veulent plus d'isolement et de commodité, la Tente Safari Confort est une amélioration par rapport à notre expérience classique en toile.",
+        short: "Tente spacieuse améliorée avec salle de bain privée, lit twin/king et terrasse.",
         details: [
-          "Tente : 12 m² sur plateforme privée",
-          "Intimité supplémentaire : 2 murs latéraux + mur arrière",
-          "Filet anti-moustiques sur toutes les fenêtres & portes"
+          "Configuration lit twin/king avec éclairage pratique",
+          "Table, chaises • terrasse (avec chaises)",
+          "Salle de bain privée dans hutte au toit de chaume"
         ],
       },
       cottage: {
         title: "Cottage de Jardin",
-        short: "Nichée dans notre jardin tropical luxuriant, le Cottage de Jardin combine élégance rustique avec confort familial. Un toit en tuiles romaines rouges et un haut plafond blanc avec des poutres en bois sombre créent un refuge spacieux et aéré plein de caractère.",
+        short: "Cottage spacieux avec lit king, climatisation inverter, bureau et table à manger, terrasse privée et salle de bain de hutte.",
         details: [
-          "Toit en tuiles romaines rouges",
-          "Haut plafond blanc avec poutres sombres",
-          "Sol en terre cuite & tons muraux chauds",
-          "Terrasse privée avec sièges"
+          "Lit king • bureau et table à manger",
+          "Climatisation inverter (refroidissement/chauffage) • éclairage principal dimmable",
+          "Salle de bain de hutte (douche, lavabo, toilettes)",
+          "Terrasse en bois avec chaises de camping"
         ],
       },
       chalet: {
         title: "Chalet au Toit de Chaume",
-        short: "Caché dans un coin isolé de la propriété, le Chalet au Toit de Chaume offre un refuge tranquille et romantique. Ombragé par des palmiers, des strelitzias, des acacias, des fougères et des amandiers indiens, il vous immerge dans la nature sans sacrifier confort ou intimité.",
+        short: "Petit chalet calme et romantique sous les palmiers. Climatisation, salle de bain privée, terrasse. Twin/king.",
         details: [
-          "Toit de chaume • structure en poteaux bluegum",
-          "Sol en ardoise automnale • tons naturels",
-          "Entouré de palmiers, fougères & strelitzias",
-          "Terrasse privée avec sièges"
+          "Emplacement calme sous les palmiers • climatisation",
+          "Salle de bain privée (douche, lavabo, toilettes)",
+          "Lit twin/king et tables de chevet",
+          "Terrasse privée avec chaises en feuilles de palmier"
         ],
       },
     },
@@ -586,40 +588,41 @@ export const UI = {
     units: {
       safari: {
         title: "Tenda Safari",
-        short: "Sperimenta il perfetto equilibrio tra comfort e avventura. Posizionata su una spaziosa piattaforma di 3×6 m, questa tenda in tela di 12 m² ha pareti laterali e posteriori protettive – offrendoti privacy e riparo mentre rimani vicino alla natura.",
+        short: "Comfort di base nella natura. Bagno condiviso, letti twin/king.",
         details: [
-          "Piattaforma: 3×6 m • Tenda: 12 m²",
-          "Pareti laterali & posteriori per privacy e riparo",
-          "Rete antizanzare su tutte le finestre & porte"
+          "Due letti singoli (o king) con comodini e lampade",
+          "Zanzariera • ventilatore potente • prese elettriche",
+          "Terrazza privata con sedie di foglie di palma",
+          "Servizi condivisi: docce calde/fredde e servizi igienici"
         ],
       },
       comfort: {
         title: "Tenda Comfort",
-        short: "Per gli ospiti che amano l'atmosfera immersa nella natura ma vogliono maggiore isolamento e comodità, la Tenda Safari Comfort è un upgrade rispetto alla nostra esperienza classica in tela.",
+        short: "Tenda spaziosa migliorata con bagno privato, letto twin/king e terrazza.",
         details: [
-          "Tenda: 12 m² su piattaforma privata",
-          "Privacy extra: 2 pareti laterali + parete posteriore",
-          "Rete antizanzare su tutte le finestre & porte"
+          "Configurazione letto twin/king con illuminazione pratica",
+          "Tavolo, sedie • terrazza (con sedie)",
+          "Bagno privato in capanna con tetto di paglia"
         ],
       },
       cottage: {
         title: "Cottage da Giardino",
-        short: "Nascosto nel nostro lussureggiante giardino tropicale, il Cottage da Giardino combina eleganza rustica con comfort casalingo. Un tetto di tegole romane rosse e un alto soffitto bianco con travi di legno scuro creano un rifugio spazioso e arioso pieno di carattere.",
+        short: "Cottage spazioso con letto king, AC inverter, scrivania e tavolo da pranzo, terrazza privata e bagno capanna.",
         details: [
-          "Tetto di tegole romane rosse",
-          "Alto soffitto bianco con travi scure",
-          "Pavimento in terracotta & toni caldi sulle pareti",
-          "Terrazza privata con posti a sedere"
+          "Letto king • scrivania e tavolo da pranzo",
+          "AC inverter (raffreddamento/riscaldamento) • luce principale dimmerabile",
+          "Bagno capanna (doccia, lavandino, WC)",
+          "Terrazza in legno con sedie da campeggio"
         ],
       },
       chalet: {
         title: "Chalet con Tetto di Paglia",
-        short: "Nascosto in un angolo isolato della proprietà, lo Chalet con Tetto di Paglia offre un rifugio tranquillo e romantico. Ombreggiato da palme, strelitzie, acacie, felci e alberi di mandorlo indiano, ti immerge nella natura senza sacrificare comfort o privacy.",
+        short: "Piccolo chalet tranquillo e romantico sotto le palme. AC, bagno privato, terrazza. Twin/king.",
         details: [
-          "Tetto di paglia • struttura con pali bluegum",
-          "Pavimento in ardesia autunnale • toni naturali",
-          "Circondato da palme, felci & strelitzie",
-          "Terrazza privata con posti a sedere"
+          "Posizione tranquilla sotto le palme • AC",
+          "Bagno privato (doccia, lavandino, WC)",
+          "Letto twin/king e comodini",
+          "Terrazza privata con sedie di foglie di palma"
         ],
       },
     },
@@ -704,40 +707,41 @@ export const UI = {
     units: {
       safari: {
         title: "Safari-Zelt",
-        short: "Erleben Sie die perfekte Balance aus Komfort und Abenteuer. Auf einer geräumigen 3×6 m Plattform errichtet, verfügt dieses 12 m² große Canvas-Zelt über schützende Seiten- und Rückwände – die Ihnen Privatsphäre und Schutz bieten, während Sie der Natur nahe bleiben.",
+        short: "Grundlegender Komfort in der Natur. Gemeinschaftsbad, Twin/Kingbett.",
         details: [
-          "Plattform: 3×6 m • Zelt: 12 m²",
-          "Seiten- & Rückwand für Privatsphäre und Schutz",
-          "Moskitonetz an allen Fenstern & Türen"
+          "Zwei Einzelbetten (oder King) mit Nachttischen und Lampen",
+          "Moskitonetz • leistungsstarker Ventilator • Steckdosen",
+          "Private Terrasse mit Palmblatt-Stühlen",
+          "Gemeinschaftseinrichtungen: Warm-/Kaltduschen und Toiletten"
         ],
       },
       comfort: {
         title: "Komfort-Zelt",
-        short: "Für Gäste, die die naturverbundene Atmosphäre lieben, aber extra Abgeschiedenheit und Bequemlichkeit wünschen, ist das Komfort-Safari-Zelt eine Aufwertung zu unserem klassischen Canvas-Erlebnis.",
+        short: "Geräumiges Upgrade-Zelt mit privatem Bad, Twin/Kingbett und Terrasse.",
         details: [
-          "Zelt: 12 m² auf privater Plattform",
-          "Extra Privatsphäre: 2 Seitenwände + Rückwand",
-          "Moskitonetz an allen Fenstern & Türen"
+          "Twin/Kingbett-Anordnung mit praktischer Beleuchtung",
+          "Tisch, Stühle • Terrasse (mit Stühlen)",
+          "Privates Bad in Strohdachhütte"
         ],
       },
       cottage: {
         title: "Garten-Cottage",
-        short: "Eingebettet in unseren üppigen tropischen Garten verbindet das Garten-Cottage rustikale Eleganz mit heimischem Komfort. Ein rotes Roman-Dach und eine hohe weiße Decke mit dunklen Holzbalken schaffen einen geräumigen, luftigen Rückzugsort voller Charakter.",
+        short: "Geräumiges Cottage mit Kingbett, Inverter-Klimaanlage, Schreibtisch und Esstisch, privater Terrasse und Hüttenbad.",
         details: [
-          "Rotes Roman-Dach",
-          "Hohe weiße Decke mit dunklen Balken",
-          "Terrakotta-Boden & warme Wandtöne",
-          "Private Terrasse mit Sitzgelegenheiten"
+          "Kingbett • Schreibtisch & Esstisch",
+          "Inverter-Klimaanlage (Kühlung/Heizung) • dimmbare Hauptbeleuchtung",
+          "Hüttenbad (Dusche, Waschbecken, WC)",
+          "Holzdeck mit Campingstühlen"
         ],
       },
       chalet: {
         title: "Gras-Dach-Chalet",
-        short: "Versteckt in einer abgeschiedenen Ecke des Grundstücks bietet das Gras-Dach-Chalet einen ruhigen, romantischen Rückzugsort. Beschattet von Palmen, Strelitzien, Akazien, Farnen und Indischen Mandelbäumen taucht es Sie in die Natur ein, ohne auf Komfort oder Privatsphäre zu verzichten.",
+        short: "Ruhiges, romantisches kleines Chalet unter Palmen. Klimaanlage, privates Bad, Terrasse. Twin/King.",
         details: [
-          "Gras-Dach • Bluegum-Pfosten-Struktur",
-          "Herbst-Schiefer-Boden • natürliche Töne",
-          "Umgeben von Palmen, Farnen & Strelitzien",
-          "Private Terrasse mit Sitzgelegenheiten"
+          "Ruhige Lage unter Palmen • Klimaanlage",
+          "Privates Bad (Dusche, Waschbecken, WC)",
+          "Twin/Kingbett und Nachttische",
+          "Private Terrasse mit Palmblatt-Stühlen"
         ],
       },
     },
@@ -822,40 +826,41 @@ export const UI = {
     units: {
       safari: {
         title: "Tienda Safari",
-        short: "Experimente el equilibrio perfecto entre comodidad y aventura. Ubicada en una plataforma espaciosa de 3×6 m, esta tienda de lona de 12 m² cuenta con paredes laterales y traseras protectoras, que le brindan privacidad y refugio mientras permanece cerca de la naturaleza.",
+        short: "Comodidad básica en la naturaleza. Baño compartido, cama twin/king.",
         details: [
-          "Plataforma: 3×6 m • Tienda: 12 m²",
-          "Paredes laterales y trasera para privacidad y refugio",
-          "Malla mosquitera en todas las ventanas y puertas"
+          "Dos camas individuales (o king) con mesitas y lámparas",
+          "Mosquitera • ventilador potente • enchufes",
+          "Terraza privada con sillas de hojas de palma",
+          "Instalaciones compartidas: duchas calientes/frías e inodoros"
         ],
       },
       comfort: {
         title: "Tienda Comfort",
-        short: "Para huéspedes que aman la vibra inmersa en la naturaleza pero quieren aislamiento extra y conveniencia, la Tienda Safari Comfort es una mejora de nuestra experiencia clásica en lona.",
+        short: "Tienda espaciosa mejorada con baño privado, cama twin/king y terraza.",
         details: [
-          "Tienda: 12 m² en plataforma privada",
-          "Privacidad extra: 2 paredes laterales + pared trasera",
-          "Malla mosquitera en todas las ventanas y puertas"
+          "Configuración de cama twin/king con iluminación práctica",
+          "Mesa, sillas • terraza (con sillas)",
+          "Baño privado en cabaña con techo de paja"
         ],
       },
       cottage: {
         title: "Cottage de Jardín",
-        short: "Ubicado en nuestro exuberante jardín tropical, el Cottage de Jardín combina elegancia rústica con comodidad hogareña. Un techo de tejas romanas rojas y un alto techo blanco con vigas de madera oscura crean un refugio espacioso y aireado lleno de carácter.",
+        short: "Cottage espacioso con cama king, AC inverter, escritorio y mesa de comedor, terraza privada y baño de cabaña.",
         details: [
-          "Techo de tejas romanas rojas",
-          "Alto techo blanco con vigas oscuras",
-          "Piso de terracota y tonos cálidos en las paredes",
-          "Terraza privada con asientos"
+          "Cama king • escritorio y mesa de comedor",
+          "AC inverter (enfriamiento/calefacción) • luz principal regulable",
+          "Baño de cabaña (ducha, lavabo, inodoro)",
+          "Terraza de madera con sillas de camping"
         ],
       },
       chalet: {
         title: "Chalet con Techo de Paja",
-        short: "Escondido en una esquina aislada de la propiedad, el Chalet con Techo de Paja ofrece un refugio tranquilo y romántico. Sombrado por palmeras, strelitzias, acacias, helechos y árboles de almendra india, lo sumerge en la naturaleza sin sacrificar comodidad o privacidad.",
+        short: "Pequeño chalet tranquilo y romántico bajo palmeras. AC, baño privado, terraza. Twin/king.",
         details: [
-          "Techo de paja • estructura de postes bluegum",
-          "Piso de pizarra otoñal • tonos naturales",
-          "Rodeado de palmeras, helechos y strelitzias",
-          "Terraza privada con asientos"
+          "Ubicación tranquila bajo palmeras • AC",
+          "Baño privado (ducha, lavabo, inodoro)",
+          "Cama twin/king y mesitas",
+          "Terraza privada con sillas de hojas de palma"
         ],
       },
     },
@@ -1081,40 +1086,40 @@ export const UI = {
     units: {
       safari: {
         title: "サファリテント",
-        short: "快適さと冒険の完璧なバランスを体験してください。広々とした3×6mのプラットフォームに設置された12㎡のキャンバステントは、サイドウォールとバックウォールで保護され、自然に囲まれながらもプライバシーと遮蔽を確保します。",
+        short: "基本的な快適さと自然との触れ合い。共有バスルーム、ツイン/キングベッド。",
         details: [
-          "プラットフォーム: 3×6m • テント: 12㎡",
-          "プライバシーと遮蔽のためのサイド＆バックウォール",
-          "すべての窓とドアに防虫ネット装備"
+          "ツイン/キングベッド • ベッドサイドテーブル",
+          "砂の上にココナッツマット • パティオチェア",
+          "共有施設：温冷シャワーとトイレ"
         ],
       },
       comfort: {
         title: "コンフォートテント",
-        short: "自然に囲まれた雰囲気を愛するながら、さらに静かで便利な環境を求めるゲストのために、コンフォートサファリテントは私たちのクラシックなキャンバス体験をアップグレードしたものです。",
+        short: "プライベートバスルーム、ツイン/キングベッド、パティオ付きの広々としたアップグレードテント。",
         details: [
-          "テント: 12㎡、専用プラットフォーム上",
-          "追加のプライバシー: 2つのサイドウォール + バックウォール",
-          "すべての窓とドアに防虫ネット装備"
+          "ツイン/キングベッド • ベッドサイドテーブル",
+          "テーブル、椅子 • パティオ（椅子付き）",
+          "茅葺き小屋内のプライベートバスルーム"
         ],
       },
       cottage: {
         title: "ガーデンコテージ",
-        short: "緑豊かな熱帯庭園に佇むガーデンコテージは、素朴なエレガンスと家庭的な快適さを組み合わせています。赤いローマン瓦の屋根と、ダークウッドの梁が特徴的な高い白い天井が、個性あふれる広々として風通しの良い隠れ家を創り出しています。",
+        short: "キングベッド、インバーターエアコン、デスク、ダイニングテーブル、プライベートパティオ、小屋のバスルーム付きの広々としたコテージ。",
         details: [
-          "赤いローマン瓦屋根",
-          "ダークな梁が特徴的な高い白い天井",
-          "テラコッタフローリングと温かな壁のトーン",
-          "座席付き専用テラス"
+          "キングベッド • デスク＆ダイニングテーブル",
+          "インバーターエアコン（冷暖房）• 調光可能なメインライト",
+          "小屋のバスルーム（シャワー、洗面台、トイレ）",
+          "キャンプ用椅子付きの木製デッキ"
         ],
       },
       chalet: {
         title: "茅葺きシャレー",
-        short: "敷地内のひっそりとした一角に隠れる茅葺きシャレーは、静かでロマンチックな隠れ家を提供します。ヤシ、ストレリチア、アカシア、シダ、モモタマナの木陰に囲まれ、快適さやプライバシーを犠牲にすることなく自然に浸ることができます。",
+        short: "静かでロマンチックな小さなシャレー。エアコン、プライベートバスルーム、パティオ。ツイン/キング。",
         details: [
-          "茅葺き屋根 • ブルーガムポール構造",
-          "オータムスレートの床 • ナチュラルトーン",
-          "ヤシ、シダ、ストレリチアに囲まれて",
-          "座席付き専用テラス"
+          "ヤシの木の下の静かな場所 • エアコン",
+          "プライベートバスルーム（シャワー、洗面台、トイレ）",
+          "ツイン/キングベッド＆ベッドサイドテーブル",
+          "ヤシの葉チェア付きのプライベートパティオ"
         ],
       },
     },
