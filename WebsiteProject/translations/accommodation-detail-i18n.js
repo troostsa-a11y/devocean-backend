@@ -212,6 +212,7 @@ function normLang(raw) {
   if (s === "pt-pt") return "pt-PT";
   if (s === "pt-br") return "pt-BR";
   if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
+  if (s === "pt") return "pt-BR"; // Default Portuguese to Brazilian variant (covers Mozambique/Angola/Brazil)
   if (s === "nl-nl" || s === "nl" || s.startsWith("nl-")) return "nl-NL";
   if (s === "fr-fr" || s === "fr" || s.startsWith("fr-")) return "fr-FR";
   if (s === "it-it" || s === "it" || s.startsWith("it-")) return "it-IT";
@@ -323,7 +324,7 @@ async function loadAccommodationTranslations(lang) {
     // Map full locale codes to short codes used in JSON
     const langMap = {
       'en-GB': 'en', 'en-US': 'en-us', 
-      'pt-PT': 'pt', 'pt-BR': 'pt', // Both Portuguese variants use 'pt'
+      'pt-PT': 'pt-pt', 'pt-BR': 'pt-br', // Distinct Portuguese variants
       'nl-NL': 'nl', 'fr-FR': 'fr', 'it-IT': 'it', 'de-DE': 'de',
       'es-ES': 'es', 'sv': 'sv', 'pl': 'pl', 'ja-JP': 'ja',
       'zh-CN': 'zh', 'ru': 'ru', 'af-ZA': 'af', 'zu': 'zu', 'sw': 'sw'
