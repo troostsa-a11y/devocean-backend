@@ -1,0 +1,786 @@
+{
+  "en": {
+    "safari": {
+      "title": "Safari Tent",
+      "shortDescription": "12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "Two single beds (or King) with pedestals and shaded lamps",
+        "Mosquito mesh on doors/windows • strong fan • power points",
+        "Small shelving unit for clothing/essentials",
+        "Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tent",
+      "shortDescription": "Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "Twin/King bed setup • lamps • convenient light switches",
+        "Mosquito mesh • strong fan • power points",
+        "Private wood terrace with rolled palm-leaf chairs",
+        "At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "Garden Cottage",
+      "shortDescription": "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "Roman-tiled roof, high white ceiling with dark wood beams",
+        "Terracotta floor, warm wheatfields-painted walls",
+        "Queen bed • working desk with shaded lamp • dining table with chairs",
+        "Suitcase shelves, clothes rack and extra shelving",
+        "Inverter A/C (cool & heat) • dimmable main light",
+        "Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "Thatched Chalet",
+      "shortDescription": "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "Wheatfields-painted walls • tranquil, shaded setting",
+        "Dinner table with chairs • air conditioning",
+        "Private bathroom (shower, sink, toilet)",
+        "Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "en-us": {
+    "safari": {
+      "title": "Safari Tent",
+      "shortDescription": "130 sq ft canvas tent on a 10×20 ft platform. Twin/King, fan, power outlets, mosquito mesh, private terrace. Shared bathrooms.",
+      "detailedFeatures": [
+        "Two twin beds (or King) with nightstands and shaded lamps",
+        "Mosquito mesh on doors/windows • strong fan • power outlets",
+        "Small shelving unit for clothing/essentials",
+        "Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tent",
+      "shortDescription": "Upgraded 130 sq ft tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "Twin/King bed setup • lamps • convenient light switches",
+        "Mosquito mesh • strong fan • power outlets",
+        "Private wood terrace with rolled palm-leaf chairs",
+        "At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "Garden Cottage",
+      "shortDescription": "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "Roman-tiled roof, high white ceiling with dark wood beams",
+        "Terracotta floor, warm wheatfields-painted walls",
+        "Queen bed • working desk with shaded lamp • dining table with chairs",
+        "Suitcase shelves, clothes rack and extra shelving",
+        "Inverter A/C (cool & heat) • dimmable main light",
+        "Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "Thatched Chalet",
+      "shortDescription": "Secluded, romantic tiny chalet under palms and bird of paradise. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "Wheatfields-painted walls • tranquil, shaded setting",
+        "Dinner table with chairs • air conditioning",
+        "Private bathroom (shower, sink, toilet)",
+        "Two twins or King with nightstands • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "pt": {
+    "safari": {
+      "title": "[PT] Safari Tent",
+      "shortDescription": "[PT] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[PT] Two single beds (or King) with pedestals and shaded lamps",
+        "[PT] Mosquito mesh on doors/windows • strong fan • power points",
+        "[PT] Small shelving unit for clothing/essentials",
+        "[PT] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[PT] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[PT] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[PT] Comfort Tent",
+      "shortDescription": "[PT] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[PT] Twin/King bed setup • lamps • convenient light switches",
+        "[PT] Mosquito mesh • strong fan • power points",
+        "[PT] Private wood terrace with rolled palm-leaf chairs",
+        "[PT] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[PT] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[PT] Garden Cottage",
+      "shortDescription": "[PT] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[PT] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[PT] Terracotta floor, warm wheatfields-painted walls",
+        "[PT] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[PT] Suitcase shelves, clothes rack and extra shelving",
+        "[PT] Inverter A/C (cool & heat) • dimmable main light",
+        "[PT] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[PT] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[PT] Thatched Chalet",
+      "shortDescription": "[PT] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[PT] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[PT] Wheatfields-painted walls • tranquil, shaded setting",
+        "[PT] Dinner table with chairs • air conditioning",
+        "[PT] Private bathroom (shower, sink, toilet)",
+        "[PT] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "nl": {
+    "safari": {
+      "title": "[NL] Safari Tent",
+      "shortDescription": "[NL] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[NL] Two single beds (or King) with pedestals and shaded lamps",
+        "[NL] Mosquito mesh on doors/windows • strong fan • power points",
+        "[NL] Small shelving unit for clothing/essentials",
+        "[NL] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[NL] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[NL] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[NL] Comfort Tent",
+      "shortDescription": "[NL] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[NL] Twin/King bed setup • lamps • convenient light switches",
+        "[NL] Mosquito mesh • strong fan • power points",
+        "[NL] Private wood terrace with rolled palm-leaf chairs",
+        "[NL] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[NL] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[NL] Garden Cottage",
+      "shortDescription": "[NL] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[NL] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[NL] Terracotta floor, warm wheatfields-painted walls",
+        "[NL] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[NL] Suitcase shelves, clothes rack and extra shelving",
+        "[NL] Inverter A/C (cool & heat) • dimmable main light",
+        "[NL] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[NL] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[NL] Thatched Chalet",
+      "shortDescription": "[NL] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[NL] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[NL] Wheatfields-painted walls • tranquil, shaded setting",
+        "[NL] Dinner table with chairs • air conditioning",
+        "[NL] Private bathroom (shower, sink, toilet)",
+        "[NL] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "fr": {
+    "safari": {
+      "title": "[FR] Safari Tent",
+      "shortDescription": "[FR] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[FR] Two single beds (or King) with pedestals and shaded lamps",
+        "[FR] Mosquito mesh on doors/windows • strong fan • power points",
+        "[FR] Small shelving unit for clothing/essentials",
+        "[FR] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[FR] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[FR] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[FR] Comfort Tent",
+      "shortDescription": "[FR] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[FR] Twin/King bed setup • lamps • convenient light switches",
+        "[FR] Mosquito mesh • strong fan • power points",
+        "[FR] Private wood terrace with rolled palm-leaf chairs",
+        "[FR] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[FR] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[FR] Garden Cottage",
+      "shortDescription": "[FR] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[FR] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[FR] Terracotta floor, warm wheatfields-painted walls",
+        "[FR] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[FR] Suitcase shelves, clothes rack and extra shelving",
+        "[FR] Inverter A/C (cool & heat) • dimmable main light",
+        "[FR] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[FR] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[FR] Thatched Chalet",
+      "shortDescription": "[FR] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[FR] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[FR] Wheatfields-painted walls • tranquil, shaded setting",
+        "[FR] Dinner table with chairs • air conditioning",
+        "[FR] Private bathroom (shower, sink, toilet)",
+        "[FR] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "it": {
+    "safari": {
+      "title": "[IT] Safari Tent",
+      "shortDescription": "[IT] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[IT] Two single beds (or King) with pedestals and shaded lamps",
+        "[IT] Mosquito mesh on doors/windows • strong fan • power points",
+        "[IT] Small shelving unit for clothing/essentials",
+        "[IT] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[IT] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[IT] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[IT] Comfort Tent",
+      "shortDescription": "[IT] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[IT] Twin/King bed setup • lamps • convenient light switches",
+        "[IT] Mosquito mesh • strong fan • power points",
+        "[IT] Private wood terrace with rolled palm-leaf chairs",
+        "[IT] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[IT] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[IT] Garden Cottage",
+      "shortDescription": "[IT] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[IT] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[IT] Terracotta floor, warm wheatfields-painted walls",
+        "[IT] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[IT] Suitcase shelves, clothes rack and extra shelving",
+        "[IT] Inverter A/C (cool & heat) • dimmable main light",
+        "[IT] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[IT] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[IT] Thatched Chalet",
+      "shortDescription": "[IT] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[IT] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[IT] Wheatfields-painted walls • tranquil, shaded setting",
+        "[IT] Dinner table with chairs • air conditioning",
+        "[IT] Private bathroom (shower, sink, toilet)",
+        "[IT] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "de": {
+    "safari": {
+      "title": "[DE] Safari Tent",
+      "shortDescription": "[DE] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[DE] Two single beds (or King) with pedestals and shaded lamps",
+        "[DE] Mosquito mesh on doors/windows • strong fan • power points",
+        "[DE] Small shelving unit for clothing/essentials",
+        "[DE] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[DE] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[DE] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[DE] Comfort Tent",
+      "shortDescription": "[DE] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[DE] Twin/King bed setup • lamps • convenient light switches",
+        "[DE] Mosquito mesh • strong fan • power points",
+        "[DE] Private wood terrace with rolled palm-leaf chairs",
+        "[DE] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[DE] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[DE] Garden Cottage",
+      "shortDescription": "[DE] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[DE] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[DE] Terracotta floor, warm wheatfields-painted walls",
+        "[DE] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[DE] Suitcase shelves, clothes rack and extra shelving",
+        "[DE] Inverter A/C (cool & heat) • dimmable main light",
+        "[DE] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[DE] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[DE] Thatched Chalet",
+      "shortDescription": "[DE] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[DE] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[DE] Wheatfields-painted walls • tranquil, shaded setting",
+        "[DE] Dinner table with chairs • air conditioning",
+        "[DE] Private bathroom (shower, sink, toilet)",
+        "[DE] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "es": {
+    "safari": {
+      "title": "[ES] Safari Tent",
+      "shortDescription": "[ES] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[ES] Two single beds (or King) with pedestals and shaded lamps",
+        "[ES] Mosquito mesh on doors/windows • strong fan • power points",
+        "[ES] Small shelving unit for clothing/essentials",
+        "[ES] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[ES] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[ES] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[ES] Comfort Tent",
+      "shortDescription": "[ES] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[ES] Twin/King bed setup • lamps • convenient light switches",
+        "[ES] Mosquito mesh • strong fan • power points",
+        "[ES] Private wood terrace with rolled palm-leaf chairs",
+        "[ES] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[ES] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[ES] Garden Cottage",
+      "shortDescription": "[ES] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[ES] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[ES] Terracotta floor, warm wheatfields-painted walls",
+        "[ES] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[ES] Suitcase shelves, clothes rack and extra shelving",
+        "[ES] Inverter A/C (cool & heat) • dimmable main light",
+        "[ES] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[ES] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[ES] Thatched Chalet",
+      "shortDescription": "[ES] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[ES] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[ES] Wheatfields-painted walls • tranquil, shaded setting",
+        "[ES] Dinner table with chairs • air conditioning",
+        "[ES] Private bathroom (shower, sink, toilet)",
+        "[ES] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "sv": {
+    "safari": {
+      "title": "[SV] Safari Tent",
+      "shortDescription": "[SV] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[SV] Two single beds (or King) with pedestals and shaded lamps",
+        "[SV] Mosquito mesh on doors/windows • strong fan • power points",
+        "[SV] Small shelving unit for clothing/essentials",
+        "[SV] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[SV] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[SV] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[SV] Comfort Tent",
+      "shortDescription": "[SV] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[SV] Twin/King bed setup • lamps • convenient light switches",
+        "[SV] Mosquito mesh • strong fan • power points",
+        "[SV] Private wood terrace with rolled palm-leaf chairs",
+        "[SV] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[SV] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[SV] Garden Cottage",
+      "shortDescription": "[SV] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[SV] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[SV] Terracotta floor, warm wheatfields-painted walls",
+        "[SV] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[SV] Suitcase shelves, clothes rack and extra shelving",
+        "[SV] Inverter A/C (cool & heat) • dimmable main light",
+        "[SV] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[SV] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[SV] Thatched Chalet",
+      "shortDescription": "[SV] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[SV] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[SV] Wheatfields-painted walls • tranquil, shaded setting",
+        "[SV] Dinner table with chairs • air conditioning",
+        "[SV] Private bathroom (shower, sink, toilet)",
+        "[SV] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "pl": {
+    "safari": {
+      "title": "[PL] Safari Tent",
+      "shortDescription": "[PL] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[PL] Two single beds (or King) with pedestals and shaded lamps",
+        "[PL] Mosquito mesh on doors/windows • strong fan • power points",
+        "[PL] Small shelving unit for clothing/essentials",
+        "[PL] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[PL] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[PL] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[PL] Comfort Tent",
+      "shortDescription": "[PL] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[PL] Twin/King bed setup • lamps • convenient light switches",
+        "[PL] Mosquito mesh • strong fan • power points",
+        "[PL] Private wood terrace with rolled palm-leaf chairs",
+        "[PL] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[PL] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[PL] Garden Cottage",
+      "shortDescription": "[PL] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[PL] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[PL] Terracotta floor, warm wheatfields-painted walls",
+        "[PL] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[PL] Suitcase shelves, clothes rack and extra shelving",
+        "[PL] Inverter A/C (cool & heat) • dimmable main light",
+        "[PL] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[PL] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[PL] Thatched Chalet",
+      "shortDescription": "[PL] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[PL] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[PL] Wheatfields-painted walls • tranquil, shaded setting",
+        "[PL] Dinner table with chairs • air conditioning",
+        "[PL] Private bathroom (shower, sink, toilet)",
+        "[PL] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "af": {
+    "safari": {
+      "title": "[AF] Safari Tent",
+      "shortDescription": "[AF] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[AF] Two single beds (or King) with pedestals and shaded lamps",
+        "[AF] Mosquito mesh on doors/windows • strong fan • power points",
+        "[AF] Small shelving unit for clothing/essentials",
+        "[AF] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[AF] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[AF] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[AF] Comfort Tent",
+      "shortDescription": "[AF] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[AF] Twin/King bed setup • lamps • convenient light switches",
+        "[AF] Mosquito mesh • strong fan • power points",
+        "[AF] Private wood terrace with rolled palm-leaf chairs",
+        "[AF] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[AF] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[AF] Garden Cottage",
+      "shortDescription": "[AF] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[AF] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[AF] Terracotta floor, warm wheatfields-painted walls",
+        "[AF] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[AF] Suitcase shelves, clothes rack and extra shelving",
+        "[AF] Inverter A/C (cool & heat) • dimmable main light",
+        "[AF] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[AF] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[AF] Thatched Chalet",
+      "shortDescription": "[AF] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[AF] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[AF] Wheatfields-painted walls • tranquil, shaded setting",
+        "[AF] Dinner table with chairs • air conditioning",
+        "[AF] Private bathroom (shower, sink, toilet)",
+        "[AF] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "zu": {
+    "safari": {
+      "title": "[ZU] Safari Tent",
+      "shortDescription": "[ZU] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[ZU] Two single beds (or King) with pedestals and shaded lamps",
+        "[ZU] Mosquito mesh on doors/windows • strong fan • power points",
+        "[ZU] Small shelving unit for clothing/essentials",
+        "[ZU] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[ZU] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[ZU] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[ZU] Comfort Tent",
+      "shortDescription": "[ZU] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[ZU] Twin/King bed setup • lamps • convenient light switches",
+        "[ZU] Mosquito mesh • strong fan • power points",
+        "[ZU] Private wood terrace with rolled palm-leaf chairs",
+        "[ZU] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[ZU] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[ZU] Garden Cottage",
+      "shortDescription": "[ZU] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[ZU] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[ZU] Terracotta floor, warm wheatfields-painted walls",
+        "[ZU] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[ZU] Suitcase shelves, clothes rack and extra shelving",
+        "[ZU] Inverter A/C (cool & heat) • dimmable main light",
+        "[ZU] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[ZU] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[ZU] Thatched Chalet",
+      "shortDescription": "[ZU] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[ZU] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[ZU] Wheatfields-painted walls • tranquil, shaded setting",
+        "[ZU] Dinner table with chairs • air conditioning",
+        "[ZU] Private bathroom (shower, sink, toilet)",
+        "[ZU] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "sw": {
+    "safari": {
+      "title": "[SW] Safari Tent",
+      "shortDescription": "[SW] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[SW] Two single beds (or King) with pedestals and shaded lamps",
+        "[SW] Mosquito mesh on doors/windows • strong fan • power points",
+        "[SW] Small shelving unit for clothing/essentials",
+        "[SW] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[SW] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[SW] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[SW] Comfort Tent",
+      "shortDescription": "[SW] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[SW] Twin/King bed setup • lamps • convenient light switches",
+        "[SW] Mosquito mesh • strong fan • power points",
+        "[SW] Private wood terrace with rolled palm-leaf chairs",
+        "[SW] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[SW] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[SW] Garden Cottage",
+      "shortDescription": "[SW] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[SW] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[SW] Terracotta floor, warm wheatfields-painted walls",
+        "[SW] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[SW] Suitcase shelves, clothes rack and extra shelving",
+        "[SW] Inverter A/C (cool & heat) • dimmable main light",
+        "[SW] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[SW] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[SW] Thatched Chalet",
+      "shortDescription": "[SW] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[SW] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[SW] Wheatfields-painted walls • tranquil, shaded setting",
+        "[SW] Dinner table with chairs • air conditioning",
+        "[SW] Private bathroom (shower, sink, toilet)",
+        "[SW] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "ja": {
+    "safari": {
+      "title": "[JA] Safari Tent",
+      "shortDescription": "[JA] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[JA] Two single beds (or King) with pedestals and shaded lamps",
+        "[JA] Mosquito mesh on doors/windows • strong fan • power points",
+        "[JA] Small shelving unit for clothing/essentials",
+        "[JA] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[JA] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[JA] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[JA] Comfort Tent",
+      "shortDescription": "[JA] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[JA] Twin/King bed setup • lamps • convenient light switches",
+        "[JA] Mosquito mesh • strong fan • power points",
+        "[JA] Private wood terrace with rolled palm-leaf chairs",
+        "[JA] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[JA] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[JA] Garden Cottage",
+      "shortDescription": "[JA] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[JA] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[JA] Terracotta floor, warm wheatfields-painted walls",
+        "[JA] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[JA] Suitcase shelves, clothes rack and extra shelving",
+        "[JA] Inverter A/C (cool & heat) • dimmable main light",
+        "[JA] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[JA] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[JA] Thatched Chalet",
+      "shortDescription": "[JA] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[JA] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[JA] Wheatfields-painted walls • tranquil, shaded setting",
+        "[JA] Dinner table with chairs • air conditioning",
+        "[JA] Private bathroom (shower, sink, toilet)",
+        "[JA] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "zh": {
+    "safari": {
+      "title": "[ZH] Safari Tent",
+      "shortDescription": "[ZH] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[ZH] Two single beds (or King) with pedestals and shaded lamps",
+        "[ZH] Mosquito mesh on doors/windows • strong fan • power points",
+        "[ZH] Small shelving unit for clothing/essentials",
+        "[ZH] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[ZH] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[ZH] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[ZH] Comfort Tent",
+      "shortDescription": "[ZH] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[ZH] Twin/King bed setup • lamps • convenient light switches",
+        "[ZH] Mosquito mesh • strong fan • power points",
+        "[ZH] Private wood terrace with rolled palm-leaf chairs",
+        "[ZH] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[ZH] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[ZH] Garden Cottage",
+      "shortDescription": "[ZH] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[ZH] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[ZH] Terracotta floor, warm wheatfields-painted walls",
+        "[ZH] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[ZH] Suitcase shelves, clothes rack and extra shelving",
+        "[ZH] Inverter A/C (cool & heat) • dimmable main light",
+        "[ZH] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[ZH] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[ZH] Thatched Chalet",
+      "shortDescription": "[ZH] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[ZH] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[ZH] Wheatfields-painted walls • tranquil, shaded setting",
+        "[ZH] Dinner table with chairs • air conditioning",
+        "[ZH] Private bathroom (shower, sink, toilet)",
+        "[ZH] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "ru": {
+    "safari": {
+      "title": "[RU] Safari Tent",
+      "shortDescription": "[RU] 12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "[RU] Two single beds (or King) with pedestals and shaded lamps",
+        "[RU] Mosquito mesh on doors/windows • strong fan • power points",
+        "[RU] Small shelving unit for clothing/essentials",
+        "[RU] Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "[RU] Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "[RU] Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "[RU] Comfort Tent",
+      "shortDescription": "[RU] Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "[RU] Twin/King bed setup • lamps • convenient light switches",
+        "[RU] Mosquito mesh • strong fan • power points",
+        "[RU] Private wood terrace with rolled palm-leaf chairs",
+        "[RU] At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "[RU] Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "[RU] Garden Cottage",
+      "shortDescription": "[RU] Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "[RU] Roman-tiled roof, high white ceiling with dark wood beams",
+        "[RU] Terracotta floor, warm wheatfields-painted walls",
+        "[RU] Queen bed • working desk with shaded lamp • dining table with chairs",
+        "[RU] Suitcase shelves, clothes rack and extra shelving",
+        "[RU] Inverter A/C (cool & heat) • dimmable main light",
+        "[RU] Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "[RU] Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "[RU] Thatched Chalet",
+      "shortDescription": "[RU] Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "[RU] Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "[RU] Wheatfields-painted walls • tranquil, shaded setting",
+        "[RU] Dinner table with chairs • air conditioning",
+        "[RU] Private bathroom (shower, sink, toilet)",
+        "[RU] Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  }
+}
