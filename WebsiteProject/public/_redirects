@@ -5,17 +5,8 @@
 /4339cd9fe9f2766ae7f04b21f3848dec.txt  /4339cd9fe9f2766ae7f04b21f3848dec.txt  200
 /robots.txt  /robots.txt  200
 
-# Serve static HTML pages (Cloudflare Pages uses clean URLs without .html)
-/story  /story.html  200
-/safari  /safari.html  200
-/comfort  /comfort.html  200
-/cottage  /cottage.html  200
-/chalet  /chalet.html  200
-/legal/privacy  /legal/privacy.html  200
-/legal/cookies  /legal/cookies.html  200
-/legal/terms  /legal/terms.html  200
-/legal/GDPR  /legal/GDPR.html  200
-/legal/CRIC  /legal/CRIC.html  200
+# Static HTML pages are served automatically by Cloudflare Pages
+# No explicit redirects needed - Cloudflare serves .html files at clean URLs
 
 # Hotelrunner locale redirects (from booking engine back navigation)
 # Note: af-ZA and pt-BR are handled dynamically in App.jsx to preserve currency (MZN vs ZAR/BRL)
