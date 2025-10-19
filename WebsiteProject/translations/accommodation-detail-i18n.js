@@ -212,19 +212,19 @@ function normLang(raw) {
   if (s === "pt-pt") return "pt-PT";
   if (s === "pt-br") return "pt-BR";
   if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
-  if (s === "nl-nl" || s === "nl") return "nl-NL";
-  if (s === "fr-fr" || s === "fr") return "fr-FR";
-  if (s === "it-it" || s === "it") return "it-IT";
-  if (s === "de-de" || s === "de") return "de-DE";
-  if (s === "es-es" || s === "es") return "es-ES";
-  if (s === "ja-jp" || s === "ja") return "ja-JP";
-  if (s === "zh-cn" || s === "zh") return "zh-CN";
-  if (s === "af-za" || s === "af") return "af-ZA";
-  if (s === "sv") return "sv";
-  if (s === "pl") return "pl";
-  if (s === "ru") return "ru";
-  if (s === "zu") return "zu";
-  if (s === "sw") return "sw";
+  if (s === "nl-nl" || s === "nl" || s.startsWith("nl-")) return "nl-NL";
+  if (s === "fr-fr" || s === "fr" || s.startsWith("fr-")) return "fr-FR";
+  if (s === "it-it" || s === "it" || s.startsWith("it-")) return "it-IT";
+  if (s === "de-de" || s === "de" || s.startsWith("de-")) return "de-DE";
+  if (s === "es-es" || s === "es" || s.startsWith("es-")) return "es-ES";
+  if (s === "ja-jp" || s === "ja" || s.startsWith("ja-")) return "ja-JP";
+  if (s === "zh-cn" || s === "zh" || s.startsWith("zh-")) return "zh-CN";
+  if (s === "af-za" || s === "af" || s.startsWith("af-")) return "af-ZA";
+  if (s === "sv" || s.startsWith("sv-")) return "sv";
+  if (s === "pl" || s.startsWith("pl-")) return "pl";
+  if (s === "ru" || s.startsWith("ru-")) return "ru";
+  if (s === "zu" || s.startsWith("zu-")) return "zu";
+  if (s === "sw" || s.startsWith("sw-")) return "sw";
   
   return "en-GB";
 }
