@@ -161,13 +161,27 @@ function getCountryCode() {
 
 /**
  * Pick initial currency based on visitor's country
+ * Checks localStorage first for consistency with main page
  */
 function pickInitialCurrency() {
+  // Check localStorage first (set by main page)
+  const stored = localStorage.getItem("site.currency");
+  if (stored && stored.length === 3) {
+    return stored;
+  }
+  
+  // Fallback to IP-based detection
   const cc = getCountryCode();
   if (cc && CC_TO_CURRENCY[cc]) {
-    return CC_TO_CURRENCY[cc];
+    const detected = CC_TO_CURRENCY[cc];
+    // Store for consistency
+    localStorage.setItem("site.currency", detected);
+    return detected;
   }
-  return "USD"; // Default to USD if country detection fails
+  
+  // Default to USD if country detection fails
+  localStorage.setItem("site.currency", "USD");
+  return "USD";
 }
 
 /**

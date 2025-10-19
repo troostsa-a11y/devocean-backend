@@ -361,7 +361,17 @@ export function useLocale() {
   });
 
   // Currency is auto-assigned based on IP location - no manual selection allowed
-  const [currency] = useState(() => pickInitialCurrency());
+  const [currency] = useState(() => {
+    // Check localStorage first for consistency across pages
+    const stored = localStorage.getItem("site.currency");
+    if (stored && stored.length === 3) {
+      return stored;
+    }
+    const detected = pickInitialCurrency();
+    // Store for consistency across story.html and main site
+    localStorage.setItem("site.currency", detected);
+    return detected;
+  });
 
   const [region, setRegionState] = useState(() => {
     // Only trust localStorage if it has the correct version (IP-based)
