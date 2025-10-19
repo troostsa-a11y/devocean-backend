@@ -366,31 +366,79 @@ async function applyTranslations(lang) {
       const unitData = translations[unitType];
       console.log('Applying unit translations for:', unitType, lang);
       
-      // Update eyebrow (unit type badge)
+      // Update eyebrow (unit type badge) - support both new and legacy structure
       const eyebrowEl = document.querySelector('.dl-eyebrow');
-      if (eyebrowEl && unitData.title) {
-        eyebrowEl.textContent = unitData.title;
+      if (eyebrowEl) {
+        eyebrowEl.textContent = unitData.eyebrow || unitData.title || eyebrowEl.textContent;
       }
       
-      // Update main title - try to preserve any + symbol styling
+      // Update hero title - preserve any + symbol styling - support both new and legacy structure
       const titleEl = document.querySelector('.dl-title');
-      if (titleEl && unitData.title) {
-        // If title contains '+', wrap it in span for styling
-        if (unitData.title.includes(' + ')) {
-          titleEl.innerHTML = unitData.title.replace(' + ', ' <span>+</span> ');
+      const titleText = unitData.heroTitle || unitData.title;
+      if (titleEl && titleText) {
+        if (titleText.includes(' + ')) {
+          titleEl.innerHTML = titleText.replace(' + ', ' <span>+</span> ');
         } else {
-          titleEl.textContent = unitData.title;
+          titleEl.textContent = titleText;
         }
       }
       
-      // Update short description (hero subtitle)
-      const subEl = document.querySelector('.dl-sub');
-      if (subEl && unitData.shortDescription) {
-        subEl.textContent = unitData.shortDescription;
+      // Update hero description - support both new and legacy structure
+      const subEl = document.querySelector('.dl-hero .dl-sub');
+      const descriptionText = unitData.heroDescription || unitData.shortDescription;
+      if (subEl && descriptionText) {
+        subEl.textContent = descriptionText;
       }
       
-      // Update all bullet points with detailedFeatures
-      if (unitData.detailedFeatures && Array.isArray(unitData.detailedFeatures)) {
+      // Update sections (headings, descriptions, features) - NEW STRUCTURE
+      if (unitData.sections && Array.isArray(unitData.sections)) {
+        const cards = document.querySelectorAll('.dl-card');
+        
+        unitData.sections.forEach((section, sectionIndex) => {
+          if (sectionIndex < cards.length) {
+            const card = cards[sectionIndex];
+            
+            // Update section heading
+            const heading = card.querySelector('.dl-h2');
+            if (heading && section.heading) {
+              heading.textContent = section.heading;
+            }
+            
+            // Update section description (first paragraph)
+            const paragraphs = card.querySelectorAll('p');
+            if (paragraphs[0] && section.description) {
+              paragraphs[0].innerHTML = section.description.replace(/<strong>(.*?)<\/strong>/g, '<strong>$1</strong>');
+            }
+            
+            // Update closing note if present (second paragraph in "Good to Know")
+            if (paragraphs[1] && section.closingNote) {
+              paragraphs[1].textContent = section.closingNote;
+            }
+            
+            // Update features/bullet points
+            if (section.features && Array.isArray(section.features)) {
+              const bulletList = card.querySelector('ul.dl-proofs');
+              if (bulletList) {
+                const items = bulletList.querySelectorAll('li');
+                section.features.forEach((feature, featureIndex) => {
+                  if (featureIndex < items.length) {
+                    const iconSpan = items[featureIndex].querySelector('.i');
+                    if (iconSpan) {
+                      items[featureIndex].innerHTML = iconSpan.outerHTML + ' ' + feature;
+                    } else {
+                      items[featureIndex].textContent = feature;
+                    }
+                  }
+                });
+              }
+            }
+          }
+        });
+        
+        console.log(`Updated ${unitData.sections.length} sections`);
+      }
+      // LEGACY FALLBACK: Update bullet points with detailedFeatures (for comfort/cottage/chalet)
+      else if (unitData.detailedFeatures && Array.isArray(unitData.detailedFeatures)) {
         const bulletLists = document.querySelectorAll('ul.dl-proofs');
         let featureIndex = 0;
         
@@ -398,7 +446,6 @@ async function applyTranslations(lang) {
           const items = list.querySelectorAll('li');
           items.forEach(item => {
             if (featureIndex < unitData.detailedFeatures.length) {
-              // Preserve the icon span, just update the text
               const iconSpan = item.querySelector('.i');
               const feature = unitData.detailedFeatures[featureIndex];
               
@@ -413,7 +460,35 @@ async function applyTranslations(lang) {
           });
         });
         
-        console.log(`Updated ${featureIndex} features from ${unitData.detailedFeatures.length} available`);
+        console.log(`Updated ${featureIndex} features (legacy structure)`);
+      }
+      
+      // Update trust items
+      if (unitData.trustItems && Array.isArray(unitData.trustItems)) {
+        const trustItems = document.querySelectorAll('.dl-trust-item');
+        unitData.trustItems.forEach((text, index) => {
+          if (index < trustItems.length) {
+            const iconSpan = trustItems[index].querySelector('.i');
+            if (iconSpan) {
+              trustItems[index].innerHTML = iconSpan.outerHTML + ' ' + text;
+            } else {
+              trustItems[index].textContent = text;
+            }
+          }
+        });
+      }
+      
+      // Update CTA section
+      if (unitData.cta) {
+        const ctaHeading = document.querySelector('.dl-cta h2');
+        const ctaDescription = document.querySelector('.dl-cta p');
+        
+        if (ctaHeading && unitData.cta.heading) {
+          ctaHeading.textContent = unitData.cta.heading;
+        }
+        if (ctaDescription && unitData.cta.description) {
+          ctaDescription.textContent = unitData.cta.description;
+        }
       }
     }
   }

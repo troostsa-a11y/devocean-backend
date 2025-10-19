@@ -1,0 +1,835 @@
+{
+  "en-GB": {
+    "safari": {
+      "title": "Safari Tent",
+      "shortDescription": "12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      "detailedFeatures": [
+        "Two single beds (or King) with pedestals and shaded lamps",
+        "Mosquito mesh on doors/windows • strong fan • power points",
+        "Small shelving unit for clothing/essentials",
+        "Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tent",
+      "shortDescription": "Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "Twin/King bed setup • lamps • convenient light switches",
+        "Mosquito mesh • strong fan • power points",
+        "Private wood terrace with rolled palm-leaf chairs",
+        "At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "Garden Cottage",
+      "shortDescription": "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "Roman-tiled roof, high white ceiling with dark wood beams",
+        "Terracotta floor, warm wheatfields-painted walls",
+        "Queen bed • working desk with shaded lamp • dining table with chairs",
+        "Suitcase shelves, clothes rack and extra shelving",
+        "Inverter A/C (cool & heat) • dimmable main light",
+        "Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "Thatched Chalet",
+      "shortDescription": "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "Wheatfields-painted walls • tranquil, shaded setting",
+        "Dinner table with chairs • air conditioning",
+        "Private bathroom (shower, sink, toilet)",
+        "Two singles or King with pedestals • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "en-US": {
+    "safari": {
+      "title": "Safari Tent",
+      "shortDescription": "130 sq ft canvas tent on a 10×20 ft platform. Twin/King, fan, power outlets, mosquito mesh, private terrace. Shared bathrooms.",
+      "detailedFeatures": [
+        "Two twin beds (or King) with nightstands and shaded lamps",
+        "Mosquito mesh on doors/windows • strong fan • power outlets",
+        "Small shelving unit for clothing/essentials",
+        "Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "Village can be lively during holidays; free earplugs at reception"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tent",
+      "shortDescription": "Upgraded 130 sq ft tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      "detailedFeatures": [
+        "Twin/King bed setup • lamps • convenient light switches",
+        "Mosquito mesh • strong fan • power outlets",
+        "Private wood terrace with rolled palm-leaf chairs",
+        "At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "Village liveliness during peak/holidays; earplugs available"
+      ]
+    },
+    "cottage": {
+      "title": "Garden Cottage",
+      "shortDescription": "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "detailedFeatures": [
+        "Roman-tiled roof, high white ceiling with dark wood beams",
+        "Terracotta floor, warm wheatfields-painted walls",
+        "Queen bed • working desk with shaded lamp • dining table with chairs",
+        "Suitcase shelves, clothes rack and extra shelving",
+        "Inverter A/C (cool & heat) • dimmable main light",
+        "Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "Private wooden terrace with camping chairs and side table"
+      ]
+    },
+    "chalet": {
+      "title": "Thatched Chalet",
+      "shortDescription": "Secluded, romantic tiny chalet under palms and bird of paradise. A/C, private bathroom, terrace, Twin/King bed setup.",
+      "detailedFeatures": [
+        "Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "Wheatfields-painted walls • tranquil, shaded setting",
+        "Dinner table with chairs • air conditioning",
+        "Private bathroom (shower, sink, toilet)",
+        "Two twins or King with nightstands • private terrace with palm-leaf chairs"
+      ]
+    }
+  },
+  "nl-NL": {
+    "safari": {
+      "title": "Safari Tent",
+      "shortDescription": "12 m² canvas tent op een 3×6 m platform. Twin/King, ventilator, stopcontacten, muggennet, privé terras. Gedeelde sanitair.",
+      "detailedFeatures": [
+        "Twee eenpersoonsbedden (of King) met nachtkastjes en lamps met kap",
+        "Muggennet op deuren/ramen • sterke ventilator • stopcontacten",
+        "Klein rekje voor kleding/essentials",
+        "Privé terras met gerolde palmblad stoelen met uitzicht op de tropische tuin",
+        "Gedeelde badkamers (dames/heren): 2 warm/koud douches & 2 toiletten elk",
+        "Dorp kan levendig zijn tijdens vakanties; gratis oordopjes bij receptie"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tent",
+      "shortDescription": "Opgewaardeerde 12 m² tent met extra privacy (zij/achterwanden), privé terras en eigen en-suite badkamer onder een rieten dak.",
+      "detailedFeatures": [
+        "Twin/King bed opstelling • lampen • handige lichtschakelaars",
+        "Muggennet • sterke ventilator • stopcontacten",
+        "Privé houten terras met gerolde palmblad stoelen",
+        "Aan de achterkant: privé badkamer (douche, toilet, wastafel) onder een gras rieten dak",
+        "Dorp levendigheid tijdens piek/vakanties; oordopjes beschikbaar"
+      ]
+    },
+    "cottage": {
+      "title": "Tuin Cottage",
+      "shortDescription": "Luchtige cottage met queen bed, A/C (inverter), bureau & eettafel, privé terras en badkamer in een charmante roundavel.",
+      "detailedFeatures": [
+        "Romaans tegeldak, hoog wit plafond met donkere houten balken",
+        "Terracotta vloer, warm tarwevelden-geschilderde muren",
+        "Queen bed • werkbureau met lamp met kap • eettafel met stoelen",
+        "Koffer planken, kledingrek en extra planken",
+        "Inverter A/C (koel & warmte) • dimbare hoofdlicht",
+        "Privé bad in gras rieten roundavel (douche, wastafel, toilet)",
+        "Privé houten terras met kampeerstoelen en bijzettafel"
+      ]
+    },
+    "chalet": {
+      "title": "Rieten Chalet",
+      "shortDescription": "Afgelegen, romantisch klein chalet onder palmen en strelitzia. A/C, privé badkamer, terras, Twin/King bed opstelling.",
+      "detailedFeatures": [
+        "Gras rieten dak op bluegum polen • herfst lei vloer",
+        "Tarwevelden-geschilderde muren • rustige, schaduwrijke setting",
+        "Eettafel met stoelen • airconditioning",
+        "Privé badkamer (douche, wastafel, toilet)",
+        "Twee eenpersoons of King met nachtkastjes • privé terras met palmblad stoelen"
+      ]
+    }
+  },
+  "fr-FR": {
+    "safari": {
+      "title": "Tente Safari",
+      "shortDescription": "Tente en toile de 12 m² sur une plateforme de 3×6 m. Twin/King, ventilateur, prises de courant, moustiquaire, terrasse privée. Sanitaires partagés.",
+      "detailedFeatures": [
+        "Deux lits simples (ou King) avec chevets et lampes ombragées",
+        "Moustiquaire sur portes/fenêtres • ventilateur puissant • prises de courant",
+        "Petite étagère pour vêtements/essentiels",
+        "Terrasse privée avec chaises en feuilles de palmier roulées face au jardin tropical",
+        "Salles de bains partagées (dames/messieurs): 2 douches chaudes/froides & 2 toilettes chacune",
+        "Le village peut être animé pendant les vacances; bouchons d'oreilles gratuits à la réception"
+      ]
+    },
+    "comfort": {
+      "title": "Tente Comfort",
+      "shortDescription": "Tente améliorée de 12 m² avec confidentialité supplémentaire (murs latéraux/arrière), terrasse privée et salle de bain en-suite sous un toit de chaume.",
+      "detailedFeatures": [
+        "Configuration lit Twin/King • lampes • interrupteurs de lumière pratiques",
+        "Moustiquaire • ventilateur puissant • prises de courant",
+        "Terrasse en bois privée avec chaises en feuilles de palmier roulées",
+        "À l'arrière: salle de bain privée (douche, toilette, lavabo) sous un toit de chaume d'herbe",
+        "Animation du village pendant les pics/vacances; bouchons d'oreilles disponibles"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage de Jardin",
+      "shortDescription": "Cottage aéré avec lit queen, climatisation (inverter), bureau & table à manger, terrasse privée et salle de bain dans un roundavel charmant.",
+      "detailedFeatures": [
+        "Toit en tuiles romaines, haut plafond blanc avec poutres en bois sombre",
+        "Sol en terracotta, murs peints en champs de blé chauds",
+        "Lit queen • bureau de travail avec lampe ombragée • table à manger avec chaises",
+        "Étagères pour valises, porte-vêtements et étagères supplémentaires",
+        "Climatisation inverter (froid & chaleur) • lumière principale dimmable",
+        "Salle de bain privée dans roundavel de chaume d'herbe (douche, lavabo, toilette)",
+        "Terrasse en bois privée avec chaises de camping et table d'appoint"
+      ]
+    },
+    "chalet": {
+      "title": "Chalet de Chaume",
+      "shortDescription": "Chalet minuscule romantique isolé sous les palmiers et strelitzia. Climatisation, salle de bain privée, terrasse, configuration lit Twin/King.",
+      "detailedFeatures": [
+        "Toit de chaume d'herbe sur poteaux de bluegum • sol en ardoise automnale",
+        "Murs peints en champs de blé • cadre tranquille, ombragé",
+        "Table à manger avec chaises • climatisation",
+        "Salle de bain privée (douche, lavabo, toilette)",
+        "Deux lits simples ou King avec chevets • terrasse privée avec chaises en feuilles de palmier"
+      ]
+    }
+  },
+  "it-IT": {
+    "safari": {
+      "title": "Tenda Safari",
+      "shortDescription": "Tenda in tela di 12 m² su una piattaforma di 3×6 m. Twin/King, ventilatore, prese di corrente, rete antizanzare, terrazza privata. Bagni condivisi.",
+      "detailedFeatures": [
+        "Due letti singoli (o King) con comodini e lampade ombreggiate",
+        "Rete antizanzare su porte/finestre • ventilatore forte • prese di corrente",
+        "Piccola scaffalatura per abbigliamento/essenziali",
+        "Terrazza privata con sedie di foglie di palma arrotolate affacciate sul giardino tropicale",
+        "Bagni condivisi (signore/signori): 2 docce calde/fredde & 2 wc ciascuno",
+        "Il villaggio può essere vivace durante le vacanze; tappi per le orecchie gratuiti alla reception"
+      ]
+    },
+    "comfort": {
+      "title": "Tenda Comfort",
+      "shortDescription": "Tenda aggiornata di 12 m² con privacy extra (pareti laterali/posteriori), terrazza privata e bagno en-suite proprio sotto un tetto di paglia.",
+      "detailedFeatures": [
+        "Setup letto Twin/King • lampade • interruttori luce convenienti",
+        "Rete antizanzare • ventilatore forte • prese di corrente",
+        "Terrazza in legno privata con sedie di foglie di palma arrotolate",
+        "Sul retro: bagno privato (doccia, wc, lavandino) sotto un tetto di paglia d'erba",
+        "Vivacità del villaggio durante picchi/vacanze; tappi per le orecchie disponibili"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage da Giardino",
+      "shortDescription": "Cottage arioso con letto queen, A/C (inverter), scrivania & tavolo da pranzo, terrazza privata e bagno in un affascinante roundavel.",
+      "detailedFeatures": [
+        "Tetto piastrellato romano, alto soffitto bianco con travi in legno scuro",
+        "Pavimento in terracotta, pareti dipinte in campi di grano caldi",
+        "Letto queen • scrivania da lavoro con lampada ombreggiata • tavolo da pranzo con sedie",
+        "Scaffali per valigie, appendiabiti e scaffalatura extra",
+        "A/C inverter (freddo & calore) • luce principale dimmerabile",
+        "Bagno privato in roundavel di paglia d'erba (doccia, lavandino, wc)",
+        "Terrazza in legno privata con sedie da camping e tavolino laterale"
+      ]
+    },
+    "chalet": {
+      "title": "Chalet di Paglia",
+      "shortDescription": "Piccolo chalet romantico isolato sotto palme e strelitzia. A/C, bagno privato, terrazza, setup letto Twin/King.",
+      "detailedFeatures": [
+        "Tetto di paglia d'erba su pali di bluegum • pavimento in ardesia autunnale",
+        "Pareti dipinte in campi di grano • impostazione tranquilla, ombreggiata",
+        "Tavolo da pranzo con sedie • aria condizionata",
+        "Bagno privato (doccia, lavandino, wc)",
+        "Due singoli o King con comodini • terrazza privata con sedie di foglie di palma"
+      ]
+    }
+  },
+  "de-DE": {
+    "safari": {
+      "title": "Safari Zelt",
+      "shortDescription": "12 m² Leinenzelt auf einer 3×6 m Plattform. Twin/King, Ventilator, Steckdosen, Moskitonetz, private Terrasse. Gemeinsame Waschräume.",
+      "detailedFeatures": [
+        "Zwei Einzelbetten (oder King) mit Sockeln und schattierten Lampen",
+        "Moskitonetz an Türen/Fenstern • starker Ventilator • Steckdosen",
+        "Kleines Regalsystem für Kleidung/Essentials",
+        "Private Terrasse mit gerollten Palmblattstühlen mit Blick auf den tropischen Garten",
+        "Gemeinsame Badezimmer (Damen/Herren): 2 heiße/kalte Duschen & 2 Toiletten jeweils",
+        "Dorf kann lebhaft sein während der Ferien; kostenlose Ohrstöpsel an der Rezeption"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Zelt",
+      "shortDescription": "Aufgewertetes 12 m² Zelt mit extra Privatsphäre (Seiten/Rückwände), private Terrasse und eigenes en-suite Badezimmer unter einem Reetdach.",
+      "detailedFeatures": [
+        "Twin/King Bettkonfiguration • Lampen • bequeme Lichtschalter",
+        "Moskitonetz • starker Ventilator • Steckdosen",
+        "Private Holzterrassen mit gerollten Palmblattstühlen",
+        "Hinten: privates Badezimmer (Dusche, Toilette, Waschbecken) unter einem Gras-Reetdach",
+        "Dorflebendigkeit während Spitzen/Ferien; Ohrstöpsel verfügbar"
+      ]
+    },
+    "cottage": {
+      "title": "Garten Cottage",
+      "shortDescription": "Luftiges Cottage mit Queen-Bett, A/C (Inverter), Schreibtisch & Esstisch, private Terrasse und Badezimmer in einem charmanten Roundavel.",
+      "detailedFeatures": [
+        "Römisches Ziegeldach, hohe weiße Decke mit dunklen Holzbal ken",
+        "Terrakotta-Boden, warme Weizenfelder-bemalte Wände",
+        "Queen-Bett • Arbeitsschrei btisch mit schattierter Lampe • Esstisch mit Stühlen",
+        "Kofferregale, Kleiderständer und extra Regale",
+        "Inverter A/C (kühl & heiz) • dimmbare Hauptbeleuchtung",
+        "Privates Bad in Gras-Reet Roundavel (Dusche, Waschbecken, Toilette)",
+        "Private Holzterrassen mit Campingstühlen und Beistelltisch"
+      ]
+    },
+    "chalet": {
+      "title": "Reet Chalet",
+      "shortDescription": "Abgelegenes, romantisches kleines Chalet unter Palmen und Strelitzia. A/C, privates Badezimmer, Terrasse, Twin/King Bettkonfiguration.",
+      "detailedFeatures": [
+        "Grass-Reetdach auf Bluegum-Stangen • herbstlicher Schieferboden",
+        "Weizenfelder-bemalte Wände • ruhige, schattige Lage",
+        "Esstisch mit Stühlen • Klimaanlage",
+        "Privates Badezimmer (Dusche, Waschbecken, Toilette)",
+        "Zwei Einzel- oder King mit Sockeln • private Terrasse mit Palmblattstühlen"
+      ]
+    }
+  },
+  "es-ES": {
+    "safari": {
+      "title": "Tienda Safari",
+      "shortDescription": "Tienda de lona de 12 m² en una plataforma de 3×6 m. Twin/King, ventilador, tomas de corriente, malla contra mosquitos, terraza privada. Baños compartidos.",
+      "detailedFeatures": [
+        "Dos camas individuales (o King) con pedestales y lámparas sombreadas",
+        "Malla contra mosquitos en puertas/ventanas • ventilador fuerte • tomas de corriente",
+        "Pequeña unidad de estanterías para ropa/esenciales",
+        "Terraza privada con sillas de hoja de palma enrollada facing el jardín tropical",
+        "Baños compartidos (damas/caballeros): 2 duchas calientes/frías & 2 inodoros cada uno",
+        "El pueblo puede ser animado durante las vacaciones; tapones para los oídos gratuitos en recepción"
+      ]
+    },
+    "comfort": {
+      "title": "Tienda Comfort",
+      "shortDescription": "Tienda actualizada de 12 m² con privacy extra (paredes laterales/posteriores), terraza privada y baño en-suite propio bajo un techo de paja.",
+      "detailedFeatures": [
+        "Configuración de cama Twin/King • lámparas • interruptores de luz convenientes",
+        "Malla contra mosquitos • ventilador fuerte • tomas de corriente",
+        "Terraza de madera privada con sillas de hoja de palma enrollada",
+        "En la parte trasera: baño privado (ducha, inodoro, lavabo) bajo un techo de paja de hierba",
+        "Animación del pueblo durante picos/vacaciones; tapones para los oídos disponibles"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage de Jardín",
+      "shortDescription": "Cottage aireado con cama queen, A/C (inverter), escritorio & mesa de comedor, terraza privada y baño en un charming roundavel.",
+      "detailedFeatures": [
+        "Tejado de tejas romanas, alto techo blanco con vigas de madera oscura",
+        "Piso de terracota, paredes pintadas en campos de trigo cálidos",
+        "Cama queen • escritorio de trabajo con lámpara sombreada • mesa de comedor con sillas",
+        "Estantes para maletas, perchero para ropa y estanterías extra",
+        "A/C inverter (frío & calor) • luz principal regulable",
+        "Baño privado en roundavel de paja de hierba (ducha, lavabo, inodoro)",
+        "Terraza de madera privada con sillas de camping y mesa lateral"
+      ]
+    },
+    "chalet": {
+      "title": "Chalet de Paja",
+      "shortDescription": "Chalet pequeño romántico aislado bajo palmeras y strelitzia. A/C, baño privado, terraza, configuración de cama Twin/King.",
+      "detailedFeatures": [
+        "Techo de paja de hierba en postes de bluegum • piso de pizarra otoñal",
+        "Paredes pintadas en campos de trigo • configuración tranquila, sombreada",
+        "Mesa de comedor con sillas • aire acondicionado",
+        "Baño privado (ducha, lavabo, inodoro)",
+        "Dos individuales o King con pedestales • terraza privada con sillas de hoja de palma"
+      ]
+    }
+  },
+  "sv": {
+    "safari": {
+      "title": "Safari Tält",
+      "shortDescription": "12 m² duk tält på en 3×6 m plattform. Twin/King, fläkt, eluttag, myggnät, privat terrass. Delade badrum.",
+      "detailedFeatures": [
+        "Två enkelsängar (eller King) med nattduksbord och skuggade lampor",
+        "Myggnät på dörrar/fönster • stark fläkt • eluttag",
+        "Liten hylla för kläder/essentials",
+        "Privat terrass med rullade palmblad stolar mot den tropiska trädgården",
+        "Delade badrum (dam/herr): 2 varma/kalla duschar & 2 toaletter vardera",
+        "Byn kan vara livlig under helgdagar; gratis öronproppar vid receptionen"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tält",
+      "shortDescription": "Uppgraderat 12 m² tält med extra integritet (sid/bak väggar), privat terrass och eget en-suite badrum under ett stråtak.",
+      "detailedFeatures": [
+        "Twin/King sänguppställning • lampor • praktiska ljusbrytare",
+        "Myggnät • stark fläkt • eluttag",
+        "Privat träterrass med rullade palmblad stolar",
+        "På baksidan: privat badrum (dusch, toalett, handfat) under ett grässtråtak",
+        "Byn livlighet under topp/helgdagar; öronproppar tillgängliga"
+      ]
+    },
+    "cottage": {
+      "title": "Trädgård Cottage",
+      "shortDescription": "Luftig cottage med queen säng, A/C (inverter), skrivbord & matbord, privat terrass och badrum i en charmig roundavel.",
+      "detailedFeatures": [
+        "Roman tegel tak, högt vitt tak med mörka träbjälkar",
+        "Terrakotta golv, varma vete fält-målade väggar",
+        "Queen säng • arbetsbord med skuggad lampa • matbord med stolar",
+        "Resväsk hyllor, klädställ och extra hyllor",
+        "Inverter A/C (kyl & värme) • dimbar huvudljus",
+        "Privat bad i grässtrå roundavel (dusch, handfat, toalett)",
+        "Privat träterrass med camping stolar och sidobord"
+      ]
+    },
+    "chalet": {
+      "title": "Stråtak Chalet",
+      "shortDescription": "Avskilt, romantiskt litet chalet under palmer och strelitzia. A/C, privat badrum, terrass, Twin/King sänguppställning.",
+      "detailedFeatures": [
+        "Grässtrå tak på bluegum stolpar • höstskiffer golv",
+        "Vete fält-målade väggar • lugn, skuggig miljö",
+        "Matbord med stolar • luftkonditionering",
+        "Privat badrum (dusch, handfat, toalett)",
+        "Två enkla eller King med nattduksbord • privat terrass med palmblad stolar"
+      ]
+    }
+  },
+  "pl": {
+    "safari": {
+      "title": "Namiot Safari",
+      "shortDescription": "Namiot płócienny 12 m² na platformie 3×6 m. Twin/King, wentylator, gniazdka elektryczne, siatka przeciw moskitom, prywatny taras. Wspólne łazienki.",
+      "detailedFeatures": [
+        "Dwa łóżka pojedyncze (lub King) z cokołami i lampami zacienionymi",
+        "Siatka przeciw moskitom na drzwiach/oknach • silny wentylator • gniazdka elektryczne",
+        "Mała jednostka regałowa na odzież/esencjonalne",
+        "Prywatny taras z zwijanymi krzesłami z liści palmowych skierowanymi do tropikalnego ogrodu",
+        "Wspólne łazienki (panie/panowie): 2 prysznice gorące/zimne & 2 toalety każda",
+        "Wioska może być ożywiona podczas świąt; darmowe zatyczki do uszu w recepcji"
+      ]
+    },
+    "comfort": {
+      "title": "Namiot Comfort",
+      "shortDescription": "Ulepszony namiot 12 m² z dodatkową prywatnością (ściany boczne/tylne), prywatny taras i własna łazienka en-suite pod strzechą.",
+      "detailedFeatures": [
+        "Ustawienie łóżka Twin/King • lampy • wygodne przełączniki światła",
+        "Siatka przeciw moskitom • silny wentylator • gniazdka elektryczne",
+        "Prywatny drewniany taras z zwijanymi krzesłami z liści palmowych",
+        "Z tyłu: prywatna łazienka (prysznic, toaleta, umywalka) pod strzechą z trawy",
+        "Ożywienie wioski podczas szczytu/świąt; zatyczki do uszu dostępne"
+      ]
+    },
+    "cottage": {
+      "title": "Domek Ogrodowy",
+      "shortDescription": "Powietrzny domek z łóżkiem queen, A/C (inwerter), biurko & stół jadalny, prywatny taras i łazienka w uroczym roundavel.",
+      "detailedFeatures": [
+        "Dach z dachówek rzymskich, wysoki biały sufit z ciemnymi drewnianymi belkami",
+        "Podłoga z terrakoty, ciepłe malowane ściany pól pszenicznych",
+        "Łóżko queen • biurko robocze z lampą zacienioną • stół jadalny z krzesłami",
+        "Półki na walizki, wieszak na ubrania i dodatkowe półki",
+        "A/C inwerter (chłodzenie & ogrzewanie) • przyciemniane światło główne",
+        "Prywatna łazienka w roundavel ze strzechy z trawy (prysznic, umywalka, toaleta)",
+        "Prywatny drewniany taras z krzesłami kempingowymi i stolikiem bocznym"
+      ]
+    },
+    "chalet": {
+      "title": "Chata ze Strzechy",
+      "shortDescription": "Ukryty, romantyczny mały chata pod palmami i strelitzia. A/C, prywatna łazienka, taras, ustawienie łóżka Twin/King.",
+      "detailedFeatures": [
+        "Strzecha z trawy na słupach bluegum • jesienny łupkowy podłoga",
+        "Malowane ściany pól pszenicznych • spokojne, zacienione otoczenie",
+        "Stół jadalny z krzesłami • klimatyzacja",
+        "Prywatna łazienka (prysznic, umywalka, toaleta)",
+        "Dwa pojedyncze lub King z cokołami • prywatny taras z krzesłami z liści palmowych"
+      ]
+    }
+  },
+  "af-ZA": {
+    "safari": {
+      "title": "Safari Tent",
+      "shortDescription": "12 m² doek tent op 'n 3×6 m platform. Twin/King, waai, kragpunte, muskietnet, private terras. Gedeelde ablusions.",
+      "detailedFeatures": [
+        "Twee enkelbeddens (of King) met pedestale en skadulampies",
+        "Muskietnet op deure/vensters • sterk waai • kragpunte",
+        "Klein rakkie vir klere/essensiële",
+        "Private terras met gerol palmblaar stoele gerig op die tropiese tuin",
+        "Gedeelde badkamers (dames/heren): 2 warm/koue storte & 2 toilette elk",
+        "Dorp kan lewendig wees tydens vakansies; gratis oordoppe by resepsie"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Tent",
+      "shortDescription": "Opgegradeerde 12 m² tent met ekstra privaatheid (sy/agter mure), private terras en jou eie en-suite badkamer onder 'n grasdak.",
+      "detailedFeatures": [
+        "Twin/King bed opstelling • lampies • gerieflike ligskakelaars",
+        "Muskietnet • sterk waai • kragpunte",
+        "Private hout terras met gerol palmblaar stoele",
+        "By die agterkant: private badkamer (stort, toilet, wasbak) onder 'n grasdak",
+        "Dorp lewendigheid tydens piek/vakansies; oordoppe beskikbaar"
+      ]
+    },
+    "cottage": {
+      "title": "Tuin Cottage",
+      "shortDescription": "Lugagtige cottage met queen bed, A/C (omskakelaar), lessenaar & eetafel, private terras en badkamer in 'n bekoorlike roundavel.",
+      "detailedFeatures": [
+        "Romeinse teëldak, hoë wit plafon met donker houtbalke",
+        "Terracotta vloer, warm koringvelde-geschilderde mure",
+        "Queen bed • werklessenaar met skadulamp • eetafel met stoele",
+        "Koffer rakkies, klere rek en ekstra rakkies",
+        "Omsakelaar A/C (koel & hitte) • dimbare hooflig",
+        "Private bad in grasdak roundavel (stort, wasbak, toilet)",
+        "Private hout terras met kamp stoele en sytafel"
+      ]
+    },
+    "chalet": {
+      "title": "Grasdak Chalet",
+      "shortDescription": "Afgesonderde, romantiese klein chalet onder palmbome en strelitzia. A/C, private badkamer, terras, Twin/King bed opstelling.",
+      "detailedFeatures": [
+        "Grasdak op bluegum pole • herfs lei vloer",
+        "Koringvelde-geschilderde mure • rustige, skaduryke omgewing",
+        "Eettafel met stoele • lugversorging",
+        "Private badkamer (stort, wasbak, toilet)",
+        "Twee enkels of King met pedestale • private terras met palmblaar stoele"
+      ]
+    }
+  },
+  "zu": {
+    "safari": {
+      "title": "Itende le-Safari",
+      "shortDescription": "Itende le-canvas ye-12 m² ku-platform ye-3×6 m. Ama-Twin/King, isiphephetho, amaphoyinti kagesi, inetha le-mosquito, ithala langasese. Ama-ablutions abelwe.",
+      "detailedFeatures": [
+        "Amabhedi amabili single (noma i-King) nama-pedestal nama-lamp ashaded",
+        "Inetha le-mosquito emasangweni/amafasitela • isiphephetho esiqinile • amaphoyinti kagesi",
+        "Iyunithi encane yeshelufu yezingubo/izidingo",
+        "Ithala langasese elinezihlalo ze-palm-leaf ezigoqiwe ezibheke ensimini ye-tropical",
+        "Izindlu zokugeza ezelwe (amadodakazi/amadoda): 2 ama-shower ashisayo/amabanda & 2 ama-toilet ngamunye",
+        "Idolobhana lingaba nemisebenzi ngesikhathi samaholide; ama-earplug mahhala e-reception"
+      ]
+    },
+    "comfort": {
+      "title": "Itende le-Comfort",
+      "shortDescription": "Itende elithuthukisiwe ye-12 m² eline-privacy eyengeziwe (izindonga ezi-side/back), ithala langasese kanye ne-bathroom yakho en-suite ngaphansi kophahla lwe-thatch.",
+      "detailedFeatures": [
+        "Ukusetha ibhedi ye-Twin/King • ama-lamp • ama-switch elula okukhanya",
+        "Inetha le-mosquito • isiphephetho esiqinile • amaphoyinti kagesi",
+        "Ithala langokhuni langasese elinezihlalo ze-palm-leaf ezigoqiwe",
+        "Ngemuva: bathroom langasese (ishawa, indlu yangasese, isinki) ngaphansi kophahla lwe-grass-thatch",
+        "Ukuvuka kwedolobhana ngesikhathi se-peak/holide; ama-earplug atholakala"
+      ]
+    },
+    "cottage": {
+      "title": "I-Cottage yensimini",
+      "shortDescription": "I-cottage enomoya eline-bhedi ye-queen, i-A/C (inverter), ideski & itafula lokudla, ithala langasese ne-bathroom ku-roundavel e-charming.",
+      "detailedFeatures": [
+        "Uphahla lwe-tiled ye-Roman, uphahla oluphakeme olumhlophe ngama-beam okhuni omnyama",
+        "Isitezi se-terracotta, izindonga ezipendwe ngokushisa kwe-wheatfields",
+        "Ibhedi ye-Queen • ideski yokusebenza eline-lamp eshaded • itafula lokudla elinezihlalo",
+        "Ama-shelufu e-suitcase, irack yezingubo nama-shelufu eyengeziwe",
+        "I-A/C inverter (pholile & shisa) • ukukhanya okukhulu okudimmable",
+        "I-bath langasese ku-grass-thatch roundavel (ishawa, isinki, indlu yangasese)",
+        "Ithala langokhuni langasese elinezihlalo ze-camping ne-tafula eceleni"
+      ]
+    },
+    "chalet": {
+      "title": "I-Chalet ye-Thatch",
+      "shortDescription": "I-chalet encane ye-romantic ehlukanisiwe ngaphansi kwe-palms ne-strelitzia. I-A/C, bathroom langasese, ithala, ukusetha ibhedi ye-Twin/King.",
+      "detailedFeatures": [
+        "Uphahla lwe-grass-thatch ku-bluegum poles • i-autumn-slate floor",
+        "Izindonga ezipendwe ngama-wheatfields • isetingi ethulile, esithunzi",
+        "Itafula lokudla elinezihlalo • i-air conditioning",
+        "Bathroom langasese (ishawa, isinki, indlu yangasese)",
+        "Ama-single amabili noma i-King nama-pedestal • ithala langasese elinezihlalo ze-palm-leaf"
+      ]
+    }
+  },
+  "sw": {
+    "safari": {
+      "title": "Hema ya Safari",
+      "shortDescription": "Hema ya turubai ya 12 m² kwenye platformu ya 3×6 m. Twin/King, feni, pointi za umeme, wavu wa mbu, terrace ya private. Choo za kushiriki.",
+      "detailedFeatures": [
+        "Vitanda viwili single (au King) na pedestals na taa za kivuli",
+        "Wavu wa mbu kwenye milango/madirisha • feni yenye nguvu • pointi za umeme",
+        "Kitengo kidogo cha rafu kwa nguo/essentials",
+        "Terrace ya private na viti vya majani ya palm iliyopindwa inayoelekea kwenye bustani ya tropiki",
+        "Choo za kushiriki (wanawake/wanaume): 2 shower za moto/baridi & 2 choo kila moja",
+        "Kijiji kinaweza kuwa na shughuli wakati wa likizo; earplug za bure kwenye reception"
+      ]
+    },
+    "comfort": {
+      "title": "Hema ya Comfort",
+      "shortDescription": "Hema iliyoboreshwa ya 12 m² na privacy ya ziada (kuta za upande/nyuma), terrace ya private na chumba chako cha kuoga en-suite chini ya paa la nyasi.",
+      "detailedFeatures": [
+        "Mpangilio wa kitanda Twin/King • taa • switch za nuru rahisi",
+        "Wavu wa mbu • feni yenye nguvu • pointi za umeme",
+        "Terrace ya mbao ya private na viti vya majani ya palm iliyopindwa",
+        "Nyuma: chumba cha kuoga private (shower, choo, sinki) chini ya paa la nyasi",
+        "Shughuli za kijiji wakati wa kilele/likizo; earplug zinapatikana"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage ya Bustani",
+      "shortDescription": "Cottage yenye hewa na kitanda cha queen, A/C (inverter), desk & meza ya kula, terrace ya private na chumba cha kuoga katika roundavel ya charming.",
+      "detailedFeatures": [
+        "Paa la vigae za Roman, paa refu nyeupe na mihimili ya mbao nyeusi",
+        "Sakafu ya terracotta, kuta zilizopakwa rangi ya wheatfields ya joto",
+        "Kitanda cha queen • desk ya kufanyia kazi na taa ya kivuli • meza ya kula na viti",
+        "Rafu za suitcase, rack ya nguo na rafu za ziada",
+        "A/C inverter (baridi & joto) • nuru kuu inayoweza kudhibiti",
+        "Chumba cha kuoga private katika grass-thatch roundavel (shower, sinki, choo)",
+        "Terrace ya mbao ya private na viti ya camping na meza ya upande"
+      ]
+    },
+    "chalet": {
+      "title": "Chalet ya Nyasi",
+      "shortDescription": "Chalet ndogo ya romantic iliyotengwa chini ya mitende na strelitzia. A/C, chumba cha kuoga private, terrace, mpangilio wa kitanda Twin/King.",
+      "detailedFeatures": [
+        "Paa ya nyasi ya grass kwenye nguzo za bluegum • sakafu ya slate ya autumn",
+        "Kuta zilizopakwa wheatfields • mpangilio tulivu, yenye kivuli",
+        "Meza ya kula na viti • air conditioning",
+        "Chumba cha kuoga private (shower, sinki, choo)",
+        "Vitanda viwili single au King na pedestals • terrace ya private na viti ya majani ya palm"
+      ]
+    }
+  },
+  "ja-JP": {
+    "safari": {
+      "title": "サファリテント",
+      "shortDescription": "3×6 m プラットフォーム上の12 m² キャンバステント. Twin/King, ファン, 電源ポイント, 蚊帳, プライベートテラス. 共有の洗面所.",
+      "detailedFeatures": [
+        "2つのシングルベッド (またはKing) と台座付きのシェードランプ",
+        "ドア/窓の蚊帳 • 強力ファン • 電源ポイント",
+        "服/必需品用の小さな棚ユニット",
+        "トロピカルガーデンに向いたロールパームリーフチェア付きプライベートテラス",
+        "共有バスルーム (レディース/ジェンツ): それぞれ2つの温/冷シャワー & 2つのトイレ",
+        "休暇中に村が賑やかになる可能性; 受付で無料イヤープラグ"
+      ]
+    },
+    "comfort": {
+      "title": "コンフォートテント",
+      "shortDescription": "追加プライバシー (サイド/バックウォール) のアップグレードされた12 m² テント, プライベートテラスとサッチ屋根の下の専用バスルーム.",
+      "detailedFeatures": [
+        "Twin/King ベッドセットアップ • ランプ • 便利なライトスイッチ",
+        "蚊帳 • 強力ファン • 電源ポイント",
+        "ロールパームリーフチェア付きプライベートウッドテラス",
+        "後ろ: グラスサッチ屋根の下のプライベートバスルーム (シャワー, トイレ, シンク)",
+        "ピーク/休暇中の村の賑やかさ; イヤープラグ利用可能"
+      ]
+    },
+    "cottage": {
+      "title": "ガーデンコテージ",
+      "shortDescription": "クイーンべッド, A/C (インバーター), デスク & ダイニングテーブル, プライベートテラスと魅力的なランダベル内のバスルーム付きの風通しの良いコテージ.",
+      "detailedFeatures": [
+        "ローマンタイル屋根, 高い白い天井に暗い木の梁",
+        "テラコッタフロア, 暖かい小麦畑塗りの壁",
+        "クイーンべッド • シェードランプ付きワークデスク • チェア付きダイニングテーブル",
+        "スーツケース棚, 服掛けと追加棚",
+        "インバーター A/C (クール & ヒート) • 調光可能メインライト",
+        "グラスサッチランダベル内のプライベートバス (シャワー, シンク, トイレ)",
+        "キャンプチェアとサイドテーブル付きプライベートウッドテラス"
+      ]
+    },
+    "chalet": {
+      "title": "サッチシャレ",
+      "shortDescription": "パームとストレリチアの下の孤立したロマンチックな小さなシャレ. A/C, プライベートバスルーム, テラス, Twin/King ベッドセットアップ.",
+      "detailedFeatures": [
+        "ブルーガムポール上のグラスサッチ屋根 • 秋のスレートフロア",
+        "小麦畑塗りの壁 • 平穏でシェードされた設定",
+        "チェア付きディナーテーブル • エアコン",
+        "プライベートバスルーム (シャワー, シンク, トイレ)",
+        "2つのシングルまたはKingと台座 • パームリーフチェア付きプライベートテラス"
+      ]
+    }
+  },
+  "zh-CN": {
+    "safari": {
+      "title": "Safari 帐篷",
+      "shortDescription": "3×6 m 平台上的12 m² 帆布帐篷. Twin/King, 风扇, 电源插座, 蚊帐, 私人露台. 共享盥洗室.",
+      "detailedFeatures": [
+        "两张单人床 (或 King) 带底座和遮光灯",
+        "门/窗上的蚊帐 • 强劲风扇 • 电源插座",
+        "用于服装/必需品的小型搁架单元",
+        "面向热带花园的卷棕榈叶椅私人露台",
+        "共享浴室 (女士/先生): 每处2个热水/冷水淋浴 & 2个厕所",
+        "假期期间村庄可能热闹; 接待处免费耳塞"
+      ]
+    },
+    "comfort": {
+      "title": "舒适帐篷",
+      "shortDescription": "升级的12 m² 帐篷, 具有额外隐私 (侧/后墙), 私人露台和茅草屋顶下的套间浴室.",
+      "detailedFeatures": [
+        "Twin/King 床配置 • 灯 • 方便灯光开关",
+        "蚊帐 • 强劲风扇 • 电源插座",
+        "带卷棕榈叶椅的私人木露台",
+        "后面: 草茅屋顶下的私人浴室 (淋浴, 马桶, 水槽)",
+        "高峰/假期期间村庄热闹; 耳塞可用"
+      ]
+    },
+    "cottage": {
+      "title": "花园小屋",
+      "shortDescription": "通风小屋, 带女王床, A/C (逆变器), 书桌 & 餐桌, 私人露台和迷人圆形亭内的浴室.",
+      "detailedFeatures": [
+        "罗马瓦屋顶, 高白天花板带深色木梁",
+        "赤土地板, 温暖小麦田涂墙",
+        "女王床 • 带遮光灯的工作书桌 • 带椅子的餐桌",
+        "行李架, 衣架和额外架子",
+        "逆变器 A/C (凉 & 热) • 可调光主灯",
+        "草茅圆形亭内的私人浴 (淋浴, 水槽, 马桶)",
+        "带露营椅和侧桌的私人木露台"
+      ]
+    },
+    "chalet": {
+      "title": "茅草木屋",
+      "shortDescription": "棕榈和鸟之天堂花下的僻静浪漫小木屋. A/C, 私人浴室, 露台, Twin/King 床配置.",
+      "detailedFeatures": [
+        "蓝胶柱上的草茅屋顶 • 秋季板岩地板",
+        "小麦田涂墙 • 平静, 阴凉环境",
+        "带椅子的餐桌 • 空调",
+        "私人浴室 (淋浴, 水槽, 马桶)",
+        "两个单人或 King 带底座 • 带棕榈叶椅的私人露台"
+      ]
+    }
+  },
+  "ru": {
+    "safari": {
+      "title": "Палатка Сафари",
+      "shortDescription": "Палатка из холста 12 м² на платформе 3×6 m. Twin/King, вентилятор, розетки, москитная сетка, частная терраса. Общие санузлы.",
+      "detailedFeatures": [
+        "Две одиночные кровати (или King) с пьедесталами и затененными лампами",
+        "Москитная сетка на дверях/окнах • сильный вентилятор • розетки",
+        "Маленькая полка для одежды/необходимого",
+        "Частная терраса с свернутыми креслами из пальмовых листьев, выходящими на тропический сад",
+        "Общие ванные комнаты (женские/мужские): 2 горячих/холодных душа & 2 туалета каждая",
+        "Деревня может быть оживленной во время праздников; бесплатные беруши на рецепции"
+      ]
+    },
+    "comfort": {
+      "title": "Палатка Комфорт",
+      "shortDescription": "Обновленная палатка 12 м² с дополнительной конфиденциальностью (боковые/задние стены), частная терраса и собственная ванная комната под соломенной крышей.",
+      "detailedFeatures": [
+        "Настройка кровати Twin/King • лампы • удобные выключатели света",
+        "Москитная сетка • сильный вентилятор • розетки",
+        "Частная деревянная терраса с свернутыми креслами из пальмовых листьев",
+        "Сзади: частная ванная комната (душ, туалет, раковина) под крышей из травы",
+        "Оживленность деревни во время пика/праздников; беруши доступны"
+      ]
+    },
+    "cottage": {
+      "title": "Садовый Коттедж",
+      "shortDescription": "Воздушный коттедж с кроватью queen, A/C (инвертор), столом & обеденным столом, частной террасой и ванной в очаровательном roundavel.",
+      "detailedFeatures": [
+        "Римская черепичная крыша, высокий белый потолок с темными деревянными балками",
+        "Терракотовый пол, теплые окрашенные стены пшеничных полей",
+        "Кровать queen • рабочий стол с затененной лампой • обеденный стол с стульями",
+        "Полки для чемоданов, вешалка для одежды и дополнительные полки",
+        "Инвертор A/C (охлаждение & обогрев) • диммируемый основной свет",
+        "Частная ванна в соломенной roundavel (душ, раковина, туалет)",
+        "Частная деревянная терраса с кемпинговыми стульями и боковым столом"
+      ]
+    },
+    "chalet": {
+      "title": "Соломенный Шале",
+      "shortDescription": "Уединенный, романтический маленький шале под пальмами и стрелицией. A/C, частная ванная, терраса, настройка кровати Twin/King.",
+      "detailedFeatures": [
+        "Соломенная крыша из травы на столбах bluegum • осенний сланцевый пол",
+        "Окрашенные стены пшеничных полей • спокойная, затененная обстановка",
+        "Обеденный стол со стульями • кондиционер",
+        "Частная ванная (душ, раковина, туалет)",
+        "Две одиночные или King с пьедесталами • частная терраса с креслами из пальмовых листьев"
+      ]
+    }
+  },
+  "pt-BR": {
+    "safari": {
+      "title": "Tenda Safari",
+      "shortDescription": "Tenda de lona de 12 m² em uma plataforma de 3×6 m. Twin/King, ventilador, pontos de energia, rede contra mosquitos, terraço privado. Banheiros compartilhados.",
+      "detailedFeatures": [
+        "Duas camas de solteiro (ou King) com pedestais e lâmpadas com abajur",
+        "Rede contra mosquitos em portas/janelas • ventilador forte • pontos de energia",
+        "Pequena unidade de prateleiras para roupas/essenciais",
+        "Terraço privado com cadeiras de folha de palma enrolada de frente para o jardim tropical",
+        "Banheiros compartilhados (senhoras/senhores): 2 chuveiros quentes/frios e 2 toiletes cada",
+        "A vila pode ser animada durante as férias; tampões de ouvido gratuitos na recepção"
+      ]
+    },
+    "comfort": {
+      "title": "Tenda Comfort",
+      "shortDescription": "Tenda atualizada de 12 m² com privacidade extra (paredes laterais/traseiras), terraço privado e banheiro privativo sob um telhado de palha.",
+      "detailedFeatures": [
+        "Configuração de cama Twin/King • lâmpadas • interruptores de luz convenientes",
+        "Rede contra mosquitos • ventilador forte • pontos de energia",
+        "Terraço de madeira privado com cadeiras de folha de palma enrolada",
+        "Nos fundos: banheiro privado (chuveiro, toilete, pia) sob um telhado de grama",
+        "Animado na vila durante picos/férias; tampões de ouvido disponíveis"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage de Jardim",
+      "shortDescription": "Cottage arejado com cama queen, A/C (inversor), mesa de trabalho e mesa de jantar, terraço privado e banheiro em um roundavel charmoso.",
+      "detailedFeatures": [
+        "Telhado de telhas romanas, teto alto branco com vigas de madeira escura",
+        "Piso de terracota, paredes pintadas em tons quentes de campos de trigo",
+        "Cama queen • mesa de trabalho com lâmpada com abajur • mesa de jantar com cadeiras",
+        "Prateleiras para malas, arara para roupas e prateleiras extras",
+        "A/C inversor (frio e quente) • luz principal regulável",
+        "Banheiro privado em roundavel de grama (chuveiro, pia, toilete)",
+        "Terraço de madeira privado com cadeiras de acampamento e mesa lateral"
+      ]
+    },
+    "chalet": {
+      "title": "Chalé de Palha",
+      "shortDescription": "Chalé pequeno romântico isolado sob palmeiras e strelitzia. A/C, banheiro privado, terraço, configuração de cama Twin/King.",
+      "detailedFeatures": [
+        "Telhado de grama em postes de bluegum • piso de ardósia outonal",
+        "Paredes pintadas em campos de trigo • configuração tranquila, sombreada",
+        "Mesa de jantar com cadeiras • ar condicionado",
+        "Banheiro privado (chuveiro, pia, toilete)",
+        "Duas camas de solteiro ou King com pedestais • terraço privado com cadeiras de folha de palma"
+      ]
+    }
+  },
+  "pt-PT": {
+    "safari": {
+      "title": "Tenda Safari",
+      "shortDescription": "Tenda de lona de 12 m² numa plataforma de 3×6 m. Twin/King, ventoinha, tomadas eléctricas, rede mosquiteira, terraço privado. Casas de banho partilhadas.",
+      "detailedFeatures": [
+        "Duas camas de solteiro (ou King) com mesas-de-cabeceira e candeeiros",
+        "Rede mosquiteira nas portas/janelas • ventoinha potente • tomadas eléctricas",
+        "Pequena unidade de prateleiras para roupa/essenciais",
+        "Terraço privado com cadeiras de folha de palmeira enrolada viradas para o jardim tropical",
+        "Casas de banho partilhadas (senhoras/senhores): 2 chuveiros quentes/frios e 2 sanitas cada",
+        "A aldeia pode ser animada durante os feriados; tampões auriculares gratuitos na recepção"
+      ]
+    },
+    "comfort": {
+      "title": "Tenda Comfort",
+      "shortDescription": "Tenda melhorada de 12 m² com privacidade extra (paredes laterais/traseiras), terraço privado e casa de banho privativa sob um telhado de palha.",
+      "detailedFeatures": [
+        "Configuração de cama Twin/King • candeeiros • interruptores de luz convenientes",
+        "Rede mosquiteira • ventoinha potente • tomadas eléctricas",
+        "Terraço de madeira privado com cadeiras de folha de palmeira enrolada",
+        "Nas traseiras: casa de banho privada (chuveiro, sanita, lavatório) sob um telhado de palha",
+        "Animação na aldeia durante pico/feriados; tampões auriculares disponíveis"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage de Jardim",
+      "shortDescription": "Cottage arejado com cama queen, ar condicionado (inversor), secretária e mesa de jantar, terraço privado e casa de banho num roundavel encantador.",
+      "detailedFeatures": [
+        "Telhado de telha romana, tecto alto branco com vigas de madeira escura",
+        "Piso de terracota, paredes pintadas em tons quentes de campos de trigo",
+        "Cama queen • secretária de trabalho com candeeiro • mesa de jantar com cadeiras",
+        "Prateleiras para malas, cabide para roupa e prateleiras extra",
+        "Ar condicionado inversor (frio e quente) • luz principal regulável",
+        "Casa de banho privada em roundavel de palha (chuveiro, lavatório, sanita)",
+        "Terraço de madeira privado com cadeiras de campismo e mesa lateral"
+      ]
+    },
+    "chalet": {
+      "title": "Chalé de Palha",
+      "shortDescription": "Pequeno chalé romântico isolado sob palmeiras e estrelícias. Ar condicionado, casa de banho privada, terraço, configuração de cama Twin/King.",
+      "detailedFeatures": [
+        "Telhado de palha em postes de bluegum • piso de ardósia outonal",
+        "Paredes pintadas em campos de trigo • ambiente tranquilo e sombreado",
+        "Mesa de jantar com cadeiras • ar condicionado",
+        "Casa de banho privada (chuveiro, lavatório, sanita)",
+        "Duas camas de solteiro ou King com mesas-de-cabeceira • terraço privado com cadeiras de folha de palmeira"
+      ]
+    }
+  }
+}
