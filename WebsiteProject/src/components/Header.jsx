@@ -10,10 +10,10 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
 
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
-    europe: { name: 'Europe', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'] },
+    europe: { name: 'Europe', languages: ['en', 'pt-PT', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'] },
     asia: { name: 'Asia', languages: ['en', 'ja', 'zh', 'ru'] },
-    americas: { name: 'Americas', languages: ['en-us', 'en', 'es', 'fr'] },
-    africa: { name: 'Africa', languages: ['en', 'fr', 'pt', 'af-za', 'zu', 'sw'] },
+    americas: { name: 'Americas', languages: ['en-US', 'en', 'pt-BR', 'es', 'fr'] },
+    africa: { name: 'Africa', languages: ['en', 'fr', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
     oceania: { name: 'Oceania', languages: ['en'] }
   };
 
@@ -114,9 +114,10 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               onChange={(e) => onLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
             >
-              {regions[region]?.languages.includes('en-us') && <option value="en-us">English (US)</option>}
+              {regions[region]?.languages.includes('en-US') && <option value="en-US">English (US)</option>}
               {regions[region]?.languages.includes('en') && <option value="en">English (UK)</option>}
-              {regions[region]?.languages.includes('pt') && <option value="pt">Português</option>}
+              {regions[region]?.languages.includes('pt-PT') && <option value="pt-PT">Português (PT)</option>}
+              {regions[region]?.languages.includes('pt-BR') && <option value="pt-BR">Português (BR)</option>}
               {regions[region]?.languages.includes('nl') && <option value="nl">Nederlands</option>}
               {regions[region]?.languages.includes('fr') && <option value="fr">Français</option>}
               {regions[region]?.languages.includes('it') && <option value="it">Italiano</option>}
@@ -124,7 +125,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               {regions[region]?.languages.includes('es') && <option value="es">Español</option>}
               {regions[region]?.languages.includes('sv') && <option value="sv">Svenska</option>}
               {regions[region]?.languages.includes('pl') && <option value="pl">Polski</option>}
-              {regions[region]?.languages.includes('af-za') && <option value="af-za">Afrikaans</option>}
+              {regions[region]?.languages.includes('af-ZA') && <option value="af-ZA">Afrikaans</option>}
               {regions[region]?.languages.includes('zu') && <option value="zu">isiZulu</option>}
               {regions[region]?.languages.includes('sw') && <option value="sw">Kiswahili</option>}
               {regions[region]?.languages.includes('ru') && <option value="ru">Русский</option>}
