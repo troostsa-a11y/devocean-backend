@@ -583,6 +583,55 @@ export const UI = {
     hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.", ctaPrimary: "Prenota ora", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
     stay: { headline: "Soggiorna con noi", blurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.", moreDetails: "Altri dettagli", ourStory: "La Nostra Storia" },
     experiences: { headline: "Esperienze", blurb: "Avventure tra oceano e foresta a portata di mano.", operators: "Operatori locali fidati:" },
+    units: {
+      safari: {
+        title: "Tenda Safari",
+        short: "Sperimenta il perfetto equilibrio tra comfort e avventura. Posizionata su una spaziosa piattaforma di 3×6 m, questa tenda in tela di 12 m² ha pareti laterali e posteriori protettive – offrendoti privacy e riparo mentre rimani vicino alla natura.",
+        details: [
+          "Piattaforma: 3×6 m • Tenda: 12 m²",
+          "Pareti laterali & posteriori per privacy e riparo",
+          "Rete antizanzare su tutte le finestre & porte"
+        ],
+      },
+      comfort: {
+        title: "Tenda Comfort",
+        short: "Per gli ospiti che amano l'atmosfera immersa nella natura ma vogliono maggiore isolamento e comodità, la Tenda Safari Comfort è un upgrade rispetto alla nostra esperienza classica in tela.",
+        details: [
+          "Tenda: 12 m² su piattaforma privata",
+          "Privacy extra: 2 pareti laterali + parete posteriore",
+          "Rete antizanzare su tutte le finestre & porte"
+        ],
+      },
+      cottage: {
+        title: "Cottage da Giardino",
+        short: "Nascosto nel nostro lussureggiante giardino tropicale, il Cottage da Giardino combina eleganza rustica con comfort casalingo. Un tetto di tegole romane rosse e un alto soffitto bianco con travi di legno scuro creano un rifugio spazioso e arioso pieno di carattere.",
+        details: [
+          "Tetto di tegole romane rosse",
+          "Alto soffitto bianco con travi scure",
+          "Pavimento in terracotta & toni caldi sulle pareti",
+          "Terrazza privata con posti a sedere"
+        ],
+      },
+      chalet: {
+        title: "Chalet con Tetto di Paglia",
+        short: "Nascosto in un angolo isolato della proprietà, lo Chalet con Tetto di Paglia offre un rifugio tranquillo e romantico. Ombreggiato da palme, strelitzie, acacie, felci e alberi di mandorlo indiano, ti immerge nella natura senza sacrificare comfort o privacy.",
+        details: [
+          "Tetto di paglia • struttura con pali bluegum",
+          "Pavimento in ardesia autunnale • toni naturali",
+          "Circondato da palme, felci & strelitzie",
+          "Terrazza privata con posti a sedere"
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Immersioni", desc: "Barriere costiere ricche di vita marina." },
+      dolphins: { title: "Nuotare con i delfini", desc: "Incontri etici con delfini locali." },
+      lighthouse: { title: "Escursione al faro", desc: "Sali la collina fino al vecchio faro per viste panoramiche." },
+      seafari: { title: "Safari marino", desc: "Avvistamento balene (mag–ott) e altro." },
+      safari: { title: "Safari terrestre", desc: "Avventure nel bush nelle vicinanze." },
+      fishing: { title: "Pesca dalla spiaggia & in barca", desc: "Da lanci da riva a charter offshore." },
+      surfing: { title: "Tavole da surf & lezioni", desc: "Prendi le onde o impara le basi." },
+    },
     todo: {
       headline: "Cosa fare a Ponta do Ouro",
       note: "Per immersioni/snorkeling/seafari/pesca: partner qui sotto.",
