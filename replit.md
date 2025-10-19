@@ -38,7 +38,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Navigation:** Mobile and desktop menus include "Our Story" link to `/story.html` page (added to both desktop and mobile menus).
 - **Internationalization:**
     - React-based i18n with lazy-loaded translations for 16 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Swahili, Japanese, Mandarin Chinese, Russian).
-    - Vanilla JavaScript i18n for static pages (story.html uses `story-i18n.js`, legal pages use `legal-i18n.js`).
+    - Vanilla JavaScript i18n for static pages (story.html uses `story-i18n.js`, legal pages use `legal-i18n.js`, accommodation detail pages use `accommodation-detail-i18n.js`).
+    - **Accommodation Detail Pages:** All 4 static accommodation pages (safari.html, comfort.html, cottage.html, chalet.html) feature WebP-optimized photo galleries (4 photos each, 46.2% size reduction vs JPEG), i18n for common UI elements (navigation + CTA buttons across 16 languages), and unit-specific marketing content in English.
     - **Dynamic Booking URLs:** All static pages (story.html, safari.html, chalet.html, cottage.html, comfort.html) dynamically generate booking URLs based on localStorage preferences (language + currency).
     - **Smart Locale Mapping:** Afrikaans + MZN currency → pt-MZ locale (preserves Mozambican currency for Afrikaans speakers), Afrikaans + ZAR → af-ZA locale (South Africa).
     - **Language Detection:** Multi-tier system prioritizing localStorage → browser language → IP-based country mapping (`CC_TO_LANGUAGE`) → English fallback. Ensures Japanese visitors see Japanese content even with English-configured browsers.
@@ -78,4 +79,5 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 
 ### Asset Management
 - **Static Assets:** Stock images, photo gallery, logo, branding assets.
+- **Accommodation Photos:** 16 unit photos optimized to WebP format (safari-1 through chalet-4 in `/public/photos/units/`), achieving 46.2% file size reduction. Optimization script uses `fs.stat()` for accurate file size reporting.
 - **Legal Documents:** Static HTML pages for compliance (privacy, cookies, terms, GDPR, CRIC).
