@@ -451,6 +451,9 @@
       scroll-behavior: smooth;
     }
   </style>
+
+  <!-- i18n Translation System -->
+  <script src="/translations/story-i18n.js"></script>
 </head>
 
 <body>
@@ -463,9 +466,9 @@
   <!-- Navigation -->
   <nav class="story-nav" aria-label="Story navigation">
     <div class="story-nav-inner">
-      <a href="/" class="story-nav-logo">DEVOCEAN Lodge</a>
+      <a href="/" class="story-nav-logo" data-i18n="nav.logo">DEVOCEAN Lodge</a>
       <a href="/#stay" class="story-nav-back">
-        <span>←</span> Back to Accommodations
+        <span>←</span> <span data-i18n="nav.backToAccommodations">Back to Accommodations</span>
       </a>
     </div>
   </nav>
@@ -475,49 +478,49 @@
     <!-- DEVOCEAN Lodge – Conversion Header for Beds24 -->
     <section class="dl-wrap" aria-label="Welcome to DEVOCEAN Lodge">
       <div class="dl-hero">
-        <div class="dl-eyebrow">Since 2015 • Ponta do Ouro</div>
-        <h1 class="dl-title">Adventure meets sustainability<br><span>Your stay makes a difference.</span></h1>
-        <p class="dl-sub">Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.</p>
+        <div class="dl-eyebrow" data-i18n="hero.eyebrow">Since 2015 • Ponta do Ouro</div>
+        <h1 class="dl-title"><span data-i18n="hero.title">Adventure meets sustainability</span><br><span data-i18n="hero.titleSpan">Your stay makes a difference.</span></h1>
+        <p class="dl-sub" data-i18n="hero.subtitle">Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.</p>
         <ul class="dl-proofs" role="list" aria-label="Reasons to book">
-          <li><span class="i i-check" aria-hidden="true"></span> Friendly, local support</li>
-          <li><span class="i i-check" aria-hidden="true"></span> Secure, hassle-free booking</li>
-          <li><span class="i i-check" aria-hidden="true"></span> Restaurant on site • farm-fresh breakfast</li>
+          <li><span class="i i-check" aria-hidden="true"></span> <span data-i18n="hero.proofPoints.support">Friendly, local support</span></li>
+          <li><span class="i i-check" aria-hidden="true"></span> <span data-i18n="hero.proofPoints.booking">Secure, hassle-free booking</span></li>
+          <li><span class="i i-check" aria-hidden="true"></span> <span data-i18n="hero.proofPoints.restaurant">Restaurant on site • farm-fresh breakfast</span></li>
         </ul>
       </div>
 
       <div class="dl-grid">
         <article class="dl-card">
-          <h2 class="dl-h2">Today at DEVOCEAN Lodge</h2>
-          <p>We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.</p>
+          <h2 class="dl-h2" data-i18n="cards.today.title">Today at DEVOCEAN Lodge</h2>
+          <p data-i18n="cards.today.content" data-i18n-html>We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.</p>
         </article>
 
         <article class="dl-card">
-          <h2 class="dl-h2">Lake Sotiba Guest Farm</h2>
-          <p>Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.</p>
-          <p style="margin-top: 1rem;"><a href="https://earth.google.com/earth/d/1ciM9i62JNuZjuGklTSpgYC2z7_CsNN3J?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--terracotta); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--terracotta);">View farm plan on Google Earth →</a></p>
+          <h2 class="dl-h2" data-i18n="cards.sotiba.title">Lake Sotiba Guest Farm</h2>
+          <p data-i18n="cards.sotiba.content" data-i18n-html>Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.</p>
+          <p style="margin-top: 1rem;"><a href="https://earth.google.com/earth/d/1ciM9i62JNuZjuGklTSpgYC2z7_CsNN3J?usp=sharing" target="_blank" rel="noopener noreferrer" style="color: var(--terracotta); font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--terracotta);" data-i18n="cards.sotiba.linkText">View farm plan on Google Earth →</a></p>
         </article>
 
         <article class="dl-card">
-          <h2 class="dl-h2">From our land to your plate</h2>
-          <p>Enjoy farm-fresh breakfasts and delicious lunches &amp; dinners prepared by our in-house chef at the restaurant.</p>
+          <h2 class="dl-h2" data-i18n="cards.farm.title">From our land to your plate</h2>
+          <p data-i18n="cards.farm.content" data-i18n-html>Enjoy farm-fresh breakfasts and delicious lunches &amp; dinners prepared by our in-house chef at the restaurant.</p>
         </article>
 
         <article class="dl-card dl-card-impact">
-          <h2 class="dl-h2">Your stay creates impact</h2>
-          <p>Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
+          <h2 class="dl-h2" data-i18n="cards.impact.title">Your stay creates impact</h2>
+          <p data-i18n="cards.impact.content">Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
         </article>
       </div>
 
       <!-- Call to Action -->
       <div class="dl-cta">
-        <h2>Ready to experience DEVOCEAN?</h2>
-        <p>Choose your perfect accommodation and start your sustainable beach adventure.</p>
+        <h2 data-i18n="cta.title">Ready to experience DEVOCEAN?</h2>
+        <p data-i18n="cta.subtitle">Choose your perfect accommodation and start your sustainable beach adventure.</p>
         <div class="dl-cta-buttons">
           <a href="https://book.devoceanlodge.com/bv3/search?locale=en-US&currency=USD" class="btn btn-primary" data-testid="button-book-now">
-            Book Your Stay
+            <span data-i18n="cta.bookButton">Book Your Stay</span>
           </a>
           <a href="/#stay" class="btn btn-secondary" data-testid="link-view-accommodations">
-            View Accommodations
+            <span data-i18n="cta.viewButton">View Accommodations</span>
           </a>
         </div>
       </div>
