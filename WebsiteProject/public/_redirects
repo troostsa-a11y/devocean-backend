@@ -5,7 +5,12 @@
 /4339cd9fe9f2766ae7f04b21f3848dec.txt  /4339cd9fe9f2766ae7f04b21f3848dec.txt  200
 /robots.txt  /robots.txt  200
 
-# Serve static HTML pages as-is
+# Serve static HTML pages as-is (with query parameters preserved)
+/story.html  /story.html  200
+/safari.html  /safari.html  200
+/comfort.html  /comfort.html  200
+/cottage.html  /cottage.html  200
+/chalet.html  /chalet.html  200
 /privacy.html  /privacy.html  200
 /cookies.html  /cookies.html  200
 /terms.html  /terms.html  200
