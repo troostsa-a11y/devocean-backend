@@ -3,8 +3,12 @@ import { ACCOMMODATION_TRANSLATIONS } from '../i18n/accommodationTranslations';
 import { UNIT_BASE, EXP_BASE } from '../data/content';
 
 export function localizeUnits(lang) {
-  // Map language codes to match JSON keys (en-us in code vs en-us in JSON)
-  const langKey = lang === 'en-us' ? 'en-us' : lang;
+  // Map language-region codes to base language keys for translations
+  const langKey = 
+    (lang === "en-US") ? "en" :
+    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
+    (lang === "af-ZA") ? "af" :
+    lang;
   const tr = ACCOMMODATION_TRANSLATIONS[langKey] || ACCOMMODATION_TRANSLATIONS['en'] || {};
   
   return UNIT_BASE.map((u) => ({

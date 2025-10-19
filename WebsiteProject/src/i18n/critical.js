@@ -131,7 +131,7 @@ export const CRITICAL_NAV = {
     contact: "Контакты",
     bookNow: "Цены и наличие"
   },
-  "af-za": {
+  "af-ZA": {
     home: "Tuis",
     stay: "Verblyf",
     experiences: "Ervarings",

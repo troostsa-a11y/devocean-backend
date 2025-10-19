@@ -13,7 +13,7 @@ const SUPPORTED_LANGS = [
 // Map country codes to primary language (IP-based fallback)
 const CC_TO_LANGUAGE = {
   // English-speaking countries
-  US: "en-us", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en", 
+  US: "en-US", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en", 
   ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en", 
   SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en", 
   BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
