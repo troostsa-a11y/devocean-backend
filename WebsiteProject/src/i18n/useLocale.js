@@ -187,8 +187,9 @@ function normLang(raw) {
   if (!raw) return "en";
   let s = String(raw).toLowerCase();
   
-  // Special case: keep en-us as is
+  // Special cases: keep region codes for languages that need them
   if (s === "en-us") return "en-us";
+  if (s === "af-za") return "af-za";
   
   // Handle other locale codes
   if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
