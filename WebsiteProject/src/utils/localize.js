@@ -5,10 +5,18 @@ import { UNIT_BASE, EXP_BASE } from '../data/content';
 export function localizeUnits(lang) {
   // Map language-region codes to base language keys for translations
   const langKey = 
-    (lang === "en-US") ? "en" :
+    (lang === "en-US") ? "en-us" :
+    (lang === "en-GB") ? "en" :
     (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
     (lang === "af-ZA") ? "af" :
-    lang;
+    (lang === "ja-JP") ? "ja" :
+    (lang === "zh-CN") ? "zh" :
+    (lang === "nl-NL") ? "nl" :
+    (lang === "fr-FR") ? "fr" :
+    (lang === "it-IT") ? "it" :
+    (lang === "de-DE") ? "de" :
+    (lang === "es-ES") ? "es" :
+    lang;  // For sv, pl, ru, sw, zu that don't have region codes
   const tr = ACCOMMODATION_TRANSLATIONS[langKey] || ACCOMMODATION_TRANSLATIONS['en'] || {};
   
   return UNIT_BASE.map((u) => ({
