@@ -2377,217 +2377,217 @@
   },
   "ru": {
     "safari": {
-      "eyebrow": "[TRANSLATE: Safari Tent]",
-      "heroTitle": "[TRANSLATE: Comfort + Adventure in Canvas]",
-      "heroDescription": "[TRANSLATE: Experience the perfect balance of comfort and adventure. Set on a spacious 3×6 m platform, this 12 m² canvas tent has protective side and back walls—giving you privacy and shelter while staying close to nature.]",
+      "eyebrow": "Сафари-палатка",
+      "heroTitle": "Комфорт + Приключения в Полотне",
+      "heroDescription": "Испытайте идеальный баланс комфорта и приключений. Установленная на просторной платформе 3×6 м, эта палатка площадью 12 м² имеет защитные боковые и заднюю стенки, обеспечивая уединение и укрытие, пока вы находитесь вблизи природы.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Space & Layout]",
-          "description": "[TRANSLATE: The tent features a well-planned, cozy interior with thoughtful touches for easy living.]",
+          "heading": "Пространство и Планировка",
+          "description": "Палатка имеет хорошо продуманный, уютный интерьер с продуманными деталями для легкого проживания.",
           "features": [
-            "[TRANSLATE: Platform: 3×6 m • Tent: 12 m²]",
-            "[TRANSLATE: Side & back wall for privacy and shelter]",
-            "[TRANSLATE: Mosquito mesh on all windows & doors]"
+            "Платформа: 3×6 м • Палатка: 12 м²",
+            "Боковая и задняя стенки для уединения и защиты",
+            "Москитные сетки на всех окнах и дверях"
           ]
         },
         {
-          "heading": "[TRANSLATE: Sleep & Comfort]",
-          "description": "[TRANSLATE: Two single beds with pedestals and shaded lamps can be combined into a King-size bed for guests who prefer a double configuration.]",
+          "heading": "Сон и Комфорт",
+          "description": "Две односпальные кровати с тумбами и абажурами можно объединить в кровать размера «king-size» для гостей, предпочитающих двуспальную конфигурацию.",
           "features": [
-            "[TRANSLATE: Quality mattresses & bedside lighting]",
-            "[TRANSLATE: Powerful fan for cool summer nights]",
-            "[TRANSLATE: Power points for device charging]",
-            "[TRANSLATE: Small shelving unit for clothes & essentials]"
+            "Качественные матрасы и прикроватное освещение",
+            "Мощный вентилятор для прохладных летних ночей",
+            "Розетки для зарядки устройств",
+            "Небольшая полка для одежды и мелочей"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step onto your private terrace, furnished with rolled palm-leaf chairs. Enjoy views of the lush tropical garden—beautifully illuminated at night for a romantic ambiance.]",
+          "heading": "Терраса и Сад",
+          "description": "Выйдите на свою частную террасу, обставленную плетеными креслами из пальмовых листьев. Наслаждайтесь видом на пышный тропический сад, который красиво освещается ночью, создавая романтическую атмосферу.",
           "features": [
-            "[TRANSLATE: Private outdoor seating]",
-            "[TRANSLATE: Night lighting for serene evenings]"
+            "Частная зона отдыха на открытом воздухе",
+            "Ночная подсветка для спокойных вечеров"
           ]
         },
         {
-          "heading": "[TRANSLATE: Bathrooms]",
-          "description": "[TRANSLATE: Guests have access to shared bathrooms, separate for ladies and gents—kept clean and convenient.]",
+          "heading": "Санузлы",
+          "description": "Гости имеют доступ к общим санузлам, раздельным для мужчин и женщин, которые содержатся в чистоте и удобстве.",
           "features": [
-            "[TRANSLATE: 2× hot/cold water showers per side]",
-            "[TRANSLATE: 2× toilets per side]",
-            "[TRANSLATE: Cold-water sinks]"
+            "По 2 душа с горячей/холодной водой с каждой стороны",
+            "По 2 туалета с каждой стороны",
+            "Умывальники с холодной водой"
           ]
         },
         {
-          "heading": "[TRANSLATE: Good to Know]",
-          "description": "[TRANSLATE: During public-holiday weekends and peak season (late December–early January), the village can be lively. Complimentary earplugs are available at reception to ensure a restful night's sleep.]",
-          "closingNote": "[TRANSLATE: A spacious, nature-immersed stay with modern comforts—perfect for travelers who want the outdoors without sacrificing convenience.]"
+          "heading": "Важно Знать",
+          "description": "В выходные дни государственных праздников и в пиковый сезон (конец декабря – начало января) в деревне может быть шумно. Бесплатные беруши доступны на ресепшене, чтобы обеспечить спокойный ночной сон.",
+          "closingNote": "Просторное проживание, погруженное в природу, с современными удобствами — идеально для путешественников, которые хотят быть на природе, не жертвуя комфортом."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Nature-immersed comfort]",
-        "[TRANSLATE: Clean, well-maintained facilities]",
-        "[TRANSLATE: Relaxed, romantic evenings]"
+        "Комфорт на лоне природы",
+        "Чистые, ухоженные удобства",
+        "Расслабленные, романтические вечера"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Safari Tent?]",
-        "description": "[TRANSLATE: Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.]"
+        "heading": "Готовы забронировать сафари-палатку?",
+        "description": "Обеспечьте себе побег на лоно природы в DEVOCEAN Lodge. Прямое бронирование означает лучшие цены и полную поддержку от нашей команды."
       }
     },
     "comfort": {
-      "eyebrow": "[TRANSLATE: Comfort Tent]",
-      "heroTitle": "[TRANSLATE: More privacy. More comfort. Same wild charm.]",
-      "heroDescription": "[TRANSLATE: For guests who love the nature-immersed vibe but want extra seclusion and convenience, the Comfort Safari Tent is an upgrade on our classic canvas experience.]",
+      "eyebrow": "Комфорт-палатка",
+      "heroTitle": "Больше уединения. Больше комфорта. Та же дикая прелесть.",
+      "heroDescription": "Для гостей, которые любят атмосферу единения с природой, но хотят дополнительной уединенности и удобства, Comfort Safari Tent — это улучшенная версия нашего классического палаточного опыта.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Space & Privacy]",
-          "description": "[TRANSLATE: A generous 12 m² canvas tent set on its own platform, with two side walls and a back wall for enhanced seclusion compared to the Standard Safari Tent.]",
+          "heading": "Пространство и Уединенность",
+          "description": "Вместительная палатка площадью 12 м² на собственной платформе, с двумя боковыми стенками и задней стенкой для повышенной уединенности по сравнению со стандартной сафари-палаткой.",
           "features": [
-            "[TRANSLATE: Tent: 12 m² on private platform]",
-            "[TRANSLATE: Extra privacy: 2 side walls + back wall]",
-            "[TRANSLATE: Mosquito mesh on all windows & doors]"
+            "Палатка: 12 м² на частной платформе",
+            "Дополнительная приватность: 2 боковые стенки + задняя стенка",
+            "Москитные сетки на всех окнах и дверях"
           ]
         },
         {
-          "heading": "[TRANSLATE: Sleep & Comfort]",
-          "description": "[TRANSLATE: Two single beds with pedestals and shaded lamps can be combined into a King-size bed. Lighting is conveniently controlled by switches near the entrance.]",
+          "heading": "Сон и Комфорт",
+          "description": "Две односпальные кровати с тумбами и абажурами можно объединить в кровать размера «king-size». Освещением можно удобно управлять с помощью выключателей у входа.",
           "features": [
-            "[TRANSLATE: King or Twin configuration]",
-            "[TRANSLATE: Power points for device charging]",
-            "[TRANSLATE: Strong fan for cool summer nights]",
-            "[TRANSLATE: Small shelving unit for clothing & essentials]"
+            "Конфигурация «king-size» или «twin»",
+            "Розетки для зарядки устройств",
+            "Мощный вентилятор для прохладных летних ночей",
+            "Небольшая полка для одежды и мелочей"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Enjoy your private wooden terrace with rolled palm-leaf chairs, overlooking the lush tropical garden—romantically illuminated at night.]",
+          "heading": "Терраса и Сад",
+          "description": "Наслаждайтесь своей частной деревянной террасой с плетеными креслами из пальмовых листьев, с видом на пышный тропический сад, романтично освещенный ночью.",
           "features": [
-            "[TRANSLATE: Private outdoor seating]",
-            "[TRANSLATE: Garden views, night lighting]"
+            "Частная зона отдыха на открытом воздухе",
+            "Вид на сад, ночная подсветка"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: At the back of the tent, under a charming grass-thatched roof, your en-suite bathroom includes a shower, toilet, and sink—combining convenience with a unique outdoor touch.]"
+          "heading": "Собственная Ванная Комната",
+          "description": "В задней части палатки, под очаровательной соломенной крышей, находится ваша собственная ванная комната с душем, туалетом и умывальником, сочетающая удобство с уникальной атмосферой отдыха на природе."
         },
         {
-          "heading": "[TRANSLATE: Good to Know]",
-          "description": "[TRANSLATE: While DEVOCEAN Lodge is peaceful, the surrounding village can be lively during public-holiday weekends and peak season (late December–early January). Complimentary earplugs are available at reception.]",
-          "closingNote": "[TRANSLATE: A spacious, well-appointed, and private safari-style getaway—perfect for guests who want comfort, seclusion, and the convenience of an en-suite bathroom.]"
+          "heading": "Важно Знать",
+          "description": "Хотя в DEVOCEAN Lodge царит спокойная атмосфера, окружающая деревня может быть оживленной в выходные дни государственных праздников и в пиковый сезон (конец декабря – начало января). На ресепшене доступны бесплатные беруши.",
+          "closingNote": "Просторный, хорошо оборудованный и уединенный отдых в стиле сафари — идеально для гостей, которые хотят комфорта, уединения и удобства собственной ванной комнаты."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Nature-immersed comfort]",
-        "[TRANSLATE: En-suite convenience]",
-        "[TRANSLATE: Romantic evenings in the garden]"
+        "Комфорт на лоне природы",
+        "Удобство собственной ванной",
+        "Романтические вечера в саду"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Comfort Tent?]",
-        "description": "[TRANSLATE: Upgrade your nature escape with enhanced privacy and en-suite convenience. Book direct for the best rates.]"
+        "heading": "Готовы забронировать комфорт-палатку?",
+        "description": "Улучшите свой отдых на природе с повышенной уединенностью и удобством собственной ванной комнаты. Бронируйте напрямую для получения лучших цен."
       }
     },
     "cottage": {
-      "eyebrow": "[TRANSLATE: Garden Cottage]",
-      "heroTitle": "[TRANSLATE: Rustic charm • Tropical serenity • Modern comfort]",
-      "heroDescription": "[TRANSLATE: Nestled in our lush tropical garden, the Garden Cottage combines rustic elegance with homely comfort. A red Roman-tiled roof and high white ceiling with dark wooden beams create a spacious, airy retreat filled with character.]",
+      "eyebrow": "Садовый Коттедж",
+      "heroTitle": "Деревенское очарование • Тропическое спокойствие • Современный комфорт",
+      "heroDescription": "Расположенный в нашем пышном тропическом саду, Садовый Коттедж сочетает в себе деревенскую элегантность и домашний уют. Красная черепичная крыша в римском стиле и высокий белый потолок с темными деревянными балками создают просторное, наполненное воздухом и характером убежище.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Atmosphere & Design]",
-          "description": "[TRANSLATE: The terracotta-tiled floor adds warmth beneath a high, beam-lined ceiling, while soft wheatfield-painted walls enhance the cottage's calm and inviting atmosphere.]",
+          "heading": "Атмосфера и Дизайн",
+          "description": "Пол из терракотовой плитки добавляет тепла под высоким потолком с балками, а мягкие тона стен цвета пшеничного поля усиливают спокойную и гостеприимную атмосферу коттеджа.",
           "features": [
-            "[TRANSLATE: Red Roman-tiled roof]",
-            "[TRANSLATE: High white ceiling with dark beams]",
-            "[TRANSLATE: Terracotta flooring & warm wall tones]"
+            "Красная черепичная крыша в римском стиле",
+            "Высокий белый потолок с темными балками",
+            "Терракотовый пол и теплые тона стен"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step outside onto your private wooden terrace, furnished with camping chairs and a side table — a peaceful spot to unwind and take in the lush greenery and gentle garden sounds.]",
+          "heading": "Терраса и Сад",
+          "description": "Выйдите на свою частную деревянную террасу, обставленную кемпинговыми креслами и боковым столиком — умиротворенное место, чтобы расслабиться и насладиться пышной зеленью и нежными звуками сада.",
           "features": [
-            "[TRANSLATE: Private terrace with seating]",
-            "[TRANSLATE: Immersed in tropical vegetation]"
+            "Частная терраса с местами для сидения",
+            "Погружение в тропическую растительность"
           ]
         },
         {
-          "heading": "[TRANSLATE: Interior & Amenities]",
-          "description": "[TRANSLATE: Designed for both relaxation and functionality, the Garden Cottage features a Queen-size boxed bed, a working desk with shaded lamp, and a dinner table with chairs.]",
+          "heading": "Интерьер и Удобства",
+          "description": "Спроектированный как для отдыха, так и для функциональности, Садовый Коттедж оснащен двуспальной кроватью-платформой, рабочим столом с лампой под абажуром и обеденным столом со стульями.",
           "features": [
-            "[TRANSLATE: Queen-size bed with quality mattress]",
-            "[TRANSLATE: Work desk & shaded lamp]",
-            "[TRANSLATE: Dinner table & chairs]",
-            "[TRANSLATE: Storage: suitcase shelves, clothes rack, extra shelving]"
+            "Двуспальная кровать размера «queen-size» с качественным матрасом",
+            "Рабочий стол и лампа под абажуром",
+            "Обеденный стол и стулья",
+            "Хранение: полки для чемоданов, вешалка для одежды, дополнительные полки"
           ]
         },
         {
-          "heading": "[TRANSLATE: Comfort & Lighting]",
-          "description": "[TRANSLATE: An inverter air conditioner keeps you comfortable in every season, offering both cooling and heating. Soft lighting, including a dimmable main light, lets you set the perfect ambiance for work, rest, or relaxation.]",
+          "heading": "Комфорт и Освещение",
+          "description": "Инверторный кондиционер обеспечивает комфорт в любое время года, предлагая как охлаждение, так и обогрев. Мягкое освещение, включая регулируемый основной свет, позволяет вам установить идеальную атмосферу для работы, отдыха или релаксации.",
           "features": [
-            "[TRANSLATE: Inverter air conditioning (cool & heat)]",
-            "[TRANSLATE: Dimmable lighting & warm interior glow]"
+            "Инверторный кондиционер (охлаждение и обогрев)",
+            "Регулируемое освещение и теплый внутренний свет"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: Just behind the cottage, a charming grass-thatched roundavel houses your private bathroom, complete with a shower, toilet, and sink—combining modern convenience with authentic African flair.]"
+          "heading": "Собственная Ванная Комната",
+          "description": "Прямо за коттеджем в очаровательном круглом сооружении с соломенной крышей (рондавель) расположена ваша собственная ванная комната с душем, туалетом и умывальником, сочетающая современные удобства с подлинным африканским колоритом."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Surrounded by tropical nature]",
-        "[TRANSLATE: Private en-suite roundavel]",
-        "[TRANSLATE: Air-conditioned & peacefully lit]"
+        "Окружен тропической природой",
+        "Частная ванная комната в рондавеле",
+        "Кондиционер и спокойное освещение"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Garden Cottage?]",
-        "description": "[TRANSLATE: Experience rustic elegance in our tropical garden retreat. Book direct for the best rates and personalized service.]"
+        "heading": "Готовы забронировать садовый коттедж?",
+        "description": "Испытайте деревенскую элегантность в нашем тропическом саду. Бронируйте напрямую для получения лучших цен и персонализированного обслуживания."
       }
     },
     "chalet": {
-      "eyebrow": "[TRANSLATE: Thatched Chalet]",
-      "heroTitle": "[TRANSLATE: Romantic seclusion • Rustic elegance • Tropical peace]",
-      "heroDescription": "[TRANSLATE: Hidden in a secluded corner of the property, the Thatched Chalet offers a tranquil, romantic retreat. Shaded by palms, strelitzia, acacia, ferns, and Indian almond trees, it immerses you in nature without sacrificing comfort or privacy.]",
+      "eyebrow": "Шале с Соломенной Крышей",
+      "heroTitle": "Романтическое уединение • Деревенская элегантность • Тропический покой",
+      "heroDescription": "Спрятанное в уединенном уголке территории, Шале с Соломенной Крышей предлагает спокойный, романтический отдых. Укрытое в тени пальм, стрелиций, акаций, папоротников и терминалий каттапа, оно погружает вас в природу, не жертвуя комфортом или уединенностью.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Setting & Atmosphere]",
-          "description": "[TRANSLATE: The grass-roofed chalet, supported by sturdy bluegum poles, exudes rustic elegance. An autumn-slate floor blends harmoniously with its lush surroundings, while soft wheatfield-painted walls create a warm and serene indoor ambiance.]",
+          "heading": "Окружение и Атмосфера",
+          "description": "Шале с соломенной крышей, поддерживаемое прочными столбами из эвкалипта, излучает деревенскую элегантность. Пол цвета осеннего сланца гармонично сливается с пышным окружением, а мягкие тона стен цвета пшеничного поля создают теплую и безмятежную внутреннюю атмосферу.",
           "features": [
-            "[TRANSLATE: Thatched roof • bluegum pole structure]",
-            "[TRANSLATE: Autumn-slate floor • natural tones]",
-            "[TRANSLATE: Surrounded by palms, ferns & strelitzia]"
+            "Соломенная крыша • конструкция из столбов эвкалипта",
+            "Пол цвета осеннего сланца • природные тона",
+            "Окружено пальмами, папоротниками и стрелициями"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step onto your private terrace, furnished with rolled palm-leaf chairs and a dinner table with chairs. Relax in the shade of the garden canopy and enjoy the sights and sounds of nature.]",
+          "heading": "Терраса и Сад",
+          "description": "Выйдите на свою частную террасу, обставленную плетеными креслами из пальмовых листьев и обеденным столом со стульями. Расслабьтесь в тени садового полога и наслаждайтесь видами и звуками природы.",
           "features": [
-            "[TRANSLATE: Private terrace with seating]",
-            "[TRANSLATE: Tropical garden views]"
+            "Частная терраса с местами для сидения",
+            "Виды на тропический сад"
           ]
         },
         {
-          "heading": "[TRANSLATE: Interior & Comfort]",
-          "description": "[TRANSLATE: Inside, two single beds with pedestals can be combined into a King-size bed for a cozy double setup. Air conditioning ensures year-round comfort, while soft lighting complements the rustic décor.]",
+          "heading": "Интерьер и Комфорт",
+          "description": "Внутри две односпальные кровати с тумбами можно объединить в кровать размера «king-size» для уютной двуспальной конфигурации. Кондиционер обеспечивает комфорт круглый год, а мягкое освещение дополняет деревенский декор.",
           "features": [
-            "[TRANSLATE: Twin or King-size bed configuration]",
-            "[TRANSLATE: Air conditioning for cooling & comfort]",
-            "[TRANSLATE: Warm lighting & soft interior tones]"
+            "Конфигурация «twin» или «king-size»",
+            "Кондиционер для охлаждения и комфорта",
+            "Теплое освещение и мягкие внутренние тона"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: The chalet includes a private bathroom with a shower, toilet, and sink, blending convenience with the rustic charm of its natural setting.]"
+          "heading": "Собственная Ванная Комната",
+          "description": "В шале есть собственная ванная комната с душем, туалетом и умывальником, сочетающая удобство с деревенским шармом его природного окружения."
         },
         {
-          "heading": "[TRANSLATE: Experience]",
-          "description": "[TRANSLATE: Whether you're seeking a romantic getaway or a peaceful escape, this tiny chalet delivers an unforgettable blend of seclusion, elegance, and comfort—an ideal retreat within DEVOCEAN's tropical haven.]"
+          "heading": "Опыт",
+          "description": "Ищете ли вы романтическое путешествие или спокойный побег, это маленькое шале предлагает незабываемое сочетание уединенности, элегантности и комфорта — идеальное убежище в тропическом раю DEVOCEAN."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Immersed in nature]",
-        "[TRANSLATE: Romantic & tranquil ambiance]",
-        "[TRANSLATE: Private comfort & convenience]"
+        "Погружение в природу",
+        "Романтическая и спокойная атмосфера",
+        "Частный комфорт и удобства"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Thatched Chalet?]",
-        "description": "[TRANSLATE: Escape to romantic seclusion in our tropical hideaway. Book direct for the best rates and personalized service.]"
+        "heading": "Готовы забронировать шале с соломенной крышей?",
+        "description": "Сбегите в романтическое уединение в нашем тропическом укрытии. Бронируйте напрямую для получения лучших цен и персонализированного обслуживания."
       }
     }
   },
