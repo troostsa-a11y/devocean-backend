@@ -1,4 +1,4 @@
-Her{
+{
   "en-GB": {
     "safari": {
       "eyebrow": "Safari Tent",
@@ -1945,217 +1945,217 @@ Her{
   },
   "ja-JP": {
     "safari": {
-      "eyebrow": "[TRANSLATE: Safari Tent]",
-      "heroTitle": "[TRANSLATE: Comfort + Adventure in Canvas]",
-      "heroDescription": "[TRANSLATE: Experience the perfect balance of comfort and adventure. Set on a spacious 3×6 m platform, this 12 m² canvas tent has protective side and back walls—giving you privacy and shelter while staying close to nature.]",
+      "eyebrow": "サファリテント",
+      "heroTitle": "キャンバスの中の快適さと冒険",
+      "heroDescription": "快適さと冒険の完璧なバランスを体験してください。広々とした3×6mのプラットフォームに設置された12㎡のキャンバステントは、サイドウォールとバックウォールで保護され、自然に囲まれながらもプライバシーと遮蔽を確保します。",
       "sections": [
         {
-          "heading": "[TRANSLATE: Space & Layout]",
-          "description": "[TRANSLATE: The tent features a well-planned, cozy interior with thoughtful touches for easy living.]",
+          "heading": "空間とレイアウト",
+          "description": "テント内部は計画性に優れ、居心地が良く、快適な生活を送るための細やかな配慮が行き届いています。",
           "features": [
-            "[TRANSLATE: Platform: 3×6 m • Tent: 12 m²]",
-            "[TRANSLATE: Side & back wall for privacy and shelter]",
-            "[TRANSLATE: Mosquito mesh on all windows & doors]"
+            "プラットフォーム: 3×6m • テント: 12㎡",
+            "プライバシーと遮蔽のためのサイド＆バックウォール",
+            "すべての窓とドアに防虫ネット装備"
           ]
         },
         {
-          "heading": "[TRANSLATE: Sleep & Comfort]",
-          "description": "[TRANSLATE: Two single beds with pedestals and shaded lamps can be combined into a King-size bed for guests who prefer a double configuration.]",
+          "heading": "睡眠と快適性",
+          "description": "ペデスタルとシェード付きランプを備えた2つのシングルベッドは、ダブル設定を希望されるお客様のためにキングサイズベッドに組み合わせることができます。",
           "features": [
-            "[TRANSLATE: Quality mattresses & bedside lighting]",
-            "[TRANSLATE: Powerful fan for cool summer nights]",
-            "[TRANSLATE: Power points for device charging]",
-            "[TRANSLATE: Small shelving unit for clothes & essentials]"
+            "高品質マットレスとベッドサイド照明",
+            "涼しい夏の夜のための強力なファン",
+            "デバイス充電用電源",
+            "衣類と必需品用の小型棚ユニット"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step onto your private terrace, furnished with rolled palm-leaf chairs. Enjoy views of the lush tropical garden—beautifully illuminated at night for a romantic ambiance.]",
+          "heading": "テラスとガーデン",
+          "description": "巻きパームリーフの椅子が備えられたプライベートテラスへ。緑豊かな熱帯庭園の景色をお楽しみください。夜はロマンチックな雰囲気の中で美しくライトアップされます。",
           "features": [
-            "[TRANSLATE: Private outdoor seating]",
-            "[TRANSLATE: Night lighting for serene evenings]"
+            "プライベートな屋外席",
+            "静かな夜のためのナイトライティング"
           ]
         },
         {
-          "heading": "[TRANSLATE: Bathrooms]",
-          "description": "[TRANSLATE: Guests have access to shared bathrooms, separate for ladies and gents—kept clean and convenient.]",
+          "heading": "バスルーム",
+          "description": "ゲストは共用バスルーム（男女別）を利用でき、清潔で便利に保たれています。",
           "features": [
-            "[TRANSLATE: 2× hot/cold water showers per side]",
-            "[TRANSLATE: 2× toilets per side]",
-            "[TRANSLATE: Cold-water sinks]"
+            "各側面に温水・冷水シャワー2基ずつ",
+            "各側面にトイレ2器ずつ",
+            "冷水洗面台"
           ]
         },
         {
-          "heading": "[TRANSLATE: Good to Know]",
-          "description": "[TRANSLATE: During public-holiday weekends and peak season (late December–early January), the village can be lively. Complimentary earplugs are available at reception to ensure a restful night's sleep.]",
-          "closingNote": "[TRANSLATE: A spacious, nature-immersed stay with modern comforts—perfect for travelers who want the outdoors without sacrificing convenience.]"
+          "heading": "ご注意点",
+          "description": "祝祭日の週末やハイシーズン（12月下旬から1月上旬）には、村がにぎやかになる場合があります。安らかな夜のお休みを確保するため、レセプションで耳栓を無料でご用意しています。",
+          "closingNote": "現代的な快適さを備えた、自然に囲まれた広々とした滞在施設—便利さを犠牲にすることなくアウトドアを楽しみたい旅行者に最適です。"
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Nature-immersed comfort]",
-        "[TRANSLATE: Clean, well-maintained facilities]",
-        "[TRANSLATE: Relaxed, romantic evenings]"
+        "自然に囲まれた快適さ",
+        "清潔で整備された施設",
+        "リラックスしたロマンチックな夜"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Safari Tent?]",
-        "description": "[TRANSLATE: Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.]"
+        "heading": "サファリテントを予約する準備はできましたか？",
+        "description": "DEVOCEAN Lodgeで自然に囲まれた逃避行を確保しましょう。直接予約なら最良の料金とスタッフからの全面的なサポートが得られます。"
       }
     },
     "comfort": {
-      "eyebrow": "[TRANSLATE: Comfort Tent]",
-      "heroTitle": "[TRANSLATE: More privacy. More comfort. Same wild charm.]",
-      "heroDescription": "[TRANSLATE: For guests who love the nature-immersed vibe but want extra seclusion and convenience, the Comfort Safari Tent is an upgrade on our classic canvas experience.]",
+      "eyebrow": "コンフォートテント",
+      "heroTitle": "より高いプライバシー。より高い快適性。同じワイルドな魅力。",
+      "heroDescription": "自然に囲まれた雰囲気を愛するながら、さらに静かで便利な環境を求めるゲストのために、コンフォートサファリテントは私たちのクラシックなキャンバス体験をアップグレードしたものです。",
       "sections": [
         {
-          "heading": "[TRANSLATE: Space & Privacy]",
-          "description": "[TRANSLATE: A generous 12 m² canvas tent set on its own platform, with two side walls and a back wall for enhanced seclusion compared to the Standard Safari Tent.]",
+          "heading": "空間とプライバシー",
+          "description": "広々とした12㎡のキャンバステントが専用プラットフォームに設置され、スタンダードサファリテントと比較して、2つのサイドウォールとバックウォールにより遮断性が高められています。",
           "features": [
-            "[TRANSLATE: Tent: 12 m² on private platform]",
-            "[TRANSLATE: Extra privacy: 2 side walls + back wall]",
-            "[TRANSLATE: Mosquito mesh on all windows & doors]"
+            "テント: 12㎡、専用プラットフォーム上",
+            "追加のプライバシー: 2つのサイドウォール + バックウォール",
+            "すべての窓とドアに防虫ネット装備"
           ]
         },
         {
-          "heading": "[TRANSLATE: Sleep & Comfort]",
-          "description": "[TRANSLATE: Two single beds with pedestals and shaded lamps can be combined into a King-size bed. Lighting is conveniently controlled by switches near the entrance.]",
+          "heading": "睡眠と快適性",
+          "description": "ペデスタルとシェード付きランプを備えた2つのシングルベッドは、キングサイズベッドに組み合わせることができます。照明は入口近くのスイッチで便利に操作できます。",
           "features": [
-            "[TRANSLATE: King or Twin configuration]",
-            "[TRANSLATE: Power points for device charging]",
-            "[TRANSLATE: Strong fan for cool summer nights]",
-            "[TRANSLATE: Small shelving unit for clothing & essentials]"
+            "キングまたはツイン設定",
+            "デバイス充電用電源",
+            "涼しい夏の夜のための強力なファン",
+            "衣類と必需品用の小型棚ユニット"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Enjoy your private wooden terrace with rolled palm-leaf chairs, overlooking the lush tropical garden—romantically illuminated at night.]",
+          "heading": "テラスとガーデン",
+          "description": "巻きパームリーフの椅子が備えられたプライベート木製テラスをお楽しみください。緑豊かな熱帯庭園を見渡せ、夜はロマンチックにライトアップされます。",
           "features": [
-            "[TRANSLATE: Private outdoor seating]",
-            "[TRANSLATE: Garden views, night lighting]"
+            "プライベートな屋外席",
+            "庭園の景色、ナイトライティング"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: At the back of the tent, under a charming grass-thatched roof, your en-suite bathroom includes a shower, toilet, and sink—combining convenience with a unique outdoor touch.]"
+          "heading": "専用バスルーム",
+          "description": "テントの後方、魅力的な草葺き屋根の下に、シャワー、トイレ、洗面台を備えたエン Suite バスルームがあります。便利さとユニークなアウトドアの趣きを組み合わせています。"
         },
         {
-          "heading": "[TRANSLATE: Good to Know]",
-          "description": "[TRANSLATE: While DEVOCEAN Lodge is peaceful, the surrounding village can be lively during public-holiday weekends and peak season (late December–early January). Complimentary earplugs are available at reception.]",
-          "closingNote": "[TRANSLATE: A spacious, well-appointed, and private safari-style getaway—perfect for guests who want comfort, seclusion, and the convenience of an en-suite bathroom.]"
+          "heading": "ご注意点",
+          "description": "DEVOCEAN Lodgeは静かですが、周辺の村は祝祭日の週末やハイシーズン（12月下旬から1月上旬）にはにぎやかになる場合があります。レセプションで耳栓を無料でご用意しています。",
+          "closingNote": "広々として設備が整い、プライベートなサファリスタイルの隠れ家—快適さ、静けさ、エン Suite バスルームの便利さを求めるゲストに最適です。"
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Nature-immersed comfort]",
-        "[TRANSLATE: En-suite convenience]",
-        "[TRANSLATE: Romantic evenings in the garden]"
+        "自然に囲まれた快適さ",
+        "エン Suite バスルームの便利さ",
+        "庭園でのロマンチックな夜"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Comfort Tent?]",
-        "description": "[TRANSLATE: Upgrade your nature escape with enhanced privacy and en-suite convenience. Book direct for the best rates.]"
+        "heading": "コンフォートテントを予約する準備はできましたか？",
+        "description": "強化されたプライバシーとエン Suite バスルームの便利さで、自然の中への逃避行をアップグレードしましょう。最良の料金で直接予約してください。"
       }
     },
     "cottage": {
-      "eyebrow": "[TRANSLATE: Garden Cottage]",
-      "heroTitle": "[TRANSLATE: Rustic charm • Tropical serenity • Modern comfort]",
-      "heroDescription": "[TRANSLATE: Nestled in our lush tropical garden, the Garden Cottage combines rustic elegance with homely comfort. A red Roman-tiled roof and high white ceiling with dark wooden beams create a spacious, airy retreat filled with character.]",
+      "eyebrow": "ガーデンコテージ",
+      "heroTitle": "素朴な魅力 • 熱帯の静けさ • 現代的な快適さ",
+      "heroDescription": "緑豊かな熱帯庭園に佇むガーデンコテージは、素朴なエレガンスと家庭的な快適さを組み合わせています。赤いローマン瓦の屋根と、ダークウッドの梁が特徴的な高い白い天井が、個性あふれる広々として風通しの良い隠れ家を創り出しています。",
       "sections": [
         {
-          "heading": "[TRANSLATE: Atmosphere & Design]",
-          "description": "[TRANSLATE: The terracotta-tiled floor adds warmth beneath a high, beam-lined ceiling, while soft wheatfield-painted walls enhance the cottage's calm and inviting atmosphere.]",
+          "heading": "雰囲気とデザイン",
+          "description": "梁が印象的な高い天井の下、テラコッタタイルの床が温かみを添え、柔らかな小麦色の壁がコテージの落ち着いた魅力的な雰囲気を高めています。",
           "features": [
-            "[TRANSLATE: Red Roman-tiled roof]",
-            "[TRANSLATE: High white ceiling with dark beams]",
-            "[TRANSLATE: Terracotta flooring & warm wall tones]"
+            "赤いローマン瓦屋根",
+            "ダークな梁が特徴的な高い白い天井",
+            "テラコッタフローリングと温かな壁のトーン"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step outside onto your private wooden terrace, furnished with camping chairs and a side table — a peaceful spot to unwind and take in the lush greenery and gentle garden sounds.]",
+          "heading": "テラスとガーデン",
+          "description": "キャンプチェアとサイドテーブルが備えられた専用木製テラスへ。緑豊かな植物と穏やかな庭の音に包まれながら、くつろぐための静かなスポットです。",
           "features": [
-            "[TRANSLATE: Private terrace with seating]",
-            "[TRANSLATE: Immersed in tropical vegetation]"
+            "座席付き専用テラス",
+            "熱帯植物に囲まれた環境"
           ]
         },
         {
-          "heading": "[TRANSLATE: Interior & Amenities]",
-          "description": "[TRANSLATE: Designed for both relaxation and functionality, the Garden Cottage features a Queen-size boxed bed, a working desk with shaded lamp, and a dinner table with chairs.]",
+          "heading": "インテリアとアメニティ",
+          "description": "リラックスと機能性の両方を考慮して設計されたガーデンコテージには、クイーンサイズのボックスベッド、シェード付きランプを備えた作業デスク、そしてダイニングテーブルと椅子が備わっています。",
           "features": [
-            "[TRANSLATE: Queen-size bed with quality mattress]",
-            "[TRANSLATE: Work desk & shaded lamp]",
-            "[TRANSLATE: Dinner table & chairs]",
-            "[TRANSLATE: Storage: suitcase shelves, clothes rack, extra shelving]"
+            "高品質マットレスのクイーンサイズベッド",
+            "作業デスクとシェード付きランプ",
+            "ダイニングテーブルと椅子",
+            "収納：スーツケース棚、衣服ラック、追加棚"
           ]
         },
         {
-          "heading": "[TRANSLATE: Comfort & Lighting]",
-          "description": "[TRANSLATE: An inverter air conditioner keeps you comfortable in every season, offering both cooling and heating. Soft lighting, including a dimmable main light, lets you set the perfect ambiance for work, rest, or relaxation.]",
+          "heading": "快適性と照明",
+          "description": "インバーターエアコンが冷暖房を提供し、四季を通じて快適さを保ちます。調光可能なメインライトを含む柔らかな照明が、仕事、休息、またはリラックスのための完璧な雰囲気を演出します。",
           "features": [
-            "[TRANSLATE: Inverter air conditioning (cool & heat)]",
-            "[TRANSLATE: Dimmable lighting & warm interior glow]"
+            "インバーターエアコン（冷房・暖房）",
+            "調光可能な照明と温かな室内の光"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: Just behind the cottage, a charming grass-thatched roundavel houses your private bathroom, complete with a shower, toilet, and sink—combining modern convenience with authentic African flair.]"
+          "heading": "専用バスルーム",
+          "description": "コテージのすぐ後方には、魅力的な草葺きのロンダベル（円形小屋）の中に、シャワー、トイレ、洗面台を備えた専用バスルームがあります。現代的な便利さと本格的なアフリカの趣を組み合わせています。"
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Surrounded by tropical nature]",
-        "[TRANSLATE: Private en-suite roundavel]",
-        "[TRANSLATE: Air-conditioned & peacefully lit]"
+        "熱帯の自然に囲まれて",
+        "専用エン Suite ロンダベル",
+        "エアコン完備で静かな照明"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Garden Cottage?]",
-        "description": "[TRANSLATE: Experience rustic elegance in our tropical garden retreat. Book direct for the best rates and personalized service.]"
+        "heading": "ガーデンコテージを予約する準備はできましたか？",
+        "description": "私たちの熱帯庭園の隠れ家で素朴なエレガンスを体験してください。最良の料金とパーソナライズされたサービスのために直接予約ください。"
       }
     },
     "chalet": {
-      "eyebrow": "[TRANSLATE: Thatched Chalet]",
-      "heroTitle": "[TRANSLATE: Romantic seclusion • Rustic elegance • Tropical peace]",
-      "heroDescription": "[TRANSLATE: Hidden in a secluded corner of the property, the Thatched Chalet offers a tranquil, romantic retreat. Shaded by palms, strelitzia, acacia, ferns, and Indian almond trees, it immerses you in nature without sacrificing comfort or privacy.]",
+      "eyebrow": "茅葺きシャレー",
+      "heroTitle": "ロマンチックな隠れ家 • 素朴な優雅さ • 熱帯の平和",
+      "heroDescription": "敷地内のひっそりとした一角に隠れる茅葺きシャレーは、静かでロマンチックな隠れ家を提供します。ヤシ、ストレリチア、アカシア、シダ、モモタマナの木陰に囲まれ、快適さやプライバシーを犠牲にすることなく自然に浸ることができます。",
       "sections": [
         {
-          "heading": "[TRANSLATE: Setting & Atmosphere]",
-          "description": "[TRANSLATE: The grass-roofed chalet, supported by sturdy bluegum poles, exudes rustic elegance. An autumn-slate floor blends harmoniously with its lush surroundings, while soft wheatfield-painted walls create a warm and serene indoor ambiance.]",
+          "heading": "環境と雰囲気",
+          "description": "頑丈なブルーガムポールで支えられた草葺き屋根のシャレーは、素朴な優雅さを放っています。オータムスレートの床は緑豊かな周囲と調和し、柔らかな小麦色の壁が温かく静かな室内の雰囲気を創り出しています。",
           "features": [
-            "[TRANSLATE: Thatched roof • bluegum pole structure]",
-            "[TRANSLATE: Autumn-slate floor • natural tones]",
-            "[TRANSLATE: Surrounded by palms, ferns & strelitzia]"
+            "茅葺き屋根 • ブルーガムポール構造",
+            "オータムスレートの床 • ナチュラルトーン",
+            "ヤシ、シダ、ストレリチアに囲まれて"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step onto your private terrace, furnished with rolled palm-leaf chairs and a dinner table with chairs. Relax in the shade of the garden canopy and enjoy the sights and sounds of nature.]",
+          "heading": "テラスとガーデン",
+          "description": "巻きパームリーフの椅子とダイニングテーブル、椅子が備えられた専用テラスへ。庭園の木陰でリラックスし、自然の景色と音をお楽しみください。",
           "features": [
-            "[TRANSLATE: Private terrace with seating]",
-            "[TRANSLATE: Tropical garden views]"
+            "座席付き専用テラス",
+            "熱帯庭園の景色"
           ]
         },
         {
-          "heading": "[TRANSLATE: Interior & Comfort]",
-          "description": "[TRANSLATE: Inside, two single beds with pedestals can be combined into a King-size bed for a cozy double setup. Air conditioning ensures year-round comfort, while soft lighting complements the rustic décor.]",
+          "heading": "インテリアと快適性",
+          "description": "室内では、ペデスタル付きの2つのシングルベッドを、居心地の良いダブル設定のキングサイズベッドに組み合わせることができます。エアコンが一年中の快適さを確保し、柔らかな照明が素朴な装飾を引き立てます。",
           "features": [
-            "[TRANSLATE: Twin or King-size bed configuration]",
-            "[TRANSLATE: Air conditioning for cooling & comfort]",
-            "[TRANSLATE: Warm lighting & soft interior tones]"
+            "ツインまたはキングサイズベッド設定",
+            "冷房と快適さのためのエアコン",
+            "温かな照明と柔らかな室内のトーン"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: The chalet includes a private bathroom with a shower, toilet, and sink, blending convenience with the rustic charm of its natural setting.]"
+          "heading": "専用バスルーム",
+          "description": "シャレーには、シャワー、トイレ、洗面台を備えた専用バスルームが付いており、便利さと自然環境の素朴な魅力を融合させています。"
         },
         {
-          "heading": "[TRANSLATE: Experience]",
-          "description": "[TRANSLATE: Whether you're seeking a romantic getaway or a peaceful escape, this tiny chalet delivers an unforgettable blend of seclusion, elegance, and comfort—an ideal retreat within DEVOCEAN's tropical haven.]"
+          "heading": "体験",
+          "description": "ロマンチックな旅を求めているのか、静かな逃避を求めているのかに関わらず、この小さなシャレーは、隔離性、優雅さ、快適さの忘れられないブレンドを提供します—DEVOCEANの熱帯の楽園の中にある理想的な隠れ家です。"
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Immersed in nature]",
-        "[TRANSLATE: Romantic & tranquil ambiance]",
-        "[TRANSLATE: Private comfort & convenience]"
+        "自然に囲まれて",
+        "ロマンチックで静かな雰囲気",
+        "プライベートな快適さと便利さ"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Thatched Chalet?]",
-        "description": "[TRANSLATE: Escape to romantic seclusion in our tropical hideaway. Book direct for the best rates and personalized service.]"
+        "heading": "茅葺きシャレーを予約する準備はできましたか？",
+        "description": "私たちの熱帯の隠れ家でロマンチックな隔離へ逃げましょう。最良の料金とパーソナライズされたサービスのために直接予約ください。"
       }
     }
   },
