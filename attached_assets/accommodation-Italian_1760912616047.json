@@ -1,0 +1,218 @@
+{
+  "it-IT": {
+    "safari": {
+      "eyebrow": "Tenda Safari",
+      "heroTitle": "Comfort + Avventura in Tela",
+      "heroDescription": "Sperimenta il perfetto equilibrio tra comfort e avventura. Posizionata su una spaziosa piattaforma di 3×6 m, questa tenda in tela di 12 m² ha pareti laterali e posteriori protettive – offrendoti privacy e riparo mentre rimani vicino alla natura.",
+      "sections": [
+        {
+          "heading": "Spazio & Layout",
+          "description": "La tenda presenta un interno ben pianificato e accogliente con tocchi pensati per una vita facile.",
+          "features": [
+            "Piattaforma: 3×6 m • Tenda: 12 m²",
+            "Pareti laterali & posteriori per privacy e riparo",
+            "Rete antizanzare su tutte le finestre & porte"
+          ]
+        },
+        {
+          "heading": "Sonno & Comfort",
+          "description": "Due letti singoli con piedistalli e lampade ombreggiate possono essere uniti in un letto King-size per gli ospiti che preferiscono una configurazione doppia.",
+          "features": [
+            "Materassi di qualità & illuminazione da comodino",
+            "Ventilatore potente per notti estive fresche",
+            "Prese di corrente per caricare dispositivi",
+            "Piccola unità di scaffalatura per vestiti & essenziali"
+          ]
+        },
+        {
+          "heading": "Terrazza & Giardino",
+          "description": "Esci sulla tua terrazza privata, arredata con sedie di foglie di palma arrotolate. Goditi la vista del lussureggiante giardino tropicale – magnificamente illuminato di notte per un'atmosfera romantica.",
+          "features": [
+            "Posti a sedere privati all'aperto",
+            "Illuminazione notturna per serate serene"
+          ]
+        },
+        {
+          "heading": "Bagni",
+          "description": "Gli ospiti hanno accesso a bagni condivisi, separati per signore e signori – mantenuti puliti e comodi.",
+          "features": [
+            "2× docce con acqua calda/fredda per lato",
+            "2× bagni per lato",
+            "Lavandini con acqua fredda"
+          ]
+        },
+        {
+          "heading": "Buono a Sapersi",
+          "description": "Durante i fine settimana festivi e l'alta stagione (fine dicembre – inizio gennaio), il villaggio può essere vivace. Tappi per le orecchie gratuiti sono disponibili alla reception per garantire un sonno riposante.",
+          "closingNote": "Un soggiorno spazioso, immerso nella natura con comfort moderni – perfetto per viaggiatori che vogliono l'esterno senza sacrificare la comodità."
+        }
+      ],
+      "trustItems": [
+        "Comfort immerso nella natura",
+        "Strutture pulite e ben mantenute",
+        "Serate rilassate e romantiche"
+      ],
+      "cta": {
+        "heading": "Pronto a Prenotare la Tua Tenda Safari?",
+        "description": "Assicura la tua fuga immersa nella natura al DEVOCEAN Lodge. La prenotazione diretta significa le migliori tariffe e supporto completo dal nostro team."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Tenda Comfort",
+      "heroTitle": "Più privacy. Più comfort. Stesso fascino selvaggio.",
+      "heroDescription": "Per gli ospiti che amano l'atmosfera immersa nella natura ma vogliono maggiore isolamento e comodità, la Tenda Safari Comfort è un upgrade rispetto alla nostra esperienza classica in tela.",
+      "sections": [
+        {
+          "heading": "Spazio & Privacy",
+          "description": "Una generosa tenda in tela di 12 m² posizionata sulla propria piattaforma, con due pareti laterali e una parete posteriore per una maggiore privacy rispetto alla Tenda Safari Standard.",
+          "features": [
+            "Tenda: 12 m² su piattaforma privata",
+            "Privacy extra: 2 pareti laterali + parete posteriore",
+            "Rete antizanzare su tutte le finestre & porte"
+          ]
+        },
+        {
+          "heading": "Sonno & Comfort",
+          "description": "Due letti singoli con piedistalli e lampade ombreggiate possono essere uniti in un letto King-size. L'illuminazione è comodamente controllata da interruttori vicino all'ingresso.",
+          "features": [
+            "Configurazione King o Twin",
+            "Prese di corrente per caricare dispositivi",
+            "Ventilatore forte per notti estive fresche",
+            "Piccola unità di scaffalatura per vestiti & essenziali"
+          ]
+        },
+        {
+          "heading": "Terrazza & Giardino",
+          "description": "Goditi la tua terrazza in legno privata con sedie di foglie di palma arrotolate, affacciata sul lussureggiante giardino tropicale – romanticamente illuminato di notte.",
+          "features": [
+            "Posti a sedere privati all'aperto",
+            "Viste sul giardino, illuminazione notturna"
+          ]
+        },
+        {
+          "heading": "Bagno Privato",
+          "description": "Sul retro della tenda, sotto un affascinante tetto di erba, il tuo bagno privato include doccia, WC e lavandino – combinando comodità con un tocco unico all'aperto."
+        },
+        {
+          "heading": "Buono a Sapersi",
+          "description": "Sebbene il DEVOCEAN Lodge sia pacifico, il villaggio circostante può essere vivace durante i fine settimana festivi e l'alta stagione (fine dicembre – inizio gennaio). Tappi per le orecchie gratuiti sono disponibili alla reception.",
+          "closingNote": "Un rifugio spazioso, ben attrezzato e privato in stile safari – perfetto per gli ospiti che vogliono comfort, isolamento e la comodità di un bagno privato."
+        }
+      ],
+      "trustItems": [
+        "Comfort immerso nella natura",
+        "Comodità privata",
+        "Serate romantiche in giardino"
+      ],
+      "cta": {
+        "heading": "Pronto a Prenotare la Tua Tenda Comfort?",
+        "description": "Aggiorna la tua fuga nella natura con maggiore privacy e comodità privata. Prenota direttamente per le migliori tariffe."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Cottage da Giardino",
+      "heroTitle": "Fascino rustico • Serenità tropicale • Comfort moderno",
+      "heroDescription": "Nascosto nel nostro lussureggiante giardino tropicale, il Cottage da Giardino combina eleganza rustica con comfort casalingo. Un tetto di tegole romane rosse e un alto soffitto bianco con travi di legno scuro creano un rifugio spazioso e arioso pieno di carattere.",
+      "sections": [
+        {
+          "heading": "Atmosfera & Design",
+          "description": "Il pavimento in piastrelle di terracotta aggiunge calore sotto un alto soffitto con travi, mentre le pareti dipinte in toni morbidi di campo di grano migliorano l'atmosfera calma e accogliente del cottage.",
+          "features": [
+            "Tetto di tegole romane rosse",
+            "Alto soffitto bianco con travi scure",
+            "Pavimento in terracotta & toni caldi sulle pareti"
+          ]
+        },
+        {
+          "heading": "Terrazza & Giardino",
+          "description": "Esci sulla tua terrazza in legno privata, arredata con sedie da campeggio e un tavolino – un posto pacifico per rilassarti e goderti la lussureggiante vegetazione e i suoni delicati del giardino.",
+          "features": [
+            "Terrazza privata con posti a sedere",
+            "Immerso nella vegetazione tropicale"
+          ]
+        },
+        {
+          "heading": "Interno & Servizi",
+          "description": "Progettato per il relax e la funzionalità, il Cottage da Giardino dispone di un letto Queen-size incassato, una scrivania da lavoro con lampada ombreggiata e un tavolo da pranzo con sedie.",
+          "features": [
+            "Letto Queen-size con materasso di qualità",
+            "Scrivania da lavoro & lampada ombreggiata",
+            "Tavolo da pranzo & sedie",
+            "Deposito: scaffali per valigie, appendiabiti, scaffali extra"
+          ]
+        },
+        {
+          "heading": "Comfort & Illuminazione",
+          "description": "Un condizionatore d'aria inverter ti mantiene confortevole in ogni stagione, offrendo sia raffreddamento che riscaldamento. Illuminazione morbida, inclusa una luce principale dimmerabile, ti permette di impostare l'atmosfera perfetta per lavorare, riposare o rilassarti.",
+          "features": [
+            "Condizionatore d'aria inverter (raffreddare & riscaldare)",
+            "Illuminazione dimmerabile & bagliore interno caldo"
+          ]
+        },
+        {
+          "heading": "Bagno Privato",
+          "description": "Proprio dietro il cottage, un affascinante rondavel con tetto di erba ospita il tuo bagno privato, completo di doccia, WC e lavandino – combinando comodità moderna con un autentico flair africano."
+        }
+      ],
+      "trustItems": [
+        "Circondato da natura tropicale",
+        "Rondavel privato en-suite",
+        "Condizionato & illuminato pacificamente"
+      ],
+      "cta": {
+        "heading": "Pronto a Prenotare il Tuo Cottage da Giardino?",
+        "description": "Sperimenta l'eleganza rustica nel nostro rifugio da giardino tropicale. Prenota direttamente per le migliori tariffe e servizio personalizzato."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Chalet con Tetto di Paglia",
+      "heroTitle": "Isolamento romantico • Eleganza rustica • Pace tropicale",
+      "heroDescription": "Nascosto in un angolo isolato della proprietà, lo Chalet con Tetto di Paglia offre un rifugio tranquillo e romantico. Ombreggiato da palme, strelitzie, acacie, felci e alberi di mandorlo indiano, ti immerge nella natura senza sacrificare comfort o privacy.",
+      "sections": [
+        {
+          "heading": "Ambientazione & Atmosfera",
+          "description": "Lo chalet con tetto di erba, sostenuto da robusti pali di bluegum, emana eleganza rustica. Un pavimento in ardesia autunnale si fonde armoniosamente con i suoi dintorni lussureggianti, mentre le pareti dipinte in toni morbidi di campo di grano creano un'atmosfera interna calda e serena.",
+          "features": [
+            "Tetto di paglia • struttura con pali bluegum",
+            "Pavimento in ardesia autunnale • toni naturali",
+            "Circondato da palme, felci & strelitzie"
+          ]
+        },
+        {
+          "heading": "Terrazza & Giardino",
+          "description": "Esci sulla tua terrazza privata, arredata con sedie di foglie di palma arrotolate e un tavolo da pranzo con sedie. Rilassati all'ombra della chioma del giardino e goditi le viste e i suoni della natura.",
+          "features": [
+            "Terrazza privata con posti a sedere",
+            "Viste sul giardino tropicale"
+          ]
+        },
+        {
+          "heading": "Interno & Comfort",
+          "description": "All'interno, due letti singoli con piedistalli possono essere uniti in un letto King-size per una configurazione doppia accogliente. L'aria condizionata garantisce comfort tutto l'anno, mentre l'illuminazione morbida completa l'arredamento rustico.",
+          "features": [
+            "Configurazione letto Twin o King-size",
+            "Aria condizionata per raffreddamento & comfort",
+            "Illuminazione calda & toni interni morbidi"
+          ]
+        },
+        {
+          "heading": "Bagno Privato",
+          "description": "Lo chalet include un bagno privato con doccia, WC e lavandino, mescolando comodità con il fascino rustico del suo ambiente naturale."
+        },
+        {
+          "heading": "Esperienza",
+          "description": "Che tu stia cercando una fuga romantica o un'evasione pacifica, questo piccolo chalet offre una miscela indimenticabile di isolamento, eleganza e comfort – un rifugio ideale all'interno del paradiso tropicale di DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Immerso nella natura",
+        "Atmosfera romantica & tranquilla",
+        "Comfort & comodità privati"
+      ],
+      "cta": {
+        "heading": "Pronto a Prenotare il Tuo Chalet con Tetto di Paglia?",
+        "description": "Scappa nell'isolamento romantico nel nostro nascondiglio tropicale. Prenota direttamente per le migliori tariffe e servizio personalizzato."
+      }
+    }
+  }
+}
