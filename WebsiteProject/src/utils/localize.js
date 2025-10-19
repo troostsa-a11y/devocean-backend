@@ -38,10 +38,5 @@ export const directionsUrl = (lat, lng) =>
   `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 
 export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
-  // Build return URL with current language and currency parameters
-  const returnUrl = `${window.location.origin}/#stay?lang=${locale}&currency=${currency}`;
-  const encodedReturnUrl = encodeURIComponent(returnUrl);
-  
-  // Include return_url parameter for Hotelrunner to link back
-  return `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}&return_url=${encodedReturnUrl}`;
+  return `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}`;
 };
