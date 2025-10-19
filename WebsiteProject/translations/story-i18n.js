@@ -7,7 +7,7 @@
 // Supported languages (must match main site)
 const SUPPORTED_LANGS = [
   "en", "en-us", "pt", "nl", "fr", "it", "de", "es", 
-  "sv", "pl", "af", "zu", "sw", "ja", "zh", "ru"
+  "sv", "pl", "af-za", "zu", "sw", "ja", "zh", "ru"
 ];
 
 // Map country codes to primary language (IP-based fallback)
@@ -149,7 +149,7 @@ const CC_TO_CONTINENT = {
 const LOCALE_BY_LANG = {
   en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", 
-  ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "sw",
+  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-za": "af-ZA", zu: "en-GB", sw: "sw",
 };
 
 /**
@@ -235,8 +235,9 @@ function normLang(raw) {
   if (!raw) return "en";
   let s = String(raw).toLowerCase();
   
-  // Special case: keep en-us as is
+  // Special cases: keep region codes for languages that need them
   if (s === "en-us") return "en-us";
+  if (s === "af-za") return "af-za";
   
   // Handle other locale codes
   if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
@@ -245,18 +246,37 @@ function normLang(raw) {
 }
 
 /**
+ * Get URL parameter by name
+ */
+function getUrlParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
+/**
  * Pick initial language using multi-tier detection
- * Priority: localStorage → browser language → IP-based country mapping → English fallback
+ * Priority: URL parameter → localStorage → browser language → IP-based country mapping → region-aware English fallback
  */
 function pickInitialLang() {
-  // Check localStorage first
+  // Priority 1: Check URL parameter (for navigation from main site)
+  const urlLang = getUrlParam('lang');
+  if (urlLang) {
+    const normalized = normLang(urlLang);
+    if (SUPPORTED_LANGS.includes(normalized)) {
+      // Store in localStorage for consistency
+      localStorage.setItem("site.lang", normalized);
+      return normalized;
+    }
+  }
+
+  // Priority 2: Check localStorage
   const stored = localStorage.getItem("site.lang");
   if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
 
   // Get country code for IP-based fallback
   const cc = getCountryCode();
 
-  // Check browser language preferences first
+  // Priority 3: Check browser language preferences
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
@@ -274,14 +294,19 @@ function pickInitialLang() {
     if (SUPPORTED_LANGS.includes(base)) return base;
   }
 
-  // Fallback: Use IP-based country → language mapping
+  // Priority 4: Use IP-based country → language mapping
   // This catches visitors with non-local browser settings (e.g., English browser in Japan)
   if (cc && CC_TO_LANGUAGE[cc]) {
     return CC_TO_LANGUAGE[cc];
   }
 
-  // Final fallback to English
-  return "en";
+  // Final fallback to region-aware English
+  // Americas → US English, others → UK English
+  const continent = cc ? CC_TO_CONTINENT[cc] : null;
+  if (continent === "americas") {
+    return "en-us";
+  }
+  return "en"; // UK English for Europe, Asia, Oceania, Africa
 }
 
 /**
