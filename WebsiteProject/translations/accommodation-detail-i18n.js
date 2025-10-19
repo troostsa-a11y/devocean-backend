@@ -82,29 +82,38 @@ const CC_TO_CURRENCY = {
 };
 
 // Import translations from accommodation-translations.json
+// Define base translations first
+const baseTranslations = {
+  en: {
+    "backToAccommodations": "Back to Accommodations",
+    "readyToBook": "Ready to Book",
+    "secureYourEscape": "Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.",
+    "bookYourStay": "Book Your Stay",
+    "viewAllAccommodations": "View All Accommodations"
+  },
+  pt: {
+    "backToAccommodations": "Voltar às Acomodações",
+    "readyToBook": "Pronto para Reservar",
+    "secureYourEscape": "Garanta sua escapada imersa na natureza no DEVOCEAN Lodge. Reserva direta significa melhores tarifas e suporte completo da nossa equipe.",
+    "bookYourStay": "Reserve Sua Estadia",
+    "viewAllAccommodations": "Ver Todas as Acomodações"
+  },
+  af: {
+    "backToAccommodations": "Terug na Akkommodasie",
+    "readyToBook": "Gereed om te Bespreek",
+    "secureYourEscape": "Verseker jou natuurgeïnspireerde ontvlugting by DEVOCEAN Lodge. Direkte bespreking beteken die beste tariewe en volledige ondersteuning van ons span.",
+    "bookYourStay": "Bespreek Jou Verblyf",
+    "viewAllAccommodations": "Bekyk Alle Akkommodasie"
+  }
+};
+
 const TRANSLATIONS = {
   "common": {
-    "en": {
-      "backToAccommodations": "Back to Accommodations",
-      "readyToBook": "Ready to Book",
-      "secureYourEscape": "Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.",
-      "bookYourStay": "Book Your Stay",
-      "viewAllAccommodations": "View All Accommodations"
-    },
-    "en-us": {
-      "backToAccommodations": "Back to Accommodations",
-      "readyToBook": "Ready to Book",
-      "secureYourEscape": "Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.",
-      "bookYourStay": "Book Your Stay",
-      "viewAllAccommodations": "View All Accommodations"
-    },
-    "pt": {
-      "backToAccommodations": "Voltar às Acomodações",
-      "readyToBook": "Pronto para Reservar",
-      "secureYourEscape": "Garanta sua escapada imersa na natureza no DEVOCEAN Lodge. Reserva direta significa melhores tarifas e suporte completo da nossa equipe.",
-      "bookYourStay": "Reserve Sua Estadia",
-      "viewAllAccommodations": "Ver Todas as Acomodações"
-    },
+    "en": baseTranslations.en,
+    "en-US": baseTranslations.en, // US English uses same translations as UK English
+    "pt-PT": baseTranslations.pt, // Portugal Portuguese
+    "pt-BR": baseTranslations.pt, // Brazilian Portuguese (same translations)
+    "af-ZA": baseTranslations.af, // Afrikaans (South Africa)
     "nl": {
       "backToAccommodations": "Terug naar Accommodaties",
       "readyToBook": "Klaar om te Boeken",
@@ -153,13 +162,6 @@ const TRANSLATIONS = {
       "secureYourEscape": "Zabezpiecz swój pobyt w przyrodzie w DEVOCEAN Lodge. Bezpośrednia rezerwacja oznacza najlepsze ceny i pełne wsparcie naszego zespołu.",
       "bookYourStay": "Zarezerwuj Swój Pobyt",
       "viewAllAccommodations": "Zobacz Wszystkie Zakwaterowanie"
-    },
-    "af": {
-      "backToAccommodations": "Terug na Akkommodasie",
-      "readyToBook": "Gereed om te Bespreek",
-      "secureYourEscape": "Verseker jou natuurgeïnspireerde ontvlugting by DEVOCEAN Lodge. Direkte bespreking beteken die beste tariewe en volledige ondersteuning van ons span.",
-      "bookYourStay": "Bespreek Jou Verblyf",
-      "viewAllAccommodations": "Bekyk Alle Akkommodasie"
     },
     "zu": {
       "backToAccommodations": "Buyela Ezindaweni Zokuhlala",
@@ -277,14 +279,8 @@ function getHotelrunnerLocale(lang) {
 
 // Apply translations to page
 function applyTranslations(lang) {
-  // Map language-region codes to base language keys for translations
-  const translationKey = 
-    (lang === "en-US") ? "en" :
-    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
-    (lang === "af-ZA") ? "af" :
-    lang;
-  
-  const t = TRANSLATIONS.common[translationKey] || TRANSLATIONS.common['en'];
+  // Direct lookup - translation keys now match language codes
+  const t = TRANSLATIONS.common[lang] || TRANSLATIONS.common['en'];
   
   // Update common text elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
