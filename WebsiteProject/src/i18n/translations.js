@@ -324,15 +324,6 @@ export const UI = {
         ],
       },
     },
-    experiences: {
-      diving: { title: "Duiken", desc: "Nabije riffen rijk aan zee-leven." },
-      dolphins: { title: "Zwemmen met dolfijnen", desc: "Ethische ontmoetingen met lokale dolfijnen." },
-      lighthouse: { title: "Vuurtorenwandeling", desc: "Klim de heuvel naar de oude vuurtoren voor panoramisch uitzicht." },
-      seafari: { title: "Zee-Safari", desc: "Walvisspot (mei–okt) en meer." },
-      safari: { title: "Land Safari", desc: "Bush-avonturen in de buurt." },
-      fishing: { title: "Strand- & bootvissen", desc: "Van shore-casts tot offshore charters." },
-      surfing: { title: "Surfplanken & lessen", desc: "Pak de golven of leer de basis." },
-    },
     todo: {
       headline: "Wat te doen in Ponta do Ouro",
       note: "Voor duiken/snorkelen/seafari's/charters: zie de aanbieders hieronder.",
@@ -466,15 +457,6 @@ export const UI = {
           "Terrasse privée avec chaises en feuilles de palmier"
         ],
       },
-    },
-    experiences: {
-      diving: { title: "Plongée", desc: "Récifs côtiers riches en vie marine." },
-      dolphins: { title: "Nager avec les dauphins", desc: "Rencontres éthiques avec les dauphins locaux." },
-      lighthouse: { title: "Randonnée au phare", desc: "Montez la colline jusqu'au vieux phare pour des vues panoramiques." },
-      seafari: { title: "Safari marin", desc: "Observation des baleines (mai–oct) et plus." },
-      safari: { title: "Safari terrestre", desc: "Aventures dans la brousse à proximité." },
-      fishing: { title: "Pêche plage & bateau", desc: "Du lancer côtier aux charters offshore." },
-      surfing: { title: "Planches de surf & cours", desc: "Attrapez les vagues ou apprenez les bases." },
     },
     todo: {
       headline: "Que faire à Ponta do Ouro",
@@ -626,15 +608,6 @@ export const UI = {
         ],
       },
     },
-    experiences: {
-      diving: { title: "Immersioni", desc: "Barriere costiere ricche di vita marina." },
-      dolphins: { title: "Nuotare con i delfini", desc: "Incontri etici con delfini locali." },
-      lighthouse: { title: "Escursione al faro", desc: "Sali la collina fino al vecchio faro per viste panoramiche." },
-      seafari: { title: "Safari marino", desc: "Avvistamento balene (mag–ott) e altro." },
-      safari: { title: "Safari terrestre", desc: "Avventure nel bush nelle vicinanze." },
-      fishing: { title: "Pesca dalla spiaggia & in barca", desc: "Da lanci da riva a charter offshore." },
-      surfing: { title: "Tavole da surf & lezioni", desc: "Prendi le onde o impara le basi." },
-    },
     todo: {
       headline: "Cosa fare a Ponta do Ouro",
       note: "Per immersioni/snorkeling/seafari/pesca: partner qui sotto.",
@@ -745,15 +718,6 @@ export const UI = {
         ],
       },
     },
-    experiences: {
-      diving: { title: "Tauchen", desc: "Nahe Riffe reich an Meeresleben." },
-      dolphins: { title: "Mit Delfinen schwimmen", desc: "Ethische Begegnungen mit lokalen Delfinen." },
-      lighthouse: { title: "Leuchtturm-Wanderung", desc: "Bergauf zum alten Leuchtturm für Panoramablick." },
-      seafari: { title: "Meer-Safari", desc: "Walbeobachtung (Mai–Okt) & mehr." },
-      safari: { title: "Land-Safari", desc: "Busch-Abenteuer in der Nähe." },
-      fishing: { title: "Strand- & Bootfischen", desc: "Von Uferwürfen bis Offshore-Charters." },
-      surfing: { title: "Surfbretter & Unterricht", desc: "Fang die Wellen oder lern die Basics." },
-    },
     todo: {
       headline: "Was tun in Ponta do Ouro",
       note: "Tauchen/Schnorcheln/Seafaris/Angeln: Anbieter unten.",
@@ -863,15 +827,6 @@ export const UI = {
           "Terraza privada con sillas de hojas de palma"
         ],
       },
-    },
-    experiences: {
-      diving: { title: "Buceo", desc: "Arrecifes cercanos ricos en vida marina." },
-      dolphins: { title: "Nadar con delfines", desc: "Encuentros éticos con delfines locales." },
-      lighthouse: { title: "Caminata al faro", desc: "Sube la colina al viejo faro para vistas panorámicas." },
-      seafari: { title: "Safari marino", desc: "Avistamiento de ballenas (may–oct) y más." },
-      safari: { title: "Safari terrestre", desc: "Aventuras en el bush cercano." },
-      fishing: { title: "Pesca en playa y barco", desc: "Desde lances de costa hasta charters offshore." },
-      surfing: { title: "Tablas de surf y clases", desc: "Atrapa las olas o aprende lo básico." },
     },
     todo: {
       headline: "Qué hacer en Ponta do Ouro",
@@ -1122,15 +1077,6 @@ export const UI = {
           "ヤシの葉チェア付きのプライベートパティオ"
         ],
       },
-    },
-    experiences: {
-      diving: { title: "ダイビング", desc: "海洋生物豊富な近海リーフ。" },
-      dolphins: { title: "ドルフィンとの遊泳", desc: "地元ドルフィンとの倫理的な出会い。" },
-      lighthouse: { title: "灯台ハイキング", desc: "丘の上の古い灯台までパノラマビュー。" },
-      seafari: { title: "シーファリ", desc: "ホエール観察（5月-10月）他。" },
-      safari: { title: "ランドサファリ", desc: "近隣のブッシュアドベンチャー。" },
-      fishing: { title: "ビーチ & ボートフィッシング", desc: "ショアキャストからオフショアチャーター。" },
-      surfing: { title: "サーフボード & レッスン", desc: "波をキャッチ、または基本を学ぶ。" },
     },
     todo: {
       headline: "Ponta do Ouroですること",
