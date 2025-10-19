@@ -161,11 +161,27 @@ export const LOCALE_BY_LANG = {
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "sw",
 };
 
-// Region-specific locale overrides for Portuguese
-export const getBookingLocaleForRegion = (lang, region) => {
-  if (lang === 'pt' && region === 'africa') {
-    return 'pt-BR'; // African Portuguese uses Brazilian locale
+// Get booking locale based on language + currency combination
+export const getBookingLocale = (lang, currency, countryCode) => {
+  // Handle Portuguese - use region-aware locale
+  if (lang === 'pt') {
+    if (currency === 'MZN' || countryCode === 'MZ') return 'pt-MZ'; // Mozambique
+    if (currency === 'BRL' || countryCode === 'BR') return 'pt-BR'; // Brazil
+    if (currency === 'EUR' || countryCode === 'PT') return 'pt-PT'; // Portugal
+    return 'pt-BR'; // Default to Brazilian for African Portuguese
   }
+  
+  // Handle Afrikaans - use currency to determine country
+  if (lang === 'af') {
+    if (currency === 'MZN' || countryCode === 'MZ') return 'pt-MZ'; // Use Portuguese locale for Mozambique
+    return 'af-ZA'; // South Africa
+  }
+  
+  // Handle English - distinguish US from UK
+  if (lang === 'en-us') return 'en-US';
+  if (lang === 'en') return 'en-GB';
+  
+  // Standard language mappings
   return LOCALE_BY_LANG[lang] || "en-GB";
 };
 
@@ -485,6 +501,8 @@ export function useLocale() {
     }
   };
 
+  const countryCode = getCountryCode();
+  
   return {
     lang,
     currency, // Auto-assigned based on IP, read-only
@@ -494,8 +512,8 @@ export function useLocale() {
     ui,
     criticalUI, // Provide critical nav separately for header
     loading,
-    bookingLocale: getBookingLocaleForRegion(lang, region),
+    bookingLocale: getBookingLocale(lang, currency, countryCode),
     dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
-    countryCode: getCountryCode(), // Expose country code for booking URL
+    countryCode, // Expose country code for booking URL
   };
 }

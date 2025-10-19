@@ -21,13 +21,17 @@ export default function App() {
   // Handle Hotelrunner locale redirects (e.g., /af-ZA from booking engine)
   useEffect(() => {
     const path = window.location.pathname;
+    
+    // Check if there's a stored language preference from before booking
+    const storedLang = localStorage.getItem('site.lang');
+    
     const localeRedirects = {
       '/af-ZA': '/?lang=af&currency=ZAR',
       '/en-GB': '/?lang=en&currency=GBP',
       '/en-US': '/?lang=en-us&currency=USD',
       '/pt-PT': '/?lang=pt&currency=EUR',
       '/pt-BR': '/?lang=pt&currency=BRL',
-      '/pt-MZ': '/?lang=pt&currency=MZN',
+      '/pt-MZ': storedLang === 'af' ? '/?lang=af&currency=MZN' : '/?lang=pt&currency=MZN', // Preserve Afrikaans if user had it
       '/nl-NL': '/?lang=nl&currency=EUR',
       '/fr-FR': '/?lang=fr&currency=EUR',
       '/it-IT': '/?lang=it&currency=EUR',
