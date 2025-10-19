@@ -23,33 +23,43 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
       </div>
 
       <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {units.map((u, idx) => (
-          <m.div
-            key={u.key}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, delay: idx * 0.05 }}
-            className="rounded-2xl overflow-hidden border shadow-sm hover:shadow-md bg-white"
-          >
-            <div className="h-44 overflow-hidden">
-              <LazyImage src={u.img} alt={u.title} className="w-full h-full object-cover" />
-            </div>
-            <div className="p-4">
-              <h3 className="font-semibold text-lg">{u.title}</h3>
-              <p className="mt-1 text-sm text-slate-600">{u.short}</p>
-              <details className="mt-3 group">
-                <summary className="list-none flex items-center gap-1 text-sm text-[#9e4b13] cursor-pointer">
-                  <ChevronDown size={16} className="transition-transform group-open:rotate-180" />
-                  <span>{ui.stay.moreDetails}</span>
-                </summary>
-                <ul className="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
-                  {u.details.map((d, i) => <li key={i}>{d}</li>)}
-                </ul>
-              </details>
-            </div>
-          </m.div>
-        ))}
+        {units.map((u, idx) => {
+          const detailPageUrl = u.key === 'safari' ? '/safari.html' : null;
+          
+          return (
+            <m.div
+              key={u.key}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className="rounded-2xl overflow-hidden border shadow-sm hover:shadow-md bg-white"
+            >
+              {detailPageUrl ? (
+                <a href={detailPageUrl} className="block h-44 overflow-hidden">
+                  <LazyImage src={u.img} alt={u.title} className="w-full h-full object-cover transition-transform hover:scale-105" />
+                </a>
+              ) : (
+                <div className="h-44 overflow-hidden">
+                  <LazyImage src={u.img} alt={u.title} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div className="p-4">
+                <h3 className="font-semibold text-lg">{u.title}</h3>
+                <p className="mt-1 text-sm text-slate-600">{u.short}</p>
+                <details className="mt-3 group">
+                  <summary className="list-none flex items-center gap-1 text-sm text-[#9e4b13] cursor-pointer">
+                    <ChevronDown size={16} className="transition-transform group-open:rotate-180" />
+                    <span>{ui.stay.moreDetails}</span>
+                  </summary>
+                  <ul className="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
+                    {u.details.map((d, i) => <li key={i}>{d}</li>)}
+                  </ul>
+                </details>
+              </div>
+            </m.div>
+          );
+        })}
       </div>
     </section>
   );
