@@ -39,6 +39,20 @@ export default function App() {
     return () => window.removeEventListener("resize", recalc);
   }, []);
 
+  // Handle initial hash navigation (e.g., when navigating from story.html to /#stay)
+  useEffect(() => {
+    if (!loading && ui && window.location.hash) {
+      // Wait for React to finish rendering all sections
+      setTimeout(() => {
+        const hash = window.location.hash.slice(1);
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+    }
+  }, [loading, ui]);
+
   const bookUrl = buildBookingUrl(bookingLocale, currency, countryCode, CC_TO_CURRENCY);
   const units = localizeUnits(lang);
   const experiences = localizeExperiences(lang);

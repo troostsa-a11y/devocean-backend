@@ -59,11 +59,143 @@ const CC_TO_LANGUAGE = {
   KE: "sw", TZ: "sw", UG: "sw",
 };
 
+// Comprehensive country-to-currency mapping (legal tender for each country)
+const CC_TO_CURRENCY = {
+  // Europe
+  GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", 
+  DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", AT: "EUR",
+  FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK",
+  DK: "DKK", CH: "CHF", CZ: "CZK", HU: "HUF", RO: "RON",
+  RS: "RSD", HR: "EUR", SI: "EUR", BA: "BAM", BG: "BGN",
+  SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR",
+  CY: "EUR", LU: "EUR", IS: "ISK", LI: "CHF", MC: "EUR",
+  UA: "UAH", BY: "BYN", MD: "MDL", AL: "ALL", MK: "MKD",
+  ME: "EUR", XK: "EUR", AD: "EUR", SM: "EUR", VA: "EUR",
+  
+  // Africa
+  ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX",
+  ZW: "USD", BW: "BWP", NA: "NAD", EG: "EGP", MA: "MAD",
+  SZ: "SZL", RE: "EUR", MU: "MUR", SC: "SCR", LS: "LSL",
+  ZM: "ZMW", MW: "MWK", AO: "AOA", GH: "GHS", NG: "NGN", 
+  ET: "ETB", SD: "SDG", DZ: "DZD", TN: "TND", LY: "LYD", 
+  SN: "XOF", CI: "XOF", CM: "XAF", RW: "RWF", BI: "BIF", 
+  SO: "SOS", DJ: "DJF",
+  
+  // Americas
+  US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS",
+  CL: "CLP", CO: "COP", PE: "PEN", VE: "VES", EC: "USD",
+  UY: "UYU", PY: "PYG", BO: "BOB", CR: "CRC", PA: "PAB",
+  GT: "GTQ", HN: "HNL", SV: "USD", NI: "NIO", CU: "CUP",
+  DO: "DOP", HT: "HTG", JM: "JMD", TT: "TTD", BB: "BBD",
+  
+  // Asia & Middle East
+  CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB",
+  SG: "SGD", MY: "MYR", ID: "IDR", PH: "PHP", VN: "VND",
+  AE: "AED", SA: "SAR", QA: "QAR", KW: "KWD", BH: "BHD",
+  OM: "OMR", IL: "ILS", JO: "JOD", LB: "LBP", TR: "TRY",
+  PK: "PKR", BD: "BDT", LK: "LKR", NP: "NPR", MM: "MMK",
+  KH: "KHR", LA: "LAK", MN: "MNT", KZ: "KZT", UZ: "UZS",
+  RU: "RUB",
+  
+  // Oceania
+  AU: "AUD", NZ: "NZD", FJ: "FJD", PG: "PGK", NC: "XPF",
+  PF: "XPF", WS: "WST", TO: "TOP", VU: "VUV", SB: "SBD",
+};
+
+// Map country codes to continents (comprehensive)
+const CC_TO_CONTINENT = {
+  // Europe
+  GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
+  DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
+  FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
+  DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
+  RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
+  SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
+  CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
+  UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
+  ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
+  
+  // Africa
+  ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
+  ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
+  SZ: "africa", RE: "africa", MU: "africa", SC: "africa", LS: "africa",
+  ZM: "africa", MW: "africa", AO: "africa", GH: "africa", NG: "africa", 
+  ET: "africa", SD: "africa", DZ: "africa", TN: "africa", LY: "africa", 
+  SN: "africa", CI: "africa", CM: "africa", RW: "africa", BI: "africa", 
+  SO: "africa", DJ: "africa",
+  
+  // Americas
+  US: "americas", CA: "americas", MX: "americas", BR: "americas", AR: "americas",
+  CL: "americas", CO: "americas", PE: "americas", VE: "americas", EC: "americas",
+  UY: "americas", PY: "americas", BO: "americas", CR: "americas", PA: "americas",
+  GT: "americas", HN: "americas", SV: "americas", NI: "americas", CU: "americas",
+  DO: "americas", HT: "americas", JM: "americas", TT: "americas", BB: "americas",
+  
+  // Asia & Middle East
+  CN: "asia", JP: "asia", KR: "asia", IN: "asia", TH: "asia",
+  SG: "asia", MY: "asia", ID: "asia", PH: "asia", VN: "asia",
+  AE: "asia", SA: "asia", QA: "asia", KW: "asia", BH: "asia",
+  OM: "asia", IL: "asia", JO: "asia", LB: "asia", TR: "asia",
+  PK: "asia", BD: "asia", LK: "asia", NP: "asia", MM: "asia",
+  KH: "asia", LA: "asia", MN: "asia", KZ: "asia", UZ: "asia",
+  RU: "asia",
+  
+  // Oceania
+  AU: "oceania", NZ: "oceania", FJ: "oceania", PG: "oceania", NC: "oceania",
+  PF: "oceania", WS: "oceania", TO: "oceania", VU: "oceania", SB: "oceania",
+};
+
+// Booking engine locale mapping
+const LOCALE_BY_LANG = {
+  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", 
+  ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "sw",
+};
+
 /**
  * Get Cloudflare country code from global variable
  */
 function getCountryCode() {
   return window.__CF_COUNTRY__ || null;
+}
+
+/**
+ * Pick initial currency based on visitor's country
+ */
+function pickInitialCurrency() {
+  const cc = getCountryCode();
+  if (cc && CC_TO_CURRENCY[cc]) {
+    return CC_TO_CURRENCY[cc];
+  }
+  return "USD"; // Default to USD if country detection fails
+}
+
+/**
+ * Pick initial region based on visitor's country
+ */
+function pickInitialRegion() {
+  const cc = getCountryCode();
+  if (cc && CC_TO_CONTINENT[cc]) {
+    return CC_TO_CONTINENT[cc];
+  }
+  return "europe"; // Default to Europe
+}
+
+/**
+ * Get booking locale for region (region-specific overrides)
+ */
+function getBookingLocaleForRegion(lang, region) {
+  if (lang === 'pt' && region === 'africa') {
+    return 'pt-BR'; // African Portuguese uses Brazilian locale
+  }
+  return LOCALE_BY_LANG[lang] || "en-GB";
+}
+
+/**
+ * Build booking URL with locale and currency
+ */
+function buildBookingUrl(locale, currency) {
+  return `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}`;
 }
 
 /**
@@ -167,6 +299,24 @@ function applyTranslations(translations) {
 }
 
 /**
+ * Update booking button URL with detected locale and currency
+ */
+function updateBookingUrl(lang) {
+  const currency = pickInitialCurrency();
+  const region = pickInitialRegion();
+  const bookingLocale = getBookingLocaleForRegion(lang, region);
+  const bookingUrl = buildBookingUrl(bookingLocale, currency);
+  
+  console.log('Story page booking:', { lang, currency, region, bookingLocale, bookingUrl });
+  
+  // Update the Book button href
+  const bookButton = document.querySelector('a[data-testid="button-book-now"]');
+  if (bookButton) {
+    bookButton.href = bookingUrl;
+  }
+}
+
+/**
  * Initialize i18n system
  */
 async function initI18n() {
@@ -178,13 +328,35 @@ async function initI18n() {
     applyTranslations(translations);
   }
   
+  // Update booking URL with detected locale and currency
+  updateBookingUrl(lang);
+  
   // Add lang attribute to html element
   document.documentElement.lang = lang;
 }
 
+/**
+ * Handle navigation to main page with #stay anchor
+ * Ensures proper scroll after page load
+ */
+function setupStayNavigation() {
+  const stayLink = document.querySelector('a[href="/#stay"]');
+  if (stayLink) {
+    stayLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Navigate to main page with hash, then let the main page handle scroll
+      window.location.href = '/#stay';
+    });
+  }
+}
+
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initI18n);
+  document.addEventListener('DOMContentLoaded', () => {
+    initI18n();
+    setupStayNavigation();
+  });
 } else {
   initI18n();
+  setupStayNavigation();
 }
