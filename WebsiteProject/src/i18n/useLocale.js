@@ -395,48 +395,42 @@ export function useLocale() {
     return pickInitialLang();
   });
 
-  // Currency - always based on IP-detected country, never changes
+  // Currency - always based on current IP-detected country
+  // Updates automatically if user's location changes (e.g., traveling)
   const [currency, setCurrencyState] = useState(() => {
-    // Priority 1: URL parameter (for return from booking engine)
-    const urlCurrency = getUrlParam('currency');
-    if (urlCurrency && urlCurrency.length === 3) {
-      const upperCurrency = urlCurrency.toUpperCase();
-      localStorage.setItem("site.currency", upperCurrency);
-      return upperCurrency;
+    // Always use current IP-detected currency (legal tender requirement)
+    // URL parameters are ignored to ensure currency always matches visitor's actual location
+    const cc = getCountryCode();
+    const ipCurrency = pickInitialCurrency(); // Current IP-based currency
+    const storedCurrency = localStorage.getItem("site.currency");
+    const storedCountry = localStorage.getItem("site.currency.country");
+    
+    // If IP country changed, update to new currency
+    if (cc && storedCountry && cc !== storedCountry) {
+      console.log(`Location changed from ${storedCountry} to ${cc}, updating currency from ${storedCurrency} to ${ipCurrency}`);
+      localStorage.setItem("site.currency", ipCurrency);
+      localStorage.setItem("site.currency.country", cc);
+      return ipCurrency;
     }
     
-    // Priority 2: localStorage (preserved even if country changed)
-    const stored = localStorage.getItem("site.currency");
-    if (stored && stored.length === 3) {
-      // Backfill original currency for returning users who don't have it yet
-      // Use IP-detected currency as the true original, not localStorage value
-      // (localStorage might contain region-default currency like ZAR for Africa, not user's actual country currency)
-      if (!localStorage.getItem("site.currency.original")) {
-        const ipCurrency = pickInitialCurrency(); // Get actual IP-based currency
-        localStorage.setItem("site.currency.original", ipCurrency);
-        
-        // If IP currency differs from stored currency, update to IP currency
-        // This fixes cases where users have region-default currency (e.g., ZAR) but should have country currency (e.g., MZN)
-        const cc = getCountryCode();
-        if (cc && ipCurrency !== stored) {
-          console.log(`Correcting currency from ${stored} to ${ipCurrency} based on IP location (${cc})`);
-          localStorage.setItem("site.currency", ipCurrency);
-          localStorage.setItem("site.currency.country", cc);
-          return ipCurrency;
-        }
-      }
-      return stored;
+    // If we have IP currency and it differs from stored, update it
+    // This fixes wrong cached currencies (e.g., region defaults like ZAR instead of country currency MZN)
+    if (ipCurrency && storedCurrency && ipCurrency !== storedCurrency) {
+      console.log(`Correcting currency from ${storedCurrency} to ${ipCurrency} based on IP location (${cc || 'unknown'})`);
+      localStorage.setItem("site.currency", ipCurrency);
+      localStorage.setItem("site.currency.country", cc || "unknown");
+      return ipCurrency;
+    }
+    
+    // Use stored currency if it matches current IP
+    if (storedCurrency && storedCurrency.length === 3) {
+      return storedCurrency;
     }
     
     // Priority 3: Auto-detect from IP
-    const detected = pickInitialCurrency();
-    localStorage.setItem("site.currency", detected);
-    const cc = getCountryCode();
+    localStorage.setItem("site.currency", ipCurrency);
     localStorage.setItem("site.currency.country", cc || "unknown");
-    
-    // Store the original IP-detected currency to restore later if user toggles back
-    localStorage.setItem("site.currency.original", detected);
-    return detected;
+    return ipCurrency;
   });
 
   const [region, setRegionState] = useState(() => {
@@ -445,12 +439,6 @@ export function useLocale() {
     const version = localStorage.getItem("site.region.version");
     
     if (stored && SUPPORTED_REGIONS.includes(stored) && version === "2") {
-      // Backfill original region for returning users who don't have it yet
-      if (!localStorage.getItem("site.region.original")) {
-        // Use stored region as original for returning users
-        // This isn't perfect (they might have changed regions before), but it's better than nothing
-        localStorage.setItem("site.region.original", stored);
-      }
       return stored;
     }
     
@@ -460,11 +448,7 @@ export function useLocale() {
       localStorage.removeItem("site.region.version");
     }
     
-    const detected = pickInitialRegion(pickInitialLang());
-    
-    // Store the original IP-detected region to restore currency later if user toggles back
-    localStorage.setItem("site.region.original", detected);
-    return detected;
+    return pickInitialRegion(pickInitialLang());
   });
 
   // Initialize with critical nav for header (immediate render)
