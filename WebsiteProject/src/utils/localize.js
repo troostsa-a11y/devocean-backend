@@ -1,8 +1,12 @@
 import { L10N } from '../i18n/translations';
+import { ACCOMMODATION_TRANSLATIONS } from '../i18n/accommodationTranslations';
 import { UNIT_BASE, EXP_BASE } from '../data/content';
 
 export function localizeUnits(lang) {
-  const tr = L10N[lang]?.units || {};
+  // Map language codes to match JSON keys (en-us in code vs en-us in JSON)
+  const langKey = lang === 'en-us' ? 'en-us' : lang;
+  const tr = ACCOMMODATION_TRANSLATIONS[langKey] || ACCOMMODATION_TRANSLATIONS['en'] || {};
+  
   return UNIT_BASE.map((u) => ({
     ...u,
     title: tr[u.key]?.title || u.title,
