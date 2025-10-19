@@ -202,12 +202,29 @@ function pickInitialRegion() {
 }
 
 /**
- * Get booking locale for region (region-specific overrides)
+ * Get booking locale with smart currency-based mapping
+ * Mirrors the React app's getBookingLocale() function
  */
-function getBookingLocaleForRegion(lang, region) {
-  if (lang === 'pt' && region === 'africa') {
-    return 'pt-BR'; // African Portuguese uses Brazilian locale
+function getBookingLocale(lang, currency, countryCode) {
+  // Handle Portuguese - use region-aware locale
+  if (lang === 'pt') {
+    if (currency === 'MZN' || countryCode === 'MZ') return 'pt-MZ'; // Mozambique
+    if (currency === 'BRL' || countryCode === 'BR') return 'pt-BR'; // Brazil
+    if (currency === 'EUR' || countryCode === 'PT') return 'pt-PT'; // Portugal
+    return 'pt-BR'; // Default to Brazilian for African Portuguese
   }
+  
+  // Handle Afrikaans - use currency to determine country
+  if (lang === 'af') {
+    if (currency === 'MZN' || countryCode === 'MZ') return 'pt-MZ'; // Use Portuguese locale for Mozambique
+    return 'af-ZA'; // South Africa
+  }
+  
+  // Handle English - distinguish US from UK
+  if (lang === 'en-us') return 'en-US';
+  if (lang === 'en') return 'en-GB';
+  
+  // Standard language mappings
   return LOCALE_BY_LANG[lang] || "en-GB";
 }
 
@@ -320,14 +337,15 @@ function applyTranslations(translations) {
 
 /**
  * Update booking button URL with detected locale and currency
+ * Now uses the smart currency-based locale mapping
  */
 function updateBookingUrl(lang) {
   const currency = pickInitialCurrency();
-  const region = pickInitialRegion();
-  const bookingLocale = getBookingLocaleForRegion(lang, region);
+  const countryCode = getCountryCode();
+  const bookingLocale = getBookingLocale(lang, currency, countryCode);
   const bookingUrl = buildBookingUrl(bookingLocale, currency);
   
-  console.log('Story page booking:', { lang, currency, region, bookingLocale, bookingUrl });
+  console.log('Story page booking:', { lang, currency, countryCode, bookingLocale, bookingUrl });
   
   // Update the Book button href
   const bookButton = document.querySelector('a[data-testid="button-book-now"]');

@@ -35,9 +35,12 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Framework & Build System:** React 18 with TypeScript, Vite, Wouter for routing.
 - **UI & Styling:** shadcn/ui components, Tailwind CSS (New York variant), Radix UI primitives, custom color palette (Ocean Blue, Warm Sand, Deep Teal, Sunset Orange), responsive mobile-first design.
 - **State Management:** TanStack Query for server state, React hooks for local state.
+- **Navigation:** Mobile and desktop menus include "Our Story" link to `/story.html` page (added to both desktop and mobile menus).
 - **Internationalization:**
     - React-based i18n with lazy-loaded translations for 16 languages (English, Portuguese variants, Dutch, French, Italian, German, Spanish, Swedish, Polish, Afrikaans, Zulu, Swahili, Japanese, Mandarin Chinese, Russian).
-    - Vanilla JavaScript i18n for static legal pages.
+    - Vanilla JavaScript i18n for static pages (story.html uses `story-i18n.js`, legal pages use `legal-i18n.js`).
+    - **Dynamic Booking URLs:** All static pages (story.html, safari.html, chalet.html, cottage.html, comfort.html) dynamically generate booking URLs based on localStorage preferences (language + currency).
+    - **Smart Locale Mapping:** Afrikaans + MZN currency → pt-MZ locale (preserves Mozambican currency for Afrikaans speakers), Afrikaans + ZAR → af-ZA locale (South Africa).
     - **Language Detection:** Multi-tier system prioritizing localStorage → browser language → IP-based country mapping (`CC_TO_LANGUAGE`) → English fallback. Ensures Japanese visitors see Japanese content even with English-configured browsers.
     - **Currency Detection:** Auto-assignment based on visitor's country legal tender via `CC_TO_CURRENCY` mapping (e.g., JP→JPY, CN→CNY, RU→RUB).
     - Full translation coverage for all legal pages and content across all 16 languages.
