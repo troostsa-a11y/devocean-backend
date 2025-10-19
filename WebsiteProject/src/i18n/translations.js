@@ -701,6 +701,55 @@ export const UI = {
     hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.", ctaPrimary: "Jetzt buchen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
     experiences: { headline: "Erlebnisse", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:" },
+    units: {
+      safari: {
+        title: "Safari-Zelt",
+        short: "Erleben Sie die perfekte Balance aus Komfort und Abenteuer. Auf einer geräumigen 3×6 m Plattform errichtet, verfügt dieses 12 m² große Canvas-Zelt über schützende Seiten- und Rückwände – die Ihnen Privatsphäre und Schutz bieten, während Sie der Natur nahe bleiben.",
+        details: [
+          "Plattform: 3×6 m • Zelt: 12 m²",
+          "Seiten- & Rückwand für Privatsphäre und Schutz",
+          "Moskitonetz an allen Fenstern & Türen"
+        ],
+      },
+      comfort: {
+        title: "Komfort-Zelt",
+        short: "Für Gäste, die die naturverbundene Atmosphäre lieben, aber extra Abgeschiedenheit und Bequemlichkeit wünschen, ist das Komfort-Safari-Zelt eine Aufwertung zu unserem klassischen Canvas-Erlebnis.",
+        details: [
+          "Zelt: 12 m² auf privater Plattform",
+          "Extra Privatsphäre: 2 Seitenwände + Rückwand",
+          "Moskitonetz an allen Fenstern & Türen"
+        ],
+      },
+      cottage: {
+        title: "Garten-Cottage",
+        short: "Eingebettet in unseren üppigen tropischen Garten verbindet das Garten-Cottage rustikale Eleganz mit heimischem Komfort. Ein rotes Roman-Dach und eine hohe weiße Decke mit dunklen Holzbalken schaffen einen geräumigen, luftigen Rückzugsort voller Charakter.",
+        details: [
+          "Rotes Roman-Dach",
+          "Hohe weiße Decke mit dunklen Balken",
+          "Terrakotta-Boden & warme Wandtöne",
+          "Private Terrasse mit Sitzgelegenheiten"
+        ],
+      },
+      chalet: {
+        title: "Gras-Dach-Chalet",
+        short: "Versteckt in einer abgeschiedenen Ecke des Grundstücks bietet das Gras-Dach-Chalet einen ruhigen, romantischen Rückzugsort. Beschattet von Palmen, Strelitzien, Akazien, Farnen und Indischen Mandelbäumen taucht es Sie in die Natur ein, ohne auf Komfort oder Privatsphäre zu verzichten.",
+        details: [
+          "Gras-Dach • Bluegum-Pfosten-Struktur",
+          "Herbst-Schiefer-Boden • natürliche Töne",
+          "Umgeben von Palmen, Farnen & Strelitzien",
+          "Private Terrasse mit Sitzgelegenheiten"
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Tauchen", desc: "Nahe Riffe reich an Meeresleben." },
+      dolphins: { title: "Mit Delfinen schwimmen", desc: "Ethische Begegnungen mit lokalen Delfinen." },
+      lighthouse: { title: "Leuchtturm-Wanderung", desc: "Bergauf zum alten Leuchtturm für Panoramablick." },
+      seafari: { title: "Meer-Safari", desc: "Walbeobachtung (Mai–Okt) & mehr." },
+      safari: { title: "Land-Safari", desc: "Busch-Abenteuer in der Nähe." },
+      fishing: { title: "Strand- & Bootfischen", desc: "Von Uferwürfen bis Offshore-Charters." },
+      surfing: { title: "Surfbretter & Unterricht", desc: "Fang die Wellen oder lern die Basics." },
+    },
     todo: {
       headline: "Was tun in Ponta do Ouro",
       note: "Tauchen/Schnorcheln/Seafaris/Angeln: Anbieter unten.",
