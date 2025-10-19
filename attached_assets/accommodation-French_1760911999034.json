@@ -1,0 +1,218 @@
+{
+  "fr-FR": {
+    "safari": {
+      "eyebrow": "Tente Safari",
+      "heroTitle": "Confort + Aventure en Toile",
+      "heroDescription": "Découvrez l'équilibre parfait entre confort et aventure. Installée sur une plateforme spacieuse de 3×6 m, cette tente en toile de 12 m² dispose de murs latéraux et arrière protecteurs – vous offrant intimité et abri tout en restant proche de la nature.",
+      "sections": [
+        {
+          "heading": "Espace & Agencement",
+          "description": "La tente présente un intérieur bien pensé et cosy avec des touches réfléchies pour une vie facile.",
+          "features": [
+            "Plateforme : 3×6 m • Tente : 12 m²",
+            "Murs latéraux & arrière pour intimité et abri",
+            "Filet anti-moustiques sur toutes les fenêtres & portes"
+          ]
+        },
+        {
+          "heading": "Sommeil & Confort",
+          "description": "Deux lits simples avec socles et lampes ombragées peuvent être combinés en un lit King-size pour les invités qui préfèrent une configuration double.",
+          "features": [
+            "Matelas de qualité & éclairage de chevet",
+            "Ventilateur puissant pour des nuits d'été fraîches",
+            "Prises électriques pour charger les appareils",
+            "Petite étagère pour vêtements & essentiels"
+          ]
+        },
+        {
+          "heading": "Terrasse & Jardin",
+          "description": "Accédez à votre terrasse privée, meublée avec des chaises en feuilles de palmier roulées. Profitez de la vue sur le jardin tropical luxuriant – magnifiquement illuminé la nuit pour une ambiance romantique.",
+          "features": [
+            "Sièges extérieurs privés",
+            "Éclairage nocturne pour des soirées sereines"
+          ]
+        },
+        {
+          "heading": "Salles de Bain",
+          "description": "Les invités ont accès à des salles de bain partagées, séparées pour dames et messieurs – maintenues propres et pratiques.",
+          "features": [
+            "2× douches eau chaude/froide par côté",
+            "2× toilettes par côté",
+            "Lavabos à eau froide"
+          ]
+        },
+        {
+          "heading": "Bon à Savoir",
+          "description": "Pendant les week-ends fériés et la haute saison (fin décembre – début janvier), le village peut être animé. Des bouchons d'oreilles gratuits sont disponibles à la réception pour assurer une nuit de sommeil reposante.",
+          "closingNote": "Un séjour spacieux, immergé dans la nature avec des conforts modernes – parfait pour les voyageurs qui veulent l'extérieur sans sacrifier la commodité."
+        }
+      ],
+      "trustItems": [
+        "Confort immergé dans la nature",
+        "Installations propres et bien entretenues",
+        "Soirées détendues et romantiques"
+      ],
+      "cta": {
+        "heading": "Prêt à Réserver Votre Tente Safari ?",
+        "description": "Sécurisez votre escapade immergée dans la nature au DEVOCEAN Lodge. La réservation directe signifie les meilleurs tarifs et un soutien complet de notre équipe."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Tente Confort",
+      "heroTitle": "Plus d'intimité. Plus de confort. Même charme sauvage.",
+      "heroDescription": "Pour les invités qui aiment l'ambiance immergée dans la nature mais veulent plus d'isolement et de commodité, la Tente Safari Confort est une amélioration par rapport à notre expérience classique en toile.",
+      "sections": [
+        {
+          "heading": "Espace & Intimité",
+          "description": "Une tente en toile généreuse de 12 m² installée sur sa propre plateforme, avec deux murs latéraux et un mur arrière pour une intimité accrue par rapport à la Tente Safari Standard.",
+          "features": [
+            "Tente : 12 m² sur plateforme privée",
+            "Intimité supplémentaire : 2 murs latéraux + mur arrière",
+            "Filet anti-moustiques sur toutes les fenêtres & portes"
+          ]
+        },
+        {
+          "heading": "Sommeil & Confort",
+          "description": "Deux lits simples avec socles et lampes ombragées peuvent être combinés en un lit King-size. L'éclairage est commodément contrôlé par des interrupteurs près de l'entrée.",
+          "features": [
+            "Configuration King ou Twin",
+            "Prises électriques pour charger les appareils",
+            "Ventilateur puissant pour des nuits d'été fraîches",
+            "Petite étagère pour vêtements & essentiels"
+          ]
+        },
+        {
+          "heading": "Terrasse & Jardin",
+          "description": "Profitez de votre terrasse en bois privée avec des chaises en feuilles de palmier roulées, surplombant le jardin tropical luxuriant – romantiquement illuminé la nuit.",
+          "features": [
+            "Sièges extérieurs privés",
+            "Vues sur le jardin, éclairage nocturne"
+          ]
+        },
+        {
+          "heading": "Salle de Bain Privée",
+          "description": "À l'arrière de la tente, sous un charmant toit en herbe tressée, votre salle de bain en suite comprend une douche, des toilettes et un lavabo – combinant commodité avec une touche unique en extérieur."
+        },
+        {
+          "heading": "Bon à Savoir",
+          "description": "Bien que le DEVOCEAN Lodge soit paisible, le village environnant peut être animé pendant les week-ends fériés et la haute saison (fin décembre – début janvier). Des bouchons d'oreilles gratuits sont disponibles à la réception.",
+          "closingNote": "Un refuge spacieux, bien aménagé et privé de style safari – parfait pour les invités qui veulent du confort, de l'isolement et la commodité d'une salle de bain en suite."
+        }
+      ],
+      "trustItems": [
+        "Confort immergé dans la nature",
+        "Commodité en suite",
+        "Soirées romantiques dans le jardin"
+      ],
+      "cta": {
+        "heading": "Prêt à Réserver Votre Tente Confort ?",
+        "description": "Améliorez votre escapade nature avec une intimité accrue et une commodité en suite. Réservez directement pour les meilleurs tarifs."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Cottage de Jardin",
+      "heroTitle": "Charme rustique • Sérénité tropicale • Confort moderne",
+      "heroDescription": "Nichée dans notre jardin tropical luxuriant, le Cottage de Jardin combine élégance rustique avec confort familial. Un toit en tuiles romaines rouges et un haut plafond blanc avec des poutres en bois sombre créent un refuge spacieux et aéré plein de caractère.",
+      "sections": [
+        {
+          "heading": "Atmosphère & Design",
+          "description": "Le sol en carreaux de terre cuite ajoute de la chaleur sous un haut plafond bordé de poutres, tandis que des murs peints en tons doux de champ de blé renforcent l'atmosphère calme et accueillante du cottage.",
+          "features": [
+            "Toit en tuiles romaines rouges",
+            "Haut plafond blanc avec poutres sombres",
+            "Sol en terre cuite & tons muraux chauds"
+          ]
+        },
+        {
+          "heading": "Terrasse & Jardin",
+          "description": "Sortez sur votre terrasse en bois privée, meublée avec des chaises de camping et une table d'appoint – un endroit paisible pour vous détendre et profiter de la verdure luxuriante et des sons doux du jardin.",
+          "features": [
+            "Terrasse privée avec sièges",
+            "Immergée dans la végétation tropicale"
+          ]
+        },
+        {
+          "heading": "Intérieur & Équipements",
+          "description": "Conçu pour la relaxation et la fonctionnalité, le Cottage de Jardin dispose d'un lit Queen-size encastré, d'un bureau de travail avec lampe ombragée, et d'une table à manger avec chaises.",
+          "features": [
+            "Lit Queen-size avec matelas de qualité",
+            "Bureau de travail & lampe ombragée",
+            "Table à manger & chaises",
+            "Rangement : étagères pour valises, portemanteau, étagères supplémentaires"
+          ]
+        },
+        {
+          "heading": "Confort & Éclairage",
+          "description": "Un climatiseur inverter vous garde confortable en toute saison, offrant à la fois refroidissement et chauffage. Un éclairage doux, y compris une lumière principale dimmable, vous permet de créer l'ambiance parfaite pour le travail, le repos ou la relaxation.",
+          "features": [
+            "Climatisation inverter (refroidissement & chauffage)",
+            "Éclairage dimmable & lueur intérieure chaude"
+          ]
+        },
+        {
+          "heading": "Salle de Bain Privée",
+          "description": "Juste derrière le cottage, un charmant rondavel au toit en herbe abrite votre salle de bain privée, complète avec douche, toilettes et lavabo – combinant commodité moderne avec un flair africain authentique."
+        }
+      ],
+      "trustItems": [
+        "Entouré de nature tropicale",
+        "Rondavel en suite privé",
+        "Climatisé & paisiblement éclairé"
+      ],
+      "cta": {
+        "heading": "Prêt à Réserver Votre Cottage de Jardin ?",
+        "description": "Découvrez l'élégance rustique dans notre refuge de jardin tropical. Réservez directement pour les meilleurs tarifs et un service personnalisé."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Chalet au Toit de Chaume",
+      "heroTitle": "Isolement romantique • Élégance rustique • Paix tropicale",
+      "heroDescription": "Caché dans un coin isolé de la propriété, le Chalet au Toit de Chaume offre un refuge tranquille et romantique. Ombragé par des palmiers, des strelitzias, des acacias, des fougères et des amandiers indiens, il vous immerge dans la nature sans sacrifier confort ou intimité.",
+      "sections": [
+        {
+          "heading": "Cadre & Atmosphère",
+          "description": "Le chalet au toit d'herbe, soutenu par de solides poteaux en bluegum, exhale une élégance rustique. Un sol en ardoise automnale se fond harmonieusement avec son environnement luxuriant, tandis que des murs peints en tons doux de champ de blé créent une ambiance intérieure chaude et sereine.",
+          "features": [
+            "Toit de chaume • structure en poteaux bluegum",
+            "Sol en ardoise automnale • tons naturels",
+            "Entouré de palmiers, fougères & strelitzias"
+          ]
+        },
+        {
+          "heading": "Terrasse & Jardin",
+          "description": "Accédez à votre terrasse privée, meublée avec des chaises en feuilles de palmier roulées et une table à manger avec chaises. Détendez-vous à l'ombre de la canopée du jardin et profitez des vues et sons de la nature.",
+          "features": [
+            "Terrasse privée avec sièges",
+            "Vues sur le jardin tropical"
+          ]
+        },
+        {
+          "heading": "Intérieur & Confort",
+          "description": "À l'intérieur, deux lits simples avec socles peuvent être combinés en un lit King-size pour une configuration double cosy. La climatisation assure un confort toute l'année, tandis qu'un éclairage doux complète le décor rustique.",
+          "features": [
+            "Configuration Twin ou King-size",
+            "Climatisation pour refroidissement & confort",
+            "Éclairage chaud & tons intérieurs doux"
+          ]
+        },
+        {
+          "heading": "Salle de Bain Privée",
+          "description": "Le chalet inclut une salle de bain privée avec douche, toilettes et lavabo, mélangeant commodité avec le charme rustique de son cadre naturel."
+        },
+        {
+          "heading": "Expérience",
+          "description": "Que vous cherchiez une escapade romantique ou une évasion paisible, ce petit chalet offre un mélange inoubliable d'isolement, d'élégance et de confort – un refuge idéal au sein du havre tropical de DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Immergé dans la nature",
+        "Ambiance romantique & tranquille",
+        "Confort & commodité privés"
+      ],
+      "cta": {
+        "heading": "Prêt à Réserver Votre Chalet au Toit de Chaume ?",
+        "description": "Échappez-vous dans l'isolement romantique de notre cachette tropicale. Réservez directement pour les meilleurs tarifs et un service personnalisé."
+      }
+    }
+  }
+}
