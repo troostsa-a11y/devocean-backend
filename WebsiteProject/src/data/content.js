@@ -2,10 +2,10 @@
 export const IMG = {
   logo: "/images/Logo2.png",
   units: {
-    safari: "/photos/units/safari-tent.jpg",
-    comfort: "/photos/units/comfort-tent.jpg",
-    cottage: "/photos/units/garden-cottage.jpg",
-    chalet: "/photos/units/thatched-chalet.jpg",
+    safari: "/photos/units/safari-1.webp",
+    comfort: "/photos/units/comfort-1.webp",
+    cottage: "/photos/units/cottage-1.webp",
+    chalet: "/photos/units/chalet-1.webp",
   },
   experiences: {
     diving: "/photos/experiences/diving.jpg",
