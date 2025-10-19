@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node start.js",
-    "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp -r translations dist/",
+    "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp -r translations dist/ && cp -r photos dist/",
     "preview": "vite preview",
     "deploy": "wrangler pages deploy dist"
   },
