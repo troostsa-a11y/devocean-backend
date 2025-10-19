@@ -1,0 +1,218 @@
+{
+  "nl-NL": {
+    "safari": {
+      "eyebrow": "Safaritent",
+      "heroTitle": "Comfort + Avontuur in Canvas",
+      "heroDescription": "Ervaar de perfecte balans tussen comfort en avontuur. Geplaatst op een ruime 3×6 m platform, heeft deze 12 m² canvas tent beschermende zij- en achterwanden – die u privacy en beschutting bieden terwijl u dicht bij de natuur blijft.",
+      "sections": [
+        {
+          "heading": "Ruimte & Indeling",
+          "description": "De tent beschikt over een goed geplande, gezellige binnenzijde met doordachte details voor gemakkelijk leven.",
+          "features": [
+            "Platform: 3×6 m • Tent: 12 m²",
+            "Zij- & achterwand voor privacy en beschutting",
+            "Muggennet op alle ramen & deuren"
+          ]
+        },
+        {
+          "heading": "Slapen & Comfort",
+          "description": "Twee eenpersoonsbedden met sokkels en afgeschermde lampen kunnen worden gecombineerd tot een kingsize bed voor gasten die een dubbele configuratie prefereren.",
+          "features": [
+            "Kwaliteitsmatrassen & nachtverlichting",
+            "Krachtige ventilator voor koele zomernachten",
+            "Stopcontacten voor het opladen van apparaten",
+            "Klein rek voor kleding & essentials"
+          ]
+        },
+        {
+          "heading": "Terras & Tuin",
+          "description": "Stap op uw privé terras, ingericht met stoelen van gerold palmblad. Geniet van het uitzicht op de weelderige tropische tuin – prachtig verlicht 's avonds voor een romantische ambiance.",
+          "features": [
+            "Privé buitenzitje",
+            "Nachtverlichting voor serene avonden"
+          ]
+        },
+        {
+          "heading": "Badkamers",
+          "description": "Gasten hebben toegang tot gedeelde badkamers, gescheiden voor dames en heren – schoon en handig gehouden.",
+          "features": [
+            "2× warme/koude water douches per zijde",
+            "2× toiletten per zijde",
+            "Koudwater wastafels"
+          ]
+        },
+        {
+          "heading": "Goed om te Weten",
+          "description": "Tijdens feestdagenweekends en het hoogseizoen (eind december – begin januari) kan het dorp levendig zijn. Gratis oordopjes zijn beschikbaar bij de receptie om een rustige nachtrust te garanderen.",
+          "closingNote": "Een ruime, natuur-omringde verblijf met moderne gemakken – perfect voor reizigers die de buitenlucht willen zonder comfort op te offeren."
+        }
+      ],
+      "trustItems": [
+        "Natuur-omringd comfort",
+        "Schone, goed onderhouden faciliteiten",
+        "Ontspannen, romantische avonden"
+      ],
+      "cta": {
+        "heading": "Klaar om Uw Safaritent te Boeken?",
+        "description": "Beveilig uw natuur-omringde ontsnapping bij DEVOCEAN Lodge. Direct boeken betekent de beste tarieven en volledige ondersteuning van ons team."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Comforttent",
+      "heroTitle": "Meer privacy. Meer comfort. Zelfde wilde charme.",
+      "heroDescription": "Voor gasten die de natuur-omringde vibe waarderen maar extra afzondering en gemak willen, is de Comfort Safaritent een upgrade op onze klassieke canvas ervaring.",
+      "sections": [
+        {
+          "heading": "Ruimte & Privacy",
+          "description": "Een royale 12 m² canvas tent op een eigen platform, met twee zijwanden en een achterwand voor verbeterde afzondering vergeleken met de Standaard Safaritent.",
+          "features": [
+            "Tent: 12 m² op privé platform",
+            "Extra privacy: 2 zijwanden + achterwand",
+            "Muggennet op alle ramen & deuren"
+          ]
+        },
+        {
+          "heading": "Slapen & Comfort",
+          "description": "Twee eenpersoonsbedden met sokkels en afgeschermde lampen kunnen worden gecombineerd tot een kingsize bed. Verlichting wordt handig bediend door schakelaars bij de ingang.",
+          "features": [
+            "King of Twin configuratie",
+            "Stopcontacten voor het opladen van apparaten",
+            "Sterke ventilator voor koele zomernachten",
+            "Klein rek voor kleding & essentials"
+          ]
+        },
+        {
+          "heading": "Terras & Tuin",
+          "description": "Geniet van uw privé houten terras met stoelen van gerold palmblad, uitkijkend op de weelderige tropische tuin – romantisch verlicht 's avonds.",
+          "features": [
+            "Privé buitenzitje",
+            "Tuinuitzichten, nachtverlichting"
+          ]
+        },
+        {
+          "heading": "Privé Badkamer",
+          "description": "Aan de achterkant van de tent, onder een charmant grasdak, bevindt zich uw en-suite badkamer met douche, toilet en wastafel – combineren van gemak met een unieke buitentoets."
+        },
+        {
+          "heading": "Goed om te Weten",
+          "description": "Hoewel DEVOCEAN Lodge vredig is, kan het omliggende dorp levendig zijn tijdens feestdagenweekends en het hoogseizoen (eind december – begin januari). Gratis oordopjes zijn beschikbaar bij de receptie.",
+          "closingNote": "Een ruime, goed ingerichte en privé safari-stijl toevluchtsoord – perfect voor gasten die comfort, afzondering en het gemak van een en-suite badkamer willen."
+        }
+      ],
+      "trustItems": [
+        "Natuur-omringd comfort",
+        "En-suite gemak",
+        "Romantische avonden in de tuin"
+      ],
+      "cta": {
+        "heading": "Klaar om Uw Comforttent te Boeken?",
+        "description": "Upgrade uw natuur ontsnapping met verbeterde privacy en en-suite gemak. Boek direct voor de beste tarieven."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Tuin Cottage",
+      "heroTitle": "Rustieke charme • Tropische sereniteit • Modern comfort",
+      "heroDescription": "Genesteld in onze weelderige tropische tuin, combineert de Tuin Cottage rustieke elegantie met huiselijk comfort. Een rood Romeins tegel dak en hoog wit plafond met donkere houten balken creëren een ruime, luchtige toevlucht vol karakter.",
+      "sections": [
+        {
+          "heading": "Sfeer & Ontwerp",
+          "description": "De terracotta-tegelvloer voegt warmte toe onder een hoog, met balken bekleed plafond, terwijl zachte tarweveld-gekleurde muren de kalme en uitnodigende sfeer van de cottage versterken.",
+          "features": [
+            "Rood Romeins tegel dak",
+            "Hoog wit plafond met donkere balken",
+            "Terracotta vloer & warme muurtinten"
+          ]
+        },
+        {
+          "heading": "Terras & Tuin",
+          "description": "Stap naar buiten op uw privé houten terras, ingericht met campingstoelen en een bijzettafel – een vredige plek om te ontspannen en de weelderige groenheid en zachte tuin geluiden in te nemen.",
+          "features": [
+            "Privé terras met zitplaatsen",
+            "Omringd door tropische vegetatie"
+          ]
+        },
+        {
+          "heading": "Interieur & Voorzieningen",
+          "description": "Ontworpen voor zowel ontspanning als functionaliteit, beschikt de Tuin Cottage over een queensize boxbed, een werkbureau met afgeschermde lamp, en een eettafel met stoelen.",
+          "features": [
+            "Queensize bed met kwaliteitsmatras",
+            "Werkbureau & afgeschermde lamp",
+            "Eettafel & stoelen",
+            "Opslag: kofferplanken, kledingrek, extra planken"
+          ]
+        },
+        {
+          "heading": "Comfort & Verlichting",
+          "description": "Een inverter airconditioner houdt u comfortabel in elk seizoen, met zowel koeling als verwarming. Zachte verlichting, inclusief een dimbaar hoofdlicht, laat u de perfecte ambiance instellen voor werk, rust of ontspanning.",
+          "features": [
+            "Inverter airconditioning (koelen & verwarmen)",
+            "Dimbaar licht & warme binnengloed"
+          ]
+        },
+        {
+          "heading": "Privé Badkamer",
+          "description": "Direct achter de cottage huisvest een charmant grasdak rondavel uw privé badkamer, compleet met douche, toilet en wastafel – combineren van moderne gemak met authentieke Afrikaanse flair."
+        }
+      ],
+      "trustItems": [
+        "Omringd door tropische natuur",
+        "Privé en-suite rondavel",
+        "Airconditioned & vredig verlicht"
+      ],
+      "cta": {
+        "heading": "Klaar om Uw Tuin Cottage te Boeken?",
+        "description": "Ervaar rustieke elegantie in onze tropische tuin toevlucht. Boek direct voor de beste tarieven en persoonlijke service."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Rieten Chalet",
+      "heroTitle": "Romantische afzondering • Rustieke elegantie • Tropische vrede",
+      "heroDescription": "Verborgen in een afgelegen hoek van het terrein, biedt het Rieten Chalet een rustige, romantische toevlucht. Beschaduwd door palmen, strelitzia, acacia, varens en Indiase amandelbomen, dompelt het u onder in de natuur zonder comfort of privacy op te offeren.",
+      "sections": [
+        {
+          "heading": "Locatie & Sfeer",
+          "description": "Het grasdak chalet, ondersteund door stevige bluegum palen, straalt rustieke elegantie uit. Een herfstleien vloer blendt harmonieus met de weelderige omgeving, terwijl zachte tarweveld-gekleurde muren een warme en serene binnensfeer creëren.",
+          "features": [
+            "Rieten dak • bluegum paal structuur",
+            "Herfstleien vloer • natuurlijke tinten",
+            "Omringd door palmen, varens & strelitzia"
+          ]
+        },
+        {
+          "heading": "Terras & Tuin",
+          "description": "Stap op uw privé terras, ingericht met stoelen van gerold palmblad en een eettafel met stoelen. Ontspan in de schaduw van het tuin dak en geniet van de bezienswaardigheden en geluiden van de natuur.",
+          "features": [
+            "Privé terras met zitplaatsen",
+            "Tropische tuinuitzichten"
+          ]
+        },
+        {
+          "heading": "Interieur & Comfort",
+          "description": "Binnenin kunnen twee eenpersoonsbedden met sokkels worden gecombineerd tot een kingsize bed voor een gezellige dubbele opstelling. Airconditioning zorgt voor jaarrond comfort, terwijl zachte verlichting de rustieke inrichting aanvult.",
+          "features": [
+            "Twin of Kingsize bed configuratie",
+            "Airconditioning voor koeling & comfort",
+            "Warme verlichting & zachte binnentinten"
+          ]
+        },
+        {
+          "heading": "Privé Badkamer",
+          "description": "Het chalet omvat een privé badkamer met douche, toilet en wastafel, combineren van gemak met de rustieke charme van de natuurlijke omgeving."
+        },
+        {
+          "heading": "Ervaring",
+          "description": "Of u nu een romantische getaway of een vredige ontsnapping zoekt, dit kleine chalet levert een onvergetelijke mix van afzondering, elegantie en comfort – een ideale toevlucht binnen DEVOCEAN's tropische haven."
+        }
+      ],
+      "trustItems": [
+        "Onderdompeld in de natuur",
+        "Romantische & rustige ambiance",
+        "Privé comfort & gemak"
+      ],
+      "cta": {
+        "heading": "Klaar om Uw Rieten Chalet te Boeken?",
+        "description": "Ontsnap naar romantische afzondering in onze tropische schuilplaats. Boek direct voor de beste tarieven en persoonlijke service."
+      }
+    }
+  }
+}
