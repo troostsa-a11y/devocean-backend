@@ -5,6 +5,12 @@
 /4339cd9fe9f2766ae7f04b21f3848dec.txt  /4339cd9fe9f2766ae7f04b21f3848dec.txt  200
 /robots.txt  /robots.txt  200
 
+# Serve translation files and assets (prevent SPA catch-all from intercepting)
+/translations/*  /translations/:splat  200
+/legal/*  /legal/:splat  200
+/photos/*  /photos/:splat  200
+/js/*  /js/:splat  200
+
 # Static HTML pages are served automatically by Cloudflare Pages
 # No explicit redirects needed - Cloudflare serves .html files at clean URLs
 
