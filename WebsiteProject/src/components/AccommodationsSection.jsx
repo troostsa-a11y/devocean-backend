@@ -8,7 +8,16 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
       <div className="flex items-end justify-between gap-6">
         <div>
           <h2 className="text-3xl md:text-4xl font-bold">{ui.stay.headline}</h2>
-          <p className="mt-2 text-slate-600 max-w-2xl">{ui.stay.blurb}</p>
+          <p className="mt-2 text-slate-600 max-w-2xl">
+            {ui.stay.blurb}{' '}
+            <a 
+              href="/story.html" 
+              className="text-[#9e4b13] hover:underline font-medium"
+              data-testid="link-our-story"
+            >
+              {ui.stay.ourStory} →
+            </a>
+          </p>
         </div>
         <a
           href={bookUrl}
