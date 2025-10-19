@@ -4,16 +4,6 @@ import { CRITICAL_NAV } from './critical.js';
 const SUPPORTED_LANGS = ["en", "en-us", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af-za", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
-// Default currency for each region (used when user manually changes region)
-// These are reasonable defaults that work for most visitors to that region
-const REGION_DEFAULT_CURRENCY = {
-  europe: "EUR",   // Eurozone is the largest economy in Europe
-  asia: "USD",     // USD is widely used for international transactions in Asia
-  americas: "USD", // USD is the dominant currency in the Americas
-  africa: "ZAR",   // ZAR is a major African currency (could also be USD)
-  oceania: "AUD"   // Australian Dollar for Oceania
-};
-
 // Helper to get URL parameters
 function getUrlParam(name) {
   if (typeof window === 'undefined') return null;
@@ -405,7 +395,7 @@ export function useLocale() {
     return pickInitialLang();
   });
 
-  // Currency - can be auto-assigned or manually updated when region changes
+  // Currency - always based on IP-detected country, never changes
   const [currency, setCurrencyState] = useState(() => {
     // Priority 1: URL parameter (for return from booking engine)
     const urlCurrency = getUrlParam('currency');
@@ -546,7 +536,7 @@ export function useLocale() {
   
   return {
     lang,
-    currency, // Auto-assigned based on IP, or updated when region changes
+    currency, // Always IP-detected legal tender, never changes
     region,
     setLang,
     setRegion,
