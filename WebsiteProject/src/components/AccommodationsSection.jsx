@@ -22,23 +22,12 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
           </div>
         </div>
         <a
-          href={bookUrl}
-          target="_blank"
-          rel="noreferrer"
+          href="/story.html"
           className="btn-cta hidden md:inline-block px-4 py-2 rounded-xl bg-[#9e4b13] text-white shadow hover:shadow-md"
-          aria-label={ui.contact.bookNow}
-          onClick={() => {
-            if (window.dataLayer) {
-              window.dataLayer.push({
-                event: 'reservation_complete',
-                button_location: 'accommodations_section',
-                language: lang,
-                currency: currency
-              });
-            }
-          }}
+          aria-label={ui.stay.ourStory}
+          data-testid="button-our-story"
         >
-          {ui.contact.bookNow}
+          {ui.stay.ourStory}
         </a>
       </div>
 
