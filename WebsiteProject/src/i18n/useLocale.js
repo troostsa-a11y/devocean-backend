@@ -414,8 +414,21 @@ export function useLocale() {
     const stored = localStorage.getItem("site.currency");
     if (stored && stored.length === 3) {
       // Backfill original currency for returning users who don't have it yet
+      // Use IP-detected currency as the true original, not localStorage value
+      // (localStorage might contain region-default currency like ZAR for Africa, not user's actual country currency)
       if (!localStorage.getItem("site.currency.original")) {
-        localStorage.setItem("site.currency.original", stored);
+        const ipCurrency = pickInitialCurrency(); // Get actual IP-based currency
+        localStorage.setItem("site.currency.original", ipCurrency);
+        
+        // If IP currency differs from stored currency, update to IP currency
+        // This fixes cases where users have region-default currency (e.g., ZAR) but should have country currency (e.g., MZN)
+        const cc = getCountryCode();
+        if (cc && ipCurrency !== stored) {
+          console.log(`Correcting currency from ${stored} to ${ipCurrency} based on IP location (${cc})`);
+          localStorage.setItem("site.currency", ipCurrency);
+          localStorage.setItem("site.currency.country", cc);
+          return ipCurrency;
+        }
       }
       return stored;
     }
