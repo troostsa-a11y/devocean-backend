@@ -217,7 +217,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
                 href={href}
                 data-testid={`link-mobile-${k}`}
                 className="block px-4 py-3 hover:bg-slate-50"
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleAnchorNav(e, href)}
               >
                 {ui.nav[k]}
               </a>
