@@ -4,6 +4,13 @@ import { CRITICAL_NAV } from './critical.js';
 const SUPPORTED_LANGS = ["en", "en-us", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
+// Helper to get URL parameters
+function getUrlParam(name) {
+  if (typeof window === 'undefined') return null;
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
+
 // Comprehensive country-to-currency mapping (legal tender for each country)
 export const CC_TO_CURRENCY = {
   // Europe
@@ -356,25 +363,45 @@ function getCriticalUI(lang) {
 
 export function useLocale() {
   const [lang, setLangState] = useState(() => {
+    // Priority 1: URL parameter (for return from booking engine)
+    const urlLang = getUrlParam('lang');
+    if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
+      localStorage.setItem("site.lang", urlLang);
+      localStorage.setItem("site.lang_source", "url");
+      return urlLang;
+    }
+    
+    // Priority 2: localStorage
     const stored = localStorage.getItem("site.lang");
-    return stored && SUPPORTED_LANGS.includes(stored) ? stored : pickInitialLang();
+    if (stored && SUPPORTED_LANGS.includes(stored)) {
+      return stored;
+    }
+    
+    // Priority 3: Auto-detect
+    return pickInitialLang();
   });
 
   // Currency is auto-assigned based on IP location - no manual selection allowed
   const [currency] = useState(() => {
-    const cc = getCountryCode();
-    const detected = pickInitialCurrency();
+    // Priority 1: URL parameter (for return from booking engine)
+    const urlCurrency = getUrlParam('currency');
+    if (urlCurrency && urlCurrency.length === 3) {
+      const upperCurrency = urlCurrency.toUpperCase();
+      localStorage.setItem("site.currency", upperCurrency);
+      return upperCurrency;
+    }
     
-    // Check localStorage for consistency, but verify it matches current location
+    // Priority 2: localStorage (with country consistency check)
+    const cc = getCountryCode();
     const stored = localStorage.getItem("site.currency");
     const storedCountry = localStorage.getItem("site.currency.country");
     
-    // If cached currency exists AND country code matches, use cached value
     if (stored && stored.length === 3 && storedCountry === cc) {
       return stored;
     }
     
-    // Otherwise, use freshly detected currency and update cache
+    // Priority 3: Auto-detect from IP
+    const detected = pickInitialCurrency();
     localStorage.setItem("site.currency", detected);
     localStorage.setItem("site.currency.country", cc || "unknown");
     return detected;
