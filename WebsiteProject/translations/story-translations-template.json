@@ -125,48 +125,6 @@
       "viewButton": "Ver Acomodações"
     }
   },
-  "pt-MZ": {
-    "nav": {
-      "logo": "DEVOCEAN Lodge",
-      "backToAccommodations": "Voltar para as Acomodações"
-    },
-    "hero": {
-      "eyebrow": "Desde 2015 • Ponta do Ouro",
-      "title": "Aventura e sustentabilidade unidas",
-      "titleSpan": "A sua estadia faz diferença.",
-      "subtitle": "Gerido por uma família, centrado na comunidade e crescendo com propósito. Reserve diretamente para apoiar projetos locais — e desfrute de uma estadia acolhedora e sem esforço à beira-mar.",
-      "proofPoints": {
-        "support": "Apoio local e amigável",
-        "booking": "Reserva segura e sem complicações",
-        "restaurant": "Restaurante no local • pequeno-almoço fresco da fazenda"
-      }
-    },
-    "cards": {
-      "today": {
-        "title": "Hoje no DEVOCEAN Lodge",
-        "content": "Oferecemos <strong>10 opções de acomodação únicas</strong>, combinando aventura com conforto. Com planos para adicionar <strong>mais 8 até 2026</strong>, estamos continuamente a melhorar a experiência dos hóspedes junto com a nossa equipa dedicada e a comunidade local."
-      },
-      "sotiba": {
-        "title": "Fazenda de Hóspedes Lago Sotiba",
-        "content": "Confiada por líderes locais, estamos a desenvolver uma fazenda de hóspedes no <strong>Lago Sotiba</strong> — um centro para práticas sustentáveis práticas em autossuficiência e partilha de conhecimento.",
-        "linkText": "Ver plano da fazenda no Google Earth →"
-      },
-      "farm": {
-        "title": "Da nossa terra ao seu prato",
-        "content": "Desfrute de pequenos-almoços frescos da fazenda e almoços e jantares deliciosos preparados pelo nosso chef interno no restaurante."
-      },
-      "impact": {
-        "title": "A sua estadia cria impacto",
-        "content": "Cada reserva apoia o desenvolvimento sustentável e capacita a comunidade local — trazendo à vida a nossa visão de um sul de Moçambique próspero e ecologicamente consciente."
-      }
-    },
-    "cta": {
-      "title": "Pronto para viver o DEVOCEAN?",
-      "subtitle": "Escolha a sua acomodação perfeita e comece a sua aventura sustentável na praia.",
-      "bookButton": "Reserve a Sua Estadia",
-      "viewButton": "Ver Acomodações"
-    }
-  },
   "nl-NL": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
