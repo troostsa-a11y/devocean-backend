@@ -3457,217 +3457,217 @@
   },
   "sw": {
     "safari": {
-      "eyebrow": "[TRANSLATE: Safari Tent]",
-      "heroTitle": "[TRANSLATE: Comfort + Adventure in Canvas]",
-      "heroDescription": "[TRANSLATE: Experience the perfect balance of comfort and adventure. Set on a spacious 3×6 m platform, this 12 m² canvas tent has protective side and back walls—giving you privacy and shelter while staying close to nature.]",
+      "eyebrow": "Hema ya Safari",
+      "heroTitle": "Starehe + Msisimko Katika Canvas",
+      "heroDescription": "Pata usawa kamili wa starehe na msisimko. Hema hii ya canvas yenye ukubwa wa mita 12 imewekwa kwenye jukwaa kubwa la 3×6 m, na ina kuta za kingo na nyuma za kinga—kukupa faraja na ulinzi huku ukiwa karibu na asili.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Space & Layout]",
-          "description": "[TRANSLATE: The tent features a well-planned, cozy interior with thoughtful touches for easy living.]",
+          "heading": "Nafula na Mpangilio",
+          "description": "Hema ina mambo yaliyopangwa vizuri, ya kufurahisha na maelekezo mazuri kwa maisha rahisi.",
           "features": [
-            "[TRANSLATE: Platform: 3×6 m • Tent: 12 m²]",
-            "[TRANSLATE: Side & back wall for privacy and shelter]",
-            "[TRANSLATE: Mosquito mesh on all windows & doors]"
+            "Jukwaa: 3×6 m • Hema: 12 m²",
+            "Kuta za pembeni na nyuma kwa faraja na ulinzi",
+            "Chandarua madukani kwenye madirisha na milango yote"
           ]
         },
         {
-          "heading": "[TRANSLATE: Sleep & Comfort]",
-          "description": "[TRANSLATE: Two single beds with pedestals and shaded lamps can be combined into a King-size bed for guests who prefer a double configuration.]",
+          "heading": "Kulala na Starehe",
+          "description": "Vitanda viwili vya mtu moja vilivyo na vibanda na taa zilizo na kivuli vinaweza kuunganishwa kuwa kitanda kikubwa cha aina ya 'King-size' kwa wageni wapendao mipangilio ya kitanda kimoja kikubwa.",
           "features": [
-            "[TRANSLATE: Quality mattresses & bedside lighting]",
-            "[TRANSLATE: Powerful fan for cool summer nights]",
-            "[TRANSLATE: Power points for device charging]",
-            "[TRANSLATE: Small shelving unit for clothes & essentials]"
+            "Machela bora na taa za pembeni ya kitanda",
+            "Shabiki lenye nguvu kwa usiku wa baridi wa kiangazi",
+            "Vituo vya umeme vya kuchaja vifaa",
+            "Rafu ndogo kwa nguo na vitu muhimu"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step onto your private terrace, furnished with rolled palm-leaf chairs. Enjoy views of the lush tropical garden—beautifully illuminated at night for a romantic ambiance.]",
+          "heading": "Rooftop na Bustani",
+          "description": "Panda kwenye rooftop yako ya faragha, iliyowekewa viti vilivyokunjwa vya majani ya mnazi. Furahia mandhari ya bustani ya kitropiki iliyojaa mimea—inayoangazwa usiku kwa kupendeza kwa furaha ya kimapenzi.",
           "features": [
-            "[TRANSLATE: Private outdoor seating]",
-            "[TRANSLATE: Night lighting for serene evenings]"
+            "Viti vya nje vya faragha",
+            "Taa za usiku kwa jioni zenye utulivu"
           ]
         },
         {
-          "heading": "[TRANSLATE: Bathrooms]",
-          "description": "[TRANSLATE: Guests have access to shared bathrooms, separate for ladies and gents—kept clean and convenient.]",
+          "heading": "Bafu",
+          "description": "Wageni wanaweza kutumia bafu za pamoja, zilizotenganishwa kwa wanawake na wanaume—zinawekwa kwa usafi na urahisi.",
           "features": [
-            "[TRANSLATE: 2× hot/cold water showers per side]",
-            "[TRANSLATE: 2× toilets per side]",
-            "[TRANSLATE: Cold-water sinks]"
+            "Mia 2 ya mikojo ya maji moto/baridi kwa kila upande",
+            "Mia 2 ya vyoo kwa kila upande",
+            "Mabomba ya maji baridi"
           ]
         },
         {
-          "heading": "[TRANSLATE: Good to Know]",
-          "description": "[TRANSLATE: During public-holiday weekends and peak season (late December–early January), the village can be lively. Complimentary earplugs are available at reception to ensure a restful night's sleep.]",
-          "closingNote": "[TRANSLATE: A spacious, nature-immersed stay with modern comforts—perfect for travelers who want the outdoors without sacrificing convenience.]"
+          "heading": "Muhimu Kujua",
+          "description": "Wakati wa wikendi za sikukuu za umma na msimu wa kilele (mwisho wa Desemba-mwanzo wa Januari), kijijini kunaweza kuwa na shughuli nyingi. Vibandiko masikioni bila malipo vinapatikana kwenye mapokezi kuhakikisha kulala vizuri usiku.",
+          "closingNote": "Makao yenye nafasi, yaliyojazwa asilini na starehe za kisasa—kamili kwa wasafiri wanaotaka kufurahia nje bila kukosa urahisi."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Nature-immersed comfort]",
-        "[TRANSLATE: Clean, well-maintained facilities]",
-        "[TRANSLATE: Relaxed, romantic evenings]"
+        "Starehe iliyojazwa asilini",
+        "Vifaa visafi, vilivyotunzwa vizuri",
+        "Jioni zenye utulivu, za kimapenzi"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Safari Tent?]",
-        "description": "[TRANSLATE: Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.]"
+        "heading": "Uko Tayari Kukodoa Hema Yako ya Safari?",
+        "description": "Hakikisha safari yako ya kujazwa asilini kwenye DEVOCEAN Lodge. Kukodoa moja kwa moja kunamaana bei bora na msaada kamili kutoka kwa timu yetu."
       }
     },
     "comfort": {
-      "eyebrow": "[TRANSLATE: Comfort Tent]",
-      "heroTitle": "[TRANSLATE: More privacy. More comfort. Same wild charm.]",
-      "heroDescription": "[TRANSLATE: For guests who love the nature-immersed vibe but want extra seclusion and convenience, the Comfort Safari Tent is an upgrade on our classic canvas experience.]",
+      "eyebrow": "Hema ya Starehe",
+      "heroTitle": "Faraja zaidi. Starehe zaidi. Urembo mmoja wa mwituni.",
+      "heroDescription": "Kwa wageni wanaopenda mazingira ya kujazwa asilini lakini wakitaka faraja na urahisi wa ziada, Hema ya Starehe ya Safari ni boresho kwa uzoefu wetu wa kitamaduni wa canvas.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Space & Privacy]",
-          "description": "[TRANSLATE: A generous 12 m² canvas tent set on its own platform, with two side walls and a back wall for enhanced seclusion compared to the Standard Safari Tent.]",
+          "heading": "Nafula na Faraja",
+          "description": "Hema kubwa ya canvas yenye ukubwa wa mita 12 imewekwa kwenye jukwaa lake, na kuta mbili za pembeni na ukuta wa nyuma kwa faraja iliyoongezeka ikilinganishwa na Hema ya Kawaida ya Safari.",
           "features": [
-            "[TRANSLATE: Tent: 12 m² on private platform]",
-            "[TRANSLATE: Extra privacy: 2 side walls + back wall]",
-            "[TRANSLATE: Mosquito mesh on all windows & doors]"
+            "Hema: 12 m² kwenye jukwaa la faragha",
+            "Faraja ya ziada: kuta 2 za pembeni + ukuta wa nyuma",
+            "Chandarua madukani kwenye madirisha na milango yote"
           ]
         },
         {
-          "heading": "[TRANSLATE: Sleep & Comfort]",
-          "description": "[TRANSLATE: Two single beds with pedestals and shaded lamps can be combined into a King-size bed. Lighting is conveniently controlled by switches near the entrance.]",
+          "heading": "Kulala na Starehe",
+          "description": "Vitanda viwili vya mtu moja vilivyo na vibanda na taa zilizo na kivuli vinaweza kuunganishwa kuwa kitanda kikubwa cha aina ya 'King-size'. Taa zinaweza kudhibitiwa kwa urahisi kwa vibonyezo vilivyo karibu na mlango.",
           "features": [
-            "[TRANSLATE: King or Twin configuration]",
-            "[TRANSLATE: Power points for device charging]",
-            "[TRANSLATE: Strong fan for cool summer nights]",
-            "[TRANSLATE: Small shelving unit for clothing & essentials]"
+            "Mpangilio wa Kitanda Kikubwa au Vitanda Viwili",
+            "Vituo vya umeme vya kuchaja vifaa",
+            "Shabiki lenye nguvu kwa usiku wa baridi wa kiangazi",
+            "Rafu ndogo kwa nguo na vitu muhimu"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Enjoy your private wooden terrace with rolled palm-leaf chairs, overlooking the lush tropical garden—romantically illuminated at night.]",
+          "heading": "Rooftop na Bustani",
+          "description": "Furahia rooftop yako ya mbao ya faragha iliyowekewa viti vilivyokunjwa vya majani ya mnazi, ukiwa na mtazamo wa bustani ya kitropiki iliyojaa mimea—inayoangazwa kwa kupendeza usiku.",
           "features": [
-            "[TRANSLATE: Private outdoor seating]",
-            "[TRANSLATE: Garden views, night lighting]"
+            "Viti vya nje vya faragha",
+            "Mtazamo wa bustani, taa za usiku"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: At the back of the tent, under a charming grass-thatched roof, your en-suite bathroom includes a shower, toilet, and sink—combining convenience with a unique outdoor touch.]"
+          "heading": "Bafu ya Faragha",
+          "description": "Nyuma ya hema, chini ya paa la kuvutia la nyasi, bafu yako ya en-suite inajumuisha mkojo, choo, na beseni—inachanganya urahisi na mambo ya kipekee ya nje."
         },
         {
-          "heading": "[TRANSLATE: Good to Know]",
-          "description": "[TRANSLATE: While DEVOCEAN Lodge is peaceful, the surrounding village can be lively during public-holiday weekends and peak season (late December–early January). Complimentary earplugs are available at reception.]",
-          "closingNote": "[TRANSLATE: A spacious, well-appointed, and private safari-style getaway—perfect for guests who want comfort, seclusion, and the convenience of an en-suite bathroom.]"
+          "heading": "Muhimu Kujua",
+          "description": "Ingawa DEVOCEAN Lodge ina utulivu, kijiji kinachozunguka kinaweza kuwa na shughuli nyingi wakati wa wikendi za sikukuu za umma na msimu wa kilele (mwisho wa Desemba-mwanzo wa Januari). Vibandiko masikioni bila malipo vinapatikana kwenye mapokezi.",
+          "closingNote": "Makao yenye nafasi, yaliyopangwa vizuri, na ya faragha ya mtindo wa safari—kamili kwa wageni wanaotaka starehe, faraja, na urahisi wa bafu ya en-suite."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Nature-immersed comfort]",
-        "[TRANSLATE: En-suite convenience]",
-        "[TRANSLATE: Romantic evenings in the garden]"
+        "Starehe iliyojazwa asilini",
+        "Urahisi wa bafu ya en-suite",
+        "Jioni za kimapenzi bustanini"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Comfort Tent?]",
-        "description": "[TRANSLATE: Upgrade your nature escape with enhanced privacy and en-suite convenience. Book direct for the best rates.]"
+        "heading": "Uko Tayari Kukodoa Hema Yako ya Starehe?",
+        "description": "Boresha safari yako ya asilini kwa faraja iliyoongezeka na urahisi wa bafu ya en-suite. Kodi moja kwa moja kwa bei bora."
       }
     },
     "cottage": {
-      "eyebrow": "[TRANSLATE: Garden Cottage]",
-      "heroTitle": "[TRANSLATE: Rustic charm • Tropical serenity • Modern comfort]",
-      "heroDescription": "[TRANSLATE: Nestled in our lush tropical garden, the Garden Cottage combines rustic elegance with homely comfort. A red Roman-tiled roof and high white ceiling with dark wooden beams create a spacious, airy retreat filled with character.]",
+      "eyebrow": "Cottage ya Bustani",
+      "heroTitle": "Urembo wa kienyeji • Utulivu wa kitropiki • Starehe ya kisasa",
+      "heroDescription": "Iliyojikita kwenye bustani yetu ya kitropiki iliyojaa mimea, Cottage ya Bustani inachanganya urembo wa kienyeji na starehe ya kaya. Paa nyekundu la matairi ya Kirumi na dari nyeupe ya juu yenye misumari ya mweusi huunda makao yenye nafasi, yenye hewa na tabia.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Atmosphere & Design]",
-          "description": "[TRANSLATE: The terracotta-tiled floor adds warmth beneath a high, beam-lined ceiling, while soft wheatfield-painted walls enhance the cottage's calm and inviting atmosphere.]",
+          "heading": "Mazingira na Muundo",
+          "description": "Sakafu ya matairi ya terracotta huongeza joto chini ya dari ya juu yenye mstari wa misumari, huku kuta zilizopakwa rangi ya shamba la ngano zikiboresha mazingira ya cottage yenye utulivu na kuvutia.",
           "features": [
-            "[TRANSLATE: Red Roman-tiled roof]",
-            "[TRANSLATE: High white ceiling with dark beams]",
-            "[TRANSLATE: Terracotta flooring & warm wall tones]"
+            "Paa nyekundu la matairi ya Kirumi",
+            "Dari nyeupe ya juu yenye misumari myeusi",
+            "Sakafu ya terracotta na toni za joto za ukuta"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step outside onto your private wooden terrace, furnished with camping chairs and a side table — a peaceful spot to unwind and take in the lush greenery and gentle garden sounds.]",
+          "heading": "Rooftop na Bustani",
+          "description": "Panda nje kwenye rooftop yako ya faragha ya mbao, iliyowekewa viti vya kambi na meza ya upande — mahali pazuri pa kutulia na kufurahia mimea mizuri na sauti za bustani.",
           "features": [
-            "[TRANSLATE: Private terrace with seating]",
-            "[TRANSLATE: Immersed in tropical vegetation]"
+            "Rooftop ya faragha na viti",
+            "Imejazwa katika mimea ya kitropiki"
           ]
         },
         {
-          "heading": "[TRANSLATE: Interior & Amenities]",
-          "description": "[TRANSLATE: Designed for both relaxation and functionality, the Garden Cottage features a Queen-size boxed bed, a working desk with shaded lamp, and a dinner table with chairs.]",
+          "heading": "Mambo ya Ndani na Vifaa",
+          "description": "Iliyobuniwa kwa mapumziko na utendaji, Cottage ya Bustani ina kitanda kikubwa cha aina ya 'Queen-size' kilichowekwa kwenye sanduku, dawati la kazi lenye taa iliyovikwa kivuli, na meza ya chakula cha jioni na viti.",
           "features": [
-            "[TRANSLATE: Queen-size bed with quality mattress]",
-            "[TRANSLATE: Work desk & shaded lamp]",
-            "[TRANSLATE: Dinner table & chairs]",
-            "[TRANSLATE: Storage: suitcase shelves, clothes rack, extra shelving]"
+            "Kitanda kikubwa cha aina ya 'Queen-size' na cheleo bora",
+            "Dawati la kazi & taa iliyovikwa kivuli",
+            "Meza ya chakula cha jioni & viti",
+            "Hifadhi: rafu za mizigo, kiota cha nguo, rafu ya ziada"
           ]
         },
         {
-          "heading": "[TRANSLATE: Comfort & Lighting]",
-          "description": "[TRANSLATE: An inverter air conditioner keeps you comfortable in every season, offering both cooling and heating. Soft lighting, including a dimmable main light, lets you set the perfect ambiance for work, rest, or relaxation.]",
+          "heading": "Starehe na Mwanga",
+          "description": "Kiyoyozi cha inverter kinakupa starehe katika kila msimu, kikitoa baridi na joto. Mwanga mchane, ukiwemo taa kuu inayoweza kudhoofishwa, inakuwezesha kuweka mazingira kamili ya kazi, kupumzika, au kutuliza.",
           "features": [
-            "[TRANSLATE: Inverter air conditioning (cool & heat)]",
-            "[TRANSLATE: Dimmable lighting & warm interior glow]"
+            "Kiyoyozi cha inverter (baridi & joto)",
+            "Mwanga unaoweza kudhoofishwa & mwanga wa ndani wa joto"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: Just behind the cottage, a charming grass-thatched roundavel houses your private bathroom, complete with a shower, toilet, and sink—combining modern convenience with authentic African flair.]"
+          "heading": "Bafu ya Faragha",
+          "description": "Nyuma ya cottage tu, paa la kuvutia la nyasi la roundavel lina bafu yako ya faragha, inayojumuisha mkojo, choo, na beseni—inachanganya urahisi wa kisasa na mwonekano wa Kiafrika."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Surrounded by tropical nature]",
-        "[TRANSLATE: Private en-suite roundavel]",
-        "[TRANSLATE: Air-conditioned & peacefully lit]"
+        "Imezungukwa na asili ya kitropiki",
+        "Roundavel ya en-suite ya faragha",
+        "Ime na kiyoyozi na mwanga wenye utulivu"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Garden Cottage?]",
-        "description": "[TRANSLATE: Experience rustic elegance in our tropical garden retreat. Book direct for the best rates and personalized service.]"
+        "heading": "Uko Tayari Kukodoa Cottage Yako ya Bustani?",
+        "description": "Pata urembo wa kienyeji kwenye makao yetu ya bustani ya kitropiki. Kodi moja kwa moja kwa bei bora na huduma ya kibinafsi."
       }
     },
     "chalet": {
-      "eyebrow": "[TRANSLATE: Thatched Chalet]",
-      "heroTitle": "[TRANSLATE: Romantic seclusion • Rustic elegance • Tropical peace]",
-      "heroDescription": "[TRANSLATE: Hidden in a secluded corner of the property, the Thatched Chalet offers a tranquil, romantic retreat. Shaded by palms, strelitzia, acacia, ferns, and Indian almond trees, it immerses you in nature without sacrificing comfort or privacy.]",
+      "eyebrow": "Chalet Yaenyekunyasi",
+      "heroTitle": "Faraja ya kimapenzi • Urembo wa kienyeji • Amani ya kitropiki",
+      "heroDescription": "Ilichomwa kwenye kona ya mali, Chalet Yaenyekunyasi inatoa mapumziko ya utulivu, ya kimapenzi. Ikiwa kwenye kivuli cha miti ya mnazi, strelitzia, acacia, fern, na miti ya Indian almond, inakuzamisha katika asili bila kukosa starehe wala faraja.",
       "sections": [
         {
-          "heading": "[TRANSLATE: Setting & Atmosphere]",
-          "description": "[TRANSLATE: The grass-roofed chalet, supported by sturdy bluegum poles, exudes rustic elegance. An autumn-slate floor blends harmoniously with its lush surroundings, while soft wheatfield-painted walls create a warm and serene indoor ambiance.]",
+          "heading": "Mazingira na Mazingira",
+          "description": "Chalet yenye paa la nyasi, iliyosaidiwa na miti imara ya bluegum, inatoa urembo wa kienyeji. Sakafu ya autumn-slate inachanganyika kwa usawa na mazingira yake mazuri, huku kuta zilizopakwa rangi ya shamba la ngano zikiumba mazingira ya joto na utulivu ya ndani.",
           "features": [
-            "[TRANSLATE: Thatched roof • bluegum pole structure]",
-            "[TRANSLATE: Autumn-slate floor • natural tones]",
-            "[TRANSLATE: Surrounded by palms, ferns & strelitzia]"
+            "Paa la nyasi • muundo wa mti wa bluegum",
+            "Sakafu ya autumn-slate • toni za asili",
+            "Imezungukwa na miti ya mnazi, fern & strelitzia"
           ]
         },
         {
-          "heading": "[TRANSLATE: Terrace & Garden]",
-          "description": "[TRANSLATE: Step onto your private terrace, furnished with rolled palm-leaf chairs and a dinner table with chairs. Relax in the shade of the garden canopy and enjoy the sights and sounds of nature.]",
+          "heading": "Rooftop na Bustani",
+          "description": "Panda kwenye rooftop yako ya faragha, iliyowekewa viti vilivyokunjwa vya majani ya mnazi na meza ya chakula cha jioni na viti. Tulia kwenye kivuli cha paa la bustani na ufurahie maonyesho na sauti za asili.",
           "features": [
-            "[TRANSLATE: Private terrace with seating]",
-            "[TRANSLATE: Tropical garden views]"
+            "Rooftop ya faragha na viti",
+            "Mtazamo wa bustani ya kitropiki"
           ]
         },
         {
-          "heading": "[TRANSLATE: Interior & Comfort]",
-          "description": "[TRANSLATE: Inside, two single beds with pedestals can be combined into a King-size bed for a cozy double setup. Air conditioning ensures year-round comfort, while soft lighting complements the rustic décor.]",
+          "heading": "Mambo ya Ndani na Starehe",
+          "description": "Ndani, vitanda viwili vya mtu moja vilivyo na vibanda vinaweza kuunganishwa kuwa kitanda kikubwa cha aina ya 'King-size' kwa mpangilio mzuri wa kitanda kimoja kikubwa. Kiyoyozi kinahakikisha starehe ya mwaka mzima, huku mwanga mchane ukikamilisha mapambo ya kienyeji.",
           "features": [
-            "[TRANSLATE: Twin or King-size bed configuration]",
-            "[TRANSLATE: Air conditioning for cooling & comfort]",
-            "[TRANSLATE: Warm lighting & soft interior tones]"
+            "Mpangilio wa Kitanda Cha Watu Wawili au King-size",
+            "Kiyoyozi kwa baridi na starehe",
+            "Mwanga wa joto na toni laini za ndani"
           ]
         },
         {
-          "heading": "[TRANSLATE: Private Bathroom]",
-          "description": "[TRANSLATE: The chalet includes a private bathroom with a shower, toilet, and sink, blending convenience with the rustic charm of its natural setting.]"
+          "heading": "Bafu ya Faragha",
+          "description": "Chalet inajumuisha bafu ya faragha na mkojo, choo, na beseni, ikichanganya urahisi na urembo wa kienyeji wa mazingira yake ya asili."
         },
         {
-          "heading": "[TRANSLATE: Experience]",
-          "description": "[TRANSLATE: Whether you're seeking a romantic getaway or a peaceful escape, this tiny chalet delivers an unforgettable blend of seclusion, elegance, and comfort—an ideal retreat within DEVOCEAN's tropical haven.]"
+          "heading": "Uzoefu",
+          "description": "Iwe unatafuta safari ya kimapenzi au wokovu wenye utulivu, chalet hii ndogo inaleta mchanganyiko usahaulika wa faraja, urembo, na starehe—kituo bora ndani ya paradiso ya kitropiki ya DEVOCEAN."
         }
       ],
       "trustItems": [
-        "[TRANSLATE: Immersed in nature]",
-        "[TRANSLATE: Romantic & tranquil ambiance]",
-        "[TRANSLATE: Private comfort & convenience]"
+        "Imejazwa asilini",
+        "Mazingira ya kimapenzi na ya utulivu",
+        "Starehe ya faragha na urahisi"
       ],
       "cta": {
-        "heading": "[TRANSLATE: Ready to Book Your Thatched Chalet?]",
-        "description": "[TRANSLATE: Escape to romantic seclusion in our tropical hideaway. Book direct for the best rates and personalized service.]"
+        "heading": "Uko Tayari Kukodoa Chalet Yako Yaenyekunyasi?",
+        "description": "Kimbia kwenye faraja ya kimapenzi kwenye kituo chetu cha kujificha cha kitropiki. Kodi moja kwa moja kwa bei bora na huduma ya kibinafsi."
       }
     }
   }

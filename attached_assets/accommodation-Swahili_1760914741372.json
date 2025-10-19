@@ -1,0 +1,218 @@
+{
+  "sw": {
+    "safari": {
+      "eyebrow": "Hema ya Safari",
+      "heroTitle": "Starehe + Msisimko Katika Canvas",
+      "heroDescription": "Pata usawa kamili wa starehe na msisimko. Hema hii ya canvas yenye ukubwa wa mita 12 imewekwa kwenye jukwaa kubwa la 3×6 m, na ina kuta za kingo na nyuma za kinga—kukupa faraja na ulinzi huku ukiwa karibu na asili.",
+      "sections": [
+        {
+          "heading": "Nafula na Mpangilio",
+          "description": "Hema ina mambo yaliyopangwa vizuri, ya kufurahisha na maelekezo mazuri kwa maisha rahisi.",
+          "features": [
+            "Jukwaa: 3×6 m • Hema: 12 m²",
+            "Kuta za pembeni na nyuma kwa faraja na ulinzi",
+            "Chandarua madukani kwenye madirisha na milango yote"
+          ]
+        },
+        {
+          "heading": "Kulala na Starehe",
+          "description": "Vitanda viwili vya mtu moja vilivyo na vibanda na taa zilizo na kivuli vinaweza kuunganishwa kuwa kitanda kikubwa cha aina ya 'King-size' kwa wageni wapendao mipangilio ya kitanda kimoja kikubwa.",
+          "features": [
+            "Machela bora na taa za pembeni ya kitanda",
+            "Shabiki lenye nguvu kwa usiku wa baridi wa kiangazi",
+            "Vituo vya umeme vya kuchaja vifaa",
+            "Rafu ndogo kwa nguo na vitu muhimu"
+          ]
+        },
+        {
+          "heading": "Rooftop na Bustani",
+          "description": "Panda kwenye rooftop yako ya faragha, iliyowekewa viti vilivyokunjwa vya majani ya mnazi. Furahia mandhari ya bustani ya kitropiki iliyojaa mimea—inayoangazwa usiku kwa kupendeza kwa furaha ya kimapenzi.",
+          "features": [
+            "Viti vya nje vya faragha",
+            "Taa za usiku kwa jioni zenye utulivu"
+          ]
+        },
+        {
+          "heading": "Bafu",
+          "description": "Wageni wanaweza kutumia bafu za pamoja, zilizotenganishwa kwa wanawake na wanaume—zinawekwa kwa usafi na urahisi.",
+          "features": [
+            "Mia 2 ya mikojo ya maji moto/baridi kwa kila upande",
+            "Mia 2 ya vyoo kwa kila upande",
+            "Mabomba ya maji baridi"
+          ]
+        },
+        {
+          "heading": "Muhimu Kujua",
+          "description": "Wakati wa wikendi za sikukuu za umma na msimu wa kilele (mwisho wa Desemba-mwanzo wa Januari), kijijini kunaweza kuwa na shughuli nyingi. Vibandiko masikioni bila malipo vinapatikana kwenye mapokezi kuhakikisha kulala vizuri usiku.",
+          "closingNote": "Makao yenye nafasi, yaliyojazwa asilini na starehe za kisasa—kamili kwa wasafiri wanaotaka kufurahia nje bila kukosa urahisi."
+        }
+      ],
+      "trustItems": [
+        "Starehe iliyojazwa asilini",
+        "Vifaa visafi, vilivyotunzwa vizuri",
+        "Jioni zenye utulivu, za kimapenzi"
+      ],
+      "cta": {
+        "heading": "Uko Tayari Kukodoa Hema Yako ya Safari?",
+        "description": "Hakikisha safari yako ya kujazwa asilini kwenye DEVOCEAN Lodge. Kukodoa moja kwa moja kunamaana bei bora na msaada kamili kutoka kwa timu yetu."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Hema ya Starehe",
+      "heroTitle": "Faraja zaidi. Starehe zaidi. Urembo mmoja wa mwituni.",
+      "heroDescription": "Kwa wageni wanaopenda mazingira ya kujazwa asilini lakini wakitaka faraja na urahisi wa ziada, Hema ya Starehe ya Safari ni boresho kwa uzoefu wetu wa kitamaduni wa canvas.",
+      "sections": [
+        {
+          "heading": "Nafula na Faraja",
+          "description": "Hema kubwa ya canvas yenye ukubwa wa mita 12 imewekwa kwenye jukwaa lake, na kuta mbili za pembeni na ukuta wa nyuma kwa faraja iliyoongezeka ikilinganishwa na Hema ya Kawaida ya Safari.",
+          "features": [
+            "Hema: 12 m² kwenye jukwaa la faragha",
+            "Faraja ya ziada: kuta 2 za pembeni + ukuta wa nyuma",
+            "Chandarua madukani kwenye madirisha na milango yote"
+          ]
+        },
+        {
+          "heading": "Kulala na Starehe",
+          "description": "Vitanda viwili vya mtu moja vilivyo na vibanda na taa zilizo na kivuli vinaweza kuunganishwa kuwa kitanda kikubwa cha aina ya 'King-size'. Taa zinaweza kudhibitiwa kwa urahisi kwa vibonyezo vilivyo karibu na mlango.",
+          "features": [
+            "Mpangilio wa Kitanda Kikubwa au Vitanda Viwili",
+            "Vituo vya umeme vya kuchaja vifaa",
+            "Shabiki lenye nguvu kwa usiku wa baridi wa kiangazi",
+            "Rafu ndogo kwa nguo na vitu muhimu"
+          ]
+        },
+        {
+          "heading": "Rooftop na Bustani",
+          "description": "Furahia rooftop yako ya mbao ya faragha iliyowekewa viti vilivyokunjwa vya majani ya mnazi, ukiwa na mtazamo wa bustani ya kitropiki iliyojaa mimea—inayoangazwa kwa kupendeza usiku.",
+          "features": [
+            "Viti vya nje vya faragha",
+            "Mtazamo wa bustani, taa za usiku"
+          ]
+        },
+        {
+          "heading": "Bafu ya Faragha",
+          "description": "Nyuma ya hema, chini ya paa la kuvutia la nyasi, bafu yako ya en-suite inajumuisha mkojo, choo, na beseni—inachanganya urahisi na mambo ya kipekee ya nje."
+        },
+        {
+          "heading": "Muhimu Kujua",
+          "description": "Ingawa DEVOCEAN Lodge ina utulivu, kijiji kinachozunguka kinaweza kuwa na shughuli nyingi wakati wa wikendi za sikukuu za umma na msimu wa kilele (mwisho wa Desemba-mwanzo wa Januari). Vibandiko masikioni bila malipo vinapatikana kwenye mapokezi.",
+          "closingNote": "Makao yenye nafasi, yaliyopangwa vizuri, na ya faragha ya mtindo wa safari—kamili kwa wageni wanaotaka starehe, faraja, na urahisi wa bafu ya en-suite."
+        }
+      ],
+      "trustItems": [
+        "Starehe iliyojazwa asilini",
+        "Urahisi wa bafu ya en-suite",
+        "Jioni za kimapenzi bustanini"
+      ],
+      "cta": {
+        "heading": "Uko Tayari Kukodoa Hema Yako ya Starehe?",
+        "description": "Boresha safari yako ya asilini kwa faraja iliyoongezeka na urahisi wa bafu ya en-suite. Kodi moja kwa moja kwa bei bora."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Cottage ya Bustani",
+      "heroTitle": "Urembo wa kienyeji • Utulivu wa kitropiki • Starehe ya kisasa",
+      "heroDescription": "Iliyojikita kwenye bustani yetu ya kitropiki iliyojaa mimea, Cottage ya Bustani inachanganya urembo wa kienyeji na starehe ya kaya. Paa nyekundu la matairi ya Kirumi na dari nyeupe ya juu yenye misumari ya mweusi huunda makao yenye nafasi, yenye hewa na tabia.",
+      "sections": [
+        {
+          "heading": "Mazingira na Muundo",
+          "description": "Sakafu ya matairi ya terracotta huongeza joto chini ya dari ya juu yenye mstari wa misumari, huku kuta zilizopakwa rangi ya shamba la ngano zikiboresha mazingira ya cottage yenye utulivu na kuvutia.",
+          "features": [
+            "Paa nyekundu la matairi ya Kirumi",
+            "Dari nyeupe ya juu yenye misumari myeusi",
+            "Sakafu ya terracotta na toni za joto za ukuta"
+          ]
+        },
+        {
+          "heading": "Rooftop na Bustani",
+          "description": "Panda nje kwenye rooftop yako ya faragha ya mbao, iliyowekewa viti vya kambi na meza ya upande — mahali pazuri pa kutulia na kufurahia mimea mizuri na sauti za bustani.",
+          "features": [
+            "Rooftop ya faragha na viti",
+            "Imejazwa katika mimea ya kitropiki"
+          ]
+        },
+        {
+          "heading": "Mambo ya Ndani na Vifaa",
+          "description": "Iliyobuniwa kwa mapumziko na utendaji, Cottage ya Bustani ina kitanda kikubwa cha aina ya 'Queen-size' kilichowekwa kwenye sanduku, dawati la kazi lenye taa iliyovikwa kivuli, na meza ya chakula cha jioni na viti.",
+          "features": [
+            "Kitanda kikubwa cha aina ya 'Queen-size' na cheleo bora",
+            "Dawati la kazi & taa iliyovikwa kivuli",
+            "Meza ya chakula cha jioni & viti",
+            "Hifadhi: rafu za mizigo, kiota cha nguo, rafu ya ziada"
+          ]
+        },
+        {
+          "heading": "Starehe na Mwanga",
+          "description": "Kiyoyozi cha inverter kinakupa starehe katika kila msimu, kikitoa baridi na joto. Mwanga mchane, ukiwemo taa kuu inayoweza kudhoofishwa, inakuwezesha kuweka mazingira kamili ya kazi, kupumzika, au kutuliza.",
+          "features": [
+            "Kiyoyozi cha inverter (baridi & joto)",
+            "Mwanga unaoweza kudhoofishwa & mwanga wa ndani wa joto"
+          ]
+        },
+        {
+          "heading": "Bafu ya Faragha",
+          "description": "Nyuma ya cottage tu, paa la kuvutia la nyasi la roundavel lina bafu yako ya faragha, inayojumuisha mkojo, choo, na beseni—inachanganya urahisi wa kisasa na mwonekano wa Kiafrika."
+        }
+      ],
+      "trustItems": [
+        "Imezungukwa na asili ya kitropiki",
+        "Roundavel ya en-suite ya faragha",
+        "Ime na kiyoyozi na mwanga wenye utulivu"
+      ],
+      "cta": {
+        "heading": "Uko Tayari Kukodoa Cottage Yako ya Bustani?",
+        "description": "Pata urembo wa kienyeji kwenye makao yetu ya bustani ya kitropiki. Kodi moja kwa moja kwa bei bora na huduma ya kibinafsi."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Chalet Yaenyekunyasi",
+      "heroTitle": "Faraja ya kimapenzi • Urembo wa kienyeji • Amani ya kitropiki",
+      "heroDescription": "Ilichomwa kwenye kona ya mali, Chalet Yaenyekunyasi inatoa mapumziko ya utulivu, ya kimapenzi. Ikiwa kwenye kivuli cha miti ya mnazi, strelitzia, acacia, fern, na miti ya Indian almond, inakuzamisha katika asili bila kukosa starehe wala faraja.",
+      "sections": [
+        {
+          "heading": "Mazingira na Mazingira",
+          "description": "Chalet yenye paa la nyasi, iliyosaidiwa na miti imara ya bluegum, inatoa urembo wa kienyeji. Sakafu ya autumn-slate inachanganyika kwa usawa na mazingira yake mazuri, huku kuta zilizopakwa rangi ya shamba la ngano zikiumba mazingira ya joto na utulivu ya ndani.",
+          "features": [
+            "Paa la nyasi • muundo wa mti wa bluegum",
+            "Sakafu ya autumn-slate • toni za asili",
+            "Imezungukwa na miti ya mnazi, fern & strelitzia"
+          ]
+        },
+        {
+          "heading": "Rooftop na Bustani",
+          "description": "Panda kwenye rooftop yako ya faragha, iliyowekewa viti vilivyokunjwa vya majani ya mnazi na meza ya chakula cha jioni na viti. Tulia kwenye kivuli cha paa la bustani na ufurahie maonyesho na sauti za asili.",
+          "features": [
+            "Rooftop ya faragha na viti",
+            "Mtazamo wa bustani ya kitropiki"
+          ]
+        },
+        {
+          "heading": "Mambo ya Ndani na Starehe",
+          "description": "Ndani, vitanda viwili vya mtu moja vilivyo na vibanda vinaweza kuunganishwa kuwa kitanda kikubwa cha aina ya 'King-size' kwa mpangilio mzuri wa kitanda kimoja kikubwa. Kiyoyozi kinahakikisha starehe ya mwaka mzima, huku mwanga mchane ukikamilisha mapambo ya kienyeji.",
+          "features": [
+            "Mpangilio wa Kitanda Cha Watu Wawili au King-size",
+            "Kiyoyozi kwa baridi na starehe",
+            "Mwanga wa joto na toni laini za ndani"
+          ]
+        },
+        {
+          "heading": "Bafu ya Faragha",
+          "description": "Chalet inajumuisha bafu ya faragha na mkojo, choo, na beseni, ikichanganya urahisi na urembo wa kienyeji wa mazingira yake ya asili."
+        },
+        {
+          "heading": "Uzoefu",
+          "description": "Iwe unatafuta safari ya kimapenzi au wokovu wenye utulivu, chalet hii ndogo inaleta mchanganyiko usahaulika wa faraja, urembo, na starehe—kituo bora ndani ya paradiso ya kitropiki ya DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Imejazwa asilini",
+        "Mazingira ya kimapenzi na ya utulivu",
+        "Starehe ya faragha na urahisi"
+      ],
+      "cta": {
+        "heading": "Uko Tayari Kukodoa Chalet Yako Yaenyekunyasi?",
+        "description": "Kimbia kwenye faraja ya kimapenzi kwenye kituo chetu cha kujificha cha kitropiki. Kodi moja kwa moja kwa bei bora na huduma ya kibinafsi."
+      }
+    }
+  }
+}
