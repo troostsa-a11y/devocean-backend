@@ -168,7 +168,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
             <li>
               <a
                 href="/story.html"
-                className="hover:text-[#9e4b13] whitespace-nowrap"
+                className={`inline-flex items-center justify-center w-[15rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl border-2 border-[#9e4b13] text-[#9e4b13] hover:bg-[#9e4b13] hover:text-white whitespace-nowrap transition-colors`}
               >
                 {ui.stay?.ourStory || "Our Story"}
               </a>
@@ -178,7 +178,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
                 href={bookUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`btn-cta inline-flex items-center justify-center w-[12rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
+                className={`btn-cta inline-flex items-center justify-center w-[15rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
                 onClick={() => {
                   if (window.dataLayer) {
                     window.dataLayer.push({
