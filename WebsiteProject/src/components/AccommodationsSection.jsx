@@ -13,7 +13,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
           </p>
         </div>
         <a
-          href="/story.html"
+          href={`/story.html?lang=${lang}`}
           className={`btn-cta hidden md:inline-flex items-center justify-center w-[15rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
           aria-label={ui.stay.ourStory}
           data-testid="button-our-story"
@@ -30,7 +30,8 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
             cottage: '/cottage.html',
             chalet: '/chalet.html'
           };
-          const detailPageUrl = detailPageMap[u.key] || null;
+          const basePath = detailPageMap[u.key];
+          const detailPageUrl = basePath ? `${basePath}?lang=${lang}` : null;
           
           return (
             <m.div

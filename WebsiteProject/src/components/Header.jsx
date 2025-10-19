@@ -223,7 +223,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               </a>
             ))}
             <a
-              href="/story.html"
+              href={`/story.html?lang=${lang}`}
               data-testid="link-mobile-story"
               className="block px-4 py-3 hover:bg-slate-50"
               onClick={() => setMenuOpen(false)}
