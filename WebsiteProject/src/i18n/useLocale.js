@@ -286,8 +286,13 @@ function pickInitialLang() {
     return CC_TO_LANGUAGE[cc];
   }
 
-  // Final fallback to English
-  return "en";
+  // Final fallback to English - region-aware
+  // Americas → US English, others → UK English
+  const continent = cc ? CC_TO_CONTINENT[cc] : null;
+  if (continent === "americas") {
+    return "en-us";
+  }
+  return "en"; // UK English for Europe, Asia, Oceania, Africa
 }
 
 function pickInitialCurrency() {
@@ -527,32 +532,13 @@ export function useLocale() {
 
   const setRegion = (newRegion) => {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
-      const oldRegion = region;
       setRegionState(newRegion);
       localStorage.setItem("site.region", newRegion);
       localStorage.setItem("site.region.version", "2");
       localStorage.setItem("site.region.source", "user"); // Mark as user-selected
       
-      // Only update currency if user is moving to a DIFFERENT region
-      if (oldRegion !== newRegion) {
-        const originalRegion = localStorage.getItem("site.region.original");
-        const originalCurrency = localStorage.getItem("site.currency.original");
-        
-        // If user is returning to their original IP-detected region, restore original currency
-        // This preserves BRL for Brazilian users, MZN for Mozambican users, etc.
-        if (newRegion === originalRegion && originalCurrency) {
-          setCurrencyState(originalCurrency);
-          localStorage.setItem("site.currency", originalCurrency);
-        } else {
-          // Moving to a different region - use that region's default currency
-          const newCurrency = REGION_DEFAULT_CURRENCY[newRegion] || "USD";
-          setCurrencyState(newCurrency);
-          localStorage.setItem("site.currency", newCurrency);
-        }
-        
-        const cc = getCountryCode();
-        localStorage.setItem("site.currency.country", cc || "unknown");
-      }
+      // Currency NEVER changes - it always stays as the IP-detected legal tender
+      // Users can change language/region, but currency is based on their physical location
     }
   };
 
