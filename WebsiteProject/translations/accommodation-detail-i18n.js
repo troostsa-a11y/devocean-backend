@@ -313,15 +313,47 @@ function getHotelrunnerLocale(lang) {
   return localeMap[lang] || 'en-GB';
 }
 
+// Load full accommodation translations from JSON
+async function loadAccommodationTranslations(lang) {
+  try {
+    const response = await fetch('/translations/accommodation-translations-template.json');
+    if (!response.ok) throw new Error('Failed to load accommodation translations');
+    const data = await response.json();
+    
+    // Map full locale codes to short codes used in JSON
+    const langMap = {
+      'en-GB': 'en', 'en-US': 'en-us', 'pt-PT': 'pt', 'pt-BR': 'pt-br',
+      'nl-NL': 'nl', 'fr-FR': 'fr', 'it-IT': 'it', 'de-DE': 'de',
+      'es-ES': 'es', 'sv': 'sv', 'pl': 'pl', 'ja-JP': 'ja',
+      'zh-CN': 'zh', 'ru': 'ru', 'af-ZA': 'af', 'zu': 'zu', 'sw': 'sw'
+    };
+    
+    const jsonLang = langMap[lang] || 'en';
+    console.log('Loading accommodation translations for:', lang, '→ JSON key:', jsonLang);
+    
+    return data[jsonLang] || data['en'];
+  } catch (error) {
+    console.error('Error loading accommodation translations:', error);
+    return null;
+  }
+}
+
+// Detect which unit page we're on
+function detectUnitType() {
+  const path = window.location.pathname.toLowerCase();
+  if (path.includes('safari')) return 'safari';
+  if (path.includes('comfort')) return 'comfort';
+  if (path.includes('cottage')) return 'cottage';
+  if (path.includes('chalet')) return 'chalet';
+  return null;
+}
+
 // Apply translations to page
-function applyTranslations(lang) {
+async function applyTranslations(lang) {
   console.log('Accommodation page detected language:', lang);
   
-  // Direct lookup - translation keys now match language codes
+  // Update common UI elements (buttons, nav)
   const t = TRANSLATIONS.common[lang] || TRANSLATIONS.common['en-GB'];
-  console.log('Loading accommodation translations for:', lang, 'Found:', !!t);
-  
-  // Update common text elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key]) {
@@ -332,6 +364,36 @@ function applyTranslations(lang) {
       }
     }
   });
+
+  // Load and apply full unit translations
+  const unitType = detectUnitType();
+  if (unitType) {
+    const translations = await loadAccommodationTranslations(lang);
+    if (translations && translations[unitType]) {
+      const unitData = translations[unitType];
+      console.log('Applying unit translations for:', unitType, lang);
+      
+      // Update title
+      const titleEl = document.querySelector('.dl-title');
+      if (titleEl && unitData.title) {
+        // Keep the existing HTML structure but update just the text content
+        titleEl.innerHTML = unitData.title.replace(' + ', ' <span>+</span> ');
+      }
+      
+      // Update short description (subtitle)
+      const subEl = document.querySelector('.dl-sub');
+      if (subEl && unitData.shortDescription) {
+        subEl.textContent = unitData.shortDescription;
+      }
+      
+      // Update detailed features if available
+      if (unitData.detailedFeatures && Array.isArray(unitData.detailedFeatures)) {
+        // This would require more specific HTML structure mapping
+        // For now, log that we have the data
+        console.log('Unit features available:', unitData.detailedFeatures.length);
+      }
+    }
+  }
 
   // Update booking URLs
   const currency = detectCurrency();
