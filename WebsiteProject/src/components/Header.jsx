@@ -10,11 +10,11 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
 
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
-    europe: { name: 'Europe', languages: ['en', 'pt-PT', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'] },
-    asia: { name: 'Asia', languages: ['en', 'ja', 'zh', 'ru'] },
-    americas: { name: 'Americas', languages: ['en-US', 'en', 'pt-BR', 'es', 'fr'] },
-    africa: { name: 'Africa', languages: ['en', 'fr', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
-    oceania: { name: 'Oceania', languages: ['en'] }
+    europe: { name: 'Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'] },
+    asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru'] },
+    americas: { name: 'Americas', languages: ['en-US', 'en-GB', 'pt-BR', 'es-ES', 'fr-FR'] },
+    africa: { name: 'Africa', languages: ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
+    oceania: { name: 'Oceania', languages: ['en-GB'] }
   };
 
   const handleRegionChange = (newRegion) => {
@@ -22,7 +22,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
     
     // If current language is not available in the new region, switch to English
     if (!regions[newRegion].languages.includes(lang)) {
-      onLangChange('en');
+      onLangChange('en-GB');
     }
   };
 
@@ -115,22 +115,22 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
             >
               {regions[region]?.languages.includes('en-US') && <option value="en-US">English</option>}
-              {regions[region]?.languages.includes('en') && <option value="en">English</option>}
+              {regions[region]?.languages.includes('en-GB') && <option value="en-GB">English</option>}
               {regions[region]?.languages.includes('pt-PT') && <option value="pt-PT">Português</option>}
               {regions[region]?.languages.includes('pt-BR') && <option value="pt-BR">Português</option>}
-              {regions[region]?.languages.includes('nl') && <option value="nl">Nederlands</option>}
-              {regions[region]?.languages.includes('fr') && <option value="fr">Français</option>}
-              {regions[region]?.languages.includes('it') && <option value="it">Italiano</option>}
-              {regions[region]?.languages.includes('de') && <option value="de">Deutsch</option>}
-              {regions[region]?.languages.includes('es') && <option value="es">Español</option>}
+              {regions[region]?.languages.includes('nl-NL') && <option value="nl-NL">Nederlands</option>}
+              {regions[region]?.languages.includes('fr-FR') && <option value="fr-FR">Français</option>}
+              {regions[region]?.languages.includes('it-IT') && <option value="it-IT">Italiano</option>}
+              {regions[region]?.languages.includes('de-DE') && <option value="de-DE">Deutsch</option>}
+              {regions[region]?.languages.includes('es-ES') && <option value="es-ES">Español</option>}
               {regions[region]?.languages.includes('sv') && <option value="sv">Svenska</option>}
               {regions[region]?.languages.includes('pl') && <option value="pl">Polski</option>}
               {regions[region]?.languages.includes('af-ZA') && <option value="af-ZA">Afrikaans</option>}
               {regions[region]?.languages.includes('zu') && <option value="zu">isiZulu</option>}
               {regions[region]?.languages.includes('sw') && <option value="sw">Kiswahili</option>}
               {regions[region]?.languages.includes('ru') && <option value="ru">Русский</option>}
-              {regions[region]?.languages.includes('ja') && <option value="ja">日本語</option>}
-              {regions[region]?.languages.includes('zh') && <option value="zh">中文</option>}
+              {regions[region]?.languages.includes('ja-JP') && <option value="ja-JP">日本語</option>}
+              {regions[region]?.languages.includes('zh-CN') && <option value="zh-CN">中文</option>}
             </select>
           </div>
         </div>

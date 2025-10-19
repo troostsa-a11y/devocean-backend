@@ -1,7 +1,7 @@
 // Critical translations that load synchronously for immediate menu rendering
 // Only includes navigation text to minimize initial bundle size
 export const CRITICAL_NAV = {
-  en: {
+  "en-GB": {
     home: "Home",
     stay: "Stay", 
     experiences: "Experiences",
@@ -11,7 +11,17 @@ export const CRITICAL_NAV = {
     contact: "Contact",
     bookNow: "Book Now"
   },
-  pt: {
+  "en-US": {
+    home: "Home",
+    stay: "Stay", 
+    experiences: "Experiences",
+    todo: "What to do",
+    gallery: "Gallery",
+    location: "Location",
+    contact: "Contact",
+    bookNow: "Book Now"
+  },
+  "pt-PT": {
     home: "Início",
     stay: "Alojamento",
     experiences: "Experiências",
@@ -21,7 +31,17 @@ export const CRITICAL_NAV = {
     contact: "Contato",
     bookNow: "Reserve já"
   },
-  nl: {
+  "pt-BR": {
+    home: "Início",
+    stay: "Alojamento",
+    experiences: "Experiências",
+    todo: "O que fazer",
+    gallery: "Galeria",
+    location: "Localização",
+    contact: "Contato",
+    bookNow: "Reserve já"
+  },
+  "nl-NL": {
     home: "Home",
     stay: "Verblijf",
     experiences: "Ervaringen",
@@ -31,7 +51,7 @@ export const CRITICAL_NAV = {
     contact: "Contact",
     bookNow: "Boek nu"
   },
-  fr: {
+  "fr-FR": {
     home: "Accueil",
     stay: "Séjour",
     experiences: "Expériences",
@@ -41,7 +61,7 @@ export const CRITICAL_NAV = {
     contact: "Contact",
     bookNow: "Réserver"
   },
-  it: {
+  "it-IT": {
     home: "Home",
     stay: "Soggiorno",
     experiences: "Esperienze",
@@ -51,7 +71,7 @@ export const CRITICAL_NAV = {
     contact: "Contatto",
     bookNow: "Prenota"
   },
-  de: {
+  "de-DE": {
     home: "Startseite",
     stay: "Unterkunft",
     experiences: "Erlebnisse",
@@ -61,7 +81,7 @@ export const CRITICAL_NAV = {
     contact: "Kontakt",
     bookNow: "Jetzt buchen"
   },
-  es: {
+  "es-ES": {
     home: "Inicio",
     stay: "Alojamiento",
     experiences: "Experiencias",
@@ -91,17 +111,7 @@ export const CRITICAL_NAV = {
     contact: "Kontakt",
     bookNow: "Rezerwuj"
   },
-  ptmz: {
-    home: "Início",
-    stay: "Alojamento",
-    experiences: "Experiências",
-    todo: "O que fazer",
-    gallery: "Galeria",
-    location: "Localização",
-    contact: "Contato",
-    bookNow: "Reserve já"
-  },
-  ja: {
+  "ja-JP": {
     home: "ホーム",
     stay: "宿泊",
     experiences: "体験",
@@ -111,7 +121,7 @@ export const CRITICAL_NAV = {
     contact: "連絡先",
     bookNow: "今すぐ予約"
   },
-  zh: {
+  "zh-CN": {
     home: "首页",
     stay: "住宿",
     experiences: "体验",

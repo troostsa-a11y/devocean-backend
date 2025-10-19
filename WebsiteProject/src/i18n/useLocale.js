@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
-const SUPPORTED_LANGS = ["en", "en-US", "pt-PT", "pt-BR", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af-ZA", "zu", "sw"];
+const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
 // Helper to get URL parameters
@@ -100,32 +100,32 @@ const CC_TO_CONTINENT = {
 // Map country codes to primary language (IP-based fallback)
 const CC_TO_LANGUAGE = {
   // English-speaking countries
-  US: "en-US", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en", 
-  ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en", 
-  SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en", 
-  BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
+  US: "en-US", GB: "en-GB", IE: "en-GB", AU: "en-GB", NZ: "en-GB", CA: "en-GB", 
+  ZA: "en-GB", NA: "en-GB", ZW: "en-GB", BW: "en-GB", NG: "en-GB", GH: "en-GB", ZM: "en-GB", MW: "en-GB", 
+  SZ: "en-GB", LS: "en-GB", MU: "en-GB", SC: "en-GB", JM: "en-GB", TT: "en-GB", 
+  BB: "en-GB", FJ: "en-GB", PG: "en-GB", SB: "en-GB", VU: "en-GB",
   
   // Portuguese-speaking countries
   PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
   
   // Dutch-speaking countries
-  NL: "nl", BE: "nl", SR: "nl",
+  NL: "nl-NL", BE: "nl-NL", SR: "nl-NL",
   
   // French-speaking countries  
-  FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr", 
-  SN: "fr", CI: "fr", CM: "fr", DJ: "fr", NC: "fr", PF: "fr",
+  FR: "fr-FR", MC: "fr-FR", LU: "fr-FR", CH: "fr-FR", RE: "fr-FR", 
+  SN: "fr-FR", CI: "fr-FR", CM: "fr-FR", DJ: "fr-FR", NC: "fr-FR", PF: "fr-FR",
   
   // Italian-speaking countries
-  IT: "it", SM: "it", VA: "it",
+  IT: "it-IT", SM: "it-IT", VA: "it-IT",
   
   // German-speaking countries
-  DE: "de", AT: "de", LI: "de",
+  DE: "de-DE", AT: "de-DE", LI: "de-DE",
   
   // Spanish-speaking countries
-  ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
-  CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
-  HN: "es", PY: "es", SV: "es", NI: "es", CR: "es", PA: "es",
-  UY: "es", GQ: "es",
+  ES: "es-ES", MX: "es-ES", AR: "es-ES", CO: "es-ES", PE: "es-ES", VE: "es-ES",
+  CL: "es-ES", EC: "es-ES", GT: "es-ES", CU: "es-ES", BO: "es-ES", DO: "es-ES",
+  HN: "es-ES", PY: "es-ES", SV: "es-ES", NI: "es-ES", CR: "es-ES", PA: "es-ES",
+  UY: "es-ES", GQ: "es-ES",
   
   // Swedish-speaking countries
   SE: "sv", FI: "sv",
@@ -134,10 +134,10 @@ const CC_TO_LANGUAGE = {
   PL: "pl",
   
   // Japanese-speaking countries
-  JP: "ja",
+  JP: "ja-JP",
   
   // Chinese-speaking countries/regions
-  CN: "zh", HK: "zh", TW: "zh", SG: "zh",
+  CN: "zh-CN", HK: "zh-CN", TW: "zh-CN", SG: "zh-CN",
   
   // Russian-speaking countries
   RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
@@ -155,10 +155,10 @@ const CONTINENT_MERIDIANS = {
   oceania: { base: 11, min: 10, max: 13 }, // Australia East/NZ/Pacific (UTC+10 to +13)
 };
 
-// Booking engine locale mapping (base, can be overridden by region)
+// Booking engine locale mapping (1:1 passthrough now that we use Hotelrunner codes everywhere)
 export const LOCALE_BY_LANG = {
-  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw",
+  "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw",
 };
 
 // Get booking locale based on language + currency combination
@@ -174,25 +174,35 @@ export const getBookingLocale = (lang, currency, countryCode) => {
 
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
-  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw-KE",
+  "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv-SE", "pl": "pl-PL", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru-RU", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw-KE",
 };
 
 function normLang(raw) {
-  if (!raw) return "en";
+  if (!raw) return "en-GB";
   let s = String(raw).toLowerCase();
   
-  // Special cases: preserve specific language-region codes with proper capitalization
+  // Preserve full Hotelrunner locale codes with proper capitalization
+  if (s === "en-gb" || s === "en") return "en-GB";
   if (s === "en-us") return "en-US";
-  if (s === "af-za") return "af-ZA";
   if (s === "pt-pt") return "pt-PT";
   if (s === "pt-br") return "pt-BR";
   if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
+  if (s === "nl-nl" || s === "nl") return "nl-NL";
+  if (s === "fr-fr" || s === "fr") return "fr-FR";
+  if (s === "it-it" || s === "it") return "it-IT";
+  if (s === "de-de" || s === "de") return "de-DE";
+  if (s === "es-es" || s === "es") return "es-ES";
+  if (s === "ja-jp" || s === "ja") return "ja-JP";
+  if (s === "zh-cn" || s === "zh") return "zh-CN";
+  if (s === "af-za" || s === "af") return "af-ZA";
+  if (s === "sv") return "sv";
+  if (s === "pl") return "pl";
+  if (s === "ru") return "ru";
+  if (s === "zu") return "zu";
+  if (s === "sw") return "sw";
   
-  // Handle other locale codes - strip region if not needed
-  if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
-  
-  return SUPPORTED_LANGS.includes(s) ? s : "en";
+  return "en-GB";
 }
 
 function clampCur(cur) {
@@ -258,14 +268,9 @@ function pickInitialLang() {
   for (const l of list) {
     const lower = String(l || "").toLowerCase();
     
-    // Special case: detect US English browser language
-    if (lower === "en-us" || lower.startsWith("en-us")) {
-      return "en-US";
-    }
-    
-    // Standard language detection
-    const base = lower.split("-")[0];
-    if (SUPPORTED_LANGS.includes(base)) return base;
+    // Normalize browser language to our Hotelrunner codes
+    const normalized = normLang(lower);
+    if (SUPPORTED_LANGS.includes(normalized)) return normalized;
   }
 
   // Fallback: Use IP-based country → language mapping
@@ -280,7 +285,7 @@ function pickInitialLang() {
   if (continent === "americas") {
     return "en-US";
   }
-  return "en"; // UK English for Europe, Asia, Oceania, Africa
+  return "en-GB"; // UK English for Europe, Asia, Oceania, Africa
 }
 
 function pickInitialCurrency() {
@@ -328,24 +333,14 @@ function pickInitialRegion(langBase) {
 // Dynamically load translations for a specific language
 async function loadTranslations(lang) {
   const { UI } = await import('./translations.js');
-  // Map language-region codes to base language keys for translations
-  const translationKey = 
-    (lang === "en-US") ? "en" :
-    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
-    (lang === "af-ZA") ? "af" :
-    lang;
-  return UI[translationKey] || UI.en;
+  // Use lang directly - translation keys now match Hotelrunner codes
+  return UI[lang] || UI["en-GB"];
 }
 
 // Build minimal UI object with critical nav for instant rendering
 function getCriticalUI(lang) {
-  // Map language-region codes to base language keys for critical nav
-  const navKey = 
-    (lang === "en-US") ? "en" :
-    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
-    (lang === "af-ZA") ? "af" :
-    lang;
-  const nav = CRITICAL_NAV[navKey] || CRITICAL_NAV.en;
+  // Use lang directly - critical nav keys now match Hotelrunner codes
+  const nav = CRITICAL_NAV[lang] || CRITICAL_NAV["en-GB"];
   return {
     nav: {
       home: nav.home,

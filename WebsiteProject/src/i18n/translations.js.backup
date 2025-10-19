@@ -1,6 +1,6 @@
 // UI Translations for all supported languages
 export const UI = {
-  "en-GB": {
+  en: {
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your stay", ctaSecondary: "Explore the lodge", badge: "Guest-loved comfort & value" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
@@ -70,76 +70,7 @@ export const UI = {
     }
   },
 
-  "en-US": {
-    nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your stay", ctaSecondary: "Explore the lodge", badge: "Guest-loved comfort & value" },
-    stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
-    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:" },
-    todo: {
-      headline: "What to do in Ponta do Ouro",
-      note: "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.",
-      items: [
-        { title: "Lighthouse hike & Lua Do Mar", body: "Hike to the Old Lighthouse for panoramic views. Continue to Lua Do Mar Restaurant on the dune. Often spot dolphins year-round, whales (May–Oct) and turtles (Dec–Jan). Mind the tide: avoid the beach route from 3 hours before to 3 hours after high tide; rogue waves can push you against rocks." },
-        { title: "Walk to Ponta Malongane", body: "Beach-walk along the shore to the next village. Midway, stairs through banana trees lead to Campismo Nino Pub & Restaurant with great views. Near the bay transition, a path to Sky Island offers paragliding. Famous pubs in Malongane: Drunken Clam and Sunset Shack. Return via beach or the sandy 4×4 road." },
-        { title: "Surf, dive & ocean research", body: "Surfboard rentals at the Beach Bar; several dive centers in the village and a dolphin/whale research center." },
-        { title: "Eat & unwind nearby", body: "There are ~16 pubs and restaurants within 500 m of DEVOCEAN. For a relaxing full-body massage, ask for Lisa (LIZ-Way Massage)." },
-        { title: "Quad bike rentals", body: "Occasional private rentals from locals. Typical rate: around MZN 2000 per hour (negotiation varies)." },
-      ],
-    },
-    gallery: { headline: "Gallery" },
-    location: {
-      headline: "Location", blurb: "Ponta do Ouro – Matutuíne District, Southern Mozambique.",
-      items: [
-        "Ponta do Ouro town, a short walk from the beach",
-        "15 min to Ponta Malongane • 25 min to Kosi Bay border",
-        "Secure parking • Local cafés & markets nearby",
-      ],
-      viewMap: "View Interactive Map",
-    },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
-    form: {
-      name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
-      unitLabel: "My preferred unit is:", 
-      units: [
-        "Safari Tent - shared bathroom",
-        "Comfort Tent - private bathroom",
-        "Garden Cottage - inverter AC",
-        "Thatched Chalet - inverter AC"
-      ],
-      message: "Message", send: "Send",
-      consent: "By submitting you agree to be contacted about your inquiry.",
-      phName: "Your name", phEmail: "your@email.com", phDate: "dd/mm/yyyy", phMsg: "Tell us more about your wishes...",
-      success: "Thank you! Your message has been sent. Check your email for a confirmation.",
-    },
-    galleryHeading: "Gallery",
-    footer: {
-      rights: "All rights reserved.",
-      desc: "Family-run eco-hospitality and community projects in Southern Mozambique.",
-    },
-    currencies: {
-      USD: "US-Dollar",
-      JPY: "Yen",
-      CNY: "Yuan",
-      RUB: "Ruble",
-      MZN: "Meticais",
-      ZAR: "Rand",
-      EUR: "Euro",
-      GBP: "GB-Pound",
-      SEK: "Krona",
-      PLN: "Zloty"
-    },
-    legal: {
-      title: "Legal",
-      privacy: "Privacy Policy",
-      cookies: "Cookie Policy",
-      terms: "Terms & Conditions",
-      gdpr: "GDPR Info",
-      cric: "Consumer Rights & Contact",
-      manage: "Cookie Settings",
-      ccpa: "Do Not Sell My Info",
-    }
-  },
-  "pt-PT": {
+  pt: {
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
@@ -209,76 +140,7 @@ export const UI = {
     }
   },
 
-  "pt-BR": {
-    nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes" },
-    stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
-    experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:" },
-    todo: {
-      headline: "O que fazer em Ponta do Ouro",
-      note: "Para mergulho, viagens de snorkel, safaris marítimos com golfinhos/baleias e charters de pesca, veja os fornecedores abaixo.",
-      items: [
-        { title: "Caminhada ao farol e Lua Do Mar", body: "Caminhe até ao Antigo Farol para vistas panorâmicas. Continue até ao Restaurante Lua Do Mar na duna. Muitas vezes aviste golfinhos durante todo o ano, baleias (maio–outubro) e tartarugas (dezembro–janeiro). Atenção à maré: evite a rota da praia de 3 horas antes a 3 horas após a maré alta; ondas imprevisíveis podem empurrá-lo contra as rochas." },
-        { title: "Caminhada até Ponta Malongane", body: "Caminhada pela praia ao longo da costa até à próxima aldeia. A meio caminho, escadas através de bananeiras em machambas levam ao Pub & Restaurante Campismo Nino com ótimas vistas. Perto da transição da baía, um caminho para Sky Island oferece parapente. Pubs famosos em Malongane: Drunken Clam e Sunset Shack. Regresso pela praia ou pela estrada arenosa 4×4." },
-        { title: "Surf, mergulho e pesquisa oceânica", body: "Aluguer de pranchas de surf no Beach Bar; vários centros de mergulho na aldeia e um centro de pesquisa de golfinhos/baleias." },
-        { title: "Comer e relaxar nas proximidades", body: "Há cerca de 16 pubs e restaurantes dentro de 500 m do DEVOCEAN. Para uma massagem relaxante de corpo inteiro, pergunte por Lisa (LIZ-Way Massage)." },
-        { title: "Aluguer de quadriciclos", body: "Alugueres privados ocasionais de locais. Taxa típica: cerca de 2000 MZN por hora (negociação varia)." },
-      ],
-    },
-    gallery: { headline: "Galeria" },
-    location: {
-      headline: "Localização", blurb: "Ponta do Ouro – Distrito de Matutuíne, sul de Moçambique.",
-      items: [
-        "Cidade de Ponta do Ouro, a uma curta caminhada da praia",
-        "15 min até Ponta Malongane • 25 min até à fronteira de Kosi Bay",
-        "Estacionamento seguro • Cafés e mercados locais nas proximidades",
-      ],
-      viewMap: "Ver mapa interativo",
-    },
-    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Tarifas e disponibilidade" },
-    form: {
-      name: "Nome", email: "E-mail", stayLabel: "Interessado em ficar:", checkin: "De (check-in)", checkout: "Até (checkout)",
-      unitLabel: "A minha unidade preferida é:",
-      units: [
-        "Tenda Safari - casa de banho partilhada",
-        "Tenda Conforto - casa de banho privada",
-        "Cottage de Jardim - AC inversor",
-        "Chalé de Palha - AC inversor"
-      ],
-      message: "Mensagem", send: "Enviar",
-      consent: "Ao submeter, concorda em ser contactado sobre a sua consulta.",
-      phName: "O seu nome", phEmail: "seu@email.com", phDate: "dd/mm/aaaa", phMsg: "Conte-nos mais sobre os seus desejos...",
-      success: "Obrigado! A sua mensagem foi enviada. Verifique o seu e-mail para confirmação.",
-    },
-    galleryHeading: "Galeria",
-    footer: {
-      rights: "Todos os direitos reservados.",
-      desc: "Hospitalidade ecológica gerida pela família e projetos comunitários no sul de Moçambique.",
-    },
-    currencies: {
-      USD: "Dólar",
-      JPY: "Iene",
-      CNY: "Yuan",
-      RUB: "Rublo",
-      MZN: "Meticais",
-      ZAR: "Rand",
-      EUR: "Euro",
-      GBP: "Libra",
-      SEK: "Coroa",
-      PLN: "Zloty"
-    },
-    legal: {
-      title: "Legal",
-      privacy: "Política de Privacidade",
-      cookies: "Política de Cookies",
-      terms: "Termos e Condições",
-      gdpr: "Informação RODO",
-      cric: "Direitos do Consumidor e Contacto",
-      manage: "Configurações de Cookies",
-      ccpa: "Não Vender Minhas Informações",
-    }
-  },
-  "nl-NL": {
+  nl: {
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.", ctaPrimary: "Boek je verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
@@ -347,7 +209,7 @@ export const UI = {
     }
   },
 
-  "fr-FR": {
+  fr: {
     nav: {
       home: "Accueil",
       stay: "Séjour",
@@ -480,7 +342,7 @@ export const UI = {
     }
   },
 
-  "it-IT": {
+  it: {
     nav: { home: "Home", stay: "Alloggi", experiences: "Esperienze", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.", ctaPrimary: "Prenota ora", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
     stay: { headline: "Soggiorna con noi", blurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.", moreDetails: "Altri dettagli", ourStory: "La Nostra Storia" },
@@ -549,7 +411,7 @@ export const UI = {
     }
   },
 
-  "de-DE": {
+  de: {
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.", ctaPrimary: "Jetzt buchen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
@@ -618,7 +480,7 @@ export const UI = {
     }
   },
 
-  "es-ES": {
+  es: {
     nav: { home: "Inicio", stay: "Alojamiento", experiences: "Experiencias", todo: "Qué hacer", gallery: "Galería", location: "Ubicación", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Alojamientos ecológicos a pocos cientos de metros de la playa en Ponta do Ouro, Sur de Mozambique.", ctaPrimary: "Reservar", ctaSecondary: "Explorar el lodge", badge: "Comodidad y valor muy apreciados" },
     stay: { headline: "Alójate con nosotros", blurb: "Tiendas en la naturaleza o chalets/cottage acogedores – con hospitalidad familiar.", moreDetails: "Más detalles", ourStory: "Nuestra Historia" },
@@ -828,7 +690,7 @@ export const UI = {
     }
   },
 
-  "ja-JP": {
+  ja: {
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
@@ -898,7 +760,7 @@ export const UI = {
     }
   },
 
-  "zh-CN": {
+  zh: {
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
@@ -1217,7 +1079,7 @@ export const UI = {
 
 //Todo: can be lazy loaded per language
 export const L10N = {
-  "pt-PT": {
+  pt: {
     units: {
       safari: {
         title: "Tenda Safari",
@@ -1275,7 +1137,7 @@ export const L10N = {
     },
   },
 
-  "nl-NL": {
+  nl: {
     units: {
       safari: {
         title: "Safaritent",
@@ -1333,7 +1195,7 @@ export const L10N = {
     },
   },
 
-  "fr-FR": {
+  fr: {
     units: {
       safari: {
         title: "Tente Safari",
@@ -1391,7 +1253,7 @@ export const L10N = {
     },
   },
 
-  "it-IT": {
+  it: {
     units: {
       safari: {
         title: "Tenda Safari",
@@ -1449,7 +1311,7 @@ export const L10N = {
     },
   },
 
-  "de-DE": {
+  de: {
     units: {
       safari: {
         title: "Safarizelt",
@@ -1507,7 +1369,7 @@ export const L10N = {
     },
   },
 
-  "es-ES": {
+  es: {
     units: {
       safari: {
         title: "Tienda Safari",
@@ -1681,7 +1543,7 @@ export const L10N = {
     },
   },
 
-  "ja-JP": {
+  ja: {
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
@@ -1788,7 +1650,7 @@ export const L10N = {
     }
   },
 
-  "zh-CN": {
+  zh: {
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
