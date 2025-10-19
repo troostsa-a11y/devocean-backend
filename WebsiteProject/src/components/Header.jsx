@@ -13,7 +13,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
     europe: { name: 'Europe', languages: ['en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl'] },
     asia: { name: 'Asia', languages: ['en', 'ja', 'zh', 'ru'] },
     americas: { name: 'Americas', languages: ['en-us', 'en', 'es', 'fr'] },
-    africa: { name: 'Africa', languages: ['en', 'fr', 'pt', 'af', 'zu', 'sw'] },
+    africa: { name: 'Africa', languages: ['en', 'fr', 'pt', 'af-za', 'zu', 'sw'] },
     oceania: { name: 'Oceania', languages: ['en'] }
   };
 
@@ -124,7 +124,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               {regions[region]?.languages.includes('es') && <option value="es">Español</option>}
               {regions[region]?.languages.includes('sv') && <option value="sv">Svenska</option>}
               {regions[region]?.languages.includes('pl') && <option value="pl">Polski</option>}
-              {regions[region]?.languages.includes('af') && <option value="af">Afrikaans</option>}
+              {regions[region]?.languages.includes('af-za') && <option value="af-za">Afrikaans</option>}
               {regions[region]?.languages.includes('zu') && <option value="zu">isiZulu</option>}
               {regions[region]?.languages.includes('sw') && <option value="sw">Kiswahili</option>}
               {regions[region]?.languages.includes('ru') && <option value="ru">Русский</option>}
