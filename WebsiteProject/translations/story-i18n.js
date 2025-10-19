@@ -315,13 +315,13 @@ async function loadTranslations(lang) {
     if (!response.ok) throw new Error('Failed to load translations');
     const data = await response.json();
     
-    // Map language-region codes to JSON keys
-    // Note: story-translations-template.json has separate pt-PT and pt-BR keys
+    // Map language codes to JSON keys
+    // JSON has: en, en-US, pt-PT, pt-BR, pt-MZ, af, zu, sw, etc.
     const translationKey = 
-      (lang === "en-US") ? "en" :
-      (lang === "af-ZA") ? "af" :
-      lang; // pt-PT and pt-BR are used directly as they exist in JSON
+      (lang === "af-ZA") ? "af" : // af-ZA → af (JSON only has "af")
+      lang; // All others use direct match (en-US, pt-PT, pt-BR exist in JSON)
     
+    console.log('Loading story translations for:', lang, '→', translationKey);
     return data[translationKey] || data['en']; // Fallback to English if language not found
   } catch (error) {
     console.error('Error loading translations:', error);
