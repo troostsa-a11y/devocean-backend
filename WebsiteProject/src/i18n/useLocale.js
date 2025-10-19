@@ -4,6 +4,16 @@ import { CRITICAL_NAV } from './critical.js';
 const SUPPORTED_LANGS = ["en", "en-us", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af-za", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
+// Default currency for each region (used when user manually changes region)
+// These are reasonable defaults that work for most visitors to that region
+const REGION_DEFAULT_CURRENCY = {
+  europe: "EUR",   // Eurozone is the largest economy in Europe
+  asia: "USD",     // USD is widely used for international transactions in Asia
+  americas: "USD", // USD is the dominant currency in the Americas
+  africa: "ZAR",   // ZAR is a major African currency (could also be USD)
+  oceania: "AUD"   // Australian Dollar for Oceania
+};
+
 // Helper to get URL parameters
 function getUrlParam(name) {
   if (typeof window === 'undefined') return null;
@@ -390,8 +400,8 @@ export function useLocale() {
     return pickInitialLang();
   });
 
-  // Currency is auto-assigned based on IP location - no manual selection allowed
-  const [currency] = useState(() => {
+  // Currency - can be auto-assigned or manually updated when region changes
+  const [currency, setCurrencyState] = useState(() => {
     // Priority 1: URL parameter (for return from booking engine)
     const urlCurrency = getUrlParam('currency');
     if (urlCurrency && urlCurrency.length === 3) {
@@ -400,19 +410,24 @@ export function useLocale() {
       return upperCurrency;
     }
     
-    // Priority 2: localStorage (with country consistency check)
-    const cc = getCountryCode();
+    // Priority 2: localStorage (preserved even if country changed)
     const stored = localStorage.getItem("site.currency");
-    const storedCountry = localStorage.getItem("site.currency.country");
-    
-    if (stored && stored.length === 3 && storedCountry === cc) {
+    if (stored && stored.length === 3) {
+      // Backfill original currency for returning users who don't have it yet
+      if (!localStorage.getItem("site.currency.original")) {
+        localStorage.setItem("site.currency.original", stored);
+      }
       return stored;
     }
     
     // Priority 3: Auto-detect from IP
     const detected = pickInitialCurrency();
     localStorage.setItem("site.currency", detected);
+    const cc = getCountryCode();
     localStorage.setItem("site.currency.country", cc || "unknown");
+    
+    // Store the original IP-detected currency to restore later if user toggles back
+    localStorage.setItem("site.currency.original", detected);
     return detected;
   });
 
@@ -422,6 +437,12 @@ export function useLocale() {
     const version = localStorage.getItem("site.region.version");
     
     if (stored && SUPPORTED_REGIONS.includes(stored) && version === "2") {
+      // Backfill original region for returning users who don't have it yet
+      if (!localStorage.getItem("site.region.original")) {
+        // Use stored region as original for returning users
+        // This isn't perfect (they might have changed regions before), but it's better than nothing
+        localStorage.setItem("site.region.original", stored);
+      }
       return stored;
     }
     
@@ -431,7 +452,11 @@ export function useLocale() {
       localStorage.removeItem("site.region.version");
     }
     
-    return pickInitialRegion(pickInitialLang());
+    const detected = pickInitialRegion(pickInitialLang());
+    
+    // Store the original IP-detected region to restore currency later if user toggles back
+    localStorage.setItem("site.region.original", detected);
+    return detected;
   });
 
   // Initialize with critical nav for header (immediate render)
@@ -483,14 +508,38 @@ export function useLocale() {
     localStorage.setItem("site.lang", normalized);
     localStorage.setItem("site.lang_source", "user");
     document.documentElement.setAttribute("lang", normalized);
+    
+    // Don't change currency when language changes - currency is tied to region/location, not language
   };
 
   const setRegion = (newRegion) => {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
+      const oldRegion = region;
       setRegionState(newRegion);
       localStorage.setItem("site.region", newRegion);
       localStorage.setItem("site.region.version", "2");
       localStorage.setItem("site.region.source", "user"); // Mark as user-selected
+      
+      // Only update currency if user is moving to a DIFFERENT region
+      if (oldRegion !== newRegion) {
+        const originalRegion = localStorage.getItem("site.region.original");
+        const originalCurrency = localStorage.getItem("site.currency.original");
+        
+        // If user is returning to their original IP-detected region, restore original currency
+        // This preserves BRL for Brazilian users, MZN for Mozambican users, etc.
+        if (newRegion === originalRegion && originalCurrency) {
+          setCurrencyState(originalCurrency);
+          localStorage.setItem("site.currency", originalCurrency);
+        } else {
+          // Moving to a different region - use that region's default currency
+          const newCurrency = REGION_DEFAULT_CURRENCY[newRegion] || "USD";
+          setCurrencyState(newCurrency);
+          localStorage.setItem("site.currency", newCurrency);
+        }
+        
+        const cc = getCountryCode();
+        localStorage.setItem("site.currency.country", cc || "unknown");
+      }
     }
   };
 
@@ -498,7 +547,7 @@ export function useLocale() {
   
   return {
     lang,
-    currency, // Auto-assigned based on IP, read-only
+    currency, // Auto-assigned based on IP, or updated when region changes
     region,
     setLang,
     setRegion,

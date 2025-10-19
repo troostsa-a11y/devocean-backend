@@ -50,6 +50,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
     - Cloudflare IP Geolocation for accurate region and country detection (`window.__CF_COUNTRY__`), with a fallback to Europe. Comprehensive country mapping for 80+ countries.
     - US English support (`en-US`) with USD currency, distinct from UK English.
     - CCPA compliance with "Do Not Sell My Info" footer link and CookieYes integration for US visitors.
+    - **Smart Currency Management (Oct 19, 2025):** System tracks original IP-detected currency/region in localStorage (`site.currency.original`, `site.region.original`). When users change regions, currency updates to match the new region. When users return to their original region, their original currency is restored. This preserves country-specific currencies (BRL, MZN, ZAR, GBP) while allowing region changes to update currency appropriately. Backfill logic ensures returning users without original tracking get their current stored values as defaults.
 - **Performance Optimizations:** Critical Translations Pattern for instant mobile menu rendering, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion using LazyMotion, GTM with delayed load.
 
 ### Backend Architecture
