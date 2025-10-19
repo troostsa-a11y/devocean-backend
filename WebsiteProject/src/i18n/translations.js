@@ -283,6 +283,55 @@ export const UI = {
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.", ctaPrimary: "Boek je verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
     experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:" },
+    units: {
+      safari: {
+        title: "Safaritent",
+        short: "Ervaar de perfecte balans tussen comfort en avontuur. Geplaatst op een ruime 3×6 m platform, heeft deze 12 m² canvas tent beschermende zij- en achterwanden – die u privacy en beschutting bieden terwijl u dicht bij de natuur blijft.",
+        details: [
+          "Platform: 3×6 m • Tent: 12 m²",
+          "Zij- & achterwand voor privacy en beschutting",
+          "Muggennet op alle ramen & deuren"
+        ],
+      },
+      comfort: {
+        title: "Comforttent",
+        short: "Voor gasten die de natuur-omringde vibe waarderen maar extra afzondering en gemak willen, is de Comfort Safaritent een upgrade op onze klassieke canvas ervaring.",
+        details: [
+          "Tent: 12 m² op privé platform",
+          "Extra privacy: 2 zijwanden + achterwand",
+          "Muggennet op alle ramen & deuren"
+        ],
+      },
+      cottage: {
+        title: "Tuin Cottage",
+        short: "Genesteld in onze weelderige tropische tuin, combineert de Tuin Cottage rustieke elegantie met huiselijk comfort. Een rood Romeins tegel dak en hoog wit plafond met donkere houten balken creëren een ruime, luchtige toevlucht vol karakter.",
+        details: [
+          "Rood Romeins tegel dak",
+          "Hoog wit plafond met donkere balken",
+          "Terracotta vloer & warme muurtinten",
+          "Privé terras met zitplaatsen"
+        ],
+      },
+      chalet: {
+        title: "Rieten Chalet",
+        short: "Verborgen in een afgelegen hoek van het terrein, biedt het Rieten Chalet een rustige, romantische toevlucht. Beschaduwd door palmen, strelitzia, acacia, varens en Indiase amandelbomen, dompelt het u onder in de natuur zonder comfort of privacy op te offeren.",
+        details: [
+          "Rieten dak • bluegum paal structuur",
+          "Herfstleien vloer • natuurlijke tinten",
+          "Omringd door palmen, varens & strelitzia",
+          "Privé terras met zitplaatsen"
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Duiken", desc: "Nabije riffen rijk aan zee-leven." },
+      dolphins: { title: "Zwemmen met dolfijnen", desc: "Ethische ontmoetingen met lokale dolfijnen." },
+      lighthouse: { title: "Vuurtorenwandeling", desc: "Klim de heuvel naar de oude vuurtoren voor panoramisch uitzicht." },
+      seafari: { title: "Zee-Safari", desc: "Walvisspot (mei–okt) en meer." },
+      safari: { title: "Land Safari", desc: "Bush-avonturen in de buurt." },
+      fishing: { title: "Strand- & bootvissen", desc: "Van shore-casts tot offshore charters." },
+      surfing: { title: "Surfplanken & lessen", desc: "Pak de golven of leer de basis." },
+    },
     todo: {
       headline: "Wat te doen in Ponta do Ouro",
       note: "Voor duiken/snorkelen/seafari's/charters: zie de aanbieders hieronder.",
