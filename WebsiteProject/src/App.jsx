@@ -18,6 +18,35 @@ import Footer from './components/Footer';
 export default function App() {
   const { lang, currency, region, setLang, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
 
+  // Handle Hotelrunner locale redirects (e.g., /af-ZA from booking engine)
+  useEffect(() => {
+    const path = window.location.pathname;
+    const localeRedirects = {
+      '/af-ZA': '/?lang=af&currency=ZAR',
+      '/en-GB': '/?lang=en&currency=GBP',
+      '/en-US': '/?lang=en-us&currency=USD',
+      '/pt-PT': '/?lang=pt&currency=EUR',
+      '/pt-BR': '/?lang=pt&currency=BRL',
+      '/pt-MZ': '/?lang=pt&currency=MZN',
+      '/nl-NL': '/?lang=nl&currency=EUR',
+      '/fr-FR': '/?lang=fr&currency=EUR',
+      '/it-IT': '/?lang=it&currency=EUR',
+      '/de-DE': '/?lang=de&currency=EUR',
+      '/es-ES': '/?lang=es&currency=EUR',
+      '/sv-SE': '/?lang=sv&currency=SEK',
+      '/pl-PL': '/?lang=pl&currency=PLN',
+      '/ja-JP': '/?lang=ja&currency=JPY',
+      '/zh-CN': '/?lang=zh&currency=CNY',
+      '/ru-RU': '/?lang=ru&currency=RUB',
+      '/zu-ZA': '/?lang=zu&currency=ZAR',
+      '/sw-TZ': '/?lang=sw&currency=TZS',
+    };
+
+    if (localeRedirects[path]) {
+      window.location.replace(localeRedirects[path]);
+    }
+  }, []);
+
   // Layout recalculation for sticky header
   useEffect(() => {
     const recalc = () => {
