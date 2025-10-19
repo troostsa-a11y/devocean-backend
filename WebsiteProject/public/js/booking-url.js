@@ -8,7 +8,7 @@
 const LOCALE_BY_LANG = {
   en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", 
-  ja: "ja-JP", zh: "zh-CN", ru: "ru", af: "af-ZA", zu: "en-GB", sw: "sw",
+  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-za": "af-ZA", zu: "en-GB", sw: "sw",
 };
 
 /**
