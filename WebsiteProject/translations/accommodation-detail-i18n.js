@@ -321,19 +321,10 @@ async function loadAccommodationTranslations(lang) {
     if (!response.ok) throw new Error('Failed to load accommodation translations');
     const data = await response.json();
     
-    // Map full locale codes to short codes used in JSON
-    const langMap = {
-      'en-GB': 'en', 'en-US': 'en-us', 
-      'pt-PT': 'pt-pt', 'pt-BR': 'pt-br', // Distinct Portuguese variants
-      'nl-NL': 'nl', 'fr-FR': 'fr', 'it-IT': 'it', 'de-DE': 'de',
-      'es-ES': 'es', 'sv': 'sv', 'pl': 'pl', 'ja-JP': 'ja',
-      'zh-CN': 'zh', 'ru': 'ru', 'af-ZA': 'af', 'zu': 'zu', 'sw': 'sw'
-    };
+    // Direct lookup - JSON now uses unified Hotelrunner locale codes
+    console.log('Loading accommodation translations for:', lang);
     
-    const jsonLang = langMap[lang] || 'en';
-    console.log('Loading accommodation translations for:', lang, '→ JSON key:', jsonLang);
-    
-    return data[jsonLang] || data['en'];
+    return data[lang] || data['en-GB'];
   } catch (error) {
     console.error('Error loading accommodation translations:', error);
     return null;
