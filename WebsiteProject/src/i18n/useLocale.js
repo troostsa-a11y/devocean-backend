@@ -362,14 +362,21 @@ export function useLocale() {
 
   // Currency is auto-assigned based on IP location - no manual selection allowed
   const [currency] = useState(() => {
-    // Check localStorage first for consistency across pages
+    const cc = getCountryCode();
+    const detected = pickInitialCurrency();
+    
+    // Check localStorage for consistency, but verify it matches current location
     const stored = localStorage.getItem("site.currency");
-    if (stored && stored.length === 3) {
+    const storedCountry = localStorage.getItem("site.currency.country");
+    
+    // If cached currency exists AND country code matches, use cached value
+    if (stored && stored.length === 3 && storedCountry === cc) {
       return stored;
     }
-    const detected = pickInitialCurrency();
-    // Store for consistency across story.html and main site
+    
+    // Otherwise, use freshly detected currency and update cache
     localStorage.setItem("site.currency", detected);
+    localStorage.setItem("site.currency.country", cc || "unknown");
     return detected;
   });
 

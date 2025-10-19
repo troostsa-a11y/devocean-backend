@@ -161,26 +161,32 @@ function getCountryCode() {
 
 /**
  * Pick initial currency based on visitor's country
- * Checks localStorage first for consistency with main page
+ * Checks localStorage first for consistency with main page, but validates against current location
  */
 function pickInitialCurrency() {
-  // Check localStorage first (set by main page)
+  const cc = getCountryCode();
+  
+  // Check localStorage first (set by main page), but verify country code matches
   const stored = localStorage.getItem("site.currency");
-  if (stored && stored.length === 3) {
+  const storedCountry = localStorage.getItem("site.currency.country");
+  
+  // If cached currency exists AND country code matches, use cached value
+  if (stored && stored.length === 3 && storedCountry === cc) {
     return stored;
   }
   
-  // Fallback to IP-based detection
-  const cc = getCountryCode();
+  // Otherwise, detect fresh from IP
   if (cc && CC_TO_CURRENCY[cc]) {
     const detected = CC_TO_CURRENCY[cc];
-    // Store for consistency
+    // Store for consistency with country code
     localStorage.setItem("site.currency", detected);
+    localStorage.setItem("site.currency.country", cc);
     return detected;
   }
   
   // Default to USD if country detection fails
   localStorage.setItem("site.currency", "USD");
+  localStorage.setItem("site.currency.country", cc || "unknown");
   return "USD";
 }
 
