@@ -7,7 +7,7 @@
       "sections": [
         {
           "heading": "Space & Layout",
-          "description": "The tent features a well-planned, cosy interior with thoughtful touches for easy living.",
+          "description": "The tent features a well-planned, cozy interior with thoughtful touches for easy living.",
           "features": [
             "Platform: 3×6 m • Tent: 12 m²",
             "Side & back wall for privacy and shelter",
@@ -95,61 +95,16 @@
   },
   "en-US": {
     "safari": {
-      "eyebrow": "Safari Tent",
-      "heroTitle": "Comfort + Adventure in Canvas",
-      "heroDescription": "Experience the perfect balance of comfort and adventure. Set on a spacious 10×20 ft platform, this 130 sq ft canvas tent has protective side and back walls—giving you privacy and shelter while staying close to nature.",
-      "sections": [
-        {
-          "heading": "Space & Layout",
-          "description": "The tent features a well-planned, cozy interior with thoughtful touches for easy living.",
-          "features": [
-            "Platform: 10×20 ft • Tent: 130 sq ft",
-            "Side & back wall for privacy and shelter",
-            "Mosquito mesh on all windows & doors"
-          ]
-        },
-        {
-          "heading": "Sleep & Comfort",
-          "description": "Two twin beds with nightstands and shaded lamps can be combined into a King-size bed for guests who prefer a double configuration.",
-          "features": [
-            "Quality mattresses & bedside lighting",
-            "Powerful fan for cool summer nights",
-            "Power outlets for device charging",
-            "Small shelving unit for clothes & essentials"
-          ]
-        },
-        {
-          "heading": "Terrace & Garden",
-          "description": "Step onto your private terrace, furnished with rolled palm-leaf chairs. Enjoy views of the lush tropical garden—beautifully illuminated at night for a romantic ambiance.",
-          "features": [
-            "Private outdoor seating",
-            "Night lighting for serene evenings"
-          ]
-        },
-        {
-          "heading": "Bathrooms",
-          "description": "Guests have access to shared bathrooms, separate for ladies and gentlemen—kept clean and convenient.",
-          "features": [
-            "2× hot/cold water showers per side",
-            "2× toilets per side",
-            "Cold-water sinks"
-          ]
-        },
-        {
-          "heading": "Good to Know",
-          "description": "During public-holiday weekends and peak season (late December–early January), the village can be lively. Complimentary earplugs are available at reception to ensure a restful night's sleep.",
-          "closingNote": "A spacious, nature-immersed stay with modern comforts—perfect for travelers who want the outdoors without sacrificing convenience."
-        }
-      ],
-      "trustItems": [
-        "Nature-immersed comfort",
-        "Clean, well-maintained facilities",
-        "Relaxed, romantic evenings"
-      ],
-      "cta": {
-        "heading": "Ready to Book Your Safari Tent?",
-        "description": "Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team."
-      }
+      "title": "Safari Tent",
+      "shortDescription": "130 sq ft canvas tent on a 10×20 ft platform. Twin/King, fan, power outlets, mosquito mesh, private terrace. Shared bathrooms.",
+      "detailedFeatures": [
+        "Two twin beds (or King) with nightstands and shaded lamps",
+        "Mosquito mesh on doors/windows • strong fan • power outlets",
+        "Small shelving unit for clothing/essentials",
+        "Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "Village can be lively during holidays; free earplugs at reception"
+      ]
     },
     "comfort": {
       "title": "Comfort Tent",
@@ -187,199 +142,11 @@
       ]
     }
   },
-  "pt-PT": {
-    "safari": {
-      "eyebrow": "Tenda Safari",
-      "heroTitle": "Conforto + Aventura em Lona",
-      "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Situada numa plataforma espaçosa de 3×6 m, esta tenda de lona de 12 m² tem paredes laterais e traseiras protectoras—proporcionando privacidade e abrigo enquanto permanece próximo da natureza.",
-      "sections": [
-        {
-          "heading": "Espaço e Disposição",
-          "description": "A tenda apresenta um interior bem planeado e acolhedor com toques cuidadosos para uma vida fácil.",
-          "features": [
-            "Plataforma: 3×6 m • Tenda: 12 m²",
-            "Parede lateral e traseira para privacidade e abrigo",
-            "Rede mosquiteira em todas as janelas e portas"
-          ]
-        },
-        {
-          "heading": "Sono e Conforto",
-          "description": "Duas camas individuais com criados-mudos e candeeiros com sombra podem ser combinadas numa cama King-size para hóspedes que preferem uma configuração dupla.",
-          "features": [
-            "Colchões de qualidade e iluminação de cabeceira",
-            "Ventoinha potente para noites frescas de verão",
-            "Tomadas eléctricas para carregar dispositivos",
-            "Pequena unidade de prateleiras para roupa e essenciais"
-          ]
-        },
-        {
-          "heading": "Terraço e Jardim",
-          "description": "Entre no seu terraço privado, mobilado com cadeiras de folhas de palmeira enroladas. Desfrute de vistas do exuberante jardim tropical—lindamente iluminado à noite para um ambiente romântico.",
-          "features": [
-            "Lugar privado ao ar livre",
-            "Iluminação nocturna para serões serenos"
-          ]
-        },
-        {
-          "heading": "Casas de Banho",
-          "description": "Os hóspedes têm acesso a casas de banho partilhadas, separadas para senhoras e cavalheiros—mantidas limpas e convenientes.",
-          "features": [
-            "2× chuveiros de água quente/fria por lado",
-            "2× sanitas por lado",
-            "Lavatórios de água fria"
-          ]
-        },
-        {
-          "heading": "Bom Saber",
-          "description": "Durante os fins de semana de feriados públicos e época alta (final de Dezembro–início de Janeiro), a aldeia pode estar animada. Tampões para os ouvidos gratuitos estão disponíveis na recepção para garantir uma noite de sono repousante.",
-          "closingNote": "Uma estadia espaçosa e imersa na natureza com confortos modernos—perfeita para viajantes que querem o ar livre sem sacrificar a conveniência."
-        }
-      ],
-      "trustItems": [
-        "Conforto imerso na natureza",
-        "Instalações limpas e bem cuidadas",
-        "Serões relaxados e românticos"
-      ],
-      "cta": {
-        "heading": "Pronto para Reservar a Sua Tenda Safari?",
-        "description": "Garanta a sua escapadela imersa na natureza no DEVOCEAN Lodge. Reserva directa significa as melhores tarifas e apoio total da nossa equipa."
-      }
-    },
-    "comfort": {
-      "title": "Tenda Comfort",
-      "shortDescription": "Tenda melhorada de 12 m² com privacidade extra (paredes laterais/traseiras), terraço privado e a sua própria casa de banho privativa sob um tecto de colmo.",
-      "detailedFeatures": [
-        "Configuração de cama Twin/King • candeeiros • interruptores de luz convenientes",
-        "Rede mosquiteira • ventoinha forte • tomadas eléctricas",
-        "Terraço de madeira privado com cadeiras de folhas de palmeira enroladas",
-        "Nas traseiras: casa de banho privada (chuveiro, sanita, lavatório) sob um tecto de colmo de erva",
-        "Animação da aldeia durante picos/feriados; tampões para os ouvidos disponíveis"
-      ]
-    },
-    "cottage": {
-      "title": "Cottage de Jardim",
-      "shortDescription": "Cottage arejado com cama queen, A/C (inverter), secretária e mesa de jantar, terraço privado e casa de banho num encantador roundavel.",
-      "detailedFeatures": [
-        "Tecto de telha romana, tecto branco alto com vigas de madeira escura",
-        "Chão de terracota, paredes pintadas em campos de trigo quentes",
-        "Cama queen • secretária de trabalho com candeeiro com sombra • mesa de jantar com cadeiras",
-        "Prateleiras para malas, cabide de roupa e prateleiras extra",
-        "A/C inverter (frio e calor) • luz principal regulável",
-        "Casa de banho privada em roundavel de colmo de erva (chuveiro, lavatório, sanita)",
-        "Terraço de madeira privado com cadeiras de campismo e mesa lateral"
-      ]
-    },
-    "chalet": {
-      "title": "Chalet de Colmo",
-      "shortDescription": "Chalet pequeno romântico isolado sob palmeiras e strelitzia. A/C, casa de banho privada, terraço, configuração de cama Twin/King.",
-      "detailedFeatures": [
-        "Tecto de colmo de erva em postes de bluegum • chão de ardósia outonal",
-        "Paredes pintadas em campos de trigo • ambiente tranquilo e sombreado",
-        "Mesa de jantar com cadeiras • ar condicionado",
-        "Casa de banho privada (chuveiro, lavatório, sanita)",
-        "Duas individuais ou King com criados-mudos • terraço privado com cadeiras de folhas de palmeira"
-      ]
-    }
-  },
-  "pt-BR": {
-    "safari": {
-      "eyebrow": "Barraca Safari",
-      "heroTitle": "Conforto + Aventura em Lona",
-      "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Situada numa plataforma espaçosa de 3×6 m, esta barraca de lona de 12 m² tem paredes laterais e traseiras protetoras—proporcionando privacidade e abrigo enquanto permanece próximo da natureza.",
-      "sections": [
-        {
-          "heading": "Espaço e Disposição",
-          "description": "A barraca apresenta um interior bem planejado e aconchegante com toques cuidadosos para uma vida fácil.",
-          "features": [
-            "Plataforma: 3×6 m • Barraca: 12 m²",
-            "Parede lateral e traseira para privacidade e abrigo",
-            "Tela mosquiteira em todas as janelas e portas"
-          ]
-        },
-        {
-          "heading": "Sono e Conforto",
-          "description": "Duas camas de solteiro com criados-mudos e abajures podem ser combinadas numa cama King-size para hóspedes que preferem uma configuração dupla.",
-          "features": [
-            "Colchões de qualidade e iluminação de cabeceira",
-            "Ventilador potente para noites frescas de verão",
-            "Pontos de energia para carregar dispositivos",
-            "Pequena unidade de prateleiras para roupas e essenciais"
-          ]
-        },
-        {
-          "heading": "Terraço e Jardim",
-          "description": "Entre no seu terraço privativo, mobiliado com cadeiras de folhas de palmeira enroladas. Desfrute de vistas do exuberante jardim tropical—lindamente iluminado à noite para um ambiente romântico.",
-          "features": [
-            "Lugar privativo ao ar livre",
-            "Iluminação noturna para noitadas serenas"
-          ]
-        },
-        {
-          "heading": "Banheiros",
-          "description": "Os hóspedes têm acesso a banheiros compartilhados, separados para senhoras e cavalheiros—mantidos limpos e convenientes.",
-          "features": [
-            "2× chuveiros de água quente/fria por lado",
-            "2× toiletes por lado",
-            "Pias de água fria"
-          ]
-        },
-        {
-          "heading": "Bom Saber",
-          "description": "Durante os fins de semana de feriados públicos e temporada alta (final de dezembro–início de janeiro), a vila pode estar animada. Protetores auriculares gratuitos estão disponíveis na recepção para garantir uma noite de sono repousante.",
-          "closingNote": "Uma estadia espaçosa e imersa na natureza com confortos modernos—perfeita para viajantes que querem o ar livre sem sacrificar a conveniência."
-        }
-      ],
-      "trustItems": [
-        "Conforto imerso na natureza",
-        "Instalações limpas e bem cuidadas",
-        "Noitadas relaxadas e românticas"
-      ],
-      "cta": {
-        "heading": "Pronto para Reservar Sua Barraca Safari?",
-        "description": "Garanta sua escapada imersa na natureza no DEVOCEAN Lodge. Reserva direta significa as melhores tarifas e apoio total de nossa equipe."
-      }
-    },
-    "comfort": {
-      "title": "Barraca Comfort",
-      "shortDescription": "Barraca melhorada de 12 m² com privacidade extra (paredes laterais/traseiras), terraço privativo e seu próprio banheiro privativo sob um teto de sapé.",
-      "detailedFeatures": [
-        "Configuração de cama Twin/King • abajures • interruptores de luz convenientes",
-        "Tela mosquiteira • ventilador forte • pontos de energia",
-        "Terraço de madeira privativo com cadeiras de folhas de palmeira enroladas",
-        "Nas traseiras: banheiro privativo (chuveiro, toilete, pia) sob um teto de sapé de grama",
-        "Animação da vila durante picos/feriados; protetores auriculares disponíveis"
-      ]
-    },
-    "cottage": {
-      "title": "Chalé de Jardim",
-      "shortDescription": "Chalé arejado com cama queen, A/C (inverter), escrivaninha e mesa de jantar, terraço privativo e banheiro num encantador roundavel.",
-      "detailedFeatures": [
-        "Teto de telha romana, teto branco alto com vigas de madeira escura",
-        "Chão de terracota, paredes pintadas em campos de trigo quentes",
-        "Cama queen • escrivaninha de trabalho com abajur • mesa de jantar com cadeiras",
-        "Prateleiras para malas, cabideiro e prateleiras extras",
-        "A/C inverter (frio e calor) • luz principal regulável",
-        "Banheiro privativo em roundavel de sapé de grama (chuveiro, pia, toilete)",
-        "Terraço de madeira privativo com cadeiras de camping e mesa lateral"
-      ]
-    },
-    "chalet": {
-      "title": "Chalé de Sapé",
-      "shortDescription": "Chalé pequeno romântico isolado sob palmeiras e strelitzia. A/C, banheiro privativo, terraço, configuração de cama Twin/King.",
-      "detailedFeatures": [
-        "Teto de sapé de grama em postes de bluegum • chão de ardósia outonal",
-        "Paredes pintadas em campos de trigo • ambiente tranquilo e sombreado",
-        "Mesa de jantar com cadeiras • ar condicionado",
-        "Banheiro privativo (chuveiro, pia, toilete)",
-        "Duas de solteiro ou King com criados-mudos • terraço privativo com cadeiras de folhas de palmeira"
-      ]
-    }
-  },
   "nl-NL": {
     "safari": {
-      "eyebrow": "Safari Tent",
+      "eyebrow": "Safaritent",
       "heroTitle": "Comfort + Avontuur in Canvas",
-      "heroDescription": "Ervaar de perfecte balans tussen comfort en avontuur. Geplaatst op een ruim 3×6 m platform, heeft deze 12 m² canvas tent beschermende zij- en achterwanden—wat u privacy en beschutting geeft terwijl u dicht bij de natuur blijft.",
+      "heroDescription": "Ervaar de perfecte balans tussen comfort en avontuur. Geplaatst op een ruim 3×6 m platform, heeft deze 12 m² canvas tent beschermende zij- en achterwanden—die u privacy en beschutting bieden terwijl u dicht bij de natuur blijft.",
       "sections": [
         {
           "heading": "Ruimte en Indeling",
@@ -387,24 +154,24 @@
           "features": [
             "Platform: 3×6 m • Tent: 12 m²",
             "Zij- en achterwand voor privacy en beschutting",
-            "Muggennet op alle ramen en deuren"
+            "Muskietennet op alle ramen en deuren"
           ]
         },
         {
-          "heading": "Slapen en Comfort",
+          "heading": "Slaap en Comfort",
           "description": "Twee eenpersoonsbedden met nachtkastjes en schaduwlampen kunnen worden gecombineerd tot een King-size bed voor gasten die de voorkeur geven aan een dubbele configuratie.",
           "features": [
             "Kwaliteitsmatrassen en bedverlichting",
             "Krachtige ventilator voor koele zomernachten",
             "Stopcontacten voor het opladen van apparaten",
-            "Kleine plankenunit voor kleding en essentiële zaken"
+            "Klein rekje voor kleding en essentiële items"
           ]
         },
         {
           "heading": "Terras en Tuin",
-          "description": "Stap op uw privé terras, gemeubileerd met gerolde palmblad stoelen. Geniet van het uitzicht op de weelderige tropische tuin—prachtig verlicht 's nachts voor een romantische sfeer.",
+          "description": "Stap op uw privéterras, ingericht met opgerolde palmbladstoelen. Geniet van het uitzicht op de weelderige tropische tuin—prachtig verlicht 's nachts voor een romantische ambiance.",
           "features": [
-            "Privé buitenzitplaats",
+            "Privé buitenzitplaatsen",
             "Nachtverlichting voor serene avonden"
           ]
         },
@@ -414,13 +181,13 @@
           "features": [
             "2× warm/koud water douches per kant",
             "2× toiletten per kant",
-            "Koudwater wastafels"
+            "Koudwatergootstenen"
           ]
         },
         {
           "heading": "Goed om te Weten",
-          "description": "Tijdens openbare feestdagen en het hoogseizoen (eind december–begin januari), kan het dorp levendig zijn. Gratis oordopjes zijn beschikbaar bij de receptie om een goede nachtrust te garanderen.",
-          "closingNote": "Een ruim, in de natuur ondergedompeld verblijf met moderne gemakken—perfect voor reizigers die het buitenleven willen zonder comfort op te offeren."
+          "description": "Tijdens feestdagen in het weekend en het hoogseizoen (eind december–begin januari) kan het dorp levendig zijn. Gratis oordopjes zijn beschikbaar bij de receptie om een goede nachtrust te garanderen.",
+          "closingNote": "Een ruim, in de natuur ondergedompeld verblijf met modern comfort—perfect voor reizigers die het buitenleven willen zonder gemak op te offeren."
         }
       ],
       "trustItems": [
@@ -429,8 +196,8 @@
         "Ontspannen, romantische avonden"
       ],
       "cta": {
-        "heading": "Klaar om uw Safari Tent te Boeken?",
-        "description": "Beveilig uw in de natuur ondergedompelde ontsnapping bij DEVOCEAN Lodge. Direct boeken betekent de beste tarieven en volledige ondersteuning van ons team."
+        "heading": "Klaar om Uw Safaritent te Boeken?",
+        "description": "Verzeker uw natuurlijke ontsnapping bij DEVOCEAN Lodge. Direct boeken betekent de beste tarieven en volledige ondersteuning van ons team."
       }
     },
     "comfort": {
@@ -471,61 +238,16 @@
   },
   "fr-FR": {
     "safari": {
-      "eyebrow": "Tente Safari",
-      "heroTitle": "Confort + Aventure en Toile",
-      "heroDescription": "Découvrez l'équilibre parfait entre confort et aventure. Installée sur une plateforme spacieuse de 3×6 m, cette tente en toile de 12 m² possède des parois latérales et arrière protectrices—vous offrant intimité et abri tout en restant proche de la nature.",
-      "sections": [
-        {
-          "heading": "Espace et Disposition",
-          "description": "La tente dispose d'un intérieur bien pensé et douillet avec des touches réfléchies pour une vie facile.",
-          "features": [
-            "Plateforme : 3×6 m • Tente : 12 m²",
-            "Mur latéral et arrière pour l'intimité et l'abri",
-            "Moustiquaire sur toutes les fenêtres et portes"
-          ]
-        },
-        {
-          "heading": "Sommeil et Confort",
-          "description": "Deux lits simples avec chevets et lampes ombragées peuvent être combinés en un lit King-size pour les clients qui préfèrent une configuration double.",
-          "features": [
-            "Matelas de qualité et éclairage de chevet",
-            "Ventilateur puissant pour les nuits fraîches d'été",
-            "Prises électriques pour recharger les appareils",
-            "Petite unité d'étagères pour vêtements et essentiels"
-          ]
-        },
-        {
-          "heading": "Terrasse et Jardin",
-          "description": "Accédez à votre terrasse privée, meublée de chaises en feuilles de palmier roulées. Profitez de vues sur le jardin tropical luxuriant—magnifiquement éclairé la nuit pour une ambiance romantique.",
-          "features": [
-            "Salon extérieur privé",
-            "Éclairage nocturne pour des soirées sereines"
-          ]
-        },
-        {
-          "heading": "Salles de Bains",
-          "description": "Les clients ont accès à des salles de bains partagées, séparées pour dames et messieurs—maintenues propres et pratiques.",
-          "features": [
-            "2× douches eau chaude/froide par côté",
-            "2× toilettes par côté",
-            "Lavabos à eau froide"
-          ]
-        },
-        {
-          "heading": "Bon à Savoir",
-          "description": "Pendant les week-ends de jours fériés et la haute saison (fin décembre–début janvier), le village peut être animé. Des bouchons d'oreilles gratuits sont disponibles à la réception pour assurer une bonne nuit de sommeil.",
-          "closingNote": "Un séjour spacieux et immergé dans la nature avec des conforts modernes—parfait pour les voyageurs qui veulent l'extérieur sans sacrifier la commodité."
-        }
-      ],
-      "trustItems": [
-        "Confort immergé dans la nature",
-        "Installations propres et bien entretenues",
-        "Soirées détendues et romantiques"
-      ],
-      "cta": {
-        "heading": "Prêt à Réserver Votre Tente Safari ?",
-        "description": "Sécurisez votre escapade immergée dans la nature au DEVOCEAN Lodge. La réservation directe signifie les meilleurs tarifs et un soutien complet de notre équipe."
-      }
+      "title": "Tente Safari",
+      "shortDescription": "Tente en toile de 12 m² sur une plateforme de 3×6 m. Twin/King, ventilateur, prises de courant, moustiquaire, terrasse privée. Sanitaires partagés.",
+      "detailedFeatures": [
+        "Deux lits simples (ou King) avec chevets et lampes ombragées",
+        "Moustiquaire sur portes/fenêtres • ventilateur puissant • prises de courant",
+        "Petite étagère pour vêtements/essentiels",
+        "Terrasse privée avec chaises en feuilles de palmier roulées face au jardin tropical",
+        "Salles de bains partagées (dames/messieurs): 2 douches chaudes/froides & 2 toilettes chacune",
+        "Le village peut être animé pendant les vacances; bouchons d'oreilles gratuits à la réception"
+      ]
     },
     "comfort": {
       "title": "Tente Comfort",
@@ -565,61 +287,16 @@
   },
   "it-IT": {
     "safari": {
-      "eyebrow": "Tenda Safari",
-      "heroTitle": "Comfort + Avventura in Tela",
-      "heroDescription": "Scopri il perfetto equilibrio tra comfort e avventura. Situata su una spaziosa piattaforma di 3×6 m, questa tenda in tela di 12 m² ha pareti laterali e posteriori protettive—offrendoti privacy e riparo rimanendo vicino alla natura.",
-      "sections": [
-        {
-          "heading": "Spazio e Disposizione",
-          "description": "La tenda presenta un interno ben pianificato e accogliente con tocchi ponderati per una vita facile.",
-          "features": [
-            "Piattaforma: 3×6 m • Tenda: 12 m²",
-            "Parete laterale e posteriore per privacy e riparo",
-            "Rete antizanzare su tutte le finestre e porte"
-          ]
-        },
-        {
-          "heading": "Sonno e Comfort",
-          "description": "Due letti singoli con comodini e lampade ombreggiate possono essere combinati in un letto King-size per gli ospiti che preferiscono una configurazione doppia.",
-          "features": [
-            "Materassi di qualità e illuminazione da comodino",
-            "Ventilatore potente per notti estive fresche",
-            "Prese elettriche per ricaricare dispositivi",
-            "Piccola unità di scaffali per vestiti ed essenziali"
-          ]
-        },
-        {
-          "heading": "Terrazza e Giardino",
-          "description": "Entra nella tua terrazza privata, arredata con sedie di foglie di palma arrotolate. Goditi le viste del rigoglioso giardino tropicale—magnificamente illuminato di notte per un'atmosfera romantica.",
-          "features": [
-            "Seduta privata all'aperto",
-            "Illuminazione notturna per serate serene"
-          ]
-        },
-        {
-          "heading": "Bagni",
-          "description": "Gli ospiti hanno accesso a bagni condivisi, separati per signore e signori—tenuti puliti e convenienti.",
-          "features": [
-            "2× docce acqua calda/fredda per lato",
-            "2× wc per lato",
-            "Lavandini acqua fredda"
-          ]
-        },
-        {
-          "heading": "Buono a Sapersi",
-          "description": "Durante i fine settimana festivi e l'alta stagione (fine dicembre–inizio gennaio), il villaggio può essere vivace. Tappi per le orecchie gratuiti sono disponibili alla reception per garantire una notte di sonno riposante.",
-          "closingNote": "Un soggiorno spazioso e immerso nella natura con comfort moderni—perfetto per viaggiatori che vogliono l'esterno senza sacrificare la comodità."
-        }
-      ],
-      "trustItems": [
-        "Comfort immerso nella natura",
-        "Strutture pulite e ben mantenute",
-        "Serate rilassate e romantiche"
-      ],
-      "cta": {
-        "heading": "Pronto a Prenotare la Tua Tenda Safari?",
-        "description": "Assicurati la tua fuga immersa nella natura al DEVOCEAN Lodge. La prenotazione diretta significa le migliori tariffe e il pieno supporto del nostro team."
-      }
+      "title": "Tenda Safari",
+      "shortDescription": "Tenda in tela di 12 m² su una piattaforma di 3×6 m. Twin/King, ventilatore, prese di corrente, rete antizanzare, terrazza privata. Bagni condivisi.",
+      "detailedFeatures": [
+        "Due letti singoli (o King) con comodini e lampade ombreggiate",
+        "Rete antizanzare su porte/finestre • ventilatore forte • prese di corrente",
+        "Piccola scaffalatura per abbigliamento/essenziali",
+        "Terrazza privata con sedie di foglie di palma arrotolate affacciate sul giardino tropicale",
+        "Bagni condivisi (signore/signori): 2 docce calde/fredde & 2 wc ciascuno",
+        "Il villaggio può essere vivace durante le vacanze; tappi per le orecchie gratuiti alla reception"
+      ]
     },
     "comfort": {
       "title": "Tenda Comfort",
@@ -659,61 +336,16 @@
   },
   "de-DE": {
     "safari": {
-      "eyebrow": "Safari Zelt",
-      "heroTitle": "Komfort + Abenteuer in Leinwand",
-      "heroDescription": "Erleben Sie die perfekte Balance zwischen Komfort und Abenteuer. Auf einer geräumigen 3×6 m Plattform gelegen, hat dieses 12 m² Leinenzelt schützende Seiten- und Rückwände—die Ihnen Privatsphäre und Schutz bieten, während Sie der Natur nahe bleiben.",
-      "sections": [
-        {
-          "heading": "Raum und Aufteilung",
-          "description": "Das Zelt verfügt über ein gut geplantes, gemütliches Interieur mit durchdachten Details für einfaches Leben.",
-          "features": [
-            "Plattform: 3×6 m • Zelt: 12 m²",
-            "Seiten- und Rückwand für Privatsphäre und Schutz",
-            "Moskitonetz an allen Fenstern und Türen"
-          ]
-        },
-        {
-          "heading": "Schlaf und Komfort",
-          "description": "Zwei Einzelbetten mit Nachttischen und schattierten Lampen können zu einem King-Size-Bett für Gäste kombiniert werden, die eine Doppelkonfiguration bevorzugen.",
-          "features": [
-            "Qualitätsmatratzen und Nachttischbeleuchtung",
-            "Starker Ventilator für kühle Sommernächte",
-            "Steckdosen zum Aufladen von Geräten",
-            "Kleine Regaleinheit für Kleidung und Essentials"
-          ]
-        },
-        {
-          "heading": "Terrasse und Garten",
-          "description": "Betreten Sie Ihre private Terrasse, möbliert mit gerollten Palmblattstühlen. Genießen Sie Ausblicke auf den üppigen tropischen Garten—wunderschön beleuchtet nachts für eine romantische Atmosphäre.",
-          "features": [
-            "Private Außensitzgelegenheit",
-            "Nachtbeleuchtung für ruhige Abende"
-          ]
-        },
-        {
-          "heading": "Badezimmer",
-          "description": "Gäste haben Zugang zu gemeinsamen Badezimmern, getrennt für Damen und Herren—sauber und bequem gehalten.",
-          "features": [
-            "2× warm/kalt Wasser Duschen pro Seite",
-            "2× Toiletten pro Seite",
-            "Kaltwasser Waschbecken"
-          ]
-        },
-        {
-          "heading": "Gut zu Wissen",
-          "description": "Während öffentlicher Feiertage und Hochsaison (Ende Dezember–Anfang Januar) kann das Dorf lebhaft sein. Kostenlose Ohrstöpsel sind an der Rezeption verfügbar, um eine erholsame Nachtruhe zu gewährleisten.",
-          "closingNote": "Ein geräumiger, naturverbundener Aufenthalt mit modernen Annehmlichkeiten—perfekt für Reisende, die die Natur wollen, ohne auf Bequemlichkeit zu verzichten."
-        }
-      ],
-      "trustItems": [
-        "Naturverbundener Komfort",
-        "Saubere, gut gepflegte Einrichtungen",
-        "Entspannte, romantische Abende"
-      ],
-      "cta": {
-        "heading": "Bereit, Ihr Safari Zelt zu Buchen?",
-        "description": "Sichern Sie sich Ihren naturverbundenen Rückzugsort im DEVOCEAN Lodge. Direktbuchung bedeutet die besten Preise und volle Unterstützung von unserem Team."
-      }
+      "title": "Safari Zelt",
+      "shortDescription": "12 m² Leinenzelt auf einer 3×6 m Plattform. Twin/King, Ventilator, Steckdosen, Moskitonetz, private Terrasse. Gemeinsame Waschräume.",
+      "detailedFeatures": [
+        "Zwei Einzelbetten (oder King) mit Sockeln und schattierten Lampen",
+        "Moskitonetz an Türen/Fenstern • starker Ventilator • Steckdosen",
+        "Kleines Regalsystem für Kleidung/Essentials",
+        "Private Terrasse mit gerollten Palmblattstühlen mit Blick auf den tropischen Garten",
+        "Gemeinsame Badezimmer (Damen/Herren): 2 heiße/kalte Duschen & 2 Toiletten jeweils",
+        "Dorf kann lebhaft sein während der Ferien; kostenlose Ohrstöpsel an der Rezeption"
+      ]
     },
     "comfort": {
       "title": "Comfort Zelt",
@@ -730,9 +362,9 @@
       "title": "Garten Cottage",
       "shortDescription": "Luftiges Cottage mit Queen-Bett, A/C (Inverter), Schreibtisch & Esstisch, private Terrasse und Badezimmer in einem charmanten Roundavel.",
       "detailedFeatures": [
-        "Römisches Ziegeldach, hohe weiße Decke mit dunklen Holzbalken",
+        "Römisches Ziegeldach, hohe weiße Decke mit dunklen Holzbal ken",
         "Terrakotta-Boden, warme Weizenfelder-bemalte Wände",
-        "Queen-Bett • Arbeitsschreibtisch mit schattierter Lampe • Esstisch mit Stühlen",
+        "Queen-Bett • Arbeitsschrei btisch mit schattierter Lampe • Esstisch mit Stühlen",
         "Kofferregale, Kleiderständer und extra Regale",
         "Inverter A/C (kühl & heiz) • dimmbare Hauptbeleuchtung",
         "Privates Bad in Gras-Reet Roundavel (Dusche, Waschbecken, Toilette)",
@@ -753,61 +385,16 @@
   },
   "es-ES": {
     "safari": {
-      "eyebrow": "Tienda Safari",
-      "heroTitle": "Comodidad + Aventura en Lona",
-      "heroDescription": "Experimenta el equilibrio perfecto entre comodidad y aventura. Situada en una espaciosa plataforma de 3×6 m, esta tienda de lona de 12 m² tiene paredes laterales y traseras protectoras—brindándote privacidad y refugio mientras permaneces cerca de la naturaleza.",
-      "sections": [
-        {
-          "heading": "Espacio y Distribución",
-          "description": "La tienda presenta un interior bien planificado y acogedor con toques reflexivos para una vida fácil.",
-          "features": [
-            "Plataforma: 3×6 m • Tienda: 12 m²",
-            "Pared lateral y trasera para privacidad y refugio",
-            "Malla contra mosquitos en todas las ventanas y puertas"
-          ]
-        },
-        {
-          "heading": "Sueño y Comodidad",
-          "description": "Dos camas individuales con mesitas de noche y lámparas con sombra pueden combinarse en una cama King-size para huéspedes que prefieren una configuración doble.",
-          "features": [
-            "Colchones de calidad e iluminación de mesita de noche",
-            "Ventilador potente para noches frescas de verano",
-            "Tomas de corriente para cargar dispositivos",
-            "Pequeña unidad de estanterías para ropa y esenciales"
-          ]
-        },
-        {
-          "heading": "Terraza y Jardín",
-          "description": "Accede a tu terraza privada, amueblada con sillas de hoja de palma enrollada. Disfruta de vistas al exuberante jardín tropical—bellamente iluminado por la noche para un ambiente romántico.",
-          "features": [
-            "Asiento privado al aire libre",
-            "Iluminación nocturna para veladas serenas"
-          ]
-        },
-        {
-          "heading": "Baños",
-          "description": "Los huéspedes tienen acceso a baños compartidos, separados para damas y caballeros—mantenidos limpios y convenientes.",
-          "features": [
-            "2× duchas de agua caliente/fría por lado",
-            "2× inodoros por lado",
-            "Lavabos de agua fría"
-          ]
-        },
-        {
-          "heading": "Bueno Saber",
-          "description": "Durante los fines de semana de días festivos y temporada alta (finales de diciembre–principios de enero), el pueblo puede estar animado. Tapones para los oídos gratuitos están disponibles en recepción para asegurar una noche de sueño reparador.",
-          "closingNote": "Una estancia espaciosa e inmersa en la naturaleza con comodidades modernas—perfecta para viajeros que quieren el aire libre sin sacrificar la conveniencia."
-        }
-      ],
-      "trustItems": [
-        "Comodidad inmersa en la naturaleza",
-        "Instalaciones limpias y bien mantenidas",
-        "Veladas relajadas y románticas"
-      ],
-      "cta": {
-        "heading": "¿Listo para Reservar tu Tienda Safari?",
-        "description": "Asegura tu escapada inmersa en la naturaleza en DEVOCEAN Lodge. La reserva directa significa las mejores tarifas y apoyo total de nuestro equipo."
-      }
+      "title": "Tienda Safari",
+      "shortDescription": "Tienda de lona de 12 m² en una plataforma de 3×6 m. Twin/King, ventilador, tomas de corriente, malla contra mosquitos, terraza privada. Baños compartidos.",
+      "detailedFeatures": [
+        "Dos camas individuales (o King) con pedestales y lámparas sombreadas",
+        "Malla contra mosquitos en puertas/ventanas • ventilador fuerte • tomas de corriente",
+        "Pequeña unidad de estanterías para ropa/esenciales",
+        "Terraza privada con sillas de hoja de palma enrollada facing el jardín tropical",
+        "Baños compartidos (damas/caballeros): 2 duchas calientes/frías & 2 inodoros cada uno",
+        "El pueblo puede ser animado durante las vacaciones; tapones para los oídos gratuitos en recepción"
+      ]
     },
     "comfort": {
       "title": "Tienda Comfort",
@@ -847,61 +434,16 @@
   },
   "sv": {
     "safari": {
-      "eyebrow": "Safari Tält",
-      "heroTitle": "Komfort + Äventyr i Duk",
-      "heroDescription": "Upplev den perfekta balansen mellan komfort och äventyr. Placerad på en rymlig 3×6 m plattform, har detta 12 m² duktält skyddande sido- och bakväggar—som ger dig integritet och skydd medan du stannar nära naturen.",
-      "sections": [
-        {
-          "heading": "Utrymme och Layout",
-          "description": "Tältet har en välplanerad, mysig interiör med genomtänkta detaljer för enkelt liv.",
-          "features": [
-            "Plattform: 3×6 m • Tält: 12 m²",
-            "Sido- och bakvägg för integritet och skydd",
-            "Myggnät på alla fönster och dörrar"
-          ]
-        },
-        {
-          "heading": "Sömn och Komfort",
-          "description": "Två enkelsängar med nattduksbord och skuggade lampor kan kombineras till en King-size säng för gäster som föredrar en dubbel konfiguration.",
-          "features": [
-            "Kvalitetsmadrasser och sängbelysning",
-            "Kraftfull fläkt för svala sommarnätter",
-            "Eluttag för att ladda enheter",
-            "Liten hyllenhet för kläder och essentiella saker"
-          ]
-        },
-        {
-          "heading": "Terrass och Trädgård",
-          "description": "Gå ut på din privata terrass, möblerad med rullade palmblad stolar. Njut av utsikt över den frodiga tropiska trädgården—vackert upplyst på natten för en romantisk atmosfär.",
-          "features": [
-            "Privat utomhussittplats",
-            "Nattbelysning för fridfulla kvällar"
-          ]
-        },
-        {
-          "heading": "Badrum",
-          "description": "Gäster har tillgång till delade badrum, separata för damer och herrar—hålls rena och bekväma.",
-          "features": [
-            "2× varm/kall vatten duschar per sida",
-            "2× toaletter per sida",
-            "Kaltvattens handfat"
-          ]
-        },
-        {
-          "heading": "Bra att Veta",
-          "description": "Under helghelger och högsäsong (slutet av december–början av januari) kan byn vara livlig. Gratis öronproppar finns tillgängliga vid receptionen för att säkerställa en god nattsömn.",
-          "closingNote": "En rymlig, naturfördjupad vistelse med moderna bekvämligheter—perfekt för resenärer som vill ha utomhus utan att offra bekvämlighet."
-        }
-      ],
-      "trustItems": [
-        "Naturfördjupad komfort",
-        "Rena, välskötta faciliteter",
-        "Avslappnade, romantiska kvällar"
-      ],
-      "cta": {
-        "heading": "Redo att Boka Ditt Safari Tält?",
-        "description": "Säkra din naturfördjupade flykt vid DEVOCEAN Lodge. Direktbokning betyder de bästa priserna och fullt stöd från vårt team."
-      }
+      "title": "Safari Tält",
+      "shortDescription": "12 m² duk tält på en 3×6 m plattform. Twin/King, fläkt, eluttag, myggnät, privat terrass. Delade badrum.",
+      "detailedFeatures": [
+        "Två enkelsängar (eller King) med nattduksbord och skuggade lampor",
+        "Myggnät på dörrar/fönster • stark fläkt • eluttag",
+        "Liten hylla för kläder/essentials",
+        "Privat terrass med rullade palmblad stolar mot den tropiska trädgården",
+        "Delade badrum (dam/herr): 2 varma/kalla duschar & 2 toaletter vardera",
+        "Byn kan vara livlig under helgdagar; gratis öronproppar vid receptionen"
+      ]
     },
     "comfort": {
       "title": "Comfort Tält",
@@ -941,61 +483,16 @@
   },
   "pl": {
     "safari": {
-      "eyebrow": "Namiot Safari",
-      "heroTitle": "Komfort + Przygoda w Płótnie",
-      "heroDescription": "Doświadcz idealnej równowagi między komfortem a przygodą. Ustawiony na przestronnej platformie 3×6 m, ten 12 m² płócienny namiot ma ochronne ściany boczne i tylne—zapewniając prywatność i schronienie pozostając blisko natury.",
-      "sections": [
-        {
-          "heading": "Przestrzeń i Układ",
-          "description": "Namiot posiada dobrze zaplanowane, przytulne wnętrze z przemyślanymi detalami dla łatwego życia.",
-          "features": [
-            "Platforma: 3×6 m • Namiot: 12 m²",
-            "Ściana boczna i tylna dla prywatności i schronienia",
-            "Siatka przeciw moskitom na wszystkich oknach i drzwiach"
-          ]
-        },
-        {
-          "heading": "Sen i Komfort",
-          "description": "Dwa łóżka pojedyncze z szafkami nocnymi i lampami z cieniami mogą być połączone w łóżko King-size dla gości, którzy preferują konfigurację podwójną.",
-          "features": [
-            "Materace wysokiej jakości i oświetlenie przy łóżku",
-            "Mocny wentylator na chłodne letnie noce",
-            "Gniazdka elektryczne do ładowania urządzeń",
-            "Mała jednostka regałowa na ubrania i niezbędne rzeczy"
-          ]
-        },
-        {
-          "heading": "Taras i Ogród",
-          "description": "Wyjdź na swój prywatny taras, wyposażony w zwinięte krzesła z liści palmowych. Ciesz się widokiem na bujny tropikalny ogród—pięknie oświetlony nocą dla romantycznej atmosfery.",
-          "features": [
-            "Prywatne siedzisko na zewnątrz",
-            "Oświetlenie nocne dla spokojnych wieczorów"
-          ]
-        },
-        {
-          "heading": "Łazienki",
-          "description": "Goście mają dostęp do wspólnych łazienek, oddzielnych dla pań i panów—utrzymywanych w czystości i wygodnych.",
-          "features": [
-            "2× prysznice z ciepłą/zimną wodą na stronę",
-            "2× toalety na stronę",
-            "Umywalki z zimną wodą"
-          ]
-        },
-        {
-          "heading": "Dobrze Wiedzieć",
-          "description": "Podczas weekendów świątecznych i sezonu szczytowego (koniec grudnia–początek stycznia), wioska może być ożywiona. Darmowe zatyczki do uszu są dostępne w recepcji, aby zapewnić spokojny sen.",
-          "closingNote": "Przestronny, zanurzony w naturze pobyt z nowoczesnymi wygodami—idealny dla podróżników, którzy chcą na świeżym powietrzu bez poświęcania wygody."
-        }
-      ],
-      "trustItems": [
-        "Komfort zanurzony w naturze",
-        "Czyste, dobrze utrzymane obiekty",
-        "Relaksujące, romantyczne wieczory"
-      ],
-      "cta": {
-        "heading": "Gotowy Zarezerwować Swój Namiot Safari?",
-        "description": "Zabezpiecz swoją ucieczkę zanurzoną w naturze w DEVOCEAN Lodge. Bezpośrednia rezerwacja oznacza najlepsze stawki i pełne wsparcie od naszego zespołu."
-      }
+      "title": "Namiot Safari",
+      "shortDescription": "Namiot płócienny 12 m² na platformie 3×6 m. Twin/King, wentylator, gniazdka elektryczne, siatka przeciw moskitom, prywatny taras. Wspólne łazienki.",
+      "detailedFeatures": [
+        "Dwa łóżka pojedyncze (lub King) z cokołami i lampami zacienionymi",
+        "Siatka przeciw moskitom na drzwiach/oknach • silny wentylator • gniazdka elektryczne",
+        "Mała jednostka regałowa na odzież/esencjonalne",
+        "Prywatny taras z zwijanymi krzesłami z liści palmowych skierowanymi do tropikalnego ogrodu",
+        "Wspólne łazienki (panie/panowie): 2 prysznice gorące/zimne & 2 toalety każda",
+        "Wioska może być ożywiona podczas świąt; darmowe zatyczki do uszu w recepcji"
+      ]
     },
     "comfort": {
       "title": "Namiot Comfort",
@@ -1022,11 +519,11 @@
       ]
     },
     "chalet": {
-      "title": "Chalet ze Strzechy",
-      "shortDescription": "Odosobniony, romantyczny mały chalet pod palmami i strelitzia. A/C, prywatna łazienka, taras, ustawienie łóżka Twin/King.",
+      "title": "Chata ze Strzechy",
+      "shortDescription": "Ukryty, romantyczny mały chata pod palmami i strelitzia. A/C, prywatna łazienka, taras, ustawienie łóżka Twin/King.",
       "detailedFeatures": [
-        "Dach ze strzechy z trawy na słupach bluegum • jesienna łupkowa podłoga",
-        "Malowane ściany pól pszenicznych • spokojna, zacieniona okolica",
+        "Strzecha z trawy na słupach bluegum • jesienny łupkowy podłoga",
+        "Malowane ściany pól pszenicznych • spokojne, zacienione otoczenie",
         "Stół jadalny z krzesłami • klimatyzacja",
         "Prywatna łazienka (prysznic, umywalka, toaleta)",
         "Dwa pojedyncze lub King z cokołami • prywatny taras z krzesłami z liści palmowych"
@@ -1035,565 +532,483 @@
   },
   "af-ZA": {
     "safari": {
-      "eyebrow": "Safari Tent",
-      "heroTitle": "Gemak + Avontuur in Doek",
-      "heroDescription": "Ervaar die perfekte balans tussen gemak en avontuur. Geplaas op 'n ruim 3×6 m platform, het hierdie 12 m² doektent beskermende sy- en agtermure—wat privaatheid en skuiling bied terwyl jy naby die natuur bly.",
-      "sections": [
-        {
-          "heading": "Ruimte en Uitleg",
-          "description": "Die tent beskik oor 'n goed beplande, gesellige binnekant met deurdagte raakpunte vir maklike lewe.",
-          "features": [
-            "Platform: 3×6 m • Tent: 12 m²",
-            "Sy- en agtermuur vir privaatheid en skuiling",
-            "Muskietnet op alle vensters en deure"
-          ]
-        },
-        {
-          "heading": "Slaap en Gemak",
-          "description": "Twee enkelbeddens met bedsytafels en geskaduweerde lampe kan gekombineer word in 'n King-grootte bed vir gaste wat 'n dubbele konfigurasie verkies.",
-          "features": [
-            "Kwaliteit matresse en bedsyverligting",
-            "Kragtige waaier vir koel somernag",
-            "Kragpunte vir toestel laai",
-            "Klein rakke-eenheid vir klere en noodsaaklikhede"
-          ]
-        },
-        {
-          "heading": "Terras en Tuin",
-          "description": "Tree op jou private terras, gemeubileer met gerolde palmblaar stoele. Geniet uitsigte van die weelderige tropiese tuin—pragtig verlig snags vir 'n romantiese atmosfeer.",
-          "features": [
-            "Private buitezitplek",
-            "Nagverligting vir rustige aande"
-          ]
-        },
-        {
-          "heading": "Badkamers",
-          "description": "Gaste het toegang tot gedeelde badkamers, apart vir dames en here—skoon en gerieflik gehou.",
-          "features": [
-            "2× warm/koue water storte per kant",
-            "2× toilette per kant",
-            "Kouewater wasbakke"
-          ]
-        },
-        {
-          "heading": "Goed om te Weet",
-          "description": "Tydens openbare vakansie naweke en piekseisoen (laat Desember–vroeg Januarie), kan die dorp lewendig wees. Gratis oordoppe is beskikbaar by die ontvangs om 'n rustige nagslaap te verseker.",
-          "closingNote": "'n Ruim, natuur-gedompelde verblyf met moderne geriewe—perfek vir reisigers wat die buite wil hê sonder om gerief op te offer."
-        }
-      ],
-      "trustItems": [
-        "Natuur-gedompelde gemak",
-        "Skoon, goed-onderhoue fasiliteite",
-        "Ontspanne, romantiese aande"
-      ],
-      "cta": {
-        "heading": "Gereed om Jou Safari Tent te Bespreek?",
-        "description": "Verseker jou natuur-gedompelde ontvlugting by DEVOCEAN Lodge. Direkte bespreking beteken die beste tariewe en volle ondersteuning van ons span."
-      }
+      "title": "Safari Tent",
+      "shortDescription": "12 m² doek tent op 'n 3×6 m platform. Twin/King, waai, kragpunte, muskietnet, private terras. Gedeelde ablusions.",
+      "detailedFeatures": [
+        "Twee enkelbeddens (of King) met pedestale en skadulampies",
+        "Muskietnet op deure/vensters • sterk waai • kragpunte",
+        "Klein rakkie vir klere/essensiële",
+        "Private terras met gerol palmblaar stoele gerig op die tropiese tuin",
+        "Gedeelde badkamers (dames/heren): 2 warm/koue storte & 2 toilette elk",
+        "Dorp kan lewendig wees tydens vakansies; gratis oordoppe by resepsie"
+      ]
     },
     "comfort": {
       "title": "Comfort Tent",
-      "shortDescription": "Opgegradeerde 12 m² tent met ekstra privaatheid (sy/agtermure), private terras en jou eie en-suite badkamer onder 'n riettdak.",
+      "shortDescription": "Opgegradeerde 12 m² tent met ekstra privaatheid (sy/agter mure), private terras en jou eie en-suite badkamer onder 'n grasdak.",
       "detailedFeatures": [
-        "Twin/King bed opstelling • lampe • gerieflike ligskakelaars",
-        "Muskietnet • sterk waaier • kragpunte",
-        "Private hout terras met gerolde palmblaar stoele",
-        "Aan die agterkant: private badkamer (stort, toilet, wasbak) onder 'n gras-riet dak",
+        "Twin/King bed opstelling • lampies • gerieflike ligskakelaars",
+        "Muskietnet • sterk waai • kragpunte",
+        "Private hout terras met gerol palmblaar stoele",
+        "By die agterkant: private badkamer (stort, toilet, wasbak) onder 'n grasdak",
         "Dorp lewendigheid tydens piek/vakansies; oordoppe beskikbaar"
       ]
     },
     "cottage": {
       "title": "Tuin Cottage",
-      "shortDescription": "Lugtige cottage met queen bed, A/C (omskakelaar), lessenaar & eettafel, private terras en badkamer in 'n bekoorlike roundavel.",
+      "shortDescription": "Lugagtige cottage met queen bed, A/C (omskakelaar), lessenaar & eetafel, private terras en badkamer in 'n bekoorlike roundavel.",
       "detailedFeatures": [
-        "Romeinse teëldak, hoë wit plafon met donker hout balke",
-        "Terracotta vloer, warm koringvelde-geverf mure",
-        "Queen bed • werkslessenaar met geskaduweerde lamp • eettafel met stoele",
-        "Tas rakke, klereras en ekstra rakke",
-        "Omskakelaar A/C (koel & hitte) • dimbare hooflig",
-        "Private bad in gras-riet roundavel (stort, wasbak, toilet)",
-        "Private hout terras met kampeer stoele en sytafel"
+        "Romeinse teëldak, hoë wit plafon met donker houtbalke",
+        "Terracotta vloer, warm koringvelde-geschilderde mure",
+        "Queen bed • werklessenaar met skadulamp • eetafel met stoele",
+        "Koffer rakkies, klere rek en ekstra rakkies",
+        "Omsakelaar A/C (koel & hitte) • dimbare hooflig",
+        "Private bad in grasdak roundavel (stort, wasbak, toilet)",
+        "Private hout terras met kamp stoele en sytafel"
       ]
     },
     "chalet": {
-      "title": "Rietdak Chalet",
-      "shortDescription": "Afgesonderde, romantiese klein chalet onder palms en strelitzia. A/C, private badkamer, terras, Twin/King bed opstelling.",
+      "title": "Grasdak Chalet",
+      "shortDescription": "Afgesonderde, romantiese klein chalet onder palmbome en strelitzia. A/C, private badkamer, terras, Twin/King bed opstelling.",
       "detailedFeatures": [
-        "Gras-riet dak op bloekom pale • herfs-sklei vloer",
-        "Koringvelde-geverf mure • rustige, skaduwee omgewing",
+        "Grasdak op bluegum pole • herfs lei vloer",
+        "Koringvelde-geschilderde mure • rustige, skaduryke omgewing",
         "Eettafel met stoele • lugversorging",
         "Private badkamer (stort, wasbak, toilet)",
-        "Twee enkels of King met bedsytafels • private terras met palmblaar stoele"
+        "Twee enkels of King met pedestale • private terras met palmblaar stoele"
       ]
     }
   },
   "zu": {
     "safari": {
-      "eyebrow": "Itende le-Safari",
-      "heroTitle": "Ukunethezeka + Inselelo nge-Canvas",
-      "heroDescription": "Hlangabezana nokulinganisela okuphelele phakathi kokunethez eka nenselelo. Ibekwe phezu kwepulatifomu elikhulu eli-3×6 m, leli tende le-canvas eli-12 m² linezindonga zaseceleni nasemva ezivikelelayo—okukunikeza ubumfihlo nesivikelo ngenkathi uhlala eduze kwemvelo.",
-      "sections": [
-        {
-          "heading": "Isikhala Nendlela Yokuhlelwa",
-          "description": "Itende linokungaphakathi okuhlelwe kahle, okunethezekayo okuthintekayo kokubanzima kwendawo yokuhlala kalula.",
-          "features": [
-            "Ipulatifomu: 3×6 m • Itende: 12 m²",
-            "Udonga lwaseceleni nasemva lobumfihlo nesivikelo",
-            "Ineti yemikhizo kuwo wonke amawindi neminyango"
-          ]
-        },
-        {
-          "heading": "Ukulala Nokunethez eka",
-          "description": "Imibhede emibili eyodwa enamathebhula asebusuku nama-lambu anegcumezo ingahlanganiswa ibe umbhede we-King-size kuzo izivakashi ezithanda ukuhlelwa okuphindwe kabili.",
-          "features": [
-            "Amamatilasi ezinga eliphezulu nokukhanya kwasebusuku",
-            "Isivungu esinamandla sokubanda ubusiku basehlobo",
-            "Izindawo zikagesi zokushaja amadivayisi",
-            "Iyunithi encane yamashelufu yezingubo nezidingo",
-          ]
-        },
-        {
-          "heading": "Ithasi Nengadi",
-          "description": "Ngena ethacini lakho eliyimfihlo, elifakwe izihlalo zamaqabunga esundu egoqiwe. Jabulela ukubuka ingadi yetropiki enothile—ekhanyiswe kahle ebusuku emkhathini we-romantic.",
-          "features": [
-            "Isihlalo sangaphandle esiyimfihlo",
-            "Ukukhanya ebusuku kwezihlwa ezithulile"
-          ]
-        },
-        {
-          "heading": "Izindlu Zokugeza",
-          "description": "Izivakashi zinokufinyelela ezindlini zokugeza ezahlukene, ezahlukaniswe kwabesifazane nabesilisa—ezigcinwa zihlanzekile nezilula.",
-          "features": [
-            "2× imishayo yamanzi ashisayo/abandayo ngakwelinye icala",
-            "2× amathoyilethi ngakwelinye icala",
-            "Amasinki amanzi abandayo"
-          ]
-        },
-        {
-          "heading": "Kuhle Ukwazi",
-          "description": "Ngesikhathi samaholidi omphakathi nesizini esiphezulu (ekupheleni kukaDisemba–ekuqaleni kukaJanuwari), umuzi ungaba nempilo. Izivimbela zamadlebe zamahhala ziyatholakala ku-reception ukuqinisekisa ukulala kahle ebusuku.",
-          "closingNote": "Ukuhlala okukhulu, okufakwe emvelweni ngokunethez eka kwesimanjemanje—okuphelele kubahambi abafuna ngaphandle ngaphandle kokuziphuca ukulula."
-        }
-      ],
-      "trustItems": [
-        "Ukunethezeka okufakwe emvelweni",
-        "Izinsizakalo ezihlanzekile, ezinakekelwa kahle",
-        "Izihlwa ezipholile, zothando"
-      ],
-      "cta": {
-        "heading": "Ukulungele Ukubhukha Itende Lakho le-Safari?",
-        "description": "Qinisekisa ukubaleka kwakho okufakwe emvelweni e-DEVOCEAN Lodge. Ukubhukha okuqondile kusho amanani angcono nokusekwa okugcwele kusuka kuqembu lethu."
-      }
+      "title": "Itende le-Safari",
+      "shortDescription": "Itende le-canvas ye-12 m² ku-platform ye-3×6 m. Ama-Twin/King, isiphephetho, amaphoyinti kagesi, inetha le-mosquito, ithala langasese. Ama-ablutions abelwe.",
+      "detailedFeatures": [
+        "Amabhedi amabili single (noma i-King) nama-pedestal nama-lamp ashaded",
+        "Inetha le-mosquito emasangweni/amafasitela • isiphephetho esiqinile • amaphoyinti kagesi",
+        "Iyunithi encane yeshelufu yezingubo/izidingo",
+        "Ithala langasese elinezihlalo ze-palm-leaf ezigoqiwe ezibheke ensimini ye-tropical",
+        "Izindlu zokugeza ezelwe (amadodakazi/amadoda): 2 ama-shower ashisayo/amabanda & 2 ama-toilet ngamunye",
+        "Idolobhana lingaba nemisebenzi ngesikhathi samaholide; ama-earplug mahhala e-reception"
+      ]
     },
     "comfort": {
-      "title": "Itende Elinethezeka",
-      "shortDescription": "Itende elithuthukisiwe eli-12 m² elinobumfihlo obengeziwe (izindonga zaseceleni/emuva), ithasi eliyimfihlo nendlu yakho yokugeza engaphakathi ngaphansi kophahla lwe-thatch.",
+      "title": "Itende le-Comfort",
+      "shortDescription": "Itende elithuthukisiwe ye-12 m² eline-privacy eyengeziwe (izindonga ezi-side/back), ithala langasese kanye ne-bathroom yakho en-suite ngaphansi kophahla lwe-thatch.",
       "detailedFeatures": [
-        "Ukuhlelwa kombhede we-Twin/King • ama-lambu • izinkinamba zokukhanya ezilula",
-        "Ineti yemikhizo • isivungu esinamandla • izindawo zikagesi",
-        "Ithasi lokhuni eliyimfihlo elinamazihlalo amagoboqo esundu",
-        "Ngemuva: indlu yokugeza eyimfihlo (ishawa, ithoyilethi, isinki) ngaphansi kophahla lwe-thatch lotshani",
-        "Ukuphila komuzi ngesikhathi esiphakeme/amaholidi; izivimbela zamadlebe ziyatholakala"
+        "Ukusetha ibhedi ye-Twin/King • ama-lamp • ama-switch elula okukhanya",
+        "Inetha le-mosquito • isiphephetho esiqinile • amaphoyinti kagesi",
+        "Ithala langokhuni langasese elinezihlalo ze-palm-leaf ezigoqiwe",
+        "Ngemuva: bathroom langasese (ishawa, indlu yangasese, isinki) ngaphansi kophahla lwe-grass-thatch",
+        "Ukuvuka kwedolobhana ngesikhathi se-peak/holide; ama-earplug atholakala"
       ]
     },
     "cottage": {
-      "title": "I-Cottage Yengadi",
-      "shortDescription": "I-cottage enomoya nombhede we-queen, i-A/C (i-inverter), ideski netafula lokudlela, ithasi eliyimfihlo nendlu yokugeza ku-roundavel obukekayo.",
+      "title": "I-Cottage yensimini",
+      "shortDescription": "I-cottage enomoya eline-bhedi ye-queen, i-A/C (inverter), ideski & itafula lokudla, ithala langasese ne-bathroom ku-roundavel e-charming.",
       "detailedFeatures": [
-        "Uphahla lwe-tile lwaseRoma, uphahla oluphezulu olumhlophe olusaba zokhuni olumnyama",
-        "Uphansi lwe-terracotta, izindonga ezidwetshwe ngemibala efudumele",
-        "Umbhede we-queen • ideski yokusebenza ene-lambu elinomthunzi • itafula lokudlela elinamazihlalo",
-        "Amashelufu wezikhwama, i-rack yezingubo namashelufu engeziwe",
-        "I-A/C ye-inverter (okupholile nokushisa) • ukukhanya okuphambili oku-dimmable",
-        "Indlu yokugeza eyimfihlo ku-roundavel we-thatch lotshani (ishawa, isinki, ithoyilethi)",
-        "Ithasi lokhuni eliyimfihlo elinamazihlalo okuvakasha nethebula eliseceleni"
+        "Uphahla lwe-tiled ye-Roman, uphahla oluphakeme olumhlophe ngama-beam okhuni omnyama",
+        "Isitezi se-terracotta, izindonga ezipendwe ngokushisa kwe-wheatfields",
+        "Ibhedi ye-Queen • ideski yokusebenza eline-lamp eshaded • itafula lokudla elinezihlalo",
+        "Ama-shelufu e-suitcase, irack yezingubo nama-shelufu eyengeziwe",
+        "I-A/C inverter (pholile & shisa) • ukukhanya okukhulu okudimmable",
+        "I-bath langasese ku-grass-thatch roundavel (ishawa, isinki, indlu yangasese)",
+        "Ithala langokhuni langasese elinezihlalo ze-camping ne-tafula eceleni"
       ]
     },
     "chalet": {
       "title": "I-Chalet ye-Thatch",
-      "shortDescription": "I-chalet encane yothando ekudeni ngaphansi kwamasundu ne-strelitzia. I-A/C, indlu yokugeza eyimfihlo, ithasi, ukuhlelwa kombhede we-Twin/King.",
+      "shortDescription": "I-chalet encane ye-romantic ehlukanisiwe ngaphansi kwe-palms ne-strelitzia. I-A/C, bathroom langasese, ithala, ukusetha ibhedi ye-Twin/King.",
       "detailedFeatures": [
-        "Uphahla lwe-thatch lotshani phezu kwamapolo e-bluegum • uphansi lwe-autumn-slate",
-        "Izindonga ezidwetshwe ngemibala • isimo esithulile, esinomthunzi",
-        "Itafula lokudlela elinamazihlalo • i-air conditioning",
-        "Indlu yokugeza eyimfihlo (ishawa, isinki, ithoyilethi)",
-        "Imibhede emibili eyodwa noma i-King enamathebhula asebusuku • ithasi eliyimfihlo elinamazihlalo ama goboqo esundu"
+        "Uphahla lwe-grass-thatch ku-bluegum poles • i-autumn-slate floor",
+        "Izindonga ezipendwe ngama-wheatfields • isetingi ethulile, esithunzi",
+        "Itafula lokudla elinezihlalo • i-air conditioning",
+        "Bathroom langasese (ishawa, isinki, indlu yangasese)",
+        "Ama-single amabili noma i-King nama-pedestal • ithala langasese elinezihlalo ze-palm-leaf"
       ]
     }
   },
   "sw": {
     "safari": {
-      "eyebrow": "Hema ya Safari",
-      "heroTitle": "Raha + Uchunguzi kwa Kitambaa",
-      "heroDescription": "Pata usawa kamili kati ya raha na uchunguzi. Imewekwa kwenye jukwaa kubwa la 3×6 m, hema hii ya kitambaa ya 12 m² ina kuta za upande na nyuma za kulinda—zinazokupatia faragha na hifadhi ukiwa karibu na asili.",
-      "sections": [
-        {
-          "heading": "Nafasi na Mpangilio",
-          "description": "Hema ina ndani iliyopangwa vizuri, ya kufurahisha yenye miguso iliyowekwa kwa uangalifu kwa maisha rahisi.",
-          "features": [
-            "Jukwaa: 3×6 m • Hema: 12 m²",
-            "Ukuta wa upande na nyuma kwa faragha na hifadhi",
-            "Wavu wa mbu kwenye madirisha na milango yote"
-          ]
-        },
-        {
-          "heading": "Usingizi na Raha",
-          "description": "Vitanda viwili vya mtu mmoja vyenye meza za pembeni na taa zenye kivuli vinaweza kuunganishwa kuwa kitanda cha King-size kwa wageni wanaopendelea usanifu wa wawili.",
-          "features": [
-            "Godoro za ubora na taa za pembeni",
-            "Kipepeo chenye nguvu kwa usiku wa baridi wa kiangazi",
-            "Soketi za umeme kwa kuchaji vifaa",
-            "Kituo kidogo cha rafu kwa nguo na vitu muhimu"
-          ]
-        },
-        {
-          "heading": "Ukumbi na Bustani",
-          "description": "Ingia kwenye ukumbi wako wa faragha, uliowekwa viti vya majani ya mtende vilivyokunj wa. Furahia mtazamo wa bustani ya kitropiki yenye rutuba—inayoang'aa vizuri usiku kwa hali ya kimapenzi.",
-          "features": [
-            "Mahali pa kukaa nje pa faragha",
-            "Taa za usiku kwa jioni tulivu"
-          ]
-        },
-        {
-          "heading": "Vyoo",
-          "description": "Wageni wana ufikiaji wa vyoo vya pamoja, vilivyotengwa kwa wanawake na wanaume—vinawekwa safi na rahisi.",
-          "features": [
-            "2× shawa za maji moto/baridi kila upande",
-            "2× vyoo kila upande",
-            "Mabasini ya maji baridi"
-          ]
-        },
-        {
-          "heading": "Ni Vizuri Kujua",
-          "description": "Wakati wa wikendi za likizo za umma na msimu wa kilele (mwishoni mwa Desemba–mwanzoni mwa Januari), kijiji kinaweza kuwa na shangwe. Ziba za masikio za bure zinapatikana kwenye mapokezi ili kuhakikisha kulala vizuri usiku.",
-          "closingNote": "Kukaa kwa nafasi kubwa, ulioingizwa katika asili ukiwa na raha za kisasa—kamili kwa wasafiri wanaotaka nje bila kutoa kafara raha."
-        }
-      ],
-      "trustItems": [
-        "Raha iliyoingizwa katika asili",
-        "Vifaa safi, vilivyotunzwa vizuri",
-        "Jioni za kupumzika, za kimapenzi"
-      ],
-      "cta": {
-        "heading": "Uko Tayari Kubuk Hema Yako ya Safari?",
-        "description": "Linda kutoroka kwako ulioingi zwa katika asili katika DEVOCEAN Lodge. Kubuki moja kwa moja maana bei bora zaidi na msaada kamili kutoka kwa timu yetu."
-      }
+      "title": "Hema ya Safari",
+      "shortDescription": "Hema ya turubai ya 12 m² kwenye platformu ya 3×6 m. Twin/King, feni, pointi za umeme, wavu wa mbu, terrace ya private. Choo za kushiriki.",
+      "detailedFeatures": [
+        "Vitanda viwili single (au King) na pedestals na taa za kivuli",
+        "Wavu wa mbu kwenye milango/madirisha • feni yenye nguvu • pointi za umeme",
+        "Kitengo kidogo cha rafu kwa nguo/essentials",
+        "Terrace ya private na viti vya majani ya palm iliyopindwa inayoelekea kwenye bustani ya tropiki",
+        "Choo za kushiriki (wanawake/wanaume): 2 shower za moto/baridi & 2 choo kila moja",
+        "Kijiji kinaweza kuwa na shughuli wakati wa likizo; earplug za bure kwenye reception"
+      ]
     },
     "comfort": {
-      "title": "Hema ya Raha",
-      "shortDescription": "Hema iliyoboreshwa ya 12 m² yenye faragha zaidi (kuta za upande/nyuma), ukumbi wa faragha na chumba chako cha kuogea cha en-suite chini ya paa la majani makavu.",
+      "title": "Hema ya Comfort",
+      "shortDescription": "Hema iliyoboreshwa ya 12 m² na privacy ya ziada (kuta za upande/nyuma), terrace ya private na chumba chako cha kuoga en-suite chini ya paa la nyasi.",
       "detailedFeatures": [
-        "Usanifu wa kitanda cha Twin/King • taa • vitufe vya taa rahisi",
-        "Wavu wa mbu • kipepeo chenye nguvu • soketi za umeme",
-        "Ukumbi wa mbao wa faragha wenye viti vya majani ya mtende vilivyokunjwa",
-        "Nyuma: chumba cha kuogea cha faragha (shawa, choo, basininy a maji) chini ya paa la majani makavu ya nyasi",
-        "Shangwe ya kijiji wakati wa kilele/likizo; ziba za masikio zinapatikana"
+        "Mpangilio wa kitanda Twin/King • taa • switch za nuru rahisi",
+        "Wavu wa mbu • feni yenye nguvu • pointi za umeme",
+        "Terrace ya mbao ya private na viti vya majani ya palm iliyopindwa",
+        "Nyuma: chumba cha kuoga private (shower, choo, sinki) chini ya paa la nyasi",
+        "Shughuli za kijiji wakati wa kilele/likizo; earplug zinapatikana"
       ]
     },
     "cottage": {
-      "title": "Nyumba Ndogo ya Bustani",
-      "shortDescription": "Nyumba ndogo yenye hewa yenye kitanda cha queen, A/C (inverter), dawati & meza ya chakula, ukumbi wa faragha na chumba cha kuogea katika roundavel yenye mvuto.",
+      "title": "Cottage ya Bustani",
+      "shortDescription": "Cottage yenye hewa na kitanda cha queen, A/C (inverter), desk & meza ya kula, terrace ya private na chumba cha kuoga katika roundavel ya charming.",
       "detailedFeatures": [
-        "Paa la vigae vya Kirumi, dari jeupe lenye boriti za mbao za giza",
-        "Sakafu ya terracotta, kuta zilizopakwa rangi ya shamba la ngano la joto",
-        "Kitanda cha queen • dawati la kufanyia kazi lenye taa yenye kivuli • meza ya chakula yenye viti",
-        "Rafu za mizigo, reki ya nguo na rafu za ziada",
-        "A/C ya inverter (baridi na joto) • taa kuu inayoweza kupunguzwa",
-        "Bafu la faragha katika roundavel ya majani makavu ya nyasi (shawa, basinya maji, choo)",
-        "Ukumbi wa mbao wa faragha wenye viti vya kambi na meza ya pembeni"
+        "Paa la vigae za Roman, paa refu nyeupe na mihimili ya mbao nyeusi",
+        "Sakafu ya terracotta, kuta zilizopakwa rangi ya wheatfields ya joto",
+        "Kitanda cha queen • desk ya kufanyia kazi na taa ya kivuli • meza ya kula na viti",
+        "Rafu za suitcase, rack ya nguo na rafu za ziada",
+        "A/C inverter (baridi & joto) • nuru kuu inayoweza kudhibiti",
+        "Chumba cha kuoga private katika grass-thatch roundavel (shower, sinki, choo)",
+        "Terrace ya mbao ya private na viti ya camping na meza ya upande"
       ]
     },
     "chalet": {
-      "title": "Nyumba Ndogo ya Majani Makavu",
-      "shortDescription": "Nyumba ndogo ya kimapenzi iliyote nguliwa chini ya mitende na strelitzia. A/C, chumba cha kuogea cha faragha, ukumbi, usanifu wa kitanda cha Twin/King.",
+      "title": "Chalet ya Nyasi",
+      "shortDescription": "Chalet ndogo ya romantic iliyotengwa chini ya mitende na strelitzia. A/C, chumba cha kuoga private, terrace, mpangilio wa kitanda Twin/King.",
       "detailedFeatures": [
-        "Paa la majani makavu ya nyasi juu ya nguzo za bluegum • sakafu ya chale ya vuli",
-        "Kuta zilizopakwa rangi ya shamba la ngano • mazingira ya utulivu, yenye kivuli",
-        "Meza ya chakula yenye viti • hali angavu",
-        "Chumba cha kuogea cha faragha (shawa, basiniya maji, choo)",
-        "Viwili vya mtu mmoja au King vyenye meza za pembeni • ukumbi wa faragha wenye viti vya majani ya mtende"
+        "Paa ya nyasi ya grass kwenye nguzo za bluegum • sakafu ya slate ya autumn",
+        "Kuta zilizopakwa wheatfields • mpangilio tulivu, yenye kivuli",
+        "Meza ya kula na viti • air conditioning",
+        "Chumba cha kuoga private (shower, sinki, choo)",
+        "Vitanda viwili single au King na pedestals • terrace ya private na viti ya majani ya palm"
       ]
     }
   },
   "ja-JP": {
     "safari": {
-      "eyebrow": "サファリテント",
-      "heroTitle": "キャンバスに描く快適さと冒険",
-      "heroDescription": "快適さと冒険の完璧なバランスを体験してください。広々とした3×6 mのプラットフォームに設置されたこの12 m²のキャンバステントには、側面と背面に保護壁があり、自然の近くに滞在しながらプライバシーとシェルターを提供します。",
-      "sections": [
-        {
-          "heading": "スペースとレイアウト",
-          "description": "テントは、快適な生活のための思慮深いタッチを備えた、よく計画された居心地の良いインテリアを特徴としています。",
-          "features": [
-            "プラットフォーム: 3×6 m • テント: 12 m²",
-            "プライバシーとシェルターのための側面と背面の壁",
-            "すべての窓とドアに蚊帳"
-          ]
-        },
-        {
-          "heading": "睡眠と快適さ",
-          "description": "台座とシェード付きランプ付きの2つのシングルベッドは、ダブル構成を好むゲストのためにキングサイズのベッドに組み合わせることができます。",
-          "features": [
-            "高品質のマットレスとベッドサイド照明",
-            "涼しい夏の夜のための強力なファン",
-            "デバイス充電用の電源ポイント",
-            "衣類と必需品用の小さな棚ユニット"
-          ]
-        },
-        {
-          "heading": "テラスと庭園",
-          "description": "丸められたヤシの葉の椅子で装飾されたプライベートテラスに足を踏み入れてください。豊かな熱帯庭園の景色を楽しんでください—ロマンチックな雰囲気のために夜に美しく照らされています。",
-          "features": [
-            "プライベート屋外シーティング",
-            "穏やかな夜のための夜間照明"
-          ]
-        },
-        {
-          "heading": "バスルーム",
-          "description": "ゲストは、女性と男性用に分かれた共用バスルームへのアクセスがあります—清潔で便利に保たれています。",
-          "features": [
-            "片側あたり2×温水/冷水シャワー",
-            "片側あたり2×トイレ",
-            "冷水シンク"
-          ]
-        },
-        {
-          "heading": "知っておくと良いこと",
-          "description": "祝日の週末とピークシーズン(12月下旬〜1月上旬)中、村は活気がある場合があります。無料の耳栓がレセプションで利用可能で、安らかな夜の睡眠を保証します。",
-          "closingNote": "現代の快適さを備えた広々とした自然に浸った滞在—便利さを犠牲にすることなく屋外を望む旅行者に最適です。"
-        }
-      ],
-      "trustItems": [
-        "自然に浸った快適さ",
-        "清潔でよく維持された施設",
-        "リラックスしたロマンチックな夜"
-      ],
-      "cta": {
-        "heading": "サファリテントを予約する準備はできましたか?",
-        "description": "DEVOCEAN Lodgeで自然に浸った逃避行を確保してください。直接予約は最高料金とチームからの完全なサポートを意味します。"
-      }
+      "title": "サファリテント",
+      "shortDescription": "3×6 m プラットフォーム上の12 m² キャンバステント. Twin/King, ファン, 電源ポイント, 蚊帳, プライベートテラス. 共有の洗面所.",
+      "detailedFeatures": [
+        "2つのシングルベッド (またはKing) と台座付きのシェードランプ",
+        "ドア/窓の蚊帳 • 強力ファン • 電源ポイント",
+        "服/必需品用の小さな棚ユニット",
+        "トロピカルガーデンに向いたロールパームリーフチェア付きプライベートテラス",
+        "共有バスルーム (レディース/ジェンツ): それぞれ2つの温/冷シャワー & 2つのトイレ",
+        "休暇中に村が賑やかになる可能性; 受付で無料イヤープラグ"
+      ]
     },
     "comfort": {
       "title": "コンフォートテント",
-      "shortDescription": "追加のプライバシー(側面/背面の壁)、プライベートテラス、茅葺き屋根の下の専用バスルームを備えたアップグレードされた12 m²テント。",
+      "shortDescription": "追加プライバシー (サイド/バックウォール) のアップグレードされた12 m² テント, プライベートテラスとサッチ屋根の下の専用バスルーム.",
       "detailedFeatures": [
-        "ツイン/キングベッドのセットアップ • ランプ • 便利なライトスイッチ",
-        "蚊帳 • 強力なファン • 電源ポイント",
-        "丸められたヤシの葉の椅子を備えたプライベート木製テラス",
-        "裏側: 草葺き屋根の下のプライベートバスルーム(シャワー、トイレ、シンク)",
-        "ピーク/休日中の村の活気; 耳栓が利用可能"
+        "Twin/King ベッドセットアップ • ランプ • 便利なライトスイッチ",
+        "蚊帳 • 強力ファン • 電源ポイント",
+        "ロールパームリーフチェア付きプライベートウッドテラス",
+        "後ろ: グラスサッチ屋根の下のプライベートバスルーム (シャワー, トイレ, シンク)",
+        "ピーク/休暇中の村の賑やかさ; イヤープラグ利用可能"
       ]
     },
     "cottage": {
       "title": "ガーデンコテージ",
-      "shortDescription": "クイーンベッド、エアコン(インバーター)、デスク&ダイニングテーブル、プライベートテラス、魅力的なroundavelのバスルームを備えた風通しの良いコテージ。",
+      "shortDescription": "クイーンべッド, A/C (インバーター), デスク & ダイニングテーブル, プライベートテラスと魅力的なランダベル内のバスルーム付きの風通しの良いコテージ.",
       "detailedFeatures": [
-        "ローマ瓦屋根、暗い木製の梁を持つ高い白い天井",
-        "テラコッタ床、暖かい小麦畑塗装壁",
-        "クイーンベッド • シェード付きランプ付きワークデスク • 椅子付きダイニングテーブル",
-        "スーツケース棚、洋服ラック、追加棚",
-        "インバーターエアコン(冷房と暖房) • 調光可能なメインライト",
-        "草葺きroundavelのプライベートバス(シャワー、シンク、トイレ)",
-        "キャンプ椅子とサイドテーブル付きプライベート木製テラス"
+        "ローマンタイル屋根, 高い白い天井に暗い木の梁",
+        "テラコッタフロア, 暖かい小麦畑塗りの壁",
+        "クイーンべッド • シェードランプ付きワークデスク • チェア付きダイニングテーブル",
+        "スーツケース棚, 服掛けと追加棚",
+        "インバーター A/C (クール & ヒート) • 調光可能メインライト",
+        "グラスサッチランダベル内のプライベートバス (シャワー, シンク, トイレ)",
+        "キャンプチェアとサイドテーブル付きプライベートウッドテラス"
       ]
     },
     "chalet": {
-      "title": "茅葺きシャレー",
-      "shortDescription": "ヤシとストレリチアの下の隠れた、ロマンチックな小さなシャレー。エアコン、プライベートバスルーム、テラス、ツイン/キングベッドのセットアップ。",
+      "title": "サッチシャレ",
+      "shortDescription": "パームとストレリチアの下の孤立したロマンチックな小さなシャレ. A/C, プライベートバスルーム, テラス, Twin/King ベッドセットアップ.",
       "detailedFeatures": [
-        "ブルーガムポールの草葺き屋根 • 秋のスレート床",
-        "小麦畑塗装壁 • 静かでシェードのある設定",
-        "椅子付きダイニングテーブル • エアコン",
-        "プライベートバスルーム(シャワー、シンク、トイレ)",
-        "台座付きの2つのシングルまたはキング • ヤシの葉の椅子付きプライベートテラス"
+        "ブルーガムポール上のグラスサッチ屋根 • 秋のスレートフロア",
+        "小麦畑塗りの壁 • 平穏でシェードされた設定",
+        "チェア付きディナーテーブル • エアコン",
+        "プライベートバスルーム (シャワー, シンク, トイレ)",
+        "2つのシングルまたはKingと台座 • パームリーフチェア付きプライベートテラス"
       ]
     }
   },
   "zh-CN": {
     "safari": {
-      "eyebrow": "野生帐篷",
-      "heroTitle": "帆布中的舒适 + 冒险",
-      "heroDescription": "体验舒适与冒险的完美平衡。坐落在宽敞的3×6米平台上,这个12平方米的帆布帐篷有保护性的侧壁和后壁—为您提供隐私和庇护,同时保持与自然的亲近。",
-      "sections": [
-        {
-          "heading": "空间和布局",
-          "description": "帐篷拥有精心规划、舒适的内部,配有贴心的细节,便于生活。",
-          "features": [
-            "平台:3×6米 • 帐篷:12平方米",
-            "侧壁和后壁提供隐私和庇护",
-            "所有窗户和门上的蚊帐"
-          ]
-        },
-        {
-          "heading": "睡眠和舒适",
-          "description": "两张单人床配有床头柜和带罩灯,可以组合成特大床,供偏好双人配置的客人使用。",
-          "features": [
-            "优质床垫和床头照明",
-            "强力风扇,适合凉爽的夏夜",
-            "设备充电的电源插座",
-            "用于衣物和必需品的小型搁架单元"
-          ]
-        },
-        {
-          "heading": "露台和花园",
-          "description": "踏上您的私人露台,配有卷起的棕榈叶椅子。享受郁郁葱葱的热带花园景观—夜晚美丽地照亮,营造浪漫氛围。",
-          "features": [
-            "私人户外座位",
-            "宁静夜晚的夜间照明"
-          ]
-        },
-        {
-          "heading": "浴室",
-          "description": "客人可以使用共享浴室,女士和男士分开—保持清洁和便利。",
-          "features": [
-            "每侧2×热水/冷水淋浴",
-            "每侧2×厕所",
-            "冷水水槽"
-          ]
-        },
-        {
-          "heading": "了解须知",
-          "description": "在公共假日周末和旺季(12月下旬至1月初),村庄可能会很热闹。前台提供免费耳塞,以确保一夜好眠。",
-          "closingNote": "宽敞的、沉浸在大自然中的住宿,配有现代舒适设施—非常适合希望享受户外而不牺牲便利的旅行者。"
-        }
-      ],
-      "trustItems": [
-        "沉浸在大自然中的舒适",
-        "清洁、维护良好的设施",
-        "放松、浪漫的夜晚"
-      ],
-      "cta": {
-        "heading": "准备预订您的野生帐篷了吗?",
-        "description": "在DEVOCEAN Lodge确保您沉浸在大自然中的逃离。直接预订意味着最优惠的价格和我们团队的全力支持。"
-      }
+      "title": "Safari 帐篷",
+      "shortDescription": "3×6 m 平台上的12 m² 帆布帐篷. Twin/King, 风扇, 电源插座, 蚊帐, 私人露台. 共享盥洗室.",
+      "detailedFeatures": [
+        "两张单人床 (或 King) 带底座和遮光灯",
+        "门/窗上的蚊帐 • 强劲风扇 • 电源插座",
+        "用于服装/必需品的小型搁架单元",
+        "面向热带花园的卷棕榈叶椅私人露台",
+        "共享浴室 (女士/先生): 每处2个热水/冷水淋浴 & 2个厕所",
+        "假期期间村庄可能热闹; 接待处免费耳塞"
+      ]
     },
     "comfort": {
       "title": "舒适帐篷",
-      "shortDescription": "升级的12平方米帐篷,具有额外隐私(侧壁/后壁),私人露台和茅草屋顶下的自己的套间浴室。",
+      "shortDescription": "升级的12 m² 帐篷, 具有额外隐私 (侧/后墙), 私人露台和茅草屋顶下的套间浴室.",
       "detailedFeatures": [
-        "双人/特大床设置 • 灯具 • 方便的灯开关",
-        "蚊帐 • 强力风扇 • 电源插座",
-        "配有卷起的棕榈叶椅子的私人木制露台",
-        "背面:草茅草屋顶下的私人浴室(淋浴、厕所、水槽)",
-        "高峰/假日期间村庄的热闹;耳塞可用"
+        "Twin/King 床配置 • 灯 • 方便灯光开关",
+        "蚊帐 • 强劲风扇 • 电源插座",
+        "带卷棕榈叶椅的私人木露台",
+        "后面: 草茅屋顶下的私人浴室 (淋浴, 马桶, 水槽)",
+        "高峰/假期期间村庄热闹; 耳塞可用"
       ]
     },
     "cottage": {
       "title": "花园小屋",
-      "shortDescription": "通风的小屋,配有大号床、空调(变频器)、书桌和餐桌、私人露台以及迷人roundavel中的浴室。",
+      "shortDescription": "通风小屋, 带女王床, A/C (逆变器), 书桌 & 餐桌, 私人露台和迷人圆形亭内的浴室.",
       "detailedFeatures": [
-        "罗马瓦屋顶,高白色天花板配有深色木梁",
-        "赤陶地板,温暖麦田色墙壁",
-        "大号床 • 带罩灯的工作台 • 带椅子的餐桌",
-        "行李架、衣架和额外搁架",
-        "变频空调(制冷和制热) • 可调光的主灯",
-        "草茅草roundavel中的私人浴室(淋浴、水槽、厕所)",
-        "配有露营椅和边桌的私人木制露台"
+        "罗马瓦屋顶, 高白天花板带深色木梁",
+        "赤土地板, 温暖小麦田涂墙",
+        "女王床 • 带遮光灯的工作书桌 • 带椅子的餐桌",
+        "行李架, 衣架和额外架子",
+        "逆变器 A/C (凉 & 热) • 可调光主灯",
+        "草茅圆形亭内的私人浴 (淋浴, 水槽, 马桶)",
+        "带露营椅和侧桌的私人木露台"
       ]
     },
     "chalet": {
-      "title": "茅草小屋",
-      "shortDescription": "棕榈树和鹤望兰下隐蔽、浪漫的小屋。空调、私人浴室、露台、双人/特大床设置。",
+      "title": "茅草木屋",
+      "shortDescription": "棕榈和鸟之天堂花下的僻静浪漫小木屋. A/C, 私人浴室, 露台, Twin/King 床配置.",
       "detailedFeatures": [
-        "蓝胶桩上的草茅草屋顶 • 秋季板岩地板",
-        "麦田色墙壁 • 宁静、有荫的环境",
+        "蓝胶柱上的草茅屋顶 • 秋季板岩地板",
+        "小麦田涂墙 • 平静, 阴凉环境",
         "带椅子的餐桌 • 空调",
-        "私人浴室(淋浴、水槽、厕所)",
-        "两张单人床或特大床配有床头柜 • 配有棕榈叶椅子的私人露台"
+        "私人浴室 (淋浴, 水槽, 马桶)",
+        "两个单人或 King 带底座 • 带棕榈叶椅的私人露台"
       ]
     }
   },
   "ru": {
     "safari": {
-      "eyebrow": "Палатка Сафари",
-      "heroTitle": "Комфорт + Приключение в Брезенте",
-      "heroDescription": "Испытайте идеальный баланс комфорта и приключений. Расположенная на просторной платформе 3×6 м, эта брезентовая палатка площадью 12 м² имеет защитные боковые и задние стены—обеспечивая вам приватность и укрытие, оставаясь близко к природе.",
-      "sections": [
-        {
-          "heading": "Пространство и Планировка",
-          "description": "Палатка имеет хорошо спланированный, уютный интерьер с продуманными деталями для легкой жизни.",
-          "features": [
-            "Платформа: 3×6 м • Палатка: 12 м²",
-            "Боковая и задняя стена для приватности и укрытия",
-            "Москитная сетка на всех окнах и дверях"
-          ]
-        },
-        {
-          "heading": "Сон и Комфорт",
-          "description": "Две односпальные кровати с тумбочками и затененными лампами могут быть объединены в кровать King-size для гостей, предпочитающих двойную конфигурацию.",
-          "features": [
-            "Качественные матрасы и прикроватное освещение",
-            "Мощный вентилятор для прохладных летних ночей",
-            "Электрические розетки для зарядки устройств",
-            "Небольшая полка для одежды и предметов первой необходимости"
-          ]
-        },
-        {
-          "heading": "Терраса и Сад",
-          "description": "Выйдите на свою частную террасу, обставленную свернутыми креслами из пальмовых листьев. Наслаждайтесь видами на пышный тропический сад—красиво освещенный ночью для романтической атмосферы.",
-          "features": [
-            "Частное место для отдыха на открытом воздухе",
-            "Ночное освещение для спокойных вечеров"
-          ]
-        },
-        {
-          "heading": "Ванные Комнаты",
-          "description": "Гости имеют доступ к общим ванным комнатам, раздельным для дам и господ—поддерживаемым в чистоте и удобными.",
-          "features": [
-            "2× душа с горячей/холодной водой на сторону",
-            "2× туалета на сторону",
-            "Раковины с холодной водой"
-          ]
-        },
-        {
-          "heading": "Полезно Знать",
-          "description": "Во время выходных государственных праздников и пикового сезона (конец декабря–начало января) деревня может быть оживленной. Бесплатные беруши доступны на стойке регистрации для обеспечения спокойного ночного сна.",
-          "closingNote": "Просторное проживание, погруженное в природу, с современными удобствами—идеально для путешественников, желающих быть на открытом воздухе без ущерба для удобства."
-        }
-      ],
-      "trustItems": [
-        "Комфорт, погруженный в природу",
-        "Чистые, хорошо обслуживаемые объекты",
-        "Расслабленные, романтические вечера"
-      ],
-      "cta": {
-        "heading": "Готовы Забронировать Вашу Палатку Сафари?",
-        "description": "Обеспечьте свой побег, погруженный в природу, в DEVOCEAN Lodge. Прямое бронирование означает лучшие тарифы и полную поддержку от нашей команды."
-      }
+      "title": "Палатка Сафари",
+      "shortDescription": "Палатка из холста 12 м² на платформе 3×6 m. Twin/King, вентилятор, розетки, москитная сетка, частная терраса. Общие санузлы.",
+      "detailedFeatures": [
+        "Две одиночные кровати (или King) с пьедесталами и затененными лампами",
+        "Москитная сетка на дверях/окнах • сильный вентилятор • розетки",
+        "Маленькая полка для одежды/необходимого",
+        "Частная терраса с свернутыми креслами из пальмовых листьев, выходящими на тропический сад",
+        "Общие ванные комнаты (женские/мужские): 2 горячих/холодных душа & 2 туалета каждая",
+        "Деревня может быть оживленной во время праздников; бесплатные беруши на рецепции"
+      ]
     },
     "comfort": {
       "title": "Палатка Комфорт",
-      "shortDescription": "Обновленная палатка площадью 12 м² с дополнительной приватностью (боковые/задние стены), частной террасой и собственной ванной комнатой под соломенной крышей.",
+      "shortDescription": "Обновленная палатка 12 м² с дополнительной конфиденциальностью (боковые/задние стены), частная терраса и собственная ванная комната под соломенной крышей.",
       "detailedFeatures": [
-        "Конфигурация кровати Twin/King • лампы • удобные выключатели света",
-        "Москитная сетка • мощный вентилятор • электрические розетки",
-        "Частная деревянная терраса со свернутыми креслами из пальмовых листьев",
-        "Сзади: частная ванная комната (душ, туалет, раковина) под травяной соломенной крышей",
-        "Оживление деревни во время пика/праздников; беруши доступны"
+        "Настройка кровати Twin/King • лампы • удобные выключатели света",
+        "Москитная сетка • сильный вентилятор • розетки",
+        "Частная деревянная терраса с свернутыми креслами из пальмовых листьев",
+        "Сзади: частная ванная комната (душ, туалет, раковина) под крышей из травы",
+        "Оживленность деревни во время пика/праздников; беруши доступны"
       ]
     },
     "cottage": {
       "title": "Садовый Коттедж",
-      "shortDescription": "Воздушный коттедж с кроватью queen, кондиционером (инвертор), столом и обеденным столом, частной террасой и ванной комнатой в очаровательном roundavel.",
+      "shortDescription": "Воздушный коттедж с кроватью queen, A/C (инвертор), столом & обеденным столом, частной террасой и ванной в очаровательном roundavel.",
       "detailedFeatures": [
         "Римская черепичная крыша, высокий белый потолок с темными деревянными балками",
-        "Терракотовый пол, теплые пшеничные стены",
-        "Кровать queen • рабочий стол с затененной лампой • обеденный стол со стульями",
+        "Терракотовый пол, теплые окрашенные стены пшеничных полей",
+        "Кровать queen • рабочий стол с затененной лампой • обеденный стол с стульями",
         "Полки для чемоданов, вешалка для одежды и дополнительные полки",
-        "Инверторный кондиционер (охлаждение и нагрев) • регулируемый основной свет",
-        "Частная ванная в травяном соломенном roundavel (душ, раковина, туалет)",
-        "Частная деревянная терраса с креслами для кемпинга и боковым столом"
+        "Инвертор A/C (охлаждение & обогрев) • диммируемый основной свет",
+        "Частная ванна в соломенной roundavel (душ, раковина, туалет)",
+        "Частная деревянная терраса с кемпинговыми стульями и боковым столом"
       ]
     },
     "chalet": {
-      "title": "Соломенное Шале",
-      "shortDescription": "Уединенное, романтическое маленькое шале под пальмами и стрелицией. Кондиционер, частная ванная комната, терраса, конфигурация кровати Twin/King.",
+      "title": "Соломенный Шале",
+      "shortDescription": "Уединенный, романтический маленький шале под пальмами и стрелицией. A/C, частная ванная, терраса, настройка кровати Twin/King.",
       "detailedFeatures": [
-        "Травяная соломенная крыша на столбах из голубого эвкалипта • осенний сланцевый пол",
-        "Пшеничные стены • спокойная, затененная обстановка",
+        "Соломенная крыша из травы на столбах bluegum • осенний сланцевый пол",
+        "Окрашенные стены пшеничных полей • спокойная, затененная обстановка",
         "Обеденный стол со стульями • кондиционер",
-        "Частная ванная комната (душ, раковина, туалет)",
-        "Две односпальные или King с тумбочками • частная терраса с креслами из пальмовых листьев"
+        "Частная ванная (душ, раковина, туалет)",
+        "Две одиночные или King с пьедесталами • частная терраса с креслами из пальмовых листьев"
+      ]
+    }
+  },
+  "pt-BR": {
+    "safari": {
+      "eyebrow": "Tenda Safari",
+      "heroTitle": "Conforto + Aventura em Lona",
+      "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Situada em uma plataforma espaçosa de 3×6 m, esta tenda de lona de 12 m² tem paredes laterais e traseiras protetoras—oferecendo-lhe privacidade e abrigo enquanto permanece perto da natureza.",
+      "sections": [
+        {
+          "heading": "Espaço e Layout",
+          "description": "A tenda apresenta um interior aconchegante e bem planejado com toques cuidadosos para uma vida fácil.",
+          "features": [
+            "Plataforma: 3×6 m • Tenda: 12 m²",
+            "Parede lateral e traseira para privacidade e abrigo",
+            "Tela mosquiteira em todas as janelas e portas"
+          ]
+        },
+        {
+          "heading": "Sono e Conforto",
+          "description": "Duas camas de solteiro com criados-mudos e abajures podem ser combinadas em uma cama King-size para hóspedes que preferem uma configuração de casal.",
+          "features": [
+            "Colchões de qualidade e iluminação de cabeceira",
+            "Ventilador potente para noites frescas de verão",
+            "Pontos de energia para carregar dispositivos",
+            "Pequena unidade de prateleiras para roupas e essenciais"
+          ]
+        },
+        {
+          "heading": "Terraço e Jardim",
+          "description": "Saia para o seu terraço privado, mobiliado com cadeiras de folha de palmeira enrolada. Desfrute de vistas do jardim tropical exuberante—lindamente iluminado à noite para um ambiente romântico.",
+          "features": [
+            "Assentos externos privados",
+            "Iluminação noturna para noites serenas"
+          ]
+        },
+        {
+          "heading": "Banheiros",
+          "description": "Os hóspedes têm acesso a banheiros compartilhados, separados para senhoras e senhores—mantidos limpos e convenientes.",
+          "features": [
+            "2× chuveiros de água quente/fria por lado",
+            "2× toiletes por lado",
+            "Pias de água fria"
+          ]
+        },
+        {
+          "heading": "Bom Saber",
+          "description": "Durante os fins de semana de feriados públicos e a alta temporada (final de dezembro–início de janeiro), a vila pode estar animada. Protetores auriculares gratuitos estão disponíveis na recepção para garantir uma noite de sono tranquila.",
+          "closingNote": "Uma estadia espaçosa e imersa na natureza com confortos modernos—perfeita para viajantes que querem o ar livre sem sacrificar a conveniência."
+        }
+      ],
+      "trustItems": [
+        "Conforto imerso na natureza",
+        "Instalações limpas e bem mantidas",
+        "Noites relaxadas e românticas"
+      ],
+      "cta": {
+        "heading": "Pronto para Reservar a Sua Tenda Safari?",
+        "description": "Garanta sua escapada imersa na natureza no DEVOCEAN Lodge. A reserva direta significa as melhores tarifas e apoio total da nossa equipe."
+      }
+    },
+    "comfort": {
+      "title": "Tenda Comfort",
+      "shortDescription": "Tenda atualizada de 12 m² com privacidade extra (paredes laterais/traseiras), terraço privado e banheiro privativo sob um telhado de palha.",
+      "detailedFeatures": [
+        "Configuração de cama Twin/King • lâmpadas • interruptores de luz convenientes",
+        "Rede contra mosquitos • ventilador forte • pontos de energia",
+        "Terraço de madeira privado com cadeiras de folha de palma enrolada",
+        "Nos fundos: banheiro privado (chuveiro, toilete, pia) sob um telhado de grama",
+        "Animado na vila durante picos/férias; tampões de ouvido disponíveis"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage de Jardim",
+      "shortDescription": "Cottage arejado com cama queen, A/C (inversor), mesa de trabalho e mesa de jantar, terraço privado e banheiro em um roundavel charmoso.",
+      "detailedFeatures": [
+        "Telhado de telhas romanas, teto alto branco com vigas de madeira escura",
+        "Piso de terracota, paredes pintadas em tons quentes de campos de trigo",
+        "Cama queen • mesa de trabalho com lâmpada com abajur • mesa de jantar com cadeiras",
+        "Prateleiras para malas, arara para roupas e prateleiras extras",
+        "A/C inversor (frio e quente) • luz principal regulável",
+        "Banheiro privado em roundavel de grama (chuveiro, pia, toilete)",
+        "Terraço de madeira privado com cadeiras de acampamento e mesa lateral"
+      ]
+    },
+    "chalet": {
+      "title": "Chalé de Palha",
+      "shortDescription": "Chalé pequeno romântico isolado sob palmeiras e strelitzia. A/C, banheiro privado, terraço, configuração de cama Twin/King.",
+      "detailedFeatures": [
+        "Telhado de grama em postes de bluegum • piso de ardósia outonal",
+        "Paredes pintadas em campos de trigo • configuração tranquila, sombreada",
+        "Mesa de jantar com cadeiras • ar condicionado",
+        "Banheiro privado (chuveiro, pia, toilete)",
+        "Duas camas de solteiro ou King com pedestais • terraço privado com cadeiras de folha de palma"
+      ]
+    }
+  },
+  "pt-PT": {
+    "safari": {
+      "eyebrow": "Tenda Safari",
+      "heroTitle": "Conforto + Aventura em Lona",
+      "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Situada numa plataforma espaçosa de 3×6 m, esta tenda de lona de 12 m² tem paredes laterais e traseiras protectoras—oferecendo-lhe privacidade e abrigo enquanto permanece perto da natureza.",
+      "sections": [
+        {
+          "heading": "Espaço e Disposição",
+          "description": "A tenda apresenta um interior acolhedor e bem planeado com toques cuidadosos para uma vida fácil.",
+          "features": [
+            "Plataforma: 3×6 m • Tenda: 12 m²",
+            "Parede lateral e traseira para privacidade e abrigo",
+            "Rede mosquiteira em todas as janelas e portas"
+          ]
+        },
+        {
+          "heading": "Sono e Conforto",
+          "description": "Duas camas de solteiro com mesinhas-de-cabeceira e candeeiros podem ser combinadas numa cama King-size para hóspedes que preferem uma configuração de casal.",
+          "features": [
+            "Colchões de qualidade e iluminação de cabeceira",
+            "Ventoinha potente para noites frescas de Verão",
+            "Tomadas eléctricas para carregar dispositivos",
+            "Pequena unidade de prateleiras para roupa e essenciais"
+          ]
+        },
+        {
+          "heading": "Terraço e Jardim",
+          "description": "Saia para o seu terraço privado, mobilado com cadeiras de folha de palmeira enrolada. Desfrute de vistas do jardim tropical exuberante—lindamente iluminado à noite para um ambiente romântico.",
+          "features": [
+            "Assentos exteriores privados",
+            "Iluminação nocturna para noites serenas"
+          ]
+        },
+        {
+          "heading": "Casas de Banho",
+          "description": "Os hóspedes têm acesso a casas de banho partilhadas, separadas para senhoras e senhores—mantidas limpas e convenientes.",
+          "features": [
+            "2× chuveiros de água quente/fria por lado",
+            "2× sanitas por lado",
+            "Lavatórios de água fria"
+          ]
+        },
+        {
+          "heading": "Bom Saber",
+          "description": "Durante os fins de semana de feriados públicos e a época alta (final de Dezembro–início de Janeiro), a aldeia pode estar animada. Tampões auriculares gratuitos estão disponíveis na recepção para garantir uma noite de sono descansada.",
+          "closingNote": "Uma estadia espaçosa e imersa na natureza com confortos modernos—perfeita para viajantes que querem o ar livre sem sacrificar a conveniência."
+        }
+      ],
+      "trustItems": [
+        "Conforto imerso na natureza",
+        "Instalações limpas e bem mantidas",
+        "Noites relaxadas e românticas"
+      ],
+      "cta": {
+        "heading": "Pronto para Reservar a Sua Tenda Safari?",
+        "description": "Garanta a sua escapada imersa na natureza no DEVOCEAN Lodge. A reserva directa significa as melhores tarifas e apoio total da nossa equipa."
+      }
+    },
+    "comfort": {
+      "title": "Tenda Comfort",
+      "shortDescription": "Tenda melhorada de 12 m² com privacidade extra (paredes laterais/traseiras), terraço privado e casa de banho privativa sob um telhado de palha.",
+      "detailedFeatures": [
+        "Configuração de cama Twin/King • candeeiros • interruptores de luz convenientes",
+        "Rede mosquiteira • ventoinha potente • tomadas eléctricas",
+        "Terraço de madeira privado com cadeiras de folha de palmeira enrolada",
+        "Nas traseiras: casa de banho privada (chuveiro, sanita, lavatório) sob um telhado de palha",
+        "Animação na aldeia durante pico/feriados; tampões auriculares disponíveis"
+      ]
+    },
+    "cottage": {
+      "title": "Cottage de Jardim",
+      "shortDescription": "Cottage arejado com cama queen, ar condicionado (inversor), secretária e mesa de jantar, terraço privado e casa de banho num roundavel encantador.",
+      "detailedFeatures": [
+        "Telhado de telha romana, tecto alto branco com vigas de madeira escura",
+        "Piso de terracota, paredes pintadas em tons quentes de campos de trigo",
+        "Cama queen • secretária de trabalho com candeeiro • mesa de jantar com cadeiras",
+        "Prateleiras para malas, cabide para roupa e prateleiras extra",
+        "Ar condicionado inversor (frio e quente) • luz principal regulável",
+        "Casa de banho privada em roundavel de palha (chuveiro, lavatório, sanita)",
+        "Terraço de madeira privado com cadeiras de campismo e mesa lateral"
+      ]
+    },
+    "chalet": {
+      "title": "Chalé de Palha",
+      "shortDescription": "Pequeno chalé romântico isolado sob palmeiras e estrelícias. Ar condicionado, casa de banho privada, terraço, configuração de cama Twin/King.",
+      "detailedFeatures": [
+        "Telhado de palha em postes de bluegum • piso de ardósia outonal",
+        "Paredes pintadas em campos de trigo • ambiente tranquilo e sombreado",
+        "Mesa de jantar com cadeiras • ar condicionado",
+        "Casa de banho privada (chuveiro, lavatório, sanita)",
+        "Duas camas de solteiro ou King com mesas-de-cabeceira • terraço privado com cadeiras de folha de palmeira"
       ]
     }
   }
