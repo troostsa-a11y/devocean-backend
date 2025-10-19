@@ -1,0 +1,218 @@
+{
+  "pt-PT": {
+    "safari": {
+      "eyebrow": "Tenda Safari",
+      "heroTitle": "Conforto + Aventura em Lona",
+      "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Montada numa plataforma espaçosa de 3×6 m, esta tenda de lona de 12 m² tem paredes laterais e traseiras protetoras – proporcionando privacidade e abrigo enquanto permanece próximo da natureza.",
+      "sections": [
+        {
+          "heading": "Espaço & Layout",
+          "description": "A tenda apresenta um interior bem planeado e acolhedor com toques pensados para uma vida fácil.",
+          "features": [
+            "Plataforma: 3×6 m • Tenda: 12 m²",
+            "Parede lateral & traseira para privacidade e abrigo",
+            "Rede mosquiteira em todas as janelas & portas"
+          ]
+        },
+        {
+          "heading": "Dormir & Conforto",
+          "description": "Duas camas individuais com pedestais e lâmpadas sombreadas podem ser combinadas numa cama King-size para hóspedes que prefiram uma configuração dupla.",
+          "features": [
+            "Colchões de qualidade & iluminação de cabeceira",
+            "Ventilador potente para noites de verão frescas",
+            "Tomadas para carregar dispositivos",
+            "Pequena unidade de prateleira para roupas & essenciais"
+          ]
+        },
+        {
+          "heading": "Terraço & Jardim",
+          "description": "Saia para o seu terraço privado, mobilado com cadeiras de folhas de palmeira enroladas. Desfrute das vistas do jardim tropical exuberante – lindamente iluminado à noite para um ambiente romântico.",
+          "features": [
+            "Assentos privados ao ar livre",
+            "Iluminação noturna para noites serenas"
+          ]
+        },
+        {
+          "heading": "Casas de Banho",
+          "description": "Os hóspedes têm acesso a casas de banho partilhadas, separadas para senhoras e senhores – mantidas limpas e convenientes.",
+          "features": [
+            "2× chuveiros de água quente/fria por lado",
+            "2× sanitas por lado",
+            "Lavatórios de água fria"
+          ]
+        },
+        {
+          "heading": "Bom Saber",
+          "description": "Durante fins de semana de feriados públicos e época alta (final de dezembro – início de janeiro), a aldeia pode ser animada. Tampões para os ouvidos gratuitos estão disponíveis na receção para garantir uma noite de sono repousante.",
+          "closingNote": "Uma estadia espaçosa, imersa na natureza com confortos modernos – perfeita para viajantes que querem o exterior sem sacrificar a conveniência."
+        }
+      ],
+      "trustItems": [
+        "Conforto imerso na natureza",
+        "Instalações limpas e bem mantidas",
+        "Noites relaxadas e românticas"
+      ],
+      "cta": {
+        "heading": "Pronto para Reservar a Sua Tenda Safari?",
+        "description": "Garanta a sua escapadela imersa na natureza no DEVOCEAN Lodge. Reserva direta significa as melhores tarifas e apoio total da nossa equipa."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Tenda Conforto",
+      "heroTitle": "Mais privacidade. Mais conforto. O mesmo charme selvagem.",
+      "heroDescription": "Para hóspedes que adoram a vibe imersa na natureza mas querem mais isolamento e conveniência, a Tenda Safari Conforto é uma atualização da nossa experiência clássica em lona.",
+      "sections": [
+        {
+          "heading": "Espaço & Privacidade",
+          "description": "Uma tenda de lona generosa de 12 m² montada na sua própria plataforma, com duas paredes laterais e uma parede traseira para maior isolamento em comparação com a Tenda Safari Padrão.",
+          "features": [
+            "Tenda: 12 m² em plataforma privada",
+            "Privacidade extra: 2 paredes laterais + parede traseira",
+            "Rede mosquiteira em todas as janelas & portas"
+          ]
+        },
+        {
+          "heading": "Dormir & Conforto",
+          "description": "Duas camas individuais com pedestais e lâmpadas sombreadas podem ser combinadas numa cama King-size. A iluminação é convenientemente controlada por interruptores perto da entrada.",
+          "features": [
+            "Configuração King ou Twin",
+            "Tomadas para carregar dispositivos",
+            "Ventilador forte para noites de verão frescas",
+            "Pequena unidade de prateleira para roupas & essenciais"
+          ]
+        },
+        {
+          "heading": "Terraço & Jardim",
+          "description": "Desfrute do seu terraço de madeira privado com cadeiras de folhas de palmeira enroladas, com vista para o jardim tropical exuberante – romanticamente iluminado à noite.",
+          "features": [
+            "Assentos privados ao ar livre",
+            "Vistas do jardim, iluminação noturna"
+          ]
+        },
+        {
+          "heading": "Casa de Banho Privada",
+          "description": "Na parte de trás da tenda, sob um charmoso telhado de relva, a sua casa de banho en-suite inclui chuveiro, sanita e lavatório – combinando conveniência com um toque único ao ar livre."
+        },
+        {
+          "heading": "Bom Saber",
+          "description": "Embora o DEVOCEAN Lodge seja pacífico, a aldeia circundante pode ser animada durante fins de semana de feriados públicos e época alta (final de dezembro – início de janeiro). Tampões para os ouvidos gratuitos estão disponíveis na receção.",
+          "closingNote": "Um refúgio espaçoso, bem equipado e privado ao estilo safari – perfeito para hóspedes que querem conforto, isolamento e a conveniência de uma casa de banho en-suite."
+        }
+      ],
+      "trustItems": [
+        "Conforto imerso na natureza",
+        "Conveniência en-suite",
+        "Noites românticas no jardim"
+      ],
+      "cta": {
+        "heading": "Pronto para Reservar a Sua Tenda Conforto?",
+        "description": "Atualize a sua escapadela na natureza com mais privacidade e conveniência en-suite. Reserve diretamente para as melhores tarifas."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Cottage de Jardim",
+      "heroTitle": "Charme rústico • Serenidade tropical • Conforto moderno",
+      "heroDescription": "Aninhado no nosso jardim tropical exuberante, o Cottage de Jardim combina elegância rústica com conforto caseiro. Um telhado de telhas romanas vermelhas e um teto alto branco com vigas de madeira escura criam um refúgio espaçoso e arejado cheio de caráter.",
+      "sections": [
+        {
+          "heading": "Atmosfera & Design",
+          "description": "O piso de azulejos de terracota adiciona calor sob um teto alto com vigas, enquanto paredes pintadas em tons suaves de campo de trigo realçam a atmosfera calma e acolhedora do cottage.",
+          "features": [
+            "Telhado de telhas romanas vermelhas",
+            "Teto alto branco com vigas escuras",
+            "Piso de terracota & tons quentes nas paredes"
+          ]
+        },
+        {
+          "heading": "Terraço & Jardim",
+          "description": "Saia para o seu terraço de madeira privado, mobilado com cadeiras de campismo e uma mesa lateral – um local pacífico para relaxar e apreciar a vegetação exuberante e os sons suaves do jardim.",
+          "features": [
+            "Terraço privado com assentos",
+            "Imerso em vegetação tropical"
+          ]
+        },
+        {
+          "heading": "Interior & Comodidades",
+          "description": "Projetado para relaxamento e funcionalidade, o Cottage de Jardim dispõe de uma cama Queen-size em caixa, uma secretária de trabalho com lâmpada sombreada e uma mesa de jantar com cadeiras.",
+          "features": [
+            "Cama Queen-size com colchão de qualidade",
+            "Secretária de trabalho & lâmpada sombreada",
+            "Mesa de jantar & cadeiras",
+            "Armazenamento: prateleiras para malas, cabide para roupas, prateleiras extras"
+          ]
+        },
+        {
+          "heading": "Conforto & Iluminação",
+          "description": "Um ar condicionado inverter mantém-no confortável em todas as estações, oferecendo tanto refrigeração como aquecimento. Iluminação suave, incluindo uma luz principal regulável, permite definir o ambiente perfeito para trabalho, descanso ou relaxamento.",
+          "features": [
+            "Ar condicionado inverter (refrigerar & aquecer)",
+            "Iluminação regulável & brilho interior quente"
+          ]
+        },
+        {
+          "heading": "Casa de Banho Privada",
+          "description": "Logo atrás do cottage, um charmoso rondavel com telhado de relva abriga a sua casa de banho privada, completa com chuveiro, sanita e lavatório – combinando conveniência moderna com um flair africano autêntico."
+        }
+      ],
+      "trustItems": [
+        "Rodeado por natureza tropical",
+        "Rondavel en-suite privado",
+        "Ar condicionado & iluminado pacificamente"
+      ],
+      "cta": {
+        "heading": "Pronto para Reservar o Seu Cottage de Jardim?",
+        "description": "Experimente a elegância rústica no nosso refúgio de jardim tropical. Reserve diretamente para as melhores tarifas e serviço personalizado."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Chalé com Telhado de Colmo",
+      "heroTitle": "Isolamento romântico • Elegância rústica • Paz tropical",
+      "heroDescription": "Escondido num canto isolado da propriedade, o Chalé com Telhado de Colmo oferece um refúgio tranquilo e romântico. Sombreado por palmeiras, strelitzias, acácias, fetos e árvores de amêndoa indiana, imerge-o na natureza sem sacrificar conforto ou privacidade.",
+      "sections": [
+        {
+          "heading": "Definição & Atmosfera",
+          "description": "O chalé com telhado de relva, suportado por postes robustos de bluegum, exala elegância rústica. Um piso de ardósia outonal funde-se harmoniosamente com os seus arredores exuberantes, enquanto paredes pintadas em tons suaves de campo de trigo criam uma atmosfera interior quente e serena.",
+          "features": [
+            "Telhado de colmo • estrutura de postes bluegum",
+            "Piso de ardósia outonal • tons naturais",
+            "Rodeado por palmeiras, fetos & strelitzias"
+          ]
+        },
+        {
+          "heading": "Terraço & Jardim",
+          "description": "Saia para o seu terraço privado, mobilado com cadeiras de folhas de palmeira enroladas e uma mesa de jantar com cadeiras. Relaxe à sombra do dossel do jardim e desfrute das vistas e sons da natureza.",
+          "features": [
+            "Terraço privado com assentos",
+            "Vistas do jardim tropical"
+          ]
+        },
+        {
+          "heading": "Interior & Conforto",
+          "description": "No interior, duas camas individuais com pedestais podem ser combinadas numa cama King-size para uma configuração dupla acolhedora. Ar condicionado garante conforto durante todo o ano, enquanto iluminação suave complementa a decoração rústica.",
+          "features": [
+            "Configuração de cama Twin ou King-size",
+            "Ar condicionado para refrigeração & conforto",
+            "Iluminação quente & tons interiores suaves"
+          ]
+        },
+        {
+          "heading": "Casa de Banho Privada",
+          "description": "O chalé inclui uma casa de banho privada com chuveiro, sanita e lavatório, misturando conveniência com o charme rústico do seu ambiente natural."
+        },
+        {
+          "heading": "Experiência",
+          "description": "Quer procure uma escapadela romântica ou uma fuga pacífica, este pequeno chalé oferece uma mistura inesquecível de isolamento, elegância e conforto – um refúgio ideal dentro do paraíso tropical do DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Imerso na natureza",
+        "Ambiente romântico & tranquilo",
+        "Conforto & conveniência privados"
+      ],
+      "cta": {
+        "heading": "Pronto para Reservar o Seu Chalé com Telhado de Colmo?",
+        "description": "Escape para o isolamento romântico no nosso esconderijo tropical. Reserve diretamente para as melhores tarifas e serviço personalizado."
+      }
+    }
+  }
+}
