@@ -1,0 +1,218 @@
+{
+  "sv-SE": {
+    "safari": {
+      "eyebrow": "Safaritylt",
+      "heroTitle": "Komfort + Äventyr i Duk",
+      "heroDescription": "Upplev den perfekta balansen mellan komfort och äventyr. Uppställd på en rymlig 3×6 m plattform, har detta 12 m² stora duktält skyddande sid- och bakväggar – som ger dig integritet och skydd medan du håller dig nära naturen.",
+      "sections": [
+        {
+          "heading": "Utrymme & Layout",
+          "description": "Tältet har en välplanerad, mysig interiör med genomtänkta detaljer för enkelt boende.",
+          "features": [
+            "Plattform: 3×6 m • Tält: 12 m²",
+            "Sid- & bakvägg för integritet och skydd",
+            "Myggnät på alla fönster & dörrar"
+          ]
+        },
+        {
+          "heading": "Sov & Komfort",
+          "description": "Två enkelsängar med socklar och skuggade lampor kan kombineras till en kingsize-säng för gäster som föredrar en dubbelkonfiguration.",
+          "features": [
+            "Kvalitetsmadrasser & nattbelysning",
+            "Kraftfull fläkt för svala sommarnätter",
+            "Eluttag för laddning av enheter",
+            "Liten hylla för kläder & väsentligheter"
+          ]
+        },
+        {
+          "heading": "Terrass & Trädgård",
+          "description": "Stig ut på din privata terrass, inredd med stolar av rullade palmblad. Njut av utsikten över den frodiga tropiska trädgården – vackert upplyst på natten för en romantisk atmosfär.",
+          "features": [
+            "Privat utomhussittplats",
+            "Nattbelysning för lugna kvällar"
+          ]
+        },
+        {
+          "heading": "Badrum",
+          "description": "Gäster har tillgång till delade badrum, separata för damer och herrar – hållna rena och praktiska.",
+          "features": [
+            "2× varma/kalla vattenduschar per sida",
+            "2× toaletter per sida",
+            "Kallvattenhandfat"
+          ]
+        },
+        {
+          "heading": "Bra att veta",
+          "description": "Under helgdagar och högsäsong (slutet av december – början av januari) kan byn vara livlig. Gratis öronproppar finns tillgängliga vid receptionen för att säkerställa en vilsam natts sömn.",
+          "closingNote": "Ett rymligt, naturinbäddat boende med moderna bekvämligheter – perfekt för resenärer som vill ha utomhusupplevelsen utan att offra bekvämlighet."
+        }
+      ],
+      "trustItems": [
+        "Naturinbäddad komfort",
+        "Rena, väl underhållna faciliteter",
+        "Avslappnade, romantiska kvällar"
+      ],
+      "cta": {
+        "heading": "Redo att boka ditt Safaritylt?",
+        "description": "Säkra din naturinbäddade flykt på DEVOCEAN Lodge. Direkt bokning betyder de bästa priserna och full support från vårt team."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Komforttält",
+      "heroTitle": "Mer integritet. Mer komfort. Samma vilda charm.",
+      "heroDescription": "För gäster som älskar den naturinbäddade stämningen men vill ha extra avskildhet och bekvämlighet, är Komfort Safaritylt en uppgradering av vår klassiska dukupplevelse.",
+      "sections": [
+        {
+          "heading": "Utrymme & Integritet",
+          "description": "Ett generöst 12 m² stort duktält på egen plattform, med två sidväggar och en bakvägg för ökad avskildhet jämfört med Standard Safaritylt.",
+          "features": [
+            "Tält: 12 m² på privat plattform",
+            "Extra integritet: 2 sidväggar + bakvägg",
+            "Myggnät på alla fönster & dörrar"
+          ]
+        },
+        {
+          "heading": "Sov & Komfort",
+          "description": "Två enkelsängar med socklar och skuggade lampor kan kombineras till en kingsize-säng. Belysningen styrs bekvämt med strömbrytare nära ingången.",
+          "features": [
+            "King- eller Twin-konfiguration",
+            "Eluttag för laddning av enheter",
+            "Stark fläkt för svala sommarnätter",
+            "Liten hylla för kläder & väsentligheter"
+          ]
+        },
+        {
+          "heading": "Terrass & Trädgård",
+          "description": "Njut av din privata träterrass med stolar av rullade palmblad, med utsikt över den frodiga tropiska trädgården – romantiskt upplyst på natten.",
+          "features": [
+            "Privat utomhussittplats",
+            "Trädgårdsutsikter, nattbelysning"
+          ]
+        },
+        {
+          "heading": "Privat Badrum",
+          "description": "På baksidan av tältet, under ett charmigt grästak, finns ditt eget badrum med dusch, toalett och handfat – som kombinerar bekvämlighet med en unik utomhus touch."
+        },
+        {
+          "heading": "Bra att veta",
+          "description": "Även om DEVOCEAN Lodge är lugnt, kan den omgivande byn vara livlig under helgdagar och högsäsong (slutet av december – början av januari). Gratis öronproppar finns tillgängliga vid receptionen.",
+          "closingNote": "Ett rymligt, välutrustat och privat safari-liknande tillflyktsort – perfekt för gäster som vill ha komfort, avskildhet och bekvämligheten av ett eget badrum."
+        }
+      ],
+      "trustItems": [
+        "Naturinbäddad komfort",
+        "Eget badrumsbekvämlighet",
+        "Romantiska kvällar i trädgården"
+      ],
+      "cta": {
+        "heading": "Redo att boka ditt Komforttält?",
+        "description": "Uppgradera din naturflykt med ökad integritet och eget badrumsbekvämlighet. Boka direkt för de bästa priserna."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Trädgårdsstuga",
+      "heroTitle": "Rustik charm • Tropisk serenitet • Modern komfort",
+      "heroDescription": "Inbäddad i vår frodiga tropiska trädgård, kombinerar Trädgårdsstugan rustik elegans med hemtrevlig komfort. Ett rött romerskt tegeltak och högt vitt tak med mörka träbjälkar skapar en rymlig, luftig tillflyktsort full av karaktär.",
+      "sections": [
+        {
+          "heading": "Atmosfär & Design",
+          "description": "Terrakotta-golvet lägger till värme under ett högt, bjälkförsett tak, medan mjuka veteåkersfärgade väggar förstärker stugans lugna och inbjudande atmosfär.",
+          "features": [
+            "Rött romerskt tegeltak",
+            "Högt vitt tak med mörka bjälkar",
+            "Terrakotta-golv & varma väggtoner"
+          ]
+        },
+        {
+          "heading": "Terrass & Trädgård",
+          "description": "Stig ut på din privata träterrass, inredd med campingstolar och ett sidobord – en lugn plats att koppla av och ta in den frodiga grönskan och de mjuka trädgårdsljuden.",
+          "features": [
+            "Privat terrass med sittplatser",
+            "Inbäddad i tropisk vegetation"
+          ]
+        },
+        {
+          "heading": "Interiör & Bekvämligheter",
+          "description": "Designad för både avkoppling och funktionalitet, har Trädgårdsstugan en queen-size boxsäng, ett arbetsbord med skuggad lampa och ett matbord med stolar.",
+          "features": [
+            "Queen-size säng med kvalitetsmadrass",
+            "Arbetsbord & skuggad lampa",
+            "Matbord & stolar",
+            "Förvaring: hyllor för resväskor, klädhängare, extra hyllor"
+          ]
+        },
+        {
+          "heading": "Komfort & Belysning",
+          "description": "En inverter luftkonditionering håller dig bekväm i varje säsong, med både kylning och värme. Mjuk belysning, inklusive en dimbar huvudlampa, låter dig ställa in den perfekta atmosfären för arbete, vila eller avkoppling.",
+          "features": [
+            "Inverter luftkonditionering (kyl & värme)",
+            "Dimbar belysning & varm interiörglöd"
+          ]
+        },
+        {
+          "heading": "Privat Badrum",
+          "description": "Precis bakom stugan, ett charmigt grästak rondavel huserar ditt privata badrum, komplett med dusch, toalett och handfat – som kombinerar modern bekvämlighet med autentisk afrikansk stil."
+        }
+      ],
+      "trustItems": [
+        "Omgiven av tropisk natur",
+        "Privat eget rondavel",
+        "Luftkonditionerad & lugnt upplyst"
+      ],
+      "cta": {
+        "heading": "Redo att boka din Trädgårdsstuga?",
+        "description": "Upplev rustik elegans i vår tropiska trädgårdstillflykt. Boka direkt för de bästa priserna och personlig service."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Grästak Chalet",
+      "heroTitle": "Romantisk avskildhet • Rustik elegans • Tropisk frid",
+      "heroDescription": "Gömd i en avskild hörna av fastigheten, erbjuder Grästak Chalet en lugn, romantisk tillflyktsort. Skuggad av palmer, strelitzior, akacior, ormbunkar och indiska mandelträd, sänker det dig i naturen utan att offra komfort eller integritet.",
+      "sections": [
+        {
+          "heading": "Miljö & Atmosfär",
+          "description": "Chalet med grästak, stöttat av robusta bluegum-pålar, utstrålar rustik elegans. Ett höstskiffergolv smälter harmoniskt med dess frodiga omgivningar, medan mjuka veteåkersfärgade väggar skapar en varm och lugn interiör atmosfär.",
+          "features": [
+            "Grästak • bluegum-pålar struktur",
+            "Höstskiffergolv • naturliga toner",
+            "Omgiven av palmer, ormbunkar & strelitzior"
+          ]
+        },
+        {
+          "heading": "Terrass & Trädgård",
+          "description": "Stig ut på din privata terrass, inredd med stolar av rullade palmblad och ett matbord med stolar. Koppla av i skuggan av trädgårdens tak och njut av naturens sevärdheter och ljud.",
+          "features": [
+            "Privat terrass med sittplatser",
+            "Tropiska trädgårdsutsikter"
+          ]
+        },
+        {
+          "heading": "Interiör & Komfort",
+          "description": "Inuti, två enkelsängar med socklar kan kombineras till en kingsize-säng för en mysig dubbeluppsättning. Luftkonditionering säkerställer komfort året runt, medan mjuk belysning kompletterar den rustika inredningen.",
+          "features": [
+            "Twin- eller kingsize-sängkonfiguration",
+            "Luftkonditionering för kylning & komfort",
+            "Varm belysning & mjuka interiörtoner"
+          ]
+        },
+        {
+          "heading": "Privat Badrum",
+          "description": "Chalet inkluderar ett privat badrum med dusch, toalett och handfat, som blandar bekvämlighet med den rustika charmen i dess naturliga miljö."
+        },
+        {
+          "heading": "Upplevelse",
+          "description": "Oavsett om du söker en romantisk getaway eller en lugn flykt, levererar denna lilla chalet en oförglömlig blandning av avskildhet, elegans och komfort – en ideal tillflyktsort inom DEVOCEANs tropiska fristad."
+        }
+      ],
+      "trustItems": [
+        "Inbäddad i naturen",
+        "Romantisk & lugn atmosfär",
+        "Privat komfort & bekvämlighet"
+      ],
+      "cta": {
+        "heading": "Redo att boka ditt Grästak Chalet?",
+        "description": "Fly till romantisk avskildhet i vår tropiska gömställe. Boka direkt för de bästa priserna och personlig service."
+      }
+    }
+  }
+}
