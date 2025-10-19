@@ -4,41 +4,41 @@
  * Mirrors the React-based i18n logic from the main site
  */
 
-// Supported languages (must match main site)
+// Supported languages (must match main site - Hotelrunner locale codes)
 const SUPPORTED_LANGS = [
-  "en", "en-US", "pt-PT", "pt-BR", "nl", "fr", "it", "de", "es", 
-  "sv", "pl", "af-ZA", "zu", "sw", "ja", "zh", "ru"
+  "en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", 
+  "sv", "pl", "af-ZA", "zu", "sw", "ja-JP", "zh-CN", "ru"
 ];
 
 // Map country codes to primary language (IP-based fallback)
 const CC_TO_LANGUAGE = {
   // English-speaking countries
-  US: "en-US", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en", 
-  ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en", 
-  SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en", 
-  BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
+  US: "en-US", GB: "en-GB", IE: "en-GB", AU: "en-GB", NZ: "en-GB", CA: "en-GB", 
+  ZA: "en-GB", NA: "en-GB", ZW: "en-GB", BW: "en-GB", NG: "en-GB", GH: "en-GB", ZM: "en-GB", MW: "en-GB", 
+  SZ: "en-GB", LS: "en-GB", MU: "en-GB", SC: "en-GB", JM: "en-GB", TT: "en-GB", 
+  BB: "en-GB", FJ: "en-GB", PG: "en-GB", SB: "en-GB", VU: "en-GB",
   
   // Portuguese-speaking countries
   PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
   
   // Dutch-speaking countries
-  NL: "nl", BE: "nl", SR: "nl",
+  NL: "nl-NL", BE: "nl-NL", SR: "nl-NL",
   
   // French-speaking countries  
-  FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr", 
-  SN: "fr", CI: "fr", CM: "fr", DJ: "fr", NC: "fr", PF: "fr",
+  FR: "fr-FR", MC: "fr-FR", LU: "fr-FR", CH: "fr-FR", RE: "fr-FR", 
+  SN: "fr-FR", CI: "fr-FR", CM: "fr-FR", DJ: "fr-FR", NC: "fr-FR", PF: "fr-FR",
   
   // Italian-speaking countries
-  IT: "it", SM: "it", VA: "it",
+  IT: "it-IT", SM: "it-IT", VA: "it-IT",
   
   // German-speaking countries
-  DE: "de", AT: "de", LI: "de",
+  DE: "de-DE", AT: "de-DE", LI: "de-DE",
   
   // Spanish-speaking countries
-  ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
-  CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
-  HN: "es", PY: "es", SV: "es", NI: "es", CR: "es", PA: "es",
-  UY: "es", GQ: "es",
+  ES: "es-ES", MX: "es-ES", AR: "es-ES", CO: "es-ES", PE: "es-ES", VE: "es-ES",
+  CL: "es-ES", EC: "es-ES", GT: "es-ES", CU: "es-ES", BO: "es-ES", DO: "es-ES",
+  HN: "es-ES", PY: "es-ES", SV: "es-ES", NI: "es-ES", CR: "es-ES", PA: "es-ES",
+  UY: "es-ES", GQ: "es-ES",
   
   // Swedish-speaking countries
   SE: "sv", FI: "sv",
@@ -47,10 +47,10 @@ const CC_TO_LANGUAGE = {
   PL: "pl",
   
   // Japanese-speaking countries
-  JP: "ja",
+  JP: "ja-JP",
   
   // Chinese-speaking countries/regions
-  CN: "zh", HK: "zh", TW: "zh", SG: "zh",
+  CN: "zh-CN", HK: "zh-CN", TW: "zh-CN", SG: "zh-CN",
   
   // Russian-speaking countries
   RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
@@ -147,9 +147,9 @@ const CC_TO_CONTINENT = {
 
 // Booking engine locale mapping
 const LOCALE_BY_LANG = {
-  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", 
-  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw",
+  "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", 
+  "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw",
 };
 
 /**
@@ -223,23 +223,33 @@ function buildBookingUrl(locale, currency) {
 }
 
 /**
- * Normalize language code
+ * Normalize language code to Hotelrunner locale format
  */
 function normLang(raw) {
-  if (!raw) return "en";
+  if (!raw) return "en-GB";
   let s = String(raw).toLowerCase();
   
-  // Special cases: preserve specific language-region codes with proper capitalization
+  // Preserve full Hotelrunner locale codes with proper capitalization
+  if (s === "en-gb" || s === "en") return "en-GB";
   if (s === "en-us") return "en-US";
-  if (s === "af-za") return "af-ZA";
   if (s === "pt-pt") return "pt-PT";
   if (s === "pt-br") return "pt-BR";
   if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
+  if (s === "nl-nl" || s === "nl") return "nl-NL";
+  if (s === "fr-fr" || s === "fr") return "fr-FR";
+  if (s === "it-it" || s === "it") return "it-IT";
+  if (s === "de-de" || s === "de") return "de-DE";
+  if (s === "es-es" || s === "es") return "es-ES";
+  if (s === "ja-jp" || s === "ja") return "ja-JP";
+  if (s === "zh-cn" || s === "zh") return "zh-CN";
+  if (s === "af-za" || s === "af") return "af-ZA";
+  if (s === "sv") return "sv";
+  if (s === "pl") return "pl";
+  if (s === "ru") return "ru";
+  if (s === "zu") return "zu";
+  if (s === "sw") return "sw";
   
-  // Handle other locale codes - strip region if not needed
-  if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
-  
-  return SUPPORTED_LANGS.includes(s) ? s : "en";
+  return "en-GB";
 }
 
 /**
@@ -281,14 +291,9 @@ function pickInitialLang() {
   for (const l of list) {
     const lower = String(l || "").toLowerCase();
     
-    // Special case: detect US English browser language
-    if (lower === "en-us" || lower.startsWith("en-us")) {
-      return "en-US";
-    }
-    
-    // Standard language detection
-    const base = lower.split("-")[0];
-    if (SUPPORTED_LANGS.includes(base)) return base;
+    // Normalize browser language to our Hotelrunner codes
+    const normalized = normLang(lower);
+    if (SUPPORTED_LANGS.includes(normalized)) return normalized;
   }
 
   // Priority 4: Use IP-based country → language mapping
@@ -303,7 +308,7 @@ function pickInitialLang() {
   if (continent === "americas") {
     return "en-US";
   }
-  return "en"; // UK English for Europe, Asia, Oceania, Africa
+  return "en-GB"; // UK English for Europe, Asia, Oceania, Africa
 }
 
 /**
@@ -315,19 +320,14 @@ async function loadTranslations(lang) {
     if (!response.ok) throw new Error('Failed to load translations');
     const data = await response.json();
     
-    // Map language codes to story JSON keys
-    // Story JSON has: en, en-US, pt-PT, pt-BR, nl, fr, it, de, es, sv, pl, ja, zh, ru, af, zu, sw
-    // Our system uses same base codes, so direct match works for most
-    const translationKey = 
-      (lang === "af-ZA") ? "af" : // af-ZA → af
-      lang; // Direct match: en, en-US, pt-PT, pt-BR, nl, fr, it, de, es, sv, pl, ja, zh, ru, zu, sw
-    
-    console.log('Loading story translations for:', lang, '→', translationKey);
-    const translations = data[translationKey];
+    // Story JSON keys now match our Hotelrunner codes exactly (1:1 mapping)
+    // en-GB, en-US, pt-PT, pt-BR, nl-NL, fr-FR, it-IT, de-DE, es-ES, ja-JP, zh-CN, af-ZA, sv, pl, ru, zu, sw
+    console.log('Loading story translations for:', lang);
+    const translations = data[lang];
     if (!translations) {
-      console.warn('No translations found for', translationKey, 'falling back to English');
+      console.warn('No translations found for', lang, 'falling back to English');
     }
-    return translations || data['en']; // Fallback to English if language not found
+    return translations || data['en-GB']; // Fallback to UK English if language not found
   } catch (error) {
     console.error('Error loading translations:', error);
     return null;

@@ -5,39 +5,39 @@
 
 // Supported languages (must match main site)
 const SUPPORTED_LANGS = [
-  "en", "en-US", "pt-PT", "pt-BR", "nl", "fr", "it", "de", "es",
-  "sv", "pl", "af-ZA", "zu", "sw", "ja", "zh", "ru"
+  "en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es",
+  "sv", "pl", "af-ZA", "zu", "sw", "ja-JP", "zh-CN", "ru"
 ];
 
 // Map country codes to primary language (IP-based fallback)
 const CC_TO_LANGUAGE = {
   // English-speaking countries
-  US: "en-US", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
-  ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en", ZM: "en", MW: "en",
-  SZ: "en", LS: "en", MU: "en", SC: "en", JM: "en", TT: "en",
-  BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
+  US: "en-US", GB: "en-GB", IE: "en-GB", AU: "en-GB", NZ: "en-GB", CA: "en-GB",
+  ZA: "en-GB", NA: "en-GB", ZW: "en-GB", BW: "en-GB", NG: "en-GB", GH: "en-GB", ZM: "en-GB", MW: "en-GB",
+  SZ: "en-GB", LS: "en-GB", MU: "en-GB", SC: "en-GB", JM: "en-GB", TT: "en-GB",
+  BB: "en-GB", FJ: "en-GB", PG: "en-GB", SB: "en-GB", VU: "en-GB",
   
   // Portuguese-speaking countries
   PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
   
   // Dutch-speaking countries
-  NL: "nl", BE: "nl", SR: "nl",
+  NL: "nl-NL", BE: "nl-NL", SR: "nl-NL",
   
   // French-speaking countries
-  FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr",
-  SN: "fr", CI: "fr", CM: "fr", DJ: "fr", NC: "fr", PF: "fr",
+  FR: "fr-FR", MC: "fr-FR", LU: "fr-FR", CH: "fr-FR", RE: "fr-FR",
+  SN: "fr-FR", CI: "fr-FR", CM: "fr-FR", DJ: "fr-FR", NC: "fr-FR", PF: "fr-FR",
   
   // Italian-speaking countries
-  IT: "it", SM: "it", VA: "it",
+  IT: "it-IT", SM: "it-IT", VA: "it-IT",
   
   // German-speaking countries
-  DE: "de", AT: "de", LI: "de",
+  DE: "de-DE", AT: "de-DE", LI: "de-DE",
   
   // Spanish-speaking countries
-  ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
-  CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
-  HN: "es", PY: "es", SV: "es", NI: "es", CR: "es", PA: "es",
-  UY: "es", GQ: "es",
+  ES: "es-ES", MX: "es-ES", AR: "es-ES", CO: "es-ES", PE: "es-ES", VE: "es-ES",
+  CL: "es-ES", EC: "es-ES", GT: "es-ES", CU: "es-ES", BO: "es-ES", DO: "es-ES",
+  HN: "es-ES", PY: "es-ES", SV: "es-ES", NI: "es-ES", CR: "es-ES", PA: "es-ES",
+  UY: "es-ES", GQ: "es-ES",
   
   // Swedish-speaking countries
   SE: "sv", FI: "sv",
@@ -46,10 +46,10 @@ const CC_TO_LANGUAGE = {
   PL: "pl",
   
   // Japanese-speaking countries
-  JP: "ja",
+  JP: "ja-JP",
   
   // Chinese-speaking countries/regions
-  CN: "zh", HK: "zh", TW: "zh", SG: "zh",
+  CN: "zh-CN", HK: "zh-CN", TW: "zh-CN", SG: "zh-CN",
   
   // Russian-speaking countries
   RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",

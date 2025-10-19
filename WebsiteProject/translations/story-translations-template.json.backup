@@ -1,5 +1,5 @@
 {
-  "en-GB": {
+  "en": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Back to Accommodations"
@@ -167,7 +167,7 @@
       "viewButton": "Ver Acomodações"
     }
   },
-  "nl-NL": {
+  "nl": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Terug naar Accommodaties"
@@ -209,7 +209,7 @@
       "viewButton": "Bekijk Accommodaties"
     }
   },
-  "fr-FR": {
+  "fr": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Retour aux Hébergements"
@@ -251,7 +251,7 @@
       "viewButton": "Voir les Hébergements"
     }
   },
-  "it-IT": {
+  "it": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Torna agli Alloggi"
@@ -293,7 +293,7 @@
       "viewButton": "Visualizza gli Alloggi"
     }
   },
-  "de-DE": {
+  "de": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Zurück zu den Unterkünften"
@@ -335,7 +335,7 @@
       "viewButton": "Unterkünfte ansehen"
     }
   },
-  "es-ES": {
+  "es": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Volver a los Alojamientos"
@@ -461,7 +461,7 @@
       "viewButton": "Zobacz Zakwaterowanie"
     }
   },
-  "af-ZA": {
+  "af": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "Terug na Akkommodasie"
@@ -587,7 +587,7 @@
       "viewButton": "Angalia Malazi"
     }
   },
-  "ja-JP": {
+  "ja": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "宿泊施設に戻る"
@@ -629,7 +629,7 @@
       "viewButton": "宿泊施設を見る"
     }
   },
-  "zh-CN": {
+  "zh": {
     "nav": {
       "logo": "DEVOCEAN Lodge",
       "backToAccommodations": "返回住宿"
