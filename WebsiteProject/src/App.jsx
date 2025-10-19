@@ -22,16 +22,16 @@ export default function App() {
   useEffect(() => {
     const path = window.location.pathname;
     
-    // Check if there's a stored language preference from before booking
+    // Check stored currency to preserve MZN for Mozambican Afrikaans speakers
+    const storedCurrency = localStorage.getItem('site.currency');
     const storedLang = localStorage.getItem('site.lang');
     
     const localeRedirects = {
-      '/af-ZA': '/?lang=af&currency=ZAR',
+      '/af-ZA': storedCurrency === 'MZN' ? '/?lang=af&currency=MZN' : '/?lang=af&currency=ZAR', // Preserve currency (MZN or ZAR)
       '/en-GB': '/?lang=en&currency=GBP',
       '/en-US': '/?lang=en-us&currency=USD',
       '/pt-PT': '/?lang=pt&currency=EUR',
-      '/pt-BR': '/?lang=pt&currency=BRL',
-      '/pt-MZ': storedLang === 'af' ? '/?lang=af&currency=MZN' : '/?lang=pt&currency=MZN', // Preserve Afrikaans if user had it
+      '/pt-BR': storedCurrency === 'MZN' ? '/?lang=pt&currency=MZN' : '/?lang=pt&currency=BRL', // Preserve MZN for Mozambique
       '/nl-NL': '/?lang=nl&currency=EUR',
       '/fr-FR': '/?lang=fr&currency=EUR',
       '/it-IT': '/?lang=it&currency=EUR',

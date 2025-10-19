@@ -13,13 +13,13 @@
 /CRIC.html  /CRIC.html  200
 
 # Hotelrunner locale redirects (from booking engine back navigation)
-# Note: pt-MZ is handled dynamically in App.jsx to preserve Afrikaans language preference
+# Note: af-ZA and pt-BR are handled dynamically in App.jsx to preserve currency (MZN vs ZAR/BRL)
+# Static redirects serve as fallback
 /af-ZA  /?lang=af&currency=ZAR  302
 /en-GB  /?lang=en&currency=GBP  302
 /en-US  /?lang=en-us&currency=USD  302
 /pt-PT  /?lang=pt&currency=EUR  302
 /pt-BR  /?lang=pt&currency=BRL  302
-/pt-MZ  /?lang=pt&currency=MZN  302
 /nl-NL  /?lang=nl&currency=EUR  302
 /fr-FR  /?lang=fr&currency=EUR  302
 /it-IT  /?lang=it&currency=EUR  302
