@@ -204,27 +204,20 @@ function pickInitialRegion() {
 /**
  * Get booking locale with smart currency-based mapping
  * Mirrors the React app's getBookingLocale() function
+ * Note: Hotelrunner only supports pt-PT and pt-BR (not pt-MZ)
  */
 function getBookingLocale(lang, currency, countryCode) {
-  // Handle Portuguese - use region-aware locale
+  // Handle Portuguese - use region-aware locale (Hotelrunner only supports pt-PT and pt-BR)
   if (lang === 'pt') {
-    if (currency === 'MZN' || countryCode === 'MZ') return 'pt-MZ'; // Mozambique
-    if (currency === 'BRL' || countryCode === 'BR') return 'pt-BR'; // Brazil
     if (currency === 'EUR' || countryCode === 'PT') return 'pt-PT'; // Portugal
-    return 'pt-BR'; // Default to Brazilian for African Portuguese
-  }
-  
-  // Handle Afrikaans - use currency to determine country
-  if (lang === 'af') {
-    if (currency === 'MZN' || countryCode === 'MZ') return 'pt-MZ'; // Use Portuguese locale for Mozambique
-    return 'af-ZA'; // South Africa
+    return 'pt-BR'; // Brazil, Mozambique, Angola (use Brazilian variant)
   }
   
   // Handle English - distinguish US from UK
   if (lang === 'en-us') return 'en-US';
   if (lang === 'en') return 'en-GB';
   
-  // Standard language mappings
+  // Standard language mappings (Afrikaans always af-ZA, currency is separate parameter)
   return LOCALE_BY_LANG[lang] || "en-GB";
 }
 
