@@ -9,12 +9,30 @@
   function readLS(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }
   function writeLS(k, v) { try { localStorage.setItem(k, v); } catch (_) { } }
   function normLang(raw) {
-    if (!raw) return "en";
-    let s = String(raw).toLowerCase().replace("_", "-");
-    if (s === "pt-mz") s = "ptmz";                   // Moz flavor
-    if (s === "pt-pt" || s === "pt-br") s = "pt";      // collapse
-    if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2);
-    return s || "en";
+    if (!raw) return "en-GB";
+    let s = String(raw).toLowerCase();
+    
+    // Preserve full Hotelrunner locale codes with proper capitalization
+    if (s === "en-gb" || s === "en") return "en-GB";
+    if (s === "en-us") return "en-US";
+    if (s === "pt-pt") return "pt-PT";
+    if (s === "pt-br") return "pt-BR";
+    if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
+    if (s === "nl-nl" || s === "nl") return "nl-NL";
+    if (s === "fr-fr" || s === "fr") return "fr-FR";
+    if (s === "it-it" || s === "it") return "it-IT";
+    if (s === "de-de" || s === "de") return "de-DE";
+    if (s === "es-es" || s === "es") return "es-ES";
+    if (s === "ja-jp" || s === "ja") return "ja-JP";
+    if (s === "zh-cn" || s === "zh") return "zh-CN";
+    if (s === "af-za" || s === "af") return "af-ZA";
+    if (s === "sv") return "sv";
+    if (s === "pl") return "pl";
+    if (s === "ru") return "ru";
+    if (s === "zu") return "zu";
+    if (s === "sw") return "sw";
+    
+    return "en-GB";
   }
   function clampCur(cur) { if (!cur) return null; cur = String(cur).toUpperCase().replace(/[^A-Z]/g, ""); return cur.length === 3 ? cur : null; }
 
@@ -74,7 +92,7 @@
 
   /* ---------- dynamic AUTO seeding BEFORE hydration ---------- */
   (function seed() {
-    var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz", "sv", "pl", "ja", "zh", "ru", "af", "zu", "sw"];
+    var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
     var src = readLS("site.lang_source") || "auto";
     var lang = readLS("site.lang");
     var cur = readLS("site.currency");
@@ -83,7 +101,7 @@
 
     if (src === "auto") {
       var navLang = normLang(navigator.language);
-      if (SUPPORTED.indexOf(navLang) === -1) navLang = "en";
+      if (SUPPORTED.indexOf(navLang) === -1) navLang = "en-GB";
       writeLS("site.lang", navLang);
       writeLS("site.currency", inferCurrency(navLang));
       lang = navLang;
@@ -91,7 +109,7 @@
     } else {
       if (!lang) {
         lang = normLang(navigator.language);
-        if (SUPPORTED.indexOf(lang) === -1) lang = "en";
+        if (SUPPORTED.indexOf(lang) === -1) lang = "en-GB";
         writeLS("site.lang", lang);
       }
       if (!cur) {
@@ -100,7 +118,7 @@
       }
     }
 
-    try { document.documentElement.setAttribute("lang", lang || "en"); } catch (_) { }
+    try { document.documentElement.setAttribute("lang", lang || "en-GB"); } catch (_) { }
   })();
 
   /* ---------- hydration ---------- */

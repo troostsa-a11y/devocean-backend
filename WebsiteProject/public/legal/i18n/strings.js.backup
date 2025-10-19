@@ -9,29 +9,29 @@
 (function () {
   // -------- UI labels (top bar / timestamp) --------
   window.LEGAL_UI = {
-    "en-GB": { backButton: "Back",             back: "Home",                   updated: "Last updated" },
-    "de-DE": { backButton: "Zurück",           back: "Startseite",             updated: "Zuletzt aktualisiert" },
-    "nl-NL": { backButton: "Terug",            back: "Home",                   updated: "Laatst bijgewerkt" },
-    "pt-PT": { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
-    "pt-BR": { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
-    "fr-FR": { backButton: "Retour",           back: "Accueil",                updated: "Dernière mise à jour" },
-    "it-IT": { backButton: "Indietro",         back: "Home",                   updated: "Ultimo aggiornamento" },
-    "es-ES": { backButton: "Volver",           back: "Inicio",                 updated: "Última actualización" },
-    "sv": { backButton: "Tillbaka",         back: "Hem",                    updated: "Senast uppdaterad" },
-    "pl": { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" },
-    "ja-JP": { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" },
-    "zh-CN": { backButton: "返回",             back: "首页",                   updated: "最后更新" },
-    "ru": { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" },
-    "af-ZA": { backButton: "Terug",            back: "Tuis",                   updated: "Laaste opdatering" },
-    "zu": { backButton: "Emuva",            back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" },
-    "sw": { backButton: "Nyuma",            back: "Nyumbani",               updated: "Ilisasishwa Mwisho" }
+    en:   { backButton: "Back",             back: "Home",                   updated: "Last updated" },
+    de:   { backButton: "Zurück",           back: "Startseite",             updated: "Zuletzt aktualisiert" },
+    nl:   { backButton: "Terug",            back: "Home",                   updated: "Laatst bijgewerkt" },
+    pt:   { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
+    ptmz: { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
+    fr:   { backButton: "Retour",           back: "Accueil",                updated: "Dernière mise à jour" },
+    it:   { backButton: "Indietro",         back: "Home",                   updated: "Ultimo aggiornamento" },
+    es:   { backButton: "Volver",           back: "Inicio",                 updated: "Última actualización" },
+    sv:   { backButton: "Tillbaka",         back: "Hem",                    updated: "Senast uppdaterad" },
+    pl:   { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" },
+    ja:   { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" },
+    zh:   { backButton: "返回",             back: "首页",                   updated: "最后更新" },
+    ru:   { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" },
+    af:   { backButton: "Terug",            back: "Tuis",                   updated: "Laaste opdatering" },
+    zu:   { backButton: "Emuva",            back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" },
+    sw:   { backButton: "Nyuma",            back: "Nyumbani",               updated: "Ilisasishwa Mwisho" }
   };
 
   // Root dict
   window.LEGAL_DICT = {};
 
   // -------- ENGLISH (base/fallback) --------
-  window.LEGAL_DICT["en-GB"] = {
+  window.LEGAL_DICT.en = {
     privacy: {
       title: "Privacy Policy",
       updatedDate: "06 Oct 2025",
@@ -567,7 +567,7 @@
   };
 
   // -------- GERMAN --------
-  window.LEGAL_DICT["de-DE"] = {
+  window.LEGAL_DICT.de = {
     privacy: {
       title: "Datenschutzrichtlinie",
       updatedDate: "06 Okt 2025",      quickLinks: {
@@ -1103,7 +1103,7 @@
   };
 
   // -------- DUTCH --------
-  window.LEGAL_DICT["nl-NL"] = {
+  window.LEGAL_DICT.nl = {
     privacy: {
       title: "Privacybeleid",
       updatedDate: "06 okt 2025",      quickLinks: {
@@ -1639,7 +1639,7 @@
   };
 
   // -------- PORTUGUESE --------
-  window.LEGAL_DICT["pt-PT"] = {
+  window.LEGAL_DICT.pt = {
     privacy: {
       title: "Política de Privacidade",
       updatedDate: "06 Out 2025",
@@ -2261,10 +2261,10 @@
   };
 
   // -------- PORTUGUESE MOZAMBIQUE --------
-  window.LEGAL_DICT["pt-BR"] = window.LEGAL_DICT["pt-PT"]; // Same as PT
+  window.LEGAL_DICT.ptmz = window.LEGAL_DICT.pt; // Same as PT
 
   // -------- FRENCH --------
-  window.LEGAL_DICT["fr-FR"] = {
+  window.LEGAL_DICT.fr = {
     privacy: {
       title: "Politique de confidentialité",
       updatedDate: "06 oct 2025",      quickLinks: {
@@ -2751,7 +2751,7 @@
   };
 
   // -------- ITALIAN --------
-  window.LEGAL_DICT["it-IT"] = {
+  window.LEGAL_DICT.it = {
     privacy: {
       title: "Informativa sulla privacy",
       updatedDate: "06 ott 2025",      quickLinks: {
@@ -3238,7 +3238,7 @@
   };
 
   // -------- SPANISH --------
-  window.LEGAL_DICT["es-ES"] = {
+  window.LEGAL_DICT.es = {
     privacy: {
       title: "Política de privacidad",
       updatedDate: "06 oct 2025",      quickLinks: {
@@ -3725,7 +3725,7 @@
   };
 
   // -------- SWEDISH --------
-  window.LEGAL_DICT["sv"] = {
+  window.LEGAL_DICT.sv = {
     privacy: {
       title: "Integritetspolicy",
       updatedDate: "06 okt 2025",
@@ -4227,7 +4227,7 @@
   };
 
   // -------- POLISH --------
-  window.LEGAL_DICT["pl"] = {
+  window.LEGAL_DICT.pl = {
     privacy: {
       title: "Polityka prywatności",
       updatedDate: "06 października 2025",
@@ -4726,7 +4726,7 @@
   };
 
   // -------- JAPANESE --------
-  window.LEGAL_DICT["ja-JP"] = {
+  window.LEGAL_DICT.ja = {
     privacy: {
       title: 'プライバシーポリシー',
       updatedDate: '2025年10月6日',
@@ -5253,7 +5253,7 @@
   };
 
   // -------- CHINESE (Mandarin, Simplified) --------
-  window.LEGAL_DICT["zh-CN"] = {
+  window.LEGAL_DICT.zh = {
     privacy: {
       title: '隐私政策',
       updatedDate: '2025年10月6日',
@@ -5731,7 +5731,7 @@
   };
 
   // -------- RUSSIAN --------
-  window.LEGAL_DICT["ru"] = {
+  window.LEGAL_DICT.ru = {
     privacy: {
         title: 'Политика конфиденциальности',
         updatedDate: '06 октября 2025',
@@ -6282,7 +6282,7 @@
     };
 
   // -------- AFRIKAANS --------
-  window.LEGAL_DICT["af-ZA"] = {
+  window.LEGAL_DICT.af = {
     privacy: {
         title: "Privaatheidsbeleid",
         updatedDate: "06 Oktober 2025",
@@ -6821,7 +6821,7 @@
     };
 
   // -------- ZULU --------
-  window.LEGAL_DICT["zu"] = {
+  window.LEGAL_DICT.zu = {
     privacy: {
         title: "Inqubomgomo yobumfihlo",
         updatedDate: "06 Okthoba 2025",
@@ -7363,7 +7363,7 @@
     };
 
   // -------- SWAHILI --------
-  window.LEGAL_DICT["sw"] = {
+  window.LEGAL_DICT.sw = {
     privacy: {
         title: "Sera ya Faragha",
         updatedDate: "06 Oktoba 2025",
@@ -7893,7 +7893,3 @@
     };
   
 })();
-
-// Add en-US as duplicate of en-GB for US visitors
-window.LEGAL_UI["en-US"] = window.LEGAL_UI["en-GB"];
-window.LEGAL_DICT["en-US"] = window.LEGAL_DICT["en-GB"];
