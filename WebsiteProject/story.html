@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#9e4b13" />
+  <title>Our Story | DEVOCEAN Lodge</title>
+
+  <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // EU+UK = denied by default
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted',
+      region: [
+        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
+        'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB'
+      ]
+    });
+
+    // Everywhere else = granted
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted'
+    });
+  </script>
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-532W3HH2');
+  </script>
+
+  <!-- SEO -->
+  <meta name="color-scheme" content="light dark" />
+  <meta name="description"
+    content="Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact." />
+  <link rel="canonical" href="https://devoceanlodge.com/story.html" />
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Our Story | DEVOCEAN Lodge" />
+  <meta property="og:description"
+    content="Family-run, community-focused eco-lodge in Ponta do Ouro since 2015. Your stay supports sustainable development and local empowerment." />
+  <meta property="og:url" content="https://devoceanlodge.com/story.html" />
+  <meta property="og:image" content="https://devoceanlodge.com/photos/hero01.jpg" />
+  <meta property="og:site_name" content="DEVOCEAN Lodge" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables */
+    :root {
+      --brand: #9e4b13;
+      --brand-dark: #7a3a0e;
+      --brand-light: #c0611c;
+      --ocean-blue: #0ea5e9;
+      --warm-sand: #f4e4d4;
+      --deep-teal: #0d9488;
+      --sunset-orange: #f97316;
+      --text-primary: #1f2937;
+      --text-secondary: #6b7280;
+      --text-tertiary: #9ca3af;
+      --bg-light: #fafafa;
+      --bg-white: #ffffff;
+      --border-light: #e5e7eb;
+    }
+
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-light);
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    .story-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--brand);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .story-nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .story-nav-logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: white;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .story-nav-logo:hover {
+      opacity: 0.9;
+    }
+
+    .story-nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .story-nav-back:hover {
+      background-color: rgba(255,255,255,0.2);
+      transform: translateX(-2px);
+    }
+
+    /* Main Container */
+    .dl-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .dl-hero {
+      text-align: center;
+      padding: 2rem 0 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .dl-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--brand);
+      margin-bottom: 1rem;
+    }
+
+    .dl-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .dl-title span {
+      color: var(--ocean-blue);
+    }
+
+    .dl-sub {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    /* Proof Points */
+    .dl-proofs {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 2rem 0 0;
+    }
+
+    .dl-proofs li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .i-check {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: var(--deep-teal);
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .i-check::after {
+      content: '✓';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Grid Layout */
+    .dl-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .dl-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Cards */
+    .dl-card {
+      background-color: var(--bg-white);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border-light);
+    }
+
+    .dl-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+
+    .dl-card-impact {
+      background: linear-gradient(135deg, #0ea5e9 0%, #0d9488 100%);
+      color: white;
+      border: none;
+    }
+
+    .dl-card-impact .dl-h2,
+    .dl-card-impact p {
+      color: white;
+    }
+
+    .dl-h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+
+    .dl-card p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .dl-card strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .dl-card-impact strong {
+      color: white;
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .dl-cta {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      border-radius: 16px;
+      color: white;
+    }
+
+    .dl-cta h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .dl-cta p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+
+    .dl-cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background-color: white;
+      color: var(--brand);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--warm-sand);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      border-color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive Typography */
+    @media (max-width: 768px) {
+      .dl-title {
+        font-size: 2rem;
+      }
+
+      .dl-sub {
+        font-size: 1rem;
+      }
+
+      .dl-proofs {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .dl-h2 {
+        font-size: 1.25rem;
+      }
+
+      .dl-cta h2 {
+        font-size: 1.5rem;
+      }
+
+      .dl-cta p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .dl-wrap {
+        padding: 2rem 1rem;
+      }
+
+      .dl-card {
+        padding: 1.5rem;
+      }
+
+      .dl-cta {
+        padding: 2rem 1.5rem;
+      }
+
+      .dl-cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    /* Accessibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    /* Smooth Scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- GTM (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe>
+  </noscript>
+
+  <!-- Navigation -->
+  <nav class="story-nav" aria-label="Story navigation">
+    <div class="story-nav-inner">
+      <a href="/" class="story-nav-logo">DEVOCEAN Lodge</a>
+      <a href="/#stay" class="story-nav-back">
+        <span>←</span> Back to Accommodations
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- DEVOCEAN Lodge – Conversion Header for Beds24 -->
+    <section class="dl-wrap" aria-label="Welcome to DEVOCEAN Lodge">
+      <div class="dl-hero">
+        <div class="dl-eyebrow">Since 2015 • Ponta do Ouro</div>
+        <h1 class="dl-title">Adventure meets sustainability —<br><span>Your stay makes a difference.</span></h1>
+        <p class="dl-sub">Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.</p>
+        <ul class="dl-proofs" role="list" aria-label="Reasons to book">
+          <li><span class="i i-check" aria-hidden="true"></span> Friendly, local support</li>
+          <li><span class="i i-check" aria-hidden="true"></span> Secure, hassle-free booking</li>
+          <li><span class="i i-check" aria-hidden="true"></span> Restaurant on site • farm-fresh breakfast</li>
+        </ul>
+      </div>
+
+      <div class="dl-grid">
+        <article class="dl-card">
+          <h2 class="dl-h2">Today at DEVOCEAN</h2>
+          <p>We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.</p>
+        </article>
+
+        <article class="dl-card">
+          <h2 class="dl-h2">Lake Sotiba Guest Farm</h2>
+          <p>Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.</p>
+        </article>
+
+        <article class="dl-card">
+          <h2 class="dl-h2">From our land to your plate</h2>
+          <p>Enjoy farm-fresh breakfasts and delicious lunches &amp; dinners prepared by our in-house chef at the restaurant.</p>
+        </article>
+
+        <article class="dl-card dl-card-impact">
+          <h2 class="dl-h2">Your stay creates impact</h2>
+          <p>Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
+        </article>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="dl-cta">
+        <h2>Ready to experience DEVOCEAN?</h2>
+        <p>Choose your perfect accommodation and start your sustainable beach adventure.</p>
+        <div class="dl-cta-buttons">
+          <a href="https://book.devoceanlodge.com/bv3/search?locale=en-US&currency=USD" class="btn btn-primary" data-testid="button-book-now">
+            Book Your Stay
+          </a>
+          <a href="/#stay" class="btn btn-secondary" data-testid="link-view-accommodations">
+            View Accommodations
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
