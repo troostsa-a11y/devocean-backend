@@ -290,6 +290,10 @@
       background: linear-gradient(135deg, #d2691e 0%, #6b8e23 100%);
       color: var(--warm-sand);
       border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .dl-card-impact .dl-h2 {
@@ -298,6 +302,22 @@
 
     .dl-card-impact p {
       color: #f4e4d4 !important;
+    }
+
+    .dl-impact-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      opacity: 0.95;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+    }
+
+    @media (max-width: 640px) {
+      .dl-impact-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 1rem;
+      }
     }
 
     .dl-h2 {
@@ -506,6 +526,7 @@
         </article>
 
         <article class="dl-card dl-card-impact">
+          <img src="/images/sustainability-partnership.jpg" alt="Sustainability Partnership" class="dl-impact-icon" loading="lazy" />
           <h2 class="dl-h2" data-i18n="cards.impact.title">Your stay creates impact</h2>
           <p data-i18n="cards.impact.content">Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
         </article>
