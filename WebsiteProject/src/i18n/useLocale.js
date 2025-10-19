@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
-const SUPPORTED_LANGS = ["en", "en-us", "pt", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af-za", "zu", "sw"];
+const SUPPORTED_LANGS = ["en", "en-US", "pt-PT", "pt-BR", "nl", "fr", "it", "de", "es", "sv", "pl", "ja", "zh", "ru", "af-ZA", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
 // Helper to get URL parameters
@@ -106,7 +106,7 @@ const CC_TO_LANGUAGE = {
   BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
   
   // Portuguese-speaking countries
-  PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
+  PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
   
   // Dutch-speaking countries
   NL: "nl", BE: "nl", SR: "nl",
@@ -157,43 +157,41 @@ const CONTINENT_MERIDIANS = {
 
 // Booking engine locale mapping (base, can be overridden by region)
 export const LOCALE_BY_LANG = {
-  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-za": "af-ZA", zu: "en-GB", sw: "sw",
+  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw",
 };
 
 // Get booking locale based on language + currency combination
 export const getBookingLocale = (lang, currency, countryCode) => {
-  // Handle Portuguese - use region-aware locale (Hotelrunner only supports pt-PT and pt-BR)
-  if (lang === 'pt') {
-    if (currency === 'EUR' || countryCode === 'PT') return 'pt-PT'; // Portugal
-    return 'pt-BR'; // Brazil, Mozambique, Angola (use Brazilian variant)
+  // Direct mapping for most languages (including pt-PT and pt-BR)
+  if (LOCALE_BY_LANG[lang]) {
+    return LOCALE_BY_LANG[lang];
   }
   
-  // Handle English - distinguish US from UK
-  if (lang === 'en-us') return 'en-US';
-  if (lang === 'en') return 'en-GB';
-  
-  // Standard language mappings (Afrikaans always af-ZA, currency is separate parameter)
-  return LOCALE_BY_LANG[lang] || "en-GB";
+  // Fallback to UK English
+  return "en-GB";
 };
 
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
-  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
-  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU", "af-za": "af-ZA", zu: "en-GB", sw: "sw-KE",
+  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
+  fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv-SE", pl: "pl-PL", ja: "ja-JP", zh: "zh-CN", ru: "ru-RU", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw-KE",
 };
 
 function normLang(raw) {
   if (!raw) return "en";
   let s = String(raw).toLowerCase();
   
-  // Special cases: keep region codes for languages that need them
-  if (s === "en-us") return "en-us";
-  if (s === "af-za") return "af-za";
+  // Special cases: preserve specific language-region codes with proper capitalization
+  if (s === "en-us") return "en-US";
+  if (s === "af-za") return "af-ZA";
+  if (s === "pt-pt") return "pt-PT";
+  if (s === "pt-br") return "pt-BR";
+  if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
   
-  // Handle other locale codes
+  // Handle other locale codes - strip region if not needed
   if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
-  if (s === "pt-mz" || s === "pt-pt" || s === "pt-br") s = "pt";
+  
   return SUPPORTED_LANGS.includes(s) ? s : "en";
 }
 
@@ -262,7 +260,7 @@ function pickInitialLang() {
     
     // Special case: detect US English browser language
     if (lower === "en-us" || lower.startsWith("en-us")) {
-      return "en-us";
+      return "en-US";
     }
     
     // Standard language detection
@@ -280,7 +278,7 @@ function pickInitialLang() {
   // Americas → US English, others → UK English
   const continent = cc ? CC_TO_CONTINENT[cc] : null;
   if (continent === "americas") {
-    return "en-us";
+    return "en-US";
   }
   return "en"; // UK English for Europe, Asia, Oceania, Africa
 }
@@ -330,15 +328,23 @@ function pickInitialRegion(langBase) {
 // Dynamically load translations for a specific language
 async function loadTranslations(lang) {
   const { UI } = await import('./translations.js');
-  // Use "en" translations for "en-us" (same language, different locale)
-  const translationKey = lang === "en-us" ? "en" : lang;
+  // Map language-region codes to base language keys for translations
+  const translationKey = 
+    (lang === "en-US") ? "en" :
+    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
+    (lang === "af-ZA") ? "af" :
+    lang;
   return UI[translationKey] || UI.en;
 }
 
 // Build minimal UI object with critical nav for instant rendering
 function getCriticalUI(lang) {
-  // Use "en" critical nav for "en-us" (same language, different locale)
-  const navKey = lang === "en-us" ? "en" : lang;
+  // Map language-region codes to base language keys for critical nav
+  const navKey = 
+    (lang === "en-US") ? "en" :
+    (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
+    (lang === "af-ZA") ? "af" :
+    lang;
   const nav = CRITICAL_NAV[navKey] || CRITICAL_NAV.en;
   return {
     nav: {

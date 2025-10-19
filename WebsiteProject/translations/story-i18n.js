@@ -6,8 +6,8 @@
 
 // Supported languages (must match main site)
 const SUPPORTED_LANGS = [
-  "en", "en-us", "pt", "nl", "fr", "it", "de", "es", 
-  "sv", "pl", "af-za", "zu", "sw", "ja", "zh", "ru"
+  "en", "en-US", "pt-PT", "pt-BR", "nl", "fr", "it", "de", "es", 
+  "sv", "pl", "af-ZA", "zu", "sw", "ja", "zh", "ru"
 ];
 
 // Map country codes to primary language (IP-based fallback)
@@ -19,7 +19,7 @@ const CC_TO_LANGUAGE = {
   BB: "en", FJ: "en", PG: "en", SB: "en", VU: "en",
   
   // Portuguese-speaking countries
-  PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
+  PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
   
   // Dutch-speaking countries
   NL: "nl", BE: "nl", SR: "nl",
@@ -147,9 +147,9 @@ const CC_TO_CONTINENT = {
 
 // Booking engine locale mapping
 const LOCALE_BY_LANG = {
-  en: "en-GB", "en-us": "en-US", pt: "pt-PT", nl: "nl-NL",
+  en: "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", nl: "nl-NL",
   fr: "fr-FR", it: "it-IT", de: "de-DE", es: "es-ES", sv: "sv", pl: "pl", 
-  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-za": "af-ZA", zu: "en-GB", sw: "sw",
+  ja: "ja-JP", zh: "zh-CN", ru: "ru", "af-ZA": "af-ZA", zu: "en-GB", sw: "sw",
 };
 
 /**
@@ -202,23 +202,17 @@ function pickInitialRegion() {
 }
 
 /**
- * Get booking locale with smart currency-based mapping
- * Mirrors the React app's getBookingLocale() function
- * Note: Hotelrunner only supports pt-PT and pt-BR (not pt-MZ)
+ * Get booking locale - direct mapping from language code
+ * Note: Hotelrunner supports pt-PT and pt-BR
  */
 function getBookingLocale(lang, currency, countryCode) {
-  // Handle Portuguese - use region-aware locale (Hotelrunner only supports pt-PT and pt-BR)
-  if (lang === 'pt') {
-    if (currency === 'EUR' || countryCode === 'PT') return 'pt-PT'; // Portugal
-    return 'pt-BR'; // Brazil, Mozambique, Angola (use Brazilian variant)
+  // Direct mapping for all languages (including pt-PT and pt-BR)
+  if (LOCALE_BY_LANG[lang]) {
+    return LOCALE_BY_LANG[lang];
   }
   
-  // Handle English - distinguish US from UK
-  if (lang === 'en-us') return 'en-US';
-  if (lang === 'en') return 'en-GB';
-  
-  // Standard language mappings (Afrikaans always af-ZA, currency is separate parameter)
-  return LOCALE_BY_LANG[lang] || "en-GB";
+  // Fallback to UK English
+  return "en-GB";
 }
 
 /**
@@ -235,13 +229,16 @@ function normLang(raw) {
   if (!raw) return "en";
   let s = String(raw).toLowerCase();
   
-  // Special cases: keep region codes for languages that need them
-  if (s === "en-us") return "en-us";
-  if (s === "af-za") return "af-za";
+  // Special cases: preserve specific language-region codes with proper capitalization
+  if (s === "en-us") return "en-US";
+  if (s === "af-za") return "af-ZA";
+  if (s === "pt-pt") return "pt-PT";
+  if (s === "pt-br") return "pt-BR";
+  if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
   
-  // Handle other locale codes
+  // Handle other locale codes - strip region if not needed
   if (/^[a-z]{2}-[a-z]{2}$/i.test(s)) s = s.split("-")[0];
-  if (s === "pt-mz" || s === "pt-pt" || s === "pt-br") s = "pt";
+  
   return SUPPORTED_LANGS.includes(s) ? s : "en";
 }
 
@@ -286,7 +283,7 @@ function pickInitialLang() {
     
     // Special case: detect US English browser language
     if (lower === "en-us" || lower.startsWith("en-us")) {
-      return "en-us";
+      return "en-US";
     }
     
     // Standard language detection
@@ -304,7 +301,7 @@ function pickInitialLang() {
   // Americas → US English, others → UK English
   const continent = cc ? CC_TO_CONTINENT[cc] : null;
   if (continent === "americas") {
-    return "en-us";
+    return "en-US";
   }
   return "en"; // UK English for Europe, Asia, Oceania, Africa
 }
@@ -317,7 +314,15 @@ async function loadTranslations(lang) {
     const response = await fetch('/translations/story-translations-template.json');
     if (!response.ok) throw new Error('Failed to load translations');
     const data = await response.json();
-    return data[lang] || data['en']; // Fallback to English if language not found
+    
+    // Map language-region codes to base language keys for translations
+    const translationKey = 
+      (lang === "en-US") ? "en" :
+      (lang === "pt-PT" || lang === "pt-BR") ? "pt" :
+      (lang === "af-ZA") ? "af" :
+      lang;
+    
+    return data[translationKey] || data['en']; // Fallback to English if language not found
   } catch (error) {
     console.error('Error loading translations:', error);
     return null;
