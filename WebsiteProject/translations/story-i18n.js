@@ -145,8 +145,8 @@ const CC_TO_CONTINENT = {
   PF: "oceania", WS: "oceania", TO: "oceania", VU: "oceania", SB: "oceania",
 };
 
-// Booking engine locale mapping
-const LOCALE_BY_LANG = {
+// Booking engine locale mapping (story page specific)
+const STORY_LOCALE_BY_LANG = {
   "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
   "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", 
   "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw",
@@ -207,8 +207,8 @@ function pickInitialRegion() {
  */
 function getBookingLocale(lang, currency, countryCode) {
   // Direct mapping for all languages (including pt-PT and pt-BR)
-  if (LOCALE_BY_LANG[lang]) {
-    return LOCALE_BY_LANG[lang];
+  if (STORY_LOCALE_BY_LANG[lang]) {
+    return STORY_LOCALE_BY_LANG[lang];
   }
   
   // Fallback to UK English
