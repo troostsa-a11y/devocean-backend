@@ -1,0 +1,218 @@
+{
+  "es-ES": {
+    "safari": {
+      "eyebrow": "Tienda Safari",
+      "heroTitle": "Comodidad + Aventura en Lona",
+      "heroDescription": "Experimente el equilibrio perfecto entre comodidad y aventura. Ubicada en una plataforma espaciosa de 3×6 m, esta tienda de lona de 12 m² cuenta con paredes laterales y traseras protectoras, que le brindan privacidad y refugio mientras permanece cerca de la naturaleza.",
+      "sections": [
+        {
+          "heading": "Espacio y Diseño",
+          "description": "La tienda cuenta con un interior bien planificado y acogedor con toques pensados para una vida fácil.",
+          "features": [
+            "Plataforma: 3×6 m • Tienda: 12 m²",
+            "Paredes laterales y trasera para privacidad y refugio",
+            "Malla mosquitera en todas las ventanas y puertas"
+          ]
+        },
+        {
+          "heading": "Dormir y Comodidad",
+          "description": "Dos camas individuales con pedestales y lámparas sombreadas se pueden combinar en una cama King-size para huéspedes que prefieran una configuración doble.",
+          "features": [
+            "Colchones de calidad e iluminación de mesita de noche",
+            "Ventilador potente para noches de verano frescas",
+            "Tomas de corriente para cargar dispositivos",
+            "Pequeña unidad de estantería para ropa y esenciales"
+          ]
+        },
+        {
+          "heading": "Terraza y Jardín",
+          "description": "Salga a su terraza privada, amueblada con sillas de hojas de palma enrolladas. Disfrute de las vistas del exuberante jardín tropical, bellamente iluminado por la noche para un ambiente romántico.",
+          "features": [
+            "Asientos privados al aire libre",
+            "Iluminación nocturna para tardes serenas"
+          ]
+        },
+        {
+          "heading": "Baños",
+          "description": "Los huéspedes tienen acceso a baños compartidos, separados para damas y caballeros, mantenidos limpios y convenientes.",
+          "features": [
+            "2× duchas de agua caliente/fría por lado",
+            "2× inodoros por lado",
+            "Lavabos de agua fría"
+          ]
+        },
+        {
+          "heading": "Bueno Saber",
+          "description": "Durante los fines de semana festivos y la temporada alta (finales de diciembre – principios de enero), el pueblo puede estar animado. Tapones para los oídos gratuitos están disponibles en recepción para asegurar un sueño reparador.",
+          "closingNote": "Una estancia espaciosa, inmersa en la naturaleza con comodidades modernas, perfecta para viajeros que quieren el aire libre sin sacrificar la conveniencia."
+        }
+      ],
+      "trustItems": [
+        "Comodidad inmersa en la naturaleza",
+        "Instalaciones limpias y bien mantenidas",
+        "Tardes relajadas y románticas"
+      ],
+      "cta": {
+        "heading": "¿Listo para Reservar su Tienda Safari?",
+        "description": "Asegure su escapada inmersa en la naturaleza en DEVOCEAN Lodge. La reserva directa significa las mejores tarifas y soporte completo de nuestro equipo."
+      }
+    },
+    "comfort": {
+      "eyebrow": "Tienda Comfort",
+      "heroTitle": "Más privacidad. Más comodidad. El mismo encanto salvaje.",
+      "heroDescription": "Para huéspedes que aman la vibra inmersa en la naturaleza pero quieren aislamiento extra y conveniencia, la Tienda Safari Comfort es una mejora de nuestra experiencia clásica en lona.",
+      "sections": [
+        {
+          "heading": "Espacio y Privacidad",
+          "description": "Una generosa tienda de lona de 12 m² ubicada en su propia plataforma, con dos paredes laterales y una pared trasera para mayor aislamiento en comparación con la Tienda Safari Estándar.",
+          "features": [
+            "Tienda: 12 m² en plataforma privada",
+            "Privacidad extra: 2 paredes laterales + pared trasera",
+            "Malla mosquitera en todas las ventanas y puertas"
+          ]
+        },
+        {
+          "heading": "Dormir y Comodidad",
+          "description": "Dos camas individuales con pedestales y lámparas sombreadas se pueden combinar en una cama King-size. La iluminación se controla convenientemente con interruptores cerca de la entrada.",
+          "features": [
+            "Configuración King o Twin",
+            "Tomas de corriente para cargar dispositivos",
+            "Ventilador fuerte para noches de verano frescas",
+            "Pequeña unidad de estantería para ropa y esenciales"
+          ]
+        },
+        {
+          "heading": "Terraza y Jardín",
+          "description": "Disfrute de su terraza de madera privada con sillas de hojas de palma enrolladas, con vistas al exuberante jardín tropical, románticamente iluminado por la noche.",
+          "features": [
+            "Asientos privados al aire libre",
+            "Vistas al jardín, iluminación nocturna"
+          ]
+        },
+        {
+          "heading": "Baño Privado",
+          "description": "En la parte trasera de la tienda, bajo un encantador techo de hierba, su baño en suite incluye ducha, inodoro y lavabo, combinando conveniencia con un toque único al aire libre."
+        },
+        {
+          "heading": "Bueno Saber",
+          "description": "Aunque DEVOCEAN Lodge es pacífico, el pueblo circundante puede estar animado durante los fines de semana festivos y la temporada alta (finales de diciembre – principios de enero). Tapones para los oídos gratuitos están disponibles en recepción.",
+          "closingNote": "Un refugio espacioso, bien equipado y privado al estilo safari, perfecto para huéspedes que quieren comodidad, aislamiento y la conveniencia de un baño en suite."
+        }
+      ],
+      "trustItems": [
+        "Comodidad inmersa en la naturaleza",
+        "Conveniencia en suite",
+        "Tardes románticas en el jardín"
+      ],
+      "cta": {
+        "heading": "¿Listo para Reservar su Tienda Comfort?",
+        "description": "Mejore su escapada a la naturaleza con mayor privacidad y conveniencia en suite. Reserve directamente para las mejores tarifas."
+      }
+    },
+    "cottage": {
+      "eyebrow": "Cottage de Jardín",
+      "heroTitle": "Encanto rústico • Serenidad tropical • Comodidad moderna",
+      "heroDescription": "Ubicado en nuestro exuberante jardín tropical, el Cottage de Jardín combina elegancia rústica con comodidad hogareña. Un techo de tejas romanas rojas y un alto techo blanco con vigas de madera oscura crean un refugio espacioso y aireado lleno de carácter.",
+      "sections": [
+        {
+          "heading": "Atmósfera y Diseño",
+          "description": "El piso de baldosas de terracota añade calidez bajo un alto techo con vigas, mientras que las paredes pintadas en suaves tonos de campo de trigo mejoran la atmósfera calma e invitadora del cottage.",
+          "features": [
+            "Techo de tejas romanas rojas",
+            "Alto techo blanco con vigas oscuras",
+            "Piso de terracota y tonos cálidos en las paredes"
+          ]
+        },
+        {
+          "heading": "Terraza y Jardín",
+          "description": "Salga a su terraza de madera privada, amueblada con sillas de camping y una mesa auxiliar, un lugar pacífico para relajarse y disfrutar de la exuberante vegetación y los suaves sonidos del jardín.",
+          "features": [
+            "Terraza privada con asientos",
+            "Inmerso en vegetación tropical"
+          ]
+        },
+        {
+          "heading": "Interior y Comodidades",
+          "description": "Diseñado para relajación y funcionalidad, el Cottage de Jardín cuenta con una cama Queen-size en caja, un escritorio de trabajo con lámpara sombreada y una mesa de comedor con sillas.",
+          "features": [
+            "Cama Queen-size con colchón de calidad",
+            "Escritorio de trabajo y lámpara sombreada",
+            "Mesa de comedor y sillas",
+            "Almacenamiento: estantes para maletas, perchero, estanterías adicionales"
+          ]
+        },
+        {
+          "heading": "Comodidad e Iluminación",
+          "description": "Un aire acondicionado inverter lo mantiene cómodo en todas las estaciones, ofreciendo tanto enfriamiento como calefacción. La iluminación suave, incluyendo una luz principal regulable, le permite establecer el ambiente perfecto para trabajar, descansar o relajarse.",
+          "features": [
+            "Aire acondicionado inverter (enfriar y calentar)",
+            "Iluminación regulable y brillo interior cálido"
+          ]
+        },
+        {
+          "heading": "Baño Privado",
+          "description": "Justo detrás del cottage, un encantador rondavel con techo de hierba alberga su baño privado, completo con ducha, inodoro y lavabo, combinando conveniencia moderna con un auténtico toque africano."
+        }
+      ],
+      "trustItems": [
+        "Rodeado de naturaleza tropical",
+        "Rondavel en suite privado",
+        "Aire acondicionado e iluminado pacíficamente"
+      ],
+      "cta": {
+        "heading": "¿Listo para Reservar su Cottage de Jardín?",
+        "description": "Experimente la elegancia rústica en nuestro refugio de jardín tropical. Reserve directamente para las mejores tarifas y servicio personalizado."
+      }
+    },
+    "chalet": {
+      "eyebrow": "Chalet con Techo de Paja",
+      "heroTitle": "Aislamiento romántico • Elegancia rústica • Paz tropical",
+      "heroDescription": "Escondido en una esquina aislada de la propiedad, el Chalet con Techo de Paja ofrece un refugio tranquilo y romántico. Sombrado por palmeras, strelitzias, acacias, helechos y árboles de almendra india, lo sumerge en la naturaleza sin sacrificar comodidad o privacidad.",
+      "sections": [
+        {
+          "heading": "Entorno y Atmósfera",
+          "description": "El chalet con techo de hierba, sostenido por robustos postes de bluegum, emana elegancia rústica. Un piso de pizarra otoñal se integra armoniosamente con sus exuberantes alrededores, mientras que las paredes pintadas en suaves tonos de campo de trigo crean un ambiente interior cálido y sereno.",
+          "features": [
+            "Techo de paja • estructura de postes bluegum",
+            "Piso de pizarra otoñal • tonos naturales",
+            "Rodeado de palmeras, helechos y strelitzias"
+          ]
+        },
+        {
+          "heading": "Terraza y Jardín",
+          "description": "Salga a su terraza privada, amueblada con sillas de hojas de palma enrolladas y una mesa de comedor con sillas. Relájese a la sombra del dosel del jardín y disfrute de las vistas y sonidos de la naturaleza.",
+          "features": [
+            "Terraza privada con asientos",
+            "Vistas al jardín tropical"
+          ]
+        },
+        {
+          "heading": "Interior y Comodidad",
+          "description": "En el interior, dos camas individuales con pedestales se pueden combinar en una cama King-size para una configuración doble acogedora. El aire acondicionado asegura comodidad durante todo el año, mientras que la iluminación suave complementa la decoración rústica.",
+          "features": [
+            "Configuración de cama Twin o King-size",
+            "Aire acondicionado para enfriamiento y comodidad",
+            "Iluminación cálida y tonos interiores suaves"
+          ]
+        },
+        {
+          "heading": "Baño Privado",
+          "description": "El chalet incluye un baño privado con ducha, inodoro y lavabo, combinando conveniencia con el encanto rústico de su entorno natural."
+        },
+        {
+          "heading": "Experiencia",
+          "description": "Ya sea que busque una escapada romántica o un escape pacífico, este pequeño chalet ofrece una mezcla inolvidable de aislamiento, elegancia y comodidad, un refugio ideal dentro del paraíso tropical de DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Inmerso en la naturaleza",
+        "Ambiente romántico y tranquilo",
+        "Comodidad y conveniencia privadas"
+      ],
+      "cta": {
+        "heading": "¿Listo para Reservar su Chalet con Techo de Paja?",
+        "description": "Escape al aislamiento romántico en nuestro escondite tropical. Reserve directamente para las mejores tarifas y servicio personalizado."
+      }
+    }
+  }
+}
