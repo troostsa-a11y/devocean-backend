@@ -1,0 +1,758 @@
+{
+  "en": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Back to Accommodations"
+    },
+    "hero": {
+      "eyebrow": "Since 2015 • Ponta do Ouro",
+      "title": "Adventure meets sustainability",
+      "titleSpan": "Your stay makes a difference.",
+      "subtitle": "Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.",
+      "proofPoints": {
+        "support": "Friendly, local support",
+        "booking": "Secure, hassle-free booking",
+        "restaurant": "Restaurant on site • farm-fresh breakfast"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "Today at DEVOCEAN Lodge",
+        "content": "We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community."
+      },
+      "sotiba": {
+        "title": "Lake Sotiba Guest Farm",
+        "content": "Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.",
+        "linkText": "View farm plan on Google Earth →"
+      },
+      "farm": {
+        "title": "From our land to your plate",
+        "content": "Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant."
+      },
+      "impact": {
+        "title": "Your stay creates impact",
+        "content": "Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life."
+      }
+    },
+    "cta": {
+      "title": "Ready to experience DEVOCEAN?",
+      "subtitle": "Choose your perfect accommodation and start your sustainable beach adventure.",
+      "bookButton": "Book Your Stay",
+      "viewButton": "View Accommodations"
+    }
+  },
+  "pt-BR": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "pt-PT": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "pt-MZ": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "nl": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "fr": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "it": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "de": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "es": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "sv": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "pl": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "af": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "zu": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "sw": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "ja": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "zh": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "ru": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "[TRANSLATE: Back to Accommodations]"
+    },
+    "hero": {
+      "eyebrow": "[TRANSLATE: Since 2015 • Ponta do Ouro]",
+      "title": "[TRANSLATE: Adventure meets sustainability]",
+      "titleSpan": "[TRANSLATE: Your stay makes a difference.]",
+      "subtitle": "[TRANSLATE: Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.]",
+      "proofPoints": {
+        "support": "[TRANSLATE: Friendly, local support]",
+        "booking": "[TRANSLATE: Secure, hassle-free booking]",
+        "restaurant": "[TRANSLATE: Restaurant on site • farm-fresh breakfast]"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "[TRANSLATE: Today at DEVOCEAN Lodge]",
+        "content": "[TRANSLATE: We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community.]"
+      },
+      "sotiba": {
+        "title": "[TRANSLATE: Lake Sotiba Guest Farm]",
+        "content": "[TRANSLATE: Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.]",
+        "linkText": "[TRANSLATE: View farm plan on Google Earth →]"
+      },
+      "farm": {
+        "title": "[TRANSLATE: From our land to your plate]",
+        "content": "[TRANSLATE: Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant.]"
+      },
+      "impact": {
+        "title": "[TRANSLATE: Your stay creates impact]",
+        "content": "[TRANSLATE: Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.]"
+      }
+    },
+    "cta": {
+      "title": "[TRANSLATE: Ready to experience DEVOCEAN?]",
+      "subtitle": "[TRANSLATE: Choose your perfect accommodation and start your sustainable beach adventure.]",
+      "bookButton": "[TRANSLATE: Book Your Stay]",
+      "viewButton": "[TRANSLATE: View Accommodations]"
+    }
+  },
+  "en-US": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Back to Accommodations"
+    },
+    "hero": {
+      "eyebrow": "Since 2015 • Ponta do Ouro",
+      "title": "Adventure meets sustainability",
+      "titleSpan": "Your stay makes a difference.",
+      "subtitle": "Family-run, community-focused, and growing with purpose. Book direct to support local projects — and enjoy a warm, effortless stay by the beach.",
+      "proofPoints": {
+        "support": "Friendly, local support",
+        "booking": "Secure, hassle-free booking",
+        "restaurant": "Restaurant on site • farm-fresh breakfast"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "Today at DEVOCEAN Lodge",
+        "content": "We offer <strong>10 unique accommodation options</strong>, blending adventure with comfort. With plans to add <strong>8 more by 2026</strong>, we're continually enhancing the guest experience together with our dedicated staff and the local community."
+      },
+      "sotiba": {
+        "title": "Lake Sotiba Guest Farm",
+        "content": "Trusted by local leaders, we're developing a guest farm at <strong>Lake Sotiba</strong> — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.",
+        "linkText": "View farm plan on Google Earth →"
+      },
+      "farm": {
+        "title": "From our land to your plate",
+        "content": "Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant."
+      },
+      "impact": {
+        "title": "Your stay creates impact",
+        "content": "Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life."
+      }
+    },
+    "cta": {
+      "title": "Ready to experience DEVOCEAN?",
+      "subtitle": "Choose your perfect accommodation and start your sustainable beach adventure.",
+      "bookButton": "Book Your Stay",
+      "viewButton": "View Accommodations"
+    }
+  }
+}
