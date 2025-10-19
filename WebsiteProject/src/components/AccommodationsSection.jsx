@@ -8,22 +8,13 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
       <div className="flex items-end justify-between gap-6">
         <div className="flex-1">
           <h2 className="text-3xl md:text-4xl font-bold">{ui.stay.headline}</h2>
-          <div className="mt-2 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-            <p className="text-slate-600 max-w-2xl">
-              {ui.stay.blurb}
-            </p>
-            <a 
-              href="/story.html" 
-              className="text-[#9e4b13] hover:underline font-medium whitespace-nowrap sm:ml-auto"
-              data-testid="link-our-story"
-            >
-              {ui.stay.ourStory} →
-            </a>
-          </div>
+          <p className="mt-2 text-slate-600 max-w-2xl">
+            {ui.stay.blurb}
+          </p>
         </div>
         <a
           href="/story.html"
-          className="btn-cta hidden md:inline-block px-4 py-2 rounded-xl bg-[#9e4b13] text-white shadow hover:shadow-md"
+          className={`btn-cta hidden md:inline-block ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
           aria-label={ui.stay.ourStory}
           data-testid="button-our-story"
         >
