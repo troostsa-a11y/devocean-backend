@@ -322,7 +322,8 @@ async function loadAccommodationTranslations(lang) {
     
     // Map full locale codes to short codes used in JSON
     const langMap = {
-      'en-GB': 'en', 'en-US': 'en-us', 'pt-PT': 'pt', 'pt-BR': 'pt-br',
+      'en-GB': 'en', 'en-US': 'en-us', 
+      'pt-PT': 'pt', 'pt-BR': 'pt', // Both Portuguese variants use 'pt'
       'nl-NL': 'nl', 'fr-FR': 'fr', 'it-IT': 'it', 'de-DE': 'de',
       'es-ES': 'es', 'sv': 'sv', 'pl': 'pl', 'ja-JP': 'ja',
       'zh-CN': 'zh', 'ru': 'ru', 'af-ZA': 'af', 'zu': 'zu', 'sw': 'sw'
