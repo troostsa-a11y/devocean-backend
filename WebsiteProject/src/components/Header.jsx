@@ -170,7 +170,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
                 href={bookUrl}
                 target="_blank"
                 rel="noreferrer"
-                className={`btn-cta w-[12rem] text-center ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
+                className={`btn-cta inline-flex items-center justify-center w-[12rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
                 onClick={() => {
                   if (window.dataLayer) {
                     window.dataLayer.push({
