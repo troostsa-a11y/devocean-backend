@@ -107,13 +107,13 @@ export const UNIT_BASE = [
 ];
 
 export const EXP_BASE = [
-  { key: "diving", img: IMG.experiences.diving, title: "Scuba Diving", desc: "Offshore reefs with rich marine life." },
-  { key: "dolphins", img: IMG.experiences.dolphins, title: "Dolphin Swim", desc: "Ethical encounters with resident dolphins." },
-  { key: "lighthouse", img: IMG.experiences.lighthouse, title: "Lighthouse Walk", desc: "Hike the hill to the old lighthouse for sweeping views." },
-  { key: "seafari", img: IMG.experiences.seafari, title: "Seafaris", desc: "Ocean safaris for whales (May–Oct) & more." },
-  { key: "safari", img: IMG.experiences.safari, title: "Game Safaris", desc: "Bush adventures a short drive away." },
-  { key: "fishing", img: IMG.experiences.fishing, title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore." },
-  { key: "surfing", img: IMG.experiences.surfing, title: "Surf Boards & Lessons", desc: "Catch a wave or learn the basics." },
+  { key: "diving", img: IMG.experiences.diving, title: "Scuba Diving", desc: "Offshore reefs with rich marine life.", url: "https://gozo-azul.co.za/" },
+  { key: "dolphins", img: IMG.experiences.dolphins, title: "Dolphin Swim", desc: "Ethical encounters with resident dolphins.", url: "https://www.dolphinencountours.org/" },
+  { key: "lighthouse", img: IMG.experiences.lighthouse, title: "Lighthouse Walk", desc: "Hike the hill to the old lighthouse for sweeping views.", url: "https://maps.app.goo.gl/frVsczs798Ym1wDe9" },
+  { key: "seafari", img: IMG.experiences.seafari, title: "Seafaris", desc: "Ocean safaris for whales (May–Oct) & more.", url: "https://thedolphincentre.com/" },
+  { key: "safari", img: IMG.experiences.safari, title: "Game Safaris", desc: "Bush adventures a short drive away.", url: "https://parquemaputo.gov.mz/en/" },
+  { key: "fishing", img: IMG.experiences.fishing, title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore.", url: "https://mozambiquefishincharters.co.za/" },
+  { key: "surfing", img: IMG.experiences.surfing, title: "Surf Boards & Lessons", desc: "Catch a wave or learn the basics.", url: "https://www.instagram.com/spigssurfsup/" },
 ];
 
 export const SOCIAL_LINKS = [

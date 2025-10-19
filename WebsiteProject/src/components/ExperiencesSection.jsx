@@ -11,13 +11,17 @@ export default function ExperiencesSection({ experiences, ui }) {
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {experiences.map((c, idx) => (
-            <m.div
+            <m.a
               key={c.key}
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: idx * 0.05 }}
-              className="rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md"
+              className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+              data-testid={`link-experience-${c.key}`}
             >
               <div className="h-40 overflow-hidden">
                 <LazyImage src={c.img} alt={c.title} className="w-full h-full object-cover" />
@@ -26,7 +30,7 @@ export default function ExperiencesSection({ experiences, ui }) {
                 <h3 className="font-semibold">{c.title}</h3>
                 <p className="mt-1 text-sm text-slate-600">{c.desc}</p>
               </div>
-            </m.div>
+            </m.a>
           ))}
         </div>
 
