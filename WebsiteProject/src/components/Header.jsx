@@ -12,7 +12,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
   const regions = {
     europe: { name: 'Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'] },
     asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru'] },
-    americas: { name: 'Americas', languages: ['en-US', 'en-GB', 'pt-BR', 'es-ES', 'fr-FR'] },
+    americas: { name: 'Americas', languages: ['en-US', 'pt-BR', 'es-ES', 'fr-FR'] },
     africa: { name: 'Africa', languages: ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
     oceania: { name: 'Oceania', languages: ['en-GB'] }
   };
