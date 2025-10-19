@@ -425,6 +425,55 @@ export const UI = {
       blurb: "Aventures océanes et forestières à deux pas.",
       operators: "Opérateurs locaux de confiance :"
     },
+    units: {
+      safari: {
+        title: "Tente Safari",
+        short: "Découvrez l'équilibre parfait entre confort et aventure. Installée sur une plateforme spacieuse de 3×6 m, cette tente en toile de 12 m² dispose de murs latéraux et arrière protecteurs – vous offrant intimité et abri tout en restant proche de la nature.",
+        details: [
+          "Plateforme : 3×6 m • Tente : 12 m²",
+          "Murs latéraux & arrière pour intimité et abri",
+          "Filet anti-moustiques sur toutes les fenêtres & portes"
+        ],
+      },
+      comfort: {
+        title: "Tente Confort",
+        short: "Pour les invités qui aiment l'ambiance immergée dans la nature mais veulent plus d'isolement et de commodité, la Tente Safari Confort est une amélioration par rapport à notre expérience classique en toile.",
+        details: [
+          "Tente : 12 m² sur plateforme privée",
+          "Intimité supplémentaire : 2 murs latéraux + mur arrière",
+          "Filet anti-moustiques sur toutes les fenêtres & portes"
+        ],
+      },
+      cottage: {
+        title: "Cottage de Jardin",
+        short: "Nichée dans notre jardin tropical luxuriant, le Cottage de Jardin combine élégance rustique avec confort familial. Un toit en tuiles romaines rouges et un haut plafond blanc avec des poutres en bois sombre créent un refuge spacieux et aéré plein de caractère.",
+        details: [
+          "Toit en tuiles romaines rouges",
+          "Haut plafond blanc avec poutres sombres",
+          "Sol en terre cuite & tons muraux chauds",
+          "Terrasse privée avec sièges"
+        ],
+      },
+      chalet: {
+        title: "Chalet au Toit de Chaume",
+        short: "Caché dans un coin isolé de la propriété, le Chalet au Toit de Chaume offre un refuge tranquille et romantique. Ombragé par des palmiers, des strelitzias, des acacias, des fougères et des amandiers indiens, il vous immerge dans la nature sans sacrifier confort ou intimité.",
+        details: [
+          "Toit de chaume • structure en poteaux bluegum",
+          "Sol en ardoise automnale • tons naturels",
+          "Entouré de palmiers, fougères & strelitzias",
+          "Terrasse privée avec sièges"
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Plongée", desc: "Récifs côtiers riches en vie marine." },
+      dolphins: { title: "Nager avec les dauphins", desc: "Rencontres éthiques avec les dauphins locaux." },
+      lighthouse: { title: "Randonnée au phare", desc: "Montez la colline jusqu'au vieux phare pour des vues panoramiques." },
+      seafari: { title: "Safari marin", desc: "Observation des baleines (mai–oct) et plus." },
+      safari: { title: "Safari terrestre", desc: "Aventures dans la brousse à proximité." },
+      fishing: { title: "Pêche plage & bateau", desc: "Du lancer côtier aux charters offshore." },
+      surfing: { title: "Planches de surf & cours", desc: "Attrapez les vagues ou apprenez les bases." },
+    },
     todo: {
       headline: "Que faire à Ponta do Ouro",
       note: "Plongée, snorkeling, safaris dauphins/baleines, pêche : prestataires ci-dessous.",
