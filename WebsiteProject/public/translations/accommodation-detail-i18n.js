@@ -506,9 +506,14 @@ async function applyTranslations(lang) {
   document.documentElement.lang = lang;
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize on page load - handle both loading and already-loaded states
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    const lang = detectLanguage();
+    applyTranslations(lang);
+  });
+} else {
+  // DOM already loaded, execute immediately
   const lang = detectLanguage();
   applyTranslations(lang);
-});
-/* Updated: Sun Oct 19 09:24:54 PM UTC 2025 */
+}
