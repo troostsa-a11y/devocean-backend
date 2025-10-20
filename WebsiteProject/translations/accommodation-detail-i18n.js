@@ -81,6 +81,49 @@ const CC_TO_CURRENCY = {
   AU: "AUD", NZ: "NZD",
 };
 
+// Map country codes to continents (for region-aware English fallback)
+const CC_TO_CONTINENT = {
+  // Europe
+  GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
+  DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
+  FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
+  DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
+  RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
+  SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
+  CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
+  UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
+  ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
+  
+  // Africa
+  ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
+  ZW: "africa", BW: "africa", NA: "africa", EG: "africa", MA: "africa",
+  SZ: "africa", RE: "africa", MU: "africa", SC: "africa", LS: "africa",
+  ZM: "africa", MW: "africa", AO: "africa", GH: "africa", NG: "africa", 
+  ET: "africa", SD: "africa", DZ: "africa", TN: "africa", LY: "africa", 
+  SN: "africa", CI: "africa", CM: "africa", RW: "africa", BI: "africa", 
+  SO: "africa", DJ: "africa",
+  
+  // Americas
+  US: "americas", CA: "americas", MX: "americas", BR: "americas", AR: "americas",
+  CL: "americas", CO: "americas", PE: "americas", VE: "americas", EC: "americas",
+  UY: "americas", PY: "americas", BO: "americas", CR: "americas", PA: "americas",
+  GT: "americas", HN: "americas", SV: "americas", NI: "americas", CU: "americas",
+  DO: "americas", HT: "americas", JM: "americas", TT: "americas", BB: "americas",
+  
+  // Asia & Middle East
+  CN: "asia", JP: "asia", KR: "asia", IN: "asia", TH: "asia",
+  SG: "asia", MY: "asia", ID: "asia", PH: "asia", VN: "asia",
+  AE: "asia", SA: "asia", QA: "asia", KW: "asia", BH: "asia",
+  OM: "asia", IL: "asia", JO: "asia", LB: "asia", TR: "asia",
+  PK: "asia", BD: "asia", LK: "asia", NP: "asia", MM: "asia",
+  KH: "asia", LA: "asia", MN: "asia", KZ: "asia", UZ: "asia",
+  RU: "asia",
+  
+  // Oceania
+  AU: "oceania", NZ: "oceania", FJ: "oceania", PG: "oceania", NC: "oceania",
+  PF: "oceania", WS: "oceania", TO: "oceania", VU: "oceania", SB: "oceania",
+};
+
 // Import translations from accommodation-translations.json
 // Define base translations first
 const baseTranslations = {
@@ -255,21 +298,35 @@ function detectLanguage() {
     return stored;
   }
 
-  // 3. Check browser language
-  const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-  const normalized = normLang(browserLang);
-  if (SUPPORTED_LANGS.includes(normalized)) {
-    return normalized;
+  // Get country code for IP-based fallback
+  const countryCode = window.__CF_COUNTRY__ || null;
+
+  // 3. Check browser language preferences (loop through ALL preferences)
+  const list = (navigator.languages && navigator.languages.length)
+    ? navigator.languages
+    : [navigator.language].filter(Boolean);
+
+  for (const l of list) {
+    const lower = String(l || "").toLowerCase();
+    
+    // Normalize browser language to our Hotelrunner codes
+    const normalized = normLang(lower);
+    if (SUPPORTED_LANGS.includes(normalized)) return normalized;
   }
 
-  // 4. Check Cloudflare IP geolocation
-  const countryCode = window.__CF_COUNTRY__ || null;
+  // 4. Use IP-based country → language mapping
+  // This catches visitors with non-local browser settings (e.g., English browser in Japan)
   if (countryCode && CC_TO_LANGUAGE[countryCode]) {
     return CC_TO_LANGUAGE[countryCode];
   }
 
-  // 5. Default to English
-  return 'en-GB';
+  // Final fallback to region-aware English
+  // Americas → US English, others → UK English
+  const continent = countryCode ? CC_TO_CONTINENT[countryCode] : null;
+  if (continent === "americas") {
+    return "en-US";
+  }
+  return 'en-GB'; // UK English for Europe, Asia, Oceania, Africa
 }
 
 // Detect currency
