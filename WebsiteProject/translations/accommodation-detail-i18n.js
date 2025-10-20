@@ -374,7 +374,7 @@ function getHotelrunnerLocale(lang) {
 // Load full accommodation translations from JSON
 async function loadAccommodationTranslations(lang) {
   try {
-    const response = await fetch('/translations/accommodation-translations-template.json');
+    const response = await fetch('/translations/accommodation-translation-template.json');
     if (!response.ok) throw new Error('Failed to load accommodation translations');
     const data = await response.json();
     
