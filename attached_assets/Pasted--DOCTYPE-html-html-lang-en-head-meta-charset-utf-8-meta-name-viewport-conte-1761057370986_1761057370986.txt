@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book your stay – DEVOCEAN Lodge</title>
+  <meta name="description" content="Direct booking page for DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Best rates, instant confirmation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --brand:#9e4b13; --brand-2:#b65a1a; --ink:#5C5048;
+      --bg:#fffaf6; --card:#ffffff; --muted:#8a827b; --ring:#9e4b13;
+    }
+    html,body{height:100%}
+    body{margin:0;font-family:"Raleway",system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    .container{max-width:1180px;margin:0 auto;padding:clamp(14px,3vw,24px)}
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,246,0.86);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
+    .bar{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{height:48px;width:auto;border-radius:12px}
+    .title{display:flex;flex-direction:column;line-height:1}
+    .title .name{font-weight:800;letter-spacing:.2px}
+    .title .loc{font-weight:600;color:var(--muted);font-size:.95rem}
+    .btn{appearance:none;border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer}
+    .btn.primary{background:var(--brand);color:#fff}
+    .btn.primary:hover{background:var(--brand-2)}
+    main{min-height:60vh}
+    .card{background:var(--card);border:1px solid #eee;border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    .engine{overflow:hidden}
+    .frameWrap{position:relative}
+    iframe.booking{width:100%;border:0;min-height:1000px;height:75vh}
+    footer{margin-top:40px;padding:24px 0;border-top:1px solid #eee;color:var(--muted);font-size:.95rem}
+    :focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+    @media(max-width:860px){iframe.booking{min-height:1400px;height:80vh}.title .loc{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container bar">
+      <a class="brand" href="https://devoceanlodge.com" target="_blank" rel="noopener">
+        <img src="https://devoceanlodge.com/logo/DEVOCEAN_Lodge.svg" alt="DEVOCEAN Lodge logo" />
+        <span class="title">
+          <span class="name">DEVOCEAN Lodge</span>
+          <span class="loc">Ponta do Ouro • Mozambique</span>
+        </span>
+      </a>
+      <button class="btn primary" onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">Book now</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Beds24 engine only -->
+    <section id="book" class="card engine" style="margin-top:18px">
+      <div class="frameWrap">
+        <iframe id="beds24frame" class="booking" title="DEVOCEAN Lodge booking"
+          src="https://www.beds24.com/booking2.php?propid=297012&hideheader=true"
+          allow="payment *; clipboard-write *"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
+      <a href="https://devoceanlodge.com/legal/privacy" target="_blank" rel="noopener">Privacy</a>
+    </div>
+  </footer>
+
+  <script>
+    // carry UTM/etc. to Beds24
+    (function(){
+      const frame=document.getElementById('beds24frame');
+      const url=new URL(frame.src);
+      const qs=new URLSearchParams(window.location.search);
+      qs.forEach((v,k)=>{ if(!url.searchParams.has(k)) url.searchParams.set(k,v); });
+      frame.src=url.toString();
+    })();
+    // dynamic height if Beds24 posts a message
+    window.addEventListener('message',function(e){
+      try{
+        const d=typeof e.data==='string'?JSON.parse(e.data):e.data;
+        if(d && (d.type==='setHeight'||d.height)){
+          const h=parseInt(d.height,10);
+          if(Number.isFinite(h)&&h>400){ document.getElementById('beds24frame').style.height=(h+40)+'px'; }
+        }
+      }catch(_){}
+    });
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
