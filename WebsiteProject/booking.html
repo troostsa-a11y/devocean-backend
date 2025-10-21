@@ -79,35 +79,31 @@
       <div>
         <h1>Book direct for the best value</h1>
         <p>Secure your stay at our eco‑lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.</p>
-        <div class="trust" aria-label="booking benefits">
-          <span>✔ Best direct rate</span>
-          <span>✔ Secure checkout</span>
-          <span>✔ Instant confirmation</span>
-          <span>✔ No hidden fees</span>
-        </div>
-        <p class="note">Tip: Dates and guest counts you add to this page will carry into the booking form.</p>
+        <p class="note" style="margin-top:12px">Simply fill in your dates and preferences in the booking form below to check availability and secure your reservation.</p>
       </div>
-      <div class="card" style="padding:14px">
-        <form id="prefill" autocomplete="on">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <label style="display:flex;flex-direction:column;gap:4px;font-size:.95rem;font-weight:600">Check‑in
-              <input name="checkin" type="date" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-family:inherit" />
-            </label>
-            <label style="display:flex;flex-direction:column;gap:4px;font-size:.95rem;font-weight:600">Nights
-              <input name="nights" type="number" min="1" value="2" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-family:inherit" />
-            </label>
-            <label style="display:flex;flex-direction:column;gap:4px;font-size:.95rem;font-weight:600">Adults
-              <input name="adults" type="number" min="1" value="2" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-family:inherit" />
-            </label>
-            <label style="display:flex;flex-direction:column;gap:4px;font-size:.95rem;font-weight:600">Children
-              <input name="children" type="number" min="0" value="0" style="width:100%;padding:12px;border:1px solid #ddd;border-radius:12px;font-family:inherit" />
-            </label>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="padding:18px;background:linear-gradient(135deg,var(--brand) 0%,var(--brand-2) 100%);color:white;text-align:center">
+          <div style="font-weight:800;font-size:1.1rem;margin-bottom:8px">✨ Best direct rate guaranteed</div>
+          <div style="font-size:.9rem;opacity:.95">Book with us and save — no middleman fees</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+          <div class="card" style="padding:14px;text-align:center">
+            <div style="font-size:1.5rem;margin-bottom:4px">🔒</div>
+            <div style="font-weight:700;font-size:.95rem">Secure checkout</div>
           </div>
-          <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
-            <button class="btn" type="reset">Clear</button>
-            <button class="btn primary" type="submit">Update results</button>
+          <div class="card" style="padding:14px;text-align:center">
+            <div style="font-size:1.5rem;margin-bottom:4px">⚡</div>
+            <div style="font-weight:700;font-size:.95rem">Instant confirmation</div>
           </div>
-        </form>
+          <div class="card" style="padding:14px;text-align:center">
+            <div style="font-size:1.5rem;margin-bottom:4px">💯</div>
+            <div style="font-weight:700;font-size:.95rem">No hidden fees</div>
+          </div>
+          <div class="card" style="padding:14px;text-align:center">
+            <div style="font-size:1.5rem;margin-bottom:4px">🤝</div>
+            <div style="font-weight:700;font-size:.95rem">DEVOCEAN Team support</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -144,15 +140,6 @@
       const base=frame.getAttribute('src');
       frame.src=buildBedsUrl(base);
     })();
-    document.getElementById('prefill').addEventListener('submit',function(e){
-      e.preventDefault();
-      const data=new FormData(this);
-      const params={checkin:data.get('checkin'),nights:data.get('nights'),adults:data.get('adults'),children:data.get('children')};
-      const frame=document.getElementById('beds24frame');
-      const base=frame.getAttribute('src').split('#')[0];
-      frame.src=buildBedsUrl(base,params);
-      document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'});
-    });
     document.getElementById('year').textContent=new Date().getFullYear();
     window.addEventListener('message',function(event){
       try{
