@@ -65,8 +65,9 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 
 ### Third-Party Services
 - **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af) via GTM Template for GDPR/CCPA-compliant cookie consent, Microsoft Clarity for session recording with consent management.
-- **Booking Integration (Oct 22, 2025 - MIGRATED TO BEDS24):** 
+- **Booking Integration (Oct 22-23, 2025 - MIGRATED TO BEDS24):** 
   - **Current:** Beds24 booking engine (propid=297012) embedded in `/booking.html` with custom header/footer, UTM parameter forwarding, and dynamic height adjustment.
+  - **Language & Currency Integration (Oct 23, 2025):** React app generates booking URLs in format `/booking.html?lang=XX&currency=XXX` using ISO 639-1 two-letter lowercase language codes (e.g., `en`, `pt`, `nl`) and 3-letter uppercase currency codes (e.g., `USD`, `EUR`, `MZN`). The `buildBookingUrl()` function in `localize.js` converts Hotelrunner locale codes to ISO 639-1 format. The booking page accepts these parameters and passes them directly to the Beds24 iframe for a fully localized booking experience.
   - **Previous:** Hotelrunner at `book.devoceanlodge.com` - DEPRECATED due to application bug in Hotelrunner's system that redirected visitors to API endpoint (`/api/v1/bv3/orders/pixel/search`) instead of booking page (`/bv3`), causing white pages and visitor frustration. Migration to Beds24 completed October 22, 2025.
   - **Post-booking:** Custom thank you page at `/thankyou.html` for post-reservation redirects.
 - **Maps & Location:** Google Maps embed for property location (lazy-loaded interactive map with static preview).
