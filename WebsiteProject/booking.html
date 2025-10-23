@@ -160,7 +160,7 @@
     
     function detectSiteCurrency(){
       const qs = new URLSearchParams(location.search);
-      const urlCur = qs.get('currency');
+      const urlCur = qs.get('cur') || qs.get('currency'); // Support both cur and currency for backwards compatibility
       if (urlCur && urlCur.length === 3){ 
         localStorage.setItem('selectedCurrency', urlCur.toUpperCase()); 
         return urlCur.toUpperCase(); 
@@ -307,7 +307,7 @@
         if (hb) {
           hb.textContent = TT.home;
           // Update home button to preserve language
-          hb.href = `https://devoceanlodge.com?lang=${code}&currency=${siteCurrency}`;
+          hb.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
         }
         return true;
       }

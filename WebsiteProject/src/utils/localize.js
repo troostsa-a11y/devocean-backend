@@ -79,5 +79,5 @@ const localeToISO6391 = (locale) => {
 
 export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
   const lang = localeToISO6391(locale);
-  return `/booking.html?lang=${lang}&currency=${currency}`;
+  return `/booking.html?lang=${lang}&cur=${currency}`;
 };
