@@ -319,14 +319,18 @@
       const frame = document.getElementById('beds24frame');
       if (frame){
         const url = new URL(frame.src);
+        const pageQS = new URLSearchParams(location.search);
+        
         url.searchParams.set('hideheader','true');
         url.searchParams.set('lang', code);      // pass Beds24 language (ISO 639-1)
-        url.searchParams.set('currency', siteCurrency); // pass currency (3-letter uppercase)
+        
+        // normalize currency: currency=XXX or cur=XXX -> cur=XXX
+        const curr = (pageQS.get('currency') || pageQS.get('cur') || siteCurrency);
+        if (curr) url.searchParams.set('cur', curr.toUpperCase());
 
         // carry through any other forwarded params (UTM, etc.)
-        const pageQS = new URLSearchParams(location.search);
         pageQS.forEach((v,k)=>{ 
-          if(k !== 'lang' && k !== 'currency' && !url.searchParams.has(k)) {
+          if(k !== 'lang' && k !== 'currency' && k !== 'cur' && !url.searchParams.has(k)) {
             url.searchParams.set(k,v); 
           }
         });
