@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     :root{
       --brand:#9e4b13; --brand-2:#b65a1a; --ink:#5C5048;
@@ -24,7 +25,7 @@
     .title .name{font-weight:800;letter-spacing:.2px}
     .title .loc{font-weight:600;color:var(--muted);font-size:.95rem}
     .btn{appearance:none;border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer}
-    .btn.primary{background:var(--brand);color:#fff}
+    .btn.primary{background:var(--brand);color:#fff;text-decoration:none}
     .btn.primary:hover{background:var(--brand-2)}
     main{min-height:60vh}
     .card{background:var(--card);border:1px solid #eee;border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
@@ -34,8 +35,45 @@
     footer{margin-top:40px;padding:24px 0;border-top:1px solid #eee;color:var(--muted);font-size:.95rem}
     :focus-visible{outline:2px solid var(--ring);outline-offset:2px}
     @media(max-width:860px){iframe.booking{min-height:1400px;height:80vh}.title .loc{display:none}}
+
+    /* ===== Hero (coordinated with Beds24 styling) ===== */
+    #site-hero{background:#fffaf6}
+    #site-hero .wrap{max-width:1180px;margin:0 auto;padding:22px clamp(14px,3vw,24px)}
+    #site-hero .hero-section{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start;margin-bottom:10px}
+    #site-hero h1{margin:6px 0 10px;font-weight:800;letter-spacing:.2px;font-size:clamp(1.6rem,2vw + 1rem,2.3rem);line-height:1.2}
+    #site-hero p{margin:0;color:var(--muted);line-height:1.5}
+    #site-hero .note{margin-top:12px}
+    #site-hero .benefit-card{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    #site-hero .badge-container{display:flex;flex-direction:column;gap:12px}
+    #site-hero .featured-badge{padding:18px;background:linear-gradient(135deg,#b65a1a 0%,#9e4b13 100%);color:#fff;text-align:center;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    #site-hero .badge-head{font-size:1.1rem;font-weight:800}
+    #site-hero .badge-sub{opacity:.95}
+    #site-hero .badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    #site-hero .badge-item{padding:14px;text-align:center;border-radius:16px;transition:transform .12s ease, box-shadow .12s ease}
+    #site-hero .badge-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.10)}
+    #site-hero .badge-item-title{font-weight:700}
+    #site-hero .ico{width:28px;height:28px;display:block;margin:0 auto 8px;background-repeat:no-repeat;background-position:center;background-size:contain}
+
+    /* Inline SVG icons as data URIs (URL-encoded for reliability) */
+    #site-hero .ico.lock{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239e4b13' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='10' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.bolt{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239e4b13'%3E%3Cpath d='M13 2L4 14h6l-1 8 9-12h-6l1-8z'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.check{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239e4b13' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.handshake{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239e4b13' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12l4-4a3 3 0 0 1 4 0l2 2'/%3E%3Cpath d='M15 9l2-2a3 3 0 0 1 4 0'/%3E%3Cpath d='M8 13l3 3a2 2 0 0 0 3 0l4-4'/%3E%3C/svg%3E");
+    }
+
+    @media (max-width:880px){
+      #site-hero .hero-section{grid-template-columns:1fr;gap:14px}
+    }
   </style>
 </head>
+
 <body>
   <header>
     <div class="container bar">
@@ -46,12 +84,49 @@
           <span class="loc">Ponta do Ouro • Mozambique</span>
         </span>
       </a>
-      <a class="btn primary" href="https://devoceanlodge.com" style="text-decoration:none">Home</a>
+      <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com">Home</a>
     </div>
   </header>
 
   <main class="container">
-    <!-- Beds24 engine only -->
+    <!-- HERO (fallback EN text; JS replaces with localized strings) -->
+    <section id="site-hero">
+      <div class="wrap">
+        <div class="hero-section">
+          <div>
+            <h1 id="t-h1">Book direct for the best value</h1>
+            <p id="t-p1">Secure your stay at our eco-lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.</p>
+            <p class="note" id="t-note">Fill in your dates below to check availability and book.</p>
+          </div>
+          <div class="badge-container">
+            <div class="featured-badge">
+              <div class="badge-head" id="t-badge-head">Best direct rate guaranteed</div>
+              <div class="badge-sub" id="t-badge-sub">Save — no middleman fees</div>
+            </div>
+            <div class="badge-grid">
+              <div class="benefit-card badge-item">
+                <span class="ico lock"></span>
+                <div class="badge-item-title" id="t-secure">Secure checkout</div>
+              </div>
+              <div class="benefit-card badge-item">
+                <span class="ico check"></span>
+                <div class="badge-item-title" id="t-nofees">No hidden fees</div>
+              </div>
+              <div class="benefit-card badge-item">
+                <span class="ico bolt"></span>
+                <div class="badge-item-title" id="t-instant">Instant confirmation</div>
+              </div>
+              <div class="benefit-card badge-item">
+                <span class="ico handshake"></span>
+                <div class="badge-item-title" id="t-support">Team support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beds24 engine -->
     <section id="book" class="card engine" style="margin-top:18px">
       <div class="frameWrap">
         <iframe id="beds24frame" class="booking" title="DEVOCEAN Lodge booking"
@@ -64,51 +139,195 @@
   <footer>
     <div class="container" style="text-align:center">
       © <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
-      <a href="#" onclick="return setLegalLink('privacy')" style="color:var(--brand);text-decoration:none">Privacy</a> •
-      <a href="#" onclick="return setLegalLink('cookies')" style="color:var(--brand);text-decoration:none">Cookies</a> •
-      <a href="#" onclick="return setLegalLink('terms')" style="color:var(--brand);text-decoration:none">Terms</a> •
-      <a href="#" onclick="return setLegalLink('GDPR')" style="color:var(--brand);text-decoration:none">GDPR</a>
+      <a href="/legal/privacy.html" style="color:var(--brand);text-decoration:none">Privacy</a> •
+      <a href="/legal/cookies.html" style="color:var(--brand);text-decoration:none">Cookies</a> •
+      <a href="/legal/terms.html" style="color:var(--brand);text-decoration:none">Terms</a> •
+      <a href="/legal/gdpr.html" style="color:var(--brand);text-decoration:none">GDPR</a>
     </div>
   </footer>
 
+  <!-- Localization + iframe sync (place at end for robustness with async/defers) -->
   <script>
-    // Get current language from URL or localStorage
-    function getCurrentLanguage() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLang = urlParams.get('lang');
-      if (urlLang) {
-        localStorage.setItem('selectedLanguage', urlLang);
-        return urlLang;
+    // 1) Detect language (?lang=xx or ?locale=xx -> localStorage -> browser)
+    function detectSiteLanguage(){
+      const qs = new URLSearchParams(location.search);
+      const urlLang = qs.get('lang') || qs.get('locale');
+      if (urlLang){ localStorage.setItem('selectedLanguage', urlLang); return urlLang; }
+      const saved = localStorage.getItem('selectedLanguage');
+      if (saved) return saved;
+      return navigator.language || 'en-GB';
+    }
+    function toBase(code){ return (code||'en').toLowerCase().split('-')[0]; }
+    function mapToB24(code){
+      const b = toBase(code);
+      return ['en','de','es','fr','it','nl','pt','ru','zh','sv','ja'].includes(b) ? b : 'en';
+    }
+
+    // 2) Translations (page + hero)
+    const TR = {
+      en:{title:"Book your stay – DEVOCEAN Lodge",
+          desc:"Direct booking page for DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Best rates, instant confirmation.",
+          home:"Home",
+          h1:"Book direct for the best value",
+          p1:"Secure your stay at our eco-lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.",
+          note:"Fill in your dates below to check availability and book.",
+          badgeHead:"Best direct rate guaranteed",
+          badgeSub:"Save — no middleman fees",
+          secure:"Secure checkout", nofees:"No hidden fees", instant:"Instant confirmation", support:"Team support"},
+      de:{title:"Buchen Sie Ihren Aufenthalt – DEVOCEAN Lodge",
+          desc:"Direkte Buchungsseite der DEVOCEAN Lodge in Ponta do Ouro, Mosambik. Beste Preise, sofortige Bestätigung.",
+          home:"Startseite",
+          h1:"Direkt buchen zum besten Preis",
+          p1:"Sichern Sie sich Ihren Aufenthalt in unserer Eco-Lodge, nur wenige Minuten vom Strand und dem Maputo-Nationalpark entfernt. Sofortige Bestätigung, transparente Preise und flexible Zimmeroptionen.",
+          note:"Geben Sie unten Ihre Reisedaten ein, um die Verfügbarkeit zu prüfen und zu buchen.",
+          badgeHead:"Bester Direktpreis garantiert",
+          badgeSub:"Sparen Sie – keine Vermittlungsgebühren",
+          secure:"Sichere Zahlung", nofees:"Keine versteckten Gebühren", instant:"Sofortige Bestätigung", support:"Unterstützung durch unser Team"},
+      es:{title:"Reserve su estancia – DEVOCEAN Lodge",
+          desc:"Página de reserva directa de DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Mejores precios, confirmación inmediata.",
+          home:"Inicio",
+          h1:"Reserva directa al mejor precio",
+          p1:"Asegura tu estancia en nuestro eco-lodge, a pocos minutos de la playa y del Parque Nacional de Maputo. Confirmación instantánea, tarifas transparentes y opciones de alojamiento flexibles.",
+          note:"Introduce tus fechas a continuación para comprobar la disponibilidad y reservar.",
+          badgeHead:"Mejor tarifa directa garantizada",
+          badgeSub:"Ahorra sin comisiones ni intermediarios",
+          secure:"Pago seguro", nofees:"Sin cargos ocultos", instant:"Confirmación inmediata", support:"Atención personalizada"},
+      fr:{title:"Réservez votre séjour – DEVOCEAN Lodge",
+          desc:"Page de réservation directe de la DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Meilleurs tarifs, confirmation immédiate.",
+          home:"Accueil",
+          h1:"Réservez en direct au meilleur tarif",
+          p1:"Assurez votre séjour dans notre éco-lodge, à quelques minutes de la plage et du parc national de Maputo. Confirmation instantanée, tarifs transparents et options d’hébergement flexibles.",
+          note:"Saisissez vos dates ci-dessous pour vérifier la disponibilité et réserver.",
+          badgeHead:"Meilleur tarif direct garanti",
+          badgeSub:"Économisez — sans frais d’intermédiaire",
+          secure:"Paiement sécurisé", nofees:"Aucun frais caché", instant:"Confirmation immédiate", support:"Assistance de notre équipe"},
+      it:{title:"Prenota il tuo soggiorno – DEVOCEAN Lodge",
+          desc:"Pagina di prenotazione diretta della DEVOCEAN Lodge, Ponta do Ouro, Mozambico. Migliori tariffe, conferma immediata.",
+          home:"Home",
+          h1:"Prenota direttamente al miglior prezzo",
+          p1:"Assicurati il tuo soggiorno nel nostro eco-lodge, a pochi minuti dalla spiaggia e dal Parco Nazionale di Maputo. Conferma immediata, tariffe trasparenti e opzioni di alloggio flessibili.",
+          note:"Inserisci le tue date qui sotto per verificare la disponibilità e prenotare.",
+          badgeHead:"Miglior tariffa diretta garantita",
+          badgeSub:"Risparmia — nessuna commissione intermedia",
+          secure:"Pagamento sicuro", nofees:"Nessun costo nascosto", instant:"Conferma immediata", support:"Assistenza del nostro team"},
+      nl:{title:"Boek uw verblijf – DEVOCEAN Lodge",
+          desc:"Directe boekingspagina van DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Beste prijzen, directe bevestiging.",
+          home:"Home",
+          h1:"Boek direct voor de beste prijs",
+          p1:"Reserveer uw verblijf in onze eco-lodge, op slechts enkele minuten van het strand en het Maputo Nationaal Park. Directe bevestiging, transparante tarieven en flexibele kameropties.",
+          note:"Vul hieronder uw data in om beschikbaarheid te controleren en te reserveren.",
+          badgeHead:"Beste directe prijs gegarandeerd",
+          badgeSub:"Bespaar – geen commissies of tussenpersonen",
+          secure:"Veilige betaling", nofees:"Geen verborgen kosten", instant:"Directe bevestiging", support:"Ondersteuning door ons team"},
+      pt:{title:"Reserve a sua estadia – DEVOCEAN Lodge",
+          desc:"Página de reserva direta da DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Melhores tarifas, confirmação imediata.",
+          home:"Início",
+          h1:"Reserve diretamente pelo melhor preço",
+          p1:"Garanta a sua estadia no nosso eco-lodge, a poucos minutos da praia e do Parque Nacional de Maputo. Confirmação imediata, tarifas transparentes e opções de acomodação flexíveis.",
+          note:"Insira as suas datas abaixo para verificar a disponibilidade e fazer a reserva.",
+          badgeHead:"Melhor tarifa direta garantida",
+          badgeSub:"Poupe — sem taxas ou intermediários",
+          secure:"Pagamento seguro", nofees:"Sem custos ocultos", instant:"Confirmação imediata", support:"Apoio da nossa equipa"},
+      ru:{title:"Забронируйте проживание – DEVOCEAN Lodge",
+          desc:"Страница прямого бронирования DEVOCEAN Lodge (Понта-ду-Ору, Мозамбик). Лучшие цены, мгновенное подтверждение.",
+          home:"Главная",
+          h1:"Бронируйте напрямую по лучшей цене",
+          p1:"Забронируйте проживание в нашем эко-лодже всего в нескольких минутах от пляжа и национального парка Мапуту. Мгновенное подтверждение, прозрачные тарифы и гибкие варианты размещения.",
+          note:"Введите даты ниже, чтобы проверить наличие и оформить бронирование.",
+          badgeHead:"Лучшая цена при прямом бронировании — гарантирована",
+          badgeSub:"Экономьте — без комиссий и посредников",
+          secure:"Безопасная оплата", nofees:"Без скрытых сборов", instant:"Мгновенное подтверждение", support:"Поддержка нашей команды"},
+      zh:{title:"预订您的住宿 – DEVOCEAN Lodge",
+          desc:"DEVOCEAN Lodge（莫桑比克蓬塔杜奥鲁）官方直订页面。最优价格，即时确认。",
+          home:"首页",
+          h1:"直接预订，享受最优惠价格",
+          p1:"在我们的生态旅馆预订住宿，距离海滩和马普托国家公园仅几分钟路程。即时确认，价格透明，房型灵活可选。",
+          note:"请输入您的日期以查看空房并完成预订。",
+          badgeHead:"最佳直订价格保证",
+          badgeSub:"节省费用 — 无中介佣金",
+          secure:"安全支付", nofees:"无隐藏费用", instant:"即时确认", support:"团队支持"},
+      sv:{title:"Boka din vistelse – DEVOCEAN Lodge",
+          desc:"Direktbokningssida för DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Bästa priser, omedelbar bekräftelse.",
+          home:"Hem",
+          h1:"Boka direkt för bästa pris",
+          p1:"Säkra din vistelse på vår ekologiska lodge, bara några minuter från stranden och Maputo nationalpark. Omedelbar bekräftelse, transparenta priser och flexibla rumsalternativ.",
+          note:"Fyll i dina datum nedan för att kontrollera tillgänglighet och boka.",
+          badgeHead:"Bästa direktpris garanteras",
+          badgeSub:"Spara — inga mellanhänder eller dolda avgifter",
+          secure:"Säker betalning", nofees:"Inga dolda avgifter", instant:"Omedelbar bekräftelse", support:"Support från vårt team"},
+      ja:{title:"ご宿泊予約 – DEVOCEAN Lodge",
+          desc:"DEVOCEAN Lodge（モザンビーク・ポンタ・ド・オウロ）の公式直予約ページ。最安値・即時確認。",
+          home:"ホーム",
+          h1:"ベストプライスで直接予約",
+          p1:"ビーチやマプト国立公園から数分の当エコロッジで快適な滞在を。即時確認、透明な料金、柔軟な客室オプションをご用意しています。",
+          note:"下の欄に日付を入力して、空室状況を確認・予約してください。",
+          badgeHead:"最安値の直接予約を保証",
+          badgeSub:"仲介手数料なしでお得に",
+          secure:"安全な支払い", nofees:"追加料金なし", instant:"即時確認", support:"チームによるサポート"}
+    };
+
+    // 3) Apply language, fill UI (retry if DOM not ready), set Beds24 iframe
+    (function () {
+      const siteLang = detectSiteLanguage();
+      const code = mapToB24(siteLang);
+      document.documentElement.setAttribute('lang', code);
+
+      const TT = TR[code] || TR.en;
+      document.title = TT.title;
+      const md = document.querySelector('meta[name="description"]');
+      if (md) md.setAttribute('content', TT.desc);
+
+      function fill(){
+        const ids = ["t-h1","t-p1","t-note","t-badge-head","t-badge-sub","t-secure","t-nofees","t-instant","t-support","homeBtn"];
+        if (ids.some(id => !document.getElementById(id))) return false;
+        document.getElementById("t-h1").textContent = TT.h1;
+        document.getElementById("t-p1").textContent = TT.p1;
+        document.getElementById("t-note").textContent = TT.note;
+        document.getElementById("t-badge-head").textContent = TT.badgeHead;
+        document.getElementById("t-badge-sub").textContent = TT.badgeSub;
+        document.getElementById("t-secure").textContent = TT.secure;
+        document.getElementById("t-nofees").textContent = TT.nofees;
+        document.getElementById("t-instant").textContent = TT.instant;
+        document.getElementById("t-support").textContent = TT.support;
+        const hb = document.getElementById("homeBtn"); if (hb) hb.textContent = TT.home;
+        return true;
       }
-      return localStorage.getItem('selectedLanguage') || 'en-GB';
-    }
-    
-    // Set legal link with language parameter
-    function setLegalLink(page) {
-      const lang = getCurrentLanguage();
-      window.location.href = `/legal/${page}.html?lang=${lang}`;
-      return false;
-    }
-    
-    // carry UTM/etc. to Beds24
-    (function(){
-      const frame=document.getElementById('beds24frame');
-      const url=new URL(frame.src);
-      const qs=new URLSearchParams(window.location.search);
-      qs.forEach((v,k)=>{ if(!url.searchParams.has(k)) url.searchParams.set(k,v); });
-      frame.src=url.toString();
+      if (!fill()){
+        const iv = setInterval(()=>{ if (fill()) clearInterval(iv); }, 50);
+        document.addEventListener('DOMContentLoaded', ()=>fill());
+      }
+
+      const frame = document.getElementById('beds24frame');
+      if (frame){
+        const url = new URL(frame.src);
+        url.searchParams.set('hideheader','true');
+        url.searchParams.set('lang', code);      // pass Beds24 language
+
+        // carry through any forwarded params (e.g., ?locale=sv&currency=USD)
+        const pageQS = new URLSearchParams(location.search);
+        pageQS.forEach((v,k)=>{ if(!url.searchParams.has(k)) url.searchParams.set(k,v); });
+
+        // Optional later: enforce USD everywhere
+        // url.searchParams.set('currency','USD');
+
+        frame.src = url.toString();
+      }
     })();
-    // dynamic height if Beds24 posts a message
-    window.addEventListener('message',function(e){
+
+    // Dynamic height from Beds24
+    window.addEventListener('message', function(e){
       try{
-        const d=typeof e.data==='string'?JSON.parse(e.data):e.data;
-        if(d && (d.type==='setHeight'||d.height)){
-          const h=parseInt(d.height,10);
-          if(Number.isFinite(h)&&h>400){ document.getElementById('beds24frame').style.height=(h+40)+'px'; }
+        const d = typeof e.data==='string' ? JSON.parse(e.data) : e.data;
+        if (d && (d.type==='setHeight' || d.height)){
+          const h = parseInt(d.height,10);
+          if (Number.isFinite(h) && h > 400){
+            document.getElementById('beds24frame').style.height = (h + 40) + 'px';
+          }
         }
       }catch(_){}
     });
-    document.getElementById('year').textContent=new Date().getFullYear();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

@@ -33,6 +33,7 @@
     .success-icon{font-size:4rem;margin-bottom:20px}
     h1{margin:0 0 16px;font-size:2.2rem;letter-spacing:.2px;color:var(--ink)}
     p{margin:0 0 12px;color:var(--muted);line-height:1.6;font-size:1.05rem}
+    .muted{color:var(--muted)}
     .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:32px 0;text-align:left}
     .info-card{background:#f9f9f9;border:1px solid #eee;border-radius:12px;padding:20px}
     .info-card h3{margin:0 0 8px;font-size:1.1rem;color:var(--ink)}
@@ -40,6 +41,7 @@
     .info-card a{color:var(--brand);text-decoration:none;font-weight:600}
     .info-card a:hover{text-decoration:underline}
     .actions{display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+    .countdown{margin-top:14px;font-size:.98rem}
     footer{margin-top:40px;padding:24px 0;border-top:1px solid #eee;color:var(--muted);font-size:.95rem;text-align:center}
     @media(max-width:860px){.title .loc{display:none}.actions{flex-direction:column}}
   </style>
@@ -58,31 +60,40 @@
   </header>
 
   <main class="container">
-    <div class="card">
+    <div class="card" role="status" aria-live="polite">
       <div class="success-icon">✅</div>
-      <h1>Booking Confirmed!</h1>
-      <p>Thank you for choosing DEVOCEAN Lodge. Your reservation has been successfully confirmed.</p>
-      <p>You will receive a confirmation email shortly with all the details of your stay.</p>
+
+      <!-- Fallback English (will be replaced by JS) -->
+      <h1 id="t-title">Booking Confirmed!</h1>
+      <p id="t-lead">Thank you for choosing DEVOCEAN Lodge. Your reservation has been successfully confirmed.</p>
+      <p id="t-sub">You will receive a confirmation email shortly with all the details of your stay.</p>
 
       <div class="info-grid">
         <div class="info-card">
-          <h3>📧 Check Your Email</h3>
-          <p>A confirmation email with your booking details, check-in instructions, and important information has been sent to your email address.</p>
+          <h3 id="t-email-h">📧 Check Your Email</h3>
+          <p id="t-email-p">A confirmation email with your booking details, check-in instructions, and important information has been sent to your email address.</p>
         </div>
         <div class="info-card">
-          <h3>💬 Need Assistance?</h3>
-          <p>WhatsApp: <a href="https://wa.me/258840000000">+258 84 000 0000</a><br>
-          Email: <a href="mailto:info@devoceanlodge.com">info@devoceanlodge.com</a></p>
+          <h3 id="t-help-h">💬 Need Assistance?</h3>
+          <p id="t-help-p">
+            WhatsApp: <a id="waLink" href="https://wa.me/258844182252">+258 84 418 2252</a><br>
+            <span id="t-email-label">Email</span>: <a href="mailto:info@devoceanlodge.com">info@devoceanlodge.com</a>
+          </p>
         </div>
         <div class="info-card">
-          <h3>📍 Getting to the Lodge</h3>
-          <p>We're located in Ponta do Ouro, Mozambique, minutes from pristine beaches and Maputo National Park. Detailed directions are in your confirmation email.</p>
+          <h3 id="t-directions-h">📍 Getting to the Lodge</h3>
+          <p id="t-directions-p">We’re located in Ponta do Ouro, Mozambique, minutes from pristine beaches and Maputo National Park. Detailed directions are in your confirmation email.</p>
         </div>
       </div>
 
       <div class="actions">
-        <a class="btn primary" href="https://devoceanlodge.com">Return to Homepage</a>
-        <a class="btn secondary" href="https://devoceanlodge.com/story.html">Learn About Our Story</a>
+        <a id="ctaPrimary" class="btn primary" href="https://devoceanlodge.com">Return to Homepage</a>
+        <a id="ctaSecondary" class="btn secondary" href="https://devoceanlodge.com/story.html">Learn About Our Story</a>
+      </div>
+
+      <div class="countdown">
+        <span id="t-redirect-msg">You’ll be redirected in</span> <strong id="seconds">6</strong> <span id="t-seconds">seconds</span>. 
+        <a href="#" id="cancelRedirect" class="muted">Stay on this page</a>
       </div>
     </div>
   </main>
@@ -90,29 +101,272 @@
   <footer>
     <div class="container">
       © <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
-      <a href="#" onclick="setLegalLink('privacy')" style="color:var(--brand);text-decoration:none">Privacy</a> •
-      <a href="#" onclick="setLegalLink('cookies')" style="color:var(--brand);text-decoration:none">Cookies</a> •
-      <a href="#" onclick="setLegalLink('terms')" style="color:var(--brand);text-decoration:none">Terms</a>
+      <a href="#" onclick="return setLegalLink('privacy')" style="color:var(--brand);text-decoration:none">Privacy</a> •
+      <a href="#" onclick="return setLegalLink('cookies')" style="color:var(--brand);text-decoration:none">Cookies</a> •
+      <a href="#" onclick="return setLegalLink('terms')" style="color:var(--brand);text-decoration:none">Terms</a>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Get language from URL or localStorage
-    function getCurrentLanguage() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLang = urlParams.get('lang');
-      if (urlLang) return urlLang;
-      return localStorage.getItem('selectedLanguage') || 'en-GB';
+
+    /* === Language detection (accepts ?lang=xx or ?locale=xx) === */
+    function detectSiteLanguage(){
+      const qs = new URLSearchParams(location.search);
+      const urlLang = qs.get('lang') || qs.get('locale');
+      if (urlLang){ localStorage.setItem('selectedLanguage', urlLang); return urlLang; }
+      const saved = localStorage.getItem('selectedLanguage');
+      if (saved) return saved;
+      return navigator.language || 'en-GB';
     }
-    
-    // Set legal link with language parameter
-    function setLegalLink(page) {
-      const lang = getCurrentLanguage();
-      window.location.href = `/legal/${page}.html?lang=${lang}`;
-      return false;
-    }
+    const baseLang = code => (code||'en').toLowerCase().split('-')[0];
+    const supported = ['en','de','es','fr','it','nl','pt','ru','zh','sv','ja'];
+    const mapLang = code => supported.includes(baseLang(code)) ? baseLang(code) : 'en';
+
+    /* === Translations === */
+    const TR = {
+      en:{titleTag:"Booking Confirmed – DEVOCEAN Lodge",
+          desc:"Your booking at DEVOCEAN Lodge has been confirmed. We look forward to welcoming you!",
+          h1:"Booking Confirmed!",
+          lead:"Thank you for choosing DEVOCEAN Lodge. Your reservation has been successfully confirmed.",
+          sub:"You will receive a confirmation email shortly with all the details of your stay.",
+          emailH:"📧 Check Your Email",
+          emailP:"A confirmation email with your booking details, check-in instructions, and important information has been sent to your email address.",
+          helpH:"💬 Need Assistance?",
+          emailLabel:"Email",
+          directionsH:"📍 Getting to the Lodge",
+          directionsP:"We’re located in Ponta do Ouro, Mozambique, minutes from pristine beaches and Maputo National Park. Detailed directions are in your confirmation email.",
+          ctaPrimary:"Return to Homepage",
+          ctaSecondary:"Learn About Our Story",
+          redirectMsg:"You’ll be redirected in", seconds:"seconds", stay:"Stay on this page",
+          homePath:"/", storyPath:"/story.html"},
+      de:{titleTag:"Buchung bestätigt – DEVOCEAN Lodge",
+          desc:"Ihre Buchung in der DEVOCEAN Lodge wurde bestätigt. Wir freuen uns auf Ihren Besuch!",
+          h1:"Buchung bestätigt!",
+          lead:"Vielen Dank, dass Sie sich für die DEVOCEAN Lodge entschieden haben. Ihre Reservierung wurde erfolgreich bestätigt.",
+          sub:"Sie erhalten in Kürze eine Bestätigungs-E-Mail mit allen Details zu Ihrem Aufenthalt.",
+          emailH:"📧 Prüfen Sie Ihre E-Mails",
+          emailP:"Eine Bestätigungs-E-Mail mit Buchungsdetails, Check-in-Hinweisen und wichtigen Informationen wurde an Ihre E-Mail-Adresse gesendet.",
+          helpH:"💬 Benötigen Sie Hilfe?",
+          emailLabel:"E-Mail",
+          directionsH:"📍 Anreise zur Lodge",
+          directionsP:"Wir befinden uns in Ponta do Ouro (Mosambik), nur wenige Minuten von Stränden und dem Nationalpark Maputo entfernt. Genaue Wegbeschreibung finden Sie in Ihrer Bestätigung.",
+          ctaPrimary:"Zur Startseite",
+          ctaSecondary:"Erfahren Sie unsere Geschichte",
+          redirectMsg:"Sie werden weitergeleitet in", seconds:"Sekunden", stay:"Auf dieser Seite bleiben",
+          homePath:"/", storyPath:"/story.html"},
+      es:{titleTag:"Reserva confirmada – DEVOCEAN Lodge",
+          desc:"Su reserva en DEVOCEAN Lodge ha sido confirmada. ¡Le esperamos con ilusión!",
+          h1:"¡Reserva confirmada!",
+          lead:"Gracias por elegir DEVOCEAN Lodge. Su reserva se ha confirmado correctamente.",
+          sub:"Pronto recibirá un correo de confirmación con todos los detalles de su estancia.",
+          emailH:"📧 Revise su correo",
+          emailP:"Le hemos enviado un correo con los detalles de la reserva, instrucciones de check-in e información importante.",
+          helpH:"💬 ¿Necesita ayuda?",
+          emailLabel:"Email",
+          directionsH:"📍 Cómo llegar a la lodge",
+          directionsP:"Estamos en Ponta do Ouro (Mozambique), a minutos de playas vírgenes y del Parque Nacional de Maputo. Las indicaciones detalladas están en su correo.",
+          ctaPrimary:"Volver a la página principal",
+          ctaSecondary:"Conozca nuestra historia",
+          redirectMsg:"Será redirigido en", seconds:"segundos", stay:"Permanecer en esta página",
+          homePath:"/", storyPath:"/story.html"},
+      fr:{titleTag:"Réservation confirmée – DEVOCEAN Lodge",
+          desc:"Votre réservation à la DEVOCEAN Lodge est confirmée. Nous avons hâte de vous accueillir !",
+          h1:"Réservation confirmée !",
+          lead:"Merci d’avoir choisi la DEVOCEAN Lodge. Votre réservation a été confirmée avec succès.",
+          sub:"Vous recevrez sous peu un e-mail de confirmation avec tous les détails de votre séjour.",
+          emailH:"📧 Vérifiez votre e-mail",
+          emailP:"Un e-mail de confirmation avec les détails, les instructions d’arrivée et les informations importantes vous a été envoyé.",
+          helpH:"💬 Besoin d’aide ?",
+          emailLabel:"E-mail",
+          directionsH:"📍 Venir à la lodge",
+          directionsP:"Nous sommes situés à Ponta do Ouro (Mozambique), à quelques minutes des plages et du parc national de Maputo. Les indications figurent dans votre e-mail.",
+          ctaPrimary:"Retour à l’accueil",
+          ctaSecondary:"Découvrir notre histoire",
+          redirectMsg:"Redirection dans", seconds:"secondes", stay:"Rester sur cette page",
+          homePath:"/", storyPath:"/story.html"},
+      it:{titleTag:"Prenotazione confermata – DEVOCEAN Lodge",
+          desc:"La tua prenotazione presso DEVOCEAN Lodge è stata confermata. Non vediamo l’ora di accoglierti!",
+          h1:"Prenotazione confermata!",
+          lead:"Grazie per aver scelto DEVOCEAN Lodge. La tua prenotazione è stata confermata con successo.",
+          sub:"A breve riceverai un’e-mail di conferma con tutti i dettagli del soggiorno.",
+          emailH:"📧 Controlla la tua e-mail",
+          emailP:"Ti abbiamo inviato un’e-mail con i dettagli della prenotazione, le istruzioni per il check-in e informazioni importanti.",
+          helpH:"💬 Hai bisogno di assistenza?",
+          emailLabel:"Email",
+          directionsH:"📍 Come raggiungere la lodge",
+          directionsP:"Siamo a Ponta do Ouro (Mozambico), a pochi minuti dalle spiagge e dal Parco Nazionale di Maputo. Le indicazioni sono nella conferma.",
+          ctaPrimary:"Torna alla Home",
+          ctaSecondary:"Scopri la nostra storia",
+          redirectMsg:"Verrai reindirizzato tra", seconds:"secondi", stay:"Rimani su questa pagina",
+          homePath:"/", storyPath:"/story.html"},
+      nl:{titleTag:"Boeking bevestigd – DEVOCEAN Lodge",
+          desc:"Uw boeking bij DEVOCEAN Lodge is bevestigd. We kijken ernaar uit u te verwelkomen!",
+          h1:"Boeking bevestigd!",
+          lead:"Bedankt dat u voor DEVOCEAN Lodge heeft gekozen. Uw reservering is succesvol bevestigd.",
+          sub:"U ontvangt spoedig een bevestigingsmail met alle details van uw verblijf.",
+          emailH:"📧 Controleer uw e-mail",
+          emailP:"Een bevestigingsmail met boekingsdetails, incheckinstructies en belangrijke informatie is naar uw e-mailadres verzonden.",
+          helpH:"💬 Hulp nodig?",
+          emailLabel:"E-mail",
+          directionsH:"📍 Route naar de lodge",
+          directionsP:"Wij bevinden ons in Ponta do Ouro (Mozambique), op enkele minuten van ongerepte stranden en het Maputo Nationaal Park. De routebeschrijving staat in uw bevestiging.",
+          ctaPrimary:"Terug naar de homepage",
+          ctaSecondary:"Lees ons verhaal",
+          redirectMsg:"U wordt doorgestuurd over", seconds:"seconden", stay:"Op deze pagina blijven",
+          homePath:"/", storyPath:"/story.html"},
+      pt:{titleTag:"Reserva confirmada – DEVOCEAN Lodge",
+          desc:"A sua reserva na DEVOCEAN Lodge foi confirmada. Estamos ansiosos por recebê-lo!",
+          h1:"Reserva confirmada!",
+          lead:"Obrigado por escolher a DEVOCEAN Lodge. A sua reserva foi confirmada com sucesso.",
+          sub:"Receberá em breve um e-mail de confirmação com todos os detalhes da estadia.",
+          emailH:"📧 Verifique o seu e-mail",
+          emailP:"Enviámos um e-mail de confirmação com os detalhes da reserva, instruções de check-in e informações importantes.",
+          helpH:"💬 Precisa de ajuda?",
+          emailLabel:"E-mail",
+          directionsH:"📍 Como chegar à lodge",
+          directionsP:"Estamos em Ponta do Ouro (Moçambique), a minutos das praias e do Parque Nacional de Maputo. As instruções detalhadas estão no seu e-mail.",
+          ctaPrimary:"Voltar à página inicial",
+          ctaSecondary:"A nossa história",
+          redirectMsg:"Será redirecionado em", seconds:"segundos", stay:"Ficar nesta página",
+          homePath:"/", storyPath:"/story.html"},
+      ru:{titleTag:"Бронирование подтверждено – DEVOCEAN Lodge",
+          desc:"Ваше бронирование в DEVOCEAN Lodge подтверждено. Будем рады вас приветствовать!",
+          h1:"Бронирование подтверждено!",
+          lead:"Спасибо, что выбрали DEVOCEAN Lodge. Ваша бронь успешно подтверждена.",
+          sub:"Скоро вы получите письмо с подтверждением и всеми подробностями вашего пребывания.",
+          emailH:"📧 Проверьте почту",
+          emailP:"На ваш адрес отправлено письмо с деталями бронирования, инструкциями по заселению и важной информацией.",
+          helpH:"💬 Нужна помощь?",
+          emailLabel:"Email",
+          directionsH:"📍 Как добраться до лоджа",
+          directionsP:"Мы находимся в Понта-ду-Ору (Мозамбик), в нескольких минутах от пляжей и Национального парка Мапуту. Подробная схема — в письме.",
+          ctaPrimary:"На главную",
+          ctaSecondary:"О нашей истории",
+          redirectMsg:"Вы будете перенаправлены через", seconds:"сек.", stay:"Остаться на странице",
+          homePath:"/", storyPath:"/story.html"},
+      zh:{titleTag:"预订已确认 – DEVOCEAN Lodge",
+          desc:"您在 DEVOCEAN Lodge 的预订已确认。期待您的到来！",
+          h1:"预订已确认！",
+          lead:"感谢您选择 DEVOCEAN Lodge。您的预订已成功确认。",
+          sub:"我们稍后会向您发送确认邮件，内含入住须知和行程详情。",
+          emailH:"📧 请查收邮箱",
+          emailP:"我们已向您的邮箱发送确认邮件，包含预订详情、入住说明及重要信息。",
+          helpH:"💬 需要帮助？",
+          emailLabel:"邮箱",
+          directionsH:"📍 如何到达山庄",
+          directionsP:"我们位于莫桑比克蓬塔杜奥鲁，距海滩和马普托国家公园仅数分钟。详细路线见确认邮件。",
+          ctaPrimary:"返回首页",
+          ctaSecondary:"了解我们的故事",
+          redirectMsg:"将在", seconds:"秒后跳转", stay:"留在本页",
+          homePath:"/", storyPath:"/story.html"},
+      sv:{titleTag:"Bokningen bekräftad – DEVOCEAN Lodge",
+          desc:"Din bokning hos DEVOCEAN Lodge är bekräftad. Vi ser fram emot att välkomna dig!",
+          h1:"Bokningen är bekräftad!",
+          lead:"Tack för att du valde DEVOCEAN Lodge. Din reservation har bekräftats.",
+          sub:"Du får strax ett bekräftelsemejl med alla detaljer för din vistelse.",
+          emailH:"📧 Kontrollera din e-post",
+          emailP:"Vi har skickat ett mejl med bokningsdetaljer, incheckningsinfo och viktig information.",
+          helpH:"💬 Behöver du hjälp?",
+          emailLabel:"E-post",
+          directionsH:"📍 Vägbeskrivning till lodgen",
+          directionsP:"Vi finns i Ponta do Ouro (Moçambique), bara minuter från stränder och Maputo nationalpark. Fullständig vägbeskrivning finns i ditt mejl.",
+          ctaPrimary:"Till startsidan",
+          ctaSecondary:"Läs vår berättelse",
+          redirectMsg:"Du skickas vidare om", seconds:"sekunder", stay:"Stanna på sidan",
+          homePath:"/", storyPath:"/story.html"},
+      ja:{titleTag:"ご予約が確定しました – DEVOCEAN Lodge",
+          desc:"DEVOCEAN Lodge のご予約が確定しました。皆さまのお越しをお待ちしております。",
+          h1:"ご予約が確定しました！",
+          lead:"DEVOCEAN Lodge をお選びいただきありがとうございます。ご予約は正常に確定しました。",
+          sub:"ご宿泊の詳細を記載した確認メールをまもなくお送りします。",
+          emailH:"📧 メールをご確認ください",
+          emailP:"予約詳細・チェックイン手順・重要事項を記載した確認メールを送信しました。",
+          helpH:"💬 サポートが必要ですか？",
+          emailLabel:"メール",
+          directionsH:"📍 ロッジへの行き方",
+          directionsP:"当ロッジはモザンビークのポンタ・ド・オウロにあり、ビーチやマプト国立公園から数分です。詳しい案内は確認メールをご覧ください。",
+          ctaPrimary:"ホームに戻る",
+          ctaSecondary:"私たちのストーリー",
+          redirectMsg:"あと", seconds:"秒で移動します", stay:"このページにとどまる",
+          homePath:"/", storyPath:"/story.html"}
+    };
+
+    /* === Apply language & fill UI === */
+    (function(){
+      const siteLang = detectSiteLanguage();
+      const code = mapLang(siteLang);
+      document.documentElement.setAttribute('lang', code);
+      const TT = TR[code] || TR.en;
+
+      // SEO
+      document.title = TT.titleTag;
+      const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute('content', TT.desc);
+
+      // Fill texts (robust even if scripts are deferred)
+      function fill(){
+        const must = ["t-title","t-lead","t-sub","t-email-h","t-email-p","t-help-h","t-email-label","t-directions-h","t-directions-p","ctaPrimary","ctaSecondary","t-redirect-msg","t-seconds","cancelRedirect"];
+        if (must.some(id => !document.getElementById(id))) return false;
+
+        document.getElementById("t-title").textContent = TT.h1;
+        document.getElementById("t-lead").textContent = TT.lead;
+        document.getElementById("t-sub").textContent = TT.sub;
+        document.getElementById("t-email-h").textContent = TT.emailH;
+        document.getElementById("t-email-p").textContent = TT.emailP;
+        document.getElementById("t-help-h").textContent = TT.helpH;
+        document.getElementById("t-email-label").textContent = TT.emailLabel;
+        document.getElementById("t-directions-h").textContent = TT.directionsH;
+        document.getElementById("t-directions-p").textContent = TT.directionsP;
+
+        const c1 = document.getElementById("ctaPrimary");
+        const c2 = document.getElementById("ctaSecondary");
+        c1.textContent = TT.ctaPrimary; c2.textContent = TT.ctaSecondary;
+        c1.href = "https://devoceanlodge.com" + TT.homePath;
+        c2.href = "https://devoceanlodge.com" + TT.storyPath;
+
+        document.getElementById("t-redirect-msg").textContent = TT.redirectMsg;
+        document.getElementById("t-seconds").textContent = TT.seconds;
+        document.getElementById("cancelRedirect").textContent = TT.stay;
+
+        return true;
+      }
+      if (!fill()){
+        const iv = setInterval(()=>{ if(fill()) clearInterval(iv); }, 50);
+        document.addEventListener('DOMContentLoaded', ()=>fill());
+      }
+
+      // Legal links carry language
+      window.setLegalLink = function(page){
+        const url = new URL(`https://devoceanlodge.com/legal/${page}.html`, location.origin);
+        url.searchParams.set('lang', code);
+        location.href = url.toString();
+        return false;
+      };
+
+      // Auto-redirect (preserves language)
+      let secs = 6, timerId = null, canceled = false;
+      const secondsEl = document.getElementById('seconds');
+      function tick(){
+        if (canceled) return;
+        secondsEl.textContent = String(secs);
+        if (secs <= 0){
+          const dest = new URL("https://devoceanlodge.com/", location.origin);
+          dest.searchParams.set('lang', code);
+          location.href = dest.toString();
+          return;
+        }
+        secs -= 1;
+        timerId = setTimeout(tick, 1000);
+      }
+      timerId = setTimeout(tick, 1000);
+      document.getElementById('cancelRedirect').addEventListener('click', function(e){
+        e.preventDefault();
+        canceled = true;
+        if (timerId) clearTimeout(timerId);
+        document.querySelector('.countdown').innerHTML = `<span class="muted">Redirection canceled.</span>`;
+      });
+    })();
+
   </script>
 </body>
 </html>
