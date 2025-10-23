@@ -6,11 +6,25 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 ## User Preferences
 
 **Build and Deployment:**
-- **⚠️ CRITICAL:** NEVER EVER build (`npm run build`) or deploy to Cloudflare without explicit user confirmation
-- **⚠️ CRITICAL:** After making ANY changes, ALWAYS STOP and wait for user to explicitly say "build and deploy" or similar confirmation
-- **⚠️ CRITICAL:** Do NOT assume deployment is wanted just because changes are complete
-- **⚠️ CRITICAL:** The user will ALWAYS explicitly instruct when to build and deploy - never do it automatically
-- **⚠️ CRITICAL:** This rule applies even if the change seems small or trivial - ALWAYS wait for explicit confirmation
+- **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
+- **🚫 NEVER EVER** run `npm run build` unless user explicitly requests it
+- **🚫 NEVER EVER** run `npx wrangler pages deploy` unless user explicitly requests it
+- **🛑 STOP IMMEDIATELY** after making code changes - do NOT build, do NOT deploy, do NOT test
+- **🛑 WAIT FOR USER** to review changes and explicitly say "build and deploy" before taking ANY deployment action
+- **❌ DO NOT BUILD/DEPLOY IF:**
+  - User asks to "check" something - just make the change and STOP
+  - User asks to "fix" something - just make the fix and STOP
+  - User asks to "update" something - just update it and STOP
+  - Changes seem "small" or "trivial" - STILL STOP and WAIT
+  - You just deployed and now made another change - STOP and WAIT again
+  - User asks "can you do X?" - do X, then STOP and WAIT
+- **✅ ONLY BUILD/DEPLOY IF:** User explicitly says "build and deploy", "deploy it", "push it live", or clear equivalent language
+- **📋 CORRECT WORKFLOW:**
+  1. User asks for a change
+  2. Make the change
+  3. STOP - inform user change is complete
+  4. WAIT for user to say "build and deploy"
+  5. Only then: build and deploy
 
 **Testing:**
 - **IMPORTANT:** Only run browser tests (run_test tool) when explicitly instructed by the user
