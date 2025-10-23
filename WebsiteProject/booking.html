@@ -139,16 +139,16 @@
   <footer>
     <div class="container" style="text-align:center">
       © <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
-      <a href="/legal/privacy.html" style="color:var(--brand);text-decoration:none">Privacy</a> •
-      <a href="/legal/cookies.html" style="color:var(--brand);text-decoration:none">Cookies</a> •
-      <a href="/legal/terms.html" style="color:var(--brand);text-decoration:none">Terms</a> •
-      <a href="/legal/gdpr.html" style="color:var(--brand);text-decoration:none">GDPR</a>
+      <a href="#" onclick="return setLegalLink('privacy')" style="color:var(--brand);text-decoration:none">Privacy</a> •
+      <a href="#" onclick="return setLegalLink('cookies')" style="color:var(--brand);text-decoration:none">Cookies</a> •
+      <a href="#" onclick="return setLegalLink('terms')" style="color:var(--brand);text-decoration:none">Terms</a> •
+      <a href="#" onclick="return setLegalLink('gdpr')" style="color:var(--brand);text-decoration:none">GDPR</a>
     </div>
   </footer>
 
   <!-- Localization + iframe sync (place at end for robustness with async/defers) -->
   <script>
-    // 1) Detect language (?lang=xx or ?locale=xx -> localStorage -> browser)
+    // 1) Detect language and currency (?lang=xx&currency=XXX -> localStorage -> defaults)
     function detectSiteLanguage(){
       const qs = new URLSearchParams(location.search);
       const urlLang = qs.get('lang') || qs.get('locale');
@@ -157,6 +157,19 @@
       if (saved) return saved;
       return navigator.language || 'en-GB';
     }
+    
+    function detectSiteCurrency(){
+      const qs = new URLSearchParams(location.search);
+      const urlCur = qs.get('currency');
+      if (urlCur && urlCur.length === 3){ 
+        localStorage.setItem('selectedCurrency', urlCur.toUpperCase()); 
+        return urlCur.toUpperCase(); 
+      }
+      const saved = localStorage.getItem('selectedCurrency');
+      if (saved) return saved;
+      return 'USD'; // Default currency
+    }
+    
     function toBase(code){ return (code||'en').toLowerCase().split('-')[0]; }
     function mapToB24(code){
       const b = toBase(code);
@@ -269,6 +282,7 @@
     // 3) Apply language, fill UI (retry if DOM not ready), set Beds24 iframe
     (function () {
       const siteLang = detectSiteLanguage();
+      const siteCurrency = detectSiteCurrency();
       const code = mapToB24(siteLang);
       document.documentElement.setAttribute('lang', code);
 
@@ -289,7 +303,12 @@
         document.getElementById("t-nofees").textContent = TT.nofees;
         document.getElementById("t-instant").textContent = TT.instant;
         document.getElementById("t-support").textContent = TT.support;
-        const hb = document.getElementById("homeBtn"); if (hb) hb.textContent = TT.home;
+        const hb = document.getElementById("homeBtn"); 
+        if (hb) {
+          hb.textContent = TT.home;
+          // Update home button to preserve language
+          hb.href = `https://devoceanlodge.com?lang=${code}&currency=${siteCurrency}`;
+        }
         return true;
       }
       if (!fill()){
@@ -301,18 +320,27 @@
       if (frame){
         const url = new URL(frame.src);
         url.searchParams.set('hideheader','true');
-        url.searchParams.set('lang', code);      // pass Beds24 language
+        url.searchParams.set('lang', code);      // pass Beds24 language (ISO 639-1)
+        url.searchParams.set('currency', siteCurrency); // pass currency (3-letter uppercase)
 
-        // carry through any forwarded params (e.g., ?locale=sv&currency=USD)
+        // carry through any other forwarded params (UTM, etc.)
         const pageQS = new URLSearchParams(location.search);
-        pageQS.forEach((v,k)=>{ if(!url.searchParams.has(k)) url.searchParams.set(k,v); });
-
-        // Optional later: enforce USD everywhere
-        // url.searchParams.set('currency','USD');
+        pageQS.forEach((v,k)=>{ 
+          if(k !== 'lang' && k !== 'currency' && !url.searchParams.has(k)) {
+            url.searchParams.set(k,v); 
+          }
+        });
 
         frame.src = url.toString();
       }
     })();
+
+    // Set legal link with language parameter
+    function setLegalLink(page) {
+      const lang = mapToB24(detectSiteLanguage());
+      window.location.href = `/legal/${page}.html?lang=${lang}`;
+      return false;
+    }
 
     // Dynamic height from Beds24
     window.addEventListener('message', function(e){

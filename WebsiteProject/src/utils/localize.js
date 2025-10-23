@@ -53,6 +53,31 @@ export const mapEmbed = (lat, lng, zoom = 13) =>
 export const directionsUrl = (lat, lng) =>
   `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
 
+// Convert Hotelrunner locale codes to ISO 639-1 two-letter codes (lowercase)
+const localeToISO6391 = (locale) => {
+  const mapping = {
+    "en-GB": "en",
+    "en-US": "en",
+    "pt-PT": "pt",
+    "pt-BR": "pt",
+    "nl-NL": "nl",
+    "fr-FR": "fr",
+    "it-IT": "it",
+    "de-DE": "de",
+    "es-ES": "es",
+    "ja-JP": "ja",
+    "zh-CN": "zh",
+    "af-ZA": "af",
+    "sv": "sv",
+    "pl": "pl",
+    "ru": "ru",
+    "zu": "zu",
+    "sw": "sw"
+  };
+  return mapping[locale] || "en";
+};
+
 export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
-  return `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}`;
+  const lang = localeToISO6391(locale);
+  return `/booking.html?lang=${lang}&currency=${currency}`;
 };
