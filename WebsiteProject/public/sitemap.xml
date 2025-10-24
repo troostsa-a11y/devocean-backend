@@ -7,27 +7,73 @@
   </url>
 
   <url>
-    <loc>https://devoceanlodge.com/privacy.html</loc>
+    <loc>https://devoceanlodge.com/story.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/safari.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/comfort.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/cottage.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/chalet.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/booking.html</loc>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/thankyou.html</loc>
+    <priority>0.3</priority>
+    <changefreq>yearly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/legal/privacy.html</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
+
   <url>
-    <loc>https://devoceanlodge.com/cookies.html</loc>
+    <loc>https://devoceanlodge.com/legal/cookies.html</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
+
   <url>
-    <loc>https://devoceanlodge.com/terms.html</loc>
+    <loc>https://devoceanlodge.com/legal/terms.html</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
+
   <url>
-    <loc>https://devoceanlodge.com/GDPR.html</loc>
+    <loc>https://devoceanlodge.com/legal/GDPR.html</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
+
   <url>
-    <loc>https://devoceanlodge.com/CRIC.html</loc>
+    <loc>https://devoceanlodge.com/legal/CRIC.html</loc>
     <priority>0.4</priority>
     <changefreq>yearly</changefreq>
   </url>
