@@ -64,14 +64,14 @@ if (validateEnvironment()) {
     const taxiConfig = getTaxiConfig();
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
     
-    // SMTP config for sending emails (use BOOKING_* secrets to avoid conflict with contact form)
+    // SMTP config for sending emails (uses shared MAIL_* and separate IMAP_* secrets)
     const smtpConfig = {
       host: process.env.MAIL_HOST,
       port: parseInt(process.env.MAIL_PORT),
       secure: process.env.MAIL_SECURE === 'true',
       auth: {
-        user: process.env.BOOKING_MAIL_USERNAME || 'booking@devoceanlodge.com',
-        pass: process.env.BOOKING_MAIL_PASSWORD || process.env.MAIL_PASSWORD,
+        user: process.env.IMAP_USER,
+        pass: process.env.IMAP_PASSWORD,
       },
     };
     
