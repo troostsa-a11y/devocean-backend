@@ -17,7 +17,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
   useEffect(() => {
     if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
       const script = document.createElement('script');
-      script.src = 'https://cdn.trustindex.io/loader.js?57a2f48569ff95903b76b1f759d';
+      script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
       script.defer = true;
       script.async = true;
       trustindexRef.current.appendChild(script);
