@@ -67,10 +67,10 @@ if (validateEnvironment()) {
       },
     };
     
-    // IMAP config for reading emails (uses shared MAIL_HOST and MAIL_PORT)
+    // IMAP config for reading emails (port 993 for IMAP SSL, not MAIL_PORT which is for SMTP)
     const imapConfig = {
       host: process.env.IMAP_HOST || process.env.MAIL_HOST,
-      port: parseInt(process.env.MAIL_PORT),
+      port: parseInt(process.env.IMAP_PORT || '993'),
       user: process.env.IMAP_USER,
       password: process.env.IMAP_PASSWORD,
       tls: process.env.IMAP_TLS === 'ssl' || process.env.IMAP_TLS === 'true',

@@ -77,6 +77,26 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Dual Project Setup:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template placeholder).
 - **Design System:** Inter font family, card-based layouts, image-first design, expandable detail sections, hover states, focus-visible outlines, smooth scroll, sticky header.
 
+## Email Automation System Status (Oct 26, 2025)
+✅ **PRODUCTION READY** - All core functionality working and tested:
+- IMAP connection successful (port 993 for IMAP SSL)
+- Email parsing working (Beds24 notification format)
+- Database storage working (bookings + scheduled_emails tables)
+- Email scheduling working (post-booking, pre-arrival, arrival, post-departure)
+- Test booking processed successfully (Group Ref: 77463390)
+
+**Important Configuration Notes:**
+- **IMAP Port:** Must use port **993** for IMAP SSL (not 465 which is for SMTP)
+- **SMTP Port:** Port 465 for SMTP SSL (sending emails)
+- Server runs on port 3003 separately from main website (port 5000)
+- Cron schedule: 08:00, 14:00, 22:00 UTC daily
+- Admin reports: Daily 14:00 UTC, Weekly Monday 06:00 UTC
+
+**Startup Command:**
+```bash
+cd /home/runner/workspace && PORT=3003 npx tsx server.js
+```
+
 ## External Dependencies
 
 ### Third-Party Services
