@@ -48,7 +48,7 @@ export class EmailAutomationService {
     this.db = new DatabaseService(databaseUrl);
     this.emailScheduler = new EmailSchedulerService(this.db);
     this.emailSender = new EmailSenderService(resendApiKey, this.db);
-    this.cancellationHandler = new CancellationHandler(this.db);
+    this.cancellationHandler = new CancellationHandler(this.db, resendApiKey);
     
     // Initialize transfer notification service if taxi config provided
     if (taxiConfig) {

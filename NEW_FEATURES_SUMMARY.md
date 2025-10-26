@@ -2,22 +2,28 @@
 
 ## ✅ All Requested Features Implemented
 
-### 1. Four Standalone HTML Email Templates
+### 1. Five Standalone HTML Email Templates (Multi-Language)
 
 **Location**: `/email_templates/`
 
-Created professional, responsive HTML templates:
-- `post_booking_en.html` - Booking confirmation
-- `pre_arrival_en.html` - Pre-arrival information & packing tips
-- `arrival_en.html` - Final arrival details & reminders
-- `post_departure_en.html` - Thank you & review request
+Created professional, responsive HTML templates in **English (EN) and Portuguese (PT)**:
+- `post_booking_*.html` - Booking confirmation
+- `pre_arrival_*.html` - Pre-arrival information & packing tips  
+- `arrival_*.html` - Final arrival details & reminders
+- `post_departure_*.html` - Thank you & review request
+- `cancellation_*.html` - Cancellation confirmation
+- `transfer_notification_en.html` - Taxi company notification (EN only)
+
+**Total: 11 templates** (5 guest templates × 2 languages + 1 transfer template)
 
 **Features**:
 - Email client compatible (Gmail, Outlook, Apple Mail)
 - Responsive design for mobile and desktop
 - Ocean Blue branding matching DEVOCEAN Lodge
 - Uses `{{placeholders}}` for dynamic content
-- Ready for multi-language expansion (currently EN, easily add PT, NL, FR, etc.)
+- **Multi-language support**: EN and PT fully supported
+- **Easily extendable** to all 16 website languages (see LANGUAGE_SUPPORT.md)
+- **Automatic language detection** based on guest's booking language
 
 ### 2. Cancellation Handling - Stop Sending When Guests Cancel
 
@@ -231,10 +237,13 @@ Once credentials are configured:
 ### New Files
 - `server/services/cancellation-handler.ts`
 - `server/services/transfer-notification.ts`
-- `email_templates/post_booking_en.html`
-- `email_templates/pre_arrival_en.html`
-- `email_templates/arrival_en.html`
-- `email_templates/post_departure_en.html`
+- `email_templates/post_booking_en.html` + `post_booking_pt.html`
+- `email_templates/pre_arrival_en.html` + `pre_arrival_pt.html`
+- `email_templates/arrival_en.html` + `arrival_pt.html`
+- `email_templates/post_departure_en.html` + `post_departure_pt.html`
+- `email_templates/cancellation_en.html` + `cancellation_pt.html`
+- `email_templates/transfer_notification_en.html`
+- `LANGUAGE_SUPPORT.md` - Multi-language template guide
 - `NEW_FEATURES_SUMMARY.md` (this file)
 
 ### Modified Files
@@ -247,13 +256,32 @@ Once credentials are configured:
 - `EMAIL_AUTOMATION_SETUP.md` - Comprehensive documentation
 - `replit.md` - System architecture documentation
 
+## Multi-Language Support
+
+**Currently Supported Languages:**
+- ✅ **English (EN)** - All 6 templates
+- ✅ **Portuguese (PT)** - All 5 guest templates
+
+**Supported via Language Mapping (fallback to EN):**
+- All 16 website languages (en-GB, en-US, pt-PT, pt-BR, nl-NL, fr-FR, it-IT, de-DE, es-ES, sv, pl, af-ZA, zu, sw, ja-JP, zh-CN, ru)
+
+**How to Add More Languages:**
+See `LANGUAGE_SUPPORT.md` for complete guide on adding templates in Dutch, French, German, Spanish, Afrikaans, etc.
+
+**Language Selection:**
+- System automatically selects template based on guest's language preference from booking
+- Falls back to English if guest's language template doesn't exist yet
+- Easy to extend to all 16 website languages by copying and translating templates
+
 ## Summary
 
-All 4 requested features are fully implemented and integrated:
+All 6 requested features are fully implemented and integrated:
 
-✅ **4 HTML Templates** - Professional, responsive, multi-language ready
-✅ **Cancellation Handling** - Automatic email cancellation
+✅ **5 Guest Email Templates** - Professional, responsive, multi-language (EN/PT)
+✅ **1 Transfer Template** - Professional taxi company notification  
+✅ **Cancellation Handling** - Auto-stops emails + sends cancellation confirmation to guest
 ✅ **Extras Database Fields** - Flexible JSONB structure for all extras
 ✅ **Transfer Notifications** - Automated taxi company emails
+✅ **Multi-Language System** - EN & PT ready, extensible to all 16 website languages
 
 The system is production-ready and just needs credentials to start running!

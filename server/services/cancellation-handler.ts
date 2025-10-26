@@ -1,5 +1,8 @@
 import { DatabaseService } from './database';
 import { EmailParser } from './email-parser';
+import { Resend } from 'resend';
+import fs from 'fs';
+import path from 'path';
 
 /**
  * Cancellation Handler Service
@@ -8,9 +11,15 @@ import { EmailParser } from './email-parser';
 
 export class CancellationHandler {
   private db: DatabaseService;
+  private resend?: Resend;
+  private fromEmail: string;
 
-  constructor(db: DatabaseService) {
+  constructor(db: DatabaseService, resendApiKey?: string, fromEmail: string = 'booking@devoceanlodge.com') {
     this.db = db;
+    if (resendApiKey) {
+      this.resend = new Resend(resendApiKey);
+    }
+    this.fromEmail = fromEmail;
   }
 
   /**
@@ -68,7 +77,97 @@ export class CancellationHandler {
     // Cancel all pending scheduled emails for this booking
     await this.db.cancelScheduledEmailsForBooking(booking.id);
 
+    // Send cancellation confirmation email to guest
+    if (this.resend) {
+      await this.sendCancellationEmail(booking, reason);
+    }
+
     console.log(`Booking ${groupRef} cancelled, ${reason ? `Reason: ${reason}` : 'No reason provided'}`);
+  }
+
+  /**
+   * Send cancellation confirmation email to guest
+   */
+  private async sendCancellationEmail(booking: any, reason?: string): Promise<void> {
+    try {
+      // Determine language (fallback to English)
+      const language = this.mapLanguageCode(booking.guestLanguage || 'en');
+      
+      // Load template
+      const templatePath = path.join(process.cwd(), 'email_templates', `cancellation_${language}.html`);
+      let template: string;
+      
+      try {
+        template = fs.readFileSync(templatePath, 'utf-8');
+      } catch {
+        // Fallback to English if template doesn't exist
+        const fallbackPath = path.join(process.cwd(), 'email_templates', 'cancellation_en.html');
+        template = fs.readFileSync(fallbackPath, 'utf-8');
+      }
+
+      // Replace placeholders
+      const html = template
+        .replace(/{{guestName}}/g, booking.guestName || 'Guest')
+        .replace(/{{groupRef}}/g, booking.groupRef)
+        .replace(/{{checkInDate}}/g, this.formatDate(booking.checkInDate))
+        .replace(/{{checkOutDate}}/g, this.formatDate(booking.checkOutDate))
+        .replace(/{{cancellationDate}}/g, this.formatDate(new Date()));
+
+      // Send email
+      const result = await this.resend!.emails.send({
+        from: this.fromEmail,
+        to: booking.guestEmail,
+        subject: 'Booking Cancellation Confirmed - DEVOCEAN Lodge',
+        html,
+      });
+
+      if (result.error) {
+        console.error('Failed to send cancellation email:', result.error);
+      } else {
+        console.log(`✅ Cancellation confirmation email sent to ${booking.guestEmail}`);
+      }
+    } catch (error) {
+      console.error('Error sending cancellation email:', error);
+    }
+  }
+
+  /**
+   * Map website language codes to template codes
+   */
+  private mapLanguageCode(lang: string): string {
+    const mapping: { [key: string]: string } = {
+      'en-GB': 'en',
+      'en-US': 'en',
+      'pt-PT': 'pt',
+      'pt-BR': 'pt',
+      'nl-NL': 'en', // Fallback until Dutch template created
+      'fr-FR': 'en', // Fallback until French template created
+      'it-IT': 'en',
+      'de-DE': 'en',
+      'es-ES': 'en',
+      'sv': 'en',
+      'pl': 'en',
+      'af-ZA': 'en',
+      'zu': 'en',
+      'sw': 'en',
+      'ja-JP': 'en',
+      'zh-CN': 'en',
+      'ru': 'en',
+    };
+    return mapping[lang] || 'en';
+  }
+
+  /**
+   * Format date for email display
+   */
+  private formatDate(date: Date | string): string {
+    const d = typeof date === 'string' ? new Date(date) : date;
+    return d.toLocaleDateString('en-GB', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
   }
 
   /**

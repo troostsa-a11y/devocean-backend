@@ -105,7 +105,7 @@ export class TransferNotificationService {
   }
 
   /**
-   * Generate transfer notification email
+   * Generate transfer notification email using HTML template
    */
   private generateTransferEmail(booking: Booking): { html: string; text: string } {
     const transfer = booking.extras!.transfer!;

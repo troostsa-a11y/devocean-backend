@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quase a Chegar! Detalhes Finais - DEVOCEAN Lodge</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 0; background: #f5f5f5; }
+    .email-container { background: white; margin: 20px auto; }
+    .header { background: #0077BE; color: white; padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0; font-size: 28px; }
+    .content { padding: 30px 20px; }
+    .content h2 { color: #0077BE; margin: 0 0 20px 0; font-size: 22px; }
+    .important { background: #FFF3CD; padding: 20px; margin: 20px 0; border-left: 4px solid #FFC107; border-radius: 4px; }
+    .important h3 { margin: 0 0 15px 0; color: #8B6914; font-size: 18px; }
+    .important p { margin: 8px 0; }
+    .footer { background: #f9f9f9; padding: 20px; text-align: center; font-size: 13px; color: #666; border-top: 1px solid #e0e0e0; }
+    .footer p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>🎉 Quase na Hora do Paraíso!</h1>
+    </div>
+    
+    <div class="content">
+      <h2>Olá {{guestName}},</h2>
+      
+      <p>A sua aventura DEVOCEAN começa em apenas 2 dias! Aqui estão os seus detalhes finais:</p>
+      
+      <div class="important">
+        <h3>⏰ Detalhes de Check-in</h3>
+        <p><strong>Data:</strong> {{checkInDate}}</p>
+        <p><strong>Hora:</strong> A partir das 14:00</p>
+        <p><strong>Referência da Reserva:</strong> {{groupRef}}</p>
+      </div>
+      
+      <div class="important">
+        <h3>📱 Informações de Contacto</h3>
+        <p><strong>Email:</strong> info@devoceanlodge.com</p>
+        <p><strong>Contacto de Emergência:</strong> Disponível à chegada</p>
+      </div>
+      
+      <p><strong>Dica de Viagem:</strong> Por favor, reserve tempo extra para a passagem de fronteira se viajar da África do Sul.</p>
+      
+      <p>Viagem segura, e vemo-nos muito em breve!</p>
+      
+      <p>Com os melhores votos,<br>
+      <strong>A Equipa DEVOCEAN Lodge</strong></p>
+    </div>
+    
+    <div class="footer">
+      <p><strong>DEVOCEAN Lodge</strong> | Ponta do Ouro, Moçambique</p>
+      <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cancelamento Confirmado - DEVOCEAN Lodge</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 0; background: #f5f5f5; }
+    .email-container { background: white; margin: 20px auto; }
+    .header { background: #6B7280; color: white; padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0 0 10px 0; font-size: 28px; }
+    .header p { margin: 0; font-size: 16px; opacity: 0.9; }
+    .content { padding: 30px 20px; }
+    .content h2 { color: #6B7280; margin: 0 0 20px 0; font-size: 22px; }
+    .cancellation-details { background: #f9f9f9; padding: 20px; margin: 20px 0; border-left: 4px solid #6B7280; }
+    .cancellation-details h3 { margin: 0 0 15px 0; color: #6B7280; font-size: 18px; }
+    .cancellation-details p { margin: 8px 0; }
+    .info-box { background: #F3F4F6; padding: 20px; margin: 20px 0; border-radius: 4px; }
+    .info-box p { margin: 8px 0; }
+    .button-container { text-align: center; margin: 30px 0; }
+    .button { display: inline-block; padding: 14px 30px; background: #0077BE; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 16px; }
+    .button:hover { background: #005a8c; }
+    .footer { background: #f9f9f9; padding: 20px; text-align: center; font-size: 13px; color: #666; border-top: 1px solid #e0e0e0; }
+    .footer p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>Cancelamento Confirmado</h1>
+      <p>DEVOCEAN Lodge</p>
+    </div>
+    
+    <div class="content">
+      <h2>Caro(a) {{guestName}},</h2>
+      
+      <p>Confirmamos que a sua reserva foi cancelada conforme solicitado.</p>
+      
+      <div class="cancellation-details">
+        <h3>Detalhes da Reserva Cancelada</h3>
+        <p><strong>Referência da Reserva:</strong> {{groupRef}}</p>
+        <p><strong>Check-in Original:</strong> {{checkInDate}}</p>
+        <p><strong>Check-out Original:</strong> {{checkOutDate}}</p>
+        <p><strong>Data de Cancelamento:</strong> {{cancellationDate}}</p>
+      </div>
+      
+      <div class="info-box">
+        <p><strong>Próximos passos:</strong></p>
+        <p>• A sua reserva está agora cancelada no nosso sistema</p>
+        <p>• Não receberá mais emails relacionados com esta reserva</p>
+        <p>• Eventuais reembolsos serão processados de acordo com a nossa política de cancelamento</p>
+        <p>• Por favor, aguarde 5-10 dias úteis para que os reembolsos apareçam na sua conta</p>
+      </div>
+      
+      <p>Lamentamos que não nos possa visitar nesta ocasião. Esperamos recebê-lo no DEVOCEAN Lodge no futuro!</p>
+      
+      <div class="button-container">
+        <a href="https://www.devoceanlodge.com" class="button">Visite o Nosso Website</a>
+      </div>
+      
+      <p>Se tiver alguma questão sobre este cancelamento, não hesite em contactar-nos.</p>
+      
+      <p>Com os melhores cumprimentos,<br>
+      <strong>A Equipa DEVOCEAN Lodge</strong></p>
+    </div>
+    
+    <div class="footer">
+      <p><strong>DEVOCEAN Lodge</strong> | Ponta do Ouro, Moçambique</p>
+      <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+    </div>
+  </div>
+</body>
+</html>
