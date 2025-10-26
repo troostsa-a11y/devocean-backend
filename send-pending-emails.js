@@ -10,8 +10,8 @@ try {
   
   const smtpConfig = {
     host: process.env.MAIL_HOST,
-    port: parseInt(process.env.MAIL_PORT),
-    secure: process.env.MAIL_SECURE === 'true',
+    port: 995,  // SMTP port as specified
+    secure: true,
     auth: {
       user: process.env.IMAP_USER,
       pass: process.env.IMAP_PASSWORD,
