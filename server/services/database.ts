@@ -1,8 +1,8 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { bookings, scheduledEmails, emailLogs, emailCheckLogs } from '../../shared/schema';
+import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations } from '../../shared/schema';
 import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail } from '../../shared/schema';
-import { eq, and, lte, gte } from 'drizzle-orm';
+import { eq, and, lte, gte, isNull } from 'drizzle-orm';
 
 /**
  * Database Service
@@ -31,7 +31,7 @@ export class DatabaseService {
   async createBooking(booking: InsertBooking): Promise<Booking> {
     const [created] = await this.db
       .insert(bookings)
-      .values(booking)
+      .values(booking as any) // Type assertion needed due to Drizzle type strictness with optional fields
       .returning();
     return created;
   }
@@ -203,5 +203,91 @@ export class DatabaseService {
           lte(bookings.checkInDate, futureDate)
         )
       );
+  }
+
+  /**
+   * Cancel a booking
+   */
+  async cancelBooking(bookingId: number, reason?: string): Promise<void> {
+    await this.db
+      .update(bookings)
+      .set({
+        status: 'cancelled',
+        cancelledAt: new Date(),
+        cancellationReason: reason,
+        updatedAt: new Date(),
+      })
+      .where(eq(bookings.id, bookingId));
+  }
+
+  /**
+   * Cancel all pending scheduled emails for a booking
+   */
+  async cancelScheduledEmailsForBooking(bookingId: number): Promise<void> {
+    await this.db
+      .update(scheduledEmails)
+      .set({
+        status: 'cancelled',
+        updatedAt: new Date(),
+      })
+      .where(
+        and(
+          eq(scheduledEmails.bookingId, bookingId),
+          eq(scheduledEmails.status, 'pending')
+        )
+      );
+  }
+
+  /**
+   * Mark transfer notification as sent
+   */
+  async markTransferNotificationSent(bookingId: number): Promise<void> {
+    await this.db
+      .update(bookings)
+      .set({
+        transferNotificationSent: true,
+        updatedAt: new Date(),
+      })
+      .where(eq(bookings.id, bookingId));
+  }
+
+  /**
+   * Store pending cancellation (for cancellations that arrive before booking)
+   */
+  async storePendingCancellation(groupRef: string, reason?: string, rawData?: any): Promise<void> {
+    await this.db.insert(pendingCancellations).values({
+      groupRef,
+      cancellationReason: reason,
+      rawEmailData: rawData,
+    });
+  }
+
+  /**
+   * Check if there's a pending cancellation for a booking
+   */
+  async getPendingCancellation(groupRef: string): Promise<any> {
+    const [pending] = await this.db
+      .select()
+      .from(pendingCancellations)
+      .where(
+        and(
+          eq(pendingCancellations.groupRef, groupRef),
+          isNull(pendingCancellations.processedAt)
+        )
+      )
+      .limit(1);
+    return pending;
+  }
+
+  /**
+   * Mark pending cancellation as processed
+   */
+  async markPendingCancellationProcessed(id: number): Promise<void> {
+    await this.db
+      .update(pendingCancellations)
+      .set({
+        processedAt: new Date(),
+      })
+      .where(eq(pendingCancellations.id, id));
   }
 }

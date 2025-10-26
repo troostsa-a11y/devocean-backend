@@ -36,6 +36,44 @@ export const bookings = pgTable("bookings", {
   currency: text("currency").notNull().default('USD'),
   bookingType: text("booking_type"), // e.g., "Deposit"
   
+  // Booking status
+  status: text("status").notNull().default('active'), // 'active', 'cancelled', 'completed'
+  cancelledAt: timestamp("cancelled_at", { mode: 'date' }),
+  cancellationReason: text("cancellation_reason"),
+  
+  // Extras (extra beds, transfers, special requests)
+  extras: jsonb("extras").$type<{
+    extraBeds?: number;
+    transfer?: {
+      required: boolean;
+      type: 'arrival' | 'departure' | 'both';
+      arrivalDetails?: {
+        pickupLocation: string;
+        pickupTime: string;
+        flightNumber?: string;
+        passengers: number;
+      };
+      departureDetails?: {
+        dropoffLocation: string;
+        pickupTime: string;
+        flightNumber?: string;
+        passengers: number;
+      };
+      status?: 'pending' | 'confirmed' | 'cancelled';
+      confirmationNumber?: string;
+    };
+    specialRequests?: string;
+    dietaryRequirements?: string;
+    otherExtras?: Array<{
+      name: string;
+      quantity: number;
+      price?: number;
+    }>;
+  }>(),
+  
+  // Transfer notification sent
+  transferNotificationSent: boolean("transfer_notification_sent").default(false),
+  
   // Source tracking
   source: text("source").default('iframe'), // iframe, direct, etc.
   
@@ -73,7 +111,7 @@ export const scheduledEmails = pgTable("scheduled_emails", {
   sentAt: timestamp("sent_at", { mode: 'date' }),
   
   // Status
-  status: text("status").notNull().default('pending'), // 'pending', 'sent', 'failed'
+  status: text("status").notNull().default('pending'), // 'pending', 'sent', 'failed', 'cancelled'
   errorMessage: text("error_message"),
   retryCount: integer("retry_count").default(0),
   
@@ -131,6 +169,24 @@ export const emailCheckLogs = pgTable("email_check_logs", {
   durationMs: integer("duration_ms"),
 });
 
+/**
+ * Pending cancellations table - stores cancellations that arrived before booking
+ */
+export const pendingCancellations = pgTable("pending_cancellations", {
+  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  
+  // Cancellation details
+  groupRef: text("group_ref").notNull(),
+  cancellationReason: text("cancellation_reason"),
+  
+  // Tracking
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  processedAt: timestamp("processed_at"),
+  
+  // Email content for debugging
+  rawEmailData: jsonb("raw_email_data"),
+});
+
 // Manual Zod schemas for validation
 const roomSchema = z.object({
   bookingRef: z.string(),
@@ -138,6 +194,32 @@ const roomSchema = z.object({
   people: z.number().int().positive(),
   price: z.number().positive(),
   currency: z.string().length(3),
+});
+
+const transferDetailsSchema = z.object({
+  pickupLocation: z.string(),
+  pickupTime: z.string(),
+  flightNumber: z.string().optional(),
+  passengers: z.number().int().positive(),
+});
+
+const extrasSchema = z.object({
+  extraBeds: z.number().int().min(0).optional(),
+  transfer: z.object({
+    required: z.boolean(),
+    type: z.enum(['arrival', 'departure', 'both']),
+    arrivalDetails: transferDetailsSchema.optional(),
+    departureDetails: transferDetailsSchema.optional(),
+    status: z.enum(['pending', 'confirmed', 'cancelled']).optional(),
+    confirmationNumber: z.string().optional(),
+  }).optional(),
+  specialRequests: z.string().optional(),
+  dietaryRequirements: z.string().optional(),
+  otherExtras: z.array(z.object({
+    name: z.string(),
+    quantity: z.number().int().positive(),
+    price: z.number().optional(),
+  })).optional(),
 });
 
 export const insertBookingSchema = z.object({
@@ -154,6 +236,10 @@ export const insertBookingSchema = z.object({
   totalPrice: z.string().regex(/^\d+(\.\d{1,2})?$/),
   currency: z.string().default('USD'),
   bookingType: z.string().optional(),
+  status: z.enum(['active', 'cancelled', 'completed']).default('active'),
+  cancelledAt: z.date().optional(),
+  cancellationReason: z.string().optional(),
+  extras: extrasSchema.optional(),
   source: z.string().default('iframe'),
   rawEmailData: z.any().optional(),
 });
@@ -165,7 +251,7 @@ export const insertScheduledEmailSchema = z.object({
   recipientName: z.string(),
   language: z.string().default('EN'),
   scheduledFor: z.date(),
-  status: z.enum(['pending', 'sent', 'failed']).default('pending'),
+  status: z.enum(['pending', 'sent', 'failed', 'cancelled']).default('pending'),
   templateData: z.any().optional(),
 });
 

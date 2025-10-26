@@ -3,6 +3,8 @@ import { DatabaseService } from './database';
 import { EmailParser } from './email-parser';
 import { EmailSchedulerService } from './email-scheduler';
 import { EmailSenderService } from './email-sender';
+import { CancellationHandler } from './cancellation-handler';
+import { TransferNotificationService } from './transfer-notification';
 import { insertBookingSchema } from '../../shared/schema';
 
 /**
@@ -22,21 +24,41 @@ interface EmailConfig {
   tls: boolean;
 }
 
+interface TaxiCompanyConfig {
+  email: string;
+  whatsapp?: string;
+  name: string;
+}
+
 export class EmailAutomationService {
   private db: DatabaseService;
   private emailScheduler: EmailSchedulerService;
   private emailSender: EmailSenderService;
+  private cancellationHandler: CancellationHandler;
+  private transferNotification?: TransferNotificationService;
   private imapConfig: EmailConfig;
   private cronJob?: cron.ScheduledTask;
 
   constructor(
     databaseUrl: string,
     resendApiKey: string,
-    imapConfig: EmailConfig
+    imapConfig: EmailConfig,
+    taxiConfig?: TaxiCompanyConfig
   ) {
     this.db = new DatabaseService(databaseUrl);
     this.emailScheduler = new EmailSchedulerService(this.db);
     this.emailSender = new EmailSenderService(resendApiKey, this.db);
+    this.cancellationHandler = new CancellationHandler(this.db);
+    
+    // Initialize transfer notification service if taxi config provided
+    if (taxiConfig) {
+      this.transferNotification = new TransferNotificationService(
+        resendApiKey,
+        this.db,
+        taxiConfig
+      );
+    }
+    
     this.imapConfig = imapConfig;
   }
 
@@ -106,7 +128,22 @@ export class EmailAutomationService {
             }
           }
 
-          // Parse the email
+          // Check if this is a cancellation email first
+          const rawData = {
+            subject: 'Cancellation notification',
+            from: 'beds24',
+            date: new Date(),
+          };
+          const isCancellation = await this.cancellationHandler.processCancellationEmail(emailContent, rawData);
+
+          if (isCancellation) {
+            console.log('Processed cancellation email');
+            emailsProcessed++;
+            await EmailParser.markEmailAsRead(this.imapConfig, message.attributes.uid);
+            continue;
+          }
+
+          // Parse the email as a booking notification
           const parsedBooking = await EmailParser.parseBookingEmail(emailContent);
 
           if (parsedBooking) {
@@ -123,10 +160,34 @@ export class EmailAutomationService {
               const booking = await this.db.createBooking(validatedBooking);
               console.log(`Created booking ${booking.groupRef} (ID: ${booking.id})`);
 
-              // Schedule automated emails
-              await this.emailScheduler.scheduleEmailsForBooking(booking);
-              console.log(`Scheduled emails for booking ${booking.groupRef}`);
+              // Check if there's a pending cancellation for this booking
+              const pendingCancellation = await this.db.getPendingCancellation(booking.groupRef);
+              
+              if (pendingCancellation) {
+                // Cancellation arrived before booking - cancel immediately
+                console.log(`⚠️ Pending cancellation found for booking ${booking.groupRef}`);
+                await this.cancellationHandler.cancelBooking(
+                  booking.groupRef,
+                  pendingCancellation.cancellationReason
+                );
+                await this.db.markPendingCancellationProcessed(pendingCancellation.id);
+                console.log(`✅ Applied pending cancellation to booking ${booking.groupRef}`);
+                // Don't schedule emails for cancelled bookings
+              } else {
+                // Schedule automated emails normally
+                await this.emailScheduler.scheduleEmailsForBooking(booking);
+                console.log(`Scheduled emails for booking ${booking.groupRef}`);
 
+                // Send transfer notification if required
+                if (this.transferNotification && booking.extras?.transfer?.required) {
+                  const transferSent = await this.transferNotification.notifyTaxiCompany(booking);
+                  if (transferSent) {
+                    console.log(`Transfer notification sent for booking ${booking.groupRef}`);
+                  }
+                }
+              }
+
+              
               emailsProcessed++;
             }
 

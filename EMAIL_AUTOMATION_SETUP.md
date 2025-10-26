@@ -2,12 +2,20 @@
 
 ## Overview
 
-Automated email system that processes Beds24 booking notifications and sends templated emails at 4 touchpoints:
+Comprehensive automated email system that processes Beds24 booking notifications and sends templated emails at 4 touchpoints, with advanced features:
 
+### Email Touchpoints
 1. **Post-booking** - Within 2 hours after booking (confirmation email)
 2. **Pre-arrival** - 7 days before check-in at 09:00 (preparation info)
 3. **Arrival** - 2 days before check-in at 09:00 (final details reminder)
 4. **Post-departure** - 1 day after check-out at 10:00 (thank you & review request)
+
+### Advanced Features
+✅ **Cancellation Handling** - Automatically stops scheduled emails when guests cancel
+✅ **Transfer Notifications** - Sends booking requests to taxi company when transfers are required
+✅ **Extras Management** - Tracks extra beds, transfers, special requests, dietary requirements
+✅ **Multi-language Templates** - Standalone HTML templates (EN, PT, easily extendable)
+✅ **Booking Status Tracking** - Active, cancelled, completed statuses
 
 ## Architecture
 
@@ -105,7 +113,14 @@ IMAP_TLS=true
 
 # Sender Email
 FROM_EMAIL=booking@devoceanlodge.com
+
+# Taxi Company for Transfer Notifications (Optional)
+TAXI_EMAIL=taxi@example.com
+TAXI_WHATSAPP=+258123456789
+TAXI_NAME=Ponta Transfer Service
 ```
+
+**Note**: Taxi company configuration is optional. If not provided, the system will still work but won't send transfer notifications.
 
 ### 5. Running the Email Automation Server
 
@@ -144,12 +159,20 @@ curl http://localhost:3000/health
 ## Database Schema
 
 ### bookings
-- Stores all booking information from Beds24 notifications
-- Fields: group_ref, booking_refs, guest details, dates, rooms, prices, email status flags
+- **Core Fields**: group_ref, booking_refs, guest details, dates, rooms, prices
+- **Status Fields**: status (active/cancelled/completed), cancelled_at, cancellation_reason
+- **Email Tracking**: post_booking_email_sent, pre_arrival_email_sent, arrival_email_sent, post_departure_email_sent
+- **Extras (JSONB)**:
+  - `extraBeds`: Number of extra beds required
+  - `transfer`: Complete transfer booking details (arrival/departure, pickup locations, times, flight numbers)
+  - `specialRequests`: Guest special requests
+  - `dietaryRequirements`: Dietary restrictions
+  - `otherExtras`: Array of additional items (name, quantity, price)
+- **Transfer Tracking**: transfer_notification_sent flag
 
 ### scheduled_emails
 - Stores emails that need to be sent
-- Fields: booking_id, email_type, recipient, scheduled_for, status
+- Fields: booking_id, email_type, recipient, scheduled_for, status (pending/sent/failed/cancelled)
 
 ### email_logs
 - Audit trail of all sent emails
@@ -161,15 +184,26 @@ curl http://localhost:3000/health
 
 ## Email Templates
 
-Templates are available in 2 languages (easily extendable):
-- English (EN)
-- Portuguese (PT)
+### Standalone HTML Files
+Located in `/email_templates/`:
+- `post_booking_en.html` - Booking confirmation
+- `pre_arrival_en.html` - Pre-arrival information
+- `arrival_en.html` - Arrival reminder
+- `post_departure_en.html` - Thank you & review request
 
-Each template includes:
-- Responsive HTML design
-- Ocean Blue branding
-- Personalized content
-- Clear call-to-action buttons
+### Template Features
+- **Responsive Design**: Works on all devices
+- **Ocean Blue Branding**: Matches DEVOCEAN Lodge brand
+- **Personalization**: Uses {{placeholders}} for dynamic content (guestName, checkInDate, etc.)
+- **Multi-language**: Currently EN & PT, easily extendable to more languages
+- **Professional Styling**: Email client compatible (Gmail, Outlook, etc.)
+- **Clear CTAs**: Book again, visit website, leave review
+
+### Adding New Languages
+1. Copy existing HTML template (e.g., `post_booking_en.html`)
+2. Rename with language code (e.g., `post_booking_pt.html`)
+3. Translate content while keeping {{placeholders}} intact
+4. Update `email-templates.ts` to load new language template
 
 ## Cron Schedule
 
@@ -251,18 +285,62 @@ The server outputs detailed logs to console:
 4. **Monitor email logs** - Check for suspicious activity
 5. **Use HTTPS** - When accessing the API endpoints
 
+## Key Features Explained
+
+### 1. Cancellation Handling
+
+When a guest cancels their reservation, Beds24 sends a cancellation email. The system:
+1. Detects cancellation keywords in the email
+2. Extracts the booking reference
+3. Updates booking status to 'cancelled' in database
+4. **Automatically cancels all pending scheduled emails**
+5. Prevents sending emails to cancelled bookings
+
+This ensures guests don't receive pre-arrival or other emails for bookings they've cancelled.
+
+### 2. Transfer Notifications
+
+When a booking includes transfer requests (airport pickup/dropoff), the system:
+1. Detects transfer requirements in booking extras
+2. Sends detailed booking request to taxi company via email
+3. Includes pickup/dropoff locations, times, flight numbers, passenger count
+4. Marks transfer notification as sent to avoid duplicates
+5. Logs all transfer notifications for tracking
+
+**Email to taxi company includes**:
+- Guest details (name, email, phone, language)
+- Booking reference and check-in/out dates
+- Arrival transfer details (if applicable)
+- Departure transfer details (if applicable)
+- Request for confirmation
+
+**Future**: WhatsApp notifications when configured (requires Twilio integration)
+
+### 3. Extras Management
+
+The system tracks various booking extras in a flexible JSONB field:
+
+**Extra Beds**: Number of additional beds requested
+**Transfers**: Complete transfer booking with arrival/departure details
+**Special Requests**: Any specific guest requests
+**Dietary Requirements**: Food allergies, preferences
+**Other Extras**: Custom items with name, quantity, and price
+
+All extras are stored in structured format for easy querying and reporting.
+
 ## Future Enhancements
 
 Potential improvements for the system:
-- [ ] Add more language templates (Dutch, French, German, etc.)
-- [ ] SMS notifications via Twilio
-- [ ] WhatsApp notifications
+- [ ] WhatsApp transfer notifications via Twilio
+- [ ] SMS booking confirmations
 - [ ] Email open/click tracking
 - [ ] A/B testing for email content
-- [ ] Admin dashboard for monitoring
-- [ ] Webhook endpoints for real-time booking notifications
-- [ ] Email bounce handling
+- [ ] Admin dashboard for monitoring bookings and emails
+- [ ] Webhook endpoints for real-time booking notifications (faster than IMAP)
+- [ ] Email bounce handling and list management
 - [ ] Unsubscribe management
+- [ ] More language templates (NL, FR, DE, IT, ES)
+- [ ] PDF invoice generation and attachment
 
 ## Support
 

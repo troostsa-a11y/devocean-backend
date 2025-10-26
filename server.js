@@ -36,11 +36,26 @@ function validateEnvironment() {
   return true;
 }
 
+// Get taxi company config (optional)
+function getTaxiConfig() {
+  if (!process.env.TAXI_EMAIL) {
+    return undefined;
+  }
+
+  return {
+    email: process.env.TAXI_EMAIL,
+    whatsapp: process.env.TAXI_WHATSAPP,
+    name: process.env.TAXI_NAME || 'Taxi Company',
+  };
+}
+
 // Initialize email automation service
 let emailService;
 
 if (validateEnvironment()) {
   try {
+    const taxiConfig = getTaxiConfig();
+    
     emailService = new EmailAutomationService(
       process.env.DATABASE_URL,
       process.env.RESEND_API_KEY,
@@ -50,8 +65,13 @@ if (validateEnvironment()) {
         user: process.env.IMAP_USER,
         password: process.env.IMAP_PASSWORD,
         tls: process.env.IMAP_TLS === 'true',
-      }
+      },
+      taxiConfig
     );
+
+    if (taxiConfig) {
+      console.log(`📧 Transfer notifications enabled for ${taxiConfig.name}`);
+    }
 
     // Start the automated email checking
     emailService.start();

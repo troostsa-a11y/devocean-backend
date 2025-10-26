@@ -17,6 +17,11 @@ CREATE TABLE IF NOT EXISTS bookings (
   total_price DECIMAL(10, 2) NOT NULL,
   currency TEXT NOT NULL DEFAULT 'USD',
   booking_type TEXT,
+  status TEXT NOT NULL DEFAULT 'active',
+  cancelled_at TIMESTAMP,
+  cancellation_reason TEXT,
+  extras JSONB,
+  transfer_notification_sent BOOLEAN DEFAULT FALSE,
   source TEXT DEFAULT 'iframe',
   post_booking_email_sent BOOLEAN DEFAULT FALSE,
   pre_arrival_email_sent BOOLEAN DEFAULT FALSE,
@@ -87,3 +92,17 @@ CREATE TABLE IF NOT EXISTS email_check_logs (
 
 -- Index for email check logs
 CREATE INDEX IF NOT EXISTS idx_email_check_logs_time ON email_check_logs(check_time);
+
+-- Pending cancellations table (for cancellations that arrive before bookings)
+CREATE TABLE IF NOT EXISTS pending_cancellations (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  group_ref TEXT NOT NULL,
+  cancellation_reason TEXT,
+  created_at TIMESTAMP DEFAULT NOW() NOT NULL,
+  processed_at TIMESTAMP,
+  raw_email_data JSONB
+);
+
+-- Index for pending cancellations
+CREATE INDEX IF NOT EXISTS idx_pending_cancellations_group_ref ON pending_cancellations(group_ref);
+CREATE INDEX IF NOT EXISTS idx_pending_cancellations_processed ON pending_cancellations(processed_at);
