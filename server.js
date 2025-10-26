@@ -17,7 +17,10 @@ app.use(express.json());
 function validateEnvironment() {
   const required = [
     'DATABASE_URL',
-    'RESEND_API_KEY',
+    'MAIL_HOST',
+    'MAIL_PORT',
+    'MAIL_USERNAME',
+    'MAIL_PASSWORD',
     'IMAP_HOST',
     'IMAP_PORT',
     'IMAP_USER',
@@ -29,7 +32,7 @@ function validateEnvironment() {
   if (missing.length > 0) {
     console.error('❌ Missing required environment variables:');
     missing.forEach(key => console.error(`  - ${key}`));
-    console.error('\nPlease create a .env file based on .env.example');
+    console.error('\nPlease add these secrets to Replit Secrets');
     return false;
   }
 
@@ -57,16 +60,30 @@ if (validateEnvironment()) {
     const taxiConfig = getTaxiConfig();
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
     
+    // SMTP config for sending emails
+    const smtpConfig = {
+      host: process.env.MAIL_HOST,
+      port: parseInt(process.env.MAIL_PORT),
+      secure: process.env.MAIL_SECURE === 'true',
+      auth: {
+        user: process.env.MAIL_USERNAME,
+        pass: process.env.MAIL_PASSWORD,
+      },
+    };
+    
+    // IMAP config for reading emails
+    const imapConfig = {
+      host: process.env.IMAP_HOST,
+      port: parseInt(process.env.IMAP_PORT),
+      user: process.env.IMAP_USER,
+      password: process.env.IMAP_PASSWORD,
+      tls: process.env.IMAP_TLS === 'true',
+    };
+    
     emailService = new EmailAutomationService(
       process.env.DATABASE_URL,
-      process.env.RESEND_API_KEY,
-      {
-        host: process.env.IMAP_HOST,
-        port: parseInt(process.env.IMAP_PORT),
-        user: process.env.IMAP_USER,
-        password: process.env.IMAP_PASSWORD,
-        tls: process.env.IMAP_TLS === 'true',
-      },
+      smtpConfig,
+      imapConfig,
       taxiConfig,
       adminEmail
     );

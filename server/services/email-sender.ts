@@ -1,20 +1,30 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { DatabaseService } from './database';
 import type { ScheduledEmail } from '../../shared/schema';
 import { getEmailTemplate } from './email-templates';
 
 /**
  * Email Sender Service
- * Sends transactional emails via Resend
+ * Sends transactional emails via SMTP
  */
 
+interface SMTPConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
 export class EmailSenderService {
-  private resend: Resend;
+  private transporter: nodemailer.Transporter;
   private db: DatabaseService;
   private fromEmail: string;
 
-  constructor(apiKey: string, db: DatabaseService, fromEmail: string = 'booking@devoceanlodge.com') {
-    this.resend = new Resend(apiKey);
+  constructor(smtpConfig: SMTPConfig, db: DatabaseService, fromEmail: string = 'booking@devoceanlodge.com') {
+    this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.fromEmail = fromEmail;
   }
@@ -31,17 +41,13 @@ export class EmailSenderService {
         scheduledEmail.templateData || {}
       );
 
-      // Send email via Resend
-      const result = await this.resend.emails.send({
+      // Send email via SMTP
+      const result = await this.transporter.sendMail({
         from: this.fromEmail,
         to: scheduledEmail.recipientEmail,
         subject: template.subject,
         html: template.html,
       });
-
-      if (result.error) {
-        throw new Error(result.error.message);
-      }
 
       // Mark as sent in database
       await this.db.markEmailAsSent(scheduledEmail.id);
@@ -53,8 +59,8 @@ export class EmailSenderService {
         subject: template.subject,
         emailType: scheduledEmail.emailType,
         status: 'sent',
-        provider: 'resend',
-        messageId: result.data?.id,
+        provider: 'smtp',
+        messageId: result.messageId,
       });
 
       // Update booking email status
@@ -83,7 +89,7 @@ export class EmailSenderService {
         subject: 'Failed to send',
         emailType: scheduledEmail.emailType,
         status: 'failed',
-        provider: 'resend',
+        provider: 'smtp',
         errorMessage: error instanceof Error ? error.message : 'Unknown error',
       });
 

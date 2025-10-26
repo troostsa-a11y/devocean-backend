@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { DatabaseService } from './database';
 import type { Booking } from '../../shared/schema';
 
@@ -7,6 +7,16 @@ import type { Booking } from '../../shared/schema';
  * Sends transfer booking requests to taxi company via email/WhatsApp
  */
 
+interface SMTPConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
 interface TaxiCompanyConfig {
   email: string;
   whatsapp?: string;
@@ -14,18 +24,18 @@ interface TaxiCompanyConfig {
 }
 
 export class TransferNotificationService {
-  private resend: Resend;
+  private transporter: nodemailer.Transporter;
   private db: DatabaseService;
   private taxiConfig: TaxiCompanyConfig;
   private fromEmail: string;
 
   constructor(
-    apiKey: string,
+    smtpConfig: SMTPConfig,
     db: DatabaseService,
     taxiConfig: TaxiCompanyConfig,
     fromEmail: string = 'booking@devoceanlodge.com'
   ) {
-    this.resend = new Resend(apiKey);
+    this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.taxiConfig = taxiConfig;
     this.fromEmail = fromEmail;
@@ -53,17 +63,13 @@ export class TransferNotificationService {
       const emailContent = this.generateTransferEmail(booking);
 
       // Send email to taxi company
-      const result = await this.resend.emails.send({
+      const result = await this.transporter.sendMail({
         from: this.fromEmail,
         to: this.taxiConfig.email,
         subject: `New Transfer Request - Booking ${booking.groupRef}`,
         html: emailContent.html,
         text: emailContent.text,
       });
-
-      if (result.error) {
-        throw new Error(result.error.message);
-      }
 
       // Mark as notified
       await this.db.markTransferNotificationSent(booking.id);
@@ -74,8 +80,8 @@ export class TransferNotificationService {
         subject: `Transfer Request - ${booking.groupRef}`,
         emailType: 'transfer_notification',
         status: 'sent',
-        provider: 'resend',
-        messageId: result.data?.id,
+        provider: 'smtp',
+        messageId: result.messageId,
       });
 
       console.log(`✅ Transfer notification sent to ${this.taxiConfig.name} for booking ${booking.groupRef}`);
@@ -96,7 +102,7 @@ export class TransferNotificationService {
         subject: `Transfer Request - ${booking.groupRef}`,
         emailType: 'transfer_notification',
         status: 'failed',
-        provider: 'resend',
+        provider: 'smtp',
         errorMessage: error instanceof Error ? error.message : 'Unknown error',
       });
 

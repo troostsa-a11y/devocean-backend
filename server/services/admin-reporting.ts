@@ -1,4 +1,4 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { DatabaseService } from './database';
 
 /**
@@ -51,19 +51,29 @@ interface ReportData {
   recentErrors: string[];
 }
 
+interface SMTPConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
 export class AdminReportingService {
-  private resend: Resend;
+  private transporter: nodemailer.Transporter;
   private db: DatabaseService;
   private adminEmail: string;
   private fromEmail: string;
 
   constructor(
-    apiKey: string,
+    smtpConfig: SMTPConfig,
     db: DatabaseService,
     adminEmail: string = 'admin@devoceanlodge.com',
     fromEmail: string = 'booking@devoceanlodge.com'
   ) {
-    this.resend = new Resend(apiKey);
+    this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.adminEmail = adminEmail;
     this.fromEmail = fromEmail;
@@ -84,7 +94,7 @@ export class AdminReportingService {
       const reportData = await this.gatherReportData(yesterday, today, 'Daily');
       const html = this.generateDailyReportHtml(reportData);
 
-      await this.resend.emails.send({
+      await this.transporter.sendMail({
         from: this.fromEmail,
         to: this.adminEmail,
         subject: `📊 Daily Report - ${this.formatDate(yesterday)}`,
@@ -117,7 +127,7 @@ export class AdminReportingService {
       const reportData = await this.gatherReportData(lastMonday, lastSunday, 'Weekly');
       const html = this.generateWeeklyReportHtml(reportData);
 
-      await this.resend.emails.send({
+      await this.transporter.sendMail({
         from: this.fromEmail,
         to: this.adminEmail,
         subject: `📊 Weekly Report - Week of ${this.formatDate(lastMonday)}`,

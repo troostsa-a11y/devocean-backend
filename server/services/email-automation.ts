@@ -25,6 +25,16 @@ interface EmailConfig {
   tls: boolean;
 }
 
+interface SMTPConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
 interface TaxiCompanyConfig {
   email: string;
   whatsapp?: string;
@@ -45,20 +55,20 @@ export class EmailAutomationService {
 
   constructor(
     databaseUrl: string,
-    resendApiKey: string,
+    smtpConfig: SMTPConfig,
     imapConfig: EmailConfig,
     taxiConfig?: TaxiCompanyConfig,
     adminEmail?: string
   ) {
     this.db = new DatabaseService(databaseUrl);
     this.emailScheduler = new EmailSchedulerService(this.db);
-    this.emailSender = new EmailSenderService(resendApiKey, this.db);
-    this.cancellationHandler = new CancellationHandler(this.db, resendApiKey);
+    this.emailSender = new EmailSenderService(smtpConfig, this.db);
+    this.cancellationHandler = new CancellationHandler(this.db, smtpConfig);
     
     // Initialize transfer notification service if taxi config provided
     if (taxiConfig) {
       this.transferNotification = new TransferNotificationService(
-        resendApiKey,
+        smtpConfig,
         this.db,
         taxiConfig
       );
@@ -67,7 +77,7 @@ export class EmailAutomationService {
     // Initialize admin reporting service
     if (adminEmail) {
       this.adminReporting = new AdminReportingService(
-        resendApiKey,
+        smtpConfig,
         this.db,
         adminEmail
       );

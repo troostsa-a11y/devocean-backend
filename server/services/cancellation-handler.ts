@@ -1,6 +1,6 @@
 import { DatabaseService } from './database';
 import { EmailParser } from './email-parser';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { emailTemplateRenderer } from './email-template-renderer';
 
 /**
@@ -8,15 +8,25 @@ import { emailTemplateRenderer } from './email-template-renderer';
  * Processes cancellation emails and stops scheduled emails
  */
 
+interface SMTPConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+}
+
 export class CancellationHandler {
   private db: DatabaseService;
-  private resend?: Resend;
+  private transporter?: nodemailer.Transporter;
   private fromEmail: string;
 
-  constructor(db: DatabaseService, resendApiKey?: string, fromEmail: string = 'booking@devoceanlodge.com') {
+  constructor(db: DatabaseService, smtpConfig?: SMTPConfig, fromEmail: string = 'booking@devoceanlodge.com') {
     this.db = db;
-    if (resendApiKey) {
-      this.resend = new Resend(resendApiKey);
+    if (smtpConfig) {
+      this.transporter = nodemailer.createTransport(smtpConfig);
     }
     this.fromEmail = fromEmail;
   }
@@ -77,7 +87,7 @@ export class CancellationHandler {
     await this.db.cancelScheduledEmailsForBooking(booking.id);
 
     // Send cancellation confirmation email to guest
-    if (this.resend) {
+    if (this.transporter) {
       await this.sendCancellationEmail(booking, reason);
     }
 
@@ -105,18 +115,14 @@ export class CancellationHandler {
       );
 
       // Send email
-      const result = await this.resend!.emails.send({
+      await this.transporter!.sendMail({
         from: this.fromEmail,
         to: booking.guestEmail,
         subject: rendered.subject,
         html: rendered.html,
       });
 
-      if (result.error) {
-        console.error('Failed to send cancellation email:', result.error);
-      } else {
-        console.log(`✅ Cancellation confirmation email sent to ${booking.guestEmail} (${booking.guestLanguage || 'en-GB'})`);
-      }
+      console.log(`✅ Cancellation confirmation email sent to ${booking.guestEmail} (${booking.guestLanguage || 'en-GB'})`);
     } catch (error) {
       console.error('Error sending cancellation email:', error);
     }

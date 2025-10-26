@@ -73,12 +73,14 @@ Comprehensive automated email system that processes Beds24 booking notifications
 -- - email_check_logs table
 ```
 
-### 2. Email Service Setup (Resend)
+### 2. Email Service Setup (SMTP)
 
-1. Sign up for Resend (https://resend.com)
-2. Get your API key from the dashboard
-3. Verify your sending domain (e.g., devoceanlodge.com)
-4. Add the API key to your .env file
+The system uses your existing email server via SMTP (no third-party service needed):
+
+1. Use the same SMTP credentials from your contact form (`MAIL_*` secrets)
+2. Set up `booking@devoceanlodge.com` mailbox if you haven't already
+3. Ensure your email server has proper SPF, DKIM, and DMARC configured
+4. Add SMTP credentials to Replit Secrets
 
 ### 3. IMAP Email Account Setup
 
@@ -94,26 +96,28 @@ You need an email account that receives Beds24 booking notifications:
 - Outlook: outlook.office365.com, port 993, TLS enabled
 - Custom domain: Check your email provider's documentation
 
-### 4. Environment Variables
+### 4. Replit Secrets Configuration
 
-Create a `.env` file in the root directory:
+Add these secrets to **Replit Secrets** (🔒 in left sidebar):
 
 ```bash
 # Database (Supabase PostgreSQL)
 DATABASE_URL=postgresql://user:password@host:port/database
 
-# Email Service (Resend)
-RESEND_API_KEY=re_your_api_key_here
+# SMTP (Your Email Server - for sending emails)
+MAIL_HOST=smtp.your-email-provider.com
+MAIL_PORT=587
+MAIL_SECURE=false
+MAIL_USERNAME=booking@devoceanlodge.com
+MAIL_PASSWORD=your_email_password
+FROM_EMAIL=booking@devoceanlodge.com
 
-# IMAP Email Account (for receiving Beds24 notifications)
-IMAP_HOST=imap.gmail.com
+# IMAP (Your Email Server - for reading Beds24 notifications)
+IMAP_HOST=imap.your-email-provider.com
 IMAP_PORT=993
 IMAP_USER=booking@devoceanlodge.com
-IMAP_PASSWORD=your_app_password_here
+IMAP_PASSWORD=your_email_password
 IMAP_TLS=true
-
-# Sender Email
-FROM_EMAIL=booking@devoceanlodge.com
 
 # Taxi Company for Transfer Notifications (Optional)
 TAXI_EMAIL=taxi@example.com
@@ -124,7 +128,11 @@ TAXI_NAME=Ponta Transfer Service
 ADMIN_EMAIL=admin@devoceanlodge.com
 ```
 
-**Note**: Taxi company and admin email configurations are optional. If not provided, the system will still work but won't send transfer notifications or admin reports.
+**Note**: 
+- ✅ Use **Replit Secrets** instead of .env file for security
+- ✅ Use your existing email server credentials (same as contact form)
+- Taxi company and admin email configurations are optional
+- The system uses your own email server (no third-party service needed)
 
 ### 5. Running the Email Automation Server
 
