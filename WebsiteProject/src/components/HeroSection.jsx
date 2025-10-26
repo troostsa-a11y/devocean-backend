@@ -12,6 +12,22 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     return () => clearInterval(id);
   }, [list.length]);
 
+  // Load Trustindex widget script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.trustindex.io/loader.js?57a2f48569ff95903b76b1f759d';
+    script.defer = true;
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
   const go = (i) =>
     list.length ? setIdx(((i % list.length) + list.length) % list.length) : null;
 
@@ -91,6 +107,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
           <span className="ml-2 text-white/90 text-sm sm:text-base">{ui.hero.badge}</span>
         </div>
+
+        {/* Trustindex Review Widget */}
+        <div className="mt-6" id="trustindex-widget-container"></div>
       </div>
 
       {/* Controls */}
