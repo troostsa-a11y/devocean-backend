@@ -11,18 +11,20 @@
     .header h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; letter-spacing: 0.2px; }
     .header p { margin: 0; font-size: 16px; opacity: 0.95; font-weight: 600; }
     .content { padding: 30px 20px; }
-    .content h2 { color: #9e4b13; margin: 0 0 20px 0; font-size: 22px; font-weight: 700; }
+    .content p { margin: 15px 0; }
+    .content h3 { color: #9e4b13; margin: 25px 0 15px 0; font-size: 18px; font-weight: 700; border-bottom: 2px solid #9e4b13; padding-bottom: 8px; }
+    .content ul { padding-left: 20px; margin: 10px 0; }
+    .content li { margin: 8px 0; }
+    .content hr { border: none; border-top: 1px solid #eee; margin: 25px 0; }
     .booking-details { background: #fffaf6; padding: 20px; margin: 20px 0; border-left: 4px solid #9e4b13; border-radius: 8px; }
-    .booking-details h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
     .booking-details p { margin: 8px 0; }
-    .info-list { margin: 20px 0; }
-    .info-list ul { padding-left: 20px; }
-    .info-list li { margin: 10px 0; }
-    .button-container { text-align: center; margin: 30px 0; }
-    .button { display: inline-block; padding: 14px 30px; background: #9e4b13; color: white; text-decoration: none; border-radius: 999px; font-weight: 700; font-size: 16px; }
-    .button:hover { background: #b65a1a; }
+    .info-box { background: #fffaf6; padding: 15px; margin: 15px 0; border-radius: 8px; }
+    .highlight { background: #FEF3C7; padding: 15px; margin: 15px 0; border-left: 4px solid #F59E0B; border-radius: 8px; }
     .footer { background: #fffaf6; padding: 20px; text-align: center; font-size: 13px; color: #8a827b; border-top: 1px solid #eee; }
     .footer p { margin: 5px 0; }
+    .footer em { font-style: italic; color: #9e4b13; }
+    .footer a { color: #9e4b13; text-decoration: none; }
+    strong { color: #5C5048; }
   </style>
 </head>
 <body>
@@ -33,40 +35,84 @@
     </div>
     
     <div class="content">
-      <h2>{{t.greeting}}</h2>
+      <p><strong>{{t.greeting}}</strong></p>
       
       <p>{{t.intro}}</p>
       
       <div class="booking-details">
-        <h3>{{t.bookingDetailsTitle}}</h3>
-        <p><strong>{{t.bookingRef}}:</strong> {{groupRef}}</p>
-        <p><strong>{{t.checkIn}}:</strong> {{checkInDate}}</p>
-        <p><strong>{{t.checkOut}}:</strong> {{checkOutDate}}</p>
-        <p><strong>{{t.totalPrice}}:</strong> {{currency}} {{price}}</p>
+        <p><strong>{{t.arrivalLabel}}:</strong> {{checkInDate}}</p>
+        <p><strong>{{t.departureLabel}}:</strong> {{checkOutDate}}</p>
       </div>
       
-      <div class="info-list">
-        <p><strong>{{t.nextStepsTitle}}:</strong></p>
-        <ul>
-          <li>{{t.nextStep1}}</li>
-          <li>{{t.nextStep2}}</li>
-          <li>{{t.nextStep3}}</li>
-        </ul>
-      </div>
+      <hr>
       
-      <div class="button-container">
-        <a href="https://www.devoceanlodge.com" class="button">{{t.visitWebsite}}</a>
-      </div>
+      <h3>{{t.arrivalDepartureTitle}}</h3>
+      <p><strong>{{t.checkInLabel}}:</strong> {{t.checkInTime}}<br>
+      <strong>{{t.checkOutLabel}}:</strong> {{t.checkOutTime}}<br>
+      {{t.checkInOutNote}}</p>
       
-      <p>{{t.closing}}</p>
+      <hr>
       
-      <p>{{t.regards}},<br>
-      <strong>{{t.teamName}}</strong></p>
+      <h3>{{t.breakfastTitle}}</h3>
+      <p>{{t.breakfastIntro}}</p>
+      <p><strong>{{t.breakfastHoursLabel}}:</strong> {{t.breakfastHours}}<br>
+      {{t.breakfastNote}}</p>
+      
+      <hr>
+      
+      <h3>{{t.comfortTitle}}</h3>
+      <ul>
+        <li>{{t.comfort1}}</li>
+        <li>{{t.comfort2}}</li>
+        <li>{{t.comfort3}}</li>
+      </ul>
+      
+      <hr>
+      
+      <h3>{{t.wifiTitle}}</h3>
+      <p>{{t.wifiText}}</p>
+      
+      <hr>
+      
+      <h3>{{t.diningTitle}}</h3>
+      <ul>
+        <li>{{t.dining1}}</li>
+        <li>{{t.dining2}}</li>
+        <li>{{t.dining3}}</li>
+        <li>{{t.dining4}}</li>
+        <li><em>{{t.dining5}}</em></li>
+      </ul>
+      
+      <hr>
+      
+      <h3>{{t.exploreTitle}}</h3>
+      <p>{{t.exploreIntro}}</p>
+      <ul>
+        <li>{{t.activity1}}</li>
+        <li>{{t.activity2}}</li>
+        <li>{{t.activity3}}</li>
+        <li>{{t.activity4}}</li>
+        <li>{{t.activity5}}</li>
+        <li>{{t.activity6}}</li>
+        <li>{{t.activity7}}</li>
+      </ul>
+      
+      <p>{{t.helpText}}</p>
+      
+      <hr>
+      
+      <p>{{t.lookingForward}}</p>
+      
+      <p>{{t.warmRegards}},<br>
+      <strong>{{t.signature}}</strong><br>
+      DEVOCEAN Lodge<br>
+      <em>{{t.tagline}}</em></p>
     </div>
     
     <div class="footer">
-      <p><strong>DEVOCEAN Lodge</strong> | {{t.location}}</p>
-      <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+      <p><strong>DEVOCEAN Lodge</strong> | Ponta do Ouro, Mozambique</p>
+      <p><a href="https://www.devoceanlodge.com">www.devoceanlodge.com</a></p>
+      <p>WhatsApp: +258 84 418 2252 (Text Only)</p>
     </div>
   </div>
 </body>

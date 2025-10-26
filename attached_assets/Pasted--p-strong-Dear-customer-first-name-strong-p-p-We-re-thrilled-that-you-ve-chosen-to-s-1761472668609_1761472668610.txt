@@ -1,0 +1,72 @@
+<p><strong>Dear {{ customer:first_name }},</strong></p>
+
+<p>We’re thrilled that you’ve chosen to stay at <strong>DEVOCEAN Lodge</strong> — your home by the ocean in beautiful Ponta do Ouro.</p>
+
+<p>Your reservation is confirmed for arrival on <strong>{{ reservation:checkin_date }}</strong> and departure on <strong>{{ reservation:checkout_date }}</strong>. We can’t wait to welcome you!</p>
+
+<hr />
+
+<h3><strong>Arrival & Departure</strong></h3>
+<p><strong>Check-in:</strong> 2:00 – 6:00 PM<br>
+<strong>Check-out:</strong> By 10:00 AM<br>
+Need an early check-in or late check-out? Just let us know in advance — we’ll do our best to accommodate you (subject to availability).</p>
+
+<hr />
+
+<h3><strong>Breakfast – Start Your Day the DEVOCEAN Way</strong></h3>
+<p>Our guests love our freshly prepared breakfasts — and so will you. It’s included in your stay, no extra charge.</p>
+<p><strong>Breakfast hours:</strong> 7:30 – 11:00 AM<br>
+Early or late breakfast available on request.</p>
+
+<hr />
+
+<h3><strong>Comfort & Essentials</strong></h3>
+<ul>
+  <li>✔ Fresh bedding, towels, and toiletries (except toothpaste) are provided.</li>
+  <li>✔ Beach towels available for rent at reception (MZN 150 for up to 3 days).</li>
+  <li>Please keep all DEVOCEAN towels on the property.</li>
+</ul>
+
+<hr />
+
+<h3><strong>Stay Connected</strong></h3>
+<p>Enjoy our high-speed satellite WiFi — free for all guests. To keep the lodge peaceful, please keep noise from music, calls, or videos low between <strong>10:00 PM – 6:00 AM</strong>.</p>
+
+<hr />
+
+<h3><strong>Dining & Drinks</strong></h3>
+<ul>
+  <li>✔ Breakfast included | Lunch & dinner available on request</li>
+  <li>✔ Our chef is available daily from 6:00 AM – 9:00 PM</li>
+  <li>✔ Complimentary coffee, tea, and hot chocolate at the service table</li>
+  <li>✔ Honesty Bar: help yourself to drinks (water, soda, beer, cider, wine, spirits) and note them on your tab</li>
+  <li><em>To support our local kitchen and bar, please avoid bringing outside food or alcohol.</em></li>
+</ul>
+
+<hr />
+
+<h3><strong>Explore & Experience</strong></h3>
+<p>Ponta do Ouro is full of adventures — and we’ll gladly connect you with trusted local guides for:</p>
+<ul>
+  <li>✔ Scuba diving</li>
+  <li>✔ Swimming with dolphins</li>
+  <li>✔ Snorkel safaris</li>
+  <li>✔ Deep-sea fishing</li>
+  <li>✔ Surf lessons</li>
+  <li>✔ Quad bike rentals</li>
+  <li>✔ Hiking trails</li>
+</ul>
+
+<p>Need transfers, local tips, or tour bookings? Just reply to this email or message us on WhatsApp — we’re here to help.</p>
+
+<hr />
+
+<p>We look forward to sharing the <strong>DEVOCEAN spirit</strong> with you soon!</p>
+
+<p>Warm regards,<br>
+<strong>Sean & the Team</strong><br>
+DEVOCEAN Lodge<br>
+<em>“You’re Worth It.”</em><br>
+<a href="https://www.devoceanlodge.com">www.devoceanlodge.com</a><br>
+WhatsApp: +258 84 418 2252 (Text Only)
+</p>
