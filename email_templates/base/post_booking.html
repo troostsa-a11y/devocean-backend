@@ -1,119 +1,244 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{t.subject}}</title>
-  <style>
-    body { font-family: 'Raleway', Arial, sans-serif; line-height: 1.6; color: #5C5048; max-width: 600px; margin: 0 auto; padding: 0; background: #fffaf6; }
-    .email-container { background: white; margin: 20px auto; border-radius: 12px; overflow: hidden; }
-    .header { background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%); color: white; padding: 30px 20px; text-align: center; }
-    .header h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; letter-spacing: 0.2px; }
-    .header p { margin: 0; font-size: 16px; opacity: 0.95; font-weight: 600; }
-    .content { padding: 30px 20px; }
-    .content p { margin: 15px 0; }
-    .content h3 { color: #9e4b13; margin: 25px 0 15px 0; font-size: 18px; font-weight: 700; border-bottom: 2px solid #9e4b13; padding-bottom: 8px; }
-    .content ul { padding-left: 20px; margin: 10px 0; }
-    .content li { margin: 8px 0; }
-    .content hr { border: none; border-top: 1px solid #eee; margin: 25px 0; }
-    .booking-details { background: #fffaf6; padding: 20px; margin: 20px 0; border-left: 4px solid #9e4b13; border-radius: 8px; }
-    .booking-details p { margin: 8px 0; }
-    .info-box { background: #fffaf6; padding: 15px; margin: 15px 0; border-radius: 8px; }
-    .highlight { background: #FEF3C7; padding: 15px; margin: 15px 0; border-left: 4px solid #F59E0B; border-radius: 8px; }
-    .footer { background: #fffaf6; padding: 20px; text-align: center; font-size: 13px; color: #8a827b; border-top: 1px solid #eee; }
-    .footer p { margin: 5px 0; }
-    .footer em { font-style: italic; color: #9e4b13; }
-    .footer a { color: #9e4b13; text-decoration: none; }
-    strong { color: #5C5048; }
-  </style>
-</head>
-<body>
-  <div class="email-container">
-    <div class="header">
-      <h1>🌊 DEVOCEAN Lodge</h1>
-      <p>{{t.headerSubtitle}}</p>
+<html lang="en" style="margin:0;padding:0;">
+  <head>
+    <meta charset="utf-8">
+    <title>Booking Confirmed – DEVOCEAN Lodge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Preheader (hidden preview text in inbox) -->
+    <style>
+      .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0; width:0; overflow:hidden; mso-hide:all; }
+      @media only screen and (max-width: 600px) {
+        .container { width:100% !important; }
+        .p-24 { padding:18px !important; }
+        .h1 { font-size:24px !important; }
+        .lead { font-size:15px !important; }
+        .btn { display:block !important; width:100% !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:0; background:#fffaf6; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+    <!-- Preheader text (approx. 85–100 chars ideal) -->
+    <div class="preheader">
+      Your DEVOCEAN Lodge booking is confirmed. We can’t wait to welcome you to Ponta do Ouro.
     </div>
-    
-    <div class="content">
-      <p><strong>{{t.greeting}}</strong></p>
-      
-      <p>{{t.intro}}</p>
-      
-      <div class="booking-details">
-        <p><strong>{{t.arrivalLabel}}:</strong> {{checkInDate}}</p>
-        <p><strong>{{t.departureLabel}}:</strong> {{checkOutDate}}</p>
-      </div>
-      
-      <hr>
-      
-      <h3>{{t.arrivalDepartureTitle}}</h3>
-      <p><strong>{{t.checkInLabel}}:</strong> {{t.checkInTime}}<br>
-      <strong>{{t.checkOutLabel}}:</strong> {{t.checkOutTime}}<br>
-      {{t.checkInOutNote}}</p>
-      
-      <hr>
-      
-      <h3>{{t.breakfastTitle}}</h3>
-      <p>{{t.breakfastIntro}}</p>
-      <p><strong>{{t.breakfastHoursLabel}}:</strong> {{t.breakfastHours}}<br>
-      {{t.breakfastNote}}</p>
-      
-      <hr>
-      
-      <h3>{{t.comfortTitle}}</h3>
-      <ul>
-        <li>{{t.comfort1}}</li>
-        <li>{{t.comfort2}}</li>
-        <li>{{t.comfort3}}</li>
-      </ul>
-      
-      <hr>
-      
-      <h3>{{t.wifiTitle}}</h3>
-      <p>{{t.wifiText}}</p>
-      
-      <hr>
-      
-      <h3>{{t.diningTitle}}</h3>
-      <ul>
-        <li>{{t.dining1}}</li>
-        <li>{{t.dining2}}</li>
-        <li>{{t.dining3}}</li>
-        <li>{{t.dining4}}</li>
-        <li><em>{{t.dining5}}</em></li>
-      </ul>
-      
-      <hr>
-      
-      <h3>{{t.exploreTitle}}</h3>
-      <p>{{t.exploreIntro}}</p>
-      <ul>
-        <li>{{t.activity1}}</li>
-        <li>{{t.activity2}}</li>
-        <li>{{t.activity3}}</li>
-        <li>{{t.activity4}}</li>
-        <li>{{t.activity5}}</li>
-        <li>{{t.activity6}}</li>
-        <li>{{t.activity7}}</li>
-      </ul>
-      
-      <p>{{t.helpText}}</p>
-      
-      <hr>
-      
-      <p>{{t.lookingForward}}</p>
-      
-      <p>{{t.warmRegards}},<br>
-      <strong>{{t.signature}}</strong><br>
-      DEVOCEAN Lodge<br>
-      <em>{{t.tagline}}</em></p>
-    </div>
-    
-    <div class="footer">
-      <p><strong>DEVOCEAN Lodge</strong> | Ponta do Ouro, Mozambique</p>
-      <p><a href="https://www.devoceanlodge.com">www.devoceanlodge.com</a></p>
-      <p>WhatsApp: +258 84 418 2252 (Text Only)</p>
-    </div>
-  </div>
-</body>
+
+    <!-- Outer wrapper -->
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#fffaf6" style="background:#fffaf6;">
+      <tr>
+        <td align="center" style="padding:20px 12px;">
+          <!-- Container -->
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="container" style="width:600px; max-width:600px; background:#ffffff; border-radius:12px; overflow:hidden;">
+            
+            <!-- Brand top bar (gradient) -->
+            <tr>
+              <td height="8" style="height:8px; background:linear-gradient(135deg,#b65a1a 0%, #9e4b13 100%);">
+                <!-- Fallback color for Outlook -->
+              </td>
+            </tr>
+
+            <!-- Logo -->
+            <tr>
+              <td align="center" style="padding:18px 20px 10px 20px;">
+                <img src="https://devoceanlodge.com/images/Logo2.png" alt="DEVOCEAN Lodge" width="160" height="auto" style="border:0; display:block; max-width:160px; height:auto;">
+              </td>
+            </tr>
+
+            <!-- Header / Hero image -->
+            <tr>
+              <td align="center">
+                <img src="https://devoceanlodge.com/photos/hero01.jpg" alt="Your home by the ocean in Ponta do Ouro" width="600" style="display:block; width:100%; height:auto; border:0;">
+              </td>
+            </tr>
+
+            <!-- Title band -->
+            <tr>
+              <td align="center" style="padding:20px 24px 8px 24px;">
+                <h1 class="h1" style="margin:0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight:800; font-size:26px; line-height:1.2; color:#5C5048;">
+                  Booking Confirmed
+                </h1>
+                <p class="lead" style="margin:8px 0 0 0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight:600; font-size:16px; line-height:1.5; color:#8a827b;">
+                  Your home by the ocean in beautiful Ponta do Ouro
+                </p>
+              </td>
+            </tr>
+
+            <!-- Content -->
+            <tr>
+              <td class="p-24" style="padding:24px; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#5C5048; font-size:15px; line-height:1.7;">
+
+                <!-- Greeting -->
+                <p style="margin:0 0 14px 0;">
+                  <strong style="color:#5C5048;">Dear {{ customer:first_name }},</strong>
+                </p>
+
+                <p style="margin:0 0 14px 0;">
+                  We’re thrilled that you’ve chosen to stay at <strong style="color:#5C5048;">DEVOCEAN Lodge</strong> — your home by the ocean.
+                </p>
+
+                <!-- Booking details box -->
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:14px 0 18px 0; background:#fffaf6; border-left:4px solid #9e4b13; border-radius:8px;">
+                  <tr>
+                    <td style="padding:16px 18px;">
+                      <p style="margin:0 0 6px 0;"><strong style="color:#5C5048;">Arrival:</strong> {{ reservation:checkin_date }}</p>
+                      <p style="margin:0;"><strong style="color:#5C5048;">Departure:</strong> {{ reservation:checkout_date }}</p>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Divider -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <!-- Arrival & Departure -->
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#9e4b13;">
+                  Arrival &amp; Departure
+                </h3>
+                <p style="margin:0 0 12px 0;">
+                  <strong>Check-in:</strong> 2:00 – 6:00 PM<br>
+                  <strong>Check-out:</strong> By 10:00 AM
+                </p>
+                <p style="margin:0 0 14px 0;">
+                  Need an early check-in or late check-out? Let us know in advance — we’ll do our best (subject to availability).
+                </p>
+
+                <!-- Divider -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <!-- Breakfast -->
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#9e4b13;">
+                  Breakfast – Start Your Day the DEVOCEAN Way
+                </h3>
+                <p style="margin:0 0 8px 0;">
+                  Our guests love our freshly prepared breakfasts — and so will you. It’s included in your stay.
+                </p>
+                <p style="margin:0 0 14px 0;">
+                  <strong>Breakfast hours:</strong> 7:30 – 11:00 AM<br>
+                  Early or late breakfast available on request.
+                </p>
+
+                <!-- Divider -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <!-- Comfort & Essentials -->
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#9e4b13;">
+                  Comfort &amp; Essentials
+                </h3>
+                <ul style="padding-left:18px; margin:0 0 14px 0;">
+                  <li style="margin:6px 0;">✓ Fresh bedding, towels, and toiletries (except toothpaste) are provided.</li>
+                  <li style="margin:6px 0;">✓ Beach towels available for rent at reception (MZN 150 for up to 3 days).</li>
+                  <li style="margin:6px 0;">Please keep all DEVOCEAN towels on the property.</li>
+                </ul>
+
+                <!-- Divider -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <!-- WiFi -->
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#9e4b13;">
+                  Stay Connected
+                </h3>
+                <p style="margin:0 0 14px 0;">
+                  Enjoy fast, reliable satellite WiFi — free for all guests. To keep the lodge peaceful, please keep noise from music, calls, or videos low between <strong>10:00 PM – 6:00 AM</strong>.
+                </p>
+
+                <!-- Divider -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <!-- Dining & Drinks -->
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#9e4b13;">
+                  Dining &amp; Drinks
+                </h3>
+                <ul style="padding-left:18px; margin:0 0 14px 0;">
+                  <li style="margin:6px 0;">✓ Breakfast included | Lunch &amp; dinner available on request</li>
+                  <li style="margin:6px 0;">✓ Chef available daily from 6:00 AM – 9:00 PM</li>
+                  <li style="margin:6px 0;">✓ Complimentary coffee, tea, and hot chocolate at the service table</li>
+                  <li style="margin:6px 0;">✓ Honesty Bar: help yourself to drinks (water, soda, beer, cider, wine, spirits) and note them on your tab</li>
+                  <li style="margin:6px 0;"><em>To support our local kitchen and bar, please avoid bringing outside food or alcohol.</em></li>
+                </ul>
+
+                <!-- Divider -->
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <!-- Experiences -->
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#9e4b13;">
+                  Explore &amp; Experience
+                </h3>
+                <p style="margin:0 0 8px 0;">We’ll gladly connect you with trusted local guides for:</p>
+                <ul style="padding-left:18px; margin:0 0 16px 0;">
+                  <li style="margin:6px 0;">✓ Scuba diving</li>
+                  <li style="margin:6px 0;">✓ Swimming with dolphins</li>
+                  <li style="margin:6px 0;">✓ Snorkel safaris</li>
+                  <li style="margin:6px 0;">✓ Deep-sea fishing</li>
+                  <li style="margin:6px 0;">✓ Surf lessons</li>
+                  <li style="margin:6px 0;">✓ Quad bike rentals</li>
+                  <li style="margin:6px 0;">✓ Hiking trails</li>
+                </ul>
+
+                <!-- Helper line -->
+                <p style="margin:0 0 18px 0;">
+                  Need transfers, local tips, or tour bookings? Just reply to this email or message us on WhatsApp — we’re here to help.
+                </p>
+
+                <!-- CTA buttons (optional) -->
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center" style="margin:10px auto 6px auto;">
+                  <tr>
+                    <td align="center" style="border-radius:999px; background:#b65a1a;">
+                      <a href="https://wa.me/258844182252?text=Hello%20DEVOCEAN%20Lodge" target="_blank"
+                         style="display:inline-block; padding:12px 22px; font-family:Raleway, Arial, sans-serif; font-weight:800; font-size:14px; color:#ffffff; text-decoration:none; border-radius:999px;">
+                        WhatsApp Us
+                      </a>
+                    </td>
+                    <td width="10" style="width:10px;">&nbsp;</td>
+                    <td align="center" style="border-radius:999px; background:#9e4b13;">
+                      <a href="https://maps.app.goo.gl/5Lr9cQ7R5qQYnK7o9" target="_blank"
+                         style="display:inline-block; padding:12px 22px; font-family:Raleway, Arial, sans-serif; font-weight:800; font-size:14px; color:#ffffff; text-decoration:none; border-radius:999px;">
+                        Directions
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Sign-off -->
+                <p style="margin:20px 0 0 0;">We look forward to sharing the <strong style="color:#5C5048;">DEVOCEAN spirit</strong> with you soon!</p>
+                <p style="margin:10px 0 0 0;">
+                  Warm regards,<br>
+                  <strong>Sean &amp; the Team</strong><br>
+                  DEVOCEAN Lodge<br>
+                  <em>“You’re Worth It.”</em>
+                </p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td align="center" style="background:#fffaf6; padding:18px; border-top:1px solid #eee;">
+                <p style="margin:0; font-family:Raleway, Arial, sans-serif; font-size:13px; color:#8a827b;">
+                  <strong style="color:#5C5048;">DEVOCEAN Lodge</strong> &nbsp;|&nbsp; Ponta do Ouro, Mozambique
+                </p>
+                <p style="margin:6px 0 0 0; font-family:Raleway, Arial, sans-serif; font-size:13px;">
+                  <a href="https://www.devoceanlodge.com" style="color:#9e4b13; text-decoration:none;">www.devoceanlodge.com</a>
+                </p>
+                <p style="margin:6px 0 0 0; font-family:Raleway, Arial, sans-serif; font-size:13px; color:#8a827b;">
+                  WhatsApp: +258 84 418 2252 (Text Only)
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+
+  </body>
 </html>

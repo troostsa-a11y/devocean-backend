@@ -50,8 +50,9 @@ function renderTemplate(emailType, language, data) {
   while (html !== previousHtml && iterations < 10) {
     previousHtml = html;
     
-    html = html.replace(/\{\{([^}]+)\}\}/g, (match, key) => {
-      const value = allReplacements[key];
+    html = html.replace(/\{\{\s*([^}]+)\s*\}\}/g, (match, key) => {
+      const trimmedKey = key.trim();
+      const value = allReplacements[trimmedKey];
       return value !== undefined ? value : match;
     });
     
@@ -109,11 +110,11 @@ async function sendTestEmail() {
     process.exit(1);
   }
 
-  // Sample booking data
+  // Sample booking data using Beds24 merge tags
   const sampleData = {
-    guestName: 'John Smith',
-    checkInDate: 'Saturday, 15 February 2025',
-    checkOutDate: 'Friday, 21 February 2025',
+    'customer:first_name': 'John Smith',
+    'reservation:checkin_date': 'Saturday, 15 February 2025',
+    'reservation:checkout_date': 'Friday, 21 February 2025',
   };
 
   // Test all 4 languages
