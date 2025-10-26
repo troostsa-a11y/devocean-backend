@@ -73,7 +73,7 @@ if (validateEnvironment()) {
       port: parseInt(process.env.MAIL_PORT),
       user: process.env.IMAP_USER,
       password: process.env.IMAP_PASSWORD,
-      tls: process.env.IMAP_TLS === 'true',
+      tls: process.env.IMAP_TLS === 'ssl' || process.env.IMAP_TLS === 'true',
     };
     
     emailService = new EmailAutomationService(
