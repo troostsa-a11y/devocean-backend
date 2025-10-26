@@ -105,7 +105,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         </div>
 
         {/* Trustindex Review Widget */}
-        <div ref={trustindexRef} className="mt-6 flex justify-start"></div>
+        <div ref={trustindexRef} className="mt-6"></div>
       </div>
 
       {/* Controls */}
