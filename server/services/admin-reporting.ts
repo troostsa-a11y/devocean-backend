@@ -66,17 +66,20 @@ export class AdminReportingService {
   private db: DatabaseService;
   private adminEmail: string;
   private fromEmail: string;
+  private fromName: string;
 
   constructor(
     smtpConfig: SMTPConfig,
     db: DatabaseService,
     adminEmail: string = 'admin@devoceanlodge.com',
-    fromEmail: string = 'booking@devoceanlodge.com'
+    fromEmail: string = 'booking@devoceanlodge.com',
+    fromName: string = 'DEVOCEAN Lodge Bookings'
   ) {
     this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.adminEmail = adminEmail;
     this.fromEmail = fromEmail;
+    this.fromName = fromName;
   }
 
   /**
@@ -95,7 +98,7 @@ export class AdminReportingService {
       const html = this.generateDailyReportHtml(reportData);
 
       await this.transporter.sendMail({
-        from: this.fromEmail,
+        from: `"${this.fromName}" <${this.fromEmail}>`,
         to: this.adminEmail,
         subject: `📊 Daily Report - ${this.formatDate(yesterday)}`,
         html,
@@ -128,7 +131,7 @@ export class AdminReportingService {
       const html = this.generateWeeklyReportHtml(reportData);
 
       await this.transporter.sendMail({
-        from: this.fromEmail,
+        from: `"${this.fromName}" <${this.fromEmail}>`,
         to: this.adminEmail,
         subject: `📊 Weekly Report - Week of ${this.formatDate(lastMonday)}`,
         html,

@@ -22,11 +22,18 @@ export class EmailSenderService {
   private transporter: nodemailer.Transporter;
   private db: DatabaseService;
   private fromEmail: string;
+  private fromName: string;
 
-  constructor(smtpConfig: SMTPConfig, db: DatabaseService, fromEmail: string = 'booking@devoceanlodge.com') {
+  constructor(
+    smtpConfig: SMTPConfig,
+    db: DatabaseService,
+    fromEmail: string = 'booking@devoceanlodge.com',
+    fromName: string = 'DEVOCEAN Lodge Bookings'
+  ) {
     this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.fromEmail = fromEmail;
+    this.fromName = fromName;
   }
 
   /**
@@ -43,7 +50,7 @@ export class EmailSenderService {
 
       // Send email via SMTP
       const result = await this.transporter.sendMail({
-        from: this.fromEmail,
+        from: `"${this.fromName}" <${this.fromEmail}>`,
         to: scheduledEmail.recipientEmail,
         subject: template.subject,
         html: template.html,

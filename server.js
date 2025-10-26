@@ -55,6 +55,8 @@ if (validateEnvironment()) {
   try {
     const taxiConfig = getTaxiConfig();
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
+    const fromEmail = process.env.IMAP_FROM_EMAIL || 'booking@devoceanlodge.com';
+    const fromName = process.env.IMAP_FROM_NAME || 'DEVOCEAN Lodge Bookings';
     
     // SMTP config for sending emails (port 465 for SMTP SSL, same as contact form)
     const smtpConfig = {
@@ -81,7 +83,9 @@ if (validateEnvironment()) {
       smtpConfig,
       imapConfig,
       taxiConfig,
-      adminEmail
+      adminEmail,
+      fromEmail,
+      fromName
     );
 
     if (taxiConfig) {
@@ -89,6 +93,7 @@ if (validateEnvironment()) {
     }
 
     console.log(`📊 Admin reports enabled for ${adminEmail}`);
+    console.log(`📧 Sending emails from: "${fromName}" <${fromEmail}>`);
 
     // Start the automated email checking
     emailService.start();

@@ -22,13 +22,20 @@ export class CancellationHandler {
   private db: DatabaseService;
   private transporter?: nodemailer.Transporter;
   private fromEmail: string;
+  private fromName: string;
 
-  constructor(db: DatabaseService, smtpConfig?: SMTPConfig, fromEmail: string = 'booking@devoceanlodge.com') {
+  constructor(
+    db: DatabaseService,
+    smtpConfig?: SMTPConfig,
+    fromEmail: string = 'booking@devoceanlodge.com',
+    fromName: string = 'DEVOCEAN Lodge Bookings'
+  ) {
     this.db = db;
     if (smtpConfig) {
       this.transporter = nodemailer.createTransport(smtpConfig);
     }
     this.fromEmail = fromEmail;
+    this.fromName = fromName;
   }
 
   /**
@@ -116,7 +123,7 @@ export class CancellationHandler {
 
       // Send email
       await this.transporter!.sendMail({
-        from: this.fromEmail,
+        from: `"${this.fromName}" <${this.fromEmail}>`,
         to: booking.guestEmail,
         subject: rendered.subject,
         html: rendered.html,

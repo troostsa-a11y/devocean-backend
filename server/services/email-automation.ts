@@ -58,19 +58,23 @@ export class EmailAutomationService {
     smtpConfig: SMTPConfig,
     imapConfig: EmailConfig,
     taxiConfig?: TaxiCompanyConfig,
-    adminEmail?: string
+    adminEmail?: string,
+    fromEmail?: string,
+    fromName?: string
   ) {
     this.db = new DatabaseService(databaseUrl);
     this.emailScheduler = new EmailSchedulerService(this.db);
-    this.emailSender = new EmailSenderService(smtpConfig, this.db);
-    this.cancellationHandler = new CancellationHandler(this.db, smtpConfig);
+    this.emailSender = new EmailSenderService(smtpConfig, this.db, fromEmail, fromName);
+    this.cancellationHandler = new CancellationHandler(this.db, smtpConfig, fromEmail, fromName);
     
     // Initialize transfer notification service if taxi config provided
     if (taxiConfig) {
       this.transferNotification = new TransferNotificationService(
         smtpConfig,
         this.db,
-        taxiConfig
+        taxiConfig,
+        fromEmail,
+        fromName
       );
     }
     
@@ -79,7 +83,9 @@ export class EmailAutomationService {
       this.adminReporting = new AdminReportingService(
         smtpConfig,
         this.db,
-        adminEmail
+        adminEmail,
+        fromEmail,
+        fromName
       );
     }
     

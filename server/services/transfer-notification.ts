@@ -28,17 +28,20 @@ export class TransferNotificationService {
   private db: DatabaseService;
   private taxiConfig: TaxiCompanyConfig;
   private fromEmail: string;
+  private fromName: string;
 
   constructor(
     smtpConfig: SMTPConfig,
     db: DatabaseService,
     taxiConfig: TaxiCompanyConfig,
-    fromEmail: string = 'booking@devoceanlodge.com'
+    fromEmail: string = 'booking@devoceanlodge.com',
+    fromName: string = 'DEVOCEAN Lodge Bookings'
   ) {
     this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.taxiConfig = taxiConfig;
     this.fromEmail = fromEmail;
+    this.fromName = fromName;
   }
 
   /**
@@ -64,7 +67,7 @@ export class TransferNotificationService {
 
       // Send email to taxi company
       const result = await this.transporter.sendMail({
-        from: this.fromEmail,
+        from: `"${this.fromName}" <${this.fromEmail}>`,
         to: this.taxiConfig.email,
         subject: `New Transfer Request - Booking ${booking.groupRef}`,
         html: emailContent.html,
