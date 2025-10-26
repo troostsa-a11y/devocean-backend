@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{lang}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking Confirmation - DEVOCEAN Lodge</title>
+  <title>{{t.subject}}</title>
   <style>
     body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 0; background: #f5f5f5; }
     .email-container { background: white; margin: 20px auto; }
@@ -15,13 +15,12 @@
     .booking-details { background: #f9f9f9; padding: 20px; margin: 20px 0; border-left: 4px solid #0077BE; }
     .booking-details h3 { margin: 0 0 15px 0; color: #0077BE; font-size: 18px; }
     .booking-details p { margin: 8px 0; }
-    .booking-details strong { color: #333; }
-    .button-container { text-align: center; margin: 30px 0; }
-    .button { display: inline-block; padding: 14px 30px; background: #0077BE; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 16px; }
-    .button:hover { background: #005a8c; }
     .info-list { margin: 20px 0; }
     .info-list ul { padding-left: 20px; }
     .info-list li { margin: 10px 0; }
+    .button-container { text-align: center; margin: 30px 0; }
+    .button { display: inline-block; padding: 14px 30px; background: #0077BE; color: white; text-decoration: none; border-radius: 4px; font-weight: 500; font-size: 16px; }
+    .button:hover { background: #005a8c; }
     .footer { background: #f9f9f9; padding: 20px; text-align: center; font-size: 13px; color: #666; border-top: 1px solid #e0e0e0; }
     .footer p { margin: 5px 0; }
   </style>
@@ -30,43 +29,43 @@
   <div class="email-container">
     <div class="header">
       <h1>🌊 DEVOCEAN Lodge</h1>
-      <p>Your Eco-Friendly Beach Escape in Ponta do Ouro</p>
+      <p>{{t.headerSubtitle}}</p>
     </div>
     
     <div class="content">
-      <h2>Dear {{guestName}},</h2>
+      <h2>{{t.greeting}}</h2>
       
-      <p>Thank you for choosing DEVOCEAN Lodge! We're thrilled to confirm your booking.</p>
+      <p>{{t.intro}}</p>
       
       <div class="booking-details">
-        <h3>Booking Details</h3>
-        <p><strong>Booking Reference:</strong> {{groupRef}}</p>
-        <p><strong>Check-in:</strong> {{checkInDate}}</p>
-        <p><strong>Check-out:</strong> {{checkOutDate}}</p>
-        <p><strong>Total Price:</strong> {{currency}} {{totalPrice}}</p>
+        <h3>{{t.bookingDetailsTitle}}</h3>
+        <p><strong>{{t.bookingRef}}:</strong> {{groupRef}}</p>
+        <p><strong>{{t.checkIn}}:</strong> {{checkInDate}}</p>
+        <p><strong>{{t.checkOut}}:</strong> {{checkOutDate}}</p>
+        <p><strong>{{t.totalPrice}}:</strong> {{currency}} {{price}}</p>
       </div>
       
       <div class="info-list">
-        <p><strong>What's Next?</strong></p>
+        <p><strong>{{t.nextStepsTitle}}:</strong></p>
         <ul>
-          <li>You'll receive a pre-arrival email 7 days before your check-in with important information</li>
-          <li>Our team is here to help with any questions</li>
-          <li>Start planning your beach adventures!</li>
+          <li>{{t.nextStep1}}</li>
+          <li>{{t.nextStep2}}</li>
+          <li>{{t.nextStep3}}</li>
         </ul>
       </div>
       
       <div class="button-container">
-        <a href="https://www.devoceanlodge.com" class="button">Visit Our Website</a>
+        <a href="https://www.devoceanlodge.com" class="button">{{t.visitWebsite}}</a>
       </div>
       
-      <p>We look forward to welcoming you to paradise!</p>
+      <p>{{t.closing}}</p>
       
-      <p>Warm regards,<br>
-      <strong>The DEVOCEAN Lodge Team</strong></p>
+      <p>{{t.regards}},<br>
+      <strong>{{t.teamName}}</strong></p>
     </div>
     
     <div class="footer">
-      <p><strong>DEVOCEAN Lodge</strong> | Ponta do Ouro, Mozambique</p>
+      <p><strong>DEVOCEAN Lodge</strong> | {{t.location}}</p>
       <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
     </div>
   </div>

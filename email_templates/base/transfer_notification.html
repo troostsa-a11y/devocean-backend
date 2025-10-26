@@ -51,31 +51,7 @@
         <p><strong>Check-out:</strong> {{checkOutDate}}</p>
       </div>
       
-      {{#if arrivalTransfer}}
-      <div class="transfer-box">
-        <h3>✈️ Arrival Transfer</h3>
-        <p><strong>Pick-up Location:</strong> {{arrivalTransfer.pickupLocation}}</p>
-        <p><strong>Pick-up Time:</strong> {{arrivalTransfer.pickupTime}}</p>
-        <p><strong>Passengers:</strong> {{arrivalTransfer.passengers}}</p>
-        {{#if arrivalTransfer.flightNumber}}
-        <p><strong>Flight Number:</strong> {{arrivalTransfer.flightNumber}}</p>
-        {{/if}}
-        <p><strong>Destination:</strong> DEVOCEAN Lodge, Ponta do Ouro</p>
-      </div>
-      {{/if}}
-      
-      {{#if departureTransfer}}
-      <div class="transfer-box">
-        <h3>✈️ Departure Transfer</h3>
-        <p><strong>Pick-up Location:</strong> DEVOCEAN Lodge, Ponta do Ouro</p>
-        <p><strong>Pick-up Time:</strong> {{departureTransfer.pickupTime}}</p>
-        <p><strong>Drop-off Location:</strong> {{departureTransfer.dropoffLocation}}</p>
-        <p><strong>Passengers:</strong> {{departureTransfer.passengers}}</p>
-        {{#if departureTransfer.flightNumber}}
-        <p><strong>Flight Number:</strong> {{departureTransfer.flightNumber}}</p>
-        {{/if}}
-      </div>
-      {{/if}}
+      {{transferDetails}}
       
       <div class="important">
         <p>📍 <strong>Lodge Address:</strong> DEVOCEAN Lodge, Ponta do Ouro, Mozambique</p>

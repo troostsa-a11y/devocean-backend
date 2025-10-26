@@ -2,28 +2,36 @@
 
 ## ✅ All Requested Features Implemented
 
-### 1. Five Standalone HTML Email Templates (Multi-Language)
+### 1. Email Template System with Multi-Language Support
+
+**Architecture**: Template + Translation Files (same pattern as legal pages)
 
 **Location**: `/email_templates/`
 
-Created professional, responsive HTML templates in **English (EN) and Portuguese (PT)**:
-- `post_booking_*.html` - Booking confirmation
-- `pre_arrival_*.html` - Pre-arrival information & packing tips  
-- `arrival_*.html` - Final arrival details & reminders
-- `post_departure_*.html` - Thank you & review request
-- `cancellation_*.html` - Cancellation confirmation
-- `transfer_notification_en.html` - Taxi company notification (EN only)
-
-**Total: 11 templates** (5 guest templates × 2 languages + 1 transfer template)
+```
+email_templates/
+├── base/                         # 6 HTML templates (structure only)
+│   ├── post_booking.html
+│   ├── pre_arrival.html
+│   ├── arrival.html
+│   ├── post_departure.html
+│   ├── cancellation.html
+│   └── transfer_notification.html
+└── translations/
+    └── email-translations.json   # All languages in one file
+```
 
 **Features**:
+- **Template-based architecture**: 6 base templates instead of 80+ individual HTML files
+- **Single translation file**: All languages in `email-translations.json`
+- **Easy to maintain**: Update layout once, applies to all languages
+- **Easy to extend**: Add new language = add JSON entry (not 5-6 new HTML files)
 - Email client compatible (Gmail, Outlook, Apple Mail)
 - Responsive design for mobile and desktop
 - Ocean Blue branding matching DEVOCEAN Lodge
-- Uses `{{placeholders}}` for dynamic content
-- **Multi-language support**: EN and PT fully supported
-- **Easily extendable** to all 16 website languages (see LANGUAGE_SUPPORT.md)
+- **Multi-language support**: en-GB, en-US, pt-PT, pt-BR fully supported
 - **Automatic language detection** based on guest's booking language
+- **Falls back to English** for languages without translations yet
 
 ### 2. Cancellation Handling - Stop Sending When Guests Cancel
 
@@ -237,13 +245,15 @@ Once credentials are configured:
 ### New Files
 - `server/services/cancellation-handler.ts`
 - `server/services/transfer-notification.ts`
-- `email_templates/post_booking_en.html` + `post_booking_pt.html`
-- `email_templates/pre_arrival_en.html` + `pre_arrival_pt.html`
-- `email_templates/arrival_en.html` + `arrival_pt.html`
-- `email_templates/post_departure_en.html` + `post_departure_pt.html`
-- `email_templates/cancellation_en.html` + `cancellation_pt.html`
-- `email_templates/transfer_notification_en.html`
-- `LANGUAGE_SUPPORT.md` - Multi-language template guide
+- `server/services/email-template-renderer.ts` - Template + translation renderer
+- `email_templates/base/post_booking.html`
+- `email_templates/base/pre_arrival.html`
+- `email_templates/base/arrival.html`
+- `email_templates/base/post_departure.html`
+- `email_templates/base/cancellation.html`
+- `email_templates/base/transfer_notification.html`
+- `email_templates/translations/email-translations.json` - All languages
+- `LANGUAGE_SUPPORT.md` - Multi-language system guide
 - `NEW_FEATURES_SUMMARY.md` (this file)
 
 ### Modified Files
@@ -258,20 +268,41 @@ Once credentials are configured:
 
 ## Multi-Language Support
 
-**Currently Supported Languages:**
-- ✅ **English (EN)** - All 6 templates
-- ✅ **Portuguese (PT)** - All 5 guest templates
+**Architecture**: Template + Translation Files (same as legal pages)
 
-**Supported via Language Mapping (fallback to EN):**
-- All 16 website languages (en-GB, en-US, pt-PT, pt-BR, nl-NL, fr-FR, it-IT, de-DE, es-ES, sv, pl, af-ZA, zu, sw, ja-JP, zh-CN, ru)
+**Currently Supported Languages:**
+- ✅ **English (UK)** - en-GB
+- ✅ **English (US)** - en-US
+- ✅ **Portuguese (Portugal)** - pt-PT
+- ✅ **Portuguese (Brazil)** - pt-BR
+
+**Supported via Language Mapping (fallback to en-GB):**
+- All 16 website languages: nl-NL, fr-FR, it-IT, de-DE, es-ES, sv, pl, af-ZA, zu, sw, ja-JP, zh-CN, ru
 
 **How to Add More Languages:**
-See `LANGUAGE_SUPPORT.md` for complete guide on adding templates in Dutch, French, German, Spanish, Afrikaans, etc.
 
-**Language Selection:**
-- System automatically selects template based on guest's language preference from booking
-- Falls back to English if guest's language template doesn't exist yet
-- Easy to extend to all 16 website languages by copying and translating templates
+Super simple! Just add to `email-translations.json`:
+
+```json
+{
+  "fr-FR": {
+    "post_booking": {
+      "subject": "Réservation Confirmée",
+      "greeting": "Cher(e) {{guestName}},",
+      ...
+    }
+  }
+}
+```
+
+See `LANGUAGE_SUPPORT.md` for complete guide.
+
+**Benefits of This Architecture:**
+- 🎯 **6 templates** instead of 80+ HTML files (16 languages × 5 types)
+- 🎯 **One JSON file** for all translations
+- 🎯 **Update design once** - applies to all languages
+- 🎯 **Professional translators** can work directly with JSON
+- 🎯 **Same pattern** as your legal pages system
 
 ## Summary
 

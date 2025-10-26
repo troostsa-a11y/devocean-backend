@@ -1,25 +1,66 @@
 # Email Template Language Support
 
+## Architecture
+
+The email system uses a **template + translation file architecture** similar to your legal pages:
+
+```
+email_templates/
+├── base/                         # Base HTML templates (layout/structure)
+│   ├── post_booking.html
+│   ├── pre_arrival.html
+│   ├── arrival.html
+│   ├── post_departure.html
+│   ├── cancellation.html
+│   └── transfer_notification.html
+└── translations/
+    └── email-translations.json   # All languages in one file
+```
+
+### How It Works
+
+1. **Base Templates** contain HTML structure with placeholders:
+   - `{{t.greeting}}` - Translation placeholders
+   - `{{guestName}}` - Dynamic data placeholders
+
+2. **Translation File** contains all text in all languages:
+   ```json
+   {
+     "en-GB": {
+       "post_booking": {
+         "greeting": "Dear {{guestName}},",
+         "intro": "Thank you for choosing..."
+       }
+     },
+     "pt-PT": {
+       "post_booking": {
+         "greeting": "Caro(a) {{guestName}},",
+         "intro": "Obrigado por escolher..."
+       }
+     }
+   }
+   ```
+
+3. **Email Renderer** loads template + translations and generates final HTML
+
+### Benefits
+
+✅ **6 templates** instead of 80+ individual HTML files  
+✅ **One file to update** designs across all languages  
+✅ **Easy to add languages** - just add to JSON  
+✅ **Same pattern** as legal pages  
+✅ **Professional translators** can work with JSON directly
+
 ## Currently Supported Languages
 
-The email automation system currently has **full template support for 2 languages**:
+The email automation system currently has **full translation support for 4 language variants**:
 
-### ✅ English (EN)
-- `post_booking_en.html`
-- `pre_arrival_en.html`
-- `arrival_en.html`
-- `post_departure_en.html`
-- `cancellation_en.html`
-- `transfer_notification_en.html` (for taxi company)
+### ✅ English (UK) - en-GB
+### ✅ English (US) - en-US
+### ✅ Portuguese (Portugal) - pt-PT
+### ✅ Portuguese (Brazil) - pt-BR
 
-### ✅ Portuguese (PT)
-- `post_booking_pt.html`
-- `pre_arrival_pt.html`
-- `arrival_pt.html`
-- `post_departure_pt.html`
-- `cancellation_pt.html`
-
-**Transfer notification is English-only** as it's sent to the taxi company (business communication).
+All other website languages fall back to `en-GB` until translations are added.
 
 ## Website Languages (16 Total)
 
@@ -71,58 +112,81 @@ const LANGUAGE_FALLBACKS = {
 
 ## How to Add a New Language
 
-### Step 1: Copy English Templates
+With the template + translation architecture, adding a new language is **much simpler**!
 
-```bash
-# Example: Adding French templates
-cp email_templates/post_booking_en.html email_templates/post_booking_fr.html
-cp email_templates/pre_arrival_en.html email_templates/pre_arrival_fr.html
-cp email_templates/arrival_en.html email_templates/arrival_fr.html
-cp email_templates/post_departure_en.html email_templates/post_departure_fr.html
-cp email_templates/cancellation_en.html email_templates/cancellation_fr.html
+### Step 1: Add Translations to JSON
+
+Edit `email_templates/translations/email-translations.json` and add your language:
+
+```json
+{
+  "en-GB": { ... },
+  "pt-PT": { ... },
+  "fr-FR": {
+    "post_booking": {
+      "subject": "Réservation Confirmée - DEVOCEAN Lodge",
+      "headerSubtitle": "Votre Refuge Écologique sur la Plage à Ponta do Ouro",
+      "greeting": "Cher(e) {{guestName}},",
+      "intro": "Merci d'avoir choisi DEVOCEAN Lodge! Nous sommes ravis de confirmer votre réservation.",
+      "bookingDetailsTitle": "Détails de la Réservation",
+      "bookingRef": "Référence de Réservation",
+      "checkIn": "Arrivée",
+      "checkOut": "Départ",
+      "totalPrice": "Prix Total",
+      "nextStepsTitle": "Prochaines Étapes",
+      "nextStep1": "Vous recevrez un email 7 jours avant l'arrivée avec des informations importantes",
+      "nextStep2": "Notre équipe est disponible pour répondre à vos questions",
+      "nextStep3": "Commencez à planifier vos aventures à la plage!",
+      "visitWebsite": "Visitez Notre Site",
+      "closing": "Nous avons hâte de vous accueillir au paradis!",
+      "regards": "Cordialement",
+      "teamName": "L'Équipe DEVOCEAN Lodge",
+      "location": "Ponta do Ouro, Mozambique"
+    },
+    "cancellation": {
+      "subject": "Annulation Confirmée - DEVOCEAN Lodge",
+      "heading": "Annulation Confirmée",
+      "greeting": "Cher(e) {{guestName}},",
+      ...
+    }
+  }
+}
 ```
 
-### Step 2: Translate Content
+### Step 2: Update Language Fallback (if needed)
 
-Open each file and translate:
-- All visible text content
-- Email subject lines (in template metadata)
-- Button text
-- Headers, paragraphs, list items
-
-**Keep these unchanged:**
-- HTML structure
-- CSS styles
-- `{{placeholders}}` (e.g., `{{guestName}}`, `{{checkInDate}}`)
-- Email footer contact information
-
-### Step 3: Update Language Mapping
-
-Edit `server/services/email-templates.ts`:
+Edit `server/services/email-template-renderer.ts` to map your language code:
 
 ```typescript
-const LANGUAGE_FALLBACKS = {
-  'en-GB': 'en',
-  'en-US': 'en',
-  'pt-PT': 'pt',
-  'pt-BR': 'pt',
-  'fr-FR': 'fr',  // ✅ Add this line
-  // ... rest
+const mapping: { [key: string]: string } = {
+  ...
+  'fr-FR': 'fr-FR',  // ✅ Add this line
+  ...
 };
 ```
 
-### Step 4: Test
+### Step 3: That's It!
 
-```bash
-# Test with sample French booking
-curl -X POST http://localhost:3000/api/test-email \
-  -H "Content-Type: application/json" \
-  -d '{
-    "language": "fr-FR",
-    "emailType": "post_booking",
-    "recipientEmail": "test@example.com"
-  }'
+The system automatically:
+- ✅ Loads your translations
+- ✅ Uses the same HTML template
+- ✅ Sends emails in the correct language
+
+### Example: Adding All 5 Email Types for French
+
+You only need to add ONE entry to the JSON file:
+
+```json
+"fr-FR": {
+  "post_booking": { ... all translations ... },
+  "pre_arrival": { ... all translations ... },
+  "arrival": { ... all translations ... },
+  "post_departure": { ... all translations ... },
+  "cancellation": { ... all translations ... }
+}
 ```
+
+**No HTML duplication!** Just pure text translations.
 
 ## Template Placeholders
 
@@ -169,18 +233,37 @@ For professional translations, consider:
 - **Professional translators** - For marketing content
 - **Native speakers** - Best for cultural nuances
 
-## File Naming Convention
+## Translation File Structure
 
-Always follow this pattern:
-```
-{email_type}_{language_code}.html
+The `email-translations.json` file follows this structure:
+
+```json
+{
+  "language-code": {
+    "email-type": {
+      "translationKey": "Translated text with {{placeholders}}"
+    }
+  }
+}
 ```
 
-Examples:
-- `post_booking_en.html`
-- `post_booking_fr.html`
-- `pre_arrival_de.html`
-- `cancellation_nl.html`
+### Available Translation Keys
+
+Each email type has specific translation keys. Here's the complete list:
+
+#### post_booking
+- `subject`, `headerSubtitle`, `greeting`, `intro`
+- `bookingDetailsTitle`, `bookingRef`, `checkIn`, `checkOut`, `totalPrice`
+- `nextStepsTitle`, `nextStep1`, `nextStep2`, `nextStep3`
+- `visitWebsite`, `closing`, `regards`, `teamName`, `location`
+
+#### cancellation
+- `subject`, `heading`, `greeting`, `intro`
+- `detailsTitle`, `bookingRef`, `originalCheckIn`, `originalCheckOut`, `cancellationDate`
+- `nextStepsTitle`, `nextStep1`, `nextStep2`, `nextStep3`, `nextStep4`
+- `sorry`, `visitWebsite`, `questions`, `regards`, `teamName`, `location`
+
+Copy the English version and translate each value.
 
 ## Testing Checklist
 
