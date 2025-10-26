@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Star, ArrowRight, ChevronDown } from 'lucide-react';
+import { Star, ArrowRight } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
@@ -53,15 +53,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
         {/* Enhanced CTA Buttons with visual prominence */}
         <div className="mt-8 sm:mt-10">
-          {/* Visual hint - pointing to buttons */}
-          <div className="flex items-center gap-2 mb-3 animate-bounce">
-            <ChevronDown size={20} className="text-yellow-300" />
-            <span className="text-sm font-semibold text-yellow-300 uppercase tracking-wide">
-              {lang === 'pt-PT' || lang === 'pt-BR' ? 'Clique aqui' : 'Click here'}
-            </span>
-            <ChevronDown size={20} className="text-yellow-300" />
-          </div>
-          
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
             {/* Primary CTA - Explore Lodge */}
             <a
