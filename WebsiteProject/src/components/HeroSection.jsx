@@ -99,9 +99,11 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           </div>
         </div>
         
-        <div className="mt-8 sm:mt-10 flex items-center gap-1 text-yellow-300">
-          {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
-          <span className="ml-2 text-white/90 text-sm sm:text-base">{ui.hero.badge}</span>
+        <div className="mt-8 sm:mt-10">
+          <div className="flex items-center gap-1 text-yellow-300">
+            {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+          </div>
+          <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         </div>
 
         {/* Trustindex Review Widget */}
