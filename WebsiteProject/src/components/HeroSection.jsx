@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Star, ArrowRight } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
   const [idx, setIdx] = useState(0);
   const list = Array.isArray(images) ? images.filter(Boolean) : [];
+  const trustindexRef = useRef(null);
 
   useEffect(() => {
     if (list.length <= 1) return;
@@ -12,20 +13,15 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     return () => clearInterval(id);
   }, [list.length]);
 
-  // Load Trustindex widget script
+  // Load Trustindex widget
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://cdn.trustindex.io/loader.js?57a2f48569ff95903b76b1f759d';
-    script.defer = true;
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
+    if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.trustindex.io/loader.js?57a2f48569ff95903b76b1f759d';
+      script.defer = true;
+      script.async = true;
+      trustindexRef.current.appendChild(script);
+    }
   }, []);
 
   const go = (i) =>
@@ -109,7 +105,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         </div>
 
         {/* Trustindex Review Widget */}
-        <div className="mt-6" id="trustindex-widget-container"></div>
+        <div ref={trustindexRef} className="mt-6"></div>
       </div>
 
       {/* Controls */}
