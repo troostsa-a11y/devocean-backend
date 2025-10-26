@@ -56,10 +56,10 @@ if (validateEnvironment()) {
     const taxiConfig = getTaxiConfig();
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
     
-    // SMTP config for sending emails (port 995 for SMTP SSL as specified by hosting provider)
+    // SMTP config for sending emails (port 465 for SMTP SSL, same as contact form)
     const smtpConfig = {
       host: process.env.MAIL_HOST,
-      port: parseInt(process.env.SMTP_PORT || '995'),
+      port: parseInt(process.env.SMTP_PORT || '465'),
       secure: true,
       auth: {
         user: process.env.IMAP_USER,

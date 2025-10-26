@@ -86,8 +86,9 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Test booking processed successfully (Group Ref: 77463390)
 
 **Important Configuration Notes:**
-- **IMAP Port:** Must use port **993** for IMAP SSL (not 465 which is for SMTP)
-- **SMTP Port:** Port 465 for SMTP SSL (sending emails)
+- **IMAP Port:** Port **993** for IMAP SSL (receiving emails)
+- **SMTP Port:** Port **465** for SMTP SSL (sending emails)
+- **NOT Port 995:** That's POP3 (another receiving protocol, not used)
 - Server runs on port 3003 separately from main website (port 5000)
 - Cron schedule: 08:00, 14:00, 22:00 UTC daily
 - Admin reports: Daily 14:00 UTC, Weekly Monday 06:00 UTC
