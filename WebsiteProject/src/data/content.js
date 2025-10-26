@@ -1,6 +1,6 @@
 // Base content data (images, accommodations, experiences)
 export const IMG = {
-  logo: "/images/Logo2.png",
+  logo: "/images/devocean_logo_header.png",
   units: {
     safari: "/photos/units/safari-1.webp",
     comfort: "/photos/units/comfort-1.webp",
