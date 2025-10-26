@@ -19,8 +19,6 @@ function validateEnvironment() {
     'DATABASE_URL',
     'MAIL_HOST',
     'MAIL_PORT',
-    'MAIL_USERNAME',
-    'MAIL_PASSWORD',
     'IMAP_HOST',
     'IMAP_PORT',
     'IMAP_USER',
@@ -33,6 +31,12 @@ function validateEnvironment() {
     console.error('❌ Missing required environment variables:');
     missing.forEach(key => console.error(`  - ${key}`));
     console.error('\nPlease add these secrets to Replit Secrets');
+    return false;
+  }
+
+  // Check for either BOOKING_MAIL_PASSWORD or fallback to MAIL_PASSWORD
+  if (!process.env.BOOKING_MAIL_PASSWORD && !process.env.MAIL_PASSWORD) {
+    console.error('❌ Missing required secret: BOOKING_MAIL_PASSWORD (or MAIL_PASSWORD as fallback)');
     return false;
   }
 
@@ -60,14 +64,14 @@ if (validateEnvironment()) {
     const taxiConfig = getTaxiConfig();
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
     
-    // SMTP config for sending emails
+    // SMTP config for sending emails (use BOOKING_* secrets to avoid conflict with contact form)
     const smtpConfig = {
       host: process.env.MAIL_HOST,
       port: parseInt(process.env.MAIL_PORT),
       secure: process.env.MAIL_SECURE === 'true',
       auth: {
-        user: process.env.MAIL_USERNAME,
-        pass: process.env.MAIL_PASSWORD,
+        user: process.env.BOOKING_MAIL_USERNAME || 'booking@devoceanlodge.com',
+        pass: process.env.BOOKING_MAIL_PASSWORD || process.env.MAIL_PASSWORD,
       },
     };
     
