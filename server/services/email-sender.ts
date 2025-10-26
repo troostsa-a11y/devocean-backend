@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import { DatabaseService } from './database';
 import type { ScheduledEmail } from '../../shared/schema';
-import { getEmailTemplate } from './email-templates';
+import { emailTemplateRenderer } from './email-template-renderer';
 
 /**
  * Email Sender Service
@@ -34,9 +34,9 @@ export class EmailSenderService {
    */
   async sendScheduledEmail(scheduledEmail: ScheduledEmail): Promise<boolean> {
     try {
-      // Get email template
-      const template = getEmailTemplate(
-        scheduledEmail.emailType as any,
+      // Get email template using HTML template renderer
+      const template = emailTemplateRenderer.render(
+        scheduledEmail.emailType,
         scheduledEmail.language,
         scheduledEmail.templateData || {}
       );

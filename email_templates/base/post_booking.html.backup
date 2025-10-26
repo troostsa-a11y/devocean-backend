@@ -69,7 +69,7 @@
 
                 <!-- Greeting -->
                 <p style="margin:0 0 14px 0;">
-                  <strong style="color:#5C5048;">Dear {{guestName}},</strong>
+                  <strong style="color:#5C5048;">Dear {{ customer:first_name }},</strong>
                 </p>
 
                 <p style="margin:0 0 14px 0;">
@@ -80,8 +80,8 @@
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:14px 0 18px 0; background:#fffaf6; border-left:4px solid #9e4b13; border-radius:8px;">
                   <tr>
                     <td style="padding:16px 18px;">
-                      <p style="margin:0 0 6px 0;"><strong style="color:#5C5048;">Arrival:</strong> {{checkInDate}}</p>
-                      <p style="margin:0;"><strong style="color:#5C5048;">Departure:</strong> {{checkOutDate}}</p>
+                      <p style="margin:0 0 6px 0;"><strong style="color:#5C5048;">Arrival:</strong> {{ reservation:checkin_date }}</p>
+                      <p style="margin:0;"><strong style="color:#5C5048;">Departure:</strong> {{ reservation:checkout_date }}</p>
                     </td>
                   </tr>
                 </table>
