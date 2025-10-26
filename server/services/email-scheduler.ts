@@ -84,8 +84,8 @@ export class EmailSchedulerService {
         templateData: {
           guestName: booking.guestName,
           groupRef: booking.groupRef,
-          checkInDate: booking.checkInDate,
-          checkOutDate: booking.checkOutDate,
+          checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+          checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
           rooms: booking.rooms,
         },
       });
@@ -109,8 +109,8 @@ export class EmailSchedulerService {
         templateData: {
           guestName: booking.guestName,
           groupRef: booking.groupRef,
-          checkInDate: booking.checkInDate,
-          checkOutDate: booking.checkOutDate,
+          checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+          checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
           rooms: booking.rooms,
         },
       });
@@ -132,8 +132,8 @@ export class EmailSchedulerService {
       templateData: {
         guestName: booking.guestName,
         groupRef: booking.groupRef,
-        checkInDate: booking.checkInDate,
-        checkOutDate: booking.checkOutDate,
+        checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+        checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
       },
     });
 
