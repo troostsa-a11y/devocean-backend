@@ -19,8 +19,6 @@ function validateEnvironment() {
     'DATABASE_URL',
     'MAIL_HOST',
     'MAIL_PORT',
-    'IMAP_HOST',
-    'IMAP_PORT',
     'IMAP_USER',
     'IMAP_PASSWORD',
   ];
@@ -31,12 +29,6 @@ function validateEnvironment() {
     console.error('❌ Missing required environment variables:');
     missing.forEach(key => console.error(`  - ${key}`));
     console.error('\nPlease add these secrets to Replit Secrets');
-    return false;
-  }
-
-  // Check for either BOOKING_MAIL_PASSWORD or fallback to MAIL_PASSWORD
-  if (!process.env.BOOKING_MAIL_PASSWORD && !process.env.MAIL_PASSWORD) {
-    console.error('❌ Missing required secret: BOOKING_MAIL_PASSWORD (or MAIL_PASSWORD as fallback)');
     return false;
   }
 
@@ -75,10 +67,10 @@ if (validateEnvironment()) {
       },
     };
     
-    // IMAP config for reading emails
+    // IMAP config for reading emails (uses shared MAIL_HOST and MAIL_PORT)
     const imapConfig = {
-      host: process.env.IMAP_HOST,
-      port: parseInt(process.env.IMAP_PORT),
+      host: process.env.IMAP_HOST || process.env.MAIL_HOST,
+      port: parseInt(process.env.MAIL_PORT),
       user: process.env.IMAP_USER,
       password: process.env.IMAP_PASSWORD,
       tls: process.env.IMAP_TLS === 'true',
