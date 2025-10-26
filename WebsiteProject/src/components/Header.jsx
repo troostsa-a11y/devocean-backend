@@ -188,70 +188,87 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
             </li>
           </ul>
 
-          {/* Burger (mobile & tablet) */}
-          <button
-            data-testid="button-mobile-menu"
-            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors"
-            onClick={() => setMenuOpen(v => !v)}
-            aria-expanded={menuOpen}
-            aria-controls="mnav"
-            aria-label="Toggle menu"
-          >
-            <Menu />
-          </button>
+          {/* Burger (mobile & tablet) - Enhanced visibility */}
+          <div className="lg:hidden relative">
+            <button
+              data-testid="button-mobile-menu"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-all shadow-md hover:shadow-lg"
+              onClick={() => setMenuOpen(v => !v)}
+              aria-expanded={menuOpen}
+              aria-controls="mnav"
+              aria-label="Toggle menu"
+            >
+              <Menu className={`transition-transform ${menuOpen ? 'rotate-90' : ''}`} />
+              <span className="text-sm font-semibold">Menu</span>
+            </button>
+
+            {/* Mobile/Tablet dropdown menu - positioned under button */}
+            {menuOpen && (
+              <div 
+                id="mnav" 
+                data-testid="menu-mobile-nav" 
+                className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50"
+              >
+                {[
+                  ["home", "#home"],
+                  ["stay", "#stay"],
+                  ["experiences", "#experiences"],
+                  ["todo", "#todo"],
+                  ["gallery", "#gallery"],
+                  ["location", "#location"],
+                  ["contact", "#contact"],
+                ].map(([k, href]) => (
+                  <a
+                    key={k}
+                    href={href}
+                    data-testid={`link-mobile-${k}`}
+                    className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                    onClick={(e) => handleAnchorNav(e, href)}
+                  >
+                    {ui.nav[k]}
+                  </a>
+                ))}
+                <a
+                  href={`/story.html?lang=${lang}`}
+                  data-testid="link-mobile-story"
+                  className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {ui.stay?.ourStory || "Our Story"}
+                </a>
+                <div className="p-3">
+                  <a
+                    href={bookUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-testid="button-mobile-book-now"
+                    className="block text-center btn-cta px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors font-semibold shadow-md"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      if (window.dataLayer) {
+                        window.dataLayer.push({
+                          event: 'reservation_complete',
+                          button_location: 'header_mobile',
+                          language: lang,
+                          currency: currency
+                        });
+                      }
+                    }}
+                  >
+                    {ui.contact.bookNow}
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
         </nav>
 
-        {/* Mobile/Tablet menu */}
+        {/* Overlay to close menu when clicking outside */}
         {menuOpen && (
-          <div id="mnav" data-testid="menu-mobile-nav" className="lg:hidden border-t bg-white">
-            {[
-              ["home", "#home"],
-              ["stay", "#stay"],
-              ["experiences", "#experiences"],
-              ["todo", "#todo"],
-              ["gallery", "#gallery"],
-              ["location", "#location"],
-              ["contact", "#contact"],
-            ].map(([k, href]) => (
-              <a
-                key={k}
-                href={href}
-                data-testid={`link-mobile-${k}`}
-                className="block px-4 py-3 hover:bg-slate-50"
-                onClick={(e) => handleAnchorNav(e, href)}
-              >
-                {ui.nav[k]}
-              </a>
-            ))}
-            <a
-              href={`/story.html?lang=${lang}`}
-              data-testid="link-mobile-story"
-              className="block px-4 py-3 hover:bg-slate-50"
-              onClick={() => setMenuOpen(false)}
-            >
-              {ui.stay?.ourStory || "Our Story"}
-            </a>
-            <a
-              href={bookUrl}
-              target="_blank"
-              rel="noreferrer"
-              data-testid="button-mobile-book-now"
-              className="block m-4 text-center btn-cta px-4 py-2 rounded-xl bg-[#9e4b13] text-white"
-              onClick={() => {
-                setMenuOpen(false);
-                if (window.dataLayer) {
-                  window.dataLayer.push({
-                    event: 'reservation_complete',
-                    button_location: 'header_mobile',
-                    language: lang,
-                    currency: currency
-                  });
-                }
-              }}
-            >
-              {ui.contact.bookNow}
-            </a>
-          </div>
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/20 z-40"
+            onClick={() => setMenuOpen(false)}
+          />
         )}
       </header>
     </>
