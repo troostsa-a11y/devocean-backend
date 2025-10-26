@@ -113,34 +113,52 @@ export class EmailTemplateRenderer {
 
     const t = emailTranslations || this.translations['en-GB'][emailType];
 
-    // Replace {{t.xxx}} placeholders with translations
+    // Build complete replacement data (translations + data)
+    const allReplacements: { [key: string]: string } = {};
+    
+    // Add all translation keys with 't.' prefix
+    for (const [key, value] of Object.entries(t)) {
+      allReplacements[`t.${key}`] = value;
+    }
+    
+    // Add all data keys
+    for (const [key, value] of Object.entries(data)) {
+      allReplacements[key] = String(value);
+    }
+    
+    // Add language code
+    allReplacements['lang'] = langCode.split('-')[0] || 'en';
+    
+    // Replace all placeholders in template
     let html = template;
     
-    // First pass: Replace translation placeholders
-    html = html.replace(/\{\{t\.(\w+)\}\}/g, (match, key) => {
-      const translation = t[key];
-      if (translation === undefined) {
-        console.warn(`Missing translation key: ${key} for ${emailType} in ${langCode}`);
-        return match;
-      }
-      return translation;
-    });
-
-    // Second pass: Replace data placeholders (including nested ones in translations)
-    html = html.replace(/\{\{(\w+)\}\}/g, (match, key) => {
-      const value = data[key];
-      if (value === undefined) {
-        // Don't warn for {{lang}} as it's replaced separately
-        if (key !== 'lang') {
-          console.warn(`Missing data key: ${key} for ${emailType}`);
+    // Keep replacing until no more placeholders are found
+    // This handles nested placeholders like {{t.greeting}} containing {{guestName}}
+    let previousHtml = '';
+    let iterations = 0;
+    const maxIterations = 10; // Prevent infinite loops
+    
+    while (html !== previousHtml && iterations < maxIterations) {
+      previousHtml = html;
+      
+      html = html.replace(/\{\{([^}]+)\}\}/g, (match, key) => {
+        const value = allReplacements[key];
+        if (value === undefined) {
+          // Don't warn on first iteration for nested placeholders
+          if (iterations > 0) {
+            console.warn(`Missing placeholder: ${key} for ${emailType} in ${langCode}`);
+          }
+          return match;
         }
-        return match;
-      }
-      return String(value);
-    });
-
-    // Replace {{lang}} with language code
-    html = html.replace(/\{\{lang\}\}/g, langCode.split('-')[0] || 'en');
+        return value;
+      });
+      
+      iterations++;
+    }
+    
+    if (iterations >= maxIterations) {
+      console.warn(`Max iterations reached for ${emailType} - possible circular reference`);
+    }
 
     return {
       subject: t.subject || 'DEVOCEAN Lodge',
