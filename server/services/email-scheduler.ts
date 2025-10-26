@@ -37,16 +37,93 @@ export class EmailSchedulerService {
 
   /**
    * Calculate when each email should be sent
+   * 
+   * Conditional scheduling based on days until check-in:
+   * 
+   * Case 1: >= 7 days until check-in (normal schedule)
+   *   - Post-booking: 2 hours after booking
+   *   - Pre-arrival: 7 days before check-in at 09:00
+   *   - Arrival: 2 days before check-in at 09:00
+   * 
+   * Case 2: < 7 days but >= 2 days until check-in (adjusted schedule)
+   *   - Post-booking: 1 hour after booking
+   *   - Pre-arrival: (days_remaining - 2) / 2 days before check-in
+   *   - Arrival: 2 days before check-in at 09:00
+   * 
+   * Case 3: < 2 days until check-in (compressed schedule)
+   *   - Post-booking: 1 hour after booking
+   *   - Pre-arrival: 3 hours after booking
+   *   - Arrival: 6 hours after booking
    */
   private calculateEmailSchedules(booking: Booking): InsertScheduledEmail[] {
     const now = new Date();
     const checkIn = new Date(booking.checkInDate);
     const checkOut = new Date(booking.checkOutDate);
 
+    // Calculate days until check-in
+    const msUntilCheckIn = checkIn.getTime() - now.getTime();
+    const daysUntilCheckIn = msUntilCheckIn / (1000 * 60 * 60 * 24);
+
     const schedules: InsertScheduledEmail[] = [];
 
-    // 1. Post-booking email - send within 2 hours
-    const postBookingTime = new Date(now.getTime() + 2 * 60 * 60 * 1000); // 2 hours from now
+    // Common template data
+    const commonTemplateData = {
+      guestName: booking.guestName,
+      groupRef: booking.groupRef,
+      checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+      checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+      rooms: booking.rooms,
+    };
+
+    // Determine scheduling strategy based on days until check-in
+    let postBookingHours: number;
+    let preArrivalDate: Date | null = null;
+    let arrivalDate: Date | null = null;
+
+    if (daysUntilCheckIn >= 7) {
+      // Case 1: Normal schedule (>= 7 days)
+      console.log(`Booking ${booking.groupRef}: Normal schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
+      
+      postBookingHours = 2;
+      
+      preArrivalDate = new Date(checkIn);
+      preArrivalDate.setDate(checkIn.getDate() - 7);
+      preArrivalDate.setHours(9, 0, 0, 0);
+      
+      arrivalDate = new Date(checkIn);
+      arrivalDate.setDate(checkIn.getDate() - 2);
+      arrivalDate.setHours(9, 0, 0, 0);
+      
+    } else if (daysUntilCheckIn >= 2) {
+      // Case 2: Adjusted schedule (< 7 days but >= 2 days)
+      console.log(`Booking ${booking.groupRef}: Adjusted schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
+      
+      postBookingHours = 1;
+      
+      // Pre-arrival: (days_remaining - 2) / 2 days before check-in
+      const preArrivalDaysBeforeCheckIn = (daysUntilCheckIn - 2) / 2;
+      preArrivalDate = new Date(checkIn.getTime() - (preArrivalDaysBeforeCheckIn * 24 * 60 * 60 * 1000));
+      preArrivalDate.setHours(9, 0, 0, 0);
+      
+      arrivalDate = new Date(checkIn);
+      arrivalDate.setDate(checkIn.getDate() - 2);
+      arrivalDate.setHours(9, 0, 0, 0);
+      
+    } else {
+      // Case 3: Compressed schedule (< 2 days)
+      console.log(`Booking ${booking.groupRef}: Compressed schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
+      
+      postBookingHours = 1;
+      
+      // Pre-arrival: 3 hours after booking
+      preArrivalDate = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+      
+      // Arrival: 6 hours after booking
+      arrivalDate = new Date(now.getTime() + 6 * 60 * 60 * 1000);
+    }
+
+    // 1. Post-booking email
+    const postBookingTime = new Date(now.getTime() + postBookingHours * 60 * 60 * 1000);
     schedules.push({
       bookingId: booking.id,
       emailType: 'post_booking',
@@ -56,23 +133,15 @@ export class EmailSchedulerService {
       scheduledFor: postBookingTime,
       status: 'pending',
       templateData: {
-        guestName: booking.guestName,
-        groupRef: booking.groupRef,
-        checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-        checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-        rooms: booking.rooms,
+        ...commonTemplateData,
         totalPrice: booking.totalPrice,
         currency: booking.currency,
       },
     });
+    console.log(`  Post-booking: ${postBookingTime.toISOString()} (${postBookingHours}h from now)`);
 
-    // 2. Pre-arrival email - 7 days before check-in at 09:00
-    const preArrivalDate = new Date(checkIn);
-    preArrivalDate.setDate(checkIn.getDate() - 7);
-    preArrivalDate.setHours(9, 0, 0, 0);
-
-    // Only schedule if it's in the future
-    if (preArrivalDate > now) {
+    // 2. Pre-arrival email - only if in the future
+    if (preArrivalDate && preArrivalDate > now) {
       schedules.push({
         bookingId: booking.id,
         emailType: 'pre_arrival',
@@ -81,23 +150,15 @@ export class EmailSchedulerService {
         language: booking.guestLanguage,
         scheduledFor: preArrivalDate,
         status: 'pending',
-        templateData: {
-          guestName: booking.guestName,
-          groupRef: booking.groupRef,
-          checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-          checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-          rooms: booking.rooms,
-        },
+        templateData: commonTemplateData,
       });
+      console.log(`  Pre-arrival: ${preArrivalDate.toISOString()}`);
+    } else {
+      console.log(`  Pre-arrival: Skipped (would be in the past)`);
     }
 
-    // 3. Arrival email - 2 days before check-in at 09:00
-    const arrivalDate = new Date(checkIn);
-    arrivalDate.setDate(checkIn.getDate() - 2);
-    arrivalDate.setHours(9, 0, 0, 0);
-
-    // Only schedule if it's in the future
-    if (arrivalDate > now) {
+    // 3. Arrival email - only if in the future
+    if (arrivalDate && arrivalDate > now) {
       schedules.push({
         bookingId: booking.id,
         emailType: 'arrival',
@@ -106,17 +167,14 @@ export class EmailSchedulerService {
         language: booking.guestLanguage,
         scheduledFor: arrivalDate,
         status: 'pending',
-        templateData: {
-          guestName: booking.guestName,
-          groupRef: booking.groupRef,
-          checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-          checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-          rooms: booking.rooms,
-        },
+        templateData: commonTemplateData,
       });
+      console.log(`  Arrival: ${arrivalDate.toISOString()}`);
+    } else {
+      console.log(`  Arrival: Skipped (would be in the past)`);
     }
 
-    // 4. Post-departure email - 1 day after check-out at 10:00
+    // 4. Post-departure email - always schedule (1 day after check-out at 10:00)
     const postDepartureDate = new Date(checkOut);
     postDepartureDate.setDate(checkOut.getDate() + 1);
     postDepartureDate.setHours(10, 0, 0, 0);
@@ -129,13 +187,9 @@ export class EmailSchedulerService {
       language: booking.guestLanguage,
       scheduledFor: postDepartureDate,
       status: 'pending',
-      templateData: {
-        guestName: booking.guestName,
-        groupRef: booking.groupRef,
-        checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-        checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-      },
+      templateData: commonTemplateData,
     });
+    console.log(`  Post-departure: ${postDepartureDate.toISOString()}`);
 
     return schedules;
   }
