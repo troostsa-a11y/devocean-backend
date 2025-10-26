@@ -48,12 +48,19 @@ export class EmailSenderService {
         scheduledEmail.templateData || {}
       );
 
-      // Send email via SMTP
+      // Send email via SMTP with inline header image attachment
       const result = await this.transporter.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: scheduledEmail.recipientEmail,
         subject: template.subject,
         html: template.html,
+        attachments: [
+          {
+            filename: 'email-header.jpg',
+            path: './WebsiteProject/public/images/email-header.jpg',
+            cid: 'email-header-image' // Content-ID for referencing in HTML
+          }
+        ]
       });
 
       // Mark as sent in database
