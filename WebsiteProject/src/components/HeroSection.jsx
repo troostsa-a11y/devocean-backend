@@ -63,7 +63,17 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           </div>
           
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            {/* Primary CTA - Book Now */}
+            {/* Primary CTA - Explore Lodge */}
+            <a
+              href="#stay"
+              className="group btn-secondary w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
+              aria-label={ui.hero.ctaSecondary}
+            >
+              <span>{ui.hero.ctaSecondary}</span>
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
+            </a>
+            
+            {/* Secondary CTA - Book Now */}
             <a
               href={bookUrl}
               target="_blank"
@@ -81,16 +91,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               }}
             >
               <span>{ui.hero.ctaPrimary}</span>
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
-            </a>
-            
-            {/* Secondary CTA - Explore */}
-            <a
-              href="#stay"
-              className="group btn-secondary w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
-              aria-label={ui.hero.ctaSecondary}
-            >
-              <span>{ui.hero.ctaSecondary}</span>
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
             </a>
           </div>
