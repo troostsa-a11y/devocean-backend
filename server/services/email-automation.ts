@@ -5,6 +5,7 @@ import { EmailSchedulerService } from './email-scheduler';
 import { EmailSenderService } from './email-sender';
 import { CancellationHandler } from './cancellation-handler';
 import { TransferNotificationService } from './transfer-notification';
+import { AdminReportingService } from './admin-reporting';
 import { insertBookingSchema } from '../../shared/schema';
 
 /**
@@ -36,14 +37,18 @@ export class EmailAutomationService {
   private emailSender: EmailSenderService;
   private cancellationHandler: CancellationHandler;
   private transferNotification?: TransferNotificationService;
+  private adminReporting?: AdminReportingService;
   private imapConfig: EmailConfig;
   private cronJob?: cron.ScheduledTask;
+  private dailyReportJob?: cron.ScheduledTask;
+  private weeklyReportJob?: cron.ScheduledTask;
 
   constructor(
     databaseUrl: string,
     resendApiKey: string,
     imapConfig: EmailConfig,
-    taxiConfig?: TaxiCompanyConfig
+    taxiConfig?: TaxiCompanyConfig,
+    adminEmail?: string
   ) {
     this.db = new DatabaseService(databaseUrl);
     this.emailScheduler = new EmailSchedulerService(this.db);
@@ -59,35 +64,70 @@ export class EmailAutomationService {
       );
     }
     
+    // Initialize admin reporting service
+    if (adminEmail) {
+      this.adminReporting = new AdminReportingService(
+        resendApiKey,
+        this.db,
+        adminEmail
+      );
+    }
+    
     this.imapConfig = imapConfig;
   }
 
   /**
    * Start the cron job scheduler
    * Checks emails at 08:00, 14:00, and 22:00 UTC
+   * Sends daily report at 14:00 UTC (2 PM)
+   * Sends weekly report at 06:00 UTC on Mondays
    */
   start(): void {
     console.log('Starting email automation service...');
 
     // Schedule: 08:00, 14:00, 22:00 UTC daily
     // Cron format: minute hour * * *
-    const schedule = '0 8,14,22 * * *';
+    const emailCheckSchedule = '0 8,14,22 * * *';
 
-    this.cronJob = cron.schedule(schedule, async () => {
+    this.cronJob = cron.schedule(emailCheckSchedule, async () => {
       console.log(`[${new Date().toISOString()}] Running scheduled email check...`);
       await this.runEmailCheck();
     });
 
     console.log(`Email automation scheduled for 08:00, 14:00, 22:00 UTC daily`);
+
+    // Schedule daily report at 14:00 UTC (2 PM)
+    if (this.adminReporting) {
+      this.dailyReportJob = cron.schedule('0 14 * * *', async () => {
+        console.log(`[${new Date().toISOString()}] Sending daily report...`);
+        await this.adminReporting!.sendDailyReport();
+      });
+      console.log(`Daily reports scheduled for 14:00 UTC (2 PM)`);
+
+      // Schedule weekly report at 06:00 UTC on Mondays (day 1)
+      this.weeklyReportJob = cron.schedule('0 6 * * 1', async () => {
+        console.log(`[${new Date().toISOString()}] Sending weekly report...`);
+        await this.adminReporting!.sendWeeklyReport();
+      });
+      console.log(`Weekly reports scheduled for 06:00 UTC on Mondays`);
+    }
   }
 
   /**
-   * Stop the cron job
+   * Stop the cron jobs
    */
   stop(): void {
     if (this.cronJob) {
       this.cronJob.stop();
       console.log('Email automation service stopped');
+    }
+    if (this.dailyReportJob) {
+      this.dailyReportJob.stop();
+      console.log('Daily reporting stopped');
+    }
+    if (this.weeklyReportJob) {
+      this.weeklyReportJob.stop();
+      console.log('Weekly reporting stopped');
     }
   }
 

@@ -55,6 +55,7 @@ let emailService;
 if (validateEnvironment()) {
   try {
     const taxiConfig = getTaxiConfig();
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
     
     emailService = new EmailAutomationService(
       process.env.DATABASE_URL,
@@ -66,12 +67,15 @@ if (validateEnvironment()) {
         password: process.env.IMAP_PASSWORD,
         tls: process.env.IMAP_TLS === 'true',
       },
-      taxiConfig
+      taxiConfig,
+      adminEmail
     );
 
     if (taxiConfig) {
       console.log(`📧 Transfer notifications enabled for ${taxiConfig.name}`);
     }
+
+    console.log(`📊 Admin reports enabled for ${adminEmail}`);
 
     // Start the automated email checking
     emailService.start();

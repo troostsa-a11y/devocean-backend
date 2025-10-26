@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{t.subject}}</title>
+  <style>
+    body { font-family: 'Raleway', Arial, sans-serif; line-height: 1.6; color: #5C5048; max-width: 600px; margin: 0 auto; padding: 0; background: #fffaf6; }
+    .email-container { background: white; margin: 20px auto; border-radius: 12px; overflow: hidden; }
+    .header { background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%); color: white; padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; letter-spacing: 0.2px; }
+    .header p { margin: 0; font-size: 16px; opacity: 0.95; font-weight: 600; }
+    .content { padding: 30px 20px; }
+    .content h2 { color: #9e4b13; margin: 0 0 20px 0; font-size: 22px; font-weight: 700; }
+    .booking-details { background: #fffaf6; padding: 20px; margin: 20px 0; border-left: 4px solid #9e4b13; border-radius: 8px; }
+    .booking-details h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
+    .booking-details p { margin: 8px 0; }
+    .highlight-box { background: #fffaf6; padding: 20px; margin: 20px 0; border-radius: 8px; border: 2px solid #9e4b13; }
+    .highlight-box h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
+    .highlight-box p { margin: 8px 0; }
+    .info-list { margin: 20px 0; }
+    .info-list ul { padding-left: 20px; }
+    .info-list li { margin: 10px 0; }
+    .button-container { text-align: center; margin: 30px 0; }
+    .button { display: inline-block; padding: 14px 30px; background: #9e4b13; color: white; text-decoration: none; border-radius: 999px; font-weight: 700; font-size: 16px; }
+    .button:hover { background: #b65a1a; }
+    .footer { background: #fffaf6; padding: 20px; text-align: center; font-size: 13px; color: #8a827b; border-top: 1px solid #eee; }
+    .footer p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>🌊 DEVOCEAN Lodge</h1>
+      <p>{{t.headerSubtitle}}</p>
+    </div>
+    
+    <div class="content">
+      <h2>{{t.greeting}}</h2>
+      
+      <p>{{t.intro}}</p>
+      
+      <div class="booking-details">
+        <h3>{{t.bookingDetailsTitle}}</h3>
+        <p><strong>{{t.bookingRef}}:</strong> {{groupRef}}</p>
+        <p><strong>{{t.checkIn}}:</strong> {{checkInDate}} at {{t.checkInTime}}</p>
+        <p><strong>{{t.checkOut}}:</strong> {{checkOutDate}} at {{t.checkOutTime}}</p>
+      </div>
+      
+      <div class="highlight-box">
+        <h3>{{t.arrivalInstructionsTitle}}</h3>
+        <p>{{t.arrivalInstructions}}</p>
+      </div>
+      
+      <div class="info-list">
+        <p><strong>{{t.finalRemindersTitle}}:</strong></p>
+        <ul>
+          <li>{{t.finalReminder1}}</li>
+          <li>{{t.finalReminder2}}</li>
+          <li>{{t.finalReminder3}}</li>
+        </ul>
+      </div>
+      
+      <div class="button-container">
+        <a href="https://www.devoceanlodge.com/contact" class="button">{{t.contactUs}}</a>
+      </div>
+      
+      <p>{{t.closing}}</p>
+      
+      <p>{{t.regards}},<br>
+      <strong>{{t.teamName}}</strong></p>
+    </div>
+    
+    <div class="footer">
+      <p><strong>DEVOCEAN Lodge</strong> | {{t.location}}</p>
+      <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+    </div>
+  </div>
+</body>
+</html>

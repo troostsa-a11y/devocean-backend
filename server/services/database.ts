@@ -290,4 +290,107 @@ export class DatabaseService {
       })
       .where(eq(pendingCancellations.id, id));
   }
+
+  /**
+   * Get report statistics for a date range
+   */
+  async getReportStats(startDate: Date, endDate: Date): Promise<any> {
+    const nextDay = new Date(endDate);
+    nextDay.setDate(nextDay.getDate() + 1);
+
+    // Get all bookings in date range
+    const allBookings = await this.db
+      .select()
+      .from(bookings)
+      .where(
+        and(
+          gte(bookings.createdAt, startDate),
+          lte(bookings.createdAt, nextDay)
+        )
+      );
+
+    // Get all emails in date range
+    const allEmails = await this.db
+      .select()
+      .from(emailLogs)
+      .where(
+        and(
+          gte(emailLogs.sentAt, startDate),
+          lte(emailLogs.sentAt, nextDay)
+        )
+      );
+
+    // Get email checks in date range
+    const allChecks = await this.db
+      .select()
+      .from(emailCheckLogs)
+      .where(
+        and(
+          gte(emailCheckLogs.checkTime, startDate),
+          lte(emailCheckLogs.checkTime, nextDay)
+        )
+      );
+
+    // Get pending emails count
+    const pendingEmails = await this.db
+      .select()
+      .from(scheduledEmails)
+      .where(eq(scheduledEmails.status, 'pending'));
+
+    // Calculate stats
+    const totalBookings = allBookings.length;
+    const totalCancellations = allBookings.filter(b => b.status === 'cancelled').length;
+    const activeBookings = allBookings.filter(b => b.status === 'active').length;
+
+    const emailsSent = allEmails.filter(e => e.status === 'sent').length;
+    const emailsFailed = allEmails.filter(e => e.status === 'failed').length;
+    const emailsPending = pendingEmails.length;
+
+    const emailsByType = {
+      post_booking: allEmails.filter(e => e.emailType === 'post_booking').length,
+      pre_arrival: allEmails.filter(e => e.emailType === 'pre_arrival').length,
+      arrival: allEmails.filter(e => e.emailType === 'arrival').length,
+      post_departure: allEmails.filter(e => e.emailType === 'post_departure').length,
+      cancellation: allEmails.filter(e => e.emailType === 'cancellation').length,
+      transfer_notification: allEmails.filter(e => e.emailType === 'transfer_notification').length,
+    };
+
+    const transferNotificationsSent = allBookings.filter(b => b.transferNotificationSent).length;
+
+    const emailChecksPerformed = allChecks.length;
+    const emailChecksSuccessful = allChecks.filter(c => c.status === 'success').length;
+    const emailChecksFailed = allChecks.filter(c => c.status === 'failed').length;
+
+    // Get recent bookings (last 10)
+    const recentBookings = allBookings
+      .slice(-10)
+      .map(b => ({
+        groupRef: b.groupRef,
+        guestName: b.guestName,
+        checkInDate: new Date(b.checkInDate).toLocaleDateString('en-GB'),
+        status: b.status,
+      }));
+
+    // Get recent errors
+    const recentErrors = allEmails
+      .filter(e => e.errorMessage)
+      .slice(-5)
+      .map(e => e.errorMessage || '');
+
+    return {
+      totalBookings,
+      totalCancellations,
+      activeBookings,
+      emailsSent,
+      emailsFailed,
+      emailsPending,
+      emailsByType,
+      transferNotificationsSent,
+      emailChecksPerformed,
+      emailChecksSuccessful,
+      emailChecksFailed,
+      recentBookings,
+      recentErrors,
+    };
+  }
 }

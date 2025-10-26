@@ -13,6 +13,7 @@ Comprehensive automated email system that processes Beds24 booking notifications
 ### Advanced Features
 ✅ **Cancellation Handling** - Automatically stops scheduled emails when guests cancel
 ✅ **Transfer Notifications** - Sends booking requests to taxi company when transfers are required
+✅ **Admin Reporting** - Daily and weekly statistics reports to admin@devoceanlodge.com
 ✅ **Extras Management** - Tracks extra beds, transfers, special requests, dietary requirements
 ✅ **Multi-language Templates** - Standalone HTML templates (EN, PT, easily extendable)
 ✅ **Booking Status Tracking** - Active, cancelled, completed statuses
@@ -118,9 +119,12 @@ FROM_EMAIL=booking@devoceanlodge.com
 TAXI_EMAIL=taxi@example.com
 TAXI_WHATSAPP=+258123456789
 TAXI_NAME=Ponta Transfer Service
+
+# Admin Reporting (Optional - defaults to admin@devoceanlodge.com)
+ADMIN_EMAIL=admin@devoceanlodge.com
 ```
 
-**Note**: Taxi company configuration is optional. If not provided, the system will still work but won't send transfer notifications.
+**Note**: Taxi company and admin email configurations are optional. If not provided, the system will still work but won't send transfer notifications or admin reports.
 
 ### 5. Running the Email Automation Server
 
@@ -139,6 +143,8 @@ The server will:
 - Check emails at 08:00, 14:00, 22:00 UTC daily
 - Process Beds24 booking notifications automatically
 - Send scheduled emails at calculated times
+- Send daily reports at 14:00 UTC (2 PM)
+- Send weekly reports on Mondays at 06:00 UTC (6 AM)
 
 ### 6. Testing
 
@@ -328,6 +334,40 @@ The system tracks various booking extras in a flexible JSONB field:
 
 All extras are stored in structured format for easy querying and reporting.
 
+### 4. Admin Reporting
+
+The system automatically sends detailed reports to the admin email address:
+
+#### Daily Reports (Sent at 14:00 UTC / 2 PM)
+Provides statistics for the **previous day** including:
+- **Summary Metrics**: New bookings, cancellations, emails sent, success rate
+- **Email Breakdown**: Count by type (post-booking, pre-arrival, arrival, post-departure, cancellations, transfers)
+- **Recent Bookings**: List of bookings received with guest names, check-in dates, and status
+- **System Health**: Email check performance, pending emails, failed emails
+- **Error Alerts**: Any errors that occurred during the day
+
+#### Weekly Reports (Sent Monday 06:00 UTC / 6 AM)
+Comprehensive summary of the **previous week** (Monday-Sunday) including:
+- **Weekly Summary**: Total bookings, emails sent, cancellations, success rate
+- **Key Metrics**: Active bookings, transfer notifications sent
+- **Email Performance**: Success rates, delivery statistics, pending queue status
+- **Email Distribution**: Breakdown of all email types sent
+- **System Health**: IMAP check performance over the week
+- **Issues Report**: All errors encountered during the week
+
+**Report Features**:
+- ✅ Styled with DEVOCEAN Lodge brand colors (Sunset Orange #9e4b13, Raleway font)
+- ✅ Clean, professional HTML email format
+- ✅ Color-coded status indicators (green for success, red for errors, orange for warnings)
+- ✅ Responsive design for mobile and desktop viewing
+- ✅ Automatic generation - no manual work required
+
+**Configuration**:
+```bash
+# Set admin email in .env (defaults to admin@devoceanlodge.com)
+ADMIN_EMAIL=your-admin-email@devoceanlodge.com
+```
+
 ## Future Enhancements
 
 Potential improvements for the system:
@@ -335,12 +375,14 @@ Potential improvements for the system:
 - [ ] SMS booking confirmations
 - [ ] Email open/click tracking
 - [ ] A/B testing for email content
-- [ ] Admin dashboard for monitoring bookings and emails
+- [ ] Interactive admin dashboard for real-time monitoring
 - [ ] Webhook endpoints for real-time booking notifications (faster than IMAP)
 - [ ] Email bounce handling and list management
 - [ ] Unsubscribe management
-- [ ] More language templates (NL, FR, DE, IT, ES)
+- [ ] More language templates (NL, FR, DE, IT, ES, JA, ZH)
 - [ ] PDF invoice generation and attachment
+- [ ] Monthly/quarterly reports with charts and trends
+- [ ] Slack/Teams notifications for critical events
 
 ## Support
 
@@ -361,7 +403,10 @@ For issues or questions:
 │       ├── email-parser.ts            # Beds24 email parser
 │       ├── email-scheduler.ts         # Email scheduling logic
 │       ├── email-sender.ts            # Resend integration
-│       ├── email-templates.ts         # Multi-language templates
+│       ├── email-template-renderer.ts # Template rendering with translations
+│       ├── cancellation-handler.ts    # Cancellation processing
+│       ├── transfer-notification.ts   # Taxi company notifications
+│       ├── admin-reporting.ts         # Daily/weekly reports
 │       └── database.ts                # Database service
 ├── shared/
 │   └── schema.ts                      # Database schema & types
