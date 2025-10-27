@@ -200,10 +200,10 @@
     <section id="book" class="card engine" style="margin-top:18px">
       <div class="frameWrap">
         <iframe id="beds24frame" class="booking" title="DEVOCEAN Lodge booking"
-          src="https://devoceanlodge.com/&layout=5&hideheader=yes&hidefooter=yes&advancedays=-1&referer=iframe"
+          src="https://devoceanlodge.com/booking?layout=5"
           width="1200" height="2000" style="max-width:100%;border:none;overflow:auto;"
           allow="payment *; clipboard-write *">
-          <p><a href="https://devoceanlodge.com/&layout=5&referer=iframe" title="Book Now">Book Now</a></p>
+          <p><a href="https://devoceanlodge.com/booking?layout=5" title="Book Now">Book Now</a></p>
         </iframe>       
       </div>
     </section>
@@ -391,14 +391,14 @@
 
       const frame = document.getElementById('beds24frame');
       if (frame){
-        const url = new URL(frame.src);
+        // Build new Beds24 URL with devoceanlodge.com domain format
         const pageQS = new URLSearchParams(location.search);
-        
-        url.searchParams.set('hideheader','true');
-        url.searchParams.set('lang', code);      // pass Beds24 language (ISO 639-1)
-        
-        // normalize currency: currency=XXX or cur=XXX -> cur=XXX
         const curr = (pageQS.get('currency') || pageQS.get('cur') || siteCurrency);
+        
+        // New format: https://devoceanlodge.com/booking?layout=5&lang=xx&cur=XXX
+        const url = new URL('https://devoceanlodge.com/booking');
+        url.searchParams.set('layout', '5');
+        url.searchParams.set('lang', code);      // pass Beds24 language (ISO 639-1)
         if (curr) url.searchParams.set('cur', curr.toUpperCase());
 
         // carry through any other forwarded params (UTM, etc.)
