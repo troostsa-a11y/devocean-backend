@@ -396,8 +396,7 @@
         const curr = (pageQS.get('currency') || pageQS.get('cur') || siteCurrency);
         
         // New format: https://devoceanlodge.com/booking?layout=5&lang=xx&cur=XXX
-        const url = new URL('https://devoceanlodge.com/booking');
-        url.searchParams.set('layout', '5');
+        const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
         url.searchParams.set('lang', code);      // pass Beds24 language (ISO 639-1)
         if (curr) url.searchParams.set('cur', curr.toUpperCase());
 
