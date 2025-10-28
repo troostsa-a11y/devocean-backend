@@ -77,13 +77,15 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Dual Project Setup:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template placeholder).
 - **Design System:** Inter font family, card-based layouts, image-first design, expandable detail sections, hover states, focus-visible outlines, smooth scroll, sticky header.
 
-## Email Automation System Status (Oct 26, 2025)
+## Email Automation System Status (Oct 28, 2025)
 ✅ **PRODUCTION READY** - All core functionality working and tested:
 - IMAP connection successful (port 993 for IMAP SSL)
-- Email parsing working (Beds24 notification format)
+- Email parsing working (Beds24 notification format + OTA bookings)
 - Database storage working (bookings + scheduled_emails tables)
 - Email scheduling working (post-booking, pre-arrival, arrival, post-departure)
 - Test booking processed successfully (Group Ref: 77463390)
+- **OTA Booking Support (Oct 28, 2025):** Email parser enhanced to handle bookings from OTA platforms (Ostrovok, Booking.com, etc.) with optional Group Ref field, fallback email handling (noemail@devocean-lodge.com), and automatic source detection
+- **TypeScript Migration (Oct 28, 2025):** Server converted from server.js to server.ts, runs with tsx for proper TypeScript support
 
 **Important Configuration Notes:**
 - **IMAP Port:** Port **993** for IMAP SSL (receiving emails)
@@ -92,16 +94,18 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Server runs on port 3003 separately from main website (port 5000)
 - Cron schedule: 08:00, 14:00, 22:00 UTC daily
 - Admin reports: Daily 14:00 UTC, Weekly Monday 06:00 UTC
+- **Database:** Supabase PostgreSQL production database (postgres.fozgrzqwumnynpedpmth)
 
 **Startup Command:**
 ```bash
-cd /home/runner/workspace && PORT=3003 npx tsx server.js
+cd /home/runner/workspace && PORT=3003 npx tsx server.ts
 ```
 
 ## External Dependencies
 
 ### Third-Party Services
 - **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af) via GTM Template for GDPR/CCPA-compliant cookie consent, Microsoft Clarity for session recording with consent management.
+- **Trust & Verification (Oct 28, 2025):** Trustindex Floating Certificate widget integrated on all 5 legal pages (privacy.html, cookies.html, terms.html, gdpr.html, cric.html) for social proof and trust signals. Widget ID: a73b26308ab90c8e6ce30cb.
 - **Booking Integration (Oct 22-23, 2025 - MIGRATED TO BEDS24):** 
   - **Current:** Beds24 booking engine (propid=297012) embedded in `/booking.html` with custom header/footer, UTM parameter forwarding, and dynamic height adjustment.
   - **Language & Currency Integration (Oct 23, 2025):** React app generates booking URLs in format `/booking.html?lang=XX&currency=XXX` using ISO 639-1 two-letter lowercase language codes (e.g., `en`, `pt`, `nl`) and 3-letter uppercase currency codes (e.g., `USD`, `EUR`, `MZN`). The `buildBookingUrl()` function in `localize.js` converts Hotelrunner locale codes to ISO 639-1 format. The booking page accepts these parameters and passes them directly to the Beds24 iframe for a fully localized booking experience.
@@ -122,4 +126,20 @@ cd /home/runner/workspace && PORT=3003 npx tsx server.js
 ### Asset Management
 - **Static Assets:** Stock images, photo gallery, logo, branding assets.
 - **Accommodation Photos:** 16 unit photos optimized to WebP format (safari-1 through chalet-4 in `/public/photos/units/`), achieving 46.2% file size reduction. Optimization script uses `fs.stat()` for accurate file size reporting.
-- **Legal Documents:** Static HTML pages for compliance (privacy, cookies, terms, GDPR, CRIC).
+- **Legal Documents:** Static HTML pages for compliance (privacy, cookies, terms, GDPR, CRIC) with cache-busting (v=47 for legal.fixed.css and legal.fixed.js).
+
+## Current Deployment Status (Oct 28, 2025)
+- **Live URL:** https://dc9bae01.devocean-lodge.pages.dev (also https://devoceanlodge.com)
+- **Platform:** Cloudflare Pages
+- **Last Deployment:** October 28, 2025
+- **Cache Version:** v=47 (legal.fixed.css, legal.fixed.js)
+- **Email Automation:** Running on Replit with cron schedule (08:00, 14:00, 22:00 UTC)
+- **Database:** Supabase PostgreSQL (production)
+- **Status:** ✅ Fully operational with OTA booking support
+
+## Recent Updates (October 2025)
+- **Oct 28:** Enhanced email parser for OTA bookings (Ostrovok, Booking.com), added Trustindex to legal pages, migrated server to TypeScript
+- **Oct 26:** Email automation system production ready
+- **Oct 23:** Beds24 language/currency integration
+- **Oct 22:** Migrated from Hotelrunner to Beds24 booking engine
+- **Oct 19:** Unified language codes across all systems
