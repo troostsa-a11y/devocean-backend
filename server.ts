@@ -8,7 +8,7 @@ import { EmailAutomationService } from './server/services/email-automation';
  */
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Middleware
 app.use(express.json());
@@ -79,7 +79,7 @@ if (validateEnvironment()) {
     };
     
     emailService = new EmailAutomationService(
-      process.env.DATABASE_URL,
+      process.env.DATABASE_URL!,
       smtpConfig,
       imapConfig,
       taxiConfig,
