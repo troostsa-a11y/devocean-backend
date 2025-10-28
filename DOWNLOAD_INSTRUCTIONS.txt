@@ -1,0 +1,109 @@
+DEVOCEAN Lodge - Documentation Download Instructions
+===================================================
+
+ISSUE: Replit's file zipper service is currently experiencing errors
+SOLUTION: Download files individually
+
+FILES TO DOWNLOAD (12 documentation files + 2 tools):
+======================================================
+
+PRIORITY 1 - Essential Documentation:
+-------------------------------------
+1. REPLIT_AGENT_PROMPTING_GUIDE.md   (15 KB)  - How to work with AI
+2. EMAIL_SERVER_SETUP_GUIDE.md       (18 KB)  - Email server installation
+3. SECRETS_BACKUP_GUIDE.md           (6.6 KB) - Backup your secrets
+4. replit.md                         (15 KB)  - Project overview
+5. FINAL_CONFIGURATION_SUMMARY.md    (14 KB)  - Complete configuration
+
+PRIORITY 2 - Feature Documentation:
+-----------------------------------
+6. EMAIL_AUTOMATION_SETUP.md         (17 KB)  - Email automation
+7. LANGUAGE_SUPPORT.md               (9.4 KB) - Multi-language support
+8. CLOUDFLARE_DEPLOYMENT_GUIDE.md    (4.7 KB) - Website deployment
+
+PRIORITY 3 - Additional Guides:
+-------------------------------
+9.  NEW_FEATURES_SUMMARY.md          (9.4 KB) - Recent changes
+10. GTM_OPTIMIZATION_GUIDE.md        (6.4 KB) - Google Tag Manager
+11. TRANSLATION_TEMPLATE.md          (30 KB)  - Translation reference
+12. design_guidelines.md             (3.2 KB) - Design system
+
+TOOLS:
+------
+13. export-secrets.js                (2.5 KB) - Export secrets script
+14. SECRETS_TEMPLATE.env             (3.4 KB) - Secrets template
+
+HOW TO DOWNLOAD:
+================
+
+Method 1 - Individual File Download (Recommended):
+--------------------------------------------------
+1. In Replit Files panel (left sidebar)
+2. Find each file listed above
+3. Right-click on the file
+4. Select "Download"
+5. Repeat for each file
+
+Files are sorted alphabetically, so:
+- C: CLOUDFLARE_DEPLOYMENT_GUIDE.md
+- D: design_guidelines.md
+- E: EMAIL_AUTOMATION_SETUP.md, EMAIL_SERVER_SETUP_GUIDE.md, export-secrets.js
+- F: FINAL_CONFIGURATION_SUMMARY.md
+- G: GTM_OPTIMIZATION_GUIDE.md
+- L: LANGUAGE_SUPPORT.md
+- N: NEW_FEATURES_SUMMARY.md
+- R: REPLIT_AGENT_PROMPTING_GUIDE.md, replit.md
+- S: SECRETS_BACKUP_GUIDE.md, SECRETS_TEMPLATE.env
+- T: TRANSLATION_TEMPLATE.md
+
+Method 2 - Copy/Paste Content:
+------------------------------
+If download still fails:
+1. Click on the file in Replit
+2. File will open in editor
+3. Press Ctrl+A (select all)
+4. Press Ctrl+C (copy)
+5. Paste into local text editor
+6. Save with same filename
+
+Method 3 - Wait and Retry:
+--------------------------
+Sometimes Replit's download service has temporary issues:
+1. Wait 10-15 minutes
+2. Try downloading archive again:
+   - devocean-lodge-backup-20251028-v2.tar.gz (14 MB - full backup)
+   - devocean-lodge-docs-only-20251028.tar.gz (52 KB - docs only)
+
+WHAT IF EVERYTHING FAILS?
+==========================
+
+If you cannot download any files from Replit:
+1. Contact Replit Support about zipper service errors
+2. All documentation is recreatable from the project
+3. Run: node export-secrets.js (to backup your secrets)
+4. The project itself is the source of truth
+
+ALTERNATIVE: Use SCP (Advanced):
+================================
+If you have SSH access enabled in Replit:
+
+scp username@repl_address:/home/runner/workspace/*.md ./local_folder/
+
+This requires Replit paid plan with SSH access.
+
+VERIFICATION:
+=============
+After downloading, verify you have:
+✓ 12 .md documentation files
+✓ export-secrets.js
+✓ SECRETS_TEMPLATE.env
+
+Total size: ~152 KB (all docs combined)
+
+SUPPORT:
+========
+If issues persist, this is a Replit platform issue.
+Report to: https://replit.com/support
+
+The files exist and are valid in your workspace.
+The problem is with Replit's download/zipper service.
