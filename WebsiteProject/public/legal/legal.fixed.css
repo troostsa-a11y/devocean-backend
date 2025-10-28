@@ -673,6 +673,9 @@ section[data-section] ul {
 
   /* Badge on mobile - narrower with responsive sizing */
   .cookie-banner-info {
+    background: #fff7ed;
+    border: none;
+    border-radius: 8px;
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
@@ -707,6 +710,9 @@ section[data-section] ul {
 
   /* Privacy badge on mobile */
   .privacy-badge {
+    background: #f3e8ff;
+    border: none;
+    border-radius: 8px;
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
@@ -740,6 +746,9 @@ section[data-section] ul {
 
   /* Privacy banner info on mobile */
   .privacy-banner-info {
+    background: #f3e8ff;
+    border: none;
+    border-radius: 8px;
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
@@ -773,6 +782,9 @@ section[data-section] ul {
 
   /* Contact badge on mobile */
   .contact-badge {
+    background: #dbeafe;
+    border: none;
+    border-radius: 8px;
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
@@ -806,6 +818,9 @@ section[data-section] ul {
 
   /* Terms badge on mobile */
   .terms-badge {
+    background: #e0e7ff;
+    border: none;
+    border-radius: 8px;
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
@@ -839,6 +854,9 @@ section[data-section] ul {
 
   /* GDPR badge on mobile */
   .gdpr-badge {
+    background: #d1fae5;
+    border: none;
+    border-radius: 8px;
     padding: 6px 10px;
     margin: 0 0 12px 0;
     display: flex;
