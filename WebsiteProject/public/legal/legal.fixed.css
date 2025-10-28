@@ -112,7 +112,7 @@ body.loading section[data-section] {
   max-width: 900px;
   margin: 0 auto;
   padding: 12px 16px 8px;
-  overflow-x: hidden;
+  overflow: visible;
   position: relative;
 }
 
