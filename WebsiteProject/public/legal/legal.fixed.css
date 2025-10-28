@@ -615,7 +615,7 @@ section[data-section] ul {
 .mobile-quick-nav {
   display: none;
   position: absolute;
-  right: 0;
+  right: 16px;
   top: 100%;
   margin-top: 8px;
   width: 256px;
@@ -625,7 +625,7 @@ section[data-section] ul {
   padding: 0;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  z-index: 150;
+  z-index: 1001;
 }
 
 .mobile-quick-nav.show {
