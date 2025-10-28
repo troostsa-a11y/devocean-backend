@@ -14,6 +14,19 @@
 # Static HTML pages are served automatically by Cloudflare Pages
 # No explicit redirects needed - Cloudflare serves .html files at clean URLs
 
+# Legacy legal page URLs (301 permanent redirects)
+/privacy.html  /legal/privacy.html  301
+/cookies.html  /legal/cookies.html  301
+/terms.html  /legal/terms.html  301
+/GDPR.html  /legal/GDPR.html  301
+/gdpr.html  /legal/GDPR.html  301
+/CRIC.html  /legal/CRIC.html  301
+/cric.html  /legal/CRIC.html  301
+
+# Legacy accommodation URLs (from old canonical tags)
+/safaritent.html  /safari.html  301
+/comforttent.html  /comfort.html  301
+
 # Hotelrunner locale redirects (from booking engine back navigation)
 # Note: af-ZA and pt-BR are handled dynamically in App.jsx to preserve currency (MZN vs ZAR/BRL)
 # Static redirects serve as fallback
