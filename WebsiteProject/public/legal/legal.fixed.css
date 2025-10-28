@@ -947,15 +947,11 @@ section[data-section] ul {
     padding: 6px;
   }
 
-  /* Allow tier charges to wrap on mobile */
+  /* Force tier charges to wrap into multiple lines on mobile */
   .tier-charge {
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-  }
-
-  /* Force cancellation fee text to wrap into 3 lines */
-  .tier-charge.highlight {
     max-width: 100px;
   }
 }
