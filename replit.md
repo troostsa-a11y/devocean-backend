@@ -96,7 +96,15 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - Admin reports: Daily 14:00 UTC, Weekly Monday 06:00 UTC
 - **Database:** Supabase PostgreSQL production database (postgres.fozgrzqwumnynpedpmth)
 
-**Startup Command:**
+**Startup Command (Dual Server Mode - Oct 28, 2025):**
+```bash
+npm run dev
+```
+This automatically starts both servers:
+- Email automation on port 3003
+- Website preview on port 5000
+
+**Manual Email Automation Only:**
 ```bash
 cd /home/runner/workspace && PORT=3003 npx tsx server.ts
 ```
