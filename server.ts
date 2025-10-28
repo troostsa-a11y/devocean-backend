@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import { EmailAutomationService } from './server/services/email-automation.js';
+import { EmailAutomationService } from './server/services/email-automation';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
