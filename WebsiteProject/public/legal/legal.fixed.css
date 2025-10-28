@@ -104,7 +104,7 @@ body.loading section[data-section] {
   padding: 0;
   max-width: none;
   margin: 0;
-  overflow-x: hidden;
+  overflow: visible;
 }
 
 /* Centered inner content to match <main> */
