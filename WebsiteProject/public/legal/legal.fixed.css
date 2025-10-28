@@ -953,6 +953,7 @@ section[data-section] ul {
     word-wrap: break-word;
     overflow-wrap: break-word;
     max-width: 100px;
+    text-align: center;
   }
 }
 
