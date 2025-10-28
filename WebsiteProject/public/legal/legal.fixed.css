@@ -560,27 +560,33 @@ section[data-section] ul {
   }
 }
 
-/* Mobile menu button (hamburger icon) */
+/* Mobile menu button (matches main site design) */
 .mobile-menu-btn {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  gap: 8px;
+  padding: 10px 16px;
+  background: var(--brand);
+  color: white;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
-  padding: 0;
-  transition: background-color 0.2s;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .mobile-menu-btn:hover {
-  background-color: #9e4b13;
+  background-color: #8a4211;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.mobile-menu-btn:hover svg {
-  stroke: white;
+.mobile-menu-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu-btn:focus,
@@ -594,10 +600,14 @@ section[data-section] ul {
 .mobile-menu-btn svg {
   width: 20px;
   height: 20px;
-  stroke: var(--brand);
+  stroke: white;
   stroke-width: 2;
   fill: none;
-  transition: stroke 0.2s;
+  transition: transform 0.2s;
+}
+
+.mobile-menu-btn[aria-expanded="true"] svg {
+  transform: rotate(90deg);
 }
 
 /* Mobile dropdown menu */
@@ -937,11 +947,25 @@ section[data-section] ul {
     padding: 6px;
   }
 
-  /* Allow cancellation fee text to wrap on mobile */
+  /* Allow tier container to wrap and cancellation fee text to break */
+  .tier {
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    align-items: flex-start;
+  }
+
+  .tier-period {
+    flex: 0 0 auto;
+    max-width: 50%;
+  }
+
   .tier-charge {
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    flex: 1 1 auto;
+    text-align: right;
+    min-width: 0;
   }
 }
 
