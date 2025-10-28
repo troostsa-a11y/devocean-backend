@@ -947,26 +947,11 @@ section[data-section] ul {
     padding: 6px;
   }
 
-  /* Allow tier container to wrap and cancellation fee text to break */
-  .tier {
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    align-items: flex-start;
-  }
-
-  .tier-period {
-    flex: 0 0 auto;
-    max-width: 50%;
-  }
-
+  /* Allow cancellation fee text to wrap on narrow screens */
   .tier-charge {
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    flex: 1 1 auto;
-    text-align: right;
-    min-width: 0;
-    max-width: 120px;
   }
 }
 
