@@ -936,6 +936,13 @@ section[data-section] ul {
   .cookie-table td {
     padding: 6px;
   }
+
+  /* Allow cancellation fee text to wrap on mobile */
+  .tier-charge {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
 }
 
 @media (prefers-contrast: high) {
