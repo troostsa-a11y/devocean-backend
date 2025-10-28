@@ -18,18 +18,15 @@ export default function Footer({ units, experiences, ui }) {
     }
   };
 
-  // Countries that require cookie consent (GDPR/CCPA)
-  const CONSENT_REQUIRED_COUNTRIES = [
-    // EU/EEA (GDPR)
-    'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
-    'IS', 'LI', 'NO', // EEA non-EU
-    'GB', // UK (GDPR)
-    'US', // USA (CCPA)
+  // Countries that require "Do Not Sell My Info" link (CCPA/similar laws)
+  const CCPA_COUNTRIES = [
+    'US', // USA (CCPA - California Consumer Privacy Act)
+    'CA', // Canada (some provinces have similar requirements)
   ];
 
-  // Check if user is from a country that requires consent
+  // Check if user is from a country that requires "Do Not Sell My Info" link
   const countryCode = typeof window !== 'undefined' ? window.__CF_COUNTRY__ : null;
-  const showConsentLink = !countryCode || CONSENT_REQUIRED_COUNTRIES.includes(countryCode);
+  const showConsentLink = countryCode && CCPA_COUNTRIES.includes(countryCode);
 
   return (
     <footer className="bg-slate-900 text-slate-200">
