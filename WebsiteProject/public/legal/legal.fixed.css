@@ -966,6 +966,7 @@ section[data-section] ul {
     flex: 1 1 auto;
     text-align: right;
     min-width: 0;
+    max-width: 120px;
   }
 }
 
