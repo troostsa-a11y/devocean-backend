@@ -176,6 +176,8 @@ email_templates/                    # HTML email templates (6 types)
 replit.md                          # Complete project documentation
 EMAIL_AUTOMATION_SETUP.md          # Email system setup guide
 EMAIL_SERVER_SETUP_GUIDE.md        # Complete email server installation guide
+REPLIT_AGENT_PROMPTING_GUIDE.md    # How to effectively prompt Replit Agent
+SECRETS_BACKUP_GUIDE.md            # Secrets backup & restore guide
 LANGUAGE_SUPPORT.md                # i18n documentation
 CLOUDFLARE_DEPLOYMENT_GUIDE.md     # Deployment instructions
 FINAL_CONFIGURATION_SUMMARY.md     # This file
@@ -317,9 +319,10 @@ TAXI_EMAIL=                        # Taxi company email for transfer notificatio
 - Email automation server (server.ts, start.js, server/)
 - Database schema (shared/)
 - Email templates (email_templates/)
-- All documentation (7 .md files)
+- All documentation (12 .md files, 4,193 lines)
 - Package configuration (package.json)
 - Email test script (test-email.js)
+- Secrets backup tools (export-secrets.js, SECRETS_TEMPLATE.env)
 
 ### How to Download Backup
 The backup file is located in the Replit workspace root. You can download it directly from the Files panel in Replit.
