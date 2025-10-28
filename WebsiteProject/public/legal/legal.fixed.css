@@ -616,8 +616,7 @@ section[data-section] ul {
   display: none;
   position: absolute;
   right: 16px;
-  top: 100%;
-  margin-top: 2px;
+  top: calc(100% + 8px);
   width: 256px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -629,6 +628,22 @@ section[data-section] ul {
 }
 
 .mobile-quick-nav.show {
+  display: block;
+}
+
+/* Background overlay when mobile menu is open */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
+
+.mobile-menu-overlay.show {
   display: block;
 }
 
