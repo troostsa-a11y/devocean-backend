@@ -263,7 +263,7 @@
       }
     }
     
-    /* Child Policy Badge */
+    /* Badge Container Layout */
     .badge-container {
       display: flex;
       flex-direction: column;
@@ -276,47 +276,49 @@
       align-items: stretch;
     }
     
-    .child-policy-badge {
-      background: linear-gradient(135deg, #fef9f5 0%, #fff5eb 100%);
-      border: 2px solid var(--brand);
-      border-radius: 12px;
-      padding: 14px 16px;
+    /* Child Policy Badges Column */
+    .child-policy-column {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      box-shadow: 0 2px 8px rgba(158, 75, 19, 0.12);
+      flex-direction: column;
+      gap: 16px;
       flex: 1;
       min-width: 0;
     }
     
-    .child-policy-badge .icon {
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      background: var(--brand);
-      border-radius: 50%;
+    .child-featured-badge {
+      background: linear-gradient(135deg, var(--brand) 0%, #a85a1e 100%);
+      color: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(158, 75, 19, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
-    }
-    
-    .child-policy-badge .content {
-      flex: 1;
-      min-width: 0;
-    }
-    
-    .child-policy-badge .content h3 {
-      margin: 0 0 6px 0;
-      font-size: 1rem;
-      color: var(--brand);
+      gap: 10px;
       font-weight: 600;
+      font-size: 1.05rem;
     }
     
-    .child-policy-badge .content p {
+    .child-featured-badge .icon {
+      font-size: 24px;
+    }
+    
+    .child-policy-content {
+      background: #fef9f5;
+      border: 2px solid var(--brand);
+      border-radius: 12px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 8px rgba(158, 75, 19, 0.12);
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+    
+    .child-policy-content p {
       margin: 0;
-      font-size: 0.88rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      line-height: 1.6;
       color: #333;
     }
     
@@ -330,7 +332,7 @@
         flex-direction: column;
       }
       
-      .child-policy-badge {
+      .child-policy-column {
         order: 2; /* Position below other badges on mobile */
       }
       
@@ -379,11 +381,13 @@
             </div>
             
             <div class="badge-row">
-              <!-- Child Policy Badge on the left -->
-              <div class="child-policy-badge">
-                <div class="icon">👶</div>
-                <div class="content">
-                  <h3 id="t-child-heading">Travelling with children?</h3>
+              <!-- Child Policy Column on the left -->
+              <div class="child-policy-column">
+                <div class="child-featured-badge">
+                  <span class="icon">👶</span>
+                  <span id="t-child-heading">Travelling with children?</span>
+                </div>
+                <div class="child-policy-content">
                   <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 years old count as adults.</p>
                 </div>
               </div>
