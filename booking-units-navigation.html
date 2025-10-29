@@ -1,0 +1,308 @@
+<!-- 
+BOOKING PAGE UNIT NAVIGATION IMPLEMENTATION
+===========================================
+
+This shows how to add unit navigation links to booking.html header
+and use JavaScript to switch between different Beds24 rooms.
+
+STEP 1: Get Your Beds24 Room IDs
+---------------------------------
+1. Login to Beds24
+2. Go to SETTINGS → PROPERTIES → ROOMS
+3. Open each room and copy its Room ID
+4. Note down:
+   - Safari Tent Room ID: ____
+   - Comfort Tent Room ID: ____
+   - Garden Cottage Room ID: ____
+   - Thatched Chalet Room ID: ____
+
+STEP 2: Replace the Header Section
+-----------------------------------
+Replace lines 212-223 in booking.html with the code below:
+-->
+
+<header>
+  <div class="container bar">
+    <a class="brand" href="https://devoceanlodge.com" target="_blank" rel="noopener">
+      <img src="/images/devocean_logo_header.png" alt="DEVOCEAN Lodge logo" />
+      <span class="title">
+        <span class="name">DEVOCEAN Lodge</span>
+        <span class="loc">Ponta do Ouro • Mozambique</span>
+      </span>
+    </a>
+    
+    <!-- Unit Navigation -->
+    <nav class="unit-nav" id="unitNav">
+      <button class="unit-btn active" data-roomid="" data-unit="all" id="t-all-units">
+        All Units
+      </button>
+      <button class="unit-btn" data-roomid="SAFARI_ROOM_ID" data-unit="safari" id="t-safari">
+        Safari Tent
+      </button>
+      <button class="unit-btn" data-roomid="COMFORT_ROOM_ID" data-unit="comfort" id="t-comfort">
+        Comfort Tent
+      </button>
+      <button class="unit-btn" data-roomid="COTTAGE_ROOM_ID" data-unit="cottage" id="t-cottage">
+        Garden Cottage
+      </button>
+      <button class="unit-btn" data-roomid="CHALET_ROOM_ID" data-unit="chalet" id="t-chalet">
+        Thatched Chalet
+      </button>
+    </nav>
+    
+    <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com">Home</a>
+  </div>
+</header>
+
+<!-- 
+STEP 3: Add CSS Styles
+----------------------
+Add these styles to the <style> section (around line 139):
+-->
+
+<style>
+  /* Unit Navigation Styles */
+  .unit-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .unit-btn {
+    appearance: none;
+    border: 1px solid var(--brand);
+    background: white;
+    color: var(--brand);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  
+  .unit-btn:hover {
+    background: rgba(158, 75, 19, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  .unit-btn.active {
+    background: var(--brand);
+    color: white;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1100px) {
+    .bar {
+      flex-wrap: wrap;
+    }
+    .unit-nav {
+      order: 3;
+      width: 100%;
+      margin-top: 12px;
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 860px) {
+    .unit-nav {
+      gap: 6px;
+    }
+    .unit-btn {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+  }
+</style>
+
+<!-- 
+STEP 4: Add JavaScript
+----------------------
+Add this script after the existing localization scripts (around line 470):
+-->
+
+<script>
+  // Unit Navigation with Room ID Switching
+  (function() {
+    // Replace these with your actual Beds24 Room IDs
+    const ROOM_IDS = {
+      all: '',  // Empty = show all rooms
+      safari: 'YOUR_SAFARI_ROOM_ID',    // Get from Beds24
+      comfort: 'YOUR_COMFORT_ROOM_ID',  // Get from Beds24
+      cottage: 'YOUR_COTTAGE_ROOM_ID',  // Get from Beds24
+      chalet: 'YOUR_CHALET_ROOM_ID'     // Get from Beds24
+    };
+    
+    // Translations for unit buttons
+    const UNIT_TRANSLATIONS = {
+      en: {
+        all: 'All Units',
+        safari: 'Safari Tent',
+        comfort: 'Comfort Tent',
+        cottage: 'Garden Cottage',
+        chalet: 'Thatched Chalet'
+      },
+      de: {
+        all: 'Alle Unterkünfte',
+        safari: 'Safari-Zelt',
+        comfort: 'Komfort-Zelt',
+        cottage: 'Garten-Cottage',
+        chalet: 'Strohdach-Chalet'
+      },
+      es: {
+        all: 'Todas',
+        safari: 'Tienda Safari',
+        comfort: 'Tienda Confort',
+        cottage: 'Cottage Jardín',
+        chalet: 'Chalet Paja'
+      },
+      fr: {
+        all: 'Tous',
+        safari: 'Tente Safari',
+        comfort: 'Tente Confort',
+        cottage: 'Cottage Jardin',
+        chalet: 'Chalet Toit de Chaume'
+      },
+      it: {
+        all: 'Tutti',
+        safari: 'Tenda Safari',
+        comfort: 'Tenda Comfort',
+        cottage: 'Cottage Giardino',
+        chalet: 'Chalet Paglia'
+      },
+      pt: {
+        all: 'Todas',
+        safari: 'Tenda Safari',
+        comfort: 'Tenda Conforto',
+        cottage: 'Cottage Jardim',
+        chalet: 'Chalet Palha'
+      }
+    };
+    
+    // Update iframe URL with selected room
+    function switchToRoom(roomId, unitKey) {
+      const iframe = document.getElementById('beds24frame');
+      if (!iframe) return;
+      
+      // Get current language and currency
+      const lang = mapToB24(detectSiteLanguage());
+      const currency = detectSiteCurrency();
+      
+      // Build new URL
+      let baseUrl = 'https://devoceanlodge.com/booking?layout=5';
+      baseUrl += `&lang=${lang}&cur=${currency}`;
+      
+      // Add roomid parameter if specific room selected
+      if (roomId) {
+        baseUrl += `&roomid=${roomId}`;
+      }
+      
+      // Update iframe
+      iframe.src = baseUrl;
+      console.log('Switched to unit:', unitKey, 'URL:', baseUrl);
+      
+      // Update active button
+      document.querySelectorAll('.unit-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      const activeBtn = document.querySelector(`[data-unit="${unitKey}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+      
+      // Scroll to booking iframe smoothly
+      setTimeout(() => {
+        document.getElementById('book').scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 100);
+    }
+    
+    // Initialize unit navigation
+    function initUnitNavigation() {
+      const buttons = document.querySelectorAll('.unit-btn');
+      
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          const roomId = this.dataset.roomid || '';
+          const unitKey = this.dataset.unit;
+          switchToRoom(roomId, unitKey);
+        });
+      });
+      
+      // Translate unit button texts
+      const lang = toBase(detectSiteLanguage());
+      const translations = UNIT_TRANSLATIONS[lang] || UNIT_TRANSLATIONS.en;
+      
+      document.getElementById('t-all-units').textContent = translations.all;
+      document.getElementById('t-safari').textContent = translations.safari;
+      document.getElementById('t-comfort').textContent = translations.comfort;
+      document.getElementById('t-cottage').textContent = translations.cottage;
+      document.getElementById('t-chalet').textContent = translations.chalet;
+      
+      // Check if URL has preselected unit
+      const urlParams = new URLSearchParams(window.location.search);
+      const preselectedUnit = urlParams.get('unit');
+      
+      if (preselectedUnit && ROOM_IDS[preselectedUnit]) {
+        switchToRoom(ROOM_IDS[preselectedUnit], preselectedUnit);
+      }
+    }
+    
+    // Run when page loads
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initUnitNavigation);
+    } else {
+      initUnitNavigation();
+    }
+  })();
+</script>
+
+<!-- 
+STEP 5: BONUS - Deep Linking from Accommodation Pages
+-----------------------------------------------------
+You can also link directly from your accommodation pages like:
+
+Safari page:
+<a href="/booking.html?unit=safari&lang=en&cur=USD">Book Safari Tent</a>
+
+Cottage page:
+<a href="/booking.html?unit=cottage&lang=en&cur=USD">Book Garden Cottage</a>
+
+This will automatically select the correct room when the booking page loads!
+
+STEP 6: Finding Your Room IDs in Beds24
+----------------------------------------
+1. Login to https://beds24.com
+2. Click "Settings" (gear icon)
+3. Click "Properties"
+4. Select your property (DEVOCEAN Lodge)
+5. Click "Rooms" tab
+6. Open each room to see its Room ID
+7. The Room ID is usually shown at the top or in the URL
+
+Example Room IDs look like: 3561, 32919, etc.
+
+STEP 7: Test URLs
+-----------------
+Test these URLs manually to verify your Room IDs work:
+
+All rooms:
+https://devoceanlodge.com/booking?layout=5
+
+Safari Tent only:
+https://devoceanlodge.com/booking?layout=5&roomid=YOUR_SAFARI_ID
+
+Comfort Tent only:
+https://devoceanlodge.com/booking?layout=5&roomid=YOUR_COMFORT_ID
+
+Garden Cottage only:
+https://devoceanlodge.com/booking?layout=5&roomid=YOUR_COTTAGE_ID
+
+Thatched Chalet only:
+https://devoceanlodge.com/booking?layout=5&roomid=YOUR_CHALET_ID
+
+-->
