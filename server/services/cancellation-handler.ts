@@ -59,10 +59,16 @@ export class CancellationHandler {
       const booking = await this.db.getBookingByGroupRef(groupRef);
       
       if (!booking) {
-        // Booking doesn't exist yet - store as pending cancellation
+        // Booking doesn't exist - still send goodbye email as courtesy
         const reason = this.extractCancellationReason(emailContent);
         await this.db.storePendingCancellation(groupRef, reason, rawData);
         console.log(`📋 Stored pending cancellation for booking ${groupRef} (booking not yet received)`);
+        
+        // Send goodbye email using data extracted from cancellation email
+        if (this.transporter) {
+          await this.sendStandaloneCancellationEmail(emailContent, groupRef);
+        }
+        
         return true;
       }
 
@@ -186,5 +192,94 @@ export class CancellationHandler {
                        text.match(/Cancellation reason:\s*([^\n]+)/i);
     
     return reasonMatch ? reasonMatch[1].trim() : 'Guest cancellation';
+  }
+
+  /**
+   * Extract guest information from cancellation email
+   */
+  private extractGuestInfo(text: string): { name?: string; email?: string; language?: string } {
+    // Extract guest name
+    const nameMatch = text.match(/Name[:\s]+([^\n]+)/i);
+    const name = nameMatch ? nameMatch[1].trim() : undefined;
+
+    // Extract email
+    const emailMatch = text.match(/Email[:\s]+([^\n\s]+@[^\n\s]+)/i);
+    const email = emailMatch ? emailMatch[1].trim() : undefined;
+
+    // Extract language (default to EN if not found)
+    const langMatch = text.match(/Language[:\s]+([A-Z]{2})/i);
+    const language = langMatch ? langMatch[1].toUpperCase() : 'EN';
+
+    return { name, email, language };
+  }
+
+  /**
+   * Extract dates from cancellation email
+   */
+  private extractDates(text: string): { checkIn?: string; checkOut?: string } {
+    // Extract check-in date
+    const checkInMatch = text.match(/Check In[:\s]+([^\n]+)/i);
+    const checkIn = checkInMatch ? checkInMatch[1].trim() : undefined;
+
+    // Extract check-out date
+    const checkOutMatch = text.match(/Check Out[:\s]+([^\n]+)/i);
+    const checkOut = checkOutMatch ? checkOutMatch[1].trim() : undefined;
+
+    return { checkIn, checkOut };
+  }
+
+  /**
+   * Send standalone cancellation email (when booking doesn't exist in database)
+   */
+  private async sendStandaloneCancellationEmail(emailContent: string, groupRef: string): Promise<void> {
+    try {
+      // Extract guest information from email
+      const guestInfo = this.extractGuestInfo(emailContent);
+      const dates = this.extractDates(emailContent);
+
+      if (!guestInfo.email) {
+        console.log(`⚠️ Cannot send cancellation email - no guest email found in cancellation notification`);
+        return;
+      }
+
+      // Prepare email data
+      const emailData = {
+        guestName: guestInfo.name || 'Guest',
+        groupRef: groupRef,
+        checkInDate: dates.checkIn || 'Not specified',
+        checkOutDate: dates.checkOut || 'Not specified',
+        cancelDate: this.formatDate(new Date()),
+      };
+
+      // Map language code to locale (EN -> en-GB, PT -> pt-PT)
+      const languageMap: Record<string, string> = {
+        'EN': 'en-GB',
+        'PT': 'pt-PT',
+        'ES': 'es-ES',
+        'FR': 'fr-FR',
+        'DE': 'de-DE',
+        'IT': 'it-IT',
+        'NL': 'nl-NL',
+      };
+      const locale = languageMap[guestInfo.language || 'EN'] || 'en-GB';
+
+      const rendered = emailTemplateRenderer.render(
+        'cancellation',
+        locale,
+        emailData
+      );
+
+      // Send email
+      await this.transporter!.sendMail({
+        from: `"${this.fromName}" <${this.fromEmail}>`,
+        to: guestInfo.email,
+        subject: rendered.subject,
+        html: rendered.html,
+      });
+
+      console.log(`✅ Standalone cancellation email sent to ${guestInfo.email} (${locale}) for booking ${groupRef}`);
+    } catch (error) {
+      console.error('Error sending standalone cancellation email:', error);
+    }
   }
 }
