@@ -200,11 +200,23 @@
     }
 
     /* ===== Unit Navigation Styles ===== */
+    .unit-nav-container {
+      background: #fffaf6;
+      padding-bottom: 22px;
+    }
+    
+    .unit-nav-container .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(14px, 3vw, 24px);
+    }
+    
     .unit-nav {
       display: flex;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: flex-end;
     }
     
     .unit-btn {
@@ -213,44 +225,41 @@
       background: white;
       color: var(--brand);
       border-radius: 999px;
-      padding: 8px 16px;
+      padding: 10px 20px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
     
     .unit-btn:hover {
       background: rgba(158, 75, 19, 0.1);
       transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     }
     
     .unit-btn.active {
       background: var(--brand);
       color: white;
+      box-shadow: 0 4px 12px rgba(158, 75, 19, 0.25);
     }
     
     /* Responsive adjustments */
-    @media (max-width: 1100px) {
-      .bar {
-        flex-wrap: wrap;
-      }
+    @media (max-width: 880px) {
       .unit-nav {
-        order: 3;
-        width: 100%;
-        margin-top: 12px;
         justify-content: center;
       }
     }
     
-    @media (max-width: 860px) {
+    @media (max-width: 640px) {
       .unit-nav {
-        gap: 6px;
+        gap: 8px;
       }
       .unit-btn {
         font-size: 0.85rem;
-        padding: 6px 12px;
+        padding: 8px 14px;
       }
     }
   </style>
@@ -273,26 +282,6 @@
           <span class="loc">Ponta do Ouro • Mozambique</span>
         </span>
       </a>
-      
-      <!-- Unit Navigation -->
-      <nav class="unit-nav" id="unitNav">
-        <button class="unit-btn active" data-roomid="" data-unit="all" id="t-all-units" data-testid="button-unit-all">
-          All Units
-        </button>
-        <button class="unit-btn" data-roomid="620542" data-unit="safari" id="t-safari" data-testid="button-unit-safari">
-          Safari Tent
-        </button>
-        <button class="unit-btn" data-roomid="620540" data-unit="comfort" id="t-comfort" data-testid="button-unit-comfort">
-          Comfort Tent
-        </button>
-        <button class="unit-btn" data-roomid="620541" data-unit="cottage" id="t-cottage" data-testid="button-unit-cottage">
-          Garden Cottage
-        </button>
-        <button class="unit-btn" data-roomid="620543" data-unit="chalet" id="t-chalet" data-testid="button-unit-chalet">
-          Thatched Chalet
-        </button>
-      </nav>
-      
       <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com">Home</a>
     </div>
   </header>
@@ -334,6 +323,26 @@
         </div>
       </div>
     </section>
+
+    <!-- Unit Navigation -->
+    <nav class="unit-nav-container">
+      <div class="wrap">
+        <div class="unit-nav" id="unitNav">
+          <button class="unit-btn" data-roomid="620542" data-unit="safari" id="t-safari" data-testid="button-unit-safari">
+            Safari Tent
+          </button>
+          <button class="unit-btn" data-roomid="620540" data-unit="comfort" id="t-comfort" data-testid="button-unit-comfort">
+            Comfort Tent
+          </button>
+          <button class="unit-btn" data-roomid="620541" data-unit="cottage" id="t-cottage" data-testid="button-unit-cottage">
+            Garden Cottage
+          </button>
+          <button class="unit-btn" data-roomid="620543" data-unit="chalet" id="t-chalet" data-testid="button-unit-chalet">
+            Thatched Chalet
+          </button>
+        </div>
+      </div>
+    </nav>
 
     <!-- Beds24 engine -->
     <section id="book" class="card engine" style="margin-top:18px">
@@ -576,7 +585,6 @@
     (function() {
       // Beds24 Room IDs
       const ROOM_IDS = {
-        all: '',        // Empty = show all rooms
         safari: '620542',   // Safari Tent - shared bathroom
         comfort: '620540',  // Comfort Tent - private bathroom
         cottage: '620541',  // Garden Cottage - AC
@@ -586,77 +594,66 @@
       // Translations for unit buttons
       const UNIT_TRANSLATIONS = {
         en: {
-          all: 'All Units',
           safari: 'Safari Tent',
           comfort: 'Comfort Tent',
           cottage: 'Garden Cottage',
           chalet: 'Thatched Chalet'
         },
         de: {
-          all: 'Alle Unterkünfte',
           safari: 'Safari-Zelt',
           comfort: 'Komfort-Zelt',
           cottage: 'Garten-Cottage',
           chalet: 'Strohdach-Chalet'
         },
         es: {
-          all: 'Todas',
           safari: 'Tienda Safari',
           comfort: 'Tienda Confort',
           cottage: 'Cottage Jardín',
           chalet: 'Chalet Paja'
         },
         fr: {
-          all: 'Tous',
           safari: 'Tente Safari',
           comfort: 'Tente Confort',
           cottage: 'Cottage Jardin',
           chalet: 'Chalet Toit de Chaume'
         },
         it: {
-          all: 'Tutti',
           safari: 'Tenda Safari',
           comfort: 'Tenda Comfort',
           cottage: 'Cottage Giardino',
           chalet: 'Chalet Paglia'
         },
         nl: {
-          all: 'Alle',
           safari: 'Safari Tent',
           comfort: 'Comfort Tent',
           cottage: 'Tuin Cottage',
           chalet: 'Rieten Chalet'
         },
         pt: {
-          all: 'Todas',
           safari: 'Tenda Safari',
           comfort: 'Tenda Conforto',
           cottage: 'Cottage Jardim',
           chalet: 'Chalet Palha'
         },
         ru: {
-          all: 'Все номера',
           safari: 'Палатка Safari',
           comfort: 'Палатка Comfort',
           cottage: 'Коттедж в саду',
           chalet: 'Шале с соломенной крышей'
         },
         zh: {
-          all: '所有房型',
           safari: '野生动物帐篷',
           comfort: '舒适帐篷',
           cottage: '花园小屋',
           chalet: '茅草屋'
         },
         sv: {
-          all: 'Alla',
           safari: 'Safari Tält',
           comfort: 'Komfort Tält',
           cottage: 'Trädgårdsstuga',
           chalet: 'Halm Chalet'
         },
         ja: {
-          all: 'すべての客室',
           safari: 'サファリテント',
           comfort: 'コンフォートテント',
           cottage: 'ガーデンコテージ',
@@ -734,24 +731,28 @@
         const lang = mapToB24(siteLang);
         const translations = UNIT_TRANSLATIONS[lang] || UNIT_TRANSLATIONS.en;
         
-        const btnAll = document.getElementById('t-all-units');
         const btnSafari = document.getElementById('t-safari');
         const btnComfort = document.getElementById('t-comfort');
         const btnCottage = document.getElementById('t-cottage');
         const btnChalet = document.getElementById('t-chalet');
         
-        if (btnAll) btnAll.textContent = translations.all;
         if (btnSafari) btnSafari.textContent = translations.safari;
         if (btnComfort) btnComfort.textContent = translations.comfort;
         if (btnCottage) btnCottage.textContent = translations.cottage;
         if (btnChalet) btnChalet.textContent = translations.chalet;
         
-        // Check if URL has preselected unit
+        // Check if URL has preselected unit, otherwise show all rooms by default
         const urlParams = new URLSearchParams(window.location.search);
         const preselectedUnit = urlParams.get('unit');
         
         if (preselectedUnit && ROOM_IDS[preselectedUnit]) {
+          // Deep link to specific unit
           switchToRoom(ROOM_IDS[preselectedUnit], preselectedUnit);
+        } else {
+          // Default: show all rooms (no active button state)
+          document.querySelectorAll('.unit-btn').forEach(btn => {
+            btn.classList.remove('active');
+          });
         }
       }
       
