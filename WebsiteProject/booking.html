@@ -711,15 +711,25 @@
       return false;
     }
 
-    // Dynamic height from Beds24
+    // Dynamic height from Beds24 + scroll-to-top message handler
     window.addEventListener('message', function(e){
       try{
         const d = typeof e.data==='string' ? JSON.parse(e.data) : e.data;
+        
+        // Handle dynamic height updates from Beds24 iframe
         if (d && (d.type==='setHeight' || d.height)){
           const h = parseInt(d.height,10);
           if (Number.isFinite(h) && h > 400){
             document.getElementById('beds24frame').style.height = (h + 40) + 'px';
           }
+        }
+        
+        // Handle scroll-to-top request from Beds24 iframe
+        if (d && d.type === 'scrollToTop') {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
         }
       }catch(_){}
     });
