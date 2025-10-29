@@ -273,19 +273,12 @@
       gap: 16px;
     }
     
-    .badge-row {
-      display: flex;
-      gap: 16px;
-      align-items: stretch;
-    }
-    
-    /* Child Policy Badges Column */
+    /* Child Policy Badges - positioned under hero text */
     .child-policy-column {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      flex: 1;
-      min-width: 0;
+      gap: 12px;
+      margin-top: 24px;
     }
     
     .child-featured-badge {
@@ -325,22 +318,9 @@
       color: #333;
     }
     
-    .badge-grid-wrapper {
-      flex: 1;
-      min-width: 0;
-    }
-    
     @media (max-width: 768px) {
-      .badge-row {
-        flex-direction: column;
-      }
-      
       .child-policy-column {
-        order: 2; /* Position below other badges on mobile */
-      }
-      
-      .badge-grid-wrapper {
-        order: 1;
+        margin-top: 20px;
       }
     }
   </style>
@@ -377,45 +357,39 @@
             <h1 id="t-h1">Book direct for the best value</h1>
             <p id="t-p1">Secure your stay at our eco-lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.</p>
             <p class="note" id="t-note">Fill in your dates below to check availability and book.</p>
+            
+            <!-- Child Policy Badges -->
+            <div class="child-policy-column">
+              <div class="child-featured-badge">
+                <span class="icon">👶</span>
+                <span id="t-child-heading">Travelling with children?</span>
+              </div>
+              <div class="child-policy-content">
+                <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 years old count as adults.</p>
+              </div>
+            </div>
           </div>
           <div class="badge-container">
             <div class="featured-badge">
               <div class="badge-head" id="t-badge-head">Best direct rate guaranteed</div>
               <div class="badge-sub" id="t-badge-sub">Save — no middleman fees</div>
             </div>
-            
-            <div class="badge-row">
-              <!-- Child Policy Column on the left -->
-              <div class="child-policy-column">
-                <div class="child-featured-badge">
-                  <span class="icon">👶</span>
-                  <span id="t-child-heading">Travelling with children?</span>
-                </div>
-                <div class="child-policy-content">
-                  <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 years old count as adults.</p>
-                </div>
+            <div class="badge-grid">
+              <div class="benefit-card badge-item">
+                <span class="ico lock"></span>
+                <div class="badge-item-title" id="t-secure">Secure checkout</div>
               </div>
-              
-              <!-- Other badges on the right -->
-              <div class="badge-grid-wrapper">
-                <div class="badge-grid">
-                  <div class="benefit-card badge-item">
-                    <span class="ico lock"></span>
-                    <div class="badge-item-title" id="t-secure">Secure checkout</div>
-                  </div>
-                  <div class="benefit-card badge-item">
-                    <span class="ico check"></span>
-                    <div class="badge-item-title" id="t-nofees">No hidden fees</div>
-                  </div>
-                  <div class="benefit-card badge-item">
-                    <span class="ico bolt"></span>
-                    <div class="badge-item-title" id="t-instant">Instant confirmation</div>
-                  </div>
-                  <div class="benefit-card badge-item">
-                    <span class="ico handshake"></span>
-                    <div class="badge-item-title" id="t-support">Team support</div>
-                  </div>
-                </div>
+              <div class="benefit-card badge-item">
+                <span class="ico check"></span>
+                <div class="badge-item-title" id="t-nofees">No hidden fees</div>
+              </div>
+              <div class="benefit-card badge-item">
+                <span class="ico bolt"></span>
+                <div class="badge-item-title" id="t-instant">Instant confirmation</div>
+              </div>
+              <div class="benefit-card badge-item">
+                <span class="ico handshake"></span>
+                <div class="badge-item-title" id="t-support">Team support</div>
               </div>
             </div>
           </div>
