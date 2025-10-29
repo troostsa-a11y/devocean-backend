@@ -198,6 +198,61 @@
     @media (max-width:880px){
       #site-hero .hero-section{grid-template-columns:1fr;gap:14px}
     }
+
+    /* ===== Unit Navigation Styles ===== */
+    .unit-nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .unit-btn {
+      appearance: none;
+      border: 1px solid var(--brand);
+      background: white;
+      color: var(--brand);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .unit-btn:hover {
+      background: rgba(158, 75, 19, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .unit-btn.active {
+      background: var(--brand);
+      color: white;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1100px) {
+      .bar {
+        flex-wrap: wrap;
+      }
+      .unit-nav {
+        order: 3;
+        width: 100%;
+        margin-top: 12px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 860px) {
+      .unit-nav {
+        gap: 6px;
+      }
+      .unit-btn {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+      }
+    }
   </style>
   <!-- Trustindex Floating Certificate -->
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
@@ -218,6 +273,26 @@
           <span class="loc">Ponta do Ouro • Mozambique</span>
         </span>
       </a>
+      
+      <!-- Unit Navigation -->
+      <nav class="unit-nav" id="unitNav">
+        <button class="unit-btn active" data-roomid="" data-unit="all" id="t-all-units" data-testid="button-unit-all">
+          All Units
+        </button>
+        <button class="unit-btn" data-roomid="620542" data-unit="safari" id="t-safari" data-testid="button-unit-safari">
+          Safari Tent
+        </button>
+        <button class="unit-btn" data-roomid="620540" data-unit="comfort" id="t-comfort" data-testid="button-unit-comfort">
+          Comfort Tent
+        </button>
+        <button class="unit-btn" data-roomid="620541" data-unit="cottage" id="t-cottage" data-testid="button-unit-cottage">
+          Garden Cottage
+        </button>
+        <button class="unit-btn" data-roomid="620543" data-unit="chalet" id="t-chalet" data-testid="button-unit-chalet">
+          Thatched Chalet
+        </button>
+      </nav>
+      
       <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com">Home</a>
     </div>
   </header>
@@ -496,6 +571,197 @@
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== Unit Navigation with Room ID Switching =====
+    (function() {
+      // Beds24 Room IDs
+      const ROOM_IDS = {
+        all: '',        // Empty = show all rooms
+        safari: '620542',   // Safari Tent - shared bathroom
+        comfort: '620540',  // Comfort Tent - private bathroom
+        cottage: '620541',  // Garden Cottage - AC
+        chalet: '620543'    // Thatched Chalet - AC
+      };
+      
+      // Translations for unit buttons
+      const UNIT_TRANSLATIONS = {
+        en: {
+          all: 'All Units',
+          safari: 'Safari Tent',
+          comfort: 'Comfort Tent',
+          cottage: 'Garden Cottage',
+          chalet: 'Thatched Chalet'
+        },
+        de: {
+          all: 'Alle Unterkünfte',
+          safari: 'Safari-Zelt',
+          comfort: 'Komfort-Zelt',
+          cottage: 'Garten-Cottage',
+          chalet: 'Strohdach-Chalet'
+        },
+        es: {
+          all: 'Todas',
+          safari: 'Tienda Safari',
+          comfort: 'Tienda Confort',
+          cottage: 'Cottage Jardín',
+          chalet: 'Chalet Paja'
+        },
+        fr: {
+          all: 'Tous',
+          safari: 'Tente Safari',
+          comfort: 'Tente Confort',
+          cottage: 'Cottage Jardin',
+          chalet: 'Chalet Toit de Chaume'
+        },
+        it: {
+          all: 'Tutti',
+          safari: 'Tenda Safari',
+          comfort: 'Tenda Comfort',
+          cottage: 'Cottage Giardino',
+          chalet: 'Chalet Paglia'
+        },
+        nl: {
+          all: 'Alle',
+          safari: 'Safari Tent',
+          comfort: 'Comfort Tent',
+          cottage: 'Tuin Cottage',
+          chalet: 'Rieten Chalet'
+        },
+        pt: {
+          all: 'Todas',
+          safari: 'Tenda Safari',
+          comfort: 'Tenda Conforto',
+          cottage: 'Cottage Jardim',
+          chalet: 'Chalet Palha'
+        },
+        ru: {
+          all: 'Все номера',
+          safari: 'Палатка Safari',
+          comfort: 'Палатка Comfort',
+          cottage: 'Коттедж в саду',
+          chalet: 'Шале с соломенной крышей'
+        },
+        zh: {
+          all: '所有房型',
+          safari: '野生动物帐篷',
+          comfort: '舒适帐篷',
+          cottage: '花园小屋',
+          chalet: '茅草屋'
+        },
+        sv: {
+          all: 'Alla',
+          safari: 'Safari Tält',
+          comfort: 'Komfort Tält',
+          cottage: 'Trädgårdsstuga',
+          chalet: 'Halm Chalet'
+        },
+        ja: {
+          all: 'すべての客室',
+          safari: 'サファリテント',
+          comfort: 'コンフォートテント',
+          cottage: 'ガーデンコテージ',
+          chalet: '茅葺きシャレー'
+        }
+      };
+      
+      // Update iframe URL with selected room
+      function switchToRoom(roomId, unitKey) {
+        const iframe = document.getElementById('beds24frame');
+        if (!iframe) return;
+        
+        // Get current language and currency
+        const siteLang = detectSiteLanguage();
+        const siteCurrency = detectSiteCurrency();
+        const lang = mapToB24(siteLang);
+        
+        // Build new URL
+        const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
+        url.searchParams.set('lang', lang);
+        if (siteCurrency) url.searchParams.set('cur', siteCurrency.toUpperCase());
+        
+        // Add roomid parameter if specific room selected
+        if (roomId) {
+          url.searchParams.set('roomid', roomId);
+        }
+        
+        // Carry through any URL params (UTM, etc.)
+        const pageQS = new URLSearchParams(location.search);
+        pageQS.forEach((v, k) => {
+          if (k !== 'lang' && k !== 'currency' && k !== 'cur' && k !== 'unit' && !url.searchParams.has(k)) {
+            url.searchParams.set(k, v);
+          }
+        });
+        
+        // Update iframe
+        iframe.src = url.toString();
+        console.log('Switched to unit:', unitKey, 'Room ID:', roomId || 'all', 'URL:', url.toString());
+        
+        // Update active button
+        document.querySelectorAll('.unit-btn').forEach(btn => {
+          btn.classList.remove('active');
+        });
+        const activeBtn = document.querySelector(`[data-unit="${unitKey}"]`);
+        if (activeBtn) {
+          activeBtn.classList.add('active');
+        }
+        
+        // Scroll to booking iframe smoothly
+        setTimeout(() => {
+          const bookSection = document.getElementById('book');
+          if (bookSection) {
+            bookSection.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }
+        }, 100);
+      }
+      
+      // Initialize unit navigation
+      function initUnitNavigation() {
+        const buttons = document.querySelectorAll('.unit-btn');
+        
+        buttons.forEach(button => {
+          button.addEventListener('click', function() {
+            const roomId = this.dataset.roomid || '';
+            const unitKey = this.dataset.unit;
+            switchToRoom(roomId, unitKey);
+          });
+        });
+        
+        // Translate unit button texts
+        const siteLang = detectSiteLanguage();
+        const lang = mapToB24(siteLang);
+        const translations = UNIT_TRANSLATIONS[lang] || UNIT_TRANSLATIONS.en;
+        
+        const btnAll = document.getElementById('t-all-units');
+        const btnSafari = document.getElementById('t-safari');
+        const btnComfort = document.getElementById('t-comfort');
+        const btnCottage = document.getElementById('t-cottage');
+        const btnChalet = document.getElementById('t-chalet');
+        
+        if (btnAll) btnAll.textContent = translations.all;
+        if (btnSafari) btnSafari.textContent = translations.safari;
+        if (btnComfort) btnComfort.textContent = translations.comfort;
+        if (btnCottage) btnCottage.textContent = translations.cottage;
+        if (btnChalet) btnChalet.textContent = translations.chalet;
+        
+        // Check if URL has preselected unit
+        const urlParams = new URLSearchParams(window.location.search);
+        const preselectedUnit = urlParams.get('unit');
+        
+        if (preselectedUnit && ROOM_IDS[preselectedUnit]) {
+          switchToRoom(ROOM_IDS[preselectedUnit], preselectedUnit);
+        }
+      }
+      
+      // Run when page loads
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initUnitNavigation);
+      } else {
+        initUnitNavigation();
+      }
+    })();
   </script>
 </body>
 </html>
