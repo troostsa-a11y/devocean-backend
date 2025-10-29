@@ -394,7 +394,7 @@
     function toBase(code){ return (code||'en').toLowerCase().split('-')[0]; }
     function mapToB24(code){
       const b = toBase(code);
-      return ['en','de','es','fr','it','nl','pt','ru','zh','sv','ja'].includes(b) ? b : 'en';
+      return ['en','de','es','fr','it','nl','pt','ru','zh','sv','ja','pl','af','zu','sw'].includes(b) ? b : 'en';
     }
 
     // 2) Translations (page + hero)
@@ -497,7 +497,43 @@
           note:"下の欄に日付を入力して、空室状況を確認・予約してください。",
           badgeHead:"最安値の直接予約を保証",
           badgeSub:"仲介手数料なしでお得に",
-          secure:"安全な支払い", nofees:"追加料金なし", instant:"即時確認", support:"チームによるサポート"}
+          secure:"安全な支払い", nofees:"追加料金なし", instant:"即時確認", support:"チームによるサポート"},
+      pl:{title:"Zarezerwuj swój pobyt – DEVOCEAN Lodge",
+          desc:"Strona rezerwacji bezpośredniej DEVOCEAN Lodge, Ponta do Ouro, Mozambik. Najlepsze ceny, natychmiastowe potwierdzenie.",
+          home:"Strona główna",
+          h1:"Rezerwuj bezpośrednio po najlepszej cenie",
+          p1:"Zapewnij sobie pobyt w naszym eko-lodgeu, zaledwie kilka minut od plaży i Parku Narodowego Maputo. Natychmiastowe potwierdzenie, przejrzyste ceny i elastyczne opcje pokoi.",
+          note:"Wprowadź swoje daty poniżej, aby sprawdzić dostępność i zarezerwować.",
+          badgeHead:"Gwarancja najlepszej ceny bezpośredniej",
+          badgeSub:"Oszczędzaj — bez prowizji pośredników",
+          secure:"Bezpieczna płatność", nofees:"Bez ukrytych opłat", instant:"Natychmiastowe potwierdzenie", support:"Wsparcie naszego zespołu"},
+      af:{title:"Bespreek jou verblyf – DEVOCEAN Lodge",
+          desc:"Direkte besprekingsbladsy vir DEVOCEAN Lodge, Ponta do Ouro, Mosambiek. Beste pryse, onmiddellike bevestiging.",
+          home:"Tuis",
+          h1:"Bespreek direk vir die beste prys",
+          p1:"Verseker jou verblyf in ons eko-lodge, net 'n paar minute vanaf die strand en Maputo Nasionale Park. Onmiddellike bevestiging, deursigtige tariewe en buigsame kameropties.",
+          note:"Vul jou datums hieronder in om beskikbaarheid te kontroleer en te bespreek.",
+          badgeHead:"Beste direkte prys gewaarborg",
+          badgeSub:"Bespaar — geen tussenganger fooie",
+          secure:"Veilige betaling", nofees:"Geen versteekte koste", instant:"Onmiddellike bevestiging", support:"Ondersteuning deur ons span"},
+      zu:{title:"Bhukha ukuhlala kwakho – DEVOCEAN Lodge",
+          desc:"Ikhasi lokuphatha okuqondile le-DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Amanani amahle, isiqinisekiso esisheshayo.",
+          home:"Ikhaya",
+          h1:"Bhukha ngqo ngenani elihle",
+          p1:"Qinisekisa ukuhlala kwakho e-eco-lodge yethu, imizuzu embalwa ukusuka ogwini nasePaki ye-Maputo National. Isiqinisekiso esisheshayo, amanani acace kahle kanye nezinketho zezindlu eziguquguqukayo.",
+          note:"Faka izinsuku zakho ngezansi ukuze uhlole ukutholakala futhi ubhukhe.",
+          badgeHead:"Inani eliphakeme lokuphatha okuqondile liqinisekisiwe",
+          badgeSub:"Londoloza — ayikho imali yokuhola",
+          secure:"Ukukhokha okuphephile", nofees:"Ayikho izindleko ezifihlakele", instant:"Isiqinisekiso esisheshayo", support:"Ukwesekwa yithimba lethu"},
+      sw:{title:"Weka nafasi yako ya kukaa – DEVOCEAN Lodge",
+          desc:"Ukurasa wa kuweka nafasi moja kwa moja wa DEVOCEAN Lodge, Ponta do Ouro, Msumbiji. Bei bora, uthibitisho wa haraka.",
+          home:"Nyumbani",
+          h1:"Weka nafasi moja kwa moja kwa bei bora",
+          p1:"Hakikisha kukaa kwako katika lodge yetu inayofaa na mazingira, dakika chache kutoka ufukweni na Hifadhi ya Taifa ya Maputo. Uthibitisho wa haraka, bei wazi na chaguo za vyumba vinavyobadilika.",
+          note:"Weka tarehe zako hapa chini kuangalia upatikanaji na kuweka nafasi.",
+          badgeHead:"Bei bora ya moja kwa moja imethibitishwa",
+          badgeSub:"Okoa — hakuna ada za wawasiliani",
+          secure:"Malipo salama", nofees:"Hakuna gharama zilizoficha", instant:"Uthibitisho wa haraka", support:"Msaada kutoka kwa timu yetu"}
     };
 
     // 3) Apply language, fill UI (retry if DOM not ready), set Beds24 iframe
