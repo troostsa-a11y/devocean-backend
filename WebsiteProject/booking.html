@@ -264,51 +264,78 @@
     }
     
     /* Child Policy Badge */
+    .badge-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .badge-row {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+    }
+    
     .child-policy-badge {
       background: linear-gradient(135deg, #fef9f5 0%, #fff5eb 100%);
       border: 2px solid var(--brand);
       border-radius: 12px;
-      padding: 16px 20px;
-      margin: 20px 0 24px 0;
+      padding: 14px 16px;
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
       box-shadow: 0 2px 8px rgba(158, 75, 19, 0.12);
+      flex: 1;
+      min-width: 0;
     }
     
     .child-policy-badge .icon {
       flex-shrink: 0;
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       background: var(--brand);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
+      font-size: 20px;
     }
     
     .child-policy-badge .content {
       flex: 1;
+      min-width: 0;
     }
     
     .child-policy-badge .content h3 {
-      margin: 0 0 8px 0;
-      font-size: 1.1rem;
+      margin: 0 0 6px 0;
+      font-size: 1rem;
       color: var(--brand);
       font-weight: 600;
     }
     
     .child-policy-badge .content p {
       margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.5;
       color: #333;
     }
     
+    .badge-grid-wrapper {
+      flex: 1;
+      min-width: 0;
+    }
+    
     @media (max-width: 768px) {
+      .badge-row {
+        flex-direction: column;
+      }
+      
       .child-policy-badge {
-        display: none; /* Hide on mobile to save space */
+        order: 2; /* Position below other badges on mobile */
+      }
+      
+      .badge-grid-wrapper {
+        order: 1;
       }
     }
   </style>
@@ -350,31 +377,37 @@
               <div class="badge-head" id="t-badge-head">Best direct rate guaranteed</div>
               <div class="badge-sub" id="t-badge-sub">Save — no middleman fees</div>
             </div>
-            <div class="badge-grid">
-              <div class="benefit-card badge-item">
-                <span class="ico lock"></span>
-                <div class="badge-item-title" id="t-secure">Secure checkout</div>
-              </div>
-              <div class="benefit-card badge-item">
-                <span class="ico check"></span>
-                <div class="badge-item-title" id="t-nofees">No hidden fees</div>
-              </div>
-              <div class="benefit-card badge-item">
-                <span class="ico bolt"></span>
-                <div class="badge-item-title" id="t-instant">Instant confirmation</div>
-              </div>
-              <div class="benefit-card badge-item">
-                <span class="ico handshake"></span>
-                <div class="badge-item-title" id="t-support">Team support</div>
-              </div>
-            </div>
             
-            <!-- Child Policy Badge -->
-            <div class="child-policy-badge">
-              <div class="icon">👶</div>
-              <div class="content">
-                <h3 id="t-child-heading">Travelling with children?</h3>
-                <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 years old count as adults.</p>
+            <div class="badge-row">
+              <!-- Child Policy Badge on the left -->
+              <div class="child-policy-badge">
+                <div class="icon">👶</div>
+                <div class="content">
+                  <h3 id="t-child-heading">Travelling with children?</h3>
+                  <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 years old count as adults.</p>
+                </div>
+              </div>
+              
+              <!-- Other badges on the right -->
+              <div class="badge-grid-wrapper">
+                <div class="badge-grid">
+                  <div class="benefit-card badge-item">
+                    <span class="ico lock"></span>
+                    <div class="badge-item-title" id="t-secure">Secure checkout</div>
+                  </div>
+                  <div class="benefit-card badge-item">
+                    <span class="ico check"></span>
+                    <div class="badge-item-title" id="t-nofees">No hidden fees</div>
+                  </div>
+                  <div class="benefit-card badge-item">
+                    <span class="ico bolt"></span>
+                    <div class="badge-item-title" id="t-instant">Instant confirmation</div>
+                  </div>
+                  <div class="benefit-card badge-item">
+                    <span class="ico handshake"></span>
+                    <div class="badge-item-title" id="t-support">Team support</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
