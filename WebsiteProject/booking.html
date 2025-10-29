@@ -216,11 +216,10 @@
     }
     
     .unit-nav {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: flex-start;
+      max-width: 720px;
     }
     
     .unit-btn {
@@ -236,8 +235,6 @@
       transition: all 0.2s ease;
       white-space: nowrap;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-      flex: 1;
-      min-width: 0;
     }
     
     .unit-btn:hover {
@@ -255,7 +252,8 @@
     /* Responsive adjustments */
     @media (max-width: 880px) {
       .unit-nav {
-        justify-content: center;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
       }
     }
     
