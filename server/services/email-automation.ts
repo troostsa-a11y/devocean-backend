@@ -94,23 +94,23 @@ export class EmailAutomationService {
 
   /**
    * Start the cron job scheduler
-   * Checks emails at 08:00, 14:00, and 22:00 UTC
+   * Checks emails at 08:00, 14:00, and 20:00 UTC
    * Sends daily report at 14:00 UTC (2 PM)
    * Sends weekly report at 06:00 UTC on Mondays
    */
   start(): void {
     console.log('Starting email automation service...');
 
-    // Schedule: 08:00, 14:00, 22:00 UTC daily
+    // Schedule: 08:00, 14:00, 20:00 UTC daily
     // Cron format: minute hour * * *
-    const emailCheckSchedule = '0 8,14,22 * * *';
+    const emailCheckSchedule = '0 8,14,20 * * *';
 
     this.cronJob = cron.schedule(emailCheckSchedule, async () => {
       console.log(`[${new Date().toISOString()}] Running scheduled email check...`);
       await this.runEmailCheck();
     });
 
-    console.log(`Email automation scheduled for 08:00, 14:00, 22:00 UTC daily`);
+    console.log(`Email automation scheduled for 08:00, 14:00, 20:00 UTC daily`);
 
     // Schedule daily report at 14:00 UTC (2 PM)
     if (this.adminReporting) {
