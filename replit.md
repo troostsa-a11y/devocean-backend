@@ -62,7 +62,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
     - **BCC Functionality:** All outgoing emails automatically BCC to `beds24@devoceanlodge.com` for audit trail (configurable via BCC_EMAIL secret).
     - Database tables: `bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`.
     - Email touchpoints: Post-booking confirmation, pre-arrival info, arrival reminder, post-departure thank you, cancellation confirmation, transfer notification to taxi company.
-    - Features: Template-based multi-language system (6 base HTML templates + translations JSON), supports `en-GB`, `en-US`, `pt-PT`, `pt-BR` with extensibility, cancellation handling, extras management, booking status tracking, automatic language detection.
+    - **Translation Architecture:** Modular per-template system with 3 separate JSON files (`post_booking-translations.json` 55KB, `pre_arrival-translations.json` 61KB, `cancellation-translations.json` 22KB) replacing monolithic 142KB file. Lazy-loading with caching for performance.
+    - Features: Template-based multi-language system (3 base HTML templates + per-template translations), supports 17 languages (`en-GB`, `en-US`, `pt-PT`, `pt-BR`, `nl-NL`, `fr-FR`, `it-IT`, `de-DE`, `es-ES`, `sv`, `pl`, `af-ZA`, `zu`, `sw`, `ja-JP`, `zh-CN`, `ru`), cancellation handling, extras management, booking status tracking, automatic language detection with fallback to en-GB.
     - Runs on port 3003.
 
 ### Project Structure
