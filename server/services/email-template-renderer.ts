@@ -4,36 +4,50 @@ import path from 'path';
 /**
  * Email Template Renderer
  * Loads base HTML templates and applies translations + data
+ * Now uses separate translation files per email type for better maintainability
  */
 
-interface EmailTranslations {
+interface TemplateTranslations {
   [languageCode: string]: {
-    [emailType: string]: {
-      [key: string]: string;
-    };
+    [key: string]: string;
   };
 }
 
+interface TranslationCache {
+  [emailType: string]: TemplateTranslations;
+}
+
 export class EmailTemplateRenderer {
-  private translations: EmailTranslations;
+  private translationCache: TranslationCache;
   private templatesPath: string;
   private translationsPath: string;
 
   constructor() {
     this.templatesPath = path.join(process.cwd(), 'email_templates', 'base');
-    this.translationsPath = path.join(process.cwd(), 'email_templates', 'translations', 'email-translations.json');
-    this.translations = this.loadTranslations();
+    this.translationsPath = path.join(process.cwd(), 'email_templates', 'translations');
+    this.translationCache = {};
   }
 
   /**
-   * Load translations from JSON file
+   * Load translations for a specific email type from its dedicated file
    */
-  private loadTranslations(): EmailTranslations {
+  private loadTranslationsForType(emailType: string): TemplateTranslations {
+    // Check cache first
+    if (this.translationCache[emailType]) {
+      return this.translationCache[emailType];
+    }
+
     try {
-      const content = fs.readFileSync(this.translationsPath, 'utf-8');
-      return JSON.parse(content);
+      const translationFile = path.join(this.translationsPath, `${emailType}-translations.json`);
+      const content = fs.readFileSync(translationFile, 'utf-8');
+      const translations = JSON.parse(content);
+      
+      // Cache the loaded translations
+      this.translationCache[emailType] = translations;
+      
+      return translations;
     } catch (error) {
-      console.error('Error loading email translations:', error);
+      console.error(`Error loading translations for ${emailType}:`, error);
       return {};
     }
   }
@@ -42,40 +56,49 @@ export class EmailTemplateRenderer {
    * Reload translations (useful for hot-reloading during development)
    */
   reloadTranslations(): void {
-    this.translations = this.loadTranslations();
+    this.translationCache = {};
   }
 
   /**
    * Get language code with fallback
+   * Checks if language exists in the loaded translations, otherwise returns mapped fallback
    */
-  private getLanguageCode(requestedLang: string): string {
-    // Check if exact language exists
-    if (this.translations[requestedLang]) {
+  private getLanguageCode(requestedLang: string, translations: TemplateTranslations): string {
+    // Check if exact language exists in loaded translations
+    if (translations[requestedLang]) {
       return requestedLang;
     }
 
-    // Map to base language codes
+    // All languages are now included in translation files, but keep mapping for safety
     const mapping: { [key: string]: string } = {
       'en-GB': 'en-GB',
       'en-US': 'en-US',
       'pt-PT': 'pt-PT',
       'pt-BR': 'pt-BR',
-      'nl-NL': 'en-GB',
-      'fr-FR': 'en-GB',
-      'it-IT': 'en-GB',
-      'de-DE': 'en-GB',
-      'es-ES': 'en-GB',
-      'sv': 'en-GB',
-      'pl': 'en-GB',
-      'af-ZA': 'en-GB',
-      'zu': 'en-GB',
-      'sw': 'en-GB',
-      'ja-JP': 'en-GB',
-      'zh-CN': 'en-GB',
-      'ru': 'en-GB',
+      'nl-NL': 'nl-NL',
+      'fr-FR': 'fr-FR',
+      'it-IT': 'it-IT',
+      'de-DE': 'de-DE',
+      'es-ES': 'es-ES',
+      'sv': 'sv',
+      'pl': 'pl',
+      'af-ZA': 'af-ZA',
+      'zu': 'zu',
+      'sw': 'sw',
+      'ja-JP': 'ja-JP',
+      'zh-CN': 'zh-CN',
+      'ru': 'ru',
     };
 
-    return mapping[requestedLang] || 'en-GB';
+    const mappedLang = mapping[requestedLang] || 'en-GB';
+    
+    // Check if mapped language exists
+    if (translations[mappedLang]) {
+      return mappedLang;
+    }
+
+    // Final fallback to en-GB
+    return 'en-GB';
   }
 
   /**
@@ -86,8 +109,15 @@ export class EmailTemplateRenderer {
     language: string,
     data: { [key: string]: any }
   ): { subject: string; html: string } {
+    // Load translations for this email type
+    const translations = this.loadTranslationsForType(emailType);
+    
+    if (!translations || Object.keys(translations).length === 0) {
+      throw new Error(`No translations found for email type: ${emailType}`);
+    }
+
     // Get language code with fallback
-    const langCode = this.getLanguageCode(language);
+    const langCode = this.getLanguageCode(language, translations);
     
     // Load base template
     const templatePath = path.join(this.templatesPath, `${emailType}.html`);
@@ -100,24 +130,24 @@ export class EmailTemplateRenderer {
       throw new Error(`Template ${emailType} not found`);
     }
 
-    // Get translations for this email type and language
-    const emailTranslations = this.translations[langCode]?.[emailType];
+    // Get translations for the selected language
+    const t = translations[langCode];
     
-    if (!emailTranslations) {
+    if (!t) {
       console.warn(`No translations found for ${emailType} in ${langCode}, using en-GB`);
-      const fallbackTranslations = this.translations['en-GB']?.[emailType];
+      const fallbackTranslations = translations['en-GB'];
       if (!fallbackTranslations) {
-        throw new Error(`No translations found for ${emailType}`);
+        throw new Error(`No translations found for ${emailType} in any language`);
       }
     }
 
-    const t = emailTranslations || this.translations['en-GB'][emailType];
+    const emailTranslations = t || translations['en-GB'];
 
     // Build complete replacement data (translations + data)
     const allReplacements: { [key: string]: string } = {};
     
     // Add all translation keys with 't.' prefix
-    for (const [key, value] of Object.entries(t)) {
+    for (const [key, value] of Object.entries(emailTranslations)) {
       allReplacements[`t.${key}`] = value;
     }
     
@@ -161,7 +191,7 @@ export class EmailTemplateRenderer {
     }
 
     return {
-      subject: t.subject || 'DEVOCEAN Lodge',
+      subject: emailTranslations.subject || 'DEVOCEAN Lodge',
       html,
     };
   }
@@ -170,23 +200,17 @@ export class EmailTemplateRenderer {
    * Get available languages for an email type
    */
   getAvailableLanguages(emailType: string): string[] {
-    const languages: string[] = [];
-    
-    for (const [langCode, emails] of Object.entries(this.translations)) {
-      if (emails[emailType]) {
-        languages.push(langCode);
-      }
-    }
-    
-    return languages;
+    const translations = this.loadTranslationsForType(emailType);
+    return Object.keys(translations);
   }
 
   /**
    * Check if a translation exists
    */
   hasTranslation(emailType: string, language: string): boolean {
-    const langCode = this.getLanguageCode(language);
-    return !!(this.translations[langCode]?.[emailType]);
+    const translations = this.loadTranslationsForType(emailType);
+    const langCode = this.getLanguageCode(language, translations);
+    return !!(translations[langCode]);
   }
 }
 
