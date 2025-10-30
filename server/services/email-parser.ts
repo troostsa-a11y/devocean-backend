@@ -130,8 +130,9 @@ export class EmailParser {
       }
 
       const guestName = nameMatch[1].trim();
-      // Handle missing/empty email from OTA bookings - use a placeholder
-      const guestEmail = emailMatch && emailMatch[1].trim() ? emailMatch[1].trim() : 'noemail@devocean-lodge.com';
+      // Sanitize and validate email
+      const rawEmail = emailMatch && emailMatch[1].trim() ? emailMatch[1].trim().toLowerCase() : '';
+      const guestEmail = this.normalizeEmail(rawEmail, groupRef);
       const guestPhone = phoneMatch ? phoneMatch[1] : undefined;
       const guestLanguage = languageMatch ? languageMatch[1].toUpperCase() : 'EN';
 
@@ -142,7 +143,8 @@ export class EmailParser {
         return null;
       }
 
-      const currency = totalPriceMatch[1];
+      const rawCurrency = totalPriceMatch[1];
+      const currency = this.normalizeCurrency(rawCurrency);
       const totalPrice = totalPriceMatch[2].replace(/,/g, '');
 
       // Extract source - detect OTA platforms
@@ -198,7 +200,8 @@ export class EmailParser {
       const roomType = match[1].trim();
       const bookingRef = match[2];
       const people = parseInt(match[3]);
-      const currency = match[4];
+      const rawCurrency = match[4];
+      const currency = this.normalizeCurrency(rawCurrency);
       const price = parseFloat(match[5].replace(/,/g, ''));
 
       rooms.push({
@@ -218,7 +221,8 @@ export class EmailParser {
         const roomType = match[1].trim();
         const bookingRef = match[2];
         const people = parseInt(match[3]);
-        const currency = match[4];
+        const rawCurrency = match[4];
+        const currency = this.normalizeCurrency(rawCurrency);
         const price = parseFloat(match[5].replace(/,/g, ''));
 
         rooms.push({
@@ -232,6 +236,72 @@ export class EmailParser {
     }
 
     return rooms;
+  }
+
+  /**
+   * Normalize currency code to 3-letter ISO format
+   * Handles Beds24's "US" → "USD" conversion
+   */
+  private static normalizeCurrency(rawCurrency: string): string {
+    const currency = rawCurrency.toUpperCase().trim();
+    
+    // Map 2-letter codes to 3-letter ISO codes
+    const currencyMap: Record<string, string> = {
+      'US': 'USD',
+      'EU': 'EUR',
+      'GB': 'GBP',
+      'ZA': 'ZAR',
+      'MZ': 'MZN',
+      'AU': 'AUD',
+      'CA': 'CAD',
+      'CN': 'CNY',
+      'JP': 'JPY',
+      'IN': 'INR',
+      'BR': 'BRL',
+      'RU': 'RUB',
+    };
+
+    // If it's a 2-letter code, try to map it
+    if (currency.length === 2 && currencyMap[currency]) {
+      console.log(`📊 Normalized currency: ${rawCurrency} → ${currencyMap[currency]}`);
+      return currencyMap[currency];
+    }
+
+    // If it's already 3 letters, use it
+    if (currency.length === 3) {
+      return currency;
+    }
+
+    // Fallback to USD if unknown
+    console.warn(`⚠️  Unknown currency code: ${rawCurrency}, defaulting to USD`);
+    return 'USD';
+  }
+
+  /**
+   * Normalize and validate email address
+   * Returns valid email or deterministic placeholder
+   */
+  private static normalizeEmail(rawEmail: string, groupRef: string): string {
+    if (!rawEmail) {
+      const fallback = `unknown-${groupRef}@beds24.invalid`;
+      console.log(`📧 No email provided, using fallback: ${fallback}`);
+      return fallback;
+    }
+
+    // Sanitize: trim, lowercase
+    const cleaned = rawEmail.trim().toLowerCase();
+
+    // Basic email validation (RFC 5322 simplified)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (emailRegex.test(cleaned)) {
+      return cleaned;
+    }
+
+    // Invalid email - use deterministic placeholder
+    const fallback = `unknown-${groupRef}@beds24.invalid`;
+    console.warn(`⚠️  Invalid email format: "${rawEmail}", using fallback: ${fallback}`);
+    return fallback;
   }
 
   /**
