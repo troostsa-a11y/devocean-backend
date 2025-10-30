@@ -1,71 +1,174 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{t.subject}}</title>
-  <style>
-    body { font-family: 'Raleway', Arial, sans-serif; line-height: 1.6; color: #5C5048; max-width: 600px; margin: 0 auto; padding: 0; background: #fffaf6; }
-    .email-container { background: white; margin: 20px auto; border-radius: 12px; overflow: hidden; }
-    .header { background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%); color: white; padding: 30px 20px; text-align: center; }
-    .header h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; letter-spacing: 0.2px; }
-    .header p { margin: 0; font-size: 16px; opacity: 0.95; font-weight: 600; }
-    .content { padding: 30px 20px; }
-    .content h2 { color: #9e4b13; margin: 0 0 20px 0; font-size: 22px; font-weight: 700; }
-    .highlight-box { background: #fffaf6; padding: 20px; margin: 20px 0; border-radius: 8px; border: 2px solid #9e4b13; text-align: center; }
-    .highlight-box h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 20px; font-weight: 700; }
-    .highlight-box p { margin: 8px 0; font-size: 16px; }
-    .info-box { background: #fffaf6; padding: 20px; margin: 20px 0; border-radius: 8px; border-left: 4px solid #9e4b13; }
-    .info-box p { margin: 8px 0; }
-    .button-container { text-align: center; margin: 30px 0; }
-    .button { display: inline-block; padding: 14px 30px; background: #9e4b13; color: white; text-decoration: none; border-radius: 999px; font-weight: 700; font-size: 16px; }
-    .button:hover { background: #b65a1a; }
-    .button-secondary { display: inline-block; padding: 14px 30px; background: white; color: #9e4b13; text-decoration: none; border-radius: 999px; font-weight: 700; font-size: 16px; border: 2px solid #9e4b13; margin-left: 10px; }
-    .button-secondary:hover { background: #fffaf6; }
-    .footer { background: #fffaf6; padding: 20px; text-align: center; font-size: 13px; color: #8a827b; border-top: 1px solid #eee; }
-    .footer p { margin: 5px 0; }
-  </style>
-</head>
-<body>
-  <div class="email-container">
-    <div class="header">
-      <h1>🌊 DEVOCEAN Lodge</h1>
-      <p>{{t.headerSubtitle}}</p>
-    </div>
-    
-    <div class="content">
-      <h2>{{t.greeting}}</h2>
-      
-      <p>{{t.intro}}</p>
-      
-      <div class="highlight-box">
-        <h3>{{t.reviewTitle}}</h3>
-        <p>{{t.reviewText}}</p>
-      </div>
-      
-      <div class="button-container">
-        <a href="{{reviewUrl}}" class="button">{{t.leaveReview}}</a>
-      </div>
-      
-      <div class="info-box">
-        <p><strong>{{t.stayConnectedTitle}}:</strong></p>
-        <p>{{t.stayConnectedText}}</p>
-      </div>
-      
-      <div class="button-container">
-        <a href="https://www.devoceanlodge.com" class="button-secondary">{{t.visitWebsite}}</a>
-      </div>
-      
-      <p>{{t.closing}}</p>
-      
-      <p>{{t.regards}},<br>
-      <strong>{{t.teamName}}</strong></p>
-    </div>
-    
-    <div class="footer">
-      <p><strong>DEVOCEAN Lodge</strong> | {{t.location}}</p>
-      <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
-    </div>
-  </div>
-</body>
+<html lang="en" style="margin:0;padding:0;">
+  <head>
+    <meta charset="utf-8">
+    <title>{{t.subject}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0; width:0; overflow:hidden; mso-hide:all; }
+      @media only screen and (max-width: 600px) {
+        .container { width:100% !important; }
+        .p-24 { padding:18px !important; }
+        .h1 { font-size:24px !important; }
+        .lead { font-size:15px !important; }
+        .btn { display:block !important; width:auto !important; max-width:100% !important; margin:0 auto 12px auto !important; }
+        .qr-table { width:100% !important; }
+        .qr-cell { display:block !important; width:100% !important; padding:10px 0 !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:0; background:#fffaf6; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+    <div class="preheader">{{t.preheader}}</div>
+
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#fffaf6" style="background:#fffaf6;">
+      <tr>
+        <td align="center" style="padding:20px 12px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="container" style="width:600px; max-width:600px; background:#ffffff; border-radius:12px; overflow:hidden;">
+            
+            <tr>
+              <td height="8" style="height:8px; background:#b65a1a;"></td>
+            </tr>
+
+            <tr>
+              <td align="center">
+                <img src="cid:email-header-image" alt="DEVOCEAN Lodge" width="600" style="display:block; width:100%; height:auto; border:0;">
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:20px 24px 8px 24px;">
+                <h1 class="h1" style="margin:0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight:800; font-size:26px; line-height:1.2; color:#5C5048;">
+                  {{t.heading}}
+                </h1>
+                <p class="lead" style="margin:8px 0 0 0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight:600; font-size:16px; line-height:1.5; color:#5C5048;">
+                  {{t.headerSubtitle}}
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-24" style="padding:24px; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#5C5048; font-size:15px; line-height:1.7;">
+
+                <p style="margin:0 0 14px 0;">{{t.thankYouText}}</p>
+
+                <p style="margin:0 0 14px 0;">{{t.feedbackMatters}}</p>
+
+                <p style="margin:0 0 14px 0;">{{t.reviewRequest}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.whyReviewsTitle}}</h3>
+                <p style="margin:0 0 14px 0;">{{t.whyReviewsText}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.qrTitle}}</h3>
+                <p style="margin:0 0 14px 0;">{{t.qrInstructions}}</p>
+
+                <!-- QR Codes Section -->
+                <table role="presentation" class="qr-table" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 20px 0;">
+                  <tr>
+                    <td class="qr-cell" align="center" style="padding:10px; vertical-align:top;" width="33.33%">
+                      <img src="cid:qr-booking" alt="Booking.com QR Code" width="120" height="120" style="display:block; margin:0 auto 8px auto; border:2px solid #eee; border-radius:8px;">
+                      <p style="margin:0; font-family:Raleway, Arial, sans-serif; font-size:13px; font-weight:600; color:#5C5048;">{{t.bookingQR}}</p>
+                    </td>
+                    <td class="qr-cell" align="center" style="padding:10px; vertical-align:top;" width="33.33%">
+                      <img src="cid:qr-google" alt="Google QR Code" width="120" height="120" style="display:block; margin:0 auto 8px auto; border:2px solid #eee; border-radius:8px;">
+                      <p style="margin:0; font-family:Raleway, Arial, sans-serif; font-size:13px; font-weight:600; color:#5C5048;">{{t.googleQR}}</p>
+                    </td>
+                    <td class="qr-cell" align="center" style="padding:10px; vertical-align:top;" width="33.33%">
+                      <img src="cid:qr-tripadvisor" alt="TripAdvisor QR Code" width="120" height="120" style="display:block; margin:0 auto 8px auto; border:2px solid #eee; border-radius:8px;">
+                      <p style="margin:0; font-family:Raleway, Arial, sans-serif; font-size:13px; font-weight:600; color:#5C5048;">{{t.tripadvisorQR}}</p>
+                    </td>
+                  </tr>
+                </table>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.referralTitle}}</h3>
+                <p style="margin:0 0 14px 0;">{{t.referralText}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <p style="margin:18px 0 14px 0;">{{t.closingText}}</p>
+
+                <!-- CTA buttons -->
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 12px 0;">
+                  <tr>
+                    <td align="center">
+                      <!-- Button 1: WhatsApp (Outlook VML version) -->
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://wa.me/258844182252?text=Hello%20DEVOCEAN%20Lodge" style="height:48px;v-text-anchor:middle;width:140px;" arcsize="25%" stroke="f" fillcolor="#9e4b13">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:Raleway, Arial, sans-serif;font-size:15px;font-weight:600;">WhatsApp</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!-- Button 1: Standard HTML version -->
+                      <!--[if !mso]><!-- -->
+                      <a class="btn" href="https://wa.me/258844182252?text=Hello%20DEVOCEAN%20Lodge" target="_blank"
+                         style="background-color:#9e4b13; border-radius:12px; color:#ffffff; display:inline-block; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; font-weight:600; padding:12px 24px; text-align:center; text-decoration:none; margin:0 10px 10px 0; white-space:nowrap; min-width:140px;">
+                        WhatsApp
+                      </a>
+                      <!--<![endif]-->
+
+                      <!-- Button 2: Website (Outlook VML version) -->
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.devoceanlodge.com" style="height:48px;v-text-anchor:middle;width:140px;" arcsize="25%" stroke="f" fillcolor="#9e4b13">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:Raleway, Arial, sans-serif;font-size:15px;font-weight:600;">Visit Website</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!-- Button 2: Standard HTML version -->
+                      <!--[if !mso]><!-- -->
+                      <a class="btn" href="https://www.devoceanlodge.com" target="_blank"
+                         style="background-color:#9e4b13; border-radius:12px; color:#ffffff; display:inline-block; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; font-weight:600; padding:12px 24px; text-align:center; text-decoration:none; margin:0 0 10px 0; white-space:nowrap; min-width:140px;">
+                        Visit Website
+                      </a>
+                      <!--<![endif]-->
+                    </td>
+                  </tr>
+                </table>
+
+                <!-- Sign-off -->
+                <p style="margin:20px 0 0 0;">We look forward to sharing the <strong style="color:#5C5048;">DEVOCEAN spirit</strong> with you soon!</p>
+                <p style="margin:10px 0 0 0;">
+                  Warm regards,<br>
+                </p>
+
+                <!-- Trustindex Signature -->
+                <table style="padding-bottom:10px;margin-bottom:8px;margin-top:20px;" cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td> <table style="display: inline-flex; margin-bottom: 30px;" cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td style="vertical-align: top;"> <table cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td> <img src="https://cdn.trustindex.io/companies/ca/caf207364508g84f/media/logo.png" alt="Sean &amp; the Team" style="vertical-align:initial; max-width:80px;" width="80" height="80"> </td> </tr> </tbody></table> </td> <td style="padding-left: 14px; "></td> <td style="border-left: 2px solid #ccc; padding-right: 14px; "></td> <td style="vertical-align: top;"> <table cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td> <table style="line-height: 1.5em; font-family: sans-serif; font-size: 14px; color: #000000; font-weight: normal; width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td> <span style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px; font-weight: bold; line-height: 1.5em;">Sean &amp; the Team</span><br> <span style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: 13px; line-height: 1.5em;">DEVOCEAN Lodge</span> </td> </tr> </tbody></table> </td> </tr> <tr> <td> <table style="line-height: 1.5em; font-family: sans-serif; font-size: 14px; color: #000000; font-weight: normal; width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td style=" font-family: sans-serif; font-size:14px; color: #000000 !important;"> <div style="font-family: sans-serif; font-size:14px; line-height: 1.5em; "> <span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: sans-serif; font-weight: bold; font-size: 13px; line-height: 1.5em;">WhatsApp:</span> <span style="font-family: sans-serif; line-height: 1.5em; text-decoration: none !important; font-size: 13px; color: rgb(0, 0, 0) !important;"> <span style="font-size: 13px;">+258 84 418 2252</span> </span> </div> </td> </tr> </tbody></table> </td> </tr> <tr> <td style="vertical-align: top;"> <table cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td> <a href="https://www.trustindex.io/reviews/devoceanlodge.com" target="_blank" rel="noopener noreferrer" style="color: #000; font-size:14px; display: inline-block;"> <table cellspacing="0" cellpadding="0" border="0"> <tbody><tr> <td style="font-family: sans-serif; font-size:14px; color: #000000 !important; line-height: 1.5em; display: table-cell; vertical-align: middle; padding-right: 2px;"> <img src="https://cdn.trustindex.io/assets/platform/Google/icon.svg" alt="Google" style="vertical-align:initial; width:16px; height:16px; line-height:1;" width="16" height="16"> </td> <td style=" font-family: sans-serif; font-size:14px; color: #000000 !important; line-height: 1.5em;"> <strong style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: sans-serif; font-size: 13px; line-height: 1.5em;">4.9 rating</strong> <img src="https://cdn.trustindex.io/assets/star.svg" style="width:14px; height:14px; vertical-align:initial; line-height:1;" width="14" height="14"> </td> </tr> </tbody></table> </a> </td> </tr> </tbody></table> </td> </tr> </tbody></table> </td> </tr> </tbody></table> </td> </tr> </tbody></table>
+
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td align="center" style="background:#fffaf6; padding:18px; border-top:1px solid #eee;">
+                <p style="margin:0; font-family:Raleway, Arial, sans-serif; font-size:13px; color:#5C5048;">
+                  <strong style="color:#5C5048;">DEVOCEAN Lodge</strong> &nbsp;|&nbsp; Ponta do Ouro, Mozambique
+                </p>
+                <p style="margin:6px 0 0 0; font-family:Raleway, Arial, sans-serif; font-size:13px;">
+                  <a href="https://www.devoceanlodge.com" style="color:#b65a1a; text-decoration:none;">www.devoceanlodge.com</a>
+                </p>
+                <p style="margin:6px 0 0 0; font-family:Raleway, Arial, sans-serif; font-size:13px; color:#5C5048;">
+                  WhatsApp: +258 84 418 2252 (Text Only)
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+
+  </body>
 </html>
