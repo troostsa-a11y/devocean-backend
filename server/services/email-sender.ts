@@ -51,20 +51,44 @@ export class EmailSenderService {
         scheduledEmail.templateData || {}
       );
 
-      // Send email via SMTP with inline header image attachment
+      // Build attachments array - always include header image
+      const attachments: any[] = [
+        {
+          filename: 'email-header.jpg',
+          path: './WebsiteProject/public/images/email-header.jpg',
+          cid: 'email-header-image' // Content-ID for referencing in HTML
+        }
+      ];
+
+      // Add QR codes for post_departure emails
+      if (scheduledEmail.emailType === 'post_departure') {
+        attachments.push(
+          {
+            filename: 'qr-booking.png',
+            path: './email_templates/assets/qr-booking.png',
+            cid: 'qr-booking'
+          },
+          {
+            filename: 'qr-google.png',
+            path: './email_templates/assets/qr-google.png',
+            cid: 'qr-google'
+          },
+          {
+            filename: 'qr-tripadvisor.png',
+            path: './email_templates/assets/qr-tripadvisor.png',
+            cid: 'qr-tripadvisor'
+          }
+        );
+      }
+
+      // Send email via SMTP with inline attachments
       const result = await this.transporter.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: scheduledEmail.recipientEmail,
         bcc: this.bccEmail, // BCC copy for record-keeping
         subject: template.subject,
         html: template.html,
-        attachments: [
-          {
-            filename: 'email-header.jpg',
-            path: './WebsiteProject/public/images/email-header.jpg',
-            cid: 'email-header-image' // Content-ID for referencing in HTML
-          }
-        ]
+        attachments
       });
 
       // Mark as sent in database
