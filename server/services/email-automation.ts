@@ -60,12 +60,13 @@ export class EmailAutomationService {
     taxiConfig?: TaxiCompanyConfig,
     adminEmail?: string,
     fromEmail?: string,
-    fromName?: string
+    fromName?: string,
+    bccEmail?: string
   ) {
     this.db = new DatabaseService(databaseUrl);
     this.emailScheduler = new EmailSchedulerService(this.db);
-    this.emailSender = new EmailSenderService(smtpConfig, this.db, fromEmail, fromName);
-    this.cancellationHandler = new CancellationHandler(this.db, smtpConfig, fromEmail, fromName);
+    this.emailSender = new EmailSenderService(smtpConfig, this.db, fromEmail, fromName, bccEmail);
+    this.cancellationHandler = new CancellationHandler(this.db, smtpConfig, fromEmail, fromName, bccEmail);
     
     // Initialize transfer notification service if taxi config provided
     if (taxiConfig) {

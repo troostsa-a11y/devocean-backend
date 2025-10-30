@@ -57,6 +57,7 @@ if (validateEnvironment()) {
     const adminEmail = process.env.ADMIN_EMAIL || 'admin@devoceanlodge.com';
     const fromEmail = process.env.IMAP_FROM_EMAIL || 'booking@devoceanlodge.com';
     const fromName = process.env.IMAP_FROM_NAME || 'DEVOCEAN Lodge Bookings';
+    const bccEmail = process.env.BCC_EMAIL || 'beds24@devoceanlodge.com';
     
     // SMTP config for sending emails (port 465 for SMTP SSL, same as contact form)
     const smtpConfig = {
@@ -85,7 +86,8 @@ if (validateEnvironment()) {
       taxiConfig,
       adminEmail,
       fromEmail,
-      fromName
+      fromName,
+      bccEmail
     );
 
     if (taxiConfig) {
@@ -94,6 +96,7 @@ if (validateEnvironment()) {
 
     console.log(`📊 Admin reports enabled for ${adminEmail}`);
     console.log(`📧 Sending emails from: "${fromName}" <${fromEmail}>`);
+    console.log(`📧 BCC copies sent to: ${bccEmail}`);
 
     // Start the automated email checking
     emailService.start();

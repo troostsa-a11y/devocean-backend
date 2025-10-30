@@ -23,12 +23,14 @@ export class CancellationHandler {
   private transporter?: nodemailer.Transporter;
   private fromEmail: string;
   private fromName: string;
+  private bccEmail?: string;
 
   constructor(
     db: DatabaseService,
     smtpConfig?: SMTPConfig,
     fromEmail: string = 'booking@devoceanlodge.com',
-    fromName: string = 'DEVOCEAN Lodge Bookings'
+    fromName: string = 'DEVOCEAN Lodge Bookings',
+    bccEmail?: string
   ) {
     this.db = db;
     if (smtpConfig) {
@@ -36,6 +38,7 @@ export class CancellationHandler {
     }
     this.fromEmail = fromEmail;
     this.fromName = fromName;
+    this.bccEmail = bccEmail;
   }
 
   /**
@@ -131,6 +134,7 @@ export class CancellationHandler {
       await this.transporter!.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: booking.guestEmail,
+        bcc: this.bccEmail, // BCC copy for record-keeping
         subject: rendered.subject,
         html: rendered.html,
       });
@@ -273,6 +277,7 @@ export class CancellationHandler {
       await this.transporter!.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: guestInfo.email,
+        bcc: this.bccEmail, // BCC copy for record-keeping
         subject: rendered.subject,
         html: rendered.html,
       });

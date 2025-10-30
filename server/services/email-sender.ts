@@ -23,17 +23,20 @@ export class EmailSenderService {
   private db: DatabaseService;
   private fromEmail: string;
   private fromName: string;
+  private bccEmail?: string;
 
   constructor(
     smtpConfig: SMTPConfig,
     db: DatabaseService,
     fromEmail: string = 'booking@devoceanlodge.com',
-    fromName: string = 'DEVOCEAN Lodge Bookings'
+    fromName: string = 'DEVOCEAN Lodge Bookings',
+    bccEmail?: string
   ) {
     this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.fromEmail = fromEmail;
     this.fromName = fromName;
+    this.bccEmail = bccEmail;
   }
 
   /**
@@ -52,6 +55,7 @@ export class EmailSenderService {
       const result = await this.transporter.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: scheduledEmail.recipientEmail,
+        bcc: this.bccEmail, // BCC copy for record-keeping
         subject: template.subject,
         html: template.html,
         attachments: [
