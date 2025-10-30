@@ -58,6 +58,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
     - Architecture: IMAP Parser → Supabase PostgreSQL → Email Scheduler → Resend Transactional Emails.
     - Cron schedule: 08:00, 14:00, 20:00 UTC daily.
     - Keepalive: Requires external ping service every 30 minutes to prevent Replit sleep (see KEEPALIVE-SETUP.md).
+    - **Server Configuration:** Uses `vm02-murphy.h4ahosting.com` as IMAP_HOST (direct server hostname for maximum reliability vs domain alias).
+    - **BCC Functionality:** All outgoing emails automatically BCC to `beds24@devoceanlodge.com` for audit trail (configurable via BCC_EMAIL secret).
     - Database tables: `bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`.
     - Email touchpoints: Post-booking confirmation, pre-arrival info, arrival reminder, post-departure thank you, cancellation confirmation, transfer notification to taxi company.
     - Features: Template-based multi-language system (6 base HTML templates + translations JSON), supports `en-GB`, `en-US`, `pt-PT`, `pt-BR` with extensibility, cancellation handling, extras management, booking status tracking, automatic language detection.
