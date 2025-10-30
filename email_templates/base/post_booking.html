@@ -12,7 +12,7 @@
         .p-24 { padding:18px !important; }
         .h1 { font-size:24px !important; }
         .lead { font-size:15px !important; }
-        .btn { display:block !important; width:100% !important; }
+        .btn { display:block !important; width:auto !important; max-width:100% !important; margin:0 auto 12px auto !important; }
       }
     </style>
   </head>
@@ -186,31 +186,36 @@
                 <!-- CTA buttons -->
                 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin:0 0 12px 0;">
                   <tr>
-                    <td align="center" style="padding:0 0 12px 0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td align="center" style="border-radius:12px; background-color:#9e4b13; mso-padding-alt:12px 24px;">
-                            <a href="https://wa.me/258844182252?text=Hello%20DEVOCEAN%20Lodge" target="_blank"
-                               style="display:inline-block; padding:12px 24px; font-family:Raleway, Arial, sans-serif; font-weight:600; font-size:15px; color:#ffffff; text-decoration:none; border-radius:12px; white-space:nowrap; mso-border-radius:12px;">
-                              WhatsApp Us
-                            </a>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="center" style="padding:0;">
-                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                        <tr>
-                          <td align="center" style="border-radius:12px; background-color:#9e4b13; mso-padding-alt:12px 24px;">
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=-26.841994852732736,32.88504331196165" target="_blank"
-                               style="display:inline-block; padding:12px 24px; font-family:Raleway, Arial, sans-serif; font-weight:600; font-size:15px; color:#ffffff; text-decoration:none; border-radius:12px; white-space:nowrap; mso-border-radius:12px;">
-                              Directions
-                            </a>
-                          </td>
-                        </tr>
-                      </table>
+                    <td align="center">
+                      <!-- Button 1: WhatsApp (Outlook VML version) -->
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://wa.me/258844182252?text=Hello%20DEVOCEAN%20Lodge" style="height:48px;v-text-anchor:middle;width:140px;" arcsize="25%" stroke="f" fillcolor="#9e4b13">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:Raleway, Arial, sans-serif;font-size:15px;font-weight:600;">WhatsApp Us</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!-- Button 1: Standard HTML version -->
+                      <!--[if !mso]><!-- -->
+                      <a class="btn" href="https://wa.me/258844182252?text=Hello%20DEVOCEAN%20Lodge" target="_blank"
+                         style="background-color:#9e4b13; border-radius:12px; color:#ffffff; display:inline-block; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; font-weight:600; padding:12px 24px; text-align:center; text-decoration:none; margin:0 10px 10px 0; white-space:nowrap;">
+                        WhatsApp Us
+                      </a>
+                      <!--<![endif]-->
+
+                      <!-- Button 2: Directions (Outlook VML version) -->
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.google.com/maps/dir/?api=1&amp;destination=-26.841994852732736,32.88504331196165" style="height:48px;v-text-anchor:middle;width:120px;" arcsize="25%" stroke="f" fillcolor="#9e4b13">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:Raleway, Arial, sans-serif;font-size:15px;font-weight:600;">Directions</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!-- Button 2: Standard HTML version -->
+                      <!--[if !mso]><!-- -->
+                      <a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=-26.841994852732736,32.88504331196165" target="_blank"
+                         style="background-color:#9e4b13; border-radius:12px; color:#ffffff; display:inline-block; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; font-weight:600; padding:12px 24px; text-align:center; text-decoration:none; margin:0 0 10px 0; white-space:nowrap;">
+                        Directions
+                      </a>
+                      <!--<![endif]-->
                     </td>
                   </tr>
                 </table>
