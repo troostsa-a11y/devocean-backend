@@ -1,80 +1,183 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{t.subject}}</title>
-  <style>
-    body { font-family: 'Raleway', Arial, sans-serif; line-height: 1.6; color: #5C5048; max-width: 600px; margin: 0 auto; padding: 0; background: #fffaf6; }
-    .email-container { background: white; margin: 20px auto; border-radius: 12px; overflow: hidden; }
-    .header { background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%); color: white; padding: 30px 20px; text-align: center; }
-    .header h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; letter-spacing: 0.2px; }
-    .header p { margin: 0; font-size: 16px; opacity: 0.95; font-weight: 600; }
-    .content { padding: 30px 20px; }
-    .content h2 { color: #9e4b13; margin: 0 0 20px 0; font-size: 22px; font-weight: 700; }
-    .booking-details { background: #fffaf6; padding: 20px; margin: 20px 0; border-left: 4px solid #9e4b13; border-radius: 8px; }
-    .booking-details h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
-    .booking-details p { margin: 8px 0; }
-    .highlight-box { background: #fffaf6; padding: 20px; margin: 20px 0; border-radius: 8px; border: 2px solid #9e4b13; }
-    .highlight-box h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
-    .highlight-box p { margin: 8px 0; }
-    .info-list { margin: 20px 0; }
-    .info-list ul { padding-left: 20px; }
-    .info-list li { margin: 10px 0; }
-    .button-container { text-align: center; margin: 30px 0; }
-    .button { display: inline-block; padding: 14px 30px; background: #9e4b13; color: white; text-decoration: none; border-radius: 999px; font-weight: 700; font-size: 16px; }
-    .button:hover { background: #b65a1a; }
-    .footer { background: #fffaf6; padding: 20px; text-align: center; font-size: 13px; color: #8a827b; border-top: 1px solid #eee; }
-    .footer p { margin: 5px 0; }
-  </style>
-</head>
-<body>
-  <div class="email-container">
-    <div class="header">
-      <h1>🌊 DEVOCEAN Lodge</h1>
-      <p>{{t.headerSubtitle}}</p>
-    </div>
-    
-    <div class="content">
-      <h2>{{t.greeting}}</h2>
-      
-      <p>{{t.intro}}</p>
-      
-      <div class="booking-details">
-        <h3>{{t.bookingDetailsTitle}}</h3>
-        <p><strong>{{t.bookingRef}}:</strong> {{groupRef}}</p>
-        <p><strong>{{t.checkIn}}:</strong> {{checkInDate}} at {{t.checkInTime}}</p>
-        <p><strong>{{t.checkOut}}:</strong> {{checkOutDate}} at {{t.checkOutTime}}</p>
-      </div>
-      
-      <div class="highlight-box">
-        <h3>{{t.arrivalInstructionsTitle}}</h3>
-        <p>{{t.arrivalInstructions}}</p>
-      </div>
-      
-      <div class="info-list">
-        <p><strong>{{t.finalRemindersTitle}}:</strong></p>
-        <ul>
-          <li>{{t.finalReminder1}}</li>
-          <li>{{t.finalReminder2}}</li>
-          <li>{{t.finalReminder3}}</li>
-        </ul>
-      </div>
-      
-      <div class="button-container">
-        <a href="https://www.devoceanlodge.com/contact" class="button">{{t.contactUs}}</a>
-      </div>
-      
-      <p>{{t.closing}}</p>
-      
-      <p>{{t.regards}},<br>
-      <strong>{{t.teamName}}</strong></p>
-    </div>
-    
-    <div class="footer">
-      <p><strong>DEVOCEAN Lodge</strong> | {{t.location}}</p>
-      <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
-    </div>
-  </div>
-</body>
+<html lang="en" style="margin:0;padding:0;">
+  <head>
+    <meta charset="utf-8">
+    <title>{{t.subject}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .preheader { display:none !important; visibility:hidden; opacity:0; color:transparent; height:0; width:0; overflow:hidden; mso-hide:all; }
+      @media only screen and (max-width: 600px) {
+        .container { width:100% !important; }
+        .p-24 { padding:18px !important; }
+        .h1 { font-size:24px !important; }
+        .lead { font-size:15px !important; }
+        .btn { display:block !important; width:auto !important; max-width:100% !important; margin:0 auto 12px auto !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:0; background:#fffaf6; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
+
+    <div class="preheader">{{t.preheader}}</div>
+
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#fffaf6" style="background:#fffaf6;">
+      <tr>
+        <td align="center" style="padding:20px 12px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="600" class="container" style="width:600px; max-width:600px; background:#ffffff; border-radius:12px; overflow:hidden;">
+            
+            <tr>
+              <td height="8" style="height:8px; background:#b65a1a;"></td>
+            </tr>
+
+            <tr>
+              <td align="center">
+                <img src="cid:email-header-image" alt="DEVOCEAN Lodge" width="600" style="display:block; width:100%; height:auto; border:0;">
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:20px 24px 8px 24px;">
+                <h1 class="h1" style="margin:0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight:800; font-size:26px; line-height:1.2; color:#5C5048;">
+                  {{t.heading}}
+                </h1>
+                <p class="lead" style="margin:8px 0 0 0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-weight:600; font-size:16px; line-height:1.5; color:#5C5048;">
+                  {{t.headerSubtitle}}
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="p-24" style="padding:24px; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; color:#5C5048; font-size:15px; line-height:1.7;">
+
+                <p style="margin:0 0 14px 0;">{{t.intro}}</p>
+
+                <p style="margin:0 0 14px 0;">{{t.helpOffer}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.hostTitle}}</h3>
+                <p style="margin:0 0 14px 0;">{{t.hostText}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.familyTitle}}</h3>
+                <p style="margin:0 0 8px 0;">{{t.lennonText}}</p>
+                <p style="margin:0 0 14px 0;">{{t.lisaText}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.diningTitle}}</h3>
+                <p style="margin:0 0 8px 0;">{{t.raquelIntro}}</p>
+                <p style="margin:0 0 14px 0;">
+                  {{t.breakfastIcon}} <strong>{{t.breakfastLabel}}:</strong> {{t.breakfastHours}}<br><br>
+                  {{t.dinnerIcon}} <strong>{{t.dinnerLabel}}:</strong> {{t.dinnerHours}}
+                </p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.housekeepingTitle}}</h3>
+                <p style="margin:0 0 14px 0;">{{t.housekeepingText}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.maintenanceTitle}}</h3>
+                <p style="margin:0 0 14px 0;">{{t.maintenanceText}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.usefulInfoTitle}}</h3>
+
+                <p style="margin:0 0 8px 0;">
+                  <strong>{{t.wifiLabel}}:</strong><br>
+                  {{t.wifiNetwork}}: TERRAfrique<br>
+                  {{t.wifiPassword}}: #Connect2024
+                </p>
+
+                <p style="margin:0 0 8px 0;">
+                  <strong>{{t.addressLabel}}:</strong><br>
+                  Rua C, Parcela 12, Ponta do Ouro<br>
+                  Matutuine 1118, Mozambique
+                </p>
+
+                <p style="margin:0 0 14px 0;">
+                  <strong>{{t.checkInLabel}}:</strong> 2:00 – 6:00 PM<br>
+                  <strong>{{t.checkOutLabel}}:</strong> {{t.checkOutTime}}
+                </p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <h3 style="margin:18px 0 10px 0; font-size:18px; font-weight:800; color:#b65a1a;">{{t.directionsTitle}}</h3>
+                <p style="margin:0 0 8px 0;">{{t.directionsStep1}}</p>
+                <p style="margin:0 0 8px 0;">{{t.directionsStep2}}</p>
+                <p style="margin:0 0 8px 0;">{{t.directionsStep3}}</p>
+                <p style="margin:0 0 14px 0;">{{t.directionsStep4}}</p>
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr><td style="border-top:1px solid #eee; height:1px; line-height:1px; font-size:0;">&nbsp;</td></tr>
+                </table>
+
+                <p style="margin:0 0 14px 0;"><strong>{{t.closing}}</strong></p>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:0 24px 24px 24px;">
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td align="center" style="border-radius:8px; background:#b65a1a; text-align:center;">
+                      <!--[if mso]>
+                      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.devoceanlodge.com/contact.html" style="height:44px;v-text-anchor:middle;width:140px;" arcsize="18%" strokecolor="#b65a1a" fillcolor="#b65a1a">
+                        <w:anchorlock/>
+                        <center style="color:#ffffff;font-family:Raleway, Arial, sans-serif;font-size:15px;font-weight:bold;">{{t.ctaButton}}</center>
+                      </v:roundrect>
+                      <![endif]-->
+                      <!--[if !mso]><!-->
+                      <a href="https://www.devoceanlodge.com/contact.html" target="_blank" class="btn" style="display:inline-block; width:140px; height:44px; padding:12px 24px; border-radius:8px; background:#b65a1a; color:#ffffff; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:15px; font-weight:700; text-decoration:none; text-align:center; line-height:1.5; border:none;">{{t.ctaButton}}</a>
+                      <!--<![endif]-->
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:0 24px 24px 24px;">
+                <p style="margin:0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:14px; line-height:1.6; color:#888;">
+                  {{t.signature}}<br>
+                  <strong style="color:#5C5048;">{{t.team}}</strong>
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td align="center" style="padding:0 24px 28px 24px;">
+                <p style="margin:0 0 4px 0; font-family:Raleway, Arial, 'Helvetica Neue', Helvetica, sans-serif; font-size:12px; line-height:1.4; color:#aaa;">
+                  DEVOCEAN Lodge | Rua C, Parcela 12<br>
+                  Ponta do Ouro, Matutuine 1118, Mozambique<br>
+                  <a href="https://www.devoceanlodge.com" style="color:#b65a1a; text-decoration:none;">www.devoceanlodge.com</a> | 
+                  <a href="mailto:reservations@devoceanlodge.com" style="color:#b65a1a; text-decoration:none;">reservations@devoceanlodge.com</a>
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+
+  </body>
 </html>
