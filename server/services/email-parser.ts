@@ -271,6 +271,7 @@ export class EmailParser {
     tls: boolean;
   }): Promise<any[]> {
     try {
+      console.log(`Connecting to IMAP server: ${config.host}:${config.port}`);
       const connection = await imaps.connect({
         imap: {
           user: config.user,
@@ -279,9 +280,12 @@ export class EmailParser {
           port: config.port,
           tls: config.tls,
           tlsOptions: { rejectUnauthorized: false },
-          authTimeout: 10000,
+          authTimeout: 30000, // Increased from 10s to 30s
+          connTimeout: 30000, // Add connection timeout
+          socketTimeout: 30000, // Add socket timeout
         },
       });
+      console.log('✅ IMAP connection established');
 
       await connection.openBox('INBOX');
 
@@ -322,7 +326,9 @@ export class EmailParser {
           port: config.port,
           tls: config.tls,
           tlsOptions: { rejectUnauthorized: false },
-          authTimeout: 10000,
+          authTimeout: 30000, // Increased from 10s to 30s
+          connTimeout: 30000, // Add connection timeout
+          socketTimeout: 30000, // Add socket timeout
         },
       });
 
