@@ -128,6 +128,13 @@ export class EmailAutomationService {
       });
       console.log(`Weekly reports scheduled for 06:00 UTC on Mondays`);
     }
+
+    // Run immediate check on startup to process any backlog
+    // This ensures pending emails are sent even after server restarts
+    console.log('Running startup email check to process any pending emails...');
+    this.runEmailCheck().catch(error => {
+      console.error('Error during startup email check:', error);
+    });
   }
 
   /**
