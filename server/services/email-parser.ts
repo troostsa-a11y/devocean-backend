@@ -20,6 +20,7 @@ interface ParsedBooking {
   groupRef: string;
   bookingRefs: string[];
   guestName: string;
+  firstName: string;
   guestEmail: string;
   guestPhone?: string;
   guestLanguage: string;
@@ -130,6 +131,7 @@ export class EmailParser {
       }
 
       const guestName = nameMatch[1].trim();
+      const firstName = this.extractFirstName(guestName);
       // Sanitize and validate email
       const rawEmail = emailMatch && emailMatch[1].trim() ? emailMatch[1].trim().toLowerCase() : '';
       const guestEmail = this.normalizeEmail(rawEmail, groupRef);
@@ -167,6 +169,7 @@ export class EmailParser {
         groupRef,
         bookingRefs,
         guestName,
+        firstName,
         guestEmail,
         guestPhone,
         guestLanguage,
@@ -236,6 +239,24 @@ export class EmailParser {
     }
 
     return rooms;
+  }
+
+  /**
+   * Extract first name from full name
+   * Handles formats like "John Smith", "Smith, John", "John"
+   */
+  private static extractFirstName(fullName: string): string {
+    const name = fullName.trim();
+    
+    // Handle "Last, First" format
+    if (name.includes(',')) {
+      const parts = name.split(',');
+      return parts[1]?.trim() || parts[0].trim();
+    }
+    
+    // Handle "First Last" or "First Middle Last" format - take first word
+    const parts = name.split(/\s+/);
+    return parts[0] || name;
   }
 
   /**

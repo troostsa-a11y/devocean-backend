@@ -2,7 +2,7 @@
   "en-GB": {
     "subject": "Booking Cancellation Confirmed - DEVOCEAN Lodge",
     "heading": "Cancellation Confirmed",
-    "greeting": "Dear {{guestName}},",
+    "greeting": "Dear {{firstName}},",
     "intro": "We confirm that your booking has been cancelled as requested.",
     "detailsTitle": "Cancelled Booking Details",
     "bookingRef": "Booking Reference",
@@ -23,7 +23,7 @@
   "en-US": {
     "subject": "Booking Cancellation Confirmed - DEVOCEAN Lodge",
     "heading": "Cancellation Confirmed",
-    "greeting": "Dear {{guestName}},",
+    "greeting": "Dear {{firstName}},",
     "intro": "We confirm that your booking has been canceled as requested.",
     "detailsTitle": "Canceled Booking Details",
     "bookingRef": "Booking Reference",
@@ -44,7 +44,7 @@
   "pt-PT": {
     "subject": "Cancelamento Confirmado - DEVOCEAN Lodge",
     "heading": "Cancelamento Confirmado",
-    "greeting": "Caro(a) {{guestName}},",
+    "greeting": "Caro(a) {{firstName}},",
     "intro": "Confirmamos que a sua reserva foi cancelada conforme solicitado.",
     "detailsTitle": "Detalhes da Reserva Cancelada",
     "bookingRef": "Referência da Reserva",
@@ -65,7 +65,7 @@
   "pt-BR": {
     "subject": "Cancelamento Confirmado - DEVOCEAN Lodge",
     "heading": "Cancelamento Confirmado",
-    "greeting": "Caro(a) {{guestName}},",
+    "greeting": "Caro(a) {{firstName}},",
     "intro": "Confirmamos que sua reserva foi cancelada conforme solicitado.",
     "detailsTitle": "Detalhes da Reserva Cancelada",
     "bookingRef": "Referência da Reserva",
@@ -86,7 +86,7 @@
   "nl-NL": {
     "subject": "Annulering Bevestigd - DEVOCEAN Lodge",
     "heading": "Annulering Bevestigd",
-    "greeting": "Beste {{guestName}},",
+    "greeting": "Beste {{firstName}},",
     "intro": "We bevestigen dat uw reservering is geannuleerd zoals gevraagd.",
     "detailsTitle": "Details Geannuleerde Reservering",
     "bookingRef": "Reserveringsnummer",
@@ -107,7 +107,7 @@
   "fr-FR": {
     "subject": "Annulation Confirmée - DEVOCEAN Lodge",
     "heading": "Annulation Confirmée",
-    "greeting": "Cher(ère) {{guestName}},",
+    "greeting": "Cher(ère) {{firstName}},",
     "intro": "Nous confirmons que votre réservation a été annulée comme demandé.",
     "detailsTitle": "Détails de la Réservation Annulée",
     "bookingRef": "Référence de Réservation",
@@ -128,7 +128,7 @@
   "it-IT": {
     "subject": "Cancellazione Confermata - DEVOCEAN Lodge",
     "heading": "Cancellazione Confermata",
-    "greeting": "Gentile {{guestName}},",
+    "greeting": "Gentile {{firstName}},",
     "intro": "Confermiamo che la sua prenotazione è stata cancellata come richiesto.",
     "detailsTitle": "Dettagli della Prenotazione Cancellata",
     "bookingRef": "Riferimento Prenotazione",
@@ -149,7 +149,7 @@
   "de-DE": {
     "subject": "Stornierung Bestätigt - DEVOCEAN Lodge",
     "heading": "Stornierung Bestätigt",
-    "greeting": "Liebe(r) {{guestName}},",
+    "greeting": "Liebe(r) {{firstName}},",
     "intro": "Wir bestätigen, dass Ihre Buchung wie gewünscht storniert wurde.",
     "detailsTitle": "Details der Stornierten Buchung",
     "bookingRef": "Buchungsreferenz",
@@ -170,7 +170,7 @@
   "es-ES": {
     "subject": "Cancelación Confirmada - DEVOCEAN Lodge",
     "heading": "Cancelación Confirmada",
-    "greeting": "Estimado(a) {{guestName}},",
+    "greeting": "Estimado(a) {{firstName}},",
     "intro": "Confirmamos que su reserva ha sido cancelada según lo solicitado.",
     "detailsTitle": "Detalles de la Reserva Cancelada",
     "bookingRef": "Referencia de Reserva",
@@ -191,7 +191,7 @@
   "sv": {
     "subject": "Avbokning Bekräftad - DEVOCEAN Lodge",
     "heading": "Avbokning Bekräftad",
-    "greeting": "Bäste {{guestName}},",
+    "greeting": "Bäste {{firstName}},",
     "intro": "Vi bekräftar att din bokning har avbokats enligt önskemål.",
     "detailsTitle": "Detaljer för Avbokad Bokning",
     "bookingRef": "Bokningsreferens",
@@ -212,7 +212,7 @@
   "pl": {
     "subject": "Anulowanie Potwierdzone - DEVOCEAN Lodge",
     "heading": "Anulowanie Potwierdzone",
-    "greeting": "Drogi(a) {{guestName}},",
+    "greeting": "Drogi(a) {{firstName}},",
     "intro": "Potwierdzamy, że Twoja rezerwacja została anulowana zgodnie z życzeniem.",
     "detailsTitle": "Szczegóły Anulowanej Rezerwacji",
     "bookingRef": "Numer Rezerwacji",
@@ -233,7 +233,7 @@
   "af-ZA": {
     "subject": "Kansellasie Bevestig - DEVOCEAN Lodge",
     "heading": "Kansellasie Bevestig",
-    "greeting": "Beste {{guestName}},",
+    "greeting": "Beste {{firstName}},",
     "intro": "Ons bevestig dat jou bespreking gekanselleer is soos versoek.",
     "detailsTitle": "Gekanselleerde Besprekingsbesonderhede",
     "bookingRef": "Besprekingsverwysing",
@@ -254,7 +254,7 @@
   "zu": {
     "subject": "Ukukhansela Kuqinisekisiwe - DEVOCEAN Lodge",
     "heading": "Ukukhansela Kuqinisekisiwe",
-    "greeting": "Sawubona {{guestName}},",
+    "greeting": "Sawubona {{firstName}},",
     "intro": "Siyaqinisekisa ukuthi ukubhukha kwakho kukhanseliwe njengoba ucele.",
     "detailsTitle": "Imininingwane Yokubhukha Okukhanselelwe",
     "bookingRef": "Inkomba Yokubhukha",
@@ -275,7 +275,7 @@
   "sw": {
     "subject": "Kufutwa Kumethibitishwa - DEVOCEAN Lodge",
     "heading": "Kufutwa Kumethibitishwa",
-    "greeting": "Mpendwa {{guestName}},",
+    "greeting": "Mpendwa {{firstName}},",
     "intro": "Tunathibitisha kuwa uhifadhi wako umefutwa kama ulivyoomba.",
     "detailsTitle": "Maelezo ya Uhifadhi Uliofutwa",
     "bookingRef": "Rejea ya Uhifadhi",
@@ -296,7 +296,7 @@
   "ja-JP": {
     "subject": "キャンセル確定 - DEVOCEAN Lodge",
     "heading": "キャンセル確定",
-    "greeting": "{{guestName}}様、",
+    "greeting": "{{firstName}}様、",
     "intro": "ご要望通り、ご予約がキャンセルされたことを確認いたします。",
     "detailsTitle": "キャンセルされた予約の詳細",
     "bookingRef": "予約番号",
@@ -317,7 +317,7 @@
   "zh-CN": {
     "subject": "取消确认 - DEVOCEAN Lodge",
     "heading": "取消确认",
-    "greeting": "尊敬的 {{guestName}},",
+    "greeting": "尊敬的 {{firstName}},",
     "intro": "我们确认您的预订已按要求取消。",
     "detailsTitle": "已取消预订详情",
     "bookingRef": "预订参考号",
@@ -338,7 +338,7 @@
   "ru": {
     "subject": "Отмена подтверждена - DEVOCEAN Lodge",
     "heading": "Отмена подтверждена",
-    "greeting": "Уважаемый(ая) {{guestName}},",
+    "greeting": "Уважаемый(ая) {{firstName}},",
     "intro": "Мы подтверждаем, что ваше бронирование отменено по вашему запросу.",
     "detailsTitle": "Детали отмененного бронирования",
     "bookingRef": "Номер бронирования",

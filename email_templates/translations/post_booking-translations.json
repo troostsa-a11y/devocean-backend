@@ -2,7 +2,7 @@
   "en-GB": {
     "subject": "Booking Confirmed - DEVOCEAN Lodge",
     "headerSubtitle": "Your Home by the Ocean in Ponta do Ouro",
-    "greeting": "Dear {{guestName}}",
+    "greeting": "Dear {{firstName}}",
     "intro": "We're thrilled that you've chosen to stay at DEVOCEAN Lodge — your home by the ocean in beautiful Ponta do Ouro.",
     "arrivalLabel": "Arrival",
     "departureLabel": "Departure",
@@ -47,7 +47,7 @@
   "en-US": {
     "subject": "Booking Confirmed - DEVOCEAN Lodge",
     "headerSubtitle": "Your Home by the Ocean in Ponta do Ouro",
-    "greeting": "Dear {{guestName}}",
+    "greeting": "Dear {{firstName}}",
     "intro": "We're thrilled that you've chosen to stay at DEVOCEAN Lodge — your home by the ocean in beautiful Ponta do Ouro.",
     "arrivalLabel": "Arrival",
     "departureLabel": "Departure",
@@ -92,7 +92,7 @@
   "pt-PT": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
     "headerSubtitle": "A Sua Casa à Beira-Mar em Ponta do Ouro",
-    "greeting": "Caro(a) {{guestName}}",
+    "greeting": "Caro(a) {{firstName}}",
     "intro": "Estamos muito felizes por ter escolhido o DEVOCEAN Lodge — a sua casa à beira-mar na belíssima Ponta do Ouro.",
     "arrivalLabel": "Chegada",
     "departureLabel": "Partida",
@@ -137,7 +137,7 @@
   "pt-BR": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
     "headerSubtitle": "Sua Casa à Beira-Mar em Ponta do Ouro",
-    "greeting": "Caro(a) {{guestName}}",
+    "greeting": "Caro(a) {{firstName}}",
     "intro": "Estamos muito felizes por você ter escolhido o DEVOCEAN Lodge — sua casa à beira-mar na belíssima Ponta do Ouro.",
     "arrivalLabel": "Chegada",
     "departureLabel": "Partida",
@@ -182,7 +182,7 @@
   "nl-NL": {
     "subject": "Reservering Bevestigd - DEVOCEAN Lodge",
     "headerSubtitle": "Uw Thuis aan de Oceaan in Ponta do Ouro",
-    "greeting": "Beste {{guestName}}",
+    "greeting": "Beste {{firstName}}",
     "intro": "We zijn verheugd dat u ervoor gekozen heeft om te verblijven in DEVOCEAN Lodge — uw thuis aan de oceaan in het prachtige Ponta do Ouro.",
     "arrivalLabel": "Aankomst",
     "departureLabel": "Vertrek",
@@ -227,7 +227,7 @@
   "fr-FR": {
     "subject": "Réservation Confirmée - DEVOCEAN Lodge",
     "headerSubtitle": "Votre Maison au Bord de l'Océan à Ponta do Ouro",
-    "greeting": "Cher(ère) {{guestName}}",
+    "greeting": "Cher(ère) {{firstName}}",
     "intro": "Nous sommes ravis que vous ayez choisi de séjourner au DEVOCEAN Lodge — votre maison au bord de l'océan dans la magnifique Ponta do Ouro.",
     "arrivalLabel": "Arrivée",
     "departureLabel": "Départ",
@@ -272,7 +272,7 @@
   "it-IT": {
     "subject": "Prenotazione Confermata - DEVOCEAN Lodge",
     "headerSubtitle": "La Tua Casa sull'Oceano a Ponta do Ouro",
-    "greeting": "Gentile {{guestName}}",
+    "greeting": "Gentile {{firstName}}",
     "intro": "Siamo entusiasti che abbia scelto di soggiornare al DEVOCEAN Lodge — la sua casa sull'oceano nella bellissima Ponta do Ouro.",
     "arrivalLabel": "Arrivo",
     "departureLabel": "Partenza",
@@ -317,7 +317,7 @@
   "de-DE": {
     "subject": "Buchung Bestätigt - DEVOCEAN Lodge",
     "headerSubtitle": "Ihr Zuhause am Meer in Ponta do Ouro",
-    "greeting": "Liebe(r) {{guestName}}",
+    "greeting": "Liebe(r) {{firstName}}",
     "intro": "Wir freuen uns, dass Sie sich für einen Aufenthalt in der DEVOCEAN Lodge entschieden haben — Ihr Zuhause am Meer im wunderschönen Ponta do Ouro.",
     "arrivalLabel": "Anreise",
     "departureLabel": "Abreise",
@@ -362,7 +362,7 @@
   "es-ES": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
     "headerSubtitle": "Tu Hogar junto al Océano en Ponta do Ouro",
-    "greeting": "Estimado(a) {{guestName}}",
+    "greeting": "Estimado(a) {{firstName}}",
     "intro": "Estamos encantados de que haya elegido alojarse en DEVOCEAN Lodge — su hogar junto al océano en la hermosa Ponta do Ouro.",
     "arrivalLabel": "Llegada",
     "departureLabel": "Salida",
@@ -407,7 +407,7 @@
   "sv": {
     "subject": "Bokning Bekräftad - DEVOCEAN Lodge",
     "headerSubtitle": "Ditt Hem vid Havet i Ponta do Ouro",
-    "greeting": "Bäste {{guestName}}",
+    "greeting": "Bäste {{firstName}}",
     "intro": "Vi är glada att du har valt att bo på DEVOCEAN Lodge — ditt hem vid havet i vackra Ponta do Ouro.",
     "arrivalLabel": "Ankomst",
     "departureLabel": "Avresa",
@@ -452,7 +452,7 @@
   "pl": {
     "subject": "Rezerwacja Potwierdzona - DEVOCEAN Lodge",
     "headerSubtitle": "Twój Dom nad Oceanem w Ponta do Ouro",
-    "greeting": "Drogi(a) {{guestName}}",
+    "greeting": "Drogi(a) {{firstName}}",
     "intro": "Cieszymy się, że wybrałeś/aś pobyt w DEVOCEAN Lodge — Twoim domu nad oceanem w pięknym Ponta do Ouro.",
     "arrivalLabel": "Przyjazd",
     "departureLabel": "Wyjazd",
@@ -497,7 +497,7 @@
   "af-ZA": {
     "subject": "Bespreking Bevestig - DEVOCEAN Lodge",
     "headerSubtitle": "Jou Tuiste by die See in Ponta do Ouro",
-    "greeting": "Beste {{guestName}}",
+    "greeting": "Beste {{firstName}}",
     "intro": "Ons is verheug dat jy gekies het om by DEVOCEAN Lodge te bly — jou tuiste by die see in pragtige Ponta do Ouro.",
     "arrivalLabel": "Aankoms",
     "departureLabel": "Vertrek",
@@ -542,7 +542,7 @@
   "zu": {
     "subject": "Ukubhukha Kuqinisekisiwe - DEVOCEAN Lodge",
     "headerSubtitle": "Ikhaya Lakho Ngasolwandle e-Ponta do Ouro",
-    "greeting": "Sawubona {{guestName}}",
+    "greeting": "Sawubona {{firstName}}",
     "intro": "Siyajabula ukuthi ukhethe ukuhlala e-DEVOCEAN Lodge — ikhaya lakho ngasolwandle e-Ponta do Ouro enhle.",
     "arrivalLabel": "Ukufika",
     "departureLabel": "Ukuhamba",
@@ -587,7 +587,7 @@
   "sw": {
     "subject": "Uhakiki wa Uhifadhi - DEVOCEAN Lodge",
     "headerSubtitle": "Nyumba Yako Karibu na Bahari katika Ponta do Ouro",
-    "greeting": "Mpendwa {{guestName}}",
+    "greeting": "Mpendwa {{firstName}}",
     "intro": "Tunafurahi kwamba umechagua kukaa katika DEVOCEAN Lodge — nyumba yako karibu na bahari katika Ponta do Ouro nzuri.",
     "arrivalLabel": "Kuwasili",
     "departureLabel": "Kuondoka",
@@ -632,7 +632,7 @@
   "ja-JP": {
     "subject": "ご予約確定 - DEVOCEAN Lodge",
     "headerSubtitle": "ポンタ・ド・オウロの海辺のあなたの家",
-    "greeting": "{{guestName}}様",
+    "greeting": "{{firstName}}様",
     "intro": "DEVOCEAN Lodgeにご宿泊いただき誠にありがとうございます。美しいポンタ・ド・オウロの海辺のあなたの家へようこそ。",
     "arrivalLabel": "到着",
     "departureLabel": "出発",
@@ -677,7 +677,7 @@
   "zh-CN": {
     "subject": "预订确认 - DEVOCEAN Lodge",
     "headerSubtitle": "您在蓬塔杜欧罗海边的家",
-    "greeting": "尊敬的 {{guestName}}",
+    "greeting": "尊敬的 {{firstName}}",
     "intro": "我们很高兴您选择入住DEVOCEAN Lodge——您在美丽的蓬塔杜欧罗海边的家。",
     "arrivalLabel": "到达",
     "departureLabel": "离开",
@@ -722,7 +722,7 @@
   "ru": {
     "subject": "Бронирование подтверждено - DEVOCEAN Lodge",
     "headerSubtitle": "Ваш дом у океана в Понта-ду-Оуру",
-    "greeting": "Уважаемый(ая) {{guestName}}",
+    "greeting": "Уважаемый(ая) {{firstName}}",
     "intro": "Мы рады, что вы выбрали для проживания DEVOCEAN Lodge — ваш дом у океана в прекрасном Понта-ду-Оуру.",
     "arrivalLabel": "Прибытие",
     "departureLabel": "Отъезд",

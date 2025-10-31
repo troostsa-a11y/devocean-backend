@@ -118,6 +118,7 @@ export class CancellationHandler {
       // Render email using template renderer
       const emailData = {
         guestName: booking.guestName || 'Guest',
+        firstName: booking.firstName || booking.guestName?.split(' ')[0] || 'Guest',
         groupRef: booking.groupRef,
         checkInDate: this.formatDate(booking.checkInDate),
         checkOutDate: this.formatDate(booking.checkOutDate),
@@ -249,6 +250,7 @@ export class CancellationHandler {
       // Prepare email data
       const emailData = {
         guestName: guestInfo.name || 'Guest',
+        firstName: (guestInfo.name || 'Guest').split(' ')[0],
         groupRef: groupRef,
         checkInDate: dates.checkIn || 'Not specified',
         checkOutDate: dates.checkOut || 'Not specified',

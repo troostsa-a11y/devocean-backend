@@ -13,6 +13,7 @@ export const bookings = pgTable("bookings", {
   
   // Guest information
   guestName: text("guest_name").notNull(),
+  firstName: text("first_name").notNull(),
   guestEmail: text("guest_email").notNull(),
   guestPhone: text("guest_phone"),
   guestLanguage: text("guest_language").notNull().default('EN'),
