@@ -101,9 +101,9 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
               aria-label="Select region"
             >
-              {Object.entries(regions).map(([key, regionData]) => (
+              {Object.entries(regions).map(([key]) => (
                 <option key={key} value={key}>
-                  {regionData.name}
+                  {ui.regions[key]}
                 </option>
               ))}
             </select>
@@ -199,7 +199,7 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
               aria-label="Toggle menu"
             >
               <Menu className={`transition-transform ${menuOpen ? 'rotate-90' : ''}`} />
-              <span className="text-sm font-semibold">Menu</span>
+              <span className="text-sm font-semibold">{ui.menu}</span>
             </button>
 
             {/* Mobile/Tablet dropdown menu - positioned under button */}

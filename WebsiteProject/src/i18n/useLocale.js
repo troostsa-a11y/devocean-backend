@@ -342,6 +342,14 @@ function getCriticalUI(lang) {
   // Use lang directly - critical nav keys now match Hotelrunner codes
   const nav = CRITICAL_NAV[lang] || CRITICAL_NAV["en-GB"];
   return {
+    menu: nav.menu || "Menu",
+    regions: {
+      europe: "Europe",
+      asia: "Asia", 
+      americas: "Americas",
+      africa: "Africa",
+      oceania: "Oceania"
+    },
     nav: {
       home: nav.home,
       stay: nav.stay,
