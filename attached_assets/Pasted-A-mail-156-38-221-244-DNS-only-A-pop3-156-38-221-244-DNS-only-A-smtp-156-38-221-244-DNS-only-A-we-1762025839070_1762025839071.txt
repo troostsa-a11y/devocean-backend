@@ -1,0 +1,93 @@
+A mail 156.38.221.244 DNS only
+A pop3 156.38.221.244 DNS only
+A smtp 156.38.221.244 DNS only
+A webmail 156.38.221.244 DNS only
+CNAME 5uhyxsb6m2fytkcd7sg435xfiau5zp7p._domainkey 
+      5uhyxsb6m2fytkcd7sg435xfiau5zp7p.dkim.custom-email-domain.stripe.com DNS only
+CNAME
+6lpvqzisjhjqqcj5rebq372g3srq6i7p._domainkey
+6lpvqzisjhjqqcj5rebq372g3srq6i7p.dkim.custom-email-domain.stripe.com DNS only
+
+CNAME
+ay7egav737ncvp6dbf4qtukmisznmdj7._domainkey
+ay7egav737ncvp6dbf4qtukmisznmdj7.dkim.custom-email-domain.stripe.com DNS only
+
+CNAME
+book admin.beds24.com Proxied
+
+CNAME
+bounce custom-email-domain.stripe.com DNS only
+
+CNAME
+devoceanlodge.com
+devocean-lodge.pages.dev Proxied
+
+CNAME
+dqmipc7bjtpx4etq6l4b7fnnnrkydfly._domainkey
+dqmipc7bjtpx4etq6l4b7fnnnrkydfly.dkim.custom-email-domain.stripe.com DNS only
+
+CNAME
+f56dc46d7d18a02a27341ac745e2a36b verify.bing.com DNS only
+
+CNAME
+ftp devoceanlodge.com Proxied
+
+CNAME
+k3._domainkey dkim3.mcsv.net DNS only
+
+CNAME
+www devocean-lodge.pages.dev Proxied
+
+CNAME
+ynzdbgwhyop5hzjyozsbnhy45trnwbnc._domainkey
+ynzdbgwhyop5hzjyozsbnhy45trnwbnc.dkim.custom-email-domain.stripe.com DNS only
+
+CNAME
+zj6vypqoekgcug4ac4fql2cp2g7v5blo._domainkey
+zj6vypqoekgcug4ac4fql2cp2g7v5blo.dkim.custom-email-domain.stripe.com DNS only
+
+MX
+devoceanlodge.com mail.devoceanlodge.com 10 DNS only
+
+SRV
+_imaps._tcp 0 0 993 devoceanlodge.com 0 DNS only
+
+SRV
+_pop3s._tcp 0 0 995 devoceanlodge.com 0 DNS only
+
+SRV
+_smtps._tcp 0 0 465 devoceanlodge.com 0 DNS only
+
+TXT
+default._bimi "v=BIMI1; l=https://devocean.co.za/logo/DEVOCEAN.svg; a=; avp=brand;" DNS only
+
+TXT
+devoceanlodge.com "google-site-verification=oUh80vbW8FcC8aNExsceeSX3J0H3aGqi9VaGOUUqQOM" DNS only
+
+TXT
+devoceanlodge.com "MS=ms99398574" DNS only 1 hr
+
+TXT
+devoceanlodge.com
+"stripe-verification=0db69de47ed2da0f3fc7acab190350630207047c9f3b418a781bb65b97baa213" DNS only
+
+TXT
+devoceanlodge.com
+"v=spf1 ip4:156.38.221.244 a:mail.devoceanlodge.com ~all" DNS only
+
+TXT
+devoceanlodge.com
+"pinterest-site-verification=755ae0ae31b33c44268cdf21fb41ae13" DNS only
+
+TXT
+devoceanlodge.com
+"google-site-verification=Aln0YG-Ied6Yb12jb2lvENfbvge_zHPU-MIn6w1Gll0" DNS only
+
+TXT
+_dmarc "v=DMARC1; p=none; rua=mailto:a17e19e91d574bfdb9567b6c801a7791@dmarc-reports.cloudflare.net,mailto:dmarc_agg@vali.email;" DNS only
+
+TXT
+_domainkey "o=-" DNS only
+
+TXT
+_mailchannels "v=mc1 cfid=devocean-lodge.workers.dev cfid=devocean-lodge.pages.dev" DNS only
