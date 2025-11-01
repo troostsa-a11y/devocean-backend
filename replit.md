@@ -38,7 +38,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Internationalization:**
     - React-based i18n with lazy-loaded translations for 16 languages using unified Hotelrunner locale codes (e.g., `en-GB`, `pt-PT`, `pt-BR`, `af-ZA`, `zu`, `sw`).
     - Unified language codes across all systems (React app, vanilla JS i18n, JSON files, Header.jsx, booking URLs, localStorage, server-side email).
-    - Vanilla JavaScript i18n for static pages (`story.html`, legal pages, accommodation detail pages).
+    - **LocalStorage Keys:** All pages use consistent keys: `"site.lang"` (language) and `"site.currency"` (currency) for seamless cross-page language persistence.
+    - Vanilla JavaScript i18n for static pages (`story.html`, legal pages, accommodation detail pages, `booking.html`).
     - Accommodation detail pages feature WebP-optimized photo galleries and full content translation across all 16 languages.
     - All navigation links to static pages preserve the current language via URL parameter (e.g., `?lang=af-ZA`).
     - Dynamic booking URLs on static pages based on localStorage preferences (language + currency).
