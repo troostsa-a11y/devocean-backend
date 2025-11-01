@@ -101,7 +101,7 @@ if (validateEnvironment()) {
     // Start the automated email checking
     emailService.start();
     console.log('✅ Email automation service started successfully');
-    console.log('📧 Checking emails at 08:00, 14:00, 20:00 UTC daily');
+    console.log('📧 Checking emails at 08:00, 14:00, 20:00 CAT daily');
   } catch (error) {
     console.error('❌ Failed to initialize email automation service:', error);
     process.exit(1);
@@ -164,7 +164,7 @@ app.get('/', (req, res) => {
     },
     schedule: {
       frequency: '3 times daily',
-      times: ['08:00 UTC', '14:00 UTC', '20:00 UTC'],
+      times: ['08:00 CAT', '14:00 CAT', '20:00 CAT'],
     },
     emailTypes: [
       {
@@ -202,7 +202,7 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log('🌊 DEVOCEAN Lodge Email Automation Server');
   console.log(`${'='.repeat(60)}`);
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
-  console.log(`📅 Email checks scheduled for 08:00, 14:00, 20:00 UTC`);
+  console.log(`📅 Email checks scheduled for 08:00, 14:00, 20:00 CAT`);
   console.log(`📧 Processing Beds24 booking notifications automatically`);
   console.log(`${'='.repeat(60)}\n`);
 });

@@ -95,38 +95,38 @@ export class EmailAutomationService {
 
   /**
    * Start the cron job scheduler
-   * Checks emails at 08:00, 14:00, and 20:00 UTC
-   * Sends daily report at 14:00 UTC (2 PM)
-   * Sends weekly report at 06:00 UTC on Mondays
+   * Checks emails at 08:00, 14:00, and 20:00 CAT (Central African Time)
+   * Sends daily report at 14:00 CAT (2 PM)
+   * Sends weekly report at 08:00 CAT on Mondays
    */
   start(): void {
     console.log('Starting email automation service...');
 
-    // Schedule: 08:00, 14:00, 20:00 UTC daily
+    // Schedule: 08:00, 14:00, 20:00 CAT daily (06:00, 12:00, 18:00 UTC)
     // Cron format: minute hour * * *
-    const emailCheckSchedule = '0 8,14,20 * * *';
+    const emailCheckSchedule = '0 6,12,18 * * *';
 
     this.cronJob = cron.schedule(emailCheckSchedule, async () => {
       console.log(`[${new Date().toISOString()}] Running scheduled email check...`);
       await this.runEmailCheck();
     });
 
-    console.log(`Email automation scheduled for 08:00, 14:00, 20:00 UTC daily`);
+    console.log(`Email automation scheduled for 08:00, 14:00, 20:00 CAT (06:00, 12:00, 18:00 UTC) daily`);
 
-    // Schedule daily report at 14:00 UTC (2 PM)
+    // Schedule daily report at 14:00 CAT (12:00 UTC)
     if (this.adminReporting) {
-      this.dailyReportJob = cron.schedule('0 14 * * *', async () => {
+      this.dailyReportJob = cron.schedule('0 12 * * *', async () => {
         console.log(`[${new Date().toISOString()}] Sending daily report...`);
         await this.adminReporting!.sendDailyReport();
       });
-      console.log(`Daily reports scheduled for 14:00 UTC (2 PM)`);
+      console.log(`Daily reports scheduled for 14:00 CAT (12:00 UTC)`);
 
-      // Schedule weekly report at 06:00 UTC on Mondays (day 1)
+      // Schedule weekly report at 08:00 CAT on Mondays (06:00 UTC, day 1)
       this.weeklyReportJob = cron.schedule('0 6 * * 1', async () => {
         console.log(`[${new Date().toISOString()}] Sending weekly report...`);
         await this.adminReporting!.sendWeeklyReport();
       });
-      console.log(`Weekly reports scheduled for 06:00 UTC on Mondays`);
+      console.log(`Weekly reports scheduled for 08:00 CAT on Mondays (06:00 UTC)`);
     }
 
     // Run immediate check on startup to process any backlog
