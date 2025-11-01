@@ -499,40 +499,45 @@
   <!-- Localization + iframe sync (place at end for robustness with async/defers) -->
   <script>
     // 1) Detect language and currency (?lang=xx&currency=XXX -> localStorage -> defaults)
-    // Global flag to lock language after first detection (prevents race conditions)
-    let _lockedLanguage = null;
+    // CRITICAL: Use same localStorage keys as main site for consistency
+    // Main site uses: "site.lang" and "site.currency"
     
     function detectSiteLanguage(){
-      // Return locked language if already detected
-      if (_lockedLanguage) return _lockedLanguage;
-      
       const qs = new URLSearchParams(location.search);
       const urlLang = qs.get('lang') || qs.get('locale');
+      
+      // Priority 1: URL parameter (store immediately for consistency)
       if (urlLang){ 
-        localStorage.setItem('selectedLanguage', urlLang); 
-        _lockedLanguage = urlLang;
+        localStorage.setItem('site.lang', urlLang); 
         return urlLang; 
       }
-      const saved = localStorage.getItem('selectedLanguage');
-      if (saved) {
-        _lockedLanguage = saved;
-        return saved;
-      }
+      
+      // Priority 2: Check localStorage (same key as main site)
+      const saved = localStorage.getItem('site.lang');
+      if (saved) return saved;
+      
+      // Priority 3: Browser language
       const detected = navigator.language || 'en-GB';
-      _lockedLanguage = detected;
+      localStorage.setItem('site.lang', detected);
       return detected;
     }
     
     function detectSiteCurrency(){
       const qs = new URLSearchParams(location.search);
       const urlCur = qs.get('cur') || qs.get('currency'); // Support both cur and currency for backwards compatibility
+      
+      // Priority 1: URL parameter
       if (urlCur && urlCur.length === 3){ 
-        localStorage.setItem('selectedCurrency', urlCur.toUpperCase()); 
+        localStorage.setItem('site.currency', urlCur.toUpperCase()); 
         return urlCur.toUpperCase(); 
       }
-      const saved = localStorage.getItem('selectedCurrency');
+      
+      // Priority 2: localStorage (same key as main site)
+      const saved = localStorage.getItem('site.currency');
       if (saved) return saved;
-      return 'USD'; // Default currency
+      
+      // Priority 3: Default
+      return 'USD';
     }
     
     function toBase(code){ return (code||'en').toLowerCase().split('-')[0]; }
@@ -715,6 +720,8 @@
       const siteLang = detectSiteLanguage();
       const siteCurrency = detectSiteCurrency();
       const code = mapToB24(siteLang);
+      console.log('Booking page language detected:', siteLang, '→ mapped to:', code);
+      
       document.documentElement.setAttribute('lang', code);
 
       const TT = TR[code] || TR.en;
@@ -722,13 +729,7 @@
       const md = document.querySelector('meta[name="description"]');
       if (md) md.setAttribute('content', TT.desc);
 
-      // Track if page has been initialized to prevent re-initialization
-      let pageInitialized = false;
-
       function fill(){
-        // Prevent multiple initializations
-        if (pageInitialized) return true;
-        
         const ids = ["t-h1","t-p1","t-note","t-badge-head","t-badge-sub","t-secure","t-nofees","t-instant","t-support","homeBtn","t-child-heading","t-child-text"];
         if (ids.some(id => !document.getElementById(id))) return false;
         
@@ -749,31 +750,12 @@
           // Update home button to preserve language
           hb.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
         }
-        
-        // Mark as initialized to prevent re-runs
-        pageInitialized = true;
-        console.log('Booking page initialized with language:', code);
         return true;
       }
       
-      // Try to fill immediately
-      const immediateSuccess = fill();
-      
-      // Only set up retry mechanisms if immediate fill failed
-      if (!immediateSuccess){
-        let retryInterval;
-        retryInterval = setInterval(()=>{ 
-          if (fill()) {
-            clearInterval(retryInterval);
-          }
-        }, 50);
-        
-        // Also try on DOMContentLoaded as fallback
-        document.addEventListener('DOMContentLoaded', ()=>{
-          if (fill() && retryInterval) {
-            clearInterval(retryInterval);
-          }
-        });
+      if (!fill()){
+        const iv = setInterval(()=>{ if (fill()) clearInterval(iv); }, 50);
+        document.addEventListener('DOMContentLoaded', ()=>fill());
       }
 
       const frame = document.getElementById('beds24frame');
