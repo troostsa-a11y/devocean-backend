@@ -425,39 +425,6 @@ export class EmailParser {
 
       await connection.openBox('INBOX');
 
-      // DIAGNOSTIC: Check ALL emails (including read ones) temporarily
-      console.log('🔍 DIAGNOSTIC MODE: Checking ALL emails (read + unread)');
-      
-      // First, get ALL emails to see what's there
-      const allSearchCriteria = ['ALL'];
-      const allFetchOptions = {
-        bodies: ['HEADER'],
-        markSeen: false,
-      };
-      const allMessages = await connection.search(allSearchCriteria, allFetchOptions);
-      console.log(`📊 Total emails in INBOX: ${allMessages.length}`);
-      
-      // Show recent emails (last 5)
-      if (allMessages.length > 0) {
-        console.log('📋 Last 5 emails in INBOX:');
-        const recentMessages = allMessages.slice(-5);
-        for (const msg of recentMessages) {
-          const header = msg.parts.find((p: any) => p.which === 'HEADER');
-          if (header) {
-            try {
-              // Convert Buffer to string if needed
-              const headerContent = typeof header.body === 'string' ? header.body : header.body.toString();
-              const parsed = await simpleParser(headerContent);
-              const flags = msg.attributes?.flags || [];
-              const isRead = flags.includes('\\Seen');
-              console.log(`  ${isRead ? '✅' : '📧'} ${isRead ? 'READ' : 'UNREAD'} | Subject: "${parsed.subject}" | Date: ${parsed.date}`);
-            } catch (err) {
-              console.log(`  ⚠️  Error parsing email header`);
-            }
-          }
-        }
-      }
-
       // Search for unread emails
       const searchCriteria = ['UNSEEN'];
       const fetchOptions = {

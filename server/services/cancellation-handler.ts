@@ -203,17 +203,24 @@ export class CancellationHandler {
    * Check if email is a cancellation notification
    */
   private isCancellationEmail(text: string): boolean {
-    const cancellationKeywords = [
-      'cancellation',
-      'cancelled',
-      'canceled',
+    const lowerText = text.toLowerCase();
+    
+    // First, check if this is explicitly a NEW BOOKING - if so, NOT a cancellation
+    if (lowerText.includes('new booking notification')) {
+      return false;
+    }
+    
+    // Check for explicit cancellation notification markers at the START of the email
+    // (not just anywhere in the booking terms)
+    const cancellationMarkers = [
+      'cancellation notification',
       'booking cancelled',
       'reservation cancelled',
-      'cancellation notification',
+      'booking has been cancelled',
+      'reservation has been cancelled',
     ];
 
-    const lowerText = text.toLowerCase();
-    return cancellationKeywords.some(keyword => lowerText.includes(keyword));
+    return cancellationMarkers.some(marker => lowerText.includes(marker));
   }
 
   /**
