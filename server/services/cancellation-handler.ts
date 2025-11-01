@@ -251,9 +251,12 @@ export class CancellationHandler {
     const emailMatch = text.match(/Email[:\s]+([^\n\s]+@[^\n\s]+)/i);
     const email = emailMatch ? emailMatch[1].trim() : undefined;
 
-    // Extract language (default to EN if not found)
+    // Extract language - check for "Preferred Language" first, then "Language"
+    const preferredLangMatch = text.match(/Preferred Language[:\s]+([A-Z]{2})/i);
     const langMatch = text.match(/Language[:\s]+([A-Z]{2})/i);
-    const language = langMatch ? langMatch[1].toUpperCase() : 'EN';
+    const language = preferredLangMatch 
+      ? preferredLangMatch[1].toUpperCase() 
+      : (langMatch ? langMatch[1].toUpperCase() : 'EN');
 
     return { name, email, language };
   }

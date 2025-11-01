@@ -67,6 +67,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
     - Features: Template-based multi-language system (3 base HTML templates + per-template translations), supports 17 languages (`en-GB`, `en-US`, `pt-PT`, `pt-BR`, `nl-NL`, `fr-FR`, `it-IT`, `de-DE`, `es-ES`, `sv`, `pl`, `af-ZA`, `zu`, `sw`, `ja-JP`, `zh-CN`, `ru`), cancellation handling, extras management, booking status tracking, automatic language detection with fallback to en-GB.
     - **Email Template Design:** All 5 templates feature 16px spacing between CTA buttons (both standard HTML and Outlook VML versions) for better visual separation.
     - **Name Processing:** Advanced firstName extraction handles titles (Mr, Mrs, Ms, Dr, Prof, etc.) and various name formats (First Last, Last First) to ensure proper email personalization.
+    - **Language Detection:** Supports "Preferred Language" variable from Beds24 trigger emails with fallback to "Language" field, then EN default.
     - Runs on port 3003.
 
 ### Project Structure

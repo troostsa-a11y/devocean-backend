@@ -123,6 +123,9 @@ export class EmailParser {
       const nameMatch = text.match(/Name\s+([^\n]+)/i);
       const emailMatch = text.match(/Email\s+([^\s\n]+)/i);
       const phoneMatch = text.match(/(\+?\d{10,15})/);
+      
+      // Check for "Preferred Language" first (new Beds24 variable), then fallback to "Language"
+      const preferredLanguageMatch = text.match(/Preferred Language\s+([A-Z]{2})/i);
       const languageMatch = text.match(/Language\s+([A-Z]{2})/i);
 
       if (!nameMatch) {
@@ -136,7 +139,20 @@ export class EmailParser {
       const rawEmail = emailMatch && emailMatch[1].trim() ? emailMatch[1].trim().toLowerCase() : '';
       const guestEmail = this.normalizeEmail(rawEmail, groupRef);
       const guestPhone = phoneMatch ? phoneMatch[1] : undefined;
-      const guestLanguage = languageMatch ? languageMatch[1].toUpperCase() : 'EN';
+      
+      // Prioritize "Preferred Language" if available, otherwise use "Language", default to 'EN'
+      const guestLanguage = preferredLanguageMatch 
+        ? preferredLanguageMatch[1].toUpperCase() 
+        : (languageMatch ? languageMatch[1].toUpperCase() : 'EN');
+      
+      // Log which language source was used for debugging
+      if (preferredLanguageMatch) {
+        console.log(`📧 Using Preferred Language: ${guestLanguage}`);
+      } else if (languageMatch) {
+        console.log(`📧 Using Language: ${guestLanguage}`);
+      } else {
+        console.log(`📧 No language specified, defaulting to EN`);
+      }
 
       // Extract total price
       const totalPriceMatch = text.match(/Total Price\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/i);
