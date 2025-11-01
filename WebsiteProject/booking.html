@@ -499,13 +499,28 @@
   <!-- Localization + iframe sync (place at end for robustness with async/defers) -->
   <script>
     // 1) Detect language and currency (?lang=xx&currency=XXX -> localStorage -> defaults)
+    // Global flag to lock language after first detection (prevents race conditions)
+    let _lockedLanguage = null;
+    
     function detectSiteLanguage(){
+      // Return locked language if already detected
+      if (_lockedLanguage) return _lockedLanguage;
+      
       const qs = new URLSearchParams(location.search);
       const urlLang = qs.get('lang') || qs.get('locale');
-      if (urlLang){ localStorage.setItem('selectedLanguage', urlLang); return urlLang; }
+      if (urlLang){ 
+        localStorage.setItem('selectedLanguage', urlLang); 
+        _lockedLanguage = urlLang;
+        return urlLang; 
+      }
       const saved = localStorage.getItem('selectedLanguage');
-      if (saved) return saved;
-      return navigator.language || 'en-GB';
+      if (saved) {
+        _lockedLanguage = saved;
+        return saved;
+      }
+      const detected = navigator.language || 'en-GB';
+      _lockedLanguage = detected;
+      return detected;
     }
     
     function detectSiteCurrency(){
@@ -707,9 +722,16 @@
       const md = document.querySelector('meta[name="description"]');
       if (md) md.setAttribute('content', TT.desc);
 
+      // Track if page has been initialized to prevent re-initialization
+      let pageInitialized = false;
+
       function fill(){
+        // Prevent multiple initializations
+        if (pageInitialized) return true;
+        
         const ids = ["t-h1","t-p1","t-note","t-badge-head","t-badge-sub","t-secure","t-nofees","t-instant","t-support","homeBtn","t-child-heading","t-child-text"];
         if (ids.some(id => !document.getElementById(id))) return false;
+        
         document.getElementById("t-h1").textContent = TT.h1;
         document.getElementById("t-p1").textContent = TT.p1;
         document.getElementById("t-note").textContent = TT.note;
@@ -727,11 +749,31 @@
           // Update home button to preserve language
           hb.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
         }
+        
+        // Mark as initialized to prevent re-runs
+        pageInitialized = true;
+        console.log('Booking page initialized with language:', code);
         return true;
       }
-      if (!fill()){
-        const iv = setInterval(()=>{ if (fill()) clearInterval(iv); }, 50);
-        document.addEventListener('DOMContentLoaded', ()=>fill());
+      
+      // Try to fill immediately
+      const immediateSuccess = fill();
+      
+      // Only set up retry mechanisms if immediate fill failed
+      if (!immediateSuccess){
+        let retryInterval;
+        retryInterval = setInterval(()=>{ 
+          if (fill()) {
+            clearInterval(retryInterval);
+          }
+        }, 50);
+        
+        // Also try on DOMContentLoaded as fallback
+        document.addEventListener('DOMContentLoaded', ()=>{
+          if (fill() && retryInterval) {
+            clearInterval(retryInterval);
+          }
+        });
       }
 
       const frame = document.getElementById('beds24frame');
