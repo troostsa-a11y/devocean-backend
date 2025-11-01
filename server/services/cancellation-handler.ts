@@ -118,7 +118,7 @@ export class CancellationHandler {
       // Render email using template renderer
       const emailData = {
         guestName: booking.guestName || 'Guest',
-        firstName: booking.firstName || booking.guestName?.split(' ')[0] || 'Guest',
+        firstName: booking.firstName || this.extractFirstName(booking.guestName) || 'Guest',
         groupRef: booking.groupRef,
         checkInDate: this.formatDate(booking.checkInDate),
         checkOutDate: this.formatDate(booking.checkOutDate),
@@ -144,6 +144,46 @@ export class CancellationHandler {
     } catch (error) {
       console.error('Error sending cancellation email:', error);
     }
+  }
+
+  /**
+   * Extract first name from full name (with title handling)
+   */
+  private extractFirstName(fullName: string): string {
+    const name = fullName.trim();
+    
+    // Handle "Last, First" format
+    if (name.includes(',')) {
+      const parts = name.split(',');
+      const firstName = parts[1]?.trim() || parts[0].trim();
+      return this.removeTitles(firstName);
+    }
+    
+    // Remove common titles
+    const withoutTitle = this.removeTitles(name);
+    
+    // Take first word
+    const parts = withoutTitle.split(/\s+/);
+    return parts[0] || withoutTitle || 'Guest';
+  }
+
+  /**
+   * Remove common titles from a name
+   */
+  private removeTitles(name: string): string {
+    const titles = [
+      'mr', 'mrs', 'ms', 'miss', 'dr', 'prof', 'professor',
+      'sir', 'lady', 'lord', 'rev', 'reverend', 'father', 'fr'
+    ];
+    
+    let cleaned = name.trim();
+    
+    for (const title of titles) {
+      const regex = new RegExp(`^${title}\\.?\\s+`, 'i');
+      cleaned = cleaned.replace(regex, '');
+    }
+    
+    return cleaned.trim() || name.trim();
   }
 
   /**
@@ -250,7 +290,7 @@ export class CancellationHandler {
       // Prepare email data
       const emailData = {
         guestName: guestInfo.name || 'Guest',
-        firstName: (guestInfo.name || 'Guest').split(' ')[0],
+        firstName: this.extractFirstName(guestInfo.name || 'Guest'),
         groupRef: groupRef,
         checkInDate: dates.checkIn || 'Not specified',
         checkOutDate: dates.checkOut || 'Not specified',

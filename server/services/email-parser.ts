@@ -243,7 +243,7 @@ export class EmailParser {
 
   /**
    * Extract first name from full name
-   * Handles formats like "John Smith", "Smith, John", "John"
+   * Handles formats like "John Smith", "Smith, John", "John", "Mr John Smith", "Mrs. Jane Doe"
    */
   private static extractFirstName(fullName: string): string {
     const name = fullName.trim();
@@ -251,12 +251,41 @@ export class EmailParser {
     // Handle "Last, First" format
     if (name.includes(',')) {
       const parts = name.split(',');
-      return parts[1]?.trim() || parts[0].trim();
+      const firstName = parts[1]?.trim() || parts[0].trim();
+      // Remove titles from the first name
+      return this.removeTitles(firstName);
     }
     
+    // Remove common titles (Mr, Mrs, Ms, Miss, Dr, Prof, etc.)
+    const withoutTitle = this.removeTitles(name);
+    
     // Handle "First Last" or "First Middle Last" format - take first word
-    const parts = name.split(/\s+/);
-    return parts[0] || name;
+    const parts = withoutTitle.split(/\s+/);
+    return parts[0] || withoutTitle || 'Guest';
+  }
+
+  /**
+   * Remove common titles from a name
+   */
+  private static removeTitles(name: string): string {
+    // Common titles to remove (case insensitive, with or without period)
+    const titles = [
+      'mr', 'mrs', 'ms', 'miss', 'dr', 'prof', 'professor',
+      'sir', 'lady', 'lord', 'rev', 'reverend', 'father', 'fr',
+      'capt', 'captain', 'col', 'colonel', 'maj', 'major',
+      'lt', 'lieutenant', 'sgt', 'sergeant'
+    ];
+    
+    let cleaned = name.trim();
+    
+    // Remove title if it's at the beginning
+    for (const title of titles) {
+      // Match title with optional period, followed by space
+      const regex = new RegExp(`^${title}\\.?\\s+`, 'i');
+      cleaned = cleaned.replace(regex, '');
+    }
+    
+    return cleaned.trim() || name.trim();
   }
 
   /**
