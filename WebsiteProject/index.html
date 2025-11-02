@@ -357,6 +357,36 @@
           return base;
         }
         function inferCurrency(langNow) {
+          // Priority 1: Use Cloudflare IP geolocation (most accurate)
+          if (window.__CF_COUNTRY__) {
+            var CC2CUR = {
+              // Europe
+              GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", 
+              AT: "EUR", FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK", DK: "DKK", CH: "CHF", CZ: "CZK", 
+              HU: "HUF", RO: "RON", HR: "EUR", SI: "EUR", SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR", CY: "EUR",
+              
+              // Africa
+              ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX", ZW: "USD", BW: "BWP", NA: "NAD", 
+              EG: "EGP", MA: "MAD", AO: "AOA", GH: "GHS", NG: "NGN",
+              
+              // Americas
+              US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS", CL: "CLP", CO: "COP", PE: "PEN",
+              
+              // Asia
+              CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB", SG: "SGD", MY: "MYR", ID: "IDR", 
+              PH: "PHP", VN: "VND", AE: "AED", SA: "SAR", RU: "RUB",
+              
+              // Oceania
+              AU: "AUD", NZ: "NZD"
+            };
+            
+            var cc = String(window.__CF_COUNTRY__).toUpperCase();
+            if (CC2CUR[cc]) {
+              return CC2CUR[cc];
+            }
+          }
+          
+          // Priority 2: Browser language hints (fallback only)
           var list = (navigator.languages && navigator.languages.length)
             ? navigator.languages
             : [navigator.language].filter(Boolean);
@@ -367,33 +397,8 @@
           };
           var first = (list[0] || "").toLowerCase();
 
-          var region = null;
-          for (var i = 0; i < list.length; i++) {
-            var s = String(list[i] || "").toUpperCase();
-            var m = s.match(/-([A-Z]{2})$/);
-            if (m) { region = m[1]; break; }
-          }
-          if (!region) {
-            try {
-              var intl = new Intl.DateTimeFormat().resolvedOptions().locale || "";
-              var m2 = String(intl).toUpperCase().match(/-([A-Z]{2})$/);
-              if (m2) region = m2[1];
-            } catch (e) { }
-          }
-
-          var CC2CUR = {
-            US: "USD", GB: "GBP",
-            NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", IE: "EUR", AT: "EUR", FI: "EUR", GR: "EUR",
-            ZA: "ZAR", MZ: "MZN", AO: "USD", BW: "USD", ZW: "USD", NA: "USD"
-          };
-
-          // Priority: 1) Region code, 2) Language hint, 3) Special case for ptmz, 4) USD fallback
-          var cur = (region && CC2CUR[region]) ||
-            HINT[first] ||
-            (langNow === "ptmz" ? "MZN" : "USD");
-
-          cur = String(cur || "USD").toUpperCase().replace(/[^A-Z]/g, "").slice(0, 3);
-          return cur || "USD";
+          // Return language hint or USD fallback
+          return HINT[first] || (langNow === "ptmz" ? "MZN" : "USD");
         }
 
         // ensure lang_source exists
