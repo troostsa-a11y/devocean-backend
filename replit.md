@@ -4,7 +4,6 @@
 DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele while ensuring legal compliance and a seamless user experience across various devices and languages. The project supports internationalization for 16 languages and includes robust legal/compliance pages for GDPR, cookies, and privacy policies.
 
 ## User Preferences
-
 - **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
 - **🚫 NEVER EVER** run `npm run build` unless user explicitly requests it
 - **🚫 NEVER EVER** run `npx wrangler pages deploy` unless user explicitly requests it
@@ -34,41 +33,19 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Framework & Build System:** React 18 with TypeScript, Vite, Wouter for routing.
 - **UI & Styling:** shadcn/ui components, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design.
 - **State Management:** TanStack Query for server state, React hooks for local state.
-- **Navigation:** Mobile and desktop menus include "Our Story" link to `/story.html` page.
-- **Internationalization:**
-    - React-based i18n with lazy-loaded translations for 16 languages using unified Hotelrunner locale codes (e.g., `en-GB`, `pt-PT`, `pt-BR`, `af-ZA`, `zu`, `sw`).
-    - Unified language codes across all systems (React app, vanilla JS i18n, JSON files, Header.jsx, booking URLs, localStorage, server-side email).
-    - **LocalStorage Keys:** All pages use consistent keys: `"site.lang"` (language) and `"site.currency"` (currency) for seamless cross-page language persistence.
-    - Vanilla JavaScript i18n for static pages (`story.html`, legal pages, accommodation detail pages, `booking.html`).
-    - Accommodation detail pages feature WebP-optimized photo galleries and full content translation across all 16 languages.
-    - All navigation links to static pages preserve the current language via URL parameter (e.g., `?lang=af-ZA`).
-    - Dynamic booking URLs on static pages based on localStorage preferences (language + currency).
-    - Multi-tier language detection prioritizing localStorage → browser language → IP-based country mapping → region-aware English fallback.
-    - **Currency System:** Currency is strictly based on visitor's IP-detected country, showing legal tender for that country. Manual language or region changes do not affect currency.
-    - Full translation coverage for all legal pages and content.
-    - Cloudflare IP Geolocation for accurate region and country detection (`window.__CF_COUNTRY__`).
-    - US English support (`en-US`) with USD currency.
-    - CCPA compliance with "Do Not Sell My Info" footer link and CookieYes integration for US visitors.
+- **Internationalization:** React-based i18n with lazy-loaded translations for 16 languages using unified Hotelrunner locale codes. Vanilla JavaScript i18n for static pages. Language persistence via localStorage (`"site.lang"`, `"site.currency"`). Multi-tier language detection prioritizing localStorage → browser language → IP-based country mapping. Currency is strictly based on visitor's IP-detected country. Full translation coverage for legal pages.
 - **Performance Optimizations:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion using LazyMotion, GTM with delayed load.
 
 ### Backend Architecture
 - **Server Framework:** Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation).
-- **Storage Layer:** In-memory storage (`MemStorage`) designed for future database integration.
+- **Storage Layer:** In-memory storage (`MemStorage`) for future database integration.
 - **Database Schema:** Drizzle ORM configured for PostgreSQL with Zod schemas.
 - **Email Automation System:** Production-ready Node.js (TypeScript) service processing Beds24 booking notifications via IMAP and sending multi-language automated emails using Resend API.
     - Architecture: IMAP Parser → Supabase PostgreSQL → Email Scheduler → Resend Transactional Emails.
-    - **Timezone:** All scheduling operates in Central African Time (CAT/UTC+2) using Luxon. Cron checks at 08:00, 14:00, 20:00 CAT (06:00, 12:00, 18:00 UTC) daily.
+    - **Timezone:** All scheduling operates in Central African Time (CAT/UTC+2).
     - **Email Schedule Times (CAT):** Post-booking (1-2h after booking), Pre-arrival (09:00 CAT, 7 days before), Arrival (09:00 CAT, 2 days before), Post-departure (10:00 CAT, day after checkout).
-    - Keepalive: Requires external ping service every 30 minutes to prevent Replit sleep (see KEEPALIVE-SETUP.md).
-    - **Server Configuration:** Uses `vm02-murphy.h4ahosting.com` as IMAP_HOST (direct server hostname for maximum reliability vs domain alias).
-    - **BCC Functionality:** All outgoing emails automatically BCC to `beds24@devoceanlodge.com` for audit trail (configurable via BCC_EMAIL secret).
     - Database tables: `bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`.
-    - Email touchpoints: Post-booking confirmation, pre-arrival info, arrival reminder, post-departure thank you, cancellation confirmation, transfer notification to taxi company.
-    - **Translation Architecture:** Modular per-template system with 3 separate JSON files (`post_booking-translations.json` 55KB, `pre_arrival-translations.json` 61KB, `cancellation-translations.json` 22KB) replacing monolithic 142KB file. Lazy-loading with caching for performance.
-    - Features: Template-based multi-language system (3 base HTML templates + per-template translations), supports 17 languages (`en-GB`, `en-US`, `pt-PT`, `pt-BR`, `nl-NL`, `fr-FR`, `it-IT`, `de-DE`, `es-ES`, `sv`, `pl`, `af-ZA`, `zu`, `sw`, `ja-JP`, `zh-CN`, `ru`), cancellation handling, extras management, booking status tracking, automatic language detection with fallback to en-GB.
-    - **Email Template Design:** All 5 templates feature 16px spacing between CTA buttons (both standard HTML and Outlook VML versions) for better visual separation.
-    - **Name Processing:** Advanced firstName extraction handles titles (Mr, Mrs, Ms, Dr, Prof, etc.) and various name formats (First Last, Last First) to ensure proper email personalization.
-    - **Language Detection:** Supports "Preferred Language" variable from Beds24 trigger emails with fallback to "Language" field, then EN default.
+    - Features: Template-based multi-language system (3 base HTML templates + per-template translations), supports 17 languages, cancellation handling, extras management, booking status tracking, automatic language detection with fallback to en-GB.
     - Runs on port 3003.
 
 ### Project Structure
@@ -79,12 +56,12 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 
 ### Third-Party Services
 - **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af) for GDPR/CCPA, Microsoft Clarity for session recording.
-- **Trust & Verification:** Trustindex Floating Certificate widget (ID: a73b26308ab90c8e6ce30cb) integrated on all 5 legal pages.
-- **Booking Integration:** Beds24 booking engine (propid=297012) embedded in `/booking.html`, with custom header/footer, UTM forwarding, and dynamic height adjustment. Supports language and currency integration via URL parameters (`/booking.html?lang=XX&currency=XXX`). Custom thank you page at `/thankyou.html`.
-- **Maps & Location:** Google Maps embed for property location (lazy-loaded).
+- **Trust & Verification:** Trustindex Floating Certificate widget (ID: a73b26308ab90c8e6ce30cb) integrated on legal pages.
+- **Booking Integration:** Beds24 booking engine (propid=297012) embedded in `/booking.html`, with custom header/footer, UTM forwarding, and dynamic height adjustment.
+- **Maps & Location:** Google Maps embed for property location.
 - **Security:** Google reCAPTCHA v3 for invisible verification on contact forms with server-side validation.
 - **Email Service:** Resend API for transactional emails, IMAP for parsing incoming booking notifications.
-- **SEO & Search Indexing:** IndexNow protocol via Cloudflare Pages Functions, comprehensive SEO meta tags, Cloudflare's built-in `robots.txt` management.
+- **SEO & Search Indexing:** IndexNow protocol via Cloudflare Pages Functions.
 
 ### NPM Packages
 - **Core:** `react`, `react-dom`, `express`, `drizzle-orm`, `drizzle-zod`, `pg`.
