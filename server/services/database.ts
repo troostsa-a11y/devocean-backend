@@ -146,6 +146,26 @@ export class DatabaseService {
   }
 
   /**
+   * Get scheduled emails for a booking
+   */
+  async getScheduledEmailsForBooking(bookingId: number): Promise<ScheduledEmail[]> {
+    return await this.db
+      .select()
+      .from(scheduledEmails)
+      .where(eq(scheduledEmails.bookingId, bookingId))
+      .orderBy(scheduledEmails.scheduledFor);
+  }
+
+  /**
+   * Delete scheduled emails for a booking
+   */
+  async deleteScheduledEmailsForBooking(bookingId: number): Promise<void> {
+    await this.db
+      .delete(scheduledEmails)
+      .where(eq(scheduledEmails.bookingId, bookingId));
+  }
+
+  /**
    * Log email send attempt
    */
   async logEmail(log: {

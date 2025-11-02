@@ -1,9 +1,14 @@
 import type { Booking, InsertScheduledEmail } from '../../shared/schema';
 import { DatabaseService } from './database';
+import { DateTime } from 'luxon';
+import { getCATNow, toCATDateTime, setTimeInCAT, addHoursInCAT, addDaysInCAT, toUTCDate, formatForLog } from '../utils/timezone';
 
 /**
  * Email Scheduler Service
  * Calculates when to send automated emails based on booking dates
+ * 
+ * ALL SCHEDULING OPERATES IN CENTRAL AFRICAN TIME (CAT = UTC+2)
+ * Times are calculated in CAT then converted to UTC for database storage
  */
 
 export class EmailSchedulerService {
@@ -36,33 +41,33 @@ export class EmailSchedulerService {
   }
 
   /**
-   * Calculate when each email should be sent
+   * Calculate when each email should be sent (ALL TIMES IN CAT)
    * 
    * Conditional scheduling based on days until check-in:
    * 
    * Case 1: >= 7 days until check-in (normal schedule)
-   *   - Post-booking: 2 hours after booking
-   *   - Pre-arrival: 7 days before check-in at 09:00
-   *   - Arrival: 2 days before check-in at 09:00
+   *   - Post-booking: 2 hours after booking (CAT)
+   *   - Pre-arrival: 7 days before check-in at 09:00 CAT
+   *   - Arrival: 2 days before check-in at 09:00 CAT
    * 
    * Case 2: < 7 days but >= 2 days until check-in (adjusted schedule)
-   *   - Post-booking: 1 hour after booking
-   *   - Pre-arrival: (days_remaining - 2) / 2 days before check-in
-   *   - Arrival: 2 days before check-in at 09:00
+   *   - Post-booking: 1 hour after booking (CAT)
+   *   - Pre-arrival: (days_remaining - 2) / 2 days before check-in at 09:00 CAT
+   *   - Arrival: 2 days before check-in at 09:00 CAT
    * 
    * Case 3: < 2 days until check-in (compressed schedule)
-   *   - Post-booking: 1 hour after booking
-   *   - Pre-arrival: 3 hours after booking
-   *   - Arrival: 6 hours after booking
+   *   - Post-booking: 1 hour after booking (CAT)
+   *   - Pre-arrival: 3 hours after booking (CAT)
+   *   - Arrival: 6 hours after booking (CAT)
    */
   private calculateEmailSchedules(booking: Booking): InsertScheduledEmail[] {
-    const now = new Date();
-    const checkIn = new Date(booking.checkInDate);
-    const checkOut = new Date(booking.checkOutDate);
+    // Get current time in CAT
+    const nowCAT = getCATNow();
+    const checkInCAT = toCATDateTime(booking.checkInDate);
+    const checkOutCAT = toCATDateTime(booking.checkOutDate);
 
     // Calculate days until check-in
-    const msUntilCheckIn = checkIn.getTime() - now.getTime();
-    const daysUntilCheckIn = msUntilCheckIn / (1000 * 60 * 60 * 24);
+    const daysUntilCheckIn = checkInCAT.diff(nowCAT, 'days').days;
 
     const schedules: InsertScheduledEmail[] = [];
 
@@ -71,15 +76,15 @@ export class EmailSchedulerService {
       guestName: booking.guestName,
       firstName: booking.firstName,
       groupRef: booking.groupRef,
-      checkInDate: new Date(booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-      checkOutDate: new Date(booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+      checkInDate: checkInCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
+      checkOutDate: checkOutCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
       rooms: booking.rooms,
     };
 
     // Determine scheduling strategy based on days until check-in
     let postBookingHours: number;
-    let preArrivalDate: Date | null = null;
-    let arrivalDate: Date | null = null;
+    let preArrivalDateCAT: DateTime | null = null;
+    let arrivalDateCAT: DateTime | null = null;
 
     if (daysUntilCheckIn >= 7) {
       // Case 1: Normal schedule (>= 7 days)
@@ -87,13 +92,11 @@ export class EmailSchedulerService {
       
       postBookingHours = 2;
       
-      preArrivalDate = new Date(checkIn);
-      preArrivalDate.setDate(checkIn.getDate() - 7);
-      preArrivalDate.setHours(9, 0, 0, 0);
+      // Pre-arrival: 7 days before check-in at 09:00 CAT
+      preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -7), 9, 0);
       
-      arrivalDate = new Date(checkIn);
-      arrivalDate.setDate(checkIn.getDate() - 2);
-      arrivalDate.setHours(9, 0, 0, 0);
+      // Arrival: 2 days before check-in at 09:00 CAT
+      arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -2), 9, 0);
       
     } else if (daysUntilCheckIn >= 2) {
       // Case 2: Adjusted schedule (< 7 days but >= 2 days)
@@ -101,14 +104,12 @@ export class EmailSchedulerService {
       
       postBookingHours = 1;
       
-      // Pre-arrival: (days_remaining - 2) / 2 days before check-in
+      // Pre-arrival: (days_remaining - 2) / 2 days before check-in at 09:00 CAT
       const preArrivalDaysBeforeCheckIn = (daysUntilCheckIn - 2) / 2;
-      preArrivalDate = new Date(checkIn.getTime() - (preArrivalDaysBeforeCheckIn * 24 * 60 * 60 * 1000));
-      preArrivalDate.setHours(9, 0, 0, 0);
+      preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -preArrivalDaysBeforeCheckIn), 9, 0);
       
-      arrivalDate = new Date(checkIn);
-      arrivalDate.setDate(checkIn.getDate() - 2);
-      arrivalDate.setHours(9, 0, 0, 0);
+      // Arrival: 2 days before check-in at 09:00 CAT
+      arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -2), 9, 0);
       
     } else {
       // Case 3: Compressed schedule (< 2 days)
@@ -116,22 +117,23 @@ export class EmailSchedulerService {
       
       postBookingHours = 1;
       
-      // Pre-arrival: 3 hours after booking
-      preArrivalDate = new Date(now.getTime() + 3 * 60 * 60 * 1000);
+      // Pre-arrival: 3 hours after booking (CAT)
+      preArrivalDateCAT = addHoursInCAT(nowCAT, 3);
       
-      // Arrival: 6 hours after booking
-      arrivalDate = new Date(now.getTime() + 6 * 60 * 60 * 1000);
+      // Arrival: 6 hours after booking (CAT)
+      arrivalDateCAT = addHoursInCAT(nowCAT, 6);
     }
 
-    // 1. Post-booking email
-    const postBookingTime = new Date(now.getTime() + postBookingHours * 60 * 60 * 1000);
+    // 1. Post-booking email (CAT time + hours)
+    const postBookingTimeCAT = addHoursInCAT(nowCAT, postBookingHours);
+    const postBookingTimeUTC = toUTCDate(postBookingTimeCAT);
     schedules.push({
       bookingId: booking.id,
       emailType: 'post_booking',
       recipientEmail: booking.guestEmail,
       recipientName: booking.guestName,
       language: booking.guestLanguage,
-      scheduledFor: postBookingTime,
+      scheduledFor: postBookingTimeUTC,
       status: 'pending',
       templateData: {
         ...commonTemplateData,
@@ -139,46 +141,47 @@ export class EmailSchedulerService {
         currency: booking.currency,
       },
     });
-    console.log(`  Post-booking: ${postBookingTime.toISOString()} (${postBookingHours}h from now)`);
+    console.log(`  Post-booking: ${formatForLog(postBookingTimeCAT)} (${postBookingHours}h from now)`);
 
     // 2. Pre-arrival email - only if in the future
-    if (preArrivalDate && preArrivalDate > now) {
+    if (preArrivalDateCAT && preArrivalDateCAT > nowCAT) {
+      const preArrivalDateUTC = toUTCDate(preArrivalDateCAT);
       schedules.push({
         bookingId: booking.id,
         emailType: 'pre_arrival',
         recipientEmail: booking.guestEmail,
         recipientName: booking.guestName,
         language: booking.guestLanguage,
-        scheduledFor: preArrivalDate,
+        scheduledFor: preArrivalDateUTC,
         status: 'pending',
         templateData: commonTemplateData,
       });
-      console.log(`  Pre-arrival: ${preArrivalDate.toISOString()}`);
+      console.log(`  Pre-arrival: ${formatForLog(preArrivalDateCAT)}`);
     } else {
       console.log(`  Pre-arrival: Skipped (would be in the past)`);
     }
 
     // 3. Arrival email - only if in the future
-    if (arrivalDate && arrivalDate > now) {
+    if (arrivalDateCAT && arrivalDateCAT > nowCAT) {
+      const arrivalDateUTC = toUTCDate(arrivalDateCAT);
       schedules.push({
         bookingId: booking.id,
         emailType: 'arrival',
         recipientEmail: booking.guestEmail,
         recipientName: booking.guestName,
         language: booking.guestLanguage,
-        scheduledFor: arrivalDate,
+        scheduledFor: arrivalDateUTC,
         status: 'pending',
         templateData: commonTemplateData,
       });
-      console.log(`  Arrival: ${arrivalDate.toISOString()}`);
+      console.log(`  Arrival: ${formatForLog(arrivalDateCAT)}`);
     } else {
       console.log(`  Arrival: Skipped (would be in the past)`);
     }
 
-    // 4. Post-departure email - always schedule (1 day after check-out at 10:00)
-    const postDepartureDate = new Date(checkOut);
-    postDepartureDate.setDate(checkOut.getDate() + 1);
-    postDepartureDate.setHours(10, 0, 0, 0);
+    // 4. Post-departure email - always schedule (1 day after check-out at 10:00 CAT)
+    const postDepartureDateCAT = setTimeInCAT(addDaysInCAT(checkOutCAT, 1), 10, 0);
+    const postDepartureDateUTC = toUTCDate(postDepartureDateCAT);
 
     schedules.push({
       bookingId: booking.id,
@@ -186,11 +189,11 @@ export class EmailSchedulerService {
       recipientEmail: booking.guestEmail,
       recipientName: booking.guestName,
       language: booking.guestLanguage,
-      scheduledFor: postDepartureDate,
+      scheduledFor: postDepartureDateUTC,
       status: 'pending',
       templateData: commonTemplateData,
     });
-    console.log(`  Post-departure: ${postDepartureDate.toISOString()}`);
+    console.log(`  Post-departure: ${formatForLog(postDepartureDateCAT)}`);
 
     return schedules;
   }
