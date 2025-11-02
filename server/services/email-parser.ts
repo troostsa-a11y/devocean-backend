@@ -273,20 +273,29 @@ export class EmailParser {
   private static extractFirstName(fullName: string): string {
     const name = fullName.trim();
     
+    // Safety check - never return empty string
+    if (!name) {
+      return 'Guest';
+    }
+    
     // Handle "Last, First" format
     if (name.includes(',')) {
       const parts = name.split(',');
       const firstName = parts[1]?.trim() || parts[0].trim();
       // Remove titles from the first name
-      return this.removeTitles(firstName);
+      const cleanedFirstName = this.removeTitles(firstName);
+      return cleanedFirstName || firstName || 'Guest';
     }
     
     // Remove common titles (Mr, Mrs, Ms, Miss, Dr, Prof, etc.)
     const withoutTitle = this.removeTitles(name);
     
     // Handle "First Last" or "First Middle Last" format - take first word
-    const parts = withoutTitle.split(/\s+/);
-    return parts[0] || withoutTitle || 'Guest';
+    const parts = withoutTitle.split(/\s+/).filter(p => p.length > 0);
+    const extractedFirstName = parts[0] || withoutTitle || name;
+    
+    // Final safety check - never return empty string
+    return extractedFirstName.trim() || 'Guest';
   }
 
   /**
@@ -295,8 +304,8 @@ export class EmailParser {
   private static removeTitles(name: string): string {
     // Common titles to remove (case insensitive, with or without period)
     const titles = [
-      'mr', 'mrs', 'ms', 'miss', 'dr', 'prof', 'professor',
-      'sir', 'lady', 'lord', 'rev', 'reverend', 'father', 'fr',
+      'mr', 'mister', 'mrs', 'ms', 'miss', 'dr', 'prof', 'professor',
+      'sir', 'madam', 'lady', 'lord', 'rev', 'reverend', 'father', 'fr',
       'capt', 'captain', 'col', 'colonel', 'maj', 'major',
       'lt', 'lieutenant', 'sgt', 'sergeant'
     ];
