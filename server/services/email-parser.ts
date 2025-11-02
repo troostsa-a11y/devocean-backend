@@ -124,8 +124,9 @@ export class EmailParser {
       const emailMatch = text.match(/Email\s+([^\s\n]+)/i);
       const phoneMatch = text.match(/(\+?\d{10,15})/);
       
-      // Check for "Preferred Language" first (new Beds24 variable), then fallback to "Language"
-      const preferredLanguageMatch = text.match(/Preferred Language\s+([A-Z]{2})/i);
+      // Check for "Preferred Language" / "Bevorzugte Sprache" first, then fallback to "Language"
+      // Supports both 2-letter codes (EN, DE) and full names (English, Englisch, Deutsch)
+      const preferredLanguageMatch = text.match(/(?:Preferred Language|Bevorzugte Sprache)\s*:?\s*([A-Za-z]{2,})/i);
       const languageMatch = text.match(/Language\s+([A-Z]{2})/i);
 
       if (!nameMatch) {
@@ -140,15 +141,23 @@ export class EmailParser {
       const guestEmail = this.normalizeEmail(rawEmail, groupRef);
       const guestPhone = phoneMatch ? phoneMatch[1] : undefined;
       
-      // Prioritize "Preferred Language" if available, otherwise use "Language", default to 'EN'
-      const guestLanguage = preferredLanguageMatch 
-        ? preferredLanguageMatch[1].toUpperCase() 
-        : (languageMatch ? languageMatch[1].toUpperCase() : 'EN');
+      // Prioritize "Preferred Language" / "Bevorzugte Sprache" if available, otherwise use "Language", default to 'EN'
+      let guestLanguage = 'EN';
+      let languageSource = 'default';
+      
+      if (preferredLanguageMatch) {
+        const rawLang = preferredLanguageMatch[1].trim();
+        guestLanguage = this.normalizeLanguage(rawLang);
+        languageSource = 'preferred';
+      } else if (languageMatch) {
+        guestLanguage = languageMatch[1].toUpperCase();
+        languageSource = 'standard';
+      }
       
       // Log which language source was used for debugging
-      if (preferredLanguageMatch) {
-        console.log(`📧 Using Preferred Language: ${guestLanguage}`);
-      } else if (languageMatch) {
+      if (languageSource === 'preferred' && preferredLanguageMatch) {
+        console.log(`📧 Using Preferred Language: ${guestLanguage} (from: ${preferredLanguageMatch[1]})`);
+      } else if (languageSource === 'standard') {
         console.log(`📧 Using Language: ${guestLanguage}`);
       } else {
         console.log(`📧 No language specified, defaulting to EN`);
@@ -302,6 +311,127 @@ export class EmailParser {
     }
     
     return cleaned.trim() || name.trim();
+  }
+
+  /**
+   * Normalize language code to 2-letter ISO format
+   * Handles full language names (Englisch, Deutsch, Français) → (EN, DE, FR)
+   * Also handles both English and German field names
+   */
+  private static normalizeLanguage(rawLanguage: string): string {
+    const lang = rawLanguage.trim().toLowerCase();
+    
+    // Map full language names to 2-letter ISO codes
+    const languageMap: Record<string, string> = {
+      // English variations
+      'english': 'EN',
+      'englisch': 'EN',
+      'inglés': 'EN',
+      'anglais': 'EN',
+      'en': 'EN',
+      'en-gb': 'EN',
+      'en-us': 'EN',
+      
+      // German
+      'german': 'DE',
+      'deutsch': 'DE',
+      'alemán': 'DE',
+      'allemand': 'DE',
+      'de': 'DE',
+      'de-de': 'DE',
+      
+      // Portuguese
+      'portuguese': 'PT',
+      'português': 'PT',
+      'portugues': 'PT',
+      'pt': 'PT',
+      'pt-pt': 'PT',
+      'pt-br': 'PT',
+      
+      // Spanish
+      'spanish': 'ES',
+      'español': 'ES',
+      'espanol': 'ES',
+      'espagnol': 'ES',
+      'es': 'ES',
+      'es-es': 'ES',
+      
+      // French
+      'french': 'FR',
+      'français': 'FR',
+      'francais': 'FR',
+      'francés': 'FR',
+      'frances': 'FR',
+      'fr': 'FR',
+      'fr-fr': 'FR',
+      
+      // Italian
+      'italian': 'IT',
+      'italiano': 'IT',
+      'italienne': 'IT',
+      'it': 'IT',
+      'it-it': 'IT',
+      
+      // Dutch
+      'dutch': 'NL',
+      'nederlands': 'NL',
+      'nl': 'NL',
+      'nl-nl': 'NL',
+      
+      // Swedish
+      'swedish': 'SV',
+      'svenska': 'SV',
+      'sv': 'SV',
+      
+      // Polish
+      'polish': 'PL',
+      'polski': 'PL',
+      'pl': 'PL',
+      
+      // Afrikaans
+      'afrikaans': 'AF',
+      'af': 'AF',
+      'af-za': 'AF',
+      
+      // Zulu
+      'zulu': 'ZU',
+      'isizulu': 'ZU',
+      'zu': 'ZU',
+      
+      // Swahili
+      'swahili': 'SW',
+      'kiswahili': 'SW',
+      'sw': 'SW',
+      
+      // Japanese
+      'japanese': 'JA',
+      '日本語': 'JA',
+      'ja': 'JA',
+      'ja-jp': 'JA',
+      
+      // Chinese
+      'chinese': 'ZH',
+      '中文': 'ZH',
+      'zh': 'ZH',
+      'zh-cn': 'ZH',
+      
+      // Russian
+      'russian': 'RU',
+      'русский': 'RU',
+      'ru': 'RU',
+    };
+    
+    const normalized = languageMap[lang];
+    
+    if (normalized) {
+      console.log(`🌍 Normalized language: ${rawLanguage} → ${normalized}`);
+      return normalized;
+    }
+    
+    // If not found, try to use first 2 letters as fallback
+    const fallback = rawLanguage.substring(0, 2).toUpperCase();
+    console.warn(`⚠️ Unknown language "${rawLanguage}", using fallback: ${fallback}`);
+    return fallback;
   }
 
   /**
