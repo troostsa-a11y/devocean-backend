@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/express": "^5.0.5",
+    "@types/luxon": "^3.7.1",
     "@types/node": "^24.9.1",
     "@types/node-cron": "^3.0.11",
     "@types/pg": "^8.15.5",
@@ -22,6 +23,7 @@
     "i18next": "^25.5.2",
     "imap-simple": "^5.1.0",
     "lucide-react": "^0.460.0",
+    "luxon": "^3.7.2",
     "mailparser": "^3.7.5",
     "node-cron": "^4.2.1",
     "nodemailer": "^7.0.6",
