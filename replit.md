@@ -57,7 +57,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Database Schema:** Drizzle ORM configured for PostgreSQL with Zod schemas.
 - **Email Automation System:** Production-ready Node.js (TypeScript) service processing Beds24 booking notifications via IMAP and sending multi-language automated emails using Resend API.
     - Architecture: IMAP Parser → Supabase PostgreSQL → Email Scheduler → Resend Transactional Emails.
-    - Cron schedule: 08:00, 14:00, 20:00 UTC daily.
+    - **Timezone:** All scheduling operates in Central African Time (CAT/UTC+2) using Luxon. Cron checks at 08:00, 14:00, 20:00 CAT (06:00, 12:00, 18:00 UTC) daily.
+    - **Email Schedule Times (CAT):** Post-booking (1-2h after booking), Pre-arrival (09:00 CAT, 7 days before), Arrival (09:00 CAT, 2 days before), Post-departure (10:00 CAT, day after checkout).
     - Keepalive: Requires external ping service every 30 minutes to prevent Replit sleep (see KEEPALIVE-SETUP.md).
     - **Server Configuration:** Uses `vm02-murphy.h4ahosting.com` as IMAP_HOST (direct server hostname for maximum reliability vs domain alias).
     - **BCC Functionality:** All outgoing emails automatically BCC to `beds24@devoceanlodge.com` for audit trail (configurable via BCC_EMAIL secret).
