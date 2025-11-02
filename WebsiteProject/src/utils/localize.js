@@ -28,7 +28,23 @@ export function localizeUnits(lang) {
 }
 
 export function localizeExperiences(lang) {
-  const tr = L10N[lang]?.experiences || {};
+  // Map language-region codes to translation keys
+  // L10N uses full locale codes like "en-GB", "pt-PT", "nl-NL", etc.
+  const langKey = 
+    (lang === "en-US" || lang === "en-us") ? "en-US" :
+    (lang === "en-GB" || lang === "en-gb" || lang === "en") ? "en-GB" :
+    (lang === "pt-PT" || lang === "pt-BR" || lang === "pt") ? "pt-PT" :
+    (lang === "af-ZA" || lang === "af") ? "af-ZA" :
+    (lang === "ja-JP" || lang === "ja") ? "ja-JP" :
+    (lang === "zh-CN" || lang === "zh") ? "zh-CN" :
+    (lang === "nl-NL" || lang === "nl") ? "nl-NL" :
+    (lang === "fr-FR" || lang === "fr") ? "fr-FR" :
+    (lang === "it-IT" || lang === "it") ? "it-IT" :
+    (lang === "de-DE" || lang === "de") ? "de-DE" :
+    (lang === "es-ES" || lang === "es") ? "es-ES" :
+    lang;  // For sv, pl, ru, sw, zu that don't have region codes
+  
+  const tr = L10N[langKey]?.experiences || {};
   return EXP_BASE.map((e) => ({
     ...e,
     title: tr[e.key]?.title || e.title,
