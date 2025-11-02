@@ -246,15 +246,8 @@ reCAPTCHA score: ${recaptchaResult.score || 'N/A'}
       fr: "Cordialement", it: "Cordialmente", de: "Mit freundlichen Grüßen", es: "Cordialmente",
     };
 
-    // Build localized booking URL
-    const localeMap = {
-      en: 'en-GB', 'en-US': 'en-US', 'pt-PT': 'pt-PT', 'pt-BR': 'pt-BR',
-      nl: 'nl-NL', fr: 'fr-FR', it: 'it-IT', de: 'de-DE', es: 'es-ES',
-      sv: 'sv', pl: 'pl', 'af-ZA': 'af-ZA', zu: 'en-GB', sw: 'sw',
-      ja: 'ja-JP', zh: 'zh-CN', ru: 'ru'
-    };
-    const hrLocale = localeMap[sanitizedLang] || 'en-GB';
-    const bookingUrl = `https://book.devoceanlodge.com/bv3/search?locale=${hrLocale}&currency=${sanitizedCurrency}`;
+    // Build booking URL pointing to booking.html
+    const bookingUrl = `https://devoceanlodge.com/booking.html`;
 
     // Escape HTML function
     const escapeHtml = (text) => {
