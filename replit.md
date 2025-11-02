@@ -74,3 +74,112 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a property in 
 - **Static Assets:** Stock images, photo gallery, logo, branding assets.
 - **Accommodation Photos:** 16 unit photos optimized to WebP format in `/public/photos/units/`.
 - **Legal Documents:** Static HTML pages for compliance (privacy, cookies, terms, GDPR, CRIC) with cache-busting.
+---
+
+## Recent Bug Fixes & Improvements (cont'd)
+
+### November 2, 2025 - Contact Form System Restoration
+
+#### 🐛 Bug Fix #4: Contact Form Not Sending Emails
+**Issue:** Contact form submissions were failing silently. Form pointed to dead external API endpoint (`https://devocean-api.onrender.com/api/contact`) which returned 404.
+
+**Root Cause:** External Render.com API service was decommissioned/offline, but frontend was still configured to use it. No local fallback existed.
+
+**Fix Applied:**
+- **Created dual-environment contact form system:**
+  - Development: Express.js endpoint in `server.js` at `/api/contact`
+  - Production: Cloudflare Pages Function at `functions/api/contact.js`
+  
+- **Updated frontend:** `ContactSection.jsx` now uses relative path `/api/contact` (works in both environments)
+
+- **Migrated from nodemailer to Resend API:** Unified email delivery using same Resend service as booking automation
+
+- **Implemented comprehensive security measures:**
+  1. Input sanitization (CR/LF stripping, length limits)
+  2. HTML escaping for all user content
+  3. reCAPTCHA v3 verification with action matching
+  4. Score-based bot detection (<0.3 rejected, <0.5 logged)
+  5. Email format validation
+
+- **Added localized auto-reply system:** Customers receive confirmation email in their language (EN, PT, NL, FR, IT, DE, ES)
+
+**Files Modified:**
+- `WebsiteProject/functions/api/contact.js` (new - production handler)
+- `WebsiteProject/server.js` (converted from nodemailer to Resend)
+- `WebsiteProject/src/components/ContactSection.jsx` (endpoint updated)
+
+**Impact:**
+- Contact form now works in both development and production
+- Enhanced security with multiple layers of validation
+- Better user experience with instant auto-reply confirmations
+- Consistent email delivery infrastructure (all via Resend)
+
+**Technical Details:**
+```javascript
+// Both environments share identical logic:
+// 1. Sanitize inputs (remove CR/LF, trim, limit length)
+// 2. Validate reCAPTCHA (action + score thresholds)
+// 3. Escape HTML for safe email rendering
+// 4. Send main notification to info@devoceanlodge.com
+// 5. Send localized auto-reply to customer
+```
+
+**Required Environment Variables:**
+- `RESEND_API_KEY` - Resend API key for email delivery
+- `RECAPTCHA_SECRET_KEY` - Google reCAPTCHA v3 server key
+
+---
+
+## Contact Form System Architecture
+
+### Dual-Environment Setup
+
+#### Development (server.js - Port 5000)
+- Express.js endpoint: `POST /api/contact`
+- Runs alongside Vite dev server
+- Hot-reload enabled for rapid testing
+
+#### Production (Cloudflare Pages Function)
+- Serverless function: `functions/api/contact.js`
+- Edge deployment (auto-scaled, globally distributed)
+- Environment variables managed in Cloudflare dashboard
+
+### Security Implementation
+Both environments enforce identical security measures:
+
+1. **Input Sanitization:**
+   - Header injection prevention (CR/LF stripping)
+   - Length limits: name (100 chars), email (100 chars), message (2000 chars)
+   - Email format validation with regex
+
+2. **reCAPTCHA v3 Protection:**
+   - Server-side token verification with Google API
+   - Action verification (must match 'contact_form')
+   - Score-based filtering:
+     - < 0.3: Rejected as bot
+     - 0.3-0.5: Logged as suspicious
+     - \> 0.5: Accepted
+
+3. **Output Sanitization:**
+   - HTML escaping for all user content in emails
+   - Prevents XSS and email template injection
+
+### Email Flow
+
+1. **Main Notification** (to staff)
+   - Recipient: info@devoceanlodge.com
+   - Contains: Customer details, message, dates, unit preference
+   - Reply-to: Customer's email (for easy response)
+   - Format: Professional HTML + plain text fallback
+
+2. **Auto-Reply** (to customer)
+   - Localized in customer's selected language
+   - Includes: Thank you message, booking CTA, signature
+   - Professional email template (Outlook/Gmail compatible)
+   - Languages supported: EN, PT, NL, FR, IT, DE, ES
+
+### Monitoring & Debugging
+- All submissions logged to console with reCAPTCHA scores
+- Failed reCAPTCHA attempts logged with details
+- Resend API errors captured and logged
+- Auto-reply failures non-blocking (main email still succeeds)
