@@ -1,17 +1,3 @@
-import dotenv from 'dotenv';
-import express from 'express';
-import { createServer as createViteServer } from 'vite';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// Load .env file explicitly
-dotenv.config({ path: join(__dirname, '.env') });
-const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
 // Security: Sanitize header strings (remove ALL newlines)
 function sanitizeHeader(str) {
   return String(str).replace(/[\r\n]/g, '').trim();
@@ -20,12 +6,6 @@ function sanitizeHeader(str) {
 // Security: Sanitize message body (remove CRLF but preserve LF)
 function sanitizeMessage(str) {
   return String(str).replace(/\r\n/g, '\n').replace(/\r/g, '').trim();
-}
-
-// Security: Validate email format
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
 }
 
 // Escape HTML function
@@ -38,51 +18,58 @@ function escapeHtml(text) {
     .replace(/'/g, '&#39;');
 }
 
-// Verify reCAPTCHA token
-async function verifyRecaptcha(token) {
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+export async function onRequestPost(context) {
+  const { request, env } = context;
   
-  if (!secretKey) {
-    throw new Error('RECAPTCHA_SECRET_KEY not configured');
-  }
-
-  const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
-  
-  const response = await fetch(verifyUrl, { method: 'POST' });
-  const data = await response.json();
-  
-  return data;
-}
-
-// Email endpoint for contact form
-app.post("/api/contact", async (req, res) => {
   try {
-    const { name, email, message, checkin_iso, checkout_iso, unit, currency, lang, recaptcha_token } = req.body;
+    const data = await request.json();
+    const { name, email, message, checkin_iso, checkout_iso, unit, currency, lang, recaptcha_token } = data;
 
-    // Verify reCAPTCHA token
+    // Validate reCAPTCHA token
     if (!recaptcha_token) {
-      return res.status(400).json({ error: "reCAPTCHA verification required" });
+      return new Response(JSON.stringify({ error: 'reCAPTCHA validation required' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    const recaptchaResult = await verifyRecaptcha(recaptcha_token);
+    // Verify reCAPTCHA with Google
+    const recaptchaSecret = env.RECAPTCHA_SECRET_KEY;
+    const recaptchaVerifyUrl = `https://www.google.com/recaptcha/api/siteverify`;
+    
+    const recaptchaResponse = await fetch(recaptchaVerifyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `secret=${recaptchaSecret}&response=${recaptcha_token}`
+    });
+
+    const recaptchaResult = await recaptchaResponse.json();
     
     if (!recaptchaResult.success) {
       console.error('reCAPTCHA verification failed:', recaptchaResult);
-      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+      return new Response(JSON.stringify({ error: 'reCAPTCHA verification failed' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     // Verify action matches expected value to prevent token reuse
     if (recaptchaResult.action !== 'contact_form') {
       console.warn('reCAPTCHA action mismatch:', recaptchaResult.action, 'expected: contact_form');
-      return res.status(400).json({ error: "Invalid security token" });
+      return new Response(JSON.stringify({ error: 'Invalid security token' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     // Check score for v3 (0.0 to 1.0, higher is better)
-    // Reject scores below 0.3 as likely bots, log scores 0.3-0.5 as suspicious
     if (recaptchaResult.score !== undefined) {
       if (recaptchaResult.score < 0.3) {
         console.warn('reCAPTCHA score too low (bot detected):', recaptchaResult.score);
-        return res.status(400).json({ error: "Security verification failed. Please try again." });
+        return new Response(JSON.stringify({ error: 'Security verification failed. Please try again.' }), {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' }
+        });
       } else if (recaptchaResult.score < 0.5) {
         console.warn('Low reCAPTCHA score (suspicious):', recaptchaResult.score, 'from:', email);
       }
@@ -90,7 +77,10 @@ app.post("/api/contact", async (req, res) => {
 
     // Validate required fields
     if (!name || !email || !message) {
-      return res.status(400).json({ error: "Missing required fields" });
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     // Sanitize and validate inputs
@@ -99,11 +89,19 @@ app.post("/api/contact", async (req, res) => {
     const sanitizedMessage = sanitizeMessage(message).slice(0, 2000);
     
     if (!sanitizedName || !sanitizedEmail || !sanitizedMessage) {
-      return res.status(400).json({ error: "Invalid input data" });
+      return new Response(JSON.stringify({ error: 'Invalid input data' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
-    if (!isValidEmail(sanitizedEmail)) {
-      return res.status(400).json({ error: "Invalid email address" });
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(sanitizedEmail)) {
+      return new Response(JSON.stringify({ error: 'Invalid email address' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     // Sanitize optional fields
@@ -125,7 +123,7 @@ app.post("/api/contact", async (req, res) => {
     };
     const fullLanguageName = languageNames[sanitizedLang] || sanitizedLang;
 
-    // Prepare email content for Resend
+    // Prepare main email content
     const emailSubject = `New Contact Form Enquiry - ${sanitizedName}`;
     
     const emailHtml = `
@@ -172,12 +170,7 @@ reCAPTCHA score: ${recaptchaResult.score || 'N/A'}
     `.trim();
 
     // Send email via Resend API
-    const resendApiKey = process.env.RESEND_API_KEY;
-    
-    if (!resendApiKey) {
-      console.error('RESEND_API_KEY not configured');
-      return res.status(500).json({ error: "Email service not configured" });
-    }
+    const resendApiKey = env.RESEND_API_KEY;
     
     const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -198,12 +191,14 @@ reCAPTCHA score: ${recaptchaResult.score || 'N/A'}
     if (!emailResponse.ok) {
       const errorText = await emailResponse.text();
       console.error('Resend API error:', errorText);
-      return res.status(500).json({ error: 'Failed to send email' });
+      return new Response(JSON.stringify({ error: 'Failed to send email' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' }
+      });
     }
 
     const emailResult = await emailResponse.json();
-    console.log("✅ Main email sent successfully via Resend!");
-    console.log("Message ID:", emailResult.id);
+    console.log('Email sent successfully:', emailResult.id);
 
     // Send auto-reply to customer (localized confirmation)
     const autoReplyMessages = {
@@ -255,16 +250,6 @@ reCAPTCHA score: ${recaptchaResult.score || 'N/A'}
     };
     const hrLocale = localeMap[sanitizedLang] || 'en-GB';
     const bookingUrl = `https://book.devoceanlodge.com/bv3/search?locale=${hrLocale}&currency=${sanitizedCurrency}`;
-
-    // Escape HTML function
-    const escapeHtml = (text) => {
-      return text
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    };
 
     // HTML version of auto-reply (professional format with email client compatibility)
     const autoReplyHtml = `
@@ -346,78 +331,27 @@ ${ratesButtonText[sanitizedLang] || ratesButtonText.en}: ${bookingUrl}
 
         if (autoReplyResponse.ok) {
           const autoReplyResult = await autoReplyResponse.json();
-          console.log("✅ Auto-reply sent to:", sanitizedEmail, "ID:", autoReplyResult.id);
+          console.log('Auto-reply sent to:', sanitizedEmail, 'ID:', autoReplyResult.id);
         } else {
           const errorText = await autoReplyResponse.text();
-          console.error("⚠️ Auto-reply failed:", errorText);
+          console.error('Auto-reply failed:', errorText);
         }
       } catch (autoReplyError) {
-        console.error("⚠️ Auto-reply failed:", autoReplyError.message);
+        console.error('Auto-reply failed:', autoReplyError.message);
         // Don't fail the main request if auto-reply fails
       }
     }
 
-    res.json({ success: true, message: "Email sent successfully" });
+    return new Response(JSON.stringify({ success: true, messageId: emailResult.id }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+
   } catch (error) {
-    console.error("Email error:", error.message);
-    res.status(500).json({ error: "Failed to send email" });
+    console.error('Contact form error:', error);
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
-});
-
-// Static map endpoint (keeps API key secure on server)
-app.get("/api/static-map", async (req, res) => {
-  try {
-    const { lat, lng, zoom = 13 } = req.query;
-    
-    if (!lat || !lng) {
-      return res.status(400).json({ error: "Missing lat/lng parameters" });
-    }
-
-    const apiKey = process.env.GOOGLE_MAPS_API_KEY;
-    
-    if (!apiKey) {
-      console.error('GOOGLE_MAPS_API_KEY not configured');
-      return res.status(500).json({ error: "Map service not configured" });
-    }
-
-    const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=800x400&scale=2&maptype=roadmap&markers=color:0x0EA5E9%7C${lat},${lng}&key=${apiKey}`;
-
-    const response = await fetch(staticMapUrl);
-    
-    if (!response.ok) {
-      throw new Error(`Google Maps API error: ${response.status}`);
-    }
-
-    const imageBuffer = await response.arrayBuffer();
-    
-    res.set('Content-Type', 'image/png');
-    res.set('Cache-Control', 'public, max-age=86400'); // Cache for 24 hours
-    res.send(Buffer.from(imageBuffer));
-  } catch (error) {
-    console.error("Static map error:", error.message);
-    res.status(500).json({ error: "Failed to generate map" });
-  }
-});
-
-// Start server
-const PORT = process.env.PORT || 5000;
-
-// In development, use Vite dev server
-const vite = await createViteServer({
-  server: { 
-    middlewareMode: true,
-    host: true,
-    allowedHosts: true,
-    hmr: {
-      host: false
-    }
-  },
-  appType: 'spa',
-  root: __dirname,
-});
-
-app.use(vite.middlewares);
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
-});
+}
