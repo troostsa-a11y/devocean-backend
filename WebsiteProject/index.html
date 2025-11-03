@@ -62,27 +62,8 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- Start cookieyes banner (Delayed for LCP optimization) -->
-  <script>
-    (function() {
-      var cookieyesLoaded = false;
-      function loadCookieYes() {
-        if (cookieyesLoaded) return;
-        cookieyesLoaded = true;
-        var s = document.createElement('script');
-        s.id = 'cookieyes';
-        s.type = 'text/javascript';
-        s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
-        document.head.appendChild(s);
-      }
-      // Load after 2 seconds to prevent blocking LCP
-      setTimeout(loadCookieYes, 2000);
-      // Or load on first user interaction
-      ['scroll','mousemove','touchstart','click'].forEach(function(e){
-        window.addEventListener(e, loadCookieYes, {once: true, passive: true});
-      });
-    })();
-  </script>
+  <!-- Start cookieyes banner -->
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js" defer></script>
   <!-- End cookieyes banner -->
 
   <!-- Trustindex Rich Snippet (Lazy Loaded) -->
@@ -435,27 +416,7 @@
   <!-- DEV entry (Vite) -->
   <script type="module" src="/src/main.jsx"></script>
 
-  <div id="root">
-    <!-- Static hero content for instant LCP - renders before JavaScript executes -->
-    <style>
-      .static-hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: #9e4b13; }
-      .static-hero-bg { position: absolute; inset: 0; background-image: url('/photos/hero01.jpg'); background-size: cover; background-position: center; }
-      .static-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
-      .static-hero-content { position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding: 0 1rem; color: white; padding-top: calc(160px + 4rem); padding-bottom: 6rem; }
-      .static-hero h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 700; max-width: 48rem; line-height: 1.2; }
-      .static-hero p { margin-top: 1rem; font-size: clamp(1rem, 2vw, 1.25rem); max-width: 32rem; }
-      @media (min-width: 801px) { .static-hero-bg { background-image: url('/photos/hero01.webp'); } }
-      @media (max-width: 800px) { .static-hero-bg { background-image: url('/photos/hero01-mobile.webp'); } }
-    </style>
-    <section class="static-hero">
-      <div class="static-hero-bg"></div>
-      <div class="static-hero-overlay"></div>
-      <div class="static-hero-content">
-        <h1>DEVOCEAN Lodge</h1>
-        <p class="mt-4 md:text-xl max-w-2xl">Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.</p>
-      </div>
-    </section>
-  </div>
+  <div id="root"></div>
 </body>
 
 </html>
