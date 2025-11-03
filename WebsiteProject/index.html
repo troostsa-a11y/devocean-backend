@@ -417,8 +417,25 @@
   <script type="module" src="/src/main.jsx"></script>
 
   <div id="root">
-    <!-- SEO: H1 for crawlers before React hydrates -->
-    <h1 style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">DEVOCEAN Lodge - Eco-friendly Beach Accommodation in Ponta do Ouro, Mozambique</h1>
+    <!-- Static hero content for instant LCP - renders before JavaScript executes -->
+    <style>
+      .static-hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: #9e4b13; }
+      .static-hero-bg { position: absolute; inset: 0; background-image: url('/photos/hero01.jpg'); background-size: cover; background-position: center; }
+      .static-hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.4); }
+      .static-hero-content { position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding: 0 1rem; color: white; padding-top: calc(160px + 4rem); padding-bottom: 6rem; }
+      .static-hero h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 700; max-width: 48rem; line-height: 1.2; }
+      .static-hero p { margin-top: 1rem; font-size: clamp(1rem, 2vw, 1.25rem); max-width: 32rem; }
+      @media (min-width: 801px) { .static-hero-bg { background-image: url('/photos/hero01.webp'); } }
+      @media (max-width: 800px) { .static-hero-bg { background-image: url('/photos/hero01-mobile.webp'); } }
+    </style>
+    <section class="static-hero">
+      <div class="static-hero-bg"></div>
+      <div class="static-hero-overlay"></div>
+      <div class="static-hero-content">
+        <h1>DEVOCEAN Lodge</h1>
+        <p class="mt-4 md:text-xl max-w-2xl">Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.</p>
+      </div>
+    </section>
   </div>
 </body>
 
