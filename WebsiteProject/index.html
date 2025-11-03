@@ -62,37 +62,71 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- Start cookieyes banner -->
+  <!-- Start cookieyes banner (Post-LCP injection for Core Web Vitals) -->
   <style>
-    /* Hide CookieYes banner initially to prevent it from being LCP element */
-    /* Banner will be revealed after page load via JavaScript below */
-    #cookieyes-banner, 
+    /* Compact banner styling - prevents overtaking hero as LCP element */
     .cky-consent-container,
-    [data-cky-tag="notice"],
     .cky-notice {
-      opacity: 0 !important;
-      visibility: hidden !important;
-      pointer-events: none !important;
+      position: fixed !important;
+      bottom: 1rem !important;
+      right: 1rem !important;
+      max-width: 380px !important;
+      width: auto !important;
+      z-index: 9999999 !important;
     }
-    /* Re-enable after brief delay */
-    .cky-loaded #cookieyes-banner,
-    .cky-loaded .cky-consent-container,
-    .cky-loaded [data-cky-tag="notice"],
-    .cky-loaded .cky-notice {
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: auto !important;
-      transition: opacity 0.3s ease;
+    @media (max-width: 640px) {
+      .cky-consent-container,
+      .cky-notice {
+        max-width: calc(100vw - 2rem) !important;
+      }
     }
   </style>
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js" defer></script>
   <script>
-    // Reveal CookieYes banner after page load to prevent LCP blocking
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        document.documentElement.classList.add('cky-loaded');
-      }, 1000); // 1 second delay after page load
-    });
+    // Post-LCP CookieYes loader - injects after hero paints to prevent LCP blocking
+    (function() {
+      var cookieyesURL = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
+      var loaded = false;
+      
+      function injectCookieYes() {
+        if (loaded) return;
+        loaded = true;
+        var script = document.createElement('script');
+        script.id = 'cookieyes';
+        script.type = 'text/javascript';
+        script.src = cookieyesURL;
+        document.head.appendChild(script);
+      }
+      
+      // Strategy 1: Wait for LCP observation (hero should paint first)
+      if ('PerformanceObserver' in window) {
+        try {
+          var lcpObserver = new PerformanceObserver(function(list) {
+            var entries = list.getEntries();
+            var lastEntry = entries[entries.length - 1];
+            // Once hero is painted, inject CookieYes after brief delay
+            if (lastEntry) {
+              setTimeout(injectCookieYes, 800);
+              lcpObserver.disconnect();
+            }
+          });
+          lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+        } catch (e) {
+          // Fallback if PerformanceObserver fails
+          setTimeout(injectCookieYes, 1500);
+        }
+      } else {
+        // Fallback for browsers without PerformanceObserver
+        setTimeout(injectCookieYes, 1500);
+      }
+      
+      // Strategy 2: Also inject on user interaction (whichever comes first)
+      ['scroll', 'mousemove', 'touchstart', 'click'].forEach(function(event) {
+        window.addEventListener(event, injectCookieYes, { once: true, passive: true });
+      });
+      
+      // Strategy 3: Guaranteed injection after max 2 seconds (safety net)
+      setTimeout(injectCookieYes, 2000);
+    })();
   </script>
   <!-- End cookieyes banner -->
 
