@@ -1,6 +1,6 @@
 // Critical translations that load synchronously for immediate rendering
-// Includes navigation text and hero title/subtitle for all 17 languages
-// This eliminates FOUC (flash of untranslated content) during the LCP window
+// Includes navigation text and hero title/subtitle (English only for minimal bundle size)
+// Non-English languages use English fallback briefly until full translations load
 export const CRITICAL_NAV = {
   "en-GB": {
     home: "Home",
@@ -36,10 +36,7 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Localização",
     contact: "Contato",
-    bookNow: "Reserve já",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.",
-    heroExplore: "Explore o lodge"
+    bookNow: "Reserve já"
   },
   "pt-BR": {
     home: "Início",
@@ -49,10 +46,7 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Localização",
     contact: "Contato",
-    bookNow: "Reserve já",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.",
-    heroExplore: "Explore o lodge"
+    bookNow: "Reserve já"
   },
   "nl-NL": {
     home: "Home",
@@ -62,10 +56,7 @@ export const CRITICAL_NAV = {
     gallery: "Galerij",
     location: "Locatie",
     contact: "Contact",
-    bookNow: "Boek nu",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.",
-    heroExplore: "Verken de lodge"
+    bookNow: "Boek nu"
   },
   "fr-FR": {
     home: "Accueil",
@@ -75,10 +66,7 @@ export const CRITICAL_NAV = {
     gallery: "Galerie",
     location: "Localisation",
     contact: "Contact",
-    bookNow: "Réserver",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Hébergements écoresponsables à quelques centaines de mètres de la plage à Ponta do Ouro, sud du Mozambique.",
-    heroExplore: "Découvrir le lodge"
+    bookNow: "Réserver"
   },
   "it-IT": {
     home: "Home",
@@ -88,10 +76,7 @@ export const CRITICAL_NAV = {
     gallery: "Galleria",
     location: "Posizione",
     contact: "Contatto",
-    bookNow: "Prenota",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.",
-    heroExplore: "Scopri il lodge"
+    bookNow: "Prenota"
   },
   "de-DE": {
     home: "Startseite",
@@ -101,10 +86,7 @@ export const CRITICAL_NAV = {
     gallery: "Galerie",
     location: "Standort",
     contact: "Kontakt",
-    bookNow: "Jetzt buchen",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.",
-    heroExplore: "Lodge entdecken"
+    bookNow: "Jetzt buchen"
   },
   "es-ES": {
     home: "Inicio",
@@ -114,10 +96,7 @@ export const CRITICAL_NAV = {
     gallery: "Galería",
     location: "Ubicación",
     contact: "Contacto",
-    bookNow: "Reservar",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Alojamientos ecológicos a pocos cientos de metros de la playa en Ponta do Ouro, Sur de Mozambique.",
-    heroExplore: "Explorar el lodge"
+    bookNow: "Reservar"
   },
   sv: {
     home: "Hem",
@@ -127,10 +106,7 @@ export const CRITICAL_NAV = {
     gallery: "Galleri",
     location: "Plats",
     contact: "Kontakt",
-    bookNow: "Boka nu",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
-    heroExplore: "Explore the lodge"
+    bookNow: "Boka nu"
   },
   pl: {
     home: "Strona główna",
@@ -140,10 +116,7 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Lokalizacja",
     contact: "Kontakt",
-    bookNow: "Rezerwuj",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
-    heroExplore: "Explore the lodge"
+    bookNow: "Rezerwuj"
   },
   "ja-JP": {
     home: "ホーム",
@@ -153,10 +126,7 @@ export const CRITICAL_NAV = {
     gallery: "ギャラリー",
     location: "場所",
     contact: "連絡先",
-    bookNow: "今すぐ予約",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。",
-    heroExplore: "ロッジを探検"
+    bookNow: "今すぐ予約"
   },
   "zh-CN": {
     home: "首页",
@@ -166,10 +136,7 @@ export const CRITICAL_NAV = {
     gallery: "图库",
     location: "位置",
     contact: "联系我们",
-    bookNow: "立即预订",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。",
-    heroExplore: "探索旅馆"
+    bookNow: "立即预订"
   },
   ru: {
     home: "Главная",
@@ -179,10 +146,7 @@ export const CRITICAL_NAV = {
     gallery: "Галерея",
     location: "Местоположение",
     contact: "Контакты",
-    bookNow: "Цены и наличие",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
-    heroExplore: "Explore the lodge"
+    bookNow: "Цены и наличие"
   },
   "af-ZA": {
     home: "Tuis",
@@ -192,10 +156,7 @@ export const CRITICAL_NAV = {
     gallery: "Galery",
     location: "Ligging",
     contact: "Kontak",
-    bookNow: "Bespreek nou",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eko-vriendelike verblyf 'n paar honderd meter vanaf die strand in Ponta do Ouro, Suid-Mosambiek.",
-    heroExplore: "Verken die Lodge"
+    bookNow: "Bespreek nou"
   },
   zu: {
     home: "Ikhaya",
@@ -205,10 +166,7 @@ export const CRITICAL_NAV = {
     gallery: "Igalari",
     location: "Indawo",
     contact: "Xhumana nathi",
-    bookNow: "Bhukha manje",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
-    heroExplore: "Explore the lodge"
+    bookNow: "Bhukha manje"
   },
   sw: {
     home: "Nyumbani",
@@ -218,9 +176,6 @@ export const CRITICAL_NAV = {
     gallery: "Matunzio",
     location: "Mahali",
     contact: "Wasiliana nasi",
-    bookNow: "Weka nafasi sasa",
-    heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
-    heroExplore: "Explore the lodge"
+    bookNow: "Weka nafasi sasa"
   }
 };
