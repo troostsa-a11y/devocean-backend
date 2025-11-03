@@ -39,6 +39,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           const srcMobile = typeof img === 'object' ? img.mobile : undefined;
           const srcWebP = typeof img === 'object' ? img.desktopWebP : undefined;
           const srcMobileWebP = typeof img === 'object' ? img.mobileWebP : undefined;
+          const isFirst = i === 0;
           return (
             <LazyImage
               key={src}
@@ -49,7 +50,8 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               alt={`Hero slide ${i + 1}`}
               className="absolute inset-0 w-full h-full object-cover object-center"
               style={{ opacity: i === idx ? 1 : 0 }}
-              loading={i === 0 ? "eager" : "lazy"}
+              loading={isFirst ? "eager" : "lazy"}
+              fetchpriority={isFirst ? "high" : undefined}
             />
           );
         })}

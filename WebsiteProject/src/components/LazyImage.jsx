@@ -8,14 +8,16 @@ export default function LazyImage({
   alt,
   className = '',
   loading = 'lazy',
+  fetchpriority,
   placeholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f3f4f6" width="400" height="300"/%3E%3C/svg%3E',
   ...props
 }) {
-  const [desktopSrc, setDesktopSrc] = useState(loading === 'eager' ? src : placeholder);
-  const [mobileSrc, setMobileSrc] = useState(loading === 'eager' && srcMobile ? srcMobile : placeholder);
-  const [desktopWebP, setDesktopWebP] = useState(loading === 'eager' && srcWebP ? srcWebP : placeholder);
-  const [mobileWebP, setMobileWebP] = useState(loading === 'eager' && srcMobileWebP ? srcMobileWebP : placeholder);
-  const [imageLoaded, setImageLoaded] = useState(false);
+  const isEager = loading === 'eager';
+  const [desktopSrc, setDesktopSrc] = useState(isEager ? src : placeholder);
+  const [mobileSrc, setMobileSrc] = useState(isEager && srcMobile ? srcMobile : placeholder);
+  const [desktopWebP, setDesktopWebP] = useState(isEager && srcWebP ? srcWebP : placeholder);
+  const [mobileWebP, setMobileWebP] = useState(isEager && srcMobileWebP ? srcMobileWebP : placeholder);
+  const [imageLoaded, setImageLoaded] = useState(isEager); // LCP images start visible
   const imgRef = useRef(null);
 
   useEffect(() => {
@@ -48,6 +50,22 @@ export default function LazyImage({
     };
   }, [src, srcMobile, srcWebP, srcMobileWebP, loading]);
 
+  // Build common img props
+  const imgProps = {
+    ref: imgRef,
+    alt,
+    onLoad: () => setImageLoaded(true),
+    loading,
+    decoding: "async",
+    ...(fetchpriority && { fetchpriority }), // Add fetchpriority for LCP optimization
+    ...props
+  };
+
+  // LCP images (eager) skip opacity transition for instant visual paint
+  const opacityClass = isEager 
+    ? className // No transition for LCP - immediate visibility
+    : `transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`;
+
   // Use picture element for responsive/WebP images
   if (srcMobile || srcWebP) {
     return (
@@ -62,14 +80,9 @@ export default function LazyImage({
           <source type="image/webp" srcSet={desktopWebP} />
         )}
         <img
-          ref={imgRef}
+          {...imgProps}
           src={desktopSrc}
-          alt={alt}
-          className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
-          onLoad={() => setImageLoaded(true)}
-          loading={loading}
-          decoding="async"
-          {...props}
+          className={opacityClass}
         />
       </picture>
     );
@@ -78,14 +91,9 @@ export default function LazyImage({
   // Fallback to regular img if no responsive/WebP sources
   return (
     <img
-      ref={imgRef}
+      {...imgProps}
       src={desktopSrc}
-      alt={alt}
-      className={`transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`}
-      onLoad={() => setImageLoaded(true)}
-      loading={loading}
-      decoding="async"
-      {...props}
+      className={opacityClass}
     />
   );
 }
