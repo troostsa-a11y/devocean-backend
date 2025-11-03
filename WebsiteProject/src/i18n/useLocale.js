@@ -416,8 +416,14 @@ function getCriticalUI(lang) {
       SEK: "Krona",
       PLN: "Zloty"
     },
-    // Minimal placeholders for other sections (will be replaced when full translations load)
-    hero: { ctaPrimary: nav.bookNow },
+    // Critical hero text for LCP optimization - renders immediately for fast paint
+    hero: { 
+      title: nav.heroTitle || "DEVOCEAN Lodge",
+      subtitle: nav.heroSubtitle || "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
+      ctaPrimary: nav.bookNow,
+      ctaSecondary: nav.heroExplore || "Explore the lodge",
+      badge: "..." // Placeholder until full translations load
+    },
     stay: { moreDetails: "..." },
     form: { send: "..." }
   };

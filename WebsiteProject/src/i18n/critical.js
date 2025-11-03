@@ -9,7 +9,10 @@ export const CRITICAL_NAV = {
     gallery: "Gallery",
     location: "Location",
     contact: "Contact",
-    bookNow: "Book Now"
+    bookNow: "Book Now",
+    heroTitle: "DEVOCEAN Lodge",
+    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
+    heroExplore: "Explore the lodge"
   },
   "en-US": {
     home: "Home",
@@ -19,7 +22,10 @@ export const CRITICAL_NAV = {
     gallery: "Gallery",
     location: "Location",
     contact: "Contact",
-    bookNow: "Book Now"
+    bookNow: "Book Now",
+    heroTitle: "DEVOCEAN Lodge",
+    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
+    heroExplore: "Explore the lodge"
   },
   "pt-PT": {
     home: "Início",
