@@ -98,6 +98,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Preload LCP image for faster paint -->
+  <link rel="preload" as="image" href="/photos/units/safari-1.webp" type="image/webp" fetchpriority="high">
+
   <style>
     /* CSS Variables */
     :root {
@@ -561,16 +564,16 @@
       <!-- Photo Gallery -->
       <div class="dl-gallery">
         <div class="dl-gallery-frame">
-          <img src="/photos/units/safari-1.webp" alt="Safari Tent interior view" loading="lazy">
+          <img src="/photos/units/safari-1.webp" alt="Safari Tent interior view" loading="eager" fetchpriority="high" decoding="async">
         </div>
         <div class="dl-gallery-frame">
-          <img src="/photos/units/safari-2.webp" alt="Safari Tent bedroom setup" loading="lazy">
+          <img src="/photos/units/safari-2.webp" alt="Safari Tent bedroom setup" loading="lazy" decoding="async">
         </div>
         <div class="dl-gallery-frame">
-          <img src="/photos/units/safari-3.webp" alt="Safari Tent terrace and surroundings" loading="lazy">
+          <img src="/photos/units/safari-3.webp" alt="Safari Tent terrace and surroundings" loading="lazy" decoding="async">
         </div>
         <div class="dl-gallery-frame">
-          <img src="/photos/units/safari-4.webp" alt="Safari Tent amenities and details" loading="lazy">
+          <img src="/photos/units/safari-4.webp" alt="Safari Tent amenities and details" loading="lazy" decoding="async">
         </div>
       </div>
 
