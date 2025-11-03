@@ -131,6 +131,15 @@ export class CancellationHandler {
         emailData
       );
 
+      // Build attachments array - include header image
+      const attachments: any[] = [
+        {
+          filename: 'email-header.jpg',
+          path: './WebsiteProject/public/images/email-header.jpg',
+          cid: 'email-header-image' // Content-ID for referencing in HTML
+        }
+      ];
+
       // Send email
       await this.transporter!.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
@@ -138,6 +147,7 @@ export class CancellationHandler {
         bcc: this.bccEmail, // BCC copy for record-keeping
         subject: rendered.subject,
         html: rendered.html,
+        attachments
       });
 
       console.log(`✅ Cancellation confirmation email sent to ${booking.guestEmail} (${booking.guestLanguage || 'en-GB'})`);
@@ -325,6 +335,15 @@ export class CancellationHandler {
         emailData
       );
 
+      // Build attachments array - include header image
+      const attachments: any[] = [
+        {
+          filename: 'email-header.jpg',
+          path: './WebsiteProject/public/images/email-header.jpg',
+          cid: 'email-header-image' // Content-ID for referencing in HTML
+        }
+      ];
+
       // Send email
       await this.transporter!.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
@@ -332,6 +351,7 @@ export class CancellationHandler {
         bcc: this.bccEmail, // BCC copy for record-keeping
         subject: rendered.subject,
         html: rendered.html,
+        attachments
       });
 
       console.log(`✅ Standalone cancellation email sent to ${guestInfo.email} (${locale}) for booking ${groupRef}`);
