@@ -4,6 +4,7 @@
     "preheader": "We're so happy you've chosen to stay with us",
     "heading": "Welcome to DEVOCEAN Lodge!",
     "headerSubtitle": "We're excited to have you here",
+    "greeting": "Dear {{firstName}},",
     "welcomeText": "We're so happy you've chosen to stay with us. On behalf of our entire team, we warmly welcome you and hope your time here is both relaxing and inspiring.",
     "helpOffer": "If you need anything — big or small — please don't hesitate to ask. We're here to help.",
     "exploreTitle": "🌴 Explore Ponta do Ouro",
