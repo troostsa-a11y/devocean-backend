@@ -212,9 +212,36 @@ function clampCur(cur) {
 }
 
 function getCountryCode() {
-  // Use Cloudflare's IP-based country detection (production only)
-  if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
-    return window.__CF_COUNTRY__;
+  // Cache Cloudflare country code for instant reuse (hydration optimization)
+  const CACHE_KEY = 'cf.country';
+  const CACHE_TIMESTAMP_KEY = 'cf.country.ts';
+  const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+  
+  try {
+    // Check cache first (instant return)
+    const cached = localStorage.getItem(CACHE_KEY);
+    const cachedTime = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+    
+    if (cached && cachedTime) {
+      const age = Date.now() - parseInt(cachedTime, 10);
+      if (age < CACHE_TTL) {
+        return cached; // Instant return from cache
+      }
+    }
+    
+    // Use Cloudflare's IP-based country detection (production only)
+    if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
+      const country = window.__CF_COUNTRY__;
+      // Update cache
+      localStorage.setItem(CACHE_KEY, country);
+      localStorage.setItem(CACHE_TIMESTAMP_KEY, String(Date.now()));
+      return country;
+    }
+    
+    // Return cached value even if expired (better than null)
+    if (cached) return cached;
+  } catch (e) {
+    // localStorage may be disabled
   }
   
   // No fallback - if Cloudflare fails, return null and default to Europe
@@ -254,38 +281,46 @@ function getTimezoneContinent() {
 }
 
 function pickInitialLang() {
+  // Fast path: Return stored language immediately (no detection)
   const stored = localStorage.getItem("site.lang");
   if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
 
-  // Get country code for IP-based fallback
-  const cc = getCountryCode();
+  // URL override takes priority (booking engine return)
+  const urlLang = getUrlParam('lang');
+  if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
+    return urlLang;
+  }
 
-  // Check browser language preferences first
+  // Lightweight detection: browser language only (no country lookup)
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
 
   for (const l of list) {
     const lower = String(l || "").toLowerCase();
-    
-    // Normalize browser language to our Hotelrunner codes
     const normalized = normLang(lower);
     if (SUPPORTED_LANGS.includes(normalized)) return normalized;
   }
 
-  // Fallback: Use IP-based country → language mapping
-  // This catches visitors with non-local browser settings (e.g., English browser in Japan)
+  // Fallback to UK English (defer IP-based detection to useEffect)
+  return "en-GB";
+}
+
+// Deferred lang detection (runs after render in useEffect)
+function detectLangFromIP() {
+  const cc = getCountryCode();
+  
+  // Use IP-based country → language mapping
   if (cc && CC_TO_LANGUAGE[cc]) {
     return CC_TO_LANGUAGE[cc];
   }
 
-  // Final fallback to English - region-aware
-  // Americas → US English, others → UK English
+  // Fallback: Americas → US English, others → UK English
   const continent = cc ? CC_TO_CONTINENT[cc] : null;
   if (continent === "americas") {
     return "en-US";
   }
-  return "en-GB"; // UK English for Europe, Asia, Oceania, Africa
+  return "en-GB";
 }
 
 function pickInitialCurrency() {
@@ -301,18 +336,22 @@ function pickInitialCurrency() {
   return "USD";
 }
 
-function pickInitialRegion(langBase) {
-  // Check localStorage but validate it's not corrupted
+function pickInitialRegion() {
+  // Fast path: Return stored region immediately (no detection)
   const saved = localStorage.getItem("site.region");
   const savedVersion = localStorage.getItem("site.region.version");
   
   // Version 2: IP-based geolocation (Oct 2024)
-  // Clear old cached values from browser-based detection
   if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "2") {
     return saved;
   }
   
-  // Get country code (Cloudflare IP-based or browser fallback)
+  // Fallback to Europe (defer IP-based detection to useEffect)
+  return "europe";
+}
+
+// Deferred region detection (runs after render in useEffect)
+function detectRegionFromIP() {
   const cc = getCountryCode();
   
   // Priority 1: Use country code → continent mapping (most accurate)
@@ -457,7 +496,7 @@ export function useLocale() {
       localStorage.removeItem("site.region.version");
     }
     
-    return pickInitialRegion(pickInitialLang());
+    return pickInitialRegion();
   });
 
   // Initialize with critical nav for header (immediate render)
@@ -470,6 +509,43 @@ export function useLocale() {
   useEffect(() => {
     setCriticalUI(getCriticalUI(lang));
   }, [lang]);
+
+  // Deferred IP-based detection (runs after initial render for first-time visitors)
+  useEffect(() => {
+    // Only run for first-time visitors without stored preferences
+    const hasStoredLang = localStorage.getItem("site.lang");
+    const hasStoredRegion = localStorage.getItem("site.region");
+    const langSource = localStorage.getItem("site.lang_source");
+    
+    // Skip if user has manually selected language or came from booking engine
+    if (langSource === "user" || langSource === "url") return;
+    
+    // Skip if we already have stored preferences
+    if (hasStoredLang && hasStoredRegion) return;
+    
+    // Run IP-based detection asynchronously (non-blocking)
+    setTimeout(() => {
+      // Detect language from IP if not stored
+      if (!hasStoredLang) {
+        const detectedLang = detectLangFromIP();
+        if (detectedLang && detectedLang !== lang) {
+          setLangState(detectedLang);
+          localStorage.setItem("site.lang", detectedLang);
+          localStorage.setItem("site.lang_source", "ip");
+        }
+      }
+      
+      // Detect region from IP if not stored
+      if (!hasStoredRegion) {
+        const detectedRegion = detectRegionFromIP();
+        if (detectedRegion && detectedRegion !== region) {
+          setRegionState(detectedRegion);
+          localStorage.setItem("site.region", detectedRegion);
+          localStorage.setItem("site.region.version", "2");
+        }
+      }
+    }, 100); // Defer to next tick after render
+  }, []); // Run once on mount
 
   // Load full translations
   useEffect(() => {
