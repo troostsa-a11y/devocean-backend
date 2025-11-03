@@ -34,7 +34,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website in Ponta do Ouro, 
 - **UI & Styling:** shadcn/ui components, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design.
 - **State Management:** TanStack Query for server state, React hooks for local state.
 - **Internationalization:** React-based i18n with lazy-loaded translations for 16 languages (unified Hotelrunner locale codes). Language persistence via localStorage. Multi-tier language detection (localStorage → browser → IP). Currency based on visitor's IP.
-- **Performance Optimizations:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load. Core Web Vitals optimization includes splitting translation bundles and deferred locale detection for improved INP and hydration.
+- **Performance Optimizations:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes consent banner delayed loading (2s or first interaction). Core Web Vitals optimization includes splitting translation bundles and deferred locale detection for improved INP and hydration. LCP optimization achieved by delaying CookieYes banner to prevent consent text from blocking Largest Contentful Paint metric.
 
 ### Backend Architecture
 - **Server Framework:** Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation).
