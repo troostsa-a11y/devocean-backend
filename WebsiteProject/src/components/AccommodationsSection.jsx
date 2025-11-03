@@ -1,4 +1,3 @@
-import { m } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import LazyImage from './LazyImage';
 
@@ -34,12 +33,8 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
           const detailPageUrl = basePath ? `${basePath}?lang=${lang}` : null;
           
           return (
-            <m.div
+            <div
               key={u.key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
               className="rounded-2xl overflow-hidden border shadow-sm hover:shadow-md bg-white"
             >
               {detailPageUrl ? (
@@ -64,7 +59,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                   </ul>
                 </details>
               </div>
-            </m.div>
+            </div>
           );
         })}
       </div>

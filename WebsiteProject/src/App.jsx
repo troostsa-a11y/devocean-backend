@@ -1,5 +1,4 @@
 import { useEffect, useMemo, lazy, Suspense } from 'react';
-import { LazyMotion, domAnimation } from 'framer-motion';
 import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
@@ -101,7 +100,6 @@ export default function App() {
   const experiences = useMemo(() => localizeExperiences(lang), [lang]);
 
   return (
-    <LazyMotion features={domAnimation} strict>
       <div className="min-h-screen flex flex-col">
         {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical */}
         <Header
@@ -145,6 +143,5 @@ export default function App() {
           </>
         )}
       </div>
-    </LazyMotion>
   );
 }
