@@ -112,9 +112,6 @@ export default function App() {
           bookUrl={bookUrl}
         />
 
-        {/* Hero - render immediately for LCP optimization (uses criticalUI until full translations load) */}
-        <HeroSection images={HERO_IMAGES} ui={ui || criticalUI} bookUrl={bookUrl} lang={lang} currency={currency} />
-        
         {/* Page content - wait for full translations */}
         {loading || !ui ? (
           <div className="flex-1 flex items-center justify-center">
@@ -125,6 +122,7 @@ export default function App() {
           </div>
         ) : (
           <>
+            <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
             <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
             <ExperiencesSection experiences={experiences} ui={ui} />
             <TodoSection ui={ui} />

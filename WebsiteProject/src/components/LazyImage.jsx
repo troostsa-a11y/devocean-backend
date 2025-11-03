@@ -61,10 +61,10 @@ export default function LazyImage({
     ...props
   };
 
-  // LCP images (eager) render immediately with no transitions for fastest paint
+  // LCP images (eager) start visible but keep transition for fade-out
   // Lazy images fade in on load
   const opacityClass = isEager 
-    ? className // Eager: no transition, instant render for LCP
+    ? `transition-opacity duration-300 ${className}` // Eager: starts visible, fades out smoothly
     : `transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`; // Lazy: fades in
 
   // Use picture element for responsive/WebP images
