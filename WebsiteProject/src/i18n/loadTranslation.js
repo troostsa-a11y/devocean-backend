@@ -1,7 +1,8 @@
 // Dynamic translation loader - loads only the needed language
-// This reduces initial bundle size from 152KB to ~7KB per language
+// This reduces initial bundle size from 152KB to ~15KB max per language
 
 const translationCache = new Map();
+const l10nCache = new Map();
 
 export async function loadTranslation(lang) {
   // Check cache first
@@ -12,12 +13,14 @@ export async function loadTranslation(lang) {
   try {
     // Dynamic import based on language code
     const module = await import(`./langs/${lang}.js`);
-    const translation = module.default;
+    const ui = module.UI || module.default;
+    const l10n = module.L10N || {};
     
-    // Cache the loaded translation
-    translationCache.set(lang, translation);
+    // Cache both UI and L10N
+    translationCache.set(lang, ui);
+    l10nCache.set(lang, l10n);
     
-    return translation;
+    return ui;
   } catch (error) {
     console.warn(`Failed to load translation for "${lang}", falling back to en-GB:`, error);
     
@@ -28,6 +31,11 @@ export async function loadTranslation(lang) {
     
     throw error;
   }
+}
+
+// Get L10N synchronously (must be loaded first via loadTranslation)
+export function getL10N(lang) {
+  return l10nCache.get(lang) || {};
 }
 
 // Preload a translation (for prefetching)

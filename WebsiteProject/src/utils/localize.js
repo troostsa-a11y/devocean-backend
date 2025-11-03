@@ -1,4 +1,4 @@
-import { L10N } from '../i18n/translations';
+import { getL10N } from '../i18n/loadTranslation';
 import { ACCOMMODATION_TRANSLATIONS } from '../i18n/accommodationTranslations';
 import { UNIT_BASE, EXP_BASE } from '../data/content';
 
@@ -44,7 +44,8 @@ export function localizeExperiences(lang) {
     (lang === "es-ES" || lang === "es") ? "es-ES" :
     lang;  // For sv, pl, ru, sw, zu that don't have region codes
   
-  const tr = L10N[langKey]?.experiences || {};
+  const L10N = getL10N(langKey) || getL10N('en-GB');
+  const tr = L10N?.experiences || {};
   return EXP_BASE.map((e) => ({
     ...e,
     title: tr[e.key]?.title || e.title,

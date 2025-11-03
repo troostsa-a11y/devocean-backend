@@ -1,5 +1,5 @@
-// UI translations for it-IT
-export default {
+// Translations for it-IT
+export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Asia", americas: "Americhe", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Alloggi", experiences: "Esperienze", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
@@ -109,4 +109,64 @@ menu: "Menu",
       manage: "Impostazioni cookie",
       ccpa: "Non Vendere Le Mie Info",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Tenda Safari",
+        short:
+          "Tenda di tela 12 m² su piattaforma 3×6 m. Twin/King, ventilatore, prese, zanzariera, terrazza privata. Bagni condivisi.",
+        details: [
+          "Due letti singoli (o King) con comodini e lampade",
+          "Zanzariera • ventilatore potente • prese",
+          "Terrazza privata con sedie di foglie di palma",
+          "Bagni condivisi (docce calde/fredde, servizi igienici)",
+        ],
+      },
+      comfort: {
+        title: "Tenda Comfort",
+        short:
+          "Tenda 12 m² migliorata con maggiore privacy (pareti laterali/posteriori), terrazza privata e bagno privato sotto tetto di paglia.",
+        details: [
+          "Configurazione Twin/King con illuminazione pratica",
+          "Zanzariera • ventilatore potente • prese",
+          "Terrazza in legno con sedie",
+          "Bagno privato (doccia, WC, lavabo) sotto tetto di paglia",
+        ],
+      },
+      cottage: {
+        title: "Cottage Giardino",
+        short:
+          "Cottage arioso con letto queen, A/C (inverter), scrivania e tavolo da pranzo, terrazza privata e bagno in rondavel.",
+        details: [
+          "Letto queen • scrivania e tavolo da pranzo",
+          "A/C inverter (freddo/caldo) • luce dimmerabile",
+          "Bagno in rondavel (doccia, lavabo, WC)",
+          "Terrazza in legno con sedie da campeggio",
+        ],
+      },
+      chalet: {
+        title: "Chalet di Paglia",
+        short:
+          "Piccolo chalet romantico appartato sotto le palme. A/C, bagno privato, terrazza, Twin/King.",
+        details: [
+          "Ambiente tranquillo sotto le palme • aria condizionata",
+          "Bagno privato (doccia, lavabo, WC)",
+          "Letti Twin/King con comodini",
+          "Terrazza privata con sedie di foglie di palma",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Immersioni", desc: "Scogliere offshore con ricca vita marina." },
+      dolphins: { title: "Nuoto con i delfini", desc: "Incontri etici con delfini residenti." },
+      lighthouse: { title: "Salita al faro", desc: "Salite la collina fino al vecchio faro per viste panoramiche." },
+      seafari: { title: "Safari Oceanici", desc: "Safari oceanici per balene (mag–ott) e altro." },
+      safari: { title: "Safari Terrestri", desc: "Avventure nel bush a breve distanza." },
+      fishing: { title: "Pesca da Spiaggia e d'Altura", desc: "Dai lanci costieri ai charter offshore." },
+      surfing: { title: "Tavole & Lezioni di Surf", desc: "Prendi un'onda o impara le basi." },
+    },
+};
+
+export default UI;

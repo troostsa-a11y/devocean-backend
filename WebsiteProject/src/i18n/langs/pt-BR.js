@@ -1,5 +1,5 @@
-// UI translations for pt-BR
-export default {
+// Translations for pt-BR
+export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
@@ -69,4 +69,6 @@ menu: "Menu",
       manage: "Configurações de Cookies",
       ccpa: "Não Vender Minhas Informações",
     }
-}
+};
+
+export default UI;

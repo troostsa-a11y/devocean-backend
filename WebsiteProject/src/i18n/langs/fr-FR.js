@@ -1,5 +1,5 @@
-// UI translations for fr-FR
-export default {
+// Translations for fr-FR
+export const UI = {
 menu: "Menu",
     regions: { europe: "Europe", asia: "Asie", americas: "Amériques", africa: "Afrique", oceania: "Océanie" },
     nav: {
@@ -173,4 +173,64 @@ menu: "Menu",
       manage: "Paramètres des cookies",
       ccpa: "Ne Vendez Pas Mes Infos",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Tente Safari",
+        short:
+          "Tente toile 12 m² sur plateforme 3×6 m. Twin/King, ventilateur, prises, moustiquaire, terrasse privée. Sanitaires partagés.",
+        details: [
+          "Deux lits simples (ou King) avec chevets et lampes",
+          "Moustiquaire • ventilateur puissant • prises électriques",
+          "Terrasse privée avec chaises en feuilles de palmier",
+          "Sanitaires partagés (douches chaudes/froides, toilettes)",
+        ],
+      },
+      comfort: {
+        title: "Tente Confort",
+        short:
+          "Tente 12 m² améliorée avec plus d'intimité (parois latérales/arrière), terrasse privée et salle de bain privative sous toit de chaume.",
+        details: [
+          "Configuration Twin/King avec éclairage pratique",
+          "Moustiquaire • ventilateur puissant • prises",
+          "Terrasse en bois avec chaises",
+          "Salle de bain privée (douche, WC, lavabo) sous toit de chaume",
+        ],
+      },
+      cottage: {
+        title: "Cottage Jardin",
+        short:
+          "Cottage aéré avec lit queen, A/C (inverter), bureau & table à manger, terrasse privée et salle de bain dans rondavel.",
+        details: [
+          "Lit queen • bureau et table à manger",
+          "A/C inverter (chaud/froid) • éclairage tamisable",
+          "Salle de bain dans rondavel (douche, lavabo, WC)",
+          "Terrasse en bois avec chaises de camping",
+        ],
+      },
+      chalet: {
+        title: "Chalet de Chaume",
+        short:
+          "Petit chalet romantique isolé sous les palmiers. A/C, salle de bain privée, terrasse, Twin/King.",
+        details: [
+          "Cadre tranquille sous les palmiers • climatisation",
+          "Salle de bain privée (douche, lavabo, WC)",
+          "Lits Twin/King avec chevets",
+          "Terrasse privée avec chaises en feuilles de palmier",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Plongée", desc: "Récifs au large avec vie marine riche." },
+      dolphins: { title: "Nage avec les dauphins", desc: "Rencontres éthiques avec dauphins résidents." },
+      lighthouse: { title: "Montée au phare", desc: "Grimpez la colline jusqu'au vieux phare pour des vues panoramiques." },
+      seafari: { title: "Safaris Océaniques", desc: "Safaris en mer pour les baleines (mai–oct) et plus." },
+      safari: { title: "Safaris Terrestres", desc: "Aventures en brousse à courte distance." },
+      fishing: { title: "Pêche de Plage & Haute Mer", desc: "Des lancers côtiers aux charters offshore." },
+      surfing: { title: "Planches & Cours de Surf", desc: "Attrapez une vague ou apprenez les bases." },
+    },
+};
+
+export default UI;

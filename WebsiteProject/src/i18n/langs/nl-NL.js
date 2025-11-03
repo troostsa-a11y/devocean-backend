@@ -1,5 +1,5 @@
-// UI translations for nl-NL
-export default {
+// Translations for nl-NL
+export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
@@ -109,4 +109,64 @@ menu: "Menu",
       manage: "Cookie-instellingen",
       ccpa: "Verkoop Mijn Info Niet",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Safaritent",
+        short:
+          "12 m² canvistent op een 3×6 m platform. Twin/King, ventilator, stopcontacten, muskietengaas, privéterras. Gedeeld sanitair.",
+        details: [
+          "Twee eenpersoonsbedden (of King) met nachtkastjes en lampen",
+          "Muskietengaas • krachtige ventilator • stopcontacten",
+          "Privéterras met stoelen van palmblad",
+          "Gedeelde douches (warm/koud) en toiletten",
+        ],
+      },
+      comfort: {
+        title: "Comforttent",
+        short:
+          "Verbeterde 12 m² tent met extra privacy (zij/achterwanden), privéterras en eigen badkamer onder rieten dak.",
+        details: [
+          "Twin/King opstelling met handige verlichting",
+          "Muskietengaas • krachtige ventilator • stopcontacten",
+          "Houten terras met stoelen",
+          "Eigen badkamer (douche, toilet, wastafel) onder rieten dak",
+        ],
+      },
+      cottage: {
+        title: "Tuincottage",
+        short:
+          "Luchtige cottage met queensbed, A/C (inverter), bureau & eettafel, privéterras en badkamer in rondavel.",
+        details: [
+          "Queensbed • bureau en eettafel",
+          "Inverter A/C (koelen & verwarmen) • dimbare hoofdverlichting",
+          "Badkamer in rondavel (douche, wastafel, toilet)",
+          "Houten terras met kampeerstoelen",
+        ],
+      },
+      chalet: {
+        title: "Rieten Chalet",
+        short:
+          "Afgelegen, romantisch tiny chalet onder palmen. A/C, privébadkamer, terras, Twin/King.",
+        details: [
+          "Rustige omgeving onder palmen • airconditioning",
+          "Privébadkamer (douche, wastafel, toilet)",
+          "Twin/King bedden met nachtkastjes",
+          "Privéterras met palmbladstoelen",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Duiken", desc: "Offshore riffen met rijk zeeleven." },
+      dolphins: { title: "Dolfijnzwemmen", desc: "Ethische ontmoetingen met lokale dolfijnen." },
+      lighthouse: { title: "Vuurtorenwandeling", desc: "Klim de heuvel naar de oude vuurtoren voor wijds uitzicht." },
+      seafari: { title: "Zeesafari's", desc: "Oceaansafari's voor walvissen (mei–okt) en meer." },
+      safari: { title: "Wildsafari's", desc: "Bosavonturen op korte rijafstand." },
+      fishing: { title: "Strand & Zeevissen", desc: "Van kustworpen tot offshore charters." },
+      surfing: { title: "Surfplanken & Lessen", desc: "Pak een golf of leer de basis." },
+    },
+};
+
+export default UI;

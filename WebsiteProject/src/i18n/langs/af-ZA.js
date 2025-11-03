@@ -1,5 +1,5 @@
-// UI translations for af-ZA
-export default {
+// Translations for af-ZA
+export const UI = {
 menu: "Kieslys",
     regions: { europe: "Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
     nav: { home: "Tuis", stay: "Verblyf", experiences: "Ervarings", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
@@ -69,4 +69,60 @@ menu: "Kieslys",
       manage: "Koekie-instellings",
       ccpa: "Moenie My Info Verkoop Nie",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Safari Tent",
+        short: "12 m² seildoektent op 'n 3×6 m platform. Twin/King, waaier, kragpunte, muskietnet, privaat terras. Gedeelde badkamers.",
+        details: [
+          "Twee enkelbeddens (of King) met bedkassies en lampe",
+          "Muskietnet • kragtige waaier • kragpunte",
+          "Privaat terras met palmblaarstoeie",
+          "Gedeelde fasiliteite: warm/koue storte en toilette",
+        ],
+      },
+      comfort: {
+        title: "Comfort Tent",
+        short: "12 m² tent met meer privaatheid (sy/agterkant wande), privaat terras en privaat badkamer onder riettdak.",
+        details: [
+          "Twin/King opstelling met praktiese beligting",
+          "Muskietnet • kragtige waaier • kragpunte",
+          "Houterras met stoeie",
+          "Privaat badkamer (stort, toilet, wasbak) onder riettdak",
+        ],
+      },
+      cottage: {
+        title: "Tuin Kothuis",
+        short: "Lug kothuis met queen bed, A/C (inverter), lessenaar en tafel, privaat terras en badkamer in rondavel.",
+        details: [
+          "Queen bed • lessenaar en eet-tafel",
+          "Inverter A/C (koel/verhit) • dimbare lig",
+          "Rondavel badkamer (stort, wasbak, toilet)",
+          "Houterras met kampeerstoeie",
+        ],
+      },
+      chalet: {
+        title: "Rietdak Chalet",
+        short: "Stil, romantiese klein chalet tussen palmbome. A/C, privaat badkamer, terras, Twin/King.",
+        details: [
+          "Rustige omgewing onder palmbome • lugversorging",
+          "Privaat badkamer (stort, wasbak, toilet)",
+          "Twin/King beddens met bedkassies",
+          "Privaat terras met palmblaarstoeie",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Duik", desc: "Offshore riwwe met ryk see-lewe." },
+      dolphins: { title: "Swem met Dolfyne", desc: "Etiese ontmoetings met inwonende dolfyne." },
+      lighthouse: { title: "Vuurtoringstap", desc: "Klim heuwel op na ou vuurtoring vir wydste uitsigte." },
+      seafari: { title: "Oseaan Safari's", desc: "See safari's vir walvisse (Mei–Okt) en meer." },
+      safari: { title: "Bosveld Safari's", desc: "Bos-avonture naby." },
+      fishing: { title: "Strand en Diepsee Visvang", desc: "Van strandgooi tot diepsee charters." },
+      surfing: { title: "Branderplanke & Lesse", desc: "Vang die golwe of leer die basiese beginsels." },
+    },
+};
+
+export default UI;

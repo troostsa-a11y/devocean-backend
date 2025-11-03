@@ -1,5 +1,5 @@
-// UI translations for pt-PT
-export default {
+// Translations for pt-PT
+export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceânia" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
@@ -69,4 +69,64 @@ menu: "Menu",
       manage: "Configurações de Cookies",
       ccpa: "Não Vender Minhas Informações",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Tenda Safari",
+        short:
+          "Tenda de lona 12 m² em plataforma 3×6 m. Twin/King, ventoinha, tomadas, rede mosquiteira, terraço privado. Casas de banho partilhadas.",
+        details: [
+          "Duas camas individuais (ou King) com mesas de cabeceira e candeeiros",
+          "Rede mosquiteira • ventoinha potente • tomadas",
+          "Terraço privado com cadeiras de folhas de palmeira",
+          "Instalações partilhadas: duches quente/frio e sanitários",
+        ],
+      },
+      comfort: {
+        title: "Tenda Conforto",
+        short:
+          "Tenda de 12 m² com mais privacidade (paredes laterais/traseiras), terraço privado e casa de banho privativa sob teto de colmo.",
+        details: [
+          "Configuração Twin/King com iluminação prática",
+          "Rede mosquiteira • ventoinha potente • tomadas",
+          "Terraço de madeira com cadeiras",
+          "Casa de banho privativa (duche, sanita, lavatório) sob teto de colmo",
+        ],
+      },
+      cottage: {
+        title: "Chalé Jardim",
+        short:
+          "Chalé arejado com cama queen, A/C (inverter), secretária e mesa, terraço privado e casa de banho em rondavel.",
+        details: [
+          "Cama queen • secretária e mesa de jantar",
+          "A/C inverter (frio/quente) • luz regulável",
+          "Casa de banho em rondavel (duche, lavatório, sanita)",
+          "Terraço de madeira com cadeiras",
+        ],
+      },
+      chalet: {
+        title: "Chalé de Colmo",
+        short:
+          "Pequeno chalé romântico entre palmeiras. A/C, casa de banho privada, terraço, Twin/King.",
+        details: [
+          "Ambiente tranquilo sob palmeiras • ar-condicionado",
+          "Casa de banho privativa (duche, lavatório, sanita)",
+          "Camas Twin/King com mesas de cabeceira",
+          "Terraço privado com cadeiras de palha",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Mergulho", desc: "Recifes ao largo com rica vida marinha." },
+      dolphins: { title: "Nado com Golfinhos", desc: "Encontros éticos com golfinhos residentes." },
+      lighthouse: { title: "Caminhada ao Farol", desc: "Suba até o farol antigo para vistas amplas." },
+      seafari: { title: "Safáris Oceânicos", desc: "Safáris no mar para baleias (mai–out) e mais." },
+      safari: { title: "Safáris Terrestres", desc: "Aventuras no mato a curta distância." },
+      fishing: { title: "Pesca de Praia e Alto-mar", desc: "Do lançamento na praia aos charters offshore." },
+      surfing: { title: "Pranchas & Aulas de Surf", desc: "Aproveite as ondas ou aprenda o básico." },
+    },
+};
+
+export default UI;

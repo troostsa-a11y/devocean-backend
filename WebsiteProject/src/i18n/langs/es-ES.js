@@ -1,5 +1,5 @@
-// UI translations for es-ES
-export default {
+// Translations for es-ES
+export const UI = {
 menu: "Menú",
     regions: { europe: "Europa", asia: "Asia", americas: "Américas", africa: "África", oceania: "Oceanía" },
     nav: { home: "Inicio", stay: "Alojamiento", experiences: "Experiencias", todo: "Qué hacer", gallery: "Galería", location: "Ubicación", contact: "Contacto" },
@@ -110,4 +110,64 @@ menu: "Menú",
       manage: "Configuración de cookies",
       ccpa: "No Vender Mi Información",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Tienda Safari",
+        short:
+          "Tienda de lona 12 m² en plataforma 3×6 m. Twin/King, ventilador, enchufes, mosquitera, terraza privada. Baños compartidos.",
+        details: [
+          "Dos camas individuales (o King) con mesitas de noche y lámparas",
+          "Mosquitera • ventilador potente • enchufes",
+          "Terraza privada con sillas de hojas de palma",
+          "Baños compartidos (duchas calientes/frías, aseos)",
+        ],
+      },
+      comfort: {
+        title: "Tienda Confort",
+        short:
+          "Tienda mejorada de 12 m² con más privacidad (paredes laterales/traseras), terraza privada y baño privado bajo techo de paja.",
+        details: [
+          "Configuración Twin/King con iluminación práctica",
+          "Mosquitera • ventilador potente • enchufes",
+          "Terraza de madera con sillas",
+          "Baño privado (ducha, WC, lavabo) bajo techo de paja",
+        ],
+      },
+      cottage: {
+        title: "Cottage Jardín",
+        short:
+          "Cottage aireado con cama queen, A/C (inverter), escritorio y mesa, terraza privada y baño en rondavel.",
+        details: [
+          "Cama queen • escritorio y mesa de comedor",
+          "A/C inverter (frío/calor) • luz regulable",
+          "Baño en rondavel (ducha, lavabo, WC)",
+          "Terraza de madera con sillas de camping",
+        ],
+      },
+      chalet: {
+        title: "Chalet de Paja",
+        short:
+          "Pequeño chalet romántico aislado bajo palmeras. A/C, baño privado, terraza, Twin/King.",
+        details: [
+          "Entorno tranquilo bajo palmeras • aire acondicionado",
+          "Baño privado (ducha, lavabo, WC)",
+          "Camas Twin/King con mesitas de noche",
+          "Terraza privada con sillas de hojas de palma",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Buceo", desc: "Arrecifes offshore con rica vida marina." },
+      dolphins: { title: "Nado con delfines", desc: "Encuentros éticos con delfines residentes." },
+      lighthouse: { title: "Subida al faro", desc: "Suba la colina hasta el viejo faro para vistas panorámicas." },
+      seafari: { title: "Safaris Oceánicos", desc: "Safaris oceánicos para ballenas (may–oct) y más." },
+      safari: { title: "Safaris Terrestres", desc: "Aventuras en el monte a corta distancia." },
+      fishing: { title: "Pesca de Playa y Altura", desc: "Desde lanzamientos costeros hasta charters offshore." },
+      surfing: { title: "Tablas & Clases de Surf", desc: "Atrapa una ola o aprende lo básico." },
+    },
+};
+
+export default UI;

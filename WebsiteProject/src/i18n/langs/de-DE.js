@@ -1,5 +1,5 @@
-// UI translations for de-DE
-export default {
+// Translations for de-DE
+export const UI = {
 menu: "Menü",
     regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
@@ -109,4 +109,64 @@ menu: "Menü",
       manage: "Cookie-Einstellungen",
       ccpa: "Verkaufen Sie Meine Daten Nicht",
     }
-}
+};
+
+export const L10N = {
+units: {
+      safari: {
+        title: "Safarizelt",
+        short:
+          "12 m² Leinwandzelt auf 3×6 m Plattform. Twin/King, Ventilator, Steckdosen, Moskitonetz, private Terrasse. Gemeinschaftsbäder.",
+        details: [
+          "Zwei Einzelbetten (oder King) mit Nachttischen und Lampen",
+          "Moskitonetz • starker Ventilator • Steckdosen",
+          "Private Terrasse mit Palmblatt-Stühlen",
+          "Gemeinschaftsbäder (warme/kalte Duschen, Toiletten)",
+        ],
+      },
+      comfort: {
+        title: "Komfortzelt",
+        short:
+          "Verbessertes 12 m² Zelt mit mehr Privatsphäre (Seiten-/Rückwände), privater Terrasse und eigenem Bad unter Reetdach.",
+        details: [
+          "Twin/King-Aufstellung mit praktischer Beleuchtung",
+          "Moskitonetz • starker Ventilator • Steckdosen",
+          "Holzterrasse mit Stühlen",
+          "Eigenes Bad (Dusche, WC, Waschbecken) unter Reetdach",
+        ],
+      },
+      cottage: {
+        title: "Garten-Cottage",
+        short:
+          "Luftiges Cottage mit Queensbett, A/C (Inverter), Schreibtisch & Esstisch, privater Terrasse und Bad im Rondavel.",
+        details: [
+          "Queensbett • Schreibtisch und Esstisch",
+          "Inverter-A/C (kühl/warm) • dimmbare Hauptbeleuchtung",
+          "Bad im Rondavel (Dusche, Waschbecken, WC)",
+          "Holzterrasse mit Campingstühlen",
+        ],
+      },
+      chalet: {
+        title: "Reetdach-Chalet",
+        short:
+          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. A/C, eigenes Bad, Terrasse, Twin/King.",
+        details: [
+          "Ruhige Umgebung unter Palmen • Klimaanlage",
+          "Eigenes Bad (Dusche, Waschbecken, WC)",
+          "Twin/King-Betten mit Nachttischen",
+          "Private Terrasse mit Palmblatt-Stühlen",
+        ],
+      },
+    },
+    experiences: {
+      diving: { title: "Tauchen", desc: "Offshore-Riffe mit reichem Meeresleben." },
+      dolphins: { title: "Delfinschwimmen", desc: "Ethische Begegnungen mit ansässigen Delfinen." },
+      lighthouse: { title: "Leuchtturm-Wanderung", desc: "Steigen Sie den Hügel zum alten Leuchtturm für Panoramablick." },
+      seafari: { title: "Ozean-Safaris", desc: "Ozean-Safaris für Wale (Mai–Okt) und mehr." },
+      safari: { title: "Land-Safaris", desc: "Buschabenteuer in kurzer Entfernung." },
+      fishing: { title: "Strand- & Hochseeangeln", desc: "Von Küstenwürfen bis Offshore-Charters." },
+      surfing: { title: "Surfbretter & Unterricht", desc: "Erwischen Sie eine Welle oder lernen Sie die Grundlagen." },
+    },
+};
+
+export default UI;

@@ -17,13 +17,21 @@ if (!fs.existsSync(outputDir)) {
 const content = fs.readFileSync(translationsPath, 'utf8');
 
 // Extract the UI object content
-const uiMatch = content.match(/export const UI = \{([\s\S]*)\};/);
+const uiMatch = content.match(/export const UI = \{([\s\S]*?)\n\};/);
 if (!uiMatch) {
   console.error('❌ Could not find UI object in translations.js');
   process.exit(1);
 }
 
 const uiContent = uiMatch[1];
+
+// Extract the L10N object content
+const l10nMatch = content.match(/export const L10N = \{([\s\S]*?)\n\};/);
+if (!l10nMatch) {
+  console.warn('⚠️  Could not find L10N object in translations.js');
+}
+
+const l10nContent = l10nMatch ? l10nMatch[1] : null;
 
 // Split into individual language blocks
 // We need to carefully parse nested braces
@@ -85,24 +93,56 @@ function extractLanguages(content) {
   return languages;
 }
 
-console.log('📦 Extracting language blocks...');
-const languages = extractLanguages(uiContent);
+console.log('📦 Extracting UI language blocks...');
+const uiLanguages = extractLanguages(uiContent);
+
+let l10nLanguages = {};
+if (l10nContent) {
+  console.log('📦 Extracting L10N language blocks...');
+  l10nLanguages = extractLanguages(l10nContent);
+}
+
+// Merge UI and L10N for each language
+const languages = {};
+for (const lang of Object.keys(uiLanguages)) {
+  languages[lang] = {
+    ui: uiLanguages[lang],
+    l10n: l10nLanguages[lang] || null
+  };
+}
 
 const langKeys = Object.keys(languages);
 console.log(`✅ Found ${langKeys.length} unique languages:`, langKeys);
 
 // Write individual language files
 let totalSaved = 0;
-for (const [lang, content] of Object.entries(languages)) {
+for (const [lang, data] of Object.entries(languages)) {
   const fileName = `${lang}.js`;
   const filePath = path.join(outputDir, fileName);
   
-  // Create exportable module (wrap content in object)
-  const moduleContent = `// UI translations for ${lang}
-export default {
-${content.trim()}
-}
+  // Create exportable module with both UI and L10N
+  let moduleContent;
+  if (data.l10n) {
+    moduleContent = `// Translations for ${lang}
+export const UI = {
+${data.ui.trim()}
+};
+
+export const L10N = {
+${data.l10n.trim()}
+};
+
+export default UI;
 `;
+  } else {
+    moduleContent = `// Translations for ${lang}
+export const UI = {
+${data.ui.trim()}
+};
+
+export default UI;
+`;
+  }
   
   fs.writeFileSync(filePath, moduleContent, 'utf8');
   const size = Math.round(fs.statSync(filePath).size / 1024);

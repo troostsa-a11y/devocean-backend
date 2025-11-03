@@ -1,5 +1,5 @@
-// UI translations for en-GB
-export default {
+// Translations for en-GB
+export const UI = {
 menu: "Menu",
     regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
@@ -69,4 +69,6 @@ menu: "Menu",
       manage: "Cookie Settings",
       ccpa: "Do Not Sell My Info",
     }
-}
+};
+
+export default UI;
