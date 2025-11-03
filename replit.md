@@ -183,3 +183,62 @@ Both environments enforce identical security measures:
 - Failed reCAPTCHA attempts logged with details
 - Resend API errors captured and logged
 - Auto-reply failures non-blocking (main email still succeeds)
+
+---
+
+## Recent Performance Optimizations (November 3, 2025)
+
+### Core Web Vitals Optimization - Translation Bundle Splitting
+
+**Goal:** Eliminate 49.7KB translations bundle from critical rendering path to improve INP (Interaction to Next Paint) metric.
+
+**Problem:** The monolithic `translations.js` file (152KB uncompressed, 49.7KB gzipped) was being loaded synchronously on every page load, blocking interactivity and contributing to 980ms INP for real users.
+
+**Solution Implemented:**
+
+1. **Split translation bundle into per-language files:**
+   - Created `split-translations.js` script to extract both UI and L10N objects from `translations.js`
+   - Generated 17 individual language files (en-GB, en-US, pt-PT, pt-BR, nl-NL, fr-FR, it-IT, de-DE, es-ES, ja-JP, zh-CN, af-ZA, sv, pl, ru, zu, sw)
+   - File sizes: 3.7KB (en-GB) to 13.4KB (ja-JP) per language
+
+2. **Implemented dynamic loader with dual-cache system:**
+   - Created `loadTranslation.js` with separate caches for UI and L10N
+   - `loadTranslation(lang)` dynamically imports only the needed language chunk
+   - `getL10N(lang)` provides synchronous access to cached L10N data
+   - Fallback to en-GB for missing languages
+
+3. **Updated consumer code:**
+   - Deleted unused `lazy-l10n.js` that imported monolithic bundle
+   - Updated `localize.js` to use `getL10N()` instead of importing L10N
+   - `localizeExperiences()` now uses cached L10N loaded by `useLocale` hook
+
+4. **Architecture guarantee:**
+   - `useLocale` hook loads translations via `loadTranslation()` before rendering
+   - Loading state shows spinner until language data is ready
+   - `localizeExperiences()` always has cached L10N available when called
+
+**Results:**
+- ✅ 49.7KB translations bundle ELIMINATED from build
+- ✅ Language chunks lazy-loaded on-demand (only loads visitor's language)
+- ✅ Main bundle increased by only 1.72KB for loader logic
+- ✅ Expected INP improvement: Removed 49.7KB from parse/compile time
+
+**Files Modified:**
+- `WebsiteProject/scripts/split-translations.js` (enhanced to extract UI + L10N)
+- `WebsiteProject/src/i18n/loadTranslation.js` (dual-cache system)
+- `WebsiteProject/src/utils/localize.js` (use getL10N from cache)
+- `WebsiteProject/src/i18n/langs/*.js` (17 language files regenerated)
+
+**Build Verification:**
+```bash
+# Before: translations-yBBGuB28.js (49.71 kB gzipped)
+# After: Individual chunks only
+dist/assets/js/en-GB-*.js    3.72 kB │ gzip: 2.01 kB
+dist/assets/js/fr-FR-*.js    7.62 kB │ gzip: 3.20 kB
+dist/assets/js/ja-JP-*.js   13.40 kB │ gzip: 3.64 kB
+```
+
+**Next Steps:**
+- Monitor real user INP metrics post-deployment
+- Target: <200ms INP (currently 980ms affecting 41 pageviews)
+- Consider additional optimizations if needed (code splitting, deferred hydration)
