@@ -1,0 +1,37 @@
+~/workspace/WebsiteProject$ npm run build
+
+> devoceanlodge@0.0.1 build
+> vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp booking.html dist/ && cp thankyou.html dist/ && cp -r public dist/ && cp -r translations dist/ && cp -r photos dist/
+
+vite v7.1.5 building for production...
+✓ 1970 modules transformed.
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/i18n/loadTranslation.js is dynamically imported by /home/runner/workspace/WebsiteProject/src/i18n/useLocale.js but also statically imported by /home/runner/workspace/WebsiteProject/src/utils/localize.js, dynamic import will not move module into another chunk.
+
+dist/index.html                              40.52 kB │ gzip: 10.71 kB
+dist/assets/js/GallerySection-DtL4FENA.js     0.76 kB │ gzip:  0.48 kB
+dist/assets/js/LocationSection-nZH_x-8X.js    1.67 kB │ gzip:  0.86 kB
+dist/assets/js/en-GB-CcqEdSkK.js              3.72 kB │ gzip:  2.01 kB
+dist/assets/js/en-US-CcqEdSkK.js              3.72 kB │ gzip:  2.01 kB
+dist/assets/js/pl-CcqEdSkK.js                 3.72 kB │ gzip:  2.01 kB
+dist/assets/js/ru-CcqEdSkK.js                 3.72 kB │ gzip:  2.01 kB
+dist/assets/js/sv-CcqEdSkK.js                 3.72 kB │ gzip:  2.01 kB
+dist/assets/js/sw-CcqEdSkK.js                 3.72 kB │ gzip:  2.01 kB
+dist/assets/js/zu-CcqEdSkK.js                 3.72 kB │ gzip:  2.01 kB
+dist/assets/js/vendor-C-dSlPlP.js             4.22 kB │ gzip:  1.84 kB
+dist/assets/js/Footer-CGBLSfnc.js             4.27 kB │ gzip:  1.43 kB
+dist/assets/js/pt-BR-BzQHmR9z.js              4.27 kB │ gzip:  2.26 kB
+dist/assets/js/af-ZA-CSq-VBMh.js              5.82 kB │ gzip:  2.83 kB
+dist/assets/js/pt-PT-B__B41uU.js              6.43 kB │ gzip:  3.06 kB
+dist/assets/js/nl-NL-BND6JOvG.js              7.00 kB │ gzip:  3.14 kB
+dist/assets/js/de-DE-Co5g5CtJ.js              7.06 kB │ gzip:  3.17 kB
+dist/assets/js/it-IT-D6FsJdTl.js              7.09 kB │ gzip:  3.04 kB
+dist/assets/js/es-ES-DGZxUKb-.js              7.11 kB │ gzip:  3.09 kB
+dist/assets/js/fr-FR-DXuzoKMr.js              7.62 kB │ gzip:  3.20 kB
+dist/assets/js/zh-CN-x5O3oerz.js              9.02 kB │ gzip:  3.43 kB
+dist/assets/js/ContactSection-BvMpDbvd.js     9.21 kB │ gzip:  3.02 kB
+dist/assets/js/ja-JP-UwXHLRwA.js             13.40 kB │ gzip:  3.64 kB
+dist/assets/js/motion-BKKtETyA.js            15.69 kB │ gzip:  6.46 kB
+dist/assets/js/index-BzDt-lBF.js             85.45 kB │ gzip: 28.96 kB
+dist/assets/js/react-vendor-CLnFtUuN.js     151.58 kB │ gzip: 48.45 kB
+✓ built in 5.19s
