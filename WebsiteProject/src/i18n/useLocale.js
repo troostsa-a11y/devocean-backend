@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 
 const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
@@ -525,7 +525,20 @@ export function useLocale() {
     }
   };
 
-  const countryCode = getCountryCode();
+  // Memoize country code to avoid repeated function calls
+  const countryCode = useMemo(() => getCountryCode(), []);
+  
+  // Memoize booking locale calculation
+  const bookingLocale = useMemo(() => 
+    getBookingLocale(lang, currency, countryCode),
+    [lang, currency, countryCode]
+  );
+  
+  // Memoize date locale lookup
+  const dateLocale = useMemo(() => 
+    DATE_LANG_BY_LANG[lang] || "en-GB",
+    [lang]
+  );
   
   return {
     lang,
@@ -536,8 +549,8 @@ export function useLocale() {
     ui,
     criticalUI, // Provide critical nav separately for header
     loading,
-    bookingLocale: getBookingLocale(lang, currency, countryCode),
-    dateLocale: DATE_LANG_BY_LANG[lang] || "en-GB",
+    bookingLocale,
+    dateLocale,
     countryCode, // Expose country code for booking URL
   };
 }

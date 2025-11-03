@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
 import LazyImage from './LazyImage';
 
-export default function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
+function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionMenuOpen, setRegionMenuOpen] = useState(false);
 
@@ -274,3 +274,6 @@ export default function Header({ ui, lang, currency, region, onLangChange, onReg
     </>
   );
 }
+
+// Memoize Header to prevent unnecessary re-renders (improves INP)
+export default memo(Header);

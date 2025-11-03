@@ -66,8 +66,25 @@
   <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js" defer></script>
   <!-- End cookieyes banner -->
 
-  <!-- Trustindex Rich Snippet for Google Search -->
-  <script type="text/javascript" defer async src="https://cdn.trustindex.io/assets/js/richsnippet.js?caf207364508g84f"></script>
+  <!-- Trustindex Rich Snippet (Lazy Loaded) -->
+  <script>
+    (function() {
+      var trustindexLoaded = false;
+      function loadTrustindex() {
+        if (trustindexLoaded) return;
+        trustindexLoaded = true;
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://cdn.trustindex.io/assets/js/richsnippet.js?caf207364508g84f';
+        document.head.appendChild(s);
+      }
+      setTimeout(loadTrustindex, 4000);
+      ['scroll','mousemove','touchstart','click'].forEach(function(e){
+        window.addEventListener(e, loadTrustindex, {once: true, passive: true});
+      });
+    })();
+  </script>
   <!-- End Trustindex Rich Snippet -->
 
   <!-- Perf hints for tag loaders & external services -->
@@ -76,114 +93,8 @@
   <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://book.devoceanlodge.com">
 
-  <!-- User Engagement Detection for GTM optimization -->
-  <script>
-    (function() {
-      let engaged = false;
-      let consentGranted = false;
-      let marketingAllowedFired = false;
-      
-      function checkMarketingAllowed() {
-        if (engaged && consentGranted && !marketingAllowedFired) {
-          marketingAllowedFired = true;
-          
-          // Additional 3-second delay specifically for ads conversion tracking
-          // This reduces main-thread blocking from Google Ads tags
-          setTimeout(function() {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-              event: 'marketing_allowed',
-              timestamp: Date.now()
-            });
-          }, 3000);
-        }
-      }
-      
-      function fireEngagement() {
-        if (engaged) return;
-        engaged = true;
-        
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'user_engaged',
-          engagement_type: 'interaction'
-        });
-        
-        checkMarketingAllowed();
-      }
-      
-      function checkConsentInItem(item) {
-        if (!item || typeof item !== 'object') return false;
-        
-        // Normalize array-like objects (Arguments) to real arrays
-        let normalized = item;
-        if (!Array.isArray(item) && typeof item === 'object' && '0' in item) {
-          // This is an Arguments object or array-like, convert to array
-          try {
-            normalized = Array.from(item);
-          } catch (e) {
-            normalized = Array.prototype.slice.call(item);
-          }
-        }
-        
-        // Handle gtag consent pushes: ['consent', 'default'/'update', {ad_storage: 'granted', ...}]
-        if (Array.isArray(normalized) && normalized[0] === 'consent' && normalized[2]) {
-          if (normalized[2].ad_storage === 'granted') {
-            consentGranted = true;
-            return true;
-          }
-        }
-        // Handle object-based consent events: {event: 'consent', ad_storage: 'granted'}
-        else if (!Array.isArray(item) && item.event) {
-          if ((item.event === 'consent' || item.event === 'consent_update') && item.ad_storage === 'granted') {
-            consentGranted = true;
-            return true;
-          }
-        }
-        return false;
-      }
-      
-      // Initialize by scanning existing dataLayer entries
-      window.dataLayer = window.dataLayer || [];
-      for (let i = 0; i < window.dataLayer.length; i++) {
-        if (checkConsentInItem(window.dataLayer[i])) {
-          break; // Found granted consent, stop scanning
-        }
-      }
-      
-      // Intercept future dataLayer.push calls to detect consent updates
-      const originalPush = window.dataLayer.push;
-      window.dataLayer.push = function() {
-        const args = Array.from(arguments);
-        
-        // Check each pushed item for consent
-        args.forEach(function(item) {
-          if (checkConsentInItem(item)) {
-            checkMarketingAllowed();
-          }
-        });
-        
-        return originalPush.apply(window.dataLayer, args);
-      };
-      
-      // Detect engagement via scroll (past 25% of page)
-      let scrollFired = false;
-      window.addEventListener('scroll', function() {
-        if (scrollFired) return;
-        const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-        if (scrollPercent > 25) {
-          scrollFired = true;
-          fireEngagement();
-        }
-      }, { passive: true });
-      
-      // Detect engagement via any click
-      document.addEventListener('click', fireEngagement, { once: true, passive: true });
-      
-      // Detect engagement via time on page (20 seconds)
-      setTimeout(fireEngagement, 20000);
-    })();
-  </script>
+  <!-- User Engagement Detection (Lazy Loaded for Performance) -->
+  <script src="/engagement-tracker.js" defer></script>
 
   <!-- reCAPTCHA v3 (lazy loaded when contact form visible) -->
   <script>
@@ -475,8 +386,24 @@
     })();
   </script>
 
-  <!-- Trustindex Floating Certificate -->
-  <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
+  <!-- Trustindex Floating Certificate (Lazy Loaded) -->
+  <script>
+    (function() {
+      var certLoaded = false;
+      function loadCert() {
+        if (certLoaded) return;
+        certLoaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8';
+        document.head.appendChild(s);
+      }
+      setTimeout(loadCert, 5000);
+      ['scroll','touchstart','click'].forEach(function(e){
+        window.addEventListener(e, loadCert, {once: true, passive: true});
+      });
+    })();
+  </script>
 </head>
 
 <body>

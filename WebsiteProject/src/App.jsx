@@ -1,19 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo, lazy, Suspense } from 'react';
 import { LazyMotion, domAnimation } from 'framer-motion';
 import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
+import { throttle } from './utils/debounce';
 
-// Components
+// Critical above-the-fold components (loaded immediately)
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AccommodationsSection from './components/AccommodationsSection';
 import ExperiencesSection from './components/ExperiencesSection';
 import TodoSection from './components/TodoSection';
-import GallerySection from './components/GallerySection';
-import LocationSection from './components/LocationSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+
+// Below-the-fold components (lazy loaded for better INP)
+const GallerySection = lazy(() => import('./components/GallerySection'));
+const LocationSection = lazy(() => import('./components/LocationSection'));
+const ContactSection = lazy(() => import('./components/ContactSection'));
+const Footer = lazy(() => import('./components/Footer'));
 
 export default function App() {
   const { lang, currency, region, setLang, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
@@ -51,7 +54,7 @@ export default function App() {
     }
   }, []);
 
-  // Layout recalculation for sticky header
+  // Layout recalculation for sticky header (throttled for performance)
   useEffect(() => {
     const recalc = () => {
       const topbar = document.querySelector(".topbar");
@@ -68,8 +71,10 @@ export default function App() {
     setTimeout(recalc, 100);
     setTimeout(recalc, 500);
     
-    window.addEventListener("resize", recalc, { passive: true });
-    return () => window.removeEventListener("resize", recalc);
+    // Throttled resize handler to reduce main thread blocking
+    const throttledRecalc = throttle(recalc, 200);
+    window.addEventListener("resize", throttledRecalc, { passive: true });
+    return () => window.removeEventListener("resize", throttledRecalc);
   }, []);
 
   // Handle initial hash navigation (e.g., when navigating from story.html to /#stay)
@@ -86,9 +91,14 @@ export default function App() {
     }
   }, [loading, ui]);
 
-  const bookUrl = buildBookingUrl(bookingLocale, currency, countryCode, CC_TO_CURRENCY);
-  const units = localizeUnits(lang);
-  const experiences = localizeExperiences(lang);
+  // Memoize expensive computations to reduce re-renders
+  const bookUrl = useMemo(() => 
+    buildBookingUrl(bookingLocale, currency, countryCode, CC_TO_CURRENCY),
+    [bookingLocale, currency, countryCode]
+  );
+  
+  const units = useMemo(() => localizeUnits(lang), [lang]);
+  const experiences = useMemo(() => localizeExperiences(lang), [lang]);
 
   return (
     <LazyMotion features={domAnimation} strict>
@@ -115,19 +125,23 @@ export default function App() {
         ) : (
           <>
             <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
-        <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
-        <ExperiencesSection experiences={experiences} ui={ui} />
-        <TodoSection ui={ui} />
-        <GallerySection ui={ui} />
-        <LocationSection ui={ui} />
-        <ContactSection
-          ui={ui}
-          lang={lang}
-          currency={currency}
-          bookUrl={bookUrl}
-          dateLocale={dateLocale}
-        />
-        <Footer units={units} experiences={experiences} ui={ui} />
+            <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
+            <ExperiencesSection experiences={experiences} ui={ui} />
+            <TodoSection ui={ui} />
+            
+            {/* Lazy load below-the-fold sections for better INP performance */}
+            <Suspense fallback={<div className="min-h-[200px]" />}>
+              <GallerySection ui={ui} />
+              <LocationSection ui={ui} />
+              <ContactSection
+                ui={ui}
+                lang={lang}
+                currency={currency}
+                bookUrl={bookUrl}
+                dateLocale={dateLocale}
+              />
+              <Footer units={units} experiences={experiences} ui={ui} />
+            </Suspense>
           </>
         )}
       </div>
