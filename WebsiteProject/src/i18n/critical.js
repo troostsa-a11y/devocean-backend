@@ -1,5 +1,6 @@
-// Critical translations that load synchronously for immediate menu rendering
-// Only includes navigation text to minimize initial bundle size
+// Critical translations that load synchronously for immediate rendering
+// Includes navigation text and hero title/subtitle for all 17 languages
+// This eliminates FOUC (flash of untranslated content) during the LCP window
 export const CRITICAL_NAV = {
   "en-GB": {
     home: "Home",
