@@ -112,9 +112,12 @@ export default function App() {
           bookUrl={bookUrl}
         />
 
-        {/* Page content - wait for full translations */}
+        {/* Hero - always render immediately for LCP optimization */}
+        <HeroSection images={HERO_IMAGES} ui={ui || criticalUI} bookUrl={bookUrl} lang={lang} currency={currency} />
+        
+        {/* Below-fold content - wait for full translations */}
         {loading || !ui ? (
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 flex items-center justify-center min-h-[50vh]">
             <div className="text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
               <p className="mt-4 text-slate-600">Loading...</p>
@@ -122,7 +125,6 @@ export default function App() {
           </div>
         ) : (
           <>
-            <HeroSection images={HERO_IMAGES} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
             <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
             <ExperiencesSection experiences={experiences} ui={ui} />
             <TodoSection ui={ui} />
