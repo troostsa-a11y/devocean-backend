@@ -119,6 +119,7 @@ export class CancellationHandler {
       const emailData = {
         guestName: booking.guestName || 'Guest',
         firstName: booking.firstName || this.extractFirstName(booking.guestName) || 'Guest',
+        gender: booking.guestGender,
         groupRef: booking.groupRef,
         checkInDate: this.formatDate(booking.checkInDate),
         checkOutDate: this.formatDate(booking.checkOutDate),
@@ -175,6 +176,27 @@ export class CancellationHandler {
     // Take first word
     const parts = withoutTitle.split(/\s+/);
     return parts[0] || withoutTitle || 'Guest';
+  }
+
+  /**
+   * Extract gender from name based on title (Mr, Mrs, Miss, Ms)
+   * Returns 'male', 'female', or null if unknown
+   */
+  private extractGenderFromName(fullName: string): 'male' | 'female' | null {
+    const name = fullName.trim().toLowerCase();
+    
+    // Male titles
+    if (name.match(/^(mr|mister|sir|herr)\b/i)) {
+      return 'male';
+    }
+    
+    // Female titles
+    if (name.match(/^(mrs|ms|miss|madam|lady|frau|mme|mlle)\b/i)) {
+      return 'female';
+    }
+    
+    // Unknown or gender-neutral titles
+    return null;
   }
 
   /**
@@ -307,10 +329,14 @@ export class CancellationHandler {
         return;
       }
 
+      // Extract gender from name (infer from title)
+      const guestGender = this.extractGenderFromName(guestInfo.name || 'Guest');
+      
       // Prepare email data
       const emailData = {
         guestName: guestInfo.name || 'Guest',
         firstName: this.extractFirstName(guestInfo.name || 'Guest'),
+        gender: guestGender,
         groupRef: groupRef,
         checkInDate: dates.checkIn || 'Not specified',
         checkOutDate: dates.checkOut || 'Not specified',

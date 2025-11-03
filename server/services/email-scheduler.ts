@@ -75,6 +75,7 @@ export class EmailSchedulerService {
     const commonTemplateData = {
       guestName: booking.guestName,
       firstName: booking.firstName,
+      gender: booking.guestGender,
       groupRef: booking.groupRef,
       checkInDate: checkInCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
       checkOutDate: checkOutCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),

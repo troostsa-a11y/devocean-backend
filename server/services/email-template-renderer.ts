@@ -102,6 +102,29 @@ export class EmailTemplateRenderer {
   }
 
   /**
+   * Select gendered greeting based on guest gender
+   * Returns gender-specific greeting if available, otherwise returns neutral greeting
+   */
+  private selectGenderedGreeting(translations: any, gender?: 'male' | 'female' | null): string {
+    // If no gender provided or unknown, use neutral greeting
+    if (!gender) {
+      return translations.greetingNeutral || translations.greeting || '';
+    }
+    
+    // Use gender-specific greeting if available
+    if (gender === 'male' && translations.greetingMale) {
+      return translations.greetingMale;
+    }
+    
+    if (gender === 'female' && translations.greetingFemale) {
+      return translations.greetingFemale;
+    }
+    
+    // Fallback to neutral or generic greeting
+    return translations.greetingNeutral || translations.greeting || '';
+  }
+
+  /**
    * Render an email template with translations and data
    */
   render(
@@ -142,6 +165,13 @@ export class EmailTemplateRenderer {
     }
 
     const emailTranslations = t || translations['en-GB'];
+    
+    // Handle gendered greetings
+    const gender = data.gender as 'male' | 'female' | null | undefined;
+    const selectedGreeting = this.selectGenderedGreeting(emailTranslations, gender);
+    
+    // Add selected greeting to translations
+    emailTranslations.greeting = selectedGreeting;
 
     // Build complete replacement data (translations + data)
     const allReplacements: { [key: string]: string } = {};

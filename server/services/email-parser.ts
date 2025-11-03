@@ -24,6 +24,7 @@ interface ParsedBooking {
   guestEmail: string;
   guestPhone?: string;
   guestLanguage: string;
+  guestGender?: 'male' | 'female' | null;
   checkInDate: Date;
   checkOutDate: Date;
   lastNightDate: Date;
@@ -128,6 +129,16 @@ export class EmailParser {
       // Supports both 2-letter codes (EN, DE) and full names (English, Englisch, Deutsch)
       const preferredLanguageMatch = text.match(/(?:Preferred Language|Bevorzugte Sprache)\s*:?\s*([A-Za-z]{2,})/i);
       const languageMatch = text.match(/Language\s+([A-Z]{2})/i);
+      
+      // Extract gender from booking data or infer from title
+      const genderMatch = text.match(/(?:Gender|Sex)\s*:?\s*(Male|Female|M|F)/i);
+      let guestGender: 'male' | 'female' | null = null;
+      
+      if (genderMatch) {
+        const gender = genderMatch[1].toUpperCase();
+        guestGender = (gender === 'MALE' || gender === 'M') ? 'male' : 
+                      (gender === 'FEMALE' || gender === 'F') ? 'female' : null;
+      }
 
       if (!nameMatch) {
         console.error('Missing guest name');
@@ -135,6 +146,12 @@ export class EmailParser {
       }
 
       const guestName = nameMatch[1].trim();
+      
+      // If gender not explicitly provided, try to infer from title
+      if (!guestGender) {
+        guestGender = this.extractGenderFromName(guestName);
+      }
+      
       const firstName = this.extractFirstName(guestName);
       // Sanitize and validate email
       const rawEmail = emailMatch && emailMatch[1].trim() ? emailMatch[1].trim().toLowerCase() : '';
@@ -198,6 +215,7 @@ export class EmailParser {
         guestEmail,
         guestPhone,
         guestLanguage,
+        guestGender,
         checkInDate,
         checkOutDate,
         lastNightDate,
@@ -296,6 +314,27 @@ export class EmailParser {
     
     // Final safety check - never return empty string
     return extractedFirstName.trim() || 'Guest';
+  }
+
+  /**
+   * Extract gender from name based on title (Mr, Mrs, Miss, Ms)
+   * Returns 'male', 'female', or null if unknown
+   */
+  private static extractGenderFromName(fullName: string): 'male' | 'female' | null {
+    const name = fullName.trim().toLowerCase();
+    
+    // Male titles
+    if (name.match(/^(mr|mister|sir|herr)\b/i)) {
+      return 'male';
+    }
+    
+    // Female titles
+    if (name.match(/^(mrs|ms|miss|madam|lady|frau|mme|mlle)\b/i)) {
+      return 'female';
+    }
+    
+    // Unknown or gender-neutral titles
+    return null;
   }
 
   /**

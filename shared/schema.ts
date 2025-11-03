@@ -17,6 +17,7 @@ export const bookings = pgTable("bookings", {
   guestEmail: text("guest_email").notNull(),
   guestPhone: text("guest_phone"),
   guestLanguage: text("guest_language").notNull().default('EN'),
+  guestGender: text("guest_gender"), // 'male', 'female', or null for unknown
   
   // Booking details
   checkInDate: timestamp("check_in_date", { mode: 'date' }).notNull(),
