@@ -146,6 +146,19 @@ export class DatabaseService {
   }
 
   /**
+   * Mark scheduled email as cancelled (booking was cancelled)
+   */
+  async markEmailAsCancelled(emailId: number): Promise<void> {
+    await this.db
+      .update(scheduledEmails)
+      .set({
+        status: 'cancelled',
+        updatedAt: new Date(),
+      })
+      .where(eq(scheduledEmails.id, emailId));
+  }
+
+  /**
    * Get scheduled emails for a booking
    */
   async getScheduledEmailsForBooking(bookingId: number): Promise<ScheduledEmail[]> {

@@ -44,6 +44,16 @@ export class EmailSenderService {
    */
   async sendScheduledEmail(scheduledEmail: ScheduledEmail): Promise<boolean> {
     try {
+      // Safety check: Verify booking isn't cancelled before sending
+      if (scheduledEmail.bookingId) {
+        const booking = await this.db.getBookingById(scheduledEmail.bookingId);
+        if (!booking || booking.status === 'cancelled') {
+          console.log(`⚠️ Skipping email ${scheduledEmail.id} - booking ${scheduledEmail.bookingId} is cancelled`);
+          await this.db.markEmailAsCancelled(scheduledEmail.id);
+          return false;
+        }
+      }
+
       // Get email template using HTML template renderer
       const template = emailTemplateRenderer.render(
         scheduledEmail.emailType,
