@@ -174,15 +174,6 @@
   <link rel="preload" as="image" href="/photos/hero01-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 800px)" />
   <link rel="preload" as="image" href="/photos/hero01.jpg" fetchpriority="high" media="(min-width: 801px)" />
 
-  <!-- Early discovery fallback for LCP hero image (triggers request before JS hydration) -->
-  <noscript>
-    <picture>
-      <source media="(max-width: 800px)" type="image/webp" srcset="/photos/hero01-mobile.webp">
-      <source type="image/webp" srcset="/photos/hero01.webp">
-      <img src="/photos/hero01.jpg" alt="DEVOCEAN Lodge beachfront" fetchpriority="high" decoding="async" width="1920" height="1080">
-    </picture>
-  </noscript>
-
   <!-- JSON-LD (valid JSON) -->
   <script type="application/ld+json">
   {
