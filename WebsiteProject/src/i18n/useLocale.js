@@ -331,10 +331,10 @@ function pickInitialRegion(langBase) {
 }
 
 // Dynamically load translations for a specific language
+// Now loads only the needed language file (~7KB) instead of all languages (152KB)
 async function loadTranslations(lang) {
-  const { UI } = await import('./translations.js');
-  // Use lang directly - translation keys now match Hotelrunner codes
-  return UI[lang] || UI["en-GB"];
+  const { loadTranslation } = await import('./loadTranslation.js');
+  return loadTranslation(lang);
 }
 
 // Build minimal UI object with critical nav for instant rendering
