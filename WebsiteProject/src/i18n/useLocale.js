@@ -518,15 +518,39 @@ export function useLocale() {
 
   // Deferred IP-based detection (runs after initial render for first-time visitors)
   useEffect(() => {
-    // Only run for first-time visitors without stored preferences
     const hasStoredLang = localStorage.getItem("site.lang");
     const hasStoredRegion = localStorage.getItem("site.region");
     const langSource = localStorage.getItem("site.lang_source");
+    const langVersion = localStorage.getItem("site.lang.version");
+    
+    // Version 2: Force IP-based re-detection (Nov 2025 - fix language detection)
+    const CURRENT_VERSION = "2";
     
     // Skip if user has manually selected language or came from booking engine
     if (langSource === "user" || langSource === "url") return;
     
-    // Skip if we already have stored preferences
+    // Force re-detection if version is old or missing
+    if (langVersion !== CURRENT_VERSION) {
+      console.log("[Localization] Updating to version 2 - running IP-based language detection");
+      const detectedLang = detectLangFromIP();
+      const detectedRegion = detectRegionFromIP();
+      
+      if (detectedLang && detectedLang !== lang) {
+        setLangState(detectedLang);
+        localStorage.setItem("site.lang", detectedLang);
+        localStorage.setItem("site.lang_source", "auto");
+        localStorage.setItem("site.lang.version", CURRENT_VERSION);
+      }
+      
+      if (detectedRegion && detectedRegion !== region) {
+        setRegionState(detectedRegion);
+        localStorage.setItem("site.region", detectedRegion);
+        localStorage.setItem("site.region.version", "2");
+      }
+      return;
+    }
+    
+    // Skip if we already have stored preferences with correct version
     if (hasStoredLang && hasStoredRegion) return;
     
     // Run IP-based detection asynchronously (non-blocking)
