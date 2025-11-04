@@ -579,10 +579,49 @@
     </picture>
     <div class="overlay"></div>
     <div class="content">
-      <h1>Eco Beach Accommodation in Ponta do Ouro</h1>
-      <p>Safari tents, cottage & chalet near the beach with warm, family-run hospitality</p>
+      <h1 id="hero-title">DEVOCEAN Lodge</h1>
+      <p id="hero-subtitle">Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.</p>
     </div>
   </div>
+
+  <!-- Localize hero placeholder text before display -->
+  <script>
+    (function() {
+      // Hero translations for all 17 languages
+      var heroTranslations = {
+        'af-ZA': { title: 'DEVOCEAN Lodge', subtitle: "Eko-vriendelike verblyf 'n paar honderd meter vanaf die strand in Ponta do Ouro, Suid-Mosambiek." },
+        'de-DE': { title: 'DEVOCEAN Lodge', subtitle: 'Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.' },
+        'en-GB': { title: 'DEVOCEAN Lodge', subtitle: 'Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.' },
+        'en-US': { title: 'DEVOCEAN Lodge', subtitle: 'Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.' },
+        'es-ES': { title: 'DEVOCEAN Lodge', subtitle: 'Alojamientos ecológicos a pocos cientos de metros de la playa en Ponta do Ouro, Sur de Mozambique.' },
+        'fr-FR': { title: 'DEVOCEAN Lodge', subtitle: 'Hébergements écoresponsables à quelques centaines de mètres de la plage à Ponta do Ouro, sud du Mozambique.' },
+        'it-IT': { title: 'DEVOCEAN Lodge', subtitle: 'Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.' },
+        'ja-JP': { title: 'DEVOCEAN Lodge', subtitle: 'モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。' },
+        'nl-NL': { title: 'DEVOCEAN Lodge', subtitle: 'Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.' },
+        'pl': { title: 'DEVOCEAN Lodge', subtitle: 'Ekologiczne pobyty kilkaset metrów od plaży w Ponta do Ouro, południowy Mozambik.' },
+        'pt-BR': { title: 'DEVOCEAN Lodge', subtitle: 'Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.' },
+        'pt-PT': { title: 'DEVOCEAN Lodge', subtitle: 'Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.' },
+        'ru': { title: 'DEVOCEAN Lodge', subtitle: 'Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.' },
+        'sv': { title: 'DEVOCEAN Lodge', subtitle: 'Miljövänliga boenden några hundra meter från stranden i Ponta do Ouro, södra Moçambique.' },
+        'sw': { title: 'DEVOCEAN Lodge', subtitle: 'Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji.' },
+        'zh-CN': { title: 'DEVOCEAN Lodge', subtitle: '莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。' },
+        'zu': { title: 'DEVOCEAN Lodge', subtitle: 'Indawo yokuhlala enobungani bemvelo emamitha ambalwa ukusuka ogwini lwasePonta do Ouro, eNingizimu yeMozambique.' }
+      };
+
+      // Get stored language preference
+      var storedLang = localStorage.getItem('site.lang');
+      
+      // If we have a translation for this language, apply it
+      if (storedLang && heroTranslations[storedLang]) {
+        var translation = heroTranslations[storedLang];
+        var titleEl = document.getElementById('hero-title');
+        var subtitleEl = document.getElementById('hero-subtitle');
+        
+        if (titleEl) titleEl.textContent = translation.title;
+        if (subtitleEl) subtitleEl.textContent = translation.subtitle;
+      }
+    })();
+  </script>
 </body>
 
 </html>
