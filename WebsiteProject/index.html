@@ -330,11 +330,35 @@
         }
 
         if (src === "auto") {
-          // always recompute on AUTO
-          var navLang = normLang(navigator.language);
-          localStorage.setItem("site.lang", navLang);
-          localStorage.setItem("site.currency", inferCurrency(navLang));
-          lang = navLang;
+          // Priority 1: Use Cloudflare IP geolocation (same as hero placeholder)
+          var detectedLang = null;
+          if (window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
+            var CC2LANG = {
+              US: "en", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
+              ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en",
+              PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
+              NL: "nl", BE: "nl",
+              FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr",
+              IT: "it", SM: "it", VA: "it",
+              DE: "de", AT: "de", LI: "de",
+              ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
+              CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
+              SE: "sv", FI: "sv",
+              PL: "pl",
+              JP: "ja", CN: "zh", RU: "ru"
+            };
+            var cc = String(window.__CF_COUNTRY__).toUpperCase();
+            detectedLang = CC2LANG[cc] || null;
+          }
+          
+          // Priority 2: Fall back to browser language
+          if (!detectedLang) {
+            detectedLang = normLang(navigator.language);
+          }
+          
+          localStorage.setItem("site.lang", detectedLang);
+          localStorage.setItem("site.currency", inferCurrency(detectedLang));
+          lang = detectedLang;
           curr = localStorage.getItem("site.currency");
         } else {
           // USER: only backfill if missing

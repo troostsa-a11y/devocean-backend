@@ -281,17 +281,33 @@ function getTimezoneContinent() {
 }
 
 function pickInitialLang() {
-  // Fast path: Return stored language immediately (no detection)
-  const stored = localStorage.getItem("site.lang");
-  if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
-
-  // URL override takes priority (booking engine return)
+  // URL override takes highest priority (booking engine return)
   const urlLang = getUrlParam('lang');
   if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
     return urlLang;
   }
 
-  // Lightweight detection: browser language only (no country lookup)
+  // Check if user manually selected language (vs auto-detection)
+  const langSource = localStorage.getItem("site.lang_source");
+  const stored = localStorage.getItem("site.lang");
+  
+  // If user manually selected language, respect their choice
+  if (langSource === "user" && stored && SUPPORTED_LANGS.includes(stored)) {
+    return stored;
+  }
+
+  // Priority: Use Cloudflare IP geolocation (same as hero placeholder)
+  const cc = getCountryCode();
+  if (cc && CC_TO_LANGUAGE[cc]) {
+    return CC_TO_LANGUAGE[cc];
+  }
+
+  // Fallback to stored language (auto-detected previously)
+  if (stored && SUPPORTED_LANGS.includes(stored)) {
+    return stored;
+  }
+
+  // Fallback to browser language
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
@@ -302,7 +318,7 @@ function pickInitialLang() {
     if (SUPPORTED_LANGS.includes(normalized)) return normalized;
   }
 
-  // Fallback to UK English (defer IP-based detection to useEffect)
+  // Final fallback to UK English
   return "en-GB";
 }
 
