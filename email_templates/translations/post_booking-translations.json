@@ -1,6 +1,7 @@
 {
   "en-GB": {
     "subject": "Booking Confirmed - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Your Home by the Ocean in Ponta do Ouro",
     "greeting": "Dear {{firstName}}",
     "intro": "We're thrilled that you've chosen to stay at DEVOCEAN Lodge — your home by the ocean in beautiful Ponta do Ouro.",
@@ -46,6 +47,7 @@
   },
   "en-US": {
     "subject": "Booking Confirmed - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Your Home by the Ocean in Ponta do Ouro",
     "greeting": "Dear {{firstName}}",
     "intro": "We're thrilled that you've chosen to stay at DEVOCEAN Lodge — your home by the ocean in beautiful Ponta do Ouro.",
@@ -91,6 +93,7 @@
   },
   "pt-PT": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "A Sua Casa à Beira-Mar em Ponta do Ouro",
     "greetingMale": "Caro {{firstName}}",
     "greetingFemale": "Cara {{firstName}}",
@@ -138,6 +141,7 @@
   },
   "pt-BR": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Sua Casa à Beira-Mar em Ponta do Ouro",
     "greetingMale": "Caro {{firstName}}",
     "greetingFemale": "Cara {{firstName}}",
@@ -185,6 +189,7 @@
   },
   "nl-NL": {
     "subject": "Reservering Bevestigd - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Uw Thuis aan de Oceaan in Ponta do Ouro",
     "greeting": "Beste {{firstName}}",
     "intro": "We zijn verheugd dat u ervoor gekozen heeft om te verblijven in DEVOCEAN Lodge — uw thuis aan de oceaan in het prachtige Ponta do Ouro.",
@@ -230,6 +235,7 @@
   },
   "fr-FR": {
     "subject": "Réservation Confirmée - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Votre Maison au Bord de l'Océan à Ponta do Ouro",
     "greeting": "Cher(ère) {{firstName}}",
     "intro": "Nous sommes ravis que vous ayez choisi de séjourner au DEVOCEAN Lodge — votre maison au bord de l'océan dans la magnifique Ponta do Ouro.",
@@ -275,6 +281,7 @@
   },
   "it-IT": {
     "subject": "Prenotazione Confermata - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "La Tua Casa sull'Oceano a Ponta do Ouro",
     "greeting": "Gentile {{firstName}}",
     "intro": "Siamo entusiasti che abbia scelto di soggiornare al DEVOCEAN Lodge — la sua casa sull'oceano nella bellissima Ponta do Ouro.",
@@ -320,6 +327,7 @@
   },
   "de-DE": {
     "subject": "Buchung Bestätigt - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Ihr Zuhause am Meer in Ponta do Ouro",
     "greetingMale": "Lieber {{firstName}}",
     "greetingFemale": "Liebe {{firstName}}",
@@ -367,6 +375,7 @@
   },
   "es-ES": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Tu Hogar junto al Océano en Ponta do Ouro",
     "greeting": "Estimado(a) {{firstName}}",
     "intro": "Estamos encantados de que haya elegido alojarse en DEVOCEAN Lodge — su hogar junto al océano en la hermosa Ponta do Ouro.",
@@ -412,6 +421,7 @@
   },
   "sv": {
     "subject": "Bokning Bekräftad - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Ditt Hem vid Havet i Ponta do Ouro",
     "greeting": "Bäste {{firstName}}",
     "intro": "Vi är glada att du har valt att bo på DEVOCEAN Lodge — ditt hem vid havet i vackra Ponta do Ouro.",
@@ -457,6 +467,7 @@
   },
   "pl": {
     "subject": "Rezerwacja Potwierdzona - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Twój Dom nad Oceanem w Ponta do Ouro",
     "greeting": "Drogi(a) {{firstName}}",
     "intro": "Cieszymy się, że wybrałeś/aś pobyt w DEVOCEAN Lodge — Twoim domu nad oceanem w pięknym Ponta do Ouro.",
@@ -502,6 +513,7 @@
   },
   "af-ZA": {
     "subject": "Bespreking Bevestig - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Jou Tuiste by die See in Ponta do Ouro",
     "greeting": "Beste {{firstName}}",
     "intro": "Ons is verheug dat jy gekies het om by DEVOCEAN Lodge te bly — jou tuiste by die see in pragtige Ponta do Ouro.",
@@ -547,6 +559,7 @@
   },
   "zu": {
     "subject": "Ukubhukha Kuqinisekisiwe - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Ikhaya Lakho Ngasolwandle e-Ponta do Ouro",
     "greeting": "Sawubona {{firstName}}",
     "intro": "Siyajabula ukuthi ukhethe ukuhlala e-DEVOCEAN Lodge — ikhaya lakho ngasolwandle e-Ponta do Ouro enhle.",
@@ -592,6 +605,7 @@
   },
   "sw": {
     "subject": "Uhakiki wa Uhifadhi - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Nyumba Yako Karibu na Bahari katika Ponta do Ouro",
     "greeting": "Mpendwa {{firstName}}",
     "intro": "Tunafurahi kwamba umechagua kukaa katika DEVOCEAN Lodge — nyumba yako karibu na bahari katika Ponta do Ouro nzuri.",
@@ -637,6 +651,7 @@
   },
   "ja-JP": {
     "subject": "ご予約確定 - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "ポンタ・ド・オウロの海辺のあなたの家",
     "greeting": "{{firstName}}様",
     "intro": "DEVOCEAN Lodgeにご宿泊いただき誠にありがとうございます。美しいポンタ・ド・オウロの海辺のあなたの家へようこそ。",
@@ -682,6 +697,7 @@
   },
   "zh-CN": {
     "subject": "预订确认 - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "您在蓬塔杜欧罗海边的家",
     "greeting": "尊敬的 {{firstName}}",
     "intro": "我们很高兴您选择入住DEVOCEAN Lodge——您在美丽的蓬塔杜欧罗海边的家。",
@@ -727,6 +743,7 @@
   },
   "ru": {
     "subject": "Бронирование подтверждено - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
     "headerSubtitle": "Ваш дом у океана в Понта-ду-Оуру",
     "greeting": "Уважаемый(ая) {{firstName}}",
     "intro": "Мы рады, что вы выбрали для проживания DEVOCEAN Lodge — ваш дом у океана в прекрасном Понта-ду-Оуру.",
