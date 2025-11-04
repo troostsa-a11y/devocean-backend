@@ -1,74 +1,193 @@
-// Translations for ru
 export const UI = {
-menu: "Menu",
-    regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
-    nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your stay", ctaSecondary: "Explore the lodge", badge: "Guests loved comfort & value" },
-    stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
-    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:" },
-    todo: {
-      headline: "What to do in Ponta do Ouro",
-      note: "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.",
-      items: [
-        { title: "Lighthouse hike & Lua Do Mar", body: "Hike to the Old Lighthouse for panoramic views. Continue to Lua Do Mar Restaurant on the dune. Often spot dolphins year-round, whales (May–Oct) and turtles (Dec–Jan). Mind the tide: avoid the beach route from 3 hours before to 3 hours after high tide; rogue waves can push you against rocks." },
-        { title: "Walk to Ponta Malongane", body: "Beach-walk along the shore to the next village. Midway, stairs through banana trees lead to Campismo Nino Pub & Restaurant with great views. Near the bay transition, a path to Sky Island offers paragliding. Famous pubs in Malongane: Drunken Clam and Sunset Shack. Return via beach or the sandy 4×4 road." },
-        { title: "Surf, dive & ocean research", body: "Surfboard rentals at the Beach Bar; several dive centers in the village and a dolphin/whale research center." },
-        { title: "Eat & unwind nearby", body: "There are ~16 pubs and restaurants within 500 m of DEVOCEAN. For a relaxing full-body massage, ask for Lisa (LIZ-Way Massage)." },
-        { title: "Quad bike rentals", body: "Occasional private rentals from locals. Typical rate: around MZN 2000 per hour (negotiation varies)." },
+  menu: "Меню",
+  regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
+  nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
+  stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
+  experiences: { headline: "Впечатления", blurb: "Приключения на море и в лесу прямо у вашего порога.", operators: "Надежные местные операторы:" },
+  todo: {
+    headline: "Чем заняться в Пonta do Ouro",
+    note: "Для дайвинга, сноркелинга, сафари с дельфинами/китами и рыболовных чартеров смотрите поставщиков ниже.",
+    items: [
+      { title: "Поход к маяку и Lua Do Mar", body: "Отправляйтесь в поход к Старому маяку, чтобы насладиться панорамными видами. Продолжите путь к ресторану Lua Do Mar на дюне. Часто можно увидеть дельфинов круглый год, китов (май–октябрь) и черепах (декабрь–январь). Учитывайте приливы: избегайте пляжного маршрута за 3 часа до и после высокого прилива; мощные волны могут прижать вас к скалам." },
+      { title: "Прогулка до Пonta Malongane", body: "Прогулка по пляжу до соседней деревни. На полпути лестница через банановые деревья ведет к пабу и ресторану Campismo Nino с отличными видами. Ближе к заливу есть путь к Sky Island для парапланеризма. Известные пабы в Malongane: Drunken Clam и Sunset Shack. Возвращайтесь по пляжу или песчаной дороге для 4×4." },
+      { title: "Серфинг, дайвинг и исследования океана", body: "Аренда досок для серфинга в Beach Bar; несколько дайвинг-центров в деревне и центр исследования дельфинов/китов." },
+      { title: "Еда и отдых поблизости", body: "В радиусе 500 м от DEVOCEAN около 16 пабов и ресторанов. Для расслабляющего массажа всего тела обратитесь к Лизе (LIZ-Way Massage)." },
+      { title: "Аренда квадроциклов", body: "Иногда доступна частная аренда у местных. Обычная ставка: около MZN 2000 в час (цена зависит от переговоров)." },
+    ],
+  },
+  gallery: { headline: "Галерея" },
+  galleryHeading: "Галерея",
+  location: {
+    headline: "Местоположение", blurb: "Пonta do Ouro — район Матутуине, Южный Мозамбик.",
+    items: [
+      "Город Пonta do Ouro, в нескольких минутах ходьбы от пляжа",
+      "15 минут до Пonta Malongane • 25 минут до границы Kosi Bay",
+      "Безопасная парковка • Местные кафе и рынки поблизости",
+    ],
+    viewMap: "Посмотреть интерактивную карту",
+  },
+  contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Цены и наличие" },
+  form: {
+    name: "Имя", email: "Электронная почта", stayLabel: "Заинтересованы в проживании:", checkin: "С", checkout: "До", 
+    unitLabel: "Предпочитаемый тип номера:",
+    units: [
+      "Safari Tent — общая ванная комната",
+      "Comfort Tent — отдельная ванная комната",
+      "Garden Cottage — инверторный кондиционер",
+      "Thatched Chalet — инверторный кондиционер"
+    ],
+    message: "Сообщение", send: "Отправить",
+    consent: "Отправляя форму, вы соглашаетесь на контакт по вашему запросу.",
+    phName: "Ваше имя", phEmail: "ваш@email.ru", phDate: "дд/мм/гггг", phMsg: "Расскажите подробнее о ваших пожеланиях...",
+    success: "Спасибо! Ваше сообщение отправлено. Проверьте почту для подтверждения.",
+  },
+  footer: {
+    rights: "Все права защищены.",
+    desc: "Семейное экологичное гостеприимство и общественные проекты в Южном Мозамбике.",
+  },
+  currencies: {
+    USD: "Доллар",
+    JPY: "Иена",
+    CNY: "Юань",
+    RUB: "Рубль",
+    MZN: "Метикал",
+    ZAR: "Ранд",
+    EUR: "Евро",
+    GBP: "Фунт",
+    SEK: "Крона",
+    PLN: "Злотый"
+  },
+  legal: {
+    title: "Юридическая информация",
+    privacy: "Политика конфиденциальности",
+    cookies: "Политика использования cookies",
+    terms: "Условия и положения",
+    gdpr: "Информация GDPR",
+    cric: "Права потребителей и контакты",
+    manage: "Настройки cookies",
+    ccpa: "Не Продавайте Мои Данные",
+  }
+},
+ru: {
+  menu: "Меню",
+  regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
+  nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
+  stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
+  experiences: { headline: "Впечатления", blurb: "Приключения на море и в лесу прямо у вашего порога.", operators: "Надежные местные операторы:" },
+  units: {
+    safari: {
+      title: "Палатка Safari",
+      short: "Базовый комфорт среди природы. Общая ванная комната, двуспальные/большие кровати.",
+      details: [
+        "Двуспальные/большие кровати • прикроватные тумбочки",
+        "Кокосовый коврик на песке • стулья для патио",
+        "Общая ванная комната на территории (душ, туалет, раковина)",
       ],
     },
-    gallery: { headline: "Gallery" },
-    location: {
-      headline: "Location", blurb: "Ponta do Ouro – Matutuíne District, Southern Mozambique.",
-      items: [
-        "Ponta do Ouro town, a short walk from the beach",
-        "15 min to Ponta Malongane • 25 min to Kosi Bay border",
-        "Secure parking • Local cafés & markets nearby",
+    comfort: {
+      title: "Палатка Comfort",
+      short: "Просторная улучшенная палатка с отдельной ванной комнатой, двуспальными/king-size кроватями и патио.",
+      details: [
+        "Двуспальные/king-size кровати • прикроватные тумбочки",
+        "Стол, стулья • патио (со стульями)",
+        "Отдельная ванная комната в хижине с соломенной крышей (душ, туалет, раковина)",
       ],
-      viewMap: "View Interactive Map",
     },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
-    form: {
-      name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
-      unitLabel: "My preferred unit is:", 
-      units: [
-        "Safari Tent - shared bathroom",
-        "Comfort Tent - private bathroom",
-        "Garden Cottage - inverter AC",
-        "Thatched Chalet - inverter AC"
+    cottage: {
+      title: "Садовый коттедж",
+      short: "Просторный коттедж с большой кроватью, инверторным кондиционером, рабочим столом и обеденным столом, отдельной террасой и ванной комнатой в хижине.",
+      details: [
+        "Большая кровать • рабочий и обеденный столы",
+        "Инверторный кондиционер (охлаждение/обогрев) • диммируемое основное освещение",
+        "Ванная комната в хижине (душ, раковина, туалет)",
+        "Деревянная терраса с походными стульями",
       ],
-      message: "Message", send: "Send",
-      consent: "By submitting you agree to be contacted about your inquiry.",
-      phName: "Your name", phEmail: "your@email.com", phDate: "dd/mm/yyyy", phMsg: "Tell us more about your wishes...",
-      success: "Thank you! Your message has been sent. Check your email for a confirmation.",
     },
-    galleryHeading: "Gallery",
-    footer: {
-      rights: "All rights reserved.",
-      desc: "Family-run eco-hospitality and community projects in Southern Mozambique.",
+    chalet: {
+      title: "Шале с соломенной крышей",
+      short: "Тихое, романтическое маленькое шале под пальмами. Кондиционер, отдельная ванная, терраса. Двуспальные/King-size.",
+      details: [
+        "Тихое расположение под пальмами • кондиционер",
+        "Отдельная ванная комната (душ, раковина, туалет)",
+        "Двуспальные/King-size кровати и прикроватные тумбочки",
+        "Отдельная терраса со стульями из пальмовых листьев",
+      ],
     },
-    currencies: {
-      USD: "US-Dollar",
-      JPY: "Yen",
-      CNY: "Yuan",
-      RUB: "Ruble",
-      MZN: "Meticais",
-      ZAR: "Rand",
-      EUR: "Euro",
-      GBP: "GB-Pound",
-      SEK: "Krona",
-      PLN: "Zloty"
-    },
-    legal: {
-      title: "Legal",
-      privacy: "Privacy Policy",
-      cookies: "Cookie Policy",
-      terms: "Terms & Conditions",
-      gdpr: "GDPR Info",
-      cric: "Consumer Rights & Contact",
-      manage: "Cookie Settings",
-      ccpa: "Do Not Sell My Info",
-    }
-};
+  },
+  experiences: {
+    diving: { title: "Дайвинг", desc: "Прибрежные рифы с богатой морской жизнью." },
+    dolphins: { title: "Плавание с дельфинами", desc: "Этичные встречи с местными дельфинами." },
+    lighthouse: { title: "Поход к маяку", desc: "Поднимитесь на холм к старому маяку для панорамных видов." },
+    seafari: { title: "Морское сафари", desc: "Морские сафари на китов (май–окт) и многое другое." },
+    safari: { title: "Сухопутное сафари", desc: "Приключения в буше поблизости." },
+    fishing: { title: "Пляжная и лодочная рыбалка", desc: "От заброса с берега до оффшорных чартеров." },
+    surfing: { title: "Доски для серфинга и уроки", desc: "Поймайте волну или изучите основы." },
+  },
+  todo: {
+    headline: "Чем заняться в Пonta do Ouro",
+    note: "Для дайвинга, сноркелинга, сафари с дельфинами/китами и рыболовных чартеров смотрите поставщиков ниже.",
+    items: [
+      { title: "Поход к маяку и Lua Do Mar", body: "Отправляйтесь в поход к Старому маяку, чтобы насладиться панорамными видами. Продолжите путь к ресторану Lua Do Mar на дюне. Часто можно увидеть дельфинов круглый год, китов (май–октябрь) и черепах (декабрь–январь). Учитывайте приливы: избегайте пляжного маршрута за 3 часа до и после высокого прилива; мощные волны могут прижать вас к скалам." },
+      { title: "Прогулка до Пonta Malongane", body: "Прогулка по пляжу до соседней деревни. На полпути лестница через банановые деревья ведет к пабу и ресторану Campismo Nino с отличными видами. Ближе к заливу есть путь к Sky Island для парапланеризма. Известные пабы в Malongane: Drunken Clam и Sunset Shack. Возвращайтесь по пляжу или песчаной дороге для 4×4." },
+      { title: "Серфинг, дайвинг и исследования океана", body: "Аренда досок для серфинга в Beach Bar; несколько дайвинг-центров в деревне и центр исследования дельфинов/китов." },
+      { title: "Еда и отдых поблизости", body: "В радиусе 500 м от DEVOCEAN около 16 пабов и ресторанов. Для расслабляющего массажа всего тела обратитесь к Лизе (LIZ-Way Massage)." },
+      { title: "Аренда квадроциклов", body: "Иногда доступна частная аренда у местных. Обычная ставка: около MZN 2000 в час (цена зависит от переговоров)." },
+    ],
+  },
+  gallery: { headline: "Галерея" },
+  galleryHeading: "Галерея",
+  location: {
+    headline: "Местоположение", blurb: "Пonta do Ouro — район Матутуине, Южный Мозамбик.",
+    items: [
+      "Город Пonta do Ouro, в нескольких минутах ходьбы от пляжа",
+      "15 минут до Пonta Malongane • 25 минут до границы Kosi Bay",
+      "Безопасная парковка • Местные кафе и рынки поблизости",
+    ],
+    viewMap: "Посмотреть интерактивную карту",
+  },
+  contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Цены и наличие" },
+  form: {
+    name: "Имя", email: "Электронная почта", stayLabel: "Заинтересованы в проживании:", checkin: "С", checkout: "До", 
+    unitLabel: "Предпочитаемый тип номера:",
+    units: [
+      "Safari Tent — общая ванная комната",
+      "Comfort Tent — отдельная ванная комната",
+      "Garden Cottage — инверторный кондиционер",
+      "Thatched Chalet — инверторный кондиционер"
+    ],
+    message: "Сообщение", send: "Отправить",
+    consent: "Отправляя форму, вы соглашаетесь на контакт по вашему запросу.",
+    phName: "Ваше имя", phEmail: "ваш@email.ru", phDate: "дд/мм/гггг", phMsg: "Расскажите подробнее о ваших пожеланиях...",
+    success: "Спасибо! Ваше сообщение отправлено. Проверьте почту для подтверждения.",
+  },
+  footer: {
+    rights: "Все права защищены.",
+    desc: "Семейное экологичное гостеприимство и общественные проекты в Южном Мозамбике.",
+  },
+  currencies: {
+    USD: "Доллар",
+    JPY: "Иена",
+    CNY: "Юань",
+    RUB: "Рубль",
+    MZN: "Метикал",
+    ZAR: "Ранд",
+    EUR: "Евро",
+    GBP: "Фунт",
+    SEK: "Крона",
+    PLN: "Злотый"
+  },
+  legal: {
+    title: "Юридическая информация",
+    privacy: "Политика конфиденциальности",
+    cookies: "Политика использования cookies",
+    terms: "Условия и положения",
+    gdpr: "Информация GDPR",
+    cric: "Права потребителей и контакты",
+    manage: "Настройки cookies",
+    ccpa: "Не Продавайте Мои Данные",
+  }
+},
 
 export default UI;
