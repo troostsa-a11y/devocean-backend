@@ -67,9 +67,7 @@ export const UI = {
     cric: "Amalungelo omthengi kanye noxhumano",
     manage: "Izilungiselelo zama-Cookie",
     ccpa: "Ungathengisi Ulwazi Lwami",
-  }
-},
-zu: {
+  },
   units: {
     safari: {
       title: "Itende leSafari",
@@ -120,7 +118,7 @@ zu: {
     safari: { title: "Ama-Safari Omhlaba", desc: "Ama-adventure ehlathini ngokushayela isikhathi esifushane." },
     fishing: { title: "Ukudoba Ogwini Lolwandle kanye Nokudoba Ejulile", desc: "Kusuka ekuphoseleni ogwini kuya kuma-charters aphesheya kolwandle." },
     surfing: { title: "Amabhodi Okusefa kanye Nezifundo", desc: "Bamba amagagasi noma ufundiswe izinto zokuqala." },
-  },
-},
+  }
+}
 
 export default UI;

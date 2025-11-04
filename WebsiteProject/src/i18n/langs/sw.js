@@ -123,7 +123,7 @@ sw: {
     safari: { title: "Safari za Nchi Kavu", desc: "Matukio ya msituni kwa safari fupi ya gari." },
     fishing: { title: "Uvuvi wa Ufukweni na Bahari ya Kina", desc: "Kutoka kwa kurusha kwenye ufukwe hadi safari za bahari ya kina." },
     surfing: { title: "Mbao za Kuteleza na Mafunzo", desc: "Shika mawimbi au jifunze misingi." },
-  },
-},
+  }
+}
 
 export default UI;

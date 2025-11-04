@@ -67,9 +67,7 @@ export const UI = {
     cric: "Konsumenträttigheter & Kontakt",
     manage: "Cookieinställningar",
     ccpa: "Sälj Inte Min Info",
-  }
-},
-sv: {
+  },
   units: {
     safari: {
       title: "Safaritält",
@@ -124,7 +122,7 @@ sv: {
     safari: { title: "Landsafaris", desc: "Buskeventyr inom kort avstånd." },
     fishing: { title: "Strand- & Havsfiske", desc: "Från kustmetning till offshore-charter." },
     surfing: { title: "Surfbrädor & Lektioner", desc: "Fånga en våg eller lär dig grunderna." },
-  },
-},
+  }
+}
 
 export default UI;
