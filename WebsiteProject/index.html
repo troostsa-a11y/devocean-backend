@@ -585,10 +585,12 @@
           }, 800);
         }
         
-        // Show main app
-        if (root) {
-          root.classList.add('show');
-        }
+        // Show main app AFTER hero starts fading (create cross-fade effect)
+        setTimeout(function() {
+          if (root) {
+            root.classList.add('show');
+          }
+        }, 300); // Start fading in main site 300ms after hero starts fading out
         
         // Restore scrollbar AFTER fade completes (avoid showing scrollbar during fade)
         setTimeout(function() {
