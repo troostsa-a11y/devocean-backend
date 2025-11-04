@@ -45,6 +45,9 @@ export class EmailSenderService {
   async sendScheduledEmail(scheduledEmail: ScheduledEmail): Promise<boolean> {
     try {
       // Safety check: Verify booking isn't cancelled before sending
+      // Also enrich templateData with fresh firstName and gender from booking
+      let enrichedTemplateData = scheduledEmail.templateData || {};
+      
       if (scheduledEmail.bookingId) {
         const booking = await this.db.getBookingById(scheduledEmail.bookingId);
         if (!booking || booking.status === 'cancelled') {
@@ -52,13 +55,20 @@ export class EmailSenderService {
           await this.db.markEmailAsCancelled(scheduledEmail.id);
           return false;
         }
+        
+        // Enrich templateData with fresh firstName and gender from current booking data
+        enrichedTemplateData = {
+          ...enrichedTemplateData,
+          firstName: booking.firstName || enrichedTemplateData.firstName || 'Guest',
+          gender: booking.guestGender || enrichedTemplateData.gender,
+        };
       }
 
       // Get email template using HTML template renderer
       const template = emailTemplateRenderer.render(
         scheduledEmail.emailType,
         scheduledEmail.language,
-        scheduledEmail.templateData || {}
+        enrichedTemplateData
       );
 
       // Build attachments array - always include header image
