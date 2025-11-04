@@ -96,8 +96,9 @@ export default function App() {
     [bookingLocale, currency, countryCode]
   );
   
-  const units = useMemo(() => localizeUnits(lang), [lang]);
-  const experiences = useMemo(() => localizeExperiences(lang), [lang]);
+  // Include 'ui' in dependencies to recompute after translations load (prevents race condition)
+  const units = useMemo(() => localizeUnits(lang), [lang, ui]);
+  const experiences = useMemo(() => localizeExperiences(lang), [lang, ui]);
 
   return (
       <div className="min-h-screen flex flex-col">
