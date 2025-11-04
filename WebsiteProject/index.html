@@ -482,6 +482,14 @@
       opacity: 0;
       pointer-events: none;
     }
+    /* Hide main app until hero placeholder finishes */
+    #root {
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+    #root.show {
+      opacity: 1;
+    }
   </style>
 
   <!-- Hero placeholder timer (shows for 5 seconds) -->
@@ -490,12 +498,19 @@
       // Keep hero placeholder visible for 5 seconds even after React loads
       setTimeout(function() {
         var placeholder = document.getElementById('hero-placeholder');
+        var root = document.getElementById('root');
+        
         if (placeholder) {
           placeholder.classList.add('fade-out');
           // Remove from DOM after fade completes
           setTimeout(function() {
             placeholder.style.display = 'none';
           }, 500);
+        }
+        
+        // Show main app at the same time
+        if (root) {
+          root.classList.add('show');
         }
       }, 5000); // 5 seconds
     })();
