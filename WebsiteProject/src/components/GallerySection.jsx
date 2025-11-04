@@ -15,10 +15,11 @@ export default function GallerySection({ ui }) {
             viewport={{ once: true }}
             className="relative group rounded-xl overflow-hidden"
           >
-            <LazyImage
+            <img
               src={src}
               alt={`DEVOCEAN Lodge gallery ${i + 1}`}
               className="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition"
+              loading="lazy"
             />
           </m.div>
         ))}
