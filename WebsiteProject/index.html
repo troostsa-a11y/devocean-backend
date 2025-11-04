@@ -608,12 +608,51 @@
         'zu': { title: 'DEVOCEAN Lodge', subtitle: 'Indawo yokuhlala enobungani bemvelo emamitha ambalwa ukusuka ogwini lwasePonta do Ouro, eNingizimu yeMozambique.' }
       };
 
-      // Get stored language preference
-      var storedLang = localStorage.getItem('site.lang');
+      // Country code to language mapping (matches main site logic)
+      var CC_TO_LANGUAGE = {
+        US: "en-US", GB: "en-GB", IE: "en-GB", AU: "en-GB", NZ: "en-GB", CA: "en-GB", 
+        ZA: "en-GB", NA: "en-GB", ZW: "en-GB", BW: "en-GB", NG: "en-GB", GH: "en-GB", ZM: "en-GB", MW: "en-GB", 
+        SZ: "en-GB", LS: "en-GB", MU: "en-GB", SC: "en-GB", JM: "en-GB", TT: "en-GB", 
+        BB: "en-GB", FJ: "en-GB", PG: "en-GB", SB: "en-GB", VU: "en-GB",
+        PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
+        NL: "nl-NL", BE: "nl-NL", SR: "nl-NL",
+        FR: "fr-FR", MC: "fr-FR", LU: "fr-FR", CH: "fr-FR", RE: "fr-FR", 
+        SN: "fr-FR", CI: "fr-FR", CM: "fr-FR", DJ: "fr-FR", NC: "fr-FR", PF: "fr-FR",
+        IT: "it-IT", SM: "it-IT", VA: "it-IT",
+        DE: "de-DE", AT: "de-DE", LI: "de-DE",
+        ES: "es-ES", MX: "es-ES", AR: "es-ES", CO: "es-ES", PE: "es-ES", VE: "es-ES",
+        CL: "es-ES", EC: "es-ES", GT: "es-ES", CU: "es-ES", BO: "es-ES", DO: "es-ES",
+        HN: "es-ES", PY: "es-ES", SV: "es-ES", NI: "es-ES", CR: "es-ES", PA: "es-ES",
+        UY: "es-ES", GQ: "es-ES",
+        SE: "sv", FI: "sv",
+        PL: "pl",
+        JP: "ja-JP",
+        CN: "zh-CN", HK: "zh-CN", TW: "zh-CN", SG: "zh-CN",
+        RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
+        KE: "sw", TZ: "sw", UG: "sw"
+      };
+
+      var detectedLang = null;
+
+      // Priority 1: Use Cloudflare IP geolocation (same logic as main site)
+      if (window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
+        var countryCode = String(window.__CF_COUNTRY__).toUpperCase();
+        detectedLang = CC_TO_LANGUAGE[countryCode] || null;
+      }
+
+      // Priority 2: Fall back to stored language preference
+      if (!detectedLang) {
+        detectedLang = localStorage.getItem('site.lang');
+      }
+
+      // Priority 3: Default to British English
+      if (!detectedLang) {
+        detectedLang = 'en-GB';
+      }
       
-      // If we have a translation for this language, apply it
-      if (storedLang && heroTranslations[storedLang]) {
-        var translation = heroTranslations[storedLang];
+      // Apply translation if available
+      if (detectedLang && heroTranslations[detectedLang]) {
+        var translation = heroTranslations[detectedLang];
         var titleEl = document.getElementById('hero-title');
         var subtitleEl = document.getElementById('hero-subtitle');
         
