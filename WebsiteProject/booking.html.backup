@@ -547,49 +547,176 @@
     }
 
     // 2) Translations (page + hero)
-    // 2) Load translations from external file
-    let TR = {}; // Will be populated from JSON file
-    
-    async function loadTranslations() {
-      try {
-        const response = await fetch('/translations/booking-translations.json');
-        if (!response.ok) throw new Error('Failed to load translations');
-        TR = await response.json();
-        console.log('Translations loaded successfully');
-        return true;
-      } catch (error) {
-        console.error('Error loading translations:', error);
-        // Fallback to basic English if loading fails
-        TR = {
-          en: {
-            title: "Book your stay – DEVOCEAN Lodge",
-            desc: "Direct booking page for DEVOCEAN Lodge",
-            home: "Home",
-            h1: "Book direct for the best value",
-            p1: "Secure your stay at our eco-lodge.",
-            note: "Fill in your dates below.",
-            badgeHead: "Best rate guaranteed",
-            badgeSub: "No middleman fees",
-            secure: "Secure checkout",
-            nofees: "No hidden fees",
-            instant: "Instant confirmation",
-            support: "Team support",
-            childHeading: "Travelling with children?",
-            childText: "Please check our child policy.",
-            safari: "Safari Tent",
-            comfort: "Comfort Tent",
-            cottage: "Garden Cottage",
-            chalet: "Thatched Chalet"
-          }
-        };
-        return false;
-      }
-    }
+    const TR = {
+      en:{title:"Book your stay – DEVOCEAN Lodge",
+          desc:"Direct booking page for DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Best rates, instant confirmation.",
+          home:"Home",
+          h1:"Book direct for the best value",
+          p1:"Secure your stay at our eco-lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.",
+          note:"Fill in your dates below to check availability and book.",
+          badgeHead:"Best direct rate guaranteed",
+          badgeSub:"Save — no middleman fees",
+          secure:"Secure checkout", nofees:"No hidden fees", instant:"Instant confirmation", support:"Team support",
+          childHeading:"Travelling with children?",
+          childText:"Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 year youngsters count as adults."},
+      de:{title:"Buchen Sie Ihren Aufenthalt – DEVOCEAN Lodge",
+          desc:"Direkte Buchungsseite der DEVOCEAN Lodge in Ponta do Ouro, Mosambik. Beste Preise, sofortige Bestätigung.",
+          home:"Startseite",
+          h1:"Direkt buchen zum besten Preis",
+          p1:"Sichern Sie sich Ihren Aufenthalt in unserer Eco-Lodge, nur wenige Minuten vom Strand und dem Maputo-Nationalpark entfernt. Sofortige Bestätigung, transparente Preise und flexible Zimmeroptionen.",
+          note:"Geben Sie unten Ihre Reisedaten ein, um die Verfügbarkeit zu prüfen und zu buchen.",
+          badgeHead:"Bester Direktpreis garantiert",
+          badgeSub:"Sparen Sie – keine Vermittlungsgebühren",
+          secure:"Sichere Zahlung", nofees:"Keine versteckten Gebühren", instant:"Sofortige Bestätigung", support:"Unterstützung durch unser Team",
+          childHeading:"Mit Kindern unterwegs?",
+          childText:"Dann sollten Sie unsere Kinderpolitik kennen. Babys und Kleinkinder bis 4 Jahre (am Anreisetag) sind kostenfrei, wenn sie ein verfügbares Bett mitbenutzen. Babybetten können als Extra gebucht werden. Kinder von 5 bis 12 Jahren gelten als Kinder. Ab 12 Jahren zählen Jugendliche als Erwachsene."},
+      es:{title:"Reserve su estancia – DEVOCEAN Lodge",
+          desc:"Página de reserva directa de DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Mejores precios, confirmación inmediata.",
+          home:"Inicio",
+          h1:"Reserva directa al mejor precio",
+          p1:"Asegura tu estancia en nuestro eco-lodge, a pocos minutos de la playa y del Parque Nacional de Maputo. Confirmación instantánea, tarifas transparentes y opciones de alojamiento flexibles.",
+          note:"Introduce tus fechas a continuación para comprobar la disponibilidad y reservar.",
+          badgeHead:"Mejor tarifa directa garantizada",
+          badgeSub:"Ahorra sin comisiones ni intermediarios",
+          secure:"Pago seguro", nofees:"Sin cargos ocultos", instant:"Confirmación inmediata", support:"Atención personalizada",
+          childHeading:"¿Viaja con niños?",
+          childText:"Entonces debería conocer nuestra política de niños. Los bebés y niños menores de 4 años (en la fecha de llegada) son gratuitos al compartir una cama disponible. Las cunas se pueden reservar como extra. Los niños de 5 a 12 años se cuentan como niños. A partir de 12 años los jóvenes se cuentan como adultos."},
+      fr:{title:"Réservez votre séjour – DEVOCEAN Lodge",
+          desc:"Page de réservation directe de la DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Meilleurs tarifs, confirmation immédiate.",
+          home:"Accueil",
+          h1:"Réservez en direct au meilleur tarif",
+          p1:"Assurez votre séjour dans notre éco-lodge, à quelques minutes de la plage et du parc national de Maputo. Confirmation instantanée, tarifs transparents et options d’hébergement flexibles.",
+          note:"Saisissez vos dates ci-dessous pour vérifier la disponibilité et réserver.",
+          badgeHead:"Meilleur tarif direct garanti",
+          badgeSub:"Économisez — sans frais d’intermédiaire",
+          secure:"Paiement sécurisé", nofees:"Aucun frais caché", instant:"Confirmation immédiate", support:"Assistance de notre équipe",
+          childHeading:"Vous voyagez avec des enfants?",
+          childText:"Vous devriez alors connaître notre politique pour les enfants. Les bébés et enfants jusqu'à 4 ans (à la date d'arrivée) sont gratuits lorsqu'ils partagent un lit disponible. Les lits bébé peuvent être réservés en supplément. Les enfants de 5 à 12 ans comptent comme enfants. À partir de 12 ans, les jeunes comptent comme adultes."},
+      it:{title:"Prenota il tuo soggiorno – DEVOCEAN Lodge",
+          desc:"Pagina di prenotazione diretta della DEVOCEAN Lodge, Ponta do Ouro, Mozambico. Migliori tariffe, conferma immediata.",
+          home:"Home",
+          h1:"Prenota direttamente al miglior prezzo",
+          p1:"Assicurati il tuo soggiorno nel nostro eco-lodge, a pochi minuti dalla spiaggia e dal Parco Nazionale di Maputo. Conferma immediata, tariffe trasparenti e opzioni di alloggio flessibili.",
+          note:"Inserisci le tue date qui sotto per verificare la disponibilità e prenotare.",
+          badgeHead:"Miglior tariffa diretta garantita",
+          badgeSub:"Risparmia — nessuna commissione intermedia",
+          secure:"Pagamento sicuro", nofees:"Nessun costo nascosto", instant:"Conferma immediata", support:"Assistenza del nostro team",
+          childHeading:"Viaggi con bambini?",
+          childText:"Allora dovresti conoscere la nostra politica per i bambini. Neonati e bambini fino a 4 anni (alla data di arrivo) sono gratuiti se condividono un letto disponibile. Le culle possono essere prenotate come extra. I bambini dai 5 ai 12 anni sono contati come bambini. Dai 12 anni in su i giovani contano come adulti."},
+      nl:{title:"Boek uw verblijf – DEVOCEAN Lodge",
+          desc:"Directe boekingspagina van DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Beste prijzen, directe bevestiging.",
+          home:"Home",
+          h1:"Boek direct voor de beste prijs",
+          p1:"Reserveer uw verblijf in onze eco-lodge, op slechts enkele minuten van het strand en het Maputo Nationaal Park. Directe bevestiging, transparante tarieven en flexibele kameropties.",
+          note:"Vul hieronder uw data in om beschikbaarheid te controleren en te reserveren.",
+          badgeHead:"Beste directe prijs gegarandeerd",
+          badgeSub:"Bespaar – geen commissies of tussenpersonen",
+          secure:"Veilige betaling", nofees:"Geen verborgen kosten", instant:"Directe bevestiging", support:"Ondersteuning door ons team",
+          childHeading:"Reist u met kinderen?",
+          childText:"Dan moet u ons kinderbeleid kennen. Baby's en peuters tot 4 jaar (op de aankomstdatum) zijn gratis wanneer ze een beschikbaar bed delen. Babybedjes kunnen als extra worden geboekt. Kinderen van 5 tot 12 worden als kinderen geteld. Vanaf 12 jaar tellen jongeren als volwassenen."},
+      pt:{title:"Reserve a sua estadia – DEVOCEAN Lodge",
+          desc:"Página de reserva direta da DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Melhores tarifas, confirmação imediata.",
+          home:"Início",
+          h1:"Reserve diretamente pelo melhor preço",
+          p1:"Garanta a sua estadia no nosso eco-lodge, a poucos minutos da praia e do Parque Nacional de Maputo. Confirmação imediata, tarifas transparentes e opções de acomodação flexíveis.",
+          note:"Insira as suas datas abaixo para verificar a disponibilidade e fazer a reserva.",
+          badgeHead:"Melhor tarifa direta garantida",
+          badgeSub:"Poupe — sem taxas ou intermediários",
+          secure:"Pagamento seguro", nofees:"Sem custos ocultos", instant:"Confirmação imediata", support:"Apoio da nossa equipa",
+          childHeading:"Viaja com crianças?",
+          childText:"Então deve conhecer a nossa política para crianças. Bebés e crianças até 4 anos (na data de chegada) são gratuitos ao partilhar uma cama disponível. Berços podem ser reservados como extra. Crianças dos 5 aos 12 anos contam como crianças. A partir dos 12 anos os jovens contam como adultos."},
+      ru:{title:"Забронируйте проживание – DEVOCEAN Lodge",
+          desc:"Страница прямого бронирования DEVOCEAN Lodge (Понта-ду-Ору, Мозамбик). Лучшие цены, мгновенное подтверждение.",
+          home:"Главная",
+          h1:"Бронируйте напрямую по лучшей цене",
+          p1:"Забронируйте проживание в нашем эко-лодже всего в нескольких минутах от пляжа и национального парка Мапуту. Мгновенное подтверждение, прозрачные тарифы и гибкие варианты размещения.",
+          note:"Введите даты ниже, чтобы проверить наличие и оформить бронирование.",
+          badgeHead:"Лучшая цена при прямом бронировании — гарантирована",
+          badgeSub:"Экономьте — без комиссий и посредников",
+          secure:"Безопасная оплата", nofees:"Без скрытых сборов", instant:"Мгновенное подтверждение", support:"Поддержка нашей команды",
+          childHeading:"Путешествуете с детьми?",
+          childText:"Тогда вам следует знать нашу политику для детей. Младенцы и дети до 4 лет (на дату прибытия) размещаются бесплатно при совместном использовании доступной кровати. Детские кроватки можно заказать дополнительно. Дети от 5 до 12 лет считаются детьми. С 12 лет подростки считаются взрослыми."},
+      zh:{title:"预订您的住宿 – DEVOCEAN Lodge",
+          desc:"DEVOCEAN Lodge（莫桑比克蓬塔杜奥鲁）官方直订页面。最优价格，即时确认。",
+          home:"首页",
+          h1:"直接预订，享受最优惠价格",
+          p1:"在我们的生态旅馆预订住宿，距离海滩和马普托国家公园仅几分钟路程。即时确认，价格透明，房型灵活可选。",
+          note:"请输入您的日期以查看空房并完成预订。",
+          badgeHead:"最佳直订价格保证",
+          badgeSub:"节省费用 — 无中介佣金",
+          secure:"安全支付", nofees:"无隐藏费用", instant:"即时确认", support:"团队支持",
+          childHeading:"带儿童旅行？",
+          childText:"那么您应该了解我们的儿童政策。4岁及以下的婴儿和幼儿（以到达日期为准）在共用可用床位时免费。婴儿床可作为附加服务预订。5至12岁的儿童按儿童计算。12岁及以上的青少年按成人计算。"},
+      sv:{title:"Boka din vistelse – DEVOCEAN Lodge",
+          desc:"Direktbokningssida för DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Bästa priser, omedelbar bekräftelse.",
+          home:"Hem",
+          h1:"Boka direkt för bästa pris",
+          p1:"Säkra din vistelse på vår ekologiska lodge, bara några minuter från stranden och Maputo nationalpark. Omedelbar bekräftelse, transparenta priser och flexibla rumsalternativ.",
+          note:"Fyll i dina datum nedan för att kontrollera tillgänglighet och boka.",
+          badgeHead:"Bästa direktpris garanteras",
+          badgeSub:"Spara — inga mellanhänder eller dolda avgifter",
+          secure:"Säker betalning", nofees:"Inga dolda avgifter", instant:"Omedelbar bekräftelse", support:"Support från vårt team",
+          childHeading:"Reser du med barn?",
+          childText:"Då bör du känna till vår barnpolicy. Spädbarn och småbarn upp till 4 år (vid ankomstdagen) är gratis när de delar en tillgänglig säng. Babysängar kan bokas som extra. Barn från 5 till 12 år räknas som barn. Från 12 år räknas ungdomar som vuxna."},
+      ja:{title:"ご宿泊予約 – DEVOCEAN Lodge",
+          desc:"DEVOCEAN Lodge（モザンビーク・ポンタ・ド・オウロ）の公式直予約ページ。最安値・即時確認。",
+          home:"ホーム",
+          h1:"ベストプライスで直接予約",
+          p1:"ビーチやマプト国立公園から数分の当エコロッジで快適な滞在を。即時確認、透明な料金、柔軟な客室オプションをご用意しています。",
+          note:"下の欄に日付を入力して、空室状況を確認・予約してください。",
+          badgeHead:"最安値の直接予約を保証",
+          badgeSub:"仲介手数料なしでお得に",
+          secure:"安全な支払い", nofees:"追加料金なし", instant:"即時確認", support:"チームによるサポート",
+          childHeading:"お子様連れですか？",
+          childText:"当施設のお子様ポリシーをご確認ください。到着日時点で4歳以下の乳幼児は、利用可能なベッドを共有する場合無料です。ベビーベッドは追加でご予約いただけます。5歳から12歳のお子様は子供としてカウントされます。12歳以上の若者は大人としてカウントされます。"},
+      pl:{title:"Zarezerwuj swój pobyt – DEVOCEAN Lodge",
+          desc:"Strona rezerwacji bezpośredniej DEVOCEAN Lodge, Ponta do Ouro, Mozambik. Najlepsze ceny, natychmiastowe potwierdzenie.",
+          home:"Strona główna",
+          h1:"Rezerwuj bezpośrednio po najlepszej cenie",
+          p1:"Zapewnij sobie pobyt w naszym eko-lodgeu, zaledwie kilka minut od plaży i Parku Narodowego Maputo. Natychmiastowe potwierdzenie, przejrzyste ceny i elastyczne opcje pokoi.",
+          note:"Wprowadź swoje daty poniżej, aby sprawdzić dostępność i zarezerwować.",
+          badgeHead:"Gwarancja najlepszej ceny bezpośredniej",
+          badgeSub:"Oszczędzaj — bez prowizji pośredników",
+          secure:"Bezpieczna płatność", nofees:"Bez ukrytych opłat", instant:"Natychmiastowe potwierdzenie", support:"Wsparcie naszego zespołu",
+          childHeading:"Podróżujesz z dziećmi?",
+          childText:"Powinieneś znać naszą politykę dotyczącą dzieci. Niemowlęta i małe dzieci do 4 lat (w dniu przyjazdu) są bezpłatne przy współdzieleniu dostępnego łóżka. Łóżeczka dziecięce można zarezerwować jako dodatek. Dzieci od 5 do 12 lat liczą się jako dzieci. Od 12 lat młodzież liczy się jako dorośli."},
+      af:{title:"Bespreek jou verblyf – DEVOCEAN Lodge",
+          desc:"Direkte besprekingsbladsy vir DEVOCEAN Lodge, Ponta do Ouro, Mosambiek. Beste pryse, onmiddellike bevestiging.",
+          home:"Tuis",
+          h1:"Bespreek direk vir die beste prys",
+          p1:"Verseker jou verblyf in ons eko-lodge, net 'n paar minute vanaf die strand en Maputo Nasionale Park. Onmiddellike bevestiging, deursigtige tariewe en buigsame kameropties.",
+          note:"Vul jou datums hieronder in om beskikbaarheid te kontroleer en te bespreek.",
+          badgeHead:"Beste direkte prys gewaarborg",
+          badgeSub:"Bespaar — geen tussenganger fooie",
+          secure:"Veilige betaling", nofees:"Geen versteekte koste", instant:"Onmiddellike bevestiging", support:"Ondersteuning deur ons span",
+          childHeading:"Reis jy met kinders?",
+          childText:"Dan moet jy ons kinderbeleid ken. Babas en peuters tot 4 jaar oud (op aankomsdatum) is gratis wanneer hulle 'n beskikbare bed deel. Babawiegies kan as ekstra bespreek word. Kinders van 5 tot 12 tel as kinders. Vanaf 12 jaar oud tel jongmense as volwassenes."},
+      zu:{title:"Bhukha ukuhlala kwakho – DEVOCEAN Lodge",
+          desc:"Ikhasi lokuphatha okuqondile le-DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Amanani amahle, isiqinisekiso esisheshayo.",
+          home:"Ikhaya",
+          h1:"Bhukha ngqo ngenani elihle",
+          p1:"Qinisekisa ukuhlala kwakho e-eco-lodge yethu, imizuzu embalwa ukusuka ogwini nasePaki ye-Maputo National. Isiqinisekiso esisheshayo, amanani acace kahle kanye nezinketho zezindlu eziguquguqukayo.",
+          note:"Faka izinsuku zakho ngezansi ukuze uhlole ukutholakala futhi ubhukhe.",
+          badgeHead:"Inani eliphakeme lokuphatha okuqondile liqinisekisiwe",
+          badgeSub:"Londoloza — ayikho imali yokuhola",
+          secure:"Ukukhokha okuphephile", nofees:"Ayikho izindleko ezifihlakele", instant:"Isiqinisekiso esisheshayo", support:"Ukwesekwa yithimba lethu",
+          childHeading:"Uvakasha nezingane?",
+          childText:"Kufanele wazi inqubomgomo yethu yezingane. Izinsana nezingane ezingaphansi kweminyaka engu-4 (ngosuku lokufika) zimahhala lapho zabelana ngombhede otholakalayo. Ama-babycots angabhukwa njengengeziwe. Izingane ezisukela ku-5 kuya ku-12 zibalwa njengezingane. Kusukela eminyakeni engu-12 intsha ibalwa njengabantu abadala."},
+      sw:{title:"Weka nafasi yako ya kukaa – DEVOCEAN Lodge",
+          desc:"Ukurasa wa kuweka nafasi moja kwa moja wa DEVOCEAN Lodge, Ponta do Ouro, Msumbiji. Bei bora, uthibitisho wa haraka.",
+          home:"Nyumbani",
+          h1:"Weka nafasi moja kwa moja kwa bei bora",
+          p1:"Hakikisha kukaa kwako katika lodge yetu inayofaa na mazingira, dakika chache kutoka ufukweni na Hifadhi ya Taifa ya Maputo. Uthibitisho wa haraka, bei wazi na chaguo za vyumba vinavyobadilika.",
+          note:"Weka tarehe zako hapa chini kuangalia upatikanaji na kuweka nafasi.",
+          badgeHead:"Bei bora ya moja kwa moja imethibitishwa",
+          badgeSub:"Okoa — hakuna ada za wawasiliani",
+          secure:"Malipo salama", nofees:"Hakuna gharama zilizoficha", instant:"Uthibitisho wa haraka", support:"Msaada kutoka kwa timu yetu",
+          childHeading:"Unasafiri na watoto?",
+          childText:"Basi unapaswa kujua sera yetu ya watoto. Watoto wachanga na watoto wadogo hadi miaka 4 (katika tarehe ya kuwasili) ni bure wanaposhiriki kitanda kinachopatikana. Vitanda vya watoto wachanga vinaweza kuhifadhiwa kama nyongeza. Watoto kutoka miaka 5 hadi 12 wanahesabiwa kama watoto. Kuanzia miaka 12 vijana wanahesabiwa kama watu wazima."}
+    };
 
     // 3) Apply language, fill UI (retry if DOM not ready), set Beds24 iframe
-    async function initializeBookingPage() {
-      await loadTranslations();
-      
+    (function () {
       const siteLang = detectSiteLanguage();
       const siteCurrency = detectSiteCurrency();
       const code = mapToB24(siteLang);
@@ -620,7 +747,8 @@
         const hb = document.getElementById("homeBtn"); 
         if (hb) {
           hb.textContent = TT.home;
-          hb.href = \`https://devoceanlodge.com?lang=\${code}&cur=\${siteCurrency}\`;
+          // Update home button to preserve language
+          hb.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
         }
         return true;
       }
@@ -632,13 +760,16 @@
 
       const frame = document.getElementById('beds24frame');
       if (frame){
+        // Build new Beds24 URL with devoceanlodge.com domain format
         const pageQS = new URLSearchParams(location.search);
         const curr = (pageQS.get('currency') || pageQS.get('cur') || siteCurrency);
         
+        // New format: https://devoceanlodge.com/booking?layout=5&lang=xx&cur=XXX
         const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
-        url.searchParams.set('lang', code);
+        url.searchParams.set('lang', code);      // pass Beds24 language (ISO 639-1)
         if (curr) url.searchParams.set('cur', curr.toUpperCase());
 
+        // carry through any other forwarded params (UTM, etc.)
         pageQS.forEach((v,k)=>{ 
           if(k !== 'lang' && k !== 'currency' && k !== 'cur' && !url.searchParams.has(k)) {
             url.searchParams.set(k,v); 
@@ -647,10 +778,7 @@
 
         frame.src = url.toString();
       }
-    }
-    
-    // Initialize when page loads
-    initializeBookingPage();
+    })();
 
     // Set legal link with language parameter
     function setLegalLink(page) {
@@ -716,72 +844,208 @@
 
     // ===== Unit Navigation with Room ID Switching =====
     (function() {
+      // Beds24 Room IDs
       const ROOM_IDS = {
-        safari: '620542',
-        comfort: '620540',
-        cottage: '620541',
-        chalet: '620543'
+        safari: '620542',   // Safari Tent - shared bathroom
+        comfort: '620540',  // Comfort Tent - private bathroom
+        cottage: '620541',  // Garden Cottage - AC
+        chalet: '620543'    // Thatched Chalet - AC
       };
       
-      function switchToRoom(roomId, unitType) {
+      // Translations for unit buttons (all 17 website languages)
+      const UNIT_TRANSLATIONS = {
+        en: {
+          safari: 'Safari Tent',
+          comfort: 'Comfort Tent',
+          cottage: 'Garden Cottage',
+          chalet: 'Thatched Chalet'
+        },
+        de: {
+          safari: 'Safari Zelt',
+          comfort: 'Comfort Zelt',
+          cottage: 'Garten Cottage',
+          chalet: 'Reet Chalet'
+        },
+        es: {
+          safari: 'Tienda Safari',
+          comfort: 'Tienda Comfort',
+          cottage: 'Cottage de Jardín',
+          chalet: 'Chalet de Paja'
+        },
+        fr: {
+          safari: 'Tente Safari',
+          comfort: 'Tente Comfort',
+          cottage: 'Cottage de Jardin',
+          chalet: 'Chalet de Chaume'
+        },
+        it: {
+          safari: 'Tenda Safari',
+          comfort: 'Tenda Comfort',
+          cottage: 'Cottage da Giardino',
+          chalet: 'Chalet di Paglia'
+        },
+        nl: {
+          safari: 'Safari Tent',
+          comfort: 'Comfort Tent',
+          cottage: 'Tuin Cottage',
+          chalet: 'Rieten Chalet'
+        },
+        pt: {
+          safari: 'Tenda Safari',
+          comfort: 'Tenda Comfort',
+          cottage: 'Cottage de Jardim',
+          chalet: 'Chalé de Palha'
+        },
+        ru: {
+          safari: 'Палатка Сафари',
+          comfort: 'Палатка Комфорт',
+          cottage: 'Садовый Коттедж',
+          chalet: 'Соломенный Шале'
+        },
+        zh: {
+          safari: 'Safari 帐篷',
+          comfort: '舒适帐篷',
+          cottage: '花园小屋',
+          chalet: '茅草木屋'
+        },
+        sv: {
+          safari: 'Safari Tält',
+          comfort: 'Comfort Tält',
+          cottage: 'Trädgård Cottage',
+          chalet: 'Stråtak Chalet'
+        },
+        ja: {
+          safari: 'サファリテント',
+          comfort: 'コンフォートテント',
+          cottage: 'ガーデンコテージ',
+          chalet: 'サッチシャレ'
+        },
+        pl: {
+          safari: 'Namiot Safari',
+          comfort: 'Namiot Comfort',
+          cottage: 'Domek Ogrodowy',
+          chalet: 'Chata ze Strzechy'
+        },
+        af: {
+          safari: 'Safari Tent',
+          comfort: 'Comfort Tent',
+          cottage: 'Tuin Cottage',
+          chalet: 'Grasdak Chalet'
+        },
+        zu: {
+          safari: 'Itende le-Safari',
+          comfort: 'Itende le-Comfort',
+          cottage: 'I-Cottage yensimini',
+          chalet: 'I-Chalet ye-Thatch'
+        },
+        sw: {
+          safari: 'Hema ya Safari',
+          comfort: 'Hema ya Comfort',
+          cottage: 'Cottage ya Bustani',
+          chalet: 'Chalet ya Nyasi'
+        }
+      };
+      
+      // Update iframe URL with selected room
+      function switchToRoom(roomId, unitKey) {
         const iframe = document.getElementById('beds24frame');
         if (!iframe) return;
         
-        const currentSrc = iframe.src;
-        const url = new URL(currentSrc);
-        url.searchParams.set('roomid', roomId);
-        iframe.src = url.toString();
+        // Get current language and currency
+        const siteLang = detectSiteLanguage();
+        const siteCurrency = detectSiteCurrency();
+        const lang = mapToB24(siteLang);
         
+        // Build new URL
+        const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
+        url.searchParams.set('lang', lang);
+        if (siteCurrency) url.searchParams.set('cur', siteCurrency.toUpperCase());
+        
+        // Add roomid parameter if specific room selected
+        if (roomId) {
+          url.searchParams.set('roomid', roomId);
+        }
+        
+        // Carry through any URL params (UTM, etc.)
+        const pageQS = new URLSearchParams(location.search);
+        pageQS.forEach((v, k) => {
+          if (k !== 'lang' && k !== 'currency' && k !== 'cur' && k !== 'unit' && !url.searchParams.has(k)) {
+            url.searchParams.set(k, v);
+          }
+        });
+        
+        // Update iframe
+        iframe.src = url.toString();
+        console.log('Switched to unit:', unitKey, 'Room ID:', roomId || 'all', 'URL:', url.toString());
+        
+        // Update active button
         document.querySelectorAll('.unit-btn').forEach(btn => {
           btn.classList.remove('active');
         });
-        const activeBtn = document.querySelector(\`[data-unit="\${unitType}"]\`);
-        if (activeBtn) activeBtn.classList.add('active');
+        const activeBtn = document.querySelector(`[data-unit="${unitKey}"]`);
+        if (activeBtn) {
+          activeBtn.classList.add('active');
+        }
+        
+        // Scroll to booking iframe smoothly
+        setTimeout(() => {
+          const bookSection = document.getElementById('book');
+          if (bookSection) {
+            bookSection.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }
+        }, 100);
       }
       
+      // Initialize unit navigation
       function initUnitNavigation() {
-        const unitButtons = document.querySelectorAll('.unit-btn');
+        const buttons = document.querySelectorAll('.unit-btn');
         
-        unitButtons.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const roomId = this.getAttribute('data-roomid');
-            const unitType = this.getAttribute('data-unit');
-            if (roomId && unitType) {
-              switchToRoom(roomId, unitType);
-            }
+        buttons.forEach(button => {
+          button.addEventListener('click', function() {
+            const roomId = this.dataset.roomid || '';
+            const unitKey = this.dataset.unit;
+            switchToRoom(roomId, unitKey);
           });
         });
         
+        // Translate unit button texts
         const siteLang = detectSiteLanguage();
         const lang = mapToB24(siteLang);
-        const translations = TR[lang] || TR.en;
+        const translations = UNIT_TRANSLATIONS[lang] || UNIT_TRANSLATIONS.en;
         
         const btnSafari = document.getElementById('t-safari');
         const btnComfort = document.getElementById('t-comfort');
         const btnCottage = document.getElementById('t-cottage');
         const btnChalet = document.getElementById('t-chalet');
         
-        if (btnSafari && translations.safari) btnSafari.textContent = translations.safari;
-        if (btnComfort && translations.comfort) btnComfort.textContent = translations.comfort;
-        if (btnCottage && translations.cottage) btnCottage.textContent = translations.cottage;
-        if (btnChalet && translations.chalet) btnChalet.textContent = translations.chalet;
+        if (btnSafari) btnSafari.textContent = translations.safari;
+        if (btnComfort) btnComfort.textContent = translations.comfort;
+        if (btnCottage) btnCottage.textContent = translations.cottage;
+        if (btnChalet) btnChalet.textContent = translations.chalet;
         
+        // Check if URL has preselected unit, otherwise show all rooms by default
         const urlParams = new URLSearchParams(window.location.search);
         const preselectedUnit = urlParams.get('unit');
         
         if (preselectedUnit && ROOM_IDS[preselectedUnit]) {
+          // Deep link to specific unit
           switchToRoom(ROOM_IDS[preselectedUnit], preselectedUnit);
         } else {
+          // Default: show all rooms (no active button state)
           document.querySelectorAll('.unit-btn').forEach(btn => {
             btn.classList.remove('active');
           });
         }
       }
       
+      // Run when page loads
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initUnitNavigation);
       } else {
-        setTimeout(initUnitNavigation, 100);
+        initUnitNavigation();
       }
     })();
   </script>
