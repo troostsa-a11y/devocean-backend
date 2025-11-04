@@ -516,65 +516,77 @@ export function useLocale() {
     setCriticalUI(getCriticalUI(lang));
   }, [lang]);
 
-  // Deferred IP-based detection (runs after initial render for first-time visitors)
+  // Deferred IP-based detection (runs during idle time for better INP)
   useEffect(() => {
-    const hasStoredLang = localStorage.getItem("site.lang");
-    const hasStoredRegion = localStorage.getItem("site.region");
-    const langSource = localStorage.getItem("site.lang_source");
-    const langVersion = localStorage.getItem("site.lang.version");
-    
-    // Version 2: Force IP-based re-detection (Nov 2025 - fix language detection)
-    const CURRENT_VERSION = "2";
-    
-    // Skip if user has manually selected language or came from booking engine
-    if (langSource === "user" || langSource === "url") return;
-    
-    // Force re-detection if version is old or missing
-    if (langVersion !== CURRENT_VERSION) {
-      console.log("[Localization] Updating to version 2 - running IP-based language detection");
-      const detectedLang = detectLangFromIP();
-      const detectedRegion = detectRegionFromIP();
-      
-      if (detectedLang && detectedLang !== lang) {
-        setLangState(detectedLang);
-        localStorage.setItem("site.lang", detectedLang);
-        localStorage.setItem("site.lang_source", "auto");
-        localStorage.setItem("site.lang.version", CURRENT_VERSION);
-      }
-      
-      if (detectedRegion && detectedRegion !== region) {
-        setRegionState(detectedRegion);
-        localStorage.setItem("site.region", detectedRegion);
-        localStorage.setItem("site.region.version", "2");
-      }
-      return;
-    }
-    
-    // Skip if we already have stored preferences with correct version
-    if (hasStoredLang && hasStoredRegion) return;
-    
-    // Run IP-based detection asynchronously (non-blocking)
-    setTimeout(() => {
-      // Detect language from IP if not stored
-      if (!hasStoredLang) {
-        const detectedLang = detectLangFromIP();
-        if (detectedLang && detectedLang !== lang) {
-          setLangState(detectedLang);
-          localStorage.setItem("site.lang", detectedLang);
-          localStorage.setItem("site.lang_source", "ip");
+    // Use requestIdleCallback to defer heavy detection logic to idle time
+    // This prevents blocking the main thread during initial render/hydration
+    const scheduleDetection = () => {
+      const callback = () => {
+        const hasStoredLang = localStorage.getItem("site.lang");
+        const hasStoredRegion = localStorage.getItem("site.region");
+        const langSource = localStorage.getItem("site.lang_source");
+        const langVersion = localStorage.getItem("site.lang.version");
+        
+        // Version 2: Force IP-based re-detection (Nov 2025 - fix language detection)
+        const CURRENT_VERSION = "2";
+        
+        // Skip if user has manually selected language or came from booking engine
+        if (langSource === "user" || langSource === "url") return;
+        
+        // Force re-detection if version is old or missing
+        if (langVersion !== CURRENT_VERSION) {
+          console.log("[Localization] Updating to version 2 - running IP-based language detection");
+          const detectedLang = detectLangFromIP();
+          const detectedRegion = detectRegionFromIP();
+          
+          if (detectedLang && detectedLang !== lang) {
+            setLangState(detectedLang);
+            localStorage.setItem("site.lang", detectedLang);
+            localStorage.setItem("site.lang_source", "auto");
+            localStorage.setItem("site.lang.version", CURRENT_VERSION);
+          }
+          
+          if (detectedRegion && detectedRegion !== region) {
+            setRegionState(detectedRegion);
+            localStorage.setItem("site.region", detectedRegion);
+            localStorage.setItem("site.region.version", "2");
+          }
+          return;
         }
-      }
-      
-      // Detect region from IP if not stored
-      if (!hasStoredRegion) {
-        const detectedRegion = detectRegionFromIP();
-        if (detectedRegion && detectedRegion !== region) {
-          setRegionState(detectedRegion);
-          localStorage.setItem("site.region", detectedRegion);
-          localStorage.setItem("site.region.version", "2");
+        
+        // Skip if we already have stored preferences with correct version
+        if (hasStoredLang && hasStoredRegion) return;
+        
+        // Detect language from IP if not stored
+        if (!hasStoredLang) {
+          const detectedLang = detectLangFromIP();
+          if (detectedLang && detectedLang !== lang) {
+            setLangState(detectedLang);
+            localStorage.setItem("site.lang", detectedLang);
+            localStorage.setItem("site.lang_source", "ip");
+          }
         }
+        
+        // Detect region from IP if not stored
+        if (!hasStoredRegion) {
+          const detectedRegion = detectRegionFromIP();
+          if (detectedRegion && detectedRegion !== region) {
+            setRegionState(detectedRegion);
+            localStorage.setItem("site.region", detectedRegion);
+            localStorage.setItem("site.region.version", "2");
+          }
+        }
+      };
+      
+      // Use requestIdleCallback if available, otherwise fallback to setTimeout
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(callback, { timeout: 2000 }); // Max 2s delay
+      } else {
+        setTimeout(callback, 100);
       }
-    }, 100); // Defer to next tick after render
+    };
+    
+    scheduleDetection();
   }, []); // Run once on mount
 
   // Load full translations

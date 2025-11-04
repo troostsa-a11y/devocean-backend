@@ -478,6 +478,46 @@
       display: none;
     }
   </style>
+
+  <!-- Early interaction handler (improves INP by providing instant feedback) -->
+  <script>
+    (function() {
+      // Add visual feedback for clicks during hydration
+      // This improves perceived responsiveness even before React is ready
+      let hydrated = false;
+      
+      // Mark as hydrated when React renders
+      const observer = new MutationObserver(function() {
+        const root = document.getElementById('root');
+        if (root && root.children.length > 0) {
+          hydrated = true;
+          observer.disconnect();
+        }
+      });
+      
+      // Start observing when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          const root = document.getElementById('root');
+          if (root) observer.observe(root, { childList: true });
+        });
+      } else {
+        const root = document.getElementById('root');
+        if (root) observer.observe(root, { childList: true });
+      }
+      
+      // Provide visual feedback for early clicks (before hydration)
+      document.addEventListener('click', function(e) {
+        if (!hydrated && e.target.tagName === 'A') {
+          // Add subtle visual feedback
+          e.target.style.opacity = '0.7';
+          setTimeout(function() {
+            e.target.style.opacity = '';
+          }, 150);
+        }
+      }, { capture: true, passive: true });
+    })();
+  </script>
 </head>
 
 <body>
