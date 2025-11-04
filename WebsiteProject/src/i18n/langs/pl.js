@@ -68,6 +68,6 @@ export const UI = {
     manage: "Ustawienia cookies",
     ccpa: "Nie Sprzedawaj Moich Danych",
   }
-},
+}
 
 export default UI;
