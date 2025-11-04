@@ -47,6 +47,14 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website in Ponta do Ouro, 
 - **Dual Project Setup:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template placeholder).
 - **Design System:** Inter font family, card-based layouts, image-first design, expandable detail sections, hover states, focus-visible outlines, smooth scroll, sticky header.
 
+### DNS & Domain Configuration
+- **Primary Domain:** devoceanlodge.com (canonical domain used in all email templates)
+- **DNS Setup (Cloudflare):**
+  - `@ (devoceanlodge.com)` → CNAME → `devocean-lodge.pages.dev` (uses CNAME flattening)
+  - `www.devoceanlodge.com` → CNAME → `devocean-lodge.pages.dev`
+- **Cloudflare Pages:** Both root domain and www subdomain registered as custom domains in Pages project settings
+- **Email Deliverability:** All email templates use canonical domain (https://devoceanlodge.com) to avoid 552 errors and improve deliverability
+
 ## External Dependencies
 
 ### Third-Party Services
