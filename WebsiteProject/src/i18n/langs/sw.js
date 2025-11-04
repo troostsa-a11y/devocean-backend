@@ -1,74 +1,129 @@
-// Translations for sw
 export const UI = {
-menu: "Menu",
-    regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
-    nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your stay", ctaSecondary: "Explore the lodge", badge: "Guests loved comfort & value" },
-    stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
-    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:" },
-    todo: {
-      headline: "What to do in Ponta do Ouro",
-      note: "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.",
-      items: [
-        { title: "Lighthouse hike & Lua Do Mar", body: "Hike to the Old Lighthouse for panoramic views. Continue to Lua Do Mar Restaurant on the dune. Often spot dolphins year-round, whales (May–Oct) and turtles (Dec–Jan). Mind the tide: avoid the beach route from 3 hours before to 3 hours after high tide; rogue waves can push you against rocks." },
-        { title: "Walk to Ponta Malongane", body: "Beach-walk along the shore to the next village. Midway, stairs through banana trees lead to Campismo Nino Pub & Restaurant with great views. Near the bay transition, a path to Sky Island offers paragliding. Famous pubs in Malongane: Drunken Clam and Sunset Shack. Return via beach or the sandy 4×4 road." },
-        { title: "Surf, dive & ocean research", body: "Surfboard rentals at the Beach Bar; several dive centers in the village and a dolphin/whale research center." },
-        { title: "Eat & unwind nearby", body: "There are ~16 pubs and restaurants within 500 m of DEVOCEAN. For a relaxing full-body massage, ask for Lisa (LIZ-Way Massage)." },
-        { title: "Quad bike rentals", body: "Occasional private rentals from locals. Typical rate: around MZN 2000 per hour (negotiation varies)." },
+  menu: "Menyu",
+  regions: { europe: "Ulaya", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
+  nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji.", ctaPrimary: "Weka nafasi yako ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni" },
+  stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },
+  experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:" },
+  todo: {
+    headline: "Cha kufanya huko Ponta do Ouro",
+    note: "Kwa kupiga mbizi, kuogelea chini ya maji, safari za pomboo/nyangumi na boti za kuvua samaki, angalia watoa huduma wafuatao.",
+    items: [
+      { title: "Tembea kwa miguu hadi Taa ya Bahari na Lua Do Mar", body: "Tembea hadi taa ya zamani ya bahari ili kufurahia maono ya panoramiki. Endelea hadi mgahawa wa Lua Do Mar ulio kwenye kilima cha mchanga. Pomboo mara nyingi huonekana mwaka mzima, nyangumi kutoka Mei hadi Oktoba, na kasa kutoka Desemba hadi Januari. Jihadharini na mawimbi: epuka njia ya ufukweni siku 3 kabla na baada ya wimbi la juu; mawimbi yanaweza kukusukuma kwenye miamba." },
+      { title: "Tembea kwa miguu hadi Ponta Malongane", body: "Tembea kando ya ufukweni hadi kijiji cha karibu. Nusu ya njia, ngazi zinazopita kwenye msitu wa migomba zinaongoza kwenye baa na mgahawa wa Campismo Nino wenye maono mazuri. Karibu na mpito wa ghuba, kuna njia inayoelekea Sky Island kwa ajili ya kuruka kwa parachuti. Baa maarufu za Malongane: Drunken Clam na Sunset Shack. Rudi kupitia ufukweni au barabara ya mchanga ya 4x4." },
+      { title: "Kupiga mbizi, kuogelea chini ya maji na uchunguzi wa baharini", body: "Baa ya Ufukweni inatoa upangishaji wa mbao za kuteleza; vituo kadhaa vya kupiga mbizi mjini na kituo cha uchunguzi wa pomboo/nyangumi." },
+      { title: "Kula na kupumzika karibu", body: "Ndani ya mita 500 za DEVOCEAN kuna karibu baa na mikahawa 16. Ikiwa unahitaji masaji ya mwili mzima ya kupumzika, weka nafasi na Lisa (LIZ-Way Massage)." },
+      { title: "Upangishaji wa pikipiki za magurudumu manne", body: "Wakati mwingine hukodishwa na wamiliki wa kibinafsi wa ndani. Bei ya kawaida: karibu MZN 2000 kwa saa (inategemea majadiliano)." },
+    ],
+  },
+  gallery: { headline: "Matunzio" },
+  location: {
+    headline: "Mahali", blurb: "Ponta do Ouro - Wilaya ya Matutuine, Kusini mwa Msumbiji.",
+    items: [
+      "Mji wa Ponta do Ouro, umbali wa dakika chache kutoka ufukweni",
+      "Dakika 15 hadi Ponta Malongane • Dakika 25 hadi mpaka wa Kosi Bay",
+      "Maegesho salama • Mikahawa ya ndani na masoko yapo karibu",
+    ],
+    viewMap: "Tazama ramani inayofanya kazi",
+  },
+  contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Weka nafasi sasa" },
+  form: {
+    name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
+    units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],
+  },
+  footer: { rights: "Haki zote zimehifadhiwa.", desc: "Ukaribu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji." },
+  legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi", ccpa: "Usiuze Taarifa Zangu" },
+  currencies: { USD: "Dola za Marekani", MZN: "Meticais", ZAR: "Rand", EUR: "Euro", GBP: "Pauni ya GB", SEK: "Krona", PLN: "Zloty", JPY: "Yen", CNY: "Yuan", RUB: "Ruble", TZS: "Shilingi ya Tanzania", KES: "Shilingi ya Kenya" },
+  galleryHeading: "Matunzio",
+},
+sw: {
+  menu: "Menyu",
+  regions: { europe: "Ulaya", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
+  nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji.", ctaPrimary: "Weka nafasi yako ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni" },
+  stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },
+  experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:" },
+  todo: {
+    headline: "Cha kufanya huko Ponta do Ouro",
+    note: "Kwa kupiga mbizi, kuogelea chini ya maji, safari za pomboo/nyangumi na boti za kuvua samaki, angalia watoa huduma wafuatao.",
+    items: [
+      { title: "Tembea kwa miguu hadi Taa ya Bahari na Lua Do Mar", body: "Tembea hadi taa ya zamani ya bahari ili kufurahia maono ya panoramiki. Endelea hadi mgahawa wa Lua Do Mar ulio kwenye kilima cha mchanga. Pomboo mara nyingi huonekana mwaka mzima, nyangumi kutoka Mei hadi Oktoba, na kasa kutoka Desemba hadi Januari. Jihadharini na mawimbi: epuka njia ya ufukweni siku 3 kabla na baada ya wimbi la juu; mawimbi yanaweza kukusukuma kwenye miamba." },
+      { title: "Tembea kwa miguu hadi Ponta Malongane", body: "Tembea kando ya ufukweni hadi kijiji cha karibu. Nusu ya njia, ngazi zinazopita kwenye msitu wa migomba zinaongoza kwenye baa na mgahawa wa Campismo Nino wenye maono mazuri. Karibu na mpito wa ghuba, kuna njia inayoelekea Sky Island kwa ajili ya kuruka kwa parachuti. Baa maarufu za Malongane: Drunken Clam na Sunset Shack. Rudi kupitia ufukweni au barabara ya mchanga ya 4x4." },
+      { title: "Kupiga mbizi, kuogelea chini ya maji na uchunguzi wa baharini", body: "Baa ya Ufukweni inatoa upangishaji wa mbao za kuteleza; vituo kadhaa vya kupiga mbizi mjini na kituo cha uchunguzi wa pomboo/nyangumi." },
+      { title: "Kula na kupumzika karibu", body: "Ndani ya mita 500 za DEVOCEAN kuna karibu baa na mikahawa 16. Ikiwa unahitaji masaji ya mwili mzima ya kupumzika, weka nafasi na Lisa (LIZ-Way Massage)." },
+      { title: "Upangishaji wa pikipiki za magurudumu manne", body: "Wakati mwingine hukodishwa na wamiliki wa kibinafsi wa ndani. Bei ya kawaida: karibu MZN 2000 kwa saa (inategemea majadiliano)." },
+    ],
+  },
+  gallery: { headline: "Matunzio" },
+  location: {
+    headline: "Mahali", blurb: "Ponta do Ouro - Wilaya ya Matutuine, Kusini mwa Msumbiji.",
+    items: [
+      "Mji wa Ponta do Ouro, umbali wa dakika chache kutoka ufukweni",
+      "Dakika 15 hadi Ponta Malongane • Dakika 25 hadi mpaka wa Kosi Bay",
+      "Maegesho salama • Mikahawa ya ndani na masoko yapo karibu",
+    ],
+    viewMap: "Tazama ramani inayofanya kazi",
+  },
+  contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Weka nafasi sasa" },
+  form: {
+    name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
+    units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],
+  },
+  footer: { rights: "Haki zote zimehifadhiwa.", desc: "Ukaribu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji." },
+  legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi", ccpa: "Usiuze Taarifa Zangu" },
+  currencies: { USD: "Dola za Marekani", MZN: "Meticais", ZAR: "Rand", EUR: "Euro", GBP: "Pauni ya GB", SEK: "Krona", PLN: "Zloty", JPY: "Yen", CNY: "Yuan", RUB: "Ruble", TZS: "Shilingi ya Tanzania", KES: "Shilingi ya Kenya" },
+  galleryHeading: "Matunzio",
+  units: {
+    safari: {
+      title: "Hema la Safari",
+      short: "Hema la canvas la 12 m² kwenye jukwaa la 3×6 m. Twin/King, feni, vifaa vya umeme, neti ya mbu, dekhi ya faragha.",
+      details: [
+        "Vitanda viwili vya mtu mmoja (au King) vyenye meza za pembeni na taa",
+        "Neti ya mbu • feni yenye nguvu • vifaa vya umeme",
+        "Dekhi ya faragha yenye viti vya majani ya michikichi",
+        "Vifaa vya pamoja: bafu za maji ya moto/baridi na vyoo",
       ],
     },
-    gallery: { headline: "Gallery" },
-    location: {
-      headline: "Location", blurb: "Ponta do Ouro – Matutuíne District, Southern Mozambique.",
-      items: [
-        "Ponta do Ouro town, a short walk from the beach",
-        "15 min to Ponta Malongane • 25 min to Kosi Bay border",
-        "Secure parking • Local cafés & markets nearby",
+    comfort: {
+      title: "Hema la Starehe",
+      short: "Hema la 12 m² lenye faragha zaidi (kuta za pembeni/nyuma), dekhi ya faragha na bafu ya faragha chini ya paa la nyasi.",
+      details: [
+        "Mpangilio wa Twin/King na taa za kitendo",
+        "Neti ya mbu • feni yenye nguvu • vifaa vya umeme",
+        "Dekhi ya mbao yenye viti",
+        "Bafu ya faragha (shawa, choo, sinki) chini ya paa la nyasi",
       ],
-      viewMap: "View Interactive Map",
     },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
-    form: {
-      name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
-      unitLabel: "My preferred unit is:", 
-      units: [
-        "Safari Tent - shared bathroom",
-        "Comfort Tent - private bathroom",
-        "Garden Cottage - inverter AC",
-        "Thatched Chalet - inverter AC"
+    cottage: {
+      title: "Nyumba ya Bustani",
+      short: "Nyumba yenye hewa safi na kitanda cha queen, A/C (inverter), dawati na meza, dekhi ya faragha na bafu katika rondavel.",
+      details: [
+        "Kitanda cha queen • dawati na meza ya kulia",
+        "A/C ya inverter (baridi/joto) • taa ya msingi inayoweza kubadilishwa",
+        "Bafu ya rondavel (shawa, sinki, choo)",
+        "Dekhi ya mbao yenye viti vya kambi",
       ],
-      message: "Message", send: "Send",
-      consent: "By submitting you agree to be contacted about your inquiry.",
-      phName: "Your name", phEmail: "your@email.com", phDate: "dd/mm/yyyy", phMsg: "Tell us more about your wishes...",
-      success: "Thank you! Your message has been sent. Check your email for a confirmation.",
     },
-    galleryHeading: "Gallery",
-    footer: {
-      rights: "All rights reserved.",
-      desc: "Family-run eco-hospitality and community projects in Southern Mozambique.",
+    chalet: {
+      title: "Chalet ya Nyasi",
+      short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. A/C, bafu ya faragha, dekhi, Twin/King.",
+      details: [
+        "Mazingira ya amani chini ya miti ya michikichi • A/C",
+        "Bafu ya faragha (shawa, sinki, choo)",
+        "Vitanda vya Twin/King vyenye meza za pembeni",
+        "Dekhi ya faragha yenye viti vya majani ya michikichi",
+      ],
     },
-    currencies: {
-      USD: "US-Dollar",
-      JPY: "Yen",
-      CNY: "Yuan",
-      RUB: "Ruble",
-      MZN: "Meticais",
-      ZAR: "Rand",
-      EUR: "Euro",
-      GBP: "GB-Pound",
-      SEK: "Krona",
-      PLN: "Zloty"
-    },
-    legal: {
-      title: "Legal",
-      privacy: "Privacy Policy",
-      cookies: "Cookie Policy",
-      terms: "Terms & Conditions",
-      gdpr: "GDPR Info",
-      cric: "Consumer Rights & Contact",
-      manage: "Cookie Settings",
-      ccpa: "Do Not Sell My Info",
-    }
-};
+  },
+  experiences: {
+    diving: { title: "Kupiga Mbizi", desc: "Miamba ya baharini yenye viumbe hai vya baharini vingi." },
+    dolphins: { title: "Kuogelea na Pomboo", desc: "Mwingiliano wa kimaadili na pomboo wa kawaida." },
+    lighthouse: { title: "Kupanda Mlima wa Taa", desc: "Panda mlima hadi taa ya zamani ya bahari kwa maono ya kuvutia." },
+    seafari: { title: "Safari za Baharini", desc: "Safari za baharini kwa nyangumi (Mei–Oktoba) na zaidi." },
+    safari: { title: "Safari za Nchi Kavu", desc: "Matukio ya msituni kwa safari fupi ya gari." },
+    fishing: { title: "Uvuvi wa Ufukweni na Bahari ya Kina", desc: "Kutoka kwa kurusha kwenye ufukwe hadi safari za bahari ya kina." },
+    surfing: { title: "Mbao za Kuteleza na Mafunzo", desc: "Shika mawimbi au jifunze misingi." },
+  },
+},
 
 export default UI;
