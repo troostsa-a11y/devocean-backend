@@ -473,11 +473,33 @@
       margin: 0;
       opacity: 0.95;
     }
-    /* Hide placeholder when React renders */
+    /* Hide placeholder when React renders (controlled by JavaScript delay below) */
     #root:not(:empty) ~ #hero-placeholder {
-      display: none;
+      opacity: 1;
+      transition: opacity 0.5s ease-out;
+    }
+    #hero-placeholder.fade-out {
+      opacity: 0;
+      pointer-events: none;
     }
   </style>
+
+  <!-- Hero placeholder timer (shows for 5 seconds) -->
+  <script>
+    (function() {
+      // Keep hero placeholder visible for 5 seconds even after React loads
+      setTimeout(function() {
+        var placeholder = document.getElementById('hero-placeholder');
+        if (placeholder) {
+          placeholder.classList.add('fade-out');
+          // Remove from DOM after fade completes
+          setTimeout(function() {
+            placeholder.style.display = 'none';
+          }, 500);
+        }
+      }, 5000); // 5 seconds
+    })();
+  </script>
 
   <!-- Early interaction handler (improves INP by providing instant feedback) -->
   <script>
