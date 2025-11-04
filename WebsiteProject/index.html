@@ -425,7 +425,7 @@
       width: 100%;
       height: 100vh;
       z-index: 1;
-      background: #9e4b13;
+      background: #000;
     }
     #hero-placeholder picture {
       position: absolute;
@@ -433,6 +433,8 @@
       left: 0;
       width: 100%;
       height: 100%;
+      opacity: 0;
+      animation: fadeInImage 0.8s ease-out forwards;
     }
     #hero-placeholder img {
       width: 100%;
@@ -448,6 +450,8 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
       z-index: 2;
+      opacity: 0;
+      animation: fadeInImage 0.8s ease-out forwards;
     }
     #hero-placeholder .content {
       position: absolute;
@@ -461,6 +465,8 @@
       max-width: 900px;
       width: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      opacity: 0;
+      animation: fadeInText 1s ease-out 0.4s forwards;
     }
     #hero-placeholder h1 {
       font-size: clamp(2rem, 5vw, 3.75rem);
@@ -473,6 +479,20 @@
       line-height: 1.6;
       margin: 0;
       opacity: 0.95;
+    }
+    @keyframes fadeInImage {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInText {
+      from { 
+        opacity: 0;
+        transform: translate(-50%, -45%);
+      }
+      to { 
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
     }
     /* Hide placeholder when React renders (controlled by JavaScript delay below) */
     #root:not(:empty) ~ #hero-placeholder {
