@@ -27,8 +27,19 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   };
 
   const handleAnchorNav = (e, href) => {
-    // Let the browser handle smooth scrolling natively
-    // The CSS scroll-margin-top will handle the offset
+    const id = href.startsWith('#') ? href.slice(1) : '';
+    const el = id ? document.getElementById(id) : null;
+
+    if (el) {
+      e.preventDefault();
+      const rectTop = el.getBoundingClientRect().top + window.scrollY;
+      const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--stack-h')) || 0;
+      window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
+
+      const newUrl = `${window.location.pathname}${window.location.search}#${id}`;
+      window.history.replaceState({}, '', newUrl);
+    }
+    
     setMenuOpen(false);
   };
 
