@@ -477,6 +477,7 @@
       height: 100vh;
       z-index: 1;
       background: #000;
+      transition: opacity 0.8s ease-out;
     }
     #hero-placeholder picture {
       position: absolute;
@@ -580,7 +581,7 @@
           // Remove from DOM after fade completes
           setTimeout(function() {
             placeholder.style.display = 'none';
-          }, 500);
+          }, 800);
         }
         
         // Show main app
@@ -591,7 +592,7 @@
         // Restore scrollbar AFTER fade completes (avoid showing scrollbar during fade)
         setTimeout(function() {
           document.documentElement.classList.remove('hero-active');
-        }, 600); // 600ms = 500ms fade + 100ms buffer
+        }, 900); // 900ms = 800ms fade + 100ms buffer
       }, 5000); // 5 seconds
     })();
   </script>
