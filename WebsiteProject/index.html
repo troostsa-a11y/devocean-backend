@@ -419,9 +419,12 @@
   <!-- Critical CSS for instant hero display (before React loads) -->
   <style>
     /* Hide scrollbar during hero placeholder */
-    body.hero-active {
-      overflow: hidden;
+    html.hero-active,
+    html.hero-active body {
+      overflow: hidden !important;
       height: 100vh;
+      position: fixed;
+      width: 100%;
     }
     #hero-placeholder {
       position: fixed;
@@ -521,8 +524,8 @@
   <!-- Hero placeholder timer (shows for 5 seconds) -->
   <script>
     (function() {
-      // Add class to body to hide scrollbar during hero
-      document.body.classList.add('hero-active');
+      // Add class to html to hide scrollbar during hero
+      document.documentElement.classList.add('hero-active');
       
       // Keep hero placeholder visible for 5 seconds even after React loads
       setTimeout(function() {
@@ -543,7 +546,7 @@
         }
         
         // Restore scrollbar
-        document.body.classList.remove('hero-active');
+        document.documentElement.classList.remove('hero-active');
       }, 5000); // 5 seconds
     })();
   </script>
