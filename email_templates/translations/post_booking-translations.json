@@ -92,7 +92,9 @@
   "pt-PT": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
     "headerSubtitle": "A Sua Casa à Beira-Mar em Ponta do Ouro",
-    "greeting": "Caro(a) {{firstName}}",
+    "greetingMale": "Caro {{firstName}}",
+    "greetingFemale": "Cara {{firstName}}",
+    "greetingNeutral": "Caro(a) {{firstName}}",
     "intro": "Estamos muito felizes por ter escolhido o DEVOCEAN Lodge — a sua casa à beira-mar na belíssima Ponta do Ouro.",
     "arrivalLabel": "Chegada",
     "departureLabel": "Partida",
@@ -137,7 +139,9 @@
   "pt-BR": {
     "subject": "Reserva Confirmada - DEVOCEAN Lodge",
     "headerSubtitle": "Sua Casa à Beira-Mar em Ponta do Ouro",
-    "greeting": "Caro(a) {{firstName}}",
+    "greetingMale": "Caro {{firstName}}",
+    "greetingFemale": "Cara {{firstName}}",
+    "greetingNeutral": "Caro(a) {{firstName}}",
     "intro": "Estamos muito felizes por você ter escolhido o DEVOCEAN Lodge — sua casa à beira-mar na belíssima Ponta do Ouro.",
     "arrivalLabel": "Chegada",
     "departureLabel": "Partida",
@@ -317,7 +321,9 @@
   "de-DE": {
     "subject": "Buchung Bestätigt - DEVOCEAN Lodge",
     "headerSubtitle": "Ihr Zuhause am Meer in Ponta do Ouro",
-    "greeting": "Liebe(r) {{firstName}}",
+    "greetingMale": "Lieber {{firstName}}",
+    "greetingFemale": "Liebe {{firstName}}",
+    "greetingNeutral": "Liebe(r) {{firstName}}",
     "intro": "Wir freuen uns, dass Sie sich für einen Aufenthalt in der DEVOCEAN Lodge entschieden haben — Ihr Zuhause am Meer im wunderschönen Ponta do Ouro.",
     "arrivalLabel": "Anreise",
     "departureLabel": "Abreise",
