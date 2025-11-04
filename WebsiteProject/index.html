@@ -415,6 +415,69 @@
       });
     })();
   </script>
+
+  <!-- Critical CSS for instant hero display (before React loads) -->
+  <style>
+    #hero-placeholder {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 1;
+      background: #9e4b13;
+    }
+    #hero-placeholder picture {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    #hero-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    #hero-placeholder .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 2;
+    }
+    #hero-placeholder .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      text-align: center;
+      color: white;
+      padding: 1rem;
+      max-width: 900px;
+      width: 100%;
+    }
+    #hero-placeholder h1 {
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 1rem 0;
+    }
+    #hero-placeholder p {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.6;
+      margin: 0;
+      opacity: 0.95;
+    }
+    /* Hide placeholder when React renders */
+    #root:not(:empty) ~ #hero-placeholder {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -428,6 +491,20 @@
   <script type="module" src="/src/main.jsx"></script>
 
   <div id="root"></div>
+
+  <!-- Static hero image (displays instantly before React loads) -->
+  <div id="hero-placeholder">
+    <picture>
+      <source media="(max-width: 800px)" srcset="/photos/hero01-mobile.webp" type="image/webp">
+      <source media="(min-width: 801px)" srcset="/photos/hero01.webp" type="image/webp">
+      <img src="/photos/hero01.jpg" alt="DEVOCEAN Lodge" fetchpriority="high" loading="eager">
+    </picture>
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>Eco Beach Accommodation in Ponta do Ouro</h1>
+      <p>Safari tents, cottage & chalet near the beach with warm, family-run hospitality</p>
+    </div>
+  </div>
 </body>
 
 </html>
