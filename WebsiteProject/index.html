@@ -46,7 +46,7 @@
     });
   </script>
 
-  <!-- Google Tag Manager (Delayed Load for PageSpeed) -->
+  <!-- Google Tag Manager (Delayed Load - After Hero Finishes) -->
   <script>
     (function() {
       var gtmLoaded = false;
@@ -59,8 +59,8 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-532W3HH2');
       }
-      // Load after 3 seconds
-      setTimeout(loadGTM, 3000);
+      // Load after 6 seconds (after hero placeholder finishes)
+      setTimeout(loadGTM, 6000);
       // Or load on first user interaction
       ['scroll','mousemove','touchstart','click'].forEach(function(e){
         window.addEventListener(e, loadGTM, {once: true, passive: true});
@@ -69,8 +69,27 @@
   </script>
   <!-- End Google Tag Manager -->
 
-  <!-- Start cookieyes banner -->
-  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js" defer></script>
+  <!-- Start cookieyes banner (Delayed Load - After Hero Finishes) -->
+  <script>
+    (function() {
+      var cookieyesLoaded = false;
+      function loadCookieyes() {
+        if (cookieyesLoaded) return;
+        cookieyesLoaded = true;
+        var s = document.createElement('script');
+        s.id = 'cookieyes';
+        s.type = 'text/javascript';
+        s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
+        document.head.appendChild(s);
+      }
+      // Load after 6 seconds (after hero placeholder finishes)
+      setTimeout(loadCookieyes, 6000);
+      // Or load on first user interaction
+      ['scroll','mousemove','touchstart','click'].forEach(function(e){
+        window.addEventListener(e, loadCookieyes, {once: true, passive: true});
+      });
+    })();
+  </script>
   <!-- End cookieyes banner -->
 
   <!-- Trustindex Rich Snippet (Lazy Loaded) -->
