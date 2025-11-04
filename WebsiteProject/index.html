@@ -540,13 +540,15 @@
           }, 500);
         }
         
-        // Show main app and restore scrolling at the same time
+        // Show main app
         if (root) {
           root.classList.add('show');
         }
         
-        // Restore scrollbar
-        document.documentElement.classList.remove('hero-active');
+        // Restore scrollbar AFTER fade completes (avoid showing scrollbar during fade)
+        setTimeout(function() {
+          document.documentElement.classList.remove('hero-active');
+        }, 600); // 600ms = 500ms fade + 100ms buffer
       }, 5000); // 5 seconds
     })();
   </script>
