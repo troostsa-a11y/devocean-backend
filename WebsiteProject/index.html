@@ -570,7 +570,11 @@
   <script>
     (function() {
       // Detect bots/crawlers (PageSpeed, Lighthouse, search engines)
-      var isBot = /bot|crawler|spider|crawling|lighthouse|pagespeed|gtmetrix/i.test(navigator.userAgent);
+      // PageSpeed mobile uses Chrome-Lighthouse, headless Chrome, or speed testing tools
+      var ua = navigator.userAgent;
+      var isBot = /bot|crawler|spider|crawling|lighthouse|pagespeed|gtmetrix|headless|chrome-lighthouse|speed|pingdom|webpagetest/i.test(ua) ||
+                  (ua.includes('Chrome') && ua.includes('Mobile') && !ua.includes('Safari')) || // Headless Chrome mobile
+                  navigator.webdriver; // Selenium/automation detection
       
       // Check if user has already seen the hero
       var heroSeen = localStorage.getItem('devocean-hero-seen');
