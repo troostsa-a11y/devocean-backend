@@ -566,17 +566,34 @@
     }
   </style>
 
-  <!-- Hero placeholder timer (shows for 5 seconds) -->
+  <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
   <script>
     (function() {
-      // Add class to html to hide scrollbar during hero
+      var placeholder = document.getElementById('hero-placeholder');
+      var root = document.getElementById('root');
+      
+      // Check if user has already seen the hero
+      var heroSeen = localStorage.getItem('devocean-hero-seen');
+      
+      if (heroSeen) {
+        // Skip hero - show main site immediately
+        if (placeholder) {
+          placeholder.style.display = 'none';
+        }
+        if (root) {
+          root.classList.add('show');
+        }
+        return;
+      }
+      
+      // First visit - show hero opening sequence
       document.documentElement.classList.add('hero-active');
+      
+      // Mark hero as seen
+      localStorage.setItem('devocean-hero-seen', 'true');
       
       // Keep hero placeholder visible for 5 seconds even after React loads
       setTimeout(function() {
-        var placeholder = document.getElementById('hero-placeholder');
-        var root = document.getElementById('root');
-        
         if (placeholder) {
           placeholder.classList.add('fade-out');
           // Remove from DOM after fade completes
