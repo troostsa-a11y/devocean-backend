@@ -572,15 +572,18 @@
                   navigator.webdriver; // Selenium/automation detection
       
       // Check if user has already seen the hero
-      var heroSeen = localStorage.getItem('devocean-hero-seen');
+      // Use sessionStorage (persists during SPA navigation, clears on tab close)
+      // and localStorage (persists across browser sessions)
+      var heroSeenThisSession = sessionStorage.getItem('devocean-hero-seen');
+      var heroSeenEver = localStorage.getItem('devocean-hero-seen');
       
       // Wait for DOM to be ready
       function init() {
         var placeholder = document.getElementById('hero-placeholder');
         var root = document.getElementById('root');
         
-        // Skip hero for bots/crawlers OR returning visitors
-        if (isBot || heroSeen) {
+        // Skip hero for bots/crawlers OR if already shown this session OR returning visitor
+        if (isBot || heroSeenThisSession || heroSeenEver) {
           // Skip hero - show main site immediately
           if (placeholder) {
             placeholder.style.display = 'none';
@@ -592,7 +595,8 @@
         // Note: Content renders underneath, hero is just a visual overlay
         document.documentElement.classList.add('hero-active');
         
-        // Mark hero as seen immediately
+        // Mark hero as seen immediately (both session and persistent)
+        sessionStorage.setItem('devocean-hero-seen', 'true');
         localStorage.setItem('devocean-hero-seen', 'true');
         
         // Keep hero placeholder visible for 5 seconds, then fade out
