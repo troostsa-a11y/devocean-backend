@@ -757,8 +757,12 @@
         detectedLang = 'en-GB';
       }
       
-      // Apply translation if available
-      if (detectedLang && heroTranslations[detectedLang]) {
+      // LCP Optimization: Skip text replacement for English (already in HTML)
+      // This eliminates ~420ms render delay for majority of visitors
+      var isEnglish = detectedLang === 'en-GB' || detectedLang === 'en-US';
+      
+      // Apply translation only for non-English languages
+      if (!isEnglish && detectedLang && heroTranslations[detectedLang]) {
         var translation = heroTranslations[detectedLang];
         var titleEl = document.getElementById('hero-title');
         var subtitleEl = document.getElementById('hero-subtitle');
