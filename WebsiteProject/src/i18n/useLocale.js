@@ -546,10 +546,17 @@ export function useLocale() {
         // Version 2: Force IP-based re-detection (Nov 2025 - fix language detection)
         const CURRENT_VERSION = "2";
         
-        // Skip if user has manually selected language or came from booking engine
-        if (langSource === "user" || langSource === "url") return;
+        // CRITICAL: Always skip if user has manually selected language or came from booking engine
+        // This prevents overriding user preferences during navigation
+        if (langSource === "user" || langSource === "url") {
+          // Set version flag even for user-selected languages to prevent re-detection
+          if (langVersion !== CURRENT_VERSION) {
+            localStorage.setItem("site.lang.version", CURRENT_VERSION);
+          }
+          return;
+        }
         
-        // Force re-detection if version is old or missing
+        // Force re-detection if version is old or missing (only for auto-detected languages)
         if (langVersion !== CURRENT_VERSION) {
           console.log("[Localization] Updating to version 2 - running IP-based language detection");
           const detectedLang = detectLangFromIP();
