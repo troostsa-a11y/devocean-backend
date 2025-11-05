@@ -579,7 +579,6 @@
         
         if (heroSeen) {
           // Skip hero - show main site immediately
-          console.log('[Hero Debug] Returning visitor - skipping hero');
           if (placeholder) {
             placeholder.style.display = 'none';
           }
@@ -588,14 +587,12 @@
           }
           return;
         }
-        console.log('[Hero Debug] First visit - showing hero for 5 seconds');
         
         // First visit - show hero opening sequence
         document.documentElement.classList.add('hero-active');
         
-        // Mark hero as seen IMMEDIATELY (before showing hero)
+        // Mark hero as seen immediately
         localStorage.setItem('devocean-hero-seen', 'true');
-        console.log('[Hero Debug] Hero marked as seen in localStorage');
         
         // Keep hero placeholder visible for 5 seconds even after React loads
         setTimeout(function() {

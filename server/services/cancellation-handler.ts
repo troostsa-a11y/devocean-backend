@@ -20,7 +20,7 @@ interface SMTPConfig {
 
 export class CancellationHandler {
   private db: DatabaseService;
-  private transporter?: nodemailer.Transporter;
+  private transporter?: ReturnType<typeof nodemailer.createTransport>;
   private fromEmail: string;
   private fromName: string;
   private bccEmail?: string;
