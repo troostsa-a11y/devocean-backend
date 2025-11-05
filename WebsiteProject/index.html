@@ -512,8 +512,9 @@
       max-width: 900px;
       width: 100%;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      opacity: 0;
-      animation: fadeInText 1s ease-out 0.4s forwards;
+      /* LCP Optimization: Start visible, add subtle fade-in without delay */
+      opacity: 1;
+      animation: subtleFadeIn 0.4s ease-out forwards;
     }
     #hero-placeholder h1 {
       font-size: clamp(2rem, 5vw, 3.75rem);
@@ -531,14 +532,12 @@
       from { opacity: 0; }
       to { opacity: 1; }
     }
-    @keyframes fadeInText {
+    @keyframes subtleFadeIn {
       from { 
-        opacity: 0;
-        transform: translate(-50%, -45%);
+        opacity: 0.7;
       }
       to { 
         opacity: 1;
-        transform: translate(-50%, -50%);
       }
     }
     /* Hide placeholder when React renders (controlled by JavaScript delay below) */
