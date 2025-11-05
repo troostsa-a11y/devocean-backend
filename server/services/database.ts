@@ -2,7 +2,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations } from '../../shared/schema';
 import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail } from '../../shared/schema';
-import { eq, and, lte, gte, isNull } from 'drizzle-orm';
+import { eq, and, lte, gte, isNull, sql } from 'drizzle-orm';
 
 /**
  * Database Service
@@ -254,6 +254,15 @@ export class DatabaseService {
   }
 
   /**
+   * Delete a booking (for modifications - booking will be recreated with updated data)
+   */
+  async deleteBooking(bookingId: number): Promise<void> {
+    await this.db
+      .delete(bookings)
+      .where(eq(bookings.id, bookingId));
+  }
+
+  /**
    * Cancel all pending scheduled emails for a booking
    */
   async cancelScheduledEmailsForBooking(bookingId: number): Promise<void> {
@@ -322,6 +331,15 @@ export class DatabaseService {
         processedAt: new Date(),
       })
       .where(eq(pendingCancellations.id, id));
+  }
+
+  /**
+   * Delete pending cancellation for a booking (used when processing modifications)
+   */
+  async deletePendingCancellation(groupRef: string): Promise<void> {
+    await this.db
+      .delete(pendingCancellations)
+      .where(eq(pendingCancellations.groupRef, groupRef));
   }
 
   /**

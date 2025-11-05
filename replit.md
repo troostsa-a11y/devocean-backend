@@ -40,7 +40,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website in Ponta do Ouro, 
 - **Server Framework:** Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation).
 - **Storage Layer:** In-memory storage (`MemStorage`) for future database integration.
 - **Database Schema:** Drizzle ORM configured for PostgreSQL with Zod schemas.
-- **Email Automation System:** Node.js (TypeScript) service processing Beds24 booking notifications via IMAP and sending multi-language automated emails using Resend API. Scheduling operates in Central African Time (CAT/UTC+2) for post-booking, pre-arrival, arrival, and post-departure emails. Supports 17 languages with template-based system and cancellation handling.
+- **Email Automation System:** Node.js (TypeScript) service processing Beds24 booking notifications via IMAP and sending multi-language automated emails using Resend API. Scheduling operates in Central African Time (CAT/UTC+2) for post-booking, pre-arrival, arrival, and post-departure emails. Supports 17 languages with template-based system, cancellation handling, and modification handling. **Modification Handling (Nov 5, 2025):** System detects modification emails, deletes old booking records and scheduled emails, then processes the modification as a fresh booking with updated data.
 - **Contact Form System:** Dual-environment setup (Express.js for dev, Cloudflare Pages Function for prod) with comprehensive security (input sanitization, reCAPTCHA v3, HTML escaping) and localized auto-reply emails via Resend API.
 
 ### Project Structure
