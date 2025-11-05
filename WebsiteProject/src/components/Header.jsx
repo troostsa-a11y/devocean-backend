@@ -124,6 +124,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
               className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
+              aria-label="Select language"
             >
               {regions[region]?.languages.includes('en-US') && <option value="en-US">English</option>}
               {regions[region]?.languages.includes('en-GB') && <option value="en-GB">English</option>}
