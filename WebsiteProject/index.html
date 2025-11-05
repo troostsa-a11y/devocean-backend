@@ -452,7 +452,8 @@
         s.src = 'https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8';
         document.head.appendChild(s);
       }
-      setTimeout(loadCert, 5000);
+      // Delay to 10 seconds to avoid competing with hero transition (5s hero + 5s buffer)
+      setTimeout(loadCert, 10000);
       ['scroll','touchstart','click'].forEach(function(e){
         window.addEventListener(e, loadCert, {once: true, passive: true});
       });
