@@ -563,13 +563,6 @@
   <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
   <script>
     (function() {
-      // Detect bots/crawlers (PageSpeed, Lighthouse, search engines)
-      // PageSpeed mobile uses Chrome-Lighthouse, headless Chrome, or speed testing tools
-      var ua = navigator.userAgent;
-      var isBot = /bot|crawler|spider|crawling|lighthouse|pagespeed|gtmetrix|headless|chrome-lighthouse|speed|pingdom|webpagetest/i.test(ua) ||
-                  (ua.includes('Chrome') && ua.includes('Mobile') && !ua.includes('Safari')) || // Headless Chrome mobile
-                  navigator.webdriver; // Selenium/automation detection
-      
       // Check if user has already seen the hero
       // Use sessionStorage (persists during SPA navigation, clears on tab close)
       // and localStorage (persists across browser sessions)
@@ -581,8 +574,9 @@
         var placeholder = document.getElementById('hero-placeholder');
         var root = document.getElementById('root');
         
-        // Skip hero for bots/crawlers OR if already shown this session OR returning visitor
-        if (isBot || heroSeenThisSession || heroSeenEver) {
+        // Skip hero if already shown this session OR returning visitor
+        // Note: PageSpeed and real users both see the optimized placeholder for accurate LCP measurement
+        if (heroSeenThisSession || heroSeenEver) {
           // Skip hero - show main site immediately
           if (placeholder) {
             placeholder.style.display = 'none';
