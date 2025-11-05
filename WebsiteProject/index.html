@@ -569,51 +569,61 @@
   <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
   <script>
     (function() {
-      var placeholder = document.getElementById('hero-placeholder');
-      var root = document.getElementById('root');
-      
       // Check if user has already seen the hero
       var heroSeen = localStorage.getItem('devocean-hero-seen');
       
-      if (heroSeen) {
-        // Skip hero - show main site immediately
-        if (placeholder) {
-          placeholder.style.display = 'none';
-        }
-        if (root) {
-          root.classList.add('show');
-        }
-        return;
-      }
-      
-      // First visit - show hero opening sequence
-      document.documentElement.classList.add('hero-active');
-      
-      // Mark hero as seen
-      localStorage.setItem('devocean-hero-seen', 'true');
-      
-      // Keep hero placeholder visible for 5 seconds even after React loads
-      setTimeout(function() {
-        if (placeholder) {
-          placeholder.classList.add('fade-out');
-          // Remove from DOM after fade completes
-          setTimeout(function() {
-            placeholder.style.display = 'none';
-          }, 800);
-        }
+      // Wait for DOM to be ready
+      function init() {
+        var placeholder = document.getElementById('hero-placeholder');
+        var root = document.getElementById('root');
         
-        // Show main app AFTER hero starts fading (create cross-fade effect)
-        setTimeout(function() {
+        if (heroSeen) {
+          // Skip hero - show main site immediately
+          if (placeholder) {
+            placeholder.style.display = 'none';
+          }
           if (root) {
             root.classList.add('show');
           }
-        }, 300); // Start fading in main site 300ms after hero starts fading out
+          return;
+        }
         
-        // Restore scrollbar AFTER fade completes (avoid showing scrollbar during fade)
+        // First visit - show hero opening sequence
+        document.documentElement.classList.add('hero-active');
+        
+        // Mark hero as seen
+        localStorage.setItem('devocean-hero-seen', 'true');
+        
+        // Keep hero placeholder visible for 5 seconds even after React loads
         setTimeout(function() {
-          document.documentElement.classList.remove('hero-active');
-        }, 900); // 900ms = 800ms fade + 100ms buffer
-      }, 5000); // 5 seconds
+          if (placeholder) {
+            placeholder.classList.add('fade-out');
+            // Remove from DOM after fade completes
+            setTimeout(function() {
+              placeholder.style.display = 'none';
+            }, 800);
+          }
+          
+          // Show main app AFTER hero starts fading (create cross-fade effect)
+          setTimeout(function() {
+            if (root) {
+              root.classList.add('show');
+            }
+          }, 300); // Start fading in main site 300ms after hero starts fading out
+          
+          // Restore scrollbar AFTER fade completes (avoid showing scrollbar during fade)
+          setTimeout(function() {
+            document.documentElement.classList.remove('hero-active');
+          }, 900); // 900ms = 800ms fade + 100ms buffer
+        }, 5000); // 5 seconds
+      }
+      
+      // Run init when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
     })();
   </script>
 
