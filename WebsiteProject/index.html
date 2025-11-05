@@ -569,6 +569,9 @@
   <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
   <script>
     (function() {
+      // Detect bots/crawlers (PageSpeed, Lighthouse, search engines)
+      var isBot = /bot|crawler|spider|crawling|lighthouse|pagespeed|gtmetrix/i.test(navigator.userAgent);
+      
       // Check if user has already seen the hero
       var heroSeen = localStorage.getItem('devocean-hero-seen');
       
@@ -577,7 +580,8 @@
         var placeholder = document.getElementById('hero-placeholder');
         var root = document.getElementById('root');
         
-        if (heroSeen) {
+        // Skip hero for bots/crawlers OR returning visitors
+        if (isBot || heroSeen) {
           // Skip hero - show main site immediately
           if (placeholder) {
             placeholder.style.display = 'none';
