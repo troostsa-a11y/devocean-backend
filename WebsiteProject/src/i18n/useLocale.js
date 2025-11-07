@@ -4,6 +4,15 @@ import { CRITICAL_NAV } from './critical.js';
 const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
 
+// Language-to-region mapping (module-level constant)
+const LANGUAGE_TO_REGION = {
+  'europe': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'],
+  'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
+  'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
+  'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
+  'oceania': ['en-GB']
+};
+
 // Helper to get URL parameters
 function getUrlParam(name) {
   if (typeof window === 'undefined') return null;
@@ -385,6 +394,19 @@ function detectRegionFromIP() {
   return "europe";
 }
 
+// Find compatible region for a language (module-level helper)
+function findRegionForLanguage(language) {
+  // Find first region that supports this language
+  for (const [regionKey, languages] of Object.entries(LANGUAGE_TO_REGION)) {
+    if (languages.includes(language)) {
+      return regionKey;
+    }
+  }
+  
+  // Fallback to IP-detected region or europe
+  return detectRegionFromIP();
+}
+
 // Dynamically load translations for a specific language
 // Now loads only the needed language file (~7KB) instead of all languages (152KB)
 async function loadTranslations(lang) {
@@ -503,27 +525,6 @@ export function useLocale() {
     return ipCurrency;
   });
 
-  // Helper: Find compatible region for a language
-  const findRegionForLanguage = (language) => {
-    const LANGUAGE_TO_REGION = {
-      'europe': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'],
-      'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
-      'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
-      'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
-      'oceania': ['en-GB']
-    };
-    
-    // Find first region that supports this language
-    for (const [regionKey, languages] of Object.entries(LANGUAGE_TO_REGION)) {
-      if (languages.includes(language)) {
-        return regionKey;
-      }
-    }
-    
-    // Fallback to IP-detected region or europe
-    return detectRegionFromIP();
-  };
-
   const [region, setRegionState] = useState(() => {
     // Check if language was set via URL parameter
     const urlLang = getUrlParam('lang');
@@ -575,15 +576,6 @@ export function useLocale() {
       return; // User manually selected region, don't override
     }
     
-    // Check if current language is available in current region
-    const LANGUAGE_TO_REGION = {
-      'europe': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'],
-      'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
-      'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
-      'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
-      'oceania': ['en-GB']
-    };
-    
     const currentRegionLanguages = LANGUAGE_TO_REGION[region] || [];
     
     // If current language is not in current region, find compatible region
@@ -597,7 +589,7 @@ export function useLocale() {
         localStorage.setItem("site.region.source", "auto");
       }
     }
-  }, [lang, region, findRegionForLanguage]);
+  }, [lang, region]); // Removed findRegionForLanguage from dependencies to prevent infinite loop
 
   // Deferred IP-based detection (runs during idle time for better INP)
   useEffect(() => {

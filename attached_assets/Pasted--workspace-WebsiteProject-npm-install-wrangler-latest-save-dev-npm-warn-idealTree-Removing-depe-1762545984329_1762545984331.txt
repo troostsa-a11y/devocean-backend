@@ -1,0 +1,131 @@
+~/workspace/WebsiteProject$ npm install wrangler@latest --save-dev
+npm warn idealTree Removing dependencies.wrangler in favor of devDependencies.wrangler
+
+added 13 packages, changed 4 packages, and audited 425 packages in 11s
+
+85 packages are looking for funding
+  run `npm fund` for details
+
+10 vulnerabilities (5 moderate, 5 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.
+
+Run `npm audit` for details.
+~/workspace/WebsiteProject$ npm uninstall xlsx
+
+removed 9 packages, and audited 416 packages in 1s
+
+85 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (5 moderate, 4 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+~/workspace/WebsiteProject$ npm audit fix
+
+changed 1 package, and audited 416 packages in 9s
+
+85 packages are looking for funding
+  run `npm fund` for details
+
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix --force`
+Will install drizzle-kit@0.18.1, which is a breaking change
+node_modules/@esbuild-kit/core-utils/node_modules/esbuild
+  @esbuild-kit/core-utils  *
+  Depends on vulnerable versions of esbuild
+  node_modules/@esbuild-kit/core-utils
+    @esbuild-kit/esm-loader  *
+    Depends on vulnerable versions of @esbuild-kit/core-utils
+    node_modules/@esbuild-kit/esm-loader
+      drizzle-kit  0.17.5-6b7793f - 0.17.5-e5944eb || 0.18.1-065de38 - 0.18.1-f3800bf || >=0.19.0-07024c4
+      Depends on vulnerable versions of @esbuild-kit/esm-loader
+      node_modules/drizzle-kit
+
+semver  <5.7.2
+Severity: high
+semver vulnerable to Regular Expression Denial of Service - https://github.com/advisories/GHSA-c2qf-rxjj-qqgw
+fix available via `npm audit fix --force`
+Will install imap-simple@1.6.3, which is a breaking change
+node_modules/utf7/node_modules/semver
+  utf7  >=1.0.2
+  Depends on vulnerable versions of semver
+  node_modules/utf7
+    imap  >=0.8.18
+    Depends on vulnerable versions of utf7
+    node_modules/imap
+      imap-simple  >=2.0.0
+      Depends on vulnerable versions of imap
+      node_modules/imap-simple
+
+8 vulnerabilities (4 moderate, 4 high)
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+~/workspace/WebsiteProject$ npm run build
+
+> devoceanlodge@0.0.1 build
+> vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp booking.html dist/ && cp thankyou.html dist/ && cp -r public dist/ && cp -r translations dist/ && cp -r photos dist/
+
+vite v7.2.2 building client environment for production...
+✓ 1626 modules transformed.
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/i18n/loadTranslation.js is dynamically imported by /home/runner/workspace/WebsiteProject/src/i18n/useLocale.js but also statically imported by /home/runner/workspace/WebsiteProject/src/utils/localize.js, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/components/Footer.jsx is dynamically imported by /home/runner/workspace/WebsiteProject/src/App.jsx but also statically imported by /home/runner/workspace/WebsiteProject/src/components/ExperienceDetailPage.jsx, dynamic import will not move module into another chunk.
+
+dist/index.html                              60.97 kB │ gzip: 15.93 kB
+dist/assets/js/GallerySection-Cnm0ELFQ.js     0.66 kB │ gzip:  0.43 kB
+dist/assets/js/LocationSection-0VM0bblq.js    1.68 kB │ gzip:  0.86 kB
+dist/assets/js/en-GB-CcqEdSkK.js              3.72 kB │ gzip:  2.01 kB
+dist/assets/js/en-US-CcqEdSkK.js              3.72 kB │ gzip:  2.01 kB
+dist/assets/js/pl-Hc0X3FWT.js                 4.24 kB │ gzip:  2.34 kB
+dist/assets/js/pt-BR-BzQHmR9z.js              4.27 kB │ gzip:  2.26 kB
+dist/assets/js/sv-CxFd5R_F.js                 5.80 kB │ gzip:  2.88 kB
+dist/assets/js/af-ZA-CSq-VBMh.js              5.82 kB │ gzip:  2.83 kB
+dist/assets/js/ru-D_F37YH2.js                 6.34 kB │ gzip:  2.78 kB
+dist/assets/js/pt-PT-B__B41uU.js              6.43 kB │ gzip:  3.06 kB
+dist/assets/js/sw-BADpIVSm.js                 6.58 kB │ gzip:  2.94 kB
+dist/assets/js/nl-NL-BND6JOvG.js              7.00 kB │ gzip:  3.14 kB
+dist/assets/js/de-DE-Co5g5CtJ.js              7.06 kB │ gzip:  3.17 kB
+dist/assets/js/it-IT-D6FsJdTl.js              7.09 kB │ gzip:  3.04 kB
+dist/assets/js/es-ES-DGZxUKb-.js              7.11 kB │ gzip:  3.09 kB
+dist/assets/js/zu-CZab1OuD.js                 7.24 kB │ gzip:  3.21 kB
+dist/assets/js/fr-FR-DXuzoKMr.js              7.62 kB │ gzip:  3.20 kB
+dist/assets/js/zh-CN-x5O3oerz.js              9.02 kB │ gzip:  3.43 kB
+dist/assets/js/ContactSection-Ce6A2w72.js     9.21 kB │ gzip:  3.02 kB
+dist/assets/js/vendor-DriAdrV2.js             9.47 kB │ gzip:  4.21 kB
+dist/assets/js/ja-JP-UwXHLRwA.js             13.40 kB │ gzip:  3.64 kB
+dist/assets/js/index-CBcaRjpK.js            131.95 kB │ gzip: 42.95 kB
+dist/assets/js/react-vendor-DxlwR5bq.js     147.92 kB │ gzip: 48.39 kB
+✓ built in 3.86s
+~/workspace/WebsiteProject$ npx wrangler pages deploy dist --project-name devocean-lodge --commit-dirty=true
+
+ ⛅️ wrangler 4.46.0
+───────────────────
+✨ Compiled Worker successfully
+✨ Success! Uploaded 7 files (269 already uploaded) (1.55 sec)
+
+✨ Uploading _headers
+✨ Uploading _redirects
+✨ Uploading Functions bundle
+🌎 Deploying...
+✨ Deployment complete! Take a peek over at https://8b0f386f.devocean-lodge.pages.dev
