@@ -1,14 +1,10 @@
 # DEVOCEAN Lodge Website
 
-## 🚨 **CRITICAL PRODUCTION BUG (Nov 7, 2025)**
-**Issue:** White screen on production when accessing Portuguese language (`?lang=pt` OR `?lang=pt-BR`)
-**Symptoms:**
-- Hero shows for ~5 seconds, then white screen
-- Error: `Uncaught TypeError: Cannot set properties of undefined (setting 'Children')` in React vendor bundle
-- Happens even with cleared localStorage and `?lang=pt-BR` (normalized code)
-- pt-BR.js translation file loads successfully (HTTP 200)
-- Dev environment works perfectly - issue ONLY affects production
-**Status:** Under investigation - React mounting failure specific to Portuguese translations in production build
+## ✅ **RESOLVED: Production Build Issue (Nov 7, 2025)**
+**Issue:** White screen on production for ALL languages (not language-specific as initially thought)
+**Cause:** Custom Vite configuration (manualChunks splitting and/or inlineCSSPlugin) broke React initialization in production builds
+**Solution:** Simplified vite.config.js to minimal configuration - removed custom chunk splitting and CSS inlining plugin
+**Lesson:** Build optimizations can break production in unexpected ways. Always test production builds thoroughly before deploying complex configurations.
 
 ## Overview
 DEVOCEAN Lodge is an eco-friendly beach accommodation website in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele, ensuring legal compliance (GDPR, cookies, privacy policies), and offering a seamless user experience across various devices and 17 languages.

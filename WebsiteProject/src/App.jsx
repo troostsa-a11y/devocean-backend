@@ -20,11 +20,7 @@ const ContactSection = lazy(() => import('./components/ContactSection'));
 const Footer = lazy(() => import('./components/Footer'));
 
 export default function App() {
-  console.log('[App] Component function START');
-  
-  console.log('[App] About to call useLocale');
   const { lang, currency, region, setLang, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
-  console.log('[App] useLocale returned successfully, lang:', lang);
 
   // Handle Hotelrunner locale redirects (e.g., /af-ZA from booking engine)
   useEffect(() => {
@@ -60,7 +56,6 @@ export default function App() {
     };
 
     if (localeRedirects[path]) {
-      console.log('[App] Redirecting from', path, 'to', localeRedirects[path]);
       window.location.replace(localeRedirects[path]);
     }
   }, []);

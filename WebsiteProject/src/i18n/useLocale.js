@@ -454,21 +454,11 @@ function findRegionForLanguage(language) {
 // Dynamically load translations for a specific language
 // Now loads only the needed language file (~7KB) instead of all languages (152KB)
 async function loadTranslations(lang) {
-  console.log(`[useLocale] Loading translations for: ${lang}`);
   try {
     const { loadTranslation } = await import('./loadTranslation.js');
-    const result = await loadTranslation(lang);
-    console.log(`[useLocale] Successfully loaded ${lang}, result type:`, typeof result);
-    console.log(`[useLocale] Result keys:`, result ? Object.keys(result).slice(0, 10) : 'null/undefined');
-    return result;
+    return await loadTranslation(lang);
   } catch (error) {
-    console.error('=== TRANSLATION LOAD ERROR ===');
-    console.error('Failed to load translations for:', lang);
-    console.error('Error:', error);
-    console.error('Error type:', typeof error);
-    console.error('Error string:', String(error));
-    console.error('Stack:', error?.stack || 'No stack');
-    console.error('==============================');
+    console.error('Failed to load translations for:', lang, error);
     throw error;
   }
 }
@@ -527,10 +517,7 @@ function getCriticalUI(lang) {
 }
 
 export function useLocale() {
-  console.log('[useLocale] Hook called - START');
-  
   const [lang, setLangState] = useState(() => {
-    console.log('[useLocale] useState lang initializer START');
     // Priority 1: URL parameter (for return from booking engine)
     const urlLang = getUrlParam('lang');
     if (urlLang) {
@@ -557,9 +544,7 @@ export function useLocale() {
     }
     
     // Priority 3: Auto-detect
-    const result = pickInitialLang();
-    console.log('[useLocale] useState lang initializer END, returning:', result);
-    return result;
+    return pickInitialLang();
   });
 
   // Currency - always based on current IP-detected country
@@ -600,10 +585,7 @@ export function useLocale() {
     return ipCurrency;
   });
 
-  console.log('[useLocale] About to initialize region state');
-  
   const [region, setRegionState] = useState(() => {
-    console.log('[useLocale] useState region initializer START');
     // Check if language was set via URL parameter
     const urlLang = getUrlParam('lang');
     if (urlLang) {
@@ -634,9 +616,7 @@ export function useLocale() {
       localStorage.removeItem("site.region.version");
     }
     
-    const result = pickInitialRegion();
-    console.log('[useLocale] useState region initializer END, returning:', result);
-    return result;
+    return pickInitialRegion();
   });
 
   // Initialize with critical nav for header (immediate render)
