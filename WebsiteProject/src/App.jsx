@@ -30,6 +30,11 @@ export default function App() {
   useEffect(() => {
     const path = window.location.pathname;
     
+    // Only run redirects for locale paths, not root or other paths
+    if (path === '/' || path === '/index.html') {
+      return;
+    }
+    
     // Check stored currency to preserve MZN for Mozambican Afrikaans speakers
     const storedCurrency = localStorage.getItem('site.currency');
     const storedLang = localStorage.getItem('site.lang');
@@ -38,8 +43,8 @@ export default function App() {
       '/af-ZA': storedCurrency === 'MZN' ? '/?lang=af&currency=MZN' : '/?lang=af&currency=ZAR', // Preserve currency (MZN or ZAR)
       '/en-GB': '/?lang=en&currency=GBP',
       '/en-US': '/?lang=en-us&currency=USD',
-      '/pt-PT': '/?lang=pt&currency=EUR',
-      '/pt-BR': storedCurrency === 'MZN' ? '/?lang=pt&currency=MZN' : '/?lang=pt&currency=BRL', // Preserve MZN for Mozambique
+      '/pt-PT': '/?lang=pt-PT&currency=EUR',
+      '/pt-BR': storedCurrency === 'MZN' ? '/?lang=pt-BR&currency=MZN' : '/?lang=pt-BR&currency=BRL', // Preserve MZN for Mozambique
       '/nl-NL': '/?lang=nl&currency=EUR',
       '/fr-FR': '/?lang=fr&currency=EUR',
       '/it-IT': '/?lang=it&currency=EUR',
@@ -55,6 +60,7 @@ export default function App() {
     };
 
     if (localeRedirects[path]) {
+      console.log('[App] Redirecting from', path, 'to', localeRedirects[path]);
       window.location.replace(localeRedirects[path]);
     }
   }, []);
