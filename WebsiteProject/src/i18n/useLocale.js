@@ -529,10 +529,18 @@ export function useLocale() {
       }
     }
     
-    // Priority 2: localStorage
+    // Priority 2: localStorage (MUST normalize in case old short codes are stored)
     const stored = localStorage.getItem("site.lang");
-    if (stored && SUPPORTED_LANGS.includes(stored)) {
-      return stored;
+    if (stored) {
+      const normalized = normalizeLangCode(stored);
+      if (normalized) {
+        // Update localStorage with normalized value to prevent future issues
+        if (normalized !== stored) {
+          console.log(`[Localization] Normalizing stored ${stored} → ${normalized}`);
+          localStorage.setItem("site.lang", normalized);
+        }
+        return normalized;
+      }
     }
     
     // Priority 3: Auto-detect
