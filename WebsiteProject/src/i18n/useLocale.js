@@ -527,7 +527,10 @@ function getCriticalUI(lang) {
 }
 
 export function useLocale() {
+  console.log('[useLocale] Hook called - START');
+  
   const [lang, setLangState] = useState(() => {
+    console.log('[useLocale] useState lang initializer START');
     // Priority 1: URL parameter (for return from booking engine)
     const urlLang = getUrlParam('lang');
     if (urlLang) {
@@ -554,7 +557,9 @@ export function useLocale() {
     }
     
     // Priority 3: Auto-detect
-    return pickInitialLang();
+    const result = pickInitialLang();
+    console.log('[useLocale] useState lang initializer END, returning:', result);
+    return result;
   });
 
   // Currency - always based on current IP-detected country
@@ -595,7 +600,10 @@ export function useLocale() {
     return ipCurrency;
   });
 
+  console.log('[useLocale] About to initialize region state');
+  
   const [region, setRegionState] = useState(() => {
+    console.log('[useLocale] useState region initializer START');
     // Check if language was set via URL parameter
     const urlLang = getUrlParam('lang');
     if (urlLang) {
@@ -626,7 +634,9 @@ export function useLocale() {
       localStorage.removeItem("site.region.version");
     }
     
-    return pickInitialRegion();
+    const result = pickInitialRegion();
+    console.log('[useLocale] useState region initializer END, returning:', result);
+    return result;
   });
 
   // Initialize with critical nav for header (immediate render)
