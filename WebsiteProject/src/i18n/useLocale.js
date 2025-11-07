@@ -503,7 +503,41 @@ export function useLocale() {
     return ipCurrency;
   });
 
+  // Helper: Find compatible region for a language
+  const findRegionForLanguage = (language) => {
+    const LANGUAGE_TO_REGION = {
+      'europe': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'],
+      'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
+      'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
+      'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
+      'oceania': ['en-GB']
+    };
+    
+    // Find first region that supports this language
+    for (const [regionKey, languages] of Object.entries(LANGUAGE_TO_REGION)) {
+      if (languages.includes(language)) {
+        return regionKey;
+      }
+    }
+    
+    // Fallback to IP-detected region or europe
+    return detectRegionFromIP();
+  };
+
   const [region, setRegionState] = useState(() => {
+    // Check if language was set via URL parameter
+    const urlLang = getUrlParam('lang');
+    if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
+      // When language comes from URL, set region to match
+      const compatibleRegion = findRegionForLanguage(urlLang);
+      if (compatibleRegion) {
+        localStorage.setItem("site.region", compatibleRegion);
+        localStorage.setItem("site.region.version", "2");
+        localStorage.setItem("site.region.source", "auto"); // Auto-set based on language
+        return compatibleRegion;
+      }
+    }
+    
     // Only trust localStorage if it has the correct version (IP-based)
     const stored = localStorage.getItem("site.region");
     const version = localStorage.getItem("site.region.version");
@@ -531,6 +565,39 @@ export function useLocale() {
   useEffect(() => {
     setCriticalUI(getCriticalUI(lang));
   }, [lang]);
+
+  // Ensure region is compatible with current language
+  useEffect(() => {
+    const regionSource = localStorage.getItem("site.region.source");
+    
+    // Only auto-adjust region if it wasn't manually selected by user
+    if (regionSource === "user") {
+      return; // User manually selected region, don't override
+    }
+    
+    // Check if current language is available in current region
+    const LANGUAGE_TO_REGION = {
+      'europe': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'],
+      'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
+      'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
+      'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
+      'oceania': ['en-GB']
+    };
+    
+    const currentRegionLanguages = LANGUAGE_TO_REGION[region] || [];
+    
+    // If current language is not in current region, find compatible region
+    if (!currentRegionLanguages.includes(lang)) {
+      const compatibleRegion = findRegionForLanguage(lang);
+      if (compatibleRegion && compatibleRegion !== region) {
+        console.log(`[Localization] Auto-adjusting region from ${region} to ${compatibleRegion} to match language ${lang}`);
+        setRegionState(compatibleRegion);
+        localStorage.setItem("site.region", compatibleRegion);
+        localStorage.setItem("site.region.version", "2");
+        localStorage.setItem("site.region.source", "auto");
+      }
+    }
+  }, [lang, region, findRegionForLanguage]);
 
   // Deferred IP-based detection (runs during idle time for better INP)
   useEffect(() => {
