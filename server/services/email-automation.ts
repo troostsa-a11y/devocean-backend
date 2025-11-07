@@ -98,23 +98,23 @@ export class EmailAutomationService {
 
   /**
    * Start the cron job scheduler
-   * Checks emails at 08:00, 14:00, and 20:00 CAT (Central African Time)
+   * Checks emails every 30 minutes for new bookings, modifications, and cancellations
    * Sends daily report at 14:00 CAT (2 PM)
    * Sends weekly report at 08:00 CAT on Mondays
    */
   start(): void {
     console.log('Starting email automation service...');
 
-    // Schedule: 08:00, 14:00, 20:00 CAT daily (06:00, 12:00, 18:00 UTC)
-    // Cron format: minute hour * * *
-    const emailCheckSchedule = '0 6,12,18 * * *';
+    // Schedule: Every 30 minutes
+    // Cron format: */30 * * * * (runs at :00 and :30 of every hour)
+    const emailCheckSchedule = '*/30 * * * *';
 
     this.cronJob = cron.schedule(emailCheckSchedule, async () => {
       console.log(`[${new Date().toISOString()}] Running scheduled email check...`);
       await this.runEmailCheck();
     });
 
-    console.log(`Email automation scheduled for 08:00, 14:00, 20:00 CAT (06:00, 12:00, 18:00 UTC) daily`);
+    console.log(`Email automation scheduled to check every 30 minutes for new bookings, modifications, and cancellations`);
 
     // Schedule daily report at 14:00 CAT (12:00 UTC)
     if (this.adminReporting) {
