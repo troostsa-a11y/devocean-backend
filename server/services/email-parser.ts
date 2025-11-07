@@ -125,9 +125,10 @@ export class EmailParser {
       const emailMatch = text.match(/Email\s+([^\s\n]+)/i);
       const phoneMatch = text.match(/(\+?\d{10,15})/);
       
-      // Check for "Preferred Language" / "Bevorzugte Sprache" first, then fallback to "Language"
-      // Supports both 2-letter codes (EN, DE) and full names (English, Englisch, Deutsch)
-      const preferredLanguageMatch = text.match(/(?:Preferred Language|Bevorzugte Sprache)\s*:?\s*([A-Za-z]{2,})/i);
+      // Check for "Preferred Language" in multiple languages, then fallback to "Language"
+      // Supports: English, German, Portuguese, Spanish, French, Italian, Dutch, and more
+      // Supports both 2-letter codes (EN, DE) and full names (English, Englisch, Deutsch, Português)
+      const preferredLanguageMatch = text.match(/(?:Preferred Language|Bevorzugte Sprache|Idioma preferido|Langue préférée|Lingua preferita|Voorkeurstaal|Preferowany język|Föredra språk|Preferert språk)\s*:?\s*([A-Za-zÀ-ÿ]{2,})/i);
       const languageMatch = text.match(/Language\s+([A-Z]{2})/i);
       
       // Extract gender from booking data or infer from title
