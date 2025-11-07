@@ -125,10 +125,11 @@ export class EmailParser {
       const emailMatch = text.match(/Email\s+([^\s\n]+)/i);
       const phoneMatch = text.match(/(\+?\d{10,15})/);
       
-      // Check for "Preferred Language" in multiple languages, then fallback to "Language"
-      // Supports: English, German, Portuguese, Spanish, French, Italian, Dutch, and more
-      // Supports both 2-letter codes (EN, DE) and full names (English, Englisch, Deutsch, Português)
-      const preferredLanguageMatch = text.match(/(?:Preferred Language|Bevorzugte Sprache|Idioma preferido|Langue préférée|Lingua preferita|Voorkeurstaal|Preferowany język|Föredra språk|Preferert språk)\s*:?\s*([A-Za-zÀ-ÿ]{2,})/i);
+      // Check for "Preferred Language" in ALL 17 supported languages, then fallback to "Language"
+      // English, German, Portuguese, Spanish, French, Italian, Dutch, Polish, Swedish,
+      // Japanese, Chinese, Russian, Afrikaans, Zulu, Swahili
+      // Supports both 2-letter codes (EN, DE, PT) and full names (English, Português, 日本語)
+      const preferredLanguageMatch = text.match(/(?:Preferred Language|Bevorzugte Sprache|Idioma preferido|Langue préférée|Lingua preferita|Voorkeurstaal|Preferowany język|Föredraget språk|優先言語|首选语言|Предпочитаемый язык|Voorkeur taal|Ulimi olukhethiwe|Lugha inayopendelewa)\s*:?\s*([A-Za-zÀ-ÿ一-龯ぁ-ゔァ-ヴー々〆〤А-я]{2,})/i);
       const languageMatch = text.match(/Language\s+([A-Z]{2})/i);
       
       // Extract gender from booking data or infer from title
