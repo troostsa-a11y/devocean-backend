@@ -1,0 +1,39 @@
+?lang=pt-BR:17 [Localization Debug] Country code: MZ
+?lang=pt-BR:18 [Localization Debug] localStorage lang: null
+?lang=pt-BR:19 [Localization Debug] Browser language: en-US
+index-DVKxgnl7.js:8 [App] Component function START
+index-DVKxgnl7.js:8 [App] About to call useLocale
+index-DVKxgnl7.js:8 [useLocale] Hook called - START
+index-DVKxgnl7.js:8 [useLocale] useState lang initializer START
+index-DVKxgnl7.js:8 [useLocale] About to initialize region state
+index-DVKxgnl7.js:8 [useLocale] useState region initializer START
+index-DVKxgnl7.js:8 [App] useLocale returned successfully, lang: pt-BR
+index-DVKxgnl7.js:8 [useLocale] Loading translations for: pt-BR
+index-DVKxgnl7.js:8 [App] Component function START
+index-DVKxgnl7.js:8 [App] About to call useLocale
+index-DVKxgnl7.js:8 [useLocale] Hook called - START
+index-DVKxgnl7.js:8 [useLocale] About to initialize region state
+index-DVKxgnl7.js:8 [App] useLocale returned successfully, lang: pt-BR
+tomb7fwrww?ref=gtm:1 Data from this session is not being collected by Microsoft Clarity due to your configured project settings
+overrideMethod @ hook.js:608
+(anonymous) @ tomb7fwrww?ref=gtm:1
+index-DVKxgnl7.js:8 [useLocale] Successfully loaded pt-BR, result type: object
+index-DVKxgnl7.js:8 [useLocale] Result keys: (10) ['menu', 'regions', 'nav', 'hero', 'stay', 'experiences', 'todo', 'gallery', 'location', 'contact']
+index-DVKxgnl7.js:8 [App] Component function START
+index-DVKxgnl7.js:8 [App] About to call useLocale
+index-DVKxgnl7.js:8 [useLocale] Hook called - START
+index-DVKxgnl7.js:8 [useLocale] About to initialize region state
+index-DVKxgnl7.js:8 [App] useLocale returned successfully, lang: pt-BR
+index-DVKxgnl7.js:8 [useLocale] Loading translations for: pt-BR
+index-DVKxgnl7.js:8 [App] Component function START
+index-DVKxgnl7.js:8 [App] About to call useLocale
+index-DVKxgnl7.js:8 [useLocale] Hook called - START
+index-DVKxgnl7.js:8 [useLocale] About to initialize region state
+index-DVKxgnl7.js:8 [App] useLocale returned successfully, lang: pt-BR
+index-DVKxgnl7.js:8 [useLocale] Successfully loaded pt-BR, result type: object
+index-DVKxgnl7.js:8 [useLocale] Result keys: (10) ['menu', 'regions', 'nav', 'hero', 'stay', 'experiences', 'todo', 'gallery', 'location', 'contact']
+index-DVKxgnl7.js:8 [App] Component function START
+index-DVKxgnl7.js:8 [App] About to call useLocale
+index-DVKxgnl7.js:8 [useLocale] Hook called - START
+index-DVKxgnl7.js:8 [useLocale] About to initialize region state
+index-DVKxgnl7.js:8 [App] useLocale returned successfully, lang: pt-BR
