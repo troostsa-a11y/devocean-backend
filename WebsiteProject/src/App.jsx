@@ -1,5 +1,5 @@
 import { useEffect, useMemo, lazy, Suspense } from 'react';
-import { Router, Route } from 'wouter';
+import { Route, Switch } from 'wouter';
 import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
@@ -103,19 +103,19 @@ export default function App() {
   const experiences = useMemo(() => localizeExperiences(lang), [lang, ui]);
 
   return (
-    <Router>
-      <div className="min-h-screen flex flex-col">
-        {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical */}
-        <Header
-          ui={ui || criticalUI}
-          lang={lang}
-          currency={currency}
-          region={region}
-          onLangChange={setLang}
-          onRegionChange={setRegion}
-          bookUrl={bookUrl}
-        />
+    <div className="min-h-screen flex flex-col">
+      {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical */}
+      <Header
+        ui={ui || criticalUI}
+        lang={lang}
+        currency={currency}
+        region={region}
+        onLangChange={setLang}
+        onRegionChange={setRegion}
+        bookUrl={bookUrl}
+      />
 
+      <Switch>
         {/* Route for experience detail pages */}
         <Route path="/experiences/:key">
           {loading || !ui ? (
@@ -172,7 +172,7 @@ export default function App() {
             </>
           )}
         </Route>
-      </div>
-    </Router>
+      </Switch>
+    </div>
   );
 }

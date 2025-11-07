@@ -8,6 +8,89 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   const experienceKey = params?.key;
   const exp = EXPERIENCE_DETAILS[experienceKey];
 
+  // Update SEO meta tags for each experience
+  useEffect(() => {
+    if (!exp) return;
+
+    // Capture original values for restoration
+    const originalTitle = document.title;
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const originalDescription = metaDescription?.content || '';
+    
+    // Capture original OG tag values
+    const ogProperties = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
+    const originalOgValues = {};
+    const createdOgTags = [];
+    
+    ogProperties.forEach(property => {
+      const tag = document.querySelector(`meta[property="${property}"]`);
+      if (tag) {
+        originalOgValues[property] = tag.content;
+      }
+    });
+
+    // Update page title
+    document.title = `${exp.title} - DEVOCEAN Lodge | Ponta do Ouro, Mozambique`;
+
+    // Update meta description
+    if (!metaDescription) {
+      const newMeta = document.createElement('meta');
+      newMeta.name = 'description';
+      newMeta.content = `${exp.tagline}. ${exp.overview.substring(0, 140)}...`;
+      document.head.appendChild(newMeta);
+    } else {
+      metaDescription.content = `${exp.tagline}. ${exp.overview.substring(0, 140)}...`;
+    }
+
+    // Update Open Graph tags
+    const ogTags = [
+      { property: 'og:title', content: `${exp.title} - DEVOCEAN Lodge` },
+      { property: 'og:description', content: exp.tagline },
+      { property: 'og:image', content: `https://devoceanlodge.com${exp.hero}` },
+      { property: 'og:url', content: `https://devoceanlodge.com/experiences/${experienceKey}` },
+      { property: 'og:type', content: 'website' }
+    ];
+
+    ogTags.forEach(({ property, content }) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+        createdOgTags.push(tag); // Track newly created tags
+      }
+      tag.content = content;
+    });
+
+    // Cleanup: restore all original metadata when component unmounts
+    return () => {
+      // Restore title
+      document.title = originalTitle;
+      
+      // Restore meta description
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        if (originalDescription) {
+          metaDesc.content = originalDescription;
+        } else {
+          metaDesc.remove();
+        }
+      }
+      
+      // Restore or remove OG tags
+      ogProperties.forEach(property => {
+        const tag = document.querySelector(`meta[property="${property}"]`);
+        if (tag) {
+          if (originalOgValues[property]) {
+            tag.content = originalOgValues[property];
+          } else if (createdOgTags.includes(tag)) {
+            tag.remove(); // Remove tags we created
+          }
+        }
+      });
+    };
+  }, [exp, experienceKey]);
+
   // Scroll to top on page load
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -269,9 +352,12 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               {/* Pricing */}
               {exp.pricing && (
                 <div className="bg-white rounded-xl p-6 shadow-md border border-slate-200 sticky top-24">
-                  <h3 className="text-xl font-bold text-slate-800 mb-4">Pricing</h3>
+                  <h3 className="text-xl font-bold text-slate-800 mb-4">Pricing Guide</h3>
                   <div className="mb-4">
                     <p className="text-2xl font-bold text-[#9e4b13]">{exp.pricing.range}</p>
+                    <p className="text-xs text-slate-500 mt-2">
+                      <strong>Note:</strong> Prices shown in USD/MZN/ZAR. Contact operators for current rates in your currency.
+                    </p>
                   </div>
                   {exp.pricing.details && (
                     <ul className="space-y-2 text-sm text-slate-600">
@@ -317,7 +403,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                   {/* Contact Button */}
                   <div className="mt-6 pt-6 border-t border-slate-200">
                     <a
-                      href="#contact"
+                      href="/#contact"
                       className="block w-full bg-[#9e4b13] hover:bg-[#8a4211] text-white text-center font-semibold py-3 px-6 rounded-lg transition-colors"
                     >
                       Contact Us to Book
