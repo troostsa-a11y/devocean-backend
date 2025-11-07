@@ -410,8 +410,19 @@ function findRegionForLanguage(language) {
 // Dynamically load translations for a specific language
 // Now loads only the needed language file (~7KB) instead of all languages (152KB)
 async function loadTranslations(lang) {
-  const { loadTranslation } = await import('./loadTranslation.js');
-  return loadTranslation(lang);
+  try {
+    const { loadTranslation } = await import('./loadTranslation.js');
+    return loadTranslation(lang);
+  } catch (error) {
+    console.error('=== TRANSLATION LOAD ERROR ===');
+    console.error('Failed to load translations for:', lang);
+    console.error('Error:', error);
+    console.error('Error type:', typeof error);
+    console.error('Error string:', String(error));
+    console.error('Stack:', error?.stack || 'No stack');
+    console.error('==============================');
+    throw error;
+  }
 }
 
 // Build minimal UI object with critical nav for instant rendering
