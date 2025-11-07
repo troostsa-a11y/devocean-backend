@@ -83,11 +83,8 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         window.grecaptcha.ready(async () => {
           try {
             const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY;
-            console.log('Executing reCAPTCHA with site key:', siteKey);
-            
             const token = await window.grecaptcha.execute(siteKey, { action: 'contact_form' });
             clearTimeout(timeout);
-            console.log('reCAPTCHA token generated successfully');
             resolve(token);
           } catch (error) {
             clearTimeout(timeout);

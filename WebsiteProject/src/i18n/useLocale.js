@@ -46,12 +46,10 @@ function normalizeLangCode(langCode) {
   // Try to normalize short code
   const normalized = SHORT_TO_FULL[langCode.toLowerCase()];
   if (normalized && SUPPORTED_LANGS.includes(normalized)) {
-    console.log(`[Localization] Normalized ${langCode} → ${normalized}`);
     return normalized;
   }
   
   // If no normalization found, return null (invalid code)
-  console.warn(`[Localization] Unsupported language code: ${langCode}`);
   return null;
 }
 
@@ -536,7 +534,6 @@ export function useLocale() {
       if (normalized) {
         // Update localStorage with normalized value to prevent future issues
         if (normalized !== stored) {
-          console.log(`[Localization] Normalizing stored ${stored} → ${normalized}`);
           localStorage.setItem("site.lang", normalized);
         }
         return normalized;
@@ -559,7 +556,6 @@ export function useLocale() {
     
     // If IP country changed, update to new currency
     if (cc && storedCountry && cc !== storedCountry) {
-      console.log(`Location changed from ${storedCountry} to ${cc}, updating currency from ${storedCurrency} to ${ipCurrency}`);
       localStorage.setItem("site.currency", ipCurrency);
       localStorage.setItem("site.currency.country", cc);
       return ipCurrency;
@@ -568,7 +564,6 @@ export function useLocale() {
     // If we have IP currency and it differs from stored, update it
     // This fixes wrong cached currencies (e.g., region defaults like ZAR instead of country currency MZN)
     if (ipCurrency && storedCurrency && ipCurrency !== storedCurrency) {
-      console.log(`Correcting currency from ${storedCurrency} to ${ipCurrency} based on IP location (${cc || 'unknown'})`);
       localStorage.setItem("site.currency", ipCurrency);
       localStorage.setItem("site.currency.country", cc || "unknown");
       return ipCurrency;
@@ -645,7 +640,6 @@ export function useLocale() {
     if (!currentRegionLanguages.includes(lang)) {
       const compatibleRegion = findRegionForLanguage(lang);
       if (compatibleRegion && compatibleRegion !== region) {
-        console.log(`[Localization] Auto-adjusting region from ${region} to ${compatibleRegion} to match language ${lang}`);
         setRegionState(compatibleRegion);
         localStorage.setItem("site.region", compatibleRegion);
         localStorage.setItem("site.region.version", "2");
@@ -680,7 +674,6 @@ export function useLocale() {
         
         // Force re-detection if version is old or missing (only for auto-detected languages)
         if (langVersion !== CURRENT_VERSION) {
-          console.log("[Localization] Updating to version 2 - running IP-based language detection");
           const detectedLang = detectLangFromIP();
           const detectedRegion = detectRegionFromIP();
           
