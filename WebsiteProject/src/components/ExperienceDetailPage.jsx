@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRoute, Link } from 'wouter';
 import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
+import ExperienceInquiryForm from './ExperienceInquiryForm';
 
 export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const [match, params] = useRoute('/experiences/:key');
@@ -450,27 +451,39 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                   <h3 className="text-lg font-bold text-slate-800 mb-4">Recommended Operators</h3>
                   <div className="space-y-4">
                     {exp.operators.map((op, i) => (
-                      <div key={i}>
+                      <div key={i} className="pb-4 border-b border-slate-200 last:border-b-0 last:pb-0">
                         <h4 className="font-semibold text-slate-800 mb-1">{op.name}</h4>
-                        <p className="text-xs text-slate-600 mb-2">{op.specialty}</p>
-                        <a
-                          href={op.website}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs text-[#9e4b13] hover:underline inline-flex items-center"
-                        >
-                          Visit Website
-                          <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </a>
+                        <p className="text-xs text-slate-600">{op.specialty}</p>
                       </div>
                     ))}
                   </div>
+                  <p className="text-xs text-slate-500 mt-4 text-center">
+                    Use the inquiry form below to contact operators directly
+                  </p>
                 </div>
               )}
             </div>
           </div>
+
+          {/* Inquiry Form Section */}
+          {exp.operators && exp.operators.length > 0 && (
+            <div className="mt-16">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+                  Contact Operators Directly
+                </h2>
+                <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                  Fill out the form below and we'll forward your inquiry to your preferred operator. They'll contact you directly with availability and pricing.
+                </p>
+              </div>
+              <ExperienceInquiryForm 
+                experience={exp}
+                operators={exp.operators}
+                lang={lang}
+                currency={currency}
+              />
+            </div>
+          )}
 
           {/* Bottom CTA */}
           <div className="mt-16 bg-gradient-to-r from-[#9e4b13] to-[#b65a1a] rounded-2xl p-8 md:p-12 text-center text-white">

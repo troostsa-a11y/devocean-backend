@@ -392,6 +392,221 @@ app.get("/api/static-map", async (req, res) => {
   }
 });
 
+// Experience inquiry endpoint
+app.post("/api/experience-inquiry", async (req, res) => {
+  try {
+    const { name, email, phone, operator, dates, guests, message, experience, experienceKey, lang, currency, recaptcha_token } = req.body;
+
+    // Verify reCAPTCHA token
+    if (!recaptcha_token) {
+      return res.status(400).json({ error: "reCAPTCHA verification required" });
+    }
+
+    const recaptchaResult = await verifyRecaptcha(recaptcha_token);
+    
+    if (!recaptchaResult.success) {
+      console.error('reCAPTCHA verification failed:', recaptchaResult);
+      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+    }
+
+    // Note: Standard reCAPTCHA v3 doesn't return action field (only Enterprise does)
+    // Only check action if it exists
+    if (recaptchaResult.action && recaptchaResult.action !== 'experience_inquiry') {
+      console.warn('reCAPTCHA action mismatch:', recaptchaResult.action, 'expected: experience_inquiry');
+      return res.status(400).json({ error: "Invalid security token" });
+    }
+
+    if (recaptchaResult.score !== undefined) {
+      if (recaptchaResult.score < 0.3) {
+        console.warn('reCAPTCHA score too low (bot detected):', recaptchaResult.score);
+        return res.status(400).json({ error: "Security verification failed. Please try again." });
+      } else if (recaptchaResult.score < 0.5) {
+        console.warn('Low reCAPTCHA score (suspicious):', recaptchaResult.score, 'from:', email);
+      }
+    }
+
+    // Validate required fields
+    if (!name || !email || !operator || !message || !experience) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+
+    // Sanitize inputs
+    const sanitizedName = sanitizeHeader(name).slice(0, 100);
+    const sanitizedEmail = sanitizeHeader(email).slice(0, 100);
+    const sanitizedPhone = phone ? sanitizeHeader(phone).slice(0, 30) : "";
+    const sanitizedOperator = sanitizeHeader(operator).slice(0, 100);
+    const sanitizedDates = dates ? sanitizeHeader(dates).slice(0, 100) : "";
+    const sanitizedGuests = guests ? sanitizeHeader(guests).slice(0, 10) : "2";
+    const sanitizedMessage = sanitizeMessage(message).slice(0, 2000);
+    const sanitizedExperience = sanitizeHeader(experience).slice(0, 200);
+    const sanitizedLang = lang ? sanitizeHeader(lang).slice(0, 10) : "en";
+
+    if (!sanitizedName || !sanitizedEmail || !sanitizedOperator || !sanitizedMessage || !sanitizedExperience) {
+      return res.status(400).json({ error: "Invalid input data" });
+    }
+
+    if (!isValidEmail(sanitizedEmail)) {
+      return res.status(400).json({ error: "Invalid email address" });
+    }
+
+    // Load experience operator data
+    const { EXPERIENCE_DETAILS } = await import('./src/data/experienceDetails.js');
+    const expData = EXPERIENCE_DETAILS[experienceKey];
+    const operatorData = expData?.operators?.find(op => op.name === sanitizedOperator);
+    
+    if (!operatorData) {
+      console.error('Operator not found:', sanitizedOperator, 'for experience:', experienceKey);
+      return res.status(400).json({ error: "Invalid operator selected" });
+    }
+
+    const operatorEmail = operatorData.email;
+
+    // Prepare email content for operator
+    const operatorEmailHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #9e4b13;">New Experience Inquiry from DEVOCEAN Lodge</h2>
+        <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p><strong>Experience:</strong> ${escapeHtml(sanitizedExperience)}</p>
+          <p><strong>Name:</strong> ${escapeHtml(sanitizedName)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(sanitizedEmail)}</p>
+          ${sanitizedPhone ? `<p><strong>Phone:</strong> ${escapeHtml(sanitizedPhone)}</p>` : ''}
+          ${sanitizedDates ? `<p><strong>Preferred Dates:</strong> ${escapeHtml(sanitizedDates)}</p>` : ''}
+          <p><strong>Number of Guests:</strong> ${escapeHtml(sanitizedGuests)}</p>
+          <p><strong>Message:</strong></p>
+          <p style="white-space: pre-wrap;">${escapeHtml(sanitizedMessage)}</p>
+        </div>
+        <p style="color: #666; font-size: 12px;">
+          This inquiry was forwarded from the DEVOCEAN Lodge website (devoceanlodge.com).
+        </p>
+      </div>
+    `;
+
+    const operatorEmailText = `
+New Experience Inquiry from DEVOCEAN Lodge
+
+Experience: ${sanitizedExperience}
+Name: ${sanitizedName}
+Email: ${sanitizedEmail}
+${sanitizedPhone ? `Phone: ${sanitizedPhone}\n` : ''}${sanitizedDates ? `Preferred Dates: ${sanitizedDates}\n` : ''}Number of Guests: ${sanitizedGuests}
+
+Message:
+${sanitizedMessage}
+
+---
+This inquiry was forwarded from the DEVOCEAN Lodge website (devoceanlodge.com).
+    `.trim();
+
+    const resendApiKey = process.env.RESEND_API_KEY;
+    
+    if (!resendApiKey) {
+      console.error('RESEND_API_KEY not configured');
+      return res.status(500).json({ error: "Email service not configured" });
+    }
+
+    // Send email to operator
+    const operatorResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'DEVOCEAN Lodge - Ponta do Ouro <reservations@devoceanlodge.com>',
+        to: [operatorEmail],
+        bcc: ['info@devoceanlodge.com'],
+        subject: `Experience Inquiry: ${sanitizedExperience}`,
+        html: operatorEmailHtml,
+        text: operatorEmailText,
+      }),
+    });
+
+    if (!operatorResponse.ok) {
+      const errorText = await operatorResponse.text();
+      console.error('Failed to send operator email:', errorText);
+      return res.status(500).json({ error: "Failed to send inquiry" });
+    }
+
+    // Send auto-reply to customer
+    const autoReplyMessages = {
+      en: `Thank you for your interest in ${sanitizedExperience}! Your inquiry has been forwarded to ${sanitizedOperator}. They will contact you directly via email or phone to confirm availability and provide pricing details.`,
+      'pt-PT': `Obrigado pelo seu interesse em ${sanitizedExperience}! Sua consulta foi encaminhada para ${sanitizedOperator}. Eles entrarão em contato diretamente por email ou telefone para confirmar disponibilidade e fornecer detalhes de preço.`,
+      'pt-BR': `Obrigado pelo seu interesse em ${sanitizedExperience}! Sua consulta foi encaminhada para ${sanitizedOperator}. Eles entrarão em contato diretamente por email ou telefone para confirmar disponibilidade e fornecer detalhes de preço.`,
+      pt: `Obrigado pelo seu interesse em ${sanitizedExperience}! Sua consulta foi encaminhada para ${sanitizedOperator}. Eles entrarão em contato diretamente por email ou telefone para confirmar disponibilidade e fornecer detalhes de preço.`
+    };
+
+    const autoReplySubjects = {
+      en: `Experience Inquiry Received - DEVOCEAN Lodge`,
+      'pt-PT': `Consulta de Experiência Recebida - DEVOCEAN Lodge`,
+      'pt-BR': `Consulta de Experiência Recebida - DEVOCEAN Lodge`,
+      pt: `Consulta de Experiência Recebida - DEVOCEAN Lodge`
+    };
+
+    const autoReplyMessage = autoReplyMessages[sanitizedLang] || autoReplyMessages.en;
+    const autoReplySubject = autoReplySubjects[sanitizedLang] || autoReplySubjects.en;
+
+    const autoReplyHtml = `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+        <h2 style="color: #9e4b13;">DEVOCEAN Lodge</h2>
+        <p>${autoReplyMessage}</p>
+        <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
+          <p><strong>${getExperienceFieldLabel('experience', sanitizedLang)}:</strong> ${escapeHtml(sanitizedExperience)}</p>
+          <p><strong>${getExperienceFieldLabel('operator', sanitizedLang)}:</strong> ${escapeHtml(sanitizedOperator)}</p>
+          ${sanitizedDates ? `<p><strong>${getExperienceFieldLabel('dates', sanitizedLang)}:</strong> ${escapeHtml(sanitizedDates)}</p>` : ''}
+          <p><strong>${getExperienceFieldLabel('guests', sanitizedLang)}:</strong> ${escapeHtml(sanitizedGuests)}</p>
+        </div>
+        <p style="color: #666; font-size: 14px;">
+          ${getExperienceFieldLabel('lodge_contact', sanitizedLang)}
+        </p>
+        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+          <p style="color: #666; font-size: 12px;">
+            DEVOCEAN Lodge<br>
+            Ponta do Ouro, Mozambique<br>
+            <a href="https://devoceanlodge.com">devoceanlodge.com</a>
+          </p>
+        </div>
+      </div>
+    `;
+
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'DEVOCEAN Lodge - Ponta do Ouro <reservations@devoceanlodge.com>',
+        to: [sanitizedEmail],
+        subject: autoReplySubject,
+        html: autoReplyHtml,
+      }),
+    });
+
+    console.log(`Experience inquiry sent: ${sanitizedExperience} to ${sanitizedOperator} (${operatorEmail})`);
+    res.json({ success: true });
+
+  } catch (error) {
+    console.error('Experience inquiry error:', error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Helper function to get localized field labels for auto-reply
+function getExperienceFieldLabel(field, lang) {
+  const labels = {
+    experience: { en: "Experience", 'pt-PT': "Experiência", 'pt-BR': "Experiência", pt: "Experiência" },
+    operator: { en: "Operator", 'pt-PT': "Operador", 'pt-BR': "Operador", pt: "Operador" },
+    dates: { en: "Preferred Dates", 'pt-PT': "Datas Preferidas", 'pt-BR': "Datas Preferidas", pt: "Datas Preferidas" },
+    guests: { en: "Number of Guests", 'pt-PT': "Número de Pessoas", 'pt-BR': "Número de Pessoas", pt: "Número de Pessoas" },
+    lodge_contact: {
+      en: "Meanwhile, feel free to explore our accommodation options and book your stay at DEVOCEAN Lodge.",
+      'pt-PT': "Enquanto isso, sinta-se à vontade para explorar nossas opções de acomodação e reservar sua estadia no DEVOCEAN Lodge.",
+      'pt-BR': "Enquanto isso, sinta-se à vontade para explorar nossas opções de acomodação e reservar sua estadia no DEVOCEAN Lodge.",
+      pt: "Enquanto isso, sinta-se à vontade para explorar nossas opções de acomodação e reservar sua estadia no DEVOCEAN Lodge."
+    }
+  };
+  return (labels[field] && labels[field][lang]) || (labels[field] && labels[field].en) || field;
+}
+
 // Start server
 const PORT = process.env.PORT || 5000;
 

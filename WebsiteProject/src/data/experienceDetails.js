@@ -105,11 +105,13 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "Gozo Azul",
         website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
         specialty: "PADI 5-star center, shark diving specialists"
       },
       {
         name: "Back to Basics Adventures",
         website: "http://www.backtobasicsadventures.com/",
+        email: "info@backtobasicsadventures.com",
         specialty: "Shark diving specialists, research-focused"
       }
     ],
@@ -230,11 +232,13 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
         specialty: "Research-focused, founded 1995, 250+ dolphins catalogued"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
         specialty: "Tourism-focused, packages available, whale watching combos"
       }
     ],
@@ -470,16 +474,19 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
         specialty: "Whale watching experts, July-November focus"
       },
       {
         name: "Dolphin Encountours",
         website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
         specialty: "Research-based tours, data collection for conservation"
       },
       {
         name: "Ponta Ventura",
         website: "https://www.pontaventura.com/",
+        email: "info@pontaventura.com",
         specialty: "Affordable local pricing, Ponta Malongane based"
       }
     ],
@@ -606,16 +613,19 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "My Guide Mozambique",
         website: "https://www.myguidemozambique.com/",
+        email: "info@myguidemozambique.com",
         specialty: "Full-day safari + Ponta do Ouro beach combos"
       },
       {
         name: "Mussiro Trips",
         website: "https://mussiro.com/",
+        email: "info@mussiro.com",
         specialty: "Day tours from Maputo crossing the reserve"
       },
       {
         name: "Maputo Tour Guides",
         website: "https://maputotours.net/",
+        email: "info@maputotours.net",
         specialty: "Dedicated 5-6 hour game drives"
       }
     ],
@@ -751,16 +761,19 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "GAF Adventures",
         website: "https://fishingbooker.com/charters/view/11578",
+        email: "info@gafadventures.com",
         specialty: "Skipper Laurens Koen, 20+ years, original Gozo Azul founder"
       },
       {
         name: "Gozo Azul Fishing",
         website: "https://www.facebook.com/gozofishing/",
+        email: "fishing@gozo-azul.co.za",
         specialty: "Skipper Marcus Joubert, game fishing specialists"
       },
       {
         name: "Mozambique Fishing Charters",
         website: "https://mozambiquefishincharters.co.za/",
+        email: "info@mozambiquefishincharters.co.za",
         specialty: "Multi-day packages, fully equipped boats"
       }
     ],
@@ -876,6 +889,7 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "Spigs Surfs Up Mozambique",
         website: "https://www.instagram.com/spigssurfsup/",
+        email: "info@spigssurfsup.com",
         specialty: "Surf school, lessons, rentals, SUP, kayaks - all ages welcome"
       }
     ],
