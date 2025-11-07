@@ -338,9 +338,12 @@ function pickInitialLang() {
   const langSource = localStorage.getItem("site.lang_source");
   const stored = localStorage.getItem("site.lang");
   
-  // If user manually selected language, respect their choice
-  if (langSource === "user" && stored && SUPPORTED_LANGS.includes(stored)) {
-    return stored;
+  // If user manually selected language, respect their choice (but normalize it)
+  if (langSource === "user" && stored) {
+    const normalized = normalizeLangCode(stored);
+    if (normalized) {
+      return normalized;
+    }
   }
 
   // Priority: Use Cloudflare IP geolocation (same as hero placeholder)
@@ -349,9 +352,12 @@ function pickInitialLang() {
     return CC_TO_LANGUAGE[cc];
   }
 
-  // Fallback to stored language (auto-detected previously)
-  if (stored && SUPPORTED_LANGS.includes(stored)) {
-    return stored;
+  // Fallback to stored language (auto-detected previously, but normalize it)
+  if (stored) {
+    const normalized = normalizeLangCode(stored);
+    if (normalized) {
+      return normalized;
+    }
   }
 
   // Fallback to browser language
