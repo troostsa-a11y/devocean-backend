@@ -250,7 +250,7 @@ export const insertBookingSchema = z.object({
 
 export const insertScheduledEmailSchema = z.object({
   bookingId: z.number().int().positive(),
-  emailType: z.enum(['post_booking', 'pre_arrival', 'arrival', 'post_departure']),
+  emailType: z.enum(['post_booking', 'pre_arrival', 'arrival', 'post_departure', 'cancellation', 'transfer_notification']),
   recipientEmail: z.string().email(),
   recipientName: z.string(),
   language: z.string().default('EN'),

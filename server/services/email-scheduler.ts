@@ -22,10 +22,10 @@ export class EmailSchedulerService {
    * Create all scheduled emails for a booking
    * 
    * Schedule:
-   * - Post-booking: Within 2 hours after booking created
-   * - Pre-arrival: 7 days before check-in (at 09:00)
-   * - Arrival: 2 days before check-in (at 09:00)
-   * - Post-departure: 1 day after check-out (at 10:00)
+   * - Post-booking: 1 hour after processing
+   * - Pre-arrival: 7 days before check-in (at 09:00 CAT)
+   * - Arrival: 2 days before check-in (at 09:00 CAT)
+   * - Post-departure: 1 day after check-out (at 10:00 CAT)
    */
   async scheduleEmailsForBooking(booking: Booking): Promise<void> {
     const schedules = this.calculateEmailSchedules(booking);
@@ -46,17 +46,17 @@ export class EmailSchedulerService {
    * Conditional scheduling based on days until check-in:
    * 
    * Case 1: >= 7 days until check-in (normal schedule)
-   *   - Post-booking: 2 hours after booking (CAT)
+   *   - Post-booking: 1 hour after processing (CAT)
    *   - Pre-arrival: 7 days before check-in at 09:00 CAT
    *   - Arrival: 2 days before check-in at 09:00 CAT
    * 
    * Case 2: < 7 days but >= 2 days until check-in (adjusted schedule)
-   *   - Post-booking: 1 hour after booking (CAT)
+   *   - Post-booking: 1 hour after processing (CAT)
    *   - Pre-arrival: (days_remaining - 2) / 2 days before check-in at 09:00 CAT
    *   - Arrival: 2 days before check-in at 09:00 CAT
    * 
    * Case 3: < 2 days until check-in (compressed schedule)
-   *   - Post-booking: 1 hour after booking (CAT)
+   *   - Post-booking: 1 hour after processing (CAT)
    *   - Pre-arrival: 3 hours after booking (CAT)
    *   - Arrival: 6 hours after booking (CAT)
    */
@@ -83,15 +83,12 @@ export class EmailSchedulerService {
     };
 
     // Determine scheduling strategy based on days until check-in
-    let postBookingHours: number;
     let preArrivalDateCAT: DateTime | null = null;
     let arrivalDateCAT: DateTime | null = null;
 
     if (daysUntilCheckIn >= 7) {
       // Case 1: Normal schedule (>= 7 days)
       console.log(`Booking ${booking.groupRef}: Normal schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
-      
-      postBookingHours = 2;
       
       // Pre-arrival: 7 days before check-in at 09:00 CAT
       preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -7), 9, 0);
@@ -102,8 +99,6 @@ export class EmailSchedulerService {
     } else if (daysUntilCheckIn >= 2) {
       // Case 2: Adjusted schedule (< 7 days but >= 2 days)
       console.log(`Booking ${booking.groupRef}: Adjusted schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
-      
-      postBookingHours = 1;
       
       // Pre-arrival: (days_remaining - 2) / 2 days before check-in at 09:00 CAT
       const preArrivalDaysBeforeCheckIn = (daysUntilCheckIn - 2) / 2;
@@ -116,8 +111,6 @@ export class EmailSchedulerService {
       // Case 3: Compressed schedule (< 2 days)
       console.log(`Booking ${booking.groupRef}: Compressed schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
       
-      postBookingHours = 1;
-      
       // Pre-arrival: 3 hours after booking (CAT)
       preArrivalDateCAT = addHoursInCAT(nowCAT, 3);
       
@@ -125,8 +118,8 @@ export class EmailSchedulerService {
       arrivalDateCAT = addHoursInCAT(nowCAT, 6);
     }
 
-    // 1. Post-booking email (CAT time + hours)
-    const postBookingTimeCAT = addHoursInCAT(nowCAT, postBookingHours);
+    // 1. Post-booking email - ALWAYS 1 hour after processing (CAT)
+    const postBookingTimeCAT = addHoursInCAT(nowCAT, 1);
     const postBookingTimeUTC = toUTCDate(postBookingTimeCAT);
     schedules.push({
       bookingId: booking.id,
@@ -142,7 +135,7 @@ export class EmailSchedulerService {
         currency: booking.currency,
       },
     });
-    console.log(`  Post-booking: ${formatForLog(postBookingTimeCAT)} (${postBookingHours}h from now)`);
+    console.log(`  Post-booking: ${formatForLog(postBookingTimeCAT)} (1h from now)`);
 
     // 2. Pre-arrival email - only if in the future
     if (preArrivalDateCAT && preArrivalDateCAT > nowCAT) {

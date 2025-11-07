@@ -5,7 +5,11 @@ import { emailTemplateRenderer } from './email-template-renderer';
 
 /**
  * Cancellation Handler Service
- * Processes cancellation emails and stops scheduled emails
+ * Processes cancellation emails, stops scheduled emails, and schedules goodbye emails
+ * 
+ * Schedule:
+ * - Cancellation emails: 1 hour after processing
+ * - Standalone cancellations (booking not in DB): sent immediately
  */
 
 interface SMTPConfig {
@@ -102,16 +106,53 @@ export class CancellationHandler {
     // Cancel all pending scheduled emails for this booking
     await this.db.cancelScheduledEmailsForBooking(booking.id);
 
-    // Send cancellation confirmation email to guest
+    // Schedule cancellation confirmation email to guest (1 hour from now)
     if (this.transporter) {
-      await this.sendCancellationEmail(booking, reason);
+      await this.scheduleCancellationEmail(booking, reason);
     }
 
     console.log(`Booking ${groupRef} cancelled, ${reason ? `Reason: ${reason}` : 'No reason provided'}`);
   }
 
   /**
-   * Send cancellation confirmation email to guest
+   * Schedule cancellation confirmation email to guest (1 hour from now)
+   */
+  private async scheduleCancellationEmail(booking: any, reason?: string): Promise<void> {
+    try {
+      // Calculate scheduled time: 1 hour from now (in UTC)
+      const scheduledFor = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
+
+      // Prepare email data
+      const emailData = {
+        guestName: booking.guestName || 'Guest',
+        firstName: booking.firstName || this.extractFirstName(booking.guestName) || 'Guest',
+        gender: booking.guestGender,
+        groupRef: booking.groupRef,
+        checkInDate: this.formatDate(booking.checkInDate),
+        checkOutDate: this.formatDate(booking.checkOutDate),
+        cancelDate: this.formatDate(new Date()),
+      };
+
+      // Create scheduled email entry in database
+      await this.db.createScheduledEmail({
+        bookingId: booking.id,
+        emailType: 'cancellation',
+        recipientEmail: booking.guestEmail,
+        recipientName: booking.guestName,
+        language: booking.guestLanguage || 'en-GB',
+        scheduledFor: scheduledFor,
+        status: 'pending',
+        templateData: emailData,
+      });
+
+      console.log(`✅ Scheduled cancellation email for ${booking.guestEmail} (${booking.guestLanguage || 'en-GB'}) - to be sent in 1 hour`);
+    } catch (error) {
+      console.error('Error scheduling cancellation email:', error);
+    }
+  }
+
+  /**
+   * Send cancellation confirmation email to guest (deprecated - now using scheduled emails)
    */
   private async sendCancellationEmail(booking: any, reason?: string): Promise<void> {
     try {
