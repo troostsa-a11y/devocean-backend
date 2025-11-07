@@ -24,7 +24,7 @@ export class EmailSchedulerService {
    * Schedule:
    * - Post-booking: 1 hour after processing
    * - Pre-arrival: 10 days before check-in (or 70% of remaining days if < 10 days) at 09:00 CAT
-   * - Arrival: 2 days before check-in (at 09:00 CAT)
+   * - Arrival: 3 days before check-in (or 50% of remaining hours if < 3 days) at 09:00 CAT
    * - Post-departure: 1 day after check-out (at 10:00 CAT)
    */
   async scheduleEmailsForBooking(booking: Booking): Promise<void> {
@@ -48,17 +48,17 @@ export class EmailSchedulerService {
    * Case 1: >= 10 days until check-in (normal schedule)
    *   - Post-booking: 1 hour after processing (CAT)
    *   - Pre-arrival: 10 days before check-in at 09:00 CAT
-   *   - Arrival: 2 days before check-in at 09:00 CAT
+   *   - Arrival: 3 days before check-in at 09:00 CAT
    * 
-   * Case 2: < 10 days but >= 2 days until check-in (adjusted schedule)
+   * Case 2: < 10 days but >= 3 days until check-in (adjusted schedule)
    *   - Post-booking: 1 hour after processing (CAT)
    *   - Pre-arrival: 70% of remaining days before check-in at 09:00 CAT
-   *   - Arrival: 2 days before check-in at 09:00 CAT
+   *   - Arrival: 3 days before check-in at 09:00 CAT
    * 
-   * Case 3: < 2 days until check-in (compressed schedule)
+   * Case 3: < 3 days until check-in (compressed schedule)
    *   - Post-booking: 1 hour after processing (CAT)
    *   - Pre-arrival: 3 hours after booking (CAT)
-   *   - Arrival: 6 hours after booking (CAT)
+   *   - Arrival: 50% of remaining hours after booking (CAT)
    */
   private calculateEmailSchedules(booking: Booking): InsertScheduledEmail[] {
     // Get current time in CAT
@@ -66,8 +66,9 @@ export class EmailSchedulerService {
     const checkInCAT = toCATDateTime(booking.checkInDate);
     const checkOutCAT = toCATDateTime(booking.checkOutDate);
 
-    // Calculate days until check-in
+    // Calculate days and hours until check-in
     const daysUntilCheckIn = checkInCAT.diff(nowCAT, 'days').days;
+    const hoursUntilCheckIn = checkInCAT.diff(nowCAT, 'hours').hours;
 
     const schedules: InsertScheduledEmail[] = [];
 
@@ -93,29 +94,30 @@ export class EmailSchedulerService {
       // Pre-arrival: 10 days before check-in at 09:00 CAT
       preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -10), 9, 0);
       
-      // Arrival: 2 days before check-in at 09:00 CAT
-      arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -2), 9, 0);
+      // Arrival: 3 days before check-in at 09:00 CAT
+      arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -3), 9, 0);
       
-    } else if (daysUntilCheckIn >= 2) {
-      // Case 2: Adjusted schedule (< 10 days but >= 2 days)
+    } else if (daysUntilCheckIn >= 3) {
+      // Case 2: Adjusted schedule (< 10 days but >= 3 days)
       console.log(`Booking ${booking.groupRef}: Adjusted schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
       
       // Pre-arrival: 70% of remaining days before check-in at 09:00 CAT
       const preArrivalDaysBeforeCheckIn = daysUntilCheckIn * 0.70;
       preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -preArrivalDaysBeforeCheckIn), 9, 0);
       
-      // Arrival: 2 days before check-in at 09:00 CAT
-      arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -2), 9, 0);
+      // Arrival: 3 days before check-in at 09:00 CAT
+      arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -3), 9, 0);
       
     } else {
-      // Case 3: Compressed schedule (< 2 days)
-      console.log(`Booking ${booking.groupRef}: Compressed schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
+      // Case 3: Compressed schedule (< 3 days)
+      console.log(`Booking ${booking.groupRef}: Compressed schedule (${daysUntilCheckIn.toFixed(1)} days / ${hoursUntilCheckIn.toFixed(1)} hours until check-in)`);
       
       // Pre-arrival: 3 hours after booking (CAT)
       preArrivalDateCAT = addHoursInCAT(nowCAT, 3);
       
-      // Arrival: 6 hours after booking (CAT)
-      arrivalDateCAT = addHoursInCAT(nowCAT, 6);
+      // Arrival: 50% of remaining hours after booking (CAT)
+      const arrivalHoursBeforeCheckIn = hoursUntilCheckIn * 0.50;
+      arrivalDateCAT = addHoursInCAT(checkInCAT, -arrivalHoursBeforeCheckIn);
     }
 
     // 1. Post-booking email - ALWAYS 1 hour after processing (CAT)
