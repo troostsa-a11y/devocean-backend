@@ -52,6 +52,7 @@ export class EmailAutomationService {
   private adminReporting?: AdminReportingService;
   private imapConfig: EmailConfig;
   private cronJob?: cron.ScheduledTask;
+  private emailSenderJob?: cron.ScheduledTask;
   private dailyReportJob?: cron.ScheduledTask;
   private weeklyReportJob?: cron.ScheduledTask;
 
@@ -98,14 +99,15 @@ export class EmailAutomationService {
 
   /**
    * Start the cron job scheduler
-   * Checks emails every 30 minutes for new bookings, modifications, and cancellations
+   * Checks emails every 30 minutes for new bookings, modifications, and cancellations at :00 and :30
+   * Sends scheduled emails every 30 minutes at :15 and :45 (15 minutes after email check)
    * Sends daily report at 14:00 CAT (2 PM)
    * Sends weekly report at 08:00 CAT on Mondays
    */
   start(): void {
     console.log('Starting email automation service...');
 
-    // Schedule: Every 30 minutes
+    // Schedule 1: Incoming email check every 30 minutes at :00 and :30
     // Cron format: */30 * * * * (runs at :00 and :30 of every hour)
     const emailCheckSchedule = '*/30 * * * *';
 
@@ -115,6 +117,17 @@ export class EmailAutomationService {
     });
 
     console.log(`Email automation scheduled to check every 30 minutes for new bookings, modifications, and cancellations`);
+
+    // Schedule 2: Send scheduled emails every 30 minutes at :15 and :45 (15 minutes after email check)
+    // Cron format: 15,45 * * * * (runs at :15 and :45 of every hour)
+    const emailSenderSchedule = '15,45 * * * *';
+
+    this.emailSenderJob = cron.schedule(emailSenderSchedule, async () => {
+      console.log(`[${new Date().toISOString()}] Sending scheduled emails...`);
+      await this.sendScheduledEmails();
+    });
+
+    console.log(`Scheduled email sending runs every 30 minutes at :15 and :45 (15 minutes after email check)`);
 
     // Schedule daily report at 14:00 CAT (12:00 UTC)
     if (this.adminReporting) {
@@ -147,6 +160,10 @@ export class EmailAutomationService {
     if (this.cronJob) {
       this.cronJob.stop();
       console.log('Email automation service stopped');
+    }
+    if (this.emailSenderJob) {
+      this.emailSenderJob.stop();
+      console.log('Scheduled email sender stopped');
     }
     if (this.dailyReportJob) {
       this.dailyReportJob.stop();
@@ -276,12 +293,7 @@ export class EmailAutomationService {
         }
       }
 
-      // Step 3: Process pending scheduled emails
-      console.log('Processing pending scheduled emails...');
-      const result = await this.emailSender.processPendingEmails();
-      console.log(`Sent ${result.sent} emails, ${result.failed} failed`);
-
-      // Step 4: Log the check
+      // Step 3: Log the check
       const durationMs = Date.now() - startTime;
       await this.db.logEmailCheck({
         emailsFound,
@@ -305,6 +317,20 @@ export class EmailAutomationService {
         errorMessage: error instanceof Error ? error.message : 'Unknown error',
         durationMs,
       });
+    }
+  }
+
+  /**
+   * Send scheduled emails workflow
+   * Runs every 30 minutes at :15 and :45 (15 minutes after email check)
+   */
+  private async sendScheduledEmails(): Promise<void> {
+    try {
+      console.log('Processing pending scheduled emails...');
+      const result = await this.emailSender.processPendingEmails();
+      console.log(`Sent ${result.sent} emails, ${result.failed} failed`);
+    } catch (error) {
+      console.error('Error sending scheduled emails:', error);
     }
   }
 
