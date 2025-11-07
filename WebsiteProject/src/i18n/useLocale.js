@@ -454,9 +454,13 @@ function findRegionForLanguage(language) {
 // Dynamically load translations for a specific language
 // Now loads only the needed language file (~7KB) instead of all languages (152KB)
 async function loadTranslations(lang) {
+  console.log(`[useLocale] Loading translations for: ${lang}`);
   try {
     const { loadTranslation } = await import('./loadTranslation.js');
-    return loadTranslation(lang);
+    const result = await loadTranslation(lang);
+    console.log(`[useLocale] Successfully loaded ${lang}, result type:`, typeof result);
+    console.log(`[useLocale] Result keys:`, result ? Object.keys(result).slice(0, 10) : 'null/undefined');
+    return result;
   } catch (error) {
     console.error('=== TRANSLATION LOAD ERROR ===');
     console.error('Failed to load translations for:', lang);
