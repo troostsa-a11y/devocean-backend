@@ -20,6 +20,41 @@ function getUrlParam(name) {
   return params.get(name);
 }
 
+// Normalize short language codes to full locale codes
+function normalizeLangCode(langCode) {
+  if (!langCode) return null;
+  
+  // Mapping of short codes to preferred full locale codes
+  const SHORT_TO_FULL = {
+    'en': 'en-GB',
+    'pt': 'pt-BR',  // Default Portuguese to Brazilian
+    'nl': 'nl-NL',
+    'fr': 'fr-FR',
+    'it': 'it-IT',
+    'de': 'de-DE',
+    'es': 'es-ES',
+    'ja': 'ja-JP',
+    'zh': 'zh-CN',
+    'af': 'af-ZA'
+  };
+  
+  // If it's already a full code and supported, return it
+  if (SUPPORTED_LANGS.includes(langCode)) {
+    return langCode;
+  }
+  
+  // Try to normalize short code
+  const normalized = SHORT_TO_FULL[langCode.toLowerCase()];
+  if (normalized && SUPPORTED_LANGS.includes(normalized)) {
+    console.log(`[Localization] Normalized ${langCode} → ${normalized}`);
+    return normalized;
+  }
+  
+  // If no normalization found, return null (invalid code)
+  console.warn(`[Localization] Unsupported language code: ${langCode}`);
+  return null;
+}
+
 // Comprehensive country-to-currency mapping (legal tender for each country)
 export const CC_TO_CURRENCY = {
   // Europe
@@ -292,8 +327,11 @@ function getTimezoneContinent() {
 function pickInitialLang() {
   // URL override takes highest priority (booking engine return)
   const urlLang = getUrlParam('lang');
-  if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
-    return urlLang;
+  if (urlLang) {
+    const normalized = normalizeLangCode(urlLang);
+    if (normalized) {
+      return normalized;
+    }
   }
 
   // Check if user manually selected language (vs auto-detection)
@@ -482,10 +520,13 @@ export function useLocale() {
   const [lang, setLangState] = useState(() => {
     // Priority 1: URL parameter (for return from booking engine)
     const urlLang = getUrlParam('lang');
-    if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
-      localStorage.setItem("site.lang", urlLang);
-      localStorage.setItem("site.lang_source", "url");
-      return urlLang;
+    if (urlLang) {
+      const normalized = normalizeLangCode(urlLang);
+      if (normalized) {
+        localStorage.setItem("site.lang", normalized);
+        localStorage.setItem("site.lang_source", "url");
+        return normalized;
+      }
     }
     
     // Priority 2: localStorage
@@ -539,14 +580,17 @@ export function useLocale() {
   const [region, setRegionState] = useState(() => {
     // Check if language was set via URL parameter
     const urlLang = getUrlParam('lang');
-    if (urlLang && SUPPORTED_LANGS.includes(urlLang)) {
-      // When language comes from URL, set region to match
-      const compatibleRegion = findRegionForLanguage(urlLang);
-      if (compatibleRegion) {
-        localStorage.setItem("site.region", compatibleRegion);
-        localStorage.setItem("site.region.version", "2");
-        localStorage.setItem("site.region.source", "auto"); // Auto-set based on language
-        return compatibleRegion;
+    if (urlLang) {
+      const normalized = normalizeLangCode(urlLang);
+      if (normalized) {
+        // When language comes from URL, set region to match
+        const compatibleRegion = findRegionForLanguage(normalized);
+        if (compatibleRegion) {
+          localStorage.setItem("site.region", compatibleRegion);
+          localStorage.setItem("site.region.version", "2");
+          localStorage.setItem("site.region.source", "auto"); // Auto-set based on language
+          return compatibleRegion;
+        }
       }
     }
     
