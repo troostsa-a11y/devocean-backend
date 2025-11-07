@@ -23,7 +23,7 @@ export class EmailSchedulerService {
    * 
    * Schedule:
    * - Post-booking: 1 hour after processing
-   * - Pre-arrival: 7 days before check-in (at 09:00 CAT)
+   * - Pre-arrival: 10 days before check-in (or 70% of remaining days if < 10 days) at 09:00 CAT
    * - Arrival: 2 days before check-in (at 09:00 CAT)
    * - Post-departure: 1 day after check-out (at 10:00 CAT)
    */
@@ -45,14 +45,14 @@ export class EmailSchedulerService {
    * 
    * Conditional scheduling based on days until check-in:
    * 
-   * Case 1: >= 7 days until check-in (normal schedule)
+   * Case 1: >= 10 days until check-in (normal schedule)
    *   - Post-booking: 1 hour after processing (CAT)
-   *   - Pre-arrival: 7 days before check-in at 09:00 CAT
+   *   - Pre-arrival: 10 days before check-in at 09:00 CAT
    *   - Arrival: 2 days before check-in at 09:00 CAT
    * 
-   * Case 2: < 7 days but >= 2 days until check-in (adjusted schedule)
+   * Case 2: < 10 days but >= 2 days until check-in (adjusted schedule)
    *   - Post-booking: 1 hour after processing (CAT)
-   *   - Pre-arrival: (days_remaining - 2) / 2 days before check-in at 09:00 CAT
+   *   - Pre-arrival: 70% of remaining days before check-in at 09:00 CAT
    *   - Arrival: 2 days before check-in at 09:00 CAT
    * 
    * Case 3: < 2 days until check-in (compressed schedule)
@@ -86,22 +86,22 @@ export class EmailSchedulerService {
     let preArrivalDateCAT: DateTime | null = null;
     let arrivalDateCAT: DateTime | null = null;
 
-    if (daysUntilCheckIn >= 7) {
-      // Case 1: Normal schedule (>= 7 days)
+    if (daysUntilCheckIn >= 10) {
+      // Case 1: Normal schedule (>= 10 days)
       console.log(`Booking ${booking.groupRef}: Normal schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
       
-      // Pre-arrival: 7 days before check-in at 09:00 CAT
-      preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -7), 9, 0);
+      // Pre-arrival: 10 days before check-in at 09:00 CAT
+      preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -10), 9, 0);
       
       // Arrival: 2 days before check-in at 09:00 CAT
       arrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -2), 9, 0);
       
     } else if (daysUntilCheckIn >= 2) {
-      // Case 2: Adjusted schedule (< 7 days but >= 2 days)
+      // Case 2: Adjusted schedule (< 10 days but >= 2 days)
       console.log(`Booking ${booking.groupRef}: Adjusted schedule (${daysUntilCheckIn.toFixed(1)} days until check-in)`);
       
-      // Pre-arrival: (days_remaining - 2) / 2 days before check-in at 09:00 CAT
-      const preArrivalDaysBeforeCheckIn = (daysUntilCheckIn - 2) / 2;
+      // Pre-arrival: 70% of remaining days before check-in at 09:00 CAT
+      const preArrivalDaysBeforeCheckIn = daysUntilCheckIn * 0.70;
       preArrivalDateCAT = setTimeInCAT(addDaysInCAT(checkInCAT, -preArrivalDaysBeforeCheckIn), 9, 0);
       
       // Arrival: 2 days before check-in at 09:00 CAT
