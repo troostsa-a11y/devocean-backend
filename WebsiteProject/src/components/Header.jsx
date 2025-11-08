@@ -26,7 +26,27 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
     }
   };
 
+  // Build URL with language and currency parameters
+  const buildHomeUrl = (hash = '') => {
+    const params = new URLSearchParams();
+    if (lang) params.set('lang', lang);
+    if (currency) params.set('cur', currency);
+    const queryString = params.toString();
+    return queryString ? `/?${queryString}${hash}` : `/${hash}`;
+  };
+
+  // Detect if we're on an experience detail page
+  const isExperiencePage = window.location.pathname.startsWith('/experiences/');
+
   const handleAnchorNav = (e, href) => {
+    // If we're on an experience page, navigate to homepage with the hash
+    if (isExperiencePage) {
+      // Let the browser handle the navigation to homepage
+      setMenuOpen(false);
+      return;
+    }
+
+    // On homepage, do smooth scroll to section
     const id = href.startsWith('#') ? href.slice(1) : '';
     const el = id ? document.getElementById(id) : null;
 
@@ -152,7 +172,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
       <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href="#home" className="flex items-center gap-3">
+            <a href={isExperiencePage ? buildHomeUrl('#home') : '#home'} className="flex items-center gap-3">
               <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
               <span className="font-semibold">DEVOCEAN Lodge</span>
             </a>
@@ -171,7 +191,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             ].map(([k, href]) => (
               <li key={k}>
                 <a
-                  href={href}
+                  href={isExperiencePage ? buildHomeUrl(href) : href}
                   className="hover:text-[#9e4b13] whitespace-nowrap"
                 >
                   {ui.nav[k]}
@@ -232,7 +252,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 ].map(([k, href]) => (
                   <a
                     key={k}
-                    href={href}
+                    href={isExperiencePage ? buildHomeUrl(href) : href}
                     data-testid={`link-mobile-${k}`}
                     className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                     onClick={(e) => handleAnchorNav(e, href)}
