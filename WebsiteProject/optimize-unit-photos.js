@@ -1,4 +1,4 @@
-import sharp from 'sharp';
+Pimport sharp from 'sharp';
 import { readdir, mkdir, stat } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
