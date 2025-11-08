@@ -1427,11 +1427,106 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  ja: {
+    title: "イルカとの遊泳",
+    tagline: "透き通った海での倫理的な野生イルカとの出会い",
+    overview: "ポンタ・ド・オウロ部分海洋保護区で野生のインド太平洋バンドウイルカとの魔法のような出会いを体験してください。両方の認定オペレーターは厳格な倫理ガイドラインに従い、イルカが自分の意思で関わることを選択する受動的で非侵襲的な交流を保証します。",
+    highlights: [
+      "200頭以上の常駐バンドウイルカ",
+      "倫理的で研究に基づいた出会い",
+      "触れたり追いかけたりしません - 野生で自由",
+      "手つかずのサンゴ礁でのシュノーケリング",
+      "季節限定のジンベエザメの目撃",
+      "ザトウクジラ（7月〜11月）",
+      "少人数グループ（最大12名）",
+      "教育的な保全重視"
+    ],
+    pricingRange: "1人US$45-50",
+    pricingDetails: [
+      "イルカウォッチング（ボートのみ）：US$45",
+      "イルカ遊泳ツアー：US$50",
+      "複数日パッケージ：割引料金",
+      "シュノーケル器材込み",
+      "保全費用込み"
+    ],
+    durationTypical: "2〜3時間",
+    durationDetails: [
+      "早朝出発（最良の条件）",
+      "浅いサンゴ礁でのシュノーケリング",
+      "水中でのイルカとの交流",
+      "ジンベエザメとの出会い（季節限定）",
+      "出発前の教育説明会"
+    ],
+    included: [
+      "マスク、フィン、シュノーケル",
+      "ウェットスーツ（必要な場合）",
+      "経験豊富なファシリテーター/ガイド",
+      "出発前の教育プレゼンテーション",
+      "出会いの写真/動画",
+      "軽食",
+      "海洋公園料金"
+    ],
+    requirementsLevel: "全年齢・全技能レベル",
+    requirementsDetails: [
+      "水泳能力が必要",
+      "シュノーケリングに慣れていること",
+      "年齢：5歳から80歳以上（天候による）",
+      "妊娠：6ヶ月まで安全",
+      "ダイビング認定は不要",
+      "1回の旅行につき最低6名（リトリートは4名）"
+    ],
+    bestTimePeak: "1月〜5月",
+    bestTimeDetails: [
+      "**ピークシーズン：** 1月〜5月（最良の出会い）",
+      "**イルカ：** 年中常駐",
+      "**ザトウクジラ：** 7月〜11月",
+      "**ジンベエザメ：** 10月〜3月",
+      "**最も穏やかな海：** 早朝",
+      "**水温：** 年間22〜28°C"
+    ],
+    tips: [
+      "2〜3日前に予約",
+      "サンゴ礁に安全な日焼け止めを持参",
+      "水中カメラ推奨",
+      "ファシリテーターの指示を注意深く守る",
+      "水中では静かに落ち着いて",
+      "イルカが自然に近づくのを待つ"
+    ],
+    ethicalPractices: [
+      {
+        title: "触れたり追いかけたりしません",
+        description: "イルカに触れたり、追いかけたり、嫌がらせをすることは決してありません。すべての出会いはイルカの条件で行われます。"
+      },
+      {
+        title: "研究に基づくアプローチ",
+        description: "両オペレーターは海洋生物学者と協力し、継続的なイルカの研究と保全に貢献しています。"
+      },
+      {
+        title: "少人数グループのみ",
+        description: "1回の旅行につき最大12名で、最小限の妨害とより良い出会いを保証します。"
+      },
+      {
+        title: "教育第一",
+        description: "出発前の説明会で、すべての参加者に適切な行動とイルカの生物学を教えます。"
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "海洋生物学者主導、保全重視のイルカとの出会い"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "研究ベースのイルカ遊泳と教育重視"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
   'af-ZA': null, // Will use English via helper
   'sv-SE': null, // Use base 'sv' via helper
   'pl-PL': null, // Use base 'pl' via helper
-  'ja-JP': null, // Will use English via helper
+  'ja-JP': null, // Use base 'ja' via helper
   'zh-CN': null, // Use base 'zh' via helper
   'ru-RU': null, // Use base 'ru' via helper
   'zu': null,    // Will use English via helper
