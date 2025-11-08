@@ -356,7 +356,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                   <h3 className="text-xl font-bold text-slate-800 mb-4">Pricing Guide</h3>
                   <div className="mb-4">
                     <p className="text-2xl font-bold text-[#9e4b13]">{exp.pricing.range}</p>
-                    <p className="text-xs text-slate-500 mt-2">
+                    <p className="text-sm text-slate-500 mt-2">
                       <strong>Note:</strong> Prices shown in US$. Contact operators for current rates in your currency or check the{' '}
                       <a 
                         href="https://fx-rate.net/calculator/" 
@@ -385,7 +385,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                       <h4 className="font-semibold text-slate-800 mb-3">Duration</h4>
                       <p className="text-sm font-medium text-slate-700 mb-2">{exp.duration.typical}</p>
                       {exp.duration.details && (
-                        <ul className="space-y-1 text-xs text-slate-600">
+                        <ul className="space-y-1 text-sm text-slate-600">
                           {exp.duration.details.map((detail, i) => (
                             <li key={i}>• {detail}</li>
                           ))}
@@ -400,7 +400,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                       <h4 className="font-semibold text-slate-800 mb-3">Level</h4>
                       <p className="text-sm font-medium text-[#9e4b13] mb-2">{exp.requirements.level}</p>
                       {exp.requirements.details && (
-                        <ul className="space-y-1 text-xs text-slate-600">
+                        <ul className="space-y-1 text-sm text-slate-600">
                           {exp.requirements.details.map((detail, i) => (
                             <li key={i}>• {detail}</li>
                           ))}
@@ -427,7 +427,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                   <h3 className="text-lg font-bold text-slate-800 mb-3">Best Time to Visit</h3>
                   <p className="text-sm font-semibold text-blue-900 mb-3">{exp.bestTime.peak}</p>
                   {exp.bestTime.details && (
-                    <ul className="space-y-2 text-xs text-slate-700">
+                    <ul className="space-y-2 text-sm text-slate-700">
                       {exp.bestTime.details.map((detail, i) => (
                         <li key={i}>• {detail}</li>
                       ))}
@@ -461,7 +461,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                     {exp.operators.map((op, i) => (
                       <div key={i} className="pb-4 border-b border-slate-200 last:border-b-0 last:pb-0">
                         <h4 className="font-semibold text-slate-800 mb-1">{op.name}</h4>
-                        <p className="text-xs text-slate-600">{op.specialty}</p>
+                        <p className="text-sm text-slate-600">{op.specialty}</p>
                       </div>
                     ))}
                   </div>
