@@ -586,7 +586,17 @@ export function useLocale() {
     if (urlLang) {
       const normalized = normalizeLangCode(urlLang);
       if (normalized) {
-        // When language comes from URL, set region to match
+        // Check if existing stored region already supports this language
+        const storedRegion = localStorage.getItem("site.region");
+        if (storedRegion && SUPPORTED_REGIONS.includes(storedRegion)) {
+          const storedRegionLanguages = LANGUAGE_TO_REGION[storedRegion] || [];
+          if (storedRegionLanguages.includes(normalized)) {
+            // Existing region supports this language - keep it!
+            return storedRegion;
+          }
+        }
+        
+        // Existing region doesn't support this language, find compatible one
         const compatibleRegion = findRegionForLanguage(normalized);
         if (compatibleRegion) {
           localStorage.setItem("site.region", compatibleRegion);
