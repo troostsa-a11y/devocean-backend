@@ -232,7 +232,7 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "info@dolphinencountours.org",
+        email: "connect@dolphinencountours.org",
         specialty: "Research-focused, founded 1995, 250+ dolphins catalogued"
       },
       {

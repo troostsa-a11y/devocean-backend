@@ -134,6 +134,9 @@ This inquiry was forwarded from the DEVOCEAN Lodge website (devoceanlodge.com).
     `.trim();
 
     // Send email to operator
+    // Use partners@devoceanlodge.com BCC for dolphin inquiries, info@devoceanlodge.com for others
+    const bccEmail = experienceKey === 'dolphins' ? 'partners@devoceanlodge.com' : 'info@devoceanlodge.com';
+    
     const operatorResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -143,7 +146,7 @@ This inquiry was forwarded from the DEVOCEAN Lodge website (devoceanlodge.com).
       body: JSON.stringify({
         from: 'DEVOCEAN Lodge - Ponta do Ouro <reservations@devoceanlodge.com>',
         to: [operatorEmail],
-        bcc: ['info@devoceanlodge.com'],
+        bcc: [bccEmail],
         subject: `Experience Inquiry: ${sanitizedExperience}`,
         html: operatorEmailHtml,
         text: operatorEmailText,
