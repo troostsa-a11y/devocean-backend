@@ -1,4 +1,5 @@
 import { useState, memo } from 'react';
+import { Link } from 'wouter';
 import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
@@ -172,10 +173,17 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
       <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href={isExperiencePage ? buildHomeUrl('#home') : '#home'} className="flex items-center gap-3">
-              <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
-              <span className="font-semibold">DEVOCEAN Lodge</span>
-            </a>
+            {isExperiencePage ? (
+              <Link href={buildHomeUrl('#home')} className="flex items-center gap-3">
+                <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
+                <span className="font-semibold">DEVOCEAN Lodge</span>
+              </Link>
+            ) : (
+              <a href="#home" className="flex items-center gap-3">
+                <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
+                <span className="font-semibold">DEVOCEAN Lodge</span>
+              </a>
+            )}
           </div>
 
           {/* Desktop nav (large screens only) */}
@@ -190,12 +198,19 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               ["contact", "#contact"],
             ].map(([k, href]) => (
               <li key={k}>
-                <a
-                  href={isExperiencePage ? buildHomeUrl(href) : href}
-                  className="hover:text-[#9e4b13] whitespace-nowrap"
-                >
-                  {ui.nav[k]}
-                </a>
+                {isExperiencePage ? (
+                  <Link href={buildHomeUrl(href)} className="hover:text-[#9e4b13] whitespace-nowrap">
+                    {ui.nav[k]}
+                  </Link>
+                ) : (
+                  <a
+                    href={href}
+                    className="hover:text-[#9e4b13] whitespace-nowrap"
+                    onClick={(e) => handleAnchorNav(e, href)}
+                  >
+                    {ui.nav[k]}
+                  </a>
+                )}
               </li>
             ))}
             <li>
@@ -250,15 +265,27 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                   ["location", "#location"],
                   ["contact", "#contact"],
                 ].map(([k, href]) => (
-                  <a
-                    key={k}
-                    href={isExperiencePage ? buildHomeUrl(href) : href}
-                    data-testid={`link-mobile-${k}`}
-                    className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                    onClick={(e) => handleAnchorNav(e, href)}
-                  >
-                    {ui.nav[k]}
-                  </a>
+                  isExperiencePage ? (
+                    <Link
+                      key={k}
+                      href={buildHomeUrl(href)}
+                      data-testid={`link-mobile-${k}`}
+                      className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {ui.nav[k]}
+                    </Link>
+                  ) : (
+                    <a
+                      key={k}
+                      href={href}
+                      data-testid={`link-mobile-${k}`}
+                      className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                      onClick={(e) => handleAnchorNav(e, href)}
+                    >
+                      {ui.nav[k]}
+                    </a>
+                  )
                 ))}
                 <a
                   href={`/story.html?lang=${lang}`}
