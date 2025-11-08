@@ -1617,6 +1617,101 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  zu: {
+    title: "Ukubhukuda Namahlengethwa",
+    tagline: "Ukuhlangana okwenethikali namahlengethwa asendle emanzini acwebezela",
+    overview: "Zizwe ukuhlangana okuyimangaliso namahlengethwa asendle e-Indo-Pacific bottlenose e-Ponta do Ouro Partial Marine Reserve. Bobabili abasebenzisi abagunyaziwe balandela imigomo yenethikali eqinile, beqinisekisa ukuxhumana okungafakwa ngaphakathi lapho amahlengethwa ekhetha ukubandakanyeka ngokwezimo zawo.",
+    highlights: [
+      "200+ amahlengethwa abottle-nose ahlala njalo",
+      "Ukuhlangana okusekelwe ocwaningweni okwenethikali",
+      "AKUKHO ukuthinta noma ukuxosha - asendle futhi akhululekile",
+      "Ukucwila ngaphezu kwamatshe angcolile",
+      "Ukubona ushaka lwemvubu ngesikhathi",
+      "Imvubu ezinkulu (Julayi-Novemba)",
+      "Amaqembu amancane (max 12 abantu)",
+      "Ukugxila kwemfundo yokulondoloza"
+    ],
+    pricingRange: "US$45-50 ngamunye",
+    pricingDetails: [
+      "Ukubuka amahlengethwa (isikebhe kuphela): US$45",
+      "Uhambo lokubhukuda namahlengethwa: US$50",
+      "Amaphakethe ezinsuku eziningi: Amanani aphakeme",
+      "Izinto zokucwila zifakiwe",
+      "Imali yokulondoloza ifakiwe"
+    ],
+    durationTypical: "2-3 amahora",
+    durationDetails: [
+      "Ukusuka ekuseni kakhulu (izimo ezingcono kakhulu)",
+      "Ukucwila ngaphezu kwamatshe angaphansi",
+      "Ukusiza amahlengethwa emanzini",
+      "Ukuhlangana noshaka lwemvubu (ngesikhathi)",
+      "Isifundiso sokuvula ngaphambi kokusuka"
+    ],
+    included: [
+      "Imaski, izinyawo & snorkel",
+      "I-wetsuit (uma kudingeka)",
+      "Umholi onomuzwa/umqondisi",
+      "Ukwethulwa kwemfundo ngaphambi kokusuka",
+      "Izithombe/amavidiyookuhlangana kwakho",
+      "Ukuphuza okulula",
+      "Izimali zepaki yasolwandle"
+    ],
+    requirementsLevel: "Zonke iziminyaka & amakhono",
+    requirementsDetails: [
+      "Kudingeka ikhono lokubhukuda",
+      "Ukuthuthukile ngokucwila",
+      "Iminyaka: 5 kuya ku-80+ (isimo sezulu sivumela)",
+      "Ukukhulelwa: Kuphephile kuze kube yizinyanga ezi-6",
+      "Akudingeki isitifiketi sokucwila",
+      "Okungenani abantu aba-6 ngohambo (aba-4 ngokuzikhipha)"
+    ],
+    bestTimePeak: "Januwari - Meyi",
+    bestTimeDetails: [
+      "**Isikhathi Esiphakeme:** Januwari-Meyi (ukuhlangana okungcono kakhulu)",
+      "**Amahlengethwa:** Abahlali bonyaka wonke",
+      "**Imvubu Ezinkulu:** Julayi-Novemba",
+      "**Ushaka Lwemvubu:** Okthoba-Mashi",
+      "**Ulwandle Oluthule Kakhulu:** Ekuseni kakhulu",
+      "**Izinga Lokushisa Kwamanzi:** 22-28°C unyaka wonke"
+    ],
+    tips: [
+      "Bhuka izinsuku ezi-2-3 ngaphambi",
+      "Letha i-reef-safe sunscreen",
+      "Ikhamera yangaphansi kwamanzi inconywa",
+      "Landela imiyalelo yomholi ngokucophelela",
+      "Hlala uzolile futhi uthule emanzini",
+      "Vumela amahlengethwa asondele ngokwemvelo"
+    ],
+    ethicalPractices: [
+      {
+        title: "Akukho Ukuthinta Noma Ukuxosha",
+        description: "Amahlengethwa awathintwa, axoshwa noma aphazanyiswa. Konke ukuhlangana kwenzeka ngokwezimo zamahlengethwa."
+      },
+      {
+        title: "Indlela Esekelwe Ocwaningweni",
+        description: "Bobabili abasebenzisi basebenza namasayensi wolwandle futhi banikela ocwaningweni oluyisisekelo nokulondoloza amahlengethwa."
+      },
+      {
+        title: "Amaqembu Amancane Kuphela",
+        description: "Abantu abayi-12 ngohambo ngalunye kuqinisekisa ukuphazamiseka okuncane nokuhlanganisa okungcono."
+      },
+      {
+        title: "Imfundo Kuqala",
+        description: "Izinkulumo zangaphambi kokusuka zifundisa ukuziphatha okufanele kanye ne-biology yamahlengethwa kubo bonke ababambe iqhaza."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Ukuhlangana namahlengethwa okuholwa ngamasayensi wolwandle, okugxile ekulondolozeni"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Ukubhukuda namahlengethwa okusekelwe ocwaningweni okugxile emfundweni"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
   'af-ZA': null, // Use base 'af' via helper
   'sv-SE': null, // Use base 'sv' via helper
@@ -1624,7 +1719,7 @@ export const DOLPHINS_CONTENT = {
   'ja-JP': null, // Use base 'ja' via helper
   'zh-CN': null, // Use base 'zh' via helper
   'ru-RU': null, // Use base 'ru' via helper
-  'zu': null,    // Will use English via helper
+  'zu-ZA': null, // Use base 'zu' via helper
   'sw': null     // Will use English via helper
 };
 
