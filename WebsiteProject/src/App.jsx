@@ -87,7 +87,16 @@ export default function App() {
   // Handle hash navigation on route changes (immediate, with retry until element exists)
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (!hash || location !== '/') return;
+    if (location !== '/') return;
+
+    // Ensure hero placeholder stays hidden when navigating back to homepage
+    const heroPlaceholder = document.getElementById('hero-placeholder');
+    if (heroPlaceholder && (sessionStorage.getItem('devocean-hero-seen') || localStorage.getItem('devocean-hero-seen'))) {
+      heroPlaceholder.style.display = 'none';
+      document.documentElement.classList.remove('hero-active');
+    }
+
+    if (!hash) return;
 
     // Retry scroll until element is found (max 20 attempts over 1 second)
     let attempts = 0;
