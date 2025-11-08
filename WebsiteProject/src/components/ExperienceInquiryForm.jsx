@@ -403,15 +403,45 @@ function getPlaceholder(field, lang) {
   const placeholders = {
     dates: {
       en: "e.g., December 15-20, 2025",
+      'en-GB': "e.g., 15-20 December 2025",
+      'en-US': "e.g., December 15-20, 2025",
       'pt-PT': "ex., 15-20 de Dezembro de 2025",
       'pt-BR': "ex., 15-20 de Dezembro de 2025",
-      pt: "ex., 15-20 de Dezembro de 2025"
+      pt: "ex., 15-20 de Dezembro de 2025",
+      nl: "bijv., 15-20 december 2025",
+      fr: "ex., 15-20 décembre 2025",
+      it: "es., 15-20 dicembre 2025",
+      de: "z.B., 15.-20. Dezember 2025",
+      es: "ej., 15-20 de diciembre de 2025",
+      af: "bv., 15-20 Desember 2025",
+      sv: "t.ex., 15-20 december 2025",
+      pl: "np., 15-20 grudnia 2025",
+      ja: "例: 2025年12月15-20日",
+      zh: "例如，2025年12月15-20日",
+      ru: "напр., 15-20 декабря 2025",
+      zu: "isib., Disemba 15-20, 2025",
+      sw: "mfano, Desemba 15-20, 2025"
     },
     message: {
       en: "Tell us about your experience preferences, skill level, special requests...",
+      'en-GB': "Tell us about your experience preferences, skill level, special requests...",
+      'en-US': "Tell us about your experience preferences, skill level, special requests...",
       'pt-PT': "Conte-nos sobre suas preferências de experiência, nível de habilidade, pedidos especiais...",
       'pt-BR': "Conte-nos sobre suas preferências de experiência, nível de habilidade, pedidos especiais...",
-      pt: "Conte-nos sobre suas preferências de experiência, nível de habilidade, pedidos especiais..."
+      pt: "Conte-nos sobre suas preferências de experiência, nível de habilidade, pedidos especiais...",
+      nl: "Vertel ons over uw ervaringsvoorkeuren, vaardigheidsniveau, speciale verzoeken...",
+      fr: "Parlez-nous de vos préférences d'expérience, niveau de compétence, demandes spéciales...",
+      it: "Raccontaci le tue preferenze di esperienza, livello di abilità, richieste speciali...",
+      de: "Erzählen Sie uns von Ihren Erfahrungspräferenzen, Fähigkeitsniveau, besonderen Wünschen...",
+      es: "Cuéntanos sobre tus preferencias de experiencia, nivel de habilidad, solicitudes especiales...",
+      af: "Vertel ons van jou ervaringsvoorkeure, vaardigheidsvlak, spesiale versoeke...",
+      sv: "Berätta om dina upplevelsesönskemål, färdighetsnivå, specialförfrågningar...",
+      pl: "Powiedz nam o swoich preferencjach dotyczących doświadczenia, poziomie umiejętności, specjalnych życzeniach...",
+      ja: "体験の好み、スキルレベル、特別なリクエストについてお知らせください...",
+      zh: "告诉我们您的体验偏好、技能水平、特殊要求...",
+      ru: "Расскажите нам о ваших предпочтениях, уровне навыков, особых пожеланиях...",
+      zu: "Sitshele ngokuthandayo kwakho kokuzizwa, izinga lamakhono, izicelo ezikhethekile...",
+      sw: "Tuambie kuhusu mapendeleo yako ya uzoefu, kiwango cha ujuzi, maombi maalum..."
     }
   };
   return (placeholders[field] && placeholders[field][lang]) || (placeholders[field] && placeholders[field].en) || '';
@@ -466,9 +496,24 @@ function getSubmittingText(lang) {
 function getSuccessMessage(lang) {
   const messages = {
     en: "Thank you! Your inquiry has been sent to the operator. They will contact you shortly.",
+    'en-GB': "Thank you! Your inquiry has been sent to the operator. They will contact you shortly.",
+    'en-US': "Thank you! Your inquiry has been sent to the operator. They will contact you shortly.",
     'pt-PT': "Obrigado! Sua consulta foi enviada ao operador. Eles entrarão em contato em breve.",
     'pt-BR': "Obrigado! Sua consulta foi enviada ao operador. Eles entrarão em contato em breve.",
-    pt: "Obrigado! Sua consulta foi enviada ao operador. Eles entrarão em contato em breve."
+    pt: "Obrigado! Sua consulta foi enviada ao operador. Eles entrarão em contato em breve.",
+    nl: "Bedankt! Uw aanvraag is naar de operator verzonden. Zij nemen binnenkort contact met u op.",
+    fr: "Merci! Votre demande a été envoyée à l'opérateur. Ils vous contacteront sous peu.",
+    it: "Grazie! La tua richiesta è stata inviata all'operatore. Ti contatteranno a breve.",
+    de: "Danke! Ihre Anfrage wurde an den Anbieter gesendet. Sie werden sich in Kürze bei Ihnen melden.",
+    es: "¡Gracias! Su consulta ha sido enviada al operador. Se pondrán en contacto con usted pronto.",
+    af: "Dankie! Jou navraag is na die operateur gestuur. Hulle sal jou binnekort kontak.",
+    sv: "Tack! Din förfrågan har skickats till operatören. De kommer att kontakta dig snart.",
+    pl: "Dziękujemy! Twoje zapytanie zostało wysłane do operatora. Wkrótce się z Tobą skontaktują.",
+    ja: "ありがとうございます！お問い合わせがオペレーターに送信されました。まもなくご連絡いたします。",
+    zh: "谢谢！您的询问已发送给运营商。他们将很快与您联系。",
+    ru: "Спасибо! Ваш запрос был отправлен оператору. Они свяжутся с вами в ближайшее время.",
+    zu: "Ngiyabonga! Umbuzo wakho usuthunyelwe kumshini. Bazoxhumana nawe maduze.",
+    sw: "Asante! Hoja yako imetumwa kwa mfanyabiashara. Watawasiliana nawe hivi karibuni."
   };
   return messages[lang] || messages.en;
 }
@@ -476,9 +521,24 @@ function getSuccessMessage(lang) {
 function getErrorMessage(lang) {
   const messages = {
     en: "Sorry, something went wrong. Please try again or contact us directly.",
+    'en-GB': "Sorry, something went wrong. Please try again or contact us directly.",
+    'en-US': "Sorry, something went wrong. Please try again or contact us directly.",
     'pt-PT': "Desculpe, algo deu errado. Por favor, tente novamente ou entre em contato diretamente.",
     'pt-BR': "Desculpe, algo deu errado. Por favor, tente novamente ou entre em contato diretamente.",
-    pt: "Desculpe, algo deu errado. Por favor, tente novamente ou entre em contato diretamente."
+    pt: "Desculpe, algo deu errado. Por favor, tente novamente ou entre em contato diretamente.",
+    nl: "Sorry, er is iets misgegaan. Probeer het opnieuw of neem rechtstreeks contact met ons op.",
+    fr: "Désolé, quelque chose s'est mal passé. Veuillez réessayer ou nous contacter directement.",
+    it: "Spiacenti, qualcosa è andato storto. Riprova o contattaci direttamente.",
+    de: "Entschuldigung, etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.",
+    es: "Lo sentimos, algo salió mal. Por favor, inténtelo de nuevo o contáctenos directamente.",
+    af: "Jammer, iets het verkeerd geloop. Probeer asseblief weer of kontak ons direk.",
+    sv: "Tyvärr, något gick fel. Försök igen eller kontakta oss direkt.",
+    pl: "Przepraszamy, coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z nami bezpośrednio.",
+    ja: "申し訳ございません。問題が発生しました。もう一度お試しいただくか、直接お問い合わせください。",
+    zh: "抱歉，出现了问题。请重试或直接联系我们。",
+    ru: "Извините, что-то пошло не так. Пожалуйста, попробуйте снова или свяжитесь с нами напрямую.",
+    zu: "Uxolo, kukhona okungahambanga kahle. Sicela uzame futhi noma usithinte ngqo.",
+    sw: "Samahani, kuna hitilafu. Tafadhali jaribu tena au wasiliana nasi moja kwa moja."
   };
   return messages[lang] || messages.en;
 }
@@ -486,9 +546,24 @@ function getErrorMessage(lang) {
 function getRecaptchaNotice(lang) {
   const notices = {
     en: "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.",
+    'en-GB': "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.",
+    'en-US': "This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.",
     'pt-PT': "Este site é protegido pelo reCAPTCHA e aplicam-se a Política de Privacidade e os Termos de Serviço do Google.",
     'pt-BR': "Este site é protegido pelo reCAPTCHA e aplicam-se a Política de Privacidade e os Termos de Serviço do Google.",
-    pt: "Este site é protegido pelo reCAPTCHA e aplicam-se a Política de Privacidade e os Termos de Serviço do Google."
+    pt: "Este site é protegido pelo reCAPTCHA e aplicam-se a Política de Privacidade e os Termos de Serviço do Google.",
+    nl: "Deze site wordt beschermd door reCAPTCHA en het Google Privacybeleid en de Servicevoorwaarden zijn van toepassing.",
+    fr: "Ce site est protégé par reCAPTCHA et la Politique de confidentialité et les Conditions d'utilisation de Google s'appliquent.",
+    it: "Questo sito è protetto da reCAPTCHA e si applicano l'Informativa sulla privacy e i Termini di servizio di Google.",
+    de: "Diese Website ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+    es: "Este sitio está protegido por reCAPTCHA y se aplican la Política de privacidad y los Términos de servicio de Google.",
+    af: "Hierdie webwerf word beskerm deur reCAPTCHA en die Google Privaatheidsbeleid en Diensbepalings is van toepassing.",
+    sv: "Denna webbplats skyddas av reCAPTCHA och Googles sekretesspolicy och användarvillkor gäller.",
+    pl: "Ta strona jest chroniona przez reCAPTCHA i obowiązują Polityka prywatności i Warunki korzystania z usługi Google.",
+    ja: "このサイトはreCAPTCHAによって保護されており、Googleのプライバシーポリシーと利用規約が適用されます。",
+    zh: "此网站受reCAPTCHA保护，适用Google隐私政策和服务条款。",
+    ru: "Этот сайт защищен reCAPTCHA, применяются Политика конфиденциальности и Условия использования Google.",
+    zu: "Leli sayithi livikelwe yi-reCAPTCHA futhi kuyasetshenziswa Inqubomgomo Yobumfihlo ye-Google nemibandela Yesevisi.",
+    sw: "Tovuti hii inalindwa na reCAPTCHA na Sera ya Faragha ya Google na Masharti ya Huduma yanatumika."
   };
   return notices[lang] || notices.en;
 }
