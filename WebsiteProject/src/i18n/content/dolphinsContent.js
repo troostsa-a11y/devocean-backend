@@ -1142,10 +1142,105 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  pl: {
+    title: "Pływanie z Delfinami",
+    tagline: "Etyczne spotkania z dzikimi delfinami w krystalicznie czystych wodach",
+    overview: "Doświadcz magicznych spotkań z dzikimi delfinami butlonosymi indopacyficznymi w Częściowym Rezerwacie Morskim Ponta do Ouro. Obaj autoryzowani operatorzy przestrzegają ścisłych wytycznych etycznych, zapewniając pasywne, nieinwazyjne interakcje, gdzie delfiny same decydują o zaangażowaniu na swoich warunkach.",
+    highlights: [
+      "200+ stałych delfinów butlonosych",
+      "Etyczne, oparte na badaniach spotkania",
+      "ŻADNEGO dotykania ani goniących - dzkie i wolne",
+      "Nurkowanie z rurką nad dziewiczymi rafami",
+      "Sezonowe obserwacje rekinów wielorybich",
+      "Humbaki (lipiec-listopad)",
+      "Małe grupy (max 12 osób)",
+      "Edukacyjny nacisk na ochronę"
+    ],
+    pricingRange: "US$45-50 za osobę",
+    pricingDetails: [
+      "Obserwacja delfinów (tylko łódź): US$45",
+      "Wycieczka pływania z delfinami: US$50",
+      "Pakiety wielodniowe: Ceny promocyjne",
+      "Sprzęt do nurkowania z rurką wliczony",
+      "Opłata za ochronę wliczona"
+    ],
+    durationTypical: "2-3 godziny",
+    durationDetails: [
+      "Wczesny poranek start (najlepsze warunki)",
+      "Nurkowanie z rurką nad płytkimi rafami",
+      "Facilitacja delfinów w wodzie",
+      "Spotkania z rekinami wielorybimi (sezonowe)",
+      "Edukacyjna odprawa przed startem"
+    ],
+    included: [
+      "Maska, płetwy i rurka",
+      "Kombinezon (jeśli potrzebny)",
+      "Doświadczony facilitator/przewodnik",
+      "Prezentacja edukacyjna przed startem",
+      "Zdjęcia/filmy z Twojego spotkania",
+      "Lekkie przekąski",
+      "Opłaty za park morski"
+    ],
+    requirementsLevel: "Wszystkie wieku i umiejętności",
+    requirementsDetails: [
+      "Wymagana umiejętność pływania",
+      "Swobodny z nurkowaniem z rurką",
+      "Wiek: od 5 do 80+ (warunki pogodowe pozwalają)",
+      "Ciąża: Bezpieczne do 6 miesięcy",
+      "Nie jest wymagany certyfikat nurkowania",
+      "Minimum 6 osób na wyprawę (4 na retreaty)"
+    ],
+    bestTimePeak: "Styczeń - Maj",
+    bestTimeDetails: [
+      "**Sezon Szczytowy:** Styczeń-maj (najlepsze spotkania)",
+      "**Delfiny:** Całoroczni mieszkańcy",
+      "**Humbaki:** Lipiec-listopad",
+      "**Rekiny Wielorybie:** Październik-marzec",
+      "**Najspokojniejsze Morza:** Wczesny poranek",
+      "**Temperatura Wody:** 22-28°C przez cały rok"
+    ],
+    tips: [
+      "Rezerwuj 2-3 dni wcześniej",
+      "Przynieś krem przeciwsłoneczny bezpieczny dla raf",
+      "Zalecany aparat podwodny",
+      "Postępuj zgodnie z instrukcjami facylitatora",
+      "Zachowaj spokój i ciszę w wodzie",
+      "Pozwól delfinom zbliżyć się naturalnie"
+    ],
+    ethicalPractices: [
+      {
+        title: "Żadnego Dotykania ani Goniących",
+        description: "Delfiny nigdy nie są dotykane, gonione ani nękane. Wszystkie spotkania odbywają się na warunkach delfinów."
+      },
+      {
+        title: "Podejście Oparte na Badaniach",
+        description: "Obaj operatorzy współpracują z biologami morskimi i przyczyniają się do ciągłych badań i ochrony delfinów."
+      },
+      {
+        title: "Tylko Małe Grupy",
+        description: "Maksymalnie 12 osób na wyprawę zapewnia minimalne zakłócenia i lepsze spotkania."
+      },
+      {
+        title: "Edukacja Na Pierwszym Miejscu",
+        description: "Odprawy przed startem uczą odpowiedniego zachowania i biologii delfinów wszystkich uczestników."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Spotkania z delfinami prowadzone przez biologów morskich, skoncentrowane na ochronie"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Pływanie z delfinami oparte na badaniach z naciskiem edukacyjnym"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
   'af-ZA': null, // Will use English via helper
   'sv-SE': null, // Use base 'sv' via helper
-  'pl': null,    // Will use English via helper
+  'pl-PL': null, // Use base 'pl' via helper
   'ja-JP': null, // Will use English via helper
   'zh-CN': null, // Will use English via helper
   'ru': null,    // Will use English via helper
