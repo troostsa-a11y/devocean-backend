@@ -151,6 +151,12 @@ export class EmailAutomationService {
     this.runEmailCheck().catch(error => {
       console.error('Error during startup email check:', error);
     });
+    
+    // Also send any pending scheduled emails on startup
+    console.log('Sending any pending scheduled emails from backlog...');
+    this.sendScheduledEmails().catch(error => {
+      console.error('Error during startup scheduled email send:', error);
+    });
   }
 
   /**
