@@ -3,7 +3,7 @@ import { useRoute, Link } from 'wouter';
 import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
-import { getExpText } from '../i18n/experienceTranslations';
+import { getExpText } from '../i18n/experiencePageTranslations';
 
 export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const [match, params] = useRoute('/experiences/:key');

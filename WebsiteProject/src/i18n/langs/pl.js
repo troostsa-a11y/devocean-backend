@@ -67,6 +67,15 @@ export const UI = {
     cric: "Prawa konsumenta i kontakt",
     manage: "Ustawienia cookies",
     ccpa: "Nie Sprzedawaj Moich Danych",
+  },
+  experiences: {
+    diving: { title: "Nurkowanie", desc: "Rafy przybrzeżne z bogatym życiem morskim." },
+    dolphins: { title: "Pływanie z Delfinami", desc: "Etyczne spotkania z rezydującymi delfinami." },
+    lighthouse: { title: "Wędrówka do Latarni Morskiej", desc: "Wejdź na wzgórze do starej latarni morskiej, aby podziwiać rozległe widoki." },
+    seafari: { title: "Safari Morskie", desc: "Morskie safari dla wielorybów (maj–październik) i więcej." },
+    safari: { title: "Safari Lądowe", desc: "Przygody w buszu w niewielkiej odległości." },
+    fishing: { title: "Wędkarstwo Przybrzeżne i Głębinowe", desc: "Od rzucania z brzegu po czartery w pełnym morzu." },
+    surfing: { title: "Deski Surfingowe i Lekcje", desc: "Złap falę lub naucz się podstaw." },
   }
 }
 
