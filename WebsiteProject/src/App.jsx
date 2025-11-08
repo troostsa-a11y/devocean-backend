@@ -1,5 +1,5 @@
 import { useEffect, useMemo, lazy, Suspense } from 'react';
-import { Route, Switch } from 'wouter';
+import { Route, Switch, useLocation } from 'wouter';
 import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
@@ -21,6 +21,7 @@ const Footer = lazy(() => import('./components/Footer'));
 
 export default function App() {
   const { lang, currency, region, setLang, setRegion, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
+  const [location] = useLocation();
 
   // Handle Hotelrunner locale redirects (e.g., /af-ZA from booking engine)
   useEffect(() => {
@@ -83,19 +84,32 @@ export default function App() {
     return () => window.removeEventListener("resize", throttledRecalc);
   }, []);
 
-  // Handle initial hash navigation (e.g., when navigating from story.html to /#stay)
+  // Handle hash navigation on route changes (immediate, with retry until element exists)
   useEffect(() => {
-    if (!loading && ui && window.location.hash) {
-      // Wait for React to finish rendering all sections
-      setTimeout(() => {
-        const hash = window.location.hash.slice(1);
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 300);
-    }
-  }, [loading, ui]);
+    const hash = window.location.hash.slice(1);
+    if (!hash || location !== '/') return;
+
+    // Retry scroll until element is found (max 20 attempts over 1 second)
+    let attempts = 0;
+    const maxAttempts = 20;
+    
+    const tryScroll = () => {
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return true;
+      }
+      
+      attempts++;
+      if (attempts < maxAttempts) {
+        requestAnimationFrame(tryScroll);
+      }
+      return false;
+    };
+    
+    // Start trying immediately
+    requestAnimationFrame(tryScroll);
+  }, [location]);
 
   // Memoize expensive computations to reduce re-renders
   const bookUrl = useMemo(() => 
