@@ -165,9 +165,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a 
-              href="#home" 
+              href={isExperiencePage ? '/#home' : '#home'}
               className="flex items-center gap-3"
-              onClick={(e) => handleNavClick(e, '#home')}
+              onClick={isExperiencePage ? undefined : (e) => handleNavClick(e, '#home')}
             >
               <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
               <span className="font-semibold">DEVOCEAN Lodge</span>
@@ -187,9 +187,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             ].map(([k, href]) => (
               <li key={k}>
                 <a
-                  href={href}
+                  href={isExperiencePage ? `/${href}` : href}
                   className="hover:text-[#9e4b13] whitespace-nowrap"
-                  onClick={(e) => handleNavClick(e, href)}
+                  onClick={isExperiencePage ? undefined : (e) => handleNavClick(e, href)}
                 >
                   {ui.nav[k]}
                 </a>
@@ -249,10 +249,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 ].map(([k, href]) => (
                   <a
                     key={k}
-                    href={href}
+                    href={isExperiencePage ? `/${href}` : href}
                     data-testid={`link-mobile-${k}`}
                     className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                    onClick={(e) => handleNavClick(e, href)}
+                    onClick={isExperiencePage ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
                   >
                     {ui.nav[k]}
                   </a>
