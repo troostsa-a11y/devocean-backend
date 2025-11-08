@@ -67,7 +67,10 @@ export const UI = {
     cric: "Konsumenträttigheter & Kontakt",
     manage: "Cookieinställningar",
     ccpa: "Sälj Inte Min Info",
-  },
+  }
+}
+
+export const L10N = {
   units: {
     safari: {
       title: "Safaritält",

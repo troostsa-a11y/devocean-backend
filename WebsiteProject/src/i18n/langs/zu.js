@@ -67,7 +67,10 @@ export const UI = {
     cric: "Amalungelo omthengi kanye noxhumano",
     manage: "Izilungiselelo zama-Cookie",
     ccpa: "Ungathengisi Ulwazi Lwami",
-  },
+  }
+}
+
+export const L10N = {
   units: {
     safari: {
       title: "Itende leSafari",

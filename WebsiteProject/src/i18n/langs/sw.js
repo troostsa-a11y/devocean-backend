@@ -34,7 +34,10 @@ export const UI = {
   footer: { rights: "Haki zote zimehifadhiwa.", desc: "Ukaribu wa kirafiki wa familia unaofaa na mazingira na miradi ya jamii huko Kusini mwa Msumbiji." },
   legal: { title: "Taarifa za Kisheria", privacy: "Sera ya Faragha", cookies: "Sera ya Vidakuzi", terms: "Masharti na Vigezo", gdpr: "Taarifa za GDPR", cric: "Haki za Wateja na Mawasiliano", manage: "Mipangilio ya Vidakuzi", ccpa: "Usiuze Taarifa Zangu" },
   currencies: { USD: "Dola za Marekani", MZN: "Meticais", ZAR: "Rand", EUR: "Euro", GBP: "Pauni ya GB", SEK: "Krona", PLN: "Zloty", JPY: "Yen", CNY: "Yuan", RUB: "Ruble", TZS: "Shilingi ya Tanzania", KES: "Shilingi ya Kenya" },
-  galleryHeading: "Matunzio",
+  galleryHeading: "Matunzio"
+}
+
+export const L10N = {
   units: {
     safari: {
       title: "Hema la Safari",
