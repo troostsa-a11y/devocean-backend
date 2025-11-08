@@ -1522,8 +1522,103 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  af: {
+    title: "Swem met Dolfyne",
+    tagline: "Etiese wilde dolfyn ontmoetings in kristalhelder water",
+    overview: "Ervaar magiese ontmoetings met wilde Indo-Stille Oseaan bottelneusedolfyne in die Ponta do Ouro Gedeeltelike Mariene Reservaat. Beide gemagtigde operateurs volg streng etiese riglyne, wat passiewe, nie-indringende interaksies verseker waar dolfyne kies om op hul eie terme betrokke te raak.",
+    highlights: [
+      "200+ inwonende bottelneusedolfyne",
+      "Etiese, navorsingsgebaseerde ontmoetings",
+      "GEEN aanraking of jaag nie - wild & vry",
+      "Snorkel oor ongerepte riwwe",
+      "Seisoenale walvishaai waarnemings",
+      "Boggelwalvisse (Julie-November)",
+      "Klein groepgroottes (maks 12 mense)",
+      "Opvoedkundige bewaringsfokus"
+    ],
+    pricingRange: "US$45-50 per persoon",
+    pricingDetails: [
+      "Dolfyn kyk (slegs boot): US$45",
+      "Dolfyn swem uitstappie: US$50",
+      "Multidag pakkette: Afslag tariewe",
+      "Snorkel toerusting ingesluit",
+      "Bewaringsfooie ingesluit"
+    ],
+    durationTypical: "2-3 ure",
+    durationDetails: [
+      "Vroeë oggend vertrek (beste toestande)",
+      "Snorkel oor vlak riwwe",
+      "In-water dolfyn fasilitering",
+      "Walvishaai ontmoetings (seisoenaal)",
+      "Opvoedkundige voor-vertrek besprekings"
+    ],
+    included: [
+      "Masker, vinne & snorkel",
+      "Natpak (indien nodig)",
+      "Ervare fasiliteerder/gids",
+      "Voor-vertrek opvoedkundige aanbieding",
+      "Foto's/video's van jou ontmoeting",
+      "Ligte verversings",
+      "Mariene park fooie"
+    ],
+    requirementsLevel: "Alle ouderdomme & vermoëns",
+    requirementsDetails: [
+      "Swemvermoë vereis",
+      "Gemaklik met snorkel",
+      "Ouderdomme: 5 tot 80+ (weer permitteer)",
+      "Swangerskap: Veilig tot 6 maande",
+      "Geen duik sertifikaat nodig nie",
+      "Minimum 6 mense per reis (4 vir onttrekkings)"
+    ],
+    bestTimePeak: "Januarie - Mei",
+    bestTimeDetails: [
+      "**Piekseisoen:** Januarie-Mei (beste ontmoetings)",
+      "**Dolfyne:** Heeljaar inwoners",
+      "**Boggelwalvisse:** Julie-November",
+      "**Walvishaaie:** Oktober-Maart",
+      "**Kalmste See:** Vroeë oggend",
+      "**Water Temperatuur:** 22-28°C heeljaar"
+    ],
+    tips: [
+      "Bespreek 2-3 dae vooruit",
+      "Bring rif-veilige sonbrandroom",
+      "Onderwater kamera aanbeveel",
+      "Volg fasiliteerder instruksies noukeurig",
+      "Bly kalm en stil in die water",
+      "Laat dolfyne natuurlik nader kom"
+    ],
+    ethicalPractices: [
+      {
+        title: "Geen Aanraking of Jaag Nie",
+        description: "Dolfyne word nooit aangeraak, gejaag of lastig geval nie. Alle ontmoetings is op die dolfyne se terme."
+      },
+      {
+        title: "Navorsingsgebaseerde Benadering",
+        description: "Beide operateurs werk met mariene bioloë en dra by tot voortdurende dolfyn navorsing en bewaring."
+      },
+      {
+        title: "Slegs Klein Groepe",
+        description: "Maksimum 12 mense per reis verseker minimale versteuring en beter ontmoetings."
+      },
+      {
+        title: "Opvoeding Eerste",
+        description: "Voor-vertrek besprekings leer behoorlike gedrag en dolfyn biologie aan alle deelnemers."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Mariene bioloog-geleide, bewaringsfokus dolfyn ontmoetings"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Navorsingsgebaseerde dolfyn swem met opvoedkundige fokus"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
-  'af-ZA': null, // Will use English via helper
+  'af-ZA': null, // Use base 'af' via helper
   'sv-SE': null, // Use base 'sv' via helper
   'pl-PL': null, // Use base 'pl' via helper
   'ja-JP': null, // Use base 'ja' via helper
