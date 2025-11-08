@@ -1047,9 +1047,104 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  sv: {
+    title: "Simma med Delfiner",
+    tagline: "Etiska möten med vilda delfiner i kristallklart vatten",
+    overview: "Upplev magiska möten med vilda indopacifiska flasknosdelfiner i Ponta do Ouro Partial Marine Reserve. Båda auktoriserade operatörerna följer strikta etiska riktlinjer som säkerställer passiva, icke-invasiva interaktioner där delfinerna väljer att engagera sig på sina egna villkor.",
+    highlights: [
+      "200+ bofasta flasknosdelfiner",
+      "Etiska, forskningsbaserade möten",
+      "INGEN beröring eller jakt - vilda & fria",
+      "Snorkling över orörda rev",
+      "Säsongsbetonade valhajobservationer",
+      "Knölvalar (juli-november)",
+      "Små gruppstorlekar (max 12 personer)",
+      "Utbildningsfokus på bevarande"
+    ],
+    pricingRange: "US$45-50 per person",
+    pricingDetails: [
+      "Delfinkikning (endast båt): US$45",
+      "Delfinsim utflykt: US$50",
+      "Flerdagarspaket: Rabatterade priser",
+      "Snorkelutrustning ingår",
+      "Bevarandeavgift ingår"
+    ],
+    durationTypical: "2-3 timmar",
+    durationDetails: [
+      "Tidig morgonstart (bästa förhållanden)",
+      "Snorkling över grunda rev",
+      "Delfinfacilitering i vattnet",
+      "Valhajmöten (säsongsbetonade)",
+      "Utbildningsbriefing före avresa"
+    ],
+    included: [
+      "Mask, simfötter & snorkel",
+      "Våtdräkt (vid behov)",
+      "Erfaren facilitator/guide",
+      "Utbildningspresentation före avresa",
+      "Foton/videor från ditt möte",
+      "Lätta förfriskningar",
+      "Marinparksavgifter"
+    ],
+    requirementsLevel: "Alla åldrar & förmågor",
+    requirementsDetails: [
+      "Simförmåga krävs",
+      "Bekväm med snorkling",
+      "Åldrar: 5 till 80+ (väder tillåter)",
+      "Graviditet: Säkert upp till 6 månader",
+      "Ingen dykcertifiering behövs",
+      "Minst 6 personer per resa (4 för reträter)"
+    ],
+    bestTimePeak: "Januari - Maj",
+    bestTimeDetails: [
+      "**Högsäsong:** Januari-maj (bästa möten)",
+      "**Delfiner:** Helårsbosatta",
+      "**Knölvalar:** Juli-november",
+      "**Valhajar:** Oktober-mars",
+      "**Lugnaste Haven:** Tidig morgon",
+      "**Vattentemperatur:** 22-28°C året runt"
+    ],
+    tips: [
+      "Boka 2-3 dagar i förväg",
+      "Ta med revvänligt solskydd",
+      "Undervattenskamera rekommenderas",
+      "Följ facilitatorns instruktioner noggrant",
+      "Håll dig lugn och tyst i vattnet",
+      "Låt delfinerna närma sig dig naturligt"
+    ],
+    ethicalPractices: [
+      {
+        title: "Ingen Beröring eller Jakt",
+        description: "Delfiner berörs, jagas eller trakasseras aldrig. Alla möten sker på delfinerernas villkor."
+      },
+      {
+        title: "Forskningsbaserat Tillvägagångssätt",
+        description: "Båda operatörerna arbetar med marinbiologer och bidrar till pågående delfinforskning och bevarande."
+      },
+      {
+        title: "Endast Små Grupper",
+        description: "Maximalt 12 personer per resa säkerställer minimal störning och bättre möten."
+      },
+      {
+        title: "Utbildning Först",
+        description: "Briefingar före avresa lär ut korrekt beteende och delfinbiologi till alla deltagare."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Marinbiolog-ledda, bevarandefokuserade delfinmöten"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Forskningsbaserade delfinsim med utbildningsfokus"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
   'af-ZA': null, // Will use English via helper
-  'sv': null,    // Will use English via helper
+  'sv-SE': null, // Use base 'sv' via helper
   'pl': null,    // Will use English via helper
   'ja-JP': null, // Will use English via helper
   'zh-CN': null, // Will use English via helper
