@@ -1,4 +1,5 @@
 import { useState, memo } from 'react';
+import { useLocation } from 'wouter';
 import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
@@ -7,6 +8,7 @@ import LazyImage from './LazyImage';
 function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [regionMenuOpen, setRegionMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
@@ -26,18 +28,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
     }
   };
 
-  // Detect if we're on an experience detail page
-  const isExperiencePage = window.location.pathname.startsWith('/experiences/');
+  // Detect if we're on an experience detail page - use Wouter's location
+  const isExperiencePage = location.startsWith('/experiences/');
 
   const handleNavClick = (e, href) => {
-    // If on experience page, force navigation to homepage
-    if (isExperiencePage) {
-      e.preventDefault();
-      window.location.href = `/${href}`;
-      setMenuOpen(false);
-      return;
-    }
-
     // On homepage, do smooth scroll to section
     const id = href.startsWith('#') ? href.slice(1) : '';
     const el = id ? document.getElementById(id) : null;
@@ -48,8 +42,11 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
       const offset = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--stack-h')) || 0;
       window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
 
-      const newUrl = `${window.location.pathname}${window.location.search}#${id}`;
-      window.history.replaceState({}, '', newUrl);
+      // Only update history if we're on the homepage
+      if (location === '/') {
+        const newUrl = `${window.location.pathname}${window.location.search}#${id}`;
+        window.history.replaceState({}, '', newUrl);
+      }
     }
     
     setMenuOpen(false);
