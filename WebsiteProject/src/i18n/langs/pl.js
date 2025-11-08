@@ -67,7 +67,10 @@ export const UI = {
     cric: "Prawa konsumenta i kontakt",
     manage: "Ustawienia cookies",
     ccpa: "Nie Sprzedawaj Moich Danych",
-  },
+  }
+}
+
+export const L10N = {
   experiences: {
     diving: { title: "Nurkowanie", desc: "Rafy przybrzeżne z bogatym życiem morskim." },
     dolphins: { title: "Pływanie z Delfinami", desc: "Etyczne spotkania z rezydującymi delfinami." },
