@@ -8,6 +8,15 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   const [match, params] = useRoute('/experiences/:key');
   const experienceKey = params?.key;
   const exp = EXPERIENCE_DETAILS[experienceKey];
+  
+  // Build URL with language and currency parameters (like booking.html does)
+  const buildHomeUrl = (hash = '') => {
+    const params = new URLSearchParams();
+    if (lang) params.set('lang', lang);
+    if (currency) params.set('cur', currency);
+    const queryString = params.toString();
+    return queryString ? `/?${queryString}${hash}` : `/${hash}`;
+  };
 
   // Update SEO meta tags for each experience
   useEffect(() => {
@@ -102,7 +111,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-slate-800 mb-4">Experience Not Found</h1>
-          <Link href="/#experiences" className="text-[#9e4b13] hover:underline">
+          <Link href={buildHomeUrl('#experiences')} className="text-[#9e4b13] hover:underline">
             &larr; Back to Experiences
           </Link>
         </div>
@@ -125,7 +134,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
           <div className="absolute inset-0 flex flex-col justify-end">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
               <Link 
-                href="/#experiences"
+                href={buildHomeUrl('#experiences')}
                 className="inline-flex items-center text-white/90 hover:text-white mb-4 transition-colors"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -514,7 +523,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                 WhatsApp Us
               </a>
               <Link
-                href="/#contact"
+                href={buildHomeUrl('#contact')}
                 className="inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-semibold py-3 px-8 rounded-lg hover:bg-white/10 transition-colors"
               >
                 Email Us
