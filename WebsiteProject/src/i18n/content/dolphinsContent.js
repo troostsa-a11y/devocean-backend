@@ -1332,12 +1332,107 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  zh: {
+    title: "海豚游泳",
+    tagline: "在清澈见底的海域中与野生海豚进行道德邂逅",
+    overview: "在蓬塔杜奥鲁部分海洋保护区体验与野生印度太平洋宽吻海豚的神奇邂逅。两家授权运营商都遵循严格的道德准则，确保被动、非侵入性的互动，海豚可以按照自己的意愿选择参与。",
+    highlights: [
+      "200多只常驻宽吻海豚",
+      "基于研究的道德邂逅",
+      "禁止触摸或追逐 - 野生自由",
+      "在原始珊瑚礁上浮潜",
+      "季节性鲸鲨观赏",
+      "座头鲸（7月至11月）",
+      "小团体规模（最多12人）",
+      "教育保护重点"
+    ],
+    pricingRange: "每人US$45-50",
+    pricingDetails: [
+      "观赏海豚（仅乘船）：US$45",
+      "海豚游泳之旅：US$50",
+      "多日套餐：优惠价格",
+      "包含浮潜设备",
+      "包含保护费"
+    ],
+    durationTypical: "2-3小时",
+    durationDetails: [
+      "清晨出发（最佳条件）",
+      "在浅礁上浮潜",
+      "水中海豚引导",
+      "鲸鲨邂逅（季节性）",
+      "出发前教育简报"
+    ],
+    included: [
+      "面罩、脚蹼和呼吸管",
+      "潜水服（如需要）",
+      "经验丰富的引导员/导游",
+      "出发前教育演示",
+      "您邂逅的照片/视频",
+      "轻食茶点",
+      "海洋公园费用"
+    ],
+    requirementsLevel: "所有年龄和能力",
+    requirementsDetails: [
+      "需要游泳能力",
+      "熟悉浮潜",
+      "年龄：5至80岁以上（天气允许）",
+      "怀孕：6个月内安全",
+      "不需要潜水证书",
+      "每次至少6人（静修4人）"
+    ],
+    bestTimePeak: "1月 - 5月",
+    bestTimeDetails: [
+      "**旺季：** 1月至5月（最佳邂逅）",
+      "**海豚：** 全年常驻",
+      "**座头鲸：** 7月至11月",
+      "**鲸鲨：** 10月至3月",
+      "**最平静海域：** 清晨",
+      "**水温：** 全年22-28°C"
+    ],
+    tips: [
+      "提前2-3天预订",
+      "携带珊瑚礁安全防晒霜",
+      "建议使用水下相机",
+      "仔细遵循引导员的指示",
+      "在水中保持冷静和安静",
+      "让海豚自然接近您"
+    ],
+    ethicalPractices: [
+      {
+        title: "禁止触摸或追逐",
+        description: "海豚从不被触摸、追逐或骚扰。所有邂逅都按照海豚的意愿进行。"
+      },
+      {
+        title: "基于研究的方法",
+        description: "两家运营商都与海洋生物学家合作，为持续的海豚研究和保护做出贡献。"
+      },
+      {
+        title: "仅限小团体",
+        description: "每次最多12人确保最小干扰和更好的邂逅。"
+      },
+      {
+        title: "教育第一",
+        description: "出发前的简报向所有参与者传授正确的行为和海豚生物学。"
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "由海洋生物学家领导，以保护为重点的海豚邂逅"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "基于研究的海豚游泳，注重教育"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
   'af-ZA': null, // Will use English via helper
   'sv-SE': null, // Use base 'sv' via helper
   'pl-PL': null, // Use base 'pl' via helper
   'ja-JP': null, // Will use English via helper
-  'zh-CN': null, // Will use English via helper
+  'zh-CN': null, // Use base 'zh' via helper
   'ru-RU': null, // Use base 'ru' via helper
   'zu': null,    // Will use English via helper
   'sw': null     // Will use English via helper
