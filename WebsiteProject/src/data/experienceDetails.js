@@ -146,10 +146,10 @@ export const EXPERIENCE_DETAILS = {
     ],
     
     pricing: {
-      range: "US$30-40 per person",
+      range: "US$45-50 per person",
       details: [
-        "Dolphin watching (boat only): US$30",
-        "Dolphin swim excursion: US$40",
+        "Dolphin watching (boat only): US$45",
+        "Dolphin swim excursion: US$50",
         "Multi-day packages: Discounted rates",
         "Snorkel equipment included",
         "Conservation fee included"
