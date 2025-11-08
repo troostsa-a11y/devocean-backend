@@ -29,7 +29,15 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   // Detect if we're on an experience detail page
   const isExperiencePage = window.location.pathname.startsWith('/experiences/');
 
-  const handleAnchorNav = (e, href) => {
+  const handleNavClick = (e, href) => {
+    // If on experience page, force navigation to homepage
+    if (isExperiencePage) {
+      e.preventDefault();
+      window.location.href = `/${href}`;
+      setMenuOpen(false);
+      return;
+    }
+
     // On homepage, do smooth scroll to section
     const id = href.startsWith('#') ? href.slice(1) : '';
     const el = id ? document.getElementById(id) : null;
@@ -156,7 +164,11 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
       <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <a href={isExperiencePage ? '/#home' : '#home'} className="flex items-center gap-3">
+            <a 
+              href="#home" 
+              className="flex items-center gap-3"
+              onClick={(e) => handleNavClick(e, '#home')}
+            >
               <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
               <span className="font-semibold">DEVOCEAN Lodge</span>
             </a>
@@ -175,9 +187,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             ].map(([k, href]) => (
               <li key={k}>
                 <a
-                  href={isExperiencePage ? `/${href}` : href}
+                  href={href}
                   className="hover:text-[#9e4b13] whitespace-nowrap"
-                  onClick={isExperiencePage ? undefined : (e) => handleAnchorNav(e, href)}
+                  onClick={(e) => handleNavClick(e, href)}
                 >
                   {ui.nav[k]}
                 </a>
@@ -237,10 +249,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 ].map(([k, href]) => (
                   <a
                     key={k}
-                    href={isExperiencePage ? `/${href}` : href}
+                    href={href}
                     data-testid={`link-mobile-${k}`}
                     className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                    onClick={isExperiencePage ? () => setMenuOpen(false) : (e) => handleAnchorNav(e, href)}
+                    onClick={(e) => handleNavClick(e, href)}
                   >
                     {ui.nav[k]}
                   </a>
