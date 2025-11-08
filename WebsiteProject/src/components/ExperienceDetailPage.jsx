@@ -4,11 +4,39 @@ import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
+import { getDolphinsContent } from '../i18n/content/dolphinsContent';
 
 export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const [match, params] = useRoute('/experiences/:key');
   const experienceKey = params?.key;
-  const exp = EXPERIENCE_DETAILS[experienceKey];
+  
+  // Get base experience data (hero image, etc.)
+  const baseExp = EXPERIENCE_DETAILS[experienceKey];
+  
+  // For dolphins, merge with translated content; otherwise use base data
+  const exp = experienceKey === 'dolphins' 
+    ? {
+        ...baseExp,
+        ...getDolphinsContent(lang),
+        // Restructure nested data to match existing component expectations
+        pricing: baseExp?.pricing ? {
+          range: getDolphinsContent(lang).pricingRange,
+          details: getDolphinsContent(lang).pricingDetails
+        } : undefined,
+        duration: baseExp?.duration ? {
+          typical: getDolphinsContent(lang).durationTypical,
+          details: getDolphinsContent(lang).durationDetails
+        } : undefined,
+        requirements: baseExp?.requirements ? {
+          level: getDolphinsContent(lang).requirementsLevel,
+          details: getDolphinsContent(lang).requirementsDetails
+        } : undefined,
+        bestTime: baseExp?.bestTime ? {
+          peak: getDolphinsContent(lang).bestTimePeak,
+          details: getDolphinsContent(lang).bestTimeDetails
+        } : undefined
+      }
+    : baseExp;
   
   // Build URL with language and currency parameters (like booking.html does)
   const buildHomeUrl = (hash = '') => {
