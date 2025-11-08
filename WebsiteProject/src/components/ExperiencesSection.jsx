@@ -1,5 +1,6 @@
 import { EXPERIENCE_OPERATORS } from '../data/content';
 import LazyImage from './LazyImage';
+import { Link } from 'wouter';
 
 export default function ExperiencesSection({ experiences, ui }) {
   return (
@@ -9,24 +10,30 @@ export default function ExperiencesSection({ experiences, ui }) {
         <p className="mt-2 text-slate-600 max-w-2xl">{ui.experiences.blurb}</p>
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {experiences.map((c, idx) => (
-            <a
-              key={c.key}
-              href={c.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-              data-testid={`link-experience-${c.key}`}
-            >
-              <div className="h-40 overflow-hidden">
-                <LazyImage src={c.img} alt={c.title} className="w-full h-full object-cover" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold">{c.title}</h3>
-                <p className="mt-1 text-sm text-slate-600">{c.desc}</p>
-              </div>
-            </a>
-          ))}
+          {experiences.map((c, idx) => {
+            const isInternalPage = c.key === 'dolphins';
+            const CardWrapper = isInternalPage ? Link : 'a';
+            const cardProps = isInternalPage 
+              ? { href: `/experiences/${c.key}` }
+              : { href: c.url, target: "_blank", rel: "noopener noreferrer" };
+            
+            return (
+              <CardWrapper
+                key={c.key}
+                {...cardProps}
+                className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                data-testid={`link-experience-${c.key}`}
+              >
+                <div className="h-40 overflow-hidden">
+                  <LazyImage src={c.img} alt={c.title} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-4">
+                  <h3 className="font-semibold">{c.title}</h3>
+                  <p className="mt-1 text-sm text-slate-600">{c.desc}</p>
+                </div>
+              </CardWrapper>
+            );
+          })}
         </div>
 
         <div className="mt-8 text-sm text-slate-700">
