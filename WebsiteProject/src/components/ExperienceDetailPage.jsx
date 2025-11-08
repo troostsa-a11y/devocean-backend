@@ -457,9 +457,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs text-slate-500 mt-4 text-center">
-                    Use the inquiry form below to contact operators directly
-                  </p>
                 </div>
               )}
             </div>
