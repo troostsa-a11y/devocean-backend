@@ -357,7 +357,15 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                   <div className="mb-4">
                     <p className="text-2xl font-bold text-[#9e4b13]">{exp.pricing.range}</p>
                     <p className="text-xs text-slate-500 mt-2">
-                      <strong>Note:</strong> Prices shown in USD/MZN/ZAR. Contact operators for current rates in your currency.
+                      <strong>Note:</strong> Prices shown in US$. Contact operators for current rates in your currency or check the{' '}
+                      <a 
+                        href="https://fx-rate.net/calculator/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-[#9e4b13] hover:text-[#8a4211] font-semibold underline"
+                      >
+                        Currency Converter
+                      </a>
                     </p>
                   </div>
                   {exp.pricing.details && (
