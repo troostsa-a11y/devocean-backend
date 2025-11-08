@@ -404,10 +404,10 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                   {/* Contact Button */}
                   <div className="mt-6 pt-6 border-t border-slate-200">
                     <a
-                      href="/#contact"
+                      href="#inquiry-form"
                       className="block w-full bg-[#9e4b13] hover:bg-[#8a4211] text-white text-center font-semibold py-3 px-6 rounded-lg transition-colors"
                     >
-                      Contact Us to Book
+                      Contact the Operators
                     </a>
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
 
           {/* Inquiry Form Section */}
           {exp.operators && exp.operators.length > 0 && (
-            <div className="mt-16">
+            <div id="inquiry-form" className="mt-16">
               <div className="text-center mb-8">
                 <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
                   Contact Operators Directly
