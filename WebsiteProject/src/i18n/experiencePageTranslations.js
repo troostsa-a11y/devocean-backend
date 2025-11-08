@@ -611,7 +611,16 @@ export function getExpText(key, lang, params = {}) {
     }
   };
 
-  const text = (translations[key] && translations[key][lang]) || translations[key]?.en || key;
+  // Intelligent fallback: exact match → base language → English
+  let text;
+  if (translations[key]) {
+    text = translations[key][lang] // Try exact match first (e.g., 'fr-FR')
+      || translations[key][lang.split('-')[0]] // Try base language (e.g., 'fr')
+      || translations[key].en // Fallback to English
+      || key; // Last resort: return the key itself
+  } else {
+    text = key; // Key doesn't exist, return it
+  }
   
   // Replace parameters like {title}
   if (params && Object.keys(params).length > 0) {

@@ -257,7 +257,7 @@ function getFormTitle(lang) {
     zu: "Cela Ulwazi",
     sw: "Omba Taarifa"
   };
-  return titles[lang] || titles.en;
+  return titles[lang] || titles[lang.split('-')[0]] || titles.en;
 }
 
 function getFieldLabel(field, lang) {
@@ -396,7 +396,7 @@ function getFieldLabel(field, lang) {
       sw: "Ujumbe Wako"
     }
   };
-  return (labels[field] && labels[field][lang]) || labels[field].en;
+  return (labels[field] && labels[field][lang]) || (labels[field] && labels[field][lang.split('-')[0]]) || labels[field].en;
 }
 
 function getPlaceholder(field, lang) {
@@ -444,7 +444,7 @@ function getPlaceholder(field, lang) {
       sw: "Tuambie kuhusu mapendeleo yako ya uzoefu, kiwango cha ujuzi, maombi maalum..."
     }
   };
-  return (placeholders[field] && placeholders[field][lang]) || (placeholders[field] && placeholders[field].en) || '';
+  return (placeholders[field] && placeholders[field][lang]) || (placeholders[field] && placeholders[field][lang.split('-')[0]]) || (placeholders[field] && placeholders[field].en) || '';
 }
 
 function getSubmitText(lang) {
@@ -467,7 +467,7 @@ function getSubmitText(lang) {
     zu: "Thumela Umbuzo",
     sw: "Tuma Hoja"
   };
-  return texts[lang] || texts.en;
+  return texts[lang] || texts[lang.split('-')[0]] || texts.en;
 }
 
 function getSubmittingText(lang) {
@@ -490,7 +490,7 @@ function getSubmittingText(lang) {
     zu: "Kuyathunyelwa...",
     sw: "Inatumwa..."
   };
-  return texts[lang] || texts.en;
+  return texts[lang] || texts[lang.split('-')[0]] || texts.en;
 }
 
 function getSuccessMessage(lang) {
@@ -515,7 +515,7 @@ function getSuccessMessage(lang) {
     zu: "Ngiyabonga! Umbuzo wakho usuthunyelwe kumshini. Bazoxhumana nawe maduze.",
     sw: "Asante! Hoja yako imetumwa kwa mfanyabiashara. Watawasiliana nawe hivi karibuni."
   };
-  return messages[lang] || messages.en;
+  return messages[lang] || messages[lang.split('-')[0]] || messages.en;
 }
 
 function getErrorMessage(lang) {
@@ -540,7 +540,7 @@ function getErrorMessage(lang) {
     zu: "Uxolo, kukhona okungahambanga kahle. Sicela uzame futhi noma usithinte ngqo.",
     sw: "Samahani, kuna hitilafu. Tafadhali jaribu tena au wasiliana nasi moja kwa moja."
   };
-  return messages[lang] || messages.en;
+  return messages[lang] || messages[lang.split('-')[0]] || messages.en;
 }
 
 function getRecaptchaNotice(lang) {
@@ -565,5 +565,5 @@ function getRecaptchaNotice(lang) {
     zu: "Leli sayithi livikelwe yi-reCAPTCHA futhi kuyasetshenziswa Inqubomgomo Yobumfihlo ye-Google nemibandela Yesevisi.",
     sw: "Tovuti hii inalindwa na reCAPTCHA na Sera ya Faragha ya Google na Masharti ya Huduma yanatumika."
   };
-  return notices[lang] || notices.en;
+  return notices[lang] || notices[lang.split('-')[0]] || notices.en;
 }
