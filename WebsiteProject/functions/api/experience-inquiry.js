@@ -98,6 +98,10 @@ export async function onRequest(context) {
     const operatorEmail = operatorData.email;
     const escapeHtml = (text) => text.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
+    // Create Google Translate link for the message
+    const messageForTranslation = `From: ${sanitizedName}\nEmail: ${sanitizedEmail}\nDates: ${sanitizedDates || 'Not specified'}\nGuests: ${sanitizedGuests}\n\nMessage:\n${sanitizedMessage}`;
+    const translateUrl = `https://translate.google.com/?sl=auto&tl=en&text=${encodeURIComponent(messageForTranslation)}&op=translate`;
+
     // Prepare email content for operator
     const operatorEmailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -112,6 +116,20 @@ export async function onRequest(context) {
           <p><strong>Message:</strong></p>
           <p style="white-space: pre-wrap;">${escapeHtml(sanitizedMessage)}</p>
         </div>
+        
+        <!-- Google Translate Option -->
+        <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2196F3;">
+          <p style="margin: 0 0 10px 0; color: #1976D2; font-weight: bold;">🌐 Need to translate this inquiry?</p>
+          <p style="margin: 0 0 10px 0; color: #555; font-size: 14px;">
+            Click the button below to open this message in Google Translate. You can translate it to any language.
+          </p>
+          <a href="${translateUrl}" 
+             target="_blank" 
+             style="display: inline-block; background: #4285f4; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 5px;">
+            Translate with Google
+          </a>
+        </div>
+        
         <p style="color: #666; font-size: 12px;">
           This inquiry was forwarded from the DEVOCEAN Lodge website (devoceanlodge.com).
         </p>
