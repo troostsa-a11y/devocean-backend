@@ -1,18 +1,20 @@
 import { IMG } from '../data/content';
+import LazyImage from './LazyImage';
 
 export default function GallerySection({ ui }) {
   return (
     <section id="gallery" className="max-w-7xl mx-auto px-4 py-16">
       <h2 className="text-3xl md:text-4xl font-bold">{ui.galleryHeading}</h2>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
-        {IMG.gallery.map((src, i) => (
+        {IMG.gallery.map((image, i) => (
           <div
             key={i}
             className="relative group rounded-xl overflow-hidden"
           >
-            <img
-              src={src}
-              alt={`DEVOCEAN Lodge gallery ${i + 1}`}
+            <LazyImage
+              srcWebP={image.desktop}
+              srcMobileWebP={image.mobile}
+              alt={image.alt}
               className="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition"
               loading="lazy"
             />
