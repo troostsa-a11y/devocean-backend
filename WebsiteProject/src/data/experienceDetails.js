@@ -146,10 +146,10 @@ export const EXPERIENCE_DETAILS = {
     ],
     
     pricing: {
-      range: "$30-40 USD per person",
+      range: "US$30-40 per person",
       details: [
-        "Dolphin watching (boat only): $30 USD",
-        "Dolphin swim excursion: $40 USD",
+        "Dolphin watching (boat only): US$30",
+        "Dolphin swim excursion: US$40",
         "Multi-day packages: Discounted rates",
         "Snorkel equipment included",
         "Conservation fee included"
@@ -182,7 +182,7 @@ export const EXPERIENCE_DETAILS = {
       details: [
         "Swimming ability required",
         "Comfortable with snorkeling",
-        "Ages: 1 to 80+ (weather permitting)",
+        "Ages: 5 to 80+ (weather permitting)",
         "Pregnancy: Safe up to 6 months",
         "No diving certification needed",
         "Minimum 6 people per trip (4 for retreats)"
