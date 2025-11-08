@@ -1712,6 +1712,101 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  sw: {
+    title: "Kuogelea na Pomboo",
+    tagline: "Mikutano ya kimaadili na pomboo wa porini katika maji safi kama kioo",
+    overview: "Furahia mikutano ya ajabu na pomboo wa Indo-Pacific bottlenose wa porini katika Hifadhi ya Bahari ya Ponta do Ouro. Waendeshaji wote wawili walioidhinishwa wanafuata miongozo ya kimaadili, wakihakikisha mwingiliano wa utulivu, usioingiliana ambapo pomboo wanachagua kushiriki kwa masharti yao wenyewe.",
+    highlights: [
+      "Pomboo 200+ wa bottlenose wanaoishi kudumu",
+      "Mikutano ya kimaadili kulingana na utafiti",
+      "HAKUNA kugusa au kufukuza - wa porini na huru",
+      "Kuogelea juu ya miamba safi",
+      "Kuona papa-nyangumi wakati wa msimu",
+      "Nyangumi wa migongo (Julai-Novemba)",
+      "Vikundi vidogo (juu ya watu 12)",
+      "Lengo la elimu ya uhifadhi"
+    ],
+    pricingRange: "US$45-50 kwa kila mtu",
+    pricingDetails: [
+      "Kutazama pomboo (mashua tu): US$45",
+      "Safari ya kuogelea na pomboo: US$50",
+      "Vifurushi vya siku nyingi: Bei za punguzo",
+      "Vifaa vya kuogelea vimejumuishwa",
+      "Ada ya uhifadhi imejumuishwa"
+    ],
+    durationTypical: "Saa 2-3",
+    durationDetails: [
+      "Kuondoka asubuhi na mapema (hali bora)",
+      "Kuogelea juu ya miamba ya kina kidogo",
+      "Kuwezesha pomboo ndani ya maji",
+      "Mikutano na papa-nyangumi (wakati wa msimu)",
+      "Maelezo ya kielimu kabla ya kuondoka"
+    ],
+    included: [
+      "Kifuniko cha uso, vipato & snorkel",
+      "Suti ya maji (ikiwa inahitajika)",
+      "Mwongozaji/kiongozi mwenye uzoefu",
+      "Maonyesho ya kielimu kabla ya kuondoka",
+      "Picha/video za mkutano wako",
+      "Viburudisho viepesi",
+      "Ada za hifadhi ya bahari"
+    ],
+    requirementsLevel: "Umri wote na uwezo wote",
+    requirementsDetails: [
+      "Uwezo wa kuogelea unahitajika",
+      "Kuwa na starehe na kuogelea",
+      "Umri: 5 hadi 80+ (hali ya hewa ikiruhusu)",
+      "Ujauzito: Salama hadi miezi 6",
+      "Hakuna cheti cha kuzamia kinachohitajika",
+      "Angalau watu 6 kwa safari (4 kwa mapumziko)"
+    ],
+    bestTimePeak: "Januari - Mei",
+    bestTimeDetails: [
+      "**Msimu wa Kilele:** Januari-Mei (mikutano bora)",
+      "**Pomboo:** Wakazi wa mwaka mzima",
+      "**Nyangumi wa Migongo:** Julai-Novemba",
+      "**Papa-Nyangumi:** Oktoba-Machi",
+      "**Bahari Tulivu Zaidi:** Asubuhi na mapema",
+      "**Joto la Maji:** 22-28°C mwaka mzima"
+    ],
+    tips: [
+      "Weka nafasi siku 2-3 mapema",
+      "Leta mafuta ya jua salama kwa miamba",
+      "Kamera ya chini ya maji inashauriwa",
+      "Fuata maelekezo ya mwongozaji kwa makini",
+      "Kaa utulivu na kimya ndani ya maji",
+      "Ruhusu pomboo wasogee kwa asili"
+    ],
+    ethicalPractices: [
+      {
+        title: "Hakuna Kugusa au Kufukuza",
+        description: "Pomboo hawaguswa, hawafukuzwi au hawasumbuliwi kamwe. Mikutano yote inafanyika kwa masharti ya pomboo."
+      },
+      {
+        title: "Mbinu Kulingana na Utafiti",
+        description: "Waendeshaji wote wawili wanafanya kazi na wanabiolojia wa bahari na kuchangia utafiti unaoendelea na uhifadhi wa pomboo."
+      },
+      {
+        title: "Vikundi Vidogo Tu",
+        description: "Juu ya watu 12 kwa safari kuhakikisha usumbufu mdogo na mikutano bora."
+      },
+      {
+        title: "Elimu Kwanza",
+        description: "Maelezo kabla ya kuondoka yanafundisha tabia sahihi na biolojia ya pomboo kwa washiriki wote."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Mikutano ya pomboo inayoongozwa na wanabiolojia wa bahari, inayolenga uhifadhi"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Kuogelea na pomboo kulingana na utafiti na lengo la elimu"
+      }
+    ]
+  },
+
   // Fallback to English for remaining languages (can be expanded later)
   'af-ZA': null, // Use base 'af' via helper
   'sv-SE': null, // Use base 'sv' via helper
@@ -1720,7 +1815,7 @@ export const DOLPHINS_CONTENT = {
   'zh-CN': null, // Use base 'zh' via helper
   'ru-RU': null, // Use base 'ru' via helper
   'zu-ZA': null, // Use base 'zu' via helper
-  'sw': null     // Will use English via helper
+  'sw-KE': null  // Use base 'sw' via helper
 };
 
 // Helper function to get dolphins content by language
