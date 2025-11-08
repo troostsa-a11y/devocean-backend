@@ -488,7 +488,10 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               Ready to Book Your {exp.title} Adventure?
             </h2>
             <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-              Contact us to arrange your experience or get more information. We're here to help make your Ponta do Ouro adventure unforgettable!
+              {experienceKey === 'dolphins' 
+                ? "Contact the Dolphin Seafari Operators directly through the contact form above. We're here to help."
+                : "Contact us to arrange your experience or get more information. We're here to help make your Ponta do Ouro adventure unforgettable!"
+              }
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
