@@ -1,0 +1,1076 @@
+// Dolphin Swimming experience content translations - All 17 languages
+// Complete translations for the dolphins experience detail page
+
+export const DOLPHINS_CONTENT = {
+  en: {
+    title: "Dolphin Swimming",
+    tagline: "Ethical wild dolphin encounters in crystal-clear waters",
+    overview: "Experience magical encounters with wild Indo-Pacific bottlenose dolphins in the Ponta do Ouro Partial Marine Reserve. Both authorized operators follow strict ethical guidelines, ensuring passive, non-invasive interactions where dolphins choose to engage on their own terms.",
+    highlights: [
+      "200+ resident bottlenose dolphins",
+      "Ethical, research-based encounters",
+      "NO touching or chasing - wild & free",
+      "Snorkeling over pristine reefs",
+      "Seasonal whale shark sightings",
+      "Humpback whales (July-November)",
+      "Small group sizes (max 12 people)",
+      "Educational conservation focus"
+    ],
+    pricingRange: "US$45-50 per person",
+    pricingDetails: [
+      "Dolphin watching (boat only): US$45",
+      "Dolphin swim excursion: US$50",
+      "Multi-day packages: Discounted rates",
+      "Snorkel equipment included",
+      "Conservation fee included"
+    ],
+    durationTypical: "2-3 hours",
+    durationDetails: [
+      "Early morning launch (best conditions)",
+      "Snorkeling over shallow reefs",
+      "In-water dolphin facilitation",
+      "Whale shark encounters (seasonal)",
+      "Educational pre-launch briefing"
+    ],
+    included: [
+      "Mask, fins & snorkel",
+      "Wetsuit (if needed)",
+      "Experienced facilitator/guide",
+      "Pre-launch educational presentation",
+      "Photos/videos of your encounter",
+      "Light refreshments",
+      "Marine park fees"
+    ],
+    requirementsLevel: "All ages & abilities",
+    requirementsDetails: [
+      "Swimming ability required",
+      "Comfortable with snorkeling",
+      "Ages: 5 to 80+ (weather permitting)",
+      "Pregnancy: Safe up to 6 months",
+      "No diving certification needed",
+      "Minimum 6 people per trip (4 for retreats)"
+    ],
+    bestTimePeak: "January - May",
+    bestTimeDetails: [
+      "**Peak Season:** January-May (best encounters)",
+      "**Dolphins:** Year-round residents",
+      "**Humpback Whales:** July-November",
+      "**Whale Sharks:** October-March",
+      "**Calmest Seas:** Early morning",
+      "**Water Temperature:** 22-28°C year-round"
+    ],
+    tips: [
+      "Book 2-3 days in advance",
+      "Bring reef-safe sunscreen",
+      "Underwater camera recommended",
+      "Follow facilitator instructions carefully",
+      "Stay calm and quiet in the water",
+      "Let dolphins approach you naturally"
+    ],
+    ethicalPractices: [
+      {
+        title: "No Touching or Chasing",
+        description: "Dolphins are never touched, chased, or harassed. All encounters are on the dolphins' terms."
+      },
+      {
+        title: "Research-Based Approach",
+        description: "Both operators work with marine biologists and contribute to ongoing dolphin research and conservation."
+      },
+      {
+        title: "Small Groups Only",
+        description: "Maximum 12 people per trip ensures minimal disturbance and better encounters."
+      },
+      {
+        title: "Education First",
+        description: "Pre-launch briefings teach proper behavior and dolphin biology to all participants."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Marine biologist-led, conservation-focused dolphin encounters"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Research-based dolphin swims with educational focus"
+      }
+    ]
+  },
+
+  'en-GB': {
+    title: "Dolphin Swimming",
+    tagline: "Ethical wild dolphin encounters in crystal-clear waters",
+    overview: "Experience magical encounters with wild Indo-Pacific bottlenose dolphins in the Ponta do Ouro Partial Marine Reserve. Both authorised operators follow strict ethical guidelines, ensuring passive, non-invasive interactions where dolphins choose to engage on their own terms.",
+    highlights: [
+      "200+ resident bottlenose dolphins",
+      "Ethical, research-based encounters",
+      "NO touching or chasing - wild & free",
+      "Snorkelling over pristine reefs",
+      "Seasonal whale shark sightings",
+      "Humpback whales (July-November)",
+      "Small group sizes (max 12 people)",
+      "Educational conservation focus"
+    ],
+    pricingRange: "US$45-50 per person",
+    pricingDetails: [
+      "Dolphin watching (boat only): US$45",
+      "Dolphin swim excursion: US$50",
+      "Multi-day packages: Discounted rates",
+      "Snorkel equipment included",
+      "Conservation fee included"
+    ],
+    durationTypical: "2-3 hours",
+    durationDetails: [
+      "Early morning launch (best conditions)",
+      "Snorkelling over shallow reefs",
+      "In-water dolphin facilitation",
+      "Whale shark encounters (seasonal)",
+      "Educational pre-launch briefing"
+    ],
+    included: [
+      "Mask, fins & snorkel",
+      "Wetsuit (if needed)",
+      "Experienced facilitator/guide",
+      "Pre-launch educational presentation",
+      "Photos/videos of your encounter",
+      "Light refreshments",
+      "Marine park fees"
+    ],
+    requirementsLevel: "All ages & abilities",
+    requirementsDetails: [
+      "Swimming ability required",
+      "Comfortable with snorkelling",
+      "Ages: 5 to 80+ (weather permitting)",
+      "Pregnancy: Safe up to 6 months",
+      "No diving certification needed",
+      "Minimum 6 people per trip (4 for retreats)"
+    ],
+    bestTimePeak: "January - May",
+    bestTimeDetails: [
+      "**Peak Season:** January-May (best encounters)",
+      "**Dolphins:** Year-round residents",
+      "**Humpback Whales:** July-November",
+      "**Whale Sharks:** October-March",
+      "**Calmest Seas:** Early morning",
+      "**Water Temperature:** 22-28°C year-round"
+    ],
+    tips: [
+      "Book 2-3 days in advance",
+      "Bring reef-safe sun cream",
+      "Underwater camera recommended",
+      "Follow facilitator instructions carefully",
+      "Stay calm and quiet in the water",
+      "Let dolphins approach you naturally"
+    ],
+    ethicalPractices: [
+      {
+        title: "No Touching or Chasing",
+        description: "Dolphins are never touched, chased, or harassed. All encounters are on the dolphins' terms."
+      },
+      {
+        title: "Research-Based Approach",
+        description: "Both operators work with marine biologists and contribute to ongoing dolphin research and conservation."
+      },
+      {
+        title: "Small Groups Only",
+        description: "Maximum 12 people per trip ensures minimal disturbance and better encounters."
+      },
+      {
+        title: "Education First",
+        description: "Pre-launch briefings teach proper behaviour and dolphin biology to all participants."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Marine biologist-led, conservation-focused dolphin encounters"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Research-based dolphin swims with educational focus"
+      }
+    ]
+  },
+
+  'en-US': {
+    title: "Dolphin Swimming",
+    tagline: "Ethical wild dolphin encounters in crystal-clear waters",
+    overview: "Experience magical encounters with wild Indo-Pacific bottlenose dolphins in the Ponta do Ouro Partial Marine Reserve. Both authorized operators follow strict ethical guidelines, ensuring passive, non-invasive interactions where dolphins choose to engage on their own terms.",
+    highlights: [
+      "200+ resident bottlenose dolphins",
+      "Ethical, research-based encounters",
+      "NO touching or chasing - wild & free",
+      "Snorkeling over pristine reefs",
+      "Seasonal whale shark sightings",
+      "Humpback whales (July-November)",
+      "Small group sizes (max 12 people)",
+      "Educational conservation focus"
+    ],
+    pricingRange: "US$45-50 per person",
+    pricingDetails: [
+      "Dolphin watching (boat only): US$45",
+      "Dolphin swim excursion: US$50",
+      "Multi-day packages: Discounted rates",
+      "Snorkel equipment included",
+      "Conservation fee included"
+    ],
+    durationTypical: "2-3 hours",
+    durationDetails: [
+      "Early morning launch (best conditions)",
+      "Snorkeling over shallow reefs",
+      "In-water dolphin facilitation",
+      "Whale shark encounters (seasonal)",
+      "Educational pre-launch briefing"
+    ],
+    included: [
+      "Mask, fins & snorkel",
+      "Wetsuit (if needed)",
+      "Experienced facilitator/guide",
+      "Pre-launch educational presentation",
+      "Photos/videos of your encounter",
+      "Light refreshments",
+      "Marine park fees"
+    ],
+    requirementsLevel: "All ages & abilities",
+    requirementsDetails: [
+      "Swimming ability required",
+      "Comfortable with snorkeling",
+      "Ages: 5 to 80+ (weather permitting)",
+      "Pregnancy: Safe up to 6 months",
+      "No diving certification needed",
+      "Minimum 6 people per trip (4 for retreats)"
+    ],
+    bestTimePeak: "January - May",
+    bestTimeDetails: [
+      "**Peak Season:** January-May (best encounters)",
+      "**Dolphins:** Year-round residents",
+      "**Humpback Whales:** July-November",
+      "**Whale Sharks:** October-March",
+      "**Calmest Seas:** Early morning",
+      "**Water Temperature:** 22-28°C year-round"
+    ],
+    tips: [
+      "Book 2-3 days in advance",
+      "Bring reef-safe sunscreen",
+      "Underwater camera recommended",
+      "Follow facilitator instructions carefully",
+      "Stay calm and quiet in the water",
+      "Let dolphins approach you naturally"
+    ],
+    ethicalPractices: [
+      {
+        title: "No Touching or Chasing",
+        description: "Dolphins are never touched, chased, or harassed. All encounters are on the dolphins' terms."
+      },
+      {
+        title: "Research-Based Approach",
+        description: "Both operators work with marine biologists and contribute to ongoing dolphin research and conservation."
+      },
+      {
+        title: "Small Groups Only",
+        description: "Maximum 12 people per trip ensures minimal disturbance and better encounters."
+      },
+      {
+        title: "Education First",
+        description: "Pre-launch briefings teach proper behavior and dolphin biology to all participants."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Marine biologist-led, conservation-focused dolphin encounters"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Research-based dolphin swims with educational focus"
+      }
+    ]
+  },
+
+  'pt-BR': {
+    title: "Nado com Golfinhos",
+    tagline: "Encontros éticos com golfinhos selvagens em águas cristalinas",
+    overview: "Viva encontros mágicos com golfinhos-nariz-de-garrafa indo-pacíficos selvagens na Reserva Marinha Parcial de Ponta do Ouro. Ambos os operadores autorizados seguem diretrizes éticas rigorosas, garantindo interações passivas e não invasivas onde os golfinhos escolhem se envolver em seus próprios termos.",
+    highlights: [
+      "Mais de 200 golfinhos-nariz-de-garrafa residentes",
+      "Encontros éticos baseados em pesquisa",
+      "SEM tocar ou perseguir - selvagens e livres",
+      "Snorkel sobre recifes pristinos",
+      "Avistamentos sazonais de tubarões-baleia",
+      "Baleias-jubarte (julho-novembro)",
+      "Grupos pequenos (máximo 12 pessoas)",
+      "Foco educacional em conservação"
+    ],
+    pricingRange: "US$45-50 por pessoa",
+    pricingDetails: [
+      "Observação de golfinhos (somente barco): US$45",
+      "Excursão de nado com golfinhos: US$50",
+      "Pacotes de vários dias: Tarifas com desconto",
+      "Equipamento de snorkel incluído",
+      "Taxa de conservação incluída"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Lançamento matinal (melhores condições)",
+      "Snorkel sobre recifes rasos",
+      "Facilitação de golfinhos na água",
+      "Encontros com tubarões-baleia (sazonal)",
+      "Briefing educacional pré-lançamento"
+    ],
+    included: [
+      "Máscara, nadadeiras e snorkel",
+      "Traje de neoprene (se necessário)",
+      "Facilitador/guia experiente",
+      "Apresentação educacional pré-lançamento",
+      "Fotos/vídeos do seu encontro",
+      "Refrescos leves",
+      "Taxas do parque marinho"
+    ],
+    requirementsLevel: "Todas as idades e habilidades",
+    requirementsDetails: [
+      "Habilidade de natação necessária",
+      "Confortável com snorkel",
+      "Idades: 5 a 80+ (dependendo do clima)",
+      "Gravidez: Seguro até 6 meses",
+      "Não é necessária certificação de mergulho",
+      "Mínimo 6 pessoas por viagem (4 para retiros)"
+    ],
+    bestTimePeak: "Janeiro - Maio",
+    bestTimeDetails: [
+      "**Alta Temporada:** Janeiro-maio (melhores encontros)",
+      "**Golfinhos:** Residentes durante todo o ano",
+      "**Baleias-Jubarte:** Julho-novembro",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Mares Mais Calmos:** Manhã cedo",
+      "**Temperatura da Água:** 22-28°C durante todo o ano"
+    ],
+    tips: [
+      "Reserve com 2-3 dias de antecedência",
+      "Traga protetor solar seguro para recifes",
+      "Câmera subaquática recomendada",
+      "Siga as instruções do facilitador cuidadosamente",
+      "Fique calmo e quieto na água",
+      "Deixe os golfinhos se aproximarem naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Sem Tocar ou Perseguir",
+        description: "Os golfinhos nunca são tocados, perseguidos ou assediados. Todos os encontros são nos termos dos golfinhos."
+      },
+      {
+        title: "Abordagem Baseada em Pesquisa",
+        description: "Ambos os operadores trabalham com biólogos marinhos e contribuem para pesquisas e conservação contínuas de golfinhos."
+      },
+      {
+        title: "Apenas Grupos Pequenos",
+        description: "Máximo de 12 pessoas por viagem garante perturbação mínima e melhores encontros."
+      },
+      {
+        title: "Educação em Primeiro Lugar",
+        description: "Briefings pré-lançamento ensinam comportamento adequado e biologia dos golfinhos a todos os participantes."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Nados com golfinhos baseados em pesquisa com foco educacional"
+      }
+    ]
+  },
+
+  'pt-PT': {
+    title: "Nado com Golfinhos",
+    tagline: "Encontros éticos com golfinhos selvagens em águas cristalinas",
+    overview: "Viva encontros mágicos com golfinhos-roazes indo-pacíficos selvagens na Reserva Marinha Parcial de Ponta do Ouro. Ambos os operadores autorizados seguem diretrizes éticas rigorosas, garantindo interações passivas e não invasivas onde os golfinhos escolhem envolver-se nos seus próprios termos.",
+    highlights: [
+      "Mais de 200 golfinhos-roazes residentes",
+      "Encontros éticos baseados em investigação",
+      "SEM tocar ou perseguir - selvagens e livres",
+      "Snorkel sobre recifes pristinos",
+      "Avistamentos sazonais de tubarões-baleia",
+      "Baleias-jubarte (julho-novembro)",
+      "Grupos pequenos (máximo 12 pessoas)",
+      "Foco educacional em conservação"
+    ],
+    pricingRange: "US$45-50 por pessoa",
+    pricingDetails: [
+      "Observação de golfinhos (somente barco): US$45",
+      "Excursão de nado com golfinhos: US$50",
+      "Pacotes de vários dias: Tarifas com desconto",
+      "Equipamento de snorkel incluído",
+      "Taxa de conservação incluída"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Lançamento matinal (melhores condições)",
+      "Snorkel sobre recifes rasos",
+      "Facilitação de golfinhos na água",
+      "Encontros com tubarões-baleia (sazonal)",
+      "Briefing educacional pré-lançamento"
+    ],
+    included: [
+      "Máscara, barbatanas e snorkel",
+      "Fato de neoprene (se necessário)",
+      "Facilitador/guia experiente",
+      "Apresentação educacional pré-lançamento",
+      "Fotos/vídeos do seu encontro",
+      "Refrescos leves",
+      "Taxas do parque marinho"
+    ],
+    requirementsLevel: "Todas as idades e capacidades",
+    requirementsDetails: [
+      "Capacidade de natação necessária",
+      "Confortável com snorkel",
+      "Idades: 5 a 80+ (dependendo do clima)",
+      "Gravidez: Seguro até 6 meses",
+      "Não é necessária certificação de mergulho",
+      "Mínimo 6 pessoas por viagem (4 para retiros)"
+    ],
+    bestTimePeak: "Janeiro - Maio",
+    bestTimeDetails: [
+      "**Época Alta:** Janeiro-maio (melhores encontros)",
+      "**Golfinhos:** Residentes durante todo o ano",
+      "**Baleias-Jubarte:** Julho-novembro",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Mares Mais Calmos:** Manhã cedo",
+      "**Temperatura da Água:** 22-28°C durante todo o ano"
+    ],
+    tips: [
+      "Reserve com 2-3 dias de antecedência",
+      "Traga protetor solar seguro para recifes",
+      "Câmara subaquática recomendada",
+      "Siga as instruções do facilitador cuidadosamente",
+      "Fique calmo e quieto na água",
+      "Deixe os golfinhos aproximarem-se naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Sem Tocar ou Perseguir",
+        description: "Os golfinhos nunca são tocados, perseguidos ou assediados. Todos os encontros são nos termos dos golfinhos."
+      },
+      {
+        title: "Abordagem Baseada em Investigação",
+        description: "Ambos os operadores trabalham com biólogos marinhos e contribuem para investigações e conservação contínuas de golfinhos."
+      },
+      {
+        title: "Apenas Grupos Pequenos",
+        description: "Máximo de 12 pessoas por viagem garante perturbação mínima e melhores encontros."
+      },
+      {
+        title: "Educação em Primeiro Lugar",
+        description: "Briefings pré-lançamento ensinam comportamento adequado e biologia dos golfinhos a todos os participantes."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Nados com golfinhos baseados em investigação com foco educacional"
+      }
+    ]
+  },
+
+  pt: {
+    title: "Nado com Golfinhos",
+    tagline: "Encontros éticos com golfinhos selvagens em águas cristalinas",
+    overview: "Viva encontros mágicos com golfinhos-nariz-de-garrafa indo-pacíficos selvagens na Reserva Marinha Parcial de Ponta do Ouro. Ambos os operadores autorizados seguem diretrizes éticas rigorosas, garantindo interações passivas e não invasivas onde os golfinhos escolhem se envolver em seus próprios termos.",
+    highlights: [
+      "Mais de 200 golfinhos-nariz-de-garrafa residentes",
+      "Encontros éticos baseados em pesquisa",
+      "SEM tocar ou perseguir - selvagens e livres",
+      "Snorkel sobre recifes pristinos",
+      "Avistamentos sazonais de tubarões-baleia",
+      "Baleias-jubarte (julho-novembro)",
+      "Grupos pequenos (máximo 12 pessoas)",
+      "Foco educacional em conservação"
+    ],
+    pricingRange: "US$45-50 por pessoa",
+    pricingDetails: [
+      "Observação de golfinhos (somente barco): US$45",
+      "Excursão de nado com golfinhos: US$50",
+      "Pacotes de vários dias: Tarifas com desconto",
+      "Equipamento de snorkel incluído",
+      "Taxa de conservação incluída"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Lançamento matinal (melhores condições)",
+      "Snorkel sobre recifes rasos",
+      "Facilitação de golfinhos na água",
+      "Encontros com tubarões-baleia (sazonal)",
+      "Briefing educacional pré-lançamento"
+    ],
+    included: [
+      "Máscara, nadadeiras e snorkel",
+      "Traje de neoprene (se necessário)",
+      "Facilitador/guia experiente",
+      "Apresentação educacional pré-lançamento",
+      "Fotos/vídeos do seu encontro",
+      "Refrescos leves",
+      "Taxas do parque marinho"
+    ],
+    requirementsLevel: "Todas as idades e habilidades",
+    requirementsDetails: [
+      "Habilidade de natação necessária",
+      "Confortável com snorkel",
+      "Idades: 5 a 80+ (dependendo do clima)",
+      "Gravidez: Seguro até 6 meses",
+      "Não é necessária certificação de mergulho",
+      "Mínimo 6 pessoas por viagem (4 para retiros)"
+    ],
+    bestTimePeak: "Janeiro - Maio",
+    bestTimeDetails: [
+      "**Alta Temporada:** Janeiro-maio (melhores encontros)",
+      "**Golfinhos:** Residentes durante todo o ano",
+      "**Baleias-Jubarte:** Julho-novembro",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Mares Mais Calmos:** Manhã cedo",
+      "**Temperatura da Água:** 22-28°C durante todo o ano"
+    ],
+    tips: [
+      "Reserve com 2-3 dias de antecedência",
+      "Traga protetor solar seguro para recifes",
+      "Câmera subaquática recomendada",
+      "Siga as instruções do facilitador cuidadosamente",
+      "Fique calmo e quieto na água",
+      "Deixe os golfinhos se aproximarem naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Sem Tocar ou Perseguir",
+        description: "Os golfinhos nunca são tocados, perseguidos ou assediados. Todos os encontros são nos termos dos golfinhos."
+      },
+      {
+        title: "Abordagem Baseada em Pesquisa",
+        description: "Ambos os operadores trabalham com biólogos marinhos e contribuem para pesquisas e conservação contínuas de golfinhos."
+      },
+      {
+        title: "Apenas Grupos Pequenos",
+        description: "Máximo de 12 pessoas por viagem garante perturbação mínima e melhores encontros."
+      },
+      {
+        title: "Educação em Primeiro Lugar",
+        description: "Briefings pré-lançamento ensinam comportamento adequado e biologia dos golfinhos a todos os participantes."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Nados com golfinhos baseados em pesquisa com foco educacional"
+      }
+    ]
+  },
+
+  'es-ES': {
+    title: "Nado con Delfines",
+    tagline: "Encuentros éticos con delfines salvajes en aguas cristalinas",
+    overview: "Viva encuentros mágicos con delfines nariz de botella indo-pacíficos salvajes en la Reserva Marina Parcial de Ponta do Ouro. Ambos operadores autorizados siguen pautas éticas estrictas, asegurando interacciones pasivas y no invasivas donde los delfines eligen participar en sus propios términos.",
+    highlights: [
+      "Más de 200 delfines nariz de botella residentes",
+      "Encuentros éticos basados en investigación",
+      "SIN tocar o perseguir - salvajes y libres",
+      "Snorkel sobre arrecifes prístinos",
+      "Avistamientos estacionales de tiburones ballena",
+      "Ballenas jorobadas (julio-noviembre)",
+      "Grupos pequeños (máximo 12 personas)",
+      "Enfoque educativo en conservación"
+    ],
+    pricingRange: "US$45-50 por persona",
+    pricingDetails: [
+      "Observación de delfines (solo barco): US$45",
+      "Excursión de nado con delfines: US$50",
+      "Paquetes de varios días: Tarifas con descuento",
+      "Equipo de snorkel incluido",
+      "Tarifa de conservación incluida"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Salida matutina (mejores condiciones)",
+      "Snorkel sobre arrecifes poco profundos",
+      "Facilitación de delfines en el agua",
+      "Encuentros con tiburones ballena (estacional)",
+      "Briefing educativo previo al lanzamiento"
+    ],
+    included: [
+      "Máscara, aletas y snorkel",
+      "Traje de neopreno (si es necesario)",
+      "Facilitador/guía experimentado",
+      "Presentación educativa previa al lanzamiento",
+      "Fotos/vídeos de tu encuentro",
+      "Refrescos ligeros",
+      "Tarifas del parque marino"
+    ],
+    requirementsLevel: "Todas las edades y habilidades",
+    requirementsDetails: [
+      "Se requiere habilidad de natación",
+      "Cómodo con snorkel",
+      "Edades: 5 a 80+ (según clima)",
+      "Embarazo: Seguro hasta 6 meses",
+      "No se necesita certificación de buceo",
+      "Mínimo 6 personas por viaje (4 para retiros)"
+    ],
+    bestTimePeak: "Enero - Mayo",
+    bestTimeDetails: [
+      "**Temporada Alta:** Enero-mayo (mejores encuentros)",
+      "**Delfines:** Residentes todo el año",
+      "**Ballenas Jorobadas:** Julio-noviembre",
+      "**Tiburones Ballena:** Octubre-marzo",
+      "**Mares Más Tranquilos:** Temprano en la mañana",
+      "**Temperatura del Agua:** 22-28°C todo el año"
+    ],
+    tips: [
+      "Reserve con 2-3 días de anticipación",
+      "Traiga protector solar seguro para arrecifes",
+      "Cámara subacuática recomendada",
+      "Siga las instrucciones del facilitador cuidadosamente",
+      "Manténgase tranquilo y silencioso en el agua",
+      "Deje que los delfines se acerquen naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Sin Tocar o Perseguir",
+        description: "Los delfines nunca son tocados, perseguidos o acosados. Todos los encuentros son en los términos de los delfines."
+      },
+      {
+        title: "Enfoque Basado en Investigación",
+        description: "Ambos operadores trabajan con biólogos marinos y contribuyen a la investigación y conservación continua de delfines."
+      },
+      {
+        title: "Solo Grupos Pequeños",
+        description: "Máximo de 12 personas por viaje garantiza perturbación mínima y mejores encuentros."
+      },
+      {
+        title: "Educación Primero",
+        description: "Los briefings previos al lanzamiento enseñan el comportamiento adecuado y la biología de los delfines a todos los participantes."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Encuentros con delfines dirigidos por biólogos marinos, enfocados en conservación"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Nados con delfines basados en investigación con enfoque educativo"
+      }
+    ]
+  },
+
+  'fr-FR': {
+    title: "Nage avec les Dauphins",
+    tagline: "Rencontres éthiques avec des dauphins sauvages dans des eaux cristallines",
+    overview: "Vivez des rencontres magiques avec des grands dauphins indo-pacifiques sauvages dans la Réserve Marine Partielle de Ponta do Ouro. Les deux opérateurs autorisés suivent des directives éthiques strictes, garantissant des interactions passives et non invasives où les dauphins choisissent de s'engager selon leurs propres conditions.",
+    highlights: [
+      "Plus de 200 grands dauphins résidents",
+      "Rencontres éthiques basées sur la recherche",
+      "AUCUN toucher ou poursuite - sauvages et libres",
+      "Snorkeling sur des récifs vierges",
+      "Observations saisonnières de requins-baleines",
+      "Baleines à bosse (juillet-novembre)",
+      "Petits groupes (maximum 12 personnes)",
+      "Accent éducatif sur la conservation"
+    ],
+    pricingRange: "45-50 $US par personne",
+    pricingDetails: [
+      "Observation des dauphins (bateau uniquement) : 45 $US",
+      "Excursion de nage avec les dauphins : 50 $US",
+      "Forfaits multi-jours : Tarifs réduits",
+      "Équipement de snorkeling inclus",
+      "Frais de conservation inclus"
+    ],
+    durationTypical: "2-3 heures",
+    durationDetails: [
+      "Départ tôt le matin (meilleures conditions)",
+      "Snorkeling sur des récifs peu profonds",
+      "Facilitation des dauphins dans l'eau",
+      "Rencontres avec des requins-baleines (saisonnier)",
+      "Briefing éducatif avant le départ"
+    ],
+    included: [
+      "Masque, palmes et tuba",
+      "Combinaison de plongée (si nécessaire)",
+      "Facilitateur/guide expérimenté",
+      "Présentation éducative avant le départ",
+      "Photos/vidéos de votre rencontre",
+      "Rafraîchissements légers",
+      "Frais du parc marin"
+    ],
+    requirementsLevel: "Tous âges et capacités",
+    requirementsDetails: [
+      "Capacité de nager requise",
+      "À l'aise avec le snorkeling",
+      "Âges : 5 à 80+ (selon météo)",
+      "Grossesse : Sûr jusqu'à 6 mois",
+      "Aucune certification de plongée nécessaire",
+      "Minimum 6 personnes par voyage (4 pour les retraites)"
+    ],
+    bestTimePeak: "Janvier - Mai",
+    bestTimeDetails: [
+      "**Haute Saison :** Janvier-mai (meilleures rencontres)",
+      "**Dauphins :** Résidents toute l'année",
+      "**Baleines à Bosse :** Juillet-novembre",
+      "**Requins-Baleines :** Octobre-mars",
+      "**Mers Les Plus Calmes :** Tôt le matin",
+      "**Température de l'Eau :** 22-28°C toute l'année"
+    ],
+    tips: [
+      "Réservez 2-3 jours à l'avance",
+      "Apportez de la crème solaire sûre pour les récifs",
+      "Caméra sous-marine recommandée",
+      "Suivez attentivement les instructions du facilitateur",
+      "Restez calme et silencieux dans l'eau",
+      "Laissez les dauphins s'approcher naturellement"
+    ],
+    ethicalPractices: [
+      {
+        title: "Pas de Contact ou de Poursuite",
+        description: "Les dauphins ne sont jamais touchés, poursuivis ou harcelés. Toutes les rencontres se font selon les termes des dauphins."
+      },
+      {
+        title: "Approche Basée sur la Recherche",
+        description: "Les deux opérateurs travaillent avec des biologistes marins et contribuent à la recherche et à la conservation continues des dauphins."
+      },
+      {
+        title: "Petits Groupes Uniquement",
+        description: "Maximum de 12 personnes par voyage garantit une perturbation minimale et de meilleures rencontres."
+      },
+      {
+        title: "Éducation d'Abord",
+        description: "Les briefings avant le départ enseignent le bon comportement et la biologie des dauphins à tous les participants."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Rencontres avec dauphins dirigées par des biologistes marins, axées sur la conservation"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Nages avec dauphins basées sur la recherche avec accent éducatif"
+      }
+    ]
+  },
+
+  'de-DE': {
+    title: "Delfinschwimmen",
+    tagline: "Ethische Begegnungen mit wilden Delfinen in kristallklarem Wasser",
+    overview: "Erleben Sie magische Begegnungen mit wilden Indo-Pazifischen Großen Tümmlern im Ponta do Ouro Partial Marine Reserve. Beide autorisierten Betreiber folgen strengen ethischen Richtlinien und gewährleisten passive, nicht-invasive Interaktionen, bei denen die Delfine selbst entscheiden, ob sie sich engagieren möchten.",
+    highlights: [
+      "Über 200 ansässige Große Tümmler",
+      "Ethische, forschungsbasierte Begegnungen",
+      "KEIN Berühren oder Verfolgen - wild und frei",
+      "Schnorcheln über unberührten Riffen",
+      "Saisonale Walhai-Sichtungen",
+      "Buckelwale (Juli-November)",
+      "Kleine Gruppengrößen (max. 12 Personen)",
+      "Bildungsschwerpunkt auf Naturschutz"
+    ],
+    pricingRange: "45-50 $US pro Person",
+    pricingDetails: [
+      "Delfinbeobachtung (nur Boot): 45 $US",
+      "Delfinschwimm-Exkursion: 50 $US",
+      "Mehrtägige Pakete: Ermäßigte Preise",
+      "Schnorchelausrüstung inklusive",
+      "Naturschutzgebühr inklusive"
+    ],
+    durationTypical: "2-3 Stunden",
+    durationDetails: [
+      "Frühmorgendlicher Start (beste Bedingungen)",
+      "Schnorcheln über flachen Riffen",
+      "Delfin-Begleitung im Wasser",
+      "Walhai-Begegnungen (saisonal)",
+      "Bildungsbriefing vor dem Start"
+    ],
+    included: [
+      "Maske, Flossen und Schnorchel",
+      "Neoprenanzug (falls erforderlich)",
+      "Erfahrener Begleiter/Führer",
+      "Bildungspräsentation vor dem Start",
+      "Fotos/Videos Ihrer Begegnung",
+      "Leichte Erfrischungen",
+      "Meeresparkgebühren"
+    ],
+    requirementsLevel: "Alle Altersgruppen und Fähigkeiten",
+    requirementsDetails: [
+      "Schwimmfähigkeit erforderlich",
+      "Vertraut mit Schnorcheln",
+      "Alter: 5 bis 80+ (wetterabhängig)",
+      "Schwangerschaft: Sicher bis 6 Monate",
+      "Keine Tauchzertifizierung erforderlich",
+      "Mindestens 6 Personen pro Fahrt (4 für Retreats)"
+    ],
+    bestTimePeak: "Januar - Mai",
+    bestTimeDetails: [
+      "**Hochsaison:** Januar-Mai (beste Begegnungen)",
+      "**Delfine:** Ganzjährig ansässig",
+      "**Buckelwale:** Juli-November",
+      "**Walhaie:** Oktober-März",
+      "**Ruhigste See:** Früher Morgen",
+      "**Wassertemperatur:** 22-28°C ganzjährig"
+    ],
+    tips: [
+      "Buchen Sie 2-3 Tage im Voraus",
+      "Bringen Sie riffsichere Sonnencreme mit",
+      "Unterwasserkamera empfohlen",
+      "Folgen Sie den Anweisungen des Begleiters sorgfältig",
+      "Bleiben Sie ruhig und still im Wasser",
+      "Lassen Sie die Delfine natürlich näherkommen"
+    ],
+    ethicalPractices: [
+      {
+        title: "Kein Berühren oder Verfolgen",
+        description: "Delfine werden niemals berührt, verfolgt oder belästigt. Alle Begegnungen erfolgen zu den Bedingungen der Delfine."
+      },
+      {
+        title: "Forschungsbasierter Ansatz",
+        description: "Beide Betreiber arbeiten mit Meeresbi ologen zusammen und tragen zur laufenden Delfinforschung und zum Naturschutz bei."
+      },
+      {
+        title: "Nur Kleine Gruppen",
+        description: "Maximal 12 Personen pro Fahrt gewährleisten minimale Störung und bessere Begegnungen."
+      },
+      {
+        title: "Bildung Zuerst",
+        description: "Briefings vor dem Start lehren angemessenes Verhalten und Delfinbiologie allen Teilnehmern."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Von Meeresbi ologen geleitete, naturschutzorientierte Delfinbegegnungen"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Forschungsbasierte Delfinschwimmen mit Bildungsschwerpunkt"
+      }
+    ]
+  },
+
+  'nl-NL': {
+    title: "Dolfijnzwemmen",
+    tagline: "Ethische wilde dolfijnontmoetingen in kristalhelder water",
+    overview: "Beleef magische ontmoetingen met wilde Indo-Pacifische tuimelaars in het Ponta do Ouro Partial Marine Reserve. Beide geautoriseerde operators volgen strikte ethische richtlijnen en zorgen voor passieve, niet-invasieve interacties waarbij dolfijnen zelf kiezen of ze willen deelnemen.",
+    highlights: [
+      "Meer dan 200 inwonende tuimelaars",
+      "Ethische, onderzoeksgebaseerde ontmoetingen",
+      "GEEN aanraken of achtervolgen - wild en vrij",
+      "Snorkelen boven ongerepte riffen",
+      "Seizoensgebonden walvishaai-waarnemingen",
+      "Bultrug walvissen (juli-november)",
+      "Kleine groepsgroottes (max. 12 personen)",
+      "Educatieve focus op natuurbehoud"
+    ],
+    pricingRange: "US$45-50 per persoon",
+    pricingDetails: [
+      "Dolfijn kijken (alleen boot): US$45",
+      "Dolfijnzwem excursie: US$50",
+      "Meerdaagse pakketten: Gereduceerde tarieven",
+      "Snorkelapparatuur inbegrepen",
+      "Natuurbehoudkosten inbegrepen"
+    ],
+    durationTypical: "2-3 uur",
+    durationDetails: [
+      "Vroege ochtendstart (beste omstandigheden)",
+      "Snorkelen boven ondiepe riffen",
+      "Dolfijnbegeleiding in het water",
+      "Walvishaai-ontmoetingen (seizoensgebonden)",
+      "Educatieve briefing voor vertrek"
+    ],
+    included: [
+      "Masker, vinnen en snorkel",
+      "Wetsuit (indien nodig)",
+      "Ervaren begeleider/gids",
+      "Educatieve presentatie voor vertrek",
+      "Foto's/video's van uw ontmoeting",
+      "Lichte versnaperingen",
+      "Zeeparkkosten"
+    ],
+    requirementsLevel: "Alle leeftijden en vaardigheden",
+    requirementsDetails: [
+      "Zwemvaardigheid vereist",
+      "Comfortabel met snorkelen",
+      "Leeftijden: 5 tot 80+ (afhankelijk van weer)",
+      "Zwangerschap: Veilig tot 6 maanden",
+      "Geen duikcertificering nodig",
+      "Minimaal 6 personen per reis (4 voor retreats)"
+    ],
+    bestTimePeak: "Januari - Mei",
+    bestTimeDetails: [
+      "**Hoogseizoen:** Januari-mei (beste ontmoetingen)",
+      "**Dolfijnen:** Het hele jaar door aanwezig",
+      "**Bultrug Walvissen:** Juli-november",
+      "**Walvishaaien:** Oktober-maart",
+      "**Kalms te Zee:** Vroege ochtend",
+      "**Watertemperatuur:** 22-28°C het hele jaar door"
+    ],
+    tips: [
+      "Boek 2-3 dagen van tevoren",
+      "Neem rifveilige zonnebrandcrème mee",
+      "Onderwatercamera aanbevolen",
+      "Volg de instructies van de begeleider zorgvuldig",
+      "Blijf kalm en stil in het water",
+      "Laat dolfijnen natuurlijk naderen"
+    ],
+    ethicalPractices: [
+      {
+        title: "Geen Aanraken of Achtervolgen",
+        description: "Dolfijnen worden nooit aangeraakt, achtervolgd of lastiggevallen. Alle ontmoetingen gebeuren op de voorwaarden van de dolfijnen."
+      },
+      {
+        title: "Onderzoeksgebaseerde Aanpak",
+        description: "Beide operators werken samen met mariene biologen en dragen bij aan voortdurend dolfijnonderzoek en natuurbehoud."
+      },
+      {
+        title: "Alleen Kleine Groepen",
+        description: "Maximaal 12 personen per reis zorgt voor minimale verstoring en betere ontmoetingen."
+      },
+      {
+        title: "Educatie Eerst",
+        description: "Briefings voor vertrek leren gepast gedrag en dolfijnbiologie aan alle deelnemers."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Door mariene biologen geleide, natuurbehoud-gerichte dolfijnontmoetingen"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Onderzoeksgebaseerde dolfijnzwemmen met educatieve focus"
+      }
+    ]
+  },
+
+  'it-IT': {
+    title: "Nuoto con i Delfini",
+    tagline: "Incontri etici con delfini selvatici in acque cristalline",
+    overview: "Vivi incontri magici con tursiopi indo-pacifici selvatici nella Riserva Marina Parziale di Ponta do Ouro. Entrambi gli operatori autorizzati seguono rigorose linee guida etiche, garantendo interazioni passive e non invasive dove i delfini scelgono di impegnarsi alle proprie condizioni.",
+    highlights: [
+      "Oltre 200 tursiopi residenti",
+      "Incontri etici basati sulla ricerca",
+      "NESSUN contatto o inseguimento - selvatici e liberi",
+      "Snorkeling su barriere incontaminate",
+      "Avvistamenti stagionali di squali balena",
+      "Balene megattera (luglio-novembre)",
+      "Gruppi di piccole dimensioni (max 12 persone)",
+      "Focus educativo sulla conservazione"
+    ],
+    pricingRange: "45-50 $US a persona",
+    pricingDetails: [
+      "Osservazione delfini (solo barca): 45 $US",
+      "Escursione nuoto con delfini: 50 $US",
+      "Pacchetti multi-giorno: Tariffe scontate",
+      "Attrezzatura snorkeling inclusa",
+      "Tassa di conservazione inclusa"
+    ],
+    durationTypical: "2-3 ore",
+    durationDetails: [
+      "Partenza al mattino presto (condizioni migliori)",
+      "Snorkeling su barriere poco profonde",
+      "Facilitazione delfini in acqua",
+      "Incontri con squali balena (stagionale)",
+      "Briefing educativo pre-partenza"
+    ],
+    included: [
+      "Maschera, pinne e boccaglio",
+      "Muta (se necessaria)",
+      "Facilitatore/guida esperto",
+      "Presentazione educativa pre-partenza",
+      "Foto/video del tuo incontro",
+      "Rinfreschi leggeri",
+      "Tariffe parco marino"
+    ],
+    requirementsLevel: "Tutte le età e abilità",
+    requirementsDetails: [
+      "Richiesta abilità di nuoto",
+      "A proprio agio con lo snorkeling",
+      "Età: da 5 a 80+ (tempo permettendo)",
+      "Gravidanza: Sicuro fino a 6 mesi",
+      "Nessuna certificazione subacquea necessaria",
+      "Minimo 6 persone per viaggio (4 per ritiri)"
+    ],
+    bestTimePeak: "Gennaio - Maggio",
+    bestTimeDetails: [
+      "**Alta Stagione:** Gennaio-maggio (migliori incontri)",
+      "**Delfini:** Residenti tutto l'anno",
+      "**Balene Megattera:** Luglio-novembre",
+      "**Squali Balena:** Ottobre-marzo",
+      "**Mari Più Calmi:** Mattino presto",
+      "**Temperatura dell'Acqua:** 22-28°C tutto l'anno"
+    ],
+    tips: [
+      "Prenota con 2-3 giorni di anticipo",
+      "Porta crema solare sicura per le barriere",
+      "Fotocamera subacquea consigliata",
+      "Segui attentamente le istruzioni del facilitatore",
+      "Rimani calmo e silenzioso in acqua",
+      "Lascia che i delfini si avvicinino naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Nessun Contatto o Inseguimento",
+        description: "I delfini non vengono mai toccati, inseguiti o molestati. Tutti gli incontri avvengono alle condizioni dei delfini."
+      },
+      {
+        title: "Approccio Basato sulla Ricerca",
+        description: "Entrambi gli operatori lavorano con biologi marini e contribuiscono alla ricerca e conservazione continua dei delfini."
+      },
+      {
+        title: "Solo Gruppi Piccoli",
+        description: "Massimo 12 persone per viaggio garantisce disturbo minimo e migliori incontri."
+      },
+      {
+        title: "Educazione Prima di Tutto",
+        description: "I briefing pre-partenza insegnano comportamento appropriato e biologia dei delfini a tutti i partecipanti."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours",
+        specialty: "Incontri con delfini guidati da biologi marini, focalizzati sulla conservazione"
+      },
+      {
+        name: "The Dolphin Centre",
+        specialty: "Nuoto con delfini basato sulla ricerca con focus educativo"
+      }
+    ]
+  },
+
+  // Fallback to English for remaining languages (can be expanded later)
+  'af-ZA': null, // Will use English via helper
+  'sv': null,    // Will use English via helper
+  'pl': null,    // Will use English via helper
+  'ja-JP': null, // Will use English via helper
+  'zh-CN': null, // Will use English via helper
+  'ru': null,    // Will use English via helper
+  'zu': null,    // Will use English via helper
+  'sw': null     // Will use English via helper
+};
+
+// Helper function to get dolphins content by language
+export function getDolphinsContent(lang = 'en') {
+  // Try exact match first
+  if (DOLPHINS_CONTENT[lang]) {
+    return DOLPHINS_CONTENT[lang];
+  }
+  
+  // Try base language (e.g., 'pt' for 'pt-BR')
+  const baseLang = lang.split('-')[0];
+  if (DOLPHINS_CONTENT[baseLang]) {
+    return DOLPHINS_CONTENT[baseLang];
+  }
+  
+  // Fallback to English
+  return DOLPHINS_CONTENT.en;
+}
