@@ -1,13 +1,7 @@
 # DEVOCEAN Lodge Website
 
-## ✅ **RESOLVED: Production Build Issue (Nov 7, 2025)**
-**Issue:** White screen on production for ALL languages (not language-specific as initially thought)
-**Cause:** Custom Vite configuration (manualChunks splitting and/or inlineCSSPlugin) broke React initialization in production builds
-**Solution:** Simplified vite.config.js to minimal configuration - removed custom chunk splitting and CSS inlining plugin
-**Lesson:** Build optimizations can break production in unexpected ways. Always test production builds thoroughly before deploying complex configurations.
-
 ## Overview
-DEVOCEAN Lodge is an eco-friendly beach accommodation website in Ponta do Ouro, Mozambique. This full-stack web platform provides accommodation listings, experience showcases, contact forms, and a multi-language interface. Its purpose is to serve as a comprehensive marketing tool, attracting a global clientele, ensuring legal compliance (GDPR, cookies, privacy policies), and offering a seamless user experience across various devices and 17 languages.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. The platform offers accommodation listings, showcases experiences, includes contact forms, and features a multi-language interface. Its primary goal is to act as a marketing tool, attract a global audience, ensure legal compliance (GDPR, cookies, privacy policies), and deliver a seamless user experience across various devices and 17 languages.
 
 ## User Preferences
 - **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
@@ -35,43 +29,43 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website in Ponta do Ouro, 
 
 ## System Architecture
 
-### Frontend Architecture
-- **Framework & Build System:** React 18 with TypeScript, Vite, Wouter for routing.
+### Frontend
+- **Framework & Build:** React 18 with TypeScript, Vite, and Wouter for routing.
 - **UI & Styling:** shadcn/ui components, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design.
 - **State Management:** TanStack Query for server state, React hooks for local state.
-- **Routing:** Wouter-based routing system with Switch/Route components for multi-page navigation. **Experience Detail Pages (Nov 7, 2025):** Complete internal experience pages created for all 7 activities (scuba diving, dolphin swimming, lighthouse walk, seafaris, game safaris, fishing, surfing) with comprehensive content including pricing, seasons, operators, highlights, safety tips, and what's included. Pages accessible at `/experiences/:key` routes (e.g., `/experiences/diving`). Test page available at `/test-experiences.html`. **IMPORTANT:** Pages NOT YET linked from main website - awaiting user approval before replacing external experience links with internal pages.
-- **Internationalization:** React-based i18n with lazy-loaded translations for 17 languages (unified Hotelrunner locale codes). Language persistence via localStorage. Multi-tier language detection (localStorage → browser → IP). Currency based on visitor's IP. Critical translations bundle includes hero title/subtitle (English only) for instant rendering with minimal JavaScript overhead. Non-English visitors see brief English fallback (<1s) until full translations load. **Language-Region Synchronization (Nov 7, 2025):** Added automatic region adjustment when language changes via URL parameters or detection. Selectors now properly reflect current language/region state, fixing issue where selectors showed incorrect continent/language after navigation from booking.html. **Experience Page Content Translations (Nov 8, 2025):** Two-layer translation architecture implemented: (1) UI labels via `experiencePageTranslations.js` for interface text, (2) Experience content via separate files in `/src/i18n/content/` directory. First implementation: `dolphinsContent.js` with complete translations for 8 major languages (English variants, Portuguese variants, Spanish, French, German, Dutch, Italian) and English fallbacks for remaining 9 languages. Helper function `getDolphinsContent(lang)` with intelligent fallback matching (exact match → base language → English). ExperienceDetailPage.jsx updated to merge translated content with static data (hero images, etc.) when rendering dolphin experience. Pattern established for translating remaining 6 experiences (diving, lighthouse, seafaris, safari, fishing, surfing) with one file per experience for maintainability.
-- **Performance Optimizations:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load (3s or first interaction), CookieYes consent banner (defer). **Static Hero HTML Pattern (Nov 4, 2025):** Hero image and text render instantly in HTML before React loads, eliminating 3.2s+ element render delay. Combines `<link rel="preload">` (downloads hero01-mobile.webp 27KB / hero01.webp 144KB immediately) with static `<picture>` element in HTML body. Placeholder automatically hides when React hydrates. Targets LCP <2.5s for real mobile users (Microsoft Clarity field data showed 4.3s before optimization). Uses English fallback text in HTML, replaced by localized content when i18n loads. **INP Optimization (Nov 4, 2025):** Heavy i18n detection logic (language/region/timezone) deferred to `requestIdleCallback` to prevent main thread blocking during React hydration. Early interaction handler provides instant visual feedback for clicks before React is ready, improving perceived responsiveness. Targets INP <200ms (Clarity showed 1000ms before optimization). **Translation Race Condition Fix (Nov 4, 2025):** Fixed bug where experiences section displayed in English for non-English languages. Issue was `useMemo` dependency array in `App.jsx` only included `[lang]`, causing experiences to be memoized with English fallback during initial render when L10N cache was empty. Added `ui` to dependency arrays for both `units` and `experiences` to ensure recomputation after translations load.
+- **Routing:** Wouter-based system with dedicated experience detail pages (`/experiences/:key`) for all 7 activities.
+- **Internationalization:** React-based i18n with lazy-loaded translations for 17 languages (Hotelrunner locale codes). Language persistence via localStorage, multi-tier detection (localStorage → browser → IP). Currency based on visitor's IP. Critical translations for hero section are pre-loaded. Regional language variants fall back to base language (e.g., `fr-FR` to `fr`).
+- **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver-based image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral. Static Hero HTML pattern ensures instant rendering of hero content before React loads. INP optimization defers heavy i18n logic to `requestIdleCallback`.
+- **Experience Page Translation:** Two-layer system for experience detail pages:
+    - **Layer 1: UI Labels:** Shared interface text managed in `experiencePageTranslations.js` with a `getExpText` helper (three-tier fallback).
+    - **Layer 2: Experience Content:** Content specific to each experience (overview, pricing, etc.) stored in individual files (`[experience]Content.js`) with per-experience helper functions (three-tier fallback). All 17 languages are supported, with emoji *required* in email template translations.
+- **Form Translation:** Inline functions within `ExperienceInquiryForm.jsx` provide form-specific text with three-tier language fallback.
 
-### Backend Architecture
-- **Server Framework:** Express.js for HTTP server and API routing (Contact form, reCAPTCHA validation).
-- **Storage Layer:** In-memory storage (`MemStorage`) for future database integration.
-- **Database Schema:** Drizzle ORM configured for PostgreSQL with Zod schemas.
-- **Email Automation System:** Node.js (TypeScript) service processing Beds24 booking notifications via IMAP and sending multi-language automated emails using Resend API. **Check Intervals (Nov 7, 2025):** Incoming email check runs every 30 minutes at :00 and :30 of each hour. Scheduled email sending runs every 30 minutes at :15 and :45 of each hour (15-minute offset ensures bookings are processed before emails are sent). **Email Scheduling (Nov 7, 2025):** Post-booking emails sent 1 hour after processing; Cancellation emails sent 1 hour after processing (standalone cancellations sent immediately). Scheduling operates in Central African Time (CAT/UTC+2) for pre-arrival (10 days before @ 09:00 CAT, or 70% of remaining days if < 10 days), arrival (3 days before @ 09:00 CAT, or 50% of remaining hours if < 3 days), and post-departure (1 day after @ 10:00 CAT) emails. Supports 17 languages with template-based system, cancellation handling, and modification handling. **Modification Handling (Nov 5, 2025):** System detects modification emails, deletes old booking records and scheduled emails, then processes the modification as a fresh booking with updated data. **Email Template Translations (Nov 5, 2025):** All email templates (post_booking, pre_arrival, arrival, post_departure, cancellation) now have complete 17-language translations stored in JSON files (`email_templates/translations/`). **IMPORTANT:** Emoji are REQUIRED in email template translations for engagement and visual appeal (e.g., 🌴 in subjects, 🐬 🍴 💆 🌤 ⭐ in section titles). The "no emoji" design guideline applies ONLY to website UI, NOT to email templates.
-- **Contact Form System:** Dual-environment setup (Express.js for dev, Cloudflare Pages Function for prod) with comprehensive security (input sanitization, reCAPTCHA v3, HTML escaping) and localized auto-reply emails via Resend API.
+### Backend
+- **Server:** Express.js for HTTP server, API routing (Contact form, reCAPTCHA validation).
+- **Storage:** In-memory storage (`MemStorage`) as a placeholder.
+- **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas.
+- **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP. Sends multi-language automated emails using Resend API. Emails are scheduled in Central African Time (CAT/UTC+2) for post-booking, pre-arrival, arrival, and post-departure. Handles modifications by re-processing updated booking data.
+- **Contact Form:** Dual-environment setup (Express.js for dev, Cloudflare Pages Function for prod) with security features (input sanitization, reCAPTCHA v3, HTML escaping) and localized auto-reply emails.
 
 ### Project Structure
-- **Dual Project Setup:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template placeholder).
-- **Design System:** Inter font family, card-based layouts, image-first design, expandable detail sections, hover states, focus-visible outlines, smooth scroll, sticky header.
+- **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
+- **Design:** Inter font family, card-based layouts, image-first, expandable sections, hover states, focus-visible outlines, smooth scroll, sticky header.
 
-### DNS & Domain Configuration
-- **Primary Domain:** devoceanlodge.com (canonical domain used in all email templates)
-- **DNS Setup (Cloudflare):**
-  - `@ (devoceanlodge.com)` → CNAME → `devocean-lodge.pages.dev` (uses CNAME flattening)
-  - `www.devoceanlodge.com` → CNAME → `devocean-lodge.pages.dev`
-- **Cloudflare Pages:** Both root domain and www subdomain registered as custom domains in Pages project settings
-- **Email Deliverability:** All email templates use canonical domain (https://devoceanlodge.com) to avoid 552 errors and improve deliverability
+### DNS & Domain
+- **Primary Domain:** `devoceanlodge.com` (canonical domain).
+- **DNS (Cloudflare):** `devoceanlodge.com` and `www.devoceanlodge.com` CNAME to `devocean-lodge.pages.dev`.
 
 ## External Dependencies
 
 ### Third-Party Services
 - **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af), Microsoft Clarity.
-- **Trust & Verification:** Trustindex Floating Certificate widget (ID: a73b26308ab90c8e6ce30cb).
-- **Booking Integration:** Beds24 booking engine (propid=297012).
-- **Maps & Location:** Google Maps.
+- **Trust:** Trustindex Floating Certificate widget (ID: a73b26308ab90c8e6ce30cb).
+- **Booking:** Beds24 booking engine (propid=297012).
+- **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
-- **Email Service:** Resend API for transactional emails, IMAP for parsing booking notifications.
-- **SEO & Search Indexing:** IndexNow protocol via Cloudflare Pages Functions.
+- **Email:** Resend API for transactional emails, IMAP for booking notification parsing.
+- **SEO:** IndexNow protocol via Cloudflare Pages Functions.
 
 ### NPM Packages
 - **Core:** `react`, `react-dom`, `express`, `drizzle-orm`, `drizzle-zod`, `pg`.
