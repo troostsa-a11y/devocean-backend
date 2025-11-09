@@ -61,30 +61,47 @@ export default function App() {
     }
   }, []);
 
-  // Layout recalculation for sticky header (throttled for performance)
-  // Note: Initial values set in <head> to prevent CLS, this only handles resize
+  // Measure actual header for accurate scroll positioning (without causing CLS)
+  // Note: --stack-h stays conservative (120px) to prevent CLS, --stack-h-active is accurate
   useEffect(() => {
-    const recalc = () => {
+    const measureScrollOffset = () => {
       const topbar = document.querySelector(".topbar");
       const header = document.querySelector("header");
       if (!topbar || !header) return;
       
-      // Batch all reads together to minimize forced reflow (read once per element)
-      const topbarH = topbar.offsetHeight;
-      const headerH = header.offsetHeight;
-      const stack = topbarH + headerH;
+      // Batch all reads together to minimize forced reflow
+      const actualHeight = topbar.offsetHeight + header.offsetHeight;
       
-      // Write all values at once
-      document.documentElement.style.setProperty("--stack-h", `${stack}px`);
-      document.documentElement.style.setProperty("--topbar-h", `${topbarH}px`);
-      document.documentElement.style.setProperty("--header-h", `${headerH}px`);
+      // ONLY update --stack-h-active (for scroll-margin-top)
+      // DO NOT update --stack-h (conservative value prevents CLS)
+      document.documentElement.style.setProperty("--stack-h-active", `${actualHeight}px`);
     };
 
-    // Only recalc on resize - initial values already set in <head>
-    // Throttled resize handler to reduce main thread blocking
-    const throttledRecalc = throttle(recalc, 200);
-    window.addEventListener("resize", throttledRecalc, { passive: true });
-    return () => window.removeEventListener("resize", throttledRecalc);
+    // Measure once after initial render
+    requestAnimationFrame(() => {
+      measureScrollOffset();
+      
+      // Keep synced when header size changes (translation hydration, locale switch, font load)
+      const topbar = document.querySelector(".topbar");
+      const header = document.querySelector("header");
+      
+      if (topbar && header) {
+        const observer = new ResizeObserver(measureScrollOffset);
+        observer.observe(topbar);
+        observer.observe(header);
+        
+        // Cleanup observer on unmount
+        return () => observer.disconnect();
+      }
+    });
+
+    // Also update on window resize
+    const throttledMeasure = throttle(measureScrollOffset, 200);
+    window.addEventListener("resize", throttledMeasure, { passive: true });
+    
+    return () => {
+      window.removeEventListener("resize", throttledMeasure);
+    };
   }, []);
 
   // Handle hash navigation on route changes (immediate, with retry until element exists)

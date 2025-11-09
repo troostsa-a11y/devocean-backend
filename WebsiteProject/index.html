@@ -462,8 +462,8 @@
     html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
     body{margin:0;line-height:inherit}
     /* Brand tokens - Accurate mobile-first values to prevent CLS */
-    :root{--brand:#9e4b13;--topbar-h:40px;--header-h:56px;--stack-h:96px}
-    @media (min-width:768px){:root{--header-h:64px;--stack-h:104px}}
+    :root{--brand:#9e4b13;--topbar-h:40px;--header-h:56px;--stack-h:96px;--stack-h-active:96px}
+    @media (min-width:768px){:root{--header-h:64px;--stack-h:104px;--stack-h-active:104px}}
     /* Smooth scroll */
     html{scroll-behavior:smooth;overflow-x:hidden}
     body{overflow-x:hidden}
@@ -481,31 +481,10 @@
       // Set conservative baselines immediately (prevents gaps and CLS)
       // These values accommodate the tallest possible header (multi-line Dutch/Russian)
       // We NEVER recalculate during page load to prevent layout shift
-      // Only the resize handler in App.jsx updates these values (user-initiated resize = ok)
+      // React measures actual height for --stack-h-active (scroll positioning accuracy)
       document.documentElement.style.setProperty('--topbar-h', '40px');
       document.documentElement.style.setProperty('--header-h', '80px');
       document.documentElement.style.setProperty('--stack-h', '120px');
-      
-      // AFTER paint: Measure actual header for accurate scroll positioning
-      // Uses --stack-h-active to avoid CLS while providing pixel-perfect navigation
-      requestAnimationFrame(function() {
-        setTimeout(function() {
-          var topbar = document.querySelector('.topbar');
-          var header = document.querySelector('header');
-          if (topbar && header) {
-            var actualHeight = topbar.offsetHeight + header.offsetHeight;
-            document.documentElement.style.setProperty('--stack-h-active', actualHeight + 'px');
-            
-            // Keep updated on resize
-            var resizeObserver = new ResizeObserver(function() {
-              var newHeight = topbar.offsetHeight + header.offsetHeight;
-              document.documentElement.style.setProperty('--stack-h-active', newHeight + 'px');
-            });
-            resizeObserver.observe(topbar);
-            resizeObserver.observe(header);
-          }
-        }, 100); // Wait for fonts/translations
-      });
     })();
   </script>
 
