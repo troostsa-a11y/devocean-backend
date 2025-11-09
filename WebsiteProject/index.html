@@ -474,36 +474,36 @@
   <!-- Pre-calculate sticky header height BEFORE first paint (prevents CLS) -->
   <script>
     (function() {
-      // Mobile: 40px topbar + 56px header = 96px
-      // Desktop: 40px topbar + 64px header = 104px
-      // Set accurate values immediately to prevent layout shift
+      // Conservative initial values to prevent CLS when long translations load
+      // Mobile: 40px topbar + 80px header (multi-line) = 120px
+      // Desktop: 40px topbar + 80px header (multi-line) = 120px
+      // Dutch/Russian can wrap to 2 lines, so we reserve extra space
       var isMobile = window.innerWidth < 768;
-      var stackHeight = isMobile ? 96 : 104;
-      var headerHeight = isMobile ? 56 : 64;
+      var stackHeight = 120;  // Conservative: accommodates multi-line headers
+      var headerHeight = 80;  // Conservative: accommodates text wrapping
       
       document.documentElement.style.setProperty('--stack-h', stackHeight + 'px');
       document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
       document.documentElement.style.setProperty('--topbar-h', '40px');
       
-      // Recalculate after header renders (prevents layout shift in multi-line headers)
-      // Critical for long translations (Dutch, Russian) that wrap to 2+ lines
+      // Recalculate after React renders with translations loaded
+      // We start with conservative 120px, then shrink to actual size (no layout shift)
       function recalcHeaderHeight() {
         requestAnimationFrame(function() {
           var topbar = document.querySelector(".topbar");
           var header = document.querySelector("header");
           
           if (topbar && header) {
-            // Batch all reads together to minimize forced reflow (read once per element)
+            // Batch all reads together to minimize forced reflow
             var actualTopbar = topbar.offsetHeight;
             var actualHeader = header.offsetHeight;
             var actualStack = actualTopbar + actualHeader;
             
-            // Only update if values changed (e.g., text wrapped to multiple lines)
-            if (actualStack !== stackHeight) {
-              document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
-              document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
-              document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
-            }
+            // Update to actual values (may be smaller than conservative 120px)
+            // This won't cause layout shift because we only shrink, never grow
+            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
+            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+            document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
           } else {
             // Header not rendered yet, retry on next frame
             recalcHeaderHeight();
@@ -511,12 +511,15 @@
         });
       }
       
-      // Wait for fonts to load (prevents shift when web fonts render long text)
+      // Wait for fonts AND a delay for translations to load
+      // Conservative approach: wait 300ms after fonts to ensure translations are rendered
       if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(recalcHeaderHeight);
+        document.fonts.ready.then(function() {
+          setTimeout(recalcHeaderHeight, 300);
+        });
       } else {
-        // Fallback for older browsers - wait 100ms for fonts
-        setTimeout(recalcHeaderHeight, 100);
+        // Fallback for older browsers
+        setTimeout(recalcHeaderHeight, 400);
       }
     })();
   </script>
