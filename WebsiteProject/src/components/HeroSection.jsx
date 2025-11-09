@@ -52,6 +52,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               style={{ opacity: i === idx ? 1 : 0 }}
               loading={isFirst ? "eager" : "lazy"}
               fetchpriority={isFirst ? "high" : undefined}
+              width={1920}
+              height={1080}
+              aspectRatio="16/9"
             />
           );
         })}
@@ -108,8 +111,8 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         </div>
 
-        {/* Trustindex Review Widget */}
-        <div ref={trustindexRef} className="mt-6"></div>
+        {/* Trustindex Review Widget - Reserve space to prevent CLS */}
+        <div ref={trustindexRef} className="mt-6 min-h-[120px]"></div>
       </div>
 
       {/* Controls */}

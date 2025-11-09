@@ -25,7 +25,14 @@ export default function ExperiencesSection({ experiences, ui }) {
                 data-testid={`link-experience-${c.key}`}
               >
                 <div className="h-40 overflow-hidden">
-                  <LazyImage src={c.img} alt={c.title} className="w-full h-full object-cover" />
+                  <LazyImage 
+                    src={c.img} 
+                    alt={c.title} 
+                    className="w-full h-full object-cover"
+                    width={400}
+                    height={267}
+                    aspectRatio="3/2"
+                  />
                 </div>
                 <div className="p-4">
                   <h3 className="font-semibold">{c.title}</h3>

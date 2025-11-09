@@ -39,11 +39,25 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
             >
               {detailPageUrl ? (
                 <a href={detailPageUrl} className="block h-44 overflow-hidden">
-                  <LazyImage src={u.img} alt={u.title} className="w-full h-full object-cover transition-transform hover:scale-105" />
+                  <LazyImage 
+                    src={u.img} 
+                    alt={u.title} 
+                    className="w-full h-full object-cover transition-transform hover:scale-105"
+                    width={400}
+                    height={300}
+                    aspectRatio="4/3"
+                  />
                 </a>
               ) : (
                 <div className="h-44 overflow-hidden">
-                  <LazyImage src={u.img} alt={u.title} className="w-full h-full object-cover" />
+                  <LazyImage 
+                    src={u.img} 
+                    alt={u.title} 
+                    className="w-full h-full object-cover"
+                    width={400}
+                    height={300}
+                    aspectRatio="4/3"
+                  />
                 </div>
               )}
               <div className="p-4">

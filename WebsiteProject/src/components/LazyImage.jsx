@@ -9,6 +9,9 @@ export default function LazyImage({
   className = '',
   loading = 'lazy',
   fetchpriority,
+  width,
+  height,
+  aspectRatio = '3/2', // Default 3:2 ratio - prevents CLS
   placeholder = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect fill="%23f3f4f6" width="400" height="300"/%3E%3C/svg%3E',
   ...props
 }) {
@@ -51,7 +54,7 @@ export default function LazyImage({
     };
   }, [src, srcMobile, srcWebP, srcMobileWebP, loading]);
 
-  // Build common img props
+  // Build common img props with explicit dimensions to prevent CLS
   const imgProps = {
     ref: imgRef,
     alt,
@@ -59,6 +62,12 @@ export default function LazyImage({
     loading,
     decoding: "async",
     ...(fetchpriority && { fetchpriority }), // Add fetchpriority for LCP optimization
+    ...(width && { width }), // Explicit width prevents CLS
+    ...(height && { height }), // Explicit height prevents CLS
+    style: {
+      ...(aspectRatio && { aspectRatio }), // CSS aspect-ratio prevents CLS when dimensions not provided
+      ...props.style
+    },
     ...props
   };
 
