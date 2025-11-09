@@ -158,7 +158,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
       </div>
 
       {/* Main header */}
-      <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b">
+      <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b pt-[19px]">
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a 

@@ -61,12 +61,11 @@ export default function App() {
     }
   }, []);
 
-  // Measure actual header for accurate scroll positioning (without causing CLS)
-  // Note: --stack-h stays conservative (120px) to prevent CLS, --stack-h-active is accurate
+  // Measure actual header for accurate scroll positioning and layout spacing
   useEffect(() => {
     let observer = null;
     
-    const measureScrollOffset = () => {
+    const measureHeader = () => {
       const topbar = document.querySelector(".topbar");
       const header = document.querySelector("header");
       if (!topbar || !header) return;
@@ -74,28 +73,27 @@ export default function App() {
       // Batch all reads together to minimize forced reflow
       const actualHeight = topbar.offsetHeight + header.offsetHeight;
       
-      // ONLY update --stack-h-active (for scroll-margin-top)
-      // DO NOT update --stack-h (conservative value prevents CLS)
-      document.documentElement.style.setProperty("--stack-h-active", `${actualHeight}px`);
+      // Update --stack-h with actual measured height
+      document.documentElement.style.setProperty("--stack-h", `${actualHeight}px`);
     };
 
     // Measure once after initial render
     requestAnimationFrame(() => {
-      measureScrollOffset();
+      measureHeader();
       
       // Keep synced when header size changes (translation hydration, locale switch, font load)
       const topbar = document.querySelector(".topbar");
       const header = document.querySelector("header");
       
       if (topbar && header) {
-        observer = new ResizeObserver(measureScrollOffset);
+        observer = new ResizeObserver(measureHeader);
         observer.observe(topbar);
         observer.observe(header);
       }
     });
 
     // Also update on window resize
-    const throttledMeasure = throttle(measureScrollOffset, 200);
+    const throttledMeasure = throttle(measureHeader, 200);
     window.addEventListener("resize", throttledMeasure, { passive: true });
     
     return () => {
