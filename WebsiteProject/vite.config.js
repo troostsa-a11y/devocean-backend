@@ -1,18 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// MINIMAL CONFIG - Testing if custom plugins break production
+// MINIMAL CONFIG - Optimized for mobile performance
 export default defineConfig({
   plugins: [react()],
   
   build: {
     minify: 'esbuild',
     sourcemap: false,
-    cssCodeSplit: true, // Split CSS per route to reduce initial bundle
+    cssCodeSplit: false, // Single CSS bundle - faster on slow mobile networks
+    cssMinify: true,
     rollupOptions: {
       output: {
         manualChunks: {
-          // Split vendor CSS
           'react-vendor': ['react', 'react-dom'],
         }
       }
