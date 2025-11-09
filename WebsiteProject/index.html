@@ -514,13 +514,9 @@
         });
       }
       
-      // Wait for fonts to load (prevents shift when web fonts render long text)
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(recalcHeaderHeight);
-      } else {
-        // Fallback for older browsers - wait 100ms for fonts
-        setTimeout(recalcHeaderHeight, 100);
-      }
+      // Skip automatic recalculation on font load to prevent CLS
+      // Initial values are accurate enough (mobile: 96px, desktop: 104px)
+      // Recalculation happens on resize via App.jsx throttled handler
     })();
   </script>
 
