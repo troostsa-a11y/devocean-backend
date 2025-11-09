@@ -55,7 +55,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   return (
     <>
       {/* Top bar with contact & language/currency */}
-      <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
+      <div id="nav-stack" className="topbar bg-[#9e4b13] text-white">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
           {/* Desktop: Full contact info */}
           <div className="hidden lg:flex items-center gap-4">
