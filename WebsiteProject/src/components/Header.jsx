@@ -38,16 +38,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
     if (el) {
       e.preventDefault();
-      const rectTop = el.getBoundingClientRect().top + window.scrollY;
       
-      // Use ACTUAL header height, not conservative CSS variable
-      const topbar = document.querySelector('.topbar');
-      const header = document.querySelector('header');
-      const offset = topbar && header 
-        ? topbar.offsetHeight + header.offsetHeight 
-        : (window.innerWidth < 768 ? 96 : 104);
-      
-      window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
+      // Use native browser scrolling - respects scroll-margin-top CSS
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       // Only update history if we're on the homepage
       if (location === '/') {

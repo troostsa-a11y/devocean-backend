@@ -485,6 +485,27 @@
       document.documentElement.style.setProperty('--topbar-h', '40px');
       document.documentElement.style.setProperty('--header-h', '80px');
       document.documentElement.style.setProperty('--stack-h', '120px');
+      
+      // AFTER paint: Measure actual header for accurate scroll positioning
+      // Uses --stack-h-active to avoid CLS while providing pixel-perfect navigation
+      requestAnimationFrame(function() {
+        setTimeout(function() {
+          var topbar = document.querySelector('.topbar');
+          var header = document.querySelector('header');
+          if (topbar && header) {
+            var actualHeight = topbar.offsetHeight + header.offsetHeight;
+            document.documentElement.style.setProperty('--stack-h-active', actualHeight + 'px');
+            
+            // Keep updated on resize
+            var resizeObserver = new ResizeObserver(function() {
+              var newHeight = topbar.offsetHeight + header.offsetHeight;
+              document.documentElement.style.setProperty('--stack-h-active', newHeight + 'px');
+            });
+            resizeObserver.observe(topbar);
+            resizeObserver.observe(header);
+          }
+        }, 100); // Wait for fonts/translations
+      });
     })();
   </script>
 

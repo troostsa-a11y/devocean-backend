@@ -12,7 +12,10 @@
   --header-h: 56px;
   /* default nav height (mobile) */
   --stack-h: calc(var(--topbar-h) + var(--header-h));
-  /* fallback used by anchors */
+  /* conservative fallback for initial render (prevents CLS) */
+  
+  --stack-h-active: var(--stack-h);
+  /* actual measured header height for scroll positioning (updated post-paint) */
 }
 
 @media (min-width: 768px) {
@@ -27,7 +30,7 @@
 section[id]:not(#home),
 [id][data-anchor],
 h1[id], h2[id], h3[id], h4[id] {
-  scroll-margin-top: var(--stack-h) !important;
+  scroll-margin-top: var(--stack-h-active) !important;
 }
 
 /* ------------------ Global interactions ------------------ */

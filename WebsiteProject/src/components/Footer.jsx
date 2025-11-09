@@ -9,16 +9,9 @@ export default function Footer({ units, experiences, ui }) {
 
     if (el) {
       e.preventDefault();
-      const rectTop = el.getBoundingClientRect().top + window.scrollY;
       
-      // Use ACTUAL header height, not conservative CSS variable
-      const topbar = document.querySelector('.topbar');
-      const header = document.querySelector('header');
-      const offset = topbar && header 
-        ? topbar.offsetHeight + header.offsetHeight 
-        : (window.innerWidth < 768 ? 96 : 104);
-      
-      window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
+      // Use native browser scrolling - respects scroll-margin-top CSS
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
       const newUrl = `${window.location.pathname}${window.location.search}#${id}`;
       window.history.replaceState({}, '', newUrl);
