@@ -134,7 +134,7 @@ export default function App() {
   const experiences = useMemo(() => localizeExperiences(lang), [lang, ui]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical */}
       <Header
         ui={ui || criticalUI}
