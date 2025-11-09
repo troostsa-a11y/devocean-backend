@@ -9,9 +9,11 @@ export default function Footer({ units, experiences, ui }) {
 
     if (el) {
       e.preventDefault();
-      
-      // Use native browser scrolling - respects scroll-margin-top CSS
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const rectTop = el.getBoundingClientRect().top + window.scrollY;
+      // Read cached CSS variable (avoids forced reflow vs getComputedStyle)
+      const stackH = document.documentElement.style.getPropertyValue('--stack-h');
+      const offset = parseFloat(stackH) || (window.innerWidth < 768 ? 96 : 104);
+      window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
 
       const newUrl = `${window.location.pathname}${window.location.search}#${id}`;
       window.history.replaceState({}, '', newUrl);

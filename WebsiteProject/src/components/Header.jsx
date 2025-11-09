@@ -38,9 +38,11 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
     if (el) {
       e.preventDefault();
-      
-      // Use native browser scrolling - respects scroll-margin-top CSS
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const rectTop = el.getBoundingClientRect().top + window.scrollY;
+      // Read cached CSS variable (avoids forced reflow vs getComputedStyle)
+      const stackH = document.documentElement.style.getPropertyValue('--stack-h');
+      const offset = parseFloat(stackH) || (window.innerWidth < 768 ? 96 : 104);
+      window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
 
       // Only update history if we're on the homepage
       if (location === '/') {
@@ -55,7 +57,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   return (
     <>
       {/* Top bar with contact & language/currency */}
-      <div id="nav-stack" className="topbar bg-[#9e4b13] text-white">
+      <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
           {/* Desktop: Full contact info */}
           <div className="hidden lg:flex items-center gap-4">
@@ -159,7 +161,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
       {/* Main header */}
       <header className="fixed top-[var(--topbar-h)] left-0 right-0 z-50 bg-white border-b">
-        <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a 
               href={isExperiencePage ? '/#home' : '#home'}

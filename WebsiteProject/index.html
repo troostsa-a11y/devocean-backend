@@ -462,8 +462,8 @@
     html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
     body{margin:0;line-height:inherit}
     /* Brand tokens - Accurate mobile-first values to prevent CLS */
-    :root{--brand:#9e4b13;--topbar-h:40px;--header-h:56px;--stack-h:96px;--stack-h-active:96px}
-    @media (min-width:768px){:root{--header-h:64px;--stack-h:104px;--stack-h-active:104px}}
+    :root{--brand:#9e4b13;--topbar-h:40px;--header-h:56px;--stack-h:96px}
+    @media (min-width:768px){:root{--header-h:64px;--stack-h:104px}}
     /* Smooth scroll */
     html{scroll-behavior:smooth;overflow-x:hidden}
     body{overflow-x:hidden}
@@ -474,17 +474,50 @@
   <!-- Pre-calculate sticky header height BEFORE first paint (prevents CLS) -->
   <script>
     (function() {
-      // Conservative initial values to prevent CLS when long translations load
-      // We start with generous space, then shrink to actual size (no visible shift)
-      // Dutch/Russian can wrap to 2 lines, so we reserve extra space
+      // Mobile: 40px topbar + 56px header = 96px
+      // Desktop: 40px topbar + 64px header = 104px
+      // Set accurate values immediately to prevent layout shift
+      var isMobile = window.innerWidth < 768;
+      var stackHeight = isMobile ? 96 : 104;
+      var headerHeight = isMobile ? 56 : 64;
       
-      // Set conservative baselines immediately (prevents gaps and CLS)
-      // These values accommodate the tallest possible header (multi-line Dutch/Russian)
-      // We NEVER recalculate during page load to prevent layout shift
-      // React measures actual height for --stack-h-active (scroll positioning accuracy)
+      document.documentElement.style.setProperty('--stack-h', stackHeight + 'px');
+      document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
       document.documentElement.style.setProperty('--topbar-h', '40px');
-      document.documentElement.style.setProperty('--header-h', '80px');
-      document.documentElement.style.setProperty('--stack-h', '120px');
+      
+      // Recalculate after header renders (prevents layout shift in multi-line headers)
+      // Critical for long translations (Dutch, Russian) that wrap to 2+ lines
+      function recalcHeaderHeight() {
+        requestAnimationFrame(function() {
+          var topbar = document.querySelector(".topbar");
+          var header = document.querySelector("header");
+          
+          if (topbar && header) {
+            // Batch all reads together to minimize forced reflow (read once per element)
+            var actualTopbar = topbar.offsetHeight;
+            var actualHeader = header.offsetHeight;
+            var actualStack = actualTopbar + actualHeader;
+            
+            // Only update if values changed (e.g., text wrapped to multiple lines)
+            if (actualStack !== stackHeight) {
+              document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
+              document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+              document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
+            }
+          } else {
+            // Header not rendered yet, retry on next frame
+            recalcHeaderHeight();
+          }
+        });
+      }
+      
+      // Wait for fonts to load (prevents shift when web fonts render long text)
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(recalcHeaderHeight);
+      } else {
+        // Fallback for older browsers - wait 100ms for fonts
+        setTimeout(recalcHeaderHeight, 100);
+      }
     })();
   </script>
 

@@ -61,48 +61,30 @@ export default function App() {
     }
   }, []);
 
-  // Measure actual header for accurate scroll positioning and layout spacing
+  // Layout recalculation for sticky header (throttled for performance)
+  // Note: Initial values set in <head> to prevent CLS, this only handles resize
   useEffect(() => {
-    let observer = null;
-    
-    const measureHeader = () => {
+    const recalc = () => {
       const topbar = document.querySelector(".topbar");
       const header = document.querySelector("header");
       if (!topbar || !header) return;
       
-      // Batch all reads together to minimize forced reflow
-      const actualHeight = topbar.offsetHeight + header.offsetHeight;
+      // Batch all reads together to minimize forced reflow (read once per element)
+      const topbarH = topbar.offsetHeight;
+      const headerH = header.offsetHeight;
+      const stack = topbarH + headerH;
       
-      // Update --stack-h with actual measured height
-      document.documentElement.style.setProperty("--stack-h", `${actualHeight}px`);
-      
-      // Update main content offset (8px less for better alignment)
-      document.documentElement.style.setProperty("--main-offset", `${actualHeight - 8}px`);
+      // Write all values at once
+      document.documentElement.style.setProperty("--stack-h", `${stack}px`);
+      document.documentElement.style.setProperty("--topbar-h", `${topbarH}px`);
+      document.documentElement.style.setProperty("--header-h", `${headerH}px`);
     };
 
-    // Measure once after initial render
-    requestAnimationFrame(() => {
-      measureHeader();
-      
-      // Keep synced when header size changes (translation hydration, locale switch, font load)
-      const topbar = document.querySelector(".topbar");
-      const header = document.querySelector("header");
-      
-      if (topbar && header) {
-        observer = new ResizeObserver(measureHeader);
-        observer.observe(topbar);
-        observer.observe(header);
-      }
-    });
-
-    // Also update on window resize
-    const throttledMeasure = throttle(measureHeader, 200);
-    window.addEventListener("resize", throttledMeasure, { passive: true });
-    
-    return () => {
-      if (observer) observer.disconnect();
-      window.removeEventListener("resize", throttledMeasure);
-    };
+    // Only recalc on resize - initial values already set in <head>
+    // Throttled resize handler to reduce main thread blocking
+    const throttledRecalc = throttle(recalc, 200);
+    window.addEventListener("resize", throttledRecalc, { passive: true });
+    return () => window.removeEventListener("resize", throttledRecalc);
   }, []);
 
   // Handle hash navigation on route changes (immediate, with retry until element exists)
@@ -164,9 +146,7 @@ export default function App() {
         bookUrl={bookUrl}
       />
 
-      {/* Main content - offset by fixed header */}
-      <main className="main-content">
-        <Switch>
+      <Switch>
         {/* Route for experience detail pages */}
         <Route path="/experiences/:key">
           {loading || !ui ? (
@@ -223,8 +203,7 @@ export default function App() {
             </>
           )}
         </Route>
-        </Switch>
-      </main>
+      </Switch>
     </div>
   );
 }
