@@ -21,14 +21,15 @@ export default function LazyImage({
   const imgRef = useRef(null);
 
   useEffect(() => {
-    if (!src || loading === 'eager') return;
+    // Skip if eager loading or no image sources at all
+    if (loading === 'eager' || (!src && !srcWebP && !srcMobile && !srcMobileWebP)) return;
 
     // For lazy loading, use IntersectionObserver
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setDesktopSrc(src);
+            if (src) setDesktopSrc(src);
             if (srcMobile) setMobileSrc(srcMobile);
             if (srcWebP) setDesktopWebP(srcWebP);
             if (srcMobileWebP) setMobileWebP(srcMobileWebP);
