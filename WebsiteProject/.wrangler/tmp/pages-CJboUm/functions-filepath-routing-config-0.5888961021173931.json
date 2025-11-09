@@ -1,0 +1,37 @@
+{
+  "routes": [
+    {
+      "routePath": "/api/contact",
+      "mountPath": "/api",
+      "method": "POST",
+      "module": [
+        "api/contact.js:onRequestPost"
+      ]
+    },
+    {
+      "routePath": "/api/experience-inquiry",
+      "mountPath": "/api",
+      "method": "",
+      "module": [
+        "api/experience-inquiry.js:onRequest"
+      ]
+    },
+    {
+      "routePath": "/:key.txt",
+      "mountPath": "/",
+      "method": "",
+      "module": [
+        "[key].txt.js:onRequest"
+      ]
+    },
+    {
+      "routePath": "/",
+      "mountPath": "/",
+      "method": "",
+      "middleware": [
+        "_middleware.js:onRequest"
+      ]
+    }
+  ],
+  "baseURL": "/"
+}
