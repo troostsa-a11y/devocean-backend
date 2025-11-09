@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import asyncCSS from './vite-plugin-async-css.js';
+import preloadEntry from './vite-plugin-preload-entry.js';
 
 // Mobile-first config: 90% mobile traffic requires instant mobile LCP
 export default defineConfig({
   plugins: [
     react(),
     asyncCSS(), // Make CSS async to eliminate 160ms mobile blocking
+    preloadEntry(), // Inject modulepreload for main entry to eliminate waterfall
   ],
   
   build: {
