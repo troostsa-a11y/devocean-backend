@@ -39,9 +39,14 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
     if (el) {
       e.preventDefault();
       const rectTop = el.getBoundingClientRect().top + window.scrollY;
-      // Read cached CSS variable (avoids forced reflow vs getComputedStyle)
-      const stackH = document.documentElement.style.getPropertyValue('--stack-h');
-      const offset = parseFloat(stackH) || (window.innerWidth < 768 ? 96 : 104);
+      
+      // Use ACTUAL header height, not conservative CSS variable
+      const topbar = document.querySelector('.topbar');
+      const header = document.querySelector('header');
+      const offset = topbar && header 
+        ? topbar.offsetHeight + header.offsetHeight 
+        : (window.innerWidth < 768 ? 96 : 104);
+      
       window.scrollTo({ top: Math.max(0, rectTop - offset), behavior: 'smooth' });
 
       // Only update history if we're on the homepage
