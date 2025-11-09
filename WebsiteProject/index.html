@@ -493,9 +493,10 @@
           var header = document.querySelector("header");
           
           if (topbar && header) {
-            var actualStack = topbar.offsetHeight + header.offsetHeight;
-            var actualHeader = header.offsetHeight;
+            // Batch all reads together to minimize forced reflow (read once per element)
             var actualTopbar = topbar.offsetHeight;
+            var actualHeader = header.offsetHeight;
+            var actualStack = actualTopbar + actualHeader;
             
             // Only update if values changed (e.g., text wrapped to multiple lines)
             if (actualStack !== stackHeight) {

@@ -69,10 +69,15 @@ export default function App() {
       const header = document.querySelector("header");
       if (!topbar || !header) return;
       
-      const stack = topbar.offsetHeight + header.offsetHeight;
+      // Batch all reads together to minimize forced reflow (read once per element)
+      const topbarH = topbar.offsetHeight;
+      const headerH = header.offsetHeight;
+      const stack = topbarH + headerH;
+      
+      // Write all values at once
       document.documentElement.style.setProperty("--stack-h", `${stack}px`);
-      document.documentElement.style.setProperty("--topbar-h", `${topbar.offsetHeight}px`);
-      document.documentElement.style.setProperty("--header-h", `${header.offsetHeight}px`);
+      document.documentElement.style.setProperty("--topbar-h", `${topbarH}px`);
+      document.documentElement.style.setProperty("--header-h", `${headerH}px`);
     };
 
     // Only recalc on resize - initial values already set in <head>

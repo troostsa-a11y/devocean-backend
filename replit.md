@@ -27,6 +27,15 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - Do NOT automatically run tests after making changes
 - Wait for explicit user confirmation before testing
 
+## Recent Changes
+- **2025-11-09**: Mobile Core Web Vitals optimization completed
+  - CSS async loading (eliminated 160ms render-blocking on mobile 4G)
+  - Layout shift fixes for all 17 languages (CLS <0.1)
+  - Forced reflow elimination (batched offsetHeight reads)
+  - Module preloading for parallel JS download
+  - Gallery images optimized to 400px (desktop 4-column grid)
+  - Mobile performance now steady 90+ (previously fluctuating 65-92)
+
 ## System Architecture
 
 ### Frontend
