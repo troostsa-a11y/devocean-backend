@@ -479,42 +479,12 @@
       // Dutch/Russian can wrap to 2 lines, so we reserve extra space
       
       // Set conservative baselines immediately (prevents gaps and CLS)
+      // These values accommodate the tallest possible header (multi-line Dutch/Russian)
+      // We NEVER recalculate during page load to prevent layout shift
+      // Only the resize handler in App.jsx updates these values (user-initiated resize = ok)
       document.documentElement.style.setProperty('--topbar-h', '40px');
       document.documentElement.style.setProperty('--header-h', '80px');
       document.documentElement.style.setProperty('--stack-h', '120px');
-      
-      // Single recalculation ONLY after translations load
-      // We keep conservative 120px initial value to prevent CLS
-      // Only measure once, after fonts + translations are ready
-      function recalcAfterTranslations() {
-        requestAnimationFrame(function() {
-          var topbar = document.querySelector(".topbar");
-          var header = document.querySelector("header");
-          
-          if (topbar && header) {
-            // Batch all reads together to minimize forced reflow
-            var actualTopbar = topbar.offsetHeight;
-            var actualHeader = header.offsetHeight;
-            var actualStack = actualTopbar + actualHeader;
-            
-            // Only update if smaller than conservative value (shrinking = no CLS)
-            if (actualStack <= 120) {
-              document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
-              document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
-              document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
-            }
-          }
-        });
-      }
-      
-      // Wait for fonts + translations (single measurement, no layout shift)
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(function() {
-          setTimeout(recalcAfterTranslations, 500);  // Longer delay ensures translations loaded
-        });
-      } else {
-        setTimeout(recalcAfterTranslations, 600);
-      }
     })();
   </script>
 
