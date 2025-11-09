@@ -38,16 +38,7 @@ export default function Footer({ units, experiences, ui }) {
             className="flex items-center gap-3 hover:text-white"
             onClick={(e) => handleAnchorNav(e, '#home')}
           >
-            <img 
-              src="/images/devocean_logo_header-small.webp"
-              srcSet="/images/devocean_logo_header-small.webp 1x, /images/devocean_logo_header-medium.webp 2x"
-              alt="DEVOCEAN Lodge" 
-              className="h-9 w-9 rounded-full object-cover" 
-              loading="lazy"
-              decoding="async"
-              width="63"
-              height="63"
-            />
+            <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
             <span className="font-semibold">DEVOCEAN Lodge</span>
           </a>
           <p className="mt-3 text-sm text-slate-400">{ui.footer.desc}</p>
