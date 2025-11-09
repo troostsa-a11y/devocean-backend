@@ -62,6 +62,7 @@ export default function App() {
   }, []);
 
   // Layout recalculation for sticky header (throttled for performance)
+  // Note: Initial values set in <head> to prevent CLS, this only handles resize
   useEffect(() => {
     const recalc = () => {
       const topbar = document.querySelector(".topbar");
@@ -71,13 +72,10 @@ export default function App() {
       const stack = topbar.offsetHeight + header.offsetHeight;
       document.documentElement.style.setProperty("--stack-h", `${stack}px`);
       document.documentElement.style.setProperty("--topbar-h", `${topbar.offsetHeight}px`);
+      document.documentElement.style.setProperty("--header-h", `${header.offsetHeight}px`);
     };
 
-    // Run immediately and after delays to ensure proper calculation
-    recalc();
-    setTimeout(recalc, 100);
-    setTimeout(recalc, 500);
-    
+    // Only recalc on resize - initial values already set in <head>
     // Throttled resize handler to reduce main thread blocking
     const throttledRecalc = throttle(recalc, 200);
     window.addEventListener("resize", throttledRecalc, { passive: true });
