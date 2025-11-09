@@ -14,6 +14,7 @@ export default defineConfig({
     sourcemap: false,
     cssCodeSplit: false, // Single CSS bundle - better for mobile
     cssMinify: true,
+    modulePreload: true, // Add modulepreload for main entry (reduces critical path latency)
     rollupOptions: {
       output: {
         manualChunks: {
