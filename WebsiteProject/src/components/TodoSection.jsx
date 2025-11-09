@@ -1,6 +1,6 @@
 export default function TodoSection({ ui }) {
   return (
-    <section id="todo" className="max-w-7xl mx-auto px-4 py-16">
+    <section id="todo" className="bg-slate-50 max-w-7xl mx-auto px-4 py-16">
       <h2 className="text-3xl md:text-4xl font-bold">{ui.todo.headline}</h2>
       <p className="mt-2 text-slate-600">{ui.todo.note}</p>
       <div className="mt-8 grid md:grid-cols-2 gap-6">

@@ -3,7 +3,7 @@ import LazyImage from './LazyImage';
 
 export default function GallerySection({ ui }) {
   return (
-    <section id="gallery" className="max-w-7xl mx-auto px-4 py-16">
+    <section id="gallery" className="bg-slate-50 max-w-7xl mx-auto px-4 py-16">
       <h2 className="text-3xl md:text-4xl font-bold">{ui.galleryHeading}</h2>
       <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-3">
         {IMG.gallery.map((image, i) => (

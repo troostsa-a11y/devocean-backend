@@ -3,7 +3,7 @@ import LazyImage from './LazyImage';
 
 export default function AccommodationsSection({ units, ui, bookUrl, lang, currency }) {
   return (
-    <section id="stay" className="max-w-7xl mx-auto px-4 py-16">
+    <section id="stay" className="bg-slate-50 max-w-7xl mx-auto px-4 py-16">
       <div className="flex items-end justify-between gap-6">
         <div className="flex-1">
           <h2 className="text-3xl md:text-4xl font-bold">{ui.stay.headline}</h2>

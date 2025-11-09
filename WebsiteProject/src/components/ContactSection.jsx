@@ -143,7 +143,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="max-w-7xl mx-auto px-4 py-16">
+    <section id="contact" ref={sectionRef} className="bg-slate-50 max-w-7xl mx-auto px-4 py-16">
       <div className="grid md:grid-cols-2 gap-8 items-start justify-items-center md:justify-items-stretch">
         {/* Left: text & CTAs */}
         <div className="w-full">
