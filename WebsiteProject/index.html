@@ -483,9 +483,10 @@
       document.documentElement.style.setProperty('--header-h', '80px');
       document.documentElement.style.setProperty('--stack-h', '120px');
       
-      // Calculate actual header heights as soon as elements render
-      // This runs EARLY (before translations) to prevent visual gaps
-      function recalcHeaderHeight() {
+      // Single recalculation ONLY after translations load
+      // We keep conservative 120px initial value to prevent CLS
+      // Only measure once, after fonts + translations are ready
+      function recalcAfterTranslations() {
         requestAnimationFrame(function() {
           var topbar = document.querySelector(".topbar");
           var header = document.querySelector("header");
@@ -496,46 +497,23 @@
             var actualHeader = header.offsetHeight;
             var actualStack = actualTopbar + actualHeader;
             
-            // Update to actual values immediately (prevents gaps between elements)
-            document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
-            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
-            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
-          } else {
-            // Header not rendered yet, retry on next frame
-            recalcHeaderHeight();
+            // Only update if smaller than conservative value (shrinking = no CLS)
+            if (actualStack <= 120) {
+              document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
+              document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+              document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
+            }
           }
         });
       }
       
-      // Also recalculate after translations load (for multi-line headers)
-      function recalcAfterTranslations() {
-        requestAnimationFrame(function() {
-          var topbar = document.querySelector(".topbar");
-          var header = document.querySelector("header");
-          
-          if (topbar && header) {
-            var actualTopbar = topbar.offsetHeight;
-            var actualHeader = header.offsetHeight;
-            var actualStack = actualTopbar + actualHeader;
-            
-            // Update if values changed (e.g., Dutch text wrapped)
-            document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
-            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
-            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
-          }
-        });
-      }
-      
-      // Step 1: Calculate immediately when elements render (prevents gaps)
-      recalcHeaderHeight();
-      
-      // Step 2: Recalculate after translations load (handles multi-line text)
+      // Wait for fonts + translations (single measurement, no layout shift)
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(function() {
-          setTimeout(recalcAfterTranslations, 300);
+          setTimeout(recalcAfterTranslations, 500);  // Longer delay ensures translations loaded
         });
       } else {
-        setTimeout(recalcAfterTranslations, 400);
+        setTimeout(recalcAfterTranslations, 600);
       }
     })();
   </script>
