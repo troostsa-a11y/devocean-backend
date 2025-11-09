@@ -1,6 +1,4 @@
-// Vite plugin for mobile performance optimization
-// 1. Makes CSS load asynchronously (eliminates 160ms render-blocking)
-// 2. Adds modulepreload for main JS bundle (parallel download)
+// Simple Vite plugin to make CSS load asynchronously (eliminates render-blocking on mobile)
 export default function asyncCSS() {
   return {
     name: 'async-css',
@@ -11,10 +9,10 @@ export default function asyncCSS() {
         return html;
       }
 
-      let transformed = html;
-
-      // Step 1: Make CSS async using media="print" trick
-      transformed = transformed.replace(
+      // Find CSS link tags and make them async using media="print" trick
+      // This prevents 160ms CSS blocking on mobile 4G networks
+      // Match any <link rel="stylesheet"> regardless of attribute order
+      return html.replace(
         /<link\s+([^>]*rel="stylesheet"[^>]*)>/g,
         (match, attrs) => {
           // Extract href from attributes
@@ -32,18 +30,6 @@ export default function asyncCSS() {
 <noscript><link rel="stylesheet" href="${cssPath}"${crossoriginAttr}></noscript>`;
         }
       );
-
-      // Step 2: Add modulepreload for main JS bundle (reduces critical path latency)
-      // Find the main script tag and add a modulepreload hint before it
-      transformed = transformed.replace(
-        /<script\s+type="module"\s+crossorigin\s+src="([^"]+\/index-[^"]+\.js)">/,
-        (match, jsPath) => {
-          return `<link rel="modulepreload" href="${jsPath}" crossorigin>
-${match}`;
-        }
-      );
-
-      return transformed;
     }
   };
 }
