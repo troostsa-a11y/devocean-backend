@@ -127,7 +127,7 @@ export default function Footer({ units, experiences, ui }) {
 
         {/* Legal */}
         <div>
-          <h4 className="font-semibold">{ui?.legal?.title ?? "Legal"}</h4>
+          <div className="font-semibold">{ui?.legal?.title ?? "Legal"}</div>
           <ul className="mt-2 space-y-1 text-sm text-slate-400">
             <li><a className="hover:text-white" href="/legal/privacy.html">{ui?.legal?.privacy ?? "Privacy Policy"}</a></li>
             <li><a className="hover:text-white" href="/legal/cookies.html">{ui?.legal?.cookies ?? "Cookie Policy"}</a></li>
