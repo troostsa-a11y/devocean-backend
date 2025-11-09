@@ -475,19 +475,16 @@
   <script>
     (function() {
       // Conservative initial values to prevent CLS when long translations load
-      // Mobile: 40px topbar + 80px header (multi-line) = 120px
-      // Desktop: 40px topbar + 80px header (multi-line) = 120px
+      // We start with generous space, then shrink to actual size (no visible shift)
       // Dutch/Russian can wrap to 2 lines, so we reserve extra space
-      var isMobile = window.innerWidth < 768;
-      var stackHeight = 120;  // Conservative: accommodates multi-line headers
-      var headerHeight = 80;  // Conservative: accommodates text wrapping
       
-      document.documentElement.style.setProperty('--stack-h', stackHeight + 'px');
-      document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
+      // Set conservative baselines immediately (prevents gaps and CLS)
       document.documentElement.style.setProperty('--topbar-h', '40px');
+      document.documentElement.style.setProperty('--header-h', '80px');
+      document.documentElement.style.setProperty('--stack-h', '120px');
       
-      // Recalculate after React renders with translations loaded
-      // We start with conservative 120px, then shrink to actual size (no layout shift)
+      // Calculate actual header heights as soon as elements render
+      // This runs EARLY (before translations) to prevent visual gaps
       function recalcHeaderHeight() {
         requestAnimationFrame(function() {
           var topbar = document.querySelector(".topbar");
@@ -499,11 +496,10 @@
             var actualHeader = header.offsetHeight;
             var actualStack = actualTopbar + actualHeader;
             
-            // Update to actual values (may be smaller than conservative 120px)
-            // This won't cause layout shift because we only shrink, never grow
-            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
-            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+            // Update to actual values immediately (prevents gaps between elements)
             document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
+            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
           } else {
             // Header not rendered yet, retry on next frame
             recalcHeaderHeight();
@@ -511,15 +507,35 @@
         });
       }
       
-      // Wait for fonts AND a delay for translations to load
-      // Conservative approach: wait 300ms after fonts to ensure translations are rendered
+      // Also recalculate after translations load (for multi-line headers)
+      function recalcAfterTranslations() {
+        requestAnimationFrame(function() {
+          var topbar = document.querySelector(".topbar");
+          var header = document.querySelector("header");
+          
+          if (topbar && header) {
+            var actualTopbar = topbar.offsetHeight;
+            var actualHeader = header.offsetHeight;
+            var actualStack = actualTopbar + actualHeader;
+            
+            // Update if values changed (e.g., Dutch text wrapped)
+            document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
+            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
+          }
+        });
+      }
+      
+      // Step 1: Calculate immediately when elements render (prevents gaps)
+      recalcHeaderHeight();
+      
+      // Step 2: Recalculate after translations load (handles multi-line text)
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(function() {
-          setTimeout(recalcHeaderHeight, 300);
+          setTimeout(recalcAfterTranslations, 300);
         });
       } else {
-        // Fallback for older browsers
-        setTimeout(recalcHeaderHeight, 400);
+        setTimeout(recalcAfterTranslations, 400);
       }
     })();
   </script>
