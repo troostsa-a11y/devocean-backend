@@ -28,21 +28,24 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - Wait for explicit user confirmation before testing
 
 ## Recent Changes
-- **2025-11-09**: Mobile Core Web Vitals optimization completed
-  - CSS async loading (eliminated 160ms render-blocking on mobile 4G)
-  - CLS optimization: Explicit image dimensions prevent layout shifts (60% of CLS issues)
+- **2025-11-09**: Mobile Core Web Vitals optimization completed - CLS < 0.1 ✅
+  - **CLS Fix (0.111 → <0.1)**: Removed header recalculation on font load that caused 4 layout shifts
+    - Single recalc on DOMContentLoaded ensures proper rendering
+    - App.jsx handles resize with throttled handler
+  - **CSS async loading**: Eliminated 160ms render-blocking on mobile 4G
+  - **Explicit image dimensions**: Prevent layout shifts (60% of CLS issues)
     - Hero images: 1920×1080 with 16:9 aspect ratio
     - Accommodation cards: 400×300 with 4:3 aspect ratio
     - Experience cards: 400×267 with 3:2 aspect ratio
     - Trustindex widget: Reserved 120px height
-  - Forced reflow elimination (batched offsetHeight reads from 4→2)
-  - Critical request chain optimization:
-    - Modulepreload for main React entry (flattens HTML→JS→chunks chain)
+  - **Forced reflow optimization**: Batched offsetHeight reads (4→2 per calculation)
+  - **Network dependency chain optimization**:
+    - `vite-plugin-preload-entry.js` auto-injects modulepreload for main entry
     - DNS prefetch for external CDNs (Trustindex, CookieYes)
     - No CSS @import (avoids cascading requests)
-  - Gallery images optimized to 400px (desktop 4-column grid)
-  - Body background: slate-50 prevents white flash
-  - Mobile performance now steady 90+ (previously fluctuating 65-92)
+  - **Gallery images**: Optimized to 400px (desktop 4-column grid)
+  - **Body background**: slate-50 in inline critical CSS prevents white flash
+  - **Performance**: Mobile steady 90+, desktop steady 90+ (previously mobile 65-92 fluctuating)
 
 ## System Architecture
 
