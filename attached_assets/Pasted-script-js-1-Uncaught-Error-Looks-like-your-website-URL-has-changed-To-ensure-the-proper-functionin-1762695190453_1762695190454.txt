@@ -1,0 +1,51 @@
+script.js:1 Uncaught Error: Looks like your website URL has changed. To ensure the proper functioning of your banner, update the registered URL on your CookieYes account (navigate to the Organizations & Sites page (https://app.cookieyes.com/settings/organizations-and-sites) and click the More button associated with your site). Then, reload this page to retry. If the issue persists, please contact us at https://www.cookieyes.com/support.
+(anonymous) @ script.js:1
+(anonymous) @ script.js:1
+(anonymous) @ script.js:1
+installHook.js:1 Data from this session is not being collected by Microsoft Clarity due to your configured project settings
+overrideMethod @ installHook.js:1
+(anonymous) @ tomb7fwrww?ref=gtm:1
+client:745 WebSocket connection to 'wss://8467bf21-63db-4d5a-9e41-c084beb5640b-00-2i4c6eh7ctw9p.janeway.replit.dev:24678/?token=Nk-dveQbdJA0' failed: 
+createConnection @ client:745
+connect @ client:411
+connect @ client:751
+connect @ client:289
+connect @ client:373
+(anonymous) @ client:823
+installHook.js:1 [vite] failed to connect to websocket (Error: WebSocket closed without opened.). 
+overrideMethod @ installHook.js:1
+connect @ client:772
+await in connect
+connect @ client:289
+connect @ client:373
+(anonymous) @ client:823
+client:423 Uncaught (in promise) Error: WebSocket closed without opened.
+    at WebSocket.<anonymous> (client:423:30)
+(anonymous) @ client:423
+installHook.js:1 [Meta pixel] 231778828344239 is unavailable on this website due to it's traffic permission settings. Go to https://www.facebook.com/business/help/572690630080597 to learn more.
+overrideMethod @ installHook.js:1
+v @ fbevents.js:170
+(anonymous) @ 231778828344239?v=2.9.241&r=stable&domain=8467bf21-63db-4d5a-9e41-c084beb5640b-00-2i4c6eh7ctw9p.janeway.replit.dev&hme=5bd299cb4a477effb7bd992f8c033bfd3316c17b5e8e681c5c577860e1b0bfc7&ex_m=90%2C151%2C131%2C19%2C66%2C67%2C124%2C62%2C42%2C125%2C71%2C61%2C138%2C79%2C13%2C89%2C27%2C119%2C111%2C69%2C72%2C118%2C135%2C98%2C140%2C7%2C3%2C4%2C6%2C5%2C2%2C80%2C88%2C141%2C218%2C162%2C56%2C220%2C221%2C49%2C177%2C26%2C68%2C226%2C225%2C165%2C29%2C55%2C8%2C58%2C84%2C85%2C86%2C91%2C115%2C28%2C25%2C117%2C114%2C113%2C132%2C70%2C134%2C133%2C44%2C54%2C108%2C12%2C137%2C39%2C207%2C209%2C172%2C22%2C23%2C24%2C16%2C17%2C38%2C34%2C36%2C35%2C75%2C81%2C83%2C96%2C123%2C126%2C40%2C97%2C20%2C18%2C102%2C63%2C32%2C128%2C127%2C129%2C120%2C21%2C31%2C53%2C95%2C136%2C64%2C15%2C130%2C30%2C187%2C158%2C268%2C205%2C149%2C190%2C183%2C159%2C93%2C116%2C74%2C106%2C48%2C41%2C104%2C105%2C110%2C52%2C14%2C112%2C103%2C59%2C43%2C99%2C47%2C50%2C46%2C87%2C139%2C0%2C109%2C11%2C107%2C9%2C1%2C51%2C82%2C57%2C60%2C101%2C78%2C77%2C45%2C121%2C76%2C73%2C65%2C100%2C92%2C37%2C122%2C33%2C94%2C10%2C142:39
+(anonymous) @ fbevents.js:52
+s @ fbevents.js:288
+value @ fbevents.js:52
+x @ fbevents.js:244
+c @ fbevents.js:48
+o @ fbevents.js:240
+value @ fbevents.js:116
+value @ fbevents.js:116
+value @ fbevents.js:116
+value @ fbevents.js:116
+Da @ fbevents.js:383
+Ua @ fbevents.js:383
+(anonymous) @ fbevents.js:383
+(anonymous) @ fbevents.js:128
+s @ fbevents.js:288
+each @ fbevents.js:288
+value @ fbevents.js:128
+value @ fbevents.js:128
+value @ fbevents.js:116
+plugin @ 231778828344239?v=2.9.241&r=stable&domain=8467bf21-63db-4d5a-9e41-c084beb5640b-00-2i4c6eh7ctw9p.janeway.replit.dev&hme=5bd299cb4a477effb7bd992f8c033bfd3316c17b5e8e681c5c577860e1b0bfc7&ex_m=90%2C151%2C131%2C19%2C66%2C67%2C124%2C62%2C42%2C125%2C71%2C61%2C138%2C79%2C13%2C89%2C27%2C119%2C111%2C69%2C72%2C118%2C135%2C98%2C140%2C7%2C3%2C4%2C6%2C5%2C2%2C80%2C88%2C141%2C218%2C162%2C56%2C220%2C221%2C49%2C177%2C26%2C68%2C226%2C225%2C165%2C29%2C55%2C8%2C58%2C84%2C85%2C86%2C91%2C115%2C28%2C25%2C117%2C114%2C113%2C132%2C70%2C134%2C133%2C44%2C54%2C108%2C12%2C137%2C39%2C207%2C209%2C172%2C22%2C23%2C24%2C16%2C17%2C38%2C34%2C36%2C35%2C75%2C81%2C83%2C96%2C123%2C126%2C40%2C97%2C20%2C18%2C102%2C63%2C32%2C128%2C127%2C129%2C120%2C21%2C31%2C53%2C95%2C136%2C64%2C15%2C130%2C30%2C187%2C158%2C268%2C205%2C149%2C190%2C183%2C159%2C93%2C116%2C74%2C106%2C48%2C41%2C104%2C105%2C110%2C52%2C14%2C112%2C103%2C59%2C43%2C99%2C47%2C50%2C46%2C87%2C139%2C0%2C109%2C11%2C107%2C9%2C1%2C51%2C82%2C57%2C60%2C101%2C78%2C77%2C45%2C121%2C76%2C73%2C65%2C100%2C92%2C37%2C122%2C33%2C94%2C10%2C142:75
+value @ fbevents.js:210
+Za.a.registerPlugin @ fbevents.js:383
+(anonymous) @ 231778828344239?v=2.9.241&r=stable&domain=8467bf21-63db-4d5a-9e41-c084beb5640b-00-2i4c6eh7ctw9p.janeway.replit.dev&hme=5bd299cb4a477effb7bd992f8c033bfd3316c17b5e8e681c5c577860e1b0bfc7&ex_m=90%2C151%2C131%2C19%2C66%2C67%2C124%2C62%2C42%2C125%2C71%2C61%2C138%2C79%2C13%2C89%2C27%2C119%2C111%2C69%2C72%2C118%2C135%2C98%2C140%2C7%2C3%2C4%2C6%2C5%2C2%2C80%2C88%2C141%2C218%2C162%2C56%2C220%2C221%2C49%2C177%2C26%2C68%2C226%2C225%2C165%2C29%2C55%2C8%2C58%2C84%2C85%2C86%2C91%2C115%2C28%2C25%2C117%2C114%2C113%2C132%2C70%2C134%2C133%2C44%2C54%2C108%2C12%2C137%2C39%2C207%2C209%2C172%2C22%2C23%2C24%2C16%2C17%2C38%2C34%2C36%2C35%2C75%2C81%2C83%2C96%2C123%2C126%2C40%2C97%2C20%2C18%2C102%2C63%2C32%2C128%2C127%2C129%2C120%2C21%2C31%2C53%2C95%2C136%2C64%2C15%2C130%2C30%2C187%2C158%2C268%2C205%2C149%2C190%2C183%2C159%2C93%2C116%2C74%2C106%2C48%2C41%2C104%2C105%2C110%2C52%2C14%2C112%2C103%2C59%2C43%2C99%2C47%2C50%2C46%2C87%2C139%2C0%2C109%2C11%2C107%2C9%2C1%2C51%2C82%2C57%2C60%2C101%2C78%2C77%2C45%2C121%2C76%2C73%2C65%2C100%2C92%2C37%2C122%2C33%2C94%2C10%2C142:51

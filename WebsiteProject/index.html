@@ -514,9 +514,14 @@
         });
       }
       
-      // Skip automatic recalculation on font load to prevent CLS
-      // Initial values are accurate enough (mobile: 96px, desktop: 104px)
-      // Recalculation happens on resize via App.jsx throttled handler
+      // Recalculate ONCE after DOM is ready, but skip font.ready to prevent CLS
+      // Initial values are accurate (mobile: 96px, desktop: 104px)
+      // This single recalc ensures header renders, then App.jsx handles resize
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', recalcHeaderHeight);
+      } else {
+        recalcHeaderHeight();
+      }
     })();
   </script>
 
