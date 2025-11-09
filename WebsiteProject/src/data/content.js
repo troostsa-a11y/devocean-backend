@@ -17,8 +17,38 @@ export const IMG = {
     surfing: "/photos/experiences/surfing.jpg",
   },
   gallery: [
-    "/photos/gallery/01.jpg", "/photos/gallery/02.jpg", "/photos/gallery/03.jpg", "/photos/gallery/04.jpg",
-    "/photos/gallery/05.jpg", "/photos/gallery/06.jpg", "/photos/gallery/07.jpg", "/photos/gallery/08.jpg",
+    {
+      desktop: "/photos/gallery/01-desktop.webp",
+      mobile: "/photos/gallery/01-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/02-desktop.webp",
+      mobile: "/photos/gallery/02-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/03-desktop.webp",
+      mobile: "/photos/gallery/03-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/04-desktop.webp",
+      mobile: "/photos/gallery/04-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/05-desktop.webp",
+      mobile: "/photos/gallery/05-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/06-desktop.webp",
+      mobile: "/photos/gallery/06-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/07-desktop.webp",
+      mobile: "/photos/gallery/07-mobile.webp",
+    },
+    {
+      desktop: "/photos/gallery/08-desktop.webp",
+      mobile: "/photos/gallery/08-mobile.webp",
+    }
   ],
 };
 
