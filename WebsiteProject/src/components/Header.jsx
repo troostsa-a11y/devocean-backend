@@ -166,7 +166,16 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               className="flex items-center gap-3"
               onClick={isExperiencePage ? undefined : (e) => handleNavClick(e, '#home')}
             >
-              <LazyImage src={IMG.logo} alt="DEVOCEAN Lodge" className="h-9 w-9 rounded-full object-cover" loading="eager" />
+              <img 
+                src="/images/devocean_logo_header-small.webp"
+                srcSet="/images/devocean_logo_header-small.webp 1x, /images/devocean_logo_header-medium.webp 2x"
+                alt="DEVOCEAN Lodge" 
+                className="h-9 w-9 rounded-full object-cover" 
+                loading="eager"
+                decoding="async"
+                width="63"
+                height="63"
+              />
               <span className="font-semibold">DEVOCEAN Lodge</span>
             </a>
           </div>
