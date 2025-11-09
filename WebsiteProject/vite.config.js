@@ -8,6 +8,15 @@ export default defineConfig({
   build: {
     minify: 'esbuild',
     sourcemap: false,
+    cssCodeSplit: true, // Split CSS per route to reduce initial bundle
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split vendor CSS
+          'react-vendor': ['react', 'react-dom'],
+        }
+      }
+    }
   },
   
   server: {
