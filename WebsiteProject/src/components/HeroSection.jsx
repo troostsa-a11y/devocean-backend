@@ -40,6 +40,35 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           const srcWebP = typeof img === 'object' ? img.desktopWebP : undefined;
           const srcMobileWebP = typeof img === 'object' ? img.mobileWebP : undefined;
           const isFirst = i === 0;
+          
+          // First image (LCP): Direct render for optimal performance
+          // Other images: Use LazyImage for deferred loading
+          if (isFirst) {
+            return (
+              <picture key={src}>
+                {srcMobileWebP && (
+                  <source media="(max-width: 768px)" type="image/webp" srcSet={srcMobileWebP} />
+                )}
+                {srcMobile && (
+                  <source media="(max-width: 768px)" type="image/jpeg" srcSet={srcMobile} />
+                )}
+                {srcWebP && (
+                  <source type="image/webp" srcSet={srcWebP} />
+                )}
+                <img
+                  src={src}
+                  alt={`Hero slide ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  style={{ opacity: i === idx ? 1 : 0 }}
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </picture>
+            );
+          }
+          
+          // Non-LCP images: Use LazyImage
           return (
             <LazyImage
               key={src}
@@ -50,8 +79,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               alt={`Hero slide ${i + 1}`}
               className="absolute inset-0 w-full h-full object-cover object-center"
               style={{ opacity: i === idx ? 1 : 0 }}
-              loading={isFirst ? "eager" : "lazy"}
-              fetchpriority={isFirst ? "high" : undefined}
+              loading="lazy"
             />
           );
         })}
