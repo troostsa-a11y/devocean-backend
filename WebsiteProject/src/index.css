@@ -57,7 +57,7 @@ html {
 
 /* Main content offset - positioned just below fixed header */
 main.main-content {
-  padding-top: calc(var(--stack-h) - 8px);
+  padding-top: var(--main-offset, var(--stack-h));
 }
 
 /* ------------------ Topbar (brown) ------------------ */

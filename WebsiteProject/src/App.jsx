@@ -75,6 +75,9 @@ export default function App() {
       
       // Update --stack-h with actual measured height
       document.documentElement.style.setProperty("--stack-h", `${actualHeight}px`);
+      
+      // Update main content offset (8px less for better alignment)
+      document.documentElement.style.setProperty("--main-offset", `${actualHeight - 8}px`);
     };
 
     // Measure once after initial render
