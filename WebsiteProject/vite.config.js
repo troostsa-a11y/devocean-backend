@@ -13,7 +13,7 @@ export default defineConfig({
   
   build: {
     minify: 'esbuild',
-    sourcemap: false,
+    sourcemap: true,
     cssCodeSplit: false, // Single CSS bundle - better for mobile
     cssMinify: true,
     modulePreload: true, // Add modulepreload for main entry (reduces critical path latency)
