@@ -488,40 +488,10 @@
       document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
       document.documentElement.style.setProperty('--topbar-h', '40px');
       
-      // Recalculate after header renders (prevents layout shift in multi-line headers)
-      // Critical for long translations (Dutch, Russian) that wrap to 2+ lines
-      function recalcHeaderHeight() {
-        requestAnimationFrame(function() {
-          var topbar = document.querySelector(".topbar");
-          var header = document.querySelector("header");
-          
-          if (topbar && header) {
-            // Batch all reads together to minimize forced reflow (read once per element)
-            var actualTopbar = topbar.offsetHeight;
-            var actualHeader = header.offsetHeight;
-            var actualStack = actualTopbar + actualHeader;
-            
-            // Only update if values changed (e.g., text wrapped to multiple lines)
-            if (actualStack !== stackHeight) {
-              document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
-              document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
-              document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
-            }
-          } else {
-            // Header not rendered yet, retry on next frame
-            recalcHeaderHeight();
-          }
-        });
-      }
-      
-      // Recalculate ONCE after DOM is ready, but skip font.ready to prevent CLS
+      // NO automatic recalculation to prevent CLS
       // Initial values are accurate (mobile: 96px, desktop: 104px)
-      // This single recalc ensures header renders, then App.jsx handles resize
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', recalcHeaderHeight);
-      } else {
-        recalcHeaderHeight();
-      }
+      // App.jsx handles all recalculations on window resize (throttled)
+      // This eliminates all layout shifts during page load
     })();
   </script>
 
