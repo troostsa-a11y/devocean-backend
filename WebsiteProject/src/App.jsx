@@ -64,6 +64,8 @@ export default function App() {
   // Measure actual header for accurate scroll positioning (without causing CLS)
   // Note: --stack-h stays conservative (120px) to prevent CLS, --stack-h-active is accurate
   useEffect(() => {
+    let observer = null;
+    
     const measureScrollOffset = () => {
       const topbar = document.querySelector(".topbar");
       const header = document.querySelector("header");
@@ -86,12 +88,9 @@ export default function App() {
       const header = document.querySelector("header");
       
       if (topbar && header) {
-        const observer = new ResizeObserver(measureScrollOffset);
+        observer = new ResizeObserver(measureScrollOffset);
         observer.observe(topbar);
         observer.observe(header);
-        
-        // Cleanup observer on unmount
-        return () => observer.disconnect();
       }
     });
 
@@ -100,6 +99,7 @@ export default function App() {
     window.addEventListener("resize", throttledMeasure, { passive: true });
     
     return () => {
+      if (observer) observer.disconnect();
       window.removeEventListener("resize", throttledMeasure);
     };
   }, []);
