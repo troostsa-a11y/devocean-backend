@@ -1,32 +1,12 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import critical from 'rollup-plugin-critical';
+import asyncCSS from './vite-plugin-async-css.js';
 
 // Mobile-first config: 90% mobile traffic requires instant mobile LCP
 export default defineConfig({
   plugins: [
     react(),
-    // Critical CSS inlining for mobile performance
-    // Eliminates 160ms CSS blocking on mobile 4G networks
-    critical({
-      inline: true,
-      minify: true,
-      dimensions: [
-        {
-          height: 844,
-          width: 390,
-        }, // iPhone 14/15 Pro (most common mobile)
-        {
-          height: 915,
-          width: 412,
-        }, // Android mid-range
-      ],
-      target: {
-        html: 'dist/index.html',
-      },
-      extract: true, // Extract critical CSS and inline it
-      base: 'dist/',
-    }),
+    asyncCSS(), // Make CSS async to eliminate 160ms mobile blocking
   ],
   
   build: {
