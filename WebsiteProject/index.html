@@ -484,6 +484,39 @@
       document.documentElement.style.setProperty('--stack-h', stackHeight + 'px');
       document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
       document.documentElement.style.setProperty('--topbar-h', '40px');
+      
+      // Recalculate after header renders (prevents layout shift in multi-line headers)
+      // Critical for long translations (Dutch, Russian) that wrap to 2+ lines
+      function recalcHeaderHeight() {
+        requestAnimationFrame(function() {
+          var topbar = document.querySelector(".topbar");
+          var header = document.querySelector("header");
+          
+          if (topbar && header) {
+            var actualStack = topbar.offsetHeight + header.offsetHeight;
+            var actualHeader = header.offsetHeight;
+            var actualTopbar = topbar.offsetHeight;
+            
+            // Only update if values changed (e.g., text wrapped to multiple lines)
+            if (actualStack !== stackHeight) {
+              document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
+              document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+              document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
+            }
+          } else {
+            // Header not rendered yet, retry on next frame
+            recalcHeaderHeight();
+          }
+        });
+      }
+      
+      // Wait for fonts to load (prevents shift when web fonts render long text)
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(recalcHeaderHeight);
+      } else {
+        // Fallback for older browsers - wait 100ms for fonts
+        setTimeout(recalcHeaderHeight, 100);
+      }
     })();
   </script>
 
