@@ -1,4 +1,5 @@
 import { IMG } from '../data/content';
+import LazyImage from './LazyImage';
 
 export default function GallerySection({ ui }) {
   return (
@@ -10,17 +11,13 @@ export default function GallerySection({ ui }) {
             key={i}
             className="relative group rounded-xl overflow-hidden"
           >
-            <picture>
-              <source media="(max-width: 768px)" type="image/webp" srcSet={image.mobile} />
-              <source type="image/webp" srcSet={image.desktop} />
-              <img
-                src={image.desktop}
-                alt={`DEVOCEAN Lodge gallery ${i + 1}`}
-                className="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition"
-                loading="lazy"
-                decoding="async"
-              />
-            </picture>
+            <LazyImage
+              srcWebP={image.desktop}
+              srcMobileWebP={image.mobile}
+              alt={image.alt}
+              className="w-full h-40 md:h-48 object-cover group-hover:scale-105 transition"
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
