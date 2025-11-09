@@ -36,7 +36,10 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
     - Experience cards: 400×267 with 3:2 aspect ratio
     - Trustindex widget: Reserved 120px height
   - Forced reflow elimination (batched offsetHeight reads from 4→2)
-  - Module preloading for parallel JS download
+  - Critical request chain optimization:
+    - Modulepreload for main React entry (flattens HTML→JS→chunks chain)
+    - DNS prefetch for external CDNs (Trustindex, CookieYes)
+    - No CSS @import (avoids cascading requests)
   - Gallery images optimized to 400px (desktop 4-column grid)
   - Body background: slate-50 prevents white flash
   - Mobile performance now steady 90+ (previously fluctuating 65-92)
