@@ -488,10 +488,34 @@
       document.documentElement.style.setProperty('--header-h', headerHeight + 'px');
       document.documentElement.style.setProperty('--topbar-h', '40px');
       
-      // NO automatic recalculation to prevent CLS
-      // Initial values are accurate (mobile: 96px, desktop: 104px)
-      // App.jsx handles all recalculations on window resize (throttled)
-      // This eliminates all layout shifts during page load
+      // Recalculate ONCE after DOM is ready (no retries to prevent CLS)
+      // Critical: Single recalc ensures React renders, but no recursive retries
+      function recalcHeaderHeightOnce() {
+        var topbar = document.querySelector(".topbar");
+        var header = document.querySelector("header");
+        
+        // Only update if elements exist (no retry if not ready)
+        if (topbar && header) {
+          var actualTopbar = topbar.offsetHeight;
+          var actualHeader = header.offsetHeight;
+          var actualStack = actualTopbar + actualHeader;
+          
+          // Only update if values changed
+          if (actualStack !== stackHeight) {
+            document.documentElement.style.setProperty('--stack-h', actualStack + 'px');
+            document.documentElement.style.setProperty('--header-h', actualHeader + 'px');
+            document.documentElement.style.setProperty('--topbar-h', actualTopbar + 'px');
+          }
+        }
+        // If elements don't exist, skip - App.jsx will handle resize
+      }
+      
+      // Run once when DOM is ready (no recursive retries)
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', recalcHeaderHeightOnce);
+      } else {
+        recalcHeaderHeightOnce();
+      }
     })();
   </script>
 
