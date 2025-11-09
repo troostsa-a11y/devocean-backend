@@ -50,6 +50,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Body background - prevents white flash below header */
+body {
+  background-color: #f8fafc; /* slate-50 */
+}
+
 /* Home section should scroll to top (behind fixed headers) */
 #home {
   scroll-margin-top: 0 !important;
