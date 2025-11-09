@@ -45,10 +45,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
     - No CSS @import (avoids cascading requests)
   - **Gallery images**: Optimized to 400px (desktop 4-column grid)
   - **Body background**: slate-50 in inline critical CSS prevents white flash
-  - **Image compression**: Hero images re-compressed with quality 75 (mobile) / 80 (desktop)
-    - Mobile hero: 15.6 KiB saved across 4 images
-    - Desktop hero: 29.7 KiB saved across 5 images
-    - Total: ~45 KiB reduction for faster LCP
+  - **Image compression**: Hero images re-compressed for optimal mobile LCP
+    - LCP image (hero01-mobile.webp): 640x360px @ quality 60 → 15.0 KiB (was 35.6 KiB, saved 57.9%)
+    - Other mobile heroes: quality 75, saved 15.6 KiB
+    - Desktop heroes: quality 80, saved 29.7 KiB
+    - Total: ~66 KiB reduction across all hero images
   - **Performance**: Mobile steady 90+, desktop steady 90+ (previously mobile 65-92 fluctuating)
 
 ## System Architecture
