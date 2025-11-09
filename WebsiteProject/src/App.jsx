@@ -162,7 +162,7 @@ export default function App() {
       />
 
       {/* Main content - offset by fixed header */}
-      <main style={{ paddingTop: 'var(--stack-h)' }}>
+      <main style={{ paddingTop: 'calc(var(--stack-h) - 8px)' }}>
         <Switch>
         {/* Route for experience detail pages */}
         <Route path="/experiences/:key">
