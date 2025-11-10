@@ -154,8 +154,8 @@
     .title{display:flex;flex-direction:column;line-height:1}
     .title .name{font-weight:800;letter-spacing:.2px}
     .title .loc{font-weight:600;color:var(--muted);font-size:.95rem}
-    .btn{appearance:none;border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;font-family:inherit;font-size:inherit;display:inline-block;line-height:1;vertical-align:middle}
-    .btn.primary{background:var(--brand);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+    .btn{appearance:none;border:none;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;font-family:inherit;font-size:inherit;display:inline-block;line-height:1;vertical-align:middle;text-align:center}
+    .btn.primary{background:var(--brand);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
     .btn.primary:hover{background:var(--brand-2)}
     main{min-height:60vh}
     .card{background:var(--card);border:1px solid #eee;border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
@@ -398,12 +398,8 @@
         </span>
       </a>
       <div style="display: flex; gap: 10px; align-items: center;">
-        <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back">
-          <span id="t-back">Back</span>
-        </button>
-        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" data-testid="button-home">
-          <span id="t-home">Home</span>
-        </a>
+        <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back"><span id="t-back">Back</span></button>
+        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" data-testid="button-home"><span id="t-home">Home</span></a>
       </div>
     </div>
   </header>
