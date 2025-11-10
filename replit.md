@@ -28,11 +28,15 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - Wait for explicit user confirmation before testing
 
 ## Recent Changes
-- **2025-11-10**: Portuguese translation bug fix - Experience badges now show correct Portuguese translations
-  - **Root Cause**: Async loading race condition in L10N cache - `localizeExperiences` mapped `pt-BR` to `langKey="pt-PT"` but cache only had `pt-BR` entry
-  - **Solution**: Implemented locale alias system in `loadTranslation.js` - when loading `pt-BR`, cache is populated for both `pt-BR` AND `pt-PT`
-  - **Files Modified**: `WebsiteProject/src/i18n/loadTranslation.js` (added LOCALE_ALIASES map and bidirectional cache population)
-  - **Result**: All 17 languages now working correctly, Portuguese (pt-PT and pt-BR) display proper translations
+- **2025-11-10**: Translation system fixes - Portuguese badges + Experience alignment
+  - **Issue 1 - Portuguese Badge Translations**: Experience badges showed English instead of Portuguese
+    - **Root Cause**: Async loading race condition - `localizeExperiences` mapped `pt-BR` to `langKey="pt-PT"` but cache only had `pt-BR` entry
+    - **Solution**: Implemented locale alias system in `loadTranslation.js` - when loading `pt-BR`, cache populates for both `pt-BR` AND `pt-PT`
+  - **Issue 2 - Experience Misalignment**: Switching EN → PT → EN caused layout misalignment
+    - **Root Cause**: Only English files (en-GB, en-US) lacked `L10N` export while all 15 other languages had it
+    - **Solution**: Added complete `L10N` export (units + experiences) to both English translation files
+  - **Files Modified**: `WebsiteProject/src/i18n/loadTranslation.js`, `WebsiteProject/src/i18n/langs/en-GB.js`, `WebsiteProject/src/i18n/langs/en-US.js`
+  - **Result**: All 17 languages now have consistent structure, proper translations, and aligned layout across all language switches
 - **2025-11-09**: Mobile Core Web Vitals optimization completed - CLS < 0.1 ✅
   - **CLS Fix (0.111 → <0.1)**: Removed header recalculation on font load that caused 4 layout shifts
     - Single recalc on DOMContentLoaded ensures proper rendering
