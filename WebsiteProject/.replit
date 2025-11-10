@@ -6,7 +6,7 @@ channel = "stable-24_05"
 
 [deployment]
 deploymentTarget = "autoscale"
-build = ["echo", "No build needed"]
+build = ["npm", "install"]
 run = ["npx", "tsx", "server.ts"]
 [[deployment.ports]]
 localPort = 3003
