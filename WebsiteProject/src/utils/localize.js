@@ -45,7 +45,6 @@ export function localizeExperiences(lang) {
     lang;  // For sv, pl, ru, sw, zu that don't have region codes
   
   const L10N = getL10N(langKey) || getL10N('en-GB');
-  console.log('[DEBUG] localizeExperiences:', { lang, langKey, hasL10N: !!L10N, hasExperiences: !!L10N?.experiences });
   const tr = L10N?.experiences || {};
   return EXP_BASE.map((e) => ({
     ...e,
