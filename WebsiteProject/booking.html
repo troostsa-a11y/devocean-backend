@@ -397,7 +397,14 @@
           <span class="loc">Ponta do Ouro • Mozambique</span>
         </span>
       </a>
-      <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com">Home</a>
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button id="backBtn" class="btn primary" onclick="window.history.back()" data-testid="button-back" style="display: none;">
+          ← <span id="t-back">Back</span>
+        </button>
+        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" data-testid="button-home">
+          <span id="t-home">Home</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -551,6 +558,7 @@
       en:{title:"Book your stay – DEVOCEAN Lodge",
           desc:"Direct booking page for DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Best rates, instant confirmation.",
           home:"Home",
+          back:"Back",
           h1:"Book direct for the best value",
           p1:"Secure your stay at our eco-lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.",
           note:"Fill in your dates below to check availability and book.",
@@ -562,6 +570,7 @@
       de:{title:"Buchen Sie Ihren Aufenthalt – DEVOCEAN Lodge",
           desc:"Direkte Buchungsseite der DEVOCEAN Lodge in Ponta do Ouro, Mosambik. Beste Preise, sofortige Bestätigung.",
           home:"Startseite",
+          back:"Zurück",
           h1:"Direkt buchen zum besten Preis",
           p1:"Sichern Sie sich Ihren Aufenthalt in unserer Eco-Lodge, nur wenige Minuten vom Strand und dem Maputo-Nationalpark entfernt. Sofortige Bestätigung, transparente Preise und flexible Zimmeroptionen.",
           note:"Geben Sie unten Ihre Reisedaten ein, um die Verfügbarkeit zu prüfen und zu buchen.",
@@ -573,6 +582,7 @@
       es:{title:"Reserve su estancia – DEVOCEAN Lodge",
           desc:"Página de reserva directa de DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Mejores precios, confirmación inmediata.",
           home:"Inicio",
+          back:"Atrás",
           h1:"Reserva directa al mejor precio",
           p1:"Asegura tu estancia en nuestro eco-lodge, a pocos minutos de la playa y del Parque Nacional de Maputo. Confirmación instantánea, tarifas transparentes y opciones de alojamiento flexibles.",
           note:"Introduce tus fechas a continuación para comprobar la disponibilidad y reservar.",
@@ -584,6 +594,7 @@
       fr:{title:"Réservez votre séjour – DEVOCEAN Lodge",
           desc:"Page de réservation directe de la DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Meilleurs tarifs, confirmation immédiate.",
           home:"Accueil",
+          back:"Retour",
           h1:"Réservez en direct au meilleur tarif",
           p1:"Assurez votre séjour dans notre éco-lodge, à quelques minutes de la plage et du parc national de Maputo. Confirmation instantanée, tarifs transparents et options d’hébergement flexibles.",
           note:"Saisissez vos dates ci-dessous pour vérifier la disponibilité et réserver.",
@@ -595,6 +606,7 @@
       it:{title:"Prenota il tuo soggiorno – DEVOCEAN Lodge",
           desc:"Pagina di prenotazione diretta della DEVOCEAN Lodge, Ponta do Ouro, Mozambico. Migliori tariffe, conferma immediata.",
           home:"Home",
+          back:"Indietro",
           h1:"Prenota direttamente al miglior prezzo",
           p1:"Assicurati il tuo soggiorno nel nostro eco-lodge, a pochi minuti dalla spiaggia e dal Parco Nazionale di Maputo. Conferma immediata, tariffe trasparenti e opzioni di alloggio flessibili.",
           note:"Inserisci le tue date qui sotto per verificare la disponibilità e prenotare.",
@@ -606,6 +618,7 @@
       nl:{title:"Boek uw verblijf – DEVOCEAN Lodge",
           desc:"Directe boekingspagina van DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Beste prijzen, directe bevestiging.",
           home:"Home",
+          back:"Terug",
           h1:"Boek direct voor de beste prijs",
           p1:"Reserveer uw verblijf in onze eco-lodge, op slechts enkele minuten van het strand en het Maputo Nationaal Park. Directe bevestiging, transparante tarieven en flexibele kameropties.",
           note:"Vul hieronder uw data in om beschikbaarheid te controleren en te reserveren.",
@@ -617,6 +630,7 @@
       pt:{title:"Reserve a sua estadia – DEVOCEAN Lodge",
           desc:"Página de reserva direta da DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Melhores tarifas, confirmação imediata.",
           home:"Início",
+          back:"Voltar",
           h1:"Reserve diretamente pelo melhor preço",
           p1:"Garanta a sua estadia no nosso eco-lodge, a poucos minutos da praia e do Parque Nacional de Maputo. Confirmação imediata, tarifas transparentes e opções de acomodação flexíveis.",
           note:"Insira as suas datas abaixo para verificar a disponibilidade e fazer a reserva.",
@@ -628,6 +642,7 @@
       ru:{title:"Забронируйте проживание – DEVOCEAN Lodge",
           desc:"Страница прямого бронирования DEVOCEAN Lodge (Понта-ду-Ору, Мозамбик). Лучшие цены, мгновенное подтверждение.",
           home:"Главная",
+          back:"Назад",
           h1:"Бронируйте напрямую по лучшей цене",
           p1:"Забронируйте проживание в нашем эко-лодже всего в нескольких минутах от пляжа и национального парка Мапуту. Мгновенное подтверждение, прозрачные тарифы и гибкие варианты размещения.",
           note:"Введите даты ниже, чтобы проверить наличие и оформить бронирование.",
@@ -639,6 +654,7 @@
       zh:{title:"预订您的住宿 – DEVOCEAN Lodge",
           desc:"DEVOCEAN Lodge（莫桑比克蓬塔杜奥鲁）官方直订页面。最优价格，即时确认。",
           home:"首页",
+          back:"返回",
           h1:"直接预订，享受最优惠价格",
           p1:"在我们的生态旅馆预订住宿，距离海滩和马普托国家公园仅几分钟路程。即时确认，价格透明，房型灵活可选。",
           note:"请输入您的日期以查看空房并完成预订。",
@@ -650,6 +666,7 @@
       sv:{title:"Boka din vistelse – DEVOCEAN Lodge",
           desc:"Direktbokningssida för DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Bästa priser, omedelbar bekräftelse.",
           home:"Hem",
+          back:"Tillbaka",
           h1:"Boka direkt för bästa pris",
           p1:"Säkra din vistelse på vår ekologiska lodge, bara några minuter från stranden och Maputo nationalpark. Omedelbar bekräftelse, transparenta priser och flexibla rumsalternativ.",
           note:"Fyll i dina datum nedan för att kontrollera tillgänglighet och boka.",
@@ -661,6 +678,7 @@
       ja:{title:"ご宿泊予約 – DEVOCEAN Lodge",
           desc:"DEVOCEAN Lodge（モザンビーク・ポンタ・ド・オウロ）の公式直予約ページ。最安値・即時確認。",
           home:"ホーム",
+          back:"戻る",
           h1:"ベストプライスで直接予約",
           p1:"ビーチやマプト国立公園から数分の当エコロッジで快適な滞在を。即時確認、透明な料金、柔軟な客室オプションをご用意しています。",
           note:"下の欄に日付を入力して、空室状況を確認・予約してください。",
@@ -672,6 +690,7 @@
       pl:{title:"Zarezerwuj swój pobyt – DEVOCEAN Lodge",
           desc:"Strona rezerwacji bezpośredniej DEVOCEAN Lodge, Ponta do Ouro, Mozambik. Najlepsze ceny, natychmiastowe potwierdzenie.",
           home:"Strona główna",
+          back:"Wstecz",
           h1:"Rezerwuj bezpośrednio po najlepszej cenie",
           p1:"Zapewnij sobie pobyt w naszym eko-lodgeu, zaledwie kilka minut od plaży i Parku Narodowego Maputo. Natychmiastowe potwierdzenie, przejrzyste ceny i elastyczne opcje pokoi.",
           note:"Wprowadź swoje daty poniżej, aby sprawdzić dostępność i zarezerwować.",
@@ -683,6 +702,7 @@
       af:{title:"Bespreek jou verblyf – DEVOCEAN Lodge",
           desc:"Direkte besprekingsbladsy vir DEVOCEAN Lodge, Ponta do Ouro, Mosambiek. Beste pryse, onmiddellike bevestiging.",
           home:"Tuis",
+          back:"Terug",
           h1:"Bespreek direk vir die beste prys",
           p1:"Verseker jou verblyf in ons eko-lodge, net 'n paar minute vanaf die strand en Maputo Nasionale Park. Onmiddellike bevestiging, deursigtige tariewe en buigsame kameropties.",
           note:"Vul jou datums hieronder in om beskikbaarheid te kontroleer en te bespreek.",
@@ -694,6 +714,7 @@
       zu:{title:"Bhukha ukuhlala kwakho – DEVOCEAN Lodge",
           desc:"Ikhasi lokuphatha okuqondile le-DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Amanani amahle, isiqinisekiso esisheshayo.",
           home:"Ikhaya",
+          back:"Emuva",
           h1:"Bhukha ngqo ngenani elihle",
           p1:"Qinisekisa ukuhlala kwakho e-eco-lodge yethu, imizuzu embalwa ukusuka ogwini nasePaki ye-Maputo National. Isiqinisekiso esisheshayo, amanani acace kahle kanye nezinketho zezindlu eziguquguqukayo.",
           note:"Faka izinsuku zakho ngezansi ukuze uhlole ukutholakala futhi ubhukhe.",
@@ -705,6 +726,7 @@
       sw:{title:"Weka nafasi yako ya kukaa – DEVOCEAN Lodge",
           desc:"Ukurasa wa kuweka nafasi moja kwa moja wa DEVOCEAN Lodge, Ponta do Ouro, Msumbiji. Bei bora, uthibitisho wa haraka.",
           home:"Nyumbani",
+          back:"Rudi",
           h1:"Weka nafasi moja kwa moja kwa bei bora",
           p1:"Hakikisha kukaa kwako katika lodge yetu inayofaa na mazingira, dakika chache kutoka ufukweni na Hifadhi ya Taifa ya Maputo. Uthibitisho wa haraka, bei wazi na chaguo za vyumba vinavyobadilika.",
           note:"Weka tarehe zako hapa chini kuangalia upatikanaji na kuweka nafasi.",
