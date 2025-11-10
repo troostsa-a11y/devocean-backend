@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import nodemailer, { type Transporter } from 'nodemailer';
 import { DatabaseService } from './database';
 import type { Booking } from '../../shared/schema';
 
@@ -24,7 +24,7 @@ interface TaxiCompanyConfig {
 }
 
 export class TransferNotificationService {
-  private transporter: nodemailer.Transporter;
+  private transporter: Transporter;
   private db: DatabaseService;
   private taxiConfig: TaxiCompanyConfig;
   private fromEmail: string;
