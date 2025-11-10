@@ -28,6 +28,13 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - Wait for explicit user confirmation before testing
 
 ## Recent Changes
+- **2025-11-10**: Currency converter upgrade - Replaced Beds24 converter with fx-rate.net + auto-detection
+  - **Implementation**: Integrated fx-rate.net calculator with automatic visitor currency detection
+  - **Dolphins Page**: Currency converter link autofills with visitor's detected currency (USD → visitor's currency)
+  - **Booking Page**: Added currency converter link with same auto-detection (17-language translations included)
+  - **User Experience**: Visitors see instant USD-to-their-currency conversion without manual input
+  - **Files Modified**: `WebsiteProject/src/components/ExperienceDetailPage.jsx`, `WebsiteProject/booking.html`
+  - **Result**: Seamless currency conversion experience - one click shows prices in visitor's local currency
 - **2025-11-10**: Translation system fixes - Portuguese badges + Experience alignment
   - **Issue 1 - Portuguese Badge Translations**: Experience badges showed English instead of Portuguese
     - **Root Cause**: Async loading race condition - `localizeExperiences` mapped `pt-BR` to `langKey="pt-PT"` but cache only had `pt-BR` entry

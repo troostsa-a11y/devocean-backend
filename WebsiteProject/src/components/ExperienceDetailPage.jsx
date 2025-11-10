@@ -397,7 +397,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                     <p className="text-sm text-slate-500 mt-2">
                       <strong>{getExpText('note', lang)}</strong> {getExpText('priceNote', lang)}{' '}
                       <a 
-                        href="https://fx-rate.net/calculator/" 
+                        href={`https://fx-rate.net/calculator/?c_input=USD&cp_input=${currency || 'USD'}`}
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="inline-flex items-center text-[#9e4b13] hover:text-[#8a4211] font-semibold underline"
