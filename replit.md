@@ -57,7 +57,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 
 **Automailer (Replit Workspace):**
 - ✅ Runs in workspace 24/7 via "Start application" workflow
-- ✅ IMAP checks 3x daily (08:00, 14:00, 20:00 CAT)
+- ✅ IMAP checks every 30 minutes (at :00 and :30 of every hour)
 - ✅ Processes Beds24 booking notifications
 - ✅ Sends automated booking emails (post-booking, pre-arrival, arrival, post-departure)
 - ✅ Cost: FREE (included in workspace plan)

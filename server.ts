@@ -123,7 +123,7 @@ if (validateEnvironment()) {
     // Start the automated email checking
     emailService.start();
     console.log('✅ Email automation service started successfully');
-    console.log('📧 Checking emails at 08:00, 14:00, 20:00 CAT daily');
+    console.log('📧 Checking emails every 30 minutes (at :00 and :30 of every hour)');
   } catch (error) {
     console.error('❌ Failed to initialize email automation service:', error);
     process.exit(1);
