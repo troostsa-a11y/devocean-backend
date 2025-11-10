@@ -89,12 +89,6 @@ export class TransferNotificationService {
 
       console.log(`✅ Transfer notification sent to ${this.taxiConfig.name} for booking ${booking.groupRef}`);
 
-      // TODO: If WhatsApp number is configured, send WhatsApp notification
-      // This would require Twilio integration
-      if (this.taxiConfig.whatsapp) {
-        console.log(`ℹ️ WhatsApp notification to ${this.taxiConfig.whatsapp} not yet implemented`);
-      }
-
       return true;
     } catch (error) {
       console.error('Error sending transfer notification:', error);

@@ -74,8 +74,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 
 ### Backend
 - **Server:** Express.js automailer server runs in Replit workspace (port 3003, internal only).
-- **Storage:** In-memory storage (`MemStorage`) as a placeholder.
-- **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas.
+- **Storage:** In-memory storage (`MemStorage`) for automailer booking state management.
+- **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas (used by automailer for booking data persistence).
 - **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP, sending multi-language automated emails via SMTP scheduled in CAT/UTC+2.
 - **Contact Forms:** Standalone Cloudflare Workers using MailChannels API with header injection prevention (`sanitizeHeader()`), reCAPTCHA v3 with action validation, HTML escaping, and localized auto-reply emails.
 - **Email Form Protocol:** All new forms MUST use standalone Cloudflare Workers with MailChannels. This protocol mandates header injection prevention (`sanitizeHeader()`), message sanitization (`sanitizeMessage()`), reCAPTCHA v3 verification with action-specific tokens, and HTML escaping of user inputs.
