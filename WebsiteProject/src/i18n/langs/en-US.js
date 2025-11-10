@@ -71,4 +71,65 @@ menu: "Menu",
     }
 };
 
+export const L10N = {
+  units: {
+    safari: {
+      title: "Safari Tent",
+      short: "12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      details: [
+        "Two single beds (or King) with pedestals and shaded lamps",
+        "Mosquito mesh on doors/windows • strong fan • power points",
+        "Small shelving unit for clothing/essentials",
+        "Private terrace with rolled palm-leaf chairs facing the tropical garden",
+        "Shared bathrooms (ladies/gents): 2 hot/cold showers & 2 toilets each",
+        "Village can be lively during holidays; free earplugs at reception",
+      ],
+    },
+    comfort: {
+      title: "Comfort Tent",
+      short: "Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
+      details: [
+        "Twin/King bed setup • lamps • convenient light switches",
+        "Mosquito mesh • strong fan • power points",
+        "Private wood terrace with rolled palm-leaf chairs",
+        "At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
+        "Village liveliness during peak/holidays; earplugs available",
+      ],
+    },
+    cottage: {
+      title: "Garden Cottage",
+      short: "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      details: [
+        "Roman-tiled roof, high white ceiling with dark wood beams",
+        "Terracotta floor, warm wheatfields-painted walls",
+        "Queen bed • working desk with shaded lamp • dining table with chairs",
+        "Suitcase shelves, clothes rack and extra shelving",
+        "Inverter A/C (cool & heat) • dimmable main light",
+        "Private bath in grass-thatched roundavel (shower, sink, toilet)",
+        "Private wooden terrace with camping chairs and side table",
+      ],
+    },
+    chalet: {
+      title: "Thatched Chalet",
+      short: "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      details: [
+        "Grass-thatched roof on bluegum poles • autumn-slate floor",
+        "Wheatfields-painted walls • tranquil, shaded setting",
+        "Dinner table with chairs • air conditioning",
+        "Private bathroom (shower, sink, toilet)",
+        "Two singles or King with pedestals • private terrace with palm-leaf chairs",
+      ],
+    },
+  },
+  experiences: {
+    diving: { title: "Scuba Diving", desc: "Offshore reefs with rich marine life." },
+    dolphins: { title: "Dolphin Swim", desc: "Ethical encounters with resident dolphins." },
+    lighthouse: { title: "Lighthouse Walk", desc: "Hike the hill to the old lighthouse for sweeping views." },
+    seafari: { title: "Seafaris", desc: "Ocean safaris for whales (May–Oct) & more." },
+    safari: { title: "Game Safaris", desc: "Bush adventures a short drive away." },
+    fishing: { title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore." },
+    surfing: { title: "Surf Boards & Lessons", desc: "Catch a wave or learn the basics." },
+  },
+};
+
 export default UI;
