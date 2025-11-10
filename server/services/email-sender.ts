@@ -46,7 +46,7 @@ export class EmailSenderService {
     try {
       // Safety check: Verify booking isn't cancelled before sending
       // Also enrich templateData with fresh firstName and gender from booking
-      let enrichedTemplateData = scheduledEmail.templateData || {};
+      let enrichedTemplateData: Record<string, any> = scheduledEmail.templateData || {};
       
       if (scheduledEmail.bookingId) {
         const booking = await this.db.getBookingById(scheduledEmail.bookingId);
