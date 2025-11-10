@@ -8,3 +8,6 @@ channel = "stable-24_05"
 deploymentTarget = "autoscale"
 build = ["echo", "No build needed"]
 run = ["node", "production.js"]
+[[deployment.ports]]
+localPort = 3003
+externalPort = 80
