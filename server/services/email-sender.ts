@@ -19,7 +19,7 @@ interface SMTPConfig {
 }
 
 export class EmailSenderService {
-  private transporter: nodemailer.Transporter;
+  private transporter: ReturnType<typeof nodemailer.createTransport>;
   private db: DatabaseService;
   private fromEmail: string;
   private fromName: string;
