@@ -185,8 +185,10 @@ app.get('/', (req, res) => {
       },
     },
     schedule: {
-      frequency: '3 times daily',
-      times: ['08:00 CAT', '14:00 CAT', '20:00 CAT'],
+      emailChecks: 'Every 30 minutes at :00 and :30',
+      emailSending: 'Every 30 minutes at :15 and :45',
+      dailyReports: '14:00 CAT (12:00 UTC)',
+      weeklyReports: '08:00 CAT Monday (06:00 UTC Monday)',
     },
     emailTypes: [
       {
