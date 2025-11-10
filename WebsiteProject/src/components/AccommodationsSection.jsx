@@ -1,4 +1,3 @@
-import { ChevronDown } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 export default function AccommodationsSection({ units, ui, bookUrl, lang, currency }) {
@@ -63,15 +62,18 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
               <div className="p-4">
                 <h3 className="font-semibold text-lg">{u.title}</h3>
                 <p className="mt-1 text-sm text-slate-600">{u.short}</p>
-                <details className="mt-3 group">
-                  <summary className="list-none flex items-center gap-1 text-sm text-[#9e4b13] cursor-pointer">
-                    <ChevronDown size={16} className="transition-transform group-open:rotate-180" />
+                {detailPageUrl && (
+                  <a 
+                    href={detailPageUrl}
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-[#9e4b13] hover:text-[#8a4211] font-semibold transition-colors"
+                    data-testid={`link-details-${u.key}`}
+                  >
                     <span>{ui.stay.moreDetails}</span>
-                  </summary>
-                  <ul className="mt-2 text-sm text-slate-700 space-y-1 list-disc list-inside">
-                    {u.details.map((d, i) => <li key={i}>{d}</li>)}
-                  </ul>
-                </details>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                )}
               </div>
             </div>
           );
