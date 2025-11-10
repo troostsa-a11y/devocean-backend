@@ -224,7 +224,7 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log('🌊 DEVOCEAN Lodge Email Automation Server');
   console.log(`${'='.repeat(60)}`);
   console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
-  console.log(`📅 Email checks scheduled for 08:00, 14:00, 20:00 CAT`);
+  console.log(`📅 Email checks every 30 min (at :00 and :30), sends at :15 and :45`);
   console.log(`📧 Processing Beds24 booking notifications automatically`);
   console.log(`${'='.repeat(60)}\n`);
 });
