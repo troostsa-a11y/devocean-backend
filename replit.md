@@ -33,6 +33,15 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
   - This prevents misunderstandings and unwanted changes that cause frustration
 
 ## Recent Changes
+- **2025-11-10**: Email system consolidated to SMTP - Unified all email sending under single SMTP system
+  - **Implementation**: Created Express API endpoints (`/api/contact`, `/api/experience-inquiry`) using nodemailer SMTP
+  - **Security**: Implemented `sanitizeHeader()` to prevent email header injection (removes CR/LF from name, email, phone fields)
+  - **reCAPTCHA**: Centralized verification with `RecaptchaVerifier` class, action-specific validation (contact_form, experience_inquiry)
+  - **Architecture**: Cloudflare Functions proxy requests to Express server (port 3003)
+  - **Files Created**: `server/utils/recaptcha.ts`, `server/routes/contact.ts`
+  - **Files Modified**: `server.ts`, `WebsiteProject/functions/api/contact.js`, `WebsiteProject/functions/api/experience-inquiry.js`
+  - **Production**: Requires `EMAIL_API_URL` environment variable in Cloudflare pointing to Replit server
+  - **Result**: Single SMTP system for all emails (contact form, experience inquiries, booking automation)
 - **2025-11-10**: Currency converter upgrade - Replaced Beds24 converter with fx-rate.net + auto-detection
   - **Implementation**: Integrated fx-rate.net calculator with automatic visitor currency detection
   - **Dolphins Page**: Currency converter link autofills with visitor's detected currency (USD → visitor's currency)
@@ -89,11 +98,12 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **Form Translation:** Inline functions within `ExperienceInquiryForm.jsx` provide form-specific text with three-tier language fallback.
 
 ### Backend
-- **Server:** Express.js for HTTP server, API routing (Contact form, reCAPTCHA validation).
+- **Server:** Express.js for HTTP server, API routing (Contact form, experience inquiry, reCAPTCHA validation).
 - **Storage:** In-memory storage (`MemStorage`) as a placeholder.
 - **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas.
-- **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP. Sends multi-language automated emails using Resend API. Emails are scheduled in Central African Time (CAT/UTC+2) for post-booking, pre-arrival, arrival, and post-departure. Handles modifications by re-processing updated booking data.
-- **Contact Form:** Dual-environment setup (Express.js for dev, Cloudflare Pages Function for prod) with security features (input sanitization, reCAPTCHA v3, HTML escaping) and localized auto-reply emails.
+- **Email System (Unified SMTP):** All emails sent via nodemailer SMTP through Express server (port 3003). Includes contact form auto-replies, experience inquiry forwarding, and Beds24 booking automation.
+- **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP. Sends multi-language automated emails using SMTP. Emails are scheduled in Central African Time (CAT/UTC+2) for post-booking, pre-arrival, arrival, and post-departure. Handles modifications by re-processing updated booking data.
+- **Contact Forms:** Dual-environment setup (Express.js for dev, Cloudflare Pages Function for prod) with security features (header injection prevention via `sanitizeHeader()`, reCAPTCHA v3 with action validation, HTML escaping) and localized auto-reply emails.
 
 ### Project Structure
 - **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
@@ -111,7 +121,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **Booking:** Beds24 booking engine (propid=297012).
 - **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
-- **Email:** Resend API for transactional emails, IMAP for booking notification parsing.
+- **Email:** SMTP via nodemailer for all transactional emails, IMAP for booking notification parsing.
 - **SEO:** IndexNow protocol via Cloudflare Pages Functions.
 
 ### NPM Packages
