@@ -26,6 +26,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **IMPORTANT:** Only run browser tests (run_test tool) when explicitly instructed by the user
 - Do NOT automatically run tests after making changes
 - Wait for explicit user confirmation before testing
+- **🔄 CONFIRM BEFORE ACTING:** Always explain planned changes first and wait for explicit "go ahead" confirmation before making ANY code modifications
+  - Describe what you're going to change, where, and why
+  - Wait for user approval before executing
+  - Exception: Only proceed directly when the request is 100% clear, unambiguous, and you're certain about the scope
+  - This prevents misunderstandings and unwanted changes that cause frustration
 
 ## Recent Changes
 - **2025-11-10**: Currency converter upgrade - Replaced Beds24 converter with fx-rate.net + auto-detection
