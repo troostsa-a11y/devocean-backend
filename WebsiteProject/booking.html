@@ -398,8 +398,8 @@
         </span>
       </a>
       <div style="display: flex; gap: 10px; align-items: center;">
-        <button id="backBtn" class="btn primary" onclick="window.history.back()" data-testid="button-back" style="display: none;">
-          ← <span id="t-back">Back</span>
+        <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back">
+          ↑ <span id="t-back">Back</span>
         </button>
         <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" data-testid="button-home">
           <span id="t-home">Home</span>
@@ -752,7 +752,7 @@
       if (md) md.setAttribute('content', TT.desc);
 
       function fill(){
-        const ids = ["t-h1","t-p1","t-note","t-badge-head","t-badge-sub","t-secure","t-nofees","t-instant","t-support","homeBtn","t-child-heading","t-child-text"];
+        const ids = ["t-h1","t-p1","t-note","t-badge-head","t-badge-sub","t-secure","t-nofees","t-instant","t-support","homeBtn","t-child-heading","t-child-text","t-back","t-home"];
         if (ids.some(id => !document.getElementById(id))) return false;
         
         document.getElementById("t-h1").textContent = TT.h1;
@@ -766,9 +766,10 @@
         document.getElementById("t-support").textContent = TT.support;
         document.getElementById("t-child-heading").textContent = TT.childHeading;
         document.getElementById("t-child-text").textContent = TT.childText;
+        document.getElementById("t-back").textContent = TT.back;
+        document.getElementById("t-home").textContent = TT.home;
         const hb = document.getElementById("homeBtn"); 
         if (hb) {
-          hb.textContent = TT.home;
           // Update home button to preserve language
           hb.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
         }
