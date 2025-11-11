@@ -99,7 +99,16 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const { name, email, phone, message, lang, recaptcha_token } = await request.json();
+    const { name, email, phone, message, lang, recaptcha_token, website, checkin_iso, checkout_iso, unit, currency } = await request.json();
+
+    // Honeypot protection: reject if "website" field is filled (bots fill hidden fields)
+    if (website && website.trim() !== '') {
+      console.log('⚠️ Honeypot triggered - potential spam submission');
+      return new Response(JSON.stringify({ error: 'Spam detected' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     // Verify reCAPTCHA (action must match frontend: contact_form)
     const verification = await verifyRecaptcha(recaptcha_token, 'contact_form', env.RECAPTCHA_SECRET_KEY);
@@ -118,12 +127,21 @@ export async function onRequestPost(context) {
       });
     }
 
+    // Get sender's IP address from Cloudflare headers
+    const senderIP = request.headers.get('CF-Connecting-IP') || 
+                     request.headers.get('X-Forwarded-For')?.split(',')[0] || 
+                     'Unknown';
+
     // Sanitize inputs (header fields must remove CR/LF to prevent header injection)
     const sanitizedName = sanitizeHeader(name).slice(0, 100);
     const sanitizedEmail = sanitizeHeader(email).slice(0, 100);
     const sanitizedPhone = phone ? sanitizeHeader(phone).slice(0, 30) : '';
     const sanitizedMessage = sanitizeMessage(message).slice(0, 2000);
     const sanitizedLang = sanitizeHeader(lang || 'en').slice(0, 10);
+    const sanitizedCheckin = checkin_iso ? sanitizeHeader(checkin_iso).slice(0, 10) : '';
+    const sanitizedCheckout = checkout_iso ? sanitizeHeader(checkout_iso).slice(0, 10) : '';
+    const sanitizedUnit = unit ? sanitizeHeader(unit).slice(0, 100) : '';
+    const sanitizedCurrency = currency ? sanitizeHeader(currency).slice(0, 10) : '';
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -134,6 +152,17 @@ export async function onRequestPost(context) {
       });
     }
 
+    // Format dates for display (ISO format: YYYY-MM-DD → readable format)
+    const formatDate = (isoDate) => {
+      if (!isoDate) return '';
+      try {
+        const date = new Date(isoDate);
+        return date.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      } catch {
+        return isoDate;
+      }
+    };
+
     // Email to lodge
     const lodgeEmailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -142,6 +171,18 @@ export async function onRequestPost(context) {
           <p><strong>Name:</strong> ${escapeHtml(sanitizedName)}</p>
           <p><strong>Email:</strong> ${escapeHtml(sanitizedEmail)}</p>
           ${sanitizedPhone ? `<p><strong>Phone:</strong> ${escapeHtml(sanitizedPhone)}</p>` : ''}
+          <p><strong>IP Address:</strong> ${escapeHtml(senderIP)}</p>
+          
+          ${sanitizedCheckin || sanitizedCheckout || sanitizedUnit || sanitizedCurrency ? `
+          <hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">
+          <p style="margin-bottom: 10px;"><strong>Stay Details:</strong></p>
+          ${sanitizedCheckin ? `<p style="margin: 5px 0;">• <strong>Check-in:</strong> ${escapeHtml(formatDate(sanitizedCheckin))}</p>` : ''}
+          ${sanitizedCheckout ? `<p style="margin: 5px 0;">• <strong>Check-out:</strong> ${escapeHtml(formatDate(sanitizedCheckout))}</p>` : ''}
+          ${sanitizedUnit ? `<p style="margin: 5px 0;">• <strong>Unit Preference:</strong> ${escapeHtml(sanitizedUnit)}</p>` : ''}
+          ${sanitizedCurrency ? `<p style="margin: 5px 0;">• <strong>Currency:</strong> ${escapeHtml(sanitizedCurrency)}</p>` : ''}
+          <hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">
+          ` : ''}
+          
           <p><strong>Message:</strong></p>
           <p style="white-space: pre-wrap;">${escapeHtml(sanitizedMessage)}</p>
         </div>
@@ -168,7 +209,7 @@ export async function onRequestPost(context) {
     await sendEmail('reservations@devoceanlodge.com', sanitizedEmail,
       autoReplySubjects[sanitizedLang] || autoReplySubjects.en, autoReplyHtml, env.RESEND_API_KEY, 'reservations@devoceanlodge.com');
 
-    console.log(`✅ Contact form submission from ${sanitizedName} (${sanitizedEmail})`);
+    console.log(`✅ Contact form submission from ${sanitizedName} (${sanitizedEmail}) - IP: ${senderIP}${sanitizedCheckin ? ` - Dates: ${sanitizedCheckin} to ${sanitizedCheckout}` : ''}`);
     
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
