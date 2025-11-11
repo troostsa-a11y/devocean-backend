@@ -33,6 +33,14 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
   - This prevents misunderstandings and unwanted changes that cause frustration
 
 ## Recent Changes
+- **2025-11-11**: Restored Resend for Contact Forms - Fixed 500 errors after MailChannels shutdown
+  - **Problem**: Contact forms returning "internal server error" on production
+  - **Root Cause**: MailChannels shut down free email service in June 2024 - API no longer works
+  - **Solution**: Restored Resend API implementation (already configured in workspace)
+  - **CRITICAL NOTE**: ⚠️ NEVER use MailChannels - service is permanently discontinued. Always use Resend API for contact forms.
+  - **Files Modified**: `WebsiteProject/functions/api/contact.js`, `WebsiteProject/functions/api/experience-inquiry.js`
+  - **Environment Variables Required**: `RESEND_API_KEY` (Cloudflare Pages + Replit), `RECAPTCHA_SECRET_KEY`
+  - **Result**: Contact forms fully functional with Resend API
 - **2025-11-11**: SPA Routing Fix - Resolved 404 errors on page refresh
   - **Problem**: Refreshing `/experiences/dolphins` (and other SPA routes) returned 404 error
   - **Root Cause**: Cloudflare Pages disables auto SPA fallback when `404.html` exists
