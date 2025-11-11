@@ -181,12 +181,29 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    /* === Safe localStorage helpers (prevents crashes in Edge/private mode) === */
+    function safeGetItem(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        return null;
+      }
+    }
+    
+    function safeSetItem(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        // Silent fail - storage unavailable
+      }
+    }
+
     /* === Language detection (accepts ?lang=xx or ?locale=xx) === */
     function detectSiteLanguage(){
       const qs = new URLSearchParams(location.search);
       const urlLang = qs.get('lang') || qs.get('locale');
-      if (urlLang){ localStorage.setItem('selectedLanguage', urlLang); return urlLang; }
-      const saved = localStorage.getItem('selectedLanguage');
+      if (urlLang){ safeSetItem('selectedLanguage', urlLang); return urlLang; }
+      const saved = safeGetItem('selectedLanguage');
       if (saved) return saved;
       return navigator.language || 'en-GB';
     }
