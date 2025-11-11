@@ -508,6 +508,23 @@
 
   <!-- Localization + iframe sync (place at end for robustness with async/defers) -->
   <script>
+    // Safe localStorage helpers (prevents crashes in private/incognito mode and Edge)
+    function safeGetItem(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        return null;
+      }
+    }
+    
+    function safeSetItem(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        // Silent fail - storage unavailable
+      }
+    }
+    
     // 1) Detect language and currency (?lang=xx&currency=XXX -> localStorage -> defaults)
     // CRITICAL: Use same localStorage keys as main site for consistency
     // Main site uses: "site.lang" and "site.currency"
@@ -518,17 +535,17 @@
       
       // Priority 1: URL parameter (store immediately for consistency)
       if (urlLang){ 
-        localStorage.setItem('site.lang', urlLang); 
+        safeSetItem('site.lang', urlLang); 
         return urlLang; 
       }
       
       // Priority 2: Check localStorage (same key as main site)
-      const saved = localStorage.getItem('site.lang');
+      const saved = safeGetItem('site.lang');
       if (saved) return saved;
       
       // Priority 3: Browser language
       const detected = navigator.language || 'en-GB';
-      localStorage.setItem('site.lang', detected);
+      safeSetItem('site.lang', detected);
       return detected;
     }
     
@@ -538,12 +555,12 @@
       
       // Priority 1: URL parameter
       if (urlCur && urlCur.length === 3){ 
-        localStorage.setItem('site.currency', urlCur.toUpperCase()); 
+        safeSetItem('site.currency', urlCur.toUpperCase()); 
         return urlCur.toUpperCase(); 
       }
       
       // Priority 2: localStorage (same key as main site)
-      const saved = localStorage.getItem('site.currency');
+      const saved = safeGetItem('site.currency');
       if (saved) return saved;
       
       // Priority 3: Default
