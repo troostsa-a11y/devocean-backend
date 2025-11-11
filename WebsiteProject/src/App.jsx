@@ -4,6 +4,7 @@ import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
+import { safeLocalStorage, safeSessionStorage } from './utils/safeStorage';
 
 // Critical above-the-fold components (loaded immediately)
 import Header from './components/Header';
@@ -33,8 +34,8 @@ export default function App() {
     }
     
     // Check stored currency to preserve MZN for Mozambican Afrikaans speakers
-    const storedCurrency = localStorage.getItem('site.currency');
-    const storedLang = localStorage.getItem('site.lang');
+    const storedCurrency = safeLocalStorage.getItem('site.currency');
+    const storedLang = safeLocalStorage.getItem('site.lang');
     
     const localeRedirects = {
       '/af-ZA': storedCurrency === 'MZN' ? '/?lang=af&currency=MZN' : '/?lang=af&currency=ZAR', // Preserve currency (MZN or ZAR)
@@ -94,7 +95,7 @@ export default function App() {
 
     // Ensure hero placeholder stays hidden when navigating back to homepage
     const heroPlaceholder = document.getElementById('hero-placeholder');
-    if (heroPlaceholder && (sessionStorage.getItem('devocean-hero-seen') || localStorage.getItem('devocean-hero-seen'))) {
+    if (heroPlaceholder && (safeSessionStorage.getItem('devocean-hero-seen') || safeLocalStorage.getItem('devocean-hero-seen'))) {
       heroPlaceholder.style.display = 'none';
       document.documentElement.classList.remove('hero-active');
     }
