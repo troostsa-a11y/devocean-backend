@@ -159,8 +159,11 @@ export async function onRequestPost(context) {
         <h2 style="color: #9e4b13;">Thank you for contacting us!</h2>
         <p>Dear ${escapeHtml(sanitizedName)},</p>
         <p>We have received your message and will get back to you as soon as possible.</p>
-        <p style="margin-top: 20px;">Best regards,<br/>The DEVOCEAN Lodge Team</p>
-        <p style="color: #666; font-size: 12px; margin-top: 30px;">DEVOCEAN Lodge - Ponta do Ouro, Mozambique<br/>🌐 devoceanlodge.com</p>
+        <p style="margin-top: 20px;">Warm regards,<br/>The DEVOCEAN Lodge Team</p>
+        <div style="padding: 20px; text-align: center; font-size: 12px; color: #666; margin-top: 30px;">
+          <p>DEVOCEAN Lodge | Ponta do Ouro, Mozambique</p>
+          <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+        </div>
       </div>
     `;
 

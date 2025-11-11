@@ -198,8 +198,11 @@ export async function onRequestPost(context) {
           <p><strong>${getLabel('guests')}:</strong> ${escapeHtml(sanitizedGuests)}</p>
         </div>
         <p>${getLabel('lodge_contact')}</p>
-        <p style="margin-top: 20px;">Best regards,<br/>The DEVOCEAN Lodge Team</p>
-        <p style="color: #666; font-size: 12px; margin-top: 30px;">DEVOCEAN Lodge - Ponta do Ouro, Mozambique<br/>🌐 devoceanlodge.com</p>
+        <p style="margin-top: 20px;">Warm regards,<br/>The DEVOCEAN Lodge Team</p>
+        <div style="padding: 20px; text-align: center; font-size: 12px; color: #666; margin-top: 30px;">
+          <p>DEVOCEAN Lodge | Ponta do Ouro, Mozambique</p>
+          <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+        </div>
       </div>
     `;
 
