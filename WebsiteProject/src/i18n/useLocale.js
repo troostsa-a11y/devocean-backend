@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
+import { safeLocalStorage } from '../utils/safeStorage.js';
 
 const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
 const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
@@ -261,8 +262,8 @@ function getCountryCode() {
   
   try {
     // Check cache first (instant return)
-    const cached = localStorage.getItem(CACHE_KEY);
-    const cachedTime = localStorage.getItem(CACHE_TIMESTAMP_KEY);
+    const cached = safeLocalStorage.getItem(CACHE_KEY);
+    const cachedTime = safeLocalStorage.getItem(CACHE_TIMESTAMP_KEY);
     
     if (cached && cachedTime) {
       const age = Date.now() - parseInt(cachedTime, 10);
@@ -275,8 +276,8 @@ function getCountryCode() {
     if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
       const country = window.__CF_COUNTRY__;
       // Update cache
-      localStorage.setItem(CACHE_KEY, country);
-      localStorage.setItem(CACHE_TIMESTAMP_KEY, String(Date.now()));
+      safeLocalStorage.setItem(CACHE_KEY, country);
+      safeLocalStorage.setItem(CACHE_TIMESTAMP_KEY, String(Date.now()));
       return country;
     }
     
@@ -333,8 +334,8 @@ function pickInitialLang() {
   }
 
   // Check if user manually selected language (vs auto-detection)
-  const langSource = localStorage.getItem("site.lang_source");
-  const stored = localStorage.getItem("site.lang");
+  const langSource = safeLocalStorage.getItem("site.lang_source");
+  const stored = safeLocalStorage.getItem("site.lang");
   
   // If user manually selected language, respect their choice (but normalize it)
   if (langSource === "user" && stored) {
@@ -405,8 +406,8 @@ function pickInitialCurrency() {
 
 function pickInitialRegion() {
   // Fast path: Return stored region immediately (no detection)
-  const saved = localStorage.getItem("site.region");
-  const savedVersion = localStorage.getItem("site.region.version");
+  const saved = safeLocalStorage.getItem("site.region");
+  const savedVersion = safeLocalStorage.getItem("site.region.version");
   
   // Version 2: IP-based geolocation (Oct 2024)
   if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "2") {
@@ -521,20 +522,20 @@ export function useLocale() {
     if (urlLang) {
       const normalized = normalizeLangCode(urlLang);
       if (normalized) {
-        localStorage.setItem("site.lang", normalized);
-        localStorage.setItem("site.lang_source", "url");
+        safeLocalStorage.setItem("site.lang", normalized);
+        safeLocalStorage.setItem("site.lang_source", "url");
         return normalized;
       }
     }
     
     // Priority 2: localStorage (MUST normalize in case old short codes are stored)
-    const stored = localStorage.getItem("site.lang");
+    const stored = safeLocalStorage.getItem("site.lang");
     if (stored) {
       const normalized = normalizeLangCode(stored);
       if (normalized) {
         // Update localStorage with normalized value to prevent future issues
         if (normalized !== stored) {
-          localStorage.setItem("site.lang", normalized);
+          safeLocalStorage.setItem("site.lang", normalized);
         }
         return normalized;
       }
@@ -551,21 +552,21 @@ export function useLocale() {
     // URL parameters are ignored to ensure currency always matches visitor's actual location
     const cc = getCountryCode();
     const ipCurrency = pickInitialCurrency(); // Current IP-based currency
-    const storedCurrency = localStorage.getItem("site.currency");
-    const storedCountry = localStorage.getItem("site.currency.country");
+    const storedCurrency = safeLocalStorage.getItem("site.currency");
+    const storedCountry = safeLocalStorage.getItem("site.currency.country");
     
     // If IP country changed, update to new currency
     if (cc && storedCountry && cc !== storedCountry) {
-      localStorage.setItem("site.currency", ipCurrency);
-      localStorage.setItem("site.currency.country", cc);
+      safeLocalStorage.setItem("site.currency", ipCurrency);
+      safeLocalStorage.setItem("site.currency.country", cc);
       return ipCurrency;
     }
     
     // If we have IP currency and it differs from stored, update it
     // This fixes wrong cached currencies (e.g., region defaults like ZAR instead of country currency MZN)
     if (ipCurrency && storedCurrency && ipCurrency !== storedCurrency) {
-      localStorage.setItem("site.currency", ipCurrency);
-      localStorage.setItem("site.currency.country", cc || "unknown");
+      safeLocalStorage.setItem("site.currency", ipCurrency);
+      safeLocalStorage.setItem("site.currency.country", cc || "unknown");
       return ipCurrency;
     }
     
@@ -575,8 +576,8 @@ export function useLocale() {
     }
     
     // Priority 3: Auto-detect from IP
-    localStorage.setItem("site.currency", ipCurrency);
-    localStorage.setItem("site.currency.country", cc || "unknown");
+    safeLocalStorage.setItem("site.currency", ipCurrency);
+    safeLocalStorage.setItem("site.currency.country", cc || "unknown");
     return ipCurrency;
   });
 
@@ -587,7 +588,7 @@ export function useLocale() {
       const normalized = normalizeLangCode(urlLang);
       if (normalized) {
         // Check if existing stored region already supports this language
-        const storedRegion = localStorage.getItem("site.region");
+        const storedRegion = safeLocalStorage.getItem("site.region");
         if (storedRegion && SUPPORTED_REGIONS.includes(storedRegion)) {
           const storedRegionLanguages = LANGUAGE_TO_REGION[storedRegion] || [];
           if (storedRegionLanguages.includes(normalized)) {
@@ -599,17 +600,17 @@ export function useLocale() {
         // Existing region doesn't support this language, find compatible one
         const compatibleRegion = findRegionForLanguage(normalized);
         if (compatibleRegion) {
-          localStorage.setItem("site.region", compatibleRegion);
-          localStorage.setItem("site.region.version", "2");
-          localStorage.setItem("site.region.source", "auto"); // Auto-set based on language
+          safeLocalStorage.setItem("site.region", compatibleRegion);
+          safeLocalStorage.setItem("site.region.version", "2");
+          safeLocalStorage.setItem("site.region.source", "auto"); // Auto-set based on language
           return compatibleRegion;
         }
       }
     }
     
     // Only trust localStorage if it has the correct version (IP-based)
-    const stored = localStorage.getItem("site.region");
-    const version = localStorage.getItem("site.region.version");
+    const stored = safeLocalStorage.getItem("site.region");
+    const version = safeLocalStorage.getItem("site.region.version");
     
     if (stored && SUPPORTED_REGIONS.includes(stored) && version === "2") {
       return stored;
@@ -617,8 +618,8 @@ export function useLocale() {
     
     // Clear old cached value and detect fresh
     if (stored && version !== "2") {
-      localStorage.removeItem("site.region");
-      localStorage.removeItem("site.region.version");
+      safeLocalStorage.removeItem("site.region");
+      safeLocalStorage.removeItem("site.region.version");
     }
     
     return pickInitialRegion();
@@ -637,7 +638,7 @@ export function useLocale() {
 
   // Ensure region is compatible with current language
   useEffect(() => {
-    const regionSource = localStorage.getItem("site.region.source");
+    const regionSource = safeLocalStorage.getItem("site.region.source");
     
     // Only auto-adjust region if it wasn't manually selected by user
     if (regionSource === "user") {
@@ -651,9 +652,9 @@ export function useLocale() {
       const compatibleRegion = findRegionForLanguage(lang);
       if (compatibleRegion && compatibleRegion !== region) {
         setRegionState(compatibleRegion);
-        localStorage.setItem("site.region", compatibleRegion);
-        localStorage.setItem("site.region.version", "2");
-        localStorage.setItem("site.region.source", "auto");
+        safeLocalStorage.setItem("site.region", compatibleRegion);
+        safeLocalStorage.setItem("site.region.version", "2");
+        safeLocalStorage.setItem("site.region.source", "auto");
       }
     }
   }, [lang, region]); // Removed findRegionForLanguage from dependencies to prevent infinite loop
@@ -664,10 +665,10 @@ export function useLocale() {
     // This prevents blocking the main thread during initial render/hydration
     const scheduleDetection = () => {
       const callback = () => {
-        const hasStoredLang = localStorage.getItem("site.lang");
-        const hasStoredRegion = localStorage.getItem("site.region");
-        const langSource = localStorage.getItem("site.lang_source");
-        const langVersion = localStorage.getItem("site.lang.version");
+        const hasStoredLang = safeLocalStorage.getItem("site.lang");
+        const hasStoredRegion = safeLocalStorage.getItem("site.region");
+        const langSource = safeLocalStorage.getItem("site.lang_source");
+        const langVersion = safeLocalStorage.getItem("site.lang.version");
         
         // Version 2: Force IP-based re-detection (Nov 2025 - fix language detection)
         const CURRENT_VERSION = "2";
@@ -677,7 +678,7 @@ export function useLocale() {
         if (langSource === "user" || langSource === "url") {
           // Set version flag even for user-selected languages to prevent re-detection
           if (langVersion !== CURRENT_VERSION) {
-            localStorage.setItem("site.lang.version", CURRENT_VERSION);
+            safeLocalStorage.setItem("site.lang.version", CURRENT_VERSION);
           }
           return;
         }
@@ -689,15 +690,15 @@ export function useLocale() {
           
           if (detectedLang && detectedLang !== lang) {
             setLangState(detectedLang);
-            localStorage.setItem("site.lang", detectedLang);
-            localStorage.setItem("site.lang_source", "auto");
-            localStorage.setItem("site.lang.version", CURRENT_VERSION);
+            safeLocalStorage.setItem("site.lang", detectedLang);
+            safeLocalStorage.setItem("site.lang_source", "auto");
+            safeLocalStorage.setItem("site.lang.version", CURRENT_VERSION);
           }
           
           if (detectedRegion && detectedRegion !== region) {
             setRegionState(detectedRegion);
-            localStorage.setItem("site.region", detectedRegion);
-            localStorage.setItem("site.region.version", "2");
+            safeLocalStorage.setItem("site.region", detectedRegion);
+            safeLocalStorage.setItem("site.region.version", "2");
           }
           return;
         }
@@ -710,8 +711,8 @@ export function useLocale() {
           const detectedLang = detectLangFromIP();
           if (detectedLang && detectedLang !== lang) {
             setLangState(detectedLang);
-            localStorage.setItem("site.lang", detectedLang);
-            localStorage.setItem("site.lang_source", "ip");
+            safeLocalStorage.setItem("site.lang", detectedLang);
+            safeLocalStorage.setItem("site.lang_source", "ip");
           }
         }
         
@@ -720,8 +721,8 @@ export function useLocale() {
           const detectedRegion = detectRegionFromIP();
           if (detectedRegion && detectedRegion !== region) {
             setRegionState(detectedRegion);
-            localStorage.setItem("site.region", detectedRegion);
-            localStorage.setItem("site.region.version", "2");
+            safeLocalStorage.setItem("site.region", detectedRegion);
+            safeLocalStorage.setItem("site.region.version", "2");
           }
         }
       };
@@ -772,8 +773,8 @@ export function useLocale() {
   const setLang = (newLang) => {
     const normalized = normLang(newLang);
     setLangState(normalized);
-    localStorage.setItem("site.lang", normalized);
-    localStorage.setItem("site.lang_source", "user");
+    safeLocalStorage.setItem("site.lang", normalized);
+    safeLocalStorage.setItem("site.lang_source", "user");
     document.documentElement.setAttribute("lang", normalized);
     
     // Don't change currency when language changes - currency is tied to region/location, not language
@@ -782,9 +783,9 @@ export function useLocale() {
   const setRegion = (newRegion) => {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
       setRegionState(newRegion);
-      localStorage.setItem("site.region", newRegion);
-      localStorage.setItem("site.region.version", "2");
-      localStorage.setItem("site.region.source", "user"); // Mark as user-selected
+      safeLocalStorage.setItem("site.region", newRegion);
+      safeLocalStorage.setItem("site.region.version", "2");
+      safeLocalStorage.setItem("site.region.source", "user"); // Mark as user-selected
       
       // Currency NEVER changes - it always stays as the IP-detected legal tender
       // Users can change language/region, but currency is based on their physical location

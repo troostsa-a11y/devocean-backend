@@ -423,8 +423,15 @@
       }
 
       window.setSiteLocale = function setSiteLocale({ lang, currency } = {}) {
-        const L = lang ? normLang(lang) : (localStorage.getItem('site.lang') || 'en');
-        const C = currency ? clampCur(currency) : (localStorage.getItem('site.currency') || 'USD');
+        var L, C;
+        try {
+          L = lang ? normLang(lang) : (localStorage.getItem('site.lang') || 'en');
+          C = currency ? clampCur(currency) : (localStorage.getItem('site.currency') || 'USD');
+        } catch (e) {
+          // Storage unavailable - use defaults
+          L = lang ? normLang(lang) : 'en';
+          C = currency ? clampCur(currency) : 'USD';
+        }
 
         try {
           localStorage.setItem('site.lang', L);
@@ -626,8 +633,15 @@
       // Check if user has already seen the hero
       // Use sessionStorage (persists during SPA navigation, clears on tab close)
       // and localStorage (persists across browser sessions)
-      var heroSeenThisSession = sessionStorage.getItem('devocean-hero-seen');
-      var heroSeenEver = localStorage.getItem('devocean-hero-seen');
+      var heroSeenThisSession, heroSeenEver;
+      try {
+        heroSeenThisSession = sessionStorage.getItem('devocean-hero-seen');
+        heroSeenEver = localStorage.getItem('devocean-hero-seen');
+      } catch (e) {
+        // Storage unavailable - treat as first visit
+        heroSeenThisSession = null;
+        heroSeenEver = null;
+      }
       
       // Wait for DOM to be ready
       function init() {
@@ -649,8 +663,12 @@
         document.documentElement.classList.add('hero-active');
         
         // Mark hero as seen immediately (both session and persistent)
-        sessionStorage.setItem('devocean-hero-seen', 'true');
-        localStorage.setItem('devocean-hero-seen', 'true');
+        try {
+          sessionStorage.setItem('devocean-hero-seen', 'true');
+          localStorage.setItem('devocean-hero-seen', 'true');
+        } catch (e) {
+          // Storage unavailable - silent fail
+        }
         
         // Keep hero placeholder visible for 5 seconds, then fade out
         setTimeout(function() {
