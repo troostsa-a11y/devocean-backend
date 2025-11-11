@@ -1,12 +1,10 @@
 /**
  * Standalone Contact Form Cloudflare Worker
- * Sends emails directly via MailChannels (no backend needed)
+ * Sends emails directly via Resend API (no backend needed)
  * 
  * Required Cloudflare Environment Variables:
  * - RECAPTCHA_SECRET_KEY: Google reCAPTCHA v3 secret
- * - SMTP_DKIM_DOMAIN: devoceanlodge.com (for DKIM signing)
- * - SMTP_DKIM_SELECTOR: mailchannels (for DKIM signing)
- * - SMTP_DKIM_PRIVATE_KEY: DKIM private key (optional but recommended)
+ * - RESEND_API_KEY: Resend API key for sending emails
  */
 
 // Security: Remove CR/LF from header fields to prevent email header injection
@@ -61,23 +59,29 @@ async function verifyRecaptcha(token, action, secretKey) {
   return { success: true };
 }
 
-// Send email via MailChannels
-async function sendEmail(from, to, subject, html) {
-  const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
+// Send email via Resend API
+async function sendEmail(from, to, subject, html, apiKey, replyTo) {
+  const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: to }] }],
-      from: { email: from, name: 'DEVOCEAN Lodge - Ponta do Ouro' },
+      from: `DEVOCEAN Lodge <${from}>`,
+      to: Array.isArray(to) ? to : [to],
+      reply_to: replyTo || from,
       subject,
-      content: [{ type: 'text/html', value: html }],
+      html
     }),
   });
 
   if (!response.ok) {
     const error = await response.text();
-    throw new Error(`MailChannels error: ${error}`);
+    throw new Error(`Resend API error: ${error}`);
   }
+  
+  return await response.json();
 }
 
 export async function onRequestPost(context) {
@@ -145,8 +149,9 @@ export async function onRequestPost(context) {
       </div>
     `;
 
+    // Send to lodge with reply-to set to customer email
     await sendEmail('reservations@devoceanlodge.com', 'reservations@devoceanlodge.com', 
-      `Contact Form: ${sanitizedName}`, lodgeEmailHtml);
+      `Contact Form: ${sanitizedName}`, lodgeEmailHtml, env.RESEND_API_KEY, sanitizedEmail);
 
     // Auto-reply to guest
     const autoReplyHtml = `
@@ -160,7 +165,7 @@ export async function onRequestPost(context) {
     `;
 
     await sendEmail('reservations@devoceanlodge.com', sanitizedEmail,
-      autoReplySubjects[sanitizedLang] || autoReplySubjects.en, autoReplyHtml);
+      autoReplySubjects[sanitizedLang] || autoReplySubjects.en, autoReplyHtml, env.RESEND_API_KEY, 'reservations@devoceanlodge.com');
 
     console.log(`✅ Contact form submission from ${sanitizedName} (${sanitizedEmail})`);
     

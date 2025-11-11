@@ -1,9 +1,10 @@
 /**
  * Standalone Experience Inquiry Cloudflare Worker
- * Sends emails directly via MailChannels (no backend needed)
+ * Sends emails directly via Resend API (no backend needed)
  * 
  * Required Cloudflare Environment Variables:
  * - RECAPTCHA_SECRET_KEY: Google reCAPTCHA v3 secret
+ * - RESEND_API_KEY: Resend API key for sending emails
  */
 
 // Security: Remove CR/LF from header fields to prevent email header injection
@@ -37,28 +38,35 @@ async function verifyRecaptcha(token, action, secretKey) {
   return { success: true };
 }
 
-// Send email via MailChannels
-async function sendEmail(from, to, subject, html, bcc = null) {
-  const personalizations = [{ to: [{ email: to }] }];
+// Send email via Resend API
+async function sendEmail(from, to, subject, html, apiKey, replyTo, bcc = null) {
+  const payload = {
+    from: `DEVOCEAN Lodge <${from}>`,
+    to: Array.isArray(to) ? to : [to],
+    reply_to: replyTo || from,
+    subject,
+    html
+  };
+  
   if (bcc) {
-    personalizations[0].bcc = [{ email: bcc }];
+    payload.bcc = Array.isArray(bcc) ? bcc : [bcc];
   }
 
-  const response = await fetch('https://api.mailchannels.net/tx/v1/send', {
+  const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      personalizations,
-      from: { email: from, name: 'DEVOCEAN Lodge - Ponta do Ouro' },
-      subject,
-      content: [{ type: 'text/html', value: html }],
-    }),
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload),
   });
 
   if (!response.ok) {
     const error = await response.text();
-    throw new Error(`MailChannels error: ${error}`);
+    throw new Error(`Resend API error: ${error}`);
   }
+  
+  return await response.json();
 }
 
 export async function onRequestPost(context) {
@@ -145,8 +153,9 @@ export async function onRequestPost(context) {
 
     const bccEmail = experienceKey === 'dolphins' ? 'partners@devoceanlodge.com' : 'info@devoceanlodge.com';
 
+    // Send to operator with customer email as reply-to
     await sendEmail('reservations@devoceanlodge.com', sanitizedOperatorEmail,
-      `Experience Inquiry: ${sanitizedExperience}`, operatorEmailHtml, bccEmail);
+      `Experience Inquiry: ${sanitizedExperience}`, operatorEmailHtml, env.RESEND_API_KEY, sanitizedEmail, bccEmail);
 
     // Auto-reply to customer
     const autoReplyMessages = {
@@ -194,8 +203,9 @@ export async function onRequestPost(context) {
       </div>
     `;
 
+    // Send auto-reply to customer
     await sendEmail('reservations@devoceanlodge.com', sanitizedEmail,
-      autoReplySubjects[sanitizedLang] || autoReplySubjects.en, autoReplyHtml);
+      autoReplySubjects[sanitizedLang] || autoReplySubjects.en, autoReplyHtml, env.RESEND_API_KEY, 'reservations@devoceanlodge.com');
 
     console.log(`✅ Experience inquiry from ${sanitizedName} for ${sanitizedExperience}`);
     

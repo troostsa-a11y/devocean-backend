@@ -54,13 +54,13 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 ### 🏗️ Hybrid Email Architecture
 **Design Decision**: Split email functionality between Cloudflare (contact forms) and Replit (automailer) for optimal cost and reliability.
 
-**Contact Forms (Cloudflare Workers + MailChannels):**
-- ✅ Standalone Workers send emails directly via MailChannels API
+**Contact Forms (Cloudflare Workers + Resend):**
+- ✅ Standalone Workers send emails directly via Resend API
 - ✅ No Replit dependency - forms work even if workspace is stopped
 - ✅ `/api/contact` - General contact form with auto-reply
 - ✅ `/api/experience-inquiry` - Experience inquiries forwarded to operators
 - ✅ Full security: reCAPTCHA v3, header injection prevention, HTML escaping
-- ✅ Cost: FREE (under Cloudflare Workers free tier: 100k requests/day)
+- ✅ Cost: FREE tier (3,000 emails/month, 100/day) or $20/month for higher volume
 
 **Automailer (Replit Workspace):**
 - ✅ Runs in workspace 24/7 via "Start application" workflow
@@ -85,8 +85,8 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **Storage:** In-memory storage (`MemStorage`) for automailer booking state management.
 - **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas (used by automailer for booking data persistence).
 - **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP, sending multi-language automated emails via SMTP scheduled in CAT/UTC+2.
-- **Contact Forms:** Standalone Cloudflare Workers using MailChannels API with header injection prevention (`sanitizeHeader()`), reCAPTCHA v3 with action validation, HTML escaping, and localized auto-reply emails.
-- **Email Form Protocol:** All new forms MUST use standalone Cloudflare Workers with MailChannels. This protocol mandates header injection prevention (`sanitizeHeader()`), message sanitization (`sanitizeMessage()`), reCAPTCHA v3 verification with action-specific tokens, and HTML escaping of user inputs.
+- **Contact Forms:** Standalone Cloudflare Workers using Resend API with header injection prevention (`sanitizeHeader()`), reCAPTCHA v3 with action validation, HTML escaping, and localized auto-reply emails.
+- **Email Form Protocol:** All new forms MUST use standalone Cloudflare Workers with Resend API. This protocol mandates header injection prevention (`sanitizeHeader()`), message sanitization (`sanitizeMessage()`), reCAPTCHA v3 verification with action-specific tokens, and HTML escaping of user inputs.
 
 ### Project Structure
 - **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
@@ -115,7 +115,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **Booking:** Beds24 booking engine (propid=297012).
 - **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
-- **Email:** MailChannels API for contact forms (Cloudflare Workers), SMTP via nodemailer for automailer (Replit workspace), IMAP for booking notification parsing.
+- **Email:** Resend API for contact forms (Cloudflare Workers), SMTP via nodemailer for automailer (Replit workspace), IMAP for booking notification parsing.
 - **SEO:** IndexNow protocol via Cloudflare Pages Functions.
 - **Currency Conversion:** fx-rate.net.
 
