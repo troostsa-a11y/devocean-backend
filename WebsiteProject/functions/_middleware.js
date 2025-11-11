@@ -1,9 +1,17 @@
-// Redirect all .pages.dev traffic to main domain
+/**
+ * Cloudflare Pages Functions Middleware
+ * 
+ * Handles:
+ * 1. Domain redirect (.pages.dev → devoceanlodge.com)
+ * 2. SPA routing (404 HTML requests → index.html)
+ * 3. Country code injection (IP geolocation for currency)
+ */
+
 export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
   
-  // Check if hostname ends with .pages.dev
+  // 1. Redirect all .pages.dev traffic to main domain
   if (url.hostname.endsWith('.pages.dev')) {
     const mainDomain = 'https://devoceanlodge.com';
     const redirectUrl = mainDomain + url.pathname + url.search;
@@ -22,7 +30,43 @@ export async function onRequest(context) {
   // Get the response first
   const response = await context.next();
   
-  // Only inject for HTML responses (handles SPA deep links)
+  // 2. SPA ROUTING: Handle 404s for HTML navigation (e.g., /experiences/dolphins)
+  if (response.status === 404) {
+    const accept = request.headers.get('Accept') || '';
+    const path = url.pathname;
+    
+    // Check if this is an HTML navigation request (browser navigation)
+    const isHtmlRequest = accept.includes('text/html');
+    
+    // Check if this is a file request (has file extension)
+    const hasFileExtension = /\.[a-z0-9]+$/i.test(path);
+    
+    // Check if this is an API request
+    const isApiRequest = path.startsWith('/api/');
+    
+    // SPA routes: HTML navigation WITHOUT file extension
+    if (isHtmlRequest && !hasFileExtension && !isApiRequest) {
+      // Fetch index.html for SPA routing
+      const indexResponse = await context.env.ASSETS.fetch(new URL('/index.html', request.url));
+      let html = await indexResponse.text();
+      
+      // Inject country code
+      const injection = `<script>window.__CF_COUNTRY__="${countryCode || ''}";</script>`;
+      html = html.replace('<head>', `<head>${injection}`);
+      
+      return new Response(html, {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8'
+        }
+      });
+    }
+    
+    // Everything else (files, API) - return original 404
+    return response;
+  }
+  
+  // 3. COUNTRY CODE INJECTION: For successful HTML responses
   if (response.headers.get('content-type')?.includes('text/html')) {
     let html = await response.text();
     
