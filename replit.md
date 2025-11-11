@@ -33,6 +33,13 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
   - This prevents misunderstandings and unwanted changes that cause frustration
 
 ## Recent Changes
+- **2025-11-11**: SPA Routing Fix - Resolved 404 errors on page refresh
+  - **Problem**: Refreshing `/experiences/dolphins` (and other SPA routes) returned 404 error
+  - **Root Cause**: Cloudflare Pages disables auto SPA fallback when `404.html` exists
+  - **Solution**: Implemented middleware-based SPA routing in `WebsiteProject/functions/_middleware.js`
+  - **How It Works**: Intercepts 404s for HTML navigation requests (no file extension) and serves `index.html`, while preserving `404.html` for truly missing files/assets
+  - **Files Modified**: `WebsiteProject/functions/_middleware.js`, `WebsiteProject/package.json` (optimized build script)
+  - **Result**: Deep links work on refresh, custom 404 page preserved for missing assets
 - **2025-11-10**: Hybrid Email Architecture implemented - Contact forms now fully standalone
   - **Problem**: Autoscale deployment incompatible with automailer cron jobs (scales to zero when idle)
   - **Solution**: Implemented Hybrid Architecture splitting responsibilities
@@ -71,6 +78,7 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **Hero Placeholder:** A 5-second beach hero for first-time visitors, managed by `App.jsx` to prevent flashing on SPA navigation.
 - **Experience Page Translation:** A two-layer system for UI labels and experience-specific content, supporting 17 languages with three-tier fallbacks.
 - **Form Translation:** Inline functions with three-tier language fallback.
+- **SPA Routing:** Middleware-based solution (`_middleware.js`) handles 404s intelligently - serves `index.html` for HTML navigation (e.g., `/experiences/dolphins`) while preserving custom `404.html` for missing assets.
 
 ### Backend
 - **Server:** Express.js automailer server runs in Replit workspace (port 3003, internal only).
@@ -83,6 +91,17 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 ### Project Structure
 - **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
 - **Design:** Inter font, card-based layouts, image-first, expandable sections, hover states, focus-visible outlines, smooth scroll, sticky header.
+
+### Deployment (Cloudflare Pages)
+- **Platform:** Cloudflare Pages with Functions (Workers) support.
+- **Build:** `npm run build` → Vite bundles React app to `dist/`, copies static files, Cloudflare Workers Functions.
+- **Deploy:** `npx wrangler pages deploy` → Pushes `dist/` to Cloudflare Pages.
+- **Middleware:** `functions/_middleware.js` handles:
+  1. **Domain redirect**: `.pages.dev` → `devoceanlodge.com` (301)
+  2. **SPA routing**: 404 HTML requests without file extensions → `index.html` (200)
+  3. **Country injection**: IP-based geolocation → `window.__CF_COUNTRY__` for currency detection
+- **Static Files:** `_redirects` (legacy redirects + locale routing), `_headers` (cache control), `404.html` (custom error page for assets).
+- **SPA Routing Logic:** `isHtmlRequest && !hasFileExtension && !isApiRequest` → serve `index.html`, else serve `404.html`.
 
 ### DNS & Domain
 - **Primary Domain:** `devoceanlodge.com` (canonical domain).
