@@ -78,6 +78,7 @@ Email functionality is split between Cloudflare (contact forms) and Replit (auto
 - **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af), Microsoft Clarity.
 - **Trust:** Trustindex Floating Certificate widget (ID: a73b26308ab90c8e6ce30cb).
 - **Booking:** Beds24 booking engine (propid=297012).
+  - **⚠️ CRITICAL: Picture Slider Configuration** - Always upload images directly to Beds24's image manager (`SETTINGS > BOOKING ENGINE > PICTURES`) rather than linking to external URLs (e.g., devoceanlodge.com). This ensures reliable loading within the iframe booking widget and avoids CORS/caching/timing issues that cause inconsistent picture slider behavior.
 - **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
 - **Email:** Resend API for contact forms (Cloudflare Workers), SMTP via nodemailer for automailer (Replit workspace), IMAP for booking notification parsing.
