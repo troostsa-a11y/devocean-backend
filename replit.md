@@ -3,6 +3,48 @@
 ## Overview
 DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. The platform aims to be a primary marketing tool, offering accommodation listings, showcasing experiences, providing contact forms, and supporting a multi-language interface across 17 languages. Its core purpose is to attract a global audience, ensure legal compliance (GDPR, cookies, privacy policies), and deliver a seamless user experience on all devices.
 
+## ⚠️ WORKING SYSTEMS - DO NOT MODIFY
+
+The following systems are **WORKING PERFECTLY** and should **NOT** be "fixed", "improved", or "optimized" unless user explicitly reports they are broken:
+
+### ✅ Email System (Resend API)
+- **Contact forms use Resend API via Cloudflare Workers** - Working perfectly
+- **`RESEND_API_KEY`** already configured in Cloudflare Pages Production environment
+- **Files**: `WebsiteProject/functions/api/contact.js`, `WebsiteProject/functions/api/experience-inquiry.js`
+- 🚫 **NEVER switch to MailChannels** (shut down June 2024), nodemailer, SMTP, or any other service
+- 🚫 **If forms have errors**: Check if code was accidentally changed to MailChannels - restore to Resend, don't redesign
+- ✅ **Verified working**: Forms send emails successfully, auto-replies work, reCAPTCHA validation works
+
+### ✅ Automailer System (Nodemailer SMTP)
+- **Runs in Replit workspace** using nodemailer (SMTP) - Working perfectly
+- **IMAP checks** every 30 minutes (at :00 and :30 of every hour) - Working
+- **Scheduled emails** sent at :15 and :45 of every hour in CAT/UTC+2 - Working
+- 🚫 **DO NOT try to move this to Cloudflare Workers** - It needs 24/7 runtime for cron jobs
+- 🚫 **DO NOT combine with contact forms** - Hybrid architecture is intentional and optimal
+
+### ✅ SPA Routing (Middleware)
+- **Middleware handles 404s correctly** in `WebsiteProject/functions/_middleware.js` - Working perfectly
+- **Deep links work on refresh** (e.g., `/experiences/dolphins`) - Working
+- **Custom 404.html preserved** for truly missing assets - Working
+- 🚫 **DO NOT modify unless user reports actual 404 issues**
+- 🚫 **DO NOT add `_redirects` file SPA routing** - Middleware solution is superior
+
+### ✅ Performance Optimizations
+- **Core Web Vitals**: 90+ mobile/desktop, CLS < 0.1 - Working perfectly
+- **Build script optimized** - Removes duplicate file copies (~15 MB savings) - Working
+- **Critical translations pre-loaded** - Hero loads instantly - Working
+- 🚫 **DO NOT "optimize" without measuring** - These were carefully tuned over weeks
+
+### 🔒 MANDATORY CHECK BEFORE ANY CHANGES:
+**Before modifying ANY of these systems:**
+1. ❓ **Ask yourself**: "Did the user report this is broken, or am I assuming it needs improvement?"
+2. 🔍 **Read the existing code** to understand what's already there
+3. 📋 **Explain to user** what you found and what you think needs changing
+4. ⏸️ **WAIT for explicit "go ahead"** - Do NOT proceed even if it seems obvious
+5. ✅ **Only then** make changes if user confirms
+
+**Remember**: "Working differently than I expect" ≠ "Broken". If it works, leave it alone.
+
 ## User Preferences
 - **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
 - **🚫 NEVER EVER** run `npm run build` unless user explicitly requests it
@@ -26,11 +68,16 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **IMPORTANT:** Only run browser tests (run_test tool) when explicitly instructed by the user
 - Do NOT automatically run tests after making changes
 - Wait for explicit user confirmation before testing
-- **🔄 CONFIRM BEFORE ACTING:** Always explain planned changes first and wait for explicit "go ahead" confirmation before making ANY code modifications
-  - Describe what you're going to change, where, and why
-  - Wait for user approval before executing
-  - Exception: Only proceed directly when the request is 100% clear, unambiguous, and you're certain about the scope
-  - This prevents misunderstandings and unwanted changes that cause frustration
+- **🔄 MANDATORY WORKFLOW - CONFIRM BEFORE ACTING (NO EXCEPTIONS):**
+  1. ❓ **User asks for something**
+  2. 🔍 **READ existing code first** - Understand what's already there
+  3. 📋 **EXPLAIN what you found** - Show user what exists and what you plan to change
+  4. ⏸️ **WAIT for explicit "go ahead"** - User must confirm before you proceed
+  5. ✅ **Only then make changes** - After confirmation received
+  - **NO EXCEPTIONS** - Even for "simple" or "obvious" requests, explain first
+  - **Why**: Prevents wasting hours/days "fixing" things that aren't broken
+  - **Cost**: Extra confirmation step vs. accidentally breaking working systems
+  - **Rule**: If you haven't shown the user what currently exists, you haven't done step 3
 
 ## Recent Changes
 - **2025-11-11**: Restored Resend for Contact Forms - Fixed 500 errors after MailChannels shutdown
