@@ -168,7 +168,7 @@
     .btn.primary:active{opacity:0.9;transform:scale(0.98)}
     /* Override global header styles - ensure both Back and Home buttons are pill-shaped */
     header #backBtn.btn.primary,
-    header #homeBtn.btn.primary{width:auto!important;height:auto!important;border-radius:999px!important;padding:10px 16px!important}
+    header #homeBtn.btn.primary{width:auto!important;min-width:72px!important;height:auto!important;border-radius:999px!important;padding:10px 16px!important}
     @media (min-width:640px){
       .btn{padding:12px 18px;font-size:0.95rem}
       header #backBtn.btn.primary,
@@ -1065,7 +1065,7 @@
       </a>
       <div style="display: flex; gap: 10px; align-items: center;">
         <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back"><span id="t-back">Back</span></button>
-        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" style="width:auto!important;height:auto!important;border-radius:999px!important;" data-testid="button-home"><span id="t-home">Home</span></a>
+        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" style="width:auto!important;min-width:72px!important;height:auto!important;border-radius:999px!important;" data-testid="button-home"><span id="t-home">Home</span></a>
       </div>
     </div>
   </header>
