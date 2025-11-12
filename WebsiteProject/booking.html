@@ -1019,13 +1019,187 @@
       }
     }
     
+    /* WhatsApp Support Dropdown */
+    .support-dropdown-container {
+      position: relative;
+      display: none;
+    }
+    
+    @media (min-width: 768px) {
+      .support-dropdown-container {
+        display: block;
+      }
+    }
+    
+    .support-trigger {
+      appearance: none;
+      border: 2px solid var(--brand);
+      background: white;
+      color: var(--brand);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    
+    .support-trigger:hover {
+      background: var(--brand);
+      color: white;
+      transform: translateY(-1px);
+    }
+    
+    .support-trigger svg {
+      flex-shrink: 0;
+    }
+    
+    .support-chevron {
+      font-size: 0.7rem;
+      transition: transform 0.2s ease;
+    }
+    
+    .support-trigger.active .support-chevron {
+      transform: rotate(180deg);
+    }
+    
+    .support-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 380px;
+      max-width: 90vw;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      display: none;
+      z-index: 100;
+      overflow: hidden;
+    }
+    
+    .support-dropdown.show {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    
+    .support-header {
+      background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%);
+      color: white;
+      padding: 16px;
+      text-align: center;
+    }
+    
+    .support-header h3 {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    
+    .support-content {
+      padding: 20px;
+    }
+    
+    .support-content p {
+      margin: 0 0 12px 0;
+      color: var(--ink);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    
+    .support-help-list {
+      margin: 0 0 16px 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    
+    .support-help-list li {
+      margin-bottom: 6px;
+    }
+    
+    .support-hours {
+      background: #fffaf6;
+      border-left: 3px solid var(--brand);
+      padding: 12px;
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+    
+    .support-hours p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+    
+    .support-hours strong {
+      color: var(--brand);
+    }
+    
+    .support-whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px 20px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+    }
+    
+    .support-whatsapp-btn:hover {
+      background: #20BA5A;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    
+    .support-whatsapp-btn:active {
+      transform: scale(0.98);
+    }
+    
+    .support-phone {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
     /* Focus-visible states for accessibility */
     .h1-frame:focus-visible,
     .info-badge:focus-visible,
     .child-featured-badge:focus-visible,
     .unit-btn:focus-visible,
     .btn:focus-visible,
-    .modal-close:focus-visible {
+    .modal-close:focus-visible,
+    .support-trigger:focus-visible {
       outline: 3px solid var(--ring);
       outline-offset: 2px;
     }
@@ -1061,6 +1235,49 @@
           <span class="loc">Ponta do Ouro • Mozambique</span>
         </span>
       </a>
+      
+      <!-- WhatsApp Support Dropdown (Center) -->
+      <div class="support-dropdown-container">
+        <button id="supportBtn" class="support-trigger" onclick="toggleSupportDropdown()" data-testid="button-support-help">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span id="t-support-trigger">Need help?</span>
+          <span class="support-chevron">▼</span>
+        </button>
+        
+        <div id="supportDropdown" class="support-dropdown">
+          <div class="support-header">
+            <h3 id="t-support-title">Welcome to DEVOCEAN Booking Support</h3>
+          </div>
+          <div class="support-content">
+            <p id="t-support-intro">Our team is ready to help you with:</p>
+            <ul class="support-help-list">
+              <li id="t-support-help1">Choosing the right accommodation</li>
+              <li id="t-support-help2">Understanding availability & rates</li>
+              <li id="t-support-help3">Special requests & group bookings</li>
+            </ul>
+            <div class="support-hours">
+              <p><strong id="t-support-hours">Office Hours:</strong></p>
+              <p id="t-support-hours-time">Monday-Sunday, 8:00-17:00 CAT</p>
+            </div>
+            <a 
+              href="https://wa.me/258844182252?text=Hi%2C%20I%20need%20help%20making%20a%20reservation%20at%20DEVOCEAN%20Lodge" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="support-whatsapp-btn"
+              data-testid="button-whatsapp-support"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              <span id="t-support-button">Chat on WhatsApp</span>
+            </a>
+            <p class="support-phone">+258 844182252</p>
+          </div>
+        </div>
+      </div>
+      
       <div style="display: flex; gap: 10px; align-items: center;">
         <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back"><span id="t-back">Back</span></button>
         <button id="homeBtn" class="btn primary" onclick="window.location.href='https://devoceanlodge.com'" role="link" data-testid="button-home"><span id="t-home">Home</span></button>
@@ -1756,6 +1973,37 @@ function toggleBenefits() {
   }
 }
 
+function toggleSupportDropdown() {
+  const btn = document.getElementById('supportBtn');
+  const dropdown = document.getElementById('supportDropdown');
+  
+  if (!btn || !dropdown) return;
+  
+  const isOpen = dropdown.classList.contains('show');
+  
+  if (isOpen) {
+    dropdown.classList.remove('show');
+    btn.classList.remove('active');
+  } else {
+    dropdown.classList.add('show');
+    btn.classList.add('active');
+  }
+}
+
+// Close support dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const container = document.querySelector('.support-dropdown-container');
+  const dropdown = document.getElementById('supportDropdown');
+  const btn = document.getElementById('supportBtn');
+  
+  if (container && dropdown && btn && !container.contains(e.target)) {
+    if (dropdown.classList.contains('show')) {
+      dropdown.classList.remove('show');
+      btn.classList.remove('active');
+    }
+  }
+});
+
 function toggleHowToBook() {
   const badge = document.querySelector('.info-badge');
   const content = document.getElementById('howToBookContent');
@@ -1813,6 +2061,7 @@ function closeBenefitsModal(event) {
 window.toggleBenefits = toggleBenefits;
 window.toggleHowToBook = toggleHowToBook;
 window.toggleChildPolicy = toggleChildPolicy;
+window.toggleSupportDropdown = toggleSupportDropdown;
 window.openBenefitsModal = openBenefitsModal;
 window.closeBenefitsModal = closeBenefitsModal;
 
