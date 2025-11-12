@@ -857,11 +857,114 @@
       color: #fffaf0 !important;
     }
     
+    /* Children Policy Badge Grid - Similar to How to Book */
+    .children-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    
+    @media (min-width: 600px) {
+      .children-badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 960px) {
+      .children-badge-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .children-badge-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      min-height: 140px;
+    }
+    
+    .children-badge-item:nth-child(1) {
+      background: linear-gradient(135deg, #846707 0%, #6b5306 100%);
+    }
+    
+    .children-badge-item:nth-child(2) {
+      background: linear-gradient(135deg, #bf3a11 0%, #9e2f0e 100%);
+    }
+    
+    .children-badge-item:nth-child(3) {
+      background: linear-gradient(135deg, #a04d19 0%, #7d3c14 100%);
+    }
+    
+    .children-badge-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .children-badge-icon .ico {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+    }
+    
+    .children-badge-icon .ico.baby {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 12h.01'/%3E%3Cpath d='M15 12h.01'/%3E%3Cpath d='M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5'/%3E%3Cpath d='M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1'/%3E%3C/svg%3E");
+    }
+    
+    .children-badge-icon .ico.child {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='5' r='3'/%3E%3Cpath d='M6 22v-5c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v5'/%3E%3Cpath d='M19 12v2'/%3E%3Cpath d='M5 12v2'/%3E%3C/svg%3E");
+    }
+    
+    .children-badge-icon .ico.youngster {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+    }
+    
+    .children-badge-text {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .children-badge-title {
+      font-weight: 700;
+      font-size: clamp(0.95rem,3.5vw,1.05rem);
+      margin: 0 0 6px 0;
+      text-align: center;
+      color: #ffffff !important;
+    }
+    
+    .children-badge-desc {
+      font-size: clamp(0.85rem,3.2vw,0.9rem);
+      margin: 0 0 8px 0;
+      line-height: 1.5;
+      text-align: center;
+      color: #fffaf0 !important;
+    }
+    
+    .children-badge-desc:last-child {
+      margin-bottom: 0;
+    }
+    
     @media (min-width: 640px) {
       .info-badge{padding: 16px 20px}
       .info-badge-content{padding: 0 18px}
       .info-badge-content.expanded{padding: 16px 18px}
       .howto-badge-item{padding: 18px 16px;min-height:150px}
+      .children-badge-item{padding: 18px 16px;min-height:180px}
     }
 
     /* ===== Floating Back to Top Button ===== */
@@ -1086,7 +1189,44 @@
                 <span class="child-policy-chevron">▼</span>
               </div>
               <div class="child-policy-content" id="childPolicyContent">
-                <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 year youngsters count as adults.</p>
+                <div class="children-badge-grid">
+                  <!-- Baby/Infant Badge -->
+                  <div class="children-badge-item">
+                    <div class="children-badge-icon">
+                      <div class="ico baby"></div>
+                    </div>
+                    <div class="children-badge-text">
+                      <h3 class="children-badge-title">Babies/Infants 0-3 years</h3>
+                      <p class="children-badge-desc">Free</p>
+                      <p class="children-badge-desc">Don't add during booking</p>
+                      <p class="children-badge-desc">Add babycot on the booking form if needed or mention in the space for a note</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Children Badge -->
+                  <div class="children-badge-item">
+                    <div class="children-badge-icon">
+                      <div class="ico child"></div>
+                    </div>
+                    <div class="children-badge-text">
+                      <h3 class="children-badge-title">Children 4-11 years</h3>
+                      <p class="children-badge-desc">Half Price</p>
+                      <p class="children-badge-desc">Add when choosing number of occupants</p>
+                      <p class="children-badge-desc">Extra Safari bed will be provided when total is 3</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Youngsters Badge -->
+                  <div class="children-badge-item">
+                    <div class="children-badge-icon">
+                      <div class="ico youngster"></div>
+                    </div>
+                    <div class="children-badge-text">
+                      <h3 class="children-badge-title">Youngsters 12 and up</h3>
+                      <p class="children-badge-desc">Count as Adults</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
