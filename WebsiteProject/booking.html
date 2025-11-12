@@ -2037,9 +2037,6 @@
       const siteLang = detectSiteLanguage();
       const siteCurrency = detectSiteCurrency();
       const code = mapToB24(siteLang);
-      console.log('🌐 Booking page language detected:', siteLang, '→ normalized to:', code);
-      console.log('📖 Available translations:', Object.keys(TR));
-      console.log('✅ Using translation:', code, TR[code] ? '(found)' : '(NOT FOUND - fallback to en)');
       
       document.documentElement.setAttribute('lang', code);
 

@@ -201,7 +201,7 @@ const CONTINENT_MERIDIANS = {
 // Booking engine locale mapping (1:1 passthrough now that we use Hotelrunner codes everywhere)
 export const LOCALE_BY_LANG = {
   "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
-  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "zu", "sw": "sw",
 };
 
 // Get booking locale based on language + currency combination
