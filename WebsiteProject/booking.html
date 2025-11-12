@@ -1670,6 +1670,84 @@ function setLegalLink(page) {
 // Make setLegalLink global
 window.setLegalLink = setLegalLink;
 
+// ===== UI Toggle Functions =====
+function toggleBenefits() {
+  const h1Frame = document.querySelector('.h1-frame');
+  const content = document.getElementById('benefitsContent');
+  
+  if (h1Frame && content) {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      h1Frame.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      h1Frame.classList.add('expanded');
+    }
+  }
+}
+
+function toggleHowToBook() {
+  const badge = document.querySelector('.info-badge');
+  const content = document.getElementById('howToBookContent');
+  
+  if (badge && content) {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      badge.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      badge.classList.add('expanded');
+    }
+  }
+}
+
+function toggleChildPolicy() {
+  const badge = document.querySelector('.child-featured-badge');
+  const content = document.getElementById('childPolicyContent');
+  
+  if (badge && content) {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      badge.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      badge.classList.add('expanded');
+    }
+  }
+}
+
+function openBenefitsModal() {
+  const modal = document.getElementById('benefitsModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeBenefitsModal(event) {
+  if (event && event.target !== event.currentTarget && event.type === 'click') {
+    return;
+  }
+  const modal = document.getElementById('benefitsModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Make toggle/modal functions globally accessible for onclick handlers
+window.toggleBenefits = toggleBenefits;
+window.toggleHowToBook = toggleHowToBook;
+window.toggleChildPolicy = toggleChildPolicy;
+window.openBenefitsModal = openBenefitsModal;
+window.closeBenefitsModal = closeBenefitsModal;
+
 // ===== Beds24 iframe message handlers =====
 window.addEventListener('message', function(e){
   try{
