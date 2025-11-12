@@ -1396,10 +1396,31 @@
       return 'USD';
     }
     
-    function toBase(code){ return (code||'en').toLowerCase().split('-')[0]; }
+    function normalizeLangCode(langCode) {
+      if (!langCode) return 'en';
+      const s = String(langCode).toLowerCase();
+      
+      if (s === 'en-gb' || s === 'en') return 'en';
+      if (s === 'de-de' || s === 'de') return 'de';
+      if (s === 'es-es' || s === 'es') return 'es';
+      if (s === 'fr-fr' || s === 'fr') return 'fr';
+      if (s === 'it-it' || s === 'it') return 'it';
+      if (s === 'nl-nl' || s === 'nl') return 'nl';
+      if (s === 'pt-pt' || s === 'pt-br' || s === 'pt-mz' || s === 'pt') return 'pt';
+      if (s === 'ru') return 'ru';
+      if (s === 'zh-cn' || s === 'zh') return 'zh';
+      if (s === 'sv' || s === 'sv-se') return 'sv';
+      if (s === 'ja-jp' || s === 'ja') return 'ja';
+      if (s === 'pl' || s === 'pl-pl') return 'pl';
+      if (s === 'af-za' || s === 'af') return 'af';
+      if (s === 'zu-za' || s === 'zu') return 'zu';
+      if (s === 'sw' || s === 'sw-tz' || s === 'sw-ke') return 'sw';
+      
+      return 'en';
+    }
+    
     function mapToB24(code){
-      const b = toBase(code);
-      return ['en','de','es','fr','it','nl','pt','ru','zh','sv','ja','pl','af','zu','sw'].includes(b) ? b : 'en';
+      return normalizeLangCode(code);
     }
 
     // 2) Translations (page + hero)
@@ -2015,7 +2036,9 @@
       const siteLang = detectSiteLanguage();
       const siteCurrency = detectSiteCurrency();
       const code = mapToB24(siteLang);
-      console.log('Booking page language detected:', siteLang, '→ mapped to:', code);
+      console.log('🌐 Booking page language detected:', siteLang, '→ normalized to:', code);
+      console.log('📖 Available translations:', Object.keys(TR));
+      console.log('✅ Using translation:', code, TR[code] ? '(found)' : '(NOT FOUND - fallback to en)');
       
       document.documentElement.setAttribute('lang', code);
 
