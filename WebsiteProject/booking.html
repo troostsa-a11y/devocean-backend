@@ -1724,6 +1724,25 @@ function applyTranslations(TT, code, siteCurrency) {
   if (elBack) elBack.textContent = TT.back;
   if (elHome) elHome.textContent = TT.home;
   
+  // WhatsApp Support translations
+  const elSupportTitle = document.getElementById("t-support-title");
+  const elSupportIntro = document.getElementById("t-support-intro");
+  const elSupportHelp1 = document.getElementById("t-support-help1");
+  const elSupportHelp2 = document.getElementById("t-support-help2");
+  const elSupportHelp3 = document.getElementById("t-support-help3");
+  const elSupportHours = document.getElementById("t-support-hours");
+  const elSupportHoursTime = document.getElementById("t-support-hours-time");
+  const elSupportButton = document.getElementById("t-support-button");
+  
+  if (elSupportTitle) elSupportTitle.textContent = TT.supportTitle;
+  if (elSupportIntro) elSupportIntro.textContent = TT.supportIntro;
+  if (elSupportHelp1) elSupportHelp1.textContent = TT.supportHelp1;
+  if (elSupportHelp2) elSupportHelp2.textContent = TT.supportHelp2;
+  if (elSupportHelp3) elSupportHelp3.textContent = TT.supportHelp3;
+  if (elSupportHours) elSupportHours.textContent = TT.supportHours;
+  if (elSupportHoursTime) elSupportHoursTime.textContent = TT.supportHoursTime;
+  if (elSupportButton) elSupportButton.textContent = TT.supportButton;
+  
   // How to Book badges
   const elHowtoStep1Title = document.getElementById("t-howto-step1-title");
   const elHowtoStep1 = document.getElementById("t-howto-step1-desc");
