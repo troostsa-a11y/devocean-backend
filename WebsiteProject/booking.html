@@ -1065,7 +1065,7 @@
       </a>
       <div style="display: flex; gap: 10px; align-items: center;">
         <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back"><span id="t-back">Back</span></button>
-        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" data-testid="button-home"><span id="t-home">Home</span></a>
+        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" style="width:auto!important;height:auto!important;border-radius:999px!important;" data-testid="button-home"><span id="t-home">Home</span></a>
       </div>
     </div>
   </header>
@@ -1586,15 +1586,10 @@ function applyTranslations(TT, code, siteCurrency) {
   if (elModalSupport) elModalSupport.textContent = TT.modalSupport;
   if (elModalSupportDesc) elModalSupportDesc.textContent = TT.modalSupportDesc;
   
-  // Update home button to preserve language + force pill shape with inline styles
+  // Update home button to preserve language
   const homeBtn = document.getElementById("homeBtn"); 
   if (homeBtn) {
     homeBtn.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
-    // Force pill shape with inline styles that override external stylesheets
-    homeBtn.style.setProperty('width', 'auto', 'important');
-    homeBtn.style.setProperty('height', 'auto', 'important');
-    homeBtn.style.setProperty('border-radius', '999px', 'important');
-    homeBtn.style.setProperty('padding', window.innerWidth >= 640 ? '12px 18px' : '10px 16px', 'important');
   }
   
   // Update currency converter link
