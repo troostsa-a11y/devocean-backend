@@ -171,6 +171,30 @@
     #site-hero .wrap{max-width:1200px;margin:0 auto;padding:22px clamp(14px,3vw,24px)}
     #site-hero .hero-section{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:end;margin-bottom:10px}
     #site-hero h1{margin:6px 0 10px;font-weight:800;letter-spacing:.2px;font-size:clamp(1.6rem,2vw + 1rem,2.3rem);line-height:1.2}
+    
+    /* Clickable H1 Frame */
+    .h1-frame{
+      display:inline-block;
+      padding:14px 24px;
+      border:3px solid var(--brand);
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(182,90,26,0.08) 0%, rgba(158,75,19,0.12) 100%);
+      cursor:pointer;
+      transition:all 0.2s ease;
+      box-shadow:0 4px 12px rgba(158,75,19,0.15);
+    }
+    .h1-frame:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 18px rgba(158,75,19,0.25);
+      background:linear-gradient(135deg, rgba(182,90,26,0.12) 0%, rgba(158,75,19,0.18) 100%);
+    }
+    .h1-frame:active{
+      transform:translateY(0);
+    }
+    .h1-frame h1{
+      margin:0;
+      color:var(--brand);
+    }
     #site-hero p{margin:0;color:var(--muted);line-height:1.5}
     #site-hero .note{margin-top:12px}
     #site-hero .benefit-card{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
@@ -204,6 +228,158 @@
     @media (max-width:880px){
       #site-hero .hero-section{grid-template-columns:1fr;gap:14px}
       #site-hero .featured-badge{margin-top:0}
+    }
+    
+    /* ===== Benefits Modal ===== */
+    .modal-overlay{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(0,0,0,0.6);
+      z-index:9999;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      animation:fadeIn 0.2s ease;
+    }
+    .modal-overlay.active{
+      display:flex;
+    }
+    @keyframes fadeIn{
+      from{opacity:0}
+      to{opacity:1}
+    }
+    .modal-content{
+      background:#fff;
+      border-radius:20px;
+      max-width:600px;
+      width:100%;
+      max-height:90vh;
+      overflow-y:auto;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+      animation:slideUp 0.3s ease;
+      position:relative;
+    }
+    @keyframes slideUp{
+      from{transform:translateY(30px);opacity:0}
+      to{transform:translateY(0);opacity:1}
+    }
+    .modal-header{
+      background:linear-gradient(135deg,#b65a1a 0%,#9e4b13 100%);
+      color:#fff;
+      padding:24px 28px;
+      border-radius:20px 20px 0 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .modal-header h2{
+      margin:0;
+      font-size:1.5rem;
+      font-weight:800;
+    }
+    .modal-close{
+      background:rgba(255,255,255,0.2);
+      border:none;
+      color:#fff;
+      font-size:28px;
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 0.2s ease;
+      line-height:1;
+      padding:0;
+    }
+    .modal-close:hover{
+      background:rgba(255,255,255,0.3);
+      transform:rotate(90deg);
+    }
+    .modal-body{
+      padding:28px;
+    }
+    .modal-benefits{
+      display:grid;
+      gap:16px;
+    }
+    .modal-benefit-item{
+      background:#fef9f5;
+      border:2px solid #eee;
+      border-radius:12px;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      gap:16px;
+      transition:all 0.2s ease;
+    }
+    .modal-benefit-item:hover{
+      border-color:var(--brand);
+      transform:translateX(4px);
+      box-shadow:0 4px 12px rgba(158,75,19,0.15);
+    }
+    .modal-benefit-icon{
+      width:48px;
+      height:48px;
+      min-width:48px;
+      background:linear-gradient(135deg,#b65a1a 0%,#9e4b13 100%);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .modal-benefit-icon .ico{
+      width:24px;
+      height:24px;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      margin:0;
+    }
+    .modal-benefit-icon .ico.lock{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='10' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.check{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.bolt{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M13 2L4 14h6l-1 8 9-12h-6l1-8z'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.handshake{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12l4-4a3 3 0 0 1 4 0l2 2'/%3E%3Cpath d='M15 9l2-2a3 3 0 0 1 4 0'/%3E%3Cpath d='M8 13l3 3a2 2 0 0 0 3 0l4-4'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.rate{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-text{
+      flex:1;
+    }
+    .modal-benefit-title{
+      font-weight:700;
+      font-size:1.05rem;
+      color:#333;
+      margin:0 0 4px 0;
+    }
+    .modal-benefit-desc{
+      font-size:0.9rem;
+      color:var(--muted);
+      margin:0;
+      line-height:1.4;
+    }
+    @media(max-width:640px){
+      .modal-content{max-width:95%;border-radius:16px}
+      .modal-header{padding:20px;border-radius:16px 16px 0 0}
+      .modal-header h2{font-size:1.25rem}
+      .modal-body{padding:20px}
+      .modal-benefit-item{padding:14px 16px;gap:12px}
+      .modal-benefit-icon{width:40px;height:40px;min-width:40px}
+      .modal-benefit-icon .ico{width:20px;height:20px}
+      .h1-frame{padding:12px 18px}
     }
 
     /* ===== Unit Navigation Styles ===== */
@@ -377,7 +553,7 @@
       }
     }
   </style>
-  <!-- CSS Version: 2.2 - Floating Back to Top Button -->
+  <!-- CSS Version: 2.3 - Interactive H1 with Benefits Modal -->
   <!-- Trustindex Floating Certificate -->
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
 </head>
@@ -410,7 +586,9 @@
       <div class="wrap">
         <div class="hero-section">
           <div>
-            <h1 id="t-h1">Book here for Best Value</h1>
+            <div class="h1-frame" onclick="openBenefitsModal()" data-testid="button-h1-benefits">
+              <h1 id="t-h1">Book here for Best Value</h1>
+            </div>
             <p id="t-p1">Secure your stay at our eco-lodge minutes from the beach and Maputo National Park. Instant confirmations, transparent rates, and flexible room options.</p>
             <p class="note" id="t-note">Fill in your dates below to check availability and book.</p>
             <p class="note" style="margin-top: 8px; font-size: 0.95rem;">
@@ -506,6 +684,65 @@
   <!-- Floating Back to Top Button -->
   <button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
 
+  <!-- Benefits Modal -->
+  <div id="benefitsModal" class="modal-overlay" onclick="closeBenefitsModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 id="t-modal-title">Why Book Direct?</h2>
+        <button class="modal-close" onclick="closeBenefitsModal()" aria-label="Close" data-testid="button-modal-close">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-benefits">
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico rate"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-rate">Best Rate Guaranteed</p>
+              <p class="modal-benefit-desc" id="t-modal-rate-desc">Lowest prices when you book directly with us</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico lock"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-secure">Secure payment</p>
+              <p class="modal-benefit-desc" id="t-modal-secure-desc">Your data is protected with industry-standard encryption</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico check"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-nofees">No hidden fees</p>
+              <p class="modal-benefit-desc" id="t-modal-nofees-desc">What you see is what you pay - transparent pricing</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico bolt"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-instant">Instant confirmation</p>
+              <p class="modal-benefit-desc" id="t-modal-instant-desc">Receive your booking confirmation immediately</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico handshake"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-support">DEVOCEAN Team support</p>
+              <p class="modal-benefit-desc" id="t-modal-support-desc">Personal assistance from our dedicated team</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Localization + iframe sync (place at end for robustness with async/defers) -->
   <script>
     // Safe localStorage helpers (prevents crashes in private/incognito mode and Edge)
@@ -588,7 +825,18 @@
           badgeSub:"Save — no middleman fees",
           secure:"Secure checkout", nofees:"No hidden fees", instant:"Instant confirmation", support:"Team support",
           childHeading:"Travelling with children?",
-          childText:"Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 year youngsters count as adults."},
+          childText:"Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 year youngsters count as adults.",
+          modalTitle:"Why Book Direct?",
+          modalRate:"Best Rate Guaranteed",
+          modalRateDesc:"Lowest prices when you book directly with us",
+          modalSecure:"Secure payment",
+          modalSecureDesc:"Your data is protected with industry-standard encryption",
+          modalNofees:"No hidden fees",
+          modalNofeesDesc:"What you see is what you pay - transparent pricing",
+          modalInstant:"Instant confirmation",
+          modalInstantDesc:"Receive your booking confirmation immediately",
+          modalSupport:"DEVOCEAN Team support",
+          modalSupportDesc:"Personal assistance from our dedicated team"},
       de:{title:"Buchen Sie Ihren Aufenthalt – DEVOCEAN Lodge",
           desc:"Direkte Buchungsseite der DEVOCEAN Lodge in Ponta do Ouro, Mosambik. Beste Preise, sofortige Bestätigung.",
           home:"Startseite",
@@ -602,7 +850,18 @@
           badgeSub:"Sparen Sie – keine Vermittlungsgebühren",
           secure:"Sichere Zahlung", nofees:"Keine versteckten Gebühren", instant:"Sofortige Bestätigung", support:"Unterstützung durch unser Team",
           childHeading:"Mit Kindern unterwegs?",
-          childText:"Dann sollten Sie unsere Kinderpolitik kennen. Babys und Kleinkinder bis 4 Jahre (am Anreisetag) sind kostenfrei, wenn sie ein verfügbares Bett mitbenutzen. Babybetten können als Extra gebucht werden. Kinder von 5 bis 12 Jahren gelten als Kinder. Ab 12 Jahren zählen Jugendliche als Erwachsene."},
+          childText:"Dann sollten Sie unsere Kinderpolitik kennen. Babys und Kleinkinder bis 4 Jahre (am Anreisetag) sind kostenfrei, wenn sie ein verfügbares Bett mitbenutzen. Babybetten können als Extra gebucht werden. Kinder von 5 bis 12 Jahren gelten als Kinder. Ab 12 Jahren zählen Jugendliche als Erwachsene.",
+          modalTitle:"Warum direkt buchen?",
+          modalRate:"Bester Preis garantiert",
+          modalRateDesc:"Niedrigste Preise bei Direktbuchung",
+          modalSecure:"Sichere Zahlung",
+          modalSecureDesc:"Ihre Daten sind durch branchenübliche Verschlüsselung geschützt",
+          modalNofees:"Keine versteckten Gebühren",
+          modalNofeesDesc:"Transparente Preise - was Sie sehen, zahlen Sie",
+          modalInstant:"Sofortige Bestätigung",
+          modalInstantDesc:"Erhalten Sie Ihre Buchungsbestätigung sofort",
+          modalSupport:"DEVOCEAN Team-Support",
+          modalSupportDesc:"Persönliche Unterstützung durch unser engagiertes Team"},
       es:{title:"Reserve su estancia – DEVOCEAN Lodge",
           desc:"Página de reserva directa de DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Mejores precios, confirmación inmediata.",
           home:"Inicio",
@@ -616,7 +875,18 @@
           badgeSub:"Ahorra sin comisiones ni intermediarios",
           secure:"Pago seguro", nofees:"Sin cargos ocultos", instant:"Confirmación inmediata", support:"Atención personalizada",
           childHeading:"¿Viaja con niños?",
-          childText:"Entonces debería conocer nuestra política de niños. Los bebés y niños menores de 4 años (en la fecha de llegada) son gratuitos al compartir una cama disponible. Las cunas se pueden reservar como extra. Los niños de 5 a 12 años se cuentan como niños. A partir de 12 años los jóvenes se cuentan como adultos."},
+          childText:"Entonces debería conocer nuestra política de niños. Los bebés y niños menores de 4 años (en la fecha de llegada) son gratuitos al compartir una cama disponible. Las cunas se pueden reservar como extra. Los niños de 5 a 12 años se cuentan como niños. A partir de 12 años los jóvenes se cuentan como adultos.",
+          modalTitle:"¿Por qué reservar directo?",
+          modalRate:"Mejor Tarifa Garantizada",
+          modalRateDesc:"Precios más bajos al reservar directamente",
+          modalSecure:"Pago seguro",
+          modalSecureDesc:"Sus datos están protegidos con cifrado estándar",
+          modalNofees:"Sin cargos ocultos",
+          modalNofeesDesc:"Lo que ve es lo que paga - precios transparentes",
+          modalInstant:"Confirmación inmediata",
+          modalInstantDesc:"Reciba su confirmación de reserva de inmediato",
+          modalSupport:"Soporte del equipo DEVOCEAN",
+          modalSupportDesc:"Asistencia personal de nuestro equipo dedicado"},
       fr:{title:"Réservez votre séjour – DEVOCEAN Lodge",
           desc:"Page de réservation directe de la DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Meilleurs tarifs, confirmation immédiate.",
           home:"Accueil",
@@ -630,7 +900,18 @@
           badgeSub:"Économisez — sans frais d’intermédiaire",
           secure:"Paiement sécurisé", nofees:"Aucun frais caché", instant:"Confirmation immédiate", support:"Assistance de notre équipe",
           childHeading:"Vous voyagez avec des enfants?",
-          childText:"Vous devriez alors connaître notre politique pour les enfants. Les bébés et enfants jusqu'à 4 ans (à la date d'arrivée) sont gratuits lorsqu'ils partagent un lit disponible. Les lits bébé peuvent être réservés en supplément. Les enfants de 5 à 12 ans comptent comme enfants. À partir de 12 ans, les jeunes comptent comme adultes."},
+          childText:"Vous devriez alors connaître notre politique pour les enfants. Les bébés et enfants jusqu'à 4 ans (à la date d'arrivée) sont gratuits lorsqu'ils partagent un lit disponible. Les lits bébé peuvent être réservés en supplément. Les enfants de 5 à 12 ans comptent comme enfants. À partir de 12 ans, les jeunes comptent comme adultes.",
+          modalTitle:"Pourquoi réserver en direct?",
+          modalRate:"Meilleur Tarif Garanti",
+          modalRateDesc:"Prix les plus bas en réservant directement",
+          modalSecure:"Paiement sécurisé",
+          modalSecureDesc:"Vos données sont protégées par un cryptage standard",
+          modalNofees:"Aucun frais caché",
+          modalNofeesDesc:"Ce que vous voyez est ce que vous payez - tarifs transparents",
+          modalInstant:"Confirmation immédiate",
+          modalInstantDesc:"Recevez votre confirmation de réservation immédiatement",
+          modalSupport:"Support de l'équipe DEVOCEAN",
+          modalSupportDesc:"Assistance personnelle de notre équipe dédiée"},
       it:{title:"Prenota il tuo soggiorno – DEVOCEAN Lodge",
           desc:"Pagina di prenotazione diretta della DEVOCEAN Lodge, Ponta do Ouro, Mozambico. Migliori tariffe, conferma immediata.",
           home:"Home",
@@ -644,7 +925,18 @@
           badgeSub:"Risparmia — nessuna commissione intermedia",
           secure:"Pagamento sicuro", nofees:"Nessun costo nascosto", instant:"Conferma immediata", support:"Assistenza del nostro team",
           childHeading:"Viaggi con bambini?",
-          childText:"Allora dovresti conoscere la nostra politica per i bambini. Neonati e bambini fino a 4 anni (alla data di arrivo) sono gratuiti se condividono un letto disponibile. Le culle possono essere prenotate come extra. I bambini dai 5 ai 12 anni sono contati come bambini. Dai 12 anni in su i giovani contano come adulti."},
+          childText:"Allora dovresti conoscere la nostra politica per i bambini. Neonati e bambini fino a 4 anni (alla data di arrivo) sono gratuiti se condividono un letto disponibile. Le culle possono essere prenotate come extra. I bambini dai 5 ai 12 anni sono contati come bambini. Dai 12 anni in su i giovani contano come adulti.",
+          modalTitle:"Perché prenotare direttamente?",
+          modalRate:"Miglior Tariffa Garantita",
+          modalRateDesc:"Prezzi più bassi prenotando direttamente",
+          modalSecure:"Pagamento sicuro",
+          modalSecureDesc:"I tuoi dati sono protetti con crittografia standard",
+          modalNofees:"Nessun costo nascosto",
+          modalNofeesDesc:"Quello che vedi è quello che paghi - prezzi trasparenti",
+          modalInstant:"Conferma immediata",
+          modalInstantDesc:"Ricevi la tua conferma di prenotazione immediatamente",
+          modalSupport:"Supporto del team DEVOCEAN",
+          modalSupportDesc:"Assistenza personale dal nostro team dedicato"},
       nl:{title:"Boek uw verblijf – DEVOCEAN Lodge",
           desc:"Directe boekingspagina van DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Beste prijzen, directe bevestiging.",
           home:"Home",
@@ -658,7 +950,18 @@
           badgeSub:"Bespaar – geen commissies of tussenpersonen",
           secure:"Veilige betaling", nofees:"Geen verborgen kosten", instant:"Directe bevestiging", support:"Ondersteuning door ons team",
           childHeading:"Reist u met kinderen?",
-          childText:"Dan moet u ons kinderbeleid kennen. Baby's en peuters tot 4 jaar (op de aankomstdatum) zijn gratis wanneer ze een beschikbaar bed delen. Babybedjes kunnen als extra worden geboekt. Kinderen van 5 tot 12 worden als kinderen geteld. Vanaf 12 jaar tellen jongeren als volwassenen."},
+          childText:"Dan moet u ons kinderbeleid kennen. Baby's en peuters tot 4 jaar (op de aankomstdatum) zijn gratis wanneer ze een beschikbaar bed delen. Babybedjes kunnen als extra worden geboekt. Kinderen van 5 tot 12 worden als kinderen geteld. Vanaf 12 jaar tellen jongeren als volwassenen.",
+          modalTitle:"Waarom direct boeken?",
+          modalRate:"Beste Prijs Gegarandeerd",
+          modalRateDesc:"Laagste prijzen bij directe boeking",
+          modalSecure:"Veilige betaling",
+          modalSecureDesc:"Uw gegevens zijn beschermd met standaard versleuteling",
+          modalNofees:"Geen verborgen kosten",
+          modalNofeesDesc:"Wat u ziet is wat u betaalt - transparante prijzen",
+          modalInstant:"Directe bevestiging",
+          modalInstantDesc:"Ontvang uw boekingsbevestiging onmiddellijk",
+          modalSupport:"DEVOCEAN Team ondersteuning",
+          modalSupportDesc:"Persoonlijke hulp van ons toegewijde team"},
       pt:{title:"Reserve a sua estadia – DEVOCEAN Lodge",
           desc:"Página de reserva direta da DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Melhores tarifas, confirmação imediata.",
           home:"Início",
@@ -672,7 +975,18 @@
           badgeSub:"Poupe — sem taxas ou intermediários",
           secure:"Pagamento seguro", nofees:"Sem custos ocultos", instant:"Confirmação imediata", support:"Apoio da nossa equipa",
           childHeading:"Viaja com crianças?",
-          childText:"Então deve conhecer a nossa política para crianças. Bebés e crianças até 4 anos (na data de chegada) são gratuitos ao partilhar uma cama disponível. Berços podem ser reservados como extra. Crianças dos 5 aos 12 anos contam como crianças. A partir dos 12 anos os jovens contam como adultos."},
+          childText:"Então deve conhecer a nossa política para crianças. Bebés e crianças até 4 anos (na data de chegada) são gratuitos ao partilhar uma cama disponível. Berços podem ser reservados como extra. Crianças dos 5 aos 12 anos contam como crianças. A partir dos 12 anos os jovens contam como adultos.",
+          modalTitle:"Porquê reservar diretamente?",
+          modalRate:"Melhor Tarifa Garantida",
+          modalRateDesc:"Preços mais baixos ao reservar diretamente",
+          modalSecure:"Pagamento seguro",
+          modalSecureDesc:"Os seus dados estão protegidos com encriptação padrão",
+          modalNofees:"Sem custos ocultos",
+          modalNofeesDesc:"O que vê é o que paga - preços transparentes",
+          modalInstant:"Confirmação imediata",
+          modalInstantDesc:"Receba a sua confirmação de reserva imediatamente",
+          modalSupport:"Apoio da equipa DEVOCEAN",
+          modalSupportDesc:"Assistência pessoal da nossa equipa dedicada"},
       ru:{title:"Забронируйте проживание – DEVOCEAN Lodge",
           desc:"Страница прямого бронирования DEVOCEAN Lodge (Понта-ду-Ору, Мозамбик). Лучшие цены, мгновенное подтверждение.",
           home:"Главная",
@@ -686,7 +1000,18 @@
           badgeSub:"Экономьте — без комиссий и посредников",
           secure:"Безопасная оплата", nofees:"Без скрытых сборов", instant:"Мгновенное подтверждение", support:"Поддержка нашей команды",
           childHeading:"Путешествуете с детьми?",
-          childText:"Тогда вам следует знать нашу политику для детей. Младенцы и дети до 4 лет (на дату прибытия) размещаются бесплатно при совместном использовании доступной кровати. Детские кроватки можно заказать дополнительно. Дети от 5 до 12 лет считаются детьми. С 12 лет подростки считаются взрослыми."},
+          childText:"Тогда вам следует знать нашу политику для детей. Младенцы и дети до 4 лет (на дату прибытия) размещаются бесплатно при совместном использовании доступной кровати. Детские кроватки можно заказать дополнительно. Дети от 5 до 12 лет считаются детьми. С 12 лет подростки считаются взрослыми.",
+          modalTitle:"Почему бронировать напрямую?",
+          modalRate:"Лучшая Цена Гарантирована",
+          modalRateDesc:"Самые низкие цены при прямом бронировании",
+          modalSecure:"Безопасный платеж",
+          modalSecureDesc:"Ваши данные защищены стандартным шифрованием",
+          modalNofees:"Без скрытых сборов",
+          modalNofeesDesc:"Что видите, то и платите - прозрачные цены",
+          modalInstant:"Мгновенное подтверждение",
+          modalInstantDesc:"Получите подтверждение бронирования немедленно",
+          modalSupport:"Поддержка команды DEVOCEAN",
+          modalSupportDesc:"Персональная помощь от нашей команды"},
       zh:{title:"预订您的住宿 – DEVOCEAN Lodge",
           desc:"DEVOCEAN Lodge（莫桑比克蓬塔杜奥鲁）官方直订页面。最优价格，即时确认。",
           home:"首页",
@@ -700,7 +1025,18 @@
           badgeSub:"节省费用 — 无中介佣金",
           secure:"安全支付", nofees:"无隐藏费用", instant:"即时确认", support:"团队支持",
           childHeading:"带儿童旅行？",
-          childText:"那么您应该了解我们的儿童政策。4岁及以下的婴儿和幼儿（以到达日期为准）在共用可用床位时免费。婴儿床可作为附加服务预订。5至12岁的儿童按儿童计算。12岁及以上的青少年按成人计算。"},
+          childText:"那么您应该了解我们的儿童政策。4岁及以下的婴儿和幼儿（以到达日期为准）在共用可用床位时免费。婴儿床可作为附加服务预订。5至12岁的儿童按儿童计算。12岁及以上的青少年按成人计算。",
+          modalTitle:"为何直接预订？",
+          modalRate:"最优价格保证",
+          modalRateDesc:"直接预订享受最低价格",
+          modalSecure:"安全支付",
+          modalSecureDesc:"您的数据受行业标准加密保护",
+          modalNofees:"无隐藏费用",
+          modalNofeesDesc:"所见即所付 - 价格透明",
+          modalInstant:"即时确认",
+          modalInstantDesc:"立即收到您的预订确认",
+          modalSupport:"DEVOCEAN团队支持",
+          modalSupportDesc:"我们专业团队提供个性化协助"},
       sv:{title:"Boka din vistelse – DEVOCEAN Lodge",
           desc:"Direktbokningssida för DEVOCEAN Lodge, Ponta do Ouro, Moçambique. Bästa priser, omedelbar bekräftelse.",
           home:"Hem",
@@ -714,7 +1050,18 @@
           badgeSub:"Spara — inga mellanhänder eller dolda avgifter",
           secure:"Säker betalning", nofees:"Inga dolda avgifter", instant:"Omedelbar bekräftelse", support:"Support från vårt team",
           childHeading:"Reser du med barn?",
-          childText:"Då bör du känna till vår barnpolicy. Spädbarn och småbarn upp till 4 år (vid ankomstdagen) är gratis när de delar en tillgänglig säng. Babysängar kan bokas som extra. Barn från 5 till 12 år räknas som barn. Från 12 år räknas ungdomar som vuxna."},
+          childText:"Då bör du känna till vår barnpolicy. Spädbarn och småbarn upp till 4 år (vid ankomstdagen) är gratis när de delar en tillgänglig säng. Babysängar kan bokas som extra. Barn från 5 till 12 år räknas som barn. Från 12 år räknas ungdomar som vuxna.",
+          modalTitle:"Varför boka direkt?",
+          modalRate:"Bästa Pris Garanterat",
+          modalRateDesc:"Lägsta priser när du bokar direkt",
+          modalSecure:"Säker betalning",
+          modalSecureDesc:"Dina uppgifter skyddas med branschstandard kryptering",
+          modalNofees:"Inga dolda avgifter",
+          modalNofeesDesc:"Vad du ser är vad du betalar - transparenta priser",
+          modalInstant:"Omedelbar bekräftelse",
+          modalInstantDesc:"Få din bokningsbekräftelse omedelbart",
+          modalSupport:"DEVOCEAN Team-support",
+          modalSupportDesc:"Personlig hjälp från vårt dedikerade team"},
       ja:{title:"ご宿泊予約 – DEVOCEAN Lodge",
           desc:"DEVOCEAN Lodge（モザンビーク・ポンタ・ド・オウロ）の公式直予約ページ。最安値・即時確認。",
           home:"ホーム",
@@ -728,7 +1075,18 @@
           badgeSub:"仲介手数料なしでお得に",
           secure:"安全な支払い", nofees:"追加料金なし", instant:"即時確認", support:"チームによるサポート",
           childHeading:"お子様連れですか？",
-          childText:"当施設のお子様ポリシーをご確認ください。到着日時点で4歳以下の乳幼児は、利用可能なベッドを共有する場合無料です。ベビーベッドは追加でご予約いただけます。5歳から12歳のお子様は子供としてカウントされます。12歳以上の若者は大人としてカウントされます。"},
+          childText:"当施設のお子様ポリシーをご確認ください。到着日時点で4歳以下の乳幼児は、利用可能なベッドを共有する場合無料です。ベビーベッドは追加でご予約いただけます。5歳から12歳のお子様は子供としてカウントされます。12歳以上の若者は大人としてカウントされます。",
+          modalTitle:"直接予約のメリット",
+          modalRate:"最優遇料金保証",
+          modalRateDesc:"直接予約で最安値をご提供",
+          modalSecure:"安全な決済",
+          modalSecureDesc:"業界標準の暗号化でデータを保護",
+          modalNofees:"追加料金なし",
+          modalNofeesDesc:"表示価格が支払額 - 透明な料金体系",
+          modalInstant:"即時確認",
+          modalInstantDesc:"予約確認を即座に受信",
+          modalSupport:"DEVOCEANチームサポート",
+          modalSupportDesc:"専任チームによる個別サポート"},
       pl:{title:"Zarezerwuj swój pobyt – DEVOCEAN Lodge",
           desc:"Strona rezerwacji bezpośredniej DEVOCEAN Lodge, Ponta do Ouro, Mozambik. Najlepsze ceny, natychmiastowe potwierdzenie.",
           home:"Strona główna",
@@ -742,7 +1100,18 @@
           badgeSub:"Oszczędzaj — bez prowizji pośredników",
           secure:"Bezpieczna płatność", nofees:"Bez ukrytych opłat", instant:"Natychmiastowe potwierdzenie", support:"Wsparcie naszego zespołu",
           childHeading:"Podróżujesz z dziećmi?",
-          childText:"Powinieneś znać naszą politykę dotyczącą dzieci. Niemowlęta i małe dzieci do 4 lat (w dniu przyjazdu) są bezpłatne przy współdzieleniu dostępnego łóżka. Łóżeczka dziecięce można zarezerwować jako dodatek. Dzieci od 5 do 12 lat liczą się jako dzieci. Od 12 lat młodzież liczy się jako dorośli."},
+          childText:"Powinieneś znać naszą politykę dotyczącą dzieci. Niemowlęta i małe dzieci do 4 lat (w dniu przyjazdu) są bezpłatne przy współdzieleniu dostępnego łóżka. Łóżeczka dziecięce można zarezerwować jako dodatek. Dzieci od 5 do 12 lat liczą się jako dzieci. Od 12 lat młodzież liczy się jako dorośli.",
+          modalTitle:"Dlaczego rezerwować bezpośrednio?",
+          modalRate:"Najlepsza Cena Gwarantowana",
+          modalRateDesc:"Najniższe ceny przy bezpośredniej rezerwacji",
+          modalSecure:"Bezpieczna płatność",
+          modalSecureDesc:"Twoje dane są chronione standardowym szyfrowaniem",
+          modalNofees:"Bez ukrytych opłat",
+          modalNofeesDesc:"Co widzisz, to płacisz - przejrzyste ceny",
+          modalInstant:"Natychmiastowe potwierdzenie",
+          modalInstantDesc:"Otrzymaj potwierdzenie rezerwacji natychmiast",
+          modalSupport:"Wsparcie zespołu DEVOCEAN",
+          modalSupportDesc:"Osobista pomoc od naszego dedykowanego zespołu"},
       af:{title:"Bespreek jou verblyf – DEVOCEAN Lodge",
           desc:"Direkte besprekingsbladsy vir DEVOCEAN Lodge, Ponta do Ouro, Mosambiek. Beste pryse, onmiddellike bevestiging.",
           home:"Tuis",
@@ -756,7 +1125,18 @@
           badgeSub:"Bespaar — geen tussenganger fooie",
           secure:"Veilige betaling", nofees:"Geen versteekte koste", instant:"Onmiddellike bevestiging", support:"Ondersteuning deur ons span",
           childHeading:"Reis jy met kinders?",
-          childText:"Dan moet jy ons kinderbeleid ken. Babas en peuters tot 4 jaar oud (op aankomsdatum) is gratis wanneer hulle 'n beskikbare bed deel. Babawiegies kan as ekstra bespreek word. Kinders van 5 tot 12 tel as kinders. Vanaf 12 jaar oud tel jongmense as volwassenes."},
+          childText:"Dan moet jy ons kinderbeleid ken. Babas en peuters tot 4 jaar oud (op aankomsdatum) is gratis wanneer hulle 'n beskikbare bed deel. Babawiegies kan as ekstra bespreek word. Kinders van 5 tot 12 tel as kinders. Vanaf 12 jaar oud tel jongmense as volwassenes.",
+          modalTitle:"Hoekom direk bespreek?",
+          modalRate:"Beste Prys Gewaarborg",
+          modalRateDesc:"Laagste pryse wanneer jy direk bespreek",
+          modalSecure:"Veilige betaling",
+          modalSecureDesc:"Jou data is beskerm met standaard enkripsie",
+          modalNofees:"Geen versteekte koste",
+          modalNofeesDesc:"Wat jy sien is wat jy betaal - deursigtige pryse",
+          modalInstant:"Onmiddellike bevestiging",
+          modalInstantDesc:"Ontvang jou besprekingsbevestiging onmiddellik",
+          modalSupport:"DEVOCEAN Span-ondersteuning",
+          modalSupportDesc:"Persoonlike bystand van ons toegewyde span"},
       zu:{title:"Bhukha ukuhlala kwakho – DEVOCEAN Lodge",
           desc:"Ikhasi lokuphatha okuqondile le-DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Amanani amahle, isiqinisekiso esisheshayo.",
           home:"Ikhaya",
@@ -770,7 +1150,18 @@
           badgeSub:"Londoloza — ayikho imali yokuhola",
           secure:"Ukukhokha okuphephile", nofees:"Ayikho izindleko ezifihlakele", instant:"Isiqinisekiso esisheshayo", support:"Ukwesekwa yithimba lethu",
           childHeading:"Uvakasha nezingane?",
-          childText:"Kufanele wazi inqubomgomo yethu yezingane. Izinsana nezingane ezingaphansi kweminyaka engu-4 (ngosuku lokufika) zimahhala lapho zabelana ngombhede otholakalayo. Ama-babycots angabhukwa njengengeziwe. Izingane ezisukela ku-5 kuya ku-12 zibalwa njengezingane. Kusukela eminyakeni engu-12 intsha ibalwa njengabantu abadala."},
+          childText:"Kufanele wazi inqubomgomo yethu yezingane. Izinsana nezingane ezingaphansi kweminyaka engu-4 (ngosuku lokufika) zimahhala lapho zabelana ngombhede otholakalayo. Ama-babycots angabhukwa njengengeziwe. Izingane ezisukela ku-5 kuya ku-12 zibalwa njengezingane. Kusukela eminyakeni engu-12 intsha ibalwa njengabantu abadala.",
+          modalTitle:"Kungani ubhukha ngqo?",
+          modalRate:"Inani Elihle Kuqinisekisiwe",
+          modalRateDesc:"Amanani aphansi kakhulu lapho ubhukha ngqo",
+          modalSecure:"Ukukhokha okuphephile",
+          modalSecureDesc:"Idatha yakho ivikelwe nge-encryption evamile",
+          modalNofees:"Ayikho izindleko ezifihlakele",
+          modalNofeesDesc:"Lokho okubonayo yilokho okukhokha - amanani acace",
+          modalInstant:"Isiqinisekiso esisheshayo",
+          modalInstantDesc:"Thola isiqinisekiso sakho sokubhukha ngokushesha",
+          modalSupport:"Ukwesekwa kwethimba le-DEVOCEAN",
+          modalSupportDesc:"Usizo lomuntu siqu oluvela ethimbeni lethu elizinikele"},
       sw:{title:"Weka nafasi yako ya kukaa – DEVOCEAN Lodge",
           desc:"Ukurasa wa kuweka nafasi moja kwa moja wa DEVOCEAN Lodge, Ponta do Ouro, Msumbiji. Bei bora, uthibitisho wa haraka.",
           home:"Nyumbani",
@@ -784,7 +1175,18 @@
           badgeSub:"Okoa — hakuna ada za wawasiliani",
           secure:"Malipo salama", nofees:"Hakuna gharama zilizoficha", instant:"Uthibitisho wa haraka", support:"Msaada kutoka kwa timu yetu",
           childHeading:"Unasafiri na watoto?",
-          childText:"Basi unapaswa kujua sera yetu ya watoto. Watoto wachanga na watoto wadogo hadi miaka 4 (katika tarehe ya kuwasili) ni bure wanaposhiriki kitanda kinachopatikana. Vitanda vya watoto wachanga vinaweza kuhifadhiwa kama nyongeza. Watoto kutoka miaka 5 hadi 12 wanahesabiwa kama watoto. Kuanzia miaka 12 vijana wanahesabiwa kama watu wazima."}
+          childText:"Basi unapaswa kujua sera yetu ya watoto. Watoto wachanga na watoto wadogo hadi miaka 4 (katika tarehe ya kuwasili) ni bure wanaposhiriki kitanda kinachopatikana. Vitanda vya watoto wachanga vinaweza kuhifadhiwa kama nyongeza. Watoto kutoka miaka 5 hadi 12 wanahesabiwa kama watoto. Kuanzia miaka 12 vijana wanahesabiwa kama watu wazima.",
+          modalTitle:"Kwa nini uweke nafasi moja kwa moja?",
+          modalRate:"Bei Bora Imethibitishwa",
+          modalRateDesc:"Bei za chini zaidi unapoweka nafasi moja kwa moja",
+          modalSecure:"Malipo salama",
+          modalSecureDesc:"Data yako inalindwa kwa usimbaji fiche wa kiwango cha sekta",
+          modalNofees:"Hakuna gharama zilizoficha",
+          modalNofeesDesc:"Unachokiona ndivyo unacholipa - bei wazi",
+          modalInstant:"Uthibitisho wa haraka",
+          modalInstantDesc:"Pokea uthibitisho wako wa uhifadhi mara moja",
+          modalSupport:"Msaada wa timu ya DEVOCEAN",
+          modalSupportDesc:"Msaada wa kibinafsi kutoka kwa timu yetu iliyojitolea"}
     };
 
     // 3) Apply language, fill UI (retry if DOM not ready), set Beds24 iframe
@@ -820,6 +1222,31 @@
         document.getElementById("t-child-text").textContent = TT.childText;
         document.getElementById("t-back").textContent = TT.back;
         document.getElementById("t-home").textContent = TT.home;
+        
+        // Modal translations
+        const modalTitle = document.getElementById("t-modal-title");
+        const modalRate = document.getElementById("t-modal-rate");
+        const modalRateDesc = document.getElementById("t-modal-rate-desc");
+        const modalSecure = document.getElementById("t-modal-secure");
+        const modalSecureDesc = document.getElementById("t-modal-secure-desc");
+        const modalNofees = document.getElementById("t-modal-nofees");
+        const modalNofeesDesc = document.getElementById("t-modal-nofees-desc");
+        const modalInstant = document.getElementById("t-modal-instant");
+        const modalInstantDesc = document.getElementById("t-modal-instant-desc");
+        const modalSupport = document.getElementById("t-modal-support");
+        const modalSupportDesc = document.getElementById("t-modal-support-desc");
+        
+        if (modalTitle) modalTitle.textContent = TT.modalTitle;
+        if (modalRate) modalRate.textContent = TT.modalRate;
+        if (modalRateDesc) modalRateDesc.textContent = TT.modalRateDesc;
+        if (modalSecure) modalSecure.textContent = TT.modalSecure;
+        if (modalSecureDesc) modalSecureDesc.textContent = TT.modalSecureDesc;
+        if (modalNofees) modalNofees.textContent = TT.modalNofees;
+        if (modalNofeesDesc) modalNofeesDesc.textContent = TT.modalNofeesDesc;
+        if (modalInstant) modalInstant.textContent = TT.modalInstant;
+        if (modalInstantDesc) modalInstantDesc.textContent = TT.modalInstantDesc;
+        if (modalSupport) modalSupport.textContent = TT.modalSupport;
+        if (modalSupportDesc) modalSupportDesc.textContent = TT.modalSupportDesc;
         
         // Update home button to preserve language
         const hb = document.getElementById("homeBtn"); 
@@ -924,6 +1351,33 @@
       // Check initial state
       toggleBackToTopButton();
     })();
+
+    // ===== Benefits Modal Functions =====
+    function openBenefitsModal() {
+      const modal = document.getElementById('benefitsModal');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    
+    function closeBenefitsModal(event) {
+      if (event && event.target !== event.currentTarget && event.type === 'click') {
+        return;
+      }
+      const modal = document.getElementById('benefitsModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    
+    // Close modal with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeBenefitsModal();
+      }
+    });
 
     // ===== Unit Navigation with Room ID Switching =====
     (function() {
