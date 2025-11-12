@@ -1935,20 +1935,27 @@
       if (md) md.setAttribute('content', TT.desc);
 
       function fill(){
-        const ids = ["t-h1","homeBtn","t-howto-heading","t-howto-step1","t-howto-step2","t-howto-step3","t-howto-step4","t-currency-note","t-currency-converter","t-child-heading","t-back","t-home","t-child-baby-title","t-child-children-title","t-child-youngster-title"];
+        const ids = ["t-h1","homeBtn","t-howto-heading","t-currency-note","t-currency-converter","t-child-heading","t-back","t-home","t-howto-step1-desc","t-child-baby-title","t-child-children-title","t-child-youngster-title"];
         if (ids.some(id => !document.getElementById(id))) return false;
         
         document.getElementById("t-h1").textContent = TT.h1;
         document.getElementById("t-howto-heading").textContent = TT.howtoHeading;
-        document.getElementById("t-howto-step1").textContent = TT.howtoStep1;
-        document.getElementById("t-howto-step2").textContent = TT.howtoStep2;
-        document.getElementById("t-howto-step3").textContent = TT.howtoStep3;
-        document.getElementById("t-howto-step4").textContent = TT.howtoStep4;
         document.getElementById("t-currency-note").textContent = TT.currencyNote;
         document.getElementById("t-currency-converter").textContent = TT.currencyConverter;
         document.getElementById("t-child-heading").textContent = TT.childHeading;
         document.getElementById("t-back").textContent = TT.back;
         document.getElementById("t-home").textContent = TT.home;
+        
+        // How to Book badge translations (if elements exist)
+        const howtoStep1Desc = document.getElementById("t-howto-step1-desc");
+        const howtoStep2Desc = document.getElementById("t-howto-step2-desc");
+        const howtoStep3Desc = document.getElementById("t-howto-step3-desc");
+        const howtoStep4Desc = document.getElementById("t-howto-step4-desc");
+        
+        if (howtoStep1Desc) howtoStep1Desc.textContent = TT.howtoStep1;
+        if (howtoStep2Desc) howtoStep2Desc.textContent = TT.howtoStep2;
+        if (howtoStep3Desc) howtoStep3Desc.textContent = TT.howtoStep3;
+        if (howtoStep4Desc) howtoStep4Desc.textContent = TT.howtoStep4;
         
         // Child policy badge translations
         const babyTitle = document.getElementById("t-child-baby-title");
