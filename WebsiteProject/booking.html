@@ -339,29 +339,72 @@
     }
     .modal-benefits{
       display:grid;
-      gap:16px;
+      grid-template-columns:1fr;
+      gap:14px;
     }
+    
+    @media (min-width:600px){
+      .modal-benefits{
+        grid-template-columns:repeat(2, 1fr);
+        gap:16px;
+      }
+    }
+    
+    @media (min-width:960px){
+      .modal-benefits{
+        grid-template-columns:repeat(3, 1fr);
+        gap:18px;
+      }
+    }
+    
     .modal-benefit-item{
-      background:#fef9f5;
-      border:2px solid #eee;
-      border-radius:10px;
-      padding:16px 18px;
+      border-radius:12px;
+      padding:20px 16px;
       display:flex;
       flex-direction:column;
       align-items:center;
       gap:12px;
       text-align:center;
-      min-height:48px;
+      min-height:120px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      border:none;
+      transition:transform 0.15s ease;
+    }
+    
+    .modal-benefit-item:hover{
+      transform:translateY(-2px);
+    }
+    
+    .modal-benefit-item:nth-child(1){
+      background:linear-gradient(135deg, #ffd89b 0%, #ffb347 100%);
+    }
+    
+    .modal-benefit-item:nth-child(2){
+      background:linear-gradient(135deg, #a8e6cf 0%, #7dd3c0 100%);
+    }
+    
+    .modal-benefit-item:nth-child(3){
+      background:linear-gradient(135deg, #ffc3a0 0%, #ffafbd 100%);
+    }
+    
+    .modal-benefit-item:nth-child(4){
+      background:linear-gradient(135deg, #d4a5a5 0%, #c77dff 100%);
+    }
+    
+    .modal-benefit-item:nth-child(5){
+      background:linear-gradient(135deg, #ffcc99 0%, #ff9966 100%);
     }
     .modal-benefit-icon{
-      width:48px;
-      height:48px;
-      min-width:48px;
-      background:linear-gradient(135deg,#b65a1a 0%,#9e4b13 100%);
+      width:56px;
+      height:56px;
+      min-width:56px;
+      background:rgba(255,255,255,0.3);
+      backdrop-filter:blur(10px);
       border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
     }
     .modal-benefit-icon .ico{
       width:24px;
@@ -393,13 +436,13 @@
     .modal-benefit-title{
       font-weight:700;
       font-size:clamp(0.95rem,3.5vw,1.05rem);
-      color:#333;
+      color:#222;
       margin:0 0 6px 0;
       text-align:center;
     }
     .modal-benefit-desc{
       font-size:clamp(0.85rem,3.2vw,0.9rem);
-      color:var(--muted);
+      color:#444;
       margin:0;
       line-height:1.5;
       text-align:center;
@@ -409,9 +452,9 @@
       .modal-header{padding:18px;border-radius:12px 12px 0 0}
       .modal-header h2{font-size:clamp(1.15rem,5vw,1.4rem)}
       .modal-body{padding:18px}
-      .modal-benefit-item{padding:12px 14px;gap:10px}
-      .modal-benefit-icon{width:42px;height:42px;min-width:42px}
-      .modal-benefit-icon .ico{width:22px;height:22px}
+      .modal-benefit-item{padding:16px 14px;gap:10px;min-height:100px}
+      .modal-benefit-icon{width:48px;height:48px;min-width:48px}
+      .modal-benefit-icon .ico{width:24px;height:24px}
     }
 
     /* ===== Unit Navigation Styles ===== */
@@ -779,7 +822,7 @@
       }
     }
   </style>
-  <!-- CSS Version: 2.7 - Static benefits badges, centered text/units, white icons for visibility -->
+  <!-- CSS Version: 2.8 - Colorful gradient badges, responsive grid (1/2/3 cols), glassmorphic icons -->
   <!-- Trustindex Floating Certificate -->
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
 </head>
