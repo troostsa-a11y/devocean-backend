@@ -752,31 +752,116 @@
     }
     
     .info-badge-content.expanded {
-      max-height: 800px;
+      max-height: 1200px;
       opacity: 1;
       padding: 14px;
     }
     
-    .info-badge-content ol {
+    /* How to Book Badge Grid - Similar to Benefits */
+    .howto-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    
+    @media (min-width: 600px) {
+      .howto-badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .howto-badge-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      min-height: 140px;
+    }
+    
+    .howto-badge-item:nth-child(1) {
+      background: linear-gradient(135deg, #b8860b 0%, #9e7c0a 100%);
+    }
+    
+    .howto-badge-item:nth-child(2) {
+      background: linear-gradient(135deg, #e67e50 0%, #d4511f 100%);
+    }
+    
+    .howto-badge-item:nth-child(3) {
+      background: linear-gradient(135deg, #c4581a 0%, #a04d19 100%);
+    }
+    
+    .howto-badge-item:nth-child(4) {
+      background: linear-gradient(135deg, #e66940 0%, #d4472d 100%);
+    }
+    
+    .howto-badge-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .howto-badge-icon .ico {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
       margin: 0;
-      padding-left: 18px;
-      font-size: clamp(0.85rem,3.5vw,0.9rem);
-      line-height: 1.6;
-      color: #333;
     }
     
-    .info-badge-content li {
-      margin-bottom: 10px;
+    .howto-badge-icon .ico.home {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Cpolyline points='9 22 9 12 15 12 15 22'/%3E%3C/svg%3E");
     }
     
-    .info-badge-content li:last-child {
-      margin-bottom: 0;
+    .howto-badge-icon .ico.calendar {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-icon .ico.users {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-icon .ico.click {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11l3 3L22 4'/%3E%3Cpath d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-text {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .howto-badge-title {
+      font-weight: 700;
+      font-size: clamp(0.95rem,3.5vw,1.05rem);
+      margin: 0 0 6px 0;
+      text-align: center;
+      color: #ffffff !important;
+    }
+    
+    .howto-badge-desc {
+      font-size: clamp(0.85rem,3.2vw,0.9rem);
+      margin: 0;
+      line-height: 1.5;
+      text-align: center;
+      color: #fffaf0 !important;
     }
     
     @media (min-width: 640px) {
       .info-badge{padding: 16px 20px}
       .info-badge-content{padding: 0 18px}
       .info-badge-content.expanded{padding: 16px 18px}
+      .howto-badge-item{padding: 18px 16px;min-height:150px}
     }
 
     /* ===== Floating Back to Top Button ===== */
@@ -946,13 +1031,45 @@
                 <span class="info-badge-chevron">▼</span>
               </div>
               <div class="info-badge-content" id="howToBookContent">
-                <ol id="t-howto-list">
-                  <li id="t-howto-step1">Choose your unit</li>
-                  <li id="t-howto-step2">Decide on the dates (the longer you stay, the better the rate)</li>
-                  <li id="t-howto-step3">Fill in the number of adults/children (max. 2 adults + 1 child or 1 adult and 2 children per unit except for the Garden Cottage max. 2 adults or 1 adult + 1 child)</li>
-                  <li id="t-howto-step4">And click the Book button to finalize the reservation</li>
-                </ol>
-                <p style="margin-top: 12px; font-size: 0.85rem; font-style: italic; opacity: 0.9;">
+                <div class="howto-badge-grid">
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico home"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step1-title">Choose your unit</p>
+                      <p class="howto-badge-desc" id="t-howto-step1-desc">Safari Tent • Comfort Tent • Garden Cottage • Thatched Chalet</p>
+                    </div>
+                  </div>
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico calendar"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step2-title">Decide on the Dates</p>
+                      <p class="howto-badge-desc" id="t-howto-step2-desc">The longer you stay, the better the rate</p>
+                    </div>
+                  </div>
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico users"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step3-title">Fill in the number of adults/children</p>
+                      <p class="howto-badge-desc" id="t-howto-step3-desc">Max. 2 adults + 1 child or 1 adult and 2 children per unit. Except for the Garden Cottage; max. 2 adults or 1 adult + 1 child</p>
+                    </div>
+                  </div>
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico click"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step4-title">Click the Book button</p>
+                      <p class="howto-badge-desc" id="t-howto-step4-desc">And fill in the form</p>
+                    </div>
+                  </div>
+                </div>
+                <p style="margin-top: 16px; font-size: 0.85rem; font-style: italic; opacity: 0.9; text-align: center;">
                   <span id="t-currency-note">Need to convert US$ into your currency use the </span><a id="currency-converter-link" 
                      href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=32" 
                      target="_blank" 
