@@ -1400,15 +1400,16 @@
       if (!langCode) return 'en';
       const s = String(langCode).toLowerCase();
       
-      if (s === 'en-gb' || s === 'en') return 'en';
+      // Normalize to TR object keys (NOT main site critical.js keys)
+      if (s === 'en-gb' || s === 'en-us' || s === 'en') return 'en';
       if (s === 'de-de' || s === 'de') return 'de';
       if (s === 'es-es' || s === 'es') return 'es';
       if (s === 'fr-fr' || s === 'fr') return 'fr';
       if (s === 'it-it' || s === 'it') return 'it';
       if (s === 'nl-nl' || s === 'nl') return 'nl';
       if (s === 'pt-pt' || s === 'pt-br' || s === 'pt-mz' || s === 'pt') return 'pt';
-      if (s === 'ru') return 'ru';
-      if (s === 'zh-cn' || s === 'zh') return 'zh';
+      if (s === 'ru' || s === 'ru-ru') return 'ru';
+      if (s === 'zh-cn' || s === 'zh-tw' || s === 'zh') return 'zh';
       if (s === 'sv' || s === 'sv-se') return 'sv';
       if (s === 'ja-jp' || s === 'ja') return 'ja';
       if (s === 'pl' || s === 'pl-pl') return 'pl';
