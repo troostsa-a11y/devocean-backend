@@ -73,24 +73,53 @@ export const directionsUrl = (lat, lng) =>
 // Convert Hotelrunner locale codes to ISO 639-1 two-letter codes (lowercase)
 const localeToISO6391 = (locale) => {
   const mapping = {
-    "en-GB": "en",
-    "en-US": "en",
-    "pt-PT": "pt",
-    "pt-BR": "pt",
-    "pt-MZ": "pt",
-    "nl-NL": "nl",
-    "fr-FR": "fr",
-    "it-IT": "it",
-    "de-DE": "de",
-    "es-ES": "es",
-    "ja-JP": "ja",
-    "zh-CN": "zh",
-    "af-ZA": "af",
-    "sv": "sv",
-    "pl": "pl",
-    "ru": "ru",
-    "zu": "zu",
-    "sw": "sw"
+    // English variants
+    "en-GB": "en", "en-US": "en", "en-AU": "en", "en-NZ": "en", "en-CA": "en", "en-ZA": "en",
+    
+    // Portuguese variants
+    "pt-PT": "pt", "pt-BR": "pt", "pt-MZ": "pt", "pt-AO": "pt",
+    
+    // Dutch variants
+    "nl-NL": "nl", "nl-BE": "nl", "nl-SR": "nl",
+    
+    // French variants
+    "fr-FR": "fr", "fr-BE": "fr", "fr-CH": "fr", "fr-CA": "fr", "fr-MC": "fr", "fr-LU": "fr",
+    
+    // Italian variants
+    "it-IT": "it", "it-CH": "it",
+    
+    // German variants
+    "de-DE": "de", "de-AT": "de", "de-CH": "de", "de-LI": "de",
+    
+    // Spanish variants
+    "es-ES": "es", "es-MX": "es", "es-AR": "es", "es-CO": "es", "es-PE": "es", "es-VE": "es",
+    "es-CL": "es", "es-EC": "es", "es-GT": "es", "es-CU": "es", "es-BO": "es", "es-DO": "es",
+    "es-HN": "es", "es-PY": "es", "es-SV": "es", "es-NI": "es", "es-CR": "es", "es-PA": "es",
+    "es-UY": "es", "es-GQ": "es",
+    
+    // Swedish variants
+    "sv": "sv", "sv-SE": "sv", "sv-FI": "sv",
+    
+    // Polish
+    "pl": "pl", "pl-PL": "pl",
+    
+    // Japanese variants
+    "ja-JP": "ja", "ja": "ja",
+    
+    // Chinese variants
+    "zh-CN": "zh", "zh-HK": "zh", "zh-TW": "zh", "zh-SG": "zh", "zh": "zh",
+    
+    // Russian variants
+    "ru": "ru", "ru-RU": "ru", "ru-BY": "ru", "ru-KZ": "ru", "ru-UA": "ru", "ru-UZ": "ru", "ru-KG": "ru",
+    
+    // Afrikaans variants
+    "af-ZA": "af", "af": "af",
+    
+    // Zulu variants
+    "zu": "zu", "zu-ZA": "zu",
+    
+    // Swahili variants
+    "sw": "sw", "sw-KE": "sw", "sw-TZ": "sw", "sw-UG": "sw"
   };
   return mapping[locale] || "en";
 };
