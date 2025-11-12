@@ -1,0 +1,95 @@
+TXT
+default._bimi
+"v=BIMI1; l=https://devoceanlodge.com/logo/logo.svg; a=; avp=personal;"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"v=spf1 ip4:156.38.221.244 a:mail.devoceanlodge.com ~all"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"google-site-verification=oUh80vbW8FcC8aNExsceeSX3J0H3aGqi9VaGOUUqQOM"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"MS=ms99398574"
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"stripe-verification=0db69de47ed2da0f3fc7acab190350630207047c9f3b418a781bb65b97baa213"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"pinterest-site-verification=755ae0ae31b33c44268cdf21fb41ae13"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"google-site-verification=Aln0YG-Ied6Yb12jb2lvENfbvge_zHPU-MIn6w1Gll0"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+_dmarc
+"v=DMARC1; p=none; rua=mailto:a17e19e91d574bfdb9567b6c801a7791@dmarc-reports.cloudflare.net,mailto:dmarc_agg@vali.email;"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+_domainkey
+"o=-"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+_mailchannels
+"v=mc1 cfid=devocean-lodge.workers.dev cfid=devocean-lodge.pages.dev"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+resend._domainkey
+"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7mzM5mPxvVSI4d77pCTX2mmkLUeyfrDERIWYYEBYwcLHXb2llHxj/obzymrcNVeu/YYsStliP/da67Mfnzy2S0/FWvw7FQ9ES0Rl8rEcEKnTUyXXWZItcsJ5YgKLGOfU2SGyJ/32y7mm2pOKRfixTuxsdPLaHM1Y4sFkauKATYQIDAQAB"
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+send
+"v=spf1 include:amazonses.com -all"
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
