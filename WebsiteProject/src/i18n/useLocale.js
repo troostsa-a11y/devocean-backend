@@ -775,6 +775,7 @@ export function useLocale() {
     setLangState(normalized);
     safeLocalStorage.setItem("site.lang", normalized);
     safeLocalStorage.setItem("site.lang_source", "user");
+    safeLocalStorage.setItem("site.lang.version", "2"); // Mark with current version to prevent auto-detection override
     document.documentElement.setAttribute("lang", normalized);
     
     // Don't change currency when language changes - currency is tied to region/location, not language
