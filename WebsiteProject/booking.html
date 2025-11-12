@@ -2043,9 +2043,14 @@
         const howtoStep4Desc = document.getElementById("t-howto-step4-desc");
         
         // Step 1: Build dynamically from UNIT_TRANSLATIONS
-        if (howtoStep1Desc && UNIT_TRANSLATIONS[code]) {
-          const units = UNIT_TRANSLATIONS[code];
-          howtoStep1Desc.textContent = `${units.safari} • ${units.comfort} • ${units.cottage} • ${units.chalet}`;
+        if (howtoStep1Desc) {
+          if (UNIT_TRANSLATIONS[code]) {
+            const units = UNIT_TRANSLATIONS[code];
+            howtoStep1Desc.textContent = `${units.safari} • ${units.comfort} • ${units.cottage} • ${units.chalet}`;
+            console.log('✅ Step 1 translated to:', code, howtoStep1Desc.textContent);
+          } else {
+            console.warn('⚠️ UNIT_TRANSLATIONS missing for code:', code, 'Available:', Object.keys(UNIT_TRANSLATIONS));
+          }
         }
         if (howtoStep2Desc) howtoStep2Desc.textContent = TT.howtoStep2;
         if (howtoStep3Desc) howtoStep3Desc.textContent = TT.howtoStep3;
