@@ -6,16 +6,17 @@ The story.html page now has a complete dynamic translation system that automatic
 ## How It Works
 
 ### Language Detection Priority
-The system uses a multi-tier approach (same as the main site):
+The system uses the same multi-tier approach as booking.html:
 
-1. **localStorage** - Checks if user has previously selected a language
-2. **Browser Language** - Detects browser language preferences
-3. **IP-based Detection** - Uses Cloudflare's IP geolocation to determine country, then maps to language
+1. **URL Parameter** - `?lang=XX` overrides all other settings
+2. **localStorage** - User-selected language persisted with protection flags (`site.lang_source="user"` and `site.lang.version="2"`)
+3. **Browser Language** - Detects browser language preferences (navigator.language)
 4. **Fallback** - Defaults to English if no match found
 
+User can override auto-detection by selecting a language, which is then saved to localStorage and protected from automatic changes.
+
 ### Special Cases
-- **US English**: Visitors with `en-US` browser settings or from the US get US English (not UK English)
-- **Japanese Visitors**: Even with English browsers, visitors from Japan will see Japanese content
+- **US English**: Visitors with `en-US` browser settings get US English (not UK English)
 - **Portuguese Variants**: System supports pt-BR (Brazil), pt-PT (Portugal), and pt-MZ (Mozambique)
 
 ## Files
@@ -142,12 +143,7 @@ cta
 
 ## Cloudflare Integration
 
-The system relies on Cloudflare Pages Functions middleware (`functions/_middleware.js`) which:
-1. Reads visitor's country from `request.cf.country`
-2. Injects it as `window.__CF_COUNTRY__` in the HTML
-3. Makes it available before any scripts run
-
-This enables accurate IP-based language detection.
+The system integrates with Cloudflare Pages Functions middleware (`functions/_middleware.js`) for consistent language handling across the site.
 
 ## Maintenance
 
