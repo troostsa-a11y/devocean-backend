@@ -1586,10 +1586,15 @@ function applyTranslations(TT, code, siteCurrency) {
   if (elModalSupport) elModalSupport.textContent = TT.modalSupport;
   if (elModalSupportDesc) elModalSupportDesc.textContent = TT.modalSupportDesc;
   
-  // Update home button to preserve language
+  // Update home button to preserve language + force pill shape with inline styles
   const homeBtn = document.getElementById("homeBtn"); 
   if (homeBtn) {
     homeBtn.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
+    // Force pill shape with inline styles that override external stylesheets
+    homeBtn.style.setProperty('width', 'auto', 'important');
+    homeBtn.style.setProperty('height', 'auto', 'important');
+    homeBtn.style.setProperty('border-radius', '999px', 'important');
+    homeBtn.style.setProperty('padding', window.innerWidth >= 640 ? '12px 18px' : '10px 16px', 'important');
   }
   
   // Update currency converter link
