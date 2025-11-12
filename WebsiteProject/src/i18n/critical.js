@@ -10,7 +10,7 @@ export const CRITICAL_NAV = {
     gallery: "Gallery",
     location: "Location",
     contact: "Contact",
-    bookNow: "Book Now",
+    bookNow: "Rates & Availability",
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
     heroExplore: "Explore the lodge"
@@ -23,7 +23,7 @@ export const CRITICAL_NAV = {
     gallery: "Gallery",
     location: "Location",
     contact: "Contact",
-    bookNow: "Book Now",
+    bookNow: "Rates & Availability",
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
     heroExplore: "Explore the lodge"
@@ -36,7 +36,7 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Localização",
     contact: "Contato",
-    bookNow: "Reserve já"
+    bookNow: "Tarifas e disponibilidade"
   },
   "pt-BR": {
     home: "Início",
@@ -46,7 +46,7 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Localização",
     contact: "Contato",
-    bookNow: "Reserve já"
+    bookNow: "Tarifas e disponibilidade"
   },
   "nl-NL": {
     home: "Home",
@@ -56,7 +56,7 @@ export const CRITICAL_NAV = {
     gallery: "Galerij",
     location: "Locatie",
     contact: "Contact",
-    bookNow: "Boek nu"
+    bookNow: "Tarieven & Beschikbaarheid"
   },
   "fr-FR": {
     home: "Accueil",
@@ -66,7 +66,7 @@ export const CRITICAL_NAV = {
     gallery: "Galerie",
     location: "Localisation",
     contact: "Contact",
-    bookNow: "Réserver"
+    bookNow: "Tarifs & Disponibilité"
   },
   "it-IT": {
     home: "Home",
@@ -76,7 +76,7 @@ export const CRITICAL_NAV = {
     gallery: "Galleria",
     location: "Posizione",
     contact: "Contatto",
-    bookNow: "Prenota"
+    bookNow: "Tariffe & Disponibilità"
   },
   "de-DE": {
     home: "Startseite",
@@ -86,7 +86,7 @@ export const CRITICAL_NAV = {
     gallery: "Galerie",
     location: "Standort",
     contact: "Kontakt",
-    bookNow: "Jetzt buchen"
+    bookNow: "Preise & Verfügbarkeit"
   },
   "es-ES": {
     home: "Inicio",
@@ -96,7 +96,7 @@ export const CRITICAL_NAV = {
     gallery: "Galería",
     location: "Ubicación",
     contact: "Contacto",
-    bookNow: "Reservar"
+    bookNow: "Tarifas & Disponibilidad"
   },
   sv: {
     home: "Hem",
@@ -116,7 +116,7 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Lokalizacja",
     contact: "Kontakt",
-    bookNow: "Rezerwuj"
+    bookNow: "Ceny i dostępność"
   },
   "ja-JP": {
     home: "ホーム",
@@ -126,17 +126,17 @@ export const CRITICAL_NAV = {
     gallery: "ギャラリー",
     location: "場所",
     contact: "連絡先",
-    bookNow: "今すぐ予約"
+    bookNow: "料金 & 空室状況"
   },
   "zh-CN": {
     home: "首页",
     stay: "住宿",
-    experiences: "体验",
+    experiences: "体験",
     todo: "活动",
     gallery: "图库",
     location: "位置",
     contact: "联系我们",
-    bookNow: "立即预订"
+    bookNow: "价格与空房情况"
   },
   ru: {
     home: "Главная",
@@ -156,7 +156,7 @@ export const CRITICAL_NAV = {
     gallery: "Galery",
     location: "Ligging",
     contact: "Kontak",
-    bookNow: "Bespreek nou"
+    bookNow: "Tariewe en beskikbaarheid"
   },
   zu: {
     home: "Ikhaya",
@@ -166,7 +166,7 @@ export const CRITICAL_NAV = {
     gallery: "Igalari",
     location: "Indawo",
     contact: "Xhumana nathi",
-    bookNow: "Bhukha manje"
+    bookNow: "Amanani kanye nokutholakala"
   },
   sw: {
     home: "Nyumbani",
