@@ -1916,6 +1916,100 @@
           modalSupportDesc:"Msaada wa kibinafsi kutoka kwa timu yetu iliyojitolea"}
     };
 
+    // Translations for unit names (shared by multiple components)
+    const UNIT_TRANSLATIONS = {
+      en: {
+        safari: 'Safari Tent',
+        comfort: 'Comfort Tent',
+        cottage: 'Garden Cottage',
+        chalet: 'Thatched Chalet'
+      },
+      de: {
+        safari: 'Safari Zelt',
+        comfort: 'Comfort Zelt',
+        cottage: 'Garten Cottage',
+        chalet: 'Reet Chalet'
+      },
+      es: {
+        safari: 'Tienda Safari',
+        comfort: 'Tienda Comfort',
+        cottage: 'Cottage de Jardín',
+        chalet: 'Chalet de Paja'
+      },
+      fr: {
+        safari: 'Tente Safari',
+        comfort: 'Tente Comfort',
+        cottage: 'Cottage de Jardin',
+        chalet: 'Chalet de Chaume'
+      },
+      it: {
+        safari: 'Tenda Safari',
+        comfort: 'Tenda Comfort',
+        cottage: 'Cottage da Giardino',
+        chalet: 'Chalet di Paglia'
+      },
+      nl: {
+        safari: 'Safari Tent',
+        comfort: 'Comfort Tent',
+        cottage: 'Tuin Cottage',
+        chalet: 'Rieten Chalet'
+      },
+      pt: {
+        safari: 'Tenda Safari',
+        comfort: 'Tenda Comfort',
+        cottage: 'Cottage de Jardim',
+        chalet: 'Chalé de Palha'
+      },
+      ru: {
+        safari: 'Палатка Сафари',
+        comfort: 'Палатка Комфорт',
+        cottage: 'Садовый Коттедж',
+        chalet: 'Соломенный Шале'
+      },
+      zh: {
+        safari: 'Safari 帐篷',
+        comfort: '舒适帐篷',
+        cottage: '花园小屋',
+        chalet: '茅草木屋'
+      },
+      sv: {
+        safari: 'Safari Tält',
+        comfort: 'Comfort Tält',
+        cottage: 'Trädgård Cottage',
+        chalet: 'Stråtak Chalet'
+      },
+      ja: {
+        safari: 'サファリテント',
+        comfort: 'コンフォートテント',
+        cottage: 'ガーデンコテージ',
+        chalet: 'サッチシャレ'
+      },
+      pl: {
+        safari: 'Namiot Safari',
+        comfort: 'Namiot Comfort',
+        cottage: 'Domek Ogrodowy',
+        chalet: 'Chata ze Strzechy'
+      },
+      af: {
+        safari: 'Safari Tent',
+        comfort: 'Comfort Tent',
+        cottage: 'Tuin Cottage',
+        chalet: 'Grasdak Chalet'
+      },
+      zu: {
+        safari: 'Itende le-Safari',
+        comfort: 'Itende le-Comfort',
+        cottage: 'I-Cottage yensimini',
+        chalet: 'I-Chalet ye-Thatch'
+      },
+      sw: {
+        safari: 'Hema ya Safari',
+        comfort: 'Hema ya Comfort',
+        cottage: 'Cottage ya Bustani',
+        chalet: 'Chalet ya Nyasi'
+      }
+    };
+
     // 3) Apply language, fill UI (retry if DOM not ready), set Beds24 iframe
     (function () {
       const siteLang = detectSiteLanguage();
@@ -2198,100 +2292,6 @@
         comfort: '620540',  // Comfort Tent - private bathroom
         cottage: '620541',  // Garden Cottage - AC
         chalet: '620543'    // Thatched Chalet - AC
-      };
-      
-      // Translations for unit buttons (all 17 website languages)
-      const UNIT_TRANSLATIONS = {
-        en: {
-          safari: 'Safari Tent',
-          comfort: 'Comfort Tent',
-          cottage: 'Garden Cottage',
-          chalet: 'Thatched Chalet'
-        },
-        de: {
-          safari: 'Safari Zelt',
-          comfort: 'Comfort Zelt',
-          cottage: 'Garten Cottage',
-          chalet: 'Reet Chalet'
-        },
-        es: {
-          safari: 'Tienda Safari',
-          comfort: 'Tienda Comfort',
-          cottage: 'Cottage de Jardín',
-          chalet: 'Chalet de Paja'
-        },
-        fr: {
-          safari: 'Tente Safari',
-          comfort: 'Tente Comfort',
-          cottage: 'Cottage de Jardin',
-          chalet: 'Chalet de Chaume'
-        },
-        it: {
-          safari: 'Tenda Safari',
-          comfort: 'Tenda Comfort',
-          cottage: 'Cottage da Giardino',
-          chalet: 'Chalet di Paglia'
-        },
-        nl: {
-          safari: 'Safari Tent',
-          comfort: 'Comfort Tent',
-          cottage: 'Tuin Cottage',
-          chalet: 'Rieten Chalet'
-        },
-        pt: {
-          safari: 'Tenda Safari',
-          comfort: 'Tenda Comfort',
-          cottage: 'Cottage de Jardim',
-          chalet: 'Chalé de Palha'
-        },
-        ru: {
-          safari: 'Палатка Сафари',
-          comfort: 'Палатка Комфорт',
-          cottage: 'Садовый Коттедж',
-          chalet: 'Соломенный Шале'
-        },
-        zh: {
-          safari: 'Safari 帐篷',
-          comfort: '舒适帐篷',
-          cottage: '花园小屋',
-          chalet: '茅草木屋'
-        },
-        sv: {
-          safari: 'Safari Tält',
-          comfort: 'Comfort Tält',
-          cottage: 'Trädgård Cottage',
-          chalet: 'Stråtak Chalet'
-        },
-        ja: {
-          safari: 'サファリテント',
-          comfort: 'コンフォートテント',
-          cottage: 'ガーデンコテージ',
-          chalet: 'サッチシャレ'
-        },
-        pl: {
-          safari: 'Namiot Safari',
-          comfort: 'Namiot Comfort',
-          cottage: 'Domek Ogrodowy',
-          chalet: 'Chata ze Strzechy'
-        },
-        af: {
-          safari: 'Safari Tent',
-          comfort: 'Comfort Tent',
-          cottage: 'Tuin Cottage',
-          chalet: 'Grasdak Chalet'
-        },
-        zu: {
-          safari: 'Itende le-Safari',
-          comfort: 'Itende le-Comfort',
-          cottage: 'I-Cottage yensimini',
-          chalet: 'I-Chalet ye-Thatch'
-        },
-        sw: {
-          safari: 'Hema ya Safari',
-          comfort: 'Hema ya Comfort',
-          cottage: 'Cottage ya Bustani',
-          chalet: 'Chalet ya Nyasi'
-        }
       };
       
       // Update iframe URL with selected room
