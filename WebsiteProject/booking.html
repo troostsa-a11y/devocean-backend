@@ -474,21 +474,56 @@
       gap: 10px;
       font-weight: 600;
       font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    
+    .child-featured-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(158, 75, 19, 0.35);
+      background: linear-gradient(135deg, #b05f25 0%, #b65a1a 100%);
+    }
+    
+    .child-featured-badge:active {
+      transform: translateY(0);
     }
     
     .child-featured-badge .icon {
       font-size: 24px;
     }
     
+    .child-policy-chevron {
+      position: absolute;
+      right: 18px;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+      opacity: 0.9;
+    }
+    
+    .child-featured-badge.expanded .child-policy-chevron {
+      transform: rotate(-180deg);
+    }
+    
     .child-policy-content {
       background: #fef9f5;
       border: 2px solid var(--brand);
       border-radius: 12px;
-      padding: 16px 18px;
+      padding: 0 18px;
       box-shadow: 0 2px 8px rgba(158, 75, 19, 0.12);
       flex: 1;
       display: flex;
       align-items: center;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    
+    .child-policy-content.expanded {
+      max-height: 500px;
+      opacity: 1;
+      padding: 16px 18px;
     }
     
     .child-policy-content p {
@@ -553,7 +588,7 @@
       }
     }
   </style>
-  <!-- CSS Version: 2.3 - Interactive H1 with Benefits Modal -->
+  <!-- CSS Version: 2.4 - Interactive H1 with Benefits Modal + Expandable Child Policy -->
   <!-- Trustindex Floating Certificate -->
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
 </head>
@@ -601,11 +636,12 @@
             
             <!-- Child Policy Badges -->
             <div class="child-policy-column">
-              <div class="child-featured-badge">
+              <div class="child-featured-badge" onclick="toggleChildPolicy()" data-testid="button-child-policy">
                 <span class="icon">👶</span>
                 <span id="t-child-heading">Travelling with children?</span>
+                <span class="child-policy-chevron">▼</span>
               </div>
-              <div class="child-policy-content">
+              <div class="child-policy-content" id="childPolicyContent">
                 <p id="t-child-text">Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 year youngsters count as adults.</p>
               </div>
             </div>
@@ -1303,6 +1339,24 @@
         closeBenefitsModal();
       }
     });
+
+    // ===== Child Policy Toggle =====
+    function toggleChildPolicy() {
+      const badge = document.querySelector('.child-featured-badge');
+      const content = document.getElementById('childPolicyContent');
+      
+      if (badge && content) {
+        const isExpanded = content.classList.contains('expanded');
+        
+        if (isExpanded) {
+          content.classList.remove('expanded');
+          badge.classList.remove('expanded');
+        } else {
+          content.classList.add('expanded');
+          badge.classList.add('expanded');
+        }
+      }
+    }
 
     // ===== Unit Navigation with Room ID Switching =====
     (function() {
