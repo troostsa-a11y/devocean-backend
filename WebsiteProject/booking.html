@@ -1389,18 +1389,69 @@ function detectSiteCurrency(){
   const qs = new URLSearchParams(location.search);
   const urlCur = qs.get('cur') || qs.get('currency');
   
-  // Priority 1: URL parameter
+  // Priority 1: URL parameter (explicit override)
   if (urlCur && urlCur.length === 3){ 
-    safeSetItem('site.currency', urlCur.toUpperCase()); 
     return urlCur.toUpperCase(); 
   }
   
-  // Priority 2: localStorage
-  const saved = safeGetItem('site.currency');
-  if (saved) return saved;
+  // Priority 2: Cloudflare IP geolocation (always fresh, not cached)
+  const countryCode = window.__CF_COUNTRY__;
+  if (countryCode) {
+    const currencyFromCountry = mapCountryToCurrency(countryCode);
+    if (currencyFromCountry) {
+      return currencyFromCountry;
+    }
+  }
   
   // Priority 3: Default
   return 'USD';
+}
+
+// Map country code to currency (based on Cloudflare IP geolocation)
+function mapCountryToCurrency(cc) {
+  const CC_TO_CURRENCY = {
+    // Europe
+    GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", 
+    DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", AT: "EUR",
+    FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK",
+    DK: "DKK", CH: "CHF", CZ: "CZK", HU: "HUF", RO: "RON",
+    RS: "RSD", HR: "EUR", SI: "EUR", BA: "BAM", BG: "BGN",
+    SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR",
+    CY: "EUR", LU: "EUR", IS: "ISK", LI: "CHF", MC: "EUR",
+    UA: "UAH", BY: "BYN", MD: "MDL", AL: "ALL", MK: "MKD",
+    ME: "EUR", XK: "EUR", AD: "EUR", SM: "EUR", VA: "EUR",
+    
+    // Africa
+    ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX",
+    ZW: "USD", BW: "BWP", NA: "NAD", EG: "EGP", MA: "MAD",
+    SZ: "SZL", RE: "EUR", MU: "MUR", SC: "SCR", LS: "LSL",
+    ZM: "ZMW", MW: "MWK", AO: "AOA", GH: "GHS", NG: "NGN", 
+    ET: "ETB", SD: "SDG", DZ: "DZD", TN: "TND", LY: "LYD", 
+    SN: "XOF", CI: "XOF", CM: "XAF", RW: "RWF", BI: "BIF", 
+    SO: "SOS", DJ: "DJF",
+    
+    // Americas
+    US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS",
+    CL: "CLP", CO: "COP", PE: "PEN", VE: "VES", EC: "USD",
+    UY: "UYU", PY: "PYG", BO: "BOB", CR: "CRC", PA: "PAB",
+    GT: "GTQ", HN: "HNL", SV: "USD", NI: "NIO", CU: "CUP",
+    DO: "DOP", HT: "HTG", JM: "JMD", TT: "TTD", BB: "BBD",
+    
+    // Asia & Middle East
+    CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB",
+    SG: "SGD", MY: "MYR", ID: "IDR", PH: "PHP", VN: "VND",
+    AE: "AED", SA: "SAR", QA: "QAR", KW: "KWD", BH: "BHD",
+    OM: "OMR", IL: "ILS", JO: "JOD", LB: "LBP", TR: "TRY",
+    PK: "PKR", BD: "BDT", LK: "LKR", NP: "NPR", MM: "MMK",
+    KH: "KHR", LA: "LAK", MN: "MNT", KZ: "KZT", UZ: "UZS",
+    RU: "RUB",
+    
+    // Oceania
+    AU: "AUD", NZ: "NZD", FJ: "FJD", PG: "PGK", NC: "XPF",
+    PF: "XPF", WS: "WST", TO: "TOP", VU: "VUV", SB: "SBD",
+  };
+  
+  return CC_TO_CURRENCY[cc] || null;
 }
 
 function normalizeLangCode(langCode) {
