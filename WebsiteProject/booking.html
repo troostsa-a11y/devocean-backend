@@ -711,13 +711,6 @@
             <div class="h1-frame" onclick="openBenefitsModal()" data-testid="button-h1-benefits">
               <h1 id="t-h1">Book here for Best Value</h1>
             </div>
-            <p class="note" style="margin-top: 12px; font-size: 0.95rem;">
-              <span id="t-currency-note">Need to convert US$ into your currency use the </span><a id="currency-converter-link" 
-                 href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=32" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 style="color: #9e4b13; font-weight: 600; text-decoration: underline;"><span id="t-currency-converter">currency converter</span></a>.
-            </p>
             
             <!-- How to Book Badge -->
             <div class="info-badge-column">
@@ -732,6 +725,11 @@
                   <li id="t-howto-step2">Decide on the dates (the longer you stay, the better the rate)</li>
                   <li id="t-howto-step3">Fill in the number of adults/children (max. 2 adults + 1 child or 1 adult and 2 children per unit except for the Garden Cottage max. 2 adults or 1 adult + 1 child)</li>
                   <li id="t-howto-step4">And click the Book button to finalize the reservation</li>
+                  <li id="t-howto-step5"><span id="t-currency-note">Need to convert US$ into your currency use the </span><a id="currency-converter-link" 
+                     href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=32" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     style="color: #9e4b13; font-weight: 600; text-decoration: underline;"><span id="t-currency-converter">currency converter</span></a></li>
                 </ol>
               </div>
             </div>
@@ -1318,17 +1316,17 @@
       if (md) md.setAttribute('content', TT.desc);
 
       function fill(){
-        const ids = ["t-h1","t-currency-note","t-currency-converter","homeBtn","t-howto-heading","t-howto-step1","t-howto-step2","t-howto-step3","t-howto-step4","t-child-heading","t-child-text","t-back","t-home"];
+        const ids = ["t-h1","homeBtn","t-howto-heading","t-howto-step1","t-howto-step2","t-howto-step3","t-howto-step4","t-currency-note","t-currency-converter","t-child-heading","t-child-text","t-back","t-home"];
         if (ids.some(id => !document.getElementById(id))) return false;
         
         document.getElementById("t-h1").textContent = TT.h1;
-        document.getElementById("t-currency-note").textContent = TT.currencyNote;
-        document.getElementById("t-currency-converter").textContent = TT.currencyConverter;
         document.getElementById("t-howto-heading").textContent = TT.howtoHeading;
         document.getElementById("t-howto-step1").textContent = TT.howtoStep1;
         document.getElementById("t-howto-step2").textContent = TT.howtoStep2;
         document.getElementById("t-howto-step3").textContent = TT.howtoStep3;
         document.getElementById("t-howto-step4").textContent = TT.howtoStep4;
+        document.getElementById("t-currency-note").textContent = TT.currencyNote;
+        document.getElementById("t-currency-converter").textContent = TT.currencyConverter;
         document.getElementById("t-child-heading").textContent = TT.childHeading;
         document.getElementById("t-child-text").textContent = TT.childText;
         document.getElementById("t-back").textContent = TT.back;
