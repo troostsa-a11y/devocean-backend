@@ -47,12 +47,14 @@ Email functionality is split between Cloudflare (contact forms) and Replit (auto
 ### Frontend
 - **Framework & Build:** React 18, TypeScript, Vite, Wouter for routing.
 - **UI & Styling:** shadcn/ui, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design. Inter font, card-based layouts, image-first, expandable sections, hover states, focus-visible outlines, smooth scroll, sticky header.
+- **Mobile-First Optimization (CSS v2.6):** Touch-friendly targets (min 48px), responsive typography using `clamp()`, simplified animations (transform/opacity only for performance), responsive spacing tokens (16px mobile, scales up on larger screens), `-webkit-tap-highlight-color:transparent`, `prefers-reduced-motion` support for accessibility.
 - **State Management:** TanStack Query for server state, React hooks for local state.
 - **Internationalization:** React-based i18n with lazy-loaded translations for 17 languages, locale persistence, multi-tier detection, and IP-based currency. Critical translations are pre-loaded. Experience and form translations use a two-layer and three-tier fallback system respectively.
 - **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver for image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral, Static Hero HTML pattern, INP optimization.
 - **Hero Placeholder:** A 5-second beach hero for first-time visitors, managed by `App.jsx`.
 - **SPA Routing:** Middleware-based solution (`_middleware.js`) handles 404s, serving `index.html` for HTML navigation while preserving a custom `404.html` for truly missing assets.
 - **Storage Safety Layer:** All `localStorage`/`sessionStorage` calls are wrapped with try-catch guards to prevent crashes in restricted storage environments (e.g., private/incognito mode).
+- **Booking Page UX (booking.html):** Click-to-reveal design pattern with three interactive sections: (1) H1 "Book here for Best Value" opens benefits modal with 5 badges, (2) "How to Book" expandable badge with 4 steps + currency converter note, (3) "Travelling with children?" expandable policy. All badges use chevron indicators, smooth animations, mobile-first optimizations (min 48px touch targets, responsive clamp() typography), and are fully translated across 17 languages.
 
 ### Backend
 - **Server:** Express.js automailer server runs in Replit workspace (port 3003, internal only).
