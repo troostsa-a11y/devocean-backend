@@ -166,9 +166,7 @@
     .btn.primary{background:var(--brand);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
     .btn.primary:hover{opacity:0.95;transform:translateY(-1px)}
     .btn.primary:active{opacity:0.9;transform:scale(0.98)}
-    /* Override global header styles - ensure both Back and Home buttons are pill-shaped */
-    header #backBtn.btn.primary,
-    header #homeBtn.btn.primary{width:auto!important;min-width:72px!important;height:auto!important;border-radius:999px!important;padding:10px 16px!important}
+    /* Both buttons now identical - no special overrides needed */
     @media (min-width:640px){
       .btn{padding:12px 18px;font-size:0.95rem}
       header #backBtn.btn.primary,
@@ -1065,7 +1063,7 @@
       </a>
       <div style="display: flex; gap: 10px; align-items: center;">
         <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back"><span id="t-back">Back</span></button>
-        <a id="homeBtn" class="btn primary" href="https://devoceanlodge.com" style="width:auto!important;min-width:72px!important;height:auto!important;border-radius:999px!important;" data-testid="button-home"><span id="t-home">Home</span></a>
+        <button id="homeBtn" class="btn primary" onclick="window.location.href='https://devoceanlodge.com'" role="link" data-testid="button-home"><span id="t-home">Home</span></button>
       </div>
     </div>
   </header>
@@ -1586,10 +1584,12 @@ function applyTranslations(TT, code, siteCurrency) {
   if (elModalSupport) elModalSupport.textContent = TT.modalSupport;
   if (elModalSupportDesc) elModalSupportDesc.textContent = TT.modalSupportDesc;
   
-  // Update home button to preserve language
+  // Update home button to preserve language (button navigates via onclick)
   const homeBtn = document.getElementById("homeBtn"); 
   if (homeBtn) {
-    homeBtn.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
+    homeBtn.onclick = function() {
+      window.location.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
+    };
   }
   
   // Update currency converter link
