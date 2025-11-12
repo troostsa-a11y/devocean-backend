@@ -1942,13 +1942,17 @@
         document.getElementById("t-back").textContent = TT.back;
         document.getElementById("t-home").textContent = TT.home;
         
-        // How to Book badge translations (if elements exist)
+        // How to Book badge translations
         const howtoStep1Desc = document.getElementById("t-howto-step1-desc");
         const howtoStep2Desc = document.getElementById("t-howto-step2-desc");
         const howtoStep3Desc = document.getElementById("t-howto-step3-desc");
         const howtoStep4Desc = document.getElementById("t-howto-step4-desc");
         
-        if (howtoStep1Desc) howtoStep1Desc.textContent = TT.howtoStep1;
+        // Step 1: Build dynamically from UNIT_TRANSLATIONS
+        if (howtoStep1Desc && UNIT_TRANSLATIONS[code]) {
+          const units = UNIT_TRANSLATIONS[code];
+          howtoStep1Desc.textContent = `${units.safari} • ${units.comfort} • ${units.cottage} • ${units.chalet}`;
+        }
         if (howtoStep2Desc) howtoStep2Desc.textContent = TT.howtoStep2;
         if (howtoStep3Desc) howtoStep3Desc.textContent = TT.howtoStep3;
         if (howtoStep4Desc) howtoStep4Desc.textContent = TT.howtoStep4;
