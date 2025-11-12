@@ -166,8 +166,13 @@
     .btn.primary{background:var(--brand);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
     .btn.primary:hover{opacity:0.95;transform:translateY(-1px)}
     .btn.primary:active{opacity:0.9;transform:scale(0.98)}
+    /* Override global header styles - ensure both Back and Home buttons are pill-shaped */
+    header #backBtn.btn.primary,
+    header #homeBtn.btn.primary{width:auto!important;height:auto!important;border-radius:999px!important;padding:10px 16px!important}
     @media (min-width:640px){
       .btn{padding:12px 18px;font-size:0.95rem}
+      header #backBtn.btn.primary,
+      header #homeBtn.btn.primary{padding:12px 18px!important}
     }
     main{min-height:60vh}
     .card{background:var(--card);border:1px solid #eee;border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
