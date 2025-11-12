@@ -186,7 +186,9 @@
     
     /* Clickable H1 Frame - Mobile-First with larger touch target */
     .h1-frame{
-      display:block;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       padding:16px 20px;
       border:2px solid var(--brand);
       border-radius:12px;
@@ -196,6 +198,8 @@
       box-shadow:0 2px 8px rgba(158,75,19,0.1);
       min-height:48px;
       -webkit-tap-highlight-color:transparent;
+      text-align:center;
+      position:relative;
     }
     .h1-frame:hover{
       transform:translateY(-1px);
@@ -205,9 +209,22 @@
       transform:scale(0.98);
       opacity:0.9;
     }
+    .h1-frame.expanded .h1-chevron {
+      transform: rotate(-180deg);
+    }
     .h1-frame h1{
       margin:0;
       color:var(--brand);
+      flex:1;
+    }
+    .h1-chevron {
+      position: absolute;
+      right: 14px;
+      font-size: 12px;
+      color: var(--brand);
+      transition: transform 0.2s ease;
+      opacity: 0.9;
+      flex-shrink: 0;
     }
     #site-hero p{margin:0;color:var(--muted);line-height:1.5}
     #site-hero .note{margin-top:12px}
@@ -415,6 +432,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       max-width: 678px;
+      margin: 0 auto;
     }
     
     .unit-btn {
@@ -477,6 +495,31 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+    }
+    
+    /* Benefits Expandable Content */
+    .benefits-content {
+      background: #fef9f5;
+      border: 2px solid var(--brand);
+      border-radius: 10px;
+      padding: 0 14px;
+      box-shadow: 0 2px 6px rgba(158, 75, 19, 0.1);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.25s ease;
+      margin-top: 10px;
+    }
+    
+    .benefits-content.expanded {
+      max-height: 1200px;
+      opacity: 1;
+      padding: 14px;
+    }
+    
+    @media (min-width: 640px) {
+      .benefits-content{padding: 0 18px}
+      .benefits-content.expanded{padding: 16px 18px}
     }
     
     /* Child Policy Badge - Mobile-First */
@@ -770,8 +813,60 @@
       <div class="wrap">
         <div class="hero-section">
           <div>
-            <div class="h1-frame" onclick="openBenefitsModal()" data-testid="button-h1-benefits">
+            <div class="h1-frame" onclick="toggleBenefits()" data-testid="button-h1-benefits">
               <h1 id="t-h1">Book here for Best Value</h1>
+              <span class="h1-chevron">▼</span>
+            </div>
+            
+            <!-- Benefits Badges (expandable) -->
+            <div class="benefits-content" id="benefitsContent">
+              <div class="modal-benefits">
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico rate"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-rate">Best Rate Guaranteed</p>
+                    <p class="modal-benefit-desc" id="t-modal-rate-desc">Lowest prices when you book directly with us</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico lock"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-secure">Secure Payment</p>
+                    <p class="modal-benefit-desc" id="t-modal-secure-desc">Your payment information is always protected</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico check"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-nofees">No Hidden Fees</p>
+                    <p class="modal-benefit-desc" id="t-modal-nofees-desc">Transparent pricing with no surprises</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico bolt"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-instant">Instant Confirmation</p>
+                    <p class="modal-benefit-desc" id="t-modal-instant-desc">Receive your booking confirmation immediately</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico handshake"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-support">DEVOCEAN Team Support</p>
+                    <p class="modal-benefit-desc" id="t-modal-support-desc">Direct assistance from our dedicated team</p>
+                  </div>
+                </div>
+              </div>
             </div>
             
             <!-- How to Book Badge -->
@@ -1552,6 +1647,24 @@
       }
     });
 
+    // ===== Benefits Toggle =====
+    function toggleBenefits() {
+      const h1Frame = document.querySelector('.h1-frame');
+      const content = document.getElementById('benefitsContent');
+      
+      if (h1Frame && content) {
+        const isExpanded = content.classList.contains('expanded');
+        
+        if (isExpanded) {
+          content.classList.remove('expanded');
+          h1Frame.classList.remove('expanded');
+        } else {
+          content.classList.add('expanded');
+          h1Frame.classList.add('expanded');
+        }
+      }
+    }
+    
     // ===== Child Policy Toggle =====
     function toggleChildPolicy() {
       const badge = document.querySelector('.child-featured-badge');
