@@ -538,6 +538,93 @@
         margin-top: 20px;
       }
     }
+    
+    /* How to Book Badge - same style as child policy */
+    .info-badge-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .info-badge {
+      background: linear-gradient(135deg, var(--brand) 0%, #a85a1e 100%);
+      color: white;
+      padding: 16px 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(158, 75, 19, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    
+    .info-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(158, 75, 19, 0.35);
+      background: linear-gradient(135deg, #b05f25 0%, #b65a1a 100%);
+    }
+    
+    .info-badge:active {
+      transform: translateY(0);
+    }
+    
+    .info-badge .icon {
+      font-size: 24px;
+    }
+    
+    .info-badge-chevron {
+      position: absolute;
+      right: 18px;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+      opacity: 0.9;
+    }
+    
+    .info-badge.expanded .info-badge-chevron {
+      transform: rotate(-180deg);
+    }
+    
+    .info-badge-content {
+      background: #fef9f5;
+      border: 2px solid var(--brand);
+      border-radius: 12px;
+      padding: 0 18px;
+      box-shadow: 0 2px 8px rgba(158, 75, 19, 0.12);
+      flex: 1;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    }
+    
+    .info-badge-content.expanded {
+      max-height: 600px;
+      opacity: 1;
+      padding: 16px 18px;
+    }
+    
+    .info-badge-content ol {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    .info-badge-content li {
+      margin-bottom: 8px;
+    }
+    
+    .info-badge-content li:last-child {
+      margin-bottom: 0;
+    }
 
     /* ===== Floating Back to Top Button ===== */
     #backToTop {
@@ -588,7 +675,7 @@
       }
     }
   </style>
-  <!-- CSS Version: 2.4 - Interactive H1 with Benefits Modal + Expandable Child Policy -->
+  <!-- CSS Version: 2.5 - Interactive H1 + Benefits Modal + How to Book + Child Policy -->
   <!-- Trustindex Floating Certificate -->
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
 </head>
@@ -632,6 +719,23 @@
                  style="color: #9e4b13; font-weight: 600; text-decoration: underline;"><span id="t-currency-converter">currency converter</span></a>.
             </p>
             
+            <!-- How to Book Badge -->
+            <div class="info-badge-column">
+              <div class="info-badge" onclick="toggleHowToBook()" data-testid="button-how-to-book">
+                <span class="icon">📝</span>
+                <span id="t-howto-heading">How to Book</span>
+                <span class="info-badge-chevron">▼</span>
+              </div>
+              <div class="info-badge-content" id="howToBookContent">
+                <ol id="t-howto-list">
+                  <li id="t-howto-step1">Choose your unit</li>
+                  <li id="t-howto-step2">Decide on the dates (the longer you stay, the better the rate)</li>
+                  <li id="t-howto-step3">Fill in the number of adults/children (max. 2 adults + 1 child or 1 adult and 2 children per unit except for the Garden Cottage max. 2 adults or 1 adult + 1 child)</li>
+                  <li id="t-howto-step4">And click the Book button to finalize the reservation</li>
+                </ol>
+              </div>
+            </div>
+
             <!-- Child Policy Badges -->
             <div class="child-policy-column">
               <div class="child-featured-badge" onclick="toggleChildPolicy()" data-testid="button-child-policy">
@@ -829,6 +933,11 @@
           h1:"Book here for Best Value",
           currencyNote:"Need to convert US$ into your currency use the ",
           currencyConverter:"currency converter",
+          howtoHeading:"How to Book",
+          howtoStep1:"Choose your unit",
+          howtoStep2:"Decide on the dates (the longer you stay, the better the rate)",
+          howtoStep3:"Fill in the number of adults/children (max. 2 adults + 1 child or 1 adult and 2 children per unit except for the Garden Cottage max. 2 adults or 1 adult + 1 child)",
+          howtoStep4:"And click the Book button to finalize the reservation",
           childHeading:"Travelling with children?",
           childText:"Then you should know our child policy. Babies and infants up to 4 years of age (at the arrival date) are free of charge when sharing an available bed. Babycots can be booked as an extra. Children from 5 to 12 are counted as children. Up from 12 year youngsters count as adults.",
           modalTitle:"Why Book Direct?",
@@ -849,6 +958,11 @@
           h1:"Hier buchen für Bestpreis",
           currencyNote:"Müssen Sie US$ in Ihre Währung umrechnen? Nutzen Sie den ",
           currencyConverter:"Währungsrechner",
+          howtoHeading:"Wie buchen",
+          howtoStep1:"Wählen Sie Ihre Unterkunft",
+          howtoStep2:"Entscheiden Sie sich für die Daten (je länger Sie bleiben, desto besser der Preis)",
+          howtoStep3:"Geben Sie die Anzahl der Erwachsenen/Kinder ein (max. 2 Erwachsene + 1 Kind oder 1 Erwachsener und 2 Kinder pro Einheit, außer für das Garden Cottage max. 2 Erwachsene oder 1 Erwachsener + 1 Kind)",
+          howtoStep4:"Und klicken Sie auf die Buchen-Schaltfläche, um die Reservierung abzuschließen",
           childHeading:"Mit Kindern unterwegs?",
           childText:"Dann sollten Sie unsere Kinderpolitik kennen. Babys und Kleinkinder bis 4 Jahre (am Anreisetag) sind kostenfrei, wenn sie ein verfügbares Bett mitbenutzen. Babybetten können als Extra gebucht werden. Kinder von 5 bis 12 Jahren gelten als Kinder. Ab 12 Jahren zählen Jugendliche als Erwachsene.",
           modalTitle:"Warum direkt buchen?",
@@ -869,6 +983,11 @@
           h1:"Reserve aquí al Mejor Precio",
           currencyNote:"¿Necesitas convertir US$ a tu moneda? Usa el ",
           currencyConverter:"convertidor de divisas",
+          howtoHeading:"Cómo reservar",
+          howtoStep1:"Elija su unidad",
+          howtoStep2:"Decida las fechas (cuanto más tiempo se quede, mejor será la tarifa)",
+          howtoStep3:"Complete el número de adultos/niños (máx. 2 adultos + 1 niño o 1 adulto y 2 niños por unidad excepto para el Garden Cottage máx. 2 adultos o 1 adulto + 1 niño)",
+          howtoStep4:"Y haga clic en el botón Reservar para finalizar la reserva",
           childHeading:"¿Viaja con niños?",
           childText:"Entonces debería conocer nuestra política de niños. Los bebés y niños menores de 4 años (en la fecha de llegada) son gratuitos al compartir una cama disponible. Las cunas se pueden reservar como extra. Los niños de 5 a 12 años se cuentan como niños. A partir de 12 años los jóvenes se cuentan como adultos.",
           modalTitle:"¿Por qué reservar directo?",
@@ -889,6 +1008,11 @@
           h1:"Réservez ici au Meilleur Prix",
           currencyNote:"Besoin de convertir US$ dans votre devise? Utilisez le ",
           currencyConverter:"convertisseur de devises",
+          howtoHeading:"Comment réserver",
+          howtoStep1:"Choisissez votre unité",
+          howtoStep2:"Décidez des dates (plus vous restez longtemps, meilleur est le tarif)",
+          howtoStep3:"Remplissez le nombre d'adultes/enfants (max. 2 adultes + 1 enfant ou 1 adulte et 2 enfants par unité sauf pour le Garden Cottage max. 2 adultes ou 1 adulte + 1 enfant)",
+          howtoStep4:"Et cliquez sur le bouton Réserver pour finaliser la réservation",
           childHeading:"Vous voyagez avec des enfants?",
           childText:"Vous devriez alors connaître notre politique pour les enfants. Les bébés et enfants jusqu'à 4 ans (à la date d'arrivée) sont gratuits lorsqu'ils partagent un lit disponible. Les lits bébé peuvent être réservés en supplément. Les enfants de 5 à 12 ans comptent comme enfants. À partir de 12 ans, les jeunes comptent comme adultes.",
           modalTitle:"Pourquoi réserver en direct?",
@@ -909,6 +1033,11 @@
           h1:"Prenota qui al Miglior Prezzo",
           currencyNote:"Hai bisogno di convertire US$ nella tua valuta? Usa il ",
           currencyConverter:"convertitore di valuta",
+          howtoHeading:"Come prenotare",
+          howtoStep1:"Scegli la tua unità",
+          howtoStep2:"Decidi le date (più a lungo rimani, migliore è la tariffa)",
+          howtoStep3:"Compila il numero di adulti/bambini (max. 2 adulti + 1 bambino o 1 adulto e 2 bambini per unità tranne per il Garden Cottage max. 2 adulti o 1 adulto + 1 bambino)",
+          howtoStep4:"E fai clic sul pulsante Prenota per finalizzare la prenotazione",
           childHeading:"Viaggi con bambini?",
           childText:"Allora dovresti conoscere la nostra politica per i bambini. Neonati e bambini fino a 4 anni (alla data di arrivo) sono gratuiti se condividono un letto disponibile. Le culle possono essere prenotate come extra. I bambini dai 5 ai 12 anni sono contati come bambini. Dai 12 anni in su i giovani contano come adulti.",
           modalTitle:"Perché prenotare direttamente?",
@@ -929,6 +1058,11 @@
           h1:"Boek hier voor Beste Prijs",
           currencyNote:"Moet u US$ omrekenen naar uw valuta? Gebruik de ",
           currencyConverter:"valutaconverter",
+          howtoHeading:"Hoe te boeken",
+          howtoStep1:"Kies uw eenheid",
+          howtoStep2:"Besluit over de data (hoe langer u blijft, hoe beter het tarief)",
+          howtoStep3:"Vul het aantal volwassenen/kinderen in (max. 2 volwassenen + 1 kind of 1 volwassene en 2 kinderen per eenheid behalve voor de Garden Cottage max. 2 volwassenen of 1 volwassene + 1 kind)",
+          howtoStep4:"En klik op de knop Boeken om de reservering te voltooien",
           childHeading:"Reist u met kinderen?",
           childText:"Dan moet u ons kinderbeleid kennen. Baby's en peuters tot 4 jaar (op de aankomstdatum) zijn gratis wanneer ze een beschikbaar bed delen. Babybedjes kunnen als extra worden geboekt. Kinderen van 5 tot 12 worden als kinderen geteld. Vanaf 12 jaar tellen jongeren als volwassenen.",
           modalTitle:"Waarom direct boeken?",
@@ -949,6 +1083,11 @@
           h1:"Reserve aqui pelo Melhor Preço",
           currencyNote:"Precisa de converter US$ para a sua moeda? Use o ",
           currencyConverter:"conversor de moeda",
+          howtoHeading:"Como reservar",
+          howtoStep1:"Escolha a sua unidade",
+          howtoStep2:"Decida as datas (quanto mais tempo ficar, melhor a tarifa)",
+          howtoStep3:"Preencha o número de adultos/crianças (máx. 2 adultos + 1 criança ou 1 adulto e 2 crianças por unidade exceto para o Garden Cottage máx. 2 adultos ou 1 adulto + 1 criança)",
+          howtoStep4:"E clique no botão Reservar para finalizar a reserva",
           childHeading:"Viaja com crianças?",
           childText:"Então deve conhecer a nossa política para crianças. Bebés e crianças até 4 anos (na data de chegada) são gratuitos ao partilhar uma cama disponível. Berços podem ser reservados como extra. Crianças dos 5 aos 12 anos contam como crianças. A partir dos 12 anos os jovens contam como adultos.",
           modalTitle:"Porquê reservar diretamente?",
@@ -969,6 +1108,11 @@
           h1:"Бронируйте здесь по Лучшей Цене",
           currencyNote:"Нужно конвертировать US$ в вашу валюту? Используйте ",
           currencyConverter:"конвертер валют",
+          howtoHeading:"Как забронировать",
+          howtoStep1:"Выберите свой номер",
+          howtoStep2:"Определитесь с датами (чем дольше вы останетесь, тем лучше тариф)",
+          howtoStep3:"Заполните количество взрослых/детей (макс. 2 взрослых + 1 ребенок или 1 взрослый и 2 детей на номер, кроме Garden Cottage макс. 2 взрослых или 1 взрослый + 1 ребенок)",
+          howtoStep4:"И нажмите кнопку Забронировать, чтобы завершить бронирование",
           childHeading:"Путешествуете с детьми?",
           childText:"Тогда вам следует знать нашу политику для детей. Младенцы и дети до 4 лет (на дату прибытия) размещаются бесплатно при совместном использовании доступной кровати. Детские кроватки можно заказать дополнительно. Дети от 5 до 12 лет считаются детьми. С 12 лет подростки считаются взрослыми.",
           modalTitle:"Почему бронировать напрямую?",
@@ -989,6 +1133,11 @@
           h1:"在此预订享最优价格",
           currencyNote:"需要将US$转换为您的货币？使用",
           currencyConverter:"货币转换器",
+          howtoHeading:"如何预订",
+          howtoStep1:"选择您的单元",
+          howtoStep2:"确定日期（停留时间越长，价格越优惠）",
+          howtoStep3:"填写成人/儿童人数（每个单元最多2名成人+1名儿童或1名成人和2名儿童，Garden Cottage除外，最多2名成人或1名成人+1名儿童）",
+          howtoStep4:"然后点击预订按钮完成预订",
           childHeading:"带儿童旅行？",
           childText:"那么您应该了解我们的儿童政策。4岁及以下的婴儿和幼儿（以到达日期为准）在共用可用床位时免费。婴儿床可作为附加服务预订。5至12岁的儿童按儿童计算。12岁及以上的青少年按成人计算。",
           modalTitle:"为何直接预订？",
@@ -1009,6 +1158,11 @@
           h1:"Boka här för Bästa Pris",
           currencyNote:"Behöver du konvertera US$ till din valuta? Använd ",
           currencyConverter:"valutaomvandlare",
+          howtoHeading:"Hur man bokar",
+          howtoStep1:"Välj din enhet",
+          howtoStep2:"Bestäm datum (ju längre du stannar, desto bättre pris)",
+          howtoStep3:"Fyll i antal vuxna/barn (max. 2 vuxna + 1 barn eller 1 vuxen och 2 barn per enhet förutom Garden Cottage max. 2 vuxna eller 1 vuxen + 1 barn)",
+          howtoStep4:"Och klicka på Boka-knappen för att slutföra bokningen",
           childHeading:"Reser du med barn?",
           childText:"Då bör du känna till vår barnpolicy. Spädbarn och småbarn upp till 4 år (vid ankomstdagen) är gratis när de delar en tillgänglig säng. Babysängar kan bokas som extra. Barn från 5 till 12 år räknas som barn. Från 12 år räknas ungdomar som vuxna.",
           modalTitle:"Varför boka direkt?",
@@ -1029,6 +1183,11 @@
           h1:"ベストプライスでここから予約",
           currencyNote:"US$をあなたの通貨に換算する必要がありますか？",
           currencyConverter:"通貨換算",
+          howtoHeading:"予約方法",
+          howtoStep1:"ユニットを選択",
+          howtoStep2:"日程を決める（長く滞在するほど料金がお得）",
+          howtoStep3:"大人/子供の人数を入力（1ユニットあたり最大2名の大人+1名の子供または1名の大人と2名の子供、Garden Cottageを除く最大2名の大人または1名の大人+1名の子供）",
+          howtoStep4:"予約ボタンをクリックして予約を確定",
           childHeading:"お子様連れですか？",
           childText:"当施設のお子様ポリシーをご確認ください。到着日時点で4歳以下の乳幼児は、利用可能なベッドを共有する場合無料です。ベビーベッドは追加でご予約いただけます。5歳から12歳のお子様は子供としてカウントされます。12歳以上の若者は大人としてカウントされます。",
           modalTitle:"直接予約のメリット",
@@ -1049,6 +1208,11 @@
           h1:"Rezerwuj tutaj po Najlepszej Cenie",
           currencyNote:"Potrzebujesz przeliczyć US$ na swoją walutę? Użyj ",
           currencyConverter:"przelicznika walut",
+          howtoHeading:"Jak zarezerwować",
+          howtoStep1:"Wybierz swoją jednostkę",
+          howtoStep2:"Zdecyduj o datach (im dłużej zostaniesz, tym lepsza stawka)",
+          howtoStep3:"Wypełnij liczbę dorosłych/dzieci (maks. 2 dorosłych + 1 dziecko lub 1 dorosły i 2 dzieci na jednostkę z wyjątkiem Garden Cottage maks. 2 dorosłych lub 1 dorosły + 1 dziecko)",
+          howtoStep4:"I kliknij przycisk Zarezerwuj, aby sfinalizować rezerwację",
           childHeading:"Podróżujesz z dziećmi?",
           childText:"Powinieneś znać naszą politykę dotyczącą dzieci. Niemowlęta i małe dzieci do 4 lat (w dniu przyjazdu) są bezpłatne przy współdzieleniu dostępnego łóżka. Łóżeczka dziecięce można zarezerwować jako dodatek. Dzieci od 5 do 12 lat liczą się jako dzieci. Od 12 lat młodzież liczy się jako dorośli.",
           modalTitle:"Dlaczego rezerwować bezpośrednio?",
@@ -1069,6 +1233,11 @@
           h1:"Bespreek hier vir Beste Prys",
           currencyNote:"Moet jy US$ na jou geldeenheid omskakel? Gebruik die ",
           currencyConverter:"geldeenheid omskakelaar",
+          howtoHeading:"Hoe om te bespreek",
+          howtoStep1:"Kies jou eenheid",
+          howtoStep2:"Besluit oor die datums (hoe langer jy bly, hoe beter die tarief)",
+          howtoStep3:"Vul die aantal volwassenes/kinders in (maks. 2 volwassenes + 1 kind of 1 volwassene en 2 kinders per eenheid behalwe vir die Garden Cottage maks. 2 volwassenes of 1 volwassene + 1 kind)",
+          howtoStep4:"En klik op die Bespreek-knoppie om die reservering te finaliseer",
           childHeading:"Reis jy met kinders?",
           childText:"Dan moet jy ons kinderbeleid ken. Babas en peuters tot 4 jaar oud (op aankomsdatum) is gratis wanneer hulle 'n beskikbare bed deel. Babawiegies kan as ekstra bespreek word. Kinders van 5 tot 12 tel as kinders. Vanaf 12 jaar oud tel jongmense as volwassenes.",
           modalTitle:"Hoekom direk bespreek?",
@@ -1089,6 +1258,11 @@
           h1:"Bhukha lapha ngeNani Elihle",
           currencyNote:"Udinga ukuguqula US$ ibe yimali yakho? Sebenzisa ",
           currencyConverter:"isiguquli semali",
+          howtoHeading:"Indlela yokubhukha",
+          howtoStep1:"Khetha iyunithi yakho",
+          howtoStep2:"Nquma ngamalanga (isikhathi eside ohlala kuso, intengo ingcono)",
+          howtoStep3:"Gcwalisa inombolo yabantu abadala/izingane (okungenani abantu abadala aba-2 + ingane 1 noma umuntu omdala 1 nezingane ezi-2 ngeyunithi ngaphandle kwe-Garden Cottage okungenani abantu abadala aba-2 noma umuntu omdala 1 + ingane 1)",
+          howtoStep4:"Futhi chofoza inkinobho yokuBhukha ukuze uqedele ukubhukha",
           childHeading:"Uvakasha nezingane?",
           childText:"Kufanele wazi inqubomgomo yethu yezingane. Izinsana nezingane ezingaphansi kweminyaka engu-4 (ngosuku lokufika) zimahhala lapho zabelana ngombhede otholakalayo. Ama-babycots angabhukwa njengengeziwe. Izingane ezisukela ku-5 kuya ku-12 zibalwa njengezingane. Kusukela eminyakeni engu-12 intsha ibalwa njengabantu abadala.",
           modalTitle:"Kungani ubhukha ngqo?",
@@ -1109,6 +1283,11 @@
           h1:"Weka nafasi hapa kwa Bei Bora",
           currencyNote:"Unahitaji kubadilisha US$ kuwa sarafu yako? Tumia ",
           currencyConverter:"kibadilishaji cha sarafu",
+          howtoHeading:"Jinsi ya kuweka nafasi",
+          howtoStep1:"Chagua kipande chako",
+          howtoStep2:"Amua kuhusu tarehe (kadiri unavyokaa muda mrefu, bei ni bora zaidi)",
+          howtoStep3:"Jaza idadi ya watu wazima/watoto (juu zaidi watu wazima 2 + mtoto 1 au mtu mzima 1 na watoto 2 kwa kila kipande isipokuwa kwa Garden Cottage juu zaidi watu wazima 2 au mtu mzima 1 + mtoto 1)",
+          howtoStep4:"Na bonyeza kitufe cha Weka Nafasi kukamilisha uhifadhi",
           childHeading:"Unasafiri na watoto?",
           childText:"Basi unapaswa kujua sera yetu ya watoto. Watoto wachanga na watoto wadogo hadi miaka 4 (katika tarehe ya kuwasili) ni bure wanaposhiriki kitanda kinachopatikana. Vitanda vya watoto wachanga vinaweza kuhifadhiwa kama nyongeza. Watoto kutoka miaka 5 hadi 12 wanahesabiwa kama watoto. Kuanzia miaka 12 vijana wanahesabiwa kama watu wazima.",
           modalTitle:"Kwa nini uweke nafasi moja kwa moja?",
@@ -1139,12 +1318,17 @@
       if (md) md.setAttribute('content', TT.desc);
 
       function fill(){
-        const ids = ["t-h1","t-currency-note","t-currency-converter","homeBtn","t-child-heading","t-child-text","t-back","t-home"];
+        const ids = ["t-h1","t-currency-note","t-currency-converter","homeBtn","t-howto-heading","t-howto-step1","t-howto-step2","t-howto-step3","t-howto-step4","t-child-heading","t-child-text","t-back","t-home"];
         if (ids.some(id => !document.getElementById(id))) return false;
         
         document.getElementById("t-h1").textContent = TT.h1;
         document.getElementById("t-currency-note").textContent = TT.currencyNote;
         document.getElementById("t-currency-converter").textContent = TT.currencyConverter;
+        document.getElementById("t-howto-heading").textContent = TT.howtoHeading;
+        document.getElementById("t-howto-step1").textContent = TT.howtoStep1;
+        document.getElementById("t-howto-step2").textContent = TT.howtoStep2;
+        document.getElementById("t-howto-step3").textContent = TT.howtoStep3;
+        document.getElementById("t-howto-step4").textContent = TT.howtoStep4;
         document.getElementById("t-child-heading").textContent = TT.childHeading;
         document.getElementById("t-child-text").textContent = TT.childText;
         document.getElementById("t-back").textContent = TT.back;
@@ -1310,6 +1494,24 @@
     function toggleChildPolicy() {
       const badge = document.querySelector('.child-featured-badge');
       const content = document.getElementById('childPolicyContent');
+      
+      if (badge && content) {
+        const isExpanded = content.classList.contains('expanded');
+        
+        if (isExpanded) {
+          content.classList.remove('expanded');
+          badge.classList.remove('expanded');
+        } else {
+          content.classList.add('expanded');
+          badge.classList.add('expanded');
+        }
+      }
+    }
+
+    // ===== How to Book Toggle =====
+    function toggleHowToBook() {
+      const badge = document.querySelector('.info-badge');
+      const content = document.getElementById('howToBookContent');
       
       if (badge && content) {
         const isExpanded = content.classList.contains('expanded');
