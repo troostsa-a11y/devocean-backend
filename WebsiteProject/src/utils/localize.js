@@ -77,6 +77,7 @@ const localeToISO6391 = (locale) => {
     "en-US": "en",
     "pt-PT": "pt",
     "pt-BR": "pt",
+    "pt-MZ": "pt",
     "nl-NL": "nl",
     "fr-FR": "fr",
     "it-IT": "it",
