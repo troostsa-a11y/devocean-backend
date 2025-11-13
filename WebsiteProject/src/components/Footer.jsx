@@ -148,13 +148,13 @@ export default function Footer({ units, experiences, ui }) {
         </div>
       </div>
 
-      {/* Copyright */}
-      <div className="max-w-7xl mx-auto px-4 mt-8 pt-6 border-t border-slate-700 text-center text-sm text-slate-400">
+      {/* Copyright - at bottom of main footer content */}
+      <div className="max-w-7xl mx-auto px-4 pb-10 text-center text-sm text-slate-400">
         © {new Date().getFullYear()} DEVOCEAN Lodge. {ui.footer.rights}
       </div>
 
       {/* Bottom bar - reserved for badges (reCAPTCHA, Trustindex) */}
-      <div className="py-6"></div>
+      <div className="border-t border-slate-700 py-6"></div>
     </footer>
   );
 }
