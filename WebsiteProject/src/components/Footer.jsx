@@ -149,7 +149,7 @@ export default function Footer({ units, experiences, ui }) {
       </div>
 
       {/* Copyright - at bottom of main footer content */}
-      <div className="max-w-7xl mx-auto px-4 pb-10 text-center text-sm text-slate-400">
+      <div className="max-w-7xl mx-auto px-4 pb-4 text-center text-sm text-slate-400">
         © {new Date().getFullYear()} DEVOCEAN Lodge. {ui.footer.rights}
       </div>
 
