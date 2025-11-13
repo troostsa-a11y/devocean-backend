@@ -194,11 +194,11 @@ body {
   display: block;
 }
 
-/* Trustindex Floating Certificate Positioning */
-/* Position at bottom center */
-[id*="ti-widget"],
-[class*="ti-widget"],
-[id*="trustindex"] {
+/* Trustindex Floating Certificate Badge Positioning */
+/* Position certificate badge at bottom center (NOT the review widget) */
+/* Target only the certificate badge loaded by loader-cert.js */
+.ti-widget.ti-certificate,
+.ti-certificate {
   position: fixed !important;
   bottom: 14px !important;
   left: 50% !important;
