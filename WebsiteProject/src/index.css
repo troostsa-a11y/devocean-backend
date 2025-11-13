@@ -195,27 +195,27 @@ body {
 }
 
 /* Trustindex Floating Certificate Positioning */
-/* Position on bottom left to separate from reCAPTCHA */
+/* Position at bottom center */
 [id*="ti-widget"],
 [class*="ti-widget"],
 [id*="trustindex"] {
   position: fixed !important;
   bottom: 14px !important;
-  left: 14px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   right: auto !important;
   z-index: 9998 !important;
 }
 
 /* reCAPTCHA v3 Badge Positioning & Compact State */
-/* Positioned at bottom center (Trustindex on left, reCAPTCHA center) */
+/* Positioned at bottom right */
 /* Compact state: 70px wide, expands to 256px on hover */
 .grecaptcha-badge {
   width: 70px !important;
   overflow: hidden !important;
   transition: all 0.3s ease !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  right: auto !important;
+  right: 0 !important;
+  left: auto !important;
   bottom: 14px !important;
   z-index: 9999 !important;
 }
