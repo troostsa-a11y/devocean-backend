@@ -197,12 +197,13 @@ body {
 /* reCAPTCHA v3 Badge Positioning & Compact State */
 /* Fix for badge appearing off-screen (right: -186px issue) */
 /* Compact state: 70px wide, expands to 256px on hover */
+/* Positioned higher to avoid interfering with Trustindex badge */
 .grecaptcha-badge {
   width: 70px !important;
   overflow: hidden !important;
   transition: all 0.3s ease !important;
   right: 0 !important;
-  bottom: 14px !important;
+  bottom: 80px !important;
   z-index: 9999 !important;
 }
 
