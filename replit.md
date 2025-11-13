@@ -23,9 +23,13 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
   3. STOP - inform user change is complete
   4. WAIT for user to say "build and deploy"
   5. Only then: build and deploy
-- **IMPORTANT:** Only run browser tests (run_test tool) when explicitly instructed by the user
-- Do NOT automatically run tests after making changes
-- Wait for explicit user confirmation before testing
+- **🚫 ABSOLUTE RULE - NEVER USE BROWSER TESTS (run_test tool):**
+  - **NEVER EVER** use the run_test tool or playwright browser testing
+  - User can test the browser themselves - it's faster and more effective
+  - Browser tests are highly ineffective and waste time
+  - This includes ALL scenarios: debugging, verification, checking UI, testing forms, etc.
+  - **NO EXCEPTIONS** - Even if you think "just a quick test would help"
+  - If you need to verify something works, make the code change and STOP - let user test
 - **🔄 MANDATORY WORKFLOW - CONFIRM BEFORE ACTING (NO EXCEPTIONS):**
   1. ❓ **User asks for something**
   2. 🔍 **READ existing code first** - Understand what's already there
