@@ -11,6 +11,7 @@ export const CRITICAL_NAV = {
     location: "Location",
     contact: "Contact",
     bookNow: "Rates & Availability",
+    heroCTA: "Book your stay",
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
     heroExplore: "Explore the lodge"
@@ -24,6 +25,7 @@ export const CRITICAL_NAV = {
     location: "Location",
     contact: "Contact",
     bookNow: "Rates & Availability",
+    heroCTA: "Book your stay",
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
     heroExplore: "Explore the lodge"
@@ -36,7 +38,8 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Localização",
     contact: "Contato",
-    bookNow: "Tarifas e disponibilidade"
+    bookNow: "Tarifas e disponibilidade",
+    heroCTA: "Reserve sua estadia"
   },
   "pt-BR": {
     home: "Início",
@@ -46,7 +49,8 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Localização",
     contact: "Contato",
-    bookNow: "Tarifas e disponibilidade"
+    bookNow: "Tarifas e disponibilidade",
+    heroCTA: "Reserve sua estadia"
   },
   "nl-NL": {
     home: "Home",
@@ -56,7 +60,8 @@ export const CRITICAL_NAV = {
     gallery: "Galerij",
     location: "Locatie",
     contact: "Contact",
-    bookNow: "Tarieven & Beschikbaarheid"
+    bookNow: "Tarieven & Beschikbaarheid",
+    heroCTA: "Boek uw verblijf"
   },
   "fr-FR": {
     home: "Accueil",
@@ -66,7 +71,8 @@ export const CRITICAL_NAV = {
     gallery: "Galerie",
     location: "Localisation",
     contact: "Contact",
-    bookNow: "Tarifs & Disponibilité"
+    bookNow: "Tarifs & Disponibilité",
+    heroCTA: "Réservez votre séjour"
   },
   "it-IT": {
     home: "Home",
@@ -76,7 +82,8 @@ export const CRITICAL_NAV = {
     gallery: "Galleria",
     location: "Posizione",
     contact: "Contatto",
-    bookNow: "Tariffe & Disponibilità"
+    bookNow: "Tariffe & Disponibilità",
+    heroCTA: "Prenota il tuo soggiorno"
   },
   "de-DE": {
     home: "Startseite",
@@ -86,7 +93,8 @@ export const CRITICAL_NAV = {
     gallery: "Galerie",
     location: "Standort",
     contact: "Kontakt",
-    bookNow: "Preise & Verfügbarkeit"
+    bookNow: "Preise & Verfügbarkeit",
+    heroCTA: "Buchen Sie Ihren Aufenthalt"
   },
   "es-ES": {
     home: "Inicio",
@@ -96,7 +104,8 @@ export const CRITICAL_NAV = {
     gallery: "Galería",
     location: "Ubicación",
     contact: "Contacto",
-    bookNow: "Tarifas & Disponibilidad"
+    bookNow: "Tarifas & Disponibilidad",
+    heroCTA: "Reserve su estadía"
   },
   sv: {
     home: "Hem",
@@ -106,7 +115,8 @@ export const CRITICAL_NAV = {
     gallery: "Galleri",
     location: "Plats",
     contact: "Kontakt",
-    bookNow: "Boka nu"
+    bookNow: "Boka nu",
+    heroCTA: "Boka din vistelse"
   },
   pl: {
     home: "Strona główna",
@@ -116,7 +126,8 @@ export const CRITICAL_NAV = {
     gallery: "Galeria",
     location: "Lokalizacja",
     contact: "Kontakt",
-    bookNow: "Ceny i dostępność"
+    bookNow: "Ceny i dostępność",
+    heroCTA: "Zarezerwuj pobyt"
   },
   "ja-JP": {
     home: "ホーム",
@@ -126,7 +137,8 @@ export const CRITICAL_NAV = {
     gallery: "ギャラリー",
     location: "場所",
     contact: "連絡先",
-    bookNow: "料金 & 空室状況"
+    bookNow: "料金 & 空室状況",
+    heroCTA: "ご予約はこちら"
   },
   "zh-CN": {
     home: "首页",
@@ -136,7 +148,8 @@ export const CRITICAL_NAV = {
     gallery: "图库",
     location: "位置",
     contact: "联系我们",
-    bookNow: "价格与空房情况"
+    bookNow: "价格与空房情况",
+    heroCTA: "预订住宿"
   },
   ru: {
     home: "Главная",
@@ -146,7 +159,8 @@ export const CRITICAL_NAV = {
     gallery: "Галерея",
     location: "Местоположение",
     contact: "Контакты",
-    bookNow: "Цены и наличие"
+    bookNow: "Цены и наличие",
+    heroCTA: "Забронировать"
   },
   "af-ZA": {
     home: "Tuis",
@@ -156,7 +170,8 @@ export const CRITICAL_NAV = {
     gallery: "Galery",
     location: "Ligging",
     contact: "Kontak",
-    bookNow: "Tariewe en beskikbaarheid"
+    bookNow: "Tariewe en beskikbaarheid",
+    heroCTA: "Bespreek jou verblyf"
   },
   zu: {
     home: "Ikhaya",
@@ -166,7 +181,8 @@ export const CRITICAL_NAV = {
     gallery: "Igalari",
     location: "Indawo",
     contact: "Xhumana nathi",
-    bookNow: "Amanani kanye nokutholakala"
+    bookNow: "Amanani kanye nokutholakala",
+    heroCTA: "Bhukha ukulala kwakho"
   },
   sw: {
     home: "Nyumbani",
@@ -176,6 +192,7 @@ export const CRITICAL_NAV = {
     gallery: "Matunzio",
     location: "Mahali",
     contact: "Wasiliana nasi",
-    bookNow: "Weka nafasi sasa"
+    bookNow: "Weka nafasi sasa",
+    heroCTA: "Weka nafasi ya kukaa"
   }
 };
