@@ -118,18 +118,24 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Controls */}
       {list.length > 1 && (
         <>
-          <div className="absolute z-20 bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+          <div className="absolute z-20 bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-0">
             {list.map((_, i) => (
               <button
                 key={i}
                 onClick={() => go(i)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className={`p-5 rounded-full transition-all ${
                   i === idx 
-                    ? "bg-white scale-125" 
-                    : "bg-white/50 hover:bg-white/70"
+                    ? "bg-white/30 hover:bg-white/40" 
+                    : "bg-transparent hover:bg-white/20"
                 }`}
                 aria-label={`Go to slide ${i + 1}`}
-              />
+              >
+                <span className={`block w-2 h-2 rounded-full transition-all ${
+                  i === idx 
+                    ? "bg-white scale-125" 
+                    : "bg-white/50"
+                }`} />
+              </button>
             ))}
           </div>
           <button
