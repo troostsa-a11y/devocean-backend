@@ -1,0 +1,39 @@
+devoceanlodge.com First party
+531.7 KiB	423.2 KiB
+picture 0
+<img id="carousel-pic-r297012_620543-0" src="https://devoceanlodge.com/photos/units/chalet-1.webp" alt="picture 0" class="bootstrap-carousel-img">
+…units/chalet-1.webp(devoceanlodge.com)
+162.5 KiB
+128.1 KiB
+This image file is larger than it needs to be (1201x900) for its displayed dimensions (553x414). Use responsive images to reduce the image download size.
+128.1 KiB
+picture 0
+<img id="carousel-pic-r297012_620542-0" src="https://devoceanlodge.com/beds24/safari-1.webp" alt="picture 0" class="bootstrap-carousel-img">
+/beds24/safari-1.webp(devoceanlodge.com)
+128.5 KiB
+96.4 KiB
+This image file is larger than it needs to be (1106x830) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+96.4 KiB
+DEVOCEAN Lodge logo
+<img src="/images/devocean_logo_header.png" alt="DEVOCEAN Lodge logo">
+/images/devocean_logo_header.png(devoceanlodge.com)
+76.7 KiB
+75.8 KiB
+Using a modern image format (WebP, AVIF) or increasing the image compression could improve this image's download size.
+50.7 KiB
+This image file is larger than it needs to be (400x400) for its displayed dimensions (74x74). Use responsive images to reduce the image download size.
+74.1 KiB
+picture 0
+<img id="carousel-pic-r297012_620540-0" src="https://devoceanlodge.com/beds24/comfort-1.webp" alt="picture 0" class="bootstrap-carousel-img">
+/beds24/comfort-1.webp(devoceanlodge.com)
+94.3 KiB
+70.7 KiB
+This image file is larger than it needs to be (1106x830) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+70.7 KiB
+picture 0
+<img id="carousel-pic-r297012_620541-0" src="https://devoceanlodge.com/beds24/cottage-1.webp" alt="picture 0" class="bootstrap-carousel-img">
+/beds24/cottage-1.webp(devoceanlodge.com)
+69.6 KiB
+52.2 KiB
+This image file is larger than it needs to be (1106x830) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+52.2 KiB
