@@ -1,0 +1,54 @@
+Improve image delivery Est savings of 6,664 KiB
+Reducing the download time of images can improve the perceived load time of the page and LCP. Learn more about optimising image sizeLCPFCPUnscored
+URL
+Resource size
+Est savings
+xmlcal.com
+6,737.5 KiB	6,588.1 KiB
+picture 0
+<img id="carousel-pic-r297012_620543-0" src="https://media.xmlcal.com/pic/p0029/7012/24.png" alt="picture 0" class="bootstrap-carousel-img">
+…7012/24.png(media.xmlcal.com)
+2,023.1 KiB
+1,985.7 KiB
+Using a modern image format (WebP, AVIF) or increasing the image compression could improve this image's download size.
+1,816.8 KiB
+This image file is larger than it needs to be (1300x975) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+1,657.0 KiB
+picture 0
+<img id="carousel-pic-r297012_620542-0" src="https://media.xmlcal.com/pic/p0029/7012/40.png" alt="picture 0" class="bootstrap-carousel-img">
+…7012/40.png(media.xmlcal.com)
+1,828.9 KiB
+1,791.6 KiB
+Using a modern image format (WebP, AVIF) or increasing the image compression could improve this image's download size.
+1,653.0 KiB
+This image file is larger than it needs to be (1200x901) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+1,440.5 KiB
+picture 0
+<img id="carousel-pic-r297012_620540-0" src="https://media.xmlcal.com/pic/p0029/7012/35.png" alt="picture 0" class="bootstrap-carousel-img">
+…7012/35.png(media.xmlcal.com)
+1,551.3 KiB
+1,513.9 KiB
+Using a modern image format (WebP, AVIF) or increasing the image compression could improve this image's download size.
+1,375.3 KiB
+This image file is larger than it needs to be (1200x901) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+1,221.8 KiB
+picture 0
+<img id="carousel-pic-r297012_620541-0" src="https://media.xmlcal.com/pic/p0029/7012/30.png" alt="picture 0" class="bootstrap-carousel-img">
+…7012/30.png(media.xmlcal.com)
+1,334.2 KiB
+1,296.9 KiB
+Using a modern image format (WebP, AVIF) or increasing the image compression could improve this image's download size.
+1,158.5 KiB
+This image file is larger than it needs to be (1200x900) for its displayed dimensions (553x415). Use responsive images to reduce the image download size.
+1,050.9 KiB
+devoceanlodge.com First party
+76.7 KiB	75.8 KiB
+DEVOCEAN Lodge logo
+<img src="/images/devocean_logo_header.png" alt="DEVOCEAN Lodge logo">
+/images/devocean_logo_header.png(devoceanlodge.com)
+76.7 KiB
+75.8 KiB
+Using a modern image format (WebP, AVIF) or increasing the image compression could improve this image's download size.
+50.7 KiB
+This image file is larger than it needs to be (400x400) for its displayed dimensions (74x74). Use responsive images to reduce the image download size.
+74.1 KiB
