@@ -68,7 +68,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                     className="mt-3 inline-flex items-center gap-1 text-sm text-[#9e4b13] hover:text-[#8a4211] font-semibold transition-colors"
                     data-testid={`link-details-${u.key}`}
                   >
-                    <span>{ui.stay.moreDetails}</span>
+                    <span>{u.title} – {ui.stay.moreDetails}</span>
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
