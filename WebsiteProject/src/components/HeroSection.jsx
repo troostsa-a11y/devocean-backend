@@ -13,14 +13,46 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     return () => clearInterval(id);
   }, [list.length]);
 
-  // Load Trustindex widget
+  // Lazy load Trustindex widget using IntersectionObserver (avoids blocking INP)
   useEffect(() => {
-    if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
-      script.defer = true;
-      script.async = true;
-      trustindexRef.current.appendChild(script);
+    if (!trustindexRef.current) return;
+
+    const loadTrustindex = () => {
+      if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
+        // Use requestIdleCallback to avoid blocking interactions
+        const loadScript = () => {
+          const script = document.createElement('script');
+          script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
+          script.defer = true;
+          script.async = true;
+          trustindexRef.current.appendChild(script);
+        };
+
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadScript, { timeout: 2000 });
+        } else {
+          setTimeout(loadScript, 0);
+        }
+      }
+    };
+
+    // Feature detection: use IntersectionObserver if available
+    if (window.IntersectionObserver) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            loadTrustindex();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '200px' } // Start loading 200px before widget is visible
+      );
+
+      observer.observe(trustindexRef.current);
+      return () => observer.disconnect();
+    } else {
+      // Fallback for older browsers: load after delay
+      setTimeout(loadTrustindex, 1000);
     }
   }, []);
 

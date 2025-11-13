@@ -62,30 +62,56 @@ export default function App() {
     }
   }, []);
 
-  // Layout recalculation for sticky header (throttled for performance)
-  // Note: Initial values set in <head> to prevent CLS, this only handles resize
+  // Layout recalculation using ResizeObserver (avoids forced reflows during interactions)
+  // Note: Initial values set in <head> to prevent CLS, this only handles actual size changes
   useEffect(() => {
-    const recalc = () => {
-      const topbar = document.querySelector(".topbar");
-      const header = document.querySelector("header");
-      if (!topbar || !header) return;
-      
-      // Batch all reads together to minimize forced reflow (read once per element)
+    const topbar = document.querySelector(".topbar");
+    const header = document.querySelector("header");
+    if (!topbar || !header) return;
+
+    // Cache previous values to avoid redundant CSS variable updates
+    let cachedTopbarH = 0;
+    let cachedHeaderH = 0;
+    let cachedStack = 0;
+
+    const updateStackHeight = () => {
+      // Read computed sizes (ResizeObserver already triggered layout)
       const topbarH = topbar.offsetHeight;
       const headerH = header.offsetHeight;
       const stack = topbarH + headerH;
-      
-      // Write all values at once
-      document.documentElement.style.setProperty("--stack-h", `${stack}px`);
-      document.documentElement.style.setProperty("--topbar-h", `${topbarH}px`);
-      document.documentElement.style.setProperty("--header-h", `${headerH}px`);
+
+      // Short-circuit if values haven't changed (prevents DOM writes during interactions)
+      if (topbarH === cachedTopbarH && headerH === cachedHeaderH && stack === cachedStack) {
+        return;
+      }
+
+      // Update cache
+      cachedTopbarH = topbarH;
+      cachedHeaderH = headerH;
+      cachedStack = stack;
+
+      // Schedule CSS variable updates for next frame (async, non-blocking)
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--stack-h", `${stack}px`);
+        document.documentElement.style.setProperty("--topbar-h", `${topbarH}px`);
+        document.documentElement.style.setProperty("--header-h", `${headerH}px`);
+      });
     };
 
-    // Only recalc on resize - initial values already set in <head>
-    // Throttled resize handler to reduce main thread blocking
-    const throttledRecalc = throttle(recalc, 200);
-    window.addEventListener("resize", throttledRecalc, { passive: true });
-    return () => window.removeEventListener("resize", throttledRecalc);
+    // Use ResizeObserver to watch for size changes (more efficient than resize events)
+    const observer = new ResizeObserver(() => {
+      // Defer measurement until browser has settled layout (with Safari-safe idle callback detection)
+      const schedule = window.requestIdleCallback || ((cb) => setTimeout(cb, 0));
+      schedule(updateStackHeight);
+    });
+
+    observer.observe(topbar);
+    observer.observe(header);
+
+    // Initial measurement
+    updateStackHeight();
+
+    return () => observer.disconnect();
   }, []);
 
   // Handle hash navigation on route changes (immediate, with retry until element exists)

@@ -43,6 +43,7 @@
   <script>
     (function() {
       var gtmLoaded = false;
+      var gtmScheduled = false;
       function loadGTM() {
         if (gtmLoaded) return;
         gtmLoaded = true;
@@ -52,11 +53,21 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-532W3HH2');
       }
+      function scheduleGTM() {
+        if (gtmScheduled) return;
+        gtmScheduled = true;
+        // Use requestIdleCallback to avoid blocking interactions
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadGTM, {timeout: 2000});
+        } else {
+          setTimeout(loadGTM, 0);
+        }
+      }
       // Load after 6 seconds (after hero placeholder finishes)
-      setTimeout(loadGTM, 6000);
-      // Or load on first user interaction
+      setTimeout(scheduleGTM, 6000);
+      // Or schedule on first user interaction (returns immediately, loads in next idle)
       ['scroll','mousemove','touchstart','click'].forEach(function(e){
-        window.addEventListener(e, loadGTM, {once: true, passive: true});
+        window.addEventListener(e, scheduleGTM, {once: true, passive: true});
       });
     })();
   </script>
@@ -66,6 +77,7 @@
   <script>
     (function() {
       var cookieyesLoaded = false;
+      var cookieyesScheduled = false;
       function loadCookieyes() {
         if (cookieyesLoaded) return;
         cookieyesLoaded = true;
@@ -75,11 +87,21 @@
         s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
         document.head.appendChild(s);
       }
+      function scheduleCookieyes() {
+        if (cookieyesScheduled) return;
+        cookieyesScheduled = true;
+        // Use requestIdleCallback to avoid blocking interactions
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadCookieyes, {timeout: 2000});
+        } else {
+          setTimeout(loadCookieyes, 0);
+        }
+      }
       // Load after 6 seconds (after hero placeholder finishes)
-      setTimeout(loadCookieyes, 6000);
-      // Or load on first user interaction
+      setTimeout(scheduleCookieyes, 6000);
+      // Or schedule on first user interaction (returns immediately, loads in next idle)
       ['scroll','mousemove','touchstart','click'].forEach(function(e){
-        window.addEventListener(e, loadCookieyes, {once: true, passive: true});
+        window.addEventListener(e, scheduleCookieyes, {once: true, passive: true});
       });
     })();
   </script>
@@ -89,6 +111,7 @@
   <script>
     (function() {
       var trustindexLoaded = false;
+      var trustindexScheduled = false;
       function loadTrustindex() {
         if (trustindexLoaded) return;
         trustindexLoaded = true;
@@ -98,9 +121,19 @@
         s.src = 'https://cdn.trustindex.io/assets/js/richsnippet.js?caf207364508g84f';
         document.head.appendChild(s);
       }
-      setTimeout(loadTrustindex, 4000);
+      function scheduleTrustindex() {
+        if (trustindexScheduled) return;
+        trustindexScheduled = true;
+        // Use requestIdleCallback to avoid blocking interactions
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadTrustindex, {timeout: 2000});
+        } else {
+          setTimeout(loadTrustindex, 0);
+        }
+      }
+      setTimeout(scheduleTrustindex, 4000);
       ['scroll','mousemove','touchstart','click'].forEach(function(e){
-        window.addEventListener(e, loadTrustindex, {once: true, passive: true});
+        window.addEventListener(e, scheduleTrustindex, {once: true, passive: true});
       });
     })();
   </script>
