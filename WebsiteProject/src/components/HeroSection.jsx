@@ -123,17 +123,13 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               <button
                 key={i}
                 onClick={() => go(i)}
-                className={`p-5 rounded-full transition-all ${
-                  i === idx 
-                    ? "bg-white/30 hover:bg-white/40" 
-                    : "bg-transparent hover:bg-white/20"
-                }`}
+                className="p-5 rounded-full transition-all hover:bg-white/10"
                 aria-label={`Go to slide ${i + 1}`}
               >
                 <span className={`block w-2 h-2 rounded-full transition-all ${
                   i === idx 
-                    ? "bg-white scale-125" 
-                    : "bg-white/50"
+                    ? "bg-white" 
+                    : "bg-white/40"
                 }`} />
               </button>
             ))}
