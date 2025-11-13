@@ -154,7 +154,7 @@ export default function Footer({ units, experiences, ui }) {
       </div>
 
       {/* Bottom bar - reserved for badges (reCAPTCHA, Trustindex) */}
-      <div className="border-t border-slate-700 py-6"></div>
+      <div className="py-6"></div>
     </footer>
   );
 }
