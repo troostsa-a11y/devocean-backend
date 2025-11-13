@@ -115,37 +115,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         <div ref={trustindexRef} className="mt-6"></div>
       </div>
 
-      {/* Controls */}
-      {list.length > 1 && (
-        <>
-          <div className="absolute z-20 bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-0">
-            {list.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => go(i)}
-                className="p-5 rounded-full transition-all hover:bg-white/10"
-                aria-label={`Go to slide ${i + 1}`}
-              >
-                <span className={`block w-2 h-2 rounded-full transition-all ${
-                  i === idx 
-                    ? "bg-white" 
-                    : "bg-white/40"
-                }`} />
-              </button>
-            ))}
-          </div>
-          <button
-            onClick={() => go(idx - 1)}
-            className="absolute z-20 left-3 bottom-3 px-3 py-1.5 rounded-full bg-black/30 text-white text-sm"
-            aria-label="Previous slide"
-          >‹</button>
-          <button
-            onClick={() => go(idx + 1)}
-            className="absolute z-20 right-3 bottom-3 px-3 py-1.5 rounded-full bg-black/30 text-white text-sm"
-            aria-label="Next slide"
-          >›</button>
-        </>
-      )}
     </section>
   );
 }
