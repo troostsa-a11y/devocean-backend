@@ -30,6 +30,13 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
   // Detect if we're on an experience detail page - use Wouter's location
   const isExperiencePage = location.startsWith('/experiences/');
+  
+  // Detect if we're on a standalone HTML page (not index.html)
+  // These pages include: safari.html, comfort.html, cottage.html, chalet.html, story.html, etc.
+  const isStandalonePage = typeof window !== 'undefined' && 
+    window.location.pathname !== '/' && 
+    window.location.pathname !== '/index.html' &&
+    !window.location.pathname.startsWith('/experiences/');
 
   const handleNavClick = (e, href) => {
     // On homepage, do smooth scroll to section
@@ -164,9 +171,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a 
-              href={isExperiencePage ? '/#home' : '#home'}
+              href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : '#home'}
               className="flex items-center gap-3"
-              onClick={isExperiencePage ? undefined : (e) => handleNavClick(e, '#home')}
+              onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#home')}
+              data-testid="link-home-logo"
             >
               <LazyImage 
                 srcWebP="/images/devocean_logo_header-small.webp"
@@ -191,9 +199,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             ].map(([k, href]) => (
               <li key={k}>
                 <a
-                  href={isExperiencePage ? `/${href}` : href}
+                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
                   className="hover:text-[#9e4b13] whitespace-nowrap"
-                  onClick={isExperiencePage ? undefined : (e) => handleNavClick(e, href)}
+                  onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, href)}
                 >
                   {ui.nav[k]}
                 </a>
@@ -253,10 +261,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 ].map(([k, href]) => (
                   <a
                     key={k}
-                    href={isExperiencePage ? `/${href}` : href}
+                    href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
                     data-testid={`link-mobile-${k}`}
                     className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                    onClick={isExperiencePage ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
+                    onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
                   >
                     {ui.nav[k]}
                   </a>
