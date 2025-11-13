@@ -39,6 +39,36 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 
 ## System Architecture
 
+### Language Code Architecture (Hybrid Approach)
+The website uses a **hybrid language code system** with automatic normalization between formats:
+
+**Full Locale Codes (React App/Frontend):**
+- **Format:** `en-GB`, `pt-PT`, `pt-BR`, `de-DE`, `es-ES`, `fr-FR`, `it-IT`, `nl-NL`, `ja-JP`, `zh-CN`, `ru`, `sv`, `pl`, `af-ZA`, `zu`, `sw`
+- **Total:** 17 locale variants (distinguishes regional variations like European vs Brazilian Portuguese, UK vs US English)
+- **Used in:**
+  - `WebsiteProject/src/i18n/useLocale.js` (main i18n system)
+  - `WebsiteProject/translations/*.js` (accommodation, story translations)
+  - All React components and translation files
+- **Normalization:** `normalizeLangCode()` function converts 2-letter codes → full codes (e.g., `pt` → `pt-BR`, `en` → `en-GB`)
+
+**2-Letter ISO Codes (Workers/Email/Booking):**
+- **Format:** `en`, `pt`, `de`, `fr`, `es`, `it`, `nl`, `ru`, `zh`, `ja`, `sv`, `pl`, `af`, `zu`, `sw`
+- **Total:** 15 base languages (simpler format for email templates and booking system)
+- **Used in:**
+  - `WebsiteProject/functions/api/contact.js` (contact form autoreply emails)
+  - `WebsiteProject/functions/api/experience-inquiry.js` (experience form autoreply emails)
+  - `WebsiteProject/booking.html` (standalone booking page translations)
+  - `server/services/email-parser.ts` (automailer system)
+- **Normalization:** `normalizeLang()` function converts full codes → 2-letter codes (e.g., `pt-PT` → `pt`, `en-GB` → `en`)
+
+**How They Work Together:**
+Each system has bidirectional normalization ensuring seamless compatibility. When React sends `pt-PT` to a Worker, the Worker normalizes it to `pt` for email templates. When booking.html uses `pt`, React normalizes it to `pt-BR` for UI display. Users receive correct translations regardless of which system initiates the request.
+
+**Why Hybrid?**
+- **React needs regional precision:** Distinguishing pt-PT (European Portuguese) from pt-BR (Brazilian Portuguese) matters for UI/UX
+- **Email/Booking prefers simplicity:** Most translation differences are negligible in transactional emails, so 15 base languages reduce template complexity
+- **Robust normalization prevents issues:** Both systems handle format conversions automatically with no manual intervention required
+
 ### Hybrid Email Architecture
 Email functionality is split between Cloudflare (contact forms) and Replit (automailer) for optimal cost and reliability.
 - **Contact Forms (Cloudflare Workers + Resend):** Standalone Workers handle general contact and experience inquiries, including reCAPTCHA v3, header injection prevention, HTML escaping, and localized auto-replies. All new forms must use this protocol.
