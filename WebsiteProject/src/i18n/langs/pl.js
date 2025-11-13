@@ -2,7 +2,7 @@ export const UI = {
   menu: "Menu",
   regions: { europe: "Europa", asia: "Azja", americas: "Ameryki", africa: "Afryka", oceania: "Oceania" },
   nav: { home: "Strona główna", stay: "Pobyt", experiences: "Doświadczenia", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt" },
-  hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty kilkaset metrów od plaży w Ponta do Ouro, południowy Mozambik.", ctaPrimary: "Zarezerwuj swój pobyt", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty kilkaset metrów od plaży w Ponta do Ouro, południowy Mozambik.", ctaPrimary: "Zarezerwuj pobyt", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości" },
   stay: { headline: "Zostań z nami", blurb: "Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.", moreDetails: "Więcej szczegółów", ourStory: "Nasza Historia" },
   experiences: { headline: "Doświadczenia", blurb: "Przygody nad oceanem i w lesie tuż za progiem.", operators: "Zaufani lokalni operatorzy:" },
   todo: {

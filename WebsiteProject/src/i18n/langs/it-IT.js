@@ -3,7 +3,7 @@ export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Asia", americas: "Americhe", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Alloggi", experiences: "Esperienze", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.", ctaPrimary: "Prenota ora", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.", ctaPrimary: "Prenota il tuo soggiorno", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
     stay: { headline: "Soggiorna con noi", blurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.", moreDetails: "Altri dettagli", ourStory: "La Nostra Storia" },
     experiences: { headline: "Esperienze", blurb: "Avventure tra oceano e foresta a portata di mano.", operators: "Operatori locali fidati:" },
     units: {

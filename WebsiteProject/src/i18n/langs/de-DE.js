@@ -3,7 +3,7 @@ export const UI = {
 menu: "Menü",
     regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.", ctaPrimary: "Jetzt buchen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.", ctaPrimary: "Buchen Sie Ihren Aufenthalt", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
     experiences: { headline: "Erlebnisse", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:" },
     units: {

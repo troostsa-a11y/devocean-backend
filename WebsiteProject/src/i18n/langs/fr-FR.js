@@ -15,7 +15,7 @@ menu: "Menu",
       title: "DEVOCEAN Lodge",
       subtitle:
         "Hébergements écoresponsables à quelques centaines de mètres de la plage à Ponta do Ouro, sud du Mozambique.",
-      ctaPrimary: "Réserver",
+      ctaPrimary: "Réservez votre séjour",
       ctaSecondary: "Découvrir le lodge",
       badge: "Confort & rapport qualité-prix plébiscités"
     },
