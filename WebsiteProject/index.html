@@ -607,21 +607,23 @@
         opacity: 1;
       }
     }
-    /* Hide placeholder when React renders (controlled by JavaScript delay below) */
-    #root:not(:empty) ~ #hero-placeholder {
+    /* Main app renders underneath hero (hidden only when hero is active) */
+    #root {
+      position: relative;
+      z-index: 1;
       opacity: 1;
       transition: opacity 0.5s ease-out;
     }
+    /* Hide #root content while hero placeholder is active */
+    html.hero-active #root {
+      opacity: 0;
+    }
+    /* Fade out placeholder when triggered by JavaScript */
     #hero-placeholder.fade-out {
       opacity: 0;
       pointer-events: none;
     }
-    /* Main app renders underneath hero (hidden initially by overlay) */
-    #root {
-      position: relative;
-      z-index: 1;
-    }
-    /* When hero is active, prevent scrolling but allow rendering */
+    /* When hero is active, prevent scrolling */
     html.hero-active {
       overflow: hidden;
     }
