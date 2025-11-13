@@ -193,3 +193,11 @@ body {
   height: 40px;
   display: block;
 }
+
+/* reCAPTCHA v3 Badge Positioning Fix */
+/* Fix for badge appearing off-screen (right: -186px issue) */
+.grecaptcha-badge {
+  right: 0 !important;
+  bottom: 14px !important;
+  z-index: 9999 !important;
+}
