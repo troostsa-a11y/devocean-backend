@@ -13,25 +13,113 @@ const sanitizeHeader = (str) => String(str).replace(/[\r\n<>]/g, '').trim();
 const sanitizeMessage = (str) => String(str).replace(/\r\n/g, '\n').replace(/\r/g, '').trim();
 const escapeHtml = (text) => text.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m] || m));
 
-// Multi-language auto-reply subjects
-const autoReplySubjects = {
-  en: '✅ Thank you for contacting DEVOCEAN Lodge',
-  pt: '✅ Obrigado por entrar em contato com o DEVOCEAN Lodge',
-  es: '✅ Gracias por contactar a DEVOCEAN Lodge',
-  fr: '✅ Merci d\'avoir contacté DEVOCEAN Lodge',
-  de: '✅ Vielen Dank für Ihre Kontaktaufnahme mit DEVOCEAN Lodge',
-  it: '✅ Grazie per aver contattato DEVOCEAN Lodge',
-  nl: '✅ Bedankt voor het contact opnemen met DEVOCEAN Lodge',
-  ru: '✅ Спасибо за обращение в DEVOCEAN Lodge',
-  zh: '✅ 感谢您联系 DEVOCEAN Lodge',
-  ja: '✅ DEVOCEAN Lodgeへのお問い合わせありがとうございます',
-  ar: '✅ شكراً لتواصلك مع DEVOCEAN Lodge',
-  pl: '✅ Dziękujemy za kontakt z DEVOCEAN Lodge',
-  cs: '✅ Děkujeme za kontakt s DEVOCEAN Lodge',
-  tr: '✅ DEVOCEAN Lodge ile iletişime geçtiğiniz için teşekkürler',
-  sv: '✅ Tack för att du kontaktade DEVOCEAN Lodge',
-  da: '✅ Tak fordi du kontaktede DEVOCEAN Lodge',
-  fi: '✅ Kiitos yhteydenotostasi DEVOCEAN Lodgeen',
+// Multi-language auto-reply content (15 languages)
+const autoReplyContent = {
+  en: {
+    subject: '✅ Thank you for contacting DEVOCEAN Lodge',
+    heading: 'Thank you for contacting us!',
+    greeting: 'Dear',
+    body: 'We have received your message and will get back to you as soon as possible.',
+    closing: 'Warm regards,'
+  },
+  pt: {
+    subject: '✅ Obrigado por entrar em contato com o DEVOCEAN Lodge',
+    heading: 'Obrigado por entrar em contato!',
+    greeting: 'Caro(a)',
+    body: 'Recebemos a sua mensagem e entraremos em contato em breve.',
+    closing: 'Cumprimentos cordiais,'
+  },
+  es: {
+    subject: '✅ Gracias por contactar a DEVOCEAN Lodge',
+    heading: '¡Gracias por contactarnos!',
+    greeting: 'Estimado/a',
+    body: 'Hemos recibido su mensaje y nos pondremos en contacto con usted lo antes posible.',
+    closing: 'Saludos cordiales,'
+  },
+  fr: {
+    subject: '✅ Merci d\'avoir contacté DEVOCEAN Lodge',
+    heading: 'Merci de nous avoir contactés !',
+    greeting: 'Cher/Chère',
+    body: 'Nous avons bien reçu votre message et nous vous répondrons dans les plus brefs délais.',
+    closing: 'Cordialement,'
+  },
+  de: {
+    subject: '✅ Vielen Dank für Ihre Kontaktaufnahme mit DEVOCEAN Lodge',
+    heading: 'Vielen Dank für Ihre Nachricht!',
+    greeting: 'Sehr geehrte/r',
+    body: 'Wir haben Ihre Nachricht erhalten und werden uns so schnell wie möglich bei Ihnen melden.',
+    closing: 'Mit freundlichen Grüßen,'
+  },
+  it: {
+    subject: '✅ Grazie per aver contattato DEVOCEAN Lodge',
+    heading: 'Grazie per averci contattato!',
+    greeting: 'Gentile',
+    body: 'Abbiamo ricevuto il suo messaggio e la contatteremo al più presto.',
+    closing: 'Cordiali saluti,'
+  },
+  nl: {
+    subject: '✅ Bedankt voor het contact opnemen met DEVOCEAN Lodge',
+    heading: 'Bedankt voor uw bericht!',
+    greeting: 'Beste',
+    body: 'We hebben uw bericht ontvangen en nemen zo spoedig mogelijk contact met u op.',
+    closing: 'Met vriendelijke groet,'
+  },
+  ru: {
+    subject: '✅ Спасибо за обращение в DEVOCEAN Lodge',
+    heading: 'Спасибо за ваше обращение!',
+    greeting: 'Уважаемый/ая',
+    body: 'Мы получили ваше сообщение и свяжемся с вами в ближайшее время.',
+    closing: 'С уважением,'
+  },
+  zh: {
+    subject: '✅ 感谢您联系 DEVOCEAN Lodge',
+    heading: '感谢您联系我们！',
+    greeting: '尊敬的',
+    body: '我们已收到您的消息，将尽快与您联系。',
+    closing: '此致敬礼，'
+  },
+  ja: {
+    subject: '✅ DEVOCEAN Lodgeへのお問い合わせありがとうございます',
+    heading: 'お問い合わせありがとうございます！',
+    greeting: '',
+    body: 'メッセージを受信いたしました。できるだけ早くご連絡いたします。',
+    closing: '敬具、'
+  },
+  pl: {
+    subject: '✅ Dziękujemy za kontakt z DEVOCEAN Lodge',
+    heading: 'Dziękujemy za kontakt!',
+    greeting: 'Szanowny/a',
+    body: 'Otrzymaliśmy Twoją wiadomość i skontaktujemy się z Tobą tak szybko, jak to możliwe.',
+    closing: 'Z poważaniem,'
+  },
+  sv: {
+    subject: '✅ Tack för att du kontaktade DEVOCEAN Lodge',
+    heading: 'Tack för ditt meddelande!',
+    greeting: 'Kära',
+    body: 'Vi har tagit emot ditt meddelande och återkommer till dig så snart som möjligt.',
+    closing: 'Vänliga hälsningar,'
+  },
+  af: {
+    subject: '✅ Dankie dat jy DEVOCEAN Lodge gekontak het',
+    heading: 'Dankie vir jou boodskap!',
+    greeting: 'Geagte',
+    body: 'Ons het jou boodskap ontvang en sal so gou as moontlik met jou kontak maak.',
+    closing: 'Vriendelike groete,'
+  },
+  zu: {
+    subject: '✅ Siyabonga ngokuxhumana ne-DEVOCEAN Lodge',
+    heading: 'Siyabonga ngomlayezo wakho!',
+    greeting: 'Sawubona',
+    body: 'Sithole umlayezo wakho futhi sizokuxhumana maduze.',
+    closing: 'Ozithobayo,'
+  },
+  sw: {
+    subject: '✅ Asante kwa kuwasiliana na DEVOCEAN Lodge',
+    heading: 'Asante kwa ujumbe wako!',
+    greeting: 'Mpendwa',
+    body: 'Tumepokea ujumbe wako na tutawasiliana nawe hivi karibuni.',
+    closing: 'Kwa heshima,'
+  }
 };
 
 // Verify reCAPTCHA
@@ -132,12 +220,20 @@ export async function onRequestPost(context) {
                      request.headers.get('X-Forwarded-For')?.split(',')[0] || 
                      'Unknown';
 
+    // Normalize language code to 2-letter format (pt-PT → pt, en-GB → en)
+    const normalizeLang = (langCode) => {
+      if (!langCode) return 'en';
+      const normalized = String(langCode).toLowerCase().split('-')[0];
+      const supported = ['en', 'pt', 'es', 'fr', 'de', 'it', 'nl', 'ru', 'zh', 'ja', 'ar', 'pl', 'cs', 'tr', 'sv', 'da', 'fi', 'af', 'zu', 'sw'];
+      return supported.includes(normalized) ? normalized : 'en';
+    };
+
     // Sanitize inputs (header fields must remove CR/LF to prevent header injection)
     const sanitizedName = sanitizeHeader(name).slice(0, 100);
     const sanitizedEmail = sanitizeHeader(email).slice(0, 100);
     const sanitizedPhone = phone ? sanitizeHeader(phone).slice(0, 30) : '';
     const sanitizedMessage = sanitizeMessage(message).slice(0, 2000);
-    const sanitizedLang = sanitizeHeader(lang || 'en').slice(0, 10);
+    const sanitizedLang = normalizeLang(lang);
     const sanitizedCheckin = checkin_iso ? sanitizeHeader(checkin_iso).slice(0, 10) : '';
     const sanitizedCheckout = checkout_iso ? sanitizeHeader(checkout_iso).slice(0, 10) : '';
     const sanitizedUnit = unit ? sanitizeHeader(unit).slice(0, 100) : '';
@@ -194,20 +290,22 @@ export async function onRequestPost(context) {
     await sendEmail('reservations@devoceanlodge.com', 'reservations@devoceanlodge.com', 
       `Contact Form: ${sanitizedName}`, lodgeEmailHtml, env.RESEND_API_KEY, sanitizedEmail);
 
-    // Auto-reply to guest
+    // Auto-reply to guest (multi-language)
+    const t = autoReplyContent[sanitizedLang] || autoReplyContent.en;
+    
     const autoReplyHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #9e4b13;">Thank you for contacting us!</h2>
-        <p>Dear ${escapeHtml(sanitizedName)},</p>
-        <p>We have received your message and will get back to you as soon as possible.</p>
-        <p style="margin-top: 20px;">Warm regards,</p>
+        <h2 style="color: #9e4b13;">${t.heading}</h2>
+        <p>${t.greeting} ${escapeHtml(sanitizedName)},</p>
+        <p>${t.body}</p>
+        <p style="margin-top: 20px;">${t.closing}</p>
         
         <table style="padding-bottom:10px;margin-bottom:8px" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><table style="display: inline-flex; margin-bottom: 30px;" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td style="vertical-align: top;"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><img src="https://cdn.trustindex.io/companies/ca/caf207364508g84f/media/devocean-logo-trustindex.png" alt="Sean & the Team" style="vertical-align:initial; max-width:80px;" width="80" height="80"></td></tr></tbody></table></td><td style="padding-left: 14px; "></td><td style="border-left: 2px solid #ccc; padding-right: 14px; "></td><td style="vertical-align: top;"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><table style="line-height: 1.5em; font-family: sans-serif; font-size: 14px; color: #000000; font-weight: normal; width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><span style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: 14px; font-weight: bold; line-height: 1.5em;">Sean & the Team</span><br><span style="color: rgb(0, 0, 0); font-family: sans-serif; font-size: 13px; line-height: 1.5em;">DEVOCEAN Lodge</span></td></tr></tbody></table></td></tr><tr><td><table style="line-height: 1.5em;  font-family: sans-serif; font-size: 14px; color: #000000;  font-weight: normal; width: 100%;" width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td style=" font-family: sans-serif; font-size:14px; color: #000000 !important;"><div style="font-family: sans-serif; font-size:14px; line-height: 1.5em; "><span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: sans-serif; font-weight: bold; font-size: 13px; line-height: 1.5em;">WhatsApp:</span> <span style="font-family: sans-serif; line-height: 1.5em; text-decoration: none !important; font-size: 13px; color: rgb(0, 0, 0) !important;"><span style="font-size: 13px;">+258 8441 82252 (text only)</span></span></div><div style="font-family: sans-serif; font-size:14px; line-height: 1.5em; "><span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: sans-serif; font-weight: bold; font-size: 13px; line-height: 1.5em;">Email:</span> <span style="font-size: 13px;"><a style="text-decoration: none !important;  font-family: sans-serif; font-size:14px !important;  color: #000 !important; line-height: 1.5em; " href="mailto:reservations@devoceanlodge.com"><span style="font-size: 13px;">reservations@devoceanlodge.com</span></a></span></div><div style="font-family: sans-serif; font-size:14px; line-height: 1.5em; "><span style="padding: 0px; margin: 0px; color: rgb(0, 0, 0); font-family: sans-serif; font-weight: bold; font-size: 13px; line-height: 1.5em;">Website:</span> <span style="font-size: 13px;"><a style="text-decoration: none !important;  font-family: sans-serif; font-size:14px !important;  color: #000 !important; line-height: 1.5em; " href="https://www.devoceanlodge.com" target="_blank"><span style="font-size: 13px;">www.devoceanlodge.com</span></a></span></div></td></tr><tr><td><span style="padding-top: 15px;"></span></td></tr><tr><td style="padding-top: 12px;"><span style="text-decoration: none !important;"><table cellspacing="0" cellpadding="0" border="0"><tbody><tr><td><a href="https://www.trustindex.io/reviews/devoceanlodge.com" target="_blank" style="text-decoration: none !important;"><img alt="Rating stars" src="https://cdn.trustindex.io/widgets/f8/f84f86256ecd97105106ecc69e4/stars.gif" style="display: block;" width="105"></a></td></tr><tr><td><a href="https://www.trustindex.io/reviews/devoceanlodge.com" target="_blank" style="text-decoration: none !important;"><img alt="Rating text" src="https://cdn.trustindex.io/widgets/f8/f84f86256ecd97105106ecc69e4/text.gif" style="display: block;" width="105"></a></td></tr></tbody></table></span></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table></td></tr><tr><td></td></tr></tbody></table>
       </div>
     `;
 
     await sendEmail('reservations@devoceanlodge.com', sanitizedEmail,
-      autoReplySubjects[sanitizedLang] || autoReplySubjects.en, autoReplyHtml, env.RESEND_API_KEY, 'reservations@devoceanlodge.com');
+      t.subject, autoReplyHtml, env.RESEND_API_KEY, 'reservations@devoceanlodge.com');
 
     console.log(`✅ Contact form submission from ${sanitizedName} (${sanitizedEmail}) - IP: ${senderIP}${sanitizedCheckin ? ` - Dates: ${sanitizedCheckin} to ${sanitizedCheckout}` : ''}`);
     

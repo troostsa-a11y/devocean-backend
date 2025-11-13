@@ -61,7 +61,7 @@ Email functionality is split between Cloudflare (contact forms) and Replit (auto
 - **Storage:** In-memory storage (`MemStorage`) for automailer booking state management.
 - **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas.
 - **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP, sending multi-language automated emails via SMTP scheduled in CAT/UTC+2.
-- **Contact Forms:** Standalone Cloudflare Workers using Resend API with header injection prevention (`sanitizeHeader()`), reCAPTCHA v3 with action validation, HTML escaping, and localized auto-reply emails.
+- **Contact Forms:** Standalone Cloudflare Workers using Resend API with header injection prevention (`sanitizeHeader()`), reCAPTCHA v3 with action validation, HTML escaping, and **full 15-language autoreply emails**. Language code normalization function (`normalizeLang()`) handles both full locale codes (pt-PT, en-GB) and 2-letter codes (pt, en) for seamless compatibility with React i18n system.
 
 ### Project Structure
 - **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
