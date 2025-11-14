@@ -107,37 +107,8 @@
   </script>
   <!-- End cookieyes banner -->
 
-  <!-- Trustindex Rich Snippet (Lazy Loaded) -->
-  <script>
-    (function() {
-      var trustindexLoaded = false;
-      var trustindexScheduled = false;
-      function loadTrustindex() {
-        if (trustindexLoaded) return;
-        trustindexLoaded = true;
-        var s = document.createElement('script');
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'https://cdn.trustindex.io/assets/js/richsnippet.js?caf207364508g84f';
-        document.head.appendChild(s);
-      }
-      function scheduleTrustindex() {
-        if (trustindexScheduled) return;
-        trustindexScheduled = true;
-        // Use requestIdleCallback to avoid blocking interactions
-        if (window.requestIdleCallback) {
-          requestIdleCallback(loadTrustindex, {timeout: 2000});
-        } else {
-          setTimeout(loadTrustindex, 0);
-        }
-      }
-      setTimeout(scheduleTrustindex, 4000);
-      ['scroll','mousemove','touchstart','click'].forEach(function(e){
-        window.addEventListener(e, scheduleTrustindex, {once: true, passive: true});
-      });
-    })();
-  </script>
-  <!-- End Trustindex Rich Snippet -->
+  <!-- Trustindex Widget -->
+  <script defer async src='https://cdn.trustindex.io/loader.js?bf7dce558f96285509262551189'></script>
 
   <!-- Critical: Preload hero image for LCP optimization (fetchpriority=high for immediate load) -->
   <link rel="preload" as="image" href="/photos/hero01.webp" type="image/webp" fetchpriority="high" media="(min-width: 801px)">
