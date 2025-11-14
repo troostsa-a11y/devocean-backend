@@ -127,11 +127,30 @@ const localeToISO6391 = (locale) => {
 export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
   const lang = localeToISO6391(locale);
   
-  // Use static EN-GB.html for English
-  if (lang === 'en') {
-    return `/book/EN-GB.html?currency=${currency}`;
+  // Map language codes to their respective static booking pages
+  const langFiles = {
+    'en': 'EN-GB',
+    'de': 'DE',
+    'es': 'ES',
+    'fr': 'FR',
+    'it': 'IT',
+    'nl': 'NL',
+    'pt': 'PT',
+    'ru': 'RU',
+    'zh': 'ZH',
+    'sv': 'SV',
+    'ja': 'JA',
+    'pl': 'PL',
+    'af': 'AF',
+    'zu': 'ZU',
+    'sw': 'SW'
+  };
+  
+  // Use static language-specific HTML files
+  if (langFiles[lang]) {
+    return `/book/${langFiles[lang]}.html?currency=${currency}`;
   }
   
-  // Use dynamic booking page for other languages
+  // Fallback to dynamic booking page (shouldn't happen)
   return `/booking.html?lang=${lang}&cur=${currency}`;
 };
