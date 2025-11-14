@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay – DEVOCEAN Lodge</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base styles */
+        :root {
+            --brand: #9e4b13;
+            --brand-2: #b65a1a;
+            --ink: #5C5048;
+            --bg: #fffaf6;
+            --card: #ffffff;
+            --muted: #8a827b;
+            --ring: #9e4b13;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Raleway", system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Header styles */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(255, 250, 246, 0.95);
+            backdrop-filter: saturate(180%) blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand img {
+            height: 48px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .title .name {
+            font-weight: 800;
+            font-size: 1.1rem;
+        }
+
+        .title .loc {
+            font-weight: 600;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Button styles */
+        .btn {
+            appearance: none;
+            border: none;
+            border-radius: 999px;
+            padding: 0.75rem 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn.primary {
+            background: var(--brand);
+            color: #fff;
+        }
+
+        .btn.primary:hover {
+            background: var(--brand-2);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Hero section */
+        .hero {
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--brand);
+        }
+
+        .hero p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Benefits section */
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--brand);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--ink);
+        }
+
+        .benefit-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Unit navigation */
+        .unit-nav {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 640px) {
+            .unit-nav {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .unit-btn {
+            appearance: none;
+            border: 1px solid var(--brand);
+            background: white;
+            color: var(--brand);
+            border-radius: 999px;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-height: 44px;
+        }
+
+        .unit-btn:hover, .unit-btn.active {
+            background: var(--brand);
+            color: white;
+        }
+
+        /* Booking section */
+        .booking-section {
+            margin: 2rem 0;
+        }
+
+        .iframe-container {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            border: none;
+            min-height: 800px;
+        }
+
+        /* FAQ section */
+        .faq-section {
+            margin: 3rem 0;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--brand);
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--muted);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.25rem 1.25rem;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Back to top button */
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--brand);
+            color: white;
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #backToTop:hover {
+            background: var(--brand-2);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+
+            .unit-nav {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a class="brand" href="https://devoceanlodge.com">
+                    <img src="/images/devocean_logo_header-booking.webp" alt="DEVOCEAN Lodge logo">
+                    <div class="title">
+                        <div class="name">DEVOCEAN Lodge</div>
+                        <div class="loc">Ponta do Ouro • Mozambique</div>
+                    </div>
+                </a>
+                <div class="header-actions">
+                    <button class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</button>
+                    <a class="btn primary" href="https://devoceanlodge.com">Home</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Book Direct for Best Value</h1>
+            <p>Experience luxury where the ocean meets comfort. Your coastal escape awaits at DEVOCEAN Lodge in Ponta do Ouro, Mozambique.</p>
+
+            <!-- Benefits Section -->
+            <div class="benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>Best Rate Guaranteed</h3>
+                    <p>Lowest prices when you book directly with us</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure Payment</h3>
+                    <p>Your payment information is always protected</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Confirmation</h3>
+                    <p>Receive your booking confirmation immediately</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Direct Support</h3>
+                    <p>Personal assistance from our dedicated team</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unit Navigation -->
+        <section class="unit-nav">
+            <button class="unit-btn active" data-roomid="620542">Safari Tent</button>
+            <button class="unit-btn" data-roomid="620540">Comfort Tent</button>
+            <button class="unit-btn" data-roomid="620541">Garden Cottage</button>
+            <button class="unit-btn" data-roomid="620543">Thatched Chalet</button>
+        </section>
+
+        <!-- Booking Section -->
+        <section class="booking-section">
+            <div class="iframe-container">
+                <iframe id="beds24frame" class="booking" title="DEVOCEAN Lodge booking" 
+                    src="https://beds24.com/booking2.php?propid=297012&layout=5" 
+                    width="1200" height="2000" style="max-width:100%;border:none;overflow:auto;" 
+                    allow="payment *; clipboard-write *">
+                    <p>Loading booking engine...</p>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your cancellation policy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer flexible cancellation up to 72 hours before your scheduled arrival for a full refund. Cancellations within 72 hours may be subject to a one-night fee.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you offer airport transportation?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we provide complimentary airport shuttle service for all guests staying three nights or longer. For shorter stays, transportation can be arranged for a nominal fee.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your child policy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Children under 3 stay free. Children 4-11 years pay half price. Youngsters 12 and up count as adults. Please note maximum occupancy limits per unit.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What dining options are available?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We feature our signature ocean-view restaurant, a casual beachside grill, and a pool bar serving light fare and cocktails. Room service is also available.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <p>&copy; <span id="year"></span> DEVOCEAN Lodge. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">↑</button>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // FAQ Accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Unit navigation
+        document.querySelectorAll('.unit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.unit-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Here you would typically update the iframe with the selected room
+                const roomId = this.getAttribute('data-roomid');
+                console.log('Selected room:', roomId);
+                // Update iframe URL with selected room
+                // document.getElementById('beds24frame').src = `https://beds24.com/booking2.php?propid=297012&layout=5&roomid=${roomId}`;
+            });
+        });
+
+        // Back to top button
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Iframe height adjustment for mobile
+        window.addEventListener('message', function(e) {
+            try {
+                const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+
+                // Handle dynamic height updates from iframe
+                if (data && (data.type === 'setHeight' || data.height)) {
+                    const height = parseInt(data.height, 10);
+                    if (Number.isFinite(height) && height > 400) {
+                        document.getElementById('beds24frame').style.height = (height + 40) + 'px';
+                    }
+                }
+            } catch (error) {
+                // Ignore non-JSON messages
+            }
+        });
+    </script>
+</body>
+</html>
