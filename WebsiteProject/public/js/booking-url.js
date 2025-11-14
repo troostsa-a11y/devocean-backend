@@ -41,7 +41,7 @@ function updateBookingUrls() {
   
   // Map language codes to their respective static booking pages
   const langFiles = {
-    'en': 'EN-GB',
+    'en': 'EN',
     'de': 'DE',
     'es': 'ES',
     'fr': 'FR',
@@ -59,7 +59,7 @@ function updateBookingUrls() {
   };
   
   // Route to language-specific static booking pages in /book/ folder
-  const langFile = langFiles[isoLang] || 'EN-GB';
+  const langFile = langFiles[isoLang] || 'EN';
   const bookingUrl = `/book/${langFile}.html?currency=${currency}`;
   
   console.log('Accommodation page booking URL:', { lang, currency, isoLang, langFile, bookingUrl });

@@ -129,7 +129,7 @@ export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurren
   
   // Map language codes to their respective static booking pages
   const langFiles = {
-    'en': 'EN-GB',
+    'en': 'EN',
     'de': 'DE',
     'es': 'ES',
     'fr': 'FR',
