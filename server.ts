@@ -2,7 +2,6 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import { EmailAutomationService } from './server/services/email-automation';
-import { createContactRoutes } from './server/routes/contact';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -53,25 +52,6 @@ function getTaxiConfig() {
 
 // Initialize email automation service
 let emailService;
-
-// Setup contact form routes early (available regardless of email automation service)
-if (process.env.RECAPTCHA_SECRET_KEY) {
-  const smtpConfig = {
-    host: process.env.MAIL_HOST!,
-    port: parseInt(process.env.SMTP_PORT || '465'),
-    secure: true,
-    auth: {
-      user: process.env.IMAP_USER!,
-      pass: process.env.IMAP_PASSWORD!,
-    },
-  };
-  
-  const contactRoutes = createContactRoutes(smtpConfig, process.env.RECAPTCHA_SECRET_KEY);
-  app.use('/api', contactRoutes);
-  console.log('📧 Contact form routes enabled (SMTP)');
-} else {
-  console.warn('⚠️  Contact form routes disabled - RECAPTCHA_SECRET_KEY not set');
-}
 
 if (validateEnvironment()) {
   try {

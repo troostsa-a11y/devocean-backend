@@ -8,9 +8,8 @@ November 14, 2025
 ## Archived Contents
 
 ### Template App Files (`template-app/`)
-Files from the original full-stack application template that are not used by the DEVOCEAN Lodge static website:
-- `shared/` - Database schema (schema.ts) for template app
-- `drizzle/` - Database migrations (0000_initial_schema.sql)
+Files from the original full-stack application template that are not used by the DEVOCEAN Lodge website or automailer:
+- `drizzle/` - Database migrations (0000_initial_schema.sql) - automailer uses in-memory storage
 - `server/routes/` - API routes (contact.ts) - website uses Cloudflare Workers instead
 - `translation_templates/` - Legacy translation template files (now embedded in code)
 
@@ -59,6 +58,7 @@ The following remain in the root directory as they are actively used:
 - `/WebsiteProject/` - Main React/Vite website application
 
 ### Automailer System
+- `/shared/` - Database schema (schema.ts) used by automailer
 - `/server/services/` - Email services (email-parser, email-sender, email-template-renderer)
 - `/server/utils/` - Server utility functions
 - `/email_templates/` - Email templates used by automailer
