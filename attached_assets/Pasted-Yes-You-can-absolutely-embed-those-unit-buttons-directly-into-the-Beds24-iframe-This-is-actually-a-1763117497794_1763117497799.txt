@@ -1,0 +1,134 @@
+Yes! You can absolutely embed those unit buttons directly into the Beds24 iframe. This is actually a great idea because it keeps the unit selection inside the booking widget itself.
+
+Here's exactly what to put in each Beds24 customization section:
+
+📍 Where to Add This in Beds24:
+Go to: SETTINGS > BOOKING ENGINE > CUSTOMISE
+
+1. Custom CSS (Beds24: "Custom CSS" section)
+/* Unit navigation buttons */
+.unit-nav-beds24 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin: 0 0 1.5rem 0;
+  padding: 1rem;
+  background: #fffaf6;
+  border-bottom: 2px solid #e5e7eb;
+}
+@media (min-width: 640px) {
+  .unit-nav-beds24 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.unit-btn-beds24 {
+  appearance: none;
+  border: 1px solid #9e4b13;
+  background: white;
+  color: #9e4b13;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  font-family: inherit;
+  text-align: center;
+}
+.unit-btn-beds24:hover {
+  background: #9e4b13;
+  color: white;
+  transform: translateY(-1px);
+}
+.unit-btn-beds24:active {
+  transform: scale(0.98);
+}
+.unit-btn-beds24.active {
+  background: #9e4b13;
+  color: white;
+  box-shadow: 0 2px 6px rgba(158, 75, 19, 0.2);
+}
+@media (max-width: 480px) {
+  .unit-nav-beds24 {
+    grid-template-columns: 1fr;
+  }
+  
+  .unit-btn-beds24 {
+    font-size: 0.85rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+2. Body Top (Beds24: "Body Top" section)
+<!-- Unit Navigation -->
+<div class="unit-nav-beds24" id="unitNavBeds24">
+  <button class="unit-btn-beds24" data-roomid="620542" data-unit="safari">Safari Tent</button>
+  <button class="unit-btn-beds24" data-roomid="620540" data-unit="comfort">Comfort Tent</button>
+  <button class="unit-btn-beds24" data-roomid="620541" data-unit="cottage">Garden Cottage</button>
+  <button class="unit-btn-beds24" data-roomid="620543" data-unit="chalet">Thatched Chalet</button>
+</div>
+
+3. Head Bottom (Beds24: "Head Bottom" section)
+<script>
+(function() {
+  // Wait for DOM to be ready
+  function initUnitButtons() {
+    const buttons = document.querySelectorAll('.unit-btn-beds24');
+    if (buttons.length === 0) return;
+    buttons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const roomId = this.getAttribute('data-roomid');
+        
+        // Remove active class from all buttons
+        buttons.forEach(function(b) {
+          b.classList.remove('active');
+        });
+        
+        // Add active class to clicked button
+        this.classList.add('active');
+        
+        // Update the booking form to show selected room
+        // This triggers Beds24's room filter
+        const roomSelect = document.querySelector('select[name="roomid"]');
+        if (roomSelect) {
+          roomSelect.value = roomId;
+          // Trigger change event to update availability
+          const event = new Event('change', { bubbles: true });
+          roomSelect.dispatchEvent(event);
+        }
+        
+        // Also update URL parameter for Beds24's internal filtering
+        const url = new URL(window.location.href);
+        url.searchParams.set('roomid', roomId);
+        window.history.replaceState({}, '', url.toString());
+        
+        // Reload booking form with selected room
+        if (typeof b24_reload_page !== 'undefined') {
+          b24_reload_page();
+        } else {
+          window.location.href = url.toString();
+        }
+      });
+    });
+    
+    // Check for preselected room in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const preselectedRoom = urlParams.get('roomid');
+    if (preselectedRoom) {
+      const activeBtn = document.querySelector('.unit-btn-beds24[data-roomid="' + preselectedRoom + '"]');
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+    }
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initUnitButtons);
+  } else {
+    initUnitButtons();
+  }
+})();
+</script>
+
