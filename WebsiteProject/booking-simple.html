@@ -184,6 +184,93 @@
       line-height: 1.4;
     }
     
+    .faq-section {
+      max-width: 1200px;
+      margin: 50px auto 40px;
+      padding: 0 20px;
+    }
+    
+    .faq-section h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 800;
+      color: #9e4b13;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    .faq-item {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      overflow: hidden;
+      transition: box-shadow 0.2s ease;
+    }
+    
+    .faq-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .faq-question {
+      padding: 18px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      color: #5C5048;
+      user-select: none;
+    }
+    
+    .faq-question span {
+      flex: 1;
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    }
+    
+    .faq-chevron {
+      margin-left: 12px;
+      color: #9e4b13;
+      transition: transform 0.3s ease;
+      font-size: 14px;
+    }
+    
+    .faq-item.active .faq-chevron {
+      transform: rotate(180deg);
+    }
+    
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      color: #8a827b;
+    }
+    
+    .faq-item.active .faq-answer {
+      padding: 0 20px 18px;
+      max-height: 300px;
+    }
+    
+    .faq-answer p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+    }
+    
+    footer {
+      background: #1a1a1a;
+      color: #ccc;
+      padding: 30px 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    
     @media (max-width: 640px) {
       .brand-text p { display: none; }
       .brand img { height: 42px; }
@@ -194,6 +281,15 @@
       }
       .benefit-card {
         padding: 18px 12px;
+      }
+      .faq-question {
+        padding: 14px 16px;
+      }
+      .faq-answer {
+        padding: 0 16px;
+      }
+      .faq-item.active .faq-answer {
+        padding: 0 16px 14px;
       }
     }
   </style>
@@ -255,7 +351,58 @@
     </div>
   </main>
 
+  <section class="faq-section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What is your cancellation policy?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>We offer flexible cancellation up to 72 hours before your scheduled arrival for a full refund. Cancellations within 72 hours may be subject to a one-night fee.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Do you offer airport transportation?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Yes, we provide complimentary airport shuttle service for all guests staying three nights or longer. For shorter stays, transportation can be arranged for a nominal fee.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What is your child policy?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>Children under 3 stay free. Children 4-11 years pay half price. Youngsters 12 and up count as adults. Please note maximum occupancy limits per unit.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What dining options are available?</span>
+        <span class="faq-chevron">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>We feature our signature ocean-view restaurant, a casual beachside grill, and a pool bar serving light fare and cocktails. Room service is also available.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique</p>
+  </footer>
+
   <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
     // Get language from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const lang = urlParams.get('lang') || 'en';
@@ -270,6 +417,14 @@
     
     // Set iframe source
     document.getElementById('beds24frame').src = iframeUrl;
+    
+    // FAQ Accordion functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentNode;
+        item.classList.toggle('active');
+      });
+    });
   </script>
 </body>
 </html>
