@@ -564,11 +564,11 @@
                 activeBtn.classList.add('active');
             }
 
-            // Scroll to booking section
+            // Scroll to unit navigation (keeps unit buttons visible)
             setTimeout(() => {
-                const bookSection = document.querySelector('.booking-section');
-                if (bookSection) {
-                    bookSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const unitNav = document.querySelector('.unit-nav');
+                if (unitNav) {
+                    unitNav.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 100);
         }
