@@ -506,10 +506,16 @@
     document.getElementById('beds24frame').src = iframeUrl;
     
     // FAQ Accordion functionality
-    document.querySelectorAll('.faq-question').forEach(question => {
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+      
       question.addEventListener('click', () => {
-        const item = question.parentNode;
         item.classList.toggle('active');
+      });
+      
+      answer.addEventListener('click', () => {
+        item.classList.remove('active');
       });
     });
     
