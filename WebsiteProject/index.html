@@ -441,25 +441,8 @@
     })();
   </script>
 
-  <!-- Trustindex Floating Certificate (Lazy Loaded) -->
-  <script>
-    (function() {
-      var certLoaded = false;
-      function loadCert() {
-        if (certLoaded) return;
-        certLoaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8';
-        document.head.appendChild(s);
-      }
-      // Delay to 10 seconds to avoid competing with hero transition (5s hero + 5s buffer)
-      setTimeout(loadCert, 10000);
-      ['scroll','touchstart','click'].forEach(function(e){
-        window.addEventListener(e, loadCert, {once: true, passive: true});
-      });
-    })();
-  </script>
+  <!-- Trustindex Floating Certificate -->
+  <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 
   <!-- Inline Critical CSS (mobile-first: prevents 160ms CSS blocking on 4G) -->
   <style>
