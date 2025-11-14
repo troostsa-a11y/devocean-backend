@@ -511,7 +511,17 @@
       const answer = item.querySelector('.faq-answer');
       
       question.addEventListener('click', () => {
-        item.classList.toggle('active');
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          otherItem.classList.remove('active');
+        });
+        
+        // Toggle current item (open if it was closed)
+        if (!isActive) {
+          item.classList.add('active');
+        }
       });
       
       answer.addEventListener('click', () => {
