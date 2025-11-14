@@ -43,8 +43,106 @@
   </url>
 
   <url>
-    <loc>https://devoceanlodge.com/booking.html</loc>
-    <lastmod>2025-11-13</lastmod>
+    <loc>https://devoceanlodge.com/book/EN.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/AF.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/DE.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/ES.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/FR.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/IT.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/JA.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/NL.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/PL.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/PT.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/RU.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/SV.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/SW.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/ZH.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <priority>0.95</priority>
+    <changefreq>daily</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book/ZU.html</loc>
+    <lastmod>2025-11-14</lastmod>
     <priority>0.95</priority>
     <changefreq>daily</changefreq>
   </url>
