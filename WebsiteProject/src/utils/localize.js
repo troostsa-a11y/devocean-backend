@@ -126,5 +126,12 @@ const localeToISO6391 = (locale) => {
 
 export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
   const lang = localeToISO6391(locale);
+  
+  // Use static EN-GB.html for English
+  if (lang === 'en') {
+    return `/book/EN-GB.html?currency=${currency}`;
+  }
+  
+  // Use dynamic booking page for other languages
   return `/booking.html?lang=${lang}&cur=${currency}`;
 };

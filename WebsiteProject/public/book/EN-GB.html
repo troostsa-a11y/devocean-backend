@@ -492,12 +492,14 @@
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
     
-    // Get room ID from URL parameter
+    // Get parameters from URL
     const urlParams = new URLSearchParams(window.location.search);
     const roomid = urlParams.get('roomid') || '';
+    const currency = urlParams.get('currency') || 'USD';
     
     // Build Beds24 iframe URL (English only)
     let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=en';
+    iframeUrl += '&cur=' + currency;
     if (roomid) {
       iframeUrl += '&roomid=' + roomid;
     }
