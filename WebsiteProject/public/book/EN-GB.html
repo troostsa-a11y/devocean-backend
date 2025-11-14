@@ -442,10 +442,10 @@
 
         <!-- Unit Navigation -->
         <section class="unit-nav">
-            <button class="unit-btn active" data-roomid="620542">Safari Tent</button>
-            <button class="unit-btn" data-roomid="620540">Comfort Tent</button>
-            <button class="unit-btn" data-roomid="620541">Garden Cottage</button>
-            <button class="unit-btn" data-roomid="620543">Thatched Chalet</button>
+            <button class="unit-btn" data-roomid="620542" data-unit="safari">Safari Tent</button>
+            <button class="unit-btn" data-roomid="620540" data-unit="comfort">Comfort Tent</button>
+            <button class="unit-btn" data-roomid="620541" data-unit="cottage">Garden Cottage</button>
+            <button class="unit-btn" data-roomid="620543" data-unit="chalet">Thatched Chalet</button>
         </section>
 
         <!-- Booking Section -->
@@ -534,24 +534,62 @@
             });
         });
 
-        // Unit navigation
+        // Unit navigation - connects buttons to Beds24 iframe rooms
+        const ROOM_IDS = {
+            'safari': 620542,
+            'comfort': 620540,
+            'cottage': 620541,
+            'chalet': 620543
+        };
+
+        function switchToRoom(roomId, unitKey) {
+            const iframe = document.getElementById('beds24frame');
+            if (!iframe) return;
+
+            // Build new iframe URL with selected room
+            const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
+            if (roomId) {
+                url.searchParams.set('roomid', roomId);
+            }
+
+            // Update iframe source
+            iframe.src = url.toString();
+
+            // Update active button
+            document.querySelectorAll('.unit-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.querySelector(`[data-unit="${unitKey}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            // Scroll to booking section
+            setTimeout(() => {
+                const bookSection = document.querySelector('.booking-section');
+                if (bookSection) {
+                    bookSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+
+        // Setup click handlers for unit buttons
         document.querySelectorAll('.unit-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                // Remove active class from all buttons
-                document.querySelectorAll('.unit-btn').forEach(b => {
-                    b.classList.remove('active');
-                });
-
-                // Add active class to clicked button
-                this.classList.add('active');
-
-                // Here you would typically update the iframe with the selected room
-                const roomId = this.getAttribute('data-roomid');
-                console.log('Selected room:', roomId);
-                // Update iframe URL with selected room
-                // document.getElementById('beds24frame').src = `https://beds24.com/booking2.php?propid=297012&layout=5&roomid=${roomId}`;
+                const unitKey = this.getAttribute('data-unit');
+                const roomId = ROOM_IDS[unitKey];
+                if (roomId) {
+                    switchToRoom(roomId, unitKey);
+                }
             });
         });
+
+        // Check for preselected unit in URL (e.g., ?unit=safari)
+        const urlParams = new URLSearchParams(window.location.search);
+        const preselectedUnit = urlParams.get('unit');
+        if (preselectedUnit && ROOM_IDS[preselectedUnit]) {
+            switchToRoom(ROOM_IDS[preselectedUnit], preselectedUnit);
+        }
 
         // Back to top button
         const backToTopBtn = document.getElementById('backToTop');
