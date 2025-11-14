@@ -396,7 +396,13 @@
   </section>
 
   <footer>
-    <p>&copy; <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique</p>
+    <div style="text-align: center;">
+      &copy; <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
+      <a href="#" onclick="return setLegalLink('privacy')" style="color:#9e4b13;text-decoration:none">Privacy</a> •
+      <a href="#" onclick="return setLegalLink('cookies')" style="color:#9e4b13;text-decoration:none">Cookies</a> •
+      <a href="#" onclick="return setLegalLink('terms')" style="color:#9e4b13;text-decoration:none">Terms</a> •
+      <a href="#" onclick="return setLegalLink('GDPR')" style="color:#9e4b13;text-decoration:none">GDPR</a>
+    </div>
   </footer>
 
   <script>
@@ -425,6 +431,16 @@
         item.classList.toggle('active');
       });
     });
+    
+    // Legal links with language support
+    function setLegalLink(page) {
+      const currentLang = urlParams.get('lang') || 'en';
+      window.location.href = `/legal/${page}.html?lang=${currentLang}`;
+      return false;
+    }
+    
+    // Make setLegalLink available globally
+    window.setLegalLink = setLegalLink;
   </script>
 </body>
 </html>
