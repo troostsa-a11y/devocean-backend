@@ -36,11 +36,33 @@ function updateBookingUrls() {
   const lang = localStorage.getItem('site.lang') || 'en';
   const currency = localStorage.getItem('site.currency') || 'USD';
   
-  // Convert to ISO 639-1 format for Beds24
+  // Convert to ISO 639-1 format
   const isoLang = localeToISO6391(lang);
-  const bookingUrl = `/booking.html?lang=${isoLang}&cur=${currency}`;
   
-  console.log('Accommodation page booking URL:', { lang, currency, isoLang, bookingUrl });
+  // Map language codes to their respective static booking pages
+  const langFiles = {
+    'en': 'EN-GB',
+    'de': 'DE',
+    'es': 'ES',
+    'fr': 'FR',
+    'it': 'IT',
+    'nl': 'NL',
+    'pt': 'PT',
+    'ru': 'RU',
+    'zh': 'ZH',
+    'sv': 'SV',
+    'ja': 'JA',
+    'pl': 'PL',
+    'af': 'AF',
+    'zu': 'ZU',
+    'sw': 'SW'
+  };
+  
+  // Route to language-specific static booking pages in /book/ folder
+  const langFile = langFiles[isoLang] || 'EN-GB';
+  const bookingUrl = `/book/${langFile}.html?currency=${currency}`;
+  
+  console.log('Accommodation page booking URL:', { lang, currency, isoLang, langFile, bookingUrl });
   
   // Update all booking buttons (using data-testid for reliability)
   const bookButtons = document.querySelectorAll('a[data-testid="button-book-now"]');
