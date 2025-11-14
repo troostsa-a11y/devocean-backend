@@ -216,10 +216,29 @@ function getBookingLocale(lang, currency, countryCode) {
 }
 
 /**
- * Build booking URL with locale and currency
+ * Build booking URL - map to new static booking pages
  */
 function buildBookingUrl(locale, currency) {
-  return `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}`;
+  // Map locale to booking page filename (EN.html, DE.html, etc.)
+  const langMap = {
+    'en-GB': 'EN', 'en-US': 'EN', 'en': 'EN',
+    'de-DE': 'DE', 'de': 'DE',
+    'pt-PT': 'PT', 'pt-BR': 'PT', 'pt': 'PT',
+    'fr-FR': 'FR', 'fr': 'FR',
+    'it-IT': 'IT', 'it': 'IT',
+    'nl-NL': 'NL', 'nl': 'NL',
+    'es-ES': 'ES', 'es': 'ES',
+    'ja-JP': 'JA', 'ja': 'JA',
+    'zh-CN': 'ZH', 'zh': 'ZH',
+    'ru': 'RU',
+    'sv': 'SV',
+    'pl': 'PL',
+    'af-ZA': 'AF', 'af': 'AF',
+    'zu': 'ZU',
+    'sw': 'SW'
+  };
+  const bookingPage = langMap[locale] || 'EN';
+  return `/book/${bookingPage}.html?currency=${currency}`;
 }
 
 /**

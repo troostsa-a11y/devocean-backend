@@ -550,10 +550,33 @@ async function applyTranslations(lang) {
     }
   }
 
-  // Update booking URLs
+  // Update booking URLs - map to new static booking pages
   const currency = detectCurrency();
-  const locale = getHotelrunnerLocale(lang);
-  const bookingUrl = `https://book.devoceanlodge.com/bv3/search?locale=${locale}&currency=${currency}`;
+  
+  // Map locale to booking page filename (EN.html, DE.html, etc.)
+  function getBookingPage(locale) {
+    const langMap = {
+      'en-GB': 'EN', 'en-US': 'EN', 'en': 'EN',
+      'de-DE': 'DE', 'de': 'DE',
+      'pt-PT': 'PT', 'pt-BR': 'PT', 'pt': 'PT',
+      'fr-FR': 'FR', 'fr': 'FR',
+      'it-IT': 'IT', 'it': 'IT',
+      'nl-NL': 'NL', 'nl': 'NL',
+      'es-ES': 'ES', 'es': 'ES',
+      'ja-JP': 'JA', 'ja': 'JA',
+      'zh-CN': 'ZH', 'zh': 'ZH',
+      'ru': 'RU',
+      'sv': 'SV',
+      'pl': 'PL',
+      'af-ZA': 'AF', 'af': 'AF',
+      'zu': 'ZU',
+      'sw': 'SW'
+    };
+    return langMap[locale] || 'EN';
+  }
+  
+  const bookingPage = getBookingPage(lang);
+  const bookingUrl = `/book/${bookingPage}.html?currency=${currency}`;
   
   document.querySelectorAll('a[href*="book.devoceanlodge.com"]').forEach(link => {
     link.href = bookingUrl;
