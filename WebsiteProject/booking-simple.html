@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- Trustindex Floating Certificate -->
+  <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
@@ -259,16 +262,22 @@
     }
     
     footer {
-      background: #1a1a1a;
-      color: #ccc;
-      padding: 30px 20px;
-      text-align: center;
       margin-top: 40px;
+      padding: 24px 0;
+      border-top: 1px solid #eee;
+      color: #8a827b;
+      font-size: 0.95rem;
+      text-align: center;
     }
     
-    footer p {
-      margin: 0;
-      font-size: 0.9rem;
+    footer a {
+      color: #9e4b13;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+    
+    footer a:hover {
+      opacity: 0.8;
     }
     
     @media (max-width: 640px) {
@@ -396,12 +405,14 @@
   </section>
 
   <footer>
-    <div style="text-align: center;">
-      &copy; <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
-      <a href="#" onclick="return setLegalLink('privacy')" style="color:#9e4b13;text-decoration:none">Privacy</a> •
-      <a href="#" onclick="return setLegalLink('cookies')" style="color:#9e4b13;text-decoration:none">Cookies</a> •
-      <a href="#" onclick="return setLegalLink('terms')" style="color:#9e4b13;text-decoration:none">Terms</a> •
-      <a href="#" onclick="return setLegalLink('GDPR')" style="color:#9e4b13;text-decoration:none">GDPR</a>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <div style="margin-bottom: 12px;">
+        &copy; <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique • 
+        <a href="#" onclick="return setLegalLink('privacy')">Privacy</a> • 
+        <a href="#" onclick="return setLegalLink('cookies')">Cookies</a> • 
+        <a href="#" onclick="return setLegalLink('terms')">Terms</a> • 
+        <a href="#" onclick="return setLegalLink('GDPR')">GDPR</a>
+      </div>
     </div>
   </footer>
 
