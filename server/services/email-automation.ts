@@ -79,7 +79,8 @@ export class EmailAutomationService {
         this.db,
         taxiConfig,
         fromEmail,
-        fromName
+        fromName,
+        bccEmail
       );
     }
     

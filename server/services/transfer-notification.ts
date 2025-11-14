@@ -1,4 +1,4 @@
-import nodemailer, { type Transporter } from 'nodemailer';
+import nodemailer from 'nodemailer';
 import { DatabaseService } from './database';
 import type { Booking } from '../../shared/schema';
 
@@ -24,24 +24,27 @@ interface TaxiCompanyConfig {
 }
 
 export class TransferNotificationService {
-  private transporter: Transporter;
+  private transporter: ReturnType<typeof nodemailer.createTransport>;
   private db: DatabaseService;
   private taxiConfig: TaxiCompanyConfig;
   private fromEmail: string;
   private fromName: string;
+  private bccEmail?: string;
 
   constructor(
     smtpConfig: SMTPConfig,
     db: DatabaseService,
     taxiConfig: TaxiCompanyConfig,
     fromEmail: string = 'booking@devoceanlodge.com',
-    fromName: string = 'DEVOCEAN Lodge Bookings'
+    fromName: string = 'DEVOCEAN Lodge Bookings',
+    bccEmail?: string
   ) {
     this.transporter = nodemailer.createTransport(smtpConfig);
     this.db = db;
     this.taxiConfig = taxiConfig;
     this.fromEmail = fromEmail;
     this.fromName = fromName;
+    this.bccEmail = bccEmail;
   }
 
   /**
@@ -69,6 +72,7 @@ export class TransferNotificationService {
       const result = await this.transporter.sendMail({
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: this.taxiConfig.email,
+        bcc: this.bccEmail, // BCC copy for record-keeping
         subject: `New Transfer Request - Booking ${booking.groupRef}`,
         html: emailContent.html,
         text: emailContent.text,

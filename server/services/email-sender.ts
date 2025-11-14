@@ -102,14 +102,27 @@ export class EmailSenderService {
       }
 
       // Send email via SMTP with inline attachments
-      const result = await this.transporter.sendMail({
+      const mailOptions = {
         from: `"${this.fromName}" <${this.fromEmail}>`,
         to: scheduledEmail.recipientEmail,
         bcc: this.bccEmail, // BCC copy for record-keeping
         subject: template.subject,
         html: template.html,
         attachments
-      });
+      };
+      
+      // Debug logging to verify BCC
+      console.log(`📧 Sending email to ${scheduledEmail.recipientEmail}, BCC: ${this.bccEmail || '(none)'}`);
+      
+      const result = await this.transporter.sendMail(mailOptions);
+      
+      // Log SMTP server response to verify BCC was accepted
+      console.log(`✅ SMTP Response - Message ID: ${result.messageId}`);
+      console.log(`   Accepted: ${JSON.stringify(result.accepted)}`);
+      console.log(`   Rejected: ${JSON.stringify(result.rejected)}`);
+      if (result.envelope) {
+        console.log(`   Envelope: ${JSON.stringify(result.envelope)}`);
+      }
 
       // Mark as sent in database
       await this.db.markEmailAsSent(scheduledEmail.id);
