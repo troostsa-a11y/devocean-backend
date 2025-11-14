@@ -361,45 +361,56 @@
   </main>
 
   <section class="faq-section">
-    <h2>Frequently Asked Questions</h2>
+    <h2 data-translate="faq-title">Frequently Asked Questions</h2>
 
     <div class="faq-item">
       <div class="faq-question">
-        <span>What is your cancellation policy?</span>
+        <span data-translate="faq-q1">What is your cancellation policy?</span>
         <span class="faq-chevron">▼</span>
       </div>
       <div class="faq-answer">
-        <p>We offer flexible cancellation up to 72 hours before your scheduled arrival for a full refund. Cancellations within 72 hours may be subject to a one-night fee.</p>
+        <p><strong data-translate="faq-a1-title">Our Cancellation Policy</strong><br>
+        <span data-translate="faq-a1-intro">We offer a semi-flexible policy for all rates except non-refundable and last-minute offers.</span></p>
+        
+        <p><span data-translate="faq-a1-deposit">A 50% deposit is required at the time of reservation; the remaining balance is due on arrival.</span></p>
+        
+        <p><span data-translate="faq-a1-free">Free cancellation up to 28 days before arrival (full refund of the deposit).</span></p>
+        
+        <p><span data-translate="faq-a1-partial">Cancellations made 28 to 1 day before arrival incur a 50% fee.</span></p>
+        
+        <p><span data-translate="faq-a1-noshow">No-shows or shortened stays are charged at 100% of the booking value.</span></p>
+        
+        <p><span data-translate="faq-a1-closing">We aim to keep our policy fair and transparent while ensuring we can guarantee availability and prepare your stay with care.</span></p>
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">
-        <span>Do you offer airport transportation?</span>
+        <span data-translate="faq-q2">Do you offer airport transportation?</span>
         <span class="faq-chevron">▼</span>
       </div>
       <div class="faq-answer">
-        <p>Yes, we provide complimentary airport shuttle service for all guests staying three nights or longer. For shorter stays, transportation can be arranged for a nominal fee.</p>
+        <p data-translate="faq-a2">Yes, we provide complimentary airport shuttle service for all guests staying three nights or longer. For shorter stays, transportation can be arranged for a nominal fee.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">
-        <span>What is your child policy?</span>
+        <span data-translate="faq-q3">What is your child policy?</span>
         <span class="faq-chevron">▼</span>
       </div>
       <div class="faq-answer">
-        <p>Children under 3 stay free. Children 4-11 years pay half price. Youngsters 12 and up count as adults. Please note maximum occupancy limits per unit.</p>
+        <p data-translate="faq-a3">Children under 3 stay free. Children 4-11 years pay half price. Youngsters 12 and up count as adults. Please note maximum occupancy limits per unit.</p>
       </div>
     </div>
 
     <div class="faq-item">
       <div class="faq-question">
-        <span>What dining options are available?</span>
+        <span data-translate="faq-q4">What dining options are available?</span>
         <span class="faq-chevron">▼</span>
       </div>
       <div class="faq-answer">
-        <p>We feature our signature ocean-view restaurant, a casual beachside grill, and a pool bar serving light fare and cocktails. Room service is also available.</p>
+        <p data-translate="faq-a4">We feature our signature ocean-view restaurant, a casual beachside grill, and a pool bar serving light fare and cocktails. Room service is also available.</p>
       </div>
     </div>
   </section>
@@ -452,6 +463,279 @@
     
     // Make setLegalLink available globally
     window.setLegalLink = setLegalLink;
+    
+    // Translation data for all 15 languages
+    const translations = {
+      en: {
+        'faq-title': 'Frequently Asked Questions',
+        'faq-q1': 'What is your cancellation policy?',
+        'faq-a1-title': 'Our Cancellation Policy',
+        'faq-a1-intro': 'We offer a semi-flexible policy for all rates except non-refundable and last-minute offers.',
+        'faq-a1-deposit': 'A 50% deposit is required at the time of reservation; the remaining balance is due on arrival.',
+        'faq-a1-free': 'Free cancellation up to 28 days before arrival (full refund of the deposit).',
+        'faq-a1-partial': 'Cancellations made 28 to 1 day before arrival incur a 50% fee.',
+        'faq-a1-noshow': 'No-shows or shortened stays are charged at 100% of the booking value.',
+        'faq-a1-closing': 'We aim to keep our policy fair and transparent while ensuring we can guarantee availability and prepare your stay with care.',
+        'faq-q2': 'Do you offer airport transportation?',
+        'faq-a2': 'Yes, we provide complimentary airport shuttle service for all guests staying three nights or longer. For shorter stays, transportation can be arranged for a nominal fee.',
+        'faq-q3': 'What is your child policy?',
+        'faq-a3': 'Children under 3 stay free. Children 4-11 years pay half price. Youngsters 12 and up count as adults. Please note maximum occupancy limits per unit.',
+        'faq-q4': 'What dining options are available?',
+        'faq-a4': 'We feature our signature ocean-view restaurant, a casual beachside grill, and a pool bar serving light fare and cocktails. Room service is also available.'
+      },
+      pt: {
+        'faq-title': 'Perguntas Frequentes',
+        'faq-q1': 'Qual é a sua política de cancelamento?',
+        'faq-a1-title': 'Nossa Política de Cancelamento',
+        'faq-a1-intro': 'Oferecemos uma política semi-flexível para todas as tarifas, exceto ofertas não reembolsáveis e de última hora.',
+        'faq-a1-deposit': 'É necessário um depósito de 50% no momento da reserva; o saldo restante é devido na chegada.',
+        'faq-a1-free': 'Cancelamento gratuito até 28 dias antes da chegada (reembolso total do depósito).',
+        'faq-a1-partial': 'Cancelamentos feitos de 28 a 1 dia antes da chegada incorrem em uma taxa de 50%.',
+        'faq-a1-noshow': 'Não comparecimentos ou estadias encurtadas são cobrados a 100% do valor da reserva.',
+        'faq-a1-closing': 'Procuramos manter nossa política justa e transparente, garantindo disponibilidade e preparando sua estadia com cuidado.',
+        'faq-q2': 'Vocês oferecem transporte do aeroporto?',
+        'faq-a2': 'Sim, fornecemos serviço de transporte gratuito do aeroporto para todos os hóspedes que ficam três noites ou mais. Para estadias mais curtas, o transporte pode ser organizado mediante uma taxa nominal.',
+        'faq-q3': 'Qual é a sua política para crianças?',
+        'faq-a3': 'Crianças menores de 3 anos ficam grátis. Crianças de 4 a 11 anos pagam metade do preço. Jovens de 12 anos ou mais contam como adultos. Observe os limites máximos de ocupação por unidade.',
+        'faq-q4': 'Quais opções de refeições estão disponíveis?',
+        'faq-a4': 'Temos nosso restaurante exclusivo com vista para o mar, um bar de praia casual e um bar na piscina servindo refeições leves e coquetéis. Serviço de quarto também está disponível.'
+      },
+      de: {
+        'faq-title': 'Häufig gestellte Fragen',
+        'faq-q1': 'Was ist Ihre Stornierungsbedingungen?',
+        'faq-a1-title': 'Unsere Stornierungsbedingungen',
+        'faq-a1-intro': 'Wir bieten eine halbflexible Politik für alle Tarife außer nicht erstattungsfähige und Last-Minute-Angebote.',
+        'faq-a1-deposit': 'Eine Anzahlung von 50% ist zum Zeitpunkt der Reservierung erforderlich; der Restbetrag ist bei Ankunft fällig.',
+        'faq-a1-free': 'Kostenlose Stornierung bis 28 Tage vor Ankunft (vollständige Rückerstattung der Anzahlung).',
+        'faq-a1-partial': 'Stornierungen 28 bis 1 Tag vor Ankunft unterliegen einer Gebühr von 50%.',
+        'faq-a1-noshow': 'Nichterscheinen oder verkürzte Aufenthalte werden zu 100% des Buchungswerts berechnet.',
+        'faq-a1-closing': 'Wir bemühen uns, unsere Politik fair und transparent zu halten und gleichzeitig Verfügbarkeit zu garantieren und Ihren Aufenthalt sorgfältig vorzubereiten.',
+        'faq-q2': 'Bieten Sie Flughafentransfer an?',
+        'faq-a2': 'Ja, wir bieten kostenlosen Flughafentransfer für alle Gäste, die drei Nächte oder länger bleiben. Für kürzere Aufenthalte kann der Transport gegen eine geringe Gebühr arrangiert werden.',
+        'faq-q3': 'Was ist Ihre Kinderpolitik?',
+        'faq-a3': 'Kinder unter 3 Jahren übernachten kostenlos. Kinder von 4-11 Jahren zahlen den halben Preis. Jugendliche ab 12 Jahren zählen als Erwachsene. Bitte beachten Sie die maximale Belegung pro Einheit.',
+        'faq-q4': 'Welche Speisemöglichkeiten gibt es?',
+        'faq-a4': 'Wir bieten unser charakteristisches Restaurant mit Meerblick, einen ungezwungenen Strandgrill und eine Poolbar mit leichten Speisen und Cocktails. Zimmerservice ist ebenfalls verfügbar.'
+      },
+      es: {
+        'faq-title': 'Preguntas Frecuentes',
+        'faq-q1': '¿Cuál es su política de cancelación?',
+        'faq-a1-title': 'Nuestra Política de Cancelación',
+        'faq-a1-intro': 'Ofrecemos una política semiflexible para todas las tarifas excepto ofertas no reembolsables y de último momento.',
+        'faq-a1-deposit': 'Se requiere un depósito del 50% al momento de la reserva; el saldo restante vence a la llegada.',
+        'faq-a1-free': 'Cancelación gratuita hasta 28 días antes de la llegada (reembolso completo del depósito).',
+        'faq-a1-partial': 'Las cancelaciones realizadas de 28 a 1 día antes de la llegada incurren en una tarifa del 50%.',
+        'faq-a1-noshow': 'Las no presentaciones o estadías acortadas se cobran al 100% del valor de la reserva.',
+        'faq-a1-closing': 'Nuestro objetivo es mantener nuestra política justa y transparente mientras garantizamos disponibilidad y preparamos su estadía con cuidado.',
+        'faq-q2': '¿Ofrecen transporte al aeropuerto?',
+        'faq-a2': 'Sí, proporcionamos servicio de traslado gratuito al aeropuerto para todos los huéspedes que se alojen tres noches o más. Para estadías más cortas, el transporte se puede organizar por una tarifa nominal.',
+        'faq-q3': '¿Cuál es su política para niños?',
+        'faq-a3': 'Los niños menores de 3 años se alojan gratis. Los niños de 4 a 11 años pagan la mitad del precio. Los jóvenes de 12 años o más cuentan como adultos. Tenga en cuenta los límites máximos de ocupación por unidad.',
+        'faq-q4': '¿Qué opciones de comida están disponibles?',
+        'faq-a4': 'Contamos con nuestro restaurante exclusivo con vista al mar, un bar de playa informal y un bar en la piscina que sirve comidas ligeras y cócteles. También está disponible el servicio de habitaciones.'
+      },
+      fr: {
+        'faq-title': 'Questions Fréquemment Posées',
+        'faq-q1': 'Quelle est votre politique d\'annulation?',
+        'faq-a1-title': 'Notre Politique d\'Annulation',
+        'faq-a1-intro': 'Nous offrons une politique semi-flexible pour tous les tarifs sauf les offres non remboursables et de dernière minute.',
+        'faq-a1-deposit': 'Un acompte de 50% est requis au moment de la réservation; le solde restant est dû à l\'arrivée.',
+        'faq-a1-free': 'Annulation gratuite jusqu\'à 28 jours avant l\'arrivée (remboursement complet de l\'acompte).',
+        'faq-a1-partial': 'Les annulations effectuées de 28 à 1 jour avant l\'arrivée entraînent des frais de 50%.',
+        'faq-a1-noshow': 'Les non-présentations ou séjours raccourcis sont facturés à 100% de la valeur de la réservation.',
+        'faq-a1-closing': 'Nous visons à maintenir notre politique équitable et transparente tout en garantissant la disponibilité et en préparant votre séjour avec soin.',
+        'faq-q2': 'Proposez-vous un transport depuis l\'aéroport?',
+        'faq-a2': 'Oui, nous offrons un service de navette gratuit depuis l\'aéroport pour tous les clients séjournant trois nuits ou plus. Pour les séjours plus courts, le transport peut être organisé moyennant des frais nominaux.',
+        'faq-q3': 'Quelle est votre politique concernant les enfants?',
+        'faq-a3': 'Les enfants de moins de 3 ans séjournent gratuitement. Les enfants de 4 à 11 ans paient moitié prix. Les jeunes de 12 ans et plus comptent comme adultes. Veuillez noter les limites d\'occupation maximale par unité.',
+        'faq-q4': 'Quelles options de restauration sont disponibles?',
+        'faq-a4': 'Nous proposons notre restaurant signature avec vue sur l\'océan, un grill de plage décontracté et un bar de piscine servant des plats légers et des cocktails. Le service en chambre est également disponible.'
+      },
+      it: {
+        'faq-title': 'Domande Frequenti',
+        'faq-q1': 'Qual è la vostra politica di cancellazione?',
+        'faq-a1-title': 'La Nostra Politica di Cancellazione',
+        'faq-a1-intro': 'Offriamo una politica semi-flessibile per tutte le tariffe eccetto offerte non rimborsabili e dell\'ultimo minuto.',
+        'faq-a1-deposit': 'È richiesto un deposito del 50% al momento della prenotazione; il saldo rimanente è dovuto all\'arrivo.',
+        'faq-a1-free': 'Cancellazione gratuita fino a 28 giorni prima dell\'arrivo (rimborso completo del deposito).',
+        'faq-a1-partial': 'Le cancellazioni effettuate da 28 a 1 giorno prima dell\'arrivo comportano una penale del 50%.',
+        'faq-a1-noshow': 'Le mancate presentazioni o i soggiorni abbreviati vengono addebitati al 100% del valore della prenotazione.',
+        'faq-a1-closing': 'Miriamo a mantenere la nostra politica equa e trasparente garantendo al contempo disponibilità e preparando il vostro soggiorno con cura.',
+        'faq-q2': 'Offrite trasporto aeroportuale?',
+        'faq-a2': 'Sì, forniamo servizio navetta gratuito dall\'aeroporto per tutti gli ospiti che soggiornano tre notti o più. Per soggiorni più brevi, il trasporto può essere organizzato con una tariffa nominale.',
+        'faq-q3': 'Qual è la vostra politica per i bambini?',
+        'faq-a3': 'I bambini sotto i 3 anni soggiornano gratuitamente. I bambini dai 4 agli 11 anni pagano metà prezzo. I giovani dai 12 anni in su contano come adulti. Si prega di notare i limiti massimi di occupazione per unità.',
+        'faq-q4': 'Quali opzioni ristorative sono disponibili?',
+        'faq-a4': 'Disponiamo del nostro ristorante caratteristico con vista sull\'oceano, un grill sulla spiaggia informale e un bar a bordo piscina che serve piatti leggeri e cocktail. È disponibile anche il servizio in camera.'
+      },
+      nl: {
+        'faq-title': 'Veelgestelde Vragen',
+        'faq-q1': 'Wat is uw annuleringsbeleid?',
+        'faq-a1-title': 'Ons Annuleringsbeleid',
+        'faq-a1-intro': 'Wij bieden een semi-flexibel beleid voor alle tarieven behalve niet-terugbetaalbare en last-minute aanbiedingen.',
+        'faq-a1-deposit': 'Een aanbetaling van 50% is vereist op het moment van reservering; het resterende saldo is verschuldigd bij aankomst.',
+        'faq-a1-free': 'Gratis annulering tot 28 dagen voor aankomst (volledige terugbetaling van de aanbetaling).',
+        'faq-a1-partial': 'Annuleringen van 28 tot 1 dag voor aankomst brengen 50% kosten met zich mee.',
+        'faq-a1-noshow': 'No-shows of verkorte verblijven worden in rekening gebracht tegen 100% van de boekingswaarde.',
+        'faq-a1-closing': 'We streven ernaar ons beleid eerlijk en transparant te houden terwijl we beschikbaarheid garanderen en uw verblijf met zorg voorbereiden.',
+        'faq-q2': 'Bieden jullie luchthavenvervoer aan?',
+        'faq-a2': 'Ja, we bieden gratis pendeldienst vanaf de luchthaven voor alle gasten die drie nachten of langer verblijven. Voor kortere verblijven kan vervoer worden geregeld tegen een nominale vergoeding.',
+        'faq-q3': 'Wat is uw kinderbeleid?',
+        'faq-a3': 'Kinderen onder de 3 jaar verblijven gratis. Kinderen van 4-11 jaar betalen de helft. Jongeren van 12 jaar en ouder tellen als volwassenen. Let op de maximale bezettingslimieten per eenheid.',
+        'faq-q4': 'Welke eetgelegenheden zijn er beschikbaar?',
+        'faq-a4': 'We hebben ons kenmerkende restaurant met uitzicht op de oceaan, een informele strandgrill en een poolbar met lichte maaltijden en cocktails. Roomservice is ook beschikbaar.'
+      },
+      af: {
+        'faq-title': 'Gereelde Vrae',
+        'faq-q1': 'Wat is julle kansellasiebeleid?',
+        'faq-a1-title': 'Ons Kansellasiebeleid',
+        'faq-a1-intro': 'Ons bied \'n semi-buigsame beleid vir alle tariewe behalwe nie-terugbetaalbare en laaste-minuut aanbiedings.',
+        'faq-a1-deposit': '\'n 50% deposito word vereis ten tyde van bespreking; die oorblywende balans is verskuldig by aankoms.',
+        'faq-a1-free': 'Gratis kansellasie tot 28 dae voor aankoms (volle terugbetaling van die deposito).',
+        'faq-a1-partial': 'Kansellasies wat 28 tot 1 dag voor aankoms gemaak word, lei tot \'n 50% fooi.',
+        'faq-a1-noshow': 'Nie-opdaag of verkorte verblywe word teen 100% van die besprekingswaarde gehef.',
+        'faq-a1-closing': 'Ons streef daarna om ons beleid regverdig en deursigtig te hou terwyl ons beskikbaarheid waarborg en jou verblyf met sorg voorberei.',
+        'faq-q2': 'Bied julle lughawe vervoer aan?',
+        'faq-a2': 'Ja, ons verskaf gratis pendeldiens vanaf die lughawe vir alle gaste wat drie nagte of langer bly. Vir korter verblywe kan vervoer teen \'n nominale fooi gereël word.',
+        'faq-q3': 'Wat is julle kinderbeleid?',
+        'faq-a3': 'Kinders onder 3 bly gratis. Kinders 4-11 jaar betaal half prys. Jongmense 12 en ouer tel as volwassenes. Let asseblief op maksimum besettingslimiete per eenheid.',
+        'faq-q4': 'Watter eetopsies is beskikbaar?',
+        'faq-a4': 'Ons beskik oor ons kenmerkende restaurant met seekantuitsigte, \'n informele strandrooster, en \'n swembadkroeg wat ligte kos en skemerkelkies bedien. Kamerdiens is ook beskikbaar.'
+      },
+      ja: {
+        'faq-title': 'よくある質問',
+        'faq-q1': 'キャンセルポリシーは何ですか？',
+        'faq-a1-title': '当施設のキャンセルポリシー',
+        'faq-a1-intro': '返金不可および直前予約を除くすべての料金に対して、準柔軟なポリシーを提供しています。',
+        'faq-a1-deposit': '予約時に50%のデポジットが必要で、残額は到着時にお支払いいただきます。',
+        'faq-a1-free': '到着の28日前まで無料キャンセル可能（デポジット全額返金）。',
+        'faq-a1-partial': '到着の28日前から1日前までのキャンセルには50%の手数料がかかります。',
+        'faq-a1-noshow': 'ノーショーまたは滞在期間の短縮は予約額の100%が請求されます。',
+        'faq-a1-closing': '当施設は、公正で透明性の高いポリシーを維持しながら、空室を保証し、お客様の滞在を丁寧に準備することを目指しています。',
+        'faq-q2': '空港送迎はありますか？',
+        'faq-a2': 'はい、3泊以上のお客様には無料の空港シャトルサービスを提供しています。短期滞在の場合は、少額の料金で送迎を手配できます。',
+        'faq-q3': 'お子様のポリシーは何ですか？',
+        'faq-a3': '3歳未満のお子様は無料です。4〜11歳のお子様は半額です。12歳以上の方は大人としてカウントされます。ユニットごとの最大収容人数制限にご注意ください。',
+        'faq-q4': 'どのような食事オプションがありますか？',
+        'faq-a4': '当施設のオーシャンビューレストラン、カジュアルなビーチサイドグリル、軽食とカクテルを提供するプールバーがあります。ルームサービスもご利用いただけます。'
+      },
+      pl: {
+        'faq-title': 'Najczęściej Zadawane Pytania',
+        'faq-q1': 'Jaka jest polityka anulowania?',
+        'faq-a1-title': 'Nasza Polityka Anulowania',
+        'faq-a1-intro': 'Oferujemy półelastyczną politykę dla wszystkich stawek z wyjątkiem ofert bezzwrotnych i last minute.',
+        'faq-a1-deposit': 'Wymagana jest wpłata 50% depozytu w momencie rezerwacji; pozostała kwota jest należna po przyjeździe.',
+        'faq-a1-free': 'Bezpłatne anulowanie do 28 dni przed przyjazdem (pełny zwrot depozytu).',
+        'faq-a1-partial': 'Anulowania dokonane od 28 do 1 dnia przed przyjazdem wiążą się z opłatą 50%.',
+        'faq-a1-noshow': 'Niestawienie się lub skrócone pobyty są naliczane w wysokości 100% wartości rezerwacji.',
+        'faq-a1-closing': 'Staramy się utrzymać naszą politykę sprawiedliwą i przejrzystą, jednocześnie gwarantując dostępność i przygotowując Twój pobyt z troską.',
+        'faq-q2': 'Czy oferujecie transport z lotniska?',
+        'faq-a2': 'Tak, zapewniamy bezpłatny transfer z lotniska dla wszystkich gości przebywających trzy noce lub dłużej. W przypadku krótszych pobytów transport można zorganizować za symboliczną opłatą.',
+        'faq-q3': 'Jaka jest polityka dotycząca dzieci?',
+        'faq-a3': 'Dzieci poniżej 3 lat nocują bezpłatnie. Dzieci w wieku 4-11 lat płacą połowę ceny. Młodzież od 12 lat liczy się jako dorośli. Należy pamiętać o maksymalnych limitach obłożenia na jednostkę.',
+        'faq-q4': 'Jakie opcje gastronomiczne są dostępne?',
+        'faq-a4': 'Dysponujemy naszą charakterystyczną restauracją z widokiem na ocean, swobodnym grillem plażowym i barem przy basenie serwującym lekkie przekąski i koktajle. Dostępna jest również obsługa pokojowa.'
+      },
+      ru: {
+        'faq-title': 'Часто Задаваемые Вопросы',
+        'faq-q1': 'Какова ваша политика отмены?',
+        'faq-a1-title': 'Наша Политика Отмены',
+        'faq-a1-intro': 'Мы предлагаем полугибкую политику для всех тарифов, кроме невозвратных и предложений последней минуты.',
+        'faq-a1-deposit': 'Требуется депозит в размере 50% во время бронирования; оставшаяся сумма оплачивается по прибытии.',
+        'faq-a1-free': 'Бесплатная отмена до 28 дней до прибытия (полный возврат депозита).',
+        'faq-a1-partial': 'Отмены, сделанные за 28-1 день до прибытия, влекут за собой комиссию 50%.',
+        'faq-a1-noshow': 'Неявка или сокращенное пребывание оплачиваются в размере 100% стоимости бронирования.',
+        'faq-a1-closing': 'Мы стремимся поддерживать нашу политику справедливой и прозрачной, обеспечивая доступность и тщательную подготовку вашего пребывания.',
+        'faq-q2': 'Вы предлагаете трансфер из аэропорта?',
+        'faq-a2': 'Да, мы предоставляем бесплатный трансфер из аэропорта для всех гостей, проживающих три ночи или дольше. Для более коротких пребываний транспорт может быть организован за символическую плату.',
+        'faq-q3': 'Какова ваша политика в отношении детей?',
+        'faq-a3': 'Дети до 3 лет проживают бесплатно. Дети 4-11 лет платят половину цены. Молодежь 12 лет и старше считается взрослыми. Обратите внимание на максимальные лимиты заселения на номер.',
+        'faq-q4': 'Какие варианты питания доступны?',
+        'faq-a4': 'У нас есть фирменный ресторан с видом на океан, непринужденный пляжный гриль и бар у бассейна с легкими блюдами и коктейлями. Также доступно обслуживание в номерах.'
+      },
+      sv: {
+        'faq-title': 'Vanliga Frågor',
+        'faq-q1': 'Vad är er avbokningspolicy?',
+        'faq-a1-title': 'Vår Avbokningspolicy',
+        'faq-a1-intro': 'Vi erbjuder en halvflexibel policy för alla priser utom icke-återbetalningsbara och sista-minuten-erbjudanden.',
+        'faq-a1-deposit': 'En deposition på 50% krävs vid bokningstillfället; återstående belopp förfaller vid ankomst.',
+        'faq-a1-free': 'Gratis avbokning upp till 28 dagar före ankomst (full återbetalning av depositionen).',
+        'faq-a1-partial': 'Avbokningar gjorda 28 till 1 dag före ankomst medför en avgift på 50%.',
+        'faq-a1-noshow': 'Uteblivna eller förkortade vistelser debiteras till 100% av bokningsvärdet.',
+        'faq-a1-closing': 'Vi strävar efter att hålla vår policy rättvis och transparent samtidigt som vi garanterar tillgänglighet och förbereder din vistelse med omsorg.',
+        'faq-q2': 'Erbjuder ni flygplatstransport?',
+        'faq-a2': 'Ja, vi tillhandahåller gratis flygplatstransfer för alla gäster som bor tre nätter eller längre. För kortare vistelser kan transport ordnas mot en nominell avgift.',
+        'faq-q3': 'Vad är er barnpolicy?',
+        'faq-a3': 'Barn under 3 år bor gratis. Barn 4-11 år betalar halv pris. Ungdomar 12 år och äldre räknas som vuxna. Observera maximala beläggningsgränser per enhet.',
+        'faq-q4': 'Vilka matmöjligheter finns tillgängliga?',
+        'faq-a4': 'Vi har vår signaturrestaurang med havsutsikt, en avslappnad strandgrill och en poolbar som serverar lättare mat och cocktails. Rumsservice är också tillgänglig.'
+      },
+      sw: {
+        'faq-title': 'Maswali Yanayoulizwa Mara kwa Mara',
+        'faq-q1': 'Sera yenu ya kughairi ni nini?',
+        'faq-a1-title': 'Sera Yetu ya Kughairi',
+        'faq-a1-intro': 'Tunatoa sera ya nusu-kubadilika kwa bei zote isipokuwa matoleo yasiyorejeshwa na ya dakika za mwisho.',
+        'faq-a1-deposit': 'Amana ya 50% inahitajika wakati wa kuhifadhi; salio linalobaki linastahili kufika.',
+        'faq-a1-free': 'Kughairi bila malipo hadi siku 28 kabla ya kufika (marejesho kamili ya amana).',
+        'faq-a1-partial': 'Kughairi kuliofanywa siku 28 hadi 1 kabla ya kufika kunaleta ada ya 50%.',
+        'faq-a1-noshow': 'Kutokuja au kukaa kwa muda mfupi kunalipiwa 100% ya thamani ya uhifadhi.',
+        'faq-a1-closing': 'Tunalenga kuweka sera yetu haki na wazi huku tukihakikisha tunaweza kuhakikisha upatikanaji na kuandaa kukaa kwako kwa uangalifu.',
+        'faq-q2': 'Je, mnatoa usafiri wa uwanja wa ndege?',
+        'faq-a2': 'Ndiyo, tunatoa huduma ya basi la bure kutoka uwanja wa ndege kwa wageni wote wanaokaa usiku watatu au zaidi. Kwa kukaa kwa muda mfupi, usafiri unaweza kupangwa kwa ada ndogo.',
+        'faq-q3': 'Sera yenu ya watoto ni nini?',
+        'faq-a3': 'Watoto chini ya miaka 3 wanakaa bure. Watoto wa miaka 4-11 wanalipa nusu ya bei. Vijana wa miaka 12 na zaidi wanahesabiwa kama watu wazima. Tafadhali kumbuka kikomo cha juu cha wakazi kwa kila kitengo.',
+        'faq-q4': 'Chaguo gani za chakula zinapatikana?',
+        'faq-a4': 'Tuna mkahawa wetu wa kipekee wenye mtazamo wa bahari, grill ya pwani isiyo rasmi, na baa ya bwawa inayotumikia chakula kizuri na michanganyiko. Huduma ya chumba pia inapatikana.'
+      },
+      zh: {
+        'faq-title': '常见问题',
+        'faq-q1': '您的取消政策是什么？',
+        'faq-a1-title': '我们的取消政策',
+        'faq-a1-intro': '除不可退款和最后时刻优惠外，我们为所有价格提供半灵活政策。',
+        'faq-a1-deposit': '预订时需支付50%的押金；剩余余额在抵达时支付。',
+        'faq-a1-free': '抵达前28天免费取消（全额退还押金）。',
+        'faq-a1-partial': '抵达前28至1天取消将收取50%费用。',
+        'faq-a1-noshow': '未出现或缩短住宿将按预订价值的100%收费。',
+        'faq-a1-closing': '我们致力于保持政策公平透明，同时确保我们能够保证可用性并精心准备您的住宿。',
+        'faq-q2': '您提供机场接送吗？',
+        'faq-a2': '是的，我们为所有住宿三晚或更长时间的客人提供免费机场接送服务。对于较短的住宿，可以安排交通，收取少量费用。',
+        'faq-q3': '您的儿童政策是什么？',
+        'faq-a3': '3岁以下儿童免费住宿。4-11岁儿童半价。12岁及以上青少年按成人计算。请注意每个单元的最大入住人数限制。',
+        'faq-q4': '有哪些餐饮选择？',
+        'faq-a4': '我们设有标志性的海景餐厅、休闲海滨烧烤和提供轻食和鸡尾酒的泳池酒吧。还提供客房服务。'
+      },
+      zu: {
+        'faq-title': 'Imibuzo Evame Ukubuzwa',
+        'faq-q1': 'Yini inqubomgomo yenu yokukhansela?',
+        'faq-a1-title': 'Inqubomgomo Yethu Yokukhansela',
+        'faq-a1-intro': 'Sinikeza inqubomgomo ye-semi-flexible kuwo wonke amanani ngaphandle kweminikelo engabuyiselwa imali kanye neminikelo yesikhathi sokugcina.',
+        'faq-a1-deposit': 'Kudingeka idiphozithi engu-50% ngesikhathi sokubhukha; ibhalansi esele kufanele ngesikhathi sokufika.',
+        'faq-a1-free': 'Ukukhansela mahhala kuze kube izinsuku ezingu-28 ngaphambi kokufika (ukubuyiselwa kwemali egcwele yediphozithi).',
+        'faq-a1-partial': 'Ukukhansela okwenziwa kusukela ezinsukwini ezingu-28 kuya ku-1 ngaphambi kokufika kuhle imali engu-50%.',
+        'faq-a1-noshow': 'Ukungabonakali noma ukulala kwesikhathi esifushane kukhokhelwa ngo-100% wenani lokubhukha.',
+        'faq-a1-closing': 'Sihlose ukugcina inqubomgomo yethu ifanele futhi isobala ngenkathi siqinisekisa ukuthi singaqinisekisa ukutholakala futhi silungise ukulala kwakho ngokunakekela.',
+        'faq-q2': 'Ingabe ninikeza ukuthutha kwasemgwaqweni wezindiza?',
+        'faq-a2': 'Yebo, sinikeza isevisi yasemgwaqweni wezindiza yamahhala kubo bonke izivakashi ezihlala ubusuku obuthathu noma ngaphezulu. Ukuhlala okufushane, ukuthutha kungahlelwa ngenani elincane.',
+        'faq-q3': 'Yini inqubomgomo yenu yezingane?',
+        'faq-a3': 'Izingane ezingaphansi kweminyaka emi-3 zihlala mahhala. Izingane ezingu-4-11 zikhokha ingxenye yentengo. Intsha engu-12 nangaphezulu ibhaliselwa njengabantu abadala. Sicela uqaphele imikhawulo yokuhlala ephezulu ngeyunithi ngayinye.',
+        'faq-q4': 'Yiziphi izinketho zokudla ezitholakalayo?',
+        'faq-a4': 'Sinendawo yethu yokuphakela ekhethekile enombono wolwandle, i-grill yasogwini engahleliwe, nebha yasechibini enikeza ukudla okulula nama-cocktails. Isevisi yegumbi nayo iyatholakala.'
+      }
+    };
+    
+    // Apply translations based on language
+    function applyTranslations() {
+      const langData = translations[lang] || translations.en;
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (langData[key]) {
+          el.textContent = langData[key];
+        }
+      });
+    }
+    
+    // Apply translations on page load
+    applyTranslations();
   </script>
 </body>
 </html>
