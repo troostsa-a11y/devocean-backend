@@ -22,7 +22,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         // Use requestIdleCallback to avoid blocking interactions
         const loadScript = () => {
           const script = document.createElement('script');
-          script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
+          script.src = 'https://cdn.trustindex.io/loader.js?bf7dce558f96285509262551189';
           script.defer = true;
           script.async = true;
           trustindexRef.current.appendChild(script);
