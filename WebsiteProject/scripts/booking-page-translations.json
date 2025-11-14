@@ -1,0 +1,203 @@
+{
+  "benefits": {
+    "heading": {
+      "en": "Book Direct for Best Value",
+      "de": "Buchen Sie direkt zum besten Preis",
+      "es": "Reserve directamente para obtener el mejor precio",
+      "fr": "Réservez directement pour le meilleur prix",
+      "it": "Prenota direttamente per il miglior prezzo",
+      "nl": "Boek rechtstreeks voor de beste prijs",
+      "pt": "Reserve diretamente para obter o melhor preço",
+      "ru": "Бронируйте напрямую по лучшей цене",
+      "zh": "直接预订享最优价格",
+      "sv": "Boka direkt för bästa pris",
+      "ja": "直接予約で最安値",
+      "pl": "Rezerwuj bezpośrednio dla najlepszej ceny",
+      "af": "Bespreek direk vir die beste prys",
+      "zu": "Bhuka ngqo ukuthola inani elingcono",
+      "sw": "Fanya booking moja kwa moja kwa bei bora"
+    },
+    "subtitle": {
+      "en": "Experience a Charming Green Oasis a short walk away from the beach.",
+      "de": "Erleben Sie eine charmante grüne Oase nur wenige Gehminuten vom Strand entfernt.",
+      "es": "Experimente un encantador oasis verde a pocos pasos de la playa.",
+      "fr": "Découvrez une charmante oasis de verdure à quelques pas de la plage.",
+      "it": "Scopri un'incantevole oasi verde a pochi passi dalla spiaggia.",
+      "nl": "Ervaar een charmante groene oase op korte loopafstand van het strand.",
+      "pt": "Experimente um oásis verde encantador a poucos passos da praia.",
+      "ru": "Испытайте очарование зеленого оазиса в нескольких шагах от пляжа.",
+      "zh": "体验距离海滩仅几步之遥的迷人绿色绿洲。",
+      "sv": "Upplev en charmig grön oas bara en kort promenad från stranden.",
+      "ja": "ビーチから徒歩圏内の魅力的な緑のオアシスを体験してください。",
+      "pl": "Doświadcz uroczej zielonej oazy zaledwie kilka kroków od plaży.",
+      "af": "Ervaar 'n bekoorlike groen oase net 'n kort stap van die strand.",
+      "zu": "Zizwa i-oasis eluhlaza elimnandi eduze nebhishi.",
+      "sw": "Furahia bustani nzuri ya kijani karibu na pwani."
+    },
+    "cards": [
+      {
+        "title": {
+          "en": "Best Rate Guaranteed",
+          "de": "Bestpreisgarantie",
+          "es": "Mejor tarifa garantizada",
+          "fr": "Meilleur tarif garanti",
+          "it": "Miglior tariffa garantita",
+          "nl": "Beste tarief gegarandeerd",
+          "pt": "Melhor tarifa garantida",
+          "ru": "Гарантия лучшей цены",
+          "zh": "保证最优惠价格",
+          "sv": "Bästa pris garanterat",
+          "ja": "ベストレート保証",
+          "pl": "Gwarancja najlepszej ceny",
+          "af": "Beste tarief gewaarborg",
+          "zu": "Inani elingcono kakhulu liqinisekisiwe",
+          "sw": "Bei bora inayohakikishwa"
+        },
+        "description": {
+          "en": "Lowest prices when you book directly with us",
+          "de": "Niedrigste Preise bei direkter Buchung",
+          "es": "Precios más bajos al reservar directamente",
+          "fr": "Prix les plus bas en réservant directement",
+          "it": "Prezzi più bassi prenotando direttamente",
+          "nl": "Laagste prijzen bij directe boeking",
+          "pt": "Preços mais baixos ao reservar diretamente",
+          "ru": "Лучшие цены при прямом бронировании",
+          "zh": "直接预订享最低价格",
+          "sv": "Lägsta priser vid direktbokning",
+          "ja": "直接予約で最安値",
+          "pl": "Najniższe ceny przy bezpośredniej rezerwacji",
+          "af": "Laagste pryse wanneer jy direk bespreek",
+          "zu": "Amanani aphansi uma ubhuka ngqo",
+          "sw": "Bei nafuu zaidi wakati wa kufanya booking moja kwa moja"
+        }
+      },
+      {
+        "title": {
+          "en": "Secure Payment",
+          "de": "Sichere Zahlung",
+          "es": "Pago seguro",
+          "fr": "Paiement sécurisé",
+          "it": "Pagamento sicuro",
+          "nl": "Veilige betaling",
+          "pt": "Pagamento seguro",
+          "ru": "Безопасная оплата",
+          "zh": "安全支付",
+          "sv": "Säker betalning",
+          "ja": "安全な支払い",
+          "pl": "Bezpieczna płatność",
+          "af": "Veilige betaling",
+          "zu": "Inkokhelo ephephile",
+          "sw": "Malipo salama"
+        },
+        "description": {
+          "en": "Your payment information is always protected",
+          "de": "Ihre Zahlungsinformationen sind immer geschützt",
+          "es": "Su información de pago siempre está protegida",
+          "fr": "Vos informations de paiement sont toujours protégées",
+          "it": "Le tue informazioni di pagamento sono sempre protette",
+          "nl": "Uw betaalinformatie is altijd beschermd",
+          "pt": "Suas informações de pagamento estão sempre protegidas",
+          "ru": "Ваши платежные данные всегда защищены",
+          "zh": "您的支付信息始终受到保护",
+          "sv": "Din betalningsinformation är alltid skyddad",
+          "ja": "お支払い情報は常に保護されています",
+          "pl": "Twoje informacje płatnicze są zawsze chronione",
+          "af": "Jou betaalinligting is altyd beskerm",
+          "zu": "Imininingwane yakho yokukhokha ihlale ivikelwe",
+          "sw": "Taarifa zako za malipo zinalindwa kila wakati"
+        }
+      },
+      {
+        "title": {
+          "en": "Instant Confirmation",
+          "de": "Sofortige Bestätigung",
+          "es": "Confirmación instantánea",
+          "fr": "Confirmation instantanée",
+          "it": "Conferma istantanea",
+          "nl": "Directe bevestiging",
+          "pt": "Confirmação instantânea",
+          "ru": "Мгновенное подтверждение",
+          "zh": "即时确认",
+          "sv": "Omedelbar bekräftelse",
+          "ja": "即時確認",
+          "pl": "Natychmiastowe potwierdzenie",
+          "af": "Onmiddellike bevestiging",
+          "zu": "Isiqinisekiso esisheshayo",
+          "sw": "Uthibitisho wa mara moja"
+        },
+        "description": {
+          "en": "Receive your booking confirmation immediately",
+          "de": "Erhalten Sie Ihre Buchungsbestätigung sofort",
+          "es": "Reciba su confirmación de reserva inmediatamente",
+          "fr": "Recevez votre confirmation de réservation immédiatement",
+          "it": "Ricevi la conferma della prenotazione immediatamente",
+          "nl": "Ontvang uw boekingsbevestiging onmiddellijk",
+          "pt": "Receba sua confirmação de reserva imediatamente",
+          "ru": "Получите подтверждение бронирования мгновенно",
+          "zh": "立即收到预订确认",
+          "sv": "Få din bokningsbekräftelse omedelbart",
+          "ja": "予約確認を即座に受け取る",
+          "pl": "Otrzymaj potwierdzenie rezerwacji natychmiast",
+          "af": "Ontvang jou besprekingsbevestiging onmiddellik",
+          "zu": "Thola isiqinisekiso sakho sokubhuka ngokushesha",
+          "sw": "Pata uthibitisho wa booking yako mara moja"
+        }
+      },
+      {
+        "title": {
+          "en": "Direct Support",
+          "de": "Direkter Support",
+          "es": "Soporte directo",
+          "fr": "Assistance directe",
+          "it": "Supporto diretto",
+          "nl": "Directe ondersteuning",
+          "pt": "Suporte direto",
+          "ru": "Прямая поддержка",
+          "zh": "直接支持",
+          "sv": "Direkt support",
+          "ja": "直接サポート",
+          "pl": "Bezpośrednie wsparcie",
+          "af": "Direkte ondersteuning",
+          "zu": "Usekelo oluqondile",
+          "sw": "Msaada wa moja kwa moja"
+        },
+        "description": {
+          "en": "Personal assistance from our dedicated team",
+          "de": "Persönliche Unterstützung von unserem Team",
+          "es": "Asistencia personalizada de nuestro equipo dedicado",
+          "fr": "Assistance personnalisée de notre équipe",
+          "it": "Assistenza personale dal nostro team dedicato",
+          "nl": "Persoonlijke hulp van ons team",
+          "pt": "Assistência pessoal de nossa equipe dedicada",
+          "ru": "Персональная помощь от нашей команды",
+          "zh": "我们专业团队的个性化帮助",
+          "sv": "Personlig hjälp från vårt dedikerade team",
+          "ja": "専任チームによる個別サポート",
+          "pl": "Osobista pomoc od naszego zespołu",
+          "af": "Persoonlike hulp van ons toegewyde span",
+          "zu": "Usizo lomuntu siqu lwethimba lethu",
+          "sw": "Msaada wa kibinafsi kutoka kwa timu yetu"
+        }
+      }
+    ]
+  },
+  "faq": {
+    "heading": {
+      "en": "Frequently Asked Questions",
+      "de": "Häufig gestellte Fragen",
+      "es": "Preguntas frecuentes",
+      "fr": "Questions fréquemment posées",
+      "it": "Domande frequenti",
+      "nl": "Veelgestelde vragen",
+      "pt": "Perguntas frequentes",
+      "ru": "Часто задаваемые вопросы",
+      "zh": "常见问题",
+      "sv": "Vanliga frågor",
+      "ja": "よくある質問",
+      "pl": "Najczęściej zadawane pytania",
+      "af": "Algemene vrae",
+      "zu": "Imibuzo Evame Ukubuzwa",
+      "sw": "Maswali Yanayoulizwa Mara kwa Mara"
+    }
+  }
+}
