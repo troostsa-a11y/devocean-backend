@@ -231,9 +231,9 @@
 
         .iframe-container iframe {
             width: 100%;
+            height: 1500px;
             border: none;
             display: block;
-            overflow: hidden;
         }
 
         /* FAQ section */
@@ -453,8 +453,8 @@
             <div class="iframe-container">
                 <iframe id="beds24frame" class="booking" title="DEVOCEAN Lodge booking" 
                     src="https://beds24.com/booking2.php?propid=297012&layout=5" 
-                    width="1200" style="max-width:100%;border:none;overflow:hidden;" 
-                    allow="payment *; clipboard-write *" scrolling="no">
+                    width="1200" style="max-width:100%;border:none;" 
+                    allow="payment *; clipboard-write *">
                     <p>Loading booking engine...</p>
                 </iframe>
             </div>
@@ -571,72 +571,7 @@
             });
         });
 
-        // Iframe auto-height adjustment to prevent double scrollbar
-        const iframe = document.getElementById('beds24frame');
-        
-        // Set initial height
-        iframe.style.height = '1000px';
-        
-        // Listen for postMessage height updates from Beds24
-        window.addEventListener('message', function(e) {
-            try {
-                const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-
-                // Handle dynamic height updates from iframe
-                if (data && (data.type === 'setHeight' || data.height)) {
-                    const height = parseInt(data.height, 10);
-                    if (Number.isFinite(height) && height > 400) {
-                        iframe.style.height = (height + 40) + 'px';
-                        console.log('Iframe height set via postMessage:', height + 40);
-                    }
-                }
-            } catch (error) {
-                // Ignore non-JSON messages
-            }
-        });
-
-        // Fallback: Check iframe content height periodically
-        // This ensures height adjustment even if Beds24 doesn't send postMessage
-        let heightCheckAttempts = 0;
-        const maxAttempts = 60; // Check for 30 seconds (60 × 500ms)
-        
-        const checkHeight = setInterval(function() {
-            heightCheckAttempts++;
-            
-            try {
-                // Try to access iframe content (will fail for cross-origin, but worth trying)
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                if (iframeDoc && iframeDoc.body) {
-                    const contentHeight = iframeDoc.body.scrollHeight;
-                    if (contentHeight > 400) {
-                        iframe.style.height = (contentHeight + 40) + 'px';
-                        console.log('Iframe height set via content detection:', contentHeight + 40);
-                        clearInterval(checkHeight);
-                    }
-                }
-            } catch (e) {
-                // Cross-origin restriction - expected for Beds24 iframe
-                // Rely on postMessage instead
-            }
-            
-            // Stop checking after 30 seconds
-            if (heightCheckAttempts >= maxAttempts) {
-                clearInterval(checkHeight);
-            }
-        }, 500);
-
-        // Also check on iframe load
-        iframe.addEventListener('load', function() {
-            // Give Beds24 a moment to render
-            setTimeout(function() {
-                // Trigger a height check via postMessage if Beds24 supports it
-                try {
-                    iframe.contentWindow.postMessage({type: 'getHeight'}, '*');
-                } catch (e) {
-                    console.log('Unable to request height from iframe');
-                }
-            }, 1000);
-        });
+        // Fixed iframe height - stable across all units
     </script>
 </body>
 </html>
