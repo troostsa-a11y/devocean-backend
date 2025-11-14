@@ -480,9 +480,9 @@
     <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
       <div style="margin-bottom: 12px;">
         &copy; <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique • 
-        <a href="#" onclick="return setLegalLink('privacy')">Privacy</a> • 
-        <a href="#" onclick="return setLegalLink('cookies')">Cookies</a> • 
-        <a href="#" onclick="return setLegalLink('terms')">Terms</a> • 
+        <a href="#" onclick="return setLegalLink('privacy')">Ubumfihlo</a> • 
+        <a href="#" onclick="return setLegalLink('cookies')">Amakhukhi</a> • 
+        <a href="#" onclick="return setLegalLink('terms')">Imigomo</a> • 
         <a href="#" onclick="return setLegalLink('GDPR')">GDPR</a>
       </div>
     </div>
@@ -497,8 +497,8 @@
     const roomid = urlParams.get('roomid') || '';
     const currency = urlParams.get('currency') || 'USD';
     
-    // Build Beds24 iframe URL (English only)
-    let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=en';
+    // Build Beds24 iframe URL (Zulu)
+    let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=zu';
     iframeUrl += '&cur=' + currency;
     if (roomid) {
       iframeUrl += '&roomid=' + roomid;
@@ -533,7 +533,7 @@
     
     // Legal links
     function setLegalLink(page) {
-      const baseUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=en&page=';
+      const baseUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=zu&page=';
       window.open(baseUrl + page, '_blank', 'noopener,noreferrer');
       return false;
     }
