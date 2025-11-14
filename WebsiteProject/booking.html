@@ -490,81 +490,6 @@
       .modal-benefit-icon .ico{width:24px;height:24px}
     }
 
-    /* ===== Unit Navigation Styles ===== */
-    .unit-nav-container {
-      background: #fffaf6;
-      padding-bottom: 18px;
-    }
-    
-    .unit-nav-container .wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 clamp(14px, 3vw, 24px);
-    }
-    
-    .unit-nav {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      max-width: 678px;
-      margin: 0 auto;
-    }
-    
-    .unit-btn {
-      appearance: none;
-      border: 1px solid var(--brand);
-      background: white;
-      color: var(--brand);
-      border-radius: 999px;
-      padding: 10px 16px;
-      font-weight: 600;
-      font-size: clamp(0.85rem,3.2vw,0.9rem);
-      cursor: pointer;
-      transition: transform 0.15s ease,opacity 0.15s ease,background 0.15s ease;
-      white-space: nowrap;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-      min-height: 44px;
-      -webkit-tap-highlight-color: transparent;
-    }
-    
-    .unit-btn:hover {
-      background: rgba(158, 75, 19, 0.08);
-      transform: translateY(-1px);
-      opacity: 0.95;
-    }
-    
-    .unit-btn:active {
-      transform: scale(0.98);
-    }
-    
-    .unit-btn.active {
-      background: var(--brand);
-      color: white;
-      box-shadow: 0 2px 6px rgba(158, 75, 19, 0.2);
-    }
-    
-    @media (min-width:640px){
-      .unit-btn{padding: 10px 20px;font-size: 0.9rem}
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 880px) {
-      .unit-nav {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 100%;
-      }
-    }
-    
-    @media (max-width: 640px) {
-      .unit-nav {
-        gap: 8px;
-      }
-      .unit-btn {
-        font-size: 0.85rem;
-        padding: 8px 14px;
-      }
-    }
-    
     /* Badge Container Layout */
     .badge-container {
       display: flex;
@@ -1136,7 +1061,6 @@
     .h1-frame:focus-visible,
     .info-badge:focus-visible,
     .child-featured-badge:focus-visible,
-    .unit-btn:focus-visible,
     .btn:focus-visible,
     .modal-close:focus-visible {
       outline: 3px solid var(--ring);
@@ -1382,26 +1306,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Unit Navigation -->
-    <nav class="unit-nav-container">
-      <div class="wrap">
-        <div class="unit-nav" id="unitNav">
-          <button class="unit-btn" data-roomid="620542" data-unit="safari" id="t-safari" data-testid="button-unit-safari">
-            Safari Tent
-          </button>
-          <button class="unit-btn" data-roomid="620540" data-unit="comfort" id="t-comfort" data-testid="button-unit-comfort">
-            Comfort Tent
-          </button>
-          <button class="unit-btn" data-roomid="620541" data-unit="cottage" id="t-cottage" data-testid="button-unit-cottage">
-            Garden Cottage
-          </button>
-          <button class="unit-btn" data-roomid="620543" data-unit="chalet" id="t-chalet" data-testid="button-unit-chalet">
-            Thatched Chalet
-          </button>
-        </div>
-      </div>
-    </nav>
 
     <!-- Beds24 engine -->
     <section id="book" class="card engine" style="margin-top:18px">
@@ -2032,115 +1936,6 @@ if (yearEl) {
   
   window.addEventListener('scroll', toggleBackToTopButton);
   toggleBackToTopButton();
-})();
-
-// ===== Unit navigation and button translation =====
-(async function() {
-  const ROOM_IDS = {
-    'safari': 620542,
-    'comfort': 620540,
-    'cottage': 620541,
-    'chalet': 620543
-  };
-  
-  async function initUnitNavigation() {
-    const unitBtns = document.querySelectorAll('.unit-btn');
-    if (unitBtns.length === 0) return;
-    
-    // Load translations for unit button labels
-    const siteLang = detectSiteLanguage();
-    const code = mapToB24(siteLang);
-    const TT = await loadTranslation(code);
-    
-    // Translate unit buttons
-    const btnSafari = document.getElementById('t-safari');
-    const btnComfort = document.getElementById('t-comfort');
-    const btnCottage = document.getElementById('t-cottage');
-    const btnChalet = document.getElementById('t-chalet');
-    
-    if (btnSafari && TT.units) btnSafari.textContent = TT.units.safari;
-    if (btnComfort && TT.units) btnComfort.textContent = TT.units.comfort;
-    if (btnCottage && TT.units) btnCottage.textContent = TT.units.cottage;
-    if (btnChalet && TT.units) btnChalet.textContent = TT.units.chalet;
-    
-    // Setup click handlers
-    unitBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
-        const unitKey = this.getAttribute('data-unit');
-        const roomId = ROOM_IDS[unitKey];
-        if (roomId) {
-          switchToRoom(roomId, unitKey);
-        }
-      });
-    });
-    
-    // Check for preselected unit in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const preselectedUnit = urlParams.get('unit');
-    
-    if (preselectedUnit && ROOM_IDS[preselectedUnit]) {
-      switchToRoom(ROOM_IDS[preselectedUnit], preselectedUnit);
-    } else {
-      // Default: show all rooms
-      document.querySelectorAll('.unit-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-    }
-  }
-  
-  function switchToRoom(roomId, unitKey) {
-    const iframe = document.getElementById('beds24frame');
-    if (!iframe) return;
-    
-    const siteLang = detectSiteLanguage();
-    const siteCurrency = detectSiteCurrency();
-    const lang = mapToB24(siteLang);
-    
-    const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
-    url.searchParams.set('lang', lang);
-    if (siteCurrency) url.searchParams.set('cur', siteCurrency.toUpperCase());
-    if (roomId) url.searchParams.set('roomid', roomId);
-    
-    // Carry through other params
-    const pageQS = new URLSearchParams(location.search);
-    pageQS.forEach((v, k) => {
-      if (k !== 'lang' && k !== 'currency' && k !== 'cur' && k !== 'unit' && !url.searchParams.has(k)) {
-        url.searchParams.set(k, v);
-      }
-    });
-    
-    iframe.src = url.toString();
-    console.log('Switched to unit:', unitKey, 'Room ID:', roomId || 'all');
-    
-    // Update active button
-    document.querySelectorAll('.unit-btn').forEach(btn => {
-      btn.classList.remove('active');
-    });
-    const activeBtn = document.querySelector(`[data-unit="${unitKey}"]`);
-    if (activeBtn) {
-      activeBtn.classList.add('active');
-    }
-    
-    // Scroll to booking iframe
-    setTimeout(() => {
-      const bookSection = document.getElementById('book');
-      if (bookSection) {
-        bookSection.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
-        });
-      }
-    }, 100);
-  }
-  
-  // Make switchToRoom available globally for onclick handlers if needed
-  window.switchToRoom = switchToRoom;
-  
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initUnitNavigation);
-  } else {
-    initUnitNavigation();
-  }
 })();
   </script>
 </body>
