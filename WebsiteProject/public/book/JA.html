@@ -535,7 +535,8 @@
     function setLegalLink(page) {
       const baseUrl = 'https://devoceanlodge.com/legal/';
       const lang = 'ja-JP';
-      window.open(baseUrl + page + '.html?lang=' + lang, '_blank', 'noopener,noreferrer');
+      const returnUrl = encodeURIComponent('/book/JA.html');
+      window.open(baseUrl + page + '.html?lang=' + lang + '&return=' + returnUrl, '_blank', 'noopener,noreferrer');
       return false;
     }
   </script>
