@@ -373,11 +373,18 @@
       min-height:120px;
       box-shadow:0 6px 18px rgba(0,0,0,0.08);
       border:none;
-      transition:transform 0.15s ease;
+      transition:transform 0.15s ease, box-shadow 0.15s ease;
+      cursor:pointer;
+      -webkit-tap-highlight-color:transparent;
     }
     
     .modal-benefit-item:hover{
       transform:translateY(-2px);
+      box-shadow:0 8px 24px rgba(0,0,0,0.12);
+    }
+    
+    .modal-benefit-item:active{
+      transform:scale(0.98);
     }
     
     .modal-benefit-item:nth-child(1){
@@ -1884,6 +1891,47 @@ window.toggleHowToBook = toggleHowToBook;
 window.toggleChildPolicy = toggleChildPolicy;
 window.openBenefitsModal = openBenefitsModal;
 window.closeBenefitsModal = closeBenefitsModal;
+
+// ===== Scroll to booking iframe =====
+function scrollToBooking() {
+  const bookingSection = document.getElementById('book');
+  if (bookingSection) {
+    const headerOffset = 80; // Account for sticky header
+    const elementPosition = bookingSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
+
+// Attach click handlers to all benefit badges
+function setupBenefitBadgeClickHandlers() {
+  const benefitBadges = document.querySelectorAll('.modal-benefit-item');
+  benefitBadges.forEach((badge, index) => {
+    badge.setAttribute('data-testid', `benefit-badge-${index + 1}`);
+    badge.addEventListener('click', scrollToBooking);
+    badge.setAttribute('role', 'button');
+    badge.setAttribute('tabindex', '0');
+    
+    // Allow keyboard activation (Enter/Space)
+    badge.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        scrollToBooking();
+      }
+    });
+  });
+}
+
+// Initialize benefit badge click handlers after DOM loads
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', setupBenefitBadgeClickHandlers);
+} else {
+  setupBenefitBadgeClickHandlers();
+}
 
 // ===== Beds24 iframe message handlers =====
 window.addEventListener('message', function(e){
