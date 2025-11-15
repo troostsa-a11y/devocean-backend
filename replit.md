@@ -1,7 +1,7 @@
 # DEVOCEAN Lodge Website
 
 ## Overview
-DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. The platform serves as a primary marketing tool, offering accommodation listings, showcasing experiences, providing contact forms, and supporting a multi-language interface across 17 languages. Its core purpose is to attract a global audience, ensure legal compliance (GDPR, cookies, privacy policies), and deliver a seamless user experience on all devices.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website designed to be the primary marketing tool for a lodge in Ponta do Ouro, Mozambique. It offers accommodation listings, showcases experiences, provides contact forms, and supports a multi-language interface across 17 languages. The project aims to attract a global audience, ensure legal compliance (GDPR, cookies, privacy policies), and deliver a seamless, responsive user experience.
 
 ## User Preferences
 - **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
@@ -43,82 +43,64 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 
 ## System Architecture
 
-### Language Code Architecture (Hybrid Approach)
-The website uses a **hybrid language code system** with automatic normalization between formats:
-
-**Full Locale Codes (React App/Frontend):**
-- **Format:** `en-GB`, `pt-PT`, `pt-BR`, `de-DE`, `es-ES`, `fr-FR`, `it-IT`, `nl-NL`, `ja-JP`, `zh-CN`, `ru`, `sv`, `pl`, `af-ZA`, `zu`, `sw`
-- **Total:** 17 locale variants (distinguishes regional variations like European vs Brazilian Portuguese, UK vs US English)
-- **Used in:**
-  - `WebsiteProject/src/i18n/useLocale.js` (main i18n system)
-  - `WebsiteProject/translations/*.js` (accommodation, story translations)
-  - All React components and translation files
-- **Normalization:** `normalizeLangCode()` function converts 2-letter codes → full codes (e.g., `pt` → `pt-BR`, `en` → `en-GB`)
-
-**2-Letter ISO Codes (Workers/Email/Booking):**
-- **Format:** `en`, `pt`, `de`, `fr`, `es`, `it`, `nl`, `ru`, `zh`, `ja`, `sv`, `pl`, `af`, `zu`, `sw`
-- **Total:** 15 base languages (simpler format for email templates and booking system)
-- **Used in:**
-  - `WebsiteProject/functions/api/contact.js` (contact form autoreply emails)
-  - `WebsiteProject/functions/api/experience-inquiry.js` (experience form autoreply emails)
-  - `WebsiteProject/booking.html` (standalone booking page translations)
-  - `server/services/email-parser.ts` (automailer system)
-- **Normalization:** `normalizeLang()` function converts full codes → 2-letter codes (e.g., `pt-PT` → `pt`, `en-GB` → `en`)
-
-**How They Work Together:**
-Each system has bidirectional normalization ensuring seamless compatibility. When React sends `pt-PT` to a Worker, the Worker normalizes it to `pt` for email templates. When booking.html uses `pt`, React normalizes it to `pt-BR` for UI display. Users receive correct translations regardless of which system initiates the request.
-
-**Why Hybrid?**
-- **React needs regional precision:** Distinguishing pt-PT (European Portuguese) from pt-BR (Brazilian Portuguese) matters for UI/UX
-- **Email/Booking prefers simplicity:** Most translation differences are negligible in transactional emails, so 15 base languages reduce template complexity
-- **Robust normalization prevents issues:** Both systems handle format conversions automatically with no manual intervention required
+### Language Code Architecture
+The website uses a hybrid language code system with automatic normalization:
+- **Full Locale Codes (React App/Frontend):** `en-GB`, `pt-PT`, `pt-BR`, etc. (17 variants) for precise UI/UX.
+- **2-Letter ISO Codes (Workers/Email/Booking):** `en`, `pt`, `de`, etc. (15 base languages) for simpler transactional systems.
+- Bidirectional normalization functions (`normalizeLangCode()`, `normalizeLang()`) ensure seamless compatibility between frontend and backend systems.
 
 ### Hybrid Email Architecture
-Email functionality is split between Cloudflare (contact forms) and Replit (automailer) for optimal cost and reliability.
-- **Contact Forms (Cloudflare Workers + Resend):** Standalone Workers handle general contact and experience inquiries, including reCAPTCHA v3, header injection prevention, HTML escaping, and localized auto-replies. All new forms must use this protocol.
-- **Automailer (Replit Workspace):** An Express.js server runs 24/7 in the Replit workspace, processing Beds24 booking notifications via IMAP and sending multi-language automated emails via SMTP. It uses in-memory storage for booking state management and Drizzle ORM for PostgreSQL.
+Email functionality is split between Cloudflare and Replit:
+- **Contact Forms:** Cloudflare Workers handle general contact and experience inquiries, including reCAPTCHA v3, security measures, and localized auto-replies using Resend.
+- **Automailer:** An Express.js server in the Replit workspace processes Beds24 booking notifications via IMAP and sends multi-language automated emails via SMTP. It uses in-memory storage for booking state and Drizzle ORM for PostgreSQL.
+
+### Automailer Language Determination
+The automailer determines email language using a three-tier priority system:
+1. **Preferred Language field** from Beds24.
+2. **Country code mapping** (e.g., "MZ" → "PT") from the guest's location.
+3. **Default to English**.
+This system is implemented in `server/services/email-parser.ts` and `server/services/cancellation-handler.ts`.
 
 ### Frontend
 - **Framework & Build:** React 18, TypeScript, Vite, Wouter for routing.
-- **UI & Styling:** shadcn/ui, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design. Inter font, card-based layouts, image-first, expandable sections, hover states, focus-visible outlines, smooth scroll, sticky header.
-- **Mobile-First Optimization (CSS v3.0):** Touch-friendly targets (min 48px), responsive typography using `clamp()`, simplified animations (transform/opacity only for performance), responsive spacing tokens (16px mobile, scales up on larger screens), `-webkit-tap-highlight-color:transparent`, `prefers-reduced-motion` support for accessibility.
+- **UI & Styling:** shadcn/ui, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design, Inter font.
+- **Mobile-First Optimization:** Touch-friendly targets, responsive typography with `clamp()`, simplified animations, responsive spacing, `prefers-reduced-motion` support.
 - **State Management:** TanStack Query for server state, React hooks for local state.
-- **Internationalization:** React-based i18n with lazy-loaded translations for 15 languages (en, de, es, fr, it, nl, pt, ru, zh, sv, ja, pl, af, zu, sw), and comprehensive country-derived locale mapping (90+ variants including pt-MZ, sw-TZ, es-MX, zh-HK, etc.). Critical translations are pre-loaded. Experience and form translations use a two-layer and three-tier fallback system respectively. **Language Detection (booking.html):** Priority order: (1) URL parameter `?lang=XX`, (2) localStorage (user-selected language persisted with protection flags `site.lang_source="user"` and `site.lang.version="2"`), (3) Browser language (navigator.language). User can override auto-detection by selecting a language, which is then saved and protected from IP-based changes. The `LOCALE_BY_LANG` mapping preserves all 15 language codes through to booking URLs. **Currency Detection (booking.html):** Priority order: (1) URL parameter `?cur=XXX` (explicit override), (2) **Cloudflare IP geolocation** via `window.__CF_COUNTRY__` mapped to currency (e.g., MZ→MZN, ZA→ZAR, US→USD, GB→GBP), (3) Default to USD. Currency is NEVER cached/persisted in localStorage - it is always recalculated fresh on each page load based on current IP location (unless explicitly overridden via URL).
+- **Internationalization:** React-based i18n with lazy-loaded translations for 15 languages, comprehensive country-derived locale mapping. Language detection in `booking.html` prioritizes URL parameters, then `localStorage`, then browser language.
+- **Currency Detection (booking.html):** Prioritizes URL parameters, then Cloudflare IP geolocation (`window.__CF_COUNTRY__`), then defaults to USD. Currency is never cached.
 - **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver for image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral, Static Hero HTML pattern, INP optimization.
-- **Hero Placeholder:** A 5-second beach hero for first-time visitors, managed by `App.jsx`.
-- **SPA Routing:** Middleware-based solution (`_middleware.js`) handles 404s, serving `index.html` for HTML navigation while preserving a custom `404.html` for truly missing assets.
-- **Storage Safety Layer:** All `localStorage`/`sessionStorage` calls are wrapped with try-catch guards to prevent crashes in restricted storage environments (e.g., private/incognito mode).
-- **Booking Page UX (booking.html):** Click-to-reveal design pattern with three interactive sections: (1) H1 "Book here for Best Value" expands to show 5 colorful gradient benefit badges in responsive grid (1 col mobile, 2 cols tablet @600px, 3 cols desktop @960px), (2) "How to Book" expandable section with 4 badge steps in responsive grid (1 col mobile → 2 cols @480px), (3) "Travelling with children?" expandable section with 3 child policy badges in responsive grid (1 col mobile → 2 cols @480px → 3 cols @768px). All badge systems use earth-tone gradient backgrounds (golden-sandy tan, orange-coral, chocolate-tan, dark goldenrod, coral-tomato), WCAG AA compliant contrast ratios (≥4.5:1), centered text, chevron indicators, smooth animations, and mobile-first optimizations (min 48px touch targets, responsive clamp() typography). **Translation Architecture (Nov 2025 Performance Update):** Fully translated across 15 languages (en, de, es, fr, it, nl, pt, ru, zh, sv, ja, pl, af, zu, sw) using modular ES6 imports. Translations stored as separate ~2KB files in `WebsiteProject/booking/langs/*.js`, dynamically loaded via `import()` with caching and English fallback. This reduces initial page load by ~60KB (loads only requested language vs. embedding all 15). Uses `<script type="module">` with async initialization, promise-based DOM detection, and error UI for failed loads. Build script copies translation files to `dist/booking/langs/`. Extraction script (`WebsiteProject/scripts/extract-booking-translations.js`) regenerates language files from booking.html source.
+- **SPA Routing:** Cloudflare Pages middleware handles 404s and serves `index.html` for HTML navigation.
+- **Storage Safety Layer:** `localStorage`/`sessionStorage` calls are wrapped with try-catch guards.
+- **Booking Page UX:** Click-to-reveal design with interactive sections using colorful gradient badges, WCAG AA compliant contrast ratios, and mobile-first optimizations.
+- **Booking Translation Architecture:** Fully translated across 15 languages using modular, dynamically loaded ES6 imports to reduce initial page load.
 
 ### Backend
-- **Server:** Express.js automailer server runs in Replit workspace (port 3003, internal only).
-- **Storage:** In-memory storage (`MemStorage`) for automailer booking state management.
-- **Database:** Drizzle ORM configured for PostgreSQL with Zod schemas.
-- **Email Automation:** Node.js (TypeScript) service processes Beds24 booking notifications via IMAP, sending multi-language automated emails via SMTP scheduled in CAT/UTC+2.
-- **Contact Forms:** Standalone Cloudflare Workers using Resend API with header injection prevention (`sanitizeHeader()`), reCAPTCHA v3 with action validation, HTML escaping, and **full 15-language autoreply emails**. Language code normalization function (`normalizeLang()`) handles both full locale codes (pt-PT, en-GB) and 2-letter codes (pt, en) for seamless compatibility with React i18n system.
+- **Server:** Express.js automailer server (port 3003, internal).
+- **Storage:** In-memory storage (`MemStorage`) for automailer.
+- **Database:** Drizzle ORM for PostgreSQL with Zod schemas.
+- **Email Automation:** Node.js (TypeScript) service processes IMAP notifications and sends SMTP emails.
+- **Contact Forms:** Cloudflare Workers with Resend API, reCAPTCHA v3, HTML escaping, and 15-language autoreply emails.
 
 ### Project Structure
 - **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
 
-### Deployment (Cloudflare Pages)
-- **Platform:** Cloudflare Pages with Functions (Workers) support.
-- **Build:** `npm run build` bundles the React app to `dist/` and copies static files/Workers Functions.
-- **Deploy:** `npx wrangler pages deploy` pushes `dist/` to Cloudflare Pages.
-- **Middleware (`functions/_middleware.js`):** Handles domain redirection, SPA routing (serving `index.html` for HTML navigation and `404.html` for missing assets), and injects Cloudflare IP geolocation country code as `window.__CF_COUNTRY__` (e.g., "MZ", "ZA", "US") for real-time currency detection on booking.html.
-- **Static Files:** Includes `_redirects` for legacy redirects and locale routing, `_headers` for cache control, and `404.html` for custom error pages.
-- **DNS & Domain:** `devoceanlodge.com` is the primary domain, with DNS configured on Cloudflare.
+### Deployment
+- **Platform:** Cloudflare Pages with Functions (Workers).
+- **Build/Deploy:** `npm run build` and `npx wrangler pages deploy`.
+- **Middleware:** `functions/_middleware.js` handles domain redirection, SPA routing, and injects Cloudflare IP geolocation.
+- **Static Files:** `_redirects`, `_headers`, `404.html`.
+- **DNS:** `devoceanlodge.com` managed on Cloudflare.
 
 ## External Dependencies
 
 ### Third-Party Services
-- **Analytics & Consent:** Google Tag Manager (GTM-532W3HH2) with Consent Mode v2, CookieYes (ID: f0a2da84090ecaa3b37f74af), Microsoft Clarity.
-- **Trust:** Trustindex Floating Certificate widget (ID: a73b26308ab90c8e6ce30cb).
-- **Booking:** Beds24 booking engine (propid=297012).
-  - **⚠️ CRITICAL: Picture Slider Configuration** - Always upload images directly to Beds24's image manager (`SETTINGS > BOOKING ENGINE > PICTURES`) rather than linking to external URLs (e.g., devoceanlodge.com). This ensures reliable loading within the iframe booking widget and avoids CORS/caching/timing issues that cause inconsistent picture slider behavior.
+- **Analytics & Consent:** Google Tag Manager, CookieYes, Microsoft Clarity.
+- **Trust:** Trustindex Floating Certificate widget.
+- **Booking:** Beds24 booking engine (propid=297012). Images must be uploaded directly to Beds24.
 - **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
-- **Email:** Resend API for contact forms (Cloudflare Workers), SMTP via nodemailer for automailer (Replit workspace), IMAP for booking notification parsing.
-- **SEO:** IndexNow protocol via Cloudflare Pages Functions.
+- **Email:** Resend API (Cloudflare Workers), SMTP via nodemailer (automailer), IMAP (booking notifications).
+- **SEO:** IndexNow protocol.
 - **Currency Conversion:** fx-rate.net.
 
 ### NPM Packages
