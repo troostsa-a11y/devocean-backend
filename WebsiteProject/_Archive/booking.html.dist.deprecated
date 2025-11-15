@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Book your stay – DEVOCEAN Lodge</title>
+  <meta name="description" content="Direct booking page for DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Best rates, instant confirmation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Load Raleway font async (non-blocking) for faster LCP -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // EU+UK = denied by default
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted',
+      region: [
+        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
+        'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB'
+      ]
+    });
+
+    // Everywhere else = granted
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted'
+    });
+  </script>
+
+  <!-- Google Tag Manager (Delayed Load for PageSpeed) -->
+  <script>
+    (function() {
+      var gtmLoaded = false;
+      function loadGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-532W3HH2');
+      }
+      // Load after 3 seconds
+      setTimeout(loadGTM, 3000);
+      // Or load on first user interaction
+      ['scroll','mousemove','touchstart','click'].forEach(function(e){
+        window.addEventListener(e, loadGTM, {once: true, passive: true});
+      });
+    })();
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Start cookieyes banner -->
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js" defer></script>
+  <!-- End cookieyes banner -->
+
+  <!-- CookieYes persistence enhancement for cross-domain iframe contexts -->
+  <script>
+    (function() {
+      // Enhanced cookie setting with proper SameSite and domain attributes
+      function setCookieWithAttributes(name, value, days) {
+        var expires = "";
+        if (days) {
+          var date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        // Set with explicit domain, SameSite=Lax (works better than None for first-party contexts)
+        // and Secure flag for HTTPS
+        document.cookie = name + "=" + (value || "") + expires + "; path=/; domain=.devoceanlodge.com; SameSite=Lax; Secure";
+      }
+
+      // Listen for CookieYes consent updates
+      document.addEventListener('cookieyes_consent_update', function(eventData) {
+        try {
+          // When consent is given, ensure the cookie is set with proper attributes
+          var consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookieyes-consent='));
+          if (consentCookie) {
+            var consentValue = consentCookie.split('=')[1];
+            // Re-set with enhanced attributes
+            setCookieWithAttributes('cookieyes-consent', consentValue, 365);
+            
+            // Also store in localStorage as backup (for extreme privacy mode browsers)
+            try {
+              localStorage.setItem('cookieyes_consent_backup', consentValue);
+              localStorage.setItem('cookieyes_consent_timestamp', Date.now().toString());
+            } catch(e) {
+              // localStorage might be blocked, continue silently
+            }
+          }
+        } catch(e) {
+          console.error('CookieYes persistence enhancement error:', e);
+        }
+      });
+
+      // On page load, check if cookie is missing but localStorage has it (cookie was blocked/cleared)
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var consentCookie = document.cookie.split('; ').find(row => row.startsWith('cookieyes-consent='));
+          if (!consentCookie) {
+            try {
+              var backupConsent = localStorage.getItem('cookieyes_consent_backup');
+              var timestamp = localStorage.getItem('cookieyes_consent_timestamp');
+              // Only restore if backup exists and is less than 365 days old
+              if (backupConsent && timestamp) {
+                var age = Date.now() - parseInt(timestamp);
+                var maxAge = 365 * 24 * 60 * 60 * 1000; // 365 days in milliseconds
+                if (age < maxAge) {
+                  setCookieWithAttributes('cookieyes-consent', backupConsent, 365);
+                }
+              }
+            } catch(e) {
+              // Silent fail
+            }
+          }
+        }, 100);
+      });
+    })();
+  </script>
+
+  <!-- Trustindex Rich Snippet for Google Search -->
+  <script type="text/javascript" defer async src="https://cdn.trustindex.io/assets/js/richsnippet.js?caf207364508g84f"></script>
+  <!-- End Trustindex Rich Snippet -->
+
+  <style>
+    :root{
+      --brand:#9e4b13; --brand-2:#b65a1a; --ink:#5C5048;
+      --bg:#fffaf6; --card:#ffffff; --muted:#8a827b; --ring:#9e4b13;
+    }
+    html,body{height:100%}
+    body{margin:0;font-family:"Raleway",system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    .container{max-width:1200px;margin:0 auto;padding:16px}
+    @media (min-width:640px){
+      .container{padding:clamp(18px,3vw,24px)}
+    }
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,246,0.92);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
+    .bar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:0}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;min-height:48px}
+    .brand img{height:42px;width:auto;border-radius:8px}
+    .title{display:flex;flex-direction:column;line-height:1.1}
+    .title .name{font-weight:800;letter-spacing:.2px;font-size:clamp(0.95rem,4vw,1.05rem)}
+    .title .loc{font-weight:600;color:var(--muted);font-size:clamp(0.8rem,3vw,0.9rem)}
+    @media (min-width:640px){
+      .brand img{height:48px;border-radius:10px}
+      .title .name{font-size:1.05rem}
+      .title .loc{font-size:0.95rem}
+    }
+    .btn{appearance:none;border:none;border-radius:999px;padding:10px 16px;font-weight:700;cursor:pointer;font-family:inherit;font-size:clamp(0.85rem,3.5vw,0.95rem);display:inline-block;line-height:1.2;vertical-align:middle;text-align:center;min-height:44px;-webkit-tap-highlight-color:transparent;transition:transform 0.15s ease,opacity 0.15s ease}
+    .btn.primary{background:var(--brand);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+    .btn.primary:hover{opacity:0.95;transform:translateY(-1px)}
+    .btn.primary:active{opacity:0.9;transform:scale(0.98)}
+    /* Both buttons now identical - no special overrides needed */
+    @media (min-width:640px){
+      .btn{padding:12px 18px;font-size:0.95rem}
+      header #backBtn.btn.primary,
+      header #homeBtn.btn.primary{padding:12px 18px!important}
+    }
+    main{min-height:60vh}
+    .card{background:var(--card);border:1px solid #eee;border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    .engine{overflow:hidden}
+    .frameWrap{position:relative}
+    iframe.booking{width:100%;border:0;min-height:1000px;height:75vh}
+    footer{margin-top:40px;padding:24px 0;border-top:1px solid #eee;color:var(--muted);font-size:.95rem}
+    :focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+    @media(max-width:860px){iframe.booking{min-height:1400px;height:80vh}.title .loc{display:none}}
+
+    /* ===== Hero (Mobile-First) ===== */
+    #site-hero{background:#fffaf6}
+    #site-hero .wrap{max-width:1200px;margin:0 auto;padding:16px}
+    #site-hero .hero-section{display:flex;flex-direction:column;gap:16px;margin-bottom:8px}
+    #site-hero h1{margin:0;font-weight:800;letter-spacing:.2px;font-size:clamp(1.4rem,5vw,2.3rem);line-height:1.15}
+    
+    /* Clickable H1 Frame - Mobile-First with larger touch target */
+    .h1-frame{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:16px 20px;
+      border:2px solid var(--brand);
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(182,90,26,0.08) 0%, rgba(158,75,19,0.12) 100%);
+      cursor:pointer;
+      transition:transform 0.15s ease,opacity 0.15s ease;
+      box-shadow:0 2px 8px rgba(158,75,19,0.1);
+      min-height:48px;
+      -webkit-tap-highlight-color:transparent;
+      text-align:center;
+      position:relative;
+    }
+    .h1-frame:hover{
+      transform:translateY(-1px);
+      opacity:0.95;
+    }
+    .h1-frame:active{
+      transform:scale(0.98);
+      opacity:0.9;
+    }
+    .h1-frame.expanded .h1-chevron {
+      transform: rotate(-180deg);
+    }
+    .h1-frame h1{
+      margin:0;
+      color:var(--brand);
+      flex:1;
+    }
+    .h1-chevron {
+      position: absolute;
+      right: 14px;
+      font-size: 12px;
+      color: var(--brand);
+      transition: transform 0.2s ease;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+    #site-hero p{margin:0;color:var(--muted);line-height:1.5}
+    #site-hero .note{margin-top:12px}
+    #site-hero .benefit-card{background:#fff;border:1px solid #eee;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
+    #site-hero .badge-container{display:flex;flex-direction:column;gap:12px;height:100%}
+    #site-hero .featured-badge{padding:18px;background:linear-gradient(135deg,#b65a1a 0%,#9e4b13 100%);color:#fff;text-align:center;border-radius:16px;box-shadow:0 6px 24px rgba(0,0,0,.06);margin-top:auto;margin-bottom:12px}
+    #site-hero .badge-head{font-size:1.1rem;font-weight:800}
+    #site-hero .badge-sub{opacity:.95}
+    #site-hero .badge-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    #site-hero .badge-item{padding:14px;text-align:center;border-radius:16px;transition:transform .12s ease, box-shadow .12s ease}
+    #site-hero .badge-item:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.10)}
+    #site-hero .badge-item-title{font-weight:700}
+    #site-hero .ico{width:28px;height:28px;display:block;margin:0 auto 8px;background-repeat:no-repeat;background-position:center;background-size:contain}
+
+    /* Inline SVG icons as data URIs (URL-encoded for reliability) */
+    #site-hero .ico.lock{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='10' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.bolt{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M13 2L4 14h6l-1 8 9-12h-6l1-8z'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.check{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.handshake{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12l4-4a3 3 0 0 1 4 0l2 2'/%3E%3Cpath d='M15 9l2-2a3 3 0 0 1 4 0'/%3E%3Cpath d='M8 13l3 3a2 2 0 0 0 3 0l4-4'/%3E%3C/svg%3E");
+    }
+    #site-hero .ico.baby{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 12h.01'/%3E%3Cpath d='M15 12h.01'/%3E%3Cpath d='M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5'/%3E%3Cpath d='M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1'/%3E%3C/svg%3E");
+    }
+
+    @media (min-width:880px){
+      #site-hero .wrap{padding:20px clamp(16px,3vw,24px)}
+      #site-hero .hero-section{flex-direction:row;gap:20px;align-items:end}
+      #site-hero h1{font-size:clamp(1.8rem,2.5vw,2.3rem)}
+      .h1-frame{padding:18px 24px}
+    }
+    
+    /* ===== Benefits Modal ===== */
+    .modal-overlay{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:rgba(0,0,0,0.6);
+      z-index:9999;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      animation:fadeIn 0.2s ease;
+    }
+    .modal-overlay.active{
+      display:flex;
+    }
+    @keyframes fadeIn{
+      from{opacity:0}
+      to{opacity:1}
+    }
+    .modal-content{
+      background:#fff;
+      border-radius:20px;
+      max-width:600px;
+      width:100%;
+      max-height:90vh;
+      overflow-y:auto;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+      animation:slideUp 0.3s ease;
+      position:relative;
+    }
+    @keyframes slideUp{
+      from{transform:translateY(30px);opacity:0}
+      to{transform:translateY(0);opacity:1}
+    }
+    .modal-header{
+      background:linear-gradient(135deg,#b65a1a 0%,#9e4b13 100%);
+      color:#fff;
+      padding:24px 28px;
+      border-radius:20px 20px 0 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .modal-header h2{
+      margin:0;
+      font-size:1.5rem;
+      font-weight:800;
+    }
+    .modal-close{
+      background:rgba(255,255,255,0.2);
+      border:none;
+      color:#fff;
+      font-size:28px;
+      width:36px;
+      height:36px;
+      border-radius:50%;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:all 0.2s ease;
+      line-height:1;
+      padding:0;
+    }
+    .modal-close:hover{
+      background:rgba(255,255,255,0.3);
+      transform:rotate(90deg);
+    }
+    .modal-body{
+      padding:28px;
+    }
+    .modal-benefits{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+    
+    @media (min-width:600px){
+      .modal-benefits{
+        grid-template-columns:repeat(2, 1fr);
+        gap:16px;
+      }
+    }
+    
+    @media (min-width:960px){
+      .modal-benefits{
+        grid-template-columns:repeat(3, 1fr);
+        gap:18px;
+      }
+    }
+    
+    .modal-benefit-item{
+      border-radius:12px;
+      padding:20px 16px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+      text-align:center;
+      min-height:120px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+      border:none;
+      transition:transform 0.15s ease;
+    }
+    
+    .modal-benefit-item:hover{
+      transform:translateY(-2px);
+    }
+    
+    .modal-benefit-item:nth-child(1){
+      background:linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+    }
+    .modal-benefit-item:nth-child(1) .modal-benefit-title{
+      color:#ffffff !important;
+    }
+    .modal-benefit-item:nth-child(1) .modal-benefit-desc{
+      color:#fffaf0 !important;
+    }
+    
+    .modal-benefit-item:nth-child(2){
+      background:linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    }
+    .modal-benefit-item:nth-child(2) .modal-benefit-title{
+      color:#ffffff !important;
+    }
+    .modal-benefit-item:nth-child(2) .modal-benefit-desc{
+      color:#fffaf0 !important;
+    }
+    
+    .modal-benefit-item:nth-child(3){
+      background:linear-gradient(135deg, #d2691e 0%, #cd853f 100%);
+    }
+    .modal-benefit-item:nth-child(3) .modal-benefit-title{
+      color:#ffffff !important;
+    }
+    .modal-benefit-item:nth-child(3) .modal-benefit-desc{
+      color:#fffaf0 !important;
+    }
+    
+    .modal-benefit-item:nth-child(4){
+      background:linear-gradient(135deg, #b8860b 0%, #daa520 100%);
+    }
+    .modal-benefit-item:nth-child(4) .modal-benefit-title{
+      color:#ffffff !important;
+    }
+    .modal-benefit-item:nth-child(4) .modal-benefit-desc{
+      color:#fffaf0 !important;
+    }
+    
+    .modal-benefit-item:nth-child(5){
+      background:linear-gradient(135deg, #ff7f50 0%, #ff6347 100%);
+    }
+    .modal-benefit-item:nth-child(5) .modal-benefit-title{
+      color:#ffffff !important;
+    }
+    .modal-benefit-item:nth-child(5) .modal-benefit-desc{
+      color:#fffaf0 !important;
+    }
+    .modal-benefit-icon{
+      width:56px;
+      height:56px;
+      min-width:56px;
+      background:rgba(255,255,255,0.3);
+      backdrop-filter:blur(10px);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+    .modal-benefit-icon .ico{
+      width:24px;
+      height:24px;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      margin:0;
+    }
+    .modal-benefit-icon .ico.lock{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='11' width='18' height='10' rx='2' ry='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.check{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.bolt{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M13 2L4 14h6l-1 8 9-12h-6l1-8z'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.handshake{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 12l4-4a3 3 0 0 1 4 0l2 2'/%3E%3Cpath d='M15 9l2-2a3 3 0 0 1 4 0'/%3E%3Cpath d='M8 13l3 3a2 2 0 0 0 3 0l4-4'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-icon .ico.rate{
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E");
+    }
+    .modal-benefit-text{
+      flex:1;
+      text-align:center;
+    }
+    .modal-benefit-title{
+      font-weight:700;
+      font-size:clamp(0.95rem,3.5vw,1.05rem);
+      margin:0 0 6px 0;
+      text-align:center;
+    }
+    .modal-benefit-desc{
+      font-size:clamp(0.85rem,3.2vw,0.9rem);
+      margin:0;
+      line-height:1.5;
+      text-align:center;
+    }
+    @media(max-width:640px){
+      .modal-content{max-width:95%;border-radius:12px}
+      .modal-header{padding:18px;border-radius:12px 12px 0 0}
+      .modal-header h2{font-size:clamp(1.15rem,5vw,1.4rem)}
+      .modal-body{padding:18px}
+      .modal-benefit-item{padding:16px 14px;gap:10px;min-height:100px}
+      .modal-benefit-icon{width:48px;height:48px;min-width:48px}
+      .modal-benefit-icon .ico{width:24px;height:24px}
+    }
+
+    /* Badge Container Layout */
+    .badge-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    /* Benefits Expandable Content */
+    .benefits-content {
+      background: #fef9f5;
+      border: 2px solid var(--brand);
+      border-radius: 10px;
+      padding: 0 14px;
+      box-shadow: 0 2px 6px rgba(158, 75, 19, 0.1);
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.25s ease;
+      margin-top: 10px;
+    }
+    
+    .benefits-content.expanded {
+      max-height: 1200px;
+      opacity: 1;
+      padding: 14px;
+    }
+    
+    @media (min-width: 640px) {
+      .benefits-content{padding: 0 18px}
+      .benefits-content.expanded{padding: 16px 18px}
+    }
+    
+    /* Child Policy Badge - Mobile-First */
+    .child-policy-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    .child-featured-badge {
+      background: linear-gradient(135deg, var(--brand) 0%, #a85a1e 100%);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(158, 75, 19, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: clamp(1.4rem,5vw,2.3rem);
+      cursor: pointer;
+      transition: transform 0.15s ease,opacity 0.15s ease;
+      position: relative;
+      min-height: 48px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .child-featured-badge:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+    
+    .child-featured-badge:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+    
+    .child-featured-badge .icon {
+      font-size: clamp(20px,5vw,24px);
+      flex-shrink: 0;
+    }
+    
+    .child-policy-chevron {
+      position: absolute;
+      right: 14px;
+      font-size: 12px;
+      transition: transform 0.2s ease;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+    
+    .child-featured-badge.expanded .child-policy-chevron {
+      transform: rotate(-180deg);
+    }
+    
+    .child-policy-content {
+      background: #fef9f5;
+      border: 2px solid var(--brand);
+      border-radius: 10px;
+      padding: 0 14px;
+      box-shadow: 0 2px 6px rgba(158, 75, 19, 0.1);
+      flex: 1;
+      display: flex;
+      align-items: center;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.25s ease;
+    }
+    
+    .child-policy-content.expanded {
+      max-height: 600px;
+      opacity: 1;
+      padding: 14px;
+    }
+    
+    .child-policy-content p {
+      margin: 0;
+      font-size: clamp(0.85rem,3.5vw,0.9rem);
+      line-height: 1.6;
+      color: #333;
+    }
+    
+    @media (min-width: 640px) {
+      .child-featured-badge{padding: 16px 20px}
+      .child-policy-content{padding: 0 18px}
+      .child-policy-content.expanded{padding: 16px 18px}
+    }
+    
+    /* How to Book Badge - Mobile-First */
+    .info-badge-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    
+    .info-badge {
+      background: linear-gradient(135deg, var(--brand) 0%, #a85a1e 100%);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(158, 75, 19, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: clamp(1.4rem,5vw,2.3rem);
+      cursor: pointer;
+      transition: transform 0.15s ease,opacity 0.15s ease;
+      position: relative;
+      min-height: 48px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .info-badge:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+    
+    .info-badge:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+    
+    .info-badge .icon {
+      font-size: clamp(20px,5vw,24px);
+      flex-shrink: 0;
+    }
+    
+    .info-badge-chevron {
+      position: absolute;
+      right: 14px;
+      font-size: 12px;
+      transition: transform 0.2s ease;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+    
+    .info-badge.expanded .info-badge-chevron {
+      transform: rotate(-180deg);
+    }
+    
+    .info-badge-content {
+      background: #fef9f5;
+      border: 2px solid var(--brand);
+      border-radius: 10px;
+      padding: 0 14px;
+      box-shadow: 0 2px 6px rgba(158, 75, 19, 0.1);
+      flex: 1;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.2s ease, padding 0.25s ease;
+    }
+    
+    .info-badge-content.expanded {
+      max-height: 1200px;
+      opacity: 1;
+      padding: 14px;
+    }
+    
+    /* How to Book Badge Grid - Similar to Benefits */
+    .howto-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    
+    @media (min-width: 600px) {
+      .howto-badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .howto-badge-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      min-height: 140px;
+    }
+    
+    .howto-badge-item:nth-child(1) {
+      background: linear-gradient(135deg, #b8860b 0%, #9e7c0a 100%);
+    }
+    
+    .howto-badge-item:nth-child(2) {
+      background: linear-gradient(135deg, #e67e50 0%, #d4511f 100%);
+    }
+    
+    .howto-badge-item:nth-child(3) {
+      background: linear-gradient(135deg, #c4581a 0%, #a04d19 100%);
+    }
+    
+    .howto-badge-item:nth-child(4) {
+      background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+    }
+    
+    .howto-badge-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .howto-badge-icon .ico {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+    }
+    
+    .howto-badge-icon .ico.home {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3Cpolyline points='9 22 9 12 15 12 15 22'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-icon .ico.calendar {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-icon .ico.users {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M23 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-icon .ico.click {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 11l3 3L22 4'/%3E%3Cpath d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11'/%3E%3C/svg%3E");
+    }
+    
+    .howto-badge-text {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .howto-badge-title {
+      font-weight: 700;
+      font-size: clamp(0.95rem,3.5vw,1.05rem);
+      margin: 0 0 6px 0;
+      text-align: center;
+      color: #ffffff !important;
+    }
+    
+    .howto-badge-desc {
+      font-size: clamp(0.85rem,3.2vw,0.9rem);
+      margin: 0;
+      line-height: 1.5;
+      text-align: center;
+      color: #fffaf0 !important;
+    }
+    
+    /* Children Policy Badge Grid - Similar to How to Book */
+    .children-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    
+    @media (min-width: 600px) {
+      .children-badge-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (min-width: 960px) {
+      .children-badge-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .children-badge-item {
+      background: white;
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      min-height: 140px;
+    }
+    
+    .children-badge-item:nth-child(1) {
+      background: linear-gradient(135deg, #846707 0%, #6b5306 100%);
+    }
+    
+    .children-badge-item:nth-child(2) {
+      background: linear-gradient(135deg, #bf3a11 0%, #9e2f0e 100%);
+    }
+    
+    .children-badge-item:nth-child(3) {
+      background: linear-gradient(135deg, #a04d19 0%, #7d3c14 100%);
+    }
+    
+    .children-badge-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      background: rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    .children-badge-icon .ico {
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin: 0;
+    }
+    
+    .children-badge-icon .ico.baby {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 12h.01'/%3E%3Cpath d='M15 12h.01'/%3E%3Cpath d='M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5'/%3E%3Cpath d='M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1'/%3E%3C/svg%3E");
+    }
+    
+    .children-badge-icon .ico.child {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='5' r='3'/%3E%3Cpath d='M6 22v-5c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v5'/%3E%3Cpath d='M19 12v2'/%3E%3Cpath d='M5 12v2'/%3E%3C/svg%3E");
+    }
+    
+    .children-badge-icon .ico.youngster {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+    }
+    
+    .children-badge-text {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .children-badge-title {
+      font-weight: 700;
+      font-size: clamp(0.95rem,3.5vw,1.05rem);
+      margin: 0 0 6px 0;
+      text-align: center;
+      color: #ffffff !important;
+    }
+    
+    .children-badge-desc {
+      font-size: clamp(0.85rem,3.2vw,0.9rem);
+      margin: 0 0 8px 0;
+      line-height: 1.5;
+      text-align: center;
+      color: #fffaf0 !important;
+    }
+    
+    .children-badge-desc:last-child {
+      margin-bottom: 0;
+    }
+    
+    @media (min-width: 640px) {
+      .info-badge{padding: 16px 20px}
+      .info-badge-content{padding: 0 18px}
+      .info-badge-content.expanded{padding: 16px 18px}
+      .howto-badge-item{padding: 18px 16px;min-height:150px}
+      .children-badge-item{padding: 18px 16px;min-height:180px}
+    }
+
+    /* ===== Floating Back to Top Button ===== */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%);
+      color: white;
+      border: none;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(158, 75, 19, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    #backToTop:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(158, 75, 19, 0.5);
+      background: linear-gradient(135deg, #c66b1f 0%, #b35818 100%);
+    }
+    
+    #backToTop:active {
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      #backToTop {
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+      }
+    }
+    
+    /* WhatsApp Support Card (inside How to Book section) */
+    .whatsapp-support-card {
+      margin: clamp(20px, 4vw, 24px) 0;
+      background: white;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    @media (min-width: 768px) {
+      .whatsapp-support-card {
+        max-width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    
+    .support-card-header {
+      background: linear-gradient(135deg, #b65a1a 0%, #9e4b13 100%);
+      color: white;
+      padding: clamp(14px, 3vw, 16px);
+      text-align: center;
+    }
+    
+    .support-card-header h3 {
+      margin: 0;
+      font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    .support-card-content {
+      padding: clamp(16px, 4vw, 20px);
+    }
+    
+    .support-card-content p {
+      margin: 0 0 12px 0;
+      color: var(--ink);
+      font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+      line-height: 1.5;
+    }
+    
+    .support-card-list {
+      margin: 0 0 16px 0;
+      padding-left: clamp(18px, 4vw, 20px);
+      color: var(--muted);
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      line-height: 1.6;
+    }
+    
+    .support-card-list li {
+      margin-bottom: 6px;
+    }
+    
+    .support-card-hours {
+      background: #fffaf6;
+      border-left: 3px solid var(--brand);
+      padding: clamp(10px, 2.5vw, 12px);
+      margin: 16px 0;
+      border-radius: 4px;
+    }
+    
+    .support-card-hours p {
+      margin: 0;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
+      color: var(--ink);
+    }
+    
+    .support-card-hours strong {
+      color: var(--brand);
+    }
+    
+    .support-card-whatsapp-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: clamp(12px, 3vw, 14px) 20px;
+      background: #25D366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: clamp(0.9rem, 2.3vw, 0.95rem);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+      min-height: 48px;
+    }
+    
+    .support-card-whatsapp-btn:hover {
+      background: #20BA5A;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+    
+    .support-card-whatsapp-btn:active {
+      transform: scale(0.98);
+    }
+    
+    .support-card-phone {
+      text-align: center;
+      color: var(--muted);
+      font-size: clamp(0.8rem, 2vw, 0.85rem);
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    /* Focus-visible states for accessibility */
+    .h1-frame:focus-visible,
+    .info-badge:focus-visible,
+    .child-featured-badge:focus-visible,
+    .btn:focus-visible,
+    .modal-close:focus-visible {
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+    }
+    
+    /* Reduce motion for users who prefer it */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+  <!-- CSS Version: 2.9 - Earth-tone gradients with brand-color text (white/brown) for high contrast -->
+  <!-- Trustindex Floating Certificate -->
+  <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header>
+    <div class="container bar">
+      <a class="brand" href="https://devoceanlodge.com" target="_blank" rel="noopener">
+        <img src="/images/devocean_logo_header-booking.webp" alt="DEVOCEAN Lodge logo" width="74" height="74" />
+        <span class="title">
+          <span class="name">DEVOCEAN Lodge</span>
+          <span class="loc">Ponta do Ouro • Mozambique</span>
+        </span>
+      </a>
+      
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <button id="backBtn" class="btn primary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" data-testid="button-back"><span id="t-back">Back</span></button>
+        <button id="homeBtn" class="btn primary" onclick="window.location.href='https://devoceanlodge.com'" role="link" data-testid="button-home"><span id="t-home">Home</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO (fallback EN text; JS replaces with localized strings) -->
+    <section id="site-hero">
+      <div class="wrap">
+        <div class="hero-section">
+          <div>
+            <div class="h1-frame" onclick="toggleBenefits()" data-testid="button-h1-benefits">
+              <h1 id="t-h1">Book here for Best Value</h1>
+              <span class="h1-chevron">▼</span>
+            </div>
+            
+            <!-- Benefits Badges (expandable) -->
+            <div class="benefits-content" id="benefitsContent">
+              <div class="modal-benefits">
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico rate"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-rate">Best Rate Guaranteed</p>
+                    <p class="modal-benefit-desc" id="t-modal-rate-desc">Lowest prices when you book directly with us</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico lock"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-secure">Secure Payment</p>
+                    <p class="modal-benefit-desc" id="t-modal-secure-desc">Your payment information is always protected</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico check"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-nofees">No Hidden Fees</p>
+                    <p class="modal-benefit-desc" id="t-modal-nofees-desc">Transparent pricing with no surprises</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico bolt"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-instant">Instant Confirmation</p>
+                    <p class="modal-benefit-desc" id="t-modal-instant-desc">Receive your booking confirmation immediately</p>
+                  </div>
+                </div>
+                <div class="modal-benefit-item">
+                  <div class="modal-benefit-icon">
+                    <span class="ico handshake"></span>
+                  </div>
+                  <div class="modal-benefit-text">
+                    <p class="modal-benefit-title" id="t-modal-support">DEVOCEAN Team Support</p>
+                    <p class="modal-benefit-desc" id="t-modal-support-desc">Direct assistance from our dedicated team</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- How to Book Badge -->
+            <div class="info-badge-column">
+              <div class="info-badge" onclick="toggleHowToBook()" data-testid="button-how-to-book">
+                <span id="t-howto-heading">How to Book</span>
+                <span class="info-badge-chevron">▼</span>
+              </div>
+              <div class="info-badge-content" id="howToBookContent">
+                <div class="howto-badge-grid">
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico home"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step1-title">Choose your unit</p>
+                      <p class="howto-badge-desc" id="t-howto-step1-desc">Safari Tent • Comfort Tent • Garden Cottage • Thatched Chalet</p>
+                    </div>
+                  </div>
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico calendar"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step2-title">Decide on the Dates</p>
+                      <p class="howto-badge-desc" id="t-howto-step2-desc">The longer you stay, the better the rate</p>
+                    </div>
+                  </div>
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico users"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step3-title">Fill in the number of adults/children</p>
+                      <p class="howto-badge-desc" id="t-howto-step3-desc">Max. 2 adults + 1 child or 1 adult and 2 children per unit. Except for the Garden Cottage; max. 2 adults or 1 adult + 1 child</p>
+                    </div>
+                  </div>
+                  <div class="howto-badge-item">
+                    <div class="howto-badge-icon">
+                      <span class="ico click"></span>
+                    </div>
+                    <div class="howto-badge-text">
+                      <p class="howto-badge-title" id="t-howto-step4-title">Click the Book button</p>
+                      <p class="howto-badge-desc" id="t-howto-step4-desc">And fill in the form</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- WhatsApp Support Card -->
+                <div class="whatsapp-support-card">
+                  <div class="support-card-header">
+                    <h3 id="t-support-title">Welcome to DEVOCEAN Booking Support</h3>
+                  </div>
+                  <div class="support-card-content">
+                    <p id="t-support-intro">Our team is ready to help you with:</p>
+                    <ul class="support-card-list">
+                      <li id="t-support-help1">Choosing the right accommodation</li>
+                      <li id="t-support-help2">Understanding availability & rates</li>
+                      <li id="t-support-help3">Special requests</li>
+                    </ul>
+                    <div class="support-card-hours">
+                      <p><strong id="t-support-hours">Office Hours:</strong></p>
+                      <p id="t-support-hours-time">Monday-Sunday, 8:00-17:00 CAT</p>
+                    </div>
+                    <a 
+                      href="https://wa.me/258844182252?text=Hi%2C%20I%20need%20help%20making%20a%20reservation%20at%20DEVOCEAN%20Lodge" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      class="support-card-whatsapp-btn"
+                      data-testid="button-whatsapp-support"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                      </svg>
+                      <span id="t-support-button">Chat on WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+                
+                <p style="margin-top: 16px; font-size: 0.85rem; font-style: italic; opacity: 0.9; text-align: center;">
+                  <span id="t-currency-note">Need to convert US$ into your currency use the </span><a id="currency-converter-link" 
+                     href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=32" 
+                     target="_blank" 
+                     rel="noopener noreferrer"
+                     style="color: #9e4b13; font-weight: 600; text-decoration: underline;"><span id="t-currency-converter">currency converter</span></a>.
+                </p>
+              </div>
+            </div>
+
+            <!-- Child Policy Badges -->
+            <div class="child-policy-column">
+              <div class="child-featured-badge" onclick="toggleChildPolicy()" data-testid="button-child-policy">
+                <span id="t-child-heading">Travelling with children</span>
+                <span class="child-policy-chevron">▼</span>
+              </div>
+              <div class="child-policy-content" id="childPolicyContent">
+                <div class="children-badge-grid">
+                  <!-- Baby/Infant Badge -->
+                  <div class="children-badge-item">
+                    <div class="children-badge-icon">
+                      <div class="ico baby"></div>
+                    </div>
+                    <div class="children-badge-text">
+                      <h3 class="children-badge-title" id="t-child-baby-title">Babies/Infants 0-3 years</h3>
+                      <p class="children-badge-desc" id="t-child-baby-price">Free</p>
+                      <p class="children-badge-desc" id="t-child-baby-booking">Don't add during booking</p>
+                      <p class="children-badge-desc" id="t-child-baby-note">Add babycot on the booking form if needed or mention in the space for a note</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Children Badge -->
+                  <div class="children-badge-item">
+                    <div class="children-badge-icon">
+                      <div class="ico child"></div>
+                    </div>
+                    <div class="children-badge-text">
+                      <h3 class="children-badge-title" id="t-child-children-title">Children 4-11 years</h3>
+                      <p class="children-badge-desc" id="t-child-children-price">Half Price</p>
+                      <p class="children-badge-desc" id="t-child-children-booking">Add when choosing number of occupants</p>
+                      <p class="children-badge-desc" id="t-child-children-bed">Extra Safari bed will be provided when total is 3</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Youngsters Badge -->
+                  <div class="children-badge-item">
+                    <div class="children-badge-icon">
+                      <div class="ico youngster"></div>
+                    </div>
+                    <div class="children-badge-text">
+                      <h3 class="children-badge-title" id="t-child-youngster-title">Youngsters 12 and up</h3>
+                      <p class="children-badge-desc" id="t-child-youngster-price">Count as Adults</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beds24 engine -->
+    <section id="book" class="card engine" style="margin-top:18px">
+      <div class="frameWrap">
+        <iframe id="beds24frame" class="booking" title="DEVOCEAN Lodge booking"
+          src="about:blank"
+          width="1200" height="2000" style="max-width:100%;border:none;overflow:auto;"
+          allow="payment *; clipboard-write *">
+          <p>Loading booking engine...</p>
+        </iframe>       
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center">
+      © <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
+      <a href="#" onclick="return setLegalLink('privacy')" style="color:var(--brand);text-decoration:none">Privacy</a> •
+      <a href="#" onclick="return setLegalLink('cookies')" style="color:var(--brand);text-decoration:none">Cookies</a> •
+      <a href="#" onclick="return setLegalLink('terms')" style="color:var(--brand);text-decoration:none">Terms</a> •
+      <a href="#" onclick="return setLegalLink('GDPR')" style="color:var(--brand);text-decoration:none">GDPR</a>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" aria-label="Back to top" title="Back to top">↑</button>
+
+  <!-- Benefits Modal -->
+  <div id="benefitsModal" class="modal-overlay" onclick="closeBenefitsModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 id="t-modal-title">Why Book Direct?</h2>
+        <button class="modal-close" onclick="closeBenefitsModal()" aria-label="Close" data-testid="button-modal-close">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-benefits">
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico rate"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-rate">Best Rate Guaranteed</p>
+              <p class="modal-benefit-desc" id="t-modal-rate-desc">Lowest prices when you book directly with us</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico lock"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-secure">Secure payment</p>
+              <p class="modal-benefit-desc" id="t-modal-secure-desc">Your data is protected with industry-standard encryption</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico check"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-nofees">No hidden fees</p>
+              <p class="modal-benefit-desc" id="t-modal-nofees-desc">What you see is what you pay - transparent pricing</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico bolt"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-instant">Instant confirmation</p>
+              <p class="modal-benefit-desc" id="t-modal-instant-desc">Receive your booking confirmation immediately</p>
+            </div>
+          </div>
+          <div class="modal-benefit-item">
+            <div class="modal-benefit-icon">
+              <span class="ico handshake"></span>
+            </div>
+            <div class="modal-benefit-text">
+              <p class="modal-benefit-title" id="t-modal-support">DEVOCEAN Team support</p>
+              <p class="modal-benefit-desc" id="t-modal-support-desc">Personal assistance from our dedicated team</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Localization + iframe sync (modernized with ES modules for performance) -->
+  <script type="module">
+// This is the new module-based script to replace the embedded translations in booking.html
+// Lines ~1339-2416 in booking.html
+
+// ===== Safe localStorage helpers =====
+function safeGetItem(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
+}
+
+function safeSetItem(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (e) {
+    // Silent fail - storage unavailable
+  }
+}
+
+// ===== Language and currency detection =====
+function detectSiteLanguage(){
+  const qs = new URLSearchParams(location.search);
+  const urlLang = qs.get('lang') || qs.get('locale');
+  
+  // Priority 1: URL parameter
+  if (urlLang){ 
+    safeSetItem('site.lang', urlLang); 
+    return urlLang; 
+  }
+  
+  // Priority 2: localStorage
+  const saved = safeGetItem('site.lang');
+  if (saved) return saved;
+  
+  // Priority 3: Browser language
+  const detected = navigator.language || 'en-GB';
+  safeSetItem('site.lang', detected);
+  return detected;
+}
+
+function detectSiteCurrency(){
+  const qs = new URLSearchParams(location.search);
+  const urlCur = qs.get('cur') || qs.get('currency');
+  
+  // Priority 1: URL parameter (explicit override)
+  if (urlCur && urlCur.length === 3){ 
+    return urlCur.toUpperCase(); 
+  }
+  
+  // Priority 2: Cloudflare IP geolocation (always fresh, not cached)
+  const countryCode = window.__CF_COUNTRY__;
+  if (countryCode) {
+    const currencyFromCountry = mapCountryToCurrency(countryCode);
+    if (currencyFromCountry) {
+      return currencyFromCountry;
+    }
+  }
+  
+  // Priority 3: Default
+  return 'USD';
+}
+
+// Map country code to currency (based on Cloudflare IP geolocation)
+function mapCountryToCurrency(cc) {
+  const CC_TO_CURRENCY = {
+    // Europe
+    GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", 
+    DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", AT: "EUR",
+    FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK",
+    DK: "DKK", CH: "CHF", CZ: "CZK", HU: "HUF", RO: "RON",
+    RS: "RSD", HR: "EUR", SI: "EUR", BA: "BAM", BG: "BGN",
+    SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR",
+    CY: "EUR", LU: "EUR", IS: "ISK", LI: "CHF", MC: "EUR",
+    UA: "UAH", BY: "BYN", MD: "MDL", AL: "ALL", MK: "MKD",
+    ME: "EUR", XK: "EUR", AD: "EUR", SM: "EUR", VA: "EUR",
+    
+    // Africa
+    ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX",
+    ZW: "USD", BW: "BWP", NA: "NAD", EG: "EGP", MA: "MAD",
+    SZ: "SZL", RE: "EUR", MU: "MUR", SC: "SCR", LS: "LSL",
+    ZM: "ZMW", MW: "MWK", AO: "AOA", GH: "GHS", NG: "NGN", 
+    ET: "ETB", SD: "SDG", DZ: "DZD", TN: "TND", LY: "LYD", 
+    SN: "XOF", CI: "XOF", CM: "XAF", RW: "RWF", BI: "BIF", 
+    SO: "SOS", DJ: "DJF",
+    
+    // Americas
+    US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS",
+    CL: "CLP", CO: "COP", PE: "PEN", VE: "VES", EC: "USD",
+    UY: "UYU", PY: "PYG", BO: "BOB", CR: "CRC", PA: "PAB",
+    GT: "GTQ", HN: "HNL", SV: "USD", NI: "NIO", CU: "CUP",
+    DO: "DOP", HT: "HTG", JM: "JMD", TT: "TTD", BB: "BBD",
+    
+    // Asia & Middle East
+    CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB",
+    SG: "SGD", MY: "MYR", ID: "IDR", PH: "PHP", VN: "VND",
+    AE: "AED", SA: "SAR", QA: "QAR", KW: "KWD", BH: "BHD",
+    OM: "OMR", IL: "ILS", JO: "JOD", LB: "LBP", TR: "TRY",
+    PK: "PKR", BD: "BDT", LK: "LKR", NP: "NPR", MM: "MMK",
+    KH: "KHR", LA: "LAK", MN: "MNT", KZ: "KZT", UZ: "UZS",
+    RU: "RUB",
+    
+    // Oceania
+    AU: "AUD", NZ: "NZD", FJ: "FJD", PG: "PGK", NC: "XPF",
+    PF: "XPF", WS: "WST", TO: "TOP", VU: "VUV", SB: "SBD",
+  };
+  
+  return CC_TO_CURRENCY[cc] || null;
+}
+
+function normalizeLangCode(langCode) {
+  if (!langCode) return 'en';
+  const s = String(langCode).toLowerCase();
+  
+  // Normalize to 2-letter codes
+  if (s === 'en-gb' || s === 'en-us' || s === 'en') return 'en';
+  if (s === 'de-de' || s === 'de') return 'de';
+  if (s === 'es-es' || s === 'es') return 'es';
+  if (s === 'fr-fr' || s === 'fr') return 'fr';
+  if (s === 'it-it' || s === 'it') return 'it';
+  if (s === 'nl-nl' || s === 'nl') return 'nl';
+  if (s === 'pt-pt' || s === 'pt-br' || s === 'pt-mz' || s === 'pt') return 'pt';
+  if (s === 'ru' || s === 'ru-ru') return 'ru';
+  if (s === 'zh-cn' || s === 'zh-tw' || s === 'zh') return 'zh';
+  if (s === 'sv' || s === 'sv-se') return 'sv';
+  if (s === 'ja-jp' || s === 'ja') return 'ja';
+  if (s === 'pl' || s === 'pl-pl') return 'pl';
+  if (s === 'af-za' || s === 'af') return 'af';
+  if (s === 'zu-za' || s === 'zu') return 'zu';
+  if (s === 'sw' || s === 'sw-tz' || s === 'sw-ke') return 'sw';
+  
+  return 'en';
+}
+
+function mapToB24(code){
+  return normalizeLangCode(code);
+}
+
+// ===== Dynamic translation loading with caching =====
+const translationCache = new Map();
+const loadingPromises = new Map();
+
+async function loadTranslation(langCode) {
+  // Return cached translation if available
+  if (translationCache.has(langCode)) {
+    return translationCache.get(langCode);
+  }
+
+  // If already loading this language, return existing promise
+  if (loadingPromises.has(langCode)) {
+    return loadingPromises.get(langCode);
+  }
+
+  const promise = (async () => {
+    try {
+      const url = new URL(`./booking/langs/${langCode}.js`, window.location.href);
+      const module = await import(url.href);
+      const translations = module.default;
+      translationCache.set(langCode, translations);
+      return translations;
+    } catch (err) {
+      console.warn(`Failed to load translation for ${langCode}`, err);
+      
+      // Fallback to English
+      if (langCode !== 'en') {
+        console.log('Falling back to English...');
+        return loadTranslation('en');
+      }
+      
+      // If English fails, show error
+      console.error('Failed to load English fallback:', err);
+      throw new Error('Translation loading failed');
+    } finally {
+      loadingPromises.delete(langCode);
+    }
+  })();
+
+  loadingPromises.set(langCode, promise);
+  return promise;
+}
+
+// ===== Promise-based DOM ready helper =====
+function waitForDom(selector, timeout = 5000) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(selector)) {
+      resolve();
+      return;
+    }
+
+    const startTime = Date.now();
+    const interval = setInterval(() => {
+      if (document.querySelector(selector)) {
+        clearInterval(interval);
+        resolve();
+      } else if (Date.now() - startTime > timeout) {
+        clearInterval(interval);
+        reject(new Error(`Timeout waiting for ${selector}`));
+      }
+    }, 50);
+
+    // Also listen for DOMContentLoaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        if (document.querySelector(selector)) {
+          clearInterval(interval);
+          resolve();
+        }
+      });
+    }
+  });
+}
+
+// ===== Apply translations to DOM =====
+function applyTranslations(TT, code, siteCurrency) {
+  // Set document title and meta
+  document.title = TT.title;
+  const md = document.querySelector('meta[name="description"]');
+  if (md) md.setAttribute('content', TT.desc);
+
+  // Main headings
+  const elH1 = document.getElementById("t-h1");
+  const elHowtoHeading = document.getElementById("t-howto-heading");
+  const elCurrencyNote = document.getElementById("t-currency-note");
+  const elCurrencyConverter = document.getElementById("t-currency-converter");
+  const elChildHeading = document.getElementById("t-child-heading");
+  const elBack = document.getElementById("t-back");
+  const elHome = document.getElementById("t-home");
+  
+  if (elH1) elH1.textContent = TT.h1;
+  if (elHowtoHeading) elHowtoHeading.textContent = TT.howtoHeading;
+  if (elCurrencyNote) elCurrencyNote.textContent = TT.currencyNote;
+  if (elCurrencyConverter) elCurrencyConverter.textContent = TT.currencyConverter;
+  if (elChildHeading) elChildHeading.textContent = TT.childHeading;
+  if (elBack) elBack.textContent = TT.back;
+  if (elHome) elHome.textContent = TT.home;
+  
+  // WhatsApp Support translations
+  const elSupportTitle = document.getElementById("t-support-title");
+  const elSupportIntro = document.getElementById("t-support-intro");
+  const elSupportHelp1 = document.getElementById("t-support-help1");
+  const elSupportHelp2 = document.getElementById("t-support-help2");
+  const elSupportHelp3 = document.getElementById("t-support-help3");
+  const elSupportHours = document.getElementById("t-support-hours");
+  const elSupportHoursTime = document.getElementById("t-support-hours-time");
+  const elSupportButton = document.getElementById("t-support-button");
+  
+  if (elSupportTitle) elSupportTitle.textContent = TT.supportTitle;
+  if (elSupportIntro) elSupportIntro.textContent = TT.supportIntro;
+  if (elSupportHelp1) elSupportHelp1.textContent = TT.supportHelp1;
+  if (elSupportHelp2) elSupportHelp2.textContent = TT.supportHelp2;
+  if (elSupportHelp3) elSupportHelp3.textContent = TT.supportHelp3;
+  if (elSupportHours) elSupportHours.textContent = TT.supportHours;
+  if (elSupportHoursTime) elSupportHoursTime.textContent = TT.supportHoursTime;
+  if (elSupportButton) elSupportButton.textContent = TT.supportButton;
+  
+  // How to Book badges
+  const elHowtoStep1Title = document.getElementById("t-howto-step1-title");
+  const elHowtoStep1 = document.getElementById("t-howto-step1-desc");
+  const elHowtoStep2Title = document.getElementById("t-howto-step2-title");
+  const elHowtoStep2 = document.getElementById("t-howto-step2-desc");
+  const elHowtoStep3Title = document.getElementById("t-howto-step3-title");
+  const elHowtoStep3 = document.getElementById("t-howto-step3-desc");
+  const elHowtoStep4Title = document.getElementById("t-howto-step4-title");
+  const elHowtoStep4 = document.getElementById("t-howto-step4-desc");
+  
+  if (elHowtoStep1Title) elHowtoStep1Title.textContent = TT.howtoStep1Title;
+  if (elHowtoStep1) elHowtoStep1.textContent = TT.howtoStep1;
+  if (elHowtoStep2Title) elHowtoStep2Title.textContent = TT.howtoStep2Title;
+  if (elHowtoStep2) elHowtoStep2.textContent = TT.howtoStep2;
+  if (elHowtoStep3Title) elHowtoStep3Title.textContent = TT.howtoStep3Title;
+  if (elHowtoStep3) elHowtoStep3.textContent = TT.howtoStep3;
+  if (elHowtoStep4Title) elHowtoStep4Title.textContent = TT.howtoStep4Title;
+  if (elHowtoStep4) elHowtoStep4.textContent = TT.howtoStep4;
+  
+  // Child policy badges
+  const elBabyTitle = document.getElementById("t-child-baby-title");
+  const elBabyPrice = document.getElementById("t-child-baby-price");
+  const elBabyBooking = document.getElementById("t-child-baby-booking");
+  const elBabyNote = document.getElementById("t-child-baby-note");
+  const elChildrenTitle = document.getElementById("t-child-children-title");
+  const elChildrenPrice = document.getElementById("t-child-children-price");
+  const elChildrenBooking = document.getElementById("t-child-children-booking");
+  const elChildrenBed = document.getElementById("t-child-children-bed");
+  const elYoungsterTitle = document.getElementById("t-child-youngster-title");
+  const elYoungsterPrice = document.getElementById("t-child-youngster-price");
+  
+  if (elBabyTitle) elBabyTitle.textContent = TT.childBabyTitle;
+  if (elBabyPrice) elBabyPrice.textContent = TT.childBabyPrice;
+  if (elBabyBooking) elBabyBooking.textContent = TT.childBabyBooking;
+  if (elBabyNote) elBabyNote.textContent = TT.childBabyNote;
+  if (elChildrenTitle) elChildrenTitle.textContent = TT.childChildrenTitle;
+  if (elChildrenPrice) elChildrenPrice.textContent = TT.childChildrenPrice;
+  if (elChildrenBooking) elChildrenBooking.textContent = TT.childChildrenBooking;
+  if (elChildrenBed) elChildrenBed.textContent = TT.childChildrenBed;
+  if (elYoungsterTitle) elYoungsterTitle.textContent = TT.childYoungsterTitle;
+  if (elYoungsterPrice) elYoungsterPrice.textContent = TT.childYoungsterPrice;
+  
+  // Modal translations
+  const elModalTitle = document.getElementById("t-modal-title");
+  const elModalRate = document.getElementById("t-modal-rate");
+  const elModalRateDesc = document.getElementById("t-modal-rate-desc");
+  const elModalSecure = document.getElementById("t-modal-secure");
+  const elModalSecureDesc = document.getElementById("t-modal-secure-desc");
+  const elModalNofees = document.getElementById("t-modal-nofees");
+  const elModalNofeesDesc = document.getElementById("t-modal-nofees-desc");
+  const elModalInstant = document.getElementById("t-modal-instant");
+  const elModalInstantDesc = document.getElementById("t-modal-instant-desc");
+  const elModalSupport = document.getElementById("t-modal-support");
+  const elModalSupportDesc = document.getElementById("t-modal-support-desc");
+  
+  if (elModalTitle) elModalTitle.textContent = TT.modalTitle;
+  if (elModalRate) elModalRate.textContent = TT.modalRate;
+  if (elModalRateDesc) elModalRateDesc.textContent = TT.modalRateDesc;
+  if (elModalSecure) elModalSecure.textContent = TT.modalSecure;
+  if (elModalSecureDesc) elModalSecureDesc.textContent = TT.modalSecureDesc;
+  if (elModalNofees) elModalNofees.textContent = TT.modalNofees;
+  if (elModalNofeesDesc) elModalNofeesDesc.textContent = TT.modalNofeesDesc;
+  if (elModalInstant) elModalInstant.textContent = TT.modalInstant;
+  if (elModalInstantDesc) elModalInstantDesc.textContent = TT.modalInstantDesc;
+  if (elModalSupport) elModalSupport.textContent = TT.modalSupport;
+  if (elModalSupportDesc) elModalSupportDesc.textContent = TT.modalSupportDesc;
+  
+  // Update home button to preserve language (button navigates via onclick)
+  const homeBtn = document.getElementById("homeBtn"); 
+  if (homeBtn) {
+    homeBtn.onclick = function() {
+      window.location.href = `https://devoceanlodge.com?lang=${code}&cur=${siteCurrency}`;
+    };
+  }
+  
+  // Update currency converter link
+  const ccLink = document.getElementById("currency-converter-link");
+  if (ccLink) {
+    ccLink.href = `https://fx-rate.net/calculator/?c_input=USD&cp_input=${siteCurrency}&amount_from=32`;
+  }
+}
+
+// ===== Setup Beds24 iframe =====
+function setupBeds24Iframe(code, siteCurrency) {
+  const frame = document.getElementById('beds24frame');
+  if (!frame) return;
+
+  const pageQS = new URLSearchParams(location.search);
+  const curr = pageQS.get('currency') || pageQS.get('cur') || siteCurrency;
+  
+  const url = new URL('https://beds24.com/booking2.php?propid=297012&layout=5');
+  url.searchParams.set('lang', code);
+  if (curr) url.searchParams.set('cur', curr.toUpperCase());
+
+  // Carry through other params (UTM, etc.)
+  pageQS.forEach((v,k)=>{ 
+    if (k !== 'lang' && k !== 'currency' && k !== 'cur' && !url.searchParams.has(k)) {
+      url.searchParams.set(k, v); 
+    }
+  });
+
+  frame.src = url.toString();
+}
+
+// ===== Main initialization =====
+async function init() {
+  try {
+    const siteLang = detectSiteLanguage();
+    const siteCurrency = detectSiteCurrency();
+    const code = mapToB24(siteLang);
+    
+    // Set language attribute immediately
+    document.documentElement.setAttribute('lang', code);
+    
+    // Load translations
+    console.log(`Loading translations for: ${code}`);
+    const TT = await loadTranslation(code);
+    
+    // Wait for critical DOM elements
+    await waitForDom('#t-h1');
+    
+    // Apply translations
+    applyTranslations(TT, code, siteCurrency);
+    
+    // Setup iframe
+    setupBeds24Iframe(code, siteCurrency);
+    
+    console.log(`Booking page initialized in ${code}`);
+  } catch (err) {
+    console.error('Failed to initialize booking page:', err);
+    // Show error message to user
+    const body = document.body;
+    if (body) {
+      const errorDiv = document.createElement('div');
+      errorDiv.style.cssText = 'position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#f44336;color:white;padding:12px 24px;border-radius:4px;z-index:9999;';
+      errorDiv.textContent = 'Translation loading failed. Please refresh the page.';
+      body.appendChild(errorDiv);
+    }
+  }
+}
+
+// Run initialization
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// ===== Legal link helper =====
+function setLegalLink(page) {
+  const lang = mapToB24(detectSiteLanguage());
+  window.location.href = `/legal/${page}.html?lang=${lang}`;
+  return false;
+}
+
+// Make setLegalLink global
+window.setLegalLink = setLegalLink;
+
+// ===== UI Toggle Functions =====
+function toggleBenefits() {
+  const h1Frame = document.querySelector('.h1-frame');
+  const content = document.getElementById('benefitsContent');
+  
+  if (h1Frame && content) {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      h1Frame.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      h1Frame.classList.add('expanded');
+    }
+  }
+}
+
+function toggleHowToBook() {
+  const badge = document.querySelector('.info-badge');
+  const content = document.getElementById('howToBookContent');
+  
+  if (badge && content) {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      badge.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      badge.classList.add('expanded');
+    }
+  }
+}
+
+function toggleChildPolicy() {
+  const badge = document.querySelector('.child-featured-badge');
+  const content = document.getElementById('childPolicyContent');
+  
+  if (badge && content) {
+    const isExpanded = content.classList.contains('expanded');
+    
+    if (isExpanded) {
+      content.classList.remove('expanded');
+      badge.classList.remove('expanded');
+    } else {
+      content.classList.add('expanded');
+      badge.classList.add('expanded');
+    }
+  }
+}
+
+function openBenefitsModal() {
+  const modal = document.getElementById('benefitsModal');
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeBenefitsModal(event) {
+  if (event && event.target !== event.currentTarget && event.type === 'click') {
+    return;
+  }
+  const modal = document.getElementById('benefitsModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+// Make toggle/modal functions globally accessible for onclick handlers
+window.toggleBenefits = toggleBenefits;
+window.toggleHowToBook = toggleHowToBook;
+window.toggleChildPolicy = toggleChildPolicy;
+window.openBenefitsModal = openBenefitsModal;
+window.closeBenefitsModal = closeBenefitsModal;
+
+// ===== Beds24 iframe message handlers =====
+window.addEventListener('message', function(e){
+  try{
+    const d = typeof e.data==='string' ? JSON.parse(e.data) : e.data;
+    
+    // Handle dynamic height updates
+    if (d && (d.type==='setHeight' || d.height)){
+      const h = parseInt(d.height,10);
+      if (Number.isFinite(h) && h > 400){
+        document.getElementById('beds24frame').style.height = (h + 40) + 'px';
+      }
+    }
+    
+    // Handle scroll-to-top
+    if (d && d.type === 'scrollToTop') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }catch(_){}
+});
+
+// ===== Year update =====
+const yearEl = document.getElementById('year');
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+
+// ===== Back to Top button =====
+(function() {
+  const backToTopBtn = document.getElementById('backToTop');
+  if (!backToTopBtn) return;
+  
+  function toggleBackToTopButton() {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  }
+  
+  backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+  
+  window.addEventListener('scroll', toggleBackToTopButton);
+  toggleBackToTopButton();
+})();
+  </script>
+</body>
+</html>

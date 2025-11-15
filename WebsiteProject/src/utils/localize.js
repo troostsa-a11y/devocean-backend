@@ -151,6 +151,6 @@ export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurren
     return `/book/${langFiles[lang]}.html?currency=${currency}`;
   }
   
-  // Fallback to dynamic booking page (shouldn't happen)
-  return `/booking.html?lang=${lang}&cur=${currency}`;
+  // Fallback to English booking page (shouldn't happen)
+  return `/book/EN.html?currency=${currency}`;
 };

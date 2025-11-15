@@ -2,7 +2,7 @@
  * Cloudflare Pages Functions Middleware
  * 
  * Handles:
- * 1. Subdomain redirect (book.devoceanlodge.com → devoceanlodge.com/booking.html)
+ * 1. Subdomain redirect (book.devoceanlodge.com → devoceanlodge.com/book/EN.html)
  * 2. Domain redirect (.pages.dev → devoceanlodge.com)
  * 3. SPA routing (404 HTML requests → index.html)
  * 4. Country code injection (IP geolocation for currency)
@@ -12,9 +12,9 @@ export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
   
-  // 1. Redirect book.devoceanlodge.com subdomain to booking page
+  // 1. Redirect book.devoceanlodge.com subdomain to English booking page
   if (url.hostname === 'book.devoceanlodge.com') {
-    const redirectUrl = 'https://devoceanlodge.com/booking.html' + url.search;
+    const redirectUrl = 'https://devoceanlodge.com/book/EN.html' + url.search;
     
     return new Response(null, {
       status: 301,

@@ -38,7 +38,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
       }
     : baseExp;
   
-  // Build URL with language and currency parameters (like booking.html does)
+  // Build URL with language and currency parameters (like /book/ pages do)
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);

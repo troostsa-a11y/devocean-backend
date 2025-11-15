@@ -246,8 +246,8 @@ reCAPTCHA score: ${recaptchaResult.score || 'N/A'}
       fr: "Cordialement", it: "Cordialmente", de: "Mit freundlichen Grüßen", es: "Cordialmente",
     };
 
-    // Build booking URL pointing to booking.html
-    const bookingUrl = `https://devoceanlodge.com/booking.html`;
+    // Build booking URL pointing to English booking page
+    const bookingUrl = `https://devoceanlodge.com/book/EN.html`;
 
     // Escape HTML function
     const escapeHtml = (text) => {
