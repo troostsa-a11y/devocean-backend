@@ -320,6 +320,38 @@ export class CancellationHandler {
   }
 
   /**
+   * Map country code to primary language
+   * Same mapping as email-parser.ts for consistency
+   */
+  private countryToLanguage(countryCode: string): string | null {
+    const countryLanguageMap: Record<string, string> = {
+      // Portuguese-speaking countries
+      'MZ': 'PT', 'PT': 'PT', 'BR': 'PT', 'AO': 'PT',
+      
+      // English-speaking countries
+      'ZA': 'EN', 'GB': 'EN', 'US': 'EN', 'AU': 'EN', 'CA': 'EN',
+      'NZ': 'EN', 'IE': 'EN', 'KE': 'EN', 'TZ': 'EN', 'UG': 'EN',
+      'ZW': 'EN', 'BW': 'EN', 'NA': 'EN',
+      
+      // German-speaking countries
+      'DE': 'DE', 'AT': 'DE', 'CH': 'DE',
+      
+      // French-speaking countries
+      'FR': 'FR', 'BE': 'FR', 'LU': 'FR',
+      
+      // Spanish-speaking countries
+      'ES': 'ES', 'MX': 'ES', 'AR': 'ES',
+      
+      // Other languages
+      'IT': 'IT', 'NL': 'NL', 'SE': 'SV', 'PL': 'PL',
+      'RU': 'RU', 'JP': 'JA', 'CN': 'ZH', 'HK': 'ZH', 'TW': 'ZH',
+    };
+    
+    const code = countryCode.toUpperCase().trim();
+    return countryLanguageMap[code] || null;
+  }
+
+  /**
    * Extract guest information from cancellation email
    */
   private extractGuestInfo(text: string): { name?: string; email?: string; language?: string } {
@@ -331,12 +363,44 @@ export class CancellationHandler {
     const emailMatch = text.match(/Email[:\s]+([^\n\s]+@[^\n\s]+)/i);
     const email = emailMatch ? emailMatch[1].trim() : undefined;
 
-    // Extract language - check for "Preferred Language" first, then "Language"
+    // Extract country code (usually appears after location info, lowercase 2-letter code)
+    const countryMatch = text.match(/\n([a-z]{2})\s*\n/i);
+    const countryCode = countryMatch ? countryMatch[1].toUpperCase() : null;
+
+    // Language determination priority:
+    // 1. Preferred Language (explicit guest preference)
+    // 2. Country code mapping (inferred from guest location)
+    // 3. Default to English
     const preferredLangMatch = text.match(/Preferred Language[:\s]+([A-Z]{2})/i);
     const langMatch = text.match(/Language[:\s]+([A-Z]{2})/i);
-    const language = preferredLangMatch 
-      ? preferredLangMatch[1].toUpperCase() 
-      : (langMatch ? langMatch[1].toUpperCase() : 'EN');
+    
+    let language = 'EN';
+    let languageSource = 'default';
+    
+    if (preferredLangMatch) {
+      language = preferredLangMatch[1].toUpperCase();
+      languageSource = 'preferred';
+    } else if (langMatch) {
+      language = langMatch[1].toUpperCase();
+      languageSource = 'standard';
+    } else if (countryCode) {
+      const countryLanguage = this.countryToLanguage(countryCode);
+      if (countryLanguage) {
+        language = countryLanguage;
+        languageSource = 'country';
+      }
+    }
+    
+    // Log language determination for debugging
+    if (languageSource === 'country') {
+      console.log(`🌍 Cancellation email language derived from country: ${language} (country: ${countryCode})`);
+    } else if (languageSource === 'preferred') {
+      console.log(`📧 Cancellation email using Preferred Language: ${language}`);
+    } else if (languageSource === 'standard') {
+      console.log(`📧 Cancellation email using Language: ${language}`);
+    } else {
+      console.log(`📧 Cancellation email defaulting to EN (no language or country found)`);
+    }
 
     return { name, email, language };
   }

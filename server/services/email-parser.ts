@@ -160,17 +160,34 @@ export class EmailParser {
       const guestEmail = this.normalizeEmail(rawEmail, groupRef);
       const guestPhone = phoneMatch ? phoneMatch[1] : undefined;
       
-      // Prioritize "Preferred Language" / "Bevorzugte Sprache" if available, otherwise use "Language", default to 'EN'
+      // Extract country code (usually appears after location info, lowercase 2-letter code)
+      // Pattern: looks for 2-letter country code after location names
+      const countryMatch = text.match(/\n([a-z]{2})\s*\n/i);
+      const countryCode = countryMatch ? countryMatch[1].toUpperCase() : null;
+      
+      // Language determination priority:
+      // 1. Preferred Language (explicit guest preference)
+      // 2. Country code mapping (inferred from guest location)
+      // 3. Default to English
       let guestLanguage = 'EN';
       let languageSource = 'default';
       
       if (preferredLanguageMatch) {
+        // Priority 1: Explicit preferred language
         const rawLang = preferredLanguageMatch[1].trim();
         guestLanguage = this.normalizeLanguage(rawLang);
         languageSource = 'preferred';
       } else if (languageMatch) {
+        // Priority 1b: Standard language field
         guestLanguage = languageMatch[1].toUpperCase();
         languageSource = 'standard';
+      } else if (countryCode) {
+        // Priority 2: Derive from country code
+        const countryLanguage = this.countryToLanguage(countryCode);
+        if (countryLanguage) {
+          guestLanguage = countryLanguage;
+          languageSource = 'country';
+        }
       }
       
       // Log which language source was used for debugging
@@ -178,8 +195,10 @@ export class EmailParser {
         console.log(`📧 Using Preferred Language: ${guestLanguage} (from: ${preferredLanguageMatch[1]})`);
       } else if (languageSource === 'standard') {
         console.log(`📧 Using Language: ${guestLanguage}`);
+      } else if (languageSource === 'country') {
+        console.log(`🌍 Using Country-based Language: ${guestLanguage} (country: ${countryCode})`);
       } else {
-        console.log(`📧 No language specified, defaulting to EN`);
+        console.log(`📧 No language or country specified, defaulting to EN`);
       }
 
       // Extract total price
@@ -361,6 +380,76 @@ export class EmailParser {
     }
     
     return cleaned.trim() || name.trim();
+  }
+
+  /**
+   * Map country code to primary language
+   * Used as fallback when no explicit language preference is provided
+   */
+  private static countryToLanguage(countryCode: string): string | null {
+    const countryLanguageMap: Record<string, string> = {
+      // Portuguese-speaking countries
+      'MZ': 'PT', // Mozambique
+      'PT': 'PT', // Portugal
+      'BR': 'PT', // Brazil
+      'AO': 'PT', // Angola
+      
+      // English-speaking countries
+      'ZA': 'EN', // South Africa
+      'GB': 'EN', // United Kingdom
+      'US': 'EN', // United States
+      'AU': 'EN', // Australia
+      'CA': 'EN', // Canada
+      'NZ': 'EN', // New Zealand
+      'IE': 'EN', // Ireland
+      'KE': 'EN', // Kenya
+      'TZ': 'EN', // Tanzania
+      'UG': 'EN', // Uganda
+      'ZW': 'EN', // Zimbabwe
+      'BW': 'EN', // Botswana
+      'NA': 'EN', // Namibia
+      
+      // German-speaking countries
+      'DE': 'DE', // Germany
+      'AT': 'DE', // Austria
+      'CH': 'DE', // Switzerland (multilingual, German primary)
+      
+      // French-speaking countries
+      'FR': 'FR', // France
+      'BE': 'FR', // Belgium (multilingual, French primary)
+      'LU': 'FR', // Luxembourg
+      
+      // Spanish-speaking countries
+      'ES': 'ES', // Spain
+      'MX': 'ES', // Mexico
+      'AR': 'ES', // Argentina
+      
+      // Italian-speaking countries
+      'IT': 'IT', // Italy
+      
+      // Dutch-speaking countries
+      'NL': 'NL', // Netherlands
+      
+      // Swedish-speaking countries
+      'SE': 'SV', // Sweden
+      
+      // Polish-speaking countries
+      'PL': 'PL', // Poland
+      
+      // Russian-speaking countries
+      'RU': 'RU', // Russia
+      
+      // Japanese-speaking countries
+      'JP': 'JA', // Japan
+      
+      // Chinese-speaking countries
+      'CN': 'ZH', // China
+      'HK': 'ZH', // Hong Kong
+      'TW': 'ZH', // Taiwan
+    };
+    
+    const code = countryCode.toUpperCase().trim();
+    return countryLanguageMap[code] || null;
   }
 
   /**
