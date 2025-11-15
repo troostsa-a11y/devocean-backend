@@ -172,7 +172,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
           <div className="flex items-center gap-3">
             <a 
               href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : '#home'}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 text-slate-800"
               onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#home')}
               data-testid="link-home-logo"
             >
@@ -200,7 +200,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               <li key={k}>
                 <a
                   href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
-                  className="hover:text-[#9e4b13] whitespace-nowrap"
+                  className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
                   onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, href)}
                 >
                   {ui.nav[k]}
@@ -263,7 +263,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                     key={k}
                     href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
                     data-testid={`link-mobile-${k}`}
-                    className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                    className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                     onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
                   >
                     {ui.nav[k]}
@@ -272,7 +272,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 <a
                   href={`/story.html?lang=${lang}`}
                   data-testid="link-mobile-story"
-                  className="block px-5 py-3 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                  className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                   onClick={() => setMenuOpen(false)}
                 >
                   {ui.stay?.ourStory || "Our Story"}
