@@ -463,17 +463,16 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               {exp.bestTime && (
                 <div className="bg-gradient-to-br from-blue-50 to-sky-50 rounded-xl p-6 border border-blue-100">
                   <h3 className="text-lg font-bold text-slate-800 mb-3">{getExpText('bestTimeToVisit', lang)}</h3>
-                  <p className="text-sm font-semibold text-blue-900 mb-3">{exp.bestTime.peak}</p>
                   {exp.bestTime.details && (
-                    <ul className="space-y-2 text-sm text-slate-700 list-none">
+                    <ul className="space-y-2 text-sm text-slate-700">
                       {exp.bestTime.details.map((detail, i) => {
                         const parts = detail.split('**');
                         return (
                           <li key={i}>
                             {parts.length === 3 ? (
-                              <><strong>{parts[1]}</strong>{parts[2]}</>
+                              <>• <strong>{parts[1]}</strong>{parts[2]}</>
                             ) : (
-                              detail
+                              `• ${detail}`
                             )}
                           </li>
                         );
