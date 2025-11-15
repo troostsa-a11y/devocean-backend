@@ -66,8 +66,12 @@ This system is implemented in `server/services/email-parser.ts` and `server/serv
 - **UI & Styling:** shadcn/ui, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design, Inter font.
 - **Mobile-First Optimization:** Touch-friendly targets, responsive typography with `clamp()`, simplified animations, responsive spacing, `prefers-reduced-motion` support.
 - **State Management:** TanStack Query for server state, React hooks for local state.
-- **Internationalization:** React-based i18n with lazy-loaded translations for 15 languages, comprehensive country-derived locale mapping. Language detection in `booking.html` prioritizes URL parameters, then `localStorage`, then browser language.
-- **Currency Detection (booking.html):** Prioritizes URL parameters, then Cloudflare IP geolocation (`window.__CF_COUNTRY__`), then defaults to USD. Currency is never cached.
+- **Internationalization:** React-based i18n with lazy-loaded translations for 15 languages, comprehensive country-derived locale mapping.
+- **Booking Pages (Nov 2025):** Static language-specific pages in `/public/book/` directory (AF.html, DE.html, EN.html, ES.html, FR.html, IT.html, JA.html, NL.html, PL.html, PT.html, RU.html, SV.html, SW.html, ZH.html, ZU.html) replace deprecated `booking.html`. Features include:
+  - **Clickable Benefit Badges:** All 4 benefit cards ("Best Rate Guaranteed", "Secure Payment", "Instant Confirmation", "Direct Support") scroll users to Beds24 iframe when clicked, addressing UX issue where visitors didn't realize they needed to scroll down to book (identified via Microsoft Clarity analytics).
+  - **Accessibility:** Full keyboard support (Enter/Space), ARIA roles (`role="button"`), focusable elements (`tabindex="0"`), test IDs (`benefit-card-1` through `benefit-card-4`).
+  - **Language Detection:** URL parameter `?lang=XX` → localStorage (user-selected, persisted) → browser language (navigator.language).
+  - **Currency Detection:** URL parameter `?cur=XXX` → Cloudflare IP geolocation (`window.__CF_COUNTRY__`) → default USD. Currency is never cached, always fresh per page load.
 - **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver for image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral, Static Hero HTML pattern, INP optimization.
 - **SPA Routing:** Cloudflare Pages middleware handles 404s and serves `index.html` for HTML navigation.
 - **Storage Safety Layer:** `localStorage`/`sessionStorage` calls are wrapped with try-catch guards.

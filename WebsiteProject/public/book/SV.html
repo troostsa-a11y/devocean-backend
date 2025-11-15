@@ -134,7 +134,7 @@
       margin-top: 24px;
     }
     
-    .benefit-card {
+        .benefit-card {
       background: white;
       border: 1px solid #eee;
       border-radius: 12px;
@@ -142,11 +142,23 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
     
     .benefit-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    
+    .benefit-card:active {
+      transform: scale(0.98);
+    }
+    
+    .benefit-card:active {
+      transform: scale(0.98);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
     
     .benefit-icon {
@@ -299,6 +311,7 @@
         gap: 14px;
       }
       .benefit-card {
+      cursor: pointer;
         padding: 18px 12px;
       }
       .faq-question {
@@ -538,6 +551,47 @@
       const returnUrl = encodeURIComponent('/book/SV.html');
       window.open(baseUrl + page + '.html?lang=' + lang + '&return=' + returnUrl, '_blank', 'noopener,noreferrer');
       return false;
+    }
+    // Scroll to booking iframe when benefit cards are clicked
+    function scrollToBooking() {
+      const iframe = document.getElementById('beds24frame');
+      const iframeContainer = iframe?.closest('.iframe-container');
+      if (iframeContainer) {
+        const headerOffset = 80;
+        const elementPosition = iframeContainer.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+    
+    // Attach click handlers to all benefit cards
+    function setupBenefitCards() {
+      const benefitCards = document.querySelectorAll('.benefit-card');
+      benefitCards.forEach((card, index) => {
+        card.setAttribute('data-testid', `benefit-card-${index + 1}`);
+        card.addEventListener('click', scrollToBooking);
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', '0');
+        
+        // Keyboard support (Enter/Space)
+        card.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            scrollToBooking();
+          }
+        });
+      });
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupBenefitCards);
+    } else {
+      setupBenefitCards();
     }
   </script>
 </body>
