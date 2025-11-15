@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Roundcube Webmail :: Inbox</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0">
+<meta name="theme-color" content="#f4f4f4">
+<meta name="msapplication-navbutton-color" content="#f4f4f4">
+
+	<link rel="shortcut icon" href="skins/elastic/images/favicon.ico?s=1758910937">
+
+	<link rel="stylesheet" href="skins/elastic/deps/bootstrap.min.css?s=1758910937">
+			<link rel="stylesheet" href="skins/elastic/styles/styles.min.css?s=1758910937">
+		
+	<link rel="stylesheet" type="text/css" href="plugins/jqueryui/themes/elastic/jquery-ui.css?s=1758910937">
+<script src="program/js/jquery.min.js?s=1758910937"></script>
+<script src="program/js/common.min.js?s=1758910937"></script>
+<script src="program/js/app.min.js?s=1758910937"></script>
+<script src="program/js/treelist.min.js?s=1758910937"></script>
+<script src="program/js/list.min.js?s=1758910937"></script>
+<script>
+/*
+        @licstart  The following is the entire license notice for the 
+        JavaScript code in this page.
+
+        Copyright (C) The Roundcube Dev Team
+
+        The JavaScript code in this page is free software: you can redistribute
+        it and/or modify it under the terms of the GNU General Public License
+        as published by the Free Software Foundation, either version 3 of
+        the License, or (at your option) any later version.
+
+        The code is distributed WITHOUT ANY WARRANTY; without even the implied
+        warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+        See the GNU GPL for more details.
+
+        @licend  The above is the entire license notice
+        for the JavaScript code in this page.
+*/
+var rcmail = new rcube_webmail();
+rcmail.set_env({"task":"mail","standard_windows":false,"locale":"en_US","devel_mode":null,"rcversion":10415,"cookie_domain":"","cookie_path":"/","cookie_secure":true,"skin":"elastic","blankpage":"skins/elastic/watermark.html","refresh_interval":60,"session_lifetime":600,"action":"","comm_path":"./?_task=mail","user_id":"e2MUluqjU30v1seW","compose_extwin":0,"markasjunk_ham_mailbox":"INBOX","markasjunk_spam_mailbox":"INBOX.Spam","markasjunk_move_spam":false,"markasjunk_move_ham":false,"markasjunk_permanently_remove":false,"markasjunk_spam_only":false,"date_format":"yy-mm-dd","date_format_localized":"YYYY-MM-DD","browser_capabilities":{"pdf":"1","flash":"0","tiff":"0","webp":"1"},"search_mods":{"*":{"subject":1,"from":1},"INBOX.Sent":{"subject":1,"to":1},"INBOX.Drafts":{"subject":1,"to":1}},"mailbox":"INBOX","pagesize":50,"current_page":1,"delimiter":".","threading":false,"threads":true,"reply_all_mode":0,"layout":"widescreen","quota":true,"drafts_mailbox":"INBOX.Drafts","trash_mailbox":"INBOX.Trash","junk_mailbox":"INBOX.Spam","read_when_deleted":true,"display_next":true,"unreadwrap":"%s","collapsed_folders":"","mailboxes":{"INBOX":{"id":"INBOX","name":"Inbox","virtual":false,"class":"inbox"},"INBOX.Drafts":{"id":"INBOX.Drafts","name":"Drafts","virtual":false,"class":"drafts"},"INBOX.Sent":{"id":"INBOX.Sent","name":"Sent","virtual":false,"class":"sent"},"INBOX.Spam":{"id":"INBOX.Spam","name":"Junk","virtual":false,"class":"junk"},"INBOX.Trash":{"id":"INBOX.Trash","name":"Trash","virtual":false,"class":"trash"}},"mailboxes_list":["INBOX","INBOX.Drafts","INBOX.Sent","INBOX.Spam","INBOX.Trash"],"col_movable":true,"autoexpand_threads":0,"sort_col":"","sort_order":"DESC","messages":[],"listcols":["subject","fromto","date","flag","attachment"],"disabled_sort_col":false,"disabled_sort_order":false,"coltypes":{"threads":{"className":"threads","id":"rcmthreads","label":"","sortable":false},"subject":{"className":"subject","id":"rcmsubject","label":"Subject","sortable":true},"fromto":{"className":"fromto","id":"rcmfromto","label":"From","sortable":true},"date":{"className":"date","id":"rcmdate","label":"Date","sortable":true},"flag":{"className":"flag","id":"rcmflag","label":"","sortable":false},"attachment":{"className":"attachment","id":"rcmattachment","label":"","sortable":false}},"max_filesize":33554432,"filesizeerror":"The uploaded file exceeds the maximum size of 32 MB.","max_filecount":"20","filecounterror":"You can upload maximum 20 files at once.","contentframe":"messagecontframe","request_token":"UWcsx6Z43XCbdwF4O0WBW5NkXdKuWF86"});
+rcmail.add_label({"loading":"Loading...","servererror":"Server Error!","connerror":"Connection Error (Failed to reach the server)!","requesttimedout":"Request timed out","refreshing":"Refreshing...","windowopenerror":"The popup window was blocked!","uploadingmany":"Uploading files...","uploading":"Uploading file...","close":"Close","save":"Save","cancel":"Cancel","alerttitle":"Attention","confirmationtitle":"Are you sure...","delete":"Delete","continue":"Continue","ok":"OK","markasjunk.buttonjunk":"This message is junk","markasjunk.asjunk":"As junk","markasjunk.markasjunk":"Mark as junk","markasjunk.buttonnotjunk":"This message is not junk","markasjunk.asnotjunk":"As not junk","markasjunk.markasnotjunk":"Mark as not junk","markasjunk.notjunk":"Not junk","markasjunk.reportedasjunk":"Successfully reported as junk","markasjunk.reportedasnotjunk":"Successfully reported as not junk","managesieve.newfilter":"New filter","managesieve.usedata":"Use following data in the filter:","managesieve.nodata":"At least one position must be selected!","managesieve.nextstep":"Next Step","checkingmail":"Checking for new messages...","deletemessage":"Delete message","movemessagetotrash":"Move message to trash","movingmessage":"Moving message(s)...","copyingmessage":"Copying message(s)...","deletingmessage":"Deleting message(s)...","markingmessage":"Marking message(s)...","copy":"Copy","move":"Move","quota":"Disk usage","replyall":"Reply all","replylist":"Reply list","stillsearching":"Still searching...","flagged":"Flagged","unflagged":"Not Flagged","unread":"Unread","deleted":"Deleted","replied":"Replied","forwarded":"Forwarded","priority":"Priority","withattachment":"With attachment","fileuploaderror":"File upload failed.","mark":"Mark","markallread":"Mark all as read","folders-cur":"Selected folder only","folders-sub":"Selected folder and its subfolders","folders-all":"All folders","bounce":"Resend","bouncemsg":"Resend (bounce)","sendingmessage":"Sending message...","back":"Back","errortitle":"An error occurred!","options":"Options","plaintoggle":"Plain text","htmltoggle":"HTML","previous":"Previous","next":"Next","select":"Select","browse":"Browse","choosefile":"Choose file...","choosefiles":"Choose files...","purgefolderconfirm":"Do you really want to delete all messages in this folder?","deletemessagesconfirm":"Do you really want to delete selected message(s)?","showunread":"Show unread messages","searching":"Searching...","from":"From","to":"To","viewsource":"Show source","selectimportfile":"Please select a file to upload.","importwait":"Importing, please wait...","importmessages":"Import messages","import":"Import","uploadprogress":"$percent ($current of $total)","GB":"GB","MB":"MB","KB":"KB","B":"B","listoptionstitle":"List options"});
+rcmail.gui_container("taskbar","taskmenu");
+rcmail.gui_container("listcontrols","listcontrols");
+rcmail.gui_container("toolbar","mailtoolbar");
+rcmail.gui_container("forwardmenu","forward-menu");
+rcmail.gui_container("replyallmenu","replyall-menu");
+rcmail.gui_container("messagemenu","message-menu");
+rcmail.gui_container("markmenu","markmessage-menu");
+rcmail.gui_container("mailboxoptions","mailboxoptionsmenu");
+rcmail.gui_container("listoptions","listoptionsmenu");rcmail.register_button('plugin.markasjunk.junk', 'rcmbtn100', 'link', 'button junk', 'button junk pressed', '');
+rcmail.register_button('plugin.markasjunk.not_junk', 'rcmbtn101', 'link', 'button notjunk', 'button notjunk pressed', '');
+rcmail.register_button('managesieve-create', 'rcmbtn102', 'link', 'icon filterlink active', '', '');
+rcmail.register_button('compose', 'rcmbtn103', 'link', '', '', '');
+rcmail.register_button('mail', 'rcmbtn104', 'link', '', 'mail selected', '');
+rcmail.register_button('addressbook', 'rcmbtn105', 'link', '', 'contacts selected', '');
+rcmail.register_button('settings', 'rcmbtn106', 'link', '', 'settings selected', '');
+rcmail.register_button('logout', 'rcmbtn108', 'link', '', '', '');
+rcmail.gui_object('mailboxlist', 'mailboxlist');
+rcmail.gui_object('quotadisplay', 'rcmquotadisplay');
+rcmail.register_button('checkmail', 'rcmbtn110', 'link', '', '', '');
+rcmail.gui_object('qsearchbox', 'mailsearchform');
+rcmail.register_button('reset-search', 'rcmbtn113', 'link', '', '', '');
+rcmail.gui_object('search_filter', 'searchfilter');
+rcmail.gui_object('search_interval', 's_interval');
+rcmail.gui_object('messagelist', 'messagelist');
+rcmail.register_button('firstpage', 'rcmbtn114', 'link', 'firstpage', '', '');
+rcmail.register_button('previouspage', 'rcmbtn115', 'link', 'prevpage', '', '');
+rcmail.gui_object('countdisplay', 'rcmcountdisplay');
+rcmail.register_button('nextpage', 'rcmbtn116', 'link', 'nextpage', '', '');
+rcmail.register_button('lastpage', 'rcmbtn117', 'link', 'lastpage', '', '');
+rcmail.register_button('compose', 'rcmbtn118', 'link', '', '', '');
+rcmail.register_button('reply', 'rcmbtn119', 'link', 'reply', '', '');
+rcmail.register_button('reply-all', 'rcmbtn120', 'link', 'reply-all', '', '');
+rcmail.register_button('forward', 'rcmbtn121', 'link', 'forward', '', '');
+rcmail.register_button('delete', 'rcmbtn122', 'link', 'delete', '', '');
+rcmail.register_button('forward-inline', 'rcmbtn123', 'link', 'forward inline active', '', '');
+rcmail.register_button('forward-attachment', 'rcmbtn124', 'link', 'forward attachment active', '', '');
+rcmail.register_button('bounce', 'rcmbtn125', 'link', 'forward bounce active', '', '');
+rcmail.register_button('reply-all', 'rcmbtn126', 'link', 'reply all active', '', '');
+rcmail.register_button('reply-list', 'rcmbtn127', 'link', 'reply list active', '', '');
+rcmail.register_button('print', 'rcmbtn128', 'link', 'print active', '', '');
+rcmail.register_button('import-messages', 'rcmbtn129', 'link', 'import active', '', '');
+rcmail.register_button('download', 'rcmbtn130', 'link', 'download active', '', '');
+rcmail.register_button('edit', 'rcmbtn131', 'link', 'edit asnew active', '', '');
+rcmail.register_button('viewsource', 'rcmbtn132', 'link', 'source active', '', '');
+rcmail.register_button('move', 'rcmbtn133', 'link', 'move active', '', '');
+rcmail.register_button('copy', 'rcmbtn134', 'link', 'copy active', '', '');
+rcmail.register_button('open', 'rcmbtn135', 'link', 'extwin active', '', '');
+rcmail.register_button('mark', 'rcmbtn136', 'link', 'read active', '', '');
+rcmail.register_button('mark', 'rcmbtn137', 'link', 'unread active', '', '');
+rcmail.register_button('mark', 'rcmbtn138', 'link', 'flag active', '', '');
+rcmail.register_button('mark', 'rcmbtn139', 'link', 'unflag active', '', '');
+rcmail.gui_object('importform', 'uploadformFrm');
+rcmail.register_button('move', 'rcmbtn140', 'link', 'active', '', '');
+rcmail.register_button('copy', 'rcmbtn141', 'link', 'active', '', '');
+rcmail.register_button('expunge', 'rcmbtn142', 'link', 'expunge active', '', '');
+rcmail.register_button('purge', 'rcmbtn143', 'link', 'purge active', '', '');
+rcmail.register_button('mark-all-read', 'rcmbtn144', 'link', 'read active', '', '');
+rcmail.register_button('settings.folders', 'rcmbtn145', 'link', 'folders active', '', '');
+rcmail.register_button('select-all', 'rcmbtn146', 'link', 'select all active', '', '');
+rcmail.register_button('select-all', 'rcmbtn147', 'link', 'select page active', '', '');
+rcmail.register_button('select-all', 'rcmbtn148', 'link', 'select unread active', '', '');
+rcmail.register_button('select-all', 'rcmbtn149', 'link', 'select flagged active', '', '');
+rcmail.register_button('select-all', 'rcmbtn150', 'link', 'select invert active', '', '');
+rcmail.register_button('select-none', 'rcmbtn151', 'link', 'select none active', '', '');
+rcmail.register_button('expand-unread', 'rcmbtn152', 'link', 'expand unread active', '', '');
+rcmail.register_button('expand-all', 'rcmbtn153', 'link', 'expand all active', '', '');
+rcmail.register_button('collapse-all', 'rcmbtn154', 'link', 'expand none active', '', '');
+rcmail.gui_object('message', 'messagestack');
+</script>
+
+<script src="plugins/markasjunk/markasjunk.min.js?s=1758910937"></script>
+<script src="plugins/managesieve/managesieve.min.js?s=1758910937"></script>
+<script src="plugins/jqueryui/js/jquery-ui.min.js?s=1758910937"></script>
+
+</head>
+<body class="task-mail action-none">
+			<div id="layout">
+	
+<div id="layout-menu">
+	<h2 id="aria-label-tasknav" class="voice">Application tasks</h2>
+	<div class="popover-header">
+		<img src="skins/elastic/images/logo.svg?s=1758910937" id="logo" alt="Logo">
+		<a class="button icon cancel"><span class="inner">Close</span></a>
+	</div>
+	<div id="taskmenu" class="menu toolbar" role="navigation" aria-labelledby="aria-label-tasknav">
+		<span class="action-buttons">
+							<a class="compose" title="Create a new message" data-fab="true" data-fab-task="mail" data-fab-action="none" id="rcmbtn103" role="button" href="./?_task=mail&amp;_action=compose" onclick="return rcmail.command('compose','',this,event)"><span class="inner">Compose</span></a>
+					</span>
+					<a class="mail" id="rcmbtn104" role="button" href="./?_task=mail" onclick="return rcmail.command('switch-task','mail',this,event)"><span class="inner">Mail</span></a>
+				<a class="contacts" id="rcmbtn105" role="button" href="./?_task=addressbook" onclick="return rcmail.command('switch-task','addressbook',this,event)"><span class="inner">Contacts</span></a>
+		
+		<a class="settings" id="rcmbtn106" role="button" href="./?_task=settings" onclick="return rcmail.command('switch-task','settings',this,event)"><span class="inner">Settings</span></a>
+		<span class="special-buttons">
+			<a class="about" onclick="UI.about_dialog(this)" id="rcmbtn107" role="button" href="#"><span class="inner">About</span></a>
+			<a class="logout" id="rcmbtn108" role="button" href="./?_task=logout" onclick="return rcmail.command('switch-task','logout',this,event)"><span class="inner">Logout</span></a>
+		</span>
+	</div>
+</div>
+
+
+<h1 class="voice">Mail</h1>
+
+<!-- folders list -->
+<div id="layout-sidebar" class="listbox" role="navigation" aria-labelledby="aria-label-folderlist">
+	<div class="header">
+		<a class="button icon back-list-button" href="#back"><span class="inner">Back</span></a>
+		<span class="header-title username">beds24@devoceanlodge.com</span>
+		<a title="Folder actions..." class="button icon sidebar-menu" data-popup="mailboxoptions-menu" id="rcmbtn109" role="button" href="#"><span class="inner">Actions</span></a>
+	</div>
+	<h2 id="aria-label-folderlist" class="voice">Email folder selection</h2>
+	<div id="folderlist-content" class="scroller">
+		<ul id="mailboxlist" class="treelist listing folderlist"><li id="rcmliSU5CT1g" class="mailbox inbox selected"><a href="./?_task=mail&amp;_mbox=INBOX" onclick="return rcmail.command('list','INBOX',this,event)" rel="INBOX">Inbox</a>
+</li>
+<li id="rcmliSU5CT1guRHJhZnRz" class="mailbox drafts"><a href="./?_task=mail&amp;_mbox=INBOX.Drafts" onclick="return rcmail.command('list','INBOX.Drafts',this,event)" rel="INBOX.Drafts">Drafts</a>
+</li>
+<li id="rcmliSU5CT1guU2VudA" class="mailbox sent"><a href="./?_task=mail&amp;_mbox=INBOX.Sent" onclick="return rcmail.command('list','INBOX.Sent',this,event)" rel="INBOX.Sent">Sent</a>
+</li>
+<li id="rcmliSU5CT1guU3BhbQ" class="mailbox junk"><a href="./?_task=mail&amp;_mbox=INBOX.Spam" onclick="return rcmail.command('list','INBOX.Spam',this,event)" rel="INBOX.Spam">Junk</a>
+</li>
+<li id="rcmliSU5CT1guVHJhc2g" class="mailbox trash"><a href="./?_task=mail&amp;_mbox=INBOX.Trash" onclick="return rcmail.command('list','INBOX.Trash',this,event)" rel="INBOX.Trash">Trash</a>
+</li>
+</ul>
+
+	</div>
+	<div class="footer small">
+					<div id="quotadisplay" class="quota-widget">
+				<span class="voice">Disk usage</span>
+				<span class="count" id="rcmquotadisplay">&nbsp;</span>
+			</div>
+			</div>
+</div>
+
+<!-- messages list -->
+<div id="layout-list" class="listbox selected">
+	<div id="messagelist-header" class="header">
+		<a class="button icon task-menu-button" href="#menu"><span class="inner">Menu</span></a>
+		<a class="button icon back-sidebar-button folders" href="#sidebar"><span class="inner">Folders</span></a>
+		<span class="header-title"></span>
+		<div class="toolbar menu" role="toolbar">
+			<a href="#select" class="select disabled" data-popup="listselect-menu" data-toggle-button="list-toggle-button" title="Select"><span class="inner">Select</span></a>
+							<a href="#threads" class="threads disabled" data-popup="threadselect-menu" title="Threads"><span class="inner">Threads</span></a>
+						<a href="#list-options" onclick="return rcmail.command('menu-open', 'messagelistmenu', this, event)" class="options active" id="listmenulink" title="Options" tabindex="0"><span class="inner">Options</span></a>
+			
+		</div>
+		<a class="button icon toolbar-button refresh" title="Check for new messages" id="rcmbtn110" role="button" href="#" onclick="return rcmail.command('checkmail','',this,event)"><span class="inner">Refresh</span></a>
+		<a class="button icon toolbar-menu-button" href="#list-menu"><span class="inner">Menu</span></a>
+	</div>
+	
+	<div role="search" aria-labelledby="aria-label-mailquicksearchbox" class="searchbar menu"><h2 id="aria-label-mailquicksearchbox" class="voice">Email search input</h2>
+<form name="rcmqsearchform" onsubmit="rcmail.command('search'); return false" action="./?_task=mail" method="get"><label for="mailsearchform" class="voice">Search terms</label>
+<input name="_q" id="mailsearchform" class="no-bs" placeholder="Search..." type="text"></form>
+
+<a class="button reset" title="Reset search" tabindex="0" id="rcmbtn113" role="button" href="#" onclick="return rcmail.command('reset-search','',this,event)"><span class="inner">Reset search</span></a>
+<a href="#search-filter" class="button options" title="Options" tabindex="0" data-target="searchmenu" id="rcmbtn111" role="button"><span class="inner">Options</span></a>
+<a href="#search" class="button search" title="Find mail messages" tabindex="0" id="rcmbtn112" role="button"><span class="inner">Find mail messages</span></a></div>
+
+	<div id="searchmenu" class="hidden searchoptions scroller propform formcontainer" aria-labelledby="aria-label-search-menu" aria-controls="messagelist">
+		<h3 id="aria-label-search-menu" class="voice">Search modifiers</h3>
+		<div class="formcontent">
+			<ul class="proplist">
+				<li><label><input type="checkbox" name="s_mods[]" value="subject" />Subject</label></li>
+				<li><label><input type="checkbox" name="s_mods[]" value="from" />From</label></li>
+				<li><label><input type="checkbox" name="s_mods[]" value="to" />To</label></li>
+				<li><label><input type="checkbox" name="s_mods[]" value="cc" />Cc</label></li>
+				<li><label><input type="checkbox" name="s_mods[]" value="bcc" />Bcc</label></li>
+				<li><label><input type="checkbox" name="s_mods[]" value="body" />Body</label></li>
+				<li><label><input type="checkbox" name="s_mods[]" value="text" />Entire message</label></li>
+			</ul>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<label for="searchfilter" class="input-group-text">Type</label>
+				</div>
+				<select name="searchfilter" id="searchfilter">
+<option value="ALL" selected>All</option>
+<option value="UNSEEN">Unread</option>
+<option value="FLAGGED">Flagged</option>
+<option value="UNANSWERED">Unanswered</option>
+<option value="DELETED">Deleted</option>
+<option value="UNDELETED">Not deleted</option>
+<option value="OR OR OR HEADER Content-Type application/ HEADER Content-Type multipart/m HEADER Content-Type multipart/signed HEADER Content-Type multipart/report">With attachment</option>
+<option value="HEADER X-PRIORITY 1">Priority: Highest</option>
+<option value="HEADER X-PRIORITY 2">Priority: High</option>
+<option value="NOT HEADER X-PRIORITY 1 NOT HEADER X-PRIORITY 2 NOT HEADER X-PRIORITY 4 NOT HEADER X-PRIORITY 5">Priority: Normal</option>
+<option value="HEADER X-PRIORITY 4">Priority: Low</option>
+<option value="HEADER X-PRIORITY 5">Priority: Lowest</option>
+</select>
+
+			</div>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<label for="s_interval" class="input-group-text">Date</label>
+				</div>
+				<select name="searchinterval" id="s_interval">
+<option value="" selected></option><option value="1W">younger than a week</option>
+<option value="1M">younger than a month</option>
+<option value="1Y">younger than a year</option>
+<option value="-1W">older than a week</option>
+<option value="-1M">older than a month</option>
+<option value="-1Y">older than a year</option>
+</select>
+
+			</div>
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<label for="s_scope" class="input-group-text">Scope</label>
+				</div>
+				<select name="s_scope" id="s_scope">
+					<option value="base">Current folder</option>
+					<option value="sub">This and subfolders</option>
+					<option value="all">All folders</option>
+				</select>
+			</div>
+		</div>
+		<div class="formbuttons">
+			<button type="button" class="btn btn-primary icon search" onclick="return rcmail.command('search')">Search</button>
+		</div>
+	</div>
+	<div id="messagelist-content" class="scroller" tabindex="-1">
+		<h2 id="aria-label-messagelist" class="voice">Email Messages Listing</h2>
+		<table id="messagelist" class="listing messagelist sortheader fixedheader" aria-labelledby="aria-label-messagelist" data-list="message_list" data-label-msg="The list is empty."><thead><tr><th class="threads" id="rcmthreads"><span class="threads"></span></th>
+<th class="subject" id="rcmsubject"><a href="./#sort" class="sortcol" rel="subject" title="Sort by">Subject</a></th>
+<th class="fromto" id="rcmfromto"><a href="./#sort" class="sortcol" rel="fromto" title="Sort by">From</a></th>
+<th class="date" id="rcmdate"><a href="./#sort" class="sortcol" rel="date" title="Sort by">Date</a></th>
+<th class="flag" id="rcmflag"><span class="flagged">Flagged</span></th>
+<th class="attachment" id="rcmattachment"><span class="attachment">Attachment</span></th>
+</tr>
+</thead>
+<tbody></tbody></table>
+
+	</div>
+	<div class="pagenav menu footer small" role="toolbar">
+	<a class="firstpage disabled" title="Show first page" id="rcmbtn114" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('firstpage','',this,event)"><span class="inner">First</span></a>
+	<a class="prevpage disabled" title="Show previous page" id="rcmbtn115" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('previouspage','',this,event)"><span class="inner">Previous</span></a>
+			<span class="pagenav-text" aria-live="polite" aria-relevant="text" id="rcmcountdisplay">Mailbox is empty</span>
+		<input class="form-control" type="text" size="3" disabled title="Current page" />
+	
+	<a class="nextpage disabled" title="Show next page" id="rcmbtn116" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('nextpage','',this,event)"><span class="inner">Next</span></a>
+	<a class="lastpage disabled" title="Show last page" id="rcmbtn117" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('lastpage','',this,event)"><span class="inner">Last</span></a>
+</div>
+
+</div>
+
+<!-- message preview -->
+<div id="layout-content">
+	<h2 id="aria-label-toolbar" class="voice">Application toolbar</h2>
+	<div class="header" role="toolbar" aria-labelledby="aria-label-toolbar">
+		<a class="button icon back-list-button" href="#back"><span class="inner">Back</span></a>
+		<span class="header-title"></span>
+		
+<div id="mailtoolbar" class="toolbar menu" role="toolbar">
+	<a class="compose hidden" title="Create a new message" id="rcmbtn118" role="button" href="./?_task=mail&amp;_action=compose" onclick="return rcmail.command('compose','',this,event)"><span class="inner">Compose</span></a>
+	<a class="reply disabled" title="Reply to sender" data-content-button="true" id="rcmbtn119" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply','',this,event)"><span class="inner">Reply</span></a>
+	<span class="dropbutton">
+		<a class="reply-all disabled" title="Reply to list or to sender and all recipients" id="rcmbtn120" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply-all','',this,event)"><span class="inner">Reply all</span></a>
+		<a href="#reply-all" id="replyallmenulink" class="dropdown" data-popup="replyall-menu" tabindex="0">
+			<span class="inner">Reply-all options</span>
+		</a>
+	</span>
+	<span class="dropbutton">
+		<a class="forward disabled" title="Forward the message" id="rcmbtn121" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('forward','',this,event)"><span class="inner">Forward</span></a>
+		<a href="#forward" id="forwardmenulink" class="dropdown" data-popup="forward-menu" tabindex="0">
+			<span class="inner">Forwarding options</span>
+		</a>
+	</span>
+	<span class="spacer"></span>
+	<a class="delete disabled" title="Delete message" id="rcmbtn122" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('delete','',this,event)"><span class="inner">Delete</span></a>
+		<a class="button buttonPas junk disabled" title="This message is junk" id="rcmbtn100" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('plugin.markasjunk.junk','',this,event)"><span class="inner">Junk</span></a>
+<a class="button buttonPas notjunk disabled" title="This message is not junk" id="rcmbtn101" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('plugin.markasjunk.not_junk','',this,event)"><span class="inner">Not junk</span></a>
+
+	<a id="markmessagemenulink" class="markmessage" title="Mark messages" data-popup="markmessage-menu" role="button" href="#"><span class="inner">Mark</span></a>
+	<a id="messagemenulink" class="more" title="More actions..." data-popup="message-menu" role="button" href="#"><span class="inner">More</span></a>
+	</div>
+
+<div id="forward-menu" class="popupmenu">
+	<h3 id="aria-label-forward-menu" class="voice">Forwarding options</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-forward-menu">
+		<li role="menuitem"><a class="forward inline disabled" id="rcmbtn123" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('forward-inline','sub',this,event)">Forward inline</a></li>
+		<li role="menuitem"><a class="forward attachment disabled" id="rcmbtn124" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('forward-attachment','sub',this,event)">Forward as attachment</a></li>
+		<li role="menuitem"><a class="forward bounce disabled" id="rcmbtn125" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('bounce','',this,event)">Resend (bounce)</a></li>
+		
+	</ul>
+</div>
+
+<div id="replyall-menu" class="popupmenu">
+	<h3 id="aria-label-replyall-menu" class="voice">Reply-all options</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-replyall-menu">
+		<li role="menuitem"><a class="reply all disabled" id="rcmbtn126" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply-all','sub',this,event)">Reply all</a></li>
+		<li role="menuitem"><a class="reply list disabled" id="rcmbtn127" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('reply-list','sub',this,event)">Reply list</a></li>
+		
+	</ul>
+</div>
+
+<div id="message-menu" class="popupmenu">
+	<h3 id="aria-label-message-menu" class="voice">More message actions</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-message-menu">
+		<li role="menuitem"><a class="print disabled" data-hidden="small" id="rcmbtn128" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('print','',this,event)">Print this message</a></li>
+					<li role="menuitem"><a class="import disabled" onclick="UI.import_dialog()" id="rcmbtn129" role="button" tabindex="-1" aria-disabled="true" href="#">Import</a></li>
+				<li role="menuitem"><a class="download disabled" id="rcmbtn130" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('download','',this,event)">Export</a></li>
+		<li role="menuitem"><a class="edit asnew disabled" id="rcmbtn131" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('edit','new',this,event)">Edit as new</a></li>
+		<li role="menuitem"><a class="source disabled" id="rcmbtn132" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('viewsource','',this,event)">Show source</a></li>
+		<li role="menuitem"><a class="move disabled" aria-haspopup="true" id="rcmbtn133" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('move','',this,event)"><span class="folder-selector-link">Move to...</span></a></li>
+		<li role="menuitem"><a class="copy disabled" aria-haspopup="true" id="rcmbtn134" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('copy','',this,event)"><span class="folder-selector-link">Copy to...</span></a></li>
+		<li role="menuitem"><a target="_blank" class="extwin disabled" data-hidden="small" id="rcmbtn135" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('open','',this,event)">Open in new window</a></li>
+		<li role="menuitem"><a class="icon filterlink disabled" id="rcmbtn102" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('managesieve-create','',this,event)"><span class="icon filterlink">Create filter</span></a></li>
+
+	</ul>
+</div>
+
+<div id="markmessage-menu" class="popupmenu">
+	<h3 id="aria-label-markmessage-menu" class="voice">Mark selected messages as...</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-markmessage-menu">
+		<li role="menuitem"><a class="read disabled" id="rcmbtn136" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('mark','read',this,event)">As read</a></li>
+		<li role="menuitem"><a class="unread disabled" id="rcmbtn137" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('mark','unread',this,event)">As unread</a></li>
+		<li role="menuitem"><a class="flag disabled" id="rcmbtn138" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('mark','flagged',this,event)">As flagged</a></li>
+		<li role="menuitem"><a class="unflag disabled" id="rcmbtn139" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('mark','unflagged',this,event)">As unflagged</a></li>
+		
+	</ul>
+</div>
+
+	<div id="uploadform" class="popupmenu formcontent"><form id="uploadformFrm" name="importform" method="post" enctype="multipart/form-data" action="./?_task=mail">
+<input type="hidden" name="_token" value="UWcsx6Z43XCbdwF4O0WBW5NkXdKuWF86"><div><input type="hidden" name="_unlock" value=""><input type="hidden" name="_framed" value="1"><p>You can upload mail using files in <a href="https://en.wikipedia.org/wiki/Email#Message_format">MIME</a> or <a href="https://en.wikipedia.org/wiki/Mbox">Mbox</a> format. Multiple files can be compressed into zip archives.</p>
+<input multiple name="_file[]" accept=".eml,.mbox,.msg,message/rfc822,text/*.zip,application/zip,application/x-zip" id="uploadformInput" type="file"><div class="hint">Maximum allowed file size is 32 MB</div>
+</div>
+</form>
+</div>
+
+
+	</div>
+	<h2 id="aria-label-mailpreviewframe" class="voice">Message preview</h2>
+	<div class="iframe-wrapper">
+		<iframe name="messagecontframe" id="messagecontframe" aria-labelledby="aria-label-mailpreviewframe" src="skins/elastic/watermark.html" title="Message preview"></iframe>
+	</div>
+</div>
+
+<!-- popup menus -->
+
+<div id="dragmessage-menu" class="popupmenu">
+	<h3 id="aria-label-dragmessage-menu" class="voice">Drag-n-Drop action menu</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-dragmessage-menu">
+		<li role="menuitem"><a onclick="return rcmail.drag_menu_action('move')" class="disabled" id="rcmbtn140" role="button" tabindex="-1" aria-disabled="true" href="#">Move</a></li>
+		<li role="menuitem"><a onclick="return rcmail.drag_menu_action('copy')" class="disabled" id="rcmbtn141" role="button" tabindex="-1" aria-disabled="true" href="#">Copy</a></li>
+	</ul>
+</div>
+
+<div id="mailboxoptions-menu" class="popupmenu">
+	<h3 id="aria-label-mailboxoptions-menu" class="voice">Folder actions menu</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-mailboxoptions-menu">
+		<li role="menuitem"><a class="expunge disabled" id="rcmbtn142" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('expunge','',this,event)">Compact</a></li>
+		<li role="menuitem"><a class="purge disabled" id="rcmbtn143" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('purge','',this,event)">Empty</a></li>
+		<li role="menuitem"><a class="read disabled" id="rcmbtn144" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('mark-all-read','',this,event)">Mark all as read</a></li>
+		<li role="menuitem"><a class="folders active" id="rcmbtn145" role="button" tabindex="-1" aria-disabled="true" href="./?_task=settings&amp;_action=folders">Manage folders</a></li>
+		
+	</ul>
+</div>
+
+<div id="listselect-menu" class="popupmenu">
+	<h3 id="aria-label-listselect-menu" class="voice">List selection menu</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-listselect-menu">
+		<li role="menuitem"><a class="selection disabled" id="list-toggle-button" onclick="if ($(this).is('.active')) $('#messagelist').toggleClass('withselection');" role="button" tabindex="-1" aria-disabled="true" href="#">Selection</a></li>
+		<li role="menuitem"><a class="select all disabled" id="rcmbtn146" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('select-all','',this,event)">All</a></li>
+		<li role="menuitem"><a class="select page disabled" id="rcmbtn147" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('select-all','page',this,event)">Current page</a></li>
+		<li role="menuitem"><a class="select unread disabled" id="rcmbtn148" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('select-all','unread',this,event)">Unread</a></li>
+		<li role="menuitem"><a class="select flagged disabled" id="rcmbtn149" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('select-all','flagged',this,event)">Flagged</a></li>
+		<li role="menuitem"><a class="select invert disabled" id="rcmbtn150" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('select-all','invert',this,event)">Invert</a></li>
+		<li role="menuitem"><a class="select none disabled" id="rcmbtn151" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('select-none','',this,event)">None</a></li>
+	</ul>
+</div>
+
+<div id="threadselect-menu" class="popupmenu">
+	<h3 id="aria-label-threadselectmenu" class="voice">Threads listing menu</h3>
+	<ul class="menu listing" role="menu" aria-labelledby="aria-label-threadselectmenu">
+		<li role="menuitem"><a class="expand unread disabled" id="rcmbtn152" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('expand-unread','',this,event)">Expand Unread</a></li>
+		<li role="menuitem"><a class="expand all disabled" id="rcmbtn153" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('expand-all','',this,event)">Expand All</a></li>
+		<li role="menuitem"><a class="expand none disabled" id="rcmbtn154" role="button" tabindex="-1" aria-disabled="true" href="#" onclick="return rcmail.command('collapse-all','',this,event)">Collapse All</a></li>
+	</ul>
+</div>
+
+<div id="listoptions-menu" class="popupmenu propform" role="dialog" aria-labelledby="aria-label-listoptions">
+	<h3 id="aria-label-listoptions" class="voice">Message list display and sorting options</h3>
+		<div class="form-group row">
+		<label for="listoptions-sortcol" class="col-form-label col-sm-4">Sorting column</label>
+		<div class="col-sm-8">
+			<select id="listoptions-sortcol" name="sort_col">
+				<option value="">None</option>
+				<option value="arrival">Arrival date</option>
+				<option value="date">Sent date</option>
+				<option value="subject">Subject</option>
+				<option value="fromto">From/To</option>
+				<option value="from">From</option>
+				<option value="to">To</option>
+				<option value="cc">Cc</option>
+				<option value="size">Size</option>
+			</select>
+		</div>
+	</div>
+			<div class="form-group row">
+		<label for="listoptions-sortord" class="col-form-label col-sm-4">Sorting order</label>
+		<div class="col-sm-8">
+			<select id="listoptions-sortord" name="sort_ord">
+				<option value="ASC">ascending</option>
+				<option value="DESC">descending</option>
+			</select>
+		</div>
+	</div>
+			<div class="form-group row">
+		<label for="listoptions-threads" class="col-form-label col-sm-4">List mode</label>
+		<div class="col-sm-8">
+			<select id="listoptions-threads" name="mode">
+				<option value="list">List</option>
+				<option value="threads">Threads</option>
+			</select>
+		</div>
+	</div>
+		
+	
+</div>
+
+</div>
+<div id="messagestack"></div>
+<script>
+$(function() {
+rcmail.init();
+rcmail.set_quota({"used":560,"total":102400,"percent":1,"free":99,"type":"text","folder":"INBOX","title":"Disk usage: 560 KB / 100 MB (1%)"});
+});
+</script>
+
+
+
+<script src="skins/elastic/deps/bootstrap.bundle.min.js?s=1758910937"></script>
+<script src="skins/elastic/ui.min.js?s=1758910937"></script>
+
+</body>
+</html>
