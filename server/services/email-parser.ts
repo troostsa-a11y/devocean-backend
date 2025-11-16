@@ -488,45 +488,6 @@ export class EmailParser {
   }
 
   /**
-   * Normalize currency code to 3-letter ISO format
-   * Handles Beds24's "US" → "USD" conversion
-   */
-  private static normalizeCurrency(rawCurrency: string): string {
-    const currency = rawCurrency.toUpperCase().trim();
-    
-    // Map 2-letter codes to 3-letter ISO codes
-    const currencyMap: Record<string, string> = {
-      'US': 'USD',
-      'EU': 'EUR',
-      'GB': 'GBP',
-      'ZA': 'ZAR',
-      'MZ': 'MZN',
-      'AU': 'AUD',
-      'CA': 'CAD',
-      'CN': 'CNY',
-      'JP': 'JPY',
-      'IN': 'INR',
-      'BR': 'BRL',
-      'RU': 'RUB',
-    };
-
-    // If it's a 2-letter code, try to map it
-    if (currency.length === 2 && currencyMap[currency]) {
-      console.log(`📊 Normalized currency: ${rawCurrency} → ${currencyMap[currency]}`);
-      return currencyMap[currency];
-    }
-
-    // If it's already 3 letters, use it
-    if (currency.length === 3) {
-      return currency;
-    }
-
-    // Fallback to USD if unknown
-    console.warn(`⚠️  Unknown currency code: ${rawCurrency}, defaulting to USD`);
-    return 'USD';
-  }
-
-  /**
    * Normalize and validate email address
    * Returns valid email or deterministic placeholder
    */
