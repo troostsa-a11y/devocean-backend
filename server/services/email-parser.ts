@@ -9,14 +9,6 @@ import type { InsertBooking } from '../../shared/schema';
  * Supports both direct Beds24 bookings and OTA bookings (Ostrovok, Booking.com, etc.)
  */
 
-interface RoomBooking {
-  bookingRef: string;
-  roomType: string;
-  people: number;
-  price: number;
-  currency: string;
-}
-
 interface ParsedBooking {
   groupRef: string;
   bookingRefs: string[];
@@ -29,10 +21,6 @@ interface ParsedBooking {
   guestGender?: 'male' | 'female' | null;
   checkInDate: Date;
   checkOutDate: Date;
-  lastNightDate: Date;
-  rooms: RoomBooking[];
-  totalPrice: string;
-  currency: string;
   bookingType?: string;
   source: string;
   rawEmailData: any;
@@ -101,23 +89,9 @@ export class EmailParser {
       const groupRefMatch = text.match(/Group Ref:\s*(\d+)/);
       const groupRef = groupRefMatch ? groupRefMatch[1] : bookingRefs[0];
 
-      // Extract rooms information
-      const rooms = this.extractRooms(text);
-      if (rooms.length === 0) {
-        console.error('No rooms found in booking');
-        console.error(`Email length: ${text.length} chars`);
-        console.error(`Has "Booking Ref:": ${text.includes('Booking Ref:')}`);
-        console.error(`Has "Group Ref:": ${text.includes('Group Ref:')}`);
-        console.error(`Has "People": ${text.includes('People')}`);
-        console.error(`Has "Adults": ${text.includes('Adults')}`);
-        console.error(`First 200 chars (redacted):\n${text.substring(0, 200).replace(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g, '[EMAIL]').replace(/\+?\d{10,}/g, '[PHONE]')}`);
-        return null;
-      }
-
       // Extract dates
       const checkInMatch = text.match(/Check In\s+(.+?)(?:\n|$)/i);
       const checkOutMatch = text.match(/Check Out\s+(.+?)(?:\n|$)/i);
-      const lastNightMatch = text.match(/Last Night\s+(.+?)(?:\n|$)/i);
 
       if (!checkInMatch || !checkOutMatch) {
         console.error('Missing check-in or check-out dates');
@@ -126,7 +100,6 @@ export class EmailParser {
 
       const checkInDate = this.parseDate(checkInMatch[1]);
       const checkOutDate = this.parseDate(checkOutMatch[1]);
-      const lastNightDate = lastNightMatch ? this.parseDate(lastNightMatch[1]) : checkInDate;
 
       // Extract guest information
       const nameMatch = text.match(/Name\s+([^\n]+)/i);
@@ -209,17 +182,6 @@ export class EmailParser {
         console.log(`📧 No language or country specified, defaulting to EN`);
       }
 
-      // Extract total price
-      const totalPriceMatch = text.match(/Total Price\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/i);
-      if (!totalPriceMatch) {
-        console.error('No total price found');
-        return null;
-      }
-
-      const rawCurrency = totalPriceMatch[1];
-      const currency = this.normalizeCurrency(rawCurrency);
-      const totalPrice = totalPriceMatch[2].replace(/,/g, '');
-
       // Extract source - detect OTA platforms
       let source = 'iframe';
       if (text.match(/Ostrovok\s+\d+/i)) {
@@ -248,10 +210,6 @@ export class EmailParser {
         guestGender,
         checkInDate,
         checkOutDate,
-        lastNightDate,
-        rooms,
-        totalPrice,
-        currency,
         bookingType,
         source,
       };
@@ -259,86 +217,6 @@ export class EmailParser {
       console.error('Error extracting booking data:', error);
       return null;
     }
-  }
-
-  /**
-   * Extract room information from email text
-   * Handles multiple formats:
-   * 1. With Group Ref and "People X"
-   * 2. Without Group Ref but with "People X"
-   * 3. With "Adults X" and "Children X" instead of "People X"
-   */
-  private static extractRooms(text: string): RoomBooking[] {
-    const rooms: RoomBooking[] = [];
-    
-    // Pattern 1: WITH Group Ref and "People X" (traditional Beds24 format)
-    const roomPatternWithGroupRef = /([^\n]+)\nBooking Ref:\s*(\d+)\nGroup Ref:\s*\d+\nPeople\s+(\d+)\nPrice\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/gi;
-    
-    let match;
-    while ((match = roomPatternWithGroupRef.exec(text)) !== null) {
-      const roomType = match[1].trim();
-      const bookingRef = match[2];
-      const people = parseInt(match[3]);
-      const rawCurrency = match[4];
-      const currency = this.normalizeCurrency(rawCurrency);
-      const price = parseFloat(match[5].replace(/,/g, ''));
-
-      rooms.push({
-        bookingRef,
-        roomType,
-        people,
-        price,
-        currency,
-      });
-    }
-
-    // Pattern 2: WITHOUT Group Ref but with "People X" (some OTA bookings)
-    if (rooms.length === 0) {
-      const roomPatternWithoutGroupRef = /([^\n]+)\nBooking Ref:\s*(\d+)\nPeople\s+(\d+)\nPrice\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/gi;
-      
-      while ((match = roomPatternWithoutGroupRef.exec(text)) !== null) {
-        const roomType = match[1].trim();
-        const bookingRef = match[2];
-        const people = parseInt(match[3]);
-        const rawCurrency = match[4];
-        const currency = this.normalizeCurrency(rawCurrency);
-        const price = parseFloat(match[5].replace(/,/g, ''));
-
-        rooms.push({
-          bookingRef,
-          roomType,
-          people,
-          price,
-          currency,
-        });
-      }
-    }
-
-    // Pattern 3: With "Adults X" and "Children X" instead of "People X" (Booking.com format)
-    if (rooms.length === 0) {
-      const roomPatternAdultsChildren = /([^\n]+)\nBooking Ref:\s*(\d+)\nAdults\s+(\d+)\nChildren\s+(\d+)\nPrice\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/gi;
-      
-      while ((match = roomPatternAdultsChildren.exec(text)) !== null) {
-        const roomType = match[1].trim();
-        const bookingRef = match[2];
-        const adults = parseInt(match[3]);
-        const children = parseInt(match[4]);
-        const people = adults + children;
-        const rawCurrency = match[5];
-        const currency = this.normalizeCurrency(rawCurrency);
-        const price = parseFloat(match[6].replace(/,/g, ''));
-
-        rooms.push({
-          bookingRef,
-          roomType,
-          people,
-          price,
-          currency,
-        });
-      }
-    }
-
-    return rooms;
   }
 
   /**

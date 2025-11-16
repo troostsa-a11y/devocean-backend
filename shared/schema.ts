@@ -24,10 +24,6 @@ export const bookings = pgTable("bookings", {
   checkInDate: timestamp("check_in_date", { mode: 'date' }).notNull(),
   checkOutDate: timestamp("check_out_date", { mode: 'date' }).notNull(),
   
-  // Pricing information (required for email templates)
-  totalPrice: decimal("total_price", { precision: 10, scale: 2 }).notNull(),
-  currency: text("currency").notNull().default('USD'),
-  
   // Status tracking
   status: text("status").notNull().default('active'), // 'active', 'cancelled', 'completed'
   
@@ -150,8 +146,6 @@ export const insertBookingSchema = z.object({
   guestCountry: z.string().length(2).optional(),
   checkInDate: z.date(),
   checkOutDate: z.date(),
-  totalPrice: z.string(), // Decimal as string
-  currency: z.string().default('USD'),
   status: z.enum(['active', 'cancelled', 'completed']).default('active'),
 });
 

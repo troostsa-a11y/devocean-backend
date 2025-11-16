@@ -70,7 +70,6 @@ const getPostBookingTemplate = (language: string, data: any): EmailTemplate => {
               <p><strong>Booking Reference:</strong> ${data.groupRef}</p>
               <p><strong>Check-in:</strong> ${formatDate(data.checkInDate, language)}</p>
               <p><strong>Check-out:</strong> ${formatDate(data.checkOutDate, language)}</p>
-              <p><strong>Total Price:</strong> ${data.currency} ${data.totalPrice}</p>
             </div>
             
             <p><strong>What's Next?</strong></p>
@@ -130,7 +129,6 @@ const getPostBookingTemplate = (language: string, data: any): EmailTemplate => {
               <p><strong>Referência da Reserva:</strong> ${data.groupRef}</p>
               <p><strong>Check-in:</strong> ${formatDate(data.checkInDate, language)}</p>
               <p><strong>Check-out:</strong> ${formatDate(data.checkOutDate, language)}</p>
-              <p><strong>Preço Total:</strong> ${data.currency} ${data.totalPrice}</p>
             </div>
             
             <p><strong>Próximos Passos:</strong></p>

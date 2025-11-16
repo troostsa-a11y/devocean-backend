@@ -80,8 +80,6 @@ export class EmailSchedulerService {
       groupRef: booking.groupRef,
       checkInDate: checkInCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
       checkOutDate: checkOutCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-      totalPrice: booking.totalPrice,
-      currency: booking.currency,
     };
 
     // Determine scheduling strategy based on days until check-in
@@ -132,11 +130,7 @@ export class EmailSchedulerService {
       language: booking.guestLanguage,
       scheduledFor: postBookingTimeUTC,
       status: 'pending',
-      templateData: {
-        ...commonTemplateData,
-        totalPrice: booking.totalPrice,
-        currency: booking.currency,
-      },
+      templateData: commonTemplateData,
     });
     console.log(`  Post-booking: ${formatForLog(postBookingTimeCAT)} (1h from now)`);
 
