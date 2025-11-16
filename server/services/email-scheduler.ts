@@ -80,7 +80,8 @@ export class EmailSchedulerService {
       groupRef: booking.groupRef,
       checkInDate: checkInCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
       checkOutDate: checkOutCAT.toLocaleString({ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }),
-      rooms: booking.rooms,
+      totalPrice: booking.totalPrice,
+      currency: booking.currency,
     };
 
     // Determine scheduling strategy based on days until check-in

@@ -14,6 +14,7 @@ export const bookings = pgTable("bookings", {
   
   // Guest information (essential fields only)
   guestName: text("guest_name").notNull(),
+  firstName: text("first_name").notNull(), // Required for email greetings
   guestGender: text("guest_gender"), // 'male', 'female', or null
   guestEmail: text("guest_email").notNull(),
   guestLanguage: text("guest_language").notNull().default('EN'),
@@ -22,6 +23,10 @@ export const bookings = pgTable("bookings", {
   // Booking dates
   checkInDate: timestamp("check_in_date", { mode: 'date' }).notNull(),
   checkOutDate: timestamp("check_out_date", { mode: 'date' }).notNull(),
+  
+  // Pricing information (required for email templates)
+  totalPrice: decimal("total_price", { precision: 10, scale: 2 }).notNull(),
+  currency: text("currency").notNull().default('USD'),
   
   // Status tracking
   status: text("status").notNull().default('active'), // 'active', 'cancelled', 'completed'
@@ -138,12 +143,15 @@ export const insertBookingSchema = z.object({
   groupRef: z.string(),
   bookingRefs: z.array(z.string()),
   guestName: z.string(),
+  firstName: z.string(),
   guestGender: z.enum(['male', 'female']).nullable().optional(),
   guestEmail: z.string().email(),
   guestLanguage: z.string().default('EN'),
   guestCountry: z.string().length(2).optional(),
   checkInDate: z.date(),
   checkOutDate: z.date(),
+  totalPrice: z.string(), // Decimal as string
+  currency: z.string().default('USD'),
   status: z.enum(['active', 'cancelled', 'completed']).default('active'),
 });
 
