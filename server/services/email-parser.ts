@@ -1,5 +1,6 @@
 import imaps from 'imap-simple';
 import { simpleParser } from 'mailparser';
+import * as fs from 'fs';
 import type { InsertBooking } from '../../shared/schema';
 
 /**
@@ -24,6 +25,7 @@ interface ParsedBooking {
   guestEmail: string;
   guestPhone?: string;
   guestLanguage: string;
+  guestCountry?: string;
   guestGender?: 'male' | 'female' | null;
   checkInDate: Date;
   checkOutDate: Date;
@@ -103,6 +105,12 @@ export class EmailParser {
       const rooms = this.extractRooms(text);
       if (rooms.length === 0) {
         console.error('No rooms found in booking');
+        console.error(`Email length: ${text.length} chars`);
+        console.error(`Has "Booking Ref:": ${text.includes('Booking Ref:')}`);
+        console.error(`Has "Group Ref:": ${text.includes('Group Ref:')}`);
+        console.error(`Has "People": ${text.includes('People')}`);
+        console.error(`Has "Adults": ${text.includes('Adults')}`);
+        console.error(`First 200 chars (redacted):\n${text.substring(0, 200).replace(/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g, '[EMAIL]').replace(/\+?\d{10,}/g, '[PHONE]')}`);
         return null;
       }
 
@@ -236,6 +244,7 @@ export class EmailParser {
         guestEmail,
         guestPhone,
         guestLanguage,
+        guestCountry: countryCode || undefined,
         guestGender,
         checkInDate,
         checkOutDate,
@@ -254,12 +263,15 @@ export class EmailParser {
 
   /**
    * Extract room information from email text
+   * Handles multiple formats:
+   * 1. With Group Ref and "People X"
+   * 2. Without Group Ref but with "People X"
+   * 3. With "Adults X" and "Children X" instead of "People X"
    */
   private static extractRooms(text: string): RoomBooking[] {
     const rooms: RoomBooking[] = [];
     
-    // Try pattern WITH Group Ref first (traditional Beds24 format)
-    // Pattern: Room Type followed by Booking Ref, Group Ref, People, Price
+    // Pattern 1: WITH Group Ref and "People X" (traditional Beds24 format)
     const roomPatternWithGroupRef = /([^\n]+)\nBooking Ref:\s*(\d+)\nGroup Ref:\s*\d+\nPeople\s+(\d+)\nPrice\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/gi;
     
     let match;
@@ -280,7 +292,7 @@ export class EmailParser {
       });
     }
 
-    // If no rooms found, try pattern WITHOUT Group Ref (OTA bookings)
+    // Pattern 2: WITHOUT Group Ref but with "People X" (some OTA bookings)
     if (rooms.length === 0) {
       const roomPatternWithoutGroupRef = /([^\n]+)\nBooking Ref:\s*(\d+)\nPeople\s+(\d+)\nPrice\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/gi;
       
@@ -291,6 +303,30 @@ export class EmailParser {
         const rawCurrency = match[4];
         const currency = this.normalizeCurrency(rawCurrency);
         const price = parseFloat(match[5].replace(/,/g, ''));
+
+        rooms.push({
+          bookingRef,
+          roomType,
+          people,
+          price,
+          currency,
+        });
+      }
+    }
+
+    // Pattern 3: With "Adults X" and "Children X" instead of "People X" (Booking.com format)
+    if (rooms.length === 0) {
+      const roomPatternAdultsChildren = /([^\n]+)\nBooking Ref:\s*(\d+)\nAdults\s+(\d+)\nChildren\s+(\d+)\nPrice\s+([A-Z]{2,3})\$?([\d,]+\.?\d*)/gi;
+      
+      while ((match = roomPatternAdultsChildren.exec(text)) !== null) {
+        const roomType = match[1].trim();
+        const bookingRef = match[2];
+        const adults = parseInt(match[3]);
+        const children = parseInt(match[4]);
+        const people = adults + children;
+        const rawCurrency = match[5];
+        const currency = this.normalizeCurrency(rawCurrency);
+        const price = parseFloat(match[6].replace(/,/g, ''));
 
         rooms.push({
           bookingRef,

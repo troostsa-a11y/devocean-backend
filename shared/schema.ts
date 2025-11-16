@@ -2,91 +2,35 @@ import { pgTable, text, integer, timestamp, decimal, boolean, jsonb } from "driz
 import { z } from "zod";
 
 /**
- * Bookings table - stores all booking information from Beds24 notifications
+ * Bookings table - simplified to store only essential guest and booking information
+ * Essential fields: Gender, Name, Arrival, Departure, Country, Language
  */
 export const bookings = pgTable("bookings", {
   id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
   
-  // Beds24 references
-  groupRef: text("group_ref").notNull(), // Group booking reference (e.g., 77463390)
-  bookingRefs: text("booking_refs").array().notNull(), // Individual booking refs for each room
+  // Beds24 references (for tracking)
+  groupRef: text("group_ref").notNull(),
+  bookingRefs: text("booking_refs").array().notNull(),
   
-  // Guest information
+  // Guest information (essential fields only)
   guestName: text("guest_name").notNull(),
-  firstName: text("first_name").notNull(),
+  guestGender: text("guest_gender"), // 'male', 'female', or null
   guestEmail: text("guest_email").notNull(),
-  guestPhone: text("guest_phone"),
   guestLanguage: text("guest_language").notNull().default('EN'),
-  guestGender: text("guest_gender"), // 'male', 'female', or null for unknown
+  guestCountry: text("guest_country"), // 2-letter country code
   
-  // Booking details
+  // Booking dates
   checkInDate: timestamp("check_in_date", { mode: 'date' }).notNull(),
   checkOutDate: timestamp("check_out_date", { mode: 'date' }).notNull(),
-  lastNightDate: timestamp("last_night_date", { mode: 'date' }).notNull(),
   
-  // Room details (stored as JSON for multiple rooms)
-  rooms: jsonb("rooms").notNull().$type<Array<{
-    bookingRef: string;
-    roomType: string;
-    people: number;
-    price: number;
-    currency: string;
-  }>>(),
-  
-  // Financial
-  totalPrice: decimal("total_price", { precision: 10, scale: 2 }).notNull(),
-  currency: text("currency").notNull().default('USD'),
-  bookingType: text("booking_type"), // e.g., "Deposit"
-  
-  // Booking status
+  // Status tracking
   status: text("status").notNull().default('active'), // 'active', 'cancelled', 'completed'
-  cancelledAt: timestamp("cancelled_at", { mode: 'date' }),
-  cancellationReason: text("cancellation_reason"),
   
-  // Extras (extra beds, transfers, special requests)
-  extras: jsonb("extras").$type<{
-    extraBeds?: number;
-    transfer?: {
-      required: boolean;
-      type: 'arrival' | 'departure' | 'both';
-      arrivalDetails?: {
-        pickupLocation: string;
-        pickupTime: string;
-        flightNumber?: string;
-        passengers: number;
-      };
-      departureDetails?: {
-        dropoffLocation: string;
-        pickupTime: string;
-        flightNumber?: string;
-        passengers: number;
-      };
-      status?: 'pending' | 'confirmed' | 'cancelled';
-      confirmationNumber?: string;
-    };
-    specialRequests?: string;
-    dietaryRequirements?: string;
-    otherExtras?: Array<{
-      name: string;
-      quantity: number;
-      price?: number;
-    }>;
-  }>(),
-  
-  // Transfer notification sent
-  transferNotificationSent: boolean("transfer_notification_sent").default(false),
-  
-  // Source tracking
-  source: text("source").default('iframe'), // iframe, direct, etc.
-  
-  // Email processing status
+  // Email processing status (to avoid duplicates)
   postBookingEmailSent: boolean("post_booking_email_sent").default(false),
   preArrivalEmailSent: boolean("pre_arrival_email_sent").default(false),
   arrivalEmailSent: boolean("arrival_email_sent").default(false),
   postDepartureEmailSent: boolean("post_departure_email_sent").default(false),
-  
-  // Raw email data for debugging
-  rawEmailData: jsonb("raw_email_data"),
   
   // Timestamps
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -189,63 +133,18 @@ export const pendingCancellations = pgTable("pending_cancellations", {
   rawEmailData: jsonb("raw_email_data"),
 });
 
-// Manual Zod schemas for validation
-const roomSchema = z.object({
-  bookingRef: z.string(),
-  roomType: z.string(),
-  people: z.number().int().positive(),
-  price: z.number().positive(),
-  currency: z.string().length(3),
-});
-
-const transferDetailsSchema = z.object({
-  pickupLocation: z.string(),
-  pickupTime: z.string(),
-  flightNumber: z.string().optional(),
-  passengers: z.number().int().positive(),
-});
-
-const extrasSchema = z.object({
-  extraBeds: z.number().int().min(0).optional(),
-  transfer: z.object({
-    required: z.boolean(),
-    type: z.enum(['arrival', 'departure', 'both']),
-    arrivalDetails: transferDetailsSchema.optional(),
-    departureDetails: transferDetailsSchema.optional(),
-    status: z.enum(['pending', 'confirmed', 'cancelled']).optional(),
-    confirmationNumber: z.string().optional(),
-  }).optional(),
-  specialRequests: z.string().optional(),
-  dietaryRequirements: z.string().optional(),
-  otherExtras: z.array(z.object({
-    name: z.string(),
-    quantity: z.number().int().positive(),
-    price: z.number().optional(),
-  })).optional(),
-});
-
+// Simplified Zod validation schema
 export const insertBookingSchema = z.object({
   groupRef: z.string(),
   bookingRefs: z.array(z.string()),
   guestName: z.string(),
-  firstName: z.string().default('Guest'),
-  guestEmail: z.string().email(),
-  guestPhone: z.string().optional(),
-  guestLanguage: z.string().default('EN'),
   guestGender: z.enum(['male', 'female']).nullable().optional(),
+  guestEmail: z.string().email(),
+  guestLanguage: z.string().default('EN'),
+  guestCountry: z.string().length(2).optional(),
   checkInDate: z.date(),
   checkOutDate: z.date(),
-  lastNightDate: z.date(),
-  rooms: z.array(roomSchema),
-  totalPrice: z.string().regex(/^\d+(\.\d{1,2})?$/),
-  currency: z.string().default('USD'),
-  bookingType: z.string().optional(),
   status: z.enum(['active', 'cancelled', 'completed']).default('active'),
-  cancelledAt: z.date().optional(),
-  cancellationReason: z.string().optional(),
-  extras: extrasSchema.optional(),
-  source: z.string().default('iframe'),
-  rawEmailData: z.any().optional(),
 });
 
 export const insertScheduledEmailSchema = z.object({

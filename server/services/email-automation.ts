@@ -275,14 +275,6 @@ export class EmailAutomationService {
                 // Schedule automated emails normally
                 await this.emailScheduler.scheduleEmailsForBooking(booking);
                 console.log(`Scheduled emails for booking ${booking.groupRef}`);
-
-                // Send transfer notification if required
-                if (this.transferNotification && booking.extras?.transfer?.required) {
-                  const transferSent = await this.transferNotification.notifyTaxiCompany(booking);
-                  if (transferSent) {
-                    console.log(`Transfer notification sent for booking ${booking.groupRef}`);
-                  }
-                }
               }
 
               

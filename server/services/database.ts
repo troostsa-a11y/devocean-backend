@@ -246,8 +246,6 @@ export class DatabaseService {
       .update(bookings)
       .set({
         status: 'cancelled',
-        cancelledAt: new Date(),
-        cancellationReason: reason,
         updatedAt: new Date(),
       })
       .where(eq(bookings.id, bookingId));
@@ -280,18 +278,6 @@ export class DatabaseService {
       );
   }
 
-  /**
-   * Mark transfer notification as sent
-   */
-  async markTransferNotificationSent(bookingId: number): Promise<void> {
-    await this.db
-      .update(bookings)
-      .set({
-        transferNotificationSent: true,
-        updatedAt: new Date(),
-      })
-      .where(eq(bookings.id, bookingId));
-  }
 
   /**
    * Store pending cancellation (for cancellations that arrive before booking)
@@ -403,10 +389,7 @@ export class DatabaseService {
       arrival: allEmails.filter(e => e.emailType === 'arrival').length,
       post_departure: allEmails.filter(e => e.emailType === 'post_departure').length,
       cancellation: allEmails.filter(e => e.emailType === 'cancellation').length,
-      transfer_notification: allEmails.filter(e => e.emailType === 'transfer_notification').length,
     };
-
-    const transferNotificationsSent = allBookings.filter(b => b.transferNotificationSent).length;
 
     const emailChecksPerformed = allChecks.length;
     const emailChecksSuccessful = allChecks.filter(c => c.status === 'success').length;
@@ -436,7 +419,6 @@ export class DatabaseService {
       emailsFailed,
       emailsPending,
       emailsByType,
-      transferNotificationsSent,
       emailChecksPerformed,
       emailChecksSuccessful,
       emailChecksFailed,
