@@ -52,14 +52,47 @@ The website uses a hybrid language code system with automatic normalization:
 ### Hybrid Email Architecture
 Email functionality is split between Cloudflare and Replit:
 - **Contact Forms:** Cloudflare Workers handle general contact and experience inquiries, including reCAPTCHA v3, security measures, and localized auto-replies using Resend.
-- **Automailer:** An Express.js server in the Replit workspace processes Beds24 booking notifications via IMAP and sends multi-language automated emails via SMTP. It uses in-memory storage for booking state and Drizzle ORM for PostgreSQL.
+- **Automailer:** An Express.js server (port 3003) in the Replit workspace processes Beds24 booking notifications via IMAP and sends multi-language automated emails via SMTP. Uses PostgreSQL with Drizzle ORM for booking state tracking.
 
-### Automailer Language Determination
-The automailer determines email language using a three-tier priority system:
-1. **Preferred Language field** from Beds24.
-2. **Country code mapping** (e.g., "MZ" → "PT") from the guest's location.
-3. **Default to English**.
-This system is implemented in `server/services/email-parser.ts` and `server/services/cancellation-handler.ts`.
+### Automailer - Simplified Architecture (Nov 2025)
+**Design Philosophy:** Track only **WHO is coming** and **WHEN they're arriving** - no pricing or room details needed.
+
+**Email Processing:**
+- Checks IMAP inbox every 30 minutes (at :00 and :30)
+- Sends scheduled emails at :15 and :45
+- Processes new bookings, modifications, and cancellations automatically
+- Supports 15 languages with intelligent language determination
+
+**Language Determination (3-Tier Priority):**
+1. **Preferred Language** field from Beds24 (explicit guest preference)
+2. **Country code mapping** (e.g., "MZ" → "PT", "ZA" → "EN") from guest location
+3. **Default to English** if neither available
+- Implementation: `server/services/email-parser.ts`, `server/services/cancellation-handler.ts`
+
+**Data Tracked:**
+- Guest Info: name, firstName, email, gender, country, language
+- Booking Dates: check-in, check-out
+- References: groupRef, bookingRefs[] (for modification matching)
+- Status: booking status, email tracking flags (postBookingEmailSent, preArrivalEmailSent, etc.)
+
+**Data NOT Tracked (Intentionally Removed):**
+- ❌ Pricing: totalPrice, currency (guests already know what they paid)
+- ❌ Room Details: roomType, adults, children, people counts
+- ❌ Last night date
+
+**Email Types Scheduled:**
+1. Post-booking confirmation (sent immediately)
+2. Pre-arrival reminder (5 days before check-in)
+3. Arrival day welcome (day of check-in)
+4. Post-departure thank you (1 day after check-out)
+
+**Files:**
+- `server/services/email-parser.ts` - Extracts guest data from Beds24 emails
+- `server/services/email-scheduler.ts` - Schedules automated emails
+- `server/services/email-templates.ts` - Multi-language email templates
+- `server/services/modification-handler.ts` - Processes booking modifications
+- `server/services/cancellation-handler.ts` - Handles cancellation emails
+- `shared/schema.ts` - Database schema (bookings table)
 
 ### Frontend
 - **Framework & Build:** React 18, TypeScript, Vite, Wouter for routing.
@@ -80,9 +113,8 @@ This system is implemented in `server/services/email-parser.ts` and `server/serv
 
 ### Backend
 - **Server:** Express.js automailer server (port 3003, internal).
-- **Storage:** In-memory storage (`MemStorage`) for automailer.
-- **Database:** Drizzle ORM for PostgreSQL with Zod schemas.
-- **Email Automation:** Node.js (TypeScript) service processes IMAP notifications and sends SMTP emails.
+- **Database:** PostgreSQL with Drizzle ORM for booking state tracking (guest info, dates, references, email flags).
+- **Email Automation:** Node.js (TypeScript) service processes IMAP notifications and sends SMTP emails via nodemailer.
 - **Contact Forms:** Cloudflare Workers with Resend API, reCAPTCHA v3, HTML escaping, and 15-language autoreply emails.
 
 ### Project Structure
