@@ -50,7 +50,7 @@ export const scheduledEmails = pgTable("scheduled_emails", {
   // Email details
   emailType: text("email_type").notNull(), // 'post_booking', 'pre_arrival', 'arrival', 'post_departure'
   recipientEmail: text("recipient_email").notNull(),
-  recipientName: text("recipient_name").notNull(),
+  recipientFirstname: text("recipient_firstname").notNull(),
   language: text("language").notNull().default('EN'),
   
   // Scheduling
@@ -153,7 +153,7 @@ export const insertScheduledEmailSchema = z.object({
   bookingId: z.number().int().positive(),
   emailType: z.enum(['post_booking', 'pre_arrival', 'arrival', 'post_departure', 'cancellation', 'transfer_notification']),
   recipientEmail: z.string().email(),
-  recipientName: z.string(),
+  recipientFirstname: z.string(),
   language: z.string().default('EN'),
   scheduledFor: z.date(),
   status: z.enum(['pending', 'sent', 'failed', 'cancelled']).default('pending'),

@@ -138,7 +138,7 @@ export class CancellationHandler {
         bookingId: booking.id,
         emailType: 'cancellation',
         recipientEmail: booking.guestEmail,
-        recipientName: booking.guestName,
+        recipientFirstname: booking.firstName || this.extractFirstName(booking.guestName) || 'Guest',
         language: booking.guestLanguage || 'en-GB',
         scheduledFor: scheduledFor,
         status: 'pending',
