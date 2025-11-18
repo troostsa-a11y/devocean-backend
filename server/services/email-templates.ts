@@ -61,7 +61,7 @@ const getPostBookingTemplate = (language: string, data: any): EmailTemplate => {
           </div>
           
           <div class="content">
-            <h2>Dear ${data.guestName},</h2>
+            <h2>Dear ${data.firstName},</h2>
             
             <p>Thank you for choosing DEVOCEAN Lodge! We're thrilled to confirm your booking.</p>
             
@@ -120,7 +120,7 @@ const getPostBookingTemplate = (language: string, data: any): EmailTemplate => {
           </div>
           
           <div class="content">
-            <h2>Caro(a) ${data.guestName},</h2>
+            <h2>Caro(a) ${data.firstName},</h2>
             
             <p>Obrigado por escolher o DEVOCEAN Lodge! Estamos entusiasmados em confirmar a sua reserva.</p>
             
@@ -187,7 +187,7 @@ const getPreArrivalTemplate = (language: string, data: any): EmailTemplate => {
           </div>
           
           <div class="content">
-            <h2>Dear ${data.guestName},</h2>
+            <h2>Dear ${data.firstName},</h2>
             
             <p>Just one more week until your beach escape! We're excited to welcome you to DEVOCEAN Lodge.</p>
             
@@ -264,7 +264,7 @@ const getArrivalTemplate = (language: string, data: any): EmailTemplate => {
           </div>
           
           <div class="content">
-            <h2>Hi ${data.guestName},</h2>
+            <h2>Hi ${data.firstName},</h2>
             
             <p>Your DEVOCEAN adventure begins in just 2 days! Here are your final details:</p>
             
@@ -329,7 +329,7 @@ const getPostDepartureTemplate = (language: string, data: any): EmailTemplate =>
           </div>
           
           <div class="content">
-            <h2>Dear ${data.guestName},</h2>
+            <h2>Dear ${data.firstName},</h2>
             
             <p>Thank you for choosing DEVOCEAN Lodge for your beach getaway! We hope you had an unforgettable experience.</p>
             
