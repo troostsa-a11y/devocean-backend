@@ -231,23 +231,23 @@
       padding: 18px 20px;
       cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 12px;
       font-weight: 600;
       color: #5C5048;
       user-select: none;
     }
     
     .faq-question span {
-      flex: 1;
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     }
     
     .faq-chevron {
-      margin-left: 12px;
       color: #9e4b13;
       transition: transform 0.3s ease;
       font-size: 14px;
+      flex-shrink: 0;
+      margin-left: auto;
     }
     
     .faq-item.active .faq-chevron {
@@ -259,7 +259,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      color: #8a827b;
+      color: #6b6159;
     }
     
     .faq-item.active .faq-answer {
@@ -271,6 +271,9 @@
       margin: 0 0 12px 0;
       line-height: 1.6;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .faq-answer ul {
@@ -281,6 +284,9 @@
     .faq-answer li {
       margin-bottom: 6px;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     footer {
@@ -410,27 +416,31 @@
     <!-- FAQ 2: Airport Transfers -->
     <div class="faq-item">
       <div class="faq-question">
-        <span>Proposez-vous des transferts depuis l\</span>
+        <span>Proposez-vous des transferts depuis l'aéroport?</span>
         <span class="faq-chevron">▼</span>
       </div>
       <div class="faq-answer">
         <p>Oui — nous proposons plusieurs options fiables pour rendre votre voyage vers DEVOCEAN aussi fluide que possible :</p>
         
         <p><strong>1. Accueil et Transfert avec Connexion Minibus</strong><br>
-        Un chauffeur vous accueillera à l'aéroport, vous accompagnera à la station de collectivo/chapa du centre-ville et s'assurera que vous serez présenté au responsable de la station pour l'attribution de votre siège. Ce n'est pas le voyage le plus confortable, mais de nombreux clients l'apprécient comme une expérience de voyage mozambicaine unique et authentique.<br>
-        Arrivée avant 15h00 requise<br>
-        Mt 1000 pour l'accueil + transfert en taxi (partageable)<br>
-        Coût du minibus : Mt 200 par personne + Mt 100 par bagage supplémentaire</p>
+        Un chauffeur vous accueillera à l'aéroport, vous accompagnera à la station de collectivo/chapa du centre-ville et s'assurera que vous serez présenté au responsable de la station pour l'attribution de votre siège.<br>
+        Ce n'est pas le voyage le plus confortable, mais de nombreux clients l'apprécient comme une expérience de voyage mozambicaine unique et authentique.</p>
         
-        <p><strong>2. Transfert Privé en Voiture (Fiable et confortable)</strong><br>
-        Un chauffeur de confiance vous récupérera à l'aéroport et vous conduira directement au DEVOCEAN Lodge.<br>
-        Toute heure d'arrivée<br>
-        R 1500 ou USD 120 (partageable entre jusqu'à 4 clients)</p>
+        <ul>
+          <li>Arrivée avant 15h00 requise</li>
+          <li>Mt 1000 pour l'accueil + transfert en taxi (partageable)</li>
+          <li>Coût du minibus : Mt 200 par personne + Mt 100 par bagage supplémentaire</li>
+        </ul>
+        
+        <p><strong>2. Taxi Privé Direct au Lodge</strong><br>
+        Une option porte-à-porte pratique pour les familles ou les clients qui préfèrent le confort.</p>
+        
+        <ul>
+          <li>USD 120 par trajet (jusqu'à 3 adultes ou 2 adultes + 2 enfants)</li>
+        </ul>
         
         <p><strong>3. Auto-Transfert (DIY)</strong><br>
         Si vous souhaitez une flexibilité totale, envoyez-nous un e-mail et nous vous enverrons des instructions détaillées et des recommandations.</p>
-        
-        <p style="margin-top: 12px;">Besoin de convertir USD ou Mt dans votre devise ? Utilisez le <a href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=120" target="_blank" rel="noopener noreferrer" style="color:#9e4b13;font-weight:600;text-decoration:underline">convertisseur de devises</a>.</p>
       </div>
     </div>
 

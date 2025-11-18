@@ -231,23 +231,23 @@
       padding: 18px 20px;
       cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 12px;
       font-weight: 600;
       color: #5C5048;
       user-select: none;
     }
     
     .faq-question span {
-      flex: 1;
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     }
     
     .faq-chevron {
-      margin-left: 12px;
       color: #9e4b13;
       transition: transform 0.3s ease;
       font-size: 14px;
+      flex-shrink: 0;
+      margin-left: auto;
     }
     
     .faq-item.active .faq-chevron {
@@ -259,7 +259,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      color: #8a827b;
+      color: #6b6159;
     }
     
     .faq-item.active .faq-answer {
@@ -271,6 +271,9 @@
       margin: 0 0 12px 0;
       line-height: 1.6;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .faq-answer ul {
@@ -281,6 +284,9 @@
     .faq-answer li {
       margin-bottom: 6px;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     footer {
@@ -417,20 +423,24 @@
         <p>Ja — wir bieten mehrere zuverlässige Optionen, um Ihre Reise zum DEVOCEAN so reibungslos wie möglich zu gestalten:</p>
         
         <p><strong>1. Meet & Greet mit Minibus-Verbindung</strong><br>
-        Ein Fahrer empfängt Sie am Flughafen, begleitet Sie zur Innenstadt-Collectivo/Chapa-Station und stellt sicher, dass Sie dem Stationsleiter für Ihre Sitzplatzzuweisung vorgestellt werden. Es ist nicht die komfortabelste Fahrt, aber viele Gäste genießen sie als einzigartiges und authentisches mosambikanisches Reiseerlebnis.<br>
-        Ankunft vor 15:00 Uhr erforderlich<br>
-        Mt 1000 für Meet-and-Greet + Taxitransfer (teilbar)<br>
-        Minibus-Kosten: Mt 200 pro Person + Mt 100 pro zusätzliches Gepäckstück</p>
+        Ein Fahrer empfängt Sie am Flughafen, begleitet Sie zur Innenstadt-Collectivo/Chapa-Station und stellt sicher, dass Sie dem Stationsleiter für Ihre Sitzplatzzuweisung vorgestellt werden.<br>
+        Es ist nicht die komfortabelste Fahrt, aber viele Gäste genießen sie als einzigartiges und authentisches mosambikanisches Reiseerlebnis.</p>
         
-        <p><strong>2. Privater Autotransfer (Zuverlässig und komfortabel)</strong><br>
-        Ein vertrauenswürdiger Fahrer holt Sie am Flughafen ab und bringt Sie direkt zur DEVOCEAN Lodge.<br>
-        Jederzeit Ankunft möglich<br>
-        R 1500 oder USD 120 (teilbar für bis zu 4 Gäste)</p>
+        <ul>
+          <li>Ankunft vor 15:00 Uhr erforderlich</li>
+          <li>Mt 1000 für Meet-and-Greet + Taxitransfer (teilbar)</li>
+          <li>Minibus-Kosten: Mt 200 pro Person + Mt 100 pro zusätzliches Gepäckstück</li>
+        </ul>
+        
+        <p><strong>2. Privattaxi Direkt zur Lodge</strong><br>
+        Eine bequeme Tür-zu-Tür-Option für Familien oder Gäste, die Komfort bevorzugen.</p>
+        
+        <ul>
+          <li>USD 120 pro Fahrt (bis zu 3 Erwachsene oder 2 Erwachsene + 2 Kinder)</li>
+        </ul>
         
         <p><strong>3. Selbsttransfer (DIY)</strong><br>
         Wenn Sie volle Flexibilität wünschen, senden Sie uns eine E-Mail und wir schicken Ihnen Schritt-für-Schritt-Anweisungen und Empfehlungen.</p>
-        
-        <p style="margin-top: 12px;">Müssen Sie USD oder Mt in Ihre Währung umrechnen? Verwenden Sie den <a href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=120" target="_blank" rel="noopener noreferrer" style="color:#9e4b13;font-weight:600;text-decoration:underline">Währungsrechner</a>.</p>
       </div>
     </div>
 

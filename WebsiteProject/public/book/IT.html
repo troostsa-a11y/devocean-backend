@@ -231,23 +231,23 @@
       padding: 18px 20px;
       cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 12px;
       font-weight: 600;
       color: #5C5048;
       user-select: none;
     }
     
     .faq-question span {
-      flex: 1;
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     }
     
     .faq-chevron {
-      margin-left: 12px;
       color: #9e4b13;
       transition: transform 0.3s ease;
       font-size: 14px;
+      flex-shrink: 0;
+      margin-left: auto;
     }
     
     .faq-item.active .faq-chevron {
@@ -259,7 +259,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      color: #8a827b;
+      color: #6b6159;
     }
     
     .faq-item.active .faq-answer {
@@ -271,6 +271,9 @@
       margin: 0 0 12px 0;
       line-height: 1.6;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .faq-answer ul {
@@ -281,6 +284,9 @@
     .faq-answer li {
       margin-bottom: 6px;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     footer {
@@ -417,20 +423,24 @@
         <p>Sì — offriamo diverse opzioni affidabili per rendere il vostro viaggio verso DEVOCEAN il più fluido possibile:</p>
         
         <p><strong>1. Accoglienza e Connessione con Minibus</strong><br>
-        Un autista vi darà il benvenuto all'aeroporto, vi accompagnerà alla stazione collectivo/chapa del centro e si assicurerà che siate presentati al responsabile della stazione per l'assegnazione del posto. Non è il viaggio più comodo, ma molti ospiti lo apprezzano come un'esperienza di viaggio mozambicana unica e autentica.<br>
-        Arrivo prima delle 15:00 richiesto<br>
-        Mt 1000 per accoglienza + trasferimento taxi (condivisibile)<br>
-        Costo minibus: Mt 200 a persona + Mt 100 per bagaglio extra</p>
+        Un autista vi darà il benvenuto all'aeroporto, vi accompagnerà alla stazione collectivo/chapa del centro e si assicurerà che siate presentati al responsabile della stazione per l'assegnazione del posto.<br>
+        Non è il viaggio più comodo, ma molti ospiti lo apprezzano come un'esperienza di viaggio mozambicana unica e autentica.</p>
         
-        <p><strong>2. Trasferimento Privato in Auto (Affidabile e confortevole)</strong><br>
-        Un autista di fiducia vi preleverà all'aeroporto e vi porterà direttamente al DEVOCEAN Lodge.<br>
-        Qualsiasi orario di arrivo<br>
-        R 1500 o USD 120 (condivisibile tra fino a 4 ospiti)</p>
+        <ul>
+          <li>Arrivo prima delle 15:00 richiesto</li>
+          <li>Mt 1000 per accoglienza + trasferimento taxi (condivisibile)</li>
+          <li>Costo minibus: Mt 200 a persona + Mt 100 per bagaglio extra</li>
+        </ul>
+        
+        <p><strong>2. Taxi Privato Diretto al Lodge</strong><br>
+        Un'opzione porta a porta comoda per famiglie o ospiti che preferiscono il comfort.</p>
+        
+        <ul>
+          <li>USD 120 a tratta (fino a 3 adulti o 2 adulti + 2 bambini)</li>
+        </ul>
         
         <p><strong>3. Trasferimento Autonomo (FAI DA TE)</strong><br>
         Se desiderate la massima flessibilità, inviateci un'email e vi invieremo indicazioni dettagliate e raccomandazioni.</p>
-        
-        <p style="margin-top: 12px;">Hai bisogno di convertire USD o Mt nella tua valuta? Usa il <a href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=120" target="_blank" rel="noopener noreferrer" style="color:#9e4b13;font-weight:600;text-decoration:underline">convertitore di valuta</a>.</p>
       </div>
     </div>
 

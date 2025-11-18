@@ -231,7 +231,7 @@
       padding: 18px 20px;
       cursor: pointer;
       display: flex;
-      justify-content: space-between;
+      gap: 12px;
       align-items: center;
       font-weight: 600;
       color: #5C5048;
@@ -239,12 +239,13 @@
     }
     
     .faq-question span {
-      flex: 1;
+      
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     }
     
     .faq-chevron {
-      margin-left: 12px;
+      flex-shrink: 0;
+      margin-left: auto;
       color: #9e4b13;
       transition: transform 0.3s ease;
       font-size: 14px;
@@ -259,7 +260,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      color: #8a827b;
+      color: #6b6159;
     }
     
     .faq-item.active .faq-answer {
@@ -271,6 +272,9 @@
       margin: 0 0 12px 0;
       line-height: 1.6;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .faq-answer ul {
@@ -281,6 +285,9 @@
     .faq-answer li {
       margin-bottom: 6px;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     footer {
@@ -417,20 +424,24 @@
         <p>Ja — we bieden verschillende betrouwbare opties om uw reis naar DEVOCEAN zo soepel mogelijk te laten verlopen:</p>
         
         <p><strong>1. Meet & Greet met Minibus Verbinding</strong><br>
-        Een chauffeur zal u verwelkomen op de luchthaven, u begeleiden naar het collectivo/chapa station in het centrum, en ervoor zorgen dat u wordt voorgesteld aan de stationmanager voor uw stoeltoewijzing. Het is niet de meest comfortabele reis, maar veel gasten genieten ervan als een unieke en authentieke Mozambikaanse reiservaring.<br>
-        Aankomst voor 15:00 vereist<br>
-        Mt 1000 voor meet-and-greet + taxi transfer (te delen)<br>
-        Minibus kosten: Mt 200 per persoon + Mt 100 per extra tas</p>
+        Een chauffeur zal u verwelkomen op de luchthaven, u begeleiden naar het collectivo/chapa station in het centrum, en ervoor zorgen dat u wordt voorgesteld aan de stationmanager voor uw stoeltoewijzing.<br>
+        Het is niet de meest comfortabele reis, maar veel gasten genieten ervan als een unieke en authentieke Mozambikaanse reiservaring.</p>
         
-        <p><strong>2. Privé Auto Transfer (Betrouwbaar en comfortabel)</strong><br>
-        Een vertrouwde chauffeur haalt u op van de luchthaven en brengt u helemaal naar DEVOCEAN Lodge.<br>
-        Elke aankomsttijd<br>
-        R 1500 of USD 120 (te delen met maximaal 4 gasten)</p>
+        <ul>
+          <li>Aankomst voor 15:00 vereist</li>
+          <li>Mt 1000 voor meet-and-greet + taxi transfer (te delen)</li>
+          <li>Minibus kosten: Mt 200 per persoon + Mt 100 per extra tas</li>
+        </ul>
+        
+        <p><strong>2. Privé Taxi Direct naar de Lodge</strong><br>
+        Een comfortabele deur-tot-deur optie voor gezinnen of gasten die comfort verkiezen.</p>
+        
+        <ul>
+          <li>USD 120 per enkele reis (tot 3 volwassenen of 2 volwassenen + 2 kinderen)</li>
+        </ul>
         
         <p><strong>3. Zelf-Transfer (Doe-het-zelf)</strong><br>
         Als u volledige flexibiliteit wilt, stuur ons een e-mail en we sturen u stapsgewijze aanwijzingen en aanbevelingen.</p>
-        
-        <p style="margin-top: 12px;">Wilt u USD of Mt naar uw valuta omrekenen? Gebruik de <a href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=120" target="_blank" rel="noopener noreferrer" style="color:#9e4b13;font-weight:600;text-decoration:underline">valutaconverter</a>.</p>
       </div>
     </div>
 

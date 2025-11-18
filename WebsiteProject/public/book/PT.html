@@ -231,23 +231,23 @@
       padding: 18px 20px;
       cursor: pointer;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 12px;
       font-weight: 600;
       color: #5C5048;
       user-select: none;
     }
     
     .faq-question span {
-      flex: 1;
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
     }
     
     .faq-chevron {
-      margin-left: 12px;
       color: #9e4b13;
       transition: transform 0.3s ease;
       font-size: 14px;
+      flex-shrink: 0;
+      margin-left: auto;
     }
     
     .faq-item.active .faq-chevron {
@@ -259,7 +259,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      color: #8a827b;
+      color: #6b6159;
     }
     
     .faq-item.active .faq-answer {
@@ -271,6 +271,9 @@
       margin: 0 0 12px 0;
       line-height: 1.6;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     .faq-answer ul {
@@ -281,6 +284,9 @@
     .faq-answer li {
       margin-bottom: 6px;
       font-size: clamp(0.9rem, 2.2vw, 0.95rem);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
     }
     
     footer {
@@ -417,20 +423,24 @@
         <p>Sim — oferecemos algumas opções confiáveis para tornar sua viagem ao DEVOCEAN o mais tranquila possível:</p>
         
         <p><strong>1. Recepção e Conexão com Minibus</strong><br>
-        Um motorista irá recebê-lo no aeroporto, acompanhá-lo à estação de collectivo/chapa do centro e garantir que você seja apresentado ao gerente da estação para a atribuição do seu assento. Não é a viagem mais confortável, mas muitos hóspedes a apreciam como uma experiência de viagem moçambicana única e autêntica.<br>
-        Chegada antes das 15:00 necessária<br>
-        Mt 1000 para recepção + transfer de táxi (partilhável)<br>
-        Custo do minibus: Mt 200 por pessoa + Mt 100 por bagagem extra</p>
+        Um motorista irá recebê-lo no aeroporto, acompanhá-lo à estação de collectivo/chapa do centro e garantir que você seja apresentado ao gerente da estação para a atribuição do seu assento.<br>
+        Não é a viagem mais confortável, mas muitos hóspedes a apreciam como uma experiência de viagem moçambicana única e autêntica.</p>
         
-        <p><strong>2. Transfer Privado de Carro (Confiável e confortável)</strong><br>
-        Um motorista de confiança irá buscá-lo no aeroporto e levá-lo diretamente ao DEVOCEAN Lodge.<br>
-        Qualquer horário de chegada<br>
-        R 1500 ou USD 120 (partilhável entre até 4 hóspedes)</p>
+        <ul>
+          <li>Chegada antes das 15:00 necessária</li>
+          <li>Mt 1000 para recepção + transfer de táxi (partilhável)</li>
+          <li>Custo do minibus: Mt 200 por pessoa + Mt 100 por bagagem extra</li>
+        </ul>
+        
+        <p><strong>2. Táxi Privado Direto ao Lodge</strong><br>
+        Uma opção porta-a-porta conveniente para famílias ou hóspedes que preferem conforto.</p>
+        
+        <ul>
+          <li>USD 120 por trajeto (até 3 adultos ou 2 adultos + 2 crianças)</li>
+        </ul>
         
         <p><strong>3. Auto-Transfer (Faça Você Mesmo)</strong><br>
         Se desejar total flexibilidade, envie-nos um e-mail e enviaremos instruções passo a passo e recomendações.</p>
-        
-        <p style="margin-top: 12px;">Precisa converter USD ou Mt para sua moeda? Use o <a href="https://fx-rate.net/calculator/?c_input=USD&cp_input=USD&amount_from=120" target="_blank" rel="noopener noreferrer" style="color:#9e4b13;font-weight:600;text-decoration:underline">conversor de moedas</a>.</p>
       </div>
     </div>
 
