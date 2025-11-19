@@ -114,16 +114,37 @@
   <!-- Modulepreload main JS entry - flattens critical request chain -->
   <!-- Auto-injected during build by vite-plugin-preload-entry.js -->
   
-  <!-- Perf hints for tag loaders & external services -->
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="preconnect" href="https://www.google.com" crossorigin>
-  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+  <!-- DNS prefetch for external services (preconnect removed for delayed scripts) -->
   <link rel="dns-prefetch" href="https://book.devoceanlodge.com">
-  <link rel="dns-prefetch" href="https://cdn.trustindex.io">
-  <link rel="dns-prefetch" href="https://cdn-cookieyes.com">
 
-  <!-- User Engagement Detection (Lazy Loaded for Performance) -->
-  <script src="/engagement-tracker.js" defer></script>
+  <!-- User Engagement Detection (Delayed Load - After Interaction) -->
+  <script>
+    (function() {
+      var trackerLoaded = false;
+      var trackerScheduled = false;
+      function loadTracker() {
+        if (trackerLoaded) return;
+        trackerLoaded = true;
+        var s = document.createElement('script');
+        s.src = '/engagement-tracker.js';
+        document.head.appendChild(s);
+      }
+      function scheduleTracker() {
+        if (trackerScheduled) return;
+        trackerScheduled = true;
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadTracker, {timeout: 2000});
+        } else {
+          setTimeout(loadTracker, 0);
+        }
+      }
+      // Load after 6 seconds or on first interaction
+      setTimeout(scheduleTracker, 6000);
+      ['scroll','mousemove','touchstart','click'].forEach(function(e){
+        window.addEventListener(e, scheduleTracker, {once: true, passive: true});
+      });
+    })();
+  </script>
 
   <!-- reCAPTCHA v3 (lazy loaded when contact form visible) -->
   <script>
@@ -198,251 +219,6 @@
   <meta name="twitter:image" content="https://devoceanlodge.com/photos/hero01.jpg" />
   <meta name="twitter:image:alt" content="DEVOCEAN Lodge beachfront accommodation in Ponta do Ouro, Mozambique" />
 
-  <!-- JSON-LD (valid JSON) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["LodgingBusiness","Hotel"],
-    "@id": "https://devoceanlodge.com/#lodge",
-    "name": "DEVOCEAN Lodge",
-    "brand": { "@type": "Brand", "name": "TERRAfrique LDA" },
-    "url": "https://devoceanlodge.com/",
-    "logo": "https://devoceanlodge.com/images/Logo2.png",
-    "image": [
-      "https://devoceanlodge.com/photos/hero01.jpg",
-      "https://devoceanlodge.com/photos/hero02.jpg",
-      "https://devoceanlodge.com/photos/hero03.jpg",
-      "https://devoceanlodge.com/photos/hero04.jpg",
-      "https://devoceanlodge.com/photos/hero05.jpg"
-    ],
-    "description": "Eco-friendly lodge in Ponta do Ouro, Southern Mozambique — safari tents, thatched chalet and garden cottage a few minutes from the beach.",
-    "email": "info@devoceanlodge.com",
-    "telephone": "+258 84 418 2252",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua C, parcela 12, 1118",
-      "addressLocality": "Ponta do Ouro",
-      "addressRegion": "Matutuine",
-      "postalCode": "1118",
-      "addressCountry": "MZ"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -26.841994852732736,
-      "longitude": 32.88504331196165
-    },
-    "hasMap": "https://www.google.com/maps?q=-26.841994852732736,32.88504331196165&z=13&output=embed",
-    "checkinTime": "14:00",
-    "checkoutTime": "10:00",
-    "priceRange": "$$",
-    "petsAllowed": false,
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Eco-friendly lodging", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Free high-speed Wi-Fi", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Breakfast available", "value": true }
-    ],
-    "availableLanguage": [
-      { "@type": "Language", "name": "English", "alternateName": "en" },
-      { "@type": "Language", "name": "Portuguese", "alternateName": "pt" },
-      { "@type": "Language", "name": "Portuguese (Mozambique)", "alternateName": "pt-MZ" },
-      { "@type": "Language", "name": "Dutch", "alternateName": "nl" },
-      { "@type": "Language", "name": "French", "alternateName": "fr" },
-      { "@type": "Language", "name": "Italian", "alternateName": "it" },
-      { "@type": "Language", "name": "German", "alternateName": "de" },
-      { "@type": "Language", "name": "Spanish", "alternateName": "es" },
-      { "@type": "Language", "name": "Swedish", "alternateName": "sv" },
-      { "@type": "Language", "name": "Polish", "alternateName": "pl" }
-    ],
-    "areaServed": { "@type": "Country", "name": "Mozambique" },
-    "sameAs": [
-      "https://www.facebook.com/devoceanmz/",
-      "https://www.instagram.com/devoceanmz/",
-      "https://x.com/DEVOCEANMZ",
-      "https://www.linkedin.com/company/devocean-lodge",
-      "https://www.tiktok.com/@devoceanlodge",
-      "https://www.pinterest.com/devoceansa/",
-      "https://www.youtube.com/@DEVOCEAN_MZ"
-    ],
-    "potentialAction": {
-      "@type": "ReserveAction",
-      "target": { "@type": "EntryPoint", "urlTemplate": "https://devoceanlodge.com/book/EN.html" },
-      "result": { "@type": "LodgingReservation" }
-    }
-  }
-  </script>
-
-  <!-- Locale initializer: runs before React/Vite -->
-  <script>
-    (function () {
-      try {
-        var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
-
-        // read current state
-        var src = localStorage.getItem("site.lang_source") || "auto";
-        var curr = localStorage.getItem("site.currency") || null;
-        var lang = localStorage.getItem("site.lang") || null;
-
-        // helpers
-        function normLang(nav) {
-          nav = String(nav || "en").toLowerCase();
-          var base = nav.split("-")[0];
-          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
-          if (base === "pt-pt" || base === "pt-br") base = "pt";
-          if (SUPPORTED.indexOf(base) === -1) base = "en";
-          return base;
-        }
-        function inferCurrency(langNow) {
-          // Priority 1: Use Cloudflare IP geolocation (most accurate)
-          if (window.__CF_COUNTRY__) {
-            var CC2CUR = {
-              // Europe
-              GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", 
-              AT: "EUR", FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK", DK: "DKK", CH: "CHF", CZ: "CZK", 
-              HU: "HUF", RO: "RON", HR: "EUR", SI: "EUR", SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR", CY: "EUR",
-              
-              // Africa
-              ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX", ZW: "USD", BW: "BWP", NA: "NAD", 
-              EG: "EGP", MA: "MAD", AO: "AOA", GH: "GHS", NG: "NGN",
-              
-              // Americas
-              US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS", CL: "CLP", CO: "COP", PE: "PEN",
-              
-              // Asia
-              CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB", SG: "SGD", MY: "MYR", ID: "IDR", 
-              PH: "PHP", VN: "VND", AE: "AED", SA: "SAR", RU: "RUB",
-              
-              // Oceania
-              AU: "AUD", NZ: "NZD"
-            };
-            
-            var cc = String(window.__CF_COUNTRY__).toUpperCase();
-            if (CC2CUR[cc]) {
-              return CC2CUR[cc];
-            }
-          }
-          
-          // Priority 2: Browser language hints (fallback only)
-          var list = (navigator.languages && navigator.languages.length)
-            ? navigator.languages
-            : [navigator.language].filter(Boolean);
-
-          var HINT = {
-            "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR",
-            "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR"
-          };
-          var first = (list[0] || "").toLowerCase();
-
-          // Return language hint or USD fallback
-          return HINT[first] || (langNow === "ptmz" ? "MZN" : "USD");
-        }
-
-        // ensure lang_source exists
-        if (!localStorage.getItem("site.lang_source")) {
-          localStorage.setItem("site.lang_source", "auto");
-          src = "auto";
-        }
-
-        if (src === "auto") {
-          // Priority 1: Use Cloudflare IP geolocation (same as hero placeholder)
-          var detectedLang = null;
-          if (window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
-            var CC2LANG = {
-              US: "en", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
-              ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en",
-              PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
-              NL: "nl", BE: "nl",
-              FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr",
-              IT: "it", SM: "it", VA: "it",
-              DE: "de", AT: "de", LI: "de",
-              ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
-              CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
-              SE: "sv", FI: "sv",
-              PL: "pl",
-              JP: "ja", CN: "zh", RU: "ru"
-            };
-            var cc = String(window.__CF_COUNTRY__).toUpperCase();
-            detectedLang = CC2LANG[cc] || null;
-          }
-          
-          // Priority 2: Fall back to browser language
-          if (!detectedLang) {
-            detectedLang = normLang(navigator.language);
-          }
-          
-          localStorage.setItem("site.lang", detectedLang);
-          localStorage.setItem("site.currency", inferCurrency(detectedLang));
-          lang = detectedLang;
-          curr = localStorage.getItem("site.currency");
-        } else {
-          // USER: only backfill if missing
-          if (!lang) {
-            lang = normLang(navigator.language);
-            localStorage.setItem("site.lang", lang);
-          }
-          if (!curr) {
-            curr = inferCurrency(lang);
-            localStorage.setItem("site.currency", curr);
-          }
-        }
-
-        // reflect on <html>
-        document.documentElement.setAttribute("lang", lang || "en");
-      } catch (e) { }
-    })();
-  </script>
-
-  <!-- Global locale setter -->
-  <script>
-    (function () {
-      if (window.setSiteLocale) return;
-
-      function normLang(s) {
-        s = String(s || '').toLowerCase().replace('_', '-');
-        if (s === 'pt-mz') s = 'ptmz';
-        if (s === 'pt-pt' || s === 'pt-br') s = 'pt';
-        if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2);
-        return s || 'en';
-      }
-      function clampCur(c) {
-        if (!c) return null;
-        c = String(c).toUpperCase().replace(/[^A-Z]/g, '');
-        return c.length === 3 ? c : null;
-      }
-      function setPrefCookies(lang, currency) {
-        var host = location.hostname;
-        var isLocal = (host === "localhost") || (host === "127.0.0.1") || /^\d+\.\d+\.\d+\.\d+$/.test(host);
-        var domainPart = isLocal ? "" : ";domain=.devoceanlodge.com";
-        var securePart = location.protocol === "https:" ? ";Secure" : "";
-        var base = ";max-age=31536000;path=/;SameSite=Lax" + domainPart + securePart;
-        if (lang) document.cookie = "lang=" + lang + base;
-        if (currency) document.cookie = "currency=" + currency + base;
-      }
-
-      window.setSiteLocale = function setSiteLocale({ lang, currency } = {}) {
-        var L, C;
-        try {
-          L = lang ? normLang(lang) : (localStorage.getItem('site.lang') || 'en');
-          C = currency ? clampCur(currency) : (localStorage.getItem('site.currency') || 'USD');
-        } catch (e) {
-          // Storage unavailable - use defaults
-          L = lang ? normLang(lang) : 'en';
-          C = currency ? clampCur(currency) : 'USD';
-        }
-
-        try {
-          localStorage.setItem('site.lang', L);
-          localStorage.setItem('site.currency', C || 'USD');
-          localStorage.setItem('site.lang_source', 'user');
-          document.documentElement.setAttribute('lang', L);
-        } catch { }
-
-        setPrefCookies(L, C || 'USD');
-      };
-    })();
-  </script>
-
-  <!-- Trustindex Floating Certificate -->
-  <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 
   <!-- Inline Critical CSS (mobile-first: prevents 160ms CSS blocking on 4G) -->
   <style>
@@ -825,6 +601,213 @@
       }
     })();
   </script>
+
+  <!-- JSON-LD structured data (moved to end for mobile FCP optimization) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LodgingBusiness","Hotel"],
+    "@id": "https://devoceanlodge.com/#lodge",
+    "name": "DEVOCEAN Lodge",
+    "brand": { "@type": "Brand", "name": "TERRAfrique LDA" },
+    "url": "https://devoceanlodge.com/",
+    "logo": "https://devoceanlodge.com/images/Logo2.png",
+    "image": [
+      "https://devoceanlodge.com/photos/hero01.jpg",
+      "https://devoceanlodge.com/photos/hero02.jpg",
+      "https://devoceanlodge.com/photos/hero03.jpg",
+      "https://devoceanlodge.com/photos/hero04.jpg",
+      "https://devoceanlodge.com/photos/hero05.jpg"
+    ],
+    "description": "Eco-friendly lodge in Ponta do Ouro, Southern Mozambique — safari tents, thatched chalet and garden cottage a few minutes from the beach.",
+    "email": "info@devoceanlodge.com",
+    "telephone": "+258 84 418 2252",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua C, parcela 12, 1118",
+      "addressLocality": "Ponta do Ouro",
+      "addressRegion": "Matutuine",
+      "postalCode": "1118",
+      "addressCountry": "MZ"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.841994852732736,
+      "longitude": 32.88504331196165
+    },
+    "hasMap": "https://www.google.com/maps?q=-26.841994852732736,32.88504331196165&z=13&output=embed",
+    "checkinTime": "14:00",
+    "checkoutTime": "10:00",
+    "priceRange": "$$",
+    "petsAllowed": false,
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Eco-friendly lodging", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Free high-speed Wi-Fi", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Breakfast available", "value": true }
+    ],
+    "availableLanguage": [
+      { "@type": "Language", "name": "English", "alternateName": "en" },
+      { "@type": "Language", "name": "Portuguese", "alternateName": "pt" },
+      { "@type": "Language", "name": "Portuguese (Mozambique)", "alternateName": "pt-MZ" },
+      { "@type": "Language", "name": "Dutch", "alternateName": "nl" },
+      { "@type": "Language", "name": "French", "alternateName": "fr" },
+      { "@type": "Language", "name": "Italian", "alternateName": "it" },
+      { "@type": "Language", "name": "German", "alternateName": "de" },
+      { "@type": "Language", "name": "Spanish", "alternateName": "es" },
+      { "@type": "Language", "name": "Swedish", "alternateName": "sv" },
+      { "@type": "Language", "name": "Polish", "alternateName": "pl" }
+    ],
+    "areaServed": { "@type": "Country", "name": "Mozambique" },
+    "sameAs": [
+      "https://www.facebook.com/devoceanmz/",
+      "https://www.instagram.com/devoceanmz/",
+      "https://x.com/DEVOCEANMZ",
+      "https://www.linkedin.com/company/devocean-lodge",
+      "https://www.tiktok.com/@devoceanlodge",
+      "https://www.pinterest.com/devoceansa/",
+      "https://www.youtube.com/@DEVOCEAN_MZ"
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "target": { "@type": "EntryPoint", "urlTemplate": "https://devoceanlodge.com/book/EN.html" },
+      "result": { "@type": "LodgingReservation" }
+    }
+  }
+  </script>
+
+  <!-- Locale initializer (moved to end for mobile FCP optimization) -->
+  <script>
+    (function () {
+      try {
+        var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
+        var src = localStorage.getItem("site.lang_source") || "auto";
+        var curr = localStorage.getItem("site.currency") || null;
+        var lang = localStorage.getItem("site.lang") || null;
+
+        function normLang(nav) {
+          nav = String(nav || "en").toLowerCase();
+          var base = nav.split("-")[0];
+          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
+          if (base === "pt-pt" || base === "pt-br") base = "pt";
+          if (SUPPORTED.indexOf(base) === -1) base = "en";
+          return base;
+        }
+        function inferCurrency(langNow) {
+          if (window.__CF_COUNTRY__) {
+            var CC2CUR = {
+              GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", 
+              AT: "EUR", FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK", DK: "DKK", CH: "CHF", CZ: "CZK", 
+              HU: "HUF", RO: "RON", HR: "EUR", SI: "EUR", SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR", CY: "EUR",
+              ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX", ZW: "USD", BW: "BWP", NA: "NAD", 
+              EG: "EGP", MA: "MAD", AO: "AOA", GH: "GHS", NG: "NGN",
+              US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS", CL: "CLP", CO: "COP", PE: "PEN",
+              CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB", SG: "SGD", MY: "MYR", ID: "IDR", 
+              PH: "PHP", VN: "VND", AE: "AED", SA: "SAR", RU: "RUB",
+              AU: "AUD", NZ: "NZD"
+            };
+            var cc = String(window.__CF_COUNTRY__).toUpperCase();
+            if (CC2CUR[cc]) return CC2CUR[cc];
+          }
+          var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language].filter(Boolean);
+          var HINT = { "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR", "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR" };
+          var first = (list[0] || "").toLowerCase();
+          return HINT[first] || (langNow === "ptmz" ? "MZN" : "USD");
+        }
+
+        if (!localStorage.getItem("site.lang_source")) {
+          localStorage.setItem("site.lang_source", "auto");
+          src = "auto";
+        }
+
+        if (src === "auto") {
+          var detectedLang = null;
+          if (window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
+            var CC2LANG = {
+              US: "en", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
+              ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en",
+              PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
+              NL: "nl", BE: "nl",
+              FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr",
+              IT: "it", SM: "it", VA: "it",
+              DE: "de", AT: "de", LI: "de",
+              ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
+              CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
+              SE: "sv", FI: "sv",
+              PL: "pl",
+              JP: "ja", CN: "zh", RU: "ru"
+            };
+            var cc = String(window.__CF_COUNTRY__).toUpperCase();
+            detectedLang = CC2LANG[cc] || null;
+          }
+          if (!detectedLang) {
+            detectedLang = normLang(navigator.language);
+          }
+          localStorage.setItem("site.lang", detectedLang);
+          localStorage.setItem("site.currency", inferCurrency(detectedLang));
+          lang = detectedLang;
+          curr = localStorage.getItem("site.currency");
+        } else {
+          if (!lang) {
+            lang = normLang(navigator.language);
+            localStorage.setItem("site.lang", lang);
+          }
+          if (!curr) {
+            curr = inferCurrency(lang);
+            localStorage.setItem("site.currency", curr);
+          }
+        }
+        document.documentElement.setAttribute("lang", lang || "en");
+      } catch (e) { }
+    })();
+  </script>
+
+  <!-- Global locale setter -->
+  <script>
+    (function () {
+      if (window.setSiteLocale) return;
+      function normLang(s) {
+        s = String(s || '').toLowerCase().replace('_', '-');
+        if (s === 'pt-mz') s = 'ptmz';
+        if (s === 'pt-pt' || s === 'pt-br') s = 'pt';
+        if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2);
+        return s || 'en';
+      }
+      function clampCur(c) {
+        if (!c) return null;
+        c = String(c).toUpperCase().replace(/[^A-Z]/g, '');
+        return c.length === 3 ? c : null;
+      }
+      function setPrefCookies(lang, currency) {
+        var host = location.hostname;
+        var isLocal = (host === "localhost") || (host === "127.0.0.1") || /^\d+\.\d+\.\d+\.\d+$/.test(host);
+        var domainPart = isLocal ? "" : ";domain=.devoceanlodge.com";
+        var securePart = location.protocol === "https:" ? ";Secure" : "";
+        var base = ";max-age=31536000;path=/;SameSite=Lax" + domainPart + securePart;
+        if (lang) document.cookie = "lang=" + lang + base;
+        if (currency) document.cookie = "currency=" + currency + base;
+      }
+      window.setSiteLocale = function setSiteLocale({ lang, currency } = {}) {
+        var L, C;
+        try {
+          L = lang ? normLang(lang) : (localStorage.getItem('site.lang') || 'en');
+          C = currency ? clampCur(currency) : (localStorage.getItem('site.currency') || 'USD');
+        } catch (e) {
+          L = lang ? normLang(lang) : 'en';
+          C = currency ? clampCur(currency) : 'USD';
+        }
+        try {
+          localStorage.setItem('site.lang', L);
+          localStorage.setItem('site.currency', C || 'USD');
+          localStorage.setItem('site.lang_source', 'user');
+          document.documentElement.setAttribute('lang', L);
+        } catch { }
+        setPrefCookies(L, C || 'USD');
+      };
+    })();
+  </script>
+
+  <!-- Trustindex Floating Certificate (delayed) -->
+  <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 </body>
 
 </html>
