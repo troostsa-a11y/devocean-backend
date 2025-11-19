@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking Canceled – DEVOCEAN Lodge</title>
+  <meta name="description" content="Your booking at DEVOCEAN Lodge has been canceled. We hope to welcome you another time!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // EU+UK = denied by default
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted',
+      region: [
+        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
+        'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB'
+      ]
+    });
+
+    // Everywhere else = granted
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted'
+    });
+  </script>
+
+  <!-- Google Tag Manager (Delayed Load for PageSpeed) -->
+  <script>
+    (function() {
+      var gtmLoaded = false;
+      function loadGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-532W3HH2');
+      }
+      // Load after 3 seconds
+      setTimeout(loadGTM, 3000);
+      // Or load on first user interaction
+      ['scroll','mousemove','touchstart','click'].forEach(function(e){
+        window.addEventListener(e, loadGTM, {once: true, passive: true});
+      });
+    })();
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Start cookieyes banner -->
+  <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js" defer></script>
+  <!-- End cookieyes banner -->
+
+  <!-- Trustindex Rich Snippet for Google Search -->
+  <script type="text/javascript" defer async src="https://cdn.trustindex.io/assets/js/richsnippet.js?caf207364508g84f"></script>
+  <!-- End Trustindex Rich Snippet -->
+
+  <style>
+    :root{
+      --brand:#9e4b13; --brand-2:#b65a1a; --ink:#5C5048;
+      --bg:#fffaf6; --card:#ffffff; --muted:#8a827b; --ring:#9e4b13;
+    }
+    html,body{height:100%}
+    body{margin:0;font-family:"Raleway",system-ui,-apple-system,Segoe UI,Roboto,Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    .container{max-width:900px;margin:0 auto;padding:clamp(14px,3vw,24px)}
+    header{position:sticky;top:0;z-index:30;background:rgba(255,250,246,0.86);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #eee}
+    .bar{display:flex;align-items:center;gap:16px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{height:48px;width:auto;border-radius:12px}
+    .title{display:flex;flex-direction:column;line-height:1}
+    .title .name{font-weight:800;letter-spacing:.2px}
+    .title .loc{font-weight:600;color:var(--muted);font-size:.95rem}
+    .btn{display:inline-block;border:none;border-radius:999px;padding:12px 24px;font-weight:700;cursor:pointer;text-decoration:none}
+    .btn.primary{background:var(--brand);color:#fff}
+    .btn.primary:hover{background:var(--brand-2)}
+    .btn.secondary{background:transparent;color:var(--brand);border:2px solid var(--brand)}
+    .btn.secondary:hover{background:rgba(158,75,19,0.05)}
+    main{min-height:70vh;padding:40px 0}
+    .card{background:var(--card);border:1px solid #eee;border-radius:18px;box-shadow:0 6px 24px rgba(0,0,0,.06);padding:40px;text-align:center}
+    .cancel-icon{font-size:4rem;margin-bottom:20px}
+    h1{margin:0 0 16px;font-size:2.2rem;letter-spacing:.2px;color:var(--ink)}
+    p{margin:0 0 12px;color:var(--muted);line-height:1.6;font-size:1.05rem}
+    .muted{color:var(--muted)}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin:32px 0;text-align:left}
+    .info-card{background:#f9f9f9;border:1px solid #eee;border-radius:12px;padding:20px}
+    .info-card h3{margin:0 0 8px;font-size:1.1rem;color:var(--ink)}
+    .info-card p{margin:0;font-size:.95rem}
+    .info-card a{color:var(--brand);text-decoration:none;font-weight:600}
+    .info-card a:hover{text-decoration:underline}
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+    .countdown{margin-top:14px;font-size:.98rem}
+    footer{margin-top:40px;padding:24px 0;border-top:1px solid #eee;color:var(--muted);font-size:.95rem;text-align:center}
+    @media(max-width:860px){.title .loc{display:none}.actions{flex-direction:column}}
+  </style>
+  <!-- Trustindex Floating Certificate -->
+  <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-532W3HH2"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header>
+    <div class="container bar">
+      <a class="brand" href="https://devoceanlodge.com" target="_blank" rel="noopener">
+        <img src="/logo/logo.svg" alt="DEVOCEAN Lodge logo" />
+        <span class="title">
+          <span class="name">DEVOCEAN Lodge</span>
+          <span class="loc">Ponta do Ouro • Mozambique</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="card" role="status" aria-live="polite">
+      <div class="cancel-icon">❌</div>
+
+      <!-- Fallback English (will be replaced by JS) -->
+      <h1 id="t-title">Booking Canceled</h1>
+      <p id="t-lead">Your booking at DEVOCEAN Lodge has been canceled.</p>
+      <p id="t-sub">You will not receive a confirmation email. We hope to welcome you another time!</p>
+
+      <div class="info-grid">
+        <div class="info-card">
+          <h3 id="t-help-h">💬 Need Assistance?</h3>
+          <p id="t-help-p">
+            WhatsApp: <a id="waLink" href="https://wa.me/258844182252">+258 84 418 2252</a><br>
+            <span id="t-email-label">Email</span>: <a href="mailto:info@devoceanlodge.com">info@devoceanlodge.com</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a id="ctaPrimary" class="btn primary" href="https://devoceanlodge.com">Return to Homepage</a>
+        <a id="ctaSecondary" class="btn secondary" href="https://devoceanlodge.com/story.html">Learn About Our Story</a>
+      </div>
+
+      <div class="countdown">
+        <span id="t-redirect-msg">You'll be redirected in</span> <strong id="seconds">6</strong> <span id="t-seconds">seconds</span>. 
+        <a href="#" id="cancelRedirect" class="muted">Stay on this page</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> DEVOCEAN Lodge • Ponta do Ouro, Mozambique •
+      <a href="#" onclick="return setLegalLink('privacy')" style="color:var(--brand);text-decoration:none">Privacy</a> •
+      <a href="#" onclick="return setLegalLink('cookies')" style="color:var(--brand);text-decoration:none">Cookies</a> •
+      <a href="#" onclick="return setLegalLink('terms')" style="color:var(--brand);text-decoration:none">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* === Safe localStorage helpers (prevents crashes in Edge/private mode) === */
+    function safeGetItem(key) {
+      try {
+        return localStorage.getItem(key);
+      } catch (e) {
+        return null;
+      }
+    }
+    
+    function safeSetItem(key, value) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (e) {
+        // Silent fail - storage unavailable
+      }
+    }
+
+    /* === Language detection (accepts ?lang=xx or ?locale=xx) === */
+    function detectSiteLanguage(){
+      const qs = new URLSearchParams(location.search);
+      const urlLang = qs.get('lang') || qs.get('locale');
+      if (urlLang){ safeSetItem('selectedLanguage', urlLang); return urlLang; }
+      const saved = safeGetItem('selectedLanguage');
+      if (saved) return saved;
+      return navigator.language || 'en-GB';
+    }
+    const baseLang = code => (code||'en').toLowerCase().split('-')[0];
+    const supported = ['en','de','es','fr','it','nl','pt','ru','zh','sv','ja'];
+    const mapLang = code => supported.includes(baseLang(code)) ? baseLang(code) : 'en';
+
+    /* === Translations === */
+    const TR = {
+      en:{titleTag:"Booking Canceled – DEVOCEAN Lodge",
+          desc:"Your booking at DEVOCEAN Lodge has been canceled. We hope to welcome you another time!",
+          h1:"Booking Canceled",
+          lead:"Your booking at DEVOCEAN Lodge has been canceled.",
+          sub:"You will not receive a confirmation email. We hope to welcome you another time!",
+          helpH:"💬 Need Assistance?",
+          emailLabel:"Email",
+          ctaPrimary:"Return to Homepage",
+          ctaSecondary:"Learn About Our Story",
+          redirectMsg:"You'll be redirected in", seconds:"seconds", stay:"Stay on this page",
+          homePath:"/", storyPath:"/story.html"},
+      de:{titleTag:"Buchung storniert – DEVOCEAN Lodge",
+          desc:"Ihre Buchung bei DEVOCEAN Lodge wurde storniert. Wir freuen uns, Sie ein anderes Mal zu begrüßen!",
+          h1:"Buchung storniert",
+          lead:"Ihre Buchung bei der DEVOCEAN Lodge wurde storniert.",
+          sub:"Sie erhalten keine Bestätigungs-E-Mail. Wir freuen uns darauf, Sie ein anderes Mal zu begrüßen!",
+          helpH:"💬 Benötigen Sie Hilfe?",
+          emailLabel:"E-Mail",
+          ctaPrimary:"Zur Startseite",
+          ctaSecondary:"Erfahren Sie unsere Geschichte",
+          redirectMsg:"Sie werden weitergeleitet in", seconds:"Sekunden", stay:"Auf dieser Seite bleiben",
+          homePath:"/", storyPath:"/story.html"},
+      es:{titleTag:"Reserva cancelada – DEVOCEAN Lodge",
+          desc:"Su reserva en DEVOCEAN Lodge ha sido cancelada. ¡Esperamos darle la bienvenida en otra ocasión!",
+          h1:"Reserva cancelada",
+          lead:"Su reserva en DEVOCEAN Lodge ha sido cancelada.",
+          sub:"No recibirá un correo de confirmación. ¡Esperamos darle la bienvenida en otra ocasión!",
+          helpH:"💬 ¿Necesita ayuda?",
+          emailLabel:"Email",
+          ctaPrimary:"Volver a la página principal",
+          ctaSecondary:"Conozca nuestra historia",
+          redirectMsg:"Será redirigido en", seconds:"segundos", stay:"Permanecer en esta página",
+          homePath:"/", storyPath:"/story.html"},
+      fr:{titleTag:"Réservation annulée – DEVOCEAN Lodge",
+          desc:"Votre réservation à la DEVOCEAN Lodge a été annulée. Nous espérons vous accueillir une autre fois !",
+          h1:"Réservation annulée",
+          lead:"Votre réservation à la DEVOCEAN Lodge a été annulée.",
+          sub:"Vous ne recevrez pas d'e-mail de confirmation. Nous espérons vous accueillir une autre fois !",
+          helpH:"💬 Besoin d'aide ?",
+          emailLabel:"E-mail",
+          ctaPrimary:"Retour à l'accueil",
+          ctaSecondary:"Découvrir notre histoire",
+          redirectMsg:"Redirection dans", seconds:"secondes", stay:"Rester sur cette page",
+          homePath:"/", storyPath:"/story.html"},
+      it:{titleTag:"Prenotazione annullata – DEVOCEAN Lodge",
+          desc:"La tua prenotazione presso DEVOCEAN Lodge è stata annullata. Speriamo di accoglierti un'altra volta!",
+          h1:"Prenotazione annullata",
+          lead:"La tua prenotazione presso DEVOCEAN Lodge è stata annullata.",
+          sub:"Non riceverai un'e-mail di conferma. Speriamo di accoglierti un'altra volta!",
+          helpH:"💬 Hai bisogno di assistenza?",
+          emailLabel:"Email",
+          ctaPrimary:"Torna alla Home",
+          ctaSecondary:"Scopri la nostra storia",
+          redirectMsg:"Verrai reindirizzato tra", seconds:"secondi", stay:"Rimani su questa pagina",
+          homePath:"/", storyPath:"/story.html"},
+      nl:{titleTag:"Boeking geannuleerd – DEVOCEAN Lodge",
+          desc:"Uw boeking bij DEVOCEAN Lodge is geannuleerd. We hopen u een andere keer te verwelkomen!",
+          h1:"Boeking geannuleerd",
+          lead:"Uw boeking bij DEVOCEAN Lodge is geannuleerd.",
+          sub:"U ontvangt geen bevestigingsmail. We hopen u een andere keer te verwelkomen!",
+          helpH:"💬 Hulp nodig?",
+          emailLabel:"E-mail",
+          ctaPrimary:"Terug naar de homepage",
+          ctaSecondary:"Lees ons verhaal",
+          redirectMsg:"U wordt doorgestuurd over", seconds:"seconden", stay:"Op deze pagina blijven",
+          homePath:"/", storyPath:"/story.html"},
+      pt:{titleTag:"Reserva cancelada – DEVOCEAN Lodge",
+          desc:"A sua reserva na DEVOCEAN Lodge foi cancelada. Esperamos recebê-lo noutra ocasião!",
+          h1:"Reserva cancelada",
+          lead:"A sua reserva na DEVOCEAN Lodge foi cancelada.",
+          sub:"Não receberá um e-mail de confirmação. Esperamos recebê-lo noutra ocasião!",
+          helpH:"💬 Precisa de ajuda?",
+          emailLabel:"E-mail",
+          ctaPrimary:"Voltar à página inicial",
+          ctaSecondary:"A nossa história",
+          redirectMsg:"Será redirecionado em", seconds:"segundos", stay:"Ficar nesta página",
+          homePath:"/", storyPath:"/story.html"},
+      ru:{titleTag:"Бронирование отменено – DEVOCEAN Lodge",
+          desc:"Ваше бронирование в DEVOCEAN Lodge отменено. Надеемся приветствовать вас в другой раз!",
+          h1:"Бронирование отменено",
+          lead:"Ваше бронирование в DEVOCEAN Lodge отменено.",
+          sub:"Вы не получите письмо с подтверждением. Надеемся приветствовать вас в другой раз!",
+          helpH:"💬 Нужна помощь?",
+          emailLabel:"Email",
+          ctaPrimary:"На главную",
+          ctaSecondary:"О нашей истории",
+          redirectMsg:"Вы будете перенаправлены через", seconds:"сек.", stay:"Остаться на странице",
+          homePath:"/", storyPath:"/story.html"},
+      zh:{titleTag:"预订已取消 – DEVOCEAN Lodge",
+          desc:"您在 DEVOCEAN Lodge 的预订已取消。期待下次再为您服务！",
+          h1:"预订已取消",
+          lead:"您在 DEVOCEAN Lodge 的预订已取消。",
+          sub:"您不会收到确认邮件。期待下次再为您服务！",
+          helpH:"💬 需要帮助？",
+          emailLabel:"邮箱",
+          ctaPrimary:"返回首页",
+          ctaSecondary:"了解我们的故事",
+          redirectMsg:"将在", seconds:"秒后跳转", stay:"留在本页",
+          homePath:"/", storyPath:"/story.html"},
+      sv:{titleTag:"Bokning avbruten – DEVOCEAN Lodge",
+          desc:"Din bokning hos DEVOCEAN Lodge har avbrutits. Vi hoppas kunna välkomna dig en annan gång!",
+          h1:"Bokning avbruten",
+          lead:"Din bokning hos DEVOCEAN Lodge har avbrutits.",
+          sub:"Du får inget bekräftelsemejl. Vi hoppas kunna välkomna dig en annan gång!",
+          helpH:"💬 Behöver du hjälp?",
+          emailLabel:"E-post",
+          ctaPrimary:"Till startsidan",
+          ctaSecondary:"Läs vår berättelse",
+          redirectMsg:"Du skickas vidare om", seconds:"sekunder", stay:"Stanna på sidan",
+          homePath:"/", storyPath:"/story.html"},
+      ja:{titleTag:"ご予約がキャンセルされました – DEVOCEAN Lodge",
+          desc:"DEVOCEAN Lodge のご予約がキャンセルされました。またのお越しをお待ちしております。",
+          h1:"ご予約がキャンセルされました",
+          lead:"DEVOCEAN Lodge のご予約がキャンセルされました。",
+          sub:"確認メールは送信されません。またのお越しをお待ちしております。",
+          helpH:"💬 サポートが必要ですか？",
+          emailLabel:"メール",
+          ctaPrimary:"ホームに戻る",
+          ctaSecondary:"私たちのストーリー",
+          redirectMsg:"あと", seconds:"秒で移動します", stay:"このページにとどまる",
+          homePath:"/", storyPath:"/story.html"}
+    };
+
+    /* === Apply language & fill UI === */
+    (function(){
+      const siteLang = detectSiteLanguage();
+      const code = mapLang(siteLang);
+      document.documentElement.setAttribute('lang', code);
+      const TT = TR[code] || TR.en;
+
+      // SEO
+      document.title = TT.titleTag;
+      const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute('content', TT.desc);
+
+      // Fill texts (robust even if scripts are deferred)
+      function fill(){
+        const must = ["t-title","t-lead","t-sub","t-help-h","t-email-label","ctaPrimary","ctaSecondary","t-redirect-msg","t-seconds","cancelRedirect"];
+        if (must.some(id => !document.getElementById(id))) return false;
+
+        document.getElementById("t-title").textContent = TT.h1;
+        document.getElementById("t-lead").textContent = TT.lead;
+        document.getElementById("t-sub").textContent = TT.sub;
+        document.getElementById("t-help-h").textContent = TT.helpH;
+        document.getElementById("t-email-label").textContent = TT.emailLabel;
+
+        const c1 = document.getElementById("ctaPrimary");
+        c1.textContent = TT.ctaPrimary;
+        c1.href = `https://devoceanlodge.com${TT.homePath}`;
+
+        const c2 = document.getElementById("ctaSecondary");
+        c2.textContent = TT.ctaSecondary;
+        c2.href = `https://devoceanlodge.com${TT.storyPath}`;
+
+        document.getElementById("t-redirect-msg").textContent = TT.redirectMsg;
+        document.getElementById("t-seconds").textContent = TT.seconds;
+        document.getElementById("cancelRedirect").textContent = TT.stay;
+
+        return true;
+      }
+
+      if (!fill()) {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', fill);
+        } else {
+          setTimeout(fill, 0);
+        }
+      }
+    })();
+
+    /* === Auto-redirect after 6 seconds (unless user cancels) === */
+    let remainingSeconds = 6;
+    let redirectInterval = null;
+    let redirectCanceled = false;
+
+    function updateCountdown() {
+      const el = document.getElementById('seconds');
+      if (el) el.textContent = remainingSeconds;
+      if (remainingSeconds <= 0 && !redirectCanceled) {
+        clearInterval(redirectInterval);
+        location.href = 'https://devoceanlodge.com';
+      }
+      remainingSeconds--;
+    }
+
+    redirectInterval = setInterval(updateCountdown, 1000);
+
+    const cancelLink = document.getElementById('cancelRedirect');
+    if (cancelLink) {
+      cancelLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        redirectCanceled = true;
+        clearInterval(redirectInterval);
+        const cdDiv = document.querySelector('.countdown');
+        if (cdDiv) cdDiv.style.display = 'none';
+      });
+    }
+
+    /* === Legal pages with language param === */
+    window.setLegalLink = function(page) {
+      const siteLang = detectSiteLanguage();
+      const code = mapLang(siteLang);
+      const url = new URL(`https://devoceanlodge.com/legal/${page}.html`, location.origin);
+      url.searchParams.set('lang', code);
+      location.href = url.toString();
+      return false;
+    };
+  </script>
+</body>
+</html>
