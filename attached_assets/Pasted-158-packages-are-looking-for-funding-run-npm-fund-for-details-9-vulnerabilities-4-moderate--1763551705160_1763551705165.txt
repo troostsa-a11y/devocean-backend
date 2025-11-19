@@ -1,0 +1,96 @@
+158 packages are looking for funding
+  run `npm fund` for details
+
+9 vulnerabilities (4 moderate, 5 high)
+
+To address issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+~/workspace/WebsiteProject$ npm fund
+devoceanlodge@0.0.1
+├── https://dotenvx.com
+│   └── dotenv@17.2.3
+├─┬ https://opencollective.com/express
+│ │ └── express@4.21.2, iconv-lite@0.7.0
+│ ├── https://github.com/sponsors/sindresorhus
+│ │   └── merge-descriptors@1.0.3, find-up@7.0.0, locate-path@7.2.0, p-locate@6.0.0, p-limit@4.0.0, yocto-queue@1.2.2, unicorn-magic@0.1.0, get-stdin@9.0.0, globby@11.1.0, responselike@2.0.1, clone-response@1.0.3, get-stream@5.2.0, normalize-url@6.1.0, indent-string@5.0.0, make-dir@3.1.0, meow@7.1.1, camelcase-keys@6.2.2, map-obj@4.3.0, decamelize-keys@1.1.1, read-pkg-up@7.0.1, p-limit@2.3.0, parse-json@5.2.0, type-fest@0.13.1, p-all@5.0.1, p-map@6.0.0, slash@5.1.0, tempy@3.1.0, is-stream@3.0.0, type-fest@2.19.0, unique-string@3.0.0, crypto-random-string@4.0.0, type-fest@1.4.0, detect-indent@7.0.2, normalize-newline@4.1.0, string-width@5.1.2, @alloc/quick-lru@5.2.0, binary-extensions@2.3.0, exit-hook@2.2.1
+│ ├── https://github.com/sponsors/ljharb
+│ │   └── qs@6.13.0, side-channel@1.1.0, object-inspect@1.13.4, side-channel-list@1.0.0, side-channel-map@1.0.1, call-bound@1.0.4, function-bind@1.1.2, get-intrinsic@1.3.0, gopd@1.2.0, has-symbols@1.1.0, side-channel-weakmap@1.0.2, resolve@1.22.10, is-core-module@2.16.1, supports-preserve-symlinks-flag@1.0.0, minimist@1.2.8, has-tostringtag@1.0.2
+│ └── https://github.com/sponsors/feross
+│     └── safe-buffer@5.2.1
+├── https://locize.com
+│   └── i18next@25.5.2
+├── https://github.com/sponsors/porsager
+│   └── postgres@3.4.7
+├── https://opencollective.com/libvips
+│   └── sharp@0.33.5, @img/sharp-libvips-linux-x64@1.0.4, @img/sharp-libvips-linuxmusl-x64@1.0.4, @img/sharp-linux-x64@0.33.5, @img/sharp-linuxmusl-x64@0.33.5
+├── https://github.com/sponsors/colinhacks
+│   └── zod@3.22.3
+├─┬ https://opencollective.com/postcss/
+│ │ └── autoprefixer@10.4.21, postcss@8.5.6, postcss-js@4.0.1, postcss-load-config@4.0.2, postcss-nested@6.2.0
+│ └── https://github.com/sponsors/rawify
+│     └── fraction.js@4.3.7
+├─┬ https://github.com/vitejs/vite?sponsor=1
+│ │ └── vite@7.2.2
+│ ├── https://github.com/sponsors/jonschlinkert
+│ │   └── picomatch@4.0.3
+│ └── https://github.com/sponsors/SuperchupuDev
+│     └── tinyglobby@0.2.15
+├─┬ https://github.com/privatenumber/get-tsconfig?sponsor=1
+│ │ └── get-tsconfig@4.13.0
+│ └── https://github.com/privatenumber/resolve-pkg-maps?sponsor=1
+│     └── resolve-pkg-maps@1.0.0
+├─┬ https://ko-fi.com/killymxi
+│ │ └── @selderee/plugin-htmlparser2@0.11.0, selderee@0.11.0, parseley@0.12.1, leac@0.6.0, peberminta@0.9.0
+│ └─┬ https://github.com/fb55/domhandler?sponsor=1
+│   │ └── domhandler@5.0.3
+│   └── https://github.com/sponsors/fb55
+│       └── domelementtype@2.3.0, cheerio-select@2.1.0, css-select@5.2.2, css-what@6.2.2
+├─┬ https://github.com/cheeriojs/dom-serializer?sponsor=1
+│ │ └── dom-serializer@2.0.0
+│ └── https://github.com/fb55/entities?sponsor=1
+│     └── entities@4.5.0, entities@6.0.1
+├─┬ https://github.com/fb55/htmlparser2?sponsor=1
+│ │ └── htmlparser2@8.0.2, htmlparser2@10.0.0
+│ └── https://github.com/fb55/domutils?sponsor=1
+│     └── domutils@3.2.2
+├── https://github.com/sponsors/broofa
+│   └── uuid@10.0.0
+├─┬ https://github.com/sindresorhus/got?sponsor=1
+│ │ └── got@11.8.6
+│ └── https://github.com/sindresorhus/is?sponsor=1
+│     └── @sindresorhus/is@4.6.0, @sindresorhus/is@7.1.1
+├── https://github.com/inikulin/parse5?sponsor=1
+│   └── parse5@7.3.0, parse5-htmlparser2-tree-adapter@7.1.0, parse5-parser-stream@7.1.2
+├── https://github.com/sponsors/csstools
+│   └── @csstools/css-calc@2.1.4, @csstools/css-color-parser@3.1.0, @csstools/color-helpers@5.1.0, @csstools/css-parser-algorithms@3.0.5, @csstools/css-tokenizer@3.0.4
+├── https://github.com/sponsors/lupomontero
+│   └── psl@1.15.0
+├─┬ https://github.com/cheeriojs/cheerio?sponsor=1
+│ │ └── cheerio@1.1.2
+│ └── https://github.com/fb55/encoding-sniffer?sponsor=1
+│     └── encoding-sniffer@0.2.1
+├── https://github.com/sponsors/isaacs
+│   └── glob@10.4.5, foreground-child@3.3.1, signal-exit@4.1.0, jackspeak@3.4.3, minimatch@9.0.5, path-scurry@1.11.1
+├── https://opencollective.com/svgo
+│   └── svgo@3.3.2
+├─┬ https://github.com/chalk/chalk?sponsor=1
+│ │ └── chalk@4.1.2
+│ └── https://github.com/chalk/ansi-styles?sponsor=1
+│     └── ansi-styles@4.3.0
+├─┬ https://opencollective.com/babel
+│ │ └── @babel/core@7.28.4
+│ └── https://opencollective.com/browserslist
+│     └── browserslist@4.26.0, caniuse-lite@1.0.30001753, update-browserslist-db@1.1.3
+├── https://paulmillr.com/funding/
+│   └── chokidar@3.6.0
+├── https://github.com/sponsors/antonk52
+│   └── lilconfig@3.1.3
+├── https://github.com/chalk/supports-color?sponsor=1
+│   └── supports-color@10.2.2
+└── https://github.com/sponsors/antfu
+    └── error-stack-parser-es@1.0.5
