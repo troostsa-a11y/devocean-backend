@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Questions Fréquemment Posées – DEVOCEAN Lodge</title>
+  <title>Réservez votre séjour – DEVOCEAN Lodge</title>
   <meta name="description" content="Direct booking page for DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Best rates, instant confirmation." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -520,8 +520,8 @@
     const roomid = urlParams.get('roomid') || '';
     const currency = urlParams.get('currency') || 'USD';
     
-    // Build Beds24 iframe URL (English only)
-    let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=fr';
+    // Build Beds24 iframe URL with language lock
+    let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=fr&d=fr';
     iframeUrl += '&cur=' + currency;
     if (roomid) {
       iframeUrl += '&roomid=' + roomid;

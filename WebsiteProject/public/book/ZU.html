@@ -517,8 +517,8 @@
     const roomid = urlParams.get('roomid') || '';
     const currency = urlParams.get('currency') || 'USD';
     
-    // Build Beds24 iframe URL (Zulu)
-    let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=zu';
+    // Build Beds24 iframe URL with language lock
+    let iframeUrl = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=zu&d=zu';
     iframeUrl += '&cur=' + currency;
     if (roomid) {
       iframeUrl += '&roomid=' + roomid;
