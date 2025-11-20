@@ -14,6 +14,15 @@
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
 
   <style>
+    /* INP Optimization: Instant visual feedback for all interactions (CSS-based, no JS required) */
+    button:active, a:active, [role="button"]:active, 
+    input[type="submit"]:active, input[type="button"]:active, 
+    select:active, .faq-question:active, .benefit-card:active {
+      opacity: 0.7 !important;
+      transform: scale(0.98) !important;
+      transition: opacity 50ms, transform 50ms !important;
+    }
+    
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
@@ -535,7 +544,7 @@
     iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
     document.getElementById('beds24frame').src = iframeUrl;
     
-    // FAQ Accordion functionality
+    // FAQ Accordion functionality (INP-optimized with immediate visual feedback)
     document.querySelectorAll('.faq-item').forEach(item => {
       const question = item.querySelector('.faq-question');
       const answer = item.querySelector('.faq-answer');
@@ -543,15 +552,24 @@
       question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
         
-        // Close all other items
-        document.querySelectorAll('.faq-item').forEach(otherItem => {
-          otherItem.classList.remove('active');
+        // Immediate visual feedback (before any DOM work)
+        question.style.opacity = '0.7';
+        requestAnimationFrame(() => {
+          question.style.opacity = '';
         });
         
-        // Toggle current item (open if it was closed)
-        if (!isActive) {
-          item.classList.add('active');
-        }
+        // Schedule DOM updates for next frame (non-blocking)
+        requestAnimationFrame(() => {
+          // Close all other items
+          document.querySelectorAll('.faq-item').forEach(otherItem => {
+            otherItem.classList.remove('active');
+          });
+          
+          // Toggle current item (open if it was closed)
+          if (!isActive) {
+            item.classList.add('active');
+          }
+        });
       });
       
       answer.addEventListener('click', () => {
