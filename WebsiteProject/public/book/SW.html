@@ -525,6 +525,11 @@
     }
     
     // Set iframe source
+    
+    // Prevent Beds24 iframe from polluting browser history
+    // Uses sandbox to restrict top-level navigation while allowing all booking functionality
+    const iframe = document.getElementById('beds24frame');
+    iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
     document.getElementById('beds24frame').src = iframeUrl;
     
     // FAQ Accordion functionality

@@ -12,11 +12,15 @@
       // Additional 3-second delay specifically for ads conversion tracking
       // This reduces main-thread blocking from Google Ads tags
       setTimeout(function() {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: 'marketing_allowed',
-          timestamp: Date.now()
-        });
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'marketing_allowed',
+            timestamp: Date.now()
+          });
+        } catch (e) {
+          // Silently handle errors from third-party scripts
+        }
       }, 3000);
     }
   }
@@ -25,11 +29,15 @@
     if (engaged) return;
     engaged = true;
     
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'user_engaged',
-      engagement_type: 'interaction'
-    });
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'user_engaged',
+        engagement_type: 'interaction'
+      });
+    } catch (e) {
+      // Silently handle errors from third-party scripts
+    }
     
     checkMarketingAllowed();
   }
@@ -66,27 +74,36 @@
   }
   
   // Initialize by scanning existing dataLayer entries
-  window.dataLayer = window.dataLayer || [];
-  for (let i = 0; i < window.dataLayer.length; i++) {
-    if (checkConsentInItem(window.dataLayer[i])) {
-      break; // Found granted consent, stop scanning
-    }
-  }
-  
-  // Intercept future dataLayer.push calls to detect consent updates
-  const originalPush = window.dataLayer.push;
-  window.dataLayer.push = function() {
-    const args = Array.from(arguments);
-    
-    // Check each pushed item for consent
-    args.forEach(function(item) {
-      if (checkConsentInItem(item)) {
-        checkMarketingAllowed();
+  try {
+    window.dataLayer = window.dataLayer || [];
+    for (let i = 0; i < window.dataLayer.length; i++) {
+      if (checkConsentInItem(window.dataLayer[i])) {
+        break; // Found granted consent, stop scanning
       }
-    });
+    }
     
-    return originalPush.apply(window.dataLayer, args);
-  };
+    // Intercept future dataLayer.push calls to detect consent updates
+    const originalPush = window.dataLayer.push;
+    window.dataLayer.push = function() {
+      try {
+        const args = Array.from(arguments);
+        
+        // Check each pushed item for consent
+        args.forEach(function(item) {
+          if (checkConsentInItem(item)) {
+            checkMarketingAllowed();
+          }
+        });
+        
+        return originalPush.apply(window.dataLayer, args);
+      } catch (e) {
+        // Silently handle errors, still call original push
+        return originalPush.apply(window.dataLayer, arguments);
+      }
+    };
+  } catch (e) {
+    // Silently handle initialization errors
+  }
   
   // Detect engagement via scroll (past 25% of page)
   let scrollFired = false;
