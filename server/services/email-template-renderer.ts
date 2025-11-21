@@ -69,8 +69,26 @@ export class EmailTemplateRenderer {
       return requestedLang;
     }
 
-    // All languages are now included in translation files, but keep mapping for safety
+    // Map 2-letter ISO codes to full locale codes, and handle other variations
     const mapping: { [key: string]: string } = {
+      // 2-letter codes (from email parser)
+      'EN': 'en-GB',
+      'DE': 'de-DE',
+      'PT': 'pt-PT',
+      'ES': 'es-ES',
+      'FR': 'fr-FR',
+      'IT': 'it-IT',
+      'NL': 'nl-NL',
+      'SV': 'sv',
+      'PL': 'pl',
+      'AF': 'af-ZA',
+      'ZU': 'zu',
+      'SW': 'sw',
+      'JA': 'ja-JP',
+      'ZH': 'zh-CN',
+      'RU': 'ru',
+      
+      // Full locale codes (legacy support)
       'en-GB': 'en-GB',
       'en-US': 'en-US',
       'pt-PT': 'pt-PT',
