@@ -152,9 +152,11 @@ export class EmailSchedulerService {
       console.log(`  Pre-arrival: Skipped (would be in the past)`);
     }
 
-    // 3. Arrival email - only if in the future
-    if (arrivalDateCAT && arrivalDateCAT > nowCAT) {
-      const arrivalDateUTC = toUTCDate(arrivalDateCAT);
+    // 3. Arrival email - for same-day bookings, send immediately if in the past
+    if (arrivalDateCAT) {
+      // If arrival date is in the past (same-day booking), send immediately
+      const finalArrivalDateCAT = arrivalDateCAT <= nowCAT ? nowCAT : arrivalDateCAT;
+      const arrivalDateUTC = toUTCDate(finalArrivalDateCAT);
       schedules.push({
         bookingId: booking.id,
         emailType: 'arrival',
@@ -165,9 +167,9 @@ export class EmailSchedulerService {
         status: 'pending',
         templateData: commonTemplateData,
       });
-      console.log(`  Arrival: ${formatForLog(arrivalDateCAT)}`);
+      console.log(`  Arrival: ${formatForLog(finalArrivalDateCAT)}${arrivalDateCAT <= nowCAT ? ' (same-day booking - sent immediately)' : ''}`);
     } else {
-      console.log(`  Arrival: Skipped (would be in the past)`);
+      console.log(`  Arrival: Skipped (no arrival date calculated)`);
     }
 
     // 4. Post-departure email - always schedule (1 day after check-out at 10:00 CAT)
