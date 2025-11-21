@@ -62,12 +62,18 @@ Email functionality is split between Cloudflare and Replit:
 - Sends scheduled emails at :15 and :45
 - Processes new bookings, modifications, and cancellations automatically
 - Supports 15 languages with intelligent language determination
+- BCC copies of all emails sent to beds24@devoceanlodge.com for record-keeping
 
 **Language Determination (3-Tier Priority):**
 1. **Preferred Language** field from Beds24 (explicit guest preference)
 2. **Country code mapping** (e.g., "MZ" → "PT", "ZA" → "EN") from guest location
 3. **Default to English** if neither available
 - Implementation: `server/services/email-parser.ts`, `server/services/cancellation-handler.ts`
+
+**Cancellation Email Flow (Fixed Nov 21, 2025):**
+- Cancellation emails bypass the standard booking status check to ensure delivery
+- When a cancellation is received: booking marked as cancelled → pending emails stopped → cancellation confirmation scheduled (1hr delay) and sent with BCC copy
+- Implementation: `server/services/email-sender.ts` allows `emailType === 'cancellation'` even when `booking.status === 'cancelled'`
 
 **Data Tracked:**
 - Guest Info: name, firstName, email, gender, country, language
