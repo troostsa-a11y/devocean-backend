@@ -428,17 +428,28 @@ export class EmailParser {
       // Dutch
       'dutch': 'NL',
       'nederlands': 'NL',
+      'niederländisch': 'NL',
+      'neerlandés': 'NL',
+      'neerlandês': 'NL',
+      'néerlandais': 'NL',
       'nl': 'NL',
       'nl-nl': 'NL',
       
       // Swedish
       'swedish': 'SV',
       'svenska': 'SV',
+      'schwedisch': 'SV',
+      'sueco': 'SV',
+      'suédois': 'SV',
       'sv': 'SV',
       
       // Polish
       'polish': 'PL',
       'polski': 'PL',
+      'polnisch': 'PL',
+      'polaco': 'PL',
+      'polonês': 'PL',
+      'polonais': 'PL',
       'pl': 'PL',
       
       // Afrikaans
@@ -458,18 +469,30 @@ export class EmailParser {
       
       // Japanese
       'japanese': 'JA',
+      'japanisch': 'JA',
+      'japonés': 'JA',
+      'japonês': 'JA',
+      'japonais': 'JA',
       '日本語': 'JA',
       'ja': 'JA',
       'ja-jp': 'JA',
       
       // Chinese
       'chinese': 'ZH',
+      'chinesisch': 'ZH',
+      'chino': 'ZH',
+      'chinês': 'ZH',
+      'chinois': 'ZH',
       '中文': 'ZH',
       'zh': 'ZH',
       'zh-cn': 'ZH',
       
       // Russian
       'russian': 'RU',
+      'russisch': 'RU',
+      'ruso': 'RU',
+      'russo': 'RU',
+      'russe': 'RU',
       'русский': 'RU',
       'ru': 'RU',
     };
