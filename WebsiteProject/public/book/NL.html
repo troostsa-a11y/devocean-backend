@@ -603,6 +603,28 @@
     }
     
     // Attach click handlers to all benefit cards
+    // Header click handler: redirect to booking iframe (except for logo and Home button)
+    function setupHeaderClickHandler() {
+      const headerContent = document.querySelector(".header-content");
+      if (!headerContent) return;
+      
+      headerContent.addEventListener("click", function(e) {
+        // Allow clicks on brand (logo) and button (Home) to pass through
+        const brand = e.target.closest(".brand");
+        const homeBtn = e.target.closest(".btn");
+        
+        if (brand || homeBtn) {
+          // Let these links work normally
+          return;
+        }
+        
+        // For all other clicks in header, scroll to booking
+        e.preventDefault();
+        e.stopPropagation();
+        scrollToBooking();
+      });
+    }
+    
     function setupBenefitCards() {
       const benefitCards = document.querySelectorAll('.benefit-card');
       benefitCards.forEach((card, index) => {
