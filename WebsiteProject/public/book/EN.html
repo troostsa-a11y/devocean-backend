@@ -595,6 +595,28 @@
       }
     }
     
+    // Header click handler: redirect to booking iframe (except for logo and Home button)
+    function setupHeaderClickHandler() {
+      const headerContent = document.querySelector('.header-content');
+      if (!headerContent) return;
+      
+      headerContent.addEventListener('click', function(e) {
+        // Allow clicks on brand (logo) and button (Home) to pass through
+        const brand = e.target.closest('.brand');
+        const homeBtn = e.target.closest('.btn');
+        
+        if (brand || homeBtn) {
+          // Let these links work normally
+          return;
+        }
+        
+        // For all other clicks in header, scroll to booking
+        e.preventDefault();
+        e.stopPropagation();
+        scrollToBooking();
+      });
+    }
+    
     // Attach click handlers to all benefit cards
     function setupBenefitCards() {
       const benefitCards = document.querySelectorAll('.benefit-card');
@@ -616,9 +638,13 @@
     
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupBenefitCards);
+      document.addEventListener('DOMContentLoaded', () => {
+        setupBenefitCards();
+        setupHeaderClickHandler();
+      });
     } else {
       setupBenefitCards();
+      setupHeaderClickHandler();
     }
   </script>
 </body>
