@@ -45,12 +45,15 @@ export class EmailSenderService {
   async sendScheduledEmail(scheduledEmail: ScheduledEmail): Promise<boolean> {
     try {
       // Safety check: Verify booking isn't cancelled before sending
+      // EXCEPTION: Cancellation emails should always be sent even if booking is cancelled
       // Also enrich templateData with fresh firstName and gender from booking
       let enrichedTemplateData: Record<string, any> = scheduledEmail.templateData || {};
       
       if (scheduledEmail.bookingId) {
         const booking = await this.db.getBookingById(scheduledEmail.bookingId);
-        if (!booking || booking.status === 'cancelled') {
+        
+        // Skip cancelled bookings EXCEPT for cancellation confirmation emails
+        if (!booking || (booking.status === 'cancelled' && scheduledEmail.emailType !== 'cancellation')) {
           console.log(`⚠️ Skipping email ${scheduledEmail.id} - booking ${scheduledEmail.bookingId} is cancelled`);
           await this.db.markEmailAsCancelled(scheduledEmail.id);
           return false;
