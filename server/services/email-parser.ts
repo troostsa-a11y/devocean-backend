@@ -497,7 +497,6 @@ export class EmailParser {
       'zweeds': 'SV',
       'szwedzki': 'SV',
       'шведский': 'SV',
-      'engelska': 'SV',
       'スウェーデン語': 'SV',
       '瑞典语': 'SV',
       'sv': 'SV',
