@@ -170,13 +170,13 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label htmlFor="dates" className="block text-sm font-medium text-slate-700 mb-2">
-              {getFieldLabel('dates', lang)}
+              {getFieldLabel('dates', lang)} <span className="text-slate-500 text-sm">(Optional)</span>
             </label>
             <input
               type="date"
               id="dates"
               name="dates"
-              value={formData.dates}
+              value={formData.dates || ''}
               onChange={handleChange}
               data-testid="input-inquiry-dates"
               className="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#9e4b13] focus:border-transparent"
