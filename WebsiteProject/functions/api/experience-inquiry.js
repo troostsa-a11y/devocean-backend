@@ -84,7 +84,11 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const { name, email, phone, operator, dates, guests, message, experience, experienceKey, lang, recaptcha_token, operatorEmail } = await request.json();
+    const requestBody = await request.json();
+    const { name, email, phone, operator, dates, guests, message, experience, experienceKey, lang, recaptcha_token, operatorEmail } = requestBody;
+
+    // Debug: Log what we received
+    console.log('Received request body:', JSON.stringify(requestBody));
 
     // Verify reCAPTCHA (action must match frontend: experience_inquiry)
     const verification = await verifyRecaptcha(recaptcha_token, 'experience_inquiry', env.RECAPTCHA_SECRET_KEY);
@@ -97,7 +101,11 @@ export async function onRequestPost(context) {
 
     // Validate required fields
     if (!name || !email || !operator || !message || !experience || !operatorEmail) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+      console.error('MISSING FIELDS:', { name: !!name, email: !!email, operator: !!operator, message: !!message, experience: !!experience, operatorEmail: !!operatorEmail });
+      return new Response(JSON.stringify({ 
+        error: 'Missing required fields',
+        missing: { name: !name, email: !email, operator: !operator, message: !message, experience: !experience, operatorEmail: !operatorEmail }
+      }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
