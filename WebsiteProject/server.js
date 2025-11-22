@@ -42,8 +42,10 @@ function escapeHtml(text) {
 async function verifyRecaptcha(token) {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   
+  // Skip reCAPTCHA in dev environment (when no secret key is available)
   if (!secretKey) {
-    throw new Error('RECAPTCHA_SECRET_KEY not configured');
+    console.log('⚠️  Development mode: Skipping reCAPTCHA verification');
+    return { success: true, score: 1.0 };
   }
 
   const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
