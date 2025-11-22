@@ -24,18 +24,31 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
       // Use shared reCAPTCHA utility (no hardcoded keys!)
       const recaptchaToken = await getRecaptchaToken('experience_inquiry');
 
+      const payload = {
+        ...formData,
+        experience: experience.title,
+        experienceKey: experience.key,
+        lang: lang || 'en',
+        currency: currency || 'EUR',
+        recaptcha_token: recaptchaToken,
+        operatorEmail: formData.operatorEmail
+      };
+
+      // Debug: log what we're sending
+      console.log('Form submission payload:', payload);
+      console.log('Required fields check:', {
+        name: !!payload.name,
+        email: !!payload.email,
+        operator: !!payload.operator,
+        message: !!payload.message,
+        experience: !!payload.experience,
+        operatorEmail: !!payload.operatorEmail
+      });
+
       const response = await fetch('/api/experience-inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          experience: experience.title,
-          experienceKey: experience.key,
-          lang: lang || 'en',
-          currency: currency || 'EUR',
-          recaptcha_token: recaptchaToken,
-          operatorEmail: formData.operatorEmail
-        })
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
