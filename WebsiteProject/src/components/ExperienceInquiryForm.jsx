@@ -34,18 +34,22 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
         throw new Error('reCAPTCHA not available');
       }
 
-      // Wait for grecaptcha to be ready, then execute
-      const siteKey = window.RECAPTCHA_SITE_KEY || '6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L';
-      const token = await new Promise((resolve, reject) => {
+      // Wait for grecaptcha to be ready, then execute (with timeout like ContactSection)
+      const recaptchaToken = await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          reject(new Error('reCAPTCHA timeout - please refresh the page and try again'));
+        }, 10000); // 10 second timeout
+
         window.grecaptcha.ready(async () => {
           try {
-            const token = await window.grecaptcha.execute(
-              siteKey,
-              { action: 'experience_inquiry' }
-            );
+            const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY;
+            const token = await window.grecaptcha.execute(siteKey, { action: 'experience_inquiry' });
+            clearTimeout(timeout);
             resolve(token);
-          } catch (err) {
-            reject(err);
+          } catch (error) {
+            clearTimeout(timeout);
+            console.error('reCAPTCHA execution error:', error);
+            reject(error);
           }
         });
       });
@@ -59,7 +63,7 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
           experienceKey: experience.key,
           lang: lang || 'en',
           currency: currency || 'EUR',
-          recaptcha_token: token,
+          recaptcha_token: recaptchaToken,
           operatorEmail: formData.operatorEmail
         })
       });
