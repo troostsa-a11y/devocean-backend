@@ -232,13 +232,13 @@ export const EXPERIENCE_DETAILS = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Research-focused, founded 1995, 250+ dolphins catalogued"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Tourism-focused, packages available, whale watching combos"
       }
     ],

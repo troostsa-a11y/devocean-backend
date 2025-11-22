@@ -520,7 +520,7 @@ This inquiry was forwarded from the DEVOCEAN Lodge website (devoceanlodge.com).
       body: JSON.stringify({
         from: 'DEVOCEAN Lodge - Ponta do Ouro <reservations@devoceanlodge.com>',
         to: [operatorEmail],
-        bcc: ['info@devoceanlodge.com'],
+        bcc: ['partners@devoceanlodge.com'],
         subject: `Experience Inquiry: ${sanitizedExperience}`,
         html: operatorEmailHtml,
         text: operatorEmailText,

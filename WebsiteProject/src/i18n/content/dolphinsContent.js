@@ -89,13 +89,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Marine biologist-led, conservation-focused dolphin encounters"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Research-based dolphin swims with educational focus"
       }
     ]
@@ -188,13 +188,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Marine biologist-led, conservation-focused dolphin encounters"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Research-based dolphin swims with educational focus"
       }
     ]
@@ -287,13 +287,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Marine biologist-led, conservation-focused dolphin encounters"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Research-based dolphin swims with educational focus"
       }
     ]
