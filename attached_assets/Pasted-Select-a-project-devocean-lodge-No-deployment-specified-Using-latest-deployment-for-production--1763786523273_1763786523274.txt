@@ -1,0 +1,42 @@
+Select a project: › devocean-lodge
+No deployment specified. Using latest deployment for production environment.
+Connected to deployment 36add552-9773-44ff-a94c-184c00d720c7, waiting for logs...
+GET https://devoceanlodge.com/photos/hero01.jpg - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/?gad_source=5&gad_campaignid=13785606957&gclid=REDACTED - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/images/devocean_logo_header-small.webp - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/en-GB-CgT96un8.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/react-vendor-DdXWdMVC.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/photos/hero01-mobile.webp - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/index-aIhGuOpV.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/LocationSection-DWkgaSVi.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/REDACTED.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/en-US-CgT96un8.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/site.webmanifest - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/style-L-9igWug.css - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/assets/REDACTED.js - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/photos/hero04-mobile.webp - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/photos/hero05-mobile.webp - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/photos/hero02-mobile.webp - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/photos/hero03-mobile.webp - Ok @ 11/22/2025, 4:40:01 AM
+GET https://devoceanlodge.com/photos/units/safari-1.webp - Ok @ 11/22/2025, 4:40:05 AM
+GET https://devoceanlodge.com/engagement-tracker.js - Ok @ 11/22/2025, 4:40:06 AM
+GET https://devoceanlodge.com/photos/units/comfort-1.webp - Ok @ 11/22/2025, 4:40:14 AM
+GET https://devoceanlodge.com/photos/units/cottage-1.webp - Ok @ 11/22/2025, 4:40:16 AM
+GET https://devoceanlodge.com/photos/units/chalet-1.webp - Ok @ 11/22/2025, 4:40:17 AM
+GET https://devoceanlodge.com/photos/experiences/diving.jpg - Ok @ 11/22/2025, 4:40:19 AM
+GET https://devoceanlodge.com/photos/experiences/dolphins.jpg - Ok @ 11/22/2025, 4:40:20 AM
+GET https://devoceanlodge.com//feed/ - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//wp-includes/ID3/license.txt - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//2019/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//2021/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//blog/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//web/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//xmlrpc.php?rsd - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//wordpress/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//test/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//wp/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:21 AM
+GET https://devoceanlodge.com//cms/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//2020/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//shop/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//wp1/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
+GET https://devoceanlodge.com//site/wp-includes/wlwmanifest.xml - Ok @ 11/22/2025, 4:41:22 AM
