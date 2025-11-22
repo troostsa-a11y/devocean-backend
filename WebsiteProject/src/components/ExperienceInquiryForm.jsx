@@ -35,11 +35,12 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
       }
 
       // Wait for grecaptcha to be ready, then execute
+      const siteKey = window.RECAPTCHA_SITE_KEY || '6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L';
       const token = await new Promise((resolve, reject) => {
         window.grecaptcha.ready(async () => {
           try {
             const token = await window.grecaptcha.execute(
-              '6Lcw-YUqAAAAAP-HCx0R5D64bckRGiX8VL3NnQcb',
+              siteKey,
               { action: 'experience_inquiry' }
             );
             resolve(token);
