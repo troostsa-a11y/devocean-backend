@@ -6,6 +6,7 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
     email: '',
     phone: '',
     operator: operators && operators.length > 0 ? operators[0].name : '',
+    operatorEmail: operators && operators.length > 0 ? operators[0].email : '',
     dates: '',
     guests: '2',
     message: ''
@@ -33,7 +34,8 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
           experienceKey: experience.key,
           lang: lang || 'en',
           currency: currency || 'EUR',
-          recaptcha_token: token
+          recaptcha_token: token,
+          operatorEmail: formData.operatorEmail
         })
       });
 
@@ -47,6 +49,7 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
           email: '',
           phone: '',
           operator: operators && operators.length > 0 ? operators[0].name : '',
+          operatorEmail: operators && operators.length > 0 ? operators[0].email : '',
           dates: '',
           guests: '2',
           message: ''
@@ -71,7 +74,18 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // When operator changes, also update operatorEmail
+    if (name === 'operator') {
+      const selectedOperator = operators.find(op => op.name === value);
+      setFormData(prev => ({ 
+        ...prev, 
+        operator: value,
+        operatorEmail: selectedOperator ? selectedOperator.email : ''
+      }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   return (
