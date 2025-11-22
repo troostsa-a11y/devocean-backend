@@ -207,6 +207,7 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
               name="dates"
               value={formData.dates || ''}
               onChange={handleChange}
+              min={new Date().toISOString().split('T')[0]}
               data-testid="input-inquiry-dates"
               className="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#9e4b13] focus:border-transparent"
             />
@@ -231,7 +232,7 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
         {/* Message */}
         <div>
           <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
-            {getFieldLabel('message', lang)} *
+            {getFieldLabel('message', lang)} * <span className="text-slate-500 text-sm">(min. 20 characters)</span>
           </label>
           <textarea
             id="message"
@@ -239,6 +240,7 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
             value={formData.message}
             onChange={handleChange}
             required
+            minLength="20"
             rows="4"
             placeholder={getPlaceholder('message', lang)}
             data-testid="input-inquiry-message"
