@@ -153,9 +153,14 @@ export async function onRequestPost(context) {
 
     const bccEmail = experienceKey === 'dolphins' ? 'partners@devoceanlodge.com' : 'info@devoceanlodge.com';
 
+    // TEST MODE: Send test inquiries to info@devoceanlodge.com instead of operators
+    const isTestMode = sanitizedMessage.toLowerCase().includes('[test]');
+    const finalOperatorEmail = isTestMode ? 'info@devoceanlodge.com' : sanitizedOperatorEmail;
+    const finalBccEmail = isTestMode ? null : bccEmail;
+
     // Send to operator with customer email as reply-to
-    await sendEmail('reservations@devoceanlodge.com', sanitizedOperatorEmail,
-      `Experience Inquiry: ${sanitizedExperience}`, operatorEmailHtml, env.RESEND_API_KEY, sanitizedEmail, bccEmail);
+    await sendEmail('reservations@devoceanlodge.com', finalOperatorEmail,
+      `${isTestMode ? '[TEST] ' : ''}Experience Inquiry: ${sanitizedExperience}`, operatorEmailHtml, env.RESEND_API_KEY, sanitizedEmail, finalBccEmail);
 
     // Auto-reply to customer
     const autoReplyMessages = {

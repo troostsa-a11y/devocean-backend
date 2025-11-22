@@ -20,6 +20,20 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
     setStatus({ type: '', message: '' });
 
     try {
+      // Load reCAPTCHA if not already loaded
+      if (!window.grecaptcha && window.loadRecaptcha) {
+        try {
+          await window.loadRecaptcha();
+        } catch (err) {
+          console.error('Failed to load reCAPTCHA:', err);
+          throw new Error('reCAPTCHA failed to load');
+        }
+      }
+      
+      if (!window.grecaptcha) {
+        throw new Error('reCAPTCHA not available');
+      }
+
       const token = await window.grecaptcha.execute(
         '6Lcw-YUqAAAAAP-HCx0R5D64bckRGiX8VL3NnQcb',
         { action: 'experience_inquiry' }
