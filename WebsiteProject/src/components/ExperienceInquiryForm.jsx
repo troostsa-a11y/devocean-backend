@@ -173,12 +173,11 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
               {getFieldLabel('dates', lang)}
             </label>
             <input
-              type="text"
+              type="date"
               id="dates"
               name="dates"
               value={formData.dates}
               onChange={handleChange}
-              placeholder={getPlaceholder('dates', lang)}
               data-testid="input-inquiry-dates"
               className="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#9e4b13] focus:border-transparent"
             />
