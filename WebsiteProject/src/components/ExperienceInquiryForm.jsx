@@ -101,6 +101,11 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
     // When operator changes, also update operatorEmail
     if (name === 'operator') {
       const selectedOperator = operators.find(op => op.name === value);
+      console.log('Operator changed to:', value);
+      console.log('Available operators:', operators);
+      console.log('Found operator:', selectedOperator);
+      console.log('Setting operatorEmail to:', selectedOperator ? selectedOperator.email : 'NOT FOUND');
+      
       setFormData(prev => ({ 
         ...prev, 
         operator: value,
