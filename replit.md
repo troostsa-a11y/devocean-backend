@@ -1,7 +1,7 @@
 # DEVOCEAN Lodge Website
 
 ## Overview
-DEVOCEAN Lodge is an eco-friendly beach accommodation website designed to be the primary marketing tool for a lodge in Ponta do Ouro, Mozambique. It offers accommodation listings, showcases experiences, provides contact forms, and supports a multi-language interface across 17 languages. The project aims to attract a global audience, ensure legal compliance (GDPR, cookies, privacy policies), and deliver a seamless, responsive user experience.
+DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. Its purpose is to serve as the primary marketing tool, showcasing accommodation, experiences, and offering contact forms. The project supports a multi-language interface (17 languages) to attract a global audience, ensures legal compliance (GDPR, cookies), and delivers a responsive user experience. The business vision is to increase bookings and brand visibility for the lodge.
 
 ## User Preferences
 - **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
@@ -43,105 +43,42 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website designed to be the
 
 ## System Architecture
 
-### Language Code Architecture
-The website uses a hybrid language code system with automatic normalization:
-- **Full Locale Codes (React App/Frontend):** `en-GB`, `pt-PT`, `pt-BR`, etc. (17 variants) for precise UI/UX.
-- **2-Letter ISO Codes (Workers/Email/Booking):** `en`, `pt`, `de`, etc. (15 base languages) for simpler transactional systems.
-- Bidirectional normalization functions (`normalizeLangCode()`, `normalizeLang()`) ensure seamless compatibility between frontend and backend systems.
+### UI/UX Decisions
+- **Design System:** shadcn/ui, Tailwind CSS (New York variant), Radix UI primitives.
+- **Styling:** Custom color palette, Inter font, WCAG AA compliant contrast ratios.
+- **Responsiveness:** Mobile-first design, touch-friendly targets, responsive typography with `clamp()`, simplified animations, responsive spacing, `prefers-reduced-motion` support.
+- **Booking Page UX:** Click-to-reveal design with interactive sections using colorful gradient badges. Clickable benefit badges scroll users to Beds24 iframe.
+- **Accessibility:** Full keyboard support, ARIA roles, focusable elements, test IDs.
 
-### Hybrid Email Architecture
-Email functionality is split between Cloudflare and Replit:
-- **Contact Forms:** Cloudflare Workers handle general contact and experience inquiries, including reCAPTCHA v3, security measures, and localized auto-replies using Resend.
-- **Automailer:** An Express.js server (port 3003) in the Replit workspace processes Beds24 booking notifications via IMAP and sends multi-language automated emails via SMTP. Uses PostgreSQL with Drizzle ORM for booking state tracking.
-
-### Automailer - Simplified Architecture (Nov 2025)
-**Design Philosophy:** Track only **WHO is coming** and **WHEN they're arriving** - no pricing or room details needed.
-
-**Email Processing:**
-- Checks IMAP inbox every 30 minutes (at :00 and :30)
-- Sends scheduled emails at :15 and :45
-- Processes new bookings, modifications, and cancellations automatically
-- Supports 15 languages with intelligent language determination
-- BCC copies of all emails sent to beds24@devoceanlodge.com for record-keeping
-
-**Language Determination (3-Tier Priority):**
-1. **Preferred Language** field from Beds24 (explicit guest preference)
-2. **Country code mapping** (e.g., "MZ" → "PT", "ZA" → "EN") from guest location
-3. **Default to English** if neither available
-- Implementation: `server/services/email-parser.ts`, `server/services/cancellation-handler.ts`
-
-**Cancellation Email Flow (Fixed Nov 21, 2025):**
-- Cancellation emails bypass the standard booking status check to ensure delivery
-- When a cancellation is received: booking marked as cancelled → pending emails stopped → cancellation confirmation scheduled (1hr delay) and sent with BCC copy
-- Implementation: `server/services/email-sender.ts` allows `emailType === 'cancellation'` even when `booking.status === 'cancelled'`
-
-**Data Tracked:**
-- Guest Info: name, firstName, email, gender, country, language
-- Booking Dates: check-in, check-out
-- References: groupRef, bookingRefs[] (for modification matching)
-- Status: booking status, email tracking flags (postBookingEmailSent, preArrivalEmailSent, etc.)
-
-**Data NOT Tracked (Intentionally Removed):**
-- ❌ Pricing: totalPrice, currency (guests already know what they paid)
-- ❌ Room Details: roomType, adults, children, people counts
-- ❌ Last night date
-
-**Email Types Scheduled:**
-1. Post-booking confirmation (sent immediately)
-2. Pre-arrival reminder (5 days before check-in)
-3. Arrival day welcome (day of check-in)
-4. Post-departure thank you (1 day after check-out)
-
-**Files:**
-- `server/services/email-parser.ts` - Extracts guest data from Beds24 emails
-- `server/services/email-scheduler.ts` - Schedules automated emails
-- `server/services/email-templates.ts` - Multi-language email templates
-- `server/services/modification-handler.ts` - Processes booking modifications
-- `server/services/cancellation-handler.ts` - Handles cancellation emails
-- `shared/schema.ts` - Database schema (bookings table)
-
-### Frontend
-- **Framework & Build:** React 18, TypeScript, Vite, Wouter for routing.
-- **UI & Styling:** shadcn/ui, Tailwind CSS (New York variant), Radix UI primitives, custom color palette, responsive mobile-first design, Inter font.
-- **Mobile-First Optimization:** Touch-friendly targets, responsive typography with `clamp()`, simplified animations, responsive spacing, `prefers-reduced-motion` support.
+### Technical Implementations
+- **Frontend Framework:** React 18, TypeScript, Vite, Wouter for routing.
+- **Internationalization:** Hybrid language codes (full locale for frontend, 2-letter ISO for backend), React-based i18n with lazy-loaded translations for 15 languages, country-derived locale mapping.
 - **State Management:** TanStack Query for server state, React hooks for local state.
-- **Internationalization:** React-based i18n with lazy-loaded translations for 15 languages, comprehensive country-derived locale mapping.
-- **Booking Pages (Nov 2025):** Static language-specific pages in `/public/book/` directory (AF.html, DE.html, EN.html, ES.html, FR.html, IT.html, JA.html, NL.html, PL.html, PT.html, RU.html, SV.html, SW.html, ZH.html, ZU.html) replace deprecated `booking.html`. Features include:
-  - **Clickable Benefit Badges:** All 4 benefit cards ("Best Rate Guaranteed", "Secure Payment", "Instant Confirmation", "Direct Support") scroll users to Beds24 iframe when clicked, addressing UX issue where visitors didn't realize they needed to scroll down to book (identified via Microsoft Clarity analytics).
-  - **Accessibility:** Full keyboard support (Enter/Space), ARIA roles (`role="button"`), focusable elements (`tabindex="0"`), test IDs (`benefit-card-1` through `benefit-card-4`).
-  - **Language Detection:** URL parameter `?lang=XX` → localStorage (user-selected, persisted) → browser language (navigator.language).
-  - **Currency Detection:** URL parameter `?cur=XXX` → Cloudflare IP geolocation (`window.__CF_COUNTRY__`) → default USD. Currency is never cached, always fresh per page load.
 - **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver for image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral, Static Hero HTML pattern, INP optimization.
-- **SPA Routing:** Cloudflare Pages middleware handles 404s and serves `index.html` for HTML navigation.
-- **Storage Safety Layer:** `localStorage`/`sessionStorage` calls are wrapped with try-catch guards.
-- **Booking Page UX:** Click-to-reveal design with interactive sections using colorful gradient badges, WCAG AA compliant contrast ratios, and mobile-first optimizations.
-- **Booking Translation Architecture:** Fully translated across 15 languages using modular, dynamically loaded ES6 imports to reduce initial page load.
+- **Storage Safety:** `localStorage`/`sessionStorage` calls wrapped with try-catch.
+- **Email Architecture:** Hybrid system where Cloudflare Workers handle contact forms (reCAPTCHA v3, Resend API, localized auto-replies) and an Express.js server (Automailer) in Replit processes Beds24 booking notifications via IMAP to send multi-language automated emails via SMTP.
 
-### Backend
-- **Server:** Express.js automailer server (port 3003, internal).
-- **Database:** PostgreSQL with Drizzle ORM for booking state tracking (guest info, dates, references, email flags).
-- **Email Automation:** Node.js (TypeScript) service processes IMAP notifications and sends SMTP emails via nodemailer.
-- **Contact Forms:** Cloudflare Workers with Resend API, reCAPTCHA v3, HTML escaping, and 15-language autoreply emails.
+### Feature Specifications
+- **Automailer:** Tracks guest info, booking dates, and email flags. Processes new bookings, modifications, and cancellations. Supports 15 languages with 3-tier language determination (Beds24 preference, country code mapping, default English). Schedules post-booking, pre-arrival, arrival day, and post-departure emails.
+- **Experience Inquiry Forms:** Reusable form component with multi-language support (17 languages). Uses reCAPTCHA v3 (development vs. production handling). Form validation includes required fields, email format, minimum message length, and future dates. Operator data synchronization is critical, with backend `experienceDetails.js` being the authoritative source for operator emails.
 
-### Project Structure
-- **Monorepo:** `/WebsiteProject/` (React/Vite marketing website) and `/client/` & `/server/` (full-stack application template).
-
-### Deployment
-- **Platform:** Cloudflare Pages with Functions (Workers).
-- **Build/Deploy:** `npm run build` and `npx wrangler pages deploy`.
-- **Middleware:** `functions/_middleware.js` handles domain redirection, SPA routing, and injects Cloudflare IP geolocation.
-- **Static Files:** `_redirects`, `_headers`, `404.html`.
-- **DNS:** `devoceanlodge.com` managed on Cloudflare.
+### System Design Choices
+- **Monorepo Structure:** `/WebsiteProject/` (React/Vite) and `/client/` & `/server/` (full-stack template).
+- **Deployment:** Cloudflare Pages with Functions (Workers) for hosting and backend logic.
+- **Backend:** Express.js server (port 3003) for automailer.
+- **Database:** PostgreSQL with Drizzle ORM for booking state tracking.
+- **Deployment Middleware:** Cloudflare Pages `_middleware.js` for domain redirection, SPA routing, and IP geolocation injection.
+- **Static Content:** Static language-specific booking pages (`/public/book/`).
 
 ## External Dependencies
 
 ### Third-Party Services
 - **Analytics & Consent:** Google Tag Manager, CookieYes, Microsoft Clarity.
 - **Trust:** Trustindex Floating Certificate widget.
-- **Booking:** Beds24 booking engine (propid=297012). Images must be uploaded directly to Beds24.
+- **Booking Engine:** Beds24 (propid=297012).
 - **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
-- **Email:** Resend API (Cloudflare Workers), SMTP via nodemailer (automailer), IMAP (booking notifications).
+- **Email Services:** Resend API (for Cloudflare Workers), SMTP (via nodemailer for automailer), IMAP (for booking notifications).
 - **SEO:** IndexNow protocol.
 - **Currency Conversion:** fx-rate.net.
 
