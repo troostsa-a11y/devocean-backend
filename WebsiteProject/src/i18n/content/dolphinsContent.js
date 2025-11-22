@@ -87,7 +87,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Marine biologist-led, conservation-focused dolphin encounters"
@@ -186,7 +186,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Marine biologist-led, conservation-focused dolphin encounters"
@@ -285,7 +285,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Marine biologist-led, conservation-focused dolphin encounters"
@@ -384,7 +384,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
@@ -483,7 +483,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
@@ -582,7 +582,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
@@ -681,7 +681,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Encuentros con delfines dirigidos por biólogos marinos, enfocados en conservación"
@@ -780,7 +780,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Rencontres avec dauphins dirigées par des biologistes marins, axées sur la conservation"
@@ -879,7 +879,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Von Meeresbi ologen geleitete, naturschutzorientierte Delfinbegegnungen"
@@ -978,7 +978,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Door mariene biologen geleide, natuurbehoud-gerichte dolfijnontmoetingen"
@@ -1077,7 +1077,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Incontri con delfini guidati da biologi marini, focalizzati sulla conservazione"
@@ -1176,7 +1176,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Marinbiolog-ledda, bevarandefokuserade delfinmöten"
@@ -1275,7 +1275,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Spotkania z delfinami prowadzone przez biologów morskich, skoncentrowane na ochronie"
@@ -1374,7 +1374,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Встречи с дельфинами под руководством морских биологов, ориентированные на сохранение"
@@ -1473,7 +1473,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "由海洋生物学家领导，以保护为重点的海豚邂逅"
@@ -1572,7 +1572,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "海洋生物学者主導、保全重視のイルカとの出会い"
@@ -1671,7 +1671,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Mariene bioloog-geleide, bewaringsfokus dolfyn ontmoetings"
@@ -1770,7 +1770,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Ukuhlangana namahlengethwa okuholwa ngamasayensi wolwandle, okugxile ekulondolozeni"
@@ -1869,7 +1869,7 @@ export const DOLPHINS_CONTENT = {
     ],
     operators: [
       {
-        name: "Dolphin Encountours",
+        name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
         email: "partners@devoceanlodge.com",
         specialty: "Mikutano ya pomboo inayoongozwa na wanabiolojia wa bahari, inayolenga uhifadhi"
