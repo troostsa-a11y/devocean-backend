@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getRecaptchaToken } from '../utils/recaptcha';
 
 export default function ExperienceInquiryForm({ experience, operators, lang, currency }) {
@@ -14,6 +14,17 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
   });
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
+
+  // Sync operatorEmail when operators prop changes or component mounts
+  useEffect(() => {
+    if (operators && operators.length > 0 && !formData.operatorEmail) {
+      setFormData(prev => ({
+        ...prev,
+        operator: operators[0].name,
+        operatorEmail: operators[0].email
+      }));
+    }
+  }, [operators]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
