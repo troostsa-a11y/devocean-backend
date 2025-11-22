@@ -4,6 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { toDDMMYYYY } from '../utils/localize';
 import { EMAIL, PHONE, MAP } from '../data/content';
 import { SOCIAL_LINKS } from '../data/content';
+import { getRecaptchaToken } from '../utils/recaptcha';
 
 const socialIcons = {
   "Facebook": Facebook,
@@ -66,33 +67,8 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
     const formData = new FormData(e.target);
     
     try {
-      // Ensure reCAPTCHA is loaded
-      if (!window.grecaptcha && window.loadRecaptcha) {
-        await window.loadRecaptcha();
-      }
-
-      if (!window.grecaptcha) {
-        throw new Error('reCAPTCHA not loaded');
-      }
-
-      const recaptchaToken = await new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => {
-          reject(new Error('reCAPTCHA timeout - please refresh the page and try again'));
-        }, 10000); // 10 second timeout
-
-        window.grecaptcha.ready(async () => {
-          try {
-            const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY;
-            const token = await window.grecaptcha.execute(siteKey, { action: 'contact_form' });
-            clearTimeout(timeout);
-            resolve(token);
-          } catch (error) {
-            clearTimeout(timeout);
-            console.error('reCAPTCHA execution error:', error);
-            reject(error);
-          }
-        });
-      });
+      // Use shared reCAPTCHA utility (no hardcoded keys!)
+      const recaptchaToken = await getRecaptchaToken('contact_form');
 
       const data = {
         name: formData.get('name'),

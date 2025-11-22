@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getRecaptchaToken } from '../utils/recaptcha';
 
 export default function ExperienceInquiryForm({ experience, operators, lang, currency }) {
   const [formData, setFormData] = useState({
@@ -20,39 +21,8 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
     setStatus({ type: '', message: '' });
 
     try {
-      // Load reCAPTCHA if not already loaded
-      if (!window.grecaptcha && window.loadRecaptcha) {
-        try {
-          await window.loadRecaptcha();
-        } catch (err) {
-          console.error('Failed to load reCAPTCHA:', err);
-          throw new Error('reCAPTCHA failed to load');
-        }
-      }
-      
-      if (!window.grecaptcha) {
-        throw new Error('reCAPTCHA not available');
-      }
-
-      // Wait for grecaptcha to be ready, then execute (with timeout like ContactSection)
-      const recaptchaToken = await new Promise((resolve, reject) => {
-        const timeout = setTimeout(() => {
-          reject(new Error('reCAPTCHA timeout - please refresh the page and try again'));
-        }, 10000); // 10 second timeout
-
-        window.grecaptcha.ready(async () => {
-          try {
-            const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || window.RECAPTCHA_SITE_KEY;
-            const token = await window.grecaptcha.execute(siteKey, { action: 'experience_inquiry' });
-            clearTimeout(timeout);
-            resolve(token);
-          } catch (error) {
-            clearTimeout(timeout);
-            console.error('reCAPTCHA execution error:', error);
-            reject(error);
-          }
-        });
-      });
+      // Use shared reCAPTCHA utility (no hardcoded keys!)
+      const recaptchaToken = await getRecaptchaToken('experience_inquiry');
 
       const response = await fetch('/api/experience-inquiry', {
         method: 'POST',
