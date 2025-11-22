@@ -34,10 +34,20 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
         throw new Error('reCAPTCHA not available');
       }
 
-      const token = await window.grecaptcha.execute(
-        '6Lcw-YUqAAAAAP-HCx0R5D64bckRGiX8VL3NnQcb',
-        { action: 'experience_inquiry' }
-      );
+      // Wait for grecaptcha to be ready, then execute
+      const token = await new Promise((resolve, reject) => {
+        window.grecaptcha.ready(async () => {
+          try {
+            const token = await window.grecaptcha.execute(
+              '6Lcw-YUqAAAAAP-HCx0R5D64bckRGiX8VL3NnQcb',
+              { action: 'experience_inquiry' }
+            );
+            resolve(token);
+          } catch (err) {
+            reject(err);
+          }
+        });
+      });
 
       const response = await fetch('/api/experience-inquiry', {
         method: 'POST',
