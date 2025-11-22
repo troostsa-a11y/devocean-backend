@@ -9,6 +9,16 @@
  * @returns {Promise<string>} The reCAPTCHA token
  */
 export async function getRecaptchaToken(action) {
+  // Check if we're in development mode (localhost or replit.dev)
+  const isDevelopment = window.location.hostname === 'localhost' || 
+                       window.location.hostname.includes('replit.dev');
+  
+  // In development, return a test token
+  if (isDevelopment) {
+    console.log('⚠️  Development mode: Using test reCAPTCHA token');
+    return 'test-token-dev';
+  }
+
   // Ensure reCAPTCHA is loaded
   if (!window.grecaptcha && window.loadRecaptcha) {
     await window.loadRecaptcha();
