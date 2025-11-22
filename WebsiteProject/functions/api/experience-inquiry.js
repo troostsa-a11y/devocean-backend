@@ -15,6 +15,12 @@ const escapeHtml = (text) => text.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'
 
 // Verify reCAPTCHA
 async function verifyRecaptcha(token, action, secretKey) {
+  // Skip reCAPTCHA in dev environment (when no secret key is available)
+  if (!secretKey) {
+    console.log('⚠️  Development mode: Skipping reCAPTCHA verification');
+    return { success: true };
+  }
+
   const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
