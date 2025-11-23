@@ -11,9 +11,10 @@ export default function ExperiencesSection({ experiences, ui }) {
 
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {experiences.map((c, idx) => {
-            const isInternalPage = c.key === 'dolphins';
-            const CardWrapper = isInternalPage ? Link : 'a';
-            const cardProps = isInternalPage 
+            // Experiences with detail pages (all except lighthouse)
+            const hasDetailPage = ['dolphins', 'diving', 'seafari', 'safari', 'fishing', 'surfing'].includes(c.key);
+            const CardWrapper = hasDetailPage ? Link : 'a';
+            const cardProps = hasDetailPage 
               ? { href: `/experiences/${c.key}` }
               : { href: c.url, target: "_blank", rel: "noopener noreferrer" };
             
