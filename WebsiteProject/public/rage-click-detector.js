@@ -200,22 +200,25 @@
     style.id = 'rage-click-styles';
     style.textContent = `
       .rage-click-toast {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: linear-gradient(135deg, #c86414 0%, #9e4b13 100%);
-        color: white;
-        padding: 16px 24px;
-        border-radius: 12px;
-        box-shadow: 0 8px 32px rgba(158, 75, 19, 0.4);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        font-size: 14px;
-        font-weight: 500;
-        z-index: 999999;
-        animation: slideInUp 0.3s ease-out, fadeOut 0.3s ease-in 3.7s;
-        pointer-events: none;
-        max-width: 320px;
-        line-height: 1.5;
+        position: fixed !important;
+        bottom: 20px !important;
+        right: 20px !important;
+        background: linear-gradient(135deg, #c86414 0%, #9e4b13 100%) !important;
+        color: white !important;
+        padding: 16px 24px !important;
+        border-radius: 12px !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        z-index: 2147483647 !important;
+        animation: slideInUp 0.3s ease-out, fadeOut 0.3s ease-in 3.7s !important;
+        pointer-events: none !important;
+        max-width: 320px !important;
+        line-height: 1.5 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
       }
       
       @keyframes slideInUp {

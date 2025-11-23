@@ -1,0 +1,68 @@
+installHook.js:1 Data from this session is not being collected by Microsoft Clarity due to your configured project settings
+overrideMethod @ installHook.js:1
+script.js:1 Uncaught Error: Looks like your website URL has changed. To ensure the proper functioning of your banner, update the registered URL on your CookieYes account (navigate to the Organizations & Sites page (https://app.cookieyes.com/settings/organizations-and-sites) and click the More button associated with your site). Then, reload this page to retry. If the issue persists, please contact us at https://www.cookieyes.com/support.
+(anonymous) @ script.js:1
+(anonymous) @ script.js:1
+(anonymous) @ script.js:1
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: A <a href=​"#home" class=​"flex items-center gap-3 text-slate-800" data-testid=​"link-home-logo" data-ti-enable-scroll=​"1">​…​</a>​flex
+rage-click-detector.js:361 [Rage-Click] Tracking click on: IMG <img alt=​"DEVOCEAN Lodge" loading=​"eager" decoding=​"async" class=​"transition-opacity duration-300 h-9 w-9 rounded-full object-cover" style=​"aspect-ratio:​ 3 /​ 2;​">​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: it-IT
+rage-click-detector.js:156 [Rage-Click] Normalized to: it-IT
+rage-click-detector.js:157 [Rage-Click] Has message? (3) ['👋 Piano! Questo elemento non è cliccabile.', "🤔 Quest'area non risponde ai clic.", '💡 Prova a cliccare su pulsanti o link.']
+rage-click-detector.js:251 [Rage-Click] showToast called with: 👋 Piano! Questo elemento non è cliccabile.
+rage-click-detector.js:252 [Rage-Click] toastCount: 0 max: 3
+rage-click-detector.js:268 [Rage-Click] Toast element created: <div class=​"rage-click-toast" role=​"alert" aria-live=​"polite">​👋 Piano! Questo elemento non è cliccabile.​</div>​
+rage-click-detector.js:270 [Rage-Click] Toast appended to body
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+client:745 WebSocket connection to 'wss://8467bf21-63db-4d5a-9e41-c084beb5640b-00-2i4c6eh7ctw9p.janeway.replit.dev:24678/?token=RoR-0lByzPkE' failed: 
+createConnection @ client:745
+installHook.js:1 [vite] failed to connect to websocket (Error: WebSocket closed without opened.). 
+overrideMethod @ installHook.js:1
+connect @ client:772
+client:423 Uncaught (in promise) Error: WebSocket closed without opened.
+    at WebSocket.<anonymous> (client:423:30)
+(anonymous) @ client:423
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:275 [Rage-Click] Toast removed
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: nl-NL
+rage-click-detector.js:156 [Rage-Click] Normalized to: nl-NL
+rage-click-detector.js:157 [Rage-Click] Has message? (3) ['👋 Rustig aan! Dit element is niet klikbaar.', '🤔 Dit gebied reageert niet op klikken.', '💡 Probeer in plaats daarvan op knoppen of links te klikken.']
+rage-click-detector.js:251 [Rage-Click] showToast called with: 🤔 Dit gebied reageert niet op klikken.
+rage-click-detector.js:252 [Rage-Click] toastCount: 1 max: 3
+rage-click-detector.js:268 [Rage-Click] Toast element created: <div class=​"rage-click-toast" role=​"alert" aria-live=​"polite">​🤔 Dit gebied reageert niet op klikken.​</div>​
+rage-click-detector.js:270 [Rage-Click] Toast appended to body
+rage-click-detector.js:357 [Rage-Click] Element in cooldown
+rage-click-detector.js:275 [Rage-Click] Toast removed
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: pt-PT
+rage-click-detector.js:156 [Rage-Click] Normalized to: pt-PT
+rage-click-detector.js:157 [Rage-Click] Has message? (3) ['👋 Calma! Este elemento não é clicável.', '🤔 Essa área não responde a cliques.', '💡 Tente clicar em botões ou links.']
+rage-click-detector.js:251 [Rage-Click] showToast called with: 💡 Tente clicar em botões ou links.
+rage-click-detector.js:252 [Rage-Click] toastCount: 2 max: 3
+rage-click-detector.js:268 [Rage-Click] Toast element created: <div class=​"rage-click-toast" role=​"alert" aria-live=​"polite">​💡 Tente clicar em botões ou links.​</div>​
+rage-click-detector.js:270 [Rage-Click] Toast appended to body
+rage-click-detector.js:357 [Rage-Click] Element in cooldown
+rage-click-detector.js:275 [Rage-Click] Toast removed
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select region">​…​</select>​
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select region">​…​</select>​
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:351 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:361 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: ja-JP
+rage-click-detector.js:156 [Rage-Click] Normalized to: ja-JP
+rage-click-detector.js:157 [Rage-Click] Has message? (3) ['👋 落ち着いて！この要素はクリックできません。', '🤔 この領域はクリックに反応しません。', '💡 代わりにボタンやリンクをクリックしてみてください。']
+rage-click-detector.js:251 [Rage-Click] showToast called with: 💡 代わりにボタンやリンクをクリックしてみてください。
+rage-click-detector.js:252 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:255 [Rage-Click] Max toasts reached, skipping
