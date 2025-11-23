@@ -150,8 +150,11 @@
     // Priority 1: localStorage (React app's source of truth - updated immediately on change)
     try {
       const stored = localStorage.getItem('site.lang');
+      console.log('[Rage-Click] localStorage lang:', stored);
       if (stored) {
         const normalized = normalizeLangCode(stored);
+        console.log('[Rage-Click] Normalized to:', normalized);
+        console.log('[Rage-Click] Has message?', normalized && MESSAGES[normalized]);
         if (normalized && MESSAGES[normalized]) {
           return normalized;
         }
