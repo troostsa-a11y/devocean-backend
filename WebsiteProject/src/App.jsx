@@ -225,7 +225,7 @@ export default function App() {
                   bookUrl={bookUrl}
                   dateLocale={dateLocale}
                 />
-                <Footer units={units} experiences={experiences} ui={ui} />
+                <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
               </Suspense>
             </>
           )}

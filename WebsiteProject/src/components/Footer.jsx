@@ -1,9 +1,24 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { useLocation } from 'wouter';
 import { IMG, EMAIL, PHONE } from '../data/content';
 import LazyImage from './LazyImage';
 
-export default function Footer({ units, experiences, ui }) {
+export default function Footer({ units, experiences, ui, lang }) {
+  const [location] = useLocation();
+  
+  // Detect if we're on an experience detail page
+  const isExperiencePage = location.startsWith('/experiences/');
+  
+  // Detect if we're on a standalone HTML page (not index.html)
+  const isStandalonePage = typeof window !== 'undefined' && 
+    window.location.pathname !== '/' && 
+    window.location.pathname !== '/index.html' &&
+    !window.location.pathname.startsWith('/experiences/');
+
   const handleAnchorNav = (e, href) => {
+    // Only handle smooth scroll on homepage
+    if (isExperiencePage || isStandalonePage) return;
+    
     const id = href.startsWith('#') ? href.slice(1) : '';
     const el = id ? document.getElementById(id) : null;
 
@@ -36,9 +51,9 @@ export default function Footer({ units, experiences, ui }) {
         {/* Brand / About */}
         <div>
           <a
-            href="#home"
+            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : '#home'}
             className="flex items-center gap-3 hover:text-white"
-            onClick={(e) => handleAnchorNav(e, '#home')}
+            onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#home')}
           >
             <LazyImage 
               srcWebP="/images/devocean_logo_header-small.webp"
@@ -54,9 +69,9 @@ export default function Footer({ units, experiences, ui }) {
         {/* Stay */}
         <div>
           <a
-            href="#stay"
+            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#stay` : '#stay'}
             className="font-semibold hover:text-white"
-            onClick={(e) => handleAnchorNav(e, '#stay')}
+            onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#stay')}
           >
             {ui.nav.stay}
           </a>
@@ -65,8 +80,8 @@ export default function Footer({ units, experiences, ui }) {
               <li key={u.key}>
                 <a
                   className="hover:text-white"
-                  href="#stay"
-                  onClick={(e) => handleAnchorNav(e, '#stay')}
+                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#stay` : '#stay'}
+                  onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#stay')}
                 >
                   {u.title}
                 </a>
@@ -78,9 +93,9 @@ export default function Footer({ units, experiences, ui }) {
         {/* Experiences */}
         <div>
           <a
-            href="#experiences"
+            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#experiences` : '#experiences'}
             className="font-semibold hover:text-white"
-            onClick={(e) => handleAnchorNav(e, '#experiences')}
+            onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#experiences')}
           >
             {ui.nav.experiences}
           </a>
@@ -89,8 +104,8 @@ export default function Footer({ units, experiences, ui }) {
               <li key={ex.key}>
                 <a
                   className="hover:text-white"
-                  href="#experiences"
-                  onClick={(e) => handleAnchorNav(e, '#experiences')}
+                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#experiences` : '#experiences'}
+                  onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#experiences')}
                 >
                   {ex.title}
                 </a>
@@ -102,9 +117,9 @@ export default function Footer({ units, experiences, ui }) {
         {/* Contact */}
         <div>
           <a
-            href="#contact"
+            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#contact` : '#contact'}
             className="font-semibold hover:text-white"
-            onClick={(e) => handleAnchorNav(e, '#contact')}
+            onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#contact')}
           >
             {ui.nav.contact}
           </a>

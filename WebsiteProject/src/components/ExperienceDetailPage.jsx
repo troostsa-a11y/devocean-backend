@@ -594,7 +594,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
       </div>
 
       {/* Footer */}
-      <Footer units={units} experiences={experiences} ui={ui} />
+      <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
     </>
   );
 }
