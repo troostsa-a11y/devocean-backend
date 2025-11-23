@@ -248,7 +248,13 @@
   
   // Show toast notification
   function showToast(message) {
-    if (toastCount >= CONFIG.maxToastsPerSession) return;
+    console.log('[Rage-Click] showToast called with:', message);
+    console.log('[Rage-Click] toastCount:', toastCount, 'max:', CONFIG.maxToastsPerSession);
+    
+    if (toastCount >= CONFIG.maxToastsPerSession) {
+      console.log('[Rage-Click] Max toasts reached, skipping');
+      return;
+    }
     
     injectStyles();
     toastCount++;
@@ -259,11 +265,14 @@
     toast.setAttribute('role', 'alert');
     toast.setAttribute('aria-live', 'polite');
     
+    console.log('[Rage-Click] Toast element created:', toast);
     document.body.appendChild(toast);
+    console.log('[Rage-Click] Toast appended to body');
     
     setTimeout(() => {
       if (toast.parentNode) {
         toast.parentNode.removeChild(toast);
+        console.log('[Rage-Click] Toast removed');
       }
     }, CONFIG.toastDuration);
   }
