@@ -81,12 +81,6 @@ export const SEAFARI_CONTENT = {
         website: "https://www.dolphinencountours.org/",
         email: "info@dolphinencountours.org",
         specialty: "Research-based tours, data collection for conservation"
-      },
-      {
-        name: "Ponta Ventura",
-        website: "https://www.pontaventura.com/",
-        email: "info@pontaventura.com",
-        specialty: "Affordable local pricing, Ponta Malongane based"
       }
     ]
   }
