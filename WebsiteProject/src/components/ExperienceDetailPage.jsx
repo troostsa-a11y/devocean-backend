@@ -5,6 +5,11 @@ import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
 import { getDolphinsContent } from '../i18n/content/dolphinsContent';
+import { getDivingContent } from '../i18n/content/divingContent';
+import { getSeafariContent } from '../i18n/content/seafariContent';
+import { getSafariContent } from '../i18n/content/safariContent';
+import { getFishingContent } from '../i18n/content/fishingContent';
+import { getSurfingContent } from '../i18n/content/surfingContent';
 
 export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const [match, params] = useRoute('/experiences/:key');
@@ -13,27 +18,38 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   // Get base experience data (hero image, etc.)
   const baseExp = EXPERIENCE_DETAILS[experienceKey];
   
-  // For dolphins, merge with translated content; otherwise use base data
-  const exp = experienceKey === 'dolphins' 
+  // Content getters for each experience (except lighthouse)
+  const contentGetters = {
+    dolphins: getDolphinsContent,
+    diving: getDivingContent,
+    seafari: getSeafariContent,
+    safari: getSafariContent,
+    fishing: getFishingContent,
+    surfing: getSurfingContent
+  };
+  
+  // Merge with translated content if available; otherwise use base data
+  const getContent = contentGetters[experienceKey];
+  const exp = getContent
     ? {
         ...baseExp,
-        ...getDolphinsContent(lang),
+        ...getContent(lang),
         // Restructure nested data to match existing component expectations
         pricing: baseExp?.pricing ? {
-          range: getDolphinsContent(lang).pricingRange,
-          details: getDolphinsContent(lang).pricingDetails
+          range: getContent(lang).pricingRange,
+          details: getContent(lang).pricingDetails
         } : undefined,
         duration: baseExp?.duration ? {
-          typical: getDolphinsContent(lang).durationTypical,
-          details: getDolphinsContent(lang).durationDetails
+          typical: getContent(lang).durationTypical,
+          details: getContent(lang).durationDetails
         } : undefined,
         requirements: baseExp?.requirements ? {
-          level: getDolphinsContent(lang).requirementsLevel,
-          details: getDolphinsContent(lang).requirementsDetails
+          level: getContent(lang).requirementsLevel,
+          details: getContent(lang).requirementsDetails
         } : undefined,
         bestTime: baseExp?.bestTime ? {
-          peak: getDolphinsContent(lang).bestTimePeak,
-          details: getDolphinsContent(lang).bestTimeDetails
+          peak: getContent(lang).bestTimePeak,
+          details: getContent(lang).bestTimeDetails
         } : undefined
       }
     : baseExp;
