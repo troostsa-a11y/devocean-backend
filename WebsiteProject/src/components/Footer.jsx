@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { useLocation } from 'wouter';
+import { useLocation, Link } from 'wouter';
 import { IMG, EMAIL, PHONE } from '../data/content';
 import LazyImage from './LazyImage';
 
@@ -100,17 +100,46 @@ export default function Footer({ units, experiences, ui, lang }) {
             {ui.nav.experiences}
           </a>
           <ul className="mt-2 space-y-1 text-sm text-slate-400">
-            {experiences.slice(0, 4).map((ex) => (
-              <li key={ex.key}>
-                <a
-                  className="hover:text-white"
-                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#experiences` : '#experiences'}
-                  onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#experiences')}
-                >
-                  {ex.title}
-                </a>
-              </li>
-            ))}
+            <li>
+              <Link
+                href="/experiences/diving"
+                className="hover:text-white"
+              >
+                {experiences.find(ex => ex.key === 'diving')?.title || 'Scuba Diving'}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/experiences/dolphins"
+                className="hover:text-white"
+              >
+                {experiences.find(ex => ex.key === 'dolphins')?.title || 'Dolphin Swim'}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/experiences/safari"
+                className="hover:text-white"
+              >
+                {experiences.find(ex => ex.key === 'safari')?.title || 'Game Safaris'}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/experiences/fishing"
+                className="hover:text-white"
+              >
+                {experiences.find(ex => ex.key === 'fishing')?.title || 'Deep Sea Fishing'}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/experiences/surfing"
+                className="hover:text-white"
+              >
+                {experiences.find(ex => ex.key === 'surfing')?.title || 'Surfing'}
+              </Link>
+            </li>
           </ul>
         </div>
 
