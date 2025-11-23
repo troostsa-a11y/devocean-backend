@@ -335,10 +335,8 @@
       return;
     }
     
-    // Skip if element is in cooldown
+    // Skip if element is in cooldown (just ignore, don't prevent)
     if (cooldowns.has(element)) {
-      event.preventDefault();
-      event.stopPropagation();
       return;
     }
     
@@ -412,6 +410,9 @@
     }
   }
   
+  // Track if listener is active
+  let listenerActive = false;
+  
   // Initialize detector
   function init() {
     // Wait for DOM to be ready
@@ -420,8 +421,15 @@
       return;
     }
     
+    // Prevent multiple initializations
+    if (listenerActive) {
+      return;
+    }
+    listenerActive = true;
+    
     // Add click listener with capture phase to catch all clicks early
-    document.addEventListener('click', handleClick, { capture: true, passive: false });
+    // Use passive: true since we don't actually prevent default for most clicks
+    document.addEventListener('click', handleClick, { capture: true, passive: true });
     
     // Cleanup old entries periodically to prevent memory leaks
     setInterval(() => {
