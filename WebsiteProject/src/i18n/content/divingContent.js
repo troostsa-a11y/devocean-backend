@@ -67,16 +67,40 @@ export const DIVING_CONTENT = {
     ],
     operators: [
       {
-        name: "Gozo Azul",
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Shark diving specialists, research-focused"
+      },
+      {
+        name: "Gozo Azul Diving",
         website: "https://gozo-azul.co.za/",
-        email: "info@gozo-azul.co.za",
+        email: "natalie@gozo-azul-co.za",
         specialty: "PADI 5-star center, shark diving specialists"
       },
       {
-        name: "Back to Basics Adventures",
-        website: "http://www.backtobasicsadventures.com/",
-        email: "info@backtobasicsadventures.com",
-        specialty: "Shark diving specialists, research-focused"
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Professional dive center"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Professional dive center"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Shark diving specialists"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Professional dive center"
       }
     ]
   }
