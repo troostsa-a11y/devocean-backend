@@ -13,6 +13,114 @@
     maxToastsPerSession: 3    // Limit notifications per session
   };
   
+  // Multi-language toast messages (17 languages)
+  const MESSAGES = {
+    'en-GB': [
+      '👋 Easy there! This element isn\'t clickable.',
+      '🤔 That area doesn\'t respond to clicks.',
+      '💡 Try clicking on buttons or links instead.'
+    ],
+    'en-US': [
+      '👋 Easy there! This element isn\'t clickable.',
+      '🤔 That area doesn\'t respond to clicks.',
+      '💡 Try clicking on buttons or links instead.'
+    ],
+    'pt-PT': [
+      '👋 Calma! Este elemento não é clicável.',
+      '🤔 Essa área não responde a cliques.',
+      '💡 Tente clicar em botões ou links.'
+    ],
+    'pt-BR': [
+      '👋 Calma! Este elemento não é clicável.',
+      '🤔 Essa área não responde a cliques.',
+      '💡 Tente clicar em botões ou links.'
+    ],
+    'nl-NL': [
+      '👋 Rustig aan! Dit element is niet klikbaar.',
+      '🤔 Dit gebied reageert niet op klikken.',
+      '💡 Probeer in plaats daarvan op knoppen of links te klikken.'
+    ],
+    'fr-FR': [
+      '👋 Doucement ! Cet élément n\'est pas cliquable.',
+      '🤔 Cette zone ne répond pas aux clics.',
+      '💡 Essayez de cliquer sur des boutons ou des liens.'
+    ],
+    'it-IT': [
+      '👋 Piano! Questo elemento non è cliccabile.',
+      '🤔 Quest\'area non risponde ai clic.',
+      '💡 Prova a cliccare su pulsanti o link.'
+    ],
+    'de-DE': [
+      '👋 Langsam! Dieses Element ist nicht anklickbar.',
+      '🤔 Dieser Bereich reagiert nicht auf Klicks.',
+      '💡 Versuchen Sie stattdessen auf Schaltflächen oder Links zu klicken.'
+    ],
+    'es-ES': [
+      '👋 ¡Tranquilo! Este elemento no es clicable.',
+      '🤔 Esa área no responde a los clics.',
+      '💡 Intenta hacer clic en botones o enlaces.'
+    ],
+    'sv': [
+      '👋 Ta det lugnt! Det här elementet är inte klickbart.',
+      '🤔 Det området svarar inte på klick.',
+      '💡 Försök klicka på knappar eller länkar istället.'
+    ],
+    'pl': [
+      '👋 Spokojnie! Ten element nie jest klikalny.',
+      '🤔 Ten obszar nie reaguje na kliknięcia.',
+      '💡 Spróbuj kliknąć przyciski lub linki.'
+    ],
+    'af-ZA': [
+      '👋 Kalm aan! Hierdie element is nie klikbaar nie.',
+      '🤔 Daardie area reageer nie op klieke nie.',
+      '💡 Probeer eerder op knoppies of skakels klik.'
+    ],
+    'zu': [
+      '👋 Kancane! Lesi sici asichofozi.',
+      '🤔 Lelo ndawo ayiphenduli ekuchofozeni.',
+      '💡 Zama ukuchofoza izinkinobho noma izixhumanisi.'
+    ],
+    'sw': [
+      '👋 Polepole! Kipengee hiki hakiwezi kubonyezwa.',
+      '🤔 Eneo hilo halijibu mabonyezo.',
+      '💡 Jaribu kubonyeza vitufe au viungo badala yake.'
+    ],
+    'ru': [
+      '👋 Потише! Этот элемент не кликабелен.',
+      '🤔 Эта область не реагирует на клики.',
+      '💡 Попробуйте нажимать на кнопки или ссылки.'
+    ],
+    'ja-JP': [
+      '👋 落ち着いて！この要素はクリックできません。',
+      '🤔 この領域はクリックに反応しません。',
+      '💡 代わりにボタンやリンクをクリックしてみてください。'
+    ],
+    'zh-CN': [
+      '👋 慢点！此元素不可点击。',
+      '🤔 该区域不响应点击。',
+      '💡 请尝试点击按钮或链接。'
+    ]
+  };
+  
+  // Detect current language from URL or HTML lang attribute
+  function detectLanguage() {
+    // Try URL parameter first
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if (langParam && MESSAGES[langParam]) {
+      return langParam;
+    }
+    
+    // Try HTML lang attribute
+    const htmlLang = document.documentElement.lang;
+    if (htmlLang && MESSAGES[htmlLang]) {
+      return htmlLang;
+    }
+    
+    // Default to English
+    return 'en-GB';
+  }
+  
   // State tracking
   const clickTracker = new Map(); // element -> click timestamps array
   const cooldowns = new WeakSet(); // elements currently in cooldown
@@ -210,12 +318,9 @@
     // Tag session in Clarity
     tagClaritySession();
     
-    // Show toast notification
-    const messages = [
-      '👋 Easy there! This element isn\'t clickable.',
-      '🤔 That area doesn\'t respond to clicks.',
-      '💡 Try clicking on buttons or links instead.'
-    ];
+    // Show toast notification in user's language
+    const lang = detectLanguage();
+    const messages = MESSAGES[lang] || MESSAGES['en-GB'];
     const message = messages[Math.min(toastCount, messages.length - 1)];
     showToast(message);
     
