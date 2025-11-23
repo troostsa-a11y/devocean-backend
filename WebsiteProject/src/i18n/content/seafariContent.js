@@ -16,11 +16,11 @@ export const SEAFARI_CONTENT = {
       "Marine biologist-led tours",
       "Research & conservation focus"
     ],
-    pricingRange: "$40-45 USD per person",
+    pricingRange: "US$40-45 per person",
     pricingDetails: [
-      "Whale watching only: ~$40 USD (2,500 MZN)",
-      "Combined dolphin + whale: ~$45 USD (2,750 MZN)",
-      "Full-day private tour from Maputo: $179 USD",
+      "Whale watching only: US$40",
+      "Combined dolphin + whale: US$45",
+      "Full-day private tour from Maputo: US$179",
       "Children under 12: Discounted rates",
       "Equipment & snacks included"
     ],

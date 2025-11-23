@@ -16,10 +16,10 @@ export const SURFING_CONTENT = {
       "Dolphins surfing alongside you",
       "Crystal-clear Indian Ocean water"
     ],
-    pricingRange: "From $20 USD (lesson)",
+    pricingRange: "From US$20 (lesson)",
     pricingDetails: [
-      "Surf lesson (2 hours): $20-40 USD",
-      "Board rental (full day): $15-25 USD",
+      "Surf lesson (2 hours): US$20-40",
+      "Board rental (full day): US$15-25",
       "Multi-day packages: Discounted rates",
       "Equipment included in lessons",
       "Softboards for beginners",

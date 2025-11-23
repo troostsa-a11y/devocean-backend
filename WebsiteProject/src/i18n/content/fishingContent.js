@@ -16,13 +16,13 @@ export const FISHING_CONTENT = {
       "Beach launch charters (dry launch)",
       "Expert local skippers with 20+ years"
     ],
-    pricingRange: "From $550 USD (charter)",
+    pricingRange: "From US$550 (charter)",
     pricingDetails: [
-      "5-hour charter: ~$550-650 USD (R8,000)",
-      "8-hour charter: ~$850-950 USD (R12,000)",
-      "Full-day deep sea: $1,000+ USD",
+      "5-hour charter: US$550-650",
+      "8-hour charter: US$850-950",
+      "Full-day deep sea: US$1,000+",
       "Beach fishing: Free (bring own gear)",
-      "Guided shore fishing: $50-100 USD",
+      "Guided shore fishing: US$50-100",
       "All licenses, equipment & filleting included in charters"
     ],
     durationTypical: "5-8 hours (charter)",

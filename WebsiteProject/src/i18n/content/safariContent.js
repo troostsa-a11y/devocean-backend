@@ -16,11 +16,11 @@ export const SAFARI_CONTENT = {
       "UNESCO World Heritage Site (2025)",
       "Beach & bush combo possible"
     ],
-    pricingRange: "From $95 USD per person",
+    pricingRange: "From US$95 per person",
     pricingDetails: [
-      "Day safari: $95-120 USD per person",
-      "Full-day with Ponta do Ouro beach: $100-130 USD",
-      "2-3 day camping safari: From $200 USD",
+      "Day safari: US$95-120 per person",
+      "Full-day with Ponta do Ouro beach: US$100-130",
+      "2-3 day camping safari: From US$200",
       "Private tours: Custom pricing",
       "4x4 vehicle, guide & park fees included"
     ],

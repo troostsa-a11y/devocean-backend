@@ -16,11 +16,11 @@ export const DIVING_CONTENT = {
       "Pristine coral reefs",
       "Professional PADI centers"
     ],
-    pricingRange: "From $40 USD per dive",
+    pricingRange: "From US$40 per dive",
     pricingDetails: [
-      "Single dive: $40-50 USD",
-      "Two-dive package: $75-90 USD",
-      "PADI Open Water: $350-400 USD",
+      "Single dive: US$40-50",
+      "Two-dive package: US$75-90",
+      "PADI Open Water: US$350-400",
       "Equipment rental included",
       "All licenses & permits included"
     ],
