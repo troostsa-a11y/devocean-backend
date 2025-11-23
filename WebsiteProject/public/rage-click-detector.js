@@ -102,19 +102,77 @@
     ]
   };
   
-  // Detect current language from URL or HTML lang attribute
-  function detectLanguage() {
-    // Try URL parameter first
-    const urlParams = new URLSearchParams(window.location.search);
-    const langParam = urlParams.get('lang');
-    if (langParam && MESSAGES[langParam]) {
-      return langParam;
+  // Normalize language codes (matches React app logic)
+  function normalizeLangCode(langCode) {
+    if (!langCode) return null;
+    
+    const normalized = langCode.toLowerCase().trim();
+    
+    // Direct mapping of short codes to full locale codes
+    const SHORT_TO_FULL = {
+      'en': 'en-GB',
+      'pt': 'pt-PT',  // Portuguese Portugal as default
+      'nl': 'nl-NL',
+      'fr': 'fr-FR',
+      'it': 'it-IT',
+      'de': 'de-DE',
+      'es': 'es-ES',
+      'ja': 'ja-JP',
+      'zh': 'zh-CN',
+      'af': 'af-ZA'
+    };
+    
+    // Check if it's a short code that needs expansion
+    if (SHORT_TO_FULL[normalized]) {
+      return SHORT_TO_FULL[normalized];
     }
     
-    // Try HTML lang attribute
+    // Check if it's already a full code we support
+    if (MESSAGES[langCode]) {
+      return langCode;
+    }
+    
+    // Try to extract language from locale (e.g., 'pt-BR' -> 'pt')
+    const baseCode = normalized.split('-')[0];
+    if (SHORT_TO_FULL[baseCode]) {
+      return SHORT_TO_FULL[baseCode];
+    }
+    
+    return null;
+  }
+  
+  // Detect current language from URL or HTML lang attribute
+  function detectLanguage() {
+    // Priority 1: URL parameter (most important - user has selected language)
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get('lang');
+    if (langParam) {
+      const normalized = normalizeLangCode(langParam);
+      if (normalized && MESSAGES[normalized]) {
+        return normalized;
+      }
+    }
+    
+    // Priority 2: localStorage (user's previous selection)
+    try {
+      const stored = localStorage.getItem('site.lang');
+      if (stored) {
+        const normalized = normalizeLangCode(stored);
+        if (normalized && MESSAGES[normalized]) {
+          return normalized;
+        }
+      }
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+    
+    // Priority 3: HTML lang attribute
     const htmlLang = document.documentElement.lang;
-    if (htmlLang && MESSAGES[htmlLang]) {
-      return htmlLang;
+    if (htmlLang) {
+      const normalized = normalizeLangCode(htmlLang);
+      if (normalized && MESSAGES[normalized]) {
+        return normalized;
+      }
     }
     
     // Default to English
