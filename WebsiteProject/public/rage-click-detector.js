@@ -119,7 +119,8 @@
       'es': 'es-ES',
       'ja': 'ja-JP',
       'zh': 'zh-CN',
-      'af': 'af-ZA'
+      'af': 'af-ZA',
+      'ru': 'ru'      // Russian uses 2-letter code
     };
     
     // Check if it's a short code that needs expansion
@@ -127,9 +128,12 @@
       return SHORT_TO_FULL[normalized];
     }
     
-    // Check if it's already a full code we support
-    if (MESSAGES[langCode]) {
-      return langCode;
+    // Check if it's already a supported code (case-insensitive)
+    // Try to find exact match in MESSAGES keys
+    for (const key in MESSAGES) {
+      if (key.toLowerCase() === normalized) {
+        return key;
+      }
     }
     
     // Try to extract language from locale (e.g., 'pt-BR' -> 'pt')
