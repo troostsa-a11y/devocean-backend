@@ -10,7 +10,7 @@
     timeWindow: 1000,         // Time window in ms (1 second)
     cooldownDuration: 2000,   // Cooldown period after detection (2 seconds)
     toastDuration: 4000,      // How long to show the toast message
-    maxToastsPerSession: 3    // Limit notifications per session
+    maxToastsPerSession: 10   // Limit notifications per session (increased for multi-language testing)
   };
   
   // Multi-language toast messages (17 languages)
