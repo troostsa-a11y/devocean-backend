@@ -546,6 +546,46 @@ export function getExpText(key, lang, params = {}) {
       zu: "Xhumana Nabashayeli be-Dolphin Seafari ngqo ngefomu lokuxhumana elingenhla. Silapha ukusiza.",
       sw: "Wasiliana moja kwa moja na Waendeshaji wa Seafari za Pomboo kupitia fomu ya mawasiliano hapo juu. Tuko hapa kusaidia."
     },
+    divingCta: {
+      en: "Contact the Scuba Diving Operators directly through the contact form above. We're here to help.",
+      'en-GB': "Contact the Scuba Diving Operators directly through the contact form above. We're here to help.",
+      'en-US': "Contact the Scuba Diving Operators directly through the contact form above. We're here to help.",
+      'pt-PT': "Contacte os Operadores de Mergulho diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      'pt-BR': "Entre em contato com os Operadores de Mergulho diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      pt: "Contacte os Operadores de Mergulho diretamente através do formulário de contato acima. Estamos aqui para ajudar."
+    },
+    seafariCta: {
+      en: "Contact the Seafari Operators directly through the contact form above. We're here to help.",
+      'en-GB': "Contact the Seafari Operators directly through the contact form above. We're here to help.",
+      'en-US': "Contact the Seafari Operators directly through the contact form above. We're here to help.",
+      'pt-PT': "Contacte os Operadores de Seafari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      'pt-BR': "Entre em contato com os Operadores de Seafari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      pt: "Contacte os Operadores de Seafari diretamente através do formulário de contato acima. Estamos aqui para ajudar."
+    },
+    safariCta: {
+      en: "Contact the Game Safari Operators directly through the contact form above. We're here to help.",
+      'en-GB': "Contact the Game Safari Operators directly through the contact form above. We're here to help.",
+      'en-US': "Contact the Game Safari Operators directly through the contact form above. We're here to help.",
+      'pt-PT': "Contacte os Operadores de Safari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      'pt-BR': "Entre em contato com os Operadores de Safari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      pt: "Contacte os Operadores de Safari diretamente através do formulário de contato acima. Estamos aqui para ajudar."
+    },
+    fishingCta: {
+      en: "Contact the Fishing Charter Operators directly through the contact form above. We're here to help.",
+      'en-GB': "Contact the Fishing Charter Operators directly through the contact form above. We're here to help.",
+      'en-US': "Contact the Fishing Charter Operators directly through the contact form above. We're here to help.",
+      'pt-PT': "Contacte os Operadores de Pesca diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      'pt-BR': "Entre em contato com os Operadores de Pesca diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      pt: "Contacte os Operadores de Pesca diretamente através do formulário de contato acima. Estamos aqui para ajudar."
+    },
+    surfingCta: {
+      en: "Contact the Surf School Operators directly through the contact form above. We're here to help.",
+      'en-GB': "Contact the Surf School Operators directly through the contact form above. We're here to help.",
+      'en-US': "Contact the Surf School Operators directly through the contact form above. We're here to help.",
+      'pt-PT': "Contacte os Operadores de Surf diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      'pt-BR': "Entre em contato com os Operadores de Surf diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
+      pt: "Contacte os Operadores de Surf diretamente através do formulário de contato acima. Estamos aqui para ajudar."
+    },
     generalCta: {
       en: "Contact us to arrange your experience or get more information. We're here to help make your Ponta do Ouro adventure unforgettable!",
       'en-GB': "Contact us to arrange your experience or get more information. We're here to help make your Ponta do Ouro adventure unforgettable!",

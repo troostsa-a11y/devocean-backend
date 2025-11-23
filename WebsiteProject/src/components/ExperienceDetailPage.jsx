@@ -558,10 +558,17 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               {getExpText('readyToBook', lang, { title: exp.title })}
             </h2>
             <p className="text-lg mb-8 text-white/90 max-w-2xl mx-auto">
-              {experienceKey === 'dolphins' 
-                ? getExpText('dolphinsCta', lang)
-                : getExpText('generalCta', lang)
-              }
+              {(() => {
+                const ctaMap = {
+                  dolphins: 'dolphinsCta',
+                  diving: 'divingCta',
+                  seafari: 'seafariCta',
+                  safari: 'safariCta',
+                  fishing: 'fishingCta',
+                  surfing: 'surfingCta'
+                };
+                return getExpText(ctaMap[experienceKey] || 'generalCta', lang);
+              })()}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
