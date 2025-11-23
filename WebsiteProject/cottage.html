@@ -528,6 +528,50 @@
   </style>
   <!-- Trustindex Floating Certificate -->
   <script defer async src="https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8"></script>
+
+  <!-- Rage Click Detection (INP-Optimized: Load AFTER first interaction completes) -->
+  <script>
+    (function() {
+      var rageDetectorLoaded = false;
+      var firstInteractionComplete = false;
+      
+      function loadRageDetector() {
+        if (rageDetectorLoaded) return;
+        rageDetectorLoaded = true;
+        var s = document.createElement('script');
+        s.src = '/rage-click-detector.js';
+        document.head.appendChild(s);
+      }
+      
+      function scheduleRageDetectorAfterInteraction() {
+        if (!firstInteractionComplete) return;
+        // Wait 1100ms after first interaction completes (stagger from engagement tracker)
+        setTimeout(function() {
+          if (window.requestIdleCallback) {
+            requestIdleCallback(loadRageDetector, {timeout: 3000});
+          } else {
+            setTimeout(loadRageDetector, 100);
+          }
+        }, 1100);
+      }
+      
+      // Mark first interaction as complete and schedule rage detector
+      ['click','keydown','touchstart'].forEach(function(e){
+        window.addEventListener(e, function() {
+          setTimeout(function() {
+            firstInteractionComplete = true;
+            scheduleRageDetectorAfterInteraction();
+          }, 0);
+        }, {once: true, passive: true});
+      });
+      
+      // Fallback: load after 8 seconds if no interaction
+      setTimeout(function() {
+        firstInteractionComplete = true;
+        scheduleRageDetectorAfterInteraction();
+      }, 8000);
+    })();
+  </script>
 </head>
 
 <body>
