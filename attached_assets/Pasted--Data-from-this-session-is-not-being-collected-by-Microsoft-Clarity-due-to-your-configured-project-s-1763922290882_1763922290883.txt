@@ -1,0 +1,210 @@
+ Data from this session is not being collected by Microsoft Clarity due to your configured project settings
+overrideMethod @ installHook.js:1
+script.js:1 Uncaught Error: Looks like your website URL has changed. To ensure the proper functioning of your banner, update the registered URL on your CookieYes account (navigate to the Organizations & Sites page (https://app.cookieyes.com/settings/organizations-and-sites) and click the More button associated with your site). Then, reload this page to retry. If the issue persists, please contact us at https://www.cookieyes.com/support.
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] localStorage lang: en-GB
+ [Rage-Click] Normalized to: en-GB
+ [Rage-Click] Has message? Array(3)
+ [Rage-Click] showToast called with: 👋 Easy there! This element isn't clickable.
+ [Rage-Click] toastCount: 0 max: 3
+ [Rage-Click] Toast element created: 
+ [Rage-Click] Toast appended to body
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Toast removed
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Skipped interactive element: A 
+ [Rage-Click] Tracking click on: SPAN 
+ [Rage-Click] Tracking click on: SPAN 
+ [Rage-Click] Tracking click on: SPAN 
+ [Rage-Click] Tracking click on: SPAN 
+ [Rage-Click] Tracking click on: SPAN 
+ [Rage-Click] localStorage lang: en-GB
+ [Rage-Click] Normalized to: en-GB
+ [Rage-Click] Has message? Array(3)
+ [Rage-Click] showToast called with: 🤔 That area doesn't respond to clicks.
+ [Rage-Click] toastCount: 1 max: 3
+ [Rage-Click] Toast element created: 
+ [Rage-Click] Toast appended to body
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Skipped interactive element: SELECT 
+ [Rage-Click] Skipped interactive element: SELECT 
+ [Rage-Click] Toast removed
+ [Rage-Click] Skipped interactive element: SELECT 
+ [Rage-Click] Skipped interactive element: SELECT 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] localStorage lang: zu
+ [Rage-Click] Normalized to: zu
+ [Rage-Click] Has message? Array(3)
+ [Rage-Click] showToast called with: 💡 Zama ukuchofoza izinkinobho noma izixhumanisi.
+ [Rage-Click] toastCount: 2 max: 3
+ [Rage-Click] Toast element created: 
+ [Rage-Click] Toast appended to body
+ [Rage-Click] Skipped interactive element: SELECT 
+ [Rage-Click] Skipped interactive element: SELECT 
+ [Rage-Click] Toast removed
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ WebSocket connection to 'wss://8467bf21-63db-4d5a-9e41-c084beb5640b-00-2i4c6eh7ctw9p.janeway.replit.dev:24678/?token=-izyL2yge3Lq' failed: 
+createConnection @ client:745
+ [vite] failed to connect to websocket (Error: WebSocket closed without opened.). 
+overrideMethod @ installHook.js:1
+client:423 Uncaught (in promise) 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] localStorage lang: sw
+ [Rage-Click] Normalized to: sw
+ [Rage-Click] Has message? Array(3)
+ [Rage-Click] showToast called with: 💡 Jaribu kubonyeza vitufe au viungo badala yake.
+ [Rage-Click] toastCount: 3 max: 3
+ [Rage-Click] Max toasts reached, skipping
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Element in cooldown
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+ [Rage-Click] Tracking click on: DIV 
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: sw
+rage-click-detector.js:156 [Rage-Click] Normalized to: sw
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Jaribu kubonyeza vitufe au viungo badala yake.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: sw
+rage-click-detector.js:156 [Rage-Click] Normalized to: sw
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Jaribu kubonyeza vitufe au viungo badala yake.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: H1 <h1 class=​"text-4xl md:​text-6xl font-bold max-w-3xl leading-tight" style>​DEVOCEAN Lodge​</h1>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: H1 <h1 class=​"text-4xl md:​text-6xl font-bold max-w-3xl leading-tight" style>​DEVOCEAN Lodge​</h1>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: H1 <h1 class=​"text-4xl md:​text-6xl font-bold max-w-3xl leading-tight" style>​DEVOCEAN Lodge​</h1>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: H1 <h1 class=​"text-4xl md:​text-6xl font-bold max-w-3xl leading-tight" style>​DEVOCEAN Lodge​</h1>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: sw
+rage-click-detector.js:156 [Rage-Click] Normalized to: sw
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Jaribu kubonyeza vitufe au viungo badala yake.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: H1 <h1 class=​"text-4xl md:​text-6xl font-bold max-w-3xl leading-tight" style>​DEVOCEAN Lodge​</h1>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: A <a href=​"#home" class=​"text-slate-700 hover:​text-[#9e4b13]​ whitespace-nowrap" data-ti-enable-scroll=​"1">​Início​</a>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: A <a href=​"#home" class=​"text-slate-700 hover:​text-[#9e4b13]​ whitespace-nowrap" data-ti-enable-scroll=​"1">​Início​</a>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: A <a href=​"#home" class=​"text-slate-700 hover:​text-[#9e4b13]​ whitespace-nowrap" data-ti-enable-scroll=​"1">​Início​</a>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: A <a href=​"#home" class=​"text-slate-700 hover:​text-[#9e4b13]​ whitespace-nowrap" data-ti-enable-scroll=​"1">​Início​</a>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: en-GB
+rage-click-detector.js:156 [Rage-Click] Normalized to: en-GB
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Try clicking on buttons or links instead.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: en-GB
+rage-click-detector.js:156 [Rage-Click] Normalized to: en-GB
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Try clicking on buttons or links instead.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: SPAN <span class=​"font-semibold" style>​DEVOCEAN Lodge​</span>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: SPAN <span class=​"font-semibold" style>​DEVOCEAN Lodge​</span>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: SPAN <span class=​"font-semibold" style>​DEVOCEAN Lodge​</span>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: en-GB
+rage-click-detector.js:156 [Rage-Click] Normalized to: en-GB
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Try clicking on buttons or links instead.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: A <a href=​"#home" class=​"text-slate-700 hover:​text-[#9e4b13]​ whitespace-nowrap" data-ti-enable-scroll=​"1">​Início​</a>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: en-GB
+rage-click-detector.js:156 [Rage-Click] Normalized to: en-GB
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Try clicking on buttons or links instead.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: en-GB
+rage-click-detector.js:156 [Rage-Click] Normalized to: en-GB
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Try clicking on buttons or links instead.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:354 [Rage-Click] Skipped interactive element: SELECT <select class=​"border border-white/​40 rounded px-2 py-1 w-[93px]​ text-white" aria-label=​"Select language">​…​</select>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​
+rage-click-detector.js:153 [Rage-Click] localStorage lang: pt-BR
+rage-click-detector.js:156 [Rage-Click] Normalized to: pt-BR
+rage-click-detector.js:157 [Rage-Click] Has message? Array(3)
+rage-click-detector.js:254 [Rage-Click] showToast called with: 💡 Tente clicar em botões ou links.
+rage-click-detector.js:255 [Rage-Click] toastCount: 3 max: 3
+rage-click-detector.js:258 [Rage-Click] Max toasts reached, skipping
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"gtx-trans-icon">​</div>​
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"gtx-trans-icon">​</div>​
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:360 [Rage-Click] Element in cooldown
+rage-click-detector.js:364 [Rage-Click] Tracking click on: DIV <div class=​"relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style=​"padding-top:​ calc(var(--stack-h)​ + 4rem)​;​ padding-bottom:​ 6rem;​">​…​</div>​

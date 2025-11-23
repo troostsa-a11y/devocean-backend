@@ -150,11 +150,8 @@
     // Priority 1: localStorage (React app's source of truth - updated immediately on change)
     try {
       const stored = localStorage.getItem('site.lang');
-      console.log('[Rage-Click] localStorage lang:', stored);
       if (stored) {
         const normalized = normalizeLangCode(stored);
-        console.log('[Rage-Click] Normalized to:', normalized);
-        console.log('[Rage-Click] Has message?', normalized && MESSAGES[normalized]);
         if (normalized && MESSAGES[normalized]) {
           return normalized;
         }
@@ -251,31 +248,38 @@
   
   // Show toast notification
   function showToast(message) {
-    console.log('[Rage-Click] showToast called with:', message);
-    console.log('[Rage-Click] toastCount:', toastCount, 'max:', CONFIG.maxToastsPerSession);
+    if (toastCount >= CONFIG.maxToastsPerSession) return;
     
-    if (toastCount >= CONFIG.maxToastsPerSession) {
-      console.log('[Rage-Click] Max toasts reached, skipping');
-      return;
-    }
-    
-    injectStyles();
-    toastCount++;
+    // Create overlay container to ensure visibility
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:2147483647;';
     
     const toast = document.createElement('div');
-    toast.className = 'rage-click-toast';
+    toast.style.cssText = `
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #c86414 0%, #9e4b13 100%);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      max-width: 320px;
+      line-height: 1.5;
+      animation: slideIn 0.3s ease-out;
+    `;
     toast.textContent = message;
-    toast.setAttribute('role', 'alert');
-    toast.setAttribute('aria-live', 'polite');
     
-    console.log('[Rage-Click] Toast element created:', toast);
-    document.body.appendChild(toast);
-    console.log('[Rage-Click] Toast appended to body');
+    overlay.appendChild(toast);
+    document.body.appendChild(overlay);
+    toastCount++;
     
     setTimeout(() => {
-      if (toast.parentNode) {
-        toast.parentNode.removeChild(toast);
-        console.log('[Rage-Click] Toast removed');
+      if (overlay.parentNode) {
+        overlay.parentNode.removeChild(overlay);
       }
     }, CONFIG.toastDuration);
   }
@@ -351,17 +355,13 @@
     
     // Skip interactive elements (they're supposed to be clicked)
     if (isInteractiveElement(element)) {
-      console.log('[Rage-Click] Skipped interactive element:', element.tagName, element);
       return;
     }
     
     // Skip if element is in cooldown (just ignore, don't prevent)
     if (cooldowns.has(element)) {
-      console.log('[Rage-Click] Element in cooldown');
       return;
     }
-    
-    console.log('[Rage-Click] Tracking click on:', element.tagName, element);
     
     // Get or create click history for this element
     const elementId = getElementId(element);
