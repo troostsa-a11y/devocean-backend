@@ -482,6 +482,12 @@ export const EXPERIENCE_DETAILS = {
         website: "https://www.dolphinencountours.org/",
         email: "info@dolphinencountours.org",
         specialty: "Research-based tours, data collection for conservation"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Ocean safaris, whale watching & marine encounters"
       }
     ],
     
