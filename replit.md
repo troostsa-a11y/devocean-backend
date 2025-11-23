@@ -3,6 +3,11 @@
 ## Overview
 DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. Its purpose is to serve as the primary marketing tool, showcasing accommodation, experiences, and offering contact forms. The project supports a multi-language interface (17 languages) to attract a global audience, ensures legal compliance (GDPR, cookies), and delivers a responsive user experience. The business vision is to increase bookings and brand visibility for the lodge.
 
+## Recent Changes (November 2025)
+- **CLS Optimization:** Changed Raleway font loading from `display=swap` to `display=optional` on all 15 booking pages (`/public/book/*.html`). This prevents text reflow when fonts load, improving Cumulative Layout Shift scores for Microsoft Clarity and Core Web Vitals. Fast connections load the font instantly (within 100ms), while slow connections use system fonts without layout shifts.
+- **Beds24 Layout Fix:** Updated `beds24-translations.js` custom script to enforce `layout=2` on all unit selection buttons (Safari Tent, Comfort Tent, Garden Cottage, Thatched Chalet). Previously, buttons defaulted to `layout=1`. Script now replaces `layout=1` with `layout=2` or appends `&layout=2` if missing.
+- **SEO Compliance:** All 15 booking pages now have unique, language-specific meta descriptions (150-165 characters each), resolving Bing Webmaster Tools duplicate/short description warnings.
+
 ## User Preferences
 - **🚫 ABSOLUTE RULE - NO EXCEPTIONS:** NEVER build or deploy without hearing the EXACT words "build and deploy" (or clear equivalent like "deploy it", "push it live", etc.) from the user
 - **🚫 NEVER EVER** run `npm run build` unless user explicitly requests it
@@ -54,9 +59,10 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 - **Frontend Framework:** React 18, TypeScript, Vite, Wouter for routing.
 - **Internationalization:** Hybrid language codes (full locale for frontend, 2-letter ISO for backend), React-based i18n with lazy-loaded translations for 15 languages, country-derived locale mapping.
 - **State Management:** TanStack Query for server state, React hooks for local state.
-- **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver for image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral, Static Hero HTML pattern, INP optimization.
+- **Performance:** Critical Translations Pattern, dynamic translation loading, IntersectionObserver for image lazy loading, optimized bundle splitting, Framer Motion (LazyMotion), GTM with delayed load, CookieYes deferral, Static Hero HTML pattern, INP optimization, CLS optimization via `font-display: optional` on booking pages.
 - **Storage Safety:** `localStorage`/`sessionStorage` calls wrapped with try-catch.
 - **Email Architecture:** Hybrid system where Cloudflare Workers handle contact forms (reCAPTCHA v3, Resend API, localized auto-replies) and an Express.js server (Automailer) in Replit processes Beds24 booking notifications via IMAP to send multi-language automated emails via SMTP.
+- **Beds24 Customization:** Custom JavaScript (`beds24-translations.js`) loaded into Beds24 iframe to: (1) translate unit names to 15 languages, (2) highlight active unit selection, (3) enforce `layout=2` parameter on all unit buttons to ensure consistent booking interface across all entry points.
 
 ### Feature Specifications
 - **Automailer:** Tracks guest info, booking dates, and email flags. Processes new bookings, modifications, and cancellations. Supports 15 languages with 3-tier language determination (Beds24 preference, country code mapping, default English). Schedules post-booking, pre-arrival, arrival day, and post-departure emails.
@@ -75,11 +81,11 @@ DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Pon
 ### Third-Party Services
 - **Analytics & Consent:** Google Tag Manager, CookieYes, Microsoft Clarity.
 - **Trust:** Trustindex Floating Certificate widget.
-- **Booking Engine:** Beds24 (propid=297012).
+- **Booking Engine:** Beds24 (propid=297012, layout=2 enforced via custom script).
 - **Maps:** Google Maps.
 - **Security:** Google reCAPTCHA v3.
 - **Email Services:** Resend API (for Cloudflare Workers), SMTP (via nodemailer for automailer), IMAP (for booking notifications).
-- **SEO:** IndexNow protocol.
+- **SEO:** IndexNow protocol, Bing Webmaster Tools compliance.
 - **Currency Conversion:** fx-rate.net.
 
 ### NPM Packages
