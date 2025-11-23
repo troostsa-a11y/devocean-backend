@@ -68,7 +68,7 @@ export const FISHING_CONTENT = {
       "Walk north to Ponta Mamoli for better shore fishing",
       "Use artificial lures: pink dusters, redeye, chokka",
       "Bring waterproof bags for electronics & valuables",
-      "Arrange fish storage/cooking with your lodge",
+      "Arrange fish storage with your lodge",
       "Catch & release encouraged for billfish conservation"
     ],
     operators: [
