@@ -329,6 +329,7 @@ function pickInitialLang() {
   if (urlLang) {
     const normalized = normalizeLangCode(urlLang);
     if (normalized) {
+      console.log('[DEVOCEAN] Language from URL:', urlLang, '→', normalized);
       return normalized;
     }
   }
@@ -336,19 +337,32 @@ function pickInitialLang() {
   // Check if user manually selected language (vs auto-detection)
   const langSource = safeLocalStorage.getItem("site.lang_source");
   const stored = safeLocalStorage.getItem("site.lang");
+  const langVersion = safeLocalStorage.getItem("site.lang.version");
   
-  // If user manually selected language, respect their choice (but normalize it)
+  // CRITICAL: If user manually selected language, ALWAYS respect it (even without version)
+  // This prevents language reset after visiting booking pages
   if (langSource === "user" && stored) {
     const normalized = normalizeLangCode(stored);
     if (normalized) {
+      console.log('[DEVOCEAN] User-selected language preserved:', stored, '→', normalized);
       return normalized;
     }
   }
 
   // Priority: Use Cloudflare IP geolocation (same as hero placeholder)
   const cc = getCountryCode();
-  if (cc && CC_TO_LANGUAGE[cc]) {
-    return CC_TO_LANGUAGE[cc];
+  const detectedLang = cc && CC_TO_LANGUAGE[cc] ? CC_TO_LANGUAGE[cc] : null;
+  
+  console.log('[DEVOCEAN] IP Geolocation Debug:', {
+    countryCode: cc,
+    detectedLanguage: detectedLang,
+    storedLanguage: stored,
+    languageSource: langSource,
+    languageVersion: langVersion
+  });
+  
+  if (detectedLang) {
+    return detectedLang;
   }
 
   // Fallback to stored language (auto-detected previously, but normalize it)
@@ -395,6 +409,12 @@ function pickInitialCurrency() {
   // Auto-assign currency based on Cloudflare IP country detection
   // No manual selection allowed - currency is determined by visitor's location
   const cc = getCountryCode();
+  const detectedCurrency = cc && CC_TO_CURRENCY[cc] ? CC_TO_CURRENCY[cc] : 'USD';
+  
+  console.log('[DEVOCEAN] Currency Detection:', {
+    countryCode: cc,
+    detectedCurrency: detectedCurrency
+  });
   
   if (cc && CC_TO_CURRENCY[cc]) {
     return CC_TO_CURRENCY[cc];
@@ -680,6 +700,11 @@ export function useLocale() {
           if (langVersion !== CURRENT_VERSION) {
             safeLocalStorage.setItem("site.lang.version", CURRENT_VERSION);
           }
+          console.log('[DEVOCEAN] Deferred detection skipped - user preference preserved:', {
+            langSource,
+            currentLang: lang,
+            storedLang: hasStoredLang
+          });
           return;
         }
         
@@ -687,6 +712,14 @@ export function useLocale() {
         if (langVersion !== CURRENT_VERSION) {
           const detectedLang = detectLangFromIP();
           const detectedRegion = detectRegionFromIP();
+          
+          console.log('[DEVOCEAN] Deferred IP detection triggered:', {
+            detectedLang,
+            detectedRegion,
+            currentLang: lang,
+            currentRegion: region,
+            willUpdate: detectedLang !== lang
+          });
           
           if (detectedLang && detectedLang !== lang) {
             setLangState(detectedLang);
@@ -772,6 +805,7 @@ export function useLocale() {
 
   const setLang = (newLang) => {
     const normalized = normLang(newLang);
+    console.log('[DEVOCEAN] User changed language:', newLang, '→', normalized);
     setLangState(normalized);
     safeLocalStorage.setItem("site.lang", normalized);
     safeLocalStorage.setItem("site.lang_source", "user");
