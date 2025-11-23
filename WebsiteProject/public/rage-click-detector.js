@@ -339,13 +339,17 @@
     
     // Skip interactive elements (they're supposed to be clicked)
     if (isInteractiveElement(element)) {
+      console.log('[Rage-Click] Skipped interactive element:', element.tagName, element);
       return;
     }
     
     // Skip if element is in cooldown (just ignore, don't prevent)
     if (cooldowns.has(element)) {
+      console.log('[Rage-Click] Element in cooldown');
       return;
     }
+    
+    console.log('[Rage-Click] Tracking click on:', element.tagName, element);
     
     // Get or create click history for this element
     const elementId = getElementId(element);
