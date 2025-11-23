@@ -184,6 +184,28 @@
   const cooldowns = new WeakSet(); // elements currently in cooldown
   let toastCount = 0;
   let clarityTagged = false;
+  let cachedLanguage = null; // Cache the detected language
+  
+  // Watch for language changes in localStorage
+  function refreshLanguageCache() {
+    cachedLanguage = detectLanguage();
+  }
+  
+  // Listen for storage events (when localStorage changes from React)
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'site.lang') {
+      refreshLanguageCache();
+    }
+  }, false);
+  
+  // Also watch for URL changes (for single-page app navigation)
+  let lastUrl = window.location.href;
+  setInterval(function() {
+    if (window.location.href !== lastUrl) {
+      lastUrl = window.location.href;
+      refreshLanguageCache();
+    }
+  }, 500); // Check every 500ms
   
   // Toast notification styles (injected once)
   function injectStyles() {
@@ -377,7 +399,8 @@
     tagClaritySession();
     
     // Show toast notification in user's language
-    const lang = detectLanguage();
+    // Always detect fresh to catch any last-second changes
+    const lang = cachedLanguage || detectLanguage();
     const messages = MESSAGES[lang] || MESSAGES['en-GB'];
     const message = messages[Math.min(toastCount, messages.length - 1)];
     showToast(message);
@@ -418,6 +441,9 @@
       document.addEventListener('DOMContentLoaded', init);
       return;
     }
+    
+    // Initialize language cache
+    refreshLanguageCache();
     
     // Add click listener with capture phase to catch all clicks early
     document.addEventListener('click', handleClick, { capture: true, passive: false });
