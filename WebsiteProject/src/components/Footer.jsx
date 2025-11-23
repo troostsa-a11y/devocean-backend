@@ -129,7 +129,7 @@ export default function Footer({ units, experiences, ui, lang }) {
                 href="/experiences/fishing"
                 className="hover:text-white"
               >
-                {experiences.find(ex => ex.key === 'fishing')?.title || 'Deep Sea Fishing'}
+                Deep Sea Fishing
               </Link>
             </li>
             <li>
@@ -137,7 +137,7 @@ export default function Footer({ units, experiences, ui, lang }) {
                 href="/experiences/surfing"
                 className="hover:text-white"
               >
-                {experiences.find(ex => ex.key === 'surfing')?.title || 'Surfing'}
+                Surfing
               </Link>
             </li>
           </ul>
