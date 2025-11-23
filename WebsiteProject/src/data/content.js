@@ -150,8 +150,8 @@ export const EXP_BASE = [
   { key: "lighthouse", img: IMG.experiences.lighthouse, title: "Lighthouse Walk", desc: "Hike the hill to the old lighthouse for sweeping views.", url: "https://maps.app.goo.gl/frVsczs798Ym1wDe9" },
   { key: "seafari", img: IMG.experiences.seafari, title: "Seafaris", desc: "Ocean safaris for whales (May–Oct) & more.", url: "https://thedolphincentre.com/" },
   { key: "safari", img: IMG.experiences.safari, title: "Game Safaris", desc: "Bush adventures a short drive away.", url: "https://parquemaputo.gov.mz/en/" },
-  { key: "fishing", img: IMG.experiences.fishing, title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore.", url: "https://mozambiquefishincharters.co.za/" },
-  { key: "surfing", img: IMG.experiences.surfing, title: "Surf Boards & Lessons", desc: "Catch a wave or learn the basics.", url: "https://www.instagram.com/spigssurfsup/" },
+  { key: "fishing", img: IMG.experiences.fishing, title: "Deep Sea Fishing", desc: "From shore casts to charters offshore.", url: "https://mozambiquefishincharters.co.za/" },
+  { key: "surfing", img: IMG.experiences.surfing, title: "Surfing", desc: "Catch a wave or learn the basics.", url: "https://www.instagram.com/spigssurfsup/" },
 ];
 
 export const SOCIAL_LINKS = [
