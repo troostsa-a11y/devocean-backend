@@ -891,6 +891,12 @@ export const EXPERIENCE_DETAILS = {
         website: "https://www.instagram.com/spigssurfsup/",
         email: "info@spigssurfsup.com",
         specialty: "Surf school, lessons, rentals, SUP, kayaks - all ages welcome"
+      },
+      {
+        name: "Brasukas - Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Surf lessons, board rentals & beachfront bar"
       }
     ],
     
