@@ -6,25 +6,14 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
     name: '',
     email: '',
     phone: '',
-    operator: operators && operators.length > 0 ? operators[0].name : '',
-    operatorEmail: operators && operators.length > 0 ? operators[0].email : '',
+    operator: '',
+    operatorEmail: '',
     dates: '',
     guests: '2',
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
-
-  // Sync operatorEmail when operators prop changes or component mounts
-  useEffect(() => {
-    if (operators && operators.length > 0 && !formData.operatorEmail) {
-      setFormData(prev => ({
-        ...prev,
-        operator: operators[0].name,
-        operatorEmail: operators[0].email
-      }));
-    }
-  }, [operators]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,8 +60,8 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
           name: '',
           email: '',
           phone: '',
-          operator: operators && operators.length > 0 ? operators[0].name : '',
-          operatorEmail: operators && operators.length > 0 ? operators[0].email : '',
+          operator: '',
+          operatorEmail: '',
           dates: '',
           guests: '2',
           message: ''
@@ -186,6 +175,9 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
               data-testid="select-inquiry-operator"
               className="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-[#9e4b13] focus:border-transparent"
             >
+              <option value="" disabled>
+                {getSelectPlaceholder(lang)}
+              </option>
               {operators && operators.map(op => (
                 <option key={op.name} value={op.name}>
                   {op.name}
@@ -440,6 +432,31 @@ function getFieldLabel(field, lang) {
     }
   };
   return (labels[field] && labels[field][lang]) || (labels[field] && labels[field][lang.split('-')[0]]) || labels[field].en;
+}
+
+function getSelectPlaceholder(lang) {
+  const placeholders = {
+    en: "Select here:",
+    'en-GB': "Select here:",
+    'en-US': "Select here:",
+    'pt-PT': "Selecione aqui:",
+    'pt-BR': "Selecione aqui:",
+    pt: "Selecione aqui:",
+    nl: "Selecteer hier:",
+    fr: "Sélectionnez ici:",
+    it: "Seleziona qui:",
+    de: "Hier auswählen:",
+    es: "Seleccione aquí:",
+    af: "Kies hier:",
+    sv: "Välj här:",
+    pl: "Wybierz tutaj:",
+    ja: "ここから選択:",
+    zh: "在此选择：",
+    ru: "Выберите здесь:",
+    zu: "Khetha lapha:",
+    sw: "Chagua hapa:"
+  };
+  return placeholders[lang] || placeholders[lang.split('-')[0]] || placeholders.en;
 }
 
 function getPlaceholder(field, lang) {
