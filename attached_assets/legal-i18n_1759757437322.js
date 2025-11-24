@@ -167,11 +167,17 @@
             this.hydrateElement('[data-role="updated-date"]', () => 
                 this.getTranslation('updatedDate'));
 
-            // Back link accessibility
-            const backLink = document.querySelector('[data-role="back-link"]');
-            if (backLink && !backLink.getAttribute('aria-label')) {
-                backLink.setAttribute('aria-label', this.getTranslation('backToHome', 'Back to home page'));
-            }
+            // Back link accessibility and language persistence
+            const backLinks = document.querySelectorAll('[data-role="back-link"]');
+            backLinks.forEach(backLink => {
+                if (!backLink.getAttribute('aria-label')) {
+                    backLink.setAttribute('aria-label', this.getTranslation('backToHome', 'Back to home page'));
+                }
+                // Update href to preserve language parameter
+                if (backLink.tagName === 'A' && backLink.getAttribute('href') === '/') {
+                    backLink.setAttribute('href', `/?lang=${this.currentLang}`);
+                }
+            });
         }
 
         hydrateDynamicContent() {

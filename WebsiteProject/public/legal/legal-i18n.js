@@ -153,6 +153,9 @@
 
       console.log('Legal page detected language:', lang, 'URL param:', urlLang);
       
+      // Update HTML lang attribute to match detected language
+      try { document.documentElement.setAttribute("lang", lang || "en-GB"); } catch (_) { }
+      
       // Dicts with English fallback
       var UI_EN = (window.LEGAL_UI && window.LEGAL_UI["en-GB"]) || {};
       var DICT_EN = (window.LEGAL_DICT && window.LEGAL_DICT["en-GB"]) || {};
@@ -178,6 +181,13 @@
 
     var updLbl = document.querySelector('[data-role="updated-label"]');
     if (updLbl && UI.updated) updLbl.textContent = UI.updated;
+
+    // Update back links to preserve language parameter
+    document.querySelectorAll('[data-role="back-link"]').forEach(function(backLink) {
+      if (backLink.tagName === 'A' && backLink.getAttribute('href') === '/') {
+        backLink.setAttribute('href', '/?lang=' + lang);
+      }
+    });
 
     // Titles
     var title = pageDict.title || "";
