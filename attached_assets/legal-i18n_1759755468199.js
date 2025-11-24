@@ -362,9 +362,11 @@
 
         safeSetHTML(element, html) {
             if (element && html) {
-                // Safe to use innerHTML here: html comes from hardcoded translation dictionary (window.LEGAL_DICT)
-                // which is developer-controlled, not user input. No XSS risk.
-                element.innerHTML = html;
+                // Sanitize HTML using DOMPurify before injecting (defense-in-depth)
+                // Even though html comes from developer-controlled translation dictionary (window.LEGAL_DICT),
+                // sanitization provides additional security layer in case of future refactoring
+                const cleanHTML = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
+                element.innerHTML = cleanHTML;
             }
         }
 
