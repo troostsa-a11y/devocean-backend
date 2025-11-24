@@ -540,7 +540,13 @@
 
     var businessHoursEl = document.querySelector('[data-part="business-hours"]');
     if (businessHoursEl && pageDict.businessHours) {
-      businessHoursEl.innerHTML = pageDict.businessHours;
+      var businessHoursStr = String(pageDict.businessHours);
+      // Only use innerHTML if HTML tags are present, otherwise use textContent
+      if (/<[a-z][\s\S]*>/i.test(businessHoursStr)) {
+        businessHoursEl.innerHTML = businessHoursStr;
+      } else {
+        businessHoursEl.textContent = businessHoursStr;
+      }
     }
 
     var emergencyNoteEl = document.querySelector('[data-part="emergency-phone-note"]');
