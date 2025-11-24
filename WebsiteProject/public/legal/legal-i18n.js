@@ -212,7 +212,14 @@
         if (Array.isArray(itemsArray)) {
           itemsArray.forEach(function (item) {
             var li = document.createElement("li");
-            li.innerHTML = String(item);
+            var itemStr = String(item);
+            // Only use innerHTML if HTML tags are present (e.g., <strong> for emphasis)
+            // Otherwise use textContent for better security and performance
+            if (/<[a-z][\s\S]*>/i.test(itemStr)) {
+              li.innerHTML = itemStr;
+            } else {
+              li.textContent = itemStr;
+            }
             ul.appendChild(li);
           });
         }
