@@ -471,7 +471,7 @@ async function applyTranslations(lang) {
             // Update section description (first paragraph)
             const paragraphs = card.querySelectorAll('p');
             if (paragraphs[0] && section.description) {
-              paragraphs[0].innerHTML = section.description.replace(/<strong>(.*?)<\/strong>/g, '<strong>$1</strong>');
+              paragraphs[0].textContent = section.description;
             }
             
             // Update closing note if present (second paragraph in "Good to Know")
@@ -488,7 +488,9 @@ async function applyTranslations(lang) {
                   if (featureIndex < items.length) {
                     const iconSpan = items[featureIndex].querySelector('.i');
                     if (iconSpan) {
-                      items[featureIndex].innerHTML = iconSpan.outerHTML + ' ' + feature;
+                      items[featureIndex].textContent = '';
+                      items[featureIndex].appendChild(iconSpan.cloneNode(true));
+                      items[featureIndex].appendChild(document.createTextNode(' ' + feature));
                     } else {
                       items[featureIndex].textContent = feature;
                     }
@@ -514,7 +516,9 @@ async function applyTranslations(lang) {
               const feature = unitData.detailedFeatures[featureIndex];
               
               if (iconSpan) {
-                item.innerHTML = iconSpan.outerHTML + ' ' + feature;
+                item.textContent = '';
+                item.appendChild(iconSpan.cloneNode(true));
+                item.appendChild(document.createTextNode(' ' + feature));
               } else {
                 item.textContent = feature;
               }
@@ -534,7 +538,9 @@ async function applyTranslations(lang) {
           if (index < trustItems.length) {
             const iconSpan = trustItems[index].querySelector('.i');
             if (iconSpan) {
-              trustItems[index].innerHTML = iconSpan.outerHTML + ' ' + text;
+              trustItems[index].textContent = '';
+              trustItems[index].appendChild(iconSpan.cloneNode(true));
+              trustItems[index].appendChild(document.createTextNode(' ' + text));
             } else {
               trustItems[index].textContent = text;
             }
