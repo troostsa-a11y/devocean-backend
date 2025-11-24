@@ -4,12 +4,12 @@ function copySectionLink(sectionId) {
  
  navigator.clipboard.writeText(url).then(() => {
  const button = event.target;
- const originalText = button.innerHTML;
- button.innerHTML = '✓ Copied!';
+ const originalText = button.textContent;
+ button.textContent = '✓ Copied!';
  button.style.opacity = '1';
  
  setTimeout(() => {
- button.innerHTML = originalText;
+ button.textContent = originalText;
  }, 2000);
  }).catch(err => {
  console.error('Failed to copy link:', err);
@@ -20,11 +20,11 @@ function copySectionLink(sectionId) {
  try {
  document.execCommand('copy');
  const button = event.target;
- const originalText = button.innerHTML;
- button.innerHTML = '✓ Copied!';
+ const originalText = button.textContent;
+ button.textContent = '✓ Copied!';
  button.style.opacity = '1';
  setTimeout(() => {
- button.innerHTML = originalText;
+ button.textContent = originalText;
  }, 2000);
  } catch (err2) {
  console.error('Fallback copy failed:', err2);
