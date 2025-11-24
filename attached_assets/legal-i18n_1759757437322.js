@@ -369,8 +369,13 @@
         safeSetHTML(element, html) {
             if (element && html) {
                 // Sanitize HTML using DOMPurify before injecting
-                const cleanHTML = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
-                element.innerHTML = cleanHTML;
+                if (window.DOMPurify) {
+                    element.innerHTML = window.DOMPurify.sanitize(html);
+                } else {
+                    // Safe fallback: use textContent if DOMPurify is unavailable
+                    console.warn('DOMPurify not available, falling back to textContent for security');
+                    element.textContent = html;
+                }
             }
         }
 
