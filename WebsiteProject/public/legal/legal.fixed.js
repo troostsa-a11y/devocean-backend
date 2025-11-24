@@ -28,15 +28,13 @@ function smartBack() {
     currentLang = localStorage.getItem('site.lang');
   } catch (_) {}
   
-  // Helper to append lang parameter to URL
+  // Helper to append/update lang parameter to URL
   function addLangParam(url, lang) {
     if (!lang) return url;
     try {
       const urlObj = new URL(url, window.location.origin);
-      // Only add lang param if it's not already present
-      if (!urlObj.searchParams.has('lang')) {
-        urlObj.searchParams.set('lang', lang);
-      }
+      // Always set lang param to current language (update if already present)
+      urlObj.searchParams.set('lang', lang);
       return urlObj.toString();
     } catch (_) {
       return url;
