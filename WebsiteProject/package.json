@@ -23,7 +23,7 @@
     "express": "^4.21.2",
     "framer-motion": "^11.0.0",
     "i18next": "^25.5.2",
-    "imap-simple": "^1.6.3",
+    "imap-simple": "^6.0.0",
     "lucide-react": "^0.460.0",
     "luxon": "^3.7.2",
     "mailparser": "^3.7.5",
