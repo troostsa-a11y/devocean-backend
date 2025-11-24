@@ -362,10 +362,9 @@
 
         safeSetHTML(element, html) {
             if (element && html) {
-                // Basic sanitization - in production, use a proper sanitizer
-                const temp = document.createElement('div');
-                temp.innerHTML = html;
-                element.innerHTML = temp.innerHTML;
+                // Safe to use innerHTML here: html comes from hardcoded translation dictionary (window.LEGAL_DICT)
+                // which is developer-controlled, not user input. No XSS risk.
+                element.innerHTML = html;
             }
         }
 
