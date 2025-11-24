@@ -22,16 +22,42 @@ function smartBack() {
     sessionStorage.removeItem('legalPageReferrer');
   }
   
+  // Get current language from localStorage to preserve it
+  let currentLang = null;
+  try {
+    currentLang = localStorage.getItem('site.lang');
+  } catch (_) {}
+  
+  // Helper to append lang parameter to URL
+  function addLangParam(url, lang) {
+    if (!lang) return url;
+    try {
+      const urlObj = new URL(url, window.location.origin);
+      // Only add lang param if it's not already present
+      if (!urlObj.searchParams.has('lang')) {
+        urlObj.searchParams.set('lang', lang);
+      }
+      return urlObj.toString();
+    } catch (_) {
+      return url;
+    }
+  }
+  
   // Check if there's browser history to go back to (internal navigation)
   if (window.history.length > 1 && referrer && referrer.indexOf(window.location.host) !== -1) {
-    // Same-site navigation - use browser back
-    window.history.back();
+    // Same-site navigation - preserve language by appending to referrer URL
+    if (currentLang) {
+      window.location.href = addLangParam(referrer, currentLang);
+    } else {
+      window.history.back();
+    }
   } else if (referrer) {
     // External referrer (like Hotelrunner) - redirect to referrer
     window.location.href = referrer;
   } else {
-    // No referrer - go to home page
-    window.location.href = '/';
+    // No referrer - go to home page with language
+    const homeUrl = currentLang ? addLangParam('/', currentLang) : '/';
+    window.location.href = homeUrl;
   }
 }
 
