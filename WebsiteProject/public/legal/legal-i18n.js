@@ -211,8 +211,13 @@
       if (p) {
         if (typeof data.body === "string" && data.body.trim() !== "") {
           var useHtml = p.getAttribute("data-use-html") === "true";
-          if (useHtml) p.innerHTML = data.body;
-          else p.textContent = data.body;
+          if (useHtml && window.DOMPurify) {
+            p.innerHTML = window.DOMPurify.sanitize(data.body);
+          } else if (useHtml) {
+            p.innerHTML = data.body;
+          } else {
+            p.textContent = data.body;
+          }
         } else p.textContent = "";
       }
 
@@ -226,7 +231,11 @@
             // Only use innerHTML if HTML tags are present (e.g., <strong> for emphasis)
             // Otherwise use textContent for better security and performance
             if (/<[a-z][\s\S]*>/i.test(itemStr)) {
-              li.innerHTML = itemStr;
+              if (window.DOMPurify) {
+                li.innerHTML = window.DOMPurify.sanitize(itemStr);
+              } else {
+                li.innerHTML = itemStr;
+              }
             } else {
               li.textContent = itemStr;
             }
