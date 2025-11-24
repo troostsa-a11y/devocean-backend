@@ -362,10 +362,9 @@
 
         safeSetHTML(element, html) {
             if (element && html) {
-                // Basic sanitization - in production, use a proper sanitizer
-                const temp = document.createElement('div');
-                temp.innerHTML = html;
-                element.innerHTML = temp.innerHTML;
+                // Sanitize HTML using DOMPurify before injecting
+                const cleanHTML = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
+                element.innerHTML = cleanHTML;
             }
         }
 
