@@ -562,7 +562,11 @@
       var businessHoursStr = String(pageDict.businessHours);
       // Only use innerHTML if HTML tags are present, otherwise use textContent
       if (/<[a-z][\s\S]*>/i.test(businessHoursStr)) {
-        businessHoursEl.innerHTML = businessHoursStr;
+        if (window.DOMPurify) {
+          businessHoursEl.innerHTML = window.DOMPurify.sanitize(businessHoursStr);
+        } else {
+          businessHoursEl.innerHTML = businessHoursStr;
+        }
       } else {
         businessHoursEl.textContent = businessHoursStr;
       }
