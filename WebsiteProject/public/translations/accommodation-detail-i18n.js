@@ -434,7 +434,16 @@ async function applyTranslations(lang) {
       const titleText = unitData.heroTitle || unitData.title;
       if (titleEl && titleText) {
         if (titleText.includes(' + ')) {
-          titleEl.innerHTML = titleText.replace(' + ', ' <span>+</span> ');
+          // Safe DOM manipulation: split text and create span element
+          const parts = titleText.split(' + ');
+          titleEl.textContent = ''; // Clear existing content
+          titleEl.appendChild(document.createTextNode(parts[0] + ' '));
+          const plusSpan = document.createElement('span');
+          plusSpan.textContent = '+';
+          titleEl.appendChild(plusSpan);
+          if (parts[1]) {
+            titleEl.appendChild(document.createTextNode(' ' + parts[1]));
+          }
         } else {
           titleEl.textContent = titleText;
         }
@@ -464,7 +473,7 @@ async function applyTranslations(lang) {
             // Update section description (first paragraph)
             const paragraphs = card.querySelectorAll('p');
             if (paragraphs[0] && section.description) {
-              paragraphs[0].innerHTML = section.description.replace(/<strong>(.*?)<\/strong>/g, '<strong>$1</strong>');
+              paragraphs[0].textContent = section.description;
             }
             
             // Update closing note if present (second paragraph in "Good to Know")
@@ -481,7 +490,10 @@ async function applyTranslations(lang) {
                   if (featureIndex < items.length) {
                     const iconSpan = items[featureIndex].querySelector('.i');
                     if (iconSpan) {
-                      items[featureIndex].innerHTML = iconSpan.outerHTML + ' ' + feature;
+                      // Safe DOM manipulation: preserve icon, update text
+                      items[featureIndex].textContent = '';
+                      items[featureIndex].appendChild(iconSpan.cloneNode(true));
+                      items[featureIndex].appendChild(document.createTextNode(' ' + feature));
                     } else {
                       items[featureIndex].textContent = feature;
                     }
@@ -507,7 +519,10 @@ async function applyTranslations(lang) {
               const feature = unitData.detailedFeatures[featureIndex];
               
               if (iconSpan) {
-                item.innerHTML = iconSpan.outerHTML + ' ' + feature;
+                // Safe DOM manipulation: preserve icon, update text
+                item.textContent = '';
+                item.appendChild(iconSpan.cloneNode(true));
+                item.appendChild(document.createTextNode(' ' + feature));
               } else {
                 item.textContent = feature;
               }
@@ -527,7 +542,10 @@ async function applyTranslations(lang) {
           if (index < trustItems.length) {
             const iconSpan = trustItems[index].querySelector('.i');
             if (iconSpan) {
-              trustItems[index].innerHTML = iconSpan.outerHTML + ' ' + text;
+              // Safe DOM manipulation: preserve icon, update text
+              trustItems[index].textContent = '';
+              trustItems[index].appendChild(iconSpan.cloneNode(true));
+              trustItems[index].appendChild(document.createTextNode(' ' + text));
             } else {
               trustItems[index].textContent = text;
             }
