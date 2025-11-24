@@ -374,7 +374,8 @@ function applyTranslations(translations) {
     if (value) {
       // Check if element should use innerHTML (for content with <strong> tags)
       if (element.hasAttribute('data-i18n-html')) {
-        element.innerHTML = value;
+        // Sanitize HTML with DOMPurify to prevent XSS vulnerabilities
+        element.innerHTML = DOMPurify.sanitize(value);
       } else {
         element.textContent = value;
       }
