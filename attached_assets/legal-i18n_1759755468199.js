@@ -365,8 +365,13 @@
                 // Sanitize HTML using DOMPurify before injecting (defense-in-depth)
                 // Even though html comes from developer-controlled translation dictionary (window.LEGAL_DICT),
                 // sanitization provides additional security layer in case of future refactoring
-                const cleanHTML = window.DOMPurify ? window.DOMPurify.sanitize(html) : html;
-                element.innerHTML = cleanHTML;
+                if (window.DOMPurify) {
+                    element.innerHTML = window.DOMPurify.sanitize(html);
+                } else {
+                    // Safe fallback: use textContent if DOMPurify is unavailable
+                    console.warn('DOMPurify not available, falling back to textContent for security');
+                    element.textContent = html;
+                }
             }
         }
 
