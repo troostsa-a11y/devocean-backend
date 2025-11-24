@@ -434,7 +434,14 @@ async function applyTranslations(lang) {
       const titleText = unitData.heroTitle || unitData.title;
       if (titleEl && titleText) {
         if (titleText.includes(' + ')) {
-          titleEl.innerHTML = titleText.replace(' + ', ' <span>+</span> ');
+          // Safe DOM manipulation instead of innerHTML
+          const parts = titleText.split(' + ');
+          titleEl.textContent = '';
+          titleEl.appendChild(document.createTextNode(parts[0] + ' '));
+          const plusSpan = document.createElement('span');
+          plusSpan.textContent = '+';
+          titleEl.appendChild(plusSpan);
+          titleEl.appendChild(document.createTextNode(' ' + parts[1]));
         } else {
           titleEl.textContent = titleText;
         }
