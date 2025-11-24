@@ -2,7 +2,7 @@
 
 import https from 'https';
 
-const INDEXNOW_KEY = '4339cd9fe9f2766ae7f04b21f3848dec';
+const INDEXNOW_KEY = process.env.INDEXNOW_KEY || '4339cd9fe9f2766ae7f04b21f3848dec';
 const HOST = 'devoceanlodge.com';
 
 const allUrls = [
