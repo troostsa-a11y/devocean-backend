@@ -144,10 +144,13 @@
     }
     
         .benefit-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       background: white;
       border: 1px solid #eee;
       border-radius: 12px;
-      padding: 24px 16px;
+      padding: 12px 16px;
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -173,7 +176,7 @@
     .benefit-icon {
       width: 48px;
       height: 48px;
-      margin: 0 auto 16px;
+      margin: 0 auto 6px;
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -196,6 +199,7 @@
     }
     
     .benefit-card h3 {
+      margin-bottom: 0;
       font-size: clamp(0.95rem, 2.5vw, 1.05rem);
       font-weight: 700;
       color: #5C5048;
@@ -327,6 +331,9 @@
         gap: 14px;
       }
       .benefit-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       cursor: pointer;
         padding: 18px 12px;
       }
@@ -365,25 +372,25 @@
       <div class="benefit-card">
         <div class="benefit-icon rate"></div>
         <h3>保证最优惠价格</h3>
-        <p>直接预订享最低价格</p>
+
       </div>
       
       <div class="benefit-card">
         <div class="benefit-icon lock"></div>
         <h3>安全支付</h3>
-        <p>您的支付信息始终受到保护</p>
+
       </div>
       
       <div class="benefit-card">
         <div class="benefit-icon bolt"></div>
         <h3>即时确认</h3>
-        <p>立即收到预订确认</p>
+
       </div>
       
       <div class="benefit-card">
         <div class="benefit-icon headset"></div>
         <h3>直接支持</h3>
-        <p>我们专业团队的个性化帮助</p>
+
       </div>
     </div>
   </section>
