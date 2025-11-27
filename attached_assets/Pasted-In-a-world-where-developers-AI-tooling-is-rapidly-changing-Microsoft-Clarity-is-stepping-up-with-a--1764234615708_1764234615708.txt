@@ -1,0 +1,139 @@
+In a world where developers AI tooling is rapidly changing, Microsoft Clarity is stepping up with a powerful, free website analytics addition to its developer arsenal: the Microsoft Clarity MCP Server. Whether you’re a data analyst, a web developer, or just obsessed with scroll-depth graphs and bounce rates, the new Model Context Protocol (MCP) server can transform the way you query and visualize Clarity data—especially when paired with AI tools like Claude and Cursor. 
+
+This blog walks you through what MCP is, what the Clarity MCP server offers, how to get started, real-world scenarios where it shines, and where this exciting technology is headed. 
+
+What Is MCP (Model Context Protocol)? 
+Model Context Protocol (MCP) is a protocol that allows intelligent tools like Claude (Anthropic’s AI assistant) to interact with local or remote services using structured commands. Think of it as a smart bridge between your local dev tools and external APIs—with the twist that it’s AI-aware.  
+
+MCP is like USB-C, but for AI. Just like you can plug your laptop into different devices (monitors, drives, power), MCP standardizes how AI systems connect to diverse tools and data—whether that’s web analytics, file systems, or cloud services. Everything speaks the same protocol, no matter what’s behind it. 
+
+In this case, the Microsoft Clarity MCP server acts as an analytics data bridge, making it incredibly easy to query Clarity’s web metrics using natural language via Claude or other compatible tools. Imagine saying: “Show me last week’s engagement time by country”—and getting clean, actionable analytics within seconds. It’s a version of what we offer on Clarity copilot chat, but open for any AI agent.  
+
+What Can the Microsoft Clarity MCP Server Do? 
+At its core, the Clarity MCP Server is designed for developer productivity and data access. It supports a wide range of analytics queries via a simplified, AI-compatible interface. 
+
+🔍 Features at a Glance 
+
+Query analytics data with natural prompts 
+Filter by dimensions like Browser, OS, Country/Region, or Device 
+Retrieve key metrics: Scroll Depth, Engagement Time, Total Traffic, etc. 
+Integrates with Claude for Desktop for AI-powered querying 
+Supports MCP-compatible clients for broader extensibility 
+Real-World Use Cases for the Clarity MCP Server 
+Here are a few scenarios where the Clarity MCP server truly shines: 
+
+🎯 Scenario 1: Fast AI Queries for Marketing Teams 
+
+Your marketing team wants to compare scroll depth across mobile vs. desktop. Instead of crafting API requests, they can ask Claude: 
+
+“Fetch scroll depth for the past 2 days filtered by device type.” 
+Response: I’ll fetch the scroll depth data from Microsoft Clarity for the past 2 days, filtering by device type. Let me do that for you now. 
+
+Here’s the scroll depth data from Microsoft Clarity for the past 2 days, broken down by device type: 
+
+Device Type 	Average Scroll Depth 
+Mobile 	32.35% 
+Tablet 	62.67% 
+PC 	43.09% 
+Key observations: 
+
+Tablet users have the highest scroll depth at 62.67%, suggesting they engage most deeply with your content 
+PC users scroll to about 43.09% of the page on average 
+Mobile users have the lowest scroll depth at 32.35% 
+This data indicates that your content might be more effectively consumed on tablets, while the mobile experience may need optimization to encourage deeper scrolling. 
+
+🧠 Scenario 2: Developers Diagnosing Web Issues 
+
+A dev suspects performance issues vary by browser. A simple prompt like: 
+
+“Give me traffic and engagement time segmented by browser.” 
+
+Response: I’ll fetch the traffic and engagement time data from Microsoft Clarity, segmented by browser. Let me get that for you now. 
+
+Here’s the traffic and engagement time data segmented by browser for the past 2 days: 
+
+Traffic by Browser 
+
+Browser 	Sessions 	Bot Sessions 	Distinct Users 	Pages/Session 
+Chrome 	615 	12 	535 	1.39 
+Edge 	123 	2 	101 	2.01 
+ChromeMobile 	30 	3 	31 	1.32 
+Firefox 	24 	1 	21 	1.38 
+Engagement Time by Browser (in seconds) 
+
+Browser 	Total Time 	Active Time 	Active Time % 
+Safari 	445 	178 	40.0% 
+Edge 	384 	83 	21.6% 
+Chrome 	252 	46 	18.3% 
+Firefox 	251 	31 	12.4% 
+Key Insights: 
+
+Chrome dominates your traffic with 615 sessions and 535 distinct users 
+Edge users visit the most pages per session (2.01) 
+Safari shows the highest total engagement time (445 seconds) 
+ChromeMobile has remarkably high active engagement (95.1% of total time) 
+EdgeMobile, YandexBrowser, and Opera users are fully engaged during their sessions (100% active time) 
+Installing the Clarity MCP Server 
+Getting started is surprisingly easy—and flexible. 
+
+🧱 Prerequisites 
+
+Node.js v16+ 
+Microsoft Clarity project + Data export API Token 
+Claude for Desktop (or another MCP client) 
+🚀 Installation Options 
+
+Run on-the-fly with npx 
+
+npx @microsoft/clarity-mcp-server --clarity_api_token=your-token-here 
+You can pass your API token directly via the CLI or use tool parameters when invoking commands.
+
+Running Clarity’s MCP Server 
+You can find installation steps on our github repository for MCP clients like Claude or Cursor or other use cases. 
+
+Below is an example configuration: 
+
+{ 
+
+  "mcpServers": { 
+
+    "@microsoft/clarity-mcp-server": { 
+
+      "command": "npx", 
+
+      "args": [ 
+
+        "@microsoft/clarity-mcp-server", 
+
+        "--clarity_api_token=your-api-token-here" 
+
+      ] 
+
+    } 
+
+  } 
+
+} 
+API Tokens: How to Get Yours 
+Go to your Clarity project 
+Navigate to Settings > Data Export 
+Click Generate new API token 
+Store it safely and keep it secure 
+Remember: each project allows 10 API requests per day, with a limit of 3 days’ data and up to 3 dimensions per request. 
+
+What’s Next: The Roadmap 
+While today’s MCP server is already powerful, we are already looking into future releases: 
+
+📈 Higher API Limits: Increased daily limits for the Clarity data export API 
+🔮 Predictive Heatmaps: Predict engagement heatmaps by providing an image or a url 
+🧠 Deeper AI integration:  Heatmap insights and more given the context  
+🌐 Multi-project support: for enterprise analytics teams 
+🧩 Ecosystem – Support more AI Agents and collaborate with more MCP servers 
+The Clarity team is actively exploring feedback-driven improvements. Let us know if you give it a try and if you have any requests. And expect continued innovation in the way our free AI and analytics platform come together!
+
+Final Thoughts 
+The Microsoft Clarity MCP Server is more than just a developer tool—it’s a leap toward natural language analytics powered by AI. Easy setup, a rich feature set, seamless Claude integration, and all free to use. It’s already transforming how teams interact with web metrics. 
+
+If you’re serious about understanding your site traffic, reducing bounce rates, or just making smarter, data-driven decisions—give the MCP server a spin. 
+
+Clarity is more than heatmaps and session recordings. With MCP, it’s connected to any intelligent agent. 
