@@ -223,7 +223,7 @@ export class CancellationHandler {
    * Extract gender from name based on title (Mr, Mrs, Miss, Ms)
    * Returns 'male', 'female', or null if unknown
    */
-  private extractGenderFromName(fullName: string): 'male' | 'female' | null {
+  private extractGenderFromName(fullName: string): 'male' | 'female' | 'other' | null {
     const name = fullName.trim().toLowerCase();
     
     // Male titles
