@@ -11,36 +11,107 @@ console.log('📧 Email Automation: Port 3003');
 console.log('🌐 Website Preview: Port 5000');
 console.log('');
 
-// Start the email automation server on port 3003
-const emailServer = spawn('npx', ['tsx', serverPath], {
-  stdio: 'inherit',
-  cwd: __dirname,
-  env: { ...process.env, PORT: '3003' }
-});
+let emailServer = null;
+let websiteServer = null;
+let emailServerRestartCount = 0;
+let websiteServerRestartCount = 0;
+const MAX_RESTART_ATTEMPTS = 10;
+const RESTART_DELAY_BASE = 5000;
 
-emailServer.on('error', (err) => {
-  console.error('Failed to start email automation server:', err);
-  process.exit(1);
-});
+function startEmailServer() {
+  emailServer = spawn('npx', ['tsx', serverPath], {
+    stdio: 'inherit',
+    cwd: __dirname,
+    env: { ...process.env, PORT: '3003' }
+  });
 
-// Start the website preview server on port 5000
-setTimeout(() => {
-  const websiteServer = spawn('node', [websitePath], {
+  emailServer.on('error', (err) => {
+    console.error('❌ Failed to start email automation server:', err);
+    scheduleEmailServerRestart();
+  });
+
+  emailServer.on('exit', (code) => {
+    if (code !== 0 && code !== null) {
+      console.error(`❌ Email automation server crashed with code: ${code}`);
+      scheduleEmailServerRestart();
+    } else {
+      console.log('Email automation server exited gracefully');
+    }
+  });
+}
+
+function scheduleEmailServerRestart() {
+  emailServerRestartCount++;
+  
+  if (emailServerRestartCount > MAX_RESTART_ATTEMPTS) {
+    console.error(`🛑 Email server exceeded ${MAX_RESTART_ATTEMPTS} restart attempts. Stopping.`);
+    process.exit(1);
+  }
+
+  const delay = Math.min(RESTART_DELAY_BASE * emailServerRestartCount, 60000);
+  console.log(`🔄 Restarting email server in ${delay/1000}s (attempt ${emailServerRestartCount}/${MAX_RESTART_ATTEMPTS})...`);
+  
+  setTimeout(() => {
+    console.log('🔄 Restarting email automation server...');
+    startEmailServer();
+  }, delay);
+}
+
+function startWebsiteServer() {
+  websiteServer = spawn('node', [websitePath], {
     stdio: 'inherit',
     cwd: join(__dirname, 'WebsiteProject'),
     env: { ...process.env, PORT: '5000' }
   });
 
   websiteServer.on('error', (err) => {
-    console.error('Failed to start website server:', err);
+    console.error('❌ Failed to start website server:', err);
+    scheduleWebsiteServerRestart();
   });
 
   websiteServer.on('exit', (code) => {
-    console.log('Website server exited with code:', code);
+    if (code !== 0 && code !== null) {
+      console.error(`❌ Website server crashed with code: ${code}`);
+      scheduleWebsiteServerRestart();
+    } else {
+      console.log('Website server exited gracefully');
+    }
   });
-}, 3000); // Wait 3 seconds for email server to start
+}
 
-emailServer.on('exit', (code) => {
-  console.log('Email automation server exited with code:', code);
-  process.exit(code || 0);
+function scheduleWebsiteServerRestart() {
+  websiteServerRestartCount++;
+  
+  if (websiteServerRestartCount > MAX_RESTART_ATTEMPTS) {
+    console.error(`🛑 Website server exceeded ${MAX_RESTART_ATTEMPTS} restart attempts. Stopping.`);
+    return;
+  }
+
+  const delay = Math.min(RESTART_DELAY_BASE * websiteServerRestartCount, 60000);
+  console.log(`🔄 Restarting website server in ${delay/1000}s (attempt ${websiteServerRestartCount}/${MAX_RESTART_ATTEMPTS})...`);
+  
+  setTimeout(() => {
+    console.log('🔄 Restarting website server...');
+    startWebsiteServer();
+  }, delay);
+}
+
+startEmailServer();
+
+setTimeout(() => {
+  startWebsiteServer();
+}, 3000);
+
+process.on('SIGINT', () => {
+  console.log('\n🛑 Shutting down servers...');
+  if (emailServer) emailServer.kill();
+  if (websiteServer) websiteServer.kill();
+  process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+  console.log('\n🛑 Received SIGTERM, shutting down...');
+  if (emailServer) emailServer.kill();
+  if (websiteServer) websiteServer.kill();
+  process.exit(0);
 });
