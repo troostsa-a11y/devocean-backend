@@ -78,7 +78,7 @@ export class EmailSenderService {
       const attachments: any[] = [
         {
           filename: 'email-header.jpg',
-          path: './WebsiteProject/public/images/email-header.jpg',
+          path: './email_templates/assets/email-header.jpg',
           cid: 'email-header-image' // Content-ID for referencing in HTML
         }
       ];
