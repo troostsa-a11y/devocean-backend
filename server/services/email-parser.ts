@@ -2,6 +2,7 @@ import * as imapSimple from 'imap-simple';
 import { simpleParser } from 'mailparser';
 import * as fs from 'fs';
 import type { InsertBooking } from '../../shared/schema';
+
 // Handle CommonJS/ESM interop
 const imaps = (imapSimple as any).default || imapSimple;
 
@@ -672,9 +673,9 @@ export class EmailParser {
           port: config.port,
           tls: config.tls,
           tlsOptions: { rejectUnauthorized: false },
-          authTimeout: 30000, // Increased from 10s to 30s
-          connTimeout: 30000, // Add connection timeout
-          socketTimeout: 30000, // Add socket timeout
+          authTimeout: 60000, // 60s for slower connections
+          connTimeout: 60000, // 60s connection timeout
+          socketTimeout: 60000, // 60s socket timeout
         },
       });
       console.log('✅ IMAP connection established');
@@ -718,9 +719,9 @@ export class EmailParser {
           port: config.port,
           tls: config.tls,
           tlsOptions: { rejectUnauthorized: false },
-          authTimeout: 30000, // Increased from 10s to 30s
-          connTimeout: 30000, // Add connection timeout
-          socketTimeout: 30000, // Add socket timeout
+          authTimeout: 60000, // 60s for slower connections
+          connTimeout: 60000, // 60s connection timeout
+          socketTimeout: 60000, // 60s socket timeout
         },
       });
 
