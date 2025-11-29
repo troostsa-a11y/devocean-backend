@@ -6,12 +6,15 @@
     "outDir": "./dist",
     "rootDir": ".",
     "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "declaration": false,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "allowJs": true
   },
   "include": [
     "server.ts",
@@ -20,6 +23,7 @@
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "server/services/transfer-notification.ts"
   ]
 }

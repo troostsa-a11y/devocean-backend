@@ -5,7 +5,6 @@ import { EmailSchedulerService } from './email-scheduler';
 import { EmailSenderService } from './email-sender';
 import { CancellationHandler } from './cancellation-handler';
 import { ModificationHandler } from './modification-handler';
-import { TransferNotificationService } from './transfer-notification';
 import { AdminReportingService } from './admin-reporting';
 import { insertBookingSchema } from '../../shared/schema';
 
@@ -48,7 +47,6 @@ export class EmailAutomationService {
   private emailSender: EmailSenderService;
   private cancellationHandler: CancellationHandler;
   private modificationHandler: ModificationHandler;
-  private transferNotification?: TransferNotificationService;
   private adminReporting?: AdminReportingService;
   private imapConfig: EmailConfig;
   private cronJob?: cron.ScheduledTask;
@@ -71,18 +69,6 @@ export class EmailAutomationService {
     this.emailSender = new EmailSenderService(smtpConfig, this.db, fromEmail, fromName, bccEmail);
     this.cancellationHandler = new CancellationHandler(this.db, smtpConfig, fromEmail, fromName, bccEmail);
     this.modificationHandler = new ModificationHandler(this.db);
-    
-    // Initialize transfer notification service if taxi config provided
-    if (taxiConfig) {
-      this.transferNotification = new TransferNotificationService(
-        smtpConfig,
-        this.db,
-        taxiConfig,
-        fromEmail,
-        fromName,
-        bccEmail
-      );
-    }
     
     // Initialize admin reporting service
     if (adminEmail) {
