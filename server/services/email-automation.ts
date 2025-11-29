@@ -5,7 +5,6 @@ import { EmailSchedulerService } from './email-scheduler';
 import { EmailSenderService } from './email-sender';
 import { CancellationHandler } from './cancellation-handler';
 import { ModificationHandler } from './modification-handler';
-import { TransferNotificationService } from './transfer-notification';
 import { AdminReportingService } from './admin-reporting';
 import { insertBookingSchema } from '../../shared/schema';
 
