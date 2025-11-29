@@ -1,12 +1,11 @@
 {
   "name": "devocean-automailer",
   "version": "1.0.0",
-  "type": "module",
   "description": "DEVOCEAN Lodge Email Automation Service - Processes Beds24 booking notifications",
-  "main": "server.ts",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "tsx server.ts",
-    "build": "echo 'No build step required'"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "@types/cors": "^2.8.19",
