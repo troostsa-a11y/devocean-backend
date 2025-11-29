@@ -4,6 +4,7 @@ services:
     runtime: node
     region: frankfurt
     plan: starter
+    rootDir: render-automailer
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
