@@ -6,9 +6,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const serverPath = join(__dirname, 'server.ts');
 const websitePath = join(__dirname, 'WebsiteProject', 'server.js');
 
-console.log('🚀 Starting DEVOCEAN Lodge - Dual Server Mode');
-console.log('📧 Email Automation: Port 3003');
+console.log('🚀 Starting DEVOCEAN Lodge - Website Preview Mode');
 console.log('🌐 Website Preview: Port 5000');
+console.log('📧 Email Automation: DISABLED (handled by Render)');
 console.log('');
 
 let emailServer = null;
@@ -96,11 +96,11 @@ function scheduleWebsiteServerRestart() {
   }, delay);
 }
 
-startEmailServer();
+// Email automation disabled - now handled by Render
+// startEmailServer();
 
-setTimeout(() => {
-  startWebsiteServer();
-}, 3000);
+// Start website server immediately (no delay needed since email server is disabled)
+startWebsiteServer();
 
 process.on('SIGINT', () => {
   console.log('\n🛑 Shutting down servers...');
