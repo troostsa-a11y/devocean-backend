@@ -1,0 +1,39 @@
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+Need better ways to work with
