@@ -1,7 +1,10 @@
-import imaps from 'imap-simple';
+import * as imapSimple from 'imap-simple';
 import { simpleParser } from 'mailparser';
 import * as fs from 'fs';
 import type { InsertBooking } from '../../shared/schema';
+
+// Handle CommonJS/ESM interop
+const imaps = (imapSimple as any).default || imapSimple;
 
 /**
  * Email Parser Service
