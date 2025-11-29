@@ -1,0 +1,34 @@
+
+
+Live tail
+GMT+2
+
+Menu
+
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit e69e97a20163a4a6bd50a70f726b35bda55bdf91 in branch main
+==> Using Node.js version 18.20.0 via /opt/render/project/src/.node-version
+==> Node.js version 18.20.0 has reached end-of-life.
+==> Upgrade to a maintained version to receive important security updates.
+==> Information on maintained Node.js versions: https://nodejs.org/en/about/previous-releases
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install && npm run build'...
+added 155 packages, and audited 156 packages in 19s
+31 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+> devocean-automailer@1.0.0 build
+> tsc
+server.ts(4,10): error TS2305: Module '"./server/services/email-automation"' has no exported member 'EmailAutomationService'.
+server/services/transfer-notification.ts(56,20): error TS2339: Property 'extras' does not exist on type '{ id: number; groupRef: string; bookingRefs: string[]; guestName: string; firstName: string; guestGender: string; guestEmail: string; guestLanguage: string; guestCountry: string; checkInDate: Date; ... 7 more ...; updatedAt: Date; }'.
+server/services/transfer-notification.ts(61,19): error TS2339: Property 'transferNotificationSent' does not exist on type '{ id: number; groupRef: string; bookingRefs: string[]; guestName: string; firstName: string; guestGender: string; guestEmail: string; guestLanguage: string; guestCountry: string; checkInDate: Date; ... 7 more ...; updatedAt: Date; }'.
+server/services/transfer-notification.ts(66,32): error TS2339: Property 'extras' does not exist on type '{ id: number; groupRef: string; bookingRefs: string[]; guestName: string; firstName: string; guestGender: string; guestEmail: string; guestLanguage: string; guestCountry: string; checkInDate: Date; ... 7 more ...; updatedAt: Date; }'.
+server/services/transfer-notification.ts(82,21): error TS2339: Property 'markTransferNotificationSent' does not exist on type 'DatabaseService'.
+server/services/transfer-notification.ts(118,30): error TS2339: Property 'extras' does not exist on type '{ id: number; groupRef: string; bookingRefs: string[]; guestName: string; firstName: string; guestGender: string; guestEmail: string; guestLanguage: string; guestCountry: string; checkInDate: Date; ... 7 more ...; updatedAt: Date; }'.
+server/services/transfer-notification.ts(188,24): error TS2339: Property 'guestPhone' does not exist on type '{ id: number; groupRef: string; bookingRefs: string[]; guestName: string; firstName: string; guestGender: string; guestEmail: string; guestLanguage: string; guestCountry: string; checkInDate: Date; ... 7 more ...; updatedAt: Date; }'.
+server/services/transfer-notification.ts(233,44): error TS2339: Property 'guestPhone' does not exist on type '{ id: number; groupRef: string; bookingRefs: string[]; guestName: string; firstName: string; guestGender: string; guestEmail: string; guestLanguage: string; guestCountry: string; checkInDate: Date; ... 7 more ...; updatedAt: Date; }'.
+==> Build failed 😞
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
