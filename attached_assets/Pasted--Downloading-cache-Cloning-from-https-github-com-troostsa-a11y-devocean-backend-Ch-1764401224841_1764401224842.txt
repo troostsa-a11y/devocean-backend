@@ -1,0 +1,114 @@
+==> Downloading cache...
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit b945805d818eb57e1fb2bbc084ed22617360d924 in branch main
+==> Downloaded 108MB in 2s. Extraction took 3s.
+==> Using Node.js version 18.20.0 via /opt/render/project/src/.node-version
+==> Node.js version 18.20.0 has reached end-of-life.
+==> Upgrade to a maintained version to receive important security updates.
+==> Information on maintained Node.js versions: https://nodejs.org/en/about/previous-releases
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install'...
+up to date, audited 156 packages in 1s
+31 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+==> Uploading build...
+==> Uploaded in 3.9s. Compression took 8.5s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'npm start'
+==> Your service is live 🎉
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> tsx server.ts
+/opt/render/project/src/server.ts:4
+import { EmailAutomationService } from './server/services/email-automation';
+         ^
+SyntaxError: The requested module './server/services/email-automation' does not provide an export named 'EmailAutomationService'
+    at ModuleJob._instantiate (node:internal/modules/esm/module_job:123:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:191:5)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:337:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12)
+Node.js v18.20.0
+Need better ways to work with
