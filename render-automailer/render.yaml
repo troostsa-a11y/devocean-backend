@@ -1,0 +1,43 @@
+services:
+  - type: worker
+    name: devocean-automailer
+    runtime: node
+    region: frankfurt
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: MAIL_HOST
+        sync: false
+      - key: MAIL_PORT
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: IMAP_HOST
+        sync: false
+      - key: IMAP_PORT
+        sync: false
+      - key: IMAP_USER
+        sync: false
+      - key: IMAP_PASSWORD
+        sync: false
+      - key: IMAP_TLS
+        sync: false
+      - key: IMAP_FROM_EMAIL
+        sync: false
+      - key: IMAP_FROM_NAME
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: BCC_EMAIL
+        sync: false
+      - key: TAXI_EMAIL
+        sync: false
+      - key: TAXI_WHATSAPP
+        sync: false
+      - key: TAXI_NAME
+        sync: false
