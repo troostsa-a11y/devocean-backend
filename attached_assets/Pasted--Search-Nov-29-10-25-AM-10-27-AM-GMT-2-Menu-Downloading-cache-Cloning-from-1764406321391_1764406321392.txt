@@ -1,0 +1,58 @@
+
+Search
+
+Nov 29, 10:25 AM - 10:27 AM
+GMT+2
+
+Menu
+
+==> Downloading cache...
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit 79e22bea1927ce0cec4050e1646b1075a02c506d in branch main
+==> Downloaded 111MB in 3s. Extraction took 3s.
+==> Using Node.js version 20.18.0 via /opt/render/project/src/.node-version
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install'...
+up to date, audited 155 packages in 777ms
+31 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+==> Uploading build...
+==> Uploaded in 4.0s. Compression took 2.2s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
+==> Exited with status 1
+==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
