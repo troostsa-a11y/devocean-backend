@@ -675,7 +675,12 @@ export class EmailParser {
           tlsOptions: { rejectUnauthorized: false },
           authTimeout: 60000, // 60s for slower connections
           connTimeout: 60000, // 60s connection timeout
-          socketTimeout: 60000, // 60s socket timeout
+          socketTimeout: 0, // Disable socket timeout (use keepalive instead)
+          keepalive: {
+            interval: 10000, // Send NOOP every 10 seconds
+            idleInterval: 300000, // 5 minutes idle timeout
+            forceNoop: true, // Force NOOP to keep connection alive
+          },
         },
       });
       console.log('✅ IMAP connection established');
@@ -721,7 +726,12 @@ export class EmailParser {
           tlsOptions: { rejectUnauthorized: false },
           authTimeout: 60000, // 60s for slower connections
           connTimeout: 60000, // 60s connection timeout
-          socketTimeout: 60000, // 60s socket timeout
+          socketTimeout: 0, // Disable socket timeout (use keepalive instead)
+          keepalive: {
+            interval: 10000, // Send NOOP every 10 seconds
+            idleInterval: 300000, // 5 minutes idle timeout
+            forceNoop: true, // Force NOOP to keep connection alive
+          },
         },
       });
 
