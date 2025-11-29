@@ -1,0 +1,44 @@
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+📊 Admin reports enabled for admin@devoceanlodge.com
+📧 Sending emails from: "DEVOCEAN Lodge Bookings" <booking@devoceanlodge.com>
+📧 BCC copies sent to: beds24@devoceanlodge.com
+Starting email automation service...
+Email automation scheduled to check every 30 minutes for new bookings, modifications, and cancellations
+Scheduled email sending runs every 30 minutes at :15 and :45 (15 minutes after email check)
+Daily reports scheduled for 14:00 CAT (12:00 UTC)
+Weekly reports scheduled for 08:00 CAT on Mondays (06:00 UTC)
+Running startup email check to process any pending emails...
+Checking for new booking emails...
+Connecting to IMAP server: vm02-murphy.h4ahosting.com:993
+Sending any pending scheduled emails from backlog...
+Processing pending scheduled emails...
+✅ Email automation service started successfully
+📧 Checking emails every 30 minutes (at :00 and :30 of every hour)
+============================================================
+🌊 DEVOCEAN Lodge Email Automation Server
+============================================================
+🚀 Server running on http://0.0.0.0:3000
+📅 Email checks every 30 min (at :00 and :30), sends at :15 and :45
+📧 Processing Beds24 booking notifications automatically
+============================================================
+Processing 0 pending emails
+Sent 0 emails, 0 failed
+Error fetching emails: Error: Socket timed out while talking to server
+    at Socket._onSocketTimeout (/opt/render/project/src/node_modules/imap/lib/Connection.js:162:15)
+    at Socket.emit (node:events:519:28)
+    at Socket._onTimeout (node:net:591:8)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7) {
+  source: 'socket-timeout'
+}
+Error during email check: Error: Socket timed out while talking to server
+    at Socket._onSocketTimeout (/opt/render/project/src/node_modules/imap/lib/Connection.js:162:15)
+    at Socket.emit (node:events:519:28)
+    at Socket._onTimeout (node:net:591:8)
+    at listOnTimeout (node:internal/timers:581:17)
+    at process.processTimers (node:internal/timers:519:7) {
+  source: 'socket-timeout'
+}
+Need better ways to work with logs? Try theRender CLI, Render MCP Ser
