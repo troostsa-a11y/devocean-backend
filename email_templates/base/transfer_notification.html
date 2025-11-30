@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Transfer Request - DEVOCEAN Lodge</title>
+  <style>
+    body { font-family: 'Raleway', Arial, sans-serif; line-height: 1.6; color: #5C5048; max-width: 600px; margin: 0 auto; padding: 0; background: #fffaf6; }
+    .email-container { background: white; margin: 20px auto; border-radius: 12px; overflow: hidden; }
+    .header { background: #F59E0B; color: white; padding: 30px 20px; text-align: center; }
+    .header h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; letter-spacing: 0.2px; }
+    .header p { margin: 0; font-size: 16px; opacity: 0.95; font-weight: 600; }
+    .content { padding: 30px 20px; }
+    .content h2 { color: #F59E0B; margin: 0 0 20px 0; font-size: 22px; font-weight: 700; }
+    .booking-details { background: #fffaf6; padding: 20px; margin: 20px 0; border-left: 4px solid #9e4b13; border-radius: 8px; }
+    .booking-details h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
+    .booking-details p { margin: 8px 0; }
+    .transfer-box { background: #FEF3C7; padding: 20px; margin: 20px 0; border-left: 4px solid #F59E0B; border-radius: 8px; }
+    .transfer-box h3 { margin: 0 0 15px 0; color: #92400E; font-size: 18px; font-weight: 700; }
+    .transfer-box p { margin: 8px 0; }
+    .important { background: #FEE2E2; padding: 20px; margin: 20px 0; border-left: 4px solid #DC2626; border-radius: 8px; }
+    .important p { margin: 8px 0; font-weight: 600; }
+    .checklist { background: #fffaf6; padding: 20px; margin: 20px 0; border-radius: 8px; border: 1px solid #eee; }
+    .checklist h3 { margin: 0 0 15px 0; color: #9e4b13; font-size: 18px; font-weight: 700; }
+    .checklist ul { margin: 10px 0; padding-left: 20px; }
+    .checklist li { margin: 8px 0; }
+    .footer { background: #fffaf6; padding: 20px; text-align: center; font-size: 13px; color: #8a827b; border-top: 1px solid #eee; }
+    .footer p { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="header">
+      <h1>🚗 New Transfer Request</h1>
+      <p>DEVOCEAN Lodge Guest Transfer</p>
+    </div>
+    
+    <div class="content">
+      <h2>Dear {{taxiCompanyName}},</h2>
+      
+      <p>We have a new transfer request for one of our guests at DEVOCEAN Lodge.</p>
+      
+      <div class="booking-details">
+        <h3>Guest & Booking Information</h3>
+        <p><strong>Booking Reference:</strong> {{groupRef}}</p>
+        <p><strong>Guest Name:</strong> {{guestName}}</p>
+        <p><strong>Email:</strong> {{guestEmail}}</p>
+        <p><strong>Phone:</strong> {{guestPhone}}</p>
+        <p><strong>Language:</strong> {{guestLanguage}}</p>
+        <p><strong>Check-in:</strong> {{checkInDate}}</p>
+        <p><strong>Check-out:</strong> {{checkOutDate}}</p>
+      </div>
+      
+      {{transferDetails}}
+      
+      <div class="important">
+        <p>📍 <strong>Lodge Address:</strong> DEVOCEAN Lodge, Ponta do Ouro, Mozambique</p>
+        <p>📞 <strong>Lodge Contact:</strong> info@devoceanlodge.com</p>
+      </div>
+      
+      <div class="checklist">
+        <h3>⚡ Action Required</h3>
+        <p><strong>Please confirm this transfer booking by replying with:</strong></p>
+        <ul>
+          <li>Confirmation of availability</li>
+          <li>Your confirmation number</li>
+          <li>Driver contact details (name & phone)</li>
+          <li>Vehicle details (if relevant)</li>
+          <li>Any special instructions for the guest</li>
+        </ul>
+      </div>
+      
+      <p><strong>Reply to this email</strong> with your confirmation or if you have any questions.</p>
+      
+      <p>Thank you for your continued partnership!</p>
+      
+      <p>Best regards,<br>
+      <strong>DEVOCEAN Lodge Reservations Team</strong></p>
+    </div>
+    
+    <div class="footer">
+      <p><strong>DEVOCEAN Lodge</strong> | Ponta do Ouro, Mozambique</p>
+      <p>Email: booking@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+    </div>
+  </div>
+</body>
+</html>
