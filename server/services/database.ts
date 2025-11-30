@@ -124,7 +124,7 @@ export class DatabaseService {
   }
 
   /**
-   * Mark scheduled email as failed
+   * Mark scheduled email as permanently failed (no more retries)
    */
   async markEmailAsFailed(emailId: number, errorMessage: string): Promise<void> {
     // First get current retry count
@@ -143,6 +143,42 @@ export class DatabaseService {
         updatedAt: new Date(),
       })
       .where(eq(scheduledEmails.id, emailId));
+  }
+
+  /**
+   * Schedule email for retry (temporary failure)
+   * Keeps status as 'pending' but updates scheduledFor to future time
+   */
+  async scheduleEmailRetry(emailId: number, retryAt: Date, errorMessage: string): Promise<void> {
+    // First get current retry count
+    const [email] = await this.db
+      .select({ retryCount: scheduledEmails.retryCount })
+      .from(scheduledEmails)
+      .where(eq(scheduledEmails.id, emailId))
+      .limit(1);
+
+    await this.db
+      .update(scheduledEmails)
+      .set({
+        status: 'pending',
+        scheduledFor: retryAt,
+        errorMessage: `[Retry scheduled] ${errorMessage}`,
+        retryCount: (email?.retryCount || 0) + 1,
+        updatedAt: new Date(),
+      })
+      .where(eq(scheduledEmails.id, emailId));
+  }
+
+  /**
+   * Get current retry count for an email
+   */
+  async getEmailRetryCount(emailId: number): Promise<number> {
+    const [email] = await this.db
+      .select({ retryCount: scheduledEmails.retryCount })
+      .from(scheduledEmails)
+      .where(eq(scheduledEmails.id, emailId))
+      .limit(1);
+    return email?.retryCount || 0;
   }
 
   /**
