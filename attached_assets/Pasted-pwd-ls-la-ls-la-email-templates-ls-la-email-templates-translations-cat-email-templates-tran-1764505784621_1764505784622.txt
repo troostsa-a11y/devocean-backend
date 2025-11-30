@@ -1,0 +1,44 @@
+pwd
+ls -la
+ls -la email_templates/
+ls -la email_templates/translations/
+cat email_templates/translations/post_booking-translations.json | head -5
+/opt/render/project/src
+total 160
+drwxr-sr-x   8 render render  4096 Nov 30 12:21 .
+drwxr-sr-x   4 render render  4096 Nov 30 12:21 ..
+drwxr-sr-x   8 render render  4096 Nov 30 12:21 .git
+-rw-r--r--   1 render render     8 Nov 30 12:21 .node-version
+-rw-r--r--   1 render render 16359 Nov 30 12:21 cancellation-handler.ts
+drwxr-sr-x   4 render render  4096 Nov 30 12:21 dist
+-rw-r--r--   1 render render  6602 Nov 30 12:21 email-sender.ts
+drwxr-sr-x   5 render render  4096 Nov 30 12:21 email_templates
+drwxr-sr-x 139 render render  4096 Nov 30 12:21 node_modules
+-rw-r--r--   1 render render 80049 Nov 30 12:21 package-lock.json
+-rw-r--r--   1 render render   841 Nov 30 12:21 package.json
+-rw-r--r--   1 render render   977 Nov 30 12:21 render.yaml
+drwxr-sr-x   4 render render  4096 Nov 30 12:21 server
+-rw-r--r--   1 render render  6505 Nov 30 12:21 server.ts
+drwxr-sr-x   2 render render  4096 Nov 30 12:21 shared
+-rw-r--r--   1 render render   617 Nov 30 12:21 tsconfig.json
+total 20
+drwxr-sr-x 5 render render 4096 Nov 30 12:21 .
+drwxr-sr-x 8 render render 4096 Nov 30 12:21 ..
+drwxr-sr-x 2 render render 4096 Nov 30 12:21 assets
+drwxr-sr-x 2 render render 4096 Nov 30 12:21 base
+drwxr-sr-x 2 render render 4096 Nov 30 12:21 translations
+total 400
+drwxr-sr-x 2 render render   4096 Nov 30 12:21 .
+drwxr-sr-x 5 render render   4096 Nov 30 12:21 ..
+-rw-r--r-- 1 render render  55661 Nov 30 12:21 arrival-translations.json
+-rw-r--r-- 1 render render  25972 Nov 30 12:21 cancellation-translations.json
+-rw-r--r-- 1 render render 144626 Nov 30 12:21 email-translations.json.backup
+-rw-r--r-- 1 render render  57772 Nov 30 12:21 post_booking-translations.json
+-rw-r--r-- 1 render render  42705 Nov 30 12:21 post_departure-translations.json
+-rw-r--r-- 1 render render  60515 Nov 30 12:21 pre_arrival-translations.json
+{
+  "en-GB": {
+    "subject": "Booking Confirmed - DEVOCEAN Lodge",
+    "preheader": "Your DEVOCEAN Lodge booking is confirmed. We can't wait to welcome you to Ponta do Ouro.",
+    "headerSubtitle": "Your Home by the Ocean in Ponta do Ouro",
+render@srv-d4l9n0s9c44c73fcq73g-c4fb54dd8-sm92k:~/project/src$ 
