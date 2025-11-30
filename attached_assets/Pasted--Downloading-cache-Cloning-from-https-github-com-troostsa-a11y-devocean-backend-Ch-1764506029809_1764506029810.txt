@@ -1,0 +1,51 @@
+==> Downloading cache...
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit 363b7ea2726f7f79234983a0590fb79ff097d1c1 in branch main
+==> Downloaded 111MB in 2s. Extraction took 3s.
+==> Using Node.js version 20.18.0 via /opt/render/project/src/.node-version
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install && npm run build'...
+up to date, audited 156 packages in 903ms
+31 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+> devocean-automailer@1.0.0 build
+> tsc
+==> Uploading build...
+==> Uploaded in 3.4s. Compression took 7.3s
+==> Build successful 🎉
+==> Deploying...
+==> Your service is live 🎉
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+📊 Admin reports enabled for admin@devoceanlodge.com
+📧 Sending emails from: "DEVOCEAN Lodge - Ponta do Ouro" <reservations@devoceanlodge.com>
+📧 BCC copies sent to: beds24@devoceanlodge.com
+Starting email automation service...
+Email automation scheduled to check every 30 minutes for new bookings, modifications, and cancellations
+Scheduled email sending runs every 30 minutes at :15 and :45 (15 minutes after email check)
+Daily reports scheduled for 14:00 CAT (12:00 UTC)
+Weekly reports scheduled for 08:00 CAT on Mondays (06:00 UTC)
+Running startup email check to process any pending emails...
+Checking for new booking emails...
+Connecting to IMAP server: mail.devoceanlodge.com:993
+Sending any pending scheduled emails from backlog...
+Processing pending scheduled emails...
+✅ Email automation service started successfully
+📧 Checking emails every 30 minutes (at :00 and :30 of every hour)
+============================================================
+🌊 DEVOCEAN Lodge Email Automation Server
+============================================================
+🚀 Server running on http://0.0.0.0:3000
+📅 Email checks every 30 min (at :00 and :30), sends at :15 and :45
+📧 Processing Beds24 booking notifications automatically
+============================================================
+Processing 0 pending emails
+Sent 0 emails, 0 failed
+✅ IMAP connection established
+Found 0 unread emails
+Email check completed in 2070ms
