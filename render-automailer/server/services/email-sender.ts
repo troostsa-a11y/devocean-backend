@@ -6,6 +6,7 @@ import { emailTemplateRenderer } from './email-template-renderer';
 /**
  * Email Sender Service
  * Sends transactional emails via SMTP
+ * Includes smart retry logic for temporary vs permanent failures
  */
 
 interface SMTPConfig {
@@ -16,6 +17,128 @@ interface SMTPConfig {
     user: string;
     pass: string;
   };
+}
+
+// Maximum retry attempts for temporary errors
+const MAX_RETRIES = 3;
+
+// Retry delays in minutes (exponential backoff: 15min, 30min, 60min)
+const RETRY_DELAYS_MINUTES = [15, 30, 60];
+
+/**
+ * Classify email sending errors as temporary or permanent
+ * - Temporary: Network issues, timeouts, server busy (should retry)
+ * - Permanent: Invalid address, auth failure, missing files (don't retry)
+ */
+type ErrorClassification = 'temporary' | 'permanent';
+
+function classifyEmailError(error: any): ErrorClassification {
+  const errorCode = error?.code || '';
+  const errorMessage = (error?.message || '').toLowerCase();
+  const responseCode = error?.responseCode || 0;
+
+  // PERMANENT errors - don't retry
+  const permanentCodes = [
+    'EENVELOPE',      // Invalid envelope (bad address format)
+    'EADDRESS',       // Invalid email address
+    'EAUTH',          // Authentication failed
+    'ENOENT',         // File not found (missing template/attachment)
+  ];
+
+  const permanentSmtpCodes = [
+    550,  // Mailbox not found / User unknown
+    551,  // User not local
+    552,  // Message too large
+    553,  // Invalid mailbox name
+    554,  // Transaction failed (permanent)
+    535,  // Authentication failed
+  ];
+
+  const permanentPatterns = [
+    'invalid recipient',
+    'user unknown',
+    'mailbox not found',
+    'address rejected',
+    'authentication failed',
+    'no such file',
+    'template not found',
+    'no translations found',
+    'enoent',
+  ];
+
+  // Check for permanent error codes
+  if (permanentCodes.includes(errorCode)) {
+    return 'permanent';
+  }
+
+  // Check for permanent SMTP response codes
+  if (permanentSmtpCodes.includes(responseCode)) {
+    return 'permanent';
+  }
+
+  // Check for permanent error patterns in message
+  for (const pattern of permanentPatterns) {
+    if (errorMessage.includes(pattern)) {
+      return 'permanent';
+    }
+  }
+
+  // TEMPORARY errors - should retry
+  const temporaryCodes = [
+    'ETIMEDOUT',      // Connection timeout
+    'ECONNRESET',     // Connection reset
+    'ECONNREFUSED',   // Connection refused
+    'EHOSTUNREACH',   // Host unreachable
+    'ENOTFOUND',      // DNS lookup failed
+    'ESOCKET',        // Socket error
+    'ESTREAM',        // Stream error (can be temporary)
+  ];
+
+  const temporarySmtpCodes = [
+    421,  // Service not available, try again later
+    450,  // Mailbox busy, try again later
+    451,  // Local error, try again later
+    452,  // Insufficient storage, try again later
+  ];
+
+  const temporaryPatterns = [
+    'timeout',
+    'timed out',
+    'try again',
+    'temporarily',
+    'connection closed',
+    'socket hang up',
+    'network',
+    'busy',
+    'rate limit',
+    'too many connections',
+  ];
+
+  // Check for temporary error codes
+  if (temporaryCodes.includes(errorCode)) {
+    return 'temporary';
+  }
+
+  // Check for temporary SMTP response codes
+  if (temporarySmtpCodes.includes(responseCode)) {
+    return 'temporary';
+  }
+
+  // Check for temporary error patterns in message
+  for (const pattern of temporaryPatterns) {
+    if (errorMessage.includes(pattern)) {
+      return 'temporary';
+    }
+  }
+
+  // Default: treat unknown errors as temporary (give them a chance to retry)
+  // But only if it looks like a network/connection issue
+  if (errorCode.startsWith('E') && !permanentCodes.includes(errorCode)) {
+    return 'temporary';
+  }
+
+  // For truly unknown errors, mark as permanent to avoid infinite retries
+  return 'permanent';
 }
 
 export class EmailSenderService {
@@ -152,24 +275,56 @@ export class EmailSenderService {
       console.log(`Email sent successfully: ${scheduledEmail.emailType} to ${scheduledEmail.recipientEmail}`);
       return true;
     } catch (error) {
-      console.error(`Error sending email:`, error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      const errorType = classifyEmailError(error);
+      const currentRetryCount = await this.db.getEmailRetryCount(scheduledEmail.id);
 
-      // Mark as failed
-      await this.db.markEmailAsFailed(
-        scheduledEmail.id,
-        error instanceof Error ? error.message : 'Unknown error'
-      );
+      console.error(`Error sending email (${errorType}):`, error);
 
-      // Log the failure
-      await this.db.logEmail({
-        scheduledEmailId: scheduledEmail.id,
-        to: scheduledEmail.recipientEmail,
-        subject: 'Failed to send',
-        emailType: scheduledEmail.emailType,
-        status: 'failed',
-        provider: 'smtp',
-        errorMessage: error instanceof Error ? error.message : 'Unknown error',
-      });
+      if (errorType === 'temporary' && currentRetryCount < MAX_RETRIES) {
+        // TEMPORARY error - schedule retry with exponential backoff
+        const delayMinutes = RETRY_DELAYS_MINUTES[currentRetryCount] || 60;
+        const retryAt = new Date(Date.now() + delayMinutes * 60 * 1000);
+        
+        await this.db.scheduleEmailRetry(scheduledEmail.id, retryAt, errorMessage);
+        
+        console.log(`🔄 Temporary error - retry ${currentRetryCount + 1}/${MAX_RETRIES} scheduled for ${retryAt.toISOString()}`);
+        
+        // Log the retry attempt
+        await this.db.logEmail({
+          scheduledEmailId: scheduledEmail.id,
+          to: scheduledEmail.recipientEmail,
+          subject: 'Retry scheduled',
+          emailType: scheduledEmail.emailType,
+          status: 'failed',
+          provider: 'smtp',
+          errorMessage: `[Retry ${currentRetryCount + 1}/${MAX_RETRIES}] ${errorMessage}`,
+        });
+      } else {
+        // PERMANENT error OR max retries exceeded - mark as failed
+        const failReason = errorType === 'permanent' 
+          ? `[Permanent error] ${errorMessage}`
+          : `[Max retries exceeded] ${errorMessage}`;
+        
+        await this.db.markEmailAsFailed(scheduledEmail.id, failReason);
+        
+        if (errorType === 'permanent') {
+          console.log(`❌ Permanent error - not retrying: ${errorMessage}`);
+        } else {
+          console.log(`❌ Max retries (${MAX_RETRIES}) exceeded - giving up`);
+        }
+        
+        // Log the permanent failure
+        await this.db.logEmail({
+          scheduledEmailId: scheduledEmail.id,
+          to: scheduledEmail.recipientEmail,
+          subject: 'Failed to send',
+          emailType: scheduledEmail.emailType,
+          status: 'failed',
+          provider: 'smtp',
+          errorMessage: failReason,
+        });
+      }
 
       return false;
     }
