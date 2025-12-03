@@ -76,13 +76,13 @@ export const FISHING_CONTENT = {
         name: "Gozo Azul Fishing",
         website: "",
         email: "info@gozoazulmarine.com",
-        specialty: "Game fishing specialists"
+        specialty: "Skipper Laurens Koen, 20+ years experience"
       },
       {
         name: "Mozambique Fishing Charters",
         website: "",
         email: "info@mozambiquefishincharters.co.za",
-        specialty: "Multi-day packages, fully equipped boats"
+        specialty: "Skipper Marcus Joubert, game fishing specialists"
       }
     ]
   }
