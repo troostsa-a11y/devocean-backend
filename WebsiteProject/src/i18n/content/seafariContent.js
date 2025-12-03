@@ -625,6 +625,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  sw: {
+    title: "Safari za Bahari",
+    tagline: "Kutazama nyangumi na kukutana na viumbe vya baharini",
+    overview: "Anza safari za kusisimua za baharini kutazama nyangumi wa nungu wanapohama kupitia maji ya Msumbiji (Julai-Novemba). Matukio haya ya mashua pia yanatoa mikutano na pomboo mwaka mzima, kutazama papa nyangumi wa msimu na kuogelea juu ya miamba isiyoguswa iliyojaa maisha ya baharini.",
+    highlights: [
+      "Nyangumi 30,000 wa nungu (Julai-Novemba)",
+      "Kuruka, kupiga mikia na spyhopping",
+      "Mikutano na pomboo mwaka mzima",
+      "Papa nyangumi (Oktoba-Machi)",
+      "Manta na kasa wa baharini",
+      "Kuogelea juu ya miamba isiyoguswa",
+      "Ziara zinazoongozwa na wanabiolojia wa baharini",
+      "Kuzingatia utafiti na uhifadhi"
+    ],
+    pricingRange: "US$40-45 kwa mtu",
+    pricingDetails: [
+      "Kutazama nyangumi pekee: US$40",
+      "Pomboo + nyangumi pamoja: US$45",
+      "Ziara ya siku nzima ya kibinafsi kutoka Maputo: US$179",
+      "Watoto chini ya 12: Bei zilizopunguzwa",
+      "Vifaa na vitafunio vimejumuishwa"
+    ],
+    durationTypical: "Saa 2-3",
+    durationDetails: [
+      "Ziara za nusu siku: saa 2-3",
+      "Ziara za siku nzima: saa 6-8 (kutoka Maputo)",
+      "Kuondoka asubuhi (hali bora)",
+      "Inajumuisha wakati wa kuogelea",
+      "Kubadilika kulingana na shughuli za nyangumi"
+    ],
+    included: [
+      "Usafiri wa mashua na kapteni mwenye uzoefu",
+      "Vifaa vya kuogelea (mask, mapezi, snorkel)",
+      "Msaidizi wa mwanabiolojia wa baharini (waendeshaji wengi)",
+      "Vitafunio na vinywaji",
+      "Ada za hifadhi ya bahari",
+      "Picha/video (waendeshaji wengine)",
+      "Vifaa vya usalama na jaketi za kuokoa maisha"
+    ],
+    requirementsLevel: "Umri wote",
+    requirementsDetails: [
+      "Ustadi maalum hauhitajiki kwa kutazama nyangumi",
+      "Uwezo wa kuogelea unahitajika kwa kuogelea",
+      "Umri: Inafaa kwa familia (watoto hadi wazee)",
+      "Inategemea hali ya hewa - bahari lazima iwe tulivu",
+      "Ziara zinaweza kupangwa upya ikiwa hali ni hatari",
+      "Koti la joto linapendekezwa (Julai-Septemba)"
+    ],
+    bestTimePeak: "Julai - Oktoba (Msimu wa Nyangumi)",
+    bestTimeDetails: [
+      "**Nyangumi wa Nungu:** Julai-Novemba (kilele: Jul-Okt)",
+      "**Pomboo:** Mwaka mzima (200+ wanaoishi)",
+      "**Papa Nyangumi:** Oktoba-Machi",
+      "**Manta:** Desemba-Mei",
+      "**Kasa wa Baharini:** Oktoba-Machi (kuangusha)",
+      "**Bahari Tulivu Zaidi:** Miezi ya baridi (Juni-Septemba)"
+    ],
+    tips: [
+      "Weka nafasi wakati wa msimu wa nyangumi (Jul-Nov) kwa nafasi bora",
+      "Leta koti la joto - upepo wa bahari unaweza kuwa baridi",
+      "Mfuko wa kamera isiyo na maji ni muhimu",
+      "Dawa ya kizunguzungu cha bahari ikiwa unaathiriwa",
+      "Darubini zinaongeza uzoefu wa kutazama nyangumi",
+      "Waendeshaji wa kimaadili wanafuata miongozo ya kutogusa",
+      "Kuona hakuthibitishwi - wanyamapori",
+      "Changanya na kuogelea kwa uzoefu kamili wa baharini"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Wataalamu wa kutazama nyangumi, wanaozingatia Julai-Novemba"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Ziara za utafiti, ukusanyaji wa data kwa uhifadhi"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safari za bahari, kutazama nyangumi na mikutano ya baharini"
+      }
+    ]
+  },
+
   sv: {
     title: "Havssafaris",
     tagline: "Valskådning och möten med marint liv",

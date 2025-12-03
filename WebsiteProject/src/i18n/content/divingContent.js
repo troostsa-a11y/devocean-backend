@@ -723,6 +723,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  sw: {
+    title: "Kupiga Mbizi",
+    tagline: "Chunguza miamba isiyoguswa na papa ng'ombe, manta na papa nyangumi",
+    overview: "Ponta do Ouro inatoa uzoefu wa kupiga mbizi wa kiwango cha dunia na maeneo 20+ ya kupiga mbizi kutoka miamba ya kina kifupi hadi pinnacles za kina. Maji safi kama kioo ya Mkondo wa Msumbiji yanaruhusu kuonekana vizuri na kukutana na aina mbalimbali za viumbe hai vya baharini, ikiwa ni pamoja na aina 19 za papa.",
+    highlights: [
+      "Maeneo 20+ ya kupiga mbizi kutoka 8m hadi 48m",
+      "Papa ng'ombe, papa simba na papa nyundo",
+      "Papa nyangumi (Oktoba-Machi)",
+      "Nyangumi wa nungu (Julai-Novemba)",
+      "Manta, kasa na pomboo",
+      "Aina 180+ za nudibranch",
+      "Miamba ya matumbawe isiyoguswa",
+      "Vituo vya PADI vya kitaalamu"
+    ],
+    pricingRange: "Kuanzia US$40 kwa kila kupiga mbizi",
+    pricingDetails: [
+      "Kupiga mbizi moja: US$40-50",
+      "Pakiti ya kupiga mbizi mbili: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Kukodisha vifaa kumejumuishwa",
+      "Leseni na vibali vyote vimejumuishwa"
+    ],
+    durationTypical: "Nusu siku au siku nzima",
+    durationDetails: [
+      "Kupiga mbizi asubuhi: kupiga mbizi 2 (saa 3-4)",
+      "Siku nzima: kupiga mbizi 3 (saa 6-8)",
+      "Kuanzia ufukweni (kusisimua!)",
+      "Maeneo km 1-12 kutoka ufukweni"
+    ],
+    included: [
+      "Vifaa vyote vya kupiga mbizi (BCD, regulator, suti)",
+      "Usafiri wa mashua kwenda maeneo ya kupiga mbizi",
+      "Mkufunzi wa PADI/divemaster wa kitaalamu",
+      "Ada za hifadhi ya bahari",
+      "Vitafunio na vinywaji baada ya kupiga mbizi",
+      "Kompyuta ya kupiga mbizi na vifaa vya usalama"
+    ],
+    requirementsLevel: "Wanaoanza hadi Wataalamu",
+    requirementsDetails: [
+      "Maeneo ya wanaoanza: Crèche, Doodles, Playground (10-18m)",
+      "Maeneo ya wataalamu: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Cheti cha PADI kinahitajika (au fanya kozi ya Open Water)",
+      "Fomu ya afya inahitajika",
+      "Uwezo mzuri wa kuogelea",
+      "Umri wa chini: miaka 10 (Junior Open Water)"
+    ],
+    bestTimePeak: "Oktoba - Aprili (Kiangazi)",
+    bestTimeDetails: [
+      "**Papa Ng'ombe & Simba:** Novemba-Aprili (maji 26-29°C)",
+      "**Papa Nyundo:** Aprili-Oktoba (kuonekana vizuri zaidi)",
+      "**Papa Nyangumi:** Oktoba-Machi",
+      "**Nyangumi wa Nungu:** Julai-Novemba",
+      "**Kuonekana Vizuri Zaidi:** Mei-Agosti (20-30m)",
+      "**Maji ya Joto Zaidi:** Desemba-Februari (27-29°C)"
+    ],
+    tips: [
+      "Weka nafasi mapema wakati wa msimu wa kilele (Desemba-Januari)",
+      "Leta kadi yako ya cheti",
+      "Fikiria wetsuit (3mm inapendekezwa)",
+      "Kuanzia kwa mawimbi kunaweza kusisimua - jiandae kupata maji!",
+      "Waendeshaji wengi wanatoa kukodisha vifaa",
+      "Pakiti za kupiga mbizi nyingi zinatoa thamani bora"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Wataalamu wa kupiga mbizi na papa, wanaolenga utafiti"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Kituo cha PADI cha nyota 5, wataalamu wa kupiga mbizi na papa"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Kituo cha kupiga mbizi cha kitaalamu"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Kituo cha kupiga mbizi cha kitaalamu"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Wataalamu wa kupiga mbizi na papa"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Kituo cha kupiga mbizi cha kitaalamu"
+      }
+    ]
+  },
+
   sv: {
     title: "Dykning",
     tagline: "Utforska orörda rev med tjurhajar, mantarockor och valhajar",

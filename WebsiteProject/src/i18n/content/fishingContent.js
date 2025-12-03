@@ -597,6 +597,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  sw: {
+    title: "Uvuvi wa Ufukweni na Bahari Kuu",
+    tagline: "Vua perch au fuatilia marlin katika Mkondo wa Msumbiji",
+    overview: "Ponta do Ouro inatoa uvuvi wa kipekee kutoka ufukweni na bahari kuu. Maji ya joto ya Bahari ya Hindi na Mkondo wa Msumbiji wenye kina hutoa fursa za kusisimua kwa marlin, sailfish, wahoo, tuna ya mapezi ya manjano na king mackerel. Wavuvi wa ufukweni wanaweza kuvua perch, barracuda na pompano.",
+    highlights: [
+      "Black marlin (Oktoba-Januari)",
+      "Sailfish (Juni-Septemba)",
+      "Tuna ya mapezi ya manjano na wahoo",
+      "King mackerel (Couta)",
+      "Uvuvi wa pwani wa perch na barracuda",
+      "Maji ya joto, safi ya Bahari ya Hindi",
+      "Charter zinazoanza ufukweni",
+      "Makapteni wa ndani wenye uzoefu wa miaka 20+"
+    ],
+    pricingRange: "Kuanzia US$550 (charter)",
+    pricingDetails: [
+      "Charter ya saa 5: US$550-650",
+      "Charter ya saa 8: US$850-950",
+      "Siku nzima bahari kuu: US$1,000+",
+      "Uvuvi wa ufukweni: Bure (leta vifaa)",
+      "Uvuvi wa ufukweni unaongozwa: US$50-100",
+      "Leseni, vifaa na maandalizi yamejumuishwa katika charter"
+    ],
+    durationTypical: "Saa 5-8 (charter)",
+    durationDetails: [
+      "Charter ya nusu siku: saa 5",
+      "Charter ya siku nzima: saa 8-10",
+      "Uvuvi wa ufukweni: Kubadilika (bora asubuhi/jioni)",
+      "Kuondoka asubuhi mapema (6-7)",
+      "Kufikia haraka maji ya kina (dakika kutoka ufukweni)"
+    ],
+    included: [
+      "Vifaa vya uvuvi kamili",
+      "Leseni na vibali vya uvuvi",
+      "Kapteni mwenye uzoefu (miaka 20+)",
+      "Chambo na lures",
+      "Kusafisha na kukata samaki",
+      "Ufungashaji wa vacuum kwa safari",
+      "Vinywaji na vitafunio (waendeshaji wengi)",
+      "Vifaa vya usalama"
+    ],
+    requirementsLevel: "Wanaoanza hadi Wataalamu",
+    requirementsDetails: [
+      "Uzoefu hauhitajiki (wasaidizi wanasaidia)",
+      "Wavuvi 6 kwa mashua (kawaida)",
+      "Kuanzia ufukweni - tarajia kupata maji!",
+      "Ulinzi wa jua ni muhimu",
+      "Uwezo wa kuogelea unapendekezwa",
+      "Dawa ya kizunguzungu cha bahari ikiwa unaathiriwa"
+    ],
+    bestTimePeak: "Oktoba - Januari (Msimu wa Marlin)",
+    bestTimeDetails: [
+      "**Black Marlin:** Oktoba-Januari (msimu wa kilele)",
+      "**Blue Marlin:** Mwaka mzima",
+      "**Sailfish:** Juni-Septemba (kipindi cha kilele)",
+      "**Wahoo na Tuna:** Mwaka mzima (kilele: Okt-Apr)",
+      "**King Mackerel:** Mwaka mzima (bora: Apr-Nov)",
+      "**Joto la Maji:** 22-28°C (joto zaidi = samaki wengi zaidi)"
+    ],
+    tips: [
+      "Weka nafasi msimu wa marlin (Okt-Jan) mapema",
+      "Uvuvi wa ufukweni ni bora asubuhi na jioni",
+      "Mwamba mwishoni mwa ufukwe unatoa maji ya kina",
+      "Tembea kaskazini hadi Ponta Mamoli kwa uvuvi bora wa ufukweni",
+      "Tumia lures: pink dusters, redeye, squid",
+      "Leta mifuko isiyopitisha maji kwa vifaa vya elektroniki",
+      "Panga uhifadhi wa samaki na lodge yako",
+      "Kuvua na kuachia kunapendekezwa kwa uhifadhi wa marlin"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Kapteni Laurens Koen, uzoefu wa miaka 20+"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Kapteni Marcus Joubert, wataalamu wa uvuvi wa michezo"
+      }
+    ]
+  },
+
   sv: {
     title: "Strand- och Havsfiske",
     tagline: "Fiska abborre eller jaga marlin i Moçambiquekanalen",

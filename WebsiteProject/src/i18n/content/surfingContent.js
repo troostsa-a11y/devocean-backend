@@ -569,6 +569,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  sw: {
+    title: "Mbao za Kuteleza na Masomo",
+    tagline: "Panda mawimbi kwenye point break maarufu ya Ponta do Ouro",
+    overview: "Point break ya kulia ya kawaida ya Ponta do Ouro inaweza kutoa kupanda kwa mita 100-200, na hadi km 1 katika hali bora - inalinganishwa na Jeffrey's Bay. Maji ya joto, safi kama kioo na mawimbi ya kawaida yanafanya kuwa bora kwa wawindaji wa mawimbi wa viwango vyote, kutoka wanaoanza wanaojifunza kwenye mawimbi laini hadi wataalamu wanaokata point.",
+    highlights: [
+      "Point break ya kulia ya kawaida",
+      "Kupanda kwa mita 100-200 (hadi km 1 wakati wa hali bora!)",
+      "Maji ya joto (22-28°C) - wetsuit si lazima",
+      "Mawimbi ya ufukweni yanayofaa wanaoanza",
+      "Lineup zisizojaa",
+      "Masomo ya kuteleza na kukodisha mbao zinapatikana",
+      "Pomboo wanaopanda mawimbi kando yako",
+      "Maji safi kama kioo ya Bahari ya Hindi"
+    ],
+    pricingRange: "Kuanzia US$20 (somo)",
+    pricingDetails: [
+      "Somo la kuteleza (saa 2): US$20-40",
+      "Kukodisha mbao (kwa siku): US$15-25",
+      "Pakiti za siku nyingi: Bei zilizopunguzwa",
+      "Vifaa vimejumuishwa katika masomo",
+      "Mbao laini kwa wanaoanza",
+      "Mbao fupi/funboards kwa wenye uzoefu"
+    ],
+    durationTypical: "Saa 2 (somo) au kubadilika (kukodisha)",
+    durationDetails: [
+      "Somo la wanaoanza: saa 2 (nadharia + mazoezi)",
+      "Mafunzo ya kibinafsi: saa 1-2",
+      "Kukodisha mbao: nusu siku au siku nzima",
+      "Wakati bora wa kupanda: Asubuhi mapema (6-9)",
+      "Vipindi vya alasiri: 15-18"
+    ],
+    included: [
+      "Mbao ya kuteleza (somo au kukodisha)",
+      "Wetsuit/lycra (ikiwa inahitajika)",
+      "Mafunzo ya mtu mmoja au kikundi kidogo",
+      "Mkutano wa usalama na ufahamu wa bahari",
+      "Nta na kamba",
+      "Msaada wa ufukweni",
+      "Picha za kipindi chako (waendeshaji wengine)"
+    ],
+    requirementsLevel: "Viwango vyote vinakaribishwa",
+    requirementsDetails: [
+      "Wanaoanza: Uzoefu hauhitajiki",
+      "Wastani/Walioendelea: Uzoefu wa point break unasaidia",
+      "Uwezo wa kuogelea unahitajika",
+      "Umri wote (watoto hadi watu wazima)",
+      "Usawa: Wastani (kupiga makasia kunaweza kuchoka)",
+      "**Muhimu:** Mikondo mikali kando ya point - kuwa mwangalifu!"
+    ],
+    bestTimePeak: "Mawimbi ya kusini na upepo wa magharibi",
+    bestTimeDetails: [
+      "**Mawimbi Bora:** Mawimbi ya kusini",
+      "**Upepo Bora:** Upepo wa magharibi (offshore)",
+      "**Wimbi Bora:** Kupanda au kushuka kutoka maji ya chini",
+      "**Utulivu:** Nzuri lakini inabadilika - inahitaji hali sahihi",
+      "**Misimu:** Kupanda mawimbi mwaka mzima",
+      "**Joto la Maji:** 22-28°C (shorty au suruali)",
+      "**Fuatilia mawimbi kutoka Pwani ya Kaskazini ya Afrika Kusini kwa vipindi bora**"
+    ],
+    tips: [
+      "Angalia utabiri wa mawimbi kabla ya kuweka nafasi (Surfline, Magicseaweed)",
+      "Point break inaweza kushindana na J-Bay lakini inahitaji hali bora",
+      "Leta mbao za akiba na mapezi/kamba za ziada - maduka machache",
+      "Heshimu mikondo mikali - kuwa mvumilivu na mawimbi",
+      "Mbao ndefu laini ni bora kwa wanaoanza kwenye mawimbi ya ufukweni",
+      "Pomboo mara nyingi hupanda mawimbi kando yako - uzoefu wa ajabu!",
+      "Maji ni ya joto lakini leta shorty kwa ulinzi wa upepo",
+      "Uliza watu wa ndani kuhusu hali za sasa za mawimbi",
+      "Lineup tupu = mawimbi mengi kwako!",
+      "Changanya na kupiga mbizi, uvuvi wakati mawimbi yako tulivu"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Masomo ya kuteleza, kukodisha mbao na baa ya ufukweni"
+      }
+    ]
+  },
+
   sv: {
     title: "Surfbrädor och Lektioner",
     tagline: "Surfa den ikoniska point break i Ponta do Ouro",

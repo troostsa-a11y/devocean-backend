@@ -583,6 +583,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  sw: {
+    title: "Safari za Picha",
+    tagline: "Matukio ya porini katika Hifadhi Maalum ya Maputo",
+    overview: "Gundua wanyamapori wa Afrika dakika chache kutoka Ponta do Ouro. Hifadhi ya Taifa ya Maputo (zamani Hifadhi Maalum ya Maputo) inatoa uzoefu wa kawaida wa kutazama wanyamapori na tembo 450-500 wa pwani, twiga, punda milia, viboko, mamba na aina mbalimbali za swala katika km² 1,718 za asili iliyolindwa - Tovuti ya Urithi wa Dunia wa UNESCO tangu 2025.",
+    highlights: [
+      "Tembo 450-500 wa pwani",
+      "Twiga, punda milia na swala",
+      "Viboko na mamba katika maeneo ya maji",
+      "Chui, duma na fisi wa madoa",
+      "Aina 300+ za ndege ikiwa ni pamoja na flamingo",
+      "Safari za 4x4 na wasaidizi wenye uzoefu",
+      "Tovuti ya Urithi wa Dunia wa UNESCO (2025)",
+      "Mchanganyiko wa pwani na porini unawezekana"
+    ],
+    pricingRange: "Kuanzia US$95 kwa mtu",
+    pricingDetails: [
+      "Safari ya siku: US$95-120 kwa mtu",
+      "Siku nzima na pwani ya Ponta do Ouro: US$100-130",
+      "Safari ya kupiga kambi siku 2-3: Kuanzia US$200",
+      "Ziara za kibinafsi: Bei zilizobinafsishwa",
+      "Gari la 4x4, msaidizi na ada za mbuga zimejumuishwa"
+    ],
+    durationTypical: "Saa 5-8 (ziara ya siku)",
+    durationDetails: [
+      "Safari ya nusu siku: saa 3-4",
+      "Safari ya siku nzima: saa 5-6 katika mbuga + usafiri",
+      "Kupiga kambi siku nyingi: siku 2-3",
+      "Kuondoka kutoka Ponta do Ouro: Asubuhi mapema (6-7)",
+      "Kurudi: Alasiri (16-17)"
+    ],
+    included: [
+      "Gari la safari la 4x4",
+      "Msaidizi/dereva wa kitaalamu",
+      "Ada za hifadhi ya bahari",
+      "Darubini za kutazama wanyamapori",
+      "Maji ya chupa na vitafunio",
+      "Kuchukua hotelini kutoka Ponta do Ouro",
+      "Kuchaji USB katika gari (waendeshaji wengi)"
+    ],
+    requirementsLevel: "Umri wote na viwango vya usawa",
+    requirementsDetails: [
+      "Hali maalum ya mwili haihitajiki",
+      "Inafaa kwa familia zenye watoto",
+      "Inafaa kwa wazee (kutazama kutoka garini)",
+      "Gari la 4x4 ni lazima (barabara za mchanga)",
+      "Nguo za safari zinazostarehesha zinapendekezwa",
+      "Ulinzi wa jua ni muhimu"
+    ],
+    bestTimePeak: "Julai - Oktoba (Msimu wa Kiangazi)",
+    bestTimeDetails: [
+      "**Kutazama Wanyamapori:** Julai-Oktoba (wanyama kwenye maeneo ya maji)",
+      "**Ndege:** Oktoba-Machi (ndege wahamiaji wako)",
+      "**Kutazama Tembo:** Mwaka mzima (idadi 450-500)",
+      "**Epuka:** Desemba-Februari (joto, unyevunyevu, mimea minene)",
+      "**Joto:** Baridi wakati wa baridi (Jul-Sep: 18-25°C)",
+      "**Hali ya Barabara:** Bora wakati wa msimu wa kiangazi"
+    ],
+    tips: [
+      "Weka nafasi mapema wakati wa msimu wa kilele (Julai-Oktoba)",
+      "Safari za asubuhi zinatoa shughuli bora za wanyamapori",
+      "Leta kamera yenye lenzi ya zoom kwa picha za wanyamapori",
+      "Vaa rangi za upole (khaki, beige, olive) - si rangi mkali",
+      "Darubini zinatolewa lakini leta zako ikiwa una",
+      "Kofia, mafuta ya jua na dawa ya mbu ni muhimu",
+      "Changanya na wakati wa pwani katika Ponta do Ouro",
+      "Uliza kuhusu kupiga kambi siku nyingi kwa uzoefu kamili"
+    ],
+    operators: [
+      {
+        name: "Hifadhi ya Taifa ya Maputo",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Uhifadhi rasmi wa mbuga na safari zinazoongozwa"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Usafiri wa safari na ziara zinazoongozwa"
+      }
+    ]
+  },
+
   sv: {
     title: "Fotosafaris",
     tagline: "Bushaventyr i Maputo Special Reservat",
