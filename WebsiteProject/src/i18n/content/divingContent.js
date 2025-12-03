@@ -311,6 +311,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  sv: {
+    title: "Dykning",
+    tagline: "Utforska orörda rev med tjurhajar, mantarockor och valhajar",
+    overview: "Ponta do Ouro erbjuder dykning i världsklass med över 20 dykplatser, från grunda rev till djupa pinnaklar. Det kristallklara vattnet i Moçambiquekanalen ger exceptionell sikt och möten med en otrolig mångfald av marint liv, inklusive 19 hajarter.",
+    highlights: [
+      "Över 20 dykplatser från 8m till 48m",
+      "Tjurhajar, tigerhajar och hammarhajar",
+      "Valhajar (oktober-mars)",
+      "Knölvalar (juli-november)",
+      "Mantarockor, sköldpaddor och delfiner",
+      "Över 180 nakensäcksarter",
+      "Orörda korallrev",
+      "Professionella PADI-center"
+    ],
+    pricingRange: "Från US$40 per dyk",
+    pricingDetails: [
+      "Enkeldyk: US$40-50",
+      "Tvådykspaket: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Utrustningshyra ingår",
+      "Alla licenser och avgifter ingår"
+    ],
+    durationTypical: "Halvdag eller heldag",
+    durationDetails: [
+      "Morgondyk: 2 dyk (3-4 timmar)",
+      "Heldag: 3 dyk (6-8 timmar)",
+      "Strandstart (äventyrligt!)",
+      "Platser 1-12km från kusten"
+    ],
+    included: [
+      "Komplett dykutrustning (jacket, regulator, dräkt)",
+      "Båttransfer till dykplatser",
+      "Professionell PADI-instruktör/divemaster",
+      "Marinparkavgifter",
+      "Snacks och drycker efter dykning",
+      "Dykdator och säkerhetsutrustning"
+    ],
+    requirementsLevel: "Nybörjare till Avancerad",
+    requirementsDetails: [
+      "Nybörjarplatser: Crèche, Doodles, Playground (10-18m)",
+      "Avancerade platser: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "PADI-certifiering krävs (eller ta Open Water-kurs)",
+      "Medicinskt frågeformulär obligatoriskt",
+      "God simförmåga",
+      "Minimiålder: 10 år (Junior Open Water)"
+    ],
+    bestTimePeak: "Oktober - April (Sommar)",
+    bestTimeDetails: [
+      "**Tjur- och Tigerhajar:** November-april (vatten 26-29°C)",
+      "**Hammarhajar:** April-oktober (bästa sikten)",
+      "**Valhajar:** Oktober-mars",
+      "**Knölvalar:** Juli-november",
+      "**Bästa Sikten:** Maj-augusti (20-30m)",
+      "**Varmaste Vattnet:** December-februari (27-29°C)"
+    ],
+    tips: [
+      "Boka i förväg under högsäsong (december-januari)",
+      "Ta med ditt certifieringskort",
+      "Överväg en våtdräkt (3mm rekommenderas)",
+      "Vågstarten är spännande - var beredd att bli blöt!",
+      "De flesta operatörer erbjuder utrustningshyra",
+      "Flerdykspaket ger bästa värdet"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Hajdykningsspecialister, forskningsinriktade"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "PADI 5-stjärnigt center, hajdykningsspecialister"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Professionellt dykcenter"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Professionellt dykcenter"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Hajdykningsspecialister"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Professionellt dykcenter"
+      }
+    ]
+  },
+
   es: {
     title: "Buceo",
     tagline: "Explore arrecifes prístinos con tiburones toro, mantas y tiburones ballena",

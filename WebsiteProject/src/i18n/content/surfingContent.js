@@ -245,6 +245,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  sv: {
+    title: "Surfbrädor och Lektioner",
+    tagline: "Surfa den ikoniska point break i Ponta do Ouro",
+    overview: "Den klassiska högervågen point break i Ponta do Ouro kan leverera episka åk på 100-200m, och upp till 1km under perfekta förhållanden - jämförbar med Jeffrey's Bay. Det varma, kristallklara vattnet och den konsekventa dyningen gör det idealiskt för surfare på alla nivåer, från nybörjare som lär sig på mjuka vågor till experter som carvar pointen.",
+    highlights: [
+      "Klassisk högervänd point break",
+      "Åk på 100-200m (upp till 1km när perfekt!)",
+      "Varmt vatten (22-28°C) - våtdräkt valfri",
+      "Nybörjarvänliga strandvågor",
+      "Få trånga lineups",
+      "Surflektioner och brädhyra tillgängliga",
+      "Delfiner som surfar bredvid dig",
+      "Kristallklart Indiska oceanvatten"
+    ],
+    pricingRange: "Från US$20 (lektion)",
+    pricingDetails: [
+      "Surflektion (2 timmar): US$20-40",
+      "Brädhyra (per dag): US$15-25",
+      "Flerdagspaket: Reducerade priser",
+      "Utrustning ingår i lektioner",
+      "Softboards för nybörjare",
+      "Shortboards/funboards för erfarna"
+    ],
+    durationTypical: "2 timmar (lektion) eller flexibelt (hyra)",
+    durationDetails: [
+      "Nybörjarlektion: 2 timmar (teori + praktik)",
+      "Privat coaching: 1-2 timmar",
+      "Brädhyra: Halvdag eller heldag",
+      "Bästa surftid: Tidig morgon (06-09)",
+      "Eftermiddagssessioner: 15-18"
+    ],
+    included: [
+      "Surfbräda (lektion eller hyra)",
+      "Våtdräkt/lycra (vid behov)",
+      "Enskild eller smågruppsinstruktion",
+      "Säkerhetsbriefing och havsmedvetenhet",
+      "Vax och leash",
+      "Strandassistans",
+      "Foton från din session (vissa operatörer)"
+    ],
+    requirementsLevel: "Alla nivåer välkomna",
+    requirementsDetails: [
+      "Nybörjare: Ingen erfarenhet krävs",
+      "Medel/Avancerad: Point break-erfarenhet användbar",
+      "Simförmåga krävs",
+      "Alla åldrar (barn till vuxna)",
+      "Kondition: Måttlig (paddling kan vara tröttsam)",
+      "**Viktigt:** Starka strömmar längs pointen - var försiktig!"
+    ],
+    bestTimePeak: "Sydlig dyning med västlig vind",
+    bestTimeDetails: [
+      "**Bästa Dyningen:** Sydlig dyning",
+      "**Bästa Vinden:** Västlig vind (offshore)",
+      "**Bästa Tidvatten:** Runt lågvatten",
+      "**Konsistens:** Bra men nyckfull - kräver rätt förhållanden",
+      "**Säsonger:** Surfbar hela året",
+      "**Vattentemp:** 22-28°C (shorty eller boardshorts)",
+      "**Följ dyningar från Sydafrikas nordkust för bästa sessioner**"
+    ],
+    tips: [
+      "Kolla surfprognoser innan bokning (Surfline, Magicseaweed)",
+      "Point break kan konkurrera med J-Bay men kräver perfekta förhållanden",
+      "Ta med reservbrädor och extra fenor/leashes - begränsade butiker",
+      "Respektera de starka strömmarna - ha tålamod med tidvattnet",
+      "Soft-top longboards idealiska för nybörjare på strandvågor",
+      "Delfiner surfar ofta bredvid dig - magisk upplevelse!",
+      "Vattnet är varmt men ta med shorty för vindskydd",
+      "Fråga lokalbefolkningen om aktuella dyningsförhållanden",
+      "Få trånga lineups = fler vågor för dig!",
+      "Kombinera med dykning, fiske när surfvågorna är platta"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Surflektioner, brädhyra och strandbar"
+      }
+    ]
+  },
+
   es: {
     title: "Tablas de Surf y Clases",
     tagline: "Surfee el icónico point break de Ponta do Ouro",

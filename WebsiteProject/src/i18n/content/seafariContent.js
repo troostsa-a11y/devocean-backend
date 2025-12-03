@@ -269,6 +269,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  sv: {
+    title: "Havssafaris",
+    tagline: "Valskådning och möten med marint liv",
+    overview: "Ge dig ut på spännande havssafaris för att se knölvalar migrera genom moçambikanska vatten (juli-november). Dessa båtäventyr erbjuder också delfinmöten året runt, säsongsbetonade valhajs-observationer och snorkling över orörda rev fyllda med marint liv.",
+    highlights: [
+      "30 000 knölvalar (juli-november)",
+      "Hopp, stjärtslag och spyhopping",
+      "Delfinmöten året runt",
+      "Valhajar (oktober-mars)",
+      "Mantarockor och havssköldpaddor",
+      "Snorkling på orörda rev",
+      "Turer ledda av marinbiologer",
+      "Fokus på forskning och bevarande"
+    ],
+    pricingRange: "US$40-45 per person",
+    pricingDetails: [
+      "Endast valskådning: US$40",
+      "Delfiner + valar kombinerat: US$45",
+      "Privat heldagstur från Maputo: US$179",
+      "Barn under 12: Reducerade priser",
+      "Utrustning och snacks ingår"
+    ],
+    durationTypical: "2-3 timmar",
+    durationDetails: [
+      "Halvdagsutflykter: 2-3 timmar",
+      "Heldagsturer: 6-8 timmar (från Maputo)",
+      "Morgonstart (bästa förhållanden)",
+      "Inkluderar snorkeltid",
+      "Flexibelt beroende på valaktivitet"
+    ],
+    included: [
+      "Båttransfer med erfaren kapten",
+      "Snorkelutrustning (mask, fenor, snorkel)",
+      "Marinbiolog-guide (de flesta operatörer)",
+      "Snacks och förfriskningar",
+      "Marinparkavgifter",
+      "Foton/videor (vissa operatörer)",
+      "Säkerhetsutrustning och flytvästar"
+    ],
+    requirementsLevel: "Alla åldrar",
+    requirementsDetails: [
+      "Inga speciella färdigheter krävs för valskådning",
+      "Simförmåga behövs för snorkling",
+      "Åldrar: Familjevänligt (barn till äldre)",
+      "Väderberoende - havet måste vara lugnt",
+      "Turer kan ombokas vid farliga förhållanden",
+      "Varm jacka rekommenderas (juli-september)"
+    ],
+    bestTimePeak: "Juli - Oktober (Valsäsong)",
+    bestTimeDetails: [
+      "**Knölvalar:** Juli-november (topp: jul-okt)",
+      "**Delfiner:** Hela året (200+ residenta)",
+      "**Valhajar:** Oktober-mars",
+      "**Mantarockor:** December-maj",
+      "**Havssköldpaddor:** Oktober-mars (bobyggande)",
+      "**Lugnare Hav:** Vintermånaderna (juni-september)"
+    ],
+    tips: [
+      "Boka under valsäsongen (jul-nov) för bästa chanser",
+      "Ta med en varm jacka - havsbrisen kan vara kall",
+      "Vattentät kameraväska nödvändig",
+      "Åksjukemedicin om känslig",
+      "Kikare förbättrar observationsupplevelsen",
+      "Etiska operatörer följer inga-kontakt-riktlinjer",
+      "Observationer inte garanterade - vilda djur",
+      "Kombinera med snorkling för komplett havsupplevelse"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Valexperter, fokus juli-november"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Forskningsbaserade turer, datainsamling för bevarande"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Havssafaris, valskådning och marina möten"
+      }
+    ]
+  },
+
   es: {
     title: "Safaris Oceánicos",
     tagline: "Avistamiento de ballenas y encuentros con vida marina",

@@ -257,6 +257,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  sv: {
+    title: "Strand- och Havsfiske",
+    tagline: "Fiska abborre eller jaga marlin i Moçambiquekanalen",
+    overview: "Ponta do Ouro erbjuder exceptionellt fiske både från stranden och ute på djupt vatten. De varma vattnen i Indiska oceanen och den djupa Moçambiquekanalen ger spännande möjligheter för marlin, segelfisk, wahoo, gulfenad tonfisk och kungsmakrill. Strandfiskare kan fiska abborre, barracuda och pompano.",
+    highlights: [
+      "Svart marlin (oktober-januari)",
+      "Segelfisk (juni-september)",
+      "Gulfenad tonfisk och wahoo",
+      "Kungsmakrill (Couta)",
+      "Kustfiske på abborre och barracuda",
+      "Varmt, kristallklart Indiska oceanvatten",
+      "Strandstartcharter",
+      "Erfarna lokala kaptener med 20+ år"
+    ],
+    pricingRange: "Från US$550 (charter)",
+    pricingDetails: [
+      "5-timmars charter: US$550-650",
+      "8-timmars charter: US$850-950",
+      "Heldag havsfiske: US$1,000+",
+      "Strandfiske: Gratis (ta med utrustning)",
+      "Guidad strandfiske: US$50-100",
+      "Licenser, utrustning och förberedelse ingår i charter"
+    ],
+    durationTypical: "5-8 timmar (charter)",
+    durationDetails: [
+      "Halvdagscharter: 5 timmar",
+      "Heldagscharter: 8-10 timmar",
+      "Strandfiske: Flexibelt (bäst vid skymning)",
+      "Tidiga morgonstart (06-07)",
+      "Snabb tillgång till djupt vatten (minuter från kusten)"
+    ],
+    included: [
+      "Komplett fiskeutrustning",
+      "Fiskelicenser och tillstånd",
+      "Erfaren kapten (20+ år)",
+      "Bete och draggar",
+      "Fiskrngöring och filetering",
+      "Vakuumförpackning för resa",
+      "Drycker och snacks (de flesta operatörer)",
+      "Säkerhetsutrustning"
+    ],
+    requirementsLevel: "Nybörjare till Expert",
+    requirementsDetails: [
+      "Ingen erfarenhet krävs (guider hjälper)",
+      "Max 6 fiskare per båt (vanligtvis)",
+      "Strandstart - förvänta dig att bli blöt!",
+      "Solskydd nödvändigt",
+      "Simförmåga rekommenderas",
+      "Åksjukemedicin om känslig"
+    ],
+    bestTimePeak: "Oktober - Januari (Marlinsäsong)",
+    bestTimeDetails: [
+      "**Svart Marlin:** Oktober-januari (högsäsong)",
+      "**Blå Marlin:** Hela året",
+      "**Segelfisk:** Juni-september (toppperiod)",
+      "**Wahoo & Tonfisk:** Hela året (topp: okt-apr)",
+      "**Kungsmakrill:** Hela året (bäst: apr-nov)",
+      "**Vattentemp:** 22-28°C (varmare = fler pelagiska)"
+    ],
+    tips: [
+      "Boka marlinsäsongen (okt-jan) i förväg",
+      "Strandfiske är bäst vid soluppgång och solnedgång",
+      "Klippudden i slutet av stranden erbjuder djupt vatten",
+      "Gå norrut till Ponta Mamoli för bättre kustfiske",
+      "Använd konstgjorda draggar: pink dusters, redeye, bläckfisk",
+      "Ta med vattentäta väskor för elektronik",
+      "Ordna fiskförvaring med din lodge",
+      "Catch and release rekommenderas för marlinbevarande"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Kapten Laurens Koen, 20+ års erfarenhet"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Kapten Marcus Joubert, sportfiskespecialister"
+      }
+    ]
+  },
+
   es: {
     title: "Pesca de Playa y Alta Mar",
     tagline: "Pesque lubina o persiga marlines en el Canal de Mozambique",

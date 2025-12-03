@@ -251,6 +251,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  sv: {
+    title: "Fotosafaris",
+    tagline: "Bushaventyr i Maputo Special Reservat",
+    overview: "Upptäck afrikanskt vilt bara minuter från Ponta do Ouro. Maputo Nationalpark (tidigare Maputo Special Reservat) erbjuder klassiska viltskådningar med 450-500 kustelefanter, giraffer, zebror, flodhästar, krokodiler och diverse antiloparter på 1 718 km² skyddad natur - UNESCO Världsarv sedan 2025.",
+    highlights: [
+      "450-500 kustelefanter",
+      "Giraffer, zebror och antiloper",
+      "Flodhästar och krokodiler i våtmarker",
+      "Leopard, gepard och fläckig hyena",
+      "Över 300 fågelarter inklusive flamingor",
+      "4x4-safaris med erfarna guider",
+      "UNESCO Världsarv (2025)",
+      "Strand- och bushkombination möjlig"
+    ],
+    pricingRange: "Från US$95 per person",
+    pricingDetails: [
+      "Dagsafari: US$95-120 per person",
+      "Heldag med Ponta do Ouro strand: US$100-130",
+      "2-3 dagars campingsafari: Från US$200",
+      "Privata turer: Anpassade priser",
+      "4x4-fordon, guide och parkavgifter ingår"
+    ],
+    durationTypical: "5-8 timmar (dagsutflykt)",
+    durationDetails: [
+      "Halvdagssafari: 3-4 timmar",
+      "Heldagssafari: 5-6 timmar i parken + transport",
+      "Flerdagars camping: 2-3 dagar",
+      "Avresa från Ponta do Ouro: Tidig morgon (06-07)",
+      "Återkomst: Sen eftermiddag (16-17)"
+    ],
+    included: [
+      "4x4-safarifordon",
+      "Professionell guide/förare",
+      "Marinparkavgifter",
+      "Kikare för viltskådning",
+      "Flaskvatten och snacks",
+      "Hotellhämtning från Ponta do Ouro",
+      "USB-laddning i fordon (de flesta operatörer)"
+    ],
+    requirementsLevel: "Alla åldrar och konditionsnivåer",
+    requirementsDetails: [
+      "Ingen speciell fysisk kondition krävs",
+      "Familjevänligt med barn",
+      "Lämpligt för äldre (skådning från fordon)",
+      "4x4-fordon obligatoriskt (sandiga vägar)",
+      "Bekväma safarikläder rekommenderas",
+      "Solskydd nödvändigt"
+    ],
+    bestTimePeak: "Juli - Oktober (Torrperioden)",
+    bestTimeDetails: [
+      "**Viltskådning:** Juli-oktober (djur vid vattenhål)",
+      "**Fågelskådning:** Oktober-mars (flyttfåglar närvarande)",
+      "**Elefantskådning:** Hela året (population 450-500)",
+      "**Att Undvika:** December-februari (hett, fuktigt, tät vegetation)",
+      "**Temperatur:** Svalare på vintern (jul-sep: 18-25°C)",
+      "**Vägförhållanden:** Bäst under torrperioden"
+    ],
+    tips: [
+      "Boka i förväg under högsäsong (juli-oktober)",
+      "Morgonsafaris ger bästa djuraktiviteten",
+      "Ta med en kamera med zoomobjektiv för viltfoton",
+      "Bär neutrala färger (kaki, beige, oliv) - inga starka färger",
+      "Kikare tillhandahålls men ta med egna om du har",
+      "Hatt, solkräm och insektsmedel nödvändiga",
+      "Kombinera med strandtid i Ponta do Ouro",
+      "Fråga om flerdagars camping för fördjupad upplevelse"
+    ],
+    operators: [
+      {
+        name: "Maputo Nationalpark",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Officiella parkreservationer och guidade safaris"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Safaritransport och guidade turer"
+      }
+    ]
+  },
+
   es: {
     title: "Safaris Fotográficos",
     tagline: "Aventuras en la sabana en la Reserva Especial de Maputo",
