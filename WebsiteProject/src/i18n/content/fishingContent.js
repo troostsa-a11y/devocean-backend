@@ -73,20 +73,14 @@ export const FISHING_CONTENT = {
     ],
     operators: [
       {
-        name: "GAF Adventures",
-        website: "https://fishingbooker.com/charters/view/11578",
-        email: "info@gafadventures.com",
-        specialty: "Skipper Laurens Koen, 20+ years, original Gozo Azul founder"
-      },
-      {
         name: "Gozo Azul Fishing",
-        website: "https://www.facebook.com/gozofishing/",
-        email: "fishing@gozo-azul.co.za",
-        specialty: "Skipper Marcus Joubert, game fishing specialists"
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Game fishing specialists"
       },
       {
         name: "Mozambique Fishing Charters",
-        website: "https://mozambiquefishincharters.co.za/",
+        website: "",
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Multi-day packages, fully equipped boats"
       }
