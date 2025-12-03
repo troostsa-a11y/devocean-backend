@@ -1034,5 +1034,15 @@ export const DIVING_CONTENT = {
 };
 
 export function getDivingContent(lang) {
-  return DIVING_CONTENT[lang] || DIVING_CONTENT['en'];
+  // Try exact match first
+  if (DIVING_CONTENT[lang]) return DIVING_CONTENT[lang];
+  
+  // Try short code fallback (e.g., nl-NL -> nl, it-IT -> it, de-DE -> de)
+  if (lang && lang.includes('-')) {
+    const shortCode = lang.split('-')[0];
+    if (DIVING_CONTENT[shortCode]) return DIVING_CONTENT[shortCode];
+  }
+  
+  // Default to English
+  return DIVING_CONTENT['en'];
 }

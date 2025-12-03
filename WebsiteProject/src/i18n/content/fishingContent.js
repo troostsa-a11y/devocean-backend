@@ -854,5 +854,15 @@ export const FISHING_CONTENT = {
 };
 
 export function getFishingContent(lang) {
-  return FISHING_CONTENT[lang] || FISHING_CONTENT['en'];
+  // Try exact match first
+  if (FISHING_CONTENT[lang]) return FISHING_CONTENT[lang];
+  
+  // Try short code fallback (e.g., nl-NL -> nl, it-IT -> it, de-DE -> de)
+  if (lang && lang.includes('-')) {
+    const shortCode = lang.split('-')[0];
+    if (FISHING_CONTENT[shortCode]) return FISHING_CONTENT[shortCode];
+  }
+  
+  // Default to English
+  return FISHING_CONTENT['en'];
 }

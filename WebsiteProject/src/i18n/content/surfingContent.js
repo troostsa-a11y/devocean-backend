@@ -814,5 +814,15 @@ export const SURFING_CONTENT = {
 };
 
 export function getSurfingContent(lang) {
-  return SURFING_CONTENT[lang] || SURFING_CONTENT['en'];
+  // Try exact match first
+  if (SURFING_CONTENT[lang]) return SURFING_CONTENT[lang];
+  
+  // Try short code fallback (e.g., nl-NL -> nl, it-IT -> it, de-DE -> de)
+  if (lang && lang.includes('-')) {
+    const shortCode = lang.split('-')[0];
+    if (SURFING_CONTENT[shortCode]) return SURFING_CONTENT[shortCode];
+  }
+  
+  // Default to English
+  return SURFING_CONTENT['en'];
 }

@@ -894,5 +894,15 @@ export const SEAFARI_CONTENT = {
 };
 
 export function getSeafariContent(lang) {
-  return SEAFARI_CONTENT[lang] || SEAFARI_CONTENT['en'];
+  // Try exact match first
+  if (SEAFARI_CONTENT[lang]) return SEAFARI_CONTENT[lang];
+  
+  // Try short code fallback (e.g., nl-NL -> nl, it-IT -> it, de-DE -> de)
+  if (lang && lang.includes('-')) {
+    const shortCode = lang.split('-')[0];
+    if (SEAFARI_CONTENT[shortCode]) return SEAFARI_CONTENT[shortCode];
+  }
+  
+  // Default to English
+  return SEAFARI_CONTENT['en'];
 }

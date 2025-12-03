@@ -834,5 +834,15 @@ export const SAFARI_CONTENT = {
 };
 
 export function getSafariContent(lang) {
-  return SAFARI_CONTENT[lang] || SAFARI_CONTENT['en'];
+  // Try exact match first
+  if (SAFARI_CONTENT[lang]) return SAFARI_CONTENT[lang];
+  
+  // Try short code fallback (e.g., nl-NL -> nl, it-IT -> it, de-DE -> de)
+  if (lang && lang.includes('-')) {
+    const shortCode = lang.split('-')[0];
+    if (SAFARI_CONTENT[shortCode]) return SAFARI_CONTENT[shortCode];
+  }
+  
+  // Default to English
+  return SAFARI_CONTENT['en'];
 }
