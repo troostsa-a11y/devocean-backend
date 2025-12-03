@@ -447,6 +447,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  af: {
+    title: "Oseaansafaris",
+    tagline: "Walvisbesigtiging & seelewe ontmoetings",
+    overview: "Vertrek op opwindende oseaansafaris om boggelrugwalvisse te sien migreer deur Mosambiekse waters (Julie-November). Hierdie bootavonture bied ook dolfynontmoetings heeljaar, seisoenale walvishaai besigtigings en snorkel op ongerepte riwwe vol seelewe.",
+    highlights: [
+      "30,000 boggelrugwalvisse (Julie-November)",
+      "Spronge, sterte slaan & spyhopping",
+      "Dolfynontmoetings heeljaar",
+      "Walvishaaie (Oktober-Maart)",
+      "Mantarôe & seeskilpaaie",
+      "Snorkel op ongerepte riwwe",
+      "Toere gelei deur mariene bioloë",
+      "Navorsing en bewaring fokus"
+    ],
+    pricingRange: "US$40-45 per persoon",
+    pricingDetails: [
+      "Slegs walvisbesigtiging: US$40",
+      "Dolfyne + walvisse kombinasie: US$45",
+      "Privaat voldag toer vanaf Maputo: US$179",
+      "Kinders onder 12: Verlaagde tariewe",
+      "Toerusting & versnaperinge ingesluit"
+    ],
+    durationTypical: "2-3 ure",
+    durationDetails: [
+      "Halfdag uitstappies: 2-3 ure",
+      "Voldag toere: 6-8 ure (vanaf Maputo)",
+      "Oggend vertrektye (beste toestande)",
+      "Sluit snorkeltyd in",
+      "Buigsaam gebaseer op walvisaktiwiteit"
+    ],
+    included: [
+      "Bootoordrag met ervare kaptein",
+      "Snorkeltoerusting (masker, vinne, snorkel)",
+      "Mariene bioloog gids (meeste operateurs)",
+      "Versnaperinge & verversings",
+      "Marienpark gelde",
+      "Foto's/video (sommige operateurs)",
+      "Veiligheidstoerusting & reddingsbaadjies"
+    ],
+    requirementsLevel: "Alle ouderdomme",
+    requirementsDetails: [
+      "Geen spesiale vaardighede nodig vir walvisbesigtiging",
+      "Swemvermoë nodig vir snorkel",
+      "Ouderdom: Gesinsvriendelik (kinders tot bejaardes)",
+      "Weerafhanklik - see moet kalm wees",
+      "Toere kan herskeduleer word as toestande onveilig",
+      "Warm baadjie aanbeveel (Julie-September)"
+    ],
+    bestTimePeak: "Julie - Oktober (Walvisseisoen)",
+    bestTimeDetails: [
+      "**Boggelrugwalvisse:** Julie-November (piek: Jul-Okt)",
+      "**Dolfyne:** Heeljaar (200+ inwoners)",
+      "**Walvishaaie:** Oktober-Maart",
+      "**Mantarôe:** Desember-Mei",
+      "**Seeskilpaaie:** Oktober-Maart (nes)",
+      "**Kalmer See:** Wintermaande (Junie-September)"
+    ],
+    tips: [
+      "Bespreek tydens walvisseisoen (Jul-Nov) vir beste kanse",
+      "Bring warm baadjie - seebries kan koud wees",
+      "Waterdigte kamerasak noodsaaklik",
+      "Seesiektemedinasie indien vatbaar",
+      "Verkykers verbeter walvisbesigtiging ervaring",
+      "Etiese operateurs volg geen-aanraking riglyne",
+      "Besigtigings nie gewaarborg nie - wilde diere",
+      "Kombineer met snorkel vir volle mariene ervaring"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Walvisbesigtiging spesialiste, fokus Julie-November"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Navorsingsgebaseerde toere, data insameling vir bewaring"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Oseaansafaris, walvisbesigtiging & mariene ontmoetings"
+      }
+    ]
+  },
+
   sv: {
     title: "Havssafaris",
     tagline: "Valskådning och möten med marint liv",

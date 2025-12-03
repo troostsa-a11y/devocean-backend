@@ -427,6 +427,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  af: {
+    title: "Strand- & Diepseevisvang",
+    tagline: "Vang kabeljou of jaag marlyne in die Mosambiekkanaal",
+    overview: "Ponta do Ouro bied uitsonderlike visvang beide van die strand en diepsee. Die warm Indiese Oseaan waters en diep Mosambiekkanaal bied opwindende geleenthede vir marlyn, seilvis, wahoo, geelvintuna en koningmakriel. Strandvissers kan kabeljou, barrakuda en pompano vang.",
+    highlights: [
+      "Swart marlyn (Oktober-Januarie)",
+      "Seilvis (Junie-September)",
+      "Geelvintuna & wahoo",
+      "Koningmakriel (Couta)",
+      "Kusvisvang vir kabeljou & barrakuda",
+      "Warm, kristalhelder Indiese Oseaan water",
+      "Strandlansering charters",
+      "Ervare plaaslike kapteins met 20+ jaar"
+    ],
+    pricingRange: "Vanaf US$550 (charter)",
+    pricingDetails: [
+      "5-uur charter: US$550-650",
+      "8-uur charter: US$850-950",
+      "Voldag diepsee: US$1,000+",
+      "Strandvisvang: Gratis (bring toerusting)",
+      "Begeleide strandvisvang: US$50-100",
+      "Lisensies, toerusting & voorbereiding ingesluit in charters"
+    ],
+    durationTypical: "5-8 ure (charter)",
+    durationDetails: [
+      "Halfdag charter: 5 ure",
+      "Voldag charter: 8-10 ure",
+      "Strandvisvang: Buigsaam (beste by dagbreek/skemer)",
+      "Vroeë oggend vertrektye (06-07)",
+      "Vinnige toegang tot diep water (minute van kus)"
+    ],
+    included: [
+      "Volledige visvang toerusting",
+      "Visvanglisensies & permitte",
+      "Ervare kaptein (20+ jaar)",
+      "Aas & kunslokke",
+      "Vis skoonmaak & fillering",
+      "Vakuumverpakking vir reis",
+      "Drankies & versnaperinge (meeste operateurs)",
+      "Veiligheidstoerusting"
+    ],
+    requirementsLevel: "Beginner tot Kenner",
+    requirementsDetails: [
+      "Geen ervaring nodig (gidse help)",
+      "Maksimum 6 vissers per boot (gewoonlik)",
+      "Strandlansering - verwag om nat te word!",
+      "Sonbeskerming noodsaaklik",
+      "Swemvermoë aanbeveel",
+      "Seesiektemedinasie indien vatbaar"
+    ],
+    bestTimePeak: "Oktober - Januarie (Marlynseisoen)",
+    bestTimeDetails: [
+      "**Swart Marlyn:** Oktober-Januarie (hoogseisoen)",
+      "**Blou Marlyn:** Heeljaar",
+      "**Seilvis:** Junie-September (piektyd)",
+      "**Wahoo & Tuna:** Heeljaar (piek: Okt-Apr)",
+      "**Koningmakriel:** Heeljaar (beste: Apr-Nov)",
+      "**Watertemp:** 22-28°C (warmer = meer pelagiese)"
+    ],
+    tips: [
+      "Bespreek marlynseisoen (Okt-Jan) vooruit",
+      "Strandvisvang beste by dagbreek en skemer",
+      "Rotspunt aan einde van strand bied diep water",
+      "Stap noord na Ponta Mamoli vir beter strandvisvang",
+      "Gebruik kunslokke: pink dusters, redeye, squid",
+      "Bring waterdigte sakke vir elektronika",
+      "Reël visberging met jou lodge",
+      "Vang en loslaat aanbeveel vir marlynbewaring"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Kaptein Laurens Koen, 20+ jaar ervaring"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Kaptein Marcus Joubert, sportvisvang spesialiste"
+      }
+    ]
+  },
+
   sv: {
     title: "Strand- och Havsfiske",
     tagline: "Fiska abborre eller jaga marlin i Moçambiquekanalen",

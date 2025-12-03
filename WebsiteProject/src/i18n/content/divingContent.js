@@ -517,6 +517,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  af: {
+    title: "Skubaduik",
+    tagline: "Verken ongerepte riwwe met bulhaaie, mantas en walvishaaie",
+    overview: "Ponta do Ouro bied wêreldklas skubaduik met 20+ duikplekke wat wissel van vlak riwwe tot diep pinakels. Die kristalhelder water van die Mosambiekkanaal bied uitstekende sigbaarheid en ontmoetings met 'n ongelooflike verskeidenheid seelewe, insluitend 19 haaisoorte.",
+    highlights: [
+      "20+ duikplekke van 8m tot 48m diepte",
+      "Bulhaaie, tierhaaie & hamerkoppe",
+      "Walvishaaie (Oktober-Maart)",
+      "Boggelrugwalvisse (Julie-November)",
+      "Mantarôe, skilpaaie & dolfyne",
+      "180+ naakslaksoorte",
+      "Ongerepte koraalriwwe",
+      "Professionele PADI-sentrums"
+    ],
+    pricingRange: "Vanaf US$40 per duik",
+    pricingDetails: [
+      "Enkelduik: US$40-50",
+      "Twee-duik pakket: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Toerusting huur ingesluit",
+      "Alle lisensies & permitte ingesluit"
+    ],
+    durationTypical: "Halfdag of voldag uitstappies",
+    durationDetails: [
+      "Oggenduike: 2 duike (3-4 ure)",
+      "Voldag: 3 duike (6-8 ure)",
+      "Strandlansering (avontuurlik!)",
+      "Plekke 1-12km van die kus"
+    ],
+    included: [
+      "Alle duiktoerusting (BCD, reguleerder, drypak)",
+      "Bootvervoer na duikplekke",
+      "Professionele PADI duikmeester/instrukteur",
+      "Marienpark gelde",
+      "Na-duik versnaperinge & verversings",
+      "Duikrekenaar & veiligheidstoerusting"
+    ],
+    requirementsLevel: "Beginner tot Gevorderd",
+    requirementsDetails: [
+      "Beginnerplekke: Crèche, Doodles, Playground (10-18m)",
+      "Gevorderde plekke: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "PADI-sertifisering vereis (of doen Open Water-kursus)",
+      "Mediese vraelys vereis",
+      "Goeie swemvermoë",
+      "Minimum ouderdom: 10 jaar (Junior Open Water)"
+    ],
+    bestTimePeak: "Oktober - April (Somer)",
+    bestTimeDetails: [
+      "**Bul- & Tierhaaie:** November-April (26-29°C water)",
+      "**Hamerkophaaie:** April-Oktober (beter sigbaarheid)",
+      "**Walvishaaie:** Oktober-Maart",
+      "**Boggelrugwalvisse:** Julie-November",
+      "**Beste Sigbaarheid:** Mei-Augustus (20-30m)",
+      "**Warmste Water:** Desember-Februarie (27-29°C)"
+    ],
+    tips: [
+      "Bespreek vroeg tydens hoogseisoen (Desember-Januarie)",
+      "Bring jou sertifiseringskaart",
+      "Oorweeg 'n drypak (3mm aanbeveel)",
+      "Branderlansering kan opwindend wees - wees gereed om nat te word!",
+      "Meeste operateurs bied toerusting verhuring",
+      "Multi-duik pakkette bied beste waarde"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Haaiduik spesialiste, navorsingsgerig"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "PADI 5-ster sentrum, haaiduik spesialiste"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Professionele duiksentrum"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Professionele duiksentrum"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Haaiduik spesialiste"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Professionele duiksentrum"
+      }
+    ]
+  },
+
   sv: {
     title: "Dykning",
     tagline: "Utforska orörda rev med tjurhajar, mantarockor och valhajar",

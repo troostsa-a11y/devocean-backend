@@ -407,6 +407,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  af: {
+    title: "Branderplanke & Lesse",
+    tagline: "Ry die ikoniese point break van Ponta do Ouro",
+    overview: "Ponta do Ouro se klassieke regterdraai point break kan epiese ritte van 100-200m lewer, en tot 1km in perfekte toestande - vergelykbaar met Jeffrey's Bay. Die warm, kristalhelder water en konsekwente deining maak dit ideaal vir branderplanryers van alle vlakke, van beginners wat op sagte golwe leer tot kenners wat die point carve.",
+    highlights: [
+      "Klassieke regterdraai point break",
+      "100-200m ritte (tot 1km wanneer perfek!)",
+      "Warm water (22-28°C) - drypak opsioneel",
+      "Beginnervriendelike strandgolwe",
+      "Skaarsgepakte line-ups",
+      "Branderlesse & plankuur beskikbaar",
+      "Dolfyne wat langs jou ry",
+      "Kristalhelder Indiese Oseaan water"
+    ],
+    pricingRange: "Vanaf US$20 (les)",
+    pricingDetails: [
+      "Branderles (2 ure): US$20-40",
+      "Plankuur (per dag): US$15-25",
+      "Multi-dag pakkette: Verlaagde tariewe",
+      "Toerusting ingesluit in lesse",
+      "Sagteplanke vir beginners",
+      "Kortplanke/funplanke vir ervare"
+    ],
+    durationTypical: "2 ure (les) of buigsaam (huur)",
+    durationDetails: [
+      "Beginnerles: 2 ure (teorie + praktyk)",
+      "Privaat afrigting: 1-2 ure",
+      "Plankuur: Halfdag of voldag",
+      "Beste rytyd: Vroeë oggend (06-09)",
+      "Middagsessies: 15-18"
+    ],
+    included: [
+      "Branderplank (les of huur)",
+      "Drypak/lycra (indien nodig)",
+      "Een-tot-een of kleingroep instruksie",
+      "Veiligheidbespreking & oseaanbewustheid",
+      "Waks & leiband",
+      "Strandbystand",
+      "Foto's van jou sessie (sommige operateurs)"
+    ],
+    requirementsLevel: "Alle vlakke welkom",
+    requirementsDetails: [
+      "Beginners: Geen ervaring nodig",
+      "Intermediêr/Gevorderd: Point break ervaring nuttig",
+      "Swemvermoë vereis",
+      "Alle ouderdomme (kinders tot volwassenes)",
+      "Fiksheid: Matig (roei kan moeg maak)",
+      "**Belangrik:** Sterk strome langs die point - wees versigtig!"
+    ],
+    bestTimePeak: "Suid deining met wes wind",
+    bestTimeDetails: [
+      "**Beste Deining:** Suid deining",
+      "**Beste Wind:** Wes wind (aflandige)",
+      "**Beste Gety:** Stygende of vallende van laaggety",
+      "**Konsekwentheid:** Goed maar wisselvallig - benodig regte toestande",
+      "**Seisoene:** Rybuur heeljaar",
+      "**Watertemp:** 22-28°C (shorty of rybroek)",
+      "**Jaag deinings van SA se Noordkus vir beste sessies**"
+    ],
+    tips: [
+      "Kyk brandervoorspelling voor bespreking (Surfline, Magicseaweed)",
+      "Point break kan met J-Bay meeding maar benodig perfekte toestande",
+      "Bring rugsteun planke & ekstra vinne/leibande - beperkte winkels",
+      "Respekteer sterk strome - wees geduldig met getye",
+      "Sagtetop langplanke ideaal vir beginners op strandgolwe",
+      "Dolfyne ry gereeld saam - magiese ervaring!",
+      "Water is warm maar bring shorty vir windbeskering",
+      "Vra plaaslike mense oor huidige deining toestande",
+      "Leë line-ups = meer golwe vir jou!",
+      "Kombineer met duik, visvang wanneer branderplank plat is"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Branderlesse, plankuur & strandbalkroeg"
+      }
+    ]
+  },
+
   sv: {
     title: "Surfbrädor och Lektioner",
     tagline: "Surfa den ikoniska point break i Ponta do Ouro",
