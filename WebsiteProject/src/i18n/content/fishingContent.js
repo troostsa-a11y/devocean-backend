@@ -597,6 +597,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  zh: {
+    title: "岸钓和深海钓鱼",
+    tagline: "钓鲈鱼或在莫桑比克海峡追逐马林鱼",
+    overview: "蓬塔多欧洲提供卓越的岸钓和深海钓鱼。温暖的印度洋海水和深邃的莫桑比克海峡为马林鱼、旗鱼、瓦胡鱼、黄鳍金枪鱼和大王马鲛鱼提供了令人兴奋的机会。岸钓者可以钓到鲈鱼、梭鱼和鲳鱼。",
+    highlights: [
+      "黑马林鱼（10月-1月）",
+      "旗鱼（6月-9月）",
+      "黄鳍金枪鱼和瓦胡鱼",
+      "大王马鲛鱼（Couta）",
+      "岸钓鲈鱼和梭鱼",
+      "温暖清澈的印度洋海水",
+      "海滩出发包船",
+      "20年以上经验的当地船长"
+    ],
+    pricingRange: "US$550起（包船）",
+    pricingDetails: [
+      "5小时包船：US$550-650",
+      "8小时包船：US$850-950",
+      "全天深海：US$1,000+",
+      "岸钓：免费（自带装备）",
+      "导钓岸钓：US$50-100",
+      "包船含许可证、装备和准备工作"
+    ],
+    durationTypical: "5-8小时（包船）",
+    durationDetails: [
+      "半天包船：5小时",
+      "全天包船：8-10小时",
+      "岸钓：灵活（黎明/黄昏最佳）",
+      "清晨出发（6-7点）",
+      "快速到达深水（距海岸几分钟）"
+    ],
+    included: [
+      "全套钓鱼装备",
+      "钓鱼许可证和执照",
+      "经验丰富的船长（20年以上）",
+      "饵料和拟饵",
+      "鱼的清洗和切片",
+      "旅行用真空包装",
+      "饮料和小食（大多数运营商）",
+      "安全装备"
+    ],
+    requirementsLevel: "初学者到高级",
+    requirementsDetails: [
+      "无需经验（向导会帮助）",
+      "每船6名钓鱼者（通常）",
+      "海滩出发 - 准备弄湿！",
+      "防晒很重要",
+      "建议会游泳",
+      "如有需要请服用晕船药"
+    ],
+    bestTimePeak: "10月-1月（马林鱼季节）",
+    bestTimeDetails: [
+      "**黑马林鱼：** 10月-1月（旺季）",
+      "**蓝马林鱼：** 全年",
+      "**旗鱼：** 6月-9月（高峰期）",
+      "**瓦胡鱼和金枪鱼：** 全年（高峰：10月-4月）",
+      "**大王马鲛鱼：** 全年（最佳：4月-11月）",
+      "**水温：** 22-28°C（越温暖洄游鱼越多）"
+    ],
+    tips: [
+      "马林鱼季节（10月-1月）提前预订",
+      "岸钓黎明和黄昏最佳",
+      "海滩尽头的岩石可到深水",
+      "往北到蓬塔马莫利可获得更好的岸钓",
+      "使用拟饵：粉色尘埃、红眼、鱿鱼",
+      "携带防水袋保护电子设备",
+      "与住宿商量鱼的储存",
+      "建议马林鱼捕后放生以保护资源"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "船长Laurens Koen，20年以上经验"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "船长Marcus Joubert，运动钓鱼专家"
+      }
+    ]
+  },
+
   af: {
     title: "Strand- & Diepseevisvang",
     tagline: "Vang kabeljou of jaag marlyne in die Mosambiekkanaal",

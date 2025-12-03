@@ -625,6 +625,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  zh: {
+    title: "海洋Safari",
+    tagline: "观鲸和海洋生物邂逅",
+    overview: "踏上激动人心的海洋Safari，观看座头鲸迁徙穿越莫桑比克水域（7月-11月）。这些船只探险还提供全年海豚邂逅、季节性鲸鲨观赏以及在充满海洋生物的原始礁石上浮潜。",
+    highlights: [
+      "30,000头座头鲸（7月-11月）",
+      "跃水、拍尾和探头",
+      "全年海豚邂逅",
+      "鲸鲨（10月-3月）",
+      "蝠鲼和海龟",
+      "原始礁石浮潜",
+      "海洋生物学家导览游",
+      "研究和保护为重点"
+    ],
+    pricingRange: "每人US$40-45",
+    pricingDetails: [
+      "仅观鲸：US$40",
+      "海豚+鲸鱼组合：US$45",
+      "从马普托出发的私人全天游：US$179",
+      "12岁以下儿童：优惠价",
+      "装备和小食包含"
+    ],
+    durationTypical: "2-3小时",
+    durationDetails: [
+      "半天游览：2-3小时",
+      "全天游览：6-8小时（从马普托）",
+      "上午出发（最佳条件）",
+      "包含浮潜时间",
+      "根据鲸鱼活动灵活调整"
+    ],
+    included: [
+      "经验丰富船长的船只接送",
+      "浮潜装备（面镜、脚蹼、呼吸管）",
+      "海洋生物学家向导（大多数运营商）",
+      "小食和饮料",
+      "海洋公园费用",
+      "照片/视频（部分运营商）",
+      "安全装备和救生衣"
+    ],
+    requirementsLevel: "所有年龄",
+    requirementsDetails: [
+      "观鲸无需特殊技能",
+      "浮潜需要游泳能力",
+      "年龄：适合家庭（儿童到老年人）",
+      "取决于天气 - 海面需要平静",
+      "危险情况下可能会改期",
+      "建议穿暖外套（7月-9月）"
+    ],
+    bestTimePeak: "7月-10月（鲸鱼季节）",
+    bestTimeDetails: [
+      "**座头鲸：** 7月-11月（高峰：7月-10月）",
+      "**海豚：** 全年（200+常驻）",
+      "**鲸鲨：** 10月-3月",
+      "**蝠鲼：** 12月-5月",
+      "**海龟：** 10月-3月（筑巢）",
+      "**最平静的海面：** 冬季月份（6月-9月）"
+    ],
+    tips: [
+      "鲸鱼季节（7月-11月）预订机会最大",
+      "携带暖和外套 - 海风可能很冷",
+      "防水相机袋必不可少",
+      "如有需要请服用晕船药",
+      "望远镜可增强观鲸体验",
+      "道德运营商遵循禁止触摸指南",
+      "不保证目击 - 野生动物",
+      "与浮潜结合获得完整的海洋体验"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "鲸鱼专家，7月-11月为重点"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "研究游，为保护收集数据"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "海洋Safari、观鲸和海洋邂逅"
+      }
+    ]
+  },
+
   af: {
     title: "Oseaansafaris",
     tagline: "Walvisbesigtiging & seelewe ontmoetings",

@@ -723,6 +723,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  zh: {
+    title: "水肺潜水",
+    tagline: "与牛鲨、蝠鲼和鲸鲨探索原始礁石",
+    overview: "蓬塔多欧洲提供世界级水肺潜水，拥有20多个潜点，从浅礁到深海尖塔。莫桑比克海峡清澈见底的海水提供卓越的能见度和与令人难以置信的多样海洋生物相遇的机会，包括19种鲨鱼。",
+    highlights: [
+      "20+潜点（深度8米至48米）",
+      "牛鲨、虎鲨和双髻鲨",
+      "鲸鲨（10月-3月）",
+      "座头鲸（7月-11月）",
+      "蝠鲼、海龟和海豚",
+      "180+种海蛞蝓",
+      "原始珊瑚礁",
+      "专业PADI中心"
+    ],
+    pricingRange: "每潜US$40起",
+    pricingDetails: [
+      "单次潜水：US$40-50",
+      "双潜套餐：US$75-90",
+      "PADI开放水域：US$350-400",
+      "装备租赁包含",
+      "所有许可证和执照包含"
+    ],
+    durationTypical: "半天或全天",
+    durationDetails: [
+      "上午潜水：2潜（3-4小时）",
+      "全天：3潜（6-8小时）",
+      "海滩出发（刺激！）",
+      "潜点距海岸1-12公里"
+    ],
+    included: [
+      "全套潜水装备（BCD、调节器、潜水服）",
+      "潜点船只接送",
+      "专业PADI潜水长/教练",
+      "海洋公园费用",
+      "潜水后小食和饮料",
+      "潜水电脑和安全装备"
+    ],
+    requirementsLevel: "初学者到高级",
+    requirementsDetails: [
+      "初学者潜点：Crèche、Doodles、Playground（10-18米）",
+      "高级潜点：Pinnacles、Atlantis、Cloudbreak（28-48米）",
+      "需要PADI认证（或参加开放水域课程）",
+      "需要健康声明",
+      "游泳能力良好",
+      "最低年龄：10岁（初级开放水域）"
+    ],
+    bestTimePeak: "10月-4月（夏季）",
+    bestTimeDetails: [
+      "**牛鲨和虎鲨：** 11月-4月（水温26-29°C）",
+      "**双髻鲨：** 4月-10月（能见度最佳）",
+      "**鲸鲨：** 10月-3月",
+      "**座头鲸：** 7月-11月",
+      "**最佳能见度：** 5月-8月（20-30米）",
+      "**最温暖水温：** 12月-2月（27-29°C）"
+    ],
+    tips: [
+      "旺季（12月-1月）提前预订",
+      "携带您的认证卡",
+      "考虑穿潜水服（推荐3毫米）",
+      "冲浪入水可能很刺激 - 准备弄湿！",
+      "大多数运营商提供装备租赁",
+      "多潜套餐更划算"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "鲨鱼潜水专家，研究导向"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "PADI五星中心，鲨鱼潜水专家"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "专业潜水中心"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "专业潜水中心"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "鲨鱼潜水专家"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "专业潜水中心"
+      }
+    ]
+  },
+
   af: {
     title: "Skubaduik",
     tagline: "Verken ongerepte riwwe met bulhaaie, mantas en walvishaaie",
