@@ -1,0 +1,41 @@
+> devoceanlodge@0.0.1 build
+> vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/
+
+vite v7.2.2 building client environment for production...
+✓ 1638 modules transformed.
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/i18n/loadTranslation.js is dynamically imported by /home/runner/workspace/WebsiteProject/src/i18n/useLocale.js but also statically imported by /home/runner/workspace/WebsiteProject/src/utils/localize.js, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/components/Footer.jsx is dynamically imported by /home/runner/workspace/WebsiteProject/src/App.jsx but also statically imported by /home/runner/workspace/WebsiteProject/src/components/ExperienceDetailPage.jsx, dynamic import will not move module into another chunk.
+
+dist/index.html                           38.33 kB │ gzip:  10.89 kB
+dist/assets/style-L-9igWug.css            29.21 kB │ gzip:   5.93 kB
+dist/assets/GallerySection-B7Tzt499.js     0.71 kB │ gzip:   0.46 kB │ map:     1.50 kB
+dist/assets/LocationSection-IC7a8dVb.js    2.09 kB │ gzip:   1.09 kB │ map:     4.96 kB
+dist/assets/pl-BZyigKVq.js                 5.00 kB │ gzip:   2.68 kB │ map:     7.55 kB
+dist/assets/sv-DRa6PcXl.js                 5.85 kB │ gzip:   2.93 kB │ map:     9.16 kB
+dist/assets/af-ZA-CSq-VBMh.js              5.87 kB │ gzip:   2.87 kB │ map:     9.40 kB
+dist/assets/en-GB-CgT96un8.js              6.46 kB │ gzip:   3.15 kB │ map:    10.03 kB
+dist/assets/en-US-CgT96un8.js              6.46 kB │ gzip:   3.15 kB │ map:    10.03 kB
+dist/assets/pt-BR-DqPZQjmk.js              6.47 kB │ gzip:   3.09 kB │ map:     9.93 kB
+dist/assets/pt-PT-B__B41uU.js              6.47 kB │ gzip:   3.09 kB │ map:    10.07 kB
+dist/assets/sw-CNKs8fZC.js                 6.63 kB │ gzip:   2.98 kB │ map:     9.78 kB
+dist/assets/nl-NL-D-8UI8EF.js              7.04 kB │ gzip:   3.18 kB │ map:    11.41 kB
+dist/assets/de-DE-DOBeYo6F.js              7.11 kB │ gzip:   3.21 kB │ map:    11.49 kB
+dist/assets/it-IT-CLQqY1wF.js              7.15 kB │ gzip:   3.08 kB │ map:    11.53 kB
+dist/assets/es-ES-DIgOZlOm.js              7.17 kB │ gzip:   3.13 kB │ map:    11.56 kB
+dist/assets/zu-5wmp9dNC.js                 7.28 kB │ gzip:   3.26 kB │ map:    10.56 kB
+dist/assets/ru-CZZMVYqL.js                 7.45 kB │ gzip:   3.16 kB │ map:    10.00 kB
+dist/assets/fr-FR-YD-v70bh.js              7.68 kB │ gzip:   3.25 kB │ map:    12.55 kB
+dist/assets/zh-CN-x5O3oerz.js              9.06 kB │ gzip:   3.47 kB │ map:    14.55 kB
+dist/assets/ContactSection-Gp76tKJL.js     9.97 kB │ gzip:   3.39 kB │ map:    28.78 kB
+dist/assets/ja-JP-UwXHLRwA.js             13.44 kB │ gzip:   3.69 kB │ map:    19.42 kB
+dist/assets/react-vendor-DdXWdMVC.js     141.06 kB │ gzip:  45.33 kB │ map:   344.89 kB
+dist/assets/index-D-4kxZrF.js            554.85 kB │ gzip: 183.28 kB │ map: 2,306.80 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 11.33s

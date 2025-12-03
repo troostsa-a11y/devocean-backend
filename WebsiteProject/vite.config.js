@@ -21,9 +21,13 @@ export default defineConfig({
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
+          'framer': ['framer-motion'],
+          'icons': ['lucide-react', 'react-icons'],
+          'i18n': ['i18next', 'react-i18next'],
         }
       }
-    }
+    },
+    chunkSizeWarningLimit: 600
   },
   
   server: {
