@@ -89,6 +89,273 @@ export const SEAFARI_CONTENT = {
         specialty: "Ocean safaris, whale watching & marine encounters"
       }
     ]
+  },
+
+  'pt-BR': {
+    title: "Safáris Oceânicos",
+    tagline: "Observação de baleias e encontros com vida marinha",
+    overview: "Embarque em emocionantes safáris oceânicos para testemunhar baleias-jubarte migrando pelas águas moçambicanas (julho-novembro). Essas aventuras de barco também oferecem encontros com golfinhos durante todo o ano, avistamentos sazonais de tubarões-baleia e snorkel sobre recifes pristinos cheios de vida marinha.",
+    highlights: [
+      "30.000 baleias-jubarte (julho-novembro)",
+      "Saltos, batidas de cauda e espiada",
+      "Encontros com golfinhos o ano todo",
+      "Tubarões-baleia (outubro-março)",
+      "Raias-manta e tartarugas marinhas",
+      "Snorkel em recifes pristinos",
+      "Tours liderados por biólogos marinhos",
+      "Foco em pesquisa e conservação"
+    ],
+    pricingRange: "US$40-45 por pessoa",
+    pricingDetails: [
+      "Só observação de baleias: US$40",
+      "Golfinhos + baleias combinado: US$45",
+      "Tour privado dia inteiro de Maputo: US$179",
+      "Crianças menores de 12: Tarifas com desconto",
+      "Equipamento e lanches incluídos"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Excursões de meio dia: 2-3 horas",
+      "Tours de dia inteiro: 6-8 horas (de Maputo)",
+      "Saídas pela manhã (melhores condições)",
+      "Inclui tempo de snorkel",
+      "Flexível baseado na atividade das baleias"
+    ],
+    included: [
+      "Transporte de barco com capitão experiente",
+      "Equipamento de snorkel (máscara, nadadeiras, snorkel)",
+      "Guia biólogo marinho (maioria dos operadores)",
+      "Lanches e bebidas",
+      "Taxas do parque marinho",
+      "Fotos/vídeos (alguns operadores)",
+      "Equipamento de segurança e coletes salva-vidas"
+    ],
+    requirementsLevel: "Todas as idades",
+    requirementsDetails: [
+      "Nenhuma habilidade especial necessária para observação de baleias",
+      "Capacidade de natação necessária para snorkel",
+      "Idades: Adequado para famílias (crianças a idosos)",
+      "Dependente do clima - mar deve estar calmo",
+      "Tours podem ser remarcados se condições inseguras",
+      "Casaco quente recomendado (julho-setembro)"
+    ],
+    bestTimePeak: "Julho - Outubro (Temporada de Baleias)",
+    bestTimeDetails: [
+      "**Baleias-Jubarte:** Julho-novembro (pico: jul-out)",
+      "**Golfinhos:** O ano todo (200+ residentes)",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Raias-Manta:** Dezembro-maio",
+      "**Tartarugas Marinhas:** Outubro-março (nidificação)",
+      "**Mares Mais Calmos:** Meses de inverno (junho-setembro)"
+    ],
+    tips: [
+      "Reserve durante temporada de baleias (jul-nov) para melhores chances",
+      "Traga casaco quente - brisa do mar pode ser fria",
+      "Bolsa impermeável para câmera essencial",
+      "Medicação para enjoo se tiver tendência",
+      "Binóculos melhoram experiência de observação de baleias",
+      "Operadores éticos seguem diretrizes de não-toque",
+      "Avistamentos não garantidos - animais selvagens",
+      "Combine com snorkel para experiência marinha completa"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Especialistas em observação de baleias, foco julho-novembro"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Tours baseados em pesquisa, coleta de dados para conservação"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safáris oceânicos, observação de baleias e encontros marinhos"
+      }
+    ]
+  },
+
+  'pt-PT': {
+    title: "Safáris Oceânicos",
+    tagline: "Observação de baleias e encontros com vida marinha",
+    overview: "Embarque em emocionantes safáris oceânicos para testemunhar baleias-jubarte a migrar pelas águas moçambicanas (julho-novembro). Essas aventuras de barco também oferecem encontros com golfinhos durante todo o ano, avistamentos sazonais de tubarões-baleia e snorkel sobre recifes pristinos cheios de vida marinha.",
+    highlights: [
+      "30.000 baleias-jubarte (julho-novembro)",
+      "Saltos, batidas de cauda e espreita",
+      "Encontros com golfinhos o ano todo",
+      "Tubarões-baleia (outubro-março)",
+      "Raias-manta e tartarugas marinhas",
+      "Snorkel em recifes pristinos",
+      "Tours liderados por biólogos marinhos",
+      "Foco em investigação e conservação"
+    ],
+    pricingRange: "US$40-45 por pessoa",
+    pricingDetails: [
+      "Só observação de baleias: US$40",
+      "Golfinhos + baleias combinado: US$45",
+      "Tour privado dia inteiro de Maputo: US$179",
+      "Crianças menores de 12: Tarifas com desconto",
+      "Equipamento e lanches incluídos"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Excursões de meio dia: 2-3 horas",
+      "Tours de dia inteiro: 6-8 horas (de Maputo)",
+      "Saídas pela manhã (melhores condições)",
+      "Inclui tempo de snorkel",
+      "Flexível baseado na atividade das baleias"
+    ],
+    included: [
+      "Transporte de barco com capitão experiente",
+      "Equipamento de snorkel (máscara, barbatanas, snorkel)",
+      "Guia biólogo marinho (maioria dos operadores)",
+      "Lanches e bebidas",
+      "Taxas do parque marinho",
+      "Fotos/vídeos (alguns operadores)",
+      "Equipamento de segurança e coletes salva-vidas"
+    ],
+    requirementsLevel: "Todas as idades",
+    requirementsDetails: [
+      "Nenhuma capacidade especial necessária para observação de baleias",
+      "Capacidade de natação necessária para snorkel",
+      "Idades: Adequado para famílias (crianças a idosos)",
+      "Dependente do clima - mar deve estar calmo",
+      "Tours podem ser remarcados se condições inseguras",
+      "Casaco quente recomendado (julho-setembro)"
+    ],
+    bestTimePeak: "Julho - Outubro (Época de Baleias)",
+    bestTimeDetails: [
+      "**Baleias-Jubarte:** Julho-novembro (pico: jul-out)",
+      "**Golfinhos:** O ano todo (200+ residentes)",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Raias-Manta:** Dezembro-maio",
+      "**Tartarugas Marinhas:** Outubro-março (nidificação)",
+      "**Mares Mais Calmos:** Meses de inverno (junho-setembro)"
+    ],
+    tips: [
+      "Reserve durante época de baleias (jul-nov) para melhores hipóteses",
+      "Traga casaco quente - brisa do mar pode ser fria",
+      "Saco impermeável para câmara essencial",
+      "Medicação para enjoo se tiver tendência",
+      "Binóculos melhoram experiência de observação de baleias",
+      "Operadores éticos seguem diretrizes de não-toque",
+      "Avistamentos não garantidos - animais selvagens",
+      "Combine com snorkel para experiência marinha completa"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Especialistas em observação de baleias, foco julho-novembro"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Tours baseados em investigação, recolha de dados para conservação"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safáris oceânicos, observação de baleias e encontros marinhos"
+      }
+    ]
+  },
+
+  pt: {
+    title: "Safáris Oceânicos",
+    tagline: "Observação de baleias e encontros com vida marinha",
+    overview: "Embarque em emocionantes safáris oceânicos para testemunhar baleias-jubarte migrando pelas águas moçambicanas (julho-novembro). Essas aventuras de barco também oferecem encontros com golfinhos durante todo o ano, avistamentos sazonais de tubarões-baleia e snorkel sobre recifes pristinos cheios de vida marinha.",
+    highlights: [
+      "30.000 baleias-jubarte (julho-novembro)",
+      "Saltos, batidas de cauda e espiada",
+      "Encontros com golfinhos o ano todo",
+      "Tubarões-baleia (outubro-março)",
+      "Raias-manta e tartarugas marinhas",
+      "Snorkel em recifes pristinos",
+      "Tours liderados por biólogos marinhos",
+      "Foco em pesquisa e conservação"
+    ],
+    pricingRange: "US$40-45 por pessoa",
+    pricingDetails: [
+      "Só observação de baleias: US$40",
+      "Golfinhos + baleias combinado: US$45",
+      "Tour privado dia inteiro de Maputo: US$179",
+      "Crianças menores de 12: Tarifas com desconto",
+      "Equipamento e lanches incluídos"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Excursões de meio dia: 2-3 horas",
+      "Tours de dia inteiro: 6-8 horas (de Maputo)",
+      "Saídas pela manhã (melhores condições)",
+      "Inclui tempo de snorkel",
+      "Flexível baseado na atividade das baleias"
+    ],
+    included: [
+      "Transporte de barco com capitão experiente",
+      "Equipamento de snorkel (máscara, nadadeiras, snorkel)",
+      "Guia biólogo marinho (maioria dos operadores)",
+      "Lanches e bebidas",
+      "Taxas do parque marinho",
+      "Fotos/vídeos (alguns operadores)",
+      "Equipamento de segurança e coletes salva-vidas"
+    ],
+    requirementsLevel: "Todas as idades",
+    requirementsDetails: [
+      "Nenhuma habilidade especial necessária para observação de baleias",
+      "Capacidade de natação necessária para snorkel",
+      "Idades: Adequado para famílias (crianças a idosos)",
+      "Dependente do clima - mar deve estar calmo",
+      "Tours podem ser remarcados se condições inseguras",
+      "Casaco quente recomendado (julho-setembro)"
+    ],
+    bestTimePeak: "Julho - Outubro (Temporada de Baleias)",
+    bestTimeDetails: [
+      "**Baleias-Jubarte:** Julho-novembro (pico: jul-out)",
+      "**Golfinhos:** O ano todo (200+ residentes)",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Raias-Manta:** Dezembro-maio",
+      "**Tartarugas Marinhas:** Outubro-março (nidificação)",
+      "**Mares Mais Calmos:** Meses de inverno (junho-setembro)"
+    ],
+    tips: [
+      "Reserve durante temporada de baleias (jul-nov) para melhores chances",
+      "Traga casaco quente - brisa do mar pode ser fria",
+      "Bolsa impermeável para câmera essencial",
+      "Medicação para enjoo se tiver tendência",
+      "Binóculos melhoram experiência de observação de baleias",
+      "Operadores éticos seguem diretrizes de não-toque",
+      "Avistamentos não garantidos - animais selvagens",
+      "Combine com snorkel para experiência marinha completa"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Especialistas em observação de baleias, foco julho-novembro"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Tours baseados em pesquisa, coleta de dados para conservação"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safáris oceânicos, observação de baleias e encontros marinhos"
+      }
+    ]
   }
 };
 

@@ -85,6 +85,261 @@ export const FISHING_CONTENT = {
         specialty: "Skipper Marcus Joubert, game fishing specialists"
       }
     ]
+  },
+
+  'pt-BR': {
+    title: "Pesca de Praia e Alto-Mar",
+    tagline: "Pesque robalo ou persiga marlins no Canal de Moçambique",
+    overview: "Ponta do Ouro oferece pesca excepcional tanto da praia quanto em alto-mar. As águas quentes do Oceano Índico e o profundo Canal de Moçambique proporcionam oportunidades emocionantes para marlim, peixe-vela, wahoo, atum-amarelo e cavala-rei. Pescadores de praia podem pescar robalo, barracuda e pampo em praias pristinas.",
+    highlights: [
+      "Marlim-negro (outubro-janeiro)",
+      "Peixe-vela (junho-setembro)",
+      "Atum-amarelo e wahoo",
+      "Cavala-rei (Couta)",
+      "Pesca de praia para robalo e barracuda",
+      "Águas quentes e cristalinas do Índico",
+      "Charters com lançamento da praia",
+      "Capitães locais experientes com 20+ anos"
+    ],
+    pricingRange: "A partir de US$550 (charter)",
+    pricingDetails: [
+      "Charter 5 horas: US$550-650",
+      "Charter 8 horas: US$850-950",
+      "Dia inteiro alto-mar: US$1.000+",
+      "Pesca de praia: Grátis (traga seu equipamento)",
+      "Pesca guiada de praia: US$50-100",
+      "Licenças, equipamento e limpeza incluídos nos charters"
+    ],
+    durationTypical: "5-8 horas (charter)",
+    durationDetails: [
+      "Charter meio dia: 5 horas",
+      "Charter dia inteiro: 8-10 horas",
+      "Pesca de praia: Flexível (melhor ao amanhecer/entardecer)",
+      "Saídas de manhã cedo (6-7h)",
+      "Acesso rápido a águas profundas (minutos da costa)"
+    ],
+    included: [
+      "Todo equipamento de pesca",
+      "Licenças e permissões de pesca",
+      "Capitão experiente (20+ anos)",
+      "Iscas e artifiais",
+      "Limpeza e filetagem do peixe",
+      "Embalagem a vácuo para viagem",
+      "Bebidas e lanches (maioria dos operadores)",
+      "Equipamento de segurança"
+    ],
+    requirementsLevel: "Iniciante a Expert",
+    requirementsDetails: [
+      "Nenhuma experiência necessária (guias auxiliam)",
+      "Máximo 6 pescadores por barco (tipicamente)",
+      "Lançamento da praia - espere se molhar!",
+      "Proteção solar essencial",
+      "Capacidade de natação recomendada",
+      "Medicação para enjoo se necessário"
+    ],
+    bestTimePeak: "Outubro - Janeiro (Temporada de Marlim)",
+    bestTimeDetails: [
+      "**Marlim-Negro:** Outubro-janeiro (alta temporada)",
+      "**Marlim-Azul:** O ano todo",
+      "**Peixe-Vela:** Junho-setembro (época ideal)",
+      "**Wahoo e Atum:** O ano todo (pico: out-abr)",
+      "**Cavala-Rei:** O ano todo (melhor: abr-nov)",
+      "**Temp. da Água:** 22-28°C (mais quente = mais pelágicos)"
+    ],
+    tips: [
+      "Reserve a temporada de marlim (out-jan) com antecedência",
+      "Pesca de praia melhor ao nascer e pôr do sol",
+      "Ponta rochosa no final da praia oferece águas profundas",
+      "Caminhe ao norte até Ponta Mamoli para melhor pesca de praia",
+      "Use iscas artificiais: pink dusters, redeye, lula",
+      "Traga bolsas impermeáveis para eletrônicos",
+      "Combine armazenamento de peixe com sua pousada",
+      "Pesque e solte recomendado para conservação de billfish"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Capitão Laurens Koen, 20+ anos de experiência"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Capitão Marcus Joubert, especialistas em pesca esportiva"
+      }
+    ]
+  },
+
+  'pt-PT': {
+    title: "Pesca de Praia e Alto-Mar",
+    tagline: "Pesque robalo ou persiga marlins no Canal de Moçambique",
+    overview: "Ponta do Ouro oferece pesca excecional tanto da praia quanto em alto-mar. As águas quentes do Oceano Índico e o profundo Canal de Moçambique proporcionam oportunidades emocionantes para marlim, peixe-vela, wahoo, atum-amarelo e cavala-rei. Pescadores de praia podem pescar robalo, barracuda e pampo em praias pristinas.",
+    highlights: [
+      "Marlim-negro (outubro-janeiro)",
+      "Peixe-vela (junho-setembro)",
+      "Atum-amarelo e wahoo",
+      "Cavala-rei (Couta)",
+      "Pesca de praia para robalo e barracuda",
+      "Águas quentes e cristalinas do Índico",
+      "Charters com lançamento da praia",
+      "Capitães locais experientes com 20+ anos"
+    ],
+    pricingRange: "A partir de US$550 (charter)",
+    pricingDetails: [
+      "Charter 5 horas: US$550-650",
+      "Charter 8 horas: US$850-950",
+      "Dia inteiro alto-mar: US$1.000+",
+      "Pesca de praia: Grátis (traga o seu equipamento)",
+      "Pesca guiada de praia: US$50-100",
+      "Licenças, equipamento e limpeza incluídos nos charters"
+    ],
+    durationTypical: "5-8 horas (charter)",
+    durationDetails: [
+      "Charter meio dia: 5 horas",
+      "Charter dia inteiro: 8-10 horas",
+      "Pesca de praia: Flexível (melhor ao amanhecer/entardecer)",
+      "Saídas de manhã cedo (6-7h)",
+      "Acesso rápido a águas profundas (minutos da costa)"
+    ],
+    included: [
+      "Todo equipamento de pesca",
+      "Licenças e permissões de pesca",
+      "Capitão experiente (20+ anos)",
+      "Iscos e artificiais",
+      "Limpeza e filetagem do peixe",
+      "Embalagem a vácuo para viagem",
+      "Bebidas e lanches (maioria dos operadores)",
+      "Equipamento de segurança"
+    ],
+    requirementsLevel: "Iniciante a Expert",
+    requirementsDetails: [
+      "Nenhuma experiência necessária (guias auxiliam)",
+      "Máximo 6 pescadores por barco (tipicamente)",
+      "Lançamento da praia - espere molhar-se!",
+      "Proteção solar essencial",
+      "Capacidade de natação recomendada",
+      "Medicação para enjoo se necessário"
+    ],
+    bestTimePeak: "Outubro - Janeiro (Temporada de Marlim)",
+    bestTimeDetails: [
+      "**Marlim-Negro:** Outubro-janeiro (época alta)",
+      "**Marlim-Azul:** O ano todo",
+      "**Peixe-Vela:** Junho-setembro (época ideal)",
+      "**Wahoo e Atum:** O ano todo (pico: out-abr)",
+      "**Cavala-Rei:** O ano todo (melhor: abr-nov)",
+      "**Temp. da Água:** 22-28°C (mais quente = mais pelágicos)"
+    ],
+    tips: [
+      "Reserve a época de marlim (out-jan) com antecedência",
+      "Pesca de praia melhor ao nascer e pôr do sol",
+      "Ponta rochosa no final da praia oferece águas profundas",
+      "Caminhe para norte até Ponta Mamoli para melhor pesca de praia",
+      "Use iscos artificiais: pink dusters, redeye, lula",
+      "Traga bolsas impermeáveis para eletrónicos",
+      "Combine armazenamento de peixe com a sua pousada",
+      "Pesque e solte recomendado para conservação de billfish"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Capitão Laurens Koen, 20+ anos de experiência"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Capitão Marcus Joubert, especialistas em pesca desportiva"
+      }
+    ]
+  },
+
+  pt: {
+    title: "Pesca de Praia e Alto-Mar",
+    tagline: "Pesque robalo ou persiga marlins no Canal de Moçambique",
+    overview: "Ponta do Ouro oferece pesca excepcional tanto da praia quanto em alto-mar. As águas quentes do Oceano Índico e o profundo Canal de Moçambique proporcionam oportunidades emocionantes para marlim, peixe-vela, wahoo, atum-amarelo e cavala-rei. Pescadores de praia podem pescar robalo, barracuda e pampo em praias pristinas.",
+    highlights: [
+      "Marlim-negro (outubro-janeiro)",
+      "Peixe-vela (junho-setembro)",
+      "Atum-amarelo e wahoo",
+      "Cavala-rei (Couta)",
+      "Pesca de praia para robalo e barracuda",
+      "Águas quentes e cristalinas do Índico",
+      "Charters com lançamento da praia",
+      "Capitães locais experientes com 20+ anos"
+    ],
+    pricingRange: "A partir de US$550 (charter)",
+    pricingDetails: [
+      "Charter 5 horas: US$550-650",
+      "Charter 8 horas: US$850-950",
+      "Dia inteiro alto-mar: US$1.000+",
+      "Pesca de praia: Grátis (traga seu equipamento)",
+      "Pesca guiada de praia: US$50-100",
+      "Licenças, equipamento e limpeza incluídos nos charters"
+    ],
+    durationTypical: "5-8 horas (charter)",
+    durationDetails: [
+      "Charter meio dia: 5 horas",
+      "Charter dia inteiro: 8-10 horas",
+      "Pesca de praia: Flexível (melhor ao amanhecer/entardecer)",
+      "Saídas de manhã cedo (6-7h)",
+      "Acesso rápido a águas profundas (minutos da costa)"
+    ],
+    included: [
+      "Todo equipamento de pesca",
+      "Licenças e permissões de pesca",
+      "Capitão experiente (20+ anos)",
+      "Iscas e artificiais",
+      "Limpeza e filetagem do peixe",
+      "Embalagem a vácuo para viagem",
+      "Bebidas e lanches (maioria dos operadores)",
+      "Equipamento de segurança"
+    ],
+    requirementsLevel: "Iniciante a Expert",
+    requirementsDetails: [
+      "Nenhuma experiência necessária (guias auxiliam)",
+      "Máximo 6 pescadores por barco (tipicamente)",
+      "Lançamento da praia - espere se molhar!",
+      "Proteção solar essencial",
+      "Capacidade de natação recomendada",
+      "Medicação para enjoo se necessário"
+    ],
+    bestTimePeak: "Outubro - Janeiro (Temporada de Marlim)",
+    bestTimeDetails: [
+      "**Marlim-Negro:** Outubro-janeiro (alta temporada)",
+      "**Marlim-Azul:** O ano todo",
+      "**Peixe-Vela:** Junho-setembro (época ideal)",
+      "**Wahoo e Atum:** O ano todo (pico: out-abr)",
+      "**Cavala-Rei:** O ano todo (melhor: abr-nov)",
+      "**Temp. da Água:** 22-28°C (mais quente = mais pelágicos)"
+    ],
+    tips: [
+      "Reserve a temporada de marlim (out-jan) com antecedência",
+      "Pesca de praia melhor ao nascer e pôr do sol",
+      "Ponta rochosa no final da praia oferece águas profundas",
+      "Caminhe ao norte até Ponta Mamoli para melhor pesca de praia",
+      "Use iscas artificiais: pink dusters, redeye, lula",
+      "Traga bolsas impermeáveis para eletrônicos",
+      "Combine armazenamento de peixe com sua pousada",
+      "Pesque e solte recomendado para conservação de billfish"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Capitão Laurens Koen, 20+ anos de experiência"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Capitão Marcus Joubert, especialistas em pesca esportiva"
+      }
+    ]
   }
 };
 

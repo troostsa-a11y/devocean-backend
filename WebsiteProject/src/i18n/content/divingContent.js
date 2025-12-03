@@ -103,6 +103,315 @@ export const DIVING_CONTENT = {
         specialty: "Professional dive center"
       }
     ]
+  },
+
+  'pt-BR': {
+    title: "Mergulho",
+    tagline: "Explore recifes pristinos com tubarões-touro, raias-manta e tubarões-baleia",
+    overview: "Ponta do Ouro oferece mergulho de classe mundial com mais de 20 pontos de mergulho, desde recifes rasos até pináculos profundos. As águas cristalinas do Canal de Moçambique proporcionam visibilidade excepcional e encontros com uma incrível diversidade de vida marinha, incluindo 19 espécies de tubarões.",
+    highlights: [
+      "Mais de 20 pontos de mergulho de 8m a 48m",
+      "Tubarões-touro, tubarões-tigre e tubarões-martelo",
+      "Tubarões-baleia (outubro-março)",
+      "Baleias-jubarte (julho-novembro)",
+      "Raias-manta, tartarugas e golfinhos",
+      "Mais de 180 espécies de nudibrânquios",
+      "Recifes de coral pristinos",
+      "Centros PADI profissionais"
+    ],
+    pricingRange: "A partir de US$40 por mergulho",
+    pricingDetails: [
+      "Mergulho único: US$40-50",
+      "Pacote dois mergulhos: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Aluguel de equipamento incluído",
+      "Todas as licenças e taxas incluídas"
+    ],
+    durationTypical: "Meio dia ou dia inteiro",
+    durationDetails: [
+      "Mergulhos matinais: 2 mergulhos (3-4 horas)",
+      "Dia inteiro: 3 mergulhos (6-8 horas)",
+      "Lançamento da praia (aventureiro!)",
+      "Pontos de 1-12km da costa"
+    ],
+    included: [
+      "Todo equipamento de mergulho (colete, regulador, roupa)",
+      "Transporte de barco para pontos de mergulho",
+      "Instrutor/divemaster PADI profissional",
+      "Taxas do parque marinho",
+      "Lanches e bebidas pós-mergulho",
+      "Computador de mergulho e equipamento de segurança"
+    ],
+    requirementsLevel: "Iniciante a Avançado",
+    requirementsDetails: [
+      "Pontos para iniciantes: Crèche, Doodles, Playground (10-18m)",
+      "Pontos avançados: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Certificação PADI necessária (ou faça o curso Open Water)",
+      "Questionário médico obrigatório",
+      "Boa capacidade de natação",
+      "Idade mínima: 10 anos (Junior Open Water)"
+    ],
+    bestTimePeak: "Outubro - Abril (Verão)",
+    bestTimeDetails: [
+      "**Tubarões-Touro e Tigre:** Novembro-abril (água 26-29°C)",
+      "**Tubarões-Martelo:** Abril-outubro (melhor visibilidade)",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Baleias-Jubarte:** Julho-novembro",
+      "**Melhor Visibilidade:** Maio-agosto (20-30m)",
+      "**Água Mais Quente:** Dezembro-fevereiro (27-29°C)"
+    ],
+    tips: [
+      "Reserve com antecedência na alta temporada (dezembro-janeiro)",
+      "Traga seu cartão de certificação",
+      "Considere uma roupa de neoprene (3mm recomendado)",
+      "O lançamento na arrebentação é emocionante - prepare-se para se molhar!",
+      "A maioria dos operadores oferece aluguel de equipamento",
+      "Pacotes de vários mergulhos oferecem melhor custo-benefício"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Especialistas em mergulho com tubarões, foco em pesquisa"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centro PADI 5 estrelas, especialistas em mergulho com tubarões"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Centro de mergulho profissional"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Centro de mergulho profissional"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Especialistas em mergulho com tubarões"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Centro de mergulho profissional"
+      }
+    ]
+  },
+
+  'pt-PT': {
+    title: "Mergulho",
+    tagline: "Explore recifes pristinos com tubarões-touro, raias-manta e tubarões-baleia",
+    overview: "Ponta do Ouro oferece mergulho de classe mundial com mais de 20 pontos de mergulho, desde recifes rasos até pináculos profundos. As águas cristalinas do Canal de Moçambique proporcionam visibilidade excecional e encontros com uma incrível diversidade de vida marinha, incluindo 19 espécies de tubarões.",
+    highlights: [
+      "Mais de 20 pontos de mergulho de 8m a 48m",
+      "Tubarões-touro, tubarões-tigre e tubarões-martelo",
+      "Tubarões-baleia (outubro-março)",
+      "Baleias-jubarte (julho-novembro)",
+      "Raias-manta, tartarugas e golfinhos",
+      "Mais de 180 espécies de nudibrânquios",
+      "Recifes de coral pristinos",
+      "Centros PADI profissionais"
+    ],
+    pricingRange: "A partir de US$40 por mergulho",
+    pricingDetails: [
+      "Mergulho único: US$40-50",
+      "Pacote dois mergulhos: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Aluguer de equipamento incluído",
+      "Todas as licenças e taxas incluídas"
+    ],
+    durationTypical: "Meio dia ou dia inteiro",
+    durationDetails: [
+      "Mergulhos matinais: 2 mergulhos (3-4 horas)",
+      "Dia inteiro: 3 mergulhos (6-8 horas)",
+      "Lançamento da praia (aventureiro!)",
+      "Pontos de 1-12km da costa"
+    ],
+    included: [
+      "Todo equipamento de mergulho (colete, regulador, fato)",
+      "Transporte de barco para pontos de mergulho",
+      "Instrutor/divemaster PADI profissional",
+      "Taxas do parque marinho",
+      "Lanches e bebidas pós-mergulho",
+      "Computador de mergulho e equipamento de segurança"
+    ],
+    requirementsLevel: "Iniciante a Avançado",
+    requirementsDetails: [
+      "Pontos para iniciantes: Crèche, Doodles, Playground (10-18m)",
+      "Pontos avançados: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Certificação PADI necessária (ou faça o curso Open Water)",
+      "Questionário médico obrigatório",
+      "Boa capacidade de natação",
+      "Idade mínima: 10 anos (Junior Open Water)"
+    ],
+    bestTimePeak: "Outubro - Abril (Verão)",
+    bestTimeDetails: [
+      "**Tubarões-Touro e Tigre:** Novembro-abril (água 26-29°C)",
+      "**Tubarões-Martelo:** Abril-outubro (melhor visibilidade)",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Baleias-Jubarte:** Julho-novembro",
+      "**Melhor Visibilidade:** Maio-agosto (20-30m)",
+      "**Água Mais Quente:** Dezembro-fevereiro (27-29°C)"
+    ],
+    tips: [
+      "Reserve com antecedência na época alta (dezembro-janeiro)",
+      "Traga o seu cartão de certificação",
+      "Considere um fato de neoprene (3mm recomendado)",
+      "O lançamento na rebentação é emocionante - prepare-se para se molhar!",
+      "A maioria dos operadores oferece aluguer de equipamento",
+      "Pacotes de vários mergulhos oferecem melhor custo-benefício"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Especialistas em mergulho com tubarões, foco em investigação"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centro PADI 5 estrelas, especialistas em mergulho com tubarões"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Centro de mergulho profissional"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Centro de mergulho profissional"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Especialistas em mergulho com tubarões"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Centro de mergulho profissional"
+      }
+    ]
+  },
+
+  pt: {
+    title: "Mergulho",
+    tagline: "Explore recifes pristinos com tubarões-touro, raias-manta e tubarões-baleia",
+    overview: "Ponta do Ouro oferece mergulho de classe mundial com mais de 20 pontos de mergulho, desde recifes rasos até pináculos profundos. As águas cristalinas do Canal de Moçambique proporcionam visibilidade excepcional e encontros com uma incrível diversidade de vida marinha, incluindo 19 espécies de tubarões.",
+    highlights: [
+      "Mais de 20 pontos de mergulho de 8m a 48m",
+      "Tubarões-touro, tubarões-tigre e tubarões-martelo",
+      "Tubarões-baleia (outubro-março)",
+      "Baleias-jubarte (julho-novembro)",
+      "Raias-manta, tartarugas e golfinhos",
+      "Mais de 180 espécies de nudibrânquios",
+      "Recifes de coral pristinos",
+      "Centros PADI profissionais"
+    ],
+    pricingRange: "A partir de US$40 por mergulho",
+    pricingDetails: [
+      "Mergulho único: US$40-50",
+      "Pacote dois mergulhos: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Aluguel de equipamento incluído",
+      "Todas as licenças e taxas incluídas"
+    ],
+    durationTypical: "Meio dia ou dia inteiro",
+    durationDetails: [
+      "Mergulhos matinais: 2 mergulhos (3-4 horas)",
+      "Dia inteiro: 3 mergulhos (6-8 horas)",
+      "Lançamento da praia (aventureiro!)",
+      "Pontos de 1-12km da costa"
+    ],
+    included: [
+      "Todo equipamento de mergulho (colete, regulador, roupa)",
+      "Transporte de barco para pontos de mergulho",
+      "Instrutor/divemaster PADI profissional",
+      "Taxas do parque marinho",
+      "Lanches e bebidas pós-mergulho",
+      "Computador de mergulho e equipamento de segurança"
+    ],
+    requirementsLevel: "Iniciante a Avançado",
+    requirementsDetails: [
+      "Pontos para iniciantes: Crèche, Doodles, Playground (10-18m)",
+      "Pontos avançados: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Certificação PADI necessária (ou faça o curso Open Water)",
+      "Questionário médico obrigatório",
+      "Boa capacidade de natação",
+      "Idade mínima: 10 anos (Junior Open Water)"
+    ],
+    bestTimePeak: "Outubro - Abril (Verão)",
+    bestTimeDetails: [
+      "**Tubarões-Touro e Tigre:** Novembro-abril (água 26-29°C)",
+      "**Tubarões-Martelo:** Abril-outubro (melhor visibilidade)",
+      "**Tubarões-Baleia:** Outubro-março",
+      "**Baleias-Jubarte:** Julho-novembro",
+      "**Melhor Visibilidade:** Maio-agosto (20-30m)",
+      "**Água Mais Quente:** Dezembro-fevereiro (27-29°C)"
+    ],
+    tips: [
+      "Reserve com antecedência na alta temporada (dezembro-janeiro)",
+      "Traga seu cartão de certificação",
+      "Considere uma roupa de neoprene (3mm recomendado)",
+      "O lançamento na arrebentação é emocionante - prepare-se para se molhar!",
+      "A maioria dos operadores oferece aluguel de equipamento",
+      "Pacotes de vários mergulhos oferecem melhor custo-benefício"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Especialistas em mergulho com tubarões, foco em pesquisa"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centro PADI 5 estrelas, especialistas em mergulho com tubarões"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Centro de mergulho profissional"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Centro de mergulho profissional"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Especialistas em mergulho com tubarões"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Centro de mergulho profissional"
+      }
+    ]
   }
 };
 

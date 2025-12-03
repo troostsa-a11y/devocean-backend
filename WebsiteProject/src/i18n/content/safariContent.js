@@ -83,6 +83,255 @@ export const SAFARI_CONTENT = {
         specialty: "Safari transport & guided tours"
       }
     ]
+  },
+
+  'pt-BR': {
+    title: "Safáris Fotográficos",
+    tagline: "Aventuras no mato na Reserva Especial de Maputo",
+    overview: "Descubra a vida selvagem africana a uma curta distância de Ponta do Ouro. O Parque Nacional de Maputo (antiga Reserva Especial de Maputo) oferece avistamento clássico de animais com 450-500 elefantes costeiros, girafas, zebras, hipopótamos, crocodilos e diversas espécies de antílopes em 1.718 km² de vida selvagem protegida - Patrimônio Mundial da UNESCO desde 2025.",
+    highlights: [
+      "450-500 elefantes costeiros",
+      "Girafas, zebras e antílopes",
+      "Hipopótamos e crocodilos nas zonas úmidas",
+      "Leopardo, chita e hiena-malhada",
+      "Mais de 300 espécies de aves incluindo flamingos",
+      "Game drives 4x4 com guias especializados",
+      "Patrimônio Mundial da UNESCO (2025)",
+      "Combinação praia e mato possível"
+    ],
+    pricingRange: "A partir de US$95 por pessoa",
+    pricingDetails: [
+      "Safári diurno: US$95-120 por pessoa",
+      "Dia inteiro com praia de Ponta do Ouro: US$100-130",
+      "Safári acampamento 2-3 dias: A partir de US$200",
+      "Tours privados: Preços personalizados",
+      "Veículo 4x4, guia e taxas do parque incluídos"
+    ],
+    durationTypical: "5-8 horas (passeio diário)",
+    durationDetails: [
+      "Game drive meio dia: 3-4 horas",
+      "Safári dia inteiro: 5-6 horas no parque + transporte",
+      "Acampamento multi-dias: 2-3 dias",
+      "Saída de Ponta do Ouro: Manhã cedo (6-7h)",
+      "Retorno: Final da tarde (16-17h)"
+    ],
+    included: [
+      "Veículo 4x4 para game drive",
+      "Guia/motorista profissional",
+      "Taxas de entrada do parque marinho",
+      "Binóculos para observação de vida selvagem",
+      "Água engarrafada e lanches",
+      "Transfer do hotel em Ponta do Ouro",
+      "Carregamento USB no veículo (maioria dos operadores)"
+    ],
+    requirementsLevel: "Todas as idades e condições físicas",
+    requirementsDetails: [
+      "Sem condição física especial necessária",
+      "Adequado para famílias com crianças",
+      "Acessível para idosos (observação do veículo)",
+      "Veículo 4x4 obrigatório (trilhas de areia grossa)",
+      "Roupas confortáveis de safári recomendadas",
+      "Proteção solar essencial"
+    ],
+    bestTimePeak: "Julho - Outubro (Estação Seca)",
+    bestTimeDetails: [
+      "**Observação de Vida Selvagem:** Julho-outubro (animais nas fontes de água)",
+      "**Observação de Aves:** Outubro-março (migratórias presentes)",
+      "**Avistamento de Elefantes:** O ano todo (população 450-500)",
+      "**Evitar:** Dezembro-fevereiro (quente, úmido, vegetação densa)",
+      "**Temperatura:** Mais fresco no inverno (jul-set: 18-25°C)",
+      "**Condições das Estradas:** Melhores na estação seca"
+    ],
+    tips: [
+      "Reserve com antecedência na alta temporada (julho-outubro)",
+      "Game drives matinais oferecem melhor atividade da vida selvagem",
+      "Traga câmera com lente zoom para fotos de animais",
+      "Use cores neutras (cáqui, bege, oliva) - não cores brilhantes",
+      "Binóculos fornecidos, mas traga os seus se tiver",
+      "Chapéu, protetor solar e repelente essenciais",
+      "Combine com tempo de praia em Ponta do Ouro",
+      "Pergunte sobre acampamento multi-dias para experiência imersiva"
+    ],
+    operators: [
+      {
+        name: "Parque Nacional de Maputo",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Reservas oficiais do parque e game drives guiados"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Transporte de safári e tours guiados"
+      }
+    ]
+  },
+
+  'pt-PT': {
+    title: "Safáris Fotográficos",
+    tagline: "Aventuras no mato na Reserva Especial de Maputo",
+    overview: "Descubra a vida selvagem africana a uma curta distância de Ponta do Ouro. O Parque Nacional de Maputo (antiga Reserva Especial de Maputo) oferece avistamento clássico de animais com 450-500 elefantes costeiros, girafas, zebras, hipopótamos, crocodilos e diversas espécies de antílopes em 1.718 km² de vida selvagem protegida - Património Mundial da UNESCO desde 2025.",
+    highlights: [
+      "450-500 elefantes costeiros",
+      "Girafas, zebras e antílopes",
+      "Hipopótamos e crocodilos nas zonas húmidas",
+      "Leopardo, chita e hiena-malhada",
+      "Mais de 300 espécies de aves incluindo flamingos",
+      "Game drives 4x4 com guias especializados",
+      "Património Mundial da UNESCO (2025)",
+      "Combinação praia e mato possível"
+    ],
+    pricingRange: "A partir de US$95 por pessoa",
+    pricingDetails: [
+      "Safári diurno: US$95-120 por pessoa",
+      "Dia inteiro com praia de Ponta do Ouro: US$100-130",
+      "Safári acampamento 2-3 dias: A partir de US$200",
+      "Tours privados: Preços personalizados",
+      "Veículo 4x4, guia e taxas do parque incluídos"
+    ],
+    durationTypical: "5-8 horas (passeio diário)",
+    durationDetails: [
+      "Game drive meio dia: 3-4 horas",
+      "Safári dia inteiro: 5-6 horas no parque + transporte",
+      "Acampamento multi-dias: 2-3 dias",
+      "Saída de Ponta do Ouro: Manhã cedo (6-7h)",
+      "Retorno: Final da tarde (16-17h)"
+    ],
+    included: [
+      "Veículo 4x4 para game drive",
+      "Guia/motorista profissional",
+      "Taxas de entrada do parque marinho",
+      "Binóculos para observação de vida selvagem",
+      "Água engarrafada e lanches",
+      "Transfer do hotel em Ponta do Ouro",
+      "Carregamento USB no veículo (maioria dos operadores)"
+    ],
+    requirementsLevel: "Todas as idades e condições físicas",
+    requirementsDetails: [
+      "Sem condição física especial necessária",
+      "Adequado para famílias com crianças",
+      "Acessível para idosos (observação do veículo)",
+      "Veículo 4x4 obrigatório (trilhas de areia grossa)",
+      "Roupas confortáveis de safári recomendadas",
+      "Proteção solar essencial"
+    ],
+    bestTimePeak: "Julho - Outubro (Estação Seca)",
+    bestTimeDetails: [
+      "**Observação de Vida Selvagem:** Julho-outubro (animais nas fontes de água)",
+      "**Observação de Aves:** Outubro-março (migratórias presentes)",
+      "**Avistamento de Elefantes:** O ano todo (população 450-500)",
+      "**Evitar:** Dezembro-fevereiro (quente, húmido, vegetação densa)",
+      "**Temperatura:** Mais fresco no inverno (jul-set: 18-25°C)",
+      "**Condições das Estradas:** Melhores na estação seca"
+    ],
+    tips: [
+      "Reserve com antecedência na época alta (julho-outubro)",
+      "Game drives matinais oferecem melhor atividade da vida selvagem",
+      "Traga câmara com lente zoom para fotos de animais",
+      "Use cores neutras (cáqui, bege, oliva) - não cores brilhantes",
+      "Binóculos fornecidos, mas traga os seus se tiver",
+      "Chapéu, protetor solar e repelente essenciais",
+      "Combine com tempo de praia em Ponta do Ouro",
+      "Pergunte sobre acampamento multi-dias para experiência imersiva"
+    ],
+    operators: [
+      {
+        name: "Parque Nacional de Maputo",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Reservas oficiais do parque e game drives guiados"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Transporte de safári e tours guiados"
+      }
+    ]
+  },
+
+  pt: {
+    title: "Safáris Fotográficos",
+    tagline: "Aventuras no mato na Reserva Especial de Maputo",
+    overview: "Descubra a vida selvagem africana a uma curta distância de Ponta do Ouro. O Parque Nacional de Maputo (antiga Reserva Especial de Maputo) oferece avistamento clássico de animais com 450-500 elefantes costeiros, girafas, zebras, hipopótamos, crocodilos e diversas espécies de antílopes em 1.718 km² de vida selvagem protegida - Patrimônio Mundial da UNESCO desde 2025.",
+    highlights: [
+      "450-500 elefantes costeiros",
+      "Girafas, zebras e antílopes",
+      "Hipopótamos e crocodilos nas zonas úmidas",
+      "Leopardo, chita e hiena-malhada",
+      "Mais de 300 espécies de aves incluindo flamingos",
+      "Game drives 4x4 com guias especializados",
+      "Patrimônio Mundial da UNESCO (2025)",
+      "Combinação praia e mato possível"
+    ],
+    pricingRange: "A partir de US$95 por pessoa",
+    pricingDetails: [
+      "Safári diurno: US$95-120 por pessoa",
+      "Dia inteiro com praia de Ponta do Ouro: US$100-130",
+      "Safári acampamento 2-3 dias: A partir de US$200",
+      "Tours privados: Preços personalizados",
+      "Veículo 4x4, guia e taxas do parque incluídos"
+    ],
+    durationTypical: "5-8 horas (passeio diário)",
+    durationDetails: [
+      "Game drive meio dia: 3-4 horas",
+      "Safári dia inteiro: 5-6 horas no parque + transporte",
+      "Acampamento multi-dias: 2-3 dias",
+      "Saída de Ponta do Ouro: Manhã cedo (6-7h)",
+      "Retorno: Final da tarde (16-17h)"
+    ],
+    included: [
+      "Veículo 4x4 para game drive",
+      "Guia/motorista profissional",
+      "Taxas de entrada do parque marinho",
+      "Binóculos para observação de vida selvagem",
+      "Água engarrafada e lanches",
+      "Transfer do hotel em Ponta do Ouro",
+      "Carregamento USB no veículo (maioria dos operadores)"
+    ],
+    requirementsLevel: "Todas as idades e condições físicas",
+    requirementsDetails: [
+      "Sem condição física especial necessária",
+      "Adequado para famílias com crianças",
+      "Acessível para idosos (observação do veículo)",
+      "Veículo 4x4 obrigatório (trilhas de areia grossa)",
+      "Roupas confortáveis de safári recomendadas",
+      "Proteção solar essencial"
+    ],
+    bestTimePeak: "Julho - Outubro (Estação Seca)",
+    bestTimeDetails: [
+      "**Observação de Vida Selvagem:** Julho-outubro (animais nas fontes de água)",
+      "**Observação de Aves:** Outubro-março (migratórias presentes)",
+      "**Avistamento de Elefantes:** O ano todo (população 450-500)",
+      "**Evitar:** Dezembro-fevereiro (quente, úmido, vegetação densa)",
+      "**Temperatura:** Mais fresco no inverno (jul-set: 18-25°C)",
+      "**Condições das Estradas:** Melhores na estação seca"
+    ],
+    tips: [
+      "Reserve com antecedência na alta temporada (julho-outubro)",
+      "Game drives matinais oferecem melhor atividade da vida selvagem",
+      "Traga câmera com lente zoom para fotos de animais",
+      "Use cores neutras (cáqui, bege, oliva) - não cores brilhantes",
+      "Binóculos fornecidos, mas traga os seus se tiver",
+      "Chapéu, protetor solar e repelente essenciais",
+      "Combine com tempo de praia em Ponta do Ouro",
+      "Pergunte sobre acampamento multi-dias para experiência imersiva"
+    ],
+    operators: [
+      {
+        name: "Parque Nacional de Maputo",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Reservas oficiais do parque e game drives guiados"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Transporte de safári e tours guiados"
+      }
+    ]
   }
 };
 
