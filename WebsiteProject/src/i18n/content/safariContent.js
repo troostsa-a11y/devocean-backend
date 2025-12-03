@@ -251,6 +251,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  nl: {
+    title: "Foto-Safari's",
+    tagline: "Bush-avonturen in het Maputo Speciaal Reservaat",
+    overview: "Ontdek Afrikaanse wildlife op slechts minuten van Ponta do Ouro. Het Maputo Nationaal Park (voorheen Maputo Speciaal Reservaat) biedt klassieke wildlifewaarnemingen met 450-500 kustolifanten, giraffen, zebra's, nijlpaarden, krokodillen en diverse antilopensoorten op 1.718 km² beschermde natuur - UNESCO Werelderfgoed sinds 2025.",
+    highlights: [
+      "450-500 kustolifanten",
+      "Giraffen, zebra's en antilopen",
+      "Nijlpaarden en krokodillen in wetlands",
+      "Luipaard, cheetah en gevlekte hyena",
+      "Meer dan 300 vogelsoorten inclusief flamingo's",
+      "4x4-safari's met ervaren gidsen",
+      "UNESCO Werelderfgoed (2025)",
+      "Strand- en bushcombinatie mogelijk"
+    ],
+    pricingRange: "Vanaf US$95 per persoon",
+    pricingDetails: [
+      "Dagsafari: US$95-120 per persoon",
+      "Hele dag met Ponta do Ouro strand: US$100-130",
+      "2-3 dagen camping safari: Vanaf US$200",
+      "Privé tours: Aangepaste prijzen",
+      "4x4-voertuig, gids en parkkosten inbegrepen"
+    ],
+    durationTypical: "5-8 uur (daguitstap)",
+    durationDetails: [
+      "Halve dag safari: 3-4 uur",
+      "Hele dag safari: 5-6 uur in park + transport",
+      "Meerdaags kamperen: 2-3 dagen",
+      "Vertrek vanuit Ponta do Ouro: Vroege ochtend (6-7 uur)",
+      "Terugkeer: Late middag (16-17 uur)"
+    ],
+    included: [
+      "4x4-safarivoertuig",
+      "Professionele gids/chauffeur",
+      "Marien parkkosten",
+      "Verrekijkers voor wildlife observatie",
+      "Flessenwater en snacks",
+      "Hoteltransfer vanuit Ponta do Ouro",
+      "USB-opladen in voertuig (meeste operators)"
+    ],
+    requirementsLevel: "Alle leeftijden en fitnessniveaus",
+    requirementsDetails: [
+      "Geen speciale fysieke conditie vereist",
+      "Gezinsvriendelijk met kinderen",
+      "Geschikt voor senioren (observatie vanuit voertuig)",
+      "4x4-voertuig verplicht (zandige paden)",
+      "Comfortabele safarikleding aanbevolen",
+      "Zonnebescherming essentieel"
+    ],
+    bestTimePeak: "Juli - Oktober (Droge Seizoen)",
+    bestTimeDetails: [
+      "**Wildlife Observatie:** Juli-oktober (dieren bij waterplaatsen)",
+      "**Vogelobservatie:** Oktober-maart (trekvogels aanwezig)",
+      "**Olifanten Observatie:** Het hele jaar (populatie 450-500)",
+      "**Te Vermijden:** December-februari (heet, vochtig, dichte begroeiing)",
+      "**Temperatuur:** Koeler in de winter (jul-sep: 18-25°C)",
+      "**Wegcondities:** Beste in droge seizoen"
+    ],
+    tips: [
+      "Boek vooruit in hoogseizoen (juli-oktober)",
+      "Ochtendsafari's bieden beste dieractiviteit",
+      "Neem een camera met zoomlens mee voor wildlifefoto's",
+      "Draag neutrale kleuren (kaki, beige, olijf) - geen felle kleuren",
+      "Verrekijkers worden verstrekt maar neem eigen mee indien beschikbaar",
+      "Hoed, zonnebrand en insectenspray essentieel",
+      "Combineer met strandtijd in Ponta do Ouro",
+      "Vraag naar meerdaags kamperen voor intensieve ervaring"
+    ],
+    operators: [
+      {
+        name: "Maputo Nationaal Park",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Officiële parkreserveringen en begeleide safari's"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Safari-transport en begeleide tours"
+      }
+    ]
+  },
+
   de: {
     title: "Foto-Safaris",
     tagline: "Busch-Abenteuer im Maputo-Spezialreservat",

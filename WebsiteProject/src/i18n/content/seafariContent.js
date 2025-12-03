@@ -269,6 +269,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  nl: {
+    title: "Oceaan-Safari's",
+    tagline: "Walvissen spotten en ontmoetingen met zeeleven",
+    overview: "Ga op spannende oceaan-safari's om bultruggen te zien migreren door Mozambikaanse wateren (juli-november). Deze bootavonturen bieden ook het hele jaar door dolfijnontmoetingen, seizoensgebonden walvishaai-waarnemingen, en snorkelen boven ongerepte riffen vol zeeleven.",
+    highlights: [
+      "30.000 bultruggen (juli-november)",
+      "Sprongen, staartklappen en spyhopping",
+      "Het hele jaar door dolfijnontmoetingen",
+      "Walvishaaien (oktober-maart)",
+      "Manta's en zeeschildpadden",
+      "Snorkelen op ongerepte riffen",
+      "Tours geleid door mariene biologen",
+      "Focus op onderzoek en natuurbehoud"
+    ],
+    pricingRange: "US$40-45 per persoon",
+    pricingDetails: [
+      "Alleen walvissen spotten: US$40",
+      "Dolfijnen + walvissen gecombineerd: US$45",
+      "Privé hele dag tour vanuit Maputo: US$179",
+      "Kinderen onder 12: Gereduceerde tarieven",
+      "Uitrusting en snacks inbegrepen"
+    ],
+    durationTypical: "2-3 uur",
+    durationDetails: [
+      "Halve dag uitstapjes: 2-3 uur",
+      "Hele dag tours: 6-8 uur (vanuit Maputo)",
+      "Ochtendvertrekken (beste omstandigheden)",
+      "Inclusief snorkeltijd",
+      "Flexibel afhankelijk van walvisactiviteit"
+    ],
+    included: [
+      "Boottransfer met ervaren kapitein",
+      "Snorkeluitrusting (masker, vinnen, snorkel)",
+      "Mariene bioloog gids (meeste operators)",
+      "Snacks en verfrissingen",
+      "Marien parkkosten",
+      "Foto's/video's (sommige operators)",
+      "Veiligheidsuitrusting en reddingsvesten"
+    ],
+    requirementsLevel: "Alle leeftijden",
+    requirementsDetails: [
+      "Geen speciale vaardigheden vereist voor walvissen spotten",
+      "Zwemvaardigheid nodig voor snorkelen",
+      "Leeftijden: Gezinsvriendelijk (kinderen tot senioren)",
+      "Weerafhankelijk - zee moet kalm zijn",
+      "Tours kunnen worden verplaatst bij gevaarlijke omstandigheden",
+      "Warme jas aanbevolen (juli-september)"
+    ],
+    bestTimePeak: "Juli - Oktober (Walvisseizoen)",
+    bestTimeDetails: [
+      "**Bultruggen:** Juli-november (piek: jul-okt)",
+      "**Dolfijnen:** Het hele jaar (200+ residenten)",
+      "**Walvishaaien:** Oktober-maart",
+      "**Manta's:** December-mei",
+      "**Zeeschildpadden:** Oktober-maart (nestelen)",
+      "**Kalmere Zeeën:** Wintermaanden (juni-september)"
+    ],
+    tips: [
+      "Boek tijdens walvisseizoen (jul-nov) voor beste kansen",
+      "Neem een warme jas mee - de zeebries kan koud zijn",
+      "Waterdichte cameratas essentieel",
+      "Zeeziekte medicatie indien gevoelig",
+      "Verrekijkers verbeteren de observatie-ervaring",
+      "Ethische operators volgen geen-contact richtlijnen",
+      "Waarnemingen niet gegarandeerd - wilde dieren",
+      "Combineer met snorkelen voor complete zee-ervaring"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Walvissenexperts, focus juli-november"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Op onderzoek gebaseerde tours, dataverzameling voor natuurbehoud"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Oceaan-safari's, walvissen spotten en zee-ontmoetingen"
+      }
+    ]
+  },
+
   de: {
     title: "Ozean-Safaris",
     tagline: "Walbeobachtung und Begegnungen mit Meereslebewesen",

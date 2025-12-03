@@ -299,6 +299,104 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  nl: {
+    title: "Zwemmen met Dolfijnen",
+    tagline: "Ethische ontmoetingen met wilde dolfijnen in kristalhelder water",
+    overview: "Beleef magische ontmoetingen met wilde Indo-Pacifische tuimelaars in het Ponta do Ouro Gedeeltelijk Marien Reservaat. Beide erkende operators volgen strikte ethische richtlijnen en zorgen voor passieve, niet-invasieve interacties waarbij de dolfijnen zelf kiezen of ze contact willen maken.",
+    highlights: [
+      "Meer dan 200 residente tuimelaars",
+      "Ethische, op onderzoek gebaseerde ontmoetingen",
+      "GEEN aanraken of achtervolgen - wild & vrij",
+      "Snorkelen boven ongerepte riffen",
+      "Seizoensgebonden walvishaai-waarnemingen",
+      "Bultruggen (juli-november)",
+      "Kleine groepen (max 12 personen)",
+      "Educatieve focus op natuurbehoud"
+    ],
+    pricingRange: "US$45-50 per persoon",
+    pricingDetails: [
+      "Dolfijnen observeren (alleen boot): US$45",
+      "Dolfijnzwem-excursie: US$50",
+      "Meerdaagse pakketten: Gereduceerde tarieven",
+      "Snorkeluitrusting inbegrepen",
+      "Natuurbehoudkosten inbegrepen"
+    ],
+    durationTypical: "2-3 uur",
+    durationDetails: [
+      "Vroege ochtendvertrek (beste omstandigheden)",
+      "Snorkelen boven ondiepe riffen",
+      "Dolfijnfacilitatie in het water",
+      "Walvishaai-ontmoetingen (seizoensgebonden)",
+      "Educatieve briefing voor vertrek"
+    ],
+    included: [
+      "Masker, vinnen & snorkel",
+      "Wetsuit (indien nodig)",
+      "Ervaren facilitator/gids",
+      "Educatieve presentatie voor vertrek",
+      "Foto's/video's van je ontmoeting",
+      "Lichte verfrissingen",
+      "Marien parkkosten"
+    ],
+    requirementsLevel: "Alle leeftijden en vaardigheden",
+    requirementsDetails: [
+      "Geen duikervaring vereist",
+      "Basisvaardigheden zwemmen essentieel",
+      "Alle leeftijden (kinderen welkom)",
+      "Conditie: Licht tot gemiddeld",
+      "Comfort in zeewater",
+      "Weerafhankelijk - zee moet kalm zijn"
+    ],
+    bestTimePeak: "Het hele jaar (residente dolfijnen)",
+    bestTimeDetails: [
+      "**Dolfijnen:** Het hele jaar (200+ residenten)",
+      "**Bultruggen:** Juli-november",
+      "**Walvishaaien:** Oktober-maart",
+      "**Kalmere Zeeën:** Vroege ochtend",
+      "**Watertemperatuur:** 22-28°C het hele jaar"
+    ],
+    tips: [
+      "Boek 2-3 dagen van tevoren",
+      "Neem rif-veilige zonnebrand mee",
+      "Onderwatercamera aanbevolen",
+      "Volg de instructies van de facilitator zorgvuldig",
+      "Blijf kalm en stil in het water",
+      "Laat de dolfijnen natuurlijk naar je toe komen"
+    ],
+    ethicalPractices: [
+      {
+        title: "Geen Aanraken of Achtervolgen",
+        description: "Dolfijnen worden nooit aangeraakt, achtervolgd of lastiggevallen. Alle ontmoetingen zijn op de voorwaarden van de dolfijnen."
+      },
+      {
+        title: "Op Onderzoek Gebaseerde Aanpak",
+        description: "Beide operators werken samen met mariene biologen en dragen bij aan lopend dolfijnenonderzoek en -behoud."
+      },
+      {
+        title: "Alleen Kleine Groepen",
+        description: "Maximaal 12 personen per trip garandeert minimale verstoring en betere ontmoetingen."
+      },
+      {
+        title: "Educatie Eerst",
+        description: "Briefings voor vertrek leren alle deelnemers gepast gedrag en dolfijnenbiologie."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours Research Center",
+        website: "https://www.dolphinencountours.org/",
+        email: "connect@dolphinencountours.org",
+        specialty: "Door mariene biologen geleide, op natuurbehoud gerichte dolfijnontmoetingen"
+      },
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Op onderzoek gebaseerd dolfijnzwemmen met educatieve focus"
+      }
+    ]
+  },
+
   de: {
     title: "Delfinschwimmen",
     tagline: "Ethische Begegnungen mit wilden Delfinen im kristallklaren Wasser",

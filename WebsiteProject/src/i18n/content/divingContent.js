@@ -311,6 +311,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  nl: {
+    title: "Duiken",
+    tagline: "Verken ongerepte riffen met stierenhaaien, manta's en walvishaaien",
+    overview: "Ponta do Ouro biedt duiken van wereldklasse met meer dan 20 duiklocaties, van ondiepe riffen tot diepe pinakels. Het kristalheldere water van het Mozambiquekanaal biedt uitzonderlijk zicht en ontmoetingen met een ongelooflijke diversiteit aan zeeleven, waaronder 19 haaisoorten.",
+    highlights: [
+      "Meer dan 20 duiklocaties van 8m tot 48m",
+      "Stierenhaaien, tijgerhaaien en hamerhaaien",
+      "Walvishaaien (oktober-maart)",
+      "Bultruggen (juli-november)",
+      "Manta's, schildpadden en dolfijnen",
+      "Meer dan 180 naaktslaksoorten",
+      "Ongerepte koraalriffen",
+      "Professionele PADI-centra"
+    ],
+    pricingRange: "Vanaf US$40 per duik",
+    pricingDetails: [
+      "Enkele duik: US$40-50",
+      "Twee duiken pakket: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Uitrustingshuur inbegrepen",
+      "Alle licenties en kosten inbegrepen"
+    ],
+    durationTypical: "Halve dag of hele dag",
+    durationDetails: [
+      "Ochtendduiken: 2 duiken (3-4 uur)",
+      "Hele dag: 3 duiken (6-8 uur)",
+      "Strandlancering (avontuurlijk!)",
+      "Locaties 1-12km uit de kust"
+    ],
+    included: [
+      "Volledige duikuitrusting (jacket, ademautomaat, pak)",
+      "Boottransfer naar duiklocaties",
+      "Professionele PADI-instructeur/divemaster",
+      "Marien parkkosten",
+      "Snacks en drankjes na het duiken",
+      "Duikcomputer en veiligheidsuitrusting"
+    ],
+    requirementsLevel: "Beginner tot Gevorderd",
+    requirementsDetails: [
+      "Beginnerlocaties: Crèche, Doodles, Playground (10-18m)",
+      "Gevorderde locaties: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "PADI-certificering vereist (of Open Water cursus volgen)",
+      "Medische vragenlijst verplicht",
+      "Goede zwemvaardigheid",
+      "Minimumleeftijd: 10 jaar (Junior Open Water)"
+    ],
+    bestTimePeak: "Oktober - April (Zomer)",
+    bestTimeDetails: [
+      "**Stieren- en Tijgerhaaien:** November-april (water 26-29°C)",
+      "**Hamerhaaien:** April-oktober (beste zicht)",
+      "**Walvishaaien:** Oktober-maart",
+      "**Bultruggen:** Juli-november",
+      "**Beste Zicht:** Mei-augustus (20-30m)",
+      "**Warmste Water:** December-februari (27-29°C)"
+    ],
+    tips: [
+      "Boek vooruit in het hoogseizoen (december-januari)",
+      "Neem uw certificeringskaart mee",
+      "Overweeg een wetsuit (3mm aanbevolen)",
+      "De golfstart is spannend - bereid u voor om nat te worden!",
+      "De meeste operators bieden uitrustingshuur aan",
+      "Meerdere duiken pakketten bieden de beste waarde"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Haaiduik-specialisten, onderzoeksgericht"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "PADI 5-sterren centrum, haaiduik-specialisten"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Professioneel duikcentrum"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Professioneel duikcentrum"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Haaiduik-specialisten"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Professioneel duikcentrum"
+      }
+    ]
+  },
+
   de: {
     title: "Tauchen",
     tagline: "Erkunden Sie unberührte Riffe mit Bullenhaien, Mantas und Walhaien",

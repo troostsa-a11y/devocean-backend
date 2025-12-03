@@ -245,6 +245,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  nl: {
+    title: "Surfplanken en Lessen",
+    tagline: "Surf de iconische point break van Ponta do Ouro",
+    overview: "De klassieke rechter point break van Ponta do Ouro kan epische ritten van 100-200m leveren, en tot 1km onder perfecte omstandigheden - vergelijkbaar met Jeffrey's Bay. Het warme, kristalheldere water en consistente deining maken het ideaal voor surfers van alle niveaus, van beginners die leren op zachte golven tot experts die de point carven.",
+    highlights: [
+      "Klassieke rechter point break",
+      "Ritten van 100-200m (tot 1km wanneer perfect!)",
+      "Warm water (22-28°C) - wetsuit optioneel",
+      "Beginnervriendelijke beach breaks",
+      "Weinig drukke lineups",
+      "Surflessen en plankenverhuur beschikbaar",
+      "Dolfijnen die naast je surfen",
+      "Kristalhelder Indische Oceaanwater"
+    ],
+    pricingRange: "Vanaf US$20 (les)",
+    pricingDetails: [
+      "Surfles (2 uur): US$20-40",
+      "Plankverhuur (per dag): US$15-25",
+      "Meerdaagse pakketten: Gereduceerde tarieven",
+      "Uitrusting inbegrepen bij lessen",
+      "Softboards voor beginners",
+      "Shortboards/funboards voor ervaren"
+    ],
+    durationTypical: "2 uur (les) of flexibel (verhuur)",
+    durationDetails: [
+      "Beginnerles: 2 uur (theorie + praktijk)",
+      "Privé coaching: 1-2 uur",
+      "Plankverhuur: Halve dag of hele dag",
+      "Beste surftijd: Vroege ochtend (6-9 uur)",
+      "Middagsessies: 15-18 uur"
+    ],
+    included: [
+      "Surfplank (les of verhuur)",
+      "Wetsuit/lycra (indien nodig)",
+      "Individuele of kleine groepsinstructie",
+      "Veiligheidsbriefing en oceaanbewustzijn",
+      "Wax en leash",
+      "Strandassistentie",
+      "Foto's van je sessie (sommige operators)"
+    ],
+    requirementsLevel: "Alle niveaus welkom",
+    requirementsDetails: [
+      "Beginners: Geen ervaring vereist",
+      "Gemiddeld/Gevorderd: Point break ervaring nuttig",
+      "Zwemvaardigheid vereist",
+      "Alle leeftijden (kinderen tot volwassenen)",
+      "Conditie: Gemiddeld (peddelen kan vermoeiend zijn)",
+      "**Belangrijk:** Sterke stromingen langs de point - wees voorzichtig!"
+    ],
+    bestTimePeak: "Zuiderdeining met westenwind",
+    bestTimeDetails: [
+      "**Beste Deining:** Zuiderdeining",
+      "**Beste Wind:** Westenwind (offshore)",
+      "**Beste Getij:** Aan weerszijden van laagwater",
+      "**Consistentie:** Goed maar grillig - vereist juiste omstandigheden",
+      "**Seizoenen:** Het hele jaar surfbaar",
+      "**Watertemp.:** 22-28°C (shorty of boardshorts)",
+      "**Volg deiningen van Zuid-Afrika's noordkust voor beste sessies**"
+    ],
+    tips: [
+      "Check surfvoorspellingen voor boeking (Surfline, Magicseaweed)",
+      "De point break kan concurreren met J-Bay maar vereist perfecte omstandigheden",
+      "Neem reserveplanken en extra vinnen/leashes mee - beperkte winkels",
+      "Respecteer de sterke stromingen - heb geduld met de getijden",
+      "Soft-top longboards ideaal voor beginners op beach breaks",
+      "Dolfijnen surfen vaak naast je - magische ervaring!",
+      "Het water is warm maar neem een shorty mee voor windbescherming",
+      "Vraag locals naar actuele deiningsomstandigheden",
+      "Weinig drukke lineups = meer golven voor jou!",
+      "Combineer met duiken, vissen wanneer surf vlak is"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Surflessen, plankverhuur en strandbar"
+      }
+    ]
+  },
+
   de: {
     title: "Surfbretter und Unterricht",
     tagline: "Surfen Sie den legendären Point Break von Ponta do Ouro",

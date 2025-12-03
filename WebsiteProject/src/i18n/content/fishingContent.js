@@ -257,6 +257,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  nl: {
+    title: "Strand- en Diepzeevissen",
+    tagline: "Vis op baars of jaag op marlijnen in het Mozambiquekanaal",
+    overview: "Ponta do Ouro biedt uitzonderlijk vissen, zowel vanaf het strand als op volle zee. De warme wateren van de Indische Oceaan en het diepe Mozambiquekanaal bieden spannende mogelijkheden voor marlijn, zeilvis, wahoo, geelvintonijn en koningsmakreel. Strandvissers kunnen vissen op baars, barracuda en pompano.",
+    highlights: [
+      "Zwarte marlijn (oktober-januari)",
+      "Zeilvis (juni-september)",
+      "Geelvintonijn en wahoo",
+      "Koningsmakreel (Couta)",
+      "Kustvissen op baars en barracuda",
+      "Warm, kristalhelder Indische Oceaanwater",
+      "Strandlancering charters",
+      "Ervaren lokale kapiteins met 20+ jaar"
+    ],
+    pricingRange: "Vanaf US$550 (charter)",
+    pricingDetails: [
+      "5-uur charter: US$550-650",
+      "8-uur charter: US$850-950",
+      "Hele dag diepzee: US$1.000+",
+      "Strandvissen: Gratis (eigen uitrusting)",
+      "Begeleide strandvisserij: US$50-100",
+      "Licenties, uitrusting en voorbereiding bij charters inbegrepen"
+    ],
+    durationTypical: "5-8 uur (charter)",
+    durationDetails: [
+      "Halve dag charter: 5 uur",
+      "Hele dag charter: 8-10 uur",
+      "Strandvissen: Flexibel (beste bij schemering)",
+      "Vroege ochtendvertrekken (6-7 uur)",
+      "Snelle toegang tot diep water (minuten van de kust)"
+    ],
+    included: [
+      "Volledige visuitrusting",
+      "Vislicenties en vergunningen",
+      "Ervaren kapitein (20+ jaar)",
+      "Aas en kunstaas",
+      "Visreiniging en fileren",
+      "Vacuümverpakking voor reis",
+      "Drankjes en snacks (meeste operators)",
+      "Veiligheidsuitrusting"
+    ],
+    requirementsLevel: "Beginner tot Expert",
+    requirementsDetails: [
+      "Geen ervaring vereist (gidsen helpen)",
+      "Maximaal 6 vissers per boot (meestal)",
+      "Strandlancering - verwacht nat te worden!",
+      "Zonnebescherming essentieel",
+      "Zwemvaardigheid aanbevolen",
+      "Zeeziekte medicatie indien gevoelig"
+    ],
+    bestTimePeak: "Oktober - Januari (Marlijnseizoen)",
+    bestTimeDetails: [
+      "**Zwarte Marlijn:** Oktober-januari (hoogseizoen)",
+      "**Blauwe Marlijn:** Het hele jaar",
+      "**Zeilvis:** Juni-september (piekperiode)",
+      "**Wahoo & Tonijn:** Het hele jaar (piek: okt-apr)",
+      "**Koningsmakreel:** Het hele jaar (beste: apr-nov)",
+      "**Watertemp.:** 22-28°C (warmer = meer pelagische)"
+    ],
+    tips: [
+      "Boek het marlijnseizoen (okt-jan) vooruit",
+      "Strandvissen is het beste bij zonsopgang en -ondergang",
+      "De rotspunt aan het eind van het strand biedt diep water",
+      "Wandel noordwaarts naar Ponta Mamoli voor beter kustvissen",
+      "Gebruik kunstaas: pink dusters, redeye, inktvis",
+      "Neem waterdichte tassen mee voor elektronica",
+      "Regel visopslag met uw lodge",
+      "Catch and release aanbevolen voor marlijnbehoud"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Kapitein Laurens Koen, 20+ jaar ervaring"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Kapitein Marcus Joubert, sportvis-specialisten"
+      }
+    ]
+  },
+
   de: {
     title: "Strand- und Hochseeangeln",
     tagline: "Angeln Sie Barsch oder jagen Sie Marline im Mosambik-Kanal",
