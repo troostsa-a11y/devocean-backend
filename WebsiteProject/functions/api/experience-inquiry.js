@@ -165,7 +165,7 @@ export async function onRequestPost(context) {
       </div>
     `;
 
-    const bccEmail = experienceKey === 'dolphins' ? 'partners@devoceanlodge.com' : 'info@devoceanlodge.com';
+    const bccEmail = 'partners@devoceanlodge.com';
 
     // TEST MODE: Send test inquiries to info@devoceanlodge.com instead of operators
     const isTestMode = sanitizedMessage.toLowerCase().includes('[test]');
