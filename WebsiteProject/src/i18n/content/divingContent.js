@@ -311,6 +311,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  fr: {
+    title: "Plongée Sous-Marine",
+    tagline: "Explorez des récifs préservés avec requins-bouledogues, raies manta et requins-baleines",
+    overview: "Ponta do Ouro offre une plongée de classe mondiale avec plus de 20 sites allant des récifs peu profonds aux pinacles profonds. Les eaux cristallines du canal du Mozambique offrent une visibilité exceptionnelle et des rencontres avec une incroyable diversité de vie marine, dont 19 espèces de requins.",
+    highlights: [
+      "Plus de 20 sites de plongée de 8m à 48m",
+      "Requins-bouledogues, requins-tigres et requins-marteaux",
+      "Requins-baleines (octobre-mars)",
+      "Baleines à bosse (juillet-novembre)",
+      "Raies manta, tortues et dauphins",
+      "Plus de 180 espèces de nudibranches",
+      "Récifs coralliens préservés",
+      "Centres PADI professionnels"
+    ],
+    pricingRange: "À partir de 40 US$ par plongée",
+    pricingDetails: [
+      "Plongée unique : 40-50 US$",
+      "Forfait deux plongées : 75-90 US$",
+      "PADI Open Water : 350-400 US$",
+      "Location d'équipement incluse",
+      "Toutes licences et taxes incluses"
+    ],
+    durationTypical: "Demi-journée ou journée complète",
+    durationDetails: [
+      "Plongées matinales : 2 plongées (3-4 heures)",
+      "Journée complète : 3 plongées (6-8 heures)",
+      "Mise à l'eau depuis la plage (aventureux !)",
+      "Sites à 1-12 km de la côte"
+    ],
+    included: [
+      "Tout l'équipement de plongée (gilet, détendeur, combinaison)",
+      "Transport en bateau vers les sites",
+      "Instructeur/divemaster PADI professionnel",
+      "Frais du parc marin",
+      "Collations et rafraîchissements après plongée",
+      "Ordinateur de plongée et équipement de sécurité"
+    ],
+    requirementsLevel: "Débutant à Avancé",
+    requirementsDetails: [
+      "Sites débutants : Crèche, Doodles, Playground (10-18m)",
+      "Sites avancés : Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Certification PADI requise (ou faire le cours Open Water)",
+      "Questionnaire médical obligatoire",
+      "Bonne capacité de nage",
+      "Âge minimum : 10 ans (Junior Open Water)"
+    ],
+    bestTimePeak: "Octobre - Avril (Été)",
+    bestTimeDetails: [
+      "**Requins-Bouledogues et Tigres :** Novembre-avril (eau 26-29°C)",
+      "**Requins-Marteaux :** Avril-octobre (meilleure visibilité)",
+      "**Requins-Baleines :** Octobre-mars",
+      "**Baleines à Bosse :** Juillet-novembre",
+      "**Meilleure Visibilité :** Mai-août (20-30m)",
+      "**Eau Plus Chaude :** Décembre-février (27-29°C)"
+    ],
+    tips: [
+      "Réservez à l'avance en haute saison (décembre-janvier)",
+      "Apportez votre carte de certification",
+      "Envisagez une combinaison néoprène (3mm recommandé)",
+      "La mise à l'eau dans les vagues est excitante - préparez-vous à être mouillé !",
+      "La plupart des opérateurs proposent la location d'équipement",
+      "Les forfaits multi-plongées offrent le meilleur rapport qualité-prix"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Spécialistes plongée requins, axé recherche"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centre PADI 5 étoiles, spécialistes plongée requins"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Centre de plongée professionnel"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Centre de plongée professionnel"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Spécialistes plongée requins"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Centre de plongée professionnel"
+      }
+    ]
+  },
+
   pt: {
     title: "Mergulho",
     tagline: "Explore recifes pristinos com tubarões-touro, raias-manta e tubarões-baleia",

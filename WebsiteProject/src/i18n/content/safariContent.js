@@ -251,6 +251,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  fr: {
+    title: "Safaris Photographiques",
+    tagline: "Aventures en brousse dans la Réserve Spéciale de Maputo",
+    overview: "Découvrez la faune africaine à quelques minutes de Ponta do Ouro. Le Parc National de Maputo (ancienne Réserve Spéciale de Maputo) offre une observation classique des animaux avec 450-500 éléphants côtiers, girafes, zèbres, hippopotames, crocodiles et diverses espèces d'antilopes sur 1 718 km² de nature protégée - Site du Patrimoine Mondial de l'UNESCO depuis 2025.",
+    highlights: [
+      "450-500 éléphants côtiers",
+      "Girafes, zèbres et antilopes",
+      "Hippopotames et crocodiles dans les zones humides",
+      "Léopard, guépard et hyène tachetée",
+      "Plus de 300 espèces d'oiseaux dont flamants roses",
+      "Safaris en 4x4 avec guides experts",
+      "Site du Patrimoine Mondial UNESCO (2025)",
+      "Combinaison plage et brousse possible"
+    ],
+    pricingRange: "À partir de 95 US$ par personne",
+    pricingDetails: [
+      "Safari journée : 95-120 US$ par personne",
+      "Journée complète avec plage Ponta do Ouro : 100-130 US$",
+      "Safari camping 2-3 jours : À partir de 200 US$",
+      "Tours privés : Tarification personnalisée",
+      "Véhicule 4x4, guide et droits d'entrée inclus"
+    ],
+    durationTypical: "5-8 heures (excursion journée)",
+    durationDetails: [
+      "Safari demi-journée : 3-4 heures",
+      "Safari journée complète : 5-6 heures dans le parc + transport",
+      "Camping plusieurs jours : 2-3 jours",
+      "Départ de Ponta do Ouro : Tôt le matin (6-7h)",
+      "Retour : Fin d'après-midi (16-17h)"
+    ],
+    included: [
+      "Véhicule 4x4 pour le safari",
+      "Guide/chauffeur professionnel",
+      "Droits d'entrée du parc marin",
+      "Jumelles pour observation de la faune",
+      "Eau en bouteille et collations",
+      "Transfert hôtel depuis Ponta do Ouro",
+      "Chargement USB dans le véhicule (plupart des opérateurs)"
+    ],
+    requirementsLevel: "Tous âges et conditions physiques",
+    requirementsDetails: [
+      "Aucune condition physique spéciale requise",
+      "Adapté aux familles avec enfants",
+      "Accessible aux personnes âgées (observation depuis le véhicule)",
+      "Véhicule 4x4 obligatoire (pistes sableuses)",
+      "Vêtements confortables de safari recommandés",
+      "Protection solaire essentielle"
+    ],
+    bestTimePeak: "Juillet - Octobre (Saison Sèche)",
+    bestTimeDetails: [
+      "**Observation de la Faune :** Juillet-octobre (animaux aux points d'eau)",
+      "**Observation des Oiseaux :** Octobre-mars (migrateurs présents)",
+      "**Observation des Éléphants :** Toute l'année (population 450-500)",
+      "**À Éviter :** Décembre-février (chaud, humide, végétation dense)",
+      "**Température :** Plus frais en hiver (juil-sept : 18-25°C)",
+      "**Conditions des Routes :** Meilleures en saison sèche"
+    ],
+    tips: [
+      "Réservez à l'avance en haute saison (juillet-octobre)",
+      "Les safaris matinaux offrent la meilleure activité animale",
+      "Apportez un appareil photo avec objectif zoom pour les photos d'animaux",
+      "Portez des couleurs neutres (kaki, beige, olive) - pas de couleurs vives",
+      "Jumelles fournies mais apportez les vôtres si vous en avez",
+      "Chapeau, crème solaire et répulsif essentiels",
+      "Combinez avec du temps de plage à Ponta do Ouro",
+      "Renseignez-vous sur le camping plusieurs jours pour une expérience immersive"
+    ],
+    operators: [
+      {
+        name: "Parc National de Maputo",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Réservations officielles du parc et safaris guidés"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Transport safari et visites guidées"
+      }
+    ]
+  },
+
   pt: {
     title: "Safáris Fotográficos",
     tagline: "Aventuras no mato na Reserva Especial de Maputo",

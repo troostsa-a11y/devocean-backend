@@ -245,6 +245,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  fr: {
+    title: "Planches de Surf et Cours",
+    tagline: "Surfez l'iconique point break de Ponta do Ouro",
+    overview: "Le classique point break droitier de Ponta do Ouro peut offrir des rides épiques de 100-200m, et jusqu'à 1km dans des conditions parfaites - rivalisant avec Jeffrey's Bay. Les eaux chaudes et cristallines et les houles constantes le rendent idéal pour les surfeurs de tous niveaux, des débutants apprenant sur des beach breaks doux aux experts carving le point.",
+    highlights: [
+      "Point break droitier classique",
+      "Rides de 100-200m (jusqu'à 1km quand parfait !)",
+      "Eau chaude (22-28°C) - combinaison optionnelle",
+      "Beach breaks adaptés aux débutants",
+      "Line-ups peu fréquentés",
+      "Cours de surf et location de planches disponibles",
+      "Dauphins surfant à vos côtés",
+      "Eau cristalline de l'océan Indien"
+    ],
+    pricingRange: "À partir de 20 US$ (cours)",
+    pricingDetails: [
+      "Cours de surf (2 heures) : 20-40 US$",
+      "Location de planche (journée) : 15-25 US$",
+      "Forfaits plusieurs jours : Tarifs réduits",
+      "Équipement inclus dans les cours",
+      "Softboards pour débutants",
+      "Shortboards/funboards pour expérimentés"
+    ],
+    durationTypical: "2 heures (cours) ou flexible (location)",
+    durationDetails: [
+      "Cours débutant : 2 heures (théorie + pratique)",
+      "Coaching privé : 1-2 heures",
+      "Location de planche : Demi-journée ou journée",
+      "Meilleur surf : Tôt le matin (6-9h)",
+      "Sessions après-midi : 15-18h"
+    ],
+    included: [
+      "Planche de surf (cours ou location)",
+      "Combinaison/lycra (si nécessaire)",
+      "Instruction individuelle ou petit groupe",
+      "Briefing sécurité et sensibilisation à l'océan",
+      "Wax et leash",
+      "Assistance sur la plage",
+      "Photos de votre session (certains opérateurs)"
+    ],
+    requirementsLevel: "Tous niveaux bienvenus",
+    requirementsDetails: [
+      "Débutants : Aucune expérience requise",
+      "Intermédiaire/Avancé : Expérience point break utile",
+      "Capacité de nage requise",
+      "Tous âges (enfants à adultes)",
+      "Condition physique : Modérée (la rame peut fatiguer)",
+      "**Important :** Forts courants le long du point - soyez prudent !"
+    ],
+    bestTimePeak: "Houle sud avec vent ouest",
+    bestTimeDetails: [
+      "**Meilleure Houle :** Houle sud",
+      "**Meilleur Vent :** Vent ouest (offshore)",
+      "**Meilleure Marée :** De chaque côté de la marée basse",
+      "**Régularité :** Bonne mais capricieuse - nécessite les bonnes conditions",
+      "**Saisons :** Surfable toute l'année",
+      "**Temp. de l'Eau :** 22-28°C (shorty ou boardshorts)",
+      "**Suivez les houles de la côte nord d'Afrique du Sud pour les meilleures sessions**"
+    ],
+    tips: [
+      "Vérifiez les prévisions surf avant de réserver (Surfline, Magicseaweed)",
+      "Le point break peut rivaliser avec J-Bay mais nécessite des conditions parfaites",
+      "Apportez des planches de rechange et ailerons/leashes supplémentaires - magasins limités",
+      "Respectez les forts courants - soyez patient avec les marées",
+      "Longboards soft-top idéaux pour débutants sur beach breaks",
+      "Les dauphins surfent souvent aux côtés - expérience magique !",
+      "L'eau est chaude mais apportez un shorty pour protection du vent",
+      "Demandez aux locaux les conditions actuelles de houle",
+      "Line-ups peu fréquentés = plus de vagues pour vous !",
+      "Combinez avec plongée, pêche quand le surf est plat"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Cours de surf, location de planches et bar sur la plage"
+      }
+    ]
+  },
+
   pt: {
     title: "Pranchas de Surf e Aulas",
     tagline: "Surfe o icônico point break de Ponta do Ouro",

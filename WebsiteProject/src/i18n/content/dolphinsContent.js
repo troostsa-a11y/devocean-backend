@@ -299,6 +299,104 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  fr: {
+    title: "Nage avec les Dauphins",
+    tagline: "Rencontres éthiques avec des dauphins sauvages dans des eaux cristallines",
+    overview: "Vivez des rencontres magiques avec des grands dauphins indo-pacifiques sauvages dans la Réserve Marine Partielle de Ponta do Ouro. Les deux opérateurs agréés suivent des directives éthiques strictes, garantissant des interactions passives et non invasives où les dauphins choisissent de s'engager selon leurs propres termes.",
+    highlights: [
+      "Plus de 200 grands dauphins résidents",
+      "Rencontres éthiques basées sur la recherche",
+      "SANS toucher ni poursuivre - sauvages et libres",
+      "Snorkeling sur récifs préservés",
+      "Observations saisonnières de requins-baleines",
+      "Baleines à bosse (juillet-novembre)",
+      "Petits groupes (max 12 personnes)",
+      "Focus éducatif sur la conservation"
+    ],
+    pricingRange: "45-50 US$ par personne",
+    pricingDetails: [
+      "Observation dauphins (bateau seulement) : 45 US$",
+      "Excursion nage avec dauphins : 50 US$",
+      "Forfaits plusieurs jours : Tarifs réduits",
+      "Équipement snorkeling inclus",
+      "Frais de conservation inclus"
+    ],
+    durationTypical: "2-3 heures",
+    durationDetails: [
+      "Départ tôt le matin (meilleures conditions)",
+      "Snorkeling sur récifs peu profonds",
+      "Facilitation dauphins dans l'eau",
+      "Rencontres requins-baleines (saisonnier)",
+      "Briefing éducatif pré-départ"
+    ],
+    included: [
+      "Masque, palmes et tuba",
+      "Combinaison (si nécessaire)",
+      "Facilitateur/guide expérimenté",
+      "Présentation éducative pré-départ",
+      "Photos/vidéos de votre rencontre",
+      "Rafraîchissements légers",
+      "Frais du parc marin"
+    ],
+    requirementsLevel: "Tous âges et niveaux",
+    requirementsDetails: [
+      "Aucune expérience de plongée requise",
+      "Capacité de nage basique essentielle",
+      "Tous âges (enfants bienvenus)",
+      "Condition physique : Légère à modérée",
+      "Confort dans l'eau de mer",
+      "Dépend de la météo - la mer doit être calme"
+    ],
+    bestTimePeak: "Toute l'année (dauphins résidents)",
+    bestTimeDetails: [
+      "**Dauphins :** Toute l'année (200+ résidents)",
+      "**Baleines à Bosse :** Juillet-novembre",
+      "**Requins-Baleines :** Octobre-mars",
+      "**Mers Plus Calmes :** Tôt le matin",
+      "**Température de l'Eau :** 22-28°C toute l'année"
+    ],
+    tips: [
+      "Réservez 2-3 jours à l'avance",
+      "Apportez une crème solaire sans danger pour les récifs",
+      "Appareil photo sous-marin recommandé",
+      "Suivez attentivement les instructions du facilitateur",
+      "Restez calme et silencieux dans l'eau",
+      "Laissez les dauphins s'approcher naturellement"
+    ],
+    ethicalPractices: [
+      {
+        title: "Sans Toucher ni Poursuivre",
+        description: "Les dauphins ne sont jamais touchés, poursuivis ou harcelés. Toutes les rencontres se font selon les termes des dauphins."
+      },
+      {
+        title: "Approche Basée sur la Recherche",
+        description: "Les deux opérateurs travaillent avec des biologistes marins et contribuent à la recherche et conservation continues des dauphins."
+      },
+      {
+        title: "Petits Groupes Uniquement",
+        description: "Maximum 12 personnes par sortie garantit une perturbation minimale et de meilleures rencontres."
+      },
+      {
+        title: "Éducation d'Abord",
+        description: "Les briefings pré-départ enseignent le comportement approprié et la biologie des dauphins à tous les participants."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours Research Center",
+        website: "https://www.dolphinencountours.org/",
+        email: "connect@dolphinencountours.org",
+        specialty: "Rencontres dauphins menées par biologistes marins, axées conservation"
+      },
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Nages avec dauphins basées sur la recherche, focus éducatif"
+      }
+    ]
+  },
+
   'pt-BR': {
     title: "Nado com Golfinhos",
     tagline: "Encontros éticos com golfinhos selvagens em águas cristalinas",

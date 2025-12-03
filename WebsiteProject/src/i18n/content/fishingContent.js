@@ -257,6 +257,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  fr: {
+    title: "Pêche en Mer et sur Plage",
+    tagline: "Pêchez le bar ou chassez le marlin dans le canal du Mozambique",
+    overview: "Ponta do Ouro offre une pêche exceptionnelle depuis la plage et en haute mer. Les eaux chaudes de l'océan Indien et le profond canal du Mozambique offrent des opportunités palpitantes pour le marlin, l'espadon voilier, le wahoo, le thon jaune et le maquereau royal. Les pêcheurs de plage peuvent cibler le bar, le barracuda et la pompanette.",
+    highlights: [
+      "Marlin noir (octobre-janvier)",
+      "Espadon voilier (juin-septembre)",
+      "Thon jaune et wahoo",
+      "Maquereau royal (Couta)",
+      "Pêche côtière pour bar et barracuda",
+      "Eaux chaudes et cristallines de l'Indien",
+      "Charters avec mise à l'eau depuis la plage",
+      "Capitaines locaux expérimentés 20+ ans"
+    ],
+    pricingRange: "À partir de 550 US$ (charter)",
+    pricingDetails: [
+      "Charter 5 heures : 550-650 US$",
+      "Charter 8 heures : 850-950 US$",
+      "Journée complète haute mer : 1 000+ US$",
+      "Pêche de plage : Gratuit (apportez votre équipement)",
+      "Pêche guidée sur plage : 50-100 US$",
+      "Licences, équipement et préparation inclus dans les charters"
+    ],
+    durationTypical: "5-8 heures (charter)",
+    durationDetails: [
+      "Charter demi-journée : 5 heures",
+      "Charter journée complète : 8-10 heures",
+      "Pêche de plage : Flexible (meilleur à l'aube/crépuscule)",
+      "Départs tôt le matin (6-7h)",
+      "Accès rapide aux eaux profondes (minutes de la côte)"
+    ],
+    included: [
+      "Tout l'équipement de pêche",
+      "Licences et permis de pêche",
+      "Capitaine expérimenté (20+ ans)",
+      "Appâts et leurres",
+      "Nettoyage et filetage du poisson",
+      "Emballage sous vide pour le voyage",
+      "Boissons et collations (plupart des opérateurs)",
+      "Équipement de sécurité"
+    ],
+    requirementsLevel: "Débutant à Expert",
+    requirementsDetails: [
+      "Aucune expérience requise (les guides assistent)",
+      "Maximum 6 pêcheurs par bateau (généralement)",
+      "Mise à l'eau depuis la plage - attendez-vous à être mouillé !",
+      "Protection solaire essentielle",
+      "Capacité de nage recommandée",
+      "Médicament anti-mal de mer si sujet"
+    ],
+    bestTimePeak: "Octobre - Janvier (Saison du Marlin)",
+    bestTimeDetails: [
+      "**Marlin Noir :** Octobre-janvier (haute saison)",
+      "**Marlin Bleu :** Toute l'année",
+      "**Espadon Voilier :** Juin-septembre (période idéale)",
+      "**Wahoo et Thon :** Toute l'année (pic : oct-avr)",
+      "**Maquereau Royal :** Toute l'année (meilleur : avr-nov)",
+      "**Temp. de l'Eau :** 22-28°C (plus chaud = plus de pélagiques)"
+    ],
+    tips: [
+      "Réservez la saison du marlin (oct-jan) à l'avance",
+      "Pêche de plage meilleure au lever et coucher du soleil",
+      "La pointe rocheuse au bout de la plage offre des eaux profondes",
+      "Marchez vers le nord jusqu'à Ponta Mamoli pour meilleure pêche côtière",
+      "Utilisez des leurres artificiels : pink dusters, redeye, calamar",
+      "Apportez des sacs étanches pour les appareils électroniques",
+      "Arrangez le stockage du poisson avec votre lodge",
+      "Catch and release recommandé pour la conservation des marlins"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Capitaine Laurens Koen, 20+ ans d'expérience"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Capitaine Marcus Joubert, spécialistes pêche sportive"
+      }
+    ]
+  },
+
   pt: {
     title: "Pesca de Praia e Alto-Mar",
     tagline: "Pesque robalo ou persiga marlins no Canal de Moçambique",

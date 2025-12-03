@@ -269,6 +269,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  fr: {
+    title: "Safaris Océaniques",
+    tagline: "Observation des baleines et rencontres avec la vie marine",
+    overview: "Embarquez pour des safaris océaniques palpitants pour observer les baleines à bosse migrant dans les eaux mozambicaines (juillet-novembre). Ces aventures en bateau offrent également des rencontres avec les dauphins toute l'année, des observations saisonnières de requins-baleines, et du snorkeling sur des récifs préservés grouillant de vie marine.",
+    highlights: [
+      "30 000 baleines à bosse (juillet-novembre)",
+      "Sauts, coups de queue et espionnage",
+      "Rencontres avec les dauphins toute l'année",
+      "Requins-baleines (octobre-mars)",
+      "Raies manta et tortues de mer",
+      "Snorkeling sur récifs préservés",
+      "Tours menés par des biologistes marins",
+      "Focus recherche et conservation"
+    ],
+    pricingRange: "40-45 US$ par personne",
+    pricingDetails: [
+      "Observation baleines uniquement : 40 US$",
+      "Dauphins + baleines combiné : 45 US$",
+      "Tour privé journée depuis Maputo : 179 US$",
+      "Enfants moins de 12 ans : Tarifs réduits",
+      "Équipement et collations inclus"
+    ],
+    durationTypical: "2-3 heures",
+    durationDetails: [
+      "Excursions demi-journée : 2-3 heures",
+      "Tours journée complète : 6-8 heures (depuis Maputo)",
+      "Départs le matin (meilleures conditions)",
+      "Inclut temps de snorkeling",
+      "Flexible selon l'activité des baleines"
+    ],
+    included: [
+      "Transport en bateau avec capitaine expérimenté",
+      "Équipement de snorkeling (masque, palmes, tuba)",
+      "Guide biologiste marin (plupart des opérateurs)",
+      "Collations et rafraîchissements",
+      "Droits du parc marin",
+      "Photos/vidéos (certains opérateurs)",
+      "Équipement de sécurité et gilets de sauvetage"
+    ],
+    requirementsLevel: "Tous âges",
+    requirementsDetails: [
+      "Aucune compétence spéciale requise pour observation baleines",
+      "Capacité de nage nécessaire pour snorkeling",
+      "Âges : Adapté aux familles (enfants aux personnes âgées)",
+      "Dépend de la météo - mer doit être calme",
+      "Tours peuvent être reprogrammés si conditions dangereuses",
+      "Veste chaude recommandée (juillet-septembre)"
+    ],
+    bestTimePeak: "Juillet - Octobre (Saison des Baleines)",
+    bestTimeDetails: [
+      "**Baleines à Bosse :** Juillet-novembre (pic : juil-oct)",
+      "**Dauphins :** Toute l'année (200+ résidents)",
+      "**Requins-Baleines :** Octobre-mars",
+      "**Raies Manta :** Décembre-mai",
+      "**Tortues de Mer :** Octobre-mars (nidification)",
+      "**Mers Plus Calmes :** Mois d'hiver (juin-septembre)"
+    ],
+    tips: [
+      "Réservez pendant la saison des baleines (juil-nov) pour meilleures chances",
+      "Apportez une veste chaude - la brise marine peut être froide",
+      "Sac étanche pour appareil photo essentiel",
+      "Médicament contre le mal de mer si sujet",
+      "Les jumelles améliorent l'expérience d'observation",
+      "Les opérateurs éthiques suivent les directives de non-contact",
+      "Observations non garanties - animaux sauvages",
+      "Combinez avec snorkeling pour expérience marine complète"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Experts observation baleines, focus juillet-novembre"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Tours basés sur la recherche, collecte de données pour conservation"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safaris océaniques, observation baleines et rencontres marines"
+      }
+    ]
+  },
+
   pt: {
     title: "Safáris Oceânicos",
     tagline: "Observação de baleias e encontros com vida marinha",
