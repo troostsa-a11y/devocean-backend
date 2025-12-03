@@ -269,6 +269,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  it: {
+    title: "Safari Oceanici",
+    tagline: "Avvistamento balene e incontri con la vita marina",
+    overview: "Parti per emozionanti safari oceanici per osservare le megattere che migrano attraverso le acque mozambicane (luglio-novembre). Queste avventure in barca offrono anche incontri con delfini tutto l'anno, avvistamenti stagionali di squali balena e snorkeling su barriere incontaminate ricche di vita marina.",
+    highlights: [
+      "30.000 megattere (luglio-novembre)",
+      "Salti, colpi di coda e spyhopping",
+      "Incontri con delfini tutto l'anno",
+      "Squali balena (ottobre-marzo)",
+      "Mante e tartarughe marine",
+      "Snorkeling su barriere incontaminate",
+      "Tour guidati da biologi marini",
+      "Focus su ricerca e conservazione"
+    ],
+    pricingRange: "US$40-45 per persona",
+    pricingDetails: [
+      "Solo avvistamento balene: US$40",
+      "Delfini + balene combinato: US$45",
+      "Tour privato giornata intera da Maputo: US$179",
+      "Bambini sotto i 12: Tariffe ridotte",
+      "Attrezzatura e snack inclusi"
+    ],
+    durationTypical: "2-3 ore",
+    durationDetails: [
+      "Escursioni mezza giornata: 2-3 ore",
+      "Tour giornata intera: 6-8 ore (da Maputo)",
+      "Partenze mattutine (migliori condizioni)",
+      "Include tempo per snorkeling",
+      "Flessibile in base all'attività delle balene"
+    ],
+    included: [
+      "Trasferimento in barca con capitano esperto",
+      "Attrezzatura snorkeling (maschera, pinne, boccaglio)",
+      "Guida biologo marino (maggior parte operatori)",
+      "Snack e rinfreschi",
+      "Tasse del parco marino",
+      "Foto/video (alcuni operatori)",
+      "Attrezzatura di sicurezza e giubbotti salvagente"
+    ],
+    requirementsLevel: "Tutte le età",
+    requirementsDetails: [
+      "Nessuna abilità speciale richiesta per avvistamento balene",
+      "Capacità natatoria necessaria per snorkeling",
+      "Età: Adatto alle famiglie (bambini ad anziani)",
+      "Dipende dal meteo - il mare deve essere calmo",
+      "I tour possono essere riprogrammati se condizioni pericolose",
+      "Giacca calda consigliata (luglio-settembre)"
+    ],
+    bestTimePeak: "Luglio - Ottobre (Stagione Balene)",
+    bestTimeDetails: [
+      "**Megattere:** Luglio-novembre (picco: lug-ott)",
+      "**Delfini:** Tutto l'anno (200+ residenti)",
+      "**Squali Balena:** Ottobre-marzo",
+      "**Mante:** Dicembre-maggio",
+      "**Tartarughe Marine:** Ottobre-marzo (nidificazione)",
+      "**Mari Più Calmi:** Mesi invernali (giugno-settembre)"
+    ],
+    tips: [
+      "Prenota durante la stagione delle balene (lug-nov) per migliori possibilità",
+      "Porta una giacca calda - la brezza marina può essere fredda",
+      "Borsa impermeabile per fotocamera essenziale",
+      "Medicina per mal di mare se sensibile",
+      "I binocoli migliorano l'esperienza di osservazione",
+      "Gli operatori etici seguono linee guida di non-contatto",
+      "Avvistamenti non garantiti - animali selvatici",
+      "Combina con snorkeling per esperienza marina completa"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Esperti di balene, focus luglio-novembre"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Tour basati sulla ricerca, raccolta dati per la conservazione"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safari oceanici, avvistamento balene e incontri marini"
+      }
+    ]
+  },
+
   sv: {
     title: "Havssafaris",
     tagline: "Valskådning och möten med marint liv",

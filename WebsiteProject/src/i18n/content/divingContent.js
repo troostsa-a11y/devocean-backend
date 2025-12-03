@@ -311,6 +311,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  it: {
+    title: "Immersioni",
+    tagline: "Esplora barriere incontaminate con squali toro, mante e squali balena",
+    overview: "Ponta do Ouro offre immersioni di classe mondiale con oltre 20 siti di immersione, dalle barriere poco profonde ai pinnacoli profondi. Le acque cristalline del Canale di Mozambico offrono una visibilità eccezionale e incontri con un'incredibile diversità di vita marina, incluse 19 specie di squali.",
+    highlights: [
+      "Oltre 20 siti di immersione da 8m a 48m",
+      "Squali toro, tigre e martello",
+      "Squali balena (ottobre-marzo)",
+      "Megattere (luglio-novembre)",
+      "Mante, tartarughe e delfini",
+      "Oltre 180 specie di nudibranchi",
+      "Barriere coralline incontaminate",
+      "Centri PADI professionali"
+    ],
+    pricingRange: "Da US$40 per immersione",
+    pricingDetails: [
+      "Singola immersione: US$40-50",
+      "Pacchetto due immersioni: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Noleggio attrezzatura incluso",
+      "Tutte le licenze e tasse incluse"
+    ],
+    durationTypical: "Mezza giornata o giornata intera",
+    durationDetails: [
+      "Immersioni mattutine: 2 immersioni (3-4 ore)",
+      "Giornata intera: 3 immersioni (6-8 ore)",
+      "Partenza dalla spiaggia (avventuroso!)",
+      "Siti a 1-12km dalla costa"
+    ],
+    included: [
+      "Attrezzatura subacquea completa (jacket, erogatore, muta)",
+      "Trasferimento in barca ai siti di immersione",
+      "Istruttore/divemaster PADI professionale",
+      "Tasse del parco marino",
+      "Snack e bevande dopo l'immersione",
+      "Computer subacqueo e attrezzatura di sicurezza"
+    ],
+    requirementsLevel: "Principiante ad Avanzato",
+    requirementsDetails: [
+      "Siti per principianti: Crèche, Doodles, Playground (10-18m)",
+      "Siti avanzati: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Certificazione PADI richiesta (o seguire corso Open Water)",
+      "Questionario medico obbligatorio",
+      "Buona capacità natatoria",
+      "Età minima: 10 anni (Junior Open Water)"
+    ],
+    bestTimePeak: "Ottobre - Aprile (Estate)",
+    bestTimeDetails: [
+      "**Squali Toro e Tigre:** Novembre-aprile (acqua 26-29°C)",
+      "**Squali Martello:** Aprile-ottobre (migliore visibilità)",
+      "**Squali Balena:** Ottobre-marzo",
+      "**Megattere:** Luglio-novembre",
+      "**Migliore Visibilità:** Maggio-agosto (20-30m)",
+      "**Acqua Più Calda:** Dicembre-febbraio (27-29°C)"
+    ],
+    tips: [
+      "Prenota in anticipo nell'alta stagione (dicembre-gennaio)",
+      "Porta la tua tessera di certificazione",
+      "Considera una muta (3mm consigliata)",
+      "La partenza tra le onde è emozionante - preparati a bagnarti!",
+      "La maggior parte degli operatori offre noleggio attrezzatura",
+      "I pacchetti multi-immersione offrono il miglior valore"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Specialisti immersioni con squali, orientati alla ricerca"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centro PADI 5 stelle, specialisti immersioni con squali"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Centro immersioni professionale"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Centro immersioni professionale"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Specialisti immersioni con squali"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Centro immersioni professionale"
+      }
+    ]
+  },
+
   sv: {
     title: "Dykning",
     tagline: "Utforska orörda rev med tjurhajar, mantarockor och valhajar",

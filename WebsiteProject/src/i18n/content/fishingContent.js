@@ -257,6 +257,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  it: {
+    title: "Pesca da Spiaggia e d'Alto Mare",
+    tagline: "Pesca la spigola o insegui i marlin nel Canale di Mozambico",
+    overview: "Ponta do Ouro offre pesca eccezionale sia dalla spiaggia che in alto mare. Le calde acque dell'Oceano Indiano e il profondo Canale di Mozambico offrono emozionanti opportunità per marlin, pesce vela, wahoo, tonno pinna gialla e sgombro reale. I pescatori da spiaggia possono pescare spigola, barracuda e leccia.",
+    highlights: [
+      "Marlin nero (ottobre-gennaio)",
+      "Pesce vela (giugno-settembre)",
+      "Tonno pinna gialla e wahoo",
+      "Sgombro reale (Couta)",
+      "Pesca costiera per spigola e barracuda",
+      "Acque calde e cristalline dell'Oceano Indiano",
+      "Charter con partenza dalla spiaggia",
+      "Capitani locali esperti con 20+ anni"
+    ],
+    pricingRange: "Da US$550 (charter)",
+    pricingDetails: [
+      "Charter 5 ore: US$550-650",
+      "Charter 8 ore: US$850-950",
+      "Giornata intera alto mare: US$1.000+",
+      "Pesca da spiaggia: Gratuita (porta attrezzatura)",
+      "Pesca guidata in spiaggia: US$50-100",
+      "Licenze, attrezzatura e preparazione incluse nei charter"
+    ],
+    durationTypical: "5-8 ore (charter)",
+    durationDetails: [
+      "Charter mezza giornata: 5 ore",
+      "Charter giornata intera: 8-10 ore",
+      "Pesca da spiaggia: Flessibile (meglio all'alba/tramonto)",
+      "Partenze mattutine presto (6-7)",
+      "Accesso rapido alle acque profonde (minuti dalla costa)"
+    ],
+    included: [
+      "Attrezzatura da pesca completa",
+      "Licenze e permessi di pesca",
+      "Capitano esperto (20+ anni)",
+      "Esca e artificiali",
+      "Pulizia e sfilettatura del pesce",
+      "Confezionamento sottovuoto per il viaggio",
+      "Bevande e snack (maggior parte operatori)",
+      "Attrezzatura di sicurezza"
+    ],
+    requirementsLevel: "Principiante ad Esperto",
+    requirementsDetails: [
+      "Nessuna esperienza richiesta (le guide aiutano)",
+      "Massimo 6 pescatori per barca (solitamente)",
+      "Partenza dalla spiaggia - aspettati di bagnarti!",
+      "Protezione solare essenziale",
+      "Capacità natatoria consigliata",
+      "Medicina per mal di mare se sensibile"
+    ],
+    bestTimePeak: "Ottobre - Gennaio (Stagione Marlin)",
+    bestTimeDetails: [
+      "**Marlin Nero:** Ottobre-gennaio (alta stagione)",
+      "**Marlin Blu:** Tutto l'anno",
+      "**Pesce Vela:** Giugno-settembre (periodo di picco)",
+      "**Wahoo e Tonno:** Tutto l'anno (picco: ott-apr)",
+      "**Sgombro Reale:** Tutto l'anno (migliore: apr-nov)",
+      "**Temp. Acqua:** 22-28°C (più calda = più pelagici)"
+    ],
+    tips: [
+      "Prenota la stagione del marlin (ott-gen) in anticipo",
+      "La pesca da spiaggia è migliore all'alba e al tramonto",
+      "La punta rocciosa alla fine della spiaggia offre acque profonde",
+      "Cammina verso nord fino a Ponta Mamoli per migliore pesca costiera",
+      "Usa artificiali: pink dusters, redeye, calamaro",
+      "Porta borse impermeabili per l'elettronica",
+      "Organizza la conservazione del pesce con il tuo lodge",
+      "Catch and release consigliato per la conservazione dei marlin"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Capitano Laurens Koen, 20+ anni di esperienza"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Capitano Marcus Joubert, specialisti pesca sportiva"
+      }
+    ]
+  },
+
   sv: {
     title: "Strand- och Havsfiske",
     tagline: "Fiska abborre eller jaga marlin i Moçambiquekanalen",

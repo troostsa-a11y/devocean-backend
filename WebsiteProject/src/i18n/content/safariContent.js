@@ -251,6 +251,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  it: {
+    title: "Safari Fotografici",
+    tagline: "Avventure nella savana nella Riserva Speciale di Maputo",
+    overview: "Scopri la fauna africana a pochi minuti da Ponta do Ouro. Il Parco Nazionale di Maputo (ex Riserva Speciale di Maputo) offre classici avvistamenti di fauna selvatica con 450-500 elefanti costieri, giraffe, zebre, ippopotami, coccodrilli e diverse specie di antilopi su 1.718 km² di natura protetta - Patrimonio Mondiale UNESCO dal 2025.",
+    highlights: [
+      "450-500 elefanti costieri",
+      "Giraffe, zebre e antilopi",
+      "Ippopotami e coccodrilli nelle zone umide",
+      "Leopardo, ghepardo e iena maculata",
+      "Oltre 300 specie di uccelli inclusi fenicotteri",
+      "Safari in 4x4 con guide esperte",
+      "Patrimonio Mondiale UNESCO (2025)",
+      "Combinazione spiaggia e savana possibile"
+    ],
+    pricingRange: "Da US$95 per persona",
+    pricingDetails: [
+      "Safari giornaliero: US$95-120 per persona",
+      "Giornata intera con spiaggia Ponta do Ouro: US$100-130",
+      "Safari campeggio 2-3 giorni: Da US$200",
+      "Tour privati: Prezzi personalizzati",
+      "Veicolo 4x4, guida e tasse del parco incluse"
+    ],
+    durationTypical: "5-8 ore (escursione giornaliera)",
+    durationDetails: [
+      "Safari mezza giornata: 3-4 ore",
+      "Safari giornata intera: 5-6 ore nel parco + trasporto",
+      "Campeggio multi-giorno: 2-3 giorni",
+      "Partenza da Ponta do Ouro: Mattina presto (6-7)",
+      "Ritorno: Tardo pomeriggio (16-17)"
+    ],
+    included: [
+      "Veicolo 4x4 da safari",
+      "Guida/autista professionale",
+      "Tasse del parco marino",
+      "Binocoli per osservazione fauna",
+      "Acqua in bottiglia e snack",
+      "Transfer hotel da Ponta do Ouro",
+      "Ricarica USB in veicolo (maggior parte operatori)"
+    ],
+    requirementsLevel: "Tutte le età e livelli di forma fisica",
+    requirementsDetails: [
+      "Nessuna condizione fisica speciale richiesta",
+      "Adatto alle famiglie con bambini",
+      "Adatto agli anziani (osservazione dal veicolo)",
+      "Veicolo 4x4 obbligatorio (strade sabbiose)",
+      "Abbigliamento safari comodo consigliato",
+      "Protezione solare essenziale"
+    ],
+    bestTimePeak: "Luglio - Ottobre (Stagione Secca)",
+    bestTimeDetails: [
+      "**Osservazione Fauna:** Luglio-ottobre (animali ai punti d'acqua)",
+      "**Birdwatching:** Ottobre-marzo (uccelli migratori presenti)",
+      "**Osservazione Elefanti:** Tutto l'anno (popolazione 450-500)",
+      "**Da Evitare:** Dicembre-febbraio (caldo, umido, vegetazione fitta)",
+      "**Temperatura:** Più fresco in inverno (lug-set: 18-25°C)",
+      "**Condizioni Strade:** Migliori nella stagione secca"
+    ],
+    tips: [
+      "Prenota in anticipo nell'alta stagione (luglio-ottobre)",
+      "I safari mattutini offrono la migliore attività animale",
+      "Porta una fotocamera con teleobiettivo per foto di fauna",
+      "Indossa colori neutri (kaki, beige, oliva) - no colori vivaci",
+      "I binocoli vengono forniti ma porta i tuoi se ne hai",
+      "Cappello, crema solare e repellente essenziali",
+      "Combina con tempo in spiaggia a Ponta do Ouro",
+      "Chiedi del campeggio multi-giorno per esperienza immersiva"
+    ],
+    operators: [
+      {
+        name: "Parco Nazionale di Maputo",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Prenotazioni ufficiali del parco e safari guidati"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Trasporto safari e tour guidati"
+      }
+    ]
+  },
+
   sv: {
     title: "Fotosafaris",
     tagline: "Bushaventyr i Maputo Special Reservat",

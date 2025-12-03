@@ -299,6 +299,104 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  it: {
+    title: "Nuoto con i Delfini",
+    tagline: "Incontri etici con delfini selvatici in acque cristalline",
+    overview: "Vivi incontri magici con delfini tursiopi indo-pacifici selvatici nella Riserva Marina Parziale di Ponta do Ouro. Entrambi gli operatori autorizzati seguono rigorose linee guida etiche, garantendo interazioni passive e non invasive dove i delfini scelgono di interagire alle loro condizioni.",
+    highlights: [
+      "Oltre 200 delfini tursiopi residenti",
+      "Incontri etici basati sulla ricerca",
+      "NESSUN tocco o inseguimento - selvatici e liberi",
+      "Snorkeling su barriere incontaminate",
+      "Avvistamenti stagionali di squali balena",
+      "Megattere (luglio-novembre)",
+      "Piccoli gruppi (max 12 persone)",
+      "Focus educativo sulla conservazione"
+    ],
+    pricingRange: "US$45-50 per persona",
+    pricingDetails: [
+      "Osservazione delfini (solo barca): US$45",
+      "Escursione nuoto con delfini: US$50",
+      "Pacchetti multi-giorno: Tariffe ridotte",
+      "Attrezzatura snorkeling inclusa",
+      "Tassa conservazione inclusa"
+    ],
+    durationTypical: "2-3 ore",
+    durationDetails: [
+      "Partenza mattina presto (migliori condizioni)",
+      "Snorkeling su barriere poco profonde",
+      "Facilitazione delfini in acqua",
+      "Incontri squali balena (stagionale)",
+      "Briefing educativo prima della partenza"
+    ],
+    included: [
+      "Maschera, pinne e boccaglio",
+      "Muta (se necessario)",
+      "Facilitatore/guida esperto",
+      "Presentazione educativa prima della partenza",
+      "Foto/video del tuo incontro",
+      "Rinfreschi leggeri",
+      "Tasse del parco marino"
+    ],
+    requirementsLevel: "Tutte le età e abilità",
+    requirementsDetails: [
+      "Nessuna esperienza subacquea richiesta",
+      "Capacità natatorie di base essenziali",
+      "Tutte le età (bambini benvenuti)",
+      "Forma fisica: Leggera a moderata",
+      "A proprio agio in acqua di mare",
+      "Dipende dal meteo - il mare deve essere calmo"
+    ],
+    bestTimePeak: "Tutto l'anno (delfini residenti)",
+    bestTimeDetails: [
+      "**Delfini:** Tutto l'anno (200+ residenti)",
+      "**Megattere:** Luglio-novembre",
+      "**Squali Balena:** Ottobre-marzo",
+      "**Mari Più Calmi:** Mattina presto",
+      "**Temperatura Acqua:** 22-28°C tutto l'anno"
+    ],
+    tips: [
+      "Prenota 2-3 giorni in anticipo",
+      "Porta crema solare sicura per le barriere",
+      "Fotocamera subacquea consigliata",
+      "Segui attentamente le istruzioni del facilitatore",
+      "Rimani calmo e silenzioso in acqua",
+      "Lascia che i delfini vengano da te naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Nessun Tocco o Inseguimento",
+        description: "I delfini non vengono mai toccati, inseguiti o molestati. Tutti gli incontri avvengono alle condizioni dei delfini."
+      },
+      {
+        title: "Approccio Basato sulla Ricerca",
+        description: "Entrambi gli operatori lavorano con biologi marini e contribuiscono alla ricerca e conservazione continua dei delfini."
+      },
+      {
+        title: "Solo Piccoli Gruppi",
+        description: "Massimo 12 persone per viaggio garantisce minimo disturbo e incontri migliori."
+      },
+      {
+        title: "Prima l'Educazione",
+        description: "I briefing prima della partenza insegnano a tutti i partecipanti il comportamento appropriato e la biologia dei delfini."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours Research Center",
+        website: "https://www.dolphinencountours.org/",
+        email: "connect@dolphinencountours.org",
+        specialty: "Incontri con delfini guidati da biologi marini, focalizzati sulla conservazione"
+      },
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Nuoto con delfini basato sulla ricerca con focus educativo"
+      }
+    ]
+  },
+
   sv: {
     title: "Simning med Delfiner",
     tagline: "Etiska möten med vilda delfiner i kristallklart vatten",
