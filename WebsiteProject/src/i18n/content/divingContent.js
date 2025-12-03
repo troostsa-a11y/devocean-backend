@@ -75,7 +75,7 @@ export const DIVING_CONTENT = {
       {
         name: "Gozo Azul Diving",
         website: "https://gozo-azul.co.za/",
-        email: "natalie@gozo-azul-co.za",
+        email: "natalie@gozo-azul.co.za",
         specialty: "PADI 5-star center, shark diving specialists"
       },
       {
