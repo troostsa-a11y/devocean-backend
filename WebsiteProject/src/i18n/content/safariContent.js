@@ -71,22 +71,16 @@ export const SAFARI_CONTENT = {
     ],
     operators: [
       {
-        name: "My Guide Mozambique",
-        website: "https://www.myguidemozambique.com/",
-        email: "info@myguidemozambique.com",
-        specialty: "Full-day safari + Ponta do Ouro beach combos"
+        name: "Maputo National Park",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Official park reservations & guided game drives"
       },
       {
-        name: "Mussiro Trips",
-        website: "https://mussiro.com/",
-        email: "info@mussiro.com",
-        specialty: "Day tours from Maputo crossing the reserve"
-      },
-      {
-        name: "Maputo Tour Guides",
-        website: "https://maputotours.net/",
-        email: "info@maputotours.net",
-        specialty: "Dedicated 5-6 hour game drives"
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Safari transport & guided tours"
       }
     ]
   }
