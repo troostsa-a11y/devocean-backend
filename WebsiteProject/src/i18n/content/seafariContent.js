@@ -536,6 +536,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  zu: {
+    title: "Ama-Safari Asolwandle",
+    tagline: "Ukubuka imvubu & ukuhlangana nokuphila kwasolwandle",
+    overview: "Qala ama-safari asolwandle ajabulisayo ukubuka imvubu ezinkulu ezihamba emanzini aseMozambique (Julayi-Novemba). Lezi zinto zesikebhe zibuye zinikeze ukuhlangana namadophini unyaka wonke, ukubuka ushaka lwemvubu ngesikhathi nokucwila ngaphezu kwama-reef angadingekanga agcwele ukuphila kwasolwandle.",
+    highlights: [
+      "30,000 imvubu ezinkulu (Julayi-Novemba)",
+      "Ukugxuma, ukushaya imisila & spyhopping",
+      "Ukuhlangana namadophini unyaka wonke",
+      "Ushaka lwemvubu (Okthoba-Mashi)",
+      "Ama-manta rays & izimfudu zasolwandle",
+      "Ukucwila ngaphezu kwama-reef angadingekanga",
+      "Izindlela eziholwa ngososayensi basolwandle",
+      "Ukugxila ocwaningweni nasekuvikelweni"
+    ],
+    pricingRange: "US$40-45 ngomuntu",
+    pricingDetails: [
+      "Ukubuka imvubu kuphela: US$40",
+      "Amadophini + imvubu ehlanganisiwe: US$45",
+      "Uhambo losuku lonke lwangasese ukusuka eMaputo: US$179",
+      "Abantwana abangaphansi kuka-12: Amanani ehliselwe",
+      "Izinto nezidlo zifakiwe"
+    ],
+    durationTypical: "Amahora 2-3",
+    durationDetails: [
+      "Izindlela zosuku oluncane: amahora 2-3",
+      "Izindlela zosuku lonke: amahora 6-8 (ukusuka eMaputo)",
+      "Ukusuka ekuseni (izimo ezinhle)",
+      "Ifaka isikhathi sokucwila",
+      "Kungatshintsha ngokusho kokusebenza kwemvubu"
+    ],
+    included: [
+      "Ukuthuthelwa ngesikebhe nokapitani onamava",
+      "Izinto zokucwila (imaski, izinyawo, snorkel)",
+      "Umholi ososayensi wasolwandle (abaningi abasebenzisi)",
+      "Izidlo neziphuzo",
+      "Izindleko ze-marine park",
+      "Izithombe/amavidiyo (abanye abasebenzisi)",
+      "Izinto zokuphepha nama-life jacket"
+    ],
+    requirementsLevel: "Yonke iminyaka",
+    requirementsDetails: [
+      "Akudingeki amakhono akhethekile ukubuka imvubu",
+      "Ikhono lokubhukuda lidingeka ukucwila",
+      "Iminyaka: Kulungele imindeni (abantwana kuya kubadala)",
+      "Incike esimweni sezulu - ulwandle kumele lube luthule",
+      "Izindlela zingahlanzelwa uma izimo ziyingozi",
+      "Ijazi elifudumele linconywa (Julayi-Septhemba)"
+    ],
+    bestTimePeak: "Julayi - Okthoba (Isikhathi Semvubu)",
+    bestTimeDetails: [
+      "**Imvubu Ezinkulu:** Julayi-Novemba (piek: Jul-Okt)",
+      "**Amadophini:** Unyaka wonke (200+ abahlala njalo)",
+      "**Ushaka Lwemvubu:** Okthoba-Mashi",
+      "**Ama-Manta Rays:** Disemba-Meyi",
+      "**Izimfudu Zasolwandle:** Okthoba-Mashi (ukuzalela)",
+      "**Ulwandle Oluthulile Kakhulu:** Izinyanga zobusika (Juni-Septhemba)"
+    ],
+    tips: [
+      "Bhuka ngesikhathi semvubu (Jul-Nov) ukuthola amathuba amahle",
+      "Letha ijazi elifudumele - umoya wasolwandle ungabanda",
+      "Isikhwama sekhamera esingamanzi sibalulekile",
+      "Umuthi we-sea sickness uma unamandla",
+      "Ama-binoculars enza ukubuka imvubu kube ngcono",
+      "Abasebenzisi abenethikali balandela imigomo yokungathinti",
+      "Ukubuka akuqinisekiswa - izilwane zasendle",
+      "Hlanganisa nokucwila ukuze uthole isipiliyoni sasolwandle esigcwele"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Ochwepheshile bokubuka imvubu, bagxile kuJulayi-Novemba"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Izindlela zocwaningo, ukuqoqa idatha yokuvikela"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Ama-safari asolwandle, ukubuka imvubu & ukuhlangana kwasolwandle"
+      }
+    ]
+  },
+
   sv: {
     title: "Havssafaris",
     tagline: "Valskådning och möten med marint liv",

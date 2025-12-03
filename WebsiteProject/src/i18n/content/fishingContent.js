@@ -512,6 +512,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  zu: {
+    title: "Ukudoba Ogwini & Olwandle Olujulile",
+    tagline: "Bamba i-kabeljou noma uzingele ama-marlin e-Mozambique Channel",
+    overview: "I-Ponta do Ouro inikeza ukudoba okusezingeni eliphakeme kokubili ogwini nasekujuleni kolwandle. Amanzi ashisayo e-Indian Ocean ne-Mozambique Channel ejulile anikeza amathuba ajabulisayo e-marlin, sailfish, wahoo, yellowfin tuna ne-king mackerel. Abadobi basogwini bangabamba i-kabeljou, barracuda ne-pompano.",
+    highlights: [
+      "I-Black marlin (Okthoba-Januwari)",
+      "I-Sailfish (Juni-Septhemba)",
+      "I-Yellowfin tuna & wahoo",
+      "I-King mackerel (Couta)",
+      "Ukudoba ogwini lwe-kabeljou & barracuda",
+      "Amanzi ashisayo, acwebile e-Indian Ocean",
+      "Ama-charter aqala ogwini",
+      "Okapitani bendawo abanolwazi olungaphezu kweminyaka engu-20"
+    ],
+    pricingRange: "Kusuka ku-US$550 (charter)",
+    pricingDetails: [
+      "I-charter yamahora 5: US$550-650",
+      "I-charter yamahora 8: US$850-950",
+      "Usuku lonke olwandle olujulile: US$1,000+",
+      "Ukudoba ogwini: Mahhala (letha izinto zakho)",
+      "Ukudoba ogwini okuhola: US$50-100",
+      "Izimvume, izinto nokulungiselela kufakiwe kuma-charter"
+    ],
+    durationTypical: "Amahora 5-8 (charter)",
+    durationDetails: [
+      "I-charter yosuku oluncane: amahora 5",
+      "I-charter yosuku lonke: amahora 8-10",
+      "Ukudoba ogwini: Kungatshintsha (kuhle ekuphumeni/ukushona kwelanga)",
+      "Ukusuka ekuseni kakhulu (6-7)",
+      "Ukufinyelela ngokushesha emanzini ajulile (imizuzu ukusuka ogwini)"
+    ],
+    included: [
+      "Izinto zokudoba ezigcwele",
+      "Izimvume zamaphepha okudoba",
+      "Ukapitani onamava (20+ iminyaka)",
+      "I-bait nama-lures",
+      "Ukuhlanza nokusika izinhlanzi",
+      "Ukupakisha i-vacuum yokuhamba",
+      "Iziphuzo nezidlo (abaningi abasebenzisi)",
+      "Izinto zokuphepha"
+    ],
+    requirementsLevel: "Abaqalayo kuya Kochwepheshile",
+    requirementsDetails: [
+      "Akudingeki ulwazi (abaholi bayasiza)",
+      "Abadobi abangu-6 ngesikebhe (ngokuvamile)",
+      "Ukuqala ogwini - lindela ukumanzwa!",
+      "Ukuvikelwa kwelanga kubalulekile",
+      "Ikhono lokubhukuda linconywa",
+      "Umuthi we-sea sickness uma unamandla"
+    ],
+    bestTimePeak: "Okthoba - Januwari (Isikhathi Se-Marlin)",
+    bestTimeDetails: [
+      "**I-Black Marlin:** Okthoba-Januwari (isikhathi esiphezulu)",
+      "**I-Blue Marlin:** Unyaka wonke",
+      "**I-Sailfish:** Juni-Septhemba (isikhathi sephezulu)",
+      "**I-Wahoo & Tuna:** Unyaka wonke (piek: Okt-Apr)",
+      "**I-King Mackerel:** Unyaka wonke (engcono: Apr-Nov)",
+      "**Ukushisa Kwamanzi:** 22-28°C (afudumele = okuningi okubhukudayo)"
+    ],
+    tips: [
+      "Bhuka isikhathi se-marlin (Okt-Jan) kusenesikhathi",
+      "Ukudoba ogwini kungcono ekuphumeni nasekushoneni kwelanga",
+      "Itshe ekugcineni kogwini linikeza amanzi ajulile",
+      "Hamba enyakatho ukuya ePonta Mamoli ukuze uthole ukudoba okungcono ogwini",
+      "Sebenzisa ama-lures: pink dusters, redeye, squid",
+      "Letha izikhwama ezingamanzi ze-elektroniki",
+      "Hlela ukugcinwa kwezinhlanzi ne-lodge yakho",
+      "Ukubamba nokudedela kunconywa ukuze kuvikelwe ama-marlin"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Ukapitani Laurens Koen, iminyaka engaphezu kuka-20 yamava"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Ukapitani Marcus Joubert, ochwepheshile bokudlala udoba"
+      }
+    ]
+  },
+
   sv: {
     title: "Strand- och Havsfiske",
     tagline: "Fiska abborre eller jaga marlin i Moçambiquekanalen",

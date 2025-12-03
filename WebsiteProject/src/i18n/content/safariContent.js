@@ -500,6 +500,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  zu: {
+    title: "Ama-Safari Wezithombe",
+    tagline: "Izinto zasehlathini e-Maputo Special Reserve",
+    overview: "Thola izilwane zase-Afrika imizuzu nje ukusuka e-Ponta do Ouro. I-Maputo National Park (okwakuyaziwa nge-Maputo Special Reserve) inikeza ukubuka izilwane okujwayelekile nge-450-500 amahlengethwa asogwini, izindlulamithi, amadube, izimvubu, izingwenya nezinhlobo eziningi ze-antelope ku-1,718 km² yemvelo evikelwe - I-UNESCO World Heritage Site kusukela ngo-2025.",
+    highlights: [
+      "450-500 amahlengethwa asogwini",
+      "Izindlulamithi, amadube & ama-antelope",
+      "Izimvubu & izingwenya ezindaweni ezimanzi",
+      "Ingwe, i-cheetah & i-spotted hyena",
+      "300+ izinhlobo zezinyoni kubandakanya ama-flamingo",
+      "Ama-safari e-4x4 nabaholi abanamava",
+      "I-UNESCO World Heritage Site (2025)",
+      "Ukuhlanganiswa kogwini nehlathi kunokwenzeka"
+    ],
+    pricingRange: "Kusuka ku-US$95 ngomuntu",
+    pricingDetails: [
+      "I-safari yosuku: US$95-120 ngomuntu",
+      "Usuku lonke nogwini lwase-Ponta do Ouro: US$100-130",
+      "I-camping safari yezinsuku 2-3: Kusuka ku-US$200",
+      "Izindlela zangasese: Amanani alungiselelwe",
+      "Isithuthuthu se-4x4, umholi & izindleko zepaki zifakiwe"
+    ],
+    durationTypical: "Amahora 5-8 (uhambo losuku)",
+    durationDetails: [
+      "I-safari yosuku oluncane: amahora 3-4",
+      "I-safari yosuku lonke: amahora 5-6 epaki + ukuthuthwa",
+      "Ukuhlala izinsuku eziningi: izinsuku 2-3",
+      "Ukusuka e-Ponta do Ouro: Ekuseni kakhulu (6-7)",
+      "Ukubuya: Ntambama kakhulu (16-17)"
+    ],
+    included: [
+      "Isithuthuthu se-safari se-4x4",
+      "Umshayeli/umholi ochwepheshile",
+      "Izindleko ze-marine park",
+      "Ama-binoculars okubuka izilwane",
+      "Amanzi asebhodleleni nezidlo",
+      "Ukuthathwa ehotela kusuka e-Ponta do Ouro",
+      "Ukushaja i-USB esithuthuthwini (abaningi abasebenzisi)"
+    ],
+    requirementsLevel: "Yonke iminyaka & amazinga wamandla",
+    requirementsDetails: [
+      "Akudingeki amandla akhethekile omzimba",
+      "Kulungele imindeni enabantwana",
+      "Kulungele abantu abadala (ukubuka esithuthuthwini)",
+      "Isithuthuthu se-4x4 sidingeka (imigwaqo yesihlabathi)",
+      "Izingubo ezithokomele ze-safari zinconywa",
+      "Ukuvikelwa kwelanga kubalulekile"
+    ],
+    bestTimePeak: "Julayi - Okthoba (Isikhathi Esomile)",
+    bestTimeDetails: [
+      "**Ukubuka Izilwane:** Julayi-Okthoba (izilwane ezindaweni zamanzi)",
+      "**Izinyoni:** Okthoba-Mashi (izinyoni ezihambayo zikhona)",
+      "**Ukubuka Amahlengethwa:** Unyaka wonke (inani 450-500)",
+      "**Gwema:** Disemba-Febhuwari (kushisa, kunamanzi, izihlahla ziningi)",
+      "**Ukushisa:** Kupholile ebusika (Jul-Sep: 18-25°C)",
+      "**Isimo Semigwaqo:** Sihle kakhulu ngesikhathi esomile"
+    ],
+    tips: [
+      "Bhuka kusenesikhathi ngesikhathi sephezulu (Julayi-Okthoba)",
+      "Ama-safari asekuseni anikeza ukusebenza kwezilwane okungcono",
+      "Letha ikhamera ene-zoom lens ukuze uthathe izithombe zezilwane",
+      "Gqoka imibala engagqamile (khaki, beige, olive) - hhayi eqhakazile",
+      "Ama-binoculars anikezwa kodwa letha awakho uma unawo",
+      "Isigqoko, i-sunscreen & i-repellent kubalulekile",
+      "Hlanganisa nesikhathi sogwini e-Ponta do Ouro",
+      "Buza ngokukampa izinsuku eziningi ukuze uthole isipiliyoni esigcwele"
+    ],
+    operators: [
+      {
+        name: "Maputo National Park",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Ukubhuka okusemthethweni kwepaki nama-safari aholwayo"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Ukuthuthwa kwe-safari nohambo oluholwayo"
+      }
+    ]
+  },
+
   sv: {
     title: "Fotosafaris",
     tagline: "Bushaventyr i Maputo Special Reservat",

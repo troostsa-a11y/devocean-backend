@@ -488,6 +488,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  zu: {
+    title: "Amabhodi Okugibela Amagagasi & Izifundo",
+    tagline: "Gibela i-point break edumile yase-Ponta do Ouro",
+    overview: "I-point break yangakwesokudla yase-Ponta do Ouro ingaletha ukugibela okujabulisayo kwe-100-200m, kuze kufike ku-1km ezimweni ezinhle - ifana ne-Jeffrey's Bay. Amanzi ashisayo, acwebile namagagasi ajwayelekile akwenza kube kuhle kwabagibelayo bawo wonke amazinga, kusukela kubaqalayo abafunda kumagagasi athambile kuya kochwepheshile aba-carving i-point.",
+    highlights: [
+      "I-point break yangakwesokudla ejwayelekile",
+      "Ukugibela kwe-100-200m (kuze kufike ku-1km uma kuhle!)",
+      "Amanzi ashisayo (22-28°C) - i-wetsuit ayidingeki",
+      "Amagagasi asogwini alungele abaqalayo",
+      "Ama-lineup angagcwele",
+      "Izifundo zokugibela & ukubolekwa kwamabhodi kuyatholakala",
+      "Amadophini agibela eceleni kwakho",
+      "Amanzi acwebile e-Indian Ocean"
+    ],
+    pricingRange: "Kusuka ku-US$20 (isifundo)",
+    pricingDetails: [
+      "Isifundo sokugibela (amahora 2): US$20-40",
+      "Ukubolekwa kwebhodi (ngosuku): US$15-25",
+      "Amaphakheji ezinsuku eziningi: Amanani ehliselwe",
+      "Izinto zifakiwe ezifundweni",
+      "Amabhodi athambile abaqalayo",
+      "Amabhodi amafushane/fun abanamava"
+    ],
+    durationTypical: "Amahora 2 (isifundo) noma kungatshintsha (ukuboleka)",
+    durationDetails: [
+      "Isifundo sabaqalayo: amahora 2 (ukufunda + ukuzenza)",
+      "Ukufundisa kwangasese: amahora 1-2",
+      "Ukubolekwa kwebhodi: usuku oluncane noma usuku lonke",
+      "Isikhathi esihle sokugibela: Ekuseni kakhulu (6-9)",
+      "Izifundo zantambama: 15-18"
+    ],
+    included: [
+      "Ibhodi lokugibela (isifundo noma ukuboleka)",
+      "I-wetsuit/lycra (uma kudingeka)",
+      "Ukufundiswa komuntu oyedwa noma amaqembu amancane",
+      "Ukwaziswa ngokuphepha & ukuqaphela ulwandle",
+      "I-wax & i-leash",
+      "Usizo ogwini",
+      "Izithombe zeseshini yakho (abanye abasebenzisi)"
+    ],
+    requirementsLevel: "Wonke amazinga amukelwa",
+    requirementsDetails: [
+      "Abaqalayo: Akudingeki ulwazi",
+      "Abaphakathi/Abasezingeni Eliphakeme: Ulwazi lwe-point break luyasiza",
+      "Ikhono lokubhukuda lidingeka",
+      "Yonke iminyaka (abantwana kuya kubadala)",
+      "Amandla omzimba: Maphakathi (ukuphaya kungakhathaza)",
+      "**Kubalulekile:** Imifudlana enamandla ngasohlangothini lwe-point - qaphela!"
+    ],
+    bestTimePeak: "Igagasi lasezansi nomoya wasentshonalanga",
+    bestTimeDetails: [
+      "**Igagasi Elinhle:** Igagasi lasezansi",
+      "**Umoya Omuhle:** Umoya wasentshonalanga (okhululile)",
+      "**Igagasi Elinhle:** Ukwenyuka noma ukwehla kusuka kulwandle oluphansi",
+      "**Ukuqhubeka:** Kuhle kodwa kuguquka - kudinga izimo ezilungile",
+      "**Izikhathi:** Ukugibeleka unyaka wonke",
+      "**Ukushisa Kwamanzi:** 22-28°C (shorty noma ibhulukwe)",
+      "**Landela amagagasi avela ogwini lwenyakatho yaseNingizimu Afrika ukuthola izifundo ezinhle**"
+    ],
+    tips: [
+      "Bheka isibikezelo sokugibela ngaphambi kokubhuka (Surfline, Magicseaweed)",
+      "I-point break ingancintisana ne-J-Bay kodwa idinga izimo ezinhle",
+      "Letha amabhodi okusekela & ama-fin/leash engeziwe - izitolo zincane",
+      "Hlonipha imifudlana enamandla - lindela ngamagagasi",
+      "Amabhodi athambile amade alungele abaqalayo kumagagasi asogwini",
+      "Amadophini avame ukugibela eceleni kwakho - isipiliyoni esilungisofa!",
+      "Amanzi ashisayo kodwa letha i-shorty ukuze uvikeleke emoyeni",
+      "Buza abantu bendawo ngezimo zamagagasi zamanje",
+      "Ama-lineup angenalutho = amagagasi amaningi ngakuwe!",
+      "Hlanganisa nokuntsheza, ukudoba uma ukugibela kuphansi"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Izifundo zokugibela, ukuboleka amabhodi & ibha yasogwini"
+      }
+    ]
+  },
+
   sv: {
     title: "Surfbrädor och Lektioner",
     tagline: "Surfa den ikoniska point break i Ponta do Ouro",

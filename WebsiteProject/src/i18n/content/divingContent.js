@@ -620,6 +620,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  zu: {
+    title: "Ukuntsheza",
+    tagline: "Hlola ama-reef angadingekanga noshaka lwebhubesi, ama-mantas noshaka lwemvubu",
+    overview: "I-Ponta do Ouro inikeza ukuntsheza okusezingeni lomhlaba nge-20+ izindawo zokuntsheza ezisuka kuma-reef amancane kuya kuma-pinnacles ajulile. Amanzi acwebile ase-Mozambique Channel anikeza ukubonakala okuhle kakhulu nokuhlangana nezinhlobo eziningi zokuphila kwasolwandle, kubandakanya izinhlobo ezingu-19 zoshaka.",
+    highlights: [
+      "Izindawo ezingama-20+ zokuntsheza kusuka ku-8m kuya ku-48m",
+      "Ushaka lwebhubesi, ushaka lwetiger & ama-hammerheads",
+      "Ushaka lwemvubu (Okthoba-Mashi)",
+      "Imvubu ezinkulu (Julayi-Novemba)",
+      "Ama-mantas, izimfudu & amadophini",
+      "180+ izinhlobo ze-nudibranch",
+      "Ama-reef e-coral angadingekanga",
+      "Izikhungo ze-PADI ezichwepheshile"
+    ],
+    pricingRange: "Kusuka ku-US$40 ngokuntsheza ngakunye",
+    pricingDetails: [
+      "Ukuntsheza okukodwa: US$40-50",
+      "Iphakheji yezintsheza ezimbili: US$75-90",
+      "I-PADI Open Water: US$350-400",
+      "Ukubolekwa kwezinto kufakiwe",
+      "Zonke izimvume namaphepha afakiwe"
+    ],
+    durationTypical: "Usuku oluncane noma usuku lonke",
+    durationDetails: [
+      "Ukuntsheza kwasekuseni: ukuntsheza oku-2 (amahora 3-4)",
+      "Usuku lonke: ukuntsheza oku-3 (amahora 6-8)",
+      "Ukuqalisa ogwini (okujabulisayo!)",
+      "Izindawo 1-12km ukusuka ogwini"
+    ],
+    included: [
+      "Zonke izinto zokuntsheza (BCD, regulator, suit)",
+      "Ukuthuthelwa ngesikebhe ezindaweni zokuntsheza",
+      "Umfundisi we-PADI/divemaster ochwepheshile",
+      "Izindleko ze-marine park",
+      "Iziphuzo nezidlo emva kokuntsheza",
+      "I-dive computer nezinto zokuphepha"
+    ],
+    requirementsLevel: "Abaqalayo kuya Kochwepheshile",
+    requirementsDetails: [
+      "Izindawo zabaqalayo: Crèche, Doodles, Playground (10-18m)",
+      "Izindawo zochwepheshile: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Isitifiketi se-PADI sidingeka (noma yenza i-Open Water course)",
+      "Ifomu yezempilo lidingeka",
+      "Ikhono lokubhukuda elimnandi",
+      "Iminyaka yokuncane: 10 (Junior Open Water)"
+    ],
+    bestTimePeak: "Okthoba - Ephireli (Ihlobo)",
+    bestTimeDetails: [
+      "**Ushaka Lwebhubesi & Tiger:** Novemba-Ephireli (amanzi 26-29°C)",
+      "**Ushaka Lwe-Hammerhead:** Ephireli-Okthoba (ukubonakala okungcono)",
+      "**Ushaka Lwemvubu:** Okthoba-Mashi",
+      "**Imvubu Ezinkulu:** Julayi-Novemba",
+      "**Ukubonakala Okungcono:** Meyi-Agasti (20-30m)",
+      "**Amanzi Ashisayo:** Disemba-Febhuwari (27-29°C)"
+    ],
+    tips: [
+      "Bhuka kusenesikhathi ngesikhathi sephezulu (Disemba-Januwari)",
+      "Letha ikhadi lakho lesitifiketi",
+      "Cabanga nge-wetsuit (3mm kunconywa)",
+      "Ukuqalisa ngamagagasi kungajabulisa - lungiselela ukumanzwa!",
+      "Abaningi abasebenzisi banikeza ukubolekwa kwezinto",
+      "Amaphakheji okuntsheza okuningi anikeza inani elihle"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Ochwepheshile bokuntsheza noshaka, abagxile ocwaningweni"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Isikhungo se-PADI 5-star, ochwepheshile bokuntsheza noshaka"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Isikhungo sokuntsheza esichwepheshile"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Isikhungo sokuntsheza esichwepheshile"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Ochwepheshile bokuntsheza noshaka"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Isikhungo sokuntsheza esichwepheshile"
+      }
+    ]
+  },
+
   sv: {
     title: "Dykning",
     tagline: "Utforska orörda rev med tjurhajar, mantarockor och valhajar",
