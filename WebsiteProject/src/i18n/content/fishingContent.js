@@ -257,6 +257,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  es: {
+    title: "Pesca de Playa y Alta Mar",
+    tagline: "Pesque lubina o persiga marlines en el Canal de Mozambique",
+    overview: "Ponta do Ouro ofrece pesca excepcional tanto desde la playa como en alta mar. Las cálidas aguas del Océano Índico y el profundo Canal de Mozambique brindan emocionantes oportunidades para marlín, pez vela, wahoo, atún de aleta amarilla y caballa rey. Los pescadores de playa pueden pescar lubina, barracuda y pámpano.",
+    highlights: [
+      "Marlín negro (octubre-enero)",
+      "Pez vela (junio-septiembre)",
+      "Atún de aleta amarilla y wahoo",
+      "Caballa rey (Couta)",
+      "Pesca costera de lubina y barracuda",
+      "Aguas cálidas y cristalinas del Índico",
+      "Charters con salida desde playa",
+      "Capitanes locales experimentados 20+ años"
+    ],
+    pricingRange: "Desde US$550 (charter)",
+    pricingDetails: [
+      "Charter 5 horas: US$550-650",
+      "Charter 8 horas: US$850-950",
+      "Día completo alta mar: US$1,000+",
+      "Pesca de playa: Gratis (traer equipo)",
+      "Pesca guiada en playa: US$50-100",
+      "Licencias, equipo y preparación incluidos en charters"
+    ],
+    durationTypical: "5-8 horas (charter)",
+    durationDetails: [
+      "Charter medio día: 5 horas",
+      "Charter día completo: 8-10 horas",
+      "Pesca de playa: Flexible (mejor al amanecer/atardecer)",
+      "Salidas temprano por la mañana (6-7h)",
+      "Acceso rápido a aguas profundas (minutos de la costa)"
+    ],
+    included: [
+      "Todo el equipo de pesca",
+      "Licencias y permisos de pesca",
+      "Capitán experimentado (20+ años)",
+      "Carnada y señuelos",
+      "Limpieza y fileteado del pescado",
+      "Empaque al vacío para el viaje",
+      "Bebidas y snacks (mayoría de operadores)",
+      "Equipo de seguridad"
+    ],
+    requirementsLevel: "Principiante a Experto",
+    requirementsDetails: [
+      "No se requiere experiencia (los guías ayudan)",
+      "Máximo 6 pescadores por barco (generalmente)",
+      "Salida desde playa - ¡espere mojarse!",
+      "Protección solar esencial",
+      "Capacidad de natación recomendada",
+      "Medicamento para mareo si es susceptible"
+    ],
+    bestTimePeak: "Octubre - Enero (Temporada de Marlín)",
+    bestTimeDetails: [
+      "**Marlín Negro:** Octubre-enero (temporada alta)",
+      "**Marlín Azul:** Todo el año",
+      "**Pez Vela:** Junio-septiembre (período pico)",
+      "**Wahoo y Atún:** Todo el año (pico: oct-abr)",
+      "**Caballa Rey:** Todo el año (mejor: abr-nov)",
+      "**Temp. del Agua:** 22-28°C (más cálido = más pelágicos)"
+    ],
+    tips: [
+      "Reserve la temporada de marlín (oct-ene) con anticipación",
+      "Pesca de playa es mejor al amanecer y atardecer",
+      "La punta rocosa al final de la playa ofrece aguas profundas",
+      "Camine hacia el norte hasta Ponta Mamoli para mejor pesca costera",
+      "Use señuelos artificiales: pink dusters, redeye, calamar",
+      "Traiga bolsas impermeables para electrónicos",
+      "Organice almacenamiento de pescado con su lodge",
+      "Captura y liberación recomendado para conservación de marlines"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Capitán Laurens Koen, 20+ años de experiencia"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Capitán Marcus Joubert, especialistas en pesca deportiva"
+      }
+    ]
+  },
+
   nl: {
     title: "Strand- en Diepzeevissen",
     tagline: "Vis op baars of jaag op marlijnen in het Mozambiquekanaal",

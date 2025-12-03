@@ -311,6 +311,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  es: {
+    title: "Buceo",
+    tagline: "Explore arrecifes prístinos con tiburones toro, mantas y tiburones ballena",
+    overview: "Ponta do Ouro ofrece buceo de clase mundial con más de 20 sitios de buceo, desde arrecifes poco profundos hasta pináculos profundos. Las aguas cristalinas del Canal de Mozambique proporcionan una visibilidad excepcional y encuentros con una increíble diversidad de vida marina, incluyendo 19 especies de tiburones.",
+    highlights: [
+      "Más de 20 sitios de buceo de 8m a 48m",
+      "Tiburones toro, tigre y martillo",
+      "Tiburones ballena (octubre-marzo)",
+      "Ballenas jorobadas (julio-noviembre)",
+      "Mantas, tortugas y delfines",
+      "Más de 180 especies de nudibranquios",
+      "Arrecifes de coral prístinos",
+      "Centros PADI profesionales"
+    ],
+    pricingRange: "Desde US$40 por inmersión",
+    pricingDetails: [
+      "Inmersión única: US$40-50",
+      "Paquete dos inmersiones: US$75-90",
+      "PADI Open Water: US$350-400",
+      "Alquiler de equipo incluido",
+      "Todas las licencias y tasas incluidas"
+    ],
+    durationTypical: "Medio día o día completo",
+    durationDetails: [
+      "Inmersiones matutinas: 2 inmersiones (3-4 horas)",
+      "Día completo: 3 inmersiones (6-8 horas)",
+      "Entrada desde la playa (¡aventurero!)",
+      "Sitios a 1-12km de la costa"
+    ],
+    included: [
+      "Equipo de buceo completo (chaleco, regulador, traje)",
+      "Transporte en barco a sitios de buceo",
+      "Instructor/divemaster PADI profesional",
+      "Tasas del parque marino",
+      "Snacks y bebidas después del buceo",
+      "Ordenador de buceo y equipo de seguridad"
+    ],
+    requirementsLevel: "Principiante a Avanzado",
+    requirementsDetails: [
+      "Sitios principiantes: Crèche, Doodles, Playground (10-18m)",
+      "Sitios avanzados: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Certificación PADI requerida (o hacer curso Open Water)",
+      "Cuestionario médico obligatorio",
+      "Buena capacidad de natación",
+      "Edad mínima: 10 años (Junior Open Water)"
+    ],
+    bestTimePeak: "Octubre - Abril (Verano)",
+    bestTimeDetails: [
+      "**Tiburones Toro y Tigre:** Noviembre-abril (agua 26-29°C)",
+      "**Tiburones Martillo:** Abril-octubre (mejor visibilidad)",
+      "**Tiburones Ballena:** Octubre-marzo",
+      "**Ballenas Jorobadas:** Julio-noviembre",
+      "**Mejor Visibilidad:** Mayo-agosto (20-30m)",
+      "**Agua Más Cálida:** Diciembre-febrero (27-29°C)"
+    ],
+    tips: [
+      "Reserve con anticipación en temporada alta (diciembre-enero)",
+      "Traiga su tarjeta de certificación",
+      "Considere un traje de neopreno (3mm recomendado)",
+      "¡La entrada con olas es emocionante - prepárese para mojarse!",
+      "La mayoría de operadores ofrecen alquiler de equipo",
+      "Los paquetes de múltiples inmersiones ofrecen mejor valor"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Especialistas en buceo con tiburones, enfoque en investigación"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centro PADI 5 estrellas, especialistas en buceo con tiburones"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Centro de buceo profesional"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Centro de buceo profesional"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Especialistas en buceo con tiburones"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Centro de buceo profesional"
+      }
+    ]
+  },
+
   nl: {
     title: "Duiken",
     tagline: "Verken ongerepte riffen met stierenhaaien, manta's en walvishaaien",

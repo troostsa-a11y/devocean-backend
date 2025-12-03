@@ -269,6 +269,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  es: {
+    title: "Safaris Oceánicos",
+    tagline: "Avistamiento de ballenas y encuentros con vida marina",
+    overview: "Embárquese en emocionantes safaris oceánicos para observar ballenas jorobadas migrando por aguas mozambiqueñas (julio-noviembre). Estas aventuras en barco también ofrecen encuentros con delfines durante todo el año, avistamientos estacionales de tiburones ballena, y snorkel sobre arrecifes prístinos llenos de vida marina.",
+    highlights: [
+      "30,000 ballenas jorobadas (julio-noviembre)",
+      "Saltos, golpes de cola y espionaje",
+      "Encuentros con delfines todo el año",
+      "Tiburones ballena (octubre-marzo)",
+      "Mantas y tortugas marinas",
+      "Snorkel en arrecifes prístinos",
+      "Tours guiados por biólogos marinos",
+      "Enfoque en investigación y conservación"
+    ],
+    pricingRange: "US$40-45 por persona",
+    pricingDetails: [
+      "Solo avistamiento de ballenas: US$40",
+      "Delfines + ballenas combinado: US$45",
+      "Tour privado día completo desde Maputo: US$179",
+      "Niños menores de 12: Tarifas reducidas",
+      "Equipo y snacks incluidos"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Excursiones medio día: 2-3 horas",
+      "Tours día completo: 6-8 horas (desde Maputo)",
+      "Salidas por la mañana (mejores condiciones)",
+      "Incluye tiempo de snorkel",
+      "Flexible según actividad de ballenas"
+    ],
+    included: [
+      "Transporte en barco con capitán experimentado",
+      "Equipo de snorkel (máscara, aletas, tubo)",
+      "Guía biólogo marino (mayoría de operadores)",
+      "Snacks y refrescos",
+      "Tarifas del parque marino",
+      "Fotos/videos (algunos operadores)",
+      "Equipo de seguridad y chalecos salvavidas"
+    ],
+    requirementsLevel: "Todas las edades",
+    requirementsDetails: [
+      "No se requieren habilidades especiales para avistamiento de ballenas",
+      "Capacidad de natación necesaria para snorkel",
+      "Edades: Apto para familias (niños a adultos mayores)",
+      "Depende del clima - el mar debe estar calmado",
+      "Tours pueden reprogramarse si condiciones peligrosas",
+      "Chaqueta abrigada recomendada (julio-septiembre)"
+    ],
+    bestTimePeak: "Julio - Octubre (Temporada de Ballenas)",
+    bestTimeDetails: [
+      "**Ballenas Jorobadas:** Julio-noviembre (pico: jul-oct)",
+      "**Delfines:** Todo el año (200+ residentes)",
+      "**Tiburones Ballena:** Octubre-marzo",
+      "**Mantas:** Diciembre-mayo",
+      "**Tortugas Marinas:** Octubre-marzo (anidación)",
+      "**Mares Más Calmados:** Meses de invierno (junio-septiembre)"
+    ],
+    tips: [
+      "Reserve durante temporada de ballenas (jul-nov) para mejores oportunidades",
+      "Traiga una chaqueta abrigada - la brisa marina puede ser fría",
+      "Bolsa impermeable para cámara esencial",
+      "Medicamento para mareo si es susceptible",
+      "Los binoculares mejoran la experiencia de observación",
+      "Los operadores éticos siguen directrices de no contacto",
+      "Avistamientos no garantizados - animales salvajes",
+      "Combine con snorkel para experiencia marina completa"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Expertos en avistamiento de ballenas, enfoque julio-noviembre"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Tours basados en investigación, recolección de datos para conservación"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safaris oceánicos, avistamiento de ballenas y encuentros marinos"
+      }
+    ]
+  },
+
   nl: {
     title: "Oceaan-Safari's",
     tagline: "Walvissen spotten en ontmoetingen met zeeleven",

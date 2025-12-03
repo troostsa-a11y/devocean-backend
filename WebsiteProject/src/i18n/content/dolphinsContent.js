@@ -299,6 +299,104 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  es: {
+    title: "Nado con Delfines",
+    tagline: "Encuentros éticos con delfines salvajes en aguas cristalinas",
+    overview: "Viva encuentros mágicos con delfines nariz de botella indo-pacíficos salvajes en la Reserva Marina Parcial de Ponta do Ouro. Ambos operadores autorizados siguen directrices éticas estrictas, garantizando interacciones pasivas y no invasivas donde los delfines eligen participar en sus propios términos.",
+    highlights: [
+      "Más de 200 delfines nariz de botella residentes",
+      "Encuentros éticos basados en investigación",
+      "SIN tocar ni perseguir - salvajes y libres",
+      "Snorkel sobre arrecifes prístinos",
+      "Avistamientos estacionales de tiburones ballena",
+      "Ballenas jorobadas (julio-noviembre)",
+      "Grupos pequeños (máximo 12 personas)",
+      "Enfoque educativo en conservación"
+    ],
+    pricingRange: "US$45-50 por persona",
+    pricingDetails: [
+      "Observación de delfines (solo barco): US$45",
+      "Excursión de nado con delfines: US$50",
+      "Paquetes de varios días: Tarifas reducidas",
+      "Equipo de snorkel incluido",
+      "Tarifa de conservación incluida"
+    ],
+    durationTypical: "2-3 horas",
+    durationDetails: [
+      "Salida temprano por la mañana (mejores condiciones)",
+      "Snorkel sobre arrecifes poco profundos",
+      "Facilitación de delfines en el agua",
+      "Encuentros con tiburones ballena (estacional)",
+      "Briefing educativo antes de salir"
+    ],
+    included: [
+      "Máscara, aletas y tubo",
+      "Traje de neopreno (si es necesario)",
+      "Facilitador/guía experimentado",
+      "Presentación educativa antes de salir",
+      "Fotos/videos de su encuentro",
+      "Refrescos ligeros",
+      "Tarifas del parque marino"
+    ],
+    requirementsLevel: "Todas las edades y habilidades",
+    requirementsDetails: [
+      "No se requiere experiencia de buceo",
+      "Habilidades básicas de natación esenciales",
+      "Todas las edades (niños bienvenidos)",
+      "Condición física: Leve a moderada",
+      "Comodidad en agua de mar",
+      "Depende del clima - el mar debe estar calmado"
+    ],
+    bestTimePeak: "Todo el año (delfines residentes)",
+    bestTimeDetails: [
+      "**Delfines:** Todo el año (200+ residentes)",
+      "**Ballenas Jorobadas:** Julio-noviembre",
+      "**Tiburones Ballena:** Octubre-marzo",
+      "**Mares Más Calmados:** Temprano por la mañana",
+      "**Temperatura del Agua:** 22-28°C todo el año"
+    ],
+    tips: [
+      "Reserve con 2-3 días de anticipación",
+      "Traiga protector solar seguro para arrecifes",
+      "Cámara submarina recomendada",
+      "Siga las instrucciones del facilitador cuidadosamente",
+      "Permanezca calmado y en silencio en el agua",
+      "Deje que los delfines se acerquen naturalmente"
+    ],
+    ethicalPractices: [
+      {
+        title: "Sin Tocar ni Perseguir",
+        description: "Los delfines nunca son tocados, perseguidos ni acosados. Todos los encuentros son en los términos de los delfines."
+      },
+      {
+        title: "Enfoque Basado en Investigación",
+        description: "Ambos operadores trabajan con biólogos marinos y contribuyen a la investigación y conservación continua de delfines."
+      },
+      {
+        title: "Solo Grupos Pequeños",
+        description: "Máximo 12 personas por viaje garantiza mínima perturbación y mejores encuentros."
+      },
+      {
+        title: "Educación Primero",
+        description: "Los briefings antes de salir enseñan comportamiento apropiado y biología de delfines a todos los participantes."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours Research Center",
+        website: "https://www.dolphinencountours.org/",
+        email: "connect@dolphinencountours.org",
+        specialty: "Encuentros con delfines guiados por biólogos marinos, enfocados en conservación"
+      },
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Nados con delfines basados en investigación con enfoque educativo"
+      }
+    ]
+  },
+
   nl: {
     title: "Zwemmen met Dolfijnen",
     tagline: "Ethische ontmoetingen met wilde dolfijnen in kristalhelder water",
