@@ -102,6 +102,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Professional dive center"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Premier shark dive - bull sharks, tiger sharks, hammerheads, mantas" },
+      { name: "Bass City", depth: "20-25m", highlights: "Potato bass, lionfish, zebra sharks, cleaning stations" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Macro paradise - seahorses, frogfish, ghost pipefish" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Deep dive - eagle rays, reef sharks, Spanish dancers" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfect for all levels - rays, turtles, moray eels, octopus" }
     ]
   },
 
@@ -205,6 +212,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Centro de mergulho profissional"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Mergulho premium com tubarões - tubarões-touro, tubarões-tigre, tubarões-martelo, raias-manta" },
+      { name: "Bass City", depth: "20-25m", highlights: "Meros, peixes-leão, tubarões-zebra, estações de limpeza" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paraíso macro - cavalos-marinhos, peixes-sapo, peixes-fantasma" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Mergulho profundo - raias-águia, tubarões de recife, dançarinas espanholas" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfeito para todos os níveis - raias, tartarugas, moreias, polvos" }
     ]
   },
 
@@ -308,6 +322,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Centro de mergulho profissional"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Mergulho premium com tubarões - tubarões-touro, tubarões-tigre, tubarões-martelo, raias-manta" },
+      { name: "Bass City", depth: "20-25m", highlights: "Meros, peixes-leão, tubarões-zebra, estações de limpeza" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paraíso macro - cavalos-marinhos, peixes-sapo, peixes-fantasma" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Mergulho profundo - raias-águia, tubarões de recife, dançarinas espanholas" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfeito para todos os níveis - raias, tartarugas, moreias, polvos" }
     ]
   },
 
@@ -411,6 +432,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Centro immersioni professionale"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Immersione premium con squali - squali toro, tigre, martello, mante" },
+      { name: "Bass City", depth: "20-25m", highlights: "Cernie giganti, pesci leone, squali zebra, stazioni di pulizia" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paradiso macro - cavallucci marini, pesci rana, pesci fantasma" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Immersione profonda - aquile di mare, squali di barriera, danzatrici spagnole" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfetto per tutti i livelli - razze, tartarughe, murene, polpi" }
     ]
   },
 
@@ -514,6 +542,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Profesjonalne centrum nurkowe"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Nurkowanie premium z rekinami - rekiny bycze, tygrysy, młoty, manty" },
+      { name: "Bass City", depth: "20-25m", highlights: "Groupery, skrzydlice, rekiny zebry, stacje czyszczenia" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Raj makro - koniki morskie, żabnice, ryby-widmo" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Nurkowanie głębokie - orły morskie, rekiny rafowe, tancerki hiszpańskie" },
+      { name: "Doodles", depth: "14-18m", highlights: "Idealny dla wszystkich poziomów - płaszczki, żółwie, mureny, ośmiornice" }
     ]
   },
 
@@ -617,6 +652,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Профессиональный дайв-центр"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Премиум-дайвинг с акулами - бычьи, тигровые, молот-рыбы, манты" },
+      { name: "Bass City", depth: "20-25m", highlights: "Групперы, крылатки, зебровые акулы, станции чистки" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Макро-рай - морские коньки, рыбы-лягушки, рыбы-призраки" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Глубокий дайв - орляки, рифовые акулы, испанские танцовщицы" },
+      { name: "Doodles", depth: "14-18m", highlights: "Идеален для всех уровней - скаты, черепахи, мурены, осьминоги" }
     ]
   },
 
@@ -720,6 +762,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "プロフェッショナルダイブセンター"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "プレミアムシャークダイブ - オオメジロザメ、イタチザメ、シュモクザメ、マンタ" },
+      { name: "Bass City", depth: "20-25m", highlights: "ポテトバス、ミノカサゴ、シマザメ、クリーニングステーション" },
+      { name: "Wayne's World", depth: "~20m", highlights: "マクロパラダイス - タツノオトシゴ、カエルアンコウ、ゴーストパイプフィッシュ" },
+      { name: "Atlantis", depth: "35-47m", highlights: "ディープダイブ - トビエイ、リーフシャーク、スパニッシュダンサー" },
+      { name: "Doodles", depth: "14-18m", highlights: "全レベル向け - エイ、ウミガメ、ウツボ、タコ" }
     ]
   },
 
@@ -823,6 +872,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "专业潜水中心"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "顶级鲨鱼潜水 - 牛鲨、虎鲨、双髻鲨、蝠鲼" },
+      { name: "Bass City", depth: "20-25m", highlights: "土豆石斑鱼、狮子鱼、条纹鲨、清洁站" },
+      { name: "Wayne's World", depth: "~20m", highlights: "微距天堂 - 海马、躄鱼、鬼龙" },
+      { name: "Atlantis", depth: "35-47m", highlights: "深潜 - 鹰鳐、礁鲨、西班牙舞者" },
+      { name: "Doodles", depth: "14-18m", highlights: "适合所有级别 - 鳐鱼、海龟、海鳗、章鱼" }
     ]
   },
 
@@ -926,6 +982,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Professionele duiksentrum"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Premium haaiduik - bulhaaie, tierhaaie, hamerkoppe, mantas" },
+      { name: "Bass City", depth: "20-25m", highlights: "Aartappelbars, leeuwvis, sebrahaaie, skoonmaakstasies" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Makro paradys - seeperde, paddavis, spookpypvis" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Diep duik - arend rôe, rifhaaie, Spaanse dansers" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfek vir alle vlakke - rôe, skilpaaie, mureëls, seekatte" }
     ]
   },
 
@@ -1029,6 +1092,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Isikhungo sokuntsheza esichwepheshile"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Ukuntsheza premium noshaka - ushaka lwebhubesi, letiger, ama-hammerheads, ama-mantas" },
+      { name: "Bass City", depth: "20-25m", highlights: "Ama-bass amakhulu, ama-lionfish, ushaka lwezebra, iziteshi zokuhlanza" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Ipharadayisi ye-macro - amahhashi olwandle, izigcwelegcwele, izinhlanzi zomoya" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Ukuntsheza okujulile - ama-eagle rays, ushaka lwe-reef, abadansi baseSpain" },
+      { name: "Doodles", depth: "14-18m", highlights: "Kulungele wonke amazinga - ama-rays, izimfudu, ama-moray eels, ama-octopus" }
     ]
   },
 
@@ -1132,6 +1202,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Kituo cha kupiga mbizi cha kitaalamu"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Kupiga mbizi bora na papa - papa ng'ombe, papa simba, papa nyundo, manta" },
+      { name: "Bass City", depth: "20-25m", highlights: "Chewa wakubwa, lionfish, papa pundamilia, vituo vya kusafisha" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paradiso ya macro - farasi wa bahari, vyura wa bahari, samaki wa mzimu" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Kupiga mbizi kwa kina - taa za bahari, papa wa miamba, wacheza Uhispania" },
+      { name: "Doodles", depth: "14-18m", highlights: "Nzuri kwa viwango vyote - taa, kasa, mikunga ya bahari, pweza" }
     ]
   },
 
@@ -1235,6 +1312,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Professionellt dykcenter"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Premium hajdykning - tjurhajar, tigerhajar, hammarhajar, mantor" },
+      { name: "Bass City", depth: "20-25m", highlights: "Potatoabborre, drakfisk, zebrahajar, putsarstationer" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Makroparadis - sjöhästar, grodabborrar, spökfiskar" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Djupdykning - örnerockor, revhajar, spanska dansare" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfekt för alla nivåer - rockor, sköldpaddor, murener, bläckfiskar" }
     ]
   },
 
@@ -1338,6 +1422,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Centro de buceo profesional"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Buceo premium con tiburones - tiburones toro, tigre, martillo, mantas" },
+      { name: "Bass City", depth: "20-25m", highlights: "Meros gigantes, pez león, tiburones cebra, estaciones de limpieza" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paraíso macro - caballitos de mar, peces rana, peces fantasma" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Buceo profundo - rayas águila, tiburones de arrecife, bailarinas españolas" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfecto para todos los niveles - rayas, tortugas, morenas, pulpos" }
     ]
   },
 
@@ -1441,6 +1532,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Professioneel duikcentrum"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Premium haaiduik - stierenhaaien, tijgerhaaien, hamerhaaien, manta's" },
+      { name: "Bass City", depth: "20-25m", highlights: "Reuzenbaars, koraalduivel, zebrahaaien, poetsstations" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Macro-paradijs - zeepaardjes, kikkervis, spookfluitvis" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Diepduik - adelaarsrog, rifhaaien, Spaanse danser" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfect voor alle niveaus - roggen, schildpadden, murenen, octopussen" }
     ]
   },
 
@@ -1544,6 +1642,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Professionelles Tauchzentrum"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Premium Haitauchen - Bullenhaie, Tigerhaie, Hammerhaie, Mantas" },
+      { name: "Bass City", depth: "20-25m", highlights: "Kartoffelbarsche, Feuerfische, Zebrahaie, Putzerstationen" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Makro-Paradies - Seepferdchen, Anglerfische, Geisterfische" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Tieftauchen - Adlerrochen, Riffhaie, Spanische Tänzerinnen" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfekt für alle Niveaus - Rochen, Schildkröten, Muränen, Oktopusse" }
     ]
   },
 
@@ -1647,6 +1752,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Centre de plongée professionnel"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Plongée requins premium - bouledogues, tigres, marteaux, raies manta" },
+      { name: "Bass City", depth: "20-25m", highlights: "Mérous géants, poissons-lions, requins-zèbres, stations de nettoyage" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paradis macro - hippocampes, poissons-grenouilles, poissons-fantômes" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Plongée profonde - raies aigles, requins de récif, danseuses espagnoles" },
+      { name: "Doodles", depth: "14-18m", highlights: "Parfait pour tous niveaux - raies, tortues, murènes, pieuvres" }
     ]
   },
 
@@ -1750,6 +1862,13 @@ export const DIVING_CONTENT = {
         email: "oceanamozdiving@gmail.com",
         specialty: "Centro de mergulho profissional"
       }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40m", highlights: "Mergulho premium com tubarões - tubarões-touro, tubarões-tigre, tubarões-martelo, raias-manta" },
+      { name: "Bass City", depth: "20-25m", highlights: "Meros, peixes-leão, tubarões-zebra, estações de limpeza" },
+      { name: "Wayne's World", depth: "~20m", highlights: "Paraíso macro - cavalos-marinhos, peixes-sapo, peixes-fantasma" },
+      { name: "Atlantis", depth: "35-47m", highlights: "Mergulho profundo - raias-águia, tubarões de recife, dançarinas espanholas" },
+      { name: "Doodles", depth: "14-18m", highlights: "Perfeito para todos os níveis - raias, tartarugas, moreias, polvos" }
     ]
   }
 };

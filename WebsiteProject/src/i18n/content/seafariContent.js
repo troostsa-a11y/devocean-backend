@@ -88,6 +88,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Ocean safaris, whale watching & marine encounters"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Breaching", description: "Full body launches out of water - spectacular displays of power" },
+      { name: "Tail-Slapping (Lob-Tailing)", description: "Repeated tail strikes on water surface - communication & play" },
+      { name: "Spy-Hopping", description: "Vertical rise to look above water - curious whales checking boats" },
+      { name: "Flipper Slapping", description: "Pectoral fin strikes - social behavior & excitement" },
+      { name: "Approach Behavior", description: "Whales often approach boats - curious & friendly" }
     ]
   },
 
@@ -177,6 +184,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safáris oceânicos, observação de baleias e encontros marinhos"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Salto", description: "Corpo inteiro salta da água - exibições espetaculares de força" },
+      { name: "Batida de Cauda", description: "Golpes repetidos da cauda na superfície - comunicação e brincadeira" },
+      { name: "Espiada", description: "Elevação vertical para olhar acima da água - baleias curiosas observando barcos" },
+      { name: "Batida de Nadadeira", description: "Golpes da nadadeira peitoral - comportamento social e excitação" },
+      { name: "Comportamento de Aproximação", description: "Baleias frequentemente se aproximam dos barcos - curiosas e amigáveis" }
     ]
   },
 
@@ -266,6 +280,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safáris oceânicos, observação de baleias e encontros marinhos"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Salto", description: "Corpo inteiro salta da água - exibições espetaculares de força" },
+      { name: "Batida de Cauda", description: "Golpes repetidos da cauda na superfície - comunicação e brincadeira" },
+      { name: "Espreita", description: "Elevação vertical para olhar acima da água - baleias curiosas a observar barcos" },
+      { name: "Batida de Barbatana", description: "Golpes da barbatana peitoral - comportamento social e excitação" },
+      { name: "Comportamento de Aproximação", description: "Baleias frequentemente aproximam-se dos barcos - curiosas e amigáveis" }
     ]
   },
 
@@ -355,6 +376,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safari oceanici, avvistamento balene e incontri marini"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Salto", description: "Corpo intero si lancia fuori dall'acqua - spettacolari dimostrazioni di forza" },
+      { name: "Colpo di Coda", description: "Ripetuti colpi di coda sulla superficie dell'acqua - comunicazione e gioco" },
+      { name: "Spy-Hopping", description: "Innalzamento verticale per guardare sopra l'acqua - balene curiose che controllano le barche" },
+      { name: "Colpo di Pinna", description: "Colpi della pinna pettorale - comportamento sociale ed eccitazione" },
+      { name: "Comportamento di Avvicinamento", description: "Le balene spesso si avvicinano alle barche - curiose e amichevoli" }
     ]
   },
 
@@ -444,6 +472,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safari oceaniczne, obserwacja wielorybów i spotkania morskie"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Skok", description: "Całe ciało wystrzeliwuje z wody - spektakularne pokazy siły" },
+      { name: "Uderzanie Ogonem", description: "Powtarzające się uderzenia ogonem o powierzchnię wody - komunikacja i zabawa" },
+      { name: "Spy-Hopping", description: "Pionowe wynurzanie się, by spojrzeć ponad wodę - ciekawskie wieloryby obserwujące łodzie" },
+      { name: "Uderzanie Płetwą", description: "Uderzenia płetwą piersiową - zachowania społeczne i ekscytacja" },
+      { name: "Zachowanie Zbliżania", description: "Wieloryby często podchodzą do łodzi - ciekawe i przyjazne" }
     ]
   },
 
@@ -533,6 +568,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Океанские сафари, наблюдение за китами и морские встречи"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Прыжок", description: "Всё тело выпрыгивает из воды - впечатляющие демонстрации силы" },
+      { name: "Удар Хвостом", description: "Повторяющиеся удары хвостом по поверхности воды - общение и игра" },
+      { name: "Спайхоппинг", description: "Вертикальное поднятие, чтобы смотреть над водой - любопытные киты проверяют лодки" },
+      { name: "Удар Плавником", description: "Удары грудным плавником - социальное поведение и возбуждение" },
+      { name: "Поведение Приближения", description: "Киты часто подплывают к лодкам - любопытные и дружелюбные" }
     ]
   },
 
@@ -622,6 +664,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "オーシャンサファリ、ホエールウォッチング＆海洋遭遇"
       }
+    ],
+    whaleBehaviors: [
+      { name: "ブリーチング", description: "全身が水面から飛び出す - 力強さの壮観なディスプレイ" },
+      { name: "テールスラップ", description: "水面への繰り返しの尾打ち - コミュニケーションと遊び" },
+      { name: "スパイホッピング", description: "水上を見るための垂直上昇 - 好奇心でボートを確認するクジラ" },
+      { name: "フリッパースラップ", description: "胸びれの打撃 - 社会的行動と興奮" },
+      { name: "接近行動", description: "クジラはよくボートに近づく - 好奇心が強くフレンドリー" }
     ]
   },
 
@@ -711,6 +760,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "海洋Safari、观鲸和海洋邂逅"
       }
+    ],
+    whaleBehaviors: [
+      { name: "跃水", description: "全身跃出水面 - 力量的壮观展示" },
+      { name: "拍尾", description: "反复用尾巴击打水面 - 交流和玩耍" },
+      { name: "探头", description: "垂直升起看水面上方 - 好奇的鲸鱼查看船只" },
+      { name: "拍鳍", description: "胸鳍击打 - 社交行为和兴奋" },
+      { name: "靠近行为", description: "鲸鱼经常靠近船只 - 好奇且友好" }
     ]
   },
 
@@ -800,6 +856,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Oseaansafaris, walvisbesigtiging & mariene ontmoetings"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Sprong", description: "Volledige liggaam skiet uit water - spektakulêre vertonings van krag" },
+      { name: "Stertslag", description: "Herhaalde stert slae op wateroppervlak - kommunikasie & spel" },
+      { name: "Spyhopping", description: "Vertikale opkoms om bo water te kyk - nuuskierige walvisse wat bote dophou" },
+      { name: "Vinslag", description: "Borsvin slae - sosiale gedrag & opwinding" },
+      { name: "Naderingsgedrag", description: "Walvisse nader dikwels bote - nuuskierig & vriendelik" }
     ]
   },
 
@@ -889,6 +952,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Ama-safari asolwandle, ukubuka imvubu & ukuhlangana kwasolwandle"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Ukugxuma", description: "Umzimba wonke uphuma emanzini - ama-display amahle amandla" },
+      { name: "Ukushaya Umkhomu", description: "Ukushaya umkhomu okuphindiweyo phezu kwamanzi - ukukhuluma nokudlala" },
+      { name: "Ukubheka Phezulu", description: "Ukuphakama ngobuqondile ukubheka phezu kwamanzi - imvubu ezinothando ezibheka izikebhe" },
+      { name: "Ukushaya Ikhwelo", description: "Ukushaya ikhwelo lesifuba - ukuziphatha komphakathi nokujabula" },
+      { name: "Ukuzosondela", description: "Imvubu zivame ukusondela ezikebheni - zinothando futhi zinobungane" }
     ]
   },
 
@@ -978,6 +1048,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safari za bahari, kutazama nyangumi na mikutano ya baharini"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Kuruka", description: "Mwili wote unaruka kutoka majini - maonyesho ya ajabu ya nguvu" },
+      { name: "Kupiga Mkia", description: "Kupiga mkia mara kwa mara juu ya uso wa maji - mawasiliano na kucheza" },
+      { name: "Spy-Hopping", description: "Kupanda wima kutazama juu ya maji - nyangumi wadukizi wanaokagua mashua" },
+      { name: "Kupiga Kipepeo", description: "Kupiga kipepeo cha kifua - tabia ya kijamii na msisimko" },
+      { name: "Tabia ya Kukaribia", description: "Nyangumi mara nyingi hukaribia mashua - wadukizi na warafiki" }
     ]
   },
 
@@ -1067,6 +1144,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Havssafaris, valskådning och marina möten"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Hopp", description: "Hela kroppen skjuter upp ur vattnet - spektakulära kraftdemonstrationer" },
+      { name: "Stjärtslag", description: "Upprepade stjärtslag mot vattenytan - kommunikation och lek" },
+      { name: "Spyhopping", description: "Vertikal uppstigning för att titta ovanför vattnet - nyfikna valar som kollar båtar" },
+      { name: "Fenslag", description: "Bröstfenslag - socialt beteende och upprymdhet" },
+      { name: "Närmandebeteende", description: "Valar närmar sig ofta båtar - nyfikna och vänliga" }
     ]
   },
 
@@ -1156,6 +1240,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safaris oceánicos, avistamiento de ballenas y encuentros marinos"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Salto", description: "El cuerpo completo sale del agua - espectaculares demostraciones de fuerza" },
+      { name: "Golpe de Cola", description: "Golpes repetidos de cola en la superficie del agua - comunicación y juego" },
+      { name: "Espionaje", description: "Ascenso vertical para mirar sobre el agua - ballenas curiosas revisando los barcos" },
+      { name: "Golpe de Aleta", description: "Golpes de aleta pectoral - comportamiento social y excitación" },
+      { name: "Comportamiento de Acercamiento", description: "Las ballenas frecuentemente se acercan a los barcos - curiosas y amigables" }
     ]
   },
 
@@ -1245,6 +1336,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Oceaan-safari's, walvissen spotten en zee-ontmoetingen"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Sprong", description: "Het hele lichaam schiet uit het water - spectaculaire krachtdemonstraties" },
+      { name: "Staartklap", description: "Herhaalde staartklappen op het wateroppervlak - communicatie en spel" },
+      { name: "Spyhopping", description: "Verticaal oprijzen om boven water te kijken - nieuwsgierige walvissen die boten bekijken" },
+      { name: "Vinslag", description: "Borstvinslag - sociaal gedrag en opwinding" },
+      { name: "Naderingsgedrag", description: "Walvissen naderen vaak boten - nieuwsgierig en vriendelijk" }
     ]
   },
 
@@ -1334,6 +1432,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Ozean-Safaris, Walbeobachtung und Meeresbegegnungen"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Sprung", description: "Ganzer Körper schießt aus dem Wasser - spektakuläre Kraftdemonstrationen" },
+      { name: "Schwanzschlag", description: "Wiederholte Schwanzschläge auf der Wasseroberfläche - Kommunikation und Spiel" },
+      { name: "Spyhopping", description: "Vertikales Auftauchen um über das Wasser zu schauen - neugierige Wale beobachten Boote" },
+      { name: "Flossenschlag", description: "Brustflossenschläge - Sozialverhalten und Aufregung" },
+      { name: "Annäherungsverhalten", description: "Wale nähern sich oft Booten - neugierig und freundlich" }
     ]
   },
 
@@ -1423,6 +1528,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safaris océaniques, observation baleines et rencontres marines"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Saut", description: "Corps entier jaillit hors de l'eau - démonstrations spectaculaires de force" },
+      { name: "Coup de Queue", description: "Coups répétés de la queue sur la surface de l'eau - communication et jeu" },
+      { name: "Spy-Hopping", description: "Montée verticale pour regarder au-dessus de l'eau - baleines curieuses observant les bateaux" },
+      { name: "Coup de Nageoire", description: "Coups de nageoire pectorale - comportement social et excitation" },
+      { name: "Comportement d'Approche", description: "Les baleines s'approchent souvent des bateaux - curieuses et amicales" }
     ]
   },
 
@@ -1512,6 +1624,13 @@ export const SEAFARI_CONTENT = {
         email: "info@gozo-azul.co.za",
         specialty: "Safáris oceânicos, observação de baleias e encontros marinhos"
       }
+    ],
+    whaleBehaviors: [
+      { name: "Salto", description: "Corpo inteiro salta da água - demonstrações espetaculares de força" },
+      { name: "Batida de Cauda", description: "Batidas repetidas da cauda na superfície da água - comunicação e brincadeira" },
+      { name: "Spy-Hopping", description: "Subida vertical para olhar acima da água - baleias curiosas verificando os barcos" },
+      { name: "Batida de Nadadeira", description: "Batidas da nadadeira peitoral - comportamento social e excitação" },
+      { name: "Comportamento de Aproximação", description: "Baleias frequentemente se aproximam dos barcos - curiosas e amigáveis" }
     ]
   }
 };

@@ -82,6 +82,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Safari transport & guided tours"
       }
+    ],
+    wildlife: [
+      { species: "Elephants", details: "450-500 coastal elephants - main attraction, year-round sightings" },
+      { species: "Giraffes", details: "Frequently spotted throughout the reserve" },
+      { species: "Zebras", details: "Common sightings, often in herds" },
+      { species: "Hippos & Crocodiles", details: "Around lakes, wetlands & Maputo Bay" },
+      { species: "Antelopes", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
+      { species: "Predators", details: "Leopard, cheetah, spotted hyena (reintroduced 2023-24)" },
+      { species: "Birds", details: "300+ species - flamingos, wading birds, raptors" }
     ]
   },
 
@@ -165,6 +174,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Transporte de safári e tours guiados"
       }
+    ],
+    wildlife: [
+      { species: "Elefantes", details: "450-500 elefantes costeiros - atração principal, avistamentos o ano todo" },
+      { species: "Girafas", details: "Frequentemente avistadas em toda a reserva" },
+      { species: "Zebras", details: "Avistamentos comuns, frequentemente em manadas" },
+      { species: "Hipopótamos e Crocodilos", details: "Ao redor de lagos, zonas úmidas e Baía de Maputo" },
+      { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
+      { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
+      { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
     ]
   },
 
@@ -248,6 +266,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Transporte de safári e tours guiados"
       }
+    ],
+    wildlife: [
+      { species: "Elefantes", details: "450-500 elefantes costeiros - atração principal, avistamentos o ano todo" },
+      { species: "Girafas", details: "Frequentemente avistadas em toda a reserva" },
+      { species: "Zebras", details: "Avistamentos comuns, frequentemente em manadas" },
+      { species: "Hipopótamos e Crocodilos", details: "Ao redor de lagos, zonas húmidas e Baía de Maputo" },
+      { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
+      { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
+      { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
     ]
   },
 
@@ -331,6 +358,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Trasporto safari e tour guidati"
       }
+    ],
+    wildlife: [
+      { species: "Elefanti", details: "450-500 elefanti costieri - attrazione principale, avvistamenti tutto l'anno" },
+      { species: "Giraffe", details: "Avvistate frequentemente in tutta la riserva" },
+      { species: "Zebre", details: "Avvistamenti comuni, spesso in branchi" },
+      { species: "Ippopotami e Coccodrilli", details: "Intorno a laghi, zone umide e Baia di Maputo" },
+      { species: "Antilopi", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
+      { species: "Predatori", details: "Leopardo, ghepardo, iena maculata (reintrodotti 2023-24)" },
+      { species: "Uccelli", details: "300+ specie - fenicotteri, uccelli acquatici, rapaci" }
     ]
   },
 
@@ -414,6 +450,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Transport safari i wycieczki z przewodnikiem"
       }
+    ],
+    wildlife: [
+      { species: "Słonie", details: "450-500 słoni nadbrzeżnych - główna atrakcja, obserwacje przez cały rok" },
+      { species: "Żyrafy", details: "Często spotykane w całym rezerwacie" },
+      { species: "Zebry", details: "Częste obserwacje, często w stadach" },
+      { species: "Hipopotamy i Krokodyle", details: "Wokół jezior, mokradeł i Zatoki Maputo" },
+      { species: "Antylopy", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
+      { species: "Drapieżniki", details: "Lampart, gepard, hiena cętkowana (reintrodukowane 2023-24)" },
+      { species: "Ptaki", details: "300+ gatunków - flamingi, ptaki wodne, drapieżne" }
     ]
   },
 
@@ -497,6 +542,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Сафари-трансферы и экскурсии с гидом"
       }
+    ],
+    wildlife: [
+      { species: "Слоны", details: "450-500 прибрежных слонов - главная достопримечательность, наблюдения круглый год" },
+      { species: "Жирафы", details: "Часто встречаются по всему заповеднику" },
+      { species: "Зебры", details: "Частые наблюдения, часто в стадах" },
+      { species: "Бегемоты и Крокодилы", details: "Вокруг озёр, болот и залива Мапуту" },
+      { species: "Антилопы", details: "Тростниковая антилопа, импала, ньяла, канна, куду, водяной козёл, красный дукер" },
+      { species: "Хищники", details: "Леопард, гепард, пятнистая гиена (реинтродуцированы 2023-24)" },
+      { species: "Птицы", details: "300+ видов - фламинго, водоплавающие птицы, хищные птицы" }
     ]
   },
 
@@ -580,6 +634,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "サファリ送迎とガイド付きツアー"
       }
+    ],
+    wildlife: [
+      { species: "ゾウ", details: "450-500頭の沿岸ゾウ - メインアトラクション、通年観察可能" },
+      { species: "キリン", details: "保護区内で頻繁に観察される" },
+      { species: "シマウマ", details: "よく見られ、群れで行動することが多い" },
+      { species: "カバとワニ", details: "湖、湿地帯、マプト湾周辺に生息" },
+      { species: "アンテロープ", details: "リードバック、インパラ、ニャラ、エランド、クドゥ、ウォーターバック、レッドダイカー" },
+      { species: "捕食動物", details: "ヒョウ、チーター、ブチハイエナ（2023-24年に再導入）" },
+      { species: "鳥類", details: "300種以上 - フラミンゴ、水鳥、猛禽類" }
     ]
   },
 
@@ -663,6 +726,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Safari接送和导览游"
       }
+    ],
+    wildlife: [
+      { species: "大象", details: "450-500头沿海大象 - 主要景点，全年可观察" },
+      { species: "长颈鹿", details: "在整个保护区内经常可见" },
+      { species: "斑马", details: "常见，经常成群结队" },
+      { species: "河马和鳄鱼", details: "在湖泊、湿地和马普托湾周围" },
+      { species: "羚羊", details: "苇羚、黑斑羚、林羚、大羚羊、旋角羚、水羚、红色小羚羊" },
+      { species: "掠食者", details: "豹、猎豹、斑点鬣狗（2023-24年重新引入）" },
+      { species: "鸟类", details: "300+种 - 火烈鸟、涉禽、猛禽" }
     ]
   },
 
@@ -746,6 +818,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Safari vervoer en begeleide toere"
       }
+    ],
+    wildlife: [
+      { species: "Olifante", details: "450-500 kusolifante - hoofaantrekking, waarnemings deur die jaar" },
+      { species: "Kameelperde", details: "Word gereeld deur die reservaat gesien" },
+      { species: "Zebras", details: "Algemene waarnemings, dikwels in troppe" },
+      { species: "Seekoeie & Krokodille", details: "Rondom mere, vleilande en Maputobaai" },
+      { species: "Wildsbokke", details: "Rietbok, rooibok, njala, eland, koedoe, waterbok, rooiduiker" },
+      { species: "Roofdiere", details: "Luiperd, jagluiperd, gevlekte hiëna (heringestel 2023-24)" },
+      { species: "Voëls", details: "300+ spesies - flaminks, waadvöels, roofvoëls" }
     ]
   },
 
@@ -829,6 +910,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Ukuthuthwa kwe-safari nohambo oluholwayo"
       }
+    ],
+    wildlife: [
+      { species: "Izindlovu", details: "Izindlovu zasolwandle ezingu-450-500 - into enkulu yokubonakala, ukubonakala unyaka wonke" },
+      { species: "Izindlulamithi", details: "Zibonakala njalo kulo lonke izindawo ezivikelwe" },
+      { species: "Amadube", details: "Ukubonakala okujwayelekile, ngokuvamile ngamaqembu" },
+      { species: "Izimvubu nezingwenya", details: "Eduze kwamachibi, izindawo ezinamanzi neMaputo Bay" },
+      { species: "Amabhubesi", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
+      { species: "Izilwane ezidla ezinye", details: "Ingwe, ingulule, impisi enezigqi (zafakwa kabusha ngo-2023-24)" },
+      { species: "Izinyoni", details: "Izinhlobo ezingaphezu kuka-300 - flamingos, izinyoni zamanzi, izinyoni ezidla inyama" }
     ]
   },
 
@@ -912,6 +1002,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Usafiri wa safari na ziara zinazoongozwa"
       }
+    ],
+    wildlife: [
+      { species: "Tembo", details: "Tembo 450-500 wa pwani - kivutio kikuu, kuonekana mwaka mzima" },
+      { species: "Twiga", details: "Huonekana mara kwa mara katika hifadhi yote" },
+      { species: "Punda milia", details: "Kuonekana kwa kawaida, mara nyingi katika makundi" },
+      { species: "Viboko na Mamba", details: "Karibu na maziwa, ardhi oevu na Ghuba ya Maputo" },
+      { species: "Swala", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
+      { species: "Wanyama wakali", details: "Chui, duma, fisi mwenye madoa (walirudishwa 2023-24)" },
+      { species: "Ndege", details: "Aina 300+ - flamingo, ndege wa majini, ndege wa kuwinda" }
     ]
   },
 
@@ -995,6 +1094,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Safaritransport och guidade turer"
       }
+    ],
+    wildlife: [
+      { species: "Elefanter", details: "450-500 kustelefanter - huvudattraktion, observationer året runt" },
+      { species: "Giraffer", details: "Ses ofta i hela reservatet" },
+      { species: "Zebror", details: "Vanliga observationer, ofta i flockar" },
+      { species: "Flodhästar & Krokodiler", details: "Runt sjöar, våtmarker och Maputobukten" },
+      { species: "Antiloper", details: "Vassbok, impala, nyala, eland, kudu, vattenbock, rödduiker" },
+      { species: "Rovdjur", details: "Leopard, gepard, fläckig hyena (återintroducerade 2023-24)" },
+      { species: "Fåglar", details: "300+ arter - flamingor, vadarfåglar, rovfåglar" }
     ]
   },
 
@@ -1078,6 +1186,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Transporte de safari y tours guiados"
       }
+    ],
+    wildlife: [
+      { species: "Elefantes", details: "450-500 elefantes costeros - atracción principal, avistamientos todo el año" },
+      { species: "Jirafas", details: "Se ven frecuentemente en toda la reserva" },
+      { species: "Cebras", details: "Avistamientos comunes, a menudo en manadas" },
+      { species: "Hipopótamos y Cocodrilos", details: "Alrededor de lagos, humedales y la Bahía de Maputo" },
+      { species: "Antílopes", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
+      { species: "Depredadores", details: "Leopardo, guepardo, hiena manchada (reintroducidos 2023-24)" },
+      { species: "Aves", details: "300+ especies - flamencos, aves zancudas, rapaces" }
     ]
   },
 
@@ -1161,6 +1278,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Safari-transport en begeleide tours"
       }
+    ],
+    wildlife: [
+      { species: "Olifanten", details: "450-500 kustolifanten - hoofdattractie, waarnemingen het hele jaar" },
+      { species: "Giraffen", details: "Regelmatig te zien in het hele reservaat" },
+      { species: "Zebra's", details: "Veelvoorkomende waarnemingen, vaak in kuddes" },
+      { species: "Nijlpaarden & Krokodillen", details: "Rondom meren, wetlands en Maputo-baai" },
+      { species: "Antilopen", details: "Rietbok, impala, nyala, eland, koedoe, waterbok, rood duiker" },
+      { species: "Roofdieren", details: "Luipaard, cheetah, gevlekte hyena (geherintroduceerd 2023-24)" },
+      { species: "Vogels", details: "300+ soorten - flamingo's, waadvogels, roofvogels" }
     ]
   },
 
@@ -1244,6 +1370,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Safari-Transport und geführte Touren"
       }
+    ],
+    wildlife: [
+      { species: "Elefanten", details: "450-500 Küstenelefanten - Hauptattraktion, ganzjährig zu beobachten" },
+      { species: "Giraffen", details: "Häufig im gesamten Reservat zu sehen" },
+      { species: "Zebras", details: "Häufige Sichtungen, oft in Herden" },
+      { species: "Flusspferde & Krokodile", details: "An Seen, Feuchtgebieten und der Maputo-Bucht" },
+      { species: "Antilopen", details: "Riedbock, Impala, Nyala, Elenantilope, Kudu, Wasserbock, Rotducker" },
+      { species: "Raubtiere", details: "Leopard, Gepard, Tüpfelhyäne (2023-24 wiedereingeführt)" },
+      { species: "Vögel", details: "300+ Arten - Flamingos, Watvögel, Greifvögel" }
     ]
   },
 
@@ -1327,6 +1462,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Transport safari et visites guidées"
       }
+    ],
+    wildlife: [
+      { species: "Éléphants", details: "450-500 éléphants côtiers - attraction principale, observations toute l'année" },
+      { species: "Girafes", details: "Fréquemment observées dans toute la réserve" },
+      { species: "Zèbres", details: "Observations courantes, souvent en troupeaux" },
+      { species: "Hippopotames & Crocodiles", details: "Autour des lacs, zones humides et baie de Maputo" },
+      { species: "Antilopes", details: "Cobe des roseaux, impala, nyala, éland, koudou, cobe à croissant, céphalophe rouge" },
+      { species: "Prédateurs", details: "Léopard, guépard, hyène tachetée (réintroduits 2023-24)" },
+      { species: "Oiseaux", details: "300+ espèces - flamants roses, échassiers, rapaces" }
     ]
   },
 
@@ -1410,6 +1554,15 @@ export const SAFARI_CONTENT = {
         email: "transportesmulungo@gmail.com",
         specialty: "Transporte de safári e tours guiados"
       }
+    ],
+    wildlife: [
+      { species: "Elefantes", details: "450-500 elefantes costeiros - atração principal, avistamentos o ano todo" },
+      { species: "Girafas", details: "Frequentemente avistadas em toda a reserva" },
+      { species: "Zebras", details: "Avistamentos comuns, frequentemente em manadas" },
+      { species: "Hipopótamos e Crocodilos", details: "Ao redor de lagos, zonas úmidas e Baía de Maputo" },
+      { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
+      { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
+      { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
     ]
   }
 };

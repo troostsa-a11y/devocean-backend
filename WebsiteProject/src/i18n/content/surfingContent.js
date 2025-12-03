@@ -80,6 +80,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Surf lessons, board rentals & beachfront bar"
       }
+    ],
+    surfSpots: [
+      { name: "Ponta do Ouro Point", level: "Intermediate to Advanced", description: "Main right-hand point break - rocks & sand bottom, 100-200m rides (up to 1km when firing!)" },
+      { name: "Beach Breaks", level: "Beginner to Intermediate", description: "Mellow beach breaks perfect for learning - softer waves, sandy bottom" },
+      { name: "Ponta Malongane (8km north)", level: "All levels", description: "Alternative spot with different swell window - less crowded" }
     ]
   },
 
@@ -161,6 +166,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Aulas de surf, aluguel de pranchas e bar na praia"
       }
+    ],
+    surfSpots: [
+      { name: "Point de Ponta do Ouro", level: "Intermediário a Avançado", description: "Principal point break de direita - fundo de pedras e areia, ondas de 100-200m (até 1km quando bombando!)" },
+      { name: "Ondas de Praia", level: "Iniciante a Intermediário", description: "Ondas de praia suaves perfeitas para aprender - ondas mais tranquilas, fundo de areia" },
+      { name: "Ponta Malongane (8km ao norte)", level: "Todos os níveis", description: "Pico alternativo com janela de ondulação diferente - menos lotado" }
     ]
   },
 
@@ -242,6 +252,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Aulas de surf, aluguer de pranchas e bar na praia"
       }
+    ],
+    surfSpots: [
+      { name: "Point de Ponta do Ouro", level: "Intermédio a Avançado", description: "Principal point break de direita - fundo de rochas e areia, ondas de 100-200m (até 1km quando a bombar!)" },
+      { name: "Ondas de Praia", level: "Iniciante a Intermédio", description: "Ondas de praia suaves perfeitas para aprender - ondas mais calmas, fundo de areia" },
+      { name: "Ponta Malongane (8km a norte)", level: "Todos os níveis", description: "Spot alternativo com janela de ondulação diferente - menos concorrido" }
     ]
   },
 
@@ -323,6 +338,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Lezioni di surf, noleggio tavole e bar sulla spiaggia"
       }
+    ],
+    surfSpots: [
+      { name: "Point di Ponta do Ouro", level: "Intermedio ad Avanzato", description: "Principale point break destro - fondo di rocce e sabbia, onde 100-200m (fino a 1km quando è al massimo!)" },
+      { name: "Beach Break", level: "Principiante a Intermedio", description: "Beach break morbide perfette per imparare - onde più dolci, fondo sabbioso" },
+      { name: "Ponta Malongane (8km a nord)", level: "Tutti i livelli", description: "Spot alternativo con finestra di swell diversa - meno affollato" }
     ]
   },
 
@@ -404,6 +424,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Lekcje surfingu, wypożyczalnia desek i bar na plaży"
       }
+    ],
+    surfSpots: [
+      { name: "Point Ponta do Ouro", level: "Średniozaawansowany do Zaawansowany", description: "Główny prawy point break - dno skalisto-piaszczyste, przejazdy 100-200m (do 1km gdy pompuje!)" },
+      { name: "Beach Breaki", level: "Początkujący do Średniozaawansowany", description: "Łagodne beach breaki idealne do nauki - delikatniejsze fale, piaszczyste dno" },
+      { name: "Ponta Malongane (8km na północ)", level: "Wszystkie poziomy", description: "Alternatywny spot z innym oknem swellowym - mniej zatłoczony" }
     ]
   },
 
@@ -485,6 +510,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Уроки серфинга, аренда досок и пляжный бар"
       }
+    ],
+    surfSpots: [
+      { name: "Пойнт Понта-ду-Ору", level: "Средний до Продвинутый", description: "Главный правый пойнт-брейк - дно из камней и песка, проезды 100-200м (до 1км когда качает!)" },
+      { name: "Бич-брейки", level: "Начинающий до Средний", description: "Мягкие бич-брейки идеальны для обучения - более нежные волны, песчаное дно" },
+      { name: "Понта Малонгане (8км на север)", level: "Все уровни", description: "Альтернативный спот с другим окном для свелла - менее людно" }
     ]
   },
 
@@ -566,6 +596,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "サーフレッスン、ボードレンタル＆ビーチバー"
       }
+    ],
+    surfSpots: [
+      { name: "ポンタ・ド・オウロ・ポイント", level: "中級から上級", description: "メインのライトハンダーポイントブレイク - 岩と砂のボトム、100-200mライド（炸裂時は最大1km！）" },
+      { name: "ビーチブレイク", level: "初心者から中級", description: "学習に最適な穏やかなビーチブレイク - ソフトな波、サンドボトム" },
+      { name: "ポンタ・マロンガネ（北へ8km）", level: "全レベル", description: "異なるうねりウィンドウを持つ代替スポット - 空いている" }
     ]
   },
 
@@ -647,6 +682,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "冲浪课程、板租赁和海滩酒吧"
       }
+    ],
+    surfSpots: [
+      { name: "蓬塔多欧洲点浪", level: "中级至高级", description: "主要右手点浪 - 岩石和沙底，100-200米骑乘（爆发时可达1公里！）" },
+      { name: "海滩浪", level: "初级至中级", description: "适合学习的柔和海滩浪 - 更温柔的浪，沙底" },
+      { name: "蓬塔马隆加内（北8公里）", level: "所有级别", description: "具有不同涌浪窗口的替代点 - 更少拥挤" }
     ]
   },
 
@@ -728,6 +768,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Branderlesse, plankuur & strandbalkroeg"
       }
+    ],
+    surfSpots: [
+      { name: "Ponta do Ouro Point", level: "Intermediêr tot Gevorderd", description: "Hoof regterdraai point break - rots en sand bodem, 100-200m ritte (tot 1km wanneer dit brand!)" },
+      { name: "Strandgolwe", level: "Beginner tot Intermediêr", description: "Sagte strandgolwe perfek vir leer - sagter golwe, sand bodem" },
+      { name: "Ponta Malongane (8km noord)", level: "Alle vlakke", description: "Alternatiewe plek met verskillende deining venster - minder gepak" }
     ]
   },
 
@@ -809,6 +854,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Izifundo zokugibela, ukuboleka amabhodi & ibha yasogwini"
       }
+    ],
+    surfSpots: [
+      { name: "I-Point yase-Ponta do Ouro", level: "Abaphakathi kuya Abagqwesile", description: "I-point break yangakwesokudla - ingaphansi yamatshe nesihlabathi, ukugibela kwe-100-200m (kuze kufike ku-1km uma kuvutha!)" },
+      { name: "Amagagasi Asogwini", level: "Abaqalayo kuya Abaphakathi", description: "Amagagasi athambile asogwini alungele ukufunda - amagagasi athambile, ingaphansi yesihlabathi" },
+      { name: "Ponta Malongane (8km enyakatho)", level: "Wonke amazinga", description: "Indawo eyenye enewindi elahlukile legagasi - incane kakhulu" }
     ]
   },
 
@@ -890,6 +940,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Masomo ya kuteleza, kukodisha mbao na baa ya ufukweni"
       }
+    ],
+    surfSpots: [
+      { name: "Point ya Ponta do Ouro", level: "Wastani hadi Walioendelea", description: "Point break kuu ya kulia - msingi wa mawe na mchanga, kupanda mita 100-200 (hadi km 1 wakati inawaka!)" },
+      { name: "Mawimbi ya Ufukweni", level: "Wanaoanza hadi Wastani", description: "Mawimbi laini ya ufukweni yanayofaa kujifunza - mawimbi laini zaidi, msingi wa mchanga" },
+      { name: "Ponta Malongane (km 8 kaskazini)", level: "Viwango vyote", description: "Eneo mbadala na dirisha tofauti la mawimbi - msongamano mdogo" }
     ]
   },
 
@@ -971,6 +1026,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Surflektioner, brädhyra och strandbar"
       }
+    ],
+    surfSpots: [
+      { name: "Ponta do Ouro Point", level: "Medel till Avancerad", description: "Huvud högervåg point break - sten och sandbotten, åk 100-200m (upp till 1km när den är på!)" },
+      { name: "Strandvågor", level: "Nybörjare till Medel", description: "Mjuka strandvågor perfekta för att lära sig - mildare vågor, sandbotten" },
+      { name: "Ponta Malongane (8km norrut)", level: "Alla nivåer", description: "Alternativ spot med annat dyningsfönster - mindre folk" }
     ]
   },
 
@@ -1052,6 +1112,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Clases de surf, alquiler de tablas y bar en la playa"
       }
+    ],
+    surfSpots: [
+      { name: "Point de Ponta do Ouro", level: "Intermedio a Avanzado", description: "Principal point break de derecha - fondo de rocas y arena, olas de 100-200m (¡hasta 1km cuando está encendido!)" },
+      { name: "Beach Breaks", level: "Principiante a Intermedio", description: "Beach breaks suaves perfectas para aprender - olas más suaves, fondo de arena" },
+      { name: "Ponta Malongane (8km al norte)", level: "Todos los niveles", description: "Spot alternativo con diferente ventana de oleaje - menos concurrido" }
     ]
   },
 
@@ -1133,6 +1198,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Surflessen, plankverhuur en strandbar"
       }
+    ],
+    surfSpots: [
+      { name: "Ponta do Ouro Point", level: "Gemiddeld tot Gevorderd", description: "Hoofd rechter point break - rots en zandboden, ritten van 100-200m (tot 1km wanneer hij brandt!)" },
+      { name: "Beach Breaks", level: "Beginner tot Gemiddeld", description: "Zachte beach breaks perfect om te leren - zachtere golven, zandboden" },
+      { name: "Ponta Malongane (8km noordelijk)", level: "Alle niveaus", description: "Alternatieve plek met ander deiningsvenster - minder druk" }
     ]
   },
 
@@ -1214,6 +1284,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Surfunterricht, Brettverleih und Strandbar"
       }
+    ],
+    surfSpots: [
+      { name: "Ponta do Ouro Point", level: "Mittel bis Fortgeschritten", description: "Haupt rechter Point Break - Felsen und Sandboden, Rides von 100-200m (bis zu 1km wenn er läuft!)" },
+      { name: "Beach Breaks", level: "Anfänger bis Mittel", description: "Sanfte Beach Breaks perfekt zum Lernen - weichere Wellen, Sandboden" },
+      { name: "Ponta Malongane (8km nördlich)", level: "Alle Niveaus", description: "Alternativer Spot mit anderem Dünungsfenster - weniger überlaufen" }
     ]
   },
 
@@ -1295,6 +1370,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Cours de surf, location de planches et bar sur la plage"
       }
+    ],
+    surfSpots: [
+      { name: "Point de Ponta do Ouro", level: "Intermédiaire à Avancé", description: "Principal point break droitier - fond rocheux et sablonneux, rides de 100-200m (jusqu'à 1km quand ça fonctionne !)" },
+      { name: "Beach Breaks", level: "Débutant à Intermédiaire", description: "Beach breaks douces parfaites pour apprendre - vagues plus douces, fond sablonneux" },
+      { name: "Ponta Malongane (8km au nord)", level: "Tous niveaux", description: "Spot alternatif avec fenêtre de houle différente - moins fréquenté" }
     ]
   },
 
@@ -1376,6 +1456,11 @@ export const SURFING_CONTENT = {
         email: "brasukas.geral@gmail.com",
         specialty: "Aulas de surf, aluguel de pranchas e bar na praia"
       }
+    ],
+    surfSpots: [
+      { name: "Point de Ponta do Ouro", level: "Intermediário a Avançado", description: "Principal point break de direita - fundo de rocha e areia, ondas de 100-200m (até 1km quando está funcionando!)" },
+      { name: "Beach Breaks", level: "Iniciante a Intermediário", description: "Beach breaks suaves perfeitas para aprender - ondas mais suaves, fundo de areia" },
+      { name: "Ponta Malongane (8km ao norte)", level: "Todos os níveis", description: "Spot alternativo com janela de ondulação diferente - menos lotado" }
     ]
   }
 };

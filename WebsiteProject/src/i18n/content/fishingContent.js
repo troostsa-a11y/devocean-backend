@@ -84,6 +84,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Skipper Marcus Joubert, game fishing specialists"
       }
+    ],
+    targetSpecies: [
+      { name: "Black Marlin", season: "October-January", technique: "Trolling lures, live bait" },
+      { name: "Sailfish", season: "June-September", technique: "Trolling, fly fishing" },
+      { name: "Yellowfin Tuna", season: "Year-round", technique: "Trolling, popping, jigging" },
+      { name: "Wahoo", season: "Year-round (peak: Oct-April)", technique: "High-speed trolling" },
+      { name: "King Mackerel (Couta)", season: "Year-round", technique: "Trolling, shore casting" },
+      { name: "Dorado (Mahi-Mahi)", season: "November-March", technique: "Trolling around floating debris" },
+      { name: "Giant Trevally", season: "Year-round", technique: "Popping, jigging near reefs" }
     ]
   },
 
@@ -169,6 +178,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Capitão Marcus Joubert, especialistas em pesca esportiva"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlim-Negro", season: "Outubro-Janeiro", technique: "Iscas de arrasto, isca viva" },
+      { name: "Peixe-Vela", season: "Junho-Setembro", technique: "Arrasto, pesca com mosca" },
+      { name: "Atum-Amarelo", season: "O ano todo", technique: "Arrasto, popping, jigging" },
+      { name: "Wahoo", season: "O ano todo (pico: Out-Abr)", technique: "Arrasto em alta velocidade" },
+      { name: "Cavala-Rei (Couta)", season: "O ano todo", technique: "Arrasto, arremesso da costa" },
+      { name: "Dourado (Mahi-Mahi)", season: "Novembro-Março", technique: "Arrasto em detritos flutuantes" },
+      { name: "Xaréu-Gigante", season: "O ano todo", technique: "Popping, jigging perto de recifes" }
     ]
   },
 
@@ -254,6 +272,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Capitão Marcus Joubert, especialistas em pesca desportiva"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlim-Negro", season: "Outubro-Janeiro", technique: "Iscas de arrasto, isco vivo" },
+      { name: "Peixe-Vela", season: "Junho-Setembro", technique: "Arrasto, pesca à mosca" },
+      { name: "Atum-Amarelo", season: "O ano todo", technique: "Arrasto, popping, jigging" },
+      { name: "Wahoo", season: "O ano todo (pico: Out-Abr)", technique: "Arrasto a alta velocidade" },
+      { name: "Cavala-Rei (Couta)", season: "O ano todo", technique: "Arrasto, lançamento da costa" },
+      { name: "Dourado (Mahi-Mahi)", season: "Novembro-Março", technique: "Arrasto em detritos flutuantes" },
+      { name: "Xaréu-Gigante", season: "O ano todo", technique: "Popping, jigging junto a recifes" }
     ]
   },
 
@@ -339,6 +366,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Capitano Marcus Joubert, specialisti pesca sportiva"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlin Nero", season: "Ottobre-Gennaio", technique: "Traina con esche artificiali, esca viva" },
+      { name: "Pesce Vela", season: "Giugno-Settembre", technique: "Traina, pesca a mosca" },
+      { name: "Tonno Pinna Gialla", season: "Tutto l'anno", technique: "Traina, popping, jigging" },
+      { name: "Wahoo", season: "Tutto l'anno (picco: Ott-Apr)", technique: "Traina ad alta velocità" },
+      { name: "Sgombro Reale (Couta)", season: "Tutto l'anno", technique: "Traina, lancio dalla costa" },
+      { name: "Lampuga (Mahi-Mahi)", season: "Novembre-Marzo", technique: "Traina su detriti galleggianti" },
+      { name: "Carango Gigante", season: "Tutto l'anno", technique: "Popping, jigging vicino ai reef" }
     ]
   },
 
@@ -424,6 +460,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Kapitan Marcus Joubert, specjaliści wędkarstwa sportowego"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlin Czarny", season: "Październik-Styczeń", technique: "Trawa przynętami, żywa przynęta" },
+      { name: "Żaglica", season: "Czerwiec-Wrzesień", technique: "Trawa, wędkarstwo muchowe" },
+      { name: "Tuńczyk Żółtopłetwy", season: "Cały rok", technique: "Trawa, popping, jigging" },
+      { name: "Wahoo", season: "Cały rok (szczyt: Paź-Kwi)", technique: "Szybka trawa" },
+      { name: "Makrela Królewska (Couta)", season: "Cały rok", technique: "Trawa, rzut z brzegu" },
+      { name: "Koryfena (Mahi-Mahi)", season: "Listopad-Marzec", technique: "Trawa wokół dryfujących obiektów" },
+      { name: "Trevally Olbrzymi", season: "Cały rok", technique: "Popping, jigging przy rafach" }
     ]
   },
 
@@ -509,6 +554,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Капитан Маркус Жубер, специалисты по спортивной рыбалке"
       }
+    ],
+    targetSpecies: [
+      { name: "Чёрный Марлин", season: "Октябрь-Январь", technique: "Троллинг на приманки, живая наживка" },
+      { name: "Парусник", season: "Июнь-Сентябрь", technique: "Троллинг, нахлыст" },
+      { name: "Желтопёрый Тунец", season: "Круглый год", technique: "Троллинг, поппинг, джиггинг" },
+      { name: "Ваху", season: "Круглый год (пик: Окт-Апр)", technique: "Высокоскоростной троллинг" },
+      { name: "Королевская Макрель (Коута)", season: "Круглый год", technique: "Троллинг, заброс с берега" },
+      { name: "Дорадо (Махи-Махи)", season: "Ноябрь-Март", technique: "Троллинг у плавающих объектов" },
+      { name: "Гигантский Каранкс", season: "Круглый год", technique: "Поппинг, джиггинг у рифов" }
     ]
   },
 
@@ -594,6 +648,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "キャプテン・マーカス・ジュベール、スポーツフィッシング専門"
       }
+    ],
+    targetSpecies: [
+      { name: "クロマーリン", season: "10月〜1月", technique: "ルアートローリング、生き餌" },
+      { name: "バショウカジキ", season: "6月〜9月", technique: "トローリング、フライフィッシング" },
+      { name: "キハダマグロ", season: "通年", technique: "トローリング、ポッピング、ジギング" },
+      { name: "ワフー", season: "通年（ピーク：10月〜4月）", technique: "高速トローリング" },
+      { name: "キングマッカレル（コウタ）", season: "通年", technique: "トローリング、ショアキャスト" },
+      { name: "シイラ（マヒマヒ）", season: "11月〜3月", technique: "浮遊物周辺トローリング" },
+      { name: "ロウニンアジ", season: "通年", technique: "リーフ近くでポッピング、ジギング" }
     ]
   },
 
@@ -679,6 +742,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "船长Marcus Joubert，运动钓鱼专家"
       }
+    ],
+    targetSpecies: [
+      { name: "黑马林鱼", season: "10月-1月", technique: "拖钓饵、活饵" },
+      { name: "旗鱼", season: "6月-9月", technique: "拖钓、飞钓" },
+      { name: "黄鳍金枪鱼", season: "全年", technique: "拖钓、波爬、铁板" },
+      { name: "瓦胡鱼", season: "全年（高峰：10月-4月）", technique: "高速拖钓" },
+      { name: "大王马鲛鱼（Couta）", season: "全年", technique: "拖钓、岸投" },
+      { name: "鬼头刀（Mahi-Mahi）", season: "11月-3月", technique: "浮游物周围拖钓" },
+      { name: "巨型牛港鲹", season: "全年", technique: "礁石附近波爬、铁板" }
     ]
   },
 
@@ -764,6 +836,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Kaptein Marcus Joubert, sportvisvang spesialiste"
       }
+    ],
+    targetSpecies: [
+      { name: "Swart Marlyn", season: "Oktober-Januarie", technique: "Sleep met lokke, lewendige aas" },
+      { name: "Seilvis", season: "Junie-September", technique: "Sleep, vliegvisvang" },
+      { name: "Geelvintuna", season: "Heeljaar", technique: "Sleep, popping, jigging" },
+      { name: "Wahoo", season: "Heeljaar (piek: Okt-Apr)", technique: "Hoëspoedsleep" },
+      { name: "Koningmakriel (Couta)", season: "Heeljaar", technique: "Sleep, kusgooi" },
+      { name: "Dorado (Mahi-Mahi)", season: "November-Maart", technique: "Sleep rondom drywende voorwerpe" },
+      { name: "Reusetrevally", season: "Heeljaar", technique: "Popping, jigging naby riwwe" }
     ]
   },
 
@@ -849,6 +930,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Ukapitani Marcus Joubert, ochwepheshile bokudlala udoba"
       }
+    ],
+    targetSpecies: [
+      { name: "I-Black Marlin", season: "Okthoba-Januwari", technique: "Ukudonswa ngama-lures, i-bait ephilayo" },
+      { name: "I-Sailfish", season: "Juni-Septhemba", technique: "Ukudonsa, ukudoba kwe-fly" },
+      { name: "I-Yellowfin Tuna", season: "Unyaka wonke", technique: "Ukudonsa, popping, jigging" },
+      { name: "I-Wahoo", season: "Unyaka wonke (piek: Okt-Apr)", technique: "Ukudonsa okunejubane" },
+      { name: "I-King Mackerel (Couta)", season: "Unyaka wonke", technique: "Ukudonsa, ukuphonsa ogwini" },
+      { name: "I-Dorado (Mahi-Mahi)", season: "Novemba-Mashi", technique: "Ukudonsa eduze kwezinto ezintantayo" },
+      { name: "I-Giant Trevally", season: "Unyaka wonke", technique: "Popping, jigging eduze namawa-reef" }
     ]
   },
 
@@ -934,6 +1024,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Kapteni Marcus Joubert, wataalamu wa uvuvi wa michezo"
       }
+    ],
+    targetSpecies: [
+      { name: "Black Marlin", season: "Oktoba-Januari", technique: "Kuvuta na lures, chambo hai" },
+      { name: "Sailfish", season: "Juni-Septemba", technique: "Kuvuta, uvuvi wa fly" },
+      { name: "Tuna ya Mapezi ya Manjano", season: "Mwaka mzima", technique: "Kuvuta, popping, jigging" },
+      { name: "Wahoo", season: "Mwaka mzima (kilele: Okt-Apr)", technique: "Kuvuta kwa kasi ya juu" },
+      { name: "King Mackerel (Couta)", season: "Mwaka mzima", technique: "Kuvuta, kutupa kutoka ufukweni" },
+      { name: "Dorado (Mahi-Mahi)", season: "Novemba-Machi", technique: "Kuvuta karibu na vitu vinavyoelea" },
+      { name: "Giant Trevally", season: "Mwaka mzima", technique: "Popping, jigging karibu na miamba" }
     ]
   },
 
@@ -1019,6 +1118,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Kapten Marcus Joubert, sportfiskespecialister"
       }
+    ],
+    targetSpecies: [
+      { name: "Svart Marlin", season: "Oktober-januari", technique: "Trolling med drag, levande bete" },
+      { name: "Segelfisk", season: "Juni-september", technique: "Trolling, flugfiske" },
+      { name: "Gulfenad Tonfisk", season: "Hela året", technique: "Trolling, popping, jigging" },
+      { name: "Wahoo", season: "Hela året (topp: okt-apr)", technique: "Höghastighets-trolling" },
+      { name: "Kungsmakrill (Couta)", season: "Hela året", technique: "Trolling, kustkast" },
+      { name: "Dorado (Mahi-Mahi)", season: "November-mars", technique: "Trolling runt flytande skräp" },
+      { name: "Jätte-Trevally", season: "Hela året", technique: "Popping, jigging nära rev" }
     ]
   },
 
@@ -1104,6 +1212,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Capitán Marcus Joubert, especialistas en pesca deportiva"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlín Negro", season: "Octubre-Enero", technique: "Currican con señuelos, carnada viva" },
+      { name: "Pez Vela", season: "Junio-Septiembre", technique: "Currican, pesca con mosca" },
+      { name: "Atún de Aleta Amarilla", season: "Todo el año", technique: "Currican, popping, jigging" },
+      { name: "Wahoo", season: "Todo el año (pico: Oct-Abr)", technique: "Currican a alta velocidad" },
+      { name: "Caballa Rey (Couta)", season: "Todo el año", technique: "Currican, lanzamiento desde costa" },
+      { name: "Dorado (Mahi-Mahi)", season: "Noviembre-Marzo", technique: "Currican cerca de objetos flotantes" },
+      { name: "Jurel Gigante", season: "Todo el año", technique: "Popping, jigging cerca de arrecifes" }
     ]
   },
 
@@ -1189,6 +1306,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Kapitein Marcus Joubert, sportvis-specialisten"
       }
+    ],
+    targetSpecies: [
+      { name: "Zwarte Marlijn", season: "Oktober-januari", technique: "Trollen met kunstaas, levend aas" },
+      { name: "Zeilvis", season: "Juni-september", technique: "Trollen, vliegvissen" },
+      { name: "Geelvintonijn", season: "Het hele jaar", technique: "Trollen, popping, jigging" },
+      { name: "Wahoo", season: "Het hele jaar (piek: okt-apr)", technique: "Snel trollen" },
+      { name: "Koningsmakreel (Couta)", season: "Het hele jaar", technique: "Trollen, kustwerpen" },
+      { name: "Dorado (Mahi-Mahi)", season: "November-maart", technique: "Trollen rondom drijvend materiaal" },
+      { name: "Reuzentrevally", season: "Het hele jaar", technique: "Popping, jigging bij riffen" }
     ]
   },
 
@@ -1274,6 +1400,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Kapitän Marcus Joubert, Sportfisch-Spezialisten"
       }
+    ],
+    targetSpecies: [
+      { name: "Schwarzer Marlin", season: "Oktober-Januar", technique: "Schleppangeln mit Ködern, Lebendköder" },
+      { name: "Segelfisch", season: "Juni-September", technique: "Schleppangeln, Fliegenfischen" },
+      { name: "Gelbflossen-Thunfisch", season: "Ganzjährig", technique: "Schleppangeln, Popping, Jigging" },
+      { name: "Wahoo", season: "Ganzjährig (Höhepunkt: Okt-Apr)", technique: "Hochgeschwindigkeits-Schleppangeln" },
+      { name: "Königsmakrele (Couta)", season: "Ganzjährig", technique: "Schleppangeln, Küstenwurf" },
+      { name: "Goldmakrele (Mahi-Mahi)", season: "November-März", technique: "Schleppangeln an Treibgut" },
+      { name: "Riesen-Trevally", season: "Ganzjährig", technique: "Popping, Jigging an Riffen" }
     ]
   },
 
@@ -1359,6 +1494,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Capitaine Marcus Joubert, spécialistes pêche sportive"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlin Noir", season: "Octobre-Janvier", technique: "Traîne avec leurres, appât vivant" },
+      { name: "Espadon Voilier", season: "Juin-Septembre", technique: "Traîne, pêche à la mouche" },
+      { name: "Thon Jaune", season: "Toute l'année", technique: "Traîne, popping, jigging" },
+      { name: "Wahoo", season: "Toute l'année (pic : Oct-Avr)", technique: "Traîne à grande vitesse" },
+      { name: "Maquereau Royal (Couta)", season: "Toute l'année", technique: "Traîne, lancer côtier" },
+      { name: "Coryphène (Mahi-Mahi)", season: "Novembre-Mars", technique: "Traîne près d'objets flottants" },
+      { name: "Carangue Géante", season: "Toute l'année", technique: "Popping, jigging près des récifs" }
     ]
   },
 
@@ -1444,6 +1588,15 @@ export const FISHING_CONTENT = {
         email: "info@mozambiquefishincharters.co.za",
         specialty: "Capitão Marcus Joubert, especialistas em pesca esportiva"
       }
+    ],
+    targetSpecies: [
+      { name: "Marlim-Negro", season: "Outubro-Janeiro", technique: "Arrasto com iscas, isca viva" },
+      { name: "Peixe-Vela", season: "Junho-Setembro", technique: "Arrasto, pesca com mosca" },
+      { name: "Atum-Amarelo", season: "O ano todo", technique: "Arrasto, popping, jigging" },
+      { name: "Wahoo", season: "O ano todo (pico: Out-Abr)", technique: "Arrasto em alta velocidade" },
+      { name: "Cavala-Rei (Couta)", season: "O ano todo", technique: "Arrasto, arremesso da costa" },
+      { name: "Dourado (Mahi-Mahi)", season: "Novembro-Março", technique: "Arrasto perto de detritos flutuantes" },
+      { name: "Xaréu-Gigante", season: "O ano todo", technique: "Popping, jigging perto de recifes" }
     ]
   }
 };
