@@ -620,6 +620,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  ja: {
+    title: "スキューバダイビング",
+    tagline: "オオメジロザメ、マンタ、ジンベエザメと手つかずのリーフを探検",
+    overview: "ポンタ・ド・オウロは、浅瀬のリーフから深いピナクルまで20以上のダイブサイトを持つワールドクラスのスキューバダイビングを提供します。モザンビーク海峡の透き通った水は、19種のサメを含む信じられないほど多様な海洋生物との出会いと優れた視界を提供します。",
+    highlights: [
+      "20以上のダイブサイト（深度8m〜48m）",
+      "オオメジロザメ、イタチザメ、シュモクザメ",
+      "ジンベエザメ（10月〜3月）",
+      "ザトウクジラ（7月〜11月）",
+      "マンタ、ウミガメ、イルカ",
+      "180種以上のウミウシ",
+      "手つかずのサンゴ礁",
+      "プロフェッショナルPADIセンター"
+    ],
+    pricingRange: "1ダイブUS$40から",
+    pricingDetails: [
+      "シングルダイブ：US$40-50",
+      "2ダイブパッケージ：US$75-90",
+      "PADIオープンウォーター：US$350-400",
+      "機材レンタル込み",
+      "全ライセンス・許可証込み"
+    ],
+    durationTypical: "半日または終日",
+    durationDetails: [
+      "午前ダイブ：2ダイブ（3-4時間）",
+      "終日：3ダイブ（6-8時間）",
+      "ビーチランチング（スリリング！）",
+      "サイトは海岸から1-12km"
+    ],
+    included: [
+      "全ダイビング機材（BCD、レギュレーター、スーツ）",
+      "ダイブサイトへのボート移動",
+      "プロフェッショナルPADIダイブマスター/インストラクター",
+      "海洋公園料金",
+      "ダイブ後の軽食・飲み物",
+      "ダイブコンピューター・安全装備"
+    ],
+    requirementsLevel: "初心者から上級者まで",
+    requirementsDetails: [
+      "初心者サイト：Crèche、Doodles、Playground（10-18m）",
+      "上級サイト：Pinnacles、Atlantis、Cloudbreak（28-48m）",
+      "PADI認定必須（またはオープンウォーターコース受講）",
+      "健康申告書必須",
+      "快適に泳げること",
+      "最低年齢：10歳（ジュニアオープンウォーター）"
+    ],
+    bestTimePeak: "10月〜4月（夏季）",
+    bestTimeDetails: [
+      "**オオメジロザメ＆イタチザメ：** 11月〜4月（水温26-29°C）",
+      "**シュモクザメ：** 4月〜10月（視界最良）",
+      "**ジンベエザメ：** 10月〜3月",
+      "**ザトウクジラ：** 7月〜11月",
+      "**最高の視界：** 5月〜8月（20-30m）",
+      "**最も暖かい水温：** 12月〜2月（27-29°C）"
+    ],
+    tips: [
+      "ピークシーズン（12月〜1月）は早めに予約",
+      "認定カードをお持ちください",
+      "ウェットスーツを検討（3mm推奨）",
+      "サーフ越えのエントリーはスリリング - 濡れる準備を！",
+      "ほとんどのオペレーターが機材レンタル提供",
+      "複数ダイブパッケージがお得"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "サメダイビング専門、研究志向"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "PADI 5スターセンター、サメダイビング専門"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "プロフェッショナルダイブセンター"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "プロフェッショナルダイブセンター"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "サメダイビング専門"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "プロフェッショナルダイブセンター"
+      }
+    ]
+  },
+
   af: {
     title: "Skubaduik",
     tagline: "Verken ongerepte riwwe met bulhaaie, mantas en walvishaaie",
