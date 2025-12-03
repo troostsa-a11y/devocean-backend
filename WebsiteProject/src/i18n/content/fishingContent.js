@@ -342,6 +342,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  pl: {
+    title: "Wędkarstwo Plażowe i Pełnomorskie",
+    tagline: "Łów okonia lub ścigaj marliny w Kanale Mozambickim",
+    overview: "Ponta do Ouro oferuje wyjątkowe wędkarstwo zarówno z plaży, jak i na pełnym morzu. Ciepłe wody Oceanu Indyjskiego i głęboki Kanał Mozambicki dają ekscytujące możliwości połowu marlina, żaglicy, wahoo, tuńczyka żółtopłetwego i makreli królewskiej. Wędkarze plażowi mogą łowić okonia, barakudę i pompano.",
+    highlights: [
+      "Marlin czarny (październik-styczeń)",
+      "Żaglica (czerwiec-wrzesień)",
+      "Tuńczyk żółtopłetwy i wahoo",
+      "Makrela królewska (Couta)",
+      "Wędkarstwo przybrzeżne na okonia i barakudę",
+      "Ciepłe, krystalicznie czyste wody Oceanu Indyjskiego",
+      "Czartery ze startem z plaży",
+      "Doświadczeni lokalni kapitanowie z 20+ latami"
+    ],
+    pricingRange: "Od 550 USD (czarter)",
+    pricingDetails: [
+      "Czarter 5-godzinny: 550-650 USD",
+      "Czarter 8-godzinny: 850-950 USD",
+      "Całodniowe pełne morze: 1000+ USD",
+      "Wędkarstwo plażowe: Bezpłatne (przynieś sprzęt)",
+      "Wędkarstwo plażowe z przewodnikiem: 50-100 USD",
+      "Licencje, sprzęt i przygotowanie w cenie czarteru"
+    ],
+    durationTypical: "5-8 godzin (czarter)",
+    durationDetails: [
+      "Czarter półdniowy: 5 godzin",
+      "Czarter całodniowy: 8-10 godzin",
+      "Wędkarstwo plażowe: Elastyczne (najlepsze o świcie/zmierzchu)",
+      "Wczesne poranne wyjazdy (6-7)",
+      "Szybki dostęp do głębokich wód (minuty od brzegu)"
+    ],
+    included: [
+      "Kompletny sprzęt wędkarski",
+      "Licencje i pozwolenia wędkarskie",
+      "Doświadczony kapitan (20+ lat)",
+      "Przynęta i sztuczne",
+      "Czyszczenie i filetowanie ryb",
+      "Pakowanie próżniowe na podróż",
+      "Napoje i przekąski (większość operatorów)",
+      "Sprzęt bezpieczeństwa"
+    ],
+    requirementsLevel: "Początkujący do Eksperta",
+    requirementsDetails: [
+      "Doświadczenie nie jest wymagane (przewodnicy pomagają)",
+      "Maksymalnie 6 wędkarzy na łódź (zazwyczaj)",
+      "Start z plaży - spodziewaj się zamoczenia!",
+      "Ochrona przeciwsłoneczna niezbędna",
+      "Umiejętność pływania zalecana",
+      "Leki na chorobę morską jeśli wrażliwy"
+    ],
+    bestTimePeak: "Październik - Styczeń (Sezon Marlina)",
+    bestTimeDetails: [
+      "**Marlin Czarny:** Październik-styczeń (szczyt sezonu)",
+      "**Marlin Błękitny:** Cały rok",
+      "**Żaglica:** Czerwiec-wrzesień (okres szczytowy)",
+      "**Wahoo i Tuńczyk:** Cały rok (szczyt: paź-kwi)",
+      "**Makrela Królewska:** Cały rok (najlepsza: kwi-lis)",
+      "**Temp. Wody:** 22-28°C (cieplejsza = więcej pelagicznych)"
+    ],
+    tips: [
+      "Rezerwuj sezon marlina (paź-sty) z wyprzedzeniem",
+      "Wędkarstwo plażowe najlepsze o świcie i zmierzchu",
+      "Skalista cypel na końcu plaży oferuje głębokie wody",
+      "Idź na północ do Ponta Mamoli dla lepszego łowienia z plaży",
+      "Używaj sztucznych: pink dusters, redeye, kalmary",
+      "Zabierz wodoszczelne torby na elektronikę",
+      "Uzgodnij przechowanie ryb ze swoim pensjonatem",
+      "Złów i wypuść zalecane dla ochrony marlinów"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Kapitan Laurens Koen, 20+ lat doświadczenia"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Kapitan Marcus Joubert, specjaliści wędkarstwa sportowego"
+      }
+    ]
+  },
+
   sv: {
     title: "Strand- och Havsfiske",
     tagline: "Fiska abborre eller jaga marlin i Moçambiquekanalen",

@@ -326,6 +326,87 @@ export const SURFING_CONTENT = {
     ]
   },
 
+  pl: {
+    title: "Deski Surfingowe i Lekcje",
+    tagline: "Surfuj na ikonicznym point breaku Ponta do Ouro",
+    overview: "Klasyczny prawy point break Ponta do Ouro może dostarczyć epickie przejazdy 100-200m, a nawet do 1km w idealnych warunkach - porównywalny z Jeffrey's Bay. Ciepła, krystalicznie czysta woda i stały swell czynią to idealnym miejscem dla surferów na każdym poziomie, od początkujących uczących się na łagodnych falach po ekspertów rzeźbiących point.",
+    highlights: [
+      "Klasyczny prawy point break",
+      "Przejazdy 100-200m (do 1km gdy idealnie!)",
+      "Ciepła woda (22-28°C) - pianka opcjonalna",
+      "Beach breaki przyjazne początkującym",
+      "Małe zatłoczenie lineup",
+      "Lekcje surfingu i wypożyczalnia desek",
+      "Delfiny surfujące obok ciebie",
+      "Krystalicznie czysta woda Oceanu Indyjskiego"
+    ],
+    pricingRange: "Od 20 USD (lekcja)",
+    pricingDetails: [
+      "Lekcja surfingu (2 godziny): 20-40 USD",
+      "Wypożyczenie deski (za dzień): 15-25 USD",
+      "Pakiety wielodniowe: Obniżone ceny",
+      "Sprzęt w cenie lekcji",
+      "Softboardy dla początkujących",
+      "Shortboardy/funboardy dla zaawansowanych"
+    ],
+    durationTypical: "2 godziny (lekcja) lub elastycznie (wypożyczenie)",
+    durationDetails: [
+      "Lekcja dla początkujących: 2 godziny (teoria + praktyka)",
+      "Prywatny coaching: 1-2 godziny",
+      "Wypożyczenie deski: Pół dnia lub cały dzień",
+      "Najlepszy czas na surf: Wczesny ranek (6-9)",
+      "Sesje popołudniowe: 15-18"
+    ],
+    included: [
+      "Deska surfingowa (lekcja lub wypożyczenie)",
+      "Pianka/lycra (jeśli potrzebne)",
+      "Instruktaż indywidualny lub w małej grupie",
+      "Odprawa bezpieczeństwa i świadomość oceaniczna",
+      "Wosk i leash",
+      "Asystenta na plaży",
+      "Zdjęcia z twojej sesji (niektórzy operatorzy)"
+    ],
+    requirementsLevel: "Wszystkie poziomy mile widziane",
+    requirementsDetails: [
+      "Początkujący: Nie wymagane doświadczenie",
+      "Średniozaawansowany/Zaawansowany: Doświadczenie point break przydatne",
+      "Umiejętność pływania wymagana",
+      "Wszystkie grupy wiekowe (dzieci do dorosłych)",
+      "Kondycja: Umiarkowana (wiosłowanie może męczyć)",
+      "**Ważne:** Silne prądy wzdłuż pointu - bądź ostrożny!"
+    ],
+    bestTimePeak: "Swell z południa z wiatrem z zachodu",
+    bestTimeDetails: [
+      "**Najlepszy Swell:** Swell z południa",
+      "**Najlepszy Wiatr:** Wiatr z zachodu (offshore)",
+      "**Najlepsza Fala:** Pływy rosnący lub opadający",
+      "**Konsystencja:** Dobra ale kapryśna - wymaga odpowiednich warunków",
+      "**Sezony:** Surfowanie możliwe cały rok",
+      "**Temp. Wody:** 22-28°C (shorty lub szorty kąpielowe)",
+      "**Śledź swelle z Północnego Wybrzeża RPA dla najlepszych sesji**"
+    ],
+    tips: [
+      "Sprawdź prognozę surfingu przed rezerwacją (Surfline, Magicseaweed)",
+      "Point break może rywalizować z J-Bay ale wymaga idealnych warunków",
+      "Zabierz zapasowe deski i dodatkowe stateczniki/leash - ograniczone sklepy",
+      "Szanuj silne prądy - bądź cierpliwy z pływami",
+      "Longboardy soft-top idealne dla początkujących na beach breakach",
+      "Delfiny często surfują obok - magiczne doświadczenie!",
+      "Woda jest ciepła ale zabierz shorty dla ochrony przed wiatrem",
+      "Pytaj lokalnych o obecne warunki swellu",
+      "Puste lineup = więcej fal dla ciebie!",
+      "Połącz z nurkowaniem, wędkarstwem gdy surf jest płaski"
+    ],
+    operators: [
+      {
+        name: "Brasukas Bar & Surf",
+        website: "",
+        email: "brasukas.geral@gmail.com",
+        specialty: "Lekcje surfingu, wypożyczalnia desek i bar na plaży"
+      }
+    ]
+  },
+
   sv: {
     title: "Surfbrädor och Lektioner",
     tagline: "Surfa den ikoniska point break i Ponta do Ouro",

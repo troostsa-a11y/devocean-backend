@@ -358,6 +358,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  pl: {
+    title: "Safari Oceaniczne",
+    tagline: "Obserwacja wielorybów i spotkania z życiem morskim",
+    overview: "Wyrusz na ekscytujące safari oceaniczne, aby obserwować humbaki migrujące przez wody mozambickie (lipiec-listopad). Te przygody łodzią oferują również spotkania z delfinami przez cały rok, sezonowe obserwacje rekinów wielorybich i snorkeling na dziewiczych rafach pełnych życia morskiego.",
+    highlights: [
+      "30 000 humbaków (lipiec-listopad)",
+      "Skoki, uderzenia ogonem i spyhopping",
+      "Spotkania z delfinami przez cały rok",
+      "Rekiny wielorybie (październik-marzec)",
+      "Manty i żółwie morskie",
+      "Snorkeling na dziewiczych rafach",
+      "Wycieczki prowadzone przez biologów morskich",
+      "Nacisk na badania i ochronę"
+    ],
+    pricingRange: "40-45 USD za osobę",
+    pricingDetails: [
+      "Tylko obserwacja wielorybów: 40 USD",
+      "Delfiny + wieloryby kombinacja: 45 USD",
+      "Prywatna wycieczka całodniowa z Maputo: 179 USD",
+      "Dzieci poniżej 12 lat: Obniżone ceny",
+      "Sprzęt i przekąski w cenie"
+    ],
+    durationTypical: "2-3 godziny",
+    durationDetails: [
+      "Wycieczki półdniowe: 2-3 godziny",
+      "Wycieczki całodniowe: 6-8 godzin (z Maputo)",
+      "Wyjazdy poranne (najlepsze warunki)",
+      "W tym czas na snorkeling",
+      "Elastyczne w zależności od aktywności wielorybów"
+    ],
+    included: [
+      "Transfer łodzią z doświadczonym kapitanem",
+      "Sprzęt do snorkelingu (maska, płetwy, fajka)",
+      "Przewodnik-biolog morski (większość operatorów)",
+      "Przekąski i napoje",
+      "Opłaty za park morski",
+      "Zdjęcia/wideo (niektórzy operatorzy)",
+      "Sprzęt bezpieczeństwa i kamizelki ratunkowe"
+    ],
+    requirementsLevel: "Wszystkie grupy wiekowe",
+    requirementsDetails: [
+      "Nie wymagane specjalne umiejętności do obserwacji wielorybów",
+      "Umiejętność pływania wymagana do snorkelingu",
+      "Wiek: Odpowiednie dla rodzin (dzieci do seniorów)",
+      "Zależne od pogody - morze musi być spokojne",
+      "Wycieczki mogą być przełożone jeśli warunki niebezpieczne",
+      "Ciepła kurtka zalecana (lipiec-wrzesień)"
+    ],
+    bestTimePeak: "Lipiec - Październik (Sezon Wielorybów)",
+    bestTimeDetails: [
+      "**Humbaki:** Lipiec-listopad (szczyt: lip-paź)",
+      "**Delfiny:** Cały rok (200+ mieszkańców)",
+      "**Rekiny Wielorybie:** Październik-marzec",
+      "**Manty:** Grudzień-maj",
+      "**Żółwie Morskie:** Październik-marzec (gniazdowanie)",
+      "**Spokojniejsze Morze:** Miesiące zimowe (czerwiec-wrzesień)"
+    ],
+    tips: [
+      "Rezerwuj w sezonie wielorybów (lip-lis) dla najlepszych szans",
+      "Zabierz ciepłą kurtkę - bryza morska może być zimna",
+      "Wodoszczelna torba na aparat niezbędna",
+      "Leki na chorobę morską jeśli wrażliwy",
+      "Lornetki poprawiają doświadczenie obserwacji wielorybów",
+      "Etyczni operatorzy przestrzegają zasad bez dotykania",
+      "Obserwacje nie gwarantowane - dzikie zwierzęta",
+      "Połącz ze snorkelingiem dla pełnego doświadczenia morskiego"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Eksperci od wielorybów, nacisk lipiec-listopad"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Wycieczki badawcze, zbieranie danych dla ochrony"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Safari oceaniczne, obserwacja wielorybów i spotkania morskie"
+      }
+    ]
+  },
+
   sv: {
     title: "Havssafaris",
     tagline: "Valskådning och möten med marint liv",

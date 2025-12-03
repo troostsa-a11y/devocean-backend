@@ -414,6 +414,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  pl: {
+    title: "Nurkowanie",
+    tagline: "Odkryj dziewicze rafy z rekinami byczymi, mantami i rekinami wielorybimi",
+    overview: "Ponta do Ouro oferuje nurkowanie światowej klasy z ponad 20 miejscami nurkowymi, od płytkich raf po głębokie pinakle. Krystalicznie czyste wody Kanału Mozambickiego zapewniają wyjątkową widoczność i spotkania z niesamowitą różnorodnością życia morskiego, w tym 19 gatunkami rekinów.",
+    highlights: [
+      "Ponad 20 miejsc nurkowych od 8m do 48m głębokości",
+      "Rekiny bycze, tygrysy i młoty",
+      "Rekiny wielorybie (październik-marzec)",
+      "Humbaki (lipiec-listopad)",
+      "Manty, żółwie i delfiny",
+      "Ponad 180 gatunków nagoskrzelnych",
+      "Dziewicze rafy koralowe",
+      "Profesjonalne centra PADI"
+    ],
+    pricingRange: "Od 40 USD za nurkowanie",
+    pricingDetails: [
+      "Pojedyncze nurkowanie: 40-50 USD",
+      "Pakiet dwóch nurkowań: 75-90 USD",
+      "PADI Open Water: 350-400 USD",
+      "Wypożyczenie sprzętu w cenie",
+      "Wszystkie licencje i opłaty w cenie"
+    ],
+    durationTypical: "Pół dnia lub cały dzień",
+    durationDetails: [
+      "Nurkowania poranne: 2 nurkowania (3-4 godziny)",
+      "Cały dzień: 3 nurkowania (6-8 godzin)",
+      "Start z plaży (przygodowy!)",
+      "Miejsca 1-12km od brzegu"
+    ],
+    included: [
+      "Cały sprzęt nurkowy (jacket, automat, pianka)",
+      "Transport łodzią do miejsc nurkowych",
+      "Profesjonalny instruktor/divemaster PADI",
+      "Opłaty za park morski",
+      "Przekąski i napoje po nurkowaniu",
+      "Komputer nurkowy i sprzęt bezpieczeństwa"
+    ],
+    requirementsLevel: "Początkujący do Zaawansowany",
+    requirementsDetails: [
+      "Miejsca dla początkujących: Crèche, Doodles, Playground (10-18m)",
+      "Miejsca zaawansowane: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "Wymagany certyfikat PADI (lub kurs Open Water)",
+      "Wymagany kwestionariusz medyczny",
+      "Dobra umiejętność pływania",
+      "Minimalny wiek: 10 lat (Junior Open Water)"
+    ],
+    bestTimePeak: "Październik - Kwiecień (Lato)",
+    bestTimeDetails: [
+      "**Rekiny Bycze i Tygrysy:** Listopad-kwiecień (woda 26-29°C)",
+      "**Rekiny Młoty:** Kwiecień-październik (lepsza widoczność)",
+      "**Rekiny Wielorybie:** Październik-marzec",
+      "**Humbaki:** Lipiec-listopad",
+      "**Najlepsza Widoczność:** Maj-sierpień (20-30m)",
+      "**Najcieplejsza Woda:** Grudzień-luty (27-29°C)"
+    ],
+    tips: [
+      "Rezerwuj wcześniej w szczycie sezonu (grudzień-styczeń)",
+      "Zabierz kartę certyfikacyjną",
+      "Rozważ piankę (zalecana 3mm)",
+      "Start przez fale jest ekscytujący - przygotuj się na zamoczenie!",
+      "Większość operatorów oferuje wypożyczenie sprzętu",
+      "Pakiety wielonurkowe oferują najlepszą wartość"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Specjaliści od nurkowania z rekinami, nastawieni na badania"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "Centrum PADI 5 gwiazdek, specjaliści od nurkowania z rekinami"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Profesjonalne centrum nurkowe"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Profesjonalne centrum nurkowe"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Specjaliści od nurkowania z rekinami"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Profesjonalne centrum nurkowe"
+      }
+    ]
+  },
+
   sv: {
     title: "Dykning",
     tagline: "Utforska orörda rev med tjurhajar, mantarockor och valhajar",
