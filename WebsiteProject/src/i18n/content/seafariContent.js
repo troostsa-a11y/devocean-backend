@@ -269,6 +269,95 @@ export const SEAFARI_CONTENT = {
     ]
   },
 
+  de: {
+    title: "Ozean-Safaris",
+    tagline: "Walbeobachtung und Begegnungen mit Meereslebewesen",
+    overview: "Begeben Sie sich auf aufregende Ozean-Safaris, um Buckelwale zu beobachten, die durch mosambikanische Gewässer ziehen (Juli-November). Diese Bootsabenteuer bieten auch ganzjährige Delfinbegegnungen, saisonale Walhaisichtungen und Schnorcheln über unberührten Riffen voller Meereslebewesen.",
+    highlights: [
+      "30.000 Buckelwale (Juli-November)",
+      "Sprünge, Schwanzschläge und Spyhopping",
+      "Ganzjährige Delfinbegegnungen",
+      "Walhaie (Oktober-März)",
+      "Mantas und Meeresschildkröten",
+      "Schnorcheln an unberührten Riffen",
+      "Von Meeresbiologen geführte Touren",
+      "Fokus auf Forschung und Naturschutz"
+    ],
+    pricingRange: "40-45 US$ pro Person",
+    pricingDetails: [
+      "Nur Walbeobachtung: 40 US$",
+      "Delfine + Wale kombiniert: 45 US$",
+      "Privater Ganztagesausflug von Maputo: 179 US$",
+      "Kinder unter 12: Ermäßigte Preise",
+      "Ausrüstung und Snacks inklusive"
+    ],
+    durationTypical: "2-3 Stunden",
+    durationDetails: [
+      "Halbtagesausflüge: 2-3 Stunden",
+      "Ganztagestouren: 6-8 Stunden (von Maputo)",
+      "Morgenabfahrten (beste Bedingungen)",
+      "Beinhaltet Schnorchelzeit",
+      "Flexibel je nach Walaktivität"
+    ],
+    included: [
+      "Bootstransfer mit erfahrenem Kapitän",
+      "Schnorchelausrüstung (Maske, Flossen, Schnorchel)",
+      "Meeresbiologen-Guide (die meisten Anbieter)",
+      "Snacks und Erfrischungen",
+      "Marineparkgebühren",
+      "Fotos/Videos (einige Anbieter)",
+      "Sicherheitsausrüstung und Schwimmwesten"
+    ],
+    requirementsLevel: "Alle Altersgruppen",
+    requirementsDetails: [
+      "Keine besonderen Fähigkeiten für Walbeobachtung erforderlich",
+      "Schwimmfähigkeit für Schnorcheln notwendig",
+      "Altersgruppen: Familienfreundlich (Kinder bis Senioren)",
+      "Wetterabhängig - Meer muss ruhig sein",
+      "Touren können bei gefährlichen Bedingungen verschoben werden",
+      "Warme Jacke empfohlen (Juli-September)"
+    ],
+    bestTimePeak: "Juli - Oktober (Wal-Saison)",
+    bestTimeDetails: [
+      "**Buckelwale:** Juli-November (Höhepunkt: Jul-Okt)",
+      "**Delfine:** Ganzjährig (200+ ansässig)",
+      "**Walhaie:** Oktober-März",
+      "**Mantas:** Dezember-Mai",
+      "**Meeresschildkröten:** Oktober-März (Nistzeit)",
+      "**Ruhigeres Meer:** Wintermonate (Juni-September)"
+    ],
+    tips: [
+      "Buchen Sie während der Wal-Saison (Jul-Nov) für beste Chancen",
+      "Bringen Sie eine warme Jacke mit - die Meeresbrise kann kühl sein",
+      "Wasserdichte Kameratasche unerlässlich",
+      "Seekrankheitsmittel bei Anfälligkeit",
+      "Ferngläser verbessern das Beobachtungserlebnis",
+      "Ethische Anbieter folgen Nicht-Kontakt-Richtlinien",
+      "Sichtungen nicht garantiert - wilde Tiere",
+      "Kombinieren Sie mit Schnorcheln für komplettes Meereerlebnis"
+    ],
+    operators: [
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Walbeobachtungsexperten, Fokus Juli-November"
+      },
+      {
+        name: "Dolphin Encountours",
+        website: "https://www.dolphinencountours.org/",
+        email: "info@dolphinencountours.org",
+        specialty: "Forschungsbasierte Touren, Datensammlung für Naturschutz"
+      },
+      {
+        name: "Gozo Azul",
+        website: "https://gozo-azul.co.za/",
+        email: "info@gozo-azul.co.za",
+        specialty: "Ozean-Safaris, Walbeobachtung und Meeresbegegnungen"
+      }
+    ]
+  },
+
   fr: {
     title: "Safaris Océaniques",
     tagline: "Observation des baleines et rencontres avec la vie marine",

@@ -257,6 +257,91 @@ export const FISHING_CONTENT = {
     ]
   },
 
+  de: {
+    title: "Strand- und Hochseeangeln",
+    tagline: "Angeln Sie Barsch oder jagen Sie Marline im Mosambik-Kanal",
+    overview: "Ponta do Ouro bietet außergewöhnliches Angeln sowohl vom Strand als auch auf hoher See. Die warmen Gewässer des Indischen Ozeans und der tiefe Mosambik-Kanal bieten aufregende Möglichkeiten für Marlin, Segelfisch, Wahoo, Gelbflossen-Thunfisch und Königsmakrele. Strandangler können Barsch, Barrakuda und Pompano fangen.",
+    highlights: [
+      "Schwarzer Marlin (Oktober-Januar)",
+      "Segelfisch (Juni-September)",
+      "Gelbflossen-Thunfisch und Wahoo",
+      "Königsmakrele (Couta)",
+      "Küstenangeln auf Barsch und Barrakuda",
+      "Warmes, kristallklares Indisches Ozeanwasser",
+      "Strandstart-Charter",
+      "Erfahrene lokale Kapitäne mit 20+ Jahren"
+    ],
+    pricingRange: "Ab 550 US$ (Charter)",
+    pricingDetails: [
+      "5-Stunden-Charter: 550-650 US$",
+      "8-Stunden-Charter: 850-950 US$",
+      "Ganztags Hochsee: 1.000+ US$",
+      "Strandangeln: Kostenlos (eigene Ausrüstung)",
+      "Geführtes Strandangeln: 50-100 US$",
+      "Lizenzen, Ausrüstung und Vorbereitung bei Chartern inklusive"
+    ],
+    durationTypical: "5-8 Stunden (Charter)",
+    durationDetails: [
+      "Halbtags-Charter: 5 Stunden",
+      "Ganztags-Charter: 8-10 Stunden",
+      "Strandangeln: Flexibel (am besten bei Dämmerung)",
+      "Frühe Morgenabfahrten (6-7 Uhr)",
+      "Schneller Zugang zu tiefem Wasser (Minuten von der Küste)"
+    ],
+    included: [
+      "Komplette Angelausrüstung",
+      "Angellizenzen und Genehmigungen",
+      "Erfahrener Kapitän (20+ Jahre)",
+      "Köder und Kunstköder",
+      "Fischreinigung und Filetieren",
+      "Vakuumverpackung für die Reise",
+      "Getränke und Snacks (die meisten Anbieter)",
+      "Sicherheitsausrüstung"
+    ],
+    requirementsLevel: "Anfänger bis Experte",
+    requirementsDetails: [
+      "Keine Erfahrung erforderlich (Guides helfen)",
+      "Maximal 6 Angler pro Boot (normalerweise)",
+      "Strandstart - erwarten Sie, nass zu werden!",
+      "Sonnenschutz unerlässlich",
+      "Schwimmfähigkeit empfohlen",
+      "Seekrankheitsmittel bei Anfälligkeit"
+    ],
+    bestTimePeak: "Oktober - Januar (Marlin-Saison)",
+    bestTimeDetails: [
+      "**Schwarzer Marlin:** Oktober-Januar (Hochsaison)",
+      "**Blauer Marlin:** Ganzjährig",
+      "**Segelfisch:** Juni-September (Hauptzeit)",
+      "**Wahoo & Thunfisch:** Ganzjährig (Höhepunkt: Okt-Apr)",
+      "**Königsmakrele:** Ganzjährig (am besten: Apr-Nov)",
+      "**Wassertemp.:** 22-28°C (wärmer = mehr Pelagische)"
+    ],
+    tips: [
+      "Buchen Sie die Marlin-Saison (Okt-Jan) im Voraus",
+      "Strandangeln ist bei Sonnenauf- und -untergang am besten",
+      "Die Felsspitze am Strandende bietet tiefes Wasser",
+      "Wandern Sie nach Norden nach Ponta Mamoli für besseres Küstenangeln",
+      "Verwenden Sie Kunstköder: Pink Dusters, Redeye, Tintenfisch",
+      "Bringen Sie wasserdichte Taschen für Elektronik mit",
+      "Organisieren Sie die Fischlagerung mit Ihrer Lodge",
+      "Catch and Release für Marlin-Erhaltung empfohlen"
+    ],
+    operators: [
+      {
+        name: "Gozo Azul Fishing",
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Kapitän Laurens Koen, 20+ Jahre Erfahrung"
+      },
+      {
+        name: "Mozambique Fishing Charters",
+        website: "",
+        email: "info@mozambiquefishincharters.co.za",
+        specialty: "Kapitän Marcus Joubert, Sportfisch-Spezialisten"
+      }
+    ]
+  },
+
   fr: {
     title: "Pêche en Mer et sur Plage",
     tagline: "Pêchez le bar ou chassez le marlin dans le canal du Mozambique",

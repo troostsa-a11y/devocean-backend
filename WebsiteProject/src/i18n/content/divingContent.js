@@ -311,6 +311,109 @@ export const DIVING_CONTENT = {
     ]
   },
 
+  de: {
+    title: "Tauchen",
+    tagline: "Erkunden Sie unberührte Riffe mit Bullenhaien, Mantas und Walhaien",
+    overview: "Ponta do Ouro bietet Weltklasse-Tauchen mit über 20 Tauchplätzen, von flachen Riffen bis zu tiefen Felsnadeln. Das kristallklare Wasser des Mosambik-Kanals bietet außergewöhnliche Sicht und Begegnungen mit einer unglaublichen Vielfalt an Meereslebewesen, darunter 19 Haiarten.",
+    highlights: [
+      "Über 20 Tauchplätze von 8m bis 48m",
+      "Bullenhaie, Tigerhaie und Hammerhaie",
+      "Walhaie (Oktober-März)",
+      "Buckelwale (Juli-November)",
+      "Mantas, Schildkröten und Delfine",
+      "Über 180 Nacktschneckenarten",
+      "Unberührte Korallenriffe",
+      "Professionelle PADI-Zentren"
+    ],
+    pricingRange: "Ab 40 US$ pro Tauchgang",
+    pricingDetails: [
+      "Einzeltauchgang: 40-50 US$",
+      "Zwei-Tauchgänge-Paket: 75-90 US$",
+      "PADI Open Water: 350-400 US$",
+      "Ausrüstungsverleih inklusive",
+      "Alle Lizenzen und Gebühren inklusive"
+    ],
+    durationTypical: "Halbtags oder Ganztags",
+    durationDetails: [
+      "Morgentauchgänge: 2 Tauchgänge (3-4 Stunden)",
+      "Ganztags: 3 Tauchgänge (6-8 Stunden)",
+      "Strandstart (abenteuerlich!)",
+      "Plätze 1-12km vor der Küste"
+    ],
+    included: [
+      "Komplette Tauchausrüstung (Jacket, Regler, Anzug)",
+      "Bootstransfer zu den Tauchplätzen",
+      "Professioneller PADI-Instruktor/Divemaster",
+      "Marineparkgebühren",
+      "Snacks und Getränke nach dem Tauchen",
+      "Tauchcomputer und Sicherheitsausrüstung"
+    ],
+    requirementsLevel: "Anfänger bis Fortgeschritten",
+    requirementsDetails: [
+      "Anfängerplätze: Crèche, Doodles, Playground (10-18m)",
+      "Fortgeschrittene Plätze: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+      "PADI-Zertifizierung erforderlich (oder Open Water Kurs machen)",
+      "Medizinischer Fragebogen obligatorisch",
+      "Gute Schwimmfähigkeit",
+      "Mindestalter: 10 Jahre (Junior Open Water)"
+    ],
+    bestTimePeak: "Oktober - April (Sommer)",
+    bestTimeDetails: [
+      "**Bullen- und Tigerhaie:** November-April (Wasser 26-29°C)",
+      "**Hammerhaie:** April-Oktober (beste Sicht)",
+      "**Walhaie:** Oktober-März",
+      "**Buckelwale:** Juli-November",
+      "**Beste Sicht:** Mai-August (20-30m)",
+      "**Wärmstes Wasser:** Dezember-Februar (27-29°C)"
+    ],
+    tips: [
+      "Buchen Sie in der Hochsaison (Dezember-Januar) im Voraus",
+      "Bringen Sie Ihre Zertifizierungskarte mit",
+      "Neoprenanzug empfohlen (3mm empfohlen)",
+      "Der Wellenstart ist aufregend - seien Sie bereit, nass zu werden!",
+      "Die meisten Anbieter bieten Ausrüstungsverleih an",
+      "Mehrtauchpakete bieten das beste Preis-Leistungs-Verhältnis"
+    ],
+    operators: [
+      {
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Haitauch-Spezialisten, forschungsorientiert"
+      },
+      {
+        name: "Gozo Azul Diving",
+        website: "https://gozo-azul.co.za/",
+        email: "natalie@gozo-azul.co.za",
+        specialty: "PADI 5-Sterne-Zentrum, Haitauch-Spezialisten"
+      },
+      {
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Professionelles Tauchzentrum"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Professionelles Tauchzentrum"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Haitauch-Spezialisten"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Professionelles Tauchzentrum"
+      }
+    ]
+  },
+
   fr: {
     title: "Plongée Sous-Marine",
     tagline: "Explorez des récifs préservés avec requins-bouledogues, raies manta et requins-baleines",

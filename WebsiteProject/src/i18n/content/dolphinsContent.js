@@ -299,6 +299,104 @@ export const DOLPHINS_CONTENT = {
     ]
   },
 
+  de: {
+    title: "Delfinschwimmen",
+    tagline: "Ethische Begegnungen mit wilden Delfinen im kristallklaren Wasser",
+    overview: "Erleben Sie magische Begegnungen mit wilden Indo-Pazifischen Großen Tümmlern im Ponta do Ouro Teilmeeresreservat. Beide zugelassenen Anbieter folgen strengen ethischen Richtlinien und gewährleisten passive, nicht-invasive Interaktionen, bei denen die Delfine selbst entscheiden, ob sie Kontakt aufnehmen möchten.",
+    highlights: [
+      "Über 200 ansässige Große Tümmler",
+      "Ethische, forschungsbasierte Begegnungen",
+      "KEIN Berühren oder Jagen - wild & frei",
+      "Schnorcheln über unberührten Riffen",
+      "Saisonale Walhaisichtungen",
+      "Buckelwale (Juli-November)",
+      "Kleine Gruppen (max 12 Personen)",
+      "Bildungsfokus auf Naturschutz"
+    ],
+    pricingRange: "45-50 US$ pro Person",
+    pricingDetails: [
+      "Delfinbeobachtung (nur Boot): 45 US$",
+      "Delfinschwimm-Ausflug: 50 US$",
+      "Mehrtages-Pakete: Ermäßigte Preise",
+      "Schnorchelausrüstung inklusive",
+      "Naturschutzgebühr inklusive"
+    ],
+    durationTypical: "2-3 Stunden",
+    durationDetails: [
+      "Frühmorgendlicher Start (beste Bedingungen)",
+      "Schnorcheln über flachen Riffen",
+      "Delfin-Vermittlung im Wasser",
+      "Walhai-Begegnungen (saisonal)",
+      "Bildungsbriefing vor dem Start"
+    ],
+    included: [
+      "Maske, Flossen & Schnorchel",
+      "Neoprenanzug (falls erforderlich)",
+      "Erfahrener Vermittler/Guide",
+      "Bildungspräsentation vor dem Start",
+      "Fotos/Videos Ihrer Begegnung",
+      "Leichte Erfrischungen",
+      "Marineparkgebühren"
+    ],
+    requirementsLevel: "Alle Altersgruppen und Fähigkeiten",
+    requirementsDetails: [
+      "Keine Taucherfahrung erforderlich",
+      "Grundlegende Schwimmfähigkeit unerlässlich",
+      "Alle Altersgruppen (Kinder willkommen)",
+      "Fitness: Leicht bis moderat",
+      "Wohlbefinden im Meerwasser",
+      "Wetterabhängig - Meer muss ruhig sein"
+    ],
+    bestTimePeak: "Ganzjährig (ansässige Delfine)",
+    bestTimeDetails: [
+      "**Delfine:** Ganzjährig (200+ ansässig)",
+      "**Buckelwale:** Juli-November",
+      "**Walhaie:** Oktober-März",
+      "**Ruhigeres Meer:** Früher Morgen",
+      "**Wassertemperatur:** 22-28°C ganzjährig"
+    ],
+    tips: [
+      "Buchen Sie 2-3 Tage im Voraus",
+      "Bringen Sie rifffreundliche Sonnencreme mit",
+      "Unterwasserkamera empfohlen",
+      "Befolgen Sie die Anweisungen des Vermittlers sorgfältig",
+      "Bleiben Sie ruhig und still im Wasser",
+      "Lassen Sie die Delfine natürlich auf Sie zukommen"
+    ],
+    ethicalPractices: [
+      {
+        title: "Kein Berühren oder Jagen",
+        description: "Delfine werden niemals berührt, gejagt oder belästigt. Alle Begegnungen erfolgen zu den Bedingungen der Delfine."
+      },
+      {
+        title: "Forschungsbasierter Ansatz",
+        description: "Beide Anbieter arbeiten mit Meeresbiologen zusammen und tragen zur laufenden Delfinforschung und -erhaltung bei."
+      },
+      {
+        title: "Nur Kleine Gruppen",
+        description: "Maximal 12 Personen pro Fahrt gewährleisten minimale Störung und bessere Begegnungen."
+      },
+      {
+        title: "Bildung zuerst",
+        description: "Briefings vor dem Start lehren allen Teilnehmern angemessenes Verhalten und Delfinbiologie."
+      }
+    ],
+    operators: [
+      {
+        name: "Dolphin Encountours Research Center",
+        website: "https://www.dolphinencountours.org/",
+        email: "connect@dolphinencountours.org",
+        specialty: "Von Meeresbiologen geleitete, naturschutzorientierte Delfinbegegnungen"
+      },
+      {
+        name: "The Dolphin Centre",
+        website: "https://thedolphincentre.com/",
+        email: "info@thedolphincentre.com",
+        specialty: "Forschungsbasiertes Delfinschwimmen mit Bildungsfokus"
+      }
+    ]
+  },
+
   fr: {
     title: "Nage avec les Dauphins",
     tagline: "Rencontres éthiques avec des dauphins sauvages dans des eaux cristallines",

@@ -251,6 +251,89 @@ export const SAFARI_CONTENT = {
     ]
   },
 
+  de: {
+    title: "Foto-Safaris",
+    tagline: "Busch-Abenteuer im Maputo-Spezialreservat",
+    overview: "Entdecken Sie afrikanische Wildtiere nur wenige Minuten von Ponta do Ouro entfernt. Der Maputo-Nationalpark (ehemals Maputo-Spezialreservat) bietet klassische Wildtierbeobachtung mit 450-500 Küstenelefanten, Giraffen, Zebras, Flusspferden, Krokodilen und verschiedenen Antilopenarten auf 1.718 km² geschützter Natur - UNESCO-Welterbe seit 2025.",
+    highlights: [
+      "450-500 Küstenelefanten",
+      "Giraffen, Zebras und Antilopen",
+      "Flusspferde und Krokodile in Feuchtgebieten",
+      "Leopard, Gepard und Tüpfelhyäne",
+      "Über 300 Vogelarten einschließlich Flamingos",
+      "4x4-Safaris mit erfahrenen Guides",
+      "UNESCO-Welterbe (2025)",
+      "Strand- und Busch-Kombination möglich"
+    ],
+    pricingRange: "Ab 95 US$ pro Person",
+    pricingDetails: [
+      "Tages-Safari: 95-120 US$ pro Person",
+      "Ganztags mit Ponta do Ouro Strand: 100-130 US$",
+      "2-3 Tage Camping-Safari: Ab 200 US$",
+      "Private Touren: Individuelle Preise",
+      "4x4-Fahrzeug, Guide und Parkgebühren inklusive"
+    ],
+    durationTypical: "5-8 Stunden (Tagesausflug)",
+    durationDetails: [
+      "Halbtags-Safari: 3-4 Stunden",
+      "Ganztags-Safari: 5-6 Stunden im Park + Transport",
+      "Mehrtägiges Camping: 2-3 Tage",
+      "Abfahrt von Ponta do Ouro: Früher Morgen (6-7 Uhr)",
+      "Rückkehr: Später Nachmittag (16-17 Uhr)"
+    ],
+    included: [
+      "4x4-Safari-Fahrzeug",
+      "Professioneller Guide/Fahrer",
+      "Marineparkgebühren",
+      "Ferngläser zur Wildbeobachtung",
+      "Wasser in Flaschen und Snacks",
+      "Hoteltransfer von Ponta do Ouro",
+      "USB-Ladung im Fahrzeug (die meisten Anbieter)"
+    ],
+    requirementsLevel: "Alle Altersgruppen und Fitnesslevel",
+    requirementsDetails: [
+      "Keine besondere körperliche Fitness erforderlich",
+      "Familienfreundlich mit Kindern",
+      "Geeignet für Senioren (Beobachtung vom Fahrzeug aus)",
+      "4x4-Fahrzeug obligatorisch (Sandpisten)",
+      "Bequeme Safari-Kleidung empfohlen",
+      "Sonnenschutz unerlässlich"
+    ],
+    bestTimePeak: "Juli - Oktober (Trockenzeit)",
+    bestTimeDetails: [
+      "**Wildbeobachtung:** Juli-Oktober (Tiere an Wasserstellen)",
+      "**Vogelbeobachtung:** Oktober-März (Zugvögel anwesend)",
+      "**Elefantenbeobachtung:** Ganzjährig (Population 450-500)",
+      "**Zu vermeiden:** Dezember-Februar (heiß, feucht, dichtes Laub)",
+      "**Temperatur:** Kühler im Winter (Jul-Sep: 18-25°C)",
+      "**Straßenbedingungen:** Am besten in der Trockenzeit"
+    ],
+    tips: [
+      "Buchen Sie in der Hochsaison (Juli-Oktober) im Voraus",
+      "Morgensafaris bieten die beste Tieraktivität",
+      "Bringen Sie eine Kamera mit Zoomobjektiv für Wildfotos mit",
+      "Tragen Sie neutrale Farben (Khaki, Beige, Olive) - keine hellen Farben",
+      "Ferngläser werden gestellt, aber bringen Sie eigene mit wenn vorhanden",
+      "Hut, Sonnencreme und Insektenschutz unerlässlich",
+      "Kombinieren Sie mit Strandzeit in Ponta do Ouro",
+      "Erkundigen Sie sich nach mehrtägigem Camping für ein intensives Erlebnis"
+    ],
+    operators: [
+      {
+        name: "Maputo-Nationalpark",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Offizielle Parkreservierungen und geführte Safaris"
+      },
+      {
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Safari-Transport und geführte Touren"
+      }
+    ]
+  },
+
   fr: {
     title: "Safaris Photographiques",
     tagline: "Aventures en brousse dans la Réserve Spéciale de Maputo",
