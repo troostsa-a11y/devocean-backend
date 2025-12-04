@@ -912,18 +912,37 @@
   </style>
   <script>
     (function() {
-      var hideTime = 0;
-      var MIN_HIDE_DURATION = 5000;
+      var pollInterval = null;
+      
+      function isModalOpen() {
+        var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
+        for (var i = 0; i < iframes.length; i++) {
+          var rect = iframes[i].getBoundingClientRect();
+          if (rect.width > window.innerWidth * 0.7 && rect.height > window.innerHeight * 0.5) {
+            return true;
+          }
+        }
+        return false;
+      }
       
       function hideHeader() {
         if (window.innerWidth >= 768) return;
-        hideTime = Date.now();
         document.body.classList.add('ti-modal-open');
+        if (!pollInterval) {
+          pollInterval = setInterval(function() {
+            if (!isModalOpen()) {
+              showHeader();
+            }
+          }, 300);
+        }
       }
       
       function showHeader() {
         document.body.classList.remove('ti-modal-open');
-        hideTime = 0;
+        if (pollInterval) {
+          clearInterval(pollInterval);
+          pollInterval = null;
+        }
       }
       
       function isTrustindexElement(el) {
@@ -944,11 +963,6 @@
             return;
           }
           el = el.parentElement;
-        }
-        if (document.body.classList.contains('ti-modal-open')) {
-          if (Date.now() - hideTime > MIN_HIDE_DURATION) {
-            showHeader();
-          }
         }
       }, true);
       
