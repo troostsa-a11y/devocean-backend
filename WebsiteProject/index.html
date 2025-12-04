@@ -911,35 +911,97 @@
   </style>
   <script>
     (function() {
-      var timerId = null;
-      var HIDE_DURATION = 10000;
+      var modalOpen = false;
+      var openTime = 0;
+      var missCount = 0;
+      var pollId = null;
+      var observer = null;
+      var MIN_OPEN = 1500;
+      var MISS_NEEDED = 2;
+      var FAILSAFE = 30000;
+      
+      function isModalVisible() {
+        var iframes = document.querySelectorAll('iframe');
+        for (var i = 0; i < iframes.length; i++) {
+          var src = iframes[i].src || '';
+          if (src.indexOf('trustindex') === -1) continue;
+          var style = window.getComputedStyle(iframes[i]);
+          if (style.display === 'none' || style.visibility === 'hidden') continue;
+          var rect = iframes[i].getBoundingClientRect();
+          if (rect.width > 100 && rect.height > 100) return true;
+        }
+        var containers = document.querySelectorAll('[class*="ti-modal"], [class*="ti-popup"], [class*="trustindex"]');
+        for (var j = 0; j < containers.length; j++) {
+          var cStyle = window.getComputedStyle(containers[j]);
+          if (cStyle.display !== 'none' && cStyle.visibility !== 'hidden') {
+            var cRect = containers[j].getBoundingClientRect();
+            if (cRect.width > 100 && cRect.height > 100) return true;
+          }
+        }
+        return false;
+      }
       
       function hideHeader() {
         if (window.innerWidth >= 768) return;
+        if (modalOpen) return;
+        modalOpen = true;
+        openTime = Date.now();
+        missCount = 0;
         document.body.classList.add('ti-modal-open');
-        if (timerId) clearTimeout(timerId);
-        timerId = setTimeout(showHeader, HIDE_DURATION);
+        startPolling();
       }
       
       function showHeader() {
+        modalOpen = false;
+        openTime = 0;
+        missCount = 0;
         document.body.classList.remove('ti-modal-open');
-        if (timerId) {
-          clearTimeout(timerId);
-          timerId = null;
+        stopPolling();
+      }
+      
+      function startPolling() {
+        stopPolling();
+        pollId = setInterval(function() {
+          if (!modalOpen) return;
+          var elapsed = Date.now() - openTime;
+          if (elapsed > FAILSAFE) {
+            showHeader();
+            return;
+          }
+          if (elapsed < MIN_OPEN) return;
+          if (isModalVisible()) {
+            missCount = 0;
+          } else {
+            missCount++;
+            if (missCount >= MISS_NEEDED) {
+              showHeader();
+            }
+          }
+        }, 200);
+      }
+      
+      function stopPolling() {
+        if (pollId) {
+          clearInterval(pollId);
+          pollId = null;
         }
       }
       
+      function isTrustindexBadge(el) {
+        if (!el) return false;
+        var cls = (el.className || '').toString().toLowerCase();
+        var id = (el.id || '').toLowerCase();
+        if (cls.indexOf('ti-badge') !== -1 || cls.indexOf('ti-floating') !== -1 ||
+            cls.indexOf('ti-cert') !== -1 || id.indexOf('ti-') !== -1) return true;
+        if (el.tagName === 'IFRAME' && el.src && el.src.indexOf('trustindex') !== -1) return true;
+        return false;
+      }
+      
       document.addEventListener('click', function(e) {
+        if (modalOpen) return;
         var el = e.target;
-        while (el && el !== document.body) {
-          var cls = (el.className || '').toString().toLowerCase();
-          var id = (el.id || '').toLowerCase();
-          if (cls.indexOf('trustindex') !== -1 || cls.indexOf('ti-') !== -1 ||
-              id.indexOf('trustindex') !== -1 || id.indexOf('ti-') !== -1) {
-            hideHeader();
-            return;
-          }
-          if (el.tagName === 'IFRAME' && el.src && el.src.indexOf('trustindex') !== -1) {
+        for (var i = 0; i < 10 && el && el !== document.body; i++) {
+          if (isTrustindexBadge(el)) {
             hideHeader();
             return;
           }
@@ -948,7 +1010,7 @@
       }, true);
       
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') showHeader();
+        if (e.key === 'Escape' && modalOpen) showHeader();
       });
     })();
   </script>
