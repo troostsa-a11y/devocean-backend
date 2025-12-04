@@ -900,47 +900,39 @@
     })();
   </script>
 
-  <!-- Trustindex mobile close helper -->
+  <!-- Trustindex mobile close helper with debug logging -->
   <script>
     (function() {
-      var startX = 0, startY = 0, moved = false;
-      
-      document.addEventListener('pointerdown', function(e) {
-        startX = e.clientX; startY = e.clientY; moved = false;
-      }, true);
-      
-      document.addEventListener('pointermove', function(e) {
-        if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) moved = true;
-      }, true);
-      
-      document.addEventListener('pointerup', handleClose, true);
-      document.addEventListener('click', handleClose, true);
-      
-      function handleClose(e) {
-        if (moved && e.type === 'pointerup') return;
+      document.addEventListener('click', function(e) {
         if (window.innerWidth >= 768) return;
         
         var target = e.target;
-        var popup = target.closest('[class*="trustindex"], [class*="ti-"], [id*="trustindex"], [id*="ti-"]');
-        if (!popup) popup = document.querySelector('.ti-widget, .ti-modal, [class*="ti-popup"], [class*="ti-widget"]');
-        if (!popup || popup.offsetHeight < 50) return;
+        var classes = target.className ? target.className.toString() : '';
+        var id = target.id || '';
+        var tag = target.tagName;
         
-        var tag = target.tagName.toLowerCase();
-        if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'select' || tag === 'textarea' || tag === 'img' || tag === 'svg' || tag === 'path') return;
-        if (target.closest('a, button, [role="button"], [href], [onclick], img, svg, picture')) return;
+        console.log('[TI Debug] Clicked:', tag, 'class:', classes, 'id:', id);
         
-        var cls = (target.className || '').toString().toLowerCase();
-        if (cls.match(/link|btn|button|star|rating|review|photo|avatar|image|img|logo|icon|author|name|text|content/)) return;
-        if (target.closest('[class*="review"], [class*="star"], [class*="rating"], [class*="photo"], [class*="avatar"], [class*="image"]')) return;
-        
-        var closeBtn = popup.querySelector('[class*="close"], button[aria-label*="Close"], button[aria-label*="close"]');
-        if (!closeBtn) closeBtn = document.querySelector('[class*="ti-"] [class*="close"], [class*="trustindex"] [class*="close"]');
-        if (closeBtn) {
-          e.preventDefault();
-          e.stopPropagation();
-          closeBtn.click();
+        var parent = target.parentElement;
+        for (var i = 0; i < 5 && parent; i++) {
+          var pClass = parent.className ? parent.className.toString() : '';
+          var pId = parent.id || '';
+          console.log('[TI Debug] Parent ' + i + ':', parent.tagName, 'class:', pClass, 'id:', pId);
+          parent = parent.parentElement;
         }
-      }
+        
+        var iframes = document.querySelectorAll('iframe');
+        console.log('[TI Debug] Iframes on page:', iframes.length);
+        iframes.forEach(function(f, idx) {
+          console.log('[TI Debug] Iframe ' + idx + ':', f.src, 'visible:', f.offsetHeight > 0);
+        });
+        
+        var tiEls = document.querySelectorAll('[class*="ti-"], [id*="ti-"]');
+        console.log('[TI Debug] TI elements:', tiEls.length);
+        tiEls.forEach(function(el, idx) {
+          console.log('[TI Debug] TI el ' + idx + ':', el.tagName, el.className, 'h:', el.offsetHeight);
+        });
+      }, true);
     })();
   </script>
 
