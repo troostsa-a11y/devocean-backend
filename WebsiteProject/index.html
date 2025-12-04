@@ -907,42 +907,55 @@
       opacity: 0 !important;
       pointer-events: none !important;
       z-index: 1 !important;
+      transition: opacity 0.2s ease;
     }
   </style>
   <script>
     (function() {
-      var modalOpen = false;
-      var TRUST_SEL = 'iframe[src*="trustindex"], .ti-widget-floating-container, .ti-modal-container';
-      
-      function setHeaderState(open) {
+      function hideHeader() {
         if (window.innerWidth >= 768) return;
-        document.body.classList.toggle('ti-modal-open', open);
+        document.body.classList.add('ti-modal-open');
       }
       
-      function checkModal() {
-        var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
-        var isOpen = false;
-        iframes.forEach(function(iframe) {
-          var style = iframe.getAttribute('style') || '';
-          if (style.indexOf('100%') !== -1 || style.indexOf('fixed') !== -1) {
-            isOpen = true;
+      function showHeader() {
+        document.body.classList.remove('ti-modal-open');
+      }
+      
+      document.addEventListener('click', function(e) {
+        var target = e.target;
+        var el = target;
+        while (el && el !== document.body) {
+          var cls = (el.className || '').toString().toLowerCase();
+          var id = (el.id || '').toLowerCase();
+          if (cls.indexOf('trustindex') !== -1 || cls.indexOf('ti-') !== -1 || 
+              id.indexOf('trustindex') !== -1 || id.indexOf('ti-') !== -1) {
+            hideHeader();
+            return;
           }
-        });
-        if (isOpen !== modalOpen) {
-          modalOpen = isOpen;
-          setHeaderState(isOpen);
+          if (el.tagName === 'IFRAME' && el.src && el.src.indexOf('trustindex') !== -1) {
+            hideHeader();
+            return;
+          }
+          el = el.parentElement;
         }
-      }
+      }, true);
       
-      var observer = new MutationObserver(function(mutations) {
-        checkModal();
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') showHeader();
       });
       
-      if (document.body) {
-        observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
-      }
-      
-      setInterval(checkModal, 500);
+      setInterval(function() {
+        if (!document.body.classList.contains('ti-modal-open')) return;
+        var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
+        var hasFullscreen = false;
+        iframes.forEach(function(iframe) {
+          var rect = iframe.getBoundingClientRect();
+          if (rect.width > window.innerWidth * 0.8 && rect.height > window.innerHeight * 0.5) {
+            hasFullscreen = true;
+          }
+        });
+        if (!hasFullscreen) showHeader();
+      }, 1000);
     })();
   </script>
 
