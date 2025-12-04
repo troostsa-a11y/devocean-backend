@@ -900,39 +900,46 @@
     })();
   </script>
 
-  <!-- Trustindex mobile close helper with debug logging -->
+  <!-- Trustindex mobile close helper -->
   <script>
     (function() {
-      document.addEventListener('click', function(e) {
+      var startX = 0, startY = 0, moved = false;
+      
+      document.addEventListener('pointerdown', function(e) {
+        startX = e.clientX; startY = e.clientY; moved = false;
+      }, true);
+      
+      document.addEventListener('pointermove', function(e) {
+        if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) moved = true;
+      }, true);
+      
+      function handleClose(e) {
+        if (moved && e.type === 'pointerup') return;
         if (window.innerWidth >= 768) return;
         
+        var modal = document.querySelector('.ti-modal-container');
+        if (!modal || modal.offsetHeight < 100) return;
+        
         var target = e.target;
-        var classes = target.className ? target.className.toString() : '';
-        var id = target.id || '';
-        var tag = target.tagName;
         
-        console.log('[TI Debug] Clicked:', tag, 'class:', classes, 'id:', id);
+        if (target.closest('a, button, img, svg, picture')) return;
+        if (target.closest('.ti-review-item, .ti-review-content, .ti-review-header, .ti-review-image')) return;
+        if (target.closest('.ti-close-button, .ti-accordion-header, .ti-badge-left, .ti-badge-right')) return;
+        if (target.closest('.ti-stars, .ti-profile-img, .ti-name, .ti-date')) return;
         
-        var parent = target.parentElement;
-        for (var i = 0; i < 5 && parent; i++) {
-          var pClass = parent.className ? parent.className.toString() : '';
-          var pId = parent.id || '';
-          console.log('[TI Debug] Parent ' + i + ':', parent.tagName, 'class:', pClass, 'id:', pId);
-          parent = parent.parentElement;
+        var tag = target.tagName.toLowerCase();
+        if (tag === 'a' || tag === 'button' || tag === 'img' || tag === 'svg' || tag === 'path' || tag === 'span' || tag === 'p' || tag === 'strong') return;
+        
+        var closeBtn = document.querySelector('.ti-close-button');
+        if (closeBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          closeBtn.click();
         }
-        
-        var iframes = document.querySelectorAll('iframe');
-        console.log('[TI Debug] Iframes on page:', iframes.length);
-        iframes.forEach(function(f, idx) {
-          console.log('[TI Debug] Iframe ' + idx + ':', f.src, 'visible:', f.offsetHeight > 0);
-        });
-        
-        var tiEls = document.querySelectorAll('[class*="ti-"], [id*="ti-"]');
-        console.log('[TI Debug] TI elements:', tiEls.length);
-        tiEls.forEach(function(el, idx) {
-          console.log('[TI Debug] TI el ' + idx + ':', el.tagName, el.className, 'h:', el.offsetHeight);
-        });
-      }, true);
+      }
+      
+      document.addEventListener('pointerup', handleClose, true);
+      document.addEventListener('click', handleClose, true);
     })();
   </script>
 
