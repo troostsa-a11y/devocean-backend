@@ -903,49 +903,40 @@
   <!-- Trustindex mobile close helper -->
   <script>
     (function() {
-      var observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-          mutation.addedNodes.forEach(function(node) {
-            if (node.nodeType !== 1) return;
-            var popup = node.classList && (
-              node.classList.contains('ti-popup') || 
-              node.classList.contains('ti-widget-popup') ||
-              node.id === 'ti-popup'
-            ) ? node : node.querySelector && node.querySelector('.ti-popup, .ti-widget-popup, [id*="ti-popup"]');
-            if (!popup) return;
-            
-            var closeBtn = popup.querySelector('.ti-close, .ti-popup-close, [class*="close"]');
-            
-            popup.addEventListener('click', function(e) {
-              var target = e.target;
-              var isInteractive = 
-                target.closest('a') || 
-                target.closest('button') || 
-                target.closest('.ti-review-item') ||
-                target.closest('.ti-review') ||
-                target.closest('[class*="review"]') ||
-                target.closest('.ti-stars') ||
-                target.closest('.ti-logo') ||
-                target.closest('.ti-close') ||
-                target.closest('[class*="close"]') ||
-                target.tagName === 'A' ||
-                target.tagName === 'BUTTON';
-              
-              if (!isInteractive && window.innerWidth < 768) {
-                if (closeBtn) {
-                  closeBtn.click();
-                } else {
-                  var anyClose = popup.querySelector('[class*="close"], .ti-close');
-                  if (anyClose) anyClose.click();
-                  else popup.style.display = 'none';
-                }
-              }
-            });
-          });
-        });
-      });
+      function setupTrustindexClose() {
+        document.body.addEventListener('click', function(e) {
+          if (window.innerWidth >= 768) return;
+          
+          var target = e.target;
+          var tiRoot = document.querySelector('[class*="ti-widget"], [id*="trustindex"], [class*="trustindex"]');
+          if (!tiRoot) return;
+          
+          var popup = tiRoot.querySelector('[class*="popup"]') || (tiRoot.className && tiRoot.className.toString().includes('popup') ? tiRoot : null);
+          if (!popup || popup.offsetHeight < 100) return;
+          
+          if (target.tagName === 'A' || target.tagName === 'BUTTON') return;
+          if (target.closest('a') || target.closest('button')) return;
+          
+          var tag = target.tagName.toLowerCase();
+          if (tag === 'img' || tag === 'svg' || tag === 'path' || tag === 'span' || tag === 'p' || tag === 'strong' || tag === 'b' || tag === 'i' || tag === 'time') return;
+          
+          var classes = (target.className || '').toString().toLowerCase();
+          if (classes.includes('star') || classes.includes('rating') || classes.includes('author') || classes.includes('name') || classes.includes('text') || classes.includes('content') || classes.includes('avatar') || classes.includes('photo') || classes.includes('logo') || classes.includes('icon')) return;
+          
+          var closeBtn = popup.querySelector('[class*="close"]') || tiRoot.querySelector('[class*="close"]');
+          if (closeBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeBtn.click();
+          }
+        }, true);
+      }
       
-      observer.observe(document.body, { childList: true, subtree: true });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupTrustindexClose);
+      } else {
+        setupTrustindexClose();
+      }
     })();
   </script>
 
