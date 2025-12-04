@@ -902,7 +902,20 @@
 
   <!-- Trustindex z-index fix: modal must be above fixed header (z-50) -->
   <style>
-    .ti-modal-container { z-index: 60 !important; }
+    /* Target all possible Trustindex containers and iframes */
+    .ti-widget-container,
+    .ti-widget-floating-container,
+    .ti-modal-container,
+    iframe[src*="trustindex"],
+    [class*="ti-widget"],
+    [class*="ti-floating"] {
+      z-index: 9999 !important;
+    }
+    /* When modal is open, the iframe often goes fullscreen */
+    iframe[src*="trustindex"][style*="fixed"],
+    iframe[src*="trustindex"][style*="100%"] {
+      z-index: 9999 !important;
+    }
   </style>
 
   <!-- Trustindex Floating Certificate (delayed) -->
