@@ -911,77 +911,31 @@
   </style>
   <script>
     (function() {
-      var modalOpen = false;
-      var openTime = 0;
-      var missCount = 0;
-      var pollId = null;
-      var MIN_OPEN = 2000;
-      var MISS_THRESHOLD = 3;
-      
-      function hasModalIframe() {
-        var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
-        for (var i = 0; i < iframes.length; i++) {
-          var s = iframes[i].style;
-          var r = iframes[i].getBoundingClientRect();
-          if (s.position === 'fixed' || r.width > window.innerWidth * 0.4) {
-            return true;
-          }
-        }
-        return false;
-      }
+      var timerId = null;
+      var HIDE_DURATION = 10000;
       
       function hideHeader() {
         if (window.innerWidth >= 768) return;
-        if (modalOpen) return;
-        modalOpen = true;
-        openTime = Date.now();
-        missCount = 0;
         document.body.classList.add('ti-modal-open');
-        startPolling();
+        if (timerId) clearTimeout(timerId);
+        timerId = setTimeout(showHeader, HIDE_DURATION);
       }
       
       function showHeader() {
-        if (!modalOpen) return;
-        modalOpen = false;
-        openTime = 0;
-        missCount = 0;
         document.body.classList.remove('ti-modal-open');
-        stopPolling();
-      }
-      
-      function startPolling() {
-        stopPolling();
-        pollId = setInterval(function() {
-          if (!modalOpen) return;
-          var elapsed = Date.now() - openTime;
-          if (elapsed < MIN_OPEN) return;
-          if (hasModalIframe()) {
-            missCount = 0;
-          } else {
-            missCount++;
-            if (missCount >= MISS_THRESHOLD) {
-              showHeader();
-            }
-          }
-        }, 400);
-      }
-      
-      function stopPolling() {
-        if (pollId) {
-          clearInterval(pollId);
-          pollId = null;
+        if (timerId) {
+          clearTimeout(timerId);
+          timerId = null;
         }
       }
       
       document.addEventListener('click', function(e) {
-        if (modalOpen) return;
         var el = e.target;
         while (el && el !== document.body) {
           var cls = (el.className || '').toString().toLowerCase();
           var id = (el.id || '').toLowerCase();
-          var isTi = cls.indexOf('trustindex') !== -1 || cls.indexOf('ti-') !== -1 ||
-                     id.indexOf('trustindex') !== -1 || id.indexOf('ti-') !== -1;
-          if (isTi) {
+          if (cls.indexOf('trustindex') !== -1 || cls.indexOf('ti-') !== -1 ||
+              id.indexOf('trustindex') !== -1 || id.indexOf('ti-') !== -1) {
             hideHeader();
             return;
           }
@@ -994,16 +948,8 @@
       }, true);
       
       document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modalOpen) showHeader();
+        if (e.key === 'Escape') showHeader();
       });
-      
-      setTimeout(function() {
-        setInterval(function() {
-          if (modalOpen && Date.now() - openTime > 60000) {
-            showHeader();
-          }
-        }, 10000);
-      }, 10000);
     })();
   </script>
 
