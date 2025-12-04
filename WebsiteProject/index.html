@@ -900,33 +900,6 @@
     })();
   </script>
 
-  <!-- Trustindex modal fix: ensure modal iframe is above fixed header -->
-  <script>
-    (function() {
-      var observer = new MutationObserver(function(mutations) {
-        var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
-        iframes.forEach(function(iframe) {
-          var parent = iframe.parentElement;
-          while (parent && parent !== document.body) {
-            var style = window.getComputedStyle(parent);
-            if (style.position === 'fixed' || style.position === 'absolute') {
-              parent.style.zIndex = '99999';
-            }
-            parent = parent.parentElement;
-          }
-          iframe.style.zIndex = '99999';
-        });
-      });
-      
-      observer.observe(document.body, { 
-        childList: true, 
-        subtree: true, 
-        attributes: true, 
-        attributeFilter: ['style', 'class'] 
-      });
-    })();
-  </script>
-
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 </body>
