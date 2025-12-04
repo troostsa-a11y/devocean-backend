@@ -900,23 +900,51 @@
     })();
   </script>
 
-  <!-- Trustindex z-index fix: modal must be above fixed header (z-50) -->
+  <!-- Trustindex modal fix: hide header when modal is open on mobile -->
   <style>
-    /* Target all possible Trustindex containers and iframes */
-    .ti-widget-container,
-    .ti-widget-floating-container,
-    .ti-modal-container,
-    iframe[src*="trustindex"],
-    [class*="ti-widget"],
-    [class*="ti-floating"] {
-      z-index: 9999 !important;
-    }
-    /* When modal is open, the iframe often goes fullscreen */
-    iframe[src*="trustindex"][style*="fixed"],
-    iframe[src*="trustindex"][style*="100%"] {
-      z-index: 9999 !important;
+    body.ti-modal-open header,
+    body.ti-modal-open .topbar {
+      opacity: 0 !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
     }
   </style>
+  <script>
+    (function() {
+      var modalOpen = false;
+      var TRUST_SEL = 'iframe[src*="trustindex"], .ti-widget-floating-container, .ti-modal-container';
+      
+      function setHeaderState(open) {
+        if (window.innerWidth >= 768) return;
+        document.body.classList.toggle('ti-modal-open', open);
+      }
+      
+      function checkModal() {
+        var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
+        var isOpen = false;
+        iframes.forEach(function(iframe) {
+          var style = iframe.getAttribute('style') || '';
+          if (style.indexOf('100%') !== -1 || style.indexOf('fixed') !== -1) {
+            isOpen = true;
+          }
+        });
+        if (isOpen !== modalOpen) {
+          modalOpen = isOpen;
+          setHeaderState(isOpen);
+        }
+      }
+      
+      var observer = new MutationObserver(function(mutations) {
+        checkModal();
+      });
+      
+      if (document.body) {
+        observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+      }
+      
+      setInterval(checkModal, 500);
+    })();
+  </script>
 
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
