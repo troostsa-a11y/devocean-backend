@@ -903,43 +903,37 @@
   <!-- Trustindex mobile close helper -->
   <script>
     (function() {
-      var startX = 0, startY = 0, moved = false;
-      
-      document.addEventListener('pointerdown', function(e) {
-        startX = e.clientX; startY = e.clientY; moved = false;
-      }, true);
-      
-      document.addEventListener('pointermove', function(e) {
-        if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) moved = true;
-      }, true);
-      
-      function handleClose(e) {
-        if (moved && e.type === 'pointerup') return;
+      document.addEventListener('click', function(e) {
         if (window.innerWidth >= 768) return;
         
         var modal = document.querySelector('.ti-modal-container');
         if (!modal || modal.offsetHeight < 100) return;
         
         var target = e.target;
+        var cls = (target.className || '').toString();
         
-        if (target.closest('a, button, img, svg, picture')) return;
-        if (target.closest('.ti-review-item, .ti-review-content, .ti-review-header, .ti-review-image')) return;
-        if (target.closest('.ti-close-button, .ti-accordion-header, .ti-badge-left, .ti-badge-right')) return;
-        if (target.closest('.ti-stars, .ti-profile-img, .ti-name, .ti-date')) return;
+        if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'IMG') return;
+        if (target.closest('a') || target.closest('button') || target.closest('img')) return;
         
-        var tag = target.tagName.toLowerCase();
-        if (tag === 'a' || tag === 'button' || tag === 'img' || tag === 'svg' || tag === 'path' || tag === 'span' || tag === 'p' || tag === 'strong') return;
+        if (cls.indexOf('ti-review') !== -1) return;
+        if (cls.indexOf('ti-star') !== -1) return;
+        if (cls.indexOf('ti-profile') !== -1) return;
+        if (cls.indexOf('ti-name') !== -1) return;
+        if (cls.indexOf('ti-date') !== -1) return;
+        if (cls.indexOf('ti-accordion') !== -1) return;
+        if (cls.indexOf('ti-badge') !== -1) return;
+        if (cls.indexOf('ti-rating') !== -1) return;
+        if (cls.indexOf('ti-verified') !== -1) return;
+        if (cls.indexOf('ti-text') !== -1) return;
+        if (cls.indexOf('ti-inner') !== -1) return;
+        if (cls.indexOf('ti-read') !== -1) return;
+        if (cls.indexOf('ti-popup-inner') !== -1) return;
         
         var closeBtn = document.querySelector('.ti-close-button');
         if (closeBtn) {
-          e.preventDefault();
-          e.stopPropagation();
           closeBtn.click();
         }
-      }
-      
-      document.addEventListener('pointerup', handleClose, true);
-      document.addEventListener('click', handleClose, true);
+      }, false);
     })();
   </script>
 
