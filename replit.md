@@ -3,6 +3,10 @@
 ## Overview
 DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. Its purpose is to serve as the primary marketing tool, showcasing accommodation, experiences, and offering contact forms. The project supports a multi-language interface (17 languages) to attract a global audience, ensures legal compliance (GDPR, cookies), and delivers a responsive user experience. The business vision is to increase bookings and brand visibility for the lodge.
 
+## Recent Changes (December 2025)
+- **Beds24 Iframe Auto-Resize (Dec 4):** Eliminated "scroll within scroll" UX issue on all 15 booking pages. Implemented iframe-resizer library (v4.2.10) that dynamically adjusts iframe height to match Beds24 content. Parent pages load `iframeResizer.min.js` from CDN; Beds24 admin has `iframeResizer.contentWindow.min.js` in HTML head. Booking section now flows naturally within page - no internal scrollbar.
+- **Accommodation Gallery Lightbox (Dec 4):** Added accessible image lightbox to all 4 accommodation detail pages (safari.html, comfort.html, cottage.html, chalet.html). Features: click-to-zoom, keyboard navigation (arrows, ESC), touch swipe support, image counter, ARIA labels. Reduces rage-clicks on gallery images.
+
 ## Recent Changes (November 2025)
 - **Automailer Crash Recovery (Nov 28):** Fixed critical bug in `start.js` where email automation server crashes caused complete service failure without auto-restart. Now includes: (1) Automatic restart with exponential backoff (5s to 60s delays), (2) Max 10 restart attempts before giving up, (3) Graceful shutdown on SIGINT/SIGTERM, (4) Separate restart logic for email and website servers. Previously, any crash would just log and exit - now the service self-heals.
 - **Gender Detection Multi-Language (Nov 28):** Updated email parser to support gender field in 12 languages (EN, DE, ES, FR, IT, JA, PL, NL, PT, RU, SV, ZH). Recognizes M/F/Other in all language variants including W (German female), K (Polish female), V (Dutch female), Ж (Russian female), and Asian characters. 'Other' gender uses neutral greeting.
