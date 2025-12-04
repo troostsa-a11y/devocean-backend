@@ -397,8 +397,9 @@
 
   <main>
     <div class="iframe-container">
-      <iframe 
+      <iframe
         id="beds24frame"
+        scrolling="no"
         src="about:blank"
         title="DEVOCEAN Lodge Booking"
         allow="payment *; clipboard-write *"
@@ -656,6 +657,27 @@
     } else {
       setupBenefitCards();
     }
+  </script>
+
+  <!-- Iframe Resizer - eliminates internal scrollbar -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.9/iframeResizer.min.js"></script>
+  <script>
+    // Initialize iframe resizer after iframe loads
+    document.getElementById('beds24frame').addEventListener('load', function() {
+      iFrameResize({
+        log: false,
+        checkOrigin: false,
+        heightCalculationMethod: 'lowestElement',
+        minHeight: 800,
+        scrolling: 'omit',
+        onResized: function(messageData) {
+          // Scroll page to top when iframe content changes significantly
+          if (messageData.type === 'init') {
+            window.scrollTo(0, 0);
+          }
+        }
+      }, '#beds24frame');
+    });
   </script>
 </body>
 </html>
