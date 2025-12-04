@@ -155,6 +155,41 @@
   </url>
 
   <url>
+    <loc>https://devoceanlodge.com/experiences/diving</loc>
+    <lastmod>2025-12-03</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/experiences/seafari</loc>
+    <lastmod>2025-12-03</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/experiences/safari</loc>
+    <lastmod>2025-12-03</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/experiences/fishing</loc>
+    <lastmod>2025-12-03</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/experiences/surfing</loc>
+    <lastmod>2025-12-03</lastmod>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  
+  <url>
     <loc>https://devoceanlodge.com/thankyou.html</loc>
     <lastmod>2025-11-10</lastmod>
     <priority>0.3</priority>

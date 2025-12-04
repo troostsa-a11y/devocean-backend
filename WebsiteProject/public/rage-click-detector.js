@@ -320,9 +320,21 @@
     }
     
     // Create a simple path-based identifier
-    const tagName = element.tagName.toLowerCase();
-    const className = element.className ? `.${element.className.split(' ')[0]}` : '';
-    return `${tagName}${className}`;
+    const tagName = element.tagName ? element.tagName.toLowerCase() : 'unknown';
+    
+    // Safely get className - handle SVG elements which have className as SVGAnimatedString
+    let classNameStr = '';
+    if (element.className) {
+      // SVG elements have className.baseVal, regular elements have className as string
+      const rawClassName = typeof element.className === 'string' 
+        ? element.className 
+        : (element.className.baseVal || '');
+      if (rawClassName) {
+        classNameStr = `.${rawClassName.split(' ')[0]}`;
+      }
+    }
+    
+    return `${tagName}${classNameStr}`;
   }
   
   // Check if element is interactive
