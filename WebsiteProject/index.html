@@ -900,6 +900,11 @@
     })();
   </script>
 
+  <!-- Trustindex z-index fix: modal must be above fixed header (z-50) -->
+  <style>
+    .ti-modal-container { z-index: 60 !important; }
+  </style>
+
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 </body>
