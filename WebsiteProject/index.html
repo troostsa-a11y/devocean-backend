@@ -913,12 +913,15 @@
   <script>
     (function() {
       var pollInterval = null;
+      var openTime = 0;
+      var MIN_OPEN_DURATION = 3000;
+      var POLL_DELAY = 500;
       
       function isModalOpen() {
         var iframes = document.querySelectorAll('iframe[src*="trustindex"]');
         for (var i = 0; i < iframes.length; i++) {
           var rect = iframes[i].getBoundingClientRect();
-          if (rect.width > window.innerWidth * 0.7 && rect.height > window.innerHeight * 0.5) {
+          if (rect.width > window.innerWidth * 0.5 && rect.height > window.innerHeight * 0.3) {
             return true;
           }
         }
@@ -927,18 +930,26 @@
       
       function hideHeader() {
         if (window.innerWidth >= 768) return;
+        openTime = Date.now();
         document.body.classList.add('ti-modal-open');
-        if (!pollInterval) {
+        
+        if (pollInterval) {
+          clearInterval(pollInterval);
+        }
+        
+        setTimeout(function() {
           pollInterval = setInterval(function() {
-            if (!isModalOpen()) {
+            var elapsed = Date.now() - openTime;
+            if (elapsed > MIN_OPEN_DURATION && !isModalOpen()) {
               showHeader();
             }
           }, 300);
-        }
+        }, POLL_DELAY);
       }
       
       function showHeader() {
         document.body.classList.remove('ti-modal-open');
+        openTime = 0;
         if (pollInterval) {
           clearInterval(pollInterval);
           pollInterval = null;
@@ -969,6 +980,14 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') showHeader();
       });
+      
+      setTimeout(function() {
+        setInterval(function() {
+          if (openTime > 0 && Date.now() - openTime > 30000) {
+            showHeader();
+          }
+        }, 5000);
+      }, 5000);
     })();
   </script>
 
