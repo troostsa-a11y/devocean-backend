@@ -900,43 +900,6 @@
     })();
   </script>
 
-  <!-- Trustindex mobile close helper -->
-  <script>
-    (function() {
-      document.addEventListener('click', function(e) {
-        if (window.innerWidth >= 768) return;
-        
-        var modal = document.querySelector('.ti-modal-container');
-        if (!modal || modal.offsetHeight < 100) return;
-        
-        var target = e.target;
-        var cls = (target.className || '').toString();
-        
-        if (target.tagName === 'A' || target.tagName === 'BUTTON' || target.tagName === 'IMG') return;
-        if (target.closest('a') || target.closest('button') || target.closest('img')) return;
-        
-        if (cls.indexOf('ti-review') !== -1) return;
-        if (cls.indexOf('ti-star') !== -1) return;
-        if (cls.indexOf('ti-profile') !== -1) return;
-        if (cls.indexOf('ti-name') !== -1) return;
-        if (cls.indexOf('ti-date') !== -1) return;
-        if (cls.indexOf('ti-accordion') !== -1) return;
-        if (cls.indexOf('ti-badge') !== -1) return;
-        if (cls.indexOf('ti-rating') !== -1) return;
-        if (cls.indexOf('ti-verified') !== -1) return;
-        if (cls.indexOf('ti-text') !== -1) return;
-        if (cls.indexOf('ti-inner') !== -1) return;
-        if (cls.indexOf('ti-read') !== -1) return;
-        if (cls.indexOf('ti-popup-inner') !== -1) return;
-        
-        var closeBtn = document.querySelector('.ti-close-button');
-        if (closeBtn) {
-          closeBtn.click();
-        }
-      }, false);
-    })();
-  </script>
-
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 </body>
