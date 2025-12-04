@@ -900,6 +900,55 @@
     })();
   </script>
 
+  <!-- Trustindex mobile close helper -->
+  <script>
+    (function() {
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          mutation.addedNodes.forEach(function(node) {
+            if (node.nodeType !== 1) return;
+            var popup = node.classList && (
+              node.classList.contains('ti-popup') || 
+              node.classList.contains('ti-widget-popup') ||
+              node.id === 'ti-popup'
+            ) ? node : node.querySelector && node.querySelector('.ti-popup, .ti-widget-popup, [id*="ti-popup"]');
+            if (!popup) return;
+            
+            var closeBtn = popup.querySelector('.ti-close, .ti-popup-close, [class*="close"]');
+            
+            popup.addEventListener('click', function(e) {
+              var target = e.target;
+              var isInteractive = 
+                target.closest('a') || 
+                target.closest('button') || 
+                target.closest('.ti-review-item') ||
+                target.closest('.ti-review') ||
+                target.closest('[class*="review"]') ||
+                target.closest('.ti-stars') ||
+                target.closest('.ti-logo') ||
+                target.closest('.ti-close') ||
+                target.closest('[class*="close"]') ||
+                target.tagName === 'A' ||
+                target.tagName === 'BUTTON';
+              
+              if (!isInteractive && window.innerWidth < 768) {
+                if (closeBtn) {
+                  closeBtn.click();
+                } else {
+                  var anyClose = popup.querySelector('[class*="close"], .ti-close');
+                  if (anyClose) anyClose.click();
+                  else popup.style.display = 'none';
+                }
+              }
+            });
+          });
+        });
+      });
+      
+      observer.observe(document.body, { childList: true, subtree: true });
+    })();
+  </script>
+
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 </body>
