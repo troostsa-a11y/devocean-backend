@@ -903,53 +903,43 @@
   <!-- Trustindex mobile close helper -->
   <script>
     (function() {
-      function setupTrustindexClose() {
-        var lastTouchY = 0;
-        var touchMoved = false;
-        
-        document.body.addEventListener('touchstart', function(e) {
-          lastTouchY = e.touches[0].clientY;
-          touchMoved = false;
-        }, { passive: true });
-        
-        document.body.addEventListener('touchmove', function() {
-          touchMoved = true;
-        }, { passive: true });
-        
-        document.body.addEventListener('touchend', function(e) {
-          if (window.innerWidth >= 768 || touchMoved) return;
-          
-          var target = e.target;
-          var tiRoot = document.querySelector('[class*="ti-widget"], [id*="trustindex"], [class*="trustindex"]');
-          if (!tiRoot) return;
-          
-          var popup = tiRoot.querySelector('[class*="popup"]') || (tiRoot.className && tiRoot.className.toString().includes('popup') ? tiRoot : null);
-          if (!popup || popup.offsetHeight < 100) return;
-          
-          if (!popup.contains(target)) return;
-          
-          if (target.closest('a') || target.closest('button') || target.closest('img') || target.closest('svg') || target.closest('picture')) return;
-          if (target.closest('[class*="photo"]') || target.closest('[class*="avatar"]') || target.closest('[class*="image"]') || target.closest('[class*="img"]')) return;
-          
-          var tag = target.tagName.toLowerCase();
-          if (tag === 'a' || tag === 'button' || tag === 'img' || tag === 'svg' || tag === 'path' || tag === 'picture') return;
-          if (tag === 'span' || tag === 'p' || tag === 'strong' || tag === 'b' || tag === 'i' || tag === 'time') return;
-          
-          var classes = (target.className || '').toString().toLowerCase();
-          if (classes.includes('star') || classes.includes('rating') || classes.includes('author') || classes.includes('name') || classes.includes('text') || classes.includes('content') || classes.includes('avatar') || classes.includes('photo') || classes.includes('logo') || classes.includes('icon') || classes.includes('img') || classes.includes('image')) return;
-          
-          var closeBtn = popup.querySelector('[class*="close"]') || tiRoot.querySelector('[class*="close"]');
-          if (closeBtn) {
-            e.preventDefault();
-            closeBtn.click();
-          }
-        }, { passive: false });
-      }
+      var startX = 0, startY = 0, moved = false;
       
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupTrustindexClose);
-      } else {
-        setupTrustindexClose();
+      document.addEventListener('pointerdown', function(e) {
+        startX = e.clientX; startY = e.clientY; moved = false;
+      }, true);
+      
+      document.addEventListener('pointermove', function(e) {
+        if (Math.abs(e.clientX - startX) > 10 || Math.abs(e.clientY - startY) > 10) moved = true;
+      }, true);
+      
+      document.addEventListener('pointerup', handleClose, true);
+      document.addEventListener('click', handleClose, true);
+      
+      function handleClose(e) {
+        if (moved && e.type === 'pointerup') return;
+        if (window.innerWidth >= 768) return;
+        
+        var target = e.target;
+        var popup = target.closest('[class*="trustindex"], [class*="ti-"], [id*="trustindex"], [id*="ti-"]');
+        if (!popup) popup = document.querySelector('.ti-widget, .ti-modal, [class*="ti-popup"], [class*="ti-widget"]');
+        if (!popup || popup.offsetHeight < 50) return;
+        
+        var tag = target.tagName.toLowerCase();
+        if (tag === 'a' || tag === 'button' || tag === 'input' || tag === 'select' || tag === 'textarea' || tag === 'img' || tag === 'svg' || tag === 'path') return;
+        if (target.closest('a, button, [role="button"], [href], [onclick], img, svg, picture')) return;
+        
+        var cls = (target.className || '').toString().toLowerCase();
+        if (cls.match(/link|btn|button|star|rating|review|photo|avatar|image|img|logo|icon|author|name|text|content/)) return;
+        if (target.closest('[class*="review"], [class*="star"], [class*="rating"], [class*="photo"], [class*="avatar"], [class*="image"]')) return;
+        
+        var closeBtn = popup.querySelector('[class*="close"], button[aria-label*="Close"], button[aria-label*="close"]');
+        if (!closeBtn) closeBtn = document.querySelector('[class*="ti-"] [class*="close"], [class*="trustindex"] [class*="close"]');
+        if (closeBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          closeBtn.click();
+        }
       }
     })();
   </script>
