@@ -1,0 +1,311 @@
+	
+A
+mail
+156.38.221.244
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+A
+pop3
+156.38.221.244
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+A
+smtp
+156.38.221.244
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+A
+webmail
+156.38.221.244
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+5uhyxsb6m2fytkcd7sg435xfiau5zp7p._domainkey
+5uhyxsb6m2fytkcd7sg435xfiau5zp7p.dkim.custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+6lpvqzisjhjqqcj5rebq372g3srq6i7p._domainkey
+6lpvqzisjhjqqcj5rebq372g3srq6i7p.dkim.custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+ay7egav737ncvp6dbf4qtukmisznmdj7._domainkey
+ay7egav737ncvp6dbf4qtukmisznmdj7.dkim.custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+book
+devocean-lodge.pages.dev
+
+Proxied
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+bounce
+custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+
+
+CNAME
+devoceanlodge.com
+devocean-lodge.pages.dev
+
+Proxied
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+dqmipc7bjtpx4etq6l4b7fnnnrkydfly._domainkey
+dqmipc7bjtpx4etq6l4b7fnnnrkydfly.dkim.custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+f56dc46d7d18a02a27341ac745e2a36b
+verify.bing.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+ftp
+devoceanlodge.com
+
+Proxied
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+k3._domainkey
+dkim3.mcsv.net
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+www
+devocean-lodge.pages.dev
+
+Proxied
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+ynzdbgwhyop5hzjyozsbnhy45trnwbnc._domainkey
+ynzdbgwhyop5hzjyozsbnhy45trnwbnc.dkim.custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+CNAME
+zj6vypqoekgcug4ac4fql2cp2g7v5blo._domainkey
+zj6vypqoekgcug4ac4fql2cp2g7v5blo.dkim.custom-email-domain.stripe.com
+
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+MX
+devoceanlodge.com
+mail.devoceanlodge.com
+
+10
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+MX
+send
+feedback-smtp.eu-west-1.amazonses.com
+
+10
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+
+
+SRV
+_imaps._tcp
+0 0 993 devoceanlodge.com
+0
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+
+
+SRV
+_pop3s._tcp
+0 0 995 devoceanlodge.com
+0
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+
+
+SRV
+_smtps._tcp
+0 0 465 devoceanlodge.com
+0
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+default._bimi
+"v=BIMI1; l=https://devoceanlodge.com/logo/logo.svg; a=; avp=personal;"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+default._domainkey
+"v=DKIM1; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA2dVK6QTMMkguUGQZWEOeG7WJkQ9rIhIM9Ci/PKb06Kx7vqL7mFmLtyIT02PqpxavP+6NBGW2wKEVAHkaleCM7SntpAKz7dv78/hodK/YLzrtMTXRZ6oXpxbbnYOQcs0qFLxplnGgkpXZCgYZhuh/eE1IHNK8EbHAs/iJqGCMkmjEEDgwohuWSZH+JY+RK7fk9heDJe13" "yBKbLKcJFX43FMgH0LT/CYobPcUexcAacCJBjxwrA4Q+znaA7ZporJxOWqvMRkevmMDv7LDBXGA85eN/4LUb8z5rgiPf4y+L8c7FngaYov+QWlnsGpV/CXchTfq5ptaWIwjtXO2kimb1ewIDAQAB;"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"v=spf1 ip4:156.38.221.244 a:mail.devoceanlodge.com -all"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"facebook-domain-verification=gdvnlnkrcgoessujke5lh8ayb4ya8o"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"google-site-verification=oUh80vbW8FcC8aNExsceeSX3J0H3aGqi9VaGOUUqQOM"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"MS=ms99398574"
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"stripe-verification=0db69de47ed2da0f3fc7acab190350630207047c9f3b418a781bb65b97baa213"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"pinterest-site-verification=755ae0ae31b33c44268cdf21fb41ae13"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+devoceanlodge.com
+"google-site-verification=Aln0YG-Ied6Yb12jb2lvENfbvge_zHPU-MIn6w1Gll0"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+_dmarc
+"v=DMARC1; p=none; rua=mailto:a17e19e91d574bfdb9567b6c801a7791@dmarc-reports.cloudflare.net,mailto:dmarc_agg@vali.email,mailto:troost@live.co.za; pct=100; adkim=r; aspf=r"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+_domainkey
+"o=-"
+DNS only
+
+Auto
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+resend._domainkey
+"p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7mzM5mPxvVSI4d77pCTX2mmkLUeyfrDERIWYYEBYwcLHXb2llHxj/obzymrcNVeu/YYsStliP/da67Mfnzy2S0/FWvw7FQ9ES0Rl8rEcEKnTUyXXWZItcsJ5YgKLGOfU2SGyJ/32y7mm2pOKRfixTuxsdPLaHM1Y4sFkauKATYQIDAQAB"
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
+
+TXT
+send
+"v=spf1 include:amazonses.com -all"
+DNS only
+
+1 hr
+EditWhen toggled open, an additional table row will be added below this row to enable editing DNS records.
