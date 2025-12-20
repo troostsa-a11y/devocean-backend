@@ -24,7 +24,6 @@ export default defineConfig({
           'framer': ['framer-motion'],
           'icons': ['lucide-react', 'react-icons'],
           'i18n': ['i18next', 'react-i18next'],
-          'data': ['@tanstack/react-query'],
         }
       }
     },
