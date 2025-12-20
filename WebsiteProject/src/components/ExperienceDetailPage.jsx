@@ -1,36 +1,71 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRoute, Link } from 'wouter';
 import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
-import { getDolphinsContent } from '../i18n/content/dolphinsContent';
-import { getDivingContent } from '../i18n/content/divingContent';
-import { getSeafariContent } from '../i18n/content/seafariContent';
-import { getSafariContent } from '../i18n/content/safariContent';
-import { getFishingContent } from '../i18n/content/fishingContent';
-import { getSurfingContent } from '../i18n/content/surfingContent';
 import { updateMetaDescription } from '../utils/seoMeta';
+
+// Dynamic content loaders - each experience content is loaded on demand
+const contentLoaders = {
+  dolphins: () => import('../i18n/content/dolphinsContent.js'),
+  diving: () => import('../i18n/content/divingContent.js'),
+  seafari: () => import('../i18n/content/seafariContent.js'),
+  safari: () => import('../i18n/content/safariContent.js'),
+  fishing: () => import('../i18n/content/fishingContent.js'),
+  surfing: () => import('../i18n/content/surfingContent.js')
+};
+
+// Map experience keys to their content getter function names
+const contentGetterNames = {
+  dolphins: 'getDolphinsContent',
+  diving: 'getDivingContent',
+  seafari: 'getSeafariContent',
+  safari: 'getSafariContent',
+  fishing: 'getFishingContent',
+  surfing: 'getSurfingContent'
+};
 
 export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const [match, params] = useRoute('/experiences/:key');
   const experienceKey = params?.key;
+  const [contentModule, setContentModule] = useState(null);
+  const [isLoadingContent, setIsLoadingContent] = useState(true);
   
   // Get base experience data (hero image, etc.)
   const baseExp = EXPERIENCE_DETAILS[experienceKey];
   
-  // Content getters for each experience (except lighthouse)
-  const contentGetters = {
-    dolphins: getDolphinsContent,
-    diving: getDivingContent,
-    seafari: getSeafariContent,
-    safari: getSafariContent,
-    fishing: getFishingContent,
-    surfing: getSurfingContent
-  };
+  // Load content module dynamically when experienceKey changes
+  useEffect(() => {
+    let cancelled = false;
+    setIsLoadingContent(true);
+    
+    const loader = contentLoaders[experienceKey];
+    if (loader) {
+      loader().then((mod) => {
+        if (!cancelled) {
+          setContentModule(mod);
+          setIsLoadingContent(false);
+        }
+      }).catch(() => {
+        if (!cancelled) {
+          setContentModule(null);
+          setIsLoadingContent(false);
+        }
+      });
+    } else {
+      // No content loader for this experience (e.g., lighthouse)
+      setContentModule(null);
+      setIsLoadingContent(false);
+    }
+    
+    return () => { cancelled = true; };
+  }, [experienceKey]);
+  
+  // Get the content getter function from the loaded module
+  const getContent = contentModule ? contentModule[contentGetterNames[experienceKey]] : null;
   
   // Merge with translated content if available; otherwise use base data
-  const getContent = contentGetters[experienceKey];
   const exp = getContent
     ? {
         ...baseExp,
@@ -144,6 +179,18 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [experienceKey]);
+
+  // Show loading state while content is being fetched
+  if (isLoadingContent) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#fffaf6]">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
+          <p className="mt-4 text-slate-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!exp) {
     return (
