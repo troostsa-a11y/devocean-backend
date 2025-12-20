@@ -3,10 +3,10 @@ import { Link } from 'wouter';
 
 // Experience preview tags - helps users know what to expect
 const EXP_TAGS = {
-  diving: ['halfDay', 'certified'],
-  dolphins: ['morning', 'allLevels'],
-  seafari: ['boat', 'halfDay'],
-  safari: ['fullDay', 'transfer'],
+  diving: ['courses'],
+  dolphins: ['earlyMorning', 'allLevels'],
+  seafari: ['boat', 'snorkeling'],
+  safari: ['game', 'halfOrFull'],
   fishing: ['charter', 'guided'],
   surfing: ['rental', 'lessons'],
   lighthouse: ['free', 'selfGuided']
@@ -15,14 +15,13 @@ const EXP_TAGS = {
 // Tag labels with translations
 const getTagLabel = (tag, lang) => {
   const labels = {
-    halfDay: { en: 'Half Day', pt: 'Meio Dia', nl: 'Halve Dag', fr: 'Demi-journée', it: 'Mezza giornata', de: 'Halbtags', es: 'Medio día', af: 'Halfdag', sv: 'Halvdag', pl: 'Pół dnia', ja: '半日', zh: '半天', ru: 'Полдня', zu: 'Usuku olungaphakathi', sw: 'Nusu siku' },
-    fullDay: { en: 'Full Day', pt: 'Dia Inteiro', nl: 'Hele Dag', fr: 'Journée entière', it: 'Giornata intera', de: 'Ganztags', es: 'Día completo', af: 'Voldag', sv: 'Heldag', pl: 'Cały dzień', ja: '終日', zh: '全天', ru: 'Целый день', zu: 'Usuku lonke', sw: 'Siku nzima' },
-    morning: { en: 'Morning', pt: 'Manhã', nl: 'Ochtend', fr: 'Matin', it: 'Mattina', de: 'Morgens', es: 'Mañana', af: 'Oggend', sv: 'Förmiddag', pl: 'Rano', ja: '午前', zh: '上午', ru: 'Утро', zu: 'Ekuseni', sw: 'Asubuhi' },
-    certified: { en: 'Cert. Required', pt: 'Certificado', nl: 'Certificaat', fr: 'Certifié', it: 'Certificato', de: 'Zertifiziert', es: 'Certificado', af: 'Gesertifiseer', sv: 'Certifikat', pl: 'Certyfikat', ja: '要資格', zh: '需认证', ru: 'Сертификат', zu: 'Isitifiketi', sw: 'Cheti' },
+    courses: { en: 'Courses Available', pt: 'Cursos Disponíveis', nl: 'Cursussen Beschikbaar', fr: 'Cours disponibles', it: 'Corsi disponibili', de: 'Kurse verfügbar', es: 'Cursos disponibles', af: 'Kursusse Beskikbaar', sv: 'Kurser tillgängliga', pl: 'Kursy dostępne', ja: 'コースあり', zh: '课程可用', ru: 'Курсы доступны', zu: 'Izifundo ziyatholakala', sw: 'Kozi zinapatikana' },
+    earlyMorning: { en: 'Early Morning', pt: 'Madrugada', nl: 'Vroege Ochtend', fr: 'Tôt le matin', it: 'Prima mattina', de: 'Früh morgens', es: 'Temprano', af: 'Vroeg Oggend', sv: 'Tidig morgon', pl: 'Wczesny ranek', ja: '早朝', zh: '清晨', ru: 'Раннее утро', zu: 'Ekuseni kakhulu', sw: 'Asubuhi mapema' },
+    snorkeling: { en: 'Snorkeling', pt: 'Snorkeling', nl: 'Snorkelen', fr: 'Plongée libre', it: 'Snorkeling', de: 'Schnorcheln', es: 'Snorkel', af: 'Snorkel', sv: 'Snorkling', pl: 'Snorkeling', ja: 'シュノーケリング', zh: '浮潜', ru: 'Снорклинг', zu: 'Ukubhukuda', sw: 'Kuogelea' },
+    game: { en: 'Game Drive', pt: 'Safari', nl: 'Gamedrive', fr: 'Safari', it: 'Safari', de: 'Pirschfahrt', es: 'Safari', af: 'Wildrit', sv: 'Safari', pl: 'Safari', ja: 'ゲームドライブ', zh: '野生动物观赏', ru: 'Сафари', zu: 'Ukuzingela', sw: 'Safari' },
+    halfOrFull: { en: 'Half/Full Day', pt: 'Meio/Dia Inteiro', nl: 'Halve/Hele Dag', fr: 'Demi/Journée', it: 'Mezza/Intera giornata', de: 'Halb-/Ganztags', es: 'Medio/Día completo', af: 'Half/Voldag', sv: 'Halv/Heldag', pl: 'Pół/Cały dzień', ja: '半日/終日', zh: '半天/全天', ru: 'Полдня/День', zu: 'Usuku olungaphakathi/lonke', sw: 'Nusu/Siku nzima' },
     allLevels: { en: 'All Levels', pt: 'Todos Níveis', nl: 'Alle Niveaus', fr: 'Tous niveaux', it: 'Tutti i livelli', de: 'Alle Stufen', es: 'Todos niveles', af: 'Alle Vlakke', sv: 'Alla nivåer', pl: 'Wszystkie poziomy', ja: '全レベル', zh: '所有级别', ru: 'Все уровни', zu: 'Wonke amazinga', sw: 'Viwango vyote' },
     boat: { en: 'Boat Trip', pt: 'Passeio Barco', nl: 'Boottocht', fr: 'Sortie bateau', it: 'Gita in barca', de: 'Bootstour', es: 'Paseo barco', af: 'Bootrit', sv: 'Båttur', pl: 'Rejs', ja: 'ボート', zh: '游船', ru: 'На лодке', zu: 'Uhambo ngesikebhe', sw: 'Safari ya mashua' },
-    seasonal: { en: 'Seasonal', pt: 'Sazonal', nl: 'Seizoens', fr: 'Saisonnier', it: 'Stagionale', de: 'Saisonal', es: 'Estacional', af: 'Seisoenaal', sv: 'Säsong', pl: 'Sezonowy', ja: '季節限定', zh: '季节性', ru: 'Сезонно', zu: 'Ngezinkathi', sw: 'Msimu' },
-    transfer: { en: 'Transfer Inc.', pt: 'Transfer Incl.', nl: 'Transfer Incl.', fr: 'Transfert incl.', it: 'Transfer incl.', de: 'Transfer inkl.', es: 'Transfer incl.', af: 'Oordrag Ingesluit', sv: 'Transfer inkl.', pl: 'Transfer wlicz.', ja: '送迎込', zh: '含接送', ru: 'Трансфер вкл.', zu: 'Ukudlulisa kufakiwe', sw: 'Usafiri' },
     charter: { en: 'Charter', pt: 'Charter', nl: 'Charter', fr: 'Charter', it: 'Charter', de: 'Charter', es: 'Charter', af: 'Charter', sv: 'Charter', pl: 'Czarter', ja: 'チャーター', zh: '包船', ru: 'Чартер', zu: 'Charter', sw: 'Charter' },
     guided: { en: 'Guided', pt: 'Guiado', nl: 'Begeleid', fr: 'Guidé', it: 'Guidato', de: 'Geführt', es: 'Guiado', af: 'Geleide', sv: 'Guidad', pl: 'Z przewodnikiem', ja: 'ガイド付', zh: '向导', ru: 'С гидом', zu: 'Noholo', sw: 'Mwongozo' },
     rental: { en: 'Rental', pt: 'Aluguel', nl: 'Verhuur', fr: 'Location', it: 'Noleggio', de: 'Verleih', es: 'Alquiler', af: 'Huur', sv: 'Uthyrning', pl: 'Wynajem', ja: 'レンタル', zh: '租赁', ru: 'Прокат', zu: 'Ukuqashwa', sw: 'Kukodisha' },
