@@ -220,7 +220,7 @@ export default function App() {
           ) : (
             <>
               <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
-              <ExperiencesSection experiences={experiences} ui={ui} />
+              <ExperiencesSection experiences={experiences} ui={ui} lang={lang} />
               <TodoSection ui={ui} />
               
               {/* Lazy load below-the-fold sections for better INP performance */}

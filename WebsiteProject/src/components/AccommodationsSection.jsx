@@ -1,5 +1,28 @@
 import LazyImage from './LazyImage';
 
+// Key features for each accommodation type - helps users preview before clicking
+const UNIT_FEATURES = {
+  safari: ['fan', 'terrace', 'shared'],
+  comfort: ['ensuite', 'terrace', 'fan'],
+  cottage: ['ac', 'ensuite', 'queen'],
+  chalet: ['ac', 'ensuite', 'secluded']
+};
+
+// Feature labels with translations
+const getFeatureLabel = (feature, lang) => {
+  const labels = {
+    fan: { en: 'Fan', pt: 'Ventilador', nl: 'Ventilator', fr: 'Ventilateur', it: 'Ventilatore', de: 'Ventilator', es: 'Ventilador', af: 'Waaier', sv: 'Fläkt', pl: 'Wentylator', ja: 'ファン', zh: '风扇', ru: 'Вентилятор', zu: 'Ifeni', sw: 'Feni' },
+    terrace: { en: 'Terrace', pt: 'Terraço', nl: 'Terras', fr: 'Terrasse', it: 'Terrazza', de: 'Terrasse', es: 'Terraza', af: 'Terras', sv: 'Terrass', pl: 'Taras', ja: 'テラス', zh: '露台', ru: 'Терраса', zu: 'Iterasi', sw: 'Terasi' },
+    shared: { en: 'Shared Bath', pt: 'WC Partilhado', nl: 'Gedeelde Badkamer', fr: 'Salle de bain partagée', it: 'Bagno condiviso', de: 'Gemeinschaftsbad', es: 'Baño compartido', af: 'Gedeelde Bad', sv: 'Delat badrum', pl: 'Wspólna łazienka', ja: '共用バス', zh: '共用浴室', ru: 'Общая ванная', zu: 'Ibhafu elabelwana', sw: 'Bafu ya pamoja' },
+    ensuite: { en: 'En-suite', pt: 'WC Privativo', nl: 'Eigen Badkamer', fr: 'Salle de bain privée', it: 'Bagno privato', de: 'Eigenes Bad', es: 'Baño privado', af: 'Privaat Bad', sv: 'Eget badrum', pl: 'Łazienka prywatna', ja: '専用バス', zh: '独立浴室', ru: 'Собственная ванная', zu: 'Ibhafu langasese', sw: 'Bafu ya faragha' },
+    ac: { en: 'A/C', pt: 'Ar Condicionado', nl: 'Airco', fr: 'Climatisation', it: 'Aria condizionata', de: 'Klimaanlage', es: 'Aire acondicionado', af: 'Lugversorging', sv: 'AC', pl: 'Klimatyzacja', ja: 'エアコン', zh: '空调', ru: 'Кондиционер', zu: 'I-AC', sw: 'Kiyoyozi' },
+    queen: { en: 'Queen Bed', pt: 'Cama Queen', nl: 'Queensize Bed', fr: 'Lit Queen', it: 'Letto Queen', de: 'Queen-Bett', es: 'Cama Queen', af: 'Queen Bed', sv: 'Queen-säng', pl: 'Łóżko Queen', ja: 'クイーンベッド', zh: '大床', ru: 'Двуспальная кровать', zu: 'Umbhede weQueen', sw: 'Kitanda cha Queen' },
+    secluded: { en: 'Secluded', pt: 'Isolado', nl: 'Afgelegen', fr: 'Isolé', it: 'Appartato', de: 'Abgeschieden', es: 'Aislado', af: 'Afgesonderd', sv: 'Avskilt', pl: 'Ustronny', ja: '隠れ家', zh: '隐蔽', ru: 'Уединённый', zu: 'Okuhlukanisiwe', sw: 'Faragha' }
+  };
+  const baseLang = lang?.split('-')[0] || 'en';
+  return labels[feature]?.[lang] || labels[feature]?.[baseLang] || labels[feature]?.en || feature;
+};
+
 export default function AccommodationsSection({ units, ui, bookUrl, lang, currency }) {
   return (
     <section id="stay" className="bg-slate-50 max-w-7xl mx-auto px-4 py-16">
@@ -30,6 +53,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
           };
           const basePath = detailPageMap[u.key];
           const detailPageUrl = basePath ? `${basePath}?lang=${lang}` : null;
+          const features = UNIT_FEATURES[u.key] || [];
           
           return (
             <div
@@ -37,7 +61,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
               className="rounded-2xl overflow-hidden border shadow-sm hover:shadow-md bg-white"
             >
               {detailPageUrl ? (
-                <a href={detailPageUrl} className="block h-44 overflow-hidden">
+                <a href={detailPageUrl} className="block h-44 overflow-hidden relative">
                   <LazyImage 
                     src={u.img} 
                     alt={u.title} 
@@ -46,6 +70,17 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                     height={300}
                     aspectRatio="4/3"
                   />
+                  {/* Feature badges overlay */}
+                  <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
+                    {features.map((f) => (
+                      <span 
+                        key={f}
+                        className="px-2 py-0.5 text-xs font-medium bg-white/90 text-slate-700 rounded-full shadow-sm backdrop-blur-sm"
+                      >
+                        {getFeatureLabel(f, lang)}
+                      </span>
+                    ))}
+                  </div>
                 </a>
               ) : (
                 <div className="h-44 overflow-hidden">
