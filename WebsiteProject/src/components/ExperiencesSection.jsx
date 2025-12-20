@@ -1,4 +1,3 @@
-import { EXPERIENCE_OPERATORS } from '../data/content';
 import LazyImage from './LazyImage';
 import { Link } from 'wouter';
 
@@ -42,19 +41,6 @@ export default function ExperiencesSection({ experiences, ui }) {
               </CardWrapper>
             );
           })}
-        </div>
-
-        <div className="mt-8 text-sm text-slate-700">
-          <p className="font-medium">{ui.experiences.operators}</p>
-          <ul className="mt-2 list-disc list-inside space-y-1">
-            {EXPERIENCE_OPERATORS.map((p) => (
-              <li key={p.href}>
-                <a className="text-[#9e4b13] hover:underline" href={p.href} target="_blank" rel="noreferrer">
-                  {p.name}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>
