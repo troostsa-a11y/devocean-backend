@@ -24,10 +24,11 @@ export default defineConfig({
           'framer': ['framer-motion'],
           'icons': ['lucide-react', 'react-icons'],
           'i18n': ['i18next', 'react-i18next'],
+          'data': ['@tanstack/react-query'],
         }
       }
     },
-    chunkSizeWarningLimit: 600
+    chunkSizeWarningLimit: 800
   },
   
   server: {
