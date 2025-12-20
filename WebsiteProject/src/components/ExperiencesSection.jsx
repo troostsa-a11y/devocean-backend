@@ -5,7 +5,7 @@ import { Link } from 'wouter';
 const EXP_TAGS = {
   diving: ['halfDay', 'certified'],
   dolphins: ['morning', 'allLevels'],
-  seafari: ['boat', 'seasonal'],
+  seafari: ['boat', 'halfDay'],
   safari: ['fullDay', 'transfer'],
   fishing: ['charter', 'guided'],
   surfing: ['rental', 'lessons'],
