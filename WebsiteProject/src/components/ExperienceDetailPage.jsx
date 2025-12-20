@@ -10,6 +10,7 @@ import { getSeafariContent } from '../i18n/content/seafariContent';
 import { getSafariContent } from '../i18n/content/safariContent';
 import { getFishingContent } from '../i18n/content/fishingContent';
 import { getSurfingContent } from '../i18n/content/surfingContent';
+import { updateMetaDescription } from '../utils/seoMeta';
 
 export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const [match, params] = useRoute('/experiences/:key');
@@ -87,15 +88,8 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     // Update page title
     document.title = `${exp.title} - DEVOCEAN Lodge | Ponta do Ouro, Mozambique`;
 
-    // Update meta description
-    if (!metaDescription) {
-      const newMeta = document.createElement('meta');
-      newMeta.name = 'description';
-      newMeta.content = `${exp.tagline}. ${exp.overview.substring(0, 140)}...`;
-      document.head.appendChild(newMeta);
-    } else {
-      metaDescription.content = `${exp.tagline}. ${exp.overview.substring(0, 140)}...`;
-    }
+    // Update meta description using SEO-optimized, language-specific descriptions
+    updateMetaDescription('experience', lang, experienceKey);
 
     // Update Open Graph tags
     const ogTags = [

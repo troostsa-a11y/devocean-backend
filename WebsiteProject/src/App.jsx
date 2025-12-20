@@ -5,6 +5,7 @@ import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/loc
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
 import { safeLocalStorage, safeSessionStorage } from './utils/safeStorage';
+import { updateMetaDescription } from './utils/seoMeta';
 
 // Critical above-the-fold components (loaded immediately)
 import Header from './components/Header';
@@ -159,6 +160,14 @@ export default function App() {
   // Include 'ui' in dependencies to recompute after translations load (prevents race condition)
   const units = useMemo(() => localizeUnits(lang), [lang, ui]);
   const experiences = useMemo(() => localizeExperiences(lang), [lang, ui]);
+
+  // Update meta description for homepage based on language (SEO)
+  useEffect(() => {
+    // Only update for homepage, not experience pages
+    if (location === '/' || location.startsWith('/?')) {
+      updateMetaDescription('home', lang);
+    }
+  }, [lang, location]);
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
