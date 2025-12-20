@@ -79,6 +79,26 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
           );
         })}
       </div>
+
+      {/* Cross-promotion to Experiences */}
+      <div className="mt-10 p-6 bg-gradient-to-r from-[#fffaf6] to-[#fff5eb] rounded-2xl border border-[#9e4b13]/10">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 className="text-lg font-semibold text-slate-800">{ui.experiences.headline}</h3>
+            <p className="text-sm text-slate-600 mt-1">{ui.experiences.blurb}</p>
+          </div>
+          <a
+            href="#experiences"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors whitespace-nowrap"
+            data-testid="link-explore-experiences"
+          >
+            {ui.nav.experiences}
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+        </div>
+      </div>
     </section>
   );
 }

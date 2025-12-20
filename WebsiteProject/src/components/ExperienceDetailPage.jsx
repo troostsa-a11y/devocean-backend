@@ -631,6 +631,29 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               </Link>
             </div>
           </div>
+
+          {/* Cross-promotion: Book Your Stay */}
+          <div className="mt-8 bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+              <div className="flex-1">
+                <p className="text-white/90 text-sm">
+                  {getExpText('needAccommodation', lang)}
+                </p>
+              </div>
+              <a
+                href={bookUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-white text-[#9e4b13] font-semibold hover:bg-slate-100 transition-colors whitespace-nowrap"
+                data-testid="link-book-stay-from-experience"
+              >
+                {ui?.hero?.ctaPrimary || 'Book your stay'}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 

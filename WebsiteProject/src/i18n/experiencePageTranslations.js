@@ -648,6 +648,27 @@ export function getExpText(key, lang, params = {}) {
       ru: "Напишите Нам",
       zu: "Sithumelele I-imeyili",
       sw: "Tuma Barua Pepe"
+    },
+    needAccommodation: {
+      en: "Need a place to stay? Book your eco-friendly accommodation at DEVOCEAN Lodge.",
+      'en-GB': "Need a place to stay? Book your eco-friendly accommodation at DEVOCEAN Lodge.",
+      'en-US': "Need a place to stay? Book your eco-friendly accommodation at DEVOCEAN Lodge.",
+      'pt-PT': "Precisa de alojamento? Reserve o seu alojamento ecológico no DEVOCEAN Lodge.",
+      'pt-BR': "Precisa de hospedagem? Reserve sua acomodação ecológica no DEVOCEAN Lodge.",
+      pt: "Precisa de alojamento? Reserve o seu alojamento ecológico no DEVOCEAN Lodge.",
+      nl: "Accommodatie nodig? Boek uw milieuvriendelijke verblijf bij DEVOCEAN Lodge.",
+      fr: "Besoin d'un hébergement? Réservez votre séjour éco-responsable au DEVOCEAN Lodge.",
+      it: "Hai bisogno di alloggio? Prenota il tuo soggiorno eco-friendly al DEVOCEAN Lodge.",
+      de: "Unterkunft gesucht? Buchen Sie Ihren umweltfreundlichen Aufenthalt in der DEVOCEAN Lodge.",
+      es: "¿Necesitas alojamiento? Reserva tu estancia ecológica en DEVOCEAN Lodge.",
+      af: "Verblyf nodig? Bespreek jou omgewingsvriendelike akkommodasie by DEVOCEAN Lodge.",
+      sv: "Behöver du boende? Boka din miljövänliga vistelse på DEVOCEAN Lodge.",
+      pl: "Potrzebujesz noclegu? Zarezerwuj ekologiczne zakwaterowanie w DEVOCEAN Lodge.",
+      ja: "宿泊が必要ですか？DEVOCEAN Lodgeでエコフレンドリーな宿泊を予約。",
+      zh: "需要住宿吗？在DEVOCEAN Lodge预订环保住宿。",
+      ru: "Нужно жильё? Забронируйте экологичное проживание в DEVOCEAN Lodge.",
+      zu: "Udinga indawo yokuhlala? Bhukha indawo yakho e-DEVOCEAN Lodge.",
+      sw: "Unahitaji mahali pa kukaa? Hifadhi malazi yako rafiki kwa mazingira katika DEVOCEAN Lodge."
     }
   };
 
