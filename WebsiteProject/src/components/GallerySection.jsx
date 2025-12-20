@@ -108,7 +108,7 @@ export default function GallerySection({ ui }) {
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 z-10 p-2 text-white/80 hover:text-white transition-colors"
+            className="absolute top-20 right-4 z-10 p-2 text-white/80 hover:text-white transition-colors"
             aria-label="Close lightbox"
             data-testid="button-lightbox-close"
           >
