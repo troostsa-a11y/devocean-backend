@@ -664,23 +664,29 @@
   </script>
 
   <!-- Iframe Resizer - eliminates internal scrollbar -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.10/iframeResizer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.2.10/iframeResizer.min.js" crossorigin="anonymous"></script>
   <script>
-    // Initialize iframe resizer after iframe loads
+    // Initialize iframe resizer after iframe loads with error handling
     document.getElementById('beds24frame').addEventListener('load', function() {
-      iFrameResize({
-        log: false,
-        checkOrigin: false,
-        heightCalculationMethod: 'lowestElement',
-        minHeight: 800,
-        scrolling: 'omit',
-        onResized: function(messageData) {
-          // Scroll page to top when iframe content changes significantly
-          if (messageData.type === 'init') {
-            window.scrollTo(0, 0);
-          }
+      try {
+        if (typeof iFrameResize === 'function') {
+          iFrameResize({
+            log: false,
+            checkOrigin: false,
+            heightCalculationMethod: 'lowestElement',
+            minHeight: 800,
+            scrolling: 'omit',
+            warningTimeout: 0,
+            onResized: function(messageData) {
+              if (messageData.type === 'init') {
+                window.scrollTo(0, 0);
+              }
+            }
+          }, '#beds24frame');
         }
-      }, '#beds24frame');
+      } catch (e) {
+        console.log('iframe-resizer: using fallback');
+      }
     });
   </script>
 </body>
