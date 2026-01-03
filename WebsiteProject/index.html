@@ -39,100 +39,6 @@
     });
   </script>
 
-  <!-- Google Tag Manager (INP-Optimized: Load AFTER first interaction completes) -->
-  <script>
-    (function() {
-      var gtmLoaded = false;
-      var firstInteractionComplete = false;
-      
-      function loadGTM() {
-        if (gtmLoaded) return;
-        gtmLoaded = true;
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-532W3HH2');
-      }
-      
-      function scheduleGTMAfterInteraction() {
-        if (!firstInteractionComplete) return;
-        // Wait 500ms after first interaction completes before loading
-        setTimeout(function() {
-          if (window.requestIdleCallback) {
-            requestIdleCallback(loadGTM, {timeout: 3000});
-          } else {
-            setTimeout(loadGTM, 100);
-          }
-        }, 500);
-      }
-      
-      // Mark first interaction as complete and schedule GTM
-      ['click','keydown','touchstart'].forEach(function(e){
-        window.addEventListener(e, function() {
-          setTimeout(function() {
-            firstInteractionComplete = true;
-            scheduleGTMAfterInteraction();
-          }, 0);
-        }, {once: true, passive: true});
-      });
-      
-      // Fallback: load after 8 seconds if no interaction
-      setTimeout(function() {
-        firstInteractionComplete = true;
-        scheduleGTMAfterInteraction();
-      }, 8000);
-    })();
-  </script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Start cookieyes banner (INP-Optimized: Load AFTER first interaction completes) -->
-  <script>
-    (function() {
-      var cookieyesLoaded = false;
-      var firstInteractionComplete = false;
-      
-      function loadCookieyes() {
-        if (cookieyesLoaded) return;
-        cookieyesLoaded = true;
-        var s = document.createElement('script');
-        s.id = 'cookieyes';
-        s.type = 'text/javascript';
-        s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
-        document.head.appendChild(s);
-      }
-      
-      function scheduleCookieyesAfterInteraction() {
-        if (!firstInteractionComplete) return;
-        // Wait 700ms after first interaction completes (stagger from GTM)
-        setTimeout(function() {
-          if (window.requestIdleCallback) {
-            requestIdleCallback(loadCookieyes, {timeout: 3000});
-          } else {
-            setTimeout(loadCookieyes, 100);
-          }
-        }, 700);
-      }
-      
-      // Mark first interaction as complete and schedule CookieYes
-      ['click','keydown','touchstart'].forEach(function(e){
-        window.addEventListener(e, function() {
-          setTimeout(function() {
-            firstInteractionComplete = true;
-            scheduleCookieyesAfterInteraction();
-          }, 0);
-        }, {once: true, passive: true});
-      });
-      
-      // Fallback: load after 8 seconds if no interaction
-      setTimeout(function() {
-        firstInteractionComplete = true;
-        scheduleCookieyesAfterInteraction();
-      }, 8000);
-    })();
-  </script>
-  <!-- End cookieyes banner -->
-
   <!-- Critical: Preload hero image for LCP optimization (fetchpriority=high for immediate load) -->
   <link rel="preload" as="image" href="/photos/hero01.webp" type="image/webp" fetchpriority="high" media="(min-width: 801px)">
   <link rel="preload" as="image" href="/photos/hero01-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 800px)">
@@ -143,91 +49,75 @@
   <!-- DNS prefetch for external services (preconnect removed for delayed scripts) -->
   <link rel="dns-prefetch" href="https://book.devoceanlodge.com">
 
-  <!-- User Engagement Detection (INP-Optimized: Load AFTER first interaction completes) -->
+  <!-- INP-Optimized: Consolidated Deferred Script Loader -->
+  <!-- Single interaction detection system for GTM, CookieYes, Engagement Tracker, Rage Detector -->
+  <!-- Reduces 12 event listeners to 3, single callback schedules all scripts with staggered delays -->
   <script>
     (function() {
-      var trackerLoaded = false;
-      var firstInteractionComplete = false;
+      var loaded = { gtm: false, cookieyes: false, tracker: false, rage: false };
+      
+      function scheduleWithIdle(fn, delay) {
+        setTimeout(function() {
+          if (window.requestIdleCallback) {
+            requestIdleCallback(fn, { timeout: 3000 });
+          } else {
+            setTimeout(fn, 100);
+          }
+        }, delay);
+      }
+      
+      function loadGTM() {
+        if (loaded.gtm) return;
+        loaded.gtm = true;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-532W3HH2');
+      }
+      
+      function loadCookieyes() {
+        if (loaded.cookieyes) return;
+        loaded.cookieyes = true;
+        var s = document.createElement('script');
+        s.id = 'cookieyes';
+        s.type = 'text/javascript';
+        s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
+        document.head.appendChild(s);
+      }
       
       function loadTracker() {
-        if (trackerLoaded) return;
-        trackerLoaded = true;
+        if (loaded.tracker) return;
+        loaded.tracker = true;
         var s = document.createElement('script');
         s.src = '/engagement-tracker.js';
         document.head.appendChild(s);
       }
       
-      function scheduleTrackerAfterInteraction() {
-        if (!firstInteractionComplete) return;
-        // Wait 900ms after first interaction completes (stagger from GTM/CookieYes)
-        setTimeout(function() {
-          if (window.requestIdleCallback) {
-            requestIdleCallback(loadTracker, {timeout: 3000});
-          } else {
-            setTimeout(loadTracker, 100);
-          }
-        }, 900);
-      }
-      
-      // Mark first interaction as complete and schedule tracker
-      ['click','keydown','touchstart'].forEach(function(e){
-        window.addEventListener(e, function() {
-          setTimeout(function() {
-            firstInteractionComplete = true;
-            scheduleTrackerAfterInteraction();
-          }, 0);
-        }, {once: true, passive: true});
-      });
-      
-      // Fallback: load after 8 seconds if no interaction
-      setTimeout(function() {
-        firstInteractionComplete = true;
-        scheduleTrackerAfterInteraction();
-      }, 8000);
-    })();
-  </script>
-
-  <!-- Rage Click Detection (INP-Optimized: Load AFTER first interaction completes) -->
-  <script>
-    (function() {
-      var rageDetectorLoaded = false;
-      var firstInteractionComplete = false;
-      
       function loadRageDetector() {
-        if (rageDetectorLoaded) return;
-        rageDetectorLoaded = true;
+        if (loaded.rage) return;
+        loaded.rage = true;
         var s = document.createElement('script');
         s.src = '/rage-click-detector.js';
         document.head.appendChild(s);
       }
       
-      function scheduleRageDetectorAfterInteraction() {
-        if (!firstInteractionComplete) return;
-        // Wait 1100ms after first interaction completes (stagger from engagement tracker)
-        setTimeout(function() {
-          if (window.requestIdleCallback) {
-            requestIdleCallback(loadRageDetector, {timeout: 3000});
-          } else {
-            setTimeout(loadRageDetector, 100);
-          }
-        }, 1100);
+      function scheduleAllScripts() {
+        scheduleWithIdle(loadGTM, 500);
+        scheduleWithIdle(loadCookieyes, 700);
+        scheduleWithIdle(loadTracker, 900);
+        scheduleWithIdle(loadRageDetector, 1100);
       }
       
-      // Mark first interaction as complete and schedule rage detector
-      ['click','keydown','touchstart'].forEach(function(e){
-        window.addEventListener(e, function() {
-          setTimeout(function() {
-            firstInteractionComplete = true;
-            scheduleRageDetectorAfterInteraction();
-          }, 0);
-        }, {once: true, passive: true});
+      function onFirstInteraction() {
+        setTimeout(scheduleAllScripts, 0);
+      }
+      
+      ['click', 'keydown', 'touchstart'].forEach(function(e) {
+        window.addEventListener(e, onFirstInteraction, { once: true, passive: true });
       });
       
-      // Fallback: load after 8 seconds if no interaction
-      setTimeout(function() {
-        firstInteractionComplete = true;
-        scheduleRageDetectorAfterInteraction();
-      }, 8000);
+      setTimeout(scheduleAllScripts, 8000);
     })();
   </script>
 
