@@ -186,12 +186,21 @@ export default function App() {
       <Switch>
         {/* Route for Why Ponta do Ouro destination page */}
         <Route path="/why-ponta">
-          <WhyPontaPage
-            ui={ui}
-            lang={lang}
-            currency={currency}
-            bookUrl={bookUrl}
-          />
+          {loading || !ui ? (
+            <div className="flex-1 flex items-center justify-center min-h-[50vh]">
+              <div className="text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
+                <p className="mt-4 text-slate-600">Loading...</p>
+              </div>
+            </div>
+          ) : (
+            <WhyPontaPage
+              ui={ui}
+              lang={lang}
+              currency={currency}
+              bookUrl={bookUrl}
+            />
+          )}
         </Route>
 
         {/* Route for experience detail pages */}
