@@ -14,6 +14,7 @@ import AccommodationsSection from './components/AccommodationsSection';
 import ExperiencesSection from './components/ExperiencesSection';
 import TodoSection from './components/TodoSection';
 import ExperienceDetailPage from './components/ExperienceDetailPage';
+import WhyPontaPage from './components/WhyPontaPage';
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -183,6 +184,16 @@ export default function App() {
       />
 
       <Switch>
+        {/* Route for Why Ponta do Ouro destination page */}
+        <Route path="/why-ponta">
+          <WhyPontaPage
+            ui={ui}
+            lang={lang}
+            currency={currency}
+            bookUrl={bookUrl}
+          />
+        </Route>
+
         {/* Route for experience detail pages */}
         <Route path="/experiences/:key">
           {loading || !ui ? (

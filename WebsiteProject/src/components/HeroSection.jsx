@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, ArrowRight } from 'lucide-react';
+import { Link } from 'wouter';
+import { Star, ArrowRight, MapPin } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
@@ -102,8 +103,18 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
         {/* Enhanced CTA Buttons with visual prominence */}
         <div className="mt-8 sm:mt-10">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            {/* Primary CTA - Explore Lodge */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-wrap">
+            {/* Why Ponta do Ouro - Destination Page */}
+            <Link
+              href="/why-ponta"
+              className="group w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
+              data-testid="link-why-ponta"
+            >
+              <MapPin className="w-5 h-5" />
+              <span>Why Ponta do Ouro?</span>
+            </Link>
+            
+            {/* Explore Lodge */}
             <a
               href="#stay"
               className="group btn-secondary w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
@@ -113,7 +124,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
             </a>
             
-            {/* Secondary CTA - Book Now */}
+            {/* Book Now */}
             <a
               href={bookUrl}
               target="_blank"
