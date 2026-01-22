@@ -195,6 +195,8 @@ export default function App() {
             </div>
           ) : (
             <WhyPontaPage
+              units={units}
+              experiences={experiences}
               ui={ui}
               lang={lang}
               currency={currency}

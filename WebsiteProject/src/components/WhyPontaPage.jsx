@@ -43,7 +43,7 @@ const sections = [
   }
 ];
 
-export default function WhyPontaPage({ ui, lang, currency, bookUrl }) {
+export default function WhyPontaPage({ units, experiences, ui, lang, currency, bookUrl }) {
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);
@@ -253,7 +253,7 @@ export default function WhyPontaPage({ ui, lang, currency, bookUrl }) {
         </div>
       </div>
       
-      <Footer ui={ui} lang={lang} />
+      <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
     </>
   );
 }
