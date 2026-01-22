@@ -47,7 +47,7 @@ export default function WhyPontaPage({ ui, lang, currency, bookUrl }) {
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);
-    if (currency) params.set('cur', currency);
+    if (currency) params.set('currency', currency);
     const queryString = params.toString();
     return queryString ? `/?${queryString}${hash}` : `/${hash}`;
   };

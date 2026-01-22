@@ -11,7 +11,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
   const buildUrl = (path, hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);
-    if (currency) params.set('cur', currency);
+    if (currency) params.set('currency', currency);
     const queryString = params.toString();
     return queryString ? `${path}?${queryString}${hash}` : `${path}${hash}`;
   };
