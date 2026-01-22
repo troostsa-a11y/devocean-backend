@@ -3,6 +3,9 @@
 ## Overview
 DEVOCEAN Lodge is an eco-friendly beach accommodation website for a lodge in Ponta do Ouro, Mozambique. Its purpose is to serve as the primary marketing tool, showcasing accommodation, experiences, and offering contact forms. The project supports a multi-language interface (17 languages) to attract a global audience, ensures legal compliance (GDPR, cookies), and delivers a responsive user experience. The business vision is to increase bookings and brand visibility for the lodge.
 
+## Recent Changes (January 2026)
+- **Why Ponta do Ouro? Page (Jan 22):** Created new destination marketing page at `/why-ponta` with 5 content sections (beaches, marine life, wildlife reserves, cultural trips, local charm). Includes hero section, OG tags for social sharing, data-testid attributes, and CTAs linking to accommodations/booking. Homepage hero has new "Why Ponta do Ouro?" button before "Explore the Lodge" that preserves lang/currency params. **Currently English-only** pending content approval before translation to 16 other languages.
+
 ## Recent Changes (December 2025)
 - **INP Optimization - Consolidated Script Loader (Jan 3):** Merged 4 separate deferred script loaders (GTM, CookieYes, Engagement Tracker, Rage Detector) into a single unified system. Reduces 12 event listeners to 3, eliminates duplicate `firstInteractionComplete` flags, uses shared `scheduleWithIdle` helper. Same staggered delays (500ms, 700ms, 900ms, 1100ms) but with cleaner code and reduced main thread callback overhead.
 - **Multiple H1 SEO Fix (Dec 22):** Resolved Bing Webmaster "more than one h1 tag" warning. The homepage had two h1 tags: (1) static placeholder in index.html for instant display before React loads, and (2) React HeroSection's dynamic h1. Fix: Changed static placeholder from `<h1>` to `<p>` with `role="heading" aria-level="1"` for accessibility. Now only React's h1 exists for SEO while placeholder maintains screen reader support during load.
