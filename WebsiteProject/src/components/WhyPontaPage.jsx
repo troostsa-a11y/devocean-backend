@@ -56,17 +56,58 @@ export default function WhyPontaPage({ ui, lang, currency, bookUrl }) {
     const originalTitle = document.title;
     const metaDescription = document.querySelector('meta[name="description"]');
     const originalDescription = metaDescription?.content || '';
+    
+    const ogProperties = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
+    const originalOgValues = {};
+    const createdOgTags = [];
+    
+    ogProperties.forEach(property => {
+      const tag = document.querySelector(`meta[property="${property}"]`);
+      if (tag) {
+        originalOgValues[property] = tag.content;
+      }
+    });
 
     document.title = 'Why Ponta do Ouro? | DEVOCEAN Lodge - Mozambique';
     if (metaDescription) {
       metaDescription.content = 'Discover why Ponta do Ouro is the ultimate Mozambican paradise. Pristine beaches, world-class diving, wildlife reserves, and authentic local culture await at DEVOCEAN Lodge.';
     }
+    
+    const ogTags = [
+      { property: 'og:title', content: 'Why Ponta do Ouro? | DEVOCEAN Lodge' },
+      { property: 'og:description', content: 'Discover why Ponta do Ouro is the ultimate Mozambican paradise. Pristine beaches, world-class diving, wildlife reserves, and authentic local culture await.' },
+      { property: 'og:image', content: 'https://devoceanlodge.com/photos/hero02.jpg' },
+      { property: 'og:url', content: 'https://devoceanlodge.com/why-ponta' },
+      { property: 'og:type', content: 'website' }
+    ];
+
+    ogTags.forEach(({ property, content }) => {
+      let tag = document.querySelector(`meta[property="${property}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute('property', property);
+        document.head.appendChild(tag);
+        createdOgTags.push(tag);
+      }
+      tag.content = content;
+    });
 
     return () => {
       document.title = originalTitle;
       if (metaDescription) {
         metaDescription.content = originalDescription;
       }
+      
+      ogProperties.forEach(property => {
+        const tag = document.querySelector(`meta[property="${property}"]`);
+        if (tag) {
+          if (originalOgValues[property]) {
+            tag.content = originalOgValues[property];
+          } else if (createdOgTags.includes(tag)) {
+            tag.remove();
+          }
+        }
+      });
     };
   }, []);
 
@@ -131,7 +172,7 @@ export default function WhyPontaPage({ ui, lang, currency, bookUrl }) {
           </div>
 
           {/* Content Sections */}
-          <div className="space-y-16">
+          <div className="space-y-16" data-testid="why-ponta-sections">
             {sections.map((section, index) => {
               const Icon = section.icon;
               const isEven = index % 2 === 0;
@@ -139,6 +180,7 @@ export default function WhyPontaPage({ ui, lang, currency, bookUrl }) {
               return (
                 <div 
                   key={section.id}
+                  data-testid={`section-${section.id}`}
                   className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center`}
                 >
                   {/* Icon Card */}

@@ -7,6 +7,14 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
   const [idx, setIdx] = useState(0);
   const list = Array.isArray(images) ? images.filter(Boolean) : [];
   const trustindexRef = useRef(null);
+  
+  const buildUrl = (path, hash = '') => {
+    const params = new URLSearchParams();
+    if (lang) params.set('lang', lang);
+    if (currency) params.set('cur', currency);
+    const queryString = params.toString();
+    return queryString ? `${path}?${queryString}${hash}` : `${path}${hash}`;
+  };
 
   useEffect(() => {
     if (list.length <= 1) return;
@@ -106,7 +114,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-wrap">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
-              href="/why-ponta"
+              href={buildUrl('/why-ponta')}
               className="group w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
               data-testid="link-why-ponta"
             >
