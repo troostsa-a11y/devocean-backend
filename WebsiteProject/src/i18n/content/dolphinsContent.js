@@ -974,13 +974,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Nados com golfinhos baseados em pesquisa com foco educacional"
       }
     ]
@@ -1073,13 +1073,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Nados com golfinhos baseados em investigação com foco educacional"
       }
     ]
@@ -1172,13 +1172,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Encontros com golfinhos liderados por biólogos marinhos, focados em conservação"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Nados com golfinhos baseados em pesquisa com foco educacional"
       }
     ]
@@ -1271,13 +1271,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Encuentros con delfines dirigidos por biólogos marinos, enfocados en conservación"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Nados con delfines basados en investigación con enfoque educativo"
       }
     ]
@@ -1370,13 +1370,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Rencontres avec dauphins dirigées par des biologistes marins, axées sur la conservation"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Nages avec dauphins basées sur la recherche avec accent éducatif"
       }
     ]
@@ -1469,13 +1469,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Von Meeresbi ologen geleitete, naturschutzorientierte Delfinbegegnungen"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Forschungsbasierte Delfinschwimmen mit Bildungsschwerpunkt"
       }
     ]
@@ -1568,13 +1568,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Door mariene biologen geleide, natuurbehoud-gerichte dolfijnontmoetingen"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Onderzoeksgebaseerde dolfijnzwemmen met educatieve focus"
       }
     ]
@@ -1667,13 +1667,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Incontri con delfini guidati da biologi marini, focalizzati sulla conservazione"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Nuoto con delfini basato sulla ricerca con focus educativo"
       }
     ]
@@ -1766,13 +1766,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Marinbiolog-ledda, bevarandefokuserade delfinmöten"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Forskningsbaserade delfinsim med utbildningsfokus"
       }
     ]
@@ -1865,13 +1865,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Spotkania z delfinami prowadzone przez biologów morskich, skoncentrowane na ochronie"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Pływanie z delfinami oparte na badaniach z naciskiem edukacyjnym"
       }
     ]
@@ -1964,13 +1964,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Встречи с дельфинами под руководством морских биологов, ориентированные на сохранение"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Плавание с дельфинами на основе исследований с образовательным акцентом"
       }
     ]
@@ -2063,13 +2063,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "由海洋生物学家领导，以保护为重点的海豚邂逅"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "基于研究的海豚游泳，注重教育"
       }
     ]
@@ -2162,13 +2162,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "海洋生物学者主導、保全重視のイルカとの出会い"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "研究ベースのイルカ遊泳と教育重視"
       }
     ]
@@ -2261,13 +2261,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Mariene bioloog-geleide, bewaringsfokus dolfyn ontmoetings"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Navorsingsgebaseerde dolfyn swem met opvoedkundige fokus"
       }
     ]
@@ -2360,13 +2360,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Ukuhlangana namahlengethwa okuholwa ngamasayensi wolwandle, okugxile ekulondolozeni"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Ukubhukuda namahlengethwa okusekelwe ocwaningweni okugxile emfundweni"
       }
     ]
@@ -2459,13 +2459,13 @@ export const DOLPHINS_CONTENT = {
       {
         name: "Dolphin Encountours Research Center",
         website: "https://www.dolphinencountours.org/",
-        email: "partners@devoceanlodge.com",
+        email: "connect@dolphinencountours.org",
         specialty: "Mikutano ya pomboo inayoongozwa na wanabiolojia wa bahari, inayolenga uhifadhi"
       },
       {
         name: "The Dolphin Centre",
         website: "https://thedolphincentre.com/",
-        email: "partners@devoceanlodge.com",
+        email: "info@thedolphincentre.com",
         specialty: "Kuogelea na pomboo kulingana na utafiti na lengo la elimu"
       }
     ]
