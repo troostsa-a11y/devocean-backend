@@ -24,7 +24,7 @@ const sections = [
     icon: TreePine,
     title: 'Proximity to Iconic Wildlife Reserves',
     content: `Ponta do Ouro is the perfect base for "bush-to-beach" escapes, with easy access to South African reserves like Kruger National Park (4-5 hours), Tembe Elephant Park (2 hours), Hluhluwe-iMfolozi (3-4 hours), and iSimangaliso Wetland Park (UNESCO, 3 hours). Spot the Big Five, large-tusked elephants, and over 526 bird species.`,
-    extra: `Locally, Maputo National Park (UNESCO World Heritage since 2025, 30km away) offers savannas, dunes, and mangroves with elephants, giraffes, and sea turtles.`,
+    extra: `Locally, Maputo National Park— just 30 km away, often characterized as "Where the Okavango meets the Indian Ocean", showcases a stunning mosaic of savannas, dunes, and mangroves. There's a good chance of observing large herds of elephants, hippos, giraffes, zebras, blue wildebeest, and various antelope like nyala, kudu, and red duiker.`,
     highlight: 'Bush-to-beach escapes'
   },
   {
