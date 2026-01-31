@@ -409,6 +409,57 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Boka Nu',
     backToHome: 'Tillbaka till Hem',
     locationLabel: 'Södra Moçambique'
+  },
+  pl: {
+    pageTitle: 'Dlaczego Ponta do Ouro? | DEVOCEAN Lodge - Mozambik',
+    metaDescription: 'Odkryj, dlaczego Ponta do Ouro to najlepszy mozambicki raj. Dziewicze plaże, nurkowanie światowej klasy, rezerwaty przyrody i autentyczna lokalna kultura czekają na Ciebie w DEVOCEAN Lodge.',
+    ogTitle: 'Dlaczego Ponta do Ouro? | DEVOCEAN Lodge',
+    ogDescription: 'Odkryj, dlaczego Ponta do Ouro to najlepszy mozambicki raj. Dziewicze plaże, nurkowanie światowej klasy, rezerwaty przyrody i autentyczna lokalna kultura czekają na Ciebie.',
+    heroSubtitle: 'Ukryty klejnot, gdzie dziewicze plaże spotykają się z tętniącym życiem morskim i niekończącymi się przygodami',
+    heroTitle: 'Dlaczego Ponta do Ouro?',
+    badgeLabel: 'Brama do Parku Narodowego Maputo',
+    imageAlt: 'Wybrzeże Ponta do Ouro',
+    introText: 'Witamy w Ponta do Ouro, bramie do pierwszego naturalnego obiektu światowego dziedzictwa UNESCO w Mozambiku — Parku Narodowego Maputo. Ten nadmorski raj oferuje niezrównane połączenie relaksu, ekoturystyki i zanurzenia w kulturze. Niezależnie od tego, czy szukasz ekscytujących nurkowań, spokojnych ogrodów jak te w DEVOCEAN Lodge, czy jednodniowych wycieczek do pobliskich cudów, tutaj odkryjesz, dlaczego ta destynacja powinna znaleźć się na Twojej liście podróży.',
+    sections: [
+      {
+        id: 'beaches',
+        title: 'Zapierające Dech Plaże i Nadmorskie Piękno',
+        content: 'Ponta do Ouro szczyci się malowniczymi plażami otoczonymi drzewami kazuarinowymi, wydmami i krystalicznie czystą wodą — idealnymi do relaksu lub spacerów wzdłuż brzegu. Główna plaża jest dziewicza, spokojna i niesamowicie piękna, oferując prawdziwą ucieczkę od miasta. W przeciwieństwie do bardziej zatłoczonych miejsc, surowe, niefiltrowane piękno Ponty zachęca do zwolnienia i połączenia się z naturą.',
+        highlight: 'Prawdziwa ucieczka od miasta'
+      },
+      {
+        id: 'marine',
+        title: 'Przygody Morskie Światowej Klasy',
+        content: 'Zanurz się w kwitnących rafach pełnych ponad 1200 gatunków ryb, rekinów byczych, rekinów młotów, mant, żółwi i stałych delfinów. Od czerwca do listopada możesz obserwować migrujące humbaki i cieszyć się etycznym pływaniem z dzikimi delfinami. Chronione przez Park Narodowy UNESCO, te doświadczenia są zrównoważone i mniej zatłoczone niż inne miejsca.',
+        extra: 'Odkrywaj podwodny świat z miejscami do nurkowania od 10m przy Crèche do 47m przy Atlantis, lub spróbuj snorkelingu, surfingu i wędkowania na barrakudy i makrele.',
+        highlight: 'Ponad 1200 gatunków ryb'
+      },
+      {
+        id: 'wildlife',
+        title: 'Bliskość Ikonicznych Rezerwatów Przyrody',
+        content: 'Ponta do Ouro to idealna baza do wycieczek „z buszu na plażę", z łatwym dostępem do południowoafrykańskich rezerwatów jak Park Narodowy Krugera (4-5 godz.), Tembe Elephant Park (2 godz.), Hluhluwe-iMfolozi (3-4 godz.) i iSimangaliso Wetland Park (UNESCO, 3 godz.). Wypatruj Wielkiej Piątki, słoni z wielkimi kłami i ponad 526 gatunków ptaków.',
+        extra: 'Lokalnie Park Narodowy Maputo — zaledwie 30 km stąd, często opisywany jako „Gdzie Okawango spotyka Ocean Indyjski" — oferuje zapierającą dech mozaikę sawann, wydm i namorzynów. Jest duża szansa na obserwację dużych stad słoni, hipopotamów, żyraf, zebr, gnu niebieskich oraz różnych antylop jak niala, kudu i impala.',
+        highlight: 'Wycieczki z buszu na plażę'
+      },
+      {
+        id: 'culture',
+        title: 'Kulturowe i Widokowe Podróże',
+        content: 'Wybierz się do eSwatini (3-4 godz.) na wędrówki w Rezerwacie Przyrody Mantenga i tradycyjne suazylijskie występy kulturowe (tańce Sibhaca, niematerialne dziedzictwo UNESCO). Odkryj Panorama Route (5-6 godz.) z kanionem Blyde River i wodospadami, lub odwiedź Chimp Eden Sanctuary Jane Goodall (5 godz.) dla etycznych spotkań z dziką przyrodą.',
+        highlight: 'Niematerialne dziedzictwo UNESCO'
+      },
+      {
+        id: 'charm',
+        title: 'Autentyczny Mozambicki Urok',
+        content: 'Doświadcz surowych przygód oceanicznych, bogatej lokalnej kultury i osobliwych barów w nieskomercjalizowanym otoczeniu. Ponta do Ouro uosabia autentyczność — od tętniących życiem targów po porywającą muzykę — czyniąc ją idealną dla znaczących wycieczek.',
+        highlight: 'Nieskomercjalizowana autentyczność'
+      }
+    ],
+    ctaTitle: 'Gotowy Doświadczyć Raju?',
+    ctaDescription: 'Zatrzymaj się w DEVOCEAN Lodge i odkryj, dlaczego Ponta do Ouro to Twoja ostateczna mozambicka destynacja. Ekologiczny komfort pośród tych cudów czeka na Ciebie.',
+    ctaAccommodations: 'Zobacz Nasze Zakwaterowanie',
+    ctaBookNow: 'Zarezerwuj Teraz',
+    backToHome: 'Powrót do Strony Głównej',
+    locationLabel: 'Południowy Mozambik'
   }
 };
 
