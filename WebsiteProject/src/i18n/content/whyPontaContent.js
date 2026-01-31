@@ -358,6 +358,57 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Prenota Ora',
     backToHome: 'Torna alla Home',
     locationLabel: 'Mozambico Meridionale'
+  },
+  sv: {
+    pageTitle: 'Varför Ponta do Ouro? | DEVOCEAN Lodge - Moçambique',
+    metaDescription: 'Upptäck varför Ponta do Ouro är det ultimata moçambikanska paradiset. Orörda stränder, dykning i världsklass, viltreservat och autentisk lokal kultur väntar på dig vid DEVOCEAN Lodge.',
+    ogTitle: 'Varför Ponta do Ouro? | DEVOCEAN Lodge',
+    ogDescription: 'Upptäck varför Ponta do Ouro är det ultimata moçambikanska paradiset. Orörda stränder, dykning i världsklass, viltreservat och autentisk lokal kultur väntar på dig.',
+    heroSubtitle: 'En dold pärla där orörda stränder möter livfullt marint liv och oändliga äventyr',
+    heroTitle: 'Varför Ponta do Ouro?',
+    badgeLabel: 'Porten till Maputo nationalpark',
+    imageAlt: 'Ponta do Ouros kust',
+    introText: 'Välkommen till Ponta do Ouro, porten till Moçambiques första naturliga UNESCO-världsarv — Maputo nationalpark. Detta kustparadis erbjuder en oslagbar blandning av avkoppling, ekoturism och kulturell fördjupning. Oavsett om du söker spännande dyk, lugna trädgårdar som de vid DEVOCEAN Lodge, eller dagsutflykter till närliggande underverk, kommer du här att upptäcka varför denna destination borde finnas på din reslista.',
+    sections: [
+      {
+        id: 'beaches',
+        title: 'Fantastiska Stränder och Kustskönhet',
+        content: 'Ponta do Ouro stoltserar med pittoreska stränder inramade av kasuarinaträd, sanddyner och kristallklart vatten — perfekt för avkoppling eller strandpromenader. Huvudstranden är orörd, fridfull och otroligt vacker, och erbjuder en verklig flykt från staden. Till skillnad från mer trånga platser bjuder Pontas råa, ofiltrerade skönhet in dig att sakta ner och återknyta kontakten med naturen.',
+        highlight: 'En verklig flykt från staden'
+      },
+      {
+        id: 'marine',
+        title: 'Marina Äventyr i Världsklass',
+        content: 'Dyk ner i blomstrande rev fyllda med över 1 200 fiskarter, tjurhajar, hammarhajar, mantarockor, sköldpaddor och bofasta delfiner. Från juni till november kan du spana efter migrerande knölvalar och njuta av etiskt simning med vilda delfiner. Skyddade av UNESCO:s nationalpark är dessa upplevelser hållbara och mindre trånga än andra platser.',
+        extra: 'Utforska undervattensvärlden med dykplatser från 10m vid Crèche till 47m vid Atlantis, eller prova snorkling, surfing och fiske efter barracuda och guldmakrill.',
+        highlight: 'Över 1 200 fiskarter'
+      },
+      {
+        id: 'wildlife',
+        title: 'Närhet till Ikoniska Viltreservat',
+        content: 'Ponta do Ouro är den perfekta basen för "bush-to-beach"-utflykter, med enkel tillgång till sydafrikanska reservat som Kruger nationalpark (4-5 timmar), Tembe Elephant Park (2 timmar), Hluhluwe-iMfolozi (3-4 timmar) och iSimangaliso Wetland Park (UNESCO, 3 timmar). Spana efter Big Five, elefanter med stora betar och över 526 fågelarter.',
+        extra: 'Lokalt erbjuder Maputo nationalpark — bara 30 km bort, ofta beskriven som "Där Okavango möter Indiska oceanen" — en hisnande mosaik av savanner, dyner och mangrove. Det finns goda chanser att observera stora elefantflockar, flodhästar, giraffer, zebror, blå gnuer och olika antiloper som nyala, kudu och impala.',
+        highlight: 'Bush-to-beach-utflykter'
+      },
+      {
+        id: 'culture',
+        title: 'Kulturella och Natursköna Resor',
+        content: 'Ge dig ut till eSwatini (3-4 timmar) för vandringar i Mantenga naturreservat och traditionella swazilandska kulturföreställningar (Sibhaca-danser, immateriellt UNESCO-arv). Utforska Panoramarutten (5-6 timmar) för Blyde River Canyon och vattenfall, eller besök Jane Goodalls Chimp Eden-fristad (5 timmar) för etiska möten med vilda djur.',
+        highlight: 'Immateriellt UNESCO-arv'
+      },
+      {
+        id: 'charm',
+        title: 'Autentisk Moçambikansk Charm',
+        content: 'Upplev råa havsäventyr, rik lokal kultur och säregna barer i en okommersialiserad miljö. Ponta do Ouro står för autenticitet — från livliga marknader till engagerande musik — vilket gör det idealiskt för meningsfulla utflykter.',
+        highlight: 'Okommersialiserad autenticitet'
+      }
+    ],
+    ctaTitle: 'Redo att Uppleva Paradiset?',
+    ctaDescription: 'Bo på DEVOCEAN Lodge och upptäck varför Ponta do Ouro är din ultimata moçambikanska destination. Miljövänlig komfort mitt i dessa underverk väntar på dig.',
+    ctaAccommodations: 'Se Våra Boenden',
+    ctaBookNow: 'Boka Nu',
+    backToHome: 'Tillbaka till Hem',
+    locationLabel: 'Södra Moçambique'
   }
 };
 
