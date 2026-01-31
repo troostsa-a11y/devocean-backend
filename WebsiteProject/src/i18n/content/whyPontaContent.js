@@ -277,7 +277,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Wereldklasse Zeeavonturen',
-        content: 'Duik in bloeiende riffen vol met meer dan 1.200 vissoorten, stierenhaaien, hamerhaaien, manta\'s, schildpadden en residente dolfijnen. Van juni tot november kunt u trekkende bultrugwalvissen spotten en genieten van ethisch zwemmen met wilde dolfijnen. Beschermd door het UNESCO Nationaal Park zijn deze ervaringen duurzaam en minder druk dan andere locaties.',
+        content: 'Duik in bloeiende riffen vol met meer dan 1.200 vissoorten, stierhaaien, hamerhaaien, manta\'s, schildpadden en residente dolfijnen. Van juni tot november kunt u trekkende bultrugwalvissen spotten en genieten van ethisch zwemmen met wilde dolfijnen. Beschermd door het UNESCO Nationaal Park zijn deze ervaringen duurzaam en minder druk dan andere locaties.',
         extra: 'Verken de onderwaterwereld met duiklocaties van 10m bij Crèche tot 47m bij Atlantis, of probeer snorkelen, surfen en vissen op barracuda\'s en horsmakrelen.',
         highlight: 'Meer dan 1.200 vissoorten'
       },
