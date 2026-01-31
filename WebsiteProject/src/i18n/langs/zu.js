@@ -2,7 +2,7 @@ export const UI = {
   menu: "Imenyu",
   regions: { europe: "I-Europe", asia: "I-Asia", americas: "I-America", africa: "I-Afrika", oceania: "I-Oceania" },
   nav: { home: "Ikhaya", stay: "Ukuhlala", experiences: "Okuhlangenwe nakho", todo: "Okumele ukwenze", gallery: "Igalari", location: "Indawo", contact: "Xhumana nathi" },
-  hero: { title: "DEVOCEAN Lodge", subtitle: "Indawo yokuhlala enobungani bemvelo emamitha ambalwa ukusuka ogwini lwasePonta do Ouro, eNingizimu yeMozambique.", ctaPrimary: "Bhukha ukulala kwakho", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Indawo yokuhlala enobungani bemvelo emamitha ambalwa ukusuka ogwini lwasePonta do Ouro, eNingizimu yeMozambique.", ctaPrimary: "Bhukha ukulala kwakho", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi", whyPonta: "Kungani iPonta do Ouro?" },
   stay: { headline: "Hlala nathi", blurb: "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni.", moreDetails: "Imininingwane eyengeziwe", ourStory: "Indaba Yethu" },
   experiences: { headline: "Okuhlangenwe nakho", blurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.", operators: "Abahlinzekibasekhaya abathenjwayo:" },
   todo: {

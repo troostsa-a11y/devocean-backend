@@ -664,6 +664,57 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Bespreek Nou',
     backToHome: 'Terug na Tuis',
     locationLabel: 'Suid-Mosambiek'
+  },
+  zu: {
+    pageTitle: 'Kungani iPonta do Ouro? | DEVOCEAN Lodge - IMozambique',
+    metaDescription: 'Thola ukuthi kungani iPonta do Ouro iyipharadisi yeMozambique ephakeme. Ogwini olungangcolile, ukuntsheza okusezingeni lomhlaba, izindawo zezilwane zasendle kanye namasiko endawo akukulindele ku-DEVOCEAN Lodge.',
+    ogTitle: 'Kungani iPonta do Ouro? | DEVOCEAN Lodge',
+    ogDescription: 'Thola ukuthi kungani iPonta do Ouro iyipharadisi yeMozambique ephakeme. Ogwini olungangcolile, ukuntsheza okusezingeni lomhlaba, izindawo zezilwane zasendle kanye namasiko endawo akukulindele.',
+    heroSubtitle: 'Igugu elifihlakele lapho ogwini olungangcolile luhlangana nokuphila kolwandle okuphilayo kanye nohambo olungenamkhawulo',
+    heroTitle: 'Kungani iPonta do Ouro?',
+    badgeLabel: 'Isango elikhulu le-Maputo National Park',
+    imageAlt: 'Ugwini lwasePonta do Ouro',
+    introText: 'Siyakwamukela ePonta do Ouro, isango elikhulu endaweni yokuqala yemvelo yeNhlangano Yezizwe Ezihlangeneyo yeMozambique — iMaputo National Park. Le pharadisi yasogwini inikeza ingxube engenakulinganiswa yokuphumula, ezokuvakasha zemvelo kanye nokuzithiba kwamasiko. Noma ngabe ufuna ukuntsheza okujabulisayo, izingadi ezithulile njenge-DEVOCEAN Lodge, noma izinhambo zosuku eziyeni eziduze, lapha uzothola ukuthi kungani le ndawo kumele ibe ohlwini lwakho lokuphelelisa.',
+    sections: [
+      {
+        id: 'beaches',
+        title: 'Ogwini Olumangalisayo Nobuhle Bogwini',
+        content: 'IPonta do Ouro inogwini oluhle oluzungezwe imithi ye-casuarina, izindunduma zesihlabathi namanzi acwebile — kulungele ukuphumula noma ukuhamba ogwini. Ugwini olukhulu alunangcola, lunokuthula futhi lumuhle kakhulu, lunikeza ukubalekela kweqiniso edolobheni. Ngokungafani nezindawo ezixinile kakhulu, ubuhle obungahluziwe basePonta bukumema ukuthi uqhubeke kancane futhi uxhumane nemvelo.',
+        highlight: 'Ukubalekela kweqiniso edolobheni'
+      },
+      {
+        id: 'marine',
+        title: 'Izinhambo Zasolwandle Ezisezingeni Lomhlaba',
+        content: 'Ntsheza emarifini aqhamayo agcwele izinhlobo zezinhlanzi ezingaphezu kuka-1,200, oshaka bebhubesi, oshaka abanezihloko ezinjengezando, amamanta, izimfudu namahhashi ahlala lapha. Kusukela kuJuni kuya kuNovemba, ungabona omikhomo abadlulayo futhi ujabulele ukubhukuda okusemthethweni namahhashi asendle. Ivikelwe yi-UNESCO National Park, lezi zinto ezihlangabezanayo ziyaqhubeka futhi azixinile njengezinye izindawo.',
+        extra: 'Hlola umhlaba ongaphansi kwamanzi nezindawo zokuntsheza ukusuka ku-10m e-Crèche kuya ku-47m e-Atlantis, noma uzame ukudoba ngaphansi kwamanzi, ukugibela amagagasi nokudoba ibarracuda nejackfish.',
+        highlight: 'Izinhlobo zezinhlanzi ezingaphezu kuka-1,200'
+      },
+      {
+        id: 'wildlife',
+        title: 'Eduze Nezindawo Zezilwane Zasendle Ezidumile',
+        content: 'IPonta do Ouro iyindawo enhle yokusuka "ehlathini uye ogwini", inokufinyelela okulula ezindaweni zaseNingizimu Afrika njenge-Kruger National Park (amahora angu-4-5), iTembe Elephant Park (amahora angu-2), iHluhluwe-iMfolozi (amahora angu-3-4) kanye ne-iSimangaliso Wetland Park (UNESCO, amahora angu-3). Bona i-Big Five, izindlovu ezinamazinyo amakhulu kanye nezinhlobo zezinyoni ezingaphezu kuka-526.',
+        extra: 'Endaweni, iMaputo National Park — amakhilomitha angu-30 kuphela, evame ukuchazwa njengendawo "Lapho i-Okavango ihlangana nolwandle lwaseNdiya" — inikeza umfanekiso omangalisayo wezindawo zotshani, izindunduma kanye nezihlahla zomangadla. Kunamathuba amahle okubona imihlambi emikhulu yezindlovu, izimvubu, izindlulamithi, amadube, iblue wildebeest kanye nezinhlobo ezahlukene zezinyamazane njengenyala, ikudu ne-impala.',
+        highlight: 'Izinhambo ehlathini uye ogwini'
+      },
+      {
+        id: 'culture',
+        title: 'Izinhambo Zamasiko Nezindawo Ezinhle',
+        content: 'Yiya e-eSwatini (amahora angu-3-4) ukuze uhambe e-Mantenga Nature Reserve kanye nemibukiso yamasiko e-Swazi yendabuko (imidanso ye-Sibhaca, ifa le-UNESCO elingabonakali). Hlola iNdlela ye-Panorama (amahora angu-5-6) ye-Blyde River Canyon namanzi awayo, noma uvakashele indawo yokuvikeleka ye-Chimp Eden kaJane Goodall (amahora angu-5) ukuze uhlangane nezilwane zasendle ngendlela elungile.',
+        highlight: 'Ifa le-UNESCO elingabonakali'
+      },
+      {
+        id: 'charm',
+        title: 'Ubumnandi BeMozambique Bangempela',
+        content: 'Bhekana nezinhambo zasolwandle ezingashintshwanga, amasiko endawo acebe kanye namabhawa angajwayelekile endaweni engathengiswa ngokweqile. IPonta do Ouro imele ubuqiniso — kusukela ezimakethe eziphilayo kuya kumculo othintayo — okuyenza ibe yindawo enhle yezinhambo ezibalulekile.',
+        highlight: 'Ubuqiniso obungathengiswa ngokweqile'
+      }
+    ],
+    ctaTitle: 'Ulungele Ukuzizwa Ipharadisi?',
+    ctaDescription: 'Hlala e-DEVOCEAN Lodge futhi uthole ukuthi kungani iPonta do Ouro iyindawo yakho yokugcina yeMozambique. Ukunethezeka okuhambisana nemvelo phakathi kwalezi zimangaliso kuyakulindele.',
+    ctaAccommodations: 'Bona Izindawo Zethu Zokuhlala',
+    ctaBookNow: 'Bhukha Manje',
+    backToHome: 'Buyela Ekhaya',
+    locationLabel: 'INingizimu yeMozambique'
   }
 };
 
