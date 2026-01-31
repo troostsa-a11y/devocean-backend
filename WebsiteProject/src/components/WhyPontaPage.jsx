@@ -15,7 +15,7 @@ const sections = [
     id: 'marine',
     icon: Fish,
     title: 'World-Class Marine Adventures',
-    content: `Dive into thriving reefs teeming with 1,200+ fish species, bull sharks, hammerheads, mantas, turtles, and resident dolphins. From June to November, spot migrating humpback whales, and enjoy ethical swims with wild dolphins. Protected by the Ponta do Ouro Partial Marine Reserve, these experiences are sustainable and less crowded than other sites.`,
+    content: `Dive into thriving reefs teeming with 1,200+ fish species, bull sharks, hammerheads, mantas, turtles, and resident dolphins. From June to November, spot migrating humpback whales, and enjoy ethical swims with wild dolphins. Protected by the UNESCO National Park, these experiences are sustainable and less crowded than other sites.`,
     extra: `Explore underwater with sites from 10m at Crèche to 47m at Atlantis, or try snorkeling, surfing, and fishing for barracuda and kingfish.`,
     highlight: '1,200+ fish species'
   },
