@@ -3,7 +3,7 @@ export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.", ctaPrimary: "Boek uw verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.", ctaPrimary: "Boek uw verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit", whyPonta: "Waarom Ponta do Ouro?" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
     experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:" },
     units: {

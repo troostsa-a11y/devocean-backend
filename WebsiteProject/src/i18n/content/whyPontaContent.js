@@ -256,6 +256,57 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Reserve Ahora',
     backToHome: 'Volver al Inicio',
     locationLabel: 'Sur de Mozambique'
+  },
+  nl: {
+    pageTitle: 'Waarom Ponta do Ouro? | DEVOCEAN Lodge - Mozambique',
+    metaDescription: 'Ontdek waarom Ponta do Ouro het ultieme Mozambikaanse paradijs is. Ongerepte stranden, wereldklasse duiken, wildreservaten en authentieke lokale cultuur wachten op u bij DEVOCEAN Lodge.',
+    ogTitle: 'Waarom Ponta do Ouro? | DEVOCEAN Lodge',
+    ogDescription: 'Ontdek waarom Ponta do Ouro het ultieme Mozambikaanse paradijs is. Ongerepte stranden, wereldklasse duiken, wildreservaten en authentieke lokale cultuur wachten op u.',
+    heroSubtitle: 'Een verborgen parel waar ongerepte stranden samenkomen met bruisend zeeleven en eindeloze avonturen',
+    heroTitle: 'Waarom Ponta do Ouro?',
+    badgeLabel: 'Toegangspoort tot Maputo Nationaal Park',
+    imageAlt: 'Kustlijn van Ponta do Ouro',
+    introText: 'Welkom in Ponta do Ouro, de toegangspoort tot Mozambiques eerste natuurlijke UNESCO-Werelderfgoedlocatie — het Maputo Nationaal Park. Dit kustparadijs biedt een onverslaanbare mix van ontspanning, ecotoerisme en culturele onderdompeling. Of u nu op zoek bent naar spannende duiken, serene tuinen zoals die van DEVOCEAN Lodge, of dagtrips naar nabijgelegen wonderen, hier ontdekt u waarom deze bestemming op uw reislijst moet staan.',
+    sections: [
+      {
+        id: 'beaches',
+        title: 'Prachtige Stranden en Kustschoonheid',
+        content: 'Ponta do Ouro pronkt met schilderachtige stranden omringd door casuarinabomen, zandduinen en kristalhelder water — perfect om te ontspannen of stranwandelingen te maken. Het hoofdstrand is ongerept, vredig en ongelooflijk mooi, en biedt een echte ontsnapping uit de stad. In tegenstelling tot drukkere plekken nodigt de ruwe, ongefilterde schoonheid van Ponta u uit om te vertragen en verbinding te maken met de natuur.',
+        highlight: 'Een echte ontsnapping uit de stad'
+      },
+      {
+        id: 'marine',
+        title: 'Wereldklasse Zeeavonturen',
+        content: 'Duik in bloeiende riffen vol met meer dan 1.200 vissoorten, stierenhaaien, hamerhaaien, manta\'s, schildpadden en residente dolfijnen. Van juni tot november kunt u trekkende bultrugwalvissen spotten en genieten van ethisch zwemmen met wilde dolfijnen. Beschermd door het UNESCO Nationaal Park zijn deze ervaringen duurzaam en minder druk dan andere locaties.',
+        extra: 'Verken de onderwaterwereld met duiklocaties van 10m bij Crèche tot 47m bij Atlantis, of probeer snorkelen, surfen en vissen op barracuda\'s en horsmakrelen.',
+        highlight: 'Meer dan 1.200 vissoorten'
+      },
+      {
+        id: 'wildlife',
+        title: 'Nabijheid van Iconische Wildreservaten',
+        content: 'Ponta do Ouro is de perfecte uitvalsbasis voor "bush-to-beach" uitstapjes, met gemakkelijke toegang tot Zuid-Afrikaanse reservaten zoals Kruger Nationaal Park (4-5 uur), Tembe Olifantenpark (2 uur), Hluhluwe-iMfolozi (3-4 uur) en iSimangaliso Wetland Park (UNESCO, 3 uur). Spot de Big Five, olifanten met grote slagtanden en meer dan 526 vogelsoorten.',
+        extra: 'Lokaal biedt Maputo Nationaal Park — op slechts 30 km afstand, vaak omschreven als "Waar de Okavango de Indische Oceaan ontmoet" — een adembenemend mozaïek van savannes, duinen en mangroves. Er is een goede kans om grote kuddes olifanten, nijlpaarden, giraffen, zebra\'s, blauwe gnoes en verschillende antilopen zoals nyala, koedoe en rooibok te observeren.',
+        highlight: 'Bush-to-beach uitstapjes'
+      },
+      {
+        id: 'culture',
+        title: 'Culturele en Panoramische Reizen',
+        content: 'Waag u naar eSwatini (3-4 uur) voor wandelingen in het Mantenga Natuurreservaat en traditionele Swazi culturele voorstellingen (Sibhaca-dansen, immaterieel UNESCO-erfgoed). Verken de Panoramaroute (5-6 uur) voor de Blyde River Canyon en watervallen, of bezoek Jane Goodall\'s Chimp Eden-heiligdom (5 uur) voor ethische ontmoetingen met wilde dieren.',
+        highlight: 'Immaterieel UNESCO-erfgoed'
+      },
+      {
+        id: 'charm',
+        title: 'Authentieke Mozambikaanse Charme',
+        content: 'Beleef ruwe oceaanavonturen, rijke lokale cultuur en eigenzinnige bars in een niet-gecommercialiseerde omgeving. Ponta do Ouro staat voor authenticiteit — van levendige markten tot meeslepende muziek — waardoor het ideaal is voor betekenisvolle uitstapjes.',
+        highlight: 'Niet-gecommercialiseerde authenticiteit'
+      }
+    ],
+    ctaTitle: 'Klaar om het Paradijs te Ervaren?',
+    ctaDescription: 'Verblijf in DEVOCEAN Lodge en ontdek waarom Ponta do Ouro uw ultieme Mozambikaanse bestemming is. Milieuvriendelijk comfort te midden van deze wonderen wacht op u.',
+    ctaAccommodations: 'Bekijk Onze Accommodaties',
+    ctaBookNow: 'Boek Nu',
+    backToHome: 'Terug naar Home',
+    locationLabel: 'Zuid-Mozambique'
   }
 };
 
