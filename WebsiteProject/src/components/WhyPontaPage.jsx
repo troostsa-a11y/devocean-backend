@@ -166,7 +166,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
             <p className="text-lg text-slate-700 leading-relaxed">
               Welcome to Ponta do Ouro, the gateway to Mozambique's first natural UNESCO World Heritage Site—Maputo National Park. 
               This coastal paradise offers an unbeatable blend of relaxation, eco-tourism, and cultural immersion. 
-              Whether you're seeking thrilling dives, serene gardens like those at DEVOCEAN Eco Lodge, or day trips to nearby wonders, 
+              Whether you're seeking thrilling dives, serene gardens like those at DEVOCEAN Lodge, or day trips to nearby wonders, 
               here's why this destination should be on your travel list.
             </p>
           </div>
@@ -224,7 +224,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
               Ready to Experience Paradise?
             </h2>
             <p className="text-white/90 text-lg max-w-2xl mx-auto mb-8">
-              Stay at DEVOCEAN Eco Lodge and discover why Ponta do Ouro is your ultimate Mozambican destination. 
+              Stay at DEVOCEAN Lodge and discover why Ponta do Ouro is your ultimate Mozambican destination. 
               Eco-friendly comfort amidst these wonders awaits you.
             </p>
             
