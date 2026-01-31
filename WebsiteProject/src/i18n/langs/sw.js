@@ -2,7 +2,7 @@ export const UI = {
   menu: "Menyu",
   regions: { europe: "Ulaya", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
   nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
-  hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji.", ctaPrimary: "Weka nafasi ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi yanayofaa na mazingira yaliyo umbali wa mita chache kutoka ufukweni wa Ponta do Ouro, Kusini mwa Msumbiji.", ctaPrimary: "Weka nafasi ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni", whyPonta: "Kwa nini Ponta do Ouro?" },
   stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },
   experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:" },
   todo: {

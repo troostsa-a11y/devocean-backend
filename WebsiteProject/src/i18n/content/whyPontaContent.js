@@ -715,6 +715,57 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Bhukha Manje',
     backToHome: 'Buyela Ekhaya',
     locationLabel: 'INingizimu yeMozambique'
+  },
+  sw: {
+    pageTitle: 'Kwa nini Ponta do Ouro? | DEVOCEAN Lodge - Msumbiji',
+    metaDescription: 'Gundua kwa nini Ponta do Ouro ni paradiso kuu ya Kimsumbiji. Fukwe safi, kupiga mbizi za kiwango cha ulimwengu, hifadhi za wanyamapori na utamaduni halisi wa eneo unakusubiri katika DEVOCEAN Lodge.',
+    ogTitle: 'Kwa nini Ponta do Ouro? | DEVOCEAN Lodge',
+    ogDescription: 'Gundua kwa nini Ponta do Ouro ni paradiso kuu ya Kimsumbiji. Fukwe safi, kupiga mbizi za kiwango cha ulimwengu, hifadhi za wanyamapori na utamaduni halisi wa eneo unakusubiri.',
+    heroSubtitle: 'Johari iliyofichwa ambapo fukwe safi zinakutana na maisha ya baharini yenye nguvu na matukio yasiyo na mwisho',
+    heroTitle: 'Kwa nini Ponta do Ouro?',
+    badgeLabel: 'Mlango wa Hifadhi ya Taifa ya Maputo',
+    imageAlt: 'Ufukwe wa Ponta do Ouro',
+    introText: 'Karibu Ponta do Ouro, mlango wa eneo la kwanza la Urithi wa Asili wa UNESCO nchini Msumbiji — Hifadhi ya Taifa ya Maputo. Paradiso hii ya pwani inatoa mchanganyiko usio na kifani wa utulivu, utalii wa kiikolojia na kuzama katika utamaduni. Iwe unatafuta kupiga mbizi za kusisimua, bustani tulivu kama zile za DEVOCEAN Lodge, au safari za siku kuelekea maajabu ya karibu, hapa utagundua kwa nini marudio haya yanapaswa kuwa kwenye orodha yako ya safari.',
+    sections: [
+      {
+        id: 'beaches',
+        title: 'Fukwe Zenye Kupendeza na Uzuri wa Pwani',
+        content: 'Ponta do Ouro inajivunia fukwe zenye mandhari nzuri zilizozungukwa na miti ya casuarina, vilima vya mchanga na maji safi — kamilifu kwa kupumzika au kutembea pwani. Fukwe kuu ni safi, tulivu na nzuri sana, ikitoa ukombozi wa kweli kutoka mjini. Tofauti na maeneo yenye msongamano zaidi, uzuri wa asili wa Ponta unakukaribisha kupunguza kasi na kuunganisha tena na asili.',
+        highlight: 'Ukombozi wa kweli kutoka mjini'
+      },
+      {
+        id: 'marine',
+        title: 'Matukio ya Baharini ya Kiwango cha Ulimwengu',
+        content: 'Piga mbizi katika miamba hai yenye zaidi ya spishi 1,200 za samaki, papa wa ng\'ombe, papa wa nyundo, manta, kasa na pomboo wa kudumu. Kuanzia Juni hadi Novemba, unaweza kuona nyangumi wa humpback wanaohama na kufurahia kuogelea na pomboo wa porini kwa kimaadili. Zilizolindwa na Hifadhi ya Taifa ya UNESCO, uzoefu huu ni endelevu na hauna msongamano kama maeneo mengine.',
+        extra: 'Chunguza ulimwengu wa chini ya maji na maeneo ya kupiga mbizi kutoka 10m katika Crèche hadi 47m katika Atlantis, au jaribu kuogelea na snorkel, kusurfu na kuvua barracuda na jackfish.',
+        highlight: 'Zaidi ya spishi 1,200 za samaki'
+      },
+      {
+        id: 'wildlife',
+        title: 'Karibu na Hifadhi Maarufu za Wanyamapori',
+        content: 'Ponta do Ouro ni kituo bora kwa safari za "msitu hadi fukwe", na ufikiaji rahisi wa hifadhi za Afrika Kusini kama Hifadhi ya Taifa ya Kruger (masaa 4-5), Hifadhi ya Tembe ya Tembo (masaa 2), Hluhluwe-iMfolozi (masaa 3-4) na Hifadhi ya iSimangaliso Wetland (UNESCO, masaa 3). Ona Watano Wakubwa, tembo wenye meno makubwa na zaidi ya spishi 526 za ndege.',
+        extra: 'Ndani ya eneo, Hifadhi ya Taifa ya Maputo — kilomita 30 tu mbali, mara nyingi huelezewa kama "Mahali ambapo Okavango inakutana na Bahari ya Hindi" — inatoa mchanganyiko wa ajabu wa savanna, vilima na mikoko. Kuna nafasi nzuri ya kuona makundi makubwa ya tembo, viboko, twiga, pundamilia, nyumbu wa bluu na aina mbalimbali za swala kama nyala, kudu na impala.',
+        highlight: 'Safari za msitu hadi fukwe'
+      },
+      {
+        id: 'culture',
+        title: 'Safari za Kitamaduni na Mandhari',
+        content: 'Elekea eSwatini (masaa 3-4) kwa matembezi katika Hifadhi ya Asili ya Mantenga na maonyesho ya kitamaduni ya Kiswazi (ngoma za Sibhaca, urithi usio na umbo wa UNESCO). Chunguza Njia ya Panorama (masaa 5-6) kwa Korongo la Mto Blyde na maporomoko ya maji, au tembelea Hifadhi ya Chimp Eden ya Jane Goodall (masaa 5) kwa mikutano ya kimaadili na wanyamapori.',
+        highlight: 'Urithi usio na umbo wa UNESCO'
+      },
+      {
+        id: 'charm',
+        title: 'Mvuto Halisi wa Kimsumbiji',
+        content: 'Pata matukio ya baharini yasiyochakatwa, utamaduni tajiri wa eneo na baa za kipekee katika mazingira yasiyo na biashara. Ponta do Ouro inawakilisha uhalisi — kutoka masoko hai hadi muziki unaovutia — na kuifanya kuwa bora kwa safari zenye maana.',
+        highlight: 'Uhalisi usio na biashara'
+      }
+    ],
+    ctaTitle: 'Uko Tayari Kupata Paradiso?',
+    ctaDescription: 'Kaa katika DEVOCEAN Lodge na ugundue kwa nini Ponta do Ouro ni marudio yako ya mwisho ya Kimsumbiji. Raha inayofaa mazingira kati ya maajabu haya inakusubiri.',
+    ctaAccommodations: 'Angalia Malazi Yetu',
+    ctaBookNow: 'Weka Nafasi Sasa',
+    backToHome: 'Rudi Nyumbani',
+    locationLabel: 'Kusini mwa Msumbiji'
   }
 };
 
