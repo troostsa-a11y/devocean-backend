@@ -154,6 +154,57 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Réservez Votre Séjour',
     backToHome: 'Retour à l\'Accueil',
     locationLabel: 'Sud du Mozambique'
+  },
+  de: {
+    pageTitle: 'Warum Ponta do Ouro? | DEVOCEAN Lodge - Mosambik',
+    metaDescription: 'Entdecken Sie, warum Ponta do Ouro das ultimative mosambikanische Paradies ist. Unberührte Strände, Weltklasse-Tauchen, Wildreservate und authentische lokale Kultur erwarten Sie in der DEVOCEAN Lodge.',
+    ogTitle: 'Warum Ponta do Ouro? | DEVOCEAN Lodge',
+    ogDescription: 'Entdecken Sie, warum Ponta do Ouro das ultimative mosambikanische Paradies ist. Unberührte Strände, Weltklasse-Tauchen, Wildreservate und authentische lokale Kultur erwarten Sie.',
+    heroSubtitle: 'Ein verstecktes Juwel, wo unberührte Strände auf lebendiges Meeresleben und endlose Abenteuer treffen',
+    heroTitle: 'Warum Ponta do Ouro?',
+    badgeLabel: 'Tor zum Maputo-Nationalpark',
+    imageAlt: 'Küste von Ponta do Ouro',
+    introText: 'Willkommen in Ponta do Ouro, dem Tor zu Mosambiks erstem natürlichen UNESCO-Weltkulturerbe — dem Maputo-Nationalpark. Dieses Küstenparadies bietet eine unschlagbare Mischung aus Entspannung, Ökotourismus und kulturellem Eintauchen. Ob Sie aufregende Tauchgänge, ruhige Gärten wie die der DEVOCEAN Lodge oder Ausflüge zu nahen Wundern suchen — hier erfahren Sie, warum dieses Reiseziel auf Ihrer Liste stehen sollte.',
+    sections: [
+      {
+        id: 'beaches',
+        title: 'Atemberaubende Strände und Küstenschönheit',
+        content: 'Ponta do Ouro bietet malerische Strände, umgeben von Kasuarinen, Sanddünen und kristallklarem Wasser — perfekt zum Entspannen oder für Strandspaziergänge. Der Hauptstrand ist unberührt, friedlich und unglaublich schön und bietet eine echte Flucht aus der Stadt. Im Gegensatz zu überfüllteren Orten lädt die rohe, ungefilterte Schönheit von Ponta Sie ein, langsamer zu werden und sich mit der Natur zu verbinden.',
+        highlight: 'Eine echte Flucht aus der Stadt'
+      },
+      {
+        id: 'marine',
+        title: 'Meeresabenteuer der Weltklasse',
+        content: 'Tauchen Sie in blühende Riffe voller über 1.200 Fischarten, Bullenhaie, Hammerhaie, Mantas, Schildkröten und ansässige Delfine ein. Von Juni bis November können Sie wandernde Buckelwale beobachten und ethisches Schwimmen mit wilden Delfinen genießen. Geschützt durch den UNESCO-Nationalpark sind diese Erlebnisse nachhaltig und weniger überfüllt als andere Orte.',
+        extra: 'Erkunden Sie die Unterwasserwelt mit Tauchplätzen von 10m bei Crèche bis 47m bei Atlantis, oder probieren Sie Schnorcheln, Surfen und Angeln auf Barrakudas und Stachelmakrelen.',
+        highlight: 'Über 1.200 Fischarten'
+      },
+      {
+        id: 'wildlife',
+        title: 'Nähe zu ikonischen Wildreservaten',
+        content: 'Ponta do Ouro ist die perfekte Basis für „Bush-to-Beach"-Ausflüge mit einfachem Zugang zu südafrikanischen Reservaten wie dem Krüger-Nationalpark (4-5 Stunden), dem Tembe-Elefantenpark (2 Stunden), Hluhluwe-iMfolozi (3-4 Stunden) und dem iSimangaliso-Feuchtgebietpark (UNESCO, 3 Stunden). Beobachten Sie die Big Five, Elefanten mit großen Stoßzähnen und über 526 Vogelarten.',
+        extra: 'Lokal bietet der Maputo-Nationalpark — nur 30 km entfernt, oft als „Wo der Okavango auf den Indischen Ozean trifft" beschrieben — ein atemberaubendes Mosaik aus Savannen, Dünen und Mangroven. Es gibt gute Chancen, große Herden von Elefanten, Flusspferden, Giraffen, Zebras, Streifengnus und verschiedenen Antilopen wie Nyala, Kudu und Rotducker zu beobachten.',
+        highlight: 'Bush-to-Beach-Ausflüge'
+      },
+      {
+        id: 'culture',
+        title: 'Kulturelle und Panorama-Reisen',
+        content: 'Unternehmen Sie einen Ausflug nach eSwatini (3-4 Stunden) für Wanderungen im Mantenga-Naturreservat und traditionelle Swazi-Kulturaufführungen (Sibhaca-Tänze, immaterielles UNESCO-Erbe). Erkunden Sie die Panorama-Route (5-6 Stunden) zum Blyde River Canyon und den Wasserfällen, oder besuchen Sie Jane Goodalls Chimp Eden-Schutzgebiet (5 Stunden) für ethische Begegnungen mit Wildtieren.',
+        highlight: 'Immaterielles UNESCO-Erbe'
+      },
+      {
+        id: 'charm',
+        title: 'Authentischer mosambikanischer Charme',
+        content: 'Erleben Sie unverfälschte Ozean-Abenteuer, reiche lokale Kultur und urige Bars in einer nicht-kommerzialisierten Umgebung. Ponta do Ouro steht für Authentizität — von lebhaften Märkten bis hin zu mitreißender Musik — und ist ideal für bedeutungsvolle Auszeiten.',
+        highlight: 'Nicht-kommerzialisierte Authentizität'
+      }
+    ],
+    ctaTitle: 'Bereit, das Paradies zu erleben?',
+    ctaDescription: 'Übernachten Sie in der DEVOCEAN Lodge und entdecken Sie, warum Ponta do Ouro Ihr ultimatives mosambikanisches Reiseziel ist. Umweltfreundlicher Komfort inmitten dieser Wunder erwartet Sie.',
+    ctaAccommodations: 'Unsere Unterkünfte ansehen',
+    ctaBookNow: 'Jetzt buchen',
+    backToHome: 'Zurück zur Startseite',
+    locationLabel: 'Südmosambik'
   }
 };
 
