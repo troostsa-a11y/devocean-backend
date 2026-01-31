@@ -119,7 +119,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               data-testid="link-why-ponta"
             >
               <MapPin className="w-5 h-5" />
-              <span>Why Ponta do Ouro?</span>
+              <span>{ui.hero.whyPonta || "Why Ponta do Ouro?"}</span>
             </Link>
             
             {/* Explore Lodge */}
