@@ -3,7 +3,7 @@ export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
     experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:" },
     todo: {
