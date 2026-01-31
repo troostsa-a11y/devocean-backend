@@ -3,7 +3,7 @@ export const UI = {
 menu: "菜单",
     regions: { europe: "欧洲", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值", whyPonta: "为什么选择蓬塔多奥罗？" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
     experiences: { headline: "体验", blurb: "海洋与森林冒险就在您家门口。", operators: "值得信赖的本地运营商：" },
     todo: {
@@ -74,7 +74,7 @@ export const L10N = {
 menu: "菜单",
     regions: { europe: "欧洲", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "莫桑比克南部蓬塔多奥罗海滩数百米处的环保住宿。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值", whyPonta: "为什么选择蓬塔多奥罗？" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
     experiences: { headline: "体验", blurb: "海洋与森林冒险就在您家门口。", operators: "值得信赖的本地运营商：" },
     units: {
