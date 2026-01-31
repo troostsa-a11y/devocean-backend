@@ -362,6 +362,32 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                 </section>
               )}
 
+              {/* Park Brochure Download (for safari only) */}
+              {exp.brochure && (
+                <section data-testid="brochure-section">
+                  <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-6">
+                    {exp.brochure.title}
+                  </h2>
+                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 border border-green-200 shadow-sm">
+                    <p className="text-slate-700 mb-4">{exp.brochure.description}</p>
+                    <a
+                      href={['pt', 'pt-PT', 'pt-BR'].includes(lang) ? '/downloads/maputo-national-park-brochure-pt.pdf' : '/downloads/maputo-national-park-brochure-en.pdf'}
+                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                      data-testid="brochure-download-link"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                      </svg>
+                      {exp.brochure.downloadText}
+                      <span className="text-green-200 text-sm ml-1">({exp.brochure.fileSize})</span>
+                    </a>
+                  </div>
+                </section>
+              )}
+
               {/* Target Species (for fishing only) */}
               {exp.targetSpecies && (
                 <section>

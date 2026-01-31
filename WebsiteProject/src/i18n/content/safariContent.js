@@ -91,7 +91,13 @@ export const SAFARI_CONTENT = {
       { species: "Antelopes", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Predators", details: "Leopard, cheetah, spotted hyena (reintroduced 2023-24)" },
       { species: "Birds", details: "300+ species - flamingos, wading birds, raptors" }
-    ]
+    ],
+    brochure: {
+      title: "Official Park Brochure",
+      description: "Download the official Maputo National Park brochure with detailed maps, entry fees, and visitor information.",
+      downloadText: "Download PDF Brochure",
+      fileSize: "7.3 MB"
+    }
   },
 
   'pt-BR': {
@@ -183,7 +189,13 @@ export const SAFARI_CONTENT = {
       { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
       { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
       { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
-    ]
+    ],
+    brochure: {
+      title: "Brochura Oficial do Parque",
+      description: "Baixe a brochura oficial do Parque Nacional de Maputo com mapas detalhados, taxas de entrada e informações para visitantes.",
+      downloadText: "Baixar Brochura PDF",
+      fileSize: "10.1 MB"
+    }
   },
 
   'pt-PT': {
@@ -275,7 +287,13 @@ export const SAFARI_CONTENT = {
       { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
       { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
       { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
-    ]
+    ],
+    brochure: {
+      title: "Brochura Oficial do Parque",
+      description: "Descarregue a brochura oficial do Parque Nacional de Maputo com mapas detalhados, taxas de entrada e informações para visitantes.",
+      downloadText: "Descarregar Brochura PDF",
+      fileSize: "10.1 MB"
+    }
   },
 
   it: {
@@ -367,7 +385,13 @@ export const SAFARI_CONTENT = {
       { species: "Antilopi", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Predatori", details: "Leopardo, ghepardo, iena maculata (reintrodotti 2023-24)" },
       { species: "Uccelli", details: "300+ specie - fenicotteri, uccelli acquatici, rapaci" }
-    ]
+    ],
+    brochure: {
+      title: "Brochure Ufficiale del Parco",
+      description: "Scarica la brochure ufficiale del Parco Nazionale di Maputo con mappe dettagliate, tariffe d'ingresso e informazioni per i visitatori.",
+      downloadText: "Scarica Brochure PDF",
+      fileSize: "7.3 MB"
+    }
   },
 
   pl: {
@@ -459,7 +483,13 @@ export const SAFARI_CONTENT = {
       { species: "Antylopy", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Drapieżniki", details: "Lampart, gepard, hiena cętkowana (reintrodukowane 2023-24)" },
       { species: "Ptaki", details: "300+ gatunków - flamingi, ptaki wodne, drapieżne" }
-    ]
+    ],
+    brochure: {
+      title: "Oficjalna Broszura Parku",
+      description: "Pobierz oficjalną broszurę Parku Narodowego Maputo ze szczegółowymi mapami, cenami wstępu i informacjami dla odwiedzających.",
+      downloadText: "Pobierz Broszurę PDF",
+      fileSize: "7.3 MB"
+    }
   },
 
   ru: {
@@ -551,7 +581,13 @@ export const SAFARI_CONTENT = {
       { species: "Антилопы", details: "Тростниковая антилопа, импала, ньяла, канна, куду, водяной козёл, красный дукер" },
       { species: "Хищники", details: "Леопард, гепард, пятнистая гиена (реинтродуцированы 2023-24)" },
       { species: "Птицы", details: "300+ видов - фламинго, водоплавающие птицы, хищные птицы" }
-    ]
+    ],
+    brochure: {
+      title: "Официальная Брошюра Парка",
+      description: "Скачайте официальную брошюру Национального парка Мапуту с подробными картами, ценами на вход и информацией для посетителей.",
+      downloadText: "Скачать PDF Брошюру",
+      fileSize: "7.3 MB"
+    }
   },
 
   ja: {
@@ -643,7 +679,13 @@ export const SAFARI_CONTENT = {
       { species: "アンテロープ", details: "リードバック、インパラ、ニャラ、エランド、クドゥ、ウォーターバック、レッドダイカー" },
       { species: "捕食動物", details: "ヒョウ、チーター、ブチハイエナ（2023-24年に再導入）" },
       { species: "鳥類", details: "300種以上 - フラミンゴ、水鳥、猛禽類" }
-    ]
+    ],
+    brochure: {
+      title: "公式パークブロシュア",
+      description: "詳細な地図、入場料、訪問者情報が記載されたマプト国立公園の公式ブロシュアをダウンロードしてください。",
+      downloadText: "PDFブロシュアをダウンロード",
+      fileSize: "7.3 MB"
+    }
   },
 
   zh: {
@@ -735,7 +777,13 @@ export const SAFARI_CONTENT = {
       { species: "羚羊", details: "苇羚、黑斑羚、林羚、大羚羊、旋角羚、水羚、红色小羚羊" },
       { species: "掠食者", details: "豹、猎豹、斑点鬣狗（2023-24年重新引入）" },
       { species: "鸟类", details: "300+种 - 火烈鸟、涉禽、猛禽" }
-    ]
+    ],
+    brochure: {
+      title: "官方公园手册",
+      description: "下载马普托国家公园官方手册，包含详细地图、入场费和游客信息。",
+      downloadText: "下载PDF手册",
+      fileSize: "7.3 MB"
+    }
   },
 
   af: {
@@ -827,7 +875,13 @@ export const SAFARI_CONTENT = {
       { species: "Wildsbokke", details: "Rietbok, rooibok, njala, eland, koedoe, waterbok, rooiduiker" },
       { species: "Roofdiere", details: "Luiperd, jagluiperd, gevlekte hiëna (heringestel 2023-24)" },
       { species: "Voëls", details: "300+ spesies - flaminks, waadvöels, roofvoëls" }
-    ]
+    ],
+    brochure: {
+      title: "Amptelike Parkbrosjure",
+      description: "Laai die amptelike Maputo Nasionale Park brosjure af met gedetailleerde kaarte, toegangstariewe en besoekeinligting.",
+      downloadText: "Laai PDF Brosjure Af",
+      fileSize: "7.3 MB"
+    }
   },
 
   zu: {
@@ -919,7 +973,13 @@ export const SAFARI_CONTENT = {
       { species: "Amabhubesi", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Izilwane ezidla ezinye", details: "Ingwe, ingulule, impisi enezigqi (zafakwa kabusha ngo-2023-24)" },
       { species: "Izinyoni", details: "Izinhlobo ezingaphezu kuka-300 - flamingos, izinyoni zamanzi, izinyoni ezidla inyama" }
-    ]
+    ],
+    brochure: {
+      title: "Incwajana Esemthethweni Yepaki",
+      description: "Landa incwajana esemthethweni ye-Maputo National Park enamamephu asubileyo, izindleko zokungena kanye nolwazi lwezivakashi.",
+      downloadText: "Landa I-PDF Incwajana",
+      fileSize: "7.3 MB"
+    }
   },
 
   sw: {
@@ -1011,7 +1071,13 @@ export const SAFARI_CONTENT = {
       { species: "Swala", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Wanyama wakali", details: "Chui, duma, fisi mwenye madoa (walirudishwa 2023-24)" },
       { species: "Ndege", details: "Aina 300+ - flamingo, ndege wa majini, ndege wa kuwinda" }
-    ]
+    ],
+    brochure: {
+      title: "Brosha Rasmi ya Hifadhi",
+      description: "Pakua brosha rasmi ya Hifadhi ya Taifa ya Maputo yenye ramani za kina, ada za kuingia na habari za wageni.",
+      downloadText: "Pakua Brosha ya PDF",
+      fileSize: "7.3 MB"
+    }
   },
 
   sv: {
@@ -1103,7 +1169,13 @@ export const SAFARI_CONTENT = {
       { species: "Antiloper", details: "Vassbok, impala, nyala, eland, kudu, vattenbock, rödduiker" },
       { species: "Rovdjur", details: "Leopard, gepard, fläckig hyena (återintroducerade 2023-24)" },
       { species: "Fåglar", details: "300+ arter - flamingor, vadarfåglar, rovfåglar" }
-    ]
+    ],
+    brochure: {
+      title: "Officiell Parkbroschyr",
+      description: "Ladda ner den officiella Maputo Nationalpark-broschyren med detaljerade kartor, inträdesavgifter och besöksinformation.",
+      downloadText: "Ladda ner PDF-broschyr",
+      fileSize: "7.3 MB"
+    }
   },
 
   es: {
@@ -1195,7 +1267,13 @@ export const SAFARI_CONTENT = {
       { species: "Antílopes", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Depredadores", details: "Leopardo, guepardo, hiena manchada (reintroducidos 2023-24)" },
       { species: "Aves", details: "300+ especies - flamencos, aves zancudas, rapaces" }
-    ]
+    ],
+    brochure: {
+      title: "Folleto Oficial del Parque",
+      description: "Descarga el folleto oficial del Parque Nacional de Maputo con mapas detallados, tarifas de entrada e información para visitantes.",
+      downloadText: "Descargar Folleto PDF",
+      fileSize: "7.3 MB"
+    }
   },
 
   nl: {
@@ -1287,7 +1365,13 @@ export const SAFARI_CONTENT = {
       { species: "Antilopen", details: "Rietbok, impala, nyala, eland, koedoe, waterbok, rood duiker" },
       { species: "Roofdieren", details: "Luipaard, cheetah, gevlekte hyena (geherintroduceerd 2023-24)" },
       { species: "Vogels", details: "300+ soorten - flamingo's, waadvogels, roofvogels" }
-    ]
+    ],
+    brochure: {
+      title: "Officiële Parkbrochure",
+      description: "Download de officiële Maputo National Park-brochure met gedetailleerde kaarten, toegangsprijzen en bezoekersinformatie.",
+      downloadText: "Download PDF-brochure",
+      fileSize: "7.3 MB"
+    }
   },
 
   de: {
@@ -1379,7 +1463,13 @@ export const SAFARI_CONTENT = {
       { species: "Antilopen", details: "Riedbock, Impala, Nyala, Elenantilope, Kudu, Wasserbock, Rotducker" },
       { species: "Raubtiere", details: "Leopard, Gepard, Tüpfelhyäne (2023-24 wiedereingeführt)" },
       { species: "Vögel", details: "300+ Arten - Flamingos, Watvögel, Greifvögel" }
-    ]
+    ],
+    brochure: {
+      title: "Offizielle Parkbroschüre",
+      description: "Laden Sie die offizielle Maputo Nationalpark-Broschüre mit detaillierten Karten, Eintrittspreisen und Besucherinformationen herunter.",
+      downloadText: "PDF-Broschüre herunterladen",
+      fileSize: "7.3 MB"
+    }
   },
 
   fr: {
@@ -1471,7 +1561,13 @@ export const SAFARI_CONTENT = {
       { species: "Antilopes", details: "Cobe des roseaux, impala, nyala, éland, koudou, cobe à croissant, céphalophe rouge" },
       { species: "Prédateurs", details: "Léopard, guépard, hyène tachetée (réintroduits 2023-24)" },
       { species: "Oiseaux", details: "300+ espèces - flamants roses, échassiers, rapaces" }
-    ]
+    ],
+    brochure: {
+      title: "Brochure Officielle du Parc",
+      description: "Téléchargez la brochure officielle du Parc National de Maputo avec des cartes détaillées, les tarifs d'entrée et les informations pour les visiteurs.",
+      downloadText: "Télécharger la Brochure PDF",
+      fileSize: "7.3 MB"
+    }
   },
 
   pt: {
@@ -1563,7 +1659,13 @@ export const SAFARI_CONTENT = {
       { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
       { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
       { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
-    ]
+    ],
+    brochure: {
+      title: "Brochura Oficial do Parque",
+      description: "Descarregue a brochura oficial do Parque Nacional de Maputo com mapas detalhados, taxas de entrada e informações para visitantes.",
+      downloadText: "Descarregar Brochura PDF",
+      fileSize: "10.1 MB"
+    }
   }
 };
 
