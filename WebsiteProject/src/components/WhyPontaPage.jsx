@@ -30,7 +30,7 @@ const sections = [
   {
     id: 'culture',
     icon: Globe,
-    title: 'Cultural and Scenic Day Trips',
+    title: 'Cultural and Scenic Road Trips',
     content: `Venture to eSwatini (3-4 hours) for Mantenga Nature Reserve's hikes and traditional Swazi cultural performances (Sibhaca dances, UNESCO intangible heritage). Explore the Panorama Route (5-6 hours) for Blyde River Canyon and waterfalls, or visit Jane Goodall's Chimp Eden sanctuary (5 hours) for ethical wildlife encounters.`,
     highlight: 'UNESCO intangible heritage'
   },
