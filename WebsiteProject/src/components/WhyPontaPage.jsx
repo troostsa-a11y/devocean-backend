@@ -1,49 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { Link } from 'wouter';
 import { Waves, Fish, TreePine, Globe, Heart, ArrowRight, MapPin, Anchor } from 'lucide-react';
 import Footer from './Footer';
+import { WHY_PONTA_CONTENT } from '../i18n/content/whyPontaContent';
 
-const sections = [
-  {
-    id: 'beaches',
-    icon: Waves,
-    title: 'Stunning Beaches and Coastal Beauty',
-    content: `Ponta do Ouro boasts picturesque beaches surrounded by casuarina trees, sand dunes, and crystal-clear waters—perfect for unwinding or beach walks. The main beach is pristine, peaceful, and incredibly beautiful, offering a true escape from the city. Unlike more crowded spots, Ponta's raw, unfiltered beauty invites you to slow down and connect with nature.`,
-    highlight: 'A true escape from the city'
-  },
-  {
-    id: 'marine',
-    icon: Fish,
-    title: 'World-Class Marine Adventures',
-    content: `Dive into thriving reefs teeming with 1,200+ fish species, bull sharks, hammerheads, mantas, turtles, and resident dolphins. From June to November, spot migrating humpback whales, and enjoy ethical swims with wild dolphins. Protected by the UNESCO National Park, these experiences are sustainable and less crowded than other sites.`,
-    extra: `Explore underwater with sites from 10m at Crèche to 47m at Atlantis, or try snorkeling, surfing, and fishing for barracuda and kingfish.`,
-    highlight: '1,200+ fish species'
-  },
-  {
-    id: 'wildlife',
-    icon: TreePine,
-    title: 'Proximity to Iconic Wildlife Reserves',
-    content: `Ponta do Ouro is the perfect base for "bush-to-beach" escapes, with easy access to South African reserves like Kruger National Park (4-5 hours), Tembe Elephant Park (2 hours), Hluhluwe-iMfolozi (3-4 hours), and iSimangaliso Wetland Park (UNESCO, 3 hours). Spot the Big Five, large-tusked elephants, and over 526 bird species.`,
-    extra: `Locally, Maputo National Park— just 30 km away, often characterized as "Where the Okavango meets the Indian Ocean", showcases a stunning mosaic of savannas, dunes, and mangroves. There's a good chance of observing large herds of elephants, hippos, giraffes, zebras, blue wildebeest, and various antelope like nyala, kudu, and red duiker.`,
-    highlight: 'Bush-to-beach escapes'
-  },
-  {
-    id: 'culture',
-    icon: Globe,
-    title: 'Cultural and Scenic Road Trips',
-    content: `Venture to eSwatini (3-4 hours) for Mantenga Nature Reserve's hikes and traditional Swazi cultural performances (Sibhaca dances, UNESCO intangible heritage). Explore the Panorama Route (5-6 hours) for Blyde River Canyon and waterfalls, or visit Jane Goodall's Chimp Eden sanctuary (5 hours) for ethical wildlife encounters.`,
-    highlight: 'UNESCO intangible heritage'
-  },
-  {
-    id: 'charm',
-    icon: Heart,
-    title: 'Authentic Mozambican Charm',
-    content: `Experience raw ocean adventures, rich local culture, and quirky bars in a non-commercialized setting. Ponta do Ouro is all about authenticity—from vibrant markets to lively music—making it ideal for meaningful escapes.`,
-    highlight: 'Non-commercialized authenticity'
-  }
-];
+const sectionIcons = {
+  beaches: Waves,
+  marine: Fish,
+  wildlife: TreePine,
+  culture: Globe,
+  charm: Heart
+};
 
 export default function WhyPontaPage({ units, experiences, ui, lang, currency, bookUrl }) {
+  const content = useMemo(() => {
+    const langCode = lang?.split('-')[0] || 'en';
+    return WHY_PONTA_CONTENT[langCode] || WHY_PONTA_CONTENT.en;
+  }, [lang]);
+
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);
@@ -68,20 +42,20 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
       }
     });
 
-    document.title = 'Why Ponta do Ouro? | DEVOCEAN Lodge - Mozambique';
+    document.title = content.pageTitle;
     if (metaDescription) {
-      metaDescription.content = 'Discover why Ponta do Ouro is the ultimate Mozambican paradise. Pristine beaches, world-class diving, wildlife reserves, and authentic local culture await at DEVOCEAN Lodge.';
+      metaDescription.content = content.metaDescription;
     }
     
     const ogTags = [
-      { property: 'og:title', content: 'Why Ponta do Ouro? | DEVOCEAN Lodge' },
-      { property: 'og:description', content: 'Discover why Ponta do Ouro is the ultimate Mozambican paradise. Pristine beaches, world-class diving, wildlife reserves, and authentic local culture await.' },
+      { property: 'og:title', content: content.ogTitle },
+      { property: 'og:description', content: content.ogDescription },
       { property: 'og:image', content: 'https://devoceanlodge.com/photos/hero02.jpg' },
       { property: 'og:url', content: 'https://devoceanlodge.com/why-ponta' },
       { property: 'og:type', content: 'website' }
     ];
 
-    ogTags.forEach(({ property, content }) => {
+    ogTags.forEach(({ property, content: tagContent }) => {
       let tag = document.querySelector(`meta[property="${property}"]`);
       if (!tag) {
         tag = document.createElement('meta');
@@ -89,7 +63,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         document.head.appendChild(tag);
         createdOgTags.push(tag);
       }
-      tag.content = content;
+      tag.content = tagContent;
     });
 
     return () => {
@@ -109,7 +83,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         }
       });
     };
-  }, []);
+  }, [content]);
 
   return (
     <>
@@ -121,7 +95,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
             <source media="(min-width: 801px)" srcSet="/photos/hero02.webp" type="image/webp" />
             <img
               src="/photos/hero02.jpg"
-              alt="Ponta do Ouro coastline"
+              alt={content.imageAlt}
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -138,19 +112,19 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
                 <svg className="w-5 h-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                Back to Lodge
+                {content.backToHome}
               </Link>
               
               <div className="flex items-center gap-2 mb-3">
                 <MapPin className="w-5 h-5 text-white/80" />
-                <span className="text-white/80 text-sm">Southern Mozambique</span>
+                <span className="text-white/80 text-sm">{content.locationLabel}</span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                Why Ponta do Ouro?
+                {content.heroTitle}
               </h1>
               <p className="text-xl md:text-2xl text-white/90 max-w-3xl">
-                A hidden gem where pristine beaches meet vibrant marine life and endless adventures
+                {content.heroSubtitle}
               </p>
             </div>
           </div>
@@ -161,20 +135,17 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
           <div className="max-w-3xl mx-auto text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#9e4b13]/10 rounded-full mb-6">
               <Anchor className="w-5 h-5 text-[#9e4b13]" />
-              <span className="text-[#9e4b13] font-medium">Gateway to Maputo National Park</span>
+              <span className="text-[#9e4b13] font-medium">{content.badgeLabel}</span>
             </div>
             <p className="text-lg text-slate-700 leading-relaxed">
-              Welcome to Ponta do Ouro, the gateway to Mozambique's first natural UNESCO World Heritage Site—Maputo National Park. 
-              This coastal paradise offers an unbeatable blend of relaxation, eco-tourism, and cultural immersion. 
-              Whether you're seeking thrilling dives, serene gardens like those at DEVOCEAN Lodge, or day trips to nearby wonders, 
-              here's why this destination should be on your travel list.
+              {content.introText}
             </p>
           </div>
 
           {/* Content Sections */}
           <div className="space-y-16" data-testid="why-ponta-sections">
-            {sections.map((section, index) => {
-              const Icon = section.icon;
+            {content.sections.map((section, index) => {
+              const Icon = sectionIcons[section.id];
               const isEven = index % 2 === 0;
               
               return (
@@ -221,11 +192,10 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
           {/* CTA Section */}
           <div className="mt-20 bg-gradient-to-br from-[#9e4b13] to-[#7a3a0f] rounded-3xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Experience Paradise?
+              {content.ctaTitle}
             </h2>
             <p className="text-white/90 text-lg max-w-2xl mx-auto mb-8">
-              Stay at DEVOCEAN Lodge and discover why Ponta do Ouro is your ultimate Mozambican destination. 
-              Eco-friendly comfort amidst these wonders awaits you.
+              {content.ctaDescription}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -234,7 +204,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#9e4b13] font-bold rounded-xl hover:bg-white/90 transition-colors shadow-lg"
                 data-testid="link-explore-lodge"
               >
-                Explore the Lodge
+                {content.ctaAccommodations}
                 <ArrowRight className="w-5 h-5" />
               </Link>
               
@@ -245,7 +215,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/20 text-white font-bold rounded-xl border-2 border-white/30 hover:bg-white/30 transition-colors"
                 data-testid="link-book-now"
               >
-                Book Now
+                {content.ctaBookNow}
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
