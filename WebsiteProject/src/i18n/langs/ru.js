@@ -2,7 +2,7 @@ export const UI = {
   menu: "Меню",
   regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
   nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
-  hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
+  hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями", whyPonta: "Почему Ponta do Ouro?" },
   stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
   experiences: { headline: "Впечатления", blurb: "Приключения на море и в лесу прямо у вашего порога.", operators: "Надежные местные операторы:" },
   todo: {
