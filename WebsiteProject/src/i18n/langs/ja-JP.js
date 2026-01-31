@@ -3,7 +3,7 @@ export const UI = {
 menu: "メニュー",
     regions: { europe: "ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", whyPonta: "なぜPonta do Ouro？" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
     experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
     units: {
@@ -113,7 +113,7 @@ menu: "メニュー",
 
 export const L10N = {
 nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", whyPonta: "なぜPonta do Ouro？" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
     experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
     units: {
