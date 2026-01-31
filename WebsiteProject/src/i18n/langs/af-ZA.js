@@ -3,7 +3,7 @@ export const UI = {
 menu: "Kieslys",
     regions: { europe: "Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
     nav: { home: "Tuis", stay: "Verblyf", experiences: "Ervarings", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eko-vriendelike verblyf 'n paar honderd meter vanaf die strand in Ponta do Ouro, Suid-Mosambiek.", ctaPrimary: "Bespreek jou verblyf", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eko-vriendelike verblyf 'n paar honderd meter vanaf die strand in Ponta do Ouro, Suid-Mosambiek.", ctaPrimary: "Bespreek jou verblyf", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste", whyPonta: "Hoekom Ponta do Ouro?" },
     stay: { headline: "Bly by ons", blurb: "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid.", moreDetails: "Meer besonderhede", ourStory: "Ons Storie" },
     experiences: { headline: "Ervarings", blurb: "See- en bosavonture reg voor jou deur.", operators: "Betroubare plaaslike operateurs:" },
     todo: {
