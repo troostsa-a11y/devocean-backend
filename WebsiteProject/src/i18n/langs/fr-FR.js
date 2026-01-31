@@ -17,7 +17,8 @@ menu: "Menu",
         "Hébergements écoresponsables à quelques centaines de mètres de la plage à Ponta do Ouro, sud du Mozambique.",
       ctaPrimary: "Réservez votre séjour",
       ctaSecondary: "Découvrir le lodge",
-      badge: "Confort & rapport qualité-prix plébiscités"
+      badge: "Confort & rapport qualité-prix plébiscités",
+      whyPonta: "Pourquoi Ponta do Ouro ?"
     },
     stay: {
       headline: "Séjournez chez nous",
