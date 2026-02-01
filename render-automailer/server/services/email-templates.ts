@@ -28,6 +28,7 @@ const formatDate = (date: Date | string, language: string = 'EN'): string => {
     ES: 'es-ES',
     IT: 'it-IT',
     NL: 'nl-NL',
+    CS: 'cs-CZ',
   };
 
   return d.toLocaleDateString(locales[language] || 'en-GB', options);
@@ -156,6 +157,65 @@ const getPostBookingTemplate = (language: string, data: any): EmailTemplate => {
         </html>
       `,
     },
+    CS: {
+      subject: `Potvrzení rezervace - DEVOCEAN Lodge (Ref: ${data.groupRef})`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+            .header { background: #0077BE; color: white; padding: 20px; text-align: center; }
+            .content { padding: 20px; background: #f9f9f9; }
+            .booking-details { background: white; padding: 15px; margin: 15px 0; border-left: 4px solid #0077BE; }
+            .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }
+            .button { display: inline-block; padding: 12px 24px; background: #0077BE; color: white; text-decoration: none; border-radius: 4px; margin: 10px 0; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>🌊 DEVOCEAN Lodge</h1>
+            <p>Váš ekologický plážový únik v Ponta do Ouro</p>
+          </div>
+          
+          <div class="content">
+            <h2>Vážený/á ${data.firstName},</h2>
+            
+            <p>Děkujeme, že jste si vybrali DEVOCEAN Lodge! S radostí potvrzujeme vaši rezervaci.</p>
+            
+            <div class="booking-details">
+              <h3>Detaily rezervace</h3>
+              <p><strong>Číslo rezervace:</strong> ${data.groupRef}</p>
+              <p><strong>Check-in:</strong> ${formatDate(data.checkInDate, language)}</p>
+              <p><strong>Check-out:</strong> ${formatDate(data.checkOutDate, language)}</p>
+            </div>
+            
+            <p><strong>Co bude následovat:</strong></p>
+            <ul>
+              <li>7 dní před příjezdem obdržíte e-mail s důležitými informacemi</li>
+              <li>Náš tým je připraven odpovědět na jakékoliv dotazy</li>
+              <li>Začněte plánovat své plážové dobrodružství!</li>
+            </ul>
+            
+            <p style="text-align: center;">
+              <a href="https://www.devoceanlodge.com" class="button">Navštivte naše webové stránky</a>
+            </p>
+            
+            <p>Těšíme se, že vás přivítáme v ráji!</p>
+            
+            <p>S pozdravem,<br>
+            Tým DEVOCEAN Lodge</p>
+          </div>
+          
+          <div class="footer">
+            <p>DEVOCEAN Lodge | Ponta do Ouro, Mosambik</p>
+            <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+          </div>
+        </body>
+        </html>
+      `,
+    },
   };
 
   return templates[language] || templates.EN;
@@ -233,6 +293,73 @@ const getPreArrivalTemplate = (language: string, data: any): EmailTemplate => {
         </html>
       `,
     },
+    CS: {
+      subject: `Ještě týden do ráje - DEVOCEAN Lodge (Ref: ${data.groupRef})`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+            .header { background: #0077BE; color: white; padding: 20px; text-align: center; }
+            .content { padding: 20px; background: #f9f9f9; }
+            .info-box { background: white; padding: 15px; margin: 15px 0; border-left: 4px solid #F4A460; }
+            .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>🌊 Vaše DEVOCEAN dobrodružství čeká!</h1>
+          </div>
+          
+          <div class="content">
+            <h2>Vážený/á ${data.firstName},</h2>
+            
+            <p>Už jen týden do vašeho plážového úniku! Těšíme se, že vás přivítáme v DEVOCEAN Lodge.</p>
+            
+            <div class="info-box">
+              <h3>📍 Jak se k nám dostat</h3>
+              <p><strong>Adresa:</strong> Ponta do Ouro, Mosambik</p>
+              <p><strong>Check-in:</strong> ${formatDate(data.checkInDate, language)} od 14:00</p>
+              <p><strong>Check-out:</strong> ${formatDate(data.checkOutDate, language)} do 10:00</p>
+            </div>
+            
+            <div class="info-box">
+              <h3>🎒 Co si zabalit</h3>
+              <ul>
+                <li>Plavky a plážové potřeby</li>
+                <li>Ochrana proti slunci (klobouk, opalovací krém)</li>
+                <li>Lehké, pohodlné oblečení</li>
+                <li>Opalovací krém bezpečný pro korály na šnorchlování</li>
+                <li>Fotoaparát na neuvěřitelné západy slunce!</li>
+              </ul>
+            </div>
+            
+            <div class="info-box">
+              <h3>🌊 Aktivity a zážitky</h3>
+              <ul>
+                <li>Pozorování delfínů</li>
+                <li>Šnorchlování a potápění</li>
+                <li>Procházky po pláži a relaxace</li>
+                <li>Místní gastronomické zážitky</li>
+              </ul>
+            </div>
+            
+            <p>Pokud máte před příjezdem jakékoliv dotazy, neváhejte se ozvat!</p>
+            
+            <p>Brzy na viděnou!<br>
+            Tým DEVOCEAN Lodge</p>
+          </div>
+          
+          <div class="footer">
+            <p>DEVOCEAN Lodge | Ponta do Ouro, Mosambik</p>
+            <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+          </div>
+        </body>
+        </html>
+      `,
+    },
   };
 
   return templates[language] || templates.EN;
@@ -291,6 +418,60 @@ const getArrivalTemplate = (language: string, data: any): EmailTemplate => {
           
           <div class="footer">
             <p>DEVOCEAN Lodge | Ponta do Ouro, Mozambique</p>
+            <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+          </div>
+        </body>
+        </html>
+      `,
+    },
+    CS: {
+      subject: `Už jste skoro tady! Poslední detaily - DEVOCEAN Lodge (Ref: ${data.groupRef})`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+            .header { background: #0077BE; color: white; padding: 20px; text-align: center; }
+            .content { padding: 20px; background: #f9f9f9; }
+            .important { background: #FFF3CD; padding: 15px; margin: 15px 0; border-left: 4px solid #FFC107; }
+            .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>🎉 Ráj je na dosah!</h1>
+          </div>
+          
+          <div class="content">
+            <h2>Ahoj ${data.firstName},</h2>
+            
+            <p>Vaše DEVOCEAN dobrodružství začíná už za 2 dny! Zde jsou poslední detaily:</p>
+            
+            <div class="important">
+              <h3>⏰ Detaily check-in</h3>
+              <p><strong>Datum:</strong> ${formatDate(data.checkInDate, language)}</p>
+              <p><strong>Čas:</strong> Od 14:00</p>
+              <p><strong>Číslo rezervace:</strong> ${data.groupRef}</p>
+            </div>
+            
+            <div class="important">
+              <h3>📱 Kontaktní informace</h3>
+              <p><strong>Email:</strong> info@devoceanlodge.com</p>
+              <p><strong>Nouzový kontakt:</strong> K dispozici při příjezdu</p>
+            </div>
+            
+            <p><strong>Tip na cestu:</strong> Počítejte prosím s delším časem na hraničním přechodu, pokud cestujete z Jihoafrické republiky.</p>
+            
+            <p>Šťastnou cestu a brzy na viděnou!</p>
+            
+            <p>S přáním všeho dobrého,<br>
+            Tým DEVOCEAN Lodge</p>
+          </div>
+          
+          <div class="footer">
+            <p>DEVOCEAN Lodge | Ponta do Ouro, Mosambik</p>
             <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
           </div>
         </body>
@@ -364,6 +545,69 @@ const getPostDepartureTemplate = (language: string, data: any): EmailTemplate =>
           
           <div class="footer">
             <p>DEVOCEAN Lodge | Ponta do Ouro, Mozambique</p>
+            <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
+          </div>
+        </body>
+        </html>
+      `,
+    },
+    CS: {
+      subject: `Děkujeme za váš pobyt - DEVOCEAN Lodge`,
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; }
+            .header { background: #0077BE; color: white; padding: 20px; text-align: center; }
+            .content { padding: 20px; background: #f9f9f9; }
+            .highlight { background: white; padding: 15px; margin: 15px 0; border-left: 4px solid #0077BE; }
+            .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }
+            .button { display: inline-block; padding: 12px 24px; background: #0077BE; color: white; text-decoration: none; border-radius: 4px; margin: 10px 0; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>💙 Děkujeme!</h1>
+          </div>
+          
+          <div class="content">
+            <h2>Vážený/á ${data.firstName},</h2>
+            
+            <p>Děkujeme, že jste si vybrali DEVOCEAN Lodge pro svůj plážový únik! Doufáme, že jste prožili nezapomenutelný zážitek.</p>
+            
+            <div class="highlight">
+              <h3>📸 Sdílejte své zážitky</h3>
+              <p>Rádi bychom viděli vaše fotky a slyšeli o vašich nejlepších momentech! Označte nás na sociálních sítích:</p>
+              <ul>
+                <li>Instagram: @devoceanlodge</li>
+                <li>Facebook: /devoceanlodge</li>
+              </ul>
+            </div>
+            
+            <div class="highlight">
+              <h3>⭐ Zanechte recenzi</h3>
+              <p>Vaše zpětná vazba nám pomáhá zlepšovat se a pomáhá dalším cestovatelům objevit ráj. Prosíme, zvažte zanechání recenze na:</p>
+              <ul>
+                <li>Google Reviews</li>
+                <li>TripAdvisor</li>
+                <li>Booking.com</li>
+              </ul>
+            </div>
+            
+            <p style="text-align: center;">
+              <a href="https://www.devoceanlodge.com" class="button">Rezervujte další pobyt</a>
+            </p>
+            
+            <p>Doufáme, že vás brzy opět přivítáme!</p>
+            
+            <p>S vděčností,<br>
+            Tým DEVOCEAN Lodge</p>
+          </div>
+          
+          <div class="footer">
+            <p>DEVOCEAN Lodge | Ponta do Ouro, Mosambik</p>
             <p>Email: info@devoceanlodge.com | Website: www.devoceanlodge.com</p>
           </div>
         </body>
