@@ -367,5 +367,28 @@
     "referralText": "如果您想与朋友、家人或同事分享DEVOCEAN体验，他们可以通过www.devoceanlodge.com直接预订，使用折扣代码DEVOCEANVIP享受10%的折扣——即使在现有优惠之上。",
     "closingText": "我们很乐意很快再次欢迎您——或您推荐的人——回到天堂。在那之前，愿海风和美好的回忆与您同在。",
     "warmRegards": "诚挚问候"
+  },
+  "cs": {
+    "subject": "Děkujeme za váš pobyt — rádi bychom slyšeli váš názor 🌴",
+    "preheader": "Děkujeme, že jste si vybrali DEVOCEAN Lodge",
+    "heading": "Děkujeme za váš pobyt!",
+    "headerSubtitle": "Doufáme, že jste si to užili",
+    "greetingMale": "Vážený {{firstName}},",
+    "greetingFemale": "Vážená {{firstName}},",
+    "greetingNeutral": "Vážený/á {{firstName}},",
+    "thankYouText": "Děkujeme, že jste si vybrali DEVOCEAN Lodge v krásné Ponta do Ouro. Bylo nám opravdovou ctí vás hostit — doufáme, že odjíždíte s krásnými vzpomínkami, úsměvem a trochou ducha DEVOCEAN.",
+    "feedbackMatters": "Vaše zpětná vazba pro nás opravdu hodně znamená. Pomáhá nám růst, zlepšovat naše služby a zajistit, aby se každý host cítil jako doma. Pokud chcete sdílet návrhy nebo komentáře přímo, neváhejte nám napsat na reservations@devoceanlodge.com.",
+    "reviewRequest": "Pokud jste si zde užili krásný čas, byli bychom vděční, kdybyste si našli chvilku a zanechali nám krátkou recenzi na vaší oblíbené platformě — ať už je to Booking.com, Google nebo TripAdvisor (stačí naskenovat jeden z QR kódů níže).",
+    "whyReviewsTitle": "⭐ Proč na vašich recenzích záleží",
+    "whyReviewsText": "Vaše slova pomáhají budoucím hostům vědět, co očekávat, udržují náš tým motivovaný a zajišťují transparentnost o autentickém zážitku DEVOCEAN. Hrdě zveřejňujeme všechny ověřené recenze hostů na našich webových stránkách, takže vaše zpětná vazba se stává součástí našeho příběhu.",
+    "qrTitle": "Naskenujte pro recenzi",
+    "qrInstructions": "Jednoduše naskenujte jeden z QR kódů níže a zanechte recenzi:",
+    "bookingQR": "Ohodnoťte nás na Booking.com",
+    "googleQR": "Sdílejte svůj zážitek na Google",
+    "tripadvisorQR": "Řekněte ostatním na TripAdvisoru",
+    "referralTitle": "Sdílejte zážitek DEVOCEAN",
+    "referralText": "Pokud chcete sdílet zážitek DEVOCEAN s přáteli, rodinou nebo kolegy, mohou si rezervovat přímo přes www.devoceanlodge.com s kódem DEVOCEANVIP a získat 10% slevu — i na stávající nabídky.",
+    "closingText": "Rádi vás — nebo někoho, koho doporučíte — brzy znovu přivítáme v ráji. Do té doby ať vám mořský vánek a krásné vzpomínky zůstanou nablízku.",
+    "warmRegards": "S pozdravem"
   }
 }

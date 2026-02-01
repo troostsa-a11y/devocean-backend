@@ -87,6 +87,7 @@ export class EmailTemplateRenderer {
       'JA': 'ja-JP',
       'ZH': 'zh-CN',
       'RU': 'ru',
+      'CS': 'cs',
       
       // Full locale codes (legacy support)
       'en-GB': 'en-GB',
@@ -106,6 +107,7 @@ export class EmailTemplateRenderer {
       'ja-JP': 'ja-JP',
       'zh-CN': 'zh-CN',
       'ru': 'ru',
+      'cs': 'cs',
     };
 
     const mappedLang = mapping[requestedLang] || 'en-GB';
