@@ -1,0 +1,72 @@
+All logs
+Search
+Search
+
+Live tail
+
+
+
+==> Downloading cache...
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+Menu
+==> Checking out commit aa5a9b8ffde364be563072acea3b34937c2ffab6 in branch main
+==> Downloaded 165MB in 2s. Extraction took 6s.
+==> Using Node.js version 20.18.0 via /opt/render/project/src/render-automailer/.node-version
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install && npm run build'...
+up to date, audited 152 packages in 1s
+33 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+> devocean-automailer@1.0.0 build
+> tsc
+==> Uploading build...
+==> Uploaded in 8.7s. Compression took 16.4s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'npm start'
+==> Your service is live 🎉
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+📊 Admin reports enabled for admin@devoceanlodge.com
+📧 Sending emails from: "DEVOCEAN Lodge - Ponta do Ouro" <reservations@devoceanlodge.com>
+📧 BCC copies sent to: beds24@devoceanlodge.com
+Starting email automation service...
+Email automation scheduled to check every 30 minutes for new bookings, modifications, and cancellations
+Scheduled email sending runs every 30 minutes at :15 and :45 (15 minutes after email check)
+Daily reports scheduled for 14:00 CAT (12:00 UTC)
+Weekly reports scheduled for 08:00 CAT on Mondays (06:00 UTC)
+Running startup email check to process any pending emails...
+Checking for new booking emails...
+Connecting to IMAP server: mail.devoceanlodge.com:993
+Sending any pending scheduled emails from backlog...
+Processing pending scheduled emails...
+✅ Email automation service started successfully
+📧 Checking emails every 30 minutes (at :00 and :30 of every hour)
+============================================================
+🌊 DEVOCEAN Lodge Email Automation Server
+============================================================
+🚀 Server running on http://0.0.0.0:3000
+📅 Email checks every 30 min (at :00 and :30), sends at :15 and :45
+📧 Processing Beds24 booking notifications automatically
+============================================================
+Processing 0 pending emails
+Sent 0 emails, 0 failed
+✅ IMAP connection established
+Found 1 unread emails
+📧 Using Language: CS
+Created booking 81705996 (ID: 157)
+Booking 81705996: Normal schedule (279.4 days until check-in)
+  Post-booking: 2026-02-01T17:04:14.635+02:00 CAT (2026-02-01T15:04:14.635Z UTC) (1h from now)
+  Pre-arrival: 2026-10-29T09:00:00.000+02:00 CAT (2026-10-29T07:00:00.000Z UTC)
+  Arrival: 2026-11-05T09:00:00.000+02:00 CAT (2026-11-05T07:00:00.000Z UTC)
+  Post-departure: 2026-11-12T10:00:00.000+02:00 CAT (2026-11-12T08:00:00.000Z UTC)
+Scheduled post_booking email for booking 81705996
+Scheduled pre_arrival email for booking 81705996
+Scheduled arrival email for booking 81705996
+Scheduled post_departure email for booking 81705996
+Scheduled emails for booking 81705996
+Email check completed in 4758ms
