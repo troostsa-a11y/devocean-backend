@@ -1,0 +1,103 @@
+All logs
+Search
+Search
+
+Live tail
+
+
+
+==> Downloading cache...
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit aa5a9b8ffde364be563072acea3b34937c2ffab6 in branch main
+==> Downloaded 111MB in 2s. Extraction took 3s.
+==> Using Node.js version 20.18.0 via /opt/render/project/src/render-automailer/.node-version
+Menu
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install'...
+added 151 packages, and audited 152 packages in 21s
+33 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+==> Uploading build...
+==> Uploaded in 8.8s. Compression took 14.5s
+==> Build successful 🎉
+==> Deploying...
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/render-automailer/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
+==> Your service is live 🎉
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/render-automailer/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/render-automailer/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/render-automailer/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+node:internal/modules/cjs/loader:1228
+  throw err;
+  ^
+Error: Cannot find module '/opt/render/project/src/render-automailer/dist/server.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1225:15)
+    at Module._load (node:internal/modules/cjs/loader:1051:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+Node.js v20.18.0
