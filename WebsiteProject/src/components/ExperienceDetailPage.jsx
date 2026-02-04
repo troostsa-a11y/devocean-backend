@@ -31,30 +31,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   const experienceKey = params?.key;
   const [contentModule, setContentModule] = useState(null);
   const [isLoadingContent, setIsLoadingContent] = useState(true);
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
-  const [footerVisible, setFooterVisible] = useState(false);
-  
-  // Show sticky CTA after scrolling past hero
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowStickyCTA(window.scrollY > 400);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  // Hide sticky CTA when footer is approaching to avoid overlap with Trustindex/reCAPTCHA
-  useEffect(() => {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => setFooterVisible(entry.isIntersecting),
-      { threshold: 0, rootMargin: '300px 0px 0px 0px' }
-    );
-    observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
   
   // Get base experience data (hero image, etc.)
   const baseExp = EXPERIENCE_DETAILS[experienceKey];
@@ -707,41 +683,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
         </div>
       </div>
       
-      {/* Sticky CTA Bar - appears after scrolling past hero */}
-      <div 
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA && !footerVisible ? 'translate-y-0' : 'translate-y-full'}`}
-        data-testid="sticky-cta-bar-experience"
-      >
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <p className="hidden sm:block text-slate-700 font-medium text-sm truncate">
-            {exp?.title || 'Experience'}
-          </p>
-          <div className="flex gap-3 flex-1 sm:flex-none justify-end">
-            {exp?.operators && exp.operators.length > 0 && (
-              <a
-                href="#inquiry-form"
-                className="px-4 py-2 text-[#9e4b13] font-semibold text-sm rounded-lg transition-colors"
-                data-testid="sticky-inquire"
-              >
-                {getExpText('contactOperators', lang)}
-              </a>
-            )}
-            <a
-              href={bookUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-5 py-2 bg-[#9e4b13] text-white font-semibold text-sm rounded-lg transition-colors flex items-center gap-2"
-              data-testid="sticky-book-experience"
-            >
-              {ui?.hero?.ctaPrimary || 'Book Now'}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Footer */}
       <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
     </>

@@ -18,32 +18,6 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     return WHY_PONTA_CONTENT[langCode] || WHY_PONTA_CONTENT.en;
   }, [lang]);
 
-  // Sticky CTA visibility - show after scrolling past hero, hide near footer
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
-  const [footerVisible, setFooterVisible] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show sticky CTA after scrolling 400px (past hero)
-      setShowStickyCTA(window.scrollY > 400);
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  
-  // Hide sticky CTA when footer is approaching to avoid overlap with Trustindex/reCAPTCHA
-  useEffect(() => {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => setFooterVisible(entry.isIntersecting),
-      { threshold: 0, rootMargin: '300px 0px 0px 0px' }
-    );
-    observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
 
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
@@ -246,37 +220,6 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Sticky CTA Bar - appears after scrolling past hero, hides when footer visible */}
-      <div 
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA && !footerVisible ? 'translate-y-0' : 'translate-y-full'}`}
-        data-testid="sticky-cta-bar"
-      >
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <p className="hidden sm:block text-slate-700 font-medium text-sm">
-            {content.stickyText || "Experience the magic of Ponta do Ouro"}
-          </p>
-          <div className="flex gap-3 flex-1 sm:flex-none justify-end">
-            <Link
-              href={buildHomeUrl('#stay')}
-              className="px-4 py-2 text-[#9e4b13] font-semibold text-sm rounded-lg transition-colors"
-              data-testid="sticky-explore"
-            >
-              {content.ctaAccommodations || "View Rooms"}
-            </Link>
-            <a
-              href={bookUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="px-5 py-2 bg-[#9e4b13] text-white font-semibold text-sm rounded-lg transition-colors flex items-center gap-2"
-              data-testid="sticky-book"
-            >
-              {content.ctaBookNow || "Book Now"}
-              <ArrowRight className="w-4 h-4" />
-            </a>
           </div>
         </div>
       </div>
