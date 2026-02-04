@@ -32,6 +32,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   const [contentModule, setContentModule] = useState(null);
   const [isLoadingContent, setIsLoadingContent] = useState(true);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   
   // Show sticky CTA after scrolling past hero
   useEffect(() => {
@@ -40,6 +41,19 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // Hide sticky CTA when footer is visible to avoid overlap with Trustindex/reCAPTCHA
+  useEffect(() => {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
   }, []);
   
   // Get base experience data (hero image, etc.)
@@ -695,7 +709,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
       
       {/* Sticky CTA Bar - appears after scrolling past hero */}
       <div 
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA && !footerVisible ? 'translate-y-0' : 'translate-y-full'}`}
         data-testid="sticky-cta-bar-experience"
       >
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -730,9 +744,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
 
       {/* Footer */}
       <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
-      
-      {/* Bottom padding to prevent sticky bar from covering footer */}
-      <div className="h-16" />
     </>
   );
 }

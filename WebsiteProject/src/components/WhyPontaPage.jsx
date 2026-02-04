@@ -18,8 +18,9 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     return WHY_PONTA_CONTENT[langCode] || WHY_PONTA_CONTENT.en;
   }, [lang]);
 
-  // Sticky CTA visibility - show after scrolling past hero
+  // Sticky CTA visibility - show after scrolling past hero, hide near footer
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,19 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // Hide sticky CTA when footer is visible to avoid overlap with Trustindex/reCAPTCHA
+  useEffect(() => {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+    
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
   }, []);
 
   const buildHomeUrl = (hash = '') => {
@@ -264,9 +278,9 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         </div>
       </div>
       
-      {/* Sticky CTA Bar - appears after scrolling past hero */}
+      {/* Sticky CTA Bar - appears after scrolling past hero, hides when footer visible */}
       <div 
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA && !footerVisible ? 'translate-y-0' : 'translate-y-full'}`}
         data-testid="sticky-cta-bar"
       >
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -296,9 +310,6 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
       </div>
       
       <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
-      
-      {/* Bottom padding to prevent sticky bar from covering footer */}
-      <div className="h-16" />
     </>
   );
 }
