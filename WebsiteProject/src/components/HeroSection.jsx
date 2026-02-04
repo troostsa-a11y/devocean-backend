@@ -125,8 +125,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Explore Lodge */}
             <a
               href="#stay"
-              className="group btn-secondary w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white hover:bg-white/25 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
+              className="group btn-secondary w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
               aria-label={ui.hero.ctaSecondary}
+              data-testid="button-explore-lodge"
             >
               <span>{ui.hero.ctaSecondary}</span>
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />

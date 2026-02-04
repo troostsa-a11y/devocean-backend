@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'wouter';
 import { Waves, Fish, TreePine, Globe, Heart, ArrowRight, MapPin, Anchor } from 'lucide-react';
 import Footer from './Footer';
@@ -17,6 +17,19 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     const langCode = lang?.split('-')[0] || 'en';
     return WHY_PONTA_CONTENT[langCode] || WHY_PONTA_CONTENT.en;
   }, [lang]);
+
+  // Sticky CTA visibility - show after scrolling past hero
+  const [showStickyCTA, setShowStickyCTA] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show sticky CTA after scrolling 400px (past hero)
+      setShowStickyCTA(window.scrollY > 400);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
@@ -189,6 +202,34 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
             })}
           </div>
 
+          {/* Mid-page CTA - appears after 3rd section to capture engaged users */}
+          {content.sections.length > 2 && (
+            <div className="mt-12 p-6 bg-gradient-to-r from-[#9e4b13]/10 to-[#7a3a0f]/10 rounded-2xl border border-[#9e4b13]/20 text-center">
+              <p className="text-slate-700 mb-4 font-medium">
+                {content.midCta || "Ready to experience Ponta do Ouro for yourself?"}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Link
+                  href={buildHomeUrl('#stay')}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#9e4b13] text-white font-semibold rounded-lg transition-colors"
+                  data-testid="link-mid-explore"
+                >
+                  {content.ctaAccommodations || "View Accommodations"}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={bookUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#9e4b13] text-[#9e4b13] font-semibold rounded-lg transition-colors"
+                  data-testid="link-mid-book"
+                >
+                  {content.ctaBookNow || "Book Now"}
+                </a>
+              </div>
+            </div>
+          )}
+
           {/* CTA Section */}
           <div className="mt-20 bg-gradient-to-br from-[#9e4b13] to-[#7a3a0f] rounded-3xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -201,7 +242,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href={buildHomeUrl('#stay')}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#9e4b13] font-bold rounded-xl hover:bg-white/90 transition-colors shadow-lg"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#9e4b13] font-bold rounded-xl transition-colors shadow-lg"
                 data-testid="link-explore-lodge"
               >
                 {content.ctaAccommodations}
@@ -212,7 +253,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
                 href={bookUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/20 text-white font-bold rounded-xl border-2 border-white/30 hover:bg-white/30 transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/20 text-white font-bold rounded-xl border-2 border-white/30 transition-colors"
                 data-testid="link-book-now"
               >
                 {content.ctaBookNow}
@@ -223,7 +264,41 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         </div>
       </div>
       
+      {/* Sticky CTA Bar - appears after scrolling past hero */}
+      <div 
+        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transform transition-transform duration-300 pb-safe ${showStickyCTA ? 'translate-y-0' : 'translate-y-full'}`}
+        data-testid="sticky-cta-bar"
+      >
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <p className="hidden sm:block text-slate-700 font-medium text-sm">
+            {content.stickyText || "Experience the magic of Ponta do Ouro"}
+          </p>
+          <div className="flex gap-3 flex-1 sm:flex-none justify-end">
+            <Link
+              href={buildHomeUrl('#stay')}
+              className="px-4 py-2 text-[#9e4b13] font-semibold text-sm rounded-lg transition-colors"
+              data-testid="sticky-explore"
+            >
+              {content.ctaAccommodations || "View Rooms"}
+            </Link>
+            <a
+              href={bookUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="px-5 py-2 bg-[#9e4b13] text-white font-semibold text-sm rounded-lg transition-colors flex items-center gap-2"
+              data-testid="sticky-book"
+            >
+              {content.ctaBookNow || "Book Now"}
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
       <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
+      
+      {/* Bottom padding to prevent sticky bar from covering footer */}
+      <div className="h-16" />
     </>
   );
 }
