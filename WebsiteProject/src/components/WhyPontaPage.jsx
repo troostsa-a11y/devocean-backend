@@ -216,34 +216,6 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
             })}
           </div>
 
-          {/* Mid-page CTA - appears after 3rd section to capture engaged users */}
-          {content.sections.length > 2 && (
-            <div className="mt-12 p-6 bg-gradient-to-r from-[#9e4b13]/10 to-[#7a3a0f]/10 rounded-2xl border border-[#9e4b13]/20 text-center">
-              <p className="text-slate-700 mb-4 font-medium">
-                {content.midCta || "Ready to experience Ponta do Ouro for yourself?"}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href={buildHomeUrl('#stay')}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#9e4b13] text-white font-semibold rounded-lg transition-colors"
-                  data-testid="link-mid-explore"
-                >
-                  {content.ctaAccommodations || "View Accommodations"}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-                <a
-                  href={bookUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#9e4b13] text-[#9e4b13] font-semibold rounded-lg transition-colors"
-                  data-testid="link-mid-book"
-                >
-                  {content.ctaBookNow || "Book Now"}
-                </a>
-              </div>
-            </div>
-          )}
-
           {/* CTA Section */}
           <div className="mt-20 bg-gradient-to-br from-[#9e4b13] to-[#7a3a0f] rounded-3xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
