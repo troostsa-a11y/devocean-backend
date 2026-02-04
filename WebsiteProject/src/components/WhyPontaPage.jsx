@@ -32,14 +32,14 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Hide sticky CTA when footer is visible to avoid overlap with Trustindex/reCAPTCHA
+  // Hide sticky CTA when footer is approaching to avoid overlap with Trustindex/reCAPTCHA
   useEffect(() => {
     const footer = document.querySelector('footer');
     if (!footer) return;
     
     const observer = new IntersectionObserver(
       ([entry]) => setFooterVisible(entry.isIntersecting),
-      { threshold: 0.1 }
+      { threshold: 0, rootMargin: '150px 0px 0px 0px' }
     );
     observer.observe(footer);
     return () => observer.disconnect();
