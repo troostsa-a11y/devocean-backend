@@ -1,0 +1,65 @@
+
+Search
+
+Live tail
+
+
+
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit 2c80e48e1d1cfb9f4b0343e98d63c9b1b3eaf74b in branch main
+==> Using Node.js version 20.18.0 via /opt/render/project/src/render-automailer/.node-version
+Menu
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm install; npm run build'...
+added 151 packages, and audited 152 packages in 26s
+33 packages are looking for funding
+  run `npm fund` for details
+4 high severity vulnerabilities
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+Run `npm audit` for details.
+> devocean-automailer@1.0.0 build
+> tsc
+==> Uploading build...
+==> Uploaded in 16.3s. Compression took 3.0s
+==> Build successful 🎉
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+==> Running 'npm start'
+> devocean-automailer@1.0.0 start
+> node dist/server.js
+📧 Transfer notifications enabled for Naldo Servicos de Taxi
+📊 Admin reports enabled for admin@devoceanlodge.com
+📧 Sending emails from: "DEVOCEAN Lodge - Ponta do Ouro" <reservations@devoceanlodge.com>
+📧 BCC copies sent to: beds24@devoceanlodge.com
+Starting email automation service...
+Email automation scheduled to check every 30 minutes for new bookings, modifications, and cancellations
+Scheduled email sending runs every 30 minutes at :15 and :45 (15 minutes after email check)
+Daily reports scheduled for 14:00 CAT (12:00 UTC)
+Weekly reports scheduled for 08:00 CAT on Mondays (06:00 UTC)
+Running startup email check to process any pending emails...
+Checking for new booking emails...
+Connecting to IMAP server: vm02-murphy.h4ahosting.com:993
+Sending any pending scheduled emails from backlog...
+Processing pending scheduled emails...
+✅ Email automation service started successfully
+📧 Checking emails every 30 minutes (at :00 and :30 of every hour)
+============================================================
+🌊 DEVOCEAN Lodge Email Automation Server
+============================================================
+🚀 Server running on http://0.0.0.0:10000
+📅 Email checks every 30 min (at :00 and :30), sends at :15 and :45
+📧 Processing Beds24 booking notifications automatically
+============================================================
+Processing 0 pending emails
+Sent 0 emails, 0 failed
+✅ IMAP connection established
+Found 0 unread emails
+Email check completed in 2276ms
+==> Your service is live 🎉
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://devocean-automailer.onrender.com
+==> 
+==> ///////////////////////////////////////////////////////////
