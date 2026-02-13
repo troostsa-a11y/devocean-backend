@@ -7,6 +7,7 @@ import { CancellationHandler } from './cancellation-handler';
 import { ModificationHandler } from './modification-handler';
 import { AdminReportingService } from './admin-reporting';
 import { insertBookingSchema } from '../../shared/schema';
+import { ZodError } from 'zod';
 
 /**
  * Email Automation Service
@@ -317,6 +318,78 @@ export class EmailAutomationService {
     } catch (error) {
       console.error('Error sending scheduled emails:', error);
     }
+  }
+
+  /**
+   * Create a manual booking and schedule all emails
+   * Used for directly entered Beds24 reservations that don't trigger email notifications
+   */
+  async createManualBooking(bookingData: {
+    groupRef: string;
+    bookingRefs?: string[];
+    guestName: string;
+    firstName: string;
+    guestGender?: 'male' | 'female' | null;
+    guestEmail: string;
+    guestLanguage: string;
+    guestCountry?: string;
+    checkInDate: string;
+    checkOutDate: string;
+  }): Promise<{ booking: any; scheduledEmails: any[] }> {
+    const existing = await this.db.getBookingByGroupRef(bookingData.groupRef);
+    if (existing) {
+      throw new Error(`Booking with group ref ${bookingData.groupRef} already exists`);
+    }
+
+    const validated = insertBookingSchema.parse({
+      groupRef: bookingData.groupRef,
+      bookingRefs: bookingData.bookingRefs || [bookingData.groupRef],
+      guestName: bookingData.guestName,
+      firstName: bookingData.firstName,
+      guestGender: bookingData.guestGender || null,
+      guestEmail: bookingData.guestEmail,
+      guestLanguage: bookingData.guestLanguage || 'EN',
+      guestCountry: bookingData.guestCountry,
+      checkInDate: new Date(bookingData.checkInDate),
+      checkOutDate: new Date(bookingData.checkOutDate),
+      status: 'active',
+    });
+
+    const booking = await this.db.createBooking(validated);
+    console.log(`[ADMIN] Manual booking created: ${booking.groupRef} for ${booking.guestName}`);
+
+    await this.emailScheduler.scheduleEmailsForBooking(booking);
+
+    const scheduled = await this.db.getScheduledEmailsForBooking(booking.id);
+    console.log(`[ADMIN] ${scheduled.length} emails scheduled for booking ${booking.groupRef}`);
+
+    return { booking, scheduledEmails: scheduled };
+  }
+
+  /**
+   * Cancel a booking manually by group reference
+   * Cancels all pending emails and schedules a cancellation goodbye email
+   */
+  async cancelManualBooking(groupRef: string, reason?: string): Promise<{ booking: any; cancelledEmails: number }> {
+    const booking = await this.db.getBookingByGroupRef(groupRef);
+    if (!booking) {
+      throw new Error(`Booking with group ref ${groupRef} not found`);
+    }
+
+    if (booking.status === 'cancelled') {
+      throw new Error(`Booking ${groupRef} is already cancelled`);
+    }
+
+    const pendingBefore = await this.db.getScheduledEmailsForBooking(booking.id);
+    const pendingCount = pendingBefore.filter(e => e.status === 'pending').length;
+
+    await this.cancellationHandler.cancelBooking(groupRef, reason || 'Manual cancellation via admin API');
+
+    const updatedBooking = await this.db.getBookingByGroupRef(groupRef);
+
+    console.log(`[ADMIN] Booking ${groupRef} cancelled. ${pendingCount} pending emails stopped. Cancellation email scheduled.`);
+
+    return { booking: updatedBooking || booking, cancelledEmails: pendingCount };
   }
 
   /**

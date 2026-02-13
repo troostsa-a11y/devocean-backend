@@ -122,6 +122,124 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Admin API key authentication middleware
+function requireAdminKey(req: any, res: any, next: any) {
+  const adminKey = process.env.ADMIN_API_KEY;
+  if (!adminKey) {
+    return res.status(503).json({ error: 'Admin API key not configured on server' });
+  }
+
+  const providedKey = req.headers['x-admin-key'] || req.query.key;
+  if (!providedKey || providedKey !== adminKey) {
+    return res.status(401).json({ error: 'Invalid or missing admin API key' });
+  }
+
+  next();
+}
+
+// Admin: Create a manual booking and schedule all emails
+app.post('/api/admin/booking', requireAdminKey, async (req, res) => {
+  if (!emailService) {
+    return res.status(503).json({ error: 'Email automation service not initialized' });
+  }
+
+  try {
+    const { groupRef, bookingRefs, guestName, firstName, guestGender, guestEmail, guestLanguage, guestCountry, checkInDate, checkOutDate } = req.body;
+
+    if (!groupRef || !guestName || !firstName || !guestEmail || !checkInDate || !checkOutDate) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        required: ['groupRef', 'guestName', 'firstName', 'guestEmail', 'checkInDate', 'checkOutDate'],
+        optional: ['bookingRefs', 'guestGender', 'guestLanguage', 'guestCountry'],
+      });
+    }
+
+    const result = await emailService.createManualBooking({
+      groupRef,
+      bookingRefs,
+      guestName,
+      firstName,
+      guestGender: guestGender || null,
+      guestEmail,
+      guestLanguage: guestLanguage || 'EN',
+      guestCountry,
+      checkInDate,
+      checkOutDate,
+    });
+
+    res.json({
+      success: true,
+      message: `Booking ${groupRef} created and ${result.scheduledEmails.length} emails scheduled`,
+      booking: {
+        id: result.booking.id,
+        groupRef: result.booking.groupRef,
+        guestName: result.booking.guestName,
+        guestEmail: result.booking.guestEmail,
+        guestLanguage: result.booking.guestLanguage,
+        checkInDate: result.booking.checkInDate,
+        checkOutDate: result.booking.checkOutDate,
+      },
+      scheduledEmails: result.scheduledEmails.map((e: any) => ({
+        type: e.emailType,
+        scheduledFor: e.scheduledFor,
+        status: e.status,
+      })),
+    });
+  } catch (error: any) {
+    console.error('[ADMIN] Error creating manual booking:', error);
+    if (error.name === 'ZodError') {
+      return res.status(400).json({
+        error: 'Validation failed',
+        details: error.errors,
+      });
+    }
+    res.status(error.message?.includes('already exists') ? 409 : 500).json({
+      error: 'Failed to create booking',
+      message: error.message,
+    });
+  }
+});
+
+// Admin: Cancel a booking by group reference
+app.post('/api/admin/cancel', requireAdminKey, async (req, res) => {
+  if (!emailService) {
+    return res.status(503).json({ error: 'Email automation service not initialized' });
+  }
+
+  try {
+    const { groupRef, reason } = req.body;
+
+    if (!groupRef) {
+      return res.status(400).json({
+        error: 'Missing required field: groupRef',
+        required: ['groupRef'],
+        optional: ['reason'],
+      });
+    }
+
+    const result = await emailService.cancelManualBooking(groupRef, reason);
+
+    res.json({
+      success: true,
+      message: `Booking ${groupRef} cancelled. ${result.cancelledEmails} pending emails stopped. Cancellation email scheduled.`,
+      booking: {
+        groupRef: result.booking.groupRef,
+        guestName: result.booking.guestName,
+        guestEmail: result.booking.guestEmail,
+      },
+      cancelledEmails: result.cancelledEmails,
+    });
+  } catch (error: any) {
+    console.error('[ADMIN] Error cancelling booking:', error);
+    const status = error.message?.includes('not found') ? 404 :
+                   error.message?.includes('already cancelled') ? 409 : 500;
+    res.status(status).json({
+      error: 'Failed to cancel booking',
+      message: error.message,
+    });
+  }
+});
+
 // Manual email check endpoint (for testing)
 app.post('/api/check-emails', async (req, res) => {
   if (!emailService) {
@@ -162,6 +280,24 @@ app.get('/', (req, res) => {
         method: 'POST',
         path: '/api/check-emails',
         description: 'Manually trigger email check (for testing)',
+      },
+      adminCreateBooking: {
+        method: 'POST',
+        path: '/api/admin/booking',
+        description: 'Create a manual booking and schedule all emails (requires X-Admin-Key header)',
+        body: {
+          required: ['groupRef', 'guestName', 'firstName', 'guestEmail', 'checkInDate', 'checkOutDate'],
+          optional: ['bookingRefs', 'guestGender', 'guestLanguage', 'guestCountry'],
+        },
+      },
+      adminCancelBooking: {
+        method: 'POST',
+        path: '/api/admin/cancel',
+        description: 'Cancel a booking by group reference (requires X-Admin-Key header)',
+        body: {
+          required: ['groupRef'],
+          optional: ['reason'],
+        },
       },
     },
     schedule: {
