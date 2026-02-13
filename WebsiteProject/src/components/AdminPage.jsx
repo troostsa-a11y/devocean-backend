@@ -72,7 +72,7 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50" style={{ paddingTop: 'var(--stack-h, 96px)' }}>
+    <div className="min-h-screen bg-slate-50 relative z-50" style={{ paddingTop: 'var(--stack-h, 96px)' }}>
       <div className="max-w-2xl mx-auto px-4 py-8">
         <button
           onClick={() => navigate('/')}
