@@ -89,6 +89,10 @@ export class EmailTemplateRenderer {
       'RU': 'ru',
       'CS': 'cs',
       
+      // Hyphenated codes (from admin panel)
+      'EN-US': 'en-US',
+      'PT-BR': 'pt-BR',
+      
       // Full locale codes (legacy support)
       'en-GB': 'en-GB',
       'en-US': 'en-US',

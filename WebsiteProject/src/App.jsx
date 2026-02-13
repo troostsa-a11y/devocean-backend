@@ -15,6 +15,7 @@ import ExperiencesSection from './components/ExperiencesSection';
 import TodoSection from './components/TodoSection';
 import ExperienceDetailPage from './components/ExperienceDetailPage';
 import WhyPontaPage from './components/WhyPontaPage';
+import AdminPage from './components/AdminPage';
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -184,6 +185,11 @@ export default function App() {
       />
 
       <Switch>
+        {/* Admin panel (not linked from navigation - staff only) */}
+        <Route path="/admin">
+          <AdminPage />
+        </Route>
+
         {/* Route for Why Ponta do Ouro destination page */}
         <Route path="/why-ponta">
           {loading || !ui ? (
