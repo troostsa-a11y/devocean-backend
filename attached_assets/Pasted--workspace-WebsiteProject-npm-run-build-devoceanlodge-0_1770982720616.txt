@@ -1,0 +1,60 @@
+~/workspace/WebsiteProject$ npm run build
+
+> devoceanlodge@0.0.1 build
+> vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/
+
+vite v7.2.2 building client environment for production...
+✓ 1643 modules transformed.
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/i18n/loadTranslation.js is dynamically imported by /home/runner/workspace/WebsiteProject/src/i18n/useLocale.js but also statically imported by /home/runner/workspace/WebsiteProject/src/utils/localize.js, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) /home/runner/workspace/WebsiteProject/src/components/Footer.jsx is dynamically imported by /home/runner/workspace/WebsiteProject/src/App.jsx but also statically imported by /home/runner/workspace/WebsiteProject/src/components/ExperienceDetailPage.jsx, /home/runner/workspace/WebsiteProject/src/components/WhyPontaPage.jsx, dynamic import will not move module into another chunk.
+
+dist/index.html                           34.98 kB │ gzip:  10.83 kB
+dist/assets/style-BUkum1eX.css            34.58 kB │ gzip:   6.66 kB
+dist/assets/i18n-Do6j_fEu.js               0.07 kB │ gzip:   0.09 kB │ map:     0.10 kB
+dist/assets/framer-7_y_gowr.js             1.24 kB │ gzip:   0.74 kB │ map:     2.21 kB
+dist/assets/LocationSection-lie8Zg5m.js    1.80 kB │ gzip:   0.94 kB │ map:     3.89 kB
+dist/assets/GallerySection-Cyir6n4L.js     4.04 kB │ gzip:   1.53 kB │ map:     9.56 kB
+dist/assets/pl-Bn95K7KX.js                 5.03 kB │ gzip:   2.69 kB │ map:     7.60 kB
+dist/assets/sv-DgN36upK.js                 5.89 kB │ gzip:   2.94 kB │ map:     9.21 kB
+dist/assets/af-ZA-BgpHSGTd.js              5.90 kB │ gzip:   2.88 kB │ map:     9.45 kB
+dist/assets/en-GB-CYOnstqS.js              6.49 kB │ gzip:   3.16 kB │ map:    10.07 kB
+dist/assets/en-US-CYOnstqS.js              6.49 kB │ gzip:   3.16 kB │ map:    10.07 kB
+dist/assets/pt-BR-CpvM5XOp.js              6.51 kB │ gzip:   3.11 kB │ map:     9.98 kB
+dist/assets/pt-PT-g-2PxgL6.js              6.51 kB │ gzip:   3.11 kB │ map:    10.12 kB
+dist/assets/sw-Bie_3kug.js                 6.66 kB │ gzip:   2.99 kB │ map:     9.84 kB
+dist/assets/nl-NL-BCGOkpld.js              7.07 kB │ gzip:   3.19 kB │ map:    11.46 kB
+dist/assets/de-DE-DBEGBwZu.js              7.15 kB │ gzip:   3.23 kB │ map:    11.54 kB
+dist/assets/it-IT-CuTuQFpP.js              7.18 kB │ gzip:   3.10 kB │ map:    11.58 kB
+dist/assets/es-ES-NveId7On.js              7.20 kB │ gzip:   3.15 kB │ map:    11.61 kB
+dist/assets/zu-CtFcNQ1L.js                 7.32 kB │ gzip:   3.28 kB │ map:    10.62 kB
+dist/assets/ru-dBT-aBml.js                 7.49 kB │ gzip:   3.18 kB │ map:    10.06 kB
+dist/assets/fr-FR-BVJw6IXJ.js              7.72 kB │ gzip:   3.26 kB │ map:    12.61 kB
+dist/assets/ContactSection-DgoBKP7H.js     8.41 kB │ gzip:   2.72 kB │ map:    21.67 kB
+dist/assets/zh-CN-B2zxLssM.js              9.15 kB │ gzip:   3.50 kB │ map:    14.67 kB
+dist/assets/icons-C5Wwl8il.js             11.54 kB │ gzip:   4.53 kB │ map:    42.30 kB
+dist/assets/ja-JP-P-v9kQXu.js             13.51 kB │ gzip:   3.71 kB │ map:    19.52 kB
+dist/assets/fishingContent-BujUX6GK.js    63.49 kB │ gzip:  21.13 kB │ map:    96.40 kB
+dist/assets/surfingContent-B1M5ujG8.js    64.00 kB │ gzip:  23.01 kB │ map:    90.93 kB
+dist/assets/seafariContent-KZ4VqtCL.js    64.40 kB │ gzip:  22.49 kB │ map:    95.32 kB
+dist/assets/divingContent-MMM0-AxW.js     67.28 kB │ gzip:  20.36 kB │ map:   104.46 kB
+dist/assets/safariContent-CrZNikdw.js     69.40 kB │ gzip:  24.55 kB │ map:   101.83 kB
+dist/assets/dolphinsContent-Mh7TPMZq.js   84.61 kB │ gzip:  23.34 kB │ map:   127.40 kB
+dist/assets/react-vendor-DdXWdMVC.js     141.06 kB │ gzip:  45.33 kB │ map:   344.89 kB
+dist/assets/index-C89KrqxW.js            315.96 kB │ gzip: 109.28 kB │ map: 1,937.09 kB
+✓ built in 4.33s
+~/workspace/WebsiteProject$ npx wrangler pages deploy dist --project-name devocean-lodge --commit-dirty=true
+
+ ⛅️ wrangler 4.65.0
+───────────────────
+✨ Compiled Worker successfully
+✨ Success! Uploaded 0 files (257 already uploaded) (0.38 sec)
+
+✨ Uploading _headers
+✨ Uploading _redirects
+✨ Uploading Functions bundle
+🌎 Deploying...
+✨ Deployment complete! Take a peek over at https://fe0666a5.devocean-lodge.pages.dev
+~/workspace/WebsiteProject$ 
