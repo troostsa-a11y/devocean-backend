@@ -296,6 +296,29 @@ export class DatabaseService {
       .where(eq(bookings.id, bookingId));
   }
 
+  async updateGuestEmail(bookingId: number, newEmail: string): Promise<void> {
+    await this.db
+      .update(bookings)
+      .set({
+        guestEmail: newEmail,
+        updatedAt: new Date(),
+      })
+      .where(eq(bookings.id, bookingId));
+
+    await this.db
+      .update(scheduledEmails)
+      .set({
+        recipientEmail: newEmail,
+        updatedAt: new Date(),
+      })
+      .where(
+        and(
+          eq(scheduledEmails.bookingId, bookingId),
+          eq(scheduledEmails.status, 'pending')
+        )
+      );
+  }
+
   /**
    * Cancel all pending scheduled emails for a booking
    */

@@ -392,6 +392,26 @@ export class EmailAutomationService {
     return { booking: updatedBooking || booking, cancelledEmails: pendingCount };
   }
 
+  async updateGuestEmail(groupRef: string, newEmail: string): Promise<{ booking: any; oldEmail: string; pendingEmailsUpdated: number }> {
+    const booking = await this.db.getBookingByGroupRef(groupRef);
+    if (!booking) {
+      throw new Error(`Booking with group ref ${groupRef} not found`);
+    }
+
+    const oldEmail = booking.guestEmail;
+
+    const pendingEmails = await this.db.getScheduledEmailsForBooking(booking.id);
+    const pendingCount = pendingEmails.filter(e => e.status === 'pending').length;
+
+    await this.db.updateGuestEmail(booking.id, newEmail);
+
+    const updatedBooking = await this.db.getBookingByGroupRef(groupRef);
+
+    console.log(`[ADMIN] Email updated for booking ${groupRef}: ${oldEmail} → ${newEmail}. ${pendingCount} pending emails redirected.`);
+
+    return { booking: updatedBooking || { ...booking, guestEmail: newEmail }, oldEmail, pendingEmailsUpdated: pendingCount };
+  }
+
   /**
    * Close database connection
    */

@@ -240,6 +240,50 @@ app.post('/api/admin/cancel', requireAdminKey, async (req, res) => {
   }
 });
 
+// Admin: Update guest email for a booking
+app.post('/api/admin/update-email', requireAdminKey, async (req, res) => {
+  if (!emailService) {
+    return res.status(503).json({ error: 'Email automation service not initialized' });
+  }
+
+  try {
+    const { groupRef, newEmail } = req.body;
+
+    if (!groupRef || !newEmail) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        required: ['groupRef', 'newEmail'],
+      });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(newEmail)) {
+      return res.status(400).json({ error: 'Invalid email address format' });
+    }
+
+    const result = await emailService.updateGuestEmail(groupRef, newEmail);
+
+    res.json({
+      success: true,
+      message: `Email updated for booking ${groupRef}. ${result.pendingEmailsUpdated} pending emails redirected to ${newEmail}.`,
+      booking: {
+        groupRef: result.booking.groupRef,
+        guestName: result.booking.guestName,
+        oldEmail: result.oldEmail,
+        newEmail: result.booking.guestEmail,
+      },
+      pendingEmailsUpdated: result.pendingEmailsUpdated,
+    });
+  } catch (error: any) {
+    console.error('[ADMIN] Error updating guest email:', error);
+    const status = error.message?.includes('not found') ? 404 : 500;
+    res.status(status).json({
+      error: 'Failed to update email',
+      message: error.message,
+    });
+  }
+});
+
 // Manual email check endpoint (for testing)
 app.post('/api/check-emails', async (req, res) => {
   if (!emailService) {
@@ -288,6 +332,14 @@ app.get('/', (req, res) => {
         body: {
           required: ['groupRef', 'guestName', 'firstName', 'guestEmail', 'checkInDate', 'checkOutDate'],
           optional: ['bookingRefs', 'guestGender', 'guestLanguage', 'guestCountry'],
+        },
+      },
+      adminUpdateEmail: {
+        method: 'POST',
+        path: '/api/admin/update-email',
+        description: 'Update guest email for a booking (requires X-Admin-Key header)',
+        body: {
+          required: ['groupRef', 'newEmail'],
         },
       },
       adminCancelBooking: {

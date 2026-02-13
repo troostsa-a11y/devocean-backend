@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Shield, UserPlus, UserX, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 import { useLocation } from 'wouter';
 
 const LANGUAGE_OPTIONS = [
@@ -120,6 +120,18 @@ export default function AdminPage() {
                   New Booking
                 </button>
                 <button
+                  onClick={() => setActiveTab('update-email')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                    activeTab === 'update-email'
+                      ? 'bg-[#9e4b13] text-white'
+                      : 'text-slate-600 hover:bg-slate-100'
+                  }`}
+                  data-testid="tab-update-email"
+                >
+                  <Mail className="w-4 h-4" />
+                  Update Email
+                </button>
+                <button
                   onClick={() => setActiveTab('cancel')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                     activeTab === 'cancel'
@@ -144,6 +156,8 @@ export default function AdminPage() {
 
             {activeTab === 'create' ? (
               <CreateBookingForm apiUrl={apiUrl} apiKey={apiKey} />
+            ) : activeTab === 'update-email' ? (
+              <UpdateEmailForm apiUrl={apiUrl} apiKey={apiKey} />
             ) : (
               <CancelBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             )}
@@ -425,6 +439,111 @@ function CreateBookingForm({ apiUrl, apiKey }) {
               </li>
             ))}
           </ul>
+        </div>
+      )}
+    </form>
+  );
+}
+
+function UpdateEmailForm({ apiUrl, apiKey }) {
+  const [groupRef, setGroupRef] = useState('');
+  const [newEmail, setNewEmail] = useState('');
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [result, setResult] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ type: 'loading', message: 'Updating email...' });
+    setResult(null);
+
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/update-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Key': apiKey,
+        },
+        body: JSON.stringify({
+          groupRef: groupRef.trim(),
+          newEmail: newEmail.trim(),
+        }),
+      });
+
+      let data;
+      try { data = await res.json(); } catch {
+        throw new Error(`Server returned ${res.status} - check your automailer URL and try again`);
+      }
+
+      if (!res.ok) {
+        throw new Error(data.message || data.error || 'Request failed');
+      }
+
+      setResult(data);
+      setStatus({ type: 'success', message: data.message });
+      setGroupRef('');
+      setNewEmail('');
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-slate-200 p-6">
+      <h2 className="text-lg font-semibold text-slate-900 mb-1">Update Guest Email</h2>
+      <p className="text-sm text-slate-500 mb-5">Replace an OTA relay address with the guest's real email. All future pending emails will be sent to the new address.</p>
+
+      <div className="space-y-4">
+        <label className="block">
+          <span className="text-sm font-medium text-slate-700">Beds24 Group Reference *</span>
+          <input
+            type="text"
+            value={groupRef}
+            onChange={(e) => setGroupRef(e.target.value)}
+            placeholder="e.g. 12345678"
+            className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+            required
+            data-testid="input-update-group-ref"
+          />
+        </label>
+
+        <label className="block">
+          <span className="text-sm font-medium text-slate-700">New Email Address *</span>
+          <input
+            type="email"
+            value={newEmail}
+            onChange={(e) => setNewEmail(e.target.value)}
+            placeholder="guest.real.email@example.com"
+            className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+            required
+            data-testid="input-new-email"
+          />
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        disabled={status.type === 'loading'}
+        className="mt-6 w-full py-2.5 bg-[#9e4b13] text-white rounded-lg text-sm font-medium hover:bg-[#8a4211] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+        data-testid="button-update-email"
+      >
+        {status.type === 'loading' ? (
+          <><Loader2 className="w-4 h-4 animate-spin" /> Updating...</>
+        ) : (
+          <><Mail className="w-4 h-4" /> Update Email Address</>
+        )}
+      </button>
+
+      <StatusMessage status={status} />
+
+      {result && (
+        <div className="mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+          <h3 className="text-sm font-semibold text-emerald-800 mb-2">Email Updated</h3>
+          <div className="space-y-1 text-xs text-emerald-700">
+            <p><span className="font-medium">Guest:</span> {result.booking?.guestName}</p>
+            <p><span className="font-medium">Old email:</span> {result.booking?.oldEmail}</p>
+            <p><span className="font-medium">New email:</span> {result.booking?.newEmail}</p>
+            <p><span className="font-medium">Pending emails redirected:</span> {result.pendingEmailsUpdated}</p>
+          </div>
         </div>
       )}
     </form>
