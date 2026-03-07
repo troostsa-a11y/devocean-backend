@@ -54,6 +54,12 @@
   <!-- Reduces 12 event listeners to 3, single callback schedules all scripts with staggered delays -->
   <script>
     (function() {
+      // Skip all third-party analytics in development (Replit preview, localhost)
+      var isDev = window.location.hostname === 'localhost' ||
+                  window.location.hostname.includes('replit.dev') ||
+                  window.location.hostname.includes('repl.co');
+      if (isDev) return;
+
       var loaded = { gtm: false, cookieyes: false, tracker: false, rage: false };
       
       function scheduleWithIdle(fn, delay) {
