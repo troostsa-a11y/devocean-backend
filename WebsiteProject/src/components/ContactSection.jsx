@@ -243,8 +243,12 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                     readOnly
                     value={checkin ? toDDMMYYYY(checkin) : ""}
                     onClick={() => {
-                      if (inRef.current?.showPicker) inRef.current.showPicker();
-                      else inRef.current?.focus();
+                      try {
+                        if (inRef.current?.showPicker) inRef.current.showPicker();
+                        else inRef.current?.focus();
+                      } catch (e) {
+                        inRef.current?.focus();
+                      }
                     }}
                     placeholder={ui.form.phDate || "dd/mm/yyyy"}
                     className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
@@ -270,8 +274,12 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                     readOnly
                     value={checkout ? toDDMMYYYY(checkout) : ""}
                     onClick={() => {
-                      if (outRef.current?.showPicker) outRef.current.showPicker();
-                      else outRef.current?.focus();
+                      try {
+                        if (outRef.current?.showPicker) outRef.current.showPicker();
+                        else outRef.current?.focus();
+                      } catch (e) {
+                        outRef.current?.focus();
+                      }
                     }}
                     placeholder={ui.form.phDate || "dd/mm/yyyy"}
                     className="mt-1 w-full rounded-xl border px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"

@@ -1,3 +1,4 @@
+import { CalendarCheck2 } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 // Key features for each accommodation type - helps users preview before clicking
@@ -94,21 +95,50 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                   />
                 </div>
               )}
-              <div className="p-4">
-                <h3 className="font-semibold text-lg">{u.title}</h3>
-                <p className="mt-1 text-sm text-slate-600">{u.short}</p>
-                {detailPageUrl && (
-                  <a 
-                    href={detailPageUrl}
-                    className="mt-3 inline-flex items-center gap-1 text-sm text-[#9e4b13] hover:text-[#8a4211] font-semibold transition-colors"
-                    data-testid={`link-details-${u.key}`}
-                  >
-                    <span>{u.title} – {ui.stay.moreDetails}</span>
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+              <div className="p-4 flex flex-col gap-2">
+                {detailPageUrl ? (
+                  <a href={detailPageUrl} className="group" data-testid={`link-title-${u.key}`}>
+                    <h3 className="font-semibold text-lg group-hover:text-[#9e4b13] transition-colors">{u.title}</h3>
                   </a>
+                ) : (
+                  <h3 className="font-semibold text-lg">{u.title}</h3>
                 )}
+                <p className="text-sm text-slate-600">{u.short}</p>
+                <div className="mt-1 flex items-center gap-3 flex-wrap">
+                  {detailPageUrl && (
+                    <a 
+                      href={detailPageUrl}
+                      className="inline-flex items-center gap-1 text-sm text-[#9e4b13] hover:text-[#8a4211] font-semibold transition-colors"
+                      data-testid={`link-details-${u.key}`}
+                    >
+                      <span>{ui.stay.moreDetails}</span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </a>
+                  )}
+                  <a
+                    href={bookUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e4b13] text-white text-sm font-semibold hover:bg-[#8a4211] transition-colors"
+                    data-testid={`button-book-${u.key}`}
+                    onClick={() => {
+                      if (window.dataLayer) {
+                        window.dataLayer.push({
+                          event: 'reservation_complete',
+                          button_location: 'accommodation_card',
+                          unit_key: u.key,
+                          language: lang,
+                          currency: currency
+                        });
+                      }
+                    }}
+                  >
+                    <CalendarCheck2 size={14} />
+                    {ui.contact.bookNow}
+                  </a>
+                </div>
               </div>
             </div>
           );
