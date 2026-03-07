@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
+import { createServer as createHttpServer } from 'http';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -617,6 +618,9 @@ function getExperienceFieldLabel(field, lang) {
 // Start server
 const PORT = process.env.PORT || 5000;
 
+// Create HTTP server explicitly so Vite HMR WebSocket can attach to it
+const httpServer = createHttpServer(app);
+
 // In development, use Vite dev server
 const vite = await createViteServer({
   server: { 
@@ -624,8 +628,9 @@ const vite = await createViteServer({
     host: true,
     allowedHosts: true,
     hmr: {
-      host: false
-    }
+      server: httpServer,
+      clientPort: 443,
+    },
   },
   appType: 'spa',
   root: __dirname,
@@ -633,6 +638,6 @@ const vite = await createViteServer({
 
 app.use(vite.middlewares);
 
-app.listen(PORT, '0.0.0.0', () => {
+httpServer.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on http://0.0.0.0:${PORT}`);
 });
