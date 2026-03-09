@@ -140,7 +140,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
               href={buildUrl('/why-ponta')}
-              className="group w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              className="group w-full sm:w-52 px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-why-ponta"
             >
               <MapPin className="w-4 h-4" />
@@ -150,7 +150,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Explore Lodge */}
             <a
               href="#stay"
-              className="group btn-secondary w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              className="group btn-secondary w-full sm:w-52 px-5 py-3 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               aria-label={ui.hero.ctaSecondary}
               data-testid="button-explore-lodge"
             >
@@ -161,7 +161,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Go Diving */}
             <Link
               href={buildUrl('/experiences/diving')}
-              className="group w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              className="group w-full sm:w-52 px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-go-diving"
             >
               <Anchor className="w-4 h-4" />
@@ -173,7 +173,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               href={bookUrl}
               target="_blank"
               rel="noreferrer"
-              className="group btn-cta w-full sm:w-auto px-5 py-3 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2 border-2 border-white/20"
+              className="group btn-cta w-full sm:w-52 px-5 py-3 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2 border-2 border-white/20"
               onClick={() => {
                 if (window.dataLayer) {
                   window.dataLayer.push({
