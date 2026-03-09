@@ -193,6 +193,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
           </div>
           <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
+          <div className="text-white/60 text-xs mt-1 italic">Click the reviews for more!</div>
         </div>
 
         {/* Trustindex Review Widget - Reserve space to prevent CLS */}
