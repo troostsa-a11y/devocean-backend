@@ -914,7 +914,7 @@ export const UI = {
     menu: "Meny",
     regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Oceanien" },
     nav: { home: "Hem", stay: "Boende", experiences: "Upplevelser", todo: "Att göra", gallery: "Galleri", location: "Plats", contact: "Kontakt" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Miljövänliga boenden några hundra meter från stranden i Ponta do Ouro, södra Moçambique.", ctaPrimary: "Boka ditt boende", ctaSecondary: "Utforska lodgen", badge: "Gästernas favorit – komfort och värde" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Miljövänligt boende nära en orörd strand i en äventyrsdestination i världsklass.", description: "Upptäck ett unikt UNESCO-dykparadis, omgivet av naturreservat och oförglömliga upplevelser utomhus.", ctaPrimary: "Boka ditt boende", ctaSecondary: "Utforska lodgen", badge: "Gästernas favorit – komfort och värde" },
     stay: { headline: "Bo hos oss", blurb: "Välj din stil: naturnära tält eller mysiga stugor – alla med varm, familjeägd gästfrihet.", moreDetails: "Mer information", ourStory: "Vår Berättelse" },
     experiences: { headline: "Upplevelser", blurb: "Havs- och skogsäventyr precis utanför dörren.", operators: "Pålitliga lokala arrangörer:" },
     todo: {
