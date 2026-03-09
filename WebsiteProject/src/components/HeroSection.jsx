@@ -195,9 +195,11 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         </div>
 
-        {/* Trustindex Review Widget - Reserve space to prevent CLS */}
-        <div ref={trustindexRef} className="mt-6"></div>
-        <div className="text-white/60 text-xs mt-1 italic">Click the reviews for more!</div>
+        {/* Trustindex Review Widget with hint vertically centred beside it */}
+        <div className="mt-6 flex items-center gap-4 flex-wrap">
+          <div ref={trustindexRef}></div>
+          <div className="text-white/90 text-sm sm:text-base italic">Click the reviews for more!</div>
+        </div>
       </div>
 
     </section>
