@@ -133,9 +133,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full" style={{ paddingTop: 'calc(var(--stack-h) + 4rem)', paddingBottom: '6rem' }}>
         <h1 className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight">{ui.hero.title}</h1>
         <p className="mt-4 md:text-xl max-w-2xl">{ui.hero.subtitle}</p>
-        {ui.hero.description && (
-          <p className="mt-2 text-sm md:text-base max-w-2xl text-white/80">{ui.hero.description}</p>
-        )}
         
         {/* CTA Buttons */}
         <div className="mt-8 sm:mt-10">
