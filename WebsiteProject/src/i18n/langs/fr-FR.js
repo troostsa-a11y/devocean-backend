@@ -13,7 +13,7 @@ menu: "Menu",
     },
     hero: {
       title: "DEVOCEAN Lodge",
-      subtitle: "Hébergements écoresponsables près d'une plage préservée. Destination de plongée UNESCO de classe mondiale entourée de réserves naturelles.",
+      subtitle: "Séjours écologiques près d'une plage préservée, dans une destination d'aventure de classe mondiale.", description: "Découvrez un paradis de plongée UNESCO unique, entouré de réserves naturelles et d'expériences inoubliables en plein air.",
       ctaPrimary: "Réservez votre séjour",
       ctaSecondary: "Découvrir le lodge",
       badge: "Confort & rapport qualité-prix plébiscités",
