@@ -197,7 +197,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
         {/* Trustindex Review Widget - Reserve space to prevent CLS */}
         <div ref={trustindexRef} className="mt-6"></div>
-        <div className="text-white/90 text-sm sm:text-base mt-1 text-center">Click the reviews for more!</div>
+        <div className="text-white/60 text-xs mt-1 italic">Click the reviews for more!</div>
       </div>
 
     </section>
