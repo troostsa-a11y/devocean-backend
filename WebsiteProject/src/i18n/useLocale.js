@@ -506,7 +506,8 @@ function getCriticalUI(lang) {
     // Critical hero text for LCP optimization - renders immediately for fast paint
     hero: { 
       title: nav.heroTitle || "DEVOCEAN Lodge",
-      subtitle: nav.heroSubtitle || "Eco-friendly stays near a pristine beach. Offering a world-class UNESCO dive destination surrounded by nature reserves.",
+      subtitle: nav.heroSubtitle || "Eco-friendly stays near an unspoiled beach in a world-class diving destination.",
+      description: nav.heroDescription || null,
       ctaPrimary: nav.heroCTA || "Book your stay",
       ctaSecondary: nav.heroExplore || "Explore the lodge",
       badge: "..." // Placeholder until full translations load
