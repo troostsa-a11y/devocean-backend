@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
-import { Star, ArrowRight, MapPin } from 'lucide-react';
+import { Star, ArrowRight, MapPin, Anchor } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
@@ -134,36 +134,46 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         <h1 className="text-4xl md:text-6xl font-bold max-w-3xl leading-tight">{ui.hero.title}</h1>
         <p className="mt-4 md:text-xl max-w-2xl">{ui.hero.subtitle}</p>
         
-        {/* Enhanced CTA Buttons with visual prominence */}
+        {/* CTA Buttons */}
         <div className="mt-8 sm:mt-10">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-wrap">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-wrap">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
               href={buildUrl('/why-ponta')}
-              className="group w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
+              className="group w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-why-ponta"
             >
-              <MapPin className="w-5 h-5" />
+              <MapPin className="w-4 h-4" />
               <span>{ui.hero.whyPonta || "Why Ponta do Ouro?"}</span>
             </Link>
-            
+
             {/* Explore Lodge */}
             <a
               href="#stay"
-              className="group btn-secondary w-full sm:w-auto px-7 py-4 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3"
+              className="group btn-secondary w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               aria-label={ui.hero.ctaSecondary}
               data-testid="button-explore-lodge"
             >
               <span>{ui.hero.ctaSecondary}</span>
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
-            
+
+            {/* Go Diving */}
+            <Link
+              href={buildUrl('/experiences/diving')}
+              className="group w-full sm:w-auto px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              data-testid="link-go-diving"
+            >
+              <Anchor className="w-4 h-4" />
+              <span>{ui.hero.goDiving || "Go Diving"}</span>
+            </Link>
+
             {/* Book Now */}
             <a
               href={bookUrl}
               target="_blank"
               rel="noreferrer"
-              className="group btn-cta w-full sm:w-auto px-7 py-4 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-lg flex items-center justify-center gap-3 border-2 border-white/20"
+              className="group btn-cta w-full sm:w-auto px-5 py-3 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2 border-2 border-white/20"
               onClick={() => {
                 if (window.dataLayer) {
                   window.dataLayer.push({
@@ -176,7 +186,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               }}
             >
               <span>{ui.hero.ctaPrimary}</span>
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={22} />
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
           </div>
         </div>
