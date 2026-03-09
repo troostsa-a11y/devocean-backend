@@ -4,7 +4,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near a pristine beach. Offering a world-class UNESCO dive destination surrounded by nature reserves.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
     experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {
@@ -76,7 +76,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near a pristine beach. Offering a world-class UNESCO dive destination surrounded by nature reserves.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
     experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {
@@ -147,7 +147,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceânia" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas perto de uma praia pristina. Um destino de mergulho UNESCO de nível mundial rodeado de reservas naturais.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
     experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:" },
     todo: {
@@ -219,7 +219,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas a poucas centenas de metros da praia em Ponta do Ouro, sul de Moçambique.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas perto de uma praia pristina. Um destino de mergulho UNESCO de nível mundial rodeado de reservas naturais.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
     experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:" },
     todo: {
@@ -290,7 +290,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijke verblijven op enkele honderden meters van het strand in Ponta do Ouro, Zuid-Mozambique.", ctaPrimary: "Boek je verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijke verblijven bij een ongerepte strand. Een UNESCO-duikbestemming van wereldklasse omgeven door natuurreservaten.", ctaPrimary: "Boek je verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
     experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:" },
     units: {
@@ -412,8 +412,7 @@ export const UI = {
     },
     hero: {
       title: "DEVOCEAN Lodge",
-      subtitle:
-        "Hébergements écoresponsables à quelques centaines de mètres de la plage à Ponta do Ouro, sud du Mozambique.",
+      subtitle: "Hébergements écoresponsables près d'une plage préservée. Destination de plongée UNESCO de classe mondiale entourée de réserves naturelles.",
       ctaPrimary: "Réserver",
       ctaSecondary: "Découvrir le lodge",
       badge: "Confort & rapport qualité-prix plébiscités"
@@ -578,7 +577,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europa", asia: "Asia", americas: "Americhe", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Alloggi", experiences: "Esperienze", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni eco-friendly a pochi minuti dalla spiaggia di Ponta do Ouro, Mozambico meridionale.", ctaPrimary: "Prenota ora", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni eco-friendly vicino a una spiaggia incontaminata. Destinazione UNESCO per immersioni di livello mondiale circondata da riserve naturali.", ctaPrimary: "Prenota ora", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
     stay: { headline: "Soggiorna con noi", blurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.", moreDetails: "Altri dettagli", ourStory: "La Nostra Storia" },
     experiences: { headline: "Esperienze", blurb: "Avventure tra oceano e foresta a portata di mano.", operators: "Operatori locali fidati:" },
     units: {
@@ -690,7 +689,7 @@ export const UI = {
     menu: "Menü",
     regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundliche Unterkünfte nur wenige hundert Meter vom Strand in Ponta do Ouro, Südmosambik.", ctaPrimary: "Jetzt buchen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundliche Unterkünfte nahe einem unberührten Strand. Ein UNESCO-Tauchziel von Weltklasse, umgeben von Naturschutzgebieten.", ctaPrimary: "Jetzt buchen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
     experiences: { headline: "Erlebnisse", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:" },
     units: {
@@ -802,7 +801,7 @@ export const UI = {
     menu: "Menú",
     regions: { europe: "Europa", asia: "Asia", americas: "Américas", africa: "África", oceania: "Oceanía" },
     nav: { home: "Inicio", stay: "Alojamiento", experiences: "Experiencias", todo: "Qué hacer", gallery: "Galería", location: "Ubicación", contact: "Contacto" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Alojamientos ecológicos a pocos cientos de metros de la playa en Ponta do Ouro, Sur de Mozambique.", ctaPrimary: "Reservar", ctaSecondary: "Explorar el lodge", badge: "Comodidad y valor muy apreciados" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Alojamientos ecológicos cerca de una playa pristina. Destino de buceo UNESCO de clase mundial rodeado de reservas naturales.", ctaPrimary: "Reservar", ctaSecondary: "Explorar el lodge", badge: "Comodidad y valor muy apreciados" },
     stay: { headline: "Alójate con nosotros", blurb: "Tiendas en la naturaleza o chalets/cottage acogedores – con hospitalidad familiar.", moreDetails: "Más detalles", ourStory: "Nuestra Historia" },
     experiences: { headline: "Experiencias", blurb: "Aventuras de océano y bosque a tu puerta.", operators: "Operadores locales de confianza:" },
     units: {
@@ -987,7 +986,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europa", asia: "Azja", americas: "Ameryki", africa: "Afryka", oceania: "Oceania" },
     nav: { home: "Strona główna", stay: "Pobyt", experiences: "Doświadczenia", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty kilkaset metrów od plaży w Ponta do Ouro, południowy Mozambik.", ctaPrimary: "Zarezerwuj swój pobyt", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty blisko dziewiczej plaży. Cel nurkowania UNESCO światowej klasy otoczony rezerwatami przyrody.", ctaPrimary: "Zarezerwuj swój pobyt", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości" },
     stay: { headline: "Zostań z nami", blurb: "Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.", moreDetails: "Więcej szczegółów", ourStory: "Nasza Historia" },
     experiences: { headline: "Doświadczenia", blurb: "Przygody nad oceanem i w lesie tuż za progiem.", operators: "Zaufani lokalni operatorzy:" },
     todo: {
@@ -1059,7 +1058,7 @@ export const UI = {
     menu: "メニュー",
     regions: { europe: "ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチ近くのエコフレンドリーな滞在。自然保護区に囲まれた世界クラスのユネスコダイビング目的地。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
     experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
     units: {
@@ -1242,7 +1241,7 @@ export const UI = {
     menu: "Меню",
     regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
     nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание у первозданного пляжа. Мировой центр дайвинга под эгидой ЮНЕСКО, окружённый природными заповедниками.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
     stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
     experiences: { headline: "Впечатления", blurb: "Приключения на море и в лесу прямо у вашего порога.", operators: "Надежные местные операторы:" },
     todo: {
@@ -1314,7 +1313,7 @@ export const UI = {
     menu: "Kieslys",
     regions: { europe: "Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
     nav: { home: "Tuis", stay: "Verblyf", experiences: "Ervarings", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eko-vriendelike verblyf 'n paar honderd meter vanaf die strand in Ponta do Ouro, Suid-Mosambiek.", ctaPrimary: "Bespreek jou verblyf", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiese verblyf naby 'n ongerepte strand. Wêreldklas UNESCO-duikbestemming omring deur natuurreservate.", ctaPrimary: "Bespreek jou verblyf", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste" },
     stay: { headline: "Bly by ons", blurb: "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid.", moreDetails: "Meer besonderhede", ourStory: "Ons Storie" },
     experiences: { headline: "Ervarings", blurb: "See- en bosavonture reg voor jou deur.", operators: "Betroubare plaaslike operateurs:" },
     todo: {
@@ -1386,7 +1385,7 @@ export const UI = {
     menu: "Imenyu",
     regions: { europe: "I-Europe", asia: "I-Asia", americas: "I-America", africa: "I-Afrika", oceania: "I-Oceania" },
     nav: { home: "Ikhaya", stay: "Ukuhlala", experiences: "Okuhlangenwe nakho", todo: "Okumele ukwenze", gallery: "Igalari", location: "Indawo", contact: "Xhumana nathi" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Indawo yokuhlala enobungani bemvelo emamitha ambalwa ukusuka ogwini lwasePonta do Ouro, eNingizimu yeMozambique.", ctaPrimary: "Bhukha indawo yakho yokuhlala", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Indawo yokuhlala enobungani bemvelo eduze kwegceke elihle. Ikheli le-UNESCO lokungenela emanzini elimdundo wamazwe jikelele elizungezwe izindawo zemvelo.", ctaPrimary: "Bhukha indawo yakho yokuhlala", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi" },
     stay: { headline: "Hlala nathi", blurb: "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni.", moreDetails: "Imininingwane eyengeziwe", ourStory: "Indaba Yethu" },
     experiences: { headline: "Okuhlangenwe nakho", blurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.", operators: "Abahlinzekibasekhaya abathenjwayo:" },
     todo: {
@@ -1962,7 +1961,7 @@ export const L10N = {
 
   "ja-JP": {
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "モザンビーク南部のPonta do Ouroのビーチから数百メートル離れたエコフレンドリーな滞在。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチ近くのエコフレンドリーな滞在。自然保護区に囲まれた世界クラスのユネスコダイビング目的地。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
     experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
     units: {
@@ -2192,7 +2191,7 @@ export const L10N = {
     menu: "Меню",
     regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
     nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание в нескольких сотнях метров от пляжа в Пonta do Ouro, Южный Мозамбик.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичное проживание у первозданного пляжа. Мировой центр дайвинга под эгидой ЮНЕСКО, окружённый природными заповедниками.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
     stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
     experiences: { headline: "Впечатления", blurb: "Приключения на море и в лесу прямо у вашего порога.", operators: "Надежные местные операторы:" },
     units: {

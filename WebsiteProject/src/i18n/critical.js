@@ -13,7 +13,7 @@ export const CRITICAL_NAV = {
     bookNow: "Rates & Availability",
     heroCTA: "Book your stay",
     heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
+    heroSubtitle: "Eco-friendly stays near a pristine beach. Offering a world-class UNESCO dive destination surrounded by nature reserves.",
     heroExplore: "Explore the lodge"
   },
   "en-US": {
@@ -27,7 +27,7 @@ export const CRITICAL_NAV = {
     bookNow: "Rates & Availability",
     heroCTA: "Book your stay",
     heroTitle: "DEVOCEAN Lodge",
-    heroSubtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.",
+    heroSubtitle: "Eco-friendly stays near a pristine beach. Offering a world-class UNESCO dive destination surrounded by nature reserves.",
     heroExplore: "Explore the lodge"
   },
   "pt-PT": {
