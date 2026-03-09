@@ -5,6 +5,10 @@ import LazyImage from './LazyImage';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
   const [idx, setIdx] = useState(0);
+  // Only mount images in the DOM when they're needed — all slides are full-screen
+  // (absolute inset-0) so the browser treats them all as in-viewport, loading them
+  // all at once. Controlling mount order limits initial downloads to just slide 0.
+  const [mountedIndices, setMountedIndices] = useState(() => new Set([0]));
   const list = Array.isArray(images) ? images.filter(Boolean) : [];
   const trustindexRef = useRef(null);
   
@@ -18,8 +22,23 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
   useEffect(() => {
     if (list.length <= 1) return;
-    const id = setInterval(() => setIdx(i => (i + 1) % list.length), 6000);
-    return () => clearInterval(id);
+
+    // Mount slide 1 after 3s so it has time to load before the first 6s transition
+    const preload = setTimeout(() => {
+      setMountedIndices(prev => new Set([...prev, 1]));
+    }, 3000);
+
+    const id = setInterval(() => {
+      setIdx(prev => {
+        const next = (prev + 1) % list.length;
+        const upcoming = (next + 1) % list.length;
+        // Mount the slide-after-next now — it has a full 6s interval to download
+        setMountedIndices(m => new Set([...m, upcoming]));
+        return next;
+      });
+    }, 6000);
+
+    return () => { clearTimeout(preload); clearInterval(id); };
   }, [list.length]);
 
   // Lazy load Trustindex widget using IntersectionObserver (avoids blocking INP)
@@ -73,7 +92,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Brand fallback */}
       <div className="absolute inset-0 bg-[#9e4b13]" />
 
-      {/* Slides */}
+      {/* Slides — only mounted images are in the DOM to prevent mass-loading */}
       <div className="absolute inset-0">
         {list.map((img, i) => {
           const src = typeof img === 'string' ? img : img.desktop;
@@ -82,21 +101,27 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           const srcMobileWebP = typeof img === 'object' ? img.mobileWebP : undefined;
           const isFirst = i === 0;
           return (
-            <LazyImage
+            <div
               key={src}
-              src={src}
-              srcMobile={srcMobile}
-              srcWebP={srcWebP}
-              srcMobileWebP={srcMobileWebP}
-              alt={`Hero slide ${i + 1}`}
-              className="absolute inset-0 w-full h-full object-cover object-center"
+              className="absolute inset-0 transition-opacity duration-1000"
               style={{ opacity: i === idx ? 1 : 0 }}
-              loading={isFirst ? "eager" : "lazy"}
-              fetchpriority={isFirst ? "high" : undefined}
-              width={1920}
-              height={1080}
-              aspectRatio="16/9"
-            />
+            >
+              {mountedIndices.has(i) && (
+                <LazyImage
+                  src={src}
+                  srcMobile={srcMobile}
+                  srcWebP={srcWebP}
+                  srcMobileWebP={srcMobileWebP}
+                  alt={`Hero slide ${i + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                  loading={isFirst ? "eager" : "lazy"}
+                  fetchpriority={isFirst ? "high" : undefined}
+                  width={1920}
+                  height={1080}
+                  aspectRatio="16/9"
+                />
+              )}
+            </div>
           );
         })}
       </div>

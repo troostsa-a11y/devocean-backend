@@ -6,7 +6,7 @@ export const UI = {
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your stay", ctaSecondary: "Explore the lodge", badge: "Guests loved comfort & value", whyPonta: "Why Ponta do Ouro?" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
-    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:" },
+    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {
       headline: "What to do in Ponta do Ouro",
       note: "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.",
@@ -78,7 +78,7 @@ export const UI = {
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays a few hundred meters from the beach in Ponta do Ouro, Southern Mozambique.", ctaPrimary: "Book your stay", ctaSecondary: "Explore the lodge", badge: "Guests loved comfort & value", whyPonta: "Why Ponta do Ouro?" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
-    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:" },
+    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {
       headline: "What to do in Ponta do Ouro",
       note: "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.",

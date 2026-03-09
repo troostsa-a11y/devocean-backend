@@ -34,57 +34,110 @@ const getTagLabel = (tag, lang) => {
 };
 
 export default function ExperiencesSection({ experiences, ui, lang }) {
+  const featured = experiences[0]; // Diving — always first
+  const rest = experiences.slice(1);
+
+  const makeCardProps = (c) => {
+    const hasDetailPage = ['dolphins', 'diving', 'seafari', 'safari', 'fishing', 'surfing'].includes(c.key);
+    const CardWrapper = hasDetailPage ? Link : 'a';
+    const cardProps = hasDetailPage
+      ? { href: `/experiences/${c.key}` }
+      : { href: c.url, target: "_blank", rel: "noopener noreferrer" };
+    return { CardWrapper, cardProps, tags: EXP_TAGS[c.key] || [] };
+  };
+
+  const { CardWrapper: FeaturedWrapper, cardProps: featuredCardProps, tags: featuredTags } = makeCardProps(featured);
+
   return (
     <section id="experiences" className="bg-slate-50 border-y">
       <div className="max-w-7xl mx-auto px-4 py-16">
         <h2 className="text-3xl md:text-4xl font-bold">{ui.experiences.headline}</h2>
         <p className="mt-2 text-slate-600 max-w-2xl">{ui.experiences.blurb}</p>
 
-        <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {experiences.map((c, idx) => {
-            // Experiences with detail pages (all except lighthouse)
-            const hasDetailPage = ['dolphins', 'diving', 'seafari', 'safari', 'fishing', 'surfing'].includes(c.key);
-            const CardWrapper = hasDetailPage ? Link : 'a';
-            const cardProps = hasDetailPage 
-              ? { href: `/experiences/${c.key}` }
-              : { href: c.url, target: "_blank", rel: "noopener noreferrer" };
-            const tags = EXP_TAGS[c.key] || [];
-            
-            return (
-              <CardWrapper
-                key={c.key}
-                {...cardProps}
-                className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
-                data-testid={`link-experience-${c.key}`}
-              >
-                <div className="h-40 overflow-hidden relative">
-                  <LazyImage 
-                    src={c.img} 
-                    alt={c.title} 
-                    className="w-full h-full object-cover"
-                    width={400}
-                    height={267}
-                    aspectRatio="3/2"
-                  />
-                  {/* Preview tags overlay */}
-                  <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
-                    {tags.map((t) => (
-                      <span 
-                        key={t}
-                        className="px-2 py-0.5 text-xs font-medium bg-white/90 text-slate-700 rounded-full shadow-sm backdrop-blur-sm"
-                      >
-                        {getTagLabel(t, lang)}
-                      </span>
-                    ))}
+        <div className="mt-8 flex flex-col gap-6">
+
+          {/* Featured card — Scuba Diving */}
+          <FeaturedWrapper
+            {...featuredCardProps}
+            className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+            data-testid={`link-experience-${featured.key}`}
+          >
+            <div className="flex flex-col sm:flex-row">
+              <div className="sm:w-1/2 h-56 sm:h-72 overflow-hidden relative flex-shrink-0">
+                <LazyImage
+                  src={featured.img}
+                  alt={featured.title}
+                  className="w-full h-full object-cover"
+                  width={800}
+                  height={480}
+                  aspectRatio="5/3"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="px-3 py-1 text-xs font-semibold bg-[#9e4b13] text-white rounded-full shadow">
+                    {ui.experiences.featured || 'Featured'}
+                  </span>
+                </div>
+                <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
+                  {featuredTags.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-0.5 text-xs font-medium bg-white/90 text-slate-700 rounded-full shadow-sm backdrop-blur-sm"
+                    >
+                      {getTagLabel(t, lang)}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-6 flex flex-col justify-center sm:w-1/2">
+                <h3 className="text-xl font-bold">{featured.title}</h3>
+                <p className="mt-2 text-slate-600">{featured.desc}</p>
+                <p className="mt-4 text-sm font-medium text-[#9e4b13]">
+                  {ui.experiences.learnMore || 'Explore dive sites, operators & pricing →'}
+                </p>
+              </div>
+            </div>
+          </FeaturedWrapper>
+
+          {/* Remaining experiences grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {rest.map((c) => {
+              const { CardWrapper, cardProps, tags } = makeCardProps(c);
+              return (
+                <CardWrapper
+                  key={c.key}
+                  {...cardProps}
+                  className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  data-testid={`link-experience-${c.key}`}
+                >
+                  <div className="h-40 overflow-hidden relative">
+                    <LazyImage
+                      src={c.img}
+                      alt={c.title}
+                      className="w-full h-full object-cover"
+                      width={400}
+                      height={267}
+                      aspectRatio="3/2"
+                    />
+                    <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
+                      {tags.map((t) => (
+                        <span
+                          key={t}
+                          className="px-2 py-0.5 text-xs font-medium bg-white/90 text-slate-700 rounded-full shadow-sm backdrop-blur-sm"
+                        >
+                          {getTagLabel(t, lang)}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="p-4">
-                  <h3 className="font-semibold">{c.title}</h3>
-                  <p className="mt-1 text-sm text-slate-600">{c.desc}</p>
-                </div>
-              </CardWrapper>
-            );
-          })}
+                  <div className="p-4">
+                    <h3 className="font-semibold">{c.title}</h3>
+                    <p className="mt-1 text-sm text-slate-600">{c.desc}</p>
+                  </div>
+                </CardWrapper>
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </section>
