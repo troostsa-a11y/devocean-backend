@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
-import { Star, ArrowRight, MapPin, Anchor } from 'lucide-react';
+import { Star, Anchor } from 'lucide-react';
 import LazyImage from './LazyImage';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
@@ -143,7 +143,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               className="group w-full sm:w-52 px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-why-ponta"
             >
-              <MapPin className="w-4 h-4" />
               <span>{ui.hero.villageHighlights || "Village Highlights"}</span>
             </Link>
 
