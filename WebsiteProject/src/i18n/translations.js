@@ -4,7 +4,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving destination surrounded by nature reserves, just a short stroll from an unspoiled beach.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
     experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {
@@ -76,7 +76,7 @@ export const UI = {
     menu: "Menu",
     regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving destination surrounded by nature reserves, just a short stroll from an unspoiled beach.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
     experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {

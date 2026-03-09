@@ -14,7 +14,7 @@ export const CRITICAL_NAV = {
     heroCTA: "Book your stay",
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.",
-    heroDescription: "Discover a unique UNESCO diving destination surrounded by nature reserves, just a short stroll from an unspoiled beach.",
+    heroDescription: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.",
     heroExplore: "Explore the lodge"
   },
   "en-US": {
@@ -29,7 +29,7 @@ export const CRITICAL_NAV = {
     heroCTA: "Book your stay",
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.",
-    heroDescription: "Discover a unique UNESCO diving destination surrounded by nature reserves, just a short stroll from an unspoiled beach.",
+    heroDescription: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.",
     heroExplore: "Explore the lodge"
   },
   "pt-PT": {
