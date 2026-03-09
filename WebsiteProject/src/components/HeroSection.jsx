@@ -144,7 +144,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               data-testid="link-why-ponta"
             >
               <MapPin className="w-4 h-4" />
-              <span>{ui.hero.whyPonta || "Why Ponta do Ouro?"}</span>
+              <span>{ui.hero.villageHighlights || "Village Highlights"}</span>
             </Link>
 
             {/* Explore Lodge */}
@@ -155,7 +155,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               data-testid="button-explore-lodge"
             >
               <span>{ui.hero.ctaSecondary}</span>
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
 
             {/* Go Diving */}
@@ -186,7 +185,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               }}
             >
               <span>{ui.hero.ctaPrimary}</span>
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </a>
           </div>
         </div>
