@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'wouter';
-import { Waves, Fish, TreePine, Globe, Heart, ArrowRight, MapPin, Anchor } from 'lucide-react';
+import { Waves, Fish, TreePine, Globe, Heart, ArrowRight, MapPin } from 'lucide-react';
 import Footer from './Footer';
 import { WHY_PONTA_CONTENT } from '../i18n/content/whyPontaContent';
 
@@ -134,8 +134,8 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         {/* Introduction */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#9e4b13]/10 rounded-full mb-6">
-              <Anchor className="w-5 h-5 text-[#9e4b13]" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#9e4b13]/10 rounded-full mb-6 cursor-default select-none">
+              <MapPin className="w-5 h-5 text-[#9e4b13]" />
               <span className="text-[#9e4b13] font-medium">{content.badgeLabel}</span>
             </div>
             <p className="text-lg text-slate-700 leading-relaxed">
@@ -169,7 +169,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
                         {section.title}
                       </h2>
                       {section.highlight && (
-                        <span className="hidden sm:inline-flex px-3 py-1 bg-[#9e4b13]/10 text-[#9e4b13] text-sm font-medium rounded-full whitespace-nowrap">
+                        <span className="hidden sm:inline-flex px-3 py-1 bg-[#9e4b13]/10 text-[#9e4b13] text-sm font-medium rounded-full whitespace-nowrap cursor-default select-none">
                           {section.highlight}
                         </span>
                       )}
