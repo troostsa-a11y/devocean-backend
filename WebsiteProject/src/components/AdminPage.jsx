@@ -221,25 +221,11 @@ function ConfigPanel({ apiUrl, apiKey, showKey, onUrlChange, onKeyChange, onTogg
   );
 }
 
-function deriveFirstName(fullName) {
-  if (!fullName || !fullName.trim()) return '';
-  const name = fullName.trim();
-  const titles = /^(mr\.?|mrs\.?|ms\.?|miss|dr\.?|prof\.?|sir)\s+/i;
-  const cleaned = name.replace(titles, '').trim();
-  if (cleaned.includes(',')) {
-    // Beds24 format: "Lastname, Firstname" — take what's after the comma
-    const afterComma = cleaned.split(',')[1]?.trim() || '';
-    return afterComma.split(/\s+/)[0] || cleaned;
-  }
-  // Plain "Firstname Lastname" — take the first word
-  return cleaned.split(/\s+/)[0] || cleaned;
-}
-
 function CreateBookingForm({ apiUrl, apiKey }) {
   const [form, setForm] = useState({
     groupRef: '',
-    guestName: '',
     firstName: '',
+    lastName: '',
     guestEmail: '',
     guestGender: '',
     guestLanguage: 'EN',
@@ -247,39 +233,25 @@ function CreateBookingForm({ apiUrl, apiKey }) {
     checkInDate: '',
     checkOutDate: '',
   });
-  const [firstNameOverridden, setFirstNameOverridden] = useState(false);
   const [status, setStatus] = useState({ type: 'idle', message: '' });
   const [result, setResult] = useState(null);
 
-  const update = (field) => (e) => {
-    const value = e.target.value;
-    if (field === 'guestName') {
-      setForm((prev) => ({
-        ...prev,
-        guestName: value,
-        firstName: firstNameOverridden ? prev.firstName : deriveFirstName(value),
-      }));
-    } else {
-      setForm((prev) => ({ ...prev, [field]: value }));
-    }
-  };
-
-  const updateFirstName = (e) => {
-    const value = e.target.value;
-    setFirstNameOverridden(true);
-    setForm((prev) => ({ ...prev, firstName: value }));
-  };
+  const update = (field) => (e) => setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ type: 'loading', message: 'Creating booking...' });
     setResult(null);
 
+    const firstName = form.firstName.trim();
+    const lastName = form.lastName.trim();
+    const guestName = lastName ? `${firstName} ${lastName}` : firstName;
+
     try {
       const body = {
         groupRef: form.groupRef.trim(),
-        guestName: form.guestName.trim(),
-        firstName: form.firstName.trim(),
+        guestName,
+        firstName,
         guestEmail: form.guestEmail.trim(),
         guestLanguage: form.guestLanguage,
         checkInDate: form.checkInDate,
@@ -308,9 +280,8 @@ function CreateBookingForm({ apiUrl, apiKey }) {
 
       setResult(data);
       setStatus({ type: 'success', message: data.message });
-      setFirstNameOverridden(false);
       setForm({
-        groupRef: '', guestName: '', firstName: '', guestEmail: '',
+        groupRef: '', firstName: '', lastName: '', guestEmail: '',
         guestGender: '', guestLanguage: 'EN', guestCountry: '',
         checkInDate: '', checkOutDate: '',
       });
@@ -340,29 +311,27 @@ function CreateBookingForm({ apiUrl, apiKey }) {
 
         <div className="grid grid-cols-2 gap-3">
           <label className="block">
-            <span className="text-sm font-medium text-slate-700">Full Name *</span>
-            <input
-              type="text"
-              value={form.guestName}
-              onChange={update('guestName')}
-              placeholder="e.g. Jan Novak or Novak, Jan"
-              className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
-              required
-              data-testid="input-guest-name"
-            />
-          </label>
-          <label className="block">
-            <span className="text-sm font-medium text-slate-700">
-              First Name * <span className="text-xs font-normal text-slate-400">(auto-filled)</span>
-            </span>
+            <span className="text-sm font-medium text-slate-700">First Name *</span>
             <input
               type="text"
               value={form.firstName}
-              onChange={updateFirstName}
-              placeholder="e.g. Jan"
+              onChange={update('firstName')}
+              placeholder="e.g. Dane"
               className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
               required
               data-testid="input-first-name"
+            />
+          </label>
+          <label className="block">
+            <span className="text-sm font-medium text-slate-700">Last Name *</span>
+            <input
+              type="text"
+              value={form.lastName}
+              onChange={update('lastName')}
+              placeholder="e.g. Botton"
+              className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+              required
+              data-testid="input-last-name"
             />
           </label>
         </div>
