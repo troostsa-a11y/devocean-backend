@@ -64,8 +64,8 @@ function updateBookingUrls() {
   
   console.log('Accommodation page booking URL:', { lang, currency, isoLang, langFile, bookingUrl });
   
-  // Update all booking buttons (using data-testid for reliability)
-  const bookButtons = document.querySelectorAll('a[data-testid="button-book-now"]');
+  // Update all booking buttons and CTA heading links (using data-testid for reliability)
+  const bookButtons = document.querySelectorAll('a[data-testid="button-book-now"], a[data-testid="button-book-heading"]');
   bookButtons.forEach(button => {
     button.href = bookingUrl;
     button.target = '_blank';

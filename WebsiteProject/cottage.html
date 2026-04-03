@@ -449,6 +449,7 @@
       border: 1px solid rgba(158, 75, 19, 0.1);
     }
 
+    .dl-cta-heading-link { color: inherit; text-decoration: none; display: block; cursor: pointer; }
     .dl-cta h2 {
       font-size: 2rem;
       font-weight: 700;
@@ -517,7 +518,8 @@
         font-size: 2rem;
       }
 
-      .dl-cta h2 {
+      .dl-cta-heading-link { color: inherit; text-decoration: none; display: block; cursor: pointer; }
+    .dl-cta h2 {
         font-size: 1.5rem;
       }
 
@@ -793,7 +795,7 @@
 
       <!-- Call to Action -->
       <div class="dl-cta">
-        <h2>Ready to Book Your Garden Cottage?</h2>
+        <a href="/book/EN.html?currency=USD" class="dl-cta-heading-link" data-testid="button-book-heading" target="_blank" rel="noopener noreferrer"><h2>Ready to Book Your Garden Cottage?</h2></a>
         <p>Experience rustic elegance in our tropical garden retreat. Book direct for the best rates and personalized service.</p>
         <div class="dl-cta-buttons">
           <a href="/book/EN.html?currency=USD" class="btn btn-primary" data-testid="button-book-now" target="_blank" rel="noopener noreferrer">
