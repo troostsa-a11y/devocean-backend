@@ -68,11 +68,15 @@ function updateBookingUrls() {
   const bookButtons = document.querySelectorAll('a[data-testid="button-book-now"]');
   bookButtons.forEach(button => {
     button.href = bookingUrl;
+    button.target = '_blank';
+    button.rel = 'noopener noreferrer';
   });
   
   // Also update any links with class "btn-primary" that contain booking references
   document.querySelectorAll('a.btn-primary[href*="book"]').forEach(button => {
     button.href = bookingUrl;
+    button.target = '_blank';
+    button.rel = 'noopener noreferrer';
   });
 }
 
