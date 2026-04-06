@@ -701,7 +701,8 @@
           var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language].filter(Boolean);
           var HINT = { "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR", "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR" };
           var first = (list[0] || "").toLowerCase();
-          return HINT[first] || (langNow === "ptmz" ? "MZN" : "USD");
+          var firstBase = first.split('-')[0];
+          return HINT[first] || HINT[firstBase] || (langNow === "ptmz" ? "MZN" : "USD");
         }
 
         if (!localStorage.getItem("site.lang_source")) {
