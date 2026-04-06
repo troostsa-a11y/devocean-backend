@@ -240,6 +240,52 @@ app.post('/api/admin/cancel', requireAdminKey, async (req, res) => {
   }
 });
 
+// Admin: Modify booking dates and resend post-booking confirmation
+app.post('/api/admin/modify-dates', requireAdminKey, async (req, res) => {
+  if (!emailService) {
+    return res.status(503).json({ error: 'Email automation service not initialized' });
+  }
+
+  try {
+    const { groupRef, checkInDate, checkOutDate } = req.body;
+
+    if (!groupRef || !checkInDate || !checkOutDate) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        required: ['groupRef', 'checkInDate', 'checkOutDate'],
+      });
+    }
+
+    const result = await emailService.modifyBookingDates(groupRef, checkInDate, checkOutDate);
+
+    res.json({
+      success: true,
+      message: `Booking ${groupRef} dates updated. ${result.cancelledEmails} old emails cancelled. ${result.scheduledEmails.length} emails rescheduled, including a new post-booking confirmation.`,
+      booking: {
+        groupRef: result.booking.groupRef,
+        guestName: result.booking.guestName,
+        guestEmail: result.booking.guestEmail,
+        checkInDate: result.booking.checkInDate,
+        checkOutDate: result.booking.checkOutDate,
+      },
+      cancelledEmails: result.cancelledEmails,
+      scheduledEmails: result.scheduledEmails.map((e: any) => ({
+        type: e.emailType,
+        scheduledFor: e.scheduledFor,
+        status: e.status,
+      })),
+    });
+  } catch (error: any) {
+    console.error('[ADMIN] Error modifying booking dates:', error);
+    const status = error.message?.includes('not found') ? 404 :
+                   error.message?.includes('cancelled') ? 409 : 500;
+    res.status(status).json({
+      error: 'Failed to modify booking dates',
+      message: error.message,
+    });
+  }
+});
+
 // Admin: Update guest email for a booking
 app.post('/api/admin/update-email', requireAdminKey, async (req, res) => {
   if (!emailService) {
@@ -332,6 +378,14 @@ app.get('/', (req, res) => {
         body: {
           required: ['groupRef', 'guestName', 'firstName', 'guestEmail', 'checkInDate', 'checkOutDate'],
           optional: ['bookingRefs', 'guestGender', 'guestLanguage', 'guestCountry'],
+        },
+      },
+      adminModifyDates: {
+        method: 'POST',
+        path: '/api/admin/modify-dates',
+        description: 'Modify booking dates, reschedule all emails, and resend post-booking confirmation (requires X-Admin-Key header)',
+        body: {
+          required: ['groupRef', 'checkInDate', 'checkOutDate'],
         },
       },
       adminUpdateEmail: {

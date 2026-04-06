@@ -392,6 +392,55 @@ export class EmailAutomationService {
     return { booking: updatedBooking || booking, cancelledEmails: pendingCount };
   }
 
+  /**
+   * Modify booking dates, cancel pending emails, reschedule all emails,
+   * and resend the post-booking confirmation with the updated dates.
+   */
+  async modifyBookingDates(groupRef: string, checkInDate: string, checkOutDate: string): Promise<{
+    booking: any;
+    cancelledEmails: number;
+    scheduledEmails: any[];
+  }> {
+    const booking = await this.db.getBookingByGroupRef(groupRef);
+    if (!booking) {
+      throw new Error(`Booking with group ref ${groupRef} not found`);
+    }
+    if (booking.status === 'cancelled') {
+      throw new Error(`Booking ${groupRef} is cancelled and cannot be modified`);
+    }
+
+    const newCheckIn = new Date(checkInDate);
+    const newCheckOut = new Date(checkOutDate);
+
+    if (isNaN(newCheckIn.getTime()) || isNaN(newCheckOut.getTime())) {
+      throw new Error('Invalid date format. Use YYYY-MM-DD.');
+    }
+    if (newCheckOut <= newCheckIn) {
+      throw new Error('Check-out date must be after check-in date');
+    }
+
+    // Cancel all pending scheduled emails
+    const allScheduled = await this.db.getScheduledEmailsForBooking(booking.id);
+    const pendingCount = allScheduled.filter(e => e.status === 'pending').length;
+    await this.db.cancelScheduledEmailsForBooking(booking.id);
+
+    // Update dates in the database (also resets postBookingEmailSent flag)
+    await this.db.updateBookingDates(booking.id, newCheckIn, newCheckOut);
+
+    // Fetch updated booking record
+    const updatedBooking = await this.db.getBookingByGroupRef(groupRef);
+
+    // Reschedule all emails based on the new dates
+    await this.emailScheduler.scheduleEmailsForBooking(updatedBooking!);
+
+    const newScheduled = await this.db.getScheduledEmailsForBooking(updatedBooking!.id);
+    const newPending = newScheduled.filter(e => e.status === 'pending');
+
+    console.log(`[ADMIN] Booking ${groupRef} dates modified: check-in ${checkInDate}, check-out ${checkOutDate}. ${pendingCount} old emails cancelled, ${newPending.length} new emails scheduled.`);
+
+    return { booking: updatedBooking, cancelledEmails: pendingCount, scheduledEmails: newPending };
+  }
+
   async updateGuestEmail(groupRef: string, newEmail: string): Promise<{ booking: any; oldEmail: string; pendingEmailsUpdated: number }> {
     const booking = await this.db.getBookingByGroupRef(groupRef);
     if (!booking) {

@@ -296,6 +296,22 @@ export class DatabaseService {
       .where(eq(bookings.id, bookingId));
   }
 
+  /**
+   * Update booking dates (for admin date modifications)
+   * Also resets postBookingEmailSent so the confirmation is resent with new dates
+   */
+  async updateBookingDates(bookingId: number, checkInDate: Date, checkOutDate: Date): Promise<void> {
+    await this.db
+      .update(bookings)
+      .set({
+        checkInDate,
+        checkOutDate,
+        postBookingEmailSent: false,
+        updatedAt: new Date(),
+      })
+      .where(eq(bookings.id, bookingId));
+  }
+
   async updateGuestEmail(bookingId: number, newEmail: string): Promise<void> {
     await this.db
       .update(bookings)

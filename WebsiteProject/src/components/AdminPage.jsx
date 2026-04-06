@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays } from 'lucide-react';
 import { useLocation } from 'wouter';
 
 const LANGUAGE_OPTIONS = [
@@ -132,6 +132,18 @@ export default function AdminPage() {
                   Update Email
                 </button>
                 <button
+                  onClick={() => setActiveTab('modify-dates')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                    activeTab === 'modify-dates'
+                      ? 'bg-[#9e4b13] text-white'
+                      : 'text-slate-600 hover:bg-slate-100'
+                  }`}
+                  data-testid="tab-modify-dates"
+                >
+                  <CalendarDays className="w-4 h-4" />
+                  Modify Dates
+                </button>
+                <button
                   onClick={() => setActiveTab('cancel')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
                     activeTab === 'cancel'
@@ -158,6 +170,8 @@ export default function AdminPage() {
               <CreateBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             ) : activeTab === 'update-email' ? (
               <UpdateEmailForm apiUrl={apiUrl} apiKey={apiKey} />
+            ) : activeTab === 'modify-dates' ? (
+              <ModifyDatesForm apiUrl={apiUrl} apiKey={apiKey} />
             ) : (
               <CancelBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             )}
@@ -548,6 +562,142 @@ function UpdateEmailForm({ apiUrl, apiKey }) {
             <p><span className="font-medium">New email:</span> {result.booking?.newEmail}</p>
             <p><span className="font-medium">Pending emails redirected:</span> {result.pendingEmailsUpdated}</p>
           </div>
+        </div>
+      )}
+    </form>
+  );
+}
+
+function ModifyDatesForm({ apiUrl, apiKey }) {
+  const [groupRef, setGroupRef] = useState('');
+  const [checkInDate, setCheckInDate] = useState('');
+  const [checkOutDate, setCheckOutDate] = useState('');
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [result, setResult] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ type: 'loading', message: 'Updating dates...' });
+    setResult(null);
+
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/modify-dates`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Admin-Key': apiKey,
+        },
+        body: JSON.stringify({
+          groupRef: groupRef.trim(),
+          checkInDate,
+          checkOutDate,
+        }),
+      });
+
+      let data;
+      try { data = await res.json(); } catch {
+        throw new Error(`Server returned ${res.status} - check your automailer URL and try again`);
+      }
+
+      if (!res.ok) {
+        throw new Error(data.message || data.error || 'Request failed');
+      }
+
+      setResult(data);
+      setStatus({ type: 'success', message: data.message });
+      setGroupRef('');
+      setCheckInDate('');
+      setCheckOutDate('');
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-slate-200 p-6">
+      <h2 className="text-lg font-semibold text-slate-900 mb-1">Modify Booking Dates</h2>
+      <p className="text-sm text-slate-500 mb-5">Update the check-in and check-out dates for an existing booking. All pending emails will be cancelled and rescheduled with the new dates, and a fresh post-booking confirmation will be sent to the guest.</p>
+
+      <div className="space-y-4">
+        <label className="block">
+          <span className="text-sm font-medium text-slate-700">Beds24 Group Reference *</span>
+          <input
+            type="text"
+            value={groupRef}
+            onChange={(e) => setGroupRef(e.target.value)}
+            placeholder="e.g. 12345678"
+            className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+            required
+            data-testid="input-modify-group-ref"
+          />
+        </label>
+
+        <div className="grid grid-cols-2 gap-3">
+          <label className="block">
+            <span className="text-sm font-medium text-slate-700">New Check-in Date *</span>
+            <input
+              type="date"
+              value={checkInDate}
+              onChange={(e) => setCheckInDate(e.target.value)}
+              className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+              required
+              data-testid="input-modify-checkin"
+            />
+          </label>
+          <label className="block">
+            <span className="text-sm font-medium text-slate-700">New Check-out Date *</span>
+            <input
+              type="date"
+              value={checkOutDate}
+              onChange={(e) => setCheckOutDate(e.target.value)}
+              min={checkInDate || undefined}
+              className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+              required
+              data-testid="input-modify-checkout"
+            />
+          </label>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        disabled={status.type === 'loading'}
+        className="mt-6 w-full py-2.5 bg-[#9e4b13] text-white rounded-lg text-sm font-medium hover:bg-[#8a4211] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+        data-testid="button-modify-dates"
+      >
+        {status.type === 'loading' ? (
+          <><Loader2 className="w-4 h-4 animate-spin" /> Updating...</>
+        ) : (
+          <><CalendarDays className="w-4 h-4" /> Update Dates & Resend Confirmation</>
+        )}
+      </button>
+
+      <StatusMessage status={status} />
+
+      {result && (
+        <div className="mt-4 space-y-3">
+          <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+            <h3 className="text-sm font-semibold text-emerald-800 mb-2">Dates Updated</h3>
+            <div className="space-y-1 text-xs text-emerald-700">
+              <p><span className="font-medium">Guest:</span> {result.booking?.guestName}</p>
+              <p><span className="font-medium">New check-in:</span> {result.booking?.checkInDate ? new Date(result.booking.checkInDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) : '—'}</p>
+              <p><span className="font-medium">New check-out:</span> {result.booking?.checkOutDate ? new Date(result.booking.checkOutDate).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) : '—'}</p>
+              <p><span className="font-medium">Old emails cancelled:</span> {result.cancelledEmails}</p>
+            </div>
+          </div>
+          {result.scheduledEmails?.length > 0 && (
+            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h3 className="text-sm font-semibold text-blue-800 mb-2">Rescheduled Emails</h3>
+              <ul className="space-y-1">
+                {result.scheduledEmails.map((email, i) => (
+                  <li key={i} className="text-xs text-blue-700 flex justify-between">
+                    <span className="font-medium">{formatEmailType(email.type)}</span>
+                    <span>{new Date(email.scheduledFor).toLocaleString()}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </form>
