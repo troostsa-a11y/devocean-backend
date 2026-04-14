@@ -107,10 +107,10 @@ export default function AdminPage() {
         ) : (
           <>
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-              <div className="flex flex-wrap gap-1 bg-white rounded-lg border border-slate-200 p-1">
+              <div className="flex flex-nowrap gap-0.5 bg-white rounded-lg border border-slate-200 p-1">
                 <button
                   onClick={() => setActiveTab('create')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === 'create'
                       ? 'bg-[#9e4b13] text-white'
                       : 'text-slate-600 hover:bg-slate-100'
@@ -122,7 +122,7 @@ export default function AdminPage() {
                 </button>
                 <button
                   onClick={() => setActiveTab('update-email')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === 'update-email'
                       ? 'bg-[#9e4b13] text-white'
                       : 'text-slate-600 hover:bg-slate-100'
@@ -134,7 +134,7 @@ export default function AdminPage() {
                 </button>
                 <button
                   onClick={() => setActiveTab('modify-dates')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === 'modify-dates'
                       ? 'bg-[#9e4b13] text-white'
                       : 'text-slate-600 hover:bg-slate-100'
@@ -146,7 +146,7 @@ export default function AdminPage() {
                 </button>
                 <button
                   onClick={() => setActiveTab('cancel')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === 'cancel'
                       ? 'bg-[#9e4b13] text-white'
                       : 'text-slate-600 hover:bg-slate-100'
@@ -158,7 +158,7 @@ export default function AdminPage() {
                 </button>
                 <button
                   onClick={() => setActiveTab('guests')}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
                     activeTab === 'guests'
                       ? 'bg-[#9e4b13] text-white'
                       : 'text-slate-600 hover:bg-slate-100'
