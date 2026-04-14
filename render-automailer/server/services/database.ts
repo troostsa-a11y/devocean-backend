@@ -1,8 +1,8 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations } from '../../shared/schema';
-import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail } from '../../shared/schema';
-import { eq, and, lte, gte, isNull, sql } from 'drizzle-orm';
+import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests } from '../../shared/schema';
+import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest } from '../../shared/schema';
+import { eq, and, lte, gte, isNull, sql, or, ilike, count, desc } from 'drizzle-orm';
 
 /**
  * Database Service
@@ -500,5 +500,153 @@ export class DatabaseService {
       recentBookings,
       recentErrors,
     };
+  }
+
+  // ─── Guest (marketing contact) methods ─────────────────────────────────────
+
+  /**
+   * Create guests table if it doesn't exist (idempotent, called on startup)
+   */
+  async initGuestsTable(): Promise<void> {
+    await this.client`
+      CREATE TABLE IF NOT EXISTS guests (
+        id          SERIAL PRIMARY KEY,
+        email       TEXT NOT NULL UNIQUE,
+        first_name  TEXT,
+        last_name   TEXT,
+        phone       TEXT,
+        country_code TEXT,
+        subscribed  BOOLEAN NOT NULL DEFAULT TRUE,
+        unsubscribed_at TIMESTAMP,
+        source      TEXT NOT NULL DEFAULT 'import',
+        total_spent DECIMAL(10,2),
+        last_checkin TIMESTAMP,
+        tags        TEXT[],
+        unsubscribe_token TEXT UNIQUE,
+        notes       TEXT,
+        created_at  TIMESTAMP NOT NULL DEFAULT NOW(),
+        updated_at  TIMESTAMP NOT NULL DEFAULT NOW()
+      )
+    `;
+  }
+
+  /**
+   * Upsert a batch of guests (insert or update on email conflict).
+   * Preserves subscribed=false if already unsubscribed.
+   * Enriches phone/country only if currently missing.
+   */
+  async upsertGuests(records: InsertGuest[]): Promise<{ imported: number; updated: number }> {
+    if (!records.length) return { imported: 0, updated: 0 };
+
+    let imported = 0;
+    let updated = 0;
+
+    // Process in chunks of 100 to avoid oversized queries
+    const chunkSize = 100;
+    for (let i = 0; i < records.length; i += chunkSize) {
+      const chunk = records.slice(i, i + chunkSize);
+      const results = await this.db
+        .insert(guests)
+        .values(chunk as any)
+        .onConflictDoUpdate({
+          target: guests.email,
+          set: {
+            firstName: sql`CASE WHEN EXCLUDED.first_name IS NOT NULL AND EXCLUDED.first_name != '' THEN EXCLUDED.first_name ELSE guests.first_name END`,
+            lastName: sql`CASE WHEN EXCLUDED.last_name IS NOT NULL AND EXCLUDED.last_name != '' THEN EXCLUDED.last_name ELSE guests.last_name END`,
+            phone: sql`CASE WHEN (guests.phone IS NULL OR guests.phone = '') AND EXCLUDED.phone IS NOT NULL AND EXCLUDED.phone != '' THEN EXCLUDED.phone ELSE guests.phone END`,
+            countryCode: sql`CASE WHEN guests.country_code IS NULL AND EXCLUDED.country_code IS NOT NULL THEN EXCLUDED.country_code ELSE guests.country_code END`,
+            totalSpent: sql`CASE WHEN EXCLUDED.total_spent IS NOT NULL AND (guests.total_spent IS NULL OR EXCLUDED.total_spent > guests.total_spent) THEN EXCLUDED.total_spent ELSE guests.total_spent END`,
+            lastCheckin: sql`CASE WHEN EXCLUDED.last_checkin IS NOT NULL AND (guests.last_checkin IS NULL OR EXCLUDED.last_checkin > guests.last_checkin) THEN EXCLUDED.last_checkin ELSE guests.last_checkin END`,
+            tags: sql`CASE WHEN EXCLUDED.tags IS NOT NULL THEN EXCLUDED.tags ELSE guests.tags END`,
+            unsubscribeToken: sql`CASE WHEN guests.unsubscribe_token IS NULL THEN EXCLUDED.unsubscribe_token ELSE guests.unsubscribe_token END`,
+            updatedAt: sql`NOW()`,
+          },
+        })
+        .returning({ id: guests.id, createdAt: guests.createdAt });
+
+      for (const r of results) {
+        const ageMs = Date.now() - new Date(r.createdAt).getTime();
+        if (ageMs < 5000) imported++;
+        else updated++;
+      }
+    }
+
+    return { imported, updated };
+  }
+
+  /**
+   * Get paginated guest list with optional filters
+   */
+  async getGuests(opts: {
+    page?: number;
+    limit?: number;
+    subscribed?: boolean;
+    source?: string;
+    search?: string;
+  }): Promise<{ rows: Guest[]; total: number }> {
+    const page = opts.page ?? 1;
+    const limit = Math.min(opts.limit ?? 50, 200);
+    const offset = (page - 1) * limit;
+
+    const conditions: any[] = [];
+    if (opts.subscribed !== undefined) conditions.push(eq(guests.subscribed, opts.subscribed));
+    if (opts.source) conditions.push(eq(guests.source, opts.source));
+    if (opts.search) {
+      const q = `%${opts.search}%`;
+      conditions.push(or(ilike(guests.email, q), ilike(guests.firstName, q), ilike(guests.lastName, q)));
+    }
+
+    const where = conditions.length > 0 ? and(...conditions) : undefined;
+
+    const [rows, [{ value: total }]] = await Promise.all([
+      this.db.select().from(guests).where(where).orderBy(desc(guests.createdAt)).limit(limit).offset(offset),
+      this.db.select({ value: count() }).from(guests).where(where),
+    ]);
+
+    return { rows, total: Number(total) };
+  }
+
+  /**
+   * Get total subscriber stats
+   */
+  async getGuestStats(): Promise<{ total: number; subscribed: number; sources: Record<string, number> }> {
+    const [totalRes, subscribedRes, sourceRes] = await Promise.all([
+      this.db.select({ value: count() }).from(guests),
+      this.db.select({ value: count() }).from(guests).where(eq(guests.subscribed, true)),
+      this.db.select({ source: guests.source, value: count() }).from(guests).groupBy(guests.source),
+    ]);
+    const sources: Record<string, number> = {};
+    for (const r of sourceRes) sources[r.source ?? 'unknown'] = Number(r.value);
+    return { total: Number(totalRes[0].value), subscribed: Number(subscribedRes[0].value), sources };
+  }
+
+  /**
+   * Get all subscribed guests (for broadcast)
+   */
+  async getSubscribedGuests(): Promise<Pick<Guest, 'email' | 'firstName' | 'lastName' | 'unsubscribeToken'>[]> {
+    return this.db
+      .select({ email: guests.email, firstName: guests.firstName, lastName: guests.lastName, unsubscribeToken: guests.unsubscribeToken })
+      .from(guests)
+      .where(eq(guests.subscribed, true));
+  }
+
+  /**
+   * Find guest by unsubscribe token
+   */
+  async getGuestByUnsubscribeToken(token: string): Promise<Guest | undefined> {
+    const [guest] = await this.db.select().from(guests).where(eq(guests.unsubscribeToken, token)).limit(1);
+    return guest;
+  }
+
+  /**
+   * Mark a guest as unsubscribed
+   */
+  async unsubscribeGuest(token: string): Promise<boolean> {
+    const result = await this.db
+      .update(guests)
+      .set({ subscribed: false, unsubscribedAt: new Date(), updatedAt: new Date() })
+      .where(and(eq(guests.unsubscribeToken, token), eq(guests.subscribed, true)))
+      .returning({ id: guests.id });
+    return result.length > 0;
   }
 }

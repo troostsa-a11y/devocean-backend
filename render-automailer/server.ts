@@ -1,7 +1,10 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import nodemailer from 'nodemailer';
+import crypto from 'crypto';
 import { EmailAutomationService } from './server/services/email-automation';
+import { DatabaseService } from './server/services/database';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -110,6 +113,15 @@ if (validateEnvironment()) {
   }
 } else {
   console.warn('⚠️  Email automation service not started due to missing configuration');
+}
+
+// ─── Guest CRM database (works independently of full email service) ───────────
+let guestDb: DatabaseService | null = null;
+if (process.env.DATABASE_URL) {
+  guestDb = new DatabaseService(process.env.DATABASE_URL);
+  guestDb.initGuestsTable()
+    .then(() => console.log('✅ Guests table ready'))
+    .catch((err) => console.error('❌ Failed to create guests table:', err));
 }
 
 // Health check endpoint
@@ -431,6 +443,138 @@ app.get('/', (req, res) => {
       },
     ],
   });
+});
+
+// ─── Guest CRM Routes ──────────────────────────────────────────────────────────
+
+// POST /api/admin/guests/import  — bulk upsert
+app.post('/api/admin/guests/import', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const { records } = req.body as { records: any[] };
+    if (!Array.isArray(records) || records.length === 0) {
+      return res.status(400).json({ error: 'records array required' });
+    }
+
+    // Attach a unique unsubscribe token to each record that lacks one
+    const enriched = records.map((r: any) => ({
+      ...r,
+      unsubscribeToken: r.unsubscribeToken || crypto.randomUUID(),
+    }));
+
+    const result = await guestDb.upsertGuests(enriched);
+    res.json({ success: true, ...result });
+  } catch (err: any) {
+    console.error('Guest import error:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/admin/guests  — paginated list
+app.get('/api/admin/guests', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const { page, limit, subscribed, source, search } = req.query;
+    const result = await guestDb.getGuests({
+      page: page ? parseInt(page as string) : 1,
+      limit: limit ? parseInt(limit as string) : 50,
+      subscribed: subscribed === 'true' ? true : subscribed === 'false' ? false : undefined,
+      source: source as string | undefined,
+      search: search as string | undefined,
+    });
+    const stats = await guestDb.getGuestStats();
+    res.json({ ...result, stats });
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// GET /api/admin/guests/export/google  — Google Customer Match CSV
+app.get('/api/admin/guests/export/google', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const contacts = await guestDb.getSubscribedGuests();
+    const lines = ['Email Address,First Name,Last Name'];
+    for (const c of contacts) {
+      const email = c.email.toLowerCase().trim();
+      const first = (c.firstName || '').replace(/"/g, '');
+      const last = (c.lastName || '').replace(/"/g, '');
+      lines.push(`"${email}","${first}","${last}"`);
+    }
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename="devocean-google-customer-match.csv"');
+    res.send(lines.join('\r\n'));
+  } catch (err: any) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/admin/guests/broadcast  — send marketing email to all subscribers
+app.post('/api/admin/guests/broadcast', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+
+  const { subject, html, testEmail } = req.body as { subject: string; html: string; testEmail?: string };
+  if (!subject || !html) return res.status(400).json({ error: 'subject and html required' });
+
+  // Build SMTP config from env vars
+  if (!process.env.MAIL_HOST || !process.env.IMAP_USER || !process.env.IMAP_PASSWORD) {
+    return res.status(503).json({ error: 'SMTP not configured' });
+  }
+  const transporter = nodemailer.createTransport({
+    host: process.env.MAIL_HOST,
+    port: parseInt(process.env.SMTP_PORT || '465'),
+    secure: true,
+    auth: { user: process.env.IMAP_USER, pass: process.env.IMAP_PASSWORD },
+  });
+
+  const fromEmail = process.env.IMAP_FROM_EMAIL || 'booking@devoceanlodge.com';
+  const fromName = process.env.IMAP_FROM_NAME || 'DEVOCEAN Lodge';
+  const baseUrl = process.env.BASE_URL || 'https://devocean-automailer.onrender.com';
+
+  // Test-send mode — send only to testEmail and return immediately
+  if (testEmail) {
+    const testHtml = html + `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">Test send — unsubscribe link placeholder</p>`;
+    await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: testEmail, subject: `[TEST] ${subject}`, html: testHtml });
+    return res.json({ success: true, mode: 'test', sent: 1 });
+  }
+
+  // Live broadcast — start async, return immediately
+  const recipients = await guestDb.getSubscribedGuests();
+  res.json({ success: true, mode: 'live', queued: recipients.length });
+
+  // Fire-and-forget
+  (async () => {
+    let sent = 0;
+    let failed = 0;
+    for (const r of recipients) {
+      try {
+        const token = r.unsubscribeToken || crypto.randomUUID();
+        const unsubUrl = `${baseUrl}/unsubscribe/${token}`;
+        const footer = `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">You are receiving this because you stayed at DEVOCEAN Lodge.<br><a href="${unsubUrl}" style="color:#9e4b13">Unsubscribe</a></p>`;
+        await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: r.email, subject, html: html + footer });
+        sent++;
+      } catch (e) {
+        failed++;
+      }
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
+    console.log(`📧 Broadcast complete: ${sent} sent, ${failed} failed`);
+  })();
+});
+
+// GET /unsubscribe/:token  — public, one-click unsubscribe
+app.get('/unsubscribe/:token', async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).send('<h2>Service unavailable</h2>');
+  const { token } = req.params;
+  try {
+    const changed = await guestDb.unsubscribeGuest(token);
+    const html = changed
+      ? `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Unsubscribed</title></head><body style="font-family:sans-serif;max-width:480px;margin:60px auto;text-align:center;color:#333"><h2 style="color:#2a7060">You have been unsubscribed</h2><p>You will no longer receive marketing emails from DEVOCEAN Lodge.</p><p style="margin-top:32px"><a href="https://www.devoceanlodge.com" style="color:#9e4b13">Return to DEVOCEAN Lodge</a></p></body></html>`
+      : `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Already unsubscribed</title></head><body style="font-family:sans-serif;max-width:480px;margin:60px auto;text-align:center;color:#333"><h2>Already unsubscribed</h2><p>This email address is already unsubscribed or the link is invalid.</p><p style="margin-top:32px"><a href="https://www.devoceanlodge.com" style="color:#9e4b13">Return to DEVOCEAN Lodge</a></p></body></html>`;
+    res.send(html);
+  } catch (err: any) {
+    res.status(500).send('<h2>Error</h2>');
+  }
 });
 
 // Error handling

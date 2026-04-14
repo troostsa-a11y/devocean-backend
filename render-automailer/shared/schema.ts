@@ -1,4 +1,4 @@
-import { pgTable, text, integer, timestamp, decimal, boolean, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, integer, timestamp, decimal, boolean, jsonb, serial } from "drizzle-orm/pg-core";
 import { z } from "zod";
 
 /**
@@ -133,6 +133,32 @@ export const pendingCancellations = pgTable("pending_cancellations", {
   // Email content for debugging
   rawEmailData: jsonb("raw_email_data"),
 });
+
+/**
+ * Guests table - marketing contact database
+ * Merged from Mailchimp, HotelRunner, Beds24 exports
+ */
+export const guests = pgTable("guests", {
+  id: serial("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  firstName: text("first_name"),
+  lastName: text("last_name"),
+  phone: text("phone"),
+  countryCode: text("country_code"),
+  subscribed: boolean("subscribed").notNull().default(true),
+  unsubscribedAt: timestamp("unsubscribed_at"),
+  source: text("source").notNull().default('import'),
+  totalSpent: decimal("total_spent", { precision: 10, scale: 2 }),
+  lastCheckin: timestamp("last_checkin"),
+  tags: text("tags").array(),
+  unsubscribeToken: text("unsubscribe_token").unique(),
+  notes: text("notes"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export type Guest = typeof guests.$inferSelect;
+export type InsertGuest = typeof guests.$inferInsert;
 
 // Simplified Zod validation schema
 export const insertBookingSchema = z.object({

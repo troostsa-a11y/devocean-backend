@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react';
 import { useLocation } from 'wouter';
+import * as XLSX from 'xlsx';
 
 const LANGUAGE_OPTIONS = [
   { code: 'EN', label: 'English (UK)' },
@@ -73,7 +74,7 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 relative z-50" style={{ paddingTop: 'var(--stack-h, 96px)' }}>
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className={`${activeTab === 'guests' ? 'max-w-5xl' : 'max-w-2xl'} mx-auto px-4 py-8 transition-all duration-200`}>
         <button
           onClick={() => navigate('/')}
           className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#9e4b13] mb-6 transition-colors"
@@ -105,8 +106,8 @@ export default function AdminPage() {
           />
         ) : (
           <>
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex gap-1 bg-white rounded-lg border border-slate-200 p-1">
+            <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1 bg-white rounded-lg border border-slate-200 p-1">
                 <button
                   onClick={() => setActiveTab('create')}
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
@@ -155,6 +156,18 @@ export default function AdminPage() {
                   <UserX className="w-4 h-4" />
                   Cancel Booking
                 </button>
+                <button
+                  onClick={() => setActiveTab('guests')}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                    activeTab === 'guests'
+                      ? 'bg-[#9e4b13] text-white'
+                      : 'text-slate-600 hover:bg-slate-100'
+                  }`}
+                  data-testid="tab-guests"
+                >
+                  <Users className="w-4 h-4" />
+                  Guests
+                </button>
               </div>
               <button
                 onClick={handleClearConfig}
@@ -172,6 +185,8 @@ export default function AdminPage() {
               <UpdateEmailForm apiUrl={apiUrl} apiKey={apiKey} />
             ) : activeTab === 'modify-dates' ? (
               <ModifyDatesForm apiUrl={apiUrl} apiKey={apiKey} />
+            ) : activeTab === 'guests' ? (
+              <GuestsTab apiUrl={apiUrl} apiKey={apiKey} />
             ) : (
               <CancelBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             )}
@@ -844,4 +859,610 @@ function formatEmailType(type) {
     post_departure: 'Post-Departure Thank You',
   };
   return labels[type] || type;
+}
+
+// ─── Guest CRM ────────────────────────────────────────────────────────────────
+
+function GuestsTab({ apiUrl, apiKey }) {
+  const [subTab, setSubTab] = useState('contacts');
+  const subTabBtn = (id, label, Icon) => (
+    <button
+      onClick={() => setSubTab(id)}
+      className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+        subTab === id ? 'bg-slate-700 text-white' : 'text-slate-600 hover:bg-slate-100'
+      }`}
+      data-testid={`subtab-guests-${id}`}
+    >
+      <Icon className="w-4 h-4" />
+      {label}
+    </button>
+  );
+  return (
+    <div>
+      <div className="flex gap-1 bg-white rounded-lg border border-slate-200 p-1 mb-5 inline-flex">
+        {subTabBtn('contacts', 'Contacts', Users)}
+        {subTabBtn('import', 'Import', Upload)}
+        {subTabBtn('broadcast', 'Broadcast', Send)}
+      </div>
+      {subTab === 'contacts' && <ContactsPanel apiUrl={apiUrl} apiKey={apiKey} />}
+      {subTab === 'import' && <ImportPanel apiUrl={apiUrl} apiKey={apiKey} />}
+      {subTab === 'broadcast' && <BroadcastPanel apiUrl={apiUrl} apiKey={apiKey} />}
+    </div>
+  );
+}
+
+// ── Parse helpers ─────────────────────────────────────────────────────────────
+
+function sheetToRecords(file, source) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const data = new Uint8Array(e.target.result);
+        const wb = XLSX.read(data, { type: 'array', raw: false });
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
+        const records = source === 'mailchimp'
+          ? parseMailchimp(rows)
+          : source === 'hotelrunner'
+          ? parseHotelRunner(rows)
+          : parseBeds24(rows);
+        resolve(records);
+      } catch (err) {
+        reject(err);
+      }
+    };
+    reader.onerror = () => reject(new Error('File read failed'));
+    reader.readAsArrayBuffer(file);
+  });
+}
+
+function isValidEmail(e) {
+  return e && e.includes('@') && !e.includes('guest.booking.com') && !e.includes('reply.airbnb');
+}
+
+function parseMailchimp(rows) {
+  return rows.map(r => ({
+    email: (r['Email Address'] || '').trim().toLowerCase(),
+    firstName: (r['First Name'] || '').trim(),
+    lastName: (r['Last Name'] || '').trim(),
+    countryCode: (r['CC'] || r['Country'] || '').trim().toUpperCase() || null,
+    subscribed: true,
+    source: 'mailchimp',
+  })).filter(r => isValidEmail(r.email));
+}
+
+function parseHotelRunner(rows) {
+  return rows.map(r => {
+    const countryRaw = String(r['Country'] || r['Nationality'] || '');
+    const m = countryRaw.match(/\(([A-Z]{2})\)/);
+    const countryCode = m ? m[1] : (countryRaw.length === 2 ? countryRaw.toUpperCase() : null);
+    const fullName = String(r['Guest Name'] || r['Name'] || '');
+    const parts = fullName.trim().split(/\s+/);
+    const firstName = parts[0] || '';
+    const lastName = parts.slice(1).join(' ') || '';
+    const email = String(r['Email'] || r['Email Address'] || r['Guest Email'] || '').trim().toLowerCase();
+    return {
+      email,
+      firstName,
+      lastName,
+      phone: String(r['Phone'] || r['Mobile'] || r['Telephone'] || '').trim() || null,
+      countryCode,
+      subscribed: true,
+      source: 'hotelrunner',
+    };
+  }).filter(r => isValidEmail(r.email));
+}
+
+function parseBeds24(rows) {
+  const out = [];
+  const seen = new Set();
+  for (const r of rows) {
+    const rawEmail = String(r['Email'] || r['Guest Email'] || r['email'] || '');
+    const emails = rawEmail.split(/[\n\r,;]+/).map(e => e.trim().toLowerCase()).filter(isValidEmail);
+    for (const email of emails) {
+      if (seen.has(email)) continue;
+      seen.add(email);
+      const fn = String(r['First Name'] || r['Firstname'] || r['First name'] || '').split(/[\n\r]/)[0].trim();
+      const ln = String(r['Last Name'] || r['Lastname'] || r['Last name'] || r['Surname'] || '').split(/[\n\r]/)[0].trim();
+      const ph = String(r['Phone'] || r['Telephone'] || r['Mobile'] || '').split(/[\n\r]/)[0].trim();
+      const cc = String(r['Country Code'] || r['Country'] || '').split(/[\n\r]/)[0].trim().slice(0, 2).toUpperCase();
+      out.push({
+        email,
+        firstName: fn || null,
+        lastName: ln || null,
+        phone: ph || null,
+        countryCode: cc || null,
+        subscribed: true,
+        source: 'beds24',
+      });
+    }
+  }
+  return out;
+}
+
+// ── Import Panel ──────────────────────────────────────────────────────────────
+
+function ImportPanel({ apiUrl, apiKey }) {
+  const [source, setSource] = useState('mailchimp');
+  const [file, setFile] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const fileRef = useRef();
+
+  const handleFile = async (f) => {
+    setFile(f);
+    setPreview(null);
+    setStatus({ type: 'idle', message: '' });
+    try {
+      const records = await sheetToRecords(f, source);
+      setPreview(records);
+    } catch (err) {
+      setStatus({ type: 'error', message: `Could not parse file: ${err.message}` });
+    }
+  };
+
+  const handleSourceChange = (s) => {
+    setSource(s);
+    setPreview(null);
+    setFile(null);
+    setStatus({ type: 'idle', message: '' });
+    if (fileRef.current) fileRef.current.value = '';
+  };
+
+  const handleImport = async () => {
+    if (!preview || !preview.length) return;
+    setStatus({ type: 'loading', message: `Importing ${preview.length} contacts...` });
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/guests/import`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Key': apiKey },
+        body: JSON.stringify({ records: preview }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Import failed');
+      setStatus({ type: 'success', message: `Done. ${data.imported} new, ${data.updated} updated.` });
+      setPreview(null);
+      setFile(null);
+      if (fileRef.current) fileRef.current.value = '';
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    }
+  };
+
+  const SOURCE_INFO = {
+    mailchimp: { accept: '.csv,.xlsx', hint: 'Export from Mailchimp > Audience > Export CSV' },
+    hotelrunner: { accept: '.xlsx,.xls,.csv', hint: 'Export from HotelRunner reservation list (XLSX)' },
+    beds24: { accept: '.xlsx,.xls,.csv', hint: 'Export from Beds24 guest list (XLSX)' },
+  };
+
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 p-6">
+      <h2 className="text-lg font-semibold text-slate-900 mb-1">Import Contacts</h2>
+      <p className="text-sm text-slate-500 mb-5">Upload a guest export file. Existing contacts are safely merged — unsubscribe status is never overwritten.</p>
+
+      <div className="mb-4">
+        <span className="text-sm font-medium text-slate-700 block mb-2">Source</span>
+        <div className="flex gap-2">
+          {[['mailchimp', 'Mailchimp'], ['hotelrunner', 'HotelRunner'], ['beds24', 'Beds24']].map(([id, label]) => (
+            <button
+              key={id}
+              onClick={() => handleSourceChange(id)}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium border transition-colors ${
+                source === id
+                  ? 'bg-[#9e4b13] text-white border-[#9e4b13]'
+                  : 'text-slate-600 border-slate-300 hover:bg-slate-50'
+              }`}
+              data-testid={`source-${id}`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+        <p className="text-xs text-slate-400 mt-2">{SOURCE_INFO[source].hint}</p>
+      </div>
+
+      <label className="block mb-4">
+        <span className="text-sm font-medium text-slate-700">Upload file</span>
+        <input
+          ref={fileRef}
+          type="file"
+          accept={SOURCE_INFO[source].accept}
+          onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
+          className="mt-1 block w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border file:border-slate-300 file:text-sm file:font-medium file:bg-slate-50 file:text-slate-700 hover:file:bg-slate-100"
+          data-testid="input-import-file"
+        />
+      </label>
+
+      {preview && (
+        <div className="mb-4">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-medium text-slate-700">{preview.length} contacts parsed</span>
+            <span className="text-xs text-slate-400">{preview.filter(r => r.countryCode).length} with country</span>
+          </div>
+          <div className="overflow-x-auto rounded-lg border border-slate-200 max-h-48">
+            <table className="w-full text-xs">
+              <thead className="bg-slate-50 sticky top-0">
+                <tr>
+                  {['Email', 'First Name', 'Last Name', 'Country', 'Source'].map(h => (
+                    <th key={h} className="px-3 py-2 text-left font-medium text-slate-600">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {preview.slice(0, 8).map((r, i) => (
+                  <tr key={i} className="border-t border-slate-100">
+                    <td className="px-3 py-1.5 text-slate-700">{r.email}</td>
+                    <td className="px-3 py-1.5 text-slate-600">{r.firstName || '—'}</td>
+                    <td className="px-3 py-1.5 text-slate-600">{r.lastName || '—'}</td>
+                    <td className="px-3 py-1.5 text-slate-500">{r.countryCode || '—'}</td>
+                    <td className="px-3 py-1.5 text-slate-400">{r.source}</td>
+                  </tr>
+                ))}
+                {preview.length > 8 && (
+                  <tr className="border-t border-slate-100">
+                    <td colSpan={5} className="px-3 py-1.5 text-slate-400 text-center">
+                      …and {preview.length - 8} more
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+          <button
+            onClick={handleImport}
+            disabled={status.type === 'loading'}
+            className="mt-3 w-full py-2.5 bg-[#9e4b13] text-white rounded-lg text-sm font-medium hover:bg-[#8a4211] transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+            data-testid="button-import-confirm"
+          >
+            {status.type === 'loading' ? (
+              <><Loader2 className="w-4 h-4 animate-spin" /> Importing...</>
+            ) : (
+              <><Upload className="w-4 h-4" /> Import {preview.length} contacts into database</>
+            )}
+          </button>
+        </div>
+      )}
+
+      <StatusMessage status={status} />
+    </div>
+  );
+}
+
+// ── Contacts Panel ────────────────────────────────────────────────────────────
+
+function ContactsPanel({ apiUrl, apiKey }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
+  const [filterSub, setFilterSub] = useState('');
+  const [filterSource, setFilterSource] = useState('');
+  const [searchInput, setSearchInput] = useState('');
+
+  const load = async (p = page, s = search, sub = filterSub, src = filterSource) => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams({ page: p, limit: 50 });
+      if (s) params.set('search', s);
+      if (sub) params.set('subscribed', sub);
+      if (src) params.set('source', src);
+      const res = await fetch(`${apiUrl}/api/admin/guests?${params}`, {
+        headers: { 'X-Admin-Key': apiKey },
+      });
+      if (!res.ok) throw new Error('Failed to load');
+      setData(await res.json());
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(1, search, filterSub, filterSource); }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const s = searchInput.trim();
+    setSearch(s);
+    setPage(1);
+    load(1, s, filterSub, filterSource);
+  };
+
+  const handleFilter = (sub, src) => {
+    setFilterSub(sub);
+    setFilterSource(src);
+    setPage(1);
+    load(1, search, sub, src);
+  };
+
+  const handlePage = (p) => {
+    setPage(p);
+    load(p, search, filterSub, filterSource);
+  };
+
+  const handleExport = () => {
+    window.open(`${apiUrl}/api/admin/guests/export/google?key=${encodeURIComponent(apiKey)}`, '_blank');
+  };
+
+  const totalPages = data ? Math.ceil(data.total / 50) : 1;
+
+  return (
+    <div className="space-y-4">
+      {data?.stats && (
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { label: 'Total contacts', value: data.stats.total },
+            { label: 'Subscribed', value: data.stats.subscribed },
+            { label: 'Unsubscribed', value: data.stats.total - data.stats.subscribed },
+            { label: 'Sources', value: Object.keys(data.stats.sources || {}).join(', ') || '—' },
+          ].map(({ label, value }) => (
+            <div key={label} className="bg-white rounded-lg border border-slate-200 p-3">
+              <div className="text-xs text-slate-500">{label}</div>
+              <div className="text-lg font-semibold text-slate-900 mt-0.5">{value}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className="bg-white rounded-xl border border-slate-200 p-4">
+        <div className="flex flex-wrap items-center gap-2 mb-4">
+          <form onSubmit={handleSearch} className="flex gap-1 flex-1 min-w-[200px]">
+            <input
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              placeholder="Search by name or email…"
+              className="flex-1 px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+              data-testid="input-guest-search"
+            />
+            <button type="submit" className="p-1.5 border border-slate-300 rounded-lg hover:bg-slate-50" data-testid="button-guest-search">
+              <Search className="w-4 h-4 text-slate-500" />
+            </button>
+          </form>
+          <select
+            value={filterSub}
+            onChange={(e) => handleFilter(e.target.value, filterSource)}
+            className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
+            data-testid="select-filter-sub"
+          >
+            <option value="">All</option>
+            <option value="true">Subscribed</option>
+            <option value="false">Unsubscribed</option>
+          </select>
+          <select
+            value={filterSource}
+            onChange={(e) => handleFilter(filterSub, e.target.value)}
+            className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
+            data-testid="select-filter-source"
+          >
+            <option value="">All sources</option>
+            <option value="mailchimp">Mailchimp</option>
+            <option value="hotelrunner">HotelRunner</option>
+            <option value="beds24">Beds24</option>
+          </select>
+          <button
+            onClick={() => load(page, search, filterSub, filterSource)}
+            className="p-1.5 border border-slate-300 rounded-lg hover:bg-slate-50"
+            data-testid="button-refresh-guests"
+          >
+            <RefreshCw className={`w-4 h-4 text-slate-500 ${loading ? 'animate-spin' : ''}`} />
+          </button>
+          <button
+            onClick={handleExport}
+            className="flex items-center gap-1.5 px-3 py-1.5 border border-slate-300 rounded-lg text-sm hover:bg-slate-50 text-slate-600"
+            data-testid="button-export-google"
+          >
+            <Download className="w-4 h-4" />
+            Google CSV
+          </button>
+        </div>
+
+        {loading && !data ? (
+          <div className="flex items-center justify-center py-12 text-slate-400">
+            <Loader2 className="w-5 h-5 animate-spin mr-2" /> Loading…
+          </div>
+        ) : !data?.rows?.length ? (
+          <div className="text-center py-10 text-slate-400 text-sm">No contacts found.</div>
+        ) : (
+          <div className="overflow-x-auto -mx-4 px-4">
+            <table className="w-full text-sm min-w-[640px]">
+              <thead>
+                <tr className="border-b border-slate-200">
+                  {['Email', 'Name', 'Country', 'Source', 'Status', 'Added'].map(h => (
+                    <th key={h} className="pb-2 text-left text-xs font-medium text-slate-500 pr-4">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.rows.map((g) => (
+                  <tr key={g.id} className="border-b border-slate-100 hover:bg-slate-50" data-testid={`row-guest-${g.id}`}>
+                    <td className="py-2 pr-4 text-slate-800 font-medium">{g.email}</td>
+                    <td className="py-2 pr-4 text-slate-600">{[g.firstName, g.lastName].filter(Boolean).join(' ') || '—'}</td>
+                    <td className="py-2 pr-4 text-slate-500">{g.countryCode || '—'}</td>
+                    <td className="py-2 pr-4 text-slate-500 capitalize">{g.source}</td>
+                    <td className="py-2 pr-4">
+                      <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
+                        g.subscribed ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'
+                      }`}>
+                        {g.subscribed ? 'Subscribed' : 'Unsubscribed'}
+                      </span>
+                    </td>
+                    <td className="py-2 text-slate-400 text-xs">{new Date(g.createdAt).toLocaleDateString('en-GB')}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {totalPages > 1 && (
+          <div className="flex items-center justify-between mt-4 text-sm text-slate-500">
+            <span>Page {page} of {totalPages} ({data?.total} total)</span>
+            <div className="flex gap-1">
+              <button
+                onClick={() => handlePage(page - 1)}
+                disabled={page <= 1}
+                className="p-1 rounded border border-slate-200 hover:bg-slate-50 disabled:opacity-40"
+                data-testid="button-prev-page"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => handlePage(page + 1)}
+                disabled={page >= totalPages}
+                className="p-1 rounded border border-slate-200 hover:bg-slate-50 disabled:opacity-40"
+                data-testid="button-next-page"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ── Broadcast Panel ───────────────────────────────────────────────────────────
+
+function BroadcastPanel({ apiUrl, apiKey }) {
+  const [subject, setSubject] = useState('');
+  const [html, setHtml] = useState('');
+  const [testEmail, setTestEmail] = useState('');
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [confirmOpen, setConfirmOpen] = useState(false);
+
+  const sendTest = async () => {
+    if (!subject || !html || !testEmail) return;
+    setStatus({ type: 'loading', message: 'Sending test email…' });
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/guests/broadcast`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Key': apiKey },
+        body: JSON.stringify({ subject, html, testEmail }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Send failed');
+      setStatus({ type: 'success', message: `Test sent to ${testEmail}` });
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    }
+  };
+
+  const sendBroadcast = async () => {
+    if (!confirmOpen) { setConfirmOpen(true); return; }
+    setStatus({ type: 'loading', message: 'Starting broadcast…' });
+    setConfirmOpen(false);
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/guests/broadcast`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Key': apiKey },
+        body: JSON.stringify({ subject, html }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Broadcast failed');
+      setStatus({ type: 'success', message: `Broadcast started — ${data.queued} emails queued. Progress visible in Render logs.` });
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    }
+  };
+
+  return (
+    <div className="bg-white rounded-xl border border-slate-200 p-6">
+      <h2 className="text-lg font-semibold text-slate-900 mb-1">Email Broadcast</h2>
+      <p className="text-sm text-slate-500 mb-5">Send a marketing email to all subscribed guests. Every email includes a personalised unsubscribe link. Always test first.</p>
+
+      <div className="space-y-4">
+        <label className="block">
+          <span className="text-sm font-medium text-slate-700">Subject line *</span>
+          <input
+            type="text"
+            value={subject}
+            onChange={(e) => { setSubject(e.target.value); setConfirmOpen(false); }}
+            placeholder="e.g. We miss you — come back to DEVOCEAN"
+            className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+            data-testid="input-broadcast-subject"
+          />
+        </label>
+
+        <label className="block">
+          <span className="text-sm font-medium text-slate-700">Email body (HTML) *</span>
+          <p className="text-xs text-slate-400 mb-1">An unsubscribe footer is added automatically to every email.</p>
+          <textarea
+            value={html}
+            onChange={(e) => { setHtml(e.target.value); setConfirmOpen(false); }}
+            rows={12}
+            placeholder={'<h2>Hello from DEVOCEAN Lodge!</h2>\n<p>We hope you enjoyed your stay...</p>'}
+            className="mt-1 w-full px-3 py-2 border border-slate-300 rounded-lg text-sm font-mono focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none resize-y"
+            data-testid="textarea-broadcast-html"
+          />
+        </label>
+
+        {html && (
+          <div className="border border-slate-200 rounded-lg overflow-hidden">
+            <div className="bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-500 border-b border-slate-200">Preview</div>
+            <div
+              className="p-4 text-sm"
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
+          </div>
+        )}
+
+        <div className="border-t border-slate-200 pt-4">
+          <label className="block mb-3">
+            <span className="text-sm font-medium text-slate-700">Test recipient email</span>
+            <div className="flex gap-2 mt-1">
+              <input
+                type="email"
+                value={testEmail}
+                onChange={(e) => setTestEmail(e.target.value)}
+                placeholder="your@email.com"
+                className="flex-1 px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none"
+                data-testid="input-broadcast-test-email"
+              />
+              <button
+                type="button"
+                onClick={sendTest}
+                disabled={!subject || !html || !testEmail || status.type === 'loading'}
+                className="px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium hover:bg-slate-50 disabled:opacity-40 flex items-center gap-1.5 text-slate-700"
+                data-testid="button-send-test"
+              >
+                <Mail className="w-4 h-4" />
+                Send test
+              </button>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      {confirmOpen && (
+        <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+          <p className="text-sm text-amber-800 font-medium">Send to all subscribed guests?</p>
+          <p className="text-xs text-amber-600 mt-1">This will send "{subject}" to every subscribed contact in your database. This cannot be undone.</p>
+        </div>
+      )}
+
+      <button
+        type="button"
+        onClick={sendBroadcast}
+        disabled={!subject || !html || status.type === 'loading'}
+        className={`mt-4 w-full py-2.5 rounded-lg text-sm font-medium transition-colors disabled:opacity-50 flex items-center justify-center gap-2 ${
+          confirmOpen
+            ? 'bg-red-600 text-white hover:bg-red-700'
+            : 'bg-[#9e4b13] text-white hover:bg-[#8a4211]'
+        }`}
+        data-testid="button-send-broadcast"
+      >
+        {status.type === 'loading' ? (
+          <><Loader2 className="w-4 h-4 animate-spin" /> Starting…</>
+        ) : confirmOpen ? (
+          <><Send className="w-4 h-4" /> Yes — send to all subscribers</>
+        ) : (
+          <><Send className="w-4 h-4" /> Send broadcast to all subscribers</>
+        )}
+      </button>
+
+      <StatusMessage status={status} />
+    </div>
+  );
 }
