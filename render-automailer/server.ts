@@ -321,6 +321,28 @@ app.post('/api/admin/update-email', requireAdminKey, async (req, res) => {
 
     const result = await emailService.updateGuestEmail(groupRef, newEmail);
 
+    // Upsert the real email into the guest CRM now that we have it
+    if (guestDb) {
+      try {
+        const b = result.booking;
+        const firstName = b.firstName || null;
+        const lastName = b.guestName && firstName && b.guestName.startsWith(firstName)
+          ? b.guestName.slice(firstName.length).trim() || null
+          : null;
+        await guestDb.upsertGuests([{
+          email: newEmail.trim().toLowerCase(),
+          firstName,
+          lastName,
+          countryCode: b.guestCountry ? String(b.guestCountry).toUpperCase().slice(0, 2) : null,
+          subscribed: true,
+          source: 'beds24',
+          unsubscribeToken: crypto.randomUUID(),
+        }]);
+      } catch (crmErr) {
+        console.error('[CRM] Failed to upsert guest after email update:', crmErr);
+      }
+    }
+
     res.json({
       success: true,
       message: `Email updated for booking ${groupRef}. ${result.pendingEmailsUpdated} pending emails redirected to ${newEmail}.`,
