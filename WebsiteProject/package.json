@@ -42,6 +42,7 @@
     "sharp": "^0.34.4",
     "vite-plugin-compression": "^0.5.1",
     "wouter": "^3.7.1",
+    "xlsx": "^0.18.5",
     "zod": "^4.1.12"
   },
   "devDependencies": {
