@@ -49,8 +49,9 @@ Preferred communication style: Simple, everyday language.
 ## External Dependencies
 
 ### Database
-- **PostgreSQL** via `@neondatabase/serverless` - Neon serverless PostgreSQL
-- **Connection**: Requires `DATABASE_URL` environment variable
+- **PostgreSQL** via Supabase (set up via Replit agent)
+- **Connection**: Requires `DATABASE_URL` environment variable set in Render dashboard
+- **Driver**: `drizzle-orm/postgres-js` with standard `postgres` client
 
 ### Email Services
 - **IMAP Server**: For reading Beds24 booking notifications
