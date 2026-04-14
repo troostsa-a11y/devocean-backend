@@ -893,7 +893,7 @@ function GuestsTab({ apiUrl, apiKey }) {
 
 // ── Parse helpers ─────────────────────────────────────────────────────────────
 
-function sheetToRecords(file, source) {
+function sheetToRecords(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (e) => {
@@ -902,12 +902,7 @@ function sheetToRecords(file, source) {
         const wb = XLSX.read(data, { type: 'array', raw: false });
         const ws = wb.Sheets[wb.SheetNames[0]];
         const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
-        const records = source === 'mailchimp'
-          ? parseMailchimp(rows)
-          : source === 'hotelrunner'
-          ? parseHotelRunner(rows)
-          : parseBeds24(rows);
-        resolve(records);
+        resolve(parseBeds24(rows));
       } catch (err) {
         reject(err);
       }
@@ -919,39 +914,6 @@ function sheetToRecords(file, source) {
 
 function isValidEmail(e) {
   return e && e.includes('@') && !e.includes('guest.booking.com') && !e.includes('reply.airbnb');
-}
-
-function parseMailchimp(rows) {
-  return rows.map(r => ({
-    email: (r['Email Address'] || '').trim().toLowerCase(),
-    firstName: (r['First Name'] || '').trim(),
-    lastName: (r['Last Name'] || '').trim(),
-    countryCode: (r['CC'] || r['Country'] || '').trim().toUpperCase() || null,
-    subscribed: true,
-    source: 'mailchimp',
-  })).filter(r => isValidEmail(r.email));
-}
-
-function parseHotelRunner(rows) {
-  return rows.map(r => {
-    const countryRaw = String(r['Country'] || r['Nationality'] || '');
-    const m = countryRaw.match(/\(([A-Z]{2})\)/);
-    const countryCode = m ? m[1] : (countryRaw.length === 2 ? countryRaw.toUpperCase() : null);
-    const fullName = String(r['Guest Name'] || r['Name'] || '');
-    const parts = fullName.trim().split(/\s+/);
-    const firstName = parts[0] || '';
-    const lastName = parts.slice(1).join(' ') || '';
-    const email = String(r['Email'] || r['Email Address'] || r['Guest Email'] || '').trim().toLowerCase();
-    return {
-      email,
-      firstName,
-      lastName,
-      phone: String(r['Phone'] || r['Mobile'] || r['Telephone'] || '').trim() || null,
-      countryCode,
-      subscribed: true,
-      source: 'hotelrunner',
-    };
-  }).filter(r => isValidEmail(r.email));
 }
 
 function parseBeds24(rows) {
@@ -984,7 +946,6 @@ function parseBeds24(rows) {
 // ── Import Panel ──────────────────────────────────────────────────────────────
 
 function ImportPanel({ apiUrl, apiKey }) {
-  const [source, setSource] = useState('mailchimp');
   const [file, setFile] = useState(null);
   const [preview, setPreview] = useState(null);
   const [status, setStatus] = useState({ type: 'idle', message: '' });
@@ -995,19 +956,11 @@ function ImportPanel({ apiUrl, apiKey }) {
     setPreview(null);
     setStatus({ type: 'idle', message: '' });
     try {
-      const records = await sheetToRecords(f, source);
+      const records = await sheetToRecords(f);
       setPreview(records);
     } catch (err) {
       setStatus({ type: 'error', message: `Could not parse file: ${err.message}` });
     }
-  };
-
-  const handleSourceChange = (s) => {
-    setSource(s);
-    setPreview(null);
-    setFile(null);
-    setStatus({ type: 'idle', message: '' });
-    if (fileRef.current) fileRef.current.value = '';
   };
 
   const handleImport = async () => {
@@ -1030,44 +983,18 @@ function ImportPanel({ apiUrl, apiKey }) {
     }
   };
 
-  const SOURCE_INFO = {
-    mailchimp: { accept: '.csv,.xlsx', hint: 'Export from Mailchimp > Audience > Export CSV' },
-    hotelrunner: { accept: '.xlsx,.xls,.csv', hint: 'Export from HotelRunner reservation list (XLSX)' },
-    beds24: { accept: '.xlsx,.xls,.csv', hint: 'Export from Beds24 guest list (XLSX)' },
-  };
-
   return (
     <div className="bg-white rounded-xl border border-slate-200 p-6">
-      <h2 className="text-lg font-semibold text-slate-900 mb-1">Import Contacts</h2>
-      <p className="text-sm text-slate-500 mb-5">Upload a guest export file. Existing contacts are safely merged — unsubscribe status is never overwritten.</p>
-
-      <div className="mb-4">
-        <span className="text-sm font-medium text-slate-700 block mb-2">Source</span>
-        <div className="flex gap-2">
-          {[['mailchimp', 'Mailchimp'], ['hotelrunner', 'HotelRunner'], ['beds24', 'Beds24']].map(([id, label]) => (
-            <button
-              key={id}
-              onClick={() => handleSourceChange(id)}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium border transition-colors ${
-                source === id
-                  ? 'bg-[#9e4b13] text-white border-[#9e4b13]'
-                  : 'text-slate-600 border-slate-300 hover:bg-slate-50'
-              }`}
-              data-testid={`source-${id}`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
-        <p className="text-xs text-slate-400 mt-2">{SOURCE_INFO[source].hint}</p>
-      </div>
+      <h2 className="text-lg font-semibold text-slate-900 mb-1">Import from Beds24</h2>
+      <p className="text-sm text-slate-500 mb-5">Upload a Beds24 guest list export (XLSX or CSV). Existing contacts are safely merged — unsubscribe status is never overwritten.</p>
 
       <label className="block mb-4">
-        <span className="text-sm font-medium text-slate-700">Upload file</span>
+        <span className="text-sm font-medium text-slate-700">Beds24 export file</span>
+        <p className="text-xs text-slate-400 mt-0.5 mb-1">Export from Beds24 › Guests › Export as XLSX</p>
         <input
           ref={fileRef}
           type="file"
-          accept={SOURCE_INFO[source].accept}
+          accept=".xlsx,.xls,.csv"
           onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
           className="mt-1 block w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border file:border-slate-300 file:text-sm file:font-medium file:bg-slate-50 file:text-slate-700 hover:file:bg-slate-100"
           data-testid="input-import-file"
@@ -1236,8 +1163,6 @@ function ContactsPanel({ apiUrl, apiKey }) {
             data-testid="select-filter-source"
           >
             <option value="">All sources</option>
-            <option value="mailchimp">Mailchimp</option>
-            <option value="hotelrunner">HotelRunner</option>
             <option value="beds24">Beds24</option>
           </select>
           <button
