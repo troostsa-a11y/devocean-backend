@@ -1,4 +1,5 @@
 import * as cron from 'node-cron';
+import crypto from 'crypto';
 import { DatabaseService } from './database';
 import { EmailParser } from './email-parser';
 import { EmailSchedulerService } from './email-scheduler';
@@ -245,6 +246,9 @@ export class EmailAutomationService {
               const booking = await this.db.createBooking(validatedBooking);
               console.log(`Created booking ${booking.groupRef} (ID: ${booking.id})`);
 
+              // Auto-add guest to CRM
+              await this.upsertGuestFromBooking(booking);
+
               // Check if there's a pending cancellation for this booking
               const pendingCancellation = await this.db.getPendingCancellation(booking.groupRef);
               
@@ -358,6 +362,9 @@ export class EmailAutomationService {
     const booking = await this.db.createBooking(validated);
     console.log(`[ADMIN] Manual booking created: ${booking.groupRef} for ${booking.guestName}`);
 
+    // Auto-add guest to CRM
+    await this.upsertGuestFromBooking(booking);
+
     await this.emailScheduler.scheduleEmailsForBooking(booking);
 
     const scheduled = await this.db.getScheduledEmailsForBooking(booking.id);
@@ -459,6 +466,38 @@ export class EmailAutomationService {
     console.log(`[ADMIN] Email updated for booking ${groupRef}: ${oldEmail} → ${newEmail}. ${pendingCount} pending emails redirected.`);
 
     return { booking: updatedBooking || { ...booking, guestEmail: newEmail }, oldEmail, pendingEmailsUpdated: pendingCount };
+  }
+
+  /**
+   * Upsert a guest CRM record from a booking.
+   * Called automatically whenever a new booking is created (auto or manual).
+   * Never overwrites an existing unsubscribe or enriched data.
+   */
+  private async upsertGuestFromBooking(booking: any): Promise<void> {
+    try {
+      const email = (booking.guestEmail || '').trim().toLowerCase();
+      if (!email || email.includes('guest.booking.com') || email.includes('reply.airbnb') || email.includes('@guest.')) {
+        return; // proxy / relay address — skip
+      }
+
+      const firstName = booking.firstName || null;
+      const lastName = booking.guestName && firstName && booking.guestName.startsWith(firstName)
+        ? booking.guestName.slice(firstName.length).trim() || null
+        : null;
+
+      await this.db.upsertGuests([{
+        email,
+        firstName,
+        lastName,
+        countryCode: booking.guestCountry ? String(booking.guestCountry).toUpperCase().slice(0, 2) : null,
+        subscribed: true,
+        source: 'beds24',
+        unsubscribeToken: crypto.randomUUID(),
+      }]);
+    } catch (err) {
+      // Non-fatal — log but don't interrupt booking flow
+      console.error('[CRM] Failed to upsert guest from booking:', err);
+    }
   }
 
   /**
