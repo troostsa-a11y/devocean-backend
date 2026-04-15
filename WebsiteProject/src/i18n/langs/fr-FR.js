@@ -17,7 +17,9 @@ menu: "Menu",
       ctaPrimary: "Réservez votre séjour",
       ctaSecondary: "Découvrir le lodge",
       badge: "Confort & rapport qualité-prix plébiscités",
-      whyPonta: "Pourquoi Ponta do Ouro ?"
+      whyPonta: "Pourquoi Ponta do Ouro ?",
+      villageHighlights: "Points forts du village",
+      goDiving: "Plonger"
     },
     stay: {
       headline: "Séjournez chez nous",

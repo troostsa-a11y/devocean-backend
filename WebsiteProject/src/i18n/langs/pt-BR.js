@@ -3,7 +3,7 @@ export const UI = {
 menu: "Menu",
     regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Hospedagens ecológicas perto de uma praia intocada, em um destino de aventura de classe mundial.", description: "Descubra um paraíso único de mergulho da UNESCO, cercado por reservas naturais e experiências inesquecíveis ao ar livre.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Hospedagens ecológicas perto de uma praia intocada, em um destino de aventura de classe mundial.", description: "Descubra um paraíso único de mergulho da UNESCO, cercado por reservas naturais e experiências inesquecíveis ao ar livre.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?", villageHighlights: "Destaques da vila", goDiving: "Mergulhar" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
     experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:" },
     todo: {
