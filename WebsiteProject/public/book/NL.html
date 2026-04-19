@@ -8,6 +8,10 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Warm up the connection to Beds24 + iframe-resizer CDN immediately during HTML parse. -->
+    <link rel="preconnect" href="https://beds24.com" crossorigin />
+    <link rel="dns-prefetch" href="https://beds24.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=optional" rel="stylesheet" />
 
   <!-- Trustindex Floating Certificate -->
@@ -404,6 +408,26 @@
         title="DEVOCEAN Lodge Booking"
         allow="payment *; clipboard-write *"
       ></iframe>
+      <script>
+        // Kick off the Beds24 request as soon as the parser hits this point,
+        // not after all FAQ content + footer have been parsed below.
+        (function() {
+          try {
+            var iframe = document.getElementById('beds24frame');
+            if (!iframe || iframe.dataset.srcSet === '1') return;
+            var p = new URLSearchParams(window.location.search);
+            var roomid = p.get('roomid') || '';
+            var currency = p.get('currency') || 'USD';
+            // Pull the language token from the existing <html lang="..."> attr
+            var lang = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
+            var url = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=' + lang + '&d=' + lang + '&cur=' + currency;
+            if (roomid) url += '&roomid=' + roomid;
+            iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
+            iframe.src = url;
+            iframe.dataset.srcSet = '1';
+          } catch (e) { /* fall through to bottom-of-body loader */ }
+        })();
+      </script>
     </div>
   </main>
 
@@ -550,8 +574,11 @@
     // Prevent Beds24 iframe from polluting browser history
     // Uses sandbox to restrict top-level navigation while allowing all booking functionality
     const iframe = document.getElementById('beds24frame');
-    iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
-    document.getElementById('beds24frame').src = iframeUrl;
+    if (iframe.dataset.srcSet !== '1') {
+      iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
+      iframe.src = iframeUrl;
+      iframe.dataset.srcSet = '1';
+    }
     
     // FAQ Accordion functionality (INP-optimized with immediate visual feedback)
     document.querySelectorAll('.faq-item').forEach(item => {
