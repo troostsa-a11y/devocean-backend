@@ -77,7 +77,7 @@
                   window.location.hostname.includes('repl.co');
       if (isDev) return;
 
-      var loaded = { gtm: false, tracker: false, rage: false };
+      var loaded = { gtm: false, tracker: false };
       
       function scheduleWithIdle(fn, delay) {
         setTimeout(function() {
@@ -107,18 +107,9 @@
         document.head.appendChild(s);
       }
       
-      function loadRageDetector() {
-        if (loaded.rage) return;
-        loaded.rage = true;
-        var s = document.createElement('script');
-        s.src = '/rage-click-detector.js';
-        document.head.appendChild(s);
-      }
-      
       function scheduleAllScripts() {
         scheduleWithIdle(loadGTM, 500);
         scheduleWithIdle(loadTracker, 900);
-        scheduleWithIdle(loadRageDetector, 1100);
       }
       
       function onFirstInteraction() {
