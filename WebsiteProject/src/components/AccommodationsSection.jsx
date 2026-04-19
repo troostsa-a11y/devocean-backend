@@ -104,11 +104,11 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                   <h3 className="font-semibold text-lg">{u.title}</h3>
                 )}
                 <p className="text-sm text-slate-600">{u.short}</p>
-                <div className="mt-1 flex items-center gap-3 flex-wrap">
+                <div className="mt-1 flex items-center gap-2 flex-wrap">
                   {detailPageUrl && (
-                    <a 
+                    <a
                       href={detailPageUrl}
-                      className="inline-flex items-center gap-1 text-sm text-[#9e4b13] hover:text-[#8a4211] font-semibold transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#9e4b13] text-[#9e4b13] bg-white text-sm font-semibold hover:bg-[#fff5eb] transition-colors"
                       data-testid={`link-details-${u.key}`}
                     >
                       <span>{ui.stay.moreDetails}</span>
