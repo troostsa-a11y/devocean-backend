@@ -250,8 +250,23 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 data-testid="menu-mobile-nav" 
                 className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50"
               >
+                <a
+                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : "#home"}
+                  data-testid="link-mobile-home"
+                  className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                  onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#home")}
+                >
+                  {ui.nav.home}
+                </a>
+                <a
+                  href={`/story.html?lang=${lang}`}
+                  data-testid="link-mobile-story"
+                  className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {ui.stay?.ourStory || "Our Story"}
+                </a>
                 {[
-                  ["home", "#home"],
                   ["stay", "#stay"],
                   ["experiences", "#experiences"],
                   ["todo", "#todo"],
@@ -269,14 +284,6 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                     {ui.nav[k]}
                   </a>
                 ))}
-                <a
-                  href={`/story.html?lang=${lang}`}
-                  data-testid="link-mobile-story"
-                  className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {ui.stay?.ourStory || "Our Story"}
-                </a>
                 <div className="p-3">
                   <a
                     href={bookUrl}
