@@ -113,8 +113,10 @@ export default function App() {
     observer.observe(topbar);
     observer.observe(header);
 
-    // Initial measurement
-    updateStackHeight();
+    // Initial measurement (deferred to idle so it doesn't force a layout
+    // during React's first commit on the critical render path)
+    const scheduleInitial = window.requestIdleCallback || ((cb) => setTimeout(cb, 0));
+    scheduleInitial(updateStackHeight);
 
     return () => observer.disconnect();
   }, []);

@@ -268,11 +268,20 @@
         // If elements don't exist, skip - App.jsx will handle resize
       }
       
-      // Run once when DOM is ready (no recursive retries)
+      // Defer recalc until the browser is idle so it never forces layout
+      // during the critical render path (PageSpeed previously attributed a
+      // ~1s "[unattributed] forced reflow" to this synchronous read).
+      function scheduleRecalc() {
+        if (window.requestIdleCallback) {
+          window.requestIdleCallback(recalcHeaderHeightOnce, { timeout: 2000 });
+        } else {
+          setTimeout(recalcHeaderHeightOnce, 0);
+        }
+      }
       if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', recalcHeaderHeightOnce);
+        document.addEventListener('DOMContentLoaded', scheduleRecalc);
       } else {
-        recalcHeaderHeightOnce();
+        scheduleRecalc();
       }
     })();
   </script>
