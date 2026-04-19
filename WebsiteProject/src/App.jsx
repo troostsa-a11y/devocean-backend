@@ -13,9 +13,11 @@ import HeroSection from './components/HeroSection';
 import AccommodationsSection from './components/AccommodationsSection';
 import ExperiencesSection from './components/ExperiencesSection';
 import TodoSection from './components/TodoSection';
-import ExperienceDetailPage from './components/ExperienceDetailPage';
-import WhyPontaPage from './components/WhyPontaPage';
-import AdminPage from './components/AdminPage';
+
+// Route-level components (lazy loaded - only fetched when their route is visited)
+const ExperienceDetailPage = lazy(() => import('./components/ExperienceDetailPage'));
+const WhyPontaPage = lazy(() => import('./components/WhyPontaPage'));
+const AdminPage = lazy(() => import('./components/AdminPage')); // Pulls xlsx (~400KB) out of main bundle
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -184,6 +186,14 @@ export default function App() {
         bookUrl={bookUrl}
       />
 
+      <Suspense fallback={
+        <div className="flex-1 flex items-center justify-center min-h-[50vh]">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
+            <p className="mt-4 text-slate-600">Loading...</p>
+          </div>
+        </div>
+      }>
       <Switch>
         {/* Admin panel (not linked from navigation - staff only) */}
         <Route path="/admin">
@@ -268,6 +278,7 @@ export default function App() {
           )}
         </Route>
       </Switch>
+      </Suspense>
     </div>
   );
 }
