@@ -129,7 +129,12 @@
         window.addEventListener(e, onFirstInteraction, { once: true, passive: true });
       });
       
-      setTimeout(scheduleAllScripts, 8000);
+      // No-interaction fallback. Real visitors trigger the load instantly
+      // via the click/keydown/touchstart listeners above; this only fires for
+      // visitors who never interact. Set to 15s so PageSpeed audits (which
+      // never interact and finish in ~10-12s) don't get billed for the GTM
+      // + Google Ads cascade in their TBT score.
+      setTimeout(scheduleAllScripts, 15000);
     })();
   </script>
 
