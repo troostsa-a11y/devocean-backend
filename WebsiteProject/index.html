@@ -303,8 +303,11 @@
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0;
-      animation: fadeInImage 0.8s ease-out forwards;
+      /* Render the hero image as soon as it decodes - no fade.
+         Fading from opacity 0 forced visitors to look at a black screen for
+         800ms even though the image was already preloaded, and prevented the
+         browser from counting the image as the LCP candidate during the fade. */
+      opacity: 1;
     }
     #hero-placeholder img {
       width: 100%;
