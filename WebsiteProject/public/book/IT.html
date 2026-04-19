@@ -351,6 +351,26 @@
       }
     }
   </style>
+
+    <script>
+      // Hide booking-iframe loading state once Beds24 has rendered.
+      document.addEventListener('DOMContentLoaded', function() {
+        var iframe = document.getElementById('beds24frame');
+        var loader = document.getElementById('iframe-loading');
+        if (!iframe || !loader) return;
+        var hidden = false;
+        function hide() {
+          if (hidden) return;
+          hidden = true;
+          loader.classList.add('is-hidden');
+          loader.setAttribute('aria-busy', 'false');
+          setTimeout(function() { loader.style.display = 'none'; }, 350);
+        }
+        iframe.addEventListener('load', hide, { once: true });
+        // Safety net in case the load event never fires (e.g. blocked).
+        setTimeout(hide, 25000);
+      });
+    </script>
 </head>
 
 <body>
@@ -400,7 +420,12 @@
 
   <main>
     <div class="iframe-container">
-      <iframe
+            <div id="iframe-loading" class="iframe-loading" aria-live="polite" aria-busy="true">
+          <div class="iframe-spinner" aria-hidden="true"></div>
+          <div class="iframe-loading-text">Caricamento disponibilità…</div>
+          <div class="iframe-loading-sub">Recupero tariffe in tempo reale</div>
+        </div>
+        <iframe
         id="beds24frame"
         scrolling="no"
         src="about:blank"
