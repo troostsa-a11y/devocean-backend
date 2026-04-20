@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Booking Confirmed – DEVOCEAN Lodge</title>
   <meta name="description" content="Your booking at DEVOCEAN Lodge has been confirmed. We look forward to welcoming you!" />
+  <!-- Keep this page out of search results and link previews. It must never
+       be crawled, archived, or shared as a card — bots hitting it would fire
+       phantom Google Ads / GA4 conversions. -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -54,9 +60,20 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-532W3HH2');
       }
-      // Load after 3 seconds
+      // GUARD: Only load GTM if Beds24 actually redirected here with a real
+      // booking ID. Without this, bots / link previewers / back-button visits
+      // would trigger phantom Google Ads conversions.
+      // Beds24 should be configured to redirect to /thankyou.html?bookid=[BOOKID]
+      // We accept several common param names so the guard is forgiving.
+      var qp = new URLSearchParams(window.location.search);
+      var bookid = qp.get('bookid') || qp.get('bookId') || qp.get('booking_id')
+                || qp.get('bid') || qp.get('refnum') || qp.get('reference') || '';
+      if (!bookid || bookid.length < 4) {
+        // No valid booking reference — do NOT load GTM, do NOT fire conversions.
+        return;
+      }
+      // Real booking visitor — load GTM as before.
       setTimeout(loadGTM, 3000);
-      // Or load on first user interaction
       ['scroll','mousemove','touchstart','click'].forEach(function(e){
         window.addEventListener(e, loadGTM, {once: true, passive: true});
       });

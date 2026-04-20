@@ -4,6 +4,12 @@
 # Allow all search engines
 User-agent: *
 Allow: /
+# Conversion / post-booking pages must never be indexed or crawled —
+# bots hitting them would trigger phantom Google Ads / GA4 conversions.
+Disallow: /thankyou.html
+Disallow: /thankyou
+Disallow: /canceled.html
+Disallow: /canceled
 
 # Sitemap location
 Sitemap: https://devoceanlodge.com/sitemap.xml
