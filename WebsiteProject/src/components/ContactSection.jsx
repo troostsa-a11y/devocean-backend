@@ -26,6 +26,16 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
   const outRef = useRef(null);
   const sectionRef = useRef(null);
   const recaptchaLoadedRef = useRef(false);
+  const statusRef = useRef(null);
+
+  // Scroll the status message into view after submit so mobile users
+  // actually see the error/success below the button instead of staring
+  // at a button that quietly reverted from "Sending..." to "Send".
+  useEffect(() => {
+    if (formState.status === 'success' || formState.status === 'error') {
+      statusRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [formState.status]);
 
   // Lazy load reCAPTCHA when section becomes visible
   useEffect(() => {
@@ -79,6 +89,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         unit: formData.get('unit'),
         currency: formData.get('currency'),
         lang: formData.get('lang'),
+        website: formData.get('website'), // honeypot: legit users leave blank, bots fill it
         recaptcha_token: recaptchaToken,
       };
 
@@ -320,7 +331,8 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
                 id="message"
                 name="message"
                 rows={4}
-                minLength={20}
+                required
+                minLength={10}
                 maxLength={2000}
                 className="mt-1 w-full rounded-xl border px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#9e4b13]"
                 placeholder={ui.form.phMsg}
@@ -336,10 +348,27 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
             </button>
 
             {formState.status === 'success' && (
-              <p className="text-sm text-green-600 font-medium">{formState.message}</p>
+              <div
+                ref={statusRef}
+                role="status"
+                aria-live="polite"
+                className="rounded-xl border border-green-300 bg-green-50 px-4 py-3 text-sm font-medium text-green-800"
+              >
+                {formState.message}
+              </div>
             )}
             {formState.status === 'error' && (
-              <p className="text-sm text-red-600 font-medium">{formState.message}</p>
+              <div
+                ref={statusRef}
+                role="alert"
+                aria-live="assertive"
+                className="rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm font-medium text-red-800"
+              >
+                {formState.message}
+                <span className="block mt-1 text-xs font-normal text-red-700">
+                  {ui.form.errorHelp || 'If this keeps happening, please email us directly or send a WhatsApp message.'}
+                </span>
+              </div>
             )}
 
             <p className="text-xs text-slate-500">{ui.form.consent}</p>

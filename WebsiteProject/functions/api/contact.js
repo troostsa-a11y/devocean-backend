@@ -131,20 +131,27 @@ async function verifyRecaptcha(token, action, secretKey) {
   });
 
   const data = await response.json();
-  
+
   if (!data.success) {
     return { success: false, error: 'reCAPTCHA verification failed' };
   }
-  
+
   if (data.action !== action) {
     return { success: false, error: 'reCAPTCHA action mismatch' };
   }
-  
-  if (data.score < 0.5) {
-    return { success: false, error: 'reCAPTCHA score too low' };
+
+  // Threshold lowered from 0.5 → 0.3. International travellers on mobile
+  // data, VPNs, or privacy browsers routinely score 0.2-0.4 even when 100%
+  // legitimate, which was producing "score too low" rejections for real
+  // guests. 0.3 still blocks bots (which almost always score 0.0-0.1) while
+  // letting honest humans through. We log the score so we can monitor real
+  // traffic distribution in the Cloudflare dashboard.
+  console.log(`[recaptcha] action=${action} score=${data.score} hostname=${data.hostname}`);
+  if (data.score < 0.3) {
+    return { success: false, error: 'reCAPTCHA score too low', score: data.score };
   }
-  
-  return { success: true };
+
+  return { success: true, score: data.score };
 }
 
 // Send email via Resend API
