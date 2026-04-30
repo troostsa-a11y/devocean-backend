@@ -132,29 +132,73 @@
   <!-- reCAPTCHA v3 (lazy loaded when contact form visible) -->
   <script>
     window.RECAPTCHA_SITE_KEY = '6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L';
-    
+    // Cloudflare Turnstile fallback (used when reCAPTCHA cannot run — e.g.
+    // privacy browsers, Brave shields, networks blocking Google domains).
+    // Leave empty until you register a free Turnstile widget at
+    // https://dash.cloudflare.com/?to=/:account/turnstile, then paste your
+    // site key here. Until set, the fallback gracefully no-ops.
+    window.TURNSTILE_SITE_KEY = '';
+
     // Lazy loader for reCAPTCHA
     window.loadRecaptcha = (function() {
       let promise = null;
-      
+
       return function() {
         if (promise) return promise;
-        
+
         if (window.grecaptcha) {
           promise = Promise.resolve(window.grecaptcha);
           return promise;
         }
-        
+
         promise = new Promise((resolve, reject) => {
           const script = document.createElement('script');
           script.src = 'https://www.google.com/recaptcha/api.js?render=' + window.RECAPTCHA_SITE_KEY;
           script.async = true;
           script.defer = true;
-          script.onload = () => resolve(window.grecaptcha);
-          script.onerror = () => reject(new Error('Failed to load reCAPTCHA'));
+          // Hard timeout so a blocked Google domain doesn't hang forever and
+          // the fallback (Turnstile) can take over.
+          const timer = setTimeout(() => {
+            reject(new Error('reCAPTCHA script load timeout'));
+          }, 8000);
+          script.onload = () => { clearTimeout(timer); resolve(window.grecaptcha); };
+          script.onerror = () => { clearTimeout(timer); reject(new Error('Failed to load reCAPTCHA')); };
           document.head.appendChild(script);
         });
-        
+
+        return promise;
+      };
+    })();
+
+    // Lazy loader for Cloudflare Turnstile (only loaded if reCAPTCHA fails)
+    window.loadTurnstile = (function() {
+      let promise = null;
+
+      return function() {
+        if (promise) return promise;
+        if (!window.TURNSTILE_SITE_KEY) {
+          promise = Promise.reject(new Error('Turnstile not configured'));
+          return promise;
+        }
+
+        if (window.turnstile) {
+          promise = Promise.resolve(window.turnstile);
+          return promise;
+        }
+
+        promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+          script.async = true;
+          script.defer = true;
+          const timer = setTimeout(() => {
+            reject(new Error('Turnstile script load timeout'));
+          }, 8000);
+          script.onload = () => { clearTimeout(timer); resolve(window.turnstile); };
+          script.onerror = () => { clearTimeout(timer); reject(new Error('Failed to load Turnstile')); };
+          document.head.appendChild(script);
+        });
+
         return promise;
       };
     })();

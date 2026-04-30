@@ -1,52 +1,21 @@
 /**
  * Standalone Experience Inquiry Cloudflare Worker
  * Sends emails directly via Resend API (no backend needed)
- * 
+ *
  * Required Cloudflare Environment Variables:
- * - RECAPTCHA_SECRET_KEY: Google reCAPTCHA v3 secret
+ * - RECAPTCHA_SECRET_KEY: Google reCAPTCHA v3 secret (primary verifier)
+ * - TURNSTILE_SECRET_KEY: Cloudflare Turnstile secret (fallback verifier,
+ *   optional — works for users on privacy browsers / networks blocking Google)
  * - RESEND_API_KEY: Resend API key for sending emails
  */
+
+import { verifyCaptcha } from '../_lib/captcha.js';
 
 // Security: Remove CR/LF from header fields to prevent email header injection
 const sanitizeHeader = (str) => String(str).replace(/[\r\n<>]/g, '').trim();
 // Security: Sanitize message body (allow newlines for readability)
 const sanitizeMessage = (str) => String(str).replace(/\r\n/g, '\n').replace(/\r/g, '').trim();
 const escapeHtml = (text) => text.replace(/[&<>"']/g, (m) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m] || m));
-
-// Verify reCAPTCHA
-async function verifyRecaptcha(token, action, secretKey) {
-  // Skip reCAPTCHA in dev environment (when no secret key is available)
-  if (!secretKey) {
-    console.log('⚠️  Development mode: Skipping reCAPTCHA verification');
-    return { success: true };
-  }
-
-  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `secret=${secretKey}&response=${token}`,
-  });
-
-  const data = await response.json();
-
-  if (!data.success) {
-    return { success: false, error: 'reCAPTCHA verification failed' };
-  }
-
-  if (data.action !== action) {
-    return { success: false, error: 'reCAPTCHA action mismatch' };
-  }
-
-  // Threshold lowered from 0.5 → 0.3 to match contact form. International
-  // travellers on mobile data, VPNs, or privacy browsers routinely score
-  // 0.2-0.4 even when 100% legitimate. Bots almost always score 0.0-0.1.
-  console.log(`[recaptcha] action=${action} score=${data.score} hostname=${data.hostname}`);
-  if (data.score < 0.3) {
-    return { success: false, error: 'reCAPTCHA score too low', score: data.score };
-  }
-
-  return { success: true, score: data.score };
-}
 
 // Send email via Resend API
 async function sendEmail(from, to, subject, html, apiKey, replyTo, bcc = null) {
@@ -95,13 +64,20 @@ export async function onRequestPost(context) {
 
   try {
     const requestBody = await request.json();
-    const { name, email, phone, operator, dates, guests, message, experience, experienceKey, lang, recaptcha_token, operatorEmail } = requestBody;
+    const {
+      name, email, phone, operator, dates, guests, message,
+      experience, experienceKey, lang, operatorEmail,
+      recaptcha_token, turnstile_token,
+    } = requestBody;
 
-    // Debug: Log what we received
-    console.log('Received request body:', JSON.stringify(requestBody));
-
-    // Verify reCAPTCHA (action must match frontend: experience_inquiry)
-    const verification = await verifyRecaptcha(recaptcha_token, 'experience_inquiry', env.RECAPTCHA_SECRET_KEY);
+    // Verify whichever CAPTCHA the client sent. Action must match frontend.
+    const verification = await verifyCaptcha({
+      recaptchaToken: recaptcha_token,
+      turnstileToken: turnstile_token,
+      expectedAction: 'experience_inquiry',
+      env,
+      remoteip: request.headers.get('CF-Connecting-IP'),
+    });
     if (!verification.success) {
       return new Response(JSON.stringify({ error: verification.error }), {
         status: 400,

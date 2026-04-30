@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { toDDMMYYYY } from '../utils/localize';
 import { EMAIL, PHONE, MAP } from '../data/content';
 import { SOCIAL_LINKS } from '../data/content';
-import { getRecaptchaToken } from '../utils/recaptcha';
+import { getCaptchaToken } from '../utils/captcha';
 
 const socialIcons = {
   "Facebook": Facebook,
@@ -77,8 +77,9 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
     const formData = new FormData(e.target);
     
     try {
-      // Use shared reCAPTCHA utility (no hardcoded keys!)
-      const recaptchaToken = await getRecaptchaToken('contact_form');
+      // Try reCAPTCHA first; transparently fall back to Cloudflare Turnstile
+      // for users on privacy browsers / networks that block Google domains.
+      const captcha = await getCaptchaToken('contact_form');
 
       const data = {
         name: formData.get('name'),
@@ -90,7 +91,8 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         currency: formData.get('currency'),
         lang: formData.get('lang'),
         website: formData.get('website'), // honeypot: legit users leave blank, bots fill it
-        recaptcha_token: recaptchaToken,
+        recaptcha_token: captcha.provider === 'recaptcha' || captcha.provider === 'dev' ? captcha.token : undefined,
+        turnstile_token: captcha.provider === 'turnstile' ? captcha.token : undefined,
       };
 
       const response = await fetch('/api/contact', {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { getRecaptchaToken } from '../utils/recaptcha';
+import { getCaptchaToken } from '../utils/captcha';
 
 export default function ExperienceInquiryForm({ experience, operators, lang, currency }) {
   const [formData, setFormData] = useState({
@@ -47,8 +47,9 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
         return;
       }
 
-      // Use shared reCAPTCHA utility (no hardcoded keys!)
-      const recaptchaToken = await getRecaptchaToken('experience_inquiry');
+      // Try reCAPTCHA first; transparently fall back to Cloudflare Turnstile
+      // for users on privacy browsers / networks that block Google domains.
+      const captcha = await getCaptchaToken('experience_inquiry');
 
       const payload = {
         ...formData,
@@ -57,7 +58,8 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
         experienceKey: experience.key,
         lang: lang || 'en',
         currency: currency || 'EUR',
-        recaptcha_token: recaptchaToken,
+        recaptcha_token: captcha.provider === 'recaptcha' || captcha.provider === 'dev' ? captcha.token : undefined,
+        turnstile_token: captcha.provider === 'turnstile' ? captcha.token : undefined,
       };
 
       const response = await fetch('/api/experience-inquiry', {

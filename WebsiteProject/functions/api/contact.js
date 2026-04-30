@@ -1,11 +1,16 @@
 /**
  * Standalone Contact Form Cloudflare Worker
  * Sends emails directly via Resend API (no backend needed)
- * 
+ *
  * Required Cloudflare Environment Variables:
- * - RECAPTCHA_SECRET_KEY: Google reCAPTCHA v3 secret
+ * - RECAPTCHA_SECRET_KEY: Google reCAPTCHA v3 secret (primary verifier)
+ * - TURNSTILE_SECRET_KEY: Cloudflare Turnstile secret (fallback verifier,
+ *   optional — when set, allows users on privacy browsers / networks that
+ *   block Google to still submit the form)
  * - RESEND_API_KEY: Resend API key for sending emails
  */
+
+import { verifyCaptcha } from '../_lib/captcha.js';
 
 // Security: Remove CR/LF from header fields to prevent email header injection
 const sanitizeHeader = (str) => String(str).replace(/[\r\n<>]/g, '').trim();
@@ -122,38 +127,6 @@ const autoReplyContent = {
   }
 };
 
-// Verify reCAPTCHA
-async function verifyRecaptcha(token, action, secretKey) {
-  const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: `secret=${secretKey}&response=${token}`,
-  });
-
-  const data = await response.json();
-
-  if (!data.success) {
-    return { success: false, error: 'reCAPTCHA verification failed' };
-  }
-
-  if (data.action !== action) {
-    return { success: false, error: 'reCAPTCHA action mismatch' };
-  }
-
-  // Threshold lowered from 0.5 → 0.3. International travellers on mobile
-  // data, VPNs, or privacy browsers routinely score 0.2-0.4 even when 100%
-  // legitimate, which was producing "score too low" rejections for real
-  // guests. 0.3 still blocks bots (which almost always score 0.0-0.1) while
-  // letting honest humans through. We log the score so we can monitor real
-  // traffic distribution in the Cloudflare dashboard.
-  console.log(`[recaptcha] action=${action} score=${data.score} hostname=${data.hostname}`);
-  if (data.score < 0.3) {
-    return { success: false, error: 'reCAPTCHA score too low', score: data.score };
-  }
-
-  return { success: true, score: data.score };
-}
-
 // Send email via Resend API
 async function sendEmail(from, to, subject, html, apiKey, replyTo) {
   const response = await fetch('https://api.resend.com/emails', {
@@ -194,7 +167,11 @@ export async function onRequestPost(context) {
   }
 
   try {
-    const { name, email, phone, message, lang, recaptcha_token, website, checkin_iso, checkout_iso, unit, currency } = await request.json();
+    const {
+      name, email, phone, message, lang,
+      recaptcha_token, turnstile_token, website,
+      checkin_iso, checkout_iso, unit, currency,
+    } = await request.json();
 
     // Honeypot protection: reject if "website" field is filled (bots fill hidden fields)
     if (website && website.trim() !== '') {
@@ -205,8 +182,16 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Verify reCAPTCHA (action must match frontend: contact_form)
-    const verification = await verifyRecaptcha(recaptcha_token, 'contact_form', env.RECAPTCHA_SECRET_KEY);
+    // Verify whichever CAPTCHA the client sent. Action must match frontend.
+    // Turnstile token is preferred when present (more reliable across privacy
+    // browsers); reCAPTCHA token is the primary path for mainstream visitors.
+    const verification = await verifyCaptcha({
+      recaptchaToken: recaptcha_token,
+      turnstileToken: turnstile_token,
+      expectedAction: 'contact_form',
+      env,
+      remoteip: request.headers.get('CF-Connecting-IP'),
+    });
     if (!verification.success) {
       return new Response(JSON.stringify({ error: verification.error }), {
         status: 400,
