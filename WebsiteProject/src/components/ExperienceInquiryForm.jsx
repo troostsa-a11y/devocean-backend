@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getRecaptchaToken } from '../utils/recaptcha';
 
 export default function ExperienceInquiryForm({ experience, operators, lang, currency }) {
@@ -14,6 +14,15 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
   });
   const [submitting, setSubmitting] = useState(false);
   const [status, setStatus] = useState({ type: '', message: '' });
+  const statusRef = useRef(null);
+
+  // Scroll status into view after submit so mobile users see the result
+  // instead of staring at a button that quietly reverted from "Sending...".
+  useEffect(() => {
+    if (status.type === 'success' || status.type === 'error') {
+      statusRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [status.type]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,29 +30,35 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
     setStatus({ type: '', message: '' });
 
     try {
+      // Defensive: re-resolve operatorEmail at submit time in case the
+      // operator list loaded after the user already picked an option, or
+      // a name lookup mismatch left state out of sync. Without this the
+      // backend rejects with "Missing required fields".
+      const resolvedOperatorEmail =
+        formData.operatorEmail ||
+        (operators?.find(op => op.name === formData.operator)?.email ?? '');
+
+      if (!resolvedOperatorEmail) {
+        setStatus({
+          type: 'error',
+          message: getErrorMessage(lang)
+        });
+        setSubmitting(false);
+        return;
+      }
+
       // Use shared reCAPTCHA utility (no hardcoded keys!)
       const recaptchaToken = await getRecaptchaToken('experience_inquiry');
 
       const payload = {
         ...formData,
+        operatorEmail: resolvedOperatorEmail,
         experience: experience.title,
         experienceKey: experience.key,
         lang: lang || 'en',
         currency: currency || 'EUR',
         recaptcha_token: recaptchaToken,
-        operatorEmail: formData.operatorEmail
       };
-
-      // Debug: log what we're sending
-      console.log('Form submission payload:', payload);
-      console.log('Required fields check:', {
-        name: !!payload.name,
-        email: !!payload.email,
-        operator: !!payload.operator,
-        message: !!payload.message,
-        experience: !!payload.experience,
-        operatorEmail: !!payload.operatorEmail
-      });
 
       const response = await fetch('/api/experience-inquiry', {
         method: 'POST',
@@ -52,9 +67,9 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
       });
 
       if (response.ok) {
-        setStatus({ 
-          type: 'success', 
-          message: getSuccessMessage(lang) 
+        setStatus({
+          type: 'success',
+          message: getSuccessMessage(lang)
         });
         setFormData({
           name: '',
@@ -67,16 +82,16 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
           message: ''
         });
       } else {
-        const error = await response.json();
-        setStatus({ 
-          type: 'error', 
-          message: error.error || getErrorMessage(lang) 
+        const error = await response.json().catch(() => ({}));
+        setStatus({
+          type: 'error',
+          message: error.error || getErrorMessage(lang)
         });
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      setStatus({ 
-        type: 'error', 
+      setStatus({
+        type: 'error',
         message: getErrorMessage(lang)
       });
     } finally {
@@ -86,17 +101,12 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
+
     // When operator changes, also update operatorEmail
     if (name === 'operator') {
-      const selectedOperator = operators.find(op => op.name === value);
-      console.log('Operator changed to:', value);
-      console.log('Available operators:', operators);
-      console.log('Found operator:', selectedOperator);
-      console.log('Setting operatorEmail to:', selectedOperator ? selectedOperator.email : 'NOT FOUND');
-      
-      setFormData(prev => ({ 
-        ...prev, 
+      const selectedOperator = operators?.find(op => op.name === value);
+      setFormData(prev => ({
+        ...prev,
         operator: value,
         operatorEmail: selectedOperator ? selectedOperator.email : ''
       }));
@@ -242,12 +252,22 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
 
         {/* Status Message */}
         {status.message && (
-          <div className={`p-4 rounded-md ${
-            status.type === 'success' 
-              ? 'bg-green-50 text-green-800 border border-green-200' 
-              : 'bg-red-50 text-red-800 border border-red-200'
-          }`}>
+          <div
+            ref={statusRef}
+            role={status.type === 'success' ? 'status' : 'alert'}
+            aria-live={status.type === 'success' ? 'polite' : 'assertive'}
+            className={`p-4 rounded-md ${
+              status.type === 'success'
+                ? 'bg-green-50 text-green-800 border border-green-200'
+                : 'bg-red-50 text-red-800 border border-red-200'
+            }`}
+          >
             {status.message}
+            {status.type === 'error' && (
+              <span className="block mt-1 text-xs font-normal">
+                {getErrorHelp(lang)}
+              </span>
+            )}
           </div>
         )}
 
@@ -601,6 +621,31 @@ function getErrorMessage(lang) {
     sw: "Samahani, kuna hitilafu. Tafadhali jaribu tena au wasiliana nasi moja kwa moja."
   };
   return messages[lang] || messages[lang.split('-')[0]] || messages.en;
+}
+
+function getErrorHelp(lang) {
+  const helps = {
+    en: "If this keeps happening, please email info@devoceanlodge.com or send a WhatsApp message.",
+    'en-GB': "If this keeps happening, please email info@devoceanlodge.com or send a WhatsApp message.",
+    'en-US': "If this keeps happening, please email info@devoceanlodge.com or send a WhatsApp message.",
+    'pt-PT': "Se isto continuar a acontecer, por favor envie email para info@devoceanlodge.com ou uma mensagem por WhatsApp.",
+    'pt-BR': "Se isso continuar acontecendo, envie um email para info@devoceanlodge.com ou uma mensagem pelo WhatsApp.",
+    pt: "Se isto continuar a acontecer, por favor envie email para info@devoceanlodge.com ou uma mensagem por WhatsApp.",
+    nl: "Als dit blijft gebeuren, mail dan info@devoceanlodge.com of stuur een WhatsApp-bericht.",
+    fr: "Si cela persiste, veuillez envoyer un email à info@devoceanlodge.com ou un message WhatsApp.",
+    it: "Se il problema persiste, invia un'email a info@devoceanlodge.com o un messaggio WhatsApp.",
+    de: "Wenn dies weiterhin auftritt, senden Sie bitte eine E-Mail an info@devoceanlodge.com oder eine WhatsApp-Nachricht.",
+    es: "Si el problema persiste, envíe un correo a info@devoceanlodge.com o un mensaje por WhatsApp.",
+    af: "As dit aanhou gebeur, stuur asseblief 'n e-pos na info@devoceanlodge.com of 'n WhatsApp-boodskap.",
+    sv: "Om problemet kvarstår, mejla info@devoceanlodge.com eller skicka ett WhatsApp-meddelande.",
+    pl: "Jeśli problem się powtarza, wyślij email na info@devoceanlodge.com lub wiadomość WhatsApp.",
+    ja: "問題が続く場合は、info@devoceanlodge.com までメールするか、WhatsApp でご連絡ください。",
+    zh: "如果问题持续，请发送电子邮件至 info@devoceanlodge.com 或通过 WhatsApp 联系我们。",
+    ru: "Если проблема не исчезает, напишите на info@devoceanlodge.com или отправьте сообщение в WhatsApp.",
+    zu: "Uma loku kuqhubeka kwenzeka, sicela uthumele i-imeyili ku-info@devoceanlodge.com noma umlayezo we-WhatsApp.",
+    sw: "Ikiwa hali hii inaendelea, tafadhali tuma barua pepe kwa info@devoceanlodge.com au ujumbe wa WhatsApp."
+  };
+  return helps[lang] || helps[lang.split('-')[0]] || helps.en;
 }
 
 function getRecaptchaNotice(lang) {
