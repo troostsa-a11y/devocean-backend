@@ -102,6 +102,9 @@ const localeToISO6391 = (locale) => {
     
     // Polish
     "pl": "pl", "pl-PL": "pl",
+
+    // Romanian
+    "ro": "ro", "ro-RO": "ro", "ro-MD": "ro",
     
     // Japanese variants
     "ja-JP": "ja", "ja": "ja",

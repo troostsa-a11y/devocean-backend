@@ -2,13 +2,13 @@ import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
 
-const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
+const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ro", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
 const SUPPORTED_REGIONS = ["westEu", "eastEu", "asia", "americas", "africa", "oceania"];
 
 // Language-to-region mapping (module-level constant)
 const LANGUAGE_TO_REGION = {
   'westEu': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'],
-  'eastEu': ['pl'],
+  'eastEu': ['pl', 'ro'],
   'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
   'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
   'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
@@ -180,6 +180,9 @@ const CC_TO_LANGUAGE = {
   
   // Polish-speaking countries
   PL: "pl",
+
+  // Romanian-speaking countries
+  RO: "ro", MD: "ro",
   
   // Japanese-speaking countries
   JP: "ja-JP",
@@ -207,7 +210,7 @@ const CONTINENT_MERIDIANS = {
 // Booking engine locale mapping (1:1 passthrough now that we use Hotelrunner codes everywhere)
 export const LOCALE_BY_LANG = {
   "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
-  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "zu", "sw": "sw",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ro": "ro", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "zu", "sw": "sw",
 };
 
 // Get booking locale based on language + currency combination
@@ -224,7 +227,7 @@ export const getBookingLocale = (lang, currency, countryCode) => {
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
   "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
-  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv-SE", "pl": "pl-PL", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru-RU", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw-KE",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv-SE", "pl": "pl-PL", "ro": "ro-RO", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru-RU", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw-KE",
 };
 
 function normLang(raw) {
@@ -247,6 +250,7 @@ function normLang(raw) {
   if (s === "af-za" || s === "af") return "af-ZA";
   if (s === "sv") return "sv";
   if (s === "pl") return "pl";
+  if (s === "ro") return "ro";
   if (s === "ru") return "ru";
   if (s === "zu") return "zu";
   if (s === "sw") return "sw";
