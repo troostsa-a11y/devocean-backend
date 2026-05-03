@@ -346,7 +346,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
               disabled={formState.status === 'sending'}
               className="btn-cta px-4 py-2 rounded-2xl bg-[#9e4b13] text-white hover:shadow disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {formState.status === 'sending' ? 'Sending...' : ui.form.send}
+              {formState.status === 'sending' ? (ui.form.sending || 'Sending...') : ui.form.send}
             </button>
 
             {formState.status === 'success' && (

@@ -4,7 +4,7 @@ export const UI = {
   nav: { home: "Acasă", stay: "Cazare", experiences: "Experiențe", todo: "Ce să faci", gallery: "Galerie", location: "Locație", contact: "Contact" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Cazări ecologice lângă o plajă neatinsă, într-o destinație de aventură de clasă mondială.", description: "Descoperă un paradis unic de scufundări UNESCO, înconjurat de rezervații naturale și experiențe în aer liber de neuitat.", ctaPrimary: "Rezervă-ți sejurul", ctaSecondary: "Explorează lodge-ul", badge: "Confortul și valoarea apreciate de oaspeți", whyPonta: "De ce Ponta do Ouro?", villageHighlights: "Atracțiile satului", goDiving: "Scufundări" },
   stay: { headline: "Stai cu noi", blurb: "Alege-ți stilul: corturi în mijlocul naturii sau cabane confortabile și o căsuță – toate cu ospitalitate caldă, de tip familial.", moreDetails: "Mai multe detalii", ourStory: "Povestea noastră" },
-  experiences: { headline: "Experiențe", blurb: "Aventuri în ocean și pădure chiar la ușa ta.", operators: "Operatori locali de încredere:" },
+  experiences: { headline: "Experiențe", blurb: "Aventuri în ocean și pădure chiar la ușa ta.", operators: "Operatori locali de încredere:", featured: "Recomandat", learnMore: "Explorează site-urile de scufundare, operatorii și prețurile →" },
   todo: {
     headline: "Ce să faci în Ponta do Ouro",
     note: "Pentru scufundări, snorkeling, safari cu delfini/balene și charter de pescuit, vezi furnizorii de mai jos.",
@@ -36,10 +36,11 @@ export const UI = {
       "Căsuță cu grădină - aer condiționat invertor",
       "Cabană cu acoperiș de paie - aer condiționat invertor"
     ],
-    message: "Mesaj", send: "Trimite",
+    message: "Mesaj", send: "Trimite", sending: "Se trimite...",
     consent: "Prin trimitere, ești de acord să fii contactat în legătură cu solicitarea ta.",
     phName: "Numele tău", phEmail: "tu@email.com", phDate: "zz/ll/aaaa", phMsg: "Spune-ne mai multe despre dorințele tale...",
     success: "Mulțumim! Mesajul tău a fost trimis. Verifică-ți e-mailul pentru confirmare.",
+    errorHelp: "Dacă problema persistă, trimite-ne un e-mail direct sau un mesaj WhatsApp.",
   },
   galleryHeading: "Galerie",
   footer: {
