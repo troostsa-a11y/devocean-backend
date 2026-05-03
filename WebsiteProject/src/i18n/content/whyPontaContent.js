@@ -919,6 +919,57 @@ export const WHY_PONTA_CONTENT = {
       ctaBookNow: 'Rezervišite boravak',
       backToHome: 'Nazad na početnu',
       locationLabel: 'Jug Mozambika'
+    },
+  cs: {
+      pageTitle: 'Proč Ponta do Ouro? | DEVOCEAN Lodge - Mosambik',
+      metaDescription: 'Objevte, proč je Ponta do Ouro vrcholný mosambický ráj. Nedotčené pláže, světoznámé potápění, přírodní rezervace a autentická místní kultura vás čekají v DEVOCEAN Lodge.',
+      ogTitle: 'Proč Ponta do Ouro? | DEVOCEAN Lodge',
+      ogDescription: 'Objevte, proč je Ponta do Ouro vrcholný mosambický ráj. Nedotčené pláže, světoznámé potápění, přírodní rezervace a autentická místní kultura vás čekají.',
+      heroSubtitle: 'Skrytý klenot, kde se nedotčené pláže setkávají s pestrým mořským životem a nekonečnými dobrodružstvími',
+      heroTitle: 'Proč Ponta do Ouro?',
+      badgeLabel: 'Brána Národního parku Maputo',
+      imageAlt: 'Pobřeží Ponta do Ouro',
+      introText: 'Vítejte v Ponta do Ouro, bráně k prvnímu mosambickému přírodnímu dědictví UNESCO – Národnímu parku Maputo. Tento pobřežní ráj nabízí nepřekonatelnou kombinaci odpočinku, ekoturistiky a kulturního ponoru. Ať už hledáte vzrušující potápění, klidné zahrady jako v DEVOCEAN Lodge, nebo jednodenní výlety k blízkým divům, zde je důvod, proč by tato destinace měla být na vašem seznamu cest.',
+      sections: [
+        {
+          id: 'beaches',
+          title: 'Spektakulární pláže a pobřežní krása',
+          content: 'Ponta do Ouro se pyšní malebnými plážemi obklopenými kasuárinami, písečnými dunami a křišťálově čistou vodou – ideální pro odpočinek nebo procházky po pláži. Hlavní pláž je nedotčená, klidná a neuvěřitelně krásná, nabízí skutečný únik z města. Na rozdíl od přeplněnějších míst vás syrová a autentická krása Ponty zve, abyste zpomalili a propojili se s přírodou.',
+          highlight: 'Skutečný únik z města'
+        },
+        {
+          id: 'marine',
+          title: 'Světoznámá mořská dobrodružství',
+          content: 'Ponořte se do útesů plných života s více než 1 200 druhy ryb, žraloky bika, žraloky kladivouny, mantami, želvami a rezidentními delfíny. Od června do listopadu pozorujte migrující velryby keporkaky a užijte si etické plavání s divokými delfíny. Chráněno UNESCO Národním parkem, tyto zážitky jsou udržitelné a méně přeplněné než jinde.',
+          extra: 'Prozkoumejte podvodní svět s lokalitami od 10 m u Crèche po 47 m u Atlantisu, nebo si vyzkoušejte šnorchlování, surfování a rybolov na barakudy a kingfish.',
+          highlight: 'Více než 1 200 druhů ryb'
+        },
+        {
+          id: 'wildlife',
+          title: 'Blízko ikonickým rezervacím divoké zvěře',
+          content: 'Ponta do Ouro je perfektní základna pro úniky „ze savany na pláž", se snadným přístupem k jihoafrickým rezervacím jako Krugerův národní park (4–5 hodin), Tembe Elephant Park (2 hodiny), Hluhluwe-iMfolozi (3–4 hodiny) a iSimangaliso Wetland Park (UNESCO, 3 hodiny). Uvidíte Velkou pětku, slony s velkými kly a více než 526 druhů ptáků.',
+          extra: 'Místně, Národní park Maputo – jen 30 km daleko, často popisovaný jako „Tam, kde se Okavango setkává s Indickým oceánem" – ukazuje spektakulární mozaiku savan, dun a mangrovů. Máte velkou šanci vidět velká stáda slonů, hrochů, žiraf, zeber, pakoňů modrých a různých antilop jako nyala, kudu a chocholatka červená.',
+          highlight: 'Úniky ze savany na pláž'
+        },
+        {
+          id: 'culture',
+          title: 'Kulturní a malebné výlety',
+          content: 'Vyrazte do eSwatini (3–4 hodiny) na procházky v přírodní rezervaci Mantenga a tradiční svazijská kulturní představení (tance Sibhaca, nehmotné dědictví UNESCO). Prozkoumejte Panoramatickou trasu (5–6 hodin) ke Kaňonu řeky Blyde a vodopádům, nebo navštivte útočiště Chimp Eden Jane Goodallové (5 hodin) pro etická setkání s divokou zvěří.',
+          highlight: 'Nehmotné dědictví UNESCO'
+        },
+        {
+          id: 'charm',
+          title: 'Autentické mosambické kouzlo',
+          content: 'Zažijte syrová oceánská dobrodružství, bohatou místní kulturu a živé bary v nekomercializovaném prostředí. Ponta do Ouro znamená autentičnost – od živých trhů po živou hudbu – což ji činí ideální pro smysluplné úniky.',
+          highlight: 'Nekomercializovaná autentičnost'
+        }
+      ],
+      ctaTitle: 'Připraveni zažít ráj?',
+      ctaDescription: 'Zůstaňte v DEVOCEAN Lodge a objevte, proč je Ponta do Ouro vaše vrcholná mosambická destinace. Ekologické pohodlí uprostřed těchto zázraků na vás čeká.',
+      ctaAccommodations: 'Podívejte se na naše ubytování',
+      ctaBookNow: 'Rezervujte pobyt',
+      backToHome: 'Zpět na úvod',
+      locationLabel: 'Jih Mosambiku'
     }
 };
 

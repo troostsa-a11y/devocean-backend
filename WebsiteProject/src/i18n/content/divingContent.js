@@ -2198,7 +2198,86 @@ hr: {
         { name: "Atlantis", depth: "35-47m", highlights: "Duboko ronjenje - morske mačke, grebenski morski psi, španske plesačice" },
         { name: "Doodles", depth: "14-18m", highlights: "Savršeno za sve nivoe - morske mačke, kornjače, murine, hobotnice" }
       ]
-    }
+    },
+  cs: {
+    title: "Potápění s přístrojem",
+    tagline: "Prozkoumejte nedotčené útesy se žraloky bika, mantami a žraloky velrybími",
+    overview: "Ponta do Ouro nabízí světoznámé potápění s více než 20 lokalitami, od mělkých útesů po hluboké pinakly. Křišťálově čisté vody Mosambického kanálu poskytují výjimečnou viditelnost a setkání s neuvěřitelnou rozmanitostí mořského života včetně 19 druhů žraloků.",
+    highlights: [
+      "Více než 20 potápěčských lokalit, od 8 m do 48 m",
+      "Žraloci bika, tygří a kladivouni",
+      "Žraloci velrybí (říjen–březen)",
+      "Velryby keporkaky (červenec–listopad)",
+      "Manty, želvy a delfíni",
+      "Více než 180 druhů nahožábrých",
+      "Nedotčené korálové útesy",
+      "Profesionální PADI centra"
+    ],
+    pricingRange: "Od 40 US$ za ponor",
+    pricingDetails: [
+      "Jeden ponor: 40–50 US$",
+      "Balíček dvou ponorů: 75–90 US$",
+      "PADI Open Water: 350–400 US$",
+      "Půjčovné vybavení v ceně",
+      "Všechna povolení a vstupy v ceně"
+    ],
+    durationTypical: "Půldenní nebo celodenní výlety",
+    durationDetails: [
+      "Ranní ponory: 2 ponory (3–4 hodiny)",
+      "Celý den: 3 ponory (6–8 hodin)",
+      "Vyplutí z pláže (skrz vlny – dobrodružství!)",
+      "Lokality 1–12 km od pobřeží"
+    ],
+    included: [
+      "Veškeré potápěčské vybavení (BCD, regulátor, oblek)",
+      "Doprava lodí na lokality",
+      "Profesionální PADI dive master/instruktor",
+      "Poplatky za mořský park",
+      "Občerstvení a nápoj po ponoru",
+      "Potápěčský počítač a bezpečnostní vybavení"
+    ],
+    requirementsLevel: "Začátečník až pokročilý",
+    requirementsDetails: [
+      "Lokality pro začátečníky: Crèche, Doodles, Playground (10–18 m)",
+      "Pokročilé lokality: Pinnacles, Atlantis, Cloudbreak (28–48 m)",
+      "Vyžadována PADI certifikace (nebo absolvujte kurz Open Water)",
+      "Povinný zdravotní dotazník",
+      "Dobré plavecké dovednosti",
+      "Minimální věk: 10 let (Junior Open Water)"
+    ],
+    bestTimePeak: "Říjen – duben (léto)",
+    bestTimeDetails: [
+      "**Žraloci bika a tygří:** listopad–duben (voda 26–29 °C)",
+      "**Žraloci kladivouni:** duben–říjen (lepší viditelnost)",
+      "**Žraloci velrybí:** říjen–březen",
+      "**Velryby keporkaky:** červenec–listopad",
+      "**Nejlepší viditelnost:** květen–srpen (20–30 m)",
+      "**Nejteplejší voda:** prosinec–únor (27–29 °C)"
+    ],
+    tips: [
+      "Rezervujte včas v hlavní sezóně (prosinec–leden)",
+      "Vezměte si certifikační kartu",
+      "Zvažte neoprenový oblek (3 mm doporučeno)",
+      "Vyplutí přes vlny může být napínavé – připravte se na zmáčení!",
+      "Většina operátorů nabízí půjčovné vybavení",
+      "Balíčky více ponorů nabízejí nejlepší cenu"
+    ],
+    operators: [
+      { name: "Back to Basics Adventures", website: "http://www.backtobasicsadventures.com/", email: "backtobasicsadventures@gmail.com", specialty: "Specialisté na potápění se žraloky, zaměření na průzkum" },
+      { name: "Gozo Azul Diving", website: "https://gozo-azul.co.za/", email: "natalie@gozo-azul.co.za", specialty: "PADI 5-hvězdičkové centrum, specialisté na potápění se žraloky" },
+      { name: "Under Water Explorer", website: "", email: "herb@thewhaler.co.za", specialty: "Profesionální potápěčské centrum" },
+      { name: "Blowing Bubbles Diving", website: "", email: "info@blowingbubbles.co.za", specialty: "Profesionální potápěčské centrum" },
+      { name: "Shark Diving Mozambique", website: "", email: "info@sharkdivingmozambique.com", specialty: "Specialisté na potápění se žraloky" },
+      { name: "Oceana Dive Center", website: "", email: "oceanamozdiving@gmail.com", specialty: "Profesionální potápěčské centrum" }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28–40 m", highlights: "Hlavní potápění se žraloky – bika, tygří, kladivouni, manty" },
+      { name: "Bass City", depth: "20–25 m", highlights: "Obří kaniců, perutýni, žraloci zebří, čisticí stanice" },
+      { name: "Wayne's World", depth: "~20 m", highlights: "Makroráj – mořští koníci, ďasovci, ryby duchové" },
+      { name: "Atlantis", depth: "35–47 m", highlights: "Hluboké potápění – žraloci kočičí, útesoví, španělské tanečnice" },
+      { name: "Doodles", depth: "14–18 m", highlights: "Perfektní pro všechny úrovně – žraloci kočičí, želvy, mureny, chobotnice" }
+    ]
+  }
 };
 
 export function getDivingContent(lang) {

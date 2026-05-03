@@ -1718,7 +1718,76 @@ hr: {
         { name: "Talasi sa plaže", level: "Početnik do srednji", description: "Blagi talasi sa plaže, savršeni za učenje - mekši talasi, peščano dno" },
         { name: "Ponta Malongane (8 km severno)", level: "Svi nivoi", description: "Alternativna lokacija sa drugačijim swell prozorom - manje prenakrcano" }
       ]
-    }
+    },
+  cs: {
+    title: "Surfování",
+    tagline: "Chyťte vlnu na nedotčených plážích Ponta do Ouro",
+    overview: "Ponta do Ouro nabízí konzistentní vlny pro všechny úrovně, od začátečníků po pokročilé. Hlavní lámání vlny u Ponta Point poskytuje pravostranná lámání světové třídy, zatímco klidnější vlny v zátoce jsou ideální pro lekce. Půjčovna prken a profesionální instruktoři jsou k dispozici ve vesnici.",
+    highlights: [
+      "Pravostranné lámání světové třídy u Ponta Point",
+      "Vlny pro začátečníky v hlavní zátoce",
+      "Profesionální instruktoři",
+      "Půjčovna prken a kombinéz",
+      "Surf kempy a víkendy k dispozici",
+      "Teplá voda celoročně",
+      "Méně přeplněné než JAR",
+      "Konzistentní vlny po celý rok"
+    ],
+    pricingRange: "Od 30 US$ za hodinovou lekci",
+    pricingDetails: [
+      "Hodinová skupinová lekce: 30–40 US$",
+      "Soukromá hodinová lekce: 50–70 US$",
+      "Půjčovna prkna (den): 15–20 US$",
+      "Půjčovna kombinézy: 5–10 US$",
+      "Týdenní surf kemp: 300–500 US$"
+    ],
+    durationTypical: "1–2 hodiny lekce",
+    durationDetails: [
+      "Lekce začátečníků: 1–1,5 hodiny",
+      "Soukromé lekce: 1–2 hodiny",
+      "Surf kempy: 5–7 dní",
+      "Nejlepší vlny: brzy ráno a pozdě odpoledne",
+      "Půjčovna celý den"
+    ],
+    included: [
+      "Vhodné prkno pro vaši úroveň",
+      "Kombinéza (v případě potřeby)",
+      "Profesionální instruktor",
+      "Teoretický briefing",
+      "Praktické instrukce ve vodě",
+      "Pojištění a bezpečnostní vybavení"
+    ],
+    requirementsLevel: "Všechny úrovně",
+    requirementsDetails: [
+      "Začátečníci vítáni",
+      "Plavecké dovednosti vyžadovány",
+      "Věk od 8 let",
+      "Pohodlí ve vodě",
+      "Základní fyzická kondice",
+      "Žádné předchozí zkušenosti potřeba pro začátečníky"
+    ],
+    bestTimePeak: "Květen – září (jihovýchodní vlny)",
+    bestTimeDetails: [
+      "**Hlavní sezóna:** květen–září (větší vlny)",
+      "**Začátečnická sezóna:** prosinec–březen (klidnější)",
+      "**Voda:** 22–28 °C celoročně",
+      "**Vítr:** nejlepší ráno (offshore)",
+      "**Vlny:** nejkonzistentnější červen–srpen",
+      "**Méně přeplněné:** mimo školní prázdniny"
+    ],
+    tips: [
+      "Rezervujte lekce den předem",
+      "Vezměte si opalovací krém bezpečný pro útesy",
+      "Kombinéza doporučena v zimě (květen–září)",
+      "Surfujte ráno pro nejlepší vítr",
+      "Respektujte pravidla surfování (priorita)",
+      "Začátečníci by měli začít v hlavní zátoce"
+    ],
+    operators: [
+      { name: "Ponta Surf School", website: "", email: "info@pontasurf.com", specialty: "Lekce surfování pro začátečníky a pokročilé" },
+      { name: "Mozambique Surf Adventures", website: "", email: "info@mozsurf.com", specialty: "Surf kempy a víkendové výlety" }
+    ]
+  }
 };
 
 export function getSurfingContent(lang) {

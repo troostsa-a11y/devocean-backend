@@ -1878,7 +1878,75 @@ hr: {
         { name: "Dorado (Mahi-Mahi)", season: "Novembar-mart", technique: "Treling oko plutajućih ostataka" },
         { name: "Veliki trevalli", season: "Tokom cele godine", technique: "Popping, jigging blizu grebena" }
       ]
-    }
+    },
+  cs: {
+    title: "Rybolov",
+    tagline: "Hlubokomořské chartery na marlína, plachetníka a tuňáka v bohatých vodách",
+    overview: "Vody u Ponta do Ouro nabízejí špičkový hlubokomořský rybolov s celoroční šancí na pruhovaného, modrého a černého marlína, plachetníka, tuňáka žlutoploutvého, mahi-mahi, kingfish a wahoo. Profesionální chartery nabízejí celé i poloviční dny s veškerým vybavením v ceně.",
+    highlights: [
+      "Celoroční chytání hlavolepých ryb",
+      "Marlín pruhovaný, modrý a černý",
+      "Plachetník (vrchol leden–duben)",
+      "Tuňák žlutoploutvý a mahi-mahi",
+      "Wahoo a kingfish",
+      "Profesionální chartery a posádky",
+      "Politika tag-and-release pro citlivé druhy",
+      "Plně vybavené lodě (rybářské pruty, vějíře, vábidla)"
+    ],
+    pricingRange: "Od 600 US$ za poloviční den",
+    pricingDetails: [
+      "Poloviční den (4 hodiny): 600–800 US$",
+      "Celý den (8 hodin): 1100–1500 US$",
+      "Cena za loď (max 4 rybáři)",
+      "Veškeré vybavení a vábidla v ceně",
+      "Občerstvení a nápoje na palubě"
+    ],
+    durationTypical: "Půldenní nebo celodenní výlety",
+    durationDetails: [
+      "Polovina dne: ranní (6–10 hod) nebo odpolední",
+      "Celý den: 6:00–14:00",
+      "Vyplutí přímo z pláže",
+      "Lovné pole 5–30 km od pobřeží"
+    ],
+    included: [
+      "Profesionální kapitán a posádka",
+      "Veškeré rybářské vybavení (pruty, navijáky, návnady)",
+      "Vějíře a stěhovací vybavení",
+      "Občerstvení a nápoje",
+      "Filetování úlovku",
+      "Záchranné vybavení a pojištění"
+    ],
+    requirementsLevel: "Všechny úrovně vítány",
+    requirementsDetails: [
+      "Vhodné pro začátečníky i zkušené",
+      "Děti vítány (s dohledem)",
+      "Žádné rybářské povolení potřeba (operátor zajišťuje)",
+      "Doporučeny léky proti mořské nemoci",
+      "Pohodlné, neklouzavé boty",
+      "Klobouk a opalovací krém nezbytné"
+    ],
+    bestTimePeak: "Listopad – duben",
+    bestTimeDetails: [
+      "**Marlín pruhovaný:** říjen–prosinec",
+      "**Marlín modrý/černý:** listopad–duben",
+      "**Plachetník:** leden–duben (vrchol)",
+      "**Tuňák žlutoploutvý:** celoročně, vrchol leden–duben",
+      "**Mahi-mahi:** prosinec–březen",
+      "**Wahoo a kingfish:** celoročně"
+    ],
+    tips: [
+      "Rezervujte několik týdnů předem v hlavní sezóně",
+      "Vezměte si léky proti mořské nemoci, pokud jste citliví",
+      "Sluneční ochrana je nezbytná",
+      "Vezměte fotoaparát pro úlovky",
+      "Politika catch-and-release pro velký marlín",
+      "Tipování posádky se cení (10–15 %)"
+    ],
+    operators: [
+      { name: "Ponta Fishing Charters", website: "", email: "info@pontafishingcharters.com", specialty: "Hlubokomořský rybolov a plachetnice" },
+      { name: "Mozambique Sport Fishing", website: "", email: "info@mozambiquefishing.com", specialty: "Sportovní rybolov a turnaje" }
+    ]
+  }
 };
 
 export function getFishingContent(lang) {

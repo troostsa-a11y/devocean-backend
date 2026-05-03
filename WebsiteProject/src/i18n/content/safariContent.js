@@ -1959,7 +1959,77 @@ hr: {
         downloadText: "Preuzmite PDF brošuru",
         fileSize: "7,3 MB"
       }
-    }
+    },
+  cs: {
+    title: "Pozemní safari",
+    tagline: "Safari za Velkou pětkou v Národním parku Maputo a Tembe Elephant Park",
+    overview: "Zažijte autentická africká safari ze své pobřežní základny. Národní park Maputo (30 km) a Tembe Elephant Park (2 hodiny) nabízejí Velkou pětku, slony s velkými kly, hrochy, žirafy a více než 526 druhů ptáků. Jednodenní výlety nebo vícedenní safari uspořádá DEVOCEAN nebo místní operátoři.",
+    highlights: [
+      "Národní park Maputo – 30 km daleko",
+      "Tembe Elephant Park – sloni s velkými kly",
+      "Setkání s Velkou pětkou (vícedenní safari)",
+      "Více než 526 druhů ptáků",
+      "Stáda hrochů, žiraf a zeber",
+      "Vzdušné, jezdecké a chodecké safari k dispozici",
+      "Fotografická safari s průvodci",
+      "Možnost mokrého a suchého safari (oceán + savana)"
+    ],
+    pricingRange: "Od 80 US$ za jednodenní výlet",
+    pricingDetails: [
+      "Jednodenní Maputo NP: 80–120 US$",
+      "Jednodenní Tembe: 150–200 US$",
+      "Dvoudenní safari: 350–500 US$",
+      "Pětidenní velký okruh: 1500–2500 US$",
+      "Ceny zahrnují průvodce, dopravu a vstupy"
+    ],
+    durationTypical: "Jeden den až několik dní",
+    durationDetails: [
+      "Jednodenní výlet: 6:00–18:00",
+      "Dvoudenní safari: 1 přenocování",
+      "Pětidenní velký okruh: Krugerův NP a okolí",
+      "Vyzvednutí z DEVOCEAN Lodge",
+      "Klimatizovaná 4×4 vozidla"
+    ],
+    included: [
+      "Profesionální průvodce safari",
+      "Klimatizovaná 4×4 vozidla",
+      "Vstupní poplatky parku",
+      "Oběd a občerstvení",
+      "Voda a nápoje",
+      "Dalekohledy k dispozici",
+      "Vyzvednutí a návrat do lodge"
+    ],
+    requirementsLevel: "Všechny věkové kategorie",
+    requirementsDetails: [
+      "Vhodné pro rodiny",
+      "Děti od 5 let vítány",
+      "Pohodlné oblečení (vrstvy)",
+      "Pevné boty",
+      "Klobouk a opalovací krém",
+      "Repelent proti komárům"
+    ],
+    bestTimePeak: "Květen – říjen (suchá sezóna)",
+    bestTimeDetails: [
+      "**Suchá sezóna:** květen–říjen (lepší pozorování zvěře)",
+      "**Vlhká sezóna:** listopad–duben (zelená krajina, mláďata)",
+      "**Stěhování ptactva:** říjen–březen",
+      "**Sloni:** celoročně v Tembe",
+      "**Nejmírnější počasí:** červen–srpen",
+      "**Nejzelenější krajina:** únor–duben"
+    ],
+    tips: [
+      "Rezervujte safari den před výletem",
+      "Vezměte si fotoaparát s dobrým objektivem",
+      "Dalekohledy zlepšují zážitek",
+      "Pijte hodně vody",
+      "Poslouchejte instrukce průvodce",
+      "Tlumené barvy oblečení (béžová, khaki)"
+    ],
+    operators: [
+      { name: "DEVOCEAN Safari Tours", website: "", email: "safari@devocean.co.za", specialty: "Místní průvodci pro Maputo NP a Tembe" },
+      { name: "African Footprints Safari", website: "", email: "info@africanfootprints.com", specialty: "Vícedenní safari okruhy v jižní Africe" }
+    ]
+  }
 };
 
 export function getSafariContent(lang) {

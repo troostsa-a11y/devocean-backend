@@ -1918,7 +1918,77 @@ hr: {
         { name: "Udaranje perajom (Flipper Slapping)", description: "Udaranja prsne peraje - društveno ponašanje i uzbuđenje" },
         { name: "Ponašanje približavanja", description: "Kitovi se često približavaju čamcima - radoznali i prijateljski" }
       ]
-    }
+    },
+  cs: {
+    title: "Mořské safari",
+    tagline: "Pozorování velryb, delfínů a mořského života v Indickém oceánu",
+    overview: "Vyplujte na oceánské safari za rezidentními delfíny, sezónními velrybami keporkaky a žraloky velrybími. Mořská safari nabízejí pasivní pozorování z lodi nebo plavání s delfíny, vždy s respektem k volně žijícím zvířatům. Sezóna velryb od července do listopadu přináší nezapomenutelné zážitky.",
+    highlights: [
+      "Rezidentní delfíni skákaví celoročně",
+      "Velryby keporkaky (červenec–listopad)",
+      "Žraloci velrybí (říjen–březen)",
+      "Mořské želvy a manty",
+      "Etické pozorování z lodi",
+      "Volitelné šnorchlování s delfíny",
+      "Malé skupiny (maximálně 12 osob)",
+      "Doprovod mořských biologů"
+    ],
+    pricingRange: "45–60 US$ za osobu",
+    pricingDetails: [
+      "Pozorování z lodi: 45 US$",
+      "Plavání s delfíny: 50 US$",
+      "Velrybí safari (sezóna): 60 US$",
+      "Vícedenní balíčky: snížené ceny",
+      "Šnorchlovací vybavení v ceně"
+    ],
+    durationTypical: "2–3 hodiny",
+    durationDetails: [
+      "Vyplutí brzy ráno (nejklidnější moře)",
+      "Pohyb podél pobřeží 5–15 km",
+      "Vstup do vody s delfíny (podle podmínek)",
+      "Sezónní setkání s velrybami",
+      "Návrat do 11:00"
+    ],
+    included: [
+      "Šnorchlovací vybavení (maska, ploutve)",
+      "Neoprenový oblek (v případě potřeby)",
+      "Zkušený průvodce/doprovod",
+      "Briefing před vyplutím",
+      "Fotografie ze setkání",
+      "Lehké občerstvení",
+      "Poplatky za mořský park"
+    ],
+    requirementsLevel: "Všechny úrovně",
+    requirementsDetails: [
+      "Plavecké dovednosti pro plavání s delfíny",
+      "Pozorování z lodi: žádné požadavky",
+      "Věk: 5 až 80+",
+      "Těhotenství: do 6. měsíce",
+      "Léky proti mořské nemoci doporučeny",
+      "Minimum 4–6 osob na výlet"
+    ],
+    bestTimePeak: "Červenec – listopad (velryby)",
+    bestTimeDetails: [
+      "**Velryby keporkaky:** červenec–listopad (vrchol srpen–září)",
+      "**Delfíni:** rezidenti celoročně",
+      "**Žraloci velrybí:** říjen–březen",
+      "**Manty:** říjen–duben",
+      "**Nejklidnější moře:** brzy ráno",
+      "**Teplota vody:** 22–28 °C celoročně"
+    ],
+    tips: [
+      "Rezervujte 1–2 dny předem",
+      "Vezměte si opalovací krém bezpečný pro útesy",
+      "Podvodní kamera doporučena",
+      "Léky proti mořské nemoci, pokud jste citliví",
+      "Buďte trpěliví – setkání nejsou zaručena",
+      "Respektujte pokyny průvodce"
+    ],
+    operators: [
+      { name: "Dolphin Encountours Research Center", website: "https://www.dolphinencountours.org/", email: "connect@dolphinencountours.org", specialty: "Mořská safari vedená mořskými biology" },
+      { name: "The Dolphin Centre", website: "https://thedolphincentre.com/", email: "info@thedolphincentre.com", specialty: "Etická setkání s delfíny a velrybami" }
+    ]
+  }
 };
 
 export function getSeafariContent(lang) {

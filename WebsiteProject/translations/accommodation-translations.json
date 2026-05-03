@@ -832,6 +832,55 @@
       ]
     }
   },
+  "cs": {
+    "safari": {
+      "title": "Safari stan",
+      "shortDescription": "Plátěný stan o rozloze 12 m² na platformě 3×6 m. Twin/King, ventilátor, zásuvky, moskytiéra, soukromá terasa. Sdílené koupelny.",
+      "detailedFeatures": [
+        "Dvě jednolůžkové postele (nebo King) s nočními stolky a stolními lampami",
+        "Moskytiéra na dveřích/oknech • silný ventilátor • zásuvky",
+        "Malá polička na oblečení/základní věci",
+        "Soukromá terasa se židlemi z palmových listů s výhledem do tropické zahrady",
+        "Sdílené koupelny (ženské/mužské): 2 sprchy s teplou/studenou vodou a 2 toalety v každé",
+        "Vesnice může být živá během svátků; bezplatné špunty do uší na recepci"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort stan",
+      "shortDescription": "Vylepšený stan o rozloze 12 m² s větším soukromím (boční/zadní stěny), soukromou terasou a vlastní koupelnou pod slaměnou střechou.",
+      "detailedFeatures": [
+        "Konfigurace Twin/King • lampy • praktické vypínače",
+        "Moskytiéra • silný ventilátor • zásuvky",
+        "Soukromá dřevěná terasa se židlemi z palmových listů",
+        "Vzadu: soukromá koupelna (sprcha, toaleta, umyvadlo) pod slaměnou střechou",
+        "Vesnice je živá v sezóně/o svátcích; špunty do uší k dispozici"
+      ]
+    },
+    "cottage": {
+      "title": "Chalupa se zahradou",
+      "shortDescription": "Vzdušná chalupa s queen postelí, klimatizací (invertor), pracovním stolem a jídelnou, soukromou terasou a koupelnou v půvabném roundavelu.",
+      "detailedFeatures": [
+        "Střecha z římských tašek, vysoký bílý strop s tmavými dřevěnými trámy",
+        "Terakotová podlaha, teplé stěny v barvě obilných polí",
+        "Queen postel • pracovní stůl s lampou • jídelní stůl se židlemi",
+        "Police na kufry, věšák na oblečení a další police",
+        "Klimatizace s invertorem (chlazení a topení) • stmívatelné hlavní světlo",
+        "Soukromá koupelna v roundavelu se slaměnou střechou (sprcha, umyvadlo, toaleta)",
+        "Soukromá dřevěná terasa s kempinkovými židlemi a bočním stolkem"
+      ]
+    },
+    "chalet": {
+      "title": "Chata se slaměnou střechou",
+      "shortDescription": "Skrytá, romantická malá chata pod palmami a strelíciemi. Klimatizace, soukromá koupelna, terasa, konfigurace Twin/King.",
+      "detailedFeatures": [
+        "Slaměná střecha na sloupech z blahovičníku • podlaha v barvě podzimní břidlice",
+        "Stěny v barvě obilných polí • klidné, stinné prostředí",
+        "Jídelní stůl se židlemi • klimatizace",
+        "Soukromá koupelna (sprcha, umyvadlo, toaleta)",
+        "Dvě jednolůžkové nebo King s nočními stolky • soukromá terasa se židlemi z palmových listů"
+      ]
+    }
+  },
   "hr": {
     "safari": {
       "title": "Safari šator",

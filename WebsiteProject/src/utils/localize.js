@@ -111,6 +111,9 @@ const localeToISO6391 = (locale) => {
 
     // Croatian variants
     "hr": "hr", "hr-HR": "hr", "hr-BA": "hr",
+
+    // Czech variants
+    "cs": "cs", "cs-CZ": "cs",
     
     // Japanese variants
     "ja-JP": "ja", "ja": "ja",
@@ -152,6 +155,7 @@ export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurren
     'pl': 'PL',
     'sr': 'EN',
     'hr': 'EN',
+    'cs': 'EN',
     'af': 'AF',
     'zu': 'ZU',
     'sw': 'SW'

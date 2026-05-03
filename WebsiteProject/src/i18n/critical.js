@@ -164,6 +164,17 @@ export const CRITICAL_NAV = {
     bookNow: "Cijene i dostupnost",
     heroCTA: "Rezervirajte boravak"
   },
+  cs: {
+    home: "Domů",
+    stay: "Ubytování",
+    experiences: "Zážitky",
+    todo: "Co dělat",
+    gallery: "Galerie",
+    location: "Lokalita",
+    contact: "Kontakt",
+    bookNow: "Ceny a dostupnost",
+    heroCTA: "Rezervujte pobyt"
+  },
   "ja-JP": {
     home: "ホーム",
     stay: "宿泊",

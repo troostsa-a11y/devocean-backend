@@ -2774,7 +2774,83 @@ export const DOLPHINS_CONTENT = {
           specialty: "Plivanje sa dupinima zasnovano na istraživanju, sa edukativnim naglaskom"
         }
       ]
-    }
+    },
+  cs: {
+    title: "Plavání s delfíny",
+    tagline: "Etická setkání s divokými delfíny v křišťálově čistých vodách",
+    overview: "Zažijte magická setkání s divokými indo-pacifickými delfíny skákavými v Částečné mořské rezervaci Ponta do Ouro. Oba autorizovaní operátoři dodržují přísná etická pravidla, zajišťující pasivní, neinvazivní interakce, kdy delfíni rozhodují, zda připlavou pod svými podmínkami.",
+    highlights: [
+      "Více než 200 rezidentních delfínů skákavých",
+      "Etická setkání založená na výzkumu",
+      "ŽÁDNÉ dotýkání ani pronásledování – divocí a volní",
+      "Šnorchlování přes nedotčené útesy",
+      "Sezónní pozorování žraloků velrybích",
+      "Velryby keporkaky (červenec–listopad)",
+      "Malé skupiny (maximálně 12 osob)",
+      "Vzdělávací důraz na ochranu"
+    ],
+    pricingRange: "45–50 US$ za osobu",
+    pricingDetails: [
+      "Pozorování delfínů (pouze z lodi): 45 US$",
+      "Výlet na plavání s delfíny: 50 US$",
+      "Vícedenní balíčky: snížené ceny",
+      "Šnorchlovací vybavení v ceně",
+      "Poplatek za ochranu v ceně"
+    ],
+    durationTypical: "2–3 hodiny",
+    durationDetails: [
+      "Vyplutí brzy ráno (nejlepší podmínky)",
+      "Šnorchlování přes mělké útesy",
+      "Vstup do vody s delfíny",
+      "Setkání se žraloky velrybími (sezónně)",
+      "Vzdělávací briefing před vyplutím"
+    ],
+    included: [
+      "Maska, ploutve a šnorchl",
+      "Neoprenový oblek (v případě potřeby)",
+      "Zkušený průvodce/doprovod",
+      "Vzdělávací prezentace před vyplutím",
+      "Fotografie/záznamy z vašeho setkání",
+      "Lehké občerstvení",
+      "Poplatky za mořský park"
+    ],
+    requirementsLevel: "Všechny věkové kategorie a úrovně",
+    requirementsDetails: [
+      "Vyžadovány plavecké dovednosti",
+      "Pohodlí se šnorchlováním",
+      "Věk: 5 až 80+ (v závislosti na počasí)",
+      "Těhotenství: bezpečné do 6. měsíce",
+      "Potápěčská certifikace není vyžadována",
+      "Minimum 6 osob na výlet (4 pro retreat)"
+    ],
+    bestTimePeak: "Leden – květen",
+    bestTimeDetails: [
+      "**Hlavní sezóna:** leden–květen (nejlepší setkání)",
+      "**Delfíni:** rezidenti po celý rok",
+      "**Velryby keporkaky:** červenec–listopad",
+      "**Žraloci velrybí:** říjen–březen",
+      "**Nejklidnější moře:** brzy ráno",
+      "**Teplota vody:** 22–28 °C po celý rok"
+    ],
+    tips: [
+      "Rezervujte 2–3 dny předem",
+      "Vezměte si opalovací krém bezpečný pro útesy",
+      "Doporučena podvodní kamera",
+      "Pečlivě dodržujte pokyny doprovodu",
+      "Buďte klidní a tiší ve vodě",
+      "Nechte delfíny, aby k vám připlavali přirozeně"
+    ],
+    ethicalPractices: [
+      { title: "Bez dotýkání nebo pronásledování", description: "Delfíni nejsou nikdy dotýkáni, pronásledováni ani rušeni. Všechna setkání probíhají za podmínek delfínů." },
+      { title: "Přístup založený na výzkumu", description: "Oba operátoři spolupracují s mořskými biology a přispívají k pokračujícímu výzkumu a ochraně delfínů." },
+      { title: "Pouze malé skupiny", description: "Maximum 12 osob na výlet zajišťuje minimální rušení a lepší setkání." },
+      { title: "Vzdělání na prvním místě", description: "Briefingy před vyplutím učí všechny účastníky o správném chování a biologii delfínů." }
+    ],
+    operators: [
+      { name: "Dolphin Encountours Research Center", website: "https://www.dolphinencountours.org/", email: "connect@dolphinencountours.org", specialty: "Setkání s delfíny vedená mořskými biology, zaměření na ochranu" },
+      { name: "The Dolphin Centre", website: "https://thedolphincentre.com/", email: "info@thedolphincentre.com", specialty: "Plavání s delfíny založené na výzkumu, se vzdělávacím důrazem" }
+    ]
+  }
 };
 
 // Helper function to get dolphins content by language
