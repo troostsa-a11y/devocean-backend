@@ -1643,6 +1643,542 @@
     }
   };
 
+  // -------- CZECH --------
+  window.LEGAL_DICT["cs"] = {
+    privacy: {
+      title: "Zásady ochrany osobních údajů",
+      updatedDate: "6. říj. 2025",
+      quickLinks: {
+        title: "Rychlé odkazy",
+        links: [
+          { id: "who", text: "Kdo jsme" },
+          { id: "collect", text: "Shromažďování údajů" },
+          { id: "use", text: "Využití údajů" },
+          { id: "share", text: "Sdílení údajů" },
+          { id: "security", text: "Zabezpečení" },
+          { id: "retention", text: "Uchovávání" },
+          { id: "rights", text: "Vaše práva" },
+          { id: "transfers", text: "Mezinárodní přenosy" },
+          { id: "contact", text: "Kontakt" },
+          { id: "updates", text: "Změny zásad" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Vaše soukromí je důležité:",
+          body: "Zavazujeme se chránit vaše osobní údaje a být transparentní v tom, jak je shromažďujeme, používáme a zabezpečujeme."
+        },
+        who: {
+          title: "Kdo jsme",
+          body: "DEVOCEAN Lodge provozuje společnost TERRAfrique LDA se sídlem v Mosambiku. Naše registrovaná adresa je Rua C, Parcela 12, Maputo 1118, Mosambik. Provozujeme ekologicky šetrné plážové ubytování v Pontě do Ouro v Mosambiku. Zavazujeme se chránit vaše soukromí a zajistit, aby vaše osobní údaje byly shromažďovány, zpracovávány a používány řádně, zákonně a transparentně v souladu s platnými předpisy o ochraně osobních údajů. Přístupem na náš web nebo využíváním našich služeb souhlasíte se shromažďováním a používáním vašich údajů, jak je popsáno v těchto Zásadách ochrany osobních údajů."
+        },
+        collect: {
+          title: "Jaké osobní údaje shromažďujeme",
+          intro: "Shromažďujeme různé druhy informací, abychom mohli poskytovat a zlepšovat své služby:",
+          categories: [
+            {
+              title: "Osobní údaje",
+              items: [
+                "Jméno, kontaktní údaje",
+                "Údaje z cestovního pasu / občanského průkazu",
+                "Platební údaje",
+                "Preference rezervace"
+              ]
+            },
+            {
+              title: "Technické údaje",
+              items: [
+                "IP adresa, údaje o zařízení",
+                "Typ a verze prohlížeče",
+                "Analytika využívání webu",
+                "Údaje ze souborů cookie (se souhlasem)"
+              ]
+            },
+            {
+              title: "Komunikační údaje",
+              items: [
+                "E-mailová korespondence",
+                "Žádosti zákaznické podpoře",
+                "Zpětná vazba a recenze",
+                "Marketingové preference"
+              ]
+            }
+          ]
+        },
+        use: {
+          title: "Jak vaše údaje používáme",
+          items: [
+            "Správa rezervací a poskytování služeb",
+            "Komunikace o vašem pobytu, pravidlech a nabídkách (s vaším souhlasem)",
+            "Zlepšování webu a služeb (analytika, zabezpečení)",
+            "Plnění právních a finančních povinností"
+          ]
+        },
+        share: {
+          title: "Kdy údaje sdílíme",
+          items: [
+            "S poskytovateli platebních služeb a rezervačními platformami za účelem zpracování vašich rezervací a plateb",
+            "S analytickými službami pro pochopení využívání webu a zlepšování služeb",
+            "S reklamními službami pro cílený marketing (pouze s vaším souhlasem)",
+            "S poskytovateli IT služeb, hostingu a technické podpory na základě přísných smluv o mlčenlivosti",
+            "S příslušnými orgány, pokud to vyžaduje zákon, předpis, soudní příkaz nebo jiný právní postup",
+            "K vymáhání našich smluv nebo k ochraně našich práv, majetku či bezpečnosti",
+            "V případě fúze, akvizice nebo prodeje aktiv mohou být vaše informace převedeny na nového vlastníka"
+          ],
+          footer: "Od všech třetích stran vyžadujeme, aby respektovaly bezpečnost vašich osobních údajů a používaly je pouze pro účely, pro které byly předány. Třetím stranám neumožňujeme používat vaše osobní údaje pro vlastní účely a povolujeme jim zpracování pouze pro určené účely a v souladu s našimi pokyny."
+        },
+        security: {
+          title: "Bezpečnostní opatření",
+          intro: "Bezpečnost údajů bereme vážně a uplatňujeme:",
+          measures: [
+            "Šifrování citlivých údajů při přenosu i v klidu",
+            "Pravidelné bezpečnostní audity a penetrační testy",
+            "Řízení přístupu a autentizační mechanismy",
+            "Školení zaměstnanců v oblasti ochrany údajů a soukromí",
+            "Bezpečné zálohování dat a postupy obnovy po havárii"
+          ]
+        },
+        retention: {
+          title: "Uchovávání údajů",
+          body: "Vaše osobní údaje uchováváme tak dlouho, jak je nutné ke splnění účelů, pro které byly shromážděny, jak je popsáno v těchto Zásadách ochrany osobních údajů. Obecně uchováváme osobní údaje až 1 rok po vaší poslední interakci s námi, pokud zákon nevyžaduje nebo neumožňuje delší dobu uchovávání. Některé informace můžeme uchovávat déle z konkrétních důvodů, mimo jiné: vedení záznamů a vykazování v souladu s platnými právními předpisy (obvykle 7 let u finančních a daňových záznamů), uplatňování právních nároků, prevence podvodů a řešení sporů. Po uplynutí doby uchovávání budou vaše osobní údaje bezpečně smazány nebo anonymizovány. Zbývající anonymní a agregované informace, které vás přímo ani nepřímo neidentifikují, mohou být uchovávány neomezeně dlouho pro statistické a analytické účely."
+        },
+        rights: {
+          title: "Vaše práva na ochranu soukromí",
+          items: [
+            "Právo na přístup k vašim osobním údajům",
+            "Právo na opravu nepřesných údajů",
+            "Právo na výmaz vašich osobních údajů",
+            "Právo na omezení nebo námitku proti zpracování",
+            "Právo na přenositelnost údajů",
+            "Právo odvolat souhlas"
+          ]
+        },
+        contact: {
+          title: "Kontaktujte náš tým pro ochranu soukromí",
+          body: 'Máte-li jakékoli dotazy, obavy nebo žádosti týkající se těchto Zásad ochrany osobních údajů nebo zpracování vašich osobních údajů, nebo si přejete uplatnit některé ze svých práv na ochranu soukromí, kontaktujte nás:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Poštovní adresa:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mosambik<br><br>Na vaši žádost odpovíme v souladu s platnými právními předpisy o ochraně osobních údajů. Stížnosti nebo dotazy ohledně zpracování vašich údajů můžete také směrovat na našeho pověřence pro ochranu osobních údajů na výše uvedené e-mailové adrese.'
+        },
+        transfers: {
+          title: "Mezinárodní přenosy údajů",
+          body: "Vzhledem k tomu, že působíme ve více jurisdikcích, mohou být vaše údaje přenášeny a zpracovávány v zemích mimo zemi vašeho pobytu. Zajišťujeme, aby takové přenosy byly v souladu s platnými předpisy o ochraně osobních údajů, a to prostřednictvím rozhodnutí o odpovídající ochraně Evropské komise, Standardních smluvních doložek (SCC), odpovídajících bezpečnostních opatření a transparentnosti ohledně lokalit přenosu."
+        },
+        updates: {
+          title: "Změny zásad",
+          body: "Tyto zásady ochrany osobních údajů můžeme čas od času aktualizovat, aby odrážely změny v našich postupech, technologiích, právních požadavcích nebo jiných okolnostech. O všech podstatných změnách vás budeme informovat e-mailovým oznámením registrovaným uživatelům, viditelným oznámením na našem webu a aktualizovaným datem „naposledy aktualizováno“. Doporučujeme tyto zásady pravidelně kontrolovat, abyste byli informováni o tom, jak chráníme vaše údaje."
+        }
+      }
+    },
+
+    cookies: {
+      title: "Zásady používání souborů cookie",
+      effectiveDate: "19. září 2025",
+      lastUpdated: "6. října 2025",
+      managePreferences: "Spravujte své předvolby cookie:",
+      manageText: "Které soubory cookie používáme, můžete řídit prostřednictvím banneru cookie nebo nastavení svého prohlížeče.",
+      cookieSettingsBtn: "Nastavení cookie",
+      quickLinks: {
+        title: "Rychlé odkazy",
+        links: [
+          { id: "what", text: "Co jsou cookie" },
+          { id: "how", text: "Jak používáme cookie" },
+          { id: "necessary", text: "Nezbytné" },
+          { id: "functional", text: "Funkční" },
+          { id: "analytics", text: "Analytické" },
+          { id: "advertisement", text: "Reklamní" },
+          { id: "manage", text: "Spravovat předvolby" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "O souborech cookie",
+          body: "Které soubory cookie používáme, můžete řídit prostřednictvím banneru cookie nebo nastavení svého prohlížeče."
+        },
+        what: {
+          title: "Co jsou soubory cookie?",
+          body: "Tyto Zásady používání souborů cookie vysvětlují, co jsou soubory cookie, jak je používáme, jaké typy souborů cookie používáme (tj. jaké informace prostřednictvím nich shromažďujeme a jak jsou tyto informace využívány) a jak spravovat své nastavení.<br><br>Soubory cookie jsou malé textové soubory používané k ukládání drobných informací. Ukládají se na vaše zařízení, když se v prohlížeči načte webová stránka. Tyto soubory cookie pomáhají zajistit správné fungování webu, zvyšují bezpečnost, poskytují lepší uživatelský zážitek a analyzují výkon, abychom zjistili, co funguje a kde jsou potřeba zlepšení."
+        },
+        how: {
+          title: "Jak používáme soubory cookie?",
+          body: "Stejně jako většina online služeb používá náš web soubory cookie první i třetí strany pro různé účely. Soubory cookie první strany jsou převážně nezbytné pro správné fungování webu a neshromažďují žádné osobně identifikovatelné údaje.<br><br>Soubory cookie třetích stran používané na našem webu nám především pomáhají chápat výkon webu, sledovat vaši interakci s ním, zajišťovat bezpečnost služeb, zobrazovat relevantní reklamy a zlepšovat váš celkový uživatelský zážitek a rychlost vašich budoucích návštěv."
+        },
+        necessary: {
+          title: "Nezbytné soubory cookie",
+          description: "Nezbytné soubory cookie jsou vyžadovány k zajištění základních funkcí tohoto webu, jako je bezpečné přihlášení nebo úprava vašich předvoleb souhlasu. Tyto soubory cookie neukládají žádné osobně identifikovatelné údaje.",
+          tableHeaders: { cookie: "Cookie", duration: "Trvání", description: "Popis" },
+          cookies: [
+            { name: "currency", duration: "relace", desc: "Tento soubor cookie slouží k uložení preferované měny uživatele." },
+            { name: "_sh_session_", duration: "relace", desc: "Popis momentálně není k dispozici." },
+            { name: "loccur", duration: "relace", desc: "Popis momentálně není k dispozici." },
+            { name: "country_code", duration: "relace", desc: "Popis není k dispozici." },
+            { name: "b_locale", duration: "relace", desc: "Popis momentálně není k dispozici." },
+            { name: "checkout_currency", duration: "relace", desc: "Popis momentálně není k dispozici." }
+          ]
+        },
+        functional: {
+          title: "Funkční soubory cookie",
+          description: "Funkční soubory cookie pomáhají vykonávat určité funkce, jako je sdílení obsahu webu na sociálních sítích, sběr zpětné vazby a další funkce třetích stran.",
+          tableHeaders: { cookie: "Cookie", duration: "Trvání", description: "Popis" },
+          cookies: [
+            { name: "locale", duration: "relace", desc: "Facebook nastavuje tento soubor cookie pro zlepšení uživatelského zážitku na webu a pro zobrazování relevantních reklam při používání platforem Facebooku." }
+          ]
+        },
+        analytics: {
+          title: "Analytické soubory cookie",
+          description: "Analytické soubory cookie slouží k pochopení toho, jak návštěvníci s webem interagují. Pomáhají poskytovat informace o metrikách jako počet návštěvníků, míra okamžitého opuštění, zdroj návštěvnosti atd.",
+          tableHeaders: { cookie: "Cookie", duration: "Trvání", description: "Popis" },
+          cookies: [
+            { name: "_ga", duration: "1 rok 1 měsíc 4 dny", desc: "Google Analytics nastavuje tento soubor cookie pro výpočet údajů o návštěvnících, relacích a kampaních a pro sledování využívání webu pro analytický report. Soubor cookie ukládá informace anonymně a přiděluje náhodně vygenerované číslo k rozpoznání jedinečných návštěvníků." },
+            { name: "_ga_*", duration: "1 rok 1 měsíc 4 dny", desc: "Google Analytics nastavuje tento soubor cookie pro ukládání a počítání zobrazení stránek." },
+            { name: "_gid", duration: "1 den", desc: "Google Analytics nastavuje tento soubor cookie pro ukládání informací o tom, jak návštěvníci používají web, a zároveň vytváří analytický report o výkonu webu. Některé shromážděné údaje zahrnují počet návštěvníků, jejich zdroj a anonymně navštívené stránky." },
+            { name: "_gat_UA-*", duration: "1 minuta", desc: "Google Analytics nastavuje tento soubor cookie pro sledování chování uživatelů." },
+            { name: "pardot", duration: "uplynulé", desc: "Soubor cookie pardot je nastaven, dokud je návštěvník přihlášen jako uživatel Pardot. Indikuje aktivní relaci a neslouží ke sledování." }
+          ]
+        },
+        advertisement: {
+          title: "Reklamní soubory cookie",
+          description: "Reklamní soubory cookie slouží k zobrazování přizpůsobených reklam návštěvníkům na základě dříve navštívených stránek a k analýze účinnosti reklamních kampaní.",
+          tableHeaders: { cookie: "Cookie", duration: "Trvání", description: "Popis" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 měsíce", desc: "Google Tag Manager nastavuje tento soubor cookie pro testování účinnosti reklamy webů využívajících jeho služby." },
+            { name: "test_cookie", duration: "15 minut", desc: "doubleclick.net nastavuje tento soubor cookie pro určení, zda uživatelův prohlížeč podporuje soubory cookie." },
+            { name: "_fbp", duration: "3 měsíce", desc: "Facebook nastavuje tento soubor cookie pro ukládání a sledování interakcí." },
+            { name: "IDE", duration: "1 rok 24 dnů", desc: "Soubory cookie Google DoubleClick IDE ukládají informace o tom, jak uživatel používá web, aby mu mohly být zobrazovány relevantní reklamy podle uživatelského profilu." }
+          ]
+        },
+        manage: {
+          title: "Správa předvoleb cookie",
+          consentTitle: "Předvolby souhlasu",
+          consentText: "Své nastavení cookie můžete kdykoli upravit kliknutím na tlačítko „Předvolby souhlasu“ výše. Tím znovu otevřete banner pro souhlas s cookie a můžete aktualizovat své předvolby nebo souhlas okamžitě odvolat.",
+          browserText: "Různé prohlížeče navíc nabízejí různé způsoby blokování a mazání souborů cookie používaných weby. Nastavení svého prohlížeče můžete upravit tak, aby blokoval nebo mazal soubory cookie. Níže jsou odkazy na podpůrné dokumenty o tom, jak spravovat a mazat soubory cookie v hlavních webových prohlížečích.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Pokud používáte jiný webový prohlížeč, podívejte se prosím do jeho oficiální dokumentace."
+          }
+        }
+      }
+    },
+
+    terms: {
+      title: "Obchodní podmínky",
+      updatedDate: "6. říj. 2025",
+      quickLinks: {
+        title: "Rychlé odkazy",
+        links: [
+          { id: "intro", text: "Rozsah" },
+          { id: "booking", text: "Rezervace" },
+          { id: "payment", text: "Ceny a platby" },
+          { id: "cancel", text: "Storna" },
+          { id: "conduct", text: "Chování hostů" },
+          { id: "force-majeure", text: "Vyšší moc" },
+          { id: "liability", text: "Odpovědnost" },
+          { id: "intellectual-property", text: "Duševní vlastnictví" },
+          { id: "disputes", text: "Řešení sporů" },
+          { id: "changes", text: "Změny" },
+          { id: "law", text: "Rozhodné právo" },
+          { id: "contact", text: "Kontakt" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Důležité právní upozornění:",
+          body: "Tyto podmínky upravují vaše využívání našich služeb a webu. Pečlivě si je prosím přečtěte před vytvořením rezervace."
+        },
+        intro: {
+          title: "Rozsah",
+          body: "Tyto Podmínky upravují ubytování a související služby poskytované DEVOCEAN Lodge (TERRAfrique LDA). Provedením rezervace s těmito Podmínkami souhlasíte."
+        },
+        booking: {
+          title: "Rezervace",
+          items: [
+            "Uvádějte přesné údaje o hostech a data příjezdu/odjezdu",
+            "Zvláštní požadavky podléhají dostupnosti a potvrzení"
+          ],
+          reservationReq: {
+            title: "Požadavky na rezervaci",
+            body: "Pro všechny rezervace je vyžadován platný doklad totožnosti a kreditní karta. Minimální věk: 18 let."
+          },
+          checkinCheckout: {
+            title: "Příjezd / odjezd",
+            body: "Příjezd: 14:00 | Odjezd: 11:00. Dřívější nebo pozdější časy podléhají dostupnosti."
+          },
+          groupBookings: {
+            title: "Skupinové rezervace",
+            body: "Pro skupiny od 6 pokojů platí zvláštní podmínky. Pro skupinové ceny a pravidla nás kontaktujte."
+          }
+        },
+        payment: {
+          title: "Ceny a platby",
+          items: [
+            "Uvedené ceny jsou za jednotku/noc, není-li uvedeno jinak",
+            "Způsoby zálohy a doplatku budou potvrzeny při rezervaci"
+          ],
+          paymentInfo: {
+            title: "Informace o platbě",
+            body: "Všechny ceny jsou v USD, není-li uvedeno jinak. Měnové kurzy jsou orientační a podléhají změnám. K zajištění rezervace je vyžadována platná kreditní karta. Mohou být účtovány další poplatky za vedlejší výdaje."
+          }
+        },
+        cancel: {
+          title: "Storna a nedostavení se",
+          body: "Storno podmínky jsou zveřejněny při rezervaci a v potvrzení rezervace.",
+          cancellationCharges: {
+            title: "Storno poplatky",
+            plans: [
+              {
+                planName: "Polo-flexibilní cenový plán:",
+                tiers: [
+                  { period: "30 dní nebo více před příjezdem", charge: "Plné vrácení peněz" },
+                  { period: "29 dní nebo méně před příjezdem", charge: "Storno poplatek 50 %" }
+                ]
+              },
+              {
+                planName: "Nevratný cenový plán:",
+                tiers: [
+                  { period: "Do 24 hodin po rezervaci", charge: "Plné vrácení peněz" },
+                  { period: "Ve všech ostatních případech", subtext: "Právo jednorázově upravit datum příjezdu, pokud bude doplacen rozdíl v ceně, je-li nový termín dražší.", charge: "Bez vrácení peněz", chargeClass: "no-refund-red" }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: "Pravidla pro nedostavení se",
+            body: "Hosté, kteří se ve stanovený den příjezdu bez předchozího oznámení nedostaví, jsou považováni za nedostavené. Účtuje se plná částka rezervace a rezervace se ruší."
+          }
+        },
+        conduct: {
+          title: "Chování hostů",
+          items: [
+            "Respektujte pravidla objektu, personál, ostatní hosty a místní komunitu",
+            "Nezákonné aktivity v prostorách objektu nejsou dovoleny"
+          ],
+          zeroTolerance: {
+            title: "Politika nulové tolerance",
+            body: "Uplatňujeme politiku nulové tolerance vůči rušivému chování, nezákonným aktivitám nebo poškozování majetku. Porušení může vést k okamžitému vykázání bez vrácení peněz a může mít právní následky."
+          }
+        },
+        "force-majeure": {
+          title: "Vyšší moc",
+          intro: "Neneseme odpovědnost za nesplnění povinností v důsledku okolností mimo naši rozumnou kontrolu, mimo jiné včetně:",
+          items: [
+            "Přírodních katastrof a extrémních povětrnostních podmínek",
+            "Vládních omezení a zákazů cestování",
+            "Občanských nepokojů, války, terorismu",
+            "Pandemií, epidemií, mimořádných zdravotních situací",
+            "Výpadků dodávek a poruch infrastruktury"
+          ],
+          footer: "V takových případech tam, kde je to možné, nabídneme náhradní termíny nebo poukazy. Vrácení peněz bude poskytnuto v souladu s platnými předpisy a okolnostmi. Veškeré škody a náklady, které jsou nebo by mohly být kryty obecně dostupnými balíčky cestovního pojištění a pojištění storna, jsou však z naší odpovědnosti vyloučeny."
+        },
+        liability: {
+          title: "Odpovědnost",
+          body: "V rozsahu povoleném zákonem neneseme odpovědnost za nepřímé nebo nepředvídatelné škody."
+        },
+        "intellectual-property": {
+          title: "Duševní vlastnictví",
+          copyright: {
+            title: "Upozornění na autorská práva",
+            body: "Veškerý obsah na tomto webu, včetně textu, grafiky, log a obrázků, je majetkem DEVOCEAN Lodge a je chráněn mezinárodními zákony o autorských právech. Neoprávněné použití, reprodukce nebo šíření jsou zakázány. Název DEVOCEAN Lodge, logo a všechny související značky jsou ochrannými známkami a nesmějí být použity bez písemného souhlasu."
+          }
+        },
+        disputes: {
+          title: "Řešení sporů",
+          process: {
+            title: "Postup řešení",
+            body: "Snažíme se všechny spory řešit smírnou cestou. Nejprve nás prosím kontaktujte za účelem pokusu o vyřešení. Pokud spor nebude vyřešen, bude před zahájením soudního řízení postoupen k mediaci.",
+            law: "Rozhodné právo: Tyto podmínky a případné spory se řídí mosambickým právem.",
+            jurisdiction: "Příslušnost: Výlučně příslušné jsou soudy v Maputu v Mosambiku.",
+            mediation: "Mediace: Strany se zavazují pokusit se o mediaci u akreditovaného mediátora před zahájením soudního řízení."
+          }
+        },
+        changes: {
+          title: "Změny těchto Podmínek",
+          body: "Podmínky můžeme čas od času aktualizovat. Pro váš pobyt platí verze zveřejněná v daném okamžiku."
+        },
+        law: {
+          title: "Rozhodné právo",
+          body: "Platí mosambické právo s výhradou závazných místních pravidel ochrany spotřebitele."
+        },
+        contact: {
+          title: "Kontakt",
+          body: 'Otázky? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    gdpr: {
+      title: "Informace dle GDPR",
+      updatedDate: "6. říj. 2025",
+      quickLinks: {
+        title: "Rychlé odkazy",
+        links: [
+          { id: "controller", text: "Správce" },
+          { id: "bases", text: "Právní základy" },
+          { id: "rights", text: "Vaše práva" },
+          { id: "retention", text: "Uchovávání údajů" },
+          { id: "transfers", text: "Přenosy údajů" },
+          { id: "complaints", text: "Stížnosti" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "V souladu s GDPR:",
+          body: "Zavazujeme se chránit vaše osobní údaje a respektovat vaše práva na soukromí podle Obecného nařízení o ochraně osobních údajů."
+        },
+        controller: {
+          title: "Správce údajů",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), zapsaná na adrese Rua C, Parcela 12, Maputo 1118, Mosambik, vystupuje jako správce vašich osobních údajů shromažďovaných prostřednictvím našich služeb."
+        },
+        bases: {
+          title: "Právní základy zpracování",
+          body: "Vaše osobní údaje zpracováváme na základě následujících právních důvodů podle GDPR:"
+        },
+        rights: {
+          title: "Vaše práva podle GDPR",
+          body: "Jako subjekt údajů podle GDPR máte v souvislosti se svými osobními údaji následující práva:"
+        },
+        retention: {
+          title: "Uchovávání údajů",
+          periodsTitle: "Doby uchovávání",
+          intro: "Osobní údaje uchováváme pouze tak dlouho, jak je nezbytné ke splnění účelů, pro které byly shromážděny, včetně právních, účetních nebo výkaznických požadavků.",
+          items: [
+            "<strong>Údaje o rezervaci:</strong> 7 let z důvodu daňové a právní compliance",
+            "<strong>Komunikace zákaznické podpory:</strong> 3 roky",
+            "<strong>Marketingové souhlasy:</strong> Do odvolání souhlasu",
+            "<strong>Webová analytika:</strong> 26 měsíců",
+            "<strong>Finanční transakce:</strong> 10 let pro účetní účely"
+          ]
+        },
+        transfers: {
+          title: "Mezinárodní přenosy údajů",
+          body: "Pokud vaše údaje přenášíme mimo Evropský hospodářský prostor (EHP), zajišťujeme odpovídající záruky pro ochranu vašich informací. To může zahrnovat použití Standardních smluvních doložek schválených Evropskou komisí nebo přenos do zemí s rozhodnutím o odpovídající ochraně."
+        },
+        complaints: {
+          title: "Stížnosti",
+          intro: "Pokud máte obavy ohledně toho, jak nakládáme s vašimi osobními údaji, máte právo podat stížnost u svého místního dozorového úřadu pro ochranu údajů.",
+          footer: "Doporučujeme nás nejprve kontaktovat za účelem vyřešení jakýchkoli pochybností před obrácením se na dozorový úřad."
+        },
+        dpo: {
+          title: "Kontaktujte našeho pověřence pro ochranu osobních údajů",
+          body: 'V případě jakýchkoli otázek souvisejících s GDPR nebo k uplatnění svých práv kontaktujte našeho pověřence pro ochranu osobních údajů na <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Na vaši žádost odpovíme do 30 dní, jak vyžaduje GDPR.'
+        }
+      },
+      legalBases: {
+        contract: {
+          title: "Smlouva:",
+          body: "Zpracování nezbytné pro plnění našich rezervačních smluv a služeb."
+        },
+        legal: {
+          title: "Právní povinnost:",
+          body: "Zpracování vyžadované ke splnění právních požadavků (např. daňové předpisy)."
+        },
+        legitimate: {
+          title: "Oprávněné zájmy:",
+          body: "Zpracování pro naše oprávněné obchodní zájmy při respektování vašich práv."
+        },
+        consent: {
+          title: "Souhlas:",
+          body: "Zpracování na základě vašeho výslovného souhlasu pro konkrétní účely."
+        }
+      },
+      rights: {
+        access: {
+          title: "Právo na přístup",
+          body: "Můžete si vyžádat kopie osobních údajů, které o vás uchováváme."
+        },
+        rectification: {
+          title: "Právo na opravu",
+          body: "Můžete žádat opravu nepřesných nebo neúplných údajů."
+        },
+        erasure: {
+          title: "Právo na výmaz",
+          body: "Za určitých podmínek můžete žádat výmaz svých osobních údajů."
+        },
+        restrict: {
+          title: "Právo na omezení zpracování",
+          body: "Můžete žádat omezení toho, jak vaše údaje používáme."
+        },
+        portability: {
+          title: "Právo na přenositelnost údajů",
+          body: "Můžete žádat přenos svých údajů jiné organizaci."
+        },
+        object: {
+          title: "Právo na námitku",
+          body: "Můžete vznést námitku proti určitým druhům zpracování svých údajů."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Žádost o přístup k údajům"
+        },
+        erasure: {
+          text: "Žádost o výmaz údajů"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Mezinárodní přenosy údajů:",
+          body: "Pro veškeré přenosy údajů mimo EHP zajišťujeme odpovídající záruky, včetně Standardních smluvních doložek a rozhodnutí o odpovídající ochraně."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Hlavní dozorový úřad:",
+          name: "Portugalský úřad pro ochranu osobních údajů (CNPD)",
+          websiteLabel: "Web:",
+          contactLabel: "Kontakt:"
+        }
+      }
+    },
+
+    cric: {
+      title: "CRIC — Společnost a kontakt",
+      updatedDate: "27. zář. 2025",
+      quickLinks: {
+        title: "Rychlé odkazy",
+        links: [
+          { id: "intro", text: "Přehled" },
+          { id: "contact", text: "Kontakt" },
+          { id: "emergency", text: "Pohotovost" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Oficiální údaje o společnosti:",
+          body: "Kompletní údaje o registraci podnikání a kontaktní informace pro DEVOCEAN Lodge."
+        },
+        intro: {
+          title: "Přehled",
+          body: "Kompletní údaje o registraci podnikání a kontaktní informace pro DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Kontakt",
+          body: "Pro obecné dotazy, rezervace a informace o našich službách použijte níže uvedené kontaktní údaje."
+        },
+        emergency: {
+          title: "Nouzový kontakt",
+          body: "Pro naléhavé záležitosti mimo provozní dobu použijte naše nouzové kontaktní údaje."
+        }
+      },
+      labels: {
+        companyName: "Název společnosti",
+        registration: "Obchodní registrace",
+        vat: "DIČ (NUIT)",
+        license: "Živnostenské oprávnění (Alvará)",
+        legalForm: "Právní forma",
+        capital: "Základní kapitál",
+        address: "Sídlo",
+        email: "E-mail",
+        phone: "Telefon",
+        businessHours: "Provozní doba",
+        emergencyPhone: "Nouzový telefon",
+        emergencyEmail: "Nouzový e-mail"
+      },
+      legalForm: "Společnost s ručením omezeným",
+      businessHours: "Pondělí – pátek: 8:00 – 18:00<br>Sobota a neděle: 8:00 – 12:00<br>Recepce: 6:00 – 22:00 (pro hosty)",
+      emergencyPhoneNote: "Pro naléhavé záležitosti mimo provozní dobu"
+    }
+  };
+
   // -------- GERMAN --------
   window.LEGAL_DICT["de-DE"] = {
     privacy: {
