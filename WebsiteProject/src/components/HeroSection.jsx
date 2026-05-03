@@ -146,7 +146,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               className="group w-full sm:w-auto sm:min-w-[13rem] px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-why-ponta"
             >
-              <span className="whitespace-nowrap">{ui.hero.villageHighlights || "Village Highlights"}</span>
+              <span className="sm:whitespace-nowrap">{ui.hero.villageHighlights || "Village Highlights"}</span>
             </Link>
 
             {/* Explore Lodge */}
@@ -156,7 +156,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               aria-label={ui.hero.ctaSecondary}
               data-testid="button-explore-lodge"
             >
-              <span className="whitespace-nowrap">{ui.hero.ctaSecondary}</span>
+              <span className="sm:whitespace-nowrap">{ui.hero.ctaSecondary}</span>
             </a>
 
             {/* Go Diving */}
@@ -166,7 +166,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               data-testid="link-go-diving"
             >
               <Anchor className="w-4 h-4 shrink-0" />
-              <span className="whitespace-nowrap">{ui.hero.goDiving || "Go Diving"}</span>
+              <span className="sm:whitespace-nowrap">{ui.hero.goDiving || "Go Diving"}</span>
             </Link>
 
             {/* Book Now */}
@@ -186,7 +186,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
                 }
               }}
             >
-              <span className="whitespace-nowrap">{ui.hero.ctaPrimary}</span>
+              <span className="sm:whitespace-nowrap">{ui.hero.ctaPrimary}</span>
             </a>
           </div>
         </div>
