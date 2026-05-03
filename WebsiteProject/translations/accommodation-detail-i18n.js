@@ -6,7 +6,8 @@
 // Supported languages (must match main site)
 const SUPPORTED_LANGS = [
   "en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES",
-  "sv", "pl", "af-ZA", "zu", "sw", "ja-JP", "zh-CN", "ru"
+  "sv", "pl", "af-ZA", "zu", "sw", "ja-JP", "zh-CN", "ru",
+  "sr", "hr", "cs", "tr", "ro"
 ];
 
 // Map country codes to primary language (IP-based fallback)
@@ -56,6 +57,21 @@ const CC_TO_LANGUAGE = {
   
   // Swahili-speaking countries
   KE: "sw", TZ: "sw", UG: "sw",
+
+  // Serbian / Bosnian / Montenegrin (Latin Serbian)
+  RS: "sr", ME: "sr", BA: "sr",
+
+  // Croatian
+  HR: "hr",
+
+  // Czech
+  CZ: "cs",
+
+  // Turkish
+  TR: "tr",
+
+  // Romanian / Moldovan
+  RO: "ro", MD: "ro",
 };
 
 // Comprehensive country-to-currency mapping
@@ -83,16 +99,16 @@ const CC_TO_CURRENCY = {
 
 // Map country codes to continents (for region-aware English fallback)
 const CC_TO_CONTINENT = {
-  // Europe
-  GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
-  DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
-  FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
-  DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
-  RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
-  SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
-  CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
-  UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
-  ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
+  // West Europe
+  GB: "westEu", IE: "westEu", NL: "westEu", BE: "westEu", FR: "westEu", 
+  DE: "westEu", IT: "westEu", ES: "westEu", PT: "westEu", AT: "westEu",
+  FI: "westEu", SE: "westEu", PL: "eastEu", GR: "westEu", NO: "westEu",
+  DK: "westEu", CH: "westEu", CZ: "eastEu", HU: "eastEu", RO: "eastEu",
+  RS: "eastEu", HR: "eastEu", SI: "eastEu", BA: "eastEu", BG: "eastEu",
+  SK: "eastEu", EE: "eastEu", LV: "eastEu", LT: "eastEu", MT: "westEu",
+  CY: "westEu", LU: "westEu", IS: "westEu", LI: "westEu", MC: "westEu",
+  UA: "eastEu", BY: "eastEu", MD: "eastEu", AL: "eastEu", MK: "eastEu",
+  ME: "eastEu", XK: "eastEu", AD: "westEu", SM: "westEu", VA: "westEu",
   
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
@@ -240,6 +256,41 @@ const TRANSLATIONS = {
       "secureYourEscape": "Обеспечьте свой побег в природу в DEVOCEAN Lodge. Прямое бронирование означает лучшие цены и полную поддержку от нашей команды.",
       "bookYourStay": "Забронируйте Ваше Пребывание",
       "viewAllAccommodations": "Посмотреть Все Варианты Размещения"
+    },
+    "sr": {
+      "backToAccommodations": "Nazad na Smeštaj",
+      "readyToBook": "Spremni za Rezervaciju",
+      "secureYourEscape": "Obezbedite svoj odmor u prirodi u DEVOCEAN Lodgeu. Direktna rezervacija znači najbolje cene i punu podršku našeg tima.",
+      "bookYourStay": "Rezervišite Svoj Boravak",
+      "viewAllAccommodations": "Pogledajte Sav Smeštaj"
+    },
+    "hr": {
+      "backToAccommodations": "Natrag na Smještaj",
+      "readyToBook": "Spremni za Rezervaciju",
+      "secureYourEscape": "Osigurajte svoj odmor u prirodi u DEVOCEAN Lodgeu. Izravna rezervacija znači najbolje cijene i punu podršku našeg tima.",
+      "bookYourStay": "Rezervirajte Svoj Boravak",
+      "viewAllAccommodations": "Pogledajte Sav Smještaj"
+    },
+    "cs": {
+      "backToAccommodations": "Zpět na Ubytování",
+      "readyToBook": "Připraveni Rezervovat",
+      "secureYourEscape": "Zajistěte si svůj pobyt v přírodě v DEVOCEAN Lodge. Přímá rezervace znamená nejlepší ceny a plnou podporu našeho týmu.",
+      "bookYourStay": "Rezervujte Svůj Pobyt",
+      "viewAllAccommodations": "Zobrazit Všechna Ubytování"
+    },
+    "tr": {
+      "backToAccommodations": "Konaklamalara Dön",
+      "readyToBook": "Rezervasyona Hazır",
+      "secureYourEscape": "DEVOCEAN Lodge'da doğayla iç içe kaçışınızı güvence altına alın. Doğrudan rezervasyon en iyi fiyatları ve ekibimizden tam destek anlamına gelir.",
+      "bookYourStay": "Konaklamanızı Rezerve Edin",
+      "viewAllAccommodations": "Tüm Konaklamaları Görüntüle"
+    },
+    "ro": {
+      "backToAccommodations": "Înapoi la Cazare",
+      "readyToBook": "Gata de Rezervare",
+      "secureYourEscape": "Asigurați-vă escapada în natură la DEVOCEAN Lodge. Rezervarea directă înseamnă cele mai bune tarife și sprijin complet din partea echipei noastre.",
+      "bookYourStay": "Rezervați-vă Sejurul",
+      "viewAllAccommodations": "Vedeți Toate Cazările"
     }
   }
 };
@@ -269,7 +320,14 @@ function normLang(raw) {
   if (s === "ru" || s.startsWith("ru-")) return "ru";
   if (s === "zu" || s.startsWith("zu-")) return "zu";
   if (s === "sw" || s.startsWith("sw-")) return "sw";
-  
+  if (s === "sr" || s === "sr-latn" || s === "sr-cyrl" || s.startsWith("sr-")) return "sr";
+  if (s === "hr" || s.startsWith("hr-")) return "hr";
+  if (s === "bs" || s.startsWith("bs-")) return "sr";
+  if (s === "cs" || s.startsWith("cs-")) return "cs";
+  if (s === "tr" || s.startsWith("tr-")) return "tr";
+  if (s === "ro" || s.startsWith("ro-")) return "ro";
+  if (s === "mo" || s.startsWith("mo-")) return "ro";
+
   return "en-GB";
 }
 
@@ -434,14 +492,16 @@ async function applyTranslations(lang) {
       const titleText = unitData.heroTitle || unitData.title;
       if (titleEl && titleText) {
         if (titleText.includes(' + ')) {
-          // Safe DOM manipulation instead of innerHTML
+          // Safe DOM manipulation: split text and create span element
           const parts = titleText.split(' + ');
-          titleEl.textContent = '';
+          titleEl.textContent = ''; // Clear existing content
           titleEl.appendChild(document.createTextNode(parts[0] + ' '));
           const plusSpan = document.createElement('span');
           plusSpan.textContent = '+';
           titleEl.appendChild(plusSpan);
-          titleEl.appendChild(document.createTextNode(' ' + parts[1]));
+          if (parts[1]) {
+            titleEl.appendChild(document.createTextNode(' ' + parts[1]));
+          }
         } else {
           titleEl.textContent = titleText;
         }
@@ -488,6 +548,7 @@ async function applyTranslations(lang) {
                   if (featureIndex < items.length) {
                     const iconSpan = items[featureIndex].querySelector('.i');
                     if (iconSpan) {
+                      // Safe DOM manipulation: preserve icon, update text
                       items[featureIndex].textContent = '';
                       items[featureIndex].appendChild(iconSpan.cloneNode(true));
                       items[featureIndex].appendChild(document.createTextNode(' ' + feature));
@@ -516,6 +577,7 @@ async function applyTranslations(lang) {
               const feature = unitData.detailedFeatures[featureIndex];
               
               if (iconSpan) {
+                // Safe DOM manipulation: preserve icon, update text
                 item.textContent = '';
                 item.appendChild(iconSpan.cloneNode(true));
                 item.appendChild(document.createTextNode(' ' + feature));
@@ -538,6 +600,7 @@ async function applyTranslations(lang) {
           if (index < trustItems.length) {
             const iconSpan = trustItems[index].querySelector('.i');
             if (iconSpan) {
+              // Safe DOM manipulation: preserve icon, update text
               trustItems[index].textContent = '';
               trustItems[index].appendChild(iconSpan.cloneNode(true));
               trustItems[index].appendChild(document.createTextNode(' ' + text));
@@ -591,7 +654,7 @@ async function applyTranslations(lang) {
   const bookingPage = getBookingPage(lang);
   const bookingUrl = `/book/${bookingPage}.html?currency=${currency}`;
   
-  document.querySelectorAll('a[href*="book.devoceanlodge.com"]').forEach(link => {
+  document.querySelectorAll('a[href*="book.devoceanlodge.com"], a[href*="/book/"]').forEach(link => {
     link.href = bookingUrl;
   });
 

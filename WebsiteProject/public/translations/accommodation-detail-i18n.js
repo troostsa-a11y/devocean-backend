@@ -6,7 +6,8 @@
 // Supported languages (must match main site)
 const SUPPORTED_LANGS = [
   "en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES",
-  "sv", "pl", "af-ZA", "zu", "sw", "ja-JP", "zh-CN", "ru"
+  "sv", "pl", "af-ZA", "zu", "sw", "ja-JP", "zh-CN", "ru",
+  "sr", "hr", "cs", "tr", "ro"
 ];
 
 // Map country codes to primary language (IP-based fallback)
@@ -56,6 +57,21 @@ const CC_TO_LANGUAGE = {
   
   // Swahili-speaking countries
   KE: "sw", TZ: "sw", UG: "sw",
+
+  // Serbian / Bosnian / Montenegrin (Latin Serbian)
+  RS: "sr", ME: "sr", BA: "sr",
+
+  // Croatian
+  HR: "hr",
+
+  // Czech
+  CZ: "cs",
+
+  // Turkish
+  TR: "tr",
+
+  // Romanian / Moldovan
+  RO: "ro", MD: "ro",
 };
 
 // Comprehensive country-to-currency mapping
@@ -240,6 +256,41 @@ const TRANSLATIONS = {
       "secureYourEscape": "Обеспечьте свой побег в природу в DEVOCEAN Lodge. Прямое бронирование означает лучшие цены и полную поддержку от нашей команды.",
       "bookYourStay": "Забронируйте Ваше Пребывание",
       "viewAllAccommodations": "Посмотреть Все Варианты Размещения"
+    },
+    "sr": {
+      "backToAccommodations": "Nazad na Smeštaj",
+      "readyToBook": "Spremni za Rezervaciju",
+      "secureYourEscape": "Obezbedite svoj odmor u prirodi u DEVOCEAN Lodgeu. Direktna rezervacija znači najbolje cene i punu podršku našeg tima.",
+      "bookYourStay": "Rezervišite Svoj Boravak",
+      "viewAllAccommodations": "Pogledajte Sav Smeštaj"
+    },
+    "hr": {
+      "backToAccommodations": "Natrag na Smještaj",
+      "readyToBook": "Spremni za Rezervaciju",
+      "secureYourEscape": "Osigurajte svoj odmor u prirodi u DEVOCEAN Lodgeu. Izravna rezervacija znači najbolje cijene i punu podršku našeg tima.",
+      "bookYourStay": "Rezervirajte Svoj Boravak",
+      "viewAllAccommodations": "Pogledajte Sav Smještaj"
+    },
+    "cs": {
+      "backToAccommodations": "Zpět na Ubytování",
+      "readyToBook": "Připraveni Rezervovat",
+      "secureYourEscape": "Zajistěte si svůj pobyt v přírodě v DEVOCEAN Lodge. Přímá rezervace znamená nejlepší ceny a plnou podporu našeho týmu.",
+      "bookYourStay": "Rezervujte Svůj Pobyt",
+      "viewAllAccommodations": "Zobrazit Všechna Ubytování"
+    },
+    "tr": {
+      "backToAccommodations": "Konaklamalara Dön",
+      "readyToBook": "Rezervasyona Hazır",
+      "secureYourEscape": "DEVOCEAN Lodge'da doğayla iç içe kaçışınızı güvence altına alın. Doğrudan rezervasyon en iyi fiyatları ve ekibimizden tam destek anlamına gelir.",
+      "bookYourStay": "Konaklamanızı Rezerve Edin",
+      "viewAllAccommodations": "Tüm Konaklamaları Görüntüle"
+    },
+    "ro": {
+      "backToAccommodations": "Înapoi la Cazare",
+      "readyToBook": "Gata de Rezervare",
+      "secureYourEscape": "Asigurați-vă escapada în natură la DEVOCEAN Lodge. Rezervarea directă înseamnă cele mai bune tarife și sprijin complet din partea echipei noastre.",
+      "bookYourStay": "Rezervați-vă Sejurul",
+      "viewAllAccommodations": "Vedeți Toate Cazările"
     }
   }
 };
@@ -269,7 +320,14 @@ function normLang(raw) {
   if (s === "ru" || s.startsWith("ru-")) return "ru";
   if (s === "zu" || s.startsWith("zu-")) return "zu";
   if (s === "sw" || s.startsWith("sw-")) return "sw";
-  
+  if (s === "sr" || s === "sr-latn" || s === "sr-cyrl" || s.startsWith("sr-")) return "sr";
+  if (s === "hr" || s.startsWith("hr-")) return "hr";
+  if (s === "bs" || s.startsWith("bs-")) return "sr";
+  if (s === "cs" || s.startsWith("cs-")) return "cs";
+  if (s === "tr" || s.startsWith("tr-")) return "tr";
+  if (s === "ro" || s.startsWith("ro-")) return "ro";
+  if (s === "mo" || s.startsWith("mo-")) return "ro";
+
   return "en-GB";
 }
 
@@ -596,7 +654,7 @@ async function applyTranslations(lang) {
   const bookingPage = getBookingPage(lang);
   const bookingUrl = `/book/${bookingPage}.html?currency=${currency}`;
   
-  document.querySelectorAll('a[href*="book.devoceanlodge.com"]').forEach(link => {
+  document.querySelectorAll('a[href*="book.devoceanlodge.com"], a[href*="/book/"]').forEach(link => {
     link.href = bookingUrl;
   });
 

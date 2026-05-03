@@ -3665,5 +3665,252 @@
         "description": "Ontsnap naar romantische afzondering in onze tropische schuilplaats. Boek direct voor de beste tarieven en persoonlijke service."
       }
     }
+  },
+  "sr": {
+    "safari": {
+      "title": "Safari šator",
+      "shortDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
+      "detailedFeatures": [
+        "Dva jednokrevetna kreveta (ili King) sa noćnim ormarićima i lampama sa abažurima",
+        "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
+        "Mala polica za odeću/osnovne stvari",
+        "Privatna terasa sa stolicama od palminog lišća okrenuta ka tropskoj bašti",
+        "Zajednička kupatila (žensko/muško): 2 tople/hladne tuš kabine i 2 toaleta svako",
+        "Selo može biti živo tokom praznika; besplatne čepiće za uši na recepciji"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort šator",
+      "shortDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni/zadnji zidovi), privatnom terasom i sopstvenim kupatilom pod krovom od slame.",
+      "detailedFeatures": [
+        "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svetlo",
+        "Mreža protiv komaraca • snažan ventilator • utičnice",
+        "Privatna drvena terasa sa stolicama od palminog lišća",
+        "Pozadi: privatno kupatilo (tuš, toalet, lavabo) pod krovom od trave",
+        "Živost sela tokom vrhunca/praznika; čepiće za uši dostupne"
+      ]
+    },
+    "cottage": {
+      "title": "Vikendica sa baštom",
+      "shortDescription": "Prozračna vikendica sa queen krevetom, klimom (invertor), radnim stolom i trpezarijom, privatnom terasom i kupatilom u šarmantnom roundavel-u.",
+      "detailedFeatures": [
+        "Krov od rimskih crepova, visoki beli plafon sa tamnim drvenim gredama",
+        "Pod od terakote, topli zidovi obojeni u boji žitnih polja",
+        "Queen krevet • radni sto sa lampom sa abažurom • trpezarija sa stolicama",
+        "Police za kofere, vešalica za odeću i dodatne police",
+        "Klima invertor (hladno i toplo) • dimabilno glavno svetlo",
+        "Privatno kupatilo u roundavel-u sa krovom od trave (tuš, lavabo, toalet)",
+        "Privatna drvena terasa sa stolicama za kampovanje i bočnim stolom"
+      ]
+    },
+    "chalet": {
+      "title": "Kućica sa slamnatim krovom",
+      "shortDescription": "Skrovita, romantična mala kućica pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje Twin/King kreveta.",
+      "detailedFeatures": [
+        "Krov od trave na bluegum stubovima • jesenji škriljac na podu",
+        "Zidovi obojeni u boji žitnih polja • mirno, zasenčeno okruženje",
+        "Trpezarija sa stolicama • klimatizacija",
+        "Privatno kupatilo (tuš, lavabo, toalet)",
+        "Dva jednokrevetna ili King sa noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
+      ]
+    }
+  },
+  "cs": {
+    "safari": {
+      "title": "Safari stan",
+      "shortDescription": "Plátěný stan o rozloze 12 m² na platformě 3×6 m. Twin/King, ventilátor, zásuvky, moskytiéra, soukromá terasa. Sdílené koupelny.",
+      "detailedFeatures": [
+        "Dvě jednolůžkové postele (nebo King) s nočními stolky a stolními lampami",
+        "Moskytiéra na dveřích/oknech • silný ventilátor • zásuvky",
+        "Malá polička na oblečení/základní věci",
+        "Soukromá terasa se židlemi z palmových listů s výhledem do tropické zahrady",
+        "Sdílené koupelny (ženské/mužské): 2 sprchy s teplou/studenou vodou a 2 toalety v každé",
+        "Vesnice může být živá během svátků; bezplatné špunty do uší na recepci"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort stan",
+      "shortDescription": "Vylepšený stan o rozloze 12 m² s větším soukromím (boční/zadní stěny), soukromou terasou a vlastní koupelnou pod slaměnou střechou.",
+      "detailedFeatures": [
+        "Konfigurace Twin/King • lampy • praktické vypínače",
+        "Moskytiéra • silný ventilátor • zásuvky",
+        "Soukromá dřevěná terasa se židlemi z palmových listů",
+        "Vzadu: soukromá koupelna (sprcha, toaleta, umyvadlo) pod slaměnou střechou",
+        "Vesnice je živá v sezóně/o svátcích; špunty do uší k dispozici"
+      ]
+    },
+    "cottage": {
+      "title": "Chalupa se zahradou",
+      "shortDescription": "Vzdušná chalupa s queen postelí, klimatizací (invertor), pracovním stolem a jídelnou, soukromou terasou a koupelnou v půvabném roundavelu.",
+      "detailedFeatures": [
+        "Střecha z římských tašek, vysoký bílý strop s tmavými dřevěnými trámy",
+        "Terakotová podlaha, teplé stěny v barvě obilných polí",
+        "Queen postel • pracovní stůl s lampou • jídelní stůl se židlemi",
+        "Police na kufry, věšák na oblečení a další police",
+        "Klimatizace s invertorem (chlazení a topení) • stmívatelné hlavní světlo",
+        "Soukromá koupelna v roundavelu se slaměnou střechou (sprcha, umyvadlo, toaleta)",
+        "Soukromá dřevěná terasa s kempinkovými židlemi a bočním stolkem"
+      ]
+    },
+    "chalet": {
+      "title": "Chata se slaměnou střechou",
+      "shortDescription": "Skrytá, romantická malá chata pod palmami a strelíciemi. Klimatizace, soukromá koupelna, terasa, konfigurace Twin/King.",
+      "detailedFeatures": [
+        "Slaměná střecha na sloupech z blahovičníku • podlaha v barvě podzimní břidlice",
+        "Stěny v barvě obilných polí • klidné, stinné prostředí",
+        "Jídelní stůl se židlemi • klimatizace",
+        "Soukromá koupelna (sprcha, umyvadlo, toaleta)",
+        "Dvě jednolůžkové nebo King s nočními stolky • soukromá terasa se židlemi z palmových listů"
+      ]
+    }
+  },
+  "tr": {
+    "safari": {
+      "title": "Safari Çadırı",
+      "shortDescription": "3×6 m platform üzerinde 12 m² bez çadır. Twin/King yatak, fan, prizler, sivrisinek teli, özel teras. Paylaşımlı banyolar.",
+      "detailedFeatures": [
+        "İki tek kişilik yatak (veya King) komodinler ve masa lambalarıyla",
+        "Kapı/pencerelerde sivrisinek teli • güçlü fan • prizler",
+        "Kıyafet/temel eşyalar için küçük raf",
+        "Tropik bahçeye bakan palmiye yapraklı sandalyelerle özel teras",
+        "Paylaşımlı banyolar (kadın/erkek): her birinde sıcak/soğuk sulu 2 duş ve 2 tuvalet",
+        "Köy tatil dönemlerinde hareketli olabilir; resepsiyonda ücretsiz kulak tıkacı"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Çadırı",
+      "shortDescription": "Daha fazla mahremiyet (yan/arka duvarlar), özel teras ve sazdan çatı altında özel banyo ile geliştirilmiş 12 m² çadır.",
+      "detailedFeatures": [
+        "Twin/King yapılandırması • lambalar • pratik anahtarlar",
+        "Sivrisinek teli • güçlü fan • prizler",
+        "Palmiye yapraklı sandalyelerle özel ahşap teras",
+        "Arkada: sazdan çatı altında özel banyo (duş, tuvalet, lavabo)",
+        "Köy sezonda/tatillerde hareketli; kulak tıkacı mevcut"
+      ]
+    },
+    "cottage": {
+      "title": "Bahçeli Kulübe",
+      "shortDescription": "Queen yatak, klima (invertör), çalışma masası ve yemek alanı, özel teras ve banyolu büyüleyici roundavelde havadar kulübe.",
+      "detailedFeatures": [
+        "Roma kiremitli çatı, koyu ahşap kirişlerle yüksek beyaz tavan",
+        "Terakota zemin, buğday tarlası renginde sıcak duvarlar",
+        "Queen yatak • lambalı çalışma masası • sandalyeli yemek masası",
+        "Bavullar için raf, kıyafet askılığı ve ek raflar",
+        "Invertörlü klima (soğutma ve ısıtma) • karartılabilir ana ışık",
+        "Sazdan çatılı roundavelde özel banyo (duş, lavabo, tuvalet)",
+        "Kamp sandalyeleri ile özel ahşap teras"
+      ]
+    },
+    "chalet": {
+      "title": "Sazdan Çatılı Şale",
+      "shortDescription": "Sazdan çatılı şarjlı şale: queen yatak, klima (invertör), büyük teras, özel banyo ve büyüleyici tropik bahçe manzarası.",
+      "detailedFeatures": [
+        "Otantik sazdan çatı, beyaz duvarlar, açık ahşap kirişler",
+        "Queen yatak • komodinler • masa lambaları",
+        "Lambalı çalışma alanı • dolaplı kıyafet rafı",
+        "Invertörlü klima (soğutma ve ısıtma)",
+        "Sazdan çatılı özel banyo (duş, tuvalet, lavabo)",
+        "Bahçe manzaralı palmiye yapraklı sandalyelerle büyük özel teras",
+        "Sezonda/tatillerde köy hareketli olabilir; kulak tıkacı mevcuttur"
+      ]
+    }
+  },
+  "hr": {
+    "safari": {
+      "title": "Safari šator",
+      "shortDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
+      "detailedFeatures": [
+        "Dva jednokrevetna kreveta (ili King) sa noćnim ormarićima i lampama sa abažurima",
+        "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
+        "Mala polica za odeću/osnovne stvari",
+        "Privatna terasa sa stolicama od palminog lišća okrenuta ka tropskoj bašti",
+        "Zajednička kupatila (žensko/muško): 2 tople/hladne tuš kabine i 2 toaleta svatko",
+        "Selo može biti živo tokom praznika; besplatne čepiće za uši na recepciji"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort šator",
+      "shortDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni/zadnji zidovi), privatnom terasom i vlastitim kupatilom pod krovom od slame.",
+      "detailedFeatures": [
+        "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svetlo",
+        "Mreža protiv komaraca • snažan ventilator • utičnice",
+        "Privatna drvena terasa sa stolicama od palminog lišća",
+        "Pozadi: privatno kupatilo (tuš, toalet, lavabo) pod krovom od trave",
+        "Živost sela tokom vrhunca/praznika; čepiće za uši dostupne"
+      ]
+    },
+    "cottage": {
+      "title": "Vikendica sa baštom",
+      "shortDescription": "Prozračna vikendica sa queen krevetom, klimom (invertor), radnim stolom i trpezarijom, privatnom terasom i kupatilom u šarmantnom roundavel-u.",
+      "detailedFeatures": [
+        "Krov od rimskih crepova, visoki bijeli plafon sa tamnim drvenim gredama",
+        "Pod od terakote, topli zidovi obojeni u boji žitnih polja",
+        "Queen krevet • radni sto sa lampom sa abažurom • trpezarija sa stolicama",
+        "Police za kofere, vešalica za odeću i dodatne police",
+        "Klima invertor (hladno i toplo) • dimabilno glavno svetlo",
+        "Privatno kupatilo u roundavel-u sa krovom od trave (tuš, lavabo, toalet)",
+        "Privatna drvena terasa sa stolicama za kampovanje i bočnim stolom"
+      ]
+    },
+    "chalet": {
+      "title": "Kućica sa slamnatim krovom",
+      "shortDescription": "Skrovita, romantična mala kućica pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje Twin/King kreveta.",
+      "detailedFeatures": [
+        "Krov od trave na bluegum stubovima • jesenji škriljac na podu",
+        "Zidovi obojeni u boji žitnih polja • mirno, zasenčeno okruženje",
+        "Trpezarija sa stolicama • klimatizacija",
+        "Privatno kupatilo (tuš, lavabo, toalet)",
+        "Dva jednokrevetna ili King sa noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
+      ]
+    }
+  },
+  "ro": {
+    "safari": {
+      "title": "Cort Safari",
+      "shortDescription": "Cort de pânză de 12 m² pe o platformă de 3×6 m. Pat dublu/King, ventilator, prize, plasă de țânțari, terasă privată. Băi comune.",
+      "detailedFeatures": [
+        "Două paturi single (sau King) cu noptiere și veioze",
+        "Plasă de țânțari la uși/ferestre • ventilator puternic • prize",
+        "Raft mic pentru haine și obiecte esențiale",
+        "Terasă privată cu scaune din frunze de palmier împletite, orientată spre grădina tropicală",
+        "Băi comune (femei/bărbați): câte 2 dușuri cu apă caldă/rece și 2 toalete",
+        "Satul poate fi animat în vacanțe; dopuri de urechi gratuite la recepție"
+      ]
+    },
+    "comfort": {
+      "title": "Cort Comfort",
+      "shortDescription": "Cort îmbunătățit de 12 m² cu intimitate sporită (pereți laterali/spate), terasă privată și baie proprie sub un acoperiș de paie.",
+      "detailedFeatures": [
+        "Configurație pat dublu/King • veioze • întrerupătoare practice",
+        "Plasă de țânțari • ventilator puternic • prize",
+        "Terasă privată din lemn cu scaune din frunze de palmier împletite",
+        "În spate: baie privată (duș, toaletă, chiuvetă) sub acoperiș de paie",
+        "Satul este animat în sezonul de vârf/sărbători; dopuri de urechi disponibile"
+      ]
+    },
+    "cottage": {
+      "title": "Căsuță cu grădină",
+      "shortDescription": "Căsuță aerisită cu pat queen, aer condiționat (invertor), birou și masă de luat masa, terasă privată și baie într-o roundavel pitorească.",
+      "detailedFeatures": [
+        "Acoperiș cu țiglă romană, tavan alb înalt cu grinzi de lemn închis la culoare",
+        "Pardoseală de teracotă, pereți pictați în nuanțe calde de câmp de grâu",
+        "Pat queen • birou cu veioză • masă cu scaune",
+        "Rafturi pentru valize, suport pentru haine și rafturi suplimentare",
+        "Aer condiționat invertor (răcire și încălzire) • lumină principală cu intensitate reglabilă",
+        "Baie privată în roundavel cu acoperiș de paie (duș, chiuvetă, toaletă)",
+        "Terasă privată din lemn cu scaune de camping și măsuță laterală"
+      ]
+    },
+    "chalet": {
+      "title": "Cabană cu acoperiș de paie",
+      "shortDescription": "Cabană mică, retrasă și romantică, sub palmieri și strelitzia. Aer condiționat, baie privată, terasă, configurație pat dublu/King.",
+      "detailedFeatures": [
+        "Acoperiș de paie pe stâlpi de eucalipt • pardoseală autumn-slate",
+        "Pereți pictați în nuanțe de câmp de grâu • cadru liniștit, umbrit",
+        "Masă pentru cină cu scaune • aer condiționat",
+        "Baie privată (duș, chiuvetă, toaletă)",
+        "Două paturi single sau King cu noptiere • terasă privată cu scaune din frunze de palmier"
+      ]
+    }
   }
 }
