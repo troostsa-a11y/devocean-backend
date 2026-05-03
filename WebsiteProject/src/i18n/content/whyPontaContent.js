@@ -858,8 +858,8 @@ export const WHY_PONTA_CONTENT = {
         {
           id: 'charm',
           title: 'Autentičan mozambički šarm',
-          content: 'Doživite sirove okeanske avanture, bogatu lokalnu kulturu i živopisne barove u nekomercijalizovanom okruženju. Ponta do Ouro znači autentičnost - od živih pijaca do žive muzike - čineći je idealnom za smislene begove.',
-          highlight: 'Nekomercijalizovana autentičnost'
+          content: 'Doživite sirove okeanske avanture, bogatu lokalnu kulturu i živopisne barove u nekomercijaliziranom okruženju. Ponta do Ouro znači autentičnost - od živih pijaca do žive muzike - čineći je idealnom za smislene begove.',
+          highlight: 'Nekomercijalizirana autentičnost'
         }
       ],
       ctaTitle: 'Spremni da doživite raj?',
@@ -909,8 +909,8 @@ export const WHY_PONTA_CONTENT = {
         {
           id: 'charm',
           title: 'Autentičan mozambički šarm',
-          content: 'Doživite sirove oceanske avanture, bogatu lokalnu kulturu i živopisne barove u nekomercijalizovanom okruženju. Ponta do Ouro znači autentičnost - od živih pijaca do žive muzike - čineći je idealnom za smislene begove.',
-          highlight: 'Nekomercijalizovana autentičnost'
+          content: 'Doživite sirove oceanske avanture, bogatu lokalnu kulturu i živopisne barove u nekomercijaliziranom okruženju. Ponta do Ouro znači autentičnost - od živih pijaca do žive muzike - čineći je idealnom za smislene begove.',
+          highlight: 'Nekomercijalizirana autentičnost'
         }
       ],
       ctaTitle: 'Spremni da doživite raj?',

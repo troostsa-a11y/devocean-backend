@@ -142,7 +142,7 @@ const META_DESCRIPTIONS = {
       'it-IT': 'Lezioni di surf e noleggio a Ponta do Ouro, Mozambico. Impara a surfare su spiagge incontaminate. Onde per principianti e istruttori.',
       'ja-JP': 'モザンビーク、ポンタ・ド・オウロでのサーフィンレッスンとレンタル。手つかずのビーチでサーフィンを学ぶ。初心者向けの波と経験豊富なインストラクター。',
       'nl-NL': 'Surflessen en verhuur in Ponta do Ouro, Mozambique. Leer surfen op ongerepte stranden. Beginnersvriendelijke golven en ervaren instructeurs.',
-      'pl': 'Lekcje surfingu i wypożyczalnia w Ponta do Ouro, Mozambik. Naucz się surfować na dziewiczych plażach. Fale dla począkujących.',
+      'pl': 'Lekcje surfingu i wypożyczalnia w Ponta do Ouro, Mozambik. Naucz się surfować na dziewiczych plażach. Fale dla początkujących.',
       'ro': 'Lecții de surf și închirieri în Ponta do Ouro, Mozambic. Învață să faci surf pe plaje neatinse. Valuri pentru începători și instructori experimentați.',
       'sr': 'Surf lekcije i iznajmljivanje u Ponta do Ouro, Mozambik. Naučite surf na netaknutim plažama. Talasi za početnike i iskusni instruktori.',
       'hr': 'Surf lekcije i iznajmljivanje u Ponta do Ouro, Mozambik. Naučite surf na netaknutim plažama. Talasi za početnike i iskusni instruktori.',

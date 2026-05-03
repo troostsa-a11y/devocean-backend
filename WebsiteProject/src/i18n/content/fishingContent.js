@@ -381,7 +381,7 @@ export const FISHING_CONTENT = {
   pl: {
     title: "Wędkarstwo Plażowe i Pełnomorskie",
     tagline: "Łów okonia lub ścigaj marliny w Kanale Mozambickim",
-    overview: "Ponta do Ouro oferuje wyjąkowe wędkarstwo zarówno z plaży, jak i na pełnym morzu. Ciepłe wody Oceanu Indyjskiego i głęboki Kanał Mozambicki dają ekscytujące możliwości połowu marlina, żaglicy, wahoo, tuńczyka żółtopłetwego i makreli królewskiej. Wędkarze plażowi mogą łowić okonia, barakudę i pompano.",
+    overview: "Ponta do Ouro oferuje wyjątkowe wędkarstwo zarówno z plaży, jak i na pełnym morzu. Ciepłe wody Oceanu Indyjskiego i głęboki Kanał Mozambicki dają ekscytujące możliwości połowu marlina, żaglicy, wahoo, tuńczyka żółtopłetwego i makreli królewskiej. Wędkarze plażowi mogą łowić okonia, barakudę i pompano.",
     highlights: [
       "Marlin czarny (październik-styczeń)",
       "Żaglica (czerwiec-wrzesień)",
@@ -419,7 +419,7 @@ export const FISHING_CONTENT = {
       "Napoje i przekąski (większość operatorów)",
       "Sprzęt bezpieczeństwa"
     ],
-    requirementsLevel: "Począkujący do Eksperta",
+    requirementsLevel: "Początkujący do Eksperta",
     requirementsDetails: [
       "Doświadczenie nie jest wymagane (przewodnicy pomagają)",
       "Maksymalnie 6 wędkarzy na łódź (zazwyczaj)",

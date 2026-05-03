@@ -445,7 +445,7 @@ export const DIVING_CONTENT = {
   pl: {
     title: "Nurkowanie",
     tagline: "Odkryj dziewicze rafy z rekinami byczymi, mantami i rekinami wielorybimi",
-    overview: "Ponta do Ouro oferuje nurkowanie światowej klasy z ponad 20 miejscami nurkowymi, od płytkich raf po głębokie pinakle. Krystalicznie czyste wody Kanału Mozambickiego zapewniają wyjąkową widoczność i spotkania z niesamowitą różnorodnością życia morskiego, w tym 19 gatunkami rekinów.",
+    overview: "Ponta do Ouro oferuje nurkowanie światowej klasy z ponad 20 miejscami nurkowymi, od płytkich raf po głębokie pinakle. Krystalicznie czyste wody Kanału Mozambickiego zapewniają wyjątkową widoczność i spotkania z niesamowitą różnorodnością życia morskiego, w tym 19 gatunkami rekinów.",
     highlights: [
       "Ponad 20 miejsc nurkowych od 8m do 48m głębokości",
       "Rekiny bycze, tygrysy i młoty",
@@ -479,9 +479,9 @@ export const DIVING_CONTENT = {
       "Przekąski i napoje po nurkowaniu",
       "Komputer nurkowy i sprzęt bezpieczeństwa"
     ],
-    requirementsLevel: "Począkujący do Zaawansowany",
+    requirementsLevel: "Początkujący do Zaawansowany",
     requirementsDetails: [
-      "Miejsca dla począkujących: Crèche, Doodles, Playground (10-18m)",
+      "Miejsca dla początkujących: Crèche, Doodles, Playground (10-18m)",
       "Miejsca zaawansowane: Pinnacles, Atlantis, Cloudbreak (28-48m)",
       "Wymagany certyfikat PADI (lub kurs Open Water)",
       "Wymagany kwestionariusz medyczny",
