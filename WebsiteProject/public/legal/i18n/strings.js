@@ -2179,6 +2179,542 @@
     }
   };
 
+  // -------- TURKISH --------
+  window.LEGAL_DICT["tr"] = {
+    privacy: {
+      title: "Gizlilik Politikası",
+      updatedDate: "06 Eki 2025",
+      quickLinks: {
+        title: "Hızlı Bağlantılar",
+        links: [
+          { id: "who", text: "Biz Kimiz" },
+          { id: "collect", text: "Veri Toplama" },
+          { id: "use", text: "Veri Kullanımı" },
+          { id: "share", text: "Veri Paylaşımı" },
+          { id: "security", text: "Güvenlik" },
+          { id: "retention", text: "Saklama" },
+          { id: "rights", text: "Haklarınız" },
+          { id: "transfers", text: "Uluslararası Aktarımlar" },
+          { id: "contact", text: "İletişim" },
+          { id: "updates", text: "Politika Güncellemeleri" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Gizliliğiniz bizim için önemlidir:",
+          body: "Kişisel verilerinizi korumayı ve bunları nasıl topladığımız, kullandığımız ve sakladığımız konusunda şeffaf olmayı taahhüt ediyoruz."
+        },
+        who: {
+          title: "Biz Kimiz",
+          body: "DEVOCEAN Lodge, Mozambik'te kayıtlı olan TERRAfrique LDA tarafından işletilmektedir. Tescilli adresimiz Rua C, Parcela 12, Maputo 1118, Mozambik'tir. Mozambik'in Ponta do Ouro kasabasında çevre dostu plaj konaklaması sunmaktayız. Gizliliğinizi korumayı ve kişisel verilerinizin yürürlükteki veri koruma mevzuatına uygun olarak doğru, yasal ve şeffaf bir şekilde toplanmasını, işlenmesini ve kullanılmasını sağlamayı taahhüt ediyoruz. Web sitemize erişerek veya hizmetlerimizi kullanarak, verilerinizin bu Gizlilik Politikası'nda açıklandığı şekilde toplanmasını ve kullanılmasını kabul etmiş olursunuz."
+        },
+        collect: {
+          title: "Hangi Kişisel Verileri Topluyoruz",
+          intro: "Hizmetlerimizi sağlamak ve iyileştirmek için çeşitli bilgi türleri topluyoruz:",
+          categories: [
+            {
+              title: "Kişisel Bilgiler",
+              items: [
+                "Ad, iletişim bilgileri",
+                "Pasaport / kimlik bilgileri",
+                "Ödeme bilgileri",
+                "Rezervasyon tercihleri"
+              ]
+            },
+            {
+              title: "Teknik Veriler",
+              items: [
+                "IP adresi, cihaz bilgileri",
+                "Tarayıcı türü ve sürümü",
+                "Site kullanım analitiği",
+                "Çerez verileri (rıza ile)"
+              ]
+            },
+            {
+              title: "İletişim Verileri",
+              items: [
+                "E-posta yazışmaları",
+                "Müşteri destek talepleri",
+                "Geri bildirim ve yorumlar",
+                "Pazarlama tercihleri"
+              ]
+            }
+          ]
+        },
+        use: {
+          title: "Verilerinizi Nasıl Kullanıyoruz",
+          items: [
+            "Rezervasyonların yönetilmesi ve hizmetlerin sunulması",
+            "Konaklamanız, kurallar ve teklifler hakkında iletişim (rızanızla)",
+            "Sitenin ve hizmetlerin iyileştirilmesi (analitik, güvenlik)",
+            "Hukuki ve mali yükümlülüklerin yerine getirilmesi"
+          ]
+        },
+        share: {
+          title: "Verileri Ne Zaman Paylaşıyoruz",
+          items: [
+            "Rezervasyonlarınızı ve ödemelerinizi işleme almak amacıyla ödeme hizmeti sağlayıcıları ve rezervasyon platformları ile",
+            "Site kullanımını anlamak ve hizmetleri iyileştirmek amacıyla analitik hizmet sağlayıcıları ile",
+            "Hedefli pazarlama amacıyla reklam hizmetleri ile (yalnızca rızanızla)",
+            "Sıkı gizlilik anlaşmaları kapsamında BT hizmet sağlayıcıları, hosting ve teknik destek sağlayıcıları ile",
+            "Yasa, yönetmelik, mahkeme kararı veya diğer hukuki süreçlerin gerektirdiği durumlarda yetkili makamlarla",
+            "Sözleşmelerimizi uygulamak veya haklarımızı, mülkümüzü veya güvenliğimizi korumak amacıyla",
+            "Birleşme, satın alma veya varlık satışı durumunda, bilgileriniz yeni sahibe devredilebilir"
+          ],
+          footer: "Tüm üçüncü taraflardan kişisel verilerinizin güvenliğine saygı göstermelerini ve bunları yalnızca aktarıldıkları amaçlar doğrultusunda kullanmalarını talep ediyoruz. Üçüncü tarafların kişisel verilerinizi kendi amaçları için kullanmasına izin vermiyor ve yalnızca belirlenen amaçlar için ve talimatlarımız doğrultusunda işlemelerine izin veriyoruz."
+        },
+        security: {
+          title: "Güvenlik Önlemleri",
+          intro: "Veri güvenliğini ciddiye alıyoruz ve şu önlemleri uyguluyoruz:",
+          measures: [
+            "Hassas verilerin aktarım sırasında ve depolanırken şifrelenmesi",
+            "Düzenli güvenlik denetimleri ve sızma testleri",
+            "Erişim kontrolleri ve kimlik doğrulama mekanizmaları",
+            "Çalışanlara yönelik veri koruma ve gizlilik eğitimleri",
+            "Güvenli veri yedekleme ve felaket kurtarma prosedürleri"
+          ]
+        },
+        retention: {
+          title: "Veri Saklama",
+          body: "Kişisel verilerinizi, bu Gizlilik Politikası'nda açıklandığı üzere, toplandıkları amaçların gerçekleştirilmesi için gereken süre boyunca saklarız. Genel olarak, yasa daha uzun bir saklama süresi gerektirmedikçe veya buna izin vermedikçe, kişisel verileri sizinle son etkileşiminizden sonra 1 yıla kadar saklarız. Belirli bilgileri, başta yürürlükteki mevzuata uygunluk için kayıt tutma ve raporlama (mali ve vergi kayıtları için genellikle 7 yıl), hukuki taleplerin ileri sürülmesi, dolandırıcılığın önlenmesi ve uyuşmazlıkların çözümü olmak üzere, belirli nedenlerle daha uzun süre saklayabiliriz. Saklama süresi dolduğunda, kişisel verileriniz güvenli bir şekilde silinecek veya anonim hale getirilecektir. Sizi doğrudan veya dolaylı olarak tanımlamayan, anonim ve toplulaştırılmış bilgiler istatistiksel ve analitik amaçlarla süresiz olarak saklanabilir."
+        },
+        rights: {
+          title: "Gizlilik Haklarınız",
+          items: [
+            "Kişisel verilerinize erişim hakkı",
+            "Yanlış verilerin düzeltilmesini isteme hakkı",
+            "Kişisel verilerinizin silinmesini isteme hakkı",
+            "İşlemenin kısıtlanmasını veya buna itiraz etme hakkı",
+            "Veri taşınabilirliği hakkı",
+            "Rızayı geri çekme hakkı"
+          ]
+        },
+        contact: {
+          title: "Gizlilik Ekibimizle İletişime Geçin",
+          body: 'Bu Gizlilik Politikası veya kişisel verilerinizin işlenmesi hakkında sorularınız, endişeleriniz veya talepleriniz varsa veya gizlilik haklarınızdan herhangi birini kullanmak isterseniz lütfen bizimle iletişime geçin:<br><br><strong>E-posta:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Posta Adresi:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambik<br><br>Talebinize yürürlükteki veri koruma mevzuatına uygun olarak yanıt vereceğiz. Verilerinizin işlenmesiyle ilgili şikâyet veya sorularınızı, yukarıdaki e-posta adresinden veri koruma görevlimize de iletebilirsiniz.'
+        },
+        transfers: {
+          title: "Uluslararası Veri Aktarımları",
+          body: "Birden fazla ülkede faaliyet gösterdiğimiz için verileriniz, yaşadığınız ülkenin dışındaki ülkelere aktarılabilir ve bu ülkelerde işlenebilir. Bu tür aktarımların; Avrupa Komisyonu yeterlilik kararları, Standart Sözleşme Maddeleri (SCC), uygun güvenlik önlemleri ve aktarım yerleri konusunda şeffaflık aracılığıyla yürürlükteki veri koruma mevzuatına uygun olmasını sağlıyoruz."
+        },
+        updates: {
+          title: "Politika Güncellemeleri",
+          body: "Bu gizlilik politikasını, uygulamalarımızdaki, teknolojimizdeki, yasal gerekliliklerdeki veya diğer koşullardaki değişiklikleri yansıtmak amacıyla zaman zaman güncelleyebiliriz. Önemli değişiklikler hakkında sizi kayıtlı kullanıcılar için e-posta bildirimleri, sitemizdeki belirgin uyarılar ve „son güncelleme“ tarihinin güncellenmesi yoluyla bilgilendireceğiz. Verilerinizi nasıl koruduğumuz hakkında bilgi sahibi olmak için bu politikayı düzenli olarak gözden geçirmenizi öneririz."
+        }
+      }
+    },
+
+    cookies: {
+      title: "Çerez Politikası",
+      effectiveDate: "19 Eylül 2025",
+      lastUpdated: "06 Ekim 2025",
+      managePreferences: "Çerez tercihlerinizi yönetin:",
+      manageText: "Hangi çerezleri kullandığımızı çerez bannerımız veya tarayıcı ayarlarınız aracılığıyla kontrol edebilirsiniz.",
+      cookieSettingsBtn: "Çerez Ayarları",
+      quickLinks: {
+        title: "Hızlı Bağlantılar",
+        links: [
+          { id: "what", text: "Çerez Nedir" },
+          { id: "how", text: "Çerezleri Nasıl Kullanıyoruz" },
+          { id: "necessary", text: "Zorunlu" },
+          { id: "functional", text: "İşlevsel" },
+          { id: "analytics", text: "Analitik" },
+          { id: "advertisement", text: "Reklam" },
+          { id: "manage", text: "Tercihleri Yönet" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Çerezler Hakkında",
+          body: "Hangi çerezleri kullandığımızı çerez bannerımız veya tarayıcı ayarlarınız aracılığıyla kontrol edebilirsiniz."
+        },
+        what: {
+          title: "Çerez nedir?",
+          body: "Bu Çerez Politikası; çerezlerin ne olduğunu, onları nasıl kullandığımızı, kullandığımız çerez türlerini (yani çerezler aracılığıyla hangi bilgileri topladığımızı ve bu bilgilerin nasıl kullanıldığını) ve çerez ayarlarınızı nasıl yönetebileceğinizi açıklar.<br><br>Çerezler, küçük bilgi parçalarını saklamak için kullanılan küçük metin dosyalarıdır. Bir web sayfası tarayıcıya yüklendiğinde cihazınızda saklanırlar. Bu çerezler; sitenin düzgün çalışmasına yardımcı olur, güvenliği artırır, daha iyi bir kullanıcı deneyimi sağlar ve neyin işe yaradığını ve nerede iyileştirmeler yapılması gerektiğini anlamak için performansı analiz eder."
+        },
+        how: {
+          title: "Çerezleri nasıl kullanıyoruz?",
+          body: "Çoğu çevrimiçi hizmet gibi web sitemiz de farklı amaçlarla birinci ve üçüncü taraf çerezleri kullanır. Birinci taraf çerezleri çoğunlukla sitenin düzgün çalışması için zorunludur ve kişisel olarak tanımlanabilir herhangi bir veri toplamazlar.<br><br>Web sitemizde kullanılan üçüncü taraf çerezleri başlıca; sitenin performansını anlamamıza, sitemizle olan etkileşiminizi izlememize, hizmetlerimizin güvenliğini sağlamamıza, ilgili reklamları sunmamıza ve genel olarak gelecekteki ziyaretlerinizde size daha iyi ve daha hızlı bir deneyim sunmamıza yardımcı olur."
+        },
+        necessary: {
+          title: "Zorunlu çerezler",
+          description: "Zorunlu çerezler, sitenin temel işlevlerini etkinleştirmek için gereklidir; örneğin güvenli oturum açma veya rıza tercihlerinizin ayarlanması. Bu çerezler kişisel olarak tanımlanabilir herhangi bir veri saklamaz.",
+          tableHeaders: { cookie: "Çerez", duration: "Süre", description: "Açıklama" },
+          cookies: [
+            { name: "currency", duration: "oturum", desc: "Bu çerez, kullanıcının tercih ettiği para birimini saklamak için kullanılır." },
+            { name: "_sh_session_", duration: "oturum", desc: "Açıklama şu anda mevcut değildir." },
+            { name: "loccur", duration: "oturum", desc: "Açıklama şu anda mevcut değildir." },
+            { name: "country_code", duration: "oturum", desc: "Açıklama mevcut değildir." },
+            { name: "b_locale", duration: "oturum", desc: "Açıklama şu anda mevcut değildir." },
+            { name: "checkout_currency", duration: "oturum", desc: "Açıklama şu anda mevcut değildir." }
+          ]
+        },
+        functional: {
+          title: "İşlevsel çerezler",
+          description: "İşlevsel çerezler; web sitesi içeriğinin sosyal medya platformlarında paylaşılması, geri bildirim toplama ve diğer üçüncü taraf özellikleri gibi belirli işlevlerin gerçekleştirilmesine yardımcı olur.",
+          tableHeaders: { cookie: "Çerez", duration: "Süre", description: "Açıklama" },
+          cookies: [
+            { name: "locale", duration: "oturum", desc: "Bu çerez Facebook tarafından, web sitesindeki kullanıcı deneyimini geliştirmek ve Facebook platformları kullanılırken ilgili reklamları sunmak için ayarlanır." }
+          ]
+        },
+        analytics: {
+          title: "Analitik çerezler",
+          description: "Analitik çerezler, ziyaretçilerin web sitesiyle nasıl etkileşim kurduğunu anlamak için kullanılır. Bu çerezler ziyaretçi sayısı, hemen çıkma oranı, trafik kaynağı vb. gibi metrikler hakkında bilgi sağlar.",
+          tableHeaders: { cookie: "Çerez", duration: "Süre", description: "Açıklama" },
+          cookies: [
+            { name: "_ga", duration: "1 yıl 1 ay 4 gün", desc: "Google Analytics tarafından, ziyaretçi, oturum ve kampanya verilerini hesaplamak ve analitik rapor için site kullanımını izlemek üzere ayarlanır. Çerez bilgileri anonim olarak saklar ve benzersiz ziyaretçileri tanımak için rastgele oluşturulan bir numara atar." },
+            { name: "_ga_*", duration: "1 yıl 1 ay 4 gün", desc: "Google Analytics tarafından sayfa görüntülemelerini saklamak ve saymak için ayarlanır." },
+            { name: "_gid", duration: "1 gün", desc: "Google Analytics tarafından ziyaretçilerin web sitesini nasıl kullandığına dair bilgileri saklamak ve site performansı hakkında analitik bir rapor oluşturmak için ayarlanır. Toplanan bilgiler arasında ziyaretçi sayısı, kaynakları ve anonim olarak ziyaret edilen sayfalar yer alır." },
+            { name: "_gat_UA-*", duration: "1 dakika", desc: "Google Analytics tarafından kullanıcı davranışını izlemek için ayarlanır." },
+            { name: "pardot", duration: "geçmiş", desc: "Pardot çerezi, ziyaretçi Pardot kullanıcısı olarak oturum açtığı sürece ayarlanır. Aktif bir oturumu gösterir ve izleme için kullanılmaz." }
+          ]
+        },
+        advertisement: {
+          title: "Reklam çerezleri",
+          description: "Reklam çerezleri, ziyaretçilere daha önce ziyaret ettikleri sayfalara dayalı olarak özelleştirilmiş reklamlar sunmak ve reklam kampanyalarının etkinliğini analiz etmek için kullanılır.",
+          tableHeaders: { cookie: "Çerez", duration: "Süre", description: "Açıklama" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 ay", desc: "Google Tag Manager tarafından hizmetlerini kullanan web sitelerinde reklam verimliliğini test etmek için ayarlanır." },
+            { name: "test_cookie", duration: "15 dakika", desc: "doubleclick.net tarafından kullanıcının tarayıcısının çerezleri destekleyip desteklemediğini belirlemek için ayarlanır." },
+            { name: "_fbp", duration: "3 ay", desc: "Facebook tarafından etkileşimleri saklamak ve izlemek için ayarlanır." },
+            { name: "IDE", duration: "1 yıl 24 gün", desc: "Google DoubleClick IDE çerezleri, kullanıcı profiline göre kendisine ilgili reklamları sunmak için kullanıcının web sitesini nasıl kullandığına dair bilgileri saklar." }
+          ]
+        },
+        manage: {
+          title: "Çerez tercihlerini yönetme",
+          consentTitle: "Rıza Tercihleri",
+          consentText: "Çerez ayarlarınızı, yukarıdaki „Rıza Tercihleri“ düğmesine tıklayarak istediğiniz zaman değiştirebilirsiniz. Bu, çerez rıza bannerını yeniden açmanıza ve tercihlerinizi güncellemenize veya rızanızı hemen geri çekmenize olanak tanır.",
+          browserText: "Ayrıca farklı tarayıcılar, web sitelerinin kullandığı çerezleri engellemek ve silmek için farklı yöntemler sunar. Çerezleri engellemek/silmek için tarayıcınızın ayarlarını değiştirebilirsiniz. Aşağıda, başlıca web tarayıcılarında çerezleri nasıl yöneteceğinize ve sileceğinize dair destek belgelerinin bağlantıları yer almaktadır.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Başka bir web tarayıcısı kullanıyorsanız lütfen tarayıcınızın resmi destek belgelerine başvurun."
+          }
+        }
+      }
+    },
+
+    terms: {
+      title: "Şartlar ve Koşullar",
+      updatedDate: "06 Eki 2025",
+      quickLinks: {
+        title: "Hızlı Bağlantılar",
+        links: [
+          { id: "intro", text: "Kapsam" },
+          { id: "booking", text: "Rezervasyonlar" },
+          { id: "payment", text: "Fiyatlar ve Ödeme" },
+          { id: "cancel", text: "İptaller" },
+          { id: "conduct", text: "Misafir Davranışları" },
+          { id: "force-majeure", text: "Mücbir Sebep" },
+          { id: "liability", text: "Sorumluluk" },
+          { id: "intellectual-property", text: "Fikri Mülkiyet" },
+          { id: "disputes", text: "Uyuşmazlık Çözümü" },
+          { id: "changes", text: "Değişiklikler" },
+          { id: "law", text: "Geçerli Hukuk" },
+          { id: "contact", text: "İletişim" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Önemli Hukuki Bildirim:",
+          body: "Bu şartlar, hizmetlerimizi ve web sitemizi kullanımınızı düzenler. Rezervasyon yapmadan önce lütfen bunları dikkatlice okuyunuz."
+        },
+        intro: {
+          title: "Kapsam",
+          body: "Bu Şartlar, DEVOCEAN Lodge (TERRAfrique LDA) tarafından sağlanan konaklama ve ilgili hizmetleri düzenler. Rezervasyon yaparak bu Şartları kabul etmiş olursunuz."
+        },
+        booking: {
+          title: "Rezervasyonlar",
+          items: [
+            "Misafir bilgilerini ve giriş/çıkış tarihlerini doğru şekilde belirtin",
+            "Özel talepler müsaitliğe ve onaya tabidir"
+          ],
+          reservationReq: {
+            title: "Rezervasyon Şartları",
+            body: "Tüm rezervasyonlar için geçerli kimlik ve kredi kartı gereklidir. Asgari yaş: 18."
+          },
+          checkinCheckout: {
+            title: "Giriş / Çıkış",
+            body: "Giriş: 14:00 | Çıkış: 11:00. Erken veya geç saatler müsaitliğe tabidir."
+          },
+          groupBookings: {
+            title: "Grup Rezervasyonları",
+            body: "6 oda ve üzeri gruplar için özel şartlar geçerlidir. Grup fiyatları ve politikaları için lütfen bizimle iletişime geçin."
+          }
+        },
+        payment: {
+          title: "Fiyatlar ve Ödeme",
+          items: [
+            "Aksi belirtilmedikçe, listelenen fiyatlar birim/gece başınadır",
+            "Depozito ve nihai ödeme yöntemleri rezervasyon sırasında onaylanacaktır"
+          ],
+          paymentInfo: {
+            title: "Ödeme Bilgileri",
+            body: "Aksi belirtilmedikçe tüm fiyatlar USD cinsindendir. Döviz kurları yaklaşık olup değişebilir. Rezervasyonu güvence altına almak için geçerli bir kredi kartı gereklidir. Yan harcamalar için ek ücret alınabilir."
+          }
+        },
+        cancel: {
+          title: "İptaller ve Gelmemeler",
+          body: "İptal şartları rezervasyon sırasında ve rezervasyon onayında belirtilir.",
+          cancellationCharges: {
+            title: "İptal Ücretleri",
+            plans: [
+              {
+                planName: "Yarı Esnek Fiyat Planı:",
+                tiers: [
+                  { period: "Girişten 30 gün veya daha fazla önce", charge: "Tam iade" },
+                  { period: "Girişten 29 gün veya daha az önce", charge: "%50 iptal ücreti" }
+                ]
+              },
+              {
+                planName: "İade Edilemez Fiyat Planı:",
+                tiers: [
+                  { period: "Rezervasyondan sonra 24 saat içinde", charge: "Tam iade" },
+                  { period: "Diğer tüm durumlarda", subtext: "Yeni tarihte fiyat farkı oluşması durumunda farkın ödenmesi şartıyla, giriş tarihini bir kez değiştirme hakkı.", charge: "İade yok", chargeClass: "no-refund-red" }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: "Gelmeme Politikası",
+            body: "Önceden bildirimde bulunmadan planlanan giriş tarihinde gelmeyen misafirler „gelmemiş“ sayılır. Rezervasyonun tam tutarı tahsil edilir ve rezervasyon iptal edilir."
+          }
+        },
+        conduct: {
+          title: "Misafir Davranışları",
+          items: [
+            "Tesis kurallarına, personele, diğer misafirlere ve yerel topluluğa saygı gösterin",
+            "Mülk içinde herhangi bir yasa dışı faaliyete izin verilmez"
+          ],
+          zeroTolerance: {
+            title: "Sıfır Tolerans Politikası",
+            body: "Rahatsız edici davranışlara, yasa dışı faaliyetlere veya mülke verilen zarara karşı sıfır tolerans politikası uygularız. İhlaller iade yapılmaksızın derhal tahliye ile sonuçlanabilir ve hukuki sonuçlar doğurabilir."
+          }
+        },
+        "force-majeure": {
+          title: "Mücbir Sebep",
+          intro: "Aşağıdakiler dahil ancak bunlarla sınırlı olmamak üzere, makul kontrolümüz dışındaki koşullar nedeniyle yükümlülüklerin yerine getirilmemesinden sorumlu değiliz:",
+          items: [
+            "Doğal afetler ve aşırı hava koşulları",
+            "Hükümet kısıtlamaları ve seyahat yasakları",
+            "Sivil kargaşa, savaş, terörizm",
+            "Pandemiler, salgınlar, sağlık acil durumları",
+            "Tedarik kesintileri ve altyapı arızaları"
+          ],
+          footer: "Bu gibi durumlarda, mümkün olduğunda alternatif tarihler veya kuponlar sunacağız. İadeler, yürürlükteki mevzuata ve koşullara göre yapılacaktır. Ancak, genel olarak mevcut seyahat sigortası ve iptal sigortası paketleri tarafından karşılanan veya karşılanabilecek tüm zarar ve maliyetler sorumluluğumuzun dışındadır."
+        },
+        liability: {
+          title: "Sorumluluk",
+          body: "Yasaların izin verdiği ölçüde, dolaylı veya öngörülemeyen kayıplardan sorumlu değiliz."
+        },
+        "intellectual-property": {
+          title: "Fikri Mülkiyet",
+          copyright: {
+            title: "Telif Hakkı Bildirimi",
+            body: "Bu sitedeki metin, grafik, logo ve resimler dahil tüm içerik DEVOCEAN Lodge'a aittir ve uluslararası telif hakkı yasaları ile korunmaktadır. İzinsiz kullanım, çoğaltma veya dağıtım yasaktır. DEVOCEAN Lodge adı, logosu ve tüm ilgili işaretler ticari markalardır ve yazılı izin olmadan kullanılamaz."
+          }
+        },
+        disputes: {
+          title: "Uyuşmazlık Çözümü",
+          process: {
+            title: "Çözüm Süreci",
+            body: "Tüm uyuşmazlıkları dostane yollarla çözmeye çalışırız. Çözüm girişiminde bulunmak için lütfen önce bizimle iletişime geçin. Uyuşmazlığın çözülememesi durumunda, hukuki süreç başlatılmadan önce arabuluculuğa havale edilecektir.",
+            law: "Geçerli Hukuk: Bu şartlar ve uyuşmazlıklar Mozambik hukukuna tabidir.",
+            jurisdiction: "Yetki: Maputo, Mozambik mahkemeleri münhasıran yetkilidir.",
+            mediation: "Arabuluculuk: Taraflar, hukuki süreç başlatmadan önce yetkili bir arabulucu nezdinde arabuluculuk girişiminde bulunmayı taahhüt eder."
+          }
+        },
+        changes: {
+          title: "Bu Şartlardaki Değişiklikler",
+          body: "Şartları zaman zaman güncelleyebiliriz. Konaklamanız sırasında yayımlanan sürüm geçerlidir."
+        },
+        law: {
+          title: "Geçerli Hukuk",
+          body: "Mozambik hukuku, zorunlu yerel tüketici koruma kurallarına tabi olarak uygulanır."
+        },
+        contact: {
+          title: "İletişim",
+          body: 'Sorularınız için: <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    gdpr: {
+      title: "GDPR Bildirimi",
+      updatedDate: "06 Eki 2025",
+      quickLinks: {
+        title: "Hızlı Bağlantılar",
+        links: [
+          { id: "controller", text: "Veri Sorumlusu" },
+          { id: "bases", text: "Hukuki Dayanaklar" },
+          { id: "rights", text: "Haklarınız" },
+          { id: "retention", text: "Veri Saklama" },
+          { id: "transfers", text: "Veri Aktarımları" },
+          { id: "complaints", text: "Şikâyetler" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "GDPR Uyumlu:",
+          body: "Genel Veri Koruma Yönetmeliği uyarınca kişisel verilerinizi korumayı ve gizlilik haklarınıza saygı göstermeyi taahhüt ediyoruz."
+        },
+        controller: {
+          title: "Veri Sorumlusu",
+          body: "Rua C, Parcela 12, Maputo 1118, Mozambik adresinde kayıtlı TERRAfrique LDA (DEVOCEAN Lodge), hizmetlerimiz aracılığıyla toplanan kişisel verilerinizin sorumlusu olarak hareket eder."
+        },
+        bases: {
+          title: "İşlemenin Hukuki Dayanakları",
+          body: "Kişisel verilerinizi GDPR kapsamındaki aşağıdaki hukuki dayanaklara göre işliyoruz:"
+        },
+        rights: {
+          title: "GDPR Kapsamındaki Haklarınız",
+          body: "GDPR kapsamında veri sahibi olarak kişisel verilerinizle ilgili aşağıdaki haklara sahipsiniz:"
+        },
+        retention: {
+          title: "Veri Saklama",
+          periodsTitle: "Saklama Süreleri",
+          intro: "Kişisel verileri yalnızca toplandıkları amaçların yerine getirilmesi için gerekli süre boyunca, hukuki, muhasebe veya raporlama gereklilikleri dahil, saklarız.",
+          items: [
+            "<strong>Rezervasyon verileri:</strong> Vergi ve hukuki uyumluluk için 7 yıl",
+            "<strong>Müşteri destek iletişimi:</strong> 3 yıl",
+            "<strong>Pazarlama rızaları:</strong> Rıza geri çekilene kadar",
+            "<strong>Web sitesi analitiği:</strong> 26 ay",
+            "<strong>Mali işlemler:</strong> Muhasebe amaçları için 10 yıl"
+          ]
+        },
+        transfers: {
+          title: "Uluslararası Veri Aktarımları",
+          body: "Verilerinizi Avrupa Ekonomik Alanı (AEA) dışına aktardığımızda, bilgilerinizi korumak için uygun güvenceler sağlarız. Bu, Avrupa Komisyonu tarafından onaylanan Standart Sözleşme Maddelerinin kullanımını veya yeterlilik kararı verilmiş ülkelere yapılan aktarımları içerebilir."
+        },
+        complaints: {
+          title: "Şikâyetler",
+          intro: "Kişisel verilerinizi nasıl ele aldığımız konusunda endişeleriniz varsa, yerel veri koruma kurumunuza şikâyette bulunma hakkına sahipsiniz.",
+          footer: "Denetleyici makamla iletişime geçmeden önce, herhangi bir endişeyi gidermek için ilk olarak bizimle iletişime geçmenizi öneririz."
+        },
+        dpo: {
+          title: "Veri Koruma Görevlimizle İletişime Geçin",
+          body: 'GDPR ile ilgili herhangi bir soru için veya haklarınızı kullanmak amacıyla lütfen veri koruma görevlimize <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a> adresinden ulaşın. GDPR\'nin gerektirdiği şekilde talebinize 30 gün içinde yanıt vereceğiz.'
+        }
+      },
+      legalBases: {
+        contract: {
+          title: "Sözleşme:",
+          body: "Rezervasyon sözleşmelerimizin ve hizmetlerimizin yerine getirilmesi için gerekli işleme."
+        },
+        legal: {
+          title: "Yasal Yükümlülük:",
+          body: "Yasal gerekliliklerin (örneğin vergi mevzuatı) yerine getirilmesi için gereken işleme."
+        },
+        legitimate: {
+          title: "Meşru Menfaatler:",
+          body: "Haklarınıza saygı göstererek meşru ticari menfaatlerimiz için yapılan işleme."
+        },
+        consent: {
+          title: "Rıza:",
+          body: "Belirli amaçlar için açık rızanıza dayalı işleme."
+        }
+      },
+      rights: {
+        access: {
+          title: "Erişim Hakkı",
+          body: "Hakkınızda tuttuğumuz kişisel verilerin kopyalarını talep edebilirsiniz."
+        },
+        rectification: {
+          title: "Düzeltme Hakkı",
+          body: "Yanlış veya eksik verilerin düzeltilmesini talep edebilirsiniz."
+        },
+        erasure: {
+          title: "Silme Hakkı",
+          body: "Belirli koşullar altında kişisel verilerinizin silinmesini talep edebilirsiniz."
+        },
+        restrict: {
+          title: "İşlemeyi Kısıtlama Hakkı",
+          body: "Verilerinizi nasıl kullandığımıza dair kısıtlama talep edebilirsiniz."
+        },
+        portability: {
+          title: "Veri Taşınabilirliği Hakkı",
+          body: "Verilerinizin başka bir kuruluşa aktarılmasını talep edebilirsiniz."
+        },
+        object: {
+          title: "İtiraz Hakkı",
+          body: "Verilerinizin belirli işleme türlerine itiraz edebilirsiniz."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Veri Erişim Talebi"
+        },
+        erasure: {
+          text: "Veri Silme Talebi"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Uluslararası Veri Aktarımları:",
+          body: "AEA dışındaki tüm veri aktarımları için Standart Sözleşme Maddeleri ve yeterlilik kararları dahil olmak üzere uygun güvenceleri sağlarız."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Baş Denetleyici Makam:",
+          name: "Portekiz Veri Koruma Kurumu (CNPD)",
+          websiteLabel: "Web Sitesi:",
+          contactLabel: "İletişim:"
+        }
+      }
+    },
+
+    cric: {
+      title: "CRIC — Şirket ve İletişim",
+      updatedDate: "27 Eyl 2025",
+      quickLinks: {
+        title: "Hızlı Bağlantılar",
+        links: [
+          { id: "intro", text: "Genel Bakış" },
+          { id: "contact", text: "İletişim" },
+          { id: "emergency", text: "Acil Durum" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Resmi Şirket Bilgileri:",
+          body: "DEVOCEAN Lodge için eksiksiz iş kayıt bilgileri ve iletişim ayrıntıları."
+        },
+        intro: {
+          title: "Genel Bakış",
+          body: "DEVOCEAN Lodge için eksiksiz iş kayıt bilgileri ve iletişim ayrıntıları."
+        },
+        contact: {
+          title: "İletişim",
+          body: "Genel sorular, rezervasyonlar ve hizmetlerimiz hakkında bilgi için lütfen aşağıdaki iletişim bilgilerini kullanın."
+        },
+        emergency: {
+          title: "Acil Durum İletişimi",
+          body: "Mesai saatleri dışındaki acil konular için lütfen acil durum iletişim bilgilerimizi kullanın."
+        }
+      },
+      labels: {
+        companyName: "Şirket Adı",
+        registration: "Ticaret Sicili",
+        vat: "Vergi Numarası (NUIT)",
+        license: "İşletme Ruhsatı (Alvará)",
+        legalForm: "Hukuki Yapı",
+        capital: "Sermaye",
+        address: "Tescilli Adres",
+        email: "E-posta",
+        phone: "Telefon",
+        businessHours: "Çalışma Saatleri",
+        emergencyPhone: "Acil Telefon",
+        emergencyEmail: "Acil E-posta"
+      },
+      legalForm: "Limited Şirket",
+      businessHours: "Pazartesi – Cuma: 08:00 – 18:00<br>Cumartesi ve Pazar: 08:00 – 12:00<br>Resepsiyon: 06:00 – 22:00 (misafirler için)",
+      emergencyPhoneNote: "Mesai saatleri dışındaki acil konular için"
+    }
+  };
+
   // -------- GERMAN --------
   window.LEGAL_DICT["de-DE"] = {
     privacy: {
