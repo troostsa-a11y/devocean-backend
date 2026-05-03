@@ -2715,6 +2715,542 @@
     }
   };
 
+  // -------- ROMANIAN --------
+  window.LEGAL_DICT["ro"] = {
+    privacy: {
+      title: "Politica de confidențialitate",
+      updatedDate: "06 oct. 2025",
+      quickLinks: {
+        title: "Linkuri rapide",
+        links: [
+          { id: "who", text: "Cine suntem" },
+          { id: "collect", text: "Colectarea datelor" },
+          { id: "use", text: "Utilizarea datelor" },
+          { id: "share", text: "Partajarea datelor" },
+          { id: "security", text: "Securitate" },
+          { id: "retention", text: "Păstrare" },
+          { id: "rights", text: "Drepturile dvs." },
+          { id: "transfers", text: "Transferuri internaționale" },
+          { id: "contact", text: "Contact" },
+          { id: "updates", text: "Modificări ale politicii" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Confidențialitatea dvs. este importantă:",
+          body: "Ne angajăm să vă protejăm datele cu caracter personal și să fim transparenți în privința modului în care le colectăm, utilizăm și păstrăm."
+        },
+        who: {
+          title: "Cine suntem",
+          body: "DEVOCEAN Lodge este operat de TERRAfrique LDA, înregistrată în Mozambic. Adresa noastră înregistrată este Rua C, Parcela 12, Maputo 1118, Mozambic. Oferim cazare ecologică pe plajă în Ponta do Ouro, Mozambic. Ne angajăm să vă protejăm confidențialitatea și să ne asigurăm că datele dvs. cu caracter personal sunt colectate, prelucrate și utilizate corect, legal și transparent, în conformitate cu legislația aplicabilă privind protecția datelor. Prin accesarea site-ului nostru sau utilizarea serviciilor noastre, sunteți de acord cu colectarea și utilizarea datelor dvs. așa cum este descris în această Politică de confidențialitate."
+        },
+        collect: {
+          title: "Ce date cu caracter personal colectăm",
+          intro: "Colectăm diferite tipuri de informații pentru a furniza și îmbunătăți serviciile noastre:",
+          categories: [
+            {
+              title: "Informații personale",
+              items: [
+                "Nume, date de contact",
+                "Date din pașaport / cartea de identitate",
+                "Informații de plată",
+                "Preferințe de rezervare"
+              ]
+            },
+            {
+              title: "Date tehnice",
+              items: [
+                "Adresă IP, informații despre dispozitiv",
+                "Tipul și versiunea browserului",
+                "Analiza utilizării site-ului",
+                "Date din module cookie (cu consimțământ)"
+              ]
+            },
+            {
+              title: "Date de comunicare",
+              items: [
+                "Corespondență prin e-mail",
+                "Solicitări de asistență pentru clienți",
+                "Recenzii și feedback",
+                "Preferințe de marketing"
+              ]
+            }
+          ]
+        },
+        use: {
+          title: "Cum folosim datele dvs.",
+          items: [
+            "Gestionarea rezervărilor și furnizarea serviciilor",
+            "Comunicări despre șederea, regulile și ofertele dvs. (cu consimțământul dvs.)",
+            "Îmbunătățirea site-ului și a serviciilor (analiză, securitate)",
+            "Îndeplinirea obligațiilor legale și financiare"
+          ]
+        },
+        share: {
+          title: "Când partajăm datele",
+          items: [
+            "Cu furnizori de servicii de plată și platforme de rezervări, pentru procesarea rezervărilor și plăților dvs.",
+            "Cu servicii de analiză, pentru a înțelege utilizarea site-ului și a îmbunătăți serviciile",
+            "Cu servicii de publicitate pentru marketing țintit (numai cu consimțământul dvs.)",
+            "Cu furnizori de servicii IT, găzduire și asistență tehnică, pe baza unor acorduri stricte de confidențialitate",
+            "Cu autorități competente atunci când legea, reglementările, hotărârile judecătorești sau alte proceduri legale o cer",
+            "Pentru a aplica contractele noastre sau a ne proteja drepturile, proprietatea sau siguranța",
+            "În cazul unei fuziuni, achiziții sau vânzări de active, informațiile dvs. pot fi transferate noului proprietar"
+          ],
+          footer: "Solicităm tuturor terților să respecte securitatea datelor dvs. cu caracter personal și să le utilizeze numai în scopurile pentru care au fost transferate. Nu permitem terților să utilizeze datele dvs. cu caracter personal în propriile scopuri și le permitem prelucrarea numai în scopuri determinate și în conformitate cu instrucțiunile noastre."
+        },
+        security: {
+          title: "Măsuri de securitate",
+          intro: "Tratăm securitatea datelor cu seriozitate și aplicăm:",
+          measures: [
+            "Criptarea datelor sensibile în tranzit și în repaus",
+            "Audituri de securitate periodice și teste de penetrare",
+            "Controale de acces și mecanisme de autentificare",
+            "Instruirea angajaților în domeniul protecției datelor și confidențialității",
+            "Proceduri sigure de backup al datelor și de recuperare în caz de dezastru"
+          ]
+        },
+        retention: {
+          title: "Păstrarea datelor",
+          body: "Păstrăm datele dvs. cu caracter personal atâta timp cât este necesar pentru a îndeplini scopurile pentru care au fost colectate, așa cum este descris în această Politică de confidențialitate. În general, păstrăm datele cu caracter personal până la 1 an după ultima dvs. interacțiune cu noi, cu excepția cazului în care legea impune sau permite o perioadă de păstrare mai lungă. Putem păstra anumite informații pentru perioade mai îndelungate din motive specifice, inclusiv: păstrarea evidențelor și raportarea în conformitate cu legislația aplicabilă (de obicei 7 ani pentru evidențele financiare și fiscale), exercitarea pretențiilor legale, prevenirea fraudei și soluționarea litigiilor. La expirarea perioadei de păstrare, datele dvs. cu caracter personal vor fi șterse în siguranță sau anonimizate. Informațiile anonime și agregate rămase, care nu vă identifică direct sau indirect, pot fi păstrate pe termen nelimitat în scopuri statistice și analitice."
+        },
+        rights: {
+          title: "Drepturile dvs. de confidențialitate",
+          items: [
+            "Dreptul de acces la datele dvs. cu caracter personal",
+            "Dreptul de rectificare a datelor inexacte",
+            "Dreptul de ștergere a datelor dvs. cu caracter personal",
+            "Dreptul de a restricționa sau de a vă opune prelucrării",
+            "Dreptul la portabilitatea datelor",
+            "Dreptul de a vă retrage consimțământul"
+          ]
+        },
+        contact: {
+          title: "Contactați echipa noastră de confidențialitate",
+          body: 'Dacă aveți întrebări, nelămuriri sau solicitări privind această Politică de confidențialitate sau prelucrarea datelor dvs. cu caracter personal, sau dacă doriți să vă exercitați oricare dintre drepturile de confidențialitate, vă rugăm să ne contactați:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Adresa poștală:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambic<br><br>Vom răspunde solicitării dvs. în conformitate cu legislația aplicabilă privind protecția datelor. Pentru reclamații sau întrebări privind prelucrarea datelor dvs., puteți contacta și responsabilul nostru cu protecția datelor la adresa de e-mail menționată mai sus.'
+        },
+        transfers: {
+          title: "Transferuri internaționale de date",
+          body: "Întrucât operăm în mai multe jurisdicții, datele dvs. pot fi transferate și prelucrate în țări din afara țării dvs. de reședință. Ne asigurăm că astfel de transferuri sunt conforme cu legislația aplicabilă privind protecția datelor, prin decizii de adecvare ale Comisiei Europene, Clauze Contractuale Standard (CCS), măsuri de protecție corespunzătoare și transparență privind locațiile transferurilor."
+        },
+        updates: {
+          title: "Modificări ale politicii",
+          body: "Putem actualiza periodic această politică de confidențialitate pentru a reflecta modificări ale practicilor, tehnologiei, cerințelor legale sau altor circumstanțe. Vă vom anunța despre orice modificări semnificative prin notificări e-mail pentru utilizatorii înregistrați, anunțuri vizibile pe site-ul nostru și prin actualizarea datei „ultimei actualizări”. Vă încurajăm să consultați această politică periodic pentru a fi informat cu privire la modul în care vă protejăm datele."
+        }
+      }
+    },
+
+    cookies: {
+      title: "Politica privind modulele cookie",
+      effectiveDate: "19 septembrie 2025",
+      lastUpdated: "06 octombrie 2025",
+      managePreferences: "Gestionați preferințele cookie:",
+      manageText: "Puteți controla modulele cookie pe care le folosim prin bannerul nostru cookie sau setările browserului dvs.",
+      cookieSettingsBtn: "Setări cookie",
+      quickLinks: {
+        title: "Linkuri rapide",
+        links: [
+          { id: "what", text: "Ce sunt modulele cookie" },
+          { id: "how", text: "Cum folosim modulele cookie" },
+          { id: "necessary", text: "Necesare" },
+          { id: "functional", text: "Funcționale" },
+          { id: "analytics", text: "Analiză" },
+          { id: "advertisement", text: "Publicitate" },
+          { id: "manage", text: "Gestionare preferințe" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Despre modulele cookie",
+          body: "Puteți controla modulele cookie pe care le folosim prin bannerul nostru cookie sau setările browserului dvs."
+        },
+        what: {
+          title: "Ce sunt modulele cookie?",
+          body: "Această Politică privind modulele cookie explică ce sunt modulele cookie, cum le folosim, ce tipuri de module cookie utilizăm (adică ce informații colectăm prin intermediul lor și cum sunt folosite acestea) și cum vă puteți gestiona setările.<br><br>Modulele cookie sunt fișiere text mici utilizate pentru a stoca mici fragmente de informații. Acestea sunt salvate pe dispozitivul dvs. atunci când o pagină web se încarcă în browser. Aceste module cookie ajută la funcționarea corectă a site-ului, sporesc securitatea, oferă o experiență mai bună utilizatorului și analizează performanța pentru a identifica ce funcționează și unde sunt necesare îmbunătățiri."
+        },
+        how: {
+          title: "Cum folosim modulele cookie?",
+          body: "Ca majoritatea serviciilor online, site-ul nostru utilizează module cookie de primă și terță parte în diverse scopuri. Modulele cookie de primă parte sunt în mare parte necesare pentru funcționarea corectă a site-ului și nu colectează date de identificare personală.<br><br>Modulele cookie ale terților folosite pe site-ul nostru ne ajută în principal să înțelegem performanța site-ului, să urmărim interacțiunile dvs. cu acesta, să asigurăm securitatea serviciilor, să afișăm reclame relevante și să vă îmbunătățim experiența generală și viteza vizitelor viitoare."
+        },
+        necessary: {
+          title: "Module cookie necesare",
+          description: "Modulele cookie necesare sunt obligatorii pentru a activa funcționalitățile de bază ale acestui site, cum ar fi autentificarea sigură sau ajustarea preferințelor de consimțământ. Aceste module cookie nu stochează date de identificare personală.",
+          tableHeaders: { cookie: "Cookie", duration: "Durată", description: "Descriere" },
+          cookies: [
+            { name: "currency", duration: "sesiune", desc: "Acest cookie este folosit pentru a stoca moneda preferată a utilizatorului." },
+            { name: "_sh_session_", duration: "sesiune", desc: "Descrierea nu este disponibilă momentan." },
+            { name: "loccur", duration: "sesiune", desc: "Descrierea nu este disponibilă momentan." },
+            { name: "country_code", duration: "sesiune", desc: "Descrierea nu este disponibilă." },
+            { name: "b_locale", duration: "sesiune", desc: "Descrierea nu este disponibilă momentan." },
+            { name: "checkout_currency", duration: "sesiune", desc: "Descrierea nu este disponibilă momentan." }
+          ]
+        },
+        functional: {
+          title: "Module cookie funcționale",
+          description: "Modulele cookie funcționale ajută la îndeplinirea anumitor funcționalități, cum ar fi partajarea conținutului site-ului pe rețele sociale, colectarea de feedback și alte funcții ale terților.",
+          tableHeaders: { cookie: "Cookie", duration: "Durată", description: "Descriere" },
+          cookies: [
+            { name: "locale", duration: "sesiune", desc: "Facebook setează acest cookie pentru a îmbunătăți experiența utilizatorului pe site și pentru a oferi reclame relevante atunci când se folosesc platformele Facebook." }
+          ]
+        },
+        analytics: {
+          title: "Module cookie de analiză",
+          description: "Modulele cookie de analiză sunt folosite pentru a înțelege modul în care vizitatorii interacționează cu site-ul. Acestea oferă informații despre indicatori cum ar fi numărul de vizitatori, rata de respingere, sursa traficului etc.",
+          tableHeaders: { cookie: "Cookie", duration: "Durată", description: "Descriere" },
+          cookies: [
+            { name: "_ga", duration: "1 an, 1 lună, 4 zile", desc: "Google Analytics setează acest cookie pentru a calcula datele despre vizitatori, sesiuni și campanii și pentru a urmări utilizarea site-ului în scopul raportului analitic. Cookie-ul stochează informațiile anonim și atribuie un număr generat aleatoriu pentru a recunoaște vizitatorii unici." },
+            { name: "_ga_*", duration: "1 an, 1 lună, 4 zile", desc: "Google Analytics setează acest cookie pentru a stoca și număra vizualizările paginilor." },
+            { name: "_gid", duration: "1 zi", desc: "Google Analytics setează acest cookie pentru a stoca informații despre modul în care vizitatorii folosesc site-ul, generând în același timp un raport analitic privind performanța site-ului. Unele dintre datele colectate includ numărul de vizitatori, sursa lor și paginile vizitate anonim." },
+            { name: "_gat_UA-*", duration: "1 minut", desc: "Google Analytics setează acest cookie pentru a urmări comportamentul utilizatorilor." },
+            { name: "pardot", duration: "trecută", desc: "Cookie-ul pardot este setat cât timp vizitatorul este autentificat ca utilizator Pardot. Indică o sesiune activă și nu este folosit pentru urmărire." }
+          ]
+        },
+        advertisement: {
+          title: "Module cookie de publicitate",
+          description: "Modulele cookie de publicitate sunt folosite pentru a oferi vizitatorilor reclame personalizate pe baza paginilor vizitate anterior și pentru a analiza eficiența campaniilor publicitare.",
+          tableHeaders: { cookie: "Cookie", duration: "Durată", description: "Descriere" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 luni", desc: "Google Tag Manager setează acest cookie pentru a testa eficiența publicității pe site-urile care folosesc serviciile sale." },
+            { name: "test_cookie", duration: "15 minute", desc: "doubleclick.net setează acest cookie pentru a determina dacă browserul utilizatorului acceptă module cookie." },
+            { name: "_fbp", duration: "3 luni", desc: "Facebook setează acest cookie pentru a stoca și urmări interacțiunile." },
+            { name: "IDE", duration: "1 an, 24 de zile", desc: "Modulele cookie Google DoubleClick IDE stochează informații despre modul în care utilizatorul folosește site-ul, pentru a-i prezenta reclame relevante în funcție de profilul utilizatorului." }
+          ]
+        },
+        manage: {
+          title: "Gestionarea preferințelor cookie",
+          consentTitle: "Preferințe de consimțământ",
+          consentText: "Vă puteți modifica preferințele cookie oricând făcând clic pe butonul „Preferințe de consimțământ” de mai sus. Acest lucru va permite redeschiderea bannerului de consimțământ pentru cookie și actualizarea preferințelor sau retragerea imediată a consimțământului.",
+          browserText: "În plus, diferite browsere oferă metode diferite pentru a bloca și șterge modulele cookie folosite de site-uri. Puteți modifica setările browserului dvs. pentru a bloca/șterge modulele cookie. Mai jos sunt linkuri către documentele de asistență despre cum să gestionați și să ștergeți modulele cookie din principalele browsere web.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Dacă folosiți alt browser, consultați documentele oficiale de asistență ale browserului dvs."
+          }
+        }
+      }
+    },
+
+    terms: {
+      title: "Termeni și condiții",
+      updatedDate: "06 oct. 2025",
+      quickLinks: {
+        title: "Linkuri rapide",
+        links: [
+          { id: "intro", text: "Domeniu de aplicare" },
+          { id: "booking", text: "Rezervări" },
+          { id: "payment", text: "Prețuri și plată" },
+          { id: "cancel", text: "Anulări" },
+          { id: "conduct", text: "Conduita oaspeților" },
+          { id: "force-majeure", text: "Forță majoră" },
+          { id: "liability", text: "Răspundere" },
+          { id: "intellectual-property", text: "Proprietate intelectuală" },
+          { id: "disputes", text: "Soluționarea litigiilor" },
+          { id: "changes", text: "Modificări" },
+          { id: "law", text: "Legea aplicabilă" },
+          { id: "contact", text: "Contact" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Aviz legal important:",
+          body: "Acești termeni reglementează utilizarea de către dvs. a serviciilor și site-ului nostru. Vă rugăm să îi citiți cu atenție înainte de a face o rezervare."
+        },
+        intro: {
+          title: "Domeniu de aplicare",
+          body: "Acești Termeni reglementează cazarea și serviciile aferente furnizate de DEVOCEAN Lodge (TERRAfrique LDA). Prin efectuarea unei rezervări, sunteți de acord cu acești Termeni."
+        },
+        booking: {
+          title: "Rezervări",
+          items: [
+            "Furnizați informații exacte despre oaspeți și datele de sosire/plecare",
+            "Solicitările speciale sunt sub rezerva disponibilității și confirmării"
+          ],
+          reservationReq: {
+            title: "Cerințe pentru rezervare",
+            body: "Pentru toate rezervările sunt necesare un act de identitate valabil și un card de credit. Vârsta minimă: 18 ani."
+          },
+          checkinCheckout: {
+            title: "Check-in / check-out",
+            body: "Check-in: 14:00 | Check-out: 11:00. Orele mai devreme sau mai târzii sunt sub rezerva disponibilității."
+          },
+          groupBookings: {
+            title: "Rezervări de grup",
+            body: "Pentru grupuri de 6 sau mai multe camere se aplică termeni speciali. Pentru tarifele și politicile de grup, vă rugăm să ne contactați."
+          }
+        },
+        payment: {
+          title: "Prețuri și plată",
+          items: [
+            "Prețurile listate sunt pe unitate/noapte, dacă nu se specifică altfel",
+            "Metodele pentru depozit și plata finală vor fi confirmate la rezervare"
+          ],
+          paymentInfo: {
+            title: "Informații despre plată",
+            body: "Toate prețurile sunt în USD, dacă nu se specifică altfel. Cursurile valutare sunt aproximative și pot fi modificate. Pentru garantarea rezervării este necesar un card de credit valabil. Pentru cheltuielile auxiliare se pot percepe taxe suplimentare."
+          }
+        },
+        cancel: {
+          title: "Anulări și neprezentări",
+          body: "Termenii de anulare sunt afișați la momentul rezervării și în confirmarea rezervării.",
+          cancellationCharges: {
+            title: "Taxe de anulare",
+            plans: [
+              {
+                planName: "Plan tarifar semi-flexibil:",
+                tiers: [
+                  { period: "30 de zile sau mai mult înainte de sosire", charge: "Rambursare integrală" },
+                  { period: "29 de zile sau mai puțin înainte de sosire", charge: "Taxă de anulare 50%" }
+                ]
+              },
+              {
+                planName: "Plan tarifar nerambursabil:",
+                tiers: [
+                  { period: "În 24 de ore de la rezervare", charge: "Rambursare integrală" },
+                  { period: "În toate celelalte cazuri", subtext: "Dreptul de a modifica o singură dată data de sosire, sub rezerva achitării diferenței de preț dacă noua dată are un tarif mai mare.", charge: "Fără rambursare", chargeClass: "no-refund-red" }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: "Politica privind neprezentarea",
+            body: "Oaspeții care nu sosesc la data de check-in programată fără notificare prealabilă sunt considerați neprezentați. Se va percepe suma totală a rezervării și rezervarea va fi anulată."
+          }
+        },
+        conduct: {
+          title: "Conduita oaspeților",
+          items: [
+            "Respectați regulile proprietății, personalul, ceilalți oaspeți și comunitatea locală",
+            "Nu sunt permise activități ilegale pe proprietate"
+          ],
+          zeroTolerance: {
+            title: "Politica de toleranță zero",
+            body: "Aplicăm o politică de toleranță zero față de comportamentul perturbator, activitățile ilegale sau deteriorarea proprietății. Încălcările pot duce la evacuarea imediată fără rambursare și pot avea consecințe juridice."
+          }
+        },
+        "force-majeure": {
+          title: "Forță majoră",
+          intro: "Nu suntem responsabili pentru neîndeplinirea obligațiilor din cauza unor circumstanțe aflate în afara controlului nostru rezonabil, inclusiv, dar fără a se limita la:",
+          items: [
+            "Calamități naturale și condiții meteorologice extreme",
+            "Restricții guvernamentale și interdicții de călătorie",
+            "Tulburări civile, război, terorism",
+            "Pandemii, epidemii, urgențe de sănătate",
+            "Întreruperi în lanțul de aprovizionare și defecțiuni ale infrastructurii"
+          ],
+          footer: "În astfel de cazuri, vom oferi date alternative sau vouchere atunci când este posibil. Rambursările vor fi efectuate în conformitate cu reglementările aplicabile și circumstanțele. Cu toate acestea, orice daune și costuri care sunt sau ar fi putut fi acoperite de pachetele de asigurare de călătorie și de anulare disponibile în general sunt excluse din răspunderea noastră."
+        },
+        liability: {
+          title: "Răspundere",
+          body: "În măsura permisă de lege, nu răspundem pentru pierderi indirecte sau imprevizibile."
+        },
+        "intellectual-property": {
+          title: "Proprietate intelectuală",
+          copyright: {
+            title: "Notă privind drepturile de autor",
+            body: "Tot conținutul de pe acest site, inclusiv textul, grafica, logo-urile și imaginile, este proprietatea DEVOCEAN Lodge și este protejat de legile internaționale privind drepturile de autor. Utilizarea, reproducerea sau distribuirea neautorizată sunt interzise. Numele DEVOCEAN Lodge, logo-ul și toate semnele aferente sunt mărci comerciale și nu pot fi folosite fără acordul scris."
+          }
+        },
+        disputes: {
+          title: "Soluționarea litigiilor",
+          process: {
+            title: "Procesul de soluționare",
+            body: "Ne propunem să soluționăm toate litigiile pe cale amiabilă. Vă rugăm să ne contactați mai întâi pentru a încerca o soluționare. Dacă litigiul nu se soluționează, va fi supus medierii înainte de începerea procedurilor judiciare.",
+            law: "Lege aplicabilă: Acești termeni și orice litigii sunt guvernați de legea Mozambicului.",
+            jurisdiction: "Jurisdicție: Instanțele din Maputo, Mozambic au competență exclusivă.",
+            mediation: "Mediere: Părțile se obligă să încerce medierea cu un mediator acreditat înainte de a iniția proceduri judiciare."
+          }
+        },
+        changes: {
+          title: "Modificări ale acestor Termeni",
+          body: "Putem actualiza periodic Termenii. Versiunea publicată la momentul șederii dvs. se aplică."
+        },
+        law: {
+          title: "Legea aplicabilă",
+          body: "Se aplică legea Mozambicului, sub rezerva normelor obligatorii locale privind protecția consumatorilor."
+        },
+        contact: {
+          title: "Contact",
+          body: 'Întrebări? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    gdpr: {
+      title: "Notă GDPR",
+      updatedDate: "06 oct. 2025",
+      quickLinks: {
+        title: "Linkuri rapide",
+        links: [
+          { id: "controller", text: "Operator de date" },
+          { id: "bases", text: "Temei juridic" },
+          { id: "rights", text: "Drepturile dvs." },
+          { id: "retention", text: "Păstrarea datelor" },
+          { id: "transfers", text: "Transferuri de date" },
+          { id: "complaints", text: "Plângeri" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Conform GDPR:",
+          body: "Ne angajăm să vă protejăm datele cu caracter personal și să vă respectăm drepturile de confidențialitate în conformitate cu Regulamentul general privind protecția datelor."
+        },
+        controller: {
+          title: "Operator de date",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), înregistrată la adresa Rua C, Parcela 12, Maputo 1118, Mozambic, acționează ca operator al datelor dvs. cu caracter personal colectate prin serviciile noastre."
+        },
+        bases: {
+          title: "Temeiuri juridice ale prelucrării",
+          body: "Prelucrăm datele dvs. cu caracter personal pe baza următoarelor temeiuri juridice prevăzute de GDPR:"
+        },
+        rights: {
+          title: "Drepturile dvs. în temeiul GDPR",
+          body: "În calitate de persoană vizată în temeiul GDPR, aveți următoarele drepturi cu privire la datele dvs. cu caracter personal:"
+        },
+        retention: {
+          title: "Păstrarea datelor",
+          periodsTitle: "Perioade de păstrare",
+          intro: "Păstrăm datele cu caracter personal numai atât timp cât este necesar pentru a îndeplini scopurile pentru care au fost colectate, inclusiv cerințele legale, contabile sau de raportare.",
+          items: [
+            "<strong>Date de rezervare:</strong> 7 ani pentru conformitatea fiscală și legală",
+            "<strong>Comunicări de asistență pentru clienți:</strong> 3 ani",
+            "<strong>Consimțăminte de marketing:</strong> Până la retragerea consimțământului",
+            "<strong>Analiză a site-ului web:</strong> 26 de luni",
+            "<strong>Tranzacții financiare:</strong> 10 ani în scopuri contabile"
+          ]
+        },
+        transfers: {
+          title: "Transferuri internaționale de date",
+          body: "Atunci când transferăm datele dvs. în afara Spațiului Economic European (SEE), asigurăm garanții corespunzătoare pentru a proteja informațiile dvs. Acestea pot include utilizarea Clauzelor Contractuale Standard aprobate de Comisia Europeană sau transferuri către țări cu o decizie de adecvare."
+        },
+        complaints: {
+          title: "Plângeri",
+          intro: "Dacă aveți nelămuriri cu privire la modul în care gestionăm datele dvs. cu caracter personal, aveți dreptul de a depune o plângere la autoritatea locală de protecție a datelor.",
+          footer: "Vă încurajăm să ne contactați mai întâi pentru a clarifica orice nelămuriri înainte de a contacta autoritatea de supraveghere."
+        },
+        dpo: {
+          title: "Contactați responsabilul nostru cu protecția datelor",
+          body: 'Pentru orice întrebări legate de GDPR sau pentru a vă exercita drepturile, vă rugăm să contactați responsabilul nostru cu protecția datelor la <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Vom răspunde solicitării dvs. în termen de 30 de zile, conform cerințelor GDPR.'
+        }
+      },
+      legalBases: {
+        contract: {
+          title: "Contract:",
+          body: "Prelucrare necesară pentru îndeplinirea contractelor noastre de rezervare și a serviciilor."
+        },
+        legal: {
+          title: "Obligație legală:",
+          body: "Prelucrare necesară pentru îndeplinirea cerințelor legale (de exemplu, reglementări fiscale)."
+        },
+        legitimate: {
+          title: "Interese legitime:",
+          body: "Prelucrare pentru interesele noastre legitime de afaceri, respectând drepturile dvs."
+        },
+        consent: {
+          title: "Consimțământ:",
+          body: "Prelucrare bazată pe consimțământul dvs. explicit pentru scopuri specifice."
+        }
+      },
+      rights: {
+        access: {
+          title: "Drept de acces",
+          body: "Puteți solicita copii ale datelor cu caracter personal pe care le deținem despre dvs."
+        },
+        rectification: {
+          title: "Drept de rectificare",
+          body: "Puteți solicita corectarea datelor inexacte sau incomplete."
+        },
+        erasure: {
+          title: "Drept la ștergere",
+          body: "Puteți solicita ștergerea datelor dvs. cu caracter personal în anumite condiții."
+        },
+        restrict: {
+          title: "Drept la restricționarea prelucrării",
+          body: "Puteți solicita restricționarea modului în care folosim datele dvs."
+        },
+        portability: {
+          title: "Drept la portabilitatea datelor",
+          body: "Puteți solicita transferul datelor dvs. către o altă organizație."
+        },
+        object: {
+          title: "Drept de opoziție",
+          body: "Vă puteți opune anumitor tipuri de prelucrare a datelor dvs."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Cerere de acces la date"
+        },
+        erasure: {
+          text: "Cerere de ștergere a datelor"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Transferuri internaționale de date:",
+          body: "Asigurăm garanții corespunzătoare pentru toate transferurile de date în afara SEE, inclusiv Clauzele Contractuale Standard și deciziile de adecvare."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Autoritate principală de supraveghere:",
+          name: "Autoritatea Portugheză pentru Protecția Datelor (CNPD)",
+          websiteLabel: "Site web:",
+          contactLabel: "Contact:"
+        }
+      }
+    },
+
+    cric: {
+      title: "CRIC — Companie și contact",
+      updatedDate: "27 sept. 2025",
+      quickLinks: {
+        title: "Linkuri rapide",
+        links: [
+          { id: "intro", text: "Prezentare generală" },
+          { id: "contact", text: "Contact" },
+          { id: "emergency", text: "Urgență" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Informații oficiale despre companie:",
+          body: "Detalii complete privind înregistrarea afacerii și informații de contact pentru DEVOCEAN Lodge."
+        },
+        intro: {
+          title: "Prezentare generală",
+          body: "Detalii complete privind înregistrarea afacerii și informații de contact pentru DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Contact",
+          body: "Pentru întrebări generale, rezervări și informații despre serviciile noastre, vă rugăm să folosiți datele de contact de mai jos."
+        },
+        emergency: {
+          title: "Contact de urgență",
+          body: "Pentru probleme urgente în afara orelor de program, vă rugăm să folosiți datele noastre de contact pentru urgențe."
+        }
+      },
+      labels: {
+        companyName: "Denumirea companiei",
+        registration: "Înregistrare comercială",
+        vat: "Cod fiscal (NUIT)",
+        license: "Licență de funcționare (Alvará)",
+        legalForm: "Formă juridică",
+        capital: "Capital",
+        address: "Sediu social",
+        email: "E-mail",
+        phone: "Telefon",
+        businessHours: "Program de lucru",
+        emergencyPhone: "Telefon de urgență",
+        emergencyEmail: "E-mail de urgență"
+      },
+      legalForm: "Societate cu răspundere limitată",
+      businessHours: "Luni – vineri: 08:00 – 18:00<br>Sâmbătă și duminică: 08:00 – 12:00<br>Recepție: 06:00 – 22:00 (pentru oaspeți)",
+      emergencyPhoneNote: "Pentru probleme urgente în afara orelor de program"
+    }
+  };
+
   // -------- GERMAN --------
   window.LEGAL_DICT["de-DE"] = {
     privacy: {
