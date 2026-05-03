@@ -8,7 +8,15 @@
   <title>Our Story | DEVOCEAN Lodge</title>
 
   <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
+    <!-- swallow-third-party-non-error: CookieYes/Trustindex sometimes throw non-Error values; ignore so dev overlays don't flag a fake crash -->
   <script>
+    (function(){
+      function nonErr(v){ return v==null || !(v instanceof Error); }
+      window.addEventListener('error', function(e){ if (e && nonErr(e.error)) { e.preventDefault(); } }, true);
+      window.addEventListener('unhandledrejection', function(e){ if (e && nonErr(e.reason)) { e.preventDefault(); } });
+    })();
+  </script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
 

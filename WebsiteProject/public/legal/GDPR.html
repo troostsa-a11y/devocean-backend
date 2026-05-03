@@ -21,7 +21,15 @@
   <link rel="dns-prefetch" href="//static.cloudflareinsights.com" />
   <link rel="dns-prefetch" href="//www.google-analytics.com" />
 
-  <!-- Consent defaults BEFORE GTM loads -->
+    <!-- swallow-third-party-non-error: CookieYes/Trustindex sometimes throw non-Error values; ignore so dev overlays don't flag a fake crash -->
+  <script>
+    (function(){
+      function nonErr(v){ return v==null || !(v instanceof Error); }
+      window.addEventListener('error', function(e){ if (e && nonErr(e.error)) { e.preventDefault(); } }, true);
+      window.addEventListener('unhandledrejection', function(e){ if (e && nonErr(e.reason)) { e.preventDefault(); } });
+    })();
+  </script>
+<!-- Consent defaults BEFORE GTM loads -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
