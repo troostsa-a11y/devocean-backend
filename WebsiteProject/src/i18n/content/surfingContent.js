@@ -1462,7 +1462,93 @@ export const SURFING_CONTENT = {
       { name: "Beach Breaks", level: "Iniciante a Intermediário", description: "Beach breaks suaves perfeitas para aprender - ondas mais suaves, fundo de areia" },
       { name: "Ponta Malongane (8km ao norte)", level: "Todos os níveis", description: "Spot alternativo com janela de ondulação diferente - menos lotado" }
     ]
-  }
+  },
+
+    ro: {
+      title: "Plăci de Surf și Lecții",
+      tagline: "Călărește iconicul point break din Ponta do Ouro",
+      overview: "Clasicul point break de dreapta din Ponta do Ouro poate oferi călătorii epice de 100-200m, și până la 1km în condiții perfecte - rivalizând cu Jeffrey's Bay. Apele calde, cristaline și valurile constante îl fac ideal pentru surferi de toate nivelurile, de la începătorii care învață pe valuri blânde până la experții care taie pe point.",
+      highlights: [
+        "Point break clasic de dreapta",
+        "Călătorii de 100-200m (până la 1km când e perfect!)",
+        "Apă caldă (22-28°C) - costum de neopren opțional",
+        "Valuri prietenoase pentru începători",
+        "Lineup-uri neaglomerate",
+        "Lecții de surf și închirieri de plăci disponibile",
+        "Delfinii surfează lângă tine",
+        "Apa cristalină a Oceanului Indian"
+      ],
+      pricingRange: "De la 20 US$ (lecție)",
+      pricingDetails: [
+        "Lecție de surf (2 ore): 20-40 US$",
+        "Închiriere placă (zi întreagă): 15-25 US$",
+        "Pachete pentru mai multe zile: tarife reduse",
+        "Echipament inclus în lecții",
+        "Plăci soft pentru începători",
+        "Shortboards/funboards pentru cei cu experiență"
+      ],
+      durationTypical: "2 ore (lecție) sau flexibil (închiriere)",
+      durationDetails: [
+        "Lecție pentru începători: 2 ore (teorie + practică)",
+        "Coaching privat: 1-2 ore",
+        "Închiriere placă: jumătate de zi sau zi întreagă",
+        "Cele mai bune valuri: dimineața devreme (6-9)",
+        "Sesiuni după-amiază: 15-18"
+      ],
+      included: [
+        "Placă de surf (lecție sau închiriere)",
+        "Costum de neopren/lycra (dacă este nevoie)",
+        "Instrucție individuală sau în grup mic",
+        "Briefing de siguranță și conștientizare oceanică",
+        "Ceară și leash",
+        "Asistență la pregătirea pe plajă",
+        "Fotografii din sesiunea ta (unii operatori)"
+      ],
+      requirementsLevel: "Toate nivelurile bine-venite",
+      requirementsDetails: [
+        "Începători: nu este nevoie de experiență",
+        "Intermediar/avansat: experiența pe point break ajută",
+        "Capacitate de înot necesară",
+        "Toate vârstele (copii până la adulți)",
+        "Fitness: moderat (vâslitul poate fi obositor)",
+        "**Important:** curenți puternici de-a lungul point-ului - ai grijă!"
+      ],
+      bestTimePeak: "Hulă de sud cu vânt de vest",
+      bestTimeDetails: [
+        "**Cea mai bună hulă:** hulă de sud",
+        "**Cel mai bun vânt:** vânt de vest (offshore)",
+        "**Cea mai bună maree:** de-o parte și de alta a refluxului",
+        "**Consistență:** bună, dar capricioasă - are nevoie de condițiile potrivite",
+        "**Sezoane:** surfabil tot anul",
+        "**Temperatura apei:** 22-28°C (shorty sau pantaloni de surf)",
+        "**Urmărește hulele de pe Coasta de Nord a Africii de Sud pentru cele mai bune sesiuni**"
+      ],
+      tips: [
+        "Verifică prognoza valurilor înainte de a rezerva (Surfline, Magicseaweed)",
+        "Point break-ul poate rivaliza cu J-Bay, dar are nevoie de condiții perfecte",
+        "Adu plăci de rezervă și quilluri/leash-uri suplimentare - magazine limitate",
+        "Respectă curenții puternici - fii răbdător cu mareele",
+        "Longboards soft-top sunt ideale pentru începători pe valurile de plajă",
+        "Delfinii surfează adesea alături - experiență magică!",
+        "Apa este caldă, dar adu un shorty pentru protecție împotriva vântului",
+        "Întreabă localnicii despre hulă și condițiile actuale",
+        "Lineup-uri neaglomerate = mai multe valuri pentru tine!",
+        "Combină cu scufundări sau pescuit când valurile sunt plate"
+      ],
+      operators: [
+        {
+          name: "Brasukas Bar & Surf",
+          website: "",
+          email: "brasukas.geral@gmail.com",
+          specialty: "Lecții de surf, închirieri de plăci și bar la malul plajei"
+        }
+      ],
+      surfSpots: [
+        { name: "Point-ul Ponta do Ouro", level: "Intermediar până la avansat", description: "Principalul point break de dreapta - fundul de stâncă și nisip, călătorii de 100-200m (până la 1km când e perfect!)" },
+        { name: "Valuri de plajă", level: "Începător până la intermediar", description: "Valuri de plajă blânde, perfecte pentru învățare - valuri mai moi, fund nisipos" },
+        { name: "Ponta Malongane (8 km nord)", level: "Toate nivelurile", description: "Loc alternativ cu o fereastră diferită de hulă - mai puțin aglomerat" }
+      ]
+    }
 };
 
 export function getSurfingContent(lang) {

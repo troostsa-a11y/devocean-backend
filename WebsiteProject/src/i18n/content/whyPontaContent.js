@@ -766,7 +766,58 @@ export const WHY_PONTA_CONTENT = {
     ctaBookNow: 'Weka Nafasi Sasa',
     backToHome: 'Rudi Nyumbani',
     locationLabel: 'Kusini mwa Msumbiji'
-  }
+  },
+  ro: {
+      pageTitle: 'De ce Ponta do Ouro? | DEVOCEAN Lodge - Mozambic',
+      metaDescription: 'Descoperă de ce Ponta do Ouro este paradisul mozambican suprem. Plaje neatinse, scufundări de clasă mondială, rezervații naturale și cultură locală autentică te așteaptă la DEVOCEAN Lodge.',
+      ogTitle: 'De ce Ponta do Ouro? | DEVOCEAN Lodge',
+      ogDescription: 'Descoperă de ce Ponta do Ouro este paradisul mozambican suprem. Plaje neatinse, scufundări de clasă mondială, rezervații naturale și cultură locală autentică te așteaptă.',
+      heroSubtitle: 'O bijuterie ascunsă unde plajele neatinse întâlnesc viața marină vibrantă și aventurile fără sfârșit',
+      heroTitle: 'De ce Ponta do Ouro?',
+      badgeLabel: 'Poarta către Parcul Național Maputo',
+      imageAlt: 'Coasta din Ponta do Ouro',
+      introText: 'Bun venit în Ponta do Ouro, poarta către primul sit natural Patrimoniu Mondial UNESCO al Mozambicului - Parcul Național Maputo. Acest paradis costier oferă o combinație imbatabilă de relaxare, ecoturism și imersiune culturală. Fie că ești în căutarea unor scufundări palpitante, a unor grădini liniștite ca cele de la DEVOCEAN Lodge, sau a unor excursii de o zi către minuni din apropiere, iată de ce această destinație ar trebui să fie pe lista ta de călătorii.',
+      sections: [
+        {
+          id: 'beaches',
+          title: 'Plaje Spectaculoase și Frumusețe Costieră',
+          content: 'Ponta do Ouro se mândrește cu plaje pitorești înconjurate de casuarine, dune de nisip și ape cristaline - perfecte pentru relaxare sau plimbări pe plajă. Plaja principală este neatinsă, liniștită și incredibil de frumoasă, oferind o adevărată evadare din oraș. Spre deosebire de locurile mai aglomerate, frumusețea brută și autentică din Ponta te invită să încetinești și să te conectezi cu natura.',
+          highlight: 'O adevărată evadare din oraș'
+        },
+        {
+          id: 'marine',
+          title: 'Aventuri Marine de Clasă Mondială',
+          content: 'Scufundă-te în recife pline de viață cu peste 1.200 de specii de pești, rechini-tauri, rechini-ciocan, mante, țestoase și delfini rezidenți. Din iunie până în noiembrie, observă balenele cu cocoașă migratoare și bucură-te de înoturi etice cu delfini sălbatici. Protejate de Parcul Național UNESCO, aceste experiențe sunt sustenabile și mai puțin aglomerate decât alte locuri.',
+          extra: 'Explorează lumea subacvatică cu locuri de la 10m la Crèche până la 47m la Atlantis, sau încearcă snorkeling, surf și pescuit pentru baracuda și kingfish.',
+          highlight: 'Peste 1.200 de specii de pești'
+        },
+        {
+          id: 'wildlife',
+          title: 'Aproape de Rezervații Iconice de Faună',
+          content: 'Ponta do Ouro este baza perfectă pentru evadări „din savană pe plajă", cu acces ușor la rezervații sud-africane precum Parcul Național Kruger (4-5 ore), Parcul Elefanților Tembe (2 ore), Hluhluwe-iMfolozi (3-4 ore) și Parcul Zonelor Umede iSimangaliso (UNESCO, 3 ore). Vezi Big Five, elefanți cu fildeși mari și peste 526 de specii de păsări.',
+          extra: 'La nivel local, Parcul Național Maputo - la doar 30 km distanță, adesea descris ca „Acolo unde Okavango întâlnește Oceanul Indian" - prezintă un mozaic spectaculos de savane, dune și mangrove. Există șanse bune de a observa turme mari de elefanți, hipopotami, girafe, zebre, gnu albastru și diverse antilope precum niala, kudu și duiker roșu.',
+          highlight: 'Evadări din savană pe plajă'
+        },
+        {
+          id: 'culture',
+          title: 'Călătorii Culturale și Pitorești',
+          content: 'Aventurează-te în eSwatini (3-4 ore) pentru drumeții în Rezervația Naturală Mantenga și spectacole culturale tradiționale Swazi (dansuri Sibhaca, patrimoniu imaterial UNESCO). Explorează Ruta Panoramică (5-6 ore) pentru Canionul Râului Blyde și cascade, sau vizitează sanctuarul Chimp Eden al lui Jane Goodall (5 ore) pentru întâlniri etice cu fauna.',
+          highlight: 'Patrimoniu imaterial UNESCO'
+        },
+        {
+          id: 'charm',
+          title: 'Farmec Mozambican Autentic',
+          content: 'Trăiește aventuri oceanice brute, cultură locală bogată și baruri pitorești într-un cadru necomercializat. Ponta do Ouro înseamnă autenticitate - de la piețe vibrante la muzică plină de viață - făcând-o ideală pentru evadări semnificative.',
+          highlight: 'Autenticitate necomercializată'
+        }
+      ],
+      ctaTitle: 'Gata să Trăiești Paradisul?',
+      ctaDescription: 'Stai la DEVOCEAN Lodge și descoperă de ce Ponta do Ouro este destinația ta mozambicană supremă. Confort ecologic în mijlocul acestor minuni te așteaptă.',
+      ctaAccommodations: 'Vezi Cazările Noastre',
+      ctaBookNow: 'Rezervă-ți Sejurul',
+      backToHome: 'Înapoi la Acasă',
+      locationLabel: 'Sudul Mozambicului'
+    }
 };
 
 export default WHY_PONTA_CONTENT;

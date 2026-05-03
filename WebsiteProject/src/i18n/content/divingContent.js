@@ -1870,7 +1870,117 @@ export const DIVING_CONTENT = {
       { name: "Atlantis", depth: "35-47m", highlights: "Mergulho profundo - raias-águia, tubarões de recife, dançarinas espanholas" },
       { name: "Doodles", depth: "14-18m", highlights: "Perfeito para todos os níveis - raias, tartarugas, moreias, polvos" }
     ]
-  }
+  },
+
+    ro: {
+      title: "Scufundări Scuba",
+      tagline: "Explorează recife neatinse cu rechini-tauri, mante și rechini-balenă",
+      overview: "Ponta do Ouro oferă scufundări scuba de clasă mondială, cu peste 20 de locuri de scufundare, de la recife puțin adânci până la pinacle adânci. Apele cristaline ale Canalului Mozambic oferă vizibilitate excepțională și întâlniri cu o diversitate incredibilă de viață marină, inclusiv 19 specii de rechini.",
+      highlights: [
+        "Peste 20 de locuri de scufundare, de la 8m la 48m",
+        "Rechini-tauri, rechini-tigru și rechini-ciocan",
+        "Rechini-balenă (octombrie-martie)",
+        "Balene cu cocoașă (iulie-noiembrie)",
+        "Mante, țestoase și delfini",
+        "Peste 180 de specii de nudibranhi",
+        "Recife de coral neatinse",
+        "Centre PADI profesionale"
+      ],
+      pricingRange: "De la 40 US$ pe scufundare",
+      pricingDetails: [
+        "O scufundare: 40-50 US$",
+        "Pachet două scufundări: 75-90 US$",
+        "PADI Open Water: 350-400 US$",
+        "Închiriere echipament inclusă",
+        "Toate licențele și permisele incluse"
+      ],
+      durationTypical: "Excursii de jumătate de zi sau o zi întreagă",
+      durationDetails: [
+        "Scufundări dimineața: 2 scufundări (3-4 ore)",
+        "Zi întreagă: 3 scufundări (6-8 ore)",
+        "Lansare de pe plajă (prin valuri - aventură!)",
+        "Locuri la 1-12 km de țărm"
+      ],
+      included: [
+        "Tot echipamentul de scufundare (BCD, regulator, costum)",
+        "Transport cu barca până la locuri",
+        "Dive master/instructor PADI profesionist",
+        "Taxe parc marin",
+        "Gustări și băuturi după scufundare",
+        "Computer de scufundare și echipament de siguranță"
+      ],
+      requirementsLevel: "Începător până la avansat",
+      requirementsDetails: [
+        "Locuri pentru începători: Crèche, Doodles, Playground (10-18m)",
+        "Locuri avansate: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+        "Certificare PADI necesară (sau urmează cursul Open Water)",
+        "Chestionar medical obligatoriu",
+        "Capacitate bună de înot",
+        "Vârsta minimă: 10 ani (Junior Open Water)"
+      ],
+      bestTimePeak: "Octombrie - Aprilie (vară)",
+      bestTimeDetails: [
+        "**Rechini-tauri și tigru:** noiembrie-aprilie (apă 26-29°C)",
+        "**Rechini-ciocan:** aprilie-octombrie (vizibilitate mai bună)",
+        "**Rechini-balenă:** octombrie-martie",
+        "**Balene cu cocoașă:** iulie-noiembrie",
+        "**Cea mai bună vizibilitate:** mai-august (20-30m)",
+        "**Cea mai caldă apă:** decembrie-februarie (27-29°C)"
+      ],
+      tips: [
+        "Rezervă din timp în sezonul de vârf (decembrie-ianuarie)",
+        "Adu-ți cardul de certificare",
+        "Ia în calcul un costum de neopren (3mm recomandat)",
+        "Lansarea prin valuri poate fi palpitantă - fii pregătit să te uzi!",
+        "Majoritatea operatorilor oferă închiriere de echipament",
+        "Pachetele cu mai multe scufundări oferă cel mai bun raport calitate-preț"
+      ],
+      operators: [
+        {
+          name: "Back to Basics Adventures",
+          website: "http://www.backtobasicsadventures.com/",
+          email: "backtobasicsadventures@gmail.com",
+          specialty: "Specialiști în scufundări cu rechini, axați pe cercetare"
+        },
+        {
+          name: "Gozo Azul Diving",
+          website: "https://gozo-azul.co.za/",
+          email: "natalie@gozo-azul.co.za",
+          specialty: "Centru PADI 5 stele, specialiști în scufundări cu rechini"
+        },
+        {
+          name: "Under Water Explorer",
+          website: "",
+          email: "herb@thewhaler.co.za",
+          specialty: "Centru de scufundări profesionist"
+        },
+        {
+          name: "Blowing Bubbles Diving",
+          website: "",
+          email: "info@blowingbubbles.co.za",
+          specialty: "Centru de scufundări profesionist"
+        },
+        {
+          name: "Shark Diving Mozambique",
+          website: "",
+          email: "info@sharkdivingmozambique.com",
+          specialty: "Specialiști în scufundări cu rechini"
+        },
+        {
+          name: "Oceana Dive Center",
+          website: "",
+          email: "oceanamozdiving@gmail.com",
+          specialty: "Centru de scufundări profesionist"
+        }
+      ],
+      topSites: [
+        { name: "Pinnacles", depth: "28-40m", highlights: "Scufundarea principală cu rechini - rechini-tauri, rechini-tigru, rechini-ciocan, mante" },
+        { name: "Bass City", depth: "20-25m", highlights: "Bibani uriași, peștișori-leu, rechini-zebră, stații de curățare" },
+        { name: "Wayne's World", depth: "~20m", highlights: "Paradisul macro - căluți de mare, pești-broască, pești-fantomă" },
+        { name: "Atlantis", depth: "35-47m", highlights: "Scufundare adâncă - pisici-de-mare, rechini de recif, dansatoare spaniole" },
+        { name: "Doodles", depth: "14-18m", highlights: "Perfect pentru toate nivelurile - pisici-de-mare, țestoase, murene, caracatițe" }
+      ]
+    }
 };
 
 export function getDivingContent(lang) {

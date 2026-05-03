@@ -2479,7 +2479,106 @@ export const DOLPHINS_CONTENT = {
   'zh-CN': null, // Use base 'zh' via helper
   'ru-RU': null, // Use base 'ru' via helper
   'zu-ZA': null, // Use base 'zu' via helper
-  'sw-KE': null  // Use base 'sw' via helper
+  'sw-KE': null, // Use base 'sw' via helper
+
+  ro: {
+      title: "Înot cu Delfini",
+      tagline: "Întâlniri etice cu delfini sălbatici în ape cristaline",
+      overview: "Trăiește întâlniri magice cu delfini bottlenose indo-pacifici sălbatici în Rezervația Marină Parțială Ponta do Ouro. Ambii operatori autorizați respectă reguli etice stricte, asigurând interacțiuni pasive, neinvazive, în care delfinii aleg să se apropie în condițiile lor.",
+      highlights: [
+        "Peste 200 de delfini bottlenose rezidenți",
+        "Întâlniri etice, bazate pe cercetare",
+        "FĂRĂ atingere sau urmărire - sălbatici și liberi",
+        "Snorkeling peste recife neatinse",
+        "Observări sezoniere de rechini-balenă",
+        "Balene cu cocoașă (iulie-noiembrie)",
+        "Grupuri mici (maximum 12 persoane)",
+        "Accent educațional pe conservare"
+      ],
+      pricingRange: "45-50 US$ de persoană",
+      pricingDetails: [
+        "Observare delfini (doar din barcă): 45 US$",
+        "Excursie de înot cu delfinii: 50 US$",
+        "Pachete pentru mai multe zile: tarife reduse",
+        "Echipament de snorkeling inclus",
+        "Taxă de conservare inclusă"
+      ],
+      durationTypical: "2-3 ore",
+      durationDetails: [
+        "Plecare dimineața devreme (cele mai bune condiții)",
+        "Snorkeling peste recife puțin adânci",
+        "Facilitare cu delfinii în apă",
+        "Întâlniri cu rechini-balenă (sezonier)",
+        "Briefing educațional înainte de plecare"
+      ],
+      included: [
+        "Mască, labe și tub de snorkeling",
+        "Costum de neopren (dacă este nevoie)",
+        "Facilitator/ghid cu experiență",
+        "Prezentare educațională înainte de plecare",
+        "Fotografii/videoclipuri din întâlnirea ta",
+        "Gustări ușoare",
+        "Taxe parc marin"
+      ],
+      requirementsLevel: "Toate vârstele și nivelurile",
+      requirementsDetails: [
+        "Necesită capacitate de înot",
+        "Confortabil cu snorkelingul",
+        "Vârste: 5 până la 80+ (în funcție de vreme)",
+        "Sarcină: sigur până în luna a 6-a",
+        "Nu este necesară certificare de scufundări",
+        "Minimum 6 persoane pe excursie (4 pentru retreaturi)"
+      ],
+      bestTimePeak: "Ianuarie - Mai",
+      bestTimeDetails: [
+        "**Sezon de vârf:** ianuarie-mai (cele mai bune întâlniri)",
+        "**Delfini:** rezidenți tot anul",
+        "**Balene cu cocoașă:** iulie-noiembrie",
+        "**Rechini-balenă:** octombrie-martie",
+        "**Mări cele mai calme:** dimineața devreme",
+        "**Temperatura apei:** 22-28°C tot anul"
+      ],
+      tips: [
+        "Rezervă cu 2-3 zile înainte",
+        "Adu cremă de protecție solară sigură pentru recif",
+        "Cameră subacvatică recomandată",
+        "Urmează cu atenție instrucțiunile facilitatorului",
+        "Stai calm și liniștit în apă",
+        "Lasă delfinii să se apropie de tine în mod natural"
+      ],
+      ethicalPractices: [
+        {
+          title: "Fără atingere sau urmărire",
+          description: "Delfinii nu sunt niciodată atinși, urmăriți sau hărțuiți. Toate întâlnirile au loc în condițiile delfinilor."
+        },
+        {
+          title: "Abordare bazată pe cercetare",
+          description: "Ambii operatori colaborează cu biologi marini și contribuie la cercetarea și conservarea continuă a delfinilor."
+        },
+        {
+          title: "Doar grupuri mici",
+          description: "Maximum 12 persoane pe excursie asigură deranj minim și întâlniri mai bune."
+        },
+        {
+          title: "Educația pe primul loc",
+          description: "Briefingurile dinaintea plecării învață toți participanții despre comportamentul potrivit și biologia delfinilor."
+        }
+      ],
+      operators: [
+        {
+          name: "Dolphin Encountours Research Center",
+          website: "https://www.dolphinencountours.org/",
+          email: "connect@dolphinencountours.org",
+          specialty: "Întâlniri cu delfinii conduse de biologi marini, axate pe conservare"
+        },
+        {
+          name: "The Dolphin Centre",
+          website: "https://thedolphincentre.com/",
+          email: "info@thedolphincentre.com",
+          specialty: "Înot cu delfinii bazat pe cercetare, cu accent educațional"
+        }
+      ]
+    }
 };
 
 // Helper function to get dolphins content by language

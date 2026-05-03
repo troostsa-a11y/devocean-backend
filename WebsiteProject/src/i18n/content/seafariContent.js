@@ -1632,7 +1632,103 @@ export const SEAFARI_CONTENT = {
       { name: "Batida de Nadadeira", description: "Batidas da nadadeira peitoral - comportamento social e excitação" },
       { name: "Comportamento de Aproximação", description: "Baleias frequentemente se aproximam dos barcos - curiosas e amigáveis" }
     ]
-  }
+  },
+
+    ro: {
+      title: "Safariuri Oceanice",
+      tagline: "Observare de balene și întâlniri cu viața marină",
+      overview: "Pornește în safariuri oceanice palpitante pentru a vedea balenele cu cocoașă migrând prin apele mozambicane (iulie-noiembrie). Aceste aventuri cu barca oferă și întâlniri cu delfinii pe tot parcursul anului, observări sezoniere de rechini-balenă și snorkeling peste recife neatinse pline de viață marină.",
+      highlights: [
+        "30.000 de balene cu cocoașă (iulie-noiembrie)",
+        "Sărituri, lovituri de coadă și spy-hopping",
+        "Întâlniri cu delfinii tot anul",
+        "Rechini-balenă (octombrie-martie)",
+        "Mante și țestoase marine",
+        "Snorkeling pe recife neatinse",
+        "Tururi conduse de biologi marini",
+        "Accent pe cercetare și conservare"
+      ],
+      pricingRange: "40-45 US$ de persoană",
+      pricingDetails: [
+        "Doar observare de balene: 40 US$",
+        "Combinat delfini + balene: 45 US$",
+        "Tur privat de o zi din Maputo: 179 US$",
+        "Copii sub 12 ani: tarife reduse",
+        "Echipament și gustări incluse"
+      ],
+      durationTypical: "2-3 ore",
+      durationDetails: [
+        "Excursii de jumătate de zi: 2-3 ore",
+        "Tururi de o zi: 6-8 ore (din Maputo)",
+        "Plecări dimineața (cele mai bune condiții)",
+        "Include timp pentru snorkeling",
+        "Flexibil în funcție de activitatea balenelor"
+      ],
+      included: [
+        "Transport cu barca cu skipper experimentat",
+        "Echipament de snorkeling (mască, labe, tub)",
+        "Ghid biolog marin (majoritatea operatorilor)",
+        "Gustări și băuturi",
+        "Taxe parc marin",
+        "Fotografii/videoclipuri (unii operatori)",
+        "Echipament de siguranță și veste de salvare"
+      ],
+      requirementsLevel: "Toate vârstele",
+      requirementsDetails: [
+        "Nu sunt necesare abilități speciale pentru observarea balenelor",
+        "Capacitate de înot necesară pentru snorkeling",
+        "Vârste: potrivit pentru familii (copii mici până la vârstnici)",
+        "Dependent de vreme - marea trebuie să fie calmă",
+        "Tururile pot fi reprogramate dacă condițiile sunt nesigure",
+        "Jachetă caldă recomandată (iulie-septembrie)"
+      ],
+      bestTimePeak: "Iulie - Octombrie (sezonul balenelor)",
+      bestTimeDetails: [
+        "**Balene cu cocoașă:** iulie-noiembrie (vârf: iulie-oct)",
+        "**Delfini:** tot anul (peste 200 rezidenți)",
+        "**Rechini-balenă:** octombrie-martie",
+        "**Mante:** decembrie-mai",
+        "**Țestoase marine:** octombrie-martie (cuibărit)",
+        "**Mări cele mai calme:** lunile de iarnă (iunie-septembrie)"
+      ],
+      tips: [
+        "Rezervă în sezonul balenelor (iul-noi) pentru cele mai bune șanse",
+        "Adu o jachetă caldă - briza oceanului poate fi rece",
+        "Geantă impermeabilă pentru cameră esențială",
+        "Medicamente pentru rău de mare dacă ești predispus",
+        "Binoclurile îmbunătățesc experiența observării balenelor",
+        "Operatorii etici respectă regulile fără atingere",
+        "Observările nu sunt garantate - sunt animale sălbatice",
+        "Combină cu snorkeling pentru o experiență marină completă"
+      ],
+      operators: [
+        {
+          name: "The Dolphin Centre",
+          website: "https://thedolphincentre.com/",
+          email: "info@thedolphincentre.com",
+          specialty: "Experți în observarea balenelor, accent pe iulie-noiembrie"
+        },
+        {
+          name: "Dolphin Encountours",
+          website: "https://www.dolphinencountours.org/",
+          email: "info@dolphinencountours.org",
+          specialty: "Tururi bazate pe cercetare, colectare de date pentru conservare"
+        },
+        {
+          name: "Gozo Azul",
+          website: "https://gozo-azul.co.za/",
+          email: "info@gozo-azul.co.za",
+          specialty: "Safariuri oceanice, observare de balene și întâlniri marine"
+        }
+      ],
+      whaleBehaviors: [
+        { name: "Săritura completă (Breaching)", description: "Lansări complete ale corpului din apă - demonstrații spectaculoase de putere" },
+        { name: "Lovirea cozii (Lob-Tailing)", description: "Lovituri repetate ale cozii pe suprafața apei - comunicare și joc" },
+        { name: "Spy-Hopping", description: "Ridicare verticală pentru a privi deasupra apei - balene curioase care verifică bărcile" },
+        { name: "Lovirea înotătoarei (Flipper Slapping)", description: "Lovituri ale înotătoarei pectorale - comportament social și entuziasm" },
+        { name: "Comportament de apropiere", description: "Balenele se apropie adesea de bărci - curioase și prietenoase" }
+      ]
+    }
 };
 
 export function getSeafariContent(lang) {

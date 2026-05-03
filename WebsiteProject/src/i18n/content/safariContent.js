@@ -1666,7 +1666,105 @@ export const SAFARI_CONTENT = {
       downloadText: "Descarregar Brochura PDF",
       fileSize: "10.1 MB"
     }
-  }
+  },
+
+    ro: {
+      title: "Safari de Vânătoare Foto",
+      tagline: "Aventuri în savană în Rezervația Specială Maputo",
+      overview: "Descoperă fauna sălbatică africană la doar o scurtă distanță de Ponta do Ouro. Parcul Național Maputo (fosta Rezervație Specială Maputo) oferă observare clasică a animalelor sălbatice cu 450-500 de elefanți de coastă, girafe, zebre, hipopotami, crocodili și diverse specii de antilope pe 1.718 km² de sălbăticie protejată - sit UNESCO din 2025.",
+      highlights: [
+        "450-500 de elefanți de coastă",
+        "Girafe, zebre și antilope",
+        "Hipopotami și crocodili în zonele umede",
+        "Leoparzi, gheparzi și hiene pătate",
+        "Peste 300 de specii de păsări, inclusiv flamingo",
+        "Game drives 4x4 cu ghizi experți",
+        "Sit UNESCO Patrimoniu Mondial (2025)",
+        "Combinație plajă și savană posibilă"
+      ],
+      pricingRange: "De la 95 US$ de persoană",
+      pricingDetails: [
+        "Safari de o zi: 95-120 US$ de persoană",
+        "Zi întreagă cu plaja Ponta do Ouro: 100-130 US$",
+        "Safari cu camping 2-3 zile: de la 200 US$",
+        "Tururi private: prețuri personalizate",
+        "Vehicul 4x4, ghid și taxe parc incluse"
+      ],
+      durationTypical: "5-8 ore (excursie de o zi)",
+      durationDetails: [
+        "Game drive jumătate de zi: 3-4 ore",
+        "Safari de o zi: 5-6 ore în parc + transport",
+        "Camping mai multe zile: 2-3 zile",
+        "Plecare din Ponta do Ouro: dimineața devreme (6-7)",
+        "Întoarcere: după-amiaza târziu (16-17)"
+      ],
+      included: [
+        "Vehicul 4x4 pentru game drive",
+        "Ghid/șofer profesionist",
+        "Taxe de intrare în parcul marin",
+        "Binocluri pentru observarea faunei",
+        "Apă îmbuteliată și gustări",
+        "Preluare de la hotel din Ponta do Ouro",
+        "Încărcare USB în vehicul (majoritatea operatorilor)"
+      ],
+      requirementsLevel: "Toate vârstele și nivelurile de fitness",
+      requirementsDetails: [
+        "Nu este necesară condiție fizică specială",
+        "Potrivit pentru familii cu copii",
+        "Prietenos pentru vârstnici (observare din vehicul)",
+        "Vehicul 4x4 obligatoriu (drumuri cu nisip gros)",
+        "Haine confortabile de safari recomandate",
+        "Protecție solară esențială"
+      ],
+      bestTimePeak: "Iulie - Octombrie (sezonul uscat)",
+      bestTimeDetails: [
+        "**Observare faună:** iulie-octombrie (animale la sursele de apă)",
+        "**Observare păsări:** octombrie-martie (păsări migratoare prezente)",
+        "**Observare elefanți:** tot anul (populație 450-500)",
+        "**De evitat:** decembrie-februarie (cald, umed, vegetație densă)",
+        "**Temperatură:** mai răcoros iarna (iulie-sept: 18-25°C)",
+        "**Starea drumurilor:** cea mai bună în sezonul uscat"
+      ],
+      tips: [
+        "Rezervă din timp în sezonul de vârf (iulie-octombrie)",
+        "Game drives dimineața oferă cea mai bună activitate a faunei",
+        "Adu o cameră cu lentilă cu zoom pentru fotografii",
+        "Poartă culori neutre (kaki, bej, măsliniu) - nu culori vii",
+        "Binoclurile sunt furnizate, dar adu-le pe ale tale dacă le ai",
+        "Pălărie de soare, cremă solară și spray anti-insecte esențiale",
+        "Combină cu timp pe plajă la Ponta do Ouro",
+        "Întreabă despre camping de mai multe zile pentru o experiență imersivă"
+      ],
+      operators: [
+        {
+          name: "Maputo National Park",
+          website: "",
+          email: "reservas@parquemaputo.gov.mz",
+          specialty: "Rezervări oficiale ale parcului și game drives ghidate"
+        },
+        {
+          name: "Transportes Mulungo",
+          website: "",
+          email: "transportesmulungo@gmail.com",
+          specialty: "Transport safari și tururi ghidate"
+        }
+      ],
+      wildlife: [
+        { species: "Elefanți", details: "450-500 de elefanți de coastă - principala atracție, observați tot anul" },
+        { species: "Girafe", details: "Observate frecvent în toată rezervația" },
+        { species: "Zebre", details: "Observări frecvente, adesea în turme" },
+        { species: "Hipopotami și crocodili", details: "În jurul lacurilor, zonelor umede și Golfului Maputo" },
+        { species: "Antilope", details: "Reedbuck, impala, niala, eland, kudu, antilopa de apă, duiker roșu" },
+        { species: "Prădători", details: "Leopard, ghepard, hienă pătată (reintrodusă 2023-24)" },
+        { species: "Păsări", details: "Peste 300 de specii - flamingo, păsări de țărm, răpitoare" }
+      ],
+      brochure: {
+        title: "Broșura oficială a parcului",
+        description: "Descarcă broșura oficială a Parcului Național Maputo cu hărți detaliate, taxe de intrare și informații pentru vizitatori.",
+        downloadText: "Descarcă broșura PDF",
+        fileSize: "7,3 MB"
+      }
+    }
 };
 
 export function getSafariContent(lang) {

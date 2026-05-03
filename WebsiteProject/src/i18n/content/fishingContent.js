@@ -1598,7 +1598,101 @@ export const FISHING_CONTENT = {
       { name: "Dourado (Mahi-Mahi)", season: "Novembro-Março", technique: "Arrasto perto de detritos flutuantes" },
       { name: "Xaréu-Gigante", season: "O ano todo", technique: "Popping, jigging perto de recifes" }
     ]
-  }
+  },
+
+    ro: {
+      title: "Pescuit pe Plajă și în Larg",
+      tagline: "Pescuiește kingfish sau urmărește marlini în Canalul Mozambic",
+      overview: "Ponta do Ouro oferă pescuit excepțional atât de pe plajă, cât și în larg. Apele calde ale Oceanului Indian și adâncimile Canalului Mozambic oferă oportunități pasionante pentru marlin, peștele-spadă, wahoo, ton galben și macrou-rege. Pescarii de pe plajă pot prinde kingfish, baracuda și pampano de pe țărmuri neatinse.",
+      highlights: [
+        "Marlin negru (octombrie-ianuarie)",
+        "Peștele-spadă (iunie-septembrie)",
+        "Ton galben și wahoo",
+        "Macrou-rege (Couta)",
+        "Pescuit de pe țărm pentru kingfish și baracuda",
+        "Apele calde și clare ale Oceanului Indian",
+        "Charter-uri cu lansare de pe plajă (lansare uscată)",
+        "Skipperi locali experți cu peste 20 de ani"
+      ],
+      pricingRange: "De la 550 US$ (charter)",
+      pricingDetails: [
+        "Charter de 5 ore: 550-650 US$",
+        "Charter de 8 ore: 850-950 US$",
+        "Zi întreagă în larg: peste 1.000 US$",
+        "Pescuit pe plajă: gratuit (adu-ți propriul echipament)",
+        "Pescuit ghidat pe țărm: 50-100 US$",
+        "Toate licențele, echipamentul și fileul incluse în charter-uri"
+      ],
+      durationTypical: "5-8 ore (charter)",
+      durationDetails: [
+        "Charter jumătate de zi: 5 ore",
+        "Charter zi întreagă: 8-10 ore",
+        "Pescuit pe plajă: flexibil (cel mai bine la răsărit/apus)",
+        "Plecări dimineața devreme (6-7)",
+        "Acces rapid la apă adâncă (la câteva minute de țărm)"
+      ],
+      included: [
+        "Tot echipamentul de pescuit",
+        "Licențe și permise de pescuit",
+        "Skipper experimentat (peste 20 de ani)",
+        "Momeală și năluci",
+        "Curățarea și fileul peștelui",
+        "Ambalare în vid pentru călătorie",
+        "Băuturi și gustări (majoritatea operatorilor)",
+        "Echipament de siguranță"
+      ],
+      requirementsLevel: "Începător până la expert",
+      requirementsDetails: [
+        "Nu este necesară experiență (ghizii ajută)",
+        "Maximum 6 pescari pe barcă (de obicei)",
+        "Lansare de pe plajă - așteaptă-te să te uzi!",
+        "Protecție solară esențială",
+        "Capacitate de înot recomandată",
+        "Medicamente pentru rău de mare dacă ești predispus"
+      ],
+      bestTimePeak: "Octombrie - Ianuarie (sezonul marlinilor)",
+      bestTimeDetails: [
+        "**Marlin negru:** octombrie-ianuarie (sezon de vârf)",
+        "**Marlin albastru:** tot anul",
+        "**Peștele-spadă:** iunie-septembrie (perioada ideală)",
+        "**Wahoo și ton:** tot anul (vârf: oct-aprilie)",
+        "**Macrou-rege:** tot anul (cel mai bine: aprilie-noiembrie)",
+        "**Temperatura apei:** 22-28°C (mai cald = mai mulți pelagici)"
+      ],
+      tips: [
+        "Rezervă sezonul de marlin (oct-ian) cu mult timp înainte",
+        "Pescuitul pe plajă este cel mai bun la răsărit și apus",
+        "Capătul stâncos al plajei oferă apă adâncă pentru aruncări de la țărm",
+        "Mergi spre nord la Ponta Mamoli pentru pescuit mai bun de pe țărm",
+        "Folosește năluci artificiale: pink dusters, redeye, chokka",
+        "Adu pungi impermeabile pentru electronice și obiecte de valoare",
+        "Aranjează depozitarea peștelui cu lodge-ul tău",
+        "Eliberarea peștelui este încurajată pentru conservarea peștilor-spadă"
+      ],
+      operators: [
+        {
+          name: "Gozo Azul Fishing",
+          website: "",
+          email: "info@gozoazulmarine.com",
+          specialty: "Skipper Laurens Koen, peste 20 de ani de experiență"
+        },
+        {
+          name: "Mozambique Fishing Charters",
+          website: "",
+          email: "info@mozambiquefishincharters.co.za",
+          specialty: "Skipper Marcus Joubert, specialiști în pescuitul sportiv"
+        }
+      ],
+      targetSpecies: [
+        { name: "Marlin negru", season: "Octombrie-ianuarie", technique: "Trolling cu năluci, momeală vie" },
+        { name: "Peștele-spadă", season: "Iunie-septembrie", technique: "Trolling, fly fishing" },
+        { name: "Ton galben", season: "Tot anul", technique: "Trolling, popping, jigging" },
+        { name: "Wahoo", season: "Tot anul (vârf: oct-aprilie)", technique: "Trolling de mare viteză" },
+        { name: "Macrou-rege (Couta)", season: "Tot anul", technique: "Trolling, aruncare de pe țărm" },
+        { name: "Dorado (Mahi-Mahi)", season: "Noiembrie-martie", technique: "Trolling în jurul resturilor plutitoare" },
+        { name: "Trevally uriaș", season: "Tot anul", technique: "Popping, jigging lângă recife" }
+      ]
+    }
 };
 
 export function getFishingContent(lang) {
