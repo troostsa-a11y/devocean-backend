@@ -445,7 +445,7 @@ export const DIVING_CONTENT = {
   pl: {
     title: "Nurkowanie",
     tagline: "Odkryj dziewicze rafy z rekinami byczymi, mantami i rekinami wielorybimi",
-    overview: "Ponta do Ouro oferuje nurkowanie światowej klasy z ponad 20 miejscami nurkowymi, od płytkich raf po głębokie pinakle. Krystalicznie czyste wody Kanału Mozambickiego zapewniają wyjątkową widoczność i spotkania z niesamowitą różnorodnością życia morskiego, w tym 19 gatunkami rekinów.",
+    overview: "Ponta do Ouro oferuje nurkowanie światowej klasy z ponad 20 miejscami nurkowymi, od płytkich raf po głębokie pinakle. Krystalicznie czyste wody Kanału Mozambickiego zapewniają wyjąkową widoczność i spotkania z niesamowitą różnorodnością życia morskiego, w tym 19 gatunkami rekinów.",
     highlights: [
       "Ponad 20 miejsc nurkowych od 8m do 48m głębokości",
       "Rekiny bycze, tygrysy i młoty",
@@ -479,9 +479,9 @@ export const DIVING_CONTENT = {
       "Przekąski i napoje po nurkowaniu",
       "Komputer nurkowy i sprzęt bezpieczeństwa"
     ],
-    requirementsLevel: "Początkujący do Zaawansowany",
+    requirementsLevel: "Począkujący do Zaawansowany",
     requirementsDetails: [
-      "Miejsca dla początkujących: Crèche, Doodles, Playground (10-18m)",
+      "Miejsca dla począkujących: Crèche, Doodles, Playground (10-18m)",
       "Miejsca zaawansowane: Pinnacles, Atlantis, Cloudbreak (28-48m)",
       "Wymagany certyfikat PADI (lub kurs Open Water)",
       "Wymagany kwestionariusz medyczny",
@@ -2032,6 +2032,115 @@ export const DIVING_CONTENT = {
         "**Morski psi bika i tigrasti:** novembar-april (voda 26-29°C)",
         "**Čekićasti morski psi:** april-oktobar (bolja vidljivost)",
         "**Kit morski psi:** oktobar-mart",
+        "**Grbavi kitovi:** jul-novembar",
+        "**Najbolja vidljivost:** maj-avgust (20-30m)",
+        "**Najtoplija voda:** decembar-februar (27-29°C)"
+      ],
+      tips: [
+        "Rezervišite rano u sezoni vrhunca (decembar-januar)",
+        "Ponesite sertifikatnu karticu",
+        "Razmotrite neoprensko odelo (3mm preporučeno)",
+        "Polazak kroz talase može biti uzbudljiv - spremite se da pokvasite!",
+        "Većina operatera nudi iznajmljivanje opreme",
+        "Paketi sa više ronjenja nude najbolju vrednost"
+      ],
+      operators: [
+        {
+          name: "Back to Basics Adventures",
+          website: "http://www.backtobasicsadventures.com/",
+          email: "backtobasicsadventures@gmail.com",
+          specialty: "Specijalisti za ronjenje sa morskim psima, fokus na istraživanje"
+        },
+        {
+          name: "Gozo Azul Diving",
+          website: "https://gozo-azul.co.za/",
+          email: "natalie@gozo-azul.co.za",
+          specialty: "PADI 5-zvezdani centar, specijalisti za ronjenje sa morskim psima"
+        },
+        {
+          name: "Under Water Explorer",
+          website: "",
+          email: "herb@thewhaler.co.za",
+          specialty: "Profesionalni ronilački centar"
+        },
+        {
+          name: "Blowing Bubbles Diving",
+          website: "",
+          email: "info@blowingbubbles.co.za",
+          specialty: "Profesionalni ronilački centar"
+        },
+        {
+          name: "Shark Diving Mozambique",
+          website: "",
+          email: "info@sharkdivingmozambique.com",
+          specialty: "Specijalisti za ronjenje sa morskim psima"
+        },
+        {
+          name: "Oceana Dive Center",
+          website: "",
+          email: "oceanamozdiving@gmail.com",
+          specialty: "Profesionalni ronilački centar"
+        }
+      ],
+      topSites: [
+        { name: "Pinnacles", depth: "28-40m", highlights: "Glavno ronjenje sa morskim psima - bika, tigrasti, čekićasti, mante" },
+        { name: "Bass City", depth: "20-25m", highlights: "Ogromni grupperi, lavlje ribe, zebrasti morski psi, stanice za čišćenje" },
+        { name: "Wayne's World", depth: "~20m", highlights: "Makro raj - morski konjići, žabolike ribe, ribe duhovi" },
+        { name: "Atlantis", depth: "35-47m", highlights: "Duboko ronjenje - morske mačke, grebenski morski psi, španske plesačice" },
+        { name: "Doodles", depth: "14-18m", highlights: "Savršeno za sve nivoe - morske mačke, kornjače, murine, hobotnice" }
+      ]
+    },
+hr: {
+      title: "Skuba ronjenje",
+      tagline: "Istražite netaknute grebene sa morskim psima bika, mantama i kitom morskim psima",
+      overview: "Ponta do Ouro nudi svetski poznato skuba ronjenje sa preko 20 lokacija za ronjenje, od plitkih grebena do dubokih piramida. Kristalno čiste vode Mozambičkog kanala pružaju izuzetnu vidljivost i susrete sa neverovatnom raznolikošću morskog života, uključujući 19 vrsta morskih pasa.",
+      highlights: [
+        "Preko 20 lokacija za ronjenje, od 8m do 48m",
+        "Morski psi bika, tigrasti i čekićasti",
+        "Kitopsini psi (oktobar-mart)",
+        "Grbavi kitovi (jul-novembar)",
+        "Mante, kornjače i dupini",
+        "Preko 180 vrsta nudibranha",
+        "Netaknuti koralni grebeni",
+        "Profesionalni PADI centri"
+      ],
+      pricingRange: "Od 40 US$ po ronjenju",
+      pricingDetails: [
+        "Jedno ronjenje: 40-50 US$",
+        "Paket dva ronjenja: 75-90 US$",
+        "PADI Open Water: 350-400 US$",
+        "Iznajmljivanje opreme uključeno",
+        "Sve dozvole i ulazi uključeni"
+      ],
+      durationTypical: "Polu-dnevni ili celodnevni izleti",
+      durationDetails: [
+        "Jutarnja ronjenja: 2 ronjenja (3-4 sata)",
+        "Ceo dan: 3 ronjenja (6-8 sati)",
+        "Polazak sa plaže (kroz talase - avantura!)",
+        "Lokacije 1-12 km od obale"
+      ],
+      included: [
+        "Sva ronilačka oprema (BCD, regulator, odelo)",
+        "Prijevoz čamcem do lokacija",
+        "Profesionalni PADI dive master/instruktor",
+        "Takse za morski park",
+        "Grickalice i piće posle ronjenja",
+        "Ronilački kompjuter i sigurnosna oprema"
+      ],
+      requirementsLevel: "Početnik do napredni",
+      requirementsDetails: [
+        "Lokacije za početnike: Crèche, Doodles, Playground (10-18m)",
+        "Napredne lokacije: Pinnacles, Atlantis, Cloudbreak (28-48m)",
+        "PADI sertifikat potreban (ili pohađajte Open Water kurs)",
+        "Medicinski upitnik obavezan",
+        "Dobre veštine plivanja",
+        "Minimalni uzrast: 10 godina (Junior Open Water)"
+      ],
+      bestTimePeak: "Oktobar - April (ljeto)",
+      bestTimeDetails: [
+        "**Morski psi bika i tigrasti:** novembar-april (voda 26-29°C)",
+        "**Čekićasti morski psi:** april-oktobar (bolja vidljivost)",
+        "**Kitopsini psi:** oktobar-mart",
         "**Grbavi kitovi:** jul-novembar",
         "**Najbolja vidljivost:** maj-avgust (20-30m)",
         "**Najtoplija voda:** decembar-februar (27-29°C)"

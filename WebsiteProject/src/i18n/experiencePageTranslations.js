@@ -21,7 +21,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Okuzizwa Akutholakali",
       sw: "Uzoefu Haujapatikana",
       ro: "Experiență Negăsită",
-      sr: "Doživljaj nije pronađen"
+      sr: "Doživljaj nije pronađen",
+      hr: "Doživljaj nije pronađen"
     },
     backToExperiences: {
       en: "Back to Experiences",
@@ -44,7 +45,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Buyela Kokuzizwa",
       sw: "Rudi kwa Uzoefu",
       ro: "Înapoi la Experiențe",
-      sr: "Nazad na doživljaje"
+      sr: "Nazad na doživljaje",
+      hr: "Nazad na doživljaje"
     },
     highlights: {
       en: "Highlights",
@@ -67,7 +69,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Okubalulekile",
       sw: "Mambo Muhimu",
       ro: "Atracții",
-      sr: "Atrakcije"
+      sr: "Atrakcije",
+      hr: "Atrakcije"
     },
     whatsIncluded: {
       en: "What's Included",
@@ -90,7 +93,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Okufakiwe",
       sw: "Kinachojumuishwa",
       ro: "Ce este inclus",
-      sr: "Šta je uključeno"
+      sr: "Šta je uključeno",
+      hr: "Što je uključeno"
     },
     topDiveSites: {
       en: "Top Dive Sites",
@@ -113,7 +117,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Izindawo Eziphambili Zokucwila",
       sw: "Maeneo Bora ya Kuzamia",
       ro: "Cele mai bune locuri de scufundări",
-      sr: "Najbolje lokacije za ronjenje"
+      sr: "Najbolje lokacije za ronjenje",
+      hr: "Najbolje lokacije za ronjenje"
     },
     ourEthicalPromise: {
       en: "Our Ethical Promise",
@@ -136,7 +141,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Isithembiso Sethu Sokuziphatha",
       sw: "Ahadi Yetu ya Kimaadili",
       ro: "Promisiunea noastră etică",
-      sr: "Naše etičko obećanje"
+      sr: "Naše etičko obećanje",
+      hr: "Naše etičko obećanje"
     },
     whaleBehaviors: {
       en: "Whale Behaviors You Might See",
@@ -159,7 +165,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Ukuziphatha Kweminenga Ongakubona",
       sw: "Tabia za Nyangumi Unazoweza Kuona",
       ro: "Comportamente ale balenelor pe care le-ai putea vedea",
-      sr: "Ponašanja kitova koja možete videti"
+      sr: "Ponašanja kitova koja možete videti",
+      hr: "Ponašanja kitova koja možete vidjeti"
     },
     wildlife: {
       en: "Wildlife You'll Encounter",
@@ -182,7 +189,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Izilwane Zasendle Ozohlanana Nazo",
       sw: "Wanyama Pori Utakaokutana Nao",
       ro: "Faună sălbatică pe care o vei întâlni",
-      sr: "Divlje životinje koje ćete sresti"
+      sr: "Divlje životinje koje ćete sresti",
+      hr: "Divlje životinje koje ćete sresti"
     },
     targetSpecies: {
       en: "Target Species",
@@ -205,7 +213,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Izinhlobo Eziqondiwe",
       sw: "Aina Zinazolengwa",
       ro: "Specii țintă",
-      sr: "Ciljne vrste"
+      sr: "Ciljne vrste",
+      hr: "Ciljne vrste"
     },
     surfSpots: {
       en: "Surf Spots",
@@ -228,7 +237,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Izindawo Zokusefa",
       sw: "Maeneo ya Kusurf",
       ro: "Locuri de surf",
-      sr: "Surf lokacije"
+      sr: "Surf lokacije",
+      hr: "Surf lokacije"
     },
     safetyTips: {
       en: "Safety Tips",
@@ -251,7 +261,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Amathiphu Okuphepha",
       sw: "Vidokezo vya Usalama",
       ro: "Sfaturi de siguranță",
-      sr: "Saveti za bezbednost"
+      sr: "Saveti za bezbednost",
+      hr: "Saveti za sigurnost"
     },
     insiderTips: {
       en: "Insider Tips",
@@ -274,7 +285,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Amathiphu Angaphakathi",
       sw: "Vidokezo vya Ndani",
       ro: "Sfaturi din interior",
-      sr: "Saveti od insajdera"
+      sr: "Saveti od insajdera",
+      hr: "Saveti od insajdera"
     },
     pricingGuide: {
       en: "Pricing Guide",
@@ -297,7 +309,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Umhlahlandlela Wezintengo",
       sw: "Mwongozo wa Bei",
       ro: "Ghid de prețuri",
-      sr: "Vodič za cene"
+      sr: "Vodič za cene",
+      hr: "Vodič za cene"
     },
     note: {
       en: "Note:",
@@ -320,7 +333,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Qaphela:",
       sw: "Kumbuka:",
       ro: "Notă:",
-      sr: "Napomena:"
+      sr: "Napomena:",
+      hr: "Napomena:"
     },
     priceNote: {
       en: "Prices shown in US$. Contact operators for current rates in your currency or check the",
@@ -343,7 +357,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Amanani aboniswa nge-US$. Xhumana nabashayeli ukuze uthole izindleko zamanje ngemali yakho noma hlola",
       sw: "Bei zinaonyeshwa katika US$. Wasiliana na waendeshaji kwa viwango vya sasa katika sarafu yako au angalia",
       ro: "Prețuri afișate în US$. Contactează operatorii pentru tarife actuale în moneda ta sau verifică",
-      sr: "Cene su prikazane u US$. Kontaktirajte operatere za aktuelne cene u vašoj valuti ili proverite"
+      sr: "Cene su prikazane u US$. Kontaktirajte operatere za aktuelne cene u vašoj valuti ili proverite",
+      hr: "Cene su prikazane u US$. Kontaktirajte operatere za aktuelne cene u vašoj valuti ili provjerite"
     },
     currencyConverter: {
       en: "Currency Converter",
@@ -366,7 +381,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Umshini Wokushintsha Imali",
       sw: "Kibadilisha Sarafu",
       ro: "Convertor valutar",
-      sr: "Konverter valuta"
+      sr: "Konverter valuta",
+      hr: "Konverter valuta"
     },
     duration: {
       en: "Duration",
@@ -389,7 +405,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Isikhathi",
       sw: "Muda",
       ro: "Durată",
-      sr: "Trajanje"
+      sr: "Trajanje",
+      hr: "Trajanje"
     },
     level: {
       en: "Level",
@@ -412,7 +429,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Izinga",
       sw: "Kiwango",
       ro: "Nivel",
-      sr: "Nivo"
+      sr: "Nivo",
+      hr: "Nivo"
     },
     contactOperators: {
       en: "Contact the Operators",
@@ -435,7 +453,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Xhumana Nabashayeli",
       sw: "Wasiliana na Waendeshaji",
       ro: "Contactează Operatorii",
-      sr: "Kontaktirajte operatere"
+      sr: "Kontaktirajte operatere",
+      hr: "Kontaktirajte operatere"
     },
     bestTimeToVisit: {
       en: "Best Time to Visit",
@@ -458,7 +477,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Isikhathi Esingcono Sokuvakasha",
       sw: "Wakati Bora wa Kutembelea",
       ro: "Cel mai bun moment pentru vizită",
-      sr: "Najbolje vreme za posetu"
+      sr: "Najbolje vreme za posetu",
+      hr: "Najbolje vrijeme za posjetu"
     },
     whatToBring: {
       en: "What to Bring",
@@ -481,7 +501,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Okumele Uzilethe",
       sw: "Kitu cha Kuleta",
       ro: "Ce să aduci",
-      sr: "Šta poneti"
+      sr: "Šta poneti",
+      hr: "Što poneti"
     },
     recommendedOperators: {
       en: "Recommended Operators",
@@ -504,7 +525,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Abashayeli Abanconyiwe",
       sw: "Waendeshaji Wanaopendekeza",
       ro: "Operatori Recomandați",
-      sr: "Preporučeni operateri"
+      sr: "Preporučeni operateri",
+      hr: "Preporučeni operateri"
     },
     contactOperatorsDirectly: {
       en: "Contact Operators Directly",
@@ -527,7 +549,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Xhumana Nabashayeli Ngqo",
       sw: "Wasiliana Moja kwa Moja na Waendeshaji",
       ro: "Contactează Direct Operatorii",
-      sr: "Kontaktirajte operatere direktno"
+      sr: "Kontaktirajte operatere direktno",
+      hr: "Kontaktirajte operatere direktno"
     },
     formDescription: {
       en: "Fill out the form below and we'll forward your inquiry to your preferred operator. They'll contact you directly with availability and pricing.",
@@ -550,7 +573,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Gcwalisa ifomu elingezansi bese sidlulisela umbuzo wakho kumshini wakho okhethayo. Bazoxhumana nawe ngqo ngetuba nezintengo.",
       sw: "Jaza fomu iliyo hapa chini na tutapeleka hoja yako kwa mfanyabiashara wako unaopendelewa. Watawasiliana nawe moja kwa moja kuhusu upatikanaji na bei.",
       ro: "Completează formularul de mai jos și vom transmite cererea ta operatorului preferat. Te vor contacta direct cu disponibilitatea și prețurile.",
-      sr: "Popunite formular ispod i prosledićemo vaš zahtev željenom operateru. Kontaktiraće vas direktno sa dostupnošću i cenama."
+      sr: "Popunite formular ispod i prosledićemo vaš zahtev željenom operateru. Kontaktiraće vas direktno sa dostupnošću i cenama.",
+      hr: "Popunite formular ispod i prosledićemo vaš zahtev željenom operateru. Kontaktiraće vas direktno sa dostupnošću i cenama."
     },
     readyToBook: {
       en: "Ready to Book Your {title} Adventure?",
@@ -573,7 +597,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Usukulungele Ukubhukha I-Adventure Yakho ye-{title}?",
       sw: "Uko Tayari Kuhifadhi Tukio Lako la {title}?",
       ro: "Gata să rezervi aventura ta de {title}?",
-      sr: "Spremni da rezervišete vašu {title} avanturu?"
+      sr: "Spremni da rezervišete vašu {title} avanturu?",
+      hr: "Spremni da rezervišete vašu {title} avanturu?"
     },
     dolphinsCta: {
       en: "Contact the Dolphin Seafari Operators directly through the contact form above. We're here to help.",
@@ -596,7 +621,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Xhumana Nabashayeli be-Dolphin Seafari ngqo ngefomu lokuxhumana elingenhla. Silapha ukusiza.",
       sw: "Wasiliana moja kwa moja na Waendeshaji wa Seafari za Pomboo kupitia fomu ya mawasiliano hapo juu. Tuko hapa kusaidia.",
       ro: "Contactează direct operatorii Dolphin Seafari prin formularul de contact de mai sus. Suntem aici să te ajutăm.",
-      sr: "Kontaktirajte operatere Dolphin Seafari direktno preko kontakt formulara iznad. Ovde smo da pomognemo."
+      sr: "Kontaktirajte operatere Dolphin Seafari direktno preko kontakt formulara iznad. Ovde smo da pomognemo.",
+      hr: "Kontaktirajte operatere Dolphin Seafari direktno preko kontakt formulara iznad. Ovdje smo da pomognemo."
     },
     divingCta: {
       en: "Contact the Scuba Diving Operators directly through the contact form above. We're here to help.",
@@ -606,7 +632,8 @@ export function getExpText(key, lang, params = {}) {
       'pt-BR': "Entre em contato com os Operadores de Mergulho diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       pt: "Contacte os Operadores de Mergulho diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       ro: "Contactează direct operatorii de scufundări prin formularul de contact de mai sus. Suntem aici să te ajutăm.",
-      sr: "Kontaktirajte ronilačke operatere direktno preko kontakt formulara iznad. Ovde smo da pomognemo."
+      sr: "Kontaktirajte ronilačke operatere direktno preko kontakt formulara iznad. Ovde smo da pomognemo.",
+      hr: "Kontaktirajte ronilačke operatere direktno preko kontakt formulara iznad. Ovdje smo da pomognemo."
     },
     seafariCta: {
       en: "Contact the Seafari Operators directly through the contact form above. We're here to help.",
@@ -616,7 +643,8 @@ export function getExpText(key, lang, params = {}) {
       'pt-BR': "Entre em contato com os Operadores de Seafari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       pt: "Contacte os Operadores de Seafari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       ro: "Contactează direct operatorii Seafari prin formularul de contact de mai sus. Suntem aici să te ajutăm.",
-      sr: "Kontaktirajte Seafari operatere direktno preko kontakt formulara iznad. Ovde smo da pomognemo."
+      sr: "Kontaktirajte Seafari operatere direktno preko kontakt formulara iznad. Ovde smo da pomognemo.",
+      hr: "Kontaktirajte Seafari operatere direktno preko kontakt formulara iznad. Ovdje smo da pomognemo."
     },
     safariCta: {
       en: "Contact the Game Safari Operators directly through the contact form above. We're here to help.",
@@ -626,7 +654,8 @@ export function getExpText(key, lang, params = {}) {
       'pt-BR': "Entre em contato com os Operadores de Safari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       pt: "Contacte os Operadores de Safari diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       ro: "Contactează direct operatorii Safari prin formularul de contact de mai sus. Suntem aici să te ajutăm.",
-      sr: "Kontaktirajte Safari operatere direktno preko kontakt formulara iznad. Ovde smo da pomognemo."
+      sr: "Kontaktirajte Safari operatere direktno preko kontakt formulara iznad. Ovde smo da pomognemo.",
+      hr: "Kontaktirajte Safari operatere direktno preko kontakt formulara iznad. Ovdje smo da pomognemo."
     },
     fishingCta: {
       en: "Contact the Fishing Charter Operators directly through the contact form above. We're here to help.",
@@ -636,7 +665,8 @@ export function getExpText(key, lang, params = {}) {
       'pt-BR': "Entre em contato com os Operadores de Pesca diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       pt: "Contacte os Operadores de Pesca diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       ro: "Contactează direct operatorii de pescuit charter prin formularul de contact de mai sus. Suntem aici să te ajutăm.",
-      sr: "Kontaktirajte operatere ribolovnih čartera direktno preko kontakt formulara iznad. Ovde smo da pomognemo."
+      sr: "Kontaktirajte operatere ribolovnih čartera direktno preko kontakt formulara iznad. Ovde smo da pomognemo.",
+      hr: "Kontaktirajte operatere ribolovnih čartera direktno preko kontakt formulara iznad. Ovdje smo da pomognemo."
     },
     surfingCta: {
       en: "Contact the Surf School Operators directly through the contact form above. We're here to help.",
@@ -646,7 +676,8 @@ export function getExpText(key, lang, params = {}) {
       'pt-BR': "Entre em contato com os Operadores de Surf diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       pt: "Contacte os Operadores de Surf diretamente através do formulário de contato acima. Estamos aqui para ajudar.",
       ro: "Contactează direct operatorii școlilor de surf prin formularul de contact de mai sus. Suntem aici să te ajutăm.",
-      sr: "Kontaktirajte operatere surf škola direktno preko kontakt formulara iznad. Ovde smo da pomognemo."
+      sr: "Kontaktirajte operatere surf škola direktno preko kontakt formulara iznad. Ovde smo da pomognemo.",
+      hr: "Kontaktirajte operatere surf škola direktno preko kontakt formulara iznad. Ovdje smo da pomognemo."
     },
     generalCta: {
       en: "Contact us to arrange your experience or get more information. We're here to help make your Ponta do Ouro adventure unforgettable!",
@@ -669,7 +700,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Sithinte ukuze uhlele ukuzizwa kwakho noma uthole ulwazi oluningi. Silapha ukusiza ukwenza i-adventure yakho yase-Ponta do Ouro ingakhohlakali!",
       sw: "Wasiliana nasi kuandaa uzoefu wako au kupata maelezo zaidi. Tuko hapa kusaidia kufanya tukio lako la Ponta do Ouro lisikosahaulike!",
       ro: "Contactează-ne pentru a-ți organiza experiența sau pentru mai multe informații. Suntem aici pentru a face aventura ta în Ponta do Ouro de neuitat!",
-      sr: "Kontaktirajte nas da organizujemo vaš doživljaj ili za više informacija. Ovde smo da vašu avanturu u Ponta do Ouro učinimo nezaboravnom!"
+      sr: "Kontaktirajte nas da organizujemo vaš doživljaj ili za više informacija. Ovde smo da vašu avanturu u Ponta do Ouro učinimo nezaboravnom!",
+      hr: "Kontaktirajte nas da organizujemo vaš doživljaj ili za više informacija. Ovdje smo da vašu avanturu u Ponta do Ouro učinimo nezaboravnom!"
     },
     whatsappUs: {
       en: "WhatsApp Us",
@@ -692,7 +724,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "WhatsApp",
       sw: "WhatsApp",
       ro: "WhatsApp",
-      sr: "WhatsApp"
+      sr: "WhatsApp",
+      hr: "WhatsApp"
     },
     emailUs: {
       en: "Email Us",
@@ -715,7 +748,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Sithumelele I-imeyili",
       sw: "Tuma Barua Pepe",
       ro: "Trimite-ne un e-mail",
-      sr: "Pošaljite nam imejl"
+      sr: "Pošaljite nam imejl",
+      hr: "Pošaljite nam imejl"
     },
     needAccommodation: {
       en: "Need a place to stay? Book your eco-friendly accommodation at DEVOCEAN Lodge.",
@@ -738,7 +772,8 @@ export function getExpText(key, lang, params = {}) {
       zu: "Udinga indawo yokuhlala? Bhukha indawo yakho e-DEVOCEAN Lodge.",
       sw: "Unahitaji mahali pa kukaa? Hifadhi malazi yako rafiki kwa mazingira katika DEVOCEAN Lodge.",
       ro: "Ai nevoie de cazare? Rezervă-ți cazarea ecologică la DEVOCEAN Lodge.",
-      sr: "Treba vam smeštaj? Rezervišite ekološki smeštaj u DEVOCEAN Lodge-u."
+      sr: "Treba vam smeštaj? Rezervišite ekološki smeštaj u DEVOCEAN Lodge-u.",
+      hr: "Treba vam smještaj? Rezervišite ekološki smještaj u DEVOCEAN Lodge-u."
     }
   };
 

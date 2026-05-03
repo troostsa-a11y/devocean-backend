@@ -381,7 +381,7 @@ export const FISHING_CONTENT = {
   pl: {
     title: "Wędkarstwo Plażowe i Pełnomorskie",
     tagline: "Łów okonia lub ścigaj marliny w Kanale Mozambickim",
-    overview: "Ponta do Ouro oferuje wyjątkowe wędkarstwo zarówno z plaży, jak i na pełnym morzu. Ciepłe wody Oceanu Indyjskiego i głęboki Kanał Mozambicki dają ekscytujące możliwości połowu marlina, żaglicy, wahoo, tuńczyka żółtopłetwego i makreli królewskiej. Wędkarze plażowi mogą łowić okonia, barakudę i pompano.",
+    overview: "Ponta do Ouro oferuje wyjąkowe wędkarstwo zarówno z plaży, jak i na pełnym morzu. Ciepłe wody Oceanu Indyjskiego i głęboki Kanał Mozambicki dają ekscytujące możliwości połowu marlina, żaglicy, wahoo, tuńczyka żółtopłetwego i makreli królewskiej. Wędkarze plażowi mogą łowić okonia, barakudę i pompano.",
     highlights: [
       "Marlin czarny (październik-styczeń)",
       "Żaglica (czerwiec-wrzesień)",
@@ -419,7 +419,7 @@ export const FISHING_CONTENT = {
       "Napoje i przekąski (większość operatorów)",
       "Sprzęt bezpieczeństwa"
     ],
-    requirementsLevel: "Początkujący do Eksperta",
+    requirementsLevel: "Począkujący do Eksperta",
     requirementsDetails: [
       "Doświadczenie nie jest wymagane (przewodnicy pomagają)",
       "Maksymalnie 6 wędkarzy na łódź (zazwyczaj)",
@@ -1748,6 +1748,99 @@ export const FISHING_CONTENT = {
         "**Crni marlin:** oktobar-januar (vrhunac sezone)",
         "**Plavi marlin:** tokom cele godine",
         "**Sabljarka:** jun-septembar (idealno vreme)",
+        "**Vahu i tuna:** tokom cele godine (vrhunac: okt-april)",
+        "**Kraljevska skuša:** tokom cele godine (najbolje: april-novembar)",
+        "**Temperatura vode:** 22-28°C (toplije = više pelagijskih)"
+      ],
+      tips: [
+        "Rezervišite sezonu marlina (okt-jan) mnogo unapred",
+        "Ribolov sa plaže je najbolji pri izlasku i zalasku sunca",
+        "Stenoviti kraj plaže nudi duboku vodu za bacanje sa obale",
+        "Idite severno do Ponta Mamoli za bolji ribolov sa obale",
+        "Koristite veštačke vabilice: pink dusters, redeye, chokka",
+        "Donesite vodootporne torbe za elektroniku i dragocenosti",
+        "Dogovorite čuvanje ribe sa vašim lodge-om",
+        "Puštanje ribe se podstiče radi očuvanja sabljarki"
+      ],
+      operators: [
+        {
+          name: "Gozo Azul Fishing",
+          website: "",
+          email: "info@gozoazulmarine.com",
+          specialty: "Skiper Laurens Koen, preko 20 godina iskustva"
+        },
+        {
+          name: "Mozambique Fishing Charters",
+          website: "",
+          email: "info@mozambiquefishincharters.co.za",
+          specialty: "Skiper Marcus Joubert, specijalisti za sportski ribolov"
+        }
+      ],
+      targetSpecies: [
+        { name: "Crni marlin", season: "Oktobar-januar", technique: "Treling sa vabilicama, živi mamac" },
+        { name: "Sabljarka", season: "Jun-septembar", technique: "Treling, fly fishing" },
+        { name: "Žutoperajna tuna", season: "Tokom cele godine", technique: "Treling, popping, jigging" },
+        { name: "Vahu", season: "Tokom cele godine (vrhunac: okt-april)", technique: "Brzi treling" },
+        { name: "Kraljevska skuša (Couta)", season: "Tokom cele godine", technique: "Treling, bacanje sa obale" },
+        { name: "Dorado (Mahi-Mahi)", season: "Novembar-mart", technique: "Treling oko plutajućih ostataka" },
+        { name: "Veliki trevalli", season: "Tokom cele godine", technique: "Popping, jigging blizu grebena" }
+      ]
+    },
+hr: {
+      title: "Ribolov sa plaže i u dubokom moru",
+      tagline: "Lovite kingfish ili gonite marline u Mozambičkom kanalu",
+      overview: "Ponta do Ouro nudi izuzetan ribolov i sa plaže i u dubokom moru. Tople vode Indijskog oceana i dubine Mozambičkog kanala pružaju uzbudljive prilike za marlina, sabljarku, vahua, žutoperajnu tunu i kraljevsku skušu. Ribolovci sa plaže mogu uloviti kingfish, barakude i pampano sa netaknutih obala.",
+      highlights: [
+        "Crni marlin (oktobar-januar)",
+        "Sabljarka (jun-septembar)",
+        "Žutoperajna tuna i vahu",
+        "Kraljevska skuša (Couta)",
+        "Ribolov sa obale za kingfish i barakude",
+        "Tople, čiste vode Indijskog oceana",
+        "Čarteri sa polaskom sa plaže (suvo lansiranje)",
+        "Iskusni lokalni skiperi sa preko 20 godina iskustva"
+      ],
+      pricingRange: "Od 550 US$ (čarter)",
+      pricingDetails: [
+        "Čarter od 5 sati: 550-650 US$",
+        "Čarter od 8 sati: 850-950 US$",
+        "Ceo dan u dubokom moru: preko 1.000 US$",
+        "Ribolov sa plaže: besplatno (donesite svoju opremu)",
+        "Vođeni ribolov sa obale: 50-100 US$",
+        "Sve dozvole, oprema i filetiranje uključeno u čartere"
+      ],
+      durationTypical: "5-8 sati (čarter)",
+      durationDetails: [
+        "Polu-dnevni čarter: 5 sati",
+        "Celodnevni čarter: 8-10 sati",
+        "Ribolov sa plaže: fleksibilno (najbolje pri izlasku/zalasku sunca)",
+        "Polasci rano ujutru (6-7)",
+        "Brz pristup dubokoj vodi (na netkoliko minuta od obale)"
+      ],
+      included: [
+        "Sva ribolovna oprema",
+        "Dozvole za ribolov",
+        "Iskusni skiper (preko 20 godina)",
+        "Mamci i vabilice",
+        "Čišćenje i filetiranje ribe",
+        "Vakuum pakovanje za putovanje",
+        "Piće i grickalice (većina operatera)",
+        "Sigurnosna oprema"
+      ],
+      requirementsLevel: "Početnik do ekspert",
+      requirementsDetails: [
+        "Iskustvo nije potrebno (vodiči pomažu)",
+        "Maksimalno 6 ribolovaca po čamcu (obično)",
+        "Polazak sa plaže - očekujte da pokvasite!",
+        "Zaštita od sunca obavezna",
+        "Veštine plivanja preporučene",
+        "Lekovi za morsku bolest ako ste skloni"
+      ],
+      bestTimePeak: "Oktobar - januar (sezona marlina)",
+      bestTimeDetails: [
+        "**Crni marlin:** oktobar-januar (vrhunac sezone)",
+        "**Plavi marlin:** tokom cele godine",
+        "**Sabljarka:** jun-septembar (idealno vrijeme)",
         "**Vahu i tuna:** tokom cele godine (vrhunac: okt-april)",
         "**Kraljevska skuša:** tokom cele godine (najbolje: april-novembar)",
         "**Temperatura vode:** 22-28°C (toplije = više pelagijskih)"

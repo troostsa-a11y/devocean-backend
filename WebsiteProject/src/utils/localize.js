@@ -108,6 +108,9 @@ const localeToISO6391 = (locale) => {
 
     // Serbian variants (Latin script default)
     "sr": "sr", "sr-RS": "sr", "sr-Latn": "sr", "sr-Latn-RS": "sr", "sr-ME": "sr", "sr-BA": "sr",
+
+    // Croatian variants
+    "hr": "hr", "hr-HR": "hr", "hr-BA": "hr",
     
     // Japanese variants
     "ja-JP": "ja", "ja": "ja",
@@ -148,6 +151,7 @@ export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurren
     'ja': 'JA',
     'pl': 'PL',
     'sr': 'EN',
+    'hr': 'EN',
     'af': 'AF',
     'zu': 'ZU',
     'sw': 'SW'

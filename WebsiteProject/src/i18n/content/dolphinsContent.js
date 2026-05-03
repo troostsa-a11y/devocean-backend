@@ -2676,6 +2676,104 @@ export const DOLPHINS_CONTENT = {
           specialty: "Plivanje sa delfinima zasnovano na istraživanju, sa edukativnim naglaskom"
         }
       ]
+    },
+  hr: {
+      title: "Plivanje sa dupinima",
+      tagline: "Etički susreti sa divljim dupinima u kristalno čistim vodama",
+      overview: "Doživite magične susrete sa divljim indo-pacifičkim bottlenose dupinima u Delimičnom morskom rezervatu Ponta do Ouro. Oba ovlašćena operatera poštuju stroga etička pravila, obezbeđujući pasivne, neinvazivne interakcije gdje dupini biraju da priđu pod svojim uslovima.",
+      highlights: [
+        "Preko 200 rezidentnih bottlenose dupina",
+        "Etički susreti zasnovani na istraživanju",
+        "BEZ dodirivanja ili gonjenja - divlji i slobodni",
+        "Snorkeling preko netaknutih grebena",
+        "Sezonska viđenja kitopsinih pasa",
+        "Grbavi kitovi (jul-novembar)",
+        "Male grupe (maksimum 12 osoba)",
+        "Edukativni naglasak na očuvanje"
+      ],
+      pricingRange: "45-50 US$ po osobi",
+      pricingDetails: [
+        "Posmatranje dupina (samo iz čamca): 45 US$",
+        "Izlet plivanja sa dupinima: 50 US$",
+        "Višednevni paketi: snižene cene",
+        "Snorkeling oprema uključena",
+        "Taksa za očuvanje uključena"
+      ],
+      durationTypical: "2-3 sata",
+      durationDetails: [
+        "Polazak rano ujutru (najbolji uslovi)",
+        "Snorkeling preko plitkih grebena",
+        "Olakšavanje sa dupinima u vodi",
+        "Susreti sa kitopsinim psima (sezonski)",
+        "Edukativni brifing pre polaska"
+      ],
+      included: [
+        "Maska, peraja i disaljka",
+        "Neoprensko odelo (ako je potrebno)",
+        "Iskusni vodič/pratilac",
+        "Edukativna prezentacija pre polaska",
+        "Fotografije/snimci sa vašeg susreta",
+        "Lake grickalice",
+        "Takse za morski park"
+      ],
+      requirementsLevel: "Svi uzrasti i nivoi",
+      requirementsDetails: [
+        "Veština plivanja potrebna",
+        "Komforno sa snorkelingom",
+        "Uzrasti: 5 do 80+ (zavisno od vrijemena)",
+        "Trudnoća: sigurano do 6. meseca",
+        "Sertifikat za ronjenje nije potreban",
+        "Minimum 6 osoba po izletu (4 za retreate)"
+      ],
+      bestTimePeak: "Januar - maj",
+      bestTimeDetails: [
+        "**Vrhunac sezone:** januar-maj (najbolji susreti)",
+        "**Dupini:** rezidenti tokom cele godine",
+        "**Grbavi kitovi:** jul-novembar",
+        "**Kitopsini psi:** oktobar-mart",
+        "**Najmirnija mora:** rano ujutru",
+        "**Temperatura vode:** 22-28°C tokom cele godine"
+      ],
+      tips: [
+        "Rezervišite 2-3 dana unapred",
+        "Donesite kremu za sunčanje siguranu za grebene",
+        "Podvodna kamera preporučena",
+        "Pažljivo pratite uputstva pratioca",
+        "Ostanite mirni i tihi u vodi",
+        "Pustite dupine da vam priđu prirodno"
+      ],
+      ethicalPractices: [
+        {
+          title: "Bez dodirivanja ili gonjenja",
+          description: "Dupini se nikada ne dodiruju, ne gone niti uznemiravaju. Svi susreti se odvijaju pod uslovima dupina."
+        },
+        {
+          title: "Pristup zasnovan na istraživanju",
+          description: "Oba operatera sarađuju sa morskim biolozima i doprinose tekućem istraživanju i očuvanju dupina."
+        },
+        {
+          title: "Samo male grupe",
+          description: "Maksimum 12 osoba po izletu obezbeđuje minimalno uznemiravanje i bolje susrete."
+        },
+        {
+          title: "Edukacija na prvom mjestu",
+          description: "Brifinzi pre polaska podučavaju sve učesnike o pravilnom ponašanju i biologiji dupina."
+        }
+      ],
+      operators: [
+        {
+          name: "Dolphin Encountours Research Center",
+          website: "https://www.dolphinencountours.org/",
+          email: "connect@dolphinencountours.org",
+          specialty: "Susreti sa dupinima koje vode morski biolozi, fokus na očuvanje"
+        },
+        {
+          name: "The Dolphin Centre",
+          website: "https://thedolphincentre.com/",
+          email: "info@thedolphincentre.com",
+          specialty: "Plivanje sa dupinima zasnovano na istraživanju, sa edukativnim naglaskom"
+        }
+      ]
     }
 };
 

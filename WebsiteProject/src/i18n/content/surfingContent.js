@@ -349,12 +349,12 @@ export const SURFING_CONTENT = {
   pl: {
     title: "Deski Surfingowe i Lekcje",
     tagline: "Surfuj na ikonicznym point breaku Ponta do Ouro",
-    overview: "Klasyczny prawy point break Ponta do Ouro może dostarczyć epickie przejazdy 100-200m, a nawet do 1km w idealnych warunkach - porównywalny z Jeffrey's Bay. Ciepła, krystalicznie czysta woda i stały swell czynią to idealnym miejscem dla surferów na każdym poziomie, od początkujących uczących się na łagodnych falach po ekspertów rzeźbiących point.",
+    overview: "Klasyczny prawy point break Ponta do Ouro może dostarczyć epickie przejazdy 100-200m, a nawet do 1km w idealnych warunkach - porównywalny z Jeffrey's Bay. Ciepła, krystalicznie czysta woda i stały swell czynią to idealnym miejscem dla surferów na każdym poziomie, od począkujących uczących się na łagodnych falach po ekspertów rzeźbiących point.",
     highlights: [
       "Klasyczny prawy point break",
       "Przejazdy 100-200m (do 1km gdy idealnie!)",
       "Ciepła woda (22-28°C) - pianka opcjonalna",
-      "Beach breaki przyjazne początkującym",
+      "Beach breaki przyjazne począkującym",
       "Małe zatłoczenie lineup",
       "Lekcje surfingu i wypożyczalnia desek",
       "Delfiny surfujące obok ciebie",
@@ -366,12 +366,12 @@ export const SURFING_CONTENT = {
       "Wypożyczenie deski (za dzień): 15-25 USD",
       "Pakiety wielodniowe: Obniżone ceny",
       "Sprzęt w cenie lekcji",
-      "Softboardy dla początkujących",
+      "Softboardy dla począkujących",
       "Shortboardy/funboardy dla zaawansowanych"
     ],
     durationTypical: "2 godziny (lekcja) lub elastycznie (wypożyczenie)",
     durationDetails: [
-      "Lekcja dla początkujących: 2 godziny (teoria + praktyka)",
+      "Lekcja dla począkujących: 2 godziny (teoria + praktyka)",
       "Prywatny coaching: 1-2 godziny",
       "Wypożyczenie deski: Pół dnia lub cały dzień",
       "Najlepszy czas na surf: Wczesny ranek (6-9)",
@@ -388,7 +388,7 @@ export const SURFING_CONTENT = {
     ],
     requirementsLevel: "Wszystkie poziomy mile widziane",
     requirementsDetails: [
-      "Początkujący: Nie wymagane doświadczenie",
+      "Począkujący: Nie wymagane doświadczenie",
       "Średniozaawansowany/Zaawansowany: Doświadczenie point break przydatne",
       "Umiejętność pływania wymagana",
       "Wszystkie grupy wiekowe (dzieci do dorosłych)",
@@ -410,7 +410,7 @@ export const SURFING_CONTENT = {
       "Point break może rywalizować z J-Bay ale wymaga idealnych warunków",
       "Zabierz zapasowe deski i dodatkowe stateczniki/leash - ograniczone sklepy",
       "Szanuj silne prądy - bądź cierpliwy z pływami",
-      "Longboardy soft-top idealne dla początkujących na beach breakach",
+      "Longboardy soft-top idealne dla począkujących na beach breakach",
       "Delfiny często surfują obok - magiczne doświadczenie!",
       "Woda jest ciepła ale zabierz shorty dla ochrony przed wiatrem",
       "Pytaj lokalnych o obecne warunki swellu",
@@ -427,7 +427,7 @@ export const SURFING_CONTENT = {
     ],
     surfSpots: [
       { name: "Point Ponta do Ouro", level: "Średniozaawansowany do Zaawansowany", description: "Główny prawy point break - dno skalisto-piaszczyste, przejazdy 100-200m (do 1km gdy pompuje!)" },
-      { name: "Beach Breaki", level: "Początkujący do Średniozaawansowany", description: "Łagodne beach breaki idealne do nauki - delikatniejsze fale, piaszczyste dno" },
+      { name: "Beach Breaki", level: "Począkujący do Średniozaawansowany", description: "Łagodne beach breaki idealne do nauki - delikatniejsze fale, piaszczyste dno" },
       { name: "Ponta Malongane (8km na północ)", level: "Wszystkie poziomy", description: "Alternatywny spot z innym oknem swellowym - mniej zatłoczony" }
     ]
   },
@@ -1615,6 +1615,91 @@ export const SURFING_CONTENT = {
         "Poštujte jake struje - budite strpljivi sa plimom",
         "Soft-top longboards su idealni za početnike na talasima sa plaže",
         "Delfini često surfuju zajedno sa vama - magično iskustvo!",
+        "Voda je topla, ali ponesite shorty radi zaštite od vetra",
+        "Pitajte meštane o swell-u i trenutnim uslovima",
+        "Neprenakrcani lineup-ovi = više talasa za vas!",
+        "Kombinujte sa ronjenjem ili ribolovom kada su talasi ravni"
+      ],
+      operators: [
+        {
+          name: "Brasukas Bar & Surf",
+          website: "",
+          email: "brasukas.geral@gmail.com",
+          specialty: "Surf lekcije, iznajmljivanje dasaka i bar na obali plaže"
+        }
+      ],
+      surfSpots: [
+        { name: "Point u Ponta do Ouro", level: "Srednji do napredni", description: "Glavni desni point break - dno od stene i peska, vožnje od 100-200m (do 1km kada je savršeno!)" },
+        { name: "Talasi sa plaže", level: "Početnik do srednji", description: "Blagi talasi sa plaže, savršeni za učenje - mekši talasi, peščano dno" },
+        { name: "Ponta Malongane (8 km severno)", level: "Svi nivoi", description: "Alternativna lokacija sa drugačijim swell prozorom - manje prenakrcano" }
+      ]
+    },
+hr: {
+      title: "Surf daske i lekcije",
+      tagline: "Jašite ikonski point break u Ponta do Ouro",
+      overview: "Klasični desni point break u Ponta do Ouro može da pruži epske vožnje od 100-200m, i do 1km u savršenim uslovima - ravan Jeffrey's Bay-u. Tople, kristalno čiste vode i konstantni talasi čine ga idealnim za surfere svih nivoa, od početnika koji uče na blagim talasima do eksperata koji režu na point-u.",
+      highlights: [
+        "Klasični desni point break",
+        "Vožnje od 100-200m (do 1km kada je savršeno!)",
+        "Topla voda (22-28°C) - neoprensko odelo opciono",
+        "Talasi prijateljski za početnike",
+        "Neprenakrcani lineup-ovi",
+        "Surf lekcije i iznajmljivanje dasaka dostupni",
+        "Dupini surfuju pored vas",
+        "Kristalno čista voda Indijskog oceana"
+      ],
+      pricingRange: "Od 20 US$ (lekcija)",
+      pricingDetails: [
+        "Surf lekcija (2 sata): 20-40 US$",
+        "Iznajmljivanje daske (ceo dan): 15-25 US$",
+        "Višednevni paketi: snižene cene",
+        "Oprema uključena u lekcije",
+        "Soft daske za početnike",
+        "Shortboards/funboards za one sa iskustvom"
+      ],
+      durationTypical: "2 sata (lekcija) ili fleksibilno (iznajmljivanje)",
+      durationDetails: [
+        "Lekcija za početnike: 2 sata (teorija + praksa)",
+        "Privatni coaching: 1-2 sata",
+        "Iznajmljivanje daske: pola dana ili ceo dan",
+        "Najbolji talasi: rano ujutru (6-9)",
+        "Popodnevne sesije: 15-18"
+      ],
+      included: [
+        "Surf daska (lekcija ili iznajmljivanje)",
+        "Neoprensko odelo/lycra (ako je potrebno)",
+        "Individualna ili instrukcija u maloj grupi",
+        "Sigurnosni brifing i oceanska svest",
+        "Vosak i lič",
+        "Pomoć pri pripremi na plaži",
+        "Fotografije sa vaše sesije (neki operateri)"
+      ],
+      requirementsLevel: "Svi nivoi dobrodošli",
+      requirementsDetails: [
+        "Početnici: iskustvo nije potrebno",
+        "Srednji/napredni: iskustvo na point break-u pomaže",
+        "Veštine plivanja potrebne",
+        "Svi uzrasti (deca do odraslih)",
+        "Fitness: umeren (veslanje može biti zamorno)",
+        "**Važno:** jake struje duž point-a - budite oprezni!"
+      ],
+      bestTimePeak: "Južni swell sa zapadnim vetrom",
+      bestTimeDetails: [
+        "**Najbolji swell:** južni swell",
+        "**Najbolji vetar:** zapadni vetar (offshore)",
+        "**Najbolja plima:** sa obe strane oseke",
+        "**Konzistentnost:** dobra, ali kapriciozna - treba prave uslove",
+        "**Sezone:** može se surfovati cele godine",
+        "**Temperatura vode:** 22-28°C (shorty ili surf pantalone)",
+        "**Pratite swell-ove sa Severne obale Južne Afrike za najbolje sesije**"
+      ],
+      tips: [
+        "Provjerite prognozu talasa pre rezervacije (Surfline, Magicseaweed)",
+        "Point break može da rivališe J-Bay-u, ali treba savršene uslove",
+        "Donesite rezervne daske i dodatne lič-eve - prodavnice ograničene",
+        "Poštujte jake struje - budite strpljivi sa plimom",
+        "Soft-top longboards su idealni za početnike na talasima sa plaže",
+        "Dupini često surfuju zajedno sa vama - magično iskustvo!",
         "Voda je topla, ali ponesite shorty radi zaštite od vetra",
         "Pitajte meštane o swell-u i trenutnim uslovima",
         "Neprenakrcani lineup-ovi = više talasa za vas!",

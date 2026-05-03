@@ -39,6 +39,7 @@ Preferred communication style: Simple, everyday language.
 ### Email Template System
 - **Base Templates**: HTML templates in `email_templates/base/` for each email type
 - **Translations**: JSON files in `email_templates/translations/` supporting multiple languages (EN-GB, EN-US, PT-PT, DE, FR, ES, IT, NL, AF)
+- **Website Languages**: EN, PT, DE, FR, ES, IT, NL, AF, PL, SR (Latin), HR (Croatian, ijekavian) — added by mirroring the SR pipeline (langs/<code>.js, content blocks, accommodation-translations.json, seoMeta, experiencePageTranslations, useLocale, Header, critical, localize)
 - **Rendering**: Template renderer service applies translations and data substitution
 
 ### Design System
