@@ -12,8 +12,8 @@
   <script>
     (function(){
       function nonErr(v){ return v==null || !(v instanceof Error); }
-      window.addEventListener('error', function(e){ if (e && nonErr(e.error)) { e.preventDefault(); } }, true);
-      window.addEventListener('unhandledrejection', function(e){ if (e && nonErr(e.reason)) { e.preventDefault(); } });
+      window.addEventListener('error', function(e){ if (e && nonErr(e.error)) { e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation(); } }, true);
+      window.addEventListener('unhandledrejection', function(e){ if (e && nonErr(e.reason)) { e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation(); } }, true);
     })();
   </script>
 <script>
