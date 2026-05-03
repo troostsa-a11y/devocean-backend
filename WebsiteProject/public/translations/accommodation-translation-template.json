@@ -3668,16 +3668,60 @@
   },
   "sr": {
     "safari": {
-      "title": "Safari šator",
-      "shortDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
-      "detailedFeatures": [
-        "Dva jednokrevetna kreveta (ili King) sa noćnim ormarićima i lampama sa abažurima",
-        "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
-        "Mala polica za odeću/osnovne stvari",
-        "Privatna terasa sa stolicama od palminog lišća okrenuta ka tropskoj bašti",
-        "Zajednička kupatila (žensko/muško): 2 tople/hladne tuš kabine i 2 toaleta svako",
-        "Selo može biti živo tokom praznika; besplatne čepiće za uši na recepciji"
-      ]
+      "eyebrow": "Safari šator",
+      "heroTitle": "Udobnost + avantura u platnu",
+      "heroDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
+      "sections": [
+        {
+          "heading": "Prostor i raspored",
+          "description": "Šator nudi dobro osmišljen, ugodan enterijer sa promišljenim detaljima za lagodan boravak.",
+          "features": [
+            "Dva jednokrevetna kreveta (ili King) sa noćnim ormarićima i lampama sa abažurima",
+            "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
+            "Mala polica za odeću i sitnice"
+          ]
+        },
+        {
+          "heading": "San i udobnost",
+          "description": "Dva jednokrevetna kreveta sa noćnim ormarićima i lampama mogu se spojiti u krevet King-size za goste koji više vole bračnu varijantu.",
+          "features": [
+            "Privatna terasa sa stolicama od palminog lišća, sa pogledom na tropsku baštu",
+            "Zajednička kupatila (ženska/muška): po 2 tuša sa toplom/hladnom vodom i 2 toaleta",
+            "Selo zna biti živo tokom praznika; čepiće za uši nudimo besplatno na recepciji"
+          ]
+        },
+        {
+          "heading": "Terasa i bašta",
+          "description": "Iziđite na privatnu terasu, opremljenu stolicama od palminog lišća. Uživajte u pogledu na bujnu tropsku baštu — prelepo osvetljenu noću za romantičnu atmosferu.",
+          "features": [
+            "Privatno sedenje na otvorenom",
+            "Noćno osvetljenje za mirne večeri"
+          ]
+        },
+        {
+          "heading": "Kupatila",
+          "description": "Gosti imaju pristup zajedničkim kupatilima, odvojenim za žene i muškarce — održavaju se čisti i pristupačni.",
+          "features": [
+            "2× tuš sa toplom/hladnom vodom po strani",
+            "2× toaleta po strani",
+            "Lavaboi sa hladnom vodom"
+          ]
+        },
+        {
+          "heading": "Dobro je znati",
+          "description": "Tokom prazničnih vikenda i špica sezone (kraj decembra – početak januara), selo zna biti živo. Čepiće za uši nudimo besplatno na recepciji za miran san.",
+          "closingNote": "Prostran boravak u krilu prirode sa savremenim udobnostima — savršen za putnike koji žele otvoreni prostor bez odricanja od pogodnosti."
+        }
+      ],
+      "trustItems": [
+        "Udobnost u krilu prirode",
+        "Čisti, dobro održavani sadržaji",
+        "Opuštene, romantične večeri"
+      ],
+      "cta": {
+        "heading": "Spremni da rezervišete vaš Safari šator?",
+        "description": "Obezbedite svoj odmor u prirodi u DEVOCEAN Lodgeu. Direktna rezervacija znači najbolje cene i punu podršku našeg tima."
+      }
     },
     "comfort": {
       "eyebrow": "Comfort šator",
@@ -3730,226 +3774,951 @@
       }
     },
     "cottage": {
-      "title": "Vikendica sa baštom",
-      "shortDescription": "Prozračna vikendica sa queen krevetom, klimom (invertor), radnim stolom i trpezarijom, privatnom terasom i kupatilom u šarmantnom roundavel-u.",
-      "detailedFeatures": [
-        "Krov od rimskih crepova, visoki beli plafon sa tamnim drvenim gredama",
-        "Pod od terakote, topli zidovi obojeni u boji žitnih polja",
-        "Queen krevet • radni sto sa lampom sa abažurom • trpezarija sa stolicama",
-        "Police za kofere, vešalica za odeću i dodatne police",
-        "Klima invertor (hladno i toplo) • dimabilno glavno svetlo",
-        "Privatno kupatilo u roundavel-u sa krovom od trave (tuš, lavabo, toalet)",
-        "Privatna drvena terasa sa stolicama za kampovanje i bočnim stolom"
-      ]
+      "eyebrow": "Vrtni Cottage",
+      "heroTitle": "Rustikalni šarm • Tropski mir • Savremena udobnost",
+      "heroDescription": "Prozračan cottage sa Queen krevetom, klima uređajem (inverter), radnim stolom i trpezarijskim stolom, privatnom terasom i kupatilom u šarmantnom okruglom paviljonu.",
+      "sections": [
+        {
+          "heading": "Atmosfera i dizajn",
+          "description": "Pod od terakote dodaje toplinu ispod visoke tavanice sa drvenim gredama, dok zidovi u boji žitnog polja unose mir i prijatnost u prostor.",
+          "features": [
+            "Krov od mediteranskog crepa, visok beli plafon sa tamnim drvenim gredama",
+            "Pod od terakote, topli zidovi u boji žitnog polja",
+            "Queen krevet • radni sto sa lampom • trpezarijski sto sa stolicama"
+          ]
+        },
+        {
+          "heading": "Terasa i bašta",
+          "description": "Iziđite na privatnu drvenu terasu, opremljenu kamping stolicama i pomoćnim stočićem — mirno mesto za odmor uz bujno zelenilo i nežne zvuke bašte.",
+          "features": [
+            "Police za kofere, kuka za odeću i dodatne police",
+            "Inverter klima (hlađenje i grejanje) • glavno svetlo sa dimerom"
+          ]
+        },
+        {
+          "heading": "Enterijer i sadržaji",
+          "description": "Osmišljen i za odmor i za rad, Vrtni Cottage nudi Queen krevet u kutiji, radni sto sa lampom i trpezarijski sto sa stolicama.",
+          "features": [
+            "Privatno kupatilo u okruglom paviljonu sa krovom od slame (tuš, lavabo, toalet)",
+            "Privatna drvena terasa sa kamping stolicama i pomoćnim stočićem"
+          ]
+        },
+        {
+          "heading": "Udobnost i osvetljenje",
+          "description": "Inverter klima čuva vašu udobnost u svim sezonama, sa hlađenjem i grejanjem. Mekano osvetljenje, uključujući glavno svetlo sa dimerom, omogućava savršen ambijent za rad, odmor ili opuštanje.",
+          "features": [
+            "Inverter klima (hlađenje i grejanje)",
+            "Osvetljenje sa dimerom i topli sjaj enterijera"
+          ]
+        },
+        {
+          "heading": "Privatno kupatilo",
+          "description": "Iza cottage-a, šarmantan okrugli paviljon sa krovom od slame skriva vaše privatno kupatilo sa tušem, toaletom i lavaboom — spaja savremenu udobnost sa autentičnim afričkim šarmom."
+        }
+      ],
+      "trustItems": [
+        "Okružen tropskom prirodom",
+        "Privatno kupatilo u paviljonu",
+        "Klimatizovan i mirno osvetljen"
+      ],
+      "cta": {
+        "heading": "Spremni da rezervišete vaš Vrtni Cottage?",
+        "description": "Doživite rustikalnu eleganciju u našem tropskom utočištu. Rezervišite direktno za najbolje cene i ličnu uslugu."
+      }
     },
     "chalet": {
-      "title": "Kućica sa slamnatim krovom",
-      "shortDescription": "Skrovita, romantična mala kućica pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje Twin/King kreveta.",
-      "detailedFeatures": [
-        "Krov od trave na bluegum stubovima • jesenji škriljac na podu",
-        "Zidovi obojeni u boji žitnih polja • mirno, zasenčeno okruženje",
-        "Trpezarija sa stolicama • klimatizacija",
-        "Privatno kupatilo (tuš, lavabo, toalet)",
-        "Dva jednokrevetna ili King sa noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
-      ]
+      "eyebrow": "Chalet sa krovom od slame",
+      "heroTitle": "Romantična izolacija • Rustikalna elegancija • Tropski mir",
+      "heroDescription": "Skroviti, romantični mali chalet pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje Twin/King kreveta.",
+      "sections": [
+        {
+          "heading": "Okruženje i atmosfera",
+          "description": "Chalet pod krovom od slame, oslonjen na čvrste stubove od bluegum drveta, odiše rustikalnom elegancijom. Pod boje jesenjeg škriljca prirodno se uklapa u zelenilo, dok zidovi u boji žitnog polja stvaraju toplu i mirnu atmosferu unutra.",
+          "features": [
+            "Krov od slame na stubovima od bluegum drveta • pod od jesenjeg škriljca",
+            "Zidovi u boji žitnog polja • mirno, zaklonjeno mesto",
+            "Trpezarijski sto sa stolicama • klima uređaj"
+          ]
+        },
+        {
+          "heading": "Terasa i bašta",
+          "description": "Iziđite na privatnu terasu, opremljenu stolicama od palminog lišća i trpezarijskim stolom sa stolicama. Opustite se u hladu bašte i uživajte u prizorima i zvucima prirode.",
+          "features": [
+            "Privatno kupatilo (tuš, lavabo, toalet)",
+            "Dva jednokrevetna ili King krevet sa noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
+          ]
+        },
+        {
+          "heading": "Enterijer i udobnost",
+          "description": "Unutra, dva jednokrevetna kreveta sa noćnim ormarićima mogu se spojiti u King-size krevet za ugodnu bračnu postavku. Klima uređaj obezbeđuje udobnost tokom cele godine, dok mekano osvetljenje upotpunjuje rustikalan dekor.",
+          "features": [
+            "Postavljanje Twin ili King kreveta",
+            "Klima za hlađenje i udobnost",
+            "Toplo osvetljenje i mekani tonovi enterijera"
+          ]
+        },
+        {
+          "heading": "Privatno kupatilo",
+          "description": "Chalet ima privatno kupatilo sa tušem, toaletom i lavaboom, koje spaja udobnost sa rustikalnim šarmom prirodnog okruženja."
+        },
+        {
+          "heading": "Doživljaj",
+          "description": "Bilo da tražite romantični beg ili miran odmor, ovaj mali chalet pruža nezaboravan spoj izolacije, elegancije i udobnosti — idealno utočište u tropskoj oazi DEVOCEAN-a."
+        }
+      ],
+      "trustItems": [
+        "Uronjen u prirodu",
+        "Romantična i mirna atmosfera",
+        "Privatna udobnost i pogodnost"
+      ],
+      "cta": {
+        "heading": "Spremni da rezervišete vaš Chalet sa krovom od slame?",
+        "description": "Pobegnite u romantičnu izolaciju u našem tropskom skrovištu. Rezervišite direktno za najbolje cene i ličnu uslugu."
+      }
     }
   },
   "cs": {
     "safari": {
-      "title": "Safari stan",
-      "shortDescription": "Plátěný stan o rozloze 12 m² na platformě 3×6 m. Twin/King, ventilátor, zásuvky, moskytiéra, soukromá terasa. Sdílené koupelny.",
-      "detailedFeatures": [
-        "Dvě jednolůžkové postele (nebo King) s nočními stolky a stolními lampami",
-        "Moskytiéra na dveřích/oknech • silný ventilátor • zásuvky",
-        "Malá polička na oblečení/základní věci",
-        "Soukromá terasa se židlemi z palmových listů s výhledem do tropické zahrady",
-        "Sdílené koupelny (ženské/mužské): 2 sprchy s teplou/studenou vodou a 2 toalety v každé",
-        "Vesnice může být živá během svátků; bezplatné špunty do uší na recepci"
-      ]
+      "eyebrow": "Safari stan",
+      "heroTitle": "Pohodlí + dobrodružství v plátně",
+      "heroDescription": "Plátěný stan o ploše 12 m² na podlaze 3×6 m. Twin/King, ventilátor, zásuvky, moskytiéra, soukromá terasa. Sdílené koupelny.",
+      "sections": [
+        {
+          "heading": "Prostor a uspořádání",
+          "description": "Stan nabízí dobře promyšlený, útulný interiér s pečlivými detaily pro pohodlný pobyt.",
+          "features": [
+            "Dvě jednolůžkové postele (nebo King) s nočními stolky a stolními lampami",
+            "Moskytiéra na dveřích/oknech • silný ventilátor • zásuvky",
+            "Malá polička na oblečení a drobnosti"
+          ]
+        },
+        {
+          "heading": "Spánek a pohodlí",
+          "description": "Dvě jednolůžkové postele s nočními stolky a lampami lze spojit do King-size postele pro hosty preferující manželské uspořádání.",
+          "features": [
+            "Soukromá terasa s židlemi z palmových listů s výhledem do tropické zahrady",
+            "Sdílené koupelny (dámská/pánská): 2 sprchy s teplou/studenou vodou a 2 toalety na každé straně",
+            "Vesnice bývá živá během svátků; špunty do uší zdarma na recepci"
+          ]
+        },
+        {
+          "heading": "Terasa a zahrada",
+          "description": "Vyjděte na svou soukromou terasu vybavenou židlemi z palmových listů. Užijte si výhled na bujnou tropickou zahradu — krásně osvětlenou v noci pro romantickou atmosféru.",
+          "features": [
+            "Soukromé venkovní posezení",
+            "Noční osvětlení pro klidné večery"
+          ]
+        },
+        {
+          "heading": "Koupelny",
+          "description": "Hosté mají přístup ke sdíleným koupelnám, oddělených pro dámy a pány — udržovaným v čistotě a snadno dostupným.",
+          "features": [
+            "2× sprcha s teplou/studenou vodou na straně",
+            "2× toaleta na straně",
+            "Umyvadla se studenou vodou"
+          ]
+        },
+        {
+          "heading": "Dobré vědět",
+          "description": "Během svátečních víkendů a vrcholné sezóny (konec prosince – začátek ledna) může být ve vesnici živo. Špunty do uší jsou na recepci k dispozici zdarma pro klidný spánek.",
+          "closingNote": "Prostorný pobyt v lůně přírody s moderním pohodlím — ideální pro cestovatele, kteří chtějí volný prostor bez kompromisů v pohodlí."
+        }
+      ],
+      "trustItems": [
+        "Pohodlí v lůně přírody",
+        "Čisté, dobře udržované zázemí",
+        "Uvolněné, romantické večery"
+      ],
+      "cta": {
+        "heading": "Připraveni rezervovat váš Safari stan?",
+        "description": "Zajistěte si svůj pobyt v přírodě v DEVOCEAN Lodge. Přímá rezervace znamená nejlepší ceny a plnou podporu našeho týmu."
+      }
     },
     "comfort": {
-      "title": "Comfort stan",
-      "shortDescription": "Vylepšený stan o rozloze 12 m² s větším soukromím (boční/zadní stěny), soukromou terasou a vlastní koupelnou pod slaměnou střechou.",
-      "detailedFeatures": [
-        "Konfigurace Twin/King • lampy • praktické vypínače",
-        "Moskytiéra • silný ventilátor • zásuvky",
-        "Soukromá dřevěná terasa se židlemi z palmových listů",
-        "Vzadu: soukromá koupelna (sprcha, toaleta, umyvadlo) pod slaměnou střechou",
-        "Vesnice je živá v sezóně/o svátcích; špunty do uší k dispozici"
-      ]
+      "eyebrow": "Comfort stan",
+      "heroTitle": "Více soukromí. Více pohodlí. Stejné divoké kouzlo.",
+      "heroDescription": "Vylepšený stan o ploše 12 m² s extra soukromím (boční a zadní stěny), soukromou terasou a vlastní koupelnou pod doškovou střechou.",
+      "sections": [
+        {
+          "heading": "Prostor a soukromí",
+          "description": "Prostorný plátěný stan o ploše 12 m² na vlastní podlaze, se dvěma bočními stěnami a zadní stěnou pro zvýšené soukromí oproti standardnímu Safari stanu.",
+          "features": [
+            "Uspořádání Twin/King • lampy • praktické vypínače",
+            "Moskytiéra • silný ventilátor • zásuvky",
+            "Soukromá dřevěná terasa s židlemi z palmových listů"
+          ]
+        },
+        {
+          "heading": "Spánek a pohodlí",
+          "description": "Dvě jednolůžkové postele s nočními stolky a lampami lze spojit do King-size postele. Osvětlení se snadno ovládá vypínači u vchodu.",
+          "features": [
+            "Vzadu: soukromá koupelna (sprcha, toaleta, umyvadlo) pod doškovou střechou",
+            "Vesnice bývá živá během svátků a sezóny; špunty do uší zdarma"
+          ]
+        },
+        {
+          "heading": "Terasa a zahrada",
+          "description": "Užijte si svou soukromou dřevěnou terasu s židlemi z palmových listů, s výhledem na bujnou tropickou zahradu — romanticky osvětlenou v noci.",
+          "features": [
+            "Soukromé venkovní posezení",
+            "Pohled do zahrady, noční osvětlení"
+          ]
+        },
+        {
+          "heading": "Soukromá koupelna",
+          "description": "Za stanem, pod půvabnou doškovou střechou, vaše soukromá koupelna nabízí sprchu, toaletu a umyvadlo — spojuje pohodlí s jedinečným zážitkem v přírodě."
+        },
+        {
+          "heading": "Dobré vědět",
+          "description": "Ačkoli je DEVOCEAN Lodge klidné místo, okolní vesnice bývá živá během svátečních víkendů a vrcholné sezóny (konec prosince – začátek ledna). Špunty do uší jsou na recepci k dispozici zdarma.",
+          "closingNote": "Prostorný, dobře vybavený a soukromý pobyt v safari stylu — ideální pro hosty, kteří chtějí pohodlí, klid a výhody vlastní koupelny."
+        }
+      ],
+      "trustItems": [
+        "Pohodlí v lůně přírody",
+        "Výhody vlastní koupelny",
+        "Romantické večery v zahradě"
+      ],
+      "cta": {
+        "heading": "Připraveni rezervovat váš Comfort stan?",
+        "description": "Vylepšete svůj pobyt v přírodě s větším soukromím a vlastní koupelnou. Rezervujte přímo pro nejlepší ceny."
+      }
     },
     "cottage": {
-      "title": "Chalupa se zahradou",
-      "shortDescription": "Vzdušná chalupa s queen postelí, klimatizací (invertor), pracovním stolem a jídelnou, soukromou terasou a koupelnou v půvabném roundavelu.",
-      "detailedFeatures": [
-        "Střecha z římských tašek, vysoký bílý strop s tmavými dřevěnými trámy",
-        "Terakotová podlaha, teplé stěny v barvě obilných polí",
-        "Queen postel • pracovní stůl s lampou • jídelní stůl se židlemi",
-        "Police na kufry, věšák na oblečení a další police",
-        "Klimatizace s invertorem (chlazení a topení) • stmívatelné hlavní světlo",
-        "Soukromá koupelna v roundavelu se slaměnou střechou (sprcha, umyvadlo, toaleta)",
-        "Soukromá dřevěná terasa s kempinkovými židlemi a bočním stolkem"
-      ]
+      "eyebrow": "Zahradní Cottage",
+      "heroTitle": "Rustikální kouzlo • Tropický klid • Moderní pohodlí",
+      "heroDescription": "Vzdušný cottage s Queen postelí, klimatizací (inverter), pracovním stolem a jídelním stolem, soukromou terasou a koupelnou v půvabném kruhovém pavilonu.",
+      "sections": [
+        {
+          "heading": "Atmosféra a design",
+          "description": "Podlaha z terakoty přidává teplo pod vysokým stropem s dřevěnými trámy, zatímco stěny v barvě obilného pole vnášejí klid a útulnost do prostoru.",
+          "features": [
+            "Střecha z mediteránní tašky, vysoký bílý strop s tmavými dřevěnými trámy",
+            "Terakotová podlaha, teplé stěny v barvě obilného pole",
+            "Queen postel • pracovní stůl s lampou • jídelní stůl s židlemi"
+          ]
+        },
+        {
+          "heading": "Terasa a zahrada",
+          "description": "Vyjděte na svou soukromou dřevěnou terasu vybavenou kempingovými židlemi a odkládacím stolkem — klidné místo k odpočinku v bujné zeleni a jemných zvucích zahrady.",
+          "features": [
+            "Police na kufry, věšák na oblečení a další police",
+            "Inverter klimatizace (chlazení a topení) • hlavní světlo se stmívačem"
+          ]
+        },
+        {
+          "heading": "Interiér a vybavení",
+          "description": "Navržen pro odpočinek i práci, Zahradní Cottage nabízí Queen postel, pracovní stůl s lampou a jídelní stůl s židlemi.",
+          "features": [
+            "Soukromá koupelna v kruhovém pavilonu s doškovou střechou (sprcha, umyvadlo, toaleta)",
+            "Soukromá dřevěná terasa s kempingovými židlemi a odkládacím stolkem"
+          ]
+        },
+        {
+          "heading": "Pohodlí a osvětlení",
+          "description": "Inverter klimatizace udržuje vaše pohodlí v každé sezóně, s chlazením i topením. Měkké osvětlení, včetně hlavního světla se stmívačem, umožňuje dokonalou atmosféru pro práci, odpočinek nebo relaxaci.",
+          "features": [
+            "Inverter klimatizace (chlazení a topení)",
+            "Stmívatelné osvětlení a teplá záře interiéru"
+          ]
+        },
+        {
+          "heading": "Soukromá koupelna",
+          "description": "Za cottagem půvabný kruhový pavilon s doškovou střechou skrývá vaši soukromou koupelnu se sprchou, toaletou a umyvadlem — spojuje moderní pohodlí s autentickým africkým kouzlem."
+        }
+      ],
+      "trustItems": [
+        "Obklopen tropickou přírodou",
+        "Soukromá koupelna v pavilonu",
+        "Klimatizováno a klidně osvětleno"
+      ],
+      "cta": {
+        "heading": "Připraveni rezervovat váš Zahradní Cottage?",
+        "description": "Zažijte rustikální eleganci v našem tropickém útočišti. Rezervujte přímo pro nejlepší ceny a osobní servis."
+      }
     },
     "chalet": {
-      "title": "Chata se slaměnou střechou",
-      "shortDescription": "Skrytá, romantická malá chata pod palmami a strelíciemi. Klimatizace, soukromá koupelna, terasa, konfigurace Twin/King.",
-      "detailedFeatures": [
-        "Slaměná střecha na sloupech z blahovičníku • podlaha v barvě podzimní břidlice",
-        "Stěny v barvě obilných polí • klidné, stinné prostředí",
-        "Jídelní stůl se židlemi • klimatizace",
-        "Soukromá koupelna (sprcha, umyvadlo, toaleta)",
-        "Dvě jednolůžkové nebo King s nočními stolky • soukromá terasa se židlemi z palmových listů"
-      ]
+      "eyebrow": "Chalet s doškovou střechou",
+      "heroTitle": "Romantické soukromí • Rustikální elegance • Tropický klid",
+      "heroDescription": "Skrytý, romantický malý chalet pod palmami a strelíciemi. Klimatizace, soukromá koupelna, terasa, uspořádání Twin/King.",
+      "sections": [
+        {
+          "heading": "Prostředí a atmosféra",
+          "description": "Chalet pod doškovou střechou, podepřený pevnými kůly z bluegum, vyzařuje rustikální eleganci. Podlaha v barvě podzimní břidlice harmonicky zapadá do bujné zeleně, zatímco stěny v barvě obilného pole vytvářejí teplou a klidnou atmosféru uvnitř.",
+          "features": [
+            "Došková střecha na bluegum kůlech • podlaha v barvě podzimní břidlice",
+            "Stěny v barvě obilného pole • klidné, zastíněné místo",
+            "Jídelní stůl s židlemi • klimatizace"
+          ]
+        },
+        {
+          "heading": "Terasa a zahrada",
+          "description": "Vyjděte na svou soukromou terasu vybavenou židlemi z palmových listů a jídelním stolem se židlemi. Odpočiňte si ve stínu zahrady a užívejte si pohledy a zvuky přírody.",
+          "features": [
+            "Soukromá koupelna (sprcha, umyvadlo, toaleta)",
+            "Dvě jednolůžkové nebo King postel s nočními stolky • soukromá terasa s židlemi z palmových listů"
+          ]
+        },
+        {
+          "heading": "Interiér a pohodlí",
+          "description": "Uvnitř lze dvě jednolůžkové postele s nočními stolky spojit do King-size postele pro útulné dvojlůžkové uspořádání. Klimatizace zajišťuje pohodlí po celý rok, zatímco měkké osvětlení doplňuje rustikální dekor.",
+          "features": [
+            "Uspořádání Twin nebo King",
+            "Klimatizace pro chlazení a pohodlí",
+            "Teplé osvětlení a měkké tóny interiéru"
+          ]
+        },
+        {
+          "heading": "Soukromá koupelna",
+          "description": "Chalet má soukromou koupelnu se sprchou, toaletou a umyvadlem, která spojuje pohodlí s rustikálním kouzlem přírodního prostředí."
+        },
+        {
+          "heading": "Zážitek",
+          "description": "Ať už hledáte romantický útěk nebo klidný odpočinek, tento malý chalet poskytuje nezapomenutelnou kombinaci soukromí, elegance a pohodlí — ideální útočiště v tropické oáze DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Ponořen do přírody",
+        "Romantická a klidná atmosféra",
+        "Soukromé pohodlí a výhody"
+      ],
+      "cta": {
+        "heading": "Připraveni rezervovat váš Chalet s doškovou střechou?",
+        "description": "Utečte do romantického soukromí v našem tropickém úkrytu. Rezervujte přímo pro nejlepší ceny a osobní servis."
+      }
     }
   },
   "tr": {
     "safari": {
-      "title": "Safari Çadırı",
-      "shortDescription": "3×6 m platform üzerinde 12 m² bez çadır. Twin/King yatak, fan, prizler, sivrisinek teli, özel teras. Paylaşımlı banyolar.",
-      "detailedFeatures": [
-        "İki tek kişilik yatak (veya King) komodinler ve masa lambalarıyla",
-        "Kapı/pencerelerde sivrisinek teli • güçlü fan • prizler",
-        "Kıyafet/temel eşyalar için küçük raf",
-        "Tropik bahçeye bakan palmiye yapraklı sandalyelerle özel teras",
-        "Paylaşımlı banyolar (kadın/erkek): her birinde sıcak/soğuk sulu 2 duş ve 2 tuvalet",
-        "Köy tatil dönemlerinde hareketli olabilir; resepsiyonda ücretsiz kulak tıkacı"
-      ]
+      "eyebrow": "Safari Çadırı",
+      "heroTitle": "Konfor + Macera, Branda Altında",
+      "heroDescription": "3×6 m platform üzerinde 12 m² branda çadır. Twin/King, vantilatör, prizler, sivrisinek teli, özel teras. Ortak duşlar.",
+      "sections": [
+        {
+          "heading": "Alan ve Düzen",
+          "description": "Çadır, rahat bir konaklama için özenle tasarlanmış sıcak bir iç mekan sunar.",
+          "features": [
+            "İki tek kişilik yatak (veya King) komodinli ve abajurlu lambalarla",
+            "Kapı/pencerelerde sivrisinek teli • güçlü vantilatör • prizler",
+            "Kıyafet ve eşyalar için küçük raf"
+          ]
+        },
+        {
+          "heading": "Uyku ve Konfor",
+          "description": "İki tek kişilik yatak komodinli ve lambalı olup, çift yatak konfigürasyonunu tercih eden konuklar için King-size yatak olarak birleştirilebilir.",
+          "features": [
+            "Tropikal bahçeye bakan, palmiye yapraklı sandalyelerle döşenmiş özel teras",
+            "Ortak banyolar (kadın/erkek): her tarafta 2 sıcak/soğuk duş ve 2 tuvalet",
+            "Köy tatil günlerinde hareketli olabilir; resepsiyonda ücretsiz kulak tıkacı"
+          ]
+        },
+        {
+          "heading": "Teras ve Bahçe",
+          "description": "Palmiye yapraklı sandalyelerle döşenmiş özel terasınıza adım atın. Yemyeşil tropikal bahçenin manzarasının tadını çıkarın — geceleri romantik bir atmosfer için güzelce aydınlatılır.",
+          "features": [
+            "Özel açık hava oturma alanı",
+            "Huzurlu akşamlar için gece aydınlatması"
+          ]
+        },
+        {
+          "heading": "Banyolar",
+          "description": "Konuklar, kadın ve erkek için ayrı tutulan ortak banyolara erişebilir — temiz ve kullanışlı tutulur.",
+          "features": [
+            "Her tarafta 2× sıcak/soğuk su duşu",
+            "Her tarafta 2× tuvalet",
+            "Soğuk su lavaboları"
+          ]
+        },
+        {
+          "heading": "Bilmekte Fayda Var",
+          "description": "Resmi tatil hafta sonları ve yoğun sezonda (Aralık sonu – Ocak başı) köy hareketli olabilir. Huzurlu bir uyku için resepsiyonda ücretsiz kulak tıkacı bulunur.",
+          "closingNote": "Modern konforlarla doğa içinde geniş bir konaklama — açık havayı kolaylıktan ödün vermeden isteyen yolcular için ideal."
+        }
+      ],
+      "trustItems": [
+        "Doğa içinde konfor",
+        "Temiz, iyi bakımlı tesisler",
+        "Rahat, romantik akşamlar"
+      ],
+      "cta": {
+        "heading": "Safari Çadırınızı Rezerve Etmeye Hazır mısınız?",
+        "description": "DEVOCEAN Lodge'da doğayla iç içe kaçışınızı güvence altına alın. Doğrudan rezervasyon en iyi fiyatları ve ekibimizden tam destek anlamına gelir."
+      }
     },
     "comfort": {
-      "title": "Comfort Çadırı",
-      "shortDescription": "Daha fazla mahremiyet (yan/arka duvarlar), özel teras ve sazdan çatı altında özel banyo ile geliştirilmiş 12 m² çadır.",
-      "detailedFeatures": [
-        "Twin/King yapılandırması • lambalar • pratik anahtarlar",
-        "Sivrisinek teli • güçlü fan • prizler",
-        "Palmiye yapraklı sandalyelerle özel ahşap teras",
-        "Arkada: sazdan çatı altında özel banyo (duş, tuvalet, lavabo)",
-        "Köy sezonda/tatillerde hareketli; kulak tıkacı mevcut"
-      ]
+      "eyebrow": "Comfort Çadırı",
+      "heroTitle": "Daha fazla mahremiyet. Daha fazla konfor. Aynı vahşi cazibe.",
+      "heroDescription": "Ek mahremiyet (yan ve arka duvarlar), özel teras ve sazdan çatı altında kendi banyosu olan, geliştirilmiş 12 m² çadır.",
+      "sections": [
+        {
+          "heading": "Alan ve Mahremiyet",
+          "description": "Standart Safari Çadırına kıyasla artırılmış mahremiyet için iki yan duvar ve arka duvarla, kendi platformunda 12 m² geniş branda çadır.",
+          "features": [
+            "Twin/King yatak düzeni • lambalar • kullanışlı ışık anahtarları",
+            "Sivrisinek teli • güçlü vantilatör • prizler",
+            "Palmiye yapraklı sandalyelerle özel ahşap teras"
+          ]
+        },
+        {
+          "heading": "Uyku ve Konfor",
+          "description": "Komodinli ve abajurlu lambalı iki tek kişilik yatak King-size yatak olarak birleştirilebilir. Aydınlatma, girişin yakınındaki anahtarlarla kolayca kontrol edilir.",
+          "features": [
+            "Arkada: sazdan çatı altında özel banyo (duş, tuvalet, lavabo)",
+            "Köy tatil ve sezonda hareketli olabilir; ücretsiz kulak tıkacı"
+          ]
+        },
+        {
+          "heading": "Teras ve Bahçe",
+          "description": "Palmiye yapraklı sandalyelerle döşenmiş özel ahşap terasınızda, geceleri romantik biçimde aydınlatılan yemyeşil tropikal bahçeye bakarak keyif yapın.",
+          "features": [
+            "Özel açık hava oturma alanı",
+            "Bahçe manzarası, gece aydınlatması"
+          ]
+        },
+        {
+          "heading": "Özel Banyo",
+          "description": "Çadırın arkasında, çekici bir sazdan çatı altında, özel banyonuzda duş, tuvalet ve lavabo bulunur — konforu açık havadaki benzersiz dokunuşla birleştirir."
+        },
+        {
+          "heading": "Bilmekte Fayda Var",
+          "description": "DEVOCEAN Lodge huzurlu bir yer olsa da çevre köy resmi tatil hafta sonlarında ve yoğun sezonda (Aralık sonu – Ocak başı) hareketli olabilir. Resepsiyonda ücretsiz kulak tıkacı bulunur.",
+          "closingNote": "Geniş, iyi donanımlı ve özel safari tarzı bir kaçış — konfor, mahremiyet ve özel banyo kolaylığı isteyen konuklar için mükemmel."
+        }
+      ],
+      "trustItems": [
+        "Doğa içinde konfor",
+        "Özel banyo kolaylığı",
+        "Bahçede romantik akşamlar"
+      ],
+      "cta": {
+        "heading": "Comfort Çadırınızı Rezerve Etmeye Hazır mısınız?",
+        "description": "Doğa kaçışınızı daha fazla mahremiyet ve özel banyo kolaylığıyla yükseltin. En iyi fiyatlar için doğrudan rezervasyon yapın."
+      }
     },
     "cottage": {
-      "title": "Bahçeli Kulübe",
-      "shortDescription": "Queen yatak, klima (invertör), çalışma masası ve yemek alanı, özel teras ve banyolu büyüleyici roundavelde havadar kulübe.",
-      "detailedFeatures": [
-        "Roma kiremitli çatı, koyu ahşap kirişlerle yüksek beyaz tavan",
-        "Terakota zemin, buğday tarlası renginde sıcak duvarlar",
-        "Queen yatak • lambalı çalışma masası • sandalyeli yemek masası",
-        "Bavullar için raf, kıyafet askılığı ve ek raflar",
-        "Invertörlü klima (soğutma ve ısıtma) • karartılabilir ana ışık",
-        "Sazdan çatılı roundavelde özel banyo (duş, lavabo, tuvalet)",
-        "Kamp sandalyeleri ile özel ahşap teras"
-      ]
+      "eyebrow": "Bahçe Cottage'ı",
+      "heroTitle": "Rustik cazibe • Tropikal huzur • Modern konfor",
+      "heroDescription": "Queen yatak, klima (inverter), çalışma ve yemek masası, özel teras ve çekici bir yuvarlak köşkte banyosu olan ferah cottage.",
+      "sections": [
+        {
+          "heading": "Atmosfer ve Tasarım",
+          "description": "Terakota zemin, ahşap kirişli yüksek tavanın altına sıcaklık katar; buğday tarlası renginde duvarlar mekana huzur ve sıcaklık taşır.",
+          "features": [
+            "Roma kiremidi çatı, koyu ahşap kirişli yüksek beyaz tavan",
+            "Terakota zemin, sıcak buğday tarlası rengi duvarlar",
+            "Queen yatak • abajurlu lambalı çalışma masası • sandalyeli yemek masası"
+          ]
+        },
+        {
+          "heading": "Teras ve Bahçe",
+          "description": "Kamp sandalyeleri ve sehpayla döşenmiş özel ahşap terasınıza çıkın — yemyeşil ve bahçenin nazik sesleri eşliğinde dinlenmek için huzurlu bir nokta.",
+          "features": [
+            "Bavul rafları, kıyafet askısı ve ek raflar",
+            "Inverter klima (soğutma ve ısıtma) • karartılabilir ana ışık"
+          ]
+        },
+        {
+          "heading": "İç Mekan ve Olanaklar",
+          "description": "Hem dinlenmek hem de işlevsellik için tasarlanan Bahçe Cottage'ı, kutu Queen yatak, abajurlu lambalı çalışma masası ve sandalyeli yemek masası sunar.",
+          "features": [
+            "Sazdan çatılı yuvarlak köşkte özel banyo (duş, lavabo, tuvalet)",
+            "Kamp sandalyeleri ve sehpayla özel ahşap teras"
+          ]
+        },
+        {
+          "heading": "Konfor ve Aydınlatma",
+          "description": "Inverter klima her mevsim konforunuzu sağlar, hem soğutma hem ısıtma sunar. Karartılabilir ana ışık dahil yumuşak aydınlatma, çalışma, dinlenme veya rahatlama için mükemmel atmosferi yakalamanızı sağlar.",
+          "features": [
+            "Inverter klima (soğutma ve ısıtma)",
+            "Karartılabilir aydınlatma ve sıcak iç parıltı"
+          ]
+        },
+        {
+          "heading": "Özel Banyo",
+          "description": "Cottage'ın arkasında, çekici bir sazdan çatılı yuvarlak köşk, duş, tuvalet ve lavabolu özel banyonuzu barındırır — modern konforu otantik Afrika cazibesiyle birleştirir."
+        }
+      ],
+      "trustItems": [
+        "Tropikal doğayla çevrili",
+        "Köşkte özel banyo",
+        "Klimalı ve huzurla aydınlatılmış"
+      ],
+      "cta": {
+        "heading": "Bahçe Cottage'ınızı Rezerve Etmeye Hazır mısınız?",
+        "description": "Tropikal bahçe inzivamızda rustik zarafeti deneyimleyin. En iyi fiyatlar ve kişisel hizmet için doğrudan rezervasyon yapın."
+      }
     },
     "chalet": {
-      "title": "Sazdan Çatılı Şale",
-      "shortDescription": "Sazdan çatılı şarjlı şale: queen yatak, klima (invertör), büyük teras, özel banyo ve büyüleyici tropik bahçe manzarası.",
-      "detailedFeatures": [
-        "Otantik sazdan çatı, beyaz duvarlar, açık ahşap kirişler",
-        "Queen yatak • komodinler • masa lambaları",
-        "Lambalı çalışma alanı • dolaplı kıyafet rafı",
-        "Invertörlü klima (soğutma ve ısıtma)",
-        "Sazdan çatılı özel banyo (duş, tuvalet, lavabo)",
-        "Bahçe manzaralı palmiye yapraklı sandalyelerle büyük özel teras",
-        "Sezonda/tatillerde köy hareketli olabilir; kulak tıkacı mevcuttur"
-      ]
+      "eyebrow": "Sazdan Çatılı Chalet",
+      "heroTitle": "Romantik inziva • Rustik zarafet • Tropikal huzur",
+      "heroDescription": "Palmiyeler ve strelitzialar altında, gizli, romantik küçük chalet. Klima, özel banyo, teras, Twin/King yatak düzeni.",
+      "sections": [
+        {
+          "heading": "Ortam ve Atmosfer",
+          "description": "Sağlam bluegum direklere yaslanan sazdan çatılı chalet, rustik zarafet yayar. Sonbahar arduvaz renginde zemin, yemyeşil çevreyle uyumla harmanlanır; buğday tarlası rengindeki duvarlar içeride sıcak ve huzurlu bir atmosfer yaratır.",
+          "features": [
+            "Bluegum direkler üzerinde sazdan çatı • sonbahar arduvaz zemin",
+            "Buğday tarlası rengi duvarlar • huzurlu, gölgeli ortam",
+            "Sandalyeli yemek masası • klima"
+          ]
+        },
+        {
+          "heading": "Teras ve Bahçe",
+          "description": "Palmiye yapraklı sandalyeler ve sandalyeli yemek masasıyla döşenmiş özel terasınıza çıkın. Bahçe gölgesinde rahatlayın ve doğanın görüntü ve seslerinin tadını çıkarın.",
+          "features": [
+            "Özel banyo (duş, lavabo, tuvalet)",
+            "İki tekli veya King, komodinli • palmiye yapraklı sandalyelerle özel teras"
+          ]
+        },
+        {
+          "heading": "İç Mekan ve Konfor",
+          "description": "İçeride komodinli iki tek kişilik yatak, rahat çift düzeni için King-size yatak olarak birleştirilebilir. Klima yıl boyu konfor sağlar; yumuşak aydınlatma rustik dekoru tamamlar.",
+          "features": [
+            "Twin veya King yatak düzeni",
+            "Soğutma ve konfor için klima",
+            "Sıcak aydınlatma ve yumuşak iç tonlar"
+          ]
+        },
+        {
+          "heading": "Özel Banyo",
+          "description": "Chalet'te duş, tuvalet ve lavabolu özel bir banyo bulunur; konforu doğal ortamın rustik cazibesiyle harmanlar."
+        },
+        {
+          "heading": "Deneyim",
+          "description": "İster romantik bir kaçış ister huzurlu bir mola arayın, bu küçük chalet inziva, zarafet ve konforun unutulmaz bir karışımını sunar — DEVOCEAN'ın tropikal cennetinde ideal bir sığınak."
+        }
+      ],
+      "trustItems": [
+        "Doğaya gömülü",
+        "Romantik ve sakin atmosfer",
+        "Özel konfor ve kolaylık"
+      ],
+      "cta": {
+        "heading": "Sazdan Çatılı Chalet'inizi Rezerve Etmeye Hazır mısınız?",
+        "description": "Tropikal saklanma yerimizde romantik bir inzivaya kaçın. En iyi fiyatlar ve kişisel hizmet için doğrudan rezervasyon yapın."
+      }
     }
   },
   "hr": {
     "safari": {
-      "title": "Safari šator",
-      "shortDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
-      "detailedFeatures": [
-        "Dva jednokrevetna kreveta (ili King) sa noćnim ormarićima i lampama sa abažurima",
-        "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
-        "Mala polica za odeću/osnovne stvari",
-        "Privatna terasa sa stolicama od palminog lišća okrenuta ka tropskoj bašti",
-        "Zajednička kupatila (žensko/muško): 2 tople/hladne tuš kabine i 2 toaleta svatko",
-        "Selo može biti živo tokom praznika; besplatne čepiće za uši na recepciji"
-      ]
+      "eyebrow": "Safari šator",
+      "heroTitle": "Udobnost + avantura u platnu",
+      "heroDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajedničke kupaonice.",
+      "sections": [
+        {
+          "heading": "Prostor i raspored",
+          "description": "Šator nudi dobro osmišljen, ugodan interijer s pažljivim detaljima za lagodan boravak.",
+          "features": [
+            "Dva jednokrevetna kreveta (ili King) s noćnim ormarićima i lampama sa sjenilima",
+            "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
+            "Mala polica za odjeću i sitnice"
+          ]
+        },
+        {
+          "heading": "San i udobnost",
+          "description": "Dva jednokrevetna kreveta s noćnim ormarićima i lampama mogu se spojiti u krevet King-size za goste koji više vole bračnu varijantu.",
+          "features": [
+            "Privatna terasa sa stolicama od palminog lišća, s pogledom na tropski vrt",
+            "Zajedničke kupaonice (ženska/muška): po 2 tuša s toplom/hladnom vodom i 2 toaleta",
+            "Selo zna biti živo tijekom praznika; čepiće za uši nudimo besplatno na recepciji"
+          ]
+        },
+        {
+          "heading": "Terasa i vrt",
+          "description": "Iziđite na privatnu terasu, opremljenu stolicama od palminog lišća. Uživajte u pogledu na bujni tropski vrt — prelijepo osvijetljen noću za romantičnu atmosferu.",
+          "features": [
+            "Privatno sjedenje na otvorenom",
+            "Noćno osvjetljenje za mirne večeri"
+          ]
+        },
+        {
+          "heading": "Kupaonice",
+          "description": "Gosti imaju pristup zajedničkim kupaonicama, odvojenim za žene i muškarce — održavaju se čiste i pristupačne.",
+          "features": [
+            "2× tuš s toplom/hladnom vodom po strani",
+            "2× toaleta po strani",
+            "Umivaonici s hladnom vodom"
+          ]
+        },
+        {
+          "heading": "Dobro je znati",
+          "description": "Tijekom prazničnih vikenda i špice sezone (kraj prosinca – početak siječnja), selo zna biti živo. Čepiće za uši nudimo besplatno na recepciji za miran san.",
+          "closingNote": "Prostran boravak u krilu prirode sa suvremenim udobnostima — savršen za putnike koji žele otvoreni prostor bez odricanja od pogodnosti."
+        }
+      ],
+      "trustItems": [
+        "Udobnost u krilu prirode",
+        "Čisti, dobro održavani sadržaji",
+        "Opuštene, romantične večeri"
+      ],
+      "cta": {
+        "heading": "Spremni rezervirati vaš Safari šator?",
+        "description": "Osigurajte svoj odmor u prirodi u DEVOCEAN Lodgeu. Izravna rezervacija znači najbolje cijene i punu podršku našeg tima."
+      }
     },
     "comfort": {
-      "title": "Comfort šator",
-      "shortDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni/zadnji zidovi), privatnom terasom i vlastitim kupatilom pod krovom od slame.",
-      "detailedFeatures": [
-        "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svetlo",
-        "Mreža protiv komaraca • snažan ventilator • utičnice",
-        "Privatna drvena terasa sa stolicama od palminog lišća",
-        "Pozadi: privatno kupatilo (tuš, toalet, lavabo) pod krovom od trave",
-        "Živost sela tokom vrhunca/praznika; čepiće za uši dostupne"
-      ]
+      "eyebrow": "Comfort šator",
+      "heroTitle": "Više privatnosti. Više udobnosti. Isti divlji šarm.",
+      "heroDescription": "Unaprijeđen šator od 12 m² s dodatnom privatnošću (bočni i stražnji zidovi), privatnom terasom i vlastitom kupaonicom pod krovom od slame.",
+      "sections": [
+        {
+          "heading": "Prostor i privatnost",
+          "description": "Prostran šator od platna od 12 m² na vlastitoj platformi, s dva bočna zida i stražnjim zidom za pojačanu privatnost u odnosu na standardni Safari šator.",
+          "features": [
+            "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svjetlo",
+            "Mreža protiv komaraca • snažan ventilator • utičnice",
+            "Privatna drvena terasa sa stolicama od palminog lišća"
+          ]
+        },
+        {
+          "heading": "San i udobnost",
+          "description": "Dva jednokrevetna kreveta s noćnim ormarićima i lampama sa sjenilima mogu se spojiti u krevet King-size. Svjetlom se lako upravlja prekidačima blizu ulaza.",
+          "features": [
+            "Straga: privatna kupaonica (tuš, toalet, umivaonik) pod krovom od slame",
+            "Selo zna biti živo tijekom praznika i sezone; čepiće za uši nudimo besplatno"
+          ]
+        },
+        {
+          "heading": "Terasa i vrt",
+          "description": "Uživajte na privatnoj drvenoj terasi sa stolicama od palminog lišća, s pogledom na bujni tropski vrt — romantično osvijetljen noću.",
+          "features": [
+            "Privatno sjedenje na otvorenom",
+            "Pogled na vrt, noćno osvjetljenje"
+          ]
+        },
+        {
+          "heading": "Privatna kupaonica",
+          "description": "Iza šatora, pod šarmantnim krovom od slame, vaša privatna kupaonica nudi tuš, toalet i umivaonik — spaja udobnost s jedinstvenim doživljajem na otvorenom."
+        },
+        {
+          "heading": "Dobro je znati",
+          "description": "Iako je DEVOCEAN Lodge mirno mjesto, okolno selo zna biti živo tijekom prazničnih vikenda i špice sezone (kraj prosinca – početak siječnja). Čepiće za uši nudimo besplatno na recepciji.",
+          "closingNote": "Prostran, dobro opremljen i privatan odmor u safari stilu — savršen za goste koji žele udobnost, mir i pogodnost vlastite kupaonice."
+        }
+      ],
+      "trustItems": [
+        "Udobnost u krilu prirode",
+        "Pogodnost vlastite kupaonice",
+        "Romantične večeri u vrtu"
+      ],
+      "cta": {
+        "heading": "Spremni rezervirati vaš Comfort šator?",
+        "description": "Unaprijedite svoj odmor u prirodi s više privatnosti i vlastitom kupaonicom. Rezervirajte izravno za najbolje cijene."
+      }
     },
     "cottage": {
-      "title": "Vikendica sa baštom",
-      "shortDescription": "Prozračna vikendica sa queen krevetom, klimom (invertor), radnim stolom i trpezarijom, privatnom terasom i kupatilom u šarmantnom roundavel-u.",
-      "detailedFeatures": [
-        "Krov od rimskih crepova, visoki bijeli plafon sa tamnim drvenim gredama",
-        "Pod od terakote, topli zidovi obojeni u boji žitnih polja",
-        "Queen krevet • radni sto sa lampom sa abažurom • trpezarija sa stolicama",
-        "Police za kofere, vešalica za odeću i dodatne police",
-        "Klima invertor (hladno i toplo) • dimabilno glavno svetlo",
-        "Privatno kupatilo u roundavel-u sa krovom od trave (tuš, lavabo, toalet)",
-        "Privatna drvena terasa sa stolicama za kampovanje i bočnim stolom"
-      ]
+      "eyebrow": "Vrtni Cottage",
+      "heroTitle": "Rustikalni šarm • Tropski mir • Suvremena udobnost",
+      "heroDescription": "Prozračan cottage s Queen krevetom, klima uređajem (inverter), radnim stolom i blagovaonskim stolom, privatnom terasom i kupaonicom u šarmantnom okruglom paviljonu.",
+      "sections": [
+        {
+          "heading": "Atmosfera i dizajn",
+          "description": "Pod od terakote dodaje toplinu ispod visokog stropa s drvenim gredama, dok zidovi u boji žitnog polja unose mir i ugodnost u prostor.",
+          "features": [
+            "Krov od mediteranskog crijepa, visok bijeli strop s tamnim drvenim gredama",
+            "Pod od terakote, topli zidovi u boji žitnog polja",
+            "Queen krevet • radni stol s lampom • blagovaonski stol sa stolicama"
+          ]
+        },
+        {
+          "heading": "Terasa i vrt",
+          "description": "Iziđite na privatnu drvenu terasu, opremljenu kamping stolicama i pomoćnim stolićem — mirno mjesto za odmor uz bujno zelenilo i nježne zvukove vrta.",
+          "features": [
+            "Police za kovčege, vješalica za odjeću i dodatne police",
+            "Inverter klima (hlađenje i grijanje) • glavno svjetlo s prigušivačem"
+          ]
+        },
+        {
+          "heading": "Interijer i sadržaji",
+          "description": "Osmišljen i za odmor i za rad, Vrtni Cottage nudi Queen krevet u kutiji, radni stol s lampom i blagovaonski stol sa stolicama.",
+          "features": [
+            "Privatna kupaonica u okruglom paviljonu s krovom od slame (tuš, umivaonik, toalet)",
+            "Privatna drvena terasa s kamping stolicama i pomoćnim stolićem"
+          ]
+        },
+        {
+          "heading": "Udobnost i osvjetljenje",
+          "description": "Inverter klima čuva vašu udobnost u svim sezonama, s hlađenjem i grijanjem. Mekano osvjetljenje, uključujući glavno svjetlo s prigušivačem, omogućuje savršen ambijent za rad, odmor ili opuštanje.",
+          "features": [
+            "Inverter klima (hlađenje i grijanje)",
+            "Osvjetljenje s prigušivačem i topli sjaj interijera"
+          ]
+        },
+        {
+          "heading": "Privatna kupaonica",
+          "description": "Iza cottagea, šarmantan okrugli paviljon s krovom od slame skriva vašu privatnu kupaonicu s tušem, toaletom i umivaonikom — spaja suvremenu udobnost s autentičnim afričkim šarmom."
+        }
+      ],
+      "trustItems": [
+        "Okružen tropskom prirodom",
+        "Privatna kupaonica u paviljonu",
+        "Klimatiziran i mirno osvijetljen"
+      ],
+      "cta": {
+        "heading": "Spremni rezervirati vaš Vrtni Cottage?",
+        "description": "Doživite rustikalnu eleganciju u našem tropskom utočištu. Rezervirajte izravno za najbolje cijene i osobnu uslugu."
+      }
     },
     "chalet": {
-      "title": "Kućica sa slamnatim krovom",
-      "shortDescription": "Skrovita, romantična mala kućica pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje Twin/King kreveta.",
-      "detailedFeatures": [
-        "Krov od trave na bluegum stubovima • jesenji škriljac na podu",
-        "Zidovi obojeni u boji žitnih polja • mirno, zasenčeno okruženje",
-        "Trpezarija sa stolicama • klimatizacija",
-        "Privatno kupatilo (tuš, lavabo, toalet)",
-        "Dva jednokrevetna ili King sa noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
-      ]
+      "eyebrow": "Chalet s krovom od slame",
+      "heroTitle": "Romantična izolacija • Rustikalna elegancija • Tropski mir",
+      "heroDescription": "Skroviti, romantični mali chalet pod palmama i strelicijama. Klima, privatna kupaonica, terasa, postavljanje Twin/King kreveta.",
+      "sections": [
+        {
+          "heading": "Okruženje i atmosfera",
+          "description": "Chalet pod krovom od slame, oslonjen na čvrste stupove od bluegum drveta, odiše rustikalnom elegancijom. Pod boje jesenjeg škriljca prirodno se uklapa u zelenilo, dok zidovi u boji žitnog polja stvaraju toplu i mirnu atmosferu unutra.",
+          "features": [
+            "Krov od slame na stupovima od bluegum drveta • pod od jesenjeg škriljca",
+            "Zidovi u boji žitnog polja • mirno, zaklonjeno mjesto",
+            "Blagovaonski stol sa stolicama • klima uređaj"
+          ]
+        },
+        {
+          "heading": "Terasa i vrt",
+          "description": "Iziđite na privatnu terasu, opremljenu stolicama od palminog lišća i blagovaonskim stolom sa stolicama. Opustite se u hladu vrta i uživajte u prizorima i zvukovima prirode.",
+          "features": [
+            "Privatna kupaonica (tuš, umivaonik, toalet)",
+            "Dva jednokrevetna ili King krevet s noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
+          ]
+        },
+        {
+          "heading": "Interijer i udobnost",
+          "description": "Unutra, dva jednokrevetna kreveta s noćnim ormarićima mogu se spojiti u King-size krevet za ugodnu bračnu postavku. Klima uređaj osigurava udobnost tijekom cijele godine, dok mekano osvjetljenje upotpunjuje rustikalan dekor.",
+          "features": [
+            "Postavljanje Twin ili King kreveta",
+            "Klima za hlađenje i udobnost",
+            "Toplo osvjetljenje i mekani tonovi interijera"
+          ]
+        },
+        {
+          "heading": "Privatna kupaonica",
+          "description": "Chalet ima privatnu kupaonicu s tušem, toaletom i umivaonikom, koja spaja udobnost s rustikalnim šarmom prirodnog okruženja."
+        },
+        {
+          "heading": "Doživljaj",
+          "description": "Bilo da tražite romantičan bijeg ili miran odmor, ovaj mali chalet pruža nezaboravan spoj izolacije, elegancije i udobnosti — idealno utočište u tropskoj oazi DEVOCEAN-a."
+        }
+      ],
+      "trustItems": [
+        "Uronjen u prirodu",
+        "Romantična i mirna atmosfera",
+        "Privatna udobnost i pogodnost"
+      ],
+      "cta": {
+        "heading": "Spremni rezervirati vaš Chalet s krovom od slame?",
+        "description": "Pobjegnite u romantičnu izolaciju u našem tropskom skrovištu. Rezervirajte izravno za najbolje cijene i osobnu uslugu."
+      }
     }
   },
   "ro": {
     "safari": {
-      "title": "Cort Safari",
-      "shortDescription": "Cort de pânză de 12 m² pe o platformă de 3×6 m. Pat dublu/King, ventilator, prize, plasă de țânțari, terasă privată. Băi comune.",
-      "detailedFeatures": [
-        "Două paturi single (sau King) cu noptiere și veioze",
-        "Plasă de țânțari la uși/ferestre • ventilator puternic • prize",
-        "Raft mic pentru haine și obiecte esențiale",
-        "Terasă privată cu scaune din frunze de palmier împletite, orientată spre grădina tropicală",
-        "Băi comune (femei/bărbați): câte 2 dușuri cu apă caldă/rece și 2 toalete",
-        "Satul poate fi animat în vacanțe; dopuri de urechi gratuite la recepție"
-      ]
+      "eyebrow": "Cort Safari",
+      "heroTitle": "Confort + aventură în pânză",
+      "heroDescription": "Cort din pânză de 12 m² pe o platformă de 3×6 m. Twin/King, ventilator, prize, plasă anti-țânțari, terasă privată. Băi comune.",
+      "sections": [
+        {
+          "heading": "Spațiu și amenajare",
+          "description": "Cortul oferă un interior bine gândit și confortabil, cu detalii atente pentru un sejur ușor.",
+          "features": [
+            "Două paturi single (sau King) cu noptiere și lămpi cu abajur",
+            "Plasă anti-țânțari pe uși/ferestre • ventilator puternic • prize",
+            "Raft mic pentru haine și obiecte esențiale"
+          ]
+        },
+        {
+          "heading": "Somn și confort",
+          "description": "Două paturi single cu noptiere și lămpi pot fi combinate într-un pat King-size pentru oaspeții care preferă varianta dublă.",
+          "features": [
+            "Terasă privată cu scaune din frunze de palmier, cu vedere la grădina tropicală",
+            "Băi comune (femei/bărbați): câte 2 dușuri cu apă caldă/rece și 2 toalete",
+            "Satul poate fi animat în sărbători; dopuri de urechi gratuite la recepție"
+          ]
+        },
+        {
+          "heading": "Terasă și grădină",
+          "description": "Pășiți pe terasa privată, mobilată cu scaune din frunze de palmier. Bucurați-vă de priveliștea grădinii tropicale luxuriante — frumos iluminată noaptea pentru o atmosferă romantică.",
+          "features": [
+            "Loc privat de stat în aer liber",
+            "Iluminare nocturnă pentru seri liniștite"
+          ]
+        },
+        {
+          "heading": "Băi",
+          "description": "Oaspeții au acces la băi comune, separate pentru femei și bărbați — păstrate curate și accesibile.",
+          "features": [
+            "2× duș cu apă caldă/rece pe latură",
+            "2× toalete pe latură",
+            "Chiuvete cu apă rece"
+          ]
+        },
+        {
+          "heading": "Bine de știut",
+          "description": "În weekendurile de sărbători legale și sezonul de vârf (sfârșit de decembrie – început de ianuarie), satul poate fi animat. Dopuri de urechi gratuite sunt disponibile la recepție pentru un somn liniștit.",
+          "closingNote": "Sejur spațios, în mijlocul naturii, cu confort modern — perfect pentru călătorii care vor aer liber fără a renunța la comoditate."
+        }
+      ],
+      "trustItems": [
+        "Confort în mijlocul naturii",
+        "Facilități curate și bine întreținute",
+        "Seri relaxate, romantice"
+      ],
+      "cta": {
+        "heading": "Gata să rezervați Cortul Safari?",
+        "description": "Asigurați-vă escapada în natură la DEVOCEAN Lodge. Rezervarea directă înseamnă cele mai bune tarife și sprijin complet din partea echipei noastre."
+      }
     },
     "comfort": {
-      "title": "Cort Comfort",
-      "shortDescription": "Cort îmbunătățit de 12 m² cu intimitate sporită (pereți laterali/spate), terasă privată și baie proprie sub un acoperiș de paie.",
-      "detailedFeatures": [
-        "Configurație pat dublu/King • veioze • întrerupătoare practice",
-        "Plasă de țânțari • ventilator puternic • prize",
-        "Terasă privată din lemn cu scaune din frunze de palmier împletite",
-        "În spate: baie privată (duș, toaletă, chiuvetă) sub acoperiș de paie",
-        "Satul este animat în sezonul de vârf/sărbători; dopuri de urechi disponibile"
-      ]
+      "eyebrow": "Cort Comfort",
+      "heroTitle": "Mai multă intimitate. Mai mult confort. Același farmec sălbatic.",
+      "heroDescription": "Cort îmbunătățit de 12 m² cu intimitate suplimentară (pereți laterali și posterior), terasă privată și baie proprie sub un acoperiș de stuf.",
+      "sections": [
+        {
+          "heading": "Spațiu și intimitate",
+          "description": "Cort generos din pânză de 12 m² pe propria platformă, cu doi pereți laterali și un perete posterior pentru o intimitate sporită față de Cortul Safari standard.",
+          "features": [
+            "Aranjare Twin/King • lămpi • întrerupătoare comode",
+            "Plasă anti-țânțari • ventilator puternic • prize",
+            "Terasă privată din lemn cu scaune din frunze de palmier"
+          ]
+        },
+        {
+          "heading": "Somn și confort",
+          "description": "Două paturi single cu noptiere și lămpi cu abajur pot fi combinate într-un pat King-size. Iluminarea se controlează ușor cu întrerupătoare lângă intrare.",
+          "features": [
+            "În spate: baie privată (duș, toaletă, chiuvetă) sub acoperiș de stuf",
+            "Satul poate fi animat în sărbători și sezon; dopuri de urechi gratuite"
+          ]
+        },
+        {
+          "heading": "Terasă și grădină",
+          "description": "Bucurați-vă de terasa privată din lemn cu scaune din frunze de palmier, cu vedere la grădina tropicală luxuriantă — iluminată romantic noaptea.",
+          "features": [
+            "Loc privat de stat în aer liber",
+            "Vedere la grădină, iluminare nocturnă"
+          ]
+        },
+        {
+          "heading": "Baie privată",
+          "description": "În spatele cortului, sub un fermecător acoperiș de stuf, baia dvs. privată include duș, toaletă și chiuvetă — îmbină confortul cu o notă unică în aer liber."
+        },
+        {
+          "heading": "Bine de știut",
+          "description": "Deși DEVOCEAN Lodge este un loc liniștit, satul din jur poate fi animat în weekendurile de sărbători legale și sezonul de vârf (sfârșit de decembrie – început de ianuarie). Dopuri de urechi gratuite sunt disponibile la recepție.",
+          "closingNote": "O escapadă spațioasă, bine dotată și privată în stil safari — perfect pentru oaspeții care vor confort, intimitate și comoditatea unei băi proprii."
+        }
+      ],
+      "trustItems": [
+        "Confort în mijlocul naturii",
+        "Comoditatea unei băi proprii",
+        "Seri romantice în grădină"
+      ],
+      "cta": {
+        "heading": "Gata să rezervați Cortul Comfort?",
+        "description": "Îmbunătățiți escapada în natură cu mai multă intimitate și o baie proprie. Rezervați direct pentru cele mai bune tarife."
+      }
     },
     "cottage": {
-      "title": "Căsuță cu grădină",
-      "shortDescription": "Căsuță aerisită cu pat queen, aer condiționat (invertor), birou și masă de luat masa, terasă privată și baie într-o roundavel pitorească.",
-      "detailedFeatures": [
-        "Acoperiș cu țiglă romană, tavan alb înalt cu grinzi de lemn închis la culoare",
-        "Pardoseală de teracotă, pereți pictați în nuanțe calde de câmp de grâu",
-        "Pat queen • birou cu veioză • masă cu scaune",
-        "Rafturi pentru valize, suport pentru haine și rafturi suplimentare",
-        "Aer condiționat invertor (răcire și încălzire) • lumină principală cu intensitate reglabilă",
-        "Baie privată în roundavel cu acoperiș de paie (duș, chiuvetă, toaletă)",
-        "Terasă privată din lemn cu scaune de camping și măsuță laterală"
-      ]
+      "eyebrow": "Cottage de Grădină",
+      "heroTitle": "Farmec rustic • Liniște tropicală • Confort modern",
+      "heroDescription": "Cottage aerisit cu pat Queen, aer condiționat (inverter), birou și masă, terasă privată și baie într-un fermecător pavilion rotund.",
+      "sections": [
+        {
+          "heading": "Atmosferă și design",
+          "description": "Pardoseala din terracotă adaugă căldură sub un tavan înalt cu grinzi de lemn, în timp ce pereții vopsiți în nuanță de câmp de grâu aduc liniște și prietenie în spațiu.",
+          "features": [
+            "Acoperiș cu țigle mediteraneene, tavan alb înalt cu grinzi de lemn închis",
+            "Pardoseală din terracotă, pereți calzi în nuanță de câmp de grâu",
+            "Pat Queen • birou cu lampă • masă cu scaune"
+          ]
+        },
+        {
+          "heading": "Terasă și grădină",
+          "description": "Pășiți pe terasa privată din lemn, mobilată cu scaune de camping și o măsuță laterală — un loc liniștit pentru a vă relaxa în mijlocul verdeții și sunetelor blânde ale grădinii.",
+          "features": [
+            "Rafturi pentru valize, suport pentru haine și rafturi suplimentare",
+            "Aer condiționat inverter (răcire și încălzire) • lumină principală cu dimmer"
+          ]
+        },
+        {
+          "heading": "Interior și dotări",
+          "description": "Conceput atât pentru relaxare cât și pentru funcționalitate, Cottage-ul de Grădină oferă un pat Queen în carcasă, birou cu lampă și masă cu scaune.",
+          "features": [
+            "Baie privată într-un pavilion rotund cu acoperiș de stuf (duș, chiuvetă, toaletă)",
+            "Terasă privată din lemn cu scaune de camping și măsuță laterală"
+          ]
+        },
+        {
+          "heading": "Confort și iluminat",
+          "description": "Aerul condiționat inverter vă păstrează confortul în orice anotimp, oferind atât răcire cât și încălzire. Iluminatul moale, inclusiv o lumină principală cu dimmer, vă permite să creați ambianța perfectă pentru muncă, odihnă sau relaxare.",
+          "features": [
+            "Aer condiționat inverter (răcire și încălzire)",
+            "Iluminat cu dimmer și strălucire interioară caldă"
+          ]
+        },
+        {
+          "heading": "Baie privată",
+          "description": "Chiar în spatele cottage-ului, un fermecător pavilion rotund cu acoperiș de stuf adăpostește baia dvs. privată, completă cu duș, toaletă și chiuvetă — îmbină confortul modern cu farmecul african autentic."
+        }
+      ],
+      "trustItems": [
+        "Înconjurat de natură tropicală",
+        "Baie privată în pavilion",
+        "Climatizat și luminat liniștit"
+      ],
+      "cta": {
+        "heading": "Gata să rezervați Cottage-ul de Grădină?",
+        "description": "Trăiți eleganța rustică în refugiul nostru tropical din grădină. Rezervați direct pentru cele mai bune tarife și serviciu personalizat."
+      }
     },
     "chalet": {
-      "title": "Cabană cu acoperiș de paie",
-      "shortDescription": "Cabană mică, retrasă și romantică, sub palmieri și strelitzia. Aer condiționat, baie privată, terasă, configurație pat dublu/King.",
-      "detailedFeatures": [
-        "Acoperiș de paie pe stâlpi de eucalipt • pardoseală autumn-slate",
-        "Pereți pictați în nuanțe de câmp de grâu • cadru liniștit, umbrit",
-        "Masă pentru cină cu scaune • aer condiționat",
-        "Baie privată (duș, chiuvetă, toaletă)",
-        "Două paturi single sau King cu noptiere • terasă privată cu scaune din frunze de palmier"
-      ]
+      "eyebrow": "Chalet cu acoperiș de stuf",
+      "heroTitle": "Izolare romantică • Eleganță rustică • Liniște tropicală",
+      "heroDescription": "Chalet mic, retras și romantic sub palmieri și strelitzia. Aer condiționat, baie privată, terasă, aranjare Twin/King.",
+      "sections": [
+        {
+          "heading": "Cadru și atmosferă",
+          "description": "Chalet-ul cu acoperiș de stuf, sprijinit pe stâlpi solizi de bluegum, emană eleganță rustică. Pardoseala în nuanță de ardezie de toamnă se îmbină armonios cu verdele din jur, iar pereții în nuanță de câmp de grâu creează o atmosferă caldă și senină în interior.",
+          "features": [
+            "Acoperiș de stuf pe stâlpi de bluegum • pardoseală în nuanță de ardezie de toamnă",
+            "Pereți în nuanță de câmp de grâu • cadru liniștit, umbros",
+            "Masă cu scaune • aer condiționat"
+          ]
+        },
+        {
+          "heading": "Terasă și grădină",
+          "description": "Pășiți pe terasa privată, mobilată cu scaune din frunze de palmier și o masă cu scaune. Relaxați-vă la umbra grădinii și bucurați-vă de priveliștile și sunetele naturii.",
+          "features": [
+            "Baie privată (duș, chiuvetă, toaletă)",
+            "Două paturi single sau King cu noptiere • terasă privată cu scaune din frunze de palmier"
+          ]
+        },
+        {
+          "heading": "Interior și confort",
+          "description": "În interior, două paturi single cu noptiere pot fi combinate într-un pat King-size pentru o configurație dublă confortabilă. Aerul condiționat asigură confort tot anul, iar iluminatul moale completează decorul rustic.",
+          "features": [
+            "Configurație Twin sau King",
+            "Aer condiționat pentru răcire și confort",
+            "Iluminat cald și tonuri interioare moi"
+          ]
+        },
+        {
+          "heading": "Baie privată",
+          "description": "Chalet-ul include o baie privată cu duș, toaletă și chiuvetă, îmbinând confortul cu farmecul rustic al cadrului natural."
+        },
+        {
+          "heading": "Experiență",
+          "description": "Fie că vă căutați o escapadă romantică sau o evadare liniștită, acest chalet mic oferă o combinație de neuitat de izolare, eleganță și confort — un refugiu ideal în paradisul tropical DEVOCEAN."
+        }
+      ],
+      "trustItems": [
+        "Cufundat în natură",
+        "Atmosferă romantică și liniștită",
+        "Confort și comoditate private"
+      ],
+      "cta": {
+        "heading": "Gata să rezervați Chalet-ul cu acoperiș de stuf?",
+        "description": "Evadați într-o izolare romantică în ascunzătoarea noastră tropicală. Rezervați direct pentru cele mai bune tarife și serviciu personalizat."
+      }
     }
   }
 }
