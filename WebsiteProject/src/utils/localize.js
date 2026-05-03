@@ -105,6 +105,9 @@ const localeToISO6391 = (locale) => {
 
     // Romanian
     "ro": "ro", "ro-RO": "ro", "ro-MD": "ro",
+
+    // Serbian variants (Latin script default)
+    "sr": "sr", "sr-RS": "sr", "sr-Latn": "sr", "sr-Latn-RS": "sr", "sr-ME": "sr", "sr-BA": "sr",
     
     // Japanese variants
     "ja-JP": "ja", "ja": "ja",
@@ -144,6 +147,7 @@ export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurren
     'sv': 'SV',
     'ja': 'JA',
     'pl': 'PL',
+    'sr': 'EN',
     'af': 'AF',
     'zu': 'ZU',
     'sw': 'SW'

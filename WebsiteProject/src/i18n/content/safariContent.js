@@ -1764,6 +1764,104 @@ export const SAFARI_CONTENT = {
         downloadText: "Descarcă broșura PDF",
         fileSize: "7,3 MB"
       }
+    },
+
+    sr: {
+      title: "Foto-lov safari",
+      tagline: "Avanture u savani u Specijalnom rezervatu Maputo",
+      overview: "Otkrijte afričku divlju floru i faunu na samo kratkoj vožnji od Ponta do Ouro. Nacionalni park Maputo (bivši Specijalni rezervat Maputo) nudi klasično posmatranje divljih životinja sa 450-500 obalskih slonova, žirafama, zebrama, nilskim konjima, krokodilima i raznim vrstama antilopa na 1.718 km² zaštićene divljine - UNESCO mesto od 2025.",
+      highlights: [
+        "450-500 obalskih slonova",
+        "Žirafe, zebre i antilope",
+        "Nilski konji i krokodili u vlažnim područjima",
+        "Leopardi, gepardi i pegave hijene",
+        "Preko 300 vrsta ptica, uključujući flamingoe",
+        "Game drives 4x4 sa stručnim vodičima",
+        "UNESCO mesto svetske baštine (2025)",
+        "Moguća kombinacija plaže i savane"
+      ],
+      pricingRange: "Od 95 US$ po osobi",
+      pricingDetails: [
+        "Jednodnevni safari: 95-120 US$ po osobi",
+        "Ceo dan sa plažom Ponta do Ouro: 100-130 US$",
+        "Safari sa kampovanjem 2-3 dana: od 200 US$",
+        "Privatne ture: prilagođene cene",
+        "Vozilo 4x4, vodič i takse parka uključeni"
+      ],
+      durationTypical: "5-8 sati (jednodnevni izlet)",
+      durationDetails: [
+        "Polu-dnevni game drive: 3-4 sata",
+        "Jednodnevni safari: 5-6 sati u parku + prevoz",
+        "Višednevni kamping: 2-3 dana",
+        "Polazak iz Ponta do Ouro: rano ujutru (6-7)",
+        "Povratak: kasno popodne (16-17)"
+      ],
+      included: [
+        "Vozilo 4x4 za game drive",
+        "Profesionalni vodič/vozač",
+        "Ulaznice za morski park",
+        "Dvogled za posmatranje divljih životinja",
+        "Flaširana voda i grickalice",
+        "Preuzimanje iz hotela u Ponta do Ouro",
+        "USB punjenje u vozilu (većina operatera)"
+      ],
+      requirementsLevel: "Svi uzrasti i nivoi kondicije",
+      requirementsDetails: [
+        "Posebna fizička kondicija nije potrebna",
+        "Pogodno za porodice sa decom",
+        "Prijateljsko za starije (posmatranje iz vozila)",
+        "Vozilo 4x4 obavezno (putevi sa debelim peskom)",
+        "Komforna safari odeća preporučena",
+        "Zaštita od sunca obavezna"
+      ],
+      bestTimePeak: "Jul - oktobar (suva sezona)",
+      bestTimeDetails: [
+        "**Posmatranje divljih životinja:** jul-oktobar (životinje na izvorima vode)",
+        "**Posmatranje ptica:** oktobar-mart (prisutne ptice selice)",
+        "**Posmatranje slonova:** tokom cele godine (populacija 450-500)",
+        "**Izbegavati:** decembar-februar (toplo, vlažno, gusta vegetacija)",
+        "**Temperatura:** hladnije zimi (jul-sept: 18-25°C)",
+        "**Stanje puteva:** najbolje u suvoj sezoni"
+      ],
+      tips: [
+        "Rezervišite unapred u sezoni vrhunca (jul-oktobar)",
+        "Jutarnji game drives nude najbolju aktivnost divljih životinja",
+        "Ponesite kameru sa zoom objektivom za fotografije",
+        "Nosite neutralne boje (kaki, bež, maslinasta) - ne jarke boje",
+        "Dvogledi se pružaju, ali ponesite svoje ako ih imate",
+        "Šešir, krema za sunčanje i sprej protiv insekata obavezni",
+        "Kombinujte sa vremenom na plaži u Ponta do Ouro",
+        "Pitajte o višednevnom kampovanju za potpuno iskustvo"
+      ],
+      operators: [
+        {
+          name: "Maputo National Park",
+          website: "",
+          email: "reservas@parquemaputo.gov.mz",
+          specialty: "Zvanične rezervacije parka i vođeni game drives"
+        },
+        {
+          name: "Transportes Mulungo",
+          website: "",
+          email: "transportesmulungo@gmail.com",
+          specialty: "Safari prevoz i vođene ture"
+        }
+      ],
+      wildlife: [
+        { species: "Slonovi", details: "450-500 obalskih slonova - glavna atrakcija, posmatrani tokom cele godine" },
+        { species: "Žirafe", details: "Često viđene širom rezervata" },
+        { species: "Zebre", details: "Česta viđenja, često u krdima" },
+        { species: "Nilski konji i krokodili", details: "Oko jezera, vlažnih područja i Maputskog zaliva" },
+        { species: "Antilope", details: "Reedbuck, impala, nyala, eland, kudu, vodena antilopa, crveni duiker" },
+        { species: "Predatori", details: "Leopard, gepard, pegava hijena (reintrodukovana 2023-24)" },
+        { species: "Ptice", details: "Preko 300 vrsta - flamingoi, ptice obale, grabljivice" }
+      ],
+      brochure: {
+        title: "Zvanična brošura parka",
+        description: "Preuzmite zvaničnu brošuru Nacionalnog parka Maputo sa detaljnim mapama, ulaznim taksama i informacijama za posetioce.",
+        downloadText: "Preuzmite PDF brošuru",
+        fileSize: "7,3 MB"
+      }
     }
 };
 

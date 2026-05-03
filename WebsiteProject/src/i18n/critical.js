@@ -142,6 +142,17 @@ export const CRITICAL_NAV = {
     bookNow: "Tarife și disponibilitate",
     heroCTA: "Rezervă-ți sejurul"
   },
+  sr: {
+    home: "Početna",
+    stay: "Smeštaj",
+    experiences: "Doživljaji",
+    todo: "Šta raditi",
+    gallery: "Galerija",
+    location: "Lokacija",
+    contact: "Kontakt",
+    bookNow: "Cene i dostupnost",
+    heroCTA: "Rezervišite boravak"
+  },
   "ja-JP": {
     home: "ホーム",
     stay: "宿泊",

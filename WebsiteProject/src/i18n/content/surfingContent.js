@@ -1548,6 +1548,91 @@ export const SURFING_CONTENT = {
         { name: "Valuri de plajă", level: "Începător până la intermediar", description: "Valuri de plajă blânde, perfecte pentru învățare - valuri mai moi, fund nisipos" },
         { name: "Ponta Malongane (8 km nord)", level: "Toate nivelurile", description: "Loc alternativ cu o fereastră diferită de hulă - mai puțin aglomerat" }
       ]
+    },
+    sr: {
+      title: "Surf daske i lekcije",
+      tagline: "Jašite ikonski point break u Ponta do Ouro",
+      overview: "Klasični desni point break u Ponta do Ouro može da pruži epske vožnje od 100-200m, i do 1km u savršenim uslovima - ravan Jeffrey's Bay-u. Tople, kristalno čiste vode i konstantni talasi čine ga idealnim za surfere svih nivoa, od početnika koji uče na blagim talasima do eksperata koji režu na point-u.",
+      highlights: [
+        "Klasični desni point break",
+        "Vožnje od 100-200m (do 1km kada je savršeno!)",
+        "Topla voda (22-28°C) - neoprensko odelo opciono",
+        "Talasi prijateljski za početnike",
+        "Neprenakrcani lineup-ovi",
+        "Surf lekcije i iznajmljivanje dasaka dostupni",
+        "Delfini surfuju pored vas",
+        "Kristalno čista voda Indijskog okeana"
+      ],
+      pricingRange: "Od 20 US$ (lekcija)",
+      pricingDetails: [
+        "Surf lekcija (2 sata): 20-40 US$",
+        "Iznajmljivanje daske (ceo dan): 15-25 US$",
+        "Višednevni paketi: snižene cene",
+        "Oprema uključena u lekcije",
+        "Soft daske za početnike",
+        "Shortboards/funboards za one sa iskustvom"
+      ],
+      durationTypical: "2 sata (lekcija) ili fleksibilno (iznajmljivanje)",
+      durationDetails: [
+        "Lekcija za početnike: 2 sata (teorija + praksa)",
+        "Privatni coaching: 1-2 sata",
+        "Iznajmljivanje daske: pola dana ili ceo dan",
+        "Najbolji talasi: rano ujutru (6-9)",
+        "Popodnevne sesije: 15-18"
+      ],
+      included: [
+        "Surf daska (lekcija ili iznajmljivanje)",
+        "Neoprensko odelo/lycra (ako je potrebno)",
+        "Individualna ili instrukcija u maloj grupi",
+        "Sigurnosni brifing i okeanska svest",
+        "Vosak i lič",
+        "Pomoć pri pripremi na plaži",
+        "Fotografije sa vaše sesije (neki operateri)"
+      ],
+      requirementsLevel: "Svi nivoi dobrodošli",
+      requirementsDetails: [
+        "Početnici: iskustvo nije potrebno",
+        "Srednji/napredni: iskustvo na point break-u pomaže",
+        "Veštine plivanja potrebne",
+        "Svi uzrasti (deca do odraslih)",
+        "Fitness: umeren (veslanje može biti zamorno)",
+        "**Važno:** jake struje duž point-a - budite oprezni!"
+      ],
+      bestTimePeak: "Južni swell sa zapadnim vetrom",
+      bestTimeDetails: [
+        "**Najbolji swell:** južni swell",
+        "**Najbolji vetar:** zapadni vetar (offshore)",
+        "**Najbolja plima:** sa obe strane oseke",
+        "**Konzistentnost:** dobra, ali kapriciozna - treba prave uslove",
+        "**Sezone:** može se surfovati cele godine",
+        "**Temperatura vode:** 22-28°C (shorty ili surf pantalone)",
+        "**Pratite swell-ove sa Severne obale Južne Afrike za najbolje sesije**"
+      ],
+      tips: [
+        "Proverite prognozu talasa pre rezervacije (Surfline, Magicseaweed)",
+        "Point break može da rivališe J-Bay-u, ali treba savršene uslove",
+        "Donesite rezervne daske i dodatne lič-eve - prodavnice ograničene",
+        "Poštujte jake struje - budite strpljivi sa plimom",
+        "Soft-top longboards su idealni za početnike na talasima sa plaže",
+        "Delfini često surfuju zajedno sa vama - magično iskustvo!",
+        "Voda je topla, ali ponesite shorty radi zaštite od vetra",
+        "Pitajte meštane o swell-u i trenutnim uslovima",
+        "Neprenakrcani lineup-ovi = više talasa za vas!",
+        "Kombinujte sa ronjenjem ili ribolovom kada su talasi ravni"
+      ],
+      operators: [
+        {
+          name: "Brasukas Bar & Surf",
+          website: "",
+          email: "brasukas.geral@gmail.com",
+          specialty: "Surf lekcije, iznajmljivanje dasaka i bar na obali plaže"
+        }
+      ],
+      surfSpots: [
+        { name: "Point u Ponta do Ouro", level: "Srednji do napredni", description: "Glavni desni point break - dno od stene i peska, vožnje od 100-200m (do 1km kada je savršeno!)" },
+        { name: "Talasi sa plaže", level: "Početnik do srednji", description: "Blagi talasi sa plaže, savršeni za učenje - mekši talasi, peščano dno" },
+        { name: "Ponta Malongane (8 km severno)", level: "Svi nivoi", description: "Alternativna lokacija sa drugačijim swell prozorom - manje prenakrcano" }
+      ]
     }
 };
 

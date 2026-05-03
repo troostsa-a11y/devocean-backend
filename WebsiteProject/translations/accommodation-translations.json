@@ -783,6 +783,55 @@
       ]
     }
   },
+  "sr": {
+    "safari": {
+      "title": "Safari šator",
+      "shortDescription": "Šator od platna od 12 m² na platformi 3×6 m. Twin/King, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
+      "detailedFeatures": [
+        "Dva jednokrevetna kreveta (ili King) sa noćnim ormarićima i lampama sa abažurima",
+        "Mreža protiv komaraca na vratima/prozorima • snažan ventilator • utičnice",
+        "Mala polica za odeću/osnovne stvari",
+        "Privatna terasa sa stolicama od palminog lišća okrenuta ka tropskoj bašti",
+        "Zajednička kupatila (žensko/muško): 2 tople/hladne tuš kabine i 2 toaleta svako",
+        "Selo može biti živo tokom praznika; besplatne čepiće za uši na recepciji"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort šator",
+      "shortDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni/zadnji zidovi), privatnom terasom i sopstvenim kupatilom pod krovom od slame.",
+      "detailedFeatures": [
+        "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svetlo",
+        "Mreža protiv komaraca • snažan ventilator • utičnice",
+        "Privatna drvena terasa sa stolicama od palminog lišća",
+        "Pozadi: privatno kupatilo (tuš, toalet, lavabo) pod krovom od trave",
+        "Živost sela tokom vrhunca/praznika; čepiće za uši dostupne"
+      ]
+    },
+    "cottage": {
+      "title": "Vikendica sa baštom",
+      "shortDescription": "Prozračna vikendica sa queen krevetom, klimom (invertor), radnim stolom i trpezarijom, privatnom terasom i kupatilom u šarmantnom roundavel-u.",
+      "detailedFeatures": [
+        "Krov od rimskih crepova, visoki beli plafon sa tamnim drvenim gredama",
+        "Pod od terakote, topli zidovi obojeni u boji žitnih polja",
+        "Queen krevet • radni sto sa lampom sa abažurom • trpezarija sa stolicama",
+        "Police za kofere, vešalica za odeću i dodatne police",
+        "Klima invertor (hladno i toplo) • dimabilno glavno svetlo",
+        "Privatno kupatilo u roundavel-u sa krovom od trave (tuš, lavabo, toalet)",
+        "Privatna drvena terasa sa stolicama za kampovanje i bočnim stolom"
+      ]
+    },
+    "chalet": {
+      "title": "Kućica sa slamnatim krovom",
+      "shortDescription": "Skrovita, romantična mala kućica pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje Twin/King kreveta.",
+      "detailedFeatures": [
+        "Krov od trave na bluegum stubovima • jesenji škriljac na podu",
+        "Zidovi obojeni u boji žitnih polja • mirno, zasenčeno okruženje",
+        "Trpezarija sa stolicama • klimatizacija",
+        "Privatno kupatilo (tuš, lavabo, toalet)",
+        "Dva jednokrevetna ili King sa noćnim ormarićima • privatna terasa sa stolicama od palminog lišća"
+      ]
+    }
+  },
   "ro": {
     "safari": {
       "title": "Cort Safari",

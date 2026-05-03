@@ -13,7 +13,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
     westEu: { name: 'Western Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'] },
-    eastEu: { name: 'Eastern Europe', languages: ['pl', 'ro'] },
+    eastEu: { name: 'Eastern Europe', languages: ['pl', 'ro', 'sr'] },
     asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru'] },
     americas: { name: 'Americas', languages: ['en-US', 'pt-BR', 'es-ES', 'fr-FR'] },
     africa: { name: 'Africa', languages: ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
@@ -159,6 +159,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               {regions[region]?.languages.includes('sv') && <option value="sv">Svenska</option>}
               {regions[region]?.languages.includes('pl') && <option value="pl">Polski</option>}
               {regions[region]?.languages.includes('ro') && <option value="ro">Română</option>}
+              {regions[region]?.languages.includes('sr') && <option value="sr">Srpski</option>}
               {regions[region]?.languages.includes('af-ZA') && <option value="af-ZA">Afrikaans</option>}
               {regions[region]?.languages.includes('zu') && <option value="zu">isiZulu</option>}
               {regions[region]?.languages.includes('sw') && <option value="sw">Kiswahili</option>}

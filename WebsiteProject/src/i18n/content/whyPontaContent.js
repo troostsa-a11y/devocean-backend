@@ -817,6 +817,57 @@ export const WHY_PONTA_CONTENT = {
       ctaBookNow: 'Rezervă-ți Sejurul',
       backToHome: 'Înapoi la Acasă',
       locationLabel: 'Sudul Mozambicului'
+    },
+  sr: {
+      pageTitle: 'Zašto Ponta do Ouro? | DEVOCEAN Lodge - Mozambik',
+      metaDescription: 'Otkrijte zašto je Ponta do Ouro vrhunski mozambički raj. Netaknute plaže, svetski poznato ronjenje, prirodni rezervati i autentična lokalna kultura vas čekaju u DEVOCEAN Lodge-u.',
+      ogTitle: 'Zašto Ponta do Ouro? | DEVOCEAN Lodge',
+      ogDescription: 'Otkrijte zašto je Ponta do Ouro vrhunski mozambički raj. Netaknute plaže, svetski poznato ronjenje, prirodni rezervati i autentična lokalna kultura vas čekaju.',
+      heroSubtitle: 'Skriveni dragulj gde se netaknute plaže susreću sa živim morskim životom i beskonačnim avanturama',
+      heroTitle: 'Zašto Ponta do Ouro?',
+      badgeLabel: 'Vrata Nacionalnog parka Maputo',
+      imageAlt: 'Obala Ponta do Ouro',
+      introText: 'Dobrodošli u Ponta do Ouro, vrata prvog UNESCO mesta svetske prirodne baštine Mozambika - Nacionalnog parka Maputo. Ovaj obalski raj nudi neprevaziđenu kombinaciju opuštanja, ekoturizma i kulturnog uranjanja. Bilo da tražite uzbudljivo ronjenje, mirne bašte poput onih u DEVOCEAN Lodge-u, ili jednodnevne izlete do obližnjih čuda, evo zašto bi ova destinacija trebalo da bude na vašoj putničkoj listi.',
+      sections: [
+        {
+          id: 'beaches',
+          title: 'Spektakularne plaže i obalska lepota',
+          content: 'Ponta do Ouro se ponosi slikovitim plažama okruženim kazuarinama, peščanim dinama i kristalno čistim vodama - savršeno za opuštanje ili šetnje plažom. Glavna plaža je netaknuta, mirna i neverovatno lepa, nudeći pravi beg od grada. Za razliku od prepunijih lokacija, sirova i autentična lepota Ponte vas poziva da usporite i povežete se sa prirodom.',
+          highlight: 'Pravi beg od grada'
+        },
+        {
+          id: 'marine',
+          title: 'Svetski poznate morske avanture',
+          content: 'Zaronite u grebene pune života sa preko 1.200 vrsta riba, morskim psima bika, čekićastim morskim psima, mantama, kornjačama i rezidentnim delfinima. Od juna do novembra, posmatrajte migrirajuće grbave kitove i uživajte u etičkom plivanju sa divljim delfinima. Zaštićeni UNESCO Nacionalnim parkom, ovi doživljaji su održivi i manje prenakrcani od drugih lokacija.',
+          extra: 'Istražite podvodni svet sa lokacijama od 10m kod Crèche-a do 47m kod Atlantisa, ili probajte snorkling, surf i ribolov za barakude i kingfish.',
+          highlight: 'Preko 1.200 vrsta riba'
+        },
+        {
+          id: 'wildlife',
+          title: 'Blizu ikonskih rezervata divljih životinja',
+          content: 'Ponta do Ouro je savršena baza za "iz savane na plažu" begove, sa lakim pristupom južnoafričkim rezervatima kao što su Nacionalni park Kruger (4-5 sati), Park slonova Tembe (2 sata), Hluhluwe-iMfolozi (3-4 sata) i Park vlažnih područja iSimangaliso (UNESCO, 3 sata). Vidite Big Five, slonove sa velikim kljovama i preko 526 vrsta ptica.',
+          extra: 'Lokalno, Nacionalni park Maputo - na samo 30 km, često opisan kao "Tamo gde se Okavango susreće sa Indijskim okeanom" - prikazuje spektakularan mozaik savana, dina i mangrova. Postoje dobre šanse da vidite velika krda slonova, nilskih konja, žirafa, zebri, plavih gnuova i raznih antilopa kao što su nyala, kudu i crveni duiker.',
+          highlight: 'Iz savane na plažu begovi'
+        },
+        {
+          id: 'culture',
+          title: 'Kulturna i živopisna putovanja',
+          content: 'Krenite u eSwatini (3-4 sata) za šetnje u Prirodnom rezervatu Mantenga i tradicionalne Swazi kulturne predstave (Sibhaca plesovi, UNESCO nematerijalna baština). Istražite Panoramsku rutu (5-6 sati) za Kanjon reke Blyde i vodopade, ili posetite utočište Chimp Eden Jane Goodall (5 sati) za etičke susrete sa divljim životinjama.',
+          highlight: 'UNESCO nematerijalna baština'
+        },
+        {
+          id: 'charm',
+          title: 'Autentičan mozambički šarm',
+          content: 'Doživite sirove okeanske avanture, bogatu lokalnu kulturu i živopisne barove u nekomercijalizovanom okruženju. Ponta do Ouro znači autentičnost - od živih pijaca do žive muzike - čineći je idealnom za smislene begove.',
+          highlight: 'Nekomercijalizovana autentičnost'
+        }
+      ],
+      ctaTitle: 'Spremni da doživite raj?',
+      ctaDescription: 'Ostanite u DEVOCEAN Lodge-u i otkrijte zašto je Ponta do Ouro vaša vrhunska mozambička destinacija. Ekološka udobnost usred ovih čuda vas čeka.',
+      ctaAccommodations: 'Pogledajte naš smeštaj',
+      ctaBookNow: 'Rezervišite boravak',
+      backToHome: 'Nazad na početnu',
+      locationLabel: 'Jug Mozambika'
     }
 };
 

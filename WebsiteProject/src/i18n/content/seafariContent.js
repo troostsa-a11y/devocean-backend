@@ -1728,6 +1728,101 @@ export const SEAFARI_CONTENT = {
         { name: "Lovirea înotătoarei (Flipper Slapping)", description: "Lovituri ale înotătoarei pectorale - comportament social și entuziasm" },
         { name: "Comportament de apropiere", description: "Balenele se apropie adesea de bărci - curioase și prietenoase" }
       ]
+    },
+    sr: {
+      title: "Okeanski safariji",
+      tagline: "Posmatranje kitova i susreti sa morskim životom",
+      overview: "Krenite na uzbudljive okeanske safarije da vidite grbave kitove kako migriraju kroz mozambičke vode (jul-novembar). Ove avanture čamcem nude i susrete sa delfinima tokom cele godine, sezonska viđenja kit morskih pasa i snorkling preko netaknutih grebena punih morskog života.",
+      highlights: [
+        "30.000 grbavih kitova (jul-novembar)",
+        "Skokovi, udaranje repom i spy-hopping",
+        "Susreti sa delfinima cele godine",
+        "Kit morski psi (oktobar-mart)",
+        "Mante i morske kornjače",
+        "Snorkling na netaknutim grebenima",
+        "Ture koje vode morski biolozi",
+        "Naglasak na istraživanju i očuvanju"
+      ],
+      pricingRange: "40-45 US$ po osobi",
+      pricingDetails: [
+        "Samo posmatranje kitova: 40 US$",
+        "Kombinovano delfini + kitovi: 45 US$",
+        "Privatna celodnevna tura iz Maputa: 179 US$",
+        "Deca ispod 12 godina: snižene cene",
+        "Oprema i grickalice uključeni"
+      ],
+      durationTypical: "2-3 sata",
+      durationDetails: [
+        "Polu-dnevni izleti: 2-3 sata",
+        "Celodnevne ture: 6-8 sati (iz Maputa)",
+        "Jutarnji polasci (najbolji uslovi)",
+        "Uključuje vreme za snorkling",
+        "Fleksibilno u zavisnosti od aktivnosti kitova"
+      ],
+      included: [
+        "Prevoz čamcem sa iskusnim skiperom",
+        "Snorkling oprema (maska, peraja, disaljka)",
+        "Vodič morski biolog (većina operatera)",
+        "Grickalice i pića",
+        "Takse za morski park",
+        "Fotografije/snimci (neki operateri)",
+        "Sigurnosna oprema i prsluci za spasavanje"
+      ],
+      requirementsLevel: "Svi uzrasti",
+      requirementsDetails: [
+        "Posebne veštine nisu potrebne za posmatranje kitova",
+        "Veštine plivanja potrebne za snorkling",
+        "Uzrasti: pogodno za porodice (mala deca do starijih)",
+        "Zavisno od vremena - more mora biti mirno",
+        "Ture mogu biti pomerene ako su uslovi nesigurni",
+        "Topla jakna preporučena (jul-septembar)"
+      ],
+      bestTimePeak: "Jul - oktobar (sezona kitova)",
+      bestTimeDetails: [
+        "**Grbavi kitovi:** jul-novembar (vrhunac: jul-okt)",
+        "**Delfini:** tokom cele godine (preko 200 rezidenata)",
+        "**Kit morski psi:** oktobar-mart",
+        "**Mante:** decembar-maj",
+        "**Morske kornjače:** oktobar-mart (gnežđenje)",
+        "**Najmirnija mora:** zimski meseci (jun-septembar)"
+      ],
+      tips: [
+        "Rezervišite u sezoni kitova (jul-nov) za najbolje šanse",
+        "Ponesite toplu jaknu - okeanski povetarac može biti hladan",
+        "Vodootporna torba za fotoaparat je obavezna",
+        "Lekovi za morsku bolest ako ste skloni",
+        "Dvogled poboljšava iskustvo posmatranja kitova",
+        "Etički operateri poštuju pravila bez dodirivanja",
+        "Viđenja nisu garantovana - to su divlje životinje",
+        "Kombinujte sa snorklingom za potpuno morsko iskustvo"
+      ],
+      operators: [
+        {
+          name: "The Dolphin Centre",
+          website: "https://thedolphincentre.com/",
+          email: "info@thedolphincentre.com",
+          specialty: "Eksperti za posmatranje kitova, fokus na jul-novembar"
+        },
+        {
+          name: "Dolphin Encountours",
+          website: "https://www.dolphinencountours.org/",
+          email: "info@dolphinencountours.org",
+          specialty: "Ture zasnovane na istraživanju, prikupljanje podataka za očuvanje"
+        },
+        {
+          name: "Gozo Azul",
+          website: "https://gozo-azul.co.za/",
+          email: "info@gozo-azul.co.za",
+          specialty: "Okeanski safariji, posmatranje kitova i morski susreti"
+        }
+      ],
+      whaleBehaviors: [
+        { name: "Potpuni skok (Breaching)", description: "Potpuna lansiranja tela iz vode - spektakularne demonstracije snage" },
+        { name: "Udaranje repom (Lob-Tailing)", description: "Ponovljena udaranja repa po površini vode - komunikacija i igra" },
+        { name: "Spy-Hopping", description: "Vertikalno podizanje da se gleda iznad vode - radoznali kitovi proveravaju čamce" },
+        { name: "Udaranje perajom (Flipper Slapping)", description: "Udaranja prsne peraje - društveno ponašanje i uzbuđenje" },
+        { name: "Ponašanje približavanja", description: "Kitovi se često približavaju čamcima - radoznali i prijateljski" }
+      ]
     }
 };
 

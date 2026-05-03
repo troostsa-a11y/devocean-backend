@@ -2578,6 +2578,104 @@ export const DOLPHINS_CONTENT = {
           specialty: "Înot cu delfinii bazat pe cercetare, cu accent educațional"
         }
       ]
+    },
+  sr: {
+      title: "Plivanje sa delfinima",
+      tagline: "Etički susreti sa divljim delfinima u kristalno čistim vodama",
+      overview: "Doživite magične susrete sa divljim indo-pacifičkim bottlenose delfinima u Delimičnom morskom rezervatu Ponta do Ouro. Oba ovlašćena operatera poštuju stroga etička pravila, obezbeđujući pasivne, neinvazivne interakcije gde delfini biraju da priđu pod svojim uslovima.",
+      highlights: [
+        "Preko 200 rezidentnih bottlenose delfina",
+        "Etički susreti zasnovani na istraživanju",
+        "BEZ dodirivanja ili gonjenja - divlji i slobodni",
+        "Snorkling preko netaknutih grebena",
+        "Sezonska viđenja kit morskih pasa",
+        "Grbavi kitovi (jul-novembar)",
+        "Male grupe (maksimum 12 osoba)",
+        "Edukativni naglasak na očuvanje"
+      ],
+      pricingRange: "45-50 US$ po osobi",
+      pricingDetails: [
+        "Posmatranje delfina (samo iz čamca): 45 US$",
+        "Izlet plivanja sa delfinima: 50 US$",
+        "Višednevni paketi: snižene cene",
+        "Snorkling oprema uključena",
+        "Taksa za očuvanje uključena"
+      ],
+      durationTypical: "2-3 sata",
+      durationDetails: [
+        "Polazak rano ujutru (najbolji uslovi)",
+        "Snorkling preko plitkih grebena",
+        "Olakšavanje sa delfinima u vodi",
+        "Susreti sa kit morskim psima (sezonski)",
+        "Edukativni brifing pre polaska"
+      ],
+      included: [
+        "Maska, peraja i disaljka",
+        "Neoprensko odelo (ako je potrebno)",
+        "Iskusni vodič/pratilac",
+        "Edukativna prezentacija pre polaska",
+        "Fotografije/snimci sa vašeg susreta",
+        "Lake grickalice",
+        "Takse za morski park"
+      ],
+      requirementsLevel: "Svi uzrasti i nivoi",
+      requirementsDetails: [
+        "Veština plivanja potrebna",
+        "Komforno sa snorklingom",
+        "Uzrasti: 5 do 80+ (zavisno od vremena)",
+        "Trudnoća: bezbedno do 6. meseca",
+        "Sertifikat za ronjenje nije potreban",
+        "Minimum 6 osoba po izletu (4 za retreate)"
+      ],
+      bestTimePeak: "Januar - maj",
+      bestTimeDetails: [
+        "**Vrhunac sezone:** januar-maj (najbolji susreti)",
+        "**Delfini:** rezidenti tokom cele godine",
+        "**Grbavi kitovi:** jul-novembar",
+        "**Kit morski psi:** oktobar-mart",
+        "**Najmirnija mora:** rano ujutru",
+        "**Temperatura vode:** 22-28°C tokom cele godine"
+      ],
+      tips: [
+        "Rezervišite 2-3 dana unapred",
+        "Donesite kremu za sunčanje bezbednu za grebene",
+        "Podvodna kamera preporučena",
+        "Pažljivo pratite uputstva pratioca",
+        "Ostanite mirni i tihi u vodi",
+        "Pustite delfine da vam priđu prirodno"
+      ],
+      ethicalPractices: [
+        {
+          title: "Bez dodirivanja ili gonjenja",
+          description: "Delfini se nikada ne dodiruju, ne gone niti uznemiravaju. Svi susreti se odvijaju pod uslovima delfina."
+        },
+        {
+          title: "Pristup zasnovan na istraživanju",
+          description: "Oba operatera sarađuju sa morskim biolozima i doprinose tekućem istraživanju i očuvanju delfina."
+        },
+        {
+          title: "Samo male grupe",
+          description: "Maksimum 12 osoba po izletu obezbeđuje minimalno uznemiravanje i bolje susrete."
+        },
+        {
+          title: "Edukacija na prvom mestu",
+          description: "Brifinzi pre polaska podučavaju sve učesnike o pravilnom ponašanju i biologiji delfina."
+        }
+      ],
+      operators: [
+        {
+          name: "Dolphin Encountours Research Center",
+          website: "https://www.dolphinencountours.org/",
+          email: "connect@dolphinencountours.org",
+          specialty: "Susreti sa delfinima koje vode morski biolozi, fokus na očuvanje"
+        },
+        {
+          name: "The Dolphin Centre",
+          website: "https://thedolphincentre.com/",
+          email: "info@thedolphincentre.com",
+          specialty: "Plivanje sa delfinima zasnovano na istraživanju, sa edukativnim naglaskom"
+        }
+      ]
     }
 };
 
