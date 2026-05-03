@@ -1,7 +1,7 @@
 // Translations for ja-JP
 export const UI = {
 menu: "メニュー",
-    regions: { europe: "ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
+    regions: { westEu: "西ヨーロッパ", eastEu: "東ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },

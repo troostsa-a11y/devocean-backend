@@ -12,7 +12,8 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
-    europe: { name: 'Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'] },
+    westEu: { name: 'West-EU', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'] },
+    eastEu: { name: 'East-EU', languages: ['pl'] },
     asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru'] },
     americas: { name: 'Americas', languages: ['en-US', 'pt-BR', 'es-ES', 'fr-FR'] },
     africa: { name: 'Africa', languages: ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
@@ -22,9 +23,11 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   const handleRegionChange = (newRegion) => {
     onRegionChange(newRegion);
     
-    // If current language is not available in the new region, switch to English
+    // If current language is not available in the new region, switch to the
+    // first language in that region (e.g. East-EU → Polish), falling back to English.
     if (!regions[newRegion].languages.includes(lang)) {
-      onLangChange('en-GB');
+      const fallback = regions[newRegion].languages[0] || 'en-GB';
+      onLangChange(fallback);
     }
   };
 

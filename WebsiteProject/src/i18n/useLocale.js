@@ -3,11 +3,12 @@ import { CRITICAL_NAV } from './critical.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
 
 const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
-const SUPPORTED_REGIONS = ["europe", "asia", "americas", "africa", "oceania"];
+const SUPPORTED_REGIONS = ["westEu", "eastEu", "asia", "americas", "africa", "oceania"];
 
 // Language-to-region mapping (module-level constant)
 const LANGUAGE_TO_REGION = {
-  'europe': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl'],
+  'westEu': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'],
+  'eastEu': ['pl'],
   'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
   'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
   'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
@@ -99,16 +100,20 @@ export const CC_TO_CURRENCY = {
 
 // Map country codes to continents (comprehensive)
 const CC_TO_CONTINENT = {
-  // Europe
-  GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
-  DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
-  FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
-  DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
-  RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
-  SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
-  CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
-  UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
-  ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
+  // West Europe
+  GB: "westEu", IE: "westEu", NL: "westEu", BE: "westEu", FR: "westEu",
+  DE: "westEu", IT: "westEu", ES: "westEu", PT: "westEu", AT: "westEu",
+  FI: "westEu", SE: "westEu", GR: "westEu", NO: "westEu",
+  DK: "westEu", CH: "westEu", MT: "westEu",
+  CY: "westEu", LU: "westEu", IS: "westEu", LI: "westEu", MC: "westEu",
+  AD: "westEu", SM: "westEu", VA: "westEu",
+
+  // East Europe
+  PL: "eastEu", CZ: "eastEu", HU: "eastEu", RO: "eastEu",
+  RS: "eastEu", HR: "eastEu", SI: "eastEu", BA: "eastEu", BG: "eastEu",
+  SK: "eastEu", EE: "eastEu", LV: "eastEu", LT: "eastEu",
+  UA: "eastEu", BY: "eastEu", MD: "eastEu", AL: "eastEu", MK: "eastEu",
+  ME: "eastEu", XK: "eastEu",
   
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",
@@ -193,7 +198,8 @@ const CC_TO_LANGUAGE = {
 const CONTINENT_MERIDIANS = {
   americas: { base: -5, min: -11, max: -3 },
   africa: { base: 2, min: 0, max: 4 },     // Base at +2 for South Africa, East Africa (UTC+0 to +4)
-  europe: { base: 1, min: -1, max: 2 },    // Base at +1 for Central Europe (UTC-1 to +2)
+  westEu: { base: 1, min: -1, max: 1 },    // Base at +1 for Western Europe (UTC-1 to +1)
+  eastEu: { base: 2, min: 2, max: 3 },     // Base at +2 for Eastern Europe (UTC+2 to +3)
   asia: { base: 7, min: 3, max: 12 },      // Base at +7 for SE Asia, shift to avoid overlap (UTC+3 to +12)
   oceania: { base: 11, min: 10, max: 13 }, // Australia East/NZ/Pacific (UTC+10 to +13)
 };
@@ -297,7 +303,8 @@ function getTimezoneContinent() {
     const offset = -new Date().getTimezoneOffset() / 60;
     
     // Priority order for tie-breaking (when multiple continents match)
-    const priority = { europe: 0, africa: 1, asia: 2, americas: 3, oceania: 4 };
+    // Africa wins UTC+2 ties (overlaps with eastEu); westEu prioritized over eastEu
+    const priority = { westEu: 0, africa: 1, eastEu: 2, asia: 3, americas: 4, oceania: 5 };
     
     // Find all continents that match this offset range
     const matches = [];
@@ -410,13 +417,13 @@ function pickInitialRegion() {
   const saved = safeLocalStorage.getItem("site.region");
   const savedVersion = safeLocalStorage.getItem("site.region.version");
   
-  // Version 2: IP-based geolocation (Oct 2024)
-  if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "2") {
+  // Version 3: West/East Europe split (May 2026)
+  if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "3") {
     return saved;
   }
   
-  // Fallback to Europe (defer IP-based detection to useEffect)
-  return "europe";
+  // Fallback to West Europe (defer IP-based detection to useEffect)
+  return "westEu";
 }
 
 // Deferred region detection (runs after render in useEffect)
@@ -434,8 +441,8 @@ function detectRegionFromIP() {
     return tzContinent;
   }
   
-  // Final fallback to Europe as default
-  return "europe";
+  // Final fallback to West Europe as default
+  return "westEu";
 }
 
 // Find compatible region for a language (module-level helper)
@@ -447,7 +454,7 @@ function findRegionForLanguage(language) {
     }
   }
   
-  // Fallback to IP-detected region or europe
+  // Fallback to IP-detected region or westEu
   return detectRegionFromIP();
 }
 
@@ -470,8 +477,9 @@ function getCriticalUI(lang) {
   return {
     menu: nav.menu || "Menu",
     regions: {
-      europe: "Europe",
-      asia: "Asia", 
+      westEu: "West-EU",
+      eastEu: "East-EU",
+      asia: "Asia",
       americas: "Americas",
       africa: "Africa",
       oceania: "Oceania"
@@ -603,7 +611,7 @@ export function useLocale() {
         const compatibleRegion = findRegionForLanguage(normalized);
         if (compatibleRegion) {
           safeLocalStorage.setItem("site.region", compatibleRegion);
-          safeLocalStorage.setItem("site.region.version", "2");
+          safeLocalStorage.setItem("site.region.version", "3");
           safeLocalStorage.setItem("site.region.source", "auto"); // Auto-set based on language
           return compatibleRegion;
         }
@@ -614,14 +622,17 @@ export function useLocale() {
     const stored = safeLocalStorage.getItem("site.region");
     const version = safeLocalStorage.getItem("site.region.version");
     
-    if (stored && SUPPORTED_REGIONS.includes(stored) && version === "2") {
+    if (stored && SUPPORTED_REGIONS.includes(stored) && version === "3") {
       return stored;
     }
     
     // Clear old cached value and detect fresh
-    if (stored && version !== "2") {
+    if (stored && version !== "3") {
       safeLocalStorage.removeItem("site.region");
       safeLocalStorage.removeItem("site.region.version");
+      // Clear source too so the lang/region compatibility effect can re-align
+      // mismatched language/region after the West/East-EU split (May 2026).
+      safeLocalStorage.removeItem("site.region.source");
     }
     
     return pickInitialRegion();
@@ -655,7 +666,7 @@ export function useLocale() {
       if (compatibleRegion && compatibleRegion !== region) {
         setRegionState(compatibleRegion);
         safeLocalStorage.setItem("site.region", compatibleRegion);
-        safeLocalStorage.setItem("site.region.version", "2");
+        safeLocalStorage.setItem("site.region.version", "3");
         safeLocalStorage.setItem("site.region.source", "auto");
       }
     }
@@ -700,7 +711,7 @@ export function useLocale() {
           if (detectedRegion && detectedRegion !== region) {
             setRegionState(detectedRegion);
             safeLocalStorage.setItem("site.region", detectedRegion);
-            safeLocalStorage.setItem("site.region.version", "2");
+            safeLocalStorage.setItem("site.region.version", "3");
           }
           return;
         }
@@ -724,7 +735,7 @@ export function useLocale() {
           if (detectedRegion && detectedRegion !== region) {
             setRegionState(detectedRegion);
             safeLocalStorage.setItem("site.region", detectedRegion);
-            safeLocalStorage.setItem("site.region.version", "2");
+            safeLocalStorage.setItem("site.region.version", "3");
           }
         }
       };
@@ -787,7 +798,7 @@ export function useLocale() {
     if (SUPPORTED_REGIONS.includes(newRegion)) {
       setRegionState(newRegion);
       safeLocalStorage.setItem("site.region", newRegion);
-      safeLocalStorage.setItem("site.region.version", "2");
+      safeLocalStorage.setItem("site.region.version", "3");
       safeLocalStorage.setItem("site.region.source", "user"); // Mark as user-selected
       
       // Currency NEVER changes - it always stays as the IP-detected legal tender

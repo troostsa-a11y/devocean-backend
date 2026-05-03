@@ -1,7 +1,7 @@
 // Translations for fr-FR
 export const UI = {
 menu: "Menu",
-    regions: { europe: "Europe", asia: "Asie", americas: "Amériques", africa: "Afrique", oceania: "Océanie" },
+    regions: { westEu: "Europe occidentale", eastEu: "Europe orientale", asia: "Asie", americas: "Amériques", africa: "Afrique", oceania: "Océanie" },
     nav: {
       home: "Accueil",
       stay: "Séjour",

@@ -1,7 +1,7 @@
 // Translations for nl-NL
 export const UI = {
 menu: "Menu",
-    regions: { europe: "Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
+    regions: { westEu: "West-Europa", eastEu: "Oost-Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijk verblijven vlak bij een ongerept strand in een avontuurlijke topbestemming.", description: "Ontdek een uniek UNESCO-duikparadijs, omgeven door natuurreservaten en onvergetelijke belevenissen in de buitenlucht.", ctaPrimary: "Boek uw verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit", whyPonta: "Waarom Ponta do Ouro?", villageHighlights: "Hoogtepunten", goDiving: "Gaan duiken" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },

@@ -1,7 +1,7 @@
 // Translations for zh-CN
 export const UI = {
 menu: "菜单",
-    regions: { europe: "欧洲", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
+    regions: { westEu: "西欧", eastEu: "东欧", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "在世界级探险胜地，享受邻近原始海滩的环保住宿。", description: "探索独一无二的联合国教科文组织潜水天堂，四周环绕自然保护区，并可体验难忘的户外活动。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值", whyPonta: "为什么选择蓬塔多奥罗？", villageHighlights: "亮点", goDiving: "去潜水" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
@@ -72,7 +72,7 @@ menu: "菜单",
 
 export const L10N = {
 menu: "菜单",
-    regions: { europe: "欧洲", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
+    regions: { westEu: "西欧", eastEu: "东欧", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "在世界级探险胜地，享受邻近原始海滩的环保住宿。", description: "探索独一无二的联合国教科文组织潜水天堂，四周环绕自然保护区，并可体验难忘的户外活动。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值", whyPonta: "为什么选择蓬塔多奥罗？", villageHighlights: "亮点", goDiving: "去潜水" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },

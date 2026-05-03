@@ -2,7 +2,7 @@
 export const UI = {
   "en-GB": {
     menu: "Menu",
-    regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
+    regions: { westEu: "West-EU", eastEu: "East-EU", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
@@ -74,7 +74,7 @@ export const UI = {
 
   "en-US": {
     menu: "Menu",
-    regions: { europe: "Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
+    regions: { westEu: "West-EU", eastEu: "East-EU", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
@@ -145,7 +145,7 @@ export const UI = {
   },
   "pt-PT": {
     menu: "Menu",
-    regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceânia" },
+    regions: { westEu: "Europa Ocidental", eastEu: "Europa Oriental", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceânia" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Estadias ecológicas perto de uma praia intocada, num destino de aventura de classe mundial.", description: "Descubra um paraíso único de mergulho UNESCO, rodeado por reservas naturais e experiências inesquecíveis ao ar livre.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
@@ -217,7 +217,7 @@ export const UI = {
 
   "pt-BR": {
     menu: "Menu",
-    regions: { europe: "Europa", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
+    regions: { westEu: "Europa Ocidental", eastEu: "Europa Oriental", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Hospedagens ecológicas perto de uma praia intocada, em um destino de aventura de classe mundial.", description: "Descubra um paraíso único de mergulho da UNESCO, cercado por reservas naturais e experiências inesquecíveis ao ar livre.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", whyPonta: "Porquê Ponta do Ouro?" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
@@ -288,7 +288,7 @@ export const UI = {
   },
   "nl-NL": {
     menu: "Menu",
-    regions: { europe: "Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
+    regions: { westEu: "West-Europa", eastEu: "Oost-Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijk verblijven vlak bij een ongerept strand in een avontuurlijke topbestemming.", description: "Ontdek een uniek UNESCO-duikparadijs, omgeven door natuurreservaten en onvergetelijke belevenissen in de buitenlucht.", ctaPrimary: "Boek je verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
@@ -400,7 +400,7 @@ export const UI = {
 
   "fr-FR": {
     menu: "Menu",
-    regions: { europe: "Europe", asia: "Asie", americas: "Amériques", africa: "Afrique", oceania: "Océanie" },
+    regions: { westEu: "Europe occidentale", eastEu: "Europe orientale", asia: "Asie", americas: "Amériques", africa: "Afrique", oceania: "Océanie" },
     nav: {
       home: "Accueil",
       stay: "Séjour",
@@ -575,7 +575,7 @@ export const UI = {
 
   "it-IT": {
     menu: "Menu",
-    regions: { europe: "Europa", asia: "Asia", americas: "Americhe", africa: "Africa", oceania: "Oceania" },
+    regions: { westEu: "Europa occidentale", eastEu: "Europa orientale", asia: "Asia", americas: "Americhe", africa: "Africa", oceania: "Oceania" },
     nav: { home: "Home", stay: "Alloggi", experiences: "Esperienze", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni ecosostenibili vicino a una spiaggia incontaminata, in una destinazione d'avventura di livello mondiale.", description: "Scoprite un paradiso unico per immersioni UNESCO, circondato da riserve naturali e da indimenticabili esperienze all'aria aperta.", ctaPrimary: "Prenota ora", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati" },
     stay: { headline: "Soggiorna con noi", blurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.", moreDetails: "Altri dettagli", ourStory: "La Nostra Storia" },
@@ -687,7 +687,7 @@ export const UI = {
 
   "de-DE": {
     menu: "Menü",
-    regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
+    regions: { westEu: "Westeuropa", eastEu: "Osteuropa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundlich wohnen nahe einem unberührten Strand in einem Abenteuerziel von Weltklasse.", description: "Entdecken Sie ein einzigartiges UNESCO-Tauchparadies, umgeben von Naturschutzgebieten und unvergesslichen Outdoor-Erlebnissen.", ctaPrimary: "Jetzt buchen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
@@ -799,7 +799,7 @@ export const UI = {
 
   "es-ES": {
     menu: "Menú",
-    regions: { europe: "Europa", asia: "Asia", americas: "Américas", africa: "África", oceania: "Oceanía" },
+    regions: { westEu: "Europa Occidental", eastEu: "Europa Oriental", asia: "Asia", americas: "Américas", africa: "África", oceania: "Oceanía" },
     nav: { home: "Inicio", stay: "Alojamiento", experiences: "Experiencias", todo: "Qué hacer", gallery: "Galería", location: "Ubicación", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Estancias ecológicas cerca de una playa virgen, en un destino de aventura de clase mundial.", description: "Descubra un paraíso único de buceo de la UNESCO, rodeado de reservas naturales y experiencias inolvidables al aire libre.", ctaPrimary: "Reservar", ctaSecondary: "Explorar el lodge", badge: "Comodidad y valor muy apreciados" },
     stay: { headline: "Alójate con nosotros", blurb: "Tiendas en la naturaleza o chalets/cottage acogedores – con hospitalidad familiar.", moreDetails: "Más detalles", ourStory: "Nuestra Historia" },
@@ -912,7 +912,7 @@ export const UI = {
 
   sv: {
     menu: "Meny",
-    regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Oceanien" },
+    regions: { westEu: "Västeuropa", eastEu: "Östeuropa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Oceanien" },
     nav: { home: "Hem", stay: "Boende", experiences: "Upplevelser", todo: "Att göra", gallery: "Galleri", location: "Plats", contact: "Kontakt" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Miljövänligt boende nära en orörd strand i en äventyrsdestination i världsklass.", description: "Upptäck ett unikt UNESCO-dykparadis, omgivet av naturreservat och oförglömliga upplevelser utomhus.", ctaPrimary: "Boka ditt boende", ctaSecondary: "Utforska lodgen", badge: "Gästernas favorit – komfort och värde" },
     stay: { headline: "Bo hos oss", blurb: "Välj din stil: naturnära tält eller mysiga stugor – alla med varm, familjeägd gästfrihet.", moreDetails: "Mer information", ourStory: "Vår Berättelse" },
@@ -984,7 +984,7 @@ export const UI = {
 
   pl: {
     menu: "Menu",
-    regions: { europe: "Europa", asia: "Azja", americas: "Ameryki", africa: "Afryka", oceania: "Oceania" },
+    regions: { westEu: "Europa Zachodnia", eastEu: "Europa Wschodnia", asia: "Azja", americas: "Ameryki", africa: "Afryka", oceania: "Oceania" },
     nav: { home: "Strona główna", stay: "Pobyt", experiences: "Doświadczenia", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty blisko dziewiczej plaży w światowej klasy kierunku pełnym przygód.", description: "Odkryj wyjątkowy raj nurkowy UNESCO, otoczony rezerwatami przyrody i pełen niezapomnianych atrakcji na świeżym powietrzu.", ctaPrimary: "Zarezerwuj swój pobyt", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości" },
     stay: { headline: "Zostań z nami", blurb: "Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.", moreDetails: "Więcej szczegółów", ourStory: "Nasza Historia" },
@@ -1056,7 +1056,7 @@ export const UI = {
 
   "ja-JP": {
     menu: "メニュー",
-    regions: { europe: "ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
+    regions: { westEu: "西ヨーロッパ", eastEu: "東ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
     nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
@@ -1168,7 +1168,7 @@ export const UI = {
 
   "zh-CN": {
     menu: "菜单",
-    regions: { europe: "欧洲", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
+    regions: { westEu: "西欧", eastEu: "东欧", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "在世界级探险胜地，享受邻近原始海滩的环保住宿。", description: "探索独一无二的联合国教科文组织潜水天堂，四周环绕自然保护区，并可体验难忘的户外活动。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
@@ -1239,7 +1239,7 @@ export const UI = {
 
   ru: {
     menu: "Меню",
-    regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
+    regions: { westEu: "Западная Европа", eastEu: "Восточная Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
     nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичный отдых рядом с нетронутым пляжем в месте для приключений мирового класса.", description: "Откройте для себя уникальный рай для дайвинга ЮНЕСКО, окружённый природными заповедниками и незабываемыми возможностями для отдыха на природе.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
     stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
@@ -1311,7 +1311,7 @@ export const UI = {
 
   "af-ZA": {
     menu: "Kieslys",
-    regions: { europe: "Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
+    regions: { westEu: "Wes-Europa", eastEu: "Oos-Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
     nav: { home: "Tuis", stay: "Verblyf", experiences: "Ervarings", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Omgewingsvriendelike verblyf naby 'n ongerepte strand in 'n wêreldklas-avontuurbestemming.", description: "Ontdek 'n unieke UNESCO-duikparadys, omring deur natuurreservate en onvergeetlike buitelugervarings.", ctaPrimary: "Bespreek jou verblyf", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste" },
     stay: { headline: "Bly by ons", blurb: "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid.", moreDetails: "Meer besonderhede", ourStory: "Ons Storie" },
@@ -1383,7 +1383,7 @@ export const UI = {
 
   zu: {
     menu: "Imenyu",
-    regions: { europe: "I-Europe", asia: "I-Asia", americas: "I-America", africa: "I-Afrika", oceania: "I-Oceania" },
+    regions: { westEu: "I-Western Europe", eastEu: "I-Eastern Europe", asia: "I-Asia", americas: "I-America", africa: "I-Afrika", oceania: "I-Oceania" },
     nav: { home: "Ikhaya", stay: "Ukuhlala", experiences: "Okuhlangenwe nakho", todo: "Okumele ukwenze", gallery: "Igalari", location: "Indawo", contact: "Xhumana nathi" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Izindawo zokuhlala ezihambisana nemvelo eduze kolwandle olungakathintwa, endaweni yomhlaba wonke yezokuzijabulisa nokuzidela.", description: "Thola ipharadesi eliyingqayizivele lokuntweza le-UNESCO, elizungezwe yiziqiwu zemvelo nezinto ezingasoze zalibaleka ongazenza ngaphandle.", ctaPrimary: "Bhukha indawo yakho yokuhlala", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi" },
     stay: { headline: "Hlala nathi", blurb: "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni.", moreDetails: "Imininingwane eyengeziwe", ourStory: "Indaba Yethu" },
@@ -1455,7 +1455,7 @@ export const UI = {
 
   sw: {
     menu: "Menyu",
-    regions: { europe: "Ulaya", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
+    regions: { westEu: "Ulaya Magharibi", eastEu: "Ulaya Mashariki", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
     nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi rafiki kwa mazingira karibu na ufukwe usioguswa, katika eneo la matukio na safari za kipekee la kiwango cha dunia.", description: "Gundua paradiso ya kipekee ya kupiga mbizi ya UNESCO, iliyozungukwa na hifadhi za asili na shughuli za nje zisizosahaulika.", ctaPrimary: "Weka nafasi yako ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni" },
     stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },
@@ -2068,7 +2068,7 @@ export const L10N = {
 
   "zh-CN": {
     menu: "菜单",
-    regions: { europe: "欧洲", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
+    regions: { westEu: "西欧", eastEu: "东欧", asia: "亚洲", americas: "美洲", africa: "非洲", oceania: "大洋洲" },
     nav: { home: "首页", stay: "住宿", experiences: "体验", todo: "活动", gallery: "图库", location: "位置", contact: "联系我们" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "在世界级探险胜地，享受邻近原始海滩的环保住宿。", description: "探索独一无二的联合国教科文组织潜水天堂，四周环绕自然保护区，并可体验难忘的户外活动。", ctaPrimary: "预订您的住宿", ctaSecondary: "探索旅馆", badge: "深受宾客喜爱的舒适与价值" },
     stay: { headline: "与我们同住", blurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。", moreDetails: "更多详情", ourStory: "我们的故事" },
@@ -2189,7 +2189,7 @@ export const L10N = {
 
   ru: {
     menu: "Меню",
-    regions: { europe: "Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
+    regions: { westEu: "Западная Европа", eastEu: "Восточная Европа", asia: "Азия", americas: "Америка", africa: "Африка", oceania: "Океания" },
     nav: { home: "Главная", stay: "Проживание", experiences: "Впечатления", todo: "Чем заняться", gallery: "Галерея", location: "Местоположение", contact: "Контакты" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Экологичный отдых рядом с нетронутым пляжем в месте для приключений мирового класса.", description: "Откройте для себя уникальный рай для дайвинга ЮНЕСКО, окружённый природными заповедниками и незабываемыми возможностями для отдыха на природе.", ctaPrimary: "Забронировать проживание", ctaSecondary: "Ознакомиться с лоджем", badge: "Комфорт и ценность, любимые гостями" },
     stay: { headline: "Оставайтесь с нами", blurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.", moreDetails: "Подробнее", ourStory: "Наша История" },
@@ -2418,7 +2418,7 @@ export const L10N = {
 
   sw: {
     menu: "Menyu",
-    regions: { europe: "Ulaya", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
+    regions: { westEu: "Ulaya Magharibi", eastEu: "Ulaya Mashariki", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
     nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi rafiki kwa mazingira karibu na ufukwe usioguswa, katika eneo la matukio na safari za kipekee la kiwango cha dunia.", description: "Gundua paradiso ya kipekee ya kupiga mbizi ya UNESCO, iliyozungukwa na hifadhi za asili na shughuli za nje zisizosahaulika.", ctaPrimary: "Weka nafasi yako ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni" },
     stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },

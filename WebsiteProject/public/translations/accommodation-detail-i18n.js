@@ -83,16 +83,16 @@ const CC_TO_CURRENCY = {
 
 // Map country codes to continents (for region-aware English fallback)
 const CC_TO_CONTINENT = {
-  // Europe
-  GB: "europe", IE: "europe", NL: "europe", BE: "europe", FR: "europe", 
-  DE: "europe", IT: "europe", ES: "europe", PT: "europe", AT: "europe",
-  FI: "europe", SE: "europe", PL: "europe", GR: "europe", NO: "europe",
-  DK: "europe", CH: "europe", CZ: "europe", HU: "europe", RO: "europe",
-  RS: "europe", HR: "europe", SI: "europe", BA: "europe", BG: "europe",
-  SK: "europe", EE: "europe", LV: "europe", LT: "europe", MT: "europe",
-  CY: "europe", LU: "europe", IS: "europe", LI: "europe", MC: "europe",
-  UA: "europe", BY: "europe", MD: "europe", AL: "europe", MK: "europe",
-  ME: "europe", XK: "europe", AD: "europe", SM: "europe", VA: "europe",
+  // West Europe
+  GB: "westEu", IE: "westEu", NL: "westEu", BE: "westEu", FR: "westEu", 
+  DE: "westEu", IT: "westEu", ES: "westEu", PT: "westEu", AT: "westEu",
+  FI: "westEu", SE: "westEu", PL: "eastEu", GR: "westEu", NO: "westEu",
+  DK: "westEu", CH: "westEu", CZ: "eastEu", HU: "eastEu", RO: "eastEu",
+  RS: "eastEu", HR: "eastEu", SI: "eastEu", BA: "eastEu", BG: "eastEu",
+  SK: "eastEu", EE: "eastEu", LV: "eastEu", LT: "eastEu", MT: "westEu",
+  CY: "westEu", LU: "westEu", IS: "westEu", LI: "westEu", MC: "westEu",
+  UA: "eastEu", BY: "eastEu", MD: "eastEu", AL: "eastEu", MK: "eastEu",
+  ME: "eastEu", XK: "eastEu", AD: "westEu", SM: "westEu", VA: "westEu",
   
   // Africa
   ZA: "africa", MZ: "africa", KE: "africa", TZ: "africa", UG: "africa",

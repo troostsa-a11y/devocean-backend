@@ -1,7 +1,7 @@
 // Translations for de-DE
 export const UI = {
 menu: "Menü",
-    regions: { europe: "Europa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
+    regions: { westEu: "Westeuropa", eastEu: "Osteuropa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundlich wohnen nahe einem unberührten Strand in einem Abenteuerziel von Weltklasse.", description: "Entdecken Sie ein einzigartiges UNESCO-Tauchparadies, umgeben von Naturschutzgebieten und unvergesslichen Outdoor-Erlebnissen.", ctaPrimary: "Buchen Sie Ihren Aufenthalt", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung", whyPonta: "Warum Ponta do Ouro?", villageHighlights: "Highlights", goDiving: "Tauchen gehen" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
