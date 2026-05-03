@@ -3680,15 +3680,54 @@
       ]
     },
     "comfort": {
-      "title": "Comfort šator",
-      "shortDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni/zadnji zidovi), privatnom terasom i sopstvenim kupatilom pod krovom od slame.",
-      "detailedFeatures": [
-        "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svetlo",
-        "Mreža protiv komaraca • snažan ventilator • utičnice",
-        "Privatna drvena terasa sa stolicama od palminog lišća",
-        "Pozadi: privatno kupatilo (tuš, toalet, lavabo) pod krovom od trave",
-        "Živost sela tokom vrhunca/praznika; čepiće za uši dostupne"
-      ]
+      "eyebrow": "Comfort šator",
+      "heroTitle": "Više privatnosti. Više udobnosti. Isti divlji šarm.",
+      "heroDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni i zadnji zidovi), privatnom terasom i sopstvenim kupatilom pod krovom od slame.",
+      "sections": [
+        {
+          "heading": "Prostor i privatnost",
+          "description": "Prostran šator od platna od 12 m² na sopstvenoj platformi, sa dva bočna zida i zadnjim zidom za pojačanu privatnost u odnosu na standardni Safari šator.",
+          "features": [
+            "Postavljanje Twin/King kreveta • lampe • zgodni prekidači za svetlo",
+            "Mreža protiv komaraca • snažan ventilator • utičnice",
+            "Privatna drvena terasa sa stolicama od palminog lišća"
+          ]
+        },
+        {
+          "heading": "San i udobnost",
+          "description": "Dva jednokrevetna kreveta sa noćnim ormarićima i lampama sa abažurima mogu se spojiti u krevet King-size. Svetlom se lako upravlja prekidačima blizu ulaza.",
+          "features": [
+            "Pozadi: privatno kupatilo (tuš, toalet, lavabo) pod krovom od slame",
+            "Selo zna biti živo tokom praznika i sezone; čepiće za uši nudimo besplatno"
+          ]
+        },
+        {
+          "heading": "Terasa i bašta",
+          "description": "Uživajte na privatnoj drvenoj terasi sa stolicama od palminog lišća, sa pogledom na bujnu tropsku baštu — romantično osvetljenu noću.",
+          "features": [
+            "Privatno sedenje na otvorenom",
+            "Pogled na baštu, noćno osvetljenje"
+          ]
+        },
+        {
+          "heading": "Privatno kupatilo",
+          "description": "Iza šatora, pod šarmantnim krovom od slame, vaše privatno kupatilo nudi tuš, toalet i lavabo — spaja udobnost sa jedinstvenim doživljajem na otvorenom."
+        },
+        {
+          "heading": "Dobro je znati",
+          "description": "Iako je DEVOCEAN Lodge mirno mesto, okolno selo zna biti živo tokom prazničnih vikenda i špica sezone (kraj decembra – početak januara). Čepiće za uši nudimo besplatno na recepciji.",
+          "closingNote": "Prostran, dobro opremljen i privatan odmor u safari stilu — savršen za goste koji žele udobnost, mir i pogodnost sopstvenog kupatila."
+        }
+      ],
+      "trustItems": [
+        "Udobnost u krilu prirode",
+        "Pogodnost sopstvenog kupatila",
+        "Romantične večeri u bašti"
+      ],
+      "cta": {
+        "heading": "Spremni da rezervišete vaš Comfort šator?",
+        "description": "Unapredite vaš odmor u prirodi sa više privatnosti i sopstvenim kupatilom. Rezervišite direktno za najbolje cene."
+      }
     },
     "cottage": {
       "title": "Vikendica sa baštom",
