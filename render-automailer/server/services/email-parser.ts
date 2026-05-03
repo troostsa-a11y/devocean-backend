@@ -1,10 +1,7 @@
-import * as imapSimple from 'imap-simple';
+import imaps from 'imap-simple';
 import { simpleParser } from 'mailparser';
 import * as fs from 'fs';
 import type { InsertBooking } from '../../shared/schema';
-
-// Handle CommonJS/ESM interop
-const imaps = (imapSimple as any).default || imapSimple;
 
 /**
  * Email Parser Service
@@ -378,6 +375,24 @@ export class EmailParser {
       'CN': 'ZH', // China
       'HK': 'ZH', // Hong Kong
       'TW': 'ZH', // Taiwan
+      
+      // Romanian-speaking countries
+      'RO': 'RO', // Romania
+      'MD': 'RO', // Moldova
+      
+      // Serbian-speaking countries
+      'RS': 'SR', // Serbia
+      'ME': 'SR', // Montenegro
+      
+      // Croatian-speaking countries
+      'HR': 'HR', // Croatia
+      'BA': 'HR', // Bosnia and Herzegovina
+      
+      // Czech-speaking countries
+      'CZ': 'CS', // Czech Republic
+      
+      // Turkish-speaking countries
+      'TR': 'TR', // Turkey
     };
     
     const code = countryCode.toUpperCase().trim();
@@ -585,6 +600,78 @@ export class EmailParser {
       'русский': 'RU',
       'ryska': 'RU',
       'ru': 'RU',
+      
+      // Romanian
+      'romanian': 'RO',
+      'română': 'RO',
+      'romana': 'RO',
+      'rumänisch': 'RO',
+      'rumano': 'RO',
+      'romeno': 'RO',
+      'roumain': 'RO',
+      'roemeens': 'RO',
+      'rumuński': 'RO',
+      'румынский': 'RO',
+      'rumänska': 'RO',
+      'ro': 'RO',
+      
+      // Serbian
+      'serbian': 'SR',
+      'srpski': 'SR',
+      'српски': 'SR',
+      'serbisch': 'SR',
+      'serbio': 'SR',
+      'sérvio': 'SR',
+      'serbe': 'SR',
+      'serbo': 'SR',
+      'servisch': 'SR',
+      'serbski': 'SR',
+      'сербский': 'SR',
+      'serbiska': 'SR',
+      'sr': 'SR',
+      
+      // Croatian
+      'croatian': 'HR',
+      'hrvatski': 'HR',
+      'kroatisch': 'HR',
+      'croata': 'HR',
+      'croate': 'HR',
+      'kroatisch (nl)': 'HR',
+      'kroatisch-nl': 'HR',
+      'kroatisch ': 'HR',
+      'chorwacki': 'HR',
+      'хорватский': 'HR',
+      'kroatiska': 'HR',
+      'hr': 'HR',
+      
+      // Czech
+      'czech': 'CS',
+      'čeština': 'CS',
+      'cestina': 'CS',
+      'český': 'CS',
+      'tschechisch': 'CS',
+      'checo': 'CS',
+      'tcheco': 'CS',
+      'tchèque': 'CS',
+      'ceco': 'CS',
+      'tsjechisch': 'CS',
+      'czeski': 'CS',
+      'чешский': 'CS',
+      'tjeckiska': 'CS',
+      'cs': 'CS',
+      
+      // Turkish
+      'turkish': 'TR',
+      'türkçe': 'TR',
+      'turkce': 'TR',
+      'türkisch': 'TR',
+      'turco': 'TR',
+      'turc': 'TR',
+      'turks': 'TR',
+      'turecki': 'TR',
+      'турецкий': 'TR',
+      'turkiska': 'TR',
+      'tr': 'TR',
     };
     
     const normalized = languageMap[lang];
@@ -673,14 +760,9 @@ export class EmailParser {
           port: config.port,
           tls: config.tls,
           tlsOptions: { rejectUnauthorized: false },
-          authTimeout: 60000, // 60s for slower connections
-          connTimeout: 60000, // 60s connection timeout
-          socketTimeout: 0, // Disable socket timeout (use keepalive instead)
-          keepalive: {
-            interval: 10000, // Send NOOP every 10 seconds
-            idleInterval: 300000, // 5 minutes idle timeout
-            forceNoop: true, // Force NOOP to keep connection alive
-          },
+          authTimeout: 30000, // Increased from 10s to 30s
+          connTimeout: 30000, // Add connection timeout
+          socketTimeout: 30000, // Add socket timeout
         },
       });
       console.log('✅ IMAP connection established');
@@ -724,14 +806,9 @@ export class EmailParser {
           port: config.port,
           tls: config.tls,
           tlsOptions: { rejectUnauthorized: false },
-          authTimeout: 60000, // 60s for slower connections
-          connTimeout: 60000, // 60s connection timeout
-          socketTimeout: 0, // Disable socket timeout (use keepalive instead)
-          keepalive: {
-            interval: 10000, // Send NOOP every 10 seconds
-            idleInterval: 300000, // 5 minutes idle timeout
-            forceNoop: true, // Force NOOP to keep connection alive
-          },
+          authTimeout: 30000, // Increased from 10s to 30s
+          connTimeout: 30000, // Add connection timeout
+          socketTimeout: 30000, // Add socket timeout
         },
       });
 

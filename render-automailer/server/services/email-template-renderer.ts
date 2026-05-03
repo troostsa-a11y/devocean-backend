@@ -87,11 +87,11 @@ export class EmailTemplateRenderer {
       'JA': 'ja-JP',
       'ZH': 'zh-CN',
       'RU': 'ru',
+      'RO': 'ro',
+      'SR': 'sr',
+      'HR': 'hr',
       'CS': 'cs',
-      
-      // Hyphenated codes (from admin panel)
-      'EN-US': 'en-US',
-      'PT-BR': 'pt-BR',
+      'TR': 'tr',
       
       // Full locale codes (legacy support)
       'en-GB': 'en-GB',
@@ -111,7 +111,6 @@ export class EmailTemplateRenderer {
       'ja-JP': 'ja-JP',
       'zh-CN': 'zh-CN',
       'ru': 'ru',
-      'cs': 'cs',
     };
 
     const mappedLang = mapping[requestedLang] || 'en-GB';

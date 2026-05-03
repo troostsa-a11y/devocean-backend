@@ -87,6 +87,11 @@ export class EmailTemplateRenderer {
       'JA': 'ja-JP',
       'ZH': 'zh-CN',
       'RU': 'ru',
+      'RO': 'ro',
+      'SR': 'sr',
+      'HR': 'hr',
+      'CS': 'cs',
+      'TR': 'tr',
       
       // Full locale codes (legacy support)
       'en-GB': 'en-GB',

@@ -28,6 +28,11 @@ const formatDate = (date: Date | string, language: string = 'EN'): string => {
     ES: 'es-ES',
     IT: 'it-IT',
     NL: 'nl-NL',
+    RO: 'ro-RO',
+    SR: 'sr-Latn-RS',
+    HR: 'hr-HR',
+    CS: 'cs-CZ',
+    TR: 'tr-TR',
   };
 
   return d.toLocaleDateString(locales[language] || 'en-GB', options);
