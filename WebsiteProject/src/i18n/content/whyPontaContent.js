@@ -970,6 +970,57 @@ export const WHY_PONTA_CONTENT = {
       ctaBookNow: 'Rezervujte pobyt',
       backToHome: 'Zpět na úvod',
       locationLabel: 'Jih Mosambiku'
+    },
+  tr: {
+      pageTitle: 'Neden Ponta do Ouro? | DEVOCEAN Lodge - Mozambik',
+      metaDescription: 'Ponta do Ouro\'nun neden Mozambik\'in en iyi cenneti olduğunu keşfedin. Bozulmamış plajlar, dünyaca ünlü dalış, doğa rezervleri ve otantik yerel kültür DEVOCEAN Lodge\'da sizi bekliyor.',
+      ogTitle: 'Neden Ponta do Ouro? | DEVOCEAN Lodge',
+      ogDescription: 'Ponta do Ouro\'nun neden Mozambik\'in en iyi cenneti olduğunu keşfedin. Bozulmamış plajlar, dünyaca ünlü dalış, doğa rezervleri ve otantik yerel kültür sizi bekliyor.',
+      heroSubtitle: 'Bozulmamış plajların zengin deniz yaşamı ve sonsuz maceralarla buluştuğu gizli bir mücevher',
+      heroTitle: 'Neden Ponta do Ouro?',
+      badgeLabel: 'Maputo Milli Parkı\'nın Kapısı',
+      imageAlt: 'Ponta do Ouro kıyısı',
+      introText: 'Mozambik\'in ilk UNESCO doğal mirası olan Maputo Milli Parkı\'nın kapısı Ponta do Ouro\'ya hoş geldiniz. Bu kıyı cenneti, dinlenme, ekoturizm ve kültürel daldırmanın eşsiz bir kombinasyonunu sunar. İster heyecan verici bir dalış arıyor olun, ister DEVOCEAN Lodge gibi sakin bahçeler ister yakındaki harikalara günlük geziler – işte bu destinasyonun seyahat listenizde olması gereken nedenler.',
+      sections: [
+        {
+          id: 'beaches',
+          title: 'Muhteşem Plajlar ve Kıyı Güzelliği',
+          content: 'Ponta do Ouro, kazuarinler, kum tepeleri ve kristal berraklığında suyla çevrili manzaralı plajlarıyla övünür – dinlenmek veya plajda yürüyüş yapmak için ideal. Ana plaj bozulmamış, sakin ve inanılmaz güzeldir, gerçek bir şehirden kaçış sunar. Daha kalabalık yerlerin aksine, Ponta\'nın ham ve otantik güzelliği sizi yavaşlamaya ve doğayla bağlantı kurmaya davet ediyor.',
+          highlight: 'Gerçek bir şehirden kaçış'
+        },
+        {
+          id: 'marine',
+          title: 'Dünyaca Ünlü Deniz Maceraları',
+          content: 'Yaşamla dolu resiflere dalın – 1.200\'den fazla balık türü, boğa köpekbalıkları, çekiç balıkları, manta vatozları, kaplumbağalar ve yerleşik yunuslar. Haziran-Kasım arası göçmen kambur balinaları izleyin ve vahşi yunuslarla etik yüzme tadını çıkarın. UNESCO Milli Parkı tarafından korunan bu deneyimler sürdürülebilir ve diğer yerlerden daha az kalabalıktır.',
+          extra: 'Crèche\'de 10 m\'den Atlantis\'te 47 m\'ye kadar dalış noktalarıyla sualtı dünyasını keşfedin veya şnorkelle yüzme, sörf ve barakuda ile kingfish balıkçılığını deneyin.',
+          highlight: '1.200\'den fazla balık türü'
+        },
+        {
+          id: 'wildlife',
+          title: 'İkonik Vahşi Yaşam Rezervlerine Yakın',
+          content: 'Ponta do Ouro, "savandan plaja" kaçışlar için mükemmel bir üs – Kruger Milli Parkı (4-5 saat), Tembe Fil Parkı (2 saat), Hluhluwe-iMfolozi (3-4 saat) ve iSimangaliso Wetland Park (UNESCO, 3 saat) gibi Güney Afrika rezervlerine kolay erişim. Büyük Beşli\'yi, büyük dişli filleri ve 526\'dan fazla kuş türünü göreceksiniz.',
+          extra: 'Yerel olarak, sadece 30 km uzaktaki Maputo Milli Parkı – sıklıkla "Okavango\'nun Hint Okyanusu ile buluştuğu yer" olarak tanımlanır – savan, kum tepesi ve mangrovların muhteşem mozaiğini sergiliyor. Büyük fil sürüleri, su aygırları, zürafalar, zebralar, mavi gnular ve nyala, kudu ve kırmızı düker gibi çeşitli antiloplar görme şansınız yüksek.',
+          highlight: 'Savandan plaja kaçışlar'
+        },
+        {
+          id: 'culture',
+          title: 'Kültürel ve Manzaralı Geziler',
+          content: 'eSwatini\'ye gidin (3-4 saat) – Mantenga Doğa Rezervi\'nde yürüyüş ve geleneksel Svazi kültürel performansları (Sibhaca dansları, UNESCO somut olmayan miras). Panorama Yolu\'nu (5-6 saat) Blyde Nehri Kanyonu\'na ve şelalelere kadar keşfedin veya etik vahşi yaşam karşılaşmaları için Jane Goodall\'ın Chimp Eden sığınağını (5 saat) ziyaret edin.',
+          highlight: 'UNESCO somut olmayan miras'
+        },
+        {
+          id: 'charm',
+          title: 'Otantik Mozambik Cazibesi',
+          content: 'Ham okyanus maceraları, zengin yerel kültür ve canlı barları ticari olmayan bir ortamda deneyimleyin. Ponta do Ouro otantiklik demek – canlı pazarlardan canlı müziğe – bu da onu anlamlı kaçışlar için ideal kılıyor.',
+          highlight: 'Ticari olmayan otantiklik'
+        }
+      ],
+      ctaTitle: 'Cenneti deneyimlemeye hazır mısınız?',
+      ctaDescription: 'DEVOCEAN Lodge\'da kalın ve Ponta do Ouro\'nun neden en iyi Mozambik destinasyonunuz olduğunu keşfedin. Bu harikaların ortasında ekolojik konfor sizi bekliyor.',
+      ctaAccommodations: 'Konaklama seçeneklerimize bakın',
+      ctaBookNow: 'Konaklamanızı rezerve edin',
+      backToHome: 'Ana sayfaya dön',
+      locationLabel: 'Mozambik\'in güneyi'
     }
 };
 

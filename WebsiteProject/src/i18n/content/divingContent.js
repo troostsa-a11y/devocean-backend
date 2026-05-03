@@ -2277,6 +2277,85 @@ hr: {
       { name: "Atlantis", depth: "35–47 m", highlights: "Hluboké potápění – žraloci kočičí, útesoví, španělské tanečnice" },
       { name: "Doodles", depth: "14–18 m", highlights: "Perfektní pro všechny úrovně – žraloci kočičí, želvy, mureny, chobotnice" }
     ]
+  },
+  tr: {
+    title: "Tüplü Dalış",
+    tagline: "Boğa köpekbalıkları, manta vatozları ve balina köpekbalıklarıyla bozulmamış resifleri keşfedin",
+    overview: "Ponta do Ouro, sığ resiflerden derin pinakllara kadar 20\'den fazla noktayla dünyaca ünlü dalış sunuyor. Mozambik Kanalı\'nın kristal berraklığındaki suları, 19 köpekbalığı türü dahil olmak üzere inanılmaz çeşitlilikteki deniz yaşamıyla istisnai görüş ve karşılaşmalar sağlar.",
+    highlights: [
+      "8 m\'den 48 m\'ye kadar 20\'den fazla dalış noktası",
+      "Boğa, kaplan ve çekiç köpekbalıkları",
+      "Balina köpekbalıkları (Ekim-Mart)",
+      "Kambur balinalar (Temmuz-Kasım)",
+      "Manta vatozları, kaplumbağalar ve yunuslar",
+      "180\'den fazla nudibranch türü",
+      "Bozulmamış mercan resifleri",
+      "Profesyonel PADI merkezleri"
+    ],
+    pricingRange: "Dalış başına 40 US$\'dan başlayan",
+    pricingDetails: [
+      "Tek dalış: 40-50 US$",
+      "İki dalış paketi: 75-90 US$",
+      "PADI Open Water: 350-400 US$",
+      "Ekipman kiralama dahil",
+      "Tüm izinler ve girişler dahil"
+    ],
+    durationTypical: "Yarım gün veya tam gün turlar",
+    durationDetails: [
+      "Sabah dalışları: 2 dalış (3-4 saat)",
+      "Tam gün: 3 dalış (6-8 saat)",
+      "Plajdan kalkış (dalgaların içinden – macera!)",
+      "Noktalar 1-12 km kıyıdan"
+    ],
+    included: [
+      "Tüm dalış ekipmanı (BCD, regülatör, dalış kıyafeti)",
+      "Noktalara tekne ulaşımı",
+      "Profesyonel PADI dalış uzmanı/eğitmen",
+      "Deniz parkı ücretleri",
+      "Dalıştan sonra atıştırmalık ve içecek",
+      "Dalış bilgisayarı ve güvenlik ekipmanı"
+    ],
+    requirementsLevel: "Başlangıçtan ileri seviyeye",
+    requirementsDetails: [
+      "Başlangıç noktaları: Crèche, Doodles, Playground (10-18 m)",
+      "İleri noktalar: Pinnacles, Atlantis, Cloudbreak (28-48 m)",
+      "PADI sertifikası gerekli (veya Open Water kursunu alın)",
+      "Zorunlu sağlık anketi",
+      "İyi yüzme becerileri",
+      "Minimum yaş: 10 (Junior Open Water)"
+    ],
+    bestTimePeak: "Ekim - Nisan (yaz)",
+    bestTimeDetails: [
+      "**Boğa ve kaplan köpekbalıkları:** Kasım-Nisan (su 26-29°C)",
+      "**Çekiç köpekbalıkları:** Nisan-Ekim (daha iyi görüş)",
+      "**Balina köpekbalıkları:** Ekim-Mart",
+      "**Kambur balinalar:** Temmuz-Kasım",
+      "**En iyi görüş:** Mayıs-Ağustos (20-30 m)",
+      "**En sıcak su:** Aralık-Şubat (27-29°C)"
+    ],
+    tips: [
+      "Yoğun sezonda (Aralık-Ocak) erkenden rezerve edin",
+      "Sertifika kartınızı yanınıza alın",
+      "Dalış kıyafeti düşünün (3 mm önerilir)",
+      "Dalgaların içinden kalkış heyecan verici olabilir – ıslanmaya hazır olun!",
+      "Çoğu operatör ekipman kiralama sunar",
+      "Çoklu dalış paketleri en iyi fiyatı sunar"
+    ],
+    operators: [
+      { name: "Back to Basics Adventures", website: "http://www.backtobasicsadventures.com/", email: "backtobasicsadventures@gmail.com", specialty: "Köpekbalığı dalış uzmanları, keşif odaklı" },
+      { name: "Gozo Azul Diving", website: "https://gozo-azul.co.za/", email: "natalie@gozo-azul.co.za", specialty: "PADI 5 yıldızlı merkez, köpekbalığı dalış uzmanları" },
+      { name: "Under Water Explorer", website: "", email: "herb@thewhaler.co.za", specialty: "Profesyonel dalış merkezi" },
+      { name: "Blowing Bubbles Diving", website: "", email: "info@blowingbubbles.co.za", specialty: "Profesyonel dalış merkezi" },
+      { name: "Shark Diving Mozambique", website: "", email: "info@sharkdivingmozambique.com", specialty: "Köpekbalığı dalış uzmanları" },
+      { name: "Oceana Dive Center", website: "", email: "oceanamozdiving@gmail.com", specialty: "Profesyonel dalış merkezi" }
+    ],
+    topSites: [
+      { name: "Pinnacles", depth: "28-40 m", highlights: "Ana köpekbalığı dalışı – boğa, kaplan, çekiç, manta vatozları" },
+      { name: "Bass City", depth: "20-25 m", highlights: "Dev orfozlar, aslan balıkları, zebra köpekbalıkları, temizlik istasyonları" },
+      { name: "Wayne\'s World", depth: "~20 m", highlights: "Makro cennet – deniz atları, kurbağa balıkları, hayalet balıklar" },
+      { name: "Atlantis", depth: "35-47 m", highlights: "Derin dalış – kedi köpekbalıkları, resif köpekbalıkları, İspanyol dansçıları" },
+      { name: "Doodles", depth: "14-18 m", highlights: "Tüm seviyeler için mükemmel – kedi köpekbalıkları, kaplumbağalar, mürenler, ahtapotlar" }
+    ]
   }
 };
 

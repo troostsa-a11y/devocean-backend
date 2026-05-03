@@ -175,6 +175,17 @@ export const CRITICAL_NAV = {
     bookNow: "Ceny a dostupnost",
     heroCTA: "Rezervujte pobyt"
   },
+  tr: {
+    home: "Ana Sayfa",
+    stay: "Konaklama",
+    experiences: "Deneyimler",
+    todo: "Yapılacaklar",
+    gallery: "Galeri",
+    location: "Konum",
+    contact: "İletişim",
+    bookNow: "Fiyatlar ve Müsaitlik",
+    heroCTA: "Konaklamanızı Rezerve Edin"
+  },
   "ja-JP": {
     home: "ホーム",
     stay: "宿泊",

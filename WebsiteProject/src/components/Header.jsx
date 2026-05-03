@@ -14,7 +14,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
   const regions = {
     westEu: { name: 'Western Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'] },
     eastEu: { name: 'Eastern Europe', languages: ['pl', 'ro', 'sr', 'hr', 'cs'] },
-    asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru'] },
+    asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru', 'tr'] },
     americas: { name: 'Americas', languages: ['en-US', 'pt-BR', 'es-ES', 'fr-FR'] },
     africa: { name: 'Africa', languages: ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
     oceania: { name: 'Oceania', languages: ['en-GB'] }
@@ -162,6 +162,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               {regions[region]?.languages.includes('sr') && <option value="sr">Srpski</option>}
               {regions[region]?.languages.includes('hr') && <option value="hr">Hrvatski</option>}
               {regions[region]?.languages.includes('cs') && <option value="cs">Čeština</option>}
+              {regions[region]?.languages.includes('tr') && <option value="tr">Türkçe</option>}
               {regions[region]?.languages.includes('af-ZA') && <option value="af-ZA">Afrikaans</option>}
               {regions[region]?.languages.includes('zu') && <option value="zu">isiZulu</option>}
               {regions[region]?.languages.includes('sw') && <option value="sw">Kiswahili</option>}

@@ -2850,6 +2850,82 @@ export const DOLPHINS_CONTENT = {
       { name: "Dolphin Encountours Research Center", website: "https://www.dolphinencountours.org/", email: "connect@dolphinencountours.org", specialty: "Setkání s delfíny vedená mořskými biology, zaměření na ochranu" },
       { name: "The Dolphin Centre", website: "https://thedolphincentre.com/", email: "info@thedolphincentre.com", specialty: "Plavání s delfíny založené na výzkumu, se vzdělávacím důrazem" }
     ]
+  },
+  tr: {
+    title: "Yunuslarla Yüzme",
+    tagline: "Kristal berraklığındaki sularda vahşi yunuslarla etik karşılaşmalar",
+    overview: "Ponta do Ouro Kısmi Deniz Rezervi\'nde vahşi Hint-Pasifik şişe burunlu yunuslarıyla büyülü karşılaşmalar yaşayın. Her iki yetkili operatör de katı etik kurallara uyar – pasif, müdahale etmeyen etkileşimler sağlar; yunuslar kendi koşullarında yaklaşıp yaklaşmamaya karar verir.",
+    highlights: [
+      "200\'den fazla yerleşik şişe burunlu yunus",
+      "Araştırmaya dayalı etik karşılaşmalar",
+      "Dokunma veya kovalama YOK – vahşi ve özgür",
+      "Bozulmamış resiflerde şnorkelle yüzme",
+      "Sezonluk balina köpekbalığı gözlemi",
+      "Kambur balinalar (Temmuz-Kasım)",
+      "Küçük gruplar (maksimum 12 kişi)",
+      "Korumaya eğitim odağı"
+    ],
+    pricingRange: "Kişi başı 45-50 US$",
+    pricingDetails: [
+      "Yunus gözlemi (sadece tekneden): 45 US$",
+      "Yunuslarla yüzme turu: 50 US$",
+      "Çok günlük paketler: indirimli fiyatlar",
+      "Şnorkel ekipmanı dahil",
+      "Koruma ücreti dahil"
+    ],
+    durationTypical: "2-3 saat",
+    durationDetails: [
+      "Erken sabah kalkışı (en iyi koşullar)",
+      "Sığ resiflerde şnorkelle yüzme",
+      "Yunuslarla suya giriş",
+      "Balina köpekbalıklarıyla karşılaşma (sezonluk)",
+      "Kalkıştan önce eğitim brifingi"
+    ],
+    included: [
+      "Maske, palet ve şnorkel",
+      "Dalış kıyafeti (gerekirse)",
+      "Deneyimli rehber/eskort",
+      "Kalkıştan önce eğitim sunumu",
+      "Karşılaşmanızdan fotoğraflar/kayıtlar",
+      "Hafif atıştırmalıklar",
+      "Deniz parkı ücretleri"
+    ],
+    requirementsLevel: "Tüm yaşlar ve seviyeler",
+    requirementsDetails: [
+      "Yüzme becerileri gerekli",
+      "Şnorkelle rahatlık",
+      "Yaş: 5\'ten 80+\'a (hava koşullarına bağlı)",
+      "Hamilelik: 6. aya kadar güvenli",
+      "Dalış sertifikası gerekli değil",
+      "Tur başına minimum 6 kişi (retreat için 4)"
+    ],
+    bestTimePeak: "Ocak - Mayıs",
+    bestTimeDetails: [
+      "**Yoğun sezon:** Ocak-Mayıs (en iyi karşılaşmalar)",
+      "**Yunuslar:** yıl boyu yerleşik",
+      "**Kambur balinalar:** Temmuz-Kasım",
+      "**Balina köpekbalıkları:** Ekim-Mart",
+      "**En sakin deniz:** erken sabah",
+      "**Su sıcaklığı:** yıl boyu 22-28°C"
+    ],
+    tips: [
+      "2-3 gün önceden rezerve edin",
+      "Resiflere zararsız güneş kremi alın",
+      "Sualtı kamerası önerilir",
+      "Eskort talimatlarını dikkatle takip edin",
+      "Suda sakin ve sessiz olun",
+      "Yunusların size doğal olarak yaklaşmasına izin verin"
+    ],
+    ethicalPractices: [
+      { title: "Dokunma veya kovalama yok", description: "Yunuslara asla dokunulmaz, kovalanmaz veya rahatsız edilmez. Tüm karşılaşmalar yunusların koşullarında gerçekleşir." },
+      { title: "Araştırmaya dayalı yaklaşım", description: "Her iki operatör de deniz biyologlarıyla işbirliği yapar ve süregelen yunus araştırma ve korumasına katkıda bulunur." },
+      { title: "Sadece küçük gruplar", description: "Tur başına maksimum 12 kişi minimum rahatsızlık ve daha iyi karşılaşmalar sağlar." },
+      { title: "Önce eğitim", description: "Kalkış öncesi brifingler tüm katılımcılara doğru davranış ve yunus biyolojisi hakkında eğitim verir." }
+    ],
+    operators: [
+      { name: "Dolphin Encountours Research Center", website: "https://www.dolphinencountours.org/", email: "connect@dolphinencountours.org", specialty: "Deniz biyologları tarafından yönetilen yunus karşılaşmaları, koruma odaklı" },
+      { name: "The Dolphin Centre", website: "https://thedolphincentre.com/", email: "info@thedolphincentre.com", specialty: "Eğitim vurgusuyla araştırmaya dayalı yunuslarla yüzme" }
+    ]
   }
 };
 

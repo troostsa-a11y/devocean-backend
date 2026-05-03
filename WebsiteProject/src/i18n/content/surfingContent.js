@@ -1787,6 +1787,75 @@ hr: {
       { name: "Ponta Surf School", website: "", email: "info@pontasurf.com", specialty: "Lekce surfování pro začátečníky a pokročilé" },
       { name: "Mozambique Surf Adventures", website: "", email: "info@mozsurf.com", specialty: "Surf kempy a víkendové výlety" }
     ]
+  },
+  tr: {
+    title: "Sörf",
+    tagline: "Ponta do Ouro\'nun bozulmamış plajlarında dalga yakalayın",
+    overview: "Ponta do Ouro, başlangıçtan ileri seviyeye kadar tüm seviyeler için tutarlı dalgalar sunar. Ponta Point\'teki ana kırılma dünya çapında sağ kırılmalar sağlar; koydaki daha sakin dalgalar ise dersler için idealdir. Köyde tahta kiralama ve profesyonel eğitmenler mevcuttur.",
+    highlights: [
+      "Ponta Point\'te dünya çapında sağ kırılmalar",
+      "Ana koyda başlangıç dalgaları",
+      "Profesyonel eğitmenler",
+      "Tahta ve dalış kıyafeti kiralama",
+      "Sörf kampları ve hafta sonları mevcut",
+      "Yıl boyu sıcak su",
+      "Güney Afrika\'dan daha az kalabalık",
+      "Yıl boyu tutarlı dalgalar"
+    ],
+    pricingRange: "Saatlik ders 30 US$\'dan başlayan",
+    pricingDetails: [
+      "Saatlik grup dersi: 30-40 US$",
+      "Saatlik özel ders: 50-70 US$",
+      "Tahta kiralama (gün): 15-20 US$",
+      "Dalış kıyafeti kiralama: 5-10 US$",
+      "Haftalık sörf kampı: 300-500 US$"
+    ],
+    durationTypical: "1-2 saatlik dersler",
+    durationDetails: [
+      "Başlangıç dersleri: 1-1,5 saat",
+      "Özel dersler: 1-2 saat",
+      "Sörf kampları: 5-7 gün",
+      "En iyi dalgalar: erken sabah ve geç öğleden sonra",
+      "Tüm gün kiralama"
+    ],
+    included: [
+      "Seviyenize uygun tahta",
+      "Dalış kıyafeti (gerekirse)",
+      "Profesyonel eğitmen",
+      "Teorik brifing",
+      "Suda pratik talimatlar",
+      "Sigorta ve güvenlik ekipmanı"
+    ],
+    requirementsLevel: "Tüm seviyeler",
+    requirementsDetails: [
+      "Başlangıçlar hoş karşılanır",
+      "Yüzme becerileri gerekli",
+      "Yaş 8\'den itibaren",
+      "Suda rahatlık",
+      "Temel fiziksel kondisyon",
+      "Başlangıçlar için önceden deneyim gerekli değil"
+    ],
+    bestTimePeak: "Mayıs - Eylül (güneydoğu dalgaları)",
+    bestTimeDetails: [
+      "**Yoğun sezon:** Mayıs-Eylül (daha büyük dalgalar)",
+      "**Başlangıç sezonu:** Aralık-Mart (daha sakin)",
+      "**Su:** yıl boyu 22-28°C",
+      "**Rüzgar:** sabah en iyisi (offshore)",
+      "**Dalgalar:** en tutarlı Haziran-Ağustos",
+      "**Daha az kalabalık:** okul tatilleri dışında"
+    ],
+    tips: [
+      "Dersleri bir gün önceden rezerve edin",
+      "Resiflere zararsız güneş kremi alın",
+      "Kışın dalış kıyafeti önerilir (Mayıs-Eylül)",
+      "En iyi rüzgar için sabah sörf yapın",
+      "Sörf kurallarına saygı gösterin (öncelik)",
+      "Başlangıçlar ana koyda başlamalı"
+    ],
+    operators: [
+      { name: "Ponta Surf School", website: "", email: "info@pontasurf.com", specialty: "Başlangıç ve ileri seviye için sörf dersleri" },
+      { name: "Mozambique Surf Adventures", website: "", email: "info@mozsurf.com", specialty: "Sörf kampları ve hafta sonu turları" }
+    ]
   }
 };
 

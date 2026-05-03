@@ -2029,6 +2029,76 @@ hr: {
       { name: "DEVOCEAN Safari Tours", website: "", email: "safari@devocean.co.za", specialty: "Místní průvodci pro Maputo NP a Tembe" },
       { name: "African Footprints Safari", website: "", email: "info@africanfootprints.com", specialty: "Vícedenní safari okruhy v jižní Africe" }
     ]
+  },
+  tr: {
+    title: "Kara Safarisi",
+    tagline: "Maputo Milli Parkı ve Tembe Fil Parkı\'nda Büyük Beşli safarisi",
+    overview: "Kıyı üssünüzden otantik Afrika safarileri yaşayın. Maputo Milli Parkı (30 km) ve Tembe Fil Parkı (2 saat) Büyük Beşli, büyük dişli filler, su aygırları, zürafalar ve 526\'dan fazla kuş türü sunar. Günlük geziler veya çok günlük safariler DEVOCEAN veya yerel operatörler tarafından düzenlenir.",
+    highlights: [
+      "Maputo Milli Parkı – 30 km uzakta",
+      "Tembe Fil Parkı – büyük dişli filler",
+      "Büyük Beşli karşılaşmaları (çok günlük safariler)",
+      "526\'dan fazla kuş türü",
+      "Su aygırı, zürafa ve zebra sürüleri",
+      "Hava, atlı ve yürüyüş safarileri mevcut",
+      "Rehberli fotoğraf safarileri",
+      "Islak ve kuru safari seçeneği (okyanus + savan)"
+    ],
+    pricingRange: "Günlük gezi için 80 US$\'dan başlayan",
+    pricingDetails: [
+      "Günlük Maputo NP: 80-120 US$",
+      "Günlük Tembe: 150-200 US$",
+      "İki günlük safari: 350-500 US$",
+      "Beş günlük büyük tur: 1500-2500 US$",
+      "Fiyatlar rehber, ulaşım ve girişleri içerir"
+    ],
+    durationTypical: "Bir günden birkaç güne",
+    durationDetails: [
+      "Günlük gezi: 6:00-18:00",
+      "İki günlük safari: 1 gece konaklama",
+      "Beş günlük büyük tur: Kruger NP ve çevresi",
+      "DEVOCEAN Lodge\'dan alış",
+      "Klimalı 4×4 araçlar"
+    ],
+    included: [
+      "Profesyonel safari rehberi",
+      "Klimalı 4×4 araçlar",
+      "Park giriş ücretleri",
+      "Öğle yemeği ve atıştırmalıklar",
+      "Su ve içecekler",
+      "Dürbün mevcut",
+      "Lodge\'dan alma ve geri dönüş"
+    ],
+    requirementsLevel: "Tüm yaşlar",
+    requirementsDetails: [
+      "Aileler için uygun",
+      "5 yaş ve üzeri çocuklar hoş karşılanır",
+      "Rahat giysiler (katmanlı)",
+      "Sağlam ayakkabılar",
+      "Şapka ve güneş kremi",
+      "Sivrisinek kovucu"
+    ],
+    bestTimePeak: "Mayıs - Ekim (kuru sezon)",
+    bestTimeDetails: [
+      "**Kuru sezon:** Mayıs-Ekim (daha iyi vahşi yaşam gözlemi)",
+      "**Yağışlı sezon:** Kasım-Nisan (yeşil manzara, yavrular)",
+      "**Kuş göçü:** Ekim-Mart",
+      "**Filler:** Tembe\'de yıl boyu",
+      "**En ılıman hava:** Haziran-Ağustos",
+      "**En yeşil manzara:** Şubat-Nisan"
+    ],
+    tips: [
+      "Geziden bir gün önce safari rezerve edin",
+      "İyi lensli bir fotoğraf makinesi alın",
+      "Dürbünler deneyimi geliştirir",
+      "Bol su için",
+      "Rehberin talimatlarını dinleyin",
+      "Soluk renkli kıyafetler (bej, haki)"
+    ],
+    operators: [
+      { name: "DEVOCEAN Safari Tours", website: "", email: "safari@devocean.co.za", specialty: "Maputo NP ve Tembe için yerel rehberler" },
+      { name: "African Footprints Safari", website: "", email: "info@africanfootprints.com", specialty: "Güney Afrika\'da çok günlük safari turları" }
+    ]
   }
 };
 

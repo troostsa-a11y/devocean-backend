@@ -1988,6 +1988,76 @@ hr: {
       { name: "Dolphin Encountours Research Center", website: "https://www.dolphinencountours.org/", email: "connect@dolphinencountours.org", specialty: "Mořská safari vedená mořskými biology" },
       { name: "The Dolphin Centre", website: "https://thedolphincentre.com/", email: "info@thedolphincentre.com", specialty: "Etická setkání s delfíny a velrybami" }
     ]
+  },
+  tr: {
+    title: "Deniz Safarisi",
+    tagline: "Hint Okyanusu\'nda balina, yunus ve deniz yaşamı gözlemi",
+    overview: "Yerleşik yunuslar, sezonluk kambur balinalar ve balina köpekbalıkları için okyanus safarisine çıkın. Deniz safarileri tekneden pasif gözlem veya yunuslarla yüzme sunar – her zaman vahşi hayvanlara saygı göstererek. Temmuz\'dan Kasım\'a kadar balina sezonu unutulmaz deneyimler getirir.",
+    highlights: [
+      "Yıl boyu yerleşik şişe burunlu yunuslar",
+      "Kambur balinalar (Temmuz-Kasım)",
+      "Balina köpekbalıkları (Ekim-Mart)",
+      "Deniz kaplumbağaları ve manta vatozları",
+      "Tekneden etik gözlem",
+      "İsteğe bağlı yunuslarla şnorkelle yüzme",
+      "Küçük gruplar (maksimum 12 kişi)",
+      "Deniz biyologu eskortu"
+    ],
+    pricingRange: "Kişi başı 45-60 US$",
+    pricingDetails: [
+      "Tekneden gözlem: 45 US$",
+      "Yunuslarla yüzme: 50 US$",
+      "Balina safarisi (sezon): 60 US$",
+      "Çok günlük paketler: indirimli fiyatlar",
+      "Şnorkel ekipmanı dahil"
+    ],
+    durationTypical: "2-3 saat",
+    durationDetails: [
+      "Erken sabah kalkışı (en sakin deniz)",
+      "Kıyı boyunca 5-15 km hareket",
+      "Yunuslarla suya giriş (koşullara göre)",
+      "Sezonluk balina karşılaşmaları",
+      "11:00\'a kadar dönüş"
+    ],
+    included: [
+      "Şnorkel ekipmanı (maske, palet)",
+      "Dalış kıyafeti (gerekirse)",
+      "Deneyimli rehber/eskort",
+      "Kalkış öncesi brifing",
+      "Karşılaşmadan fotoğraflar",
+      "Hafif atıştırmalıklar",
+      "Deniz parkı ücretleri"
+    ],
+    requirementsLevel: "Tüm seviyeler",
+    requirementsDetails: [
+      "Yunuslarla yüzme için yüzme becerileri",
+      "Tekneden gözlem: gereksinim yok",
+      "Yaş: 5\'ten 80+\'a",
+      "Hamilelik: 6. aya kadar",
+      "Deniz tutması ilaçları önerilir",
+      "Tur başına minimum 4-6 kişi"
+    ],
+    bestTimePeak: "Temmuz - Kasım (balinalar)",
+    bestTimeDetails: [
+      "**Kambur balinalar:** Temmuz-Kasım (zirve Ağustos-Eylül)",
+      "**Yunuslar:** yıl boyu yerleşik",
+      "**Balina köpekbalıkları:** Ekim-Mart",
+      "**Manta vatozları:** Ekim-Nisan",
+      "**En sakin deniz:** erken sabah",
+      "**Su sıcaklığı:** yıl boyu 22-28°C"
+    ],
+    tips: [
+      "1-2 gün önceden rezerve edin",
+      "Resiflere zararsız güneş kremi alın",
+      "Sualtı kamerası önerilir",
+      "Hassas iseniz deniz tutması ilaçları",
+      "Sabırlı olun – karşılaşmalar garanti değildir",
+      "Rehber talimatlarına saygı gösterin"
+    ],
+    operators: [
+      { name: "Dolphin Encountours Research Center", website: "https://www.dolphinencountours.org/", email: "connect@dolphinencountours.org", specialty: "Deniz biyologları tarafından yönetilen deniz safarileri" },
+      { name: "The Dolphin Centre", website: "https://thedolphincentre.com/", email: "info@thedolphincentre.com", specialty: "Yunuslar ve balinalarla etik karşılaşmalar" }
+    ]
   }
 };
 

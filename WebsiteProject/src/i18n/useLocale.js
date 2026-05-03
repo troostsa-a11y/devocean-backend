@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
 
-const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ro", "sr", "hr", "cs", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
+const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ro", "sr", "hr", "cs", "tr", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
 const SUPPORTED_REGIONS = ["westEu", "eastEu", "asia", "americas", "africa", "oceania"];
 
 // Language-to-region mapping (module-level constant)
 const LANGUAGE_TO_REGION = {
   'westEu': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'],
   'eastEu': ['pl', 'ro', 'sr', 'hr', 'cs'],
-  'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru'],
+  'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru', 'tr'],
   'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
   'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
   'oceania': ['en-GB']
@@ -192,6 +192,9 @@ const CC_TO_LANGUAGE = {
 
   // Czech-speaking countries
   CZ: "cs",
+
+  // Turkish-speaking countries
+  TR: "tr",
   
   // Japanese-speaking countries
   JP: "ja-JP",
@@ -219,7 +222,7 @@ const CONTINENT_MERIDIANS = {
 // Booking engine locale mapping (1:1 passthrough now that we use Hotelrunner codes everywhere)
 export const LOCALE_BY_LANG = {
   "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
-  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ro": "ro", "sr": "sr", "hr": "hr", "cs": "cs", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "zu", "sw": "sw",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv", "pl": "pl", "ro": "ro", "sr": "sr", "hr": "hr", "cs": "cs", "tr": "tr", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru", "af-ZA": "af-ZA", "zu": "zu", "sw": "sw",
 };
 
 // Get booking locale based on language + currency combination
@@ -236,7 +239,7 @@ export const getBookingLocale = (lang, currency, countryCode) => {
 // Native date pickers: force dd/mm/yyyy display
 export const DATE_LANG_BY_LANG = {
   "en-GB": "en-GB", "en-US": "en-US", "pt-PT": "pt-PT", "pt-BR": "pt-BR", "nl-NL": "nl-NL",
-  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv-SE", "pl": "pl-PL", "ro": "ro-RO", "sr": "sr-RS", "hr": "hr-HR", "cs": "cs-CZ", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru-RU", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw-KE",
+  "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv-SE", "pl": "pl-PL", "ro": "ro-RO", "sr": "sr-RS", "hr": "hr-HR", "cs": "cs-CZ", "tr": "tr-TR", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru-RU", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw-KE",
 };
 
 function normLang(raw) {
@@ -263,6 +266,7 @@ function normLang(raw) {
   if (s === "sr" || s === "sr-rs" || s === "sr-latn" || s === "sr-latn-rs") return "sr";
   if (s === "hr" || s === "hr-hr" || s === "hr-ba") return "hr";
   if (s === "cs" || s === "cs-cz" || s === "cz") return "cs";
+  if (s === "tr" || s === "tr-tr" || s === "tr-cy") return "tr";
   if (s === "ru") return "ru";
   if (s === "zu") return "zu";
   if (s === "sw") return "sw";

@@ -881,6 +881,57 @@
       ]
     }
   },
+  "tr": {
+    "safari": {
+      "title": "Safari Çadırı",
+      "shortDescription": "3×6 m platform üzerinde 12 m² bez çadır. Twin/King yatak, fan, prizler, sivrisinek teli, özel teras. Paylaşımlı banyolar.",
+      "detailedFeatures": [
+        "İki tek kişilik yatak (veya King) komodinler ve masa lambalarıyla",
+        "Kapı/pencerelerde sivrisinek teli • güçlü fan • prizler",
+        "Kıyafet/temel eşyalar için küçük raf",
+        "Tropik bahçeye bakan palmiye yapraklı sandalyelerle özel teras",
+        "Paylaşımlı banyolar (kadın/erkek): her birinde sıcak/soğuk sulu 2 duş ve 2 tuvalet",
+        "Köy tatil dönemlerinde hareketli olabilir; resepsiyonda ücretsiz kulak tıkacı"
+      ]
+    },
+    "comfort": {
+      "title": "Comfort Çadırı",
+      "shortDescription": "Daha fazla mahremiyet (yan/arka duvarlar), özel teras ve sazdan çatı altında özel banyo ile geliştirilmiş 12 m² çadır.",
+      "detailedFeatures": [
+        "Twin/King yapılandırması • lambalar • pratik anahtarlar",
+        "Sivrisinek teli • güçlü fan • prizler",
+        "Palmiye yapraklı sandalyelerle özel ahşap teras",
+        "Arkada: sazdan çatı altında özel banyo (duş, tuvalet, lavabo)",
+        "Köy sezonda/tatillerde hareketli; kulak tıkacı mevcut"
+      ]
+    },
+    "cottage": {
+      "title": "Bahçeli Kulübe",
+      "shortDescription": "Queen yatak, klima (invertör), çalışma masası ve yemek alanı, özel teras ve banyolu büyüleyici roundavelde havadar kulübe.",
+      "detailedFeatures": [
+        "Roma kiremitli çatı, koyu ahşap kirişlerle yüksek beyaz tavan",
+        "Terakota zemin, buğday tarlası renginde sıcak duvarlar",
+        "Queen yatak • lambalı çalışma masası • sandalyeli yemek masası",
+        "Bavullar için raf, kıyafet askılığı ve ek raflar",
+        "Invertörlü klima (soğutma ve ısıtma) • karartılabilir ana ışık",
+        "Sazdan çatılı roundavelde özel banyo (duş, lavabo, tuvalet)",
+        "Kamp sandalyeleri ile özel ahşap teras"
+      ]
+    },
+    "chalet": {
+      "title": "Sazdan Çatılı Şale",
+      "shortDescription": "Sazdan çatılı şarjlı şale: queen yatak, klima (invertör), büyük teras, özel banyo ve büyüleyici tropik bahçe manzarası.",
+      "detailedFeatures": [
+        "Otantik sazdan çatı, beyaz duvarlar, açık ahşap kirişler",
+        "Queen yatak • komodinler • masa lambaları",
+        "Lambalı çalışma alanı • dolaplı kıyafet rafı",
+        "Invertörlü klima (soğutma ve ısıtma)",
+        "Sazdan çatılı özel banyo (duş, tuvalet, lavabo)",
+        "Bahçe manzaralı palmiye yapraklı sandalyelerle büyük özel teras",
+        "Sezonda/tatillerde köy hareketli olabilir; kulak tıkacı mevcuttur"
+      ]
+    }
+  },
   "hr": {
     "safari": {
       "title": "Safari šator",

@@ -1946,6 +1946,74 @@ hr: {
       { name: "Ponta Fishing Charters", website: "", email: "info@pontafishingcharters.com", specialty: "Hlubokomořský rybolov a plachetnice" },
       { name: "Mozambique Sport Fishing", website: "", email: "info@mozambiquefishing.com", specialty: "Sportovní rybolov a turnaje" }
     ]
+  },
+  tr: {
+    title: "Balıkçılık",
+    tagline: "Verimli sularda marlin, yelken balığı ve ton balığı için derin deniz çarterleri",
+    overview: "Ponta do Ouro açıklarındaki sular, çizgili, mavi ve siyah marlin, yelken balığı, sarı kanat ton balığı, mahi-mahi, kingfish ve wahoo için yıl boyu şanslarla birlikte birinci sınıf derin deniz balıkçılığı sunar. Profesyonel çarterler tam ve yarım gün turlar sunar – tüm ekipman dahildir.",
+    highlights: [
+      "Yıl boyu büyük balık avı",
+      "Çizgili, mavi ve siyah marlin",
+      "Yelken balığı (zirve Ocak-Nisan)",
+      "Sarı kanat ton balığı ve mahi-mahi",
+      "Wahoo ve kingfish",
+      "Profesyonel çarterler ve mürettebat",
+      "Hassas türler için tag-and-release politikası",
+      "Tam donanımlı tekneler (oltalar, makaralar, yemler)"
+    ],
+    pricingRange: "Yarım gün için 600 US$\'dan başlayan",
+    pricingDetails: [
+      "Yarım gün (4 saat): 600-800 US$",
+      "Tam gün (8 saat): 1100-1500 US$",
+      "Tekne başına fiyat (maks 4 balıkçı)",
+      "Tüm ekipman ve yemler dahil",
+      "Gemide atıştırmalık ve içecekler"
+    ],
+    durationTypical: "Yarım gün veya tam gün turlar",
+    durationDetails: [
+      "Yarım gün: sabah (6-10) veya öğleden sonra",
+      "Tam gün: 6:00-14:00",
+      "Doğrudan plajdan kalkış",
+      "Avlanma alanı kıyıdan 5-30 km"
+    ],
+    included: [
+      "Profesyonel kaptan ve mürettebat",
+      "Tüm balıkçılık ekipmanı (oltalar, makaralar, yemler)",
+      "Yemler ve seyir ekipmanı",
+      "Atıştırmalıklar ve içecekler",
+      "Avın filetolanması",
+      "Kurtarma ekipmanı ve sigorta"
+    ],
+    requirementsLevel: "Tüm seviyeler hoş karşılanır",
+    requirementsDetails: [
+      "Başlangıç ve deneyimli için uygun",
+      "Çocuklar hoş karşılanır (gözetim altında)",
+      "Balıkçılık ruhsatı gerekli değil (operatör sağlar)",
+      "Deniz tutması ilaçları önerilir",
+      "Rahat, kaymayan ayakkabılar",
+      "Şapka ve güneş kremi şart"
+    ],
+    bestTimePeak: "Kasım - Nisan",
+    bestTimeDetails: [
+      "**Çizgili marlin:** Ekim-Aralık",
+      "**Mavi/siyah marlin:** Kasım-Nisan",
+      "**Yelken balığı:** Ocak-Nisan (zirve)",
+      "**Sarı kanat ton balığı:** yıl boyu, zirve Ocak-Nisan",
+      "**Mahi-mahi:** Aralık-Mart",
+      "**Wahoo ve kingfish:** yıl boyu"
+    ],
+    tips: [
+      "Yoğun sezonda birkaç hafta önceden rezerve edin",
+      "Hassas iseniz deniz tutması ilacı alın",
+      "Güneşten korunma şarttır",
+      "Avlar için fotoğraf makinesi alın",
+      "Büyük marlin için tut-bırak politikası",
+      "Mürettebata bahşiş takdir edilir (10-15%)"
+    ],
+    operators: [
+      { name: "Ponta Fishing Charters", website: "", email: "info@pontafishingcharters.com", specialty: "Derin deniz balıkçılığı ve yelkenli" },
+      { name: "Mozambique Sport Fishing", website: "", email: "info@mozambiquefishing.com", specialty: "Spor balıkçılığı ve turnuvalar" }
+    ]
   }
 };
 
