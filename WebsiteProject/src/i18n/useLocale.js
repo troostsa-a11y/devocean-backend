@@ -477,8 +477,8 @@ function getCriticalUI(lang) {
   return {
     menu: nav.menu || "Menu",
     regions: {
-      westEu: "West-EU",
-      eastEu: "East-EU",
+      westEu: "Western Europe",
+      eastEu: "Eastern Europe",
       asia: "Asia",
       americas: "Americas",
       africa: "Africa",
