@@ -31,7 +31,14 @@
     if (s === "ru") return "ru";
     if (s === "zu") return "zu";
     if (s === "sw") return "sw";
-    
+    if (s === "sr" || s === "sr-latn" || s === "sr-cyrl" || s.indexOf("sr-") === 0) return "sr";
+    if (s === "hr" || s.indexOf("hr-") === 0) return "hr";
+    if (s === "bs" || s.indexOf("bs-") === 0) return "sr";
+    if (s === "cs" || s.indexOf("cs-") === 0) return "cs";
+    if (s === "tr" || s.indexOf("tr-") === 0) return "tr";
+    if (s === "ro" || s.indexOf("ro-") === 0) return "ro";
+    if (s === "mo" || s.indexOf("mo-") === 0) return "ro";
+
     return "en-GB";
   }
   function clampCur(cur) { if (!cur) return null; cur = String(cur).toUpperCase().replace(/[^A-Z]/g, ""); return cur.length === 3 ? cur : null; }
@@ -92,7 +99,7 @@
 
   /* ---------- dynamic AUTO seeding BEFORE hydration ---------- */
   (function seed() {
-    var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
+    var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw", "sr", "hr", "cs", "tr", "ro"];
     var src = readLS("site.lang_source") || "auto";
     var lang = readLS("site.lang");
     var cur = readLS("site.currency");
@@ -139,7 +146,7 @@
       var lang;
       if (urlLang) {
         lang = normLang(urlLang);
-        var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
+        var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw", "sr", "hr", "cs", "tr", "ro"];
         if (SUPPORTED.indexOf(lang) !== -1) {
           // Store in localStorage for consistency
           writeLS("site.lang", lang);

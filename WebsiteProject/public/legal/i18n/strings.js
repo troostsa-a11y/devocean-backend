@@ -24,7 +24,12 @@
     "ru": { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" },
     "af-ZA": { backButton: "Terug",            back: "Tuis",                   updated: "Laaste opdatering" },
     "zu": { backButton: "Emuva",            back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" },
-    "sw": { backButton: "Nyuma",            back: "Nyumbani",               updated: "Ilisasishwa Mwisho" }
+    "sw": { backButton: "Nyuma",            back: "Nyumbani",               updated: "Ilisasishwa Mwisho" },
+    "sr": { backButton: "Nazad",            back: "Početna",                updated: "Poslednje ažuriranje" },
+    "hr": { backButton: "Natrag",           back: "Početna",                updated: "Posljednje ažuriranje" },
+    "cs": { backButton: "Zpět",             back: "Domů",                   updated: "Naposledy aktualizováno" },
+    "tr": { backButton: "Geri",             back: "Ana sayfa",              updated: "Son güncelleme" },
+    "ro": { backButton: "Înapoi",           back: "Acasă",                  updated: "Ultima actualizare" }
   };
 
   // Root dict
@@ -563,6 +568,542 @@
       legalForm: "Limited Liability Company",
       businessHours: "Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday & Sunday: 8:00 AM - 12:00 PM<br>Front Desk: 6:00 AM - 10:00 PM (for guests)",
       emergencyPhoneNote: "For urgent matters outside business hours"
+    }
+  };
+
+  // -------- SERBIAN (Latin) --------
+  window.LEGAL_DICT["sr"] = {
+    privacy: {
+      title: "Politika privatnosti",
+      updatedDate: "06. okt. 2025.",
+      quickLinks: {
+        title: "Brzi linkovi",
+        links: [
+          { id: "who", text: "Ko smo mi" },
+          { id: "collect", text: "Prikupljanje podataka" },
+          { id: "use", text: "Korišćenje podataka" },
+          { id: "share", text: "Deljenje podataka" },
+          { id: "security", text: "Bezbednost" },
+          { id: "retention", text: "Čuvanje" },
+          { id: "rights", text: "Vaša prava" },
+          { id: "transfers", text: "Međunarodni prenosi" },
+          { id: "contact", text: "Kontakt" },
+          { id: "updates", text: "Izmene politike" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Vaša privatnost je važna:",
+          body: "Posvećeni smo zaštiti vaših ličnih podataka i transparentnosti u načinu na koji ih prikupljamo, koristimo i čuvamo."
+        },
+        who: {
+          title: "Ko smo mi",
+          body: "DEVOCEAN Lodge posluje pod kompanijom TERRAfrique LDA, registrovanom u Mozambiku. Naša registrovana adresa je Rua C, Parcela 12, Maputo 1118, Mozambik. Pružamo ekološki orijentisan smeštaj na plaži u mestu Ponta do Ouro, Mozambik. Posvećeni smo zaštiti vaše privatnosti i obezbeđujemo da se vaši lični podaci prikupljaju, obrađuju i koriste pravilno, zakonito i transparentno, u skladu sa važećim zakonima o zaštiti podataka. Pristupanjem ili korišćenjem našeg sajta i usluga pristajete na prikupljanje i korišćenje vaših podataka kako je opisano u ovoj Politici privatnosti."
+        },
+        collect: {
+          title: "Koje lične podatke prikupljamo",
+          intro: "Prikupljamo različite vrste informacija kako bismo pružili i unapredili naše usluge:",
+          categories: [
+            {
+              title: "Lične informacije",
+              items: [
+                "Ime, kontakt podaci",
+                "Podaci iz pasoša / lične karte",
+                "Podaci o plaćanju",
+                "Preferencije rezervacije"
+              ]
+            },
+            {
+              title: "Tehnički podaci",
+              items: [
+                "IP adresa, podaci o uređaju",
+                "Tip i verzija pretraživača",
+                "Analitika korišćenja sajta",
+                "Podaci iz kolačića (uz saglasnost)"
+              ]
+            },
+            {
+              title: "Komunikacijski podaci",
+              items: [
+                "E-mail prepiska",
+                "Zahtevi korisničkoj podršci",
+                "Povratne informacije i recenzije",
+                "Marketinške preferencije"
+              ]
+            }
+          ]
+        },
+        use: {
+          title: "Kako koristimo vaše podatke",
+          items: [
+            "Upravljanje rezervacijama i pružanje usluga",
+            "Komunikacija o vašem boravku, pravilima i ponudama (uz pristanak)",
+            "Unapređenje sajta i usluga (analitika, bezbednost)",
+            "Ispunjavanje pravnih i finansijskih obaveza"
+          ]
+        },
+        share: {
+          title: "Kada delimo podatke",
+          items: [
+            "Sa pružaocima platnih usluga i platformama za rezervacije, radi obrade vaših rezervacija i plaćanja",
+            "Sa analitičkim servisima, radi razumevanja korišćenja sajta i unapređenja usluga",
+            "Sa oglašivačkim servisima za ciljani marketing (samo uz vašu saglasnost)",
+            "Sa IT pružaocima usluga, hosting provajderima i tehničkom podrškom, pod strogim ugovorima o poverljivosti",
+            "Sa nadležnim organima kada to nalaže zakon, propis, sudski nalog ili drugi pravni postupak",
+            "Radi sprovođenja naših ugovora ili zaštite naših prava, imovine ili bezbednosti",
+            "U slučaju spajanja, akvizicije ili prodaje imovine, vaše informacije mogu biti prenete novom vlasniku"
+          ],
+          footer: "Od svih trećih strana zahtevamo da poštuju bezbednost vaših ličnih podataka i da ih koriste samo u svrhe za koje su preneti. Ne dozvoljavamo trećim stranama da koriste vaše lične podatke za sopstvene svrhe i dopuštamo im obradu samo u tačno definisane svrhe i u skladu sa našim uputstvima."
+        },
+        security: {
+          title: "Bezbednosne mere",
+          intro: "Bezbednost podataka shvatamo ozbiljno i primenjujemo:",
+          measures: [
+            "Enkripciju osetljivih podataka u prenosu i u mirovanju",
+            "Redovne bezbednosne procene i testiranje otpornosti na napade",
+            "Kontrolu pristupa i mehanizme autentifikacije",
+            "Obuku zaposlenih o zaštiti podataka i privatnosti",
+            "Bezbedno čuvanje rezervnih kopija i procedure oporavka od incidenata"
+          ]
+        },
+        retention: {
+          title: "Čuvanje podataka",
+          body: "Vaše lične podatke čuvamo onoliko dugo koliko je neophodno za ispunjenje svrha za koje su prikupljeni, kako je opisano u ovoj Politici privatnosti. Po pravilu, lične podatke čuvamo do 1 godine nakon vaše poslednje interakcije sa nama, osim ako zakon ne zahteva ili dozvoljava duži period čuvanja. Određene informacije možemo čuvati i duže iz konkretnih razloga, uključujući: vođenje evidencije i izveštavanje u skladu sa važećim zakonima (po pravilu 7 godina za finansijske i poreske evidencije), ostvarivanje pravnih zahteva, sprečavanje prevara i rešavanje sporova. Po isteku perioda čuvanja, vaši lični podaci biće bezbedno obrisani ili anonimizovani. Preostale anonimne i agregirane informacije, koje vas direktno ili indirektno ne identifikuju, mogu se čuvati neograničeno u statističke i analitičke svrhe."
+        },
+        rights: {
+          title: "Vaša prava na privatnost",
+          items: [
+            "Pravo na pristup vašim ličnim podacima",
+            "Pravo na ispravku netačnih podataka",
+            "Pravo na brisanje vaših ličnih podataka",
+            "Pravo na ograničenje ili prigovor na obradu",
+            "Pravo na prenosivost podataka",
+            "Pravo na povlačenje saglasnosti"
+          ]
+        },
+        contact: {
+          title: "Kontaktirajte naš tim za privatnost",
+          body: 'Ako imate pitanja, nedoumice ili zahteve u vezi sa ovom Politikom privatnosti ili obradom vaših ličnih podataka, ili želite da ostvarite neko od svojih prava na privatnost, kontaktirajte nas:<br><br><strong>E-mail:</strong> <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a><br><strong>Telefon:</strong> +258 8441 82252<br><strong>Poštanska adresa:</strong><br>TERRAfrique LDA T/A DEVOCEAN Lodge<br>Rua C, Parcela 12<br>Maputo 1118<br>Mozambik<br><br>Odgovorićemo na vaš zahtev u skladu sa važećim zakonima o zaštiti podataka. Za pritužbe ili pitanja u vezi sa obradom vaših podataka, takođe možete kontaktirati našeg službenika za zaštitu podataka putem gore navedene e-mail adrese.'
+        },
+        transfers: {
+          title: "Međunarodni prenosi podataka",
+          body: "Pošto poslujemo u više jurisdikcija, vaši podaci mogu biti preneti i obrađivani u zemljama van vašeg boravišta. Obezbeđujemo da takvi prenosi budu u skladu sa važećim zakonima o zaštiti podataka, putem odluka o adekvatnosti Evropske komisije, Standardnih ugovornih klauzula (SCC), odgovarajućih bezbednosnih mera i transparentnosti u pogledu lokacija prenosa."
+        },
+        updates: {
+          title: "Izmene politike",
+          body: "Ovu politiku privatnosti možemo s vremena na vreme ažurirati kako bismo odrazili promene u našim praksama, tehnologiji, zakonskim zahtevima ili drugim okolnostima. O svim značajnim izmenama obavestićemo vas e-mail obaveštenjima za registrovane korisnike, vidnim obaveštenjima na sajtu i ažuriranim datumom „poslednje ažurirano“. Preporučujemo vam da povremeno proveravate ovu politiku kako biste bili informisani o tome kako štitimo vaše podatke."
+        }
+      }
+    },
+
+    cookies: {
+      title: "Politika kolačića",
+      effectiveDate: "19. septembar 2025.",
+      lastUpdated: "06. oktobar 2025.",
+      managePreferences: "Upravljajte podešavanjima kolačića:",
+      manageText: "Možete kontrolisati koje kolačiće koristimo putem našeg banera za kolačiće ili podešavanja vašeg pretraživača.",
+      cookieSettingsBtn: "Podešavanja kolačića",
+      quickLinks: {
+        title: "Brzi linkovi",
+        links: [
+          { id: "what", text: "Šta su kolačići" },
+          { id: "how", text: "Kako koristimo kolačiće" },
+          { id: "necessary", text: "Neophodni" },
+          { id: "functional", text: "Funkcionalni" },
+          { id: "analytics", text: "Analitički" },
+          { id: "advertisement", text: "Oglasni" },
+          { id: "manage", text: "Upravljanje" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "O kolačićima",
+          body: "Možete kontrolisati koje kolačiće koristimo putem našeg banera za kolačiće ili podešavanja vašeg pretraživača."
+        },
+        what: {
+          title: "Šta su kolačići?",
+          body: "Ova Politika kolačića objašnjava šta su kolačići, kako ih koristimo, koje vrste kolačića koristimo (tj. koje informacije prikupljamo putem kolačića i kako se te informacije koriste), kao i kako da upravljate svojim podešavanjima.<br><br>Kolačići su mali tekstualni fajlovi koji se koriste za čuvanje malih delova informacija. Skladište se na vašem uređaju kada se sajt učita u pretraživaču. Ovi kolačići pomažu da sajt pravilno funkcioniše, povećavaju bezbednost, omogućavaju bolje korisničko iskustvo i analiziraju performanse kako bismo prepoznali šta funkcioniše a gde su potrebna unapređenja."
+        },
+        how: {
+          title: "Kako koristimo kolačiće?",
+          body: "Kao i većina onlajn usluga, naš sajt koristi kolačiće prve i treće strane u različite svrhe. Kolačići prve strane su uglavnom neophodni za pravilno funkcionisanje sajta i ne prikupljaju lično prepoznatljive podatke.<br><br>Kolačići trećih strana koje koristimo prvenstveno nam pomažu da razumemo performanse sajta, pratimo vaše interakcije sa njim, održavamo bezbednost usluga, prikazujemo relevantne reklame i unapređujemo vaše korisničko iskustvo i brzinu budućih poseta."
+        },
+        necessary: {
+          title: "Neophodni kolačići",
+          description: "Neophodni kolačići potrebni su za osnovne funkcije sajta, poput bezbedne prijave ili podešavanja vaših pristanaka. Ovi kolačići ne čuvaju lično prepoznatljive podatke.",
+          tableHeaders: { cookie: "Kolačić", duration: "Trajanje", description: "Opis" },
+          cookies: [
+            { name: "currency", duration: "sesija", desc: "Ovaj kolačić koristi se za čuvanje korisnikove preferencije valute." },
+            { name: "_sh_session_", duration: "sesija", desc: "Opis trenutno nije dostupan." },
+            { name: "loccur", duration: "sesija", desc: "Opis trenutno nije dostupan." },
+            { name: "country_code", duration: "sesija", desc: "Opis nije dostupan." },
+            { name: "b_locale", duration: "sesija", desc: "Opis trenutno nije dostupan." },
+            { name: "checkout_currency", duration: "sesija", desc: "Opis trenutno nije dostupan." }
+          ]
+        },
+        functional: {
+          title: "Funkcionalni kolačići",
+          description: "Funkcionalni kolačići omogućavaju određene funkcije, poput deljenja sadržaja na društvenim mrežama, prikupljanja povratnih informacija i drugih funkcija trećih strana.",
+          tableHeaders: { cookie: "Kolačić", duration: "Trajanje", description: "Opis" },
+          cookies: [
+            { name: "locale", duration: "sesija", desc: "Facebook postavlja ovaj kolačić radi unapređenja korisničkog iskustva na sajtu i prikazivanja relevantnih reklama tokom korišćenja Facebook platformi." }
+          ]
+        },
+        analytics: {
+          title: "Analitički kolačići",
+          description: "Analitički kolačići koriste se za razumevanje načina na koji posetioci koriste sajt. Pomažu da se izmere posete, stope odlaska, izvori saobraćaja i drugi parametri.",
+          tableHeaders: { cookie: "Kolačić", duration: "Trajanje", description: "Opis" },
+          cookies: [
+            { name: "_ga", duration: "1 godina, 1 mesec, 4 dana", desc: "Google Analytics postavlja ovaj kolačić za izračunavanje podataka o posetiocima, sesijama i kampanjama, kao i za praćenje korišćenja sajta. Kolačić anonimno čuva informacije i dodeljuje nasumično generisan broj radi prepoznavanja jedinstvenih posetilaca." },
+            { name: "_ga_*", duration: "1 godina, 1 mesec, 4 dana", desc: "Google Analytics postavlja ovaj kolačić radi čuvanja i brojanja pregleda stranica." },
+            { name: "_gid", duration: "1 dan", desc: "Google Analytics postavlja ovaj kolačić radi čuvanja informacija o tome kako posetioci koriste sajt i izradi izveštaja o performansama. Prikupljeni podaci uključuju broj posetilaca, njihov izvor i anonimno posećene stranice." },
+            { name: "_gat_UA-*", duration: "1 minut", desc: "Google Analytics postavlja ovaj kolačić radi praćenja ponašanja korisnika." },
+            { name: "pardot", duration: "ranije", desc: "Pardot kolačić postavlja se dok je posetilac prijavljen kao Pardot korisnik. Označava aktivnu sesiju i ne koristi se za praćenje." }
+          ]
+        },
+        advertisement: {
+          title: "Oglasni kolačići",
+          description: "Oglasni kolačići koriste se za prikazivanje prilagođenih reklama na osnovu prethodno posećenih stranica i za analizu efikasnosti oglasnih kampanja.",
+          tableHeaders: { cookie: "Kolačić", duration: "Trajanje", description: "Opis" },
+          cookies: [
+            { name: "_gcl_au", duration: "3 meseca", desc: "Google Tag Manager postavlja ovaj kolačić radi merenja efikasnosti oglašavanja na sajtovima koji koriste njegove usluge." },
+            { name: "test_cookie", duration: "15 minuta", desc: "doubleclick.net postavlja ovaj kolačić radi provere da li korisnikov pretraživač podržava kolačiće." },
+            { name: "_fbp", duration: "3 meseca", desc: "Facebook postavlja ovaj kolačić radi čuvanja i praćenja interakcija." },
+            { name: "IDE", duration: "1 godina, 24 dana", desc: "Google DoubleClick IDE kolačići čuvaju informacije o tome kako korisnik koristi sajt, radi prikazivanja relevantnih oglasa u skladu sa korisničkim profilom." }
+          ]
+        },
+        manage: {
+          title: "Upravljanje podešavanjima kolačića",
+          consentTitle: "Podešavanja saglasnosti",
+          consentText: "Svoja podešavanja kolačića možete promeniti u bilo kom trenutku klikom na dugme „Podešavanja saglasnosti“ iznad. Time ćete ponovo otvoriti baner za saglasnost i ažurirati svoje preferencije ili odmah povući saglasnost.",
+          browserText: "Pored toga, različiti pretraživači nude različite načine za blokiranje i brisanje kolačića. Podešavanja pretraživača možete promeniti kako biste blokirali ili brisali kolačiće. U nastavku se nalaze linkovi do uputstava za upravljanje kolačićima u glavnim pretraživačima.",
+          browsers: {
+            chrome: "Chrome",
+            safari: "Safari",
+            firefox: "Firefox",
+            ie: "Internet Explorer",
+            other: "Ako koristite drugi pretraživač, pogledajte njegovu zvaničnu dokumentaciju."
+          }
+        }
+      }
+    },
+
+    terms: {
+      title: "Uslovi i pravila",
+      updatedDate: "06. okt. 2025.",
+      quickLinks: {
+        title: "Brzi linkovi",
+        links: [
+          { id: "intro", text: "Predmet" },
+          { id: "booking", text: "Rezervacije" },
+          { id: "payment", text: "Cene i plaćanje" },
+          { id: "cancel", text: "Otkazivanja" },
+          { id: "conduct", text: "Ponašanje gostiju" },
+          { id: "force-majeure", text: "Viša sila" },
+          { id: "liability", text: "Odgovornost" },
+          { id: "intellectual-property", text: "Intelektualna svojina" },
+          { id: "disputes", text: "Rešavanje sporova" },
+          { id: "changes", text: "Izmene" },
+          { id: "law", text: "Merodavno pravo" },
+          { id: "contact", text: "Kontakt" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Važno pravno obaveštenje:",
+          body: "Ovi uslovi regulišu vaše korišćenje naših usluga i sajta. Pažljivo ih pročitajte pre rezervacije."
+        },
+        intro: {
+          title: "Predmet",
+          body: "Ovi Uslovi regulišu smeštaj i povezane usluge koje pruža DEVOCEAN Lodge (TERRAfrique LDA). Rezervacijom prihvatate ove Uslove."
+        },
+        booking: {
+          title: "Rezervacije",
+          items: [
+            "Dostavite tačne podatke o gostima i datume dolaska/odlaska",
+            "Posebni zahtevi zavise od raspoloživosti i potvrde"
+          ],
+          reservationReq: {
+            title: "Uslovi rezervacije",
+            body: "Za sve rezervacije potrebni su važeći lični dokument i kreditna kartica. Najmanji uzrast: 18 godina."
+          },
+          checkinCheckout: {
+            title: "Prijava / odjava",
+            body: "Prijava: 14:00 | Odjava: 11:00. Raniji ili kasniji termini zavise od raspoloživosti."
+          },
+          groupBookings: {
+            title: "Grupne rezervacije",
+            body: "Za grupe od 6 ili više soba važe posebni uslovi. Za grupne cene i pravila kontaktirajte nas."
+          }
+        },
+        payment: {
+          title: "Cene i plaćanje",
+          items: [
+            "Cene su prikazane po jedinici/noći, osim ako nije navedeno drugačije",
+            "Načini depozita i konačne uplate biće potvrđeni prilikom rezervacije"
+          ],
+          paymentInfo: {
+            title: "Informacije o plaćanju",
+            body: "Sve cene su izražene u USD, osim ako nije drugačije navedeno. Konverzioni kursevi su približni i podložni promenama. Za potvrdu rezervacije potrebna je važeća kreditna kartica. Mogu se naplatiti dodatni troškovi za sporedne potrošnje."
+          }
+        },
+        cancel: {
+          title: "Otkazivanja i nedolasci",
+          body: "Uslovi otkazivanja prikazuju se u trenutku rezervacije i u potvrdi rezervacije.",
+          cancellationCharges: {
+            title: "Naknade za otkazivanje",
+            plans: [
+              {
+                planName: "Polu-fleksibilni tarifni plan:",
+                tiers: [
+                  { period: "30 dana ili više pre dolaska", charge: "Pun povraćaj" },
+                  { period: "29 dana ili manje pre dolaska", charge: "50% naknade za otkazivanje" }
+                ]
+              },
+              {
+                planName: "Nepovratni tarifni plan:",
+                tiers: [
+                  { period: "Do 24 sata nakon rezervacije", charge: "Pun povraćaj" },
+                  { period: "U svim ostalim slučajevima", subtext: "Pravo na jednokratnu izmenu datuma dolaska, uz uslov plaćanja razlike u ceni ako novi datum ima višu tarifu.", charge: "Bez povraćaja", chargeClass: "no-refund-red" }
+                ]
+              }
+            ]
+          },
+          noshowPolicy: {
+            title: "Pravila za nedolazak",
+            body: "Gosti koji ne stignu na zakazani datum prijave bez prethodne najave smatraju se nedolascima. Naplaćuje se puni iznos rezervacije, a rezervacija se otkazuje."
+          }
+        },
+        conduct: {
+          title: "Ponašanje gostiju",
+          items: [
+            "Poštujte pravila objekta, osoblje, druge goste i lokalnu zajednicu",
+            "Bilo kakve nezakonite radnje na imanju nisu dozvoljene"
+          ],
+          zeroTolerance: {
+            title: "Politika nulte tolerancije",
+            body: "Primenjujemo politiku nulte tolerancije prema ometajućem ponašanju, nezakonitim radnjama ili oštećenju imovine. Kršenja mogu rezultirati neposrednim udaljavanjem bez povraćaja sredstava i mogu povući pravne posledice."
+          }
+        },
+        "force-majeure": {
+          title: "Viša sila",
+          intro: "Ne snosimo odgovornost za neispunjenje obaveza zbog okolnosti koje su van naše razumne kontrole, uključujući ali ne ograničavajući se na:",
+          items: [
+            "Prirodne katastrofe i ekstremne vremenske uslove",
+            "Vladine restrikcije i zabrane putovanja",
+            "Građanske nemire, rat, terorizam",
+            "Pandemije, epidemije, vanredne zdravstvene situacije",
+            "Prekide u snabdevanju i otkaze infrastrukture"
+          ],
+          footer: "U takvim slučajevima ponudićemo alternativne datume ili vaučere kada je to moguće. Povraćaji će se vršiti u skladu sa važećim zakonima i okolnostima. Međutim, sve štete i troškovi koji su pokriveni ili su mogli biti pokriveni opšte dostupnim paketima putnog osiguranja i osiguranja od otkazivanja isključeni su iz naše odgovornosti."
+        },
+        liability: {
+          title: "Odgovornost",
+          body: "U meri u kojoj zakon to dozvoljava, ne snosimo odgovornost za posredne ili nepredvidive gubitke."
+        },
+        "intellectual-property": {
+          title: "Intelektualna svojina",
+          copyright: {
+            title: "Obaveštenje o autorskim pravima",
+            body: "Sav sadržaj na ovom sajtu, uključujući tekst, grafiku, logotipe i slike, vlasništvo je DEVOCEAN Lodge i zaštićen je međunarodnim zakonima o autorskim pravima. Neovlašćeno korišćenje, umnožavanje ili distribucija nisu dozvoljeni. Naziv DEVOCEAN Lodge, logotip i sve pripadajuće oznake su zaštitni znaci i ne smeju se koristiti bez pisane dozvole."
+          }
+        },
+        disputes: {
+          title: "Rešavanje sporova",
+          process: {
+            title: "Postupak rešavanja",
+            body: "Nastojimo da sve sporove rešimo sporazumno. Molimo vas da nas najpre kontaktirate kako bismo pokušali rešenje. Ako spor ne bude rešen, biće upućen na medijaciju pre pokretanja sudskog postupka.",
+            law: "Merodavno pravo: Na ove uslove i sve sporove primenjuje se pravo Mozambika.",
+            jurisdiction: "Nadležnost: Isključivo su nadležni sudovi u Maputu, Mozambik.",
+            mediation: "Medijacija: Strane se obavezuju da pokušaju medijaciju kod akreditovanog medijatora pre pokretanja sudskog postupka."
+          }
+        },
+        changes: {
+          title: "Izmene ovih Uslova",
+          body: "Uslove možemo s vremena na vreme menjati. Verzija objavljena u trenutku vašeg boravka je primenjiva."
+        },
+        law: {
+          title: "Merodavno pravo",
+          body: "Primenjuje se pravo Mozambika, uz obavezne lokalne propise o zaštiti potrošača."
+        },
+        contact: {
+          title: "Kontakt",
+          body: 'Pitanja? <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>.'
+        }
+      }
+    },
+
+    gdpr: {
+      title: "GDPR obaveštenje",
+      updatedDate: "06. okt. 2025.",
+      quickLinks: {
+        title: "Brzi linkovi",
+        links: [
+          { id: "controller", text: "Rukovalac" },
+          { id: "bases", text: "Pravni osnovi" },
+          { id: "rights", text: "Vaša prava" },
+          { id: "retention", text: "Čuvanje podataka" },
+          { id: "transfers", text: "Prenosi podataka" },
+          { id: "complaints", text: "Pritužbe" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Usklađeno sa GDPR-om:",
+          body: "Posvećeni smo zaštiti vaših ličnih podataka i poštovanju vaših prava na privatnost u skladu sa Opštom uredbom o zaštiti podataka."
+        },
+        controller: {
+          title: "Rukovalac podacima",
+          body: "TERRAfrique LDA (DEVOCEAN Lodge), registrovan na adresi Rua C, Parcela 12, Maputo 1118, Mozambik, deluje kao rukovalac vaših ličnih podataka prikupljenih putem naših usluga."
+        },
+        bases: {
+          title: "Pravni osnovi obrade",
+          body: "Vaše lične podatke obrađujemo na osnovu sledećih pravnih osnova prema GDPR-u:"
+        },
+        rights: {
+          title: "Vaša prava prema GDPR-u",
+          body: "Kao subjekt podataka prema GDPR-u, imate sledeća prava u vezi sa svojim ličnim podacima:"
+        },
+        retention: {
+          title: "Čuvanje podataka",
+          periodsTitle: "Periodi čuvanja",
+          intro: "Lične podatke čuvamo samo onoliko dugo koliko je potrebno za ispunjenje svrha za koje su prikupljeni, uključujući zakonske, računovodstvene ili izveštajne obaveze.",
+          items: [
+            "<strong>Podaci o rezervaciji:</strong> 7 godina, radi poreske i pravne usklađenosti",
+            "<strong>Komunikacija sa korisničkom podrškom:</strong> 3 godine",
+            "<strong>Marketinški pristanci:</strong> Do povlačenja saglasnosti",
+            "<strong>Analitika sajta:</strong> 26 meseci",
+            "<strong>Finansijske transakcije:</strong> 10 godina, u računovodstvene svrhe"
+          ]
+        },
+        transfers: {
+          title: "Međunarodni prenosi podataka",
+          body: "Kada vaše podatke prenosimo van Evropskog ekonomskog prostora (EEP), obezbeđujemo odgovarajuće mere zaštite. To može uključivati primenu Standardnih ugovornih klauzula koje je odobrila Evropska komisija ili prenos u zemlje sa odlukom o adekvatnosti."
+        },
+        complaints: {
+          title: "Pritužbe",
+          intro: "Ako imate primedbe na način na koji obrađujemo vaše lične podatke, imate pravo da podnesete pritužbu lokalnom organu za zaštitu podataka.",
+          footer: "Pre obraćanja nadzornom organu, ohrabrujemo vas da nas najpre kontaktirate kako bismo pokušali da rešimo bilo koju nedoumicu."
+        },
+        dpo: {
+          title: "Kontaktirajte našeg službenika za zaštitu podataka",
+          body: 'Za sva pitanja vezana za GDPR ili ostvarivanje svojih prava, kontaktirajte našeg službenika za zaštitu podataka na <a href="mailto:legal@devoceanlodge.com">legal@devoceanlodge.com</a>. Na vaš zahtev odgovorićemo u roku od 30 dana, kako to nalaže GDPR.'
+        }
+      },
+      legalBases: {
+        contract: {
+          title: "Ugovor:",
+          body: "Obrada neophodna za ispunjenje naših rezervacionih ugovora i usluga."
+        },
+        legal: {
+          title: "Zakonska obaveza:",
+          body: "Obrada potrebna za ispunjenje zakonskih zahteva (npr. poreski propisi)."
+        },
+        legitimate: {
+          title: "Legitimni interesi:",
+          body: "Obrada u svrhu naših legitimnih poslovnih interesa, uz poštovanje vaših prava."
+        },
+        consent: {
+          title: "Saglasnost:",
+          body: "Obrada zasnovana na vašoj izričitoj saglasnosti za određene svrhe."
+        }
+      },
+      rights: {
+        access: {
+          title: "Pravo na pristup",
+          body: "Možete zatražiti kopiju ličnih podataka koje čuvamo o vama."
+        },
+        rectification: {
+          title: "Pravo na ispravku",
+          body: "Možete zatražiti ispravku netačnih ili nepotpunih podataka."
+        },
+        erasure: {
+          title: "Pravo na brisanje",
+          body: "Pod određenim uslovima možete zatražiti brisanje svojih ličnih podataka."
+        },
+        restrict: {
+          title: "Pravo na ograničenje obrade",
+          body: "Možete zatražiti ograničenje načina na koji koristimo vaše podatke."
+        },
+        portability: {
+          title: "Pravo na prenosivost podataka",
+          body: "Možete zatražiti prenos vaših podataka drugoj organizaciji."
+        },
+        object: {
+          title: "Pravo na prigovor",
+          body: "Možete uložiti prigovor na određene vrste obrade vaših podataka."
+        }
+      },
+      buttons: {
+        access: {
+          text: "Zahtev za pristup podacima"
+        },
+        erasure: {
+          text: "Zahtev za brisanje podataka"
+        }
+      },
+      safeguards: {
+        international: {
+          title: "Međunarodni prenosi podataka:",
+          body: "Obezbeđujemo odgovarajuće mere zaštite za sve prenose podataka van EEP-a, uključujući Standardne ugovorne klauzule i odluke o adekvatnosti."
+        }
+      },
+      authority: {
+        lead: {
+          title: "Vodeći nadzorni organ:",
+          name: "Portugalska agencija za zaštitu podataka (CNPD)",
+          websiteLabel: "Sajt:",
+          contactLabel: "Kontakt:"
+        }
+      }
+    },
+
+    cric: {
+      title: "CRIC — Kompanija i kontakt",
+      updatedDate: "27. sept. 2025.",
+      quickLinks: {
+        title: "Brzi linkovi",
+        links: [
+          { id: "intro", text: "Pregled" },
+          { id: "contact", text: "Kontakt" },
+          { id: "emergency", text: "Hitni slučajevi" }
+        ]
+      },
+      sections: {
+        badge: {
+          title: "Zvanični podaci o kompaniji:",
+          body: "Kompletni podaci o registraciji poslovanja i kontakt informacije za DEVOCEAN Lodge."
+        },
+        intro: {
+          title: "Pregled",
+          body: "Kompletni podaci o registraciji poslovanja i kontakt informacije za DEVOCEAN Lodge."
+        },
+        contact: {
+          title: "Kontakt",
+          body: "Za opšta pitanja, rezervacije i informacije o našim uslugama koristite kontakte navedene u nastavku."
+        },
+        emergency: {
+          title: "Hitni kontakt",
+          body: "Za hitne slučajeve van radnog vremena koristite naše kontakt podatke za hitne situacije."
+        }
+      },
+      labels: {
+        companyName: "Naziv kompanije",
+        registration: "Registracija privrednog subjekta",
+        vat: "PDV broj (NUIT)",
+        license: "Poslovna dozvola (Alvará)",
+        legalForm: "Pravna forma",
+        capital: "Osnovni kapital",
+        address: "Registrovana adresa",
+        email: "E-mail",
+        phone: "Telefon",
+        businessHours: "Radno vreme",
+        emergencyPhone: "Hitan telefon",
+        emergencyEmail: "Hitan e-mail"
+      },
+      legalForm: "Društvo s ograničenom odgovornošću",
+      businessHours: "Ponedeljak – petak: 8:00 – 18:00<br>Subota i nedelja: 8:00 – 12:00<br>Recepcija: 6:00 – 22:00 (za goste)",
+      emergencyPhoneNote: "Za hitne slučajeve van radnog vremena"
     }
   };
 
