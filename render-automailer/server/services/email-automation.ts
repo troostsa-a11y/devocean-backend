@@ -1,5 +1,6 @@
 import * as cron from 'node-cron';
 import crypto from 'crypto';
+import { simpleParser } from 'mailparser';
 import { DatabaseService } from './database';
 import { EmailParser } from './email-parser';
 import { EmailSchedulerService } from './email-scheduler';
@@ -207,12 +208,42 @@ export class EmailAutomationService {
             }
           }
 
-          // Check if this is a cancellation email first
+          // Validate sender authenticity before any state-changing operations.
+          // Two-layer check:
+          //   1. The RFC5322 From address domain must be in the trusted allowlist.
+          //   2. The receiving MTA's Authentication-Results / Received-SPF headers
+          //      must show SPF=pass or DKIM=pass for a trusted Beds24 domain.
+          //      These headers are injected by our own mail server and cannot be
+          //      forged by the sending party.
+          // Fail closed: if either layer fails (including missing auth headers)
+          // the email is skipped entirely — no cancellation, modification, or
+          // booking logic is executed.
+          const parsedHeaders = await simpleParser(emailContent, {
+            skipHtmlToText: true,
+            skipImageLinks: true,
+            skipTextToHtml: true,
+          });
+          const fromAddress = parsedHeaders.from?.value?.[0]?.address ?? '';
+          const authCheck = this.validateSenderAuthenticity(fromAddress, parsedHeaders.headers);
+          if (!authCheck.trusted) {
+            console.warn(
+              `[SECURITY] Rejecting email — sender authentication failed. ` +
+              `From: "${fromAddress}", reason: ${authCheck.reason}`
+            );
+            emailsFailed++;
+            // Mark as read so the same untrusted message is not re-evaluated every cycle.
+            await EmailParser.markEmailAsRead(this.imapConfig, message.attributes.uid);
+            continue;
+          }
+
+          // Build rawData from actual parsed headers (used by cancellation handler).
           const rawData = {
-            subject: 'Cancellation notification',
-            from: 'beds24',
-            date: new Date(),
+            subject: parsedHeaders.subject ?? '',
+            from: fromAddress,
+            date: parsedHeaders.date ?? new Date(),
           };
+
+          // Check if this is a cancellation email first
           const isCancellation = await this.cancellationHandler.processCancellationEmail(emailContent, rawData);
 
           if (isCancellation) {
@@ -498,6 +529,211 @@ export class EmailAutomationService {
       // Non-fatal — log but don't interrupt booking flow
       console.error('[CRM] Failed to upsert guest from booking:', err);
     }
+  }
+
+  /**
+   * Return the list of trusted sender domains for Beds24 notifications.
+   * Configurable via the BEDS24_SENDER_DOMAINS environment variable
+   * (comma-separated list of domains, e.g. "beds24.com,mail.beds24.com").
+   * Defaults to "beds24.com" when the variable is not set.
+   */
+  private getTrustedSenderDomains(): string[] {
+    const envValue = process.env.BEDS24_SENDER_DOMAINS;
+    if (envValue) {
+      return envValue
+        .split(',')
+        .map(d => d.trim().toLowerCase())
+        .filter(Boolean);
+    }
+    return ['beds24.com'];
+  }
+
+  /**
+   * Return the hostnames of mail servers whose Authentication-Results headers
+   * we treat as authoritative (the "authserv-id" in RFC 7601 §2.2).
+   *
+   * Only results stamped by these servers are considered.  Results bearing any
+   * other authserv-id are discarded — this prevents an attacker from including
+   * their own Authentication-Results header and having it trusted.
+   *
+   * Configuration (comma-separated hostnames):
+   *   TRUSTED_AUTHSERV_ID env var — explicit list; falls back to MAIL_HOST
+   *   (the IMAP server hostname), which is our own mail server.
+   */
+  private getTrustedAuthservIds(): string[] {
+    const envValue = process.env.TRUSTED_AUTHSERV_ID;
+    if (envValue) {
+      return envValue.split(',').map(h => h.trim().toLowerCase()).filter(Boolean);
+    }
+    // Default: our own IMAP host is the receiving MTA that stamps auth results
+    return [this.imapConfig.host.toLowerCase()];
+  }
+
+  /**
+   * Two-layer, fail-closed sender authenticity check.
+   *
+   * Layer 1 — From domain allowlist:
+   *   The RFC5322 From address domain must be in the trusted Beds24 allowlist.
+   *   Necessary but not sufficient — From is attacker-controlled and spoofable.
+   *
+   * Layer 2 — MTA-stamped authentication results, authserv-id filtered:
+   *   Authentication-Results headers (RFC 7601) are only trusted when their
+   *   authserv-id field matches our own mail server (getTrustedAuthservIds()).
+   *   Headers with any other authserv-id are ignored, preventing an attacker
+   *   from injecting their own Authentication-Results value.
+   *   We require SPF=pass or DKIM=pass for a trusted Beds24 domain within the
+   *   accepted auth result. Received-SPF is used as a secondary fallback.
+   *   If neither layer yields a passing result the message is rejected.
+   */
+  private validateSenderAuthenticity(
+    fromAddress: string,
+    headers: any,
+  ): { trusted: boolean; reason: string } {
+    const trustedDomains = this.getTrustedSenderDomains();
+    const trustedAuthservIds = this.getTrustedAuthservIds();
+
+    // Layer 1: From domain must be in allowlist
+    const fromDomain = (fromAddress.split('@')[1] ?? '').toLowerCase();
+    if (!fromDomain) {
+      return { trusted: false, reason: 'no sender address' };
+    }
+    const domainAllowed = trustedDomains.some(
+      d => fromDomain === d || fromDomain.endsWith(`.${d}`),
+    );
+    if (!domainAllowed) {
+      return { trusted: false, reason: `untrusted From domain "${fromDomain}"` };
+    }
+
+    // Layer 2: Require SPF or DKIM pass from an authserv-id-validated MTA header
+    const authPassed = this.checkMailServerAuthResults(
+      headers,
+      trustedDomains,
+      trustedAuthservIds,
+    );
+    if (!authPassed) {
+      return {
+        trusted: false,
+        reason:
+          'SPF/DKIM authentication did not pass for a trusted domain ' +
+          '(no Authentication-Results from a trusted authserv-id showed pass, ' +
+          'and Received-SPF provided no pass either)',
+      };
+    }
+
+    return { trusted: true, reason: 'ok' };
+  }
+
+  /**
+   * Strict boundary-aware domain comparison.
+   * Returns true only when `candidate` is exactly a trusted domain or an
+   * immediate subdomain of one. Prevents substring bypass attacks such as
+   * "evilbeds24.com" matching against the trusted domain "beds24.com".
+   */
+  private isDomainTrusted(candidate: string, trustedDomains: string[]): boolean {
+    const c = candidate.toLowerCase().trim();
+    if (!c) return false;
+    return trustedDomains.some(d => c === d || c.endsWith('.' + d));
+  }
+
+  /**
+   * Inspect Authentication-Results (RFC 7601) headers injected by the
+   * receiving MTA and return true when at least one SPF=pass or DKIM=pass
+   * result is attributable to a trusted Beds24 domain.
+   *
+   * Only headers whose authserv-id (the token before the first semicolon,
+   * per RFC 7601 §2.2) exactly matches a configured trusted mail server
+   * hostname are processed. "Exactly" means case-insensitive string equality —
+   * subdomain suffix matches are intentionally NOT accepted because
+   * "evil.trustedhost.com" would otherwise pass. Headers with any other
+   * authserv-id — including any forged by the sender — are silently discarded.
+   *
+   * Received-SPF is intentionally not used here: it carries no authserv-id
+   * equivalent and cannot be tied to a trusted MTA boundary, so it would
+   * accept forged headers and undermine the provenance guarantee.
+   *
+   * Domain values in pass segments are extracted from structured named fields
+   * and compared with strict boundary-aware matching (not substring matching).
+   */
+  private checkMailServerAuthResults(
+    headers: any,
+    trustedDomains: string[],
+    trustedAuthservIds: string[],
+  ): boolean {
+    const toLines = (val: unknown): string[] => {
+      if (!val) return [];
+      if (Array.isArray(val)) return val.map(v => String(v).toLowerCase());
+      return [String(val).toLowerCase()];
+    };
+
+    // Authentication-Results (RFC 7601) — authserv-id filtered, exact match only
+    const authResultLines = toLines(headers?.get?.('authentication-results'));
+    for (const line of authResultLines) {
+      const semicolonIdx = line.indexOf(';');
+      if (semicolonIdx === -1) continue;
+      // authserv-id may be followed by a version integer: "mx.example.com 1"
+      const authservToken = line.slice(0, semicolonIdx).trim().split(/\s+/)[0];
+      // Exact case-insensitive equality — no subdomain suffix matching.
+      // "evil.trustedhost.com" must NOT match "trustedhost.com".
+      if (!trustedAuthservIds.includes(authservToken)) {
+        console.log(
+          `[SECURITY] Ignoring Authentication-Results from untrusted authserv-id: "${authservToken}"`,
+        );
+        continue;
+      }
+      const resultsPart = line.slice(semicolonIdx + 1);
+      if (this.parseAuthResultsPass(resultsPart, trustedDomains)) return true;
+    }
+
+    // No passing result found — fail closed.
+    // Received-SPF is deliberately omitted: it has no authserv-id field and
+    // cannot be bound to a trusted MTA boundary, so it is forgeable.
+    return false;
+  }
+
+  /**
+   * Scan one Authentication-Results header value for SPF=pass or DKIM=pass
+   * segments whose structured domain identifier belongs to the trusted set.
+   *
+   * Domain values are extracted from named fields (smtp.mailfrom, envelope-from,
+   * header.d) and compared with strict boundary checking, not substring
+   * matching, to prevent bypass via domains like "evilbeds24.com".
+   *
+   * Example header segments handled:
+   *   spf=pass smtp.mailfrom=noreply@beds24.com
+   *   spf=pass (... envelope-from=<booking@beds24.com>) ...
+   *   dkim=pass header.d=beds24.com
+   */
+  private parseAuthResultsPass(authResultsHeader: string, trustedDomains: string[]): boolean {
+    // SPF=pass: extract authenticated envelope domain from structured fields
+    const spfParts = authResultsHeader.match(/spf=pass[^;]*/g) ?? [];
+    for (const part of spfParts) {
+      // smtp.mailfrom=user@domain  or  smtp.mailfrom=domain
+      const mailfromMatch = part.match(/smtp\.mailfrom=([^\s;>]+)/);
+      if (mailfromMatch) {
+        const raw = mailfromMatch[1].replace(/[<>]/g, '');
+        const domain = raw.includes('@') ? raw.split('@')[1] : raw;
+        if (this.isDomainTrusted(domain, trustedDomains)) return true;
+      }
+      // envelope-from=<user@domain>
+      const envFromMatch = part.match(/envelope-from=<([^>]+)>/);
+      if (envFromMatch) {
+        const raw = envFromMatch[1];
+        const domain = raw.includes('@') ? raw.split('@')[1] : raw;
+        if (this.isDomainTrusted(domain, trustedDomains)) return true;
+      }
+    }
+
+    // DKIM=pass: extract signing domain from header.d=
+    const dkimParts = authResultsHeader.match(/dkim=pass[^;]*/g) ?? [];
+    for (const part of dkimParts) {
+      const headerDMatch = part.match(/header\.d=([^\s;>]+)/);
+      if (headerDMatch) {
+        const domain = headerDMatch[1].replace(/[<>]/g, '');
+        if (this.isDomainTrusted(domain, trustedDomains)) return true;
+      }
+    }
+
+    return false;
   }
 
   /**
