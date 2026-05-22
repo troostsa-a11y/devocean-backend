@@ -17,7 +17,7 @@ import TodoSection from './components/TodoSection';
 // Route-level components (lazy loaded - only fetched when their route is visited)
 const ExperienceDetailPage = lazy(() => import('./components/ExperienceDetailPage'));
 const WhyPontaPage = lazy(() => import('./components/WhyPontaPage'));
-const AdminPage = lazy(() => import('./components/AdminPage')); // Pulls xlsx (~400KB) out of main bundle
+const AdminPage = lazy(() => import('./components/AdminPage')); // Lazy loaded to keep main bundle smaller
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
