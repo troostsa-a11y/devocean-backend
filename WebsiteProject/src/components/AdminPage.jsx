@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react';
 import { useLocation } from 'wouter';
-import * as XLSX from 'xlsx';
+import ExcelJS from 'exceljs';
 
 const LANGUAGE_OPTIONS = [
   { code: 'EN', label: 'English (UK)' },
@@ -893,22 +893,81 @@ function GuestsTab({ apiUrl, apiKey }) {
 
 // ── Parse helpers ─────────────────────────────────────────────────────────────
 
-function sheetToRecords(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      try {
-        const data = new Uint8Array(e.target.result);
-        const wb = XLSX.read(data, { type: 'array', raw: false });
-        const ws = wb.Sheets[wb.SheetNames[0]];
-        const rows = XLSX.utils.sheet_to_json(ws, { defval: '' });
-        resolve(parseBeds24(rows));
-      } catch (err) {
-        reject(err);
+async function sheetToRecords(file) {
+  const buffer = await file.arrayBuffer();
+  const isCsv = file.name.toLowerCase().endsWith('.csv');
+  const rows = isCsv
+    ? parseCsv(new TextDecoder('utf-8').decode(buffer))
+    : await parseXlsx(buffer);
+  return parseBeds24(rows);
+}
+
+async function parseXlsx(buffer) {
+  const workbook = new ExcelJS.Workbook();
+  await workbook.xlsx.load(buffer);
+  const ws = workbook.worksheets[0];
+  if (!ws) return [];
+  const cellText = (cell) => {
+    if (cell == null) return '';
+    if (typeof cell === 'object') {
+      if (cell.richText) return cell.richText.map((r) => r.text).join('');
+      if (cell.text != null) return String(cell.text);
+      if (cell.result !== undefined) return String(cell.result);
+      if (cell.hyperlink) return String(cell.text || cell.hyperlink);
+      return '';
+    }
+    return String(cell);
+  };
+  let headers = [];
+  const rows = [];
+  ws.eachRow({ includeEmpty: false }, (row, rowNum) => {
+    const values = (row.values || []).slice(1);
+    if (rowNum === 1) {
+      headers = values.map((v) => cellText(v).trim());
+      return;
+    }
+    const obj = {};
+    headers.forEach((h, i) => {
+      if (h) obj[h] = cellText(values[i]);
+    });
+    rows.push(obj);
+  });
+  return rows;
+}
+
+function parseCsv(text) {
+  const lines = text.replace(/^\uFEFF/, '').split(/\r?\n/);
+  const parseLine = (line) => {
+    const out = [];
+    let cur = '';
+    let inQuote = false;
+    for (let i = 0; i < line.length; i++) {
+      const ch = line[i];
+      if (inQuote) {
+        if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; }
+        else if (ch === '"') { inQuote = false; }
+        else { cur += ch; }
+      } else if (ch === '"') {
+        inQuote = true;
+      } else if (ch === ',') {
+        out.push(cur); cur = '';
+      } else {
+        cur += ch;
       }
-    };
-    reader.onerror = () => reject(new Error('File read failed'));
-    reader.readAsArrayBuffer(file);
+    }
+    out.push(cur);
+    return out;
+  };
+  const nonEmpty = lines.filter((l) => l.length > 0);
+  if (!nonEmpty.length) return [];
+  const headers = parseLine(nonEmpty[0]).map((h) => h.trim());
+  return nonEmpty.slice(1).map((line) => {
+    const vals = parseLine(line);
+    const obj = {};
+    headers.forEach((h, i) => {
+      if (h) obj[h] = (vals[i] ?? '').trim();
+    });
+    return obj;
   });
 }
 
@@ -994,7 +1053,7 @@ function ImportPanel({ apiUrl, apiKey }) {
         <input
           ref={fileRef}
           type="file"
-          accept=".xlsx,.xls,.csv"
+          accept=".xlsx,.csv"
           onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])}
           className="mt-1 block w-full text-sm text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border file:border-slate-300 file:text-sm file:font-medium file:bg-slate-50 file:text-slate-700 hover:file:bg-slate-100"
           data-testid="input-import-file"

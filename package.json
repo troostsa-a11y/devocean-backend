@@ -40,8 +40,8 @@
     "resend": "^6.12.3",
     "sharp": "^0.34.4",
     "vite-plugin-compression": "^0.5.1",
+    "exceljs": "^4.4.0",
     "wouter": "^3.7.1",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
     "zod": "^4.1.12"
   },
   "devDependencies": {
