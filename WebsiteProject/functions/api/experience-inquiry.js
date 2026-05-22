@@ -11,6 +11,24 @@
 
 import { verifyCaptcha } from '../_lib/captcha.js';
 
+// Server-side allowlist: only these operator names may receive lodge-branded mail.
+// Adding or changing a recipient requires a code deploy — client input cannot override this.
+const OPERATOR_ALLOWLIST = new Map([
+  ["Gozo Azul",                          "info@gozo-azul.co.za"],
+  ["Back to Basics Adventures",          "info@backtobasicsadventures.com"],
+  ["Dolphin Encountours Research Center","connect@dolphinencountours.org"],
+  ["Dolphin Encountours",               "info@dolphinencountours.org"],
+  ["The Dolphin Centre",                 "info@thedolphincentre.com"],
+  ["My Guide Mozambique",                "info@myguidemozambique.com"],
+  ["Mussiro Trips",                      "info@mussiro.com"],
+  ["Maputo Tour Guides",                 "info@maputotours.net"],
+  ["GAF Adventures",                     "info@gafadventures.com"],
+  ["Gozo Azul Fishing",                  "fishing@gozo-azul.co.za"],
+  ["Mozambique Fishing Charters",        "info@mozambiquefishincharters.co.za"],
+  ["Spigs Surfs Up Mozambique",          "info@spigssurfsup.com"],
+  ["Brasukas - Bar & Surf",              "brasukas.geral@gmail.com"],
+]);
+
 // Security: Remove CR/LF from header fields to prevent email header injection
 const sanitizeHeader = (str) => String(str).replace(/[\r\n<>]/g, '').trim();
 // Security: Sanitize message body (allow newlines for readability)
@@ -66,7 +84,7 @@ export async function onRequestPost(context) {
     const requestBody = await request.json();
     const {
       name, email, phone, operator, dates, guests, message,
-      experience, experienceKey, lang, operatorEmail,
+      experience, experienceKey, lang,
       recaptcha_token, turnstile_token,
     } = requestBody;
 
@@ -86,11 +104,11 @@ export async function onRequestPost(context) {
     }
 
     // Validate required fields
-    if (!name || !email || !operator || !message || !experience || !operatorEmail) {
-      console.error('MISSING FIELDS:', { name: !!name, email: !!email, operator: !!operator, message: !!message, experience: !!experience, operatorEmail: !!operatorEmail });
+    if (!name || !email || !operator || !message || !experience) {
+      console.error('MISSING FIELDS:', { name: !!name, email: !!email, operator: !!operator, message: !!message, experience: !!experience });
       return new Response(JSON.stringify({ 
         error: 'Missing required fields',
-        missing: { name: !name, email: !email, operator: !operator, message: !message, experience: !experience, operatorEmail: !operatorEmail }
+        missing: { name: !name, email: !email, operator: !operator, message: !message, experience: !experience }
       }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -102,16 +120,28 @@ export async function onRequestPost(context) {
     const sanitizedEmail = sanitizeHeader(email).slice(0, 100);
     const sanitizedPhone = phone ? sanitizeHeader(phone).slice(0, 30) : '';
     const sanitizedOperator = sanitizeHeader(operator).slice(0, 100);
-    const sanitizedOperatorEmail = sanitizeHeader(operatorEmail).slice(0, 100);
     const sanitizedDates = dates ? sanitizeHeader(dates).slice(0, 100) : '';
     const sanitizedGuests = guests ? sanitizeHeader(guests).slice(0, 10) : '2';
     const sanitizedMessage = sanitizeMessage(message).slice(0, 2000);
     const sanitizedExperience = sanitizeHeader(experience).slice(0, 200);
     const sanitizedLang = lang ? sanitizeHeader(lang).slice(0, 10) : 'en';
 
-    // Email validation
+    // Resolve operator email server-side from the trusted allowlist.
+    // The client-submitted operatorEmail field is intentionally ignored — deriving
+    // the recipient from an allowlist keyed on operator name prevents the endpoint
+    // from being used as a lodge-branded mail relay to attacker-chosen addresses.
+    const resolvedOperatorEmail = OPERATOR_ALLOWLIST.get(sanitizedOperator);
+    if (!resolvedOperatorEmail) {
+      console.error('UNKNOWN OPERATOR:', sanitizedOperator);
+      return new Response(JSON.stringify({ error: 'Unknown operator' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    // Email validation (guest address only — operator address comes from the allowlist)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(sanitizedEmail) || !emailRegex.test(sanitizedOperatorEmail)) {
+    if (!emailRegex.test(sanitizedEmail)) {
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -149,7 +179,7 @@ export async function onRequestPost(context) {
 
     // TEST MODE: Send test inquiries to info@devoceanlodge.com instead of operators
     const isTestMode = sanitizedMessage.toLowerCase().includes('[test]');
-    const finalOperatorEmail = isTestMode ? 'info@devoceanlodge.com' : sanitizedOperatorEmail;
+    const finalOperatorEmail = isTestMode ? 'info@devoceanlodge.com' : resolvedOperatorEmail;
     const finalBccEmail = isTestMode ? null : bccEmail;
 
     // Send to operator with customer email as reply-to

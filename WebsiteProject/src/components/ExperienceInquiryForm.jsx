@@ -52,8 +52,13 @@ export default function ExperienceInquiryForm({ experience, operators, lang, cur
       const captcha = await getCaptchaToken('experience_inquiry');
 
       const payload = {
-        ...formData,
-        operatorEmail: resolvedOperatorEmail,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        operator: formData.operator,
+        dates: formData.dates,
+        guests: formData.guests,
+        message: formData.message,
         experience: experience.title,
         experienceKey: experience.key,
         lang: lang || 'en',
