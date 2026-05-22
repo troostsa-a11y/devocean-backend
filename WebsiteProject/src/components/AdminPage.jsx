@@ -1167,8 +1167,24 @@ function ContactsPanel({ apiUrl, apiKey }) {
     load(p, search, filterSub, filterSource);
   };
 
-  const handleExport = () => {
-    window.open(`${apiUrl}/api/admin/guests/export/google?key=${encodeURIComponent(apiKey)}`, '_blank');
+  const handleExport = async () => {
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/guests/export/google`, {
+        headers: { 'X-Admin-Key': apiKey },
+      });
+      if (!res.ok) throw new Error(`Export failed: ${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'devocean-google-customer-match.csv';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      alert(`Export error: ${err.message}`);
+    }
   };
 
   const totalPages = data ? Math.ceil(data.total / 50) : 1;

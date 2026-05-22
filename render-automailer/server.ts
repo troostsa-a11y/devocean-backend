@@ -141,7 +141,7 @@ function requireAdminKey(req: any, res: any, next: any) {
     return res.status(503).json({ error: 'Admin API key not configured on server' });
   }
 
-  const providedKey = req.headers['x-admin-key'] || req.query.key;
+  const providedKey = req.headers['x-admin-key'];
   if (!providedKey || providedKey !== adminKey) {
     return res.status(401).json({ error: 'Invalid or missing admin API key' });
   }
@@ -516,11 +516,18 @@ app.get('/api/admin/guests/export/google', requireAdminKey, async (req: any, res
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   try {
     const contacts = await guestDb.getSubscribedGuests();
+    const sanitizeCsvField = (value: string): string => {
+      const stripped = value.replace(/"/g, '');
+      if (/^[=+\-@\t\r]/.test(stripped)) {
+        return '\t' + stripped;
+      }
+      return stripped;
+    };
     const lines = ['Email Address,First Name,Last Name'];
     for (const c of contacts) {
       const email = c.email.toLowerCase().trim();
-      const first = (c.firstName || '').replace(/"/g, '');
-      const last = (c.lastName || '').replace(/"/g, '');
+      const first = sanitizeCsvField(c.firstName || '');
+      const last = sanitizeCsvField(c.lastName || '');
       lines.push(`"${email}","${first}","${last}"`);
     }
     res.setHeader('Content-Type', 'text/csv');
