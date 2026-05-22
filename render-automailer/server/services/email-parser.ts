@@ -759,7 +759,6 @@ export class EmailParser {
           host: config.host,
           port: config.port,
           tls: config.tls,
-          tlsOptions: { rejectUnauthorized: false },
           authTimeout: 30000, // Increased from 10s to 30s
           connTimeout: 30000, // Add connection timeout
           socketTimeout: 30000, // Add socket timeout
@@ -805,7 +804,6 @@ export class EmailParser {
           host: config.host,
           port: config.port,
           tls: config.tls,
-          tlsOptions: { rejectUnauthorized: false },
           authTimeout: 30000, // Increased from 10s to 30s
           connTimeout: 30000, // Add connection timeout
           socketTimeout: 30000, // Add socket timeout
