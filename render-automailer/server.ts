@@ -364,8 +364,8 @@ app.post('/api/admin/update-email', requireAdminKey, async (req, res) => {
   }
 });
 
-// Manual email check endpoint (for testing)
-app.post('/api/check-emails', async (req, res) => {
+// Manual email check endpoint (admin only)
+app.post('/api/check-emails', requireAdminKey, async (req, res) => {
   if (!emailService) {
     return res.status(503).json({
       error: 'Email automation service not initialized',
@@ -403,7 +403,7 @@ app.get('/', (req, res) => {
       checkEmails: {
         method: 'POST',
         path: '/api/check-emails',
-        description: 'Manually trigger email check (for testing)',
+        description: 'Manually trigger email check (requires X-Admin-Key header)',
       },
       adminCreateBooking: {
         method: 'POST',
