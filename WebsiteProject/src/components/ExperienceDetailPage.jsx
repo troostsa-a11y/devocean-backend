@@ -66,11 +66,15 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   // Get the content getter function from the loaded module
   const getContent = contentModule ? contentModule[contentGetterNames[experienceKey]] : null;
   
-  // Merge with translated content if available; otherwise use base data
+  // Merge with translated content if available; otherwise use base data.
+  // operators is always taken from baseExp — content modules translate descriptive
+  // text but operator names are proper nouns that must stay in English so they
+  // match the server-side allowlist exactly (translated names would be rejected).
   const exp = getContent
     ? {
         ...baseExp,
         ...getContent(lang),
+        operators: baseExp?.operators,
         // Restructure nested data to match existing component expectations
         pricing: baseExp?.pricing ? {
           range: getContent(lang).pricingRange,

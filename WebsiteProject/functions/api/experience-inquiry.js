@@ -13,20 +13,29 @@ import { verifyCaptcha } from '../_lib/captcha.js';
 
 // Server-side allowlist: only these operator names may receive lodge-branded mail.
 // Adding or changing a recipient requires a code deploy — client input cannot override this.
+// Each entry must exactly match the operator name shown in the frontend dropdown
+// (ExperienceDetailPage always uses operators from experienceDetails.js).
 const OPERATOR_ALLOWLIST = new Map([
-  ["Gozo Azul",                          "info@gozo-azul.co.za"],
-  ["Back to Basics Adventures",          "info@backtobasicsadventures.com"],
+  // Diving
+  ["Back to Basics Adventures",          "backtobasicsadventures@gmail.com"],
+  ["Gozo Azul Diving",                   "natalie@gozo-azul.co.za"],
+  ["Under Water Explorer",               "herb@thewhaler.co.za"],
+  ["Blowing Bubbles Diving",             "info@blowingbubbles.co.za"],
+  ["Shark Diving Mozambique",            "info@sharkdivingmozambique.com"],
+  ["Oceana Dive Center",                 "oceanamozdiving@gmail.com"],
+  // Dolphins / Seafari
   ["Dolphin Encountours Research Center","connect@dolphinencountours.org"],
-  ["Dolphin Encountours",               "info@dolphinencountours.org"],
+  ["Dolphin Encountours",                "info@dolphinencountours.org"],
   ["The Dolphin Centre",                 "info@thedolphincentre.com"],
-  ["My Guide Mozambique",                "info@myguidemozambique.com"],
-  ["Mussiro Trips",                      "info@mussiro.com"],
-  ["Maputo Tour Guides",                 "info@maputotours.net"],
-  ["GAF Adventures",                     "info@gafadventures.com"],
-  ["Gozo Azul Fishing",                  "fishing@gozo-azul.co.za"],
+  ["Gozo Azul",                          "info@gozo-azul.co.za"],
+  // Safari
+  ["Maputo National Park",               "reservas@parquemaputo.gov.mz"],
+  ["Transportes Mulungo",                "transportesmulungo@gmail.com"],
+  // Fishing
+  ["Gozo Azul Fishing",                  "info@gozoazulmarine.com"],
   ["Mozambique Fishing Charters",        "info@mozambiquefishincharters.co.za"],
-  ["Spigs Surfs Up Mozambique",          "info@spigssurfsup.com"],
-  ["Brasukas - Bar & Surf",              "brasukas.geral@gmail.com"],
+  // Surfing
+  ["Brasukas Bar & Surf",                "brasukas.geral@gmail.com"],
 ]);
 
 // Security: Remove CR/LF from header fields to prevent email header injection

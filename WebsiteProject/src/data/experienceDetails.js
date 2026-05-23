@@ -103,16 +103,40 @@ export const EXPERIENCE_DETAILS = {
     
     operators: [
       {
-        name: "Gozo Azul",
+        name: "Back to Basics Adventures",
+        website: "http://www.backtobasicsadventures.com/",
+        email: "backtobasicsadventures@gmail.com",
+        specialty: "Shark diving specialists, research-focused"
+      },
+      {
+        name: "Gozo Azul Diving",
         website: "https://gozo-azul.co.za/",
-        email: "info@gozo-azul.co.za",
+        email: "natalie@gozo-azul.co.za",
         specialty: "PADI 5-star center, shark diving specialists"
       },
       {
-        name: "Back to Basics Adventures",
-        website: "http://www.backtobasicsadventures.com/",
-        email: "info@backtobasicsadventures.com",
-        specialty: "Shark diving specialists, research-focused"
+        name: "Under Water Explorer",
+        website: "",
+        email: "herb@thewhaler.co.za",
+        specialty: "Professional dive center"
+      },
+      {
+        name: "Blowing Bubbles Diving",
+        website: "",
+        email: "info@blowingbubbles.co.za",
+        specialty: "Professional dive center"
+      },
+      {
+        name: "Shark Diving Mozambique",
+        website: "",
+        email: "info@sharkdivingmozambique.com",
+        specialty: "Shark diving specialists"
+      },
+      {
+        name: "Oceana Dive Center",
+        website: "",
+        email: "oceanamozdiving@gmail.com",
+        specialty: "Professional dive center"
       }
     ],
     
@@ -611,22 +635,16 @@ export const EXPERIENCE_DETAILS = {
     
     operators: [
       {
-        name: "My Guide Mozambique",
-        website: "https://www.myguidemozambique.com/",
-        email: "info@myguidemozambique.com",
-        specialty: "Full-day safari + Ponta do Ouro beach combos"
+        name: "Maputo National Park",
+        website: "",
+        email: "reservas@parquemaputo.gov.mz",
+        specialty: "Official park reservations & guided game drives"
       },
       {
-        name: "Mussiro Trips",
-        website: "https://mussiro.com/",
-        email: "info@mussiro.com",
-        specialty: "Day tours from Maputo crossing the reserve"
-      },
-      {
-        name: "Maputo Tour Guides",
-        website: "https://maputotours.net/",
-        email: "info@maputotours.net",
-        specialty: "Dedicated 5-6 hour game drives"
+        name: "Transportes Mulungo",
+        website: "",
+        email: "transportesmulungo@gmail.com",
+        specialty: "Safari transport & guided tours"
       }
     ],
     
@@ -759,22 +777,16 @@ export const EXPERIENCE_DETAILS = {
     
     operators: [
       {
-        name: "GAF Adventures",
-        website: "https://fishingbooker.com/charters/view/11578",
-        email: "info@gafadventures.com",
-        specialty: "Skipper Laurens Koen, 20+ years, original Gozo Azul founder"
-      },
-      {
         name: "Gozo Azul Fishing",
-        website: "https://www.facebook.com/gozofishing/",
-        email: "fishing@gozo-azul.co.za",
-        specialty: "Skipper Marcus Joubert, game fishing specialists"
+        website: "",
+        email: "info@gozoazulmarine.com",
+        specialty: "Skipper Laurens Koen, 20+ years experience"
       },
       {
         name: "Mozambique Fishing Charters",
-        website: "https://mozambiquefishincharters.co.za/",
+        website: "",
         email: "info@mozambiquefishincharters.co.za",
-        specialty: "Multi-day packages, fully equipped boats"
+        specialty: "Skipper Marcus Joubert, game fishing specialists"
       }
     ],
     
@@ -887,13 +899,7 @@ export const EXPERIENCE_DETAILS = {
     
     operators: [
       {
-        name: "Spigs Surfs Up Mozambique",
-        website: "https://www.instagram.com/spigssurfsup/",
-        email: "info@spigssurfsup.com",
-        specialty: "Surf school, lessons, rentals, SUP, kayaks - all ages welcome"
-      },
-      {
-        name: "Brasukas - Bar & Surf",
+        name: "Brasukas Bar & Surf",
         website: "",
         email: "brasukas.geral@gmail.com",
         specialty: "Surf lessons, board rentals & beachfront bar"
