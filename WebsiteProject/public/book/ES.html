@@ -487,7 +487,7 @@
             var lang = (document.documentElement.lang || 'en').toLowerCase().split('-')[0];
             var url = 'https://beds24.com/booking2.php?propid=297012&layout=2&lang=' + lang + '&d=' + lang + '&cur=' + currency;
             if (roomid) url += '&roomid=' + roomid;
-            iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
+            iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-top-navigation-by-user-activation');
             iframe.src = url;
             iframe.dataset.srcSet = '1';
           } catch (e) { /* fall through to bottom-of-body loader */ }
@@ -640,7 +640,7 @@
     // Uses sandbox to restrict top-level navigation while allowing all booking functionality
     const iframe = document.getElementById('beds24frame');
     if (iframe.dataset.srcSet !== '1') {
-      iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals');
+      iframe.setAttribute('sandbox', 'allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-top-navigation-by-user-activation');
       iframe.src = iframeUrl;
       iframe.dataset.srcSet = '1';
     }
