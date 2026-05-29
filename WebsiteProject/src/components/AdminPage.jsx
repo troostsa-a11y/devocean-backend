@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react';
 import { useLocation } from 'wouter';
-import ExcelJS from 'exceljs';
 
 const LANGUAGE_OPTIONS = [
   { code: 'EN', label: 'English (UK)' },
@@ -903,6 +902,7 @@ async function sheetToRecords(file) {
 }
 
 async function parseXlsx(buffer) {
+  const ExcelJS = (await import('exceljs')).default;
   const workbook = new ExcelJS.Workbook();
   await workbook.xlsx.load(buffer);
   const ws = workbook.worksheets[0];
