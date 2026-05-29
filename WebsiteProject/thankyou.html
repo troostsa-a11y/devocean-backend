@@ -185,7 +185,7 @@
       </div>
 
       <div class="countdown">
-        <span id="t-redirect-msg">You’ll be redirected in</span> <strong id="seconds">6</strong> <span id="t-seconds">seconds</span>. 
+        <span id="t-redirect-msg">You’ll be redirected in</span> <strong id="seconds">15</strong> <span id="t-seconds">seconds</span>. 
         <a href="#" id="cancelRedirect" class="muted">Stay on this page</a>
       </div>
     </div>
@@ -454,7 +454,7 @@
       };
 
       // Auto-redirect (preserves language)
-      let secs = 6, timerId = null, canceled = false;
+      let secs = 15, timerId = null, canceled = false;
       const secondsEl = document.getElementById('seconds');
       function tick(){
         if (canceled) return;
