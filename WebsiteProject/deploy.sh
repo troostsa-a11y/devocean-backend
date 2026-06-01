@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 # Build and deploy to Cloudflare Pages.
 #
-# The npm build script copies functions/ into dist/ (for legacy reasons),
-# but dist/functions/ must not exist when wrangler deploys — Cloudflare Pages
-# would try to use the raw unbundled source files as Workers, causing Error 1101.
-# Wrangler compiles the real functions/ bundle automatically from the project root.
+# Uses wrangler@3 explicitly — wrangler 4 requires Node >=22 but this
+# environment runs Node 20. Wrangler 3 supports Node 18+.
 #
 # Usage:
 #   bash deploy.sh                  # build + clean + deploy (production)
@@ -20,9 +18,9 @@ rm -rf dist/functions/
 
 echo "▶ Deploying to Cloudflare Pages..."
 if [[ "$1" == "--preview" ]]; then
-  npx wrangler pages deploy ./dist --branch preview
+  npx wrangler@3 pages deploy ./dist --branch preview
 else
-  npx wrangler pages deploy ./dist
+  npx wrangler@3 pages deploy ./dist
 fi
 
 echo "✓ Done"
