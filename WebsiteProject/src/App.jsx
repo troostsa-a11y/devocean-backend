@@ -10,16 +10,16 @@ import { updateMetaDescription } from './utils/seoMeta';
 // Critical above-the-fold components (loaded immediately)
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import AccommodationsSection from './components/AccommodationsSection';
-import ExperiencesSection from './components/ExperiencesSection';
-import TodoSection from './components/TodoSection';
 
 // Route-level components (lazy loaded - only fetched when their route is visited)
 const ExperienceDetailPage = lazy(() => import('./components/ExperienceDetailPage'));
 const WhyPontaPage = lazy(() => import('./components/WhyPontaPage'));
-const AdminPage = lazy(() => import('./components/AdminPage')); // Lazy loaded to keep main bundle smaller
+const AdminPage = lazy(() => import('./components/AdminPage'));
 
-// Below-the-fold components (lazy loaded for better INP)
+// Homepage below-fold sections (lazy loaded to reduce main bundle parse time)
+const AccommodationsSection = lazy(() => import('./components/AccommodationsSection'));
+const ExperiencesSection = lazy(() => import('./components/ExperiencesSection'));
+const TodoSection = lazy(() => import('./components/TodoSection'));
 const GallerySection = lazy(() => import('./components/GallerySection'));
 const LocationSection = lazy(() => import('./components/LocationSection'));
 const ContactSection = lazy(() => import('./components/ContactSection'));
@@ -258,25 +258,21 @@ export default function App() {
               </div>
             </div>
           ) : (
-            <>
+            <Suspense fallback={<div className="min-h-[200px]" />}>
               <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
               <ExperiencesSection experiences={experiences} ui={ui} lang={lang} />
               <TodoSection ui={ui} />
-              
-              {/* Lazy load below-the-fold sections for better INP performance */}
-              <Suspense fallback={<div className="min-h-[200px]" />}>
-                <GallerySection ui={ui} />
-                <LocationSection ui={ui} />
-                <ContactSection
-                  ui={ui}
-                  lang={lang}
-                  currency={currency}
-                  bookUrl={bookUrl}
-                  dateLocale={dateLocale}
-                />
-                <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
-              </Suspense>
-            </>
+              <GallerySection ui={ui} />
+              <LocationSection ui={ui} />
+              <ContactSection
+                ui={ui}
+                lang={lang}
+                currency={currency}
+                bookUrl={bookUrl}
+                dateLocale={dateLocale}
+              />
+              <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
+            </Suspense>
           )}
         </Route>
       </Switch>

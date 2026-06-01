@@ -46,8 +46,9 @@
   <!-- Modulepreload main JS entry - flattens critical request chain -->
   <!-- Auto-injected during build by vite-plugin-preload-entry.js -->
   
-  <!-- DNS prefetch for external services (preconnect removed for delayed scripts) -->
+  <!-- DNS prefetch / preconnect for external services -->
   <link rel="dns-prefetch" href="https://book.devoceanlodge.com">
+  <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
 
   <!-- CookieYes: loaded immediately after Consent Mode defaults so the banner
        appears on every page load before any tracking fires. Must NOT be lazy-loaded
@@ -410,16 +411,10 @@
         opacity: 1;
       }
     }
-    /* Main app renders underneath hero (hidden only when hero is active) */
+    /* Main app renders underneath hero placeholder (covered by fixed z-9999 overlay, not hidden) */
     #root {
       position: relative;
       z-index: 1;
-      opacity: 1;
-      transition: opacity 0.5s ease-out;
-    }
-    /* Hide #root content while hero placeholder is active */
-    html.hero-active #root {
-      opacity: 0;
     }
     /* Fade out placeholder when triggered by JavaScript */
     #hero-placeholder.fade-out {
