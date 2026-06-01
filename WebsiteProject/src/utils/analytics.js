@@ -50,20 +50,45 @@ export function getGA4ClientId() {
  * confirmed Beds24 bookings back to the original session via Measurement
  * Protocol when the booking confirmation email arrives.
  *
- * Safe to call on every "Book Now" click — silently no-ops when:
- *   • the _ga cookie hasn't been written yet (GTM still loading)
- *   • the user is on a privacy browser that blocks GA cookies
+ * On a first visit (Incognito or returning after cookie clearance), the "Book
+ * Now" click IS the first interaction that triggers GTM to load. The _ga
+ * cookie is written ~300-800 ms later. This function retries up to 3× at
+ * 500 ms intervals (1.5 s total) before giving up, so the POST still fires
+ * even when the cookie isn't ready at click time.
+ *
+ * Silent no-op when:
+ *   • GA cookies are blocked by a privacy browser / strict consent settings
  *   • the network request fails for any reason
  *
  * @param {string} lang     - Two-letter locale code, e.g. "en"
  * @param {string} currency - Three-letter currency code, e.g. "USD"
  */
 export function trackBookingSession(lang, currency) {
+  function doPost(cid) {
+    fetch('/api/track-session', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ cid, lang, currency }),
+    }).catch(() => {});
+  }
+
   const cid = getGA4ClientId();
-  if (!cid) return;
-  fetch('/api/track-session', {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ cid, lang, currency }),
-  }).catch(() => {});
+  if (cid) {
+    doPost(cid);
+    return;
+  }
+
+  // Cookie not ready yet — GTM may still be initialising after this first
+  // interaction. Retry up to 3× with 500 ms gaps (1.5 s total window).
+  let attempts = 0;
+  const retry = setInterval(() => {
+    attempts++;
+    const cid = getGA4ClientId();
+    if (cid) {
+      clearInterval(retry);
+      doPost(cid);
+    } else if (attempts >= 3) {
+      clearInterval(retry);
+    }
+  }, 500);
 }
