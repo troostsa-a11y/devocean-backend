@@ -45,7 +45,7 @@
     "zod": "^4.1.12"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.0",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.19",
     "baseline-browser-mapping": "^2.9.19",
     "postcss": "^8.5.15",
