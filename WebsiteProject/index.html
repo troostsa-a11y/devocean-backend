@@ -419,9 +419,10 @@
       z-index: 9999;
       background: #000;
       opacity: 1;
-      /* Compositor-thread fade — 0.5 s visual buffer then 0.4 s fade, independent of JS load.
+      /* Compositor-thread fade — 5 s delay then 0.4 s fade, independent of JS load.
+         Delay keeps the preloaded image visible so Chrome measures it as the LCP candidate.
          will-change promotes this element to its own GPU layer for smooth compositing. */
-      animation: heroDismiss 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+      animation: heroDismiss 0.4s cubic-bezier(0.25, 1, 0.5, 1) 5s forwards;
       will-change: opacity;
       pointer-events: auto;
     }
@@ -554,8 +555,10 @@
           // Storage unavailable - silent fail
         }
         
-        // CSS animation (heroDismiss, 0.5 s delay, 0.4 s fade) handles the visual fade on
+        // CSS animation (heroDismiss, 5 s delay, 0.4 s fade) handles the visual fade on
         // the compositor thread — independent of main-thread JS load.
+        // The 5 s delay keeps the placeholder visible until the image is fully measured
+        // by Chrome as the LCP candidate before the overlay clears.
         // This JS timeout only cleans up the DOM after the animation finishes.
         setTimeout(function() {
           if (placeholder) {
@@ -563,7 +566,7 @@
           }
           // hero-active intentionally NOT removed here — React's App.jsx useEffect
           // removes it after first mount, keeping the dark background until content is ready.
-        }, 1000); // 500 ms delay + 400 ms fade + 100 ms buffer
+        }, 5500); // 5000 ms delay + 400 ms fade + 100 ms buffer
       }
       
       // Run init when DOM is ready
@@ -575,45 +578,6 @@
     })();
   </script>
 
-  <!-- Early interaction handler (improves INP by providing instant feedback) -->
-  <script>
-    (function() {
-      // Add visual feedback for clicks during hydration
-      // This improves perceived responsiveness even before React is ready
-      let hydrated = false;
-      
-      // Mark as hydrated when React renders
-      const observer = new MutationObserver(function() {
-        const root = document.getElementById('root');
-        if (root && root.children.length > 0) {
-          hydrated = true;
-          observer.disconnect();
-        }
-      });
-      
-      // Start observing when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-          const root = document.getElementById('root');
-          if (root) observer.observe(root, { childList: true });
-        });
-      } else {
-        const root = document.getElementById('root');
-        if (root) observer.observe(root, { childList: true });
-      }
-      
-      // Provide visual feedback for early clicks (before hydration)
-      document.addEventListener('click', function(e) {
-        if (!hydrated && e.target.tagName === 'A') {
-          // Add subtle visual feedback
-          e.target.style.opacity = '0.7';
-          setTimeout(function() {
-            e.target.style.opacity = '';
-          }, 150);
-        }
-      }, { capture: true, passive: true });
-    })();
-  </script>
 </head>
 
 <body>
