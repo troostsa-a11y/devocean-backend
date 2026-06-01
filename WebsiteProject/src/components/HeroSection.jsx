@@ -199,10 +199,15 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
           <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
         </div>
-
-        {/* Trustindex Review Widget - Reserve space to prevent CLS */}
-        <div ref={trustindexRef} className="mt-6"></div>
       </div>
+
+      {/* Trustindex Review Widget — absolutely positioned so it never shifts the
+          vertically-centred content above it. Placing it inside the flex container
+          caused ~80 px of CLS whenever the widget injected its ~160 px of HTML. */}
+      <div
+        ref={trustindexRef}
+        className="absolute bottom-6 left-0 right-0 z-10 max-w-7xl mx-auto px-4"
+      />
 
     </section>
   );
