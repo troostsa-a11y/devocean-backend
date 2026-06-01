@@ -1,0 +1,22 @@
+The documentation snapshot confirms that a Cloudflare Error 1101 explicitly means a Worker threw a JavaScript exception at runtime. Since your home route serves a static index.html file via client-side rendering (CSR), a standard user visit will not hit the V8 execution environment or trigger this code.If the 1101 exception is appearing on a page load, the site is not behaving as a pure static asset distribution.Why You Are Seeing an Error 1101 on a CSR SiteIf a visitor hits your URL and receives an Error 1101, it points to one of three edge configuration routing issues:Top-Level Pages Functions Crash: You mentioned having two contact endpoints (/api/contact and /api/experience-inquiry). If you have a root _middleware.js file or an unhandled global export at the top of your functions/ directory, Cloudflare will try to compile it for every single incoming request. A top-level syntax error, an invalid runtime hook, or a broken third-party module import in that folder will crash the edge router instantly.Missing System Environment Variables: Even if your try/catch block safely handles a missing API token, referencing an undeclared environment binding globally in the top-level outer scope (e.g., const client = new Resend(env.RESEND_API_KEY) placed outside the onRequest handler) will throw an unhandled reference exception during worker script startup.Legacy Cloudflare Workers Routes Overlap: If there is an old, active Cloudflare Worker associated with the same custom domain (://devoceanlodge.com*), that independent script will intercept traffic before it ever touches your new Pages deployment. If that legacy worker has unmaintained code, it will fire an 1101 exception.The Direct Fix PathTo pull down the exact error site and trace why the V8 worker engine is failing to complete execution, run the following pipeline diagnostics:Step 1: Capture the Live Edge Stack TraceOpen your command terminal and stream the live production exception logs directly from Cloudflare's servers:bashnpx wrangler pages deployment tail devocean-lodge --format pretty
+Use code with caution.Keep this terminal window running, then refresh the page causing the Error 1101. The console will print the exact filename, function name, and line number where the script crashed.Step 2: Safe-Guard API Imports and ClientsEnsure all environment-dependent client initializations inside your Pages Functions are isolated directly inside your request handlers rather than floating in the global scope:javascript// ❌ WRONG: Top-level reference crashes worker initialization if env is unbound
+// const resend = new Resend(env.RESEND_API_KEY); 
+
+export async function onRequestPost(context) {
+  const { env, request } = context;
+  
+  //  CORRECT: Contextual binding inside the active event loop
+  if (!env.RESEND_API_KEY) {
+    return new Response(JSON.stringify({ error: "Missing API Key Configuration" }), { status: 500 });
+  }
+  
+  try {
+    // Initialize inside the safe request handler scope
+    const { Resend } = await import('resend');
+    const resend = new Resend(env.RESEND_API_KEY);
+    // ... execution logic
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+  }
+}
+Use code with caution.Step 3: Check Environment BindingsGo to your Cloudflare Dashboard \(\rightarrow \) Workers & Pages \(\rightarrow \) devocean-lodge \(\rightarrow \) Settings \(\rightarrow \) Environment Variables. Double-check that your recaptcha, turnstile, or email service keys are explicitly declared under both the Production and Preview environment tabs.
