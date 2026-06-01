@@ -89,6 +89,13 @@ Preferred communication style: Simple, everyday language.
 - A custom `moveScriptToBody` plugin in `vite.config.js` removes the built entry `<script type="module" crossorigin src="/assets/...">` from wherever Vite places it and re-appends it just before `</body>`
 - Net effect: `#hero-placeholder` (9.5 KB WebP, preloaded) paints as an LCP candidate before JS ever runs
 
+### Overlay fade: CSS animation, not JS setTimeout
+- The overlay uses `animation: heroDismiss 0.8s ease-out 5s forwards` on `#hero-placeholder` — runs on the compositor thread, fires at exactly T=5s regardless of main-thread JS load
+- Root cause of 9s LCP: `setTimeout(5000)` is queued on the main thread. With 738ms TBT spread across several long tasks (JS parsing: entry 153KB + react-vendor 134KB), the callback fires at T=8–9s instead of T=5.2s. Chrome will not register elements covered by a full-viewport `position:fixed; z-index:9999` overlay as LCP candidates, so LCP was T=8–9s.
+- Fix: JS `setTimeout` is now **cleanup-only** (fires at 5900ms, removes the element from DOM after the animation has already visually completed). The visual fade is driven entirely by CSS.
+- For returning visitors: `placeholder.style.animation = 'none'` cancels the compositor animation before `display:none` is set.
+- Expected LCP after this fix: ~6s (5s animation-delay + 0.8s fade), down from ~9s.
+
 ### Booking Iframe (book/*.html)
 - The Beds24 booking iframe uses `sandbox="... allow-top-navigation"` (not `allow-top-navigation-by-user-activation`)
 - `allow-top-navigation` is required for both automatic frame-busting scripts (thankyou/canceled pages) and payment redirect links to navigate the top-level window correctly

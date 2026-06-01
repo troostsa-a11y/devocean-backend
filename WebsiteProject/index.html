@@ -330,6 +330,9 @@
   <!-- Critical CSS for instant hero display (before React loads) -->
   <style>
     /* Hero placeholder - non-blocking overlay */
+    @keyframes heroDismiss {
+      to { opacity: 0; pointer-events: none; }
+    }
     #hero-placeholder {
       position: fixed;
       top: 0;
@@ -339,7 +342,8 @@
       z-index: 9999;
       background: #000;
       opacity: 1;
-      transition: opacity 0.8s ease-out;
+      /* Compositor-thread fade — fires at exactly 5 s regardless of JS main-thread load */
+      animation: heroDismiss 0.8s ease-out 5s forwards;
       pointer-events: auto;
     }
     #hero-placeholder picture {
@@ -453,6 +457,7 @@
         if (heroSeenThisSession || heroSeenEver) {
           // Skip hero - show main site immediately
           if (placeholder) {
+            placeholder.style.animation = 'none'; // cancel compositor animation
             placeholder.style.display = 'none';
           }
           return;
@@ -470,21 +475,15 @@
           // Storage unavailable - silent fail
         }
         
-        // Keep hero placeholder visible for 5 seconds, then fade out
+        // CSS animation (heroDismiss, 5 s delay, 0.8 s fade) handles the visual fade on
+        // the compositor thread — independent of main-thread JS load.
+        // This JS timeout only cleans up the DOM after the animation finishes.
         setTimeout(function() {
           if (placeholder) {
-            placeholder.classList.add('fade-out');
-            // Remove from DOM after fade completes
-            setTimeout(function() {
-              placeholder.style.display = 'none';
-            }, 800);
+            placeholder.style.display = 'none';
           }
-          
-          // Restore scrolling after fade completes
-          setTimeout(function() {
-            document.documentElement.classList.remove('hero-active');
-          }, 900); // 900ms = 800ms fade + 100ms buffer
-        }, 5000); // 5 seconds
+          document.documentElement.classList.remove('hero-active');
+        }, 5900); // 5 000 ms delay + 800 ms fade + 100 ms buffer
       }
       
       // Run init when DOM is ready
