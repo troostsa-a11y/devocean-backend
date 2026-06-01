@@ -179,7 +179,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               onClick={() => {
                 if (window.dataLayer) {
                   window.dataLayer.push({
-                    event: 'reservation_complete',
+                    event: 'reservation_initiated',
                     button_location: 'hero_section',
                     language: lang,
                     currency: currency
