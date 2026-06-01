@@ -83,6 +83,12 @@ Preferred communication style: Simple, everyday language.
 - `#root` is **not** hidden with `opacity: 0` during the overlay — the placeholder is `position: fixed; z-index: 9999` and covers the React content visually without blocking LCP measurement
 - Do not reintroduce `html.hero-active #root { opacity: 0 }` — it delays LCP by preventing the browser from recording the React hero as a paint candidate
 
+### Script-at-bottom + modulePreload strategy
+- The React entry `<script type="module" src="/src/main.jsx">` lives at the **very bottom of `<body>`** in `index.html` (after `#hero-placeholder` and all inline scripts)
+- `build.modulePreload: false` in `vite.config.js` disables Vite's automatic `<link rel="modulepreload">` hints for every lazy chunk; `preloadEntry()` still injects a single hint for the main entry so the preload scanner starts the JS download early
+- A custom `moveScriptToBody` plugin in `vite.config.js` removes the built entry `<script type="module" crossorigin src="/assets/...">` from wherever Vite places it and re-appends it just before `</body>`
+- Net effect: `#hero-placeholder` (9.5 KB WebP, preloaded) paints as an LCP candidate before JS ever runs
+
 ### Booking Iframe (book/*.html)
 - The Beds24 booking iframe uses `sandbox="... allow-top-navigation"` (not `allow-top-navigation-by-user-activation`)
 - `allow-top-navigation` is required for both automatic frame-busting scripts (thankyou/canceled pages) and payment redirect links to navigate the top-level window correctly

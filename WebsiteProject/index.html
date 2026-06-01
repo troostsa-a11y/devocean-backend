@@ -544,9 +544,6 @@
       style="display:none;visibility:hidden"></iframe>
   </noscript>
 
-  <!-- DEV entry (Vite) -->
-  <script type="module" src="/src/main.jsx"></script>
-
   <div id="root"></div>
 
   <!-- Static hero image (displays instantly before React loads) -->
@@ -859,6 +856,9 @@
 
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
+
+  <!-- React app entry — placed last so browser paints static hero before executing JS -->
+  <script type="module" src="/src/main.jsx"></script>
 </body>
 
 </html>
