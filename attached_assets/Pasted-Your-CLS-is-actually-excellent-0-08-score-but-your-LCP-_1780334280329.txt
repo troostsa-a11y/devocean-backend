@@ -1,0 +1,217 @@
+Your CLS is actually excellent (0.08 score), but your LCP is critically slow at 11.6 seconds (scoring 0 out of 100). Because LCP and TBT (Total Blocking Time) make up 55% of your total score, your main goal must be speeding up how fast your main hero content loads.Here is exactly what you need to do to fix this:1. Optimize the Hero Image (The LCP Element)Preload the image: Add <link rel="preload" as="image" href="your-hero-image.webp"> to your HTML <head>.Disable lazy-loading: Remove loading="lazy" or any lazy-load JavaScript from your main hero image so it loads immediately.Compress and convert: Convert the main background/hero image to Next-Gen formats like WebP or AVIF.2. Reduce Total Blocking Time (TBT)Delay non-critical scripts: Push the booking widget scripts, analytics, and chat plugins to load after the page finishes rendering.Minify and split JS: Break down large JavaScript bundles so the browser does not freeze while processing heavy code.3. Server & Network FixesEnable caching: Ensure your server uses aggressive caching for static assets like images, fonts, and CSS.Use a CDN: Route your website through a Content Delivery Network (like Cloudflare) to serve assets from servers closer to your visitors.Would you like help looking at your website's HTML code to find the exact hero image filename, or would you like to check the desktop performance scores next?You said: <!doctype html>
+<html lang="en">
+
+<head><script>(function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
+(window,'GTM-532W3HH2','google_tags_first_party');</script><script>(function(w,d,s,l){w[l]=w[l]||[];(function(){w[l].push(arguments);})('set', 'developer_id.dYzg1YT', true);
+		w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s);j.async=true;j.src='/nik2/';
+		f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer');</script><script>window.__CF_COUNTRY__="MZ";</script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#9e4b13" />
+  <title>DEVOCEAN Lodge | Eco Beach Stays in Ponta do Ouro</title>
+
+  <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // EU+UK = denied by default
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted',
+      region: [
+        'AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT',
+        'LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB'
+      ]
+    });
+
+    // Everywhere else = granted
+    gtag('consent', 'default', {
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted',
+      analytics_storage: 'granted',
+      functionality_storage: 'granted',
+      personalization_storage: 'granted',
+      security_storage: 'granted'
+    });
+  </script>
+
+  <!-- Critical: Preload hero image for LCP optimization (fetchpriority=high for immediate load) -->
+  <link rel="preload" as="image" href="/photos/hero01.webp" type="image/webp" fetchpriority="high" media="(min-width: 801px)">
+  <link rel="preload" as="image" href="/photos/hero01-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 800px)">
+  
+  <!-- Modulepreload main JS entry - flattens critical request chain -->
+  <link rel="modulepreload" crossorigin href="/assets/index-D4atXg4k.js">
+
+  <!-- Auto-injected during build by vite-plugin-preload-entry.js -->
+  
+  <!-- DNS prefetch / preconnect for external services -->
+  <link rel="dns-prefetch" href="https://book.devoceanlodge.com">
+  <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
+
+  <!-- CookieYes: loaded immediately after Consent Mode defaults so the banner
+       appears on every page load before any tracking fires. Must NOT be lazy-loaded
+       because EU visitors must see the consent prompt before any interaction. -->
+  <script>
+    (function() {
+      var isDev = window.location.hostname === 'localhost' ||
+                  window.location.hostname.includes('replit.dev') ||
+                  window.location.hostname.includes('repl.co');
+      if (isDev) return;
+      var s = document.createElement('script');
+      s.id = 'cookieyes';
+      s.type = 'text/javascript';
+      s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
+      document.head.appendChild(s);
+    })();
+  </script>
+
+  <!-- INP-Optimized: Consolidated Deferred Script Loader -->
+  <!-- Single interaction detection system for GTM, Engagement Tracker, Rage Detector -->
+  <!-- Reduces 12 event listeners to 3, single callback schedules all scripts with staggered delays -->
+  <script>
+    (function() {
+      // Skip all third-party analytics in development (Replit preview, localhost)
+      var isDev = window.location.hostname === 'localhost' ||
+                  window.location.hostname.includes('replit.dev') ||
+                  window.location.hostname.includes('repl.co');
+      if (isDev) return;
+
+      var loaded = { gtm: false, tracker: false };
+      
+      function scheduleWithIdle(fn, delay) {
+        setTimeout(function() {
+          if (window.requestIdleCallback) {
+            requestIdleCallback(fn, { timeout: 3000 });
+          } else {
+            setTimeout(fn, 100);
+          }
+        }, delay);
+      }
+      
+      function loadGTM() {
+        if (loaded.gtm) return;
+        loaded.gtm = true;
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-532W3HH2');
+      }
+      
+      function loadTracker() {
+        if (loaded.tracker) return;
+        loaded.tracker = true;
+        var s = document.createElement('script');
+        s.src = '/engagement-tracker.js';
+        document.head.appendChild(s);
+      }
+      
+      function scheduleAllScripts() {
+        scheduleWithIdle(loadGTM, 500);
+        scheduleWithIdle(loadTracker, 900);
+      }
+      
+      function onFirstInteraction() {
+        setTimeout(scheduleAllScripts, 0);
+      }
+      
+      ['click', 'keydown', 'touchstart'].forEach(function(e) {
+        window.addEventListener(e, onFirstInteraction, { once: true, passive: true });
+      });
+      
+      // No-interaction fallback. Real visitors trigger the load instantly
+      // via the click/keydown/touchstart listeners above; this only fires for
+      // visitors who never interact. Set to 15s so PageSpeed audits (which
+      // never interact and finish in ~10-12s) don't get billed for the GTM
+      // + Google Ads cascade in their TBT score.
+      setTimeout(scheduleAllScripts, 15000);
+    })();
+  </script>
+
+  <!-- reCAPTCHA v3 (lazy loaded when contact form visible) -->
+  <script>
+    window.RECAPTCHA_SITE_KEY = '6LdENtwrAAAAAPy6JsCXFJLR16ST1BnX-NyPDC7L';
+    // Cloudflare Turnstile fallback (used when reCAPTCHA cannot run — e.g.
+    // privacy browsers, Brave shields, networks blocking Google domains).
+    // Leave empty until you register a free Turnstile widget at
+    // https://dash.cloudflare.com/?to=/:account/turnstile, then paste your
+    // site key here. Until set, the fallback gracefully no-ops.
+    window.TURNSTILE_SITE_KEY = '0x4AAAAAADGh0ZzbK52y0xkt';
+
+    // Lazy loader for reCAPTCHA
+    window.loadRecaptcha = (function() {
+      let promise = null;
+
+      return function() {
+        if (promise) return promise;
+
+        if (window.grecaptcha) {
+          promise = Promise.resolve(window.grecaptcha);
+          return promise;
+        }
+
+        promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://www.google.com/recaptcha/api.js?render=' + window.RECAPTCHA_SITE_KEY;
+          script.async = true;
+          script.defer = true;
+          // Hard timeout so a blocked Google domain doesn't hang forever and
+          // the fallback (Turnstile) can take over.
+          const timer = setTimeout(() => {
+            reject(new Error('reCAPTCHA script load timeout'));
+          }, 8000);
+          script.onload = () => { clearTimeout(timer); resolve(window.grecaptcha); };
+          script.onerror = () => { clearTimeout(timer); reject(new Error('Failed to load reCAPTCHA')); };
+          document.head.appendChild(script);
+        });
+
+        return promise;
+      };
+    })();
+
+    // Lazy loader for Cloudflare Turnstile (only loaded if reCAPTCHA fails)
+    window.loadTurnstile = (function() {
+      let promise = null;
+
+      return function() {
+        if (promise) return promise;
+        if (!window.TURNSTILE_SITE_KEY) {
+          promise = Promise.reject(new Error('Turnstile not configured'));
+          return promise;
+        }
+
+        if (window.turnstile) {
+          promise = Promise.resolve(window.turnstile);
+          return promise;
+        }
+
+        promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://challenges.cloudflare.coThe HTML code shows that your technical setup for performance optimization is excellent—you are already using high-priority image preloading, lazy-loading third-party scripts on interaction, and utilizing modern WebP assets.However, the severe 11.6s LCP and high TBT in your Lighthouse report are being caused by critical conflicts in how these scripts are executing at the very top of your document.Here is the exact diagnostic breakdown and how to fix it:1. Eliminate the Render-Blocking GTM StubAt the very top of your <head>, you have this synchronous script:html<script>
+  (function(w,i,g){w[g]=w[g]||[];if(typeof w[g].push=='function')w[g].push(i)})
+  (window,'GTM-532W3HH2','google_tags_first_party');
+</script>
+<script>
+  (function(w,d,s,l){ ... j.src='/nik2/'; f.parentNode.insertBefore(j,f); ... })
+  (window,document,'script','dataLayer');
+</script>
+Use code with caution.The Problem: This script is injection-loading an internal script path (/nik2/) synchronously at the start of document parsing. This creates a massive render-blocking barrier, halting the browser from parsing the HTML down to your preloads, triggering a high TBT and delaying LCP.The Fix: Remove this top block entirely if it is redundant with your optimized deferred GTM loader found lower in the script. If it is strictly required, add async to the generated element container inside the function wrapper.2. Fix the Dynamic Script Injection ChainYour script loader dynamically creates and appends CookieYes:htmlvar s = document.createElement('script');
+s.id = 'cookieyes';
+s.src = 'https://cdn-cookieyes.com/...';
+document.head.appendChild(s);
+Use code with caution.The Problem: When scripts are appended directly via document.head.appendChild(s) without explicit flags, the browser treats them with higher layout blocking priority. If the network connection to cdn-cookieyes.com experiences latency, the main thread freezes, blowing up your TBT and starving the LCP resource download queue.The Fix: Explicitly mark the dynamically generated script as asynchronous before appending it to the head:javascriptvar s = document.createElement('script');
+s.id = 'cookieyes';
+s.type = 'text/javascript';
+s.async = true; // Add this line
+s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
+document.head.appendChild(s);
+Use code with caution.3. Match Main CSS Rendering with PreloadsWhile you are preloading /photos/hero01.webp, your main styles sheet is missing from the head section of your HTML markup (it is likely bundled entirely within /assets/index-D4atXg4k.js).The Problem: The browser downloads the image via the preload tag, but it cannot actually paint it onto the screen until your heavy JavaScript bundle completely downloads, extracts, and runs the CSS rules. This explains why your First Contentful Paint (FCP) is decent (1.5s) but your LCP stretches out to 11.6s.The Fix: Extract the structural/layout CSS for your hero container section out of the Vite JavaScript compilation process and inline it directly in a <style> block right above your image preloads. This allows the background image to render the moment it finishes downloading without waiting for the JavaScript main thread.Would you like assistance in extracting the critical layout CSS to inline it, or do you want to review the Vite configuration to automate this behavior?
