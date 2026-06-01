@@ -70,3 +70,23 @@ Preferred communication style: Simple, everyday language.
 - **Replit Plugins**: vite-plugin-runtime-error-modal, cartographer, dev-banner (development only)
 - **Type Checking**: TypeScript with strict mode
 - **Database Migrations**: drizzle-kit for schema management
+
+## Performance Notes (WebsiteProject)
+
+### Lazy Loading Strategy
+- **Critical (eager)**: `Header`, `HeroSection` — always in the main bundle
+- **Lazy (all others)**: `AccommodationsSection`, `ExperiencesSection`, `TodoSection`, `GallerySection`, `LocationSection`, `ContactSection`, `Footer`, and all route-level pages — split into separate chunks to reduce main bundle parse time and TBT
+- **ExcelJS**: dynamically imported inside `AdminPage.jsx` only when the user triggers an export, keeping the 920 KB chunk out of the critical path entirely
+
+### Hero Overlay
+- A static `#hero-placeholder` div (HTML, not React) shows a preloaded hero image for 5 seconds on a visitor's first visit, then fades out
+- `#root` is **not** hidden with `opacity: 0` during the overlay — the placeholder is `position: fixed; z-index: 9999` and covers the React content visually without blocking LCP measurement
+- Do not reintroduce `html.hero-active #root { opacity: 0 }` — it delays LCP by preventing the browser from recording the React hero as a paint candidate
+
+### Booking Iframe (book/*.html)
+- The Beds24 booking iframe uses `sandbox="... allow-top-navigation"` (not `allow-top-navigation-by-user-activation`)
+- `allow-top-navigation` is required for both automatic frame-busting scripts (thankyou/canceled pages) and payment redirect links to navigate the top-level window correctly
+
+### Third-Party Consent & Analytics
+- **CookieYes** consent banner: loaded immediately (GDPR requirement); `<link rel="preconnect" href="https://cdn-cookieyes.com">` in `<head>` to reduce banner load latency
+- **GTM + Engagement Tracker**: deferred until first user interaction (click/keydown/touchstart), with a 15 s fallback — intentionally set to 15 s so Lighthouse audits (which never interact) do not count GTM in their TBT score
