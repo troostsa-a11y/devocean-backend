@@ -85,7 +85,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Script-at-bottom + modulePreload strategy
 - The React entry `<script type="module" src="/src/main.jsx">` lives at the **very bottom of `<body>`** in `index.html` (after `#hero-placeholder` and all inline scripts)
-- `build.modulePreload: false` in `vite.config.js` disables Vite's automatic `<link rel="modulepreload">` hints for every lazy chunk; `preloadEntry()` still injects a single hint for the main entry so the preload scanner starts the JS download early
+- `build.modulePreload: { polyfill: false }` in `vite.config.js` keeps Vite's `<link rel="modulepreload">` hints for all vendor chunks (react-vendor, icons, framer) so they download in parallel with the entry; setting `polyfill: false` just skips the polyfill script. Do NOT set `modulePreload: false` — that removes all vendor chunk preload hints and creates a sequential waterfall that delays React render from ~3s to ~6–7s
 - A custom `moveScriptToBody` plugin in `vite.config.js` removes the built entry `<script type="module" crossorigin src="/assets/...">` from wherever Vite places it and re-appends it just before `</body>`
 - Net effect: `#hero-placeholder` (9.5 KB WebP, preloaded) paints as an LCP candidate before JS ever runs
 

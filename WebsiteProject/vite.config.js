@@ -40,7 +40,7 @@ export default defineConfig({
     sourcemap: true,
     cssCodeSplit: false, // Single CSS bundle - better for mobile
     cssMinify: true,
-    modulePreload: false, // Disable auto-injection; preloadEntry() handles the entry hint
+    modulePreload: { polyfill: false }, // Keep <link rel="modulepreload"> hints for vendor chunks; skip polyfill script
     rollupOptions: {
       output: {
         manualChunks: {
