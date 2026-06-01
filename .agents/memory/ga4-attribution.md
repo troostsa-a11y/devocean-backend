@@ -40,6 +40,18 @@ Run `render-automailer/migrations/add_booking_sessions.sql` against Supabase bef
 ## Attribution accuracy notes
 - Match uses `language` + `country` + 30-minute time window. False positives possible when multiple guests from the same country/language click "Book Now" within 30 min — rare for a boutique lodge.
 - Sessions older than 2 hours are auto-deleted after each insert (cleanup in `guestDb.cleanupOldSessions()`).
-- If `_ga` cookie absent (GTM not yet loaded, first click on slow mobile, privacy browser), `trackBookingSession` silently no-ops — no error, no UX impact. That booking gets no attribution rather than a wrong attribution.
 
 **Why:** `window.ga` (proposed) is the Universal Analytics API, not GA4. GA4 uses `gtag` behind GTM. Direct `_ga` cookie parsing is the correct approach for reading client_id without depending on GTM being loaded.
+
+## Fallback client_id pattern (`fb.` prefix)
+
+GTM is deferred until first interaction (keeps Lighthouse TBT clean). Clicking "Book Now" IS that first interaction — GA4 writes `_ga` ~300–800 ms later. `trackBookingSession` retries 3× at 500 ms. After all retries fail (consent blocked / strict privacy browser), it generates `fb.TIMESTAMP.RANDOM` from `sessionStorage` and POSTs that instead.
+
+`fb.` IDs: automailer stores the session but `fireGA4Conversion()` skips the MP POST — no real GA4 session to attribute to, so sending would pollute GA4 with phantom events.
+
+## CF Pages env var deployment rule
+
+Dashboard UI is locked when `wrangler.toml` exists. Adding vars through the dashboard creates a `Binding name already in use` error on next deploy. Rule: `AUTOMAILER_URL` goes in `wrangler.toml [vars]`; `ADMIN_API_KEY` is uploaded via `wrangler pages secret put` inside `deploy.sh`. Always run `bash deploy.sh` from `WebsiteProject/` — never add these manually in the CF dashboard.
+
+## Verified working (June 2026)
+End-to-end test confirmed: real `purchase` event appeared in GA4 Realtime with correct `client_id` after a live Beds24 booking was processed.
