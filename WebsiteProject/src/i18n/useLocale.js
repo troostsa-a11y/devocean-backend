@@ -797,7 +797,7 @@ export function useLocale() {
     return () => {
       cancelled = true;
     };
-  }, [lang, initialLoadDone]);
+  }, [lang]);
 
   useEffect(() => {
     document.documentElement.setAttribute("lang", lang);

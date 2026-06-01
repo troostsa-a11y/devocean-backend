@@ -81,7 +81,11 @@ Preferred communication style: Simple, everyday language.
 ### Hero Overlay
 - A static `#hero-placeholder` div (HTML, not React) shows a preloaded hero image for 5 seconds on a first visit, then fades out via CSS animation on the compositor thread
 - The placeholder contains a real `<h1 id="hero-title">`, `<p id="hero-subtitle">`, and two static button-shaped `<div>`s — mirroring the React hero layout exactly to eliminate CLS on overlay removal
-- Content container uses `padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem` — same as the React `HeroSection` — so layout does not shift when the overlay clears. `--stack-h` is defined in the critical inline CSS (`:root { --stack-h: 96px }`)
+- Placeholder content uses `padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem` (position:fixed, so measured from viewport top → content at y:168 desktop / y:160 mobile)
+- React `HeroSection` uses `paddingTop: calc(var(--header-h) + 4rem)` (NOT `--stack-h`) — the topbar (40px, in-flow) already offsets the section start, so only the fixed header height needs adding. This produces the same y:168 / y:160 as the placeholder, eliminating the visual jump on overlay fade.
+- **Do NOT change HeroSection back to `calc(var(--stack-h) + 4rem)`** — that placed content 40px lower than the placeholder, causing a visible 40px (desktop: 253px flex-centering-adjusted) jump when the overlay faded. This was a major CLS source.
+- HeroSection uses `items-start` (NOT `items-center`) — flex vertical centering shifts ALL hero text whenever content height changes (e.g. translations loading). `items-start` anchors the title at a stable y position regardless of content below it.
+- **Do NOT change HeroSection back to `flex items-center`** — it caused the hero content block to shift up/down whenever `criticalUI → full ui` transitions added/removed the description paragraph or changed content height.
 - The localization inline script immediately updates `#hero-title` and `#hero-subtitle` to the visitor's language. Do not remove these IDs.
 - `#root` is **not** hidden with `opacity: 0` during the overlay — the placeholder is `position: fixed; z-index: 9999` and covers React content visually without blocking LCP measurement
 - Do not reintroduce `html.hero-active #root { opacity: 0 }` — it delays LCP by preventing the browser from recording elements as paint candidates
