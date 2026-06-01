@@ -1,0 +1,60 @@
+o streamline how your custom buildUrl helper handles localized paths—especially as DEVOCEAN Lodge scales its international marketing for regional visitors—we need to transition from basic query string appending to a robust, clean URL architecture.Currently, your helper relies strictly on query parameters:javascript// Current approach: /why-ponta?lang=pt&currency=ZAR
+const buildUrl = (path, hash = '') => { ... }
+Use code with caution.Using query parameters for localization is functional but sub-optimal for international SEO. Search engines prefer clean, distinct URL paths for different languages to accurately index regional variations of your content.The Goal: Clean Subdirectory RoutingInstead of relying on query strings, the standard strategy is to rewrite paths to use clean subdirectories for alternative languages while maintaining fallback query parameters strictly for transactional items like local currencies:Default (English): ://devoceanlodge.comPortuguese (Local/Regional): ://devoceanlodge.comSouth African Regional Variant: ://devoceanlodge.comStep 1: Upgrading the buildUrl HelperUpdate your global URL builder to dynamically inject the language slug into the root of the path slice if it differs from your default locale (en), while preserving clean sub-directory formatting and hashing syntax:javascriptexport const buildUrl = (path, hash = '', currentLang = 'en', currency = '') => {
+  // 1. Clean leading/trailing slashes from the incoming route path
+  const cleanPath = path.replace(/^\/|\/$/g, '');
+  
+  // 2. Build the structural language prefix segment
+  const langPrefix = currentLang && currentLang !== 'en' ? `/${currentLang}` : '';
+  
+  // 3. Assemble the base path structure cleanly
+  const baseRoute = `${langPrefix}/${cleanPath}`.replace(/\/+/g, '/'); // Prevent double slashes
+  
+  // 4. Handle contextual marketing overrides (like regional currency)
+  const params = new URLSearchParams();
+  if (currency) params.set('currency', currency);
+  
+  const queryString = params.toString() ? `?${params.toString()}` : '';
+  
+  // 5. Append trailing anchor hashes safely
+  return `${baseRoute}${queryString}${hash}`;
+};
+Use code with caution.Step 2: Edge-Routing on Cloudflare (Zero-TBT i18n Strategy)Because your site is a pure Client-Side Rendered (CSR) app, if a user navigates directly to ://devoceanlodge.com, the Cloudflare edge will return a 404 because that exact physical subdirectory doesn't exist on disk.To make clean subdirectory routing work without sacrificing your 0 ms Total Blocking Time (TBT), leverage Cloudflare’s native routing layers to rewrite regional path masks to your static asset target instantly at the edge.Option A: public/_redirects (The Static-Asset Way)Add a wild-card rule to your public redirection manifest. This tells Cloudflare Pages to map localized language patterns directly back to your root index.html structure without triggering a heavy server-side execution loop:text# Smoothly proxy regional slugs directly into your SPA router container
+/pt/*    /index.html   200
+/za/*    /index.html   200
+Use code with caution.Option B: Light-Weight Router MiddlewareIf you prefer handling locale injection or geo-location sniffing dynamically at the edge before the document paints, ensure your Pages function acts strictly as an asset rewriting loop rather than a heavy engine pass:javascript// functions/_middleware.js
+export async function onRequest(context) {
+  const { request, next } = context;
+  const url = new URL(request.url);
+  
+  // Sniff path structure for supported regional variations
+  const isLocalized = /^\/(pt|za)(\/|$)/.test(url.pathname);
+  
+  if (isLocalized) {
+    // Transparently rewrite to the main shell document at the edge
+    return context.env.ASSETS.fetch(new URL('/index.html', request.url));
+  }
+  
+  return next();
+}
+Use code with caution.Step 3: Aligning Wouter with Subdirectory ScopesSince you are using wouter for client-side routing, configure your base app layout to interpret the active path structure seamlessly. You can pass a global base navigation modifier to your router context dynamically or let it parse the context natively:jsx// App.jsx
+import { Router, Route, Switch } from 'wouter';
+
+export default function App() {
+  // Dynamically extract the language sub-path to seed context state
+  const path = window.location.pathname;
+  const match = path.match(/^\/(pt|za)/);
+  const activeLang = match ? match[1] : 'en';
+
+  return (
+    // Scoping base routes keeps path checking logic simple inside inner sections
+    <Router base={activeLang !== 'en' ? `/${activeLang}` : ''}>
+      <Switch>
+        <Route path="/" component={HeroSection} />
+        <Route path="/why-ponta" component={WhyPontaPage} />
+        <Route path="/experiences/diving" component={DivingPage} />
+      </Switch>
+    </Router>
+  );
+}
+Use code with caution.Technical SEO ImplicationsTransitioning to this subdirectory schema unlocks massive regional SEO advantages:Hreflang Tags: You can now safely map <link rel="alternate" hreflang="pt" href="https://devoceanlodge.com" /> directly in your SEO headers. Search engines will explicitly serve the localized path to regional traffic originating within Mozambique or Brazil.Granular Analytics: You can cleanly isolate and monitor behavioral metrics across ://devoceanlodge.com to measure exactly how your regional copy conversion compares to international traffic.If you are interested, we can:Map out the exact text token structure to dynamically supply your localized copy variables without bloating your main bundle.Configure automatic geo-IP checking via Cloudflare headers to instantly suggest the local currency context when a regional visitor lands on the site.
