@@ -1,1 +1,2 @@
-- [wrangler path-to-regexp conflict](wrangler-path-to-regexp.md) — path-to-regexp@0.x in project node_modules shadows wrangler@4 need for v6 match → 1101 on all requests; shim added.
+- [Hero overlay LCP timing](hero-overlay-lcp.md) — overlay delay must exceed image load time (~1.5s) or Chrome skips the invisible image as LCP candidate
+- [Mobile menu pattern](mobile-menu-pattern.md) — always-in-DOM + CSS transform/opacity > mount/unmount for pre-hydration responsiveness and INP
