@@ -74,8 +74,8 @@ Preferred communication style: Simple, everyday language.
 ## Performance Notes (WebsiteProject)
 
 ### Lazy Loading Strategy
-- **Critical (eager)**: `Header`, `HeroSection` — always in the main bundle
-- **Lazy (all others)**: `AccommodationsSection`, `ExperiencesSection`, `TodoSection`, `GallerySection`, `LocationSection`, `ContactSection`, `Footer`, and all route-level pages — split into separate chunks to reduce main bundle parse time and TBT
+- **Critical (eager)**: `Header`, `HeroSection`, `AccommodationsSection`, `ExperiencesSection`, `TodoSection` — always in the main bundle (these render immediately on the homepage and must not be lazy-loaded, as doing so causes CLS and TBT regressions: the Suspense fallback height doesn't match section heights, and multiple parallel chunk fetches add up to more blocking time than one bundle)
+- **Lazy**: `GallerySection`, `LocationSection`, `ContactSection`, `Footer`, and all route-level pages — loaded only when needed
 - **ExcelJS**: dynamically imported inside `AdminPage.jsx` only when the user triggers an export, keeping the 920 KB chunk out of the critical path entirely
 
 ### Hero Overlay
