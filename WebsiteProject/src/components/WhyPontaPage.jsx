@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { updateCanonical, updateTwitterCard } from '../utils/seoMeta';
 import { Link } from 'wouter';
 import { Waves, Fish, TreePine, Globe, Heart, ArrowRight, MapPin } from 'lucide-react';
 import Footer from './Footer';
@@ -31,6 +32,18 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     const originalTitle = document.title;
     const metaDescription = document.querySelector('meta[name="description"]');
     const originalDescription = metaDescription?.content || '';
+
+    // Capture original canonical
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    const originalCanonical = canonicalTag?.href || '';
+
+    // Capture original Twitter values
+    const twitterNames = ['twitter:title', 'twitter:description', 'twitter:image'];
+    const originalTwitterValues = {};
+    twitterNames.forEach(name => {
+      const tag = document.querySelector(`meta[name="${name}"]`);
+      if (tag) originalTwitterValues[name] = tag.content;
+    });
     
     const ogProperties = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
     const originalOgValues = {};
@@ -47,11 +60,15 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
     if (metaDescription) {
       metaDescription.content = content.metaDescription;
     }
-    
+
+    // Update canonical URL
+    updateCanonical('https://devoceanlodge.com/why-ponta');
+
+    const heroImage = 'https://devoceanlodge.com/photos/hero02.jpg';
     const ogTags = [
       { property: 'og:title', content: content.ogTitle },
       { property: 'og:description', content: content.ogDescription },
-      { property: 'og:image', content: 'https://devoceanlodge.com/photos/hero02.jpg' },
+      { property: 'og:image', content: heroImage },
       { property: 'og:url', content: 'https://devoceanlodge.com/why-ponta' },
       { property: 'og:type', content: 'website' }
     ];
@@ -67,11 +84,27 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
       tag.content = tagContent;
     });
 
+    // Update Twitter card to match OG
+    updateTwitterCard({
+      title: content.ogTitle,
+      description: content.ogDescription,
+      image: heroImage,
+    });
+
     return () => {
       document.title = originalTitle;
       if (metaDescription) {
         metaDescription.content = originalDescription;
       }
+
+      // Restore canonical
+      if (originalCanonical) updateCanonical(originalCanonical);
+
+      // Restore Twitter values
+      twitterNames.forEach(name => {
+        const tag = document.querySelector(`meta[name="${name}"]`);
+        if (tag && originalTwitterValues[name]) tag.content = originalTwitterValues[name];
+      });
       
       ogProperties.forEach(property => {
         const tag = document.querySelector(`meta[property="${property}"]`);

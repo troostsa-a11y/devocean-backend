@@ -4,7 +4,7 @@ import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
-import { updateMetaDescription } from '../utils/seoMeta';
+import { updateMetaDescription, updateCanonical, updateTwitterCard } from '../utils/seoMeta';
 
 // Dynamic content loaders - each experience content is loaded on demand
 const contentLoaders = {
@@ -112,6 +112,18 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     const originalTitle = document.title;
     const metaDescription = document.querySelector('meta[name="description"]');
     const originalDescription = metaDescription?.content || '';
+
+    // Capture original canonical
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    const originalCanonical = canonicalTag?.href || '';
+
+    // Capture original Twitter values
+    const twitterNames = ['twitter:title', 'twitter:description', 'twitter:image'];
+    const originalTwitterValues = {};
+    twitterNames.forEach(name => {
+      const tag = document.querySelector(`meta[name="${name}"]`);
+      if (tag) originalTwitterValues[name] = tag.content;
+    });
     
     // Capture original OG tag values
     const ogProperties = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
@@ -131,12 +143,17 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     // Update meta description using SEO-optimized, language-specific descriptions
     updateMetaDescription('experience', lang, experienceKey);
 
+    // Update canonical URL
+    const pageUrl = `https://devoceanlodge.com/experiences/${experienceKey}`;
+    updateCanonical(pageUrl);
+
     // Update Open Graph tags
+    const heroImage = `https://devoceanlodge.com${exp.hero}`;
     const ogTags = [
       { property: 'og:title', content: `${exp.title} - DEVOCEAN Lodge` },
       { property: 'og:description', content: exp.tagline },
-      { property: 'og:image', content: `https://devoceanlodge.com${exp.hero}` },
-      { property: 'og:url', content: `https://devoceanlodge.com/experiences/${experienceKey}` },
+      { property: 'og:image', content: heroImage },
+      { property: 'og:url', content: pageUrl },
       { property: 'og:type', content: 'website' }
     ];
 
@@ -149,6 +166,13 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
         createdOgTags.push(tag); // Track newly created tags
       }
       tag.content = content;
+    });
+
+    // Update Twitter card to match OG
+    updateTwitterCard({
+      title: `${exp.title} - DEVOCEAN Lodge`,
+      description: exp.tagline,
+      image: heroImage,
     });
 
     // Cleanup: restore all original metadata when component unmounts
@@ -165,6 +189,15 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
           metaDesc.remove();
         }
       }
+
+      // Restore canonical
+      if (originalCanonical) updateCanonical(originalCanonical);
+
+      // Restore Twitter values
+      twitterNames.forEach(name => {
+        const tag = document.querySelector(`meta[name="${name}"]`);
+        if (tag && originalTwitterValues[name]) tag.content = originalTwitterValues[name];
+      });
       
       // Restore or remove OG tags
       ogProperties.forEach(property => {

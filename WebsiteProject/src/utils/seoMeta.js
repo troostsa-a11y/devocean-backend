@@ -220,3 +220,26 @@ export function updatePageTitle(title) {
     document.title = title;
   }
 }
+
+export function updateCanonical(url) {
+  let tag = document.querySelector('link[rel="canonical"]');
+  if (!tag) {
+    tag = document.createElement('link');
+    tag.rel = 'canonical';
+    document.head.appendChild(tag);
+  }
+  tag.href = url;
+}
+
+export function updateTwitterCard({ title, description, image }) {
+  const updates = [
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description },
+    { name: 'twitter:image', content: image },
+  ];
+  updates.forEach(({ name, content }) => {
+    if (!content) return;
+    const tag = document.querySelector(`meta[name="${name}"]`);
+    if (tag) tag.content = content;
+  });
+}
