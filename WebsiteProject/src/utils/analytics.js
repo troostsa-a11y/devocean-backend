@@ -29,7 +29,7 @@ export function trackDeferredEvent(payload, idleTimeout = 1000) {
  * dot-separated segments: "XXXXXXXXXX.YYYYYYYYYY".
  *
  * Returns null when the cookie is absent (GTM not yet loaded, cookie blocked,
- * or first interaction before the 500 ms idle callback fires).
+ * or first interaction before the deferred GTM fires).
  *
  * @returns {string|null}
  */
@@ -43,33 +43,63 @@ export function getGA4ClientId() {
 }
 
 /**
+ * getOrCreateFallbackId
+ *
+ * Returns a session-scoped fallback ID when the _ga cookie is unavailable
+ * (e.g. consent not yet given, strict privacy browser, Incognito first visit).
+ * Stored in sessionStorage so it's consistent within the same browser tab.
+ * Prefixed with "fb." so the automailer can distinguish it from a real GA4
+ * client_id and skip the Measurement Protocol POST for those sessions.
+ *
+ * @returns {string}
+ */
+function getOrCreateFallbackId() {
+  try {
+    const key = '_devocean_sid';
+    let sid = sessionStorage.getItem(key);
+    if (!sid) {
+      sid = Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+      sessionStorage.setItem(key, sid);
+    }
+    return 'fb.' + sid;
+  } catch {
+    return 'fb.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+  }
+}
+
+/**
  * trackBookingSession
  *
  * Fire-and-forget POST to /api/track-session (Cloudflare Pages Function).
  * Stores the visitor's GA4 client_id so the render-automailer can attribute
- * confirmed Beds24 bookings back to the original session via Measurement
+ * confirmed Beds24 bookings back to the original session via GA4 Measurement
  * Protocol when the booking confirmation email arrives.
  *
- * On a first visit (Incognito or returning after cookie clearance), the "Book
- * Now" click IS the first interaction that triggers GTM to load. The _ga
- * cookie is written ~300-800 ms later. This function retries up to 3× at
- * 500 ms intervals (1.5 s total) before giving up, so the POST still fires
- * even when the cookie isn't ready at click time.
- *
- * Silent no-op when:
- *   • GA cookies are blocked by a privacy browser / strict consent settings
- *   • the network request fails for any reason
+ * Resolution order:
+ *   1. _ga cookie present immediately → POST with real GA4 client_id
+ *   2. _ga not ready (GTM still initialising on first interaction) → retry
+ *      up to 3× at 500 ms intervals; POST with real GA4 client_id once found
+ *   3. _ga never appears (consent blocked / privacy browser) → POST with
+ *      fallback session ID (prefixed "fb.") so the session is still recorded;
+ *      the automailer skips the GA4 MP event for fallback IDs but still logs
+ *      the booking session for internal attribution reporting
  *
  * @param {string} lang     - Two-letter locale code, e.g. "en"
  * @param {string} currency - Three-letter currency code, e.g. "USD"
  */
 export function trackBookingSession(lang, currency) {
   function doPost(cid) {
+    const isReal = !cid.startsWith('fb.');
+    console.log('[DEVOCEAN] trackBookingSession →', isReal ? 'GA4 cid' : 'fallback cid', cid);
     fetch('/api/track-session', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ cid, lang, currency }),
-    }).catch(() => {});
+    }).then(r => {
+      console.log('[DEVOCEAN] track-session response:', r.status);
+    }).catch(err => {
+      console.warn('[DEVOCEAN] track-session failed:', err);
+    });
   }
 
   const cid = getGA4ClientId();
@@ -78,8 +108,8 @@ export function trackBookingSession(lang, currency) {
     return;
   }
 
-  // Cookie not ready yet — GTM may still be initialising after this first
-  // interaction. Retry up to 3× with 500 ms gaps (1.5 s total window).
+  // _ga not ready — GTM may still be initialising after this first interaction.
+  // Retry up to 3× with 500 ms gaps, then fall back to a session-scoped ID.
   let attempts = 0;
   const retry = setInterval(() => {
     attempts++;
@@ -89,6 +119,7 @@ export function trackBookingSession(lang, currency) {
       doPost(cid);
     } else if (attempts >= 3) {
       clearInterval(retry);
+      doPost(getOrCreateFallbackId());
     }
   }, 500);
 }

@@ -28,6 +28,14 @@ export async function fireGA4Conversion(
     return;
   }
 
+  // Fallback IDs (prefix "fb.") are generated when GA4 cookies are blocked
+  // (consent not given, strict privacy browser). No real GA4 session exists
+  // for these — skip the MP POST to avoid polluting GA4 with phantom events.
+  if (clientId.startsWith('fb.')) {
+    console.log(`[ga4-attribution] Skipping MP for fallback session (booking ${booking.groupRef})`);
+    return;
+  }
+
   const url = `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${apiSecret}`;
 
   const payload = {
