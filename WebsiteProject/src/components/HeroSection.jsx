@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import { Star, Anchor } from 'lucide-react';
 import LazyImage from './LazyImage';
+import { trackBookingSession } from '../utils/analytics';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
   const [idx, setIdx] = useState(0);
@@ -185,6 +186,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
                     currency: currency
                   });
                 }
+                trackBookingSession(lang, currency);
               }}
             >
               <span className="sm:whitespace-nowrap">{ui.hero.ctaPrimary}</span>

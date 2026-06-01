@@ -364,6 +364,31 @@ app.post('/api/admin/update-email', requireAdminKey, async (req, res) => {
   }
 });
 
+// GA4 attribution session storage — called by Cloudflare Pages Function when
+// visitor clicks "Book Now", storing their GA4 client_id for later matching.
+app.post('/api/track-session', requireAdminKey, async (req: any, res: any) => {
+  const { cid, lang, currency, country } = req.body;
+  if (!cid || typeof cid !== 'string' || cid.length > 64) {
+    return res.status(400).json({ error: 'Missing or invalid cid' });
+  }
+  if (!guestDb) {
+    return res.status(503).json({ error: 'Database not ready' });
+  }
+  try {
+    await guestDb.createBookingSession({
+      gaClientId: cid,
+      language:   lang     ?? null,
+      currency:   currency ?? null,
+      country:    country  ?? null,
+    });
+    await guestDb.cleanupOldSessions();
+    res.json({ ok: true });
+  } catch (err: any) {
+    console.error('[track-session] DB error:', err);
+    res.status(500).json({ error: 'Internal error' });
+  }
+});
+
 // Manual email check endpoint (admin only)
 app.post('/api/check-emails', requireAdminKey, async (req, res) => {
   if (!emailService) {

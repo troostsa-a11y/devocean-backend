@@ -1,0 +1,140 @@
+The Three-Part Implementation Plan[User Click] ──> Fetch IDs ──> POST /api/track-session ──> Save to Database
+                                                               │
+[Email Arrives] ──> Parser Extracts Guest Details ──────────────┴──> Match & Fire GA4 Purchase
+Step 1: Extract the True GA4 Client ID on the FrontendSince GA4 runs behind your optimized Google Tag Manager wrapper, we cannot use synchronous global variables. We must natively read the _ga cookie value, which is formatted as GA1.1.XXXXXXXXXX.YYYYYYYYYY. The last two dot-separated blocks form the precise Client ID that GA4 uses for attribution [1].Update your click handler infrastructure to parse this token synchronously right before handling your link or routing transitions:javascriptconst getGA4ClientId = () => {
+  try {
+    const match = document.cookie.match(/_ga=GA1\.[0-9]\.([0-9]+\.[0-9]+)/);
+    if (match && match[1]) {
+      return match[1]; // Returns "XXXXXXXXXX.YYYYYYYYYY"
+    }
+  } catch (e) {
+    console.error("Failed to parse cookie client_id", e);
+  }
+  return null;
+};
+Use code with caution.Update the "Book Now" click callback across HeroSection.jsx and Header.jsx. Right before navigation, dispatch a fire-and-forget background POST request to your Pages endpoint:javascriptonClick={() => {
+  // 1. Log the initiation event to GTM array immediately
+  if (window.dataLayer) {
+    window.dataLayer.push({ event: 'reservation_initiated', button_location: 'hero_section' });
+  }
+
+  // 2. Capture and store the session identifiers asynchronously 
+  const cid = getGA4ClientId();
+  if (cid) {
+    fetch('/api/track-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ cid, lang })
+    }).catch(() => {}); // Quietly catch network drops to keep UX unblocked
+  }
+}}
+Use code with caution.Step 2: Build the /api/track-session Storage FunctionCreate a new serverless function file inside your Cloudflare Pages folder (functions/api/track-session.js). This script handles the incoming payload, extracts the visitor's location data and timestamp, and writes a clean session row to your PostgreSQL pool connection:javascriptimport { Client } from 'pg'; // Use pg or your preferred database driver configuration
+
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  
+  try {
+    const { cid, lang } = await request.json();
+    if (!cid) return new Response(JSON.stringify({ error: "Missing Client ID" }), { status: 400 });
+
+    // Leverage Cloudflare's native regional network headers for deeper context matching
+    const country = request.headers.get('cf-ipcountry') || 'Unknown';
+
+    // Establish your secure environment database pool connection
+    const client = new Client({ connectionString: env.DATABASE_URL });
+    await client.connect();
+
+    const query = `
+      INSERT INTO booking_sessions (ga_client_id, language, country, created_at)
+      VALUES ($1, $2, $3, NOW())
+      RETURNING id;
+    `;
+    
+    const res = await client.query(query, [cid, lang, country]);
+    await client.end();
+
+    return new Response(JSON.stringify({ success: true, sessionId: res.rows[0].id }), {
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+  }
+}
+Use code with caution.The Target PostgreSQL Schema LayoutRun this migration against your database cluster to hold these transient click logs:sqlCREATE TABLE booking_sessions (
+    id SERIAL PRIMARY KEY,
+    ga_client_id VARCHAR(64) NOT NULL,
+    language VARCHAR(8),
+    country VARCHAR(8),
+    created_at TIMESTAMP NOT NULL
+);
+CREATE INDEX idx_sessions_time ON booking_sessions(created_at DESC);
+Use code with caution.Step 3: Upgrading email-parser.ts to Handle the Attribution HandoffWhen your render-automailer processes a new transaction notification email from Beds24, the parser pulls out the core data. Since we cannot forward parameters into the email body, we match the incoming email's execution timestamp against our database.Because the user clicks "Book Now" and typically finishes filling out their dates and details within a 5-to-15 minute window, we query our database for the most recent click session originating from that same language variant right before the email was generated:typescriptimport { Client } from 'pg';
+
+interface ParsedEmailData {
+  bookingRef: string;
+  language: string; // e.g., "PT", "EN"
+  totalValue: number;
+  currency: string;
+  emailReceivedAt: Date;
+}
+
+export const matchSessionAndTrackPurchase = async (booking: ParsedEmailData) => {
+  const dbClient = new Client({ connectionString: process.env.DATABASE_URL });
+  await dbClient.connect();
+
+  // Find the closest click tracking row within a 30-minute window before the email arrived
+  const matchQuery = `
+    SELECT ga_client_id 
+    FROM booking_sessions 
+    WHERE language = $1 
+      AND created_at <= $2
+      AND created_at >= $2 - INTERVAL '30 minutes'
+    ORDER BY created_at DESC 
+    LIMIT 1;
+  `;
+
+  try {
+    const dbRes = await dbClient.query(matchQuery, [booking.language.toLowerCase(), booking.emailReceivedAt]);
+    await dbClient.end();
+
+    let finalClientId = null;
+
+    if (dbRes.rows.length > 0) {
+      finalClientId = dbRes.rows[0].ga_client_id;
+      console.log(`Matched Booking Ref ${booking.bookingRef} to GA4 Client ID: ${finalClientId}`);
+    } else {
+      // Fallback: If no match within the time slot, create an email-derived stable hash
+      console.warn(`No exact session match for Ref ${booking.bookingRef}. Reverting to fallback hash.`);
+      return; 
+    }
+
+    // Dispatch payload straight to GA4 Measurement Protocol
+    const measurementId = process.env.GA4_MEASUREMENT_ID;
+    const apiSecret = process.env.GA4_API_SECRET;
+    const url = `https://google-analytics.com{measurementId}&api_secret=${apiSecret}`;
+
+    const payload = {
+      client_id: finalClientId, // The original visitor's browser identity
+      events: [{
+        name: 'purchase',
+        params: {
+          transaction_id: booking.bookingRef,
+          value: booking.totalValue,
+          currency: booking.currency || 'USD',
+          tracking_method: 'automailer_session_match'
+        }
+      }]
+    };
+
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+  } catch (error) {
+    console.error(`Attribution processing failed for booking ${booking.bookingRef}:`, error);
+  }
+};
+Use code with caution.Why this Approach is BulletproofAttribution Survives: Because GA4 receives the identical client_id string extracted from the browser cookie during the click phase, it ties the final offline server-side purchase event back to their original user profile. Your acquisition channel paths (organic search, ad maps, referral links) map cleanly.0 ms TBT Impact: The frontend addition uses an asynchronous, unblocked fetch call that resolves in the background without intercepting layout execution or holding up page navigation loops.Let me know if you would like to begin by wireframing the exact client-side state hooks inside your layout wrapper, or if we should calibrate the database environment strings inside your Cloudflare dashboard first.

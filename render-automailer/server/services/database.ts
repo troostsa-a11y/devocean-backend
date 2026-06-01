@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests } from '../../shared/schema';
-import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest } from '../../shared/schema';
+import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions } from '../../shared/schema';
+import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession } from '../../shared/schema';
 import { eq, and, lte, gte, isNull, sql, or, ilike, count, desc } from 'drizzle-orm';
 
 /**
@@ -648,5 +648,45 @@ export class DatabaseService {
       .where(and(eq(guests.unsubscribeToken, token), eq(guests.subscribed, true)))
       .returning({ id: guests.id });
     return result.length > 0;
+  }
+
+  // ─── GA4 attribution session methods ────────────────────────────────────────
+
+  /**
+   * Store a GA4 client_id captured when the visitor clicked "Book Now".
+   */
+  async createBookingSession(data: InsertBookingSession): Promise<void> {
+    await this.db.insert(bookingSessions).values(data);
+  }
+
+  /**
+   * Find the most recent session whose language and country match the booking
+   * and was created within 30 minutes before now.  Returns null when no match.
+   */
+  async matchBookingSession(language: string, country: string | null): Promise<BookingSession | null> {
+    const windowStart = new Date(Date.now() - 30 * 60 * 1000);
+    const conditions = [
+      sql`lower(${bookingSessions.language}) = lower(${language})`,
+      gte(bookingSessions.createdAt, windowStart),
+    ];
+    if (country) {
+      conditions.push(sql`lower(${bookingSessions.country}) = lower(${country})`);
+    }
+    const [row] = await this.db
+      .select()
+      .from(bookingSessions)
+      .where(and(...conditions))
+      .orderBy(desc(bookingSessions.createdAt))
+      .limit(1);
+    return row ?? null;
+  }
+
+  /**
+   * Delete sessions older than 2 hours to keep the table lean.
+   * Called automatically after every insert.
+   */
+  async cleanupOldSessions(): Promise<void> {
+    const cutoff = new Date(Date.now() - 2 * 60 * 60 * 1000);
+    await this.db.delete(bookingSessions).where(lte(bookingSessions.createdAt, cutoff));
   }
 }

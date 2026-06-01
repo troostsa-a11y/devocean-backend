@@ -9,6 +9,7 @@ import { CancellationHandler } from './cancellation-handler';
 import { ModificationHandler } from './modification-handler';
 import { AdminReportingService } from './admin-reporting';
 import { insertBookingSchema } from '../../shared/schema';
+import { fireGA4Conversion } from './ga4-attribution';
 import { ZodError } from 'zod';
 
 /**
@@ -279,6 +280,24 @@ export class EmailAutomationService {
 
               // Auto-add guest to CRM
               await this.upsertGuestFromBooking(booking);
+
+              // GA4 Measurement Protocol attribution — fire-and-forget
+              try {
+                const session = await this.db.matchBookingSession(
+                  booking.guestLanguage,
+                  booking.guestCountry ?? null
+                );
+                if (session) {
+                  await fireGA4Conversion(session.gaClientId, {
+                    groupRef:      booking.groupRef,
+                    guestLanguage: booking.guestLanguage,
+                  });
+                } else {
+                  console.log(`[ga4-attribution] No session match for booking ${booking.groupRef} — skipping MP event`);
+                }
+              } catch (attrErr) {
+                console.error('[ga4-attribution] Attribution step failed (non-fatal):', attrErr);
+              }
 
               // Check if there's a pending cancellation for this booking
               const pendingCancellation = await this.db.getPendingCancellation(booking.groupRef);

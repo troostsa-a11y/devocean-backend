@@ -195,3 +195,20 @@ export type InsertScheduledEmail = z.infer<typeof insertScheduledEmailSchema>;
 
 export type EmailLog = typeof emailLogs.$inferSelect;
 export type EmailCheckLog = typeof emailCheckLogs.$inferSelect;
+
+/**
+ * Booking sessions table — stores GA4 client_id at the moment a visitor
+ * clicks "Book Now" so the automailer can attribute confirmed bookings back
+ * to the original browser session via Measurement Protocol.
+ */
+export const bookingSessions = pgTable("booking_sessions", {
+  id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
+  gaClientId: text("ga_client_id").notNull(),
+  language:   text("language"),
+  country:    text("country"),
+  currency:   text("currency"),
+  createdAt:  timestamp("created_at").defaultNow().notNull(),
+});
+
+export type BookingSession = typeof bookingSessions.$inferSelect;
+export type InsertBookingSession = typeof bookingSessions.$inferInsert;

@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Menu, Phone, Mail, Globe2 } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { IMG } from '../data/content';
+import { trackBookingSession } from '../utils/analytics';
 import LazyImage from './LazyImage';
 
 function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
@@ -230,6 +231,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                       currency: currency
                     });
                   }
+                  trackBookingSession(lang, currency);
                 }}
               >
                 {ui.contact.bookNow}
@@ -318,6 +320,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                         currency: currency
                       });
                     }
+                    trackBookingSession(lang, currency);
                   }}
                   tabIndex={menuOpen ? 0 : -1}
                 >
