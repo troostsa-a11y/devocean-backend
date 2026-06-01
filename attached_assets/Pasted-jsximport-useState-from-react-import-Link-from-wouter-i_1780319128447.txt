@@ -1,0 +1,64 @@
+jsximport { useState } from 'react';
+import { Link } from 'wouter';
+import { Menu, X, ChevronDown } from 'lucide-react';
+
+export default function SubPageHeader({ currentLang, ui }) {
+  // React state handles semantic accessibility, but CSS handles immediate rendering
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 w-full bg-slate-900/90 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        
+        {/* Brand/Logo Link */}
+        <Link href="/" className="flex items-center gap-2 font-bold text-xl text-white tracking-wide">
+          <span>DEVOCEAN</span>
+        </Link>
+
+        {/* Desktop Navigation Link Track — Hidden on Mobile */}
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-200">
+          <Link href="/why-ponta" className="hover:text-white transition-colors">Why Ponta</Link>
+          <Link href="/experiences/diving" className="hover:text-white transition-colors flex items-center gap-1">
+            Diving
+          </Link>
+          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        {/* Action Button */}
+        <div className="hidden md:flex items-center gap-4">
+          <a href="#book" className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white text-sm font-bold shadow-md hover:opacity-90 transition-opacity">
+            Book Now
+          </a>
+        </div>
+
+        {/* Mobile Hamburger Button — CSS-Triggered Trigger */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="p-2 text-slate-200 hover:text-white md:hidden focus:outline-none"
+          aria-expanded={isMenuOpen}
+          aria-label="Toggle Menu"
+        >
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {/* Hardware-Accelerated Mobile Drawer Overlay */}
+      <div 
+        className={`fixed inset-x-0 top-16 bg-slate-900 border-b border-white/10 p-6 md:hidden transition-transform duration-300 ease-in-out origin-top shadow-xl ${
+          isMenuOpen ? 'transform scale-y-100 opacity-100' : 'transform scale-y-0 opacity-0 pointer-events-none'
+        }`}
+        style={{ height: 'calc(100vh - 4rem)', willChange: 'transform, opacity' }}
+      >
+        <nav className="flex flex-col gap-6 text-lg font-bold text-slate-200">
+          <Link href="/why-ponta" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-white/5 hover:text-white">Why Ponta</Link>
+          <Link href="/experiences/diving" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-white/5 hover:text-white">Diving Experiences</Link>
+          <a href="#contact" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-white/5 hover:text-white">Contact Us</a>
+          
+          <a href="#book" className="mt-4 w-full py-3 rounded-xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white text-center font-bold text-base shadow-lg">
+            Book Online
+          </a>
+        </nav>
+      </div>
+    </header>
+  );
+}

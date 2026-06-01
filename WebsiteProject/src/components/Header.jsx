@@ -251,81 +251,94 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               <span className="text-sm font-semibold">{ui.menu}</span>
             </button>
 
-            {/* Mobile/Tablet dropdown menu - positioned under button */}
-            {menuOpen && (
-              <div 
-                id="mnav" 
-                data-testid="menu-mobile-nav" 
-                className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50"
+            {/* Mobile/Tablet dropdown menu — always in DOM, CSS transform prevents layout thrash on open/close */}
+            <div 
+              id="mnav" 
+              data-testid="menu-mobile-nav"
+              className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50 transition-all duration-200 origin-top-right"
+              style={{
+                transform: menuOpen ? 'scale(1)' : 'scale(0.95)',
+                opacity: menuOpen ? 1 : 0,
+                pointerEvents: menuOpen ? 'auto' : 'none',
+                willChange: 'transform, opacity',
+              }}
+              aria-hidden={!menuOpen}
+            >
+              <a
+                href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : "#home"}
+                data-testid="link-mobile-home"
+                className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#home")}
+                tabIndex={menuOpen ? 0 : -1}
               >
+                {ui.nav.home}
+              </a>
+              <a
+                href={`/story.html?lang=${lang}`}
+                data-testid="link-mobile-story"
+                className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                onClick={() => setMenuOpen(false)}
+                tabIndex={menuOpen ? 0 : -1}
+              >
+                {ui.stay?.ourStory || "Our Story"}
+              </a>
+              {[
+                ["stay", "#stay"],
+                ["experiences", "#experiences"],
+                ["todo", "#todo"],
+                ["gallery", "#gallery"],
+                ["location", "#location"],
+                ["contact", "#contact"],
+              ].map(([k, href]) => (
                 <a
-                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : "#home"}
-                  data-testid="link-mobile-home"
+                  key={k}
+                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
+                  data-testid={`link-mobile-${k}`}
                   className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                  onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#home")}
+                  onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
+                  tabIndex={menuOpen ? 0 : -1}
                 >
-                  {ui.nav.home}
+                  {ui.nav[k]}
                 </a>
+              ))}
+              <div className="p-3">
                 <a
-                  href={`/story.html?lang=${lang}`}
-                  data-testid="link-mobile-story"
-                  className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                  onClick={() => setMenuOpen(false)}
+                  href={bookUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  data-testid="button-mobile-book-now"
+                  className="block text-center btn-cta px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors font-semibold shadow-md"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    if (window.dataLayer) {
+                      window.dataLayer.push({
+                        event: 'reservation_complete',
+                        button_location: 'header_mobile',
+                        language: lang,
+                        currency: currency
+                      });
+                    }
+                  }}
+                  tabIndex={menuOpen ? 0 : -1}
                 >
-                  {ui.stay?.ourStory || "Our Story"}
+                  {ui.contact.bookNow}
                 </a>
-                {[
-                  ["stay", "#stay"],
-                  ["experiences", "#experiences"],
-                  ["todo", "#todo"],
-                  ["gallery", "#gallery"],
-                  ["location", "#location"],
-                  ["contact", "#contact"],
-                ].map(([k, href]) => (
-                  <a
-                    key={k}
-                    href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
-                    data-testid={`link-mobile-${k}`}
-                    className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                    onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
-                  >
-                    {ui.nav[k]}
-                  </a>
-                ))}
-                <div className="p-3">
-                  <a
-                    href={bookUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-testid="button-mobile-book-now"
-                    className="block text-center btn-cta px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors font-semibold shadow-md"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      if (window.dataLayer) {
-                        window.dataLayer.push({
-                          event: 'reservation_complete',
-                          button_location: 'header_mobile',
-                          language: lang,
-                          currency: currency
-                        });
-                      }
-                    }}
-                  >
-                    {ui.contact.bookNow}
-                  </a>
-                </div>
               </div>
-            )}
+            </div>
           </div>
         </nav>
 
-        {/* Overlay to close menu when clicking outside */}
-        {menuOpen && (
-          <div 
-            className="lg:hidden fixed inset-0 bg-black/20 z-40"
-            onClick={() => setMenuOpen(false)}
-          />
-        )}
+        {/* Backdrop — always in DOM, fades in/out without mount cost */}
+        <div 
+          className="lg:hidden fixed inset-0 z-40 transition-opacity duration-200"
+          style={{
+            opacity: menuOpen ? 1 : 0,
+            pointerEvents: menuOpen ? 'auto' : 'none',
+            background: 'rgba(0,0,0,0.2)',
+          }}
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
       </header>
     </>
   );
