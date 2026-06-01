@@ -225,7 +225,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                   if (window.dataLayer) {
                     window.dataLayer.push({
                       event: 'reservation_initiated',
-                      button_location: 'header_desktop',
+                      button_location: 'desktop_nav_header',
                       language: lang,
                       currency: currency
                     });
@@ -313,7 +313,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                     if (window.dataLayer) {
                       window.dataLayer.push({
                         event: 'reservation_initiated',
-                        button_location: 'header_mobile',
+                        button_location: 'mobile_nav_drawer',
                         language: lang,
                         currency: currency
                       });
