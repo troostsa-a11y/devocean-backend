@@ -192,22 +192,19 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           </div>
         </div>
         
-        <div className="mt-8 sm:mt-10">
-          <div className="flex items-center gap-1 text-yellow-300">
-            {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
-          </div>
-          <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
-          <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
-        </div>
       </div>
 
-      {/* Trustindex Review Widget — absolutely positioned so it never shifts the
-          vertically-centred content above it. Placing it inside the flex container
-          caused ~80 px of CLS whenever the widget injected its ~160 px of HTML. */}
-      <div
-        ref={trustindexRef}
-        className="absolute bottom-6 left-0 right-0 z-10 max-w-7xl mx-auto px-4"
-      />
+      {/* Stars, badge and Trustindex widget — kept together at the bottom so
+          "Click the reviews!" visually leads into the widget badge directly below.
+          Absolutely positioned outside the flex container to avoid CLS. */}
+      <div className="absolute bottom-6 left-0 right-0 z-10 max-w-7xl mx-auto px-4">
+        <div className="flex items-center gap-1 text-yellow-300">
+          {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
+        </div>
+        <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
+        <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
+        <div ref={trustindexRef} className="mt-3" />
+      </div>
 
     </section>
   );
