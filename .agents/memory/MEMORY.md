@@ -1,1 +1,1 @@
-- [Wrangler version & Node compatibility](wrangler-node-compat.md) — wrangler@4 on Node 20 silently produces broken Pages Functions bundles (Error 1101 on all requests); pin wrangler@3 in deploy.sh.
+- [wrangler path-to-regexp conflict](wrangler-path-to-regexp.md) — path-to-regexp@0.x in project node_modules shadows wrangler@4 need for v6 match → 1101 on all requests; shim added.

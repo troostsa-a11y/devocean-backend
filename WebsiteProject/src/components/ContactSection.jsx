@@ -121,8 +121,15 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         setCheckout("");
         setUnit("");
       } else {
-        const error = await response.json();
-        setFormState({ status: 'error', message: error.error || 'Failed to send message' });
+        let errorMsg = 'Failed to send message';
+        try {
+          const ct = response.headers.get('content-type') || '';
+          if (ct.includes('application/json')) {
+            const error = await response.json();
+            errorMsg = error.error || errorMsg;
+          }
+        } catch {}
+        setFormState({ status: 'error', message: errorMsg });
       }
     } catch (error) {
       console.error('Form submission error:', error);
