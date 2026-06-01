@@ -106,3 +106,24 @@ Preferred communication style: Simple, everyday language.
 ### Third-Party Consent & Analytics
 - **CookieYes** consent banner: loaded immediately (GDPR requirement); `<link rel="preconnect" href="https://cdn-cookieyes.com">` in `<head>` to reduce banner load latency
 - **GTM + Engagement Tracker**: deferred until first user interaction (click/keydown/touchstart), with a 15 s fallback — intentionally set to 15 s so Lighthouse audits (which never interact) do not count GTM in their TBT score
+
+### GA4 Attribution Pipeline
+- **How it works**: "Book Now" clicks fire `trackBookingSession()` → CF Pages Function (`functions/api/track-session.js`) → automailer `/api/track-session` → `booking_sessions` table in Supabase. When a Beds24 confirmation email arrives, `matchBookingSession()` joins by language + country within a 30-minute window, then `fireGA4Conversion()` sends a `purchase` event via GA4 Measurement Protocol with the original browser `client_id`.
+- **Required env vars on Render**: `GA4_MEASUREMENT_ID` (e.g. `G-XXXXXXXXXX`) and `GA4_API_SECRET` — without these the matching still runs but the MP POST is skipped.
+- **CF Pages env vars**: `AUTOMAILER_URL` is declared in `wrangler.toml` `[vars]`; `ADMIN_API_KEY` is uploaded as a Cloudflare secret via `deploy.sh` on every deploy. Do not add these through the Cloudflare dashboard — the project is wrangler-managed and the dashboard UI is locked for vars.
+- **Deploying**: always run `bash deploy.sh` from `WebsiteProject/` — it builds, uploads the `ADMIN_API_KEY` secret, and deploys in one step.
+
+### Mobile Menu Accessibility
+- The `#mnav` drawer is always in the DOM (CSS transform/opacity) to avoid hydration lag and INP regressions on open.
+- When closed: `inert=""` removes all children from the tab ring and accessibility tree; `visibility: hidden` forces any retained focus to be released. Do not reintroduce `aria-hidden` — it caused a Chrome WAI-ARIA warning when a focused descendant was hidden.
+
+## Maintenance Guidelines
+
+### Keep the Hero Asset Lightweight
+Any future image replacing `hero01-mobile.webp` must stay under 15 KB compressed. The 5-second overlay delay was tuned to a ~1.5 s image load time on Slow 4G — a heavier image will need a longer delay, which hurts perceived performance.
+
+### Monitor the Automailer Attribution Match Rate
+Periodically check Render logs for `matchBookingSession` output. The 30-minute language + country window should bind the majority of confirmed bookings to a frontend `client_id`. A low match rate signals clock drift, missing CF `cf-ipcountry` headers, or sessions expiring before the booking email arrives.
+
+### Defer New Third-Party Scripts
+Any future tracking tools or dynamic widgets should be loaded using the same `requestIdleCallback` + first-interaction pattern already used for GTM. Loading scripts eagerly will push them into the TBT budget measured by Lighthouse and slow the critical render path.
