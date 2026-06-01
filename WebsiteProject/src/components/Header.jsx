@@ -262,9 +262,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 transform: menuOpen ? 'scale(1)' : 'scale(0.95)',
                 opacity: menuOpen ? 1 : 0,
                 pointerEvents: menuOpen ? 'auto' : 'none',
+                visibility: menuOpen ? 'visible' : 'hidden',
                 willChange: 'transform, opacity',
               }}
-              aria-hidden={!menuOpen}
+              inert={menuOpen ? undefined : ''}
             >
               <a
                 href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : "#home"}

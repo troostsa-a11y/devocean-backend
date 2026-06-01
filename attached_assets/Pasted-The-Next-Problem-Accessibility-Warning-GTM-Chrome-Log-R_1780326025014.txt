@@ -1,0 +1,15 @@
+The Next Problem: Accessibility Warning (GTM/Chrome Log)Right beneath your successful request, Chrome flagged a critical WAI-ARIA validation warning:Blocked aria-hidden on an element because its descendant retained focus. The focus must not be hidden from assistive technology users. Avoid using aria-hidden on a focused element or its ancestor.Why this happensIn our previous step, we optimized the mobile menu drawer to remain permanently in the DOM to avoid React mounting lag. When closed, it switches to opacity: 0, pointer-events: none, and aria-hidden="true".However, because the element is hidden using opacity rather than display: none or visibility: hidden, the links and buttons inside the drawer are still focusable via the keyboard Tab key. If a user tabs through the page, their invisible selection cursor lands on the "Book Now" link inside the hidden menu. This breaks accessibility guidelines because an interactive element cannot be hidden with aria-hidden="true" while still retaining keyboard focus.The Fix: Add display: none or visibility: hidden to the Closed Drawer StateTo fix this warning, your mobile navigation drawer needs to hide its child elements from the keyboard focus tree whenever menuOpen is false.Updating transform and opacity handles visual motion on the GPU layer, but adding visibility: hidden when closed instantly drops the interactive children from the keyboard focus tree, eliminating the warning.Update the Drawer Wrapper in your Navigation ComponentModify your mobile navigation container properties to toggle the visibility rule based on your active menuOpen boolean state:jsx<div 
+  id="mnav"
+  data-testid="menu-mobile-nav"
+  className={`absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50 transition-all duration-200 origin-top-right ${
+    menuOpen ? 'transform scale-100 opacity-100' : 'transform scale-95 opacity-0 pointer-events-none'
+  }`}
+  aria-hidden={!menuOpen} // Automatically flips between true and false
+  style={{ 
+    willChange: 'transform, opacity',
+    // CRITICAL FIX: Drops hidden descendants from the keyboard tab ring when closed
+    visibility: menuOpen ? 'visible' : 'hidden' 
+  }}
+>
+  {/* Inner navigation links stack */}
+</div>
