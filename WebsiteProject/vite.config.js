@@ -2,6 +2,24 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import asyncCSS from './vite-plugin-async-css.js';
 import preloadEntry from './vite-plugin-preload-entry.js';
+import { rmSync, existsSync } from 'fs';
+import { resolve } from 'path';
+
+// After the build, remove dist/functions/ if the build script copied it there.
+// The build script runs `cp -r functions dist/` which causes Cloudflare Pages
+// to use the raw unbundled source files as Workers instead of the compiled
+// Functions bundle — every relative import then fails at runtime (Error 1101).
+// Wrangler compiles functions/ from the project root automatically; dist/ must
+// not contain a functions/ directory.
+const cleanFunctionsFromDist = () => ({
+  name: 'clean-functions-from-dist',
+  closeBundle() {
+    const target = resolve(__dirname, 'dist/functions');
+    if (existsSync(target)) {
+      rmSync(target, { recursive: true, force: true });
+    }
+  }
+});
 
 // After Vite finishes all HTML transforms, move the entry <script type="module">
 // from <head> (where Vite hoists it) to the very bottom of <body>.
@@ -33,6 +51,7 @@ export default defineConfig({
     asyncCSS(), // Make CSS async to eliminate 160ms mobile blocking
     preloadEntry(), // Inject modulepreload for main entry to eliminate waterfall
     moveScriptToBody(), // Keep entry script at bottom of body so static hero paints first
+    cleanFunctionsFromDist(), // Remove dist/functions/ — wrangler bundles functions/ separately; raw sources in dist/ cause Error 1101
   ],
   
   build: {
