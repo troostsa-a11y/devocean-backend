@@ -21,6 +21,13 @@ npm run build
 echo "▶ Removing dist/functions/ (source files must not reach Cloudflare as static assets)..."
 rm -rf dist/functions/
 
+echo "▶ Setting ADMIN_API_KEY secret on Cloudflare Pages..."
+if [[ -n "$ADMIN_API_KEY" ]]; then
+  echo "$ADMIN_API_KEY" | npx wrangler pages secret put ADMIN_API_KEY --project-name devocean-lodge
+else
+  echo "⚠ ADMIN_API_KEY env var not set — skipping secret upload"
+fi
+
 echo "▶ Deploying to Cloudflare Pages..."
 if [[ "$1" == "--preview" ]]; then
   npx wrangler pages deploy ./dist --branch preview

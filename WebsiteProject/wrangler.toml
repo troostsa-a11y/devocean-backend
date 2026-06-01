@@ -1,3 +1,6 @@
 name = "devocean-lodge"
 pages_build_output_dir = "./dist"
 compatibility_date = "2025-01-01"
+
+[vars]
+AUTOMAILER_URL = "https://devocean-automailer.onrender.com"
