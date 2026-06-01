@@ -1,0 +1,1 @@
+- [Wrangler version & Node compatibility](wrangler-node-compat.md) — wrangler@4 on Node 20 silently produces broken Pages Functions bundles (Error 1101 on all requests); pin wrangler@3 in deploy.sh.
