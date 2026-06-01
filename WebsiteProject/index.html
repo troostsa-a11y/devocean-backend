@@ -271,6 +271,9 @@
     body{overflow-x:hidden;background-color:#f8fafc}
     /* Critical layout */
     #root{position:relative;z-index:1}
+    /* Keep body/root dark until React mounts (first-time visitors only) */
+    html.hero-active body{background:#000}
+    html.hero-active #root{min-height:100vh;background:#000}
   </style>
 
   <!-- Pre-calculate sticky header height BEFORE first paint (prevents CLS) -->
@@ -342,9 +345,9 @@
       z-index: 9999;
       background: #000;
       opacity: 1;
-      /* Compositor-thread fade — fires at exactly 5 s regardless of JS main-thread load.
+      /* Compositor-thread fade — 0.5 s visual buffer then 0.4 s fade, independent of JS load.
          will-change promotes this element to its own GPU layer for smooth compositing. */
-      animation: heroDismiss 0.5s cubic-bezier(0.25, 1, 0.5, 1) 5s forwards;
+      animation: heroDismiss 0.4s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
       will-change: opacity;
       pointer-events: auto;
     }
@@ -477,15 +480,16 @@
           // Storage unavailable - silent fail
         }
         
-        // CSS animation (heroDismiss, 5 s delay, 0.8 s fade) handles the visual fade on
+        // CSS animation (heroDismiss, 0.5 s delay, 0.4 s fade) handles the visual fade on
         // the compositor thread — independent of main-thread JS load.
         // This JS timeout only cleans up the DOM after the animation finishes.
         setTimeout(function() {
           if (placeholder) {
             placeholder.style.display = 'none';
           }
-          document.documentElement.classList.remove('hero-active');
-        }, 5600); // 5 000 ms delay + 500 ms fade + 100 ms buffer
+          // hero-active intentionally NOT removed here — React's App.jsx useEffect
+          // removes it after first mount, keeping the dark background until content is ready.
+        }, 1000); // 500 ms delay + 400 ms fade + 100 ms buffer
       }
       
       // Run init when DOM is ready

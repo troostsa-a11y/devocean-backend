@@ -90,11 +90,12 @@ Preferred communication style: Simple, everyday language.
 - Net effect: `#hero-placeholder` (9.5 KB WebP, preloaded) paints as an LCP candidate before JS ever runs
 
 ### Overlay fade: CSS animation, not JS setTimeout
-- The overlay uses `animation: heroDismiss 0.8s ease-out 5s forwards` on `#hero-placeholder` — runs on the compositor thread, fires at exactly T=5s regardless of main-thread JS load
-- Root cause of 9s LCP: `setTimeout(5000)` is queued on the main thread. With 738ms TBT spread across several long tasks (JS parsing: entry 153KB + react-vendor 134KB), the callback fires at T=8–9s instead of T=5.2s. Chrome will not register elements covered by a full-viewport `position:fixed; z-index:9999` overlay as LCP candidates, so LCP was T=8–9s.
-- Fix: JS `setTimeout` is now **cleanup-only** (fires at 5900ms, removes the element from DOM after the animation has already visually completed). The visual fade is driven entirely by CSS.
+- The overlay uses `animation: heroDismiss 0.4s cubic-bezier(0.25,1,0.5,1) 0.5s forwards` on `#hero-placeholder` — runs on the compositor thread, fires at exactly T=0.5s regardless of main-thread JS load. `will-change: opacity` promotes it to its own GPU layer.
+- Root cause of 11s mobile LCP: `setTimeout(5000)` queued on the main thread fires at T=8–11s due to JS parsing long tasks (entry 153KB + react-vendor 134KB, 4× CPU throttle). Chrome will not register elements covered by a full-viewport `position:fixed; z-index:9999` overlay as LCP candidates, so LCP was stuck until overlay cleared.
+- Fix: overlay fades at T=0.5s (compositor thread). JS `setTimeout` is **cleanup-only** at 1000ms (hides placeholder from DOM). Visual fade is entirely CSS-driven.
 - For returning visitors: `placeholder.style.animation = 'none'` cancels the compositor animation before `display:none` is set.
-- Expected LCP after this fix: ~6s (5s animation-delay + 0.8s fade), down from ~9s.
+- Dark bridge: `html.hero-active body { background:#000 }` and `html.hero-active #root { background:#000; min-height:100vh }` keep the page dark between overlay fade (T=0.9s) and React's first mount (T=3–4s on mobile). `hero-active` class is removed by App.jsx's existing `useEffect` after first render (storage key already set by inline script, so the condition passes). Returning visitors never get `hero-active`, so their page is unaffected.
+- Expected LCP after this fix: ~3–4s (React hero image on first mount), down from ~11s on mobile.
 
 ### Booking Iframe (book/*.html)
 - The Beds24 booking iframe uses `sandbox="... allow-top-navigation"` (not `allow-top-navigation-by-user-activation`)
