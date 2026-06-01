@@ -116,6 +116,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
                   className="absolute inset-0 w-full h-full object-cover object-center"
                   loading={isFirst ? "eager" : "lazy"}
                   fetchpriority={isFirst ? "high" : undefined}
+                  isLCP={isFirst}
                   width={1920}
                   height={1080}
                   aspectRatio="16/9"
