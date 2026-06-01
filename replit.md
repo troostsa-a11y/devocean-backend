@@ -79,23 +79,25 @@ Preferred communication style: Simple, everyday language.
 - **ExcelJS**: dynamically imported inside `AdminPage.jsx` only when the user triggers an export, keeping the 920 KB chunk out of the critical path entirely
 
 ### Hero Overlay
-- A static `#hero-placeholder` div (HTML, not React) shows a preloaded hero image for 5 seconds on a visitor's first visit, then fades out
-- `#root` is **not** hidden with `opacity: 0` during the overlay — the placeholder is `position: fixed; z-index: 9999` and covers the React content visually without blocking LCP measurement
-- Do not reintroduce `html.hero-active #root { opacity: 0 }` — it delays LCP by preventing the browser from recording the React hero as a paint candidate
+- A static `#hero-placeholder` div (HTML, not React) shows a preloaded hero image for 5 seconds on a first visit, then fades out via CSS animation on the compositor thread
+- The placeholder contains a real `<h1 id="hero-title">`, `<p id="hero-subtitle">`, and two static button-shaped `<div>`s — mirroring the React hero layout exactly to eliminate CLS on overlay removal
+- Content container uses `padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem` — same as the React `HeroSection` — so layout does not shift when the overlay clears. `--stack-h` is defined in the critical inline CSS (`:root { --stack-h: 96px }`)
+- The localization inline script immediately updates `#hero-title` and `#hero-subtitle` to the visitor's language. Do not remove these IDs.
+- `#root` is **not** hidden with `opacity: 0` during the overlay — the placeholder is `position: fixed; z-index: 9999` and covers React content visually without blocking LCP measurement
+- Do not reintroduce `html.hero-active #root { opacity: 0 }` — it delays LCP by preventing the browser from recording elements as paint candidates
+
+### LCP Strategy
+- **Why 5 s delay**: The hero image (`hero01-mobile.webp`) takes ~1.5 s to load on Slow 4G. The overlay must remain at `opacity: 1` when the image paints so Chrome registers it as the LCP candidate. A delay shorter than the image load time (e.g. the previous 0.5 s) causes the overlay to fade before the image arrives — Chrome skips the invisible element and waits for the React hero instead (~8 s on 4× CPU throttle).
+- Animation: `heroDismiss 0.4s cubic-bezier(0.25,1,0.5,1) 5s forwards` — compositor thread, independent of JS load. `will-change: opacity` promotes the element to its own GPU layer.
+- JS `setTimeout` is **cleanup-only** at 5500 ms (5000 ms delay + 400 ms fade + 100 ms buffer) — hides the DOM node after the animation finishes.
+- For returning visitors: `placeholder.style.animation = 'none'` cancels the compositor animation before `display:none` is set; they never see the overlay.
+- `hero-active` class is removed by App.jsx's `useEffect` after first React mount; until then it keeps the background dark.
 
 ### Script-at-bottom + modulePreload strategy
 - The React entry `<script type="module" src="/src/main.jsx">` lives at the **very bottom of `<body>`** in `index.html` (after `#hero-placeholder` and all inline scripts)
 - `build.modulePreload: { polyfill: false }` in `vite.config.js` keeps Vite's `<link rel="modulepreload">` hints for all vendor chunks (react-vendor, icons, framer) so they download in parallel with the entry; setting `polyfill: false` just skips the polyfill script. Do NOT set `modulePreload: false` — that removes all vendor chunk preload hints and creates a sequential waterfall that delays React render from ~3s to ~6–7s
 - A custom `moveScriptToBody` plugin in `vite.config.js` removes the built entry `<script type="module" crossorigin src="/assets/...">` from wherever Vite places it and re-appends it just before `</body>`
-- Net effect: `#hero-placeholder` (9.5 KB WebP, preloaded) paints as an LCP candidate before JS ever runs
-
-### Overlay fade: CSS animation, not JS setTimeout
-- The overlay uses `animation: heroDismiss 0.4s cubic-bezier(0.25,1,0.5,1) 0.5s forwards` on `#hero-placeholder` — runs on the compositor thread, fires at exactly T=0.5s regardless of main-thread JS load. `will-change: opacity` promotes it to its own GPU layer.
-- Root cause of 11s mobile LCP: `setTimeout(5000)` queued on the main thread fires at T=8–11s due to JS parsing long tasks (entry 153KB + react-vendor 134KB, 4× CPU throttle). Chrome will not register elements covered by a full-viewport `position:fixed; z-index:9999` overlay as LCP candidates, so LCP was stuck until overlay cleared.
-- Fix: overlay fades at T=0.5s (compositor thread). JS `setTimeout` is **cleanup-only** at 1000ms (hides placeholder from DOM). Visual fade is entirely CSS-driven.
-- For returning visitors: `placeholder.style.animation = 'none'` cancels the compositor animation before `display:none` is set.
-- Dark bridge: `html.hero-active body { background:#000 }` and `html.hero-active #root { background:#000; min-height:100vh }` keep the page dark between overlay fade (T=0.9s) and React's first mount (T=3–4s on mobile). `hero-active` class is removed by App.jsx's existing `useEffect` after first render (storage key already set by inline script, so the condition passes). Returning visitors never get `hero-active`, so their page is unaffected.
-- Expected LCP after this fix: ~3–4s (React hero image on first mount), down from ~11s on mobile.
+- Net effect: `#hero-placeholder` preloaded WebP paints as an LCP candidate at ~1.5 s before JS ever runs
 
 ### Booking Iframe (book/*.html)
 - The Beds24 booking iframe uses `sandbox="... allow-top-navigation"` (not `allow-top-navigation-by-user-activation`)
