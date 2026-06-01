@@ -1,22 +1,29 @@
 ---
 name: Wrangler version & Node compatibility
-description: Wrangler@4 requires Node >=22 and silently produces broken Cloudflare Pages Functions bundles on Node 20, causing Error 1101 on every request.
+description: History of the wrangler/Node pairing for WebsiteProject Cloudflare Pages deploys. Environment now runs Node 22 + wrangler@4.
 ---
 
 # Wrangler Version & Node Compatibility
 
-## The Rule
-Always use `wrangler@3` (via `npx wrangler@3`) in `WebsiteProject/deploy.sh` when the environment runs Node 20. Wrangler@4 explicitly requires Node >=22, and running it on Node 20 produces a malformed Functions bundle — Cloudflare returns Error 1101 on all requests with no useful stack trace.
+## Current state (resolved)
+Environment runs **Node 22.22.0**. Wrangler@4.95.0 is installed locally in
+`WebsiteProject/node_modules/`. `deploy.sh` uses bare `npx wrangler pages deploy ./dist`
+— no version pin needed.
 
-**Why:** wrangler@4 prints an engine warning on Node 20 but continues; the compiled Worker passes `"Compiled Worker successfully"` yet the bundle is broken at runtime. No middleware try/catch can recover from a bundle init failure — 1101 appears before any handler runs.
+## History / why this matters
+Originally the environment ran Node 20. Wrangler@4 requires Node >=22 and silently
+produced a malformed Pages Functions bundle on Node 20, causing Cloudflare Error 1101
+on every request. The Error 1101 appeared even on `.pages.dev` preview URLs and the
+Cloudflare dashboard showed the deployment as ✓ successful — no useful error shown.
 
-**How to apply:** `deploy.sh` is the only deployment path — never run bare `npx wrangler pages deploy`. The script is pinned to `npx wrangler@3 pages deploy ./dist`. If Node is ever upgraded to >=22, update to `wrangler@4` at that time.
+**The fix at the time:** pinned `deploy.sh` to `npx wrangler@3`.
+**Permanent fix:** upgraded environment to Node 22, installed wrangler@4 locally,
+dropped the version pin from `deploy.sh`.
+
+## Rule for future upgrades
+If wrangler is ever upgraded again, confirm `node --version` is within the new
+engine range before deploying. A wrangler engine mismatch always manifests as
+1101 on all Pages Function routes, not a build error.
 
 ## Deploy script location
 `WebsiteProject/deploy.sh`
-
-## Symptoms of a broken bundle
-- Cloudflare Error 1101 on every URL including the `.pages.dev` preview
-- Wrangler output shows "Compiled Worker successfully" and "Deployment complete!" — no errors
-- Cloudflare dashboard shows the deployment as ✓ (successful)
-- No Worker Routes configured at the zone level (not a routing issue)

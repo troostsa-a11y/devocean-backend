@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # Build and deploy to Cloudflare Pages.
 #
-# Uses wrangler@3 explicitly — wrangler 4 requires Node >=22 but this
-# environment runs Node 20. Wrangler 3 supports Node 18+.
+# Requires Node >=22 (wrangler@4 engine requirement).
 #
 # Usage:
 #   bash deploy.sh                  # build + clean + deploy (production)
@@ -18,9 +17,9 @@ rm -rf dist/functions/
 
 echo "▶ Deploying to Cloudflare Pages..."
 if [[ "$1" == "--preview" ]]; then
-  npx wrangler@3 pages deploy ./dist --branch preview
+  npx wrangler pages deploy ./dist --branch preview
 else
-  npx wrangler@3 pages deploy ./dist
+  npx wrangler pages deploy ./dist
 fi
 
 echo "✓ Done"
