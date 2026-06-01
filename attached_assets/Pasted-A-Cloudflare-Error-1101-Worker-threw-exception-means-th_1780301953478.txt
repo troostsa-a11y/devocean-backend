@@ -1,0 +1,24 @@
+A Cloudflare Error 1101 (Worker threw exception) means the production deployment completed successfully, but the edge routing layer crashed at runtime before it could serve your index.html.Because your app uses purely client-side rendering (CSR) via React 18 (createRoot), a standard Cloudflare Pages static asset deployment should not be triggering a Worker execution error at all.The Likely Culprit: Vite Script-Moving PluginThe custom moveScriptToBody plugin or your modified configuration in vite.config.js likely broke the HTML structure or corrupted the final token strings during the post-compile optimization step. When Cloudflare's internal static file server or an edge function parses the malformed asset mapping inside dist/index.html, it throws an unhandled runtime error.How to Diagnose and Fix the Crash1. Pinpoint the Exact Runtime Crash LineOpen your terminal and check the real-time execution logs from Cloudflare Pages using Wrangler. This will output the exact JavaScript error stack trace that triggered Ray ID a04cc966de97d89d-JNB:bash# Stream production runtime exceptions directly to your terminal
+wrangler pages deployment tail
+Use code with caution.2. Check for the Common Vite Build CorruptionsInspect your compiled dist/index.html locally using a text editor. Look for these specific build issues caused by the custom script injection:Duplicate Entry Scripts: Ensure your custom plugin stripped the original <script type="module"> tag entirely from its default location rather than leaving a trailing, broken reference.Malformed Elements: Verify that the script tag injected at the bottom of the <body> has a valid opening and closing tag syntax. A missing angle bracket (>) or broken quotation marks will cause the edge parser to crash.3. Implement a Bulletproof vite.config.js AlternativeIf the custom regex string replace function inside the moveScriptToBody plugin is throwing errors, replace its injection hook with a safer, native AST modification method or a cleaner inline string replacement:javascript// A safer pattern for moveScriptToBody inside vite.config.js
+export default {
+  // ... rest of your config
+  plugins: [
+    {
+      name: 'move-script-to-body-safe',
+      transformIndexHtml(html) {
+        // Find the injected module script tag cleanly
+        const scriptRegex = /<script type="module" crossorigin src="\/assets\/index-.*?\.js"><\/script>/;
+        const match = html.match(scriptRegex);
+        
+        if (!match) return html;
+        
+        // Strip it from its current position
+        let cleanHtml = html.replace(scriptRegex, '');
+        
+        // Inject it safely right before the closing body tag
+        return cleanHtml.replace('</body>', `${match[0]}\n</body>`);
+      }
+    }
+  ]
+}
