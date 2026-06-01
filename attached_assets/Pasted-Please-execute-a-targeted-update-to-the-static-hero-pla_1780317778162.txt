@@ -1,0 +1,30 @@
+Please execute a targeted update to the static `#hero-placeholder` markup inside `index.html` to force Chrome to recognize it as a structural content node rather than an ornamental background decoration. We need to upgrade the existing text placeholder to a real h1 and inject static CTA buttons using inline styles (since Tailwind utilities have not yet parsed at this point in the DOM lifecycle).
+
+Locate the `#hero-placeholder` container inside `index.html` and modify its internal structure to match this exact template:
+
+<div id="hero-placeholder">
+  <!-- Preloaded picture asset (LCP target) -->
+  <picture>
+    <source media="(max-width: 800px)" srcset="/photos/hero01-mobile.webp" type="image/webp">
+    <img src="/photos/hero01.webp" alt="Hero background" fetchpriority="high" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;">
+  </picture>
+
+  <!-- Dim background layer tint -->
+  <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); pointer-events: none;"></div>
+
+  <!-- Content Container: Mimics the structural layout spacing of the live React Hero Section -->
+  <div style="position: relative; z-index: 10; max-w: 80rem; margin: 0 auto; padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box;">
+    
+    <!-- Real structural h1 element to trigger Chrome LCP heuristic -->
+    <h1 style="font-size: 2.25rem; font-weight: 700; max-width: 48rem; margin: 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
+    <p style="margin-top: 1rem; font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
+    
+    <!-- Static CTA placeholders to maintain visual continuity and ensure 0.00 CLS -->
+    <div style="margin-top: 2rem; display: flex; gap: 0.75rem;">
+      <div style="padding: 0.75rem 1.25rem; border-radius: 1rem; border: 2px solid rgba(255,255,255,0.6); background-color: rgba(255,255,255,0.1); font-weight: 700; font-size: 1rem; text-align: center;">Village Highlights</div>
+      <div style="padding: 0.75rem 1.25rem; border-radius: 1rem; background: linear-gradient(to right, #b65a1a, #9e4b13); border: 2px solid rgba(255,255,255,0.2); font-weight: 700; font-size: 1rem; text-align: center;">Book Now</div>
+    </div>
+  </div>
+</div>
+
+Do not alter any other files, Vite script placements, package scopes, or existing Cloudflare Pages Function handlers. Once index.html is modified, run a local production compilation using `npm run build` to confirm the code compiles cleanly.
