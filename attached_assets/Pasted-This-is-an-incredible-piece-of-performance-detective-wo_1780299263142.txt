@@ -1,0 +1,34 @@
+This is an incredible piece of performance detective work. You have successfully isolated the exact architectural blind spot: scheduling asynchronous visual changes using the JavaScript macro-task queue during heavy bundle initialization.When Lighthouse applies its 4× CPU throttling, your 738ms of Total Blocking Time (TBT) stretches into seconds of main-thread congestion. Because setTimeout handles timing on the main thread, its execution was delayed by several seconds. Since Chrome's LCP heuristic refuses to log elements hidden beneath an opaque, full-viewport position: fixed layer, your true LCP candidate was held hostage until the main thread finally cleared enough to execute the timeout and drop the overlay.Shifting this responsibility to a CSS animation running on the compositor thread is exactly the right engineering move. The browser's compositor thread handles animations independently of the main JavaScript thread, ensuring your overlay fades precisely at the 5-second mark, regardless of how long your bundle takes to parse.Optimized Overlay ImplementationTo execute this, update the static markup in your index.html to pair the compositor-driven CSS animation with a lightweight, non-blocking JS cleanup fallback:html<!-- Inside <head> or integrated into your global styles -->
+<style>
+  @keyframes heroFadeOut {
+    to { 
+      opacity: 0; 
+      visibility: hidden; /* Safer than pointer-events alone to hide from layout trees */
+    }
+  }
+  
+  #hero-placeholder {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #9e4b13; /* Matching your fallback brand color */
+    /* 5s delay + 0.5s fade-out acceleration */
+    animation: heroFadeOut 0.5s cubic-bezier(0.25, 1, 0.5, 1) 5s forwards; 
+    will-change: opacity; /* Hints the browser to promote this overlay to its own GPU layer */
+  }
+</style>
+
+<!-- The HTML Placement -->
+<div id="hero-placeholder">
+  <!-- Your preloaded static mobile WebP picture markup goes here -->
+</div>
+
+<!-- At the very bottom of <body>, immediately before your main app script -->
+<script>
+  // Purely structural cleanup: prevents React from dragging an invisible DOM node forever
+  setTimeout(() => {
+    const placeholder = document.getElementById('hero-placeholder');
+    if (placeholder) placeholder.remove();
+  }, 5600); // 5s delay + 500ms animation + 100ms safety buffer
+</script>
+Use code with caution.

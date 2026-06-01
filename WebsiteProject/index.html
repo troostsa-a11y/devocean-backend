@@ -342,8 +342,10 @@
       z-index: 9999;
       background: #000;
       opacity: 1;
-      /* Compositor-thread fade — fires at exactly 5 s regardless of JS main-thread load */
-      animation: heroDismiss 0.8s ease-out 5s forwards;
+      /* Compositor-thread fade — fires at exactly 5 s regardless of JS main-thread load.
+         will-change promotes this element to its own GPU layer for smooth compositing. */
+      animation: heroDismiss 0.5s cubic-bezier(0.25, 1, 0.5, 1) 5s forwards;
+      will-change: opacity;
       pointer-events: auto;
     }
     #hero-placeholder picture {
@@ -483,7 +485,7 @@
             placeholder.style.display = 'none';
           }
           document.documentElement.classList.remove('hero-active');
-        }, 5900); // 5 000 ms delay + 800 ms fade + 100 ms buffer
+        }, 5600); // 5 000 ms delay + 500 ms fade + 100 ms buffer
       }
       
       // Run init when DOM is ready
