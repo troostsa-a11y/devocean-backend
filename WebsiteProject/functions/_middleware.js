@@ -28,6 +28,8 @@ export async function onRequest(context) {
 
   } catch (err) {
     console.error('[middleware]', err);
-    return context.next();
+    // Do NOT call context.next() again — it has already been called and
+    // the asset binding cannot handle non-GET methods, which causes 1101.
+    return new Response('Service Error', { status: 500 });
   }
 }
