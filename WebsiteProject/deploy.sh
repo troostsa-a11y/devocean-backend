@@ -3,11 +3,17 @@
 #
 # Requires Node >=22 (wrangler@4 engine requirement).
 #
-# Usage:
-#   bash deploy.sh                  # build + clean + deploy (production)
-#   bash deploy.sh --preview        # build + clean + deploy (preview channel)
+# Usage (from the WebsiteProject/ directory):
+#   bash deploy.sh              # build + deploy → production (main branch)
+#   bash deploy.sh --preview    # build + deploy → preview channel
 
 set -e
+
+# Replit's sandbox has no real git repo; wrangler needs GIT_DIR to be set
+# to *something* or it errors out trying to detect the branch.
+# On a local machine with a proper git repo this variable is already set,
+# so this line is a no-op there.
+export GIT_DIR="${GIT_DIR:-/tmp/fakegit}"
 
 echo "▶ Building..."
 npm run build
@@ -19,7 +25,7 @@ echo "▶ Deploying to Cloudflare Pages..."
 if [[ "$1" == "--preview" ]]; then
   npx wrangler pages deploy ./dist --branch preview
 else
-  npx wrangler pages deploy ./dist
+  npx wrangler pages deploy ./dist --branch main
 fi
 
 echo "✓ Done"
