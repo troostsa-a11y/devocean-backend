@@ -1,18 +1,33 @@
 /**
  * Cloudflare Pages Functions Middleware
  *
- * Injects window.__CF_COUNTRY__ into HTML responses so the React app can
- * default to the visitor's local currency without an extra API round-trip.
+ * 1. Injects window.__CF_COUNTRY__ into HTML responses so the React app can
+ *    default to the visitor's local currency without an extra API round-trip.
  *
- * SPA routing (404 → index.html) is handled by _redirects, so this
- * middleware only needs to do the country-code injection.
+ * 2. SPA fallback: when context.next() finds no static asset (404) and the
+ *    browser is requesting HTML, serve index.html so React's router can handle
+ *    the path (e.g. /admin, /why-ponta, /experiences/:key).
+ *    We cannot rely on _redirects for this because the root middleware
+ *    intercepts every request before _redirects is consulted.
  */
 
 export async function onRequest(context) {
   try {
-    const response = await context.next();
-    const contentType = response.headers.get('content-type') || '';
+    let response = await context.next();
 
+    // SPA fallback: no static file matched → serve index.html for React routing
+    if (response.status === 404) {
+      const accept = context.request.headers.get('accept') || '';
+      if (accept.includes('text/html')) {
+        const indexUrl = new URL('/index.html', context.request.url);
+        response = await fetch(indexUrl.href);
+      } else {
+        // Asset/API 404 — pass through as-is
+        return response;
+      }
+    }
+
+    const contentType = response.headers.get('content-type') || '';
     if (!contentType.includes('text/html')) {
       return response;
     }

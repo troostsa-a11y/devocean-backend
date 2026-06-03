@@ -48,12 +48,7 @@
 /zu-ZA  /?lang=zu&currency=ZAR  302
 /sw-TZ  /?lang=sw&currency=TZS  302
 
-# Explicit rules for React SPA routes (belt-and-suspenders alongside the catch-all)
-# context.next() in _middleware.js can return 404.html before applying the catch-all,
-# so these explicit rules ensure the React app is served for all known SPA paths.
-/admin  /index.html  200
-/why-ponta  /index.html  200
-/experiences/:key  /index.html  200
-
 # SPA fallback for everything else
+# Note: the root _middleware.js also handles 404→index.html for requests that
+# go through Pages Functions (which intercept before _redirects is consulted).
 /*  /index.html  200
