@@ -97,6 +97,7 @@ export class EmailAutomationService {
    */
   start(): void {
     console.log('Starting email automation service...');
+    console.log(`✅ Trusted sender domains: ${this.getTrustedSenderDomains().join(', ')}`);
 
     // Schedule 1: Incoming email check every 30 minutes at :00 and :30
     // Cron format: */30 * * * * (runs at :00 and :30 of every hour)
@@ -552,19 +553,38 @@ export class EmailAutomationService {
 
   /**
    * Return the list of trusted sender domains for Beds24 notifications.
-   * Configurable via the BEDS24_SENDER_DOMAINS environment variable
-   * (comma-separated list of domains, e.g. "beds24.com,mail.beds24.com").
-   * Defaults to "beds24.com" when the variable is not set.
+   *
+   * Always trusts:
+   *   - "beds24.com" (Beds24's own sending domain)
+   *   - The lodge's own sender domain, derived from IMAP_FROM_EMAIL or IMAP_USER
+   *     (e.g. "devoceanlodge.com") so that notifications sent from the lodge's
+   *     own mail domain — or forwarded copies — are accepted without extra config.
+   *
+   * Additional domains can be appended via BEDS24_SENDER_DOMAINS
+   * (comma-separated, e.g. "mail.beds24.com,otherdomain.com").
    */
   private getTrustedSenderDomains(): string[] {
+    // Always-trusted base set
+    const defaults = new Set<string>(['beds24.com']);
+
+    // Auto-add the lodge's own domain from the configured sender/IMAP address
+    for (const envKey of ['IMAP_FROM_EMAIL', 'IMAP_USER']) {
+      const addr = process.env[envKey] || '';
+      const domain = addr.includes('@') ? addr.split('@')[1].trim().toLowerCase() : '';
+      if (domain && domain !== 'beds24.com') {
+        defaults.add(domain);
+      }
+    }
+
+    // Optional extra domains from env var
     const envValue = process.env.BEDS24_SENDER_DOMAINS;
     if (envValue) {
-      return envValue
-        .split(',')
-        .map(d => d.trim().toLowerCase())
-        .filter(Boolean);
+      for (const d of envValue.split(',').map(x => x.trim().toLowerCase()).filter(Boolean)) {
+        defaults.add(d);
+      }
     }
-    return ['beds24.com'];
+
+    return Array.from(defaults);
   }
 
   /**
