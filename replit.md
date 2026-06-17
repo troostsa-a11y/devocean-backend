@@ -89,13 +89,13 @@ On mobile the hero images are cropped (portrait viewport, landscape photo). The 
 
 **Current settings (as of June 2026):**
 
-| Slide | Subject | Mobile % | Visible area |
-|-------|---------|----------|-------------|
-| hero01 | Lodge / main scene | 65% | Slightly right of centre |
-| hero02 | Diving | 70% | Noticeably right of centre |
-| hero03 | Dolphins | 45% | Slightly left of centre |
-| hero04 | Game / wildlife | 70% | Noticeably right of centre |
-| hero05 | Hike | 87% | Far right — shows right edge of photo |
+| Slide | Subject | Mobile % | Desktop % | Notes |
+|-------|---------|----------|-----------|-------|
+| hero01 | Lodge / main scene | 65% | 50% (centre) | Slightly right on mobile |
+| hero02 | Divers on beach | 75% | 40% | Right on mobile, slightly left on desktop (new photo Jun 2026) |
+| hero03 | Dolphins | 45% | 50% (centre) | Slightly left on mobile |
+| hero04 | Game / wildlife | 70% | 50% (centre) | Noticeably right on mobile |
+| hero05 | Hike | 87% | 50% (centre) | Far right on mobile |
 
 To adjust: edit `mobileObjectClass` for the relevant slide in `content.js`, then redeploy with `bash deploy.sh` from `WebsiteProject/`.
 
