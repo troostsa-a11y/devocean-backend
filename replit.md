@@ -92,7 +92,7 @@ On mobile the hero images are cropped (portrait viewport, landscape photo). The 
 | Slide | Subject | Mobile % | Desktop % | Notes |
 |-------|---------|----------|-----------|-------|
 | hero01 | Lodge / main scene | 65% | 50% (centre) | Slightly right on mobile |
-| hero02 | Divers on beach | 75% | 40% | Right on mobile, slightly left on desktop (new photo Jun 2026) |
+| hero02 | Divers on beach | 75% | 30% | Right on mobile, left of centre on desktop (new photo Jun 2026) |
 | hero03 | Dolphins | 45% | 50% (centre) | Slightly left on mobile |
 | hero04 | Game / wildlife | 70% | 50% (centre) | Noticeably right on mobile |
 | hero05 | Hike | 87% | 50% (centre) | Far right on mobile |
