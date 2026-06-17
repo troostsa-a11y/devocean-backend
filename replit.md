@@ -78,6 +78,27 @@ Preferred communication style: Simple, everyday language.
 - **Lazy**: `GallerySection`, `LocationSection`, `ContactSection`, `Footer`, and all route-level pages — loaded only when needed
 - **ExcelJS**: dynamically imported inside `AdminPage.jsx` only when the user triggers an export, keeping the 920 KB chunk out of the critical path entirely
 
+### Hero Image Mobile Focal Points
+
+On mobile the hero images are cropped (portrait viewport, landscape photo). The `mobileObjectClass` field in `HERO_IMAGES` (`WebsiteProject/src/data/content.js`) controls which part of each photo is visible using CSS `object-position`. On desktop (`sm:` breakpoint and above) all slides revert to `object-center` (50% = centred).
+
+**How the percentage works:**
+- `50%` = centre of the photo
+- Above 50% = shifts the visible window toward the **right** side of the photo
+- Below 50% = shifts the visible window toward the **left** side of the photo
+
+**Current settings (as of June 2026):**
+
+| Slide | Subject | Mobile % | Visible area |
+|-------|---------|----------|-------------|
+| hero01 | Lodge / main scene | 65% | Slightly right of centre |
+| hero02 | Diving | 70% | Noticeably right of centre |
+| hero03 | Dolphins | 45% | Slightly left of centre |
+| hero04 | Game / wildlife | 70% | Noticeably right of centre |
+| hero05 | Hike | 87% | Far right — shows right edge of photo |
+
+To adjust: edit `mobileObjectClass` for the relevant slide in `content.js`, then redeploy with `bash deploy.sh` from `WebsiteProject/`.
+
 ### Hero Overlay
 - A static `#hero-placeholder` div (HTML, not React) shows a preloaded hero image for 5 seconds on a first visit, then fades out via CSS animation on the compositor thread
 - The placeholder contains a real `<h1 id="hero-title">`, `<p id="hero-subtitle">`, and two static button-shaped `<div>`s — mirroring the React hero layout exactly to eliminate CLS on overlay removal
