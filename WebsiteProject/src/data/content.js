@@ -72,7 +72,8 @@ export const HERO_IMAGES = [
     desktop: "/photos/hero02.jpg", 
     mobile: "/photos/hero02-mobile.jpg",
     desktopWebP: "/photos/hero02.webp",
-    mobileWebP: "/photos/hero02-mobile.webp"
+    mobileWebP: "/photos/hero02-mobile.webp",
+    mobileObjectClass: "object-[40%_center] sm:object-center"
   },
   { 
     desktop: "/photos/hero03.jpg", 
@@ -84,13 +85,15 @@ export const HERO_IMAGES = [
     desktop: "/photos/hero04.jpg", 
     mobile: "/photos/hero04-mobile.jpg",
     desktopWebP: "/photos/hero04.webp",
-    mobileWebP: "/photos/hero04-mobile.webp"
+    mobileWebP: "/photos/hero04-mobile.webp",
+    mobileObjectClass: "object-[40%_center] sm:object-center"
   },
   { 
     desktop: "/photos/hero05.jpg", 
     mobile: "/photos/hero05-mobile.jpg",
     desktopWebP: "/photos/hero05.webp",
-    mobileWebP: "/photos/hero05-mobile.webp"
+    mobileWebP: "/photos/hero05-mobile.webp",
+    mobileObjectClass: "object-[40%_center] sm:object-center"
   },
 ];
 
