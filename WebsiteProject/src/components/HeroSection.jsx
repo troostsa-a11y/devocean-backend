@@ -199,7 +199,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Stars, badge and Trustindex widget — kept together at the bottom so
           "Click the reviews!" visually leads into the widget badge directly below.
           Absolutely positioned outside the flex container to avoid CLS. */}
-      <div className="absolute bottom-14 sm:bottom-6 left-0 right-0 z-10 max-w-7xl mx-auto px-4">
+      <div className="absolute bottom-20 sm:bottom-10 left-0 right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
