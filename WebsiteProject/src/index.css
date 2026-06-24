@@ -53,6 +53,7 @@ html {
 /* Body background - prevents white flash below header */
 body {
   background-color: #f8fafc; /* slate-50 */
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* Home section should scroll to top (behind fixed headers) */

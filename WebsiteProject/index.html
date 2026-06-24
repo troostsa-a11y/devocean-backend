@@ -50,6 +50,19 @@
   <link rel="dns-prefetch" href="https://book.devoceanlodge.com">
   <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
 
+  <!-- Brand font: Inter. Loaded non-render-blocking (preload-as-style swap) so it
+       never delays the static hero LCP paint; display=swap shows the system-font
+       fallback instantly, then swaps to Inter once downloaded. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  </noscript>
+
   <!-- CookieYes: loaded immediately after Consent Mode defaults so the banner
        appears on every page load before any tracking fires. Must NOT be lazy-loaded
        because EU visitors must see the consent prompt before any interaction. -->
@@ -467,7 +480,7 @@
       padding: 1rem;
       max-width: 900px;
       width: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       /* LCP Optimization: Start visible, add subtle fade-in without delay */
       opacity: 1;
       animation: subtleFadeIn 0.4s ease-out forwards;
@@ -598,7 +611,7 @@
       <img src="/photos/hero01.jpg" alt="Hero background" fetchpriority="high" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;">
     </picture>
     <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); pointer-events: none;"></div>
-    <div style="position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem; color: #ffffff; font-family: system-ui, -apple-system, sans-serif; box-sizing: border-box; width: 100%;">
+    <div style="position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem; color: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif; box-sizing: border-box; width: 100%;">
       <h1 id="hero-title" style="font-size: 2.25rem; font-weight: 700; max-width: 48rem; margin: 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
       <p id="hero-subtitle" style="margin-top: 1rem; font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
       <div style="margin-top: 2rem; display: flex; gap: 0.75rem;">
