@@ -776,6 +776,121 @@
   }
   </script>
 
+  <!-- Accommodation / room types (helps AI & search describe the options) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HotelRoom",
+        "name": "Safari Tent",
+        "url": "https://devoceanlodge.com/safari.html",
+        "description": "12 m² canvas tent on a raised 3×6 m platform with twin or king beds, fan, power points, mosquito mesh and a private terrace. Shared hot-water ablutions.",
+        "containedInPlace": { "@id": "https://devoceanlodge.com/#lodge" },
+        "bed": { "@type": "BedDetails", "typeOfBed": "Twin or King" },
+        "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Fan", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Shared bathroom", "value": true }
+        ]
+      },
+      {
+        "@type": "HotelRoom",
+        "name": "Comfort Tent",
+        "url": "https://devoceanlodge.com/comfort.html",
+        "description": "Upgraded 12 m² tent with added privacy walls, twin or king beds, fan, a private terrace and an en-suite bathroom under a thatched roof.",
+        "containedInPlace": { "@id": "https://devoceanlodge.com/#lodge" },
+        "bed": { "@type": "BedDetails", "typeOfBed": "Twin or King" },
+        "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "En-suite bathroom", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Fan", "value": true }
+        ]
+      },
+      {
+        "@type": "HotelRoom",
+        "name": "Garden Cottage",
+        "url": "https://devoceanlodge.com/cottage.html",
+        "description": "Airy cottage with a queen bed, inverter air-conditioning (cool & heat), desk and dining table, private terrace and a private bathroom in a thatched roundavel.",
+        "containedInPlace": { "@id": "https://devoceanlodge.com/#lodge" },
+        "bed": { "@type": "BedDetails", "typeOfBed": "Queen" },
+        "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private bathroom", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true }
+        ]
+      },
+      {
+        "@type": "HotelRoom",
+        "name": "Thatched Chalet",
+        "url": "https://devoceanlodge.com/chalet.html",
+        "description": "Secluded, romantic chalet under palms with air-conditioning, twin or king beds, a private bathroom and a private terrace.",
+        "containedInPlace": { "@id": "https://devoceanlodge.com/#lodge" },
+        "bed": { "@type": "BedDetails", "typeOfBed": "Twin or King" },
+        "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private bathroom", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- FAQ (the questions travellers ask AI assistants) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where is DEVOCEAN Lodge?",
+        "acceptedAnswer": { "@type": "Answer", "text": "DEVOCEAN Lodge is in Ponta do Ouro, in the far south of Mozambique, a few minutes from the beach (coordinates -26.8420, 32.8850)." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get to Ponta do Ouro?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ponta do Ouro is near the Kosi Bay border with South Africa. Many guests drive (a 4x4 is recommended for the sandy coastal roads) or arrange a transfer. Our team can advise on the best route and transfers." }
+      },
+      {
+        "@type": "Question",
+        "name": "What accommodation options does DEVOCEAN Lodge offer?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Four options, each with a private terrace: the Safari Tent (shared ablutions), the Comfort Tent (en-suite), the Garden Cottage (queen bed, air-conditioning) and the Thatched Chalet (air-conditioning, private bathroom)." }
+      },
+      {
+        "@type": "Question",
+        "name": "What activities are there near the lodge?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Scuba diving on offshore reefs, ethical dolphin swims, ocean seafaris (whale watching May to October), game safaris at Maputo National Park, beach and deep-sea fishing, surfing, and a walk to the old lighthouse." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the check-in and check-out times?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Check-in is from 14:00 and check-out is by 10:00." }
+      },
+      {
+        "@type": "Question",
+        "name": "What currency does the lodge charge in?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Rates are billed in US dollars. Our AI receptionist, Mia, can quote prices in your own currency at live rates." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check availability and book?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Book online at devoceanlodge.com, or ask our AI receptionist Mia for live availability and rates at https://devoceanlodge.com/talk. The reservations team follows up to confirm every booking." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there Wi-Fi and air-conditioning, and are pets allowed?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Free Wi-Fi is available. The Garden Cottage and Thatched Chalet have air-conditioning; the Safari and Comfort tents have fans. Pets are not allowed." }
+      }
+    ]
+  }
+  </script>
+
   <!-- Locale initializer (moved to end for mobile FCP optimization) -->
   <script>
     (function () {

@@ -14,26 +14,36 @@ Disallow: /canceled
 # Sitemap location
 Sitemap: https://devoceanlodge.com/sitemap.xml
 
-# Block AI training crawlers (optional - preserve content rights)
-User-agent: CCBot
-Disallow: /
+# ─── AI crawler policy ───────────────────────────────────────────────
+# Goal: let AI assistants READ pages to answer travellers' questions (so
+# DEVOCEAN appears in AI trip planning), while denying bulk crawlers that
+# ingest content to TRAIN models. Conversion pages stay blocked for the
+# allowed bots too, to avoid phantom ad/analytics conversions.
 
-User-agent: GPTBot
-Disallow: /
-
+# ALLOWED — live retrieval / AI search answers (read to recommend us)
+User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
-
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Claude-User
+User-agent: Claude-SearchBot
 User-agent: Claude-Web
-Disallow: /
+Disallow: /thankyou.html
+Disallow: /thankyou
+Disallow: /canceled.html
+Disallow: /canceled
+Allow: /
 
+# BLOCKED — model-training / bulk-ingestion crawlers
+User-agent: GPTBot
+User-agent: CCBot
+User-agent: Google-Extended
+User-agent: anthropic-ai
+User-agent: ClaudeBot
 User-agent: cohere-ai
+User-agent: Bytespider
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
 Disallow: /
 
 # Crawl rate optimization for major search engines
