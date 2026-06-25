@@ -350,7 +350,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         <>
           {/* White compact bar (logo, language/currency, menu) — matches landing */}
           {renderTopBar()}
-          <div className="relative h-[58vh] min-h-[440px] flex flex-col">
+          <div className="relative h-[38vh] min-h-[280px] flex flex-col">
             <picture>
               <source media="(min-width: 640px)" srcSet={hero.desktopWebP} />
               <img
