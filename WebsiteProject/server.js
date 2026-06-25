@@ -656,6 +656,24 @@ app.get('/api/booking/result/:ref', (req, res) =>
 app.get('/api/booking/config', (req, res) =>
   proxyToAutomailer('GET', '/api/booking/config', req, res));
 
+// ─── FX rates (dev) — informational currency conversion on /book-direct ───────
+// Mirrors functions/api/fx.js. Display-only; never affects what Stripe charges.
+app.get('/api/fx', async (req, res) => {
+  let base = String(req.query.base || 'USD').toUpperCase();
+  if (!/^[A-Z]{3}$/.test(base)) base = 'USD';
+  try {
+    const upstream = await fetch(`https://open.er-api.com/v6/latest/${base}`);
+    const data = await upstream.json();
+    const rates = data && data.result === 'success' && data.rates ? data.rates : {};
+    const ok = Object.keys(rates).length > 0;
+    res.set('Cache-Control', `public, max-age=${ok ? 21600 : 300}`);
+    res.json({ base, rates });
+  } catch {
+    res.set('Cache-Control', 'public, max-age=300');
+    res.json({ base, rates: {} });
+  }
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 

@@ -20,6 +20,18 @@ function money(amount, currency) {
     return `${currency} ${Number(amount).toFixed(2)}`;
   }
 }
+// Whole-unit formatting for the informational (approximate) converted amount.
+function approxMoney(amount, currency) {
+  try {
+    return new Intl.NumberFormat(undefined, {
+      style: 'currency',
+      currency,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  } catch {
+    return `${currency} ${Math.round(Number(amount) || 0)}`;
+  }
+}
 
 const INPUT_CLASS =
   'w-full rounded-xl border border-slate-300 px-3 py-2.5 bg-white text-slate-900 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none';
@@ -50,6 +62,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   const [guest, setGuest] = useState({ firstName: '', lastName: '', email: '', phone: '' });
   const [canceled, setCanceled] = useState(false);
+  const [fxData, setFxData] = useState(null); // { base, rates } — display-only
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -152,6 +165,65 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     .filter((r) => r && r.available);
   const depositPct = availability?.depositPercent ?? 30;
   const cancelDays = availability?.cancellationPolicyDays ?? 30;
+
+  // ── Informational currency conversion (display only) ──────────────────────
+  // The base/charged currency is the Beds24 property currency (availability
+  // currency); the rates below NEVER change what Stripe charges. We just show an
+  // approximate value in the visitor's local currency (the bar currency).
+  const baseCurrency =
+    availability?.currency || availability?.rooms?.[0]?.currency || selectedRoom?.currency || null;
+  // Bind cached rates to their base so a base-currency change can't render with
+  // stale rates before the effect refetches.
+  const fxRatesForBase = fxData && fxData.base === baseCurrency ? fxData.rates : null;
+  const showFx = !!(
+    currency &&
+    baseCurrency &&
+    currency !== baseCurrency &&
+    fxRatesForBase &&
+    fxRatesForBase[currency]
+  );
+  const fxLine = (amount) =>
+    showFx ? `≈ ${approxMoney(amount * fxRatesForBase[currency], currency)}` : null;
+
+  useEffect(() => {
+    if (!baseCurrency || !currency || currency === baseCurrency) {
+      setFxData(null);
+      return;
+    }
+    let cancelledFetch = false;
+    const cacheKey = `fx_${baseCurrency}`;
+    const TTL = 6 * 60 * 60 * 1000; // 6h
+    try {
+      const raw = localStorage.getItem(cacheKey);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.ts && Date.now() - parsed.ts < TTL && parsed.rates) {
+          setFxData({ base: baseCurrency, rates: parsed.rates });
+          return;
+        }
+      }
+    } catch {
+      /* ignore storage errors */
+    }
+    fetch(`/api/fx?base=${encodeURIComponent(baseCurrency)}`)
+      .then((r) => r.json())
+      .then((d) => {
+        if (cancelledFetch) return;
+        const rates = (d && d.rates) || {};
+        setFxData({ base: baseCurrency, rates });
+        try {
+          localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), rates }));
+        } catch {
+          /* ignore storage errors */
+        }
+      })
+      .catch(() => {
+        if (!cancelledFetch) setFxData(null);
+      });
+    return () => {
+      cancelledFetch = true;
+    };
+  }, [baseCurrency, currency]);
 
   const hero = HERO_IMAGES[0];
   const langLabel = String(lang || 'en').split('-')[0].toUpperCase();
@@ -478,6 +550,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${offer.offerId}`}>
                                   {money(offer.total, room.currency)}
                                 </p>
+                                {fxLine(offer.total) && (
+                                  <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${offer.offerId}`}>
+                                    {fxLine(offer.total)}
+                                  </p>
+                                )}
                                 <p className="text-xs text-slate-500">{t.total}</p>
                               </div>
                             </div>
@@ -488,12 +565,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 <p className="font-semibold text-[#9e4b13]" data-testid={`text-offer-deposit-${offer.offerId}`}>
                                   {money(offer.deposit, room.currency)}
                                 </p>
+                                {fxLine(offer.deposit) && (
+                                  <p className="text-xs text-slate-400">{fxLine(offer.deposit)}</p>
+                                )}
                               </div>
                               <div className="rounded-xl bg-slate-50 px-3 py-2">
                                 <p className="text-slate-500">{t.balanceOnArrival}</p>
                                 <p className="font-semibold text-slate-700" data-testid={`text-offer-balance-${offer.offerId}`}>
                                   {money(offer.balance, room.currency)}
                                 </p>
+                                {fxLine(offer.balance) && (
+                                  <p className="text-xs text-slate-400">{fxLine(offer.balance)}</p>
+                                )}
                               </div>
                             </div>
 
@@ -515,6 +598,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 <p className="text-xs text-slate-500 text-center pt-2">
                   {fmt(t.cancellationPolicy, { days: cancelDays })}
                 </p>
+                {showFx && (
+                  <p className="text-xs text-slate-400 text-center" data-testid="text-fx-note">
+                    {fmt(t.approxNote, { currency: baseCurrency })}
+                  </p>
+                )}
               </div>
             )}
 
@@ -544,16 +632,36 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                   <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm border-t border-slate-100 pt-3">
                     <span className="text-slate-500">{t.total}</span>
-                    <span className="font-semibold text-slate-700">{money(selectedOffer.total, selectedRoom.currency)}</span>
+                    <span className="text-right">
+                      <span className="font-semibold text-slate-700">{money(selectedOffer.total, selectedRoom.currency)}</span>
+                      {fxLine(selectedOffer.total) && (
+                        <span className="block text-xs text-slate-400">{fxLine(selectedOffer.total)}</span>
+                      )}
+                    </span>
                   </div>
                   <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
                     <span className="text-slate-500">{fmt(t.depositNow, { pct: depositPct })}</span>
-                    <span className="font-bold text-[#9e4b13]">{money(selectedOffer.deposit, selectedRoom.currency)}</span>
+                    <span className="text-right">
+                      <span className="font-bold text-[#9e4b13]">{money(selectedOffer.deposit, selectedRoom.currency)}</span>
+                      {fxLine(selectedOffer.deposit) && (
+                        <span className="block text-xs text-slate-400">{fxLine(selectedOffer.deposit)}</span>
+                      )}
+                    </span>
                   </div>
                   <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
                     <span className="text-slate-500">{t.balanceOnArrival}</span>
-                    <span className="font-semibold text-slate-700">{money(selectedOffer.balance, selectedRoom.currency)}</span>
+                    <span className="text-right">
+                      <span className="font-semibold text-slate-700">{money(selectedOffer.balance, selectedRoom.currency)}</span>
+                      {fxLine(selectedOffer.balance) && (
+                        <span className="block text-xs text-slate-400">{fxLine(selectedOffer.balance)}</span>
+                      )}
+                    </span>
                   </div>
+                  {showFx && (
+                    <p className="mt-3 text-xs text-slate-400" data-testid="text-fx-note-summary">
+                      {fmt(t.approxNote, { currency: baseCurrency })}
+                    </p>
+                  )}
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-4">
