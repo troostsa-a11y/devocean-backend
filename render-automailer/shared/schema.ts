@@ -242,6 +242,10 @@ export const directBookings = pgTable("direct_bookings", {
   numAdults: integer("num_adults").notNull().default(2),
   numChildren: integer("num_children").notNull().default(0),
 
+  // Chosen Beds24 rate plan / offer
+  offerId: integer("offer_id"),
+  offerName: text("offer_name"),
+
   // Guest
   guestFirstName: text("guest_first_name").notNull(),
   guestLastName: text("guest_last_name"),

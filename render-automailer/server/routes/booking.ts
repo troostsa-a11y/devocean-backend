@@ -155,32 +155,42 @@ export function createBookingRouter(deps: {
     if (parsed.error || !parsed.value) return res.status(400).json({ error: parsed.error });
     const stay = parsed.value;
 
-    const cfg = getBookingConfig();
     try {
-      const quote = await beds24.getQuote(stay);
-      const rooms = quote.rooms.map((r) => {
-        const { deposit, balance } = splitDeposit(r.total, cfg.depositPercent);
-        return {
-          roomId: r.roomId,
-          name: r.name,
-          maxPeople: r.maxPeople,
-          available: r.available,
-          nights: r.nights,
-          total: r.total,
-          deposit,
-          balance,
-          currency: r.currency,
-        };
-      });
+      const result = await beds24.getAvailability(stay);
+      // Deposit % depends on the arrival date (Beds24 near-arrival / exceptional
+      // rules), so it is the same for every room/offer in this search.
+      const depositPercent = beds24.getDepositPercentForArrival(stay.checkIn);
+
+      const rooms = result.rooms.map((r) => ({
+        roomId: r.roomId,
+        name: r.name,
+        maxPeople: r.maxPeople,
+        available: r.available,
+        nights: r.nights,
+        currency: r.currency,
+        offers: r.offers.map((o) => {
+          const { deposit, balance } = splitDeposit(o.total, depositPercent);
+          return {
+            offerId: o.offerId,
+            offerName: o.offerName,
+            type: o.type,
+            refundable: o.refundable,
+            total: o.total,
+            deposit,
+            balance,
+          };
+        }),
+      }));
+
       res.json({
-        checkIn: quote.checkIn,
-        checkOut: quote.checkOut,
-        nights: quote.nights,
-        adults: quote.adults,
-        children: quote.children,
-        currency: quote.currency,
-        depositPercent: cfg.depositPercent,
-        cancellationPolicyDays: cfg.cancellationPolicyDays,
+        checkIn: result.checkIn,
+        checkOut: result.checkOut,
+        nights: result.nights,
+        adults: result.adults,
+        children: result.children,
+        currency: result.currency,
+        depositPercent,
+        cancellationPolicyDays: beds24.getCancellationDays(),
         rooms,
       });
     } catch (err: any) {
@@ -198,6 +208,7 @@ export function createBookingRouter(deps: {
     const stay = parsed.value;
 
     const roomId = String(req.body?.roomId || '').trim();
+    const offerId = Number.parseInt(req.body?.offerId, 10);
     const guest = req.body?.guest || {};
     const firstName = String(guest.firstName || '').trim().slice(0, 80);
     const lastName = String(guest.lastName || '').trim().slice(0, 80);
@@ -207,6 +218,7 @@ export function createBookingRouter(deps: {
     const language = String(guest.language || 'EN').trim().slice(0, 5).toUpperCase();
 
     if (!roomId) return res.status(400).json({ error: 'Missing roomId' });
+    if (!Number.isFinite(offerId)) return res.status(400).json({ error: 'Missing rate plan' });
     if (!firstName) return res.status(400).json({ error: 'First name is required' });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ error: 'A valid email is required' });
@@ -214,21 +226,27 @@ export function createBookingRouter(deps: {
 
     const cfg = getBookingConfig();
     try {
-      // Recompute price/availability server-side from a fresh Beds24 quote.
-      const roomQuote = await beds24.getRoomQuote({ roomId, ...stay });
-      if (!roomQuote) return res.status(404).json({ error: 'Room not found' });
-      if (!roomQuote.available || roomQuote.total <= 0) {
-        return res.status(409).json({ error: 'Sorry, that room is no longer available for those dates.' });
+      // Recompute price/availability server-side from fresh Beds24 offers and
+      // re-select the exact rate plan the guest chose. Client amounts are never
+      // trusted — only the offerId is used to look up the live price.
+      const roomOffers = await beds24.getRoomOffers({ roomId, ...stay });
+      if (!roomOffers) return res.status(404).json({ error: 'Room not found' });
+      const offer = roomOffers.offers.find((o) => o.offerId === offerId);
+      if (!roomOffers.available || !offer || offer.total <= 0) {
+        return res.status(409).json({ error: 'Sorry, that rate is no longer available for those dates.' });
       }
 
-      const { deposit, balance } = splitDeposit(roomQuote.total, cfg.depositPercent);
+      const depositPercent = beds24.getDepositPercentForArrival(stay.checkIn);
+      const { deposit, balance } = splitDeposit(offer.total, depositPercent);
       const sessionRef = crypto.randomUUID();
-      const currency = roomQuote.currency;
+      const currency = roomOffers.currency;
 
       await db!.createDirectBooking({
         sessionRef,
         roomId,
-        roomName: roomQuote.name,
+        roomName: roomOffers.name,
+        offerId: offer.offerId,
+        offerName: offer.offerName || null,
         checkInDate: stay.checkIn,
         checkOutDate: stay.checkOut,
         numAdults: stay.adults,
@@ -240,10 +258,10 @@ export function createBookingRouter(deps: {
         guestCountry: country || null,
         guestLanguage: language,
         currency,
-        totalAmount: roomQuote.total.toFixed(2),
+        totalAmount: offer.total.toFixed(2),
         depositAmount: deposit.toFixed(2),
         balanceDue: balance.toFixed(2),
-        depositPercent: cfg.depositPercent,
+        depositPercent,
         paymentStatus: 'pending',
         status: 'pending',
       });
@@ -252,7 +270,7 @@ export function createBookingRouter(deps: {
         sessionRef,
         depositAmount: deposit,
         currency,
-        roomName: roomQuote.name,
+        roomName: roomOffers.name,
         checkIn: stay.checkIn,
         checkOut: stay.checkOut,
         balanceDue: balance,
@@ -360,17 +378,22 @@ export function createBookingRouter(deps: {
         stripePaymentIntentId: paymentIntentId || null,
       });
 
-      // Double-booking guard: re-check availability before confirming.
+      // Double-booking guard: re-check availability for the chosen rate plan
+      // before confirming. The guest is charged the amount quoted at checkout
+      // (stored on the record); this check only guards against a sell-out.
       let stillAvailable = false;
       try {
-        const fresh = await beds24.getRoomQuote({
+        const fresh = await beds24.getRoomOffers({
           roomId: record.roomId,
           checkIn: record.checkInDate,
           checkOut: record.checkOutDate,
           adults: record.numAdults,
           children: record.numChildren,
         });
-        stillAvailable = Boolean(fresh?.available && fresh.total > 0);
+        const offerStillThere =
+          record.offerId == null ||
+          Boolean(fresh?.offers.some((o) => o.offerId === record.offerId));
+        stillAvailable = Boolean(fresh?.available && fresh.offers.length > 0 && offerStillThere);
       } catch (e: any) {
         console.error('[BOOKING] re-check availability failed:', e.message);
         stillAvailable = false;
@@ -430,6 +453,8 @@ export function createBookingRouter(deps: {
           deposit: Number(record.depositAmount),
           balance: Number(record.balanceDue),
           currency: record.currency,
+          offerId: record.offerId,
+          offerName: record.offerName,
         });
         confirmedBeds24Id = beds24BookingId;
         await db.updateDirectBooking(record.sessionRef, {
@@ -485,6 +510,7 @@ export function createBookingRouter(deps: {
       status: record.status,
       paymentStatus: record.paymentStatus,
       roomName: record.roomName,
+      offerName: record.offerName,
       checkIn: record.checkInDate,
       checkOut: record.checkOutDate,
       adults: record.numAdults,

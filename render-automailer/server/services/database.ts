@@ -708,6 +708,8 @@ export class DatabaseService {
         check_out_date           TEXT NOT NULL,
         num_adults               INTEGER NOT NULL DEFAULT 2,
         num_children             INTEGER NOT NULL DEFAULT 0,
+        offer_id                 INTEGER,
+        offer_name               TEXT,
         guest_first_name         TEXT NOT NULL,
         guest_last_name          TEXT,
         guest_email              TEXT NOT NULL,
@@ -731,6 +733,9 @@ export class DatabaseService {
       CREATE INDEX IF NOT EXISTS idx_direct_bookings_stripe_session
         ON direct_bookings (stripe_session_id)
     `;
+    // Idempotent upgrades for tables created before the rate-plan columns existed.
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_id INTEGER`;
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_name TEXT`;
   }
 
   async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {

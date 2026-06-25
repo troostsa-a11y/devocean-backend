@@ -33,6 +33,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
   const [error, setError] = useState('');
   const [availability, setAvailability] = useState(null); // full availability response
   const [selectedRoom, setSelectedRoom] = useState(null);
+  const [selectedOffer, setSelectedOffer] = useState(null);
+
+  const rateLabel = (type) => (t.rate && t.rate[type]) || (t.rate && t.rate.standard) || type;
 
   const [guest, setGuest] = useState({ firstName: '', lastName: '', email: '', phone: '' });
   const [canceled, setCanceled] = useState(false);
@@ -74,8 +77,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
     }
   }
 
-  function handleSelectRoom(room) {
+  function handleSelectOffer(room, offer) {
     setSelectedRoom(room);
+    setSelectedOffer(offer);
     setGuest((g) => ({ ...g }));
     setStep('details');
     setError('');
@@ -93,6 +97,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           roomId: selectedRoom.roomId,
+          offerId: selectedOffer.offerId,
           checkIn,
           checkOut,
           adults,
@@ -116,7 +121,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
     }
   }
 
-  const availableRooms = (availability?.rooms || []).filter((r) => r.available);
+  const availableRooms = (availability?.rooms || []).filter(
+    (r) => r.available && Array.isArray(r.offers) && r.offers.length > 0,
+  );
   const depositPct = availability?.depositPercent ?? 30;
   const cancelDays = availability?.cancellationPolicyDays ?? 30;
 
@@ -259,37 +266,62 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
                         {fmt(t.perNightFrom, { nights: room.nights })}
                       </p>
                     </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-bold text-slate-900" data-testid={`text-room-total-${room.roomId}`}>
-                        {money(room.total, room.currency)}
-                      </p>
-                      <p className="text-xs text-slate-500">{t.total}</p>
-                    </div>
                   </div>
 
-                  <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-                    <div className="rounded-xl bg-[#9e4b13]/5 px-3 py-2">
-                      <p className="text-slate-500">{fmt(t.depositNow, { pct: depositPct })}</p>
-                      <p className="font-semibold text-[#9e4b13]" data-testid={`text-room-deposit-${room.roomId}`}>
-                        {money(room.deposit, room.currency)}
-                      </p>
-                    </div>
-                    <div className="rounded-xl bg-slate-50 px-3 py-2">
-                      <p className="text-slate-500">{t.balanceOnArrival}</p>
-                      <p className="font-semibold text-slate-700" data-testid={`text-room-balance-${room.roomId}`}>
-                        {money(room.balance, room.currency)}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="mt-4 text-sm font-semibold text-slate-500 uppercase tracking-wide">
+                    {t.chooseRate}
+                  </p>
 
-                  <button
-                    type="button"
-                    onClick={() => handleSelectRoom(room)}
-                    className="mt-5 w-full rounded-xl bg-[#9e4b13] px-5 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors"
-                    data-testid={`button-select-${room.roomId}`}
-                  >
-                    {t.select}
-                  </button>
+                  <div className="mt-2 space-y-3">
+                    {room.offers.map((offer) => (
+                      <div
+                        key={offer.offerId}
+                        className="rounded-xl border border-slate-200 p-4"
+                        data-testid={`card-offer-${room.roomId}-${offer.offerId}`}
+                      >
+                        <div className="flex flex-wrap items-start justify-between gap-3">
+                          <div>
+                            <p className="font-semibold text-slate-900" data-testid={`text-offer-name-${offer.offerId}`}>
+                              {rateLabel(offer.type)}
+                            </p>
+                            <p className={`text-xs mt-0.5 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
+                              {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${offer.offerId}`}>
+                              {money(offer.total, room.currency)}
+                            </p>
+                            <p className="text-xs text-slate-500">{t.total}</p>
+                          </div>
+                        </div>
+
+                        <div className="mt-3 grid grid-cols-2 gap-3 text-sm">
+                          <div className="rounded-xl bg-[#9e4b13]/5 px-3 py-2">
+                            <p className="text-slate-500">{fmt(t.depositNow, { pct: depositPct })}</p>
+                            <p className="font-semibold text-[#9e4b13]" data-testid={`text-offer-deposit-${offer.offerId}`}>
+                              {money(offer.deposit, room.currency)}
+                            </p>
+                          </div>
+                          <div className="rounded-xl bg-slate-50 px-3 py-2">
+                            <p className="text-slate-500">{t.balanceOnArrival}</p>
+                            <p className="font-semibold text-slate-700" data-testid={`text-offer-balance-${offer.offerId}`}>
+                              {money(offer.balance, room.currency)}
+                            </p>
+                          </div>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => handleSelectOffer(room, offer)}
+                          className="mt-4 w-full rounded-xl bg-[#9e4b13] px-5 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors"
+                          data-testid={`button-select-${room.roomId}-${offer.offerId}`}
+                        >
+                          {t.select}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))
             )}
@@ -301,7 +333,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
         )}
 
         {/* ── Step 3: Guest details ── */}
-        {step === 'details' && selectedRoom && (
+        {step === 'details' && selectedRoom && selectedOffer && (
           <form onSubmit={handleCheckout} className="space-y-5">
             <button
               type="button"
@@ -318,13 +350,23 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
                 <span className="font-semibold text-slate-900">{selectedRoom.name}</span>
                 <span className="text-slate-600 text-sm">{checkIn} → {checkOut}</span>
               </div>
+              <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
+                <span className="text-slate-600" data-testid="text-summary-rate">{rateLabel(selectedOffer.type)}</span>
+                <span className={selectedOffer.refundable ? 'text-emerald-600' : 'text-amber-600'}>
+                  {selectedOffer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                </span>
+              </div>
               <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm border-t border-slate-100 pt-3">
+                <span className="text-slate-500">{t.total}</span>
+                <span className="font-semibold text-slate-700">{money(selectedOffer.total, selectedRoom.currency)}</span>
+              </div>
+              <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
                 <span className="text-slate-500">{fmt(t.depositNow, { pct: depositPct })}</span>
-                <span className="font-bold text-[#9e4b13]">{money(selectedRoom.deposit, selectedRoom.currency)}</span>
+                <span className="font-bold text-[#9e4b13]">{money(selectedOffer.deposit, selectedRoom.currency)}</span>
               </div>
               <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
                 <span className="text-slate-500">{t.balanceOnArrival}</span>
-                <span className="font-semibold text-slate-700">{money(selectedRoom.balance, selectedRoom.currency)}</span>
+                <span className="font-semibold text-slate-700">{money(selectedOffer.balance, selectedRoom.currency)}</span>
               </div>
             </div>
 
