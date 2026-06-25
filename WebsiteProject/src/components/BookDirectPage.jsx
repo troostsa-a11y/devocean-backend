@@ -338,7 +338,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   />
                 </div>
 
-                <div className="lg:flex-1 lg:min-w-[110px]">
+                <div className="lg:flex-none lg:w-[84px]">
                   <label className={FIELD_LABEL_CLASS}>{t.rooms}</label>
                   <select
                     value={rooms}
@@ -352,7 +352,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </select>
                 </div>
 
-                <div className="lg:flex-1 lg:min-w-[200px]">
+                <div className="lg:flex-[1.8] lg:min-w-[340px]">
                   <label className={FIELD_LABEL_CLASS}>{t.guests}</label>
                   <div className="flex items-center gap-2">
                     <div className="flex-1">
