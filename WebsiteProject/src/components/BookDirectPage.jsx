@@ -163,13 +163,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     ['contact', ui?.nav?.contact || 'Contact'],
   ];
 
-  function renderTopBar(transparent) {
+  function renderTopBar() {
     return (
-      <div className={transparent ? 'absolute top-0 inset-x-0 z-30' : 'relative z-30 bg-[#9e4b13] text-white'}>
+      <div className="relative z-30 bg-white border-b border-slate-200">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <a
             href={`/?lang=${lang}#home`}
-            className="flex items-center gap-2 font-semibold text-white"
+            className="flex items-center gap-2 font-semibold text-slate-800"
             data-testid="link-booking-home"
           >
             <img
@@ -182,7 +182,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           </a>
 
           <div className="relative flex items-center gap-2">
-            <span className="hidden sm:inline-flex items-center gap-1 text-sm text-white/90" data-testid="text-lang-currency">
+            <span className="hidden sm:inline-flex items-center gap-1 text-sm text-slate-700" data-testid="text-lang-currency">
               <Globe2 className="h-4 w-4" /> {langLabel}{currency ? ` · ${currency}` : ''}
             </span>
             <button
@@ -190,7 +190,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
               aria-label={ui?.menu || 'Menu'}
-              className="inline-flex items-center justify-center rounded-xl px-3 py-2 bg-white/15 text-white backdrop-blur-sm hover:bg-white/25 transition-colors"
+              className="inline-flex items-center justify-center rounded-xl px-3 py-2 bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors"
               data-testid="button-booking-menu"
             >
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -273,7 +273,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       />
       {step === 'search' ? (
         <>
-          {/* Hero with compact top bar */}
+          {/* White compact bar (logo, language/currency, menu) — matches landing */}
+          {renderTopBar()}
           <div className="relative h-[58vh] min-h-[440px] flex flex-col">
             <picture>
               <source media="(min-width: 640px)" srcSet={hero.desktopWebP} />
@@ -286,8 +287,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               />
             </picture>
             <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55" />
-
-            {renderTopBar(true)}
 
             <div className="relative z-10 flex-1 flex items-center">
               <div className="max-w-6xl mx-auto w-full px-4">
@@ -416,7 +415,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         </>
       ) : (
         <>
-          {renderTopBar(false)}
+          {renderTopBar()}
           <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
             {renderNotices()}
 
