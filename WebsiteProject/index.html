@@ -528,6 +528,18 @@
   <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
   <script>
     (function() {
+      // The hero overlay is a homepage-only intro. On any other route (e.g.
+      // /book-direct, /booking-confirmed, deep links) it shows the wrong hero
+      // (hero01 + "DEVOCEAN Lodge") and just delays the page, so hide it before
+      // first paint and bail out — no overlay, no hero-active, no timer.
+      var path = window.location.pathname;
+      if (path !== '/' && path !== '/index.html') {
+        var hideStyle = document.createElement('style');
+        hideStyle.textContent = '#hero-placeholder{display:none!important}';
+        document.head.appendChild(hideStyle);
+        return;
+      }
+
       // Check if user has already seen the hero
       // Use sessionStorage (persists during SPA navigation, clears on tab close)
       // and localStorage (persists across browser sessions)

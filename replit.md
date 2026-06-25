@@ -118,6 +118,7 @@ To adjust: edit `mobileObjectClass` for the relevant slide in `content.js`, then
 - Animation: `heroDismiss 0.4s cubic-bezier(0.25,1,0.5,1) 5s forwards` — compositor thread, independent of JS load. `will-change: opacity` promotes the element to its own GPU layer.
 - JS `setTimeout` is **cleanup-only** at 5500 ms (5000 ms delay + 400 ms fade + 100 ms buffer) — hides the DOM node after the animation finishes.
 - For returning visitors: `placeholder.style.animation = 'none'` cancels the compositor animation before `display:none` is set; they never see the overlay.
+- **Homepage-only**: the inline script bails out before first paint on any path other than `/` (or `/index.html`) — it injects `#hero-placeholder{display:none!important}` and returns, so no overlay/`hero-active`/timer runs. The "Rates & Availability" (Book Now) buttons are plain `<a href="/book-direct">` full-page navigations; without this guard a fresh load of `/book-direct` (or any deep link) would show the homepage hero (`hero01` + "DEVOCEAN Lodge") for 5 s before the actual page. The placeholder only matches the homepage React hero, so showing it elsewhere is a pure mismatched delay.
 - `hero-active` class is removed by App.jsx's `useEffect` after first React mount; until then it keeps the background dark.
 
 ### Script-at-bottom + modulePreload strategy
