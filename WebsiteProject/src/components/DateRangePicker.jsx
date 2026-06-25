@@ -40,6 +40,68 @@ function addDayISO(iso, n) {
   return DateTime.fromISO(iso, { zone: 'utc' }).plus({ days: n }).toISODate();
 }
 
+// Rate-tier colouring: 5 subtle tints, blue (lowest) → red (peak). Slate text
+// stays readable on all of them. Tiers are derived live from the Beds24 price
+// map by RELATIVE comparison — there is no static season calendar.
+const TIER_TINTS = ['#dbeafe', '#dcfce7', '#fef9c3', '#ffedd5', '#fee2e2'];
+const TIER_KEYS = ['lowest', 'low', 'shoulder', 'high', 'peak'];
+const FALLBACK_TIER_LABELS = {
+  lowest: 'Lowest',
+  low: 'Low',
+  shoulder: 'Shoulder',
+  high: 'High',
+  peak: 'Peak',
+};
+
+function percentile(sortedAsc, q) {
+  if (!sortedAsc.length) return 0;
+  const idx = Math.min(sortedAsc.length - 1, Math.max(0, Math.round(q * (sortedAsc.length - 1))));
+  return sortedAsc[idx];
+}
+
+// Map an ISO→price object to ISO→tier (0..4). Strategy:
+//  • <2 distinct prices → no colouring (nothing to compare).
+//  • ≤5 distinct prices → map each sorted distinct value onto the 5 tiers,
+//    spread blue→red (matches a lodge's handful of seasonal rate levels).
+//  • >5 distinct prices → trim outliers to p5..p95, then 5 equal-width bands,
+//    clamping anything below/above into the lowest/highest tier.
+// Thresholds span the WHOLE supplied window so a date keeps the same colour
+// regardless of which months are currently visible.
+function computeTierByDate(priceByDate) {
+  const entries = Object.entries(priceByDate || {}).filter(
+    ([, p]) => Number.isFinite(p) && p > 0,
+  );
+  if (!entries.length) return {};
+
+  const prices = entries.map(([, p]) => p);
+  const unique = Array.from(new Set(prices)).sort((a, b) => a - b);
+  if (unique.length < 2) return {};
+
+  const out = {};
+  if (unique.length <= 5) {
+    const tierForValue = new Map(
+      unique.map((v, i) => [v, Math.round((i / (unique.length - 1)) * 4)]),
+    );
+    for (const [iso, p] of entries) out[iso] = tierForValue.get(p);
+    return out;
+  }
+
+  const sorted = [...prices].sort((a, b) => a - b);
+  const lo = percentile(sorted, 0.05);
+  const hi = percentile(sorted, 0.95);
+  const span = hi - lo;
+  for (const [iso, p] of entries) {
+    let tier = 0;
+    if (span > 0) {
+      tier = Math.floor(((p - lo) / span) * 5);
+      if (tier < 0) tier = 0;
+      if (tier > 4) tier = 4;
+    }
+    out[iso] = tier;
+  }
+  return out;
+}
+
 export default function DateRangePicker({
   lang = 'en-GB',
   checkIn,
@@ -47,8 +109,18 @@ export default function DateRangePicker({
   onChange = () => {},
   t = {},
   className = '',
+  priceByDate = {},
 }) {
   const locale = lang || 'en';
+
+  // Rate tiers, computed once over the whole window so colours stay stable as
+  // the user navigates months. Fails soft: an empty/insufficient map → no tints.
+  const tierByDate = useMemo(() => computeTierByDate(priceByDate), [priceByDate]);
+  const hasTiers = useMemo(() => Object.keys(tierByDate).length > 0, [tierByDate]);
+  const tierLabels = useMemo(() => {
+    const src = t.rateTiers && typeof t.rateTiers === 'object' ? t.rateTiers : FALLBACK_TIER_LABELS;
+    return TIER_KEYS.map((k) => src[k] || FALLBACK_TIER_LABELS[k]);
+  }, [t]);
   const [open, setOpen] = useState(false);
   const [pendIn, setPendIn] = useState(checkIn);
   const [pendOut, setPendOut] = useState(checkOut);
@@ -159,8 +231,12 @@ export default function DateRangePicker({
             const inRange = pendIn && end && end > pendIn && iso > pendIn && iso < end;
             const isEndpoint = isStart || isEnd;
             const single = isStart && !end;
+            const tier = disabled ? undefined : tierByDate[iso];
 
+            // Precedence: disabled > endpoint > inRange > today(ring)+tint > tint > default.
+            // Selection states always win; tier tints only apply to plain/today cells.
             let cls = 'text-slate-700 rounded-lg hover:bg-slate-100';
+            let style;
             if (disabled) cls = 'text-slate-300 cursor-not-allowed';
             else if (isEndpoint) {
               cls = 'bg-[#9e4b13] text-white font-semibold';
@@ -170,7 +246,18 @@ export default function DateRangePicker({
             } else if (inRange) {
               cls = 'bg-[#fbeee5] text-slate-900';
             } else if (iso === today) {
-              cls = 'text-slate-800 font-semibold rounded-lg ring-1 ring-inset ring-[#9e4b13]/40 hover:bg-slate-100';
+              cls = 'text-slate-800 font-semibold rounded-lg ring-1 ring-inset ring-[#9e4b13]/40';
+              if (tier != null) {
+                style = { backgroundColor: TIER_TINTS[tier] };
+                cls += ' hover:brightness-95';
+              } else {
+                cls += ' hover:bg-slate-100';
+              }
+            } else if (tier != null) {
+              // Inline bg + brightness hover so the tint isn't overridden by a
+              // hover:bg utility (which would replace the colour entirely).
+              cls = 'text-slate-700 rounded-lg hover:brightness-95';
+              style = { backgroundColor: TIER_TINTS[tier] };
             }
 
             return (
@@ -178,6 +265,7 @@ export default function DateRangePicker({
                 key={i}
                 type="button"
                 disabled={disabled}
+                style={style}
                 onMouseEnter={() => {
                   if (pendIn && !pendOut && !disabled) setHover(iso);
                 }}
@@ -270,6 +358,26 @@ export default function DateRangePicker({
             <div className="hidden lg:block">{renderMonth(rightView)}</div>
           </div>
         </div>
+
+        {hasTiers && (
+          <div
+            className="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center gap-x-3 gap-y-1.5"
+            data-testid="legend-rate-tiers"
+          >
+            <span className="text-[11px] font-medium text-slate-500">
+              {t.rateLegendTitle || 'Nightly rate'}
+            </span>
+            {TIER_TINTS.map((tint, i) => (
+              <span key={i} className="inline-flex items-center gap-1 text-[11px] text-slate-600">
+                <span
+                  className="inline-block h-3 w-3 rounded-sm border border-black/5"
+                  style={{ backgroundColor: tint }}
+                />
+                {tierLabels[i]}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

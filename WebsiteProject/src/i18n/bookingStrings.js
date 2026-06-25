@@ -10,6 +10,8 @@ const STRINGS = {
   en: {
     title: 'Book your stay',
     subtitle: 'Reserve directly with DEVOCEAN Lodge — pay a deposit now, the balance on arrival.',
+    rateLegendTitle: 'Nightly rate',
+    rateTiers: { lowest: 'Lowest', low: 'Low', shoulder: 'Shoulder', high: 'High', peak: 'Peak' },
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adults',
@@ -61,6 +63,8 @@ const STRINGS = {
   pt: {
     title: 'Reserve a sua estadia',
     subtitle: 'Reserve diretamente com o DEVOCEAN Lodge — pague um depósito agora e o restante à chegada.',
+    rateLegendTitle: 'Tarifa por noite',
+    rateTiers: { lowest: 'Mais baixa', low: 'Baixa', shoulder: 'Média', high: 'Alta', peak: 'Máxima' },
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adultos',
@@ -112,6 +116,8 @@ const STRINGS = {
   de: {
     title: 'Buchen Sie Ihren Aufenthalt',
     subtitle: 'Buchen Sie direkt bei der DEVOCEAN Lodge — zahlen Sie jetzt eine Anzahlung, den Rest bei Ankunft.',
+    rateLegendTitle: 'Preis pro Nacht',
+    rateTiers: { lowest: 'Niedrigste', low: 'Niedrig', shoulder: 'Mittel', high: 'Hoch', peak: 'Höchste' },
     checkIn: 'Anreise',
     checkOut: 'Abreise',
     adults: 'Erwachsene',
@@ -163,6 +169,8 @@ const STRINGS = {
   fr: {
     title: 'Réservez votre séjour',
     subtitle: 'Réservez directement avec DEVOCEAN Lodge — payez un acompte maintenant, le solde à l’arrivée.',
+    rateLegendTitle: 'Tarif par nuit',
+    rateTiers: { lowest: 'La plus basse', low: 'Basse', shoulder: 'Moyenne', high: 'Haute', peak: 'La plus haute' },
     checkIn: 'Arrivée',
     checkOut: 'Départ',
     adults: 'Adultes',
@@ -214,6 +222,8 @@ const STRINGS = {
   es: {
     title: 'Reserve su estancia',
     subtitle: 'Reserve directamente con DEVOCEAN Lodge — pague un depósito ahora y el resto a su llegada.',
+    rateLegendTitle: 'Tarifa por noche',
+    rateTiers: { lowest: 'Más baja', low: 'Baja', shoulder: 'Media', high: 'Alta', peak: 'Máxima' },
     checkIn: 'Entrada',
     checkOut: 'Salida',
     adults: 'Adultos',
@@ -265,6 +275,8 @@ const STRINGS = {
   it: {
     title: 'Prenota il tuo soggiorno',
     subtitle: 'Prenota direttamente con DEVOCEAN Lodge — paga un acconto ora, il saldo all’arrivo.',
+    rateLegendTitle: 'Tariffa a notte',
+    rateTiers: { lowest: 'Più bassa', low: 'Bassa', shoulder: 'Media', high: 'Alta', peak: 'Più alta' },
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adulti',
@@ -316,6 +328,8 @@ const STRINGS = {
   nl: {
     title: 'Boek uw verblijf',
     subtitle: 'Boek rechtstreeks bij DEVOCEAN Lodge — betaal nu een aanbetaling, het saldo bij aankomst.',
+    rateLegendTitle: 'Tarief per nacht',
+    rateTiers: { lowest: 'Laagste', low: 'Laag', shoulder: 'Gemiddeld', high: 'Hoog', peak: 'Hoogste' },
     checkIn: 'Inchecken',
     checkOut: 'Uitchecken',
     adults: 'Volwassenen',

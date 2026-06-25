@@ -124,6 +124,7 @@ export function createBookingRouter(deps: {
 
   const availabilityLimiter = makeRateLimiter(30, 60_000); // 30/min/IP
   const checkoutLimiter = makeRateLimiter(10, 60_000);     // 10/min/IP
+  const calendarLimiter = makeRateLimiter(20, 60_000);     // 20/min/IP
 
   function guardConfigured(res: any): boolean {
     if (!isBookingConfigured()) {
@@ -197,6 +198,35 @@ export function createBookingRouter(deps: {
       const status = err instanceof Beds24Error ? err.status : 500;
       console.error('[BOOKING] availability error:', err.message);
       res.status(status).json({ error: 'Could not load availability. Please try again.' });
+    }
+  });
+
+  // ─── Per-date price calendar (drives the picker's rate-tier colouring) ─────
+  // Only needs Beds24 (no db/Stripe), so it is not behind guardConfigured; an
+  // unconfigured Beds24 surfaces as a 503 via Beds24Error.
+  router.get('/calendar', requireAdminKey, calendarLimiter, async (req, res) => {
+    const startRaw = String(req.query.startDate || '');
+    const endRaw = String(req.query.endDate || '');
+    if (!isValidDate(startRaw) || !isValidDate(endRaw)) {
+      return res.status(400).json({ error: 'Invalid startDate/endDate (expected YYYY-MM-DD)' });
+    }
+    // Floor the start to today and clamp the span to the picker's nav horizon.
+    const today = todayUTC();
+    const startDate = startRaw < today ? today : startRaw;
+    if (endRaw <= startDate) {
+      return res.status(400).json({ error: 'endDate must be after startDate' });
+    }
+    const maxEnd = new Date(new Date(`${startDate}T00:00:00Z`).getTime() + 760 * 86_400_000)
+      .toISOString().slice(0, 10);
+    const endDate = endRaw > maxEnd ? maxEnd : endRaw;
+
+    try {
+      const result = await beds24.getPriceCalendar({ startDate, endDate });
+      res.json(result);
+    } catch (err: any) {
+      const status = err instanceof Beds24Error ? err.status : 500;
+      console.error('[BOOKING] calendar error:', err.message);
+      res.status(status).json({ error: 'Could not load the rate calendar.' });
     }
   });
 

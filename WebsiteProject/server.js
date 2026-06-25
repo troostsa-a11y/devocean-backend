@@ -655,6 +655,10 @@ app.get('/api/booking/result/:ref', (req, res) =>
   proxyToAutomailer('GET', `/api/booking/result/${encodeURIComponent(req.params.ref)}`, req, res));
 app.get('/api/booking/config', (req, res) =>
   proxyToAutomailer('GET', '/api/booking/config', req, res));
+app.get('/api/booking/calendar', (req, res) => {
+  const qs = new URLSearchParams(req.query).toString();
+  proxyToAutomailer('GET', `/api/booking/calendar${qs ? `?${qs}` : ''}`, req, res);
+});
 
 // ─── FX rates (dev) — informational currency conversion on /book-direct ───────
 // Mirrors functions/api/fx.js. Display-only; never affects what Stripe charges.

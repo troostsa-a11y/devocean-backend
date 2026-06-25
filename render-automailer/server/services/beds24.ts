@@ -67,6 +67,19 @@ export interface AvailabilityResult {
   rooms: RoomOffers[];
 }
 
+export interface PriceCalendarResult {
+  currency: string;
+  startDate: string;
+  endDate: string;
+  /**
+   * ISO date (YYYY-MM-DD) → minimum nightly base price (price1) across all rooms.
+   * Raw Beds24 units — only the RELATIVE ordering matters (used to bucket dates
+   * into rate-tier colours), so the booking-page multiplier/rounding is NOT
+   * applied here (it would only collapse distinct rate levels, not reorder them).
+   */
+  prices: Record<string, number>;
+}
+
 interface DepositPolicy {
   normalPercent: number;       // deposit % for a normal booking
   nearPercent: number;         // deposit % when arrival is within nearDays
@@ -94,6 +107,20 @@ function nightsBetween(checkIn: string, checkOut: string): number {
 
 function todayUTC(): string {
   return new Date().toISOString().slice(0, 10);
+}
+
+const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Inclusive list of YYYY-MM-DD dates from start to end (capped for safety). */
+function eachDateISO(start: string, end: string, cap = 800): string[] {
+  const out: string[] = [];
+  let t = new Date(`${start}T00:00:00Z`).getTime();
+  const last = new Date(`${end}T00:00:00Z`).getTime();
+  while (t <= last && out.length < cap) {
+    out.push(new Date(t).toISOString().slice(0, 10));
+    t += 86_400_000;
+  }
+  return out;
 }
 
 /** Map a Beds24 offer code (e.g. "DIR-SF-OFR") to a normalised category. */
@@ -135,6 +162,9 @@ export class Beds24Service {
   private priceMultiplier = 1;
   private priceRounding: 'nearestOne' | 'twoDecimals' = 'twoDecimals';
   private depositPolicy: DepositPolicy | null = null;
+
+  // Price-calendar cache, keyed by `${startDate}_${endDate}` (~30 min TTL).
+  private calendarCache = new Map<string, { at: number; data: PriceCalendarResult }>();
 
   constructor(cfg: BookingConfig = getBookingConfig()) {
     this.cfg = cfg;
@@ -411,6 +441,78 @@ export class Beds24Service {
   }): Promise<RoomOffers | null> {
     const result = await this.getAvailability(input);
     return result.rooms.find((r) => r.roomId === input.roomId) || null;
+  }
+
+  // ─── Per-date price calendar (rate-tier colouring for the picker) ──────────
+
+  /**
+   * Fetch the per-date price for every room over [startDate, endDate] via the
+   * Beds24 calendar endpoint and reduce to the MINIMUM nightly base price
+   * (price1) across rooms for each date — the cheapest room is a good proxy for
+   * the "rate level" of that date. Closed dates and non-positive prices are
+   * skipped. Values are raw Beds24 units; they are only ever compared relative
+   * to one another to bucket dates into colour tiers (see PriceCalendarResult).
+   *
+   * Cached ~30 min per date-range (Beds24's own guidance is that the calendar
+   * only needs polling every few hours).
+   */
+  async getPriceCalendar(input: { startDate: string; endDate: string }): Promise<PriceCalendarResult> {
+    const { startDate, endDate } = input;
+    const key = `${startDate}_${endDate}`;
+    const cached = this.calendarCache.get(key);
+    if (cached && Date.now() - cached.at < 30 * 60_000) return cached.data;
+
+    await this.loadProperty();
+    const prices: Record<string, number> = {};
+
+    if (this.rooms.length) {
+      const params = new URLSearchParams();
+      // Beds24 v2 expects the bracketed array key for repeated room ids.
+      for (const room of this.rooms) params.append('roomId[]', room.roomId);
+      params.set('startDate', startDate);
+      params.set('endDate', endDate);
+      params.set('includePrices', 'true');
+      params.set('includeNumAvail', 'true');
+
+      const json = await this.request(`/inventory/rooms/calendar?${params.toString()}`);
+      const data: any[] = Array.isArray(json?.data) ? json.data : [];
+
+      // Record the cheapest positive price1 seen for a date across all rooms.
+      // Skip closed and sold-out (numAvail<=0) entries so the tier reflects the
+      // cheapest *bookable* rate, not a phantom price on an unavailable room.
+      // numAvail is only trusted when present (the from/to range shape may omit it).
+      const consider = (date: string, entry: any) => {
+        if (!date || !ISO_DATE_RE.test(date)) return;
+        if (entry?.closed === true) return;
+        if (entry?.numAvail !== undefined && Number(entry.numAvail) <= 0) return;
+        const p = Number(entry?.price1);
+        if (!Number.isFinite(p) || p <= 0) return;
+        const prev = prices[date];
+        if (prev === undefined || p < prev) prices[date] = p;
+      };
+
+      // Defensive parse: `calendar` may be a date-keyed object, an array of
+      // per-day entries, or an array of inclusive { from, to } ranges.
+      for (const roomEntry of data) {
+        const cal = roomEntry?.calendar;
+        if (!cal) continue;
+        if (Array.isArray(cal)) {
+          for (const e of cal) {
+            if (e?.date) {
+              consider(String(e.date), e);
+            } else if (e?.from) {
+              for (const d of eachDateISO(String(e.from), String(e.to || e.from))) consider(d, e);
+            }
+          }
+        } else if (typeof cal === 'object') {
+          for (const [date, e] of Object.entries(cal)) consider(date, e);
+        }
+      }
+    }
+
+    const result: PriceCalendarResult = { currency: this.currency, startDate, endDate, prices };
+    this.calendarCache.set(key, { at: Date.now(), data: result });
+    return result;
   }
 
   // ─── Booking creation ────────────────────────────────────────────────────

@@ -65,10 +65,31 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [guest, setGuest] = useState({ firstName: '', lastName: '', email: '', phone: '' });
   const [canceled, setCanceled] = useState(false);
   const [fxData, setFxData] = useState(null); // { base, rates } — display-only
+  const [priceByDate, setPriceByDate] = useState({}); // iso→rate, drives picker tiers (display-only)
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('canceled') === '1') setCanceled(true);
+  }, []);
+
+  // Fetch the per-date rate calendar once for the picker's nav horizon (today..
+  // +24mo, matching the picker's max month). Fail-soft: any error → no colours.
+  useEffect(() => {
+    let cancelled = false;
+    const start = todayStr();
+    const end = addDays(start, 730);
+    fetch(`/api/booking/calendar?startDate=${start}&endDate=${end}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (cancelled) return;
+        setPriceByDate((d && d.prices) || {});
+      })
+      .catch(() => {
+        if (!cancelled) setPriceByDate({});
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {
@@ -388,6 +409,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     checkOut={checkOut}
                     onChange={(ci, co) => { setCheckIn(ci); setCheckOut(co); }}
                     t={t}
+                    priceByDate={priceByDate}
                   />
                 </div>
 
