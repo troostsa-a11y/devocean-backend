@@ -3,15 +3,18 @@
  *
  * Keyed by base language code (en, pt, de, fr, es, it, nl). The site's full
  * locale codes (e.g. "pt-PT", "en-GB") are reduced to the base code; anything
- * without a translation falls back to English.
+ * without a translation falls back to English (whole-object fallback).
+ *
+ * Exception: the rate-tier labels (rateLegendTitle + rateTiers) live in a
+ * separate RATE_TIER_STRINGS overlay covering all 20 base languages, applied
+ * on top of the core object by getBookingStrings() — so the date-picker legend
+ * is localized even for the 13 langs whose booking copy otherwise stays English.
  */
 
 const STRINGS = {
   en: {
     title: 'Book your stay',
     subtitle: 'Reserve directly with DEVOCEAN Lodge — pay a deposit now, the balance on arrival.',
-    rateLegendTitle: 'Nightly rate',
-    rateTiers: { lowest: 'Lowest', low: 'Low', shoulder: 'Shoulder', high: 'High', peak: 'Peak' },
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adults',
@@ -63,8 +66,6 @@ const STRINGS = {
   pt: {
     title: 'Reserve a sua estadia',
     subtitle: 'Reserve diretamente com o DEVOCEAN Lodge — pague um depósito agora e o restante à chegada.',
-    rateLegendTitle: 'Tarifa por noite',
-    rateTiers: { lowest: 'Mais baixa', low: 'Baixa', shoulder: 'Média', high: 'Alta', peak: 'Máxima' },
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adultos',
@@ -116,8 +117,6 @@ const STRINGS = {
   de: {
     title: 'Buchen Sie Ihren Aufenthalt',
     subtitle: 'Buchen Sie direkt bei der DEVOCEAN Lodge — zahlen Sie jetzt eine Anzahlung, den Rest bei Ankunft.',
-    rateLegendTitle: 'Preis pro Nacht',
-    rateTiers: { lowest: 'Niedrigste', low: 'Niedrig', shoulder: 'Mittel', high: 'Hoch', peak: 'Höchste' },
     checkIn: 'Anreise',
     checkOut: 'Abreise',
     adults: 'Erwachsene',
@@ -169,8 +168,6 @@ const STRINGS = {
   fr: {
     title: 'Réservez votre séjour',
     subtitle: 'Réservez directement avec DEVOCEAN Lodge — payez un acompte maintenant, le solde à l’arrivée.',
-    rateLegendTitle: 'Tarif par nuit',
-    rateTiers: { lowest: 'La plus basse', low: 'Basse', shoulder: 'Moyenne', high: 'Haute', peak: 'La plus haute' },
     checkIn: 'Arrivée',
     checkOut: 'Départ',
     adults: 'Adultes',
@@ -222,8 +219,6 @@ const STRINGS = {
   es: {
     title: 'Reserve su estancia',
     subtitle: 'Reserve directamente con DEVOCEAN Lodge — pague un depósito ahora y el resto a su llegada.',
-    rateLegendTitle: 'Tarifa por noche',
-    rateTiers: { lowest: 'Más baja', low: 'Baja', shoulder: 'Media', high: 'Alta', peak: 'Máxima' },
     checkIn: 'Entrada',
     checkOut: 'Salida',
     adults: 'Adultos',
@@ -275,8 +270,6 @@ const STRINGS = {
   it: {
     title: 'Prenota il tuo soggiorno',
     subtitle: 'Prenota direttamente con DEVOCEAN Lodge — paga un acconto ora, il saldo all’arrivo.',
-    rateLegendTitle: 'Tariffa a notte',
-    rateTiers: { lowest: 'Più bassa', low: 'Bassa', shoulder: 'Media', high: 'Alta', peak: 'Più alta' },
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adulti',
@@ -328,8 +321,6 @@ const STRINGS = {
   nl: {
     title: 'Boek uw verblijf',
     subtitle: 'Boek rechtstreeks bij DEVOCEAN Lodge — betaal nu een aanbetaling, het saldo bij aankomst.',
-    rateLegendTitle: 'Tarief per nacht',
-    rateTiers: { lowest: 'Laagste', low: 'Laag', shoulder: 'Gemiddeld', high: 'Hoog', peak: 'Hoogste' },
     checkIn: 'Inchecken',
     checkOut: 'Uitchecken',
     adults: 'Volwassenen',
@@ -509,6 +500,35 @@ const CONFIRM_STRINGS = {
   },
 };
 
+// Rate-tier labels for the booking date-picker legend (Blue=lowest … Red=peak).
+// Kept SEPARATE from STRINGS and localised for ALL 20 user-facing base languages
+// — the rest of the booking page only ships 7, with the others falling back to
+// English as a whole object via getBookingStrings. These are overlaid onto the
+// base object so DateRangePicker's t.rateTiers / t.rateLegendTitle resolve in
+// every language regardless of that 7-language limit. Keys are baseLang() codes.
+const RATE_TIER_STRINGS = {
+  en: { rateLegendTitle: 'Nightly rate', rateTiers: { lowest: 'Lowest', low: 'Low', shoulder: 'Shoulder', high: 'High', peak: 'Peak' } },
+  pt: { rateLegendTitle: 'Tarifa por noite', rateTiers: { lowest: 'Mais baixa', low: 'Baixa', shoulder: 'Média', high: 'Alta', peak: 'Máxima' } },
+  de: { rateLegendTitle: 'Preis pro Nacht', rateTiers: { lowest: 'Niedrigste', low: 'Niedrig', shoulder: 'Mittel', high: 'Hoch', peak: 'Höchste' } },
+  fr: { rateLegendTitle: 'Tarif par nuit', rateTiers: { lowest: 'La plus basse', low: 'Basse', shoulder: 'Moyenne', high: 'Haute', peak: 'La plus haute' } },
+  es: { rateLegendTitle: 'Tarifa por noche', rateTiers: { lowest: 'Más baja', low: 'Baja', shoulder: 'Media', high: 'Alta', peak: 'Máxima' } },
+  it: { rateLegendTitle: 'Tariffa a notte', rateTiers: { lowest: 'Più bassa', low: 'Bassa', shoulder: 'Media', high: 'Alta', peak: 'Più alta' } },
+  nl: { rateLegendTitle: 'Tarief per nacht', rateTiers: { lowest: 'Laagste', low: 'Laag', shoulder: 'Gemiddeld', high: 'Hoog', peak: 'Hoogste' } },
+  sv: { rateLegendTitle: 'Pris per natt', rateTiers: { lowest: 'Lägsta', low: 'Låg', shoulder: 'Mellan', high: 'Hög', peak: 'Högsta' } },
+  pl: { rateLegendTitle: 'Cena za noc', rateTiers: { lowest: 'Najniższa', low: 'Niska', shoulder: 'Średnia', high: 'Wysoka', peak: 'Najwyższa' } },
+  ro: { rateLegendTitle: 'Tarif pe noapte', rateTiers: { lowest: 'Cel mai mic', low: 'Mic', shoulder: 'Mediu', high: 'Mare', peak: 'Cel mai mare' } },
+  sr: { rateLegendTitle: 'Cena po noći', rateTiers: { lowest: 'Najniža', low: 'Niska', shoulder: 'Srednja', high: 'Visoka', peak: 'Najviša' } },
+  hr: { rateLegendTitle: 'Cijena po noći', rateTiers: { lowest: 'Najniža', low: 'Niska', shoulder: 'Srednja', high: 'Visoka', peak: 'Najviša' } },
+  cs: { rateLegendTitle: 'Cena za noc', rateTiers: { lowest: 'Nejnižší', low: 'Nízká', shoulder: 'Střední', high: 'Vysoká', peak: 'Nejvyšší' } },
+  tr: { rateLegendTitle: 'Gecelik fiyat', rateTiers: { lowest: 'En düşük', low: 'Düşük', shoulder: 'Orta', high: 'Yüksek', peak: 'En yüksek' } },
+  ja: { rateLegendTitle: '1泊料金', rateTiers: { lowest: '最安', low: '安い', shoulder: '標準', high: '高い', peak: '最高' } },
+  zh: { rateLegendTitle: '每晚价格', rateTiers: { lowest: '最低', low: '较低', shoulder: '中等', high: '较高', peak: '最高' } },
+  ru: { rateLegendTitle: 'Цена за ночь', rateTiers: { lowest: 'Самая низкая', low: 'Низкая', shoulder: 'Средняя', high: 'Высокая', peak: 'Самая высокая' } },
+  af: { rateLegendTitle: 'Tarief per nag', rateTiers: { lowest: 'Laagste', low: 'Laag', shoulder: 'Middel', high: 'Hoog', peak: 'Hoogste' } },
+  zu: { rateLegendTitle: 'Intengo ngobusuku', rateTiers: { lowest: 'Ephansi kakhulu', low: 'Ephansi', shoulder: 'Emaphakathi', high: 'Ephezulu', peak: 'Ephezulu kakhulu' } },
+  sw: { rateLegendTitle: 'Bei kwa usiku', rateTiers: { lowest: 'Ya chini zaidi', low: 'Ya chini', shoulder: 'Ya wastani', high: 'Ya juu', peak: 'Ya juu zaidi' } },
+};
+
 function baseLang(lang) {
   if (!lang) return 'en';
   return String(lang).toLowerCase().split('-')[0];
@@ -516,7 +536,11 @@ function baseLang(lang) {
 
 export function getBookingStrings(lang) {
   const base = baseLang(lang);
-  return STRINGS[base] || STRINGS.en;
+  const core = STRINGS[base] || STRINGS.en;
+  // Overlay localised rate-tier labels (covers all 20 base langs, not just the
+  // 7 that have full booking copy). EN fallback for any unexpected code.
+  const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
+  return { ...core, ...tiers };
 }
 
 export function getConfirmStrings(lang) {

@@ -11,6 +11,6 @@ description: Always-in-DOM + CSS transform/opacity pattern used in Header.jsx fo
 
 **Icon rotation:** The hamburger icon uses `<Menu className={transition-transform ${menuOpen ? 'rotate-90' : ''}} />` — one element rotated via CSS. Do NOT swap between `<Menu>` and `<X>` on state change; that remounts the SVG path and causes a visual flicker.
 
-**Accessibility:** `aria-hidden={!menuOpen}` and `tabIndex={menuOpen ? 0 : -1}` on all links inside the drawer ensure the always-in-DOM elements are invisible to screen readers and keyboard navigation when closed.
+**Accessibility:** When closed, use `inert=""` (removes children from the tab ring + a11y tree) plus `visibility: hidden` (releases any retained focus). Do NOT use `aria-hidden` — it triggers a Chrome WAI-ARIA warning if a focused descendant gets hidden. (Earlier revisions used `aria-hidden` + per-link `tabIndex`; `inert` supersedes both.)
 
 **How to apply:** Any future overlay/drawer component (e.g. region picker, notification panel) should follow this pattern instead of conditional rendering.
