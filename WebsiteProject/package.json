@@ -57,7 +57,9 @@
     "brace-expansion": "^2.0.3",
     "esbuild": "^0.25.0",
     "minimatch": "^9.0.6",
-    "path-to-regexp": "^0.1.13",
+    "express": {
+      "path-to-regexp": "^0.1.13"
+    },
     "picomatch": "^4.0.4",
     "qs": "^6.15.0",
     "rollup": "^4.60.0",
