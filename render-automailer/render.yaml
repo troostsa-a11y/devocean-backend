@@ -56,7 +56,7 @@ services:
       - key: STRIPE_WEBHOOK_SECRET
         sync: false
       - key: DEPOSIT_PERCENT
-        value: "30"
+        value: "50"
       - key: CANCELLATION_POLICY_DAYS
         value: "30"
       - key: BOOKING_CURRENCY
