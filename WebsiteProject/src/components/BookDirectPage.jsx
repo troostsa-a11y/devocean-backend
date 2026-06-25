@@ -241,24 +241,23 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <a
             href={`/?lang=${lang}#home`}
-            className="flex items-center gap-2 font-semibold text-slate-800"
+            className="flex items-center gap-2 min-w-0 font-semibold text-slate-800"
             data-testid="link-booking-home"
           >
             <img
               src="/images/devocean_logo_header-small.webp"
               alt="DEVOCEAN Lodge"
-              className="h-9 w-9 rounded-full object-cover"
+              className="h-9 w-9 shrink-0 rounded-full object-cover"
               loading="eager"
             />
-            <span>DEVOCEAN Lodge</span>
+            <span className="truncate">DEVOCEAN Lodge</span>
           </a>
 
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex items-center gap-2 shrink-0">
             <CurrencyPicker
               lang={lang}
               currency={currency}
               onSelect={onCurrencyChange}
-              className="hidden sm:block"
             />
             <button
               type="button"

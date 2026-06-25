@@ -40,4 +40,7 @@ the top-bar label, never the charged amount (offers still render with
 `site.lang_source`). `setCurrency(currency, country)` in `useLocale.js` is the only
 currency writer after init. Picker labels use 3 i18n keys
 (`currencyLabel`/`currencySearch`/`currencyNoMatches`) in the 7 base langs; country
-names localize via `Intl.DisplayNames`. Currently desktop/tablet only (`sm:`).
+names localize via `Intl.DisplayNames`. Shown on all viewports incl. mobile: the
+booking top-bar brand text truncates (`min-w-0`/`truncate`) and the picker+menu group
+is `shrink-0` so the chip never overflows; the dropdown panel is
+`w-[calc(100vw-2rem)] max-w-[18rem]` right-anchored to fit any phone width.

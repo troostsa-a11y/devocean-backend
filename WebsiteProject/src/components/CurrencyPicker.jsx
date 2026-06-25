@@ -103,7 +103,7 @@ export default function CurrencyPicker({ lang = 'en-GB', currency, onSelect = ()
       </button>
 
       <div
-        className="absolute right-0 top-full mt-2 w-72 bg-white border border-slate-200 rounded-xl shadow-2xl overflow-hidden z-50"
+        className="absolute right-0 top-full mt-2 w-[calc(100vw-2rem)] max-w-[18rem] bg-white border border-slate-200 rounded-xl shadow-2xl overflow-hidden z-50"
         style={{
           opacity: open ? 1 : 0,
           transform: open ? 'scale(1)' : 'scale(0.97)',
