@@ -4,6 +4,7 @@ import { createServer as createViteServer } from 'vite';
 import { createServer as createHttpServer } from 'http';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { readFile } from 'fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -674,6 +675,32 @@ const vite = await createViteServer({
   },
   appType: 'spa',
   root: __dirname,
+});
+
+// Dev parity with functions/_middleware.js: inject window.__CF_COUNTRY__ from
+// the Cloudflare geolocation header so the React app picks the visitor's local
+// currency in the preview. No-op (empty country) when the header is absent.
+app.use(async (req, res, next) => {
+  if (req.method !== 'GET') return next();
+  const accept = req.headers.accept || '';
+  if (!accept.includes('text/html')) return next();
+  // Only handle SPA navigations (extensionless paths). Let Vite serve real
+  // static HTML files (/book/EN.html, /thankyou.html, /safari.html, ...).
+  if (/\.[a-zA-Z0-9]+$/.test(req.path)) return next();
+  try {
+    const template = await readFile(join(__dirname, 'index.html'), 'utf-8');
+    const html = await vite.transformIndexHtml(req.originalUrl, template);
+    const raw = String(req.headers['cf-ipcountry'] || '');
+    const cc = /^[A-Za-z]{2}$/.test(raw) ? raw.toUpperCase() : '';
+    const injection = `<script>window.__CF_COUNTRY__="${cc}";</script>`;
+    res
+      .status(200)
+      .set('Content-Type', 'text/html')
+      .end(html.replace('<head>', `<head>${injection}`));
+  } catch (e) {
+    vite.ssrFixStacktrace?.(e);
+    next(e);
+  }
 });
 
 app.use(vite.middlewares);
