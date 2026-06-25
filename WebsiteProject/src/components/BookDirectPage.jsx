@@ -332,7 +332,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }
 
   return (
-    <main className="flex-1 bg-slate-50">
+    <main className="flex-1 flex flex-col bg-slate-50">
       {/* Brand-color top bar (contact + region/language), matching the landing
           page. In-flow here via topbar-static so it sits above the hero. */}
       <LanguageTopBar
@@ -350,7 +350,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         <>
           {/* White compact bar (logo, language/currency, menu) — matches landing */}
           {renderTopBar()}
-          <div className="relative h-[38vh] min-h-[280px] flex flex-col">
+          {/* Hero image as a full-height background; title + search card float over it */}
+          <div className="relative flex-1 min-h-[520px]">
             <picture>
               <source media="(min-width: 640px)" srcSet={hero.desktopWebP} />
               <img
@@ -361,25 +362,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 loading="eager"
               />
             </picture>
-            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/55" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/70" />
 
-            <div className="relative z-10 flex-1 flex items-center">
-              <div className="max-w-6xl mx-auto w-full px-4">
-                <h1
-                  className="text-3xl sm:text-5xl font-bold text-white drop-shadow-md"
-                  data-testid="text-booking-title"
-                >
-                  {t.title}
-                </h1>
-                <p className="mt-3 max-w-xl text-white/90 text-base sm:text-lg">{t.subtitle}</p>
-              </div>
-            </div>
-          </div>
+            <div className="relative z-10 max-w-6xl mx-auto w-full px-4 pt-10 sm:pt-14 pb-12">
+              <h1
+                className="text-3xl sm:text-5xl font-bold text-white drop-shadow-md"
+                data-testid="text-booking-title"
+              >
+                {t.title}
+              </h1>
+              <p className="mt-3 max-w-xl text-white/90 text-base sm:text-lg">{t.subtitle}</p>
 
-          {/* Search bar overlapping the hero */}
-          <div className="max-w-6xl mx-auto px-4 pb-12">
-            <div className="-mt-16 sm:-mt-20 relative z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4">{t.title}</h2>
+              {/* Search card floating over the hero image */}
+              <div className="mt-8 relative z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4">{t.title}</h2>
               <form
                 onSubmit={handleSearch}
                 className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-end"
@@ -465,9 +461,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </button>
                 </div>
               </form>
-            </div>
+              </div>
 
-            <div className="mt-6">{renderNotices()}</div>
+              <div className="mt-6">{renderNotices()}</div>
+            </div>
           </div>
         </>
       ) : (
