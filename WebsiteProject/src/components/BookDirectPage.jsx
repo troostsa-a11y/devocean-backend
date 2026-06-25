@@ -5,6 +5,7 @@ import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES } from '../data/content';
 import LanguageTopBar from './LanguageTopBar';
 import CurrencyPicker from './CurrencyPicker';
+import DateRangePicker from './DateRangePicker';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -383,32 +384,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 onSubmit={handleSearch}
                 className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-end"
               >
-                <div className="lg:flex-1 lg:min-w-[150px]">
-                  <label className={FIELD_LABEL_CLASS}>{t.checkIn}</label>
-                  <input
-                    type="date"
-                    value={checkIn}
-                    min={todayStr()}
-                    onChange={(e) => {
-                      setCheckIn(e.target.value);
-                      if (e.target.value >= checkOut) setCheckOut(addDays(e.target.value, 1));
-                    }}
-                    className={INPUT_CLASS}
-                    data-testid="input-checkin"
-                    required
-                  />
-                </div>
-
-                <div className="lg:flex-1 lg:min-w-[150px]">
-                  <label className={FIELD_LABEL_CLASS}>{t.checkOut}</label>
-                  <input
-                    type="date"
-                    value={checkOut}
-                    min={addDays(checkIn, 1)}
-                    onChange={(e) => setCheckOut(e.target.value)}
-                    className={INPUT_CLASS}
-                    data-testid="input-checkout"
-                    required
+                <div className="lg:flex-[2] lg:min-w-[300px]">
+                  <label className={FIELD_LABEL_CLASS}>{t.selectDates}</label>
+                  <DateRangePicker
+                    lang={lang}
+                    checkIn={checkIn}
+                    checkOut={checkOut}
+                    onChange={(ci, co) => { setCheckIn(ci); setCheckOut(co); }}
+                    t={t}
                   />
                 </div>
 
