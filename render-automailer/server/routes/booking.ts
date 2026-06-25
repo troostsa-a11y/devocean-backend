@@ -96,12 +96,30 @@ function parseStay(body: any): { value?: StayInput; error?: string } {
   return { value: { checkIn, checkOut, adults, children } };
 }
 
+// Minimal structural type for the email automation service so the booking
+// router can schedule guest emails without importing the whole service.
+interface EmailScheduler {
+  createManualBooking(data: {
+    groupRef: string;
+    bookingRefs?: string[];
+    guestName: string;
+    firstName: string;
+    guestGender?: 'male' | 'female' | null;
+    guestEmail: string;
+    guestLanguage: string;
+    guestCountry?: string;
+    checkInDate: string;
+    checkOutDate: string;
+  }): Promise<{ booking: any; scheduledEmails: any[] }>;
+}
+
 export function createBookingRouter(deps: {
   db: DatabaseService | null;
   requireAdminKey: RequestHandler;
+  emailService?: EmailScheduler | null;
 }): Router {
   const router = express.Router();
-  const { db, requireAdminKey } = deps;
+  const { db, requireAdminKey, emailService } = deps;
   const beds24 = new Beds24Service();
 
   const availabilityLimiter = makeRateLimiter(30, 60_000); // 30/min/IP
@@ -291,8 +309,47 @@ export function createBookingRouter(deps: {
         console.warn('[BOOKING] webhook: no direct_booking for session', session.id);
         return;
       }
-      if (record.status === 'confirmed' || record.status === 'sold_out_refunded') {
-        return; // idempotent: already processed
+      if (record.status === 'sold_out_refunded') return; // already refunded, nothing to do
+
+      // Schedule the guest transactional emails (post-booking confirmation,
+      // pre-arrival, arrival, post-departure). Beds24 does NOT send a
+      // notification email for bookings created via its REST API, so the usual
+      // IMAP-ingest path never fires for direct bookings — we must schedule
+      // them here. Idempotent: createManualBooking throws "already exists" once
+      // the bookings row is present (e.g. on a webhook retry), which we treat
+      // as success.
+      async function scheduleGuestEmails(beds24BookingId: string) {
+        if (!emailService) return;
+        try {
+          const fullName = `${record!.guestFirstName} ${record!.guestLastName || ''}`.trim();
+          await emailService.createManualBooking({
+            groupRef: String(beds24BookingId),
+            bookingRefs: [String(beds24BookingId)],
+            guestName: fullName,
+            firstName: record!.guestFirstName,
+            guestEmail: record!.guestEmail,
+            guestLanguage: record!.guestLanguage || 'EN',
+            guestCountry: record!.guestCountry || undefined,
+            checkInDate: record!.checkInDate,
+            checkOutDate: record!.checkOutDate,
+          });
+          console.log('[BOOKING] scheduled guest emails for direct booking', record!.sessionRef);
+        } catch (e: any) {
+          if (String(e?.message || '').includes('already exists')) return; // already scheduled
+          // Payment + Beds24 booking are already done, but scheduling failed.
+          // Throw so Stripe retries the webhook; the confirmed-retry branch
+          // below re-attempts scheduling without re-creating the Beds24 booking.
+          console.error('[BOOKING] email scheduling failed for', record!.sessionRef, e.message);
+          throw e;
+        }
+      }
+
+      // Retry path: a previous webhook delivery already confirmed the booking
+      // but may not have scheduled the emails (e.g. a transient failure). Skip
+      // Beds24 re-creation (avoids duplicates) and just (re)schedule emails.
+      if (record.status === 'confirmed') {
+        if (record.beds24BookingId) await scheduleGuestEmails(record.beds24BookingId);
+        return;
       }
 
       const paymentIntentId =
@@ -356,6 +413,7 @@ export function createBookingRouter(deps: {
       }
 
       // Create the confirmed booking in Beds24 (PMS = source of truth downstream).
+      let confirmedBeds24Id: string;
       try {
         const { beds24BookingId } = await beds24.createConfirmedBooking({
           roomId: record.roomId,
@@ -373,6 +431,7 @@ export function createBookingRouter(deps: {
           balance: Number(record.balanceDue),
           currency: record.currency,
         });
+        confirmedBeds24Id = beds24BookingId;
         await db.updateDirectBooking(record.sessionRef, {
           status: 'confirmed',
           beds24BookingId,
@@ -387,6 +446,11 @@ export function createBookingRouter(deps: {
         console.error('[BOOKING] Beds24 creation failed after payment:', record.sessionRef, e.message);
         throw e; // let Stripe retry
       }
+
+      // Booking is now safely confirmed (it won't be re-created on a retry).
+      // Schedule the guest emails; a failure here throws so Stripe retries and
+      // the confirmed-retry branch above re-attempts scheduling.
+      await scheduleGuestEmails(confirmedBeds24Id);
     }
 
     async function handleSessionExpired(session: any) {

@@ -649,7 +649,7 @@ app.use((err, req, res, next) => {
 });
 
 // Native direct-booking API (availability/checkout/result + Stripe webhook)
-app.use('/api/booking', createBookingRouter({ db: guestDb, requireAdminKey }));
+app.use('/api/booking', createBookingRouter({ db: guestDb, requireAdminKey, emailService }));
 
 // Start server
 app.listen(PORT, '0.0.0.0', () => {
