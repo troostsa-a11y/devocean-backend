@@ -121,9 +121,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
     }
   }
 
-  const availableRooms = (availability?.rooms || []).filter(
-    (r) => r.available && Array.isArray(r.offers) && r.offers.length > 0,
-  );
+  const availableRooms = (availability?.rooms || [])
+    .map((r) => {
+      const priced = (Array.isArray(r.offers) ? r.offers : []).filter(
+        (o) => Number.isFinite(o.total) && o.total > 0,
+      );
+      const best = priced.reduce((b, o) => (b == null || o.total < b.total ? o : b), null);
+      return best ? { ...r, offers: [best] } : null;
+    })
+    .filter((r) => r && r.available);
   const depositPct = availability?.depositPercent ?? 30;
   const cancelDays = availability?.cancellationPolicyDays ?? 30;
 
@@ -268,11 +274,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode }) {
                     </div>
                   </div>
 
-                  <p className="mt-4 text-sm font-semibold text-slate-500 uppercase tracking-wide">
-                    {t.chooseRate}
-                  </p>
-
-                  <div className="mt-2 space-y-3">
+                  <div className="mt-4 space-y-3">
                     {room.offers.map((offer) => (
                       <div
                         key={offer.offerId}
