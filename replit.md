@@ -125,8 +125,10 @@ To adjust: edit `mobileObjectClass` for the relevant slide in `content.js`, then
 - Net effect: `#hero-placeholder` preloaded WebP paints as an LCP candidate at ~1.5 s before JS ever runs
 
 ### Booking Iframe (book/*.html)
-- The Beds24 booking iframe uses `sandbox="... allow-top-navigation"` (not `allow-top-navigation-by-user-activation`)
-- `allow-top-navigation` is required for both automatic frame-busting scripts (thankyou/canceled pages) and payment redirect links to navigate the top-level window correctly
+- The Beds24 booking iframe has **NO `sandbox` attribute** — it loads `beds24.com/booking2.php` with full iframe permissions (same as `booking-simple.html`).
+- **Why no sandbox**: bookings now take a 50% deposit via Stripe *inside* the Beds24 iframe. Stripe's payment/3-D-Secure step needs storage-access, popups, and redirect freedoms; a `sandbox` (even one with `allow-top-navigation`) blocked the post-payment return, leaving the guest on a blank/error page instead of the `/thankyou` confirmation. Removing the sandbox fixed it. beds24.com is a trusted, intentionally-embedded provider, so the defense-in-depth tradeoff is acceptable.
+- **Do NOT reintroduce a `sandbox` attribute on `#beds24frame`** — it breaks the Stripe deposit → confirmation-page redirect. With no sandbox, top-navigation (frame-busting thankyou/canceled pages + payment redirects) works by default.
+- Confirmation flow: after a booking/payment, Beds24 redirects to `/thankyou.html?bookid=...`; Cloudflare Pages 308-redirects `.html` → clean URL (`/thankyou`), which serves the confirmation page. `thankyou.html`'s frame-buster (`window.top.location.replace`) takes over the top window if it loaded inside the frame.
 
 ### Third-Party Consent & Analytics
 - **CookieYes** consent banner: loaded immediately (GDPR requirement); `<link rel="preconnect" href="https://cdn-cookieyes.com">` in `<head>` to reduce banner load latency
