@@ -71,6 +71,13 @@ body {
   /* above all content */
 }
 
+/* In-flow variant for the /book-direct page: keeps the .topbar select styling
+   (transparent dropdowns, white text) but sits in normal flow above the hero
+   instead of fixed-overlaying it. Must follow .topbar to win the cascade. */
+.topbar-static {
+  position: static;
+}
+
 .topbar a,
 .topbar a:visited {
   color: #fff;

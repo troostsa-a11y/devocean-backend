@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Globe2 } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES } from '../data/content';
+import LanguageTopBar from './LanguageTopBar';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -25,7 +26,7 @@ const INPUT_CLASS =
 const FIELD_LABEL_CLASS =
   'block text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1';
 
-export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency }) {
+export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency, region, onLangChange, onRegionChange }) {
   const t = useMemo(() => getBookingStrings(lang), [lang]);
   const [, navigate] = useLocation();
 
@@ -257,6 +258,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   return (
     <main className="flex-1 bg-slate-50">
+      {/* Brand-color top bar (contact + region/language), matching the landing
+          page. In-flow here via topbar-static so it sits above the hero. */}
+      <LanguageTopBar
+        ui={ui}
+        lang={lang}
+        currency={currency}
+        region={region}
+        onLangChange={onLangChange}
+        onRegionChange={onRegionChange}
+        className="topbar topbar-static bg-[#9e4b13] text-white border-b border-[#8a4211]"
+        buttonLocationDesktop="booking_desktop"
+        buttonLocationMobile="booking_mobile"
+      />
       {step === 'search' ? (
         <>
           {/* Hero with compact top bar */}

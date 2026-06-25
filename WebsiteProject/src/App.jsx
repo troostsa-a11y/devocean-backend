@@ -212,7 +212,7 @@ export default function App() {
 
         {/* Native direct booking flow */}
         <Route path="/book-direct">
-          <BookDirectPage lang={lang} countryCode={countryCode} ui={ui || criticalUI} currency={currency} />
+          <BookDirectPage lang={lang} countryCode={countryCode} ui={ui || criticalUI} currency={currency} region={region} onLangChange={setLang} onRegionChange={setRegion} />
         </Route>
 
         {/* Stripe redirect target — booking confirmation / result */}
