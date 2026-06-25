@@ -140,36 +140,9 @@ const localeToISO6391 = (locale) => {
 };
 
 export const buildBookingUrl = (locale, currency, countryCode = null, ccToCurrency = {}) => {
-  const lang = localeToISO6391(locale);
-  
-  // Map language codes to their respective static booking pages
-  const langFiles = {
-    'en': 'EN',
-    'de': 'DE',
-    'es': 'ES',
-    'fr': 'FR',
-    'it': 'IT',
-    'nl': 'NL',
-    'pt': 'PT',
-    'ru': 'RU',
-    'zh': 'ZH',
-    'sv': 'SV',
-    'ja': 'JA',
-    'pl': 'PL',
-    'sr': 'EN',
-    'hr': 'EN',
-    'cs': 'EN',
-    'tr': 'EN',
-    'af': 'AF',
-    'zu': 'ZU',
-    'sw': 'SW'
-  };
-  
-  // Use static language-specific HTML files
-  if (langFiles[lang]) {
-    return `/book/${langFiles[lang]}.html?currency=${currency}`;
-  }
-  
-  // Fallback to English booking page (shouldn't happen)
-  return `/book/EN.html?currency=${currency}`;
+  // Native direct booking flow. Replaces the old embedded Beds24 iframe pages
+  // (/book/<LANG>.html), which could not complete card payments inside the frame.
+  // The /book-direct SPA route reads the visitor's language and currency from
+  // app state, so no URL parameters are required here.
+  return '/book-direct';
 };
