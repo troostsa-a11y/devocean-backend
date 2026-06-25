@@ -261,16 +261,39 @@ export const directBookings = pgTable("direct_bookings", {
   balanceDue: decimal("balance_due", { precision: 10, scale: 2 }).notNull(),
   depositPercent: integer("deposit_percent").notNull().default(30),
 
+  // Multi-room expansion. One leg per physical room reserved (a "per-type cart"
+  // booking holds N legs). Written authoritatively at checkout and treated as
+  // the source of truth at webhook time (the webhook only re-prices to guard a
+  // sell-out, never to change the paid amounts). Each leg carries its own
+  // occupancy, money, chosen Beds24 offer and — once created — its Beds24 id, so
+  // a Stripe retry can skip already-created legs. NULL on legacy single-room rows
+  // (the webhook synthesises a single leg from the scalar columns in that case).
+  legs: jsonb("legs").$type<DirectBookingLeg[]>(),
+
   // State
   paymentStatus: text("payment_status").notNull().default('pending'), // pending | paid | refunded | refund_pending | failed | expired
-  status: text("status").notNull().default('pending'),                // pending | confirmed | sold_out_refunded | sold_out_refund_pending | failed
-  beds24BookingId: text("beds24_booking_id"),
+  status: text("status").notNull().default('pending'),                // pending | processing | confirmed | sold_out_refunded | sold_out_refund_pending | failed
+  beds24BookingId: text("beds24_booking_id"),                          // first leg's id (back-compat); all leg ids live in `legs`
   errorMessage: text("error_message"),
 
   // Timestamps
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
+
+/** One physical room reserved within a (possibly multi-room) direct booking. */
+export interface DirectBookingLeg {
+  roomId: string;
+  roomName: string;
+  offerId: number | null;
+  offerName: string | null;
+  adults: number;
+  children: number;
+  total: number;            // guest-facing total for this room's whole stay
+  deposit: number;          // this leg's share of the combined deposit
+  balance: number;          // this leg's balance due on arrival
+  beds24BookingId: string | null; // set once the leg is created in Beds24
+}
 
 export type DirectBooking = typeof directBookings.$inferSelect;
 export type InsertDirectBooking = typeof directBookings.$inferInsert;

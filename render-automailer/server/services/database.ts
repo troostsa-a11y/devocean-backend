@@ -721,6 +721,7 @@ export class DatabaseService {
         deposit_amount           DECIMAL(10,2) NOT NULL,
         balance_due              DECIMAL(10,2) NOT NULL,
         deposit_percent          INTEGER NOT NULL DEFAULT 30,
+        legs                     JSONB,
         payment_status           TEXT NOT NULL DEFAULT 'pending',
         status                   TEXT NOT NULL DEFAULT 'pending',
         beds24_booking_id        TEXT,
@@ -736,6 +737,8 @@ export class DatabaseService {
     // Idempotent upgrades for tables created before the rate-plan columns existed.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_id INTEGER`;
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_name TEXT`;
+    // Idempotent upgrade for multi-room ("per-type cart") bookings.
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS legs JSONB`;
   }
 
   async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {
@@ -771,5 +774,37 @@ export class DatabaseService {
       .where(eq(directBookings.sessionRef, sessionRef))
       .returning();
     return row;
+  }
+
+  /**
+   * Atomically claim a direct booking for webhook processing, transitioning it
+   * to `processing` and marking payment as paid. Returns true only for the
+   * single caller that wins the claim; concurrent Stripe webhook deliveries (or
+   * a duplicate retry running in parallel) get false and must bail, so legs are
+   * never double-created. A row stuck in `processing` for >2 minutes is treated
+   * as stale (a crashed prior attempt) and can be re-claimed to resume — leg
+   * idempotency (per-leg beds24_booking_id) makes resuming safe.
+   * `sold_out_refund_pending` is also re-claimable so a failed auto-refund can be
+   * retried by a later webhook delivery. Rows already `confirmed` /
+   * `sold_out_refunded` / `expired` are never claimed (the caller handles those).
+   */
+  async claimDirectBookingForProcessing(
+    sessionRef: string,
+    paymentIntentId: string | null,
+  ): Promise<boolean> {
+    const rows = await this.client`
+      UPDATE direct_bookings
+      SET status = 'processing',
+          payment_status = 'paid',
+          stripe_payment_intent_id = COALESCE(${paymentIntentId}, stripe_payment_intent_id),
+          updated_at = NOW()
+      WHERE session_ref = ${sessionRef}
+        AND (
+          status IN ('pending', 'failed', 'sold_out_refund_pending')
+          OR (status = 'processing' AND updated_at < NOW() - INTERVAL '2 minutes')
+        )
+      RETURNING id
+    `;
+    return rows.length > 0;
   }
 }

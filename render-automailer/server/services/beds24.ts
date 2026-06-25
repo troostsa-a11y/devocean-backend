@@ -45,6 +45,7 @@ export interface RoomOffer {
   type: OfferType;
   refundable: boolean;
   total: number; // guest-facing total for the whole stay (base × multiplier, rounded)
+  unitsAvailable: number; // physical rooms of this type still bookable (caps the cart qty)
 }
 
 export interface RoomOffers {
@@ -55,6 +56,7 @@ export interface RoomOffers {
   nights: number;
   currency: string;
   offers: RoomOffer[];
+  unitsAvailable: number; // units of the cheapest (auto-selected) offer; bounds the qty stepper
 }
 
 export interface AvailabilityResult {
@@ -394,6 +396,47 @@ export class Beds24Service {
     return map;
   }
 
+  /**
+   * The occupancy a single unit of this room would carry for the given party:
+   * fill the room toward the party (adults first, then children), capped by the
+   * room's adult/child/total limits. This is what we price the room at — a room
+   * smaller than the whole party is priced at "full", and the cart splits the
+   * remaining guests across the other rooms.
+   */
+  private displayOccupancy(
+    room: Beds24Room,
+    adults: number,
+    children: number,
+  ): { adults: number; children: number } {
+    const maxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
+    const a = Math.max(1, Math.min(adults, maxA, room.maxPeople));
+    const remaining = Math.max(0, room.maxPeople - a);
+    const maxC = Number.isFinite(room.maxChildren) ? room.maxChildren : remaining;
+    const c = Math.max(0, Math.min(children, maxC, remaining));
+    return { adults: a, children: c };
+  }
+
+  /** Map raw Beds24 offers → guest-facing RoomOffer[] (priced, sold-out dropped, cheapest first). */
+  private priceOffers(
+    raw: Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>,
+  ): RoomOffer[] {
+    return raw
+      .filter((o) => o.unitsAvailable >= 1)
+      .map((o) => {
+        const type = offerTypeFromName(o.offerName);
+        return {
+          offerId: o.offerId,
+          offerName: o.offerName,
+          type,
+          refundable: type !== 'nonRef',
+          total: this.toGuestPrice(o.price),
+          unitsAvailable: o.unitsAvailable,
+        };
+      })
+      .filter((o) => o.total > 0)
+      .sort((a, b) => a.total - b.total);
+  }
+
   async getAvailability(input: {
     checkIn: string; checkOut: string; adults: number; children: number;
   }): Promise<AvailabilityResult> {
@@ -402,37 +445,62 @@ export class Beds24Service {
     if (nights === 0) throw new Beds24Error('Checkout must be after checkin', 400);
 
     await this.loadProperty();
-    const party = adults + children;
-    const offersByRoom = await this.fetchOffers(input);
+
+    // Price every room at the occupancy it would actually carry for this party
+    // (min(party, room capacity)). A room smaller than the whole party is still
+    // bookable — the cart splits guests across rooms — so availability is gated
+    // on offers EXISTING, not on a single room fitting everyone. Rooms that share
+    // the same per-unit occupancy are priced together with one offers call.
+    const occByRoom = new Map<string, { adults: number; children: number }>();
+    const distinct = new Map<string, { adults: number; children: number }>();
+    for (const room of this.rooms) {
+      const occ = this.displayOccupancy(room, adults, children);
+      occByRoom.set(room.roomId, occ);
+      distinct.set(`${occ.adults}_${occ.children}`, occ);
+    }
+
+    const offerMaps = new Map<string, Record<string, Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>>>();
+    for (const [key, occ] of distinct) {
+      offerMaps.set(
+        key,
+        await this.fetchOffers({ checkIn, checkOut, adults: occ.adults, children: occ.children }),
+      );
+    }
 
     const rooms: RoomOffers[] = this.rooms.map((room) => {
-      const raw = (offersByRoom[room.roomId] || []).filter((o) => o.unitsAvailable >= 1);
-      const offers: RoomOffer[] = raw
-        .map((o) => {
-          const type = offerTypeFromName(o.offerName);
-          return {
-            offerId: o.offerId,
-            offerName: o.offerName,
-            type,
-            refundable: type !== 'nonRef',
-            total: this.toGuestPrice(o.price),
-          };
-        })
-        .filter((o) => o.total > 0)
-        .sort((a, b) => a.total - b.total);
-
+      const occ = occByRoom.get(room.roomId)!;
+      const map = offerMaps.get(`${occ.adults}_${occ.children}`) || {};
+      const offers = this.priceOffers(map[room.roomId] || []);
       return {
         roomId: room.roomId,
         name: room.name,
         maxPeople: room.maxPeople,
-        available: room.maxPeople >= party && offers.length > 0,
+        available: offers.length > 0,
         nights,
         currency: this.currency,
         offers,
+        unitsAvailable: offers[0]?.unitsAvailable ?? 0,
       };
     });
 
     return { checkIn, checkOut, nights, adults, children, currency: this.currency, rooms };
+  }
+
+  /**
+   * Priced offers per room for ONE specific occupancy — used by the cart quote
+   * to price each distinct per-leg occupancy. Same RoomOffer shape as
+   * getAvailability (toGuestPrice applied, sold-out offers dropped, cheapest first).
+   */
+  async getPricedOffersByRoom(stay: {
+    checkIn: string; checkOut: string; adults: number; children: number;
+  }): Promise<Record<string, RoomOffer[]>> {
+    await this.loadProperty();
+    const map = await this.fetchOffers(stay);
+    const out: Record<string, RoomOffer[]> = {};
+    for (const room of this.rooms) {
+      out[room.roomId] = this.priceOffers(map[room.roomId] || []);
+    }
+    return out;
   }
 
   /** Offers for a single room (used at checkout / webhook re-pricing). */

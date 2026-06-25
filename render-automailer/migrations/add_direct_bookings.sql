@@ -32,6 +32,9 @@ CREATE TABLE IF NOT EXISTS direct_bookings (
   balance_due              DECIMAL(10,2) NOT NULL,
   deposit_percent          INTEGER NOT NULL DEFAULT 30,
 
+  -- Multi-room ("per-type cart") expansion: one leg per physical room reserved.
+  legs                     JSONB,
+
   payment_status           TEXT NOT NULL DEFAULT 'pending',
   status                   TEXT NOT NULL DEFAULT 'pending',
   beds24_booking_id        TEXT,
@@ -47,3 +50,6 @@ CREATE INDEX IF NOT EXISTS idx_direct_bookings_stripe_session
 -- Idempotent upgrades for tables created before the rate-plan columns existed.
 ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_id INTEGER;
 ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_name TEXT;
+
+-- Idempotent upgrade for multi-room ("per-type cart") bookings.
+ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS legs JSONB;
