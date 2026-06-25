@@ -121,7 +121,10 @@ export default function App() {
     scheduleInitial(updateStackHeight);
 
     return () => observer.disconnect();
-  }, []);
+    // Re-run on route change so the observer re-initializes when the global
+    // header re-appears (it is hidden on /book-direct). Without this, a deep
+    // link to /book-direct → home could leave --stack-h on stale defaults.
+  }, [location]);
 
   // Handle hash navigation on route changes (immediate, with retry until element exists)
   useEffect(() => {
@@ -179,16 +182,19 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
-      {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical */}
-      <Header
-        ui={ui || criticalUI}
-        lang={lang}
-        currency={currency}
-        region={region}
-        onLangChange={setLang}
-        onRegionChange={setRegion}
-        bookUrl={bookUrl}
-      />
+      {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical.
+          Hidden on /book-direct, which renders its own compact top bar over a hero. */}
+      {location !== '/book-direct' && (
+        <Header
+          ui={ui || criticalUI}
+          lang={lang}
+          currency={currency}
+          region={region}
+          onLangChange={setLang}
+          onRegionChange={setRegion}
+          bookUrl={bookUrl}
+        />
+      )}
 
       <Suspense fallback={
         <div className="flex-1 flex items-center justify-center min-h-[50vh]">
@@ -206,7 +212,7 @@ export default function App() {
 
         {/* Native direct booking flow */}
         <Route path="/book-direct">
-          <BookDirectPage lang={lang} countryCode={countryCode} />
+          <BookDirectPage lang={lang} countryCode={countryCode} ui={ui || criticalUI} currency={currency} />
         </Route>
 
         {/* Stripe redirect target — booking confirmation / result */}

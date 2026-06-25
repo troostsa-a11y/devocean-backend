@@ -38,6 +38,8 @@ const STRINGS = {
     summary: 'Booking summary',
     nights: 'nights',
     guests: 'guests',
+    rooms: 'Rooms',
+    promoCode: 'Promo code',
     chooseRate: 'Choose your rate',
     nonRefundable: 'Non-refundable',
     rate: {
@@ -81,6 +83,8 @@ const STRINGS = {
     summary: 'Resumo da reserva',
     nights: 'noites',
     guests: 'hóspedes',
+    rooms: 'Quartos',
+    promoCode: 'Código promocional',
     chooseRate: 'Escolha a sua tarifa',
     nonRefundable: 'Não reembolsável',
     rate: {
@@ -124,6 +128,8 @@ const STRINGS = {
     summary: 'Buchungsübersicht',
     nights: 'Nächte',
     guests: 'Gäste',
+    rooms: 'Zimmer',
+    promoCode: 'Promo-Code',
     chooseRate: 'Wählen Sie Ihren Tarif',
     nonRefundable: 'Nicht erstattbar',
     rate: {
@@ -167,6 +173,8 @@ const STRINGS = {
     summary: 'Récapitulatif de la réservation',
     nights: 'nuits',
     guests: 'personnes',
+    rooms: 'Chambres',
+    promoCode: 'Code promo',
     chooseRate: 'Choisissez votre tarif',
     nonRefundable: 'Non remboursable',
     rate: {
@@ -210,6 +218,8 @@ const STRINGS = {
     summary: 'Resumen de la reserva',
     nights: 'noches',
     guests: 'huéspedes',
+    rooms: 'Habitaciones',
+    promoCode: 'Código promocional',
     chooseRate: 'Elija su tarifa',
     nonRefundable: 'No reembolsable',
     rate: {
@@ -253,6 +263,8 @@ const STRINGS = {
     summary: 'Riepilogo prenotazione',
     nights: 'notti',
     guests: 'ospiti',
+    rooms: 'Camere',
+    promoCode: 'Codice promo',
     chooseRate: 'Scegli la tua tariffa',
     nonRefundable: 'Non rimborsabile',
     rate: {
@@ -296,6 +308,8 @@ const STRINGS = {
     summary: 'Boekingsoverzicht',
     nights: 'nachten',
     guests: 'gasten',
+    rooms: 'Kamers',
+    promoCode: 'Promocode',
     chooseRate: 'Kies uw tarief',
     nonRefundable: 'Niet-restitueerbaar',
     rate: {
