@@ -212,3 +212,61 @@ export const bookingSessions = pgTable("booking_sessions", {
 
 export type BookingSession = typeof bookingSessions.$inferSelect;
 export type InsertBookingSession = typeof bookingSessions.$inferInsert;
+
+/**
+ * Direct bookings table — native (non-iframe) booking flow.
+ *
+ * Tracks the deposit/balance, Stripe references and the resulting Beds24
+ * booking for reservations made through the website's own booking page.
+ * A row is created in `pending` state when a Stripe Checkout session starts;
+ * it is only promoted to `confirmed` (and the Beds24 booking created) from a
+ * signature-verified `checkout.session.completed` webhook. The guest's
+ * transactional emails + GA4 attribution still flow through the normal IMAP
+ * pipeline once Beds24 emails its booking notification.
+ */
+export const directBookings = pgTable("direct_bookings", {
+  id: serial("id").primaryKey(),
+
+  // Our internal reference (used as the Stripe success-page key)
+  sessionRef: text("session_ref").notNull().unique(),
+
+  // Stripe references
+  stripeSessionId: text("stripe_session_id"),
+  stripePaymentIntentId: text("stripe_payment_intent_id"),
+
+  // Room + stay
+  roomId: text("room_id").notNull(),
+  roomName: text("room_name"),
+  checkInDate: text("check_in_date").notNull(),   // YYYY-MM-DD
+  checkOutDate: text("check_out_date").notNull(),  // YYYY-MM-DD
+  numAdults: integer("num_adults").notNull().default(2),
+  numChildren: integer("num_children").notNull().default(0),
+
+  // Guest
+  guestFirstName: text("guest_first_name").notNull(),
+  guestLastName: text("guest_last_name"),
+  guestEmail: text("guest_email").notNull(),
+  guestPhone: text("guest_phone"),
+  guestCountry: text("guest_country"),
+  guestLanguage: text("guest_language").notNull().default('EN'),
+
+  // Money
+  currency: text("currency").notNull().default('USD'),
+  totalAmount: decimal("total_amount", { precision: 10, scale: 2 }).notNull(),
+  depositAmount: decimal("deposit_amount", { precision: 10, scale: 2 }).notNull(),
+  balanceDue: decimal("balance_due", { precision: 10, scale: 2 }).notNull(),
+  depositPercent: integer("deposit_percent").notNull().default(30),
+
+  // State
+  paymentStatus: text("payment_status").notNull().default('pending'), // pending | paid | refunded | refund_pending | failed | expired
+  status: text("status").notNull().default('pending'),                // pending | confirmed | sold_out_refunded | sold_out_refund_pending | failed
+  beds24BookingId: text("beds24_booking_id"),
+  errorMessage: text("error_message"),
+
+  // Timestamps
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export type DirectBooking = typeof directBookings.$inferSelect;
+export type InsertDirectBooking = typeof directBookings.$inferInsert;

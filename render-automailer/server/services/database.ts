@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions } from '../../shared/schema';
-import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession } from '../../shared/schema';
+import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings } from '../../shared/schema';
+import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking } from '../../shared/schema';
 import { eq, and, lte, gte, isNull, sql, or, ilike, count, desc } from 'drizzle-orm';
 
 /**
@@ -688,5 +688,83 @@ export class DatabaseService {
   async cleanupOldSessions(): Promise<void> {
     const cutoff = new Date(Date.now() - 2 * 60 * 60 * 1000);
     await this.db.delete(bookingSessions).where(lte(bookingSessions.createdAt, cutoff));
+  }
+
+  // ─── Direct bookings (native booking flow) ─────────────────────────────────
+
+  /**
+   * Create the direct_bookings table if it doesn't exist (idempotent, startup).
+   */
+  async initDirectBookingsTable(): Promise<void> {
+    await this.client`
+      CREATE TABLE IF NOT EXISTS direct_bookings (
+        id                       SERIAL PRIMARY KEY,
+        session_ref              TEXT NOT NULL UNIQUE,
+        stripe_session_id        TEXT,
+        stripe_payment_intent_id TEXT,
+        room_id                  TEXT NOT NULL,
+        room_name                TEXT,
+        check_in_date            TEXT NOT NULL,
+        check_out_date           TEXT NOT NULL,
+        num_adults               INTEGER NOT NULL DEFAULT 2,
+        num_children             INTEGER NOT NULL DEFAULT 0,
+        guest_first_name         TEXT NOT NULL,
+        guest_last_name          TEXT,
+        guest_email              TEXT NOT NULL,
+        guest_phone              TEXT,
+        guest_country            TEXT,
+        guest_language           TEXT NOT NULL DEFAULT 'EN',
+        currency                 TEXT NOT NULL DEFAULT 'USD',
+        total_amount             DECIMAL(10,2) NOT NULL,
+        deposit_amount           DECIMAL(10,2) NOT NULL,
+        balance_due              DECIMAL(10,2) NOT NULL,
+        deposit_percent          INTEGER NOT NULL DEFAULT 30,
+        payment_status           TEXT NOT NULL DEFAULT 'pending',
+        status                   TEXT NOT NULL DEFAULT 'pending',
+        beds24_booking_id        TEXT,
+        error_message            TEXT,
+        created_at               TIMESTAMP NOT NULL DEFAULT NOW(),
+        updated_at               TIMESTAMP NOT NULL DEFAULT NOW()
+      )
+    `;
+    await this.client`
+      CREATE INDEX IF NOT EXISTS idx_direct_bookings_stripe_session
+        ON direct_bookings (stripe_session_id)
+    `;
+  }
+
+  async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {
+    const [created] = await this.db.insert(directBookings).values(data as any).returning();
+    return created;
+  }
+
+  async getDirectBookingByRef(sessionRef: string): Promise<DirectBooking | undefined> {
+    const [row] = await this.db
+      .select()
+      .from(directBookings)
+      .where(eq(directBookings.sessionRef, sessionRef))
+      .limit(1);
+    return row;
+  }
+
+  async getDirectBookingByStripeSession(stripeSessionId: string): Promise<DirectBooking | undefined> {
+    const [row] = await this.db
+      .select()
+      .from(directBookings)
+      .where(eq(directBookings.stripeSessionId, stripeSessionId))
+      .limit(1);
+    return row;
+  }
+
+  async updateDirectBooking(
+    sessionRef: string,
+    patch: Partial<InsertDirectBooking>,
+  ): Promise<DirectBooking | undefined> {
+    const [row] = await this.db
+      .update(directBookings)
+      .set({ ...(patch as any), updatedAt: new Date() })
+      .where(eq(directBookings.sessionRef, sessionRef))
+      .returning();
+    return row;
   }
 }

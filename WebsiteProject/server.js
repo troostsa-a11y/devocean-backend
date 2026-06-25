@@ -615,6 +615,46 @@ function getExperienceFieldLabel(field, lang) {
   return (labels[field] && labels[field][lang]) || (labels[field] && labels[field].en) || field;
 }
 
+// ─── Native direct-booking proxy (dev) ───────────────────────────────────────
+// Mirrors the Cloudflare Pages Functions in functions/api/booking/* so the
+// booking flow works in local dev. Proxies to the automailer with the shared
+// admin key; the Stripe webhook is NOT proxied (Stripe calls the automailer
+// directly in production).
+async function proxyToAutomailer(method, path, req, res) {
+  const automailerUrl = process.env.AUTOMAILER_URL;
+  const adminKey = process.env.ADMIN_API_KEY;
+  if (!automailerUrl || !adminKey) {
+    return res.status(503).json({ error: 'Booking is not available right now.' });
+  }
+  try {
+    const upstream = await fetch(`${automailerUrl}${path}`, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        'x-admin-key': adminKey,
+        'cf-ipcountry': req.headers['cf-ipcountry'] || '',
+      },
+      ...(method === 'POST' ? { body: JSON.stringify(req.body || {}) } : {}),
+    });
+    const text = await upstream.text();
+    res.status(upstream.status);
+    res.set('Content-Type', 'application/json');
+    res.send(text || '{}');
+  } catch (err) {
+    console.error('Booking proxy error:', err.message);
+    res.status(502).json({ error: 'Could not reach booking service.' });
+  }
+}
+
+app.post('/api/booking/availability', (req, res) =>
+  proxyToAutomailer('POST', '/api/booking/availability', req, res));
+app.post('/api/booking/checkout', (req, res) =>
+  proxyToAutomailer('POST', '/api/booking/checkout', req, res));
+app.get('/api/booking/result/:ref', (req, res) =>
+  proxyToAutomailer('GET', `/api/booking/result/${encodeURIComponent(req.params.ref)}`, req, res));
+app.get('/api/booking/config', (req, res) =>
+  proxyToAutomailer('GET', '/api/booking/config', req, res));
+
 // Start server
 const PORT = process.env.PORT || 5000;
 

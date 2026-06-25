@@ -5,6 +5,7 @@ import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 import { EmailAutomationService } from './server/services/email-automation';
 import { DatabaseService } from './server/services/database';
+import { createBookingRouter } from './server/routes/booking';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -15,7 +16,11 @@ const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
 
 // Middleware
-app.use(express.json());
+// Capture the raw body so the Stripe webhook can verify signatures (Stripe
+// needs the exact bytes, not the re-serialized JSON).
+app.use(express.json({
+  verify: (req: any, _res, buf) => { req.rawBody = buf; },
+}));
 app.use(cors()); // Allow Cloudflare Functions to call these endpoints
 
 // Environment validation
@@ -122,6 +127,9 @@ if (process.env.DATABASE_URL) {
   guestDb.initGuestsTable()
     .then(() => console.log('✅ Guests table ready'))
     .catch((err) => console.error('❌ Failed to create guests table:', err));
+  guestDb.initDirectBookingsTable()
+    .then(() => console.log('✅ Direct bookings table ready'))
+    .catch((err) => console.error('❌ Failed to create direct_bookings table:', err));
 }
 
 // Health check endpoint
@@ -639,6 +647,9 @@ app.use((err, req, res, next) => {
     message: err.message,
   });
 });
+
+// Native direct-booking API (availability/checkout/result + Stripe webhook)
+app.use('/api/booking', createBookingRouter({ db: guestDb, requireAdminKey }));
 
 // Start server
 app.listen(PORT, '0.0.0.0', () => {

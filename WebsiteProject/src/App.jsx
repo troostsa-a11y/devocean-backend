@@ -18,6 +18,8 @@ import TodoSection from './components/TodoSection';
 const ExperienceDetailPage = lazy(() => import('./components/ExperienceDetailPage'));
 const WhyPontaPage = lazy(() => import('./components/WhyPontaPage'));
 const AdminPage = lazy(() => import('./components/AdminPage'));
+const BookDirectPage = lazy(() => import('./components/BookDirectPage'));
+const BookingConfirmedPage = lazy(() => import('./components/BookingConfirmedPage'));
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -200,6 +202,16 @@ export default function App() {
         {/* Admin panel (not linked from navigation - staff only) */}
         <Route path="/admin">
           <AdminPage />
+        </Route>
+
+        {/* Native direct booking flow */}
+        <Route path="/book-direct">
+          <BookDirectPage lang={lang} countryCode={countryCode} />
+        </Route>
+
+        {/* Stripe redirect target — booking confirmation / result */}
+        <Route path="/booking-confirmed">
+          <BookingConfirmedPage lang={lang} />
         </Route>
 
         {/* Route for Why Ponta do Ouro destination page */}
