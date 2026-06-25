@@ -3,3 +3,4 @@
 - [GA4 attribution architecture](ga4-attribution.md) — server-side booking attribution via Measurement Protocol; requires 3 env vars + DB migration before automailer deploy
 - [Hero section CLS fix](hero-cls-fix.md) — paddingTop must use --header-h (not --stack-h); section must use items-start (not items-center); translation effect deps must be [lang] only
 - [CF Pages middleware SPA routing](cf-middleware-spa-routing.md) — root middleware intercepts before _redirects; SPA 404→index.html fallback must live in the middleware; /index.html as explicit _redirects destination redirects to /
+- [render-automailer build type drift](render-build-type-drift.md) — express@4 runtime + @types/express@5 + no lockfile → Render tsc fails on req.params string|string[] while local passes; coerce with String(); Render deploys only from GitHub main

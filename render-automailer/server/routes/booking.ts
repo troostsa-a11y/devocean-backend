@@ -415,7 +415,7 @@ export function createBookingRouter(deps: {
   // ─── Result lookup for the confirmation page ─────────────────────────────
   router.get('/result/:sessionRef', requireAdminKey, async (req, res) => {
     if (!db) return res.status(503).json({ error: 'Booking storage is not available.' });
-    const record = await db.getDirectBookingByRef(req.params.sessionRef);
+    const record = await db.getDirectBookingByRef(String(req.params.sessionRef));
     if (!record) return res.status(404).json({ error: 'Booking not found' });
     res.json({
       status: record.status,
