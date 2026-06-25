@@ -578,7 +578,16 @@ export function useLocale() {
   // Currency - always based on current IP-detected country
   // Updates automatically if user's location changes (e.g., traveling)
   const [currency, setCurrencyState] = useState(() => {
-    // Always use current IP-detected currency (legal tender requirement)
+    // Manual override wins: if the visitor explicitly picked a display currency
+    // (via the /book-direct country picker) honor it and skip IP auto-detection.
+    // Display-only — Stripe always charges the Beds24 base currency.
+    const overrideSource = safeLocalStorage.getItem("site.currency.source");
+    const overrideCurrency = clampCur(safeLocalStorage.getItem("site.currency"));
+    if (overrideSource === "user" && overrideCurrency) {
+      return overrideCurrency;
+    }
+
+    // Otherwise auto-detect from the visitor's IP-based country (Cloudflare).
     // URL parameters are ignored to ensure currency always matches visitor's actual location
     const cc = getCountryCode();
     const ipCurrency = pickInitialCurrency(); // Current IP-based currency
@@ -826,6 +835,20 @@ export function useLocale() {
     }
   };
 
+  // Manual display-currency override (set via the /book-direct country picker).
+  // Persisted with source="user" so the IP-based initializer above never
+  // clobbers it. Display-only: the Stripe charge always uses the base currency.
+  const setCurrency = (newCurrency, country) => {
+    const c = clampCur(newCurrency);
+    if (!c) return;
+    setCurrencyState(c);
+    safeLocalStorage.setItem("site.currency", c);
+    safeLocalStorage.setItem("site.currency.source", "user");
+    if (country) {
+      safeLocalStorage.setItem("site.currency.country", country);
+    }
+  };
+
   // Memoize country code to avoid repeated function calls
   const countryCode = useMemo(() => getCountryCode(), []);
   
@@ -843,10 +866,11 @@ export function useLocale() {
   
   return {
     lang,
-    currency, // Always IP-detected legal tender, never changes
+    currency, // IP-detected by default; user-overridable via setCurrency (display only)
     region,
     setLang,
     setRegion,
+    setCurrency,
     ui,
     criticalUI, // Provide critical nav separately for header
     loading,

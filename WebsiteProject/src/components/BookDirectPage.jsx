@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Globe2 } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES } from '../data/content';
 import LanguageTopBar from './LanguageTopBar';
+import CurrencyPicker from './CurrencyPicker';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -38,7 +39,7 @@ const INPUT_CLASS =
 const FIELD_LABEL_CLASS =
   'block text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1';
 
-export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency, region, onLangChange, onRegionChange }) {
+export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency, region, onLangChange, onRegionChange, onCurrencyChange }) {
   const t = useMemo(() => getBookingStrings(lang), [lang]);
   const [, navigate] = useLocation();
 
@@ -226,7 +227,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }, [baseCurrency, currency]);
 
   const hero = HERO_IMAGES[0];
-  const langLabel = String(lang || 'en').split('-')[0].toUpperCase();
   const navItems = [
     ['home', ui?.nav?.home || 'Home'],
     ['stay', ui?.nav?.stay || 'Stay'],
@@ -254,9 +254,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           </a>
 
           <div className="relative flex items-center gap-2">
-            <span className="hidden sm:inline-flex items-center gap-1 text-sm text-slate-700" data-testid="text-lang-currency">
-              <Globe2 className="h-4 w-4" /> {langLabel}{currency ? ` · ${currency}` : ''}
-            </span>
+            <CurrencyPicker
+              lang={lang}
+              currency={currency}
+              onSelect={onCurrencyChange}
+              className="hidden sm:block"
+            />
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
