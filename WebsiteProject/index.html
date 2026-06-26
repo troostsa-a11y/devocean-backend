@@ -532,7 +532,12 @@
       // (hero01 + "DEVOCEAN Lodge") and just delays the page, so hide it before
       // first paint and bail out — no overlay, no hero-active, no timer.
       var path = window.location.pathname;
-      if (path !== '/' && path !== '/index.html') {
+      var hash = window.location.hash;
+      // Also bail when the homepage is loaded with a section hash (e.g.
+      // "/#experiences" from a "Back to Experiences" link). The visitor is
+      // targeting that section, not the hero intro, so a 5 s full-screen
+      // overlay would just cover the section they navigated to.
+      if ((path !== '/' && path !== '/index.html') || (hash && hash.length > 1)) {
         var hideStyle = document.createElement('style');
         hideStyle.textContent = '#hero-placeholder{display:none!important}';
         document.head.appendChild(hideStyle);
