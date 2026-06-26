@@ -541,31 +541,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 </div>
 
-                {children > 0 && (
-                  <div className="w-full">
-                    <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
-                    <div className="flex flex-wrap gap-2">
-                      {childAges.map((age, i) => (
-                        <div key={i} className="flex-1 min-w-[130px]">
-                          <select
-                            value={age}
-                            onChange={(e) => setChildAge(i, e.target.value)}
-                            className={INPUT_CLASS}
-                            aria-label={fmt(t.childAgeN, { n: i + 1 })}
-                            data-testid={`select-child-age-${i}`}
-                          >
-                            <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
-                            {Array.from({ length: 18 }, (_, a) => (
-                              <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
-                            ))}
-                          </select>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
-                  </div>
-                )}
-
                 <div className="lg:flex-1 lg:min-w-[150px]">
                   <label className={FIELD_LABEL_CLASS}>{t.promoCode}</label>
                   <input
@@ -589,6 +564,31 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     {loading ? t.searching : t.search}
                   </button>
                 </div>
+
+                {children > 0 && (
+                  <div className="w-full">
+                    <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
+                    <div className="flex flex-wrap gap-2">
+                      {childAges.map((age, i) => (
+                        <div key={i} className="w-[150px]">
+                          <select
+                            value={age}
+                            onChange={(e) => setChildAge(i, e.target.value)}
+                            className={INPUT_CLASS}
+                            aria-label={fmt(t.childAgeN, { n: i + 1 })}
+                            data-testid={`select-child-age-${i}`}
+                          >
+                            <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
+                            {Array.from({ length: 13 }, (_, a) => (
+                              <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
+                            ))}
+                          </select>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
+                  </div>
+                )}
               </form>
               </div>
 
