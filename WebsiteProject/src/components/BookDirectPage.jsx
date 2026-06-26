@@ -6,6 +6,7 @@ import { HERO_IMAGES, IMG } from '../data/content';
 import LanguageTopBar from './LanguageTopBar';
 import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
+import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -172,6 +173,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (!guest.firstName.trim()) return setError(t.firstName + ' *');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guest.email.trim())) return setError(t.email + ' *');
     setLoading(true);
+    // Record the GA4 session for this booking (fallback heuristic) and capture
+    // the exact client_id to thread through checkout → webhook → email-ingest so
+    // the confirmed booking is attributed precisely. Never blocks checkout.
+    let gaClientId = null;
+    try {
+      trackBookingSession(lang, currency);
+      gaClientId = getBookingAttributionId();
+    } catch { /* analytics must never break checkout */ }
     try {
       const res = await fetch('/api/booking/checkout', {
         method: 'POST',
@@ -182,6 +191,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           checkOut,
           adults: effAdults,
           children: effChildren,
+          gaClientId,
           guest: {
             firstName: guest.firstName.trim(),
             lastName: guest.lastName.trim(),

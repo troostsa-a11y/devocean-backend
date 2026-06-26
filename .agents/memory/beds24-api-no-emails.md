@@ -28,5 +28,11 @@ booking is confirmed. Keep it idempotent + retriable:
 - `createManualBooking` throws `"already exists"` once the `bookings` row exists —
   treat that as success; any other scheduling error should throw so Stripe retries.
 
-**Known gap (not yet built):** GA4 `purchase` conversion also depended on the IMAP
-path, so it does not fire for direct bookings.
+**GA4 attribution rides the same hook:** because direct bookings never produce a
+Beds24 email, GA4 `purchase` attribution cannot live in the IMAP loop alone. It is
+centralized in a shared `EmailAutomationService.attributeBooking(booking)` helper
+called from BOTH booking-creation paths — `createManualBooking()` (native flow, the
+single fire point for direct bookings) and the IMAP loop (legacy/OTA). Ordering
+matters: the webhook marks `direct_bookings.status = 'confirmed'` with all per-leg
+Beds24 ids persisted BEFORE calling `createManualBooking()`, so the attribution
+lookup (which filters `status = 'confirmed'`) can match the row by Beds24 id.

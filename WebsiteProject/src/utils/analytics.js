@@ -68,6 +68,20 @@ function getOrCreateFallbackId() {
 }
 
 /**
+ * getBookingAttributionId
+ *
+ * Best-available attribution id to attach to a /book-direct checkout: the real
+ * GA4 client_id when the _ga cookie is present, otherwise a session-scoped
+ * "fb." fallback. The automailer stores this on the direct booking and (for
+ * real ids only) fires the server-side GA4 purchase event once Beds24 confirms.
+ *
+ * @returns {string}
+ */
+export function getBookingAttributionId() {
+  return getGA4ClientId() || getOrCreateFallbackId();
+}
+
+/**
  * trackBookingSession
  *
  * Fire-and-forget POST to /api/track-session (Cloudflare Pages Function).

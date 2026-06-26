@@ -739,6 +739,13 @@ export class DatabaseService {
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS offer_name TEXT`;
     // Idempotent upgrade for multi-room ("per-type cart") bookings.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS legs JSONB`;
+    // Idempotent upgrade for native-flow GA4 attribution.
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS ga_client_id TEXT`;
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS ga4_conversion_fired_at TIMESTAMP`;
+    await this.client`
+      CREATE INDEX IF NOT EXISTS idx_direct_bookings_attribution
+        ON direct_bookings (lower(guest_email), check_in_date, status, created_at)
+    `;
   }
 
   async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {
@@ -762,6 +769,72 @@ export class DatabaseService {
       .where(eq(directBookings.stripeSessionId, stripeSessionId))
       .limit(1);
     return row;
+  }
+
+  /**
+   * Find the confirmed direct booking that a freshly-ingested Beds24 booking
+   * email belongs to, so its exact GA4 client_id + revenue can be attributed.
+   * Considers only confirmed rows that have not already fired a GA4 event and
+   * were created within the last 7 days. Matches first on Beds24 ids (group ref
+   * or any per-room ref vs the stored scalar/per-leg ids — the robust key), then
+   * falls back to guest email + check-in date. Returns null when none match.
+   */
+  async findDirectBookingForAttribution(booking: Booking): Promise<DirectBooking | null> {
+    const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    const candidates = await this.db
+      .select()
+      .from(directBookings)
+      .where(and(
+        eq(directBookings.status, 'confirmed'),
+        isNull(directBookings.ga4ConversionFiredAt),
+        gte(directBookings.createdAt, cutoff),
+      ))
+      .orderBy(desc(directBookings.createdAt))
+      .limit(100);
+    if (candidates.length === 0) return null;
+
+    // 1) Exact Beds24 id match (group ref + per-room refs vs scalar + per-leg ids).
+    const ids = new Set(
+      [booking.groupRef, ...(booking.bookingRefs ?? [])]
+        .filter(Boolean)
+        .map((v) => String(v)),
+    );
+    if (ids.size > 0) {
+      for (const cand of candidates) {
+        const candIds = [
+          cand.beds24BookingId,
+          ...((cand.legs ?? []).map((l) => l.beds24BookingId)),
+        ].filter(Boolean) as string[];
+        if (candIds.some((id) => ids.has(String(id)))) return cand;
+      }
+    }
+
+    // 2) Fallback: same guest email + check-in date (YYYY-MM-DD).
+    const email = (booking.guestEmail ?? '').trim().toLowerCase();
+    const checkIn = (() => {
+      try { return new Date(booking.checkInDate).toISOString().slice(0, 10); }
+      catch { return null; }
+    })();
+    if (email && checkIn) {
+      for (const cand of candidates) {
+        if (
+          (cand.guestEmail ?? '').trim().toLowerCase() === email &&
+          cand.checkInDate === checkIn
+        ) return cand;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Stamp a direct booking as having fired its GA4 purchase event so it is
+   * never double-attributed (and drops out of the attribution candidate pool).
+   */
+  async markDirectBookingGA4Fired(sessionRef: string): Promise<void> {
+    await this.db
+      .update(directBookings)
+      .set({ ga4ConversionFiredAt: new Date() })
+      .where(eq(directBookings.sessionRef, sessionRef));
   }
 
   async updateDirectBooking(

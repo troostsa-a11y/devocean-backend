@@ -1,6 +1,6 @@
 - [Hero overlay LCP timing](hero-overlay-lcp.md) — overlay delay must exceed image load time (~1.5s) or Chrome skips the invisible image as LCP candidate
 - [Mobile menu pattern](mobile-menu-pattern.md) — always-in-DOM + CSS transform/opacity > mount/unmount for pre-hydration responsiveness and INP
-- [GA4 attribution architecture](ga4-attribution.md) — server-side booking attribution via Measurement Protocol; requires 3 env vars + DB migration before automailer deploy
+- [GA4 attribution architecture](ga4-attribution.md) — server-side purchase via one attributeBooking() helper called from BOTH createManualBooking (native, single fire point) and IMAP loop; exact direct cid or lang+country fallback
 - [Hero section CLS fix](hero-cls-fix.md) — paddingTop must use --header-h (not --stack-h); section must use items-start (not items-center); translation effect deps must be [lang] only
 - [CF Pages middleware SPA routing](cf-middleware-spa-routing.md) — root middleware intercepts before _redirects; SPA 404→index.html fallback must live in the middleware; /index.html as explicit _redirects destination redirects to /
 - [Dev server CF country parity](dev-server-cf-country-parity.md) — dev server must inject window.__CF_COUNTRY__ from cf-ipcountry, but only for extensionless SPA paths or it hijacks real static .html pages

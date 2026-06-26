@@ -276,6 +276,12 @@ export const directBookings = pgTable("direct_bookings", {
   beds24BookingId: text("beds24_booking_id"),                          // first leg's id (back-compat); all leg ids live in `legs`
   errorMessage: text("error_message"),
 
+  // GA4 attribution (native flow): the visitor's GA4 client_id captured at
+  // checkout, plus the timestamp the server-side `purchase` event was fired so
+  // the IMAP email-ingest path attributes each booking exactly once.
+  gaClientId: text("ga_client_id"),
+  ga4ConversionFiredAt: timestamp("ga4_conversion_fired_at"),
+
   // Timestamps
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),

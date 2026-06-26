@@ -299,6 +299,15 @@ export function createBookingRouter(deps: {
     const country = String(guest.country || '').trim().slice(0, 2).toUpperCase();
     const language = String(guest.language || 'EN').trim().slice(0, 5).toUpperCase();
 
+    // GA4 attribution: the visitor's client_id (or "fb." fallback) captured
+    // browser-side. Stored on the pending booking so the email-ingest path can
+    // attribute the confirmed booking with the exact session + revenue.
+    const rawGaClientId = req.body?.gaClientId;
+    const gaClientId =
+      typeof rawGaClientId === 'string' && rawGaClientId.length > 0 && rawGaClientId.length <= 64
+        ? rawGaClientId
+        : null;
+
     if (!firstName) return res.status(400).json({ error: 'First name is required' });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ error: 'A valid email is required' });
@@ -333,6 +342,7 @@ export function createBookingRouter(deps: {
         guestPhone: phone || null,
         guestCountry: country || null,
         guestLanguage: language,
+        gaClientId,
         currency: quote.currency,
         totalAmount: quote.total.toFixed(2),
         depositAmount: quote.deposit.toFixed(2),

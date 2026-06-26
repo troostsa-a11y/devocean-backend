@@ -8,7 +8,7 @@ import { EmailSenderService } from './email-sender';
 import { CancellationHandler } from './cancellation-handler';
 import { ModificationHandler } from './modification-handler';
 import { AdminReportingService } from './admin-reporting';
-import { insertBookingSchema } from '../../shared/schema';
+import { insertBookingSchema, type Booking } from '../../shared/schema';
 import { fireGA4Conversion } from './ga4-attribution';
 import { ZodError } from 'zod';
 
@@ -282,23 +282,8 @@ export class EmailAutomationService {
               // Auto-add guest to CRM
               await this.upsertGuestFromBooking(booking);
 
-              // GA4 Measurement Protocol attribution — fire-and-forget
-              try {
-                const session = await this.db.matchBookingSession(
-                  booking.guestLanguage,
-                  booking.guestCountry ?? null
-                );
-                if (session) {
-                  await fireGA4Conversion(session.gaClientId, {
-                    groupRef:      booking.groupRef,
-                    guestLanguage: booking.guestLanguage,
-                  });
-                } else {
-                  console.log(`[ga4-attribution] No session match for booking ${booking.groupRef} — skipping MP event`);
-                }
-              } catch (attrErr) {
-                console.error('[ga4-attribution] Attribution step failed (non-fatal):', attrErr);
-              }
+              // GA4 Measurement Protocol attribution — fire-and-forget.
+              await this.attributeBooking(booking);
 
               // Check if there's a pending cancellation for this booking
               const pendingCancellation = await this.db.getPendingCancellation(booking.groupRef);
@@ -421,7 +406,86 @@ export class EmailAutomationService {
     const scheduled = await this.db.getScheduledEmailsForBooking(booking.id);
     console.log(`[ADMIN] ${scheduled.length} emails scheduled for booking ${booking.groupRef}`);
 
+    // GA4 attribution. Native /book-direct bookings are created here (the Beds24
+    // REST API sends no notification email, so the IMAP-ingest path never sees
+    // them) — this is the single fire point for the native flow.
+    await this.attributeBooking(booking);
+
     return { booking, scheduledEmails: scheduled };
+  }
+
+  /**
+   * Fire the server-side GA4 `purchase` event for a freshly-created booking,
+   * exactly once. Called from BOTH booking-creation paths: the IMAP email-ingest
+   * loop (legacy / OTA bookings) and createManualBooking() (the native
+   * /book-direct flow, which never produces a Beds24 notification email).
+   *
+   * Resolution order:
+   *   1. Native direct booking with a REAL GA4 client_id captured at checkout →
+   *      attribute precisely (real revenue + currency); stamp it fired on a
+   *      successful send. On a transient/config MP failure, leave it unstamped
+   *      so it stays retryable and isn't lost.
+   *   2. Otherwise (no direct row, or only a consent-blocked "fb." fallback id)
+   *      → legacy lang+country session heuristic. A delayed real `_ga` capture
+   *      via trackBookingSession() can still attribute even when checkout only
+   *      had a fallback id. Any matched direct row is then stamped fired so it
+   *      leaves the candidate pool and is never double-attributed.
+   *
+   * Fully fire-and-forget: never throws into the caller.
+   */
+  private async attributeBooking(booking: Booking): Promise<void> {
+    try {
+      const direct = await this.db.findDirectBookingForAttribution(booking);
+
+      // 1) Exact attribution with a real GA4 client id.
+      if (direct?.gaClientId && !direct.gaClientId.startsWith('fb.')) {
+        const fired = await fireGA4Conversion(direct.gaClientId, {
+          transactionId:  `direct_${direct.sessionRef}`,
+          currency:       direct.currency,
+          value:          Number(direct.totalAmount),
+          deposit:        Number(direct.depositAmount),
+          guestLanguage:  booking.guestLanguage,
+          beds24GroupRef: booking.groupRef,
+          trackingMethod: 'direct_booking_exact',
+        });
+        if (fired) {
+          await this.db.markDirectBookingGA4Fired(direct.sessionRef);
+          console.log(`[ga4-attribution] Direct booking ${direct.sessionRef} attributed for ${booking.groupRef}`);
+        } else {
+          // Real client id but the MP send failed (config/network) — leave the
+          // row unstamped so it can still be attributed later; do not fall back.
+          console.warn(`[ga4-attribution] Direct booking ${direct.sessionRef} MP send failed; left unstamped for ${booking.groupRef}`);
+        }
+        return;
+      }
+
+      // 2) Legacy lang+country session heuristic (also covers a direct booking
+      // whose checkout only captured a "fb." fallback id but whose real session
+      // was recorded out-of-band by trackBookingSession()).
+      const session = await this.db.matchBookingSession(
+        booking.guestLanguage,
+        booking.guestCountry ?? null,
+      );
+      if (session) {
+        await fireGA4Conversion(session.gaClientId, {
+          transactionId:  direct ? `direct_${direct.sessionRef}` : booking.groupRef,
+          currency:       direct?.currency,
+          value:          direct ? Number(direct.totalAmount) : undefined,
+          deposit:        direct ? Number(direct.depositAmount) : undefined,
+          guestLanguage:  booking.guestLanguage,
+          beds24GroupRef: booking.groupRef,
+          trackingMethod: direct ? 'direct_booking_session_fallback' : 'automailer_session_match',
+        });
+      } else {
+        console.log(`[ga4-attribution] No session match for booking ${booking.groupRef} — skipping MP event`);
+      }
+
+      // Stamp any matched direct row so it leaves the candidate pool and is
+      // never double-attributed by a later booking's lookup.
+      if (direct) await this.db.markDirectBookingGA4Fired(direct.sessionRef);
+    } catch (attrErr) {
+      console.error('[ga4-attribution] Attribution step failed (non-fatal):', attrErr);
+    }
   }
 
   /**
