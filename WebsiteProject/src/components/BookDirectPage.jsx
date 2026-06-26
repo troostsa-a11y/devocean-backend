@@ -654,12 +654,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       const qty = cart[room.roomId] || 0;
                       const units = room.unitsAvailable || 0;
                       const incDisabled = qty >= units || !canAddRoom;
-                      // Reframe a room's capacity so the last slot reads as a child
-                      // option, but ONLY for rooms that sleep 3+: "Sleeps 3" ->
-                      // "Sleeps 2 + 1 child (0-12 yr)". Rooms that sleep 1-2 keep the
-                      // flat "Sleeps N". Beds24 returns maxChildren=0 for these rooms,
-                      // so we derive the child slot from the total, not from maxChildren.
+                      // Map the Beds24 room to its marketing unit page + main image
+                      // by matching the room name against the four unit slugs.
+                      const unitKey = ['safari', 'comfort', 'cottage', 'chalet']
+                        .find((k) => (room.name || '').toLowerCase().includes(k));
+                      const unitImg = unitKey ? IMG.units[unitKey] : null;
+                      const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
+                      // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
+                      // every unit, so the child slot is driven by unit TYPE, not the
+                      // Beds24 numbers: the Safari/Comfort tents + Chalet each take
+                      // 2 adults + 1 child ("Sleeps 2 + 1 child"); the Garden Cottage is
+                      // a strict 2-adult unit ("Sleeps 2"). The sleepsTotal>2 branch is a
+                      // fallback for any future larger unit (reframes the last adult slot).
                       const sleepsTotal = room.maxAdults || room.maxPeople;
+                      const childUnit = unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet';
                       // When the guest is searching for a single person, the room's
                       // full capacity ("Sleeps 2 + 1 child") is misleading — show that
                       // it's a single-occupancy ("single use") booking instead.
@@ -667,6 +675,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       let sleepsText;
                       if (singleGuest) {
                         sleepsText = t.singleUse;
+                      } else if (childUnit) {
+                        sleepsText = fmt(t.sleepsAdultsChildren, {
+                          adults: sleepsTotal,
+                          children: t.childOccupant,
+                        });
                       } else if (sleepsTotal > 2) {
                         sleepsText = fmt(t.sleepsAdultsChildren, {
                           adults: sleepsTotal - 1,
@@ -675,12 +688,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       } else {
                         sleepsText = fmt(t.sleeps, { count: sleepsTotal });
                       }
-                      // Map the Beds24 room to its marketing unit page + main image
-                      // by matching the room name against the four unit slugs.
-                      const unitKey = ['safari', 'comfort', 'cottage', 'chalet']
-                        .find((k) => (room.name || '').toLowerCase().includes(k));
-                      const unitImg = unitKey ? IMG.units[unitKey] : null;
-                      const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
                       return (
                         <div
                           key={room.roomId}
