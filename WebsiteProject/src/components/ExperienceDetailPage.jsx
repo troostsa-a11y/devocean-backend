@@ -258,7 +258,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
           <img
             src={exp.hero}
             alt={exp.title}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${exp.heroObjectClass || ''}`}
             fetchpriority="high"
             loading="eager"
           />

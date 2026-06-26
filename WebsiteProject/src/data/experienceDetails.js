@@ -5,6 +5,7 @@ export const EXPERIENCE_DETAILS = {
     title: "Scuba Diving",
     tagline: "Explore pristine reefs with bull sharks, mantas & whale sharks",
     hero: "/photos/experiences/diving.jpg",
+    heroObjectClass: "object-[50%_40%]",
     
     overview: "Ponta do Ouro offers world-class scuba diving with 20+ dive sites ranging from shallow reefs to deep pinnacles. The crystal-clear waters of the Mozambique Channel provide exceptional visibility and encounters with an incredible diversity of marine life, including 19 species of sharks.",
     
