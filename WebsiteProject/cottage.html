@@ -150,6 +150,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     .story-nav-logo {
@@ -686,10 +688,17 @@
   <nav class="story-nav">
     <div class="story-nav-inner">
       <a href="/" class="story-nav-logo">DEVOCEAN Lodge</a>
-      <a href="/#stay" class="story-nav-back">
-        <span>←</span>
-        <span data-i18n="backToAccommodations">Back to Accommodations</span>
-      </a>
+      <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;justify-content:flex-end;">
+        <a href="/book-direct" class="story-nav-back" data-testid="link-back-to-booking"
+          onclick="event.preventDefault();var u=this.getAttribute('href');window.close();setTimeout(function(){window.location.href=u;},200);">
+          <span>←</span>
+          <span data-i18n="backToBooking">Back to Booking</span>
+        </a>
+        <a href="/#stay" class="story-nav-back">
+          <span>←</span>
+          <span data-i18n="backToAccommodations">Back to Accommodations</span>
+        </a>
+      </div>
     </div>
   </nav>
 

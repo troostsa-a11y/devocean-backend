@@ -145,6 +145,7 @@ const CC_TO_CONTINENT = {
 const baseTranslations = {
   "en-GB": {
     "backToAccommodations": "Back to Accommodations",
+    "backToBooking": "Back to Booking",
     "readyToBook": "Ready to Book",
     "secureYourEscape": "Secure your nature-immersed escape at DEVOCEAN Lodge. Direct booking means the best rates and full support from our team.",
     "bookYourStay": "Book Your Stay",
@@ -152,6 +153,7 @@ const baseTranslations = {
   },
   "pt-PT": {
     "backToAccommodations": "Voltar às Acomodações",
+    "backToBooking": "Voltar à Reserva",
     "readyToBook": "Pronto para Reservar",
     "secureYourEscape": "Garanta sua escapada imersa na natureza no DEVOCEAN Lodge. Reserva direta significa melhores tarifas e suporte completo da nossa equipe.",
     "bookYourStay": "Reserve Sua Estadia",
@@ -159,6 +161,7 @@ const baseTranslations = {
   },
   "af-ZA": {
     "backToAccommodations": "Terug na Akkommodasie",
+    "backToBooking": "Terug na Bespreking",
     "readyToBook": "Gereed om te Bespreek",
     "secureYourEscape": "Verseker jou natuurgeïnspireerde ontvlugting by DEVOCEAN Lodge. Direkte bespreking beteken die beste tariewe en volledige ondersteuning van ons span.",
     "bookYourStay": "Bespreek Jou Verblyf",
@@ -175,6 +178,7 @@ const TRANSLATIONS = {
     "af-ZA": baseTranslations["af-ZA"], // Afrikaans (South Africa)
     "nl-NL": {
       "backToAccommodations": "Terug naar Accommodaties",
+      "backToBooking": "Terug naar Boeken",
       "readyToBook": "Klaar om te Boeken",
       "secureYourEscape": "Verzeker uw natuurlijke ontsnapping bij DEVOCEAN Lodge. Direct boeken betekent de beste tarieven en volledige ondersteuning van ons team.",
       "bookYourStay": "Boek Uw Verblijf",
@@ -182,6 +186,7 @@ const TRANSLATIONS = {
     },
     "fr-FR": {
       "backToAccommodations": "Retour aux Hébergements",
+      "backToBooking": "Retour à la Réservation",
       "readyToBook": "Prêt à Réserver",
       "secureYourEscape": "Sécurisez votre évasion immergée dans la nature au DEVOCEAN Lodge. La réservation directe signifie les meilleurs tarifs et un soutien complet de notre équipe.",
       "bookYourStay": "Réservez Votre Séjour",
@@ -189,6 +194,7 @@ const TRANSLATIONS = {
     },
     "it-IT": {
       "backToAccommodations": "Torna agli Alloggi",
+      "backToBooking": "Torna alla Prenotazione",
       "readyToBook": "Pronto a Prenotare",
       "secureYourEscape": "Assicurati la tua fuga immersa nella natura al DEVOCEAN Lodge. La prenotazione diretta significa le migliori tariffe e il supporto completo del nostro team.",
       "bookYourStay": "Prenota il Tuo Soggiorno",
@@ -196,6 +202,7 @@ const TRANSLATIONS = {
     },
     "de-DE": {
       "backToAccommodations": "Zurück zu Unterkünften",
+      "backToBooking": "Zurück zur Buchung",
       "readyToBook": "Bereit zu Buchen",
       "secureYourEscape": "Sichern Sie sich Ihren naturverbundenen Rückzugsort im DEVOCEAN Lodge. Direktbuchung bedeutet beste Preise und volle Unterstützung von unserem Team.",
       "bookYourStay": "Buchen Sie Ihren Aufenthalt",
@@ -203,6 +210,7 @@ const TRANSLATIONS = {
     },
     "es-ES": {
       "backToAccommodations": "Volver a Alojamientos",
+      "backToBooking": "Volver a la Reserva",
       "readyToBook": "Listo para Reservar",
       "secureYourEscape": "Asegure su escape inmerso en la naturaleza en DEVOCEAN Lodge. La reserva directa significa las mejores tarifas y el apoyo completo de nuestro equipo.",
       "bookYourStay": "Reserve Su Estadía",
@@ -210,6 +218,7 @@ const TRANSLATIONS = {
     },
     "sv": {
       "backToAccommodations": "Tillbaka till Boenden",
+      "backToBooking": "Tillbaka till Bokningen",
       "readyToBook": "Redo att Boka",
       "secureYourEscape": "Säkra din naturinspirerade flykt på DEVOCEAN Lodge. Direktbokning innebär bästa priser och fullt stöd från vårt team.",
       "bookYourStay": "Boka Din Vistelse",
@@ -217,6 +226,7 @@ const TRANSLATIONS = {
     },
     "pl": {
       "backToAccommodations": "Powrót do Zakwaterowania",
+      "backToBooking": "Powrót do Rezerwacji",
       "readyToBook": "Gotowy do Rezerwacji",
       "secureYourEscape": "Zabezpiecz swój pobyt w przyrodzie w DEVOCEAN Lodge. Bezpośrednia rezerwacja oznacza najlepsze ceny i pełne wsparcie naszego zespołu.",
       "bookYourStay": "Zarezerwuj Swój Pobyt",
@@ -224,6 +234,7 @@ const TRANSLATIONS = {
     },
     "zu": {
       "backToAccommodations": "Buyela Ezindaweni Zokuhlala",
+      "backToBooking": "Buyela Ekubhukheni",
       "readyToBook": "Kulungele Ukubhukha",
       "secureYourEscape": "Qinisekisa ukubaleka kwakho emvelweni ku-DEVOCEAN Lodge. Ukubhukha ngqo kusho amanani angcono nokusekelwa okugcwele yithimba lethu.",
       "bookYourStay": "Bhukha Ukunhlala Kwakho",
@@ -231,6 +242,7 @@ const TRANSLATIONS = {
     },
     "sw": {
       "backToAccommodations": "Rudi kwa Malazi",
+      "backToBooking": "Rudi kwa Uhifadhi",
       "readyToBook": "Tayari Kuhifadhi",
       "secureYourEscape": "Hakikisha utoroaji wako katika asili katika DEVOCEAN Lodge. Uhifadhi wa moja kwa moja maana bei bora na usaidizi kamili kutoka kwa timu yetu.",
       "bookYourStay": "Hifadhi Kukaa Kwako",
@@ -238,6 +250,7 @@ const TRANSLATIONS = {
     },
     "ja-JP": {
       "backToAccommodations": "宿泊施設に戻る",
+      "backToBooking": "予約に戻る",
       "readyToBook": "予約準備完了",
       "secureYourEscape": "DEVOCEAN Lodgeで自然に浸る逃避を確保してください。直接予約は最高の料金と私たちのチームからの完全なサポートを意味します。",
       "bookYourStay": "ご滞在を予約",
@@ -245,6 +258,7 @@ const TRANSLATIONS = {
     },
     "zh-CN": {
       "backToAccommodations": "返回住宿",
+      "backToBooking": "返回预订",
       "readyToBook": "准备预订",
       "secureYourEscape": "在DEVOCEAN Lodge确保您沉浸在大自然中的逃离。直接预订意味着最优惠的价格和我们团队的全力支持。",
       "bookYourStay": "预订您的住宿",
@@ -252,6 +266,7 @@ const TRANSLATIONS = {
     },
     "ru": {
       "backToAccommodations": "Вернуться к Размещению",
+      "backToBooking": "Вернуться к Бронированию",
       "readyToBook": "Готовы Забронировать",
       "secureYourEscape": "Обеспечьте свой побег в природу в DEVOCEAN Lodge. Прямое бронирование означает лучшие цены и полную поддержку от нашей команды.",
       "bookYourStay": "Забронируйте Ваше Пребывание",
@@ -259,6 +274,7 @@ const TRANSLATIONS = {
     },
     "sr": {
       "backToAccommodations": "Nazad na Smeštaj",
+      "backToBooking": "Nazad na Rezervaciju",
       "readyToBook": "Spremni za Rezervaciju",
       "secureYourEscape": "Obezbedite svoj odmor u prirodi u DEVOCEAN Lodgeu. Direktna rezervacija znači najbolje cene i punu podršku našeg tima.",
       "bookYourStay": "Rezervišite Svoj Boravak",
@@ -266,6 +282,7 @@ const TRANSLATIONS = {
     },
     "hr": {
       "backToAccommodations": "Natrag na Smještaj",
+      "backToBooking": "Natrag na Rezervaciju",
       "readyToBook": "Spremni za Rezervaciju",
       "secureYourEscape": "Osigurajte svoj odmor u prirodi u DEVOCEAN Lodgeu. Izravna rezervacija znači najbolje cijene i punu podršku našeg tima.",
       "bookYourStay": "Rezervirajte Svoj Boravak",
@@ -273,6 +290,7 @@ const TRANSLATIONS = {
     },
     "cs": {
       "backToAccommodations": "Zpět na Ubytování",
+      "backToBooking": "Zpět na Rezervaci",
       "readyToBook": "Připraveni Rezervovat",
       "secureYourEscape": "Zajistěte si svůj pobyt v přírodě v DEVOCEAN Lodge. Přímá rezervace znamená nejlepší ceny a plnou podporu našeho týmu.",
       "bookYourStay": "Rezervujte Svůj Pobyt",
@@ -280,6 +298,7 @@ const TRANSLATIONS = {
     },
     "tr": {
       "backToAccommodations": "Konaklamalara Dön",
+      "backToBooking": "Rezervasyona Dön",
       "readyToBook": "Rezervasyona Hazır",
       "secureYourEscape": "DEVOCEAN Lodge'da doğayla iç içe kaçışınızı güvence altına alın. Doğrudan rezervasyon en iyi fiyatları ve ekibimizden tam destek anlamına gelir.",
       "bookYourStay": "Konaklamanızı Rezerve Edin",
@@ -287,6 +306,7 @@ const TRANSLATIONS = {
     },
     "ro": {
       "backToAccommodations": "Înapoi la Cazare",
+      "backToBooking": "Înapoi la Rezervare",
       "readyToBook": "Gata de Rezervare",
       "secureYourEscape": "Asigurați-vă escapada în natură la DEVOCEAN Lodge. Rezervarea directă înseamnă cele mai bune tarife și sprijin complet din partea echipei noastre.",
       "bookYourStay": "Rezervați-vă Sejurul",
