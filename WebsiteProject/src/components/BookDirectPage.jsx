@@ -11,6 +11,12 @@ import { trackBookingSession, getBookingAttributionId } from '../utils/analytics
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
 }
+// Lodge is in Mozambique (CAT = UTC+2, no DST). The cancellation window is
+// measured from the lodge's calendar date so the boundary doesn't shift by a day
+// around UTC midnight (UTC "today" can lag the property's date by ~2h).
+function bookingTodayStr() {
+  return new Date(Date.now() + 2 * 3600000).toISOString().slice(0, 10);
+}
 function addDays(dateStr, days) {
   const d = new Date(`${dateStr}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() + days);
@@ -242,6 +248,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     [availability],
   );
   const cancelDays = availability?.cancellationPolicyDays ?? 30;
+  // "Free cancellation up to N days before arrival" only holds when arrival is at
+  // least `cancelDays` away from today (the booking date). Once inside that
+  // window the free-cancellation policy no longer applies, so the line is hidden.
+  const arrivalISO = availability?.checkIn || checkIn;
+  const daysToArrival = Math.round(
+    (new Date(`${arrivalISO}T00:00:00Z`).getTime() -
+      new Date(`${bookingTodayStr()}T00:00:00Z`).getTime()) /
+      86400000,
+  );
+  const freeCancellation = daysToArrival >= cancelDays;
   const maxRooms = availability?.maxRooms ?? 5;
 
   // Cart lines for /quote + /checkout: {roomId, offerId, qty}. offerId is the
@@ -748,7 +764,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   </p>
                                 )}
                               </div>
-                              {room.offers.length === 1 && (
+                              {room.offers.length === 1 && (!offer.refundable || freeCancellation) && (
                                 <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
                                   {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
                                 </p>
@@ -824,9 +840,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                           </span>
                                           <span className="text-sm font-medium text-slate-800">{t.rate?.[o.type] || o.type}</span>
                                         </span>
-                                        <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                          {o.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
-                                        </span>
+                                        {(!o.refundable || freeCancellation) && (
+                                          <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                            {o.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                                          </span>
+                                        )}
                                       </span>
                                       <span className="text-right shrink-0">
                                         <span className="block text-sm font-semibold text-slate-900">{money(o.total, room.currency)}</span>
@@ -973,9 +991,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </>
                 )}
 
-                <p className="text-xs text-slate-500 text-center pt-2">
-                  {fmt(t.cancellationPolicy, { days: cancelDays })}
-                </p>
+                {freeCancellation && (
+                  <p className="text-xs text-slate-500 text-center pt-2">
+                    {fmt(t.cancellationPolicy, { days: cancelDays })}
+                  </p>
+                )}
               </div>
             )}
 
