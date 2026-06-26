@@ -1134,6 +1134,27 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </label>
                   </div>
 
+                  <p className="text-xs text-slate-500" data-testid="text-terms-notice">
+                    {(() => {
+                      const [before, after] = String(t.termsAgree).split('{terms}');
+                      return (
+                        <>
+                          {before}
+                          <a
+                            href="https://devoceanlodge.com/legal/terms"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-[#9e4b13] underline hover:text-[#854011]"
+                            data-testid="link-terms"
+                          >
+                            {t.termsLink}
+                          </a>
+                          {after ?? ''}
+                        </>
+                      );
+                    })()}
+                  </p>
+
                   <button
                     type="submit"
                     disabled={loading}

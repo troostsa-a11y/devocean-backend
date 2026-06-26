@@ -1906,6 +1906,32 @@ const RATE_TIER_STRINGS = {
   sw: { rateLegendTitle: 'Bei kwa usiku', rateTiers: { lowest: 'Ya chini zaidi', low: 'Ya chini', shoulder: 'Ya wastani', high: 'Ya juu', peak: 'Ya juu zaidi' } },
 };
 
+// Terms & Conditions consent notice shown above the payment button. {terms} is
+// replaced by a link (label = termsLink) to the legal terms page. All 20 base
+// langs; EN fallback for any unexpected code (merged by getBookingStrings).
+const TERMS_STRINGS = {
+  en: { termsAgree: 'By continuing your reservation, you accept our {terms}.', termsLink: 'Terms & Conditions' },
+  pt: { termsAgree: 'Ao continuar a sua reserva, aceita os nossos {terms}.', termsLink: 'Termos e Condições' },
+  de: { termsAgree: 'Mit der Fortsetzung Ihrer Reservierung akzeptieren Sie unsere {terms}.', termsLink: 'Allgemeinen Geschäftsbedingungen' },
+  fr: { termsAgree: 'En poursuivant votre réservation, vous acceptez nos {terms}.', termsLink: 'Conditions générales' },
+  es: { termsAgree: 'Al continuar con su reserva, acepta nuestros {terms}.', termsLink: 'Términos y Condiciones' },
+  it: { termsAgree: 'Continuando la prenotazione, accetti i nostri {terms}.', termsLink: 'Termini e Condizioni' },
+  nl: { termsAgree: 'Door uw reservering voort te zetten, accepteert u onze {terms}.', termsLink: 'Algemene voorwaarden' },
+  sv: { termsAgree: 'Genom att fortsätta din bokning accepterar du våra {terms}.', termsLink: 'Villkor' },
+  pl: { termsAgree: 'Kontynuując rezerwację, akceptujesz nasz {terms}.', termsLink: 'Regulamin' },
+  ro: { termsAgree: 'Continuând rezervarea, accepți {terms}.', termsLink: 'Termenii și Condițiile' },
+  sr: { termsAgree: 'Nastavljanjem rezervacije prihvatate naše {terms}.', termsLink: 'Uslove korišćenja' },
+  hr: { termsAgree: 'Nastavljanjem rezervacije prihvaćate naše {terms}.', termsLink: 'Uvjete korištenja' },
+  cs: { termsAgree: 'Pokračováním v rezervaci přijímáte naše {terms}.', termsLink: 'Obchodní podmínky' },
+  tr: { termsAgree: 'Rezervasyonunuza devam ederek {terms} kabul etmiş olursunuz.', termsLink: 'Şartlar ve Koşulları' },
+  ja: { termsAgree: '予約を続行すると、{terms}に同意したものとみなされます。', termsLink: '利用規約' },
+  zh: { termsAgree: '继续预订即表示您接受我们的{terms}。', termsLink: '条款与条件' },
+  ru: { termsAgree: 'Продолжая бронирование, вы принимаете наши {terms}.', termsLink: 'Условия и положения' },
+  af: { termsAgree: 'Deur jou bespreking voort te sit, aanvaar jy ons {terms}.', termsLink: 'Bepalings en Voorwaardes' },
+  zu: { termsAgree: 'Ngokuqhubeka nokubhukha kwakho, uyavuma {terms} yethu.', termsLink: 'Imigomo Nemibandela' },
+  sw: { termsAgree: 'Kwa kuendelea na uhifadhi wako, unakubali {terms} zetu.', termsLink: 'Sheria na Masharti' },
+};
+
 function baseLang(lang) {
   if (!lang) return 'en';
   return String(lang).toLowerCase().split('-')[0];
@@ -1917,7 +1943,8 @@ export function getBookingStrings(lang) {
   // Overlay localised rate-tier labels (all 20 base langs). EN fallback for any
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
-  return { ...core, ...tiers };
+  const terms = TERMS_STRINGS[base] || TERMS_STRINGS.en;
+  return { ...core, ...tiers, ...terms };
 }
 
 export function getConfirmStrings(lang) {
