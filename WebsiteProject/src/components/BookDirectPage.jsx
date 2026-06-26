@@ -561,7 +561,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     data-testid="button-search"
                   >
                     {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CalendarCheck2 className="h-5 w-5" />}
-                    {loading ? t.searching : t.search}
+                    <span className="grid">
+                      <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">{t.search}</span>
+                      <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">{t.searching}</span>
+                      <span className="col-start-1 row-start-1 whitespace-nowrap">{loading ? t.searching : t.search}</span>
+                    </span>
                   </button>
                 </div>
 
