@@ -24,4 +24,14 @@ The native `/book-direct` flow (Beds24 REST + Stripe deposit) must produce the *
 
 # Trust boundary
 
-Client-supplied money is never trusted: the server re-quotes live offers and re-selects the chosen plan **by `offerId`** at checkout, and re-checks availability (offer still present) at Stripe webhook time before creating the Beds24 booking. The webhook still auto-refunds + marks `sold_out_refunded` if the room/offer vanished during payment.
+Client-supplied money is never trusted: the server re-quotes live offers and re-selects the chosen plan **by `offerId`** at checkout, and runs a **full fresh server-side re-quote at Stripe webhook time** before creating the Beds24 booking(s).
+
+**Webhook recompute policy (non-obvious — keep it):**
+- The webhook re-runs the *same* `computeCartQuote` used at checkout (cart lines reconstructed from the persisted legs: qty per `roomId+offerId`). `distributeGuests` is deterministic, so fresh legs line up 1:1 with stored legs.
+- That single re-quote serves two purposes: (1) the **sell-out guard** (it throws `BookingCartError` for `SOLD_OUT`/`UNITS_EXCEEDED`/capacity), and (2) **rate-drift detection** vs the stored total.
+- **The guest is charged the price quoted + paid at checkout (stored on the legs), NOT the fresh webhook price.** Rate drift in the seconds/minutes payment window is only logged (`price drift at webhook for <ref>`), never re-charged or refunded — refunding a paying guest over a tiny good-faith rate move is wrong product behavior. This matches the original single-room design's intent.
+- **Error discrimination is critical:** `BookingCartError` = definitive sell-out → auto-refund + mark `sold_out_refunded`. A `Beds24Error`/transient upstream failure must be **rethrown so Stripe retries** — do NOT treat "re-quote threw" as "sold out" (the old `legsStillAvailable` catch-all `ok=false` would auto-refund a paying guest on a transient Beds24 blip; the re-quote path fixes that).
+
+**Why:** "recompute at webhook" (documented in replit.md) means re-validate availability + re-derive the authoritative price server-side; it does NOT mean charge whatever the webhook quote says. The deposit was already captured by Stripe against a server-computed checkout quote, so honoring that quote is both faithful and correct.
+
+**Known limitation:** Beds24 has no idempotency key, and a leg is created then its id persisted in two steps — a crash between them lets a retry re-create that leg (same window existed in the single-room design). The `claimDirectBookingForProcessing` claim + per-leg id persistence + 2-min stale-processing reclaim covers normal concurrent retries, not a hard crash mid-create.

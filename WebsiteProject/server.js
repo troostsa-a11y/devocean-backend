@@ -649,6 +649,8 @@ async function proxyToAutomailer(method, path, req, res) {
 
 app.post('/api/booking/availability', (req, res) =>
   proxyToAutomailer('POST', '/api/booking/availability', req, res));
+app.post('/api/booking/quote', (req, res) =>
+  proxyToAutomailer('POST', '/api/booking/quote', req, res));
 app.post('/api/booking/checkout', (req, res) =>
   proxyToAutomailer('POST', '/api/booking/checkout', req, res));
 app.get('/api/booking/result/:ref', (req, res) =>

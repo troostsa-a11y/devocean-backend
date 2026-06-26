@@ -27,6 +27,8 @@ import {
   isBookingConfigured,
   splitDeposit,
 } from '../config/booking-config';
+import { computeCartQuote, BookingCartError } from '../services/booking-cart';
+import type { DirectBookingLeg } from '../../shared/schema';
 
 // ─── tiny in-memory rate limiter (per IP, sliding window) ────────────────────
 function makeRateLimiter(maxRequests: number, windowMs: number): RequestHandler {
@@ -123,6 +125,7 @@ export function createBookingRouter(deps: {
   const beds24 = new Beds24Service();
 
   const availabilityLimiter = makeRateLimiter(30, 60_000); // 30/min/IP
+  const quoteLimiter = makeRateLimiter(40, 60_000);        // 40/min/IP (debounced live cart)
   const checkoutLimiter = makeRateLimiter(10, 60_000);     // 10/min/IP
   const calendarLimiter = makeRateLimiter(20, 60_000);     // 20/min/IP
 
@@ -167,6 +170,7 @@ export function createBookingRouter(deps: {
         name: r.name,
         maxPeople: r.maxPeople,
         available: r.available,
+        unitsAvailable: r.unitsAvailable,
         nights: r.nights,
         currency: r.currency,
         offers: r.offers.map((o) => {
@@ -179,6 +183,7 @@ export function createBookingRouter(deps: {
             total: o.total,
             deposit,
             balance,
+            unitsAvailable: o.unitsAvailable,
           };
         }),
       }));
@@ -192,12 +197,51 @@ export function createBookingRouter(deps: {
         currency: result.currency,
         depositPercent,
         cancellationPolicyDays: beds24.getCancellationDays(),
+        maxRooms: getBookingConfig().maxRooms,
         rooms,
       });
     } catch (err: any) {
       const status = err instanceof Beds24Error ? err.status : 500;
       console.error('[BOOKING] availability error:', err.message);
       res.status(status).json({ error: 'Could not load availability. Please try again.' });
+    }
+  });
+
+  // ─── Live cart quote (per-type cart → combined price/deposit) ──────────────
+  // Drives the debounced cart preview on /book-direct. Recomputes everything
+  // server-side from fresh Beds24 offers; never trusts client amounts.
+  router.post('/quote', requireAdminKey, quoteLimiter, async (req, res) => {
+    if (!guardConfigured(res)) return;
+    const parsed = parseStay(req.body);
+    if (parsed.error || !parsed.value) return res.status(400).json({ error: parsed.error });
+    const stay = parsed.value;
+    const cartLines = Array.isArray(req.body?.rooms) ? req.body.rooms : [];
+
+    try {
+      const quote = await computeCartQuote(beds24, stay, cartLines, getBookingConfig());
+      res.json({
+        checkIn: quote.checkIn,
+        checkOut: quote.checkOut,
+        nights: quote.nights,
+        adults: quote.adults,
+        children: quote.children,
+        currency: quote.currency,
+        depositPercent: quote.depositPercent,
+        cancellationPolicyDays: quote.cancellationPolicyDays,
+        total: quote.total,
+        deposit: quote.deposit,
+        balance: quote.balance,
+        rooms: quote.rooms,
+        lines: quote.lines,
+      });
+    } catch (err: any) {
+      const isCart = err instanceof BookingCartError;
+      const status = isCart ? err.status : err instanceof Beds24Error ? err.status : 500;
+      if (!isCart) console.error('[BOOKING] quote error:', err.message);
+      res.status(status).json({
+        error: isCart ? err.message : 'Could not price your selection. Please try again.',
+        code: isCart ? err.code : undefined,
+      });
     }
   });
 
@@ -237,8 +281,14 @@ export function createBookingRouter(deps: {
     if (parsed.error || !parsed.value) return res.status(400).json({ error: parsed.error });
     const stay = parsed.value;
 
-    const roomId = String(req.body?.roomId || '').trim();
-    const offerId = Number.parseInt(req.body?.offerId, 10);
+    // Cart: prefer the multi-room `rooms:[{roomId,offerId,qty}]` shape; fall back
+    // to a single-room `roomId`/`offerId` for backward compatibility.
+    let cartLines = req.body?.rooms;
+    if (!Array.isArray(cartLines) || cartLines.length === 0) {
+      const roomId = String(req.body?.roomId || '').trim();
+      cartLines = roomId ? [{ roomId, offerId: req.body?.offerId ?? null, qty: 1 }] : [];
+    }
+
     const guest = req.body?.guest || {};
     const firstName = String(guest.firstName || '').trim().slice(0, 80);
     const lastName = String(guest.lastName || '').trim().slice(0, 80);
@@ -247,8 +297,6 @@ export function createBookingRouter(deps: {
     const country = String(guest.country || '').trim().slice(0, 2).toUpperCase();
     const language = String(guest.language || 'EN').trim().slice(0, 5).toUpperCase();
 
-    if (!roomId) return res.status(400).json({ error: 'Missing roomId' });
-    if (!Number.isFinite(offerId)) return res.status(400).json({ error: 'Missing rate plan' });
     if (!firstName) return res.status(400).json({ error: 'First name is required' });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ error: 'A valid email is required' });
@@ -256,30 +304,26 @@ export function createBookingRouter(deps: {
 
     const cfg = getBookingConfig();
     try {
-      // Recompute price/availability server-side from fresh Beds24 offers and
-      // re-select the exact rate plan the guest chose. Client amounts are never
-      // trusted — only the offerId is used to look up the live price.
-      const roomOffers = await beds24.getRoomOffers({ roomId, ...stay });
-      if (!roomOffers) return res.status(404).json({ error: 'Room not found' });
-      const offer = roomOffers.offers.find((o) => o.offerId === offerId);
-      if (!roomOffers.available || !offer || offer.total <= 0) {
-        return res.status(409).json({ error: 'Sorry, that rate is no longer available for those dates.' });
-      }
+      // Recompute everything (occupancy split, per-leg price, combined deposit)
+      // server-side from fresh Beds24 offers. Client amounts are never trusted —
+      // only roomId/offerId/qty select WHAT to price.
+      const quote = await computeCartQuote(beds24, stay, cartLines, cfg);
+      const first = quote.legs[0];
+      const summary = quote.lines
+        .map((l) => (l.qty > 1 ? `${l.roomName} \u00d7${l.qty}` : l.roomName))
+        .join(', ');
 
-      const depositPercent = beds24.getDepositPercentForArrival(stay.checkIn);
-      const { deposit, balance } = splitDeposit(offer.total, depositPercent);
       const sessionRef = crypto.randomUUID();
-      const currency = roomOffers.currency;
 
       await db!.createDirectBooking({
         sessionRef,
-        roomId,
-        roomName: roomOffers.name,
-        offerId: offer.offerId,
-        offerName: offer.offerName || null,
+        roomId: first.roomId,                 // first leg (scalar back-compat)
+        roomName: summary,                    // combined human summary
+        offerId: first.offerId,
+        offerName: first.offerName,
         checkInDate: stay.checkIn,
         checkOutDate: stay.checkOut,
-        numAdults: stay.adults,
+        numAdults: stay.adults,               // whole-party totals
         numChildren: stay.children,
         guestFirstName: firstName,
         guestLastName: lastName || null,
@@ -287,23 +331,24 @@ export function createBookingRouter(deps: {
         guestPhone: phone || null,
         guestCountry: country || null,
         guestLanguage: language,
-        currency,
-        totalAmount: offer.total.toFixed(2),
-        depositAmount: deposit.toFixed(2),
-        balanceDue: balance.toFixed(2),
-        depositPercent,
+        currency: quote.currency,
+        totalAmount: quote.total.toFixed(2),
+        depositAmount: quote.deposit.toFixed(2),
+        balanceDue: quote.balance.toFixed(2),
+        depositPercent: quote.depositPercent,
+        legs: quote.legs,                     // per-room source of truth
         paymentStatus: 'pending',
         status: 'pending',
       });
 
       const { url, stripeSessionId } = await createDepositCheckoutSession({
         sessionRef,
-        depositAmount: deposit,
-        currency,
-        roomName: roomOffers.name,
+        depositAmount: quote.deposit,
+        currency: quote.currency,
+        roomName: summary,
         checkIn: stay.checkIn,
         checkOut: stay.checkOut,
-        balanceDue: balance,
+        balanceDue: quote.balance,
         guestEmail: email,
         locale: language.toLowerCase(),
       }, cfg);
@@ -312,9 +357,13 @@ export function createBookingRouter(deps: {
 
       res.json({ url, sessionRef });
     } catch (err: any) {
-      const status = err instanceof Beds24Error ? err.status : 500;
-      console.error('[BOOKING] checkout error:', err.message);
-      res.status(status).json({ error: 'Could not start checkout. Please try again.' });
+      const isCart = err instanceof BookingCartError;
+      const status = isCart ? err.status : err instanceof Beds24Error ? err.status : 500;
+      if (!isCart) console.error('[BOOKING] checkout error:', err.message);
+      res.status(status).json({
+        error: isCart ? err.message : 'Could not start checkout. Please try again.',
+        code: isCart ? err.code : undefined,
+      });
     }
   });
 
@@ -347,165 +396,247 @@ export function createBookingRouter(deps: {
       res.status(500).json({ error: 'Webhook processing failed' });
     }
 
+    // Build the per-room legs to confirm. For carts this is the persisted
+    // `legs` JSONB; for legacy single-room rows it's synthesized from the scalar
+    // columns so old pending sessions still confirm correctly.
+    function legsFromRecord(record: any): DirectBookingLeg[] {
+      if (Array.isArray(record.legs) && record.legs.length) {
+        return record.legs.map((l: DirectBookingLeg) => ({ ...l }));
+      }
+      return [{
+        roomId: record.roomId,
+        roomName: record.roomName || 'Room',
+        offerId: record.offerId ?? null,
+        offerName: record.offerName ?? null,
+        adults: record.numAdults,
+        children: record.numChildren,
+        total: Number(record.totalAmount),
+        deposit: Number(record.depositAmount),
+        balance: Number(record.balanceDue),
+        beds24BookingId: record.beds24BookingId ?? null,
+      }];
+    }
+
+    // Schedule the guest transactional emails (post-booking confirmation,
+    // pre-arrival, arrival, post-departure) ONCE for the whole booking group.
+    // Beds24 does NOT send a notification email for bookings created via its
+    // REST API, so the usual IMAP-ingest path never fires for direct bookings.
+    // Idempotent: createManualBooking throws "already exists" once the group is
+    // present (e.g. on a webhook retry), which we treat as success. The first
+    // leg's Beds24 id is the group ref; every leg id is passed as a booking ref.
+    async function scheduleGuestEmails(record: any, legs: DirectBookingLeg[]) {
+      if (!emailService) return;
+      const ids = legs.map((l) => l.beds24BookingId).filter(Boolean).map(String);
+      if (ids.length === 0) return;
+      try {
+        const fullName = `${record.guestFirstName} ${record.guestLastName || ''}`.trim();
+        await emailService.createManualBooking({
+          groupRef: ids[0],
+          bookingRefs: ids,
+          guestName: fullName,
+          firstName: record.guestFirstName,
+          guestEmail: record.guestEmail,
+          guestLanguage: record.guestLanguage || 'EN',
+          guestCountry: record.guestCountry || undefined,
+          checkInDate: record.checkInDate,
+          checkOutDate: record.checkOutDate,
+        });
+        console.log('[BOOKING] scheduled guest emails for direct booking', record.sessionRef);
+      } catch (e: any) {
+        if (String(e?.message || '').includes('already exists')) return; // already scheduled
+        console.error('[BOOKING] email scheduling failed for', record.sessionRef, e.message);
+        throw e; // let Stripe retry; the confirmed-retry branch re-attempts
+      }
+    }
+
+    // Re-quote the whole cart from fresh Beds24 offers at webhook time — the
+    // documented "recompute at webhook" guard. computeCartQuote re-validates
+    // availability + units (throwing BookingCartError on any sell-out / capacity
+    // loss) AND recomputes the authoritative price, so one call both guards the
+    // sell-out case and lets us detect rate drift. The cart lines are rebuilt
+    // from the persisted per-leg occupancy (qty per roomId+offer), mirroring how
+    // checkout priced it; distributeGuests is deterministic, so the fresh legs
+    // line up 1:1 with the stored ones. Throws (BookingCartError on sell-out,
+    // Beds24Error on a transient upstream failure) — the caller decides.
+    async function recheckCartQuote(record: any, legs: DirectBookingLeg[]) {
+      const lineMap = new Map<string, { roomId: string; offerId: number | null; qty: number }>();
+      for (const leg of legs) {
+        const key = `${leg.roomId}__${leg.offerId ?? 'any'}`;
+        const existing = lineMap.get(key);
+        if (existing) existing.qty += 1;
+        else lineMap.set(key, { roomId: leg.roomId, offerId: leg.offerId ?? null, qty: 1 });
+      }
+      return computeCartQuote(
+        beds24,
+        {
+          checkIn: record.checkInDate,
+          checkOut: record.checkOutDate,
+          adults: record.numAdults,
+          children: record.numChildren,
+        },
+        Array.from(lineMap.values()),
+        cfg,
+      );
+    }
+
+    async function refundSoldOut(record: any, paymentIntentId: string | undefined) {
+      // The refunded state must only be recorded if Stripe actually refunds;
+      // otherwise the guest stays charged while our record says "refunded".
+      if (!paymentIntentId) {
+        await db!.updateDirectBooking(record.sessionRef, {
+          status: 'sold_out_refund_pending',
+          paymentStatus: 'refund_pending',
+          errorMessage: 'Room sold out before confirmation; refund pending (no payment intent on event).',
+        });
+        throw new Error(`Sold-out refund pending, missing payment intent for ${record.sessionRef}`);
+      }
+      try {
+        await refundPaymentIntent(paymentIntentId, 'requested_by_customer', cfg);
+      } catch (e: any) {
+        console.error('[BOOKING] auto-refund failed:', e.message);
+        await db!.updateDirectBooking(record.sessionRef, {
+          status: 'sold_out_refund_pending',
+          paymentStatus: 'refund_pending',
+          errorMessage: `Room sold out; auto-refund failed: ${e.message}`.slice(0, 500),
+        });
+        throw e; // let Stripe retry the webhook so the refund can self-heal
+      }
+      await db!.updateDirectBooking(record.sessionRef, {
+        status: 'sold_out_refunded',
+        paymentStatus: 'refunded',
+        errorMessage: 'Room sold out before confirmation; deposit refunded.',
+      });
+      console.warn('[BOOKING] sold out after payment, refunded:', record.sessionRef);
+    }
+
     async function handleCheckoutCompleted(session: any) {
       if (!db) return;
       const sessionRef = session?.metadata?.sessionRef;
-      const record = sessionRef
+      const record0 = sessionRef
         ? await db.getDirectBookingByRef(sessionRef)
         : await db.getDirectBookingByStripeSession(session.id);
-      if (!record) {
+      if (!record0) {
         console.warn('[BOOKING] webhook: no direct_booking for session', session.id);
         return;
       }
-      if (record.status === 'sold_out_refunded') return; // already refunded, nothing to do
+      if (record0.status === 'sold_out_refunded') return; // already refunded, nothing to do
 
-      // Schedule the guest transactional emails (post-booking confirmation,
-      // pre-arrival, arrival, post-departure). Beds24 does NOT send a
-      // notification email for bookings created via its REST API, so the usual
-      // IMAP-ingest path never fires for direct bookings — we must schedule
-      // them here. Idempotent: createManualBooking throws "already exists" once
-      // the bookings row is present (e.g. on a webhook retry), which we treat
-      // as success.
-      async function scheduleGuestEmails(beds24BookingId: string) {
-        if (!emailService) return;
-        try {
-          const fullName = `${record!.guestFirstName} ${record!.guestLastName || ''}`.trim();
-          await emailService.createManualBooking({
-            groupRef: String(beds24BookingId),
-            bookingRefs: [String(beds24BookingId)],
-            guestName: fullName,
-            firstName: record!.guestFirstName,
-            guestEmail: record!.guestEmail,
-            guestLanguage: record!.guestLanguage || 'EN',
-            guestCountry: record!.guestCountry || undefined,
-            checkInDate: record!.checkInDate,
-            checkOutDate: record!.checkOutDate,
-          });
-          console.log('[BOOKING] scheduled guest emails for direct booking', record!.sessionRef);
-        } catch (e: any) {
-          if (String(e?.message || '').includes('already exists')) return; // already scheduled
-          // Payment + Beds24 booking are already done, but scheduling failed.
-          // Throw so Stripe retries the webhook; the confirmed-retry branch
-          // below re-attempts scheduling without re-creating the Beds24 booking.
-          console.error('[BOOKING] email scheduling failed for', record!.sessionRef, e.message);
-          throw e;
-        }
-      }
-
-      // Retry path: a previous webhook delivery already confirmed the booking
-      // but may not have scheduled the emails (e.g. a transient failure). Skip
-      // Beds24 re-creation (avoids duplicates) and just (re)schedule emails.
-      if (record.status === 'confirmed') {
-        if (record.beds24BookingId) await scheduleGuestEmails(record.beds24BookingId);
+      // Already fully confirmed: a prior delivery created the Beds24 bookings.
+      // Skip re-creation (avoids duplicates) and just (re)schedule emails.
+      if (record0.status === 'confirmed') {
+        await scheduleGuestEmails(record0, legsFromRecord(record0));
         return;
       }
 
       const paymentIntentId =
         typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id;
 
-      await db.updateDirectBooking(record.sessionRef, {
-        paymentStatus: 'paid',
-        stripePaymentIntentId: paymentIntentId || null,
-      });
-
-      // Double-booking guard: re-check availability for the chosen rate plan
-      // before confirming. The guest is charged the amount quoted at checkout
-      // (stored on the record); this check only guards against a sell-out.
-      let stillAvailable = false;
-      try {
-        const fresh = await beds24.getRoomOffers({
-          roomId: record.roomId,
-          checkIn: record.checkInDate,
-          checkOut: record.checkOutDate,
-          adults: record.numAdults,
-          children: record.numChildren,
-        });
-        const offerStillThere =
-          record.offerId == null ||
-          Boolean(fresh?.offers.some((o) => o.offerId === record.offerId));
-        stillAvailable = Boolean(fresh?.available && fresh.offers.length > 0 && offerStillThere);
-      } catch (e: any) {
-        console.error('[BOOKING] re-check availability failed:', e.message);
-        stillAvailable = false;
-      }
-
-      if (!stillAvailable) {
-        // Sold out in the payment window — refund the deposit automatically.
-        // The refunded state must only be recorded if Stripe actually refunds;
-        // otherwise the guest stays charged while our record says "refunded".
-        if (!paymentIntentId) {
-          // No payment intent to refund against — flag for manual handling and
-          // let Stripe retry so a later event can carry the payment intent.
-          await db.updateDirectBooking(record.sessionRef, {
-            status: 'sold_out_refund_pending',
-            paymentStatus: 'refund_pending',
-            errorMessage: 'Room sold out before confirmation; refund pending (no payment intent on event).',
-          });
-          throw new Error(`Sold-out refund pending, missing payment intent for ${record.sessionRef}`);
-        }
-        try {
-          await refundPaymentIntent(paymentIntentId, 'requested_by_customer', cfg);
-        } catch (e: any) {
-          // Refund failed: do NOT claim the guest was refunded. Persist a
-          // pending state and return non-2xx so Stripe retries the webhook.
-          console.error('[BOOKING] auto-refund failed:', e.message);
-          await db.updateDirectBooking(record.sessionRef, {
-            status: 'sold_out_refund_pending',
-            paymentStatus: 'refund_pending',
-            errorMessage: `Room sold out; auto-refund failed: ${e.message}`.slice(0, 500),
-          });
-          throw e; // let Stripe retry the webhook so the refund can self-heal
-        }
-        await db.updateDirectBooking(record.sessionRef, {
-          status: 'sold_out_refunded',
-          paymentStatus: 'refunded',
-          errorMessage: 'Room sold out before confirmation; deposit refunded.',
-        });
-        console.warn('[BOOKING] sold out after payment, refunded:', record.sessionRef);
+      // Atomically claim the row for processing. Only the single winner proceeds;
+      // concurrent deliveries / fast retries get false and bail, so legs are
+      // never double-created. (Stale-processing > 2 min and refund-pending rows
+      // are re-claimable so a crashed/half-done attempt self-heals on retry.)
+      const claimed = await db.claimDirectBookingForProcessing(record0.sessionRef, paymentIntentId || null);
+      if (!claimed) {
+        console.warn('[BOOKING] webhook: could not claim (concurrent/terminal state)', record0.sessionRef);
         return;
       }
 
-      // Create the confirmed booking in Beds24 (PMS = source of truth downstream).
-      let confirmedBeds24Id: string;
-      try {
-        const { beds24BookingId } = await beds24.createConfirmedBooking({
-          roomId: record.roomId,
-          checkIn: record.checkInDate,
-          checkOut: record.checkOutDate,
-          adults: record.numAdults,
-          children: record.numChildren,
-          firstName: record.guestFirstName,
-          lastName: record.guestLastName || '',
-          email: record.guestEmail,
-          phone: record.guestPhone || '',
-          country: record.guestCountry || '',
-          total: Number(record.totalAmount),
-          deposit: Number(record.depositAmount),
-          balance: Number(record.balanceDue),
-          currency: record.currency,
-          offerId: record.offerId,
-          offerName: record.offerName,
-        });
-        confirmedBeds24Id = beds24BookingId;
-        await db.updateDirectBooking(record.sessionRef, {
-          status: 'confirmed',
-          beds24BookingId,
-        });
-        console.log('[BOOKING] confirmed direct booking', record.sessionRef, '→ Beds24', beds24BookingId);
-      } catch (e: any) {
-        // Payment captured but Beds24 creation failed — flag for manual follow-up.
-        await db.updateDirectBooking(record.sessionRef, {
-          status: 'failed',
-          errorMessage: `Beds24 creation failed: ${e.message}`.slice(0, 500),
-        });
-        console.error('[BOOKING] Beds24 creation failed after payment:', record.sessionRef, e.message);
-        throw e; // let Stripe retry
+      // Re-read post-claim for the freshest legs + payment intent.
+      const record = await db.getDirectBookingByRef(record0.sessionRef);
+      if (!record) return;
+      const legs = legsFromRecord(record);
+
+      // Recompute + sell-out guard. Only refund if NOTHING has been created yet —
+      // a retry resuming a partial create must NOT refund (rooms already exist in
+      // Beds24). A fresh server-side re-quote runs here (never trusting stored or
+      // client amounts to confirm availability): BookingCartError means a real
+      // sell-out / capacity loss → auto-refund, while a transient Beds24/upstream
+      // failure must NOT refund a paying guest — we rethrow so Stripe retries.
+      const anyCreated = legs.some((l) => l.beds24BookingId);
+      if (!anyCreated) {
+        let fresh;
+        try {
+          fresh = await recheckCartQuote(record, legs);
+        } catch (e: any) {
+          if (e instanceof BookingCartError) {
+            await refundSoldOut(record, paymentIntentId);
+            return;
+          }
+          console.error('[BOOKING] webhook re-quote failed (will retry):', e.message);
+          throw e; // transient upstream error — let Stripe retry instead of refunding
+        }
+        // The guest is charged the amount quoted + paid at checkout (stored on the
+        // legs). The fresh re-quote above guards the sell-out case; here it only
+        // surfaces any Beds24 rate drift during the payment window for the operator
+        // — we honor the checkout price the guest actually agreed to and paid on.
+        const storedTotal = legs.reduce((s, l) => s + l.total, 0);
+        if (Math.abs(fresh.total - storedTotal) > 0.01) {
+          console.warn(
+            `[BOOKING] price drift at webhook for ${record.sessionRef}: ` +
+              `checkout ${storedTotal.toFixed(2)} vs fresh ${fresh.total.toFixed(2)} ${record.currency}; ` +
+              `honoring checkout price.`,
+          );
+        }
       }
 
-      // Booking is now safely confirmed (it won't be re-created on a retry).
-      // Schedule the guest emails; a failure here throws so Stripe retries and
-      // the confirmed-retry branch above re-attempts scheduling.
-      await scheduleGuestEmails(confirmedBeds24Id);
+      // Create each not-yet-created leg in Beds24 (PMS = source of truth),
+      // persisting its id immediately so a crash/retry resumes from here and
+      // never re-creates a confirmed room.
+      for (let i = 0; i < legs.length; i++) {
+        const leg = legs[i];
+        if (leg.beds24BookingId) continue;
+        try {
+          const { beds24BookingId } = await beds24.createConfirmedBooking({
+            roomId: leg.roomId,
+            checkIn: record.checkInDate,
+            checkOut: record.checkOutDate,
+            adults: leg.adults,
+            children: leg.children,
+            firstName: record.guestFirstName,
+            lastName: record.guestLastName || '',
+            email: record.guestEmail,
+            phone: record.guestPhone || '',
+            country: record.guestCountry || '',
+            total: leg.total,
+            deposit: leg.deposit,
+            balance: leg.balance,
+            currency: record.currency,
+            offerId: leg.offerId,
+            offerName: leg.offerName,
+          });
+          leg.beds24BookingId = beds24BookingId;
+          await db.updateDirectBooking(record.sessionRef, {
+            legs,
+            beds24BookingId: legs[0].beds24BookingId || beds24BookingId, // first-leg id (scalar back-compat)
+          });
+        } catch (e: any) {
+          // Payment captured but a leg failed — persist progress + flag for
+          // follow-up, then let Stripe retry (failed rows are re-claimable and
+          // already-created legs are skipped above).
+          await db.updateDirectBooking(record.sessionRef, {
+            legs,
+            status: 'failed',
+            errorMessage: `Beds24 creation failed on room ${i + 1}/${legs.length}: ${e.message}`.slice(0, 500),
+          });
+          console.error('[BOOKING] Beds24 creation failed after payment:', record.sessionRef, e.message);
+          throw e; // let Stripe retry
+        }
+      }
+
+      // All legs created → confirm.
+      await db.updateDirectBooking(record.sessionRef, {
+        status: 'confirmed',
+        legs,
+        beds24BookingId: legs[0].beds24BookingId || null,
+      });
+      console.log(
+        '[BOOKING] confirmed direct booking', record.sessionRef,
+        '→ Beds24', legs.map((l) => l.beds24BookingId).join(','),
+      );
+
+      // Schedule the guest emails once; a failure here throws so Stripe retries
+      // and the confirmed-retry branch re-attempts scheduling without re-creating.
+      await scheduleGuestEmails(record, legs);
     }
 
     async function handleSessionExpired(session: any) {
@@ -552,6 +683,18 @@ export function createBookingRouter(deps: {
       guestFirstName: record.guestFirstName,
       guestEmail: record.guestEmail,
       beds24BookingId: record.beds24BookingId,
+      legs: Array.isArray(record.legs)
+        ? record.legs.map((l) => ({
+            roomName: l.roomName,
+            offerName: l.offerName,
+            adults: l.adults,
+            children: l.children,
+            total: l.total,
+            deposit: l.deposit,
+            balance: l.balance,
+            beds24BookingId: l.beds24BookingId,
+          }))
+        : null,
     });
   });
 
