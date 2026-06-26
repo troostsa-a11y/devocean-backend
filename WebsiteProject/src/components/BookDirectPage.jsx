@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Plus, Minus } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Plus, Minus, ExternalLink } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import LanguageTopBar from './LanguageTopBar';
@@ -689,6 +689,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             {unitImg && (
                               <a
                                 href={unitDetailUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="shrink-0 flex flex-col items-center gap-1 group"
                                 data-testid={`link-room-details-${room.roomId}`}
                               >
@@ -698,8 +700,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   loading="lazy"
                                   className="h-20 w-20 rounded-lg object-cover border border-slate-200"
                                 />
-                                <span className="text-xs font-medium text-[#9e4b13] group-hover:underline">
+                                <span className="inline-flex items-center gap-1 text-xs font-medium text-[#9e4b13] group-hover:underline">
                                   {t.details}
+                                  <ExternalLink className="h-3 w-3" />
                                 </span>
                               </a>
                             )}
