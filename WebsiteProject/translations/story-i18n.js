@@ -403,18 +403,33 @@ async function initI18n() {
 }
 
 /**
- * Handle navigation to main page with #stay anchor
- * Ensures proper scroll after page load
+ * Suppress the homepage hero intro overlay when navigating back from the Story page.
+ *
+ * Anyone leaving the Story page for the homepage is a returning visitor, not a
+ * first-time arrival, so they must not see the 5 s hero intro overlay (the
+ * "In Between" screen). We mark the hero as already seen before navigating,
+ * reusing the long-standing returning-visitor check in index.html. This works
+ * even when the newer hash-based guard isn't deployed yet and covers every
+ * homeward link: "Back to Accommodations" (/#stay), mobile "Home" (/), the logo
+ * (/), and the "View Accommodations" CTA (/#stay). The booking CTA
+ * (/book-direct) and external links are intentionally left untouched.
+ *
+ * This only fires on a click that leaves the Story page, never on a direct
+ * homepage load, so the LCP placeholder still shows for first-time visitors and
+ * Lighthouse audits.
  */
 function setupStayNavigation() {
-  const stayLink = document.querySelector('a[href="/#stay"]');
-  if (stayLink) {
-    stayLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      // Navigate to main page with hash, then let the main page handle scroll
-      window.location.href = '/#stay';
-    });
-  }
+  const markHeroSeen = () => {
+    try {
+      sessionStorage.setItem('devocean-hero-seen', 'true');
+      localStorage.setItem('devocean-hero-seen', 'true');
+    } catch (e) {
+      // Storage unavailable — fall back to the native hash-bail guard.
+    }
+  };
+  document.querySelectorAll('a[href="/"], a[href^="/#"]').forEach((link) => {
+    link.addEventListener('click', markHeroSeen);
+  });
 }
 
 // Initialize when DOM is ready
