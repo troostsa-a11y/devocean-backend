@@ -638,16 +638,17 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       const qty = cart[room.roomId] || 0;
                       const units = room.unitsAvailable || 0;
                       const incDisabled = qty >= units || !canAddRoom;
-                      const sleepsAdults = room.maxAdults || room.maxPeople;
-                      const sleepsKids = room.maxChildren || 0;
-                      const sleepsText = sleepsKids > 0
+                      // Reframe the room's total capacity so the last slot reads as a
+                      // child option: "Sleeps 3" -> "Sleeps 2 + child (0-12 yr)".
+                      // Beds24 returns maxChildren=0 for these rooms, so we derive the
+                      // child slot from the total instead of trusting maxChildren.
+                      const sleepsTotal = room.maxAdults || room.maxPeople;
+                      const sleepsText = sleepsTotal > 1
                         ? fmt(t.sleepsAdultsChildren, {
-                            adults: sleepsAdults,
-                            children: sleepsKids === 1
-                              ? t.childOccupant
-                              : fmt(t.childrenOccupant, { count: sleepsKids }),
+                            adults: sleepsTotal - 1,
+                            children: t.childOccupant,
                           })
-                        : fmt(t.sleeps, { count: sleepsAdults });
+                        : fmt(t.sleeps, { count: sleepsTotal });
                       return (
                         <div
                           key={room.roomId}
