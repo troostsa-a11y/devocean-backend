@@ -171,7 +171,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     setError('');
     if (cartLines.length === 0) return setError(t.selectRoomsToContinue);
     if (!guest.firstName.trim()) return setError(t.firstName + ' *');
+    if (!guest.lastName.trim()) return setError(t.lastName + ' *');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guest.email.trim())) return setError(t.email + ' *');
+    if (!guest.phone.trim()) return setError(t.phone + ' *');
     setLoading(true);
     // Record the GA4 session for this booking (fallback heuristic) and capture
     // the exact client_id to thread through checkout → webhook → email-ingest so
@@ -975,13 +977,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       />
                     </label>
                     <label className="block">
-                      <span className="text-sm font-medium text-slate-700">{t.lastName}</span>
+                      <span className="text-sm font-medium text-slate-700">{t.lastName} *</span>
                       <input
                         type="text"
                         value={guest.lastName}
                         onChange={(e) => setGuest({ ...guest, lastName: e.target.value })}
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-last-name"
+                        required
                       />
                     </label>
                     <label className="block">
@@ -996,13 +999,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       />
                     </label>
                     <label className="block">
-                      <span className="text-sm font-medium text-slate-700">{t.phone}</span>
+                      <span className="text-sm font-medium text-slate-700">{t.phone} *</span>
                       <input
                         type="tel"
                         value={guest.phone}
                         onChange={(e) => setGuest({ ...guest, phone: e.target.value })}
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-phone"
+                        required
                       />
                     </label>
                   </div>

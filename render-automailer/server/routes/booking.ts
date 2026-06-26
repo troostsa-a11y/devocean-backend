@@ -309,9 +309,11 @@ export function createBookingRouter(deps: {
         : null;
 
     if (!firstName) return res.status(400).json({ error: 'First name is required' });
+    if (!lastName) return res.status(400).json({ error: 'Last name is required' });
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ error: 'A valid email is required' });
     }
+    if (!phone) return res.status(400).json({ error: 'Phone is required' });
 
     const cfg = getBookingConfig();
     try {
