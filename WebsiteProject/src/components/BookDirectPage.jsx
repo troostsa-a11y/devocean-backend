@@ -645,9 +645,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     {t.noRooms}
                   </div>
                 ) : (
-                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_26rem] gap-6 items-start">
+                  <>
+                  <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
+                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_24rem] gap-6 items-start">
                     <div className="space-y-4">
-                    <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
                     {availableRooms.map((room) => {
                       const offer = room.offers[0];
                       const qty = cart[room.roomId] || 0;
@@ -686,7 +687,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6"
                           data-testid={`card-room-${room.roomId}`}
                         >
-                          <div className="flex flex-wrap items-start justify-between gap-4">
+                          <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-3 sm:gap-4">
                             <div className="min-w-0">
                               <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
                                 {room.name}
@@ -873,6 +874,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     )}
                     </div>
                   </div>
+                  </>
                 )}
 
                 <p className="text-xs text-slate-500 text-center pt-2">
