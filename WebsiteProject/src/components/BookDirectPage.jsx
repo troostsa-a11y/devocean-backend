@@ -49,6 +49,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [checkOut, setCheckOut] = useState(addDays(todayStr(), 3));
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
+  const [childAges, setChildAges] = useState([]); // one entry per child; '' until chosen
   const [coupon, setCoupon] = useState(''); // visual only — backend has no discount support yet
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -106,6 +107,31 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     return Math.max(0, Math.round((b - a) / 86_400_000));
   }, [checkIn, checkOut]);
 
+  // Lodge child policy: 0-3 stay free (excluded from the priced party), 4-12 are
+  // charged as a child, 13+ are charged as an adult. The effective counts below
+  // are what we send to Beds24 (availability/quote/checkout). The raw `adults`/
+  // `children` selector values only drive the UI and the per-child age inputs.
+  const effAdults = useMemo(
+    () => adults + childAges.filter((a) => a !== '' && Number(a) >= 13).length,
+    [adults, childAges],
+  );
+  const effChildren = useMemo(
+    () => childAges.filter((a) => a !== '' && Number(a) >= 4 && Number(a) <= 12).length,
+    [childAges],
+  );
+
+  function handleChildrenChange(n) {
+    setChildren(n);
+    setChildAges((prev) => {
+      const next = prev.slice(0, n);
+      while (next.length < n) next.push('');
+      return next;
+    });
+  }
+  function setChildAge(i, value) {
+    setChildAges((prev) => prev.map((a, idx) => (idx === i ? value : a)));
+  }
+
   async function handleSearch(e) {
     e?.preventDefault();
     setError('');
@@ -114,12 +140,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       setError(t.errorGeneric);
       return;
     }
+    if (children > 0 && childAges.some((a) => a === '' || a == null)) {
+      setError(t.provideChildAges);
+      return;
+    }
     setLoading(true);
     try {
       const res = await fetch('/api/booking/availability', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ checkIn, checkOut, adults, children }),
+        body: JSON.stringify({ checkIn, checkOut, adults: effAdults, children: effChildren }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || t.errorGeneric);
@@ -150,8 +180,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           rooms: cartLines,
           checkIn,
           checkOut,
-          adults,
-          children,
+          adults: effAdults,
+          children: effChildren,
           guest: {
             firstName: guest.firstName.trim(),
             lastName: guest.lastName.trim(),
@@ -202,7 +232,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     [cart, availableRooms],
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
-  const canAddRoom = totalRooms < maxRooms && totalRooms < adults;
+  const canAddRoom = totalRooms < maxRooms && totalRooms < effAdults;
 
   function setRoomQty(roomId, qty) {
     setCart((c) => {
@@ -229,7 +259,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         const res = await fetch('/api/booking/quote', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ checkIn, checkOut, adults, children, rooms: cartLines }),
+          body: JSON.stringify({ checkIn, checkOut, adults: effAdults, children: effChildren, rooms: cartLines }),
         });
         const data = await res.json();
         if (cancelled) return;
@@ -253,7 +283,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       cancelled = true;
       clearTimeout(id);
     };
-  }, [cartLines, checkIn, checkOut, adults, children, step, t]);
+  }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t]);
 
   // ── Informational currency conversion (display only) ──────────────────────
   // The base/charged currency is the Beds24 property currency (availability
@@ -498,7 +528,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <div className="flex-1">
                       <select
                         value={children}
-                        onChange={(e) => setChildren(parseInt(e.target.value, 10))}
+                        onChange={(e) => handleChildrenChange(parseInt(e.target.value, 10))}
                         className={INPUT_CLASS}
                         aria-label={t.children}
                         data-testid="select-children"
@@ -510,6 +540,31 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </div>
                   </div>
                 </div>
+
+                {children > 0 && (
+                  <div className="w-full">
+                    <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
+                    <div className="flex flex-wrap gap-2">
+                      {childAges.map((age, i) => (
+                        <div key={i} className="flex-1 min-w-[130px]">
+                          <select
+                            value={age}
+                            onChange={(e) => setChildAge(i, e.target.value)}
+                            className={INPUT_CLASS}
+                            aria-label={fmt(t.childAgeN, { n: i + 1 })}
+                            data-testid={`select-child-age-${i}`}
+                          >
+                            <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
+                            {Array.from({ length: 18 }, (_, a) => (
+                              <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
+                            ))}
+                          </select>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
+                  </div>
+                )}
 
                 <div className="lg:flex-1 lg:min-w-[150px]">
                   <label className={FIELD_LABEL_CLASS}>{t.promoCode}</label>
