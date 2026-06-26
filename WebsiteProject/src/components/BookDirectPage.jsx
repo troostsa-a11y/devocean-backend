@@ -544,7 +544,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       ) : (
         <>
           {renderTopBar()}
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
             {renderNotices()}
 
             {/* ── Step 2: Results ── */}
@@ -569,7 +569,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     {t.noRooms}
                   </div>
                 ) : (
-                  <>
+                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_22rem] gap-6 items-start">
+                    <div className="space-y-4">
                     <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
                     {availableRooms.map((room) => {
                       const offer = room.offers[0];
@@ -652,9 +653,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         </div>
                       );
                     })}
+                    </div>
 
-                    {/* Live combined cart summary (debounced /api/booking/quote) */}
-                    {totalRooms > 0 && (
+                    {/* Live combined cart summary (debounced /api/booking/quote) — sticky right rail on desktop */}
+                    <div className="lg:sticky lg:top-6">
+                    {totalRooms > 0 ? (
                       <div
                         className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-3"
                         data-testid="card-cart-summary"
@@ -730,8 +733,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           </p>
                         )}
                       </div>
+                    ) : (
+                      <div
+                        className="hidden lg:block rounded-2xl border border-dashed border-slate-300 p-6 text-center text-sm text-slate-400"
+                        data-testid="card-cart-summary-empty"
+                      >
+                        {t.selectRoomsToContinue}
+                      </div>
                     )}
-                  </>
+                    </div>
+                  </div>
                 )}
 
                 <p className="text-xs text-slate-500 text-center pt-2">
@@ -742,7 +753,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
             {/* ── Step 3: Guest details ── */}
             {step === 'details' && quote && (
-              <form onSubmit={handleCheckout} className="space-y-5">
+              <form onSubmit={handleCheckout} className="max-w-3xl mx-auto space-y-5">
                 <button
                   type="button"
                   onClick={() => { setStep('results'); setError(''); }}
