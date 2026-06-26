@@ -169,6 +169,8 @@ export function createBookingRouter(deps: {
         roomId: r.roomId,
         name: r.name,
         maxPeople: r.maxPeople,
+        maxAdults: r.maxAdults,
+        maxChildren: r.maxChildren,
         available: r.available,
         unitsAvailable: r.unitsAvailable,
         nights: r.nights,

@@ -52,6 +52,8 @@ export interface RoomOffers {
   roomId: string;
   name: string;
   maxPeople: number;
+  maxAdults: number;
+  maxChildren: number;
   available: boolean;
   nights: number;
   currency: string;
@@ -475,6 +477,8 @@ export class Beds24Service {
         roomId: room.roomId,
         name: room.name,
         maxPeople: room.maxPeople,
+        maxAdults: room.maxAdults,
+        maxChildren: room.maxChildren,
         available: offers.length > 0,
         nights,
         currency: this.currency,
