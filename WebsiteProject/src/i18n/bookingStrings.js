@@ -14,7 +14,7 @@
 const STRINGS = {
   en: {
     title: 'Book your stay',
-    subtitle: 'Reserve directly with DEVOCEAN Lodge — pay a deposit now, the balance on arrival.',
+    subtitle: 'Reserve directly with DEVOCEAN Lodge.\nPay a deposit now, the balance on arrival.',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adults',
@@ -87,7 +87,7 @@ const STRINGS = {
   },
   pt: {
     title: 'Reserve a sua estadia',
-    subtitle: 'Reserve diretamente com o DEVOCEAN Lodge — pague um depósito agora e o restante à chegada.',
+    subtitle: 'Reserve diretamente com o DEVOCEAN Lodge.\nPague um depósito agora e o restante à chegada.',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adultos',
@@ -160,7 +160,7 @@ const STRINGS = {
   },
   de: {
     title: 'Buchen Sie Ihren Aufenthalt',
-    subtitle: 'Buchen Sie direkt bei der DEVOCEAN Lodge — zahlen Sie jetzt eine Anzahlung, den Rest bei Ankunft.',
+    subtitle: 'Buchen Sie direkt bei der DEVOCEAN Lodge.\nZahlen Sie jetzt eine Anzahlung, den Rest bei Ankunft.',
     checkIn: 'Anreise',
     checkOut: 'Abreise',
     adults: 'Erwachsene',
@@ -233,7 +233,7 @@ const STRINGS = {
   },
   fr: {
     title: 'Réservez votre séjour',
-    subtitle: 'Réservez directement avec DEVOCEAN Lodge — payez un acompte maintenant, le solde à l’arrivée.',
+    subtitle: 'Réservez directement avec DEVOCEAN Lodge.\nPayez un acompte maintenant, le solde à l’arrivée.',
     checkIn: 'Arrivée',
     checkOut: 'Départ',
     adults: 'Adultes',
@@ -306,7 +306,7 @@ const STRINGS = {
   },
   es: {
     title: 'Reserve su estancia',
-    subtitle: 'Reserve directamente con DEVOCEAN Lodge — pague un depósito ahora y el resto a su llegada.',
+    subtitle: 'Reserve directamente con DEVOCEAN Lodge.\nPague un depósito ahora y el resto a su llegada.',
     checkIn: 'Entrada',
     checkOut: 'Salida',
     adults: 'Adultos',
@@ -379,7 +379,7 @@ const STRINGS = {
   },
   it: {
     title: 'Prenota il tuo soggiorno',
-    subtitle: 'Prenota direttamente con DEVOCEAN Lodge — paga un acconto ora, il saldo all’arrivo.',
+    subtitle: 'Prenota direttamente con DEVOCEAN Lodge.\nPaga un acconto ora, il saldo all’arrivo.',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adulti',
@@ -452,7 +452,7 @@ const STRINGS = {
   },
   nl: {
     title: 'Boek uw verblijf',
-    subtitle: 'Boek rechtstreeks bij DEVOCEAN Lodge — betaal nu een aanbetaling, het saldo bij aankomst.',
+    subtitle: 'Boek rechtstreeks bij DEVOCEAN Lodge.\nBetaal nu een aanbetaling, het saldo bij aankomst.',
     checkIn: 'Inchecken',
     checkOut: 'Uitchecken',
     adults: 'Volwassenen',

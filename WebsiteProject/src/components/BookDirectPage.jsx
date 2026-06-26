@@ -498,7 +498,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               >
                 {t.title}
               </h1>
-              <p className="mt-3 max-w-xl text-white/90 text-base sm:text-lg">{t.subtitle}</p>
+              <p className="mt-3 max-w-xl text-white/90 text-base sm:text-lg whitespace-pre-line">{t.subtitle}</p>
 
               {/* Search card floating over the hero image */}
               <div className="mt-8 relative z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
