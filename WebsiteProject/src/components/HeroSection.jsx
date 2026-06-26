@@ -137,7 +137,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         <p className="mt-4 md:text-xl max-w-[54.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
         {/* CTA Buttons */}
-        <div className="mt-8 sm:mt-10">
+        <div className="mt-[58px] sm:mt-[66px]">
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:max-w-[28rem]">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
