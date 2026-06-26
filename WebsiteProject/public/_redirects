@@ -27,6 +27,9 @@
 /safaritent.html  /safari.html  301
 /comforttent.html  /comfort.html  301
 
+# Legacy iframe booking pages → native direct booking
+/book/*  /book-direct  301
+
 # Hotelrunner locale redirects (from booking engine back navigation)
 # Note: af-ZA and pt-BR are handled dynamically in App.jsx to preserve currency (MZN vs ZAR/BRL)
 # Static redirects serve as fallback

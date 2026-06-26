@@ -256,7 +256,7 @@ reCAPTCHA score: ${recaptchaResult.score || 'N/A'}
     };
 
     // Build booking URL pointing to English booking page
-    const bookingUrl = `https://devoceanlodge.com/book/EN.html`;
+    const bookingUrl = `https://devoceanlodge.com/book-direct`;
 
     // Escape HTML function
     const escapeHtml = (text) => {
@@ -709,7 +709,7 @@ app.use(async (req, res, next) => {
   const accept = req.headers.accept || '';
   if (!accept.includes('text/html')) return next();
   // Only handle SPA navigations (extensionless paths). Let Vite serve real
-  // static HTML files (/book/EN.html, /thankyou.html, /safari.html, ...).
+  // static HTML files (/thankyou.html, /safari.html, ...).
   if (/\.[a-zA-Z0-9]+$/.test(req.path)) return next();
   try {
     const template = await readFile(join(__dirname, 'index.html'), 'utf-8');

@@ -1,16 +1,14 @@
 ---
-name: Beds24 booking iframe must not be sandboxed
-description: Why #beds24frame in WebsiteProject/public/book/*.html has no sandbox attribute, and what breaks if you add one back
+name: Beds24 booking iframe removed (was must-not-be-sandboxed)
+description: The embedded Beds24 iframe booking flow was removed in favor of the native /book-direct route; keeps the no-sandbox lesson in case an iframe is ever reintroduced
 ---
 
-# Beds24 booking iframe — no `sandbox` attribute
+# Beds24 booking iframe — REMOVED (replaced by native `/book-direct`)
 
-The `#beds24frame` iframe in `WebsiteProject/public/book/*.html` (and `booking-simple.html`) loads `beds24.com/booking2.php` with **no `sandbox` attribute** (full iframe permissions).
+**Current decision:** The site no longer embeds Beds24 in an iframe. All "Book Now" CTAs go to the native `/book-direct` SPA route (Beds24 REST API + Stripe deposit). `thankyou.html` / `canceled.html` are intentionally kept because the Beds24 dashboard still externally redirects there.
 
-**Rule:** Do NOT add a `sandbox` attribute to `#beds24frame`.
+**Why it was removed:** the iframe flow was superseded by the native direct-booking flow; maintaining both was redundant.
 
-**Why:** Bookings take a 50% deposit via **Stripe inside the Beds24 iframe**. Stripe's payment / 3-D-Secure step needs storage-access, popups, and redirect freedoms. A `sandbox` — *even one that includes `allow-top-navigation` plus popups/modals/forms/scripts/same-origin* — blocked the post-payment return, so after paying the guest landed on a **blank/error page instead of the `/thankyou` confirmation**. The older `booking-simple.html` (which never had a sandbox) kept working, which is what isolated the cause. Removing the sandbox from all `book/*.html` fixed it.
+**Historical lesson (only if an embedded Beds24 iframe is ever reintroduced):** do NOT give it a `sandbox` attribute. Stripe's in-frame deposit / 3-D-Secure step needs storage-access, popups, and redirect freedoms; any sandbox (even one allowing top-navigation) blocked the post-payment return and landed the guest on a blank page instead of the confirmation.
 
-**How to apply:** beds24.com is a trusted, intentionally-embedded provider, so dropping the iframe sandbox (defense-in-depth only, not a critical control per threat_model.md) is acceptable. With no sandbox, top-navigation still works by default, so the frame-busting thankyou/canceled pages and payment redirects all function.
-
-**Confirmation flow (for debugging "confirmation page not showing"):** Beds24 redirects to `/thankyou.html?bookid=...` → Cloudflare Pages 308-redirects `.html` → clean URL (`/thankyou`) → serves the confirmation page. A blank page after booking is the iframe-sandbox blocking the redirect, NOT the 308 (the 308 → clean URL is normal CF behavior and resolves fine).
+**Legacy `/book/*` URLs:** redirected to `/book-direct` in `functions/_middleware.js` — it must live there, not in `_redirects`, because the root middleware intercepts every request before `_redirects` is consulted.

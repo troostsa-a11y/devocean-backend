@@ -13,6 +13,15 @@
 
 export async function onRequest(context) {
   try {
+    // Legacy iframe booking pages → native direct-booking flow.
+    // Must run before context.next(): the deleted /book/*.html paths would
+    // otherwise 404 and fall through to the SPA index.html fallback below
+    // instead of redirecting (the root middleware intercepts before _redirects).
+    const { pathname } = new URL(context.request.url);
+    if (pathname.startsWith('/book/')) {
+      return Response.redirect(new URL('/book-direct', context.request.url).href, 301);
+    }
+
     let response = await context.next();
 
     // SPA fallback: no static file matched → serve index.html for React routing

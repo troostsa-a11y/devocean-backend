@@ -95,7 +95,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
       }
     : baseExp;
   
-  // Build URL with language and currency parameters (like /book/ pages do)
+  // Build a home URL carrying the visitor's language and currency
   const buildHomeUrl = (hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);

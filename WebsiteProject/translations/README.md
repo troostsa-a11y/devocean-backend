@@ -6,7 +6,7 @@ The story.html page now has a complete dynamic translation system that automatic
 ## How It Works
 
 ### Language Detection Priority
-The system uses the same multi-tier approach as the /book/ pages:
+The system uses the same multi-tier language-detection approach used across the site:
 
 1. **URL Parameter** - `?lang=XX` overrides all other settings
 2. **localStorage** - User-selected language persisted with protection flags (`site.lang_source="user"` and `site.lang.version="2"`)
