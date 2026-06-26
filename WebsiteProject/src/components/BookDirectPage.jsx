@@ -636,7 +636,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     data-testid="badge-selection-summary"
                   >
                     <Users className="h-4 w-4 shrink-0" />
-                    {checkIn} → {checkOut} · {availability.nights} {t.nights} · {adults + children} {t.guests}
+                    {checkIn} → {checkOut} · {availability.nights} {t.nights} · {adults + children} {adults + children === 1 ? t.guest : t.guests}
                   </span>
                 </p>
 
