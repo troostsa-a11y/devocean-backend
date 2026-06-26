@@ -620,9 +620,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <ChevronLeft className="h-4 w-4" /> {t.back}
                 </button>
 
-                <p className="text-sm text-slate-600 flex items-center gap-2">
-                  <Users className="h-4 w-4" />
-                  {checkIn} → {checkOut} · {availability.nights} {t.nights} · {adults + children} {t.guests}
+                <p>
+                  <span
+                    className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-600"
+                    data-testid="badge-selection-summary"
+                  >
+                    <Users className="h-3.5 w-3.5" />
+                    {checkIn} → {checkOut} · {availability.nights} {t.nights} · {adults + children} {t.guests}
+                  </span>
                 </p>
 
                 {availableRooms.length === 0 ? (
