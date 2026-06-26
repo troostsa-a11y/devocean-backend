@@ -644,12 +644,21 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // flat "Sleeps N". Beds24 returns maxChildren=0 for these rooms,
                       // so we derive the child slot from the total, not from maxChildren.
                       const sleepsTotal = room.maxAdults || room.maxPeople;
-                      const sleepsText = sleepsTotal > 2
-                        ? fmt(t.sleepsAdultsChildren, {
-                            adults: sleepsTotal - 1,
-                            children: t.childOccupant,
-                          })
-                        : fmt(t.sleeps, { count: sleepsTotal });
+                      // When the guest is searching for a single person, the room's
+                      // full capacity ("Sleeps 2 + 1 child") is misleading — show that
+                      // it's a single-occupancy ("single use") booking instead.
+                      const singleGuest = adults + children === 1;
+                      let sleepsText;
+                      if (singleGuest) {
+                        sleepsText = t.singleUse;
+                      } else if (sleepsTotal > 2) {
+                        sleepsText = fmt(t.sleepsAdultsChildren, {
+                          adults: sleepsTotal - 1,
+                          children: t.childOccupant,
+                        });
+                      } else {
+                        sleepsText = fmt(t.sleeps, { count: sleepsTotal });
+                      }
                       // Map the Beds24 room to its marketing unit page + main image
                       // by matching the room name against the four unit slugs.
                       const unitKey = ['safari', 'comfort', 'cottage', 'chalet']
