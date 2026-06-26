@@ -59,6 +59,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [error, setError] = useState('');
   const [availability, setAvailability] = useState(null); // full availability response
   const [cart, setCart] = useState({}); // roomId → qty (per-type cart)
+  const [rateChoice, setRateChoice] = useState({}); // roomId → offerId (chosen rate plan)
   const [quote, setQuote] = useState(null); // live combined quote (from /api/booking/quote)
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState('');
@@ -156,6 +157,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       if (!res.ok) throw new Error(data?.error || t.errorGeneric);
       setAvailability(data);
       setCart({});            // fresh search → empty cart
+      setRateChoice({});      // …and no rate-plan overrides
       setQuote(null);
       setQuoteError('');
       setStep('results');
@@ -213,17 +215,28 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     }
   }
 
-  // Each available room type, reduced to its single cheapest still-bookable
-  // offer (the cart prices one rate per type; the server re-prices regardless).
+  // Each available room type, reduced to the rate(s) we surface to the guest.
+  // Default: only the single cheapest still-bookable offer. Exception: when that
+  // cheapest offer is Non-refundable, also surface the cheapest Semi-flexible
+  // offer so the guest can opt for a refundable plan (server re-prices the chosen
+  // offerId regardless).
   const availableRooms = useMemo(
     () =>
       (availability?.rooms || [])
         .map((r) => {
-          const priced = (Array.isArray(r.offers) ? r.offers : []).filter(
-            (o) => Number.isFinite(o.total) && o.total > 0,
-          );
-          const best = priced.reduce((b, o) => (b == null || o.total < b.total ? o : b), null);
-          return best ? { ...r, offers: [best] } : null;
+          const priced = (Array.isArray(r.offers) ? r.offers : [])
+            .filter((o) => Number.isFinite(o.total) && o.total > 0)
+            .sort((a, b) => a.total - b.total);
+          if (priced.length === 0) return null;
+          const cheapest = priced[0];
+          const offers = [cheapest];
+          if (cheapest.type === 'nonRef') {
+            const semiFlex = priced.find(
+              (o) => o.type === 'semiFlex' && o.offerId !== cheapest.offerId,
+            );
+            if (semiFlex) offers.push(semiFlex);
+          }
+          return { ...r, offers };
         })
         .filter((r) => r && r.available),
     [availability],
@@ -232,27 +245,50 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const maxRooms = availability?.maxRooms ?? 5;
 
   // Cart lines for /quote + /checkout: {roomId, offerId, qty}. offerId is the
-  // cheapest offer for the type (server re-prices; this only picks the plan).
+  // guest-chosen rate plan, defaulting to the cheapest (server re-prices; this
+  // only picks the plan).
   const cartLines = useMemo(
     () =>
       Object.entries(cart)
         .filter(([, qty]) => qty > 0)
         .map(([roomId, qty]) => {
           const room = availableRooms.find((r) => r.roomId === roomId);
-          return { roomId, offerId: room?.offers?.[0]?.offerId ?? null, qty };
+          const offer = room
+            ? room.offers.find((o) => o.offerId === rateChoice[roomId]) || room.offers[0]
+            : null;
+          return { roomId, offerId: offer?.offerId ?? null, qty };
         }),
-    [cart, availableRooms],
+    [cart, availableRooms, rateChoice],
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms && totalRooms < effAdults;
 
   function setRoomQty(roomId, qty) {
+    setQuoteLoading(true); // gate Continue until the debounced /quote settles
     setCart((c) => {
       const next = { ...c };
       if (qty <= 0) delete next[roomId];
       else next[roomId] = qty;
       return next;
     });
+  }
+
+  // Switch a room's selected rate plan; clamp any cart qty to the new offer's
+  // availability (rate plans can have different unit counts).
+  function setRoomRate(roomId, offerId) {
+    const room = availableRooms.find((r) => r.roomId === roomId);
+    const offer = room?.offers.find((o) => o.offerId === offerId);
+    const units = offer?.unitsAvailable ?? 0;
+    setQuoteLoading(true); // gate Continue until the debounced /quote settles
+    setRateChoice((c) => ({ ...c, [roomId]: offerId }));
+    setCart((c) => (c[roomId] && c[roomId] > units ? { ...c, [roomId]: units } : c));
+  }
+
+  // Localised rate-plan label for a room/offer (used in the cart summaries).
+  function rateLabelFor(roomId, offerId) {
+    const room = availableRooms.find((r) => r.roomId === roomId);
+    const o = room?.offers.find((x) => x.offerId === offerId);
+    return o ? t.rate?.[o.type] || '' : '';
   }
 
   // Debounced live quote whenever the cart (or stay) changes on the results step.
@@ -652,9 +688,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_24rem] gap-6 items-start">
                     <div className="space-y-4">
                     {availableRooms.map((room) => {
-                      const offer = room.offers[0];
+                      const offer =
+                        room.offers.find((o) => o.offerId === rateChoice[room.roomId]) || room.offers[0];
                       const qty = cart[room.roomId] || 0;
-                      const units = room.unitsAvailable || 0;
+                      const units = offer.unitsAvailable || 0;
                       const incDisabled = qty >= units || !canAddRoom;
                       // Map the Beds24 room to its marketing unit page + main image
                       // by matching the room name against the four unit slugs.
@@ -711,9 +748,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   </p>
                                 )}
                               </div>
-                              <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
-                              </p>
+                              {room.offers.length === 1 && (
+                                <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                  {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                                </p>
+                              )}
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
                                 <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-slate-600">
                                   <Users className="h-3.5 w-3.5" /> {sleepsText}
@@ -759,6 +798,48 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               )}
                             </div>
                           </div>
+
+                          {room.offers.length > 1 && (
+                            <div className="mt-4 border-t border-slate-100 pt-4">
+                              <p className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
+                                {t.chooseRate}
+                              </p>
+                              <div className="space-y-2" role="radiogroup" aria-label={t.chooseRate}>
+                                {room.offers.map((o) => {
+                                  const checked = o.offerId === offer.offerId;
+                                  return (
+                                    <button
+                                      type="button"
+                                      key={o.offerId}
+                                      role="radio"
+                                      aria-checked={checked}
+                                      onClick={() => setRoomRate(room.roomId, o.offerId)}
+                                      className={`w-full flex items-center justify-between gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors ${checked ? 'border-[#9e4b13] bg-[#9e4b13]/5' : 'border-slate-200 hover:border-slate-300'}`}
+                                      data-testid={`button-rate-${room.roomId}-${o.offerId}`}
+                                    >
+                                      <span className="min-w-0">
+                                        <span className="flex items-center gap-2">
+                                          <span className={`h-4 w-4 shrink-0 rounded-full border flex items-center justify-center ${checked ? 'border-[#9e4b13]' : 'border-slate-300'}`}>
+                                            {checked && <span className="h-2 w-2 rounded-full bg-[#9e4b13]" />}
+                                          </span>
+                                          <span className="text-sm font-medium text-slate-800">{t.rate?.[o.type] || o.type}</span>
+                                        </span>
+                                        <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                          {o.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                                        </span>
+                                      </span>
+                                      <span className="text-right shrink-0">
+                                        <span className="block text-sm font-semibold text-slate-900">{money(o.total, room.currency)}</span>
+                                        {room.nights > 1 && (
+                                          <span className="block text-xs text-slate-500">{money(o.total / room.nights, room.currency)} {t.avgPerNight}</span>
+                                        )}
+                                      </span>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          )}
 
                           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4">
                             <span className="text-sm font-medium text-slate-700">{t.rooms}</span>
@@ -816,7 +897,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 className="flex flex-wrap items-center justify-between gap-2 text-sm"
                                 data-testid={`row-cart-${line.roomId}`}
                               >
-                                <span className="text-slate-700">{line.qty} × {line.roomName}</span>
+                                <span className="text-slate-700">
+                                  {line.qty} × {line.roomName}
+                                  {rateLabelFor(line.roomId, line.offerId) && (
+                                    <span className="block text-xs text-slate-400">{rateLabelFor(line.roomId, line.offerId)}</span>
+                                  )}
+                                </span>
                                 <span className="text-right">
                                   <span className="font-semibold text-slate-700">{money(line.lineTotal, quote.currency)}</span>
                                   {fxLine(line.lineTotal) && (
@@ -919,7 +1005,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       className="mt-2 flex flex-wrap items-center justify-between gap-2 text-sm"
                       data-testid={`row-summary-${line.roomId}`}
                     >
-                      <span className="text-slate-700">{line.qty} × {line.roomName}</span>
+                      <span className="text-slate-700">
+                        {line.qty} × {line.roomName}
+                        {rateLabelFor(line.roomId, line.offerId) && (
+                          <span className="block text-xs text-slate-400">{rateLabelFor(line.roomId, line.offerId)}</span>
+                        )}
+                      </span>
                       <span className="text-right">
                         <span className="font-semibold text-slate-700">{money(line.lineTotal, quote.currency)}</span>
                         {fxLine(line.lineTotal) && (
