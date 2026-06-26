@@ -692,14 +692,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
                                 {room.name}
                               </h3>
-                              <p className="text-sm text-slate-500 mt-0.5">
-                                {fmt(t.perNightFrom, { nights: room.nights })}
-                              </p>
-                              {room.nights > 1 && (
-                                <p className="text-xs text-slate-500 mt-0.5" data-testid={`text-offer-pernight-${room.roomId}`}>
-                                  {money(offer.total / room.nights, room.currency)} {t.avgPerNight}
+                              <div className="flex flex-wrap items-baseline gap-x-2 mt-0.5">
+                                <p className="text-sm text-slate-500">
+                                  {fmt(t.perNightFrom, { nights: room.nights })}
                                 </p>
-                              )}
+                                {room.nights > 1 && (
+                                  <p className="text-xs text-slate-500" data-testid={`text-offer-pernight-${room.roomId}`}>
+                                    {money(offer.total / room.nights, room.currency)} {t.avgPerNight}
+                                  </p>
+                                )}
+                              </div>
                               <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
                                 {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
                               </p>
