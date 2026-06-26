@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Plus, Minus } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
-import { HERO_IMAGES } from '../data/content';
+import { HERO_IMAGES, IMG } from '../data/content';
 import LanguageTopBar from './LanguageTopBar';
 import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
@@ -650,6 +650,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             children: t.childOccupant,
                           })
                         : fmt(t.sleeps, { count: sleepsTotal });
+                      // Map the Beds24 room to its marketing unit page + main image
+                      // by matching the room name against the four unit slugs.
+                      const unitKey = ['safari', 'comfort', 'cottage', 'chalet']
+                        .find((k) => (room.name || '').toLowerCase().includes(k));
+                      const unitImg = unitKey ? IMG.units[unitKey] : null;
+                      const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
                       return (
                         <div
                           key={room.roomId}
@@ -679,6 +685,25 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 </span>
                               </div>
                             </div>
+
+                            {unitImg && (
+                              <a
+                                href={unitDetailUrl}
+                                className="shrink-0 flex flex-col items-center gap-1 group"
+                                data-testid={`link-room-details-${room.roomId}`}
+                              >
+                                <img
+                                  src={unitImg}
+                                  alt={room.name}
+                                  loading="lazy"
+                                  className="h-20 w-20 rounded-lg object-cover border border-slate-200"
+                                />
+                                <span className="text-xs font-medium text-[#9e4b13] group-hover:underline">
+                                  {t.details}
+                                </span>
+                              </a>
+                            )}
+
                             <div className="text-right shrink-0">
                               <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
                                 {money(offer.total, room.currency)}
