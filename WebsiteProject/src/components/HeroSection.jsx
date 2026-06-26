@@ -138,7 +138,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
         {/* CTA Buttons */}
         <div className="mt-8 sm:mt-10">
-          <div className="grid grid-cols-2 gap-3 sm:max-w-[28rem]">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-6 sm:max-w-[28rem]">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
               href={buildUrl('/why-ponta')}
