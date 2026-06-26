@@ -694,6 +694,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               <p className="text-sm text-slate-500 mt-0.5">
                                 {fmt(t.perNightFrom, { nights: room.nights })}
                               </p>
+                              {room.nights > 1 && (
+                                <p className="text-xs text-slate-500 mt-0.5" data-testid={`text-offer-pernight-${room.roomId}`}>
+                                  {money(offer.total / room.nights, room.currency)} {t.avgPerNight}
+                                </p>
+                              )}
                               <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
                                 {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
                               </p>
@@ -738,11 +743,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               {fxLine(offer.total) && (
                                 <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
                                   {fxLine(offer.total)}
-                                </p>
-                              )}
-                              {room.nights > 1 && (
-                                <p className="text-xs text-slate-500" data-testid={`text-offer-pernight-${room.roomId}`}>
-                                  = {money(offer.total / room.nights, room.currency)} {t.avgPerNight}
                                 </p>
                               )}
                               <p className="text-xs text-slate-500">{t.perRoom}</p>
