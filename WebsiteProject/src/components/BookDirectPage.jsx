@@ -553,46 +553,48 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   />
                 </div>
 
-                <div className="lg:flex-none">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-6 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
-                    data-testid="button-search"
-                  >
-                    {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CalendarCheck2 className="h-5 w-5" />}
-                    <span className="grid">
-                      <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">{t.search}</span>
-                      <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">{t.searching}</span>
-                      <span className="col-start-1 row-start-1 whitespace-nowrap">{loading ? t.searching : t.search}</span>
-                    </span>
-                  </button>
-                </div>
-
-                {children > 0 && (
-                  <div className="w-full">
-                    <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
-                    <div className="flex flex-wrap gap-2">
-                      {childAges.map((age, i) => (
-                        <div key={i} className="w-[150px]">
-                          <select
-                            value={age}
-                            onChange={(e) => setChildAge(i, e.target.value)}
-                            className={INPUT_CLASS}
-                            aria-label={fmt(t.childAgeN, { n: i + 1 })}
-                            data-testid={`select-child-age-${i}`}
-                          >
-                            <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
-                            {Array.from({ length: 13 }, (_, a) => (
-                              <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
-                            ))}
-                          </select>
-                        </div>
-                      ))}
+                <div className="w-full flex flex-col gap-4 lg:flex-row lg:items-center">
+                  {children > 0 && (
+                    <div>
+                      <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
+                      <div className="flex flex-wrap gap-2">
+                        {childAges.map((age, i) => (
+                          <div key={i} className="w-[150px]">
+                            <select
+                              value={age}
+                              onChange={(e) => setChildAge(i, e.target.value)}
+                              className={INPUT_CLASS}
+                              aria-label={fmt(t.childAgeN, { n: i + 1 })}
+                              data-testid={`select-child-age-${i}`}
+                            >
+                              <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
+                              {Array.from({ length: 13 }, (_, a) => (
+                                <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
+                              ))}
+                            </select>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
                     </div>
-                    <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
+                  )}
+
+                  <div className="lg:flex-none lg:ml-auto">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-6 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
+                      data-testid="button-search"
+                    >
+                      {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <CalendarCheck2 className="h-5 w-5" />}
+                      <span className="grid">
+                        <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">{t.search}</span>
+                        <span aria-hidden className="invisible col-start-1 row-start-1 whitespace-nowrap">{t.searching}</span>
+                        <span className="col-start-1 row-start-1 whitespace-nowrap">{loading ? t.searching : t.search}</span>
+                      </span>
+                    </button>
                   </div>
-                )}
+                </div>
               </form>
               </div>
 
