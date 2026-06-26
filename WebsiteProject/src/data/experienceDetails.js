@@ -5,7 +5,7 @@ export const EXPERIENCE_DETAILS = {
     title: "Scuba Diving",
     tagline: "Explore pristine reefs with bull sharks, mantas & whale sharks",
     hero: "/photos/experiences/diving.jpg",
-    heroObjectClass: "object-[50%_40%]",
+    heroObjectClass: "object-[50%_35%]",
     
     overview: "Ponta do Ouro offers world-class scuba diving with 20+ dive sites ranging from shallow reefs to deep pinnacles. The crystal-clear waters of the Mozambique Channel provide exceptional visibility and encounters with an incredible diversity of marine life, including 19 species of sharks.",
     
@@ -808,7 +808,7 @@ export const EXPERIENCE_DETAILS = {
     title: "Surf Boards & Lessons",
     tagline: "Ride the iconic Ponta do Ouro point break",
     hero: "/photos/experiences/surfing.jpg",
-    heroObjectClass: "object-[50%_40%]",
+    heroObjectClass: "object-[50%_35%]",
     
     overview: "Ponta do Ouro's classic right-hand point break can deliver epic rides of 100-200m, and up to 1km in perfect conditions - rivaling Jeffrey's Bay. The warm, crystal-clear waters and consistent swells make it ideal for surfers of all levels, from beginners learning on gentle beach breaks to experts carving the point.",
     
