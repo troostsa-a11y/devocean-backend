@@ -184,6 +184,28 @@ export class Beds24Service {
     return this.currency;
   }
 
+  /**
+   * fetch() with a hard timeout. Beds24 is normally ~1.5s; without a ceiling a
+   * stalled upstream would hang the whole /checkout handler until Cloudflare's
+   * ~100s edge limit kills the request and the browser shows "Failed to fetch".
+   * A bounded abort surfaces a clean, logged Beds24Error instead.
+   */
+  private async fetchWithTimeout(url: string, init: RequestInit, ms = 15_000): Promise<Response> {
+    const ac = new AbortController();
+    const timer = setTimeout(() => ac.abort(), ms);
+    try {
+      return await fetch(url, { ...init, signal: ac.signal });
+    } catch (err: any) {
+      if (err?.name === 'AbortError') {
+        const rel = url.replace(this.cfg.beds24ApiBase, '');
+        throw new Beds24Error(`Beds24 request timed out after ${ms}ms (${rel})`, 504);
+      }
+      throw err;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+
   // ─── Auth ──────────────────────────────────────────────────────────────────
 
   private async getAccessToken(): Promise<string> {
@@ -194,7 +216,7 @@ export class Beds24Service {
       return this.accessToken;
     }
 
-    const res = await fetch(`${this.cfg.beds24ApiBase}/authentication/token`, {
+    const res = await this.fetchWithTimeout(`${this.cfg.beds24ApiBase}/authentication/token`, {
       method: 'GET',
       headers: { refreshToken: this.cfg.beds24RefreshToken, accept: 'application/json' },
     });
@@ -213,7 +235,7 @@ export class Beds24Service {
 
   private async request(path: string, init: RequestInit = {}, retry = true): Promise<any> {
     const token = await this.getAccessToken();
-    const res = await fetch(`${this.cfg.beds24ApiBase}${path}`, {
+    const res = await this.fetchWithTimeout(`${this.cfg.beds24ApiBase}${path}`, {
       ...init,
       headers: {
         token,

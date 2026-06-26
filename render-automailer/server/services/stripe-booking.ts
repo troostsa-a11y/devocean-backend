@@ -23,7 +23,15 @@ function getStripe(cfg: BookingConfig): Stripe {
     throw new Error('Stripe is not configured (missing STRIPE_SECRET_KEY)');
   }
   if (!stripeClient) {
-    stripeClient = new Stripe(cfg.stripeSecretKey, { apiVersion: '2025-01-27.acacia' as any });
+    stripeClient = new Stripe(cfg.stripeSecretKey, {
+      apiVersion: '2025-01-27.acacia' as any,
+      // Fail fast instead of the SDK's 80s default: a stalled Stripe call must
+      // surface as a clean, logged error (and JSON to the browser) well within
+      // Cloudflare's ~100s edge timeout, rather than hanging until the edge
+      // kills the request and the browser shows "Failed to fetch".
+      timeout: 20_000,
+      maxNetworkRetries: 1,
+    });
   }
   return stripeClient;
 }

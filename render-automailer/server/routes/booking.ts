@@ -316,7 +316,11 @@ export function createBookingRouter(deps: {
     if (!phone) return res.status(400).json({ error: 'Phone is required' });
 
     const cfg = getBookingConfig();
+    const t0 = Date.now();
     try {
+      console.log(
+        `[BOOKING] checkout: start ${stay.checkIn}->${stay.checkOut} lines=${cartLines.length}`,
+      );
       // Recompute everything (occupancy split, per-leg price, combined deposit)
       // server-side from fresh Beds24 offers. Client amounts are never trusted —
       // only roomId/offerId/qty select WHAT to price.
@@ -325,6 +329,9 @@ export function createBookingRouter(deps: {
       const summary = quote.lines
         .map((l) => (l.qty > 1 ? `${l.roomName} \u00d7${l.qty}` : l.roomName))
         .join(', ');
+      console.log(
+        `[BOOKING] checkout: quote ok (${Date.now() - t0}ms) ${summary} ${quote.total} ${quote.currency}`,
+      );
 
       const sessionRef = crypto.randomUUID();
 
@@ -354,7 +361,9 @@ export function createBookingRouter(deps: {
         paymentStatus: 'pending',
         status: 'pending',
       });
+      console.log(`[BOOKING] checkout: row created ${sessionRef} (${Date.now() - t0}ms)`);
 
+      const tStripe = Date.now();
       const { url, stripeSessionId } = await createDepositCheckoutSession({
         sessionRef,
         depositAmount: quote.deposit,
@@ -366,6 +375,9 @@ export function createBookingRouter(deps: {
         guestEmail: email,
         locale: language.toLowerCase(),
       }, cfg);
+      console.log(
+        `[BOOKING] checkout: stripe session ok ${sessionRef} (stripe ${Date.now() - tStripe}ms)`,
+      );
 
       await db!.updateDirectBooking(sessionRef, { stripeSessionId });
 
