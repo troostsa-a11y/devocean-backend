@@ -10,3 +10,4 @@
 - [Direct-booking offers pricing](direct-booking-pricing.md) — /book-direct must match iframe: offers base × bookingPageMultiplier(1.10) + nearestOne round; offers endpoint needs NO roomId; deposit 50%/100% by arrival; re-quote by offerId
 - [Direct-booking FX display + override](direct-booking-fx-display.md) — /book-direct display currency is IP-auto but user-overridable (country picker); display-only, never charged; persist source="user" so IP init can't clobber
 - [Direct-booking /availability shape](direct-booking-availability-shape.md) — new browser-visible room fields need 3 edits (RoomOffers + getAvailability + /availability route whitelist); CF/dev proxies pass through
+- [Direct-booking i18n coverage](direct-booking-i18n-coverage.md) — booking copy now all 20 base langs; whole-object fallback = every key must exist in every lang object (partial → undefined, not EN)
