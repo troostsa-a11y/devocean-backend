@@ -725,6 +725,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   {fxLine(offer.total)}
                                 </p>
                               )}
+                              {room.nights > 1 && (
+                                <p className="text-xs text-slate-500" data-testid={`text-offer-pernight-${room.roomId}`}>
+                                  = {money(offer.total / room.nights, room.currency)} / {t.night}
+                                </p>
+                              )}
                               <p className="text-xs text-slate-500">{t.perRoom}</p>
                             </div>
                           </div>
