@@ -739,7 +739,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               <a
                 href={bookUrl}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-white text-[#9e4b13] font-semibold hover:bg-slate-100 transition-colors whitespace-nowrap"
                 data-testid="link-book-stay-from-experience"
               >
