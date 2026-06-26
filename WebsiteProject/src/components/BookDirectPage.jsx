@@ -748,7 +748,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   {fxLine(offer.total)}
                                 </p>
                               )}
-                              <p className="text-xs text-slate-500">{t.perRoom}</p>
                             </div>
                           </div>
 
