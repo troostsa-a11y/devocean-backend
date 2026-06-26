@@ -22,6 +22,12 @@ function addDays(dateStr, days) {
   d.setUTCDate(d.getUTCDate() + days);
   return d.toISOString().slice(0, 10);
 }
+// Display a YYYY-MM-DD stay date as DD-MM-YYYY (the YYYY-MM-DD form stays the
+// canonical value sent to /availability and /checkout — this is display-only).
+function displayDate(dateStr) {
+  const [y, m, d] = String(dateStr).split('-');
+  return y && m && d ? `${d}-${m}-${y}` : dateStr;
+}
 function money(amount, currency) {
   try {
     return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(amount);
@@ -696,7 +702,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     data-testid="badge-selection-summary"
                   >
                     <Users className="h-4 w-4 shrink-0" />
-                    {checkIn} → {checkOut} · {availability.nights} {t.nights} · {adults + children} {adults + children === 1 ? t.guest : t.guests}
+                    {displayDate(checkIn)} → {displayDate(checkOut)} · {availability.nights} {t.nights} · {adults + children} {adults + children === 1 ? t.guest : t.guests}
                   </span>
                 </p>
 
@@ -1020,7 +1026,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6">
                   <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">{t.summary}</h2>
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-slate-600 text-sm">{checkIn} → {checkOut}</span>
+                    <span className="text-slate-600 text-sm">{displayDate(checkIn)} → {displayDate(checkOut)}</span>
                     <span className="text-slate-600 text-sm">
                       {quote.nights} {t.nights} · {fmt(t.roomsCount, { count: quote.rooms })}
                     </span>
