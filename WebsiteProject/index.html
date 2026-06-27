@@ -536,6 +536,12 @@
     @media (min-width: 768px) and (max-width: 1023.98px) {
       :root { --hero-h1-size: 2.75rem; }
     }
+    /* iPad Pro 12.9" / large-tablet range (1024–1279px): same variable, slightly
+       larger value (3rem) to scale with the bigger canvas. Desktop (≥1280px) reverts
+       to the clamp() fallback in both placeholder and React h1. */
+    @media (min-width: 1024px) and (max-width: 1279.98px) {
+      :root { --hero-h1-size: 3rem; }
+    }
     @keyframes fadeInImage {
       from { opacity: 0; }
       to { opacity: 1; }
