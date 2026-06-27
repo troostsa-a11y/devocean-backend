@@ -67,7 +67,11 @@ On very short mobile screens (375×667 = iPhone SE / iPhone 6-8 class) the `mt-[
 
 **Why height-scope is safe here:** this is the OPPOSITE problem from Rule 3. Here the TALL phones (A23, 915px) are fine at 8.5rem; only SHORT phones have the overlap. Height-scoping correctly excludes tall phones. Do NOT apply Rule 3's "scope by width only" reasoning to this override.
 
-## Rule 6 — Samsung Galaxy class (≤639.98px × 701–800px)
+## Rule 6 — iPad / medium-tablet h1 font (768–1023.98px)
+
+`clamp(3.5rem, 14vw, 3.75rem)` at 768px resolves to 3.75rem (60px) but looks visually too large on iPad. Fix: CSS custom property `--hero-h1-size: 2.75rem` at `@media (min-width:768px) and (max-width:1023.98px)` in index.html critical CSS. Both the placeholder h1 (`font-size: var(--hero-h1-size, clamp(...))`) and the React h1 (`style={{ fontSize: 'var(--hero-h1-size, clamp(...))' }}`) consume the same variable. The fallback is the original clamp, so desktop (≥1024px) and sm-only range (640–767px) are untouched. **Lockstep**: any change to the media query bound or the `2.75rem` value must be made in ONE place (the `:root` rule in index.html) — both layers read the same variable automatically.
+
+## Rule 7 — Samsung Galaxy class (≤639.98px × 701–800px)
 
 360×740 (Samsung Galaxy) sits above the 700px iPhone-SE cap, so it falls through to `bottom-20` (80px). With a 740px section and ~173px review block the review top lands at viewport y:527, overlapping the CTA bottom at y:532 by ~5px.
 
