@@ -66,3 +66,9 @@ On very short mobile screens (375×667 = iPhone SE / iPhone 6-8 class) the `mt-[
 4. Review block: `[@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[1rem]` — reduces from `bottom-20` (5rem) → 1rem so the review block clears the CTA grid; bottom ~24px of the Trustindex badge is below fold (acceptable).
 
 **Why height-scope is safe here:** this is the OPPOSITE problem from Rule 3. Here the TALL phones (A23, 915px) are fine at 8.5rem; only SHORT phones have the overlap. Height-scoping correctly excludes tall phones. Do NOT apply Rule 3's "scope by width only" reasoning to this override.
+
+## Rule 6 — Samsung Galaxy class (≤639.98px × 701–800px)
+
+360×740 (Samsung Galaxy) sits above the 700px iPhone-SE cap, so it falls through to `bottom-20` (80px). With a 740px section and ~173px review block the review top lands at viewport y:527, overlapping the CTA bottom at y:532 by ~5px.
+
+**Fix:** add `[@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem]` to the review block div. `3rem` (48px) moves the review bottom to viewport y:732, review top to y:559 — 27px below CTA bottom. A23 (915px) and iPhone SE (667px) are outside this band and unchanged. No placeholder change needed (review block is absolutely positioned outside the content div — its bottom offset is CLS-irrelevant).
