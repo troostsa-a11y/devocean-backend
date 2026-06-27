@@ -25,3 +25,13 @@ The topbar is `position: static` (in document flow, not fixed). The hero section
 `useLocale.js` translation loading effect had `[lang, initialLoadDone]` as deps. Since `setInitialLoadDone(true)` is called inside the effect, changing `initialLoadDone` re-triggered the effect — causing a second full `setUi(null)` → translate → `setUi` cycle. This caused the hero to flash: `criticalUI → full ui → criticalUI → full ui` (CLS + visual flash).
 
 **Fix:** dependency array is `[lang]` only. `initialLoadDone` must NOT be in the array.
+
+## Rule 3 — Hero review-block overlap on short phones
+
+The hero review block (stars + badge + "Click the reviews!" + Trustindex widget) is `absolute`, anchored to the **section bottom** (`bottom-20` mobile). The CTA grid flows from the top. On a short viewport they collide.
+
+**Key:** on a short phone the section is content-driven, so the vertical clearance is `pb − bottom_offset − block_height`. The CTA grid's `mt`/`gap` do NOT affect it (shrinking content shrinks the section, moving the bottom-anchored block up in lockstep). Only `pb`, the review block's `bottom`, and its height matter.
+
+**Why:** the enlarged hero title (kept by owner) pushes buttons down; with default `pb-52`/`bottom-20` clearance is ~−28px → overlap.
+
+**How to apply:** scope overlap fixes to **narrow AND short** viewports (`[@media(max-width:639px)_and_(max-height:800px)]`), NOT all mobile — widening it shoves the review block down on tall phones that are already fine. Increase `pb` and/or shrink the review block's `bottom_offset` to buy clearance; accept that the widget may fall partly below the fold on very short phones.
