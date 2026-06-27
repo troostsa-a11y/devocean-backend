@@ -131,7 +131,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={region}
               onChange={(e) => handleRegionChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[120px] sm:w-[140px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[90px] sm:w-[140px] text-white"
               aria-label="Select region"
             >
               {Object.entries(regions).map(([key]) => (
@@ -145,7 +145,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[80px] sm:w-[93px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[60px] sm:w-[93px] text-white"
               aria-label="Select language"
             >
               {regions[region]?.languages.includes('en-US') && <option value="en-US">English</option>}
@@ -243,7 +243,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
           <div className="lg:hidden relative">
             <button
               data-testid="button-mobile-menu"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-all shadow-md hover:shadow-lg"
               onClick={() => setMenuOpen(v => !v)}
               aria-expanded={menuOpen}
               aria-controls="mnav"
