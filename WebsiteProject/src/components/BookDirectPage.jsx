@@ -712,7 +712,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 ) : (
                   <>
-                  <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
+                  <div className="space-y-1">
+                    <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
+                    <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
+                  </div>
                   <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_24rem] gap-6 items-start">
                     <div className="space-y-4">
                     {availableRooms.map((room) => {
