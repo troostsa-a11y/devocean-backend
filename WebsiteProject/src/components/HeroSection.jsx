@@ -132,7 +132,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-52 sm:pb-24 [@media(max-width:639px)_and_(max-height:800px)]:pb-60" style={{ paddingTop: 'calc(var(--header-h) + 4rem)' }}>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-52 sm:pb-24 pt-[calc(var(--header-h)_-_1rem)] sm:pt-[calc(var(--header-h)_+_4rem)]">
         <h1 className="mt-14 font-bold max-w-3xl leading-tight" style={{ fontSize: 'clamp(3.5rem, 14vw, 3.75rem)' }}>{ui.hero.title}</h1>
         <p className="mt-4 md:text-xl max-w-[54.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
@@ -196,7 +196,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Stars, badge and Trustindex widget — kept together at the bottom so
           "Click the reviews!" visually leads into the widget badge directly below.
           Absolutely positioned outside the flex container to avoid CLS. */}
-      <div className="absolute bottom-20 sm:bottom-10 [@media(max-width:639px)_and_(max-height:800px)]:bottom-6 left-0 right-0 z-10 max-w-7xl mx-auto px-4">
+      <div className="absolute bottom-20 sm:bottom-10 left-0 right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
