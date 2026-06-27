@@ -1,4 +1,4 @@
-- [Hero overlay LCP](hero-overlay-lcp.md) — full-viewport hero <img> is FCP-only, NEVER LCP; LCP is the static hero title text vs the late consent <p>; no image change can fix hero LCP
+- [Hero overlay LCP](hero-overlay-lcp.md) — full-viewport hero <img> is FCP-only, never LCP; LCP=late IAB-TCF CookieYes <p>; in-code hero-enlarge+font-compact FAILED live; real lever is CookieYes TCF config, not code
 - [Mobile menu pattern](mobile-menu-pattern.md) — always-in-DOM + CSS transform/opacity > mount/unmount for pre-hydration responsiveness and INP
 - [GA4 attribution architecture](ga4-attribution.md) — server-side purchase via one attributeBooking() helper called from BOTH createManualBooking (native, single fire point) and IMAP loop; exact direct cid or lang+country fallback
 - [Hero section CLS fix](hero-cls-fix.md) — paddingTop must use --header-h (not --stack-h); section must use items-start (not items-center); translation effect deps must be [lang] only
