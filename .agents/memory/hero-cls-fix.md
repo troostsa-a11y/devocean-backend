@@ -53,4 +53,4 @@ The subtitle then becomes the top element and must still clear the fixed header 
 
 **Consequence (LCP):** with the mobile title hidden, the mobile LCP element shifts from `#hero-title` to the static `#hero-subtitle` (still raw HTML, early paint). Desktop LCP stays `#hero-title`. Verify a mobile Lighthouse run that the late CookieYes banner doesn't reclaim LCP from the smaller subtitle (TCF disabled keeps it safe).
 
-**How to apply:** mobile subtitle gap = `mt-24` in React ↔ `6rem` in the placeholder `@media` — change in lockstep. Keep the h1 in the DOM (display:none), never delete it.
+**How to apply:** mobile subtitle gap = `mt-[8.5rem]` in React ↔ `8.5rem` in the placeholder `@media` — change in lockstep. Keep the h1 in the DOM (display:none), never delete it.
