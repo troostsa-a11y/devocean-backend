@@ -765,7 +765,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           data-testid={`card-room-${room.roomId}`}
                         >
                           <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-3 sm:gap-4">
-                            <div className="min-w-0">
+                            <div className="flex-1 min-w-0">
                               <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
                                 {room.name}
                               </h3>
