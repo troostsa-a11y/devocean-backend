@@ -433,7 +433,10 @@
       background: #000;
       opacity: 1;
       /* Compositor-thread fade — 5 s delay then 0.4 s fade, independent of JS load.
-         Delay keeps the preloaded image visible so Chrome measures it as the LCP candidate.
+         NOTE: the full-viewport hero <img> is NEVER an LCP candidate — Chrome excludes
+         full-viewport elements as "background" (it counts only toward FCP). The LCP
+         element is the static #hero-title text. The delay only keeps the intro visible
+         for perceived performance, not to make the image the LCP.
          will-change promotes this element to its own GPU layer for smooth compositing. */
       animation: heroDismiss 0.4s cubic-bezier(0.25, 1, 0.5, 1) 5s forwards;
       will-change: opacity;
@@ -447,8 +450,9 @@
       height: 100%;
       /* Render the hero image as soon as it decodes - no fade.
          Fading from opacity 0 forced visitors to look at a black screen for
-         800ms even though the image was already preloaded, and prevented the
-         browser from counting the image as the LCP candidate during the fade. */
+         800ms even though the image was already preloaded, which hurt FCP and
+         perceived load. (A full-viewport <img> is excluded from LCP, so this only
+         ever affected FCP — there is no LCP reason to fade it in.) */
       opacity: 1;
     }
     #hero-placeholder img {
@@ -522,6 +526,17 @@
     html.hero-active {
       overflow: hidden;
     }
+
+    /* LCP: keep the CookieYes consent paragraph (a long IAB-TCF text block that
+       paints late, ~9.7 s on Slow 4G) from outsizing the early static #hero-title
+       and stealing the LCP. Type-only compaction — the consent copy is fully
+       preserved and on-screen, just rendered smaller. */
+    .cky-notice-des,
+    .cky-notice-des p,
+    .cky-consent-bar .cky-notice-des {
+      font-size: 13px !important;
+      line-height: 1.4 !important;
+    }
   </style>
 
   <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
@@ -587,8 +602,9 @@
         
         // CSS animation (heroDismiss, 5 s delay, 0.4 s fade) handles the visual fade on
         // the compositor thread — independent of main-thread JS load.
-        // The 5 s delay keeps the placeholder visible until the image is fully measured
-        // by Chrome as the LCP candidate before the overlay clears.
+        // The 5 s delay keeps the intro visible for perceived performance. (The hero
+        // image only counts toward FCP — a full-viewport <img> is excluded from LCP —
+        // and the LCP element is the static #hero-title text.)
         // This JS timeout only cleans up the DOM after the animation finishes.
         setTimeout(function() {
           if (placeholder) {
@@ -628,7 +644,7 @@
     </picture>
     <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); pointer-events: none;"></div>
     <div style="position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding: calc(var(--stack-h) + 4rem) 1rem 6rem 1rem; color: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif; box-sizing: border-box; width: 100%;">
-      <h1 id="hero-title" style="font-size: 2.25rem; font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
+      <h1 id="hero-title" style="font-size: clamp(3.5rem, 14vw, 3.75rem); font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
       <p id="hero-subtitle" style="margin-top: 1rem; font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
     </div>
   </div>

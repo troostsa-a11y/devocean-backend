@@ -133,7 +133,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-52 sm:pb-24" style={{ paddingTop: 'calc(var(--header-h) + 4rem)' }}>
-        <h1 className="mt-14 text-4xl md:text-6xl font-bold max-w-3xl leading-tight">{ui.hero.title}</h1>
+        <h1 className="mt-14 font-bold max-w-3xl leading-tight" style={{ fontSize: 'clamp(3.5rem, 14vw, 3.75rem)' }}>{ui.hero.title}</h1>
         <p className="mt-4 md:text-xl max-w-[54.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
         {/* CTA Buttons */}
