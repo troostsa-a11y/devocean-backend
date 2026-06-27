@@ -134,7 +134,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-52 sm:pb-24 pt-[calc(var(--header-h)_-_1rem)] sm:pt-[calc(var(--header-h)_+_4rem)]">
         <h1 className="mt-14 font-bold max-w-3xl leading-tight hidden sm:block" style={{ fontSize: 'clamp(3.5rem, 14vw, 3.75rem)' }}>{ui.hero.title}</h1>
-        <p className="mt-[8.5rem] sm:mt-4 text-xl max-w-[54.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
+        <p className="mt-[8.5rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[4rem] sm:mt-4 text-xl max-w-[54.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
         {/* CTA Buttons */}
         <div className="mt-[58px] sm:mt-[66px]">
@@ -202,7 +202,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         </div>
         <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
-        <div ref={trustindexRef} className="mt-3" />
+        <div ref={trustindexRef} className="mt-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:hidden" />
       </div>
 
     </section>
