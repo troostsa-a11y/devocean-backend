@@ -508,10 +508,18 @@
        40px in-flow topbar offsets the React section, so React adds --header-h while
        the fixed placeholder adds --stack-h to land on the same y. */
     #hero-placeholder-content { padding-top: calc(var(--stack-h) + 4rem); }
+    /* Desktop subtitle gap (mirrors React HeroSection subtitle `sm:mt-4`). The two-ID
+       selector beats the generic `#hero-placeholder p { margin: 0 }` rule above. */
+    #hero-placeholder #hero-subtitle { margin-top: 1rem; }
     /* 639.98px (not 639px) to exactly complement Tailwind's sm: = min-width:640px,
        so there's no fractional-width band where React goes mobile but this stays desktop. */
     @media (max-width: 639.98px) {
       #hero-placeholder-content { padding-top: calc(var(--stack-h) - 1rem); }
+      /* Small phones: drop the large hero title (already shown in the header) and let
+         the subtitle take its top slot. Lockstep with React's `hidden sm:block` h1 +
+         `mt-14` mobile subtitle margin so the placeholder and React render identically. */
+      #hero-title { display: none; }
+      #hero-placeholder #hero-subtitle { margin-top: 3.5rem; }
     }
     @keyframes fadeInImage {
       from { opacity: 0; }
@@ -658,7 +666,7 @@
     <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); pointer-events: none;"></div>
     <div id="hero-placeholder-content" style="position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; padding-bottom: 6rem; color: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif; box-sizing: border-box; width: 100%;">
       <h1 id="hero-title" style="font-size: clamp(3.5rem, 14vw, 3.75rem); font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
-      <p id="hero-subtitle" style="margin-top: 1rem; font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
+      <p id="hero-subtitle" style="font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
     </div>
   </div>
 

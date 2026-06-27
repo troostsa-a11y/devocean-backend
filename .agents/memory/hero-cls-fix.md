@@ -40,3 +40,17 @@ The hero review block (stars + badge + "Click the reviews!" + Trustindex widget)
 - Scope to `<640px` (Tailwind base + `sm:` for desktop), never by viewport height.
 - **CLS lockstep:** mirror any mobile top-padding change in the placeholder's `#hero-placeholder-content` `@media (max-width:639.98px)` rule by the same amount (see Rule 1) or the title jumps on fade.
 - Desktop/tablet (`sm:`+) keeps the original `+4rem` — do not touch it.
+
+## Rule 4 — Mobile hides the hero title; subtitle takes its slot
+
+On small phones (`<640px`) the large `#hero-title` repetition is dropped (the lodge name already shows in the header — owner pref). The title is **hidden, not removed**: React h1 is `hidden sm:block`; placeholder uses `@media (max-width:639.98px){ #hero-title{ display:none } }`. The h1 stays in the DOM so the SEO h1 + the localization script (which only sets `textContent` on `#hero-title`/`#hero-subtitle`) keep working, and desktop is unchanged.
+
+The subtitle then becomes the top element and must still clear the fixed header + match across layers:
+- React subtitle: `mt-14 sm:mt-4 text-xl` — mobile top margin `mt-14` (3.5rem) replaces the title's old clearance; `text-xl` (1.25rem) at **all** widths so React matches the placeholder's always-1.25rem size (removes a pre-existing 16px→20px fade-shrink on mobile).
+- Placeholder subtitle: margin driven by CSS, not inline — `#hero-placeholder #hero-subtitle{ margin-top:1rem }` (two-ID selector beats `#hero-placeholder p{ margin:0 }`), overridden to `3.5rem` inside the `639.98px` query.
+
+**Why:** both layers land the subtitle at the same absolute Y (placeholder `(--stack-h 96 − 16) + 56 = 136px`; React `topbar 40 + (--header-h 56 − 16) + 56 = 136px`) → no jump when the placeholder fades. The CTA grid reflows up by the title's freed height, which only *increases* clearance from the bottom-anchored review block (so Rule 3's overlap risk is moot on mobile).
+
+**Consequence (LCP):** with the mobile title hidden, the mobile LCP element shifts from `#hero-title` to the static `#hero-subtitle` (still raw HTML, early paint). Desktop LCP stays `#hero-title`. Verify a mobile Lighthouse run that the late CookieYes banner doesn't reclaim LCP from the smaller subtitle (TCF disabled keeps it safe).
+
+**How to apply:** mobile subtitle gap = `mt-14` in React ↔ `3.5rem` in the placeholder `@media` — change in lockstep. Keep the h1 in the DOM (display:none), never delete it.
