@@ -131,7 +131,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={region}
               onChange={(e) => handleRegionChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[140px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[120px] sm:w-[140px] text-white"
               aria-label="Select region"
             >
               {Object.entries(regions).map(([key]) => (
@@ -145,7 +145,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[93px] text-white"
+              className="border border-white/40 rounded px-2 py-1 w-[80px] sm:w-[93px] text-white"
               aria-label="Select language"
             >
               {regions[region]?.languages.includes('en-US') && <option value="en-US">English</option>}
@@ -250,7 +250,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               aria-label="Toggle menu"
             >
               <Menu className={`transition-transform ${menuOpen ? 'rotate-90' : ''}`} />
-              <span className="text-sm font-semibold">{ui.menu}</span>
+              <span className="text-sm font-semibold hidden sm:inline-flex">{ui.menu}</span>
             </button>
 
             {/* Mobile/Tablet dropdown menu — always in DOM, CSS transform prevents layout thrash on open/close */}
