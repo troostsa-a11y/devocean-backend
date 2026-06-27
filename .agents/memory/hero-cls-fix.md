@@ -54,3 +54,15 @@ The subtitle then becomes the top element and must still clear the fixed header 
 **Consequence (LCP):** with the mobile title hidden, the mobile LCP element shifts from `#hero-title` to the static `#hero-subtitle` (still raw HTML, early paint). Desktop LCP stays `#hero-title`. Verify a mobile Lighthouse run that the late CookieYes banner doesn't reclaim LCP from the smaller subtitle (TCF disabled keeps it safe).
 
 **How to apply:** mobile subtitle gap = `mt-[8.5rem]` in React ↔ `8.5rem` in the placeholder `@media` — change in lockstep. Keep the h1 in the DOM (display:none), never delete it.
+
+## Rule 5 — Short-screen override (iPhone SE class, ≤639.98px × ≤700px)
+
+On very short mobile screens (375×667 = iPhone SE / iPhone 6-8 class) the `mt-[8.5rem]` gap pushes the CTA grid into the Trustindex-widened review block. A **combined width+height** media query overrides the mobile base values ONLY for this band without touching Samsung A23 (412×915) or desktop.
+
+**Tuning knobs (change ALL four in lockstep or the subtitle jumps on fade):**
+1. React subtitle class: `[@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[7rem]` — current value: `7rem`
+2. React subtitle font: `[@media_(max-width:639.98px)_and_(max-height:700px)]:text-base` — reduces from 1.25rem → 1rem (fewer lines, CTA position preserved because ΔH ≈ Δmt)
+3. Placeholder CSS (index.html): `@media (max-width:639.98px) and (max-height:700px) { #hero-placeholder #hero-subtitle { margin-top: 7rem; font-size: 1rem; } }` — must mirror #1 and #2
+4. Review block: `[@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[1rem]` — reduces from `bottom-20` (5rem) → 1rem so the review block clears the CTA grid; bottom ~24px of the Trustindex badge is below fold (acceptable).
+
+**Why height-scope is safe here:** this is the OPPOSITE problem from Rule 3. Here the TALL phones (A23, 915px) are fine at 8.5rem; only SHORT phones have the overlap. Height-scoping correctly excludes tall phones. Do NOT apply Rule 3's "scope by width only" reasoning to this override.
