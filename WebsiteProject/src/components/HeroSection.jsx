@@ -137,7 +137,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         <p className="mt-[8.5rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[7rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:text-base sm:mt-4 text-xl max-w-[54.5rem] [@media_(min-width:768px)_and_(max-width:1279.98px)]:max-w-[31.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
         {/* CTA Buttons */}
-        <div className="mt-[58px] sm:mt-[66px] [@media_(max-height:600px)_and_(min-width:640px)]:mt-[20px]">
+        <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[42px] sm:mt-[66px] [@media_(max-height:600px)_and_(min-width:640px)]:mt-[20px]">
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 max-w-[25rem] sm:max-w-[28rem]">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
@@ -196,13 +196,13 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Stars, badge and Trustindex widget — kept together at the bottom so
           "Click the reviews!" visually leads into the widget badge directly below.
           Absolutely positioned outside the flex container to avoid CLS. */}
-      <div className="absolute bottom-20 sm:bottom-10 [@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[1rem] [@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem] left-0 right-0 z-10 max-w-7xl mx-auto px-4">
+      <div className="absolute bottom-20 sm:bottom-10 [@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[17rem] [@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem] left-0 right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
         <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
-        <div ref={trustindexRef} className="mt-3" />
+        <div ref={trustindexRef} className="mt-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:hidden" />
       </div>
 
     </section>
