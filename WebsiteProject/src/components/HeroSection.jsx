@@ -137,7 +137,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         <p className="mt-[8.5rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[7rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:text-base sm:mt-4 text-xl max-w-[54.5rem] [@media_(min-width:768px)_and_(max-width:1279.98px)]:max-w-[31.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
         {/* CTA Buttons */}
-        <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[42px] sm:mt-[66px] [@media_(max-height:600px)_and_(min-width:640px)]:mt-[20px]">
+        <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[28px] sm:mt-[66px] [@media_(max-height:600px)_and_(min-width:640px)]:mt-[20px]">
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 [@media_(max-width:639.98px)_and_(max-height:700px)]:gap-y-3 max-w-[25rem] sm:max-w-[28rem]">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
