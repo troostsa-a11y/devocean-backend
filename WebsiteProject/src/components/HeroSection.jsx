@@ -138,11 +138,11 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
         {/* CTA Buttons */}
         <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[42px] sm:mt-[66px] [@media_(max-height:600px)_and_(min-width:640px)]:mt-[20px]">
-          <div className="grid grid-cols-2 gap-x-3 gap-y-6 max-w-[25rem] sm:max-w-[28rem]">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-6 [@media_(max-width:639.98px)_and_(max-height:700px)]:gap-y-3 max-w-[25rem] sm:max-w-[28rem]">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
               href={buildUrl('/why-ponta')}
-              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-why-ponta"
             >
               <span className="sm:whitespace-nowrap">{ui.hero.villageHighlights || "Village Highlights"}</span>
@@ -151,7 +151,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Go Diving */}
             <Link
               href={buildUrl('/experiences/diving')}
-              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 py-3 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               data-testid="link-go-diving"
             >
               <Anchor className="w-4 h-4 shrink-0" />
@@ -161,7 +161,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Explore Lodge */}
             <a
               href="#stay"
-              className="group btn-secondary w-full sm:w-auto sm:min-w-[13rem] px-5 py-3 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
+              className="group btn-secondary w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2"
               aria-label={ui.hero.ctaSecondary}
               data-testid="button-explore-lodge"
             >
@@ -173,7 +173,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               href={bookUrl}
               target="_blank"
               rel="noreferrer"
-              className="group btn-cta w-full sm:w-auto sm:min-w-[13rem] px-5 py-3 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2 border-2 border-white/20"
+              className="group btn-cta w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-base flex items-center justify-center gap-2 border-2 border-white/20"
               onClick={() => {
                 if (window.dataLayer) {
                   window.dataLayer.push({
@@ -196,7 +196,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       {/* Stars, badge and Trustindex widget — kept together at the bottom so
           "Click the reviews!" visually leads into the widget badge directly below.
           Absolutely positioned outside the flex container to avoid CLS. */}
-      <div className="absolute bottom-20 sm:bottom-10 [@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[8rem] [@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem] left-0 right-0 z-10 max-w-7xl mx-auto px-4">
+      <div className="absolute bottom-20 sm:bottom-10 [@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[9rem] [@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem] left-0 right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
