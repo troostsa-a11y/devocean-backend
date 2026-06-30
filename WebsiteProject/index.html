@@ -51,7 +51,7 @@
 
   <!-- DNS prefetch for Mia voice receptionist (Render) — resolves DNS early so
        the warm-up fetch below and the widget-loader both connect faster -->
-  <link rel="dns-prefetch" href="https://mia-voice-receptionist.onrender.com">
+  <link rel="dns-prefetch" href="%%MIA_URL%%">
 
   <!-- Brand font: Inter. Loaded non-render-blocking (preload-as-style swap) so it
        never delays the static hero LCP paint; display=swap shows the system-font
@@ -960,7 +960,7 @@
       {
         "@type": "Question",
         "name": "How do I check availability and book?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Book online at devoceanlodge.com, or ask our AI receptionist Mia for live availability and rates at https://mia-voice-receptionist.onrender.com/embed. The reservations team follows up to confirm every booking." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Book online at devoceanlodge.com, or ask our AI receptionist Mia for live availability and rates at %%MIA_URL%%/embed. The reservations team follows up to confirm every booking." }
       },
       {
         "@type": "Question",
@@ -1116,7 +1116,7 @@
   <!-- DEVOCEAN AI Receptionist "Mia" — floating microphone button, bottom-right -->
   <!-- Source lives in voice-reception/ in this monorepo (pnpm workspace).
        Deployed as Render web service: mia-voice-receptionist (see render.yaml). -->
-  <script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
+  <script src="%%MIA_URL%%/widget-loader.js" defer></script>
 
   <!-- Mia cold-start warm-up: fires a low-priority ping to the Render health
        endpoint as soon as the browser is idle so the service is warm before
@@ -1129,7 +1129,7 @@
       if (isDev) return;
       var ping = function () {
         try {
-          fetch('https://mia-voice-receptionist.onrender.com/api/health', {
+          fetch('%%MIA_URL%%/api/health', {
             method: 'GET',
             priority: 'low',
             mode: 'no-cors',

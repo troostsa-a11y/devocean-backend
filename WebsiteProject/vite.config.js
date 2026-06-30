@@ -5,6 +5,20 @@ import preloadEntry from './vite-plugin-preload-entry.js';
 import { rmSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
+// Single source of truth for the Mia voice-receptionist Render URL.
+// Change this one constant if the service URL ever moves (custom subdomain, etc.).
+// Used by injectMiaUrl() below to replace %%MIA_URL%% placeholders in index.html.
+const MIA_URL = 'https://mia-voice-receptionist.onrender.com';
+
+// Replace %%MIA_URL%% placeholders in index.html with the MIA_URL constant above.
+// This runs in both dev (transformIndexHtml is called by the dev server) and build.
+const injectMiaUrl = () => ({
+  name: 'inject-mia-url',
+  transformIndexHtml(html) {
+    return html.replaceAll('%%MIA_URL%%', MIA_URL);
+  }
+});
+
 // After the build, remove dist/functions/ if the build script copied it there.
 // The build script runs `cp -r functions dist/` which causes Cloudflare Pages
 // to use the raw unbundled source files as Workers instead of the compiled
@@ -48,6 +62,7 @@ const moveScriptToBody = () => ({
 export default defineConfig({
   plugins: [
     react(),
+    injectMiaUrl(), // Replace %%MIA_URL%% in index.html with the MIA_URL constant
     asyncCSS(), // Make CSS async to eliminate 160ms mobile blocking
     preloadEntry(), // Inject modulepreload for main entry to eliminate waterfall
     moveScriptToBody(), // Keep entry script at bottom of body so static hero paints first
