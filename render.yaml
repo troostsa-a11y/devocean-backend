@@ -75,13 +75,12 @@ services:
       - key: AI_INTEGRATIONS_OPENAI_API_KEY
         sync: false
       - key: AI_INTEGRATIONS_OPENAI_BASE_URL
-        sync: false
+        value: "https://api.openai.com/v1"
       # Optional: override the OpenAI model names used by Mia.
       # OPENAI_REALTIME_MODEL — used for the WebRTC Realtime session (voice).
-      # Check https://platform.openai.com/docs/models for the current API model ID.
-      # The display name "GPT-Realtime-1.5" maps to an API ID — verify before deploy.
+      # SDP handshake goes to https://api.openai.com/v1/realtime?model=<id>
       - key: OPENAI_REALTIME_MODEL
-        value: "gpt-4o-realtime-preview"
+        value: "gpt-realtime-2"
       - key: OPENAI_TEXT_MODEL
         value: "gpt-4o"
       # Required: Beds24 auth for live availability queries
