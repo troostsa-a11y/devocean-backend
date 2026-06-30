@@ -7,6 +7,17 @@ import { Card } from "@/components/ui/card";
 import { VoiceWidget } from "@/components/VoiceWidget";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 export default function ConversationDetail() {
   const { id } = useParams();
@@ -14,6 +25,9 @@ export default function ConversationDetail() {
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
   const { toast } = useToast();
+
+  const [deleteConvOpen, setDeleteConvOpen] = useState(false);
+  const [deleteBookingId, setDeleteBookingId] = useState<number | null>(null);
 
   const { data: conversation, isLoading: convLoading } = useGetOpenaiConversation(convId, { 
     query: { enabled: !!convId, queryKey: getGetOpenaiConversationQueryKey(convId) } 
@@ -88,11 +102,7 @@ export default function ConversationDetail() {
           variant="outline" 
           size="sm" 
           className="text-destructive hover:bg-destructive hover:text-destructive-foreground"
-          onClick={() => {
-            if (confirm("Are you sure you want to delete this conversation?")) {
-              deleteConv.mutate({ id: convId });
-            }
-          }}
+          onClick={() => setDeleteConvOpen(true)}
           disabled={deleteConv.isPending}
           data-testid={`button-delete-conv-${convId}`}
         >
@@ -159,13 +169,9 @@ export default function ConversationDetail() {
                     className="text-muted-foreground hover:text-destructive shrink-0"
                     disabled={deleteBooking.isPending}
                     data-testid={`button-delete-booking-${booking.id}`}
-                    onClick={() => {
-                      if (confirm("Delete this booking enquiry? This cannot be undone.")) {
-                        deleteBooking.mutate({ id: booking.id });
-                      }
-                    }}
+                    onClick={() => setDeleteBookingId(booking.id)}
                   >
-                    {deleteBooking.isPending ? (
+                    {deleteBooking.isPending && deleteBookingId === booking.id ? (
                       <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
                       <Trash2 className="w-4 h-4" />
@@ -216,6 +222,55 @@ export default function ConversationDetail() {
         </div>
         <VoiceWidget conversationId={convId} />
       </div>
+
+      {/* Delete conversation dialog */}
+      <AlertDialog open={deleteConvOpen} onOpenChange={setDeleteConvOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete conversation?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the conversation and its transcript. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel data-testid="button-delete-conv-cancel">Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={() => deleteConv.mutate({ id: convId })}
+              data-testid="button-delete-conv-confirm"
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Delete booking enquiry dialog */}
+      <AlertDialog open={deleteBookingId !== null} onOpenChange={(open) => { if (!open) setDeleteBookingId(null); }}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete booking enquiry?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently remove the booking enquiry. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel data-testid="button-delete-booking-cancel">Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              onClick={() => {
+                if (deleteBookingId !== null) {
+                  deleteBooking.mutate({ id: deleteBookingId });
+                  setDeleteBookingId(null);
+                }
+              }}
+              data-testid="button-delete-booking-confirm"
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
