@@ -4,7 +4,7 @@ import { z } from "zod/v4";
 
 import { conversations } from "./conversations";
 
-export const bookings = pgTable("mia_bookings", {
+export const bookings = pgTable("bookings", {
   id: serial("id").primaryKey(),
   conversationId: integer("conversation_id").references(() => conversations.id, {
     onDelete: "set null",
