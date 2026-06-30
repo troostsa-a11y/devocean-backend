@@ -345,14 +345,23 @@ router.post("/conversations/:id/messages", async (req, res) => {
     }
   }
 
-  // Save assistant message
-  await withDbRetry(() =>
-    db.insert(messages).values({
-      conversationId,
-      role: "assistant",
-      content: fullResponse,
-    }),
-  );
+  // Save assistant message — best-effort; if all retries fail we emit a
+  // recoverable SSE error event so the frontend can surface a notice rather
+  // than silently dropping the turn.
+  try {
+    await withDbRetry(() =>
+      db.insert(messages).values({
+        conversationId,
+        role: "assistant",
+        content: fullResponse,
+      }),
+    );
+  } catch (err) {
+    req.log.error({ err }, "Failed to save assistant message after retries");
+    res.write(
+      `data: ${JSON.stringify({ error: "Couldn't save this message — please try again" })}\n\n`,
+    );
+  }
 
   res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
   res.end();
@@ -436,13 +445,20 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
   }
 
   if (assistantTranscript) {
-    await withDbRetry(() =>
-      db.insert(messages).values({
-        conversationId,
-        role: "assistant",
-        content: assistantTranscript,
-      }),
-    );
+    try {
+      await withDbRetry(() =>
+        db.insert(messages).values({
+          conversationId,
+          role: "assistant",
+          content: assistantTranscript,
+        }),
+      );
+    } catch (err) {
+      req.log.error({ err }, "Failed to save assistant voice transcript after retries");
+      res.write(
+        `data: ${JSON.stringify({ error: "Couldn't save this message — please try again" })}\n\n`,
+      );
+    }
   }
 
   res.write(`data: ${JSON.stringify({ done: true })}\n\n`);

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useVoiceRecorder, useVoiceStream, blobToWav } from "@workspace/integrations-openai-ai-react/audio";
 import { useCreateOpenaiConversation } from "@workspace/api-client-react";
-import { Mic, Square, Loader2, AlertCircle } from "lucide-react";
+import { Mic, Square, Loader2, AlertCircle, CloudOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface VoiceWidgetProps {
@@ -18,6 +18,7 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
   const [transcript, setTranscript] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [saveWarning, setSaveWarning] = useState<string | null>(null);
   const recorder = useVoiceRecorder();
   const createConv = useCreateOpenaiConversation();
 
@@ -35,6 +36,9 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
       setIsProcessing(false);
       setErrorMessage(err.message || "Something went wrong. Please try again.");
     },
+    onSaveError: (msg) => {
+      setSaveWarning(msg);
+    },
   });
 
   const activeConversationIdRef = useRef<number | undefined>(conversationId);
@@ -44,6 +48,7 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
 
   const handleClick = async () => {
     setErrorMessage(null);
+    setSaveWarning(null);
     try {
       if (recorder.state === "recording") {
         // Resume the AudioContext while we are still inside this click gesture —
@@ -145,6 +150,16 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
         <p className="text-xs text-muted-foreground text-center max-w-[280px] leading-snug line-clamp-4">
           Ask about the Lodge, accommodation options, rates &amp; availability, experiences and more.
         </p>
+      )}
+
+      {saveWarning && (
+        <div
+          className="flex items-start gap-1.5 text-amber-600 dark:text-amber-400 text-xs text-left max-w-[280px] mt-2 bg-amber-50 dark:bg-amber-950/30 rounded-md px-2 py-1.5"
+          data-testid="voice-widget-save-warning"
+        >
+          <CloudOff className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+          <span>{saveWarning}</span>
+        </div>
       )}
 
       {stream.playbackState === "playing" && (

@@ -7,6 +7,10 @@ interface StreamCallbacks {
   onTranscript?: (text: string, full: string) => void;
   onComplete?: (transcript: string) => void;
   onError?: (error: Error) => void;
+  /** Called when the server signals that the assistant reply was not saved to
+   *  the database (all DB retries exhausted). The voice call itself completed
+   *  successfully; this is a non-blocking, recoverable notice. */
+  onSaveError?: (message: string) => void;
 }
 
 type TypedVoiceStreamEvent =
@@ -17,7 +21,11 @@ type TypedVoiceStreamEvent =
 
 type DoneEvent = { done: true };
 
-type VoiceStreamEvent = TypedVoiceStreamEvent | DoneEvent;
+/** Plain save-error event emitted when all DB write retries fail.
+ *  Has an `error` string but no `type` or `done` field. */
+type SaveErrorEvent = { error: string };
+
+type VoiceStreamEvent = TypedVoiceStreamEvent | DoneEvent | SaveErrorEvent;
 
 type PlaybackHandle = ReturnType<typeof useAudioPlayback>;
 
@@ -47,12 +55,23 @@ function notifyError(callbacks: Pick<StreamCallbacks, "onError">, error: Error) 
   }
 }
 
+function isSaveErrorEvent(record: Record<string, unknown>): record is SaveErrorEvent {
+  return (
+    typeof record.error === "string" &&
+    record.type === undefined &&
+    record.done === undefined
+  );
+}
+
 function isVoiceStreamEvent(value: unknown): value is VoiceStreamEvent {
   if (!value || typeof value !== "object") return false;
 
   const record = value as Record<string, unknown>;
 
   if (record.done === true) return true;
+
+  // Plain save-error event: { error: string } with no type or done field.
+  if (isSaveErrorEvent(record)) return true;
 
   switch (record.type) {
     case "user_transcript":
@@ -142,22 +161,35 @@ function handleVoiceStreamEvent(
     return;
   }
 
-  switch (event.type) {
+  // Plain save-error event: { error: string } with no type or done field.
+  // The voice call itself completed; this is a non-fatal, recoverable notice.
+  if ("error" in event && !("type" in event)) {
+    try {
+      callbacks.onSaveError?.((event as SaveErrorEvent).error);
+    } catch {
+      // Do not let onSaveError mask the stream state.
+    }
+    return;
+  }
+
+  switch ((event as TypedVoiceStreamEvent).type) {
     case "user_transcript":
-      callbacks.onUserTranscript?.(event.data);
+      callbacks.onUserTranscript?.((event as { type: "user_transcript"; data: string }).data);
       return;
 
-    case "transcript":
-      state.fullTranscript += event.data;
-      callbacks.onTranscript?.(event.data, state.fullTranscript);
+    case "transcript": {
+      const data = (event as { type: "transcript"; data: string }).data;
+      state.fullTranscript += data;
+      callbacks.onTranscript?.(data, state.fullTranscript);
       return;
+    }
 
     case "audio":
-      playback.pushAudio(event.data);
+      playback.pushAudio((event as { type: "audio"; data: string }).data);
       return;
 
     case "error":
-      throw new Error(event.error);
+      throw new Error((event as { type: "error"; error: string }).error);
   }
 }
 
