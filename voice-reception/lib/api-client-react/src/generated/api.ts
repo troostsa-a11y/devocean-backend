@@ -418,6 +418,83 @@ export const useDeleteOpenaiConversation = <TError = ErrorType<OpenaiError>,
       return useMutation(getDeleteOpenaiConversationMutationOptions(options));
     }
 
+export const getListConversationBookingsUrl = (id: number,) => {
+
+
+
+
+  return `/api/openai/conversations/${id}/bookings`
+}
+
+/**
+ * @summary List booking enquiries linked to a conversation
+ */
+export const listConversationBookings = async (id: number, options?: RequestInit): Promise<Booking[]> => {
+
+  return customFetch<Booking[]>(getListConversationBookingsUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListConversationBookingsQueryKey = (id: number,) => {
+    return [
+    `/api/openai/conversations/${id}/bookings`
+    ] as const;
+    }
+
+
+export const getListConversationBookingsQueryOptions = <TData = Awaited<ReturnType<typeof listConversationBookings>>, TError = ErrorType<OpenaiError>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listConversationBookings>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListConversationBookingsQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listConversationBookings>>> = ({ signal }) => listConversationBookings(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: !!(id), ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listConversationBookings>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListConversationBookingsQueryResult = NonNullable<Awaited<ReturnType<typeof listConversationBookings>>>
+export type ListConversationBookingsQueryError = ErrorType<OpenaiError>
+
+
+/**
+ * @summary List booking enquiries linked to a conversation
+ */
+
+export function useListConversationBookings<TData = Awaited<ReturnType<typeof listConversationBookings>>, TError = ErrorType<OpenaiError>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listConversationBookings>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListConversationBookingsQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+
+
+
+
+
+
 export const getListOpenaiMessagesUrl = (id: number,) => {
 
 
@@ -1005,52 +1082,6 @@ export function useGetDashboardStats<TData = Awaited<ReturnType<typeof getDashbo
 
   const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
 
-  return { ...query, queryKey: queryOptions.queryKey };
-}
-
-
-
-export const getListConversationBookingsUrl = (id: number) => {
-  return `/api/openai/conversations/${id}/bookings`
-}
-
-/**
- * @summary List booking enquiries linked to a conversation
- */
-export const listConversationBookings = async (id: number, options?: RequestInit): Promise<Booking[]> => {
-  return customFetch<Booking[]>(getListConversationBookingsUrl(id), {
-    ...options,
-    method: 'GET',
-  });
-}
-
-export const getListConversationBookingsQueryKey = (id: number) => {
-  return [`/api/openai/conversations/${id}/bookings`] as const;
-}
-
-export const getListConversationBookingsQueryOptions = <TData = Awaited<ReturnType<typeof listConversationBookings>>, TError = ErrorType<unknown>>(
-  id: number,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof listConversationBookings>>, TError, TData>, request?: SecondParameter<typeof customFetch> }
-) => {
-  const { query: queryOptions, request: requestOptions } = options ?? {};
-  const queryKey = queryOptions?.queryKey ?? getListConversationBookingsQueryKey(id);
-  const queryFn: QueryFunction<Awaited<ReturnType<typeof listConversationBookings>>> = ({ signal }) =>
-    listConversationBookings(id, { signal, ...requestOptions });
-  return { queryKey, queryFn, enabled: !!id, ...queryOptions } as UseQueryOptions<Awaited<ReturnType<typeof listConversationBookings>>, TError, TData> & { queryKey: QueryKey }
-}
-
-export type ListConversationBookingsQueryResult = NonNullable<Awaited<ReturnType<typeof listConversationBookings>>>
-export type ListConversationBookingsQueryError = ErrorType<unknown>
-
-/**
- * @summary List booking enquiries linked to a conversation
- */
-export function useListConversationBookings<TData = Awaited<ReturnType<typeof listConversationBookings>>, TError = ErrorType<unknown>>(
-  id: number,
-  options?: { query?: UseQueryOptions<Awaited<ReturnType<typeof listConversationBookings>>, TError, TData>, request?: SecondParameter<typeof customFetch> }
-): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
-  const queryOptions = getListConversationBookingsQueryOptions(id, options)
-  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey };
   return { ...query, queryKey: queryOptions.queryKey };
 }
 

@@ -23,7 +23,9 @@ export const HealthCheckResponse = zod.object({
 export const ListOpenaiConversationsResponseItem = zod.object({
   "id": zod.number(),
   "title": zod.string(),
-  "createdAt": zod.coerce.date()
+  "createdAt": zod.coerce.date(),
+  "messageCount": zod.number(),
+  "bookingCount": zod.number()
 })
 export const ListOpenaiConversationsResponse = zod.array(ListOpenaiConversationsResponseItem)
 
@@ -63,6 +65,28 @@ export const GetOpenaiConversationResponse = zod.object({
 export const DeleteOpenaiConversationParams = zod.object({
   "id": zod.coerce.number()
 })
+
+
+/**
+ * @summary List booking enquiries linked to a conversation
+ */
+export const ListConversationBookingsParams = zod.object({
+  "id": zod.coerce.number()
+})
+
+export const ListConversationBookingsResponseItem = zod.object({
+  "id": zod.number(),
+  "conversationId": zod.number().nullable(),
+  "guestName": zod.string(),
+  "guestEmail": zod.string().nullish(),
+  "guestPhone": zod.string().nullish(),
+  "checkIn": zod.string().nullish(),
+  "checkOut": zod.string().nullish(),
+  "guests": zod.number().nullish(),
+  "notes": zod.string().nullish(),
+  "createdAt": zod.coerce.date()
+})
+export const ListConversationBookingsResponse = zod.array(ListConversationBookingsResponseItem)
 
 
 /**
