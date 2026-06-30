@@ -1,5 +1,6 @@
 import app from "./app";
 import { logger } from "./lib/logger";
+import { setReady, setFailed } from "./lib/readiness";
 import { runMigrations } from "./migrate";
 
 const rawPort = process.env["PORT"];
@@ -16,18 +17,22 @@ if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
+app.listen(port, (err) => {
+  if (err) {
+    logger.error({ err }, "Error listening on port");
+    process.exit(1);
+  }
+
+  logger.info({ port }, "Server listening — running migrations in background");
+});
+
 runMigrations()
   .then(() => {
-    app.listen(port, (err) => {
-      if (err) {
-        logger.error({ err }, "Error listening on port");
-        process.exit(1);
-      }
-
-      logger.info({ port }, "Server listening");
-    });
+    setReady();
+    logger.info("Migrations complete — server is ready");
   })
   .catch((err) => {
-    logger.error({ err }, "Migration failed — aborting startup");
+    setFailed(err);
+    logger.error({ err }, "Migration failed — shutting down");
     process.exit(1);
   });
