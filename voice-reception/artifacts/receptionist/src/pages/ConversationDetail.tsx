@@ -1,5 +1,5 @@
 import { useParams, Link, useLocation } from "wouter";
-import { useGetOpenaiConversation, getGetOpenaiConversationQueryKey, useDeleteOpenaiConversation, getListOpenaiConversationsQueryKey, useListOpenaiMessages, getListOpenaiMessagesQueryKey, useListConversationBookings, getListConversationBookingsQueryKey } from "@workspace/api-client-react";
+import { useGetOpenaiConversation, getGetOpenaiConversationQueryKey, useDeleteOpenaiConversation, getListOpenaiConversationsQueryKey, useListOpenaiMessages, getListOpenaiMessagesQueryKey, useListConversationBookings, getListConversationBookingsQueryKey, useDeleteBooking, getListBookingsQueryKey } from "@workspace/api-client-react";
 import { format } from "date-fns";
 import { ArrowLeft, Trash2, Loader2, User, Bot, Calendar, Phone, Mail, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -33,6 +33,16 @@ export default function ConversationDetail() {
         queryClient.invalidateQueries({ queryKey: getListOpenaiConversationsQueryKey() });
         toast({ title: "Conversation deleted" });
         setLocation("/conversations");
+      }
+    }
+  });
+
+  const deleteBooking = useDeleteBooking({
+    mutation: {
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: getListConversationBookingsQueryKey(convId) });
+        queryClient.invalidateQueries({ queryKey: getListBookingsQueryKey() });
+        toast({ title: "Booking enquiry deleted" });
       }
     }
   });
@@ -143,6 +153,24 @@ export default function ConversationDetail() {
                       )}
                     </div>
                   </div>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-muted-foreground hover:text-destructive shrink-0"
+                    disabled={deleteBooking.isPending}
+                    data-testid={`button-delete-booking-${booking.id}`}
+                    onClick={() => {
+                      if (confirm("Delete this booking enquiry? This cannot be undone.")) {
+                        deleteBooking.mutate({ id: booking.id });
+                      }
+                    }}
+                  >
+                    {deleteBooking.isPending ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Trash2 className="w-4 h-4" />
+                    )}
+                  </Button>
                 </div>
               </Card>
             ))}
