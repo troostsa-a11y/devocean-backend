@@ -1,11 +1,8 @@
 import { defineConfig, InputTransformerFn } from "orval";
 import path from "path";
 
-// Used only by check-codegen-sync.sh — prettier is disabled so the check runs
-// fast. The diff only needs byte-level equality between the committed files and
-// what orval would emit; formatting is irrelevant for that comparison.
-//
-// Output paths are driven by env vars set by the script so we write to a temp
+// Used only by check-codegen-sync.sh — mirrors orval.config.ts exactly except
+// output paths are driven by ORVAL_CHECK_TMP_ROOT so we write to a temp
 // directory and never touch the committed generated files.
 
 const tmpRoot = process.env.ORVAL_CHECK_TMP_ROOT;
@@ -39,7 +36,7 @@ export default defineConfig({
       mode: "split",
       baseUrl: "/api",
       clean: true,
-      prettier: false,
+      prettier: true,
       override: {
         fetch: {
           includeHttpResponseReturnType: false,
@@ -67,7 +64,7 @@ export default defineConfig({
       schemas: { path: "generated/types", type: "typescript" },
       mode: "split",
       clean: true,
-      prettier: false,
+      prettier: true,
       override: {
         zod: {
           coerce: {
