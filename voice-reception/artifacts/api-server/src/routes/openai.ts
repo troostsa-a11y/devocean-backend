@@ -273,12 +273,21 @@ router.post("/conversations/:id/messages", async (req, res) => {
     }),
   );
 
-  // Build chat history
-  const history = await db
-    .select()
-    .from(messages)
-    .where(eq(messages.conversationId, conversationId))
-    .orderBy(messages.createdAt);
+  // Build chat history — wrapped so a transient DB timeout doesn't crash the
+  // request before the OpenAI stream starts; falls back to empty history so
+  // Mia can still answer even when the DB is briefly unavailable.
+  let history: (typeof messages.$inferSelect)[] = [];
+  try {
+    history = await withDbRetry(() =>
+      db
+        .select()
+        .from(messages)
+        .where(eq(messages.conversationId, conversationId))
+        .orderBy(messages.createdAt),
+    );
+  } catch (err) {
+    req.log.warn({ err }, "History read failed after retries — continuing with empty history");
+  }
 
   const chatMessages: any[] = [
     { role: "system", content: buildSystemPrompt() },
@@ -396,11 +405,21 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
   }
 
   // Load prior conversation so voice-Mia has continuity and lodge context.
-  const history = await db
-    .select()
-    .from(messages)
-    .where(eq(messages.conversationId, conversationId))
-    .orderBy(messages.createdAt);
+  // Wrapped with withDbRetry so a transient DB timeout doesn't crash the voice
+  // call before the OpenAI stream starts; falls back to empty history so Mia
+  // can still respond even when the DB is briefly unavailable.
+  let history: (typeof messages.$inferSelect)[] = [];
+  try {
+    history = await withDbRetry(() =>
+      db
+        .select()
+        .from(messages)
+        .where(eq(messages.conversationId, conversationId))
+        .orderBy(messages.createdAt),
+    );
+  } catch (err) {
+    req.log.warn({ err }, "Voice history read failed after retries — continuing with empty history");
+  }
 
   const voiceHistory = history.map((m) => ({
     role: m.role as "user" | "assistant",
