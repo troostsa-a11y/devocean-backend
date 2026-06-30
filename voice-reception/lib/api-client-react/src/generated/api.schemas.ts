@@ -13,6 +13,8 @@ export interface OpenaiConversation {
   id: number;
   title: string;
   createdAt: string;
+  messageCount: number;
+  bookingCount: number;
 }
 
 export interface OpenaiConversationInput {

@@ -1,8 +1,9 @@
 import { Link } from "wouter";
 import { useListOpenaiConversations, getListOpenaiConversationsQueryKey } from "@workspace/api-client-react";
 import { format } from "date-fns";
-import { MessageSquare, ArrowRight, Loader2 } from "lucide-react";
+import { MessageSquare, ArrowRight, Loader2, CalendarCheck } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 export default function Conversations() {
   const { data: conversations, isLoading } = useListOpenaiConversations({ query: { queryKey: getListOpenaiConversationsQueryKey() } });
@@ -27,17 +28,29 @@ export default function Conversations() {
           {sortedConversations.map((conv) => (
             <Link key={conv.id} href={`/conversations/${conv.id}`} className="block group">
               <Card className="p-4 hover:border-primary/50 transition-colors flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-secondary text-primary flex items-center justify-center">
+                <div className="flex items-center gap-4 min-w-0">
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-secondary text-primary flex items-center justify-center">
                     <MessageSquare className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="font-medium text-foreground group-hover:text-primary transition-colors">
+                  <div className="min-w-0">
+                    <h3 className="font-medium text-foreground group-hover:text-primary transition-colors truncate">
                       {conv.title || "Voice Session"}
                     </h3>
                     <p className="text-xs text-muted-foreground">
                       {format(new Date(conv.createdAt), "MMMM d, yyyy 'at' h:mm a")}
                     </p>
+                    <div className="flex items-center gap-2 mt-1.5 flex-wrap">
+                      <span className="text-xs text-muted-foreground flex items-center gap-1">
+                        <MessageSquare className="w-3 h-3" />
+                        {conv.messageCount} {conv.messageCount === 1 ? "message" : "messages"}
+                      </span>
+                      {conv.bookingCount > 0 && (
+                        <Badge variant="secondary" className="text-xs py-0 h-5 flex items-center gap-1">
+                          <CalendarCheck className="w-3 h-3" />
+                          {conv.bookingCount} {conv.bookingCount === 1 ? "booking" : "bookings"}
+                        </Badge>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center border border-border group-hover:bg-primary group-hover:border-primary transition-all">

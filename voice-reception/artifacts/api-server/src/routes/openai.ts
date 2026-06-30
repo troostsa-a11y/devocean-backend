@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
 import { conversations, messages, bookings } from "@workspace/db";
-import { eq, desc } from "drizzle-orm";
+import { eq, desc, sql } from "drizzle-orm";
 import {
   GetOpenaiConversationParams,
   DeleteOpenaiConversationParams,
@@ -148,7 +148,13 @@ function buildSystemPrompt(): string {
 // List conversations
 router.get("/conversations", async (req, res) => {
   const all = await db
-    .select()
+    .select({
+      id: conversations.id,
+      title: conversations.title,
+      createdAt: conversations.createdAt,
+      messageCount: sql<number>`(select count(*) from messages where messages.conversation_id = ${conversations.id})::int`,
+      bookingCount: sql<number>`(select count(*) from bookings where bookings.conversation_id = ${conversations.id})::int`,
+    })
     .from(conversations)
     .orderBy(desc(conversations.createdAt));
   res.json(all);

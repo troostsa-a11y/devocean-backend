@@ -311,10 +311,16 @@ components:
         createdAt:
           type: string
           format: date-time
+        messageCount:
+          type: integer
+        bookingCount:
+          type: integer
       required:
         - id
         - title
         - createdAt
+        - messageCount
+        - bookingCount
 
     OpenaiConversationInput:
       type: object
