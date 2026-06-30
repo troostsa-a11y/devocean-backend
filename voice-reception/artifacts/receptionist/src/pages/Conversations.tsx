@@ -39,22 +39,22 @@ export default function Conversations() {
                     <p className="text-xs text-muted-foreground">
                       {format(new Date(conv.createdAt), "MMMM d, yyyy 'at' h:mm a")}
                     </p>
-                    <div className="flex items-center gap-2 mt-1.5 flex-wrap">
-                      <span className="text-xs text-muted-foreground flex items-center gap-1">
-                        <MessageSquare className="w-3 h-3" />
-                        {conv.messageCount} {conv.messageCount === 1 ? "message" : "messages"}
-                      </span>
-                      {conv.bookingCount > 0 && (
-                        <Badge variant="secondary" className="text-xs py-0 h-5 flex items-center gap-1">
-                          <CalendarCheck className="w-3 h-3" />
-                          {conv.bookingCount} {conv.bookingCount === 1 ? "booking" : "bookings"}
-                        </Badge>
-                      )}
-                    </div>
+                    <span className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
+                      <MessageSquare className="w-3 h-3" />
+                      {conv.messageCount} {conv.messageCount === 1 ? "message" : "messages"}
+                    </span>
                   </div>
                 </div>
-                <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center border border-border group-hover:bg-primary group-hover:border-primary transition-all">
-                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+                <div className="flex items-center gap-2 shrink-0">
+                  {conv.bookingCount > 0 && (
+                    <Badge variant="secondary" className="text-xs py-0 h-5 flex items-center gap-1">
+                      <CalendarCheck className="w-3 h-3" />
+                      {conv.bookingCount} {conv.bookingCount === 1 ? "booking" : "bookings"}
+                    </Badge>
+                  )}
+                  <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center border border-border group-hover:bg-primary group-hover:border-primary transition-all">
+                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary-foreground transition-colors" />
+                  </div>
                 </div>
               </Card>
             </Link>
