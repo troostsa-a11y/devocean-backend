@@ -495,4 +495,93 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
   res.end();
 });
 
+// ---------------------------------------------------------------------------
+// OpenAI Realtime API — WebRTC ephemeral session token
+// ---------------------------------------------------------------------------
+
+/**
+ * POST /api/openai/realtime/session
+ *
+ * Creates a short-lived ephemeral token for the browser to establish a WebRTC
+ * connection directly with OpenAI's Realtime API.  The server injects the
+ * system prompt and tool definitions so the browser never needs the real key.
+ *
+ * Model is configured via OPENAI_REALTIME_MODEL (default: gpt-realtime-1.5).
+ * Check https://platform.openai.com/docs/models for the current API model ID.
+ */
+router.post("/realtime/session", async (req, res) => {
+  const realtimeModel =
+    process.env.OPENAI_REALTIME_MODEL ?? "gpt-realtime-1.5";
+
+  const baseUrl = (
+    process.env.AI_INTEGRATIONS_OPENAI_BASE_URL ?? "https://api.openai.com/v1"
+  ).replace(/\/$/, "");
+
+  const realtimeTools = lodgeTools.map((t) => ({
+    type: "function" as const,
+    name: t.function.name,
+    description: t.function.description,
+    parameters: t.function.parameters,
+  }));
+
+  const sessionRes = await fetch(`${baseUrl}/realtime/sessions`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.AI_INTEGRATIONS_OPENAI_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: realtimeModel,
+      voice: "alloy",
+      instructions: buildSystemPrompt(),
+      tools: realtimeTools,
+      tool_choice: "auto",
+      input_audio_transcription: { model: "whisper-1" },
+    }),
+  });
+
+  if (!sessionRes.ok) {
+    const detail = await sessionRes.text();
+    req.log.error(
+      { status: sessionRes.status, detail },
+      "Realtime session creation failed",
+    );
+    res.status(sessionRes.status).json({
+      error: "Failed to create realtime session",
+      detail,
+    });
+    return;
+  }
+
+  const data = (await sessionRes.json()) as {
+    client_secret?: { value: string };
+  };
+  if (!data.client_secret?.value) {
+    res.status(500).json({ error: "No client_secret in realtime session response" });
+    return;
+  }
+
+  res.json({ clientSecret: data.client_secret.value, model: realtimeModel });
+});
+
+/**
+ * POST /api/openai/realtime/execute-tool
+ *
+ * Executes a Beds24/currency tool call on behalf of the browser.  The browser
+ * receives a function_call event on the WebRTC data channel, POSTs here, and
+ * forwards the returned output back to OpenAI.
+ */
+router.post("/realtime/execute-tool", async (req, res) => {
+  const { name, arguments: argsJson } = req.body as {
+    name?: string;
+    arguments?: string;
+  };
+  if (!name) {
+    res.status(400).json({ error: "Missing tool name" });
+    return;
+  }
+  const output = await runTool(name, argsJson ?? "{}");
+  res.json({ output });
+});
+
 export default router;

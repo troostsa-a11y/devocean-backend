@@ -43,3 +43,4 @@ export { decodePCM16ToFloat32, createAudioPlaybackContext, blobToWav } from "./a
 export { useVoiceRecorder, type RecordingState } from "./useVoiceRecorder";
 export { useAudioPlayback, type PlaybackState } from "./useAudioPlayback";
 export { useVoiceStream } from "./useVoiceStream";
+export { useRealtimeSession, type RealtimeStatus, type UseRealtimeSessionOptions } from "./useRealtimeSession";

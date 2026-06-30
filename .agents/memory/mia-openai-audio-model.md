@@ -1,24 +1,28 @@
 ---
-name: Mia — OpenAI audio model alias
-description: The bare gpt-4o-audio-preview alias is retired; dated alias required in render.yaml value: field, not just the dashboard.
+name: Mia voice architecture — Realtime API
+description: The gpt-4o-audio-preview family is fully retired. Mia now uses the OpenAI Realtime API (WebRTC) for voice.
 ---
 
-## Use a dated model alias
+## gpt-4o-audio-preview is gone
 
-`OPENAI_AUDIO_MODEL` must be set to a dated alias (e.g. `gpt-4o-audio-preview-2024-12-17`). The bare `gpt-4o-audio-preview` alias returns 404 "model does not exist or you do not have access". Check the OpenAI platform for the current stable dated alias when rotating.
+All dated aliases (including `gpt-4o-audio-preview-2024-12-17`) return `model_not_found`. The chat-completions audio modality (`modalities: ["text", "audio"]`) has no supported model. The entire approach is retired.
 
-**Why:** OpenAI retired the undated alias. The API key access level (Tier 1+) is fine — the error is purely the alias name.
+## Current architecture — Realtime WebRTC
 
-## render.yaml value: clobbers the Render dashboard on every deploy
+1. **Server** (`POST /api/openai/realtime/session`): calls `POST /v1/realtime/sessions` with system prompt + Beds24 tool definitions; returns a short-lived `client_secret` to the browser. Model controlled by `OPENAI_REALTIME_MODEL` env var (default `gpt-realtime-1.5` — **verify the exact API model ID at platform.openai.com/docs/models before first deploy**).
 
-`OPENAI_AUDIO_MODEL` in `render.yaml` uses `value:` (not `sync: false`). Render re-applies `value:` fields from render.yaml on every GitHub-push-triggered deploy, overwriting anything the user set in the Render dashboard. Setting it to the dated alias in the **dashboard** only is not durable — the next push resets it to whatever is in render.yaml.
+2. **Browser** (`useRealtimeSession` hook in `lib/integrations-openai-ai-react`): uses the ephemeral token for WebRTC directly to `https://api.openai.com/v1/realtime?model=<model>`. Audio is browser ↔ OpenAI — the server never relays audio. VAD is built in — no press/release mic.
 
-**Fix:** The dated alias must live in render.yaml's `value:` field itself.
+3. **Tool calls** (`POST /api/openai/realtime/execute-tool`): `response.function_call_arguments.done` on the data channel → browser POSTs here → result sent back via `conversation.item.create` + `response.create`.
 
-**How to apply:** Whenever OpenAI retires the current dated alias, update `render.yaml` (the `OPENAI_AUDIO_MODEL` value line) and push to GitHub — do NOT rely on the Render dashboard override surviving the next deploy.
+## render.yaml note
 
-## Route-level resilience: outer try/catch required
+`OPENAI_REALTIME_MODEL` uses `value:` (not `sync: false`), so it is re-applied on every GitHub-push deploy, overwriting any Render dashboard override. The correct model ID must live in render.yaml's `value:` field.
 
-`voiceChatStreamWithTools` and `voiceChatStream` both use the same `AUDIO_MODEL`. If both fail (e.g. wrong model), the exception escapes the inner try/catch and reaches Express's default error handler. Because `res.setHeader()` was called but no `res.write()` has happened yet, Express can still send an HTML 404 page — and `streamVoiceResponse` in the widget interprets a non-2xx response as a fatal error, displaying the raw HTML.
+## What still works unchanged
 
-**Fix:** Wrap the inner try/catch in an outer one that writes an SSE `{ error: "..." }` + `{ done: true }` frame and ends the response. This way the widget shows a readable error string instead of HTML.
+- Text chat path (`POST /api/openai/conversations/:id/messages`) — `gpt-4o`, used by chips.
+- DB schema, conversation/message tables, Beds24 tools.
+- Old `voice-messages` route — still mounted, unused by the new widget.
+
+**Why:** OpenAI retired the audio-preview model family. The Realtime API (WebRTC) is the correct replacement for continuous bidirectional voice.

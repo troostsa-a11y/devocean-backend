@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useVoiceRecorder, useVoiceStream, blobToWav } from "@workspace/integrations-openai-ai-react/audio";
+import {
+  useRealtimeSession,
+  type RealtimeStatus,
+} from "@workspace/integrations-openai-ai-react/audio";
 import { useCreateOpenaiConversation } from "@workspace/api-client-react";
-import { Mic, Square, Loader2, AlertCircle, CloudOff } from "lucide-react";
+import { Mic, PhoneOff, Loader2, AlertCircle, CloudOff, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface VoiceWidgetProps {
@@ -19,35 +22,18 @@ const EXAMPLE_CHIPS = [
 ];
 
 export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidgetProps) {
-  const [transcript, setTranscript] = useState("");
-  const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [saveWarning, setSaveWarning] = useState<string | null>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
-  const recorder = useVoiceRecorder();
+  const [isChipLoading, setIsChipLoading] = useState(false);
+  const [chipTranscript, setChipTranscript] = useState("");
+  const [userSpeaking, setUserSpeaking] = useState(false);
+  const [miaSpeaking, setMiaSpeaking] = useState(false);
+
   const createConv = useCreateOpenaiConversation();
   const abortRef = useRef<AbortController | null>(null);
-
-  const workletPath = `${import.meta.env.BASE_URL}audio-playback-worklet.js`;
-
-  const stream = useVoiceStream({
-    workletPath,
-    onTranscript: (_, full) => {
-      setTranscript(full);
-      setErrorMessage(null);
-    },
-    onComplete: () => setIsProcessing(false),
-    onError: (err) => {
-      console.error("[VoiceWidget] stream error:", err);
-      setIsProcessing(false);
-      setErrorMessage(err.message || "Something went wrong. Please try again.");
-    },
-    onSaveError: (msg) => {
-      setSaveWarning(msg);
-    },
-  });
-
   const activeConversationIdRef = useRef<number | undefined>(conversationId);
+
   useEffect(() => {
     activeConversationIdRef.current = conversationId;
   }, [conversationId]);
@@ -65,50 +51,43 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
     return id;
   }, [createConv, onConversationCreated]);
 
-  const handleClick = async () => {
+  const session = useRealtimeSession({
+    onUserSpeaking: (speaking) => {
+      setUserSpeaking(speaking);
+      if (speaking) {
+        setChipTranscript("");
+        setErrorMessage(null);
+      }
+    },
+    onMiaSpeaking: setMiaSpeaking,
+    onError: (msg) => {
+      setErrorMessage(msg);
+    },
+    onConnected: () => {
+      setErrorMessage(null);
+    },
+  });
+
+  const handleStartCall = async () => {
+    setHasInteracted(true);
     setErrorMessage(null);
     setSaveWarning(null);
-    setHasInteracted(true);
-    try {
-      if (recorder.state === "recording") {
-        stream.initAudio().catch(() => {});
-        setIsProcessing(true);
-        const blob = await recorder.stopRecording();
-        const id = activeConversationIdRef.current;
-        if (id) {
-          const wavBlob = await blobToWav(blob);
-          await stream.streamVoiceResponse(
-            `/api/openai/conversations/${id}/voice-messages`,
-            wavBlob
-          );
-        } else {
-          setIsProcessing(false);
-          setErrorMessage("No active conversation. Please try again.");
-        }
-      } else {
-        stream.initAudio().catch(() => {});
+    setChipTranscript("");
+    await session.connect();
+  };
 
-        setIsProcessing(true);
-        const id = await ensureConversation();
-        setIsProcessing(false);
-        setTranscript("");
-        await recorder.startRecording();
-      }
-    } catch (err) {
-      const msg =
-        err instanceof Error ? err.message : "An unexpected error occurred.";
-      console.error("[VoiceWidget] error:", err);
-      setIsProcessing(false);
-      setErrorMessage(msg);
-    }
+  const handleEndCall = () => {
+    session.disconnect();
+    setUserSpeaking(false);
+    setMiaSpeaking(false);
   };
 
   const handleChip = async (question: string) => {
     setErrorMessage(null);
     setSaveWarning(null);
     setHasInteracted(true);
-    setTranscript(question);
-    setIsProcessing(true);
+    setChipTranscript(question);
+    setIsChipLoading(true);
 
     abortRef.current?.abort();
     const controller = new AbortController();
@@ -145,29 +124,41 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
             const payload = JSON.parse(line.slice(6));
             if (payload.content) {
               assistantText += payload.content;
-              setTranscript(assistantText);
+              setChipTranscript(assistantText);
             }
             if (payload.done) break;
-            if (payload.error) {
-              setSaveWarning(payload.error);
-            }
-          } catch {
-          }
+            if (payload.error) setSaveWarning(payload.error);
+          } catch { }
         }
       }
     } catch (err) {
-      if ((err as any)?.name === "AbortError") return;
+      if ((err as { name?: string })?.name === "AbortError") return;
       const msg = err instanceof Error ? err.message : "Something went wrong. Please try again.";
       console.error("[VoiceWidget] chip error:", err);
       setErrorMessage(msg);
-      setTranscript("");
+      setChipTranscript("");
     } finally {
-      setIsProcessing(false);
+      setIsChipLoading(false);
     }
   };
 
-  const isRecording = recorder.state === "recording";
-  const isIdle = !isRecording && !isProcessing && !errorMessage && !hasInteracted;
+  const { status, userTranscript, miaTranscript } = session;
+  const isConnected = status === "connected";
+  const isConnecting = status === "connecting";
+  const isError = status === "error";
+  const isIdle = status === "idle" && !hasInteracted && !isChipLoading && !chipTranscript;
+
+  function getMicLabel(): string {
+    if (isConnecting) return "Connecting...";
+    if (isConnected && userSpeaking) return "Listening...";
+    if (isConnected && miaSpeaking) return "Mia is speaking...";
+    if (isConnected) return "Ask Mia anything";
+    return "Talk to Mia";
+  }
+
+  const displayTranscript = isConnected
+    ? (miaSpeaking || miaTranscript ? miaTranscript : userTranscript)
+    : chipTranscript;
 
   return (
     <div
@@ -175,43 +166,85 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
       className="flex flex-col items-center justify-center p-5 bg-card rounded-xl shadow-sm w-full max-w-xs mx-auto"
     >
       <div className="w-16 h-16 mb-3 rounded-full bg-secondary flex items-center justify-center relative">
-        {isRecording && (
-          <div className="absolute inset-0 rounded-full bg-destructive/20 animate-ping" />
+        {(isConnected && userSpeaking) && (
+          <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
         )}
-        <Button
-          size="icon"
-          className={`w-12 h-12 rounded-full transition-all duration-300 ${
-            isRecording
-              ? "bg-destructive hover:bg-destructive/90 scale-110 shadow-lg shadow-destructive/20"
-              : "bg-primary hover:bg-primary/90"
-          }`}
-          onClick={handleClick}
-          disabled={isProcessing && !isRecording}
-          data-testid="button-voice-widget"
-        >
-          {isProcessing && !isRecording ? (
-            <Loader2 className="w-6 h-6 text-white animate-spin" />
-          ) : isRecording ? (
-            <Square className="w-5 h-5 text-white fill-current" />
-          ) : (
-            <Mic className="w-6 h-6 text-white" />
-          )}
-        </Button>
+        {(isConnected && miaSpeaking) && (
+          <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-pulse" />
+        )}
+
+        {isConnected ? (
+          <Button
+            size="icon"
+            className={`w-12 h-12 rounded-full transition-all duration-300 ${
+              miaSpeaking
+                ? "bg-emerald-600 scale-105"
+                : userSpeaking
+                ? "bg-primary scale-110 shadow-lg shadow-primary/20"
+                : "bg-primary"
+            }`}
+            onClick={handleEndCall}
+            data-testid="button-end-call"
+            title="End call"
+          >
+            <PhoneOff className="w-5 h-5 text-white" />
+          </Button>
+        ) : (
+          <Button
+            size="icon"
+            className="w-12 h-12 rounded-full bg-primary transition-all duration-300"
+            onClick={handleStartCall}
+            disabled={isConnecting}
+            data-testid="button-voice-widget"
+          >
+            {isConnecting ? (
+              <Loader2 className="w-6 h-6 text-white animate-spin" />
+            ) : (
+              <Mic className="w-6 h-6 text-white" />
+            )}
+          </Button>
+        )}
       </div>
 
       <h3 className="text-base font-bold text-foreground mb-1.5">
-        {isRecording ? "Listening..." : isProcessing ? "Processing..." : "Tap the MIC"}
+        {getMicLabel()}
       </h3>
 
-      {errorMessage ? (
-        <div className="flex items-start gap-2 text-destructive text-xs text-left max-w-[280px] mt-1" data-testid="voice-widget-error">
-          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
-          <span className="line-clamp-3 overflow-hidden">{errorMessage}</span>
-        </div>
-      ) : transcript || isRecording ? (
-        <p className="text-xs text-muted-foreground text-center max-w-[260px] h-9 overflow-hidden text-ellipsis line-clamp-2">
-          {transcript || "Speak now..."}
+      {isConnected && (
+        <p className="text-xs text-muted-foreground text-center text-right w-full mb-1">
+          <button
+            onClick={handleEndCall}
+            className="text-destructive/70 hover:text-destructive text-xs underline underline-offset-2 cursor-pointer transition-colors"
+            data-testid="button-end-call-text"
+          >
+            End call
+          </button>
         </p>
+      )}
+
+      {errorMessage || isError ? (
+        <div
+          className="flex items-start gap-2 text-destructive text-xs text-left max-w-[280px] mt-1"
+          data-testid="voice-widget-error"
+        >
+          <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+          <span className="line-clamp-3 overflow-hidden">
+            {errorMessage ?? "Voice session error. Please try again."}
+          </span>
+        </div>
+      ) : displayTranscript ? (
+        <p className="text-xs text-muted-foreground text-center max-w-[260px] min-h-[2.25rem] overflow-hidden text-ellipsis line-clamp-3">
+          {displayTranscript}
+        </p>
+      ) : isConnected ? (
+        <p className="text-xs text-muted-foreground text-center max-w-[280px] leading-snug">
+          {userSpeaking ? "Speak now..." : "Tap the mic button above to end the call."}
+        </p>
+      ) : isChipLoading ? (
+        <div className="flex items-center gap-2 text-muted-foreground mt-1">
+          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+          <span className="text-xs">Thinking...</span>
+        </div>
       ) : (
         <p className="text-xs text-muted-foreground text-center max-w-[280px] leading-snug line-clamp-4">
           Ask about the Lodge, accommodation options, rates &amp; availability, experiences and more.
@@ -233,6 +266,13 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
         </div>
       )}
 
+      {isConnected && (
+        <div className="mt-3 flex items-center gap-1.5 text-muted-foreground text-xs">
+          <Radio className="w-3 h-3 text-emerald-500" />
+          <span>Live — tap mic button to end call</span>
+        </div>
+      )}
+
       {saveWarning && (
         <div
           className="flex items-start gap-1.5 text-amber-600 dark:text-amber-400 text-xs text-left max-w-[280px] mt-2 bg-amber-50 dark:bg-amber-950/30 rounded-md px-2 py-1.5"
@@ -240,13 +280,6 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
         >
           <CloudOff className="w-3.5 h-3.5 shrink-0 mt-0.5" />
           <span>{saveWarning}</span>
-        </div>
-      )}
-
-      {stream.playbackState === "playing" && (
-        <div className="mt-2 flex items-center gap-2 text-primary text-sm font-medium">
-          <Loader2 className="w-4 h-4 animate-spin" />
-          Assistant is speaking...
         </div>
       )}
     </div>
