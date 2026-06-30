@@ -1,0 +1,16 @@
+export {
+  openai,
+  detectAudioFormat,
+  convertToWav,
+  ensureCompatibleFormat,
+  UnsupportedAudioFormatError,
+  type OpenAIAudioInputFormat,
+  type AudioFormat,
+  voiceChat,
+  voiceChatStream,
+  voiceChatStreamWithTools,
+  textToSpeech,
+  textToSpeechStream,
+  speechToText,
+  speechToTextStream,
+} from "./client";

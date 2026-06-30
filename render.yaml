@@ -42,3 +42,36 @@ services:
         sync: false
       - key: TAXI_NAME
         sync: false
+
+  - type: web
+    name: mia-voice-receptionist
+    runtime: node
+    region: frankfurt
+    plan: starter
+    rootDir: voice-reception
+    # pnpm workspace: install pnpm, then install deps from lockfile, then build all packages.
+    # The root build script runs typecheck + pnpm -r --if-present run build (api-server esbuild +
+    # receptionist vite build). BASE_PATH defaults to "/" in vite.config.ts when not set.
+    buildCommand: npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build
+    startCommand: node --enable-source-maps ./artifacts/api-server/dist/index.mjs
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Render sets PORT automatically for web services — do not set it here.
+      # Required: PostgreSQL connection for Mia's conversation storage (separate DB from automailer)
+      - key: DATABASE_URL
+        sync: false
+      # Required: Replit AI / OpenAI credentials for voice processing
+      - key: AI_INTEGRATIONS_OPENAI_API_KEY
+        sync: false
+      - key: AI_INTEGRATIONS_OPENAI_BASE_URL
+        sync: false
+      # Required: Beds24 auth for live availability queries
+      # Use either BEDS24_TOKEN (long-lived token) or BEDS24_INVITE_CODE (one-time invite)
+      - key: BEDS24_TOKEN
+        sync: false
+      # Optional overrides
+      - key: BEDS24_PROPERTY_ID
+        value: "297012"
+      - key: LOG_LEVEL
+        value: info

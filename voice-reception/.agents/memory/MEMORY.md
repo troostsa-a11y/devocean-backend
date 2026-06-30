@@ -1,0 +1,5 @@
+- [OpenAI gpt-audio input format](openai-audio-input-format.md) — input_audio accepts ONLY wav/mp3; convert browser recordings to WAV in-browser (no ffmpeg in prod).
+- [Parsing xlsx without python](xlsx-parsing-no-python.md) — no python3 / no xlsx pkg in this env; unzip the .xlsx and parse sharedStrings + sheet XML directly.
+- [Beds24 live availability](beds24-integration.md) — no Replit integration; credential type is ambiguous so auto-detect (direct token vs refresh vs invite code); offers[] shape + read-only rules.
+- [DEVOCEAN website branding](devocean-website-branding.md) — embedded Mia widget must match the lodge site: Inter font (700 headings), accent #b65a1a.
+- [Mia prompt runtime context](mia-prompt-runtime-context.md) — inject today's date (Africa/Maputo) per-request so relative-date availability works; scope pronunciation to spoken audio only.

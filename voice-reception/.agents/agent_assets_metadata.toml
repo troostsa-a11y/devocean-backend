@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "aZuZD3fAeRcCqKvbToRRV"
+uri = "file://MIA_WIDGET_INTEGRATION.md"
+type = "text"
+title = "Mia Widget Integration Guide (incl. dedicated 'Talk to Mia' page)"

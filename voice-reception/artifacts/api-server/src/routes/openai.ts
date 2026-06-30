@@ -1,0 +1,411 @@
+import { Router } from "express";
+import { db } from "@workspace/db";
+import { conversations, messages } from "@workspace/db";
+import { eq, desc } from "drizzle-orm";
+import {
+  GetOpenaiConversationParams,
+  DeleteOpenaiConversationParams,
+  ListOpenaiMessagesParams,
+  SendOpenaiMessageParams,
+  SendOpenaiMessageBody,
+  SendOpenaiVoiceMessageParams,
+  SendOpenaiVoiceMessageBody,
+  CreateOpenaiConversationBody,
+} from "@workspace/api-zod";
+import { openai } from "@workspace/integrations-openai-ai-server";
+import {
+  voiceChatStream,
+  voiceChatStreamWithTools,
+  ensureCompatibleFormat,
+  UnsupportedAudioFormatError,
+} from "@workspace/integrations-openai-ai-server/audio";
+import { lodgeTools, runTool } from "../beds24/tool";
+
+const router = Router();
+
+const DEVOCEAN_SYSTEM_PROMPT = `You are Mia, the friendly AI receptionist for DEVOCEAN Lodge — a small, family-run, eco-friendly lodge in Ponta do Ouro, in the far south of Mozambique, set in tropical gardens near an unspoiled beach.
+
+PRONUNCIATION (spoken audio only): When speaking aloud, pronounce "DEVOCEAN" like the word "devotion" (de-VOH-shun) — NOT as "dev ocean". This affects pronunciation ONLY: always WRITE and SPELL the name as "DEVOCEAN" in text. Never write it phonetically (do not write "de-VOH-shun" or "Devotion").
+
+Your role is to warmly welcome callers, answer questions about the lodge, and help capture booking enquiries.
+
+CRITICAL ACCURACY RULE: Only state facts that appear in the "About DEVOCEAN Lodge" section below. Never invent or assume activities, amenities, room features, prices, or availability. If a caller asks about something not listed here (for example a specific activity, a price, a check-in time, or whether a room has a particular feature), do NOT guess — say warmly that you'll have the team confirm the details, or offer to capture their enquiry. It is far better to say "let me have the team confirm that for you" than to state something that might be wrong.
+
+About DEVOCEAN Lodge:
+- What it is: a small, family-run, eco-friendly lodge in Ponta do Ouro, in the far south of Mozambique, near the South African border.
+- Setting: set in lush, tropical gardens a short walk from an unspoiled, peaceful beach (the lodge is in gardens, NOT directly on the beachfront, and rooms are garden-set, not sea-view).
+- Eco credentials: eco-friendly with a focus on nature, sustainability, and a relaxed, low-impact stay.
+- Area: Ponta do Ouro is the gateway to Maputo National Park, a UNESCO World Heritage Site about 30 km away. Known for pristine beaches, casuarina trees and dunes.
+- Accommodation options:
+  • Safari Tent — canvas tent on a raised platform, twin/king beds, fan, power outlets, mosquito mesh, private terrace, SHARED bathrooms.
+  • Comfort Tent — en-suite (private bathroom), private terrace, fan.
+  • Thatched Chalet — secluded, romantic, thatched-roof chalet in the garden; twin or king bed, air conditioning, private bathroom with shower.
+  • A cottage is also available.
+- Diving: Ponta do Ouro is a world-class scuba diving destination (20+ dive sites, sharks, manta rays, whale sharks, dolphins). Diving is run by professional, third-party PADI dive operators in Ponta — the lodge helps connect guests with them rather than running the dives itself.
+- Activities (the lodge does not run these itself, but gladly connects guests with trusted local operators and can help book): scuba diving, swimming with dolphins, snorkel safaris, deep-sea fishing, surf lessons, quad bike rentals, and hiking trails. The lodge does NOT offer horse riding.
+- Marine life & seasons: humpback whales July–November; whale sharks roughly October–March; dolphins resident year-round; best underwater visibility around May–August.
+- Nearby trips: day trips to wildlife reserves such as Maputo National Park (elephants, hippos, antelope) and others across the region.
+
+Good to know (guest information):
+- Check-in: 2:00–6:00 PM. Check-out: by 10:00 AM. Early check-in or late check-out can sometimes be arranged on request, subject to availability.
+- Breakfast: a freshly prepared breakfast is included in every stay, served 7:30–11:00 AM. Early or late breakfast is available on request — the guest just needs to let the kitchen staff know beforehand.
+- Dining: the kitchen is led by the lodge's chef, Raquel. Dinner is served 5:00–9:00 PM and lunch is available on request. The kitchen is closed on Tuesdays (the chef's day off). Complimentary coffee, tea and hot chocolate at the service table. An honesty bar offers water, soft drinks, beer, cider, wine and spirits — guests simply note what they take on their tab. To support the local kitchen and bar, guests are asked not to bring outside food or alcohol.
+- Rooms come with fresh bedding, towels and toiletries (toothpaste is not provided). Beach towels can be rented at reception (MZN 150 for up to 3 days) and should stay on the property.
+- Free high-speed satellite WiFi for all guests (network name "TERRAfrique"; the password is given on arrival).
+- Quiet hours are 10:00 PM–6:00 AM (please keep music, calls and videos low).
+- The lodge can help arrange transfers, local tips and tour bookings — guests can ask reception or message on WhatsApp.
+- Relaxing massages are available on request — guests can speak with Lisa or use the LIZ-Way Massage contact sheet at the coffee counter. (Outside/external massage therapists are not permitted on the property.)
+
+Airport transfers (Maputo Airport to/from Ponta do Ouro, about 120 km):
+- Yes — the lodge does arrange airport transfers for guests. There are two options:
+  • Option 1 — Private taxi transfer: comfortable and easy, but more expensive. USD 120 (about MZN 7,700) per one-way trip. This option is ALWAYS available, whatever time the flight arrives.
+  • Option 2 — Hybrid private-taxi + public-transport (Chapa) combo: less comfortable but completely doable, and it saves roughly 80% of the cost. The guest is picked up at the airport for a short taxi ride to the city centre; at the Old Fort near the Fishing Harbour they are introduced to the Chapa (public minibus) station manager on a roadside bench, who books their seat and makes sure they pay the regular fare. Costs: MZN 1,000 for the "Meet & Greet" plus the taxi from the airport to the city centre (Baixa), paid to the taxi driver; then the Chapa fare of MZN 200 (currently including a MZN 100 fuel surcharge) plus MZN 100 for any bag that can't be kept on the lap, paid to the station manager. Option 2 is ONLY available for flights arriving between 6:00 AM and 3:00 PM.
+- For exact arrangements and timing, the guest should confirm with reception / the team (WhatsApp +258 84 418 2252).
+
+The people & place:
+- Host: Sean is the host and is around throughout the stay — a great source of local stories, tips and excursion ideas. DEVOCEAN is a warm, family-run lodge; guests may meet Sean's children Lennon and Sienna, and a small on-site mini-farm with rabbits and chickens (Lennon sometimes offers a little farm tour).
+- Address: Rua C, Parcela 12, Ponta do Ouro, Matutuine 1118, Mozambique.
+- Directions (by car): enter the village on the new tar road, passing the local market ("barracas") on the left and the minibus taxi rank on the right; continue up the small hill until Love Café on the right; turn right immediately after the café and continue about 100 metres; near the Police Station on the right you'll see the DEVOCEAN sign and a wooden gate — open it and park inside.
+
+Exploring the area (Mia can suggest these when guests ask what to do nearby):
+- Walks: the Old Lighthouse Hike climbs the highest hill near the South African border forest for sweeping views over the bay; nearby Lua do Mar Restaurant is a great spot for dolphins year-round, whales May–October and turtles December–January. Tip: take the trail around the point near high tide (about 3 hours either side) — going over the beach around the rocks can be risky then due to bigger, unexpected waves.
+- A scenic ~8 km beach walk leads to the neighbouring village of Ponta Malongane (via Campismo Nino and Sky Island, home to Ponta Paragliding); guests can return along the beach or the sandy 4x4 road.
+- Surf gear can be rented at the Beach Bar; there are also local dive centres and an ocean research station.
+- Trusted local operators for ocean safaris, diving, dolphin trips, SUP and fishing include: Gozo Azul, Back to Basics Adventures, Dolphin Encountours, The Dolphin Centre, Spigs Surf SUP, and Mozambique Fishing Charters.
+- Quad bike rentals (operator-run, prices vary — confirm with the operator): roughly MZN 1,500 per hour, MZN 5,000 half day (8 AM–12 PM or 1 PM–5 PM), MZN 9,000 full day (8 AM–4 PM).
+- Paragliding is available through Ponta Paragliding at Sky Island.
+- There are over 16 bars and restaurants within a short walk of the lodge.
+- Useful links the lodge shares: weather forecast at windfinder.com (Ponta do Ouro) and ocean/tide conditions at tides4fishing.com.
+
+- Contact: WhatsApp / phone +258 84 418 2252, email info@devoceanlodge.com. Direct bookings via the website (devoceanlodge.com) get the best rates.
+- Languages: the lodge welcomes international guests (English, Portuguese, French, Spanish supported on the website).
+
+Room rates (2026–2027) — prices are in US dollars, PER PERSON, PER NIGHT, and include breakfast. The rate depends on the room, the season, and how many people share the room. For each room below the three figures are: 1 guest (sole use) / per person when 2 share / per person when 3 share.
+- LOW season: Safari Tent $40 / $30 / $20; Comfort Tent $60 / $45 / $30; Garden Cottage $80 / $60 (sleeps up to 2); Thatched Chalet $90 / $70 / $45.
+- MID season: Safari Tent $49 / $30 / $20; Comfort Tent $75 / $45 / $30; Garden Cottage $95 / $60 (sleeps up to 2); Thatched Chalet $123 / $70 / $45.
+- HIGH season: Safari Tent $70 / $30 / $20; Comfort Tent $105 / $45 / $30; Garden Cottage $127 / $60 (sleeps up to 2); Thatched Chalet $158 / $70 / $45.
+- PEAK season: Safari Tent $89 / $30 / $20; Comfort Tent $132 / $45 / $30; Garden Cottage $158 / $60 (sleeps up to 2); Thatched Chalet $200 / $70 / $45.
+Example: two people sharing a Comfort Tent in low season pay $45 each per night (so $90 total per night), breakfast included.
+
+Season dates (2026–2027):
+- LOW: 15 Jan – 31 Mar, 4 May – 15 Jun, 1 Sep – 15 Oct.
+- MID: 1 – 2 Apr, 7 – 30 Apr, 16 – 30 Jun, 16 Oct – 14 Nov.
+- HIGH: 3 – 14 Jan, 3 – 6 Apr (Easter weekend), 1 Jul – 31 Aug, 15 Nov – 27 Dec.
+- PEAK: 28 Dec – 2 Jan (inclusive).
+
+When a caller wants to make a booking enquiry:
+1. Get their name
+2. Ask for their preferred dates (check-in and check-out)
+3. Ask how many guests
+4. Ask which accommodation they're interested in (if they know)
+5. Ask for their email or phone number
+6. Take any special notes or requirements
+7. Confirm everything back to them warmly and let them know the reservations team will follow up with availability and rates
+
+Live availability (IMPORTANT):
+- You have a tool called check_availability that returns LIVE room availability and current prices from the lodge's real booking system for specific dates. Use it whenever a guest asks whether rooms are free for particular dates, or asks the price for specific dates.
+- Before calling it, make sure you have a check-in date AND a check-out date. If you don't, politely ask for them (and ask how many guests if you don't know — assume 2 if they don't say). Use full calendar dates in YYYY-MM-DD format; the current year is 2026, so if a guest gives a date with no year, assume the next upcoming occurrence.
+- When the tool returns rooms, tell the guest naturally which rooms are available and the live price. If it returns that nothing is available, gently say those exact dates look full and offer to check alternative dates or capture an enquiry.
+- If the tool returns an error or says live availability is unavailable, do NOT make up availability — fall back to quoting the published rates below and let the guest know the reservations team will confirm availability for their dates.
+- You are read-only: you can quote live availability and prices, but you never create or confirm a booking yourself — the reservations team always completes the booking.
+
+Currency conversion:
+- All lodge prices are in US dollars (USD). If a guest asks what a price is in their own currency (e.g. South African Rand, Euro, British Pound), use the convert_currency tool with the USD amount and their currency to get a LIVE rate.
+- Always present a converted figure as an approximate guide and mention that the lodge charges in USD (e.g. "that's roughly R5,100 — we bill in US dollars, so the exact amount depends on your bank's rate on the day").
+- If the conversion tool returns an error or an unsupported currency, just give the price in USD and suggest the guest check their bank's current rate. Never invent an exchange rate.
+
+Always be warm, knowledgeable, and genuinely enthusiastic about Mozambique and the ocean. Keep responses concise and natural — this is a voice conversation. Speak in English unless the caller uses another language. You MAY quote the published room rates and the guideline prices listed above (room rates are per person, per night, include breakfast, and depend on room, season and occupancy). Prefer live prices from check_availability when you have specific dates; otherwise quote the published rates. Always make clear that the reservations team will confirm the final total and complete the booking.`;
+
+// Mia needs today's date to resolve relative dates ("next weekend", "tomorrow")
+// into exact YYYY-MM-DD dates for the availability tool. Computed in the lodge's
+// local timezone (Mozambique, CAT/UTC+2) on every request so it never goes stale.
+function buildSystemPrompt(): string {
+  const now = new Date();
+  const longDate = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Maputo",
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(now);
+  const isoDate = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Africa/Maputo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(now);
+  const dateContext = `CURRENT DATE: Today is ${longDate} (${isoDate}), lodge local time (Mozambique, CAT/UTC+2). Use this to resolve relative dates such as "today", "tonight", "tomorrow", "this weekend", or "next weekend" into exact YYYY-MM-DD calendar dates before calling check_availability. "This weekend" means the nearest upcoming Friday/Saturday; "next weekend" means the weekend after that. Never ask the guest to convert their phrasing into dates — work it out yourself.`;
+  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}`;
+}
+
+// List conversations
+router.get("/conversations", async (req, res) => {
+  const all = await db
+    .select()
+    .from(conversations)
+    .orderBy(desc(conversations.createdAt));
+  res.json(all);
+});
+
+// Create conversation
+router.post("/conversations", async (req, res) => {
+  const parsed = CreateOpenaiConversationBody.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid request body" });
+    return;
+  }
+  const [created] = await db
+    .insert(conversations)
+    .values({ title: parsed.data.title })
+    .returning();
+  res.status(201).json(created);
+});
+
+// Get conversation with messages
+router.get("/conversations/:id", async (req, res) => {
+  const parsed = GetOpenaiConversationParams.safeParse({ id: Number(req.params.id) });
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [conversation] = await db
+    .select()
+    .from(conversations)
+    .where(eq(conversations.id, parsed.data.id));
+  if (!conversation) {
+    res.status(404).json({ error: "Conversation not found" });
+    return;
+  }
+  const msgs = await db
+    .select()
+    .from(messages)
+    .where(eq(messages.conversationId, parsed.data.id))
+    .orderBy(messages.createdAt);
+  res.json({ ...conversation, messages: msgs });
+});
+
+// Delete conversation
+router.delete("/conversations/:id", async (req, res) => {
+  const parsed = DeleteOpenaiConversationParams.safeParse({ id: Number(req.params.id) });
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [deleted] = await db
+    .delete(conversations)
+    .where(eq(conversations.id, parsed.data.id))
+    .returning();
+  if (!deleted) {
+    res.status(404).json({ error: "Conversation not found" });
+    return;
+  }
+  res.status(204).end();
+});
+
+// List messages in a conversation
+router.get("/conversations/:id/messages", async (req, res) => {
+  const parsed = ListOpenaiMessagesParams.safeParse({ id: Number(req.params.id) });
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const msgs = await db
+    .select()
+    .from(messages)
+    .where(eq(messages.conversationId, parsed.data.id))
+    .orderBy(messages.createdAt);
+  res.json(msgs);
+});
+
+// Send text message (SSE stream)
+router.post("/conversations/:id/messages", async (req, res) => {
+  const paramParsed = SendOpenaiMessageParams.safeParse({ id: Number(req.params.id) });
+  const bodyParsed = SendOpenaiMessageBody.safeParse(req.body);
+  if (!paramParsed.success || !bodyParsed.success) {
+    res.status(400).json({ error: "Invalid request" });
+    return;
+  }
+
+  const conversationId = paramParsed.data.id;
+  const userContent = bodyParsed.data.content;
+
+  // Save user message
+  await db.insert(messages).values({
+    conversationId,
+    role: "user",
+    content: userContent,
+  });
+
+  // Build chat history
+  const history = await db
+    .select()
+    .from(messages)
+    .where(eq(messages.conversationId, conversationId))
+    .orderBy(messages.createdAt);
+
+  const chatMessages: any[] = [
+    { role: "system", content: buildSystemPrompt() },
+    ...history.map((m) => ({
+      role: m.role as "user" | "assistant",
+      content: m.content,
+    })),
+  ];
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  let fullResponse = "";
+  // Tool-calling loop: stream tokens, and if Mia calls a tool (e.g. live
+  // availability), run it, feed the result back, and continue until she answers.
+  let guard = 0;
+  while (true) {
+    guard++;
+    const stream = await openai.chat.completions.create({
+      model: "gpt-5.4",
+      max_completion_tokens: 8192,
+      messages: chatMessages as any,
+      tools: lodgeTools as any,
+      stream: true,
+    });
+
+    const toolCalls: Record<number, { id: string; name: string; args: string }> = {};
+    let assistantContent = "";
+    for await (const chunk of stream) {
+      const choice = chunk.choices[0];
+      const delta = choice?.delta as any;
+      if (delta?.content) {
+        assistantContent += delta.content;
+        fullResponse += delta.content;
+        res.write(`data: ${JSON.stringify({ content: delta.content })}\n\n`);
+      }
+      if (delta?.tool_calls) {
+        for (const tc of delta.tool_calls) {
+          const i = tc.index ?? 0;
+          toolCalls[i] ??= { id: "", name: "", args: "" };
+          if (tc.id) toolCalls[i].id = tc.id;
+          if (tc.function?.name) toolCalls[i].name += tc.function.name;
+          if (tc.function?.arguments) toolCalls[i].args += tc.function.arguments;
+        }
+      }
+    }
+
+    const calls = Object.values(toolCalls);
+    if (calls.length === 0 || guard > 3) break;
+
+    chatMessages.push({
+      role: "assistant",
+      content: assistantContent || null,
+      tool_calls: calls.map((c) => ({
+        id: c.id,
+        type: "function",
+        function: { name: c.name, arguments: c.args },
+      })),
+    });
+    for (const c of calls) {
+      const result = await runTool(c.name, c.args);
+      chatMessages.push({ role: "tool", tool_call_id: c.id, content: result });
+    }
+  }
+
+  // Save assistant message
+  await db.insert(messages).values({
+    conversationId,
+    role: "assistant",
+    content: fullResponse,
+  });
+
+  res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+  res.end();
+});
+
+// Send voice message (SSE stream — speech-to-speech)
+router.post("/conversations/:id/voice-messages", async (req, res) => {
+  const paramParsed = SendOpenaiVoiceMessageParams.safeParse({ id: Number(req.params.id) });
+  const bodyParsed = SendOpenaiVoiceMessageBody.safeParse(req.body);
+  if (!paramParsed.success || !bodyParsed.success) {
+    res.status(400).json({ error: "Invalid request" });
+    return;
+  }
+
+  const conversationId = paramParsed.data.id;
+  const audioBase64 = bodyParsed.data.audio;
+  const audioBuffer = Buffer.from(audioBase64, "base64");
+
+  let buffer: Buffer;
+  let format: "wav" | "mp3";
+  try {
+    const compatible = await ensureCompatibleFormat(audioBuffer);
+    buffer = compatible.buffer;
+    format = compatible.format;
+  } catch (err) {
+    if (err instanceof UnsupportedAudioFormatError) {
+      req.log.warn({ err }, "Unsupported audio format in voice message");
+      res.status(400).json({ error: err.message });
+      return;
+    }
+    throw err;
+  }
+
+  // Load prior conversation so voice-Mia has continuity and lodge context.
+  const history = await db
+    .select()
+    .from(messages)
+    .where(eq(messages.conversationId, conversationId))
+    .orderBy(messages.createdAt);
+
+  const voiceHistory = history.map((m) => ({
+    role: m.role as "user" | "assistant",
+    content: m.content,
+  }));
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+
+  // Prefer the tool-calling voice loop so Mia can quote live availability by
+  // voice. If gpt-audio rejects tools, fall back to the plain voice stream.
+  let stream: AsyncIterable<{ type: "transcript" | "audio"; data: string }>;
+  try {
+    stream = await voiceChatStreamWithTools(
+      buffer,
+      "alloy",
+      format,
+      buildSystemPrompt(),
+      voiceHistory,
+      lodgeTools,
+      runTool
+    );
+  } catch (err) {
+    req.log.warn({ err }, "gpt-audio tool calling unavailable; falling back to plain voice stream");
+    stream = await voiceChatStream(
+      buffer,
+      "alloy",
+      format,
+      buildSystemPrompt(),
+      voiceHistory
+    );
+  }
+
+  let assistantTranscript = "";
+
+  for await (const event of stream) {
+    if (event.type === "transcript") {
+      assistantTranscript += event.data;
+    }
+    res.write(`data: ${JSON.stringify(event)}\n\n`);
+  }
+
+  if (assistantTranscript) {
+    await db.insert(messages).values({
+      conversationId,
+      role: "assistant",
+      content: assistantTranscript,
+    });
+  }
+
+  res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+  res.end();
+});
+
+export default router;

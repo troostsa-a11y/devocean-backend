@@ -1,11 +1,12 @@
-# DEVOCEAN Lodge - Email Automation & Website Platform
+# DEVOCEAN Lodge - Email Automation, Website & Voice Receptionist Platform
 
 ## Overview
 
-Dual-purpose project for DEVOCEAN Lodge, a hospitality property in Ponta do Ouro, Mozambique:
+Three-part monorepo for DEVOCEAN Lodge, a hospitality property in Ponta do Ouro, Mozambique:
 
 1. **Email Automation Service** (`render-automailer/`, deploys from GitHub main) — reads Beds24 booking notifications via IMAP, stores bookings in PostgreSQL, sends scheduled transactional emails (post-booking, pre-arrival, arrival welcome, post-departure, cancellation).
 2. **Marketing Website** (`WebsiteProject/`, Cloudflare Pages, wrangler-managed, deploys via `bash deploy.sh`) — React + Vite + Tailwind, coastal/hospitality theme.
+3. **Mia Voice Receptionist** (`voice-reception/`, deploys as a separate Render `web` service from this repo) — pnpm workspace; Express 5 API server + React/Vite admin dashboard. Guests click a floating mic button on the website to talk to Mia, an AI receptionist powered by OpenAI real-time audio, with live Beds24 availability lookup and live FX conversion.
 
 Monorepo: shared schema, Node/Express backend, Vite React frontend.
 
@@ -19,6 +20,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 
 - **Website**: `bash deploy.sh` from `WebsiteProject/` — builds, uploads the `ADMIN_API_KEY` Cloudflare secret, and deploys in one step. CF vars are wrangler-managed (`wrangler.toml`); do NOT set them via the Cloudflare dashboard (UI is locked for vars).
 - **Automailer**: deploys from GitHub `main` (Render). Env vars set in the Render dashboard.
+- **Mia Voice Receptionist**: deploys from GitHub `main` as a separate Render `web` service (`mia-voice-receptionist`). Root dir: `voice-reception`. Build: `npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build`. Start: `node --enable-source-maps ./artifacts/api-server/dist/index.mjs`. See `render.yaml` for full env var list. After the service is live, update the `<script src="...widget-loader.js">` in `WebsiteProject/index.html` to the new Render URL.
 
 ## System Architecture
 
@@ -26,6 +28,15 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 - Node.js + TypeScript, Express HTTP server.
 - Email: IMAP (imap-simple) reads Beds24 emails; Nodemailer sends.
 - Scheduling: node-cron. Timezone: Luxon, all scheduling in CAT (UTC+2).
+
+### Voice Receptionist (voice-reception/)
+- **Stack**: pnpm workspace, Node 24 / TypeScript 5.9, Express 5 API server (`artifacts/api-server/`), React 19 + Vite admin dashboard (`artifacts/receptionist/`), shared libs in `lib/`.
+- **Runtime**: Express serves the API at `/api/*` and also serves the receptionist's compiled Vite build as static files (so `/embed`, `/widget-loader.js`, and the admin SPA all come from the same Render URL). SPA fallback in `app.ts` catches unmatched routes.
+- **AI**: OpenAI real-time audio via `@workspace/integrations-openai-ai-server`. Env: `AI_INTEGRATIONS_OPENAI_API_KEY`, `AI_INTEGRATIONS_OPENAI_BASE_URL`.
+- **Beds24**: read-only availability + pricing tool in `artifacts/api-server/src/beds24/`. Env: `BEDS24_TOKEN` (or `BEDS24_INVITE_CODE`), `BEDS24_PROPERTY_ID` (default `297012`).
+- **DB**: own PostgreSQL instance (`DATABASE_URL`) — separate from the automailer DB. Drizzle ORM schema in `lib/db/`.
+- **Widget embed**: `widget-loader.js` (in `artifacts/receptionist/public/`) creates a floating mic button that opens an iframe pointing to `/embed` on the same origin. After deploying the Render service, update the `<script src>` in `WebsiteProject/index.html`.
+- **Dev**: `pnpm --filter @workspace/api-server run dev` from `voice-reception/` (runs esbuild + starts Express; needs `PORT` and `DATABASE_URL` set).
 
 ### Frontend
 - React 18 + TypeScript, Vite, Wouter routing, TanStack Query, shadcn/ui (New York), Tailwind CSS variables.

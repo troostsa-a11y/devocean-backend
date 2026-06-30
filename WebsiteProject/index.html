@@ -1110,6 +1110,11 @@
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 
   <!-- DEVOCEAN AI Receptionist "Mia" — floating microphone button, bottom-right -->
+  <!-- Source now lives in voice-reception/ in this monorepo (pnpm workspace, deploys as
+       a separate Render "web" service: mia-voice-receptionist, see render.yaml).
+       TODO: once the new Render service is live, replace the src URL below with
+             https://<mia-service>.onrender.com/widget-loader.js (or custom subdomain).
+       The old Replit deployment (voice-reception.replit.app) remains active until cutover. -->
   <script src="https://voice-reception.replit.app/widget-loader.js" defer></script>
 
   <!-- React app entry — placed last so browser paints static hero before executing JS -->
