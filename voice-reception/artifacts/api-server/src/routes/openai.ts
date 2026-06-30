@@ -23,6 +23,13 @@ import { lodgeTools, runTool } from "../beds24/tool";
 
 const router = Router();
 
+/**
+ * Text chat-completion model for Mia's text conversation path.
+ * Defaults to gpt-4o (standard OpenAI).
+ * Override with OPENAI_TEXT_MODEL env var (e.g. "gpt-5.4" for the Replit proxy).
+ */
+const TEXT_MODEL = process.env.OPENAI_TEXT_MODEL ?? "gpt-4o";
+
 const DEVOCEAN_SYSTEM_PROMPT = `You are Mia, the friendly AI receptionist for DEVOCEAN Lodge — a small, family-run, eco-friendly lodge in Ponta do Ouro, in the far south of Mozambique, set in tropical gardens near an unspoiled beach.
 
 PRONUNCIATION (spoken audio only): When speaking aloud, pronounce "DEVOCEAN" like the word "devotion" (de-VOH-shun) — NOT as "dev ocean". This affects pronunciation ONLY: always WRITE and SPELL the name as "DEVOCEAN" in text. Never write it phonetically (do not write "de-VOH-shun" or "Devotion").
@@ -262,7 +269,7 @@ router.post("/conversations/:id/messages", async (req, res) => {
   while (true) {
     guard++;
     const stream = await openai.chat.completions.create({
-      model: "gpt-5.4",
+      model: TEXT_MODEL,
       max_completion_tokens: 8192,
       messages: chatMessages as any,
       tools: lodgeTools as any,

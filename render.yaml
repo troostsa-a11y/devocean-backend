@@ -61,11 +61,21 @@ services:
       # Required: PostgreSQL connection for Mia's conversation storage (separate DB from automailer)
       - key: DATABASE_URL
         sync: false
-      # Required: Replit AI / OpenAI credentials for voice processing
+      # Required: OpenAI credentials for voice processing.
+      # AI_INTEGRATIONS_OPENAI_API_KEY  → your OpenAI secret key (sk-...)
+      # AI_INTEGRATIONS_OPENAI_BASE_URL → https://api.openai.com/v1
+      #   (On Replit these are injected by the AI integration; on Render set them explicitly.)
       - key: AI_INTEGRATIONS_OPENAI_API_KEY
         sync: false
       - key: AI_INTEGRATIONS_OPENAI_BASE_URL
         sync: false
+      # Optional: override the OpenAI model names used by Mia.
+      # Defaults: OPENAI_AUDIO_MODEL=gpt-4o-audio-preview, OPENAI_TEXT_MODEL=gpt-4o
+      # Only set these if you need a different model (e.g. Azure OpenAI deployment name).
+      - key: OPENAI_AUDIO_MODEL
+        value: "gpt-4o-audio-preview"
+      - key: OPENAI_TEXT_MODEL
+        value: "gpt-4o"
       # Required: Beds24 auth for live availability queries
       # Use either BEDS24_TOKEN (long-lived token) or BEDS24_INVITE_CODE (one-time invite)
       - key: BEDS24_TOKEN

@@ -23,6 +23,14 @@ export const openai = new OpenAI({
   baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
 });
 
+/**
+ * Audio model for voice-chat and TTS.
+ * Defaults to gpt-4o-audio-preview (standard OpenAI).
+ * Override with OPENAI_AUDIO_MODEL env var to use a different model
+ * (e.g. set to "gpt-audio" when routing through the Replit AI proxy).
+ */
+const AUDIO_MODEL = process.env.OPENAI_AUDIO_MODEL ?? "gpt-4o-audio-preview";
+
 export type AudioFormat = "wav" | "mp3" | "webm" | "mp4" | "ogg" | "unknown";
 
 /**
@@ -150,7 +158,7 @@ export async function voiceChat(
 ): Promise<{ transcript: string; audioResponse: Buffer }> {
   const audioBase64 = audioBuffer.toString("base64");
   const response = await openai.chat.completions.create({
-    model: "gpt-audio",
+    model: AUDIO_MODEL,
     modalities: ["text", "audio"],
     audio: { voice, format: outputFormat },
     messages: [{
@@ -194,7 +202,7 @@ export async function voiceChatStream(
   });
 
   const stream = await openai.chat.completions.create({
-    model: "gpt-audio",
+    model: AUDIO_MODEL,
     modalities: ["text", "audio"],
     audio: { voice, format: "pcm16" },
     messages: messages as any,
@@ -248,7 +256,7 @@ export async function voiceChatStreamWithTools(
 
   const createStream = () =>
     openai.chat.completions.create({
-      model: "gpt-audio",
+      model: AUDIO_MODEL,
       modalities: ["text", "audio"],
       audio: { voice, format: "pcm16" },
       messages: messages as any,
@@ -317,7 +325,7 @@ export async function textToSpeech(
   format: "wav" | "mp3" | "flac" | "opus" | "pcm16" = "wav"
 ): Promise<Buffer> {
   const response = await openai.chat.completions.create({
-    model: "gpt-audio",
+    model: AUDIO_MODEL,
     modalities: ["text", "audio"],
     audio: { voice, format },
     messages: [
@@ -335,7 +343,7 @@ export async function textToSpeechStream(
   voice: "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer" = "alloy"
 ): Promise<AsyncIterable<string>> {
   const stream = await openai.chat.completions.create({
-    model: "gpt-audio",
+    model: AUDIO_MODEL,
     modalities: ["text", "audio"],
     audio: { voice, format: "pcm16" },
     messages: [
