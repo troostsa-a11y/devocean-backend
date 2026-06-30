@@ -426,7 +426,7 @@
             </div>
             <div class="placeholder-text">
               <b>Starting up Mia&hellip;</b>
-              <span>Usually ready in under a minute</span>
+              <span id="mia-timer">Usually ready in under a minute</span>
             </div>
             <div class="shimmer"></div>
           </div>
@@ -520,17 +520,30 @@
     (function () {
       var placeholder = document.getElementById('mia-placeholder');
       var frame = document.getElementById('mia-frame');
+      var timerEl = document.getElementById('mia-timer');
       var loaded = false;
+      var elapsed = 0;
+
+      var ticker = setInterval(function () {
+        elapsed += 1;
+        timerEl.textContent = 'Starting up\u2026 (' + elapsed + ' s)';
+      }, 1000);
+
+      function stopTimer() {
+        clearInterval(ticker);
+      }
 
       // Render cold-starts can take up to ~60 s; give 90 s before showing the error fallback
       var failTimer = setTimeout(function () {
         if (!loaded) {
+          stopTimer();
           placeholder.classList.add('failed');
         }
       }, 90000);
 
       frame.addEventListener('load', function () {
         loaded = true;
+        stopTimer();
         clearTimeout(failTimer);
         placeholder.classList.add('loaded');
         // Remove from DOM after the CSS fade finishes (400 ms)
