@@ -49,6 +49,10 @@
   <!-- DNS prefetch / preconnect for external services -->
   <link rel="preconnect" href="https://cdn-cookieyes.com" crossorigin>
 
+  <!-- DNS prefetch for Mia voice receptionist (Render) — resolves DNS early so
+       the warm-up fetch below and the widget-loader both connect faster -->
+  <link rel="dns-prefetch" href="https://mia-voice-receptionist.onrender.com">
+
   <!-- Brand font: Inter. Loaded non-render-blocking (preload-as-style swap) so it
        never delays the static hero LCP paint; display=swap shows the system-font
        fallback instantly, then swaps to Inter once downloaded. -->
@@ -1113,6 +1117,33 @@
   <!-- Source lives in voice-reception/ in this monorepo (pnpm workspace).
        Deployed as Render web service: mia-voice-receptionist (see render.yaml). -->
   <script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
+
+  <!-- Mia cold-start warm-up: fires a low-priority ping to the Render health
+       endpoint as soon as the browser is idle so the service is warm before
+       the visitor navigates to /talk. Production-only; fire-and-forget. -->
+  <script>
+    (function () {
+      var isDev = window.location.hostname === 'localhost' ||
+        window.location.hostname.includes('replit.dev') ||
+        window.location.hostname.includes('repl.co');
+      if (isDev) return;
+      var ping = function () {
+        try {
+          fetch('https://mia-voice-receptionist.onrender.com/api/health', {
+            method: 'GET',
+            priority: 'low',
+            mode: 'no-cors',
+            cache: 'no-store'
+          }).catch(function () {});
+        } catch (_) {}
+      };
+      if (document.readyState === 'complete') {
+        setTimeout(ping, 1000);
+      } else {
+        window.addEventListener('load', function () { setTimeout(ping, 1000); }, { once: true });
+      }
+    })();
+  </script>
 
   <!-- React app entry — placed last so browser paints static hero before executing JS -->
   <script type="module" src="/src/main.jsx"></script>
