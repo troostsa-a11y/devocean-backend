@@ -54,11 +54,18 @@ services:
     # receptionist vite build). BASE_PATH defaults to "/" in vite.config.ts when not set.
     buildCommand: npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build
     startCommand: node --enable-source-maps ./artifacts/api-server/dist/index.mjs
+    # Schema migrations run automatically on every startup via drizzle-orm/migrator.
+    # Migration SQL files live in voice-reception/lib/db/drizzle/ (generated from the Drizzle schema).
+    # No manual migration step is needed. Just set DATABASE_URL and deploy.
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_ENV
         value: production
       # Render sets PORT automatically for web services — do not set it here.
-      # Required: PostgreSQL connection for Mia's conversation storage (separate DB from automailer)
+      # Required: PostgreSQL connection for Mia's conversation storage (separate from the automailer DB).
+      # Provision a Supabase project (or any Postgres) and paste the connection string here.
+      # Format: postgresql://user:password@host:5432/dbname?sslmode=require
+      # The server runs CREATE TABLE IF NOT EXISTS on every startup — no separate migration step needed.
       - key: DATABASE_URL
         sync: false
       # Required: OpenAI credentials for voice processing.
