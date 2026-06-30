@@ -1,6 +1,16 @@
 (function () {
   "use strict";
 
+  // Do not inject the widget on booking / checkout / confirmation pages.
+  var _path = window.location.pathname;
+  if (
+    _path.startsWith("/book-direct") ||
+    _path.startsWith("/booking-confirmed") ||
+    _path.startsWith("/canceled")
+  ) {
+    return;
+  }
+
   var WIDGET_ORIGIN = document.currentScript
     ? new URL(document.currentScript.src).origin + new URL(document.currentScript.src).pathname.replace(/\/widget-loader\.js$/, "")
     : window.location.origin;
