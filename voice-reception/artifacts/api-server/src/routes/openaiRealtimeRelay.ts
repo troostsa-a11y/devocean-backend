@@ -31,7 +31,6 @@ export function handleRealtimeWs(clientWs: WebSocket): void {
     {
       headers: {
         Authorization: `Bearer ${apiKey}`,
-        "OpenAI-Beta": "realtime=v1",
       },
     },
   );
