@@ -19,6 +19,17 @@ const connectionString = process.env.DATABASE_URL.replace(
   (_, sep) => sep === "?" ? "" : sep,
 ).replace(/\?$/, "");
 
+// Diagnostic: log host/user so Render logs confirm which URL is actually in use.
+// Password is stripped — only host, port and username are logged.
+try {
+  const u = new URL(connectionString);
+  console.log(
+    `[db] connecting → host=${u.hostname} port=${u.port || 5432} user=${u.username} db=${u.pathname.slice(1)}`,
+  );
+} catch {
+  console.log("[db] DATABASE_URL could not be parsed for diagnostic log");
+}
+
 export const pool = new Pool({
   connectionString,
   ssl: { rejectUnauthorized: false },
