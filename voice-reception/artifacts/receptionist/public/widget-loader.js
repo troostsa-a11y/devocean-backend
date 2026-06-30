@@ -152,7 +152,33 @@
     "  padding: 0;",
     "}",
     "#devocean-widget-callout-close:hover { color: #8f4715; }",
-    "@media (max-width: 480px) { #devocean-widget-callout { display: none; } }",
+    "#devocean-widget-label {",
+    "  position: fixed;",
+    "  bottom: 5px;",
+    "  right: 28px;",
+    "  width: 60px;",
+    "  text-align: center;",
+    "  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;",
+    "  font-size: 10px;",
+    "  font-weight: 600;",
+    "  letter-spacing: 0.04em;",
+    "  text-transform: uppercase;",
+    "  color: #fff;",
+    "  text-shadow: 0 1px 4px rgba(0,0,0,0.6), 0 0 10px rgba(0,0,0,0.35);",
+    "  z-index: 2147483646;",
+    "  pointer-events: none;",
+    "  transition: opacity 0.18s;",
+    "}",
+    "#devocean-widget-label.open { opacity: 0; }",
+    "@media (max-width: 480px) {",
+    "  #devocean-widget-callout {",
+    "    bottom: 90px;",
+    "    right: 12px;",
+    "    left: 12px;",
+    "    max-width: none;",
+    "  }",
+    "  #devocean-widget-callout::after { display: none; }",
+    "}",
     "@media (prefers-reduced-motion: reduce) { #devocean-widget-btn.attention { animation: none; } }",
   ].join("\n");
   document.head.appendChild(style);
@@ -177,6 +203,11 @@
   btn.setAttribute("aria-label", "Talk to DEVOCEAN receptionist");
   btn.innerHTML = MIC_SVG;
   document.body.appendChild(btn);
+
+  var label = document.createElement("div");
+  label.id = "devocean-widget-label";
+  label.textContent = "Talk to Mia";
+  document.body.appendChild(label);
 
   var callout = document.createElement("div");
   callout.id = "devocean-widget-callout";
@@ -228,6 +259,7 @@
     frame.classList.add("open");
     backdrop.classList.add("open");
     btn.classList.add("open");
+    label.classList.add("open");
     btn.innerHTML = CLOSE_SVG;
     btn.setAttribute("aria-label", "Close receptionist");
   }
@@ -237,6 +269,7 @@
     frame.classList.remove("open");
     backdrop.classList.remove("open");
     btn.classList.remove("open");
+    label.classList.remove("open");
     btn.innerHTML = MIC_SVG;
     btn.setAttribute("aria-label", "Talk to DEVOCEAN receptionist");
   }
