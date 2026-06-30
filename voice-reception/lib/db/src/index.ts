@@ -10,8 +10,17 @@ if (!process.env.DATABASE_URL) {
   );
 }
 
+// Strip sslmode from the URL so pg-connection-string doesn't inject its own
+// SSL config (it currently treats sslmode=require as verify-full, which sets
+// rejectUnauthorized:true and overrides the Pool-level ssl option).
+// We handle SSL explicitly via the ssl option below.
+const connectionString = process.env.DATABASE_URL.replace(
+  /([?&])sslmode=[^&]*/,
+  (_, sep) => sep === "?" ? "" : sep,
+).replace(/\?$/, "");
+
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
+  connectionString,
   ssl: { rejectUnauthorized: false },
 });
 export const db = drizzle(pool, { schema });
