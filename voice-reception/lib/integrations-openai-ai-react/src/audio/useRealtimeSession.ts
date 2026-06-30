@@ -12,6 +12,38 @@ export interface UseRealtimeSessionOptions {
   onError?: (message: string) => void;
 }
 
+/** Float32 PCM → Int16 PCM16 */
+function toPCM16(float32: Float32Array): Int16Array {
+  const out = new Int16Array(float32.length);
+  for (let i = 0; i < float32.length; i++) {
+    out[i] = Math.max(-32768, Math.min(32767, Math.round(float32[i] * 32767)));
+  }
+  return out;
+}
+
+/** Uint8Array → base64 (avoids spread stack-overflow on large arrays) */
+function toBase64(bytes: Uint8Array): string {
+  let binary = "";
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+/** base64 → Uint8Array */
+function fromBase64(b64: string): Uint8Array {
+  const binary = atob(b64);
+  const out = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) out[i] = binary.charCodeAt(i);
+  return out;
+}
+
+/** PCM16 Uint8Array → Float32 samples (for AudioBuffer) */
+function pcm16ToFloat32(bytes: Uint8Array): Float32Array<ArrayBuffer> {
+  const int16 = new Int16Array(bytes.buffer, bytes.byteOffset, bytes.byteLength / 2);
+  const out = new Float32Array(int16.length);
+  for (let i = 0; i < int16.length; i++) out[i] = int16[i] / 32768;
+  return out;
+}
+
 export function useRealtimeSession({
   onUserSpeaking,
   onUserTranscript,
@@ -26,10 +58,12 @@ export function useRealtimeSession({
   const [miaTranscript, setMiaTranscript] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  const pcRef = useRef<RTCPeerConnection | null>(null);
-  const dcRef = useRef<RTCDataChannel | null>(null);
-  const audioElRef = useRef<HTMLAudioElement | null>(null);
-  const pendingToolsRef = useRef<Map<string, string>>(new Map());
+  const wsRef = useRef<WebSocket | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const processorRef = useRef<ScriptProcessorNode | null>(null);
+  const nextPlayTimeRef = useRef(0);
+  const playingSourcesRef = useRef<AudioBufferSourceNode[]>([]);
   const miaFullRef = useRef("");
   const miaSpeakingRef = useRef(false);
   const guardRef = useRef(false);
@@ -59,22 +93,42 @@ export function useRealtimeSession({
     cbRef.current.onMiaSpeaking?.(speaking);
   }, []);
 
+  const stopPlayback = useCallback(() => {
+    playingSourcesRef.current.forEach((s) => { try { s.stop(); } catch { /* already stopped */ } });
+    playingSourcesRef.current = [];
+    nextPlayTimeRef.current = 0;
+  }, []);
+
   const disconnect = useCallback(() => {
-    dcRef.current?.close();
-    dcRef.current = null;
-    pcRef.current?.close();
-    pcRef.current = null;
+    processorRef.current?.disconnect();
+    processorRef.current = null;
+
+    streamRef.current?.getTracks().forEach((t) => t.stop());
+    streamRef.current = null;
+
+    stopPlayback();
+
+    if (wsRef.current && wsRef.current.readyState !== WebSocket.CLOSED) {
+      wsRef.current.close();
+    }
+    wsRef.current = null;
+
+    if (audioCtxRef.current && audioCtxRef.current.state !== "closed") {
+      audioCtxRef.current.close().catch(() => {});
+    }
+    audioCtxRef.current = null;
+
     guardRef.current = false;
-    if (audioElRef.current) audioElRef.current.srcObject = null;
-    pendingToolsRef.current.clear();
     miaSpeakingRef.current = false;
+    miaFullRef.current = "";
+
     setStatus("idle");
-    setMiaSpeakingState(false);
+    cbRef.current.onMiaSpeaking?.(false);
     cbRef.current.onDisconnected?.();
-  }, [setMiaSpeakingState]);
+  }, [stopPlayback]);
 
   const connect = useCallback(async () => {
-    if (guardRef.current || pcRef.current) return;
+    if (guardRef.current || wsRef.current) return;
     guardRef.current = true;
 
     setStatus("connecting");
@@ -82,68 +136,94 @@ export function useRealtimeSession({
     setUserTranscript("");
     setMiaTranscript("");
     miaFullRef.current = "";
-    pendingToolsRef.current.clear();
+    nextPlayTimeRef.current = 0;
 
     try {
-      const tokenRes = await fetch("/api/openai/realtime/session", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      // Acquire mic while we still have a user-gesture on the call stack
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 },
       });
-      if (!tokenRes.ok) {
-        const body = await tokenRes.json().catch(() => ({})) as { error?: string; detail?: string };
-        const detail = body.detail ? ` — ${body.detail}` : "";
-        throw new Error((body.error ?? `Session request failed (${tokenRes.status})`) + detail);
+      streamRef.current = stream;
+
+      // AudioContext at 24 kHz — matches OpenAI Realtime PCM16 sample rate
+      const audioCtx = new AudioContext({ sampleRate: 24000 });
+      audioCtxRef.current = audioCtx;
+      if (audioCtx.state === "suspended") await audioCtx.resume();
+
+      // ── PCM16 playback helper ──────────────────────────────────────────────
+      function playPCM16Chunk(b64: string) {
+        const ctx = audioCtxRef.current;
+        if (!ctx || ctx.state === "closed") return;
+        const samples = pcm16ToFloat32(fromBase64(b64));
+        const buf = ctx.createBuffer(1, samples.length, 24000);
+        buf.copyToChannel(samples, 0);
+        const src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        const now = ctx.currentTime;
+        const start = Math.max(now, nextPlayTimeRef.current);
+        src.start(start);
+        nextPlayTimeRef.current = start + buf.duration;
+        playingSourcesRef.current.push(src);
+        src.onended = () => {
+          playingSourcesRef.current = playingSourcesRef.current.filter((s) => s !== src);
+          if (playingSourcesRef.current.length === 0) setMiaSpeakingState(false);
+        };
       }
-      const { clientSecret, model } = await tokenRes.json() as {
-        clientSecret: string;
-        model: string;
+
+      // ── WebSocket connection to our relay ──────────────────────────────────
+      const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
+      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws`;
+      const ws = new WebSocket(wsUrl);
+      wsRef.current = ws;
+
+      ws.onerror = (e) => {
+        console.error("[realtime] WebSocket error", e);
       };
 
-      const pc = new RTCPeerConnection();
-      pcRef.current = pc;
-
-      pc.onconnectionstatechange = () => {
-        if (
-          pc.connectionState === "failed" ||
-          pc.connectionState === "disconnected" ||
-          pc.connectionState === "closed"
-        ) {
-          disconnect();
-        }
+      ws.onclose = () => {
+        if (wsRef.current === ws) disconnect();
       };
 
-      pc.ontrack = (e) => {
-        if (!audioElRef.current) {
-          audioElRef.current = new Audio();
-          audioElRef.current.autoplay = true;
-        }
-        audioElRef.current.srcObject = e.streams[0];
-      };
-
-      const ms = await navigator.mediaDevices.getUserMedia({ audio: true });
-      ms.getTracks().forEach((t) => pc.addTrack(t, ms));
-
-      const dc = pc.createDataChannel("oai-events");
-      dcRef.current = dc;
-
-      dc.addEventListener("open", () => {
-        setStatus("connected");
-        cbRef.current.onConnected?.();
-      });
-
-      dc.addEventListener("close", () => {
-        if (pcRef.current) disconnect();
-      });
-
-      dc.addEventListener("message", async (evt) => {
+      ws.onmessage = (evt) => {
         let event: Record<string, unknown>;
-        try { event = JSON.parse(evt.data as string) as Record<string, unknown>; } catch { return; }
+        try {
+          event = JSON.parse(evt.data as string) as Record<string, unknown>;
+        } catch { return; }
 
         switch (event.type as string) {
+          // ── Session ready: relay has connected to OpenAI ─────────────────
+          case "session.ready": {
+            const micSource = audioCtx.createMediaStreamSource(stream);
+            const processor = audioCtx.createScriptProcessor(4096, 1, 1);
+            processorRef.current = processor;
+
+            // Route mic through a silent gain so ScriptProcessor stays active
+            // without sending mic audio to the speaker
+            const silentGain = audioCtx.createGain();
+            silentGain.gain.value = 0;
+            micSource.connect(processor);
+            processor.connect(silentGain);
+            silentGain.connect(audioCtx.destination);
+
+            processor.onaudioprocess = (e) => {
+              if (ws.readyState !== WebSocket.OPEN) return;
+              const float32 = e.inputBuffer.getChannelData(0);
+              const audio = toBase64(new Uint8Array(toPCM16(float32).buffer));
+              ws.send(JSON.stringify({ type: "input_audio_buffer.append", audio }));
+            };
+
+            setStatus("connected");
+            cbRef.current.onConnected?.();
+            break;
+          }
+
+          // ── VAD ───────────────────────────────────────────────────────────
           case "input_audio_buffer.speech_started":
             setUserTranscript("");
             miaFullRef.current = "";
             setMiaTranscript("");
+            stopPlayback(); // interrupt any playing Mia audio
             cbRef.current.onUserSpeaking?.(true);
             break;
 
@@ -151,6 +231,7 @@ export function useRealtimeSession({
             cbRef.current.onUserSpeaking?.(false);
             break;
 
+          // ── User transcript (server-side Whisper) ─────────────────────────
           case "conversation.item.input_audio_transcription.delta":
             if (event.delta) {
               setUserTranscript((prev) => {
@@ -161,6 +242,7 @@ export function useRealtimeSession({
             }
             break;
 
+          // ── Mia transcript ────────────────────────────────────────────────
           case "response.audio_transcript.delta":
             if (event.delta) {
               miaFullRef.current += event.delta as string;
@@ -170,58 +252,21 @@ export function useRealtimeSession({
             }
             break;
 
+          // ── Mia audio ─────────────────────────────────────────────────────
           case "response.audio.delta":
             setMiaSpeakingState(true);
+            if (event.delta) playPCM16Chunk(event.delta as string);
             break;
 
           case "response.audio.done":
-            setMiaSpeakingState(false);
+            // All chunks queued; onended callbacks handle setMiaSpeakingState(false)
             break;
 
           case "response.done":
-            setMiaSpeakingState(false);
+            if (playingSourcesRef.current.length === 0) setMiaSpeakingState(false);
             break;
 
-          case "response.output_item.added": {
-            const item = event.item as Record<string, unknown> | undefined;
-            if (item?.type === "function_call") {
-              pendingToolsRef.current.set(
-                item.call_id as string,
-                item.name as string,
-              );
-            }
-            break;
-          }
-
-          case "response.function_call_arguments.done": {
-            const callId = event.call_id as string;
-            const name = pendingToolsRef.current.get(callId);
-            if (!name) break;
-            pendingToolsRef.current.delete(callId);
-            const argsJson = (event.arguments as string) ?? "{}";
-
-            try {
-              const toolRes = await fetch("/api/openai/realtime/execute-tool", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, arguments: argsJson }),
-              });
-              const { output } = await toolRes.json() as { output: string };
-
-              const dc2 = dcRef.current;
-              if (dc2?.readyState === "open") {
-                dc2.send(JSON.stringify({
-                  type: "conversation.item.create",
-                  item: { type: "function_call_output", call_id: callId, output },
-                }));
-                dc2.send(JSON.stringify({ type: "response.create" }));
-              }
-            } catch (toolErr) {
-              console.error("[realtime] tool execution failed:", toolErr);
-            }
-            break;
-          }
-
+          // ── Errors ────────────────────────────────────────────────────────
           case "error": {
             const errObj = event.error as Record<string, unknown> | undefined;
             const msg = (errObj?.message as string) ?? "Voice session error";
@@ -233,53 +278,22 @@ export function useRealtimeSession({
             break;
           }
         }
-      });
-
-      const offer = await pc.createOffer();
-      await pc.setLocalDescription(offer);
-
-      await new Promise<void>((resolve) => {
-        if (pc.iceGatheringState === "complete") { resolve(); return; }
-        const onStateChange = () => {
-          if (pc.iceGatheringState === "complete") {
-            pc.removeEventListener("icegatheringstatechange", onStateChange);
-            resolve();
-          }
-        };
-        pc.addEventListener("icegatheringstatechange", onStateChange);
-        setTimeout(resolve, 3000);
-      });
-
-      const sdpRes = await fetch(
-        `https://api.openai.com/v1/realtime?model=${encodeURIComponent(model)}`,
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${clientSecret}`,
-            "Content-Type": "application/sdp",
-          },
-          body: pc.localDescription!.sdp,
-        },
-      );
-
-      if (!sdpRes.ok) {
-        const detail = await sdpRes.text();
-        throw new Error(`WebRTC handshake failed (${sdpRes.status}): ${detail}`);
-      }
-
-      await pc.setRemoteDescription({ type: "answer", sdp: await sdpRes.text() });
+      };
 
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Failed to connect";
       setError(msg);
       setStatus("error");
       cbRef.current.onError?.(msg);
-      pcRef.current?.close();
-      pcRef.current = null;
-      dcRef.current = null;
+      streamRef.current?.getTracks().forEach((t) => t.stop());
+      streamRef.current = null;
+      audioCtxRef.current?.close().catch(() => {});
+      audioCtxRef.current = null;
+      wsRef.current?.close();
+      wsRef.current = null;
       guardRef.current = false;
     }
-  }, [disconnect, setMiaSpeakingState]);
+  }, [disconnect, setMiaSpeakingState, stopPlayback]);
 
   return { status, userTranscript, miaTranscript, error, connect, disconnect };
 }

@@ -126,7 +126,7 @@ Always be warm, knowledgeable, and genuinely enthusiastic about Mozambique and t
 // Mia needs today's date to resolve relative dates ("next weekend", "tomorrow")
 // into exact YYYY-MM-DD dates for the availability tool. Computed in the lodge's
 // local timezone (Mozambique, CAT/UTC+2) on every request so it never goes stale.
-function buildSystemPrompt(): string {
+export function buildSystemPrompt(): string {
   const now = new Date();
   const longDate = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Africa/Maputo",
