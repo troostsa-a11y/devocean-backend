@@ -52,7 +52,7 @@ services:
     # pnpm workspace: install pnpm, then install deps from lockfile, then build all packages.
     # The root build script runs typecheck + pnpm -r --if-present run build (api-server esbuild +
     # receptionist vite build). BASE_PATH defaults to "/" in vite.config.ts when not set.
-    buildCommand: npm config set prefix /tmp/npm-global && npm install -g pnpm && export PATH=/tmp/npm-global/bin:$PATH && pnpm install --frozen-lockfile && pnpm run build
+    buildCommand: npm config set prefix /tmp/npm-global && npm install -g pnpm@9 && export PATH=/tmp/npm-global/bin:$PATH && pnpm install --frozen-lockfile && pnpm run build
     startCommand: node --enable-source-maps ./artifacts/api-server/dist/index.mjs
     # Schema migrations run automatically on every startup via drizzle-orm/migrator.
     # Migration SQL files live in voice-reception/lib/db/drizzle/ (generated from the Drizzle schema).
