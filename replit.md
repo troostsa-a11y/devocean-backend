@@ -20,7 +20,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 
 - **Website**: `bash deploy.sh` from `WebsiteProject/` — builds, uploads the `ADMIN_API_KEY` Cloudflare secret, and deploys in one step. CF vars are wrangler-managed (`wrangler.toml`); do NOT set them via the Cloudflare dashboard (UI is locked for vars).
 - **Automailer**: deploys from GitHub `main` (Render). Env vars set in the Render dashboard.
-- **Mia Voice Receptionist**: deploys from GitHub `main` as a separate Render `web` service (`mia-voice-receptionist`). Root dir: `voice-reception`. Build: `npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build`. Start: `node --enable-source-maps ./artifacts/api-server/dist/index.mjs`. See `render.yaml` for full env var list. After the service is live, update the `<script src="...widget-loader.js">` in `WebsiteProject/index.html` to the new Render URL.
+- **Mia Voice Receptionist**: deploys from GitHub `main` as a separate Render `web` service (`mia-voice-receptionist`). Root dir: `voice-reception`. Build: `npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build`. Start: `node --enable-source-maps ./artifacts/api-server/dist/index.mjs`. Live at `https://mia-voice-receptionist.onrender.com`. See `render.yaml` for full env var list.
 
 ## System Architecture
 
@@ -32,10 +32,10 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 ### Voice Receptionist (voice-reception/)
 - **Stack**: pnpm workspace, Node 24 / TypeScript 5.9, Express 5 API server (`artifacts/api-server/`), React 19 + Vite admin dashboard (`artifacts/receptionist/`), shared libs in `lib/`.
 - **Runtime**: Express serves the API at `/api/*` and also serves the receptionist's compiled Vite build as static files (so `/embed`, `/widget-loader.js`, and the admin SPA all come from the same Render URL). SPA fallback in `app.ts` catches unmatched routes.
-- **AI**: OpenAI real-time audio via `@workspace/integrations-openai-ai-server`. Env: `AI_INTEGRATIONS_OPENAI_API_KEY`, `AI_INTEGRATIONS_OPENAI_BASE_URL`.
+- **AI**: OpenAI real-time audio via `@workspace/integrations-openai-ai-server`. Env: `AI_INTEGRATIONS_OPENAI_API_KEY`, `AI_INTEGRATIONS_OPENAI_BASE_URL`. `OPENAI_AUDIO_MODEL` must be set to a dated alias (e.g. `gpt-4o-audio-preview-2024-12-17`) — the bare `gpt-4o-audio-preview` alias is retired and returns 404.
 - **Beds24**: read-only availability + pricing tool in `artifacts/api-server/src/beds24/`. Env: `BEDS24_TOKEN` (or `BEDS24_INVITE_CODE`), `BEDS24_PROPERTY_ID` (default `297012`).
-- **DB**: own PostgreSQL instance (`DATABASE_URL`) — separate from the automailer DB. Drizzle ORM schema in `lib/db/`.
-- **Widget embed**: `widget-loader.js` (in `artifacts/receptionist/public/`) creates a floating mic button that opens an iframe pointing to `/embed` on the same origin. After deploying the Render service, update the `<script src>` in `WebsiteProject/index.html`.
+- **DB**: dedicated Reception Supabase project (`DATABASE_URL`) — separate from the Lodge/automailer DB. Session pooler: `aws-0-eu-west-3.pooler.supabase.com`. Drizzle ORM schema in `lib/db/`; tables: `conversations`, `messages`, `bookings`, `integration_tokens`.
+- **Widget embed**: `widget-loader.js` (in `artifacts/receptionist/public/`) creates a floating mic button that opens an iframe pointing to `/embed` on the same origin. In `WebsiteProject/index.html`, the script src uses `%%MIA_URL%%` — replaced at Vite build time by the `MIA_URL` constant in `vite.config.js`.
 - **Dev**: `pnpm --filter @workspace/api-server run dev` from `voice-reception/` (runs esbuild + starts Express; needs `PORT` and `DATABASE_URL` set).
 
 ### Frontend
