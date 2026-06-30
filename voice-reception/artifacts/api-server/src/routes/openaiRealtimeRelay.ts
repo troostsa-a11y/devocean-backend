@@ -54,7 +54,7 @@ export function handleRealtimeWs(clientWs: WebSocket): void {
       JSON.stringify({
         type: "session.update",
         session: {
-          type: "session",
+          type: "realtime",
           modalities: ["text", "audio"],
           voice: "alloy",
           instructions: buildSystemPrompt(),
