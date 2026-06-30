@@ -1,8 +1,9 @@
 import { useParams, Link, useLocation } from "wouter";
-import { useGetOpenaiConversation, getGetOpenaiConversationQueryKey, useDeleteOpenaiConversation, getListOpenaiConversationsQueryKey, useListOpenaiMessages, getListOpenaiMessagesQueryKey } from "@workspace/api-client-react";
+import { useGetOpenaiConversation, getGetOpenaiConversationQueryKey, useDeleteOpenaiConversation, getListOpenaiConversationsQueryKey, useListOpenaiMessages, getListOpenaiMessagesQueryKey, useListConversationBookings, getListConversationBookingsQueryKey } from "@workspace/api-client-react";
 import { format } from "date-fns";
-import { ArrowLeft, Trash2, Loader2, User, Bot } from "lucide-react";
+import { ArrowLeft, Trash2, Loader2, User, Bot, Calendar, Phone, Mail, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { VoiceWidget } from "@/components/VoiceWidget";
 import { useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
@@ -20,6 +21,10 @@ export default function ConversationDetail() {
   
   const { data: messages, isLoading: msgsLoading } = useListOpenaiMessages(convId, {
     query: { enabled: !!convId, queryKey: getListOpenaiMessagesQueryKey(convId) }
+  });
+
+  const { data: linkedBookings, isLoading: bookingsLoading } = useListConversationBookings(convId, {
+    query: { enabled: !!convId, queryKey: getListConversationBookingsQueryKey(convId) }
   });
 
   const deleteConv = useDeleteOpenaiConversation({
@@ -86,7 +91,68 @@ export default function ConversationDetail() {
         </Button>
       </div>
 
+      {/* Booking enquiries linked to this conversation */}
+      {!bookingsLoading && linkedBookings && linkedBookings.length > 0 && (
+        <div className="space-y-3">
+          <h2 className="text-base font-semibold text-foreground">Booking Enquiries from this Session</h2>
+          <div className="grid gap-3">
+            {linkedBookings.map((booking) => (
+              <Card key={booking.id} className="p-4" data-testid={`card-booking-${booking.id}`}>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                  <div className="space-y-2 flex-1">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-primary shrink-0">
+                        <User className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="font-medium text-foreground">{booking.guestName}</span>
+                        <span className="text-xs text-muted-foreground ml-2">
+                          {format(new Date(booking.createdAt), "MMM d, yyyy 'at' h:mm a")}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="pl-10 grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {(booking.checkIn || booking.checkOut) && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <Calendar className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                          <span>
+                            {booking.checkIn ? format(new Date(booking.checkIn), "MMM d") : "?"}
+                            {" – "}
+                            {booking.checkOut ? format(new Date(booking.checkOut), "MMM d") : "?"}
+                            {booking.guests ? ` · ${booking.guests} guest${booking.guests > 1 ? "s" : ""}` : ""}
+                          </span>
+                        </div>
+                      )}
+                      {booking.guestEmail && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <Mail className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                          <span className="truncate">{booking.guestEmail}</span>
+                        </div>
+                      )}
+                      {booking.guestPhone && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <Phone className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
+                          <span>{booking.guestPhone}</span>
+                        </div>
+                      )}
+                      {booking.notes && (
+                        <div className="flex items-start gap-2 text-sm sm:col-span-2">
+                          <FileText className="w-3.5 h-3.5 text-muted-foreground shrink-0 mt-0.5" />
+                          <span className="text-muted-foreground">{booking.notes}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Message thread */}
       <div className="space-y-6">
+        <h2 className="text-base font-semibold text-foreground">Transcript</h2>
         {displayMessages.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground bg-secondary/50 rounded-lg border border-border">
             No messages recorded yet. Use the widget below to start.
@@ -97,13 +163,14 @@ export default function ConversationDetail() {
               <div 
                 key={msg.id} 
                 className={`flex gap-4 p-4 rounded-lg ${msg.role === "user" ? "bg-card border border-border" : "bg-primary/5 border border-primary/10"}`}
+                data-testid={`msg-${msg.role}-${msg.id}`}
               >
                 <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center ${msg.role === "user" ? "bg-secondary text-foreground" : "bg-primary text-primary-foreground"}`}>
                   {msg.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-sm capitalize">{msg.role}</span>
+                    <span className="font-medium text-sm capitalize">{msg.role === "user" ? "Guest" : "Mia"}</span>
                     <span className="text-xs text-muted-foreground">{format(new Date(msg.createdAt), "h:mm:ss a")}</span>
                   </div>
                   <p className="text-foreground leading-relaxed">{msg.content}</p>

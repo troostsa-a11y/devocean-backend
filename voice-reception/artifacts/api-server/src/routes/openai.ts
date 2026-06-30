@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { db } from "@workspace/db";
-import { conversations, messages } from "@workspace/db";
+import { conversations, messages, bookings } from "@workspace/db";
 import { eq, desc } from "drizzle-orm";
 import {
   GetOpenaiConversationParams,
@@ -207,6 +207,29 @@ router.delete("/conversations/:id", async (req, res) => {
     return;
   }
   res.status(204).end();
+});
+
+// List bookings linked to a conversation
+router.get("/conversations/:id/bookings", async (req, res) => {
+  const parsed = GetOpenaiConversationParams.safeParse({ id: Number(req.params.id) });
+  if (!parsed.success) {
+    res.status(400).json({ error: "Invalid id" });
+    return;
+  }
+  const [conversation] = await db
+    .select()
+    .from(conversations)
+    .where(eq(conversations.id, parsed.data.id));
+  if (!conversation) {
+    res.status(404).json({ error: "Conversation not found" });
+    return;
+  }
+  const linked = await db
+    .select()
+    .from(bookings)
+    .where(eq(bookings.conversationId, parsed.data.id))
+    .orderBy(bookings.createdAt);
+  res.json(linked);
 });
 
 // List messages in a conversation
