@@ -6,7 +6,9 @@
   if (
     _path.startsWith("/book-direct") ||
     _path.startsWith("/booking-confirmed") ||
-    _path.startsWith("/canceled")
+    _path.startsWith("/canceled") ||
+    _path === "/talk" ||
+    _path.startsWith("/talk/")
   ) {
     return;
   }
