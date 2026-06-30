@@ -24,13 +24,13 @@ When she captures a booking enquiry, the lodge's reservations team follows up to
 Everything is served from the receptionist app's permanent address:
 
 ```
-https://voice-reception.replit.app
+https://mia-voice-receptionist.onrender.com
 ```
 
-- Floating-button loader script: `https://voice-reception.replit.app/widget-loader.js`
-- Standalone (chrome-free) widget page for iframes: `https://voice-reception.replit.app/embed`
+- Floating-button loader script: `https://mia-voice-receptionist.onrender.com/widget-loader.js`
+- Standalone (chrome-free) widget page for iframes: `https://mia-voice-receptionist.onrender.com/embed`
 
-> If the receptionist app is ever moved to a custom domain, swap `voice-reception.replit.app` for the new domain in the snippets below. Nothing else changes.
+> If the receptionist app is ever moved to a custom domain, swap `mia-voice-receptionist.onrender.com` for the new domain in the snippets below. Nothing else changes.
 
 ---
 
@@ -39,8 +39,8 @@ https://voice-reception.replit.app
 1. **HTTPS only.** Browsers only grant microphone access on secure (`https://`) pages. devoceanlodge.com must be served over HTTPS (it already should be).
 2. **Microphone permission.** The visitor's browser will ask permission to use the mic the first time they talk to Mia. This is expected.
 3. **No Content-Security-Policy blocking.** If the site sets a `Content-Security-Policy` header, it must allow:
-   - loading a script from `https://voice-reception.replit.app` (for Option 1), and/or
-   - framing `https://voice-reception.replit.app` (for Option 2).
+   - loading a script from `https://mia-voice-receptionist.onrender.com` (for Option 1), and/or
+   - framing `https://mia-voice-receptionist.onrender.com` (for Option 2).
    See "Troubleshooting" if you're unsure.
 
 ---
@@ -53,7 +53,7 @@ Add this **once**, inside `<head>` or just before the closing `</body>` tag of t
 
 ```html
 <!-- DEVOCEAN AI Receptionist — floating button -->
-<script src="https://voice-reception.replit.app/widget-loader.js" defer></script>
+<script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
 ```
 
 That's the entire integration. Because it's in the shared layout, it appears on all pages automatically.
@@ -72,7 +72,7 @@ Use this if you want Mia to live inside a particular section of a page — for e
 ```html
 <!-- DEVOCEAN AI Receptionist — inline widget -->
 <iframe
-  src="https://voice-reception.replit.app/embed"
+  src="https://mia-voice-receptionist.onrender.com/embed"
   width="340"
   height="240"
   style="border:none; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.1);"
@@ -96,7 +96,7 @@ Use this when you want a link you can drop into a **WhatsApp auto-reply**, an SM
 The hosted widget is itself a standalone page. You can link **directly** to it from your auto-reply:
 
 ```
-https://voice-reception.replit.app/embed
+https://mia-voice-receptionist.onrender.com/embed
 ```
 
 That works immediately and needs no website change. The only downsides: the URL isn't on your own domain, and the page shows only the widget card (no lodge heading). If that's fine for you, you're done — just paste that link into the WhatsApp auto-reply.
@@ -143,7 +143,7 @@ Create a small page on devoceanlodge.com — for example at **`https://devoceanl
   </header>
   <div class="frame-wrap">
     <iframe
-      src="https://voice-reception.replit.app/embed"
+      src="https://mia-voice-receptionist.onrender.com/embed"
       allow="microphone"
       title="Talk to DEVOCEAN"></iframe>
   </div>
@@ -162,9 +162,9 @@ Notes:
 
 Put the page URL straight into your auto-reply text, for example:
 
-> Thanks for messaging DEVOCEAN Lodge! 🌊 For instant answers on rooms, rates and availability, tap to talk to Mia, our AI receptionist: https://devoceanlodge.com/talk — our team will follow up personally to confirm any booking.
+> Thanks for messaging DEVOCEAN Lodge! For instant answers on rooms, rates and availability, tap to talk to Mia, our AI receptionist: https://devoceanlodge.com/talk — our team will follow up personally to confirm any booking.
 
-(Swap in `https://voice-reception.replit.app/embed` if you went with the quickest version above.)
+(Swap in `https://mia-voice-receptionist.onrender.com/embed` if you went with the quickest version above.)
 
 ---
 
@@ -186,7 +186,7 @@ Put the page URL straight into your auto-reply text, for example:
 | No floating button appears | Script not loaded. Confirm the `<script>` tag is present in the served HTML and that the site is HTTPS. Check the browser console for a blocked-script error (see CSP below). |
 | Button appears but nothing happens / mic never prompts | Page is not HTTPS, or the browser blocked the mic. Use an `https://` URL and allow microphone permission. |
 | Iframe shows but Mia can't hear | The `allow="microphone"` attribute is missing from the `<iframe>`. Add it. |
-| Console error mentioning "Content Security Policy" | The site's CSP is blocking the widget. Update the policy to allow `https://voice-reception.replit.app` — typically `script-src` (Option 1) and `frame-src`/`child-src` (Option 2). |
+| Console error mentioning "Content Security Policy" | The site's CSP is blocking the widget. Update the policy to allow `https://mia-voice-receptionist.onrender.com` — typically `script-src` (Option 1) and `frame-src`/`child-src` (Option 2). |
 | Widget loads but availability/prices look wrong or unavailable | That's handled inside the receptionist app, not the website. Report it to whoever maintains the receptionist app — no website change will fix it. |
 
 ---
@@ -199,4 +199,4 @@ Put the page URL straight into your auto-reply text, for example:
 
 ---
 
-*Questions about Mia's behaviour, availability accuracy, or pricing belong to the receptionist app (`voice-reception.replit.app`), not the website. This document only covers embedding the widget on devoceanlodge.com.*
+*Questions about Mia's behaviour, availability accuracy, or pricing belong to the receptionist app (`mia-voice-receptionist.onrender.com`), not the website. This document only covers embedding the widget on devoceanlodge.com.*

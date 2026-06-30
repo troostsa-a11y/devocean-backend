@@ -918,8 +918,6 @@
   </script>
 
   <!-- FAQ (the questions travellers ask AI assistants) -->
-  <!-- TODO: once mia-voice-receptionist Render service is live, update the Mia /talk URL
-       in the FAQ answer below from voice-reception.replit.app/embed → <new-render-url>/embed -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -958,7 +956,7 @@
       {
         "@type": "Question",
         "name": "How do I check availability and book?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Book online at devoceanlodge.com, or ask our AI receptionist Mia for live availability and rates at https://voice-reception.replit.app/embed. The reservations team follows up to confirm every booking." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Book online at devoceanlodge.com, or ask our AI receptionist Mia for live availability and rates at https://mia-voice-receptionist.onrender.com/embed. The reservations team follows up to confirm every booking." }
       },
       {
         "@type": "Question",
@@ -1112,12 +1110,9 @@
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
 
   <!-- DEVOCEAN AI Receptionist "Mia" — floating microphone button, bottom-right -->
-  <!-- Source now lives in voice-reception/ in this monorepo (pnpm workspace, deploys as
-       a separate Render "web" service: mia-voice-receptionist, see render.yaml).
-       TODO: once the new Render service is live, replace the src URL below with
-             https://<mia-service>.onrender.com/widget-loader.js (or custom subdomain).
-       The old Replit deployment (voice-reception.replit.app) remains active until cutover. -->
-  <script src="https://voice-reception.replit.app/widget-loader.js" defer></script>
+  <!-- Source lives in voice-reception/ in this monorepo (pnpm workspace).
+       Deployed as Render web service: mia-voice-receptionist (see render.yaml). -->
+  <script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
 
   <!-- React app entry — placed last so browser paints static hero before executing JS -->
   <script type="module" src="/src/main.jsx"></script>
