@@ -251,6 +251,21 @@
       100% { background-position: -200% 0; }
     }
 
+    /* Rotating tip line */
+    .mia-tip {
+      font-size: 12px;
+      color: var(--brand);
+      background: rgba(158, 75, 19, 0.07);
+      border-radius: 999px;
+      padding: 5px 13px;
+      max-width: 260px;
+      text-align: center;
+      line-height: 1.4;
+      transition: opacity 0.5s ease;
+    }
+    .mia-tip.fade-out { opacity: 0; }
+    .mia-tip.fade-in  { opacity: 1; }
+
     /* Error fallback (hidden by default, shown via JS) */
     .frame-error {
       display: none;
@@ -429,6 +444,7 @@
               <span id="mia-timer">Usually ready in under a minute</span>
             </div>
             <div class="shimmer"></div>
+            <div class="mia-tip fade-in" id="mia-tip">Try asking: Any rooms free in July?</div>
           </div>
           <!-- Error state (shown after timeout) -->
           <div class="frame-error">
@@ -521,6 +537,7 @@
       var placeholder = document.getElementById('mia-placeholder');
       var frame = document.getElementById('mia-frame');
       var timerEl = document.getElementById('mia-timer');
+      var tipEl = document.getElementById('mia-tip');
       var loaded = false;
       var elapsed = 0;
 
@@ -533,10 +550,32 @@
         clearInterval(ticker);
       }
 
+      // Rotating tips — cycle every 10 s, fade between them
+      var tips = [
+        'Try asking: Any rooms free in July?',
+        'Try asking: What\u2019s the nightly rate in rand?',
+        'Try asking: Is there diving nearby?',
+        'Try asking: What time is check-in?'
+      ];
+      var tipIndex = 0;
+      var tipRotator = setInterval(function () {
+        if (loaded) return;
+        tipEl.classList.remove('fade-in');
+        tipEl.classList.add('fade-out');
+        setTimeout(function () {
+          if (loaded) return;
+          tipIndex = (tipIndex + 1) % tips.length;
+          tipEl.textContent = tips[tipIndex];
+          tipEl.classList.remove('fade-out');
+          tipEl.classList.add('fade-in');
+        }, 520);
+      }, 10000);
+
       // Render cold-starts can take up to ~60 s; give 90 s before showing the error fallback
       var failTimer = setTimeout(function () {
         if (!loaded) {
           stopTimer();
+          clearInterval(tipRotator);
           placeholder.classList.add('failed');
         }
       }, 90000);
@@ -544,6 +583,7 @@
       frame.addEventListener('load', function () {
         loaded = true;
         stopTimer();
+        clearInterval(tipRotator);
         clearTimeout(failTimer);
         placeholder.classList.add('loaded');
         // Remove from DOM after the CSS fade finishes (400 ms)
