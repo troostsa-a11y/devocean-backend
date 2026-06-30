@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { db } from "@workspace/db";
+import { db, withDbRetry } from "@workspace/db";
 import { bookings } from "@workspace/db";
 import { eq, desc } from "drizzle-orm";
 import {
@@ -26,10 +26,9 @@ router.post("/", async (req, res) => {
     res.status(400).json({ error: "Invalid request body" });
     return;
   }
-  const [created] = await db
-    .insert(bookings)
-    .values(parsed.data)
-    .returning();
+  const [created] = await withDbRetry(() =>
+    db.insert(bookings).values(parsed.data).returning(),
+  );
   res.status(201).json(created);
 });
 

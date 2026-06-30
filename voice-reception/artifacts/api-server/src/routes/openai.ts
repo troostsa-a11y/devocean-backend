@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { db } from "@workspace/db";
+import { db, withDbRetry } from "@workspace/db";
 import { conversations, messages, bookings } from "@workspace/db";
 import { eq, desc, sql } from "drizzle-orm";
 import {
@@ -167,10 +167,9 @@ router.post("/conversations", async (req, res) => {
     res.status(400).json({ error: "Invalid request body" });
     return;
   }
-  const [created] = await db
-    .insert(conversations)
-    .values({ title: parsed.data.title })
-    .returning();
+  const [created] = await withDbRetry(() =>
+    db.insert(conversations).values({ title: parsed.data.title }).returning(),
+  );
   res.status(201).json(created);
 });
 
@@ -266,11 +265,13 @@ router.post("/conversations/:id/messages", async (req, res) => {
   const userContent = bodyParsed.data.content;
 
   // Save user message
-  await db.insert(messages).values({
-    conversationId,
-    role: "user",
-    content: userContent,
-  });
+  await withDbRetry(() =>
+    db.insert(messages).values({
+      conversationId,
+      role: "user",
+      content: userContent,
+    }),
+  );
 
   // Build chat history
   const history = await db
@@ -345,11 +346,13 @@ router.post("/conversations/:id/messages", async (req, res) => {
   }
 
   // Save assistant message
-  await db.insert(messages).values({
-    conversationId,
-    role: "assistant",
-    content: fullResponse,
-  });
+  await withDbRetry(() =>
+    db.insert(messages).values({
+      conversationId,
+      role: "assistant",
+      content: fullResponse,
+    }),
+  );
 
   res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
   res.end();
@@ -433,11 +436,13 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
   }
 
   if (assistantTranscript) {
-    await db.insert(messages).values({
-      conversationId,
-      role: "assistant",
-      content: assistantTranscript,
-    });
+    await withDbRetry(() =>
+      db.insert(messages).values({
+        conversationId,
+        role: "assistant",
+        content: assistantTranscript,
+      }),
+    );
   }
 
   res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
