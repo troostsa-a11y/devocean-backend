@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useVoiceRecorder, useVoiceStream, blobToWav } from "@workspace/integrations-openai-ai-react/audio";
 import { useCreateOpenaiConversation } from "@workspace/api-client-react";
 import { Mic, Square, Loader2, AlertCircle, CloudOff } from "lucide-react";
@@ -9,18 +9,24 @@ interface VoiceWidgetProps {
   onConversationCreated?: (id: number) => void;
 }
 
-// Match the DEVOCEAN Lodge website brand font (Inter). Inter is loaded in
-// index.html <head>; we fall back to the OS system sans-serif stack.
 const WEBSITE_FONT =
   '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+
+const EXAMPLE_CHIPS = [
+  "What rooms are available?",
+  "Best time to see whales?",
+  "How do I get to the lodge?",
+];
 
 export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidgetProps) {
   const [transcript, setTranscript] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [saveWarning, setSaveWarning] = useState<string | null>(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const recorder = useVoiceRecorder();
   const createConv = useCreateOpenaiConversation();
+  const abortRef = useRef<AbortController | null>(null);
 
   const workletPath = `${import.meta.env.BASE_URL}audio-playback-worklet.js`;
 
@@ -46,20 +52,30 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
     activeConversationIdRef.current = conversationId;
   }, [conversationId]);
 
+  const ensureConversation = useCallback(async (): Promise<number> => {
+    let id = activeConversationIdRef.current;
+    if (!id) {
+      const newConv = await createConv.mutateAsync({
+        data: { title: "Voice Widget Session" },
+      });
+      id = newConv.id;
+      activeConversationIdRef.current = id;
+      onConversationCreated?.(id);
+    }
+    return id;
+  }, [createConv, onConversationCreated]);
+
   const handleClick = async () => {
     setErrorMessage(null);
     setSaveWarning(null);
+    setHasInteracted(true);
     try {
       if (recorder.state === "recording") {
-        // Resume the AudioContext while we are still inside this click gesture —
-        // desktop browsers ignore resume() calls made later during SSE streaming.
         stream.initAudio().catch(() => {});
         setIsProcessing(true);
         const blob = await recorder.stopRecording();
         const id = activeConversationIdRef.current;
         if (id) {
-          // OpenAI's audio API only accepts wav/mp3, so convert the browser
-          // recording (webm/opus or mp4/aac) to WAV in-browser before sending.
           const wavBlob = await blobToWav(blob);
           await stream.streamVoiceResponse(
             `/api/openai/conversations/${id}/voice-messages`,
@@ -70,25 +86,11 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
           setErrorMessage("No active conversation. Please try again.");
         }
       } else {
-        // Kick off AudioContext initialisation immediately while we are still
-        // inside the user-gesture event handler — before any awaits. This is
-        // required by Safari and Chrome's autoplay policy.
-        stream.initAudio().catch(() => {
-          // Failure is handled gracefully inside streamVoiceResponse; this
-          // fire-and-forget is just to warm up the AudioContext in time.
-        });
+        stream.initAudio().catch(() => {});
 
-        let id = activeConversationIdRef.current;
-        if (!id) {
-          setIsProcessing(true);
-          const newConv = await createConv.mutateAsync({
-            data: { title: "Voice Widget Session" },
-          });
-          id = newConv.id;
-          activeConversationIdRef.current = id;
-          onConversationCreated?.(id);
-          setIsProcessing(false);
-        }
+        setIsProcessing(true);
+        const id = await ensureConversation();
+        setIsProcessing(false);
         setTranscript("");
         await recorder.startRecording();
       }
@@ -101,7 +103,71 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
     }
   };
 
+  const handleChip = async (question: string) => {
+    setErrorMessage(null);
+    setSaveWarning(null);
+    setHasInteracted(true);
+    setTranscript(question);
+    setIsProcessing(true);
+
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    try {
+      const id = await ensureConversation();
+
+      const response = await fetch(`/api/openai/conversations/${id}/messages`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: question }),
+        signal: controller.signal,
+      });
+
+      if (!response.ok || !response.body) {
+        throw new Error("Failed to send question.");
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let assistantText = "";
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? "";
+        for (const line of lines) {
+          if (!line.startsWith("data: ")) continue;
+          try {
+            const payload = JSON.parse(line.slice(6));
+            if (payload.content) {
+              assistantText += payload.content;
+              setTranscript(assistantText);
+            }
+            if (payload.done) break;
+            if (payload.error) {
+              setSaveWarning(payload.error);
+            }
+          } catch {
+          }
+        }
+      }
+    } catch (err) {
+      if ((err as any)?.name === "AbortError") return;
+      const msg = err instanceof Error ? err.message : "Something went wrong. Please try again.";
+      console.error("[VoiceWidget] chip error:", err);
+      setErrorMessage(msg);
+      setTranscript("");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   const isRecording = recorder.state === "recording";
+  const isIdle = !isRecording && !isProcessing && !errorMessage && !hasInteracted;
 
   return (
     <div
@@ -150,6 +216,21 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
         <p className="text-xs text-muted-foreground text-center max-w-[280px] leading-snug line-clamp-4">
           Ask about the Lodge, accommodation options, rates &amp; availability, experiences and more.
         </p>
+      )}
+
+      {isIdle && (
+        <div className="mt-3 flex flex-col gap-1.5 w-full" data-testid="widget-chips">
+          {EXAMPLE_CHIPS.map((q) => (
+            <button
+              key={q}
+              onClick={() => handleChip(q)}
+              data-testid={`chip-${q.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`}
+              className="w-full text-left text-xs px-3 py-1.5 rounded-full border border-primary/25 text-primary/80 bg-primary/5 hover:bg-primary/10 hover:border-primary/40 transition-colors cursor-pointer leading-snug"
+            >
+              {q}
+            </button>
+          ))}
+        </div>
       )}
 
       {saveWarning && (
