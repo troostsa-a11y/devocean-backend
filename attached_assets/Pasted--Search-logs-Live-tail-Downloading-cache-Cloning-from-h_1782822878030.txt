@@ -1,0 +1,61 @@
+
+Search logs
+
+Live tail
+
+
+
+==> Downloading cache...
+==> Cloning from https://github.com/troostsa-a11y/devocean-backend
+==> Checking out commit aeb36c2fba1f837f1680aec6b85148af9bb3607c in branch main
+==> Downloaded 103MB in 2s. Extraction took 5s.
+==> Using Node.js version 24.14.1 (default)
+==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+==> Running build command 'npm config set prefix /tmp/npm-global && npm install -g pnpm@10 && export PATH=/tmp/npm-global/bin:$PATH && pnpm install --frozen-lockfile && pnpm run build'...
+added 1 package in 2s
+1 package is looking for funding
+  run `npm fund` for details
+> workspace@0.0.0 build /opt/render/project/src/voice-reception
+> pnpm --filter @workspace/api-spec run codegen && pnpm --filter @workspace/api-client-react run build && pnpm --filter @workspace/receptionist run build && pnpm --filter @workspace/api-server run build
+> @workspace/api-spec@0.0.0 codegen /opt/render/project/src/voice-reception/lib/api-spec
+> orval --config ./orval.config.ts && pnpm -w run typecheck:libs
+🍻 orval v8.9.1 - A swagger client generator for typescript
+api-client-react Cleaning output folder
+🎉 api-client-react - Your OpenAPI spec has been converted into ready to use orval!
+zod Cleaning output folder
+🎉 zod - Your OpenAPI spec has been converted into ready to use orval!
+> workspace@0.0.0 typecheck:libs /opt/render/project/src/voice-reception
+> tsc --build
+> @workspace/api-client-react@0.0.0 build /opt/render/project/src/voice-reception/lib/api-client-react
+> tsc -p tsconfig.json
+> @workspace/receptionist@0.0.0 build /opt/render/project/src/voice-reception/artifacts/receptionist
+> vite build --config vite.config.ts
+vite v7.3.3 building client environment for production...
+transforming...
+src/components/ui/tooltip.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+src/components/ui/dropdown-menu.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.
+✓ 2138 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/public/index.html                   1.44 kB │ gzip:   0.55 kB
+dist/public/assets/index-hf31SeM0.css  100.89 kB │ gzip:  16.44 kB
+dist/public/assets/index-Ut5W1Vaj.js   445.66 kB │ gzip: 139.22 kB
+✓ built in 3.73s
+> @workspace/api-server@0.0.0 build /opt/render/project/src/voice-reception/artifacts/api-server
+> node ./build.mjs
+  dist/index.mjs                       2.5mb ⚠️
+  dist/pino-worker.mjs               153.4kb
+  dist/pino-file.mjs                 142.1kb
+  dist/pino-pretty.mjs               114.6kb
+  dist/thread-stream-worker.mjs        7.3kb
+  dist/index.mjs.map                   5.9mb
+  dist/pino-worker.mjs.map           256.9kb
+  dist/pino-file.mjs.map             229.1kb
+  dist/pino-pretty.mjs.map           204.0kb
+  dist/thread-stream-worker.mjs.map   12.0kb
+⚡ Done in 595ms
+==> Uploading build...
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+==> Uploaded in 13.4s. Compression took 5.5s
+==> Build successful 🎉
