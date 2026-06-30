@@ -94,8 +94,8 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
-    "public.bookings": {
-      "name": "bookings",
+    "public.mia_bookings": {
+      "name": "mia_bookings",
       "schema": "",
       "columns": {
         "id": {
@@ -162,9 +162,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "bookings_conversation_id_conversations_id_fk": {
-          "name": "bookings_conversation_id_conversations_id_fk",
-          "tableFrom": "bookings",
+        "mia_bookings_conversation_id_conversations_id_fk": {
+          "name": "mia_bookings_conversation_id_conversations_id_fk",
+          "tableFrom": "mia_bookings",
           "tableTo": "conversations",
           "columnsFrom": [
             "conversation_id"

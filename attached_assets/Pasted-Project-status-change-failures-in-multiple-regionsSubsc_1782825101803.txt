@@ -1,0 +1,20 @@
+Project status change failures in multiple regionsSubscribe
+Update - Additional capacity has been made available in the majority of regions, and we're seeing reduced failure rates in terms of project creation, project resizing, branch provisioning, and project restarts.
+We are still experiencing limited instance capacity in ap-northeast-2, ap-south-1, and eu-north-1. 
+As a result, project operations that require capacity in these regions, including project creation, resizing, branch provisioning, restarts, may continue to fail.
+We are actively working to restore full capacity and will provide another update as soon as more information is available.
+Jun 30, 2026 - 11:20 UTC
+Update - We are still working to resolve the issue affecting project creation, project resizing, branch provisioning, and project restarts across multiple regions. We will continue to provide updates as our work progresses.
+Jun 30, 2026 - 06:49 UTC
+Update - We are still working to resolve the issue affecting project creation, project resizing, branch provisioning, and project restarts across multiple regions. We will continue to provide updates as our work progresses.
+Jun 30, 2026 - 05:11 UTC
+Update - We are continuing to work on a fix for the issue and will provide updates as more information is available.
+Jun 30, 2026 - 04:32 UTC
+Identified - We have identified the issue and are working on a fix. Impact is currently affecting project creation, project resizing, branch provisioning, and project restarts across multiple regions. We will provide another update as soon as we have more information.
+Jun 30, 2026 - 03:38 UTC
+Update - We have identified the issue and confirmed that impact extends beyond project creation. Project creation, project resizing, branch provisioning, and project restarts are currently affected across multiple regions. We will share another update as soon as we have more information.
+Jun 30, 2026 - 03:08 UTC
+Update - Project creation is impacted across multiple regions, we are investigating the root cause.
+Jun 30, 2026 - 02:43 UTC
+Investigating - We are currently investigating an issue affecting project creation in multiple regions.
+Jun 30, 2026 - 02:38 UTC
