@@ -6,6 +6,10 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
   "dependencies": {
     "@tanstack/react-query": "catalog:"
   },
