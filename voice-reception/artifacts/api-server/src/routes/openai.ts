@@ -432,26 +432,37 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
 
   // Prefer the tool-calling voice loop so Mia can quote live availability by
   // voice. If gpt-audio rejects tools, fall back to the plain voice stream.
+  // Outer try/catch: if both paths fail (e.g. model unavailable), send an SSE
+  // error event instead of letting the exception reach Express's default error
+  // handler (which would send HTML 404 before any res.write() commits the stream).
   let stream: AsyncIterable<{ type: "transcript" | "audio"; data: string }>;
   try {
-    stream = await voiceChatStreamWithTools(
-      buffer,
-      "alloy",
-      format,
-      buildSystemPrompt(),
-      voiceHistory,
-      lodgeTools,
-      runTool
-    );
+    try {
+      stream = await voiceChatStreamWithTools(
+        buffer,
+        "alloy",
+        format,
+        buildSystemPrompt(),
+        voiceHistory,
+        lodgeTools,
+        runTool
+      );
+    } catch (err) {
+      req.log.warn({ err }, "gpt-audio tool calling unavailable; falling back to plain voice stream");
+      stream = await voiceChatStream(
+        buffer,
+        "alloy",
+        format,
+        buildSystemPrompt(),
+        voiceHistory
+      );
+    }
   } catch (err) {
-    req.log.warn({ err }, "gpt-audio tool calling unavailable; falling back to plain voice stream");
-    stream = await voiceChatStream(
-      buffer,
-      "alloy",
-      format,
-      buildSystemPrompt(),
-      voiceHistory
-    );
+    req.log.error({ err }, "Voice call failed — both tool-calling and plain voice stream unavailable");
+    res.write(`data: ${JSON.stringify({ error: "Voice service is temporarily unavailable. Please try again shortly." })}\n\n`);
+    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
+    res.end();
+    return;
   }
 
   let assistantTranscript = "";

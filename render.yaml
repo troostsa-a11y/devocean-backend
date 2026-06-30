@@ -77,10 +77,10 @@ services:
       - key: AI_INTEGRATIONS_OPENAI_BASE_URL
         sync: false
       # Optional: override the OpenAI model names used by Mia.
-      # Defaults: OPENAI_AUDIO_MODEL=gpt-4o-audio-preview, OPENAI_TEXT_MODEL=gpt-4o
-      # Only set these if you need a different model (e.g. Azure OpenAI deployment name).
+      # Use a dated alias — the bare "gpt-4o-audio-preview" alias is retired and returns 404.
+      # Update this value when OpenAI retires the dated alias.
       - key: OPENAI_AUDIO_MODEL
-        value: "gpt-4o-audio-preview"
+        value: "gpt-4o-audio-preview-2024-12-17"
       - key: OPENAI_TEXT_MODEL
         value: "gpt-4o"
       # Required: Beds24 auth for live availability queries
