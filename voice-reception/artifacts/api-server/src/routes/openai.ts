@@ -536,7 +536,6 @@ router.post("/realtime/session", async (req, res) => {
       instructions: buildSystemPrompt(),
       tools: realtimeTools,
       tool_choice: "auto",
-      input_audio_transcription: { model: "whisper-1" },
     }),
   });
 

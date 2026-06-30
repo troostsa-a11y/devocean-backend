@@ -90,8 +90,9 @@ export function useRealtimeSession({
         headers: { "Content-Type": "application/json" },
       });
       if (!tokenRes.ok) {
-        const body = await tokenRes.json().catch(() => ({})) as { error?: string };
-        throw new Error(body.error ?? `Session request failed (${tokenRes.status})`);
+        const body = await tokenRes.json().catch(() => ({})) as { error?: string; detail?: string };
+        const detail = body.detail ? ` — ${body.detail}` : "";
+        throw new Error((body.error ?? `Session request failed (${tokenRes.status})`) + detail);
       }
       const { clientSecret, model } = await tokenRes.json() as {
         clientSecret: string;
