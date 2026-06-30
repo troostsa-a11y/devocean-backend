@@ -1,0 +1,34 @@
+==> Deploying...
+==> Setting WEB_CONCURRENCY=1 by default, based on available CPUs in the instance
+[db] connecting → host=aws-1-eu-west-1.pooler.supabase.com port=5432 user=postgres.fozgrzqwumnynpedpmth db=postgres
+{"level":30,"time":1782826301502,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","migrationsFolder":"/opt/render/project/src/voice-reception/lib/db/drizzle","msg":"Running database migrations…"}
+{"level":30,"time":1782826301511,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","port":10000,"msg":"Server listening — running migrations in background"}
+{"level":30,"time":1782826301582,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":1,"method":"HEAD","url":"/"},"res":{"statusCode":200},"responseTime":5,"msg":"request completed"}
+{"level":30,"time":1782826302095,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","msg":"Database migrations complete"}
+{"level":30,"time":1782826302096,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","msg":"Migrations complete — server is ready"}
+{"level":30,"time":1782826310877,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":2,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":5,"msg":"request completed"}
+{"level":30,"time":1782826310879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":3,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+==> Your service is live 🎉
+==> 
+==> ///////////////////////////////////////////////////////////
+==> 
+==> Available at your primary URL https://mia-voice-receptionist.onrender.com
+==> 
+==> ///////////////////////////////////////////////////////////
+{"level":30,"time":1782826315880,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":4,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826320880,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":5,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826325886,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":6,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":6,"msg":"request completed"}
+{"level":30,"time":1782826330873,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":7,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826330879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":8,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+{"level":30,"time":1782826335879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":9,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+{"level":30,"time":1782826340880,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":10,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826345879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":11,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+{"level":30,"time":1782826350880,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":12,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826355881,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":13,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826360872,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":14,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+{"level":30,"time":1782826360880,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":15,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826365879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":16,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+{"level":30,"time":1782826370879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":17,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":0,"msg":"request completed"}
+{"level":30,"time":1782826375879,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":18,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}
+{"level":30,"time":1782826380884,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":19,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":4,"msg":"request completed"}
+{"level":30,"time":1782826385880,"pid":77,"hostname":"srv-d91pkdbsq97s73dm0760-865b5b4bd4-w5qf4","req":{"id":20,"method":"GET","url":"/api/health"},"res":{"statusCode":200},"responseTime":1,"msg":"request completed"}

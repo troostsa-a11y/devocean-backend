@@ -12,3 +12,4 @@
 - [Direct-booking /availability shape](direct-booking-availability-shape.md) — new browser-visible room fields need 3 edits (RoomOffers + getAvailability + /availability route whitelist); CF/dev proxies pass through
 - [Checkout "Failed to fetch"](checkout-failed-to-fetch.md) — browser TypeError on Pay = upstream timeout (all backend errors return JSON), never a Stripe error; bound every external call (Stripe/Beds24) under CF's ~100s edge limit; restart Render after key change (cached Stripe singleton)
 - [Direct-booking i18n coverage](direct-booking-i18n-coverage.md) — booking copy now all 20 base langs; whole-object fallback = every key must exist in every lang object (partial → undefined, not EN)
+- [Mia DB connection](mia-db-connection.md) — pooler shard is aws-1-eu-west-1 (not aws-0); shared Lodge DB uses mia_bookings rename; ENOTFOUND = wrong shard not DNS; migration must be idempotent (IF NOT EXISTS)
