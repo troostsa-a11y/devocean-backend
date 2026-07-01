@@ -1,5 +1,5 @@
 services:
-  - type: worker
+  - type: web
     name: Automailer
     runtime: node
     region: frankfurt
