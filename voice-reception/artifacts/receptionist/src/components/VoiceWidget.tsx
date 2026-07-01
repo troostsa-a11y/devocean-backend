@@ -152,9 +152,9 @@ export function VoiceWidget({ conversationId, onConversationCreated, iconOnly = 
   function getMicLabel(): string {
     if (isConnecting) return "Connecting...";
     if (isConnected && userSpeaking) return "Listening...";
-    if (isConnected && miaSpeaking) return "Mia is speaking...";
-    if (isConnected) return "Ask Mia anything";
-    return "Talk to Mia";
+    if (isConnected && miaSpeaking) return "Marin is speaking...";
+    if (isConnected) return "Ask Marin anything";
+    return "Talk to Marin";
   }
 
   const displayTranscript = isConnected
@@ -188,7 +188,7 @@ export function VoiceWidget({ conversationId, onConversationCreated, iconOnly = 
               onClick={handleStartCall}
               disabled={isConnecting}
               data-testid="button-voice-widget"
-              title="Talk to Mia"
+              title="Talk to Marin"
             >
               {isConnecting ? <Loader2 className="w-6 h-6 text-white animate-spin" /> : <Mic className="w-6 h-6 text-white" />}
             </Button>
@@ -197,7 +197,7 @@ export function VoiceWidget({ conversationId, onConversationCreated, iconOnly = 
         {isConnected && (
           <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
             <Radio className="w-3 h-3 text-emerald-500" />
-            {userSpeaking ? "Listening…" : miaSpeaking ? "Mia speaking…" : "Live"}
+            {userSpeaking ? "Listening…" : miaSpeaking ? "Marin speaking…" : "Live"}
           </span>
         )}
         {errorMessage && (

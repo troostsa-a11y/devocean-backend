@@ -287,7 +287,7 @@ export default function ConversationDetail() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-medium text-sm capitalize">{msg.role === "user" ? "Guest" : "Mia"}</span>
+                      <span className="font-medium text-sm capitalize">{msg.role === "user" ? "Guest" : "Marin"}</span>
                       <span className="text-xs text-muted-foreground">{format(new Date(msg.createdAt), "h:mm:ss a")}</span>
                       {showTranslated && (
                         <span className="text-xs text-primary/70 font-medium">{activeLang}</span>
