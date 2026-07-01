@@ -6,7 +6,7 @@ import { db, withDbRetry } from "@workspace/db";
 import { conversations, messages } from "@workspace/db";
 
 const REALTIME_MODEL = () =>
-  process.env.OPENAI_REALTIME_MODEL ?? "gpt-realtime-2";
+  process.env.OPENAI_REALTIME_MODEL ?? "gpt-4o-realtime-preview-2024-12-17";
 const API_KEY = () => process.env.AI_INTEGRATIONS_OPENAI_API_KEY ?? "";
 
 /**
@@ -96,20 +96,15 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       JSON.stringify({
         type: "session.update",
         session: {
-          type: "realtime",
+          modalities: ["text", "audio"],
           instructions: buildSystemPrompt(),
+          voice: "alloy",
+          input_audio_format: "pcm16",
+          output_audio_format: "pcm16",
+          input_audio_transcription: { model: "whisper-1" },
+          turn_detection: { type: "server_vad" },
           tools: realtimeTools,
           tool_choice: "auto",
-          audio: {
-            input: {
-              format: { type: "audio/pcm", rate: 24000 },
-              turn_detection: { type: "server_vad" },
-            },
-            output: {
-              format: { type: "audio/pcm", rate: 24000 },
-              voice: "alloy",
-            },
-          },
         },
       }),
     );
