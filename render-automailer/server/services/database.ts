@@ -528,6 +528,25 @@ export class DatabaseService {
         updated_at  TIMESTAMP NOT NULL DEFAULT NOW()
       )
     `;
+    // Add columns introduced after the original table creation (idempotent).
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS total_spent    DECIMAL(10,2)`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS last_checkin   TIMESTAMP`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS tags           TEXT[]`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS unsubscribe_token TEXT`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS notes          TEXT`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS unsubscribed_at TIMESTAMP`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS country_code   TEXT`;
+    // Ensure the unique constraint on unsubscribe_token exists (safe to run repeatedly).
+    await this.client`
+      DO $$ BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM pg_constraint
+          WHERE conname = 'guests_unsubscribe_token_unique' AND conrelid = 'guests'::regclass
+        ) THEN
+          ALTER TABLE guests ADD CONSTRAINT guests_unsubscribe_token_unique UNIQUE (unsubscribe_token);
+        END IF;
+      END $$
+    `;
   }
 
   /**
