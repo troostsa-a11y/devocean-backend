@@ -8,7 +8,7 @@ import { resolve } from 'path';
 // Single source of truth for the Mia voice-receptionist Render URL.
 // Change this one constant if the service URL ever moves (custom subdomain, etc.).
 // Used by injectMiaUrl() below to replace %%MIA_URL%% placeholders in index.html.
-const MIA_URL = 'https://receptionist.onrender.com';
+const MIA_URL = 'https://mia-voice-receptionist.onrender.com';
 
 // Replace %%MIA_URL%% placeholders in index.html with the MIA_URL constant above.
 // This runs in both dev (transformIndexHtml is called by the dev server) and build.
