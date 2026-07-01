@@ -354,9 +354,14 @@ async function runSaveBooking(
       .returning();
     logger.info({ bookingId: saved.id, conversationId }, "Booking enquiry saved");
 
+    const fmtDate = (iso: string) => {
+      const [y, m, d] = iso.split("-").map(Number);
+      const month = ["January","February","March","April","May","June","July","August","September","October","November","December"][m - 1];
+      return `${d} ${month} ${y}`;
+    };
     const lines = [`New booking enquiry — DEVOCEAN Lodge`, `Guest: ${args.guestName}`];
-    if (args.checkIn)    lines.push(`Check-in:  ${args.checkIn}`);
-    if (args.checkOut)   lines.push(`Check-out: ${args.checkOut}`);
+    if (args.checkIn)    lines.push(`Check-in:  ${fmtDate(args.checkIn)}`);
+    if (args.checkOut)   lines.push(`Check-out: ${fmtDate(args.checkOut)}`);
     if (args.guests)     lines.push(`Guests:    ${args.guests}`);
     if (args.guestEmail) lines.push(`Email:     ${String(args.guestEmail).replace(/\s+/g, "")}`);
     if (args.guestPhone) lines.push(`Phone:     ${args.guestPhone}`);
