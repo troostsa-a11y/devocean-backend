@@ -1132,6 +1132,7 @@ function ImportPanel({ apiUrl, apiKey }) {
 function ContactsPanel({ apiUrl, apiKey }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
   const [filterSub, setFilterSub] = useState('');
@@ -1140,6 +1141,7 @@ function ContactsPanel({ apiUrl, apiKey }) {
 
   const load = async (p = page, s = search, sub = filterSub, src = filterSource) => {
     setLoading(true);
+    setFetchError(null);
     try {
       const params = new URLSearchParams({ page: p, limit: 50 });
       if (s) params.set('search', s);
@@ -1148,10 +1150,14 @@ function ContactsPanel({ apiUrl, apiKey }) {
       const res = await fetch(`${apiUrl}/api/admin/guests?${params}`, {
         headers: { 'X-Admin-Key': apiKey },
       });
-      if (!res.ok) throw new Error('Failed to load');
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(`${res.status} ${res.statusText}${body.error ? ': ' + body.error : ''}`);
+      }
       setData(await res.json());
     } catch (err) {
       console.error(err);
+      setFetchError(err.message);
     } finally {
       setLoading(false);
     }
@@ -1273,6 +1279,8 @@ function ContactsPanel({ apiUrl, apiKey }) {
           <div className="flex items-center justify-center py-12 text-slate-400">
             <Loader2 className="w-5 h-5 animate-spin mr-2" /> Loading…
           </div>
+        ) : fetchError ? (
+          <div className="text-center py-10 text-red-500 text-sm font-mono">{fetchError}</div>
         ) : !data?.rows?.length ? (
           <div className="text-center py-10 text-slate-400 text-sm">No contacts found.</div>
         ) : (
