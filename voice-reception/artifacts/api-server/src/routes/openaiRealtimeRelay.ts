@@ -95,14 +95,9 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     const sessionUpdate = {
       type: "session.update",
       session: {
-        type: "realtime",
-        modalities: ["audio"],
         instructions: buildSystemPrompt(lang),
         voice: "alloy",
-        audio: { output: { format: "pcm16" } },
-        reasoning: { effort: "low" },
-        turn_detection: { type: "semantic_vad" },
-        truncation: "auto",
+        turn_detection: { type: "server_vad" },
         tools: realtimeTools,
         tool_choice: "auto",
       },
