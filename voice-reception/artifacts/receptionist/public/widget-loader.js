@@ -23,6 +23,16 @@
     .split("-")[0].toLowerCase();
   var WIDGET_URL = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
 
+  // Keep WIDGET_URL in sync when the website's i18n system updates <html lang="…">
+  (new MutationObserver(function () {
+    var newLang = (document.documentElement.lang || navigator.language || "en")
+      .split("-")[0].toLowerCase();
+    if (newLang !== _pageLang) {
+      _pageLang = newLang;
+      WIDGET_URL = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+    }
+  })).observe(document.documentElement, { attributeFilter: ["lang"] });
+
   var PRIMARY      = "#16a34a";  // green-600
   var PRIMARY_DARK = "#15803d";  // green-700
   var RED          = "#dc2626";  // red-600 — active call
@@ -254,6 +264,9 @@
     if (frame.contentWindow) {
       frame.contentWindow.postMessage({ type: "devocean:disconnect" }, "*");
     }
+    // Reset so next openWidget() reloads the iframe with the current WIDGET_URL
+    // (picks up any language switch that happened since the last call).
+    frame.src = "";
   }
 
   // Messages from the iframe embed
