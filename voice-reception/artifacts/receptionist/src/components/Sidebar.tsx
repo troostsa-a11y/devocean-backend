@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { LayoutDashboard, MessageSquare, Calendar, Code } from "lucide-react";
+import { LayoutDashboard, MessageSquare, Calendar, Phone } from "lucide-react";
 
 export function Sidebar() {
   const [location] = useLocation();
@@ -8,7 +8,7 @@ export function Sidebar() {
     { href: "/", label: "Dashboard", icon: LayoutDashboard },
     { href: "/conversations", label: "Conversations", icon: MessageSquare },
     { href: "/bookings", label: "Bookings", icon: Calendar },
-    { href: "/widget", label: "Voice Widget", icon: Code },
+    { href: "/widget", label: "Voice Receptionist", icon: Phone },
   ];
 
   return (
