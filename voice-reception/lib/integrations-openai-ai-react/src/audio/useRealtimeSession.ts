@@ -192,6 +192,17 @@ export function useRealtimeSession({
           event = JSON.parse(evt.data as string) as Record<string, unknown>;
         } catch { return; }
 
+        // Debug: log every event type so DevTools Console shows the relay stream
+        const evtType = event.type as string;
+        if (evtType === "error") {
+          console.error("[mia:relay] error event", event.error);
+        } else if (!evtType.includes(".delta")) {
+          // log non-delta events in full; skip deltas to avoid flooding
+          console.log("[mia:relay]", evtType, event);
+        } else {
+          console.log("[mia:relay]", evtType);
+        }
+
         switch (event.type as string) {
           // ── Session ready: relay has connected to OpenAI ─────────────────
           case "session.ready": {

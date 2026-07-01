@@ -92,23 +92,26 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     // Create DB record (best-effort, must not block the session setup)
     void initConversation();
 
-    openaiWs.send(
-      JSON.stringify({
-        type: "session.update",
-        session: {
-          type: "realtime",
-          modalities: ["audio"],
-          instructions: buildSystemPrompt(lang),
-          voice: "alloy",
-          audio: { output: { format: "pcm16" } },
-          reasoning: { effort: "low" },
-          turn_detection: { type: "semantic_vad" },
-          truncation: "auto",
-          tools: realtimeTools,
-          tool_choice: "auto",
-        },
-      }),
+    const sessionUpdate = {
+      type: "session.update",
+      session: {
+        type: "realtime",
+        modalities: ["audio"],
+        instructions: buildSystemPrompt(lang),
+        voice: "alloy",
+        audio: { output: { format: "pcm16" } },
+        reasoning: { effort: "low" },
+        turn_detection: { type: "semantic_vad" },
+        truncation: "auto",
+        tools: realtimeTools,
+        tool_choice: "auto",
+      },
+    };
+    logger.info(
+      { model, voice: "alloy", toolCount: realtimeTools.length },
+      "Realtime relay: sending session.update",
     );
+    openaiWs.send(JSON.stringify(sessionUpdate));
 
     // Let the browser know the relay is up and it can start streaming audio
     if (clientWs.readyState === WebSocket.OPEN) {
@@ -127,6 +130,13 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     }
 
     const evtType = event.type as string;
+
+    // Debug: log every event from OpenAI (visible in Render logs)
+    if (evtType === "error") {
+      logger.error({ event }, "Realtime relay: OpenAI error event");
+    } else if (!evtType.includes(".delta")) {
+      logger.info({ evtType }, "Realtime relay: OpenAI event");
+    }
 
     // After session is configured, trigger the opening greeting.
     // Greeting instruction lives in session-level instructions (buildSystemPrompt(lang))
