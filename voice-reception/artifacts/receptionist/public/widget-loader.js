@@ -200,15 +200,29 @@
     if (e.key === "Escape" && open) closeWidget();
   });
 
+  // Auto-open: if ?talk is present in the URL (e.g. from a WhatsApp deep link),
+  // open Marin automatically once the page has settled.
+  // Note: getUserMedia requires a user-gesture on iOS Safari — if the browser
+  // blocks it, the embed shows an error state and the guest can tap the button
+  // manually to retry. On desktop Chrome/Firefox the navigation gesture propagates.
+  var _autoOpen = new URLSearchParams(window.location.search).has("talk");
+  if (_autoOpen) {
+    setTimeout(openWidget, 1000);
+  }
+
   // Pre-warm: load the embed iframe early so the React app + audio plumbing
   // are ready before the user clicks. Only the WebSocket handshake is cold.
   // 2 s delay keeps this off the critical path for page LCP.
+  // Skip when auto-opening — openWidget() handles the iframe load itself.
   setTimeout(function () {
     if (!frame.src) frame.src = WIDGET_URL;
-  }, 2000);
+  }, _autoOpen ? 0 : 2000);
 
   // Start ringing after a short delay to draw attention to the button.
-  setTimeout(function () {
-    btn.classList.add("ringing");
-  }, 4000);
+  // Skip when auto-opening — the widget opens immediately.
+  if (!_autoOpen) {
+    setTimeout(function () {
+      btn.classList.add("ringing");
+    }, 4000);
+  }
 })();
