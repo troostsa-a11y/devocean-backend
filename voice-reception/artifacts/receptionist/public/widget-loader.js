@@ -230,8 +230,10 @@
   }
 
   function sendConnect() {
+    // Always pass the current page lang so the WebSocket uses the live value,
+    // regardless of what lang was baked into the iframe URL at load time.
     if (frame.contentWindow) {
-      frame.contentWindow.postMessage({ type: "devocean:connect" }, "*");
+      frame.contentWindow.postMessage({ type: "devocean:connect", lang: _pageLang }, "*");
     }
   }
 
@@ -245,12 +247,14 @@
     btn.setAttribute("aria-label", "End call");
 
     if (!frame.src) {
+      // Pre-warm hasn't fired yet (very early click); load now and connect on ready.
       frame.onload = function () {
         frame.onload = null;
         sendConnect();
       };
       frame.src = WIDGET_URL;
     } else {
+      // Iframe already pre-warmed or from a previous call — connect immediately.
       sendConnect();
     }
   }
@@ -264,9 +268,8 @@
     if (frame.contentWindow) {
       frame.contentWindow.postMessage({ type: "devocean:disconnect" }, "*");
     }
-    // Reset so next openWidget() reloads the iframe with the current WIDGET_URL
-    // (picks up any language switch that happened since the last call).
-    frame.src = "";
+    // Keep frame.src set — the React app stays mounted so the next call only
+    // pays for the WebSocket handshake, not a full iframe reload.
   }
 
   // Messages from the iframe embed
@@ -296,6 +299,13 @@
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && open) closeWidget();
   });
+
+  // Pre-warm: load the embed iframe early so the React app + audio plumbing
+  // are ready before the user clicks. Only the WebSocket handshake is cold.
+  // 2 s delay keeps this off the critical path for page LCP.
+  setTimeout(function () {
+    if (!frame.src) frame.src = WIDGET_URL;
+  }, 2000);
 
   // Start ringing and show first callout after a short delay
   setTimeout(function () {

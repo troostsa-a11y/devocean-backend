@@ -127,7 +127,7 @@ export function useRealtimeSession({
     cbRef.current.onDisconnected?.();
   }, [stopPlayback]);
 
-  const connect = useCallback(async () => {
+  const connect = useCallback(async (lang?: string) => {
     if (guardRef.current || wsRef.current) return;
     guardRef.current = true;
 
@@ -173,11 +173,12 @@ export function useRealtimeSession({
 
       // ── WebSocket connection to our relay ──────────────────────────────────
       const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
-      // Prefer explicit lang param injected by widget-loader from the host page's
-      // <html lang="…"> attribute; fall back to the browser's navigator.language.
+      // Priority: lang passed from widget-loader at button-press time (always
+      // current), then URL param (set at iframe load), then navigator.language.
       const urlLang = new URLSearchParams(window.location.search).get("lang");
-      const lang = (urlLang || navigator.language || "en").toLowerCase().split("-")[0];
-      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(lang)}`;
+      const resolvedLang = (lang || urlLang || navigator.language || "en")
+        .toLowerCase().split("-")[0];
+      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(resolvedLang)}`;
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 

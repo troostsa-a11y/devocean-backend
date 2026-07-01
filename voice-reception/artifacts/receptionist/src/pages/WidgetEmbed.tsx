@@ -12,7 +12,7 @@ export default function WidgetEmbed() {
 
   const { connect, disconnect } = session;
 
-  const connectRef = useRef(connect);
+  const connectRef = useRef<(lang?: string) => Promise<void>>(connect);
   const disconnectRef = useRef(disconnect);
   useEffect(() => { connectRef.current = connect; }, [connect]);
   useEffect(() => { disconnectRef.current = disconnect; }, [disconnect]);
@@ -21,7 +21,10 @@ export default function WidgetEmbed() {
     window.parent.postMessage({ type: "devocean:embedReady" }, "*");
     function onMessage(evt: MessageEvent) {
       if (!evt.data || typeof evt.data !== "object") return;
-      if (evt.data.type === "devocean:connect") connectRef.current();
+      if (evt.data.type === "devocean:connect") {
+        const lang = typeof evt.data.lang === "string" ? evt.data.lang : undefined;
+        connectRef.current(lang);
+      }
       if (evt.data.type === "devocean:disconnect") disconnectRef.current();
     }
     window.addEventListener("message", onMessage);
