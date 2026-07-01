@@ -15,3 +15,4 @@
 - [Mia DB connection](mia-db-connection.md) — dedicated Reception Supabase project (eu-west-3, aws-0); ENOTFOUND = wrong shard not DNS; mia_bookings rename was a temp workaround, now reversed
 - [Mia OpenAI audio model](mia-openai-audio-model.md) — bare gpt-4o-audio-preview alias retired → 404; must use dated alias e.g. gpt-4o-audio-preview-2024-12-17 in OPENAI_AUDIO_MODEL
 - [API schema lookup first](api-schema-lookup-first.md) — read .d.ts types from node_modules before constructing any API payload; never guess field names/shape across API versions
+- [gpt-realtime-2 session schema](gpt-realtime-2-session-schema.md) — audio config nested under session.audio.{input,output}; top-level voice/modalities/turn_detection all rejected; type:"realtime" required
