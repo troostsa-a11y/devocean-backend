@@ -118,7 +118,7 @@ export default function AdminPage() {
         ) : (
           <>
             <div className="flex flex-col gap-2 mb-4">
-              <div className="flex w-full gap-0.5 bg-white rounded-lg border border-slate-200 p-1">
+              <div className="flex flex-wrap w-full gap-0.5 bg-white rounded-lg border border-slate-200 p-1">
                 <button
                   onClick={() => setActiveTab('create')}
                   className={`flex flex-1 items-center justify-center gap-1 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
