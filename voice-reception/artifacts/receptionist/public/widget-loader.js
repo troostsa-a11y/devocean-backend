@@ -17,7 +17,11 @@
     ? new URL(document.currentScript.src).origin + new URL(document.currentScript.src).pathname.replace(/\/widget-loader\.js$/, "")
     : window.location.origin;
 
-  var WIDGET_URL = WIDGET_ORIGIN + "/embed";
+  // Detect the page's active language from the <html lang="…"> attribute,
+  // falling back to the browser's navigator.language.
+  var _pageLang = (document.documentElement.lang || navigator.language || "en")
+    .split("-")[0].toLowerCase();
+  var WIDGET_URL = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
 
   var PRIMARY      = "#16a34a";  // green-600
   var PRIMARY_DARK = "#15803d";  // green-700

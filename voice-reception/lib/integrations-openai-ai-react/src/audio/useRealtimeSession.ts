@@ -173,7 +173,10 @@ export function useRealtimeSession({
 
       // ── WebSocket connection to our relay ──────────────────────────────────
       const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const lang = (navigator.language || "en").toLowerCase().split("-")[0];
+      // Prefer explicit lang param injected by widget-loader from the host page's
+      // <html lang="…"> attribute; fall back to the browser's navigator.language.
+      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      const lang = (urlLang || navigator.language || "en").toLowerCase().split("-")[0];
       const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(lang)}`;
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
