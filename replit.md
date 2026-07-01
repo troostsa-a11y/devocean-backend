@@ -5,7 +5,7 @@
 Three-part monorepo for DEVOCEAN Lodge, a hospitality property in Ponta do Ouro, Mozambique:
 
 1. **Email Automation Service** (`render-automailer/`, deploys from GitHub main) — reads Beds24 booking notifications via IMAP, stores bookings in PostgreSQL, sends scheduled transactional emails (post-booking, pre-arrival, arrival welcome, post-departure, cancellation).
-2. **Marketing Website** (`WebsiteProject/`, Cloudflare Pages, wrangler-managed, deploys via `bash deploy.sh`) — React + Vite + Tailwind, coastal/hospitality theme.
+2. **Marketing Website** (`WebsiteProject/`, Cloudflare Pages, wrangler-managed, deploys via `bash deploy.sh`) — React + Vite + Tailwind, coastal/hospitality theme. Live at `https://devoceanlodge.com`.
 3. **Mia Voice Receptionist** (`voice-reception/`, deploys as a separate Render `web` service from this repo) — pnpm workspace; Express 5 API server + React/Vite admin dashboard. Guests click a floating mic button on the website to talk to Mia, an AI receptionist powered by OpenAI real-time audio, with live Beds24 availability lookup and live FX conversion.
 
 ## User Preferences
