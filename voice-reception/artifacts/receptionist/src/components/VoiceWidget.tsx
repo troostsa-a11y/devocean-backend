@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 interface VoiceWidgetProps {
   conversationId?: number;
   onConversationCreated?: (id: number) => void;
+  iconOnly?: boolean;
 }
 
 const WEBSITE_FONT =
@@ -21,7 +22,7 @@ const EXAMPLE_CHIPS = [
   "How do I get to the lodge?",
 ];
 
-export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidgetProps) {
+export function VoiceWidget({ conversationId, onConversationCreated, iconOnly = false }: VoiceWidgetProps) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [saveWarning, setSaveWarning] = useState<string | null>(null);
   const [hasInteracted, setHasInteracted] = useState(false);
@@ -159,6 +160,55 @@ export function VoiceWidget({ conversationId, onConversationCreated }: VoiceWidg
   const displayTranscript = isConnected
     ? (miaSpeaking || miaTranscript ? miaTranscript : userTranscript)
     : chipTranscript;
+
+  if (iconOnly) {
+    return (
+      <div className="flex flex-col items-center gap-3">
+        <div className="w-16 h-16 rounded-full bg-secondary flex items-center justify-center relative">
+          {isConnected && userSpeaking && (
+            <div className="absolute inset-0 rounded-full bg-primary/20 animate-ping" />
+          )}
+          {isConnected && miaSpeaking && (
+            <div className="absolute inset-0 rounded-full bg-emerald-500/20 animate-pulse" />
+          )}
+          {isConnected ? (
+            <Button
+              size="icon"
+              className={`w-12 h-12 rounded-full transition-all duration-300 ${miaSpeaking ? "bg-emerald-600 scale-105" : userSpeaking ? "bg-primary scale-110" : "bg-primary"}`}
+              onClick={handleEndCall}
+              data-testid="button-end-call"
+              title="End call"
+            >
+              <PhoneOff className="w-5 h-5 text-white" />
+            </Button>
+          ) : (
+            <Button
+              size="icon"
+              className="w-12 h-12 rounded-full bg-primary transition-all duration-300"
+              onClick={handleStartCall}
+              disabled={isConnecting}
+              data-testid="button-voice-widget"
+              title="Talk to Mia"
+            >
+              {isConnecting ? <Loader2 className="w-6 h-6 text-white animate-spin" /> : <Mic className="w-6 h-6 text-white" />}
+            </Button>
+          )}
+        </div>
+        {isConnected && (
+          <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Radio className="w-3 h-3 text-emerald-500" />
+            {userSpeaking ? "Listening…" : miaSpeaking ? "Mia speaking…" : "Live"}
+          </span>
+        )}
+        {errorMessage && (
+          <span className="flex items-center gap-1.5 text-xs text-destructive max-w-[200px] text-center">
+            <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+            {errorMessage}
+          </span>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div

@@ -309,12 +309,8 @@ export default function ConversationDetail() {
         )}
       </div>
 
-      <div className="mt-12 border-t border-border pt-12">
-        <div className="mb-6 text-center">
-          <h2 className="text-xl font-serif font-bold text-foreground">Test Receptionist</h2>
-          <p className="text-sm text-muted-foreground mt-1">Continue this conversation live to test the AI's context.</p>
-        </div>
-        <VoiceWidget conversationId={convId} />
+      <div className="mt-12 border-t border-border pt-12 flex justify-center">
+        <VoiceWidget conversationId={convId} iconOnly />
       </div>
 
       {/* Delete conversation dialog */}
