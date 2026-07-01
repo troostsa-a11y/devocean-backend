@@ -1,6 +1,6 @@
 services:
   - type: worker
-    name: devocean-automailer
+    name: Automailer
     runtime: node
     region: frankfurt
     plan: starter
@@ -44,7 +44,7 @@ services:
         sync: false
 
   - type: web
-    name: mia-voice-receptionist
+    name: Receptionist
     runtime: node
     region: frankfurt
     plan: starter
