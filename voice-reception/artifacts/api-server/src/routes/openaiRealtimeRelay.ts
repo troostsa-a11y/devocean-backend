@@ -6,7 +6,7 @@ import { db, withDbRetry } from "@workspace/db";
 import { conversations, messages } from "@workspace/db";
 
 const REALTIME_MODEL = () =>
-  process.env.OPENAI_REALTIME_MODEL ?? "gpt-4o-realtime-preview-2024-12-17";
+  process.env.OPENAI_REALTIME_MODEL ?? "gpt-realtime-2";
 const API_KEY = () => process.env.AI_INTEGRATIONS_OPENAI_API_KEY ?? "";
 
 /**
