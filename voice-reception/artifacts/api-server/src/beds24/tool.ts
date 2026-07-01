@@ -25,7 +25,14 @@ export const availabilityTool = {
         checkOut: { type: "string", description: "Check-out date in YYYY-MM-DD format" },
         numAdults: {
           type: "integer",
-          description: "Number of guests/adults sharing. Defaults to 2 if unknown.",
+          description: "Number of adults sharing. Defaults to 2 if unknown.",
+        },
+        numChildren: {
+          type: "integer",
+          description:
+            "Number of children aged 4–12 sharing the unit. " +
+            "Children aged 0–3 are free — do NOT count them here. " +
+            "Always ask the child's age before passing this value. Defaults to 0.",
         },
       },
       required: ["checkIn", "checkOut"],
@@ -100,6 +107,7 @@ async function runCheckAvailability(args: {
   checkIn?: string;
   checkOut?: string;
   numAdults?: number;
+  numChildren?: number;
 }): Promise<string> {
   if (!args.checkIn || !args.checkOut) {
     return JSON.stringify({
@@ -109,6 +117,7 @@ async function runCheckAvailability(args: {
   }
 
   const numAdults = args.numAdults ? Number(args.numAdults) : 2;
+  const numChildren = args.numChildren ? Number(args.numChildren) : 0;
   const checkIn = String(args.checkIn);
   const checkOut = String(args.checkOut);
 
@@ -123,12 +132,13 @@ async function runCheckAvailability(args: {
       const remainder = numAdults % MAX_ADULTS_PER_UNIT;
       const unitsNeeded = Math.ceil(numAdults / MAX_ADULTS_PER_UNIT);
 
+      // Children travel with the main group (full unit); the solo-adult partial unit has no child.
       const probePromises: Promise<AvailabilityResult>[] = [
-        checkAvailability(checkIn, checkOut, numAdults),          // [0] over-cap (expected empty)
-        checkAvailability(checkIn, checkOut, MAX_ADULTS_PER_UNIT), // [1] full unit pricing
+        checkAvailability(checkIn, checkOut, numAdults, numChildren),           // [0] over-cap (expected empty)
+        checkAvailability(checkIn, checkOut, MAX_ADULTS_PER_UNIT, numChildren), // [1] full unit pricing
       ];
       if (remainder > 0) {
-        probePromises.push(checkAvailability(checkIn, checkOut, remainder)); // [2] partial unit pricing
+        probePromises.push(checkAvailability(checkIn, checkOut, remainder, 0)); // [2] partial unit, no child
       }
 
       const probeResults = await Promise.all(probePromises);
@@ -210,7 +220,7 @@ async function runCheckAvailability(args: {
       return formatAvailabilityForModel(result);
     }
 
-    const result = await checkAvailability(checkIn, checkOut, numAdults);
+    const result = await checkAvailability(checkIn, checkOut, numAdults, numChildren);
     return formatAvailabilityForModel(result);
   } catch (err) {
     if (err instanceof Beds24NotConfiguredError) {

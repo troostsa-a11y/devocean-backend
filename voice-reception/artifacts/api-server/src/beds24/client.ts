@@ -223,16 +223,20 @@ export async function checkAvailability(
   checkIn: string,
   checkOut: string,
   numAdults = 2,
+  numChildren = 0,
 ): Promise<AvailabilityResult> {
   const nights = nightsBetween(checkIn, checkOut);
+  const params: Record<string, string | number> = {
+    propertyId: PROPERTY_ID,
+    arrival: checkIn,
+    departure: checkOut,
+    numAdults,
+  };
+  if (numChildren > 0) params.numChildren = numChildren;
+
   const [names, json] = await Promise.all([
     getRoomNames(),
-    beds24Get("/inventory/rooms/offers", {
-      propertyId: PROPERTY_ID,
-      arrival: checkIn,
-      departure: checkOut,
-      numAdults,
-    }),
+    beds24Get("/inventory/rooms/offers", params),
   ]);
 
   logger.info(
