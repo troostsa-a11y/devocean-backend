@@ -92,3 +92,10 @@ services:
         value: "297012"
       - key: LOG_LEVEL
         value: info
+      # Optional: WhatsApp booking-enquiry alerts via CallMeBot (free, no account needed).
+      # Activate: send "I allow callmebot to send me messages" to +34 644 65 79 90 on WhatsApp.
+      # You will receive an API key by return message.
+      - key: MARIN_NOTIFY_WA_PHONE
+        sync: false
+      - key: MARIN_NOTIFY_WA_APIKEY
+        sync: false

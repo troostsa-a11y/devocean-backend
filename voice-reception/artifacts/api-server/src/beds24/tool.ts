@@ -283,6 +283,20 @@ async function runGetWeather(): Promise<string> {
   }
 }
 
+/** Fire-and-forget WhatsApp notification via CallMeBot. Requires env vars:
+ *   MARIN_NOTIFY_WA_PHONE   — recipient in international format, e.g. +27821234567
+ *   MARIN_NOTIFY_WA_APIKEY  — key from CallMeBot (activate by messaging +34 644 65 79 90)
+ */
+function notifyWhatsApp(text: string): void {
+  const phone = process.env.MARIN_NOTIFY_WA_PHONE;
+  const apikey = process.env.MARIN_NOTIFY_WA_APIKEY;
+  if (!phone || !apikey) return;
+  const url =
+    `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(phone)}` +
+    `&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(apikey)}`;
+  fetch(url).catch((err) => logger.warn({ err }, "WhatsApp notify failed"));
+}
+
 async function runSaveBooking(
   args: {
     guestName?: string;
@@ -313,6 +327,17 @@ async function runSaveBooking(
       })
       .returning();
     logger.info({ bookingId: saved.id, conversationId }, "Booking enquiry saved");
+
+    const lines = [`*New booking enquiry — DEVOCEAN Lodge*`, `Guest: ${args.guestName}`];
+    if (args.checkIn)  lines.push(`Check-in: ${args.checkIn}`);
+    if (args.checkOut) lines.push(`Check-out: ${args.checkOut}`);
+    if (args.guests)   lines.push(`Guests: ${args.guests}`);
+    if (args.guestEmail) lines.push(`Email: ${String(args.guestEmail).replace(/\s+/g, "")}`);
+    if (args.guestPhone) lines.push(`Phone: ${args.guestPhone}`);
+    if (args.notes)    lines.push(`Notes: ${args.notes}`);
+    lines.push(`Ref #${saved.id}`);
+    notifyWhatsApp(lines.join("\n"));
+
     return JSON.stringify({
       success: true,
       bookingId: saved.id,
