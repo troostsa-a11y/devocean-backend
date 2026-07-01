@@ -97,7 +97,10 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       session: {
         type: "realtime",
         instructions: buildSystemPrompt(lang),
-        turn_detection: { type: "server_vad" },
+        audio: {
+          input: { turn_detection: { type: "server_vad" } },
+          output: { voice: "alloy" },
+        },
         tools: realtimeTools,
         tool_choice: "auto",
       },
