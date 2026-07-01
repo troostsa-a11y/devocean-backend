@@ -99,14 +99,14 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
         instructions: buildSystemPrompt(lang),
         audio: {
           input: { turn_detection: { type: "server_vad" } },
-          output: { voice: "alloy" },
+          output: { voice: "marin" },
         },
         tools: realtimeTools,
         tool_choice: "auto",
       },
     };
     logger.info(
-      { model, voice: "alloy", toolCount: realtimeTools.length },
+      { model, voice: "marin", toolCount: realtimeTools.length },
       "Realtime relay: sending session.update",
     );
     openaiWs.send(JSON.stringify(sessionUpdate));
