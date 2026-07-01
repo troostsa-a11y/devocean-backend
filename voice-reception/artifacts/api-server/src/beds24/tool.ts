@@ -2,6 +2,7 @@ import {
   checkAvailability,
   formatAvailabilityForModel,
   Beds24NotConfiguredError,
+  type AvailabilityResult,
 } from "./client";
 import { convertFromUsd, CurrencyUnavailableError } from "../currency/client";
 import { getWeather } from "../weather/client";
@@ -112,31 +113,76 @@ async function runCheckAvailability(args: {
   const checkOut = String(args.checkOut);
 
   try {
-    // When the requested group exceeds per-unit capacity, run a second probe with
-    // numAdults=2 in parallel. This lets us distinguish "over-occupancy" (rooms
-    // exist but can't fit the group in one unit) from "genuinely sold out".
+    // When the group exceeds per-unit capacity, probe the actual occupancy split:
+    // - fullUnitProbe: pricing for a unit with MAX_ADULTS_PER_UNIT adults
+    // - remainderProbe: pricing for a unit with the leftover adult(s), if any
+    // This gives correct rates instead of doubling the 2-adult price.
+    // e.g. 3 adults → 1 unit @ 2 adults + 1 unit @ 1 adult (different, lower rate)
     if (numAdults > MAX_ADULTS_PER_UNIT) {
-      const [result, probeResult] = await Promise.all([
-        checkAvailability(checkIn, checkOut, numAdults),
-        checkAvailability(checkIn, checkOut, 2),
-      ]);
+      const fullUnits = Math.floor(numAdults / MAX_ADULTS_PER_UNIT);
+      const remainder = numAdults % MAX_ADULTS_PER_UNIT;
+      const unitsNeeded = Math.ceil(numAdults / MAX_ADULTS_PER_UNIT);
 
-      const singleUnitAvailable = probeResult.offers.filter((o) => o.available);
+      const probePromises: Promise<AvailabilityResult>[] = [
+        checkAvailability(checkIn, checkOut, numAdults),          // [0] over-cap (expected empty)
+        checkAvailability(checkIn, checkOut, MAX_ADULTS_PER_UNIT), // [1] full unit pricing
+      ];
+      if (remainder > 0) {
+        probePromises.push(checkAvailability(checkIn, checkOut, remainder)); // [2] partial unit pricing
+      }
 
-      if (singleUnitAvailable.length > 0) {
-        // Rooms are available but a single unit can't accommodate the full group.
-        const unitsNeeded = Math.ceil(numAdults / MAX_ADULTS_PER_UNIT);
-        const pricing = singleUnitAvailable.map((o) => {
-          const totalPerUnit = o.totalPrice ?? 0;
+      const probeResults = await Promise.all(probePromises);
+      const result = probeResults[0];
+      const fullProbe = probeResults[1];
+      const partialProbe = remainder > 0 ? probeResults[2] : undefined;
+
+      const fullAvailable = fullProbe.offers.filter((o) => o.available);
+
+      if (fullAvailable.length > 0) {
+        const partialAvailable = partialProbe?.offers.filter((o) => o.available) ?? [];
+
+        const pricing = fullAvailable.map((fullOffer) => {
+          const partialOffer = partialAvailable.find((p) => p.roomName === fullOffer.roomName);
+
+          const unitBreakdown: {
+            adults: number;
+            units: number;
+            totalPricePerUnit?: number;
+            perPersonPerNight?: number;
+            currency: string;
+          }[] = [
+            {
+              adults: MAX_ADULTS_PER_UNIT,
+              units: fullUnits,
+              totalPricePerUnit: fullOffer.totalPrice,
+              perPersonPerNight: fullOffer.perPersonPerNight,
+              currency: fullOffer.currency ?? "USD",
+            },
+          ];
+
+          if (remainder > 0) {
+            unitBreakdown.push({
+              adults: remainder,
+              units: 1,
+              totalPricePerUnit: partialOffer?.totalPrice,
+              perPersonPerNight: partialOffer?.perPersonPerNight,
+              currency: partialOffer?.currency ?? fullOffer.currency ?? "USD",
+            });
+          }
+
+          const fullTotal = (fullOffer.totalPrice ?? 0) * fullUnits;
+          const partialTotal = remainder > 0 ? (partialOffer?.totalPrice ?? 0) : 0;
+          const estimatedGroupTotal = fullTotal + partialTotal;
+
           return {
-            room: o.roomName,
-            unitsAvailable: o.unitsAvailable,
-            totalPricePerUnit: totalPerUnit,
-            perPersonPerNight: o.perPersonPerNight,
-            estimatedTotalForGroup: totalPerUnit > 0 ? totalPerUnit * unitsNeeded : undefined,
-            currency: o.currency ?? "USD",
+            room: fullOffer.roomName,
+            unitsAvailable: fullOffer.unitsAvailable,
+            unitBreakdown,
+            estimatedGroupTotal: estimatedGroupTotal > 0 ? estimatedGroupTotal : undefined,
+            currency: fullOffer.currency ?? "USD",
           };
         });
+
         return JSON.stringify({
           checkIn,
           checkOut,
@@ -148,18 +194,19 @@ async function runCheckAvailability(args: {
           unitsNeeded,
           singleUnitPricing: pricing,
           note:
-            `Each unit sleeps max 2 adults (plus 1 child under 12 free). ` +
+            `Each unit sleeps max ${MAX_ADULTS_PER_UNIT} adults (plus 1 child under 12 free). ` +
             `For ${numAdults} adults, ${unitsNeeded} units are needed. ` +
-            `YOU MUST quote the rates from singleUnitPricing: say the totalPricePerUnit ` +
-            `(total for the stay per unit) and the perPersonPerNight rate for each room option. ` +
-            `Also say the estimatedTotalForGroup (${unitsNeeded} units combined). ` +
+            `YOU MUST quote the rates from singleUnitPricing. Each room has a unitBreakdown ` +
+            `showing the price per unit at each occupancy level — quote these naturally ` +
+            `(e.g. "one unit for 2 adults at $X total, one unit for 1 adult at $Y total") ` +
+            `and give the estimatedGroupTotal as the combined figure for the whole group. ` +
             `Then offer to have the reservations team arrange the multi-unit booking. ` +
             `Finally ask whether any guests are children under 12, since one child under 12 ` +
             `can share a unit with 2 adults without triggering the occupancy limit.`,
         });
       }
 
-      // Both calls returned no availability — genuinely sold out for these dates.
+      // Both probes returned no availability — genuinely sold out for these dates.
       return formatAvailabilityForModel(result);
     }
 
