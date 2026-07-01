@@ -60,6 +60,10 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   // Subsequent session.update calls (VAD mute/unmute) also trigger session.updated
   // and must NOT fire another response.create or the session loops infinitely.
   let sessionGreetingSent = false;
+  // True while Marin is generating a response (response.created → response.done).
+  // Used to discard falsely-detected "speech" (echo/ambient noise through speakers)
+  // during the VAD mute race window — see input_audio_buffer.speech_started handler.
+  let marinResponseActive = false;
 
   async function initConversation(): Promise<void> {
     try {
@@ -168,6 +172,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     // speakers) as user speech and falsely triggering an interrupt mid-sentence.
     // Mute on response.created, unmute on response.done.
     if (evtType === "response.created") {
+      marinResponseActive = true;
       if (openaiWs.readyState === WebSocket.OPEN) {
         openaiWs.send(JSON.stringify({
           type: "session.update",
@@ -178,6 +183,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     }
 
     if (evtType === "response.done") {
+      marinResponseActive = false;
       if (openaiWs.readyState === WebSocket.OPEN) {
         openaiWs.send(JSON.stringify({
           type: "session.update",
@@ -185,6 +191,20 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
         }));
       }
       // fall through — relay response.done to browser
+    }
+
+    // ── Echo/ambient guard: discard audio buffered during the VAD mute race window ──
+    // There is a small latency gap between response.created firing and OpenAI
+    // processing the turn_detection:null session.update above. During that window
+    // VAD can still detect Marin's speaker output as "speech". If that happens,
+    // clear the input buffer immediately so it doesn't interrupt Marin mid-sentence.
+    // This is belt-and-suspenders on top of the session.update mute above.
+    if (evtType === "input_audio_buffer.speech_started" && marinResponseActive) {
+      logger.info("Realtime relay: discarding false VAD trigger during Marin response");
+      if (openaiWs.readyState === WebSocket.OPEN) {
+        openaiWs.send(JSON.stringify({ type: "input_audio_buffer.clear" }));
+      }
+      return; // do not relay the false speech_started event to the browser
     }
 
     // Track call_id → function name so we can look it up when args are done
