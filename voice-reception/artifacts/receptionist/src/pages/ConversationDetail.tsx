@@ -1,11 +1,11 @@
 import { useParams, Link, useLocation } from "wouter";
 import { useGetOpenaiConversation, getGetOpenaiConversationQueryKey, useDeleteOpenaiConversation, getListOpenaiConversationsQueryKey, useListOpenaiMessages, getListOpenaiMessagesQueryKey, useListConversationBookings, getListConversationBookingsQueryKey, useDeleteBooking, getListBookingsQueryKey } from "@workspace/api-client-react";
 import { format } from "date-fns";
-import { ArrowLeft, Trash2, Loader2, User, Bot, Calendar, Phone, Mail, FileText } from "lucide-react";
+import { ArrowLeft, Trash2, Loader2, User, Bot, Calendar, Phone, Mail, FileText, Languages } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { VoiceWidget } from "@/components/VoiceWidget";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import {
@@ -19,6 +19,20 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+type TranslationMap = Record<number, string>;
+type TranslateLang = "en" | "pt-MZ";
+
+async function fetchTranslation(convId: number, targetLang: TranslateLang): Promise<TranslationMap> {
+  const res = await fetch(`/api/openai/conversations/${convId}/translate`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ targetLang }),
+  });
+  if (!res.ok) throw new Error("Translation failed");
+  const data = await res.json() as { translations: { id: number; translatedContent: string }[] };
+  return Object.fromEntries(data.translations.map((t) => [t.id, t.translatedContent]));
+}
+
 export default function ConversationDetail() {
   const { id } = useParams();
   const convId = Number(id);
@@ -28,6 +42,10 @@ export default function ConversationDetail() {
 
   const [deleteConvOpen, setDeleteConvOpen] = useState(false);
   const [deleteBookingId, setDeleteBookingId] = useState<number | null>(null);
+
+  // Translation state
+  const [activeLang, setActiveLang] = useState<TranslateLang | null>(null);
+  const [translations, setTranslations] = useState<Record<TranslateLang, TranslationMap>>({ en: {}, "pt-MZ": {} });
 
   const { data: conversation, isLoading: convLoading } = useGetOpenaiConversation(convId, { 
     query: { enabled: !!convId, queryKey: getGetOpenaiConversationQueryKey(convId) } 
@@ -40,6 +58,28 @@ export default function ConversationDetail() {
   const { data: linkedBookings, isLoading: bookingsLoading } = useListConversationBookings(convId, {
     query: { enabled: !!convId, queryKey: getListConversationBookingsQueryKey(convId) }
   });
+
+  const translateMutation = useMutation({
+    mutationFn: (lang: TranslateLang) => fetchTranslation(convId, lang),
+    onSuccess: (data, lang) => {
+      setTranslations((prev) => ({ ...prev, [lang]: data }));
+    },
+    onError: () => {
+      toast({ title: "Translation failed", description: "Could not translate the transcript.", variant: "destructive" });
+    },
+  });
+
+  function handleLangToggle(lang: TranslateLang) {
+    if (activeLang === lang) {
+      setActiveLang(null);
+      return;
+    }
+    setActiveLang(lang);
+    // Only fetch if not already cached for this session
+    if (Object.keys(translations[lang]).length === 0) {
+      translateMutation.mutate(lang);
+    }
+  }
 
   const deleteConv = useDeleteOpenaiConversation({
     mutation: {
@@ -81,6 +121,8 @@ export default function ConversationDetail() {
   }
   
   const displayMessages = messages || conversation.messages || [];
+  const activeTranslations = activeLang ? translations[activeLang] : {};
+  const isTranslating = translateMutation.isPending;
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500 pb-12">
@@ -185,32 +227,84 @@ export default function ConversationDetail() {
       )}
 
       {/* Message thread */}
-      <div className="space-y-6">
-        <h2 className="text-base font-semibold text-foreground">Transcript</h2>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <h2 className="text-base font-semibold text-foreground">Transcript</h2>
+
+          {displayMessages.length > 0 && (
+            <div className="flex items-center gap-1.5">
+              <Languages className="w-4 h-4 text-muted-foreground" />
+              <span className="text-xs text-muted-foreground mr-1">Translate to:</span>
+              {(["en", "pt-MZ"] as TranslateLang[]).map((lang) => {
+                const isActive = activeLang === lang;
+                const isLoading = isTranslating && translateMutation.variables === lang;
+                return (
+                  <Button
+                    key={lang}
+                    variant={isActive ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => handleLangToggle(lang)}
+                    disabled={isTranslating}
+                    data-testid={`button-translate-${lang}`}
+                    className="h-7 px-2.5 text-xs"
+                  >
+                    {isLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : lang === "en" ? "English" : "Português MZ"}
+                  </Button>
+                );
+              })}
+              {activeLang && (
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setActiveLang(null)}
+                  className="h-7 px-2 text-xs text-muted-foreground"
+                  data-testid="button-show-original"
+                >
+                  Original
+                </Button>
+              )}
+            </div>
+          )}
+        </div>
+
         {displayMessages.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground bg-secondary/50 rounded-lg border border-border">
             No messages recorded yet. Use the widget below to start.
           </div>
         ) : (
           <div className="space-y-4">
-            {displayMessages.map((msg) => (
-              <div 
-                key={msg.id} 
-                className={`flex gap-4 p-4 rounded-lg ${msg.role === "user" ? "bg-card border border-border" : "bg-primary/5 border border-primary/10"}`}
-                data-testid={`msg-${msg.role}-${msg.id}`}
-              >
-                <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center ${msg.role === "user" ? "bg-secondary text-foreground" : "bg-primary text-primary-foreground"}`}>
-                  {msg.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-medium text-sm capitalize">{msg.role === "user" ? "Guest" : "Mia"}</span>
-                    <span className="text-xs text-muted-foreground">{format(new Date(msg.createdAt), "h:mm:ss a")}</span>
+            {displayMessages.map((msg) => {
+              const translated = activeTranslations[msg.id];
+              const showTranslated = activeLang && translated;
+              return (
+                <div 
+                  key={msg.id} 
+                  className={`flex gap-4 p-4 rounded-lg ${msg.role === "user" ? "bg-card border border-border" : "bg-primary/5 border border-primary/10"}`}
+                  data-testid={`msg-${msg.role}-${msg.id}`}
+                >
+                  <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center ${msg.role === "user" ? "bg-secondary text-foreground" : "bg-primary text-primary-foreground"}`}>
+                    {msg.role === "user" ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                   </div>
-                  <p className="text-foreground leading-relaxed">{msg.content}</p>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-medium text-sm capitalize">{msg.role === "user" ? "Guest" : "Mia"}</span>
+                      <span className="text-xs text-muted-foreground">{format(new Date(msg.createdAt), "h:mm:ss a")}</span>
+                      {showTranslated && (
+                        <span className="text-xs text-primary/70 font-medium">{activeLang}</span>
+                      )}
+                    </div>
+                    <p className="text-foreground leading-relaxed">
+                      {showTranslated ? translated : msg.content}
+                    </p>
+                    {showTranslated && (
+                      <p className="text-xs text-muted-foreground mt-1.5 italic leading-relaxed border-t border-border/50 pt-1.5">
+                        {msg.content}
+                      </p>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         )}
       </div>

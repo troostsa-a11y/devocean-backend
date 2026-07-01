@@ -238,6 +238,62 @@ router.get("/conversations/:id/bookings", async (req, res) => {
 });
 
 // List messages in a conversation
+// Translate conversation transcript to EN or PT-MZ (ephemeral, not persisted)
+router.post("/conversations/:id/translate", async (req, res) => {
+  const id = Number(req.params.id);
+  if (!id) { res.status(400).json({ error: "Invalid id" }); return; }
+
+  const { targetLang } = req.body as { targetLang?: string };
+  if (targetLang !== "en" && targetLang !== "pt-MZ") {
+    res.status(400).json({ error: "targetLang must be 'en' or 'pt-MZ'" });
+    return;
+  }
+
+  const msgs = await db
+    .select()
+    .from(messages)
+    .where(eq(messages.conversationId, id))
+    .orderBy(messages.createdAt);
+
+  if (msgs.length === 0) { res.json({ translations: [] }); return; }
+
+  const targetLabel = targetLang === "en"
+    ? "English"
+    : "Portuguese as spoken in Mozambique (pt-MZ)";
+
+  const prompt = `You are a professional translator. Translate the following conversation transcript to ${targetLabel}.
+Return ONLY a valid JSON array — no markdown, no commentary — with one object per message:
+{"id": <number>, "translatedContent": "<translated text>"}
+
+Preserve the meaning faithfully. Do not add explanations or change names.
+
+Messages:
+${JSON.stringify(msgs.map((m) => ({ id: m.id, role: m.role, content: m.content })))}`;
+
+  const completion = await openai.chat.completions.create({
+    model: TEXT_MODEL,
+    response_format: { type: "json_object" },
+    messages: [
+      { role: "system", content: "You are a professional translator. Respond with a valid JSON object containing a 'translations' array." },
+      { role: "user", content: prompt },
+    ],
+    temperature: 0.2,
+  });
+
+  const raw = completion.choices[0]?.message?.content ?? "{}";
+  let translations: { id: number; translatedContent: string }[] = [];
+  try {
+    const parsed = JSON.parse(raw);
+    translations = Array.isArray(parsed) ? parsed : (parsed.translations ?? []);
+  } catch {
+    req.log.error({ raw }, "Failed to parse translation JSON from OpenAI");
+    res.status(500).json({ error: "Translation parse error" });
+    return;
+  }
+
+  res.json({ translations });
+});
+
 router.get("/conversations/:id/messages", async (req, res) => {
   const parsed = ListOpenaiMessagesParams.safeParse({ id: Number(req.params.id) });
   if (!parsed.success) {
