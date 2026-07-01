@@ -161,7 +161,13 @@ export function buildSystemPrompt(lang?: string): string {
     month: "2-digit",
     day: "2-digit",
   }).format(now);
-  const dateContext = `CURRENT DATE: Today is ${longDate} (${isoDate}), lodge local time (Mozambique, CAT/UTC+2). Use this to resolve relative dates such as "today", "tonight", "tomorrow", "this weekend", or "next weekend" into exact YYYY-MM-DD calendar dates before calling check_availability. "This weekend" means the nearest upcoming Friday/Saturday; "next weekend" means the weekend after that. Never ask the guest to convert their phrasing into dates — work it out yourself.`;
+  const localTime = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Maputo",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).format(now);
+  const dateContext = `CURRENT DATE AND TIME: Today is ${longDate} (${isoDate}), local time is ${localTime} CAT (UTC+2, Mozambique). Use this to resolve relative dates such as "today", "tonight", "tomorrow", "this weekend", or "next weekend" into exact YYYY-MM-DD calendar dates before calling check_availability. "This weekend" means the nearest upcoming Friday/Saturday; "next weekend" means the weekend after that. Never ask the guest to convert their phrasing into dates — work it out yourself. Use the current time to choose appropriate greetings (good morning before 12:00, good afternoon 12:00–17:00, good evening from 17:00).`;
   const greetingInstruction = lang
     ? `\n\nOPENING TURN: The guest's browser language is "${lang}". When this voice session starts, immediately greet them in that language with exactly this message (translate it if the language is not English): "Hello, I'm Marin, the DEVOCEAN online receptionist. You can ask me anything about the lodge, the accommodation options, experiences, available transfers, rates and availability. How can I help?"`
     : "";
