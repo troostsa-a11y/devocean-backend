@@ -4,6 +4,7 @@ import {
   Beds24NotConfiguredError,
 } from "./client";
 import { convertFromUsd, CurrencyUnavailableError } from "../currency/client";
+import { getWeather } from "../weather/client";
 import { logger } from "../lib/logger";
 
 /** OpenAI tool definition exposing read-only live availability to Mia. */
@@ -56,8 +57,25 @@ export const currencyTool = {
   },
 };
 
+/** OpenAI tool definition for live weather at Ponta do Ouro. */
+export const weatherTool = {
+  type: "function" as const,
+  function: {
+    name: "get_weather",
+    description:
+      "Get the current weather conditions and a 3-day forecast for Ponta do Ouro, Mozambique. " +
+      "Call this when a guest asks about today's weather, temperature, rain, wind, sea conditions, " +
+      "what to pack, or what the weather will be like during their stay.",
+    parameters: {
+      type: "object",
+      properties: {},
+      required: [],
+    },
+  },
+};
+
 /** All tools available to Mia. */
-export const lodgeTools = [availabilityTool, currencyTool];
+export const lodgeTools = [availabilityTool, currencyTool, weatherTool];
 
 /** Execute a tool call by name and return a JSON string for the model. */
 export async function runTool(name: string, argsJson: string): Promise<string> {
@@ -70,6 +88,7 @@ export async function runTool(name: string, argsJson: string): Promise<string> {
 
   if (name === "check_availability") return runCheckAvailability(args);
   if (name === "convert_currency") return runConvertCurrency(args);
+  if (name === "get_weather") return runGetWeather();
   return JSON.stringify({ error: "unknown_tool", note: `No tool named ${name}.` });
 }
 
@@ -103,6 +122,24 @@ async function runCheckAvailability(args: {
     return JSON.stringify({
       error: "availability_lookup_failed",
       note: "Could not reach the live booking system. Quote the published rates and tell the guest the reservations team will confirm availability for these dates.",
+    });
+  }
+}
+
+async function runGetWeather(): Promise<string> {
+  try {
+    const result = await getWeather();
+    return JSON.stringify({
+      location: "Ponta do Ouro, Mozambique",
+      current: result.current,
+      forecast_3_days: result.forecast,
+      note: "Temperatures in °C, wind speed in km/h.",
+    });
+  } catch (err) {
+    logger.error({ err }, "get_weather tool failed");
+    return JSON.stringify({
+      error: "weather_unavailable",
+      note: "Live weather is not available right now. Suggest the guest check a weather app for Ponta do Ouro.",
     });
   }
 }
