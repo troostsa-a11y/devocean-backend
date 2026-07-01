@@ -167,7 +167,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       }
 
       try {
-        const output = await runTool(name, argsJson);
+        const output = await runTool(name, argsJson, conversationId);
         if (openaiWs.readyState === WebSocket.OPEN) {
           openaiWs.send(
             JSON.stringify({

@@ -7,6 +7,7 @@ import {
 import { convertFromUsd, CurrencyUnavailableError } from "../currency/client";
 import { getWeather } from "../weather/client";
 import { logger } from "../lib/logger";
+import { db, bookings } from "@workspace/db";
 
 /** OpenAI tool definition exposing read-only live availability to Mia. */
 export const availabilityTool = {
@@ -82,11 +83,37 @@ export const weatherTool = {
   },
 };
 
+/** OpenAI tool definition for saving a booking enquiry to the DB. */
+export const saveBookingTool = {
+  type: "function" as const,
+  function: {
+    name: "save_booking_enquiry",
+    description:
+      "Save a guest's booking enquiry to the lodge's reservations database so the team can follow up. " +
+      "Call this as soon as you have the guest's name — any additional details you have collected " +
+      "(dates, number of guests, email, phone, notes) should be included. " +
+      "You can call it again later in the conversation to update or add more details by saving a new record.",
+    parameters: {
+      type: "object",
+      properties: {
+        guestName: { type: "string", description: "Guest's full name." },
+        guestEmail: { type: "string", description: "Guest's email address (optional)." },
+        guestPhone: { type: "string", description: "Guest's phone number (optional)." },
+        checkIn: { type: "string", description: "Requested check-in date in YYYY-MM-DD format (optional)." },
+        checkOut: { type: "string", description: "Requested check-out date in YYYY-MM-DD format (optional)." },
+        guests: { type: "integer", description: "Total number of guests (optional)." },
+        notes: { type: "string", description: "Any extra requirements, room preferences, special requests, or context (optional)." },
+      },
+      required: ["guestName"],
+    },
+  },
+};
+
 /** All tools available to Mia. */
-export const lodgeTools = [availabilityTool, currencyTool, weatherTool];
+export const lodgeTools = [availabilityTool, currencyTool, weatherTool, saveBookingTool];
 
 /** Execute a tool call by name and return a JSON string for the model. */
-export async function runTool(name: string, argsJson: string): Promise<string> {
+export async function runTool(name: string, argsJson: string, conversationId?: number | null): Promise<string> {
   let args: any;
   try {
     args = JSON.parse(argsJson || "{}");
@@ -97,6 +124,7 @@ export async function runTool(name: string, argsJson: string): Promise<string> {
   if (name === "check_availability") return runCheckAvailability(args);
   if (name === "convert_currency") return runConvertCurrency(args);
   if (name === "get_weather") return runGetWeather();
+  if (name === "save_booking_enquiry") return runSaveBooking(args, conversationId ?? null);
   return JSON.stringify({ error: "unknown_tool", note: `No tool named ${name}.` });
 }
 
@@ -251,6 +279,50 @@ async function runGetWeather(): Promise<string> {
     return JSON.stringify({
       error: "weather_unavailable",
       note: "Live weather is not available right now. Suggest the guest check a weather app for Ponta do Ouro.",
+    });
+  }
+}
+
+async function runSaveBooking(
+  args: {
+    guestName?: string;
+    guestEmail?: string;
+    guestPhone?: string;
+    checkIn?: string;
+    checkOut?: string;
+    guests?: number;
+    notes?: string;
+  },
+  conversationId: number | null,
+): Promise<string> {
+  if (!args.guestName) {
+    return JSON.stringify({ error: "missing_guest_name", note: "guestName is required to save a booking enquiry." });
+  }
+  try {
+    const [saved] = await db
+      .insert(bookings)
+      .values({
+        conversationId: conversationId ?? undefined,
+        guestName: String(args.guestName),
+        guestEmail: args.guestEmail ? String(args.guestEmail) : undefined,
+        guestPhone: args.guestPhone ? String(args.guestPhone) : undefined,
+        checkIn: args.checkIn ? String(args.checkIn) : undefined,
+        checkOut: args.checkOut ? String(args.checkOut) : undefined,
+        guests: args.guests ? Number(args.guests) : undefined,
+        notes: args.notes ? String(args.notes) : undefined,
+      })
+      .returning();
+    logger.info({ bookingId: saved.id, conversationId }, "Booking enquiry saved");
+    return JSON.stringify({
+      success: true,
+      bookingId: saved.id,
+      note: "Enquiry saved. Confirm warmly to the guest that the reservations team will be in touch.",
+    });
+  } catch (err) {
+    logger.error({ err }, "save_booking_enquiry failed");
+    return JSON.stringify({
+      error: "save_failed",
+      note: "Could not save the enquiry right now. Apologise briefly and let the guest know the team can be reached on WhatsApp at +258 84 418 2252 or by email at info@devoceanlodge.com.",
     });
   }
 }

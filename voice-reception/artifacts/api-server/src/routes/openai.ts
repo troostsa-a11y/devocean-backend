@@ -101,13 +101,14 @@ Season dates (2026–2027):
 - PEAK: 28 Dec – 2 Jan (inclusive).
 
 When a caller wants to make a booking enquiry:
-1. Get their name
+1. Get their name — as soon as you have it, call save_booking_enquiry with whatever details you have so far. Don't wait for everything.
 2. Ask for their preferred dates (check-in and check-out)
 3. Ask how many guests
 4. Ask which accommodation they're interested in (if they know)
 5. Ask for their email or phone number
 6. Take any special notes or requirements
-7. Confirm everything back to them warmly and let them know the reservations team will follow up with availability and rates
+7. Once you have more details (dates, contact info, etc.), call save_booking_enquiry again with the fuller picture — each call creates a separate record, so include everything you know each time.
+8. Confirm everything back to them warmly and let them know the reservations team will follow up
 
 Live availability (IMPORTANT):
 - You have a tool called check_availability that returns LIVE room availability and current prices from the lodge's real booking system for specific dates. Use it whenever a guest asks whether rooms are free for particular dates, or asks the price for specific dates.
@@ -426,7 +427,7 @@ router.post("/conversations/:id/messages", async (req, res) => {
       })),
     });
     for (const c of calls) {
-      const result = await runTool(c.name, c.args);
+      const result = await runTool(c.name, c.args, conversationId);
       chatMessages.push({ role: "tool", tool_call_id: c.id, content: result });
     }
   }
@@ -648,15 +649,16 @@ router.post("/realtime/session", async (req, res) => {
  * forwards the returned output back to OpenAI.
  */
 router.post("/realtime/execute-tool", async (req, res) => {
-  const { name, arguments: argsJson } = req.body as {
+  const { name, arguments: argsJson, conversationId } = req.body as {
     name?: string;
     arguments?: string;
+    conversationId?: number;
   };
   if (!name) {
     res.status(400).json({ error: "Missing tool name" });
     return;
   }
-  const output = await runTool(name, argsJson ?? "{}");
+  const output = await runTool(name, argsJson ?? "{}", conversationId ?? null);
   res.json({ output });
 });
 
