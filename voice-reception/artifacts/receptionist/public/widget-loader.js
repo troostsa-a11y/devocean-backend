@@ -24,35 +24,6 @@
   var RADIUS = 60;
   var CALLOUT_TEXT = "Do you need help?\nTalk to Mia our AI receptionist.\nShe speaks your language.";
 
-  // "Talk to Me" in 20 base languages — detected from browser navigator.language
-  var TALK_TO_ME = {
-    en: "Talk to Me",
-    pt: "Fale Comigo",
-    de: "Sprich mit mir",
-    fr: "Parlez-moi",
-    es: "Háblame",
-    it: "Parla con me",
-    nl: "Praat met mij",
-    sv: "Prata med mig",
-    pl: "Porozmawiaj",
-    ro: "Vorbește cu mine",
-    sr: "Razgovaraj",
-    hr: "Razgovarajte",
-    cs: "Mluv se mnou",
-    tr: "Benimle konuş",
-    ja: "話しかけて",
-    zh: "跟我说话",
-    ru: "Поговори",
-    af: "Praat met my",
-    zu: "Khuluma nami",
-    sw: "Niambie"
-  };
-
-  function detectTalkLabel() {
-    var lang = (navigator.language || "en").toLowerCase().split("-")[0];
-    return TALK_TO_ME[lang] || TALK_TO_ME["en"];
-  }
-
   // --- Styles ---
   var style = document.createElement("style");
   style.textContent = [
@@ -199,24 +170,6 @@
     "  padding: 0;",
     "}",
     "#devocean-widget-callout-close:hover { color: " + PRIMARY_DARK + "; }",
-    "#devocean-widget-label {",
-    "  position: fixed;",
-    "  bottom: 96px;",
-    "  right: 28px;",
-    "  width: 60px;",
-    "  text-align: center;",
-    "  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;",
-    "  font-size: 11px;",
-    "  font-weight: 600;",
-    "  letter-spacing: 0.03em;",
-    "  line-height: 1.3;",
-    "  color: #fff;",
-    "  text-shadow: 0 1px 4px rgba(0,0,0,0.65), 0 0 10px rgba(0,0,0,0.40);",
-    "  z-index: 2147483646;",
-    "  pointer-events: none;",
-    "  transition: opacity 0.18s;",
-    "}",
-    "#devocean-widget-label.open { opacity: 0; }",
     "@media (max-width: 480px) {",
     "  #devocean-widget-callout {",
     "    bottom: 90px;",
@@ -257,11 +210,6 @@
   iconSpan.innerHTML = PHONE_SVG;
   btn.appendChild(iconSpan);
   document.body.appendChild(btn);
-
-  var label = document.createElement("div");
-  label.id = "devocean-widget-label";
-  label.textContent = detectTalkLabel();
-  document.body.appendChild(label);
 
   var callout = document.createElement("div");
   callout.id = "devocean-widget-callout";
@@ -312,7 +260,6 @@
     frame.classList.add("open");
     backdrop.classList.add("open");
     btn.classList.add("open");
-    label.classList.add("open");
     iconSpan.innerHTML = CLOSE_SVG;
     btn.setAttribute("aria-label", "Close receptionist");
   }
@@ -322,7 +269,6 @@
     frame.classList.remove("open");
     backdrop.classList.remove("open");
     btn.classList.remove("open");
-    label.classList.remove("open");
     iconSpan.innerHTML = PHONE_SVG;
     btn.setAttribute("aria-label", "Talk to DEVOCEAN receptionist");
   }
