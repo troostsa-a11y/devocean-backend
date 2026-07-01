@@ -18,7 +18,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 
 - **Website**: `bash deploy.sh` from `WebsiteProject/` — builds, uploads the `ADMIN_API_KEY` Cloudflare secret, and deploys in one step. CF vars are wrangler-managed (`wrangler.toml`); do NOT set them via the Cloudflare dashboard (UI is locked for vars).
 - **Automailer**: deploys from GitHub `main` (Render). Env vars set in the Render dashboard.
-- **Mia Voice Receptionist**: deploys from GitHub `main` as a separate Render `web` service (`receptionist`). Root dir: `voice-reception`. Build: `npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build`. Start: `node --enable-source-maps ./artifacts/api-server/dist/index.mjs`. Live at `https://receptionist.onrender.com`. Admin dashboard at `https://receptionist.onrender.com/` (password-protected). See `render.yaml` for full env var list.
+- **Mia Voice Receptionist**: deploys from GitHub `main` as a separate Render `web` service (`receptionist`). Root dir: `voice-reception`. Build: `npm install -g pnpm && pnpm install --frozen-lockfile && pnpm run build`. Start: `node --enable-source-maps ./artifacts/api-server/dist/index.mjs`. Live at `https://mia-voice-receptionist.onrender.com`. Admin dashboard at `https://mia-voice-receptionist.onrender.com/` (password-protected). See `render.yaml` for full env var list.
 
 ## System Architecture
 
