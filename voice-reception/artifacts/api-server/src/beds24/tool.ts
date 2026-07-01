@@ -304,7 +304,7 @@ async function runSaveBooking(
       .values({
         conversationId: conversationId ?? undefined,
         guestName: String(args.guestName),
-        guestEmail: args.guestEmail ? String(args.guestEmail) : undefined,
+        guestEmail: args.guestEmail ? String(args.guestEmail).replace(/\s+/g, "") : undefined,
         guestPhone: args.guestPhone ? String(args.guestPhone) : undefined,
         checkIn: args.checkIn ? String(args.checkIn) : undefined,
         checkOut: args.checkOut ? String(args.checkOut) : undefined,
