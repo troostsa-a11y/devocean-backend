@@ -16,7 +16,7 @@ const API_KEY = () => process.env.AI_INTEGRATIONS_OPENAI_API_KEY ?? "";
  * Tool calls are executed entirely on the server so the API key never reaches
  * the browser.  All other events are relayed bi-directionally.
  */
-export function handleRealtimeWs(clientWs: WebSocket): void {
+export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   const model = REALTIME_MODEL();
   const apiKey = API_KEY();
 
@@ -89,6 +89,27 @@ export function handleRealtimeWs(clientWs: WebSocket): void {
     }
 
     const evtType = event.type as string;
+
+    // After session is configured, inject the opening greeting and trigger it
+    if (evtType === "session.updated") {
+      openaiWs.send(
+        JSON.stringify({
+          type: "conversation.item.create",
+          item: {
+            type: "message",
+            role: "system",
+            content: [
+              {
+                type: "input_text",
+                text: `The guest's browser language is "${lang}". Greet them now in that language using exactly this message (translated): "Hi, I'm Mia, the DEVOCEAN online receptionist. You can ask me anything about the lodge, the accommodation options, experiences, available transfers, rates and availability. How can I help?"`,
+              },
+            ],
+          },
+        }),
+      );
+      openaiWs.send(JSON.stringify({ type: "response.create" }));
+      return; // do not relay session.updated to browser
+    }
 
     // Track call_id → function name so we can look it up when args are done
     if (evtType === "response.output_item.added") {
