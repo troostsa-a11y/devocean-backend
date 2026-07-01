@@ -3,6 +3,15 @@ import { logger } from "../lib/logger";
 // Free, no-key FX rates (base USD). Returns { result, base_code, rates: { ZAR, EUR, ... } }.
 const FX_API = "https://open.er-api.com/v6/latest/USD";
 const CACHE_TTL_MS = 60 * 60 * 1000; // rates change slowly; refresh hourly
+const FETCH_TIMEOUT_MS = 8_000;
+
+function fetchWithTimeout(url: string, init?: RequestInit): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  return fetch(url, { ...init, signal: controller.signal }).finally(() =>
+    clearTimeout(timer),
+  );
+}
 
 /** Thrown when live FX rates cannot be loaded. */
 export class CurrencyUnavailableError extends Error {
@@ -59,7 +68,7 @@ async function getRates(): Promise<{ rates: Record<string, number>; lastUpdate?:
   if (ratesCache && now - ratesCache.fetchedAt < CACHE_TTL_MS) {
     return { rates: ratesCache.rates, lastUpdate: ratesCache.lastUpdate };
   }
-  const res = await fetch(FX_API, { headers: { accept: "application/json" } });
+  const res = await fetchWithTimeout(FX_API, { headers: { accept: "application/json" } });
   const text = await res.text();
   if (!res.ok) {
     throw new CurrencyUnavailableError();

@@ -3,6 +3,15 @@ import { eq } from "drizzle-orm";
 import { logger } from "../lib/logger";
 
 const BEDS24_API = "https://api.beds24.com/v2";
+const FETCH_TIMEOUT_MS = 12_000;
+
+function fetchWithTimeout(url: string | URL, init?: RequestInit): Promise<Response> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  return fetch(url, { ...init, signal: controller.signal }).finally(() =>
+    clearTimeout(timer),
+  );
+}
 const PROVIDER = "beds24";
 const PROPERTY_ID = process.env.BEDS24_PROPERTY_ID ?? "297012";
 
@@ -49,7 +58,7 @@ async function storeRefreshToken(refreshToken: string): Promise<void> {
  * The invite code is single-use, so the resulting refresh token is persisted.
  */
 async function bootstrapFromInviteCode(inviteCode: string): Promise<{ token: string; expiresIn: number }> {
-  const res = await fetch(`${BEDS24_API}/authentication/setup`, {
+  const res = await fetchWithTimeout(`${BEDS24_API}/authentication/setup`, {
     headers: { code: inviteCode, accept: "application/json" },
   });
   const text = await res.text();
@@ -67,7 +76,7 @@ async function bootstrapFromInviteCode(inviteCode: string): Promise<{ token: str
 
 /** Mint a fresh access token from a stored refresh token. */
 async function tokenFromRefresh(refreshToken: string): Promise<{ token: string; expiresIn: number }> {
-  const res = await fetch(`${BEDS24_API}/authentication/token`, {
+  const res = await fetchWithTimeout(`${BEDS24_API}/authentication/token`, {
     headers: { refreshToken, accept: "application/json" },
   });
   const text = await res.text();
@@ -84,7 +93,7 @@ async function tokenFromRefresh(refreshToken: string): Promise<{ token: string; 
 /** Validate a token by calling /authentication/details. Returns true if usable directly. */
 async function validateDirectToken(token: string): Promise<boolean> {
   try {
-    const res = await fetch(`${BEDS24_API}/authentication/details`, {
+    const res = await fetchWithTimeout(`${BEDS24_API}/authentication/details`, {
       headers: { token, accept: "application/json" },
     });
     if (!res.ok) return false;
@@ -155,7 +164,7 @@ async function beds24Get(path: string, params: Record<string, string | number>):
   const token = await getValidAccessToken();
   const url = new URL(BEDS24_API + path);
   for (const [k, v] of Object.entries(params)) url.searchParams.set(k, String(v));
-  const res = await fetch(url, { headers: { token, accept: "application/json" } });
+  const res = await fetchWithTimeout(url, { headers: { token, accept: "application/json" } });
   const text = await res.text();
   if (!res.ok) {
     throw new Beds24ApiError(res.status, `GET ${path} failed (${res.status}): ${text}`);
