@@ -92,9 +92,18 @@ services:
         value: "297012"
       - key: LOG_LEVEL
         value: info
-      # Optional: WhatsApp booking-enquiry alerts via CallMeBot (free, no account needed).
-      # Activate: send "I allow callmebot to send me messages" to +34 644 65 79 90 on WhatsApp.
-      # You will receive an API key by return message.
+      # Optional: email alert when Marin saves a booking enquiry.
+      # NOTIFY_SMTP_URL   — nodemailer URL, e.g. smtps://user%40devoceanlodge.com:pass@mail.host.com:465
+      #                     (same SMTP credentials as the automailer; @ in username must be encoded as %40)
+      # NOTIFY_EMAIL_FROM — sender shown in the alert, e.g. marin@devoceanlodge.com
+      # NOTIFY_EMAIL_TO   — recipient (lodge owner personal email)
+      - key: NOTIFY_SMTP_URL
+        sync: false
+      - key: NOTIFY_EMAIL_FROM
+        sync: false
+      - key: NOTIFY_EMAIL_TO
+        sync: false
+      # Optional: WhatsApp alert via CallMeBot (set only if CallMeBot activation succeeds).
       - key: MARIN_NOTIFY_WA_PHONE
         sync: false
       - key: MARIN_NOTIFY_WA_APIKEY
