@@ -86,6 +86,14 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
 
   // ── OpenAI connection lifecycle ────────────────────────────────────────────
 
+  // Shared VAD config — referenced by session.update on open AND when re-enabling after tool calls.
+  const SERVER_VAD = {
+    type: "server_vad" as const,
+    threshold: 0.65,          // higher = less sensitive to ambient noise (default 0.5)
+    silence_duration_ms: 600, // wait a bit longer before cutting off speech
+    prefix_padding_ms: 300,
+  };
+
   openaiWs.on("open", async () => {
     logger.info({ model }, "Realtime relay: OpenAI WS open");
 
@@ -98,7 +106,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
         type: "realtime",
         instructions: buildSystemPrompt(lang),
         audio: {
-          input: { turn_detection: { type: "server_vad" } },
+          input: { turn_detection: SERVER_VAD },
           output: { voice: "marin" },
         },
         tools: realtimeTools,
@@ -167,7 +175,17 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       }
 
       try {
+        // Mute the mic while the tool runs so ambient noise cannot trigger
+        // a new response turn mid-lookup (VAD re-enabled after result is sent).
+        if (openaiWs.readyState === WebSocket.OPEN) {
+          openaiWs.send(JSON.stringify({
+            type: "session.update",
+            session: { type: "realtime", audio: { input: { turn_detection: null } } },
+          }));
+        }
+
         const output = await runTool(name, argsJson, conversationId);
+
         if (openaiWs.readyState === WebSocket.OPEN) {
           openaiWs.send(
             JSON.stringify({
@@ -176,11 +194,23 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
             }),
           );
           openaiWs.send(JSON.stringify({ type: "response.create" }));
+          // Re-enable VAD so the user can speak again (or interrupt Marin's answer).
+          openaiWs.send(JSON.stringify({
+            type: "session.update",
+            session: { type: "realtime", audio: { input: { turn_detection: SERVER_VAD } } },
+          }));
         }
         // Optional UI hint so the widget can show "Looking up availability…"
         clientWs.send(JSON.stringify({ type: "mia.tool_called", name }));
       } catch (err) {
         logger.error({ err, name }, "Realtime relay: tool execution failed");
+        // Always re-enable VAD even on error so the session stays interactive.
+        if (openaiWs.readyState === WebSocket.OPEN) {
+          openaiWs.send(JSON.stringify({
+            type: "session.update",
+            session: { type: "realtime", audio: { input: { turn_detection: SERVER_VAD } } },
+          }));
+        }
       }
       return; // do not relay function_call events to browser
     }

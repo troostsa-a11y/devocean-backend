@@ -93,15 +93,22 @@ services:
       - key: LOG_LEVEL
         value: info
       # Optional: email alert when Marin saves a booking enquiry.
-      # NOTIFY_SMTP_URL   — nodemailer URL, e.g. smtps://user%40devoceanlodge.com:pass@mail.host.com:465
-      #                     (same SMTP credentials as the automailer; @ in username must be encoded as %40)
-      # NOTIFY_EMAIL_FROM — sender shown in the alert, e.g. marin@devoceanlodge.com
-      # NOTIFY_EMAIL_TO   — recipient (lodge owner personal email)
-      - key: NOTIFY_SMTP_URL
+      # Use the same SMTP credentials already configured on the automailer service:
+      #   NOTIFY_SMTP_HOST = automailer MAIL_HOST
+      #   NOTIFY_SMTP_PORT = automailer SMTP_PORT (default 465, SSL)
+      #   NOTIFY_SMTP_USER = automailer IMAP_USER
+      #   NOTIFY_SMTP_PASS = automailer IMAP_PASSWORD
+      - key: NOTIFY_SMTP_HOST
+        sync: false
+      - key: NOTIFY_SMTP_PORT
         sync: false
       - key: NOTIFY_EMAIL_FROM
         sync: false
       - key: NOTIFY_EMAIL_TO
+        sync: false
+      - key: NOTIFY_SMTP_USER
+        sync: false
+      - key: NOTIFY_SMTP_PASS
         sync: false
       # Optional: WhatsApp alert via CallMeBot (set only if CallMeBot activation succeeds).
       - key: MARIN_NOTIFY_WA_PHONE

@@ -284,17 +284,25 @@ async function runGetWeather(): Promise<string> {
   }
 }
 
-/** Fire-and-forget email alert via SMTP. Env vars:
- *   NOTIFY_SMTP_URL   — nodemailer connection URL, e.g. smtps://user%40host.com:pass@smtp.host.com:465
- *   NOTIFY_EMAIL_FROM — sender address, e.g. marin@devoceanlodge.com
+/** Fire-and-forget email alert via SMTP. Env vars (same values as automailer):
+ *   NOTIFY_SMTP_HOST  — same as automailer MAIL_HOST
+ *   NOTIFY_SMTP_PORT  — same as automailer SMTP_PORT (default 465)
+ *   NOTIFY_SMTP_USER  — same as automailer IMAP_USER
+ *   NOTIFY_SMTP_PASS  — same as automailer IMAP_PASSWORD
+ *   NOTIFY_EMAIL_FROM — sender address shown in the alert
  *   NOTIFY_EMAIL_TO   — recipient address (lodge owner)
  */
 function notifyEmail(subject: string, text: string): void {
-  const smtpUrl = process.env.NOTIFY_SMTP_URL;
-  const from    = process.env.NOTIFY_EMAIL_FROM;
-  const to      = process.env.NOTIFY_EMAIL_TO;
-  if (!smtpUrl || !from || !to) return;
-  const transport = nodemailer.createTransport(smtpUrl);
+  const host = process.env.NOTIFY_SMTP_HOST;
+  const port = parseInt(process.env.NOTIFY_SMTP_PORT ?? "465", 10);
+  const user = process.env.NOTIFY_SMTP_USER;
+  const pass = process.env.NOTIFY_SMTP_PASS;
+  const from = process.env.NOTIFY_EMAIL_FROM;
+  const to   = process.env.NOTIFY_EMAIL_TO;
+  if (!host || !user || !pass || !from || !to) return;
+  const transport = nodemailer.createTransport({
+    host, port, secure: true, auth: { user, pass },
+  });
   transport
     .sendMail({ from, to, subject, text })
     .then(() => transport.close())
