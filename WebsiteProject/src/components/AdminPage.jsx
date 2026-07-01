@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react';
+import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw, ExternalLink } from 'lucide-react';
 import { useLocation } from 'wouter';
 
 const LANGUAGE_OPTIONS = [
@@ -83,14 +83,26 @@ export default function AdminPage() {
           Back to website
         </button>
 
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 rounded-lg bg-[#9e4b13] flex items-center justify-center">
-            <Shield className="w-5 h-5 text-white" />
+        <div className="flex items-center justify-between gap-3 mb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-[#9e4b13] flex items-center justify-center">
+              <Shield className="w-5 h-5 text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-slate-900">DEVOCEAN Admin</h1>
+              <p className="text-sm text-slate-500">Manage bookings & email automation</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-slate-900">DEVOCEAN Admin</h1>
-            <p className="text-sm text-slate-500">Manage bookings & email automation</p>
-          </div>
+          <a
+            href="https://mia-voice-receptionist.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-sm text-[#9e4b13] hover:text-[#7a3a0f] transition-colors font-medium shrink-0"
+            data-testid="link-mia-admin"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Voice Receptionist
+          </a>
         </div>
 
         {!configured ? (
