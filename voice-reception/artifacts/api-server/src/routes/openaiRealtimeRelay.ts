@@ -56,6 +56,10 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   let conversationId: number | null = null;
   // Accumulates the text delta for the current Mia response
   let miaTranscriptBuffer = "";
+  // Guard: only fire the opening response.create on the first session.updated.
+  // Subsequent session.update calls (VAD mute/unmute) also trigger session.updated
+  // and must NOT fire another response.create or the session loops infinitely.
+  let sessionGreetingSent = false;
 
   async function initConversation(): Promise<void> {
     try {
@@ -149,7 +153,13 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     // because gpt-realtime-2 is a reasoning model that ignores per-response
     // instructions in response.create. A bare response.create is enough.
     if (evtType === "session.updated") {
-      openaiWs.send(JSON.stringify({ type: "response.create" }));
+      // Only send the opening greeting on the very first session.updated (initial
+      // session setup). Subsequent session.updated events are fired by our own
+      // VAD mute/unmute session.update calls and must not trigger another greeting.
+      if (!sessionGreetingSent) {
+        sessionGreetingSent = true;
+        openaiWs.send(JSON.stringify({ type: "response.create" }));
+      }
       return; // do not relay session.updated to browser
     }
 
