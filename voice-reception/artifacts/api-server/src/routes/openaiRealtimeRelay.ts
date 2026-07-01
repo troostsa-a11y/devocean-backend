@@ -2,6 +2,8 @@ import WebSocket from "ws";
 import { buildSystemPrompt } from "./openai.js";
 import { lodgeTools, runTool } from "../beds24/tool.js";
 import { logger } from "../lib/logger.js";
+import { db, withDbRetry } from "@workspace/db";
+import { conversations, messages } from "@workspace/db";
 
 const REALTIME_MODEL = () =>
   process.env.OPENAI_REALTIME_MODEL ?? "gpt-realtime-2";
@@ -15,6 +17,11 @@ const API_KEY = () => process.env.AI_INTEGRATIONS_OPENAI_API_KEY ?? "";
  *
  * Tool calls are executed entirely on the server so the API key never reaches
  * the browser.  All other events are relayed bi-directionally.
+ *
+ * Recording policy:
+ *   - User audio and transcripts are NOT stored in the database.
+ *   - Mia's assistant turns (role: "assistant") ARE stored after each
+ *     response.done event for quality-control purposes.
  */
 export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   const model = REALTIME_MODEL();
@@ -45,10 +52,45 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     parameters: t.function.parameters,
   }));
 
+  // ── Quality-control: save Mia's assistant turns to DB ─────────────────────
+  let conversationId: number | null = null;
+  // Accumulates the text delta for the current Mia response
+  let miaTranscriptBuffer = "";
+
+  async function initConversation(): Promise<void> {
+    try {
+      const date = new Date().toISOString().slice(0, 10);
+      const [conv] = await db
+        .insert(conversations)
+        .values({ title: `Voice session — ${date}` })
+        .returning();
+      conversationId = conv.id;
+      logger.info({ conversationId }, "Realtime relay: DB conversation created");
+    } catch (err) {
+      logger.warn({ err }, "Realtime relay: could not create DB conversation (non-fatal)");
+    }
+  }
+
+  function flushMiaTranscript(): void {
+    const text = miaTranscriptBuffer.trim();
+    miaTranscriptBuffer = "";
+    if (!conversationId || !text) return;
+
+    const convId = conversationId; // capture for async closure
+    withDbRetry(() =>
+      db.insert(messages).values({ conversationId: convId, role: "assistant", content: text }),
+    ).catch((err) =>
+      logger.error({ err, convId }, "Realtime relay: failed to save Mia transcript"),
+    );
+  }
+
   // ── OpenAI connection lifecycle ────────────────────────────────────────────
 
-  openaiWs.on("open", () => {
+  openaiWs.on("open", async () => {
     logger.info({ model }, "Realtime relay: OpenAI WS open");
+
+    // Create DB record (best-effort, must not block the session setup)
+    void initConversation();
 
     openaiWs.send(
       JSON.stringify({
@@ -151,7 +193,21 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       return; // do not relay function_call events to browser
     }
 
-    // Relay everything else to the browser
+    // Accumulate Mia's spoken transcript for quality-control storage.
+    // NOTE: user audio transcript events (conversation.item.input_audio_transcription.*)
+    // are relayed to the browser but deliberately NOT stored in the database.
+    if (evtType === "response.audio_transcript.delta" && event.delta) {
+      miaTranscriptBuffer += event.delta as string;
+      // fall through — still relay to browser for live UI
+    }
+
+    // Mia finished one response turn: persist the buffered transcript
+    if (evtType === "response.done") {
+      flushMiaTranscript();
+      // fall through — still relay to browser
+    }
+
+    // Relay everything else (and the above fall-throughs) to the browser
     clientWs.send(data.toString());
   });
 
@@ -170,6 +226,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
 
   openaiWs.on("close", (code, reason) => {
     logger.info({ code, reason: reason.toString() }, "Realtime relay: OpenAI WS closed");
+    flushMiaTranscript(); // save any partial response if connection drops mid-sentence
     if (clientWs.readyState === WebSocket.OPEN) clientWs.close();
   });
 
@@ -182,6 +239,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   });
 
   clientWs.on("close", () => {
+    flushMiaTranscript(); // save any partial on clean disconnect too
     if (openaiWs.readyState !== WebSocket.CLOSED) openaiWs.close();
     pendingTools.clear();
   });
