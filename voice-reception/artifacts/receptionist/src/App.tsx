@@ -1,9 +1,11 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
+import { QueryClient, QueryClientProvider, QueryCache } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { Layout } from "@/components/Layout";
+import LoginPage from "@/pages/LoginPage";
+import { getStoredToken, clearToken, isUnauthorizedError } from "@/lib/auth";
 
 // Pages
 import Dashboard from "@/pages/Dashboard";
@@ -13,10 +15,28 @@ import Bookings from "@/pages/Bookings";
 import WidgetDemo from "@/pages/WidgetDemo";
 import WidgetEmbed from "@/pages/WidgetEmbed";
 
+function AuthGuard({ children }: { children: React.ReactNode }) {
+  if (!getStoredToken()) {
+    return <Redirect to="/login" />;
+  }
+  return <>{children}</>;
+}
+
 const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => {
+      if (isUnauthorizedError(error)) {
+        clearToken();
+        window.location.href = "/login";
+      }
+    },
+  }),
   defaultOptions: {
     queries: {
-      retry: 1,
+      retry: (failureCount, error) => {
+        if (isUnauthorizedError(error)) return false;
+        return failureCount < 1;
+      },
       refetchOnWindowFocus: false,
     },
   },
@@ -25,19 +45,26 @@ const queryClient = new QueryClient({
 function Router() {
   return (
     <Switch>
-      {/* Bare, chrome-free widget for embedding in an iframe (no admin layout) */}
+      {/* Login — no auth required */}
+      <Route path="/login" component={LoginPage} />
+
+      {/* Bare, chrome-free widget for embedding in an iframe (no admin layout, no auth) */}
       <Route path="/embed" component={WidgetEmbed} />
+
+      {/* All admin routes behind AuthGuard */}
       <Route>
-        <Layout>
-          <Switch>
-            <Route path="/" component={Dashboard} />
-            <Route path="/conversations" component={Conversations} />
-            <Route path="/conversations/:id" component={ConversationDetail} />
-            <Route path="/bookings" component={Bookings} />
-            <Route path="/widget" component={WidgetDemo} />
-            <Route component={NotFound} />
-          </Switch>
-        </Layout>
+        <AuthGuard>
+          <Layout>
+            <Switch>
+              <Route path="/" component={Dashboard} />
+              <Route path="/conversations" component={Conversations} />
+              <Route path="/conversations/:id" component={ConversationDetail} />
+              <Route path="/bookings" component={Bookings} />
+              <Route path="/widget" component={WidgetDemo} />
+              <Route component={NotFound} />
+            </Switch>
+          </Layout>
+        </AuthGuard>
       </Route>
     </Switch>
   );
