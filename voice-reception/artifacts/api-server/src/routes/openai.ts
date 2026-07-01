@@ -126,7 +126,13 @@ Always be warm, knowledgeable, and genuinely enthusiastic about Mozambique and t
 // Mia needs today's date to resolve relative dates ("next weekend", "tomorrow")
 // into exact YYYY-MM-DD dates for the availability tool. Computed in the lodge's
 // local timezone (Mozambique, CAT/UTC+2) on every request so it never goes stale.
-export function buildSystemPrompt(): string {
+//
+// lang: BCP-47 language code from the browser (e.g. "en", "pt", "de"). When
+// provided (voice sessions), appended as a greeting instruction so the model
+// opens the conversation in the guest's language without a separate response.create
+// call. Reasoning models (gpt-realtime-2) ignore per-response instructions, so
+// the greeting must live here at the session level.
+export function buildSystemPrompt(lang?: string): string {
   const now = new Date();
   const longDate = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Africa/Maputo",
@@ -142,7 +148,10 @@ export function buildSystemPrompt(): string {
     day: "2-digit",
   }).format(now);
   const dateContext = `CURRENT DATE: Today is ${longDate} (${isoDate}), lodge local time (Mozambique, CAT/UTC+2). Use this to resolve relative dates such as "today", "tonight", "tomorrow", "this weekend", or "next weekend" into exact YYYY-MM-DD calendar dates before calling check_availability. "This weekend" means the nearest upcoming Friday/Saturday; "next weekend" means the weekend after that. Never ask the guest to convert their phrasing into dates — work it out yourself.`;
-  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}`;
+  const greetingInstruction = lang
+    ? `\n\nOPENING TURN: The guest's browser language is "${lang}". When this voice session starts, immediately greet them in that language with exactly this message (translate it if the language is not English): "Hi, I'm Mia, the DEVOCEAN online receptionist. You can ask me anything about the lodge, the accommodation options, experiences, available transfers, rates and availability. How can I help?"`
+    : "";
+  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}`;
 }
 
 // List conversations

@@ -97,7 +97,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
         type: "session.update",
         session: {
           modalities: ["text", "audio"],
-          instructions: buildSystemPrompt(),
+          instructions: buildSystemPrompt(lang),
           voice: "alloy",
           input_audio_format: "pcm16",
           output_audio_format: "pcm16",
@@ -128,19 +128,11 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     const evtType = event.type as string;
 
     // After session is configured, trigger the opening greeting.
-    // conversation.item.create with role:"system" is not a valid Realtime API
-    // item type and causes an error event that closes the session.
-    // The correct approach is response.create with per-response instructions.
+    // Greeting instruction lives in session-level instructions (buildSystemPrompt(lang))
+    // because gpt-realtime-2 is a reasoning model that ignores per-response
+    // instructions in response.create. A bare response.create is enough.
     if (evtType === "session.updated") {
-      openaiWs.send(
-        JSON.stringify({
-          type: "response.create",
-          response: {
-            modalities: ["text", "audio"],
-            instructions: `The guest's browser language is "${lang}". Greet them now in that language using exactly this message (translated if needed): "Hi, I'm Mia, the DEVOCEAN online receptionist. You can ask me anything about the lodge, the accommodation options, experiences, available transfers, rates and availability. How can I help?"`,
-          },
-        }),
-      );
+      openaiWs.send(JSON.stringify({ type: "response.create" }));
       return; // do not relay session.updated to browser
     }
 
