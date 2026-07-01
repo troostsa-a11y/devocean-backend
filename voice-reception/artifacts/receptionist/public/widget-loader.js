@@ -6,9 +6,7 @@
   if (
     _path.startsWith("/book-direct") ||
     _path.startsWith("/booking-confirmed") ||
-    _path.startsWith("/canceled") ||
-    _path === "/talk" ||
-    _path.startsWith("/talk/")
+    _path.startsWith("/canceled")
   ) {
     return;
   }
@@ -38,7 +36,6 @@
   var RED          = "#dc2626";  // red-600 — active call
   var RED_DARK     = "#b91c1c";  // red-700
   var RADIUS = 60;
-  var CALLOUT_TEXT = "Do you need help?\nTalk to Mia our AI receptionist.\nShe speaks your language.";
 
   // --- Styles ---
   var style = document.createElement("style");
@@ -106,65 +103,6 @@
     "  animation: devocean-ring 4s ease-in-out infinite;",
     "}",
     "#devocean-widget-btn.attention { animation: devocean-pulse 1.7s ease-out 2; }",
-    "#devocean-widget-callout {",
-    "  position: fixed;",
-    "  bottom: 44px;",
-    "  right: 100px;",
-    "  max-width: 250px;",
-    "  background: #ffffff;",
-    "  color: #3a2a1a;",
-    "  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;",
-    "  font-size: 14px;",
-    "  line-height: 1.45;",
-    "  text-align: center;",
-    "  white-space: pre-line;",
-    "  padding: 20px 18px 14px;",
-    "  border-radius: 14px;",
-    "  box-shadow: 0 10px 32px rgba(30,18,8,0.20);",
-    "  z-index: 2147483646;",
-    "  opacity: 0;",
-    "  transform: translateY(8px) scale(0.96);",
-    "  transform-origin: bottom right;",
-    "  transition: opacity 0.28s ease, transform 0.28s ease;",
-    "  pointer-events: none;",
-    "}",
-    "#devocean-widget-callout.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }",
-    "#devocean-widget-callout::after {",
-    "  content: '';",
-    "  position: absolute;",
-    "  bottom: 14px;",
-    "  right: -7px;",
-    "  width: 14px;",
-    "  height: 14px;",
-    "  background: #ffffff;",
-    "  transform: rotate(45deg);",
-    "  border-radius: 2px;",
-    "  box-shadow: 3px -3px 6px rgba(30,18,8,0.06);",
-    "}",
-    "#devocean-widget-callout-close {",
-    "  position: absolute;",
-    "  top: 7px;",
-    "  right: 9px;",
-    "  width: 20px;",
-    "  height: 20px;",
-    "  border: none;",
-    "  background: transparent;",
-    "  color: #b08968;",
-    "  font-size: 18px;",
-    "  line-height: 1;",
-    "  cursor: pointer;",
-    "  padding: 0;",
-    "}",
-    "#devocean-widget-callout-close:hover { color: " + PRIMARY_DARK + "; }",
-    "@media (max-width: 480px) {",
-    "  #devocean-widget-callout {",
-    "    bottom: 90px;",
-    "    right: 12px;",
-    "    left: 12px;",
-    "    max-width: none;",
-    "  }",
-    "  #devocean-widget-callout::after { display: none; }",
-    "}",
     "@media (prefers-reduced-motion: reduce) {",
     "  #devocean-widget-btn.ringing #devocean-widget-icon { animation: none; }",
     "  #devocean-widget-btn.attention { animation: none; }",
@@ -193,40 +131,10 @@
   btn.appendChild(iconSpan);
   document.body.appendChild(btn);
 
-  var callout = document.createElement("div");
-  callout.id = "devocean-widget-callout";
-  callout.setAttribute("role", "status");
-  var calloutText = document.createElement("span");
-  calloutText.textContent = CALLOUT_TEXT;
-  var calloutClose = document.createElement("button");
-  calloutClose.id = "devocean-widget-callout-close";
-  calloutClose.setAttribute("aria-label", "Dismiss");
-  calloutClose.innerHTML = "&times;";
-  callout.appendChild(calloutText);
-  callout.appendChild(calloutClose);
-  document.body.appendChild(callout);
-
   var open = false;
-  var dismissed = false;
-  var attentionTimer = null;
-  var inviteInterval = null;
 
-  function showCallout() {
-    if (open || dismissed) return;
-    callout.classList.add("show");
-    if (attentionTimer) clearTimeout(attentionTimer);
-    attentionTimer = setTimeout(function () {
-      btn.classList.add("attention");
-      setTimeout(function () { btn.classList.remove("attention"); }, 3500);
-    }, 300);
-  }
-
-  function stopInviting() {
-    dismissed = true;
-    callout.classList.remove("show");
+  function stopRinging() {
     btn.classList.remove("ringing");
-    if (inviteInterval) { clearInterval(inviteInterval); inviteInterval = null; }
-    if (attentionTimer) { clearTimeout(attentionTimer); attentionTimer = null; }
   }
 
   function sendConnect() {
@@ -240,7 +148,7 @@
   function openWidget() {
     if (open) return;
     open = true;
-    stopInviting();
+    stopRinging();
     btn.classList.add("call-active");
     btn.classList.remove("ringing");
     iconSpan.innerHTML = HANGUP_SVG;
@@ -288,14 +196,6 @@
     open ? closeWidget() : openWidget();
   });
 
-  callout.addEventListener("click", function (e) {
-    if (e.target === calloutClose) {
-      stopInviting();
-    } else {
-      openWidget();
-    }
-  });
-
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && open) closeWidget();
   });
@@ -307,10 +207,8 @@
     if (!frame.src) frame.src = WIDGET_URL;
   }, 2000);
 
-  // Start ringing and show first callout after a short delay
+  // Start ringing after a short delay to draw attention to the button.
   setTimeout(function () {
     btn.classList.add("ringing");
-    showCallout();
   }, 4000);
-  inviteInterval = setInterval(showCallout, 30000);
 })();
