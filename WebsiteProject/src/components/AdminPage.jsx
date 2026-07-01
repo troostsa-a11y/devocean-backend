@@ -1152,7 +1152,8 @@ function ContactsPanel({ apiUrl, apiKey }) {
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        throw new Error(`${res.status} ${res.statusText}${body.error ? ': ' + body.error : ''}`);
+        const detail = body.detail ? ` (${body.detail})` : '';
+        throw new Error(`${res.status} ${res.statusText}${body.error ? ': ' + body.error : ''}${detail}`);
       }
       setData(await res.json());
     } catch (err) {

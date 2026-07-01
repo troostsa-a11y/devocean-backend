@@ -540,7 +540,11 @@ app.get('/api/admin/guests', requireAdminKey, async (req: any, res: any) => {
     const stats = await guestDb.getGuestStats();
     res.json({ ...result, stats });
   } catch (err: any) {
-    res.status(500).json({ error: err.message });
+    const pg = err.cause ?? err;
+    res.status(500).json({
+      error: err.message,
+      detail: pg.message !== err.message ? pg.message : (pg.detail ?? pg.code ?? undefined),
+    });
   }
 });
 
