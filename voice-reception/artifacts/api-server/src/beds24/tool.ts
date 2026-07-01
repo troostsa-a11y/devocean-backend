@@ -92,6 +92,9 @@ export async function runTool(name: string, argsJson: string): Promise<string> {
   return JSON.stringify({ error: "unknown_tool", note: `No tool named ${name}.` });
 }
 
+/** Maximum adults that fit in a single lodge unit (2 adults + optionally 1 child under 12). */
+const MAX_ADULTS_PER_UNIT = 2;
+
 async function runCheckAvailability(args: {
   checkIn?: string;
   checkOut?: string;
@@ -104,12 +107,57 @@ async function runCheckAvailability(args: {
     });
   }
 
+  const numAdults = args.numAdults ? Number(args.numAdults) : 2;
+  const checkIn = String(args.checkIn);
+  const checkOut = String(args.checkOut);
+
   try {
-    const result = await checkAvailability(
-      String(args.checkIn),
-      String(args.checkOut),
-      args.numAdults ? Number(args.numAdults) : 2,
-    );
+    // When the requested group exceeds per-unit capacity, run a second probe with
+    // numAdults=2 in parallel. This lets us distinguish "over-occupancy" (rooms
+    // exist but can't fit the group in one unit) from "genuinely sold out".
+    if (numAdults > MAX_ADULTS_PER_UNIT) {
+      const [result, probeResult] = await Promise.all([
+        checkAvailability(checkIn, checkOut, numAdults),
+        checkAvailability(checkIn, checkOut, 2),
+      ]);
+
+      const singleUnitAvailable = probeResult.offers.filter((o) => o.available);
+
+      if (singleUnitAvailable.length > 0) {
+        // Rooms are available but a single unit can't accommodate the full group.
+        const unitsNeeded = Math.ceil(numAdults / MAX_ADULTS_PER_UNIT);
+        return JSON.stringify({
+          checkIn,
+          checkOut,
+          nights: result.nights,
+          numAdults,
+          anyAvailable: false,
+          reason: "over_occupancy",
+          maxAdultsPerUnit: MAX_ADULTS_PER_UNIT,
+          maxOccupancyNote:
+            "Each unit sleeps a maximum of 2 adults (plus 1 child under 12 as a third occupant, free of charge). " +
+            `${numAdults} adults cannot share a single unit — ${unitsNeeded} separate units would be required.`,
+          unitsNeeded,
+          singleUnitPricing: singleUnitAvailable.map((o) => ({
+            room: o.roomName,
+            unitsAvailable: o.unitsAvailable,
+            totalPricePerUnit: o.totalPrice,
+            perPersonPerNightAtTwoAdults: o.perPersonPerNight,
+            currency: o.currency,
+          })),
+          note:
+            "Tell the guest the max per unit is 2 adults, quote the per-unit price shown, " +
+            `explain they would need ${unitsNeeded} units for ${numAdults} adults, and offer to have ` +
+            "the reservations team arrange a multi-unit booking. Also ask if any guests are children under 12, " +
+            "since one child under 12 can join two adults in a single unit without triggering the over-occupancy limit.",
+        });
+      }
+
+      // Both calls returned no availability — genuinely sold out for these dates.
+      return formatAvailabilityForModel(result);
+    }
+
+    const result = await checkAvailability(checkIn, checkOut, numAdults);
     return formatAvailabilityForModel(result);
   } catch (err) {
     if (err instanceof Beds24NotConfiguredError) {
