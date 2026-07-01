@@ -13,6 +13,8 @@
 - [Checkout "Failed to fetch"](checkout-failed-to-fetch.md) — browser TypeError on Pay = upstream timeout (all backend errors return JSON), never a Stripe error; bound every external call (Stripe/Beds24) under CF's ~100s edge limit; restart Render after key change (cached Stripe singleton)
 - [Direct-booking i18n coverage](direct-booking-i18n-coverage.md) — booking copy now all 20 base langs; whole-object fallback = every key must exist in every lang object (partial → undefined, not EN)
 - [Mia DB connection](mia-db-connection.md) — dedicated Reception Supabase project (eu-west-3, aws-0); ENOTFOUND = wrong shard not DNS; mia_bookings rename was a temp workaround, now reversed
-- [Mia OpenAI audio model](mia-openai-audio-model.md) — bare gpt-4o-audio-preview alias retired → 404; must use dated alias e.g. gpt-4o-audio-preview-2024-12-17 in OPENAI_AUDIO_MODEL
+- [Marin OpenAI model](mia-openai-audio-model.md) — current model is gpt-realtime-2 (OPENAI_REALTIME_MODEL); bare gpt-4o-audio-preview alias retired → 404; never use undated aliases
 - [API schema lookup first](api-schema-lookup-first.md) — read .d.ts types from node_modules before constructing any API payload; never guess field names/shape across API versions
 - [gpt-realtime-2 session schema](gpt-realtime-2-session-schema.md) — audio config nested under session.audio.{input,output}; top-level voice/modalities/turn_detection all rejected; type:"realtime" required
+- [Render Blueprint name+type match](render-blueprint-name-type.md) — both name AND type must match existing Render service or Blueprint silently creates a duplicate; current: Automailer(web) + Receptionist(web)
+- [Marin VAD response muting](marin-vad-response-muting.md) — mute VAD on response.created / unmute on response.done; sessionGreetingSent flag prevents infinite session.updated loop from VAD session.update calls
