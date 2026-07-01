@@ -286,7 +286,7 @@ async function runGetWeather(): Promise<string> {
 
 /** Fire-and-forget email alert via SMTP. Env vars (same values as automailer):
  *   NOTIFY_SMTP_HOST  — same as automailer MAIL_HOST
- *   NOTIFY_SMTP_PORT  — same as automailer SMTP_PORT (default 465)
+ *   NOTIFY_SMTP_PORT  — same as automailer MAIL_PORT (default 465)
  *   NOTIFY_SMTP_USER  — same as automailer IMAP_USER
  *   NOTIFY_SMTP_PASS  — same as automailer IMAP_PASSWORD
  *   NOTIFY_EMAIL_FROM — sender address shown in the alert

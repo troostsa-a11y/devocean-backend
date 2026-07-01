@@ -95,7 +95,7 @@ services:
       # Optional: email alert when Marin saves a booking enquiry.
       # Use the same SMTP credentials already configured on the automailer service:
       #   NOTIFY_SMTP_HOST = automailer MAIL_HOST
-      #   NOTIFY_SMTP_PORT = automailer SMTP_PORT (default 465, SSL)
+      #   NOTIFY_SMTP_PORT = automailer MAIL_PORT (default 465, SSL)
       #   NOTIFY_SMTP_USER = automailer IMAP_USER
       #   NOTIFY_SMTP_PASS = automailer IMAP_PASSWORD
       - key: NOTIFY_SMTP_HOST
