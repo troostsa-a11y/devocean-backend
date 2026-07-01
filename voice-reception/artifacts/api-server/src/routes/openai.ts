@@ -149,7 +149,7 @@ export function buildSystemPrompt(lang?: string): string {
   }).format(now);
   const dateContext = `CURRENT DATE: Today is ${longDate} (${isoDate}), lodge local time (Mozambique, CAT/UTC+2). Use this to resolve relative dates such as "today", "tonight", "tomorrow", "this weekend", or "next weekend" into exact YYYY-MM-DD calendar dates before calling check_availability. "This weekend" means the nearest upcoming Friday/Saturday; "next weekend" means the weekend after that. Never ask the guest to convert their phrasing into dates — work it out yourself.`;
   const greetingInstruction = lang
-    ? `\n\nOPENING TURN: The guest's browser language is "${lang}". When this voice session starts, immediately greet them in that language with exactly this message (translate it if the language is not English): "Hi, I'm Mia, the DEVOCEAN online receptionist. You can ask me anything about the lodge, the accommodation options, experiences, available transfers, rates and availability. How can I help?"`
+    ? `\n\nOPENING TURN: The guest's browser language is "${lang}". When this voice session starts, immediately greet them in that language with exactly this message (translate it if the language is not English): "Hello, I'm Marin, the DEVOCEAN online receptionist. You can ask me anything about the lodge, the accommodation options, experiences, available transfers, rates and availability. How can I help?"`
     : "";
   return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}`;
 }
