@@ -6,7 +6,7 @@ import { ExternalLink, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { clearToken } from "@/lib/auth";
 
-const PRODUCTION_URL = "https://mia-voice-receptionist.onrender.com";
+const PRODUCTION_URL = "https://receptionist.onrender.com";
 
 export function Layout({ children }: { children: ReactNode }) {
   const [, setLocation] = useLocation();
@@ -32,7 +32,7 @@ export function Layout({ children }: { children: ReactNode }) {
             data-testid="link-production-site"
           >
             <ExternalLink className="w-3.5 h-3.5 shrink-0" />
-            mia-voice-receptionist.onrender.com
+            receptionist.onrender.com
           </a>
 
           <div className="flex items-center gap-4">
