@@ -126,6 +126,17 @@ async function runCheckAvailability(args: {
       if (singleUnitAvailable.length > 0) {
         // Rooms are available but a single unit can't accommodate the full group.
         const unitsNeeded = Math.ceil(numAdults / MAX_ADULTS_PER_UNIT);
+        const pricing = singleUnitAvailable.map((o) => {
+          const totalPerUnit = o.totalPrice ?? 0;
+          return {
+            room: o.roomName,
+            unitsAvailable: o.unitsAvailable,
+            totalPricePerUnit: totalPerUnit,
+            perPersonPerNight: o.perPersonPerNight,
+            estimatedTotalForGroup: totalPerUnit > 0 ? totalPerUnit * unitsNeeded : undefined,
+            currency: o.currency ?? "USD",
+          };
+        });
         return JSON.stringify({
           checkIn,
           checkOut,
@@ -134,22 +145,17 @@ async function runCheckAvailability(args: {
           anyAvailable: false,
           reason: "over_occupancy",
           maxAdultsPerUnit: MAX_ADULTS_PER_UNIT,
-          maxOccupancyNote:
-            "Each unit sleeps a maximum of 2 adults (plus 1 child under 12 as a third occupant, free of charge). " +
-            `${numAdults} adults cannot share a single unit — ${unitsNeeded} separate units would be required.`,
           unitsNeeded,
-          singleUnitPricing: singleUnitAvailable.map((o) => ({
-            room: o.roomName,
-            unitsAvailable: o.unitsAvailable,
-            totalPricePerUnit: o.totalPrice,
-            perPersonPerNightAtTwoAdults: o.perPersonPerNight,
-            currency: o.currency,
-          })),
+          singleUnitPricing: pricing,
           note:
-            "Tell the guest the max per unit is 2 adults, quote the per-unit price shown, " +
-            `explain they would need ${unitsNeeded} units for ${numAdults} adults, and offer to have ` +
-            "the reservations team arrange a multi-unit booking. Also ask if any guests are children under 12, " +
-            "since one child under 12 can join two adults in a single unit without triggering the over-occupancy limit.",
+            `Each unit sleeps max 2 adults (plus 1 child under 12 free). ` +
+            `For ${numAdults} adults, ${unitsNeeded} units are needed. ` +
+            `YOU MUST quote the rates from singleUnitPricing: say the totalPricePerUnit ` +
+            `(total for the stay per unit) and the perPersonPerNight rate for each room option. ` +
+            `Also say the estimatedTotalForGroup (${unitsNeeded} units combined). ` +
+            `Then offer to have the reservations team arrange the multi-unit booking. ` +
+            `Finally ask whether any guests are children under 12, since one child under 12 ` +
+            `can share a unit with 2 adults without triggering the occupancy limit.`,
         });
       }
 
