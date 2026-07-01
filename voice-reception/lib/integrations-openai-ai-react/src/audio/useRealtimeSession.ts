@@ -243,8 +243,8 @@ export function useRealtimeSession({
             }
             break;
 
-          // ── Mia transcript ────────────────────────────────────────────────
-          case "response.audio_transcript.delta":
+          // ── Mia transcript (GA: response.output_audio_transcript.delta) ───
+          case "response.output_audio_transcript.delta":
             if (event.delta) {
               miaFullRef.current += event.delta as string;
               const full = miaFullRef.current;
@@ -253,13 +253,13 @@ export function useRealtimeSession({
             }
             break;
 
-          // ── Mia audio ─────────────────────────────────────────────────────
-          case "response.audio.delta":
+          // ── Mia audio (GA: response.output_audio.delta) ───────────────────
+          case "response.output_audio.delta":
             setMiaSpeakingState(true);
             if (event.delta) playPCM16Chunk(event.delta as string);
             break;
 
-          case "response.audio.done":
+          case "response.output_audio.done":
             // All chunks queued; onended callbacks handle setMiaSpeakingState(false)
             break;
 

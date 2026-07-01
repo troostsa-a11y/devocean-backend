@@ -96,13 +96,14 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       JSON.stringify({
         type: "session.update",
         session: {
-          modalities: ["text", "audio"],
+          type: "realtime",
+          modalities: ["audio"],
           instructions: buildSystemPrompt(lang),
           voice: "alloy",
-          input_audio_format: "pcm16",
-          output_audio_format: "pcm16",
-          input_audio_transcription: { model: "whisper-1" },
-          turn_detection: { type: "server_vad" },
+          audio: { output: { format: "pcm16" } },
+          reasoning: { effort: "low" },
+          turn_detection: { type: "semantic_vad" },
+          truncation: "auto",
           tools: realtimeTools,
           tool_choice: "auto",
         },
@@ -177,9 +178,10 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     }
 
     // Accumulate Mia's spoken transcript for quality-control storage.
+    // GA event name: response.output_audio_transcript.delta (was response.audio_transcript.delta)
     // NOTE: user audio transcript events (conversation.item.input_audio_transcription.*)
     // are relayed to the browser but deliberately NOT stored in the database.
-    if (evtType === "response.audio_transcript.delta" && event.delta) {
+    if (evtType === "response.output_audio_transcript.delta" && event.delta) {
       miaTranscriptBuffer += event.delta as string;
       // fall through — still relay to browser for live UI
     }
