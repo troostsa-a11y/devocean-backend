@@ -95,9 +95,8 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     const sessionUpdate = {
       type: "session.update",
       session: {
-        type: "voice_agent",
+        type: "realtime",
         instructions: buildSystemPrompt(lang),
-        voice: "alloy",
         turn_detection: { type: "server_vad" },
         tools: realtimeTools,
         tool_choice: "auto",
