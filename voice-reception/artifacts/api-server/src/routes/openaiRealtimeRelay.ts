@@ -55,13 +55,19 @@ export function handleRealtimeWs(clientWs: WebSocket): void {
         type: "session.update",
         session: {
           type: "realtime",
-          voice: "alloy",
           instructions: buildSystemPrompt(),
           tools: realtimeTools,
           tool_choice: "auto",
-          input_audio_format: "pcm16",
-          output_audio_format: "pcm16",
-          turn_detection: { type: "server_vad" },
+          audio: {
+            input: {
+              format: { type: "audio/pcm", rate: 24000 },
+              turn_detection: { type: "server_vad" },
+            },
+            output: {
+              format: { type: "audio/pcm", rate: 24000 },
+              voice: "alloy",
+            },
+          },
         },
       }),
     );
