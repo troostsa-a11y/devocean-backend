@@ -627,21 +627,27 @@ app.post('/api/admin/guests/broadcast', requireAdminKey, async (req: any, res: a
   (async () => {
     let sent = 0;
     let failed = 0;
-    for (const r of recipients) {
+    const total = recipients.length;
+    console.log(`📧 Broadcast started: ${total} recipients, subject: "${subject}"`);
+    for (let i = 0; i < total; i++) {
+      const r = recipients[i];
       try {
         const token = r.unsubscribeToken || crypto.randomUUID();
         const unsubUrl = `${baseUrl}/unsubscribe/${token}`;
         const footer = `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">You are receiving this because you stayed at DEVOCEAN Lodge.<br><a href="${unsubUrl}" style="color:#9e4b13">Unsubscribe</a></p>`;
-        // Personalise: replace {{firstname}} with the guest's first name (fallback to empty string so "Dear ," still works if absent)
         const personalised = html.replace(/\{\{firstname\}\}/gi, r.firstName?.trim() || '');
         await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: r.email, subject, html: personalised + footer, attachments: [headerAttachment] });
         sent++;
-      } catch (e) {
+      } catch (e: any) {
         failed++;
+        console.error(`📧 Broadcast error for ${r.email}: ${e?.message || e}`);
+      }
+      if ((i + 1) % 10 === 0 || i + 1 === total) {
+        console.log(`📧 Broadcast progress: ${i + 1} / ${total} processed (${sent} sent, ${failed} failed)`);
       }
       await new Promise(resolve => setTimeout(resolve, 50));
     }
-    console.log(`📧 Broadcast complete: ${sent} sent, ${failed} failed`);
+    console.log(`📧 Broadcast complete: ${sent} sent, ${failed} failed out of ${total}`);
   })();
 });
 
