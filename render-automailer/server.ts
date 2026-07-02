@@ -23,6 +23,11 @@ app.use(express.json({
 }));
 app.use(cors()); // Allow Cloudflare Functions to call these endpoints
 
+// Serve email template assets (header image) at a stable public URL so broadcast
+// emails can reference them without inline CID attachments.
+// e.g. https://devocean-automailer.onrender.com/assets/email-header.jpg
+app.use('/assets', express.static('./email_templates/assets'));
+
 // Environment validation
 function validateEnvironment() {
   const required = [
@@ -600,7 +605,9 @@ app.post('/api/admin/guests/broadcast', requireAdminKey, async (req: any, res: a
 
   // Test-send mode — send only to testEmail and return immediately
   if (testEmail) {
-    const testHtml = html + `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">Test send — unsubscribe link placeholder</p>`;
+    // Replace {{firstname}} with a visible placeholder so the admin sees how personalisation looks
+    const testPersonalised = html.replace(/\{\{firstname\}\}/gi, '[Firstname]');
+    const testHtml = testPersonalised + `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">Test send — unsubscribe link placeholder</p>`;
     await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: testEmail, subject: `[TEST] ${subject}`, html: testHtml });
     return res.json({ success: true, mode: 'test', sent: 1 });
   }
@@ -618,7 +625,9 @@ app.post('/api/admin/guests/broadcast', requireAdminKey, async (req: any, res: a
         const token = r.unsubscribeToken || crypto.randomUUID();
         const unsubUrl = `${baseUrl}/unsubscribe/${token}`;
         const footer = `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">You are receiving this because you stayed at DEVOCEAN Lodge.<br><a href="${unsubUrl}" style="color:#9e4b13">Unsubscribe</a></p>`;
-        await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: r.email, subject, html: html + footer });
+        // Personalise: replace {{firstname}} with the guest's first name (fallback to empty string so "Dear ," still works if absent)
+        const personalised = html.replace(/\{\{firstname\}\}/gi, r.firstName?.trim() || '');
+        await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: r.email, subject, html: personalised + footer });
         sent++;
       } catch (e) {
         failed++;

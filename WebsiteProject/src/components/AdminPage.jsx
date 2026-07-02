@@ -1360,6 +1360,127 @@ function ContactsPanel({ apiUrl, apiKey }) {
 
 // ── Broadcast Panel ───────────────────────────────────────────────────────────
 
+const BROADCAST_TEMPLATE = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A warm hello from DEVOCEAN Lodge</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f6f1eb; font-family:Arial, Helvetica, sans-serif; color:#333333;">
+
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f6f1eb; padding:24px 0;">
+    <tr>
+      <td align="center">
+
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px; background-color:#ffffff; border-radius:10px; overflow:hidden;">
+
+          <!-- Top colour bar -->
+          <tr>
+            <td height="8" style="height:8px; background:#9e4b13;"></td>
+          </tr>
+
+          <!-- Hero header image -->
+          <tr>
+            <td align="center">
+              <img src="https://devocean-automailer.onrender.com/assets/email-header.jpg" alt="DEVOCEAN Lodge - Ponta do Ouro" width="640" style="display:block; width:100%; height:auto; border:0;">
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:32px 32px 20px 32px; text-align:left;">
+              <h1 style="margin:0; font-size:26px; line-height:1.3; color:#5C5048;">
+                Dear {{firstname}},
+              </h1>
+              <p style="margin:10px 0 0 0; font-size:16px; line-height:1.6; color:#7a6a60;">
+                Ponta do Ouro, Mozambique
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:0 32px 24px 32px;">
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                Hello from Ponta do Ouro,
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                You are receiving this message because, at some point during a stay, enquiry, or visit with DEVOCEAN Lodge, you shared your email address with us and gave us permission to contact you.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                We realise we have not used that permission before, so rather than suddenly start sending regular updates, we wanted to reintroduce ourselves gently and give you the choice to stay connected.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                DEVOCEAN Lodge is still here in the heart of Ponta do Ouro — a relaxed, personal place to stay within walking distance of the beach, dive centres, restaurants, markets, dolphin activities, and the village atmosphere that makes this part of Mozambique so special.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                Over the years we have continued improving the lodge, the garden, guest comfort, breakfast, internet access, and the overall experience for travellers who enjoy a friendly and peaceful base in Ponta.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                We would also like to introduce our renewed website, where you can find more information about the lodge, accommodation options, Ponta do Ouro, and practical travel details.
+              </p>
+
+              <div style="text-align:center; margin:28px 0;">
+                <a href="https://devoceanlodge.com" style="display:inline-block; background-color:#9e4b13; color:#ffffff; text-decoration:none; padding:14px 24px; border-radius:6px; font-size:16px; font-weight:bold;">
+                  Visit our website
+                </a>
+              </div>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                On the website you can also meet <strong>Marin</strong>, our online receptionist. Marin can help answer questions, guide you through the lodge information, and assist you in finding what you need before planning a stay.
+              </p>
+
+              <div style="text-align:center; margin:28px 0;">
+                <a href="https://devoceanlodge.com/?talk" style="display:inline-block; background-color:#5C5048; color:#ffffff; text-decoration:none; padding:14px 24px; border-radius:6px; font-size:16px; font-weight:bold;">
+                  Talk to Marin
+                </a>
+              </div>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                From time to time, we would like to send useful updates about Ponta do Ouro, travel tips, seasonal highlights such as dolphins, whales and turtles, lodge improvements, and occasional direct offers for returning guests.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:0 0 18px 0;">
+                If you are happy to stay in touch, no action is needed. If you prefer not to receive future emails from us, you can use the unsubscribe link provided below by our mailing system.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:24px 0 0 0;">
+                Thank you for having been part of our journey.
+              </p>
+
+              <p style="font-size:16px; line-height:1.7; margin:18px 0 0 0;">
+                Warm regards,<br>
+                <strong>Sean and the DEVOCEAN Lodge team</strong><br>
+                Ponta do Ouro, Mozambique
+              </p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="background-color:#f1e7dc; padding:22px 32px; text-align:center;">
+              <p style="margin:0 0 8px 0; font-size:14px; line-height:1.6; color:#5C5048;">
+                DEVOCEAN Lodge &mdash; Ponta do Ouro, Mozambique
+              </p>
+              <p style="margin:0; font-size:14px; line-height:1.6;">
+                <a href="https://devoceanlodge.com" style="color:#9e4b13; text-decoration:none;">devoceanlodge.com</a>
+                &nbsp;|&nbsp;
+                <a href="https://devoceanlodge.com/?talk" style="color:#9e4b13; text-decoration:none;">Talk to Marin</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>`;
+
 function BroadcastPanel({ apiUrl, apiKey }) {
   const [subject, setSubject] = useState('');
   const [html, setHtml] = useState('');
@@ -1421,8 +1542,18 @@ function BroadcastPanel({ apiUrl, apiKey }) {
         </label>
 
         <label className="block">
-          <span className="text-sm font-medium text-slate-700">Email body (HTML) *</span>
-          <p className="text-xs text-slate-400 mb-1">An unsubscribe footer is added automatically to every email.</p>
+          <div className="flex items-center justify-between mb-1">
+            <span className="text-sm font-medium text-slate-700">Email body (HTML) *</span>
+            <button
+              type="button"
+              onClick={() => { setHtml(BROADCAST_TEMPLATE); setConfirmOpen(false); }}
+              className="text-xs px-2 py-1 border border-slate-300 rounded-md hover:bg-slate-50 text-slate-600"
+              data-testid="button-load-template"
+            >
+              Load template
+            </button>
+          </div>
+          <p className="text-xs text-slate-400 mb-1">An unsubscribe footer is appended automatically. Use <code className="bg-slate-100 px-1 rounded">{'{{firstname}}'}</code> to personalise each email with the guest's first name.</p>
           <textarea
             value={html}
             onChange={(e) => { setHtml(e.target.value); setConfirmOpen(false); }}
