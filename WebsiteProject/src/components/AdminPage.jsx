@@ -1569,7 +1569,7 @@ function BroadcastPanel({ apiUrl, apiKey }) {
             <div className="bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-500 border-b border-slate-200">Preview</div>
             <div
               className="p-4 text-sm"
-              dangerouslySetInnerHTML={{ __html: html }}
+              dangerouslySetInnerHTML={{ __html: html.replace('cid:email-header-image', 'https://devocean-automailer.onrender.com/assets/email-header.jpg') }}
             />
           </div>
         )}
@@ -1597,6 +1597,11 @@ function BroadcastPanel({ apiUrl, apiKey }) {
                 Send test
               </button>
             </div>
+            {(!subject || !html) && testEmail && (
+              <p className="text-xs text-amber-600 mt-1">
+                {!subject && !html ? 'Subject and email body are required.' : !subject ? 'Subject is required before sending.' : 'Email body is required before sending.'}
+              </p>
+            )}
           </label>
         </div>
       </div>
