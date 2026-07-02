@@ -1137,9 +1137,10 @@ function ContactsPanel({ apiUrl, apiKey }) {
   const [search, setSearch] = useState('');
   const [filterSub, setFilterSub] = useState('');
   const [filterSource, setFilterSource] = useState('');
+  const [filterCountry, setFilterCountry] = useState('');
   const [searchInput, setSearchInput] = useState('');
 
-  const load = async (p = page, s = search, sub = filterSub, src = filterSource) => {
+  const load = async (p = page, s = search, sub = filterSub, src = filterSource, cty = filterCountry) => {
     setLoading(true);
     setFetchError(null);
     try {
@@ -1147,6 +1148,7 @@ function ContactsPanel({ apiUrl, apiKey }) {
       if (s) params.set('search', s);
       if (sub) params.set('subscribed', sub);
       if (src) params.set('source', src);
+      if (cty) params.set('country', cty);
       const res = await fetch(`${apiUrl}/api/admin/guests?${params}`, {
         headers: { 'X-Admin-Key': apiKey },
       });
@@ -1164,26 +1166,27 @@ function ContactsPanel({ apiUrl, apiKey }) {
     }
   };
 
-  useEffect(() => { load(1, search, filterSub, filterSource); }, []);
+  useEffect(() => { load(1, search, filterSub, filterSource, filterCountry); }, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
     const s = searchInput.trim();
     setSearch(s);
     setPage(1);
-    load(1, s, filterSub, filterSource);
+    load(1, s, filterSub, filterSource, filterCountry);
   };
 
-  const handleFilter = (sub, src) => {
+  const handleFilter = (sub, src, cty) => {
     setFilterSub(sub);
     setFilterSource(src);
+    setFilterCountry(cty);
     setPage(1);
-    load(1, search, sub, src);
+    load(1, search, sub, src, cty);
   };
 
   const handlePage = (p) => {
     setPage(p);
-    load(p, search, filterSub, filterSource);
+    load(p, search, filterSub, filterSource, filterCountry);
   };
 
   const handleExport = async () => {
@@ -1242,7 +1245,7 @@ function ContactsPanel({ apiUrl, apiKey }) {
           </form>
           <select
             value={filterSub}
-            onChange={(e) => handleFilter(e.target.value, filterSource)}
+            onChange={(e) => handleFilter(e.target.value, filterSource, filterCountry)}
             className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
             data-testid="select-filter-sub"
           >
@@ -1252,15 +1255,26 @@ function ContactsPanel({ apiUrl, apiKey }) {
           </select>
           <select
             value={filterSource}
-            onChange={(e) => handleFilter(filterSub, e.target.value)}
+            onChange={(e) => handleFilter(filterSub, e.target.value, filterCountry)}
             className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
             data-testid="select-filter-source"
           >
             <option value="">All sources</option>
             <option value="beds24">Beds24</option>
           </select>
+          <select
+            value={filterCountry}
+            onChange={(e) => handleFilter(filterSub, filterSource, e.target.value)}
+            className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
+            data-testid="select-filter-country"
+          >
+            <option value="">All countries</option>
+            {(data?.stats?.countries ?? []).map(cc => (
+              <option key={cc} value={cc}>{cc}</option>
+            ))}
+          </select>
           <button
-            onClick={() => load(page, search, filterSub, filterSource)}
+            onClick={() => load(page, search, filterSub, filterSource, filterCountry)}
             className="p-1.5 border border-slate-300 rounded-lg hover:bg-slate-50"
             data-testid="button-refresh-guests"
           >

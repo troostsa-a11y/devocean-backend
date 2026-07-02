@@ -602,6 +602,7 @@ export class DatabaseService {
     subscribed?: boolean;
     source?: string;
     search?: string;
+    country?: string;
   }): Promise<{ rows: Guest[]; total: number }> {
     const page = opts.page ?? 1;
     const limit = Math.min(opts.limit ?? 50, 200);
@@ -610,6 +611,7 @@ export class DatabaseService {
     const conditions: any[] = [];
     if (opts.subscribed !== undefined) conditions.push(eq(guests.subscribed, opts.subscribed));
     if (opts.source) conditions.push(eq(guests.source, opts.source));
+    if (opts.country) conditions.push(eq(guests.countryCode, opts.country.toUpperCase()));
     if (opts.search) {
       const q = `%${opts.search}%`;
       conditions.push(or(ilike(guests.email, q), ilike(guests.firstName, q), ilike(guests.lastName, q)));
@@ -628,15 +630,21 @@ export class DatabaseService {
   /**
    * Get total subscriber stats
    */
-  async getGuestStats(): Promise<{ total: number; subscribed: number; sources: Record<string, number> }> {
-    const [totalRes, subscribedRes, sourceRes] = await Promise.all([
+  async getGuestStats(): Promise<{ total: number; subscribed: number; sources: Record<string, number>; countries: string[] }> {
+    const [totalRes, subscribedRes, sourceRes, countryRes] = await Promise.all([
       this.db.select({ value: count() }).from(guests),
       this.db.select({ value: count() }).from(guests).where(eq(guests.subscribed, true)),
       this.db.select({ source: guests.source, value: count() }).from(guests).groupBy(guests.source),
+      this.db
+        .selectDistinct({ countryCode: guests.countryCode })
+        .from(guests)
+        .where(sql`${guests.countryCode} IS NOT NULL AND ${guests.countryCode} != ''`)
+        .orderBy(guests.countryCode),
     ]);
     const sources: Record<string, number> = {};
     for (const r of sourceRes) sources[r.source ?? 'unknown'] = Number(r.value);
-    return { total: Number(totalRes[0].value), subscribed: Number(subscribedRes[0].value), sources };
+    const countries = countryRes.map((r) => r.countryCode as string);
+    return { total: Number(totalRes[0].value), subscribed: Number(subscribedRes[0].value), sources, countries };
   }
 
   /**

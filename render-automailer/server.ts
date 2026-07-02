@@ -529,13 +529,14 @@ app.post('/api/admin/guests/import', requireAdminKey, async (req: any, res: any)
 app.get('/api/admin/guests', requireAdminKey, async (req: any, res: any) => {
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   try {
-    const { page, limit, subscribed, source, search } = req.query;
+    const { page, limit, subscribed, source, search, country } = req.query;
     const result = await guestDb.getGuests({
       page: page ? parseInt(page as string) : 1,
       limit: limit ? parseInt(limit as string) : 50,
       subscribed: subscribed === 'true' ? true : subscribed === 'false' ? false : undefined,
       source: source as string | undefined,
       search: search as string | undefined,
+      country: country as string | undefined,
     });
     const stats = await guestDb.getGuestStats();
     res.json({ ...result, stats });
