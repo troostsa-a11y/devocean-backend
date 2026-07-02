@@ -1382,7 +1382,7 @@ const BROADCAST_TEMPLATE = `<!DOCTYPE html>
           <!-- Hero header image -->
           <tr>
             <td align="center">
-              <img src="https://devocean-automailer.onrender.com/assets/email-header.jpg" alt="DEVOCEAN Lodge - Ponta do Ouro" width="640" style="display:block; width:100%; height:auto; border:0;">
+              <img src="cid:email-header-image" alt="DEVOCEAN Lodge - Ponta do Ouro" width="640" style="display:block; width:100%; height:auto; border:0;">
             </td>
           </tr>
 

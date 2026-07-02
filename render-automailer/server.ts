@@ -603,12 +603,19 @@ app.post('/api/admin/guests/broadcast', requireAdminKey, async (req: any, res: a
   const fromName = process.env.IMAP_FROM_NAME || 'DEVOCEAN Lodge';
   const baseUrl = process.env.BASE_URL || 'https://devocean-automailer.onrender.com';
 
+  // Inline header image attachment — same CID used by all transactional emails
+  const headerAttachment = {
+    filename: 'email-header.jpg',
+    path: './email_templates/assets/email-header.jpg',
+    cid: 'email-header-image',
+  };
+
   // Test-send mode — send only to testEmail and return immediately
   if (testEmail) {
     // Replace {{firstname}} with a visible placeholder so the admin sees how personalisation looks
     const testPersonalised = html.replace(/\{\{firstname\}\}/gi, '[Firstname]');
     const testHtml = testPersonalised + `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">Test send — unsubscribe link placeholder</p>`;
-    await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: testEmail, subject: `[TEST] ${subject}`, html: testHtml });
+    await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: testEmail, subject: `[TEST] ${subject}`, html: testHtml, attachments: [headerAttachment] });
     return res.json({ success: true, mode: 'test', sent: 1 });
   }
 
@@ -627,7 +634,7 @@ app.post('/api/admin/guests/broadcast', requireAdminKey, async (req: any, res: a
         const footer = `<br><br><hr style="border:none;border-top:1px solid #eee"><p style="font-size:11px;color:#999;text-align:center">You are receiving this because you stayed at DEVOCEAN Lodge.<br><a href="${unsubUrl}" style="color:#9e4b13">Unsubscribe</a></p>`;
         // Personalise: replace {{firstname}} with the guest's first name (fallback to empty string so "Dear ," still works if absent)
         const personalised = html.replace(/\{\{firstname\}\}/gi, r.firstName?.trim() || '');
-        await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: r.email, subject, html: personalised + footer });
+        await transporter.sendMail({ from: `"${fromName}" <${fromEmail}>`, to: r.email, subject, html: personalised + footer, attachments: [headerAttachment] });
         sent++;
       } catch (e) {
         failed++;
