@@ -2,7 +2,7 @@ import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings } from '../../shared/schema';
 import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking } from '../../shared/schema';
-import { eq, and, lte, gte, isNull, sql, or, ilike, count, desc } from 'drizzle-orm';
+import { eq, and, lte, gte, isNull, isNotNull, ne, sql, or, ilike, count, desc } from 'drizzle-orm';
 
 /**
  * Database Service
@@ -638,7 +638,7 @@ export class DatabaseService {
       this.db
         .selectDistinct({ countryCode: guests.countryCode })
         .from(guests)
-        .where(sql`${guests.countryCode} IS NOT NULL AND ${guests.countryCode} != ''`)
+        .where(and(isNotNull(guests.countryCode), ne(guests.countryCode, '')))
         .orderBy(guests.countryCode),
     ]);
     const sources: Record<string, number> = {};
