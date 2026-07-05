@@ -28,6 +28,13 @@ else
   echo "⚠ ADMIN_API_KEY env var not set — skipping secret upload"
 fi
 
+echo "▶ Setting GOOGLE_MAPS_API_KEY secret on Cloudflare Pages..."
+if [[ -n "$GOOGLE_MAPS_API_KEY" ]]; then
+  echo "$GOOGLE_MAPS_API_KEY" | npx wrangler pages secret put GOOGLE_MAPS_API_KEY --project-name devocean-lodge
+else
+  echo "⚠ GOOGLE_MAPS_API_KEY env var not set — skipping secret upload"
+fi
+
 echo "▶ Deploying to Cloudflare Pages..."
 if [[ "$1" == "--preview" ]]; then
   npx wrangler pages deploy ./dist --branch preview

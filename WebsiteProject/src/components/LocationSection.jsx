@@ -7,7 +7,7 @@ export default function LocationSection({ ui }) {
   const [showInteractiveMap, setShowInteractiveMap] = useState(false);
   const [staticMapFailed, setStaticMapFailed] = useState(false);
 
-  const staticMapUrl = `https://devocean-api.onrender.com/api/static-map?lat=${MAP.lat}&lng=${MAP.lng}&zoom=${MAP.zoom}&width=896&height=320`;
+  const staticMapUrl = `/api/static-map?lat=${MAP.lat}&lng=${MAP.lng}&zoom=${MAP.zoom}&width=896&height=320`;
 
   return (
     <section id="location" className="bg-slate-50 border-y">
