@@ -12,6 +12,17 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
   const [mountedIndices, setMountedIndices] = useState(() => new Set([0]));
   const list = Array.isArray(images) ? images.filter(Boolean) : [];
   const trustindexRef = useRef(null);
+  // Tracks which slide images have actually finished downloading (or failed —
+  // either way "resolved", so we never wait forever). Slide 0 is eager/high
+  // priority and always the first thing requested, so it's pre-marked ready.
+  // A ref (not state) on purpose: read inside the rotation interval without
+  // needing it as an effect dependency, which would otherwise restart/reset
+  // the 6s timer every time an image finishes loading.
+  const resolvedRef = useRef(new Set([0]));
+  // Counts consecutive ticks the rotation has held on the current slide while
+  // waiting for the next image — caps the wait so a genuinely broken image
+  // can't freeze the slideshow forever.
+  const stallTicksRef = useRef(0);
   
   const buildUrl = (path, hash = '') => {
     const params = new URLSearchParams();
@@ -32,6 +43,23 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     const id = setInterval(() => {
       setIdx(prev => {
         const next = (prev + 1) % list.length;
+
+        // Don't reveal a slide whose image hasn't actually finished
+        // downloading yet — that leaves the outer slide wrapper visible
+        // while its <img> is still mid-fetch, showing the flat brand-color
+        // fallback underneath instead of a photo (seen on Clarity for
+        // hero03-05, whose mobile WebP files are larger, on slower mobile
+        // connections). Hold on the current slide a bit longer instead,
+        // up to a couple of extra ticks, so a genuinely stuck/broken image
+        // can't freeze the rotation forever.
+        if (!resolvedRef.current.has(next) && stallTicksRef.current < 2) {
+          stallTicksRef.current += 1;
+          const retryUpcoming = (next + 1) % list.length;
+          setMountedIndices(m => new Set([...m, next, retryUpcoming]));
+          return prev;
+        }
+        stallTicksRef.current = 0;
+
         const upcoming = (next + 1) % list.length;
         // Mount the slide-after-next now — it has a full 6s interval to download
         setMountedIndices(m => new Set([...m, upcoming]));
@@ -121,6 +149,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
                   width={1920}
                   height={1080}
                   aspectRatio="16/9"
+                  onLoadComplete={() => resolvedRef.current.add(i)}
                 />
               )}
             </div>

@@ -23,6 +23,7 @@ export default function LazyImage({
   height,
   aspectRatio = '3/2',
   isLCP = false,
+  onLoadComplete,
   ...props
 }) {
   // ─── LCP fast-path ────────────────────────────────────────────────────────
@@ -54,6 +55,7 @@ export default function LazyImage({
           decoding="async"
           {...(width && { width })}
           {...(height && { height })}
+          {...(onLoadComplete && { onLoad: onLoadComplete, onError: onLoadComplete })}
           style={sharedStyle}
         />
       </picture>
@@ -95,7 +97,16 @@ export default function LazyImage({
   const imgProps = {
     ref: imgRef,
     alt,
-    onLoad: () => setImageLoaded(true),
+    onLoad: () => {
+      setImageLoaded(true);
+      if (onLoadComplete) onLoadComplete();
+    },
+    onError: () => {
+      // Treat a failed load as "resolved" too — otherwise a broken/slow
+      // image can stall the hero rotation forever waiting on a load event
+      // that will never fire.
+      if (onLoadComplete) onLoadComplete();
+    },
     loading,
     decoding: 'async',
     ...(fetchpriority && { fetchpriority }),

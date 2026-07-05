@@ -19,3 +19,4 @@
 - [Render Blueprint name+type match](render-blueprint-name-type.md) — both name AND type must match existing Render service or Blueprint silently creates a duplicate; current: Automailer(web) + Receptionist(web)
 - [Marin VAD response muting](marin-vad-response-muting.md) — mute VAD on response.created / unmute on response.done; sessionGreetingSent flag prevents infinite session.updated loop from VAD session.update calls
 - [In-app browser viewport quirk](in-app-browser-viewport-quirk.md) — FB/IG in-app browsers briefly report near-zero innerHeight on first paint, breaking fixed-position UI; verify Clarity device metadata before assuming a screenshot is a thumbnail artifact
+- [Hero carousel load race](hero-carousel-load-race.md) — timer-driven crossfade must gate reveal on the slide's own image onLoad/onError, not just elapsed lead time, or slow/large images flash the fallback background
