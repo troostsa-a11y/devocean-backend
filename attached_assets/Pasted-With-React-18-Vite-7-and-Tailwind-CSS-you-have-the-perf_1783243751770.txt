@@ -1,0 +1,29 @@
+With React 18, Vite 7, and Tailwind CSS, you have the perfect modern stack to automatically adjust your app using utility-first responsive design. Tailwind eliminates the need to write custom CSS media queries or configure separate layouts manually.Here is exactly how you handle screen adjustments automatically in your specific stack.The Tailwind Approach: Mobile-First BreakpointsTailwind uses a mobile-first responsive system. This means any utility class you write applies to the smallest screens by default. To adjust the layout for larger desktop screens, you prefix the utility with a breakpoint name (like md: or lg:).Official Tailwind BreakpointsTailwind includes five default breakpoints based on common device widths:sm (640px) — Compact tablets or large phones.md (768px) — Standard tablets.lg (1024px) — Laptops and small desktop monitors.xl (1280px) — Standard desktop monitors.2xl (1536px) — Ultra-wide monitors or high-res displays.Step-by-Step Implementation Examples1. Automatic Column Stacking (Flexbox / Grid)Instead of creating separate components for mobile and desktop, use Tailwind's responsive prefixes to change layout structures instantly.tsx// This component automatically shifts from 1 column on small screens to 3 columns on desktops
+export default function DashboardGrid() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+      <div className="bg-white p-6 rounded shadow">Card 1</div>
+      <div className="bg-white p-6 rounded shadow">Card 2</div>
+      <div className="bg-white p-6 rounded shadow">Card 3</div>
+    </div>
+  );
+}
+Use code with caution.How it works: grid-cols-1 applies everywhere. Once the screen hits 768px (md), it snaps to 2 columns. At 1024px (lg), it safely settles into 3 columns.2. Auto-Hiding and Toggling SidebarsIn desktop apps, you often want a sidebar, but on a tiny screen, that sidebar should hide or turn into a slide-out drawer.tsxexport default function Navigation() {
+  return (
+    <nav className="flex items-center justify-between p-4 bg-slate-800 text-white">
+      <div className="text-xl font-bold">MyApp</div>
+      
+      {/* Desktop Links: Hidden on mobile, flex row on desktop */}
+      <div className="hidden md:flex space-x-4">
+        <a href="#home">Home</a>
+        <a href="#settings">Settings</a>
+      </div>
+
+      {/* Mobile Menu Button: Visible on mobile, hidden on desktop */}
+      <button className="block md:hidden p-2 bg-slate-700 rounded">
+        Menu
+      </button>
+    </nav>
+  );
+}
+Use code with caution.Pro-Tips for React 18 + Vite 7 + TailwindKeep Vite Config Lean: Vite 7 natively handles Tailwind CSS processing seamlessly. You do not need bloated PostCSS configurations; just import your primary CSS file containing @import "tailwindcss"; (if using Tailwind v4 syntax common in 2026) or your standard @tailwind directives.Avoid JavaScript for Resizing: Do not track window width using React state (window.innerWidth) unless absolutely necessary (like dynamically destroying a heavy map component). Rely entirely on Tailwind's CSS classes for visual scaling. CSS handles resizing fluidly without triggering expensive React component re-renders.Previewing Sizes in Vite: When running your Vite development server (npm run dev), open your browser's Developer Tools (F12) and toggle the Device Toolbar. This lets you drag the viewport width continuously to watch Tailwind's breakpoints snap your layout into place in real time.
