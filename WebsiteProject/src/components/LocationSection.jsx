@@ -5,6 +5,7 @@ import { MAP } from '../data/content';
 
 export default function LocationSection({ ui }) {
   const [showInteractiveMap, setShowInteractiveMap] = useState(false);
+  const [staticMapFailed, setStaticMapFailed] = useState(false);
 
   const staticMapUrl = `https://devocean-api.onrender.com/api/static-map?lat=${MAP.lat}&lng=${MAP.lng}&zoom=${MAP.zoom}&width=896&height=320`;
 
@@ -25,12 +26,24 @@ export default function LocationSection({ ui }) {
         <div className="rounded-2xl overflow-hidden border shadow relative">
           {!showInteractiveMap ? (
             <>
-              <img
-                src={staticMapUrl}
-                alt="DEVOCEAN Lodge Location Map"
-                className="w-full h-80 object-cover"
-                loading="lazy"
-              />
+              {staticMapFailed ? (
+                <div
+                  className="w-full h-80 flex flex-col items-center justify-between py-10 bg-gradient-to-br from-sky-100 via-slate-100 to-emerald-50"
+                  data-testid="img-location-map-placeholder"
+                >
+                  <MapPin size={36} className="text-sky-500/70" />
+                  <span className="text-sm font-medium text-slate-500">{ui.location.headline}</span>
+                </div>
+              ) : (
+                <img
+                  src={staticMapUrl}
+                  alt="DEVOCEAN Lodge Location Map"
+                  className="w-full h-80 object-cover"
+                  loading="lazy"
+                  onError={() => setStaticMapFailed(true)}
+                  data-testid="img-location-map"
+                />
+              )}
               <button
                 onClick={() => setShowInteractiveMap(true)}
                 className="absolute inset-0 flex items-center justify-center bg-slate-900/40 hover:bg-slate-900/50 transition-colors group"
