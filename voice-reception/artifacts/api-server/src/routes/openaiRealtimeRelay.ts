@@ -95,11 +95,23 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   // ── OpenAI connection lifecycle ────────────────────────────────────────────
 
   // Shared VAD config — referenced by session.update on open AND when re-enabling after tool calls.
+  //
+  // interrupt_response: false is required here (not just the manual mute below).
+  // OpenAI's server_vad defaults interrupt_response to true, meaning it will
+  // auto-cancel an in-progress response the instant it detects speech-like audio —
+  // independent of our own turn_detection:null mute. There is an unavoidable race
+  // between response.created firing and our mute session.update being processed
+  // by OpenAI; during that window, speaker bleed/ambient noise can trigger a false
+  // VAD "speech_started" and OpenAI itself (not our relay) truncates the response
+  // mid-sentence. Disabling interrupt_response at the source closes this race
+  // entirely, regardless of message timing. create_response stays default (true)
+  // so normal end-of-turn auto-response still works.
   const SERVER_VAD = {
     type: "server_vad" as const,
     threshold: 0.65,          // higher = less sensitive to ambient noise (default 0.5)
     silence_duration_ms: 600, // wait a bit longer before cutting off speech
     prefix_padding_ms: 300,
+    interrupt_response: false,
   };
 
   openaiWs.on("open", async () => {
