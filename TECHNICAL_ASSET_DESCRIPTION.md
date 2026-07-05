@@ -1,8 +1,28 @@
 # DEVOCEAN Lodge — Technical Asset Description
 
-**Purpose:** Internal technical reference documenting the architecture, technology stack, infrastructure, data model, integrations, and security posture of the DEVOCEAN Lodge platform, as of July 2026.
+**Purpose:** A complete reference to the DEVOCEAN Lodge digital platform, written to serve three audiences at once: (1) a buyer or investor performing technical due diligence, (2) an insurer, valuer, or compliance reviewer who needs a clear inventory of assets, data, and risk exposure, and (3) the lodge owner, as a plain-language explanation of what was built and why it matters — without needing to read code.
 
 **Scope:** All three production systems in this monorepo — the marketing website, the email automation service, and the Marin voice receptionist — and how they interact.
+
+**As of:** July 2026.
+
+---
+
+## 0. Executive Summary (plain language)
+
+DEVOCEAN Lodge's digital operation is built from three separate pieces of software that work together. None of it is off-the-shelf booking software (like a Booking.com widget) — it was custom-built specifically for this property.
+
+**1. The website** (`devoceanlodge.com`) is where guests learn about the lodge, browse rooms, and book directly. Booking directly (rather than only through Booking.com/Airbnb) matters commercially because it avoids the ~15-20% commission those platforms charge. A guest can pick dates, pay a deposit by card, and the system automatically checks real-time availability with the property management system (Beds24) so it's impossible to double-book a room online.
+
+**2. The email robot** (internal name: "Automailer") watches the booking inbox and automatically sends guests the right email at the right time — a confirmation after booking, a reminder before arrival, a welcome note on arrival day, and a thank-you after departure — in the guest's own language (20 languages supported). This replaces what would otherwise be manual staff work for every single booking.
+
+**3. Marin, the AI voice receptionist**, is a talking assistant embedded on the website (a microphone button guests can click). She can answer questions about the lodge, check real room availability and pricing live, convert prices between currencies, check the weather, and take down enquiry details — and she emails the owner immediately when she does. She cannot create or cancel a real booking herself; she only ever reads live data and passes enquiries along to a human.
+
+**What runs where:** all three pieces run on paid third-party cloud services (Cloudflare, Render, Supabase, OpenAI, Stripe) rather than on hardware the business owns. There is nothing to physically maintain — the ongoing cost is the sum of these vendors' subscription/usage fees, which the owner should check directly on each vendor's billing dashboard since actual current pricing tiers are not tracked in this document.
+
+**How it's maintained:** the codebase was built and continues to be maintained through Replit's AI coding agent, with the owner directing the work rather than a dedicated in-house or agency development team. This keeps costs low but means continuity depends on either continuing that same workflow or bringing in a developer who can read the reference documentation in this repository (this document, `replit.md`, and `threat_model.md`) to get oriented quickly.
+
+**Bottom line for a buyer or insurer:** the software is a real, working, revenue-relevant asset (it directly drives bookings and reduces commission costs), built entirely with mainstream, replaceable, non-proprietary technology (no exotic frameworks, no vendor lock-in beyond normal SaaS switching costs), and it is reasonably documented. The main things worth confirming independently before a transaction or underwriting decision are listed in §7 (Risk Register).
 
 ---
 
@@ -176,7 +196,56 @@ The website, automation service, and voice receptionist are **separate deployabl
 
 ---
 
-## 6. Key File Map
+## 6. Valuation, Compliance & Business Continuity Notes
+
+This section is aimed at a due-diligence, insurance, or valuation reviewer who needs to know what is owned, what is exposed, and what depends on a third party.
+
+### 6.1 Ownership and portability
+- The entire codebase (all three components) is custom-built and owned by the lodge; there is no external agency retaining IP rights and no proprietary/licensed framework involved.
+- The stack is mainstream and portable: Node.js, TypeScript, React, PostgreSQL, Express. None of it is tied to Replit specifically — it can be exported and run on any standard Node hosting provider or self-hosted, subject to re-pointing the third-party service credentials listed in §5.1.
+- No software patents, trademarks, or open-source licensing obligations beyond standard permissive (MIT-style) npm dependencies are known to apply.
+
+### 6.2 Data privacy exposure
+- Guest personal data collected and stored: name, email, phone number, booking dates, room/unit, language, IP address (for spam/attribution purposes), and free-text enquiry/message content. Stored in two separate Supabase PostgreSQL databases (Lodge/Automailer DB; a separate Reception DB for Marin).
+- The property is in Mozambique, but a material share of guests are likely EU/UK residents, so **GDPR principles are commercially relevant even though the business itself is outside the EU** — this document does not constitute legal advice; a privacy policy, lawful-basis statement, and guest-facing data retention/deletion process should be confirmed or established with a lawyer before a sale, audit, or insurance underwriting decision.
+- No dedicated data retention/expiry policy is implemented in code today (bookings and messages are kept indefinitely) — worth a deliberate decision either way rather than a default.
+
+### 6.3 Payment / PCI scope
+- Card payments (native direct-booking deposits) are processed entirely through **Stripe Checkout**, a Stripe-hosted page — the business's own servers and database never receive, transmit, or store card numbers.
+- This keeps the business's PCI-DSS scope minimal (typically self-assessment level "SAQ A", the lightest tier) but should be confirmed with Stripe/a QSA if this matters for the transaction or policy in question.
+
+### 6.4 Third-party dependency inventory (see §5.2 for detail)
+Cloudflare (site hosting/CDN), Render (2 application services), Supabase (2 Postgres databases), Stripe (payments), OpenAI (voice AI), Beds24 (property management/availability — the one dependency that is specific to the hospitality industry and hardest to replace), an SMTP/Resend provider (email delivery), and Google Analytics 4 (attribution). All are mainstream vendors with published uptime track records and their own compliance certifications (e.g., Stripe is PCI-DSS Level 1 certified); none of them are exotic or high switching-cost beyond typical SaaS migration effort.
+
+### 6.5 Business continuity / disaster recovery
+- Database backup/retention depends on the Supabase plan tier selected for each of the two projects — this has not been independently verified as part of this document and should be checked directly in the Supabase dashboard before relying on it for a recovery plan.
+- No automated cross-region failover or documented incident-response runbook exists today for the Render services or the website; if uptime SLAs matter for the transaction, this should be tested and documented separately (see §7).
+- Deploys are git-based (GitHub `main` → Render; `wrangler` → Cloudflare Pages), so rolling back to a previous working version is straightforward via standard git history — there is no proprietary release process to reverse-engineer.
+
+### 6.6 Key-person / continuity risk
+- The platform has been built and is maintained by the owner working with Replit's AI coding agent rather than a dedicated engineering team. This is a legitimate low-overhead operating model, but it means institutional knowledge is concentrated with the owner rather than distributed across a team.
+- This document, `replit.md`, and `threat_model.md` together are the mitigation for that risk — they are written specifically so a new developer (or a buyer's technical reviewer) can get oriented without needing to interview the original builder.
+
+---
+
+## 7. Risk Register & Recommendations
+
+Concise, action-oriented list of what to verify or address before a sale, insurance underwriting decision, or major investment of trust in this platform. None of these are "the code is broken" issues — the application is functioning in production — they are diligence/verification gaps.
+
+| # | Risk / gap | Why it matters | Suggested action |
+|---|---|---|---|
+| 1 | No independent security audit or penetration test has been performed | `threat_model.md` is a self-authored internal analysis, not third-party verification | Commission an external pentest/audit before a sale or if handling higher payment volumes |
+| 2 | GDPR/privacy-policy formalities not confirmed | Guest PII is processed for an international guest base | Legal review of privacy policy, lawful basis, and data retention practice |
+| 3 | Database backup/retention policy not independently verified | Data loss risk if the Supabase plan tier has minimal backup retention | Confirm current Supabase backup settings and retention window for both projects |
+| 4 | No documented incident-response runbook or uptime SLA | Unclear recovery time if Render/Cloudflare/Supabase has an outage | Write a short runbook; consider uptime monitoring/alerting if not already in place |
+| 5 | Key-person concentration (single owner-operator + AI agent workflow) | Continuity risk if the owner is unavailable | Keep this document and `replit.md` current; consider a handover checklist |
+| 6 | `render.yaml` service name/type must exactly match the live Render service | A mismatch silently creates a duplicate service instead of updating the existing one | Verify before every Render Blueprint change (already flagged in `replit.md`) |
+| 7 | 20-language content parity is manually maintained | New content silently renders blank (`undefined`) for languages not yet updated | Consider a lint/CI check that fails when a language object is missing a key |
+| 8 | No formal PCI/compliance certification held by the business itself | Relies entirely on Stripe's certification for payment security | Confirm SAQ-A eligibility in writing with Stripe if required for insurance/underwriting |
+
+---
+
+## 8. Key File Map
 
 | Concern | Path |
 |---|---|
