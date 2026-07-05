@@ -131,6 +131,27 @@
   btn.appendChild(iconSpan);
   document.body.appendChild(btn);
 
+  // In-app browsers (Facebook, Instagram, Messenger) briefly report a
+  // near-zero viewport height on first paint while their own animated
+  // toolbar chrome is still collapsing — e.g. a real session logged
+  // 390x135 (iOS 18, FacebookApp). At that height this fixed bottom-right
+  // button (bottom:28px + 60px tall) lands on top of the fixed header
+  // instead of below the page content. No real device — including
+  // landscape phones (~320px+ tall) — is ever this short, so hide the
+  // button below a generous safety floor and re-check on resize; the
+  // in-app browser corrects itself to the real device height within
+  // ~1s and the button appears normally once it does.
+  var MIN_SAFE_VIEWPORT_HEIGHT = 250;
+  function updateButtonVisibility() {
+    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    btn.style.display = h >= MIN_SAFE_VIEWPORT_HEIGHT ? "flex" : "none";
+  }
+  updateButtonVisibility();
+  window.addEventListener("resize", updateButtonVisibility);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", updateButtonVisibility);
+  }
+
   var open = false;
 
   function stopRinging() {
