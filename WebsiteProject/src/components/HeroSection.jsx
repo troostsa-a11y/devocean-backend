@@ -193,15 +193,20 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
       </div>
 
-      {/* Stars, badge and Trustindex widget. On mobile (<640px) this now flows
-          naturally in-document right after the CTA grid, so its position always
-          tracks the CTA grid's actual rendered height — it can never overlap the
-          buttons regardless of viewport height, button-label wrapping, or
-          translation string length. (Previously `absolute bottom-*` anchored to
-          the section, hand-tuned per device height band — that broke on any real
-          viewport outside the tuned bands, per Clarity recordings.) Desktop
-          (sm:+) keeps the original absolute-bottom-pinned placement, unchanged. */}
-      <div className="static sm:absolute mt-6 sm:mt-0 sm:bottom-10 sm:left-0 sm:right-0 z-10 max-w-7xl mx-auto px-4">
+      {/* Stars, badge and Trustindex widget. In-flow (static) by default, so it
+          always sits directly below the CTA grid's actual rendered height —
+          it can never overlap the buttons regardless of viewport height,
+          button-label wrapping, or translation string length. (Previously
+          `absolute bottom-*` anchored to the section, hand-tuned per device
+          height band — that broke on any real viewport outside the tuned
+          bands, per Clarity recordings.) Only switches to the original
+          absolute-bottom-pinned desktop placement when BOTH width >= 640px
+          AND height > 600px — matching the existing `max-height:600px`
+          landscape-phone threshold used elsewhere in this file (h1 hide,
+          CTA margin). Plain `sm:` (width-only) would wrongly route landscape
+          phones (e.g. 667x375, 932x430 — width >= 640px but just as short as
+          a portrait phone) into the desktop path and reintroduce the bug. */}
+      <div className="static [@media_(min-width:640px)_and_(min-height:601px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:601px)]:mt-0 [@media_(min-width:640px)_and_(min-height:601px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:601px)]:left-0 [@media_(min-width:640px)_and_(min-height:601px)]:right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
