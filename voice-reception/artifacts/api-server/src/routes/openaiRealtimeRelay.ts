@@ -60,10 +60,47 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   // Subsequent session.update calls (VAD mute/unmute) also trigger session.updated
   // and must NOT fire another response.create or the session loops infinitely.
   let sessionGreetingSent = false;
-  // True while Marin is generating a response (response.created → response.done).
-  // Used to discard falsely-detected "speech" (echo/ambient noise through speakers)
-  // during the VAD mute race window — see input_audio_buffer.speech_started handler.
-  let marinResponseActive = false;
+
+  // ── VAD mute/unmute state ───────────────────────────────────────────────────
+  // True from response.created until response.done — i.e. OpenAI is actively
+  // generating this turn. Also used to discard falsely-detected "speech"
+  // (echo/ambient noise through speakers) during the mute race window right
+  // after response.created — see input_audio_buffer.speech_started handler.
+  let responseInFlight = false;
+  // True once the BROWSER confirms it has finished actually playing back the
+  // audio for the current turn (see "client.mia_playback_done" below). This is
+  // deliberately separate from response.done: response.done only means OpenAI
+  // finished GENERATING the turn — for longer responses (e.g. reciting back a
+  // full reservation summary) generation regularly outpaces real-time playback,
+  // so several seconds of audio can still be queued/playing in the browser
+  // after response.done fires. Unmuting on response.done alone re-opens the mic
+  // during that playback tail; any echo/ambient noise then triggers speech_started,
+  // and the client's barge-in handler (stopPlayback()) abruptly cuts Marin off
+  // mid-sentence even though generation was already complete.
+  let playbackDrained = true;
+  let unmuteFallbackTimer: NodeJS.Timeout | null = null;
+
+  function clearUnmuteFallbackTimer(): void {
+    if (unmuteFallbackTimer) {
+      clearTimeout(unmuteFallbackTimer);
+      unmuteFallbackTimer = null;
+    }
+  }
+
+  // Only re-enable server VAD once BOTH generation and playback have finished
+  // for the current turn. If a new response starts before that happens (e.g.
+  // the immediate follow-up response.create after a tool call), responseInFlight
+  // flips back to true and this is a no-op until the new turn also fully drains.
+  function maybeUnmuteVad(): void {
+    if (responseInFlight || !playbackDrained) return;
+    clearUnmuteFallbackTimer();
+    if (openaiWs.readyState === WebSocket.OPEN) {
+      openaiWs.send(JSON.stringify({
+        type: "session.update",
+        session: { type: "realtime", audio: { input: { turn_detection: SERVER_VAD } } },
+      }));
+    }
+  }
 
   async function initConversation(): Promise<void> {
     try {
@@ -179,12 +216,15 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       return; // do not relay session.updated to browser
     }
 
-    // ── VAD muting: disable while Marin is generating a response ────────────
-    // This prevents server VAD from treating Marin's audio output (heard via
-    // speakers) as user speech and falsely triggering an interrupt mid-sentence.
-    // Mute on response.created, unmute on response.done.
+    // ── VAD muting: disable while Marin is generating AND while she's still ──
+    // playing back audio in the browser. Mute (force) on every response.created;
+    // only unmute once BOTH generation is done (response.done) AND the browser
+    // has confirmed local playback fully drained (client.mia_playback_done,
+    // handled in the client-message listener below). See maybeUnmuteVad().
     if (evtType === "response.created") {
-      marinResponseActive = true;
+      responseInFlight = true;
+      playbackDrained = false;
+      clearUnmuteFallbackTimer();
       if (openaiWs.readyState === WebSocket.OPEN) {
         openaiWs.send(JSON.stringify({
           type: "session.update",
@@ -195,13 +235,16 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     }
 
     if (evtType === "response.done") {
-      marinResponseActive = false;
-      if (openaiWs.readyState === WebSocket.OPEN) {
-        openaiWs.send(JSON.stringify({
-          type: "session.update",
-          session: { type: "realtime", audio: { input: { turn_detection: SERVER_VAD } } },
-        }));
-      }
+      responseInFlight = false;
+      // Safety net: if the browser's playback-drained ack never arrives (e.g. a
+      // dropped WS message), don't leave the mic permanently muted. 20s is well
+      // beyond any plausible legitimate response playback duration.
+      unmuteFallbackTimer = setTimeout(() => {
+        logger.warn("Realtime relay: playback-drained ack timed out, force-unmuting VAD");
+        playbackDrained = true;
+        maybeUnmuteVad();
+      }, 20000);
+      maybeUnmuteVad();
       // fall through — relay response.done to browser
     }
 
@@ -211,7 +254,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
     // VAD can still detect Marin's speaker output as "speech". If that happens,
     // clear the input buffer immediately so it doesn't interrupt Marin mid-sentence.
     // This is belt-and-suspenders on top of the session.update mute above.
-    if (evtType === "input_audio_buffer.speech_started" && marinResponseActive) {
+    if (evtType === "input_audio_buffer.speech_started" && responseInFlight) {
       logger.info("Realtime relay: discarding false VAD trigger during Marin response");
       if (openaiWs.readyState === WebSocket.OPEN) {
         openaiWs.send(JSON.stringify({ type: "input_audio_buffer.clear" }));
@@ -302,8 +345,24 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
   // ── Browser connection lifecycle ───────────────────────────────────────────
 
   clientWs.on("message", (data) => {
+    const raw = data.toString();
+
+    // Client-local signal only — never forward to OpenAI. Sent by the browser
+    // once it has actually finished playing all queued Marin audio for the
+    // current turn (not just when OpenAI finished generating it).
+    try {
+      const parsed = JSON.parse(raw) as { type?: string };
+      if (parsed.type === "client.mia_playback_done") {
+        playbackDrained = true;
+        maybeUnmuteVad();
+        return;
+      }
+    } catch {
+      // Not JSON (shouldn't happen for our protocol) — fall through and relay as-is
+    }
+
     if (openaiWs.readyState === WebSocket.OPEN) {
-      openaiWs.send(data.toString());
+      openaiWs.send(raw);
     }
   });
 

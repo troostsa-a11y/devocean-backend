@@ -91,6 +91,14 @@ export function useRealtimeSession({
     if (miaSpeakingRef.current === speaking) return;
     miaSpeakingRef.current = speaking;
     cbRef.current.onMiaSpeaking?.(speaking);
+    // Tell the relay we've actually finished PLAYING Marin's audio locally —
+    // response.done on the relay only means generation finished, which can
+    // outpace real-time playback on longer responses. The relay waits for
+    // this ack before re-enabling VAD, so it doesn't reopen the mic (and risk
+    // an echo-triggered cutoff) while audio is still queued/playing here.
+    if (!speaking && wsRef.current?.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({ type: "client.mia_playback_done" }));
+    }
   }, []);
 
   const stopPlayback = useCallback(() => {
