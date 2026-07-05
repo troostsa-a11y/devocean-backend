@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Plus, Minus, ExternalLink } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
+import { localizeUnits } from '../utils/localize';
 import LanguageTopBar from './LanguageTopBar';
 import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
@@ -55,6 +56,17 @@ const FIELD_LABEL_CLASS =
 
 export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency, region, onLangChange, onRegionChange, onCurrencyChange }) {
   const t = useMemo(() => getBookingStrings(lang), [lang]);
+  // Beds24 returns room names in plain English only (they live in the Beds24
+  // property config, not this codebase) — reuse the same accommodation-name
+  // translations as the marketing unit pages so guests see a localized name
+  // instead of the raw Beds24 string.
+  const localizedUnits = useMemo(() => localizeUnits(lang), [lang]);
+  const getUnitKey = (name) =>
+    ['safari', 'comfort', 'cottage', 'chalet'].find((k) => (name || '').toLowerCase().includes(k));
+  const translateRoomName = (name) => {
+    const unitKey = getUnitKey(name);
+    return (unitKey && localizedUnits.find((u) => u.key === unitKey)?.title) || name;
+  };
   const [, navigate] = useLocation();
 
   const [step, setStep] = useState('search'); // search | results | details
@@ -726,10 +738,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       const incDisabled = qty >= units || !canAddRoom;
                       // Map the Beds24 room to its marketing unit page + main image
                       // by matching the room name against the four unit slugs.
-                      const unitKey = ['safari', 'comfort', 'cottage', 'chalet']
-                        .find((k) => (room.name || '').toLowerCase().includes(k));
+                      const unitKey = getUnitKey(room.name);
                       const unitImg = unitKey ? IMG.units[unitKey] : null;
                       const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
+                      // Beds24 room names are English-only; show the translated
+                      // marketing name when we can match it, else fall back as-is.
+                      const displayName = translateRoomName(room.name);
                       // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
                       // every unit, so the child slot is driven by unit TYPE, not the
                       // Beds24 numbers: the Safari/Comfort tents + Chalet each take
@@ -767,7 +781,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-3 sm:gap-4">
                             <div className="flex-1 min-w-0">
                               <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
-                                {room.name}
+                                {displayName}
                               </h3>
                               <div className="flex flex-wrap items-baseline gap-x-2 mt-0.5">
                                 <p className="text-sm text-slate-500">
@@ -807,7 +821,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               >
                                 <img
                                   src={unitImg}
-                                  alt={room.name}
+                                  alt={displayName}
                                   loading="lazy"
                                   className="h-20 w-20 rounded-lg object-cover border border-slate-200"
                                 />
@@ -931,7 +945,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 data-testid={`row-cart-${line.roomId}`}
                               >
                                 <span className="text-slate-700">
-                                  {line.qty} × {line.roomName}
+                                  {line.qty} × {translateRoomName(line.roomName)}
                                   {rateLabelFor(line.roomId, line.offerId) && (
                                     <span className="block text-xs text-slate-400">{rateLabelFor(line.roomId, line.offerId)}</span>
                                   )}
@@ -1041,7 +1055,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       data-testid={`row-summary-${line.roomId}`}
                     >
                       <span className="text-slate-700">
-                        {line.qty} × {line.roomName}
+                        {line.qty} × {translateRoomName(line.roomName)}
                         {rateLabelFor(line.roomId, line.offerId) && (
                           <span className="block text-xs text-slate-400">{rateLabelFor(line.roomId, line.offerId)}</span>
                         )}
