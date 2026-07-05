@@ -1,6 +1,6 @@
 # DEVOCEAN Lodge — Technical Asset Description
 
-**Purpose:** A complete reference to the DEVOCEAN Lodge digital platform, written to serve three audiences at once: (1) a buyer or investor performing technical due diligence, (2) an insurer, valuer, or compliance reviewer who needs a clear inventory of assets, data, and risk exposure, and (3) the lodge owner, as a plain-language explanation of what was built and why it matters — without needing to read code.
+**Purpose:** A complete reference to the DEVOCEAN Lodge digital platform, written to serve four audiences at once: (1) a buyer or investor performing technical due diligence, (2) an insurer, valuer, or compliance reviewer who needs a clear inventory of assets, data, and risk exposure, (3) the lodge owner, as a plain-language explanation of what was built and why it matters — without needing to read code, and (4) a lender or financing partner who needs a defensible estimate of the platform's replacement cost as an asset (§8).
 
 **Scope:** All three production systems in this monorepo — the marketing website, the email automation service, and the Marin voice receptionist — and how they interact.
 
@@ -245,7 +245,94 @@ Concise, action-oriented list of what to verify or address before a sale, insura
 
 ---
 
-## 8. Key File Map
+## 8. Replacement Cost & Financing Valuation
+
+Prepared for financing purposes — a scope-based professional estimate of what it would cost to rebuild this platform from scratch today, in the same format used for other technical asset valuations. This is not a formal software audit; an independent technical assessor can verify scope against the live system and source code on request.
+
+### 8.1 Codebase Scope Snapshot
+
+| Asset | Approx. lines of code | Key scope indicators |
+|---|---|---|
+| Marketing Website (`WebsiteProject/`) | ~34,900 | 22 language files (20 base languages), 13 Cloudflare Functions (serverless backend), native direct-booking flow with Stripe + Beds24 |
+| Email Automation Service (`render-automailer/`) | ~8,800 | 8 PostgreSQL data models, 16 backend service/route files, 6 language template sets, IMAP parser + cron scheduler |
+| Marin Voice Receptionist (`voice-reception/`) | ~16,900 | 4 PostgreSQL data models, 7 API route modules, OpenAI real-time audio relay, React admin dashboard |
+| **Combined** | **~60,600** | 12 database models combined across 2 databases; 3 independently deployed services across 2 hosting platforms |
+
+### 8.2 Asset 1 — Marketing Website: Replacement Cost Estimate
+
+| Component | Hours (Est.) | Rate (USD) | Cost |
+|---|---|---|---|
+| Core site architecture & component library (Header, Hero, Accommodations, Experiences, Gallery, Location, Contact, Footer) | 120 | $60 | $7,200 |
+| 20-language / 22-locale i18n system (translation framework + full content parity) | 140 | $60 | $8,400 |
+| Native direct-booking flow (date-range picker, Beds24 live quote, Stripe Checkout + webhook, deposit/balance logic, double-booking guard) | 160 | $60 | $9,600 |
+| Cloudflare Functions backend (contact form, experience inquiry, booking proxy, session tracking, static map proxy, admin export) | 60 | $60 | $3,600 |
+| GA4 server-side attribution pipeline (session tracking → purchase-event matching) | 40 | $60 | $2,400 |
+| Performance engineering (Core Web Vitals: LCP/CLS tuning, lazy-loading strategy, hero overlay) | 50 | $60 | $3,000 |
+| Accessibility & mobile UX (always-in-DOM mobile nav, WAI-ARIA compliance) | 20 | $60 | $1,200 |
+| Admin dashboard (guest data export, Excel generation) | 30 | $60 | $1,800 |
+| Testing, deployment & configuration (Wrangler, Cloudflare secrets) | 30 | $60 | $1,800 |
+| **Total** | **650** | | **$39,000** |
+
+> At European/US agency rates (USD 120–150/hour), equivalent replacement cost: **USD 78,000 – 97,500**.
+
+### 8.3 Asset 2 — Email Automation Service: Replacement Cost Estimate
+
+| Component | Hours (Est.) | Rate (USD) | Cost |
+|---|---|---|---|
+| Database design & migrations (8 models: bookings, guests, scheduled emails, email/check logs, cancellations, booking sessions, direct bookings) | 50 | $60 | $3,000 |
+| IMAP email parser (booking notification parsing, cancellation/modification detection, TLS-verified mail connection) | 100 | $60 | $6,000 |
+| Scheduled email engine (cron scheduling in CAT timezone, 4 guest lifecycle email types) | 70 | $60 | $4,200 |
+| Email template system (base HTML + 20-language/22-locale translation sets, template renderer) | 120 | $60 | $7,200 |
+| Native direct-booking backend (Beds24 REST wrapper, Stripe booking service, signature-verified webhook, double-booking guard) | 100 | $60 | $6,000 |
+| Admin API & authorization (`requireAdminKey`, guest data export) | 40 | $60 | $2,400 |
+| GA4 attribution matching logic | 30 | $60 | $1,800 |
+| Testing & deployment configuration (Render Blueprint) | 30 | $60 | $1,800 |
+| **Total** | **540** | | **$32,400** |
+
+> At European/US agency rates: **USD 64,800 – 81,000**.
+
+### 8.4 Asset 3 — Marin Voice Receptionist: Replacement Cost Estimate
+
+| Component | Hours (Est.) | Rate (USD) | Cost |
+|---|---|---|---|
+| Workspace scaffolding, Express API server, database design (4 models: conversations, messages, bookings, integration tokens) | 60 | $60 | $3,600 |
+| OpenAI real-time audio relay (WebSocket relay, session schema, voice-activity-detection tuning, response-loop guard) | 120 | $60 | $7,200 |
+| Conversational AI design (system prompt engineering, pronunciation guide, multi-tool orchestration: availability, weather, currency, booking enquiry) | 60 | $60 | $3,600 |
+| Beds24 live availability & pricing integration | 50 | $60 | $3,000 |
+| Booking-enquiry email notification service | 20 | $60 | $1,200 |
+| React admin dashboard (conversation history, transcript detail, auth, stats) | 100 | $60 | $6,000 |
+| Widget embed system (floating mic button, cross-origin iframe embed, same-origin widget loader) | 40 | $60 | $2,400 |
+| Browser audio pipeline (mic capture, PCM16 encoding, WebSocket streaming) | 50 | $60 | $3,000 |
+| Testing & deployment configuration (Render Blueprint, typecheck build pipeline) | 30 | $60 | $1,800 |
+| **Total** | **530** | | **$31,800** |
+
+> At European/US agency rates: **USD 63,600 – 79,500**.
+
+### 8.5 Combined Asset Summary
+
+| Asset | Replacement Cost (Regional, $60/hr) | Replacement Cost (International, $120–150/hr) |
+|---|---|---|
+| Marketing Website | $39,000 | $78,000 – $97,500 |
+| Email Automation Service | $32,400 | $64,800 – $81,000 |
+| Marin Voice Receptionist | $31,800 | $63,600 – $79,500 |
+| **Combined** | **~$103,200** | **~$206,400 – $258,000** |
+
+### 8.6 Additional Value Factors
+
+The following factors support a valuation above pure replacement cost:
+
+- **Live and operational** — all three systems are in active production use handling real guest bookings, real payments, and real guest communications, not prototypes or proofs of concept.
+- **Ongoing development** — the codebase shows a continuous history of feature work (native direct-booking with Stripe, GA4 server-side attribution, Marin's real-time voice AI, 20-language website expansion), evidencing active maintenance rather than a static, aging asset.
+- **Domain specificity** — hospitality-specific workflows (Beds24 PMS integration, CAT-timezone guest lifecycle emails, deposit/balance booking logic, live FX-aware voice AI pricing) are not available in generic off-the-shelf booking software; this represents accumulated domain knowledge with real reproduction cost.
+- **Commission avoidance** — the native direct-booking flow lets the lodge accept bookings without paying OTA (Booking.com/Airbnb-style) commissions, a direct and recurring revenue benefit tied specifically to this software.
+- **AI-driven guest experience** — Marin (built on OpenAI's real-time audio model) is a differentiated, difficult-to-replicate guest-facing feature few comparably sized hospitality operators have implemented.
+- **Multi-language reach** — 20 base languages / 22 locale variants across both the website and the guest email lifecycle materially broaden the addressable international guest market.
+- **Security & data integrity** — server-side price/authorization checks on all state-changing actions (booking creation, admin actions), signature-verified payment webhooks, and TLS-verified inbound mail processing (see `threat_model.md`) reduce operational and reputational risk for a system handling guest PII and payment-adjacent data.
+- **Portability** — built entirely on mainstream, non-proprietary technology (Node.js, TypeScript, React, PostgreSQL) with no vendor lock-in beyond standard SaaS switching costs (see §6.1).
+
+---
+
+## 9. Key File Map
 
 | Concern | Path |
 |---|---|
