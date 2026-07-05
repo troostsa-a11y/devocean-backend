@@ -21,7 +21,6 @@ import {
 import {
   getBookingConfig,
   splitDeposit,
-  allocateProportional,
   round2,
   type BookingConfig,
 } from '../config/booking-config';
@@ -250,6 +249,7 @@ export async function computeCartQuote(
   };
 
   const legs: DirectBookingLeg[] = [];
+  const legDepositPercents: number[] = []; // parallel to `legs`, set per offer type
   const unitsByRoom = new Map<string, number>(); // min units observed per room
   const countByRoom = new Map<string, number>();
 
@@ -284,6 +284,9 @@ export async function computeCartQuote(
       balance: 0,
       beds24BookingId: null,
     });
+    // Last-minute rate plans are always paid in full at booking, regardless of
+    // the arrival-date-based rule — never proportionally blended with other legs.
+    legDepositPercents.push(beds24.getDepositPercentForOffer(stay.checkIn, offer.type));
   }
 
   // Don't sell more units of a room type than Beds24 still has.
@@ -301,17 +304,24 @@ export async function computeCartQuote(
     }
   }
 
-  // Combined money: one total → one deposit (arrival-date %), apportioned over
-  // legs by each leg's share of the total via the largest-remainder method so
-  // the per-leg deposits sum back to the combined deposit exactly.
+  // Combined money: each leg's deposit is priced from its OWN effective %
+  // (100% for last-minute rate plans, otherwise the arrival-date %) — never
+  // proportionally blended, so a last-minute leg is always charged in full
+  // regardless of what other rooms in the same cart are paying now.
   const total = round2(legs.reduce((s, l) => s + l.total, 0));
-  const depositPercent = beds24.getDepositPercentForArrival(stay.checkIn);
-  const { deposit, balance } = splitDeposit(total, depositPercent);
-  const depositParts = allocateProportional(deposit, legs.map((l) => l.total));
+  let deposit = 0;
   legs.forEach((l, i) => {
-    l.deposit = depositParts[i];
-    l.balance = round2(l.total - l.deposit);
+    const { deposit: legDeposit, balance: legBalance } = splitDeposit(l.total, legDepositPercents[i]);
+    l.deposit = legDeposit;
+    l.balance = legBalance;
+    deposit = round2(deposit + legDeposit);
   });
+  const balance = round2(total - deposit);
+  // Single number shown as "Deposit now (X%)": the leg's own % when every leg
+  // shares the same rate, otherwise the blended % actually being charged now.
+  const depositPercent = legDepositPercents.every((p) => p === legDepositPercents[0])
+    ? legDepositPercents[0]
+    : (total > 0 ? Math.round((deposit / total) * 100) : beds24.getDepositPercentForArrival(stay.checkIn));
 
   const currency = beds24.getCurrency() || cfg.currency;
   const nights = nightsBetween(stay.checkIn, stay.checkOut);

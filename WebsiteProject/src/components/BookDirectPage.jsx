@@ -319,11 +319,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }
 
   // Localised rate-plan label for a room/offer (used in the cart summaries).
-  // Last-minute rates require a 100% deposit and are non-refundable; append a
-  // clarifying note to the rate label so guests understand the full prepayment.
+  // Last-minute rates require a 100% deposit at booking (not the usual partial
+  // deposit); append a clarifying note so guests don't miss the full prepayment.
   function withRateNote(label, type) {
     if (!label) return label;
-    return type === 'lastMinute' && t.nonRefOnly ? `${label} ${t.nonRefOnly}` : label;
+    return type === 'lastMinute' && t.depositFullNow ? `${label} (${t.depositFullNow})` : label;
   }
   function rateLabelFor(roomId, offerId) {
     const room = availableRooms.find((r) => r.roomId === roomId);
@@ -795,7 +795,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               </div>
                               {room.offers.length === 1 && (!offer.refundable || freeCancellation) && (
                                 <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                  {offer.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                                  {offer.refundable
+                                    ? fmt(t.cancellationPolicy, { days: cancelDays })
+                                    : offer.type === 'lastMinute' && t.depositFullNow
+                                      ? `${t.nonRefundable} \u00b7 ${t.depositFullNow}`
+                                      : t.nonRefundable}
                                 </p>
                               )}
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
@@ -867,11 +871,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                           <span className={`h-4 w-4 shrink-0 rounded-full border flex items-center justify-center ${checked ? 'border-[#9e4b13]' : 'border-slate-300'}`}>
                                             {checked && <span className="h-2 w-2 rounded-full bg-[#9e4b13]" />}
                                           </span>
-                                          <span className="text-sm font-medium text-slate-800">{withRateNote(t.rate?.[o.type] || o.type, o.type)}</span>
+                                          <span className="text-sm font-medium text-slate-800">{t.rate?.[o.type] || o.type}</span>
                                         </span>
                                         {(!o.refundable || freeCancellation) && (
                                           <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                            {o.refundable ? fmt(t.cancellationPolicy, { days: cancelDays }) : t.nonRefundable}
+                                            {o.refundable
+                                              ? fmt(t.cancellationPolicy, { days: cancelDays })
+                                              : o.type === 'lastMinute' && t.depositFullNow
+                                                ? `${t.nonRefundable} \u00b7 ${t.depositFullNow}`
+                                                : t.nonRefundable}
                                           </span>
                                         )}
                                       </span>

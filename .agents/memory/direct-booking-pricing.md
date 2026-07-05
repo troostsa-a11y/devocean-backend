@@ -20,7 +20,8 @@ The native `/book-direct` flow (Beds24 REST + Stripe deposit) must produce the *
 
 - Normal arrival: **50%** deposit now, balance on arrival.
 - **100%** (full prepayment) when arrival is within `bookingNearTypeDays` (7) of today **OR** arrival falls inside the exceptional window (2026-12-28 .. 2027-01-04).
-- Deposit % depends only on the **arrival date**, so it is identical for every room/offer in one search — compute once via `getDepositPercentForArrival(checkIn)`.
+- **Exception — rate-plan overrides arrival date:** a `lastMinute` (`LM`) offer is always **100%** deposit regardless of arrival-date proximity. Use `getDepositPercentForOffer(checkIn, offer.type)`, not `getDepositPercentForArrival`, anywhere a specific offer/leg is being priced — the arrival-only function is only correct when every leg in the quote shares one rate plan.
+- In a mixed multi-room cart, each leg must price its OWN deposit % (never proportionally blend one arrival-based deposit across legs) — a last-minute leg must independently be charged 100% even if other legs in the same cart are on a 50% rate.
 
 # Trust boundary
 

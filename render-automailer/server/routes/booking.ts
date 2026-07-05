@@ -162,7 +162,8 @@ export function createBookingRouter(deps: {
     try {
       const result = await beds24.getAvailability(stay);
       // Deposit % depends on the arrival date (Beds24 near-arrival / exceptional
-      // rules), so it is the same for every room/offer in this search.
+      // rules) for most offers, but last-minute rate plans are always 100% —
+      // computed per-offer below, not blended across the whole search.
       const depositPercent = beds24.getDepositPercentForArrival(stay.checkIn);
 
       const rooms = result.rooms.map((r) => ({
@@ -176,13 +177,15 @@ export function createBookingRouter(deps: {
         nights: r.nights,
         currency: r.currency,
         offers: r.offers.map((o) => {
-          const { deposit, balance } = splitDeposit(o.total, depositPercent);
+          const offerDepositPercent = beds24.getDepositPercentForOffer(stay.checkIn, o.type);
+          const { deposit, balance } = splitDeposit(o.total, offerDepositPercent);
           return {
             offerId: o.offerId,
             offerName: o.offerName,
             type: o.type,
             refundable: o.refundable,
             total: o.total,
+            depositPercent: offerDepositPercent,
             deposit,
             balance,
             unitsAvailable: o.unitsAvailable,
