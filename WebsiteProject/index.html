@@ -546,10 +546,15 @@
     @media (min-width: 1024px) and (max-width: 1279.98px) {
       :root { --hero-h1-size: 3rem; }
     }
-    /* Short landscape screens ≥640px wide (e.g. 1024×600): drop the large hero
-       title so subtitle + CTAs move up and have room to breathe.
-       Lockstep with React's [@media_(max-height:600px)_and_(min-width:640px)]:hidden on h1. */
-    @media (min-width: 640px) and (max-height: 600px) {
+    /* Short landscape screens ≥640px wide (e.g. 1024×600, or laptops whose
+       effective viewport is squeezed to ~624px by browser chrome): drop the
+       large hero title so subtitle + CTAs move up and have room to breathe.
+       Raised from 600 to 700 after a Clarity recording at ~1323x624 showed
+       the title still visible and colliding with the bottom-pinned review
+       block, whose own switch-to-absolute breakpoint is also 700px — keep
+       all three in lockstep. Lockstep with React's
+       [@media_(max-height:700px)_and_(min-width:640px)]:hidden on h1. */
+    @media (min-width: 640px) and (max-height: 700px) {
       #hero-title { display: none; }
     }
     @keyframes fadeInImage {

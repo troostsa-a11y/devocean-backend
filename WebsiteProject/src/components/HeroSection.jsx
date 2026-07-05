@@ -162,11 +162,11 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-6 sm:pb-24 pt-[calc(var(--header-h)_-_1rem)] sm:pt-[calc(var(--header-h)_+_4rem)]">
-        <h1 className="mt-14 font-bold max-w-3xl leading-tight hidden sm:block [@media_(max-height:600px)_and_(min-width:640px)]:hidden" style={{ fontSize: 'var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem))' }}>{ui.hero.title}</h1>
+        <h1 className="mt-14 font-bold max-w-3xl leading-tight hidden sm:block [@media_(max-height:700px)_and_(min-width:640px)]:hidden" style={{ fontSize: 'var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem))' }}>{ui.hero.title}</h1>
         <p className="mt-[8.5rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[7rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:text-base sm:mt-4 text-xl max-w-[54.5rem] [@media_(min-width:768px)_and_(max-width:1279.98px)]:max-w-[31.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
         {/* CTA Buttons */}
-        <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[28px] sm:mt-[66px] [@media_(max-height:600px)_and_(min-width:640px)]:mt-[20px]">
+        <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[28px] sm:mt-[66px] [@media_(max-height:700px)_and_(min-width:640px)]:mt-[20px]">
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 [@media_(max-width:639.98px)_and_(max-height:700px)]:gap-y-3 max-w-[25rem] sm:max-w-[28rem]">
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
@@ -230,12 +230,16 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           height band — that broke on any real viewport outside the tuned
           bands, per Clarity recordings.) Only switches to the original
           absolute-bottom-pinned desktop placement when BOTH width >= 640px
-          AND height > 600px — matching the existing `max-height:600px`
-          landscape-phone threshold used elsewhere in this file (h1 hide,
-          CTA margin). Plain `sm:` (width-only) would wrongly route landscape
-          phones (e.g. 667x375, 932x430 — width >= 640px but just as short as
-          a portrait phone) into the desktop path and reintroduce the bug. */}
-      <div className="static [@media_(min-width:640px)_and_(min-height:601px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:601px)]:mt-0 [@media_(min-width:640px)_and_(min-height:601px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:601px)]:left-0 [@media_(min-width:640px)_and_(min-height:601px)]:right-0 z-10 max-w-7xl mx-auto px-4">
+          AND height > 700px — matching the `max-height:700px` threshold used
+          elsewhere in this file (h1 hide, CTA margin). Raised from 600 to 700
+          after a Clarity recording at ~1323x624 showed the h1 still visible
+          (hidden only below 600) while this block had already switched to
+          absolute-bottom, overlapping the CTA grid — the two thresholds must
+          stay in lockstep. Plain `sm:` (width-only) would wrongly route
+          landscape phones (e.g. 667x375, 932x430 — width >= 640px but just as
+          short as a portrait phone) into the desktop path and reintroduce
+          the bug. */}
+      <div className="static [@media_(min-width:640px)_and_(min-height:701px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:701px)]:mt-0 [@media_(min-width:640px)_and_(min-height:701px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:701px)]:left-0 [@media_(min-width:640px)_and_(min-height:701px)]:right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
