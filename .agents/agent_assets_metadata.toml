@@ -6,3 +6,9 @@ id = "VX34jnHrUYCycfABxpeEE"
 uri = "file://WebsiteProject/public/images/devocean_logo_trustindex_300.png"
 type = "image"
 title = "devocean_logo_trustindex_300.png"
+
+[[outputs]]
+id = "y2l6aK4a6d4AMh56sJU2r"
+uri = "file://TECHNICAL_ASSET_DESCRIPTION.md"
+type = "text"
+title = "DEVOCEAN Lodge — Technical Asset Description"
