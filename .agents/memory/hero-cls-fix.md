@@ -27,19 +27,11 @@ The topbar is `position: static` (in document flow, not fixed). The hero section
 
 **Fix:** dependency array is `[lang]` only. `initialLoadDone` must NOT be in the array.
 
-## Rule 3 — Hero review-block overlap on small phones
+## Rule 3 — Hero review-block overlap on small phones (RETIRED — see "Rule 3+7 superseded" below)
 
-The hero review block (stars + badge + "Click the reviews!" + Trustindex widget) is `absolute`, anchored to the **section bottom** (`bottom-20` mobile). The CTA grid flows from the top. The enlarged title (2 lines on mobile) + a large top gap pushed the CTAs down into the bottom-anchored block.
+Historical context only — do not re-apply. The hero review block used to be `absolute`, anchored to the **section bottom** (`bottom-20` mobile), while the CTA grid flowed from the top. Overlap was patched per-device-height-band (this rule, then Rule 5 knob #4, then Rule 7) by tuning top gaps and `bottom-*` offsets for specific measured viewports (iPhone SE 375×667, Samsung Galaxy 360×740, tall Android >800px).
 
-**Fix:** reduce the **top gap** on small phones, not the bottom padding. Content div top padding is `pt-[calc(var(--header-h)_-_1rem)] sm:pt-[calc(var(--header-h)_+_4rem)]` — mobile shifts the whole content block up 80px (5rem) vs the old `+4rem`, freeing bottom space so the block clears the CTAs. Where content < viewport (`min-h-screen`, viewport-driven) the bottom-anchored block stays put, so moving content up directly buys clearance. To dial it, make the `-1rem` term more negative.
-
-**Why scope by WIDTH only, not height:** the earlier hack scoped the fix to narrow AND short (`[@media(max-width:639px)_and_(max-height:800px)]` → `pb-60`/`bottom-6`). It NEVER triggered on phones taller than 800px (modern Androids ~915px) — which is exactly where the overlap was reported. Small phone = `<640px`, full stop.
-
-**How to apply:**
-- Change the top gap (`-1rem` term), not the bottom padding/`bottom-` offset.
-- Scope to `<640px` (Tailwind base + `sm:` for desktop), never by viewport height.
-- **CLS lockstep:** mirror any mobile top-padding change in the placeholder's `#hero-placeholder-content` `@media (max-width:639.98px)` rule by the same amount (see Rule 1) or the title jumps on fade.
-- Desktop/tablet (`sm:`+) keeps the original `+4rem` — do not touch it.
+**Why this whole approach was abandoned (Jul 2026):** real users on MS Clarity sit on a continuum of viewport heights (dynamic mobile browser chrome/address-bar collapse, differing phone models, in-app browsers) — not the 3 discrete bands that were lab-tested. Every fix here narrowed the failure window instead of closing it; Clarity kept showing the same class of overlap on untested bands. See "Rule 3+7 superseded" for the actual fix.
 
 ## Rule 4 — Mobile hides the hero title; subtitle takes its slot
 
@@ -63,7 +55,7 @@ On very short mobile screens (375×667 = iPhone SE / iPhone 6-8 class) the `mt-[
 1. React subtitle class: `[@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[7rem]` — current value: `7rem`
 2. React subtitle font: `[@media_(max-width:639.98px)_and_(max-height:700px)]:text-base` — reduces from 1.25rem → 1rem (fewer lines, CTA position preserved because ΔH ≈ Δmt)
 3. Placeholder CSS (index.html): `@media (max-width:639.98px) and (max-height:700px) { #hero-placeholder #hero-subtitle { margin-top: 7rem; font-size: 1rem; } }` — must mirror #1 and #2
-4. Review block: `[@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[1rem]` — reduces from `bottom-20` (5rem) → 1rem so the review block clears the CTA grid; bottom ~24px of the Trustindex badge is below fold (acceptable).
+4. Review block: (RETIRED, Jul 2026) — this knob no longer exists; the review block is `static` on mobile now (see "Rule 3+7 superseded"), so it always clears the CTA grid regardless of height band.
 
 **Why height-scope is safe here:** this is the OPPOSITE problem from Rule 3. Here the TALL phones (A23, 915px) are fine at 8.5rem; only SHORT phones have the overlap. Height-scoping correctly excludes tall phones. Do NOT apply Rule 3's "scope by width only" reasoning to this override.
 
@@ -71,8 +63,18 @@ On very short mobile screens (375×667 = iPhone SE / iPhone 6-8 class) the `mt-[
 
 `clamp(3.5rem, 14vw, 3.75rem)` at 768px resolves to 3.75rem (60px) but looks visually too large on iPad. Fix: CSS custom property `--hero-h1-size: 2.75rem` at `@media (min-width:768px) and (max-width:1023.98px)` in index.html critical CSS. Both the placeholder h1 (`font-size: var(--hero-h1-size, clamp(...))`) and the React h1 (`style={{ fontSize: 'var(--hero-h1-size, clamp(...))' }}`) consume the same variable. The fallback is the original clamp, so desktop (≥1024px) and sm-only range (640–767px) are untouched. **Lockstep**: any change to the media query bound or the `2.75rem` value must be made in ONE place (the `:root` rule in index.html) — both layers read the same variable automatically.
 
-## Rule 7 — Samsung Galaxy class (≤639.98px × 701–800px)
+## Rule 7 — Samsung Galaxy class (RETIRED — see "Rule 3+7 superseded" below)
 
-360×740 (Samsung Galaxy) sits above the 700px iPhone-SE cap, so it falls through to `bottom-20` (80px). With a 740px section and ~173px review block the review top lands at viewport y:527, overlapping the CTA bottom at y:532 by ~5px.
+Historical context only. 360×740 sat above the 700px iPhone-SE band and needed its own `bottom-[3rem]` override — a third device-specific band patch on top of Rules 3 and 5 knob #4. This confirmed the band-by-band approach doesn't converge (there's always another real viewport between the tuned bands); superseded by the in-flow fix below.
 
-**Fix:** add `[@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem]` to the review block div. `3rem` (48px) moves the review bottom to viewport y:732, review top to y:559 — 27px below CTA bottom. A23 (915px) and iPhone SE (667px) are outside this band and unchanged. No placeholder change needed (review block is absolutely positioned outside the content div — its bottom offset is CLS-irrelevant).
+## Rule 3+7 superseded — review block is in-flow on mobile (Jul 2026)
+
+**Root cause of the whole family of overlap bugs:** the review block (stars + badge + "Click the reviews!" + Trustindex widget) was `position:absolute`, anchored via `bottom-*` to the **section**, independent of the CTA grid's actual rendered height above it. Two things made the gap between them unpredictable: (1) the CTA grid's rendered bottom edge depends on title/subtitle wrapping, button-label length per language, and viewport height, and (2) the review block's own top edge crept *upward* whenever the async-loaded Trustindex widget (variable height, network-dependent) mounted, because `bottom`-anchoring means added height grows the box upward, not downward. Hand-tuning both sides for a handful of Lighthouse-tested device profiles (Rules 3, 5 knob #4, 7) could never cover the real continuum of viewports MS Clarity records.
+
+**Fix:** on mobile (`<640px`) the review block is now `static` (normal document flow), rendered as the next sibling immediately after the CTA-grid content div, with `mt-6` spacing. It always sits directly below wherever the CTA grid actually ends — for any viewport height, button wrapping, or language string length — so this class of overlap is structurally impossible now, not just tuned around. Desktop (`sm:`+) is untouched: still `absolute sm:bottom-10 sm:left-0 sm:right-0`, positioned relative to the `<section>` exactly as before (the section's `flex items-start` was removed since a plain block section produces identical top-aligned stacking for the single full-width content div — no visual change).
+
+**Also added:** `min-h-[90px]` on the Trustindex script-mount `<div>` itself, reserving space for the async widget so it doesn't shift anything when it loads (a second, independent CLS guard, orthogonal to the flow fix).
+
+**Side effect:** content div's mobile bottom padding dropped from `pb-52` to `pb-6` — it existed only to visually reserve room for the old bottom-anchored sibling and is no longer needed now that spacing is real margin between real siblings. `sm:pb-24` (desktop) is untouched.
+
+**How to apply / what NOT to do:** do not reintroduce device-height-banded `bottom-[Xrem]` overrides on this block — if a future overlap is reported here, the bug is elsewhere (e.g. someone made it `absolute` again, or removed the `mt-6`/`min-h-[90px]`), not a missing band.

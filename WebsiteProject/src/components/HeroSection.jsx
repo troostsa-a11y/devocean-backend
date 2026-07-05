@@ -89,7 +89,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     list.length ? setIdx(((i % list.length) + list.length) % list.length) : null;
 
   return (
-    <section id="home" className="relative overflow-hidden min-h-screen flex items-start">
+    <section id="home" className="relative overflow-hidden min-h-screen">
       {/* Brand fallback */}
       <div className="absolute inset-0 bg-[#9e4b13]" />
 
@@ -132,7 +132,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-52 sm:pb-24 pt-[calc(var(--header-h)_-_1rem)] sm:pt-[calc(var(--header-h)_+_4rem)]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 text-white w-full pb-6 sm:pb-24 pt-[calc(var(--header-h)_-_1rem)] sm:pt-[calc(var(--header-h)_+_4rem)]">
         <h1 className="mt-14 font-bold max-w-3xl leading-tight hidden sm:block [@media_(max-height:600px)_and_(min-width:640px)]:hidden" style={{ fontSize: 'var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem))' }}>{ui.hero.title}</h1>
         <p className="mt-[8.5rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[7rem] [@media_(max-width:639.98px)_and_(max-height:700px)]:text-base sm:mt-4 text-xl max-w-[54.5rem] [@media_(min-width:768px)_and_(max-width:1279.98px)]:max-w-[31.5rem] text-white font-semibold">{ui.hero.subtitle}</p>
         
@@ -193,16 +193,23 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
       </div>
 
-      {/* Stars, badge and Trustindex widget — kept together at the bottom so
-          "Click the reviews!" visually leads into the widget badge directly below.
-          Absolutely positioned outside the flex container to avoid CLS. */}
-      <div className="absolute bottom-20 sm:bottom-10 [@media_(max-width:639.98px)_and_(max-height:700px)]:bottom-[9rem] [@media_(max-width:639.98px)_and_(min-height:701px)_and_(max-height:800px)]:bottom-[3rem] left-0 right-0 z-10 max-w-7xl mx-auto px-4">
+      {/* Stars, badge and Trustindex widget. On mobile (<640px) this now flows
+          naturally in-document right after the CTA grid, so its position always
+          tracks the CTA grid's actual rendered height — it can never overlap the
+          buttons regardless of viewport height, button-label wrapping, or
+          translation string length. (Previously `absolute bottom-*` anchored to
+          the section, hand-tuned per device height band — that broke on any real
+          viewport outside the tuned bands, per Clarity recordings.) Desktop
+          (sm:+) keeps the original absolute-bottom-pinned placement, unchanged. */}
+      <div className="static sm:absolute mt-6 sm:mt-0 sm:bottom-10 sm:left-0 sm:right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
         <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
-        <div ref={trustindexRef} className="mt-3" />
+        {/* min-h reserves space for the async-loaded Trustindex badge so it
+            doesn't shift content when the script mounts (CLS guard). */}
+        <div ref={trustindexRef} className="mt-3 min-h-[90px]" />
       </div>
 
     </section>
