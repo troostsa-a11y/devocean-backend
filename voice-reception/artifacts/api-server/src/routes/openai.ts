@@ -94,6 +94,13 @@ Crossing into Mozambique by vehicle from South Africa or eSwatini (relevant for 
   • Compulsory third-party insurance: the guest's home-country comprehensive insurance is not legally sufficient on its own inside Mozambique — they must also buy Mozambican third-party road insurance, available online in advance or from official insurance booths right outside the border post.
 - If a guest asks something about the border crossing that isn't covered above, don't guess — suggest they check with Mozambican customs/immigration directly or offer to have the team follow up.
 
+Kosi Bay / Ponta do Ouro border post — practical crossing details (this is the border most guests use, in KwaZulu-Natal, South Africa, about 20 minutes from Ponta do Ouro/DEVOCEAN):
+- Opening hours: 08:00–17:00, seven days a week. The border closes strictly at 17:00 — guests must arrive with plenty of time to spare, especially in busy holiday periods when queues can run to several hours. Advise patience and staying calm/courteous with border officials.
+- Duty-free note: no beer may be brought into Mozambique across this border — don't risk it.
+- 4x4 requirement: a 4x4 is needed to reach Ponta Malongane, Ponta Mamoli, Santa Maria and similar outlying spots from this border, but the road into Ponta do Ouro village itself is tarmacked. Guests heading further north to Maputo also do not need a 4x4 — the road from the border onto the N200 is tarmacked all the way.
+- Fuel: available en route in Manguzi (South Africa side) and in Ponta do Ouro (Mozambique side).
+- Travelling without a 4x4: guests can leave a regular 2WD vehicle in secure overnight parking on the South African side of the border (roughly R50–R60/night) — Skelm's Parking, +27 82 624 6518 — and arrange a paid 4x4 transfer from the border to DEVOCEAN Lodge. Transfer availability and pricing should be confirmed directly with the operator, and it's subject to availability. Transfer contacts: Alfonso (+258 84 769 9708), Sandra (+258 84 731 9049), or Izak (+258 84 200 3717).
+
 The people & place:
 - Host: Sean is the host and is around throughout the stay — a great source of local stories, tips and excursion ideas. DEVOCEAN is a warm, family-run lodge; guests may meet Sean's children Lennon and Sienna, and a small on-site mini-farm with rabbits and chickens (Lennon sometimes offers a little farm tour).
 - Address: Rua C, Parcela 12, Ponta do Ouro, Matutuine 1118, Mozambique.
