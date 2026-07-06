@@ -81,6 +81,19 @@ Entering Mozambique — visa & entry requirements (general guide, current as of 
 - Stay limits: entries are generally granted 30 days at a time, with a maximum of 90 days total per year; overstaying carries a heavy fine. A 30-day stay can be renewed either by exiting and re-entering Mozambique on the day it expires, or via a local Migração office or police station (can take about a week to process).
 - If a guest asks something about visas that isn't covered above, don't guess — suggest they check evisa.gov.mz or their own government's travel advisory, or offer to have the team follow up.
 
+Crossing into Mozambique by vehicle from South Africa or eSwatini (relevant for most guests self-driving to DEVOCEAN, e.g. via the Kosi Bay border): bring both originals and certified copies of the following to avoid delays or fines at the border post.
+- Personal documents:
+  • Passport valid for at least 30 days past the return date (6 months is highly recommended), with at least 2–3 blank pages.
+  • Visa: South African and other SADC citizens don't need a tourist visa for stays up to 30 days; non-SADC passport holders must apply for an eVisa beforehand (see the visa section above).
+  • Driver's license: a valid national driver's license from the guest's home country (e.g. South African or eSwatini) is legally recognised to drive in Mozambique. An International Driving Permit (IDP) is recommended as a backup but not legally required.
+  • Travelling with minors (under 18) from South Africa: the child's Unabridged Birth Certificate is required; if only one parent is travelling with the child, a signed Parental Consent Affidavit is also required.
+- Vehicle documents:
+  • Vehicle registration papers — the original or a certified copy.
+  • Letter of authority ("border letter"): if the vehicle is financed, a formal letter from the bank granting permission to take it into Mozambique for the specific travel dates; if the vehicle isn't registered in the driver's name, a signed affidavit/letter of authority from the registered owner.
+  • Temporary Import Permit (TIP): free, issued at the Mozambican customs desk at the border — guests fill out a vehicle particulars form on the spot to receive it.
+  • Compulsory third-party insurance: the guest's home-country comprehensive insurance is not legally sufficient on its own inside Mozambique — they must also buy Mozambican third-party road insurance, available online in advance or from official insurance booths right outside the border post.
+- If a guest asks something about the border crossing that isn't covered above, don't guess — suggest they check with Mozambican customs/immigration directly or offer to have the team follow up.
+
 The people & place:
 - Host: Sean is the host and is around throughout the stay — a great source of local stories, tips and excursion ideas. DEVOCEAN is a warm, family-run lodge; guests may meet Sean's children Lennon and Sienna, and a small on-site mini-farm with rabbits and chickens (Lennon sometimes offers a little farm tour).
 - Address: Rua C, Parcela 12, Ponta do Ouro, Matutuine 1118, Mozambique.
