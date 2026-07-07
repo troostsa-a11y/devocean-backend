@@ -225,18 +225,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Show loading state while content is being fetched
-  if (isLoadingContent) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[#fffaf6]">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-          <p className="mt-4 text-slate-600">Loading...</p>
-        </div>
-      </div>
-    );
-  }
-
   if (!exp) {
     return (
       <div className="min-h-screen flex items-center justify-center">
