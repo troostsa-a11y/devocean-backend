@@ -180,6 +180,49 @@ export default function App() {
     }
   }, [lang, location]);
 
+  // WebMCP — expose site tools to AI agents via the browser (progressive enhancement)
+  // navigator.modelContext is experimental; this is a no-op in unsupporting browsers.
+  useEffect(() => {
+    if (typeof navigator === 'undefined' || !navigator.modelContext?.provideContext) return;
+    navigator.modelContext.provideContext({
+      tools: [
+        {
+          name: 'checkAvailability',
+          description: 'Check live room availability and nightly pricing at DEVOCEAN Lodge, Ponta do Ouro, Mozambique for a given date range. Returns available rooms with prices in USD.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              checkIn:  { type: 'string', description: 'Check-in date (YYYY-MM-DD)' },
+              checkOut: { type: 'string', description: 'Check-out date (YYYY-MM-DD)' }
+            },
+            required: ['checkIn', 'checkOut']
+          },
+          execute: async ({ checkIn, checkOut }) => {
+            const res = await fetch(`/api/booking/availability?checkIn=${encodeURIComponent(checkIn)}&checkOut=${encodeURIComponent(checkOut)}`);
+            return res.json();
+          }
+        },
+        {
+          name: 'convertCurrency',
+          description: 'Convert an amount from one currency to another using live exchange rates. Useful for displaying lodge pricing in the guest\'s local currency.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              from:   { type: 'string', description: 'Source currency code, e.g. USD' },
+              to:     { type: 'string', description: 'Target currency code, e.g. ZAR, EUR, GBP' },
+              amount: { type: 'number', description: 'Amount to convert' }
+            },
+            required: ['from', 'to', 'amount']
+          },
+          execute: async ({ from, to, amount }) => {
+            const res = await fetch(`/api/fx?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}&amount=${encodeURIComponent(amount)}`);
+            return res.json();
+          }
+        }
+      ]
+    });
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical.
