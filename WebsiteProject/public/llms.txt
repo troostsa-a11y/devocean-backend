@@ -1,29 +1,29 @@
 # DEVOCEAN Lodge
 
-> Eco-friendly beach lodge in Ponta do Ouro, far-southern Mozambique — safari tents, a garden cottage and a thatched chalet a few minutes from the beach. Family-run, great value, and a base for world-class scuba diving, dolphin swims and bush safaris. Every booking is confirmed personally by the reservations team.
+> Small, family-run eco-lodge in Ponta do Ouro, far-southern Mozambique — 20 minutes from the South African border at Kosi Bay. Safari tents, a garden cottage, and a thatched chalet a short walk from the beach. Hosted by Sean. Known for world-class scuba diving, ethical dolphin swims, whale watching, and game safaris. Not a resort — warm, authentic, personal.
 
-DEVOCEAN Lodge is operated by TERRAfrique LDA in Ponta do Ouro (Matutuine, Maputo Province, Mozambique), at coordinates -26.8420, 32.8850. Rates are billed in US dollars. Check-in from 14:00, check-out by 10:00. Free Wi-Fi. Pets are not allowed.
+DEVOCEAN Lodge is operated by TERRAfrique LDA in Ponta do Ouro (Matutuine, Maputo Province, Mozambique), at coordinates -26.8420, 32.8850. Rates are billed in US dollars. Check-in from 14:00, check-out by 10:00. Free Wi-Fi. Pets not allowed.
 
 ## Accommodation
-- **Safari Tent** — 12 m² canvas tent on a raised 3×6 m platform; twin/king beds, fan, mosquito mesh, power points, private terrace; shared hot-water ablutions. https://devoceanlodge.com/safari.html
-- **Comfort Tent** — upgraded 12 m² tent with privacy walls; twin/king beds, fan, private terrace, and an en-suite bathroom under a thatched roof. https://devoceanlodge.com/comfort.html
-- **Garden Cottage** — queen bed, inverter air-conditioning (cool & heat), desk & dining table, private terrace, and a private bathroom in a thatched roundavel. https://devoceanlodge.com/cottage.html
-- **Thatched Chalet** — secluded, romantic chalet under palms; air-conditioning, twin/king beds, private bathroom, private terrace. https://devoceanlodge.com/chalet.html
+- **Safari Tent** — 12 m² canvas tent on a raised platform; twin/king beds, fan, mosquito mesh, power points, private terrace; shared hot-water ablutions. https://devoceanlodge.com/safari.html
+- **Comfort Tent** — upgraded canvas tent with privacy walls; twin/king beds, fan, private terrace, en-suite bathroom under a thatched roof. https://devoceanlodge.com/comfort.html
+- **Garden Cottage** — queen bed, inverter air-conditioning (cool & heat), desk & dining table, private terrace, private bathroom in a thatched roundavel. https://devoceanlodge.com/cottage.html
+- **Thatched Chalet** — secluded chalet under palms; air-conditioning, twin/king beds, private bathroom, private terrace. https://devoceanlodge.com/chalet.html
 
-## Experiences nearby
-- Scuba diving on offshore reefs
-- Ethical dolphin swims
-- Ocean seafaris (whale watching May–October)
-- Game safaris at Maputo National Park
-- Beach & deep-sea fishing
-- Surfing (boards & lessons)
-- Walk to the old lighthouse for sweeping coastal views
+## Experiences & activities
+- **Scuba Diving** — 20+ dive sites from 8 m to 48 m depth; bull sharks, tiger sharks, hammerheads, mantas, whale sharks (Oct–Mar), turtles, dolphins. World-class visibility. https://devoceanlodge.com/experiences/diving
+- **Dolphin Swimming** — ethical wild Indo-Pacific bottlenose dolphin encounters inside the Ponta do Ouro Partial Marine Reserve; operators follow strict passive-interaction guidelines. https://devoceanlodge.com/experiences/dolphins
+- **Ocean Seafaris** — humpback whale watching (Jul–Nov), year-round dolphin encounters, seasonal whale shark sightings, reef snorkelling. https://devoceanlodge.com/experiences/seafari
+- **Game Safaris** — Maputo National Park (UNESCO World Heritage Site, 2025), ~45 min away; 450–500 coastal elephants, giraffes, zebras, hippos, crocodiles. https://devoceanlodge.com/experiences/safari
+- **Beach & Deep-Sea Fishing** — marlin, sailfish, wahoo, yellowfin tuna, king mackerel offshore; kingfish, barracuda, pompano from the beach. https://devoceanlodge.com/experiences/fishing
+- **Surfing** — classic right-hand point break; rides of 100–200 m, up to 1 km in ideal conditions; boards and lessons available. https://devoceanlodge.com/experiences/surfing
+- **Lighthouse Walk** — hike to the old lighthouse for sweeping Indian Ocean panoramas; dolphin and turtle spotting en route. https://devoceanlodge.com/experiences/lighthouse
 
 ## Location & getting there
-Ponta do Ouro is in the far south of Mozambique, near the Kosi Bay border with South Africa. Many guests drive (a 4x4 is recommended for the sandy coastal roads) or arrange a transfer; the team can advise on the best route. Map: https://maps.app.goo.gl/edhq5PGLLhGMh9rL6
+Ponta do Ouro is in the far south of Mozambique, Maputo Province. The nearest border is Kosi Bay / Ponta do Ouro (KwaZulu-Natal, South Africa), open 08:00–17:00 daily, about 20 minutes from the lodge. The road into Ponta do Ouro village from the border is fully tarmacked — no 4x4 needed to reach the lodge. A 4x4 is only required for outlying areas such as Ponta Malongane, Ponta Mamoli, and Santa Maria. Fuel available in Manguzi (South Africa) and Ponta do Ouro. Map: https://maps.app.goo.gl/edhq5PGLLhGMh9rL6
 
 ## Booking & contact
-- Book online: https://devoceanlodge.com/book-direct
+- Book online (real-time availability, Stripe deposit): https://devoceanlodge.com/book-direct
 - Email: info@devoceanlodge.com
 - Phone / WhatsApp: +258 84 418 2252
 - The reservations team personally confirms every booking.
@@ -31,3 +31,4 @@ Ponta do Ouro is in the far south of Mozambique, near the Kosi Bay border with S
 ## Key pages
 - Home: https://devoceanlodge.com/
 - Our story: https://devoceanlodge.com/story.html
+- Why Ponta do Ouro: https://devoceanlodge.com/why-ponta
