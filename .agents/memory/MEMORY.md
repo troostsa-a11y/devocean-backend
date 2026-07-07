@@ -16,6 +16,7 @@
 - [Marin OpenAI model](mia-openai-audio-model.md) — current model is gpt-realtime-2 (OPENAI_REALTIME_MODEL); bare gpt-4o-audio-preview alias retired → 404; never use undated aliases
 - [API schema lookup first](api-schema-lookup-first.md) — read .d.ts types from node_modules before constructing any API payload; never guess field names/shape across API versions
 - [gpt-realtime-2 session schema](gpt-realtime-2-session-schema.md) — audio config nested under session.audio.{input,output}; top-level voice/modalities/turn_detection all rejected; type:"realtime" required
+- [Agent-readiness CF Pages](agent-readiness-cf-pages.md) — isitagentready.com ceiling ~71 (Level 4) for static CF Pages; markdown negotiation in middleware, Content-Signal header, API catalog, Agent Skills, WebMCP; auth/MCP infra = only remaining gap
 - [Render Blueprint name+type match](render-blueprint-name-type.md) — both name AND type must match existing Render service or Blueprint silently creates a duplicate; current: Automailer(web) + Receptionist(web)
 - [Marin VAD response muting](marin-vad-response-muting.md) — mute on response.created; unmute ONLY after browser acks local playback drained (response.done ≠ playback finished, long responses lag); sessionGreetingSent guard
 - [In-app browser viewport quirk](in-app-browser-viewport-quirk.md) — FB/IG in-app browsers briefly report near-zero innerHeight on first paint, breaking fixed-position UI; verify Clarity device metadata before assuming a screenshot is a thumbnail artifact
