@@ -90,6 +90,13 @@
     <priority>0.85</priority>
     <changefreq>monthly</changefreq>
   </url>
+
+  <url>
+    <loc>https://devoceanlodge.com/book-direct</loc>
+    <lastmod>2026-07-07</lastmod>
+    <priority>0.85</priority>
+    <changefreq>monthly</changefreq>
+  </url>
   
   <url>
     <loc>https://devoceanlodge.com/thankyou.html</loc>
