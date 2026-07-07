@@ -13,11 +13,34 @@
 
 export async function onRequest(context) {
   try {
+    const { pathname } = new URL(context.request.url);
+
+    // Markdown Negotiation — serve llms.txt when agents request text/markdown
+    // Satisfies the isitagentready.com "Markdown Negotiation" check (Content 1/1).
+    // Only intercept HTML-equivalent paths (not .js, .css, .json, images, etc.)
+    const acceptHeader = context.request.headers.get('accept') || '';
+    const isAssetPath = /\.(js|css|json|png|jpg|jpeg|webp|svg|ico|woff2?|ttf|txt|xml|pdf)$/i.test(pathname);
+    if (acceptHeader.includes('text/markdown') && !isAssetPath) {
+      const llmsUrl = new URL('/llms.txt', context.request.url);
+      const llmsResp = await fetch(llmsUrl.href);
+      if (llmsResp.ok) {
+        const body = await llmsResp.text();
+        const tokenEstimate = Math.ceil(body.length / 4);
+        return new Response(body, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/markdown; charset=utf-8',
+            'X-Markdown-Tokens': String(tokenEstimate),
+            'Cache-Control': 'public, max-age=3600',
+          },
+        });
+      }
+    }
+
     // Legacy iframe booking pages → native direct-booking flow.
     // Must run before context.next(): the deleted /book/*.html paths would
     // otherwise 404 and fall through to the SPA index.html fallback below
     // instead of redirecting (the root middleware intercepts before _redirects).
-    const { pathname } = new URL(context.request.url);
     if (pathname.startsWith('/book/')) {
       return Response.redirect(new URL('/book-direct', context.request.url).href, 301);
     }
