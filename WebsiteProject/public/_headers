@@ -94,3 +94,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(self "https://mia-voice-receptionist.onrender.com"), camera=()
   Link: </llms.txt>; rel="describedby", </sitemap.xml>; rel="sitemap"
+  Content-Signal: ai-train=no, search=yes, ai-input=yes
