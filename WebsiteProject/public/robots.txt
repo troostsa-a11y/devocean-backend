@@ -1,5 +1,5 @@
 # robots.txt for DEVOCEAN Lodge
-# Updated: October 28, 2025
+# Updated: July 7, 2026
 
 # Allow all search engines
 User-agent: *
