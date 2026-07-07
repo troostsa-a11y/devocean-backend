@@ -6,6 +6,11 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=31536000, immutable
 
+# security.txt — RFC 9116 vulnerability disclosure
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=86400
+
 # API catalog — RFC 9727 linkset (no file extension, needs explicit content-type)
 /.well-known/api-catalog
   Content-Type: application/linkset+json
