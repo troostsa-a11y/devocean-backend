@@ -4,7 +4,7 @@ export const EXPERIENCE_DETAILS = {
     key: "diving",
     title: "Scuba Diving",
     tagline: "Explore pristine reefs with bull sharks, mantas & whale sharks",
-    hero: "/photos/experiences/diving.jpg",
+    hero: "/photos/experiences/diving.webp",
     heroObjectClass: "object-[50%_35%]",
     
     overview: "Ponta do Ouro offers world-class scuba diving with 20+ dive sites ranging from shallow reefs to deep pinnacles. The crystal-clear waters of the Mozambique Channel provide exceptional visibility and encounters with an incredible diversity of marine life, including 19 species of sharks.",
@@ -155,7 +155,7 @@ export const EXPERIENCE_DETAILS = {
     key: "dolphins",
     title: "Dolphin Swimming",
     tagline: "Ethical wild dolphin encounters in crystal-clear waters",
-    hero: "/photos/experiences/dolphins.jpg",
+    hero: "/photos/experiences/dolphins.webp",
     
     overview: "Experience magical encounters with wild Indo-Pacific bottlenose dolphins in the Ponta do Ouro Partial Marine Reserve. Both authorized operators follow strict ethical guidelines, ensuring passive, non-invasive interactions where dolphins choose to engage on their own terms.",
     
@@ -283,7 +283,7 @@ export const EXPERIENCE_DETAILS = {
     key: "lighthouse",
     title: "Lighthouse Walk",
     tagline: "Hike to the historic lighthouse for sweeping ocean views",
-    hero: "/photos/experiences/lighthouse.jpg",
+    hero: "/photos/experiences/lighthouse.webp",
     
     overview: "Trek through coastal forest and along dramatic cliffs to reach the iconic Ponta do Ouro lighthouse. This moderate hike rewards you with breathtaking panoramas of the Indian Ocean, and you might spot dolphins surfing the waves or turtles nesting on the beaches below (October-December).",
     
@@ -401,7 +401,7 @@ export const EXPERIENCE_DETAILS = {
     key: "seafari",
     title: "Ocean Seafaris",
     tagline: "Whale watching & marine life encounters",
-    hero: "/photos/experiences/seafari.jpg",
+    hero: "/photos/experiences/seafari.webp",
     
     overview: "Embark on thrilling ocean safaris to witness humpback whales migrating through Mozambican waters (July-November). These boat-based adventures also offer year-round dolphin encounters, seasonal whale shark sightings, and snorkeling over pristine reefs teeming with marine life.",
     
@@ -532,7 +532,7 @@ export const EXPERIENCE_DETAILS = {
     key: "safari",
     title: "Game Safaris",
     tagline: "Bush adventures in Maputo Special Reserve",
-    hero: "/photos/experiences/safari.jpg",
+    hero: "/photos/experiences/safari.webp",
     
     overview: "Discover African wildlife just a short drive from Ponta do Ouro. Maputo National Park (formerly Maputo Special Reserve) offers classic game viewing with 450-500 coastal elephants, giraffes, zebras, hippos, crocodiles, and diverse antelope species across 1,718 km² of protected wilderness - a UNESCO World Heritage Site since 2025.",
     
@@ -665,7 +665,7 @@ export const EXPERIENCE_DETAILS = {
     key: "fishing",
     title: "Beach & Deep Sea Fishing",
     tagline: "Cast for kingfish or chase marlin in the Mozambique Channel",
-    hero: "/photos/experiences/fishing.jpg",
+    hero: "/photos/experiences/fishing.webp",
     
     overview: "Ponta do Ouro offers exceptional fishing both from the beach and offshore. The warm Indian Ocean waters and deep Mozambique Channel provide thrilling opportunities for marlin, sailfish, wahoo, yellowfin tuna, and king mackerel. Beach anglers can target kingfish, barracuda, and pompano from pristine shores.",
     
@@ -807,7 +807,7 @@ export const EXPERIENCE_DETAILS = {
     key: "surfing",
     title: "Surf Boards & Lessons",
     tagline: "Ride the iconic Ponta do Ouro point break",
-    hero: "/photos/experiences/surfing.jpg",
+    hero: "/photos/experiences/surfing.webp",
     heroObjectClass: "object-[50%_35%]",
     
     overview: "Ponta do Ouro's classic right-hand point break can deliver epic rides of 100-200m, and up to 1km in perfect conditions - rivaling Jeffrey's Bay. The warm, crystal-clear waters and consistent swells make it ideal for surfers of all levels, from beginners learning on gentle beach breaks to experts carving the point.",
