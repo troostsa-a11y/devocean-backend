@@ -5,7 +5,7 @@ export async function onRequest(context) {
   const { params } = context;
   const key = params.key;
   
-  // Only serve the IndexNow key file
+  // Only serve the IndexNow key file inline
   if (key === '4339cd9fe9f2766ae7f04b21f3848dec') {
     return new Response(key, {
       status: 200,
@@ -16,6 +16,7 @@ export async function onRequest(context) {
     });
   }
   
-  // For any other .txt request, return 404
-  return new Response('Not Found', { status: 404 });
+  // For all other .txt requests (robots.txt, llms.txt, etc.) fall through
+  // to the static file system so public/*.txt files are served correctly.
+  return context.next();
 }
