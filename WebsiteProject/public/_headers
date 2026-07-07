@@ -11,6 +11,16 @@
   Content-Type: application/linkset+json
   Cache-Control: public, max-age=3600
 
+# Agent Skills index — application/json (belt-and-suspenders, CF Pages default for .json)
+/.well-known/agent-skills/index.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=3600
+
+# Agent Skill markdown files
+/.well-known/agent-skills/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 # robots.txt must not be cached long — crawlers need current rules
 # Overrides the /*.txt immutable rule above (later match wins in CF Pages)
 /robots.txt

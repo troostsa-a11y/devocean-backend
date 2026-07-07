@@ -1,0 +1,19 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "skills": [
+    {
+      "name": "DEVOCEAN Lodge Room Availability",
+      "type": "api",
+      "description": "Check live room availability and nightly pricing at DEVOCEAN Lodge, Ponta do Ouro, Mozambique for a given date range.",
+      "url": "https://devoceanlodge.com/.well-known/agent-skills/availability.md",
+      "sha256": "9b20e439123a7a9c95efad1262f2c6bde520be09d42b4f1ed07a2ceafb09be50"
+    },
+    {
+      "name": "DEVOCEAN Lodge Currency Conversion",
+      "type": "api",
+      "description": "Convert lodge pricing from USD to any supported currency using live exchange rates.",
+      "url": "https://devoceanlodge.com/.well-known/agent-skills/currency-conversion.md",
+      "sha256": "0905c7c809a9c124bdceb6cab80a36d8f6de813d4c1dc51bf11dbee27994f65f"
+    }
+  ]
+}
