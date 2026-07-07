@@ -5,25 +5,23 @@ import LazyImage from './LazyImage';
 import { trackBookingSession } from '../utils/analytics';
 
 export default function HeroSection({ images = [], ui, bookUrl, lang, currency }) {
-  const [idx, setIdx] = useState(0);
-  // Only mount images in the DOM when they're needed — all slides are full-screen
-  // (absolute inset-0) so the browser treats them all as in-viewport, loading them
-  // all at once. Controlling mount order limits initial downloads to just slide 0.
+  // mountedIndices is React state because it controls DOM mount/unmount of slides.
+  // idx is a ref — carousel ticks mutate DOM opacity directly, bypassing React
+  // re-render entirely. This prevents the 6-second setState cycle from occupying
+  // the main thread and causing INP spikes when a user interacts mid-tick.
   const [mountedIndices, setMountedIndices] = useState(() => new Set([0]));
-  const list = Array.isArray(images) ? images.filter(Boolean) : [];
+  const idxRef = useRef(0);
+  // DOM refs for each slide wrapper — used for direct opacity mutation
+  const slideEls = useRef([]);
+  // Mirrors mountedIndices as a ref so setInterval can read it without needing
+  // it as an effect dependency (which would restart the timer on every mount).
+  const mountedRef = useRef(new Set([0]));
   const trustindexRef = useRef(null);
-  // Tracks which slide images have actually finished downloading (or failed —
-  // either way "resolved", so we never wait forever). Slide 0 is eager/high
-  // priority and always the first thing requested, so it's pre-marked ready.
-  // A ref (not state) on purpose: read inside the rotation interval without
-  // needing it as an effect dependency, which would otherwise restart/reset
-  // the 6s timer every time an image finishes loading.
   const resolvedRef = useRef(new Set([0]));
-  // Counts consecutive ticks the rotation has held on the current slide while
-  // waiting for the next image — caps the wait so a genuinely broken image
-  // can't freeze the slideshow forever.
   const stallTicksRef = useRef(0);
-  
+
+  const list = Array.isArray(images) ? images.filter(Boolean) : [];
+
   const buildUrl = (path, hash = '') => {
     const params = new URLSearchParams();
     if (lang) params.set('lang', lang);
@@ -32,39 +30,42 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     return queryString ? `${path}?${queryString}${hash}` : `${path}${hash}`;
   };
 
+  // Helper: mount new slide indices only when genuinely adding — guards prevent
+  // setMountedIndices from being called (and triggering a re-render) when the
+  // indices are already mounted.
+  const ensureMounted = (indices) => {
+    const toAdd = indices.filter(i => !mountedRef.current.has(i));
+    if (toAdd.length === 0) return;
+    toAdd.forEach(i => mountedRef.current.add(i));
+    setMountedIndices(new Set(mountedRef.current));
+  };
+
   useEffect(() => {
     if (list.length <= 1) return;
 
     // Mount slide 1 after 3s so it has time to load before the first 6s transition
-    const preload = setTimeout(() => {
-      setMountedIndices(prev => new Set([...prev, 1]));
-    }, 3000);
+    const preload = setTimeout(() => ensureMounted([1]), 3000);
 
     const id = setInterval(() => {
-      setIdx(prev => {
-        const next = (prev + 1) % list.length;
+      const prev = idxRef.current;
+      const next = (prev + 1) % list.length;
 
-        // Don't reveal a slide whose image hasn't actually finished
-        // downloading yet — that leaves the outer slide wrapper visible
-        // while its <img> is still mid-fetch, showing the flat brand-color
-        // fallback underneath instead of a photo (seen on Clarity for
-        // hero03-05, whose mobile WebP files are larger, on slower mobile
-        // connections). Hold on the current slide a bit longer instead,
-        // up to a couple of extra ticks, so a genuinely stuck/broken image
-        // can't freeze the rotation forever.
-        if (!resolvedRef.current.has(next) && stallTicksRef.current < 2) {
-          stallTicksRef.current += 1;
-          const retryUpcoming = (next + 1) % list.length;
-          setMountedIndices(m => new Set([...m, next, retryUpcoming]));
-          return prev;
-        }
-        stallTicksRef.current = 0;
+      // Hold on current slide if the next image hasn't loaded yet (up to 2 ticks)
+      if (!resolvedRef.current.has(next) && stallTicksRef.current < 2) {
+        stallTicksRef.current += 1;
+        const retryUpcoming = (next + 1) % list.length;
+        ensureMounted([next, retryUpcoming]);
+        return;
+      }
 
-        const upcoming = (next + 1) % list.length;
-        // Mount the slide-after-next now — it has a full 6s interval to download
-        setMountedIndices(m => new Set([...m, upcoming]));
-        return next;
-      });
+      stallTicksRef.current = 0;
+      const upcoming = (next + 1) % list.length;
+      ensureMounted([upcoming]);
+
+      // Advance — direct DOM mutation, no React state change, no re-render
+      idxRef.current = next;
+      if (slideEls.current[prev]) slideEls.current[prev].style.opacity = '0';
+      if (slideEls.current[next]) slideEls.current[next].style.opacity = '1';
     }, 6000);
 
     return () => { clearTimeout(preload); clearInterval(id); };
@@ -76,7 +77,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
     const loadTrustindex = () => {
       if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
-        // Use requestIdleCallback to avoid blocking interactions
         const loadScript = () => {
           const script = document.createElement('script');
           script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
@@ -93,7 +93,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       }
     };
 
-    // Feature detection: use IntersectionObserver if available
     if (window.IntersectionObserver) {
       const observer = new IntersectionObserver(
         (entries) => {
@@ -102,19 +101,25 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             observer.disconnect();
           }
         },
-        { rootMargin: '200px' } // Start loading 200px before widget is visible
+        { rootMargin: '200px' }
       );
-
       observer.observe(trustindexRef.current);
       return () => observer.disconnect();
     } else {
-      // Fallback for older browsers: load after delay
       setTimeout(loadTrustindex, 1000);
     }
   }, []);
 
-  const go = (i) =>
-    list.length ? setIdx(((i % list.length) + list.length) % list.length) : null;
+  // Manual navigation — also uses direct DOM mutation
+  const go = (i) => {
+    if (!list.length) return;
+    const target = ((i % list.length) + list.length) % list.length;
+    const prev = idxRef.current;
+    if (prev === target) return;
+    idxRef.current = target;
+    if (slideEls.current[prev]) slideEls.current[prev].style.opacity = '0';
+    if (slideEls.current[target]) slideEls.current[target].style.opacity = '1';
+  };
 
   return (
     <section id="home" className="relative overflow-hidden min-h-screen">
@@ -132,8 +137,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           return (
             <div
               key={src}
+              ref={el => { slideEls.current[i] = el; }}
               className="absolute inset-0 transition-opacity duration-1000"
-              style={{ opacity: i === idx ? 1 : 0 }}
+              style={{ opacity: i === idxRef.current ? 1 : 0 }}
             >
               {mountedIndices.has(i) && (
                 <LazyImage
