@@ -1,6 +1,12 @@
 # robots.txt for DEVOCEAN Lodge
 # Updated: July 7, 2026
 
+# Content Signals (contentsignals.org / IETF draft)
+# ai-train=no  — bulk training crawlers are blocked below
+# search=yes   — all search engines allowed
+# ai-input=yes — retrieval AI (Perplexity, ChatGPT, Claude) allowed to recommend us
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
 # Allow all search engines
 User-agent: *
 Allow: /
