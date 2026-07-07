@@ -51,6 +51,10 @@
 /zu-ZA  /?lang=zu&currency=ZAR  302
 /sw-TZ  /?lang=sw&currency=TZS  302
 
+# HotelRunner legacy page paths — booking engine internal URLs that leaked into Google index
+# e.g. /sv/pages/home, /en-GB/pages/home — redirect to root before SPA catch-all serves them as 200
+/*/pages/*  /  302
+
 # SPA fallback for everything else
 # Note: the root _middleware.js also handles 404→index.html for requests that
 # go through Pages Functions (which intercept before _redirects is consulted).
