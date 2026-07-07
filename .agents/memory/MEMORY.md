@@ -21,3 +21,4 @@
 - [Marin VAD response muting](marin-vad-response-muting.md) — mute on response.created; unmute ONLY after browser acks local playback drained (response.done ≠ playback finished, long responses lag); sessionGreetingSent guard
 - [In-app browser viewport quirk](in-app-browser-viewport-quirk.md) — FB/IG in-app browsers briefly report near-zero innerHeight on first paint, breaking fixed-position UI; verify Clarity device metadata before assuming a screenshot is a thumbnail artifact
 - [Hero carousel load race](hero-carousel-load-race.md) — timer-driven crossfade must gate reveal on the slide's own image onLoad/onError, not just elapsed lead time, or slow/large images flash the fallback background
+- [ChatGPT integration layers](chatgpt-integration-layers.md) — 3 distinct layers (on-site receptionist, search discoverability, MCP App); /talk clean URL pending; MCP integration is future-stage
