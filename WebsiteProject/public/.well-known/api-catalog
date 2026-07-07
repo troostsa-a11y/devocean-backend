@@ -1,0 +1,46 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://devoceanlodge.com",
+      "service-doc": [
+        { "href": "https://devoceanlodge.com/llms.txt", "type": "text/plain" }
+      ]
+    },
+    {
+      "anchor": "https://devoceanlodge.com/api/booking/availability",
+      "service-doc": [
+        { "href": "https://devoceanlodge.com/llms.txt", "type": "text/plain" }
+      ],
+      "title": [
+        { "value": "DEVOCEAN Lodge – Room Availability" }
+      ]
+    },
+    {
+      "anchor": "https://devoceanlodge.com/api/booking/calendar",
+      "service-doc": [
+        { "href": "https://devoceanlodge.com/llms.txt", "type": "text/plain" }
+      ],
+      "title": [
+        { "value": "DEVOCEAN Lodge – Price Calendar" }
+      ]
+    },
+    {
+      "anchor": "https://devoceanlodge.com/api/booking/quote",
+      "service-doc": [
+        { "href": "https://devoceanlodge.com/llms.txt", "type": "text/plain" }
+      ],
+      "title": [
+        { "value": "DEVOCEAN Lodge – Booking Quote" }
+      ]
+    },
+    {
+      "anchor": "https://devoceanlodge.com/api/fx",
+      "service-doc": [
+        { "href": "https://devoceanlodge.com/llms.txt", "type": "text/plain" }
+      ],
+      "title": [
+        { "value": "DEVOCEAN Lodge – Currency Conversion" }
+      ]
+    }
+  ]
+}
