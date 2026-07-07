@@ -1,71 +1,87 @@
 # DEVOCEAN Lodge Website Design Guidelines
 
 ## Design Approach
-**Reference-Based Approach** - Drawing inspiration from premium hospitality platforms like Airbnb and Booking.com, emphasizing visual storytelling and emotional connection to the destination experience.
+Premium coastal hospitality — image-led, warm, and earthy. Not minimal tech. Generous whitespace, authentic Mozambican Indian Ocean feel. Reference aesthetic: high-end Airbnb listings / Booking.com editorial tier. Light-mode only; no dark mode.
 
 ## Core Design Elements
 
 ### Color Palette
-**Primary Colors:**
-- Ocean Blue: 210 85% 45% (representing the coastal location)
-- Warm Sand: 45 25% 85% (reflecting the beach environment)
-- Deep Teal: 190 75% 35% (for accent elements)
 
-**Supporting Colors:**
-- White: 0 0% 100% (clean backgrounds)
-- Charcoal: 0 0% 20% (text and contrast)
-- Sunset Orange: 25 85% 60% (call-to-action highlights)
+**Brand anchor (implemented — use these as source of truth):**
+- **Terracotta** `#9e4b13` — the primary brand colour. Used for the sticky topbar background, link hover states, focus rings, and select option backgrounds. This is the single most important colour in the system.
+- **Warm Gold** `#f0ca30` — the primary accent/highlight. Used for CTA button hover/active text and topbar link hover states. Always used as a highlight or text-on-dark, never as a fill.
+- **Body background** `#f8fafc` — Tailwind slate-50, near-white. The base surface for all content sections.
+- **Hero text** `#ffffff` — white, rendered over a dark gradient overlay on all hero images.
+
+**Supporting palette (design intent, used in components and gradients):**
+- Ocean Blue `hsl(210 85% 45%)` — coastal accent, used in section accents and some CTAs
+- Warm Sand `hsl(45 25% 85%)` — card surfaces, soft section backgrounds, dividers
+- Deep Teal `hsl(190 75% 35%)` — secondary accent elements
+- Charcoal `hsl(0 0% 20%)` — body text and high-contrast headings
 
 ### Typography
-- **Primary Font:** Inter or similar modern sans-serif via Google Fonts
-- **Headings:** Bold weights (700) for accommodation names and section headers
-- **Body Text:** Regular (400) and medium (500) weights
-- **Accent Text:** Light italic for descriptive elements
+- **Primary Font:** Inter (Google Fonts, weights 400/500/600/700), loaded non-render-blocking with `display=swap`
+- **Fallback stack:** `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
+- **Hero H1:** `clamp(3.5rem, 14vw, 3.75rem)`, weight 700, white, left-aligned (not centred)
+- **Hero subtitle:** `1.25rem`, weight 600, white
+- **Section headings:** Bold (700) for accommodation names and section headers
+- **Body text:** Regular (400) and medium (500) weights
+- **Accent text:** Light italic for descriptive/secondary elements
 
 ### Layout System
-**Tailwind Spacing Units:** Consistent use of 4, 8, 12, and 16 units (p-4, m-8, gap-12, py-16) for harmonious spacing throughout the design.
+- **Spacing scale:** Tailwind units — p-4, m-8, gap-12, py-16/py-24 for section vertical rhythm
+- **Max content width:** `max-w-7xl` (80rem) centred with horizontal padding
+- **Mobile-first:** responsive breakpoints at `sm` (640px), `md` (768px), `lg` (1024px)
+
+### Header Structure
+Two-tier fixed stack, total height ~96–104px:
+1. **Topbar** (~40px) — terracotta background (`#9e4b13`), white text; holds language selector, contact info/phone
+2. **Nav bar** (~56px mobile / 64px desktop) — white or semi-transparent depending on scroll position; holds logo, primary nav links, and Book Now CTA
+
+CSS custom properties: `--topbar-h`, `--header-h`, `--stack-h` (sum of both). All in-page anchors use `scroll-margin-top: var(--stack-h)` to offset correctly.
 
 ### Component Library
 
 **Navigation:**
-- Fixed header with transparent overlay on hero images
-- Primary CTA buttons with ocean blue background
-- Secondary navigation with subtle underline states
+- Two-tier fixed header (topbar + nav — see above)
+- Primary CTA buttons with terracotta or ocean-blue background depending on context
+- Hover/active: gold `#f0ca30` text on dark surfaces; brand hover-elevate on light surfaces
+- Secondary nav links with subtle underline states
 
 **Accommodation Cards:**
-- Image-first layout with rounded corners
-- Overlay text on hero images with subtle dark gradient
-- "More details" expandable sections with smooth transitions
+- Image-first layout, rounded corners, soft shadows
+- Dark gradient overlay on card hero images
+- Expandable "More details" sections with smooth transitions
 
 **Forms & Booking:**
-- Clean, minimal input fields with focus states
-- Primary booking buttons with the sunset orange accent
-- Contact forms with generous spacing and clear hierarchy
+- Clean, minimal input fields; focus rings use `--brand` (`#9e4b13`)
+- Primary booking/CTA buttons in terracotta or ocean blue
+- Contact forms: generous spacing, clear hierarchy, `max-w-lg` constrained on mobile
 
 **Gallery & Images:**
-- Masonry-style layout for gallery section
-- Lazy loading implementation for performance
-- Hover states with subtle zoom effects
+- Masonry-style layout
+- Lazy loading for performance
+- Hover: subtle zoom effect
 
 ### Images
-**Hero Section:** Large rotating carousel of 5 hero images showcasing the property and ocean views with overlay text and booking CTA buttons using variant="outline" with blurred backgrounds.
 
-**Accommodation Images:** High-quality photos for each unit type (Safari Tent, Comfort Tent, Garden Cottage, Thatched Chalet) with consistent aspect ratios.
+**Hero Section:** Full-viewport rotating carousel of 5 images (lodge exterior, divers, dolphins, game/wildlife, coastal hike). Dark gradient overlay covers the bottom half. White text + `variant="outline"` CTA buttons with frosted/blurred backgrounds. Title is left-aligned, not centred.
 
-**Activity Images:** Lifestyle photography showing diving, dolphin encounters, lighthouse walks, and other experiences.
+**Accommodation Images:** High-quality photos for each unit type — Safari Tent, Comfort Tent, Garden Cottage, Thatched Chalet — consistent aspect ratios per card.
+
+**Activity Images:** Lifestyle photography — diving, dolphin encounters, lighthouse walks, seafari, fishing, surfing.
 
 **Gallery:** Mix of property, location, and guest experience photos in varied sizes for visual interest.
 
 ### Visual Treatments
-**Gradients:** Subtle ocean-to-sand gradients (210 85% 45% to 45 25% 85%) for hero overlays and section dividers.
-
-**Shadows:** Soft, elevated shadows for cards and interactive elements.
-
-**Animations:** Minimal, performance-focused transitions - subtle parallax on hero images and smooth accordion expansions for "More details" sections.
+- **Dark wash:** Full-width dark gradient overlay on all hero/banner images so white text is always legible regardless of image content
+- **Gradients:** Ocean-to-sand (hsl 210 85% 45% → hsl 45 25% 85%) for subtle section dividers
+- **Shadows:** Soft, low-elevation shadows on cards and interactive elements
+- **Animations:** Performance-focused — subtle parallax on hero carousel, smooth accordion expand/collapse; no heavy motion
 
 ## Key Design Principles
 1. **Image-Led Storytelling:** Every section leads with compelling photography
-2. **Breathing Room:** Generous whitespace between sections for premium feel
-3. **Mobile-First:** Responsive design optimized for booking on mobile devices
-4. **Trust & Transparency:** Clear pricing, policies, and contact information
-5. **Local Authenticity:** Design elements that reflect Mozambican coastal culture
+2. **Breathing Room:** Generous whitespace between sections for a premium feel
+3. **Mobile-First:** Optimised for booking on mobile; desktop enhances rather than leads
+4. **Trust & Transparency:** Clear pricing, policies, and contact information always visible
+5. **Local Authenticity:** Warm, earthy palette and photography that reflects Mozambican coastal culture — not a generic "beach resort" template
