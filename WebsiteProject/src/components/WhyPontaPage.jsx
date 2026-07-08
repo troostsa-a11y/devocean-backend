@@ -244,8 +244,6 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
               
               <a
                 href={bookUrl}
-                target="_blank"
-                rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/20 text-white font-bold rounded-xl border-2 border-white/30 transition-colors"
                 data-testid="link-book-now"
               >

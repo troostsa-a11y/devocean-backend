@@ -177,8 +177,6 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
 
           <a
             href={bookUrl}
-            target="_blank"
-            rel="noreferrer"
             className="btn-cta mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#9e4b13] text-white shadow hover:shadow-md"
             aria-label={ui.contact.bookNow}
             onClick={() => {

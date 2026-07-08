@@ -219,8 +219,6 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <li>
               <a
                 href={bookUrl}
-                target="_blank"
-                rel="noreferrer"
                 className={`btn-cta inline-flex items-center justify-center w-[15rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
                 onClick={() => {
                   if (window.dataLayer) {
@@ -307,8 +305,6 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               <div className="p-3">
                 <a
                   href={bookUrl}
-                  target="_blank"
-                  rel="noreferrer"
                   data-testid="button-mobile-book-now"
                   className="block text-center btn-cta px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors font-semibold shadow-md"
                   onClick={() => {

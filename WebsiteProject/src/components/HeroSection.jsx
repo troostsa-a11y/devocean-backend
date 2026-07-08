@@ -206,8 +206,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             {/* Book Now */}
             <a
               href={bookUrl}
-              target="_blank"
-              rel="noreferrer"
               className="group btn-cta w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] transform hover:scale-105 transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2 border-2 border-white/20"
               onClick={() => {
                 if (window.dataLayer) {

@@ -116,8 +116,6 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                   )}
                   <a
                     href={bookUrl}
-                    target="_blank"
-                    rel="noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e4b13] text-white text-sm font-semibold hover:bg-[#8a4211] transition-colors"
                     data-testid={`button-book-${u.key}`}
                     onClick={() => {
