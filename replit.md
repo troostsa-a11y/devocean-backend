@@ -71,7 +71,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 
 ## External Dependencies
 
-- **Database**: PostgreSQL via Supabase. `DATABASE_URL` (Render). Driver: `drizzle-orm/postgres-js`.
+- **Database**: PostgreSQL via Supabase. `DATABASE_URL` (Render). Driver: `drizzle-orm/postgres-js` (direct connection — never goes through Supabase's PostgREST/anon or authenticated keys). Row Level Security is enabled on all 9 production tables (`bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`, `guests`, `booking_sessions`, `direct_bookings`, `coupon_codes`) as defense-in-depth; it doesn't affect the app itself since the direct connection bypasses RLS, but it blocks anon/authenticated access if the Supabase key were ever leaked.
 - **Email**: IMAP needs `MAIL_HOST`, `MAIL_PORT`, `IMAP_USER`, `IMAP_PASSWORD`; SMTP reuses the host. Optional taxi notify: `TAXI_EMAIL`, `TAXI_WHATSAPP`, `TAXI_NAME`.
 - **Beds24**: PMS — booking notifications parsed from email (and REST API, see Native Direct Booking).
 - **Cloudflare**: CORS for CF Functions.
@@ -119,6 +119,14 @@ Full reasoning in `.agents/memory/hero-overlay-lcp.md` + `hero-cls-fix.md`. Key 
 - **Frontend proxy**: CF Functions in `functions/api/booking/*` inject `x-admin-key` + `cf-ipcountry`; browser never sees the admin key.
 - **Render env**: `BEDS24_REFRESH_TOKEN`, `BEDS24_PROP_ID`, `BEDS24_API_BASE`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`; optional `DEPOSIT_PERCENT` (50), `CANCELLATION_POLICY_DAYS` (30), `BOOKING_CURRENCY` (USD), `PUBLIC_SITE_URL`.
 - **Stripe webhook**: `https://devocean-automailer.onrender.com/api/booking/webhook` for `checkout.session.completed`.
+
+### Coupon Codes (book-direct discounts)
+- Reusable phrase codes only (e.g. `DEVOCEANVIP` 10% percent-off, `TRTS0807` $32 fixed-off) — Beds24's One-Time-Use Voucher box is out of scope.
+- **Admin-managed, no redeploy needed**: created/edited/deactivated from the existing `/admin` page's Coupons tab, backed by the `coupon_codes` table (`code`, `type` percent|fixed, `value`, `active`). Admin routes live in `render-automailer/server.ts`.
+- **Discount math**: applied to the quoted total before the deposit split, except last-minute offers — those keep the existing 100% deposit rule regardless of discount. Normal stays still split 50/50 on the *discounted* total.
+- **Beds24 record**: the discount is written into the Beds24 booking (not just Stripe/DB-side) so the PMS reflects the real charged amount.
+- **Data**: `coupon_code` and `discount_amount` columns added to `direct_bookings`; migration in `render-automailer/migrations/add_coupon_codes.sql`. Applied directly via the Supabase SQL editor (this DB isn't Replit-managed, so there's no Publish-time schema diff step — migrations here are run by hand against production).
+- **Frontend**: coupon input + discount line in `BookDirectPage.jsx` and `BookingConfirmedPage.jsx`; i18n keys added to `bookingStrings.js` across all 20 base langs for both `BOOKING_STRINGS` and `CONFIRM_STRINGS`.
 
 ### Date Range Picker (book-direct search)
 - `DateRangePicker.jsx`: dual-month range calendar built on **luxon** (not react-day-picker). Monday-first, names via `DateTime.setLocale(lang)` / `Info.weekdays`. Dates stay `YYYY-MM-DD` strings throughout.
