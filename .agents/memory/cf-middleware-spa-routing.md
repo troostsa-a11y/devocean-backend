@@ -22,9 +22,22 @@ if (response.status === 404) {
   const accept = context.request.headers.get('accept') || '';
   if (accept.includes('text/html')) {
     const indexUrl = new URL('/index.html', context.request.url);
-    response = await fetch(indexUrl.href); // status will be 200
+    response = await context.env.ASSETS.fetch(new Request(indexUrl, context.request));
   } else {
     return response; // asset 404 — pass through
   }
 }
 ```
+
+## Trap #2: plain `fetch()` to /index.html silently breaks every deep-linked SPA route
+A bare `fetch(indexUrl.href)` (not `context.env.ASSETS.fetch(...)`) re-enters Cloudflare's
+public edge routing layer, which auto-canonicalizes `/index.html` → `/` with a 308.
+That 308 has no `text/html` content-type, so the middleware's content-type check
+returns it as-is — every hard refresh / direct nav to a client-side route (e.g.
+`/book-direct`, `/why-ponta`) gets a bare redirect status instead of the SPA
+shell, which renders as a dead/blank page (confirmed live via curl: real 404s
+site-wide on any non-`/` route, while `/api/*` Functions kept working fine).
+Client-side `<Link>` navigation never hits this path, so the bug is invisible
+until someone hard-refreshes or opens a deep link directly — exactly how it
+went unnoticed. Fix: use `context.env.ASSETS.fetch(new Request(url, request))`
+to talk directly to the asset origin, bypassing the redirect layer entirely.
