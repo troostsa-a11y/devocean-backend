@@ -261,6 +261,11 @@ export const directBookings = pgTable("direct_bookings", {
   balanceDue: decimal("balance_due", { precision: 10, scale: 2 }).notNull(),
   depositPercent: integer("deposit_percent").notNull().default(30),
 
+  // Coupon (optional). `discountAmount` is the whole-cart amount already
+  // subtracted from `totalAmount` above (totalAmount is NET, post-discount).
+  couponCode: text("coupon_code"),
+  discountAmount: decimal("discount_amount", { precision: 10, scale: 2 }),
+
   // Multi-room expansion. One leg per physical room reserved (a "per-type cart"
   // booking holds N legs). Written authoritatively at checkout and treated as
   // the source of truth at webhook time (the webhook only re-prices to guard a
@@ -295,11 +300,31 @@ export interface DirectBookingLeg {
   offerName: string | null;
   adults: number;
   children: number;
-  total: number;            // guest-facing total for this room's whole stay
-  deposit: number;          // this leg's share of the combined deposit
-  balance: number;          // this leg's balance due on arrival
+  total: number;            // guest-facing GROSS total for this room's whole stay (pre-discount)
+  discount: number;         // this leg's share of the whole-cart coupon discount
+  deposit: number;          // this leg's share of the combined deposit (computed on total - discount)
+  balance: number;          // this leg's balance due on arrival (computed on total - discount)
   beds24BookingId: string | null; // set once the leg is created in Beds24
 }
 
 export type DirectBooking = typeof directBookings.$inferSelect;
 export type InsertDirectBooking = typeof directBookings.$inferInsert;
+
+/**
+ * Reusable phrase-discount coupon codes (NOT Beds24's One-Time-Use Voucher
+ * Codes box, which is out of scope). Managed via the admin API/UI; applied by
+ * the guest in the /book-direct promo code field. `code` is matched
+ * case-insensitively (always stored/compared upper-cased).
+ */
+export const couponCodes = pgTable("coupon_codes", {
+  id: serial("id").primaryKey(),
+  code: text("code").notNull().unique(), // stored upper-cased
+  type: text("type").notNull(), // 'percent' | 'fixed'
+  value: decimal("value", { precision: 10, scale: 2 }).notNull(), // percent (0-100) or fixed major-unit amount
+  active: boolean("active").notNull().default(true),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export type CouponCode = typeof couponCodes.$inferSelect;
+export type InsertCouponCode = typeof couponCodes.$inferInsert;

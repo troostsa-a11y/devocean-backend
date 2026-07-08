@@ -85,6 +85,13 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
                 )}
                 <Row label={t.room} value={result.roomName} />
                 <Row label={t.dates} value={`${result.checkIn} → ${result.checkOut}`} />
+                {result.discount > 0 && (
+                  <Row
+                    label={fmt(t.discountApplied, { code: result.couponCode || '' })}
+                    value={`−${money(result.discount, result.currency)}`}
+                    testId="text-confirmed-discount"
+                  />
+                )}
                 <Row label={t.depositPaid} value={money(result.deposit, result.currency)} />
                 <Row label={t.balanceDue} value={money(result.balanceDue, result.currency)} />
               </div>

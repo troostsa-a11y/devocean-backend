@@ -20,7 +20,7 @@
  * parsing is defensive because the live payloads can carry extra fields.
  */
 
-import { getBookingConfig, type BookingConfig } from '../config/booking-config';
+import { getBookingConfig, round2, type BookingConfig } from '../config/booking-config';
 
 export interface Beds24Room {
   roomId: string;
@@ -625,7 +625,38 @@ export class Beds24Service {
     offerId?: number | null;
     offerName?: string | null;
     notes?: string;
+    discount?: number;
+    couponCode?: string | null;
   }): Promise<{ beds24BookingId: string }> {
+    // `total` here is the leg's GROSS accommodation price. When a coupon
+    // applies, the guest-facing/Beds24 price is the NET amount (gross -
+    // discount) and the discount is recorded as its own negative invoice line
+    // so the property always sees exactly what was charged and why.
+    const discount = input.discount && input.discount > 0 ? round2(input.discount) : 0;
+    const netTotal = round2(input.total - discount);
+
+    const invoiceItems: any[] = [
+      {
+        type: 'charge',
+        description: `Accommodation ${input.checkIn} → ${input.checkOut}`,
+        qty: 1,
+        amount: input.total,
+      },
+    ];
+    if (discount > 0) {
+      invoiceItems.push({
+        type: 'charge',
+        description: `Discount: ${input.couponCode || 'COUPON'}`,
+        qty: 1,
+        amount: -discount,
+      });
+    }
+    invoiceItems.push({
+      type: 'payment',
+      description: 'Deposit (Stripe)',
+      amount: input.deposit,
+    });
+
     const booking: any = {
       roomId: Number(input.roomId),
       status: 'confirmed',
@@ -638,25 +669,14 @@ export class Beds24Service {
       email: input.email,
       phone: input.phone || '',
       country2: (input.country || '').toUpperCase().slice(0, 2),
-      price: input.total,
+      price: netTotal,
       referer: 'Direct Website',
       notes: input.notes ||
-        `Direct website booking${input.offerName ? ` (${input.offerName})` : ''}. ` +
-        `Deposit paid ${input.deposit} ${input.currency}, ` +
+        `Direct website booking${input.offerName ? ` (${input.offerName})` : ''}.` +
+        (discount > 0 ? ` Coupon ${input.couponCode || ''} applied: -${discount} ${input.currency}.` : '') +
+        ` Deposit paid ${input.deposit} ${input.currency}, ` +
         `balance due on arrival ${input.balance} ${input.currency}.`,
-      invoiceItems: [
-        {
-          type: 'charge',
-          description: `Accommodation ${input.checkIn} → ${input.checkOut}`,
-          qty: 1,
-          amount: input.total,
-        },
-        {
-          type: 'payment',
-          description: 'Deposit (Stripe)',
-          amount: input.deposit,
-        },
-      ],
+      invoiceItems,
     };
     // Attach the chosen rate plan so Beds24 records the correct offer; the price
     // is still set explicitly above so the guest is charged the quoted amount.

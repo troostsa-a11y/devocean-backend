@@ -22,9 +22,17 @@ import {
   getBookingConfig,
   splitDeposit,
   round2,
+  allocateProportional,
   type BookingConfig,
 } from '../config/booking-config';
 import type { DirectBookingLeg } from '../../shared/schema';
+
+/** A resolved, still-active coupon ready to apply to a cart's gross total. */
+export interface CartCoupon {
+  code: string;
+  type: 'percent' | 'fixed';
+  value: number;
+}
 
 export type CartErrorCode =
   | 'EMPTY_CART'
@@ -75,7 +83,10 @@ export interface CartQuote {
   currency: string;
   depositPercent: number;
   cancellationPolicyDays: number;
-  total: number;
+  grossTotal: number;           // Σ leg.total before any coupon discount
+  discount: number;             // whole-cart discount amount (0 when no coupon / not applied)
+  couponCode: string | null;    // normalized (upper-cased) code actually applied, else null
+  total: number;                // NET total = grossTotal - discount
   deposit: number;
   balance: number;
   rooms: number;                // Σ qty (physical rooms)
@@ -191,6 +202,7 @@ export async function computeCartQuote(
   stay: { checkIn: string; checkOut: string; adults: number; children: number },
   cartLines: any[],
   cfg: BookingConfig = getBookingConfig(),
+  coupon: CartCoupon | null = null,
 ): Promise<CartQuote> {
   if (!Array.isArray(cartLines) || cartLines.length === 0) {
     throw new BookingCartError('Please choose at least one room.', 400, 'EMPTY_CART');
@@ -280,6 +292,7 @@ export async function computeCartQuote(
       adults: occ.adults,
       children: occ.children,
       total: offer.total,
+      discount: 0,
       deposit: 0,
       balance: 0,
       beds24BookingId: null,
@@ -308,14 +321,34 @@ export async function computeCartQuote(
   // (100% for last-minute rate plans, otherwise the arrival-date %) — never
   // proportionally blended, so a last-minute leg is always charged in full
   // regardless of what other rooms in the same cart are paying now.
-  const total = round2(legs.reduce((s, l) => s + l.total, 0));
+  const grossTotal = round2(legs.reduce((s, l) => s + l.total, 0));
+
+  // Coupon discount: computed on the whole-cart GROSS total, then allocated
+  // back across legs proportionally to each leg's share of that total (largest-
+  // remainder allocation, so the parts sum back exactly). Never exceeds the
+  // total (a fixed-amount coupon larger than the cart just zeroes it out).
+  let discount = 0;
+  let appliedCouponCode: string | null = null;
+  if (coupon && grossTotal > 0) {
+    const raw = coupon.type === 'percent'
+      ? (grossTotal * coupon.value) / 100
+      : coupon.value;
+    discount = round2(Math.min(Math.max(raw, 0), grossTotal));
+    if (discount > 0) appliedCouponCode = coupon.code;
+  }
+  const legTotals = legs.map((l) => l.total);
+  const legDiscounts = discount > 0 ? allocateProportional(discount, legTotals) : legs.map(() => 0);
+
   let deposit = 0;
   legs.forEach((l, i) => {
-    const { deposit: legDeposit, balance: legBalance } = splitDeposit(l.total, legDepositPercents[i]);
+    l.discount = legDiscounts[i];
+    const netLegTotal = round2(l.total - l.discount);
+    const { deposit: legDeposit, balance: legBalance } = splitDeposit(netLegTotal, legDepositPercents[i]);
     l.deposit = legDeposit;
     l.balance = legBalance;
     deposit = round2(deposit + legDeposit);
   });
+  const total = round2(grossTotal - discount);
   const balance = round2(total - deposit);
   // Single number shown as "Deposit now (X%)": the leg's own % when every leg
   // shares the same rate, otherwise the blended % actually being charged now.
@@ -357,6 +390,9 @@ export async function computeCartQuote(
     currency,
     depositPercent,
     cancellationPolicyDays: beds24.getCancellationDays(),
+    grossTotal,
+    discount,
+    couponCode: appliedCouponCode,
     total,
     deposit,
     balance,

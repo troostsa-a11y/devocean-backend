@@ -135,6 +135,9 @@ if (process.env.DATABASE_URL) {
   guestDb.initDirectBookingsTable()
     .then(() => console.log('✅ Direct bookings table ready'))
     .catch((err) => console.error('❌ Failed to create direct_bookings table:', err));
+  guestDb.initCouponCodesTable()
+    .then(() => console.log('✅ Coupon codes table ready'))
+    .catch((err) => console.error('❌ Failed to create coupon_codes table:', err));
 }
 
 // Health check endpoint
@@ -663,6 +666,66 @@ app.get('/unsubscribe/:token', async (req: any, res: any) => {
     res.send(html);
   } catch (err: any) {
     res.status(500).send('<h2>Error</h2>');
+  }
+});
+
+// ─── Admin: coupon codes (reusable phrase-discount codes for /book-direct) ───
+app.get('/api/admin/coupons', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const coupons = await guestDb.listCoupons();
+    res.json({ coupons });
+  } catch (err: any) {
+    console.error('[ADMIN] list coupons error:', err.message);
+    res.status(500).json({ error: 'Could not load coupons' });
+  }
+});
+
+app.post('/api/admin/coupons', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  const code = String(req.body?.code || '').trim();
+  const type = req.body?.type;
+  const value = Number(req.body?.value);
+  if (!code) return res.status(400).json({ error: 'Coupon code is required' });
+  if (type !== 'percent' && type !== 'fixed') {
+    return res.status(400).json({ error: 'type must be "percent" or "fixed"' });
+  }
+  if (!Number.isFinite(value) || value <= 0) {
+    return res.status(400).json({ error: 'value must be a positive number' });
+  }
+  if (type === 'percent' && value > 100) {
+    return res.status(400).json({ error: 'A percent discount cannot exceed 100' });
+  }
+  try {
+    const coupon = await guestDb.createCoupon({ code, type, value });
+    res.json({ coupon });
+  } catch (err: any) {
+    console.error('[ADMIN] create coupon error:', err.message);
+    res.status(500).json({ error: 'Could not save coupon' });
+  }
+});
+
+app.post('/api/admin/coupons/:code/deactivate', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const coupon = await guestDb.setCouponActive(req.params.code, false);
+    if (!coupon) return res.status(404).json({ error: 'Coupon not found' });
+    res.json({ coupon });
+  } catch (err: any) {
+    console.error('[ADMIN] deactivate coupon error:', err.message);
+    res.status(500).json({ error: 'Could not deactivate coupon' });
+  }
+});
+
+app.post('/api/admin/coupons/:code/activate', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const coupon = await guestDb.setCouponActive(req.params.code, true);
+    if (!coupon) return res.status(404).json({ error: 'Coupon not found' });
+    res.json({ coupon });
+  } catch (err: any) {
+    console.error('[ADMIN] activate coupon error:', err.message);
+    res.status(500).json({ error: 'Could not activate coupon' });
   }
 });
 

@@ -27,8 +27,9 @@ import {
   getBookingConfig,
   isBookingConfigured,
   splitDeposit,
+  round2,
 } from '../config/booking-config';
-import { computeCartQuote, BookingCartError } from '../services/booking-cart';
+import { computeCartQuote, BookingCartError, type CartCoupon } from '../services/booking-cart';
 import type { DirectBookingLeg } from '../../shared/schema';
 
 // ─── tiny in-memory rate limiter (per IP, sliding window) ────────────────────
@@ -176,6 +177,27 @@ export function createBookingRouter(deps: {
     return true;
   }
 
+  // Look up a guest-entered promo code. Never throws — an invalid/inactive
+  // code is surfaced as a soft `couponError` string, never a 400, so a typo in
+  // the promo box can't block the rest of checkout.
+  async function resolveCoupon(
+    raw: unknown,
+  ): Promise<{ coupon: CartCoupon | null; couponError?: string }> {
+    const code = typeof raw === 'string' ? raw.trim() : '';
+    if (!code) return { coupon: null };
+    if (!db) return { coupon: null, couponError: 'Could not validate coupon code.' };
+    try {
+      const row = await db.getActiveCouponByCode(code);
+      if (!row) return { coupon: null, couponError: 'This code is not valid.' };
+      return {
+        coupon: { code: row.code, type: row.type as 'percent' | 'fixed', value: Number(row.value) },
+      };
+    } catch (err: any) {
+      console.error('[BOOKING] coupon lookup error:', err.message);
+      return { coupon: null, couponError: 'Could not validate coupon code.' };
+    }
+  }
+
   // ─── Public config (deposit %, cancellation policy) ───────────────────────
   router.get('/config', requireAdminKey, (_req, res) => {
     const cfg = getBookingConfig();
@@ -256,9 +278,10 @@ export function createBookingRouter(deps: {
     if (parsed.error || !parsed.value) return res.status(400).json({ error: parsed.error });
     const stay = parsed.value;
     const cartLines = Array.isArray(req.body?.rooms) ? req.body.rooms : [];
+    const { coupon, couponError } = await resolveCoupon(req.body?.coupon);
 
     try {
-      const quote = await computeCartQuote(beds24, stay, cartLines, getBookingConfig());
+      const quote = await computeCartQuote(beds24, stay, cartLines, getBookingConfig(), coupon);
       res.json({
         checkIn: quote.checkIn,
         checkOut: quote.checkOut,
@@ -268,6 +291,10 @@ export function createBookingRouter(deps: {
         currency: quote.currency,
         depositPercent: quote.depositPercent,
         cancellationPolicyDays: quote.cancellationPolicyDays,
+        grossTotal: quote.grossTotal,
+        discount: quote.discount,
+        couponApplied: quote.couponCode,
+        couponError,
         total: quote.total,
         deposit: quote.deposit,
         balance: quote.balance,
@@ -353,16 +380,20 @@ export function createBookingRouter(deps: {
     }
     if (!phone) return res.status(400).json({ error: 'Phone is required' });
 
+    // Re-validate the coupon at checkout time too — it may have been
+    // deactivated between the last live quote and clicking "Pay".
+    const { coupon } = await resolveCoupon(req.body?.coupon);
+
     const cfg = getBookingConfig();
     const t0 = Date.now();
     try {
       console.log(
         `[BOOKING] checkout: start ${stay.checkIn}->${stay.checkOut} lines=${cartLines.length}`,
       );
-      // Recompute everything (occupancy split, per-leg price, combined deposit)
-      // server-side from fresh Beds24 offers. Client amounts are never trusted —
-      // only roomId/offerId/qty select WHAT to price.
-      const quote = await computeCartQuote(beds24, stay, cartLines, cfg);
+      // Recompute everything (occupancy split, per-leg price, combined deposit,
+      // coupon discount) server-side from fresh Beds24 offers. Client amounts
+      // are never trusted — only roomId/offerId/qty/coupon select WHAT to price.
+      const quote = await computeCartQuote(beds24, stay, cartLines, cfg, coupon);
       const first = quote.legs[0];
       const summary = quote.lines
         .map((l) => (l.qty > 1 ? `${l.roomName} \u00d7${l.qty}` : l.roomName))
@@ -395,6 +426,8 @@ export function createBookingRouter(deps: {
         depositAmount: quote.deposit.toFixed(2),
         balanceDue: quote.balance.toFixed(2),
         depositPercent: quote.depositPercent,
+        couponCode: quote.couponCode,
+        discountAmount: quote.discount > 0 ? quote.discount.toFixed(2) : null,
         legs: quote.legs,                     // per-room source of truth
         paymentStatus: 'pending',
         status: 'pending',
@@ -474,7 +507,10 @@ export function createBookingRouter(deps: {
         offerName: record.offerName ?? null,
         adults: record.numAdults,
         children: record.numChildren,
-        total: Number(record.totalAmount),
+        // Legacy single-room rows have no per-leg breakdown, so the whole-cart
+        // discount (if any) is attributed entirely to this one synthesized leg.
+        total: round2(Number(record.totalAmount) + Number(record.discountAmount || 0)),
+        discount: Number(record.discountAmount || 0),
         deposit: Number(record.depositAmount),
         balance: Number(record.balanceDue),
         beds24BookingId: record.beds24BookingId ?? null,
@@ -681,6 +717,8 @@ export function createBookingRouter(deps: {
             currency: record.currency,
             offerId: leg.offerId,
             offerName: leg.offerName,
+            discount: leg.discount,
+            couponCode: record.couponCode,
           });
           leg.beds24BookingId = beds24BookingId;
           await db.updateDirectBooking(record.sessionRef, {
@@ -758,6 +796,8 @@ export function createBookingRouter(deps: {
       total: Number(record.totalAmount),
       deposit: Number(record.depositAmount),
       balanceDue: Number(record.balanceDue),
+      couponCode: record.couponCode || null,
+      discount: record.discountAmount ? Number(record.discountAmount) : 0,
       guestFirstName: record.guestFirstName,
       guestEmail: record.guestEmail,
       beds24BookingId: record.beds24BookingId,
@@ -768,6 +808,7 @@ export function createBookingRouter(deps: {
             adults: l.adults,
             children: l.children,
             total: l.total,
+            discount: l.discount || 0,
             deposit: l.deposit,
             balance: l.balance,
             beds24BookingId: l.beds24BookingId,

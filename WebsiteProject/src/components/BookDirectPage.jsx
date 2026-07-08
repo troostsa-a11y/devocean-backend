@@ -79,7 +79,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [childAges, setChildAges] = useState([]); // one entry per child; '' until chosen
-  const [coupon, setCoupon] = useState(''); // visual only — backend has no discount support yet
+  const [coupon, setCoupon] = useState('');
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -233,6 +233,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           checkOut,
           adults: effAdults,
           children: effChildren,
+          coupon: coupon.trim() || undefined,
           gaClientId,
           guest: {
             firstName: guest.firstName.trim(),
@@ -361,7 +362,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         const res = await fetch('/api/booking/quote', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ checkIn, checkOut, adults: effAdults, children: effChildren, rooms: cartLines }),
+          body: JSON.stringify({
+            checkIn,
+            checkOut,
+            adults: effAdults,
+            children: effChildren,
+            rooms: cartLines,
+            coupon: coupon.trim() || undefined,
+          }),
         });
         const data = await res.json();
         if (cancelled) return;
@@ -385,7 +393,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       cancelled = true;
       clearTimeout(id);
     };
-  }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t]);
+  }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t, coupon]);
 
   // ── Informational currency conversion (display only) ──────────────────────
   // The base/charged currency is the Beds24 property currency (availability
@@ -981,6 +989,25 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 </span>
                               </div>
                             ))}
+                            {quote.discount > 0 && (
+                              <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
+                                <span className="text-slate-500">
+                                  {fmt(t.discountLabel, { code: quote.couponApplied || coupon.trim().toUpperCase() })}
+                                </span>
+                                <span className="font-semibold text-emerald-600" data-testid="text-cart-discount">
+                                  −{money(quote.discount, quote.currency)}
+                                </span>
+                              </div>
+                            )}
+                            {coupon.trim() && (
+                              quote.couponApplied ? (
+                                <p className="text-xs text-emerald-600" data-testid="text-coupon-applied">
+                                  {fmt(t.couponApplied, { code: quote.couponApplied })}
+                                </p>
+                              ) : quote.couponError ? (
+                                <p className="text-xs text-red-600" data-testid="text-coupon-invalid">{quote.couponError}</p>
+                              ) : null
+                            )}
                             <div className="border-t border-slate-100 pt-3 flex flex-wrap items-center justify-between gap-2 text-sm">
                               <span className="text-slate-500">{t.total}</span>
                               <span className="text-right">

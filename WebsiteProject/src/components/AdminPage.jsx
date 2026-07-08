@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw, ExternalLink } from 'lucide-react';
+import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw, ExternalLink, Tag, Plus, Power } from 'lucide-react';
 import { useLocation } from 'wouter';
 
 const LANGUAGE_OPTIONS = [
@@ -179,6 +179,18 @@ export default function AdminPage() {
                   <Users className="w-4 h-4" />
                   Guests
                 </button>
+                <button
+                  onClick={() => setActiveTab('coupons')}
+                  className={`flex flex-1 items-center justify-center gap-1 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                    activeTab === 'coupons'
+                      ? 'bg-[#9e4b13] text-white'
+                      : 'text-slate-600 hover:bg-slate-100'
+                  }`}
+                  data-testid="tab-coupons"
+                >
+                  <Tag className="w-4 h-4" />
+                  Coupons
+                </button>
               </div>
               <button
                 onClick={handleClearConfig}
@@ -198,6 +210,8 @@ export default function AdminPage() {
               <ModifyDatesForm apiUrl={apiUrl} apiKey={apiKey} />
             ) : activeTab === 'guests' ? (
               <GuestsTab apiUrl={apiUrl} apiKey={apiKey} />
+            ) : activeTab === 'coupons' ? (
+              <CouponsTab apiUrl={apiUrl} apiKey={apiKey} />
             ) : (
               <CancelBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             )}
@@ -836,6 +850,201 @@ function CancelBookingForm({ apiUrl, apiKey }) {
 
       <StatusMessage status={status} />
     </form>
+  );
+}
+
+// ── Coupons Tab ───────────────────────────────────────────────────────────────
+
+function CouponsTab({ apiUrl, apiKey }) {
+  const [coupons, setCoupons] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
+  const [status, setStatus] = useState({ type: 'idle', message: '' });
+  const [code, setCode] = useState('');
+  const [type, setType] = useState('percent');
+  const [value, setValue] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [togglingCode, setTogglingCode] = useState(null);
+
+  const load = async () => {
+    setLoading(true);
+    setFetchError(null);
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/coupons`, {
+        headers: { 'X-Admin-Key': apiKey },
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || `${res.status} ${res.statusText}`);
+      }
+      const data = await res.json();
+      setCoupons(data.coupons || []);
+    } catch (err) {
+      setFetchError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const handleCreate = async (e) => {
+    e.preventDefault();
+    const trimmedCode = code.trim();
+    const numValue = Number(value);
+    if (!trimmedCode) { setStatus({ type: 'error', message: 'Enter a coupon code.' }); return; }
+    if (!Number.isFinite(numValue) || numValue <= 0) { setStatus({ type: 'error', message: 'Enter a valid discount value.' }); return; }
+    setSaving(true);
+    setStatus({ type: 'loading', message: 'Saving…' });
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/coupons`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Key': apiKey },
+        body: JSON.stringify({ code: trimmedCode, type, value: numValue }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Could not save coupon');
+      setStatus({ type: 'success', message: `Saved ${data.coupon.code}.` });
+      setCode('');
+      setValue('');
+      load();
+    } catch (err) {
+      setStatus({ type: 'error', message: err.message });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleToggle = async (coupon) => {
+    setTogglingCode(coupon.code);
+    try {
+      const action = coupon.active ? 'deactivate' : 'activate';
+      const res = await fetch(`${apiUrl}/api/admin/coupons/${encodeURIComponent(coupon.code)}/${action}`, {
+        method: 'POST',
+        headers: { 'X-Admin-Key': apiKey },
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Could not update coupon');
+      load();
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setTogglingCode(null);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <div className="bg-white rounded-xl border border-slate-200 p-4">
+        <h2 className="text-sm font-semibold text-slate-900 mb-3">New coupon</h2>
+        <p className="text-xs text-slate-500 mb-3">Reusable phrase codes guests type into the promo box at checkout (not Beds24's one-time voucher codes).</p>
+        <form onSubmit={handleCreate} className="flex flex-wrap items-end gap-2">
+          <label className="flex flex-col gap-1">
+            <span className="text-xs font-medium text-slate-600">Code</span>
+            <input
+              value={code}
+              onChange={(e) => setCode(e.target.value.toUpperCase())}
+              placeholder="e.g. DEVOCEANVIP"
+              className="px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none w-48"
+              data-testid="input-coupon-code"
+            />
+          </label>
+          <label className="flex flex-col gap-1">
+            <span className="text-xs font-medium text-slate-600">Type</span>
+            <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
+              data-testid="select-coupon-type"
+            >
+              <option value="percent">Percent off</option>
+              <option value="fixed">Fixed amount off</option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-1">
+            <span className="text-xs font-medium text-slate-600">{type === 'percent' ? 'Percent (0-100)' : 'Amount'}</span>
+            <input
+              type="number"
+              min="0"
+              step="0.01"
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              placeholder={type === 'percent' ? '10' : '32'}
+              className="px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none w-28"
+              data-testid="input-coupon-value"
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={saving}
+            className="flex items-center gap-1.5 px-4 py-1.5 bg-[#9e4b13] hover:bg-[#7a3a0f] text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
+            data-testid="button-save-coupon"
+          >
+            {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+            Save
+          </button>
+        </form>
+        <StatusMessage status={status} />
+      </div>
+
+      <div className="bg-white rounded-xl border border-slate-200 p-4">
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <h2 className="text-sm font-semibold text-slate-900">Coupons</h2>
+          <button
+            onClick={load}
+            className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-700"
+            data-testid="button-refresh-coupons"
+          >
+            <RefreshCw className="w-3.5 h-3.5" />
+            Refresh
+          </button>
+        </div>
+
+        {loading ? (
+          <div className="flex items-center gap-2 text-sm text-slate-500 py-4">
+            <Loader2 className="w-4 h-4 animate-spin" /> Loading…
+          </div>
+        ) : fetchError ? (
+          <p className="text-sm text-red-600" data-testid="text-coupons-error">{fetchError}</p>
+        ) : !coupons || coupons.length === 0 ? (
+          <p className="text-sm text-slate-500">No coupons yet.</p>
+        ) : (
+          <div className="divide-y divide-slate-100">
+            {coupons.map((c) => (
+              <div key={c.code} className="flex flex-wrap items-center justify-between gap-2 py-2.5" data-testid={`row-coupon-${c.code}`}>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-mono text-sm font-medium text-slate-900" data-testid={`text-coupon-code-${c.code}`}>{c.code}</span>
+                    <span
+                      className={`text-xs px-1.5 py-0.5 rounded-md font-medium ${c.active ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}
+                      data-testid={`status-coupon-${c.code}`}
+                    >
+                      {c.active ? 'Active' : 'Inactive'}
+                    </span>
+                  </div>
+                  <div className="text-xs text-slate-500 mt-0.5">
+                    {c.type === 'percent' ? `${Number(c.value)}% off` : `$${Number(c.value).toFixed(2)} off`}
+                  </div>
+                </div>
+                <button
+                  onClick={() => handleToggle(c)}
+                  disabled={togglingCode === c.code}
+                  className={`flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-medium border transition-colors disabled:opacity-50 ${
+                    c.active
+                      ? 'border-red-200 text-red-600 hover:bg-red-50'
+                      : 'border-emerald-200 text-emerald-700 hover:bg-emerald-50'
+                  }`}
+                  data-testid={`button-toggle-coupon-${c.code}`}
+                >
+                  {togglingCode === c.code ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Power className="w-3.5 h-3.5" />}
+                  {c.active ? 'Deactivate' : 'Activate'}
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 

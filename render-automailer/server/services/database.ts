@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings } from '../../shared/schema';
-import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking } from '../../shared/schema';
+import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings, couponCodes } from '../../shared/schema';
+import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking, CouponCode, InsertCouponCode } from '../../shared/schema';
 import { eq, and, lte, gte, isNull, isNotNull, ne, sql, or, ilike, count, desc } from 'drizzle-orm';
 
 /**
@@ -769,10 +769,73 @@ export class DatabaseService {
     // Idempotent upgrade for native-flow GA4 attribution.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS ga_client_id TEXT`;
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS ga4_conversion_fired_at TIMESTAMP`;
+    // Idempotent upgrade for coupon/discount support.
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS coupon_code TEXT`;
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS discount_amount DECIMAL(10,2)`;
     await this.client`
       CREATE INDEX IF NOT EXISTS idx_direct_bookings_attribution
         ON direct_bookings (lower(guest_email), check_in_date, status, created_at)
     `;
+  }
+
+  // ─── Coupon codes ──────────────────────────────────────────────────────────
+
+  async initCouponCodesTable(): Promise<void> {
+    await this.client`
+      CREATE TABLE IF NOT EXISTS coupon_codes (
+        id         SERIAL PRIMARY KEY,
+        code       TEXT NOT NULL UNIQUE,
+        type       TEXT NOT NULL,
+        value      DECIMAL(10,2) NOT NULL,
+        active     BOOLEAN NOT NULL DEFAULT TRUE,
+        created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+        updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+      )
+    `;
+  }
+
+  /** Case-insensitive lookup, only ever used to look up ACTIVE coupons for guest-facing pricing. */
+  async getActiveCouponByCode(code: string): Promise<CouponCode | undefined> {
+    const [row] = await this.db
+      .select()
+      .from(couponCodes)
+      .where(and(eq(couponCodes.code, code.trim().toUpperCase()), eq(couponCodes.active, true)))
+      .limit(1);
+    return row;
+  }
+
+  async listCoupons(): Promise<CouponCode[]> {
+    return this.db.select().from(couponCodes).orderBy(desc(couponCodes.createdAt));
+  }
+
+  async createCoupon(data: { code: string; type: 'percent' | 'fixed'; value: number }): Promise<CouponCode> {
+    const [created] = await this.db
+      .insert(couponCodes)
+      .values({
+        code: data.code.trim().toUpperCase(),
+        type: data.type,
+        value: data.value.toFixed(2),
+      } as InsertCouponCode)
+      .onConflictDoUpdate({
+        target: couponCodes.code,
+        set: {
+          type: data.type,
+          value: data.value.toFixed(2),
+          active: true,
+          updatedAt: new Date(),
+        },
+      })
+      .returning();
+    return created;
+  }
+
+  async setCouponActive(code: string, active: boolean): Promise<CouponCode | undefined> {
+    const [row] = await this.db
+      .update(couponCodes)
+      .set({ active, updatedAt: new Date() })
+      .where(eq(couponCodes.code, code.trim().toUpperCase()))
+      .returning();
+    return row;
   }
 
   async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {
