@@ -75,3 +75,6 @@ timeoutMs = 20000
 
 [userenv.development]
 AUTOMAILER_URL = "https://devocean-automailer.onrender.com"
+
+[userenv.shared]
+CLOUDFLARE_ACCOUNT_ID = "14ddc85b4f28725d0523c4814b0b15d5"
