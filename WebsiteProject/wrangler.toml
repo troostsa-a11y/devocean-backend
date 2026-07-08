@@ -1,4 +1,5 @@
 name = "devocean-lodge"
+account_id = "14ddc85b4f28725d0523c4814b0b15d5"
 pages_build_output_dir = "./dist"
 compatibility_date = "2025-01-01"
 
