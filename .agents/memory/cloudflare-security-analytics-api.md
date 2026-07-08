@@ -6,6 +6,7 @@ description: How to query real per-event Cloudflare security/firewall data for t
 ## Access
 - A scoped Cloudflare API token exists as the `CLOUDFLARE_API_TOKEN` secret (Zone:Read + Zone Analytics:Read, resource-scoped to `devoceanlodge.com` only — no DNS/WAF-edit/R2/rate-limit access).
 - It's available in `bash`/shell env directly. It is NOT exposed to the `code_execution` JS sandbox's `process.env` (that sandbox has its own env; use `bash` + `curl` for Cloudflare API calls instead).
+- **Expires 1 August 2026.** After that date, calls will start failing with an auth error — this is expected, not a regression. Ask the user to generate a fresh token with the same scopes (Zone:Read + Zone Analytics:Read on `devoceanlodge.com`) and update the `CLOUDFLARE_API_TOKEN` secret.
 
 ## Free-plan GraphQL Analytics API constraints
 **Why:** `devoceanlodge.com` is on Cloudflare's Free plan. The grouped/aggregated dataset `firewallEventsAdaptiveGroups` requires Pro+ and returns an opaque `"zone does not have access to the path"` authz error on Free — this is a plan-tier limit, not a token-permission bug.
