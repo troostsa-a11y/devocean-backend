@@ -15,6 +15,7 @@
 
 import express, { type Router, type RequestHandler } from 'express';
 import crypto from 'crypto';
+import nodemailer from 'nodemailer';
 import type { DatabaseService } from '../services/database';
 import { Beds24Service, Beds24Error } from '../services/beds24';
 import {
@@ -123,6 +124,40 @@ export function createBookingRouter(deps: {
   const router = express.Router();
   const { db, requireAdminKey, emailService } = deps;
   const beds24 = new Beds24Service();
+
+  // ─── Best-effort ops alert (payment captured, no matching booking record) ──
+  // This covers the one failure mode that leaves zero visible trace: Stripe
+  // shows the charge, but nothing in our DB or Beds24 gets created, and the
+  // only signal was a console.warn nobody was watching. Never let this email
+  // attempt throw back into the webhook handler — Stripe's retry/ack logic
+  // must depend only on the booking work succeeding, not on this notification.
+  const alertTransporter =
+    process.env.MAIL_HOST && process.env.IMAP_USER && process.env.IMAP_PASSWORD
+      ? nodemailer.createTransport({
+          host: process.env.MAIL_HOST,
+          port: parseInt(process.env.SMTP_PORT || '465'),
+          secure: true,
+          auth: { user: process.env.IMAP_USER, pass: process.env.IMAP_PASSWORD },
+        })
+      : null;
+
+  async function sendBookingAlert(subject: string, lines: string[]): Promise<void> {
+    const body = lines.join('\n');
+    if (!alertTransporter) {
+      console.error('[BOOKING] alert email NOT sent (SMTP not configured):', subject, '|', body);
+      return;
+    }
+    try {
+      await alertTransporter.sendMail({
+        from: `"${process.env.IMAP_FROM_NAME || 'DEVOCEAN Lodge Bookings'}" <${process.env.IMAP_FROM_EMAIL || 'booking@devoceanlodge.com'}>`,
+        to: process.env.BOOKING_ALERT_EMAIL || 'reservations@devoceanlodge.com',
+        subject: `⚠️ ${subject}`,
+        text: body,
+      });
+    } catch (e: any) {
+      console.error('[BOOKING] failed to send alert email:', e.message);
+    }
+  }
 
   const availabilityLimiter = makeRateLimiter(30, 60_000); // 30/min/IP
   const quoteLimiter = makeRateLimiter(40, 60_000);        // 40/min/IP (debounced live cart)
@@ -546,6 +581,20 @@ export function createBookingRouter(deps: {
         : await db.getDirectBookingByStripeSession(session.id);
       if (!record0) {
         console.warn('[BOOKING] webhook: no direct_booking for session', session.id);
+        const pi =
+          typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id;
+        await sendBookingAlert('Stripe payment captured with no matching booking record', [
+          'A guest was charged via Stripe but no direct_bookings row was found for this checkout session.',
+          'No Beds24 booking was created automatically — this needs a manual follow-up.',
+          '',
+          `Stripe checkout session: ${session.id}`,
+          `sessionRef (metadata): ${sessionRef || 'MISSING'}`,
+          `Payment intent: ${pi || 'unknown'}`,
+          `Customer email: ${session.customer_details?.email || session.customer_email || 'unknown'}`,
+          `Amount: ${session.amount_total != null ? (session.amount_total / 100).toFixed(2) : '?'} ${(session.currency || '').toUpperCase()}`,
+          '',
+          'Check the Stripe Dashboard for full payment details, create the Beds24 booking manually, and follow up with the guest.',
+        ]);
         return;
       }
       if (record0.status === 'sold_out_refunded') return; // already refunded, nothing to do
