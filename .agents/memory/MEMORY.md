@@ -23,3 +23,4 @@
 - [Hero carousel load race](hero-carousel-load-race.md) — timer-driven crossfade must gate reveal on the slide's own image onLoad/onError, not just elapsed lead time, or slow/large images flash the fallback background
 - [ChatGPT integration layers](chatgpt-integration-layers.md) — 3 distinct layers (on-site receptionist, search discoverability, MCP App); /talk clean URL pending; MCP integration is future-stage
 - [Cloudflare security analytics API](cloudflare-security-analytics-api.md) — Free plan needs ungrouped firewallEventsAdaptive + 1-day query loop; link_maze_injected is invisible/harmless, only managed_challenge/block are real friction
+- [/book-direct lazy-route LCP fix](book-direct-lcp-lazy-route.md) — lazy chunk + non-fullviewport hero = real LCP img; needs route-conditional modulepreload PLUS its own static placeholder, independent from homepage's fragile #hero-placeholder

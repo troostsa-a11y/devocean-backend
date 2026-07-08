@@ -533,6 +533,88 @@
     @media (max-width: 639.98px) and (max-height: 700px) {
       #hero-placeholder #hero-subtitle { margin-top: 7rem; font-size: 1rem; }
     }
+  </style>
+
+  <!-- Static /book-direct hero placeholder (image-only, no title/dismiss-timer —
+       unlike #hero-placeholder above). BookDirectPage's hero is NOT full-viewport
+       (min-h-[520px] inside a flex column, not 100vh), so Chrome's "full-viewport
+       = background" LCP-exclusion heuristic does not apply there like it does on
+       the homepage — real-user data confirms this hero <img> IS the measured LCP
+       element for /book-direct. BookDirectPage is React.lazy()-loaded, so without
+       this placeholder the <img> doesn't exist until the main bundle executes,
+       mounts React, and the lazy chunk itself downloads/parses/executes. This
+       static block paints the same image from raw HTML instead, then is removed
+       by BookDirectPage's own mount effect once the real hero has rendered.
+       Hidden by default (display:none) so it never affects any other route;
+       shown only on /book-direct by the inline script below. Layout approximates
+       (not pixel-identical to) BookDirectPage's two top bars + flex-1 hero via
+       CSS flexbox, so it also fills the remaining viewport height correctly on
+       tall screens, matching the real layout's sizing behavior. -->
+  <style>
+    #bd-hero-placeholder {
+      display: none;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    #bd-hero-placeholder .bd-topbar {
+      flex: none;
+      min-height: 2.5rem;
+      background: #9e4b13;
+      border-bottom: 1px solid #8a4211;
+    }
+    #bd-hero-placeholder .bd-whitebar {
+      flex: none;
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    #bd-hero-placeholder .bd-whitebar-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+    }
+    #bd-hero-placeholder .bd-logo-spacer {
+      height: 2.25rem;
+      width: 2.25rem;
+    }
+    #bd-hero-placeholder .bd-hero {
+      position: relative;
+      flex: 1 1 auto;
+      min-height: 520px;
+    }
+    #bd-hero-placeholder .bd-hero picture,
+    #bd-hero-placeholder .bd-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #bd-hero-placeholder .bd-hero img { object-position: 65% 50%; }
+    @media (min-width: 640px) {
+      #bd-hero-placeholder .bd-hero img { object-position: center; }
+    }
+    #bd-hero-placeholder .bd-hero .bd-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.55), rgba(0,0,0,.35) 50%, rgba(0,0,0,.70));
+    }
+  </style>
+
+  <!-- Show the /book-direct hero placeholder only on that route. Runs in <head>
+       (before <body> parses) so there is zero risk of a flash on other pages. -->
+  <script>
+    (function () {
+      if (window.location.pathname === '/book-direct') {
+        var s = document.createElement('style');
+        s.textContent = '#bd-hero-placeholder{display:flex!important}';
+        document.head.appendChild(s);
+      }
+    })();
+  </script>
+
+  <style>
     /* iPad / medium-tablet range (768–1023px): shrink hero title from 3.75rem to 2.75rem
        so "DEVOCEAN Lodge" fits comfortably in one row. Applies to both placeholder h1
        (via CSS variable) and React h1 (via the same var() fallback in inline style).
@@ -691,6 +773,23 @@
   </noscript>
 
   <div id="root"></div>
+
+  <!-- Static /book-direct hero placeholder — see the <style>/<script> pair in
+       <head> for why this exists. Hidden by default; removed by
+       BookDirectPage's own mount effect once React renders the real hero. -->
+  <div id="bd-hero-placeholder">
+    <div class="bd-topbar"></div>
+    <div class="bd-whitebar">
+      <div class="bd-whitebar-inner"><span class="bd-logo-spacer"></span></div>
+    </div>
+    <div class="bd-hero">
+      <picture>
+        <source media="(min-width: 640px)" srcset="/photos/hero01.webp" type="image/webp">
+        <img src="/photos/hero01-mobile.webp" alt="" fetchpriority="high">
+      </picture>
+      <div class="bd-gradient"></div>
+    </div>
+  </div>
 
   <!-- Static hero image (displays instantly before React loads) -->
   <div id="hero-placeholder">

@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import asyncCSS from './vite-plugin-async-css.js';
 import preloadEntry from './vite-plugin-preload-entry.js';
+import preloadRouteChunks from './vite-plugin-preload-route-chunks.js';
 import { rmSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
@@ -65,6 +66,9 @@ export default defineConfig({
     injectMiaUrl(), // Replace %%MIA_URL%% in index.html with the MIA_URL constant
     asyncCSS(), // Make CSS async to eliminate 160ms mobile blocking
     preloadEntry(), // Inject modulepreload for main entry to eliminate waterfall
+    preloadRouteChunks([
+      { path: '/book-direct', chunkName: 'BookDirectPage' },
+    ]), // Fetch lazy route chunks in parallel with the entry bundle instead of after it mounts
     moveScriptToBody(), // Keep entry script at bottom of body so static hero paints first
     cleanFunctionsFromDist(), // Remove dist/functions/ — wrangler bundles functions/ separately; raw sources in dist/ cause Error 1101
   ],

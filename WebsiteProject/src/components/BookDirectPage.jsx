@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Plus, Minus, ExternalLink } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
@@ -96,6 +96,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('canceled') === '1') setCanceled(true);
+  }, []);
+
+  // Remove the static hero placeholder (index.html #bd-hero-placeholder) once
+  // this component has actually mounted and rendered its own hero — it has
+  // done its job of painting the LCP image before the lazy chunk was ready.
+  // useLayoutEffect (not useEffect) so it runs before the browser paints this
+  // mount, avoiding a one-frame flash of both the placeholder and real hero.
+  useLayoutEffect(() => {
+    document.getElementById('bd-hero-placeholder')?.remove();
   }, []);
 
   // Fetch the per-date rate calendar once for the picker's nav horizon (today..
