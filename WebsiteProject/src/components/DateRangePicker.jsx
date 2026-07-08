@@ -293,10 +293,14 @@ export default function DateRangePicker({
         data-testid="button-daterange"
       >
         <Calendar className="h-4 w-4 text-slate-500 shrink-0" />
-        <span className="min-w-0 flex items-center gap-1.5 text-sm text-slate-900">
-          <span className="truncate">{fmtShort(checkIn)}</span>
+        <span className="min-w-0 flex items-center gap-1.5 text-sm">
+          <span className={`truncate ${checkIn ? 'text-slate-900' : 'text-slate-400'}`}>
+            {checkIn ? fmtShort(checkIn) : t.checkIn || 'Check-in'}
+          </span>
           <ArrowRight className="h-3.5 w-3.5 text-slate-400 shrink-0" />
-          <span className="truncate">{fmtShort(checkOut)}</span>
+          <span className={`truncate ${checkOut ? 'text-slate-900' : 'text-slate-400'}`}>
+            {checkOut ? fmtShort(checkOut) : t.checkOut || 'Check-out'}
+          </span>
         </span>
         {nights > 0 && (
           <span className="ml-auto shrink-0 text-xs font-medium text-slate-500">{nightsText(nights)}</span>

@@ -70,8 +70,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [, navigate] = useLocation();
 
   const [step, setStep] = useState('search'); // search | results | details
-  const [checkIn, setCheckIn] = useState(addDays(todayStr(), 1));
-  const [checkOut, setCheckOut] = useState(addDays(todayStr(), 3));
+  // Dates start unset — the guest picks them explicitly instead of landing on
+  // a pre-filled 2-night quote for tomorrow, which (a) reads as "the price"
+  // rather than "a 2-night price" at a glance, and (b) can show a discouraging
+  // last-minute rate before the guest has chosen when they actually want to stay.
+  const [checkIn, setCheckIn] = useState(null);
+  const [checkOut, setCheckOut] = useState(null);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [childAges, setChildAges] = useState([]); // one entry per child; '' until chosen
@@ -137,6 +141,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }, [menuOpen]);
 
   const nights = useMemo(() => {
+    if (!checkIn || !checkOut) return 0;
     const a = new Date(`${checkIn}T00:00:00Z`).getTime();
     const b = new Date(`${checkOut}T00:00:00Z`).getTime();
     return Math.max(0, Math.round((b - a) / 86_400_000));
@@ -680,7 +685,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <div className="lg:flex-none lg:ml-auto">
                     <button
                       type="submit"
-                      disabled={loading}
+                      disabled={loading || nights < 1}
                       className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-6 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
                       data-testid="button-search"
                     >
