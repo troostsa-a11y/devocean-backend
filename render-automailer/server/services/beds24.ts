@@ -5,9 +5,11 @@
  *  - Exchange the long-life refresh token for short-lived access tokens (cached).
  *  - Read room types + commercial policy for the configured property.
  *  - Produce an availability + pricing quote for a stay using the Beds24 *offers*
- *    (rate-plan) endpoint, so prices match the public Beds24 booking page exactly
- *    (offer base price × the property's bookingPageMultiplier, then rounded the
- *    same way Beds24 rounds).
+ *    (rate-plan) endpoint, using the offer's base price as-is (rounded the same
+ *    way Beds24 rounds). The property's `bookingPageMultiplier` is a Beds24-side
+ *    OTA rate-parity tool (used to mark rates up on other channels) and must
+ *    NOT be re-applied on top of the offer price here — doing so double-charges
+ *    the guest on the direct-booking channel.
  *  - Mirror the property's deposit + cancellation rules (deposit %, near-arrival
  *    and exceptional-period overrides) so the deposit taken matches Beds24.
  *  - Re-check availability immediately before confirming (double-booking guard).
@@ -44,7 +46,7 @@ export interface RoomOffer {
   offerName: string; // raw Beds24 code, e.g. "DIR-SF-OFR" (kept for records)
   type: OfferType;
   refundable: boolean;
-  total: number; // guest-facing total for the whole stay (base × multiplier, rounded)
+  total: number; // guest-facing total for the whole stay (base offer price, rounded)
   unitsAvailable: number; // physical rooms of this type still bookable (caps the cart qty)
 }
 
@@ -141,19 +143,6 @@ function offerTypeFromName(name: string): OfferType {
   }
 }
 
-/** Parse the property bookingPageMultiplier (e.g. "*1.10") into a numeric factor. */
-function parseMultiplier(raw: unknown): number | null {
-  if (raw == null) return null;
-  const s = String(raw).trim();
-  if (!s) return null;
-  if (s.startsWith('*')) {
-    const n = parseFloat(s.slice(1));
-    return Number.isFinite(n) && n > 0 ? n : null;
-  }
-  const n = parseFloat(s);
-  return Number.isFinite(n) && n > 0 ? n : null;
-}
-
 export class Beds24Service {
   private cfg: BookingConfig;
   private accessToken: string | null = null;
@@ -163,7 +152,6 @@ export class Beds24Service {
   // Property cache (refreshed lazily, ~5 min TTL).
   private propertyLoadedAt = 0;
   private rooms: Beds24Room[] = [];
-  private priceMultiplier = 1;
   private priceRounding: 'nearestOne' | 'twoDecimals' = 'twoDecimals';
   private depositPolicy: DepositPolicy | null = null;
 
@@ -276,11 +264,6 @@ export class Beds24Service {
 
     if (property.currency) this.currency = String(property.currency).toUpperCase();
 
-    // Booking-page price markup (matches the public Beds24 booking page).
-    const fromProp = parseMultiplier(property.bookingPageMultiplier);
-    const fromEnv = parseMultiplier(process.env.BOOKING_PRICE_MULTIPLIER);
-    this.priceMultiplier = fromProp ?? fromEnv ?? 1.1;
-
     this.priceRounding =
       String(property?.bookingRules?.priceRounding || '') === 'nearestOne'
         ? 'nearestOne'
@@ -386,11 +369,14 @@ export class Beds24Service {
 
   // ─── Pricing helpers ───────────────────────────────────────────────────────
 
-  /** Apply the booking-page multiplier and round the way the property rounds. */
+  /**
+   * Round the offer's base price the way the property rounds. The
+   * `bookingPageMultiplier` is intentionally NOT applied here — it is a
+   * Beds24-side OTA rate-parity setting, not a direct-booking markup.
+   */
   private toGuestPrice(basePrice: number): number {
-    const marked = basePrice * this.priceMultiplier;
-    if (this.priceRounding === 'nearestOne') return Math.round(marked);
-    return Math.round((marked + Number.EPSILON) * 100) / 100;
+    if (this.priceRounding === 'nearestOne') return Math.round(basePrice);
+    return Math.round((basePrice + Number.EPSILON) * 100) / 100;
   }
 
   // ─── Availability via the offers (rate-plan) endpoint ──────────────────────

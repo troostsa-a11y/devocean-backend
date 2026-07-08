@@ -1,20 +1,20 @@
 ---
 name: Direct-booking offers pricing
-description: How the native /book-direct flow prices stays to match the Beds24 iframe, and the deposit policy rules.
+description: How the native /book-direct flow prices stays (raw Beds24 offer price, no markup), and the deposit policy rules.
 ---
 
-# Direct-booking pricing must mirror the Beds24 iframe
+# Direct-booking pricing = raw Beds24 offer price, no markup
 
-The native `/book-direct` flow (Beds24 REST + Stripe deposit) must produce the **same price the Beds24 iframe shows**, otherwise guests see two different prices for the same room.
+The native `/book-direct` flow (Beds24 REST + Stripe deposit) charges the offer's **base** price as-is — the property's `bookingPageMultiplier` (e.g. `*1.10`) must NOT be re-applied on top of it.
 
-**Rule:** guest-facing total = offer **base** total × `bookingPageMultiplier` (currently ×1.10), then rounded per the property `priceRounding` (`nearestOne` → `Math.round`).
+**Rule:** guest-facing total = offer **base** total, rounded per the property `priceRounding` (`nearestOne` → `Math.round`, else 2dp).
 
-**Why:** the iframe applies a booking-page markup multiplier and rounding on top of the raw rate-plan price; the REST `offers` endpoint returns only the *base* total, so the multiplier+rounding must be re-applied server-side to match.
+**Why (corrected 2026-07-08):** `bookingPageMultiplier` is a Beds24-side OTA rate-parity tool the lodge owner uses to mark rates up on *other* channels — it is not meant to be reapplied on the direct-booking channel. An earlier version of this code multiplied the offer price by it to match the (now-removed) Beds24 iframe, which itself applied the multiplier — that reasoning no longer applies since the iframe is gone, and doing so was overcharging direct-booking guests by the multiplier amount. Confirmed via a real guest complaint: charged total implied the raw Beds24 rate × 1.10, rounded to nearest dollar.
 
 **How to apply:**
 - Price from `GET /inventory/rooms/offers?propertyId=&arrival=&departure=&numAdults=&numChildren=` **without** `roomId` — passing `roomId` suppresses the `offers[]` array. Each `data[]` entry is a room; each `offers[]` entry is a rate plan (`offerId`, `offerName`, `price` = whole-stay base total, `unitsAvailable`).
 - Offer code → type is parsed from the suffix in `offerName` (e.g. `DIR-SF-OFR`→SF=semiFlex, NR=nonRef, MS=minStay, WS=weekly, EB=earlyBird, LM=lastMinute). `refundable = type !== 'nonRef'`.
-- Multiplier/currency/rounding/policy come from `GET /properties?id=&includeAllRooms=true`, cached ~5 min in `loadProperty()`.
+- Currency/rounding/policy come from `GET /properties?id=&includeAllRooms=true`, cached ~5 min in `loadProperty()`. Do not resurrect a multiplier lookup here without re-confirming with the lodge owner first.
 
 # Deposit policy (mirrors Beds24)
 
