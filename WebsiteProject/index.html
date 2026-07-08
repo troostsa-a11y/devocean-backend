@@ -588,6 +588,13 @@
       position: relative;
       flex: 1 1 auto;
       min-height: 520px;
+      /* Dark fallback so the split second before the preloaded hero <img>
+         finishes decoding shows a tone consistent with the final darkened
+         hero (gradient over photo), not the page's near-white body
+         background (#f8fafc) showing through — mirrors the homepage's
+         html.hero-active body{background:#000} technique, scoped locally
+         to this container instead of the whole page. */
+      background-color: #000;
     }
     #bd-hero-placeholder .bd-hero picture,
     #bd-hero-placeholder .bd-hero img {
