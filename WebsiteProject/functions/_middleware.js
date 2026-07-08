@@ -51,17 +51,17 @@ export async function onRequest(context) {
     if (response.status === 404) {
       const accept = context.request.headers.get('accept') || '';
       if (accept.includes('text/html')) {
-        // Use the ASSETS binding to fetch the static file directly, NOT a
-        // generic fetch() to the URL. A plain fetch() to /index.html re-enters
-        // the edge's public routing/redirect layer, where Cloudflare Pages
-        // auto-canonicalizes /index.html -> / with a 308. That 308 has no
-        // text/html content-type, so it fails the check below and gets
-        // returned as-is — the browser receives a redirect status with no
-        // body instead of the SPA shell, which looks like a dead page.
-        // env.ASSETS.fetch() talks straight to the asset origin and skips
-        // that redirect entirely, always returning index.html's 200 body.
-        const indexUrl = new URL('/index.html', context.request.url);
-        response = await context.env.ASSETS.fetch(new Request(indexUrl, context.request));
+        // Fetch the SPA shell via the clean root path "/", NOT "/index.html".
+        // Cloudflare canonicalizes /index.html -> / with a 308 redirect, and
+        // that canonicalization happens even through context.env.ASSETS.fetch()
+        // (it's asset-origin behavior, not just the edge redirect engine) — so
+        // requesting /index.html here always comes back as a bodyless 308,
+        // which then falls through the content-type check below and gets
+        // returned to the browser as-is, redirecting every deep link (e.g.
+        // /why-ponta, /book-direct) back to the homepage on refresh. "/" has
+        // no such canonicalization and returns index.html's real 200 body.
+        const rootUrl = new URL('/', context.request.url);
+        response = await context.env.ASSETS.fetch(new Request(rootUrl, context.request));
       } else {
         // Asset/API 404 — pass through as-is
         return response;
