@@ -358,12 +358,13 @@ export class Beds24Service {
   }
 
   /**
-   * Deposit percentage for a specific offer: Last-minute rate plans are always
-   * paid in full at booking (100%), regardless of the arrival-date-based rule
-   * above. Every other offer type falls back to `getDepositPercentForArrival`.
+   * Deposit percentage for a specific offer: Last-minute and non-refundable
+   * rate plans are always paid in full at booking (100%), regardless of the
+   * arrival-date-based rule above. Every other offer type falls back to
+   * `getDepositPercentForArrival`.
    */
   getDepositPercentForOffer(checkIn: string, type: OfferType): number {
-    if (type === 'lastMinute') return 100;
+    if (type === 'lastMinute' || type === 'nonRef') return 100;
     return this.getDepositPercentForArrival(checkIn);
   }
 

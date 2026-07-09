@@ -297,8 +297,9 @@ export async function computeCartQuote(
       balance: 0,
       beds24BookingId: null,
     });
-    // Last-minute rate plans are always paid in full at booking, regardless of
-    // the arrival-date-based rule — never proportionally blended with other legs.
+    // Last-minute and non-refundable rate plans are always paid in full at
+    // booking, regardless of the arrival-date-based rule — never proportionally
+    // blended with other legs.
     legDepositPercents.push(beds24.getDepositPercentForOffer(stay.checkIn, offer.type));
   }
 
@@ -318,9 +319,9 @@ export async function computeCartQuote(
   }
 
   // Combined money: each leg's deposit is priced from its OWN effective %
-  // (100% for last-minute rate plans, otherwise the arrival-date %) — never
-  // proportionally blended, so a last-minute leg is always charged in full
-  // regardless of what other rooms in the same cart are paying now.
+  // (100% for last-minute/non-refundable rate plans, otherwise the arrival-date
+  // %) — never proportionally blended, so an LM or NR leg is always charged in
+  // full regardless of what other rooms in the same cart are paying now.
   const grossTotal = round2(legs.reduce((s, l) => s + l.total, 0));
 
   // Coupon discount: computed on the whole-cart GROSS total, then allocated
