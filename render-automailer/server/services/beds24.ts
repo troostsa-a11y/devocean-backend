@@ -442,8 +442,8 @@ export class Beds24Service {
    * NOTE: non-refundable (NR) rate plans are intentionally excluded. NR is the
    * cheapest Beds24 offer when present, but it requires 100% payment at booking —
    * contradicting the "50% deposit, balance on arrival" promise shown throughout
-   * the booking flow. Guests are never offered NR; if a room has only NR offers
-   * for the selected dates it will appear as unavailable.
+   * the booking flow. A SF (semi-flexible) offer always exists alongside NR, so
+   * filtering NR never causes a room to appear unavailable.
    */
   private priceOffers(
     raw: Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>,
