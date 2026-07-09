@@ -437,7 +437,14 @@ export class Beds24Service {
     return { adults: a, children: c };
   }
 
-  /** Map raw Beds24 offers → guest-facing RoomOffer[] (priced, sold-out dropped, cheapest first). */
+  /** Map raw Beds24 offers → guest-facing RoomOffer[] (priced, sold-out dropped, cheapest first).
+   *
+   * NOTE: non-refundable (NR) rate plans are intentionally excluded. NR is the
+   * cheapest Beds24 offer when present, but it requires 100% payment at booking —
+   * contradicting the "50% deposit, balance on arrival" promise shown throughout
+   * the booking flow. Guests are never offered NR; if a room has only NR offers
+   * for the selected dates it will appear as unavailable.
+   */
   private priceOffers(
     raw: Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>,
   ): RoomOffer[] {
@@ -454,7 +461,7 @@ export class Beds24Service {
           unitsAvailable: o.unitsAvailable,
         };
       })
-      .filter((o) => o.total > 0)
+      .filter((o) => o.total > 0 && o.type !== 'nonRef')
       .sort((a, b) => a.total - b.total);
   }
 
