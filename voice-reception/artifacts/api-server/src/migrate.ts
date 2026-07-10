@@ -1,12 +1,16 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { migrate } from "drizzle-orm/node-postgres/migrator";
 import { db } from "@workspace/db";
 import { logger } from "./lib/logger";
 
-// Migrations are generated from voice-reception/lib/db/ via `pnpm --filter @workspace/db exec drizzle-kit generate`.
-// They live at voice-reception/lib/db/drizzle/ and are accessible at runtime because Render's rootDir
-// is voice-reception/ — so process.cwd() resolves to that directory during the start command.
-const migrationsFolder = path.resolve(process.cwd(), "lib/db/drizzle");
+// Resolve the migrations folder relative to the bundle file (import.meta.url), NOT process.cwd().
+// process.cwd() differs between environments: Render rootDir = voice-reception/ (correct),
+// but in Replit dev the pnpm script runs from artifacts/api-server/ (wrong).
+// import.meta.url always points at the bundle (dist/index.mjs) in both environments,
+// so ../../../lib/db/drizzle reliably reaches voice-reception/lib/db/drizzle.
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const migrationsFolder = path.resolve(__dirname, "../../../lib/db/drizzle");
 
 const MAX_RETRIES = 5;
 const BASE_DELAY_MS = 1_000;
