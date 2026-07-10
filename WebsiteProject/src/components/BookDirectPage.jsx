@@ -732,7 +732,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 data-testid={`select-child-age-${i}`}
                               >
                                 <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
-                                {Array.from({ length: 13 }, (_, a) => (
+                                {Array.from({ length: 9 }, (_, i) => i + 4).map((a) => (
                                   <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
                                 ))}
                               </select>
