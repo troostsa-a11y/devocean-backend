@@ -341,6 +341,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms;
 
+  // Minimum units needed to fit the whole party in the most spacious available room type.
+  const minUnitsNeeded = useMemo(() => {
+    if (!availableRooms?.length) return 1;
+    const maxCap = availableRooms.reduce((best, r) => {
+      const uk = getUnitKey(r.name);
+      const cap = (uk === 'safari' || uk === 'comfort' || uk === 'chalet')
+        ? (r.maxAdults || 2) + 1 : (r.maxPeople || 2);
+      return Math.max(best, cap);
+    }, 2);
+    return Math.ceil((effAdults + effChildren + effInfants) / maxCap);
+  }, [availableRooms, effAdults, effChildren, effInfants]);
+
   function setRoomQty(roomId, qty) {
     setQuoteLoading(true); // gate Continue until the debounced /quote settles
     setCart((c) => {
@@ -859,23 +871,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <>
                   <div className="space-y-1">
                     {(() => {
-                      // Compute minimum units needed for the party across the best available room type
-                      const maxCap = availableRooms.reduce((best, r) => {
-                        const uk = getUnitKey(r.name);
-                        const cap = (uk === 'safari' || uk === 'comfort' || uk === 'chalet')
-                          ? (r.maxAdults || 2) + 1
-                          : (r.maxPeople || 2);
-                        return Math.max(best, cap);
-                      }, 2);
-                      const totalGuests = effAdults + effChildren + effInfants;
-                      const minUnits = Math.ceil(totalGuests / maxCap);
                       const partyParts = [
                         effAdults > 0 ? `${effAdults} ${t.adults.toLowerCase()}` : null,
                         effChildren > 0 ? `${effChildren} ${t.children.toLowerCase()}` : null,
                         effInfants > 0 ? `${effInfants} ${t.infants.toLowerCase()}` : null,
                       ].filter(Boolean);
-                      const party = partyParts.join(', ');
-                      return <p className="text-sm text-slate-500">{fmt(t.minUnitsNote, { party, n: minUnits })}</p>;
+                      return <p className="text-sm text-slate-500">{fmt(t.minUnitsNote, { party: partyParts.join(', '), n: minUnitsNeeded })}</p>;
                     })()}
                     <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
                   </div>
@@ -899,6 +900,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       const occArray = (effChildren > 0 || effInfants > 0)
                         ? (roomOccupancy[room.roomId] ?? Array.from({ length: qty }, () => defaultRoomOcc(room)))
                         : null;
+                      // Quote-derived total for this card: sum matching quote lines by roomId.
+                      // Falls back to offer.total while no quote exists yet (qty=0 or loading).
+                      const quotedRoomTotal = qty > 0 && quote?.lines?.length
+                        ? (quote.lines.filter((l) => l.roomId === room.roomId).reduce((s, l) => s + (l.lineTotal ?? 0), 0) || null)
+                        : null;
+                      const cardTotal = quotedRoomTotal ?? offer.total;
                       const roomMaxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
                       // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
                       // every unit, so the child slot is driven by unit TYPE, not the
@@ -948,7 +955,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 </p>
                                 {room.nights > 1 && (
                                   <p className="text-xs text-slate-500" data-testid={`text-offer-pernight-${room.roomId}`}>
-                                    {money(offer.total / room.nights, room.currency)} {t.avgPerNight}
+                                    {money(cardTotal / room.nights, room.currency)} {t.avgPerNight}
                                   </p>
                                 )}
                               </div>
@@ -1001,11 +1008,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                             <div className="text-right shrink-0">
                               <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
-                                {money(offer.total, room.currency)}
+                                {money(cardTotal, room.currency)}
                               </p>
-                              {fxLine(offer.total) && (
+                              {fxLine(cardTotal) && (
                                 <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
-                                  {fxLine(offer.total)}
+                                  {fxLine(cardTotal)}
                                 </p>
                               )}
                             </div>
@@ -1194,6 +1201,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide">
                           {t.yourSelection}
                         </h2>
+                        {totalRooms > 0 && totalRooms < minUnitsNeeded && (
+                          <p className="text-sm text-amber-600" data-testid="text-more-units-needed">
+                            {fmt(t.moreUnitsNeeded, { n: minUnitsNeeded - totalRooms })}
+                          </p>
+                        )}
                         {quoteError ? (
                           <p className="text-sm text-red-600" data-testid="status-quote-error">{quoteError}</p>
                         ) : quote ? (
