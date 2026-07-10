@@ -1037,7 +1037,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   label: t.adults,
                                   val: occForRoom.adults,
                                   min: 1,
-                                  max: Math.min(roomMaxA, effectiveMaxPeople - occForRoom.children),
+                                  // hard cap: adults + children + infants ≤ effectiveMaxPeople
+                                  max: Math.min(roomMaxA, effectiveMaxPeople - occForRoom.children - (occForRoom.infants ?? 0)),
                                 },
                                 {
                                   field: 'children',
@@ -1045,14 +1046,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   val: occForRoom.children,
                                   min: 0,
                                   // effectiveMaxPeople - 1: always keep at least 1 adult slot
-                                  max: Math.min(effectiveMaxPeople - 1, effectiveMaxPeople - occForRoom.adults),
+                                  max: Math.min(effectiveMaxPeople - 1, effectiveMaxPeople - occForRoom.adults - (occForRoom.infants ?? 0)),
                                 },
                                 ...(effInfants > 0 ? [{
                                   field: 'infants',
                                   label: t.infants,
                                   val: occForRoom.infants ?? 0,
                                   min: 0,
-                                  max: effInfants,
+                                  // infants count toward hard room cap (not crib-exempt)
+                                  max: Math.min(effInfants, effectiveMaxPeople - occForRoom.adults - occForRoom.children),
                                 }] : []),
                               ].map(({ field, label, val, min, max }) => (
                                 <div key={field} className="flex items-center justify-between">
