@@ -90,7 +90,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [availability, setAvailability] = useState(null); // full availability response
   const [cart, setCart] = useState({}); // roomId → qty (per-type cart)
   const [rateChoice, setRateChoice] = useState({}); // roomId → offerId (chosen rate plan)
-  const [roomOccupancy, setRoomOccupancy] = useState({}); // roomId → { adults, children, infants } per unit
+  const [roomOccupancy, setRoomOccupancy] = useState({}); // roomId → [{adults,children,infants}] one entry per unit
   const [quote, setQuote] = useState(null); // live combined quote (from /api/booking/quote)
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState('');
@@ -320,19 +320,21 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     () =>
       Object.entries(cart)
         .filter(([, qty]) => qty > 0)
-        .map(([roomId, qty]) => {
+        .flatMap(([roomId, qty]) => {
           const room = availableRooms.find((r) => r.roomId === roomId);
           const offer = room
             ? room.offers.find((o) => o.offerId === rateChoice[roomId]) || room.offers[0]
             : null;
-          // When the party includes children, include explicit per-room
-          // occupancy so the backend prices at the guest's actual split instead
-          // of the deterministic auto-distributor.
+          // When the party includes children/infants, expand into individual unit
+          // entries (qty=1 each) so the backend prices each unit at its actual occupancy.
           if ((effChildren > 0 || effInfants > 0) && room) {
-            const occ = roomOccupancy[roomId] ?? defaultRoomOcc(room);
-            return { roomId, offerId: offer?.offerId ?? null, qty, adults: occ.adults, children: occ.children, infants: occ.infants ?? 0 };
+            const occArr = roomOccupancy[roomId] ?? Array.from({ length: qty }, () => defaultRoomOcc(room));
+            return occArr.slice(0, qty).map((occ) => ({
+              roomId, offerId: offer?.offerId ?? null, qty: 1,
+              adults: occ.adults, children: occ.children, infants: occ.infants ?? 0,
+            }));
           }
-          return { roomId, offerId: offer?.offerId ?? null, qty };
+          return [{ roomId, offerId: offer?.offerId ?? null, qty }];
         }),
     [cart, availableRooms, rateChoice, roomOccupancy, effAdults, effChildren, effInfants],
   );
@@ -347,6 +349,17 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       else next[roomId] = qty;
       return next;
     });
+    // Sync per-unit occupancy array length to the new qty
+    if (qty <= 0) {
+      setRoomOccupancy((prev) => { const next = { ...prev }; delete next[roomId]; return next; });
+    } else {
+      const room = availableRooms.find((r) => r.roomId === roomId);
+      const def = room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 };
+      setRoomOccupancy((prev) => {
+        const current = prev[roomId] ?? [];
+        return { ...prev, [roomId]: Array.from({ length: qty }, (_, i) => current[i] ?? { ...def }) };
+      });
+    }
   }
 
   // Switch a room's selected rate plan; clamp any cart qty to the new offer's
@@ -375,12 +388,17 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     return { adults: Math.max(0, a), children: Math.max(0, c), infants: 0 };
   }
 
-  function setRoomOcc(roomId, field, val) {
+  function setRoomOcc(roomId, unitIdx, field, val) {
     setQuoteLoading(true);
     setRoomOccupancy((prev) => {
       const room = availableRooms.find((r) => r.roomId === roomId);
-      const current = prev[roomId] ?? (room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 });
-      return { ...prev, [roomId]: { ...current, [field]: Math.max(0, val) } };
+      const def = room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 };
+      const qty = cart[roomId] ?? 0;
+      const current = prev[roomId] ?? Array.from({ length: qty }, () => ({ ...def }));
+      const newArr = current.map((u, i) =>
+        i === unitIdx ? { ...u, [field]: Math.max(0, val) } : u
+      );
+      return { ...prev, [roomId]: newArr };
     });
   }
 
@@ -877,8 +895,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // Beds24 room names are English-only; show the translated
                       // marketing name when we can match it, else fall back as-is.
                       const displayName = translateRoomName(room.name);
-                      // Per-room occupancy: resolved value for the steppers below.
-                      const occForRoom = (effChildren > 0 || effInfants > 0) ? (roomOccupancy[room.roomId] ?? defaultRoomOcc(room)) : null;
+                      // Per-unit occupancy array: one entry per booked unit, shown when party has children/infants.
+                      const occArray = (effChildren > 0 || effInfants > 0)
+                        ? (roomOccupancy[room.roomId] ?? Array.from({ length: qty }, () => defaultRoomOcc(room)))
+                        : null;
                       const roomMaxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
                       // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
                       // every unit, so the child slot is driven by unit TYPE, not the
@@ -1089,66 +1109,71 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             </div>
                           )}
 
-                          {/* Per-room occupancy — only shown when party includes children */}
-                          {occForRoom && qty > 0 && (
-                            <div className="mt-3 border-t border-slate-100 pt-3 space-y-2">
-                              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
-                                {t.guests} {t.perRoom}
-                              </p>
-                              {[
-                                {
-                                  field: 'adults',
-                                  label: t.adults,
-                                  val: occForRoom.adults,
-                                  min: 1,
-                                  // hard cap: adults + children + infants ≤ effectiveMaxPeople
-                                  max: Math.min(roomMaxA, effectiveMaxPeople - occForRoom.children - (occForRoom.infants ?? 0)),
-                                },
-                                {
-                                  field: 'children',
-                                  label: t.children,
-                                  val: occForRoom.children,
-                                  min: 0,
-                                  max: Math.min(effectiveMaxPeople, effectiveMaxPeople - occForRoom.adults - (occForRoom.infants ?? 0)),
-                                },
-                                ...(effInfants > 0 ? [{
-                                  field: 'infants',
-                                  label: t.infants,
-                                  val: occForRoom.infants ?? 0,
-                                  min: 0,
-                                  // infants count toward hard room cap (not crib-exempt)
-                                  max: Math.min(effInfants, effectiveMaxPeople - occForRoom.adults - occForRoom.children),
-                                }] : []),
-                              ].map(({ field, label, val, min, max }) => (
-                                <div key={field} className="flex items-center justify-between">
-                                  <span className="text-sm text-slate-600">{label}</span>
-                                  <div className="inline-flex items-center rounded-lg border border-slate-200">
-                                    <button
-                                      type="button"
-                                      onClick={() => setRoomOcc(room.roomId, field, val - 1)}
-                                      disabled={val <= min}
-                                      aria-label={`Decrease ${field}`}
-                                      className="px-2.5 py-1.5 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed"
-                                      data-testid={`button-occ-dec-${room.roomId}-${field}`}
-                                    >
-                                      <Minus className="h-3.5 w-3.5" />
-                                    </button>
-                                    <span
-                                      className="min-w-[2rem] text-center text-sm font-semibold text-slate-800"
-                                      data-testid={`text-occ-${room.roomId}-${field}`}
-                                    >
-                                      {val}
-                                    </span>
-                                    <button
-                                      type="button"
-                                      onClick={() => setRoomOcc(room.roomId, field, val + 1)}
-                                      disabled={val >= max}
-                                      aria-label={`Increase ${field}`}
-                                      className="px-2.5 py-1.5 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed"
-                                      data-testid={`button-occ-inc-${room.roomId}-${field}`}
-                                    >
-                                      <Plus className="h-3.5 w-3.5" />
-                                    </button>
+                          {/* Per-unit occupancy — only shown when party includes children/infants */}
+                          {occArray && qty > 0 && (
+                            <div className="mt-3 border-t border-slate-100 pt-3 space-y-3">
+                              {occArray.slice(0, qty).map((occ, unitIdx) => (
+                                <div key={unitIdx}>
+                                  {unitIdx > 0 && <hr className="border-slate-100 mb-3" />}
+                                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">
+                                    {t.unit} {unitIdx + 1}
+                                  </p>
+                                  <div className="space-y-2">
+                                  {[
+                                    {
+                                      field: 'adults',
+                                      label: t.adults,
+                                      val: occ.adults,
+                                      min: 0,
+                                      max: Math.min(roomMaxA, effectiveMaxPeople - occ.children - (occ.infants ?? 0)),
+                                    },
+                                    {
+                                      field: 'children',
+                                      label: t.children,
+                                      val: occ.children,
+                                      min: 0,
+                                      max: Math.min(effectiveMaxPeople, effectiveMaxPeople - occ.adults - (occ.infants ?? 0)),
+                                    },
+                                    ...(effInfants > 0 ? [{
+                                      field: 'infants',
+                                      label: t.infants,
+                                      val: occ.infants ?? 0,
+                                      min: 0,
+                                      max: Math.min(effInfants, effectiveMaxPeople - occ.adults - occ.children),
+                                    }] : []),
+                                  ].map(({ field, label, val, min, max }) => (
+                                    <div key={field} className="flex items-center justify-between">
+                                      <span className="text-sm text-slate-600">{label}</span>
+                                      <div className="inline-flex items-center rounded-lg border border-slate-200">
+                                        <button
+                                          type="button"
+                                          onClick={() => setRoomOcc(room.roomId, unitIdx, field, val - 1)}
+                                          disabled={val <= min}
+                                          aria-label={`Decrease ${field}`}
+                                          className="px-2.5 py-1.5 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed"
+                                          data-testid={`button-occ-dec-${room.roomId}-${unitIdx}-${field}`}
+                                        >
+                                          <Minus className="h-3.5 w-3.5" />
+                                        </button>
+                                        <span
+                                          className="min-w-[2rem] text-center text-sm font-semibold text-slate-800"
+                                          data-testid={`text-occ-${room.roomId}-${unitIdx}-${field}`}
+                                        >
+                                          {val}
+                                        </span>
+                                        <button
+                                          type="button"
+                                          onClick={() => setRoomOcc(room.roomId, unitIdx, field, val + 1)}
+                                          disabled={val >= max}
+                                          aria-label={`Increase ${field}`}
+                                          className="px-2.5 py-1.5 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed"
+                                          data-testid={`button-occ-inc-${room.roomId}-${unitIdx}-${field}`}
+                                        >
+                                          <Plus className="h-3.5 w-3.5" />
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ))}
                                   </div>
                                 </div>
                               ))}
