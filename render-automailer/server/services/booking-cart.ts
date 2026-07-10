@@ -281,21 +281,24 @@ export async function computeCartQuote(
   // spread as 2A in room 1 + 1C in room 2 — the latter misprice with no adult).
   const hasExplicitOcc = lines.some((l) => l.adults !== undefined);
   let dist: Array<{ adults: number; children: number; infants?: number }>;
-  // displayDist mirrors dist but holds the actual user-selected occupancy for
-  // stamping onto legs (and therefore CartTypeLine). dist is always clamped to
-  // at least 1 adult so Beds24 never prices below the 1-adult minimum rate.
+  // displayDist mirrors dist and holds the actual user-selected occupancy for
+  // stamping onto legs (and therefore CartTypeLine). The 1-adult minimum rate
+  // is enforced as a price floor inside offersForOccWithFloor, not by clamping
+  // the adult count here.
   let displayDist: Array<{ adults: number; children: number; infants: number }>;
   if (hasExplicitOcc) {
     dist = [];
     displayDist = [];
     for (const l of lines) {
-      const pricingA = l.adults !== undefined ? Math.max(1, l.adults) : 1;
-      const displayA = l.adults !== undefined ? l.adults : 1;
+      // Send actual occupancy to Beds24 (adults may be 0 for children-only units).
+      // The 1-adult minimum rate is enforced as a price floor after pricing, not
+      // by clamping the occupancy count sent to Beds24.
+      const a = l.adults !== undefined ? Math.max(0, l.adults) : 1;
       const c = l.children !== undefined ? Math.max(0, l.children) : 0;
       const inf = l.infants !== undefined ? Math.max(0, l.infants) : 0;
       for (let i = 0; i < l.qty; i++) {
-        dist.push({ adults: pricingA, children: c, infants: inf });
-        displayDist.push({ adults: displayA, children: c, infants: inf });
+        dist.push({ adults: a, children: c, infants: inf });
+        displayDist.push({ adults: a, children: c, infants: inf });
       }
     }
   } else {
@@ -316,6 +319,36 @@ export async function computeCartQuote(
     return m;
   };
 
+  // For children-only units (adults === 0): fetch the actual per-child rate from
+  // Beds24, then apply the 1-adult rate as a price floor per room+offer so the
+  // unit is never charged less than single-adult occupancy. Units with adults > 0
+  // pass through unchanged.
+  const offersForOccWithFloor = async (a: number, c: number): Promise<Record<string, RoomOffer[]>> => {
+    if (a > 0) return offersForOcc(a, c);
+    // Fetch children-only rate AND the 1-adult baseline in parallel (cache reused).
+    const [childMap, floorMap] = await Promise.all([
+      offersForOcc(0, c),
+      offersForOcc(1, 0),
+    ]);
+    const result: Record<string, RoomOffer[]> = {};
+    const allRoomIds = new Set([...Object.keys(childMap), ...Object.keys(floorMap)]);
+    for (const roomId of allRoomIds) {
+      const childOffers = childMap[roomId] ?? [];
+      const floorOffers = floorMap[roomId] ?? [];
+      if (childOffers.length === 0) {
+        // Beds24 returned no offers for 0A+NC: fall back to 1-adult rate.
+        result[roomId] = floorOffers;
+      } else {
+        result[roomId] = childOffers.map((co) => {
+          const floor = floorOffers.find((fo) => fo.offerId === co.offerId) ?? floorOffers[0];
+          if (floor && co.total < floor.total) return { ...co, total: floor.total };
+          return co;
+        });
+      }
+    }
+    return result;
+  };
+
   const legs: DirectBookingLeg[] = [];
   const legDepositPercents: number[] = []; // parallel to `legs`, set per offer type
   const unitsByRoom = new Map<string, number>(); // min units observed per room
@@ -323,10 +356,10 @@ export async function computeCartQuote(
 
   for (let i = 0; i < slots.length; i++) {
     const slot = slots[i];
-    const occ = dist[i];          // pricing occupancy — adults always ≥ 1
-    const display = displayDist[i]; // display occupancy — actual user selection
+    const occ = dist[i];            // actual occupancy; floor applied inside offersForOccWithFloor
+    const display = displayDist[i]; // same values, used for leg display fields
     const room = roomById.get(slot.roomId)!;
-    const map = await offersForOcc(occ.adults, occ.children);
+    const map = await offersForOccWithFloor(occ.adults, occ.children);
     const offers = map[slot.roomId] || [];
     if (offers.length === 0) {
       throw new BookingCartError(`${room.name} is no longer available for those dates.`, 409, 'SOLD_OUT');
