@@ -243,7 +243,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           landscape phones (e.g. 667x375, 932x430 — width >= 640px but just as
           short as a portrait phone) into the desktop path and reintroduce
           the bug. */}
-      <div className="static [@media_(min-width:640px)_and_(min-height:701px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:701px)]:mt-0 [@media_(min-width:640px)_and_(min-height:701px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:701px)]:left-0 [@media_(min-width:640px)_and_(min-height:701px)]:right-0 z-10 max-w-7xl mx-auto px-4">
+      <div className="relative [@media_(min-width:640px)_and_(min-height:701px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:701px)]:mt-0 [@media_(min-width:640px)_and_(min-height:701px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:701px)]:left-0 [@media_(min-width:640px)_and_(min-height:701px)]:right-0 z-10 max-w-7xl mx-auto px-4">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
