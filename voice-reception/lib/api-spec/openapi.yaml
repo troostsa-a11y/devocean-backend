@@ -356,6 +356,8 @@ components:
       properties:
         content:
           type: string
+        lang:
+          type: string
       required:
         - content
 
