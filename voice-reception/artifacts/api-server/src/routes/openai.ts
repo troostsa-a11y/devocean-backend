@@ -419,8 +419,9 @@ router.post("/conversations/:id/messages", async (req, res) => {
     req.log.warn({ err }, "History read failed after retries — continuing with empty history");
   }
 
+  const lang = bodyParsed.data.lang;
   const chatMessages: any[] = [
-    { role: "system", content: buildSystemPrompt() },
+    { role: "system", content: buildSystemPrompt(lang) },
     ...history.map((m) => ({
       role: m.role as "user" | "assistant",
       content: m.content,

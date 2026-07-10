@@ -14,6 +14,7 @@ import ConversationDetail from "@/pages/ConversationDetail";
 import Bookings from "@/pages/Bookings";
 import WidgetDemo from "@/pages/WidgetDemo";
 import WidgetEmbed from "@/pages/WidgetEmbed";
+import TextChatEmbed from "@/pages/TextChatEmbed";
 
 function AuthGuard({ children }: { children: React.ReactNode }) {
   if (!getStoredToken()) {
@@ -48,8 +49,9 @@ function Router() {
       {/* Login — no auth required */}
       <Route path="/login" component={LoginPage} />
 
-      {/* Bare, chrome-free widget for embedding in an iframe (no admin layout, no auth) */}
+      {/* Bare, chrome-free widgets for embedding in iframes (no admin layout, no auth) */}
       <Route path="/embed" component={WidgetEmbed} />
+      <Route path="/embed-text" component={TextChatEmbed} />
 
       {/* All admin routes behind AuthGuard */}
       <Route>

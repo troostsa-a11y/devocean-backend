@@ -12,238 +12,334 @@
   }
 
   var WIDGET_ORIGIN = document.currentScript
-    ? new URL(document.currentScript.src).origin + new URL(document.currentScript.src).pathname.replace(/\/widget-loader\.js$/, "")
+    ? new URL(document.currentScript.src).origin +
+      new URL(document.currentScript.src).pathname.replace(
+        /\/widget-loader\.js$/,
+        ""
+      )
     : window.location.origin;
 
-  // Detect the page's active language from the <html lang="…"> attribute,
-  // falling back to the browser's navigator.language.
+  // Detect active language from <html lang="…">, fall back to navigator.
   var _pageLang = (document.documentElement.lang || navigator.language || "en")
-    .split("-")[0].toLowerCase();
-  var WIDGET_URL = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+    .split("-")[0]
+    .toLowerCase();
 
-  // Keep WIDGET_URL in sync when the website's i18n system updates <html lang="…">
-  (new MutationObserver(function () {
+  new MutationObserver(function () {
     var newLang = (document.documentElement.lang || navigator.language || "en")
-      .split("-")[0].toLowerCase();
-    if (newLang !== _pageLang) {
-      _pageLang = newLang;
-      WIDGET_URL = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
-    }
-  })).observe(document.documentElement, { attributeFilter: ["lang"] });
+      .split("-")[0]
+      .toLowerCase();
+    if (newLang !== _pageLang) _pageLang = newLang;
+  }).observe(document.documentElement, { attributeFilter: ["lang"] });
 
-  var PRIMARY      = "#16a34a";  // green-600
-  var PRIMARY_DARK = "#15803d";  // green-700
-  var RED          = "#dc2626";  // red-600 — active call
-  var RED_DARK     = "#b91c1c";  // red-700
-  var RADIUS = 60;
+  // --- Colours ---
+  var ORANGE      = "#f97316";
+  var ORANGE_DARK = "#ea580c";
+  var GREEN       = "#16a34a";
+  var GREEN_DARK  = "#15803d";
+  var RED         = "#dc2626";
+  var RED_DARK    = "#b91c1c";
+
+  var FAB_R   = 56;   // main FAB diameter
+  var OPT_R   = 46;   // option button diameter
+  var MARGIN  = 20;   // distance from screen edges
+  var GAP     = 10;   // gap between stacked buttons
+  var PANEL_W = 360;  // text-chat panel width
+  var PANEL_H = 480;  // text-chat panel height
 
   // --- Styles ---
   var style = document.createElement("style");
-  style.textContent = [
-    "#devocean-widget-btn {",
-    "  position: fixed;",
-    "  bottom: 28px;",
-    "  right: 28px;",
-    "  width: " + RADIUS + "px;",
-    "  height: " + RADIUS + "px;",
-    "  border-radius: 50%;",
-    "  background: " + PRIMARY + ";",
-    "  box-shadow: 0 4px 20px rgba(22,163,74,0.40);",
-    "  border: none;",
-    "  cursor: pointer;",
-    "  display: flex;",
-    "  align-items: center;",
-    "  justify-content: center;",
-    "  z-index: 2147483647;",
-    "  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;",
-    "  outline: none;",
-    "}",
-    "#devocean-widget-btn:hover {",
-    "  background: var(--devocean-btn-hover, " + PRIMARY_DARK + ");",
-    "  transform: scale(1.07);",
-    "}",
-    "#devocean-widget-btn:active { transform: scale(0.97); }",
-    "#devocean-widget-btn.call-active {",
-    "  background: " + RED + " !important;",
-    "  box-shadow: 0 4px 20px rgba(220,38,38,0.45) !important;",
-    "  --devocean-btn-hover: " + RED_DARK + ";",
-    "}",
-    "#devocean-widget-icon {",
-    "  display: flex;",
-    "  align-items: center;",
-    "  justify-content: center;",
-    "}",
-    /* iframe is invisible — only exists for audio + postMessage */
-    "#devocean-widget-frame {",
-    "  position: fixed;",
-    "  width: 1px;",
-    "  height: 1px;",
-    "  bottom: 0;",
-    "  right: 0;",
-    "  border: none;",
-    "  opacity: 0;",
-    "  pointer-events: none;",
-    "}",
-    "@keyframes devocean-ring {",
-    "  0%, 22%, 100% { transform: rotate(0deg); }",
-    "  3%  { transform: rotate(-22deg); }",
-    "  6%  { transform: rotate(22deg); }",
-    "  9%  { transform: rotate(-22deg); }",
-    "  12% { transform: rotate(22deg); }",
-    "  15% { transform: rotate(-14deg); }",
-    "  18% { transform: rotate(14deg); }",
-    "  20% { transform: rotate(-6deg); }",
-    "}",
-    "@keyframes devocean-pulse {",
-    "  0%   { box-shadow: 0 4px 20px rgba(22,163,74,0.40), 0 0 0 0 rgba(22,163,74,0.55); }",
-    "  70%  { box-shadow: 0 4px 20px rgba(22,163,74,0.40), 0 0 0 18px rgba(22,163,74,0); }",
-    "  100% { box-shadow: 0 4px 20px rgba(22,163,74,0.40), 0 0 0 0 rgba(22,163,74,0); }",
-    "}",
-    "#devocean-widget-btn.ringing #devocean-widget-icon {",
-    "  animation: devocean-ring 4s ease-in-out infinite;",
-    "}",
-    "#devocean-widget-btn.attention { animation: devocean-pulse 1.7s ease-out 2; }",
-    "@media (prefers-reduced-motion: reduce) {",
-    "  #devocean-widget-btn.ringing #devocean-widget-icon { animation: none; }",
-    "  #devocean-widget-btn.attention { animation: none; }",
-    "}",
-  ].join("\n");
+  style.textContent =
+    "#dv-fab{" +
+      "position:fixed;bottom:" + MARGIN + "px;right:" + MARGIN + "px;" +
+      "width:" + FAB_R + "px;height:" + FAB_R + "px;" +
+      "border-radius:50%;background:" + ORANGE + ";" +
+      "box-shadow:0 4px 20px rgba(249,115,22,.45);" +
+      "border:none;cursor:pointer;" +
+      "display:flex;align-items:center;justify-content:center;" +
+      "z-index:2147483647;" +
+      "transition:background .18s,transform .18s,box-shadow .18s;" +
+      "outline:none;" +
+    "}" +
+    "#dv-fab:hover{background:" + ORANGE_DARK + ";transform:scale(1.07);}" +
+    "#dv-fab:active{transform:scale(0.96);}" +
+    "#dv-fab.dv-voice-active{" +
+      "background:" + RED + "!important;" +
+      "box-shadow:0 4px 20px rgba(220,38,38,.45)!important;" +
+    "}" +
+    "#dv-fab.dv-voice-active:hover{background:" + RED_DARK + "!important;}" +
+
+    ".dv-opt{" +
+      "position:fixed;right:" + MARGIN + "px;" +
+      "width:" + OPT_R + "px;height:" + OPT_R + "px;" +
+      "border-radius:50%;border:none;cursor:pointer;" +
+      "display:flex;align-items:center;justify-content:center;" +
+      "z-index:2147483646;" +
+      "opacity:0;transform:translateY(14px);pointer-events:none;" +
+      "transition:opacity .22s,transform .22s,filter .15s;" +
+    "}" +
+    ".dv-opt.dv-vis{opacity:1;transform:translateY(0);pointer-events:auto;}" +
+    ".dv-opt:hover{filter:brightness(1.12);}" +
+    ".dv-opt:active{transform:scale(0.93)!important;}" +
+
+    ".dv-lbl{" +
+      "position:fixed;right:" + (MARGIN + OPT_R + 10) + "px;" +
+      "background:rgba(0,0,0,.72);color:#fff;" +
+      "font:600 12px/1 system-ui,sans-serif;" +
+      "padding:5px 11px;border-radius:20px;white-space:nowrap;" +
+      "z-index:2147483646;" +
+      "opacity:0;transform:translateX(8px);pointer-events:none;" +
+      "transition:opacity .22s,transform .22s;" +
+    "}" +
+    ".dv-lbl.dv-vis{opacity:1;transform:translateX(0);}" +
+
+    "#dv-backdrop{position:fixed;inset:0;z-index:2147483644;display:none;}" +
+    "#dv-backdrop.dv-vis{display:block;}" +
+
+    "#dv-text-panel{" +
+      "position:fixed;" +
+      "bottom:" + (MARGIN + FAB_R + 12) + "px;" +
+      "right:" + MARGIN + "px;" +
+      "width:" + PANEL_W + "px;height:" + PANEL_H + "px;" +
+      "border:none;border-radius:16px;" +
+      "box-shadow:0 8px 40px rgba(0,0,0,.18);" +
+      "z-index:2147483645;" +
+      "opacity:0;transform:scale(.96) translateY(8px);" +
+      "transform-origin:bottom right;" +
+      "transition:opacity .2s,transform .2s;" +
+      "pointer-events:none;" +
+    "}" +
+    "#dv-text-panel.dv-vis{opacity:1;transform:scale(1) translateY(0);pointer-events:auto;}" +
+
+    "#dv-voice-frame{" +
+      "position:fixed;width:1px;height:1px;bottom:0;right:0;" +
+      "border:none;opacity:0;pointer-events:none;" +
+    "}" +
+
+    "@media(max-width:420px){" +
+      "#dv-text-panel{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + MARGIN + "px;}" +
+    "}" +
+    "@media(max-height:560px){" +
+      "#dv-text-panel{height:75vh;}" +
+    "}" +
+
+    "@keyframes dv-pulse{" +
+      "0%{box-shadow:0 4px 20px rgba(249,115,22,.45),0 0 0 0 rgba(249,115,22,.55)}" +
+      "70%{box-shadow:0 4px 20px rgba(249,115,22,.45),0 0 0 18px rgba(249,115,22,0)}" +
+      "100%{box-shadow:0 4px 20px rgba(249,115,22,.45),0 0 0 0 rgba(249,115,22,0)}" +
+    "}" +
+    "#dv-fab.dv-attention{animation:dv-pulse 1.7s ease-out 2;}" +
+
+    "@media(prefers-reduced-motion:reduce){" +
+      "#dv-fab,.dv-opt,.dv-lbl,#dv-text-panel{transition:none!important;animation:none!important;}" +
+    "}";
+
   document.head.appendChild(style);
 
-  // --- Icons ---
-  var PHONE_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="#fff"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
-  var HANGUP_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"/><path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"/><path d="M10.71 5.05A16 16 0 0 1 22.56 9"/><path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"/><path d="M8.56 2.75c4.37 6 6 9.42 8 17.72"/></svg>';
-
-  // --- Elements ---
-  var frame = document.createElement("iframe");
-  frame.id = "devocean-widget-frame";
-  frame.allow = "microphone";
-  frame.title = "Talk to DEVOCEAN";
-  document.body.appendChild(frame);
-
-  var btn = document.createElement("button");
-  btn.id = "devocean-widget-btn";
-  btn.setAttribute("aria-label", "Talk to DEVOCEAN receptionist");
-
-  var iconSpan = document.createElement("span");
-  iconSpan.id = "devocean-widget-icon";
-  iconSpan.innerHTML = PHONE_SVG;
-  btn.appendChild(iconSpan);
-  document.body.appendChild(btn);
-
-  // In-app browsers (Facebook, Instagram, Messenger) briefly report a
-  // near-zero viewport height on first paint while their own animated
-  // toolbar chrome is still collapsing — e.g. a real session logged
-  // 390x135 (iOS 18, FacebookApp). At that height this fixed bottom-right
-  // button (bottom:28px + 60px tall) lands on top of the fixed header
-  // instead of below the page content. No real device — including
-  // landscape phones (~320px+ tall) — is ever this short, so hide the
-  // button below a generous safety floor and re-check on resize; the
-  // in-app browser corrects itself to the real device height within
-  // ~1s and the button appears normally once it does.
-  var MIN_SAFE_VIEWPORT_HEIGHT = 250;
-  function updateButtonVisibility() {
-    var h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
-    btn.style.display = h >= MIN_SAFE_VIEWPORT_HEIGHT ? "flex" : "none";
-  }
-  updateButtonVisibility();
-  window.addEventListener("resize", updateButtonVisibility);
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", updateButtonVisibility);
-  }
-
-  var open = false;
-
-  function stopRinging() {
-    btn.classList.remove("ringing");
-  }
-
-  function sendConnect() {
-    // Always pass the current page lang so the WebSocket uses the live value,
-    // regardless of what lang was baked into the iframe URL at load time.
-    if (frame.contentWindow) {
-      frame.contentWindow.postMessage({ type: "devocean:connect", lang: _pageLang }, "*");
+  // --- DOM helpers ---
+  function mk(tag, id, attrs) {
+    var e = document.createElement(tag);
+    if (id) e.id = id;
+    if (attrs) {
+      for (var k in attrs) {
+        if (k === "className") e.className = attrs[k];
+        else if (k === "textContent") e.textContent = attrs[k];
+        else e.setAttribute(k, attrs[k]);
+      }
     }
+    document.body.appendChild(e);
+    return e;
   }
 
-  function openWidget() {
-    if (open) return;
-    open = true;
-    stopRinging();
-    btn.classList.add("call-active");
-    btn.classList.remove("ringing");
-    iconSpan.innerHTML = HANGUP_SVG;
-    btn.setAttribute("aria-label", "End call");
+  // Main FAB
+  var fab = mk("button", "dv-fab", { type: "button", "aria-label": "Chat with Marin" });
 
-    if (!frame.src) {
-      // Pre-warm hasn't fired yet (very early click); load now and connect on ready.
-      frame.onload = function () {
-        frame.onload = null;
-        sendConnect();
-      };
-      frame.src = WIDGET_URL;
+  // Backdrop (closes expanded state on outside click)
+  var backdrop = mk("div", "dv-backdrop");
+
+  // Text option button + label
+  var textBtn = mk("button", null, { type: "button", className: "dv-opt", "aria-label": "Text chat with Marin" });
+  textBtn.style.background = ORANGE;
+  textBtn.innerHTML = iconMsg(22);
+  var textLbl = mk("div", null, { className: "dv-lbl", textContent: "Chat" });
+
+  // Voice option button + label
+  var voiceBtn = mk("button", null, { type: "button", className: "dv-opt", "aria-label": "Voice call with Marin" });
+  voiceBtn.style.background = GREEN;
+  voiceBtn.innerHTML = iconPhone(22);
+  var voiceLbl = mk("div", null, { className: "dv-lbl", textContent: "Call" });
+
+  // Text chat iframe (visible panel)
+  var textFrame = mk("iframe", "dv-text-panel");
+  textFrame.setAttribute("allow", "");
+
+  // Voice audio iframe (invisible — audio + postMessage only)
+  var voiceFrame = mk("iframe", "dv-voice-frame");
+  voiceFrame.setAttribute("allow", "microphone");
+
+  // --- Position option buttons above the FAB ---
+  function placeOptions() {
+    var textBottom  = MARGIN + FAB_R + GAP;
+    var voiceBottom = textBottom + OPT_R + GAP;
+    var labelMid    = Math.round((OPT_R - 20) / 2);
+
+    textBtn.style.bottom  = textBottom + "px";
+    textLbl.style.bottom  = (textBottom + labelMid) + "px";
+    voiceBtn.style.bottom = voiceBottom + "px";
+    voiceLbl.style.bottom = (voiceBottom + labelMid) + "px";
+  }
+  placeOptions();
+
+  // --- State machine ---
+  // States: "idle" | "expanded" | "text" | "voice"
+  var state = "idle";
+
+  function setState(next) {
+    state = next;
+    var isExpanded = next === "expanded";
+    var isText     = next === "text";
+    var isVoice    = next === "voice";
+
+    // FAB icon + colour
+    fab.classList.toggle("dv-voice-active", isVoice);
+    fab.style.removeProperty("background");
+    if (isVoice) {
+      fab.innerHTML = iconPhoneOff(24);
+    } else if (isExpanded || isText) {
+      fab.innerHTML = iconClose(24);
     } else {
-      // Iframe already pre-warmed or from a previous call — connect immediately.
-      sendConnect();
+      fab.innerHTML = iconMsg(24);
+    }
+
+    // Option fan-out
+    var vis = isExpanded;
+    textBtn.classList.toggle("dv-vis", vis);
+    textLbl.classList.toggle("dv-vis", vis);
+    voiceBtn.classList.toggle("dv-vis", vis);
+    voiceLbl.classList.toggle("dv-vis", vis);
+    backdrop.classList.toggle("dv-vis", isExpanded);
+
+    // Text chat panel
+    textFrame.classList.toggle("dv-vis", isText);
+    if (isText && !textFrame.src) {
+      textFrame.src = WIDGET_ORIGIN + "/embed-text?lang=" + encodeURIComponent(_pageLang);
     }
   }
 
-  function closeWidget() {
-    if (!open) return;
-    open = false;
-    btn.classList.remove("call-active");
-    iconSpan.innerHTML = PHONE_SVG;
-    btn.setAttribute("aria-label", "Talk to DEVOCEAN receptionist");
-    if (frame.contentWindow) {
-      frame.contentWindow.postMessage({ type: "devocean:disconnect" }, "*");
+  // --- FAB click ---
+  fab.addEventListener("click", function () {
+    if (state === "idle")     { setState("expanded"); }
+    else if (state === "expanded") { setState("idle"); }
+    else if (state === "text")     { setState("idle"); }
+    else if (state === "voice")    { endVoiceCall(); }
+  });
+
+  // --- Option clicks ---
+  textBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    setState("text");
+  });
+
+  voiceBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    setState("voice");
+    if (!voiceFrame.src) {
+      voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+    } else {
+      postToVoice("devocean:connect");
     }
-    // Keep frame.src set — the React app stays mounted so the next call only
-    // pays for the WebSocket handshake, not a full iframe reload.
+  });
+
+  // Outside click collapses expanded menu
+  backdrop.addEventListener("click", function () {
+    if (state === "expanded") setState("idle");
+  });
+
+  // Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (state === "expanded") setState("idle");
+    else if (state === "text")  setState("idle");
+    else if (state === "voice") endVoiceCall();
+  });
+
+  function endVoiceCall() {
+    postToVoice("devocean:disconnect");
+    setState("idle");
   }
 
-  // Messages from the iframe embed
+  function postToVoice(type) {
+    try { voiceFrame.contentWindow.postMessage({ type: type }, WIDGET_ORIGIN); } catch (_) {}
+  }
+
+  // Messages from the voice iframe
   window.addEventListener("message", function (evt) {
     if (!evt.data || typeof evt.data !== "object") return;
-    var type = evt.data.type;
-    if (type === "devocean:embedReady") {
-      if (open) sendConnect();
+    if (evt.data.type === "devocean:embedReady" && state === "voice") {
+      postToVoice("devocean:connect");
     }
-    if (type === "devocean:callEnded") {
-      closeWidget();
+    if (evt.data.type === "devocean:callEnded" && state === "voice") {
+      setState("idle");
     }
   });
 
-  btn.addEventListener("click", function () {
-    open ? closeWidget() : openWidget();
-  });
+  // Pre-warm voice iframe (off critical path — 2 s delay)
+  setTimeout(function () {
+    if (!voiceFrame.src) {
+      voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+    }
+  }, 2000);
 
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && open) closeWidget();
-  });
+  // Pulse FAB after a few seconds to draw attention
+  setTimeout(function () {
+    if (state === "idle") fab.classList.add("dv-attention");
+  }, 4000);
 
-  // Auto-open: if ?talk is present in the URL (e.g. from a WhatsApp deep link),
-  // open Marin automatically once the page has settled.
-  // Note: getUserMedia requires a user-gesture on iOS Safari — if the browser
-  // blocks it, the embed shows an error state and the guest can tap the button
-  // manually to retry. On desktop Chrome/Firefox the navigation gesture propagates.
-  var _autoOpen = new URLSearchParams(window.location.search).has("talk");
-  if (_autoOpen) {
-    setTimeout(openWidget, 1000);
+  // Auto-open voice if ?talk is in the URL (e.g. WhatsApp deep-link)
+  if (new URLSearchParams(window.location.search).has("talk")) {
+    setTimeout(function () { voiceBtn.click(); }, 1000);
   }
 
-  // Pre-warm: load the embed iframe early so the React app + audio plumbing
-  // are ready before the user clicks. Only the WebSocket handshake is cold.
-  // 2 s delay keeps this off the critical path for page LCP.
-  // Skip when auto-opening — openWidget() handles the iframe load itself.
-  setTimeout(function () {
-    if (!frame.src) frame.src = WIDGET_URL;
-  }, _autoOpen ? 0 : 2000);
+  // Initial render
+  setState("idle");
 
-  // Start ringing after a short delay to draw attention to the button.
-  // Skip when auto-opening — the widget opens immediately.
-  if (!_autoOpen) {
-    setTimeout(function () {
-      btn.classList.add("ringing");
-    }, 4000);
+  // --- SVG icon factories ---
+  function svg(size, content) {
+    return (
+      '<svg xmlns="http://www.w3.org/2000/svg"' +
+      ' width="' + size + '" height="' + size + '"' +
+      ' viewBox="0 0 24 24"' +
+      ' fill="none" stroke="white"' +
+      ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      content + "</svg>"
+    );
+  }
+  function iconMsg(s) {
+    return svg(s, '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>');
+  }
+  function iconPhone(s) {
+    return svg(s,
+      '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07' +
+      ' A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.44' +
+      ' 2 2 0 0 1 3.59 2.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81' +
+      ' 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.91-.91' +
+      ' a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17z"/>'
+    );
+  }
+  function iconPhoneOff(s) {
+    return svg(s,
+      '<path d="M10.68 13.31a16 16 0 0 0 3.41 2.6l1.27-1.27a2 2 0 0 1 2.11-.45' +
+      ' c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92v3a2 2 0 0 1-2.18 2' +
+      ' 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-3.33-2.67' +
+      ' m-2.67-3.34a19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3' +
+      ' a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81' +
+      ' 2 2 0 0 1-.45 2.11L8.09 9.91"/>' +
+      '<line x1="23" y1="1" x2="1" y2="23"/>'
+    );
+  }
+  function iconClose(s) {
+    return svg(s,
+      '<line x1="18" y1="6" x2="6" y2="18"/>' +
+      '<line x1="6" y1="6" x2="18" y2="18"/>'
+    );
   }
 })();
