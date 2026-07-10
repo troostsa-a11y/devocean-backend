@@ -60,6 +60,9 @@ export interface CartLineInput {
   roomId: string;
   offerId: number | null;
   qty: number;
+  /** Per-unit occupancy explicitly set by the guest in the booking UI. */
+  adults?: number;
+  children?: number;
 }
 
 /** Aggregated per-room-type view for the cart UI (one row per roomId+offer). */
@@ -126,7 +129,18 @@ function normalizeLine(raw: any): CartLineInput {
   if (!Number.isFinite(qty) || qty < 1) {
     throw new BookingCartError('Invalid room quantity.', 400, 'BAD_LINE');
   }
-  return { roomId, offerId, qty: Math.min(qty, 20) };
+  // Optional per-unit occupancy set by the guest in the booking UI.
+  const adultsRaw = raw?.adults;
+  const childrenRaw = raw?.children;
+  const adults =
+    adultsRaw !== undefined && adultsRaw !== null
+      ? Math.max(1, Number.parseInt(adultsRaw, 10))
+      : undefined;
+  const children =
+    childrenRaw !== undefined && childrenRaw !== null
+      ? Math.max(0, Number.parseInt(childrenRaw, 10))
+      : undefined;
+  return { roomId, offerId, qty: Math.min(qty, 20), adults, children };
 }
 
 /** Merge duplicate lines (same room + offer) so qty is summed once. */
@@ -245,7 +259,23 @@ export async function computeCartQuote(
     throw new BookingCartError(`The selected rooms hold up to ${capSum} guests.`, 409, 'PARTY_TOO_LARGE');
   }
 
-  const dist = distributeGuests(slots, stay.adults, stay.children);
+  // When the guest has specified per-room occupancy in the UI, honour it
+  // directly rather than running the deterministic auto-distributor. This is
+  // the fix for mixed adult/child bookings where Beds24 per-person pricing
+  // depends on the actual per-room split (2A + 1C in one room ≠ 2A + 1C
+  // spread as 2A in room 1 + 1C in room 2 — the latter misprice with no adult).
+  const hasExplicitOcc = lines.some((l) => l.adults !== undefined);
+  let dist: Array<{ adults: number; children: number }>;
+  if (hasExplicitOcc) {
+    dist = [];
+    for (const l of lines) {
+      const a = l.adults !== undefined ? Math.max(1, l.adults) : 1;
+      const c = l.children !== undefined ? Math.max(0, l.children) : 0;
+      for (let i = 0; i < l.qty; i++) dist.push({ adults: a, children: c });
+    }
+  } else {
+    dist = distributeGuests(slots, stay.adults, stay.children);
+  }
 
   // Price each leg at its assigned occupancy. Rooms sharing an occupancy reuse
   // a single Beds24 offers call (cached by "adults_children").

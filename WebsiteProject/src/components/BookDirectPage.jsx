@@ -88,6 +88,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [availability, setAvailability] = useState(null); // full availability response
   const [cart, setCart] = useState({}); // roomId → qty (per-type cart)
   const [rateChoice, setRateChoice] = useState({}); // roomId → offerId (chosen rate plan)
+  const [roomOccupancy, setRoomOccupancy] = useState({}); // roomId → { adults, children } per unit
   const [quote, setQuote] = useState(null); // live combined quote (from /api/booking/quote)
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState('');
@@ -196,6 +197,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       setAvailability(data);
       setCart({});            // fresh search → empty cart
       setRateChoice({});      // …and no rate-plan overrides
+      setRoomOccupancy({});   // …and no per-room occupancy overrides
       setQuote(null);
       setQuoteError('');
       setStep('results');
@@ -305,9 +307,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           const offer = room
             ? room.offers.find((o) => o.offerId === rateChoice[roomId]) || room.offers[0]
             : null;
+          // When the party includes children, include explicit per-room
+          // occupancy so the backend prices at the guest's actual split instead
+          // of the deterministic auto-distributor.
+          if (effChildren > 0 && room) {
+            const occ = roomOccupancy[roomId] ?? defaultRoomOcc(room);
+            return { roomId, offerId: offer?.offerId ?? null, qty, adults: occ.adults, children: occ.children };
+          }
           return { roomId, offerId: offer?.offerId ?? null, qty };
         }),
-    [cart, availableRooms, rateChoice],
+    [cart, availableRooms, rateChoice, roomOccupancy, effAdults, effChildren],
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms && totalRooms < effAdults;
@@ -331,6 +340,26 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     setQuoteLoading(true); // gate Continue until the debounced /quote settles
     setRateChoice((c) => ({ ...c, [roomId]: offerId }));
     setCart((c) => (c[roomId] && c[roomId] > units ? { ...c, [roomId]: units } : c));
+  }
+
+  // Sensible default per-room occupancy: fill the room toward the party,
+  // respecting its adult/child/total caps. Used when the guest hasn't yet
+  // touched the per-room steppers.
+  function defaultRoomOcc(room) {
+    const maxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
+    const a = Math.min(effAdults, maxA);
+    const maxC = Number.isFinite(room.maxChildren) && room.maxChildren >= 0 ? room.maxChildren : room.maxPeople;
+    const c = Math.min(effChildren, maxC, room.maxPeople - a);
+    return { adults: Math.max(1, a), children: Math.max(0, c) };
+  }
+
+  function setRoomOcc(roomId, field, val) {
+    setQuoteLoading(true);
+    setRoomOccupancy((prev) => {
+      const room = availableRooms.find((r) => r.roomId === roomId);
+      const current = prev[roomId] ?? (room ? defaultRoomOcc(room) : { adults: 1, children: 0 });
+      return { ...prev, [roomId]: { ...current, [field]: Math.max(field === 'adults' ? 1 : 0, val) } };
+    });
   }
 
   // Localised rate-plan label for a room/offer (used in the cart summaries).
@@ -779,6 +808,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // Beds24 room names are English-only; show the translated
                       // marketing name when we can match it, else fall back as-is.
                       const displayName = translateRoomName(room.name);
+                      // Per-room occupancy: resolved value for the steppers below.
+                      const occForRoom = effChildren > 0 ? (roomOccupancy[room.roomId] ?? defaultRoomOcc(room)) : null;
+                      const roomMaxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
+                      const roomMaxC = Number.isFinite(room.maxChildren) && room.maxChildren >= 0 ? room.maxChildren : room.maxPeople;
                       // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
                       // every unit, so the child slot is driven by unit TYPE, not the
                       // Beds24 numbers: the Safari/Comfort tents + Chalet each take
@@ -970,6 +1003,63 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               </button>
                             </div>
                           </div>
+
+                          {/* Per-room occupancy — only shown when party includes children */}
+                          {occForRoom && qty > 0 && (
+                            <div className="mt-3 border-t border-slate-100 pt-3 space-y-2">
+                              <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">
+                                {t.guests} {t.perRoom}
+                              </p>
+                              {[
+                                {
+                                  field: 'adults',
+                                  label: t.adults,
+                                  val: occForRoom.adults,
+                                  min: 1,
+                                  max: Math.min(roomMaxA, room.maxPeople - occForRoom.children),
+                                },
+                                {
+                                  field: 'children',
+                                  label: t.children,
+                                  val: occForRoom.children,
+                                  min: 0,
+                                  max: Math.min(roomMaxC, room.maxPeople - occForRoom.adults),
+                                },
+                              ].map(({ field, label, val, min, max }) => (
+                                <div key={field} className="flex items-center justify-between">
+                                  <span className="text-sm text-slate-600">{label}</span>
+                                  <div className="inline-flex items-center rounded-lg border border-slate-200">
+                                    <button
+                                      type="button"
+                                      onClick={() => setRoomOcc(room.roomId, field, val - 1)}
+                                      disabled={val <= min}
+                                      aria-label={`Decrease ${field}`}
+                                      className="px-2.5 py-1.5 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed"
+                                      data-testid={`button-occ-dec-${room.roomId}-${field}`}
+                                    >
+                                      <Minus className="h-3.5 w-3.5" />
+                                    </button>
+                                    <span
+                                      className="min-w-[2rem] text-center text-sm font-semibold text-slate-800"
+                                      data-testid={`text-occ-${room.roomId}-${field}`}
+                                    >
+                                      {val}
+                                    </span>
+                                    <button
+                                      type="button"
+                                      onClick={() => setRoomOcc(room.roomId, field, val + 1)}
+                                      disabled={val >= max}
+                                      aria-label={`Increase ${field}`}
+                                      className="px-2.5 py-1.5 text-slate-600 disabled:opacity-40 disabled:cursor-not-allowed"
+                                      data-testid={`button-occ-inc-${room.roomId}-${field}`}
+                                    >
+                                      <Plus className="h-3.5 w-3.5" />
+                                    </button>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
                         </div>
                       );
                     })}
