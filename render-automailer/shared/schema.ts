@@ -266,6 +266,10 @@ export const directBookings = pgTable("direct_bookings", {
   couponCode: text("coupon_code"),
   discountAmount: decimal("discount_amount", { precision: 10, scale: 2 }),
 
+  // Gift voucher (optional). `voucherDiscount` is deducted from totalAmount.
+  voucherCode: text("voucher_code"),
+  voucherDiscount: decimal("voucher_discount", { precision: 10, scale: 2 }),
+
   // Multi-room expansion. One leg per physical room reserved (a "per-type cart"
   // booking holds N legs). Written authoritatively at checkout and treated as
   // the source of truth at webhook time (the webhook only re-prices to guard a
