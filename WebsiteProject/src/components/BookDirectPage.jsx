@@ -81,7 +81,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [infants, setInfants] = useState(0);
   const [childAges, setChildAges] = useState([]); // one entry per child; '' until chosen
   const [infantAges, setInfantAges] = useState([]); // one entry per infant; '' until chosen
-  const [coupon, setCoupon] = useState('');
+  const [discountCode, setDiscountCode] = useState('');
+  const [voucherCode, setVoucherCode] = useState('');
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -253,7 +254,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           checkOut,
           adults: effAdults,
           children: effChildren,
-          coupon: coupon.trim() || undefined,
+          discountCode: discountCode.trim() || undefined,
+          voucher: voucherCode.trim() || undefined,
           gaClientId,
           guest: {
             firstName: guest.firstName.trim(),
@@ -449,7 +451,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
             adults: effAdults,
             children: effChildren,
             rooms: cartLines,
-            coupon: coupon.trim() || undefined,
+            discountCode: discountCode.trim() || undefined,
+            voucher: voucherCode.trim() || undefined,
           }),
         });
         const data = await res.json();
@@ -474,7 +477,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       cancelled = true;
       clearTimeout(id);
     };
-  }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t, coupon]);
+  }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t, discountCode, voucherCode]);
 
   // ── Informational currency conversion (display only) ──────────────────────
   // The base/charged currency is the Beds24 property currency (availability
@@ -801,14 +804,26 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                 <div className="w-full flex flex-col gap-4 lg:flex-row lg:items-center">
                   <div className="lg:flex-1 lg:min-w-[150px]">
-                    <label className={FIELD_LABEL_CLASS}>{t.promoCode}</label>
+                    <label className={FIELD_LABEL_CLASS}>{t.discountCodeLabel}</label>
                     <input
                       type="text"
-                      value={coupon}
-                      onChange={(e) => setCoupon(e.target.value)}
+                      value={discountCode}
+                      onChange={(e) => setDiscountCode(e.target.value)}
                       className={INPUT_CLASS}
-                      placeholder={t.promoCode}
-                      data-testid="input-coupon"
+                      placeholder={t.discountCodeLabel}
+                      data-testid="input-discount-code"
+                    />
+                  </div>
+
+                  <div className="lg:flex-1 lg:min-w-[150px]">
+                    <label className={FIELD_LABEL_CLASS}>Gift voucher code</label>
+                    <input
+                      type="text"
+                      value={voucherCode}
+                      onChange={(e) => setVoucherCode(e.target.value.toUpperCase())}
+                      className={INPUT_CLASS}
+                      placeholder="GV-XXXX-XXXX-XXXX"
+                      data-testid="input-voucher-code"
                     />
                   </div>
 
@@ -830,6 +845,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 </div>
               </form>
               </div>
+
+              <a
+                href="/gift-vouchers"
+                className="mt-3 flex items-center gap-3 rounded-xl bg-white/95 backdrop-blur border border-white/60 px-4 py-3 shadow-sm hover:bg-white transition-colors"
+                data-testid="link-gift-vouchers-promo"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a4 4 0 00-4-4H6.5a2.5 2.5 0 000 5H12zm0 0V6a4 4 0 014-4h1.5a2.5 2.5 0 010 5H12zM4 12h16v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8z" /></svg>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-slate-900">Give the gift of DEVOCEAN</p>
+                  <p className="text-xs text-slate-500">Buy a gift voucher for someone special →</p>
+                </div>
+              </a>
 
               <div className="mt-6">{renderNotices()}</div>
             </div>
@@ -1272,20 +1299,29 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             {quote.discount > 0 && (
                               <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                                 <span className="text-slate-500">
-                                  {fmt(t.discountLabel, { code: quote.couponApplied || coupon.trim().toUpperCase() })}
+                                  {fmt(t.discountLabel, { code: quote.discountCodeApplied || discountCode.trim().toUpperCase() || voucherCode.trim().toUpperCase() })}
                                 </span>
                                 <span className="font-semibold text-emerald-600" data-testid="text-cart-discount">
                                   −{money(quote.discount, quote.currency)}
                                 </span>
                               </div>
                             )}
-                            {coupon.trim() && (
-                              quote.couponApplied ? (
-                                <p className="text-xs text-emerald-600" data-testid="text-coupon-applied">
-                                  {fmt(t.couponApplied, { code: quote.couponApplied })}
+                            {discountCode.trim() && (
+                              quote.discountCodeApplied ? (
+                                <p className="text-xs text-emerald-600" data-testid="text-discount-code-applied">
+                                  {fmt(t.discountCodeApplied, { code: quote.discountCodeApplied })}
                                 </p>
-                              ) : quote.couponError ? (
-                                <p className="text-xs text-red-600" data-testid="text-coupon-invalid">{quote.couponError}</p>
+                              ) : quote.discountCodeError ? (
+                                <p className="text-xs text-red-600" data-testid="text-discount-code-invalid">{quote.discountCodeError}</p>
+                              ) : null
+                            )}
+                            {voucherCode.trim() && (
+                              quote.voucherApplied ? (
+                                <p className="text-xs text-emerald-600" data-testid="text-voucher-applied">
+                                  Gift voucher {quote.voucherApplied} applied (−${quote.voucherAmountApplied?.toFixed(2)})
+                                </p>
+                              ) : quote.voucherError ? (
+                                <p className="text-xs text-red-600" data-testid="text-voucher-invalid">{quote.voucherError}</p>
                               ) : null
                             )}
                             <div className="border-t border-slate-100 pt-3 flex flex-wrap items-center justify-between gap-2 text-sm">

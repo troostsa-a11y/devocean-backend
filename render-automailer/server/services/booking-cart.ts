@@ -27,11 +27,19 @@ import {
 } from '../config/booking-config';
 import type { DirectBookingLeg } from '../../shared/schema';
 
-/** A resolved, still-active coupon ready to apply to a cart's gross total. */
-export interface CartCoupon {
+/** A resolved, still-active discount code ready to apply to a cart's gross total. */
+export interface CartDiscountCode {
   code: string;
   type: 'percent' | 'fixed';
   value: number;
+}
+/** @deprecated Use CartDiscountCode */
+export type CartCoupon = CartDiscountCode;
+
+/** A resolved, still-active gift voucher ready to apply to a cart's gross total. */
+export interface CartVoucher {
+  code: string;
+  amountUsd: number;
 }
 
 export type CartErrorCode =
@@ -91,9 +99,11 @@ export interface CartQuote {
   currency: string;
   depositPercent: number;
   cancellationPolicyDays: number;
-  grossTotal: number;           // Σ leg.total before any coupon discount
-  discount: number;             // whole-cart discount amount (0 when no coupon / not applied)
-  couponCode: string | null;    // normalized (upper-cased) code actually applied, else null
+  grossTotal: number;           // Σ leg.total before any discounts
+  discount: number;             // total discount (discountCode + voucher)
+  discountCode: string | null;  // normalized code actually applied from admin discount codes
+  voucherCode: string | null;   // gift voucher code applied
+  voucherDiscount: number;      // USD amount deducted from gift voucher
   total: number;                // NET total = grossTotal - discount
   deposit: number;
   balance: number;
@@ -231,7 +241,8 @@ export async function computeCartQuote(
   stay: { checkIn: string; checkOut: string; adults: number; children: number },
   cartLines: any[],
   cfg: BookingConfig = getBookingConfig(),
-  coupon: CartCoupon | null = null,
+  discountCode: CartDiscountCode | null = null,
+  voucher: CartVoucher | null = null,
 ): Promise<CartQuote> {
   if (!Array.isArray(cartLines) || cartLines.length === 0) {
     throw new BookingCartError('Please choose at least one room.', 400, 'EMPTY_CART');
@@ -418,19 +429,30 @@ export async function computeCartQuote(
   // full regardless of what other rooms in the same cart are paying now.
   const grossTotal = round2(legs.reduce((s, l) => s + l.total, 0));
 
-  // Coupon discount: computed on the whole-cart GROSS total, then allocated
-  // back across legs proportionally to each leg's share of that total (largest-
-  // remainder allocation, so the parts sum back exactly). Never exceeds the
-  // total (a fixed-amount coupon larger than the cart just zeroes it out).
-  let discount = 0;
-  let appliedCouponCode: string | null = null;
-  if (coupon && grossTotal > 0) {
-    const raw = coupon.type === 'percent'
-      ? (grossTotal * coupon.value) / 100
-      : coupon.value;
-    discount = round2(Math.min(Math.max(raw, 0), grossTotal));
-    if (discount > 0) appliedCouponCode = coupon.code;
+  // Discount code: applied to the whole-cart GROSS total. Allocated back across
+  // legs proportionally (largest-remainder, so parts sum exactly). Never exceeds
+  // the gross total.
+  let codeDiscount = 0;
+  let appliedDiscountCode: string | null = null;
+  if (discountCode && grossTotal > 0) {
+    const raw = discountCode.type === 'percent'
+      ? (grossTotal * discountCode.value) / 100
+      : discountCode.value;
+    codeDiscount = round2(Math.min(Math.max(raw, 0), grossTotal));
+    if (codeDiscount > 0) appliedDiscountCode = discountCode.code;
   }
+
+  // Gift voucher: fixed-USD, applied to whatever remains after the discount code.
+  // A voucher larger than the remaining total just zeroes it out.
+  let voucherDiscount = 0;
+  let appliedVoucherCode: string | null = null;
+  const remainingAfterCode = round2(grossTotal - codeDiscount);
+  if (voucher && remainingAfterCode > 0) {
+    voucherDiscount = round2(Math.min(voucher.amountUsd, remainingAfterCode));
+    if (voucherDiscount > 0) appliedVoucherCode = voucher.code;
+  }
+
+  const discount = round2(codeDiscount + voucherDiscount);
   const legTotals = legs.map((l) => l.total);
   const legDiscounts = discount > 0 ? allocateProportional(discount, legTotals) : legs.map(() => 0);
 
@@ -492,7 +514,9 @@ export async function computeCartQuote(
     cancellationPolicyDays: beds24.getCancellationDays(),
     grossTotal,
     discount,
-    couponCode: appliedCouponCode,
+    discountCode: appliedDiscountCode,
+    voucherCode: appliedVoucherCode,
+    voucherDiscount,
     total,
     deposit,
     balance,

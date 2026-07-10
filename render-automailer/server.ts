@@ -135,9 +135,12 @@ if (process.env.DATABASE_URL) {
   guestDb.initDirectBookingsTable()
     .then(() => console.log('✅ Direct bookings table ready'))
     .catch((err) => console.error('❌ Failed to create direct_bookings table:', err));
-  guestDb.initCouponCodesTable()
-    .then(() => console.log('✅ Coupon codes table ready'))
+  guestDb.initDiscountCodesTable()
+    .then(() => console.log('✅ Discount codes table ready'))
     .catch((err) => console.error('❌ Failed to create coupon_codes table:', err));
+  guestDb.initGiftVouchersTable()
+    .then(() => console.log('✅ Gift vouchers table ready'))
+    .catch((err) => console.error('❌ Failed to create gift_vouchers table:', err));
 }
 
 // Health check endpoint
@@ -669,24 +672,24 @@ app.get('/unsubscribe/:token', async (req: any, res: any) => {
   }
 });
 
-// ─── Admin: coupon codes (reusable phrase-discount codes for /book-direct) ───
-app.get('/api/admin/coupons', requireAdminKey, async (req: any, res: any) => {
+// ─── Admin: discount codes (reusable phrase-discount codes for /book-direct) ─
+app.get('/api/admin/discount-codes', requireAdminKey, async (req: any, res: any) => {
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   try {
-    const coupons = await guestDb.listCoupons();
-    res.json({ coupons });
+    const codes = await guestDb.listDiscountCodes();
+    res.json({ coupons: codes }); // keep key "coupons" for AdminPage backwards compat
   } catch (err: any) {
-    console.error('[ADMIN] list coupons error:', err.message);
-    res.status(500).json({ error: 'Could not load coupons' });
+    console.error('[ADMIN] list discount codes error:', err.message);
+    res.status(500).json({ error: 'Could not load discount codes' });
   }
 });
 
-app.post('/api/admin/coupons', requireAdminKey, async (req: any, res: any) => {
+app.post('/api/admin/discount-codes', requireAdminKey, async (req: any, res: any) => {
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   const code = String(req.body?.code || '').trim();
   const type = req.body?.type;
   const value = Number(req.body?.value);
-  if (!code) return res.status(400).json({ error: 'Coupon code is required' });
+  if (!code) return res.status(400).json({ error: 'Discount code is required' });
   if (type !== 'percent' && type !== 'fixed') {
     return res.status(400).json({ error: 'type must be "percent" or "fixed"' });
   }
@@ -697,35 +700,105 @@ app.post('/api/admin/coupons', requireAdminKey, async (req: any, res: any) => {
     return res.status(400).json({ error: 'A percent discount cannot exceed 100' });
   }
   try {
-    const coupon = await guestDb.createCoupon({ code, type, value });
+    const coupon = await guestDb.createDiscountCode({ code, type, value });
     res.json({ coupon });
   } catch (err: any) {
-    console.error('[ADMIN] create coupon error:', err.message);
-    res.status(500).json({ error: 'Could not save coupon' });
+    console.error('[ADMIN] create discount code error:', err.message);
+    res.status(500).json({ error: 'Could not save discount code' });
   }
 });
 
-app.post('/api/admin/coupons/:code/deactivate', requireAdminKey, async (req: any, res: any) => {
+app.post('/api/admin/discount-codes/:code/deactivate', requireAdminKey, async (req: any, res: any) => {
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   try {
-    const coupon = await guestDb.setCouponActive(req.params.code, false);
-    if (!coupon) return res.status(404).json({ error: 'Coupon not found' });
+    const coupon = await guestDb.setDiscountCodeActive(req.params.code, false);
+    if (!coupon) return res.status(404).json({ error: 'Discount code not found' });
     res.json({ coupon });
   } catch (err: any) {
-    console.error('[ADMIN] deactivate coupon error:', err.message);
-    res.status(500).json({ error: 'Could not deactivate coupon' });
+    console.error('[ADMIN] deactivate discount code error:', err.message);
+    res.status(500).json({ error: 'Could not deactivate discount code' });
   }
 });
 
-app.post('/api/admin/coupons/:code/activate', requireAdminKey, async (req: any, res: any) => {
+app.post('/api/admin/discount-codes/:code/activate', requireAdminKey, async (req: any, res: any) => {
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   try {
-    const coupon = await guestDb.setCouponActive(req.params.code, true);
-    if (!coupon) return res.status(404).json({ error: 'Coupon not found' });
+    const coupon = await guestDb.setDiscountCodeActive(req.params.code, true);
+    if (!coupon) return res.status(404).json({ error: 'Discount code not found' });
     res.json({ coupon });
   } catch (err: any) {
-    console.error('[ADMIN] activate coupon error:', err.message);
-    res.status(500).json({ error: 'Could not activate coupon' });
+    console.error('[ADMIN] activate discount code error:', err.message);
+    res.status(500).json({ error: 'Could not activate discount code' });
+  }
+});
+
+// ─── Gift voucher checkout (create Stripe session for purchaser) ──────────
+app.post('/api/gift-voucher/checkout', requireAdminKey, async (req: any, res: any) => {
+  const VALID_AMOUNTS = [20, 50, 100, 200, 500];
+  const amount = Number(req.body?.amount);
+  const purchaserEmail = String(req.body?.purchaserEmail || '').trim();
+  const purchaserName = String(req.body?.purchaserName || '').trim();
+  const recipientName = String(req.body?.recipientName || '').trim() || undefined;
+  const message = String(req.body?.message || '').trim().slice(0, 500) || undefined;
+
+  if (!VALID_AMOUNTS.includes(amount)) {
+    return res.status(400).json({ error: 'Invalid amount. Choose $20, $50, $100, $200, or $500.' });
+  }
+  if (!purchaserEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(purchaserEmail)) {
+    return res.status(400).json({ error: 'A valid email address is required.' });
+  }
+  if (!purchaserName) return res.status(400).json({ error: 'Your name is required.' });
+
+  try {
+    const { createGiftVoucherCheckoutSession } = await import('./server/services/stripe-booking');
+    const { url, stripeSessionId } = await createGiftVoucherCheckoutSession({
+      amount, purchaserEmail, purchaserName, recipientName, message,
+    });
+    if (guestDb) {
+      await guestDb.createGiftVoucher({ amountUsd: amount, purchaserEmail, purchaserName, recipientName, message, stripeSessionId });
+    }
+    res.json({ url });
+  } catch (err: any) {
+    console.error('[GIFT_VOUCHER] checkout error:', err.message);
+    res.status(500).json({ error: 'Could not create checkout. Please try again.' });
+  }
+});
+
+// ─── Gift voucher confirm (poll after Stripe redirect) ───────────────────
+app.get('/api/gift-voucher/confirm/:sessionId', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not available' });
+  try {
+    const voucher = await guestDb.getGiftVoucherByStripeSession(String(req.params.sessionId));
+    if (!voucher) return res.status(404).json({ error: 'Voucher not found' });
+    res.json({
+      status: voucher.status,
+      code: (voucher.status === 'active' || voucher.status === 'redeemed') ? voucher.code : null,
+      amountUsd: Number(voucher.amountUsd),
+      purchaserName: voucher.purchaserName || null,
+      recipientName: voucher.recipientName || null,
+      expiresAt: voucher.expiresAt,
+    });
+  } catch (err: any) {
+    console.error('[GIFT_VOUCHER] confirm error:', err.message);
+    res.status(500).json({ error: 'Could not load voucher details.' });
+  }
+});
+
+// ─── Gift voucher validate (from /book-direct voucher input) ─────────────
+app.get('/api/gift-voucher/validate', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not available' });
+  const code = String(req.query.code || '').trim().toUpperCase();
+  if (!code) return res.status(400).json({ error: 'code is required' });
+  try {
+    const voucher = await guestDb.getActiveGiftVoucherByCode(code);
+    if (!voucher) return res.json({ valid: false, error: 'This voucher code is not valid.' });
+    if (new Date(voucher.expiresAt) < new Date()) {
+      return res.json({ valid: false, error: 'This voucher has expired.' });
+    }
+    res.json({ valid: true, amountUsd: Number(voucher.amountUsd), code: voucher.code });
+  } catch (err: any) {
+    console.error('[GIFT_VOUCHER] validate error:', err.message);
+    res.json({ valid: false, error: 'Could not validate voucher.' });
   }
 });
 

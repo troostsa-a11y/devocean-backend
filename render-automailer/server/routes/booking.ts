@@ -29,7 +29,8 @@ import {
   splitDeposit,
   round2,
 } from '../config/booking-config';
-import { computeCartQuote, BookingCartError, type CartCoupon } from '../services/booking-cart';
+import { computeCartQuote, BookingCartError, type CartDiscountCode, type CartVoucher } from '../services/booking-cart';
+import { generateVoucherCode, sendVoucherEmail } from '../services/gift-voucher';
 import type { DirectBookingLeg } from '../../shared/schema';
 
 // ─── tiny in-memory rate limiter (per IP, sliding window) ────────────────────
@@ -177,24 +178,45 @@ export function createBookingRouter(deps: {
     return true;
   }
 
-  // Look up a guest-entered promo code. Never throws — an invalid/inactive
-  // code is surfaced as a soft `couponError` string, never a 400, so a typo in
-  // the promo box can't block the rest of checkout.
-  async function resolveCoupon(
+  // Look up a guest-entered discount code. Never throws — an invalid/inactive
+  // code is surfaced as a soft `discountCodeError` string, never a 400, so a
+  // typo in the promo box can't block the rest of checkout.
+  async function resolveDiscountCode(
     raw: unknown,
-  ): Promise<{ coupon: CartCoupon | null; couponError?: string }> {
+  ): Promise<{ discountCode: CartDiscountCode | null; discountCodeError?: string }> {
     const code = typeof raw === 'string' ? raw.trim() : '';
-    if (!code) return { coupon: null };
-    if (!db) return { coupon: null, couponError: 'Could not validate coupon code.' };
+    if (!code) return { discountCode: null };
+    if (!db) return { discountCode: null, discountCodeError: 'Could not validate discount code.' };
     try {
-      const row = await db.getActiveCouponByCode(code);
-      if (!row) return { coupon: null, couponError: 'This code is not valid.' };
+      const row = await db.getActiveDiscountCodeByCode(code);
+      if (!row) return { discountCode: null, discountCodeError: 'This code is not valid.' };
       return {
-        coupon: { code: row.code, type: row.type as 'percent' | 'fixed', value: Number(row.value) },
+        discountCode: { code: row.code, type: row.type as 'percent' | 'fixed', value: Number(row.value) },
       };
     } catch (err: any) {
-      console.error('[BOOKING] coupon lookup error:', err.message);
-      return { coupon: null, couponError: 'Could not validate coupon code.' };
+      console.error('[BOOKING] discount code lookup error:', err.message);
+      return { discountCode: null, discountCodeError: 'Could not validate discount code.' };
+    }
+  }
+
+  // Look up a guest-entered gift voucher code. Never throws — an invalid/expired
+  // voucher is surfaced as a soft `voucherError` string.
+  async function resolveVoucher(
+    raw: unknown,
+  ): Promise<{ voucher: CartVoucher | null; voucherError?: string }> {
+    const code = typeof raw === 'string' ? raw.trim().toUpperCase() : '';
+    if (!code) return { voucher: null };
+    if (!db) return { voucher: null, voucherError: 'Could not validate voucher code.' };
+    try {
+      const row = await db.getActiveGiftVoucherByCode(code);
+      if (!row) return { voucher: null, voucherError: 'This voucher code is not valid.' };
+      if (new Date(row.expiresAt) < new Date()) {
+        return { voucher: null, voucherError: 'This voucher has expired.' };
+      }
+      return { voucher: { code: row.code!, amountUsd: Number(row.amountUsd) } };
+    } catch (err: any) {
+      console.error('[BOOKING] voucher lookup error:', err.message);
+      return { voucher: null, voucherError: 'Could not validate voucher code.' };
     }
   }
 
@@ -278,10 +300,13 @@ export function createBookingRouter(deps: {
     if (parsed.error || !parsed.value) return res.status(400).json({ error: parsed.error });
     const stay = parsed.value;
     const cartLines = Array.isArray(req.body?.rooms) ? req.body.rooms : [];
-    const { coupon, couponError } = await resolveCoupon(req.body?.coupon);
+    const [{ discountCode, discountCodeError }, { voucher, voucherError }] = await Promise.all([
+      resolveDiscountCode(req.body?.discountCode),
+      resolveVoucher(req.body?.voucher),
+    ]);
 
     try {
-      const quote = await computeCartQuote(beds24, stay, cartLines, getBookingConfig(), coupon);
+      const quote = await computeCartQuote(beds24, stay, cartLines, getBookingConfig(), discountCode, voucher);
       res.json({
         checkIn: quote.checkIn,
         checkOut: quote.checkOut,
@@ -293,8 +318,11 @@ export function createBookingRouter(deps: {
         cancellationPolicyDays: quote.cancellationPolicyDays,
         grossTotal: quote.grossTotal,
         discount: quote.discount,
-        couponApplied: quote.couponCode,
-        couponError,
+        discountCodeApplied: quote.discountCode,
+        discountCodeError,
+        voucherApplied: quote.voucherCode,
+        voucherAmountApplied: quote.voucherDiscount,
+        voucherError,
         total: quote.total,
         deposit: quote.deposit,
         balance: quote.balance,
@@ -380,9 +408,12 @@ export function createBookingRouter(deps: {
     }
     if (!phone) return res.status(400).json({ error: 'Phone is required' });
 
-    // Re-validate the coupon at checkout time too — it may have been
-    // deactivated between the last live quote and clicking "Pay".
-    const { coupon } = await resolveCoupon(req.body?.coupon);
+    // Re-validate discount code + gift voucher at checkout time — either may have
+    // been deactivated / redeemed between the last live quote and clicking "Pay".
+    const [{ discountCode }, { voucher }] = await Promise.all([
+      resolveDiscountCode(req.body?.discountCode),
+      resolveVoucher(req.body?.voucher),
+    ]);
 
     const cfg = getBookingConfig();
     const t0 = Date.now();
@@ -391,9 +422,9 @@ export function createBookingRouter(deps: {
         `[BOOKING] checkout: start ${stay.checkIn}->${stay.checkOut} lines=${cartLines.length}`,
       );
       // Recompute everything (occupancy split, per-leg price, combined deposit,
-      // coupon discount) server-side from fresh Beds24 offers. Client amounts
-      // are never trusted — only roomId/offerId/qty/coupon select WHAT to price.
-      const quote = await computeCartQuote(beds24, stay, cartLines, cfg, coupon);
+      // discount) server-side from fresh Beds24 offers. Client amounts are never
+      // trusted — only roomId/offerId/qty/discountCode/voucher select WHAT to price.
+      const quote = await computeCartQuote(beds24, stay, cartLines, cfg, discountCode, voucher);
       const first = quote.legs[0];
       const summary = quote.lines
         .map((l) => (l.qty > 1 ? `${l.roomName} \u00d7${l.qty}` : l.roomName))
@@ -426,8 +457,10 @@ export function createBookingRouter(deps: {
         depositAmount: quote.deposit.toFixed(2),
         balanceDue: quote.balance.toFixed(2),
         depositPercent: quote.depositPercent,
-        couponCode: quote.couponCode,
+        couponCode: quote.discountCode,
         discountAmount: quote.discount > 0 ? quote.discount.toFixed(2) : null,
+        voucherCode: quote.voucherCode,
+        voucherDiscount: quote.voucherDiscount > 0 ? quote.voucherDiscount.toFixed(2) : null,
         legs: quote.legs,                     // per-room source of truth
         paymentStatus: 'pending',
         status: 'pending',
@@ -480,7 +513,12 @@ export function createBookingRouter(deps: {
     // once the signature is valid (avoids endless retries on transient errors).
     try {
       if (event.type === 'checkout.session.completed') {
-        await handleCheckoutCompleted(event.data.object as any);
+        const session = event.data.object as any;
+        if (session?.metadata?.type === 'gift_voucher') {
+          await handleGiftVoucherCompleted(session);
+        } else {
+          await handleCheckoutCompleted(session);
+        }
       } else if (event.type === 'checkout.session.expired') {
         await handleSessionExpired(event.data.object as any);
       } else if (event.type === 'checkout.session.async_payment_failed') {
@@ -756,6 +794,41 @@ export function createBookingRouter(deps: {
       await scheduleGuestEmails(record, legs);
     }
 
+    async function handleGiftVoucherCompleted(session: any) {
+      if (!db) return;
+      const stripeSessionId = session.id;
+      const paymentIntentId = typeof session.payment_intent === 'string' ? session.payment_intent : null;
+      const amountUsd = parseFloat(session?.metadata?.amount || '0');
+      if (!amountUsd || amountUsd <= 0) {
+        console.error('[GIFT_VOUCHER] webhook: invalid amount in metadata', session.metadata);
+        return;
+      }
+      const code = generateVoucherCode();
+      const voucher = await db.activateGiftVoucher(stripeSessionId, code, paymentIntentId);
+      if (!voucher) {
+        // May already have been activated on a previous webhook delivery.
+        const existing = await db.getGiftVoucherByStripeSession(stripeSessionId);
+        if (existing?.status === 'active') {
+          console.log('[GIFT_VOUCHER] already activated, idempotent ack', stripeSessionId);
+          return;
+        }
+        console.error('[GIFT_VOUCHER] could not activate voucher for session', stripeSessionId);
+        return;
+      }
+      const siteUrl = process.env.PUBLIC_SITE_URL || 'https://devoceanlodge.com';
+      sendVoucherEmail({
+        to: voucher.purchaserEmail,
+        purchaserName: voucher.purchaserName || 'Guest',
+        recipientName: voucher.recipientName || undefined,
+        message: voucher.message || undefined,
+        code: voucher.code!,
+        amountUsd: parseFloat(String(voucher.amountUsd)),
+        expiresAt: new Date(voucher.expiresAt),
+        siteUrl,
+      }).catch((err: any) => console.error('[GIFT_VOUCHER] email send error:', err.message));
+      console.log('[GIFT_VOUCHER] activated', code, `$${amountUsd}`, 'for', voucher.purchaserEmail);
+    }
+
     async function handleSessionExpired(session: any) {
       if (!db) return;
       const sessionRef = session?.metadata?.sessionRef;
@@ -797,8 +870,10 @@ export function createBookingRouter(deps: {
       total: Number(record.totalAmount),
       deposit: Number(record.depositAmount),
       balanceDue: Number(record.balanceDue),
-      couponCode: record.couponCode || null,
+      discountCode: record.couponCode || null,
       discount: record.discountAmount ? Number(record.discountAmount) : 0,
+      voucherCode: record.voucherCode || null,
+      voucherDiscount: record.voucherDiscount ? Number(record.voucherDiscount) : 0,
       guestFirstName: record.guestFirstName,
       guestEmail: record.guestEmail,
       beds24BookingId: record.beds24BookingId,

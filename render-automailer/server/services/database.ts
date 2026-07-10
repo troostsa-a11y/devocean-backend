@@ -1,7 +1,7 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
-import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings, couponCodes } from '../../shared/schema';
-import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking, CouponCode, InsertCouponCode } from '../../shared/schema';
+import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings, couponCodes, giftVouchers } from '../../shared/schema';
+import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking, DiscountCode, InsertDiscountCode, GiftVoucher, InsertGiftVoucher } from '../../shared/schema';
 import { eq, and, lte, gte, isNull, isNotNull, ne, sql, or, ilike, count, desc } from 'drizzle-orm';
 
 /**
@@ -772,15 +772,18 @@ export class DatabaseService {
     // Idempotent upgrade for coupon/discount support.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS coupon_code TEXT`;
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS discount_amount DECIMAL(10,2)`;
+    // Idempotent upgrade for gift voucher support.
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS voucher_code TEXT`;
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS voucher_discount DECIMAL(10,2)`;
     await this.client`
       CREATE INDEX IF NOT EXISTS idx_direct_bookings_attribution
         ON direct_bookings (lower(guest_email), check_in_date, status, created_at)
     `;
   }
 
-  // ─── Coupon codes ──────────────────────────────────────────────────────────
+  // ─── Discount codes (admin-managed promo codes) ────────────────────────────
 
-  async initCouponCodesTable(): Promise<void> {
+  async initDiscountCodesTable(): Promise<void> {
     await this.client`
       CREATE TABLE IF NOT EXISTS coupon_codes (
         id         SERIAL PRIMARY KEY,
@@ -794,8 +797,8 @@ export class DatabaseService {
     `;
   }
 
-  /** Case-insensitive lookup, only ever used to look up ACTIVE coupons for guest-facing pricing. */
-  async getActiveCouponByCode(code: string): Promise<CouponCode | undefined> {
+  /** Case-insensitive lookup, only ever used to look up ACTIVE discount codes for guest-facing pricing. */
+  async getActiveDiscountCodeByCode(code: string): Promise<DiscountCode | undefined> {
     const [row] = await this.db
       .select()
       .from(couponCodes)
@@ -804,18 +807,18 @@ export class DatabaseService {
     return row;
   }
 
-  async listCoupons(): Promise<CouponCode[]> {
+  async listDiscountCodes(): Promise<DiscountCode[]> {
     return this.db.select().from(couponCodes).orderBy(desc(couponCodes.createdAt));
   }
 
-  async createCoupon(data: { code: string; type: 'percent' | 'fixed'; value: number }): Promise<CouponCode> {
+  async createDiscountCode(data: { code: string; type: 'percent' | 'fixed'; value: number }): Promise<DiscountCode> {
     const [created] = await this.db
       .insert(couponCodes)
       .values({
         code: data.code.trim().toUpperCase(),
         type: data.type,
         value: data.value.toFixed(2),
-      } as InsertCouponCode)
+      } as InsertDiscountCode)
       .onConflictDoUpdate({
         target: couponCodes.code,
         set: {
@@ -829,13 +832,105 @@ export class DatabaseService {
     return created;
   }
 
-  async setCouponActive(code: string, active: boolean): Promise<CouponCode | undefined> {
+  async setDiscountCodeActive(code: string, active: boolean): Promise<DiscountCode | undefined> {
     const [row] = await this.db
       .update(couponCodes)
       .set({ active, updatedAt: new Date() })
       .where(eq(couponCodes.code, code.trim().toUpperCase()))
       .returning();
     return row;
+  }
+
+  // ─── Gift vouchers ──────────────────────────────────────────────────────────
+
+  async initGiftVouchersTable(): Promise<void> {
+    await this.client`
+      CREATE TABLE IF NOT EXISTS gift_vouchers (
+        id                       SERIAL PRIMARY KEY,
+        code                     TEXT UNIQUE,
+        amount_usd               DECIMAL(10,2) NOT NULL,
+        status                   TEXT NOT NULL DEFAULT 'pending',
+        purchaser_email          TEXT NOT NULL,
+        purchaser_name           TEXT,
+        recipient_name           TEXT,
+        message                  TEXT,
+        stripe_session_id        TEXT UNIQUE,
+        stripe_payment_intent_id TEXT,
+        expires_at               TIMESTAMPTZ NOT NULL,
+        redeemed_at              TIMESTAMPTZ,
+        redeemed_booking_id      INTEGER,
+        created_at               TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )
+    `;
+    await this.client`CREATE INDEX IF NOT EXISTS idx_gift_vouchers_code ON gift_vouchers(code)`;
+    await this.client`CREATE INDEX IF NOT EXISTS idx_gift_vouchers_stripe ON gift_vouchers(stripe_session_id)`;
+  }
+
+  async createGiftVoucher(data: {
+    amountUsd: number;
+    purchaserEmail: string;
+    purchaserName?: string;
+    recipientName?: string;
+    message?: string;
+    stripeSessionId: string;
+  }): Promise<GiftVoucher> {
+    const expiresAt = new Date();
+    expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+    const [created] = await this.db
+      .insert(giftVouchers)
+      .values({
+        amountUsd: data.amountUsd.toFixed(2),
+        status: 'pending',
+        purchaserEmail: data.purchaserEmail,
+        purchaserName: data.purchaserName || null,
+        recipientName: data.recipientName || null,
+        message: data.message || null,
+        stripeSessionId: data.stripeSessionId,
+        expiresAt,
+      } as InsertGiftVoucher)
+      .returning();
+    return created;
+  }
+
+  async getGiftVoucherByStripeSession(sessionId: string): Promise<GiftVoucher | undefined> {
+    const [row] = await this.db
+      .select()
+      .from(giftVouchers)
+      .where(eq(giftVouchers.stripeSessionId, sessionId))
+      .limit(1);
+    return row;
+  }
+
+  async getActiveGiftVoucherByCode(code: string): Promise<GiftVoucher | undefined> {
+    const [row] = await this.db
+      .select()
+      .from(giftVouchers)
+      .where(and(
+        eq(giftVouchers.code, code.trim().toUpperCase()),
+        eq(giftVouchers.status, 'active'),
+      ))
+      .limit(1);
+    return row;
+  }
+
+  async activateGiftVoucher(
+    stripeSessionId: string,
+    code: string,
+    paymentIntentId: string | null,
+  ): Promise<GiftVoucher | undefined> {
+    const [row] = await this.db
+      .update(giftVouchers)
+      .set({ code: code.toUpperCase(), status: 'active', stripePaymentIntentId: paymentIntentId })
+      .where(and(eq(giftVouchers.stripeSessionId, stripeSessionId), eq(giftVouchers.status, 'pending')))
+      .returning();
+    return row;
+  }
+
+  async redeemGiftVoucher(code: string, bookingId: number): Promise<void> {
+    await this.db
+      .update(giftVouchers)
+      .set({ status: 'redeemed', redeemedAt: new Date(), redeemedBookingId: bookingId })
+      .where(eq(giftVouchers.code, code.toUpperCase()));
   }
 
   async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {

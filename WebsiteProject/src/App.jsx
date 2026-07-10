@@ -20,6 +20,8 @@ const WhyPontaPage = lazy(() => import('./components/WhyPontaPage'));
 const AdminPage = lazy(() => import('./components/AdminPage'));
 const BookDirectPage = lazy(() => import('./components/BookDirectPage'));
 const BookingConfirmedPage = lazy(() => import('./components/BookingConfirmedPage'));
+const GiftVouchersPage = lazy(() => import('./components/GiftVouchersPage'));
+const GiftConfirmedPage = lazy(() => import('./components/GiftConfirmedPage'));
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -261,6 +263,16 @@ export default function App() {
         {/* Stripe redirect target — booking confirmation / result */}
         <Route path="/booking-confirmed">
           <BookingConfirmedPage lang={lang} />
+        </Route>
+
+        {/* Gift voucher purchase flow */}
+        <Route path="/gift-vouchers">
+          <GiftVouchersPage lang={lang} />
+        </Route>
+
+        {/* Gift voucher Stripe redirect target */}
+        <Route path="/gift-confirmed">
+          <GiftConfirmedPage lang={lang} />
         </Route>
 
         {/* Route for Why Ponta do Ouro destination page */}

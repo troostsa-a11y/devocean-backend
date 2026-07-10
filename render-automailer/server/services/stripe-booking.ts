@@ -134,6 +134,57 @@ export function constructWebhookEvent(
   return stripe.webhooks.constructEvent(rawBody, signature, cfg.stripeWebhookSecret);
 }
 
+export interface GiftVoucherCheckoutInput {
+  amount: number;           // USD, one of [20, 50, 100, 200, 500]
+  purchaserEmail: string;
+  purchaserName: string;
+  recipientName?: string;
+  message?: string;
+}
+
+export async function createGiftVoucherCheckoutSession(
+  input: GiftVoucherCheckoutInput,
+  cfg: BookingConfig = getBookingConfig(),
+): Promise<{ url: string; stripeSessionId: string }> {
+  const stripe = getStripe(cfg);
+
+  const description = input.recipientName
+    ? `For ${input.recipientName} · Redeemable at DEVOCEAN Lodge, Ponta do Ouro`
+    : 'Redeemable at DEVOCEAN Lodge, Ponta do Ouro';
+
+  const session = await stripe.checkout.sessions.create({
+    mode: 'payment',
+    customer_email: input.purchaserEmail,
+    line_items: [
+      {
+        quantity: 1,
+        price_data: {
+          currency: 'usd',
+          unit_amount: Math.round(input.amount * 100),
+          product_data: {
+            name: `DEVOCEAN Lodge Gift Voucher — $${input.amount}`,
+            description,
+          },
+        },
+      },
+    ],
+    metadata: {
+      type: 'gift_voucher',
+      amount: String(input.amount),
+      purchaser_name: input.purchaserName,
+      purchaser_email: input.purchaserEmail,
+      recipient_name: input.recipientName || '',
+      message: (input.message || '').slice(0, 500),
+    },
+    success_url: `${cfg.publicSiteUrl}/gift-confirmed?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${cfg.publicSiteUrl}/gift-vouchers?canceled=1`,
+    expires_at: Math.floor(Date.now() / 1000) + 60 * 60, // 1 hour
+  });
+
+  if (!session.url) throw new Error('Stripe did not return a checkout URL');
+  return { url: session.url, stripeSessionId: session.id };
+}
+
 /** Refund a payment intent in full (used when a room sold out before confirmation). */
 export async function refundPaymentIntent(
   paymentIntentId: string,

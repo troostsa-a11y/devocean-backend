@@ -180,16 +180,16 @@ export default function AdminPage() {
                   Guests
                 </button>
                 <button
-                  onClick={() => setActiveTab('coupons')}
+                  onClick={() => setActiveTab('discount-codes')}
                   className={`flex flex-1 items-center justify-center gap-1 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
-                    activeTab === 'coupons'
+                    activeTab === 'discount-codes'
                       ? 'bg-[#9e4b13] text-white'
                       : 'text-slate-600 hover:bg-slate-100'
                   }`}
-                  data-testid="tab-coupons"
+                  data-testid="tab-discount-codes"
                 >
                   <Tag className="w-4 h-4" />
-                  Coupons
+                  Discount Codes
                 </button>
               </div>
               <button
@@ -210,8 +210,8 @@ export default function AdminPage() {
               <ModifyDatesForm apiUrl={apiUrl} apiKey={apiKey} />
             ) : activeTab === 'guests' ? (
               <GuestsTab apiUrl={apiUrl} apiKey={apiKey} />
-            ) : activeTab === 'coupons' ? (
-              <CouponsTab apiUrl={apiUrl} apiKey={apiKey} />
+            ) : activeTab === 'discount-codes' ? (
+              <DiscountCodesTab apiUrl={apiUrl} apiKey={apiKey} />
             ) : (
               <CancelBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             )}
@@ -853,9 +853,9 @@ function CancelBookingForm({ apiUrl, apiKey }) {
   );
 }
 
-// ── Coupons Tab ───────────────────────────────────────────────────────────────
+// ── Discount Codes Tab ────────────────────────────────────────────────────────
 
-function CouponsTab({ apiUrl, apiKey }) {
+function DiscountCodesTab({ apiUrl, apiKey }) {
   const [coupons, setCoupons] = useState(null);
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
@@ -870,7 +870,7 @@ function CouponsTab({ apiUrl, apiKey }) {
     setLoading(true);
     setFetchError(null);
     try {
-      const res = await fetch(`${apiUrl}/api/admin/coupons`, {
+      const res = await fetch(`${apiUrl}/api/admin/discount-codes`, {
         headers: { 'X-Admin-Key': apiKey },
       });
       if (!res.ok) {
@@ -892,18 +892,18 @@ function CouponsTab({ apiUrl, apiKey }) {
     e.preventDefault();
     const trimmedCode = code.trim();
     const numValue = Number(value);
-    if (!trimmedCode) { setStatus({ type: 'error', message: 'Enter a coupon code.' }); return; }
+    if (!trimmedCode) { setStatus({ type: 'error', message: 'Enter a discount code.' }); return; }
     if (!Number.isFinite(numValue) || numValue <= 0) { setStatus({ type: 'error', message: 'Enter a valid discount value.' }); return; }
     setSaving(true);
     setStatus({ type: 'loading', message: 'Saving…' });
     try {
-      const res = await fetch(`${apiUrl}/api/admin/coupons`, {
+      const res = await fetch(`${apiUrl}/api/admin/discount-codes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Key': apiKey },
         body: JSON.stringify({ code: trimmedCode, type, value: numValue }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Could not save coupon');
+      if (!res.ok) throw new Error(data.error || 'Could not save discount code');
       setStatus({ type: 'success', message: `Saved ${data.coupon.code}.` });
       setCode('');
       setValue('');
@@ -919,12 +919,12 @@ function CouponsTab({ apiUrl, apiKey }) {
     setTogglingCode(coupon.code);
     try {
       const action = coupon.active ? 'deactivate' : 'activate';
-      const res = await fetch(`${apiUrl}/api/admin/coupons/${encodeURIComponent(coupon.code)}/${action}`, {
+      const res = await fetch(`${apiUrl}/api/admin/discount-codes/${encodeURIComponent(coupon.code)}/${action}`, {
         method: 'POST',
         headers: { 'X-Admin-Key': apiKey },
       });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(data.error || 'Could not update coupon');
+      if (!res.ok) throw new Error(data.error || 'Could not update discount code');
       load();
     } catch (err) {
       alert(err.message);
@@ -936,8 +936,8 @@ function CouponsTab({ apiUrl, apiKey }) {
   return (
     <div className="space-y-4">
       <div className="bg-white rounded-xl border border-slate-200 p-4">
-        <h2 className="text-sm font-semibold text-slate-900 mb-3">New coupon</h2>
-        <p className="text-xs text-slate-500 mb-3">Reusable phrase codes guests type into the promo box at checkout (not Beds24's one-time voucher codes).</p>
+        <h2 className="text-sm font-semibold text-slate-900 mb-3">New discount code</h2>
+        <p className="text-xs text-slate-500 mb-3">Reusable phrase codes guests type into the discount code field at checkout (not Beds24's one-time voucher codes).</p>
         <form onSubmit={handleCreate} className="flex flex-wrap items-end gap-2">
           <label className="flex flex-col gap-1">
             <span className="text-xs font-medium text-slate-600">Code</span>
@@ -946,7 +946,7 @@ function CouponsTab({ apiUrl, apiKey }) {
               onChange={(e) => setCode(e.target.value.toUpperCase())}
               placeholder="e.g. DEVOCEANVIP"
               className="px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none w-48"
-              data-testid="input-coupon-code"
+              data-testid="input-discount-code-code"
             />
           </label>
           <label className="flex flex-col gap-1">
@@ -955,7 +955,7 @@ function CouponsTab({ apiUrl, apiKey }) {
               value={type}
               onChange={(e) => setType(e.target.value)}
               className="px-2 py-1.5 border border-slate-300 rounded-lg text-sm outline-none"
-              data-testid="select-coupon-type"
+              data-testid="select-discount-code-type"
             >
               <option value="percent">Percent off</option>
               <option value="fixed">Fixed amount off</option>
@@ -971,14 +971,14 @@ function CouponsTab({ apiUrl, apiKey }) {
               onChange={(e) => setValue(e.target.value)}
               placeholder={type === 'percent' ? '10' : '32'}
               className="px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none w-28"
-              data-testid="input-coupon-value"
+              data-testid="input-discount-code-value"
             />
           </label>
           <button
             type="submit"
             disabled={saving}
             className="flex items-center gap-1.5 px-4 py-1.5 bg-[#9e4b13] hover:bg-[#7a3a0f] text-white rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
-            data-testid="button-save-coupon"
+            data-testid="button-save-discount-code"
           >
             {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
             Save
@@ -989,11 +989,11 @@ function CouponsTab({ apiUrl, apiKey }) {
 
       <div className="bg-white rounded-xl border border-slate-200 p-4">
         <div className="flex items-center justify-between gap-2 mb-3">
-          <h2 className="text-sm font-semibold text-slate-900">Coupons</h2>
+          <h2 className="text-sm font-semibold text-slate-900">Discount Codes</h2>
           <button
             onClick={load}
             className="flex items-center gap-1 text-xs text-slate-500 hover:text-slate-700"
-            data-testid="button-refresh-coupons"
+            data-testid="button-refresh-discount-codes"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             Refresh
@@ -1005,19 +1005,19 @@ function CouponsTab({ apiUrl, apiKey }) {
             <Loader2 className="w-4 h-4 animate-spin" /> Loading…
           </div>
         ) : fetchError ? (
-          <p className="text-sm text-red-600" data-testid="text-coupons-error">{fetchError}</p>
+          <p className="text-sm text-red-600" data-testid="text-discount-codes-error">{fetchError}</p>
         ) : !coupons || coupons.length === 0 ? (
-          <p className="text-sm text-slate-500">No coupons yet.</p>
+          <p className="text-sm text-slate-500">No discount codes yet.</p>
         ) : (
           <div className="divide-y divide-slate-100">
             {coupons.map((c) => (
-              <div key={c.code} className="flex flex-wrap items-center justify-between gap-2 py-2.5" data-testid={`row-coupon-${c.code}`}>
+              <div key={c.code} className="flex flex-wrap items-center justify-between gap-2 py-2.5" data-testid={`row-discount-code-${c.code}`}>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-sm font-medium text-slate-900" data-testid={`text-coupon-code-${c.code}`}>{c.code}</span>
+                    <span className="font-mono text-sm font-medium text-slate-900" data-testid={`text-discount-code-${c.code}`}>{c.code}</span>
                     <span
                       className={`text-xs px-1.5 py-0.5 rounded-md font-medium ${c.active ? 'bg-emerald-50 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}
-                      data-testid={`status-coupon-${c.code}`}
+                      data-testid={`status-discount-code-${c.code}`}
                     >
                       {c.active ? 'Active' : 'Inactive'}
                     </span>
@@ -1034,7 +1034,7 @@ function CouponsTab({ apiUrl, apiKey }) {
                       ? 'border-red-200 text-red-600 hover:bg-red-50'
                       : 'border-emerald-200 text-emerald-700 hover:bg-emerald-50'
                   }`}
-                  data-testid={`button-toggle-coupon-${c.code}`}
+                  data-testid={`button-toggle-discount-code-${c.code}`}
                 >
                   {togglingCode === c.code ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Power className="w-3.5 h-3.5" />}
                   {c.active ? 'Deactivate' : 'Activate'}

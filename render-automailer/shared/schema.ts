@@ -312,10 +312,10 @@ export type DirectBooking = typeof directBookings.$inferSelect;
 export type InsertDirectBooking = typeof directBookings.$inferInsert;
 
 /**
- * Reusable phrase-discount coupon codes (NOT Beds24's One-Time-Use Voucher
- * Codes box, which is out of scope). Managed via the admin API/UI; applied by
- * the guest in the /book-direct promo code field. `code` is matched
- * case-insensitively (always stored/compared upper-cased).
+ * Reusable phrase-discount codes (NOT Beds24's One-Time-Use Voucher Codes,
+ * which are out of scope). Managed via the admin API/UI; applied by the guest
+ * in the /book-direct discount code field. `code` is matched case-insensitively
+ * (always stored/compared upper-cased).
  */
 export const couponCodes = pgTable("coupon_codes", {
   id: serial("id").primaryKey(),
@@ -327,5 +327,35 @@ export const couponCodes = pgTable("coupon_codes", {
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });
 
-export type CouponCode = typeof couponCodes.$inferSelect;
-export type InsertCouponCode = typeof couponCodes.$inferInsert;
+export type DiscountCode = typeof couponCodes.$inferSelect;
+export type InsertDiscountCode = typeof couponCodes.$inferInsert;
+/** @deprecated Use DiscountCode */
+export type CouponCode = DiscountCode;
+/** @deprecated Use InsertDiscountCode */
+export type InsertCouponCode = InsertDiscountCode;
+
+/**
+ * One-time-use gift vouchers, purchased by guests via Stripe Checkout and
+ * redeemable at /book-direct. Codes are generated on the server after payment
+ * confirmation (`GV-XXXX-XXXX-XXXX` format, no ambiguous chars). Status
+ * lifecycle: pending → active → redeemed (or expired).
+ */
+export const giftVouchers = pgTable("gift_vouchers", {
+  id: serial("id").primaryKey(),
+  code: text("code").unique(),
+  amountUsd: decimal("amount_usd", { precision: 10, scale: 2 }).notNull(),
+  status: text("status").notNull().default('pending'), // pending | active | redeemed | expired
+  purchaserEmail: text("purchaser_email").notNull(),
+  purchaserName: text("purchaser_name"),
+  recipientName: text("recipient_name"),
+  message: text("message"),
+  stripeSessionId: text("stripe_session_id").unique(),
+  stripePaymentIntentId: text("stripe_payment_intent_id"),
+  expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
+  redeemedAt: timestamp("redeemed_at", { withTimezone: true }),
+  redeemedBookingId: integer("redeemed_booking_id"),
+  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
+export type GiftVoucher = typeof giftVouchers.$inferSelect;
+export type InsertGiftVoucher = typeof giftVouchers.$inferInsert;
