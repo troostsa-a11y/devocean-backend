@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, Menu, X, Plus, Minus, ExternalLink } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, X, Plus, Minus, ExternalLink } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
@@ -751,6 +751,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
                     <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
                   </div>
+                  {totalRooms > 0 && (
+                    <div className="lg:hidden">
+                      <a
+                        href="#your-selection"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-[#9e4b13] hover:underline"
+                        data-testid="link-scroll-to-selection"
+                      >
+                        <ChevronDown className="h-4 w-4" />
+                        {t.yourSelection}
+                      </a>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_24rem] gap-6 items-start">
                     <div className="space-y-4">
                     {availableRooms.map((room) => {
@@ -964,7 +976,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </div>
 
                     {/* Live combined cart summary (debounced /api/booking/quote) — sticky right rail on desktop */}
-                    <div className="lg:sticky lg:top-6">
+                    <div id="your-selection" className="lg:sticky lg:top-6">
                     {totalRooms > 0 ? (
                       <div
                         className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-3"
