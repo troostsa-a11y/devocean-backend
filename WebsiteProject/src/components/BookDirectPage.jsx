@@ -348,10 +348,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   // respecting its adult/child/total caps. Used when the guest hasn't yet
   // touched the per-room steppers.
   function defaultRoomOcc(room) {
+    const uk = getUnitKey(room.name);
+    const isChildUnit = uk === 'safari' || uk === 'comfort' || uk === 'chalet';
+    // Beds24 reports maxChildren=0 for every unit; effective capacity is
+    // unit-type-driven: safari/comfort/chalet sleep 2A+1C (=3); GC sleeps 2.
+    const effMax = isChildUnit ? (room.maxAdults || 2) + 1 : (room.maxPeople || 2);
     const maxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
     const a = Math.min(effAdults, maxA);
-    const maxC = Number.isFinite(room.maxChildren) && room.maxChildren >= 0 ? room.maxChildren : room.maxPeople;
-    const c = Math.min(effChildren, maxC, room.maxPeople - a);
+    const c = Math.min(effChildren, effMax - Math.max(1, a));
     return { adults: Math.max(1, a), children: Math.max(0, c), infants: 0 };
   }
 
@@ -826,7 +830,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // Per-room occupancy: resolved value for the steppers below.
                       const occForRoom = (effChildren > 0 || effInfants > 0) ? (roomOccupancy[room.roomId] ?? defaultRoomOcc(room)) : null;
                       const roomMaxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
-                      const roomMaxC = Number.isFinite(room.maxChildren) && room.maxChildren >= 0 ? room.maxChildren : room.maxPeople;
                       // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
                       // every unit, so the child slot is driven by unit TYPE, not the
                       // Beds24 numbers: the Safari/Comfort tents + Chalet each take
@@ -835,6 +838,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // fallback for any future larger unit (reframes the last adult slot).
                       const sleepsTotal = room.maxAdults || room.maxPeople;
                       const childUnit = unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet';
+                      // Effective total occupancy cap per unit (adults + children combined;
+                      // infants don't count — they sleep in cribs).
+                      const effectiveMaxPeople = childUnit ? (room.maxAdults || 2) + 1 : (room.maxPeople || 2);
                       // When the guest is searching for a single person, the room's
                       // full capacity ("Sleeps 2 + 1 child") is misleading — show that
                       // it's a single-occupancy ("single use") booking instead.
@@ -1031,14 +1037,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   label: t.adults,
                                   val: occForRoom.adults,
                                   min: 1,
-                                  max: Math.min(roomMaxA, room.maxPeople - occForRoom.children),
+                                  max: Math.min(roomMaxA, effectiveMaxPeople - occForRoom.children),
                                 },
                                 {
                                   field: 'children',
                                   label: t.children,
                                   val: occForRoom.children,
                                   min: 0,
-                                  max: Math.min(roomMaxC, room.maxPeople - occForRoom.adults),
+                                  // effectiveMaxPeople - 1: always keep at least 1 adult slot
+                                  max: Math.min(effectiveMaxPeople - 1, effectiveMaxPeople - occForRoom.adults),
                                 },
                                 ...(effInfants > 0 ? [{
                                   field: 'infants',
