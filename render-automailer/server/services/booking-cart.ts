@@ -281,16 +281,26 @@ export async function computeCartQuote(
   // spread as 2A in room 1 + 1C in room 2 — the latter misprice with no adult).
   const hasExplicitOcc = lines.some((l) => l.adults !== undefined);
   let dist: Array<{ adults: number; children: number; infants?: number }>;
+  // displayDist mirrors dist but holds the actual user-selected occupancy for
+  // stamping onto legs (and therefore CartTypeLine). dist is always clamped to
+  // at least 1 adult so Beds24 never prices below the 1-adult minimum rate.
+  let displayDist: Array<{ adults: number; children: number; infants: number }>;
   if (hasExplicitOcc) {
     dist = [];
+    displayDist = [];
     for (const l of lines) {
-      const a = l.adults !== undefined ? Math.max(1, l.adults) : 1;
+      const pricingA = l.adults !== undefined ? Math.max(1, l.adults) : 1;
+      const displayA = l.adults !== undefined ? l.adults : 1;
       const c = l.children !== undefined ? Math.max(0, l.children) : 0;
       const inf = l.infants !== undefined ? Math.max(0, l.infants) : 0;
-      for (let i = 0; i < l.qty; i++) dist.push({ adults: a, children: c, infants: inf });
+      for (let i = 0; i < l.qty; i++) {
+        dist.push({ adults: pricingA, children: c, infants: inf });
+        displayDist.push({ adults: displayA, children: c, infants: inf });
+      }
     }
   } else {
     dist = distributeGuests(slots, stay.adults, stay.children);
+    displayDist = dist.map((d) => ({ adults: d.adults, children: d.children, infants: d.infants ?? 0 }));
   }
 
   // Price each leg at its assigned occupancy. Rooms sharing an occupancy reuse
@@ -313,7 +323,8 @@ export async function computeCartQuote(
 
   for (let i = 0; i < slots.length; i++) {
     const slot = slots[i];
-    const occ = dist[i];
+    const occ = dist[i];          // pricing occupancy — adults always ≥ 1
+    const display = displayDist[i]; // display occupancy — actual user selection
     const room = roomById.get(slot.roomId)!;
     const map = await offersForOcc(occ.adults, occ.children);
     const offers = map[slot.roomId] || [];
@@ -335,9 +346,11 @@ export async function computeCartQuote(
       roomName: room.name,
       offerId: offer.offerId,
       offerName: offer.offerName || null,
-      adults: occ.adults,
-      children: occ.children,
-      infants: occ.infants ?? 0,
+      // Store the user's actual selection for display; Beds24 was priced at
+      // max(1, adults) above (the 1-adult minimum rate rule).
+      adults: display.adults,
+      children: display.children,
+      infants: display.infants,
       total: offer.total,
       discount: 0,
       deposit: 0,
