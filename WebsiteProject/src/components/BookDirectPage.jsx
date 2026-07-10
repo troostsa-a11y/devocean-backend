@@ -1000,7 +1000,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                     : <>
                                         {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
                                         {offer.type === 'nonRef' && (
-                                          <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Rate conditions</a></>
+                                          <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
                                         )}
                                       </>
                                   }
@@ -1084,7 +1084,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                               : <>
                                                   {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
                                                   {o.type === 'nonRef' && (
-                                                    <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Rate conditions</a></>
+                                                    <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
                                                   )}
                                                 </>
                                             }
