@@ -248,7 +248,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
         <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
-        <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
+        <div className="text-white/60 text-xs mt-0.5">{ui.hero.clickReviews}</div>
         {/* min-h reserves space for the async-loaded Trustindex badge so it
             doesn't shift content when the script mounts (CLS guard). */}
         <div ref={trustindexRef} className="mt-3 sm:min-h-[90px]" />
