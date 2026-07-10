@@ -802,7 +802,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 )}
 
-                <div className="w-full flex flex-col gap-4 lg:flex-row lg:items-center">
+                <div className="w-full grid grid-cols-2 gap-2 lg:flex lg:flex-row lg:items-center lg:gap-4">
                   <div className="lg:flex-1 lg:min-w-[150px]">
                     <label className={FIELD_LABEL_CLASS}>{t.discountCodeLabel}</label>
                     <input
@@ -827,7 +827,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     />
                   </div>
 
-                  <div className="lg:flex-none lg:ml-auto">
+                  <div className="col-span-2 lg:col-span-1 lg:flex-none lg:ml-auto">
                     <button
                       type="submit"
                       disabled={loading || nights < 1}
@@ -848,7 +848,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
               <a
                 href="/gift-vouchers"
-                className="mt-3 flex items-center gap-3 rounded-xl bg-white/95 backdrop-blur border border-white/60 px-4 py-3 shadow-sm hover:bg-white transition-colors"
+                className="mt-8 flex items-center gap-3 rounded-xl bg-white/95 backdrop-blur border border-white/60 px-4 py-3 shadow-sm hover:bg-white transition-colors"
                 data-testid="link-gift-vouchers-promo"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a4 4 0 00-4-4H6.5a2.5 2.5 0 000 5H12zm0 0V6a4 4 0 014-4h1.5a2.5 2.5 0 010 5H12zM4 12h16v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8z" /></svg>
