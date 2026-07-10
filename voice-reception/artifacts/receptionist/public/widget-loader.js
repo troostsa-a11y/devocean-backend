@@ -28,7 +28,15 @@
     var newLang = (document.documentElement.lang || navigator.language || "en")
       .split("-")[0]
       .toLowerCase();
-    if (newLang !== _pageLang) _pageLang = newLang;
+    if (newLang !== _pageLang) {
+      _pageLang = newLang;
+      // Reset text frame so the next open reloads with the new lang.
+      textFrame.src = "";
+      // Reload voice frame with new lang unless a call is active.
+      if (state !== "voice") {
+        voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+      }
+    }
   }).observe(document.documentElement, { attributeFilter: ["lang"] });
 
   // --- Colours ---
