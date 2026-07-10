@@ -251,7 +251,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         <div className="text-white/60 text-xs mt-0.5">Click the reviews!</div>
         {/* min-h reserves space for the async-loaded Trustindex badge so it
             doesn't shift content when the script mounts (CLS guard). */}
-        <div ref={trustindexRef} className="mt-3 min-h-[90px]" />
+        <div ref={trustindexRef} className="mt-3 sm:min-h-[90px]" />
       </div>
 
     </section>
