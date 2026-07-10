@@ -380,7 +380,8 @@ export async function computeCartQuote(
       offerId: offer.offerId,
       offerName: offer.offerName || null,
       // Store the user's actual selection for display; Beds24 was priced at
-      // max(1, adults) above (the 1-adult minimum rate rule).
+      // the actual occupancy (or floored to the 1-adult rate via offersForOccWithFloor
+      // for children-only units where adults === 0).
       adults: display.adults,
       children: display.children,
       infants: display.infants,
