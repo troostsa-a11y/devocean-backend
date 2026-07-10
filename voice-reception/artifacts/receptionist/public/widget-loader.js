@@ -30,8 +30,13 @@
       .toLowerCase();
     if (newLang !== _pageLang) {
       _pageLang = newLang;
-      // Reset text frame so the next open reloads with the new lang.
-      textFrame.src = "";
+      if (state === "text") {
+        // Panel is currently open — reload it immediately with the new lang.
+        textFrame.src = WIDGET_ORIGIN + "/embed-text?lang=" + encodeURIComponent(_pageLang);
+      } else {
+        // Panel is closed — blank it so the next open reloads with the new lang.
+        textFrame.src = "";
+      }
       // Reload voice frame with new lang unless a call is active.
       if (state !== "voice") {
         voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
