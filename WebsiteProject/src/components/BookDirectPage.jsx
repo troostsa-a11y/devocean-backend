@@ -80,6 +80,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [children, setChildren] = useState(0);
   const [infants, setInfants] = useState(0);
   const [childAges, setChildAges] = useState([]); // one entry per child; '' until chosen
+  const [infantAges, setInfantAges] = useState([]); // one entry per infant; '' until chosen
   const [coupon, setCoupon] = useState('');
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -174,6 +175,17 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   function setChildAge(i, value) {
     setChildAges((prev) => prev.map((a, idx) => (idx === i ? value : a)));
   }
+  function handleInfantsChange(n) {
+    setInfants(n);
+    setInfantAges((prev) => {
+      const next = prev.slice(0, n);
+      while (next.length < n) next.push('');
+      return next;
+    });
+  }
+  function setInfantAge(i, value) {
+    setInfantAges((prev) => prev.map((a, idx) => (idx === i ? value : a)));
+  }
 
   async function handleSearch(e) {
     e?.preventDefault();
@@ -184,6 +196,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       return;
     }
     if (children > 0 && childAges.some((a) => a === '' || a == null)) {
+      setError(t.provideChildAges);
+      return;
+    }
+    if (infants > 0 && infantAges.some((a) => a === '' || a == null)) {
       setError(t.provideChildAges);
       return;
     }
@@ -687,7 +703,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <div className="flex-1">
                       <select
                         value={infants}
-                        onChange={(e) => setInfants(parseInt(e.target.value, 10))}
+                        onChange={(e) => handleInfantsChange(parseInt(e.target.value, 10))}
                         className={INPUT_CLASS}
                         aria-label={t.infants}
                         data-testid="select-infants"
@@ -700,43 +716,71 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 </div>
 
-                <div className="lg:flex-1 lg:min-w-[150px]">
-                  <label className={FIELD_LABEL_CLASS}>{t.promoCode}</label>
-                  <input
-                    type="text"
-                    value={coupon}
-                    onChange={(e) => setCoupon(e.target.value)}
-                    className={INPUT_CLASS}
-                    placeholder={t.promoCode}
-                    data-testid="input-coupon"
-                  />
-                </div>
+                {(children > 0 || infants > 0) && (
+                  <div className="w-full flex flex-col gap-4">
+                    {children > 0 && (
+                      <div>
+                        <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
+                        <div className="flex flex-wrap gap-2">
+                          {childAges.map((age, i) => (
+                            <div key={i} className="w-[150px]">
+                              <select
+                                value={age}
+                                onChange={(e) => setChildAge(i, e.target.value)}
+                                className={INPUT_CLASS}
+                                aria-label={fmt(t.childAgeN, { n: i + 1 })}
+                                data-testid={`select-child-age-${i}`}
+                              >
+                                <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
+                                {Array.from({ length: 13 }, (_, a) => (
+                                  <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
+                                ))}
+                              </select>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
+                      </div>
+                    )}
+                    {infants > 0 && (
+                      <div>
+                        <label className={FIELD_LABEL_CLASS}>{t.infantAgesLabel}</label>
+                        <div className="flex flex-wrap gap-2">
+                          {infantAges.map((age, i) => (
+                            <div key={i} className="w-[150px]">
+                              <select
+                                value={age}
+                                onChange={(e) => setInfantAge(i, e.target.value)}
+                                className={INPUT_CLASS}
+                                aria-label={fmt(t.infantAgeN, { n: i + 1 })}
+                                data-testid={`select-infant-age-${i}`}
+                              >
+                                <option value="">{fmt(t.infantAgeN, { n: i + 1 })}</option>
+                                {Array.from({ length: 4 }, (_, a) => (
+                                  <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
+                                ))}
+                              </select>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="mt-1 text-xs text-slate-500">{t.infantAgeHint}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
 
                 <div className="w-full flex flex-col gap-4 lg:flex-row lg:items-center">
-                  {children > 0 && (
-                    <div>
-                      <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
-                      <div className="flex flex-wrap gap-2">
-                        {childAges.map((age, i) => (
-                          <div key={i} className="w-[150px]">
-                            <select
-                              value={age}
-                              onChange={(e) => setChildAge(i, e.target.value)}
-                              className={INPUT_CLASS}
-                              aria-label={fmt(t.childAgeN, { n: i + 1 })}
-                              data-testid={`select-child-age-${i}`}
-                            >
-                              <option value="">{fmt(t.childAgeN, { n: i + 1 })}</option>
-                              {Array.from({ length: 13 }, (_, a) => (
-                                <option key={a} value={a}>{fmt(t.yearsOld, { count: a })}</option>
-                              ))}
-                            </select>
-                          </div>
-                        ))}
-                      </div>
-                      <p className="mt-1 text-xs text-slate-500">{t.childAgeHint}</p>
-                    </div>
-                  )}
+                  <div className="lg:flex-1 lg:min-w-[150px]">
+                    <label className={FIELD_LABEL_CLASS}>{t.promoCode}</label>
+                    <input
+                      type="text"
+                      value={coupon}
+                      onChange={(e) => setCoupon(e.target.value)}
+                      className={INPUT_CLASS}
+                      placeholder={t.promoCode}
+                      data-testid="input-coupon"
+                    />
+                  </div>
 
                   <div className="lg:flex-none lg:ml-auto">
                     <button
