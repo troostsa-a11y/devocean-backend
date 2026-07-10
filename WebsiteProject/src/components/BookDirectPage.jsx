@@ -337,7 +337,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     [cart, availableRooms, rateChoice, roomOccupancy, effAdults, effChildren, effInfants],
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
-  const canAddRoom = totalRooms < maxRooms && totalRooms < effAdults;
+  const canAddRoom = totalRooms < maxRooms;
 
   function setRoomQty(roomId, qty) {
     setQuoteLoading(true); // gate Continue until the debounced /quote settles
@@ -371,16 +371,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const effMax = isChildUnit ? (room.maxAdults || 2) + 1 : (room.maxPeople || 2);
     const maxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
     const a = Math.min(effAdults, maxA);
-    const c = Math.min(effChildren, effMax - Math.max(1, a));
-    return { adults: Math.max(1, a), children: Math.max(0, c), infants: 0 };
+    const c = Math.min(effChildren, effMax - a);
+    return { adults: Math.max(0, a), children: Math.max(0, c), infants: 0 };
   }
 
   function setRoomOcc(roomId, field, val) {
     setQuoteLoading(true);
     setRoomOccupancy((prev) => {
       const room = availableRooms.find((r) => r.roomId === roomId);
-      const current = prev[roomId] ?? (room ? defaultRoomOcc(room) : { adults: 1, children: 0, infants: 0 });
-      return { ...prev, [roomId]: { ...current, [field]: Math.max(field === 'adults' ? 1 : 0, val) } };
+      const current = prev[roomId] ?? (room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 });
+      return { ...prev, [roomId]: { ...current, [field]: Math.max(0, val) } };
     });
   }
 
@@ -1107,8 +1107,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   label: t.children,
                                   val: occForRoom.children,
                                   min: 0,
-                                  // effectiveMaxPeople - 1: always keep at least 1 adult slot
-                                  max: Math.min(effectiveMaxPeople - 1, effectiveMaxPeople - occForRoom.adults - (occForRoom.infants ?? 0)),
+                                  max: Math.min(effectiveMaxPeople, effectiveMaxPeople - occForRoom.adults - (occForRoom.infants ?? 0)),
                                 },
                                 ...(effInfants > 0 ? [{
                                   field: 'infants',
