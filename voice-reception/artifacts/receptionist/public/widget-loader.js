@@ -39,8 +39,7 @@
   var RED         = "#dc2626";
   var RED_DARK    = "#b91c1c";
 
-  var FAB_R   = 56;   // main FAB diameter
-  var OPT_R   = 46;   // option button diameter
+  var BTN_R   = 56;   // diameter — all three buttons are the same size
   var MARGIN  = 20;   // distance from screen edges
   var GAP     = 10;   // gap between stacked buttons
   var PANEL_W = 360;  // text-chat panel width
@@ -51,7 +50,7 @@
   style.textContent =
     "#dv-fab{" +
       "position:fixed;bottom:" + MARGIN + "px;right:" + MARGIN + "px;" +
-      "width:" + FAB_R + "px;height:" + FAB_R + "px;" +
+      "width:" + BTN_R + "px;height:" + BTN_R + "px;" +
       "border-radius:50%;background:" + ORANGE + ";" +
       "box-shadow:0 4px 20px rgba(249,115,22,.45);" +
       "border:none;cursor:pointer;" +
@@ -70,7 +69,7 @@
 
     ".dv-opt{" +
       "position:fixed;right:" + MARGIN + "px;" +
-      "width:" + OPT_R + "px;height:" + OPT_R + "px;" +
+      "width:" + BTN_R + "px;height:" + BTN_R + "px;" +
       "border-radius:50%;border:none;cursor:pointer;" +
       "display:flex;align-items:center;justify-content:center;" +
       "z-index:2147483646;" +
@@ -81,23 +80,12 @@
     ".dv-opt:hover{filter:brightness(1.12);}" +
     ".dv-opt:active{transform:scale(0.93)!important;}" +
 
-    ".dv-lbl{" +
-      "position:fixed;right:" + (MARGIN + OPT_R + 10) + "px;" +
-      "background:rgba(0,0,0,.72);color:#fff;" +
-      "font:600 12px/1 system-ui,sans-serif;" +
-      "padding:5px 11px;border-radius:20px;white-space:nowrap;" +
-      "z-index:2147483646;" +
-      "opacity:0;transform:translateX(8px);pointer-events:none;" +
-      "transition:opacity .22s,transform .22s;" +
-    "}" +
-    ".dv-lbl.dv-vis{opacity:1;transform:translateX(0);}" +
-
     "#dv-backdrop{position:fixed;inset:0;z-index:2147483644;display:none;}" +
     "#dv-backdrop.dv-vis{display:block;}" +
 
     "#dv-text-panel{" +
       "position:fixed;" +
-      "bottom:" + (MARGIN + FAB_R + 12) + "px;" +
+      "bottom:" + (MARGIN + BTN_R + 12) + "px;" +
       "right:" + MARGIN + "px;" +
       "width:" + PANEL_W + "px;height:" + PANEL_H + "px;" +
       "border:none;border-radius:16px;" +
@@ -130,7 +118,7 @@
     "#dv-fab.dv-attention{animation:dv-pulse 1.7s ease-out 2;}" +
 
     "@media(prefers-reduced-motion:reduce){" +
-      "#dv-fab,.dv-opt,.dv-lbl,#dv-text-panel{transition:none!important;animation:none!important;}" +
+      "#dv-fab,.dv-opt,#dv-text-panel{transition:none!important;animation:none!important;}" +
     "}";
 
   document.head.appendChild(style);
@@ -142,7 +130,6 @@
     if (attrs) {
       for (var k in attrs) {
         if (k === "className") e.className = attrs[k];
-        else if (k === "textContent") e.textContent = attrs[k];
         else e.setAttribute(k, attrs[k]);
       }
     }
@@ -156,17 +143,15 @@
   // Backdrop (closes expanded state on outside click)
   var backdrop = mk("div", "dv-backdrop");
 
-  // Text option button + label
+  // Text option button
   var textBtn = mk("button", null, { type: "button", className: "dv-opt", "aria-label": "Text chat with Marin" });
   textBtn.style.background = ORANGE;
-  textBtn.innerHTML = iconMsg(22);
-  var textLbl = mk("div", null, { className: "dv-lbl", textContent: "Chat" });
+  textBtn.innerHTML = iconMsg(24);
 
-  // Voice option button + label
+  // Voice option button
   var voiceBtn = mk("button", null, { type: "button", className: "dv-opt", "aria-label": "Voice call with Marin" });
   voiceBtn.style.background = GREEN;
-  voiceBtn.innerHTML = iconPhone(22);
-  var voiceLbl = mk("div", null, { className: "dv-lbl", textContent: "Call" });
+  voiceBtn.innerHTML = iconPhone(24);
 
   // Text chat iframe (visible panel)
   var textFrame = mk("iframe", "dv-text-panel");
@@ -178,14 +163,11 @@
 
   // --- Position option buttons above the FAB ---
   function placeOptions() {
-    var textBottom  = MARGIN + FAB_R + GAP;
-    var voiceBottom = textBottom + OPT_R + GAP;
-    var labelMid    = Math.round((OPT_R - 20) / 2);
+    var textBottom  = MARGIN + BTN_R + GAP;
+    var voiceBottom = textBottom + BTN_R + GAP;
 
-    textBtn.style.bottom  = textBottom + "px";
-    textLbl.style.bottom  = (textBottom + labelMid) + "px";
+    textBtn.style.bottom  = textBottom  + "px";
     voiceBtn.style.bottom = voiceBottom + "px";
-    voiceLbl.style.bottom = (voiceBottom + labelMid) + "px";
   }
   placeOptions();
 
@@ -213,9 +195,7 @@
     // Option fan-out
     var vis = isExpanded;
     textBtn.classList.toggle("dv-vis", vis);
-    textLbl.classList.toggle("dv-vis", vis);
     voiceBtn.classList.toggle("dv-vis", vis);
-    voiceLbl.classList.toggle("dv-vis", vis);
     backdrop.classList.toggle("dv-vis", isExpanded);
 
     // Text chat panel
@@ -227,7 +207,7 @@
 
   // --- FAB click ---
   fab.addEventListener("click", function () {
-    if (state === "idle")     { setState("expanded"); }
+    if (state === "idle")          { setState("expanded"); }
     else if (state === "expanded") { setState("idle"); }
     else if (state === "text")     { setState("idle"); }
     else if (state === "voice")    { endVoiceCall(); }
@@ -257,7 +237,7 @@
   // Escape key
   document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
-    if (state === "expanded") setState("idle");
+    if (state === "expanded")   setState("idle");
     else if (state === "text")  setState("idle");
     else if (state === "voice") endVoiceCall();
   });
