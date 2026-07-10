@@ -347,7 +347,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const maxCap = availableRooms.reduce((best, r) => {
       const uk = getUnitKey(r.name);
       const cap = (uk === 'safari' || uk === 'comfort' || uk === 'chalet')
-        ? (r.maxAdults || 2) + 1 : (r.maxPeople || 2);
+        ? (r.maxAdults || 2) + 1 : (r.maxAdults || r.maxPeople || 2);
       return Math.max(best, cap);
     }, 2);
     return Math.ceil((effAdults + effChildren + effInfants) / maxCap);
@@ -393,7 +393,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const isChildUnit = uk === 'safari' || uk === 'comfort' || uk === 'chalet';
     // Beds24 reports maxChildren=0 for every unit; effective capacity is
     // unit-type-driven: safari/comfort/chalet sleep 2A+1C (=3); GC sleeps 2.
-    const effMax = isChildUnit ? (room.maxAdults || 2) + 1 : (room.maxPeople || 2);
+    const effMax = isChildUnit ? (room.maxAdults || 2) + 1 : (room.maxAdults || room.maxPeople || 2);
     const maxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
     const a = Math.min(effAdults, maxA);
     const c = Math.min(effChildren, effMax - a);
@@ -917,7 +917,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       const childUnit = unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet';
                       // Effective total occupancy cap per unit (adults + children combined;
                       // infants don't count — they sleep in cribs).
-                      const effectiveMaxPeople = childUnit ? (room.maxAdults || 2) + 1 : (room.maxPeople || 2);
+                      const effectiveMaxPeople = childUnit ? (room.maxAdults || 2) + 1 : (room.maxAdults || room.maxPeople || 2);
                       // When the guest is searching for a single person, the room's
                       // full capacity ("Sleeps 2 + 1 child") is misleading — show that
                       // it's a single-occupancy ("single use") booking instead.
