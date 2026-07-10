@@ -1207,7 +1207,37 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           </p>
                         )}
                         {quoteError ? (
-                          <p className="text-sm text-red-600" data-testid="status-quote-error">{quoteError}</p>
+                          <>
+                            {cartLines.map((cl, i) => {
+                              const room = availableRooms?.find((r) => r.roomId === cl.roomId);
+                              if (!room) return null;
+                              const offer =
+                                room.offers.find((o) => o.type === cl.rateType) ?? room.offers[0];
+                              if (!offer) return null;
+                              return (
+                                <div
+                                  key={`${cl.roomId}-${i}`}
+                                  className="flex flex-wrap items-center justify-between gap-2 text-sm"
+                                  data-testid={`row-cart-${cl.roomId}-${i}`}
+                                >
+                                  <span className="text-slate-700">
+                                    {cl.qty} × {translateRoomName(room.name)}
+                                  </span>
+                                  <span className="text-right">
+                                    <span className="font-semibold text-slate-700">
+                                      {money(offer.total * cl.qty, room.currency)}
+                                    </span>
+                                    {fxLine(offer.total * cl.qty) && (
+                                      <span className="block text-xs text-slate-400">
+                                        {fxLine(offer.total * cl.qty)}
+                                      </span>
+                                    )}
+                                  </span>
+                                </div>
+                              );
+                            })}
+                            <p className="text-sm text-red-600" data-testid="status-quote-error">{quoteError}</p>
+                          </>
                         ) : quote ? (
                           <>
                             {quote.lines.map((line) => (
