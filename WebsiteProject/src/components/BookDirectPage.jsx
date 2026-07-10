@@ -1242,7 +1242,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           <>
                             {quote.lines.map((line) => (
                               <div
-                                key={`${line.roomId}-${line.offerId}`}
+                                key={`${line.roomId}-${line.offerId}-${line.adults}-${line.children}-${line.infants}`}
                                 className="flex flex-wrap items-center justify-between gap-2 text-sm"
                                 data-testid={`row-cart-${line.roomId}`}
                               >
@@ -1250,6 +1250,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   {line.qty} × {translateRoomName(line.roomName)}
                                   {rateLabelFor(line.roomId, line.offerId) && (
                                     <span className="block text-xs text-slate-400">{rateLabelFor(line.roomId, line.offerId)}</span>
+                                  )}
+                                  {line.adults !== undefined && (
+                                    <span className="block text-xs text-slate-400">
+                                      {[
+                                        line.adults > 0 ? `${line.adults} ${t.adults.toLowerCase()}` : null,
+                                        line.children > 0 ? `${line.children} ${t.children.toLowerCase()}` : null,
+                                        line.infants > 0 ? `${line.infants} ${t.infants.toLowerCase()}` : null,
+                                      ].filter(Boolean).join(' · ')}
+                                    </span>
                                   )}
                                 </span>
                                 <span className="text-right">

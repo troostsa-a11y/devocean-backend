@@ -66,7 +66,7 @@ export interface CartLineInput {
   infants?: number;
 }
 
-/** Aggregated per-room-type view for the cart UI (one row per roomId+offer). */
+/** Aggregated per-room-type view for the cart UI (one row per roomId+offer+occupancy). */
 export interface CartTypeLine {
   roomId: string;
   roomName: string;
@@ -76,6 +76,10 @@ export interface CartTypeLine {
   qty: number;
   unitTotal: number;  // representative per-room total (first leg of this type)
   lineTotal: number;  // Σ of every leg.total for this type
+  /** Per-unit occupancy — set when explicit occupancy was provided by the guest. */
+  adults?: number;
+  children?: number;
+  infants?: number;
 }
 
 export interface CartQuote {
@@ -149,11 +153,16 @@ function normalizeLine(raw: any): CartLineInput {
   return { roomId, offerId, qty: Math.min(qty, 20), adults, children, infants };
 }
 
-/** Merge duplicate lines (same room + offer) so qty is summed once. */
+/** Merge duplicate lines (same room + offer + occupancy) so qty is summed once.
+ *  Lines with different per-unit occupancy are kept separate — they have
+ *  distinct Beds24 rates and must be priced independently. */
 function mergeLines(lines: CartLineInput[]): CartLineInput[] {
   const map = new Map<string, CartLineInput>();
   for (const l of lines) {
-    const key = `${l.roomId}__${l.offerId ?? 'any'}`;
+    const occKey = l.adults !== undefined
+      ? `__${l.adults}_${l.children ?? 0}_${l.infants ?? 0}`
+      : '';
+    const key = `${l.roomId}__${l.offerId ?? 'any'}${occKey}`;
     const existing = map.get(key);
     if (existing) existing.qty += l.qty;
     else map.set(key, { ...l });
@@ -398,10 +407,12 @@ export async function computeCartQuote(
   const currency = beds24.getCurrency() || cfg.currency;
   const nights = nightsBetween(stay.checkIn, stay.checkOut);
 
-  // Aggregate per-type lines for display.
+  // Aggregate per-type lines for display. Units with different per-unit
+  // occupancy (and therefore different Beds24 rates) are kept as separate
+  // display rows so the cart reflects each unit's actual price.
   const lineMap = new Map<string, CartTypeLine>();
   for (const l of legs) {
-    const key = `${l.roomId}__${l.offerId}`;
+    const key = `${l.roomId}__${l.offerId}__${l.adults}_${l.children}_${l.infants}`;
     let t = lineMap.get(key);
     if (!t) {
       t = {
@@ -413,6 +424,9 @@ export async function computeCartQuote(
         qty: 0,
         unitTotal: l.total,
         lineTotal: 0,
+        adults: l.adults,
+        children: l.children,
+        infants: l.infants,
       };
       lineMap.set(key, t);
     }
