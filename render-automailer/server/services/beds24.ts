@@ -364,7 +364,7 @@ export class Beds24Service {
    * `getDepositPercentForArrival`.
    */
   getDepositPercentForOffer(checkIn: string, type: OfferType): number {
-    if (type === 'lastMinute') return 100;
+    if (type === 'lastMinute' || type === 'nonRef') return 100;
     return this.getDepositPercentForArrival(checkIn);
   }
 
@@ -440,8 +440,8 @@ export class Beds24Service {
   /** Map raw Beds24 offers → guest-facing RoomOffer[] (priced, sold-out dropped, cheapest first).
    *
    * NR (non-refundable) offers are included and shown as the cheaper option
-   * alongside SF (semi-flexible). Deposit for NR is the standard 50%/100%
-   * arrival-date rule — same as SF. Only LM (last-minute) forces 100% upfront.
+   * alongside SF (semi-flexible). Deposit for NR is 100% upfront (same as LM);
+   * the UI shows a "Rate conditions" link to the cancellation terms page.
    */
   private priceOffers(
     raw: Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>,

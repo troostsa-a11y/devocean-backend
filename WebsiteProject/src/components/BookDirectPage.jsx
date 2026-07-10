@@ -338,7 +338,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   // deposit); append a clarifying note so guests don't miss the full prepayment.
   function withRateNote(label, type) {
     if (!label) return label;
-    return type === 'lastMinute' && t.depositFullNow ? `${label} (${t.depositFullNow})` : label;
+    return (type === 'lastMinute' || type === 'nonRef') && t.depositFullNow ? `${label} (${t.depositFullNow})` : label;
   }
   function rateLabelFor(roomId, offerId) {
     const room = availableRooms.find((r) => r.roomId === roomId);
@@ -820,9 +820,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
                                   {offer.refundable
                                     ? fmt(t.cancellationPolicy, { days: cancelDays })
-                                    : offer.type === 'lastMinute' && t.depositFullNow
-                                      ? `${t.nonRefundable} \u00b7 ${t.depositFullNow}`
-                                      : t.nonRefundable}
+                                    : <>
+                                        {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
+                                        {offer.type === 'nonRef' && (
+                                          <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Rate conditions</a></>
+                                        )}
+                                      </>
+                                  }
                                 </p>
                               )}
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
@@ -900,9 +904,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                           <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
                                             {o.refundable
                                               ? fmt(t.cancellationPolicy, { days: cancelDays })
-                                              : o.type === 'lastMinute' && t.depositFullNow
-                                                ? `${t.nonRefundable} \u00b7 ${t.depositFullNow}`
-                                                : t.nonRefundable}
+                                              : <>
+                                                  {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
+                                                  {o.type === 'nonRef' && (
+                                                    <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">Rate conditions</a></>
+                                                  )}
+                                                </>
+                                            }
                                           </span>
                                         )}
                                       </span>
