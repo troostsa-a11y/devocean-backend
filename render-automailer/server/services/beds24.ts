@@ -619,6 +619,7 @@ export class Beds24Service {
     checkOut: string;
     adults: number;
     children: number;
+    infants?: number;
     firstName: string;
     lastName: string;
     email: string;
@@ -670,6 +671,7 @@ export class Beds24Service {
       departure: input.checkOut,
       numAdult: input.adults,
       numChild: input.children,
+      numInfant: input.infants ?? 0,
       firstName: input.firstName,
       lastName: input.lastName,
       email: input.email,

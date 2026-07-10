@@ -706,6 +706,7 @@ export function createBookingRouter(deps: {
             checkOut: record.checkOutDate,
             adults: leg.adults,
             children: leg.children,
+            infants: leg.infants ?? 0,
             firstName: record.guestFirstName,
             lastName: record.guestLastName || '',
             email: record.guestEmail,

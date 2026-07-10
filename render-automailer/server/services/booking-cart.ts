@@ -63,6 +63,7 @@ export interface CartLineInput {
   /** Per-unit occupancy explicitly set by the guest in the booking UI. */
   adults?: number;
   children?: number;
+  infants?: number;
 }
 
 /** Aggregated per-room-type view for the cart UI (one row per roomId+offer). */
@@ -140,7 +141,12 @@ function normalizeLine(raw: any): CartLineInput {
     childrenRaw !== undefined && childrenRaw !== null
       ? Math.max(0, Number.parseInt(childrenRaw, 10))
       : undefined;
-  return { roomId, offerId, qty: Math.min(qty, 20), adults, children };
+  const infantsRaw = raw?.infants;
+  const infants =
+    infantsRaw !== undefined && infantsRaw !== null
+      ? Math.max(0, Number.parseInt(infantsRaw, 10))
+      : undefined;
+  return { roomId, offerId, qty: Math.min(qty, 20), adults, children, infants };
 }
 
 /** Merge duplicate lines (same room + offer) so qty is summed once. */
@@ -265,13 +271,14 @@ export async function computeCartQuote(
   // depends on the actual per-room split (2A + 1C in one room ≠ 2A + 1C
   // spread as 2A in room 1 + 1C in room 2 — the latter misprice with no adult).
   const hasExplicitOcc = lines.some((l) => l.adults !== undefined);
-  let dist: Array<{ adults: number; children: number }>;
+  let dist: Array<{ adults: number; children: number; infants?: number }>;
   if (hasExplicitOcc) {
     dist = [];
     for (const l of lines) {
       const a = l.adults !== undefined ? Math.max(1, l.adults) : 1;
       const c = l.children !== undefined ? Math.max(0, l.children) : 0;
-      for (let i = 0; i < l.qty; i++) dist.push({ adults: a, children: c });
+      const inf = l.infants !== undefined ? Math.max(0, l.infants) : 0;
+      for (let i = 0; i < l.qty; i++) dist.push({ adults: a, children: c, infants: inf });
     }
   } else {
     dist = distributeGuests(slots, stay.adults, stay.children);
@@ -321,6 +328,7 @@ export async function computeCartQuote(
       offerName: offer.offerName || null,
       adults: occ.adults,
       children: occ.children,
+      infants: occ.infants ?? 0,
       total: offer.total,
       discount: 0,
       deposit: 0,

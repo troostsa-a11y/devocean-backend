@@ -300,6 +300,7 @@ export interface DirectBookingLeg {
   offerName: string | null;
   adults: number;
   children: number;
+  infants?: number;
   total: number;            // guest-facing GROSS total for this room's whole stay (pre-discount)
   discount: number;         // this leg's share of the whole-cart coupon discount
   deposit: number;          // this leg's share of the combined deposit (computed on total - discount)

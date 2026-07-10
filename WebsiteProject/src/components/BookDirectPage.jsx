@@ -78,6 +78,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [checkOut, setCheckOut] = useState(null);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
+  const [infants, setInfants] = useState(0);
   const [childAges, setChildAges] = useState([]); // one entry per child; '' until chosen
   const [coupon, setCoupon] = useState('');
 
@@ -88,7 +89,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [availability, setAvailability] = useState(null); // full availability response
   const [cart, setCart] = useState({}); // roomId → qty (per-type cart)
   const [rateChoice, setRateChoice] = useState({}); // roomId → offerId (chosen rate plan)
-  const [roomOccupancy, setRoomOccupancy] = useState({}); // roomId → { adults, children } per unit
+  const [roomOccupancy, setRoomOccupancy] = useState({}); // roomId → { adults, children, infants } per unit
   const [quote, setQuote] = useState(null); // live combined quote (from /api/booking/quote)
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState('');
@@ -160,6 +161,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     () => childAges.filter((a) => a !== '' && Number(a) >= 4 && Number(a) <= 12).length,
     [childAges],
   );
+  const effInfants = infants;
 
   function handleChildrenChange(n) {
     setChildren(n);
@@ -310,13 +312,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           // When the party includes children, include explicit per-room
           // occupancy so the backend prices at the guest's actual split instead
           // of the deterministic auto-distributor.
-          if (effChildren > 0 && room) {
+          if ((effChildren > 0 || effInfants > 0) && room) {
             const occ = roomOccupancy[roomId] ?? defaultRoomOcc(room);
-            return { roomId, offerId: offer?.offerId ?? null, qty, adults: occ.adults, children: occ.children };
+            return { roomId, offerId: offer?.offerId ?? null, qty, adults: occ.adults, children: occ.children, infants: occ.infants ?? 0 };
           }
           return { roomId, offerId: offer?.offerId ?? null, qty };
         }),
-    [cart, availableRooms, rateChoice, roomOccupancy, effAdults, effChildren],
+    [cart, availableRooms, rateChoice, roomOccupancy, effAdults, effChildren, effInfants],
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms && totalRooms < effAdults;
@@ -350,14 +352,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const a = Math.min(effAdults, maxA);
     const maxC = Number.isFinite(room.maxChildren) && room.maxChildren >= 0 ? room.maxChildren : room.maxPeople;
     const c = Math.min(effChildren, maxC, room.maxPeople - a);
-    return { adults: Math.max(1, a), children: Math.max(0, c) };
+    return { adults: Math.max(1, a), children: Math.max(0, c), infants: 0 };
   }
 
   function setRoomOcc(roomId, field, val) {
     setQuoteLoading(true);
     setRoomOccupancy((prev) => {
       const room = availableRooms.find((r) => r.roomId === roomId);
-      const current = prev[roomId] ?? (room ? defaultRoomOcc(room) : { adults: 1, children: 0 });
+      const current = prev[roomId] ?? (room ? defaultRoomOcc(room) : { adults: 1, children: 0, infants: 0 });
       return { ...prev, [roomId]: { ...current, [field]: Math.max(field === 'adults' ? 1 : 0, val) } };
     });
   }
@@ -678,6 +680,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         ))}
                       </select>
                     </div>
+                    <div className="flex-1">
+                      <select
+                        value={infants}
+                        onChange={(e) => setInfants(parseInt(e.target.value, 10))}
+                        className={INPUT_CLASS}
+                        aria-label={t.infants}
+                        data-testid="select-infants"
+                      >
+                        {[0, 1, 2, 3, 4].map((n) => (
+                          <option key={n} value={n}>{n} · {t.infants}</option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                 </div>
 
@@ -766,7 +781,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     data-testid="badge-selection-summary"
                   >
                     <Users className="h-4 w-4 shrink-0" />
-                    {displayDate(checkIn)} → {displayDate(checkOut)} · {availability.nights} {t.nights} · {adults + children} {adults + children === 1 ? t.guest : t.guests}
+                    {displayDate(checkIn)} → {displayDate(checkOut)} · {availability.nights} {t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}
                   </span>
                 </p>
 
@@ -809,7 +824,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // marketing name when we can match it, else fall back as-is.
                       const displayName = translateRoomName(room.name);
                       // Per-room occupancy: resolved value for the steppers below.
-                      const occForRoom = effChildren > 0 ? (roomOccupancy[room.roomId] ?? defaultRoomOcc(room)) : null;
+                      const occForRoom = (effChildren > 0 || effInfants > 0) ? (roomOccupancy[room.roomId] ?? defaultRoomOcc(room)) : null;
                       const roomMaxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
                       const roomMaxC = Number.isFinite(room.maxChildren) && room.maxChildren >= 0 ? room.maxChildren : room.maxPeople;
                       // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
@@ -1025,6 +1040,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   min: 0,
                                   max: Math.min(roomMaxC, room.maxPeople - occForRoom.adults),
                                 },
+                                ...(effInfants > 0 ? [{
+                                  field: 'infants',
+                                  label: t.infants,
+                                  val: occForRoom.infants ?? 0,
+                                  min: 0,
+                                  max: effInfants,
+                                }] : []),
                               ].map(({ field, label, val, min, max }) => (
                                 <div key={field} className="flex items-center justify-between">
                                   <span className="text-sm text-slate-600">{label}</span>
