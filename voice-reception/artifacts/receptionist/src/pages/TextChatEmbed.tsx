@@ -10,27 +10,29 @@ interface Message {
 const FONT =
   '"Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
 
-const GREETINGS: Record<string, string> = {
-  en: "Hi! I'm Marin, DEVOCEAN Lodge's online receptionist. How can I help you today?",
-  nl: "Hallo! Ik ben Marin, de online receptioniste van DEVOCEAN Lodge. Hoe kan ik u helpen?",
-  de: "Hallo! Ich bin Marin, die Online-Rezeptionistin von DEVOCEAN Lodge. Wie kann ich Ihnen helfen?",
-  fr: "Bonjour! Je suis Marin, réceptionniste en ligne de DEVOCEAN Lodge. Comment puis-je vous aider?",
-  pt: "Olá! Sou Marin, a recepcionista online do DEVOCEAN Lodge. Como posso ajudá-lo?",
-  es: "¡Hola! Soy Marin, la recepcionista online de DEVOCEAN Lodge. ¿En qué puedo ayudarle?",
-  it: "Ciao! Sono Marin, la receptionist online di DEVOCEAN Lodge. Come posso aiutarla?",
-  sv: "Hej! Jag är Marin, DEVOCEAN Lodges onlinereceptionist. Hur kan jag hjälpa dig?",
-  pl: "Cześć! Jestem Marin, recepcjonistką online DEVOCEAN Lodge. Jak mogę Ci pomóc?",
-  ro: "Bună! Sunt Marin, recepționista online a DEVOCEAN Lodge. Cum vă pot ajuta?",
-  cs: "Dobrý den! Jsem Marin, online recepční DEVOCEAN Lodge. Jak vám mohu pomoci?",
-  tr: "Merhaba! Ben Marin, DEVOCEAN Lodge'un çevrimiçi resepsiyonistiyim. Size nasıl yardımcı olabilirim?",
-  ru: "Привет! Я Марин, онлайн-администратор DEVOCEAN Lodge. Чем могу помочь?",
-  ja: "こんにちは！私はマリン、DEVOCEANロッジのオンラインレセプショニストです。何かお手伝いできますか？",
-  zh: "您好！我是Marin，DEVOCEAN Lodge的在线前台。有什么可以帮您的吗？",
-  af: "Hallo! Ek is Marin, die aanlyn ontvangsdame van DEVOCEAN Lodge. Hoe kan ek u help?",
-  sr: "Zdravo! Ja sam Marin, online recepcionarka DEVOCEAN Lodge-a. Kako mogu da vam pomognem?",
-  hr: "Zdravo! Ja sam Marin, online recepcionar DEVOCEAN Lodge-a. Kako vam mogu pomoći?",
-  zu: "Sawubona! Mina ngingu Marin, umamukeli we-inthanethi we-DEVOCEAN Lodge. Ngingakusiza kanjani?",
-  sw: "Habari! Mimi ni Marin, mtumishi wa mapokezi wa mtandaoni wa DEVOCEAN Lodge. Ninaweza kukusaidia vipi?",
+interface ChatStrings { greeting: string; subtitle: string; placeholder: string; }
+
+const CHAT_STRINGS: Record<string, ChatStrings> = {
+  en: { greeting: "Hi! I'm Marin, DEVOCEAN Lodge's online receptionist. How can I help you today?",          subtitle: "Online receptionist",           placeholder: "Type a message…" },
+  nl: { greeting: "Hallo! Ik ben Marin, de online receptioniste van DEVOCEAN Lodge. Hoe kan ik u helpen?",  subtitle: "Online receptionist",           placeholder: "Stuur een bericht…" },
+  de: { greeting: "Hallo! Ich bin Marin, die Online-Rezeptionistin von DEVOCEAN Lodge. Wie kann ich Ihnen helfen?", subtitle: "Online-Rezeptionistin", placeholder: "Nachricht eingeben…" },
+  fr: { greeting: "Bonjour! Je suis Marin, réceptionniste en ligne de DEVOCEAN Lodge. Comment puis-je vous aider?", subtitle: "Réceptionniste en ligne", placeholder: "Tapez un message…" },
+  pt: { greeting: "Olá! Sou Marin, a recepcionista online do DEVOCEAN Lodge. Como posso ajudá-lo?",          subtitle: "Recepcionista online",          placeholder: "Escreva uma mensagem…" },
+  es: { greeting: "¡Hola! Soy Marin, la recepcionista online de DEVOCEAN Lodge. ¿En qué puedo ayudarle?",   subtitle: "Recepcionista online",          placeholder: "Escribe un mensaje…" },
+  it: { greeting: "Ciao! Sono Marin, la receptionist online di DEVOCEAN Lodge. Come posso aiutarla?",        subtitle: "Receptionist online",           placeholder: "Scrivi un messaggio…" },
+  sv: { greeting: "Hej! Jag är Marin, DEVOCEAN Lodges onlinereceptionist. Hur kan jag hjälpa dig?",         subtitle: "Onlinereceptionist",            placeholder: "Skriv ett meddelande…" },
+  pl: { greeting: "Cześć! Jestem Marin, recepcjonistką online DEVOCEAN Lodge. Jak mogę Ci pomóc?",           subtitle: "Recepcjonista online",          placeholder: "Napisz wiadomość…" },
+  ro: { greeting: "Bună! Sunt Marin, recepționista online a DEVOCEAN Lodge. Cum vă pot ajuta?",              subtitle: "Recepționist online",           placeholder: "Scrieți un mesaj…" },
+  cs: { greeting: "Dobrý den! Jsem Marin, online recepční DEVOCEAN Lodge. Jak vám mohu pomoci?",             subtitle: "Online recepční",               placeholder: "Napište zprávu…" },
+  tr: { greeting: "Merhaba! Ben Marin, DEVOCEAN Lodge'un çevrimiçi resepsiyonistiyim. Size nasıl yardımcı olabilirim?", subtitle: "Çevrimiçi resepsiyonist", placeholder: "Bir mesaj yazın…" },
+  ru: { greeting: "Привет! Я Марин, онлайн-администратор DEVOCEAN Lodge. Чем могу помочь?",                 subtitle: "Онлайн-администратор",          placeholder: "Введите сообщение…" },
+  ja: { greeting: "こんにちは！私はマリン、DEVOCEANロッジのオンラインレセプショニストです。何かお手伝いできますか？",        subtitle: "オンライン受付",               placeholder: "メッセージを入力…" },
+  zh: { greeting: "您好！我是Marin，DEVOCEAN Lodge的在线前台。有什么可以帮您的吗？",                             subtitle: "在线前台",                      placeholder: "输入消息…" },
+  af: { greeting: "Hallo! Ek is Marin, die aanlyn ontvangsdame van DEVOCEAN Lodge. Hoe kan ek u help?",     subtitle: "Aanlyn ontvangsdame",           placeholder: "Tik 'n boodskap…" },
+  sr: { greeting: "Zdravo! Ja sam Marin, online recepcionarka DEVOCEAN Lodge-a. Kako mogu da vam pomognem?", subtitle: "Online recepcionarka",          placeholder: "Napišite poruku…" },
+  hr: { greeting: "Zdravo! Ja sam Marin, online recepcionar DEVOCEAN Lodge-a. Kako vam mogu pomoći?",        subtitle: "Online recepcionar",            placeholder: "Napišite poruku…" },
+  zu: { greeting: "Sawubona! Mina ngingu Marin, umamukeli we-inthanethi we-DEVOCEAN Lodge. Ngingakusiza kanjani?", subtitle: "Umamukeli we-inthanethi", placeholder: "Bhala umlayezo…" },
+  sw: { greeting: "Habari! Mimi ni Marin, mtumishi wa mapokezi wa mtandaoni wa DEVOCEAN Lodge. Ninaweza kukusaidia vipi?", subtitle: "Mtumishi wa mapokezi", placeholder: "Andika ujumbe…" },
 };
 
 function TypingDots() {
@@ -49,6 +51,7 @@ function TypingDots() {
 
 export default function TextChatEmbed() {
   const lang = new URLSearchParams(window.location.search).get("lang") ?? "en";
+  const c = CHAT_STRINGS[lang] ?? CHAT_STRINGS.en;
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
@@ -197,7 +200,7 @@ export default function TextChatEmbed() {
             Marin
           </p>
           <p className="text-xs text-muted-foreground mt-0.5">
-            DEVOCEAN Lodge · Online receptionist
+            DEVOCEAN Lodge · {c.subtitle}
           </p>
         </div>
       </div>
@@ -210,7 +213,7 @@ export default function TextChatEmbed() {
             M
           </div>
           <div className="max-w-[82%] bg-card border rounded-2xl rounded-bl-sm px-3 py-2 text-sm text-foreground leading-snug">
-            {GREETINGS[lang] ?? GREETINGS.en}
+            {c.greeting}
           </div>
         </div>
 
@@ -246,7 +249,7 @@ export default function TextChatEmbed() {
               autoResize();
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Type a message…"
+            placeholder={c.placeholder}
             rows={1}
             disabled={loading}
             className="flex-1 resize-none rounded-xl border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 overflow-y-auto"
