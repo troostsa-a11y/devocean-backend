@@ -1254,9 +1254,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   {line.adults !== undefined && (
                                     <span className="block text-xs text-slate-400">
                                       {[
-                                        line.adults > 0 ? `${line.adults} ${t.adults.toLowerCase()}` : null,
-                                        line.children > 0 ? `${line.children} ${t.children.toLowerCase()}` : null,
-                                        line.infants > 0 ? `${line.infants} ${t.infants.toLowerCase()}` : null,
+                                        (line.adults ?? 0) > 0 ? `${line.adults} ${t.adults.toLowerCase()}` : null,
+                                        (line.children ?? 0) > 0 ? `${line.children} ${t.children.toLowerCase()}` : null,
+                                        (line.infants ?? 0) > 0 ? `${line.infants} ${t.infants.toLowerCase()}` : null,
                                       ].filter(Boolean).join(' · ')}
                                     </span>
                                   )}

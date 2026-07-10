@@ -139,7 +139,7 @@ function normalizeLine(raw: any): CartLineInput {
   const childrenRaw = raw?.children;
   const adults =
     adultsRaw !== undefined && adultsRaw !== null
-      ? Math.max(1, Number.parseInt(adultsRaw, 10))
+      ? Math.max(0, Number.parseInt(adultsRaw, 10))
       : undefined;
   const children =
     childrenRaw !== undefined && childrenRaw !== null
