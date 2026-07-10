@@ -20,6 +20,8 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 - **Automailer**: deploys from GitHub `main` (Render). Render service name: **"Automailer"** (type: `web`). Build: `npm install && npm run build` (tsc must run to produce `dist/server.js`). Start: `npm start`. Env vars set in the Render dashboard.
 - **Marin Voice Receptionist**: deploys from GitHub `main` as a separate Render `web` service. Render service name: **"Receptionist"** (type: `web`). Root dir: `voice-reception`. Build: `npm config set prefix /tmp/npm-global && npm install -g pnpm@10 && export PATH=/tmp/npm-global/bin:$PATH && pnpm install --frozen-lockfile && pnpm run typecheck && pnpm run build`. Start: `node --enable-source-maps ./artifacts/api-server/dist/index.mjs`. Live at `https://mia-voice-receptionist.onrender.com`. Admin dashboard at `https://mia-voice-receptionist.onrender.com/` (password-protected). See `render.yaml` for full env var list.
 
+> **Agentic booking roadmap**: see [`docs/agentic-booking-roadmap.md`](docs/agentic-booking-roadmap.md) — phased plan from Marin confirmed bookings (Beds24 write tool + Stripe Payment Link) through MCP endpoint to full OAuth/OIDC.
+
 > **Render Blueprint gotcha**: `render.yaml` service `name` AND `type` must match the existing Render service exactly. A mismatch on either field causes Render to create a duplicate service rather than updating the existing one. Current correct entries: `name: Automailer, type: web` and `name: Receptionist, type: web`.
 
 ## System Architecture

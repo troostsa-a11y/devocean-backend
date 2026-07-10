@@ -27,3 +27,4 @@
 - [Stripe webhook payment-no-booking alert](stripe-webhook-payment-no-booking-alert.md) — unmatched checkout.session.completed now emails ops instead of console.warn only; verify a persistent Dashboard webhook endpoint exists for any new Stripe flow, not just a dev `stripe listen` session
 - [Supabase RLS vs direct-connection backends](supabase-rls-direct-connection.md) — enabling RLS is free/safe even for postgres-js/Drizzle-only backends; only matters for real if the app uses @supabase/supabase-js with anon/authenticated keys
 - [Per-unit occupancy pricing](per-unit-occupancy-pricing.md) — offersForOccWithFloor pattern for 0-adult units; effChildren/effInfants condition must stay in sync across steppers, cartLines, and hasExplicitOcc; rate-not-changing = Beds24 flat rate, not a code bug
+- [Agentic booking roadmap](agentic-booking-roadmap.md) — 4-phase plan; Phase 1 (Beds24 write tool + Stripe Payment Link) is close; MCP next; OAuth only when a partner asks
