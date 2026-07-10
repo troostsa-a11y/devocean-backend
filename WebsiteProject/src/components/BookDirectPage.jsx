@@ -840,7 +840,25 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 ) : (
                   <>
                   <div className="space-y-1">
-                    <p className="text-sm text-slate-500">{t.guestsSplitNote}</p>
+                    {(() => {
+                      // Compute minimum units needed for the party across the best available room type
+                      const maxCap = availableRooms.reduce((best, r) => {
+                        const uk = getUnitKey(r.name);
+                        const cap = (uk === 'safari' || uk === 'comfort' || uk === 'chalet')
+                          ? (r.maxAdults || 2) + 1
+                          : (r.maxPeople || 2);
+                        return Math.max(best, cap);
+                      }, 2);
+                      const totalGuests = effAdults + effChildren + effInfants;
+                      const minUnits = Math.ceil(totalGuests / maxCap);
+                      const partyParts = [
+                        effAdults > 0 ? `${effAdults} ${t.adults.toLowerCase()}` : null,
+                        effChildren > 0 ? `${effChildren} ${t.children.toLowerCase()}` : null,
+                        effInfants > 0 ? `${effInfants} ${t.infants.toLowerCase()}` : null,
+                      ].filter(Boolean);
+                      const party = partyParts.join(', ');
+                      return <p className="text-sm text-slate-500">{fmt(t.minUnitsNote, { party, n: minUnits })}</p>;
+                    })()}
                     <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
                   </div>
                   {totalRooms > 0 && (
