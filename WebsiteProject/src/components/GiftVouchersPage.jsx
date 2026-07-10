@@ -54,24 +54,16 @@ export default function GiftVouchersPage({ lang }) {
   const LABEL_CLASS = 'block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wide';
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Header bar */}
-      <div className="bg-white border-b border-slate-200 px-4 py-4">
-        <div className="max-w-xl mx-auto flex items-center gap-3">
-          <a
-            href="/book-direct"
-            className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 transition-colors"
-            data-testid="link-back-to-booking"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back
-          </a>
-          <span className="text-slate-300">|</span>
-          <span className="text-sm font-semibold text-slate-900">DEVOCEAN Lodge Gift Vouchers</span>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-slate-50 pt-[var(--stack-h)]">
       <div className="max-w-xl mx-auto px-4 py-8">
+        <a
+          href="/book-direct"
+          className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 transition-colors mb-6"
+          data-testid="link-back-to-booking"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to booking
+        </a>
         {/* Hero */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-amber-100 mb-4">
@@ -196,7 +188,7 @@ export default function GiftVouchersPage({ lang }) {
         </div>
 
         {/* How it works */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
             { icon: '1', title: 'You pay', body: 'Choose a value and pay securely via Stripe.' },
             { icon: '2', title: 'We email the code', body: 'The recipient gets a unique voucher code by email.' },

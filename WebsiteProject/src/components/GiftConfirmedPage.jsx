@@ -39,20 +39,7 @@ export default function GiftConfirmedPage({ lang }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-white border-b border-slate-200 px-4 py-4">
-        <div className="max-w-xl mx-auto flex items-center gap-3">
-          <a
-            href="/"
-            className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-700 transition-colors"
-            data-testid="link-home"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            DEVOCEAN Lodge
-          </a>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-slate-50 pt-[var(--stack-h)]">
       <div className="max-w-xl mx-auto px-4 py-12 text-center">
         {status === 'loading' && (
           <div className="flex flex-col items-center gap-4">
