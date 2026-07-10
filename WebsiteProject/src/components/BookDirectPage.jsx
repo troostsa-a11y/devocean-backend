@@ -853,8 +853,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-amber-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.75"><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v13m0-13V6a4 4 0 00-4-4H6.5a2.5 2.5 0 000 5H12zm0 0V6a4 4 0 014-4h1.5a2.5 2.5 0 010 5H12zM4 12h16v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8z" /></svg>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-semibold text-slate-900">Give the gift of DEVOCEAN</p>
-                  <p className="text-xs text-slate-500">Buy a gift voucher for someone special →</p>
+                  <p className="text-sm font-semibold text-slate-900">{t.giftPromoTitle}</p>
+                  <p className="text-xs text-slate-500">{t.giftPromoSubtitle}</p>
                 </div>
               </a>
 

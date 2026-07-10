@@ -98,6 +98,8 @@ const STRINGS = {
       earlyBird: 'Early-booking rate',
       lastMinute: 'Last-minute rate',
     },
+    giftPromoTitle: 'Give the gift of DEVOCEAN',
+    giftPromoSubtitle: 'Buy a gift voucher for someone special →',
   },
   pt: {
     title: 'Reserve a sua estadia',
@@ -184,6 +186,8 @@ const STRINGS = {
       earlyBird: 'Tarifa de reserva antecipada',
       lastMinute: 'Tarifa de última hora',
     },
+    giftPromoTitle: 'Ofereça o presente DEVOCEAN',
+    giftPromoSubtitle: 'Compre um voucher de oferta para alguém especial →',
   },
   de: {
     title: 'Buchen Sie Ihren Aufenthalt',
@@ -270,6 +274,8 @@ const STRINGS = {
       earlyBird: 'Frühbuchertarif',
       lastMinute: 'Last-Minute-Tarif',
     },
+    giftPromoTitle: 'Schenken Sie das DEVOCEAN-Erlebnis',
+    giftPromoSubtitle: 'Kaufen Sie einen Geschenkgutschein für jemanden Besonderen →',
   },
   fr: {
     title: 'Réservez votre séjour',
@@ -356,6 +362,8 @@ const STRINGS = {
       earlyBird: 'Tarif réservation anticipée',
       lastMinute: 'Tarif dernière minute',
     },
+    giftPromoTitle: 'Offrez le cadeau DEVOCEAN',
+    giftPromoSubtitle: 'Achetez un bon cadeau pour quelqu\'un de spécial →',
   },
   es: {
     title: 'Reserve su estancia',
@@ -442,6 +450,8 @@ const STRINGS = {
       earlyBird: 'Tarifa de reserva anticipada',
       lastMinute: 'Tarifa de última hora',
     },
+    giftPromoTitle: 'Regala la experiencia DEVOCEAN',
+    giftPromoSubtitle: 'Compra un bono regalo para alguien especial →',
   },
   it: {
     title: 'Prenota il tuo soggiorno',
@@ -528,6 +538,8 @@ const STRINGS = {
       earlyBird: 'Tariffa prenotazione anticipata',
       lastMinute: 'Tariffa last minute',
     },
+    giftPromoTitle: 'Regala l\'esperienza DEVOCEAN',
+    giftPromoSubtitle: 'Acquista un buono regalo per qualcuno di speciale →',
   },
   nl: {
     title: 'Boek uw verblijf',
@@ -614,6 +626,8 @@ const STRINGS = {
       earlyBird: 'Vroegboektarief',
       lastMinute: 'Last-minutetarief',
     },
+    giftPromoTitle: 'Geef het cadeau van DEVOCEAN',
+    giftPromoSubtitle: 'Koop een cadeaubon voor iemand bijzonders →',
   },
   sv: {
     title: "Boka ditt boende",
@@ -700,6 +714,8 @@ const STRINGS = {
       earlyBird: "Pris för tidig bokning",
       lastMinute: "Sista minuten-pris",
     },
+    giftPromoTitle: 'Ge gåvan av DEVOCEAN',
+    giftPromoSubtitle: 'Köp ett presentkort till någon speciell →',
   },
   pl: {
     title: "Zarezerwuj pobyt",
@@ -786,6 +802,8 @@ const STRINGS = {
       earlyBird: "Stawka za wczesną rezerwację",
       lastMinute: "Stawka last minute",
     },
+    giftPromoTitle: 'Podaruj DEVOCEAN w prezencie',
+    giftPromoSubtitle: 'Kup bon prezentowy dla kogoś wyjątkowego →',
   },
   ro: {
     title: "Rezervă-ți sejurul",
@@ -872,6 +890,8 @@ const STRINGS = {
       earlyBird: "Tarif pentru rezervare anticipată",
       lastMinute: "Tarif last minute",
     },
+    giftPromoTitle: 'Oferă cadoul DEVOCEAN',
+    giftPromoSubtitle: 'Cumpără un voucher cadou pentru cineva special →',
   },
   sr: {
     title: "Rezervišite svoj boravak",
@@ -958,6 +978,8 @@ const STRINGS = {
       earlyBird: "Tarifa za ranu rezervaciju",
       lastMinute: "Last-minute tarifa",
     },
+    giftPromoTitle: 'Poklonite DEVOCEAN iskustvo',
+    giftPromoSubtitle: 'Kupite poklon vaučer za nekoga posebnog →',
   },
   hr: {
     title: "Rezervirajte svoj boravak",
@@ -1044,6 +1066,8 @@ const STRINGS = {
       earlyBird: "Tarifa za ranu rezervaciju",
       lastMinute: "Last-minute tarifa",
     },
+    giftPromoTitle: 'Poklonite DEVOCEAN iskustvo',
+    giftPromoSubtitle: 'Kupite poklon bon za nekoga posebnog →',
   },
   cs: {
     title: "Rezervujte si pobyt",
@@ -1130,6 +1154,8 @@ const STRINGS = {
       earlyBird: "Tarif za včasnou rezervaci",
       lastMinute: "Tarif na poslední chvíli",
     },
+    giftPromoTitle: 'Darujte zážitek DEVOCEAN',
+    giftPromoSubtitle: 'Kupte dárkový poukaz pro někoho výjimečného →',
   },
   tr: {
     title: "Konaklamanızı rezerve edin",
@@ -1216,6 +1242,8 @@ const STRINGS = {
       earlyBird: "Erken rezervasyon tarifesi",
       lastMinute: "Son dakika tarifesi",
     },
+    giftPromoTitle: 'DEVOCEAN deneyimini hediye edin',
+    giftPromoSubtitle: 'Özel biri için hediye çeki satın alın →',
   },
   ja: {
     title: "ご滞在を予約",
@@ -1302,6 +1330,8 @@ const STRINGS = {
       earlyBird: "早期予約レート",
       lastMinute: "直前予約レート",
     },
+    giftPromoTitle: 'DEVOCEANの体験をプレゼントに',
+    giftPromoSubtitle: '大切な方へのギフトバウチャーを購入する →',
   },
   zh: {
     title: "预订您的住宿",
@@ -1388,6 +1418,8 @@ const STRINGS = {
       earlyBird: "早鸟预订房价",
       lastMinute: "最后一刻房价",
     },
+    giftPromoTitle: '赠送DEVOCEAN体验礼品',
+    giftPromoSubtitle: '为特别的人购买礼品券 →',
   },
   ru: {
     title: "Забронируйте проживание",
@@ -1474,6 +1506,8 @@ const STRINGS = {
       earlyBird: "Тариф раннего бронирования",
       lastMinute: "Тариф «последняя минута»",
     },
+    giftPromoTitle: 'Подарите DEVOCEAN',
+    giftPromoSubtitle: 'Купите подарочный ваучер для кого-то особенного →',
   },
   af: {
     title: "Bespreek jou verblyf",
@@ -1560,6 +1594,8 @@ const STRINGS = {
       earlyBird: "Vroeë-bespreking tarief",
       lastMinute: "Laaste-minuut tarief",
     },
+    giftPromoTitle: 'Gee die geskenk van DEVOCEAN',
+    giftPromoSubtitle: 'Koop \'n geskenkkoepon vir iemand spesiaals →',
   },
   zu: {
     title: "Bhukha ukuhlala kwakho",
@@ -1646,6 +1682,8 @@ const STRINGS = {
       earlyBird: "Inani lokubhukha kusenesikhathi",
       lastMinute: "Inani lomzuzu wokugcina",
     },
+    giftPromoTitle: 'Nika isipho se-DEVOCEAN',
+    giftPromoSubtitle: 'Thenga ivawusha lesipho kumuntu okhethekile →',
   },
   sw: {
     title: "Weka nafasi ya kukaa kwako",
@@ -1732,6 +1770,8 @@ const STRINGS = {
       earlyBird: "Bei ya kuweka nafasi mapema",
       lastMinute: "Bei ya dakika za mwisho",
     },
+    giftPromoTitle: 'Toa zawadi ya DEVOCEAN',
+    giftPromoSubtitle: 'Nunua voucha ya zawadi kwa mtu maalum →',
   },
 };
 
