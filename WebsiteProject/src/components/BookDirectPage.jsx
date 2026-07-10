@@ -861,18 +861,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     })()}
                     <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
                   </div>
-                  {totalRooms > 0 && (
-                    <div className="lg:hidden">
-                      <a
-                        href="#your-selection"
-                        className="inline-flex items-center gap-1 text-sm font-medium text-[#9e4b13] hover:underline"
-                        data-testid="link-scroll-to-selection"
-                      >
-                        <ChevronDown className="h-4 w-4" />
-                        {t.yourSelection}
-                      </a>
-                    </div>
-                  )}
                   <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_24rem] gap-6 items-start">
                     <div className="space-y-4">
                     {availableRooms.map((room) => {
@@ -1086,6 +1074,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               </button>
                             </div>
                           </div>
+
+                          {/* Scroll-to-selection shortcut — mobile only, shown when this room is added */}
+                          {qty > 0 && (
+                            <div className="lg:hidden mt-3 flex justify-end">
+                              <a
+                                href="#your-selection"
+                                className="inline-flex items-center gap-1 text-sm font-medium text-[#9e4b13] hover:underline"
+                                data-testid={`link-scroll-to-selection-${room.roomId}`}
+                              >
+                                <ChevronDown className="h-4 w-4" />
+                                {t.yourSelection}
+                              </a>
+                            </div>
+                          )}
 
                           {/* Per-room occupancy — only shown when party includes children */}
                           {occForRoom && qty > 0 && (
