@@ -45,6 +45,14 @@ export async function onRequest(context) {
       return Response.redirect(new URL('/book-direct', context.request.url).href, 301);
     }
 
+    // HotelRunner legacy paths (e.g. /sv/pages/home, /en-GB/pages/home) that
+    // leaked into Google's index — redirect to root before SPA fallback serves
+    // them as a 200 with blank content. Same intent as the _redirects rule
+    // /*/pages/* → / 302, but _redirects is never reached when middleware fires.
+    if (pathname.split('/')[2] === 'pages') {
+      return Response.redirect(new URL('/', context.request.url).href, 302);
+    }
+
     let response = await context.next();
 
     // SPA fallback: no static file matched → serve index.html for React routing
