@@ -802,7 +802,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 )}
 
-                <div className="w-full grid grid-cols-2 gap-2 lg:flex lg:flex-row lg:items-center lg:gap-4">
+                <div className="w-full grid grid-cols-2 gap-2 lg:flex lg:flex-row lg:items-end lg:gap-4">
                   <div className="lg:flex-1 lg:min-w-[150px]">
                     <label className={FIELD_LABEL_CLASS}>{t.discountCodeLabel}</label>
                     <input
