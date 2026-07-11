@@ -12,3 +12,9 @@ id = "y2l6aK4a6d4AMh56sJU2r"
 uri = "file://TECHNICAL_ASSET_DESCRIPTION.md"
 type = "text"
 title = "DEVOCEAN Lodge — Technical Asset Description"
+
+[[outputs]]
+id = "SkGq5FyB2fRdswpArvPey"
+uri = "file://attached_assets/facebook_upload.csv"
+type = "table"
+title = "facebook_upload.csv — 2,287 contacts in Facebook Custom Audience format"
