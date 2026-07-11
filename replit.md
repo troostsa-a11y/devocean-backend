@@ -76,7 +76,12 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 - **Database**: PostgreSQL via Supabase. `DATABASE_URL` (Render). Driver: `drizzle-orm/postgres-js` (direct connection — never goes through Supabase's PostgREST/anon or authenticated keys). Row Level Security is enabled on all 9 production tables (`bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`, `guests`, `booking_sessions`, `direct_bookings`, `coupon_codes`) as defense-in-depth; it doesn't affect the app itself since the direct connection bypasses RLS, but it blocks anon/authenticated access if the Supabase key were ever leaked.
 - **Email**: IMAP needs `MAIL_HOST`, `MAIL_PORT`, `IMAP_USER`, `IMAP_PASSWORD`; SMTP reuses the host. Optional taxi notify: `TAXI_EMAIL`, `TAXI_WHATSAPP`, `TAXI_NAME`.
 - **Beds24**: PMS — booking notifications parsed from email (and REST API, see Native Direct Booking).
-- **Cloudflare**: CORS for CF Functions.
+- **Cloudflare**: CF Pages hosts the website; CF Functions handle `/api/contact`, `/api/experience-inquiry`, and the `_middleware.js` pipeline. Security settings configured on the zone:
+  - HSTS: `max-age=31536000; includeSubDomains; preload`
+  - Minimum TLS: 1.2; X-Content-Type-Options: nosniff; Certificate Transparency Monitoring: on
+  - `security.txt` managed via Cloudflare dashboard (Security Center → Security.txt); contact `mailto:info@devoceanlodge.com`, expires annually
+  - **WAF custom rule** (order 1, active): `cf.verified_bot_category eq "Search Engine Crawler"` → Skip managed rules + Super Bot Fight Mode. Required because Cloudflare's built-in managed rules were blocking Bingbot (`40.77.x.x`) with 403 and challenging Googlebot (`74.125.x.x`). Do not delete this rule.
+  - `Content-Signal: ai-train=no, search=yes, ai-input=yes` injected as an HTTP response header in `_middleware.js` (not in robots.txt — that is an invalid placement and causes robots.txt parse errors).
 - **Booking platforms**: QR codes for Booking.com, Google Reviews, TripAdvisor.
 - **Dev tools**: Replit plugins (runtime-error-modal, cartographer, dev-banner — dev only); TS strict; drizzle-kit migrations.
 
