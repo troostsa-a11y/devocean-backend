@@ -82,6 +82,9 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
   - `security.txt` managed via Cloudflare dashboard (Security Center → Security.txt); contact `mailto:info@devoceanlodge.com`, expires annually
   - **WAF custom rule** (order 1, active): `cf.verified_bot_category eq "Search Engine Crawler"` → Skip managed rules + Super Bot Fight Mode. Required because Cloudflare's built-in managed rules were blocking Bingbot (`40.77.x.x`) with 403 and challenging Googlebot (`74.125.x.x`). Do not delete this rule.
   - `Content-Signal: ai-train=no, search=yes, ai-input=yes` injected as an HTTP response header in `_middleware.js` (not in robots.txt — that is an invalid placement and causes robots.txt parse errors).
+  - **DNS records that must stay DNS-only (grey cloud):**
+    - `smtp.devoceanlodge.com` A record — mail server IP. Proxying breaks SMTP (ports 25/465/587 are not handled by Cloudflare's proxy).
+    - `f56dc46d7d18a02a27341ac745e2a36b.devoceanlodge.com` CNAME → `verify.bing.com` — Bing Webmaster Tools domain verification. Proxying returns Cloudflare IPs instead of the CNAME chain, breaking Bing's periodic ownership re-check.
 - **Booking platforms**: QR codes for Booking.com, Google Reviews, TripAdvisor.
 - **Dev tools**: Replit plugins (runtime-error-modal, cartographer, dev-banner — dev only); TS strict; drizzle-kit migrations.
 
