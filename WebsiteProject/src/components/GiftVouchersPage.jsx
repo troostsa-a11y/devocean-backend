@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Loader2, Gift, CheckCircle2, ArrowLeft } from 'lucide-react';
 
 const DENOMINATIONS = [20, 50, 100, 200, 500];
@@ -568,6 +568,19 @@ const GIFT_STRINGS = {
 
 export default function GiftVouchersPage({ lang }) {
   const g = GIFT_STRINGS[(lang || 'en').split('-')[0]] || GIFT_STRINGS.en;
+
+  // SEO: unique title + description for the gift vouchers page
+  useEffect(() => {
+    const prevTitle = document.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const prevDesc = metaDesc?.content || '';
+    document.title = 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
+    if (metaDesc) metaDesc.content = 'Give the gift of a beach escape at DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Choose any USD amount, delivered by email, redeemable on direct bookings.';
+    return () => {
+      document.title = prevTitle;
+      if (metaDesc) metaDesc.content = prevDesc;
+    };
+  }, []);
 
   const [amount, setAmount] = useState(100);
   const [purchaserName, setPurchaserName] = useState('');

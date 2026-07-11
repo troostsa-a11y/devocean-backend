@@ -15,6 +15,7 @@ Disallow: /thankyou.html
 Disallow: /thankyou
 Disallow: /canceled.html
 Disallow: /canceled
+Disallow: /gift-confirmed
 
 # Sitemap location
 Sitemap: https://devoceanlodge.com/sitemap.xml

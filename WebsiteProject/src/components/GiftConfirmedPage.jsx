@@ -6,6 +6,13 @@ export default function GiftConfirmedPage({ lang }) {
   const [voucher, setVoucher] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
 
+  // SEO: set a distinct title (page is disallowed in robots.txt but set anyway for direct visits)
+  useEffect(() => {
+    const prevTitle = document.title;
+    document.title = 'Gift Voucher Confirmed | DEVOCEAN Lodge';
+    return () => { document.title = prevTitle; };
+  }, []);
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get('session_id');
