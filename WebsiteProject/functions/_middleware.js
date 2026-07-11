@@ -88,6 +88,11 @@ export async function onRequest(context) {
 
     const headers = new Headers(response.headers);
     headers.delete('content-length');
+    // Content-Signal (contentsignals.org / IETF draft):
+    // ai-train=no  — disallow bulk model-training crawlers (blocked in robots.txt too)
+    // search=yes   — allow all search engines
+    // ai-input=yes — allow retrieval AI (Perplexity, ChatGPT, Claude) to recommend us
+    headers.set('Content-Signal', 'ai-train=no, search=yes, ai-input=yes');
     return new Response(modified, { status: response.status, headers });
 
   } catch (err) {
