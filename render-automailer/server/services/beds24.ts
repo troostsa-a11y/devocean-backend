@@ -708,4 +708,66 @@ export class Beds24Service {
     }
     return { beds24BookingId: String(id) };
   }
+
+  /**
+   * Search forward from `fromDate` for the nearest check-in date at which the
+   * given room is available for `nights` nights. Probes in parallel batches of
+   * BATCH days, stopping on the first successful window.
+   *
+   * Typical case (1–2 blocked nights in a long stay): resolves in 1–2 batches.
+   * Worst case (84-day horizon, 9 batches): all calls run in parallel per batch.
+   */
+  async findNearestAvailable(params: {
+    roomId: string;
+    fromDate: string;
+    nights: number;
+    adults: number;
+    children: number;
+  }): Promise<{ found: true; checkIn: string; checkOut: string } | { found: false }> {
+    const { roomId, fromDate, nights, adults, children } = params;
+    if (nights < 1) return { found: false };
+
+    await this.loadProperty();
+
+    const room = this.rooms.find((r) => r.roomId === roomId);
+    if (!room) return { found: false };
+
+    // Use the same per-room occupancy capping as getAvailability.
+    const occ = this.displayOccupancy(room, adults, children);
+
+    const shiftDate = (base: string, n: number): string => {
+      const d = new Date(base + 'T12:00:00Z');
+      d.setUTCDate(d.getUTCDate() + n);
+      return d.toISOString().slice(0, 10);
+    };
+
+    const LOOKAHEAD = 84; // 12 weeks forward
+    const BATCH = 10;    // parallel calls per batch
+
+    for (let start = 1; start <= LOOKAHEAD; start += BATCH) {
+      const offsets = Array.from(
+        { length: Math.min(BATCH, LOOKAHEAD - start + 1) },
+        (_, i) => start + i,
+      );
+
+      const results = await Promise.all(
+        offsets.map(async (offset) => {
+          const checkIn = shiftDate(fromDate, offset);
+          const checkOut = shiftDate(checkIn, nights);
+          try {
+            const map = await this.fetchOffers({ checkIn, checkOut, adults: occ.adults, children: occ.children });
+            const offers = map[roomId] || [];
+            return { available: offers.some((o) => o.unitsAvailable >= 1), checkIn, checkOut };
+          } catch {
+            return { available: false, checkIn: '', checkOut: '' };
+          }
+        }),
+      );
+
+      const first = results.find((r) => r.available);
+      if (first) return { found: true, checkIn: first.checkIn, checkOut: first.checkOut };
+    }
+
+    return { found: false };
+  }
 }

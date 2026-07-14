@@ -113,6 +113,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [canceled, setCanceled] = useState(false);
   const [fxData, setFxData] = useState(null); // { base, rates } — display-only
   const [priceByDate, setPriceByDate] = useState({}); // iso→rate, drives picker tiers (display-only)
+  const [nearestState, setNearestState] = useState({}); // roomId → {loading, checkIn, checkOut, error}
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -230,6 +231,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       setCart({});            // fresh search → empty cart
       setRateChoice({});      // …and no rate-plan overrides
       setRoomOccupancy({});   // …and no per-room occupancy overrides
+      setNearestState({});    // clear any previous nearest-available results
       setQuote(null);
       setQuoteError('');
       setStep('results');
@@ -237,6 +239,73 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       setError(err.message || t.errorGeneric);
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function searchWithDates(newCheckIn, newCheckOut) {
+    setCheckIn(newCheckIn);
+    setCheckOut(newCheckOut);
+    setNearestState({});
+    setError('');
+    setCanceled(false);
+    setLoading(true);
+    try {
+      const res = await fetch('/api/booking/availability', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ checkIn: newCheckIn, checkOut: newCheckOut, adults: effAdults, children: effChildren }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || t.errorGeneric);
+      setAvailability(data);
+      setCart({});
+      setRateChoice({});
+      setRoomOccupancy({});
+      setQuote(null);
+      setQuoteError('');
+      setStep('results');
+    } catch (err) {
+      setError(err.message || t.errorGeneric);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function handleFindNearest(room) {
+    setNearestState((prev) => ({
+      ...prev,
+      [room.roomId]: { loading: true, checkIn: null, checkOut: null, error: null },
+    }));
+    try {
+      const res = await fetch('/api/booking/nearest-available', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          roomId: room.roomId,
+          fromDate: checkIn,
+          nights,
+          adults: effAdults,
+          children: effChildren,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data?.error || t.errorGeneric);
+      if (!data.found) {
+        setNearestState((prev) => ({
+          ...prev,
+          [room.roomId]: { loading: false, checkIn: null, checkOut: null, error: 'No availability found in the next 12 weeks.' },
+        }));
+      } else {
+        setNearestState((prev) => ({
+          ...prev,
+          [room.roomId]: { loading: false, checkIn: data.checkIn, checkOut: data.checkOut, error: null },
+        }));
+      }
+    } catch (err) {
+      setNearestState((prev) => ({
+        ...prev,
+        [room.roomId]: { loading: false, checkIn: null, checkOut: null, error: err.message || t.errorGeneric },
+      }));
     }
   }
 
@@ -313,6 +382,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           return { ...r, offers };
         })
         .filter((r) => r && r.available),
+    [availability],
+  );
+  const unavailableRooms = useMemo(
+    () => (availability?.rooms || []).filter((r) => !r.available),
     [availability],
   );
   const cancelDays = availability?.cancellationPolicyDays ?? 30;
@@ -903,7 +976,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </span>
                 </p>
 
-                {availableRooms.length === 0 ? (
+                {availableRooms.length === 0 && unavailableRooms.length === 0 ? (
                   <div className="bg-white rounded-2xl border border-slate-200 p-6 text-center text-slate-600" data-testid="status-no-rooms">
                     {t.noRooms}
                   </div>
@@ -1234,6 +1307,102 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               ))}
                             </div>
                           )}
+                        </div>
+                      );
+                    })}
+
+                    {/* Sold-out rooms — shown with a "Find nearest available" CTA */}
+                    {unavailableRooms.map((room) => {
+                      const unitKey = getUnitKey(room.name);
+                      const unitImg = unitKey ? IMG.units[unitKey] : null;
+                      const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
+                      const displayName = translateRoomName(room.name);
+                      const ns = nearestState[room.roomId] || {};
+                      return (
+                        <div
+                          key={room.roomId}
+                          className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6 opacity-70"
+                          data-testid={`card-room-unavailable-${room.roomId}`}
+                        >
+                          <div className="flex items-start gap-3 sm:gap-4">
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between gap-2">
+                                <h3 className="text-lg font-semibold text-slate-500" data-testid={`text-room-unavailable-name-${room.roomId}`}>
+                                  {displayName}
+                                </h3>
+                                <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-500 shrink-0">
+                                  {t.soldOut}
+                                </span>
+                              </div>
+                              <p className="text-sm text-slate-400 mt-0.5">
+                                {`Not available for ${nights} ${nights === 1 ? t.night : t.nights}`}
+                              </p>
+
+                              {/* State: idle — show Find button */}
+                              {!ns.loading && !ns.checkIn && !ns.error && (
+                                <button
+                                  type="button"
+                                  onClick={() => handleFindNearest(room)}
+                                  className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#9e4b13] hover:underline"
+                                  data-testid={`button-find-nearest-${room.roomId}`}
+                                >
+                                  <CalendarCheck2 className="h-4 w-4" />
+                                  Find nearest available dates
+                                </button>
+                              )}
+
+                              {/* State: searching */}
+                              {ns.loading && (
+                                <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-slate-500">
+                                  <Loader2 className="h-4 w-4 animate-spin" />
+                                  Searching for nearest available dates…
+                                </p>
+                              )}
+
+                              {/* State: not found */}
+                              {!ns.loading && ns.error && (
+                                <p className="mt-3 text-sm text-amber-700">{ns.error}</p>
+                              )}
+
+                              {/* State: found — show result + Search button */}
+                              {!ns.loading && ns.checkIn && (
+                                <div className="mt-3 flex flex-wrap items-center gap-3">
+                                  <p className="text-sm text-emerald-700 font-medium">
+                                    Next available: {displayDate(ns.checkIn)} → {displayDate(ns.checkOut)}
+                                  </p>
+                                  <button
+                                    type="button"
+                                    onClick={() => searchWithDates(ns.checkIn, ns.checkOut)}
+                                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-[#9e4b13] hover:bg-[#8a4211] rounded-lg px-3 py-1.5 transition-colors"
+                                    data-testid={`button-search-nearest-${room.roomId}`}
+                                  >
+                                    Search these dates →
+                                  </button>
+                                </div>
+                              )}
+                            </div>
+
+                            {unitImg && (
+                              <a
+                                href={unitDetailUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="shrink-0 flex flex-col items-center gap-1 group"
+                                data-testid={`link-unavail-details-${room.roomId}`}
+                              >
+                                <img
+                                  src={unitImg}
+                                  alt={displayName}
+                                  loading="lazy"
+                                  className="h-20 w-20 rounded-lg object-cover border border-slate-200 grayscale"
+                                />
+                                <span className="inline-flex items-center gap-1 text-xs font-medium text-[#9e4b13] group-hover:underline">
+                                  {t.details}
+                                  <ExternalLink className="h-3 w-3" />
+                                </span>
+                              </a>
+                            )}
+                          </div>
                         </div>
                       );
                     })}
