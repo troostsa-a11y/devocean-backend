@@ -766,8 +766,8 @@ export class Beds24Service {
     const maxBack = Math.min(LOOKBACK, Math.max(0, daysFromToday - 1));
     const backOffsets = Array.from({ length: maxBack }, (_, i) => -(i + 1));
     const backResultsAll = await Promise.all(backOffsets.map(probe));
-    // Pick the closest backward match (smallest |offset| = offset closest to -1)
-    const bestBack = [...backResultsAll].reverse().find((r) => r.available) ?? null;
+    // backResultsAll is ordered [-1, -2, -3, …]; .find() returns the first (closest) match.
+    const bestBack = backResultsAll.find((r) => r.available) ?? null;
 
     // Forward search: offsets +1 … +LOOKAHEAD in batches of BATCH.
     // Stop as soon as we find something closer than the best backward result.
