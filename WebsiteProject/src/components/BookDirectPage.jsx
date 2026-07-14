@@ -1358,10 +1358,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                               {/* State: searching */}
                               {ns.loading && (
-                                <p className="mt-3 inline-flex items-center gap-1.5 text-sm text-slate-500">
-                                  <Loader2 className="h-4 w-4 animate-spin" />
-                                  Searching for nearest available dates…
-                                </p>
+                                <div className="mt-3 flex items-center gap-1.5 text-sm text-slate-500">
+                                  <Loader2 className="h-4 w-4 animate-spin shrink-0" />
+                                  <span>Searching for nearest available dates…</span>
+                                </div>
                               )}
 
                               {/* State: not found */}
@@ -1371,14 +1371,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                               {/* State: found — show result + Search button */}
                               {!ns.loading && ns.checkIn && (
-                                <div className="mt-3 flex flex-wrap items-center gap-3">
+                                <div className="mt-3 flex flex-col gap-2">
                                   <p className="text-sm text-emerald-700 font-medium">
                                     Next available:<br />{displayDate(ns.checkIn)} → {displayDate(ns.checkOut)}
                                   </p>
                                   <button
                                     type="button"
                                     onClick={() => searchWithDates(ns.checkIn, ns.checkOut)}
-                                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-[#9e4b13] hover:bg-[#8a4211] rounded-lg px-3 py-1.5 transition-colors"
+                                    className="self-start inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-[#9e4b13] hover:bg-[#8a4211] rounded-lg px-3 py-1.5 transition-colors"
                                     data-testid={`button-search-nearest-${room.roomId}`}
                                   >
                                     Search these dates →
