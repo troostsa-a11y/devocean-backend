@@ -1373,7 +1373,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               {!ns.loading && ns.checkIn && (
                                 <div className="mt-3 flex flex-wrap items-center gap-3">
                                   <p className="text-sm text-emerald-700 font-medium">
-                                    Next available: {displayDate(ns.checkIn)} → {displayDate(ns.checkOut)}
+                                    Next available:<br />{displayDate(ns.checkIn)} → {displayDate(ns.checkOut)}
                                   </p>
                                   <button
                                     type="button"
