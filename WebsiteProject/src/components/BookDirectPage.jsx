@@ -991,11 +991,23 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6"
                           data-testid={`card-room-${room.roomId}`}
                         >
-                          <div className="flex flex-wrap sm:flex-nowrap items-start justify-between gap-3 sm:gap-4">
+                          <div className="flex items-start gap-3 sm:gap-4">
                             <div className="flex-1 min-w-0">
-                              <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
-                                {displayName}
-                              </h3>
+                              <div className="flex items-start justify-between gap-2">
+                                <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
+                                  {displayName}
+                                </h3>
+                                <div className="text-right shrink-0">
+                                  <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
+                                    {money(cardTotal, room.currency)}
+                                  </p>
+                                  {fxLine(cardTotal) && (
+                                    <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
+                                      {fxLine(cardTotal)}
+                                    </p>
+                                  )}
+                                </div>
+                              </div>
                               <div className="flex flex-wrap items-baseline gap-x-2 mt-0.5">
                                 <p className="text-sm text-slate-500">
                                   {fmt(t.perNightFrom, { nights: room.nights })}
@@ -1052,17 +1064,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 </span>
                               </a>
                             )}
-
-                            <div className="text-right shrink-0">
-                              <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
-                                {money(cardTotal, room.currency)}
-                              </p>
-                              {fxLine(cardTotal) && (
-                                <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
-                                  {fxLine(cardTotal)}
-                                </p>
-                              )}
-                            </div>
                           </div>
 
                           {room.offers.length > 1 && (
