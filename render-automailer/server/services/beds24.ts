@@ -741,33 +741,56 @@ export class Beds24Service {
       return d.toISOString().slice(0, 10);
     };
 
-    const LOOKAHEAD = 84; // 12 weeks forward
-    const BATCH = 10;    // parallel calls per batch
+    const LOOKAHEAD = 84;   // 12 weeks forward
+    const LOOKBACK = 21;    // 3 weeks back (closer matches first)
+    const BATCH = 10;       // parallel calls per forward batch
 
+    const probe = async (offset: number) => {
+      const ci = shiftDate(fromDate, offset);
+      const co = shiftDate(ci, nights);
+      try {
+        const map = await this.fetchOffers({ checkIn: ci, checkOut: co, adults: occ.adults, children: occ.children });
+        const offers = map[roomId] || [];
+        return { available: offers.some((o) => o.unitsAvailable >= 1), offset, checkIn: ci, checkOut: co };
+      } catch {
+        return { available: false, offset, checkIn: '', checkOut: '' };
+      }
+    };
+
+    // Backward search: offsets -1 … -(min LOOKBACK, days since today)
+    // Cap at today so we never suggest a past check-in.
+    const todayStr = new Date().toISOString().slice(0, 10);
+    const daysFromToday = Math.round(
+      (new Date(fromDate + 'T12:00:00Z').getTime() - new Date(todayStr + 'T12:00:00Z').getTime()) / 86_400_000
+    );
+    const maxBack = Math.min(LOOKBACK, Math.max(0, daysFromToday - 1));
+    const backOffsets = Array.from({ length: maxBack }, (_, i) => -(i + 1));
+    const backResultsAll = await Promise.all(backOffsets.map(probe));
+    // Pick the closest backward match (smallest |offset| = offset closest to -1)
+    const bestBack = [...backResultsAll].reverse().find((r) => r.available) ?? null;
+
+    // Forward search: offsets +1 … +LOOKAHEAD in batches of BATCH.
+    // Stop as soon as we find something closer than the best backward result.
+    let bestForward: { offset: number; checkIn: string; checkOut: string } | null = null;
     for (let start = 1; start <= LOOKAHEAD; start += BATCH) {
       const offsets = Array.from(
         { length: Math.min(BATCH, LOOKAHEAD - start + 1) },
         (_, i) => start + i,
       );
-
-      const results = await Promise.all(
-        offsets.map(async (offset) => {
-          const checkIn = shiftDate(fromDate, offset);
-          const checkOut = shiftDate(checkIn, nights);
-          try {
-            const map = await this.fetchOffers({ checkIn, checkOut, adults: occ.adults, children: occ.children });
-            const offers = map[roomId] || [];
-            return { available: offers.some((o) => o.unitsAvailable >= 1), checkIn, checkOut };
-          } catch {
-            return { available: false, checkIn: '', checkOut: '' };
-          }
-        }),
-      );
-
+      const results = await Promise.all(offsets.map(probe));
       const first = results.find((r) => r.available);
-      if (first) return { found: true, checkIn: first.checkIn, checkOut: first.checkOut };
+      if (first) {
+        bestForward = { offset: first.offset, checkIn: first.checkIn, checkOut: first.checkOut };
+        break;
+      }
     }
 
-    return { found: false };
+    // Return whichever direction is closest to the originally requested dates.
+    if (!bestBack && !bestForward) return { found: false };
+    if (bestBack && !bestForward) return { found: true, checkIn: bestBack.checkIn, checkOut: bestBack.checkOut };
+    if (!bestBack && bestForward) return { found: true, checkIn: bestForward.checkIn, checkOut: bestForward.checkOut };
+    // Both found — pick the one with the smaller absolute offset.
+    const winner = Math.abs(bestBack!.offset) <= Math.abs(bestForward!.offset) ? bestBack! : bestForward!;
+    return { found: true, checkIn: winner.checkIn, checkOut: winner.checkOut };
   }
 }
