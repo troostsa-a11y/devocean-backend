@@ -968,11 +968,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                 <p>
                   <span
-                    className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-3.5 py-1.5 text-sm sm:text-base font-semibold text-slate-800"
+                    className="inline-flex items-start gap-2 rounded-full bg-slate-100 px-3.5 py-1.5 text-sm sm:text-base font-semibold text-slate-800"
                     data-testid="badge-selection-summary"
                   >
-                    <Users className="h-4 w-4 shrink-0" />
-                    {displayDate(checkIn)} → {displayDate(checkOut)} · {availability.nights} {t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}
+                    <Users className="h-4 w-4 shrink-0 mt-0.5" />
+                    <span className="flex flex-col leading-snug">
+                      <span>{displayDate(checkIn)} → {displayDate(checkOut)}</span>
+                      <span className="font-medium">{availability.nights} {t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}</span>
+                    </span>
                   </span>
                 </p>
 
@@ -1066,22 +1069,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         >
                           <div className="flex items-start gap-3 sm:gap-4">
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-start justify-between gap-2">
-                                <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
-                                  {displayName}
-                                </h3>
-                                <div className="text-right shrink-0">
-                                  <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
-                                    {money(cardTotal, room.currency)}
+                              <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
+                                {displayName}
+                              </h3>
+                              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0 mt-0.5">
+                                <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
+                                  {money(cardTotal, room.currency)}
+                                </p>
+                                {fxLine(cardTotal) && (
+                                  <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
+                                    {fxLine(cardTotal)}
                                   </p>
-                                  {fxLine(cardTotal) && (
-                                    <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
-                                      {fxLine(cardTotal)}
-                                    </p>
-                                  )}
-                                </div>
+                                )}
                               </div>
-                              <div className="flex flex-wrap items-baseline gap-x-2 mt-0.5">
+                              <div className="flex flex-wrap items-baseline gap-x-2 mt-0">
                                 <p className="text-sm text-slate-500">
                                   {fmt(t.perNightFrom, { nights: room.nights })}
                                 </p>
