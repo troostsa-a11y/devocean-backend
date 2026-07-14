@@ -1327,15 +1327,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         >
                           <div className="flex items-start gap-3 sm:gap-4">
                             <div className="flex-1 min-w-0">
-                              <div className="flex items-start justify-between gap-2">
-                                <h3 className="text-lg font-semibold text-slate-500" data-testid={`text-room-unavailable-name-${room.roomId}`}>
-                                  {displayName}
-                                </h3>
-                                <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-500 shrink-0">
-                                  {t.soldOut}
-                                </span>
-                              </div>
-                              <p className="text-sm text-slate-400 mt-0.5">
+                              <h3 className="text-lg font-semibold text-slate-500" data-testid={`text-room-unavailable-name-${room.roomId}`}>
+                                {displayName}
+                              </h3>
+                              <span className="mt-1 inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-500">
+                                {t.soldOut}
+                              </span>
+                              <p className="text-sm text-slate-400 mt-1">
                                 {`Not available for ${nights} ${nights === 1 ? t.night : t.nights}`}
                               </p>
 
