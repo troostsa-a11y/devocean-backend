@@ -36,3 +36,9 @@ id = "2ULXtLpvFIOv0TZmr9FvB"
 uri = "file://business_broadcast_3.csv"
 type = "table"
 title = "business_broadcast_3.csv — 117 records"
+
+[[outputs]]
+id = "7dh5TNztQ-oO83M59WCpV"
+uri = "file://business_broadcast_mz_1.csv"
+type = "table"
+title = "business_broadcast_mz_1.csv — 231 Mozambique (+258) contacts"
