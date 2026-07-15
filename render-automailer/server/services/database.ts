@@ -795,14 +795,26 @@ export class DatabaseService {
         updated_at TIMESTAMP NOT NULL DEFAULT NOW()
       )
     `;
+    // Idempotent migrations for validity window columns.
+    await this.client`ALTER TABLE coupon_codes ADD COLUMN IF NOT EXISTS valid_from  TIMESTAMP`;
+    await this.client`ALTER TABLE coupon_codes ADD COLUMN IF NOT EXISTS valid_until TIMESTAMP`;
   }
 
-  /** Case-insensitive lookup, only ever used to look up ACTIVE discount codes for guest-facing pricing. */
+  /** Case-insensitive lookup, only ever used to look up ACTIVE discount codes for guest-facing pricing.
+   *  Also enforces validity window: valid_from <= NOW() and valid_until >= NOW() (nulls = unbounded). */
   async getActiveDiscountCodeByCode(code: string): Promise<DiscountCode | undefined> {
+    const now = new Date();
     const [row] = await this.db
       .select()
       .from(couponCodes)
-      .where(and(eq(couponCodes.code, code.trim().toUpperCase()), eq(couponCodes.active, true)))
+      .where(
+        and(
+          eq(couponCodes.code, code.trim().toUpperCase()),
+          eq(couponCodes.active, true),
+          or(isNull(couponCodes.validFrom),  lte(couponCodes.validFrom,  now)),
+          or(isNull(couponCodes.validUntil), gte(couponCodes.validUntil, now)),
+        )
+      )
       .limit(1);
     return row;
   }
@@ -811,13 +823,21 @@ export class DatabaseService {
     return this.db.select().from(couponCodes).orderBy(desc(couponCodes.createdAt));
   }
 
-  async createDiscountCode(data: { code: string; type: 'percent' | 'fixed'; value: number }): Promise<DiscountCode> {
+  async createDiscountCode(data: {
+    code: string;
+    type: 'percent' | 'fixed';
+    value: number;
+    validFrom?: Date | null;
+    validUntil?: Date | null;
+  }): Promise<DiscountCode> {
     const [created] = await this.db
       .insert(couponCodes)
       .values({
         code: data.code.trim().toUpperCase(),
         type: data.type,
         value: data.value.toFixed(2),
+        validFrom: data.validFrom ?? null,
+        validUntil: data.validUntil ?? null,
       } as InsertDiscountCode)
       .onConflictDoUpdate({
         target: couponCodes.code,
@@ -825,6 +845,8 @@ export class DatabaseService {
           type: data.type,
           value: data.value.toFixed(2),
           active: true,
+          validFrom: data.validFrom ?? null,
+          validUntil: data.validUntil ?? null,
           updatedAt: new Date(),
         },
       })

@@ -877,6 +877,8 @@ function DiscountCodesTab({ apiUrl, apiKey }) {
   const [code, setCode] = useState('');
   const [type, setType] = useState('percent');
   const [value, setValue] = useState('');
+  const [validFrom, setValidFrom] = useState('');
+  const [validUntil, setValidUntil] = useState('');
   const [saving, setSaving] = useState(false);
   const [togglingCode, setTogglingCode] = useState(null);
 
@@ -914,13 +916,15 @@ function DiscountCodesTab({ apiUrl, apiKey }) {
       const res = await fetch(`${apiUrl}/api/admin/discount-codes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'X-Admin-Key': apiKey },
-        body: JSON.stringify({ code: trimmedCode, type, value: numValue }),
+        body: JSON.stringify({ code: trimmedCode, type, value: numValue, validFrom: validFrom || null, validUntil: validUntil || null }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Could not save discount code');
       setStatus({ type: 'success', message: `Saved ${data.coupon.code}.` });
       setCode('');
       setValue('');
+      setValidFrom('');
+      setValidUntil('');
       load();
     } catch (err) {
       setStatus({ type: 'error', message: err.message });
@@ -988,6 +992,26 @@ function DiscountCodesTab({ apiUrl, apiKey }) {
               data-testid="input-discount-code-value"
             />
           </label>
+          <label className="flex flex-col gap-1">
+            <span className="text-xs font-medium text-slate-600">Valid from <span className="text-slate-400 font-normal">(optional)</span></span>
+            <input
+              type="date"
+              value={validFrom}
+              onChange={(e) => setValidFrom(e.target.value)}
+              className="px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none w-36"
+              data-testid="input-discount-code-valid-from"
+            />
+          </label>
+          <label className="flex flex-col gap-1">
+            <span className="text-xs font-medium text-slate-600">Valid until <span className="text-slate-400 font-normal">(optional)</span></span>
+            <input
+              type="date"
+              value={validUntil}
+              onChange={(e) => setValidUntil(e.target.value)}
+              className="px-3 py-1.5 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-[#9e4b13]/30 focus:border-[#9e4b13] outline-none w-36"
+              data-testid="input-discount-code-valid-until"
+            />
+          </label>
           <button
             type="submit"
             disabled={saving}
@@ -1038,6 +1062,13 @@ function DiscountCodesTab({ apiUrl, apiKey }) {
                   </div>
                   <div className="text-xs text-slate-500 mt-0.5">
                     {c.type === 'percent' ? `${Number(c.value)}% off` : `$${Number(c.value).toFixed(2)} off`}
+                    {(c.validFrom || c.validUntil) && (
+                      <span className="ml-2 text-slate-400">
+                        {c.validFrom && !c.validUntil && `from ${new Date(c.validFrom).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`}
+                        {!c.validFrom && c.validUntil && `until ${new Date(c.validUntil).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`}
+                        {c.validFrom && c.validUntil && `${new Date(c.validFrom).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })} – ${new Date(c.validUntil).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })}`}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <button

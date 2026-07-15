@@ -327,6 +327,8 @@ export const couponCodes = pgTable("coupon_codes", {
   type: text("type").notNull(), // 'percent' | 'fixed'
   value: decimal("value", { precision: 10, scale: 2 }).notNull(), // percent (0-100) or fixed major-unit amount
   active: boolean("active").notNull().default(true),
+  validFrom: timestamp("valid_from"),   // null = always valid from creation
+  validUntil: timestamp("valid_until"), // null = never expires
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

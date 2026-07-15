@@ -699,8 +699,18 @@ app.post('/api/admin/discount-codes', requireAdminKey, async (req: any, res: any
   if (type === 'percent' && value > 100) {
     return res.status(400).json({ error: 'A percent discount cannot exceed 100' });
   }
+  const parseOptionalDate = (v: unknown): Date | null => {
+    if (!v || typeof v !== 'string' || !v.trim()) return null;
+    const d = new Date(v);
+    return isNaN(d.getTime()) ? null : d;
+  };
+  const validFrom  = parseOptionalDate(req.body?.validFrom);
+  const validUntil = parseOptionalDate(req.body?.validUntil);
+  if (validFrom && validUntil && validFrom >= validUntil) {
+    return res.status(400).json({ error: '"Valid from" must be before "Valid until"' });
+  }
   try {
-    const coupon = await guestDb.createDiscountCode({ code, type, value });
+    const coupon = await guestDb.createDiscountCode({ code, type, value, validFrom, validUntil });
     res.json({ coupon });
   } catch (err: any) {
     console.error('[ADMIN] create discount code error:', err.message);
