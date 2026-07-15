@@ -18,3 +18,21 @@ id = "SkGq5FyB2fRdswpArvPey"
 uri = "file://attached_assets/facebook_upload.csv"
 type = "table"
 title = "facebook_upload.csv — 3,168 guests in Facebook Custom Audience format"
+
+[[outputs]]
+id = "VGQNSzTI_6MWvbfibl5mf"
+uri = "file://business_broadcast_1.csv"
+type = "table"
+title = "business_broadcast_1.csv — 256 records"
+
+[[outputs]]
+id = "zeJroawp6TyMlpy5pbmMl"
+uri = "file://business_broadcast_2.csv"
+type = "table"
+title = "business_broadcast_2.csv — 256 records"
+
+[[outputs]]
+id = "2ULXtLpvFIOv0TZmr9FvB"
+uri = "file://business_broadcast_3.csv"
+type = "table"
+title = "business_broadcast_3.csv — 117 records"
