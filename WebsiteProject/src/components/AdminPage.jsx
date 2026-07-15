@@ -73,7 +73,7 @@ export default function AdminPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 relative z-50" style={{ paddingTop: 'var(--stack-h, 96px)' }}>
-      <div className={`${activeTab === 'guests' ? 'max-w-5xl' : 'max-w-2xl'} mx-auto px-4 py-8 transition-all duration-200`}>
+      <div className="max-w-5xl mx-auto px-4 py-8">
         <button
           onClick={() => navigate('/')}
           className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-[#9e4b13] mb-6 transition-colors"
