@@ -1756,7 +1756,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
       {/* Minimal footer — legal links + copyright */}
       <footer className="bg-slate-900 text-slate-400 text-xs">
-        <div className="max-w-5xl mx-auto px-4 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div className="max-w-5xl mx-auto px-4 pt-5 pb-16 flex flex-col gap-2">
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             {[
               { href: '/legal/privacy.html',  label: ui?.legal?.privacy  ?? 'Privacy Policy' },
@@ -1776,7 +1776,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               </a>
             ))}
           </div>
-          <p className="shrink-0">© {new Date().getFullYear()} DEVOCEAN Lodge. {ui?.footer?.rights ?? 'All rights reserved.'}</p>
+          <p>© {new Date().getFullYear()} DEVOCEAN Lodge. {ui?.footer?.rights ?? 'All rights reserved.'}</p>
         </div>
       </footer>
     </main>
