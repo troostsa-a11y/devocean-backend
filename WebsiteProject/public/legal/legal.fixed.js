@@ -13,6 +13,12 @@
 
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
+  // If opened in a new tab (e.g. from book-direct), close this tab
+  if (window.opener) {
+    window.close();
+    return;
+  }
+
   // Try to get the stored referrer first (most reliable)
   const storedReferrer = sessionStorage.getItem('legalPageReferrer');
   const referrer = storedReferrer || document.referrer;
