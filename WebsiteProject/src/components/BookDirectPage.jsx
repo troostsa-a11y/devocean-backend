@@ -1757,16 +1757,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       {/* Minimal footer — legal links + copyright */}
       <footer className="bg-slate-900 text-slate-400 text-xs">
         <div className="max-w-5xl mx-auto px-4 pt-5 pb-16 flex flex-col items-center gap-2 text-center">
-          <div className="flex flex-wrap justify-center items-center gap-y-1">
+          <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
             {[
               { href: '/legal/privacy.html',  label: ui?.legal?.privacy  ?? 'Privacy Policy' },
               { href: '/legal/cookies.html',  label: ui?.legal?.cookies  ?? 'Cookie Policy' },
               { href: '/legal/terms.html',    label: ui?.legal?.terms    ?? 'Terms & Conditions' },
               { href: '/legal/GDPR.html',     label: ui?.legal?.gdpr     ?? 'GDPR Info' },
               { href: '/legal/CRIC.html',     label: ui?.legal?.cric     ?? 'Consumer Rights & Contact' },
-            ].map(({ href, label }, i, arr) => (
-              <span key={href} className="flex items-center gap-x-2">
+            ].reduce((acc, { href, label }, i) => {
+              if (i > 0) acc.push(<span key={`dot-${i}`} className="text-slate-400 select-none" aria-hidden="true">·</span>);
+              acc.push(
                 <a
+                  key={href}
                   href={href + '?newtab=1'}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -1774,9 +1776,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 >
                   {label}
                 </a>
-                {i < arr.length - 1 && <span className="text-slate-400 select-none leading-none">·</span>}
-              </span>
-            ))}
+              );
+              return acc;
+            }, [])}
           </div>
           <p>© {new Date().getFullYear()} DEVOCEAN Lodge. {ui?.footer?.rights ?? 'All rights reserved.'}</p>
         </div>
