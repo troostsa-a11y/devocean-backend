@@ -1099,7 +1099,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                     : <>
                                         {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
                                         {offer.type === 'nonRef' && (
-                                          <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
+                                          <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms?newtab=1#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
                                         )}
                                       </>
                                   }
@@ -1178,7 +1178,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                               : <>
                                                   {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
                                                   {o.type === 'nonRef' && (
-                                                    <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
+                                                    <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms?newtab=1#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
                                                   )}
                                                 </>
                                             }
@@ -1719,7 +1719,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         <>
                           {before}
                           <a
-                            href={`https://devoceanlodge.com/legal/terms?lang=${encodeURIComponent(lang)}`}
+                            href={`https://devoceanlodge.com/legal/terms?lang=${encodeURIComponent(lang)}&newtab=1`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-medium text-[#9e4b13] underline hover:text-[#854011]"

@@ -13,8 +13,9 @@
 
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
-  // If opened in a new tab (e.g. from book-direct), close this tab
-  if (window.opener) {
+  // If opened as a new tab (noopener links pass ?newtab=1), close this tab
+  const _sp = new URLSearchParams(window.location.search);
+  if (_sp.get('newtab') === '1') {
     window.close();
     return;
   }
