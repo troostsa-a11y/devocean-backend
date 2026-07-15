@@ -896,7 +896,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       value={discountCode}
                       onChange={(e) => setDiscountCode(e.target.value)}
                       className={INPUT_CLASS}
-                      placeholder="Optional"
+                      placeholder={t.optional}
                       data-testid="input-discount-code"
                     />
                   </div>
@@ -908,7 +908,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       value={voucherCode}
                       onChange={(e) => setVoucherCode(e.target.value.toUpperCase())}
                       className={INPUT_CLASS}
-                      placeholder="Optional"
+                      placeholder={t.optional}
                       data-testid="input-voucher-code"
                     />
                   </div>
