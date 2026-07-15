@@ -1753,6 +1753,32 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           </div>
         </>
       )}
+
+      {/* Minimal footer — legal links + copyright */}
+      <footer className="bg-slate-900 text-slate-400 text-xs">
+        <div className="max-w-5xl mx-auto px-4 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
+            {[
+              { href: '/legal/privacy.html',  label: ui?.legal?.privacy  ?? 'Privacy Policy' },
+              { href: '/legal/cookies.html',  label: ui?.legal?.cookies  ?? 'Cookie Policy' },
+              { href: '/legal/terms.html',    label: ui?.legal?.terms    ?? 'Terms & Conditions' },
+              { href: '/legal/GDPR.html',     label: ui?.legal?.gdpr     ?? 'GDPR Info' },
+              { href: '/legal/CRIC.html',     label: ui?.legal?.cric     ?? 'Consumer Rights & Contact' },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={href + '?newtab=1'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-slate-200 transition-colors"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+          <p className="shrink-0">© {new Date().getFullYear()} DEVOCEAN Lodge. {ui?.footer?.rights ?? 'All rights reserved.'}</p>
+        </div>
+      </footer>
     </main>
   );
 }
