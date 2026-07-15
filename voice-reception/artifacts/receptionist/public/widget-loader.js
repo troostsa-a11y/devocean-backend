@@ -69,7 +69,7 @@
       "border:none;cursor:pointer;" +
       "display:flex;align-items:center;justify-content:center;" +
       "z-index:2147483647;" +
-      "transition:background .18s,transform .18s,box-shadow .18s;" +
+      "transition:background .18s,transform .18s,box-shadow .18s,bottom .3s;" +
       "outline:none;" +
     "}" +
     "#dv-fab:hover{background:" + ORANGE_DARK + ";transform:scale(1.07);}" +
@@ -291,6 +291,35 @@
   if (new URLSearchParams(window.location.search).has("talk")) {
     setTimeout(function () { voiceBtn.click(); }, 1000);
   }
+
+  // --- reCAPTCHA badge avoidance ---
+  // When .grecaptcha-badge enters the DOM, shift FAB (and its dependants) up
+  // so they don't overlap. The badge is fixed at bottom:14px, height~60px.
+  function _applyRecaptchaShift() {
+    var badge = document.querySelector('.grecaptcha-badge');
+    if (!badge) return;
+    var badgeH   = badge.offsetHeight || 60;
+    var badgeBot = 14; // matches CSS bottom:14px override in index.css
+    var needed   = badgeBot + badgeH + GAP; // min FAB bottom to clear badge
+    if (needed <= MARGIN) return;           // already clear, nothing to do
+    var bottom = needed;
+    fab.style.bottom      = bottom + 'px';
+    textBtn.style.bottom  = (bottom + BTN_R + GAP) + 'px';
+    voiceBtn.style.bottom = (bottom + BTN_R + GAP + BTN_R + GAP) + 'px';
+    textFrame.style.bottom = (bottom + BTN_R + 12) + 'px';
+  }
+
+  // Check immediately (reCAPTCHA may already be loaded)
+  _applyRecaptchaShift();
+
+  // Watch for the badge being injected later (lazy-loaded with ContactSection)
+  var _capObs = new MutationObserver(function () {
+    if (document.querySelector('.grecaptcha-badge')) {
+      _applyRecaptchaShift();
+      _capObs.disconnect(); // badge never leaves once added
+    }
+  });
+  _capObs.observe(document.body, { childList: true, subtree: true });
 
   // Initial render
   setState("idle");
