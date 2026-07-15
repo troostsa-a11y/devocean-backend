@@ -933,6 +933,13 @@ export class DatabaseService {
       .where(eq(giftVouchers.code, code.toUpperCase()));
   }
 
+  async listAllGiftVouchers(): Promise<GiftVoucher[]> {
+    return this.db
+      .select()
+      .from(giftVouchers)
+      .orderBy(giftVouchers.createdAt);
+  }
+
   async createDirectBooking(data: InsertDirectBooking): Promise<DirectBooking> {
     const [created] = await this.db.insert(directBookings).values(data as any).returning();
     return created;

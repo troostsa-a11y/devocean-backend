@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw, ExternalLink, Tag, Plus, Power } from 'lucide-react';
+import { Shield, UserPlus, UserX, Mail, Settings, CheckCircle, AlertCircle, Loader2, Eye, EyeOff, ArrowLeft, CalendarDays, Users, Upload, Send, Download, Search, ChevronLeft, ChevronRight, RefreshCw, ExternalLink, Tag, Plus, Power, Ticket } from 'lucide-react';
 import { useLocation } from 'wouter';
 
 const LANGUAGE_OPTIONS = [
@@ -191,6 +191,18 @@ export default function AdminPage() {
                   <Tag className="w-4 h-4" />
                   Discount Codes
                 </button>
+                <button
+                  onClick={() => setActiveTab('gift-vouchers')}
+                  className={`flex flex-1 items-center justify-center gap-1 py-1.5 rounded-md text-sm font-medium transition-colors whitespace-nowrap ${
+                    activeTab === 'gift-vouchers'
+                      ? 'bg-[#9e4b13] text-white'
+                      : 'text-slate-600 hover:bg-slate-100'
+                  }`}
+                  data-testid="tab-gift-vouchers"
+                >
+                  <Ticket className="w-4 h-4" />
+                  Gift Vouchers
+                </button>
               </div>
               <button
                 onClick={handleClearConfig}
@@ -212,6 +224,8 @@ export default function AdminPage() {
               <GuestsTab apiUrl={apiUrl} apiKey={apiKey} />
             ) : activeTab === 'discount-codes' ? (
               <DiscountCodesTab apiUrl={apiUrl} apiKey={apiKey} />
+            ) : activeTab === 'gift-vouchers' ? (
+              <GiftVouchersTab apiUrl={apiUrl} apiKey={apiKey} />
             ) : (
               <CancelBookingForm apiUrl={apiUrl} apiKey={apiKey} />
             )}
@@ -1042,6 +1056,116 @@ function DiscountCodesTab({ apiUrl, apiKey }) {
               </div>
             ))}
           </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function GiftVouchersTab({ apiUrl, apiKey }) {
+  const [vouchers, setVouchers] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [fetchError, setFetchError] = useState(null);
+
+  const load = async () => {
+    setLoading(true);
+    setFetchError(null);
+    try {
+      const res = await fetch(`${apiUrl}/api/admin/gift-vouchers`, {
+        headers: { 'X-Admin-Key': apiKey },
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.error || `${res.status} ${res.statusText}`);
+      }
+      const data = await res.json();
+      setVouchers(data.vouchers || []);
+    } catch (err) {
+      setFetchError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => { load(); }, []);
+
+  const STATUS_STYLES = {
+    active:   'bg-emerald-100 text-emerald-700 border border-emerald-200',
+    redeemed: 'bg-blue-100 text-blue-700 border border-blue-200',
+    pending:  'bg-amber-100 text-amber-700 border border-amber-200',
+    expired:  'bg-slate-100 text-slate-500 border border-slate-200',
+  };
+
+  const fmt = (iso) => iso ? new Date(iso).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
+
+  return (
+    <div className="space-y-4">
+      <div className="bg-white rounded-xl border border-slate-200 p-4">
+        <div className="flex items-center justify-between mb-3">
+          <div>
+            <h2 className="text-sm font-semibold text-slate-900">Gift Vouchers</h2>
+            <p className="text-xs text-slate-500 mt-0.5">Vouchers purchased through the website. Status updates automatically when redeemed at checkout.</p>
+          </div>
+          <button
+            onClick={load}
+            disabled={loading}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-600 hover:bg-slate-50 transition-colors disabled:opacity-50"
+            data-testid="button-refresh-gift-vouchers"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+            Refresh
+          </button>
+        </div>
+
+        {loading && !vouchers ? (
+          <div className="flex items-center justify-center py-10 text-slate-400">
+            <Loader2 className="w-5 h-5 animate-spin mr-2" />
+            <span className="text-sm">Loading…</span>
+          </div>
+        ) : fetchError ? (
+          <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
+            <AlertCircle className="w-4 h-4 text-red-500 shrink-0" />
+            <p className="text-sm text-red-700">{fetchError}</p>
+          </div>
+        ) : !vouchers || vouchers.length === 0 ? (
+          <p className="text-sm text-slate-400 py-6 text-center">No gift vouchers yet.</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs min-w-[700px]">
+              <thead>
+                <tr className="border-b border-slate-100">
+                  {['Code', 'Amount', 'Status', 'Purchaser', 'Recipient', 'Expires', 'Created', 'Redeemed'].map((h) => (
+                    <th key={h} className="text-left py-2 px-2 text-slate-500 font-medium whitespace-nowrap">{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-50">
+                {vouchers.map((v) => (
+                  <tr key={v.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="py-2.5 px-2 font-mono font-semibold text-slate-800 whitespace-nowrap">{v.code ?? <span className="text-slate-400 italic">pending</span>}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap font-medium">${Number(v.amountUsd).toFixed(2)}</td>
+                    <td className="py-2.5 px-2">
+                      <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium capitalize ${STATUS_STYLES[v.status] ?? STATUS_STYLES.pending}`}>
+                        {v.status}
+                      </span>
+                    </td>
+                    <td className="py-2.5 px-2 text-slate-600 max-w-[160px]">
+                      <div className="truncate">{v.purchaserName || '—'}</div>
+                      <div className="truncate text-slate-400">{v.purchaserEmail}</div>
+                    </td>
+                    <td className="py-2.5 px-2 text-slate-600">{v.recipientName || '—'}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap text-slate-600">{fmt(v.expiresAt)}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap text-slate-400">{fmt(v.createdAt)}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap text-slate-400">{fmt(v.redeemedAt)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {vouchers && vouchers.length > 0 && (
+          <p className="text-xs text-slate-400 mt-3">{vouchers.length} voucher{vouchers.length !== 1 ? 's' : ''} total · {vouchers.filter(v => v.status === 'active').length} active</p>
         )}
       </div>
     </div>

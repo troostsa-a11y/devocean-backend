@@ -802,6 +802,18 @@ app.get('/api/gift-voucher/validate', requireAdminKey, async (req: any, res: any
   }
 });
 
+// ─── Admin: list all gift vouchers ───────────────────────────────────────────
+app.get('/api/admin/gift-vouchers', requireAdminKey, async (req: any, res: any) => {
+  if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
+  try {
+    const vouchers = await guestDb.listAllGiftVouchers();
+    res.json({ vouchers });
+  } catch (err: any) {
+    console.error('[ADMIN] list gift vouchers error:', err.message);
+    res.status(500).json({ error: 'Could not load gift vouchers' });
+  }
+});
+
 // Error handling
 app.use((err, req, res, next) => {
   console.error('Server error:', err);
