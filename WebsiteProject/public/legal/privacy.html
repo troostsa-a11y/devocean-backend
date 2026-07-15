@@ -139,8 +139,10 @@
   <main id="main-content">
     <header class="sticky-header">
             <div class="header-inner">
-                <a href="/" data-role="back-link" aria-label="Back to home page"><span data-i18n="back">Home</span></a>
-                <button onclick="smartBack();" data-role="back-link" aria-label="Go back to previous page" style="margin-left: 12px;"><span data-i18n="backButton">Back</span></button>
+                <div style="display:flex;align-items:center;justify-content:space-between;">
+                  <a href="/" data-role="back-link" aria-label="Back to home page"><span data-i18n="back">Home</span></a>
+                  <button onclick="smartBack();" data-role="back-link" aria-label="Close"><span data-i18n="backButton">Close</span></button>
+                </div>
                 <div class="title-menu-row">
                     <h1 data-role="page-title"></h1>
                     <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false"

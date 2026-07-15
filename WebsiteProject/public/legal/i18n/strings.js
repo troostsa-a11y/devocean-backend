@@ -9,27 +9,27 @@
 (function () {
   // -------- UI labels (top bar / timestamp) --------
   window.LEGAL_UI = {
-    "en-GB": { backButton: "Back",             back: "Home",                   updated: "Last updated" },
-    "de-DE": { backButton: "Zurück",           back: "Startseite",             updated: "Zuletzt aktualisiert" },
-    "nl-NL": { backButton: "Terug",            back: "Home",                   updated: "Laatst bijgewerkt" },
-    "pt-PT": { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
-    "pt-BR": { backButton: "Voltar",           back: "Início",                 updated: "Última atualização" },
-    "fr-FR": { backButton: "Retour",           back: "Accueil",                updated: "Dernière mise à jour" },
-    "it-IT": { backButton: "Indietro",         back: "Home",                   updated: "Ultimo aggiornamento" },
-    "es-ES": { backButton: "Volver",           back: "Inicio",                 updated: "Última actualización" },
-    "sv": { backButton: "Tillbaka",         back: "Hem",                    updated: "Senast uppdaterad" },
-    "pl": { backButton: "Wstecz",           back: "Strona główna",          updated: "Ostatnia aktualizacja" },
-    "ja-JP": { backButton: "戻る",             back: "ホーム",                 updated: "最終更新日" },
-    "zh-CN": { backButton: "返回",             back: "首页",                   updated: "最后更新" },
-    "ru": { backButton: "Назад",            back: "Главная",                updated: "Последнее обновление" },
-    "af-ZA": { backButton: "Terug",            back: "Tuis",                   updated: "Laaste opdatering" },
-    "zu": { backButton: "Emuva",            back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" },
-    "sw": { backButton: "Nyuma",            back: "Nyumbani",               updated: "Ilisasishwa Mwisho" },
-    "sr": { backButton: "Nazad",            back: "Početna",                updated: "Poslednje ažuriranje" },
-    "hr": { backButton: "Natrag",           back: "Početna",                updated: "Posljednje ažuriranje" },
-    "cs": { backButton: "Zpět",             back: "Domů",                   updated: "Naposledy aktualizováno" },
-    "tr": { backButton: "Geri",             back: "Ana sayfa",              updated: "Son güncelleme" },
-    "ro": { backButton: "Înapoi",           back: "Acasă",                  updated: "Ultima actualizare" }
+    "en-GB": { backButton: "Close",            back: "Home",                   updated: "Last updated" },
+    "de-DE": { backButton: "Schließen",        back: "Startseite",             updated: "Zuletzt aktualisiert" },
+    "nl-NL": { backButton: "Sluiten",          back: "Home",                   updated: "Laatst bijgewerkt" },
+    "pt-PT": { backButton: "Fechar",           back: "Início",                 updated: "Última atualização" },
+    "pt-BR": { backButton: "Fechar",           back: "Início",                 updated: "Última atualização" },
+    "fr-FR": { backButton: "Fermer",           back: "Accueil",                updated: "Dernière mise à jour" },
+    "it-IT": { backButton: "Chiudi",           back: "Home",                   updated: "Ultimo aggiornamento" },
+    "es-ES": { backButton: "Cerrar",           back: "Inicio",                 updated: "Última actualización" },
+    "sv": { backButton: "Stäng",            back: "Hem",                    updated: "Senast uppdaterad" },
+    "pl": { backButton: "Zamknij",          back: "Strona główna",          updated: "Ostatnia aktualizacja" },
+    "ja-JP": { backButton: "閉じる",           back: "ホーム",                 updated: "最終更新日" },
+    "zh-CN": { backButton: "关闭",             back: "首页",                   updated: "最后更新" },
+    "ru": { backButton: "Закрыть",          back: "Главная",                updated: "Последнее обновление" },
+    "af-ZA": { backButton: "Sluit",            back: "Tuis",                   updated: "Laaste opdatering" },
+    "zu": { backButton: "Vala",             back: "Ikhaya",                 updated: "Okokugcina okubuyekeziwe" },
+    "sw": { backButton: "Funga",            back: "Nyumbani",               updated: "Ilisasishwa Mwisho" },
+    "sr": { backButton: "Zatvori",          back: "Početna",                updated: "Poslednje ažuriranje" },
+    "hr": { backButton: "Zatvori",          back: "Početna",                updated: "Posljednje ažuriranje" },
+    "cs": { backButton: "Zavřít",           back: "Domů",                   updated: "Naposledy aktualizováno" },
+    "tr": { backButton: "Kapat",            back: "Ana sayfa",              updated: "Son güncelleme" },
+    "ro": { backButton: "Închide",          back: "Acasă",                  updated: "Ultima actualizare" }
   };
 
   // Root dict
