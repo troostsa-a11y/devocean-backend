@@ -1048,7 +1048,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       let sleepsText;
                       if (singleGuest) {
                         sleepsText = t.singleUse;
-                      } else if (childUnit) {
+                      } else if (childUnit && (children > 0 || infants > 0)) {
                         sleepsText = fmt(t.sleepsAdultsChildren, {
                           adults: sleepsTotal,
                           children: t.childOccupant,
