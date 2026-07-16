@@ -89,12 +89,12 @@ export default function LanguageTopBar({
         </div>
 
         <div className="flex items-center gap-1.5">
-          <Globe2 size={20} />
-          {/* Region selector */}
+          {/* Globe + region selector — hidden on xs (<640px) to prevent topbar horizontal overflow */}
+          <Globe2 size={20} className="hidden sm:block" />
           <select
             value={region}
             onChange={(e) => handleRegionChange(e.target.value)}
-            className="border border-white/40 rounded px-2 py-1 w-[140px] text-white"
+            className="hidden sm:block border border-white/40 rounded px-2 py-1 w-[140px] text-white"
             aria-label="Select region"
           >
             {Object.entries(regions).map(([key]) => (
@@ -104,7 +104,7 @@ export default function LanguageTopBar({
             ))}
           </select>
 
-          {/* Language selector */}
+          {/* Language selector — always visible */}
           <select
             value={lang}
             onChange={(e) => onLangChange(e.target.value)}
