@@ -951,7 +951,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       ) : (
         <>
           {renderTopBar()}
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
             {renderNotices()}
 
             {/* ── Step 2: Results ── */}
@@ -1003,7 +1003,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     })()}
                     <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
                   </div>
-                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_24rem] gap-6 items-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(28rem,1fr)_22rem] gap-6 items-start">
                     <div className="space-y-4">
                     {availableRooms.map((room) => {
                       const offer =
