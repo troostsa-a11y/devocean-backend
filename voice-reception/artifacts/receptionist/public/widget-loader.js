@@ -373,6 +373,7 @@
     textBtn.style.bottom  = (bottom + BTN_R + GAP) + 'px';
     voiceBtn.style.bottom = (bottom + BTN_R + GAP + BTN_R + GAP) + 'px';
     textFrame.style.bottom = (bottom + BTN_R + 12) + 'px';
+    tooltip.style.bottom  = (bottom + Math.round(BTN_R / 2) - 14) + 'px';
   }
 
   // Check immediately (reCAPTCHA may already be loaded)
