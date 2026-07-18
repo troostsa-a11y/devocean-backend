@@ -161,12 +161,20 @@
       "bottom:" + (MARGIN + Math.round(BTN_R / 2) - 14) + "px;" +
       "right:" + (MARGIN + BTN_R + 12) + "px;" +
       "background:rgba(0,0,0,.72);" +
-      "color:#fff;padding:7px 14px;border-radius:20px;" +
-      "font-size:13px;font-family:system-ui,sans-serif;line-height:1;" +
+      "color:#fff;padding:8px 14px;border-radius:10px;" +
+      "font-size:13px;font-family:system-ui,sans-serif;line-height:1.2;" +
       "white-space:nowrap;pointer-events:none;" +
       "opacity:0;transform:translateX(8px);" +
       "transition:opacity .18s,transform .18s;" +
       "z-index:2147483646;" +
+    "}" +
+    "#dv-tooltip::after{" +
+      "content:'';" +
+      "position:absolute;" +
+      "right:-8px;top:50%;transform:translateY(-50%);" +
+      "border-top:6px solid transparent;" +
+      "border-bottom:6px solid transparent;" +
+      "border-left:8px solid rgba(0,0,0,.72);" +
     "}" +
     "#dv-tooltip.dv-vis{opacity:1;transform:translateX(0);}" +
 
