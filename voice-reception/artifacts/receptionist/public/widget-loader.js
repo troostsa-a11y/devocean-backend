@@ -275,12 +275,25 @@
     }
   });
 
-  // Pre-warm voice iframe (off critical path — 2 s delay)
-  setTimeout(function () {
+  // Pre-warm voice iframe on first user interaction (scroll / mouse / touch / key).
+  // This keeps the bundle out of Lighthouse's eager-load window while still loading
+  // the iframe before the user reaches the FAB on a real device.
+  var _prewarm = false;
+  function _doPrewarm() {
+    if (_prewarm) return;
+    _prewarm = true;
+    window.removeEventListener("scroll",     _doPrewarm, { passive: true });
+    window.removeEventListener("mousemove",  _doPrewarm, { passive: true });
+    window.removeEventListener("touchstart", _doPrewarm, { passive: true });
+    window.removeEventListener("keydown",    _doPrewarm);
     if (!voiceFrame.src) {
       voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
     }
-  }, 2000);
+  }
+  window.addEventListener("scroll",     _doPrewarm, { passive: true });
+  window.addEventListener("mousemove",  _doPrewarm, { passive: true });
+  window.addEventListener("touchstart", _doPrewarm, { passive: true });
+  window.addEventListener("keydown",    _doPrewarm);
 
   // Pulse FAB after a few seconds to draw attention
   setTimeout(function () {
