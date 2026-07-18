@@ -30,6 +30,8 @@
       .toLowerCase();
     if (newLang !== _pageLang) {
       _pageLang = newLang;
+      // Update tooltip label to match new language (tooltip var is hoisted)
+      if (tooltip) tooltip.textContent = TOOLTIP_LABELS[_pageLang] || TOOLTIP_LABELS.en;
       if (state === "text") {
         // Panel is currently open — reload it immediately with the new lang.
         textFrame.src = WIDGET_ORIGIN + "/embed-text?lang=" + encodeURIComponent(_pageLang);
@@ -57,6 +59,30 @@
   var GAP     = 10;   // gap between stacked buttons
   var PANEL_W = 360;  // text-chat panel width
   var PANEL_H = 480;  // text-chat panel height
+
+  // --- Localized tooltip strings (FAB hover label) ---
+  var TOOLTIP_LABELS = {
+    en: "Ask our online receptionist anything",
+    pt: "Fale com a nossa rececionista online",
+    de: "Stellen Sie unserer Rezeptionistin eine Frage",
+    fr: "Discutez avec notre réceptionniste en ligne",
+    es: "Hable con nuestra recepcionista en línea",
+    it: "Parla con la nostra receptionist online",
+    nl: "Stel onze online receptionist een vraag",
+    sv: "Ställ en fråga till vår receptionist",
+    pl: "Porozmawiaj z naszą recepcjonistką online",
+    ro: "Vorbește cu recepționista noastră online",
+    sr: "Razgovarajte s našom online recepcionerkom",
+    hr: "Razgovarajte s našom online recepcionarkom",
+    cs: "Promluvte si s naší online recepční",
+    tr: "Online resepsiyonistimize soru sorun",
+    ja: "オンラインレセプションに何でもお聞きください",
+    zh: "随时向我们的在线前台提问",
+    ru: "Задайте вопрос онлайн-администратору",
+    af: "Stel ons aanlyn ontvangsdame enigiets",
+    zu: "Buza isitamukeli sethu se-intanethi noma yini",
+    sw: "Uliza mpokeaji wetu wa mtandaoni chochote"
+  };
 
   // --- Styles ---
   var style = document.createElement("style");
@@ -130,8 +156,22 @@
     "}" +
     "#dv-fab.dv-attention{animation:dv-pulse 1.7s ease-out 2;}" +
 
+    "#dv-tooltip{" +
+      "position:fixed;" +
+      "bottom:" + (MARGIN + Math.round(BTN_R / 2) - 14) + "px;" +
+      "right:" + (MARGIN + BTN_R + 12) + "px;" +
+      "background:rgba(0,0,0,.72);" +
+      "color:#fff;padding:7px 14px;border-radius:20px;" +
+      "font-size:13px;font-family:system-ui,sans-serif;line-height:1;" +
+      "white-space:nowrap;pointer-events:none;" +
+      "opacity:0;transform:translateX(8px);" +
+      "transition:opacity .18s,transform .18s;" +
+      "z-index:2147483646;" +
+    "}" +
+    "#dv-tooltip.dv-vis{opacity:1;transform:translateX(0);}" +
+
     "@media(prefers-reduced-motion:reduce){" +
-      "#dv-fab,.dv-opt,#dv-text-panel{transition:none!important;animation:none!important;}" +
+      "#dv-fab,.dv-opt,#dv-text-panel,#dv-tooltip{transition:none!important;animation:none!important;}" +
     "}";
 
   document.head.appendChild(style);
@@ -174,6 +214,17 @@
   var voiceFrame = mk("iframe", "dv-voice-frame");
   voiceFrame.setAttribute("allow", "microphone");
 
+  // Tooltip label — appears to the left of the FAB on hover when idle
+  var tooltip = mk("div", "dv-tooltip");
+  tooltip.textContent = TOOLTIP_LABELS[_pageLang] || TOOLTIP_LABELS.en;
+
+  fab.addEventListener("mouseenter", function () {
+    if (state === "idle") tooltip.classList.add("dv-vis");
+  });
+  fab.addEventListener("mouseleave", function () {
+    tooltip.classList.remove("dv-vis");
+  });
+
   // --- Position option buttons above the FAB ---
   function placeOptions() {
     var textBottom  = MARGIN + BTN_R + GAP;
@@ -190,6 +241,8 @@
 
   function setState(next) {
     state = next;
+    // Hide tooltip whenever state leaves idle
+    tooltip.classList.remove("dv-vis");
     var isExpanded = next === "expanded";
     var isText     = next === "text";
     var isVoice    = next === "voice";
