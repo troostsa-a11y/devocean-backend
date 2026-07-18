@@ -61,27 +61,28 @@
   var PANEL_H = 480;  // text-chat panel height
 
   // --- Localized tooltip strings (FAB hover label) ---
+  // \n renders as a line break (white-space:pre-line on the tooltip element)
   var TOOLTIP_LABELS = {
-    en: "Ask our online receptionist anything",
-    pt: "Fale com a nossa rececionista online",
-    de: "Stellen Sie unserer Rezeptionistin eine Frage",
-    fr: "Discutez avec notre réceptionniste en ligne",
-    es: "Hable con nuestra recepcionista en línea",
-    it: "Parla con la nostra receptionist online",
-    nl: "Stel onze online receptionist een vraag",
-    sv: "Ställ en fråga till vår receptionist",
-    pl: "Porozmawiaj z naszą recepcjonistką online",
-    ro: "Vorbește cu recepționista noastră online",
-    sr: "Razgovarajte s našom online recepcionerkom",
-    hr: "Razgovarajte s našom online recepcionarkom",
-    cs: "Promluvte si s naší online recepční",
-    tr: "Online resepsiyonistimize soru sorun",
-    ja: "オンラインレセプションに何でもお聞きください",
-    zh: "随时向我们的在线前台提问",
-    ru: "Задайте вопрос онлайн-администратору",
-    af: "Stel ons aanlyn ontvangsdame enigiets",
-    zu: "Buza isitamukeli sethu se-intanethi noma yini",
-    sw: "Uliza mpokeaji wetu wa mtandaoni chochote"
+    en: "Ask our online receptionist\nanything you want",
+    pt: "Fale com a nossa\nrececionista online",
+    de: "Stellen Sie unserer\nRezeptionistin eine Frage",
+    fr: "Discutez avec notre\nréceptionniste en ligne",
+    es: "Hable con nuestra\nrecepcionista en línea",
+    it: "Parla con la nostra\nreceptionist online",
+    nl: "Stel onze online\nreceptionist een vraag",
+    sv: "Ställ en fråga till\nvår receptionist",
+    pl: "Porozmawiaj z naszą\nrecepcjonistką online",
+    ro: "Vorbește cu\nrecepționista noastră online",
+    sr: "Razgovarajte s našom\nonline recepcionerkom",
+    hr: "Razgovarajte s našom\nonline recepcionarkom",
+    cs: "Promluvte si s naší\nonline recepční",
+    tr: "Online resepsiyonistimize\nsoru sorun",
+    ja: "オンラインレセプションに\n何でもお聞きください",
+    zh: "随时向我们的\n在线前台提问",
+    ru: "Задайте вопрос\nонлайн-администратору",
+    af: "Stel ons aanlyn\nontvangsdame enigiets",
+    zu: "Buza isitamukeli sethu\nse-intanethi noma yini",
+    sw: "Uliza mpokeaji wetu\nwa mtandaoni chochote"
   };
 
   // --- Styles ---
@@ -162,8 +163,8 @@
       "right:" + (MARGIN + BTN_R + 12) + "px;" +
       "background:rgba(0,0,0,.72);" +
       "color:#fff;padding:8px 14px;border-radius:10px;" +
-      "font-size:13px;font-family:system-ui,sans-serif;line-height:1.2;" +
-      "white-space:nowrap;pointer-events:none;" +
+      "font-size:13px;font-family:system-ui,sans-serif;line-height:1.4;" +
+      "white-space:pre-line;text-align:center;pointer-events:none;" +
       "opacity:0;transform:translateX(8px);" +
       "transition:opacity .18s,transform .18s;" +
       "z-index:2147483646;" +
