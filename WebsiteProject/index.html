@@ -338,6 +338,54 @@
   }
   </script>
 
+  <!-- Structured Data: TouristDestination — Ponta do Ouro -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "@id": "https://devoceanlodge.com/ponta-do-ouro#destination",
+    "name": "Ponta do Ouro",
+    "alternateName": ["Ponta do Ouro, Mozambique", "Ponta do Ouro coastal village"],
+    "description": "Ponta do Ouro is a non-commercialised coastal village at the southern tip of Mozambique, renowned for pristine beaches, world-class scuba diving with 1,200+ fish species, resident bottlenose dolphin pods, humpback whale watching June–November, deep-sea fishing, and proximity to Maputo National Park — a UNESCO World Heritage site.",
+    "url": "https://devoceanlodge.com/ponta-do-ouro",
+    "image": "https://devoceanlodge.com/photos/hero02.jpg",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.8474,
+      "longitude": 32.8977
+    },
+    "hasMap": "https://www.google.com/maps/place/Ponta+do+Ouro,+Mozambique/@-26.8474,32.8977,13z",
+    "touristType": ["Scuba divers", "Snorkellers", "Wildlife watchers", "Beach travellers", "Eco-tourists", "Honeymooners"],
+    "includesAttraction": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Ponta do Ouro Partial Marine Reserve",
+        "description": "Protected marine reserve with 1,200+ fish species, resident dolphin pods, bull sharks, hammerheads, manta rays and sea turtles. Dive sites from 10 m (Crèche) to 47 m (Atlantis)."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Maputo National Park",
+        "description": "UNESCO World Heritage site 30 km from Ponta do Ouro — elephants, hippos, giraffes, zebras, blue wildebeest and 526 bird species across savanna, dunes and mangroves."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Humpback Whale Watching",
+        "description": "Humpback whales migrate through Ponta do Ouro waters from June to November each year."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Ethical Wild Dolphin Swims",
+        "description": "Year-round ethical in-water encounters with resident bottlenose dolphin pods, managed to strict eco-tourism standards."
+      }
+    ],
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Matutuine District",
+      "containedInPlace": { "@type": "Country", "name": "Mozambique", "alternateName": "MZ" }
+    }
+  }
+  </script>
+
 
   <!-- Inline Critical CSS (mobile-first: prevents 160ms CSS blocking on 4G) -->
   <style>
