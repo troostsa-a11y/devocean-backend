@@ -40,6 +40,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
   - `buildSystemPrompt(lang)` injects current CAT time (UTC+2) so Marin uses correct time-of-day greetings.
   - Pronunciation guide: DEVOCEAN spoken as **DEE-VO-SHUN** (three distinct syllables, stress first); written always as "DEVOCEAN".
   - "Give me a moment" filler spoken **only** before `check_availability` and `get_weather` (these hit live external APIs and take seconds). NOT before `convert_currency` or `save_booking_enquiry` (near-instant).
+  - **Experience details section** — `DEVOCEAN_SYSTEM_PROMPT` contains a named "Experience details" block with specific facts for all six activity types: scuba diving (named sites with depths, 19 shark species, seasonal windows, pricing), wild dolphin swims (200+ resident population, ethical guidelines, pricing, max group size), whale watching/seafari (30,000 humpback whales Jul–Nov, whale behaviours, pricing), game safari (UNESCO 2025, 450–500 elephants, day trip pricing), deep sea fishing (species by season, charter rates), surfing (point break specs, lesson/hire pricing). Marin must only state facts present in the prompt (CRITICAL ACCURACY RULE) — if a new activity detail is added to the website or `experienceDetails.js`, it must also be added here or Marin will deflect rather than answer.
 - **VAD (Voice Activity Detection)**: server-side VAD configured in `openaiRealtimeRelay.ts` with `threshold: 0.65` (default 0.5), `silence_duration_ms: 600`. VAD is **disabled for the entire duration of any Marin response** (`response.created` → mute, `response.done` → unmute via `session.update`). This prevents Marin's speaker output from being falsely detected as user speech and cutting her off mid-sentence. VAD is re-enabled after `response.done` so the user can speak freely between turns.
 - **Session loop guard**: `sessionGreetingSent` flag in the relay ensures `response.create` (opening greeting) is sent only on the **first** `session.updated` event. Subsequent `session.updated` events — triggered by VAD mute/unmute `session.update` calls — are silently dropped. Without this guard, each VAD update creates an infinite `session.updated → response.create → response.created → session.update → session.updated` loop.
 - **Booking enquiry notifications**: `save_booking_enquiry` tool (`artifacts/api-server/src/beds24/tool.ts`) fires a fire-and-forget SMTP email when Marin captures an enquiry. Env vars (set on the Render "Receptionist" service, values copied from the Automailer service):
@@ -92,11 +93,37 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 
 > Full detail in [`docs/performance.md`](docs/performance.md). Covers: lazy loading rules, hero image focal points, Hero Overlay + LCP constraints, Consent & Analytics deferral, GA4 Attribution Pipeline, Native Direct Booking, Discount Codes, Gift Vouchers, Date Range Picker, Mobile Menu Accessibility.
 
+### GEO / AI Visibility (static crawler pages)
+
+AI crawlers (ChatGPT, Perplexity, Gemini, etc.) cannot execute JavaScript, so all React/Wouter SPA routes return an empty shell. The fix is static HTML files at the same URL paths — CF Pages Pretty URLs serves `foo.html` at `/foo` with no `.html` in the URL, and static files take priority over the SPA fallback.
+
+**Static pages added (all in `WebsiteProject/`):**
+- `ponta-do-ouro.html` → `/ponta-do-ouro` — destination guide; `TouristDestination` + `FAQPage` JSON-LD (7 Q&As covering beaches, marine life, wildlife, culture, best time to visit).
+- `experiences/diving.html` → `/experiences/diving` — `TouristAttraction` + `FAQPage`; named dive sites with depths, 19 shark species, seasonal windows, pricing.
+- `experiences/dolphins.html` → `/experiences/dolphins` — 200+ resident dolphin population, ethical guidelines, pricing, peak season.
+- `experiences/seafari.html` → `/experiences/seafari` — 30,000 humpback whales Jul–Nov, whale behaviours, whale sharks/mantas/dolphins calendar, pricing.
+- `experiences/safari.html` → `/experiences/safari` — Maputo National Park UNESCO 2025, 450–500 elephants, full wildlife list, day trip pricing.
+- `experiences/fishing.html` → `/experiences/fishing` — species by season (marlin/sailfish/tuna), charter rates, beach fishing.
+- `experiences/surfing.html` → `/experiences/surfing` — point break specs (100–200m rides, up to 1km), surf spots graded by level, lesson/hire pricing.
+
+**Schema also added to existing static pages:**
+- `index.html` — `TouristDestination` block added alongside the existing `LodgingBusiness` schema.
+- `safari.html`, `comfort.html`, `cottage.html`, `chalet.html` — `FAQPage` JSON-LD (5 unit-specific Q&As each) + cross-link to `/ponta-do-ouro`.
+
+**Static page template pattern** (follow when adding new pages):
+- Head: delayed GTM (`GTM-532W3HH2`), CookieYes (`f0a2da84090ecaa3b37f74af`), Trustindex richsnippet, Inter font via Google Fonts, inline CSS with `:root { --brand: #9e4b13; ... }`.
+- JSON-LD: `TouristAttraction` (or `TouristDestination`) + `FAQPage` as separate `<script type="application/ld+json">` blocks.
+- Canonical: `https://devoceanlodge.com/<path>` (no `.html`).
+- Sitemap: add to `public/sitemap.xml` with `<lastmod>` and `<priority>0.9</priority>`.
+- Cross-link: every experience page links back to `/ponta-do-ouro`; every accommodation page links to `/ponta-do-ouro`.
+
 ## Maintenance Guidelines
 
 - **Keep the hero asset lightweight**: any image replacing `hero01-mobile.webp` must stay under 15 KB compressed. The 5 s overlay delay is tuned to a ~1.5 s load on Slow 4G.
 - **Monitor attribution match rate**: check Render logs for `matchBookingSession`. The 30-min language + country window should bind most confirmed bookings to a `client_id`. A low rate signals clock drift, missing `cf-ipcountry`, or sessions expiring before the booking email arrives.
 - **Defer new third-party scripts**: load any future tracking/widgets with the `requestIdleCallback` + first-interaction pattern used for GTM.
 - **Render Blueprint sync**: when adding new env vars to `render.yaml`, verify the service `name` and `type` match the live Render service exactly before pushing — a mismatch silently creates a duplicate service rather than erroring.
+- **GEO static pages ↔ Marin prompt ↔ experienceDetails.js must stay in sync**: three places hold activity facts — the static `experiences/*.html` pages, `DEVOCEAN_SYSTEM_PROMPT` in `voice-reception/artifacts/api-server/src/routes/openai.ts`, and the source data in `WebsiteProject/src/data/experienceDetails.js`. When any fact changes (pricing, seasonal window, operator, site name), update all three. Marin's CRITICAL ACCURACY RULE means she can only state what is in her prompt — an outdated prompt causes deflection rather than answers.
+- **Adding a new static experience page**: (1) create `WebsiteProject/experiences/<slug>.html` following the existing template pattern (see GEO / AI Visibility section above), (2) add to `public/sitemap.xml` with `lastmod` today and `priority 0.9`, (3) add the relevant facts to Marin's system prompt experience section, (4) add a cross-link back to `/ponta-do-ouro` in the page CTA.
 - **Marin VAD tuning**: VAD threshold and silence window live in `SERVER_VAD` const at the top of `openaiRealtimeRelay.ts` (currently `threshold: 0.65`, `silence_duration_ms: 600`). The response-level mute means these only affect user-turn detection between Marin's responses, not during them.
 - **LanguageTopBar mobile overflow**: on viewports < 640px the topbar flex row needs ~317px (left icons + Globe + Region select 140px + Lang select 93px + gaps) but a 320px screen with `px-4` padding only provides 288px — causing 29px of horizontal page overflow. Fix: Globe icon and region select use `hidden sm:block`; on mobile only the 93px language select is shown (~183px total). Region is auto-detected by IP so hiding the selector on small screens is acceptable. If you add new controls to the right-hand group in `LanguageTopBar.jsx`, budget against the ~189px remaining at 320px (288px content − 99px right group).
