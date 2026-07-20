@@ -148,7 +148,7 @@ export default function GallerySection({ ui }) {
             onClick={closeLightbox}
           >
             <img
-              src={IMG.gallery[currentIndex].desktop}
+              src={IMG.gallery[currentIndex].full}
               alt={IMG.gallery[currentIndex].alt}
               className="max-w-full max-h-[85vh] object-contain"
               onClick={(e) => e.stopPropagation()}

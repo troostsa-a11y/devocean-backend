@@ -20,41 +20,49 @@ export const IMG = {
     {
       desktop: "/photos/gallery/01-desktop.webp",
       mobile: "/photos/gallery/01-mobile.webp",
+      full: "/photos/gallery/01.jpg",
       alt: "DEVOCEAN Lodge gallery 1"
     },
     {
       desktop: "/photos/gallery/02-desktop.webp",
       mobile: "/photos/gallery/02-mobile.webp",
+      full: "/photos/gallery/02.jpg",
       alt: "DEVOCEAN Lodge gallery 2"
     },
     {
       desktop: "/photos/gallery/03-desktop.webp",
       mobile: "/photos/gallery/03-mobile.webp",
+      full: "/photos/gallery/03.jpg",
       alt: "DEVOCEAN Lodge gallery 3"
     },
     {
       desktop: "/photos/gallery/04-desktop.webp",
       mobile: "/photos/gallery/04-mobile.webp",
+      full: "/photos/gallery/04.jpg",
       alt: "DEVOCEAN Lodge gallery 4"
     },
     {
       desktop: "/photos/gallery/05-desktop.webp",
       mobile: "/photos/gallery/05-mobile.webp",
+      full: "/photos/gallery/05.jpg",
       alt: "DEVOCEAN Lodge gallery 5"
     },
     {
       desktop: "/photos/gallery/06-desktop.webp",
       mobile: "/photos/gallery/06-mobile.webp",
+      full: "/photos/gallery/06.jpg",
       alt: "DEVOCEAN Lodge gallery 6"
     },
     {
       desktop: "/photos/gallery/07-desktop.webp",
       mobile: "/photos/gallery/07-mobile.webp",
+      full: "/photos/gallery/07.jpg",
       alt: "DEVOCEAN Lodge gallery 7"
     },
     {
       desktop: "/photos/gallery/08-desktop.webp",
       mobile: "/photos/gallery/08-mobile.webp",
+      full: "/photos/gallery/08.jpg",
       alt: "DEVOCEAN Lodge gallery 8"
     }
   ],
