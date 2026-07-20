@@ -78,6 +78,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     const loadTrustindex = () => {
       if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
         const loadScript = () => {
+          // Guard: component may have unmounted between scheduling and firing
+          // (requestIdleCallback fires up to 2 s later; ref is null post-unmount).
+          if (!trustindexRef.current) return;
           const script = document.createElement('script');
           script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
           script.defer = true;
