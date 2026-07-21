@@ -1,0 +1,38 @@
+Summary of the lint issue
+Lint item “RLS Disabled in Public” means:
+
+The table public.gift_vouchers is in the public schema (which PostgREST can expose).
+But Row Level Security (RLS) is not enabled on that table.
+Even if you intend to restrict access with policies, policies won’t be enforced until you enable RLS—and with RLS off, users with the right table grants may be able to read/write rows they shouldn’t.
+This is a common misconfiguration that can lead to data leakage through the Data API.
+
+Suggested fixes (pick the correct path)
+Fix A (recommended): Enable RLS + add policies
+Enable RLS on the table:
+SQL Query
+
+
+
+alter table public.gift_vouchers enable row level security;
+
+Create the appropriate RLS policies for the operations you want (SELECT, INSERT, UPDATE, DELETE) and for the right roles (anon, authenticated, or both).
+If RLS is enabled and you don’t add policies, access will be denied by default, which is safer than accidentally exposing data.
+
+Ensure grants match your intent
+Grants decide whether roles can reach the table via PostgREST; RLS decides which rows. Supabase recommends granting the minimum needed (e.g., SELECT to anon only if vouchers should truly be public).
+Fix B: If you never intend to expose the table via PostgREST
+Consider moving the table out of public (e.g., into an api or private schema that you don’t expose), or
+Turn off exposure in your API settings (depending on how you onboarded the table).
+This reduces the surface area PostgREST can reach.
+
+Fix C: Temporarily restrict access with tighter grants (band-aid)
+If you need an emergency mitigation before RLS/policies are written:
+
+Remove/limit GRANT privileges on public.gift_vouchers for anon / authenticated roles.
+But this is usually a short-term stopgap—RLS should still be enabled for tables in exposed schemas.
+
+What to decide next
+To propose the exact RLS policies, I need to know your access model:
+
+Who should be able to see vouchers? (public, authenticated users only, voucher owner only, admin only?)
+Can users redeem vouchers (UPDATE/DELETE), or is redemption only server-side?
