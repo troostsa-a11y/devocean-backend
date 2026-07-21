@@ -430,9 +430,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const canAddRoom = totalRooms < maxRooms;
 
   // Minimum units needed to fit the whole party in the most spacious available room type.
+  // Falls back to capacity=2 per unit (the lodge default) when availableRooms is empty,
+  // so the note shows the correct count even when all units are unavailable for the dates.
   const minUnitsNeeded = useMemo(() => {
-    if (!availableRooms?.length) return 1;
-    const maxCap = availableRooms.reduce((best, r) => {
+    const maxCap = (availableRooms ?? []).reduce((best, r) => {
       const uk = getUnitKey(r.name);
       const cap = (uk === 'safari' || uk === 'comfort' || uk === 'chalet')
         ? (r.maxAdults || 2) + 1 : (r.maxAdults || r.maxPeople || 2);
