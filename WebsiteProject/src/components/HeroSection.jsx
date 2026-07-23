@@ -43,8 +43,29 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
   useEffect(() => {
     if (list.length <= 1) return;
 
-    // Mount slide 1 after 3s so it has time to load before the first 6s transition
-    const preload = setTimeout(() => ensureMounted([1]), 3000);
+    // Cascade-preload: kick off image downloads for slides 1 & 2 immediately
+    // via new Image() so bytes hit the browser cache long before those slide
+    // DOM elements are mounted. On slow mobile this eliminates the blank gap
+    // between slides caused by the download only starting at the 3s DOM-mount
+    // timer. Slide 0 still wins bandwidth — its <img> has fetchpriority="high"
+    // and the browser deprioritises these background Image() fetches behind it.
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 800;
+    [1, 2].forEach((offset) => {
+      const img = list[offset % list.length];
+      if (!img) return;
+      const url = isMobile
+        ? (typeof img === 'object' ? (img.mobileWebP || img.mobile || img.desktop) : img)
+        : (typeof img === 'object' ? (img.desktopWebP || img.desktop) : img);
+      if (!url) return;
+      const el = new Image();
+      el.onload = () => resolvedRef.current.add(offset % list.length);
+      el.src = url;
+    });
+
+    // Mount slide 1 DOM element after 1s (reduced from 3s — image bytes are
+    // already downloading via the cascade above, so the DOM element just needs
+    // to attach; onLoadComplete fires almost immediately from cache).
+    const preload = setTimeout(() => ensureMounted([1]), 1000);
 
     const id = setInterval(() => {
       const prev = idxRef.current;
