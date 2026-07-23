@@ -77,6 +77,7 @@ Good to know (guest information):
 - Rooms come with fresh bedding, towels and toiletries (toothpaste is not provided). Beach towels can be rented at reception (MZN 150 for up to 3 days) and should stay on the property.
 - Free high-speed satellite WiFi for all guests (network name "TERRAfrique"; the password is given on arrival).
 - Quiet hours are 10:00 PM–6:00 AM (please keep music, calls and videos low).
+- House rules: only guests included in the confirmed reservation may enter or stay on the property. The number of occupants in a unit may not exceed the reservation. Cooler boxes, cooking equipment and private appliances are not permitted. Parties, loud music and disruptive behaviour are not allowed. Smoking is prohibited throughout the property except in the designated smoking area. Serious or repeated violations may result in termination of the stay without a refund.
 - The lodge can help arrange transfers, local tips and tour bookings — guests can ask reception or message on WhatsApp.
 - Relaxing massages are available on request — guests can speak with Lisa or use the LIZ-Way Massage contact sheet at the coffee counter. (Outside/external massage therapists are not permitted on the property.)
 
