@@ -628,18 +628,41 @@ export function createBookingRouter(deps: {
     // documented "recompute at webhook" guard. computeCartQuote re-validates
     // availability + units (throwing BookingCartError on any sell-out / capacity
     // loss) AND recomputes the authoritative price, so one call both guards the
-    // sell-out case and lets us detect rate drift. The cart lines are rebuilt
-    // from the persisted per-leg occupancy (qty per roomId+offer), mirroring how
-    // checkout priced it; distributeGuests is deterministic, so the fresh legs
-    // line up 1:1 with the stored ones. Throws (BookingCartError on sell-out,
-    // Beds24Error on a transient upstream failure) — the caller decides.
+    // sell-out case and lets us detect rate drift.
+    //
+    // IMPORTANT: cart lines are rebuilt WITH per-leg adults/children/infants.
+    // Without this, computeCartQuote falls back to distributeGuests(), which
+    // throws PARTY_TOO_LARGE when Beds24 reports maxChildren=0 (which it does
+    // for all room types at this property). At checkout time the browser sends
+    // explicit per-unit occupancy so hasExplicitOcc=true and distributeGuests
+    // is bypassed — the webhook recheck must mirror that same path or any
+    // booking with children triggers a false sell-out and an erroneous refund.
+    //
+    // Key includes occupancy so legs with different per-unit splits (e.g. a
+    // future booking with 2A+0C in one room and 1A+1C in another) are kept
+    // separate, matching how checkout computed them. Throws (BookingCartError
+    // on real sell-out / capacity loss, Beds24Error on transient upstream
+    // failure) — the caller decides.
     async function recheckCartQuote(record: any, legs: DirectBookingLeg[]) {
-      const lineMap = new Map<string, { roomId: string; offerId: number | null; qty: number }>();
+      const lineMap = new Map<string, {
+        roomId: string; offerId: number | null; qty: number;
+        adults?: number; children?: number; infants?: number;
+      }>();
       for (const leg of legs) {
-        const key = `${leg.roomId}__${leg.offerId ?? 'any'}`;
+        const key = `${leg.roomId}__${leg.offerId ?? 'any'}__${leg.adults ?? ''}_${leg.children ?? ''}_${leg.infants ?? ''}`;
         const existing = lineMap.get(key);
-        if (existing) existing.qty += 1;
-        else lineMap.set(key, { roomId: leg.roomId, offerId: leg.offerId ?? null, qty: 1 });
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          lineMap.set(key, {
+            roomId: leg.roomId,
+            offerId: leg.offerId ?? null,
+            qty: 1,
+            adults: leg.adults,
+            children: leg.children,
+            infants: leg.infants ?? 0,
+          });
+        }
       }
       return computeCartQuote(
         beds24,
