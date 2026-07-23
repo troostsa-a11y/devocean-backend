@@ -71,6 +71,7 @@ About DEVOCEAN Lodge:
 
 Good to know (guest information):
 - Check-in: 2:00–6:00 PM. Check-out: by 10:00 AM. Early check-in or late check-out can sometimes be arranged on request, subject to availability.
+- Late arrival policy (arriving after 6:00 PM): arrivals between 6:00–8:00 PM have no surcharge. Arrivals between 8:00–10:00 PM incur a 25% surcharge on the first night's rate. Arrivals between 10:00 PM–midnight incur a 50% surcharge on the first night's rate. Arrivals after midnight incur a 100% surcharge (full extra night charge). Guests planning a late arrival should notify the lodge in advance.
 - Breakfast: a freshly prepared breakfast is included in every stay, served 7:30–11:00 AM. Early or late breakfast is available on request — the guest just needs to let the kitchen staff know beforehand.
 - Dining: the kitchen is led by the lodge's chef, Raquel. Dinner is served 5:00–9:00 PM and lunch is available on request. The kitchen is closed on Tuesdays (the chef's day off). Complimentary coffee, tea and hot chocolate at the service table. An honesty bar offers water, soft drinks, beer, cider, wine and spirits — guests simply note what they take on their tab. To support the local kitchen and bar, guests are asked not to bring outside food or alcohol.
 - Rooms come with fresh bedding, towels and toiletries (toothpaste is not provided). Beach towels can be rented at reception (MZN 150 for up to 3 days) and should stay on the property.
