@@ -4,7 +4,7 @@ export const UI = {
   nav: { home: "Hem", stay: "Boende", experiences: "Upplevelser", todo: "Att göra", gallery: "Galleri", location: "Plats", contact: "Kontakt" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Miljövänligt boende nära en orörd strand i en äventyrsdestination i världsklass.", description: "Upptäck ett unikt UNESCO-dykparadis, omgivet av naturreservat och oförglömliga upplevelser utomhus.", ctaPrimary: "Boka ditt boende", ctaSecondary: "Utforska lodgen", badge: "Gästernas favorit – komfort och värde", clickReviews: "Klicka på recensionerna!", whyPonta: "Varför Ponta do Ouro?", villageHighlights: "Höjdpunkter", goDiving: "Dyk" },
   stay: { headline: "Bo hos oss", blurb: "Välj din stil: naturnära tält eller mysiga stugor – alla med varm, familjeägd gästfrihet.", moreDetails: "Mer information", ourStory: "Vår Berättelse" },
-  experiences: { headline: "Upplevelser", blurb: "Havs- och skogsäventyr precis utanför dörren.", operators: "Pålitliga lokala arrangörer:" },
+  experiences: { headline: "Upplevelser", blurb: "Havs- och skogsäventyr precis utanför dörren.", operators: "Pålitliga lokala arrangörer:", learnMore: "Utforska dykplatser, arrangörer och priser →" },
   todo: {
     headline: "Att göra i Ponta do Ouro",
     note: "För dykning, snorkling, delfin-/val-safaris och fisketurer, se arrangörerna nedan.",

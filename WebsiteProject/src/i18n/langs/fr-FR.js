@@ -30,7 +30,8 @@ menu: "Menu",
     experiences: {
       headline: "Expériences",
       blurb: "Aventures océanes et forestières à deux pas.",
-      operators: "Opérateurs locaux de confiance :"
+      operators: "Opérateurs locaux de confiance :",
+      learnMore: "Explorer les sites de plongée, opérateurs et tarifs →"
     },
     units: {
       safari: {

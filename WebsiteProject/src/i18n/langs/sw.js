@@ -4,7 +4,7 @@ export const UI = {
   nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi rafiki kwa mazingira karibu na ufukwe usioguswa, katika eneo la matukio na safari za kipekee la kiwango cha dunia.", description: "Gundua paradiso ya kipekee ya kupiga mbizi ya UNESCO, iliyozungukwa na hifadhi za asili na shughuli za nje zisizosahaulika.", ctaPrimary: "Weka nafasi ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni", clickReviews: "Bonyeza maoni!", whyPonta: "Kwa nini Ponta do Ouro?", villageHighlights: "Mambo maalum", goDiving: "Kupiga mbizi" },
   stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },
-  experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:" },
+  experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:", learnMore: "Chunguza maeneo ya kupiga mbizi, watoa huduma na bei →" },
   todo: {
     headline: "Cha kufanya huko Ponta do Ouro",
     note: "Kwa kupiga mbizi, kuogelea chini ya maji, safari za pomboo/nyangumi na boti za kuvua samaki, angalia watoa huduma wafuatao.",

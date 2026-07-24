@@ -5,7 +5,7 @@ menu: "Menu",
     nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Hospedagens ecológicas perto de uma praia intocada, em um destino de aventura de classe mundial.", description: "Descubra um paraíso único de mergulho da UNESCO, cercado por reservas naturais e experiências inesquecíveis ao ar livre.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", clickReviews: "Clique nas avaliações!", whyPonta: "Porquê Ponta do Ouro?", villageHighlights: "Destaques", goDiving: "Mergulhar" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
-    experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:" },
+    experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:", learnMore: "Explorar locais de mergulho, operadores e preços →" },
     todo: {
       headline: "O que fazer em Ponta do Ouro",
       note: "Para mergulho, viagens de snorkel, safaris marítimos com golfinhos/baleias e charters de pesca, veja os fornecedores abaixo.",

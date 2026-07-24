@@ -5,7 +5,7 @@ menu: "Menu",
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijk verblijven vlak bij een ongerept strand in een avontuurlijke topbestemming.", description: "Ontdek een uniek UNESCO-duikparadijs, omgeven door natuurreservaten en onvergetelijke belevenissen in de buitenlucht.", ctaPrimary: "Boek uw verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit", clickReviews: "Klik op de recensies!", whyPonta: "Waarom Ponta do Ouro?", villageHighlights: "Hoogtepunten", goDiving: "Gaan duiken" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
-    experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:" },
+    experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:", learnMore: "Verken duiklocaties, aanbieders & prijzen →" },
     units: {
       safari: {
         title: "Safaritent",

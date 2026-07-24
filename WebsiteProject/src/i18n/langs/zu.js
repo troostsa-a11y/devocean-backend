@@ -4,7 +4,7 @@ export const UI = {
   nav: { home: "Ikhaya", stay: "Ukuhlala", experiences: "Okuhlangenwe nakho", todo: "Okumele ukwenze", gallery: "Igalari", location: "Indawo", contact: "Xhumana nathi" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Izindawo zokuhlala ezihambisana nemvelo eduze kolwandle olungakathintwa, endaweni yomhlaba wonke yezokuzijabulisa nokuzidela.", description: "Thola ipharadesi eliyingqayizivele lokuntweza le-UNESCO, elizungezwe yiziqiwu zemvelo nezinto ezingasoze zalibaleka ongazenza ngaphandle.", ctaPrimary: "Bhukha ukulala kwakho", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi", clickReviews: "Chofoza izibuyekezo!", whyPonta: "Kungani iPonta do Ouro?", villageHighlights: "Izinto ezibalulekile", goDiving: "Yiya ukugxumeka" },
   stay: { headline: "Hlala nathi", blurb: "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni.", moreDetails: "Imininingwane eyengeziwe", ourStory: "Indaba Yethu" },
-  experiences: { headline: "Okuhlangenwe nakho", blurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.", operators: "Abahlinzekibasekhaya abathenjwayo:" },
+  experiences: { headline: "Okuhlangenwe nakho", blurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.", operators: "Abahlinzekibasekhaya abathenjwayo:", learnMore: "Hlola izindawo zokugxumeka, abahlinzeki namanani →" },
   todo: {
     headline: "Okumele ukwenze ePonta do Ouro",
     note: "Ngokushushuluza, ukubhukuda ngaphansi kwamanzi, amaholidi omkhomo/amahhashi kanye nezikebhe zokudoba, bheka abahlinzeki abalandelayo.",
