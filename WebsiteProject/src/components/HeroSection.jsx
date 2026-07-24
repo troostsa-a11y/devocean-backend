@@ -57,8 +57,13 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         ? (typeof img === 'object' ? (img.mobileWebP || img.mobile || img.desktop) : img)
         : (typeof img === 'object' ? (img.desktopWebP || img.desktop) : img);
       if (!url) return;
+      // Cache-warm only — do NOT set resolvedRef here. resolvedRef is set
+      // exclusively by the actual DOM img's onLoadComplete callback so that
+      // the interval only advances once the visible element itself has loaded.
+      // Marking resolvedRef from new Image() caused the interval to advance
+      // the slide wrapper before LazyImage's own imageLoaded state transitioned,
+      // revealing the brand fallback behind the still-transparent inner img.
       const el = new Image();
-      el.onload = () => resolvedRef.current.add(offset % list.length);
       el.src = url;
     });
 
@@ -173,7 +178,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
                   srcMobileWebP={srcMobileWebP}
                   alt={`Hero slide ${i + 1}`}
                   className={`absolute inset-0 w-full h-full object-cover ${img.mobileObjectClass || 'object-center'}`}
-                  loading={isFirst ? "eager" : "lazy"}
+                  loading="eager"
                   fetchpriority={isFirst ? "high" : undefined}
                   isLCP={isFirst}
                   width={1920}
