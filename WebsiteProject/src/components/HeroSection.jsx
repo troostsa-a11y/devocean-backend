@@ -88,10 +88,17 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
       const upcoming = (next + 1) % list.length;
       ensureMounted([upcoming]);
 
-      // Advance — direct DOM mutation, no React state change, no re-render
+      // Advance — direct DOM mutation, no React state change, no re-render.
+      // Fade NEXT in first; fade PREV out only after NEXT has fully transitioned
+      // (1 000 ms = transition-opacity duration-1000). If both fade simultaneously,
+      // Porter-Duff compositing math means up to 25 % of the bg-[#9e4b13] brand
+      // fallback shows through during the crossfade midpoint — visible as a warm
+      // tint on beach/ocean photos. Delaying prev's fade-out means NEXT covers
+      // the entire slide area at opacity:1 before PREV becomes transparent.
       idxRef.current = next;
-      if (slideEls.current[prev]) slideEls.current[prev].style.opacity = '0';
       if (slideEls.current[next]) slideEls.current[next].style.opacity = '1';
+      const prevElTimer = slideEls.current[prev];
+      if (prevElTimer) setTimeout(() => { prevElTimer.style.opacity = '0'; }, 1000);
     }, 6000);
 
     return () => { clearTimeout(preload); clearInterval(id); };
@@ -146,8 +153,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     const prev = idxRef.current;
     if (prev === target) return;
     idxRef.current = target;
-    if (slideEls.current[prev]) slideEls.current[prev].style.opacity = '0';
     if (slideEls.current[target]) slideEls.current[target].style.opacity = '1';
+    const prevEl = slideEls.current[prev];
+    if (prevEl) setTimeout(() => { prevEl.style.opacity = '0'; }, 1000);
   };
 
   return (

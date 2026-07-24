@@ -133,11 +133,20 @@ export default function App() {
     const hash = window.location.hash.slice(1);
     if (location !== '/') return;
 
-    // Ensure hero placeholder stays hidden when navigating back to homepage
+    // Ensure hero placeholder stays hidden when navigating back to homepage.
+    // Double-rAF: give React's LCP <picture> (slide 0, decoding="async") two
+    // paint frames to finish decoding before we pull the placeholder. Without
+    // this, there can be a 1-frame gap where the placeholder is gone but the
+    // hero image hasn't been composited yet, briefly revealing the brand
+    // fallback bg-[#9e4b13] between the placeholder photo and the React photo.
     const heroPlaceholder = document.getElementById('hero-placeholder');
     if (heroPlaceholder && (safeSessionStorage.getItem('devocean-hero-seen') || safeLocalStorage.getItem('devocean-hero-seen'))) {
-      heroPlaceholder.style.display = 'none';
-      document.documentElement.classList.remove('hero-active');
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          heroPlaceholder.style.display = 'none';
+          document.documentElement.classList.remove('hero-active');
+        });
+      });
     }
 
     if (!hash) return;
