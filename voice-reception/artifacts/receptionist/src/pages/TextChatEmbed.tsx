@@ -41,6 +41,8 @@ const CHAT_STRINGS: Record<string, ChatStrings> = {
  * Returns an array of React nodes safe to embed in a <span> or <p>.
  */
 function renderMarkdown(text: string): React.ReactNode[] {
+  // Strip LLM-emitted backslash escapes before currency symbols (e.g. \$ → $).
+  text = text.replace(/\\(\$)/g, "$1");
   // Split on bold (**...**) and links ([text](url)) tokens.
   const TOKEN = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
   const parts = text.split(TOKEN);
