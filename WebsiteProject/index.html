@@ -775,25 +775,25 @@
         heroSeenThisSession = null;
         heroSeenEver = null;
       }
+
+      // Already seen — suppress the overlay before any paint, same as the
+      // wrong-path bail-out above. Without this early exit the hero CSS is
+      // applied by the browser before DOMContentLoaded fires, causing a
+      // brief full-screen flash when returning from /story or any other page.
+      if (heroSeenThisSession || heroSeenEver) {
+        var hideStyle = document.createElement('style');
+        hideStyle.textContent = '#hero-placeholder{display:none!important}';
+        document.head.appendChild(hideStyle);
+        return;
+      }
       
       // Wait for DOM to be ready
       function init() {
         var placeholder = document.getElementById('hero-placeholder');
         var root = document.getElementById('root');
         
-        // Skip hero if already shown this session OR returning visitor
-        // Note: PageSpeed and real users both see the optimized placeholder for accurate LCP measurement
-        if (heroSeenThisSession || heroSeenEver) {
-          // Skip hero - show main site immediately
-          if (placeholder) {
-            placeholder.style.animation = 'none'; // cancel compositor animation
-            placeholder.style.display = 'none';
-          }
-          return;
-        }
-        
-        // First visit - show hero opening sequence
-        // Note: Content renders underneath, hero is just a visual overlay
+        // First visit — show the hero opening sequence.
+        // Note: Content renders underneath, hero is just a visual overlay.
         document.documentElement.classList.add('hero-active');
         
         // Mark hero as seen immediately (both session and persistent)
