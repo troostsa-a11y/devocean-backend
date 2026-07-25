@@ -116,8 +116,8 @@ export const SendOpenaiMessageParams = zod.object({
 export const SendOpenaiMessageBody = zod.object({
   "content": zod.string(),
   "lang": zod.string().optional(),
-  "currency": zod.string().optional(),
-  "pageContext": zod.string().optional(),
+  "currency": zod.string().optional().describe('ISO 4217 display currency preference (e.g. USD, EUR)'),
+  "pageContext": zod.string().optional().describe('Optional page-context string injected by the website so Marin can give a specific, data-aware answer (e.g. available rooms + prices on the booking page, or room details on a detail page).\n')
 })
 
 

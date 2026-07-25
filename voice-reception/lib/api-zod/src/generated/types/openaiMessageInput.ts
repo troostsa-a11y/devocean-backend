@@ -8,4 +8,10 @@
 
 export interface OpenaiMessageInput {
   content: string;
+  lang?: string;
+  /** ISO 4217 display currency preference (e.g. USD, EUR) */
+  currency?: string;
+  /** Optional page-context string injected by the website so Marin can give a specific, data-aware answer (e.g. available rooms + prices on the booking page, or room details on a detail page).
+   */
+  pageContext?: string;
 }

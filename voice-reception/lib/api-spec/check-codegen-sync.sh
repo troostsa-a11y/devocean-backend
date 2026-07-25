@@ -27,7 +27,19 @@ if [[ "$CODEGEN_OK" == "false" ]]; then
   exit 1
 fi
 
-DIFF_REACT=$(diff -rq "$TMP_ROOT/api-client-react/generated" "$REACT_GEN" 2>&1 || true)
+# The mutator import in api.ts is a relative path calculated from the OUTPUT
+# directory to custom-fetch.ts.  When the output is in $TMP the relative path
+# is a long ../../../../… string; in the committed source it is ../custom-fetch.
+# Normalise both sides to a fixed token before diffing so this structural
+# difference never triggers a false "out of sync" error.
+NORMALIZE_IMPORT='s|from \x27[^[:space:]]*custom-fetch\x27|from \x27CUSTOM_FETCH_NORMALIZED\x27|g'
+sed -i -E "$NORMALIZE_IMPORT" "$TMP_ROOT/api-client-react/generated/api.ts"
+# Normalise the committed copy into a temp shadow so we never modify the source.
+REACT_GEN_NORM="$TMP_ROOT/_react_norm"
+cp -r "$REACT_GEN" "$REACT_GEN_NORM"
+sed -i -E "$NORMALIZE_IMPORT" "$REACT_GEN_NORM/api.ts"
+
+DIFF_REACT=$(diff -rq "$TMP_ROOT/api-client-react/generated" "$REACT_GEN_NORM" 2>&1 || true)
 DIFF_ZOD=$(diff -rq "$TMP_ROOT/api-zod/generated" "$ZOD_GEN" 2>&1 || true)
 
 if [[ -n "$DIFF_REACT" || -n "$DIFF_ZOD" ]]; then
