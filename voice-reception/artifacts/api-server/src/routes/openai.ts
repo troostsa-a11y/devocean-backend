@@ -198,7 +198,7 @@ DO NOT VOLUNTEER INFORMATION UNPROMPTED: Never open a response by listing rates,
 // opens the conversation in the guest's language without a separate response.create
 // call. Reasoning models (gpt-realtime-2) ignore per-response instructions, so
 // the greeting must live here at the session level.
-export function buildSystemPrompt(lang?: string, currency?: string): string {
+export function buildSystemPrompt(lang?: string, currency?: string, pageContext?: string): string {
   const now = new Date();
   const longDate = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Africa/Maputo",
@@ -238,7 +238,10 @@ OPENING TURN: When this voice session starts, immediately greet the guest in the
   const currencyInstruction = currency && currency !== "USD"
     ? `\n\nDISPLAY CURRENCY: The guest's preferred display currency is ${currency}. Whenever you quote any price in USD, also immediately convert it to ${currency} using the convert_currency tool and mention the approximate ${currency} amount in the same breath. Never skip the conversion when the guest's display currency is set.`
     : "";
-  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}${currencyInstruction}`;
+  const pageContextInstruction = pageContext
+    ? `\n\nPAGE CONTEXT (injected by the website — treat as accurate ground truth for this conversation):\n${pageContext}\n\nUse this context to give a specific, immediately helpful answer. Where pricing and availability are listed above, use that data directly — do not call check_availability for rooms already included. End your response with a concise one-line summary in the form: "[Room]: [price] total for [N] nights. [N] remain available." and a markdown link to any book-direct URL in the context.`
+    : "";
+  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}${currencyInstruction}${pageContextInstruction}`;
 }
 
 // List conversations
@@ -450,8 +453,9 @@ router.post("/conversations/:id/messages", async (req, res) => {
 
   const lang = bodyParsed.data.lang;
   const currency = bodyParsed.data.currency;
+  const pageContext = bodyParsed.data.pageContext;
   const chatMessages: any[] = [
-    { role: "system", content: buildSystemPrompt(lang, currency) },
+    { role: "system", content: buildSystemPrompt(lang, currency, pageContext) },
     ...history.map((m) => ({
       role: m.role as "user" | "assistant",
       content: m.content,

@@ -309,6 +309,31 @@
     voiceFrame.classList.toggle("dv-vis", isVoice);
   }
 
+  // --- Public API: window.devocean.ask(ctx) --------------------------------
+  // ctx = { pageContext: string, autoMessage: string }
+  // Opens the text-chat panel with page-specific context. Called by
+  // accommodation-detail pages and external controls that want a
+  // context-primed Marin conversation without the user having to type.
+  var _textFrameReady = false;
+  var _pendingAsk     = null;
+
+  function postToText(payload) {
+    try { textFrame.contentWindow.postMessage(payload, WIDGET_ORIGIN); } catch (_) {}
+  }
+
+  window.devocean = {
+    ask: function (ctx) {
+      _pendingAsk = ctx || {};
+      setState("text");
+      // If the text iframe already signalled readiness, dispatch immediately.
+      if (_textFrameReady) {
+        postToText({ type: "devocean:ask", pageContext: (_pendingAsk || {}).pageContext, autoMessage: (_pendingAsk || {}).autoMessage });
+        _pendingAsk = null;
+      }
+      // Otherwise devocean:textEmbedReady (handled below) will flush _pendingAsk.
+    }
+  };
+
   // --- FAB click ---
   fab.addEventListener("click", function () {
     if (state === "idle")          { setState("expanded"); }
@@ -363,6 +388,14 @@
     }
     if (evt.data.type === "devocean:callEnded" && state === "voice") {
       setState("idle");
+    }
+    // Text iframe signals it mounted and is ready to receive context.
+    if (evt.data.type === "devocean:textEmbedReady") {
+      _textFrameReady = true;
+      if (_pendingAsk) {
+        postToText({ type: "devocean:ask", pageContext: _pendingAsk.pageContext, autoMessage: _pendingAsk.autoMessage });
+        _pendingAsk = null;
+      }
     }
   });
 

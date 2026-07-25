@@ -8,6 +8,7 @@ import LanguageTopBar from './LanguageTopBar';
 import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
 import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
+import MarinPanel from './MarinPanel';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -428,6 +429,63 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms;
+
+  // Context strings passed to MarinPanel so Marin knows what the visitor is
+  // currently looking at — dates, available rooms + prices, guest count, and
+  // booking currency. Sent once with the auto-message on panel open.
+  const marinResultsContext = useMemo(() => {
+    if (!checkIn || !checkOut || !availability) return '';
+    const nights = availability.nights || 0;
+    const guestParts = [
+      adults > 0 ? `${adults} adult${adults !== 1 ? 's' : ''}` : '',
+      children > 0 ? `${children} child${children !== 1 ? 'ren' : ''}` : '',
+      infants > 0 ? `${infants} infant${infants !== 1 ? 's' : ''}` : '',
+    ].filter(Boolean);
+    const guestStr = guestParts.length ? guestParts.join(', ') : '2 adults';
+    const lines = [
+      'Visitor is viewing availability results on the DEVOCEAN Lodge booking page.',
+      `Check-in: ${checkIn}. Check-out: ${checkOut}. Nights: ${nights}. Guests: ${guestStr}.`,
+      'Book-direct URL: https://devoceanlodge.com/book-direct',
+      '',
+    ];
+    if (availableRooms.length > 0) {
+      lines.push('Available options:');
+      availableRooms.forEach((r) => {
+        const offer = r.offers[0];
+        const price = offer ? money(offer.total, r.currency) : '—';
+        const units = offer?.unitsAvailable ?? 0;
+        lines.push(`- ${r.name}: ${price} total. ${units} unit${units !== 1 ? 's' : ''} available.`);
+      });
+    }
+    if (unavailableRooms.length > 0) {
+      lines.push('');
+      lines.push('Sold out for these dates:');
+      unavailableRooms.forEach((r) => lines.push(`- ${r.name}`));
+    }
+    return lines.join('\n');
+  }, [checkIn, checkOut, availability, adults, children, infants, availableRooms, unavailableRooms]);
+
+  const marinDetailsContext = useMemo(() => {
+    if (!checkIn || !checkOut || !quote) return '';
+    const guestParts = [
+      adults > 0 ? `${adults} adult${adults !== 1 ? 's' : ''}` : '',
+      children > 0 ? `${children} child${children !== 1 ? 'ren' : ''}` : '',
+      infants > 0 ? `${infants} infant${infants !== 1 ? 's' : ''}` : '',
+    ].filter(Boolean);
+    const guestStr = guestParts.length ? guestParts.join(', ') : '2 adults';
+    const lines = [
+      'Visitor is at the pre-payment stage on the DEVOCEAN Lodge booking page.',
+      `Check-in: ${checkIn}. Check-out: ${checkOut}. Nights: ${quote.nights}. Guests: ${guestStr}.`,
+      '',
+      'Selected booking:',
+    ];
+    quote.lines.forEach((l) => {
+      lines.push(`- ${l.qty} × ${l.roomName}: ${money(l.lineTotal, quote.currency)}`);
+    });
+    lines.push(`Total: ${money(quote.total, quote.currency)}. Deposit required now: ${money(quote.deposit, quote.currency)}. Balance on arrival: ${money(quote.balance, quote.currency)}.`);
+    lines.push('Book-direct URL: https://devoceanlodge.com/book-direct');
+    return lines.join('\n');
+  }, [checkIn, checkOut, quote, adults, children, infants]);
 
   // Minimum units needed to fit the whole party in the most spacious available room type.
   // Falls back to capacity=2 per unit (the lodge default) when availableRooms is empty,
@@ -979,6 +1037,17 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </span>
                   </span>
                 </p>
+
+                {marinResultsContext && (
+                  <div className="flex justify-end">
+                    <MarinPanel
+                      context={marinResultsContext}
+                      autoMessage="I need help choosing a room."
+                      lang={lang}
+                      currency={currency}
+                    />
+                  </div>
+                )}
 
                 {availableRooms.length === 0 && unavailableRooms.length === 0 ? (
                   <div className="bg-white rounded-2xl border border-slate-200 p-6 text-center text-slate-600" data-testid="status-no-rooms">
@@ -1661,6 +1730,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <p className="mt-3 text-xs text-slate-400" data-testid="text-fx-note-summary">
                       {fmt(t.approxNote, { currency: baseCurrency })}
                     </p>
+                  )}
+                  {marinDetailsContext && (
+                    <div className="mt-3 pt-3 border-t border-slate-100 flex justify-end">
+                      <MarinPanel
+                        context={marinDetailsContext}
+                        autoMessage="I have a question before I pay."
+                        lang={lang}
+                        currency={currency}
+                      />
+                    </div>
                   )}
                 </div>
 

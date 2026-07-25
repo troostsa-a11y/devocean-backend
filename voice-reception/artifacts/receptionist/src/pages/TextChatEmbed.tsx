@@ -63,6 +63,10 @@ export default function TextChatEmbed() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
+  // Holds page context injected via devocean:ask postMessage.
+  // Sent exactly once — with the first message after an ask — then cleared.
+  const pageContextRef = useRef<string | undefined>(undefined);
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -87,16 +91,26 @@ export default function TextChatEmbed() {
     return data.id;
   }, [conversationId]);
 
-  const sendMessage = useCallback(async () => {
-    const content = input.trim();
+  // sendMessage accepts an optional overrideContent for programmatic sends
+  // (devocean:ask auto-message). When overrideContent is provided the input
+  // field is not cleared — it was never touched by the user.
+  const sendMessage = useCallback(async (overrideContent?: string) => {
+    const content = overrideContent ?? input.trim();
     if (!content || loading) return;
 
-    setInput("");
-    if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+    if (!overrideContent) {
+      setInput("");
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+      }
     }
     setMessages((prev) => [...prev, { role: "user", content }]);
     setLoading(true);
+
+    // Capture pending page context and clear immediately so follow-up
+    // messages don't re-inject it into the system prompt.
+    const ctx = pageContextRef.current;
+    pageContextRef.current = undefined;
 
     abortRef.current?.abort();
     const controller = new AbortController();
@@ -115,7 +129,12 @@ export default function TextChatEmbed() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content, lang, ...(currency ? { currency } : {}) }),
+          body: JSON.stringify({
+            content,
+            lang,
+            ...(currency ? { currency } : {}),
+            ...(ctx   ? { pageContext: ctx } : {}),
+          }),
           signal: controller.signal,
         },
       );
@@ -178,7 +197,33 @@ export default function TextChatEmbed() {
       setLoading(false);
       textareaRef.current?.focus();
     }
-  }, [input, loading, ensureConversation, lang]);
+  }, [input, loading, ensureConversation, lang, currency]);
+
+  // Keep a stable ref so the postMessage listener always calls the latest version.
+  const sendMessageRef = useRef(sendMessage);
+  useEffect(() => { sendMessageRef.current = sendMessage; }, [sendMessage]);
+
+  // On mount: signal readiness to the parent (widget-loader or MarinPanel)
+  // and listen for devocean:ask to auto-send a context-primed opener.
+  useEffect(() => {
+    window.parent.postMessage({ type: "devocean:textEmbedReady" }, "*");
+
+    function onMessage(evt: MessageEvent) {
+      if (!evt.data || typeof evt.data !== "object") return;
+      if (evt.data.type === "devocean:ask") {
+        if (evt.data.pageContext) {
+          pageContextRef.current = evt.data.pageContext as string;
+        }
+        const autoMsg = (evt.data.autoMessage as string) || "";
+        if (autoMsg) {
+          // Small delay ensures the component is settled before injecting.
+          setTimeout(() => sendMessageRef.current(autoMsg), 80);
+        }
+      }
+    }
+    window.addEventListener("message", onMessage);
+    return () => window.removeEventListener("message", onMessage);
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -258,7 +303,7 @@ export default function TextChatEmbed() {
             style={{ lineHeight: "1.5", minHeight: "38px", maxHeight: "120px" }}
           />
           <button
-            onClick={sendMessage}
+            onClick={() => sendMessage()}
             disabled={!input.trim() || loading}
             className="w-9 h-9 rounded-full bg-primary flex items-center justify-center disabled:opacity-35 shrink-0 transition-opacity hover:opacity-90 active:scale-95"
           >

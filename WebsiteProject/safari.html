@@ -885,6 +885,7 @@
             <span data-i18n="viewAllAccommodations">View All Accommodations</span>
           </a>
         </div>
+        <p style="margin-top:1rem;"><button type="button" onclick="dvAsk()" style="background:none;border:none;color:rgba(255,255,255,.85);cursor:pointer;font-size:.875rem;padding:0;text-decoration:underline;text-underline-offset:3px;font-family:inherit;">Not sure which option? Ask Marin →</button></p>
         <p style="margin-top:1.25rem;font-size:.875rem;opacity:.8"><a href="/ponta-do-ouro" style="color:white;text-decoration:underline;text-underline-offset:3px" data-testid="link-destination-guide">Explore what to do in Ponta do Ouro →</a></p>
       </div>
     </section>
@@ -893,6 +894,18 @@
   <!-- Dynamic Booking URL & i18n Scripts -->
   <script src="/translations/accommodation-detail-i18n.js"></script>
   <script src="/js/gallery-lightbox.js" defer></script>
+  <!-- Marin AI receptionist widget + contextual ask -->
+  <script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
+  <script>
+  function dvAsk() {
+    var roomName = "Standard Safari Tent";
+    var lang = new URLSearchParams(location.search).get('lang') || document.documentElement.lang || 'en';
+    window.devocean && window.devocean.ask({
+      pageContext: "The visitor is on the " + roomName + " detail page on the DEVOCEAN Lodge website. The Safari Tent has shared bathrooms, a raised platform canvas tent with twin/king configuration, fan, and private terrace. Display language: " + lang + ".",
+      autoMessage: "I'm looking at the " + roomName + ". Can you tell me more and help me decide if it's right for my stay?"
+    });
+  }
+  </script>
 </body>
 
 </html>
