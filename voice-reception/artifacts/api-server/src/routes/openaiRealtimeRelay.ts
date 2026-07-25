@@ -23,7 +23,7 @@ const API_KEY = () => process.env.AI_INTEGRATIONS_OPENAI_API_KEY ?? "";
  *   - Mia's assistant turns (role: "assistant") ARE stored after each
  *     response.done event for quality-control purposes.
  */
-export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
+export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: string): void {
   const model = REALTIME_MODEL();
   const apiKey = API_KEY();
 
@@ -161,7 +161,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en"): void {
       type: "session.update",
       session: {
         type: "realtime",
-        instructions: buildSystemPrompt(lang),
+        instructions: buildSystemPrompt(lang, currency),
         audio: {
           input: { turn_detection: SERVER_VAD },
           output: { voice: "coral" },

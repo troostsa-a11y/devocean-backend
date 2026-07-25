@@ -42,28 +42,27 @@ export default function App() {
       return;
     }
     
-    // Check stored currency to preserve MZN for Mozambican Afrikaans speakers
-    const storedCurrency = safeLocalStorage.getItem('site.currency');
-    const storedLang = safeLocalStorage.getItem('site.lang');
-    
+    // Currency is determined by IP detection in useLocale — do not include
+    // ?currency= in redirect targets. URL currency params are never read by
+    // the locale hook, so they only pollute history and shareable links.
     const localeRedirects = {
-      '/af-ZA': storedCurrency === 'MZN' ? '/?lang=af&currency=MZN' : '/?lang=af&currency=ZAR', // Preserve currency (MZN or ZAR)
-      '/en-GB': '/?lang=en&currency=GBP',
-      '/en-US': '/?lang=en-us&currency=USD',
-      '/pt-PT': '/?lang=pt-PT&currency=EUR',
-      '/pt-BR': storedCurrency === 'MZN' ? '/?lang=pt-BR&currency=MZN' : '/?lang=pt-BR&currency=BRL', // Preserve MZN for Mozambique
-      '/nl-NL': '/?lang=nl&currency=EUR',
-      '/fr-FR': '/?lang=fr&currency=EUR',
-      '/it-IT': '/?lang=it&currency=EUR',
-      '/de-DE': '/?lang=de&currency=EUR',
-      '/es-ES': '/?lang=es&currency=EUR',
-      '/sv-SE': '/?lang=sv&currency=SEK',
-      '/pl-PL': '/?lang=pl&currency=PLN',
-      '/ja-JP': '/?lang=ja&currency=JPY',
-      '/zh-CN': '/?lang=zh&currency=CNY',
-      '/ru-RU': '/?lang=ru&currency=RUB',
-      '/zu-ZA': '/?lang=zu&currency=ZAR',
-      '/sw-TZ': '/?lang=sw&currency=TZS',
+      '/af-ZA': '/?lang=af',
+      '/en-GB': '/?lang=en',
+      '/en-US': '/?lang=en-us',
+      '/pt-PT': '/?lang=pt-PT',
+      '/pt-BR': '/?lang=pt-BR',
+      '/nl-NL': '/?lang=nl',
+      '/fr-FR': '/?lang=fr',
+      '/it-IT': '/?lang=it',
+      '/de-DE': '/?lang=de',
+      '/es-ES': '/?lang=es',
+      '/sv-SE': '/?lang=sv',
+      '/pl-PL': '/?lang=pl',
+      '/ja-JP': '/?lang=ja',
+      '/zh-CN': '/?lang=zh',
+      '/ru-RU': '/?lang=ru',
+      '/zu-ZA': '/?lang=zu',
+      '/sw-TZ': '/?lang=sw',
     };
 
     if (localeRedirects[path]) {

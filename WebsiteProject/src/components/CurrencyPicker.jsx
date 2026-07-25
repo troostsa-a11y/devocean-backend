@@ -19,8 +19,6 @@ export default function CurrencyPicker({ lang = 'en-GB', currency, onSelect = ()
   const searchText = t.currencySearch || 'Search country or currency';
   const noMatchesText = t.currencyNoMatches || 'No matches';
 
-  const langLabel = String(lang || 'en').split('-')[0].toUpperCase();
-
   // Localized country names via Intl.DisplayNames, paired with national currency.
   const options = useMemo(() => {
     let dn = null;
@@ -98,7 +96,7 @@ export default function CurrencyPicker({ lang = 'en-GB', currency, onSelect = ()
         data-testid="button-currency-picker"
       >
         <Globe2 className="h-4 w-4" />
-        <span>{langLabel}{currency ? ` · ${currency}` : ''}</span>
+        <span>{currency || '—'}</span>
         <ChevronDown className={`h-3.5 w-3.5 text-slate-400 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 

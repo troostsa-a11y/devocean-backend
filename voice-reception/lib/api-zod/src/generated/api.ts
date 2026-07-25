@@ -116,6 +116,7 @@ export const SendOpenaiMessageParams = zod.object({
 export const SendOpenaiMessageBody = zod.object({
   "content": zod.string(),
   "lang": zod.string().optional(),
+  "currency": zod.string().optional(),
 })
 
 

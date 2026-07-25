@@ -50,7 +50,9 @@ function TypingDots() {
 }
 
 export default function TextChatEmbed() {
-  const lang = new URLSearchParams(window.location.search).get("lang") ?? "en";
+  const _params = new URLSearchParams(window.location.search);
+  const lang = _params.get("lang") ?? "en";
+  const currency = _params.get("currency") ?? undefined;
   const c = CHAT_STRINGS[lang] ?? CHAT_STRINGS.en;
 
   const [messages, setMessages] = useState<Message[]>([]);
@@ -113,7 +115,7 @@ export default function TextChatEmbed() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content, lang }),
+          body: JSON.stringify({ content, lang, ...(currency ? { currency } : {}) }),
           signal: controller.signal,
         },
       );

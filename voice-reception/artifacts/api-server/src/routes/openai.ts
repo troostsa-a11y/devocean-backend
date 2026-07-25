@@ -198,7 +198,7 @@ DO NOT VOLUNTEER INFORMATION UNPROMPTED: Never open a response by listing rates,
 // opens the conversation in the guest's language without a separate response.create
 // call. Reasoning models (gpt-realtime-2) ignore per-response instructions, so
 // the greeting must live here at the session level.
-export function buildSystemPrompt(lang?: string): string {
+export function buildSystemPrompt(lang?: string, currency?: string): string {
   const now = new Date();
   const longDate = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Africa/Maputo",
@@ -232,7 +232,13 @@ export function buildSystemPrompt(lang?: string): string {
 
 OPENING TURN: When this voice session starts, immediately greet the guest in their language ("${lang}") with a short, warm welcome. Keep the greeting to one or two sentences — for example: "Hello, I'm Marin, DEVOCEAN Lodge's online receptionist. How can I help you today?" (translated into "${lang}"). Introduce yourself as the "online receptionist" (not "the DEVOCEAN receptionist") — you are an AI assistant available online, not a person physically at the lodge. Do NOT list topics, services, or room types in the greeting — simply welcome them and ask how you can help.`
     : "";
-  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}`;
+  // When the guest has a preferred display currency, instruct Marin to convert
+  // every USD price to that currency inline (using the convert_currency tool)
+  // so the guest sees familiar amounts without having to ask.
+  const currencyInstruction = currency && currency !== "USD"
+    ? `\n\nDISPLAY CURRENCY: The guest's preferred display currency is ${currency}. Whenever you quote any price in USD, also immediately convert it to ${currency} using the convert_currency tool and mention the approximate ${currency} amount in the same breath. Never skip the conversion when the guest's display currency is set.`
+    : "";
+  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}${currencyInstruction}`;
 }
 
 // List conversations
@@ -443,8 +449,9 @@ router.post("/conversations/:id/messages", async (req, res) => {
   }
 
   const lang = bodyParsed.data.lang;
+  const currency = bodyParsed.data.currency;
   const chatMessages: any[] = [
-    { role: "system", content: buildSystemPrompt(lang) },
+    { role: "system", content: buildSystemPrompt(lang, currency) },
     ...history.map((m) => ({
       role: m.role as "user" | "assistant",
       content: m.content,

@@ -183,10 +183,13 @@ export function useRealtimeSession({
       const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
       // Priority: lang passed from widget-loader at button-press time (always
       // current), then URL param (set at iframe load), then navigator.language.
-      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get("lang");
       const resolvedLang = (lang || urlLang || navigator.language || "en")
         .toLowerCase().split("-")[0];
-      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(resolvedLang)}`;
+      // Currency is always read from the URL param (set by widget-loader from site.currency localStorage).
+      const urlCurrency = urlParams.get("currency");
+      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(resolvedLang)}${urlCurrency ? `&currency=${encodeURIComponent(urlCurrency)}` : ""}`;
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 

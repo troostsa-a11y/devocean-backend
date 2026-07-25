@@ -29,9 +29,10 @@ const wss = new WebSocketServer({ noServer: true });
 server.on("upgrade", (req, socket, head) => {
   if (req.url?.startsWith("/api/openai/realtime/ws")) {
     wss.handleUpgrade(req, socket, head, (ws) => {
-      const lang =
-        new URL(req.url!, "http://x").searchParams.get("lang") ?? "en";
-      handleRealtimeWs(ws, lang);
+      const params = new URL(req.url!, "http://x").searchParams;
+      const lang = params.get("lang") ?? "en";
+      const currency = params.get("currency") ?? undefined;
+      handleRealtimeWs(ws, lang, currency);
     });
   } else {
     socket.destroy();

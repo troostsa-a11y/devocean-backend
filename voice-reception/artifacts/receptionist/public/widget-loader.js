@@ -24,6 +24,20 @@
     .split("-")[0]
     .toLowerCase();
 
+  // Read display currency from site.currency localStorage key — fresh on each
+  // call so a currency change before the next open is always picked up.
+  function _getCurrency() {
+    try { return localStorage.getItem("site.currency") || ""; } catch (_) { return ""; }
+  }
+
+  // Build a full embed URL with current lang and currency appended.
+  function _embedUrl(path) {
+    var url = WIDGET_ORIGIN + path + "?lang=" + encodeURIComponent(_pageLang);
+    var c = _getCurrency();
+    if (c) url += "&currency=" + encodeURIComponent(c);
+    return url;
+  }
+
   new MutationObserver(function () {
     var newLang = (document.documentElement.lang || navigator.language || "en")
       .split("-")[0]
@@ -34,14 +48,14 @@
       if (tooltip) tooltip.textContent = TOOLTIP_LABELS[_pageLang] || TOOLTIP_LABELS.en;
       if (state === "text") {
         // Panel is currently open — reload it immediately with the new lang.
-        textFrame.src = WIDGET_ORIGIN + "/embed-text?lang=" + encodeURIComponent(_pageLang);
+        textFrame.src = _embedUrl("/embed-text");
       } else {
         // Panel is closed — blank it so the next open reloads with the new lang.
         textFrame.src = "";
       }
       // Reload voice frame with new lang unless a call is active.
       if (state !== "voice") {
-        voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+        voiceFrame.src = _embedUrl("/embed");
       }
     }
   }).observe(document.documentElement, { attributeFilter: ["lang"] });
@@ -276,7 +290,7 @@
     // Text chat panel
     textFrame.classList.toggle("dv-vis", isText);
     if (isText && !textFrame.src) {
-      textFrame.src = WIDGET_ORIGIN + "/embed-text?lang=" + encodeURIComponent(_pageLang);
+      textFrame.src = _embedUrl("/embed-text");
     }
   }
 
@@ -298,7 +312,7 @@
     e.stopPropagation();
     setState("voice");
     if (!voiceFrame.src) {
-      voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+      voiceFrame.src = _embedUrl("/embed");
     } else {
       postToVoice("devocean:connect");
     }
@@ -349,7 +363,7 @@
     window.removeEventListener("touchstart", _doPrewarm, { passive: true });
     window.removeEventListener("keydown",    _doPrewarm);
     if (!voiceFrame.src) {
-      voiceFrame.src = WIDGET_ORIGIN + "/embed?lang=" + encodeURIComponent(_pageLang);
+      voiceFrame.src = _embedUrl("/embed");
     }
   }
   window.addEventListener("scroll",     _doPrewarm, { passive: true });
