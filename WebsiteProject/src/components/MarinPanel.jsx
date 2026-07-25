@@ -25,7 +25,8 @@ export default function MarinPanel({ context, autoMessage, label = 'Not sure? As
   }, [autoOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleClick() {
-    window.devocean?.ask({ pageContext: context, autoMessage });
+    // Open the FAB fan-out so the guest can choose text or voice.
+    window.devocean?.open();
   }
 
   return (

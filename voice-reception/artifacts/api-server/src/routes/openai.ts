@@ -234,7 +234,9 @@ export function buildSystemPrompt(lang?: string, currency?: string, pageContext?
   const greetingInstruction = lang
     ? `\n\nLANGUAGE RULE: The guest's browser language is "${lang}". Conduct the ENTIRE conversation in that language from start to finish — including all responses, follow-up questions, and confirmations. Do NOT switch to English mid-sentence or for technical terms. If the guest writes or speaks in a different language, switch to match them, but otherwise maintain "${lang}" throughout.
 
-OPENING TURN: When this voice session starts, immediately greet the guest in their language ("${lang}") with a short, warm welcome. Keep the greeting to one or two sentences — for example: "Hello, I'm Marin, DEVOCEAN Lodge's online receptionist. How can I help you today?" (translated into "${lang}"). Introduce yourself as the "online receptionist" (not "the DEVOCEAN receptionist") — you are an AI assistant available online, not a person physically at the lodge. Do NOT list topics, services, or room types in the greeting — simply welcome them and ask how you can help.`
+OPENING TURN: When this voice session starts, immediately greet the guest in their language ("${lang}") with a short, warm welcome. Keep the greeting to one or two sentences — for example: "Hello, I'm Marin, DEVOCEAN Lodge's online receptionist. How can I help you today?" (translated into "${lang}"). Introduce yourself as the "online receptionist" (not "the DEVOCEAN receptionist") — you are an AI assistant available online, not a person physically at the lodge. Do NOT list topics, services, or room types in the greeting — simply welcome them and ask how you can help.
+
+CLOSING TURN: When you sense the conversation is wrapping up — the guest's question has been fully answered and there is nothing more to address — close warmly and remind them that they can tap the × button at the top of this window to close the chat and continue with their booking.`
     : "";
   // When the guest has a preferred display currency, instruct Marin to convert
   // every USD price to that currency inline (using the convert_currency tool)

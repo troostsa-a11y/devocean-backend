@@ -321,6 +321,10 @@
   }
 
   window.devocean = {
+    // Expand the FAB to show text + voice choice (no auto-message).
+    open: function () {
+      setState("expanded");
+    },
     ask: function (ctx) {
       _pendingAsk = ctx || {};
       setState("text");
