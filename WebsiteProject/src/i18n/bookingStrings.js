@@ -68,7 +68,7 @@ const STRINGS = {
     minUnitsNote: "Select one accommodation for {party}.",
     unit: 'Unit',
     moreUnitsNeeded: "Add {n} more unit(s) to fit your party.",
-    amenitiesNote: 'All rates include Great Breakfasts, High Speed Space Internet and Secure Parking.',
+    amenitiesNote: 'Breakfast, Starlink Wi-Fi and secure parking are included.',
     sleeps: 'Sleeps {count}',
     sleepsAdultsChildren: 'Sleeps {adults} + {children}',
     childOccupant: '1 child (0-12 yr)',
