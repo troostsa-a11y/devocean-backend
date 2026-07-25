@@ -29,13 +29,21 @@ export default function MarinPanel({ context, autoMessage, label = 'Not sure? As
   }
 
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className="group btn-cta inline-flex items-center justify-center px-5 py-3 rounded-2xl text-white shadow-2xl hover:brightness-110 hover:scale-105 transition-all duration-300 font-bold text-base"
-      style={{ background: '#f97316', cursor: 'pointer', minWidth: '12rem', border: 'none' }}
-    >
-      {label}
-    </button>
+    <span className="inline-flex items-center gap-3">
+      <span className="text-sm text-gray-500">{label}</span>
+      <button
+        type="button"
+        onClick={handleClick}
+        aria-label={label}
+        className="inline-flex items-center justify-center rounded-full shadow-lg hover:brightness-110 hover:scale-105 transition-all duration-200"
+        style={{ width: 48, height: 48, background: '#f97316', border: 'none', cursor: 'pointer', flexShrink: 0 }}
+      >
+        {/* Chat icon — matches the floating FAB */}
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+          fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </button>
+    </span>
   );
 }

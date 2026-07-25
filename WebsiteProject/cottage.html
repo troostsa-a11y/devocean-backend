@@ -881,7 +881,12 @@
             <span data-i18n="viewAllAccommodations">View All Accommodations</span>
           </a>
         </div>
-        <p style="margin-top:1.5rem;"><button type="button" onclick="dvAsk()" class="btn btn-primary" style="border:none;cursor:pointer;font-family:inherit;background-color:#f97316;">Not sure? Ask Marin</button></p>
+        <p style="margin-top:1.5rem;display:flex;align-items:center;justify-content:center;gap:.75rem;">
+          <span style="font-size:.9375rem;color:#64748b;">Not sure? Ask Marin</span>
+          <button type="button" onclick="dvAsk()" aria-label="Ask Marin" style="width:48px;height:48px;border-radius:50%;background:#f97316;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(249,115,22,.4);flex-shrink:0;transition:filter .2s,transform .2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </button>
+        </p>
         <p style="margin-top:1.25rem;font-size:.875rem;opacity:.8"><a href="/ponta-do-ouro" style="color:white;text-decoration:underline;text-underline-offset:3px" data-testid="link-destination-guide">Explore what to do in Ponta do Ouro →</a></p>
       </div>
     </section>
