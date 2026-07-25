@@ -152,13 +152,26 @@
     "}" +
     "#dv-text-panel.dv-vis{opacity:1;transform:scale(1) translateY(0);pointer-events:auto;}" +
 
+    // Voice panel — same position / animation as the text panel but fixed
+    // height so it shows the call-status UI from WidgetEmbed.
     "#dv-voice-frame{" +
-      "position:fixed;width:1px;height:1px;bottom:0;right:0;" +
-      "border:none;opacity:0;pointer-events:none;" +
+      "position:fixed;" +
+      "bottom:" + (MARGIN + BTN_R + 12) + "px;" +
+      "right:" + MARGIN + "px;" +
+      "width:" + PANEL_W + "px;height:224px;" +
+      "border:none;border-radius:16px;" +
+      "box-shadow:0 8px 40px rgba(0,0,0,.18);" +
+      "z-index:2147483645;" +
+      "opacity:0;transform:scale(.96) translateY(8px);" +
+      "transform-origin:bottom right;" +
+      "transition:opacity .2s,transform .2s;" +
+      "pointer-events:none;" +
     "}" +
+    "#dv-voice-frame.dv-vis{opacity:1;transform:scale(1) translateY(0);pointer-events:auto;}" +
 
     "@media(max-width:420px){" +
       "#dv-text-panel{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + MARGIN + "px;}" +
+      "#dv-voice-frame{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + MARGIN + "px;}" +
     "}" +
     "@media(max-height:560px){" +
       "#dv-text-panel{height:75vh;}" +
@@ -292,6 +305,8 @@
     if (isText && !textFrame.src) {
       textFrame.src = _embedUrl("/embed-text");
     }
+    // Voice panel — show iframe as a call-status overlay when in voice state.
+    voiceFrame.classList.toggle("dv-vis", isVoice);
   }
 
   // --- FAB click ---

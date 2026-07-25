@@ -59,6 +59,9 @@ export default defineConfig({
       "/api": {
         target: "http://localhost:8080",
         changeOrigin: false,
+        // ws: true is required so WebSocket upgrade requests (realtime relay)
+        // are forwarded to the API server instead of being rejected by Vite.
+        ws: true,
       },
     },
     fs: {
