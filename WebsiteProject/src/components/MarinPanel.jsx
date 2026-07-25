@@ -59,14 +59,12 @@ export default function MarinPanel({ context, autoMessage, lang = 'en', currency
 
   return (
     <>
-      {/* Trigger — orange CTA button */}
+      {/* Trigger — orange CTA button matching the hero */}
       <button
         type="button"
         onClick={openPanel}
-        className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-lg transition-all"
-        style={{ backgroundColor: '#9e4b13', border: 'none', cursor: 'pointer', minWidth: '12rem' }}
-        onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a3810'}
-        onMouseLeave={e => e.currentTarget.style.backgroundColor = '#9e4b13'}
+        className="group btn-cta inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] hover:scale-105 transition-all duration-300 font-bold text-base border-2 border-white/20"
+        style={{ border: 'none', cursor: 'pointer', minWidth: '12rem' }}
       >
         Not sure? Ask Marin
       </button>
