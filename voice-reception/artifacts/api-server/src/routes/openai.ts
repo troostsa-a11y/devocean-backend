@@ -243,7 +243,7 @@ OPENING TURN: When this voice session starts, immediately greet the guest in the
     ? `\n\nDISPLAY CURRENCY: The guest's preferred display currency is ${currency}. Whenever you quote any price in USD, also immediately convert it to ${currency} using the convert_currency tool and mention the approximate ${currency} amount in the same breath. Never skip the conversion when the guest's display currency is set.`
     : "";
   const pageContextInstruction = pageContext
-    ? `\n\nPAGE CONTEXT (injected by the website — treat as accurate ground truth for this conversation):\n${pageContext}\n\nUse this context to give a specific, immediately helpful answer. Where pricing and availability are listed above, use that data directly — do not call check_availability for rooms already included. End your response with a concise one-line summary in the form: "[Room]: [price] total for [N] nights. [N] remain available." and a markdown link to any book-direct URL in the context.`
+    ? `\n\nPAGE CONTEXT (injected by the website — treat as accurate ground truth for this conversation):\n${pageContext}\n\nUse this context to give a specific, immediately helpful answer. Where pricing and availability are listed above, use that data directly — do not call check_availability for rooms already included. End your response with a concise one-line summary in the form: "[Room]: [price] total for [N] nights. [N] remain available." followed by a markdown link labelled exactly "Continue with this option" pointing to the book-direct URL in the context (which already includes the correct dates and guest numbers).`
     : "";
   return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}${currencyInstruction}${pageContextInstruction}`;
 }

@@ -119,6 +119,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('canceled') === '1') setCanceled(true);
+    // Pre-fill dates & guests when arriving via a Marin "Continue with this option" link.
+    if (params.get('checkIn'))  setCheckIn(params.get('checkIn'));
+    if (params.get('checkOut')) setCheckOut(params.get('checkOut'));
+    if (params.get('adults'))   setAdults(Number(params.get('adults')));
+    if (params.get('children')) setChildren(Number(params.get('children')));
+    if (params.get('infants'))  setInfants(Number(params.get('infants')));
   }, []);
 
   // Remove the static hero placeholder (index.html #bd-hero-placeholder) once
@@ -442,10 +448,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       infants > 0 ? `${infants} infant${infants !== 1 ? 's' : ''}` : '',
     ].filter(Boolean);
     const guestStr = guestParts.length ? guestParts.join(', ') : '2 adults';
+    const bookUrl = `https://devoceanlodge.com/book-direct?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}`;
     const lines = [
       'Visitor is viewing availability results on the DEVOCEAN Lodge booking page.',
       `Check-in: ${checkIn}. Check-out: ${checkOut}. Nights: ${nights}. Guests: ${guestStr}.`,
-      'Book-direct URL: https://devoceanlodge.com/book-direct',
+      `Book-direct URL: ${bookUrl}`,
       '',
     ];
     if (availableRooms.length > 0) {
@@ -482,8 +489,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     quote.lines.forEach((l) => {
       lines.push(`- ${l.qty} × ${l.roomName}: ${money(l.lineTotal, quote.currency)}`);
     });
+    const bookUrl = `https://devoceanlodge.com/book-direct?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}`;
     lines.push(`Total: ${money(quote.total, quote.currency)}. Deposit required now: ${money(quote.deposit, quote.currency)}. Balance on arrival: ${money(quote.balance, quote.currency)}.`);
-    lines.push('Book-direct URL: https://devoceanlodge.com/book-direct');
+    lines.push(`Book-direct URL: ${bookUrl}`);
     return lines.join('\n');
   }, [checkIn, checkOut, quote, adults, children, infants]);
 
