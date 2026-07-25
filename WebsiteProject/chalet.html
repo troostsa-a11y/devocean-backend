@@ -894,12 +894,7 @@
   <script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
   <script>
   function dvAsk() {
-    var roomName = "Thatched Chalet";
-    var lang = new URLSearchParams(location.search).get('lang') || document.documentElement.lang || 'en';
-    window.devocean && window.devocean.ask({
-      pageContext: "The visitor is on the " + roomName + " detail page on the DEVOCEAN Lodge website. The Thatched Chalet is a romantic, air-conditioned chalet with a private bathroom, twin or king bed, and private garden setting. Display language: " + lang + ".",
-      autoMessage: "I'm looking at the " + roomName + ". Can you tell me more and help me decide if it's right for my stay?"
-    });
+    window.devocean && window.devocean.open();
   }
   </script>
 </body>
