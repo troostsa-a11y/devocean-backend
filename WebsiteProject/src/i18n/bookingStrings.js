@@ -65,7 +65,7 @@ const STRINGS = {
     depositFullNow: 'Full payment due now',
     selectRoomsToContinue: 'Select at least one room to continue.',
     guestsSplitNote: 'Choose how many of each room you need.',
-    minUnitsNote: "To accommodate {party}, at least {n} units are needed.",
+    minUnitsNote: "Select one accommodation for {party}.",
     unit: 'Unit',
     moreUnitsNeeded: "Add {n} more unit(s) to fit your party.",
     amenitiesNote: 'All rates include Great Breakfasts, High Speed Space Internet and Secure Parking.',
