@@ -8,6 +8,7 @@ import { VoiceWidget } from "@/components/VoiceWidget";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { getStoredToken } from "@/lib/auth";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,9 +24,13 @@ type TranslationMap = Record<number, string>;
 type TranslateLang = "en" | "pt-MZ";
 
 async function fetchTranslation(convId: number, targetLang: TranslateLang): Promise<TranslationMap> {
+  const token = getStoredToken();
   const res = await fetch(`/api/openai/conversations/${convId}/translate`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
     body: JSON.stringify({ targetLang }),
   });
   if (!res.ok) throw new Error("Translation failed");
