@@ -59,6 +59,22 @@ function renderMarkdown(text: string): React.ReactNode[] {
     if (linkMatch) {
       const [, label, href] = linkMatch;
       const fullHref = /^https?:\/\//i.test(href) ? href : `https://${href}`;
+      // "Continue with this option" deep-links back to /book-direct — the user
+      // is already there, so just close the panel instead of opening a new tab.
+      if (fullHref.includes("/book-direct")) {
+        nodes.push(
+          <button
+            key={i}
+            type="button"
+            onClick={() => window.parent.postMessage({ type: "devocean:closePanel" }, "*")}
+            className="mt-1 inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white transition-all hover:brightness-110 active:scale-95"
+            style={{ background: "#f97316", border: "none", cursor: "pointer" }}
+          >
+            {label}
+          </button>,
+        );
+        return;
+      }
       nodes.push(
         <a
           key={i}

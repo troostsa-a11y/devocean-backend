@@ -32,8 +32,8 @@ export default function MarinPanel({ context, autoMessage, label = 'Not sure? As
     <button
       type="button"
       onClick={handleClick}
-      className="group btn-cta inline-flex items-center justify-center px-5 py-3 rounded-2xl bg-gradient-to-r from-[#b65a1a] to-[#9e4b13] text-white shadow-2xl hover:shadow-[0_10px_40px_rgba(158,75,19,0.6)] hover:scale-105 transition-all duration-300 font-bold text-base"
-      style={{ cursor: 'pointer', minWidth: '12rem' }}
+      className="group btn-cta inline-flex items-center justify-center px-5 py-3 rounded-2xl text-white shadow-2xl hover:brightness-110 hover:scale-105 transition-all duration-300 font-bold text-base"
+      style={{ background: '#f97316', cursor: 'pointer', minWidth: '12rem', border: 'none' }}
     >
       {label}
     </button>

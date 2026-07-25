@@ -388,6 +388,9 @@
     if (evt.data.type === "devocean:callEnded" && state === "voice") {
       setState("idle");
     }
+    if (evt.data.type === "devocean:closePanel") {
+      setState("idle");
+    }
     // Text iframe signals it mounted and is ready to receive context.
     if (evt.data.type === "devocean:textEmbedReady") {
       _textFrameReady = true;
