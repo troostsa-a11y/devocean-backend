@@ -360,15 +360,22 @@ Preserve the meaning faithfully. Do not add explanations or change names.
 Messages:
 ${JSON.stringify(msgs.map((m) => ({ id: m.id, role: m.role, content: m.content })))}`;
 
-  const completion = await openai.chat.completions.create({
-    model: TEXT_MODEL,
-    response_format: { type: "json_object" },
-    messages: [
-      { role: "system", content: "You are a professional translator. Respond with a valid JSON object containing a 'translations' array." },
-      { role: "user", content: prompt },
-    ],
-    temperature: 0.2,
-  });
+  let completion: Awaited<ReturnType<typeof openai.chat.completions.create>>;
+  try {
+    completion = await openai.chat.completions.create({
+      model: TEXT_MODEL,
+      response_format: { type: "json_object" },
+      messages: [
+        { role: "system", content: "You are a professional translator. Respond with a valid JSON object containing a 'translations' array." },
+        { role: "user", content: prompt },
+      ],
+      temperature: 0.2,
+    });
+  } catch (err) {
+    req.log.error({ err }, "OpenAI translation request failed");
+    res.status(502).json({ error: "Translation service unavailable" });
+    return;
+  }
 
   const raw = completion.choices[0]?.message?.content ?? "{}";
   let translations: { id: number; translatedContent: string }[] = [];
