@@ -59,15 +59,16 @@ export default function MarinPanel({ context, autoMessage, lang = 'en', currency
 
   return (
     <>
-      {/* Trigger — restrained text link */}
+      {/* Trigger — orange CTA button */}
       <button
         type="button"
         onClick={openPanel}
-        className="inline-flex items-center gap-1 text-sm text-[#9e4b13] hover:text-[#7a3810] transition-colors"
+        className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-lg transition-all"
+        style={{ backgroundColor: '#9e4b13', border: 'none', cursor: 'pointer', minWidth: '12rem' }}
+        onMouseEnter={e => e.currentTarget.style.backgroundColor = '#7a3810'}
+        onMouseLeave={e => e.currentTarget.style.backgroundColor = '#9e4b13'}
       >
-        Not sure?{' '}
-        <span className="underline underline-offset-2">Ask Marin</span>
-        <span aria-hidden="true" className="ml-0.5">→</span>
+        Not sure? Ask Marin
       </button>
 
       {/* Fixed panel — shown only after first open, visible/hidden via CSS */}
