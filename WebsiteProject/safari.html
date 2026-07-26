@@ -7,6 +7,16 @@
   <meta name="theme-color" content="#9e4b13" />
   <title>Standard Safari Tent | DEVOCEAN Lodge</title>
 
+  <!-- Suppress cross-origin script errors before any other handler sees them.
+       Browsers sanitise errors from cross-origin scripts to "Script error." with
+       a null Error object — there is nothing actionable here. The capturing
+       listener runs first and stops it reaching the dev-preview error overlay. -->
+  <script>
+    window.addEventListener('error', function (e) {
+      if (!e.error && e.message === 'Script error.') { e.stopImmediatePropagation(); }
+    }, true);
+  </script>
+
   <!-- Consent Mode v2 Defaults (MUST be FIRST script) -->
   <script>
     window.dataLayer = window.dataLayer || [];
