@@ -113,10 +113,10 @@ units: {
       cottage: {
         title: "Chalé Jardim",
         short:
-          "Chalé arejado com cama queen, A/C (inverter), secretária e mesa, terraço privado e casa de banho em rondavel.",
+          "Chalé arejado com cama queen, AC Inverter for cooling & heating, secretária e mesa, terraço privado e casa de banho em rondavel.",
         details: [
           "Cama queen • secretária e mesa de jantar",
-          "A/C inverter (frio/quente) • luz regulável",
+          "AC Inverter for cooling & heating • luz regulável",
           "Casa de banho em rondavel (duche, lavatório, sanita)",
           "Terraço de madeira com cadeiras",
         ],
@@ -124,7 +124,7 @@ units: {
       chalet: {
         title: "Chalé de Colmo",
         short:
-          "Pequeno chalé romântico entre palmeiras. A/C, casa de banho privada, terraço, One King or Twin beds.",
+          "Pequeno chalé romântico entre palmeiras. AC Inverter for cooling & heating, casa de banho privada, terraço, One King or Twin beds.",
         details: [
           "Ambiente tranquilo sob palmeiras • ar-condicionado",
           "Casa de banho privativa (duche, lavatório, sanita)",

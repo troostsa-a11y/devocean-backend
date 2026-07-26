@@ -154,10 +154,10 @@ units: {
       cottage: {
         title: "Cottage Jardín",
         short:
-          "Cottage aireado con cama queen, A/C (inverter), escritorio y mesa, terraza privada y baño en rondavel.",
+          "Cottage aireado con cama queen, AC Inverter for cooling & heating, escritorio y mesa, terraza privada y baño en rondavel.",
         details: [
           "Cama queen • escritorio y mesa de comedor",
-          "A/C inverter (frío/calor) • luz regulable",
+          "AC Inverter for cooling & heating inverter (frío/calor) • luz regulable",
           "Baño en rondavel (ducha, lavabo, WC)",
           "Terraza de madera con sillas de camping",
         ],
@@ -165,7 +165,7 @@ units: {
       chalet: {
         title: "Chalet de Paja",
         short:
-          "Pequeño chalet romántico aislado bajo palmeras. A/C, baño privado, terraza, One King or Twin beds.",
+          "Pequeño chalet romántico aislado bajo palmeras. AC Inverter for cooling & heating, baño privado, terraza, One King or Twin beds.",
         details: [
           "Entorno tranquilo bajo palmeras • aire acondicionado",
           "Baño privado (ducha, lavabo, WC)",

@@ -113,20 +113,20 @@ export const L10N = {
     },
     cottage: {
       title: "Garden Cottage",
-      short: "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      short: "Airy cottage with queen bed, AC Inverter for cooling & heating, desk & dining table, private terrace and bathroom in a charming roundavel.",
       details: [
         "Roman-tiled roof, high white ceiling with dark wood beams",
         "Terracotta floor, warm wheatfields-painted walls",
         "Queen bed • working desk with shaded lamp • dining table with chairs",
         "Suitcase shelves, clothes rack and extra shelving",
-        "Inverter A/C (cool & heat) • dimmable main light",
+        "AC Inverter for cooling & heating • dimmable main light",
         "Private bath in grass-thatched roundavel (shower, sink, toilet)",
         "Private wooden terrace with camping chairs and side table",
       ],
     },
     chalet: {
       title: "Thatched Chalet",
-      short: "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, One King or Twin beds.",
+      short: "Secluded, romantic tiny chalet under palms and strelitzia. AC Inverter for cooling & heating, private bathroom, terrace, One King or Twin beds.",
       details: [
         "Grass-thatched roof on bluegum poles • autumn-slate floor",
         "Wheatfields-painted walls • tranquil, shaded setting",

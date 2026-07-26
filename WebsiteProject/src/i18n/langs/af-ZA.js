@@ -110,17 +110,17 @@ units: {
       },
       cottage: {
         title: "Tuin Kothuis",
-        short: "Lug kothuis met queen bed, A/C (inverter), lessenaar en tafel, privaat terras en badkamer in rondavel.",
+        short: "Lug kothuis met queen bed, AC Inverter for cooling & heating, lessenaar en tafel, privaat terras en badkamer in rondavel.",
         details: [
           "Queen bed • lessenaar en eet-tafel",
-          "Inverter A/C (koel/verhit) • dimbare lig",
+          "AC Inverter for cooling & heating • dimbare lig",
           "Rondavel badkamer (stort, wasbak, toilet)",
           "Houterras met kampeerstoeie",
         ],
       },
       chalet: {
         title: "Rietdak Chalet",
-        short: "Stil, romantiese klein chalet tussen palmbome. A/C, privaat badkamer, terras, One King or Twin beds.",
+        short: "Stil, romantiese klein chalet tussen palmbome. AC Inverter for cooling & heating, privaat badkamer, terras, One King or Twin beds.",
         details: [
           "Rustige omgewing onder palmbome • lugversorging",
           "Privaat badkamer (stort, wasbak, toilet)",

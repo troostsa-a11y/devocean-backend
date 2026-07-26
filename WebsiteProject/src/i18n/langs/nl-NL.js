@@ -153,10 +153,10 @@ units: {
       cottage: {
         title: "Tuincottage",
         short:
-          "Luchtige cottage met queensbed, A/C (inverter), bureau & eettafel, privéterras en badkamer in rondavel.",
+          "Luchtige cottage met queensbed, AC Inverter for cooling & heating, bureau & eettafel, privéterras en badkamer in rondavel.",
         details: [
           "Queensbed • bureau en eettafel",
-          "Inverter A/C (koelen & verwarmen) • dimbare hoofdverlichting",
+          "AC Inverter for cooling & heating • dimbare hoofdverlichting",
           "Badkamer in rondavel (douche, wastafel, toilet)",
           "Houten terras met kampeerstoelen",
         ],
@@ -164,7 +164,7 @@ units: {
       chalet: {
         title: "Rieten Chalet",
         short:
-          "Afgelegen, romantisch tiny chalet onder palmen. A/C, privébadkamer, terras, One King or Twin beds.",
+          "Afgelegen, romantisch tiny chalet onder palmen. AC Inverter for cooling & heating, privébadkamer, terras, One King or Twin beds.",
         details: [
           "Rustige omgeving onder palmen • airconditioning",
           "Privébadkamer (douche, wastafel, toilet)",

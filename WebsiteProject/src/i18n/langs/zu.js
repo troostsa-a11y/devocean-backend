@@ -109,17 +109,17 @@ export const L10N = {
     },
     cottage: {
       title: "Indlu Yengadi",
-      short: "Indlu enomoya enombhede we-queen, i-A/C (inverter), ideski netafula, idekhi yangasese kanye nendawo yokugezela e-rondavel.",
+      short: "Indlu enomoya enombhede we-queen, i-AC Inverter for cooling & heating, ideski netafula, idekhi yangasese kanye nendawo yokugezela e-rondavel.",
       details: [
         "Umbhede we-queen • ideski netafula lokudlela",
-        "I-A/C ye-inverter (ukupholisa/ukufudumeza) • ukukhanya okuyinhloko okungaguquki",
+        "AC Inverter for cooling & heating • ukukhanya okuyinhloko okungaguquki",
         "Indawo yokugezela ye-rondavel (ishawa, usinki, indlu yangasese)",
         "Idekhi yokhuni enezitulo zokukhempela",
       ],
     },
     chalet: {
       title: "I-Chalet Yezintende",
-      short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. I-A/C, indawo yokugezela yangasese, idekhi, i-One King or Twin beds.",
+      short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. AC Inverter for cooling & heating, indawo yokugezela yangasese, idekhi, i-One King or Twin beds.",
       details: [
         "Indawo enokuthula ngaphansi kwezihlahla zesundu • i-air conditioning",
         "Indawo yokugezela yangasese (ishawa, usinki, indlu yangasese)",

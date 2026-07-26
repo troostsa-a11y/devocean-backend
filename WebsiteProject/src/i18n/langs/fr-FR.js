@@ -220,10 +220,10 @@ units: {
       cottage: {
         title: "Cottage Jardin",
         short:
-          "Cottage aéré avec lit queen, A/C (inverter), bureau & table à manger, terrasse privée et salle de bain dans rondavel.",
+          "Cottage aéré avec lit queen, AC Inverter for cooling & heating, bureau & table à manger, terrasse privée et salle de bain dans rondavel.",
         details: [
           "Lit queen • bureau et table à manger",
-          "A/C inverter (chaud/froid) • éclairage tamisable",
+          "AC Inverter for cooling & heating inverter (chaud/froid) • éclairage tamisable",
           "Salle de bain dans rondavel (douche, lavabo, WC)",
           "Terrasse en bois avec chaises de camping",
         ],
@@ -231,7 +231,7 @@ units: {
       chalet: {
         title: "Chalet de Chaume",
         short:
-          "Petit chalet romantique isolé sous les palmiers. A/C, salle de bain privée, terrasse, One King or Twin beds.",
+          "Petit chalet romantique isolé sous les palmiers. AC Inverter for cooling & heating, salle de bain privée, terrasse, One King or Twin beds.",
         details: [
           "Cadre tranquille sous les palmiers • climatisation",
           "Salle de bain privée (douche, lavabo, WC)",

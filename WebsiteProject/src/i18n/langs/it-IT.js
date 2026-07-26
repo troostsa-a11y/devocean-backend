@@ -153,10 +153,10 @@ units: {
       cottage: {
         title: "Cottage Giardino",
         short:
-          "Cottage arioso con letto queen, A/C (inverter), scrivania e tavolo da pranzo, terrazza privata e bagno in rondavel.",
+          "Cottage arioso con letto queen, AC Inverter for cooling & heating, scrivania e tavolo da pranzo, terrazza privata e bagno in rondavel.",
         details: [
           "Letto queen • scrivania e tavolo da pranzo",
-          "A/C inverter (freddo/caldo) • luce dimmerabile",
+          "AC Inverter for cooling & heating inverter (freddo/caldo) • luce dimmerabile",
           "Bagno in rondavel (doccia, lavabo, WC)",
           "Terrazza in legno con sedie da campeggio",
         ],
@@ -164,7 +164,7 @@ units: {
       chalet: {
         title: "Chalet di Paglia",
         short:
-          "Piccolo chalet romantico appartato sotto le palme. A/C, bagno privato, terrazza, One King or Twin beds.",
+          "Piccolo chalet romantico appartato sotto le palme. AC Inverter for cooling & heating, bagno privato, terrazza, One King or Twin beds.",
         details: [
           "Ambiente tranquillo sotto le palme • aria condizionata",
           "Bagno privato (doccia, lavabo, WC)",

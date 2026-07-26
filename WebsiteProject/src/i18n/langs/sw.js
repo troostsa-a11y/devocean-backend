@@ -76,19 +76,19 @@ export const L10N = {
     },
     cottage: {
       title: "Nyumba ya Bustani",
-      short: "Nyumba yenye hewa safi na kitanda cha queen, A/C (inverter), dawati na meza, dekhi ya faragha na bafu katika rondavel.",
+      short: "Nyumba yenye hewa safi na kitanda cha queen, AC Inverter for cooling & heating, dawati na meza, dekhi ya faragha na bafu katika rondavel.",
       details: [
         "Kitanda cha queen • dawati na meza ya kulia",
-        "A/C ya inverter (baridi/joto) • taa ya msingi inayoweza kubadilishwa",
+        "AC Inverter for cooling & heating • taa ya msingi inayoweza kubadilishwa",
         "Bafu ya rondavel (shawa, sinki, choo)",
         "Dekhi ya mbao yenye viti vya kambi",
       ],
     },
     chalet: {
       title: "Chalet ya Nyasi",
-      short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. A/C, bafu ya faragha, dekhi, One King or Twin beds.",
+      short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. AC Inverter for cooling & heating, bafu ya faragha, dekhi, One King or Twin beds.",
       details: [
-        "Mazingira ya amani chini ya miti ya michikichi • A/C",
+        "Mazingira ya amani chini ya miti ya michikichi • AC Inverter for cooling & heating",
         "Bafu ya faragha (shawa, sinki, choo)",
         "Vitanda vya One King or Twin beds vyenye meza za pembeni",
         "Dekhi ya faragha yenye viti vya majani ya michikichi",

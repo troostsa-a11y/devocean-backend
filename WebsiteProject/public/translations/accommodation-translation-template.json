@@ -109,7 +109,7 @@
     "cottage": {
       "eyebrow": "Garden Cottage",
       "heroTitle": "Rustic charm • Tropical serenity • Modern comfort",
-      "heroDescription": "Airy cottage with queen bed, A/C (inverter), desk & dining table, private terrace and bathroom in a charming roundavel.",
+      "heroDescription": "Airy cottage with queen bed, AC Inverter for cooling & heating, desk & dining table, private terrace and bathroom in a charming roundavel.",
       "sections": [
         {
           "heading": "Atmosphere & Design",
@@ -125,7 +125,7 @@
           "description": "Step outside onto your private wooden terrace, furnished with camping chairs and a side table — a peaceful spot to unwind and take in the lush greenery and gentle garden sounds.",
           "features": [
             "Suitcase shelves, clothes rack and extra shelving",
-            "Inverter A/C (cool & heat) • dimmable main light"
+            "AC Inverter for cooling & heating • dimmable main light"
           ]
         },
         {
@@ -162,7 +162,7 @@
     "chalet": {
       "eyebrow": "Thatched Chalet",
       "heroTitle": "Romantic seclusion • Rustic elegance • Tropical peace",
-      "heroDescription": "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, One King or Twin beds.",
+      "heroDescription": "Secluded, romantic tiny chalet under palms and strelitzia. AC Inverter for cooling & heating, private bathroom, terrace, One King or Twin beds.",
       "sections": [
         {
           "heading": "Setting & Atmosphere",

@@ -1522,10 +1522,10 @@ export const L10N = {
       cottage: {
         title: "Chalé Jardim",
         short:
-          "Chalé arejado com cama queen, A/C (inverter), secretária e mesa, terraço privado e casa de banho em rondavel.",
+          "Chalé arejado com cama queen, AC Inverter for cooling & heating, secretária e mesa, terraço privado e casa de banho em rondavel.",
         details: [
           "Cama queen • secretária e mesa de jantar",
-          "A/C inverter (frio/quente) • luz regulável",
+          "AC Inverter for cooling & heating • luz regulável",
           "Casa de banho em rondavel (duche, lavatório, sanita)",
           "Terraço de madeira com cadeiras",
         ],
@@ -1533,7 +1533,7 @@ export const L10N = {
       chalet: {
         title: "Chalé de Colmo",
         short:
-          "Pequeno chalé romântico entre palmeiras. A/C, casa de banho privada, terraço, Twin/King.",
+          "Pequeno chalé romântico entre palmeiras. AC Inverter for cooling & heating, casa de banho privada, terraço, Twin/King.",
         details: [
           "Ambiente tranquilo sob palmeiras • ar-condicionado",
           "Casa de banho privativa (duche, lavatório, sanita)",
@@ -1580,10 +1580,10 @@ export const L10N = {
       cottage: {
         title: "Tuincottage",
         short:
-          "Luchtige cottage met queensbed, A/C (inverter), bureau & eettafel, privéterras en badkamer in rondavel.",
+          "Luchtige cottage met queensbed, AC Inverter for cooling & heating, bureau & eettafel, privéterras en badkamer in rondavel.",
         details: [
           "Queensbed • bureau en eettafel",
-          "Inverter A/C (koelen & verwarmen) • dimbare hoofdverlichting",
+          "AC Inverter for cooling & heating • dimbare hoofdverlichting",
           "Badkamer in rondavel (douche, wastafel, toilet)",
           "Houten terras met kampeerstoelen",
         ],
@@ -1591,7 +1591,7 @@ export const L10N = {
       chalet: {
         title: "Rieten Chalet",
         short:
-          "Afgelegen, romantisch tiny chalet onder palmen. A/C, privébadkamer, terras, Twin/King.",
+          "Afgelegen, romantisch tiny chalet onder palmen. AC Inverter for cooling & heating, privébadkamer, terras, Twin/King.",
         details: [
           "Rustige omgeving onder palmen • airconditioning",
           "Privébadkamer (douche, wastafel, toilet)",
@@ -1638,10 +1638,10 @@ export const L10N = {
       cottage: {
         title: "Cottage Jardin",
         short:
-          "Cottage aéré avec lit queen, A/C (inverter), bureau & table à manger, terrasse privée et salle de bain dans rondavel.",
+          "Cottage aéré avec lit queen, AC Inverter for cooling & heating, bureau & table à manger, terrasse privée et salle de bain dans rondavel.",
         details: [
           "Lit queen • bureau et table à manger",
-          "A/C inverter (chaud/froid) • éclairage tamisable",
+          "AC Inverter for cooling & heating inverter (chaud/froid) • éclairage tamisable",
           "Salle de bain dans rondavel (douche, lavabo, WC)",
           "Terrasse en bois avec chaises de camping",
         ],
@@ -1649,7 +1649,7 @@ export const L10N = {
       chalet: {
         title: "Chalet de Chaume",
         short:
-          "Petit chalet romantique isolé sous les palmiers. A/C, salle de bain privée, terrasse, Twin/King.",
+          "Petit chalet romantique isolé sous les palmiers. AC Inverter for cooling & heating, salle de bain privée, terrasse, Twin/King.",
         details: [
           "Cadre tranquille sous les palmiers • climatisation",
           "Salle de bain privée (douche, lavabo, WC)",
@@ -1696,10 +1696,10 @@ export const L10N = {
       cottage: {
         title: "Cottage Giardino",
         short:
-          "Cottage arioso con letto queen, A/C (inverter), scrivania e tavolo da pranzo, terrazza privata e bagno in rondavel.",
+          "Cottage arioso con letto queen, AC Inverter for cooling & heating, scrivania e tavolo da pranzo, terrazza privata e bagno in rondavel.",
         details: [
           "Letto queen • scrivania e tavolo da pranzo",
-          "A/C inverter (freddo/caldo) • luce dimmerabile",
+          "AC Inverter for cooling & heating inverter (freddo/caldo) • luce dimmerabile",
           "Bagno in rondavel (doccia, lavabo, WC)",
           "Terrazza in legno con sedie da campeggio",
         ],
@@ -1707,7 +1707,7 @@ export const L10N = {
       chalet: {
         title: "Chalet di Paglia",
         short:
-          "Piccolo chalet romantico appartato sotto le palme. A/C, bagno privato, terrazza, Twin/King.",
+          "Piccolo chalet romantico appartato sotto le palme. AC Inverter for cooling & heating, bagno privato, terrazza, Twin/King.",
         details: [
           "Ambiente tranquillo sotto le palme • aria condizionata",
           "Bagno privato (doccia, lavabo, WC)",
@@ -1754,10 +1754,10 @@ export const L10N = {
       cottage: {
         title: "Garten-Cottage",
         short:
-          "Luftiges Cottage mit Queensbett, A/C (Inverter), Schreibtisch & Esstisch, privater Terrasse und Bad im Rondavel.",
+          "Luftiges Cottage mit Queensbett, AC Inverter for cooling & heating (Inverter), Schreibtisch & Esstisch, privater Terrasse und Bad im Rondavel.",
         details: [
           "Queensbett • Schreibtisch und Esstisch",
-          "Inverter-A/C (kühl/warm) • dimmbare Hauptbeleuchtung",
+          "Inverter-AC Inverter for cooling & heating (kühl/warm) • dimmbare Hauptbeleuchtung",
           "Bad im Rondavel (Dusche, Waschbecken, WC)",
           "Holzterrasse mit Campingstühlen",
         ],
@@ -1765,7 +1765,7 @@ export const L10N = {
       chalet: {
         title: "Reetdach-Chalet",
         short:
-          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. A/C, eigenes Bad, Terrasse, Twin/King.",
+          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. AC Inverter for cooling & heating, eigenes Bad, Terrasse, Twin/King.",
         details: [
           "Ruhige Umgebung unter Palmen • Klimaanlage",
           "Eigenes Bad (Dusche, Waschbecken, WC)",
@@ -1812,10 +1812,10 @@ export const L10N = {
       cottage: {
         title: "Cottage Jardín",
         short:
-          "Cottage aireado con cama queen, A/C (inverter), escritorio y mesa, terraza privada y baño en rondavel.",
+          "Cottage aireado con cama queen, AC Inverter for cooling & heating, escritorio y mesa, terraza privada y baño en rondavel.",
         details: [
           "Cama queen • escritorio y mesa de comedor",
-          "A/C inverter (frío/calor) • luz regulable",
+          "AC Inverter for cooling & heating inverter (frío/calor) • luz regulable",
           "Baño en rondavel (ducha, lavabo, WC)",
           "Terraza de madera con sillas de camping",
         ],
@@ -1823,7 +1823,7 @@ export const L10N = {
       chalet: {
         title: "Chalet de Paja",
         short:
-          "Pequeño chalet romántico aislado bajo palmeras. A/C, baño privado, terraza, Twin/King.",
+          "Pequeño chalet romántico aislado bajo palmeras. AC Inverter for cooling & heating, baño privado, terraza, Twin/King.",
         details: [
           "Entorno tranquilo bajo palmeras • aire acondicionado",
           "Baño privado (ducha, lavabo, WC)",
@@ -2332,17 +2332,17 @@ export const L10N = {
       },
       cottage: {
         title: "Tuin Kothuis",
-        short: "Lug kothuis met queen bed, A/C (inverter), lessenaar en tafel, privaat terras en badkamer in rondavel.",
+        short: "Lug kothuis met queen bed, AC Inverter for cooling & heating, lessenaar en tafel, privaat terras en badkamer in rondavel.",
         details: [
           "Queen bed • lessenaar en eet-tafel",
-          "Inverter A/C (koel/verhit) • dimbare lig",
+          "AC Inverter for cooling & heating • dimbare lig",
           "Rondavel badkamer (stort, wasbak, toilet)",
           "Houterras met kampeerstoeie",
         ],
       },
       chalet: {
         title: "Rietdak Chalet",
-        short: "Stil, romantiese klein chalet tussen palmbome. A/C, privaat badkamer, terras, Twin/King.",
+        short: "Stil, romantiese klein chalet tussen palmbome. AC Inverter for cooling & heating, privaat badkamer, terras, Twin/King.",
         details: [
           "Rustige omgewing onder palmbome • lugversorging",
           "Privaat badkamer (stort, wasbak, toilet)",
@@ -2386,17 +2386,17 @@ export const L10N = {
       },
       cottage: {
         title: "Indlu Yengadi",
-        short: "Indlu enomoya enombhede we-queen, i-A/C (inverter), ideski netafula, idekhi yangasese kanye nendawo yokugezela e-rondavel.",
+        short: "Indlu enomoya enombhede we-queen, i-AC Inverter for cooling & heating, ideski netafula, idekhi yangasese kanye nendawo yokugezela e-rondavel.",
         details: [
           "Umbhede we-queen • ideski netafula lokudlela",
-          "I-A/C ye-inverter (ukupholisa/ukufudumeza) • ukukhanya okuyinhloko okungaguquki",
+          "AC Inverter for cooling & heating • ukukhanya okuyinhloko okungaguquki",
           "Indawo yokugezela ye-rondavel (ishawa, usinki, indlu yangasese)",
           "Idekhi yokhuni enezitulo zokukhempela",
         ],
       },
       chalet: {
         title: "I-Chalet Yezintende",
-        short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. I-A/C, indawo yokugezela yangasese, idekhi, i-Twin/King.",
+        short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. AC Inverter for cooling & heating, indawo yokugezela yangasese, idekhi, i-Twin/King.",
         details: [
           "Indawo enokuthula ngaphansi kwezihlahla zesundu • i-air conditioning",
           "Indawo yokugezela yangasese (ishawa, usinki, indlu yangasese)",
@@ -2476,19 +2476,19 @@ export const L10N = {
       },
       cottage: {
         title: "Nyumba ya Bustani",
-        short: "Nyumba yenye hewa safi na kitanda cha queen, A/C (inverter), dawati na meza, dekhi ya faragha na bafu katika rondavel.",
+        short: "Nyumba yenye hewa safi na kitanda cha queen, AC Inverter for cooling & heating, dawati na meza, dekhi ya faragha na bafu katika rondavel.",
         details: [
           "Kitanda cha queen • dawati na meza ya kulia",
-          "A/C ya inverter (baridi/joto) • taa ya msingi inayoweza kubadilishwa",
+          "AC Inverter for cooling & heating • taa ya msingi inayoweza kubadilishwa",
           "Bafu ya rondavel (shawa, sinki, choo)",
           "Dekhi ya mbao yenye viti vya kambi",
         ],
       },
       chalet: {
         title: "Chalet ya Nyasi",
-        short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. A/C, bafu ya faragha, dekhi, Twin/King.",
+        short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. AC Inverter for cooling & heating, bafu ya faragha, dekhi, Twin/King.",
         details: [
-          "Mazingira ya amani chini ya miti ya michikichi • A/C",
+          "Mazingira ya amani chini ya miti ya michikichi • AC Inverter for cooling & heating",
           "Bafu ya faragha (shawa, sinki, choo)",
           "Vitanda vya Twin/King vyenye meza za pembeni",
           "Dekhi ya faragha yenye viti vya majani ya michikichi",

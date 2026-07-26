@@ -153,10 +153,10 @@ units: {
       cottage: {
         title: "Garten-Cottage",
         short:
-          "Luftiges Cottage mit Queensbett, A/C (Inverter), Schreibtisch & Esstisch, privater Terrasse und Bad im Rondavel.",
+          "Luftiges Cottage mit Queensbett, AC Inverter for cooling & heating (Inverter), Schreibtisch & Esstisch, privater Terrasse und Bad im Rondavel.",
         details: [
           "Queensbett • Schreibtisch und Esstisch",
-          "Inverter-A/C (kühl/warm) • dimmbare Hauptbeleuchtung",
+          "Inverter-AC Inverter for cooling & heating (kühl/warm) • dimmbare Hauptbeleuchtung",
           "Bad im Rondavel (Dusche, Waschbecken, WC)",
           "Holzterrasse mit Campingstühlen",
         ],
@@ -164,7 +164,7 @@ units: {
       chalet: {
         title: "Reetdach-Chalet",
         short:
-          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. A/C, eigenes Bad, Terrasse, King- oder Einzelbett.",
+          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. AC Inverter for cooling & heating, eigenes Bad, Terrasse, King- oder Einzelbett.",
         details: [
           "Ruhige Umgebung unter Palmen • Klimaanlage",
           "Eigenes Bad (Dusche, Waschbecken, WC)",
