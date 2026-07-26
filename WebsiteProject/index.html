@@ -705,6 +705,30 @@
       font-size: 13px !important;
       line-height: 1.4 !important;
     }
+
+    /* ── Static pre-render shadow ──────────────────────────────────────────────
+       Sits in normal document flow after the fixed hero overlay.
+       Real users never see it (the overlay covers it; it's pushed below the
+       React app after mount then hidden). Plain-HTML crawlers index it in full.
+       ────────────────────────────────────────────────────────────────────── */
+    #static-content {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f8fafc;
+      padding: 2rem 1rem;
+      max-width: 80rem;
+      margin: 0 auto;
+      line-height: 1.6;
+      color: #1e293b;
+    }
+    #static-content section { margin-bottom: 2rem; }
+    #static-content h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem; }
+    #static-content h3 { font-size: 1.05rem; font-weight: 600; margin: 0.75rem 0 0.2rem; }
+    #static-content p  { margin: 0.2rem 0; }
+    #static-content ul { list-style: none; padding: 0; margin: 0.5rem 0; }
+    #static-content dl { margin: 0; }
+    #static-content dt { font-weight: 600; margin-top: 0.75rem; }
+    #static-content dd { margin: 0 0 0.25rem 0; }
+    #static-content a  { color: #9e4b13; text-decoration: none; }
   </style>
 
   <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
@@ -833,6 +857,134 @@
       <p id="hero-subtitle" style="font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
     </div>
   </div>
+
+  <!-- ── Static pre-render shadow ─────────────────────────────────────────────
+       Visible in the initial HTML payload so plain-HTML crawlers (and any
+       renderer that doesn't execute JS) index the full page content.
+       The fixed #hero-placeholder overlay (z-index 9999) covers this for real
+       users. After React mounts, the MutationObserver below sets display:none.
+       ────────────────────────────────────────────────────────────────────── -->
+  <div id="static-content">
+
+    <section>
+      <h2>Stay with us</h2>
+      <p>Eco-friendly lodge in Ponta do Ouro, Southern Mozambique — safari tents, thatched chalet and garden cottage a few minutes from the beach. Family-run hospitality, great value, and a world-class marine reserve on your doorstep.</p>
+      <p>Choose your style: nature-immersed tents or cosy chalets and cottage – all with warm, family-run hospitality.</p>
+      <ul>
+        <li>
+          <h3><a href="/safari">Safari Tent</a></h3>
+          <p>12 m² canvas tent on a raised 3×6 m platform. Twin or King beds, fan, power points, mosquito mesh, private terrace. Shared hot-water ablutions.</p>
+        </li>
+        <li>
+          <h3><a href="/comfort">Comfort Tent</a></h3>
+          <p>Upgraded 12 m² tent with added privacy walls, private terrace and en-suite bathroom under a thatched roof. Twin or King bed setup.</p>
+        </li>
+        <li>
+          <h3><a href="/cottage">Garden Cottage</a></h3>
+          <p>Airy cottage with queen bed, inverter A/C (heat &amp; cool), desk, dining table, private terrace and private bathroom in a thatched roundavel.</p>
+        </li>
+        <li>
+          <h3><a href="/chalet">Thatched Chalet</a></h3>
+          <p>Secluded, romantic chalet under palms and strelitzia. Inverter A/C, private bathroom, private terrace, Twin or King bed setup.</p>
+        </li>
+      </ul>
+      <p><a href="/book-direct">Check rates &amp; availability</a></p>
+    </section>
+
+    <section>
+      <h2>Location &amp; Key Facilities</h2>
+      <p>Rua C, Parcela 12 · Ponta do Ouro · Matutuíne District · Província de Maputo · Mozambique</p>
+      <ul>
+        <li>Ponta do Ouro town, a short walk from the beach</li>
+        <li>15 min to Ponta Malongane · 25 min to Kosi Bay border with South Africa</li>
+        <li>Secure parking · Local cafés &amp; markets nearby</li>
+      </ul>
+      <p>Check-in from 14:00 · Check-out by 10:00 · Free high-speed Wi-Fi · Breakfast available · Pets not allowed</p>
+      <p>Coordinates: −26.8420, 32.8850 · <a href="https://maps.app.goo.gl/edhq5PGLLhGMh9rL6" rel="noopener">View on Google Maps</a></p>
+    </section>
+
+    <section>
+      <h2>Experiences</h2>
+      <p>Ocean and forest adventures right on your doorstep in Ponta do Ouro.</p>
+      <ul>
+        <li>
+          <h3><a href="/experiences/diving">Scuba Diving</a></h3>
+          <p>Offshore reefs with 1,200+ fish species, resident dolphins, sharks and rays. Reef sites from 10 m (Crèche) to 47 m (Atlantis). PADI courses and guided dives with Gozo Azul.</p>
+        </li>
+        <li>
+          <h3><a href="/experiences/dolphins">Dolphin Swim</a></h3>
+          <p>Year-round ethical in-water encounters with resident bottlenose dolphin pods, managed to strict eco-tourism standards.</p>
+        </li>
+        <li>
+          <h3>Lighthouse Walk</h3>
+          <p>Hike the hill to the old Portuguese lighthouse for panoramic views over the bay.</p>
+        </li>
+        <li>
+          <h3><a href="/experiences/seafari">Seafaris &amp; Whale Watching</a></h3>
+          <p>Ocean safaris for humpback whales (May–October) and year-round marine wildlife. Guided by The Dolphin Centre.</p>
+        </li>
+        <li>
+          <h3>Game Safaris</h3>
+          <p>Day trips to Maputo National Park, a UNESCO World Heritage site 30 km away — elephants, hippos, giraffes, zebras and 526 bird species.</p>
+        </li>
+        <li>
+          <h3><a href="/experiences/fishing">Beach &amp; Deep Sea Fishing</a></h3>
+          <p>Shore casts, estuary fishing and offshore charters with Mozambique Fishin' Charters.</p>
+        </li>
+        <li>
+          <h3><a href="/experiences/surfing">Surfboards &amp; Lessons</a></h3>
+          <p>Catch a wave or take a beginner lesson with SPIGS Surf's Up.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Frequently Asked Questions</h2>
+      <dl>
+        <dt>Where is DEVOCEAN Lodge?</dt>
+        <dd>DEVOCEAN Lodge is at Rua C, Parcela 12, Ponta do Ouro, in the far south of Mozambique, a few minutes' walk from the beach (−26.8420, 32.8850).</dd>
+
+        <dt>How do I get to Ponta do Ouro?</dt>
+        <dd>Ponta do Ouro is near the Kosi Bay border with South Africa. Many guests drive — a 4×4 is recommended for the sandy coastal tracks. Our team can advise on the best route and transfers.</dd>
+
+        <dt>What accommodation options does DEVOCEAN Lodge offer?</dt>
+        <dd>Four options, each with a private terrace: the Safari Tent (shared ablutions), the Comfort Tent (en-suite), the Garden Cottage (queen bed, inverter air-conditioning) and the Thatched Chalet (inverter air-conditioning, private bathroom).</dd>
+
+        <dt>What activities are there near the lodge?</dt>
+        <dd>Scuba diving on offshore reefs, ethical dolphin swims, ocean seafaris (whale watching May–October), game safaris at Maputo National Park, beach and deep-sea fishing, surfing, and a walk to the old lighthouse.</dd>
+
+        <dt>What are the check-in and check-out times?</dt>
+        <dd>Check-in is from 14:00 and check-out is by 10:00.</dd>
+
+        <dt>What currency does the lodge charge in?</dt>
+        <dd>Rates are billed in US dollars. Our AI receptionist Marin can quote prices in your preferred currency at live exchange rates.</dd>
+
+        <dt>How do I book?</dt>
+        <dd>Book online at <a href="/book-direct">devoceanlodge.com/book-direct</a>, or use the chat widget to ask Marin for live availability and rates. DEVOCEAN reception confirms every enquiry by email.</dd>
+
+        <dt>Is there Wi-Fi and air-conditioning, and are pets allowed?</dt>
+        <dd>Free high-speed Wi-Fi throughout. The Garden Cottage and Thatched Chalet have inverter air-conditioning; the Safari and Comfort tents have fans. Pets are not allowed.</dd>
+      </dl>
+    </section>
+
+  </div>
+  <script>
+    /* Hide the pre-render shadow the moment React mounts any child into #root */
+    (function () {
+      var sc = document.getElementById('static-content');
+      var root = document.getElementById('root');
+      if (!sc || !root) return;
+      var obs = new MutationObserver(function () {
+        if (root.children.length > 0) {
+          sc.style.display = 'none';
+          obs.disconnect();
+        }
+      });
+      obs.observe(root, { childList: true });
+      /* Fallback: hide after 10 s regardless (e.g. React bundle blocked) */
+      setTimeout(function () { sc.style.display = 'none'; obs.disconnect(); }, 10000);
+    })();
+  </script>
 
   <!-- Localize hero placeholder text before display -->
   <script>
