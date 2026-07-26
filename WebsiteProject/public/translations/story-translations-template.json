@@ -12,7 +12,7 @@
       "proofPoints": {
         "support": "Friendly, local support",
         "booking": "Secure, hassle-free booking",
-        "restaurant": "Restaurant on site • farm-fresh breakfast"
+        "restaurant": "Breakfast included · Dinner by pre-order"
       }
     },
     "cards": {
@@ -27,7 +27,7 @@
       },
       "farm": {
         "title": "From our land to your plate",
-        "content": "Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant."
+        "content": "Enjoy a breakfast included with every stay, and pre-order a freshly prepared dinner from our in-house kitchen."
       },
       "impact": {
         "title": "Your stay creates impact",
@@ -54,7 +54,7 @@
       "proofPoints": {
         "support": "Suporte local e amigável",
         "booking": "Reserva segura e sem complicações",
-        "restaurant": "Restaurante no local • café da manhã fresco da fazenda"
+        "restaurant": "Café da manhã incluído · Jantar sob encomenda"
       }
     },
     "cards": {
@@ -69,7 +69,7 @@
       },
       "farm": {
         "title": "Da nossa terra ao seu prato",
-        "content": "Desfrute de cafés da manhã frescos da fazenda e almoços e jantares deliciosos preparados pelo nosso chef interno no restaurante."
+        "content": "Desfrute de café da manhã incluído em toda estadia e pré-encomende um jantar preparado na nossa cozinha interna."
       },
       "impact": {
         "title": "Sua estadia gera impacto",
@@ -96,7 +96,7 @@
       "proofPoints": {
         "support": "Apoio local e amigável",
         "booking": "Reserva segura e sem complicações",
-        "restaurant": "Restaurante no local • pequeno-almoço fresco da quinta"
+        "restaurant": "Pequeno-almoço incluído · Jantar sob encomenda"
       }
     },
     "cards": {
@@ -111,7 +111,7 @@
       },
       "farm": {
         "title": "Da nossa terra ao seu prato",
-        "content": "Desfrute de pequenos-almoços frescos da quinta e almoços e jantares deliciosos preparados pelo nosso chef interno no restaurante."
+        "content": "Desfrute de um pequeno-almoço incluído em cada estadia e pré-encomende um jantar preparado na nossa cozinha interna."
       },
       "impact": {
         "title": "A sua estadia cria impacto",
@@ -138,7 +138,7 @@
       "proofPoints": {
         "support": "Vriendelijke, lokale ondersteuning",
         "booking": "Veilige, probleemloze boeking",
-        "restaurant": "Restaurant ter plaatse • vers-uit-de-boerderij ontbijt"
+        "restaurant": "Ontbijt inbegrepen · Diner op bestelling"
       }
     },
     "cards": {
@@ -153,7 +153,7 @@
       },
       "farm": {
         "title": "Van ons land naar uw bord",
-        "content": "Geniet van verse ontbijten van de boerderij en heerlijke lunches en diners bereid door onze in-house chef in het restaurant."
+        "content": "Geniet van een ontbijt inbegrepen bij elk verblijf en bestel vooraf een vers bereid diner in onze eigen keuken."
       },
       "impact": {
         "title": "Uw verblijf creëert impact",
@@ -180,7 +180,7 @@
       "proofPoints": {
         "support": "Support local et amical",
         "booking": "Réservation sécurisée et sans tracas",
-        "restaurant": "Restaurant sur place • petit-déjeuner frais de la ferme"
+        "restaurant": "Petit-déjeuner inclus · Dîner sur commande"
       }
     },
     "cards": {
@@ -195,7 +195,7 @@
       },
       "farm": {
         "title": "De notre terre à votre assiette",
-        "content": "Savourez des petits-déjeuners frais de la ferme et des déjeuners et dîners délicieux préparés par notre chef sur place au restaurant."
+        "content": "Profitez d’un petit-déjeuner inclus à chaque séjour et pré-commandez un dîner fraîchement préparé par notre cuisine interne."
       },
       "impact": {
         "title": "Votre séjour a un impact",
@@ -222,7 +222,7 @@
       "proofPoints": {
         "support": "Supporto locale e amichevole",
         "booking": "Prenotazione sicura e senza problemi",
-        "restaurant": "Ristorante in loco • colazione fresca dalla fattoria"
+        "restaurant": "Colazione inclusa · Cena su richiesta"
       }
     },
     "cards": {
@@ -237,7 +237,7 @@
       },
       "farm": {
         "title": "Dalla nostra terra al tuo piatto",
-        "content": "Goditi colazioni fresche dalla fattoria e pranzi e cene deliziosi preparati dal nostro chef interno nel ristorante."
+        "content": "Goditi una colazione inclusa in ogni soggiorno e prenota in anticipo una cena fresca preparata dalla nostra cucina interna."
       },
       "impact": {
         "title": "Il tuo soggiorno crea impatto",
@@ -264,7 +264,7 @@
       "proofPoints": {
         "support": "Freundliche, lokale Unterstützung",
         "booking": "Sichere, problemlose Buchung",
-        "restaurant": "Restaurant vor Ort • frisches Frühstück direkt vom Bauernhof"
+        "restaurant": "Frühstück inklusive · Abendessen auf Bestellung"
       }
     },
     "cards": {
@@ -279,7 +279,7 @@
       },
       "farm": {
         "title": "Von unserem Land auf Ihren Teller",
-        "content": "Genießen Sie frische Frühstücke vom Bauernhof und köstliche Mittag- und Abendessen, zubereitet von unserem hauseigenen Koch im Restaurant."
+        "content": "Genießen Sie ein im Aufenthalt enthaltenes Frühstück und bestellen Sie im Voraus ein frisch zubereitetes Abendessen aus unserer eigenen Küche."
       },
       "impact": {
         "title": "Ihr Aufenthalt schafft Wirkung",
@@ -306,7 +306,7 @@
       "proofPoints": {
         "support": "Apoyo local y amigable",
         "booking": "Reserva segura y sin complicaciones",
-        "restaurant": "Restaurante en el lugar • desayuno fresco de la granja"
+        "restaurant": "Desayuno incluido · Cena bajo pedido"
       }
     },
     "cards": {
@@ -321,7 +321,7 @@
       },
       "farm": {
         "title": "De nuestra tierra a tu plato",
-        "content": "Disfruta de desayunos frescos de la granja y almuerzos y cenas deliciosos preparados por nuestro chef interno en el restaurante."
+        "content": "Disfruta de un desayuno incluido en cada estancia y pre-ordena una cena recién preparada por nuestra cocina interna."
       },
       "impact": {
         "title": "Tu estancia genera impacto",
@@ -348,7 +348,7 @@
       "proofPoints": {
         "support": "Vänlig, lokal support",
         "booking": "Säker, problemfri bokning",
-        "restaurant": "Restaurang på plats • färsk frukost från gården"
+        "restaurant": "Frukost ingår · Middag på förbeställning"
       }
     },
     "cards": {
@@ -363,7 +363,7 @@
       },
       "farm": {
         "title": "Från vår mark till din tallrik",
-        "content": "Njut av färska frukostar från gården och läckra luncher och middagar tillagade av vår interna kock på restaurangen."
+        "content": "Njut av en frukost som ingår i varje vistelse och förbeställ en nytillagad middag från vårt eget kök."
       },
       "impact": {
         "title": "Din vistelse skapar påverkan",
@@ -390,7 +390,7 @@
       "proofPoints": {
         "support": "Przyjazne, lokalne wsparcie",
         "booking": "Bezpieczna, bezproblemowa rezerwacja",
-        "restaurant": "Restauracja na miejscu • świeże śniadanie prosto z farmy"
+        "restaurant": "Śniadanie w cenie · Kolacja na zamówienie"
       }
     },
     "cards": {
@@ -405,7 +405,7 @@
       },
       "farm": {
         "title": "Z naszej ziemi na twój talerz",
-        "content": "Ciesz się świeżymi śniadaniami prosto z farmy oraz pysznymi obiadami i kolacjami przygotowanymi przez naszego szefa kuchni w restauracji."
+        "content": "Ciesz się śniadaniem wliczonym w każdy pobyt i zamów z wyprzedzeniem świeżo przygotowaną kolację z naszej własnej kuchni."
       },
       "impact": {
         "title": "Twój pobyt tworzy wpływ",
@@ -432,7 +432,7 @@
       "proofPoints": {
         "support": "Vriendelike, plaaslike ondersteuning",
         "booking": "Veilige, moeitevrye bespreking",
-        "restaurant": "Restaurant op die perseel • vars plaasontbyt"
+        "restaurant": "Ontbyt ingesluit · Aandete op bestelling"
       }
     },
     "cards": {
@@ -447,7 +447,7 @@
       },
       "farm": {
         "title": "Van ons land tot jou bord",
-        "content": "Geniet vars plaasontbyte en heerlike middag- en aandetes wat deur ons in-huis sjef in die restaurant voorberei word."
+        "content": "Geniet ’n ontbyt ingesluit by elke verblyf en voorbestel ’n vars bereide aandete uit ons eie kombuis."
       },
       "impact": {
         "title": "Jou verblyf skep impak",
@@ -474,7 +474,7 @@
       "proofPoints": {
         "support": "Ukwesekwa okunobungane, kwasendaweni",
         "booking": "Ukubhukha okuphephile, okungenazinkinga",
-        "restaurant": "Indawo yokudlela esizeni • isidlo sasekuseni esisha sasepulazini"
+        "restaurant": "Isidlo sasekuseni sifakiwe · Isidlo sakusihlwa ngomyalelo"
       }
     },
     "cards": {
@@ -489,7 +489,7 @@
       },
       "farm": {
         "title": "Ukusuka emhlabathini wethu kuye epuladini lakho",
-        "content": "Jabulela izidlo zasekuseni ezisanda kulungiswa epulazini kanye nezidlo zasemini nezasebusuku ezimnandi ezilungiswe ngumpheki wethu wasekhaya endaweni yokudlela."
+        "content": "Jabulela isidlo sasekuseni esifakiwe kulokhu kwehlala, futhi uyalele isidlo sakusihlwa esisanda kulungiswa esiphuma ekhishini lethu langaphakathi."
       },
       "impact": {
         "title": "Ukuhlala kwakho kwakha umthelela",
@@ -516,7 +516,7 @@
       "proofPoints": {
         "support": "Msaada wa kirafiki wa ndani",
         "booking": "Uhifadhi salama na bila shida",
-        "restaurant": "Mkahawa kwenye tovuti • kifungua kinywa cha shambani"
+        "restaurant": "Kifungua kinywa kimejumuishwa · Chakula cha jioni kwa agizo"
       }
     },
     "cards": {
@@ -531,7 +531,7 @@
       },
       "farm": {
         "title": "Kutoka ardhi yetu hadi kwenye sahani yako",
-        "content": "Furahia vifungua kinywa vya shambani na chakula cha mchana na cha jioni chenye ladha kilichotayarishwa na mpishi wetu wa ndani kwenye mkahawa."
+        "content": "Furahia kifungua kinywa kilichojumuishwa katika kila kukaa, na uagize mapema chakula cha jioni kilichotayarishwa upya kutoka jikoni letu la ndani."
       },
       "impact": {
         "title": "Kukaa kwako kunaleta athari",
@@ -558,7 +558,7 @@
       "proofPoints": {
         "support": "フレンドリーな地元サポート",
         "booking": "安全で手間のかからない予約",
-        "restaurant": "敷地内のレストラン • 農場直送の朝食"
+        "restaurant": "朝食込み · ディナーは事前注文"
       }
     },
     "cards": {
@@ -573,7 +573,7 @@
       },
       "farm": {
         "title": "私たちの土地からあなたの皿へ",
-        "content": "農場直送の新鮮な朝食と、館内シェフがレストランで用意する美味しいランチとディナーをお楽しみください。"
+        "content": "毎回の滞在に含まれる朝食をお楽しみください。また、当館のキッチンで新鮮に調理されるディナーを事前にご注文いただけます。"
       },
       "impact": {
         "title": "あなたの滞在が影響を与える",
@@ -600,7 +600,7 @@
       "proofPoints": {
         "support": "友好的本地支持",
         "booking": "安全、无忧的预订",
-        "restaurant": "现场餐厅 • 农场新鲜早餐"
+        "restaurant": "含早餐 · 晚餐可预订"
       }
     },
     "cards": {
@@ -615,7 +615,7 @@
       },
       "farm": {
         "title": "从我们的土地到您的餐盘",
-        "content": "在餐厅享用农场新鲜的早餐以及由我们内部厨师准备的美味午餐和晚餐。"
+        "content": "享用每次住宿包含的早餐，并预订我们内部厨房为您精心烹制的晚餐。"
       },
       "impact": {
         "title": "您的入住创造影响",
@@ -642,7 +642,7 @@
       "proofPoints": {
         "support": "Дружелюбная местная поддержка",
         "booking": "Безопасное и беспроблемное бронирование",
-        "restaurant": "Ресторан на территории • свежий фермерский завтрак"
+        "restaurant": "Завтрак включён · Ужин на заказ"
       }
     },
     "cards": {
@@ -657,7 +657,7 @@
       },
       "farm": {
         "title": "От нашей земли к вашему столу",
-        "content": "Наслаждайтесь свежими фермерскими завтраками и вкусными обедами и ужинами, приготовленными нашим шеф-поваром в ресторане."
+        "content": "Наслаждайтесь завтраком, включённым в каждое проживание, и заранее заказывайте свежеприготовленный ужин от нашей кухни."
       },
       "impact": {
         "title": "Ваше пребывание создает воздействие",
@@ -684,7 +684,7 @@
       "proofPoints": {
         "support": "Friendly, local support",
         "booking": "Secure, hassle-free booking",
-        "restaurant": "Restaurant on site • farm-fresh breakfast"
+        "restaurant": "Breakfast included · Dinner by pre-order"
       }
     },
     "cards": {
@@ -699,7 +699,7 @@
       },
       "farm": {
         "title": "From our land to your plate",
-        "content": "Enjoy farm-fresh breakfasts and delicious lunches & dinners prepared by our in-house chef at the restaurant."
+        "content": "Enjoy a breakfast included with every stay, and pre-order a freshly prepared dinner from our in-house kitchen."
       },
       "impact": {
         "title": "Your stay creates impact",
