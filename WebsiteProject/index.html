@@ -302,42 +302,6 @@
   <meta name="twitter:image:alt" content="DEVOCEAN Lodge beachfront accommodation in Ponta do Ouro, Mozambique" />
 
   <!-- Structured Data: LodgingBusiness (Google rich results) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
-    "name": "DEVOCEAN Lodge",
-    "url": "https://devoceanlodge.com",
-    "description": "Eco-friendly beach accommodation in Ponta do Ouro, Mozambique. Safari tents, cottage and chalet near the beach. Family-run hospitality and great value.",
-    "image": [
-      "https://devoceanlodge.com/photos/hero01.jpg",
-      "https://devoceanlodge.com/photos/hero02.jpg"
-    ],
-    "telephone": "+258844182252",
-    "email": "info@devoceanlodge.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ponta do Ouro",
-      "addressRegion": "Maputo",
-      "addressCountry": "MZ"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -26.8474,
-      "longitude": 32.8977
-    },
-    "priceRange": "$$",
-    "checkinTime": "14:00",
-    "checkoutTime": "10:00",
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Beach Access", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Air Conditioning", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true }
-    ]
-  }
-  </script>
-
   <!-- Structured Data: TouristDestination — Ponta do Ouro -->
   <script type="application/ld+json">
   {
@@ -544,7 +508,7 @@
       opacity: 1;
       animation: subtleFadeIn 0.4s ease-out forwards;
     }
-    #hero-placeholder h1 {
+    #hero-title {
       font-size: clamp(2rem, 5vw, 3.75rem);
       font-weight: 700;
       line-height: 1.2;
@@ -865,7 +829,7 @@
     </picture>
     <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); pointer-events: none;"></div>
     <div id="hero-placeholder-content" style="position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; padding-bottom: 6rem; color: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif; box-sizing: border-box; width: 100%;">
-      <h1 id="hero-title" style="font-size: var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem)); font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
+      <div id="hero-title" style="font-size: var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem)); font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</div>
       <p id="hero-subtitle" style="font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
     </div>
   </div>
@@ -952,86 +916,93 @@
     })();
   </script>
 
-  <!-- JSON-LD structured data (moved to end for mobile FCP optimization) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["LodgingBusiness","Hotel"],
-    "@id": "https://devoceanlodge.com/#lodge",
-    "name": "DEVOCEAN Lodge",
-    "brand": { "@type": "Brand", "name": "TERRAfrique LDA" },
-    "url": "https://devoceanlodge.com/",
-    "logo": "https://devoceanlodge.com/images/Logo2.png",
-    "image": [
-      "https://devoceanlodge.com/photos/hero01.jpg",
-      "https://devoceanlodge.com/photos/hero02.jpg",
-      "https://devoceanlodge.com/photos/hero03.jpg",
-      "https://devoceanlodge.com/photos/hero04.jpg",
-      "https://devoceanlodge.com/photos/hero05.jpg"
-    ],
-    "description": "Eco-friendly lodge in Ponta do Ouro, Southern Mozambique — safari tents, thatched chalet and garden cottage a few minutes from the beach.",
-    "email": "info@devoceanlodge.com",
-    "telephone": "+258 84 418 2252",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua C, parcela 12, 1118",
-      "addressLocality": "Ponta do Ouro",
-      "addressRegion": "Matutuine",
-      "postalCode": "1118",
-      "addressCountry": "MZ"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -26.841994852732736,
-      "longitude": 32.88504331196165
-    },
-    "hasMap": "https://www.google.com/maps?q=-26.841994852732736,32.88504331196165&z=13&output=embed",
-    "checkinTime": "14:00",
-    "checkoutTime": "10:00",
-    "priceRange": "$$",
-    "petsAllowed": false,
-    "amenityFeature": [
-      { "@type": "LocationFeatureSpecification", "name": "Eco-friendly lodging", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Free high-speed Wi-Fi", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Breakfast available", "value": true }
-    ],
-    "availableLanguage": [
-      { "@type": "Language", "name": "English", "alternateName": "en" },
-      { "@type": "Language", "name": "Portuguese", "alternateName": "pt" },
-      { "@type": "Language", "name": "Portuguese (Mozambique)", "alternateName": "pt-MZ" },
-      { "@type": "Language", "name": "Dutch", "alternateName": "nl" },
-      { "@type": "Language", "name": "French", "alternateName": "fr" },
-      { "@type": "Language", "name": "Italian", "alternateName": "it" },
-      { "@type": "Language", "name": "German", "alternateName": "de" },
-      { "@type": "Language", "name": "Spanish", "alternateName": "es" },
-      { "@type": "Language", "name": "Swedish", "alternateName": "sv" },
-      { "@type": "Language", "name": "Polish", "alternateName": "pl" }
-    ],
-    "areaServed": { "@type": "Country", "name": "Mozambique" },
-    "sameAs": [
-      "https://www.facebook.com/devoceanmz/",
-      "https://www.instagram.com/devoceanmz/",
-      "https://x.com/DEVOCEANMZ",
-      "https://www.linkedin.com/company/devocean-lodge",
-      "https://www.tiktok.com/@devoceanlodge",
-      "https://www.pinterest.com/devoceansa/",
-      "https://www.youtube.com/@DEVOCEAN_MZ"
-    ],
-    "potentialAction": {
-      "@type": "ReserveAction",
-      "target": { "@type": "EntryPoint", "urlTemplate": "https://devoceanlodge.com/book-direct" },
-      "result": { "@type": "LodgingReservation" }
-    }
-  }
-  </script>
-
-  <!-- Accommodation / room types (helps AI & search describe the options) -->
+  <!-- Authoritative lodge graph: LodgingBusiness/Hotel + all room types in one block.
+       Aggregate rating is intentionally omitted here — the Trustindex widget
+       (loader-cert.js) injects its own verified aggregateRating JSON-LD, so a
+       second rating block would create the exact duplication the audit flags. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": ["LodgingBusiness", "Hotel"],
+        "@id": "https://devoceanlodge.com/#lodge",
+        "name": "DEVOCEAN Lodge",
+        "brand": { "@type": "Brand", "name": "TERRAfrique LDA" },
+        "url": "https://devoceanlodge.com/",
+        "logo": "https://devoceanlodge.com/images/Logo2.png",
+        "image": [
+          "https://devoceanlodge.com/photos/hero01.jpg",
+          "https://devoceanlodge.com/photos/hero02.jpg",
+          "https://devoceanlodge.com/photos/hero03.jpg",
+          "https://devoceanlodge.com/photos/hero04.jpg",
+          "https://devoceanlodge.com/photos/hero05.jpg"
+        ],
+        "description": "Eco-friendly lodge in Ponta do Ouro, Southern Mozambique — safari tents, thatched chalet and garden cottage a few minutes from the beach.",
+        "email": "info@devoceanlodge.com",
+        "telephone": "+258 84 418 2252",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua C, Parcela 12",
+          "addressLocality": "Ponta do Ouro",
+          "addressRegion": "Província de Maputo",
+          "postalCode": "1118",
+          "addressCountry": "MZ"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -26.841994852732736,
+          "longitude": 32.88504331196165
+        },
+        "hasMap": "https://www.google.com/maps?q=-26.841994852732736,32.88504331196165&z=13&output=embed",
+        "checkinTime": "14:00",
+        "checkoutTime": "10:00",
+        "priceRange": "$$",
+        "petsAllowed": false,
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Free high-speed Wi-Fi", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Breakfast available", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Air conditioning (selected rooms)", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace (all rooms)", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Eco-friendly lodging", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Parking", "value": true }
+        ],
+        "containsPlace": [
+          { "@id": "https://devoceanlodge.com/safari#room" },
+          { "@id": "https://devoceanlodge.com/comfort#room" },
+          { "@id": "https://devoceanlodge.com/cottage#room" },
+          { "@id": "https://devoceanlodge.com/chalet#room" }
+        ],
+        "availableLanguage": [
+          { "@type": "Language", "name": "English",                  "alternateName": "en"    },
+          { "@type": "Language", "name": "Portuguese",               "alternateName": "pt"    },
+          { "@type": "Language", "name": "Portuguese (Mozambique)",  "alternateName": "pt-MZ" },
+          { "@type": "Language", "name": "Dutch",                    "alternateName": "nl"    },
+          { "@type": "Language", "name": "French",                   "alternateName": "fr"    },
+          { "@type": "Language", "name": "Italian",                  "alternateName": "it"    },
+          { "@type": "Language", "name": "German",                   "alternateName": "de"    },
+          { "@type": "Language", "name": "Spanish",                  "alternateName": "es"    },
+          { "@type": "Language", "name": "Swedish",                  "alternateName": "sv"    },
+          { "@type": "Language", "name": "Polish",                   "alternateName": "pl"    }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/devoceanmz/",
+          "https://www.instagram.com/devoceanmz/",
+          "https://x.com/DEVOCEANMZ",
+          "https://www.linkedin.com/company/devocean-lodge",
+          "https://www.tiktok.com/@devoceanlodge",
+          "https://www.pinterest.com/devoceansa/",
+          "https://www.youtube.com/@DEVOCEAN_MZ"
+        ],
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": { "@type": "EntryPoint", "urlTemplate": "https://devoceanlodge.com/book-direct" },
+          "result": { "@type": "LodgingReservation" }
+        }
+      },
+      {
         "@type": "HotelRoom",
+        "@id": "https://devoceanlodge.com/safari#room",
         "name": "Safari Tent",
         "url": "https://devoceanlodge.com/safari",
         "description": "12 m² canvas tent on a raised 3×6 m platform with twin or king beds, fan, power points, mosquito mesh and a private terrace. Shared hot-water ablutions.",
@@ -1040,12 +1011,13 @@
         "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
         "amenityFeature": [
           { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Fan", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Fan",             "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Shared bathroom", "value": true }
         ]
       },
       {
         "@type": "HotelRoom",
+        "@id": "https://devoceanlodge.com/comfort#room",
         "name": "Comfort Tent",
         "url": "https://devoceanlodge.com/comfort",
         "description": "Upgraded 12 m² tent with added privacy walls, twin or king beds, fan, a private terrace and an en-suite bathroom under a thatched roof.",
@@ -1054,12 +1026,13 @@
         "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
         "amenityFeature": [
           { "@type": "LocationFeatureSpecification", "name": "En-suite bathroom", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Fan", "value": true }
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace",   "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Fan",               "value": true }
         ]
       },
       {
         "@type": "HotelRoom",
+        "@id": "https://devoceanlodge.com/cottage#room",
         "name": "Garden Cottage",
         "url": "https://devoceanlodge.com/cottage",
         "description": "Airy cottage with a queen bed, inverter air-conditioning (cool & heat), desk and dining table, private terrace and a private bathroom in a thatched roundavel.",
@@ -1067,13 +1040,14 @@
         "bed": { "@type": "BedDetails", "typeOfBed": "Queen" },
         "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
         "amenityFeature": [
-          { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Private bathroom", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true }
+          { "@type": "LocationFeatureSpecification", "name": "Air conditioning",  "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private bathroom",  "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace",   "value": true }
         ]
       },
       {
         "@type": "HotelRoom",
+        "@id": "https://devoceanlodge.com/chalet#room",
         "name": "Thatched Chalet",
         "url": "https://devoceanlodge.com/chalet",
         "description": "Secluded, romantic chalet under palms with air-conditioning, twin or king beds, a private bathroom and a private terrace.",
@@ -1083,7 +1057,7 @@
         "amenityFeature": [
           { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true },
           { "@type": "LocationFeatureSpecification", "name": "Private bathroom", "value": true },
-          { "@type": "LocationFeatureSpecification", "name": "Private terrace", "value": true }
+          { "@type": "LocationFeatureSpecification", "name": "Private terrace",  "value": true }
         ]
       }
     ]
