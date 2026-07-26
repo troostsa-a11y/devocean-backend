@@ -874,7 +874,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-lg sm:text-xl font-bold text-slate-900">{t.cardTitle}</h2>
                   <div className="flex flex-col items-end gap-0.5">
-                    <span className={FIELD_LABEL_CLASS}>Currency</span>
+                    <span className={FIELD_LABEL_CLASS}>{t.currencyFieldLabel || 'Currency'}</span>
                     <CurrencyPicker lang={lang} currency={currency} onSelect={onCurrencyChange} />
                   </div>
                 </div>
