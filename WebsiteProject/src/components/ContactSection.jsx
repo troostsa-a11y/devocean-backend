@@ -218,6 +218,9 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
         {/* Right: form */}
         <div className="contact-form justify-self-start w-[92vw] max-w-[22rem] sm:w-full sm:max-w-lg md:w-full md:max-w-none mx-auto md:ml-auto rounded-2xl border shadow p-4 sm:p-6 bg-white overflow-hidden">
           <form onSubmit={handleSubmit} className="grid gap-4" autoComplete="on">
+            {ui.contact.formHint && (
+              <p className="text-sm text-slate-500">{ui.contact.formHint}</p>
+            )}
             <input type="hidden" name="lang" value={lang} />
             <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" />
             <input type="hidden" name="checkin_iso" value={checkin || ""} />

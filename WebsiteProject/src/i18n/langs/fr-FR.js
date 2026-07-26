@@ -118,8 +118,8 @@ menu: "Menu",
     },
     contact: {
       headline: "Contact & Demandes",
-      blurb:
-        "Pour disponibilité et prix confirmés immédiats, réservez en ligne. Ce formulaire est réservé aux groupes, transferts ou demandes spéciales.",
+      blurb: "Pour disponibilité et prix confirmés immédiats, réservez en ligne.",
+      formHint: "Ce formulaire est réservé aux groupes, transferts ou demandes spéciales.",
       call: "WhatsApp",
       email: "E-mail",
       directions: "Itinéraire",
