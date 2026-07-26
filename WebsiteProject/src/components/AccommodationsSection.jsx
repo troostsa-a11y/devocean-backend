@@ -116,7 +116,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                   )}
                   <a
                     href={bookUrl}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e4b13] text-white text-sm font-semibold hover:bg-[#8a4211] transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e4b13] text-white text-sm font-semibold hover:bg-[#c4661c] transition-colors"
                     data-testid={`button-book-${u.key}`}
                     onClick={() => {
                       if (window.dataLayer) {
@@ -131,7 +131,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                     }}
                   >
                     <CalendarCheck2 size={14} />
-                    {ui.contact.bookNow}
+                    Check Availability
                   </a>
                 </div>
               </div>
