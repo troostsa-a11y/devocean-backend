@@ -719,11 +719,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           </a>
 
           <div className="relative flex items-center gap-2 shrink-0">
-            <CurrencyPicker
-              lang={lang}
-              currency={currency}
-              onSelect={onCurrencyChange}
-            />
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
@@ -840,7 +835,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
               {/* Search card floating over the hero image */}
               <div className="mt-8 relative z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4">{t.cardTitle}</h2>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900">{t.cardTitle}</h2>
+                  <CurrencyPicker lang={lang} currency={currency} onSelect={onCurrencyChange} />
+                </div>
               <form
                 onSubmit={handleSearch}
                 className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-end"
