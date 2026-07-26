@@ -225,7 +225,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <li>
               <a
                 href={bookUrl}
-                className={`btn-cta inline-flex items-center justify-center w-[15rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
+                className="btn-cta inline-flex items-center justify-center px-4 py-2 rounded-xl bg-[#9e4b13] text-white whitespace-nowrap"
                 onClick={() => {
                   if (window.dataLayer) {
                     window.dataLayer.push({
