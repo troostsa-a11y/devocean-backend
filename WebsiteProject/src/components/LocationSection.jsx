@@ -18,7 +18,7 @@ export default function LocationSection({ ui }) {
           <ul className="mt-4 space-y-2 text-slate-700">
             {ui.location.items.map((li, i) => (
               <li key={i} className="flex items-start gap-2">
-                <MapPin className="mt-1" size={20} /> {li}
+                <MapPin className="mt-1 shrink-0" size={20} /> {li}
               </li>
             ))}
           </ul>
