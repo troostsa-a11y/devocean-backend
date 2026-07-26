@@ -682,6 +682,16 @@ app.get('/api/fx', async (req, res) => {
   }
 });
 
+// Serve standalone accommodation detail pages before the SPA middleware
+// intercepts extensionless paths. Production (CF Pages) finds these as static
+// assets via context.next(); dev needs an explicit route.
+for (const page of ['safari', 'comfort', 'cottage', 'chalet']) {
+  app.get(`/${page}`, (_req, res) => {
+    res.set('Cache-Control', 'no-store');
+    res.sendFile(join(__dirname, `${page}.html`));
+  });
+}
+
 // Start server
 const PORT = process.env.PORT || 5000;
 
