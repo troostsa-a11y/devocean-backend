@@ -685,7 +685,7 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               })()}
             </p>
             <div className="flex justify-center">
-              <MarinPanel context={`Experience page: ${exp.title}`} />
+              <MarinPanel context={`Experience page: ${exp.title}`} labelClassName="text-white/80" />
             </div>
           </div>
 

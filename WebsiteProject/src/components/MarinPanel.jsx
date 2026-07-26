@@ -14,7 +14,7 @@ import { useEffect } from 'react';
  *   label       – button label (default "Need help? Ask Marin")
  *   autoOpen    – if true, open the panel automatically on mount
  */
-export default function MarinPanel({ context, autoMessage, label = 'Need help? Ask Marin', autoOpen = false }) {
+export default function MarinPanel({ context, autoMessage, label = 'Need help? Ask Marin', autoOpen = false, labelClassName = 'text-gray-500' }) {
   useEffect(() => {
     if (!autoOpen) return;
     // Give widget-loader a tick to initialise before firing.
@@ -31,7 +31,7 @@ export default function MarinPanel({ context, autoMessage, label = 'Need help? A
 
   return (
     <span className="inline-flex items-center gap-3">
-      <span className="text-sm text-gray-500">{label}</span>
+      <span className={`text-sm ${labelClassName}`}>{label}</span>
       <button
         type="button"
         onClick={handleClick}
