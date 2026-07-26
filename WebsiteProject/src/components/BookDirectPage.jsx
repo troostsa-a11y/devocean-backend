@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink, Star } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
@@ -856,7 +856,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               >
                 {t.title}
               </h1>
-              <p className="mt-3 max-w-xl text-white/90 text-base sm:text-lg whitespace-pre-line">{t.subtitle}</p>
+              <ul className="mt-3 flex flex-col gap-1.5 text-white/90 text-base sm:text-lg">
+                {[
+                  [ShieldCheck,    t.subtitle?.split('\n')[0]],
+                  [CalendarCheck2, t.subtitle?.split('\n')[1]],
+                  [Star,           t.subtitle?.split('\n')[2]],
+                ].map(([Icon, line], i) => line && (
+                  <li key={i} className="flex items-center gap-2">
+                    <Icon size={18} className="shrink-0 opacity-90" />
+                    {line}
+                  </li>
+                ))}
+              </ul>
 
               {/* Search card floating over the hero image */}
               <div className="mt-8 relative z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
