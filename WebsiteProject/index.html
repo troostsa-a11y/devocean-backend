@@ -712,13 +712,13 @@
        React app after mount then hidden). Plain-HTML crawlers index it in full.
        ────────────────────────────────────────────────────────────────────── */
     #static-content {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #f8fafc;
-      padding: 2rem 1rem;
-      max-width: 80rem;
-      margin: 0 auto;
-      line-height: 1.6;
-      color: #1e293b;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
     #static-content section { margin-bottom: 2rem; }
     #static-content h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem; }
