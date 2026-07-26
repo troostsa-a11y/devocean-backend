@@ -47,10 +47,10 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
       <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {units.map((u, idx) => {
           const detailPageMap = {
-            safari: '/safari.html',
-            comfort: '/comfort.html',
-            cottage: '/cottage.html',
-            chalet: '/chalet.html'
+            safari: '/safari',
+            comfort: '/comfort',
+            cottage: '/cottage',
+            chalet: '/chalet'
           };
           const basePath = detailPageMap[u.key];
           const detailPageUrl = basePath ? `${basePath}?lang=${lang}` : null;

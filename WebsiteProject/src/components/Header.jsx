@@ -282,7 +282,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 {ui.nav.home}
               </a>
               <a
-                href={`/story.html?lang=${lang}`}
+                href={`/story?lang=${lang}`}
                 data-testid="link-mobile-story"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                 onClick={() => setMenuOpen(false)}
