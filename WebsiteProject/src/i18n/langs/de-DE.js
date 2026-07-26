@@ -2,10 +2,10 @@
 export const UI = {
 menu: "Menü",
     regions: { westEu: "Westeuropa", eastEu: "Osteuropa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Ozeanien" },
-    nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erlebnisse", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
+    nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erkunde Ponta", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundlich wohnen nahe einem unberührten Strand in einem Abenteuerziel von Weltklasse.", description: "Entdecken Sie ein einzigartiges UNESCO-Tauchparadies, umgeben von Naturschutzgebieten und unvergesslichen Outdoor-Erlebnissen.", ctaPrimary: "Buchen Sie Ihren Aufenthalt", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung", clickReviews: "Klicken Sie auf die Bewertungen!", whyPonta: "Warum Ponta do Ouro?", villageHighlights: "Highlights", goDiving: "Tauchen gehen" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
-    experiences: { headline: "Erlebnisse", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:", learnMore: "Tauchplätze, Anbieter & Preise entdecken →" },
+    experiences: { headline: "Erkunde Ponta", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:", learnMore: "Tauchplätze, Anbieter & Preise entdecken →" },
     units: {
       safari: {
         title: "Safari-Zelt",
@@ -165,7 +165,9 @@ units: {
       seafari: { title: "Ozean-Safaris", desc: "Ozean-Safaris für Wale (Mai–Okt) und mehr." },
       safari: { title: "Land-Safaris", desc: "Buschabenteuer in kurzer Entfernung." },
       fishing: { title: "Strand- & Hochseeangeln", desc: "Von Küstenwürfen bis Offshore-Charters." },
-      surfing: { title: "Surfbretter & Unterricht", desc: "Erwischen Sie eine Welle oder lernen Sie die Grundlagen." },
+      surfing:   { title: "Surfbretter & Unterricht",       desc: "Erwischen Sie eine Welle oder lernen Sie die Grundlagen." },
+      malongane: { title: "Strandspaziergang nach Ponta Malongane", desc: "Unberührter Strand 15 min nördlich — tolles Schnorcheln und kaum Touristen." },
+      quad:      { title: "Quad-Verleih",                desc: "Dünen und Waldwege auf dem Quad erkunden — Verleih im Dorf verfügbar." },
     },
 };
 

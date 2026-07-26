@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Menu",
   regions: { westEu: "Západní Evropa", eastEu: "Východní Evropa", asia: "Asie", americas: "Amerika", africa: "Afrika", oceania: "Oceánie" },
-  nav: { home: "Domů", stay: "Ubytování", experiences: "Zážitky", todo: "Co dělat", gallery: "Galerie", location: "Lokalita", contact: "Kontakt" },
+  nav: { home: "Domů", stay: "Ubytování", experiences: "Prozkoumej Pontu", todo: "Co dělat", gallery: "Galerie", location: "Lokalita", contact: "Kontakt" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologické ubytování u nedotčené pláže ve světoznámé destinaci pro dobrodružství.", description: "Objevte jedinečný potápěčský ráj UNESCO obklopený přírodními rezervacemi a nezapomenutelnými zážitky v přírodě.", ctaPrimary: "Rezervujte pobyt", ctaSecondary: "Prozkoumejte lodge", badge: "Pohodlí a hodnota, kterou hosté chválí", clickReviews: "Klikněte na recenze!", whyPonta: "Proč Ponta do Ouro?", villageHighlights: "Zajímavosti vesnice", goDiving: "Jděte se potápět" },
   stay: { headline: "Zůstaňte u nás", blurb: "Vyberte si svůj styl: stany v přírodě nebo útulné chaty a chalupa – vše s vřelou rodinnou pohostinností.", moreDetails: "Více informací", ourStory: "Náš příběh" },
-  experiences: { headline: "Zážitky", blurb: "Dobrodružství v oceánu a lese přímo za vašimi dveřmi.", operators: "Spolehliví místní operátoři:", featured: "Vybrané", learnMore: "Prozkoumejte potápěčské lokality, operátory a ceny →" },
+  experiences: { headline: "Prozkoumej Pontu", blurb: "Dobrodružství v oceánu a lese přímo za vašimi dveřmi.", operators: "Spolehliví místní operátoři:", featured: "Vybrané", learnMore: "Prozkoumejte potápěčské lokality, operátory a ceny →" },
   todo: {
     headline: "Co dělat v Ponta do Ouro",
     note: "Pro potápění, šnorchlování, safari s delfíny/velrybami a rybářské charterové výlety se podívejte na operátory níže.",
@@ -81,7 +81,9 @@ export const L10N = {
     seafari: { title: "Mořské safari", desc: "Mořské safari za velrybami (květen–říjen) a více." },
     safari: { title: "Pozemní safari", desc: "Dobrodružství v savaně na krátkou jízdu." },
     fishing: { title: "Rybolov z břehu i v hlubokém moři", desc: "Od házení z pláže po hlubokomořské chartery." },
-    surfing: { title: "Surfování a lekce", desc: "Chyťte vlnu nebo se naučte základy." },
+    surfing:   { title: "Surfování a lekce",                 desc: "Chyťte vlnu nebo se naučte základy." },
+    malongane: { title: "Procházka na pláž Ponta Malongane", desc: "Nedotčená pláž 15 min severně — skvělé šnorchlování a minimum turistů." },
+    quad:      { title: "Půjčení quadu",                    desc: "Prozkoumejte duny a lesní stezky na quadu — půjčovna k dispozici ve vesnici." },
   }
 }
 

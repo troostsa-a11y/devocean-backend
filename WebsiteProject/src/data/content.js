@@ -15,6 +15,8 @@ export const IMG = {
     safari: "/photos/experiences/safari.jpg",
     fishing: "/photos/experiences/fishing.jpg",
     surfing: "/photos/experiences/surfing.jpg",
+    malongane: "/photos/experiences/lighthouse.jpg",   // placeholder until own photo added
+    quad: "/photos/experiences/safari.jpg",             // placeholder until own photo added
   },
   gallery: [
     {
@@ -164,7 +166,9 @@ export const EXP_BASE = [
   { key: "seafari", img: IMG.experiences.seafari, title: "Seafaris", desc: "Ocean safaris for whales (May–Oct) & more.", url: "https://thedolphincentre.com/" },
   { key: "safari", img: IMG.experiences.safari, title: "Game Safaris", desc: "Bush adventures a short drive away.", url: "https://parquemaputo.gov.mz/en/" },
   { key: "fishing", img: IMG.experiences.fishing, title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore.", url: "https://mozambiquefishincharters.co.za/" },
-  { key: "surfing", img: IMG.experiences.surfing, title: "Surf Boards & Lessons", desc: "Catch a wave or learn the basics.", url: "https://www.instagram.com/spigssurfsup/" },
+  { key: "surfing",   img: IMG.experiences.surfing,   title: "Surf Boards & Lessons",         desc: "Catch a wave or learn the basics.",                                                                  url: "https://www.instagram.com/spigssurfsup/" },
+  { key: "malongane", img: IMG.experiences.malongane, title: "Ponta Malongane Beach Walk",    desc: "Pristine beach 15 min north — great snorkelling and far fewer visitors.",                              url: "https://www.google.com/maps/place/Ponta+Malongane,+Mozambique" },
+  { key: "quad",      img: IMG.experiences.quad,      title: "Quad Bike Rental",              desc: "Explore the dunes and forest tracks on a quad bike — rentals available in the village.",               url: "/#contact" },
 ];
 
 export const SOCIAL_LINKS = [

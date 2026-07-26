@@ -2,10 +2,10 @@
 export const UI = {
 menu: "Menu",
     regions: { westEu: "Western Europe", eastEu: "Eastern Europe", asia: "Asia", americas: "Americas", africa: "Africa", oceania: "Oceania" },
-    nav: { home: "Home", stay: "Stay", experiences: "Experiences", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
+    nav: { home: "Home", stay: "Stay", experiences: "Explore Ponta", todo: "What to do", gallery: "Gallery", location: "Location", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.", description: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.", ctaPrimary: "Book your Stay", ctaSecondary: "Explore the Lodge", badge: "Guests loved comfort & value", clickReviews: "Click the reviews!", villageHighlights: "Village Highlights", goDiving: "Go Diving" },
     stay: { headline: "Stay with us", blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.", moreDetails: "More details", ourStory: "Our Story" },
-    experiences: { headline: "Experiences", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
+    experiences: { headline: "Explore Ponta", blurb: "Ocean and forest adventures right on your doorstep.", operators: "Trusted local operators:", featured: "Featured", learnMore: "Explore dive sites, operators & pricing →" },
     todo: {
       headline: "What to do in Ponta do Ouro",
       note: "For diving, snorkel trips, dolphin/whale seafaris and fishing charters, see the providers below.",
@@ -128,7 +128,9 @@ export const L10N = {
     seafari: { title: "Seafaris", desc: "Ocean safaris for whales (May–Oct) & more." },
     safari: { title: "Game Safaris", desc: "Bush adventures a short drive away." },
     fishing: { title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore." },
-    surfing: { title: "Surf Boards & Lessons", desc: "Catch a wave or learn the basics." },
+    surfing:   { title: "Surf Boards & Lessons",       desc: "Catch a wave or learn the basics." },
+    malongane: { title: "Ponta Malongane Beach Walk", desc: "Pristine beach 15 min north — great snorkeling and far fewer visitors." },
+    quad:      { title: "Quad Bike Rental",           desc: "Explore the dunes and forest tracks on a quad bike — rentals available in the village." },
   },
 };
 

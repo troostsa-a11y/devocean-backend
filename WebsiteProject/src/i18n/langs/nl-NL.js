@@ -2,10 +2,10 @@
 export const UI = {
 menu: "Menu",
     regions: { westEu: "West-Europa", eastEu: "Oost-Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
-    nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
+    nav: { home: "Home", stay: "Verblijf", experiences: "Ontdek Ponta", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijk verblijven vlak bij een ongerept strand in een avontuurlijke topbestemming.", description: "Ontdek een uniek UNESCO-duikparadijs, omgeven door natuurreservaten en onvergetelijke belevenissen in de buitenlucht.", ctaPrimary: "Boek uw verblijf", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit", clickReviews: "Klik op de recensies!", whyPonta: "Waarom Ponta do Ouro?", villageHighlights: "Hoogtepunten", goDiving: "Gaan duiken" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
-    experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:", learnMore: "Verken duiklocaties, aanbieders & prijzen →" },
+    experiences: { headline: "Ontdek Ponta", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:", learnMore: "Verken duiklocaties, aanbieders & prijzen →" },
     units: {
       safari: {
         title: "Safaritent",
@@ -165,7 +165,9 @@ units: {
       seafari: { title: "Zeesafari's", desc: "Oceaansafari's voor walvissen (mei–okt) en meer." },
       safari: { title: "Wildsafari's", desc: "Bosavonturen op korte rijafstand." },
       fishing: { title: "Strand & Zeevissen", desc: "Van kustworpen tot offshore charters." },
-      surfing: { title: "Surfplanken & Lessen", desc: "Pak een golf of leer de basis." },
+      surfing:   { title: "Surfplanken & Lessen",              desc: "Pak een golf of leer de basis." },
+      malongane: { title: "Strandwandeling naar Ponta Malongane", desc: "Ongerepte kustlijn 15 min noordwaarts — geweldig snorkelen en bijna geen toeristen." },
+      quad:      { title: "Quad-verhuur",                     desc: "Verken duinen en bospaden op een quad — verhuur beschikbaar in het dorp." },
     },
 };
 

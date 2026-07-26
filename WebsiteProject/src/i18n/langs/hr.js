@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Meni",
   regions: { westEu: "Zapadna Europa", eastEu: "Istočna Europa", asia: "Azija", americas: "Amerike", africa: "Afrika", oceania: "Oceanija" },
-  nav: { home: "Početna", stay: "Smještaj", experiences: "Doživljaji", todo: "Što raditi", gallery: "Galerija", location: "Lokacija", contact: "Kontakt" },
+  nav: { home: "Početna", stay: "Smještaj", experiences: "Istraži Pontu", todo: "Što raditi", gallery: "Galerija", location: "Lokacija", contact: "Kontakt" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Ekološki smještaj pored netaknute plaže u svetski poznatoj destinaciji za avanture.", description: "Otkrijte jedinstveni UNESCO ronilački raj okružen prirodnim rezervatima i nezaboravnim doživljajima u prirodi.", ctaPrimary: "Rezervišite boravak", ctaSecondary: "Istražite lodge", badge: "Udobnost i vrednost koje gosti hvale", clickReviews: "Kliknite na recenzije!", whyPonta: "Zašto Ponta do Ouro?", villageHighlights: "Atrakcije sela", goDiving: "Idite na ronjenje" },
   stay: { headline: "Ostanite kod nas", blurb: "Izaberite svoj stil: šatori usred prirode ili udobne kućice i vikendica – sve uz toplu, porodičnu gostoljubivost.", moreDetails: "Više detalja", ourStory: "Naša priča" },
-  experiences: { headline: "Doživljaji", blurb: "Avanture u oceanu i šumi pred vašim vratima.", operators: "Pouzdani lokalni operateri:", featured: "Izdvojeno", learnMore: "Istražite ronilačke lokacije, operatere i cene →" },
+  experiences: { headline: "Istraži Pontu", blurb: "Avanture u oceanu i šumi pred vašim vratima.", operators: "Pouzdani lokalni operateri:", featured: "Izdvojeno", learnMore: "Istražite ronilačke lokacije, operatere i cene →" },
   todo: {
     headline: "Što raditi u Ponta do Ouro",
     note: "Za ronjenje, snorkeling, safari sa dupinima/kitovima i ribolovne čartere pogledajte operatere ispod.",
@@ -81,7 +81,9 @@ export const L10N = {
     seafari: { title: "Morski safari", desc: "Morski safari za kitove (maj–oktobar) i više." },
     safari: { title: "Kopneni safari", desc: "Avanture u savani na kratkoj vožnji." },
     fishing: { title: "Ribolov sa obale i u dubokom moru", desc: "Od bacanja sa plaže do čartera u dubokom moru." },
-    surfing: { title: "Surf daske i lekcije", desc: "Uhvatite val ili naučite osnove." },
+    surfing:   { title: "Surf daske i lekcije",              desc: "Uhvatite val ili naučite osnove." },
+    malongane: { title: "Šetnja do Ponta Malongane",        desc: "Netaknuta plaža 15 min sjeverno — odlično ronjenje i malo posjetitelja." },
+    quad:      { title: "Najam quada",                      desc: "Istražite dine i šumske staze na quadu — iznajmljivanje dostupno u selu." },
   }
 }
 

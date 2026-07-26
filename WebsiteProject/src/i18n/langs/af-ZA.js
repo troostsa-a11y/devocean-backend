@@ -2,10 +2,10 @@
 export const UI = {
 menu: "Kieslys",
     regions: { westEu: "Wes-Europa", eastEu: "Oos-Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
-    nav: { home: "Tuis", stay: "Verblyf", experiences: "Ervarings", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
+    nav: { home: "Tuis", stay: "Verblyf", experiences: "Verken Ponta", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Omgewingsvriendelike verblyf naby 'n ongerepte strand in 'n wêreldklas-avontuurbestemming.", description: "Ontdek 'n unieke UNESCO-duikparadys, omring deur natuurreservate en onvergeetlike buitelugervarings.", ctaPrimary: "Bespreek jou verblyf", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste", clickReviews: "Klik op die resensies!", whyPonta: "Hoekom Ponta do Ouro?", villageHighlights: "Hoogtepunte", goDiving: "Gaan duik" },
     stay: { headline: "Bly by ons", blurb: "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid.", moreDetails: "Meer besonderhede", ourStory: "Ons Storie" },
-    experiences: { headline: "Ervarings", blurb: "See- en bosavonture reg voor jou deur.", operators: "Betroubare plaaslike operateurs:", featured: "Gewild", learnMore: "Verken duikplekke, operateurs en pryse →" },
+    experiences: { headline: "Verken Ponta", blurb: "See- en bosavonture reg voor jou deur.", operators: "Betroubare plaaslike operateurs:", featured: "Gewild", learnMore: "Verken duikplekke, operateurs en pryse →" },
     todo: {
       headline: "Wat om te doen in Ponta do Ouro",
       note: "Vir duik, snorkel, dolfyn-/walvis-safari's en visvang-charters, kyk na die verskaffers hieronder.",
@@ -121,7 +121,9 @@ units: {
       seafari: { title: "Oseaan Safari's", desc: "See safari's vir walvisse (Mei–Okt) en meer." },
       safari: { title: "Bosveld Safari's", desc: "Bos-avonture naby." },
       fishing: { title: "Strand en Diepsee Visvang", desc: "Van strandgooi tot diepsee charters." },
-      surfing: { title: "Branderplanke & Lesse", desc: "Vang die golwe of leer die basiese beginsels." },
+      surfing:   { title: "Branderplanke & Lesse",             desc: "Vang die golwe of leer die basiese beginsels." },
+      malongane: { title: "Strandstap na Ponta Malongane",    desc: "Ongerepte strand 15 min noord — uitstekende snorkeling en min besoekers." },
+      quad:      { title: "Quad-fiets verhuur",               desc: "Verken duine en bosroetes op 'n quad-fiets — huur beskikbaar in die dorp." },
     },
 };
 

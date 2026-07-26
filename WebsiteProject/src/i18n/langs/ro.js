@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Meniu",
   regions: { westEu: "Europa de Vest", eastEu: "Europa de Est", asia: "Asia", americas: "Americile", africa: "Africa", oceania: "Oceania" },
-  nav: { home: "Acasă", stay: "Cazare", experiences: "Experiențe", todo: "Ce să faci", gallery: "Galerie", location: "Locație", contact: "Contact" },
+  nav: { home: "Acasă", stay: "Cazare", experiences: "Explorați Ponta", todo: "Ce să faci", gallery: "Galerie", location: "Locație", contact: "Contact" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Cazări ecologice lângă o plajă neatinsă, într-o destinație de aventură de clasă mondială.", description: "Descoperă un paradis unic de scufundări UNESCO, înconjurat de rezervații naturale și experiențe în aer liber de neuitat.", ctaPrimary: "Rezervă-ți sejurul", ctaSecondary: "Explorează lodge-ul", badge: "Confortul și valoarea apreciate de oaspeți", clickReviews: "Faceți clic pe recenzii!", whyPonta: "De ce Ponta do Ouro?", villageHighlights: "Atracțiile satului", goDiving: "Scufundări" },
   stay: { headline: "Stai cu noi", blurb: "Alege-ți stilul: corturi în mijlocul naturii sau cabane confortabile și o căsuță – toate cu ospitalitate caldă, de tip familial.", moreDetails: "Mai multe detalii", ourStory: "Povestea noastră" },
-  experiences: { headline: "Experiențe", blurb: "Aventuri în ocean și pădure chiar la ușa ta.", operators: "Operatori locali de încredere:", featured: "Recomandat", learnMore: "Explorează site-urile de scufundare, operatorii și prețurile →" },
+  experiences: { headline: "Explorați Ponta", blurb: "Aventuri în ocean și pădure chiar la ușa ta.", operators: "Operatori locali de încredere:", featured: "Recomandat", learnMore: "Explorează site-urile de scufundare, operatorii și prețurile →" },
   todo: {
     headline: "Ce să faci în Ponta do Ouro",
     note: "Pentru scufundări, snorkeling, safari cu delfini/balene și charter de pescuit, vezi furnizorii de mai jos.",
@@ -80,7 +80,9 @@ export const L10N = {
     seafari: { title: "Safari pe mare", desc: "Safari pe mare pentru balene (mai–octombrie) și mai mult." },
     safari: { title: "Safari pe uscat", desc: "Aventuri în savană la o scurtă distanță cu mașina." },
     fishing: { title: "Pescuit la mal și în larg", desc: "De la lansare de pe plajă la charter în larg." },
-    surfing: { title: "Plăci de surf și lecții", desc: "Prinde un val sau învață noțiunile de bază." },
+    surfing:   { title: "Plăci de surf și lecții",           desc: "Prinde un val sau învață noțiunile de bază." },
+    malongane: { title: "Plimbare la plaja Ponta Malongane", desc: "Plajă neîntreruptă la 15 min spre nord — snorkeling excelent și puțini vizitatori." },
+    quad:      { title: "Închiriere quad",                  desc: "Explorați dunele și potecile forestiere pe quad — disponibil în sat." },
   }
 }
 

@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Menu",
   regions: { westEu: "Europa Zachodnia", eastEu: "Europa Wschodnia", asia: "Azja", americas: "Ameryki", africa: "Afryka", oceania: "Oceania" },
-  nav: { home: "Strona główna", stay: "Pobyt", experiences: "Doświadczenia", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt" },
+  nav: { home: "Strona główna", stay: "Pobyt", experiences: "Odkryj Ponta", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty blisko dziewiczej plaży w światowej klasy kierunku pełnym przygód.", description: "Odkryj wyjątkowy raj nurkowy UNESCO, otoczony rezerwatami przyrody i pełen niezapomnianych atrakcji na świeżym powietrzu.", ctaPrimary: "Zarezerwuj pobyt", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości", clickReviews: "Kliknij opinie!", whyPonta: "Dlaczego Ponta do Ouro?", villageHighlights: "Atrakcje", goDiving: "Nurkowanie" },
   stay: { headline: "Zostań z nami", blurb: "Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.", moreDetails: "Więcej szczegółów", ourStory: "Nasza Historia" },
-  experiences: { headline: "Doświadczenia", blurb: "Przygody nad oceanem i w lesie tuż za progiem.", operators: "Zaufani lokalni operatorzy:", learnMore: "Odkryj miejsca nurkowania, operatorów i ceny →" },
+  experiences: { headline: "Odkryj Ponta", blurb: "Przygody nad oceanem i w lesie tuż za progiem.", operators: "Zaufani lokalni operatorzy:", learnMore: "Odkryj miejsca nurkowania, operatorów i ceny →" },
   todo: {
     headline: "Co robić w Ponta do Ouro",
     note: "W przypadku nurkowania, wycieczek z rurką, safari z delfinami/wielorybami i czarterów wędkarskich, zobacz dostawców poniżej.",
@@ -78,7 +78,9 @@ export const L10N = {
     seafari: { title: "Safari Morskie", desc: "Morskie safari dla wielorybów (maj–październik) i więcej." },
     safari: { title: "Safari Lądowe", desc: "Przygody w buszu w niewielkiej odległości." },
     fishing: { title: "Wędkarstwo Przybrzeżne i Głębinowe", desc: "Od rzucania z brzegu po czartery w pełnym morzu." },
-    surfing: { title: "Deski Surfingowe i Lekcje", desc: "Złap falę lub naucz się podstaw." },
+    surfing:   { title: "Deski Surfingowe i Lekcje",         desc: "Złap falę lub naucz się podstaw." },
+    malongane: { title: "Spacer na plażę Ponta Malongane",  desc: "Nieskalana plaża 15 min na północ — świetne nurkowanie z rurką i mało turystów." },
+    quad:      { title: "Wynajem quadów",                   desc: "Eksploruj wydmy i leśne ścieżki na quadzie — wypożyczalnia w wiosce." },
   }
 }
 

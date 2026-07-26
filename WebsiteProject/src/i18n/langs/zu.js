@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Imenyu",
   regions: { westEu: "I-Western Europe", eastEu: "I-Eastern Europe", asia: "I-Asia", americas: "I-America", africa: "I-Afrika", oceania: "I-Oceania" },
-  nav: { home: "Ikhaya", stay: "Ukuhlala", experiences: "Okuhlangenwe nakho", todo: "Okumele ukwenze", gallery: "Igalari", location: "Indawo", contact: "Xhumana nathi" },
+  nav: { home: "Ikhaya", stay: "Ukuhlala", experiences: "Hlola iPonta", todo: "Okumele ukwenze", gallery: "Igalari", location: "Indawo", contact: "Xhumana nathi" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Izindawo zokuhlala ezihambisana nemvelo eduze kolwandle olungakathintwa, endaweni yomhlaba wonke yezokuzijabulisa nokuzidela.", description: "Thola ipharadesi eliyingqayizivele lokuntweza le-UNESCO, elizungezwe yiziqiwu zemvelo nezinto ezingasoze zalibaleka ongazenza ngaphandle.", ctaPrimary: "Bhukha ukulala kwakho", ctaSecondary: "Hlola iLodge", badge: "Ukunethezeka kanye nenani elithandwa izivakashi", clickReviews: "Chofoza izibuyekezo!", whyPonta: "Kungani iPonta do Ouro?", villageHighlights: "Izinto ezibalulekile", goDiving: "Yiya ukugxumeka" },
   stay: { headline: "Hlala nathi", blurb: "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni.", moreDetails: "Imininingwane eyengeziwe", ourStory: "Indaba Yethu" },
-  experiences: { headline: "Okuhlangenwe nakho", blurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.", operators: "Abahlinzekibasekhaya abathenjwayo:", learnMore: "Hlola izindawo zokugxumeka, abahlinzeki namanani →" },
+  experiences: { headline: "Hlola iPonta", blurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.", operators: "Abahlinzekibasekhaya abathenjwayo:", learnMore: "Hlola izindawo zokugxumeka, abahlinzeki namanani →" },
   todo: {
     headline: "Okumele ukwenze ePonta do Ouro",
     note: "Ngokushushuluza, ukubhukuda ngaphansi kwamanzi, amaholidi omkhomo/amahhashi kanye nezikebhe zokudoba, bheka abahlinzeki abalandelayo.",
@@ -120,7 +120,9 @@ export const L10N = {
     seafari: { title: "Ama-Safari Olwandle", desc: "Ama-safari olwandle okuthola imikhomo (Meyi–Okthoba) nokunye." },
     safari: { title: "Ama-Safari Omhlaba", desc: "Ama-adventure ehlathini ngokushayela isikhathi esifushane." },
     fishing: { title: "Ukudoba Ogwini Lolwandle kanye Nokudoba Ejulile", desc: "Kusuka ekuphoseleni ogwini kuya kuma-charters aphesheya kolwandle." },
-    surfing: { title: "Amabhodi Okusefa kanye Nezifundo", desc: "Bamba amagagasi noma ufundiswe izinto zokuqala." },
+    surfing:   { title: "Amabhodi Okusefa kanye Nezifundo", desc: "Bamba amagagasi noma ufundiswe izinto zokuqala." },
+    malongane: { title: "Ukuhamba ePonta Malongane",       desc: "Ulwandle olungenabuntshi eminimizini engu-15 enyakatho — ukubhukuda okuhle nabantu abambalwa." },
+    quad:      { title: "Ukuqashisa i-Quad Bike",          desc: "Hlola izintaba zamasilivane nezindlela zehlathi nge-quad bike — ukuqashiswa kuyatholakala emzini." },
   }
 }
 

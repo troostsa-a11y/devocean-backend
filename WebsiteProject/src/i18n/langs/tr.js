@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Menü",
   regions: { westEu: "Batı Avrupa", eastEu: "Doğu Avrupa", asia: "Asya", americas: "Amerika", africa: "Afrika", oceania: "Okyanusya" },
-  nav: { home: "Ana Sayfa", stay: "Konaklama", experiences: "Deneyimler", todo: "Yapılacaklar", gallery: "Galeri", location: "Konum", contact: "İletişim" },
+  nav: { home: "Ana Sayfa", stay: "Konaklama", experiences: "Ponta'yı Keşfet", todo: "Yapılacaklar", gallery: "Galeri", location: "Konum", contact: "İletişim" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Dünyaca ünlü bir macera bölgesinde, bozulmamış bir plajın yanında çevre dostu konaklama.", description: "Doğa rezervleri ve unutulmaz vahşi yaşam deneyimleriyle çevrili eşsiz bir UNESCO dalış cennetini keşfedin.", ctaPrimary: "Konaklamanızı Rezerve Edin", ctaSecondary: "Lodge'u Keşfedin", badge: "Misafirlerin övdüğü konfor ve değer", clickReviews: "Yorumlara tıklayın!", whyPonta: "Neden Ponta do Ouro?", villageHighlights: "Köy Cazibeleri", goDiving: "Dalışa Gidin" },
   stay: { headline: "Bizimle Kalın", blurb: "Tarzınızı seçin: doğada çadırlar veya rahat şaleler ve kulübe – hepsi sıcak aile misafirperverliğiyle.", moreDetails: "Daha Fazla Bilgi", ourStory: "Hikayemiz" },
-  experiences: { headline: "Deneyimler", blurb: "Kapınızın hemen önünde okyanus ve orman maceraları.", operators: "Güvenilir yerel operatörler:", featured: "Öne Çıkanlar", learnMore: "Dalış noktalarını, operatörleri ve fiyatları keşfedin →" },
+  experiences: { headline: "Ponta'yı Keşfet", blurb: "Kapınızın hemen önünde okyanus ve orman maceraları.", operators: "Güvenilir yerel operatörler:", featured: "Öne Çıkanlar", learnMore: "Dalış noktalarını, operatörleri ve fiyatları keşfedin →" },
   todo: {
     headline: "Ponta do Ouro'da Yapılacaklar",
     note: "Dalış, şnorkelle yüzme, yunus/balina safarisi ve balıkçılık çarter turları için aşağıdaki operatörlere bakın.",
@@ -82,7 +82,9 @@ export const L10N = {
     seafari: { title: "Deniz Safarisi", desc: "Balinalar (Mayıs–Ekim) ve daha fazlası için tekne safarisi." },
     safari: { title: "Kara Safarisi", desc: "Kısa sürüşle savan macerası." },
     fishing: { title: "Kıyı ve Derin Deniz Balıkçılığı", desc: "Plajdan atmadan derin deniz çarterlerine kadar." },
-    surfing: { title: "Sörf ve Dersler", desc: "Bir dalga yakalayın veya temelleri öğrenin." },
+    surfing:   { title: "Sörf ve Dersler",                   desc: "Bir dalga yakalayın veya temelleri öğrenin." },
+    malongane: { title: "Ponta Malongane Sahil Yürüyüşü",  desc: "15 dk kuzeyde el değmemiş plaj — harika şnorkel ve çok az ziyaretçi." },
+    quad:      { title: "Quad Kiralama",                    desc: "Kumulları ve orman patikalarını quad ile keşfedin — kiralama köyde mevcut." },
   }
 }
 

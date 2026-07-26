@@ -5,7 +5,7 @@ menu: "Menu",
     nav: {
       home: "Accueil",
       stay: "Séjour",
-      experiences: "Expériences",
+      experiences: "Explorer Ponta",
       todo: "À faire",
       gallery: "Galerie",
       location: "Localisation",
@@ -28,7 +28,7 @@ menu: "Menu",
       moreDetails: "Plus de détails", ourStory: "Notre Histoire"
     },
     experiences: {
-      headline: "Expériences",
+      headline: "Explorer Ponta",
       blurb: "Aventures océanes et forestières à deux pas.",
       operators: "Opérateurs locaux de confiance :",
       learnMore: "Explorer les sites de plongée, opérateurs et tarifs →"
@@ -232,7 +232,9 @@ units: {
       seafari: { title: "Safaris Océaniques", desc: "Safaris en mer pour les baleines (mai–oct) et plus." },
       safari: { title: "Safaris Terrestres", desc: "Aventures en brousse à courte distance." },
       fishing: { title: "Pêche de Plage & Haute Mer", desc: "Des lancers côtiers aux charters offshore." },
-      surfing: { title: "Planches & Cours de Surf", desc: "Attrapez une vague ou apprenez les bases." },
+      surfing:   { title: "Planches & Cours de Surf",         desc: "Attrapez une vague ou apprenez les bases." },
+      malongane: { title: "Promenade à Ponta Malongane",      desc: "Plage préservée à 15 min au nord — excellent snorkeling et peu de visiteurs." },
+      quad:      { title: "Location de Quads",                desc: "Explorez les dunes et pistes forestières en quad — location disponible au village." },
     },
 };
 

@@ -2,10 +2,10 @@
 export const UI = {
 menu: "Menu",
     regions: { westEu: "Europa occidentale", eastEu: "Europa orientale", asia: "Asia", americas: "Americhe", africa: "Africa", oceania: "Oceania" },
-    nav: { home: "Home", stay: "Alloggi", experiences: "Esperienze", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
+    nav: { home: "Home", stay: "Alloggi", experiences: "Esplora Ponta", todo: "Cosa fare", gallery: "Galleria", location: "Posizione", contact: "Contatti" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Soggiorni ecosostenibili vicino a una spiaggia incontaminata, in una destinazione d'avventura di livello mondiale.", description: "Scoprite un paradiso unico per immersioni UNESCO, circondato da riserve naturali e da indimenticabili esperienze all'aria aperta.", ctaPrimary: "Prenota il tuo soggiorno", ctaSecondary: "Scopri il lodge", badge: "Comfort e valore apprezzati", clickReviews: "Clicca sulle recensioni!", whyPonta: "Perché Ponta do Ouro?", villageHighlights: "Punti salienti", goDiving: "Vai a fare immersioni" },
     stay: { headline: "Soggiorna con noi", blurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.", moreDetails: "Altri dettagli", ourStory: "La Nostra Storia" },
-    experiences: { headline: "Esperienze", blurb: "Avventure tra oceano e foresta a portata di mano.", operators: "Operatori locali fidati:", learnMore: "Esplora siti di immersione, operatori e prezzi →" },
+    experiences: { headline: "Esplora Ponta", blurb: "Avventure tra oceano e foresta a portata di mano.", operators: "Operatori locali fidati:", learnMore: "Esplora siti di immersione, operatori e prezzi →" },
     units: {
       safari: {
         title: "Tenda Safari",
@@ -165,7 +165,9 @@ units: {
       seafari: { title: "Safari Oceanici", desc: "Safari oceanici per balene (mag–ott) e altro." },
       safari: { title: "Safari Terrestri", desc: "Avventure nel bush a breve distanza." },
       fishing: { title: "Pesca da Spiaggia e d'Altura", desc: "Dai lanci costieri ai charter offshore." },
-      surfing: { title: "Tavole & Lezioni di Surf", desc: "Prendi un'onda o impara le basi." },
+      surfing:   { title: "Tavole & Lezioni di Surf",          desc: "Prendi un'onda o impara le basi." },
+      malongane: { title: "Passeggiata a Ponta Malongane",    desc: "Spiaggia incontaminata a 15 min a nord — ottimo snorkeling e pochi visitatori." },
+      quad:      { title: "Noleggio Quad",                    desc: "Esplora dune e sentieri boschivi in quad — noleggio disponibile nel villaggio." },
     },
 };
 

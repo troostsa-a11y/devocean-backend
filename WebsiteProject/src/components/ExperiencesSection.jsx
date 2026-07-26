@@ -9,7 +9,9 @@ const EXP_TAGS = {
   safari: ['game', 'halfOrFull'],
   fishing: ['charter', 'guided'],
   surfing: ['rental', 'lessons'],
-  lighthouse: ['free', 'selfGuided']
+  lighthouse: ['free', 'selfGuided'],
+  malongane:  ['free', 'selfGuided'],
+  quad:       ['rental'],
 };
 
 // Tag labels with translations

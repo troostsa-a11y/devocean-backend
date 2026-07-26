@@ -2,10 +2,10 @@
 export const UI = {
 menu: "メニュー",
     regions: { westEu: "西ヨーロッパ", eastEu: "東ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
-    nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
+    nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", clickReviews: "口コミをクリック！", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
-    experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：", learnMore: "ダイビングスポット、オペレーター、料金を探る →" },
+    experiences: { headline: "Explore Ponta", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：", learnMore: "ダイビングスポット、オペレーター、料金を探る →" },
     units: {
       safari: {
         title: "サファリテント",
@@ -112,10 +112,10 @@ menu: "メニュー",
 };
 
 export const L10N = {
-nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
+nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "滞在を予約", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", clickReviews: "口コミをクリック！", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
-    experiences: { headline: "体験", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
+    experiences: { headline: "Explore Ponta", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
     units: {
       safari: {
         title: "サファリテント",
@@ -163,7 +163,9 @@ nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アク�
       seafari: { title: "シーサファリ", desc: "クジラ（5月〜10月）などの海洋サファリ。" },
       safari: { title: "ランドサファリ", desc: "近くでのブッシュアドベンチャー。" },
       fishing: { title: "ビーチ＆ボートフィッシング", desc: "岸からのキャスティングから沖合のチャーターまで。" },
-      surfing: { title: "サーフボード＆レッスン", desc: "波に乗るか、基礎を学ぶ。" },
+      surfing:   { title: "サーフボード＆レッスン",              desc: "波に乗るか、基礎を学ぶ。" },
+      malongane: { title: "ポンタ・マロンガネ・ビーチウォーク", desc: "15分北の手つかずのビーチ — 優れたシュノーケリングと観光客が少ない。" },
+      quad:      { title: "クワッドバイクレンタル",            desc: "砂丘と森の道をクワッドバイクで探索 — 村でレンタル可能。" },
     },
     todo: {
       headline: "Ponta do Ouroですること",

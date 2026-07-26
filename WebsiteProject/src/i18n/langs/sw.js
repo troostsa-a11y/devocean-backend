@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Menyu",
   regions: { westEu: "Ulaya Magharibi", eastEu: "Ulaya Mashariki", asia: "Asia", americas: "Amerika", africa: "Afrika", oceania: "Oceania" },
-  nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Uzoefu", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
+  nav: { home: "Nyumbani", stay: "Kukaa", experiences: "Gundua Ponta", todo: "Cha kufanya", gallery: "Matunzio", location: "Mahali", contact: "Wasiliana nasi" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Malazi rafiki kwa mazingira karibu na ufukwe usioguswa, katika eneo la matukio na safari za kipekee la kiwango cha dunia.", description: "Gundua paradiso ya kipekee ya kupiga mbizi ya UNESCO, iliyozungukwa na hifadhi za asili na shughuli za nje zisizosahaulika.", ctaPrimary: "Weka nafasi ya kukaa", ctaSecondary: "Chunguza Lodge", badge: "Raha na thamani inayopendwa na wageni", clickReviews: "Bonyeza maoni!", whyPonta: "Kwa nini Ponta do Ouro?", villageHighlights: "Mambo maalum", goDiving: "Kupiga mbizi" },
   stay: { headline: "Kaa nasi", blurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.", moreDetails: "Maelezo zaidi", ourStory: "Hadithi Yetu" },
-  experiences: { headline: "Uzoefu", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:", learnMore: "Chunguza maeneo ya kupiga mbizi, watoa huduma na bei →" },
+  experiences: { headline: "Gundua Ponta", blurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.", operators: "Watoa huduma wa ndani wanaotegemewa:", learnMore: "Chunguza maeneo ya kupiga mbizi, watoa huduma na bei →" },
   todo: {
     headline: "Cha kufanya huko Ponta do Ouro",
     note: "Kwa kupiga mbizi, kuogelea chini ya maji, safari za pomboo/nyangumi na boti za kuvua samaki, angalia watoa huduma wafuatao.",
@@ -87,7 +87,9 @@ export const L10N = {
     seafari: { title: "Safari za Baharini", desc: "Safari za baharini kwa nyangumi (Mei–Oktoba) na zaidi." },
     safari: { title: "Safari za Nchi Kavu", desc: "Matukio ya msituni kwa safari fupi ya gari." },
     fishing: { title: "Uvuvi wa Ufukweni na Bahari ya Kina", desc: "Kutoka kwa kurusha kwenye ufukwe hadi safari za bahari ya kina." },
-    surfing: { title: "Mbao za Kuteleza na Mafunzo", desc: "Shika mawimbi au jifunze misingi." },
+    surfing:   { title: "Mbao za Kuteleza na Mafunzo",       desc: "Shika mawimbi au jifunze misingi." },
+    malongane: { title: "Matembezi ya Ponta Malongane",     desc: "Pwani nzuri km 15 kaskazini — kuogelea bora na wageni wachache." },
+    quad:      { title: "Kukodisha Quad Bike",              desc: "Chunguza mchanga na njia za msitu kwa quad — kukodisha kunapatikana kijijini." },
   }
 }
 

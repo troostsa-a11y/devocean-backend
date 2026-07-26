@@ -1,10 +1,10 @@
 export const UI = {
   menu: "Meny",
   regions: { westEu: "Västeuropa", eastEu: "Östeuropa", asia: "Asien", americas: "Amerika", africa: "Afrika", oceania: "Oceanien" },
-  nav: { home: "Hem", stay: "Boende", experiences: "Upplevelser", todo: "Att göra", gallery: "Galleri", location: "Plats", contact: "Kontakt" },
+  nav: { home: "Hem", stay: "Boende", experiences: "Utforska Ponta", todo: "Att göra", gallery: "Galleri", location: "Plats", contact: "Kontakt" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Miljövänligt boende nära en orörd strand i en äventyrsdestination i världsklass.", description: "Upptäck ett unikt UNESCO-dykparadis, omgivet av naturreservat och oförglömliga upplevelser utomhus.", ctaPrimary: "Boka ditt boende", ctaSecondary: "Utforska lodgen", badge: "Gästernas favorit – komfort och värde", clickReviews: "Klicka på recensionerna!", whyPonta: "Varför Ponta do Ouro?", villageHighlights: "Höjdpunkter", goDiving: "Dyk" },
   stay: { headline: "Bo hos oss", blurb: "Välj din stil: naturnära tält eller mysiga stugor – alla med varm, familjeägd gästfrihet.", moreDetails: "Mer information", ourStory: "Vår Berättelse" },
-  experiences: { headline: "Upplevelser", blurb: "Havs- och skogsäventyr precis utanför dörren.", operators: "Pålitliga lokala arrangörer:", learnMore: "Utforska dykplatser, arrangörer och priser →" },
+  experiences: { headline: "Utforska Ponta", blurb: "Havs- och skogsäventyr precis utanför dörren.", operators: "Pålitliga lokala arrangörer:", learnMore: "Utforska dykplatser, arrangörer och priser →" },
   todo: {
     headline: "Att göra i Ponta do Ouro",
     note: "För dykning, snorkling, delfin-/val-safaris och fisketurer, se arrangörerna nedan.",
@@ -124,7 +124,9 @@ export const L10N = {
     seafari: { title: "Havssafaris", desc: "Oceaniska safaris för valar (maj–okt) och mer." },
     safari: { title: "Landsafaris", desc: "Buskeventyr inom kort avstånd." },
     fishing: { title: "Strand- & Havsfiske", desc: "Från kustmetning till offshore-charter." },
-    surfing: { title: "Surfbrädor & Lektioner", desc: "Fånga en våg eller lär dig grunderna." },
+    surfing:   { title: "Surfbrädor & Lektioner",              desc: "Fånga en våg eller lär dig grunderna." },
+    malongane: { title: "Strandpromenad till Ponta Malongane", desc: "Orörd strand 15 min norrut — utmärkt snorkling och få besökare." },
+    quad:      { title: "Quad-uthyrning",                      desc: "Utforska dyner och skogsstigar på quad — uthyrning tillgänglig i byn." },
   }
 }
 

@@ -2,10 +2,10 @@
 export const UI = {
 menu: "Menu",
     regions: { westEu: "Europa Ocidental", eastEu: "Europa Oriental", asia: "Ásia", americas: "Américas", africa: "África", oceania: "Oceania" },
-    nav: { home: "Início", stay: "Estadia", experiences: "Experiências", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
+    nav: { home: "Início", stay: "Estadia", experiences: "Explorar Ponta", todo: "O que fazer", gallery: "Galeria", location: "Localização", contact: "Contacto" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Hospedagens ecológicas perto de uma praia intocada, em um destino de aventura de classe mundial.", description: "Descubra um paraíso único de mergulho da UNESCO, cercado por reservas naturais e experiências inesquecíveis ao ar livre.", ctaPrimary: "Reserve a sua estadia", ctaSecondary: "Explore o lodge", badge: "Conforto e valor adorados pelos hóspedes", clickReviews: "Clique nas avaliações!", whyPonta: "Porquê Ponta do Ouro?", villageHighlights: "Destaques", goDiving: "Mergulhar" },
     stay: { headline: "Fique connosco", blurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.", moreDetails: "Mais detalhes", ourStory: "A Nossa História" },
-    experiences: { headline: "Experiências", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:", learnMore: "Explorar locais de mergulho, operadores e preços →" },
+    experiences: { headline: "Explorar Ponta", blurb: "Aventuras no oceano e na floresta mesmo à sua porta.", operators: "Operadores locais de confiança:", learnMore: "Explorar locais de mergulho, operadores e preços →" },
     todo: {
       headline: "O que fazer em Ponta do Ouro",
       note: "Para mergulho, viagens de snorkel, safaris marítimos com golfinhos/baleias e charters de pesca, veja os fornecedores abaixo.",
@@ -121,7 +121,9 @@ export const L10N = {
     seafari: { title: "Safáris Oceânicos", desc: "Safáris no mar para baleias (mai–out) e mais." },
     safari: { title: "Safáris Terrestres", desc: "Aventuras no mato a curta distância." },
     fishing: { title: "Pesca de Praia e Alto-mar", desc: "Do lançamento na praia aos charters offshore." },
-    surfing: { title: "Pranchas & Aulas de Surf", desc: "Aproveite as ondas ou aprenda o básico." },
+    surfing:   { title: "Pranchas & Aulas de Surf",            desc: "Aproveite as ondas ou aprenda o básico." },
+    malongane: { title: "Caminhada à Praia de Ponta Malongane", desc: "Praia intocada a 15 min ao norte — ótimo snorkeling e muito menos visitantes." },
+    quad:      { title: "Aluguel de Quads",                  desc: "Explore as dunas e trilhas florestais de quad — disponível na vila." },
   },
 };
 
