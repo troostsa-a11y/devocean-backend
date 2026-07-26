@@ -14,7 +14,7 @@
 
 const STRINGS = {
   en: {
-    title: 'Book your stay',
+    title: 'Book your stay with us',
     cardTitle: 'Enter your preferred dates for rates & availability',
     subtitle: 'Booking guaranteed\nImmediate confirmation\nBest service & support',
     checkIn: 'Check-in',
@@ -105,7 +105,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Buy a gift voucher for someone special →',
   },
   pt: {
-    title: 'Reserve a sua estadia',
+    title: 'Reserve a sua estadia connosco',
     cardTitle: 'Insira as suas datas preferidas para tarifas e disponibilidade',
     subtitle: 'Reserva garantida\nConfirmação imediata\nMelhor serviço e suporte',
     checkIn: 'Check-in',
@@ -196,7 +196,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Compre um voucher de oferta para alguém especial →',
   },
   de: {
-    title: 'Buchen Sie Ihren Aufenthalt',
+    title: 'Buchen Sie Ihren Aufenthalt bei uns',
     cardTitle: 'Geben Sie Ihre Wunschdaten für Preise und Verfügbarkeit ein',
     subtitle: 'Buchung garantiert\nSofortige Bestätigung\nBester Service & Support',
     checkIn: 'Anreise',
@@ -287,7 +287,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Kaufen Sie einen Geschenkgutschein für jemanden Besonderen →',
   },
   fr: {
-    title: 'Réservez votre séjour',
+    title: 'Réservez votre séjour chez nous',
     cardTitle: 'Entrez vos dates préférées pour les tarifs et la disponibilité',
     subtitle: 'Réservation garantie\nConfirmation immédiate\nMeilleur service & assistance',
     checkIn: 'Arrivée',
@@ -378,7 +378,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Achetez un bon cadeau pour quelqu\'un de spécial →',
   },
   es: {
-    title: 'Reserve su estancia',
+    title: 'Reserve su estancia con nosotros',
     cardTitle: 'Introduzca sus fechas preferidas para tarifas y disponibilidad',
     subtitle: 'Reserva garantizada\nConfirmación inmediata\nMejor servicio y asistencia',
     checkIn: 'Entrada',
@@ -469,7 +469,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Compra un bono regalo para alguien especial →',
   },
   it: {
-    title: 'Prenota il tuo soggiorno',
+    title: 'Prenota il tuo soggiorno con noi',
     cardTitle: 'Inserisci le tue date preferite per tariffe e disponibilità',
     subtitle: 'Prenotazione garantita\nConferma immediata\nMiglior servizio e supporto',
     checkIn: 'Check-in',
@@ -560,7 +560,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Acquista un buono regalo per qualcuno di speciale →',
   },
   nl: {
-    title: 'Boek uw verblijf',
+    title: 'Boek uw verblijf bij ons',
     cardTitle: 'Voer uw voorkeursdatums in voor tarieven en beschikbaarheid',
     subtitle: 'Boeking gegarandeerd\nDirecte bevestiging\nBeste service & ondersteuning',
     checkIn: 'Inchecken',
@@ -651,7 +651,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Koop een cadeaubon voor iemand bijzonders →',
   },
   sv: {
-    title: "Boka ditt boende",
+    title: "Boka ditt boende hos oss",
     cardTitle: "Ange dina önskade datum för priser och tillgänglighet",
     subtitle: "Bokning garanterad\nOmedelbar bekräftelse\nBästa service & support",
     checkIn: "Incheckning",
@@ -742,7 +742,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Köp ett presentkort till någon speciell →',
   },
   pl: {
-    title: "Zarezerwuj pobyt",
+    title: "Zarezerwuj pobyt u nas",
     cardTitle: "Wpisz preferowane daty, aby zobaczyć ceny i dostępność",
     subtitle: "Rezerwacja gwarantowana\nNatychmiastowe potwierdzenie\nNajlepsza obsługa i wsparcie",
     checkIn: "Zameldowanie",
@@ -833,7 +833,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Kup bon prezentowy dla kogoś wyjątkowego →',
   },
   ro: {
-    title: "Rezervă-ți sejurul",
+    title: "Rezervă-ți sejurul cu noi",
     cardTitle: "Introduceți datele preferate pentru tarife și disponibilitate",
     subtitle: "Rezervare garantată\nConfirmare imediată\nCel mai bun serviciu și suport",
     checkIn: "Check-in",
@@ -924,7 +924,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Cumpără un voucher cadou pentru cineva special →',
   },
   sr: {
-    title: "Rezervišite svoj boravak",
+    title: "Rezervišite svoj boravak kod nas",
     cardTitle: "Unesite željene datume za cene i dostupnost",
     subtitle: "Rezervacija garantovana\nTrenutna potvrda\nNajbolji servis i podrška",
     checkIn: "Prijava",
@@ -1015,7 +1015,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Kupite poklon vaučer za nekoga posebnog →',
   },
   hr: {
-    title: "Rezervirajte svoj boravak",
+    title: "Rezervirajte svoj boravak kod nas",
     cardTitle: "Unesite željene datume za cijene i dostupnost",
     subtitle: "Rezervacija zajamčena\nTrenutna potvrda\nNajbolja usluga i podrška",
     checkIn: "Prijava",
@@ -1106,7 +1106,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Kupite poklon bon za nekoga posebnog →',
   },
   cs: {
-    title: "Rezervujte si pobyt",
+    title: "Rezervujte si pobyt u nás",
     cardTitle: "Zadejte preferovaná data pro ceny a dostupnost",
     subtitle: "Rezervace zaručena\nOkamžité potvrzení\nNejlepší servis a podpora",
     checkIn: "Příjezd",
@@ -1197,7 +1197,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Kupte dárkový poukaz pro někoho výjimečného →',
   },
   tr: {
-    title: "Konaklamanızı rezerve edin",
+    title: "Bizimle konaklamanızı rezerve edin",
     cardTitle: "Fiyatlar ve müsaitlik için tercih ettiğiniz tarihleri girin",
     subtitle: "Rezervasyon garantili\nAnında onay\nEn iyi hizmet ve destek",
     checkIn: "Giriş",
@@ -1288,7 +1288,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Özel biri için hediye çeki satın alın →',
   },
   ja: {
-    title: "ご滞在を予約",
+    title: "ご滞在のご予約はこちらで",
     cardTitle: "ご希望の日程を入力して料金と空室状況をご確認ください",
     subtitle: "予約確定保証\n即時確認\n最高のサービス＆サポート",
     checkIn: "チェックイン",
@@ -1379,7 +1379,7 @@ const STRINGS = {
     giftPromoSubtitle: '大切な方へのギフトバウチャーを購入する →',
   },
   zh: {
-    title: "预订您的住宿",
+    title: "与我们预订您的住宿",
     cardTitle: "输入您的首选日期以查看房价与空房情况",
     subtitle: "预订有保障\n即时确认\n最优质的服务与支持",
     checkIn: "入住",
@@ -1470,7 +1470,7 @@ const STRINGS = {
     giftPromoSubtitle: '为特别的人购买礼品券 →',
   },
   ru: {
-    title: "Забронируйте проживание",
+    title: "Забронируйте проживание у нас",
     cardTitle: "Введите предпочтительные даты для просмотра тарифов и наличия",
     subtitle: "Бронирование гарантировано\nМгновенное подтверждение\nЛучший сервис и поддержка",
     checkIn: "Заезд",
@@ -1561,7 +1561,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Купите подарочный ваучер для кого-то особенного →',
   },
   af: {
-    title: "Bespreek jou verblyf",
+    title: "Bespreek jou verblyf by ons",
     cardTitle: "Voer u verkiese datums in vir tariewe en beskikbaarheid",
     subtitle: "Boeking gewaarborg\nOnmiddellike bevestiging\nBeste diens en ondersteuning",
     checkIn: "Inklok",
@@ -1652,7 +1652,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Koop \'n geskenkkoepon vir iemand spesiaals →',
   },
   zu: {
-    title: "Bhukha ukuhlala kwakho",
+    title: "Bhukha ukuhlala kwakho nathi",
     cardTitle: "Faka izinsuku ozithandayo ukuze ubone amanani nokukhona",
     subtitle: "Ukubhuka kuqinisekisiwe\nUkuqinisekisa ngokushesha\nInkonzo nokusekela okungcono",
     checkIn: "Usuku lokungena",
@@ -1743,7 +1743,7 @@ const STRINGS = {
     giftPromoSubtitle: 'Thenga ivawusha lesipho kumuntu okhethekile →',
   },
   sw: {
-    title: "Weka nafasi ya kukaa kwako",
+    title: "Weka nafasi ya kukaa kwako kwetu",
     cardTitle: "Ingiza tarehe unazozipenda kwa bei na upatikanaji",
     subtitle: "Uhakika wa uhifadhi\nUthibitisho wa haraka\nHuduma na msaada bora",
     checkIn: "Tarehe ya kuingia",
