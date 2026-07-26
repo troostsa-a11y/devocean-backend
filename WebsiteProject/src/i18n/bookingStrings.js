@@ -15,6 +15,7 @@
 const STRINGS = {
   en: {
     title: 'Book your stay',
+    cardTitle: 'Enter your preferred dates for rates & availability',
     subtitle: 'Reserve directly with DEVOCEAN Lodge.\nPay a deposit now, the balance on arrival.',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
@@ -105,6 +106,7 @@ const STRINGS = {
   },
   pt: {
     title: 'Reserve a sua estadia',
+    cardTitle: 'Insira as suas datas preferidas para tarifas e disponibilidade',
     subtitle: 'Reserve diretamente com o DEVOCEAN Lodge.\nPague um depósito agora e o restante à chegada.',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
@@ -195,6 +197,7 @@ const STRINGS = {
   },
   de: {
     title: 'Buchen Sie Ihren Aufenthalt',
+    cardTitle: 'Geben Sie Ihre Wunschdaten für Preise und Verfügbarkeit ein',
     subtitle: 'Buchen Sie direkt bei der DEVOCEAN Lodge.\nZahlen Sie jetzt eine Anzahlung, den Rest bei Ankunft.',
     checkIn: 'Anreise',
     checkOut: 'Abreise',
@@ -285,6 +288,7 @@ const STRINGS = {
   },
   fr: {
     title: 'Réservez votre séjour',
+    cardTitle: 'Entrez vos dates préférées pour les tarifs et la disponibilité',
     subtitle: 'Réservez directement avec DEVOCEAN Lodge.\nPayez un acompte maintenant, le solde à l’arrivée.',
     checkIn: 'Arrivée',
     checkOut: 'Départ',
@@ -375,6 +379,7 @@ const STRINGS = {
   },
   es: {
     title: 'Reserve su estancia',
+    cardTitle: 'Introduzca sus fechas preferidas para tarifas y disponibilidad',
     subtitle: 'Reserve directamente con DEVOCEAN Lodge.\nPague un depósito ahora y el resto a su llegada.',
     checkIn: 'Entrada',
     checkOut: 'Salida',
@@ -465,6 +470,7 @@ const STRINGS = {
   },
   it: {
     title: 'Prenota il tuo soggiorno',
+    cardTitle: 'Inserisci le tue date preferite per tariffe e disponibilità',
     subtitle: 'Prenota direttamente con DEVOCEAN Lodge.\nPaga un acconto ora, il saldo all’arrivo.',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
@@ -555,6 +561,7 @@ const STRINGS = {
   },
   nl: {
     title: 'Boek uw verblijf',
+    cardTitle: 'Voer uw voorkeursdatums in voor tarieven en beschikbaarheid',
     subtitle: 'Boek rechtstreeks bij DEVOCEAN Lodge.\nBetaal nu een aanbetaling, het saldo bij aankomst.',
     checkIn: 'Inchecken',
     checkOut: 'Uitchecken',
@@ -645,6 +652,7 @@ const STRINGS = {
   },
   sv: {
     title: "Boka ditt boende",
+    cardTitle: "Ange dina önskade datum för priser och tillgänglighet",
     subtitle: "Boka direkt med DEVOCEAN Lodge.\nBetala en handpenning nu, resten vid ankomst.",
     checkIn: "Incheckning",
     checkOut: "Utcheckning",
@@ -735,6 +743,7 @@ const STRINGS = {
   },
   pl: {
     title: "Zarezerwuj pobyt",
+    cardTitle: "Wpisz preferowane daty, aby zobaczyć ceny i dostępność",
     subtitle: "Zarezerwuj bezpośrednio w DEVOCEAN Lodge.\nZapłać teraz zaliczkę, resztę przy przyjeździe.",
     checkIn: "Zameldowanie",
     checkOut: "Wymeldowanie",
@@ -825,6 +834,7 @@ const STRINGS = {
   },
   ro: {
     title: "Rezervă-ți sejurul",
+    cardTitle: "Introduceți datele preferate pentru tarife și disponibilitate",
     subtitle: "Rezervă direct la DEVOCEAN Lodge.\nPlătește un avans acum, restul la sosire.",
     checkIn: "Check-in",
     checkOut: "Check-out",
@@ -915,6 +925,7 @@ const STRINGS = {
   },
   sr: {
     title: "Rezervišite svoj boravak",
+    cardTitle: "Unesite željene datume za cene i dostupnost",
     subtitle: "Rezervišite direktno kod DEVOCEAN Lodge.\nPlatite depozit sada, ostatak po dolasku.",
     checkIn: "Prijava",
     checkOut: "Odjava",
@@ -1005,6 +1016,7 @@ const STRINGS = {
   },
   hr: {
     title: "Rezervirajte svoj boravak",
+    cardTitle: "Unesite željene datume za cijene i dostupnost",
     subtitle: "Rezervirajte izravno kod DEVOCEAN Lodge.\nPlatite polog sada, ostatak po dolasku.",
     checkIn: "Prijava",
     checkOut: "Odjava",
@@ -1095,6 +1107,7 @@ const STRINGS = {
   },
   cs: {
     title: "Rezervujte si pobyt",
+    cardTitle: "Zadejte preferovaná data pro ceny a dostupnost",
     subtitle: "Rezervujte přímo u DEVOCEAN Lodge.\nZaplaťte zálohu nyní, doplatek při příjezdu.",
     checkIn: "Příjezd",
     checkOut: "Odjezd",
@@ -1185,6 +1198,7 @@ const STRINGS = {
   },
   tr: {
     title: "Konaklamanızı rezerve edin",
+    cardTitle: "Fiyatlar ve müsaitlik için tercih ettiğiniz tarihleri girin",
     subtitle: "DEVOCEAN Lodge ile doğrudan rezervasyon yapın.\nŞimdi ön ödeme yapın, kalanı varışta ödeyin.",
     checkIn: "Giriş",
     checkOut: "Çıkış",
@@ -1275,6 +1289,7 @@ const STRINGS = {
   },
   ja: {
     title: "ご滞在を予約",
+    cardTitle: "ご希望の日程を入力して料金と空室状況をご確認ください",
     subtitle: "DEVOCEAN Lodgeに直接ご予約いただけます。\n今デポジットをお支払いいただき、残額はご到着時にお支払いください。",
     checkIn: "チェックイン",
     checkOut: "チェックアウト",
@@ -1365,6 +1380,7 @@ const STRINGS = {
   },
   zh: {
     title: "预订您的住宿",
+    cardTitle: "输入您的首选日期以查看房价与空房情况",
     subtitle: "直接向 DEVOCEAN Lodge 预订。\n现在支付订金，余款抵店时支付。",
     checkIn: "入住",
     checkOut: "退房",
@@ -1455,6 +1471,7 @@ const STRINGS = {
   },
   ru: {
     title: "Забронируйте проживание",
+    cardTitle: "Введите предпочтительные даты для просмотра тарифов и наличия",
     subtitle: "Бронируйте напрямую в DEVOCEAN Lodge.\nВнесите депозит сейчас, остаток оплатите по прибытии.",
     checkIn: "Заезд",
     checkOut: "Выезд",
@@ -1545,6 +1562,7 @@ const STRINGS = {
   },
   af: {
     title: "Bespreek jou verblyf",
+    cardTitle: "Voer u verkiese datums in vir tariewe en beskikbaarheid",
     subtitle: "Bespreek direk by DEVOCEAN Lodge.\nBetaal nou 'n deposito, die balans met aankoms.",
     checkIn: "Inklok",
     checkOut: "Uitklok",
@@ -1635,6 +1653,7 @@ const STRINGS = {
   },
   zu: {
     title: "Bhukha ukuhlala kwakho",
+    cardTitle: "Faka izinsuku ozithandayo ukuze ubone amanani nokukhona",
     subtitle: "Bhukha ngokuqondile ne-DEVOCEAN Lodge.\nKhokha idiphozithi manje, ibhalansi uyikhokhe lapho ufika.",
     checkIn: "Usuku lokungena",
     checkOut: "Usuku lokuphuma",
@@ -1725,6 +1744,7 @@ const STRINGS = {
   },
   sw: {
     title: "Weka nafasi ya kukaa kwako",
+    cardTitle: "Ingiza tarehe unazozipenda kwa bei na upatikanaji",
     subtitle: "Weka nafasi moja kwa moja na DEVOCEAN Lodge.\nLipa amana sasa, salio utalipa unapowasili.",
     checkIn: "Tarehe ya kuingia",
     checkOut: "Tarehe ya kutoka",

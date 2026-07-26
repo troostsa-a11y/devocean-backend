@@ -840,7 +840,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
               {/* Search card floating over the hero image */}
               <div className="mt-8 relative z-20 bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-6">
-                <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4">{t.title}</h2>
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900 mb-4">{t.cardTitle}</h2>
               <form
                 onSubmit={handleSearch}
                 className="flex flex-col gap-4 lg:flex-row lg:flex-wrap lg:items-end"
