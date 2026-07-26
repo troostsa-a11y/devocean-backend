@@ -782,7 +782,7 @@
       <a href="/" class="story-nav-logo">DEVOCEAN Lodge</a>
       <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;justify-content:flex-end;">
         <a href="/book-direct" class="story-nav-back" data-testid="link-back-to-booking"
-          onclick="event.preventDefault();var u=this.getAttribute('href');window.close();setTimeout(function(){window.location.href=u;},200);">
+">
           <span>←</span>
           <span data-i18n="backToBooking">Back to Booking</span>
         </a>
@@ -925,7 +925,16 @@
   <script src="/translations/accommodation-detail-i18n.js"></script>
   <script src="/js/gallery-lightbox.js" defer></script>
   <!-- Marin AI receptionist widget + contextual ask -->
-  <script src="https://mia-voice-receptionist.onrender.com/widget-loader.js" defer></script>
+  <script>
+    /* Load the Marin widget dynamically so a cold-start failure on Render
+       does not propagate to window.onerror and trigger the preview error overlay. */
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'https://mia-voice-receptionist.onrender.com/widget-loader.js';
+      s.onerror = function () { console.warn('Marin widget unavailable — Render may be waking up'); };
+      document.body.appendChild(s);
+    })();
+  </script>
   <script>
   function dvAsk() {
     window.devocean && window.devocean.open();
