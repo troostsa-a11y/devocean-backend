@@ -361,6 +361,7 @@ export default function TextChatEmbed() {
             }}
             onKeyDown={handleKeyDown}
             placeholder={c.placeholder}
+            aria-label={c.placeholder}
             rows={1}
             disabled={loading}
             className="flex-1 resize-none rounded-xl border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 overflow-y-auto"
@@ -369,6 +370,7 @@ export default function TextChatEmbed() {
           <button
             onClick={() => sendMessage()}
             disabled={!input.trim() || loading}
+            aria-label="Send message"
             className="w-9 h-9 rounded-full bg-primary flex items-center justify-center disabled:opacity-35 shrink-0 transition-opacity hover:opacity-90 active:scale-95"
           >
             {loading ? (

@@ -395,6 +395,10 @@
     if (evt.data.type === "devocean:closePanel") {
       setState("idle");
     }
+    // Log voice launch failures so they appear in browser devtools.
+    if (evt.data.type === "devocean:voiceError") {
+      console.error("[DEVOCEAN] Voice launch failed:", evt.data.error || "(no detail)");
+    }
     // Text iframe signals it mounted and is ready to receive context.
     if (evt.data.type === "devocean:textEmbedReady") {
       _textFrameReady = true;
