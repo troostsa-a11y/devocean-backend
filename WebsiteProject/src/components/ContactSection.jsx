@@ -175,25 +175,6 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
             </a>
           </div>
 
-          <a
-            href={bookUrl}
-            className="btn-cta mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-[#9e4b13] text-white shadow hover:shadow-md"
-            aria-label={ui.contact.bookNow}
-            onClick={() => {
-              if (window.dataLayer) {
-                window.dataLayer.push({
-                  event: 'reservation_complete',
-                  button_location: 'contact_section',
-                  language: lang,
-                  currency: currency
-                });
-              }
-            }}
-          >
-            <CalendarCheck2 size={18} />
-            {ui.contact.bookNow}
-          </a>
-
           {/* Socials */}
           <div className="mt-6 flex flex-wrap gap-2 md:gap-3 max-w-full">
             {SOCIAL_LINKS.map((S) => {
