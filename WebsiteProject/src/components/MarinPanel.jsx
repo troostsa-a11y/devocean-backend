@@ -11,10 +11,10 @@ import { useEffect } from 'react';
  * Props:
  *   context     – pageContext string injected into Marin's system prompt
  *   autoMessage – the message automatically sent on behalf of the visitor
- *   label       – button label (default "Not sure? Ask Marin")
+ *   label       – button label (default "Need help? Ask Marin")
  *   autoOpen    – if true, open the panel automatically on mount
  */
-export default function MarinPanel({ context, autoMessage, label = 'Not sure? Ask Marin', autoOpen = false }) {
+export default function MarinPanel({ context, autoMessage, label = 'Need help? Ask Marin', autoOpen = false }) {
   useEffect(() => {
     if (!autoOpen) return;
     // Give widget-loader a tick to initialise before firing.
