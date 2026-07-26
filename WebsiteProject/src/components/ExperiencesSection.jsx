@@ -112,14 +112,20 @@ export default function ExperiencesSection({ experiences, ui, lang }) {
                   data-testid={`link-experience-${c.key}`}
                 >
                   <div className="h-40 overflow-hidden relative">
-                    <LazyImage
-                      src={c.img}
-                      alt={c.title}
-                      className="w-full h-full object-cover"
-                      width={400}
-                      height={267}
-                      aspectRatio="3/2"
-                    />
+                    {c.img ? (
+                      <LazyImage
+                        src={c.img}
+                        alt={c.title}
+                        className="w-full h-full object-cover"
+                        width={400}
+                        height={267}
+                        aspectRatio="3/2"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-slate-200 flex items-center justify-center">
+                        <span className="text-slate-400 text-sm">Photo coming soon</span>
+                      </div>
+                    )}
                     <div className="absolute bottom-2 left-2 flex flex-wrap gap-1">
                       {tags.map((t) => (
                         <span

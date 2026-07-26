@@ -15,8 +15,8 @@ export const IMG = {
     safari: "/photos/experiences/safari.jpg",
     fishing: "/photos/experiences/fishing.jpg",
     surfing: "/photos/experiences/surfing.jpg",
-    malongane: "/photos/experiences/lighthouse.jpg",   // placeholder until own photo added
-    quad: "/photos/experiences/safari.jpg",             // placeholder until own photo added
+    malongane: null,   // add own photo at /photos/experiences/malongane.jpg when available
+    quad: null,        // add own photo at /photos/experiences/quad.jpg when available
   },
   gallery: [
     {
