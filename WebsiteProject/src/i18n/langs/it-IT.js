@@ -131,7 +131,7 @@ units: {
       safari: {
         title: "Tenda Safari",
         short:
-          "Tenda di tela 12 m² su piattaforma 3×6 m. Twin/King, ventilatore, prese, zanzariera, terrazza privata. Bagni condivisi.",
+          "Tenda di tela 12 m² su piattaforma 3×6 m. One King or Twin beds, ventilatore, prese, zanzariera, terrazza privata. Bagni condivisi.",
         details: [
           "Due letti singoli (o King) con comodini e lampade",
           "Zanzariera • ventilatore potente • prese",
@@ -144,7 +144,7 @@ units: {
         short:
           "Tenda 12 m² migliorata con maggiore privacy (pareti laterali/posteriori), terrazza privata e bagno privato sotto tetto di paglia.",
         details: [
-          "Configurazione Twin/King con illuminazione pratica",
+          "Configurazione One King or Twin beds con illuminazione pratica",
           "Zanzariera • ventilatore potente • prese",
           "Terrazza in legno con sedie",
           "Bagno privato (doccia, WC, lavabo) sotto tetto di paglia",
@@ -164,11 +164,11 @@ units: {
       chalet: {
         title: "Chalet di Paglia",
         short:
-          "Piccolo chalet romantico appartato sotto le palme. A/C, bagno privato, terrazza, Twin/King.",
+          "Piccolo chalet romantico appartato sotto le palme. A/C, bagno privato, terrazza, One King or Twin beds.",
         details: [
           "Ambiente tranquillo sotto le palme • aria condizionata",
           "Bagno privato (doccia, lavabo, WC)",
-          "Letti Twin/King con comodini",
+          "Letti One King or Twin beds con comodini",
           "Terrazza privata con sedie di foglie di palma",
         ],
       },

@@ -198,7 +198,7 @@ units: {
       safari: {
         title: "Tente Safari",
         short:
-          "Tente toile 12 m² sur plateforme 3×6 m. Twin/King, ventilateur, prises, moustiquaire, terrasse privée. Sanitaires partagés.",
+          "Tente toile 12 m² sur plateforme 3×6 m. One King or Twin beds, ventilateur, prises, moustiquaire, terrasse privée. Sanitaires partagés.",
         details: [
           "Deux lits simples (ou King) avec chevets et lampes",
           "Moustiquaire • ventilateur puissant • prises électriques",
@@ -211,7 +211,7 @@ units: {
         short:
           "Tente 12 m² améliorée avec plus d'intimité (parois latérales/arrière), terrasse privée et salle de bain privative sous toit de chaume.",
         details: [
-          "Configuration Twin/King avec éclairage pratique",
+          "Configuration One King or Twin beds avec éclairage pratique",
           "Moustiquaire • ventilateur puissant • prises",
           "Terrasse en bois avec chaises",
           "Salle de bain privée (douche, WC, lavabo) sous toit de chaume",
@@ -231,11 +231,11 @@ units: {
       chalet: {
         title: "Chalet de Chaume",
         short:
-          "Petit chalet romantique isolé sous les palmiers. A/C, salle de bain privée, terrasse, Twin/King.",
+          "Petit chalet romantique isolé sous les palmiers. A/C, salle de bain privée, terrasse, One King or Twin beds.",
         details: [
           "Cadre tranquille sous les palmiers • climatisation",
           "Salle de bain privée (douche, lavabo, WC)",
-          "Lits Twin/King avec chevets",
+          "Lits One King or Twin beds avec chevets",
           "Terrasse privée avec chaises en feuilles de palmier",
         ],
       },

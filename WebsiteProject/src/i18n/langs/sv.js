@@ -90,7 +90,7 @@ export const L10N = {
     safari: {
       title: "Safaritält",
       short:
-        "12 m² dukstält på 3×6 m plattform. Twin/King, fläkt, eluttag, myggnät, privat uteplats. Delade badrum.",
+        "12 m² dukstält på 3×6 m plattform. One King or Twin beds, fläkt, eluttag, myggnät, privat uteplats. Delade badrum.",
       details: [
         "Två enkelsängar (eller King) med sängbord och lampor",
         "Myggnät • kraftfull fläkt • eluttag",
@@ -103,7 +103,7 @@ export const L10N = {
       short:
         "Förbättrat 12 m² tält med mer avskildhet (sido-/bak-väggar), privat uteplats och eget badrum under halmtak.",
       details: [
-        "Twin/King-konfiguration med praktisk belysning",
+        "One King or Twin beds-konfiguration med praktisk belysning",
         "Myggnät • kraftfull fläkt • eluttag",
         "Träterrass med stolar",
         "Eget badrum (dusch, toalett, handfat) under halmtak",
@@ -123,11 +123,11 @@ export const L10N = {
     chalet: {
       title: "Halmtaks-chalet",
       short:
-        "Avskild, romantisk liten chalet under palmer. AC, eget badrum, uteplats, Twin/King.",
+        "Avskild, romantisk liten chalet under palmer. AC, eget badrum, uteplats, One King or Twin beds.",
       details: [
         "Lugn miljö under palmer • luftkonditionering",
         "Eget badrum (dusch, handfat, toalett)",
-        "Twin/King-sängar med sängbord",
+        "One King or Twin beds-sängar med sängbord",
         "Privat uteplats med palmblads-stolar",
       ],
     },

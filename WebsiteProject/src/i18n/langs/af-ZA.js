@@ -90,7 +90,7 @@ export const L10N = {
 units: {
       safari: {
         title: "Safari Tent",
-        short: "12 m² seildoektent op 'n 3×6 m platform. Twin/King, waaier, kragpunte, muskietnet, privaat terras. Gedeelde badkamers.",
+        short: "12 m² seildoektent op 'n 3×6 m platform. One King or Twin beds, waaier, kragpunte, muskietnet, privaat terras. Gedeelde badkamers.",
         details: [
           "Twee enkelbeddens (of King) met bedkassies en lampe",
           "Muskietnet • kragtige waaier • kragpunte",
@@ -102,7 +102,7 @@ units: {
         title: "Comfort Tent",
         short: "12 m² tent met meer privaatheid (sy/agterkant wande), privaat terras en privaat badkamer onder riettdak.",
         details: [
-          "Twin/King opstelling met praktiese beligting",
+          "One King or Twin beds opstelling met praktiese beligting",
           "Muskietnet • kragtige waaier • kragpunte",
           "Houterras met stoeie",
           "Privaat badkamer (stort, toilet, wasbak) onder riettdak",
@@ -120,11 +120,11 @@ units: {
       },
       chalet: {
         title: "Rietdak Chalet",
-        short: "Stil, romantiese klein chalet tussen palmbome. A/C, privaat badkamer, terras, Twin/King.",
+        short: "Stil, romantiese klein chalet tussen palmbome. A/C, privaat badkamer, terras, One King or Twin beds.",
         details: [
           "Rustige omgewing onder palmbome • lugversorging",
           "Privaat badkamer (stort, wasbak, toilet)",
-          "Twin/King beddens met bedkassies",
+          "One King or Twin beds beddens met bedkassies",
           "Privaat terras met palmblaarstoeie",
         ],
       },

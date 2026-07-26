@@ -56,7 +56,7 @@ export const L10N = {
   units: {
     safari: {
       title: "Hema la Safari",
-      short: "Hema la canvas la 12 m² kwenye jukwaa la 3×6 m. Twin/King, feni, vifaa vya umeme, neti ya mbu, dekhi ya faragha.",
+      short: "Hema la canvas la 12 m² kwenye jukwaa la 3×6 m. One King or Twin beds, feni, vifaa vya umeme, neti ya mbu, dekhi ya faragha.",
       details: [
         "Vitanda viwili vya mtu mmoja (au King) vyenye meza za pembeni na taa",
         "Neti ya mbu • feni yenye nguvu • vifaa vya umeme",
@@ -68,7 +68,7 @@ export const L10N = {
       title: "Hema la Starehe",
       short: "Hema la 12 m² lenye faragha zaidi (kuta za pembeni/nyuma), dekhi ya faragha na bafu ya faragha chini ya paa la nyasi.",
       details: [
-        "Mpangilio wa Twin/King na taa za kitendo",
+        "Mpangilio wa One King or Twin beds na taa za kitendo",
         "Neti ya mbu • feni yenye nguvu • vifaa vya umeme",
         "Dekhi ya mbao yenye viti",
         "Bafu ya faragha (shawa, choo, sinki) chini ya paa la nyasi",
@@ -86,11 +86,11 @@ export const L10N = {
     },
     chalet: {
       title: "Chalet ya Nyasi",
-      short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. A/C, bafu ya faragha, dekhi, Twin/King.",
+      short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. A/C, bafu ya faragha, dekhi, One King or Twin beds.",
       details: [
         "Mazingira ya amani chini ya miti ya michikichi • A/C",
         "Bafu ya faragha (shawa, sinki, choo)",
-        "Vitanda vya Twin/King vyenye meza za pembeni",
+        "Vitanda vya One King or Twin beds vyenye meza za pembeni",
         "Dekhi ya faragha yenye viti vya majani ya michikichi",
       ],
     },

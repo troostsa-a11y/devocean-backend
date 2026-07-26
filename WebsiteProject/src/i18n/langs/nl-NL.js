@@ -131,7 +131,7 @@ units: {
       safari: {
         title: "Safaritent",
         short:
-          "12 m² canvistent op een 3×6 m platform. Twin/King, ventilator, stopcontacten, muskietengaas, privéterras. Gedeeld sanitair.",
+          "12 m² canvistent op een 3×6 m platform. One King or Twin beds, ventilator, stopcontacten, muskietengaas, privéterras. Gedeeld sanitair.",
         details: [
           "Twee eenpersoonsbedden (of King) met nachtkastjes en lampen",
           "Muskietengaas • krachtige ventilator • stopcontacten",
@@ -144,7 +144,7 @@ units: {
         short:
           "Verbeterde 12 m² tent met extra privacy (zij/achterwanden), privéterras en eigen badkamer onder rieten dak.",
         details: [
-          "Twin/King opstelling met handige verlichting",
+          "One King or Twin beds opstelling met handige verlichting",
           "Muskietengaas • krachtige ventilator • stopcontacten",
           "Houten terras met stoelen",
           "Eigen badkamer (douche, toilet, wastafel) onder rieten dak",
@@ -164,11 +164,11 @@ units: {
       chalet: {
         title: "Rieten Chalet",
         short:
-          "Afgelegen, romantisch tiny chalet onder palmen. A/C, privébadkamer, terras, Twin/King.",
+          "Afgelegen, romantisch tiny chalet onder palmen. A/C, privébadkamer, terras, One King or Twin beds.",
         details: [
           "Rustige omgeving onder palmen • airconditioning",
           "Privébadkamer (douche, wastafel, toilet)",
-          "Twin/King bedden met nachtkastjes",
+          "One King or Twin beds bedden met nachtkastjes",
           "Privéterras met palmbladstoelen",
         ],
       },

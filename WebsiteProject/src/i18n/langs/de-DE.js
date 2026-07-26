@@ -9,7 +9,7 @@ menu: "Menü",
     units: {
       safari: {
         title: "Safari-Zelt",
-        short: "Grundlegender Komfort in der Natur. Gemeinschaftsbad, Twin/Kingbett.",
+        short: "Grundlegender Komfort in der Natur. Gemeinschaftsbad, King- oder Einzelbett.",
         details: [
           "Zwei Einzelbetten (oder King) mit Nachttischen und Lampen",
           "Moskitonetz • leistungsstarker Ventilator • Steckdosen",
@@ -19,9 +19,9 @@ menu: "Menü",
       },
       comfort: {
         title: "Komfort-Zelt",
-        short: "Geräumiges Upgrade-Zelt mit privatem Bad, Twin/Kingbett und Terrasse.",
+        short: "Geräumiges Upgrade-Zelt mit privatem Bad, King- oder Einzelbett und Terrasse.",
         details: [
-          "Twin/Kingbett-Anordnung mit praktischer Beleuchtung",
+          "King- oder Einzelbett-Anordnung mit praktischer Beleuchtung",
           "Tisch, Stühle • Terrasse (mit Stühlen)",
           "Privates Bad in Strohdachhütte"
         ],
@@ -38,11 +38,11 @@ menu: "Menü",
       },
       chalet: {
         title: "Gras-Dach-Chalet",
-        short: "Ruhiges, romantisches kleines Chalet unter Palmen. Klimaanlage, privates Bad, Terrasse. Twin/King.",
+        short: "Ruhiges, romantisches kleines Chalet unter Palmen. Klimaanlage, privates Bad, Terrasse. King- oder Einzelbett.",
         details: [
           "Ruhige Lage unter Palmen • Klimaanlage",
           "Privates Bad (Dusche, Waschbecken, WC)",
-          "Twin/Kingbett und Nachttische",
+          "King- oder Einzelbett und Nachttische",
           "Private Terrasse mit Palmblatt-Stühlen"
         ],
       },
@@ -131,7 +131,7 @@ units: {
       safari: {
         title: "Safarizelt",
         short:
-          "12 m² Leinwandzelt auf 3×6 m Plattform. Twin/King, Ventilator, Steckdosen, Moskitonetz, private Terrasse. Gemeinschaftsbäder.",
+          "12 m² Leinwandzelt auf 3×6 m Plattform. King- oder Einzelbett, Ventilator, Steckdosen, Moskitonetz, private Terrasse. Gemeinschaftsbäder.",
         details: [
           "Zwei Einzelbetten (oder King) mit Nachttischen und Lampen",
           "Moskitonetz • starker Ventilator • Steckdosen",
@@ -144,7 +144,7 @@ units: {
         short:
           "Verbessertes 12 m² Zelt mit mehr Privatsphäre (Seiten-/Rückwände), privater Terrasse und eigenem Bad unter Reetdach.",
         details: [
-          "Twin/King-Aufstellung mit praktischer Beleuchtung",
+          "King- oder Einzelbett-Aufstellung mit praktischer Beleuchtung",
           "Moskitonetz • starker Ventilator • Steckdosen",
           "Holzterrasse mit Stühlen",
           "Eigenes Bad (Dusche, WC, Waschbecken) unter Reetdach",
@@ -164,11 +164,11 @@ units: {
       chalet: {
         title: "Reetdach-Chalet",
         short:
-          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. A/C, eigenes Bad, Terrasse, Twin/King.",
+          "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. A/C, eigenes Bad, Terrasse, King- oder Einzelbett.",
         details: [
           "Ruhige Umgebung unter Palmen • Klimaanlage",
           "Eigenes Bad (Dusche, Waschbecken, WC)",
-          "Twin/King-Betten mit Nachttischen",
+          "King- oder Einzelbetten mit Nachttischen",
           "Private Terrasse mit Palmblatt-Stühlen",
         ],
       },

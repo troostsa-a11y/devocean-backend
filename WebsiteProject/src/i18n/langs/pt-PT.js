@@ -91,7 +91,7 @@ units: {
       safari: {
         title: "Tenda Safari",
         short:
-          "Tenda de lona 12 m² em plataforma 3×6 m. Twin/King, ventoinha, tomadas, rede mosquiteira, terraço privado. Casas de banho partilhadas.",
+          "Tenda de lona 12 m² em plataforma 3×6 m. One King or Twin beds, ventoinha, tomadas, rede mosquiteira, terraço privado. Casas de banho partilhadas.",
         details: [
           "Duas camas individuais (ou King) com mesas de cabeceira e candeeiros",
           "Rede mosquiteira • ventoinha potente • tomadas",
@@ -104,7 +104,7 @@ units: {
         short:
           "Tenda de 12 m² com mais privacidade (paredes laterais/traseiras), terraço privado e casa de banho privativa sob teto de colmo.",
         details: [
-          "Configuração Twin/King com iluminação prática",
+          "Configuração One King or Twin beds com iluminação prática",
           "Rede mosquiteira • ventoinha potente • tomadas",
           "Terraço de madeira com cadeiras",
           "Casa de banho privativa (duche, sanita, lavatório) sob teto de colmo",
@@ -124,11 +124,11 @@ units: {
       chalet: {
         title: "Chalé de Colmo",
         short:
-          "Pequeno chalé romântico entre palmeiras. A/C, casa de banho privada, terraço, Twin/King.",
+          "Pequeno chalé romântico entre palmeiras. A/C, casa de banho privada, terraço, One King or Twin beds.",
         details: [
           "Ambiente tranquilo sob palmeiras • ar-condicionado",
           "Casa de banho privativa (duche, lavatório, sanita)",
-          "Camas Twin/King com mesas de cabeceira",
+          "Camas One King or Twin beds com mesas de cabeceira",
           "Terraço privado com cadeiras de palha",
         ],
       },

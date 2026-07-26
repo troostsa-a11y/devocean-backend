@@ -90,7 +90,7 @@ export const L10N = {
   units: {
     safari: {
       title: "Safari Tent",
-      short: "12 m² canvas tent on a 3×6 m platform. Twin/King, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
+      short: "12 m² canvas tent on a 3×6 m platform. One King or Twin beds, fan, power points, mosquito mesh, private terrace. Shared ablutions.",
       details: [
         "Two single beds (or King) with pedestals and shaded lamps",
         "Mosquito mesh on doors/windows • strong fan • power points",
@@ -104,7 +104,7 @@ export const L10N = {
       title: "Comfort Tent",
       short: "Upgraded 12 m² tent with extra privacy (side/back walls), private terrace and your own en-suite bathroom under a thatched roof.",
       details: [
-        "Twin/King bed setup • lamps • convenient light switches",
+        "One King or Twin beds • lamps • convenient light switches",
         "Mosquito mesh • strong fan • power points",
         "Private wood terrace with rolled palm-leaf chairs",
         "At the back: private bathroom (shower, toilet, sink) under a grass-thatched roof",
@@ -126,7 +126,7 @@ export const L10N = {
     },
     chalet: {
       title: "Thatched Chalet",
-      short: "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, Twin/King bed setup.",
+      short: "Secluded, romantic tiny chalet under palms and strelitzia. A/C, private bathroom, terrace, One King or Twin beds.",
       details: [
         "Grass-thatched roof on bluegum poles • autumn-slate floor",
         "Wheatfields-painted walls • tranquil, shaded setting",

@@ -89,7 +89,7 @@ export const L10N = {
   units: {
     safari: {
       title: "Itende leSafari",
-      short: "Itende le-canvas elingu-12 m² esiteji esingu-3×6 m. I-Twin/King, isiphephetha-moya, izintambo zikagesi, inet ye-mosquito, idekhi yangasese.",
+      short: "Itende le-canvas elingu-12 m² esiteji esingu-3×6 m. I-One King or Twin beds, isiphephetha-moya, izintambo zikagesi, inet ye-mosquito, idekhi yangasese.",
       details: [
         "Imibhede emibili eyodwa (noma i-King) enezitebhili eziseceleni nezibane",
         "Inet ye-mosquito • isiphephetha-moya esinamandla • izintambo zikagesi",
@@ -101,7 +101,7 @@ export const L10N = {
       title: "Itende Lokunethezeka",
       short: "Itende elingu-12 m² elinokuvikeleka okwengeziwe (izindonga eziphuma emaceleni/ngemuva), idekhi yangasese kanye nendawo yokugezela yangasese ngaphansi kophahla lwezintende.",
       details: [
-        "Ukusetshenziswa kwe-Twin/King ngezibane ezisebenzayo",
+        "Ukusetshenziswa kwe-One King or Twin beds ngezibane ezisebenzayo",
         "Inet ye-mosquito • isiphephetha-moya esinamandla • izintambo zikagesi",
         "Idekhi yokhuni enezitulo",
         "Indawo yokugezela yangasese (ishawa, indlu yangasese, usinki) ngaphansi kophahla lwezintende",
@@ -119,11 +119,11 @@ export const L10N = {
     },
     chalet: {
       title: "I-Chalet Yezintende",
-      short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. I-A/C, indawo yokugezela yangasese, idekhi, i-Twin/King.",
+      short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. I-A/C, indawo yokugezela yangasese, idekhi, i-One King or Twin beds.",
       details: [
         "Indawo enokuthula ngaphansi kwezihlahla zesundu • i-air conditioning",
         "Indawo yokugezela yangasese (ishawa, usinki, indlu yangasese)",
-        "Imibhede ye-Twin/King enezitebhili eziseceleni",
+        "Imibhede ye-One King or Twin beds enezitebhili eziseceleni",
         "Idekhi yangasese enezitulo zezintende zephamu",
       ],
     },

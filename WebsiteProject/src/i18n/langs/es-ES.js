@@ -132,7 +132,7 @@ units: {
       safari: {
         title: "Tienda Safari",
         short:
-          "Tienda de lona 12 m² en plataforma 3×6 m. Twin/King, ventilador, enchufes, mosquitera, terraza privada. Baños compartidos.",
+          "Tienda de lona 12 m² en plataforma 3×6 m. One King or Twin beds, ventilador, enchufes, mosquitera, terraza privada. Baños compartidos.",
         details: [
           "Dos camas individuales (o King) con mesitas de noche y lámparas",
           "Mosquitera • ventilador potente • enchufes",
@@ -145,7 +145,7 @@ units: {
         short:
           "Tienda mejorada de 12 m² con más privacidad (paredes laterales/traseras), terraza privada y baño privado bajo techo de paja.",
         details: [
-          "Configuración Twin/King con iluminación práctica",
+          "Configuración One King or Twin beds con iluminación práctica",
           "Mosquitera • ventilador potente • enchufes",
           "Terraza de madera con sillas",
           "Baño privado (ducha, WC, lavabo) bajo techo de paja",
@@ -165,11 +165,11 @@ units: {
       chalet: {
         title: "Chalet de Paja",
         short:
-          "Pequeño chalet romántico aislado bajo palmeras. A/C, baño privado, terraza, Twin/King.",
+          "Pequeño chalet romántico aislado bajo palmeras. A/C, baño privado, terraza, One King or Twin beds.",
         details: [
           "Entorno tranquilo bajo palmeras • aire acondicionado",
           "Baño privado (ducha, lavabo, WC)",
-          "Camas Twin/King con mesitas de noche",
+          "Camas One King or Twin beds con mesitas de noche",
           "Terraza privada con sillas de hojas de palma",
         ],
       },
