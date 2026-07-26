@@ -15,6 +15,7 @@ export default function LazyImage({
   srcMobile,
   srcWebP,
   srcMobileWebP,
+  srcAvif,
   alt,
   className = '',
   loading = 'lazy',
@@ -42,6 +43,9 @@ export default function LazyImage({
         )}
         {srcMobile && (
           <source media="(max-width: 800px)" type="image/jpeg" srcSet={srcMobile} />
+        )}
+        {srcAvif && (
+          <source type="image/avif" srcSet={srcAvif} />
         )}
         {srcWebP && (
           <source type="image/webp" srcSet={srcWebP} />
@@ -122,7 +126,7 @@ export default function LazyImage({
     ? `transition-opacity duration-300 ${className}`
     : `transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${className}`;
 
-  if (srcMobile || srcWebP) {
+  if (srcMobile || srcWebP || srcAvif) {
     return (
       <picture>
         {mobileWebP && mobileWebP !== placeholder && (
@@ -130,6 +134,9 @@ export default function LazyImage({
         )}
         {mobileSrc && mobileSrc !== placeholder && (
           <source media="(max-width: 800px)" type="image/jpeg" srcSet={mobileSrc} />
+        )}
+        {srcAvif && (
+          <source type="image/avif" srcSet={srcAvif} />
         )}
         {desktopWebP && desktopWebP !== placeholder && (
           <source type="image/webp" srcSet={desktopWebP} />

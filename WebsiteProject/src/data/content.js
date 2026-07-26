@@ -77,6 +77,7 @@ export const HERO_IMAGES = [
     mobile: "/photos/hero01-mobile.jpg",
     desktopWebP: "/photos/hero01.webp",
     mobileWebP: "/photos/hero01-mobile.webp",
+    desktopAvif: "/photos/hero01.avif",
     mobileObjectClass: "object-[65%_center] sm:object-center"
   },
   { 
@@ -84,6 +85,7 @@ export const HERO_IMAGES = [
     mobile: "/photos/hero02-mobile.jpg",
     desktopWebP: "/photos/hero02.webp",
     mobileWebP: "/photos/hero02-mobile.webp",
+    desktopAvif: "/photos/hero02.avif",
     mobileObjectClass: "object-[75%_center] sm:object-[30%_center]"
   },
   { 
@@ -91,6 +93,7 @@ export const HERO_IMAGES = [
     mobile: "/photos/hero03-mobile.jpg",
     desktopWebP: "/photos/hero03.webp",
     mobileWebP: "/photos/hero03-mobile.webp",
+    desktopAvif: "/photos/hero03.avif",
     mobileObjectClass: "object-[45%_center] sm:object-center"
   },
   { 
@@ -98,6 +101,7 @@ export const HERO_IMAGES = [
     mobile: "/photos/hero04-mobile.jpg",
     desktopWebP: "/photos/hero04.webp",
     mobileWebP: "/photos/hero04-mobile.webp",
+    desktopAvif: "/photos/hero04.avif",
     mobileObjectClass: "object-[70%_center] sm:object-center"
   },
   { 
@@ -105,6 +109,7 @@ export const HERO_IMAGES = [
     mobile: "/photos/hero05-mobile.jpg",
     desktopWebP: "/photos/hero05.webp",
     mobileWebP: "/photos/hero05-mobile.webp",
+    desktopAvif: "/photos/hero05.avif",
     mobileObjectClass: "object-[87%_center] sm:object-center"
   },
 ];

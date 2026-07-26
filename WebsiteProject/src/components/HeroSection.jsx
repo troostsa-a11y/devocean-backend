@@ -170,6 +170,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           const srcMobile = typeof img === 'object' ? img.mobile : undefined;
           const srcWebP = typeof img === 'object' ? img.desktopWebP : undefined;
           const srcMobileWebP = typeof img === 'object' ? img.mobileWebP : undefined;
+          const srcAvif = typeof img === 'object' ? img.desktopAvif : undefined;
           const isFirst = i === 0;
           return (
             <div
@@ -184,9 +185,10 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
                   srcMobile={srcMobile}
                   srcWebP={srcWebP}
                   srcMobileWebP={srcMobileWebP}
+                  srcAvif={srcAvif}
                   alt={`Hero slide ${i + 1}`}
                   className={`absolute inset-0 w-full h-full object-cover ${img.mobileObjectClass || 'object-center'}`}
-                  loading="eager"
+                  loading={isFirst ? "eager" : "lazy"}
                   fetchpriority={isFirst ? "high" : undefined}
                   isLCP={isFirst}
                   width={1920}
