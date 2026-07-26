@@ -28,7 +28,7 @@ export const UI = {
       ],
       viewMap: "View Interactive Map",
     },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
+    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Online Booking" },
     form: {
       name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
       unitLabel: "My preferred unit is:", 
@@ -100,7 +100,7 @@ export const UI = {
       ],
       viewMap: "View Interactive Map",
     },
-    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Rates & Availability" },
+    contact: { headline: "Contact & Booking", blurb: "Questions, dates, special requests or group bookings – we're happy to help.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Online Booking" },
     form: {
       name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
       unitLabel: "My preferred unit is:", 
@@ -171,7 +171,7 @@ export const UI = {
       ],
       viewMap: "Ver mapa interativo",
     },
-    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Tarifas e disponibilidade" },
+    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Reserva online" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessado em ficar:", checkin: "De (check-in)", checkout: "Até (checkout)",
       unitLabel: "A minha unidade preferida é:",
@@ -243,7 +243,7 @@ export const UI = {
       ],
       viewMap: "Ver mapa interativo",
     },
-    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Tarifas e disponibilidade" },
+    contact: { headline: "Contacto e reserva", blurb: "Perguntas, datas, pedidos especiais ou reservas de grupo – estamos felizes em ajudar.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Reserva online" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessado em ficar:", checkin: "De (check-in)", checkout: "Até (checkout)",
       unitLabel: "A minha unidade preferida é:",
@@ -355,7 +355,7 @@ export const UI = {
       ],
       viewMap: "Bekijk interactieve kaart",
     },
-    contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Tarieven & Beschikbaarheid" },
+    contact: { headline: "Contact & Boeking", blurb: "Vragen, data, speciale verzoeken of groepen – we helpen graag.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Online boeken" },
     form: {
       name: "Naam", email: "E-mail", stayLabel: "Geïnteresseerd in verblijf:", checkin: "Van", checkout: "Tot",
       unitLabel: "Mijn voorkeur gaat uit naar:",
@@ -518,7 +518,7 @@ export const UI = {
       call: "WhatsApp",
       email: "E-mail",
       directions: "Itinéraire",
-      bookNow: "Tarifs & Disponibilité"
+      bookNow: "Réservation en ligne"
     },
     form: {
       name: "Nom",
@@ -642,7 +642,7 @@ export const UI = {
       ],
       viewMap: "Visualizza mappa interattiva",
     },
-    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "WhatsApp", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
+    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "WhatsApp", email: "E-mail", directions: "Indicazioni", bookNow: "Prenota online" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessato a soggiornare:", checkin: "Dal", checkout: "Al",
       unitLabel: "La mia sistemazione preferita è:",
@@ -754,7 +754,7 @@ export const UI = {
       ],
       viewMap: "Interaktive Karte anzeigen",
     },
-    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "WhatsApp", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
+    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "WhatsApp", email: "E-Mail", directions: "Anfahrt", bookNow: "Online buchen" },
     form: {
       name: "Name", email: "E-Mail", stayLabel: "Interessiert an einem Aufenthalt:", checkin: "Von", checkout: "Bis",
       unitLabel: "Meine bevorzugte Unterkunft ist:",
@@ -866,7 +866,7 @@ export const UI = {
       ],
       viewMap: "Ver mapa interactivo",
     },
-    contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "WhatsApp", email: "Correo", directions: "Cómo llegar", bookNow: "Tarifas & Disponibilidad" },
+    contact: { headline: "Contacto & Reservas", blurb: "Preguntas, fechas, solicitudes especiales o grupos – estaremos encantados de ayudarte.", call: "WhatsApp", email: "Correo", directions: "Cómo llegar", bookNow: "Reserva en línea" },
     form: {
       name: "Nombre", email: "Correo", stayLabel: "Interesado en alojarse:", checkin: "Desde", checkout: "Hasta",
       unitLabel: "Mi alojamiento preferido es:",
@@ -938,7 +938,7 @@ export const UI = {
       ],
       viewMap: "Visa interaktiv karta",
     },
-    contact: { headline: "Kontakta oss", blurb: "Frågor? Vi finns här för att hjälpa dig. Hör av dig så svarar vi så snart som möjligt.", call: "WhatsApp", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka nu" },
+    contact: { headline: "Kontakta oss", blurb: "Frågor? Vi finns här för att hjälpa dig. Hör av dig så svarar vi så snart som möjligt.", call: "WhatsApp", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka online" },
     form: {
       name: "Ditt namn", email: "E-postadress", stayLabel: "Intresserad av vistelse:", checkin: "Från", checkout: "Till",
       unitLabel: "Min föredragna enhet är:",
@@ -1010,7 +1010,7 @@ export const UI = {
       ],
       viewMap: "Zobacz interaktywną mapę",
     },
-    contact: { headline: "Kontakt i rezerwacje", blurb: "Pytania, daty, specjalne życzenia lub rezerwacje grupowe – chętnie pomożemy.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Ceny i dostępność" },
+    contact: { headline: "Kontakt i rezerwacje", blurb: "Pytania, daty, specjalne życzenia lub rezerwacje grupowe – chętnie pomożemy.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Rezerwacja online" },
     form: {
       name: "Imię", email: "E-mail", stayLabel: "Zainteresowany pobytem:", checkin: "Od (zameldowanie)", checkout: "Do (wymeldowanie)",
       unitLabel: "Preferowana jednostka to:",
@@ -1123,7 +1123,7 @@ export const UI = {
       ],
       viewMap: "インタラクティブマップを表示",
     },
-    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
+    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
     form: {
       name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
       unitLabel: "好みのユニット：",
@@ -1194,7 +1194,7 @@ export const UI = {
       ],
       viewMap: "查看互动地图",
     },
-    contact: { headline: "联系方式与预订", blurb: "如有疑问、日期、特殊要求或团体预订，我们乐意为您提供帮助。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "价格与空房情况" },
+    contact: { headline: "联系方式与预订", blurb: "如有疑问、日期、特殊要求或团体预订，我们乐意为您提供帮助。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "在线预订" },
     form: {
       name: "姓名", email: "电子邮件", stayLabel: "有兴趣入住：", checkin: "从", checkout: "到", 
       unitLabel: "我偏好的单位是：",
@@ -1266,7 +1266,7 @@ export const UI = {
       ],
       viewMap: "Посмотреть интерактивную карту",
     },
-    contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Цены и наличие" },
+    contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Онлайн-бронирование" },
     form: {
       name: "Имя", email: "Электронная почта", stayLabel: "Заинтересованы в проживании:", checkin: "С", checkout: "До", 
       unitLabel: "Предпочитаемый тип номера:",
@@ -1342,7 +1342,7 @@ export const UI = {
     contact: {
       headline: "Kontak en Bespreking",
       blurb: "Vrae, datums, spesiale versoeke of groepbesprekings — ons help graag.",
-      call: "WhatsApp", email: "E-pos", directions: "Aanwysings", bookNow: "Tariewe en beskikbaarheid",
+      call: "WhatsApp", email: "E-pos", directions: "Aanwysings", bookNow: "Online bespreking",
     },
     form: {
       name: "Naam", email: "E-pos", stayLabel: "Belangstel in verblyf:", checkin: "Van", checkout: "Tot",
@@ -1414,7 +1414,7 @@ export const UI = {
     contact: {
       headline: "Xhumana kanye nokubhuka",
       blurb: "Imibuzo, izinsuku, izicelo ezikhethekile noma ukubhuka kweqembu - siyajabula ukusiza.",
-      call: "WhatsApp", email: "I-imeyili", directions: "Izinkomba zokuya", bookNow: "Amanani kanye nokutholakala",
+      call: "WhatsApp", email: "I-imeyili", directions: "Izinkomba zokuya", bookNow: "Bhuka online",
     },
     form: {
       name: "Igama", email: "I-imeyili", stayLabel: "Ujabulele ukuhlala:", checkin: "Usuku lokungena", checkout: "Usuku lokuphuma",
@@ -1481,7 +1481,7 @@ export const UI = {
       ],
       viewMap: "Tazama ramani inayofanya kazi",
     },
-    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Weka nafasi sasa" },
+    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Buki mtandaoni" },
     form: {
       name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
       units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],
@@ -2034,7 +2034,7 @@ export const L10N = {
       ],
       viewMap: "インタラクティブマップを表示",
     },
-    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
+    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
     form: {
       name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
       unitLabel: "好みのユニット：",
@@ -2144,7 +2144,7 @@ export const L10N = {
       ],
       viewMap: "查看互动地图",
     },
-    contact: { headline: "联系与预订", blurb: "有疑问、日期、特殊要求或团体预订 - 我们很乐意帮助。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "价格与空房情况" },
+    contact: { headline: "联系与预订", blurb: "有疑问、日期、特殊要求或团体预订 - 我们很乐意帮助。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "在线预订" },
     form: {
       name: "姓名", email: "电子邮件", stayLabel: "有意住宿：", checkin: "入住日期", checkout: "退房日期", 
       unitLabel: "我偏好的房间类型：",
@@ -2265,7 +2265,7 @@ export const L10N = {
       ],
       viewMap: "Посмотреть интерактивную карту",
     },
-    contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Цены и наличие" },
+    contact: { headline: "Контакты и бронирование", blurb: "Вопросы, даты, особые пожелания или групповые бронирования — мы рады помочь.", call: "WhatsApp", email: "Электронная почта", directions: "Как добраться", bookNow: "Онлайн-бронирование" },
     form: {
       name: "Имя", email: "Электронная почта", stayLabel: "Заинтересованы в проживании:", checkin: "С", checkout: "До", 
       unitLabel: "Предпочитаемый тип номера:",
@@ -2444,7 +2444,7 @@ export const L10N = {
       ],
       viewMap: "Tazama ramani inayofanya kazi",
     },
-    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Weka nafasi sasa" },
+    contact: { headline: "Wasiliana na Uwekaji Nafasi", blurb: "Maswali, tarehe, maombi ya pekee au uwekaji nafasi wa kikundi - tunafurahi kusaidia.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Buki mtandaoni" },
     form: {
       name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
       units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],

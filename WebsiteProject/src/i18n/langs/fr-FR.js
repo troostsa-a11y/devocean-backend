@@ -123,7 +123,7 @@ menu: "Menu",
       call: "WhatsApp",
       email: "E-mail",
       directions: "Itinéraire",
-      bookNow: "Tarifs & Disponibilité"
+      bookNow: "Réservation en ligne"
     },
     form: {
       name: "Nom",

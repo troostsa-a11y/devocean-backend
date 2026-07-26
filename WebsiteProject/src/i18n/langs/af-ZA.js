@@ -32,7 +32,7 @@ menu: "Kieslys",
     contact: {
       headline: "Kontak en Navrae",
       blurb: "Vir onmiddellike beskikbaarheid en bevestigde pryse, bespreek aanlyn.", formHint: "Gebruik hierdie vorm vir groepe, vervoer of spesiale versoeke.",
-      call: "WhatsApp", email: "E-pos", directions: "Aanwysings", bookNow: "Tariewe en beskikbaarheid",
+      call: "WhatsApp", email: "E-pos", directions: "Aanwysings", bookNow: "Online bespreking",
     },
     form: {
       name: "Naam", email: "E-pos", stayLabel: "Belangstel in verblyf:", checkin: "Van", checkout: "Tot",

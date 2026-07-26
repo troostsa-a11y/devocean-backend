@@ -26,7 +26,7 @@ export const UI = {
     ],
     viewMap: "Tazama ramani inayofanya kazi",
   },
-  contact: { headline: "Mawasiliano na Maombi", blurb: "Kwa upatikanaji wa haraka na bei zilizothibitishwa, weka nafasi mtandaoni.", formHint: "Tumia fomu hii kwa vikundi, usafiri au maombi maalum.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Weka nafasi sasa" },
+  contact: { headline: "Mawasiliano na Maombi", blurb: "Kwa upatikanaji wa haraka na bei zilizothibitishwa, weka nafasi mtandaoni.", formHint: "Tumia fomu hii kwa vikundi, usafiri au maombi maalum.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Buki mtandaoni" },
   form: {
     name: "Jina", email: "Barua pepe", stayLabel: "Unavutiwa na kukaa:", checkin: "Tarehe ya kuingia", checkout: "Tarehe ya kutoka", unitLabel: "Aina ya chumba ninayopendelea:", message: "Ujumbe", send: "Tuma", consent: "Kwa kutuma, unakubali tuwasiliane nawe kuhusu swali lako.", phName: "Jina lako", phEmail: "your@email.com", phMsg: "Tuambie zaidi kuhusu maombi yako...", success: "Asante! Ujumbe wako umetumwa. Angalia barua pepe yako kwa uthibitisho.",
     units: ["Hema la Safari - bafuni ya pamoja", "Hema la Starehe - bafuni ya faragha", "Nyumba ya Bustani - kiyoyozi cha inverter", "Chalet ya Nyasi - kiyoyozi cha inverter"],

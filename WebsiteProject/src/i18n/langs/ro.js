@@ -26,7 +26,7 @@ export const UI = {
     ],
     viewMap: "Vezi harta interactivă",
   },
-  contact: { headline: "Contact și solicitări", blurb: "Pentru disponibilitate imediată și prețuri confirmate, rezervați online.", formHint: "Folosiți acest formular pentru grupuri, transferuri sau cereri speciale.", call: "WhatsApp", email: "E-mail", directions: "Indicații rutiere", bookNow: "Tarife și disponibilitate" },
+  contact: { headline: "Contact și solicitări", blurb: "Pentru disponibilitate imediată și prețuri confirmate, rezervați online.", formHint: "Folosiți acest formular pentru grupuri, transferuri sau cereri speciale.", call: "WhatsApp", email: "E-mail", directions: "Indicații rutiere", bookNow: "Rezervare online" },
   form: {
     name: "Nume", email: "E-mail", stayLabel: "Interesat de cazarea:", checkin: "De la (check-in)", checkout: "Până la (check-out)",
     unitLabel: "Unitatea preferată este:",

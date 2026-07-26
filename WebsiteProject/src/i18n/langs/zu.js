@@ -31,7 +31,7 @@ export const UI = {
   contact: {
     headline: "Xhumana kanye nezicelo",
     blurb: "Ukuthola ukutholakala ngokushesha kanye namanani aqinisekisiwe, bhuka online.", formHint: "Sebenzisa le fomu yamaklabhu, ukudluliselwa noma izicelo ezikhethekile.",
-    call: "WhatsApp", email: "I-imeyili", directions: "Izinkomba zokuya", bookNow: "Amanani kanye nokutholakala",
+    call: "WhatsApp", email: "I-imeyili", directions: "Izinkomba zokuya", bookNow: "Bhuka online",
   },
   form: {
     name: "Igama", email: "I-imeyili", stayLabel: "Ujabulele ukuhlala:", checkin: "Usuku lokungena", checkout: "Usuku lokuphuma",
