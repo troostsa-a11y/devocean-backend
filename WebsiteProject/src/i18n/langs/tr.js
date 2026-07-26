@@ -38,6 +38,7 @@ export const UI = {
         "Sağ tarafta sadece 100 metre sonra bizi bulacaksınız.",
       ],
       note: "DEVOCEAN Lodge her türlü araba ve motosiklet için ulaşılabilirdir.",
+      transport: "Lodge ile toplu taşıma durağı arasındaki mesafe kısa bir yürüyüş veya yalnızca 150 metredir.",
     },
   },
   contact: { headline: "İletişim ve Talepler", blurb: "Anlık müsaitlik ve garantili fiyatlar için sayfanın üstündeki Online rezervasyon düğmesine tıklayın.", formHint: "Bu formu gruplar, transferler veya özel talepler için kullanın.", call: "WhatsApp", email: "E-posta", directions: "Yol Tarifi", bookNow: "Online rezervasyon" },

@@ -41,6 +41,7 @@ menu: "Kieslys",
           "Jy sal ons vind na slegs 100 meter aan die regterkant.",
         ],
         note: "DEVOCEAN Lodge is toeganklik vir alle soorte motors en motorfietse.",
+        transport: "Die afstand tussen die Lodge en die Openbare Vervoer-halte is 'n kort stappie of slegs 150 meter.",
       },
     },
     contact: {

@@ -128,6 +128,7 @@ menu: "Menu",
           "Vous nous trouverez après seulement 100 mètres sur la droite.",
         ],
         note: "Le DEVOCEAN Lodge est accessible à tous les types de voitures et de motos.",
+        transport: "La distance entre le Lodge et la station de Transport en Commun est une courte marche ou seulement 150 mètres.",
       },
     },
     contact: {

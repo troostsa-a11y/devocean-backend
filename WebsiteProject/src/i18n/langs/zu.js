@@ -40,6 +40,7 @@ export const UI = {
         "Uzosithola emva kwamamamitha ayi-100 ngakwesokundla.",
       ],
       note: "I-DEVOCEAN Lodge ifinyeleka ezinhlobonhlobo zamagalelo nemoto ezincane.",
+      transport: "Ibanga phakathi kwe-Lodge nesiteshi seziNdlela zoMphakathi siyimizi emifushane noma amamamitha ayi-150 kuphela.",
     },
   },
   contact: {

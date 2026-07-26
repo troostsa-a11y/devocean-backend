@@ -38,6 +38,7 @@ export const UI = {
         "Znajdziesz nas po zaledwie 100 metrach po prawej stronie.",
       ],
       note: "DEVOCEAN Lodge jest dostępny dla wszystkich rodzajów samochodów i motocykli.",
+      transport: "Odległość między Lodge a przystankiem komunikacji publicznej to krótki spacer lub tylko 150 metrów.",
     },
   },
   contact: { headline: "Kontakt i zapytania", blurb: "W sprawie natychmiastowej dostępności i gwarantowanych cen kliknij przycisk Rezerwacja online na górze strony.", formHint: "Ten formularz służy do rezerwacji grupowych, transferów lub specjalnych życzeń.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Rezerwacja online" },

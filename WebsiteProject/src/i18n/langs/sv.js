@@ -38,6 +38,7 @@ export const UI = {
         "Du hittar oss efter bara 100 meter på höger sida.",
       ],
       note: "DEVOCEAN Lodge är tillgängligt för alla typer av bilar och motorcyklar.",
+      transport: "Avståndet mellan Lodget och hållplatsen för kollektivtrafik är en kort promenad eller bara 150 meter.",
     },
   },
   contact: { headline: "Kontakt & Förfrågningar", blurb: "För omedelbar tillgänglighet och garanterade priser, klicka på knappen Boka online längst upp på sidan.", formHint: "Använd detta formulär för grupper, transfer eller särskilda önskemål.", call: "WhatsApp", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka online" },

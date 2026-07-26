@@ -38,6 +38,7 @@ export const UI = {
         "Ne veți găsi după doar 100 de metri pe dreapta.",
       ],
       note: "DEVOCEAN Lodge este accesibil pentru toate tipurile de mașini și motociclete.",
+      transport: "Distanța dintre Lodge și stația de Transport Public este o scurtă plimbare sau doar 150 de metri.",
     },
   },
   contact: { headline: "Contact și solicitări", blurb: "Pentru disponibilitate imediată și prețuri garantate, faceți clic pe butonul Rezervare online din partea de sus a paginii.", formHint: "Folosiți acest formular pentru grupuri, transferuri sau cereri speciale.", call: "WhatsApp", email: "E-mail", directions: "Indicații rutiere", bookNow: "Rezervare online" },

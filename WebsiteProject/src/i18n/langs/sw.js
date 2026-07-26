@@ -38,6 +38,7 @@ export const UI = {
         "Utupata baada ya mita 100 tu upande wa kulia.",
       ],
       note: "DEVOCEAN Lodge inaweza kufikiwa na aina zote za magari na pikipiki.",
+      transport: "Umbali kati ya Lodge na kituo cha usafiri wa umma ni matembezi mafupi au mita 150 tu.",
     },
   },
   contact: { headline: "Mawasiliano na Maombi", blurb: "Kwa upatikanaji wa haraka na bei zilizohakikishiwa, bonyeza kitufe cha Buki mtandaoni juu ya ukurasa.", formHint: "Tumia fomu hii kwa vikundi, usafiri au maombi maalum.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Buki mtandaoni" },

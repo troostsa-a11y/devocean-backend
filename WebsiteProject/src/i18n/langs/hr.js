@@ -38,6 +38,7 @@ export const UI = {
         "Naći ćete nas nakon samo 100 metara s desne strane.",
       ],
       note: "DEVOCEAN Lodge je dostupan za sve vrste automobila i motocikala.",
+      transport: "Udaljenost između Lodgea i stanice javnog prijevoza je kratka šetnja ili samo 150 metara.",
     },
   },
   contact: { headline: "Kontakt i upiti", blurb: "Za trenutnu dostupnost i zajamčene cijene, kliknite na gumb Online rezervacija na vrhu stranice.", formHint: "Koristite ovaj obrazac za grupe, transfere ili posebne zahtjeve.", call: "WhatsApp", email: "Imejl", directions: "Uputstva za put", bookNow: "Online rezervacija" },
