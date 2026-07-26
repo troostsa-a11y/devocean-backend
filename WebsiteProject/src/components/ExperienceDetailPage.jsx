@@ -27,12 +27,11 @@ const contentGetterNames = {
   surfing: 'getSurfingContent'
 };
 
-export default function ExperienceDetailPage({ units, experiences, ui, lang, currency, bookUrl }) {
+export default function ExperienceDetailPage({ units, experiences, ui, lang, currency }) {
   const [match, params] = useRoute('/experiences/:key');
   const experienceKey = params?.key;
   const [contentModule, setContentModule] = useState(null);
   const [isLoadingContent, setIsLoadingContent] = useState(true);
-  const [showStickyBar, setShowStickyBar] = useState(false);
   
   // Get base experience data (hero image, etc.)
   const baseExp = EXPERIENCE_DETAILS[experienceKey];
@@ -219,12 +218,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [experienceKey]);
 
-  // Show sticky CTA bar after scrolling past the hero
-  useEffect(() => {
-    const handleScroll = () => setShowStickyBar(window.scrollY > 200);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   if (!exp) {
     return (
