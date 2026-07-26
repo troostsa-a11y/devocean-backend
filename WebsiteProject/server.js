@@ -722,6 +722,7 @@ app.use(async (req, res, next) => {
     res
       .status(200)
       .set('Content-Type', 'text/html')
+      .set('Cache-Control', 'no-store')
       .end(html.replace('<head>', `<head>${injection}`));
   } catch (e) {
     vite.ssrFixStacktrace?.(e);
