@@ -5,6 +5,7 @@ import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
 import { updateMetaDescription, updateCanonical, updateTwitterCard } from '../utils/seoMeta';
+import MarinPanel from './MarinPanel';
 
 // Dynamic content loaders - each experience content is loaded on demand
 const contentLoaders = {
@@ -683,19 +684,8 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                 return getExpText(ctaMap[experienceKey] || 'generalCta', lang);
               })()}
             </p>
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-white/80 text-sm font-medium">Need help? Ask Marin</span>
-              <button
-                type="button"
-                onClick={() => window.dvAsk?.()}
-                aria-label="Ask Marin"
-                className="w-12 h-12 rounded-full inline-flex items-center justify-center flex-shrink-0 transition-all hover:brightness-110"
-                style={{ background: '#f97316', border: 'none', cursor: 'pointer', boxShadow: '0 4px 16px rgba(249,115,22,.4)' }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                </svg>
-              </button>
+            <div className="flex justify-center">
+              <MarinPanel context={`Experience page: ${exp.title}`} />
             </div>
           </div>
 
