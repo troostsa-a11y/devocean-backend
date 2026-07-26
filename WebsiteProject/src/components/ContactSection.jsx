@@ -175,6 +175,19 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
             </a>
           </div>
 
+          {/* How to find us */}
+          {ui.location?.howToFind && (
+            <div className="mt-6">
+              <h3 className="font-semibold text-slate-800 mb-2">{ui.location.howToFind.heading}</h3>
+              <ol className="space-y-1 text-slate-700 list-decimal list-inside">
+                {ui.location.howToFind.steps.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ol>
+              <p className="mt-3 text-slate-600 text-sm italic">{ui.location.howToFind.note}</p>
+            </div>
+          )}
+
           {/* Socials */}
           <div className="mt-6 flex flex-wrap gap-2 md:gap-3 max-w-full">
             {SOCIAL_LINKS.map((S) => {
