@@ -687,42 +687,9 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
             </div>
           </div>
 
-          {/* Cross-promotion: Book Your Stay */}
-          <div className="mt-8 bg-white/10 rounded-xl p-6 backdrop-blur-sm">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
-              <div className="flex-1">
-                <p className="text-white/90 text-sm">
-                  {getExpText('needAccommodation', lang)}
-                </p>
-              </div>
-              <a
-                href={bookUrl}
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-white text-[#9e4b13] font-semibold hover:bg-slate-100 transition-colors whitespace-nowrap"
-                data-testid="link-book-stay-from-experience"
-              >
-                {ui?.hero?.ctaPrimary || 'Book your stay'}
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
       
-      {/* Sticky booking bar — appears after scrolling past hero */}
-      <div
-        className={`fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200 shadow-lg transition-transform duration-300 ${showStickyBar ? 'translate-y-0' : 'translate-y-full'}`}
-      >
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 py-3">
-          <span className="text-slate-700 font-semibold text-sm hidden sm:block truncate">
-            {exp.title}
-          </span>
-          <div className="flex items-center gap-3 w-full sm:w-auto">
-          </div>
-        </div>
-      </div>
-
       {/* Footer */}
       <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
     </>
