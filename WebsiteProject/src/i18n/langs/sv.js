@@ -125,7 +125,7 @@ export const L10N = {
     safari: { title: "Landsafaris", desc: "Buskeventyr inom kort avstånd." },
     fishing: { title: "Strand- & Havsfiske", desc: "Från kustmetning till offshore-charter." },
     surfing:   { title: "Surfbrädor & Lektioner",              desc: "Fånga en våg eller lär dig grunderna." },
-    malongane: { title: "Strandpromenad till Ponta Malongane", desc: "Orörd strand 15 min norrut — utmärkt snorkling och få besökare." },
+    malongane: { title: "Strandpromenad till Ponta Malongane", desc: "8 km strandpromenad norrut till Malongane (≈2 tim) — Campismo Nino halvvägs med utsikt, paragliding vid Sky Island, pubar Drunken Clam & Sunset Shack. Återvänd längs stranden eller med 4×4." },
     quad:      { title: "Quad-uthyrning",                      desc: "Utforska dyner och skogsstigar på quad — uthyrning tillgänglig i byn." },
   }
 }

@@ -83,7 +83,7 @@ export const L10N = {
     safari: { title: "Kara Safarisi", desc: "Kısa sürüşle savan macerası." },
     fishing: { title: "Kıyı ve Derin Deniz Balıkçılığı", desc: "Plajdan atmadan derin deniz çarterlerine kadar." },
     surfing:   { title: "Sörf ve Dersler",                   desc: "Bir dalga yakalayın veya temelleri öğrenin." },
-    malongane: { title: "Ponta Malongane Sahil Yürüyüşü",  desc: "15 dk kuzeyde el değmemiş plaj — harika şnorkel ve çok az ziyaretçi." },
+    malongane: { title: "Ponta Malongane Sahil Yürüyüşü",  desc: "Malongane'ye 8 km sahil yürüyüşü (≈2 saat) — yarı yolda manzaralı Campismo Nino, Sky Island'da yamaç paraşütü, Drunken Clam & Sunset Shack barları. Plajdan veya 4×4 yoluyla dönüş." },
     quad:      { title: "Quad Kiralama",                    desc: "Kumulları ve orman patikalarını quad ile keşfedin — kiralama köyde mevcut." },
   }
 }

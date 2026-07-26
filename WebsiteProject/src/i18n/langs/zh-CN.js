@@ -125,7 +125,7 @@ menu: "菜单",
       safari: { title: "陆地探险", desc: "附近的丛林冒险。" },
       fishing: { title: "海滩和船钓", desc: "从岸边垂钓到近海包船。" },
       surfing:   { title: "冲浪板和课程",                    desc: "冲浪或学习基础知识。" },
-      malongane: { title: "蓬塔马隆加内海滩步行",          desc: "北部15分钟的原始海滩 — 绝佳浮潜体验，游客极少。" },
+      malongane: { title: "蓬塔马隆加内海滩步行",          desc: "沿海滩向北步行8公里至马隆加内（约2小时）—— 中途Campismo Nino餐厅赏景，Sky Island滑翔伞，Drunken Clam & Sunset Shack酒吧。沿滩返回或乘4×4越野车。" },
       quad:      { title: "越野摩托车租赁",                desc: "骑越野车探索沙丘和森林小径 — 村内可租赁。" },
     },
     todo: {

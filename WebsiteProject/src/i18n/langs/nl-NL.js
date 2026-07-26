@@ -166,7 +166,7 @@ units: {
       safari: { title: "Wildsafari's", desc: "Bosavonturen op korte rijafstand." },
       fishing: { title: "Strand & Zeevissen", desc: "Van kustworpen tot offshore charters." },
       surfing:   { title: "Surfplanken & Lessen",              desc: "Pak een golf of leer de basis." },
-      malongane: { title: "Strandwandeling naar Ponta Malongane", desc: "Ongerepte kustlijn 15 min noordwaarts — geweldig snorkelen en bijna geen toeristen." },
+      malongane: { title: "Strandwandeling naar Ponta Malongane", desc: "8 km strandwandeling naar Malongane (≈2 uur) — Campismo Nino halverwege met uitzicht, paragliden bij Sky Island, pubs Drunken Clam & Sunset Shack. Terug via strand of 4×4." },
       quad:      { title: "Quad-verhuur",                     desc: "Verken duinen en bospaden op een quad — verhuur beschikbaar in het dorp." },
     },
 };

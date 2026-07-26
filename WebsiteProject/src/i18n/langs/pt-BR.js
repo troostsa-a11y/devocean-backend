@@ -122,7 +122,7 @@ export const L10N = {
     safari: { title: "Safáris Terrestres", desc: "Aventuras no mato a curta distância." },
     fishing: { title: "Pesca de Praia e Alto-mar", desc: "Do lançamento na praia aos charters offshore." },
     surfing:   { title: "Pranchas & Aulas de Surf",            desc: "Aproveite as ondas ou aprenda o básico." },
-    malongane: { title: "Caminhada à Praia de Ponta Malongane", desc: "Praia intocada a 15 min ao norte — ótimo snorkeling e muito menos visitantes." },
+    malongane: { title: "Caminhada à Praia de Ponta Malongane", desc: "8 km de caminhada pela praia até Malongane (≈2h) — Campismo Nino a meio do caminho com vista, parapente na Sky Island, pubs Drunken Clam & Sunset Shack. Retorno pela praia ou de 4×4." },
     quad:      { title: "Aluguel de Quads",                  desc: "Explore as dunas e trilhas florestais de quad — disponível na vila." },
   },
 };

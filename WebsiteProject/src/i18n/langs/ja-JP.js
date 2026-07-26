@@ -164,7 +164,7 @@ nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "�
       safari: { title: "ランドサファリ", desc: "近くでのブッシュアドベンチャー。" },
       fishing: { title: "ビーチ＆ボートフィッシング", desc: "岸からのキャスティングから沖合のチャーターまで。" },
       surfing:   { title: "サーフボード＆レッスン",              desc: "波に乗るか、基礎を学ぶ。" },
-      malongane: { title: "ポンタ・マロンガネ・ビーチウォーク", desc: "15分北の手つかずのビーチ — 優れたシュノーケリングと観光客が少ない。" },
+      malongane: { title: "ポンタ・マロンガネ・ビーチウォーク", desc: "北へ8kmのビーチウォークでマロンガネへ（約2時間）。中間地点のCampismo Ninoで絶景、Sky Islandでパラグライダー、Drunken Clam＆Sunset Shackバー。ビーチまたは4×4で帰路。" },
       quad:      { title: "クワッドバイクレンタル",            desc: "砂丘と森の道をクワッドバイクで探索 — 村でレンタル可能。" },
     },
     todo: {

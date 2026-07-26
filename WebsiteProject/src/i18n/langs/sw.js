@@ -88,7 +88,7 @@ export const L10N = {
     safari: { title: "Safari za Nchi Kavu", desc: "Matukio ya msituni kwa safari fupi ya gari." },
     fishing: { title: "Uvuvi wa Ufukweni na Bahari ya Kina", desc: "Kutoka kwa kurusha kwenye ufukwe hadi safari za bahari ya kina." },
     surfing:   { title: "Mbao za Kuteleza na Mafunzo",       desc: "Shika mawimbi au jifunze misingi." },
-    malongane: { title: "Matembezi ya Ponta Malongane",     desc: "Pwani nzuri km 15 kaskazini — kuogelea bora na wageni wachache." },
+    malongane: { title: "Matembezi ya Ponta Malongane",     desc: "Matembezi ya km 8 pwani hadi Malongane (≈masaa 2) — Campismo Nino nusu ya njia kwa mandhari, paragliding Sky Island, baa Drunken Clam & Sunset Shack. Rudi pwani au 4×4." },
     quad:      { title: "Kukodisha Quad Bike",              desc: "Chunguza mchanga na njia za msitu kwa quad — kukodisha kunapatikana kijijini." },
   }
 }

@@ -166,7 +166,7 @@ units: {
       safari: { title: "Safari Terrestri", desc: "Avventure nel bush a breve distanza." },
       fishing: { title: "Pesca da Spiaggia e d'Altura", desc: "Dai lanci costieri ai charter offshore." },
       surfing:   { title: "Tavole & Lezioni di Surf",          desc: "Prendi un'onda o impara le basi." },
-      malongane: { title: "Passeggiata a Ponta Malongane",    desc: "Spiaggia incontaminata a 15 min a nord — ottimo snorkeling e pochi visitatori." },
+      malongane: { title: "Passeggiata a Ponta Malongane",    desc: "8 km di cammino sulla spiaggia fino a Malongane (≈2h) — Campismo Nino a metà strada con vista, parapendio a Sky Island, pub Drunken Clam & Sunset Shack. Ritorno in spiaggia o in 4×4." },
       quad:      { title: "Noleggio Quad",                    desc: "Esplora dune e sentieri boschivi in quad — noleggio disponibile nel villaggio." },
     },
 };
