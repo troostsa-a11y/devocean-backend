@@ -527,6 +527,12 @@ async function applyTranslations(lang) {
         }
       }
       
+      // Update hero tagline
+      const taglineEl = document.querySelector('.dl-hero .dl-tagline');
+      if (taglineEl && unitData.heroTagline) {
+        taglineEl.textContent = unitData.heroTagline;
+      }
+
       // Update hero description - support both new and legacy structure
       const subEl = document.querySelector('.dl-hero .dl-sub');
       const descriptionText = unitData.heroDescription || unitData.shortDescription;
