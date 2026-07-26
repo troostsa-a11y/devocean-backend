@@ -41,11 +41,13 @@ export default function ExperiencesSection({ experiences, ui, lang }) {
 
   const makeCardProps = (c) => {
     const hasDetailPage = ['dolphins', 'diving', 'seafari', 'safari', 'fishing', 'surfing'].includes(c.key);
-    const CardWrapper = hasDetailPage ? Link : 'a';
-    const cardProps = hasDetailPage
-      ? { href: `/experiences/${c.key}` }
-      : { href: c.url, target: "_blank", rel: "noopener noreferrer" };
-    return { CardWrapper, cardProps, tags: EXP_TAGS[c.key] || [] };
+    if (hasDetailPage) {
+      return { CardWrapper: Link, cardProps: { href: `/experiences/${c.key}` }, linked: true, tags: EXP_TAGS[c.key] || [] };
+    }
+    if (c.url) {
+      return { CardWrapper: 'a', cardProps: { href: c.url, target: "_blank", rel: "noopener noreferrer" }, linked: true, tags: EXP_TAGS[c.key] || [] };
+    }
+    return { CardWrapper: 'div', cardProps: {}, linked: false, tags: EXP_TAGS[c.key] || [] };
   };
 
   const { CardWrapper: FeaturedWrapper, cardProps: featuredCardProps, tags: featuredTags } = makeCardProps(featured);
@@ -103,12 +105,12 @@ export default function ExperiencesSection({ experiences, ui, lang }) {
           {/* Remaining experiences grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {rest.map((c) => {
-              const { CardWrapper, cardProps, tags } = makeCardProps(c);
+              const { CardWrapper, cardProps, linked, tags } = makeCardProps(c);
               return (
                 <CardWrapper
                   key={c.key}
                   {...cardProps}
-                  className="block rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  className={`block rounded-2xl overflow-hidden border bg-white shadow-sm transition-shadow${linked ? ' hover:shadow-md cursor-pointer' : ''}`}
                   data-testid={`link-experience-${c.key}`}
                 >
                   <div className="h-40 overflow-hidden relative">
