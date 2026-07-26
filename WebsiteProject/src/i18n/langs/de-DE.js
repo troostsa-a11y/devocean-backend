@@ -166,7 +166,7 @@ units: {
       safari: { title: "Land-Safaris", desc: "Buschabenteuer in kurzer Entfernung." },
       fishing: { title: "Strand- & Hochseeangeln", desc: "Von Küstenwürfen bis Offshore-Charters." },
       surfing:   { title: "Surfbretter & Unterricht",       desc: "Erwischen Sie eine Welle oder lernen Sie die Grundlagen." },
-      malongane: { title: "Strandspaziergang nach Ponta Malongane", desc: "8 km Strandwanderung nach Malongane (≈2 Std.) — Campismo Nino auf halbem Weg mit Aussicht, Paragliding auf Sky Island, Pubs Drunken Clam & Sunset Shack. Rückkehr am Strand oder per 4×4." },
+      malongane: { title: "Strandspaziergang nach Ponta Malongane", desc: "Genießen Sie das ländliche Dorf nach einigen Stunden Wanderung am Indischen Ozean entlang. Rückkehr am Strand oder per 4×4." },
       quad:      { title: "Quad-Verleih",                desc: "Dünen und Waldwege auf dem Quad erkunden — Verleih im Dorf verfügbar." },
     },
 };

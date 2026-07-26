@@ -79,7 +79,7 @@ export const L10N = {
     safari: { title: "Safari Lądowe", desc: "Przygody w buszu w niewielkiej odległości." },
     fishing: { title: "Wędkarstwo Przybrzeżne i Głębinowe", desc: "Od rzucania z brzegu po czartery w pełnym morzu." },
     surfing:   { title: "Deski Surfingowe i Lekcje",         desc: "Złap falę lub naucz się podstaw." },
-    malongane: { title: "Spacer na plażę Ponta Malongane",  desc: "8 km spacer plażą do Malongane (≈2 godz.) — Campismo Nino w połowie drogi z widokiem, paralotnia na Sky Island, puby Drunken Clam & Sunset Shack. Powrót plażą lub 4×4." },
+    malongane: { title: "Spacer na plażę Ponta Malongane",  desc: "Odkryj urokliwą wioskę po kilku godzinach spaceru wzdłuż Oceanu Indyjskiego. Powrót plażą lub 4×4." },
     quad:      { title: "Wynajem quadów",                   desc: "Eksploruj wydmy i leśne ścieżki na quadzie — wypożyczalnia w wiosce." },
   }
 }

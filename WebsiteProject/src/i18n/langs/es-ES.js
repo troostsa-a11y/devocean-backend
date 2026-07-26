@@ -167,7 +167,7 @@ units: {
       safari: { title: "Safaris Terrestres", desc: "Aventuras en el monte a corta distancia." },
       fishing: { title: "Pesca de Playa y Altura", desc: "Desde lanzamientos costeros hasta charters offshore." },
       surfing:   { title: "Tablas & Clases de Surf",          desc: "Atrapa una ola o aprende lo básico." },
-      malongane: { title: "Paseo a Ponta Malongane",          desc: "8 km por la playa hasta Malongane (≈2h) — Campismo Nino a mitad de camino con vistas, parapente en Sky Island, pubs Drunken Clam & Sunset Shack. Regreso por la playa o en 4×4." },
+      malongane: { title: "Paseo a Ponta Malongane",          desc: "Disfruta del pueblo rural tras caminar durante horas junto al océano Índico. Regreso por la playa o en 4×4." },
       quad:      { title: "Alquiler de Quads",                desc: "Explora las dunas y senderos forestales en quad — disponible en el pueblo." },
     },
 };

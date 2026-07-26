@@ -122,7 +122,7 @@ units: {
       safari: { title: "Bosveld Safari's", desc: "Bos-avonture naby." },
       fishing: { title: "Strand en Diepsee Visvang", desc: "Van strandgooi tot diepsee charters." },
       surfing:   { title: "Branderplanke & Lesse",             desc: "Vang die golwe of leer die basiese beginsels." },
-      malongane: { title: "Strandstap na Ponta Malongane",    desc: "8 km strandstap noord na Malongane (≈2 uur) — Campismo Nino halfpad met uitsig, paragliding by Sky Island, kroeë Drunken Clam & Sunset Shack. Terug per strand of 4×4." },
+      malongane: { title: "Strandstap na Ponta Malongane",    desc: "Geniet die landelike dorp na 'n paar uur se stap langs die Indiese Oseaan. Terug per strand of 4×4." },
       quad:      { title: "Quad-fiets verhuur",               desc: "Verken duine en bosroetes op 'n quad-fiets — huur beskikbaar in die dorp." },
     },
 };

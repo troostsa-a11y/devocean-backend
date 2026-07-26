@@ -126,7 +126,7 @@ units: {
       safari: { title: "Safáris Terrestres", desc: "Aventuras no mato a curta distância." },
       fishing: { title: "Pesca de Praia e Alto-mar", desc: "Do lançamento na praia aos charters offshore." },
       surfing:   { title: "Pranchas & Aulas de Surf",            desc: "Aproveite as ondas ou aprenda o básico." },
-      malongane: { title: "Caminhada à Praia de Ponta Malongane", desc: "8 km de caminhada pela praia até Malongane (≈2h) — Campismo Nino a meio com vistas deslumbrantes, parapente na Sky Island, pubs Drunken Clam & Sunset Shack. Regresso pela praia ou de 4×4." },
+      malongane: { title: "Caminhada à Praia de Ponta Malongane", desc: "Desfrute da aldeia rural após algumas horas a caminhar a par com o Oceano Índico. Regresso pela praia ou de 4×4." },
       quad:      { title: "Aluguer de Quads",                  desc: "Explore as dunas e trilhos florestais de quad — disponível na aldeia." },
     },
 };

@@ -82,7 +82,7 @@ export const L10N = {
     safari: { title: "Pozemní safari", desc: "Dobrodružství v savaně na krátkou jízdu." },
     fishing: { title: "Rybolov z břehu i v hlubokém moři", desc: "Od házení z pláže po hlubokomořské chartery." },
     surfing:   { title: "Surfování a lekce",                 desc: "Chyťte vlnu nebo se naučte základy." },
-    malongane: { title: "Procházka na pláž Ponta Malongane", desc: "8 km po pláži do Malongane (≈2 hod.) — Campismo Nino v půli cesty s výhledem, paragliding na Sky Island, hospody Drunken Clam & Sunset Shack. Návrat po pláži nebo 4×4." },
+    malongane: { title: "Procházka na pláž Ponta Malongane", desc: "Užijte si venkovskou vesnici po několika hodinách procházky podél Indického oceánu. Návrat po pláži nebo 4×4." },
     quad:      { title: "Půjčení quadu",                    desc: "Prozkoumejte duny a lesní stezky na quadu — půjčovna k dispozici ve vesnici." },
   }
 }

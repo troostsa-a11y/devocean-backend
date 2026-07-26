@@ -81,7 +81,7 @@ export const L10N = {
     safari: { title: "Safari pe uscat", desc: "Aventuri în savană la o scurtă distanță cu mașina." },
     fishing: { title: "Pescuit la mal și în larg", desc: "De la lansare de pe plajă la charter în larg." },
     surfing:   { title: "Plăci de surf și lecții",           desc: "Prinde un val sau învață noțiunile de bază." },
-    malongane: { title: "Plimbare la plaja Ponta Malongane", desc: "8 km de mers pe plajă până la Malongane (≈2h) — Campismo Nino la jumătate cu priveliști, parapantă la Sky Island, baruri Drunken Clam & Sunset Shack. Întoarcere pe plajă sau cu 4×4." },
+    malongane: { title: "Plimbare la plaja Ponta Malongane", desc: "Bucurați-vă de satul rural după câteva ore de mers pe jos alături de Oceanul Indian. Întoarcere pe plajă sau cu 4×4." },
     quad:      { title: "Închiriere quad",                  desc: "Explorați dunele și potecile forestiere pe quad — disponibil în sat." },
   }
 }

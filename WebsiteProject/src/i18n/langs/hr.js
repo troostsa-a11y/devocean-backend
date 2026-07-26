@@ -82,7 +82,7 @@ export const L10N = {
     safari: { title: "Kopneni safari", desc: "Avanture u savani na kratkoj vožnji." },
     fishing: { title: "Ribolov sa obale i u dubokom moru", desc: "Od bacanja sa plaže do čartera u dubokom moru." },
     surfing:   { title: "Surf daske i lekcije",              desc: "Uhvatite val ili naučite osnove." },
-    malongane: { title: "Šetnja do Ponta Malongane",        desc: "8 km šetnje plažom do Malongane (≈2h) — Campismo Nino na pola puta s pogledom, paragliding na Sky Island, pubovi Drunken Clam & Sunset Shack. Povratak plažom ili 4×4." },
+    malongane: { title: "Šetnja do Ponta Malongane",        desc: "Uživajte u ruralnom selu nakon nekoliko sati šetnje uz Indijski ocean. Povratak plažom ili 4×4." },
     quad:      { title: "Najam quada",                      desc: "Istražite dine i šumske staze na quadu — iznajmljivanje dostupno u selu." },
   }
 }

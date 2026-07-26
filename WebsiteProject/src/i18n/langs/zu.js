@@ -121,7 +121,7 @@ export const L10N = {
     safari: { title: "Ama-Safari Omhlaba", desc: "Ama-adventure ehlathini ngokushayela isikhathi esifushane." },
     fishing: { title: "Ukudoba Ogwini Lolwandle kanye Nokudoba Ejulile", desc: "Kusuka ekuphoseleni ogwini kuya kuma-charters aphesheya kolwandle." },
     surfing:   { title: "Amabhodi Okusefa kanye Nezifundo", desc: "Bamba amagagasi noma ufundiswe izinto zokuqala." },
-    malongane: { title: "Ukuhamba ePonta Malongane",       desc: "Ukuhamba km 8 olwandle enyakatho kuya eMalongane (≈amahora 2) — Campismo Nino phakathi kwendlela nezindawo, paragliding eSky Island, amabhari Drunken Clam & Sunset Shack. Buya nolwandle noma nge-4×4." },
+    malongane: { title: "Ukuhamba ePonta Malongane",       desc: "Jabulela umzana wasemakhaya ngemva kwamahora ambalwa uhamba ngasohlangothini lwe-Indian Ocean. Buya nolwandle noma nge-4×4." },
     quad:      { title: "Ukuqashisa i-Quad Bike",          desc: "Hlola izintaba zamasilivane nezindlela zehlathi nge-quad bike — ukuqashiswa kuyatholakala emzini." },
   }
 }

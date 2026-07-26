@@ -167,7 +167,7 @@ export const EXP_BASE = [
   { key: "safari", img: IMG.experiences.safari, title: "Game Safaris", desc: "Bush adventures a short drive away.", url: "https://parquemaputo.gov.mz/en/" },
   { key: "fishing", img: IMG.experiences.fishing, title: "Beach & Deep Sea Fishing", desc: "From shore casts to charters offshore.", url: "https://mozambiquefishincharters.co.za/" },
   { key: "surfing",   img: IMG.experiences.surfing,   title: "Surf Boards & Lessons",         desc: "Catch a wave or learn the basics.",                                                                  url: "https://www.instagram.com/spigssurfsup/" },
-  { key: "malongane", img: IMG.experiences.malongane, title: "Ponta Malongane Beach Walk",    desc: "8 km beach walk north to Malongane (≈2 hrs) — Campismo Nino halfway for views, Sky Island paragliding near the bay, Drunken Clam & Sunset Shack pubs. Return by beach or 4×4.",                url: null },
+  { key: "malongane", img: IMG.experiences.malongane, title: "Ponta Malongane Beach Walk",    desc: "Enjoy the rural village after a few hours walking side by side with the Indian Ocean. Return by beach or 4×4.",                                                                                    url: null },
   { key: "quad",      img: IMG.experiences.quad,      title: "Quad Bike Rental",              desc: "Explore the dunes and forest tracks on a quad bike — rentals available in the village.",               url: null },
 ];
 
