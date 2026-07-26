@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Mahali", blurb: "Ponta do Ouro - Wilaya ya Matutuine, Kusini mwa Msumbiji.",
     items: [
-      "Mji wa Ponta do Ouro, umbali wa dakika chache kutoka ufukweni",
-      "Dakika 15 hadi Ponta Malongane • Dakika 25 hadi mpaka wa Kosi Bay",
-      "Maegesho salama • Mikahawa ya ndani na masoko yapo karibu",
+      "Katikati ya kijiji cha Ponta do Ouro, umbali mfupi wa kutembea kutoka ufukweni",
+      "Migahawa ya ndani, mikahawa na masoko yako karibu",
+      "Usafiri wa umma na uhamisho wa kibinafsi kutoka Maputo na mpaka wa Kosi Bay zinapatikana",
+      "Maegesho salama. Inafuatiliwa na CCTV",
+      "Dakika ishirini za kuendesha gari (km 13) kutoka mpaka wa Kosi Bay",
+      "Masaa manne ya kuendesha gari (km 210) kutoka mpaka wa Komatipoort.",
+      "Dakika 30 za kuendesha gari kutoka Malongane. 4x4 tu juu ya mchanga mzito.",
     ],
     viewMap: "Tazama ramani inayofanya kazi",
   },

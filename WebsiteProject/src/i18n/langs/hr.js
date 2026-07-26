@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Lokacija", blurb: "Ponta do Ouro – Distrikt Matutuíne, jug Mozambika.",
     items: [
-      "Selo Ponta do Ouro, na kratkoj šetnji od plaže",
-      "15 minuta do Ponta Malongane • 25 minuta do granice Kosi Bay",
-      "Sigurno parkiranje • Kafići i lokalne pijace u blizini",
+      "Centar sela Ponta do Ouro, na kratkoj šetnji od plaže",
+      "Lokalni restorani, kafići i tržnice u blizini",
+      "Javni prijevoz i privatni transferi iz Maputoa i granice Kosi Bay dostupni",
+      "Sigurno parkiranje. CCTV nadzor",
+      "Dvadeset minuta vožnje (13 km) od granice Kosi Bay",
+      "Četiri sata vožnje (210 km) od granice Komatipoort.",
+      "30 minuta vožnje od Malongane. Samo 4x4 po dubokom pijesku.",
     ],
     viewMap: "Pogledajte interaktivnu mapu",
   },

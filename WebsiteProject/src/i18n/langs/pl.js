@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Lokalizacja", blurb: "Ponta do Ouro – Dystrykt Matutuíne, południowy Mozambik.",
     items: [
-      "Miasto Ponta do Ouro, krótki spacer od plaży",
-      "15 minut do Ponta Malongane • 25 minut do granicy Kosi Bay",
-      "Bezpieczny parking • Lokalne kawiarnie i rynki w pobliżu",
+      "Centrum wsi Ponta do Ouro, krótki spacer od plaży",
+      "Lokalne restauracje, kawiarnie i targi w pobliżu",
+      "Transport publiczny i prywatne transfery z Maputo i granicy Kosi Bay dostępne",
+      "Bezpieczny parking. Monitorowany przez CCTV",
+      "Dwadzieścia minut jazdy (13 km) od granicy Kosi Bay",
+      "Cztery godziny jazdy (210 km) od granicy Komatipoort.",
+      "30 minut jazdy od Malongane. Tylko 4x4 po głębokim piasku.",
     ],
     viewMap: "Zobacz interaktywną mapę",
   },

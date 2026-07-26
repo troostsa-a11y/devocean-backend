@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Plats", blurb: "Ponta do Ouro – Matutuíne-distriktet, södra Moçambique.",
     items: [
-      "Ponta do Ouro stad, en kort promenad från stranden",
-      "15 min till Ponta Malongane • 25 min till Kosi Bay-gränsen",
-      "Säker parkering • Lokala kaféer & marknader i närheten",
+      "Centrum av byn Ponta do Ouro, en kort promenad från stranden",
+      "Lokala restauranger, kaféer och marknader i närheten",
+      "Kollektivtrafik och privata transferer från Maputo och Kosi Bay-gränsen tillgängliga",
+      "Säker parkering. CCTV-övervakad",
+      "Tjugo minuters körning (13 km) från Kosi Bay-gränsen",
+      "Fyra timmars körning (210 km) från Komatipoort-gränsen.",
+      "30 minuters körning från Malongane. Endast 4x4 över djup sand.",
     ],
     viewMap: "Visa interaktiv karta",
   },

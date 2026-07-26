@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Lokalita", blurb: "Ponta do Ouro – okres Matutuíne, jih Mosambiku.",
     items: [
-      "Vesnice Ponta do Ouro, krátká procházka od pláže",
-      "15 minut do Ponta Malongane • 25 minut k hranici Kosi Bay",
-      "Bezpečné parkování • Kavárny a místní trhy nedaleko",
+      "Centrum vesnice Ponta do Ouro, krátká procházka od pláže",
+      "Místní restaurace, kavárny a trhy v blízkosti",
+      "Veřejná doprava a soukromé transfery z Maputa a hranice Kosi Bay k dispozici",
+      "Bezpečné parkování. Sledováno kamerovým systémem CCTV",
+      "Dvacet minut jízdy (13 km) od hranice Kosi Bay",
+      "Čtyři hodiny jízdy (210 km) od hranice Komatipoort.",
+      "30 minut jízdy od Malongane. Pouze 4x4 přes hluboký písek.",
     ],
     viewMap: "Zobrazit interaktivní mapu",
   },

@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Locație", blurb: "Ponta do Ouro – Districtul Matutuíne, sudul Mozambicului.",
     items: [
-      "Orașul Ponta do Ouro, la o scurtă plimbare de plajă",
-      "15 minute până la Ponta Malongane • 25 minute până la granița Kosi Bay",
-      "Parcare sigură • Cafenele și piețe locale în apropiere",
+      "Centrul satului Ponta do Ouro, la un scurt mers pe jos de plajă",
+      "Restaurante, cafenele și piețe locale în apropiere",
+      "Transport public și transferuri private din Maputo și de la granița Kosi Bay disponibile",
+      "Parcare sigură. Monitorizată prin CCTV",
+      "Douăzeci de minute cu mașina (13 km) de la granița Kosi Bay",
+      "Patru ore cu mașina (210 km) de la granița Komatipoort.",
+      "30 de minute cu mașina de la Malongane. Numai 4x4 pe nisip adânc.",
     ],
     viewMap: "Vezi harta interactivă",
   },

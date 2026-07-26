@@ -20,9 +20,13 @@ export const UI = {
   location: {
     headline: "Konum", blurb: "Ponta do Ouro – Matutuíne ilçesi, güney Mozambik.",
     items: [
-      "Ponta do Ouro köyü, plajdan kısa bir yürüyüş",
-      "Ponta Malongane'a 15 dakika • Kosi Bay sınırına 25 dakika",
-      "Güvenli park yeri • Yakında kafeler ve yerel pazarlar",
+      "Ponta do Ouro köy merkezi, plajdan kısa bir yürüyüş",
+      "Yerel restoranlar, kafeler ve pazarlar yakında",
+      "Maputo ve Kosi Bay sınırından toplu taşıma ve özel transfer mevcut",
+      "Güvenli otopark. CCTV ile izleniyor",
+      "Kosi Bay sınırından yirmi dakika sürüş (13 km)",
+      "Komatipoort sınırından dört saat sürüş (210 km).",
+      "Malongane'dan 30 dakika sürüş. Yalnızca derin kumda 4x4.",
     ],
     viewMap: "İnteraktif haritayı görüntüle",
   },

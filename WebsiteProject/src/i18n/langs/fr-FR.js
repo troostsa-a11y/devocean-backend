@@ -110,9 +110,13 @@ menu: "Menu",
       headline: "Localisation",
       blurb: "Ponta do Ouro – District de Matutuíne, sud du Mozambique.",
       items: [
-        "Ville de Ponta do Ouro, à deux pas de la plage",
-        "15 min de Ponta Malongane • 25 min de la frontière de Kosi Bay",
-        "Parking sécurisé • Cafés & marchés locaux à proximité"
+        "Centre du village de Ponta do Ouro, à quelques pas de la plage",
+        "Restaurants, cafés et marchés locaux à proximité",
+        "Transports en commun et transferts privés depuis Maputo et la frontière de Kosi Bay disponibles",
+        "Parking sécurisé. Surveillance CCTV",
+        "Vingt minutes de route (13 km) depuis la frontière de Kosi Bay",
+        "Quatre heures de route (210 km) depuis la frontière de Komatipoort.",
+        "30 minutes de route depuis Malongane. Uniquement 4x4 sur sable profond."
       ],
       viewMap: "Voir la carte interactive",
     },
