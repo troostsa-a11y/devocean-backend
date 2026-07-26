@@ -208,7 +208,6 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               ["home", "#home"],
               ["stay", "#stay"],
               ["experiences", "#experiences"],
-              ["todo", "#todo"],
               ["gallery", "#gallery"],
               ["location", "#location"],
               ["contact", "#contact"],
@@ -293,7 +292,6 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               {[
                 ["stay", "#stay"],
                 ["experiences", "#experiences"],
-                ["todo", "#todo"],
                 ["gallery", "#gallery"],
                 ["location", "#location"],
                 ["contact", "#contact"],

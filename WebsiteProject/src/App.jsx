@@ -12,7 +12,6 @@ import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AccommodationsSection from './components/AccommodationsSection';
 import ExperiencesSection from './components/ExperiencesSection';
-import TodoSection from './components/TodoSection';
 
 // Route-level components (lazy loaded - only fetched when their route is visited)
 const ExperienceDetailPage = lazy(() => import('./components/ExperienceDetailPage'));
@@ -342,7 +341,6 @@ export default function App() {
             <>
               <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
               <ExperiencesSection experiences={experiences} ui={ui} lang={lang} />
-              <TodoSection ui={ui} />
 
               {/* Lazy load below-the-fold sections for better INP performance */}
               <Suspense fallback={<div className="min-h-[200px]" />}>
