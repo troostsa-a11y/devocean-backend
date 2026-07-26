@@ -186,7 +186,7 @@ export default function ContactSection({ ui, lang, currency, bookUrl, dateLocale
               </ol>
               <p className="mt-3 text-slate-600 text-sm italic">{ui.location.howToFind.note}</p>
               {ui.location.howToFind.transport && (
-                <p className="mt-1 text-slate-600 text-sm italic">{ui.location.howToFind.transport}</p>
+                <p className="mt-4 text-slate-600 text-sm italic">{ui.location.howToFind.transport}</p>
               )}
             </div>
           )}
