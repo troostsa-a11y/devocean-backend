@@ -72,7 +72,7 @@ menu: "Menu",
       ],
       viewMap: "Bekijk interactieve kaart",
     },
-    contact: { headline: "Contact & Aanvragen", blurb: "Voor directe beschikbaarheid en bevestigde prijzen boekt u online.", formHint: "Dit formulier is voor groepen, transfers of speciale verzoeken.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Online boeken" },
+    contact: { headline: "Contact & Aanvragen", blurb: "Voor directe beschikbaarheid en gegarandeerde prijzen klikt u op de knop Online boeken bovenaan de pagina.", formHint: "Dit formulier is voor groepen, transfers of speciale verzoeken.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Online boeken" },
     form: {
       name: "Naam", email: "E-mail", stayLabel: "Geïnteresseerd in verblijf:", checkin: "Van", checkout: "Tot",
       unitLabel: "Mijn voorkeur gaat uit naar:",

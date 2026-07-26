@@ -30,7 +30,7 @@ export const UI = {
     ],
     viewMap: "Zobacz interaktywną mapę",
   },
-  contact: { headline: "Kontakt i zapytania", blurb: "W sprawie natychmiastowej dostępności i potwierdzonych cen rezerwuj online.", formHint: "Ten formularz służy do rezerwacji grupowych, transferów lub specjalnych życzeń.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Rezerwacja online" },
+  contact: { headline: "Kontakt i zapytania", blurb: "W sprawie natychmiastowej dostępności i gwarantowanych cen kliknij przycisk Rezerwacja online na górze strony.", formHint: "Ten formularz służy do rezerwacji grupowych, transferów lub specjalnych życzeń.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Rezerwacja online" },
   form: {
     name: "Imię", email: "E-mail", stayLabel: "Zainteresowany pobytem:", checkin: "Od (zameldowanie)", checkout: "Do (wymeldowanie)",
     unitLabel: "Preferowana jednostka to:",

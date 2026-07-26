@@ -30,7 +30,7 @@ export const UI = {
     ],
     viewMap: "Pogledajte interaktivnu mapu",
   },
-  contact: { headline: "Kontakt i upiti", blurb: "Za trenutnu dostupnost i potvrđene cijene, rezervirajte online.", formHint: "Koristite ovaj obrazac za grupe, transfere ili posebne zahtjeve.", call: "WhatsApp", email: "Imejl", directions: "Uputstva za put", bookNow: "Online rezervacija" },
+  contact: { headline: "Kontakt i upiti", blurb: "Za trenutnu dostupnost i zajamčene cijene, kliknite na gumb Online rezervacija na vrhu stranice.", formHint: "Koristite ovaj obrazac za grupe, transfere ili posebne zahtjeve.", call: "WhatsApp", email: "Imejl", directions: "Uputstva za put", bookNow: "Online rezervacija" },
   form: {
     name: "Ime", email: "Imejl", stayLabel: "Zainteresovan za smještaj:", checkin: "Od (prijava)", checkout: "Do (odjava)",
     unitLabel: "Željena jedinica je:",

@@ -72,7 +72,7 @@ menu: "メニュー",
       ],
       viewMap: "インタラクティブマップを表示",
     },
-    contact: { headline: "お問い合わせ", blurb: "即時空室確認と確定料金はオンライン予約をご利用ください。", formHint: "グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
+    contact: { headline: "お問い合わせ", blurb: "即時空室確認と保証価格は、ページ上部のオンライン予約ボタンをクリックしてください。", formHint: "グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
     form: {
       name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
       unitLabel: "好みのユニット：",
@@ -196,7 +196,7 @@ nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "�
       ],
       viewMap: "インタラクティブマップを表示",
     },
-    contact: { headline: "お問い合わせ", blurb: "即時空室確認と確定料金はオンライン予約をご利用ください。", formHint: "グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
+    contact: { headline: "お問い合わせ", blurb: "即時空室確認と保証価格は、ページ上部のオンライン予約ボタンをクリックしてください。", formHint: "グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
     form: {
       name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
       unitLabel: "好みのユニット：",

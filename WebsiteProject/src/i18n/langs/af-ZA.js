@@ -35,7 +35,7 @@ menu: "Kieslys",
     },
     contact: {
       headline: "Kontak en Navrae",
-      blurb: "Vir onmiddellike beskikbaarheid en bevestigde pryse, bespreek aanlyn.", formHint: "Gebruik hierdie vorm vir groepe, vervoer of spesiale versoeke.",
+      blurb: "Vir onmiddellike beskikbaarheid en gewaarborgde pryse, klik op die Online bespreking-knoppie bo-aan die bladsy.", formHint: "Gebruik hierdie vorm vir groepe, vervoer of spesiale versoeke.",
       call: "WhatsApp", email: "E-pos", directions: "Aanwysings", bookNow: "Online bespreking",
     },
     form: {

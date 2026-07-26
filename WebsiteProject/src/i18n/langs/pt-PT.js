@@ -31,7 +31,7 @@ menu: "Menu",
       ],
       viewMap: "Ver mapa interativo",
     },
-    contact: { headline: "Contacto e Pedidos", blurb: "Para disponibilidade imediata e preços confirmados, reserve online.", formHint: "Use este formulário para grupos, transferências ou pedidos especiais.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Reserva online" },
+    contact: { headline: "Contacto e Pedidos", blurb: "Para disponibilidade imediata e preços garantidos, clique no botão Reserva online no topo da página.", formHint: "Use este formulário para grupos, transferências ou pedidos especiais.", call: "WhatsApp", email: "E-mail", directions: "Indicações", bookNow: "Reserva online" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessado em ficar:", checkin: "De (check-in)", checkout: "Até (checkout)",
       unitLabel: "A minha unidade preferida é:",

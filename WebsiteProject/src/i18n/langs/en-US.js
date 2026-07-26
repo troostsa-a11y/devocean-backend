@@ -31,7 +31,7 @@ menu: "Menu",
       ],
       viewMap: "View Interactive Map",
     },
-    contact: { headline: "Contact & Enquiries", blurb: "For instant availability and confirmed prices, use online booking.", formHint: "Use this form for transfers, groups or special requests.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Online Booking" },
+    contact: { headline: "Contact & Enquiries", blurb: "For instant availability and guaranteed prices, click the Online Booking button in the top of the page.", formHint: "Use this form for transfers, groups or special requests.", call: "WhatsApp", email: "Email", directions: "Directions", bookNow: "Online Booking" },
     form: {
       name: "Name", email: "Email", stayLabel: "Interested in staying:", checkin: "From", checkout: "Until", 
       unitLabel: "My preferred unit is:", 

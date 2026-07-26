@@ -34,7 +34,7 @@ export const UI = {
   },
   contact: {
     headline: "Xhumana kanye nezicelo",
-    blurb: "Ukuthola ukutholakala ngokushesha kanye namanani aqinisekisiwe, bhuka online.", formHint: "Sebenzisa le fomu yamaklabhu, ukudluliselwa noma izicelo ezikhethekile.",
+    blurb: "Ukuthola ukutholakala ngokushesha kanye namanani aqunjisiwe, chofoza inkinobho yokuBhuka Ku-inthanethi phezulu kwekhasi.", formHint: "Sebenzisa le fomu yamaklabhu, ukudluliselwa noma izicelo ezikhethekile.",
     call: "WhatsApp", email: "I-imeyili", directions: "Izinkomba zokuya", bookNow: "Bhuka online",
   },
   form: {

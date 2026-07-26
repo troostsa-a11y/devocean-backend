@@ -72,7 +72,7 @@ menu: "Menú",
       ],
       viewMap: "Ver mapa interactivo",
     },
-    contact: { headline: "Contacto & Consultas", blurb: "Para disponibilidad inmediata y precios confirmados, reserve en línea.", formHint: "Use este formulario para grupos, traslados o solicitudes especiales.", call: "WhatsApp", email: "Correo", directions: "Cómo llegar", bookNow: "Reserva en línea" },
+    contact: { headline: "Contacto & Consultas", blurb: "Para disponibilidad inmediata y precios garantizados, haga clic en el botón Reserva en línea en la parte superior de la página.", formHint: "Use este formulario para grupos, traslados o solicitudes especiales.", call: "WhatsApp", email: "Correo", directions: "Cómo llegar", bookNow: "Reserva en línea" },
     form: {
       name: "Nombre", email: "Correo", stayLabel: "Interesado en alojarse:", checkin: "Desde", checkout: "Hasta",
       unitLabel: "Mi alojamiento preferido es:",

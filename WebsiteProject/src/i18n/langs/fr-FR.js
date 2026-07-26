@@ -122,7 +122,7 @@ menu: "Menu",
     },
     contact: {
       headline: "Contact & Demandes",
-      blurb: "Pour disponibilité et prix confirmés immédiats, réservez en ligne.",
+      blurb: "Pour une disponibilité instantanée et des prix garantis, cliquez sur le bouton Réservation en ligne en haut de la page.",
       formHint: "Ce formulaire est réservé aux groupes, transferts ou demandes spéciales.",
       call: "WhatsApp",
       email: "E-mail",
