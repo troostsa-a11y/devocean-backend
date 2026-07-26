@@ -1,6 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, X, Plus, Minus, ExternalLink } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
@@ -702,68 +702,93 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   function renderTopBar() {
     return (
-      <div className="relative z-30 bg-white border-b border-slate-200">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <a
-            href={`/?lang=${lang}#home`}
-            className="flex items-center gap-2 min-w-0 font-semibold text-slate-800"
-            data-testid="link-booking-home"
-          >
-            <img
-              src="/images/devocean_logo_header-small.webp"
-              alt="DEVOCEAN Lodge"
-              className="h-9 w-9 shrink-0 rounded-full object-cover"
-              loading="eager"
-            />
-            <span className="truncate">DEVOCEAN Lodge</span>
-          </a>
-
-          <div className="relative flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={() => setMenuOpen((v) => !v)}
-              aria-expanded={menuOpen}
-              aria-label={ui?.menu || 'Menu'}
-              className="inline-flex items-center justify-center rounded-xl px-3 py-2 bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors"
-              data-testid="button-booking-menu"
+      <>
+        <div className="relative z-30 bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+            {/* Logo */}
+            <a
+              href={`/?lang=${lang}#home`}
+              className="flex items-center gap-3 text-slate-800"
+              data-testid="link-booking-home"
             >
-              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+              <img
+                src="/images/devocean_logo_header-small.webp"
+                alt="DEVOCEAN Lodge"
+                className="h-9 w-9 shrink-0 rounded-full object-cover"
+                loading="eager"
+              />
+              <span className="font-semibold">DEVOCEAN Lodge</span>
+            </a>
 
-            <div
-              className="absolute right-0 top-full mt-2 w-56 bg-white border border-slate-200 rounded-xl shadow-2xl overflow-hidden z-50 transition-all duration-200 origin-top-right"
-              style={{
-                transform: menuOpen ? 'scale(1)' : 'scale(0.95)',
-                opacity: menuOpen ? 1 : 0,
-                pointerEvents: menuOpen ? 'auto' : 'none',
-                visibility: menuOpen ? 'visible' : 'hidden',
-              }}
-              data-testid="menu-booking-nav"
-            >
+            {/* Desktop nav links */}
+            <ul className="hidden lg:flex items-center gap-6">
               {navItems.map(([key, label]) => (
-                <a
-                  key={key}
-                  href={`/?lang=${lang}#${key}`}
-                  className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-slate-100 transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                  tabIndex={menuOpen ? 0 : -1}
-                  data-testid={`link-booking-${key}`}
-                >
-                  {label}
-                </a>
+                <li key={key}>
+                  <a
+                    href={`/?lang=${lang}#${key}`}
+                    className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
+                  >
+                    {label}
+                  </a>
+                </li>
               ))}
+            </ul>
+
+            {/* Burger (mobile & tablet) */}
+            <div className="lg:hidden relative">
+              <button
+                type="button"
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-expanded={menuOpen}
+                aria-label={ui?.menu || 'Menu'}
+                className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-all shadow-md hover:shadow-lg"
+                data-testid="button-booking-menu"
+              >
+                <Menu className={`h-5 w-5 transition-transform ${menuOpen ? 'rotate-90' : ''}`} />
+                <span className="text-sm font-semibold hidden sm:inline-flex">{ui?.menu || 'Menu'}</span>
+              </button>
+
+              <div
+                className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50 transition-all duration-200 origin-top-right"
+                style={{
+                  transform: menuOpen ? 'scale(1)' : 'scale(0.95)',
+                  opacity: menuOpen ? 1 : 0,
+                  pointerEvents: menuOpen ? 'auto' : 'none',
+                  visibility: menuOpen ? 'visible' : 'hidden',
+                  willChange: 'transform, opacity',
+                }}
+                inert={menuOpen ? undefined : ''}
+                data-testid="menu-booking-nav"
+              >
+                {navItems.map(([key, label]) => (
+                  <a
+                    key={key}
+                    href={`/?lang=${lang}#${key}`}
+                    className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
+                    onClick={() => setMenuOpen(false)}
+                    tabIndex={menuOpen ? 0 : -1}
+                    data-testid={`link-booking-${key}`}
+                  >
+                    {label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {menuOpen && (
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setMenuOpen(false)}
-            aria-hidden="true"
-          />
-        )}
-      </div>
+        {/* Backdrop */}
+        <div
+          className="lg:hidden fixed inset-0 z-40 transition-opacity duration-200"
+          style={{
+            opacity: menuOpen ? 1 : 0,
+            pointerEvents: menuOpen ? 'auto' : 'none',
+            background: 'rgba(0,0,0,0.2)',
+          }}
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
+      </>
     );
   }
 
