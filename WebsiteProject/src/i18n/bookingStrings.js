@@ -16,7 +16,7 @@ const STRINGS = {
   en: {
     title: 'Book your stay',
     cardTitle: 'Enter your preferred dates for rates & availability',
-    subtitle: 'Reserve directly with DEVOCEAN Lodge.\nPay a deposit now, the balance on arrival.',
+    subtitle: 'Booking guaranteed\nImmediate confirmation\nBest service & support',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adults',
@@ -107,7 +107,7 @@ const STRINGS = {
   pt: {
     title: 'Reserve a sua estadia',
     cardTitle: 'Insira as suas datas preferidas para tarifas e disponibilidade',
-    subtitle: 'Reserve diretamente com o DEVOCEAN Lodge.\nPague um depósito agora e o restante à chegada.',
+    subtitle: 'Reserva garantida\nConfirmação imediata\nMelhor serviço e suporte',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adultos',
@@ -198,7 +198,7 @@ const STRINGS = {
   de: {
     title: 'Buchen Sie Ihren Aufenthalt',
     cardTitle: 'Geben Sie Ihre Wunschdaten für Preise und Verfügbarkeit ein',
-    subtitle: 'Buchen Sie direkt bei der DEVOCEAN Lodge.\nZahlen Sie jetzt eine Anzahlung, den Rest bei Ankunft.',
+    subtitle: 'Buchung garantiert\nSofortige Bestätigung\nBester Service & Support',
     checkIn: 'Anreise',
     checkOut: 'Abreise',
     adults: 'Erwachsene',
@@ -289,7 +289,7 @@ const STRINGS = {
   fr: {
     title: 'Réservez votre séjour',
     cardTitle: 'Entrez vos dates préférées pour les tarifs et la disponibilité',
-    subtitle: 'Réservez directement avec DEVOCEAN Lodge.\nPayez un acompte maintenant, le solde à l’arrivée.',
+    subtitle: 'Réservation garantie\nConfirmation immédiate\nMeilleur service & assistance',
     checkIn: 'Arrivée',
     checkOut: 'Départ',
     adults: 'Adultes',
@@ -380,7 +380,7 @@ const STRINGS = {
   es: {
     title: 'Reserve su estancia',
     cardTitle: 'Introduzca sus fechas preferidas para tarifas y disponibilidad',
-    subtitle: 'Reserve directamente con DEVOCEAN Lodge.\nPague un depósito ahora y el resto a su llegada.',
+    subtitle: 'Reserva garantizada\nConfirmación inmediata\nMejor servicio y asistencia',
     checkIn: 'Entrada',
     checkOut: 'Salida',
     adults: 'Adultos',
@@ -471,7 +471,7 @@ const STRINGS = {
   it: {
     title: 'Prenota il tuo soggiorno',
     cardTitle: 'Inserisci le tue date preferite per tariffe e disponibilità',
-    subtitle: 'Prenota direttamente con DEVOCEAN Lodge.\nPaga un acconto ora, il saldo all’arrivo.',
+    subtitle: 'Prenotazione garantita\nConferma immediata\nMiglior servizio e supporto',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
     adults: 'Adulti',
@@ -562,7 +562,7 @@ const STRINGS = {
   nl: {
     title: 'Boek uw verblijf',
     cardTitle: 'Voer uw voorkeursdatums in voor tarieven en beschikbaarheid',
-    subtitle: 'Boek rechtstreeks bij DEVOCEAN Lodge.\nBetaal nu een aanbetaling, het saldo bij aankomst.',
+    subtitle: 'Boeking gegarandeerd\nDirecte bevestiging\nBeste service & ondersteuning',
     checkIn: 'Inchecken',
     checkOut: 'Uitchecken',
     adults: 'Volwassenen',
@@ -653,7 +653,7 @@ const STRINGS = {
   sv: {
     title: "Boka ditt boende",
     cardTitle: "Ange dina önskade datum för priser och tillgänglighet",
-    subtitle: "Boka direkt med DEVOCEAN Lodge.\nBetala en handpenning nu, resten vid ankomst.",
+    subtitle: "Bokning garanterad\nOmedelbar bekräftelse\nBästa service & support",
     checkIn: "Incheckning",
     checkOut: "Utcheckning",
     adults: "Vuxna",
@@ -744,7 +744,7 @@ const STRINGS = {
   pl: {
     title: "Zarezerwuj pobyt",
     cardTitle: "Wpisz preferowane daty, aby zobaczyć ceny i dostępność",
-    subtitle: "Zarezerwuj bezpośrednio w DEVOCEAN Lodge.\nZapłać teraz zaliczkę, resztę przy przyjeździe.",
+    subtitle: "Rezerwacja gwarantowana\nNatychmiastowe potwierdzenie\nNajlepsza obsługa i wsparcie",
     checkIn: "Zameldowanie",
     checkOut: "Wymeldowanie",
     adults: "Dorośli",
@@ -835,7 +835,7 @@ const STRINGS = {
   ro: {
     title: "Rezervă-ți sejurul",
     cardTitle: "Introduceți datele preferate pentru tarife și disponibilitate",
-    subtitle: "Rezervă direct la DEVOCEAN Lodge.\nPlătește un avans acum, restul la sosire.",
+    subtitle: "Rezervare garantată\nConfirmare imediată\nCel mai bun serviciu și suport",
     checkIn: "Check-in",
     checkOut: "Check-out",
     adults: "Adulți",
@@ -926,7 +926,7 @@ const STRINGS = {
   sr: {
     title: "Rezervišite svoj boravak",
     cardTitle: "Unesite željene datume za cene i dostupnost",
-    subtitle: "Rezervišite direktno kod DEVOCEAN Lodge.\nPlatite depozit sada, ostatak po dolasku.",
+    subtitle: "Rezervacija garantovana\nTrenutna potvrda\nNajbolji servis i podrška",
     checkIn: "Prijava",
     checkOut: "Odjava",
     adults: "Odrasli",
@@ -1017,7 +1017,7 @@ const STRINGS = {
   hr: {
     title: "Rezervirajte svoj boravak",
     cardTitle: "Unesite željene datume za cijene i dostupnost",
-    subtitle: "Rezervirajte izravno kod DEVOCEAN Lodge.\nPlatite polog sada, ostatak po dolasku.",
+    subtitle: "Rezervacija zajamčena\nTrenutna potvrda\nNajbolja usluga i podrška",
     checkIn: "Prijava",
     checkOut: "Odjava",
     adults: "Odrasli",
@@ -1108,7 +1108,7 @@ const STRINGS = {
   cs: {
     title: "Rezervujte si pobyt",
     cardTitle: "Zadejte preferovaná data pro ceny a dostupnost",
-    subtitle: "Rezervujte přímo u DEVOCEAN Lodge.\nZaplaťte zálohu nyní, doplatek při příjezdu.",
+    subtitle: "Rezervace zaručena\nOkamžité potvrzení\nNejlepší servis a podpora",
     checkIn: "Příjezd",
     checkOut: "Odjezd",
     adults: "Dospělí",
@@ -1199,7 +1199,7 @@ const STRINGS = {
   tr: {
     title: "Konaklamanızı rezerve edin",
     cardTitle: "Fiyatlar ve müsaitlik için tercih ettiğiniz tarihleri girin",
-    subtitle: "DEVOCEAN Lodge ile doğrudan rezervasyon yapın.\nŞimdi ön ödeme yapın, kalanı varışta ödeyin.",
+    subtitle: "Rezervasyon garantili\nAnında onay\nEn iyi hizmet ve destek",
     checkIn: "Giriş",
     checkOut: "Çıkış",
     adults: "Yetişkinler",
@@ -1290,7 +1290,7 @@ const STRINGS = {
   ja: {
     title: "ご滞在を予約",
     cardTitle: "ご希望の日程を入力して料金と空室状況をご確認ください",
-    subtitle: "DEVOCEAN Lodgeに直接ご予約いただけます。\n今デポジットをお支払いいただき、残額はご到着時にお支払いください。",
+    subtitle: "予約確定保証\n即時確認\n最高のサービス＆サポート",
     checkIn: "チェックイン",
     checkOut: "チェックアウト",
     adults: "大人",
@@ -1381,7 +1381,7 @@ const STRINGS = {
   zh: {
     title: "预订您的住宿",
     cardTitle: "输入您的首选日期以查看房价与空房情况",
-    subtitle: "直接向 DEVOCEAN Lodge 预订。\n现在支付订金，余款抵店时支付。",
+    subtitle: "预订有保障\n即时确认\n最优质的服务与支持",
     checkIn: "入住",
     checkOut: "退房",
     adults: "成人",
@@ -1472,7 +1472,7 @@ const STRINGS = {
   ru: {
     title: "Забронируйте проживание",
     cardTitle: "Введите предпочтительные даты для просмотра тарифов и наличия",
-    subtitle: "Бронируйте напрямую в DEVOCEAN Lodge.\nВнесите депозит сейчас, остаток оплатите по прибытии.",
+    subtitle: "Бронирование гарантировано\nМгновенное подтверждение\nЛучший сервис и поддержка",
     checkIn: "Заезд",
     checkOut: "Выезд",
     adults: "Взрослые",
@@ -1563,7 +1563,7 @@ const STRINGS = {
   af: {
     title: "Bespreek jou verblyf",
     cardTitle: "Voer u verkiese datums in vir tariewe en beskikbaarheid",
-    subtitle: "Bespreek direk by DEVOCEAN Lodge.\nBetaal nou 'n deposito, die balans met aankoms.",
+    subtitle: "Boeking gewaarborg\nOnmiddellike bevestiging\nBeste diens en ondersteuning",
     checkIn: "Inklok",
     checkOut: "Uitklok",
     adults: "Volwassenes",
@@ -1654,7 +1654,7 @@ const STRINGS = {
   zu: {
     title: "Bhukha ukuhlala kwakho",
     cardTitle: "Faka izinsuku ozithandayo ukuze ubone amanani nokukhona",
-    subtitle: "Bhukha ngokuqondile ne-DEVOCEAN Lodge.\nKhokha idiphozithi manje, ibhalansi uyikhokhe lapho ufika.",
+    subtitle: "Ukubhuka kuqinisekisiwe\nUkuqinisekisa ngokushesha\nInkonzo nokusekela okungcono",
     checkIn: "Usuku lokungena",
     checkOut: "Usuku lokuphuma",
     adults: "Abadala",
@@ -1745,7 +1745,7 @@ const STRINGS = {
   sw: {
     title: "Weka nafasi ya kukaa kwako",
     cardTitle: "Ingiza tarehe unazozipenda kwa bei na upatikanaji",
-    subtitle: "Weka nafasi moja kwa moja na DEVOCEAN Lodge.\nLipa amana sasa, salio utalipa unapowasili.",
+    subtitle: "Uhakika wa uhifadhi\nUthibitisho wa haraka\nHuduma na msaada bora",
     checkIn: "Tarehe ya kuingia",
     checkOut: "Tarehe ya kutoka",
     adults: "Watu wazima",
