@@ -3,7 +3,7 @@ import LazyImage from './LazyImage';
 
 // Key features for each accommodation type - helps users preview before clicking
 const UNIT_FEATURES = {
-  safari: ['fan', 'terrace', 'shared'],
+  safari: ['shared', 'terrace', 'fan'],
   comfort: ['ensuite', 'terrace', 'fan'],
   cottage: ['ac', 'ensuite', 'queen'],
   chalet: ['ac', 'ensuite', 'secluded']
