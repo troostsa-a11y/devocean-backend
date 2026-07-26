@@ -29,6 +29,16 @@ export const UI = {
       "Malongane'dan 30 dakika sürüş. Yalnızca derin kumda 4x4.",
     ],
     viewMap: "İnteraktif haritayı görüntüle",
+    howToFind: {
+      heading: "DEVOCEAN Lodge nerede bulunur?",
+      steps: [
+        "Yeni asfalt yoldan köye girin.",
+        "Soldaki yerel pazarın yanından geçin ve küçük tepeden yukarı çıkın.",
+        "Love Café'nin hemen ardından Rua C'ye sağa dönün.",
+        "Sağ tarafta sadece 100 metre sonra bizi bulacaksınız.",
+      ],
+      note: "DEVOCEAN Lodge her türlü araba ve motosiklet için ulaşılabilirdir.",
+    },
   },
   contact: { headline: "İletişim ve Talepler", blurb: "Anlık müsaitlik ve garantili fiyatlar için sayfanın üstündeki Online rezervasyon düğmesine tıklayın.", formHint: "Bu formu gruplar, transferler veya özel talepler için kullanın.", call: "WhatsApp", email: "E-posta", directions: "Yol Tarifi", bookNow: "Online rezervasyon" },
   form: {

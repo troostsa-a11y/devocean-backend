@@ -31,6 +31,16 @@ export const UI = {
       "Imizuzu eyi-30 wokuqhuba usuka eMalongane. I-4x4 kuphela phezu kwezihlabathi ezijule.",
     ],
     viewMap: "Buka imephu esebenzayo",
+    howToFind: {
+      heading: "Kuphi ukuthola i-DEVOCEAN Lodge?",
+      steps: [
+        "Ngena edolobheni ngemgwaqo omusha we-thari.",
+        "Dlula emakethe yendawo ngakwesokunxele uphume entabeni encane.",
+        "Phenduka kwesokudla ku-Rua C, ngempela ngemuva kwe-Love Café.",
+        "Uzosithola emva kwamamamitha ayi-100 ngakwesokundla.",
+      ],
+      note: "I-DEVOCEAN Lodge ifinyeleka ezinhlobonhlobo zamagalelo nemoto ezincane.",
+    },
   },
   contact: {
     headline: "Xhumana kanye nezicelo",

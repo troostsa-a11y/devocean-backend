@@ -71,6 +71,16 @@ menu: "メニュー",
         "マロンガーネから車で30分。深い砂地のため4x4のみ。",
       ],
       viewMap: "インタラクティブマップを表示",
+      howToFind: {
+        heading: "DEVOCEAN Lodgeはどこにありますか？",
+        steps: [
+          "新しい舗装道路を通って村に入ります。",
+          "左手のローカル市場を過ぎて、小さな丘を登ります。",
+          "Love Caféのすぐ後、Rua Cを右折してください。",
+          "わずか100メートル先の右手にお見つけいただけます。",
+        ],
+        note: "DEVOCEAN Lodgeはすべての種類の車とバイクでアクセスできます。",
+      },
     },
     contact: { headline: "お問い合わせ", blurb: "即時空室確認と保証価格は、ページ上部のオンライン予約ボタンをクリックしてください。", formHint: "グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
     form: {
@@ -195,6 +205,16 @@ nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "�
         "マロンガーネから車で30分。深い砂地のため4x4のみ。",
       ],
       viewMap: "インタラクティブマップを表示",
+      howToFind: {
+        heading: "DEVOCEAN Lodgeはどこにありますか？",
+        steps: [
+          "新しい舗装道路を通って村に入ります。",
+          "左手のローカル市場を過ぎて、小さな丘を登ります。",
+          "Love Caféのすぐ後、Rua Cを右折してください。",
+          "わずか100メートル先の右手にお見つけいただけます。",
+        ],
+        note: "DEVOCEAN Lodgeはすべての種類の車とバイクでアクセスできます。",
+      },
     },
     contact: { headline: "お問い合わせ", blurb: "即時空室確認と保証価格は、ページ上部のオンライン予約ボタンをクリックしてください。", formHint: "グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "オンライン予約" },
     form: {

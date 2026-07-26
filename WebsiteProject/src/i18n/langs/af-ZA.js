@@ -32,6 +32,16 @@ menu: "Kieslys",
         "30 minute se rit vanaf Malongane. Slegs 4x4 oor diep sand.",
       ],
       viewMap: "Bekyk interaktiewe kaart",
+      howToFind: {
+        heading: "Waar om DEVOCEAN Lodge te vind?",
+        steps: [
+          "Ry in die dorp oor die nuwe teerpad.",
+          "Ry verby die plaaslike mark aan die linkerkant en op die klein heuwel.",
+          "Draai regs in Rua C, net na Love Café.",
+          "Jy sal ons vind na slegs 100 meter aan die regterkant.",
+        ],
+        note: "DEVOCEAN Lodge is toeganklik vir alle soorte motors en motorfietse.",
+      },
     },
     contact: {
       headline: "Kontak en Navrae",

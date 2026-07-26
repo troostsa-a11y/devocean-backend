@@ -30,6 +30,16 @@ menu: "菜单",
         "距马隆加内30分钟车程。仅限4x4越野车行驶于深沙地上。",
       ],
       viewMap: "查看互动地图",
+      howToFind: {
+        heading: "如何找到 DEVOCEAN Lodge？",
+        steps: [
+          "走新的柏油路进入村庄。",
+          "经过左侧的当地市场，然后爬上小山丘。",
+          "在 Love Café 后立即向右转入 Rua C。",
+          "再走100米，您就能在右侧找到我们。",
+        ],
+        note: "DEVOCEAN Lodge 适合所有类型的汽车和摩托车前往。",
+      },
     },
     contact: { headline: "联系与特殊申请", blurb: "如需即时查看房源和保证价格，请点击页面顶部的在线预订按钮。", formHint: "此表格适用于团体、接送或特殊要求。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "在线预订" },
     form: {
@@ -157,6 +167,16 @@ menu: "菜单",
         "距马隆加内30分钟车程。仅限4x4越野车行驶于深沙地上。",
       ],
       viewMap: "查看互动地图",
+      howToFind: {
+        heading: "如何找到 DEVOCEAN Lodge？",
+        steps: [
+          "走新的柏油路进入村庄。",
+          "经过左侧的当地市场，然后爬上小山丘。",
+          "在 Love Café 后立即向右转入 Rua C。",
+          "再走100米，您就能在右侧找到我们。",
+        ],
+        note: "DEVOCEAN Lodge 适合所有类型的汽车和摩托车前往。",
+      },
     },
     contact: { headline: "联系与特殊申请", blurb: "如需即时查看房源和保证价格，请点击页面顶部的在线预订按钮。", formHint: "此表格适用于团体、接送或特殊要求。", call: "WhatsApp", email: "电子邮件", directions: "路线", bookNow: "在线预订" },
     form: {

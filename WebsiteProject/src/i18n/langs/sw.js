@@ -29,6 +29,16 @@ export const UI = {
       "Dakika 30 za kuendesha gari kutoka Malongane. 4x4 tu juu ya mchanga mzito.",
     ],
     viewMap: "Tazama ramani inayofanya kazi",
+    howToFind: {
+      heading: "Wapi kupata DEVOCEAN Lodge?",
+      steps: [
+        "Ingia kijijini kupitia barabara mpya ya lami.",
+        "Pita sokoni la mitaa upande wa kushoto na panda kilima kidogo.",
+        "Geuza kulia kwenye Rua C, mara baada ya Love Café.",
+        "Utupata baada ya mita 100 tu upande wa kulia.",
+      ],
+      note: "DEVOCEAN Lodge inaweza kufikiwa na aina zote za magari na pikipiki.",
+    },
   },
   contact: { headline: "Mawasiliano na Maombi", blurb: "Kwa upatikanaji wa haraka na bei zilizohakikishiwa, bonyeza kitufe cha Buki mtandaoni juu ya ukurasa.", formHint: "Tumia fomu hii kwa vikundi, usafiri au maombi maalum.", call: "WhatsApp", email: "Barua pepe", directions: "Maelekezo", bookNow: "Buki mtandaoni" },
   form: {

@@ -29,6 +29,16 @@ export const UI = {
       "30 de minute cu mașina de la Malongane. Numai 4x4 pe nisip adânc.",
     ],
     viewMap: "Vezi harta interactivă",
+    howToFind: {
+      heading: "Unde găsiți DEVOCEAN Lodge?",
+      steps: [
+        "Intrați în sat pe noul drum asfaltat.",
+        "Treceți de piața locală pe stânga și urcați mica colină.",
+        "Virați la dreapta pe Rua C, imediat după Love Café.",
+        "Ne veți găsi după doar 100 de metri pe dreapta.",
+      ],
+      note: "DEVOCEAN Lodge este accesibil pentru toate tipurile de mașini și motociclete.",
+    },
   },
   contact: { headline: "Contact și solicitări", blurb: "Pentru disponibilitate imediată și prețuri garantate, faceți clic pe butonul Rezervare online din partea de sus a paginii.", formHint: "Folosiți acest formular pentru grupuri, transferuri sau cereri speciale.", call: "WhatsApp", email: "E-mail", directions: "Indicații rutiere", bookNow: "Rezervare online" },
   form: {

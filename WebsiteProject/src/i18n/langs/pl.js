@@ -29,6 +29,16 @@ export const UI = {
       "30 minut jazdy od Malongane. Tylko 4x4 po głębokim piasku.",
     ],
     viewMap: "Zobacz interaktywną mapę",
+    howToFind: {
+      heading: "Gdzie znaleźć DEVOCEAN Lodge?",
+      steps: [
+        "Wjedź do wioski nową asfaltową drogą.",
+        "Miniaj lokalny targ po lewej stronie i jedź pod górę małym wzgórzem.",
+        "Skręć w prawo w Rua C, zaraz za Love Café.",
+        "Znajdziesz nas po zaledwie 100 metrach po prawej stronie.",
+      ],
+      note: "DEVOCEAN Lodge jest dostępny dla wszystkich rodzajów samochodów i motocykli.",
+    },
   },
   contact: { headline: "Kontakt i zapytania", blurb: "W sprawie natychmiastowej dostępności i gwarantowanych cen kliknij przycisk Rezerwacja online na górze strony.", formHint: "Ten formularz służy do rezerwacji grupowych, transferów lub specjalnych życzeń.", call: "WhatsApp", email: "E-mail", directions: "Wskazówki dojazdu", bookNow: "Rezerwacja online" },
   form: {

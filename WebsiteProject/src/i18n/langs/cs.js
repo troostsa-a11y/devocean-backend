@@ -29,6 +29,16 @@ export const UI = {
       "30 minut jízdy od Malongane. Pouze 4x4 přes hluboký písek.",
     ],
     viewMap: "Zobrazit interaktivní mapu",
+    howToFind: {
+      heading: "Kde najdete DEVOCEAN Lodge?",
+      steps: [
+        "Vjeďte do vesnice po nové asfaltové silnici.",
+        "Projeďte kolem místního trhu na levé straně a vyjeďte na malý kopec.",
+        "Odbočte doprava do Rua C, hned za Love Café.",
+        "Najdete nás po pouhých 100 metrech na pravé straně.",
+      ],
+      note: "DEVOCEAN Lodge je přístupný pro všechny typy aut a motocyklů.",
+    },
   },
   contact: { headline: "Kontakt a dotazy", blurb: "Pro okamžitou dostupnost a garantované ceny klikněte na tlačítko Online rezervace v horní části stránky.", formHint: "Tento formulář využijte pro skupiny, transfery nebo zvláštní požadavky.", call: "WhatsApp", email: "E-mail", directions: "Navigace", bookNow: "Online rezervace" },
   form: {

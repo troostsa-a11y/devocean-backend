@@ -29,6 +29,16 @@ export const UI = {
       "30 minuta vožnje od Malongane. Samo 4x4 po dubokom pesku.",
     ],
     viewMap: "Pogledajte interaktivnu mapu",
+    howToFind: {
+      heading: "Где пронаћи DEVOCEAN Lodge?",
+      steps: [
+        "Уђите у село новим асфалтираним путем.",
+        "Прођите поред локалне пијаце са леве стране и идите уз мали брежуљак.",
+        "Скрените десно у Rua C, одмах после Love Café.",
+        "Наћи ћете нас после само 100 метара са десне стране.",
+      ],
+      note: "DEVOCEAN Lodge је приступачан за све врсте аутомобила и мотоцикала.",
+    },
   },
   contact: { headline: "Kontakt i upiti", blurb: "Za trenutnu dostupnost i garantovane cene, kliknite na dugme Online rezervacija na vrhu stranice.", formHint: "Koristite ovaj formular za grupe, transfere ili posebne zahteve.", call: "WhatsApp", email: "Imejl", directions: "Uputstva za put", bookNow: "Online rezervacija" },
   form: {
