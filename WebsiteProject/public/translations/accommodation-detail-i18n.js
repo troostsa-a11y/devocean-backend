@@ -659,10 +659,14 @@ async function applyTranslations(lang) {
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     const lang = detectLanguage();
-    applyTranslations(lang);
+    applyTranslations(lang).catch(function(err) {
+      console.error('Accommodation i18n error:', err);
+    });
   });
 } else {
   // DOM already loaded, execute immediately
   const lang = detectLanguage();
-  applyTranslations(lang);
+  applyTranslations(lang).catch(function(err) {
+    console.error('Accommodation i18n error:', err);
+  });
 }

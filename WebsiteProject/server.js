@@ -699,6 +699,9 @@ const PORT = process.env.PORT || 5000;
 const httpServer = createHttpServer(app);
 
 // In development, use Vite dev server
+// Use the Replit dev domain for HMR so the client connects through the proxy
+// (ws://127.0.0.1:443 fails when the preview tool uses the internal address).
+const replitDevDomain = process.env.REPLIT_DEV_DOMAIN;
 const vite = await createViteServer({
   server: { 
     middlewareMode: true,
@@ -706,7 +709,9 @@ const vite = await createViteServer({
     allowedHosts: true,
     hmr: {
       server: httpServer,
-      clientPort: 443,
+      ...(replitDevDomain
+        ? { host: replitDevDomain, clientPort: 443, protocol: 'wss' }
+        : { clientPort: 443 }),
     },
   },
   appType: 'spa',
