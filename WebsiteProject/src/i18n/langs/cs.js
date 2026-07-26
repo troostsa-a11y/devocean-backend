@@ -26,7 +26,7 @@ export const UI = {
     ],
     viewMap: "Zobrazit interaktivní mapu",
   },
-  contact: { headline: "Kontakt a rezervace", blurb: "Otázky, termíny, zvláštní požadavky nebo skupinové rezervace – jsme tu, abychom pomohli.", call: "WhatsApp", email: "E-mail", directions: "Navigace", bookNow: "Ceny a dostupnost" },
+  contact: { headline: "Kontakt a dotazy", blurb: "Pro okamžitou dostupnost a potvrzené ceny rezervujte online. Tento formulář využijte pro skupiny, transfery nebo zvláštní požadavky.", call: "WhatsApp", email: "E-mail", directions: "Navigace", bookNow: "Ceny a dostupnost" },
   form: {
     name: "Jméno", email: "E-mail", stayLabel: "Mám zájem o ubytování:", checkin: "Od (příjezd)", checkout: "Do (odjezd)",
     unitLabel: "Preferovaná jednotka:",

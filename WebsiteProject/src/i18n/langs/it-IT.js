@@ -68,7 +68,7 @@ menu: "Menu",
       ],
       viewMap: "Visualizza mappa interattiva",
     },
-    contact: { headline: "Contatti & Prenotazioni", blurb: "Domande, date, richieste speciali o gruppi – felici di aiutarti.", call: "WhatsApp", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
+    contact: { headline: "Contatti & Richieste", blurb: "Per disponibilità immediata e prezzi confermati, prenota online. Usa questo modulo per gruppi, transfer o richieste speciali.", call: "WhatsApp", email: "E-mail", directions: "Indicazioni", bookNow: "Tariffe & Disponibilità" },
     form: {
       name: "Nome", email: "E-mail", stayLabel: "Interessato a soggiornare:", checkin: "Dal", checkout: "Al",
       unitLabel: "La mia sistemazione preferita è:",

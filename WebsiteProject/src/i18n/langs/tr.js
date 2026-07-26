@@ -26,7 +26,7 @@ export const UI = {
     ],
     viewMap: "İnteraktif haritayı görüntüle",
   },
-  contact: { headline: "İletişim ve Rezervasyon", blurb: "Sorular, tarihler, özel istekler veya grup rezervasyonları – yardım için buradayız.", call: "WhatsApp", email: "E-posta", directions: "Yol Tarifi", bookNow: "Fiyatlar ve Müsaitlik" },
+  contact: { headline: "İletişim ve Talepler", blurb: "Anlık müsaitlik ve onaylı fiyatlar için online rezervasyon yapın. Bu formu gruplar, transferler veya özel talepler için kullanın.", call: "WhatsApp", email: "E-posta", directions: "Yol Tarifi", bookNow: "Fiyatlar ve Müsaitlik" },
   form: {
     name: "Ad", email: "E-posta", stayLabel: "Konaklamayla ilgileniyorum:", checkin: "Giriş tarihi", checkout: "Çıkış tarihi",
     unitLabel: "Tercih edilen birim:",

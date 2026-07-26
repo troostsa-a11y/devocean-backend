@@ -30,8 +30,8 @@ menu: "Kieslys",
       viewMap: "Bekyk interaktiewe kaart",
     },
     contact: {
-      headline: "Kontak en Bespreking",
-      blurb: "Vrae, datums, spesiale versoeke of groepbesprekings — ons help graag.",
+      headline: "Kontak en Navrae",
+      blurb: "Vir onmiddellike beskikbaarheid en bevestigde pryse, bespreek aanlyn. Gebruik hierdie vorm vir groepe, vervoer of spesiale versoeke.",
       call: "WhatsApp", email: "E-pos", directions: "Aanwysings", bookNow: "Tariewe en beskikbaarheid",
     },
     form: {

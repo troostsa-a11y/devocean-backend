@@ -26,7 +26,7 @@ export const UI = {
     ],
     viewMap: "Visa interaktiv karta",
   },
-  contact: { headline: "Kontakta oss", blurb: "Frågor? Vi finns här för att hjälpa dig. Hör av dig så svarar vi så snart som möjligt.", call: "WhatsApp", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka nu" },
+  contact: { headline: "Kontakt & Förfrågningar", blurb: "För omedelbar tillgänglighet och bekräftade priser, boka online. Använd detta formulär för grupper, transfer eller särskilda önskemål.", call: "WhatsApp", email: "Maila oss", directions: "Få vägbeskrivning", bookNow: "Boka nu" },
   form: {
     name: "Ditt namn", email: "E-postadress", stayLabel: "Intresserad av vistelse:", checkin: "Från", checkout: "Till",
     unitLabel: "Min föredragna enhet är:",

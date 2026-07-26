@@ -68,7 +68,7 @@ menu: "メニュー",
       ],
       viewMap: "インタラクティブマップを表示",
     },
-    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
+    contact: { headline: "お問い合わせ", blurb: "即時空室確認と確定料金はオンライン予約をご利用ください。グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
     form: {
       name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
       unitLabel: "好みのユニット：",
@@ -186,7 +186,7 @@ nav: { home: "ホーム", stay: "宿泊", experiences: "体験", todo: "アク�
       ],
       viewMap: "インタラクティブマップを表示",
     },
-    contact: { headline: "連絡先 & 予約", blurb: "質問、日付、特別リクエスト、グループ予約 – 喜んでお手伝いします。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
+    contact: { headline: "お問い合わせ", blurb: "即時空室確認と確定料金はオンライン予約をご利用ください。グループ、送迎、特別なご要望にはこのフォームをご使用ください。", call: "WhatsApp", email: "メール", directions: "道順", bookNow: "料金 & 空室状況" },
     form: {
       name: "氏名", email: "メール", stayLabel: "滞在に興味：", checkin: "から", checkout: "まで", 
       unitLabel: "好みのユニット：",

@@ -29,8 +29,8 @@ export const UI = {
     viewMap: "Buka imephu esebenzayo",
   },
   contact: {
-    headline: "Xhumana kanye nokubhuka",
-    blurb: "Imibuzo, izinsuku, izicelo ezikhethekile noma ukubhuka kweqembu - siyajabula ukusiza.",
+    headline: "Xhumana kanye nezicelo",
+    blurb: "Ukuthola ukutholakala ngokushesha kanye namanani aqinisekisiwe, bhuka online. Sebenzisa le fomu yamaklabhu, ukudluliselwa noma izicelo ezikhethekile.",
     call: "WhatsApp", email: "I-imeyili", directions: "Izinkomba zokuya", bookNow: "Amanani kanye nokutholakala",
   },
   form: {

@@ -68,7 +68,7 @@ menu: "Menü",
       ],
       viewMap: "Interaktive Karte anzeigen",
     },
-    contact: { headline: "Kontakt & Buchung", blurb: "Fragen, Daten, Sonderwünsche oder Gruppen – wir helfen gern.", call: "WhatsApp", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
+    contact: { headline: "Kontakt & Anfragen", blurb: "Für sofortige Verfügbarkeit und bestätigte Preise buchen Sie online. Dieses Formular ist für Gruppen, Transfers oder besondere Wünsche.", call: "WhatsApp", email: "E-Mail", directions: "Anfahrt", bookNow: "Preise & Verfügbarkeit" },
     form: {
       name: "Name", email: "E-Mail", stayLabel: "Interessiert an einem Aufenthalt:", checkin: "Von", checkout: "Bis",
       unitLabel: "Meine bevorzugte Unterkunft ist:",

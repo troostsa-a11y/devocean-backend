@@ -117,9 +117,9 @@ menu: "Menu",
       viewMap: "Voir la carte interactive",
     },
     contact: {
-      headline: "Contact & Réservation",
+      headline: "Contact & Demandes",
       blurb:
-        "Questions, dates, demandes spéciales ou groupes – nous sommes là pour vous aider.",
+        "Pour disponibilité et prix confirmés immédiats, réservez en ligne. Ce formulaire est réservé aux groupes, transferts ou demandes spéciales.",
       call: "WhatsApp",
       email: "E-mail",
       directions: "Itinéraire",
