@@ -320,11 +320,14 @@ export default function DateRangePicker({
         aria-label={t.selectDates || 'Dates'}
         data-testid="panel-daterange"
       >
-        <div className="flex items-center justify-between gap-3 mb-3 pb-3 border-b border-slate-100">
+        <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-100"
+             style={{ marginBottom: pendIn && !pendOut ? '0.375rem' : '0.75rem' }}>
           <div className="min-w-0 text-sm text-slate-700 flex items-center gap-2">
             <span className="truncate font-medium">{pendIn ? fmtLong(pendIn) : t.checkIn}</span>
-            <ArrowRight className="h-4 w-4 text-slate-400 shrink-0" />
-            <span className="truncate font-medium">{pendOut ? fmtLong(pendOut) : t.checkOut}</span>
+            <ArrowRight className={`h-4 w-4 shrink-0 ${pendIn && !pendOut ? 'text-[#9e4b13]' : 'text-slate-400'}`} />
+            <span className={`truncate font-medium ${pendIn && !pendOut ? 'text-[#9e4b13]' : ''}`}>
+              {pendOut ? fmtLong(pendOut) : t.checkOut}
+            </span>
           </div>
           {pendNights > 0 && (
             <span className="shrink-0 text-xs font-medium text-slate-500" data-testid="text-daterange-nights">
@@ -332,6 +335,11 @@ export default function DateRangePicker({
             </span>
           )}
         </div>
+        {pendIn && !pendOut && (
+          <p className="text-[11px] font-semibold text-[#9e4b13] mb-3" aria-live="polite">
+            {t.pickCheckout || 'Now pick your check-out date →'}
+          </p>
+        )}
 
         <div className="relative">
           <button

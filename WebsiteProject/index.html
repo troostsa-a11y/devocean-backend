@@ -39,6 +39,11 @@
     });
   </script>
 
+  <!-- WebKit autofill stub — prevents "Can't find variable: _AutofillCallbackHandler"
+       on iOS/Safari when GTM or CookieYes trigger a WebKit autofill callback that
+       doesn't exist outside a WKWebView. No-op that WebKit's real handler overrides. -->
+  <script>window._AutofillCallbackHandler=window._AutofillCallbackHandler||function(){};</script>
+
   <!-- Critical: Preload hero image for LCP optimization (fetchpriority=high for immediate load) -->
   <link rel="preload" as="image" href="/photos/hero01.webp" type="image/webp" fetchpriority="high" media="(min-width: 801px)">
   <link rel="preload" as="image" href="/photos/hero01-mobile.webp" type="image/webp" fetchpriority="high" media="(max-width: 800px)">

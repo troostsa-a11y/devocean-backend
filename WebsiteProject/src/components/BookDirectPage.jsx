@@ -1002,6 +1002,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       className={INPUT_CLASS}
                       placeholder={t.optional}
                       data-testid="input-discount-code"
+                      autoComplete="off"
                     />
                   </div>
 
@@ -1014,6 +1015,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       className={INPUT_CLASS}
                       placeholder={t.optional}
                       data-testid="input-voucher-code"
+                      autoComplete="off"
                     />
                   </div>
 
@@ -1799,6 +1801,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         onChange={(e) => setGuest({ ...guest, firstName: e.target.value })}
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-first-name"
+                        autoComplete="given-name"
                         required
                       />
                     </label>
@@ -1810,6 +1813,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         onChange={(e) => setGuest({ ...guest, lastName: e.target.value })}
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-last-name"
+                        autoComplete="family-name"
                         required
                       />
                     </label>
@@ -1821,6 +1825,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         onChange={(e) => setGuest({ ...guest, email: e.target.value })}
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-email"
+                        autoComplete="email"
                         required
                       />
                     </label>
@@ -1832,6 +1837,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         onChange={(e) => setGuest({ ...guest, phone: e.target.value })}
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-phone"
+                        autoComplete="tel"
                         required
                       />
                     </label>
