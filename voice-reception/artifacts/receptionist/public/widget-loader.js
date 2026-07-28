@@ -157,7 +157,7 @@
       "position:fixed;" +
       "bottom:" + (MARGIN + BTN_R + 12) + "px;" +
       "right:" + MARGIN + "px;" +
-      "width:" + PANEL_W + "px;height:224px;" +
+      "width:" + PANEL_W + "px;height:256px;" +
       "border:none;border-radius:16px;" +
       "box-shadow:0 8px 40px rgba(0,0,0,.18);" +
       "z-index:2147483645;" +

@@ -80,6 +80,7 @@ export default function WidgetEmbed() {
     <div style={{ fontFamily: FONT, height: "100%", display: "flex", flexDirection: "column", background: "white", borderRadius: 16, overflow: "hidden" }}>
       {/* Keyframes ─ ping animation + spinner */}
       <style>{`
+        html, body { overflow: hidden; margin: 0; padding: 0; height: 100%; }
         @keyframes dv-embed-ping {
           0%   { transform: scale(1);   opacity: .18; }
           70%  { transform: scale(1.7); opacity: 0;   }
