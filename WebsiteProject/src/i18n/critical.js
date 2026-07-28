@@ -41,7 +41,7 @@ export const CRITICAL_NAV = {
     location: "Localização",
     contact: "Contato",
     bookNow: "Tarifas e disponibilidade",
-    heroCTA: "Check Availability"
+    heroCTA: "Verificar Disponibilidade"
   },
   "pt-BR": {
     home: "Início",
@@ -52,7 +52,7 @@ export const CRITICAL_NAV = {
     location: "Localização",
     contact: "Contato",
     bookNow: "Tarifas e disponibilidade",
-    heroCTA: "Check Availability"
+    heroCTA: "Verificar Disponibilidade"
   },
   "nl-NL": {
     home: "Home",
@@ -63,7 +63,7 @@ export const CRITICAL_NAV = {
     location: "Locatie",
     contact: "Contact",
     bookNow: "Tarieven & Beschikbaarheid",
-    heroCTA: "Check Availability"
+    heroCTA: "Beschikbaarheid controleren"
   },
   "fr-FR": {
     home: "Accueil",
@@ -74,7 +74,7 @@ export const CRITICAL_NAV = {
     location: "Localisation",
     contact: "Contact",
     bookNow: "Tarifs & Disponibilité",
-    heroCTA: "Check Availability"
+    heroCTA: "Vérifier la disponibilité"
   },
   "it-IT": {
     home: "Home",
@@ -85,7 +85,7 @@ export const CRITICAL_NAV = {
     location: "Posizione",
     contact: "Contatto",
     bookNow: "Tariffe & Disponibilità",
-    heroCTA: "Check Availability"
+    heroCTA: "Verifica disponibilità"
   },
   "de-DE": {
     home: "Startseite",
@@ -96,7 +96,7 @@ export const CRITICAL_NAV = {
     location: "Standort",
     contact: "Kontakt",
     bookNow: "Preise & Verfügbarkeit",
-    heroCTA: "Check Availability"
+    heroCTA: "Verfügbarkeit prüfen"
   },
   "es-ES": {
     home: "Inicio",
@@ -107,7 +107,7 @@ export const CRITICAL_NAV = {
     location: "Ubicación",
     contact: "Contacto",
     bookNow: "Tarifas & Disponibilidad",
-    heroCTA: "Check Availability"
+    heroCTA: "Verificar disponibilidad"
   },
   sv: {
     home: "Hem",
@@ -118,7 +118,7 @@ export const CRITICAL_NAV = {
     location: "Plats",
     contact: "Kontakt",
     bookNow: "Boka nu",
-    heroCTA: "Check Availability"
+    heroCTA: "Kontrollera tillgänglighet"
   },
   pl: {
     home: "Strona główna",
@@ -129,7 +129,7 @@ export const CRITICAL_NAV = {
     location: "Lokalizacja",
     contact: "Kontakt",
     bookNow: "Ceny i dostępność",
-    heroCTA: "Check Availability"
+    heroCTA: "Sprawdź dostępność"
   },
   ro: {
     home: "Acasă",
@@ -140,7 +140,7 @@ export const CRITICAL_NAV = {
     location: "Locație",
     contact: "Contact",
     bookNow: "Tarife și disponibilitate",
-    heroCTA: "Check Availability"
+    heroCTA: "Verificați disponibilitatea"
   },
   sr: {
     home: "Početna",
@@ -151,7 +151,7 @@ export const CRITICAL_NAV = {
     location: "Lokacija",
     contact: "Kontakt",
     bookNow: "Cene i dostupnost",
-    heroCTA: "Check Availability"
+    heroCTA: "Proverite dostupnost"
   },
   hr: {
     home: "Početna",
@@ -162,7 +162,7 @@ export const CRITICAL_NAV = {
     location: "Lokacija",
     contact: "Kontakt",
     bookNow: "Cijene i dostupnost",
-    heroCTA: "Check Availability"
+    heroCTA: "Provjeri dostupnost"
   },
   cs: {
     home: "Domů",
@@ -173,7 +173,7 @@ export const CRITICAL_NAV = {
     location: "Lokalita",
     contact: "Kontakt",
     bookNow: "Ceny a dostupnost",
-    heroCTA: "Check Availability"
+    heroCTA: "Zkontrolovat dostupnost"
   },
   tr: {
     home: "Ana Sayfa",
@@ -184,7 +184,7 @@ export const CRITICAL_NAV = {
     location: "Konum",
     contact: "İletişim",
     bookNow: "Fiyatlar ve Müsaitlik",
-    heroCTA: "Check Availability"
+    heroCTA: "Müsaitliği Kontrol Et"
   },
   "ja-JP": {
     home: "ホーム",
@@ -195,7 +195,7 @@ export const CRITICAL_NAV = {
     location: "場所",
     contact: "連絡先",
     bookNow: "料金 & 空室状況",
-    heroCTA: "Check Availability"
+    heroCTA: "空き状況を確認"
   },
   "zh-CN": {
     home: "首页",
@@ -206,7 +206,7 @@ export const CRITICAL_NAV = {
     location: "位置",
     contact: "联系我们",
     bookNow: "价格与空房情况",
-    heroCTA: "Check Availability"
+    heroCTA: "查看空房"
   },
   ru: {
     home: "Главная",
@@ -217,7 +217,7 @@ export const CRITICAL_NAV = {
     location: "Местоположение",
     contact: "Контакты",
     bookNow: "Цены и наличие",
-    heroCTA: "Check Availability"
+    heroCTA: "Проверить доступность"
   },
   "af-ZA": {
     home: "Tuis",
@@ -228,7 +228,7 @@ export const CRITICAL_NAV = {
     location: "Ligging",
     contact: "Kontak",
     bookNow: "Tariewe en beskikbaarheid",
-    heroCTA: "Check Availability"
+    heroCTA: "Kontroleer beskikbaarheid"
   },
   zu: {
     home: "Ikhaya",
@@ -239,7 +239,7 @@ export const CRITICAL_NAV = {
     location: "Indawo",
     contact: "Xhumana nathi",
     bookNow: "Amanani kanye nokutholakala",
-    heroCTA: "Check Availability"
+    heroCTA: "Hlola ukutholakala"
   },
   sw: {
     home: "Nyumbani",
@@ -250,6 +250,6 @@ export const CRITICAL_NAV = {
     location: "Mahali",
     contact: "Wasiliana nasi",
     bookNow: "Weka nafasi sasa",
-    heroCTA: "Check Availability"
+    heroCTA: "Angalia upatikanaji"
   }
 };

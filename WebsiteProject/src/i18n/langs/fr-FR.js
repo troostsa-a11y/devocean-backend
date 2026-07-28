@@ -14,7 +14,7 @@ menu: "Menu",
     hero: {
       title: "DEVOCEAN Lodge",
       subtitle: "Séjours écologiques près d'une plage préservée, dans une destination d'aventure de classe mondiale.", description: "Découvrez un paradis de plongée UNESCO unique, entouré de réserves naturelles et d'expériences inoubliables en plein air.",
-      ctaPrimary: "Check Availability",
+      ctaPrimary: "Vérifier la disponibilité",
       ctaSecondary: "Découvrir le lodge",
       badge: "Confort & rapport qualité-prix plébiscités", clickReviews: "Cliquez sur les avis !",
       whyPonta: "Pourquoi Ponta do Ouro ?",

@@ -3,7 +3,7 @@ export const UI = {
 menu: "メニュー",
     regions: { westEu: "西ヨーロッパ", eastEu: "東ヨーロッパ", asia: "アジア", americas: "アメリカ大陸", africa: "アフリカ", oceania: "オセアニア" },
     nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "Check Availability", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", clickReviews: "口コミをクリック！", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "空き状況を確認", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", clickReviews: "口コミをクリック！", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
     experiences: { headline: "Explore Ponta", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：", learnMore: "ダイビングスポット、オペレーター、料金を探る →" },
     units: {
@@ -128,7 +128,7 @@ menu: "メニュー",
 
 export const L10N = {
 nav: { home: "ホーム", stay: "宿泊", experiences: "Explore Ponta", todo: "アクティビティ", gallery: "ギャラリー", location: "場所", contact: "連絡先" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "Check Availability", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", clickReviews: "口コミをクリック！", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "手つかずのビーチのそばで楽しむ、世界級のアドベンチャーデスティネーションにあるエコフレンドリーな滞在。", description: "自然保護区に囲まれた、忘れられないアウトドア体験が待つ、ユネスコ認定の特別なダイビングパラダイスを発見してください。", ctaPrimary: "空き状況を確認", ctaSecondary: "ロッジを探検", badge: "ゲストに愛される快適さと価値", clickReviews: "口コミをクリック！", whyPonta: "なぜPonta do Ouro？", villageHighlights: "ハイライト", goDiving: "ダイビングへ" },
     stay: { headline: "私たちと一緒に", blurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。", moreDetails: "詳細", ourStory: "私たちの物語" },
     experiences: { headline: "Explore Ponta", blurb: "玄関先でオーシャンとフォレストの冒険。", operators: "信頼できる地元オペレーター：" },
     units: {
