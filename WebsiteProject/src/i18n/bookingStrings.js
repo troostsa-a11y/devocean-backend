@@ -15,7 +15,7 @@
 const STRINGS = {
   en: {
     title: 'Book your stay with us',
-    cardTitle: 'Enter your preferred dates for rates & availability',
+    cardTitle: 'Check rates & availability',
     subtitle: 'Booking guaranteed\nImmediate confirmation\nBest service & support',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
@@ -112,7 +112,7 @@ const STRINGS = {
   },
   pt: {
     title: 'Reserve a sua estadia connosco',
-    cardTitle: 'Insira as suas datas preferidas para tarifas e disponibilidade',
+    cardTitle: 'Verificar tarifas e disponibilidade',
     subtitle: 'Reserva garantida\nConfirmação imediata\nMelhor serviço e suporte',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
@@ -209,7 +209,7 @@ const STRINGS = {
   },
   de: {
     title: 'Buchen Sie Ihren Aufenthalt bei uns',
-    cardTitle: 'Geben Sie Ihre Wunschdaten für Preise und Verfügbarkeit ein',
+    cardTitle: 'Preise & Verfügbarkeit prüfen',
     subtitle: 'Buchung garantiert\nSofortige Bestätigung\nBester Service & Support',
     checkIn: 'Anreise',
     checkOut: 'Abreise',
@@ -306,7 +306,7 @@ const STRINGS = {
   },
   fr: {
     title: 'Réservez votre séjour chez nous',
-    cardTitle: 'Entrez vos dates préférées pour les tarifs et la disponibilité',
+    cardTitle: 'Vérifier les tarifs et la disponibilité',
     subtitle: 'Réservation garantie\nConfirmation immédiate\nMeilleur service & assistance',
     checkIn: 'Arrivée',
     checkOut: 'Départ',
@@ -403,7 +403,7 @@ const STRINGS = {
   },
   es: {
     title: 'Reserve su estancia con nosotros',
-    cardTitle: 'Introduzca sus fechas preferidas para tarifas y disponibilidad',
+    cardTitle: 'Consultar tarifas y disponibilidad',
     subtitle: 'Reserva garantizada\nConfirmación inmediata\nMejor servicio y asistencia',
     checkIn: 'Entrada',
     checkOut: 'Salida',
@@ -500,7 +500,7 @@ const STRINGS = {
   },
   it: {
     title: 'Prenota il tuo soggiorno con noi',
-    cardTitle: 'Inserisci le tue date preferite per tariffe e disponibilità',
+    cardTitle: 'Verifica tariffe e disponibilità',
     subtitle: 'Prenotazione garantita\nConferma immediata\nMiglior servizio e supporto',
     checkIn: 'Check-in',
     checkOut: 'Check-out',
@@ -597,7 +597,7 @@ const STRINGS = {
   },
   nl: {
     title: 'Boek uw verblijf bij ons',
-    cardTitle: 'Voer uw voorkeursdatums in voor tarieven en beschikbaarheid',
+    cardTitle: 'Bekijk tarieven & beschikbaarheid',
     subtitle: 'Boeking gegarandeerd\nDirecte bevestiging\nBeste service & ondersteuning',
     checkIn: 'Inchecken',
     checkOut: 'Uitchecken',
@@ -694,7 +694,7 @@ const STRINGS = {
   },
   sv: {
     title: "Boka ditt boende hos oss",
-    cardTitle: "Ange dina önskade datum för priser och tillgänglighet",
+    cardTitle: "Kontrollera priser & tillgänglighet",
     subtitle: "Bokning garanterad\nOmedelbar bekräftelse\nBästa service & support",
     checkIn: "Incheckning",
     checkOut: "Utcheckning",
@@ -791,7 +791,7 @@ const STRINGS = {
   },
   pl: {
     title: "Zarezerwuj pobyt u nas",
-    cardTitle: "Wpisz preferowane daty, aby zobaczyć ceny i dostępność",
+    cardTitle: "Sprawdź ceny i dostępność",
     subtitle: "Rezerwacja gwarantowana\nNatychmiastowe potwierdzenie\nNajlepsza obsługa i wsparcie",
     checkIn: "Zameldowanie",
     checkOut: "Wymeldowanie",
@@ -888,7 +888,7 @@ const STRINGS = {
   },
   ro: {
     title: "Rezervă-ți sejurul cu noi",
-    cardTitle: "Introduceți datele preferate pentru tarife și disponibilitate",
+    cardTitle: "Verificați tarifele și disponibilitatea",
     subtitle: "Rezervare garantată\nConfirmare imediată\nCel mai bun serviciu și suport",
     checkIn: "Check-in",
     checkOut: "Check-out",
@@ -985,7 +985,7 @@ const STRINGS = {
   },
   sr: {
     title: "Rezervišite svoj boravak kod nas",
-    cardTitle: "Unesite željene datume za cene i dostupnost",
+    cardTitle: "Proverite cene i dostupnost",
     subtitle: "Rezervacija garantovana\nTrenutna potvrda\nNajbolji servis i podrška",
     checkIn: "Prijava",
     checkOut: "Odjava",
@@ -1082,7 +1082,7 @@ const STRINGS = {
   },
   hr: {
     title: "Rezervirajte svoj boravak kod nas",
-    cardTitle: "Unesite željene datume za cijene i dostupnost",
+    cardTitle: "Provjerite cijene i dostupnost",
     subtitle: "Rezervacija zajamčena\nTrenutna potvrda\nNajbolja usluga i podrška",
     checkIn: "Prijava",
     checkOut: "Odjava",
@@ -1179,7 +1179,7 @@ const STRINGS = {
   },
   cs: {
     title: "Rezervujte si pobyt u nás",
-    cardTitle: "Zadejte preferovaná data pro ceny a dostupnost",
+    cardTitle: "Zkontrolujte ceny a dostupnost",
     subtitle: "Rezervace zaručena\nOkamžité potvrzení\nNejlepší servis a podpora",
     checkIn: "Příjezd",
     checkOut: "Odjezd",
@@ -1276,7 +1276,7 @@ const STRINGS = {
   },
   tr: {
     title: "Bizimle konaklamanızı rezerve edin",
-    cardTitle: "Fiyatlar ve müsaitlik için tercih ettiğiniz tarihleri girin",
+    cardTitle: "Fiyatları ve müsaitliği kontrol edin",
     subtitle: "Rezervasyon garantili\nAnında onay\nEn iyi hizmet ve destek",
     checkIn: "Giriş",
     checkOut: "Çıkış",
@@ -1373,7 +1373,7 @@ const STRINGS = {
   },
   ja: {
     title: "ご滞在のご予約はこちらで",
-    cardTitle: "ご希望の日程を入力して料金と空室状況をご確認ください",
+    cardTitle: "料金と空室状況を確認する",
     subtitle: "予約確定保証\n即時確認\n最高のサービス＆サポート",
     checkIn: "チェックイン",
     checkOut: "チェックアウト",
@@ -1470,7 +1470,7 @@ const STRINGS = {
   },
   zh: {
     title: "与我们预订您的住宿",
-    cardTitle: "输入您的首选日期以查看房价与空房情况",
+    cardTitle: "查看房价与空房情况",
     subtitle: "预订有保障\n即时确认\n最优质的服务与支持",
     checkIn: "入住",
     checkOut: "退房",
@@ -1567,7 +1567,7 @@ const STRINGS = {
   },
   ru: {
     title: "Забронируйте проживание у нас",
-    cardTitle: "Введите предпочтительные даты для просмотра тарифов и наличия",
+    cardTitle: "Проверьте тарифы и наличие",
     subtitle: "Бронирование гарантировано\nМгновенное подтверждение\nЛучший сервис и поддержка",
     checkIn: "Заезд",
     checkOut: "Выезд",
@@ -1664,7 +1664,7 @@ const STRINGS = {
   },
   af: {
     title: "Bespreek jou verblyf by ons",
-    cardTitle: "Voer u verkiese datums in vir tariewe en beskikbaarheid",
+    cardTitle: "Kontroleer tariewe & beskikbaarheid",
     subtitle: "Boeking gewaarborg\nOnmiddellike bevestiging\nBeste diens en ondersteuning",
     checkIn: "Inklok",
     checkOut: "Uitklok",
@@ -1761,7 +1761,7 @@ const STRINGS = {
   },
   zu: {
     title: "Bhukha ukuhlala kwakho nathi",
-    cardTitle: "Faka izinsuku ozithandayo ukuze ubone amanani nokukhona",
+    cardTitle: "Hlola amanani nokukhona",
     subtitle: "Ukubhuka kuqinisekisiwe\nUkuqinisekisa ngokushesha\nInkonzo nokusekela okungcono",
     checkIn: "Usuku lokungena",
     checkOut: "Usuku lokuphuma",
@@ -1858,7 +1858,7 @@ const STRINGS = {
   },
   sw: {
     title: "Weka nafasi ya kukaa kwako kwetu",
-    cardTitle: "Ingiza tarehe unazozipenda kwa bei na upatikanaji",
+    cardTitle: "Angalia bei na upatikanaji",
     subtitle: "Uhakika wa uhifadhi\nUthibitisho wa haraka\nHuduma na msaada bora",
     checkIn: "Tarehe ya kuingia",
     checkOut: "Tarehe ya kutoka",
