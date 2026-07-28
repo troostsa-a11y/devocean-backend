@@ -63,7 +63,7 @@ export const CRITICAL_NAV = {
     location: "Locatie",
     contact: "Contact",
     bookNow: "Tarieven & Beschikbaarheid",
-    heroCTA: "Beschikbaarheid controleren"
+    heroCTA: "Bekijk Beschikbaarheid"
   },
   "fr-FR": {
     home: "Accueil",

@@ -290,7 +290,7 @@ export const UI = {
     menu: "Menu",
     regions: { westEu: "West-Europa", eastEu: "Oost-Europa", asia: "Azië", americas: "Amerika", africa: "Afrika", oceania: "Oceanië" },
     nav: { home: "Home", stay: "Verblijf", experiences: "Ervaringen", todo: "Wat te doen", gallery: "Galerij", location: "Locatie", contact: "Contact" },
-    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijk verblijven vlak bij een ongerept strand in een avontuurlijke topbestemming.", description: "Ontdek een uniek UNESCO-duikparadijs, omgeven door natuurreservaten en onvergetelijke belevenissen in de buitenlucht.", ctaPrimary: "Beschikbaarheid controleren", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
+    hero: { title: "DEVOCEAN Lodge", subtitle: "Eco-vriendelijk verblijven vlak bij een ongerept strand in een avontuurlijke topbestemming.", description: "Ontdek een uniek UNESCO-duikparadijs, omgeven door natuurreservaten en onvergetelijke belevenissen in de buitenlucht.", ctaPrimary: "Bekijk Beschikbaarheid", ctaSecondary: "Verken de lodge", badge: "Geliefd om comfort & prijs-kwaliteit" },
     stay: { headline: "Verblijf bij ons", blurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.", moreDetails: "Meer details", ourStory: "Ons Verhaal" },
     experiences: { headline: "Ervaringen", blurb: "Zee- en bosavontuur naast de deur.", operators: "Betrouwbare lokale aanbieders:" },
     units: {
