@@ -1105,7 +1105,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 ) : (
                   <>
-                  <div className="space-y-1">
+                  <div className="space-y-1 text-center">
                     {(() => {
                       const partyParts = [
                         effAdults > 0 ? `${effAdults} ${t.adults.toLowerCase()}` : null,
@@ -1121,7 +1121,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         </p>
                       );
                     })()}
-                    <p className="text-sm font-medium text-slate-600" data-testid="text-amenities-note">{t.amenitiesNote}</p>
+                    <p className="text-sm font-medium text-slate-600 text-center" data-testid="text-amenities-note">{t.amenitiesNote}</p>
                   </div>
                   <div className="grid grid-cols-1 lg:grid-cols-[minmax(28rem,1fr)_22rem] gap-6 items-start">
                     <div className="space-y-4">
