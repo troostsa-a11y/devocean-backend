@@ -536,7 +536,7 @@ function getCriticalUI(lang) {
       title: nav.heroTitle || "DEVOCEAN Lodge",
       subtitle: nav.heroSubtitle || "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.",
       description: nav.heroDescription || null,
-      ctaPrimary: nav.heroCTA || "Book your stay",
+      ctaPrimary: nav.heroCTA || "Check Availability",
       ctaSecondary: nav.heroExplore || "Explore the lodge",
       badge: "..." // Placeholder until full translations load
     },
