@@ -106,12 +106,12 @@
     '.sn-book-top:hover{background:rgba(255,255,255,.1);}',
     /* Main header */
     '.sn-header{background:#fff;border-bottom:1px solid #e2e8f0;}',
-    '.sn-nav{max-width:1280px;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;}',
+    '.sn-nav{max-width:1280px;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;}',
     '.sn-logo{display:flex;align-items:center;gap:.75rem;color:#1e293b;text-decoration:none;flex-shrink:0;}',
     '.sn-logo img{width:36px;height:36px;border-radius:50%;object-fit:cover;}',
     '.sn-logo span{font-weight:600;font-size:1rem;}',
-    /* Desktop links */
-    '.sn-links{display:none;list-style:none;margin:0;padding:0;gap:1rem;}',
+    /* Desktop links — ml-auto pushes them to the right edge (same as React ml-auto) */
+    '.sn-links{display:none;list-style:none;margin:0 0 0 auto;padding:0;gap:1rem;}',
     '@media(min-width:1024px){.sn-links{display:flex;align-items:center;}.sn-burger{display:none!important;}}',
     '.sn-link{color:#334155;text-decoration:none;font-size:1rem;white-space:nowrap;transition:color .15s;}',
     '.sn-link:hover{color:' + BRAND + ';}',
