@@ -64,6 +64,28 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const localizedUnits = useMemo(() => localizeUnits(lang), [lang]);
   const getUnitKey = (name) =>
     ['safari', 'comfort', 'cottage', 'chalet'].find((k) => (name || '').toLowerCase().includes(k));
+
+  // Room feature badges — shown on booking cards to match the detail pages.
+  const UNIT_FEATURES = {
+    safari:  ['shared',  'terrace', 'fan'],
+    comfort: ['ensuite', 'terrace', 'fan'],
+    cottage: ['ac',      'ensuite', 'queen'],
+    chalet:  ['ac',      'ensuite', 'secluded'],
+  };
+  const FEATURE_LABELS = {
+    fan:      { en: 'Fan',         pt: 'Ventilador',    nl: 'Ventilator',        fr: 'Ventilateur',          it: 'Ventilatore',       de: 'Ventilator',      es: 'Ventilador',       af: 'Waaier',           sv: 'Fläkt',        pl: 'Wentylator',        ro: 'Ventilator',    sr: 'Ventilator',        hr: 'Ventilator',        cs: 'Ventilátor',      tr: 'Vantilatör', ja: 'ファン',    zh: '风扇',   ru: 'Вентилятор',         zu: 'Ifeni',               sw: 'Feni' },
+    terrace:  { en: 'Terrace',     pt: 'Terraço',       nl: 'Terras',            fr: 'Terrasse',             it: 'Terrazza',          de: 'Terrasse',        es: 'Terraza',          af: 'Terras',           sv: 'Terrass',      pl: 'Taras',             ro: 'Terasă',        sr: 'Terasa',            hr: 'Terasa',            cs: 'Terasa',          tr: 'Teras',      ja: 'テラス',  zh: '露台',   ru: 'Терраса',            zu: 'Iterasi',             sw: 'Terasi' },
+    shared:   { en: 'Shared Bath', pt: 'WC Partilhado', nl: 'Gedeelde Badkamer', fr: 'Salle de bain partagée', it: 'Bagno condiviso', de: 'Gemeinschaftsbad',es: 'Baño compartido',  af: 'Gedeelde Bad',     sv: 'Delat badrum', pl: 'Wspólna łazienka',  ro: 'Baie comună',   sr: 'Zajedničko kupatilo', hr: 'Zajedničko kupatilo', cs: 'Společná koupelna', tr: 'Ortak Banyo', ja: '共用バス', zh: '共用浴室', ru: 'Общая ванная',    zu: 'Ibhafu elabelwana',   sw: 'Bafu ya pamoja' },
+    ensuite:  { en: 'En-suite',    pt: 'WC Privativo',  nl: 'Eigen Badkamer',    fr: 'Salle de bain privée', it: 'Bagno privato',    de: 'Eigenes Bad',     es: 'Baño privado',     af: 'Privaat Bad',      sv: 'Eget badrum',  pl: 'Łazienka prywatna', ro: 'Baie privată',  sr: 'Privatno kupatilo',   hr: 'Privatno kupatilo',   cs: 'Vlastní koupelna', tr: 'Özel Banyo', ja: '専用バス', zh: '独立浴室', ru: 'Собственная ванная', zu: 'Ibhafu langasese',    sw: 'Bafu ya faragha' },
+    ac:       { en: 'AC',          pt: 'Ar Condicionado', nl: 'Airco',           fr: 'Climatisation',        it: 'Aria condizionata', de: 'Klimaanlage',     es: 'Aire acondicionado', af: 'Lugversorging',  sv: 'AC',           pl: 'Klimatyzacja',      ro: 'Aer condiționat', sr: 'Klima',          hr: 'Klima',             cs: 'Klimatizace',     tr: 'Klima',      ja: 'エアコン', zh: '空调',   ru: 'Кондиционер',        zu: 'I-AC',                sw: 'Kiyoyozi' },
+    queen:    { en: 'Queen Bed',   pt: 'Cama Queen',    nl: 'Queensize Bed',     fr: 'Lit Queen',            it: 'Letto Queen',       de: 'Queen-Bett',      es: 'Cama Queen',       af: 'Queen Bed',        sv: 'Queen-säng',   pl: 'Łóżko Queen',       ro: 'Pat queen',     sr: 'Queen krevet',      hr: 'Queen krevet',      cs: 'Postel Queen',    tr: 'Queen Yatak', ja: 'クイーンベッド', zh: '大床', ru: 'Двуспальная кровать', zu: 'Umbhede weQueen',    sw: 'Kitanda cha Queen' },
+    secluded: { en: 'Secluded',    pt: 'Isolado',       nl: 'Afgelegen',         fr: 'Isolé',                it: 'Appartato',         de: 'Abgeschieden',    es: 'Aislado',          af: 'Afgesonderd',      sv: 'Avskilt',      pl: 'Ustronny',          ro: 'Retras',        sr: 'Skrovito',          hr: 'Skrovito',          cs: 'Odlehlé',         tr: 'Tenha',      ja: '隠れ家',   zh: '隐蔽',   ru: 'Уединённый',         zu: 'Okuhlukanisiwe',      sw: 'Faragha' },
+  };
+  const getRoomFeatureLabel = (feature) => {
+    const base = lang?.split('-')[0] || 'en';
+    return FEATURE_LABELS[feature]?.[lang] || FEATURE_LABELS[feature]?.[base] || FEATURE_LABELS[feature]?.en || feature;
+  };
+
   const translateRoomName = (name) => {
     const unitKey = getUnitKey(name);
     return (unitKey && localizedUnits.find((u) => u.key === unitKey)?.title) || name;
@@ -1227,6 +1249,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   }
                                 </p>
                               )}
+                              {(() => {
+                                const roomFeatures = UNIT_FEATURES[unitKey] || [];
+                                return roomFeatures.length > 0 ? (
+                                  <div className="mt-2 flex flex-wrap gap-1.5">
+                                    {roomFeatures.map((f) => (
+                                      <span key={f} className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-xs text-slate-600">
+                                        {getRoomFeatureLabel(f)}
+                                      </span>
+                                    ))}
+                                  </div>
+                                ) : null;
+                              })()}
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
                                 <span className="inline-flex items-start gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-slate-600">
                                   <Users className="h-3.5 w-3.5 mt-0.5 shrink-0" />
