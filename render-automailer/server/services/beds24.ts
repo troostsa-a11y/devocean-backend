@@ -358,23 +358,22 @@ export class Beds24Service {
   }
 
   /**
-   * Deposit percentage for a specific offer:
-   *  - Last-minute (LM) and non-refundable (NR): 100% always — full prepayment.
-   *  - Semi-flexible (SF): always the normal deposit (typically 50%), never the
-   *    near-arrival uplift. The balance is due on arrival.
-   *  - Everything else: falls back to `getDepositPercentForArrival` (may be
-   *    uplifted to 100% when arrival is within the near-arrival window).
+   * Deposit percentage for a specific offer — three rules, full coverage:
+   *  - LM (lastMinute) → 100%: full prepayment, no exceptions.
+   *  - NR (nonRef)     → 100%: non-refundable, charged in full at booking.
+   *  - All others (SF, standard, earlyBird, minStay, weekly, …) → normalPercent
+   *    (typically 50%), balance due on arrival.
+   *
+   * The arrival-date-based uplift (`getDepositPercentForArrival`) is intentionally
+   * NOT used here — rate type alone determines the deposit, never proximity to
+   * arrival. LM rates already exist precisely to capture near-arrival bookings at
+   * 100%; no other type should be silently uplifted.
    */
-  getDepositPercentForOffer(checkIn: string, type: OfferType): number {
+  getDepositPercentForOffer(_checkIn: string, type: OfferType): number {
     if (type === 'lastMinute' || type === 'nonRef') return 100;
-    if (type === 'semiFlex') {
-      // Semi-flexible always uses the normal deposit percentage regardless of
-      // how close the arrival date is — never subject to the near-arrival uplift.
-      return Math.min(100, Math.max(1, Math.round(
-        this.depositPolicy?.normalPercent ?? this.cfg.depositPercent
-      )));
-    }
-    return this.getDepositPercentForArrival(checkIn);
+    return Math.min(100, Math.max(1, Math.round(
+      this.depositPolicy?.normalPercent ?? this.cfg.depositPercent
+    )));
   }
 
   // ─── Pricing helpers ───────────────────────────────────────────────────────
