@@ -810,6 +810,13 @@ export function useLocale() {
 
   useEffect(() => {
     document.documentElement.setAttribute("lang", lang);
+    // Keep canonical self-referential so hreflang entries are respected by Google.
+    // Rule: each hreflang URL must canonicalize to itself, not to the base URL.
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (canonicalTag) {
+      const base = 'https://devoceanlodge.com/';
+      canonicalTag.setAttribute('href', lang === 'en' ? base : `${base}?lang=${lang}`);
+    }
   }, [lang]);
 
   const setLang = (newLang) => {

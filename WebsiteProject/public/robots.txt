@@ -22,6 +22,12 @@ Disallow: /gift-confirmed
 # Sitemap location
 Sitemap: https://devoceanlodge.com/sitemap.xml
 
+# Explicit allow for Google Search — Googlebot is fully permitted.
+# NOTE: Google-Extended (below) is Google's AI TRAINING crawler (for Gemini),
+# NOT Googlebot/Google Search. Blocking it does not affect search indexing.
+User-agent: Googlebot
+Allow: /
+
 # ─── AI crawler policy ───────────────────────────────────────────────
 # Goal: let AI assistants READ pages to answer travellers' questions (so
 # DEVOCEAN appears in AI trip planning), while denying bulk crawlers that
