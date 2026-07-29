@@ -127,7 +127,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
           {/* Right: Book Now */}
           <a
             href={bookUrl}
-            className="btn-cta inline-flex items-center justify-center px-3 py-1 rounded-lg bg-white text-[#9e4b13] font-semibold whitespace-nowrap hover:bg-[#fffaf6] transition-colors"
+            className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg border border-white text-white font-semibold text-sm whitespace-nowrap hover:bg-white/10 transition-colors"
             onClick={() => handleBookClick('topbar')}
           >
             {ui.contact.bookNow}
