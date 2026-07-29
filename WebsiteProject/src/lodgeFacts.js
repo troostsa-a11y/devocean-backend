@@ -102,7 +102,7 @@ export const MEALS = {
   dinner: {
     available:   true,
     forGuestsOnly: true,
-    description: 'Resident guests may pre-order dinner from the in-house kitchen. Place your order during the day; latest order time 20:00. Kitchen closes 21:00.',
+    description: 'Resident guests may pre-order dinner from the in-house restaurant. Place your order during the day; latest order time 20:00. Kitchen closes 21:00.',
   },
   lunch: {
     available:   false,
@@ -113,7 +113,7 @@ export const MEALS = {
     description: 'Outdoor braai / BBQ facilities available for guests.',
   },
   // Canonical FAQ answer — use verbatim or paraphrase consistently.
-  faqAnswer: 'Breakfast is included in the accommodation rate. Resident guests can also pre-order dinner from our in-house kitchen (advance notice required; latest order 20:00). We do not serve lunch — there are over 16 restaurants and cafés within a short walk. Outdoor braai facilities are available for self-catering.',
+  faqAnswer: 'Breakfast is included in the accommodation rate. Resident guests can also pre-order dinner from our in-house restaurant (advance notice required; latest order 20:00). We do not serve lunch — there are over 16 restaurants and cafés within a short walk. Outdoor braai facilities are available for self-catering.',
 };
 
 // ---------------------------------------------------------------------------

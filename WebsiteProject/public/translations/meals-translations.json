@@ -3,7 +3,7 @@
     "hero": {
       "eyebrow": "Food & Dining · DEVOCEAN Lodge",
       "title": "Breakfast included.<br/><span>Dinner prepared for you on demand.</span>",
-      "lead": "Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house kitchen."
+      "lead": "Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house restaurant."
     },
     "facts": {
       "included": "Breakfast included",
@@ -23,7 +23,7 @@
     "dinner": {
       "title": "Dinner at DEVOCEAN",
       "badge": "Pre-order",
-      "p1": "Our in-house kitchen prepares dinner <strong>exclusively for guests staying at the lodge</strong>. Meals are prepared to order using ingredients purchased fresh each day, so the available choices may vary.",
+      "p1": "Our in-house restaurant prepares dinner <strong>exclusively for guests staying at the lodge</strong>. Meals are prepared to order using ingredients purchased fresh each day, so the available choices may vary.",
       "p2": "Please order in advance — preferably earlier in the day. <strong>The latest time for placing a dinner order is 20:00</strong>, and the kitchen closes at 21:00.",
       "p3": "Because we cook specifically for the guests who order, we can concentrate on freshness and quality while avoiding unnecessary food waste.",
       "orderTitle": "How to order",
@@ -61,7 +61,7 @@
       "q2": "What time is breakfast served?",
       "a2": "Breakfast is normally served from 08:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, for an early dive or dolphin swim departure.",
       "q3": "Can I have dinner at the lodge?",
-      "a3": "Yes. Resident guests can order dinner from our in-house kitchen. Please order in advance and no later than 20:00. The kitchen closes at 21:00.",
+      "a3": "Yes. Resident guests can order dinner from our in-house restaurant. Please order in advance and no later than 20:00. The kitchen closes at 21:00.",
       "q4": "Is the kitchen open to outside visitors?",
       "a4": "No. Our meal service is reserved for guests staying at DEVOCEAN Lodge.",
       "q5": "Do you serve lunch?",
@@ -88,7 +88,7 @@
     "hero": {
       "eyebrow": "Food & Dining · DEVOCEAN Lodge",
       "title": "Breakfast included.<br/><span>Dinner prepared for you on demand.</span>",
-      "lead": "Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house kitchen."
+      "lead": "Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house restaurant."
     },
     "facts": {
       "included": "Breakfast included",
@@ -108,7 +108,7 @@
     "dinner": {
       "title": "Dinner at DEVOCEAN",
       "badge": "Pre-order",
-      "p1": "Our in-house kitchen prepares dinner <strong>exclusively for guests staying at the lodge</strong>. Meals are made to order using ingredients bought fresh each day, so the available choices may vary.",
+      "p1": "Our in-house restaurant prepares dinner <strong>exclusively for guests staying at the lodge</strong>. Meals are made to order using ingredients bought fresh each day, so the available choices may vary.",
       "p2": "Please order in advance — preferably earlier in the day. <strong>The latest time for placing a dinner order is 20:00</strong>, and the kitchen closes at 21:00.",
       "p3": "Because we cook specifically for the guests who order, we can focus on freshness and quality while avoiding unnecessary food waste.",
       "orderTitle": "How to order",
@@ -146,7 +146,7 @@
       "q2": "What time is breakfast served?",
       "a2": "Breakfast is normally served from 08:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, for an early dive or dolphin swim departure.",
       "q3": "Can I have dinner at the lodge?",
-      "a3": "Yes. Resident guests can order dinner from our in-house kitchen. Please order in advance and no later than 20:00. The kitchen closes at 21:00.",
+      "a3": "Yes. Resident guests can order dinner from our in-house restaurant. Please order in advance and no later than 20:00. The kitchen closes at 21:00.",
       "q4": "Is the kitchen open to outside visitors?",
       "a4": "No. Our meal service is reserved for guests staying at DEVOCEAN Lodge.",
       "q5": "Do you serve lunch?",
@@ -173,7 +173,7 @@
     "hero": {
       "eyebrow": "Refeições e Restauração · DEVOCEAN Lodge",
       "title": "Pequeno-almoço incluído.<br/><span>Jantar preparado para si a pedido.</span>",
-      "lead": "Todas as estadias no DEVOCEAN Lodge incluem pequeno-almoço, servido no nosso jardim tropical. Ao final do dia, os hóspedes alojados podem encomendar antecipadamente um jantar acabado de preparar na nossa cozinha própria."
+      "lead": "Todas as estadias no DEVOCEAN Lodge incluem pequeno-almoço, servido no nosso jardim tropical. Ao final do dia, os hóspedes alojados podem encomendar antecipadamente um jantar acabado de preparar no nosso restaurante próprio."
     },
     "facts": {
       "included": "Pequeno-almoço incluído",
@@ -193,7 +193,7 @@
     "dinner": {
       "title": "Jantar no DEVOCEAN",
       "badge": "Encomenda prévia",
-      "p1": "A nossa cozinha própria prepara o jantar <strong>exclusivamente para os hóspedes alojados no lodge</strong>. As refeições são preparadas por encomenda com ingredientes comprados frescos todos os dias, pelo que as opções disponíveis podem variar.",
+      "p1": "O nosso restaurante próprio prepara o jantar <strong>exclusivamente para os hóspedes alojados no lodge</strong>. As refeições são preparadas por encomenda com ingredientes comprados frescos todos os dias, pelo que as opções disponíveis podem variar.",
       "p2": "Por favor, encomende com antecedência — de preferência mais cedo durante o dia. <strong>A hora limite para encomendar o jantar é as 20:00</strong>, e a cozinha encerra às 21:00.",
       "p3": "Como cozinhamos especificamente para os hóspedes que encomendam, podemos concentrar-nos na frescura e na qualidade, evitando desperdício alimentar desnecessário.",
       "orderTitle": "Como encomendar",
@@ -231,7 +231,7 @@
       "q2": "A que horas é servido o pequeno-almoço?",
       "a2": "O pequeno-almoço é normalmente servido das 08:30 às 11:00. Um serviço mais cedo ou mais tarde pode frequentemente ser combinado quando solicitado previamente — por exemplo, para uma partida antecipada de mergulho ou nado com golfinhos.",
       "q3": "Posso jantar no lodge?",
-      "a3": "Sim. Os hóspedes alojados podem encomendar o jantar na nossa cozinha própria. Por favor, encomende com antecedência e o mais tardar até às 20:00. A cozinha encerra às 21:00.",
+      "a3": "Sim. Os hóspedes alojados podem encomendar o jantar no nosso restaurante próprio. Por favor, encomende com antecedência e o mais tardar até às 20:00. A cozinha encerra às 21:00.",
       "q4": "A cozinha está aberta a visitantes externos?",
       "a4": "Não. O nosso serviço de refeições está reservado aos hóspedes alojados no DEVOCEAN Lodge.",
       "q5": "Servem almoço?",
@@ -258,7 +258,7 @@
     "hero": {
       "eyebrow": "Refeições e Gastronomia · DEVOCEAN Lodge",
       "title": "Café da manhã incluído.<br/><span>Jantar preparado para você sob demanda.</span>",
-      "lead": "Toda estadia no DEVOCEAN Lodge inclui café da manhã, servido em nosso jardim tropical. À noite, os hóspedes hospedados podem encomendar antecipadamente um jantar preparado na hora em nossa cozinha própria."
+      "lead": "Toda estadia no DEVOCEAN Lodge inclui café da manhã, servido em nosso jardim tropical. À noite, os hóspedes hospedados podem encomendar antecipadamente um jantar preparado na hora em nosso restaurante próprio."
     },
     "facts": {
       "included": "Café da manhã incluído",
@@ -278,7 +278,7 @@
     "dinner": {
       "title": "Jantar no DEVOCEAN",
       "badge": "Encomenda prévia",
-      "p1": "Nossa cozinha própria prepara o jantar <strong>exclusivamente para os hóspedes hospedados no lodge</strong>. As refeições são preparadas sob encomenda com ingredientes comprados frescos todos os dias, por isso as opções disponíveis podem variar.",
+      "p1": "Nosso restaurante próprio prepara o jantar <strong>exclusivamente para os hóspedes hospedados no lodge</strong>. As refeições são preparadas sob encomenda com ingredientes comprados frescos todos os dias, por isso as opções disponíveis podem variar.",
       "p2": "Por favor, faça o pedido com antecedência — de preferência mais cedo durante o dia. <strong>O horário limite para pedir o jantar é 20:00</strong>, e a cozinha fecha às 21:00.",
       "p3": "Como cozinhamos especificamente para os hóspedes que fazem o pedido, podemos nos concentrar no frescor e na qualidade, evitando desperdício de alimentos desnecessário.",
       "orderTitle": "Como pedir",
@@ -316,7 +316,7 @@
       "q2": "Que horas o café da manhã é servido?",
       "a2": "O café da manhã normalmente é servido das 08:30 às 11:00. Um serviço mais cedo ou mais tarde muitas vezes pode ser combinado quando solicitado com antecedência — por exemplo, para uma saída antecipada de mergulho ou nado com golfinhos.",
       "q3": "Posso jantar no lodge?",
-      "a3": "Sim. Os hóspedes hospedados podem pedir o jantar em nossa cozinha própria. Por favor, faça o pedido com antecedência e no máximo até 20:00. A cozinha fecha às 21:00.",
+      "a3": "Sim. Os hóspedes hospedados podem pedir o jantar em nosso restaurante próprio. Por favor, faça o pedido com antecedência e no máximo até 20:00. A cozinha fecha às 21:00.",
       "q4": "A cozinha está aberta a visitantes externos?",
       "a4": "Não. Nosso serviço de refeições é reservado aos hóspedes hospedados no DEVOCEAN Lodge.",
       "q5": "Vocês servem almoço?",
@@ -343,7 +343,7 @@
     "hero": {
       "eyebrow": "Eten & Dineren · DEVOCEAN Lodge",
       "title": "Ontbijt inbegrepen.<br/><span>Diner op verzoek voor u bereid.</span>",
-      "lead": "Bij elk verblijf in DEVOCEAN Lodge is ontbijt inbegrepen, geserveerd in onze tropische tuin. 's Avonds kunnen logerende gasten vooraf een vers bereid diner bestellen uit onze eigen keuken."
+      "lead": "Bij elk verblijf in DEVOCEAN Lodge is ontbijt inbegrepen, geserveerd in onze tropische tuin. 's Avonds kunnen logerende gasten vooraf een vers bereid diner bestellen bij ons eigen restaurant."
     },
     "facts": {
       "included": "Ontbijt inbegrepen",
@@ -363,7 +363,7 @@
     "dinner": {
       "title": "Diner bij DEVOCEAN",
       "badge": "Voorbestelling",
-      "p1": "Onze eigen keuken bereidt het diner <strong>uitsluitend voor gasten die in de lodge verblijven</strong>. Maaltijden worden op bestelling bereid met ingrediënten die elke dag vers worden ingekocht, dus de beschikbare keuzes kunnen variëren.",
+      "p1": "Ons eigen restaurant bereidt het diner <strong>uitsluitend voor gasten die in de lodge verblijven</strong>. Maaltijden worden op bestelling bereid met ingrediënten die elke dag vers worden ingekocht, dus de beschikbare keuzes kunnen variëren.",
       "p2": "Bestel alstublieft van tevoren — bij voorkeur eerder op de dag. <strong>De uiterste tijd om een diner te bestellen is 20:00</strong>, en de keuken sluit om 21:00.",
       "p3": "Omdat we specifiek koken voor de gasten die bestellen, kunnen we ons concentreren op versheid en kwaliteit en tegelijk onnodige voedselverspilling voorkomen.",
       "orderTitle": "Hoe te bestellen",
@@ -401,7 +401,7 @@
       "q2": "Hoe laat wordt het ontbijt geserveerd?",
       "a2": "Het ontbijt wordt normaal gesproken geserveerd van 08:30 tot 11:00. Een eerdere of latere service kan vaak worden geregeld als dit vooraf wordt aangevraagd — bijvoorbeeld voor een vroeg vertrek voor een duik of zwemtocht met dolfijnen.",
       "q3": "Kan ik in de lodge dineren?",
-      "a3": "Ja. Logerende gasten kunnen diner bestellen uit onze eigen keuken. Bestel alstublieft van tevoren en uiterlijk om 20:00. De keuken sluit om 21:00.",
+      "a3": "Ja. Logerende gasten kunnen diner bestellen bij ons eigen restaurant. Bestel alstublieft van tevoren en uiterlijk om 20:00. De keuken sluit om 21:00.",
       "q4": "Is de keuken toegankelijk voor externe bezoekers?",
       "a4": "Nee. Onze maaltijdservice is voorbehouden aan gasten die in DEVOCEAN Lodge verblijven.",
       "q5": "Serveren jullie lunch?",
@@ -428,7 +428,7 @@
     "hero": {
       "eyebrow": "Restauration · DEVOCEAN Lodge",
       "title": "Petit-déjeuner inclus.<br/><span>Dîner préparé pour vous à la demande.</span>",
-      "lead": "Chaque séjour au DEVOCEAN Lodge comprend le petit-déjeuner, servi dans notre jardin tropical. Le soir, les clients résidents peuvent précommander un dîner préparé à la minute par notre cuisine maison."
+      "lead": "Chaque séjour au DEVOCEAN Lodge comprend le petit-déjeuner, servi dans notre jardin tropical. Le soir, les clients résidents peuvent précommander un dîner préparé à la minute par notre restaurant maison."
     },
     "facts": {
       "included": "Petit-déjeuner inclus",
@@ -448,7 +448,7 @@
     "dinner": {
       "title": "Dîner au DEVOCEAN",
       "badge": "Précommande",
-      "p1": "Notre cuisine maison prépare le dîner <strong>exclusivement pour les clients séjournant au lodge</strong>. Les plats sont préparés à la commande avec des ingrédients achetés frais chaque jour, de sorte que les choix disponibles peuvent varier.",
+      "p1": "Notre restaurant maison prépare le dîner <strong>exclusivement pour les clients séjournant au lodge</strong>. Les plats sont préparés à la commande avec des ingrédients achetés frais chaque jour, de sorte que les choix disponibles peuvent varier.",
       "p2": "Veuillez commander à l'avance — de préférence plus tôt dans la journée. <strong>L'heure limite pour passer une commande de dîner est 20:00</strong>, et la cuisine ferme à 21:00.",
       "p3": "Comme nous cuisinons spécifiquement pour les clients qui commandent, nous pouvons nous concentrer sur la fraîcheur et la qualité tout en évitant le gaspillage alimentaire inutile.",
       "orderTitle": "Comment commander",
@@ -486,7 +486,7 @@
       "q2": "À quelle heure le petit-déjeuner est-il servi ?",
       "a2": "Le petit-déjeuner est normalement servi de 08:30 à 11:00. Un service plus tôt ou plus tard peut souvent être organisé sur demande préalable — par exemple, pour un départ matinal en plongée ou pour une nage avec les dauphins.",
       "q3": "Puis-je dîner au lodge ?",
-      "a3": "Oui. Les clients résidents peuvent commander un dîner auprès de notre cuisine maison. Veuillez commander à l'avance et au plus tard à 20:00. La cuisine ferme à 21:00.",
+      "a3": "Oui. Les clients résidents peuvent commander un dîner auprès de notre restaurant maison. Veuillez commander à l'avance et au plus tard à 20:00. La cuisine ferme à 21:00.",
       "q4": "La cuisine est-elle ouverte aux visiteurs extérieurs ?",
       "a4": "Non. Notre service de restauration est réservé aux clients séjournant au DEVOCEAN Lodge.",
       "q5": "Servez-vous le déjeuner ?",
@@ -513,7 +513,7 @@
     "hero": {
       "eyebrow": "Ristorazione · DEVOCEAN Lodge",
       "title": "Colazione inclusa.<br/><span>Cena preparata per te su richiesta.</span>",
-      "lead": "Ogni soggiorno al DEVOCEAN Lodge include la colazione, servita nel nostro giardino tropicale. La sera, gli ospiti residenti possono prenotare in anticipo una cena preparata al momento dalla nostra cucina interna."
+      "lead": "Ogni soggiorno al DEVOCEAN Lodge include la colazione, servita nel nostro giardino tropicale. La sera, gli ospiti residenti possono prenotare in anticipo una cena preparata al momento dal nostro ristorante interno."
     },
     "facts": {
       "included": "Colazione inclusa",
@@ -533,7 +533,7 @@
     "dinner": {
       "title": "Cena al DEVOCEAN",
       "badge": "Prenotazione",
-      "p1": "La nostra cucina interna prepara la cena <strong>esclusivamente per gli ospiti che soggiornano al lodge</strong>. I piatti vengono preparati su ordinazione con ingredienti acquistati freschi ogni giorno, quindi le scelte disponibili possono variare.",
+      "p1": "Il nostro ristorante interno prepara la cena <strong>esclusivamente per gli ospiti che soggiornano al lodge</strong>. I piatti vengono preparati su ordinazione con ingredienti acquistati freschi ogni giorno, quindi le scelte disponibili possono variare.",
       "p2": "Ti preghiamo di ordinare in anticipo — preferibilmente nella prima parte della giornata. <strong>L'orario limite per effettuare l'ordine della cena è le 20:00</strong>, e la cucina chiude alle 21:00.",
       "p3": "Poiché cuciniamo appositamente per gli ospiti che ordinano, possiamo concentrarci sulla freschezza e sulla qualità evitando inutili sprechi di cibo.",
       "orderTitle": "Come ordinare",
@@ -571,7 +571,7 @@
       "q2": "A che ora viene servita la colazione?",
       "a2": "La colazione è normalmente servita dalle 08:30 alle 11:00. Un servizio anticipato o posticipato può spesso essere organizzato su richiesta preventiva — ad esempio, per una partenza mattutina per un'immersione o un nuoto con i delfini.",
       "q3": "Posso cenare al lodge?",
-      "a3": "Sì. Gli ospiti residenti possono ordinare la cena dalla nostra cucina interna. Ti preghiamo di ordinare in anticipo e non oltre le 20:00. La cucina chiude alle 21:00.",
+      "a3": "Sì. Gli ospiti residenti possono ordinare la cena dal nostro ristorante interno. Ti preghiamo di ordinare in anticipo e non oltre le 20:00. La cucina chiude alle 21:00.",
       "q4": "La cucina è aperta ai visitatori esterni?",
       "a4": "No. Il nostro servizio di ristorazione è riservato agli ospiti che soggiornano al DEVOCEAN Lodge.",
       "q5": "Servite il pranzo?",
@@ -598,7 +598,7 @@
     "hero": {
       "eyebrow": "Essen & Trinken · DEVOCEAN Lodge",
       "title": "Frühstück inklusive.<br/><span>Abendessen auf Wunsch für Sie zubereitet.</span>",
-      "lead": "Jeder Aufenthalt in der DEVOCEAN Lodge beinhaltet ein Frühstück, das in unserem tropischen Garten serviert wird. Am Abend können übernachtende Gäste ein frisch zubereitetes Abendessen aus unserer hauseigenen Küche vorbestellen."
+      "lead": "Jeder Aufenthalt in der DEVOCEAN Lodge beinhaltet ein Frühstück, das in unserem tropischen Garten serviert wird. Am Abend können übernachtende Gäste ein frisch zubereitetes Abendessen aus unserem hauseigenen Restaurant vorbestellen."
     },
     "facts": {
       "included": "Frühstück inklusive",
@@ -618,7 +618,7 @@
     "dinner": {
       "title": "Abendessen im DEVOCEAN",
       "badge": "Vorbestellung",
-      "p1": "Unsere hauseigene Küche bereitet das Abendessen <strong>ausschließlich für Gäste zu, die in der Lodge übernachten</strong>. Die Gerichte werden auf Bestellung mit täglich frisch eingekauften Zutaten zubereitet, sodass die verfügbare Auswahl variieren kann.",
+      "p1": "Unser hauseigenes Restaurant bereitet das Abendessen <strong>ausschließlich für Gäste zu, die in der Lodge übernachten</strong>. Die Gerichte werden auf Bestellung mit täglich frisch eingekauften Zutaten zubereitet, sodass die verfügbare Auswahl variieren kann.",
       "p2": "Bitte bestellen Sie im Voraus — am besten früher am Tag. <strong>Die späteste Zeit für eine Abendessensbestellung ist 20:00 Uhr</strong>, und die Küche schließt um 21:00 Uhr.",
       "p3": "Da wir gezielt für die Gäste kochen, die bestellen, können wir uns auf Frische und Qualität konzentrieren und unnötige Lebensmittelverschwendung vermeiden.",
       "orderTitle": "So bestellen Sie",
@@ -656,7 +656,7 @@
       "q2": "Um welche Uhrzeit wird das Frühstück serviert?",
       "a2": "Das Frühstück wird normalerweise von 08:30 bis 11:00 serviert. Ein früherer oder späterer Service kann bei vorheriger Anfrage oft arrangiert werden — zum Beispiel für eine frühe Abfahrt zum Tauchen oder Delfinschwimmen.",
       "q3": "Kann ich in der Lodge zu Abend essen?",
-      "a3": "Ja. Übernachtende Gäste können ein Abendessen aus unserer hauseigenen Küche bestellen. Bitte bestellen Sie im Voraus und spätestens bis 20:00 Uhr. Die Küche schließt um 21:00 Uhr.",
+      "a3": "Ja. Übernachtende Gäste können ein Abendessen aus unserem hauseigenen Restaurant bestellen. Bitte bestellen Sie im Voraus und spätestens bis 20:00 Uhr. Die Küche schließt um 21:00 Uhr.",
       "q4": "Ist die Küche für externe Besucher geöffnet?",
       "a4": "Nein. Unser Verpflegungsservice ist Gästen vorbehalten, die in der DEVOCEAN Lodge übernachten.",
       "q5": "Servieren Sie Mittagessen?",
@@ -683,7 +683,7 @@
     "hero": {
       "eyebrow": "Comida y restauración · DEVOCEAN Lodge",
       "title": "Desayuno incluido.<br/><span>Cena preparada para usted bajo demanda.</span>",
-      "lead": "Cada estancia en DEVOCEAN Lodge incluye el desayuno, servido en nuestro jardín tropical. Por la noche, los huéspedes alojados pueden encargar por adelantado una cena recién preparada en nuestra cocina interna."
+      "lead": "Cada estancia en DEVOCEAN Lodge incluye el desayuno, servido en nuestro jardín tropical. Por la noche, los huéspedes alojados pueden encargar por adelantado una cena recién preparada en nuestro restaurante interno."
     },
     "facts": {
       "included": "Desayuno incluido",
@@ -703,7 +703,7 @@
     "dinner": {
       "title": "Cena en DEVOCEAN",
       "badge": "Por encargo",
-      "p1": "Nuestra cocina interna prepara la cena <strong>exclusivamente para los huéspedes que se alojan en el lodge</strong>. Los platos se preparan al momento con ingredientes comprados frescos cada día, por lo que las opciones disponibles pueden variar.",
+      "p1": "Nuestro restaurante interno prepara la cena <strong>exclusivamente para los huéspedes que se alojan en el lodge</strong>. Los platos se preparan al momento con ingredientes comprados frescos cada día, por lo que las opciones disponibles pueden variar.",
       "p2": "Le rogamos que haga su pedido con antelación, preferiblemente a primera hora del día. <strong>La hora límite para pedir la cena es las 20:00</strong>, y la cocina cierra a las 21:00.",
       "p3": "Como cocinamos específicamente para los huéspedes que hacen el pedido, podemos centrarnos en la frescura y la calidad evitando el desperdicio innecesario de alimentos.",
       "orderTitle": "Cómo hacer el pedido",
@@ -741,7 +741,7 @@
       "q2": "¿A qué hora se sirve el desayuno?",
       "a2": "El desayuno se sirve normalmente de 08:30 a 11:00. A menudo se puede organizar un servicio más temprano o más tarde si se solicita de antemano, por ejemplo, para una salida temprana de buceo o de nado con delfines.",
       "q3": "¿Puedo cenar en el lodge?",
-      "a3": "Sí. Los huéspedes alojados pueden encargar la cena en nuestra cocina interna. Le rogamos que haga el pedido con antelación y no más tarde de las 20:00. La cocina cierra a las 21:00.",
+      "a3": "Sí. Los huéspedes alojados pueden encargar la cena en nuestro restaurante interno. Le rogamos que haga el pedido con antelación y no más tarde de las 20:00. La cocina cierra a las 21:00.",
       "q4": "¿Está la cocina abierta a visitantes externos?",
       "a4": "No. Nuestro servicio de comidas está reservado a los huéspedes que se alojan en DEVOCEAN Lodge.",
       "q5": "¿Sirven almuerzo?",
@@ -768,7 +768,7 @@
     "hero": {
       "eyebrow": "Mat & servering · DEVOCEAN Lodge",
       "title": "Frukost ingår.<br/><span>Middag lagas åt dig på begäran.</span>",
-      "lead": "Varje vistelse på DEVOCEAN Lodge inkluderar frukost, som serveras i vår tropiska trädgård. På kvällen kan boende gäster förbeställa en nylagad middag från vårt eget kök."
+      "lead": "Varje vistelse på DEVOCEAN Lodge inkluderar frukost, som serveras i vår tropiska trädgård. På kvällen kan boende gäster förbeställa en nylagad middag från vår egen restaurang."
     },
     "facts": {
       "included": "Frukost ingår",
@@ -788,7 +788,7 @@
     "dinner": {
       "title": "Middag på DEVOCEAN",
       "badge": "Förbeställning",
-      "p1": "Vårt eget kök lagar middag <strong>uteslutande för gäster som bor på lodgen</strong>. Måltiderna tillagas på beställning med ingredienser som köps färska varje dag, så de tillgängliga valen kan variera.",
+      "p1": "Vår egen restaurang lagar middag <strong>uteslutande för gäster som bor på lodgen</strong>. Måltiderna tillagas på beställning med ingredienser som köps färska varje dag, så de tillgängliga valen kan variera.",
       "p2": "Vänligen beställ i förväg — helst tidigare under dagen. <strong>Senaste tid för att lägga en middagsbeställning är 20:00</strong>, och köket stänger kl. 21:00.",
       "p3": "Eftersom vi lagar specifikt för de gäster som beställer kan vi fokusera på färskhet och kvalitet och samtidigt undvika onödigt matsvinn.",
       "orderTitle": "Så här beställer du",
@@ -826,7 +826,7 @@
       "q2": "Vilken tid serveras frukost?",
       "a2": "Frukost serveras normalt från 08:30 till 11:00. Tidigare eller senare servering kan ofta ordnas om det önskas i förväg — till exempel inför en tidig dyk- eller delfinsimningsavresa.",
       "q3": "Kan jag äta middag på lodgen?",
-      "a3": "Ja. Boende gäster kan beställa middag från vårt eget kök. Vänligen beställ i förväg och senast kl. 20:00. Köket stänger kl. 21:00.",
+      "a3": "Ja. Boende gäster kan beställa middag från vår egen restaurang. Vänligen beställ i förväg och senast kl. 20:00. Köket stänger kl. 21:00.",
       "q4": "Är köket öppet för utomstående besökare?",
       "a4": "Nej. Vår måltidsservering är reserverad för gäster som bor på DEVOCEAN Lodge.",
       "q5": "Serverar ni lunch?",
@@ -853,7 +853,7 @@
     "hero": {
       "eyebrow": "Jedzenie i wyżywienie · DEVOCEAN Lodge",
       "title": "Śniadanie w cenie.<br/><span>Kolacja przygotowana dla Ciebie na życzenie.</span>",
-      "lead": "Każdy pobyt w DEVOCEAN Lodge obejmuje śniadanie, serwowane w naszym tropikalnym ogrodzie. Wieczorem goście przebywający w obiekcie mogą wcześniej zamówić świeżo przygotowaną kolację z naszej własnej kuchni."
+      "lead": "Każdy pobyt w DEVOCEAN Lodge obejmuje śniadanie, serwowane w naszym tropikalnym ogrodzie. Wieczorem goście przebywający w obiekcie mogą wcześniej zamówić świeżo przygotowaną kolację z naszej własnej restauracji."
     },
     "facts": {
       "included": "Śniadanie w cenie",
@@ -873,7 +873,7 @@
     "dinner": {
       "title": "Kolacja w DEVOCEAN",
       "badge": "Na zamówienie",
-      "p1": "Nasza własna kuchnia przygotowuje kolacje <strong>wyłącznie dla gości przebywających w obiekcie</strong>. Posiłki przygotowywane są na zamówienie ze świeżych składników kupowanych każdego dnia, dlatego dostępne opcje mogą się różnić.",
+      "p1": "Nasza własna restauracja przygotowuje kolacje <strong>wyłącznie dla gości przebywających w obiekcie</strong>. Posiłki przygotowywane są na zamówienie ze świeżych składników kupowanych każdego dnia, dlatego dostępne opcje mogą się różnić.",
       "p2": "Prosimy o zamawianie z wyprzedzeniem — najlepiej wcześniej w ciągu dnia. <strong>Najpóźniejszy czas na złożenie zamówienia na kolację to 20:00</strong>, a kuchnia zamyka się o 21:00.",
       "p3": "Ponieważ gotujemy specjalnie dla gości, którzy zamawiają, możemy skupić się na świeżości i jakości, jednocześnie unikając niepotrzebnego marnowania żywności.",
       "orderTitle": "Jak zamówić",
@@ -911,7 +911,7 @@
       "q2": "O której godzinie serwowane jest śniadanie?",
       "a2": "Śniadanie serwowane jest zwykle od 08:30 do 11:00. Wcześniejsza lub późniejsza obsługa może często zostać zaaranżowana po wcześniejszym zgłoszeniu — na przykład przed wczesnym wyjazdem na nurkowanie lub pływanie z delfinami.",
       "q3": "Czy mogę zjeść kolację w obiekcie?",
-      "a3": "Tak. Goście przebywający w obiekcie mogą zamówić kolację z naszej własnej kuchni. Prosimy o zamawianie z wyprzedzeniem i nie później niż do 20:00. Kuchnia zamyka się o 21:00.",
+      "a3": "Tak. Goście przebywający w obiekcie mogą zamówić kolację z naszej własnej restauracji. Prosimy o zamawianie z wyprzedzeniem i nie później niż do 20:00. Kuchnia zamyka się o 21:00.",
       "q4": "Czy kuchnia jest otwarta dla gości z zewnątrz?",
       "a4": "Nie. Nasza obsługa posiłków jest zarezerwowana dla gości przebywających w DEVOCEAN Lodge.",
       "q5": "Czy serwujecie obiady?",
@@ -938,7 +938,7 @@
     "hero": {
       "eyebrow": "Kos & Etes · DEVOCEAN Lodge",
       "title": "Ontbyt ingesluit.<br/><span>Aandete op aanvraag vir jou voorberei.</span>",
-      "lead": "Elke verblyf by DEVOCEAN Lodge sluit ontbyt in, wat in ons tropiese tuin bedien word. In die aand kan inwonende gaste 'n vars voorbereide aandete vooraf bestel by ons eie kombuis."
+      "lead": "Elke verblyf by DEVOCEAN Lodge sluit ontbyt in, wat in ons tropiese tuin bedien word. In die aand kan inwonende gaste 'n vars voorbereide aandete vooraf bestel by ons eie restaurant."
     },
     "facts": {
       "included": "Ontbyt ingesluit",
@@ -958,7 +958,7 @@
     "dinner": {
       "title": "Aandete by DEVOCEAN",
       "badge": "Voorbestelling",
-      "p1": "Ons eie kombuis berei aandete <strong>uitsluitlik voor vir gaste wat by die lodge tuisgaan</strong>. Etes word op bestelling voorberei met bestanddele wat elke dag vars aangekoop word, dus die beskikbare keuses kan wissel.",
+      "p1": "Ons eie restaurant berei aandete <strong>uitsluitlik voor vir gaste wat by die lodge tuisgaan</strong>. Etes word op bestelling voorberei met bestanddele wat elke dag vars aangekoop word, dus die beskikbare keuses kan wissel.",
       "p2": "Bestel asseblief vooraf — verkieslik vroeër in die dag. <strong>Die laatste tyd om 'n aandete-bestelling te plaas is 20:00</strong>, en die kombuis sluit om 21:00.",
       "p3": "Omdat ons spesifiek vir die gaste kook wat bestel, kan ons op varsheid en gehalte konsentreer terwyl ons onnodige kosvermorsing vermy.",
       "orderTitle": "Hoe om te bestel",
@@ -996,7 +996,7 @@
       "q2": "Hoe laat word ontbyt bedien?",
       "a2": "Ontbyt word gewoonlik van 08:30 tot 11:00 bedien. Vroeër of later diens kan dikwels gereël word wanneer dit vooraf versoek word — byvoorbeeld vir 'n vroeë duik- of dolfynswem-vertrek.",
       "q3": "Kan ek aandete by die lodge kry?",
-      "a3": "Ja. Inwonende gaste kan aandete by ons eie kombuis bestel. Bestel asseblief vooraf en nie later nie as 20:00. Die kombuis sluit om 21:00.",
+      "a3": "Ja. Inwonende gaste kan aandete by ons eie restaurant bestel. Bestel asseblief vooraf en nie later nie as 20:00. Die kombuis sluit om 21:00.",
       "q4": "Is die kombuis oop vir buitebesoekers?",
       "a4": "Nee. Ons etediens is gereserveer vir gaste wat by DEVOCEAN Lodge tuisgaan.",
       "q5": "Bedien julle middagete?",
@@ -1023,7 +1023,7 @@
     "hero": {
       "eyebrow": "Ukudla Nokudla · DEVOCEAN Lodge",
       "title": "Ibhulakufesi ifakiwe.<br/><span>Isidlo sakusihlwa silungiselelwa wena uma usicela.</span>",
-      "lead": "Konke ukuhlala e-DEVOCEAN Lodge kufaka ibhulakufesi, ephakelwa engadini yethu yezindawo ezishisayo. Ngokuhlwa, izivakashi ezihlalayo zingakwazi ukuyala ngaphambili isidlo sakusihlwa esisanda kulungiswa esiphuma ekhishini lethu langaphakathi."
+      "lead": "Konke ukuhlala e-DEVOCEAN Lodge kufaka ibhulakufesi, ephakelwa engadini yethu yezindawo ezishisayo. Ngokuhlwa, izivakashi ezihlalayo zingakwazi ukuyala ngaphambili isidlo sakusihlwa esisanda kulungiswa esiphuma erestorenti lethu langaphakathi."
     },
     "facts": {
       "included": "Ibhulakufesi ifakiwe",
@@ -1043,7 +1043,7 @@
     "dinner": {
       "title": "Isidlo Sakusihlwa e-DEVOCEAN",
       "badge": "Yala ngaphambili",
-      "p1": "Ikhishi lethu langaphakathi lilungiselela isidlo sakusihlwa <strong>ngokukhethekile izivakashi ezihlala e-lodge</strong>. Ukudla kulungiswa ngokuyalwa kusetshenziswa izithako ezithengwa zisha nsuku zonke, ngakho izinketho ezitholakalayo zingahluka.",
+      "p1": "Irestorenti lethu langaphakathi lilungiselela isidlo sakusihlwa <strong>ngokukhethekile izivakashi ezihlala e-lodge</strong>. Ukudla kulungiswa ngokuyalwa kusetshenziswa izithako ezithengwa zisha nsuku zonke, ngakho izinketho ezitholakalayo zingahluka.",
       "p2": "Sicela uyale ngaphambili — ngokungcono ekuseni ngosuku. <strong>Isikhathi sokugcina sokwenza i-oda lesidlo sakusihlwa u-20:00</strong>, futhi ikhishi livalwa ngo-21:00.",
       "p3": "Ngoba sipheka ngokukhethekile izivakashi ezikhethayo, singagxila ekusheni nasekhwalithini kuyilapho sigwema ukumoshwa kokudla okungadingekile.",
       "orderTitle": "Indlela yokuyala",
@@ -1081,7 +1081,7 @@
       "q2": "Iphakelwa ngasiphi isikhathi ibhulakufesi?",
       "a2": "Ibhulakufesi ngokuvamile iphakelwa kusukela ku-08:30 kuya ku-11:00. Insizakalo yangaphambili noma emuva ivamise ukuhlelwa uma iceliwe ngaphambili — ngokwesibonelo, ekuhambeni okusheshayo kokutshuza noma ukubhukuda nemidolomu.",
       "q3": "Ngingasitholakala isidlo sakusihlwa e-lodge?",
-      "a3": "Yebo. Izivakashi ezihlalayo zingayala isidlo sakusihlwa ekhishini lethu langaphakathi. Sicela uyale ngaphambili futhi kungabi emuva kuka-20:00. Ikhishi livalwa ngo-21:00.",
+      "a3": "Yebo. Izivakashi ezihlalayo zingayala isidlo sakusihlwa erestorenti lethu langaphakathi. Sicela uyale ngaphambili futhi kungabi emuva kuka-20:00. Ikhishi livalwa ngo-21:00.",
       "q4": "Ingabe ikhishi livulekile kubavakashi bangaphandle?",
       "a4": "Cha. Insizakalo yethu yokudla igodlelwe izivakashi ezihlala e-DEVOCEAN Lodge.",
       "q5": "Ingabe niphakela isidlo sasemini?",
@@ -1108,7 +1108,7 @@
     "hero": {
       "eyebrow": "Chakula na Milo · DEVOCEAN Lodge",
       "title": "Kifungua kinywa kimejumuishwa.<br/><span>Chakula cha jioni kinaandaliwa kwa ajili yako unapohitaji.</span>",
-      "lead": "Kila kukaa katika DEVOCEAN Lodge kunajumuisha kifungua kinywa, kinachotolewa katika bustani yetu ya tropiki. Jioni, wageni wanaolala hapa wanaweza kuagiza mapema chakula cha jioni kilichoandaliwa upya kutoka jikoni letu la ndani."
+      "lead": "Kila kukaa katika DEVOCEAN Lodge kunajumuisha kifungua kinywa, kinachotolewa katika bustani yetu ya tropiki. Jioni, wageni wanaolala hapa wanaweza kuagiza mapema chakula cha jioni kilichoandaliwa upya kutoka mgahawa wetu wa ndani."
     },
     "facts": {
       "included": "Kifungua kinywa kimejumuishwa",
@@ -1128,7 +1128,7 @@
     "dinner": {
       "title": "Chakula cha Jioni katika DEVOCEAN",
       "badge": "Agiza mapema",
-      "p1": "Jikoni letu la ndani huandaa chakula cha jioni <strong>kwa ajili ya wageni wanaolala katika lodge pekee</strong>. Milo huandaliwa kwa kuagiza kwa kutumia viungo vinavyonunuliwa vibichi kila siku, hivyo chaguzi zinazopatikana zinaweza kutofautiana.",
+      "p1": "Mgahawa wetu wa ndani huandaa chakula cha jioni <strong>kwa ajili ya wageni wanaolala katika lodge pekee</strong>. Milo huandaliwa kwa kuagiza kwa kutumia viungo vinavyonunuliwa vibichi kila siku, hivyo chaguzi zinazopatikana zinaweza kutofautiana.",
       "p2": "Tafadhali agiza mapema — ikiwezekana mapema mchana. <strong>Muda wa mwisho wa kuweka agizo la chakula cha jioni ni saa 20:00</strong>, na jikoni hufungwa saa 21:00.",
       "p3": "Kwa sababu tunapika mahususi kwa wageni wanaoagiza, tunaweza kuzingatia ubichi na ubora huku tukiepuka upotevu usio wa lazima wa chakula.",
       "orderTitle": "Jinsi ya kuagiza",
@@ -1166,7 +1166,7 @@
       "q2": "Kifungua kinywa hutolewa saa ngapi?",
       "a2": "Kifungua kinywa kwa kawaida hutolewa kutoka saa 08:30 hadi 11:00. Huduma ya mapema au ya baadaye mara nyingi inaweza kupangwa ikiombwa kabla — kwa mfano, kwa safari ya mapema ya kupiga mbizi au kuogelea na pomboo.",
       "q3": "Je, naweza kupata chakula cha jioni katika lodge?",
-      "a3": "Ndiyo. Wageni wanaolala hapa wanaweza kuagiza chakula cha jioni kutoka jikoni letu la ndani. Tafadhali agiza mapema na si baadaye ya saa 20:00. Jikoni hufungwa saa 21:00.",
+      "a3": "Ndiyo. Wageni wanaolala hapa wanaweza kuagiza chakula cha jioni kutoka mgahawa wetu wa ndani. Tafadhali agiza mapema na si baadaye ya saa 20:00. Jikoni hufungwa saa 21:00.",
       "q4": "Je, jikoni liko wazi kwa wageni wa nje?",
       "a4": "Hapana. Huduma yetu ya milo imehifadhiwa kwa wageni wanaolala katika DEVOCEAN Lodge.",
       "q5": "Je, mnatoa chakula cha mchana?",
@@ -1193,7 +1193,7 @@
     "hero": {
       "eyebrow": "食事とダイニング · DEVOCEAN Lodge",
       "title": "朝食付き。<br/><span>ご希望に応じて夕食もご用意いたします。</span>",
-      "lead": "DEVOCEAN Lodge でのご滞在にはすべて朝食が含まれ、トロピカルガーデンでお召し上がりいただけます。夜には、ご宿泊のお客様は当館のキッチンで作りたての夕食を事前予約いただけます。"
+      "lead": "DEVOCEAN Lodge でのご滞在にはすべて朝食が含まれ、トロピカルガーデンでお召し上がりいただけます。夜には、ご宿泊のお客様は当館のレストランで作りたての夕食を事前予約いただけます。"
     },
     "facts": {
       "included": "朝食付き",
@@ -1213,7 +1213,7 @@
     "dinner": {
       "title": "DEVOCEAN での夕食",
       "badge": "事前予約",
-      "p1": "当館のキッチンでは、<strong>ロッジにご宿泊のお客様限定で</strong>夕食をご用意します。お料理は毎日仕入れる新鮮な食材を使ってご注文に応じてお作りするため、その日ご用意できるメニューは異なる場合があります。",
+      "p1": "当館のレストランでは、<strong>ロッジにご宿泊のお客様限定で</strong>夕食をご用意します。お料理は毎日仕入れる新鮮な食材を使ってご注文に応じてお作りするため、その日ご用意できるメニューは異なる場合があります。",
       "p2": "事前にご注文ください — できれば日中の早い時間にお願いします。<strong>夕食のご注文の締め切りは 20:00 です</strong>。キッチンは 21:00 に閉まります。",
       "p3": "ご注文いただいたお客様のためだけに調理するため、新鮮さと品質に集中でき、不要な食品ロスを避けることができます。",
       "orderTitle": "ご注文方法",
@@ -1251,7 +1251,7 @@
       "q2": "朝食は何時に提供されますか？",
       "a2": "朝食は通常 08:30 から 11:00 まで提供されます。事前にご希望いただければ、早めまたは遅めの提供も多くの場合手配できます — 例えば、早朝のダイビングやイルカと泳ぐご出発などです。",
       "q3": "ロッジで夕食をとれますか？",
-      "a3": "はい。ご宿泊のお客様は当館のキッチンで夕食をご注文いただけます。事前に、遅くとも 20:00 までにご注文ください。キッチンは 21:00 に閉まります。",
+      "a3": "はい。ご宿泊のお客様は当館のレストランで夕食をご注文いただけます。事前に、遅くとも 20:00 までにご注文ください。キッチンは 21:00 に閉まります。",
       "q4": "キッチンは外部のお客様も利用できますか？",
       "a4": "いいえ。私たちの食事サービスは DEVOCEAN Lodge にご宿泊のお客様専用です。",
       "q5": "ランチは提供していますか？",
@@ -1278,7 +1278,7 @@
     "hero": {
       "eyebrow": "美食与餐饮 · DEVOCEAN Lodge",
       "title": "含早餐。<br/><span>晚餐可按需为您准备。</span>",
-      "lead": "在 DEVOCEAN Lodge 的每次入住均含早餐，于我们的热带花园供应。傍晚时分，住宿客人可提前预订由我们内部厨房新鲜制作的晚餐。"
+      "lead": "在 DEVOCEAN Lodge 的每次入住均含早餐，于我们的热带花园供应。傍晚时分，住宿客人可提前预订由我们内部餐厅新鲜制作的晚餐。"
     },
     "facts": {
       "included": "含早餐",
@@ -1298,7 +1298,7 @@
     "dinner": {
       "title": "DEVOCEAN 的晚餐",
       "badge": "提前预订",
-      "p1": "我们的内部厨房<strong>仅为入住旅舍的客人</strong>准备晚餐。餐点按订单制作，使用每日新鲜采购的食材，因此可供选择的菜品可能会有所不同。",
+      "p1": "我们的内部餐厅<strong>仅为入住旅舍的客人</strong>准备晚餐。餐点按订单制作，使用每日新鲜采购的食材，因此可供选择的菜品可能会有所不同。",
       "p2": "请提前预订——最好在当天早些时候。<strong>晚餐点单的最晚时间为 20:00</strong>，厨房于 21:00 关闭。",
       "p3": "由于我们专门为下单的客人烹饪，因此可以专注于新鲜度和品质，同时避免不必要的食物浪费。",
       "orderTitle": "如何点餐",
@@ -1336,7 +1336,7 @@
       "q2": "早餐几点供应？",
       "a2": "早餐通常于 08:30 至 11:00 供应。若提前提出要求，通常可以安排提前或延后供应——例如为清晨潜水或与海豚共游的出发时间。",
       "q3": "我可以在旅舍用晚餐吗？",
-      "a3": "可以。住宿客人可向我们的内部厨房点晚餐。请提前预订，且不晚于 20:00。厨房于 21:00 关闭。",
+      "a3": "可以。住宿客人可向我们的内部餐厅点晚餐。请提前预订，且不晚于 20:00。厨房于 21:00 关闭。",
       "q4": "厨房对外来访客开放吗？",
       "a4": "不开放。我们的餐饮服务仅供入住 DEVOCEAN Lodge 的客人享用。",
       "q5": "你们提供午餐吗？",
@@ -1363,7 +1363,7 @@
     "hero": {
       "eyebrow": "Питание и рестораны · DEVOCEAN Lodge",
       "title": "Завтрак включён.<br/><span>Ужин приготовим для вас по запросу.</span>",
-      "lead": "Каждое проживание в DEVOCEAN Lodge включает завтрак, который подаётся в нашем тропическом саду. Вечером гости, проживающие в лодже, могут заранее заказать свежеприготовленный ужин из нашей кухни."
+      "lead": "Каждое проживание в DEVOCEAN Lodge включает завтрак, который подаётся в нашем тропическом саду. Вечером гости, проживающие в лодже, могут заранее заказать свежеприготовленный ужин из нашего ресторана."
     },
     "facts": {
       "included": "Завтрак включён",
@@ -1383,7 +1383,7 @@
     "dinner": {
       "title": "Ужин в DEVOCEAN",
       "badge": "Предзаказ",
-      "p1": "Наша кухня готовит ужин <strong>исключительно для гостей, проживающих в лодже</strong>. Блюда готовятся под заказ из продуктов, закупаемых свежими каждый день, поэтому доступный выбор может меняться.",
+      "p1": "Наш ресторан готовит ужин <strong>исключительно для гостей, проживающих в лодже</strong>. Блюда готовятся под заказ из продуктов, закупаемых свежими каждый день, поэтому доступный выбор может меняться.",
       "p2": "Пожалуйста, заказывайте заранее — предпочтительно в первой половине дня. <strong>Крайнее время для заказа ужина — 20:00</strong>, а кухня закрывается в 21:00.",
       "p3": "Поскольку мы готовим специально для тех гостей, кто сделал заказ, мы можем сосредоточиться на свежести и качестве, избегая ненужных пищевых отходов.",
       "orderTitle": "Как заказать",
@@ -1421,7 +1421,7 @@
       "q2": "В какое время подаётся завтрак?",
       "a2": "Завтрак обычно подаётся с 08:30 до 11:00. Более ранний или поздний завтрак часто можно организовать при заблаговременной просьбе — например, для раннего отъезда на дайвинг или плавание с дельфинами.",
       "q3": "Могу ли я поужинать в лодже?",
-      "a3": "Да. Проживающие гости могут заказать ужин на нашей кухне. Пожалуйста, заказывайте заранее и не позднее 20:00. Кухня закрывается в 21:00.",
+      "a3": "Да. Проживающие гости могут заказать ужин в нашем ресторане. Пожалуйста, заказывайте заранее и не позднее 20:00. Кухня закрывается в 21:00.",
       "q4": "Открыта ли кухня для посторонних посетителей?",
       "a4": "Нет. Наше питание предназначено только для гостей, проживающих в DEVOCEAN Lodge.",
       "q5": "Подаёте ли вы обед?",
