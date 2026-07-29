@@ -1080,9 +1080,10 @@
   </script>
 
   <!-- Authoritative lodge graph: LodgingBusiness/Hotel + all room types in one block.
-       Aggregate rating is intentionally omitted here — the Trustindex widget
-       (loader-cert.js) injects its own verified aggregateRating JSON-LD, so a
-       second rating block would create the exact duplication the audit flags. -->
+       aggregateRating is included here (DEVOCEAN-controlled) so Google sees one
+       authoritative entity with the correct type. The Trustindex widget's schema
+       injection is suppressed by the MutationObserver below; the visible widget
+       is kept. Update reviewCount/ratingValue periodically as reviews grow. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -1108,7 +1109,7 @@
           "@type": "PostalAddress",
           "streetAddress": "Rua C, Parcela 12",
           "addressLocality": "Ponta do Ouro",
-          "addressRegion": "Província de Maputo",
+          "addressRegion": "Matutuíne, Província de Maputo",
           "postalCode": "1118",
           "addressCountry": "MZ"
         },
@@ -1157,6 +1158,13 @@
           "https://www.pinterest.com/devoceansa/",
           "https://www.youtube.com/@DEVOCEAN_MZ"
         ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.5",
+          "bestRating": "5",
+          "worstRating": "1",
+          "reviewCount": 784
+        },
         "potentialAction": {
           "@type": "ReserveAction",
           "target": { "@type": "EntryPoint", "urlTemplate": "https://devoceanlodge.com/book-direct" },
@@ -1415,6 +1423,31 @@
       top: 112px !important; 
     }
   </style>
+
+  <!-- Strip Trustindex schema injection: the floating-cert script injects an
+       Organization block (with wrong addressLocality "Lopes") and a competing
+       aggregateRating. Our own LodgingBusiness graph is authoritative; we keep
+       the visible widget by only removing their JSON-LD, not the widget itself.
+       Static JSON-LD blocks already in the HTML are never affected — the
+       MutationObserver only fires on nodes added dynamically by JS. -->
+  <script>
+    (function () {
+      var STRIP_TYPES = { Organization: 1, ItemList: 1, AggregateRating: 1 };
+      function stripNode(n) {
+        if (n.nodeType !== 1 || n.tagName !== 'SCRIPT' || n.type !== 'application/ld+json') return;
+        try {
+          var d = JSON.parse(n.textContent || '');
+          if (STRIP_TYPES[d['@type']]) n.remove();
+        } catch (e) {}
+      }
+      var obs = new MutationObserver(function (muts) {
+        muts.forEach(function (m) {
+          m.addedNodes.forEach(stripNode);
+        });
+      });
+      obs.observe(document.documentElement, { childList: true, subtree: true });
+    })();
+  </script>
 
   <!-- Trustindex Floating Certificate (delayed) -->
   <script defer async src='https://cdn.trustindex.io/loader-cert.js?706109d56a019615d026adc81e8'></script>
