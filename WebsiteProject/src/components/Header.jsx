@@ -33,6 +33,8 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
   // Detect if we're on a standalone HTML page (not index.html)
   // These pages include: safari.html, comfort.html, cottage.html, chalet.html, story.html, etc.
+  const isBookDirectPage = typeof window !== 'undefined' &&
+    window.location.pathname.startsWith('/book-direct');
   const isStandalonePage = typeof window !== 'undefined' &&
     window.location.pathname !== '/' &&
     window.location.pathname !== '/index.html' &&
@@ -124,14 +126,16 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             </select>
           </div>
 
-          {/* Right: Book Now */}
-          <a
-            href={bookUrl}
-            className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg border border-white text-white font-semibold text-sm whitespace-nowrap hover:bg-white/10 transition-colors"
-            onClick={() => handleBookClick('topbar')}
-          >
-            {ui.contact.bookNow}
-          </a>
+          {/* Right: Book Now (hidden on the booking page itself) */}
+          {!isBookDirectPage && (
+            <a
+              href={bookUrl}
+              className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg border border-white text-white font-semibold text-sm whitespace-nowrap hover:bg-white/10 transition-colors"
+              onClick={() => handleBookClick('topbar')}
+            >
+              {ui.contact.bookNow}
+            </a>
+          )}
         </div>
       </div>
 
@@ -310,7 +314,8 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 </a>
               ))}
 
-              {/* Book Now */}
+              {/* Book Now (hidden on the booking page itself) */}
+              {!isBookDirectPage && (
               <div className="p-3">
                 <a
                   href={bookUrl}
@@ -325,6 +330,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                   {ui.contact.bookNow}
                 </a>
               </div>
+              )}
             </div>
           </div>
         </nav>
