@@ -34,14 +34,6 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
             {ui.stay.blurb}
           </p>
         </div>
-        <a
-          href={`/story.html?lang=${lang}`}
-          className={`btn-cta hidden md:inline-flex items-center justify-center w-[15rem] ${lang === 'ru' || lang === 'zu' ? 'px-3 py-1.5 text-sm' : 'px-4 py-2'} rounded-xl bg-[#9e4b13] text-white whitespace-nowrap`}
-          aria-label={ui.stay.ourStory}
-          data-testid="button-our-story"
-        >
-          {ui.stay.ourStory}
-        </a>
       </div>
 
       <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
