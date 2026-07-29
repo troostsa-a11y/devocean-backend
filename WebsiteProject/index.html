@@ -1426,23 +1426,35 @@
 
   <!-- Strip Trustindex schema injection: the floating-cert script injects an
        Organization block (with wrong addressLocality "Lopes") and a competing
-       aggregateRating. Our own LodgingBusiness graph is authoritative; we keep
-       the visible widget by only removing their JSON-LD, not the widget itself.
-       Static JSON-LD blocks already in the HTML are never affected — the
-       MutationObserver only fires on nodes added dynamically by JS. -->
+       aggregateRating. Our LodgingBusiness graph is authoritative.
+       Two-layer approach:
+         1. Patch document.head.appendChild / insertBefore to block injection
+            before the node ever enters the DOM (catches Google's Rich Results
+            Test extractor which reads the DOM state mid-render).
+         2. MutationObserver fallback for any other insertion point (body etc).
+       Static JSON-LD blocks already in the HTML are never affected — they are
+       parsed by the browser before this script runs. -->
   <script>
     (function () {
       var STRIP_TYPES = { Organization: 1, ItemList: 1, AggregateRating: 1 };
-      function stripNode(n) {
-        if (n.nodeType !== 1 || n.tagName !== 'SCRIPT' || n.type !== 'application/ld+json') return;
-        try {
-          var d = JSON.parse(n.textContent || '');
-          if (STRIP_TYPES[d['@type']]) n.remove();
-        } catch (e) {}
+      function isThirdPartyLdJson(node) {
+        if (!node || node.nodeType !== 1 || node.tagName !== 'SCRIPT') return false;
+        if (node.type !== 'application/ld+json') return false;
+        try { return !!STRIP_TYPES[JSON.parse(node.textContent || '')['@type']]; }
+        catch (e) { return false; }
       }
+      // Layer 1: intercept before insertion so the node never reaches the DOM.
+      var head = document.head || document.querySelector('head');
+      if (head) {
+        var _ac = head.appendChild.bind(head);
+        var _ib = head.insertBefore.bind(head);
+        head.appendChild  = function (n) { return isThirdPartyLdJson(n) ? n : _ac(n); };
+        head.insertBefore = function (n, r) { return isThirdPartyLdJson(n) ? n : _ib(n, r); };
+      }
+      // Layer 2: MutationObserver fallback (body or late insertions).
       var obs = new MutationObserver(function (muts) {
         muts.forEach(function (m) {
-          m.addedNodes.forEach(stripNode);
+          m.addedNodes.forEach(function (n) { if (isThirdPartyLdJson(n)) n.remove(); });
         });
       });
       obs.observe(document.documentElement, { childList: true, subtree: true });
