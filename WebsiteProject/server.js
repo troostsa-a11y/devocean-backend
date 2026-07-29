@@ -4,7 +4,7 @@ import { createServer as createViteServer } from 'vite';
 import { createServer as createHttpServer } from 'http';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { readFile } from 'fs/promises';
+import { readFile, access } from 'fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -729,7 +729,15 @@ app.use(async (req, res, next) => {
   // static HTML files (/thankyou.html, /safari.html, ...).
   if (/\.[a-zA-Z0-9]+$/.test(req.path)) return next();
   try {
-    const template = await readFile(join(__dirname, 'index.html'), 'utf-8');
+    // Dev parity with CF Pages pretty URLs: serve <path>.html if it exists
+    // e.g. /story → story.html, /devocean-lodge-meals → devocean-lodge-meals.html
+    // Falls back to index.html (React SPA) when no matching file is found.
+    let templatePath = join(__dirname, 'index.html');
+    if (req.path !== '/') {
+      const candidate = join(__dirname, req.path.slice(1) + '.html');
+      try { await access(candidate); templatePath = candidate; } catch { /* SPA fallback */ }
+    }
+    const template = await readFile(templatePath, 'utf-8');
     const html = await vite.transformIndexHtml(req.originalUrl, template);
     const raw = String(req.headers['cf-ipcountry'] || '');
     const cc = /^[A-Za-z]{2}$/.test(raw) ? raw.toUpperCase() : '';
