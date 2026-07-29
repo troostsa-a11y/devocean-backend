@@ -47,7 +47,7 @@ export default function Footer({ units, experiences, ui, lang }) {
 
   return (
     <footer className="bg-slate-900 text-slate-200">
-      <div className="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-5 gap-8">
+      <div className="max-w-7xl mx-auto px-4 py-10 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
         {/* Brand / About */}
         <div>
           <a
@@ -166,6 +166,18 @@ export default function Footer({ units, experiences, ui, lang }) {
             <li className="flex items-center gap-2">
               <MapPin size={16} /> Ponta do Ouro, Mozambique
             </li>
+          </ul>
+        </div>
+
+        {/* Practical Guides */}
+        <div>
+          <div className="font-semibold">{ui?.guides?.heading ?? "Practical Guides"}</div>
+          <ul className="mt-2 space-y-1 text-sm text-slate-400">
+            <li><a className="hover:text-white" href="/getting-to-ponta-do-ouro">Getting Here</a></li>
+            <li><a className="hover:text-white" href="/ponta-do-ouro-without-4x4">No 4×4 Needed</a></li>
+            <li><a className="hover:text-white" href="/ponta-do-ouro-accommodation">Accommodation Guide</a></li>
+            <li><a className="hover:text-white" href="/devocean-lodge-meals">Meals &amp; Dining</a></li>
+            <li><a className="hover:text-white" href="/ponta-do-ouro">Ponta do Ouro</a></li>
           </ul>
         </div>
 

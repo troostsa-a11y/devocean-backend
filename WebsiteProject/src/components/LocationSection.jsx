@@ -22,6 +22,14 @@ export default function LocationSection({ ui }) {
               </li>
             ))}
           </ul>
+          <p className="mt-4 text-sm text-slate-500">
+            Travel guides:&ensp;
+            <a href="/getting-to-ponta-do-ouro" className="text-[#9e4b13] hover:underline">Getting to Ponta do Ouro</a>
+            &ensp;·&ensp;
+            <a href="/ponta-do-ouro-without-4x4" className="text-[#9e4b13] hover:underline">Visiting without a 4×4</a>
+            &ensp;·&ensp;
+            <a href="/ponta-do-ouro" className="text-[#9e4b13] hover:underline">Destination guide</a>
+          </p>
         </div>
         <div className="rounded-2xl overflow-hidden border shadow relative">
           {!showInteractiveMap ? (

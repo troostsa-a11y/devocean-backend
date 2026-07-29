@@ -159,6 +159,16 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
           </a>
         </div>
       </div>
+
+      {/* Links to practical guides */}
+      <p className="mt-3 text-sm text-slate-500">
+        Guides:&ensp;
+        <a href="/ponta-do-ouro-accommodation" className="text-[#9e4b13] hover:underline">What&apos;s included</a>
+        &ensp;·&ensp;
+        <a href="/devocean-lodge-meals" className="text-[#9e4b13] hover:underline">Meals &amp; dining</a>
+        &ensp;·&ensp;
+        <a href="/safari-tents-ponta-do-ouro" className="text-[#9e4b13] hover:underline">Safari tent details</a>
+      </p>
     </section>
   );
 }
