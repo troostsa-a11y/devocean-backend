@@ -16,52 +16,57 @@
 // INVENTORY
 // ---------------------------------------------------------------------------
 export const INVENTORY = {
-  // Four publicly marketed accommodation types.
-  // TODO: confirm exact Beds24 unit count with operations (story.html says 9;
-  // Beds24 may split one type into multiple bookable units).
+  // Confirmed operational figures (July 2026).
+  totalUnits: 9,
   types: 4,
-  // Canonical public-facing description (use this phrase everywhere).
+  // Canonical public-facing phrase — use this everywhere a total is stated.
+  totalLabel: '9 units across four accommodation types',
+  // Short label when only the type count is needed.
   typesLabel: 'four accommodation types',
   units: [
     {
-      id:       'safari',
-      name:     'Safari Tent',
-      bedType:  'king-or-twin',        // user-selectable at booking
-      ensuite:  false,
-      ac:       false,
+      id:        'safari',
+      name:      'Safari Tent',
+      count:     4,                    // 4 Safari Tents
+      bedType:   'king-or-twin',       // user-selectable at booking
+      ensuite:   false,
+      ac:        false,
       maxAdults: 2,
       maxChildren: 1,
-      notes:    'Shared ablutions block.',
+      notes:     'Shared ablutions block.',
     },
     {
-      id:       'comfort',
-      name:     'Comfort Safari Tent',
-      bedType:  'king-or-twin',        // user-selectable at booking
-      ensuite:  true,
-      ac:       false,
+      id:        'comfort',
+      name:      'Comfort Safari Tent',
+      count:     3,                    // 3 Comfort Tents
+      bedType:   'king-or-twin',       // user-selectable at booking
+      ensuite:   true,
+      ac:        false,
       maxAdults: 2,
       maxChildren: 1,
-      notes:    'En-suite bathroom under thatched roof.',
+      notes:     'En-suite bathroom under thatched roof.',
     },
     {
-      id:       'cottage',
-      name:     'Garden Cottage',
-      bedType:  'queen',               // FIXED — NOT king/twin
-      ensuite:  true,
-      ac:       true,                  // inverter AC (heat + cool)
+      id:        'cottage',
+      name:      'Garden Cottage',
+      count:     1,                    // 1 Garden Cottage
+      bedType:   'queen',              // FIXED — NOT king/twin
+      ensuite:   true,
+      ac:        true,                 // inverter AC (heat + cool)
       maxAdults: 2,
       maxChildren: 1,
-      notes:    'Solid construction, desk/workspace, dining table, thatched roundavel.',
+      notes:     'Solid construction, desk/workspace, dining table, thatched roundavel.',
     },
     {
-      id:       'chalet',
-      name:     'Thatched Chalet',
-      bedType:  'king-or-twin',        // user-selectable at booking
-      ensuite:  true,
-      ac:       true,                  // inverter AC (heat + cool)
+      id:        'chalet',
+      name:      'Thatched Chalet',
+      count:     1,                    // 1 Thatched Chalet
+      bedType:   'king-or-twin',       // user-selectable at booking
+      ensuite:   true,
+      ac:        true,                 // inverter AC (heat + cool)
       maxAdults: 2,
       maxChildren: 1,
-      notes:    'Flagship unit, traditional thatched roof.',
+      notes:     'Flagship unit, traditional thatched roof.',
     },
   ],
 };
@@ -166,7 +171,7 @@ export const CONTACT = {
 // ---------------------------------------------------------------------------
 export const MARIN_CONTEXT = `
 DEVOCEAN Lodge — verified facts (use these, not anything else):
-- Four accommodation types: Safari Tent (king/twin, shared ablutions), Comfort Tent (king/twin, en-suite), Garden Cottage (QUEEN bed, AC, desk), Thatched Chalet (king/twin, AC, en-suite).
+- 9 units across four accommodation types: 4 Safari Tents (king/twin, shared ablutions), 3 Comfort Tents (king/twin, en-suite), 1 Garden Cottage (QUEEN bed fixed, AC, desk), 1 Thatched Chalet (king/twin, AC, en-suite).
 - Beach: ${LOCATION.beachDistance}.
 - Meals: breakfast included daily; dinner by advance pre-order (resident guests only); no lunch; braai available.
 - Road: paved approach; no 4×4 required for lodge or main beach; 4×4 needed only for Malongane / deep-sand tracks.
