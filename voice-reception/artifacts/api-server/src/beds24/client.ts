@@ -190,8 +190,10 @@ export function formatAvailabilityForModel(result: AvailabilityResult): string {
       currency: o.currency,
     })),
     note:
-      "Prices are live from the booking engine — identical to the /book-direct page. " +
-      "Quote totalPrice as the whole-stay total. " +
-      "Confirm the final booking with the reservations team.",
+      "Prices are live from the booking engine — identical to what the guest sees on /book-direct. " +
+      "Quote totalPrice as the EXACT whole-stay total; do NOT recalculate or adjust it. " +
+      "Inclusions: breakfast is included in every stay. " +
+      "After quoting, always finish with the booking link: devoceanlodge.com/book-direct " +
+      "(the guest goes there to complete the booking — you are read-only and cannot confirm reservations).",
   });
 }

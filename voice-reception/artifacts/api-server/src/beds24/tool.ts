@@ -255,13 +255,13 @@ async function runCheckAvailability(args: {
     if (err instanceof Beds24NotConfiguredError) {
       return JSON.stringify({
         error: "live_availability_unavailable",
-        note: "Live availability is not connected right now. Quote the published rates and tell the guest the reservations team will confirm availability for these dates.",
+        note: "Live availability is not connected right now. Do NOT quote any rate from memory or estimation. Tell the guest you cannot retrieve a live price and direct them to devoceanlodge.com/book-direct.",
       });
     }
     logger.error({ err }, "check_availability tool failed");
     return JSON.stringify({
       error: "availability_lookup_failed",
-      note: "Could not reach the live booking system. Quote the published rates and tell the guest the reservations team will confirm availability for these dates.",
+      note: "Could not reach the live booking system. Do NOT quote any rate from memory or estimation. Tell the guest you cannot retrieve a live price and direct them to devoceanlodge.com/book-direct.",
     });
   }
 }
