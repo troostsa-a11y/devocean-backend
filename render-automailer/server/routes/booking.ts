@@ -421,6 +421,13 @@ export function createBookingRouter(deps: {
       cartLines = roomId ? [{ roomId, offerId: req.body?.offerId ?? null, qty: 1 }] : [];
     }
 
+    // Bed-type preferences per roomId ('king' | 'twin') — optional, Safari/Comfort/Chalet only.
+    const rawBedPrefs = req.body?.bedPreferences;
+    const bedPreferences: Record<string, string> =
+      typeof rawBedPrefs === 'object' && rawBedPrefs !== null && !Array.isArray(rawBedPrefs)
+        ? rawBedPrefs
+        : {};
+
     const guest = req.body?.guest || {};
     const firstName = String(guest.firstName || '').trim().slice(0, 80);
     const lastName = String(guest.lastName || '').trim().slice(0, 80);
@@ -462,6 +469,15 @@ export function createBookingRouter(deps: {
       // discount) server-side from fresh Beds24 offers. Client amounts are never
       // trusted — only roomId/offerId/qty/discountCode/voucher select WHAT to price.
       const quote = await computeCartQuote(beds24, stay, cartLines, cfg, discountCode, voucher);
+
+      // Annotate each leg with the guest's bed-type preference (King/Twin).
+      for (const leg of quote.legs) {
+        const pref = String(bedPreferences[leg.roomId] || '').toLowerCase();
+        if (pref === 'king' || pref === 'twin') {
+          leg.bedType = pref === 'king' ? 'King' : 'Twin';
+        }
+      }
+
       const first = quote.legs[0];
       const summary = quote.lines
         .map((l) => (l.qty > 1 ? `${l.roomName} \u00d7${l.qty}` : l.roomName))
@@ -818,6 +834,7 @@ export function createBookingRouter(deps: {
             offerName: leg.offerName,
             discount: leg.discount,
             couponCode: record.couponCode,
+            bedType: leg.bedType,
           });
           leg.beds24BookingId = beds24BookingId;
           await db.updateDirectBooking(record.sessionRef, {

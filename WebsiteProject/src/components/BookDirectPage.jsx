@@ -86,6 +86,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     return FEATURE_LABELS[feature]?.[lang] || FEATURE_LABELS[feature]?.[base] || FEATURE_LABELS[feature]?.en || feature;
   };
 
+  // Bed-type toggle labels (Safari Tent, Comfort Tent, Thatched Chalet only).
+  const BED_TYPE_LABELS = {
+    king: { en: 'King bed', pt: 'Cama de casal', de: 'Doppelbett', fr: 'Lit double', es: 'Cama doble', it: 'Letto matrimoniale', nl: 'Tweepersoonsbed', sv: 'Dubbelsäng', pl: 'Łóżko podwójne', ro: 'Pat dublu', sr: 'Bračni krevet', hr: 'Bračni krevet', cs: 'Manželská postel', tr: 'Çift kişilik yatak', ja: 'キングベッド', zh: '大床', ru: 'Двуспальная кровать', zu: 'Umbhede omkhulu', sw: 'Kitanda kikubwa', af: 'Koningsbed' },
+    twin: { en: 'Twin beds', pt: 'Camas separadas', de: 'Zwei Einzelbetten', fr: 'Lits jumeaux', es: 'Camas separadas', it: 'Letti separati', nl: 'Twee eenpersoonsbedden', sv: 'Enkelsängar', pl: 'Łóżka oddzielne', ro: 'Paturi separate', sr: 'Odvojena kreveta', hr: 'Odvojena kreveta', cs: 'Oddělené postele', tr: 'İki ayrı yatak', ja: 'ツインベッド', zh: '双床', ru: 'Раздельные кровати', zu: 'Imibhede emibili', sw: 'Vitanda viwili', af: 'Tweelingsbed' },
+  };
+  const getBedTypeLabel = (type) => {
+    const base = lang?.split('-')[0] || 'en';
+    return BED_TYPE_LABELS[type]?.[lang] || BED_TYPE_LABELS[type]?.[base] || BED_TYPE_LABELS[type]?.en || type;
+  };
+
   const translateRoomName = (name) => {
     const unitKey = getUnitKey(name);
     return (unitKey && localizedUnits.find((u) => u.key === unitKey)?.title) || name;
@@ -131,6 +141,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [quote, setQuote] = useState(null); // live combined quote (from /api/booking/quote)
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState('');
+
+  const [bedType, setBedType] = useState({}); // roomId → 'king' | 'twin'
 
   const [guest, setGuest] = useState({ firstName: '', lastName: '', email: '', phone: '' });
   const [canceled, setCanceled] = useState(false);
@@ -368,6 +380,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           discountCode: discountCode.trim() || undefined,
           voucher: voucherCode.trim() || undefined,
           gaClientId,
+          bedPreferences: Object.keys(bedType).length > 0 ? bedType : undefined,
           guest: {
             firstName: guest.firstName.trim(),
             lastName: guest.lastName.trim(),
@@ -1261,6 +1274,27 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   </div>
                                 ) : null;
                               })()}
+                              {(unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet') && (
+                                <div className="mt-2 flex gap-1.5">
+                                  {['king', 'twin'].map((bt) => {
+                                    const active = (bedType[room.roomId] || 'king') === bt;
+                                    return (
+                                      <button
+                                        key={bt}
+                                        type="button"
+                                        onClick={() => setBedType((prev) => ({ ...prev, [room.roomId]: bt }))}
+                                        className={`flex-1 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                                          active
+                                            ? 'border-[#9e4b13] bg-[#9e4b13]/10 text-[#9e4b13]'
+                                            : 'border-slate-200 text-slate-500 hover:border-slate-300'
+                                        }`}
+                                      >
+                                        {getBedTypeLabel(bt)}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              )}
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
                                 <span className="inline-flex items-start gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-slate-600">
                                   <Users className="h-3.5 w-3.5 mt-0.5 shrink-0" />

@@ -310,6 +310,7 @@ export interface DirectBookingLeg {
   deposit: number;          // this leg's share of the combined deposit (computed on total - discount)
   balance: number;          // this leg's balance due on arrival (computed on total - discount)
   beds24BookingId: string | null; // set once the leg is created in Beds24
+  bedType?: string;         // 'King' | 'Twin' — guest bed-configuration preference (Safari/Comfort/Chalet only)
 }
 
 export type DirectBooking = typeof directBookings.$inferSelect;

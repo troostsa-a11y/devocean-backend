@@ -640,6 +640,7 @@ export class Beds24Service {
     offerId?: number | null;
     offerName?: string | null;
     notes?: string;
+    bedType?: string;         // 'King' | 'Twin' — appended to booking notes
     discount?: number;
     couponCode?: string | null;
   }): Promise<{ beds24BookingId: string }> {
@@ -689,6 +690,7 @@ export class Beds24Service {
       referer: 'Direct Website',
       notes: input.notes ||
         `Direct website booking${input.offerName ? ` (${input.offerName})` : ''}.` +
+        (input.bedType ? ` Bed preference: ${input.bedType}.` : '') +
         (discount > 0 ? ` Coupon ${input.couponCode || ''} applied: -${discount} ${input.currency}.` : '') +
         ` Deposit paid ${input.deposit} ${input.currency}, ` +
         `balance due on arrival ${input.balance} ${input.currency}.`,
