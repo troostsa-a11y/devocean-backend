@@ -15,14 +15,131 @@
  *    crawlers see correct title, meta description, canonical and H1 before
  *    JavaScript executes.  For all other non-homepage SPA routes the block is
  *    emptied to prevent homepage content polluting unrelated pages.
+ *
+ * 4. Hreflang management:
+ *    - Homepage (/): hreflang is baked into index.html — left untouched.
+ *    - Experience pages (/experiences/:key): replaced with route-specific
+ *      hreflang pointing to the correct experience URL for each language.
+ *      All 22 supported languages are fully translated for these pages.
+ *    - Booking/info SPA routes (ROUTE_META) and unknown routes: hreflang
+ *      block is stripped — these pages have no genuine translated variants.
  */
 
 const BASE_URL = 'https://devoceanlodge.com';
 
 // ---------------------------------------------------------------------------
-// Pre-render content per SPA route.
+// Hreflang: language code → URL ?lang= parameter mapping
+// Mirrors the homepage hreflang block in index.html exactly.
+// Only include a language here if the experience pages are fully translated
+// (title, meta description, H1, body copy, image labels).
+// ---------------------------------------------------------------------------
+const HREFLANG_LANGS = [
+  { hreflang: 'pt-PT',   param: 'pt'    },
+  { hreflang: 'pt-BR',   param: 'pt-BR' },
+  { hreflang: 'de',      param: 'de'    },
+  { hreflang: 'fr',      param: 'fr'    },
+  { hreflang: 'es',      param: 'es'    },
+  { hreflang: 'it',      param: 'it'    },
+  { hreflang: 'nl',      param: 'nl'    },
+  { hreflang: 'sv',      param: 'sv'    },
+  { hreflang: 'pl',      param: 'pl'    },
+  { hreflang: 'af',      param: 'af'    },
+  { hreflang: 'zu',      param: 'zu'    },
+  { hreflang: 'sw',      param: 'sw'    },
+  { hreflang: 'ja',      param: 'ja'    },
+  { hreflang: 'zh-Hans', param: 'zh'    },
+  { hreflang: 'ru',      param: 'ru'    },
+  { hreflang: 'ro',      param: 'ro'    },
+  { hreflang: 'sr',      param: 'sr'    },
+  { hreflang: 'hr',      param: 'hr'    },
+  { hreflang: 'cs',      param: 'cs'    },
+  { hreflang: 'tr',      param: 'tr'    },
+];
+
+/**
+ * Build a complete hreflang block for a fully-translated page.
+ * pageUrl must be the canonical (language-neutral) URL, e.g.
+ * "https://devoceanlodge.com/experiences/surfing".
+ */
+function buildHreflang(pageUrl) {
+  const pad = (s, n) => s + ' '.repeat(Math.max(0, n - s.length));
+  const lines = [
+    `  <!-- hreflang alternate links — all 22 translated language variants -->`,
+    `  <link rel="alternate" hreflang="x-default" href="${pageUrl}" />`,
+    `  <link rel="alternate" hreflang="en"         href="${pageUrl}" />`,
+  ];
+  for (const { hreflang, param } of HREFLANG_LANGS) {
+    lines.push(
+      `  <link rel="alternate" hreflang="${pad(hreflang + '"', 11)} href="${pageUrl}?lang=${param}" />`
+    );
+  }
+  lines.push(`  <!-- /hreflang -->`);
+  return lines.join('\n');
+}
+
+// Matches the hreflang block from its opening comment through to the
+// <!-- /hreflang --> sentinel added to index.html.
+const HREFLANG_BLOCK_RE = /<!-- hreflang alternate links[\s\S]*?<!-- \/hreflang -->/;
+
+// Empty replacement — strips the hreflang block for pages that have no
+// genuine translated variants (booking flow, unknown SPA routes, etc.).
+const EMPTY_HREFLANG = '<!-- /hreflang -->';
+
+// ---------------------------------------------------------------------------
+// Experience pages: all seven types, all 22 languages fully translated in
+// both ExperienceDetailPage.jsx and seoMeta.js META_DESCRIPTIONS.
+// ---------------------------------------------------------------------------
+const EXPERIENCE_KEYS = new Set(['diving', 'dolphins', 'seafari', 'safari', 'fishing', 'surfing', 'lighthouse']);
+
+const EXPERIENCE_META = {
+  diving: {
+    title:         'Scuba Diving | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
+    description:   'Scuba diving in Ponta do Ouro, Mozambique. Explore coral reefs, encounter dolphins and marine life. PADI certified dive centre. Book your dive adventure.',
+    ogTitle:       'Scuba Diving Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Dive 20+ named sites — coral reefs, dolphins, whale sharks. PADI certified dive centre, Ponta do Ouro Marine Reserve.',
+  },
+  dolphins: {
+    title:         'Swim with Dolphins | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
+    description:   'Swim with wild dolphins in Ponta do Ouro, Mozambique. Ethical ocean safari encounters with bottlenose dolphins in their natural habitat.',
+    ogTitle:       'Swim with Wild Dolphins | DEVOCEAN Lodge',
+    ogDescription: 'Ethical ocean safaris with 200+ resident Indo-Pacific bottlenose dolphins in Ponta do Ouro Marine Reserve.',
+  },
+  seafari: {
+    title:         'Ocean Seafari | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
+    description:   'Ocean seafari in Ponta do Ouro, Mozambique. Whale watching, dolphins, and marine wildlife boat tours. Experience the Indian Ocean wonders.',
+    ogTitle:       'Ocean Seafari Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Whale watching, dolphins and marine wildlife boat tours in the Ponta do Ouro Marine Reserve, Mozambique.',
+  },
+  safari: {
+    title:         'African Wildlife Safari | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
+    description:   'African wildlife safari near Ponta do Ouro, Mozambique. Day trips to Tembe Elephant Park and Maputo Special Reserve. See elephants, lions, and more.',
+    ogTitle:       'Wildlife Safari Near Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Day safaris to Maputo National Park — elephants, hippos, giraffes, zebras — from DEVOCEAN Lodge, Ponta do Ouro.',
+  },
+  fishing: {
+    title:         'Deep Sea Fishing | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
+    description:   'Deep sea fishing charters in Ponta do Ouro, Mozambique. Catch marlin, sailfish, and tuna. Professional fishing boats and experienced crew.',
+    ogTitle:       'Deep Sea Fishing Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Black marlin, sailfish and yellowfin tuna fishing charters in the Mozambique Channel from Ponta do Ouro.',
+  },
+  surfing: {
+    title:         'Surfing Ponta do Ouro | DEVOCEAN Lodge — Mozambique',
+    description:   'Surfing lessons and rentals in Ponta do Ouro, Mozambique. Learn to surf on pristine beaches. Beginner-friendly waves and experienced instructors.',
+    ogTitle:       'Surfing Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Surf a classic right-hand point break in Ponta do Ouro. Lessons and board rentals for beginners and experienced surfers.',
+  },
+  lighthouse: {
+    title:         'Ponta do Ouro Lighthouse | DEVOCEAN Lodge — Mozambique',
+    description:   'Ponta do Ouro Lighthouse — historic landmark and scenic viewpoint in Southern Mozambique. Panoramic ocean views and photography spot.',
+    ogTitle:       'Ponta do Ouro Lighthouse | DEVOCEAN Lodge',
+    ogDescription: 'Historic lighthouse and panoramic viewpoint at the southern tip of Mozambique. Walking distance from DEVOCEAN Lodge.',
+  },
+};
+
+// ---------------------------------------------------------------------------
+// Pre-render content per known booking/info SPA route.
 // Each entry supplies the correct initial-HTML signals for that URL.
-// Keys are exact pathnames (no trailing slash).
+// These routes serve English-only content to crawlers (no translated variants).
 // ---------------------------------------------------------------------------
 const ROUTE_META = {
 
@@ -165,49 +282,84 @@ export async function onRequest(context) {
 
     // ── 2. Route-specific pre-render injection ───────────────────────────────
     // Only applies when the SPA shell (index.html) is being served.
-    // Static files (e.g. experiences/surfing.html) already have correct meta
-    // and are never transformed here — they serve the correct content directly.
+    // Static files (e.g. comfort.html) already have correct meta and are
+    // never transformed here — they serve the correct content directly.
     if (pathname !== '/') {
+
+      const expMatch = pathname.match(/^\/experiences\/([a-z]+)$/);
+      const expKey = expMatch ? expMatch[1] : null;
       const route = ROUTE_META[pathname];
 
-      if (route) {
-        // Replace <title>
-        html = html.replace(
-          /<title>[^<]*<\/title>/,
-          `<title>${route.title}</title>`
-        );
-        // Replace meta description (attribute spans two lines in index.html)
+      if (expKey && EXPERIENCE_KEYS.has(expKey)) {
+        // ── Experience detail page (all 22 languages fully translated) ───────
+        const pageUrl = `${BASE_URL}/experiences/${expKey}`;
+        const meta = EXPERIENCE_META[expKey];
+
+        if (meta) {
+          html = html.replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`);
+          html = html.replace(
+            /<meta name="description"\s+content="[^"]*"/,
+            `<meta name="description" content="${meta.description}"`
+          );
+          html = html.replace(
+            /(<link rel="canonical" href=")[^"]*(")/,
+            `$1${pageUrl}$2`
+          );
+          html = html.replace(
+            /(<meta property="og:title" content=")[^"]*(")/,
+            `$1${meta.ogTitle}$2`
+          );
+          html = html.replace(
+            /<meta property="og:description"\s+content="[^"]*"/,
+            `<meta property="og:description" content="${meta.ogDescription}"`
+          );
+          html = html.replace(
+            /(<meta property="og:url" content=")[^"]*(")/,
+            `$1${pageUrl}$2`
+          );
+        }
+
+        // Strip homepage static-content block (experience renders via React)
+        html = html.replace(STATIC_CONTENT_RE, EMPTY_STATIC);
+
+        // Inject experience-specific hreflang (self-referential + all 22 langs)
+        html = html.replace(HREFLANG_BLOCK_RE, buildHreflang(pageUrl));
+
+      } else if (route) {
+        // ── Known booking/info route (English-only, no translated variants) ──
+        html = html.replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`);
         html = html.replace(
           /<meta name="description"\s+content="[^"]*"/,
           `<meta name="description" content="${route.description}"`
         );
-        // Replace canonical
         html = html.replace(
           /(<link rel="canonical" href=")[^"]*(")/,
           `$1${BASE_URL}${pathname}$2`
         );
-        // Replace og:title
         html = html.replace(
           /(<meta property="og:title" content=")[^"]*(")/,
           `$1${route.ogTitle}$2`
         );
-        // Replace og:description (also spans two lines)
         html = html.replace(
           /<meta property="og:description"\s+content="[^"]*"/,
           `<meta property="og:description" content="${route.ogDescription}"`
         );
-        // Replace og:url
         html = html.replace(
           /(<meta property="og:url" content=")[^"]*(")/,
           `$1${BASE_URL}${pathname}$2`
         );
-        // Replace #static-content block with route-specific HTML
         html = html.replace(STATIC_CONTENT_RE, route.staticHtml);
 
+        // Strip hreflang — no genuine translated variants for this route
+        html = html.replace(HREFLANG_BLOCK_RE, EMPTY_HREFLANG);
+
       } else {
-        // Unknown SPA route (or transactional page) — strip the homepage block
-        // so its content does not appear in search results for unrelated pages.
+        // ── Unknown SPA route or transactional page ───────────────────────────
+        // Strip homepage static-content so it doesn't pollute unrelated pages.
         html = html.replace(STATIC_CONTENT_RE, EMPTY_STATIC);
+
+        // Strip hreflang — we have no information about translated variants here
+        html = html.replace(HREFLANG_BLOCK_RE, EMPTY_HREFLANG);
       }
     }
 
