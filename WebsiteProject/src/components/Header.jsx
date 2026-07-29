@@ -160,7 +160,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
           </div>
 
           {/* Desktop nav — Home · Our Story · Stay · Food · Explore Ponta · Gallery · Location · Contact */}
-          <ul className={`hidden lg:flex items-center ${lang === 'ru' || lang === 'zu' ? 'gap-2 text-sm' : 'gap-4'}`}>
+          <ul className={`hidden lg:flex items-center ${lang === 'zu' ? 'gap-2 text-sm' : 'gap-4'}`}>
 
             {/* Home */}
             <li>
