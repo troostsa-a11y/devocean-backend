@@ -173,11 +173,11 @@ export default function Footer({ units, experiences, ui, lang }) {
         <div>
           <div className="font-semibold">{ui?.legal?.title ?? "Legal"}</div>
           <ul className="mt-2 space-y-1 text-sm text-slate-400">
-            <li><a className="hover:text-white" href="/legal/privacy.html">{ui?.legal?.privacy ?? "Privacy Policy"}</a></li>
-            <li><a className="hover:text-white" href="/legal/cookies.html">{ui?.legal?.cookies ?? "Cookie Policy"}</a></li>
-            <li><a className="hover:text-white" href="/legal/terms.html">{ui?.legal?.terms ?? "Terms & Conditions"}</a></li>
-            <li><a className="hover:text-white" href="/legal/GDPR.html">{ui?.legal?.gdpr ?? "GDPR Info"}</a></li>
-            <li><a className="hover:text-white" href="/legal/CRIC.html">{ui?.legal?.cric ?? "Consumer Rights & Contact"}</a></li>
+            <li><a className="hover:text-white" href="/legal/privacy">{ui?.legal?.privacy ?? "Privacy Policy"}</a></li>
+            <li><a className="hover:text-white" href="/legal/cookies">{ui?.legal?.cookies ?? "Cookie Policy"}</a></li>
+            <li><a className="hover:text-white" href="/legal/terms">{ui?.legal?.terms ?? "Terms & Conditions"}</a></li>
+            <li><a className="hover:text-white" href="/legal/GDPR">{ui?.legal?.gdpr ?? "GDPR Info"}</a></li>
+            <li><a className="hover:text-white" href="/legal/CRIC">{ui?.legal?.cric ?? "Consumer Rights & Contact"}</a></li>
             {showConsentLink && (
               <li>
                 <a 

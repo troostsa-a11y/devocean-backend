@@ -153,13 +153,56 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('canceled') === '1') setCanceled(true);
-    // Pre-fill dates & guests when arriving via a Marin "Continue with this option" link.
-    if (params.get('checkIn'))  setCheckIn(params.get('checkIn'));
-    if (params.get('checkOut')) setCheckOut(params.get('checkOut'));
-    if (params.get('adults'))   setAdults(Number(params.get('adults')));
-    if (params.get('children')) setChildren(Number(params.get('children')));
-    if (params.get('infants'))  setInfants(Number(params.get('infants')));
-  }, []);
+
+    // Restore search state from URL — supports Marin "Continue" links, browser
+    // Back from a room-detail page, and shared results links.
+    const pCheckIn  = params.get('checkIn')  || null;
+    const pCheckOut = params.get('checkOut') || null;
+    const pAdults   = params.get('adults')   ? Number(params.get('adults'))   : null;
+    const pChildren = params.get('children') ? Number(params.get('children')) : 0;
+    const pInfants  = params.get('infants')  ? Number(params.get('infants'))  : null;
+    const pDiscount = params.get('discount') || '';
+    const pCurrency = params.get('currency') || null;
+
+    if (pCheckIn)           setCheckIn(pCheckIn);
+    if (pCheckOut)          setCheckOut(pCheckOut);
+    if (pAdults != null)    setAdults(pAdults);
+    if (pChildren)          setChildren(pChildren);
+    if (pInfants != null)   setInfants(pInfants);
+    if (pDiscount)          setDiscountCode(pDiscount);
+    // Restore display currency without overwriting a user's explicit earlier choice.
+    if (pCurrency && onCurrencyChange) onCurrencyChange(pCurrency);
+
+    // Auto-search when dates are in the URL and no child ages are needed.
+    // If children > 0 the visitor must confirm child ages first, so just
+    // pre-fill the form and let them press "Check availability" themselves.
+    if (pCheckIn && pCheckOut && !pChildren) {
+      const n = Math.round(
+        (new Date(`${pCheckOut}T00:00:00Z`) - new Date(`${pCheckIn}T00:00:00Z`)) / 86400000,
+      );
+      if (n >= 1) {
+        const a = pAdults ?? 2;
+        setLoading(true);
+        fetch('/api/booking/availability', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ checkIn: pCheckIn, checkOut: pCheckOut, adults: a, children: 0 }),
+        })
+          .then((r) => r.json())
+          .then((data) => {
+            setAvailability(data);
+            setCart({});
+            setRateChoice({});
+            setRoomOccupancy({});
+            setQuote(null);
+            setQuoteError('');
+            setStep('results');
+          })
+          .catch(() => {})
+          .finally(() => setLoading(false));
+      }
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Remove the static hero placeholder (index.html #bd-hero-placeholder) once
   // this component has actually mounted and rendered its own hero — it has
@@ -205,6 +248,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const b = new Date(`${checkOut}T00:00:00Z`).getTime();
     return Math.max(0, Math.round((b - a) / 86_400_000));
   }, [checkIn, checkOut]);
+
+  // Query-string fragment appended to room-detail page links so the visitor
+  // can return to /book-direct with the same search already loaded.
+  const detailQueryString = useMemo(() => {
+    const p = new URLSearchParams({ lang });
+    if (checkIn)             p.set('checkIn', checkIn);
+    if (checkOut)            p.set('checkOut', checkOut);
+    if (adults !== 2)        p.set('adults', String(adults));
+    if (children > 0)        p.set('children', String(children));
+    if (discountCode.trim()) p.set('discount', discountCode.trim());
+    return p.toString();
+  }, [lang, checkIn, checkOut, adults, children, discountCode]);
 
   // Lodge child policy: 0-3 stay free (excluded from the priced party), 4-12 are
   // charged as a child, 13+ are charged as an adult. The effective counts below
@@ -276,6 +331,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       setQuote(null);
       setQuoteError('');
       setStep('results');
+      // Encode search state in URL so the visitor can return to these results
+      // via browser Back, a shared link, or a room-detail "Book Direct" CTA.
+      try {
+        const sp = new URLSearchParams();
+        if (checkIn)             sp.set('checkIn', checkIn);
+        if (checkOut)            sp.set('checkOut', checkOut);
+        if (adults !== 2)        sp.set('adults', String(adults));
+        if (children > 0)        sp.set('children', String(children));
+        if (discountCode.trim()) sp.set('discount', discountCode.trim());
+        if (currency)            sp.set('currency', currency);
+        window.history.replaceState(null, '', `/book-direct?${sp.toString()}`);
+      } catch (_) {}
     } catch (err) {
       setError(err.message || t.errorGeneric);
     } finally {
@@ -305,6 +372,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       setQuote(null);
       setQuoteError('');
       setStep('results');
+      try {
+        const sp = new URLSearchParams();
+        sp.set('checkIn', newCheckIn);
+        sp.set('checkOut', newCheckOut);
+        if (adults !== 2)        sp.set('adults', String(adults));
+        if (children > 0)        sp.set('children', String(children));
+        if (discountCode.trim()) sp.set('discount', discountCode.trim());
+        if (currency)            sp.set('currency', currency);
+        window.history.replaceState(null, '', `/book-direct?${sp.toString()}`);
+      } catch (_) {}
     } catch (err) {
       setError(err.message || t.errorGeneric);
     } finally {
@@ -1170,7 +1247,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       // by matching the room name against the four unit slugs.
                       const unitKey = getUnitKey(room.name);
                       const unitImg = unitKey ? IMG.units[unitKey] : null;
-                      const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
+                      const unitDetailUrl = unitKey ? `/${unitKey}?${detailQueryString}` : null;
                       // Beds24 room names are English-only; show the translated
                       // marketing name when we can match it, else fall back as-is.
                       const displayName = translateRoomName(room.name);
@@ -1521,7 +1598,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     {unavailableRooms.map((room) => {
                       const unitKey = getUnitKey(room.name);
                       const unitImg = unitKey ? IMG.units[unitKey] : null;
-                      const unitDetailUrl = unitKey ? `/${unitKey}.html?lang=${lang}` : null;
+                      const unitDetailUrl = unitKey ? `/${unitKey}?${detailQueryString}` : null;
                       const displayName = translateRoomName(room.name);
                       const ns = nearestState[room.roomId] || {};
                       return (
@@ -1994,11 +2071,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         <div className="max-w-5xl mx-auto px-4 pt-5 pb-16 flex flex-col items-center gap-2 text-center">
           <div className="flex flex-wrap justify-center items-center gap-x-3 gap-y-1">
             {[
-              { href: '/legal/privacy.html',  label: ui?.legal?.privacy  ?? 'Privacy Policy' },
-              { href: '/legal/cookies.html',  label: ui?.legal?.cookies  ?? 'Cookie Policy' },
-              { href: '/legal/terms.html',    label: ui?.legal?.terms    ?? 'Terms & Conditions' },
-              { href: '/legal/GDPR.html',     label: ui?.legal?.gdpr     ?? 'GDPR Info' },
-              { href: '/legal/CRIC.html',     label: ui?.legal?.cric     ?? 'Consumer Rights & Contact' },
+              { href: '/legal/privacy',  label: ui?.legal?.privacy  ?? 'Privacy Policy' },
+              { href: '/legal/cookies',  label: ui?.legal?.cookies  ?? 'Cookie Policy' },
+              { href: '/legal/terms',    label: ui?.legal?.terms    ?? 'Terms & Conditions' },
+              { href: '/legal/GDPR',     label: ui?.legal?.gdpr     ?? 'GDPR Info' },
+              { href: '/legal/CRIC',     label: ui?.legal?.cric     ?? 'Consumer Rights & Contact' },
             ].reduce((acc, { href, label }, i) => {
               if (i > 0) acc.push(<span key={`dot-${i}`} className="text-slate-400 select-none" aria-hidden="true">·</span>);
               acc.push(
