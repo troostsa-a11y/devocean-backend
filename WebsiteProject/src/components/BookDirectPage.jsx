@@ -4,7 +4,6 @@ import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, 
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
-import LanguageTopBar from './LanguageTopBar';
 import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
 import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
@@ -130,8 +129,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     };
   }, []);
 
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [availability, setAvailability] = useState(null); // full availability response
@@ -232,15 +229,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       cancelled = true;
     };
   }, []);
-
-  useEffect(() => {
-    if (!menuOpen) return;
-    const onKey = (e) => {
-      if (e.key === 'Escape') setMenuOpen(false);
-    };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [menuOpen]);
 
   const nights = useMemo(() => {
     if (!checkIn || !checkOut) return 0;
@@ -807,106 +795,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }, [baseCurrency, currency]);
 
   const hero = HERO_IMAGES[0];
-  const navItems = [
-    ['home', ui?.nav?.home || 'Home'],
-    ['stay', ui?.nav?.stay || 'Stay'],
-    ['experiences', ui?.nav?.experiences || 'Experiences'],
-    ['gallery', ui?.nav?.gallery || 'Gallery'],
-    ['contact', ui?.nav?.contact || 'Contact'],
-  ];
-
-  function renderTopBar() {
-    return (
-      <>
-        <div className="relative z-30 bg-white border-b border-slate-200">
-          <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            {/* Logo */}
-            <a
-              href={`/?lang=${lang}#home`}
-              className="flex items-center gap-3 text-slate-800"
-              data-testid="link-booking-home"
-            >
-              <img
-                src="/images/devocean_logo_header-small.webp"
-                alt="DEVOCEAN Lodge"
-                className="h-9 w-9 shrink-0 rounded-full object-cover"
-                loading="eager"
-              />
-              <span className="font-semibold">DEVOCEAN Lodge</span>
-            </a>
-
-            {/* Desktop nav links */}
-            <ul className="hidden lg:flex items-center gap-6">
-              {navItems.map(([key, label]) => (
-                <li key={key}>
-                  <a
-                    href={`/?lang=${lang}#${key}`}
-                    className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* Burger (mobile & tablet) */}
-            <div className="lg:hidden relative">
-              <button
-                type="button"
-                onClick={() => setMenuOpen((v) => !v)}
-                aria-expanded={menuOpen}
-                aria-label={ui?.menu || 'Menu'}
-                className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-all shadow-md hover:shadow-lg"
-                data-testid="button-booking-menu"
-              >
-                <Menu className={`h-5 w-5 transition-transform ${menuOpen ? 'rotate-90' : ''}`} />
-                <span className="text-sm font-semibold hidden sm:inline-flex">{ui?.menu || 'Menu'}</span>
-              </button>
-
-              <div
-                className="absolute right-0 top-full mt-2 w-64 bg-white border border-gray-200 rounded-xl shadow-2xl overflow-hidden z-50 transition-all duration-200 origin-top-right"
-                style={{
-                  transform: menuOpen ? 'scale(1)' : 'scale(0.95)',
-                  opacity: menuOpen ? 1 : 0,
-                  pointerEvents: menuOpen ? 'auto' : 'none',
-                  visibility: menuOpen ? 'visible' : 'hidden',
-                  willChange: 'transform, opacity',
-                }}
-                inert={menuOpen ? undefined : ''}
-                data-testid="menu-booking-nav"
-              >
-                {navItems.map(([key, label]) => (
-                  <a
-                    key={key}
-                    href={`/?lang=${lang}#${key}`}
-                    className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                    onClick={() => setMenuOpen(false)}
-                    tabIndex={menuOpen ? 0 : -1}
-                    data-testid={`link-booking-${key}`}
-                  >
-                    {label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Backdrop */}
-        <div
-          className="lg:hidden fixed inset-0 z-40 transition-opacity duration-200"
-          style={{
-            opacity: menuOpen ? 1 : 0,
-            pointerEvents: menuOpen ? 'auto' : 'none',
-            background: 'rgba(0,0,0,0.2)',
-          }}
-          onClick={() => setMenuOpen(false)}
-          aria-hidden="true"
-        />
-      </>
-    );
-  }
-
   function renderNotices() {
     return (
       <>
@@ -931,24 +819,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }
 
   return (
-    <main className="flex-1 flex flex-col bg-slate-50">
-      {/* Brand-color top bar (contact + region/language), matching the landing
-          page. In-flow here via topbar-static so it sits above the hero. */}
-      <LanguageTopBar
-        ui={ui}
-        lang={lang}
-        currency={currency}
-        region={region}
-        onLangChange={onLangChange}
-        onRegionChange={onRegionChange}
-        className="topbar topbar-static bg-[#9e4b13] text-white border-b border-[#8a4211]"
-        buttonLocationDesktop="booking_desktop"
-        buttonLocationMobile="booking_mobile"
-      />
+    <main className="flex-1 flex flex-col bg-slate-50 pt-[var(--stack-h)]">
       {step === 'search' ? (
         <>
-          {/* White compact bar (logo, language/currency, menu) — matches landing */}
-          {renderTopBar()}
           {/* Hero image as a full-height background; title + search card float over it */}
           <div className="relative flex-1 min-h-[520px]">
             <picture>
