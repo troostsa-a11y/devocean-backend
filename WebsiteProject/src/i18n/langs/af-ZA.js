@@ -2,7 +2,7 @@
 export const UI = {
 menu: "Kieslys",
     regions: { westEu: "Wes-Europa", eastEu: "Oos-Europa", asia: "Asië", americas: "Amerikas", africa: "Afrika", oceania: "Oseanië" },
-    nav: { home: "Tuis", stay: "Verblyf", experiences: "Verken Ponta", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak" },
+    nav: { home: "Tuis", stay: "Verblyf", experiences: "Verken Ponta", todo: "Wat om te doen", gallery: "Galery", location: "Ligging", contact: "Kontak", food: "Kos" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Omgewingsvriendelike verblyf naby 'n ongerepte strand in 'n wêreldklas-avontuurbestemming.", description: "Ontdek 'n unieke UNESCO-duikparadys, omring deur natuurreservate en onvergeetlike buitelugervarings.", ctaPrimary: "Kontroleer beskikbaarheid", ctaSecondary: "Verken die Lodge", badge: "Gerief en waarde, geliefd deur gaste", clickReviews: "Klik op die resensies!", whyPonta: "Hoekom Ponta do Ouro?", villageHighlights: "Hoogtepunte", goDiving: "Gaan duik" },
     stay: { headline: "Bly by ons", blurb: "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid.", moreDetails: "Meer besonderhede", ourStory: "Ons Storie" },
     experiences: { headline: "Verken Ponta", blurb: "See- en bosavonture reg voor jou deur.", operators: "Betroubare plaaslike operateurs:", featured: "Gewild", learnMore: "Verken duikplekke, operateurs en pryse →" },

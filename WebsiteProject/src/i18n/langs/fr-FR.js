@@ -9,7 +9,7 @@ menu: "Menu",
       todo: "À faire",
       gallery: "Galerie",
       location: "Localisation",
-      contact: "Contact"
+      contact: "Contact", food: "Cuisine"
     },
     hero: {
       title: "DEVOCEAN Lodge",

@@ -1,7 +1,7 @@
 export const UI = {
   menu: "Meni",
   regions: { westEu: "Zapadna Europa", eastEu: "Istočna Europa", asia: "Azija", americas: "Amerike", africa: "Afrika", oceania: "Oceanija" },
-  nav: { home: "Početna", stay: "Smještaj", experiences: "Istraži Pontu", todo: "Što raditi", gallery: "Galerija", location: "Lokacija", contact: "Kontakt" },
+  nav: { home: "Početna", stay: "Smještaj", experiences: "Istraži Pontu", todo: "Što raditi", gallery: "Galerija", location: "Lokacija", contact: "Kontakt", food: "Hrana" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Ekološki smještaj pored netaknute plaže u svetski poznatoj destinaciji za avanture.", description: "Otkrijte jedinstveni UNESCO ronilački raj okružen prirodnim rezervatima i nezaboravnim doživljajima u prirodi.", ctaPrimary: "Provjeri dostupnost", ctaSecondary: "Istražite lodge", badge: "Udobnost i vrednost koje gosti hvale", clickReviews: "Kliknite na recenzije!", whyPonta: "Zašto Ponta do Ouro?", villageHighlights: "Atrakcije sela", goDiving: "Idite na ronjenje" },
   stay: { headline: "Ostanite kod nas", blurb: "Izaberite svoj stil: šatori usred prirode ili udobne kućice i vikendica – sve uz toplu, porodičnu gostoljubivost.", moreDetails: "Više detalja", ourStory: "Naša priča" },
   experiences: { headline: "Istraži Pontu", blurb: "Avanture u oceanu i šumi pred vašim vratima.", operators: "Pouzdani lokalni operateri:", featured: "Izdvojeno", learnMore: "Istražite ronilačke lokacije, operatere i cene →" },

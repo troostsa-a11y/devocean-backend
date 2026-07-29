@@ -1,7 +1,7 @@
 export const UI = {
   menu: "Menu",
   regions: { westEu: "Europa Zachodnia", eastEu: "Europa Wschodnia", asia: "Azja", americas: "Ameryki", africa: "Afryka", oceania: "Oceania" },
-  nav: { home: "Strona główna", stay: "Pobyt", experiences: "Odkryj Ponta", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt" },
+  nav: { home: "Strona główna", stay: "Pobyt", experiences: "Odkryj Ponta", todo: "Co robić", gallery: "Galeria", location: "Lokalizacja", contact: "Kontakt", food: "Jedzenie" },
   hero: { title: "DEVOCEAN Lodge", subtitle: "Ekologiczne pobyty blisko dziewiczej plaży w światowej klasy kierunku pełnym przygód.", description: "Odkryj wyjątkowy raj nurkowy UNESCO, otoczony rezerwatami przyrody i pełen niezapomnianych atrakcji na świeżym powietrzu.", ctaPrimary: "Sprawdź dostępność", ctaSecondary: "Poznaj lodge", badge: "Komfort i wartość uwielbiane przez gości", clickReviews: "Kliknij opinie!", whyPonta: "Dlaczego Ponta do Ouro?", villageHighlights: "Atrakcje", goDiving: "Nurkowanie" },
   stay: { headline: "Zostań z nami", blurb: "Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.", moreDetails: "Więcej szczegółów", ourStory: "Nasza Historia" },
   experiences: { headline: "Odkryj Ponta", blurb: "Przygody nad oceanem i w lesie tuż za progiem.", operators: "Zaufani lokalni operatorzy:", learnMore: "Odkryj miejsca nurkowania, operatorów i ceny →" },
