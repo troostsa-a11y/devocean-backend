@@ -2,7 +2,7 @@
   "en-GB": {
     "hero": {
       "eyebrow": "Food & Dining · DEVOCEAN Lodge",
-      "title": "Breakfast included. <span>Dinner prepared for you.</span>",
+      "title": "Breakfast included.<br/><span>Dinner prepared for you on demand.</span>",
       "lead": "Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house kitchen."
     },
     "facts": {
@@ -87,7 +87,7 @@
   "en-US": {
     "hero": {
       "eyebrow": "Food & Dining · DEVOCEAN Lodge",
-      "title": "Breakfast included. <span>Dinner prepared for you.</span>",
+      "title": "Breakfast included.<br/><span>Dinner prepared for you on demand.</span>",
       "lead": "Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house kitchen."
     },
     "facts": {
@@ -172,7 +172,7 @@
   "pt-PT": {
     "hero": {
       "eyebrow": "Refeições e Restauração · DEVOCEAN Lodge",
-      "title": "Pequeno-almoço incluído. <span>Jantar preparado para si.</span>",
+      "title": "Pequeno-almoço incluído.<br/><span>Jantar preparado para si a pedido.</span>",
       "lead": "Todas as estadias no DEVOCEAN Lodge incluem pequeno-almoço, servido no nosso jardim tropical. Ao final do dia, os hóspedes alojados podem encomendar antecipadamente um jantar acabado de preparar na nossa cozinha própria."
     },
     "facts": {
@@ -257,7 +257,7 @@
   "pt-BR": {
     "hero": {
       "eyebrow": "Refeições e Gastronomia · DEVOCEAN Lodge",
-      "title": "Café da manhã incluído. <span>Jantar preparado para você.</span>",
+      "title": "Café da manhã incluído.<br/><span>Jantar preparado para você sob demanda.</span>",
       "lead": "Toda estadia no DEVOCEAN Lodge inclui café da manhã, servido em nosso jardim tropical. À noite, os hóspedes hospedados podem encomendar antecipadamente um jantar preparado na hora em nossa cozinha própria."
     },
     "facts": {
@@ -342,7 +342,7 @@
   "nl-NL": {
     "hero": {
       "eyebrow": "Eten & Dineren · DEVOCEAN Lodge",
-      "title": "Ontbijt inbegrepen. <span>Diner voor u bereid.</span>",
+      "title": "Ontbijt inbegrepen.<br/><span>Diner op verzoek voor u bereid.</span>",
       "lead": "Bij elk verblijf in DEVOCEAN Lodge is ontbijt inbegrepen, geserveerd in onze tropische tuin. 's Avonds kunnen logerende gasten vooraf een vers bereid diner bestellen uit onze eigen keuken."
     },
     "facts": {
@@ -427,7 +427,7 @@
   "fr-FR": {
     "hero": {
       "eyebrow": "Restauration · DEVOCEAN Lodge",
-      "title": "Petit-déjeuner inclus. <span>Dîner préparé pour vous.</span>",
+      "title": "Petit-déjeuner inclus.<br/><span>Dîner préparé pour vous à la demande.</span>",
       "lead": "Chaque séjour au DEVOCEAN Lodge comprend le petit-déjeuner, servi dans notre jardin tropical. Le soir, les clients résidents peuvent précommander un dîner préparé à la minute par notre cuisine maison."
     },
     "facts": {
@@ -512,7 +512,7 @@
   "it-IT": {
     "hero": {
       "eyebrow": "Ristorazione · DEVOCEAN Lodge",
-      "title": "Colazione inclusa. <span>Cena preparata per te.</span>",
+      "title": "Colazione inclusa.<br/><span>Cena preparata per te su richiesta.</span>",
       "lead": "Ogni soggiorno al DEVOCEAN Lodge include la colazione, servita nel nostro giardino tropicale. La sera, gli ospiti residenti possono prenotare in anticipo una cena preparata al momento dalla nostra cucina interna."
     },
     "facts": {
@@ -597,7 +597,7 @@
   "de-DE": {
     "hero": {
       "eyebrow": "Essen & Trinken · DEVOCEAN Lodge",
-      "title": "Frühstück inklusive. <span>Abendessen für Sie zubereitet.</span>",
+      "title": "Frühstück inklusive.<br/><span>Abendessen auf Wunsch für Sie zubereitet.</span>",
       "lead": "Jeder Aufenthalt in der DEVOCEAN Lodge beinhaltet ein Frühstück, das in unserem tropischen Garten serviert wird. Am Abend können übernachtende Gäste ein frisch zubereitetes Abendessen aus unserer hauseigenen Küche vorbestellen."
     },
     "facts": {
@@ -682,7 +682,7 @@
   "es-ES": {
     "hero": {
       "eyebrow": "Comida y restauración · DEVOCEAN Lodge",
-      "title": "Desayuno incluido. <span>Cena preparada para usted.</span>",
+      "title": "Desayuno incluido.<br/><span>Cena preparada para usted bajo demanda.</span>",
       "lead": "Cada estancia en DEVOCEAN Lodge incluye el desayuno, servido en nuestro jardín tropical. Por la noche, los huéspedes alojados pueden encargar por adelantado una cena recién preparada en nuestra cocina interna."
     },
     "facts": {
@@ -767,7 +767,7 @@
   "sv": {
     "hero": {
       "eyebrow": "Mat & servering · DEVOCEAN Lodge",
-      "title": "Frukost ingår. <span>Middag lagas åt dig.</span>",
+      "title": "Frukost ingår.<br/><span>Middag lagas åt dig på begäran.</span>",
       "lead": "Varje vistelse på DEVOCEAN Lodge inkluderar frukost, som serveras i vår tropiska trädgård. På kvällen kan boende gäster förbeställa en nylagad middag från vårt eget kök."
     },
     "facts": {
@@ -852,7 +852,7 @@
   "pl": {
     "hero": {
       "eyebrow": "Jedzenie i wyżywienie · DEVOCEAN Lodge",
-      "title": "Śniadanie w cenie. <span>Kolacja przygotowana dla Ciebie.</span>",
+      "title": "Śniadanie w cenie.<br/><span>Kolacja przygotowana dla Ciebie na życzenie.</span>",
       "lead": "Każdy pobyt w DEVOCEAN Lodge obejmuje śniadanie, serwowane w naszym tropikalnym ogrodzie. Wieczorem goście przebywający w obiekcie mogą wcześniej zamówić świeżo przygotowaną kolację z naszej własnej kuchni."
     },
     "facts": {
@@ -937,7 +937,7 @@
   "af-ZA": {
     "hero": {
       "eyebrow": "Kos & Etes · DEVOCEAN Lodge",
-      "title": "Ontbyt ingesluit. <span>Aandete vir jou voorberei.</span>",
+      "title": "Ontbyt ingesluit.<br/><span>Aandete op aanvraag vir jou voorberei.</span>",
       "lead": "Elke verblyf by DEVOCEAN Lodge sluit ontbyt in, wat in ons tropiese tuin bedien word. In die aand kan inwonende gaste 'n vars voorbereide aandete vooraf bestel by ons eie kombuis."
     },
     "facts": {
@@ -1022,7 +1022,7 @@
   "zu": {
     "hero": {
       "eyebrow": "Ukudla Nokudla · DEVOCEAN Lodge",
-      "title": "Ibhulakufesi ifakiwe. <span>Isidlo sakusihlwa silungiselelwa wena.</span>",
+      "title": "Ibhulakufesi ifakiwe.<br/><span>Isidlo sakusihlwa silungiselelwa wena uma usicela.</span>",
       "lead": "Konke ukuhlala e-DEVOCEAN Lodge kufaka ibhulakufesi, ephakelwa engadini yethu yezindawo ezishisayo. Ngokuhlwa, izivakashi ezihlalayo zingakwazi ukuyala ngaphambili isidlo sakusihlwa esisanda kulungiswa esiphuma ekhishini lethu langaphakathi."
     },
     "facts": {
@@ -1107,7 +1107,7 @@
   "sw": {
     "hero": {
       "eyebrow": "Chakula na Milo · DEVOCEAN Lodge",
-      "title": "Kifungua kinywa kimejumuishwa. <span>Chakula cha jioni kinaandaliwa kwa ajili yako.</span>",
+      "title": "Kifungua kinywa kimejumuishwa.<br/><span>Chakula cha jioni kinaandaliwa kwa ajili yako unapohitaji.</span>",
       "lead": "Kila kukaa katika DEVOCEAN Lodge kunajumuisha kifungua kinywa, kinachotolewa katika bustani yetu ya tropiki. Jioni, wageni wanaolala hapa wanaweza kuagiza mapema chakula cha jioni kilichoandaliwa upya kutoka jikoni letu la ndani."
     },
     "facts": {
@@ -1192,7 +1192,7 @@
   "ja-JP": {
     "hero": {
       "eyebrow": "食事とダイニング · DEVOCEAN Lodge",
-      "title": "朝食付き。<span>夕食もご用意いたします。</span>",
+      "title": "朝食付き。<br/><span>ご希望に応じて夕食もご用意いたします。</span>",
       "lead": "DEVOCEAN Lodge でのご滞在にはすべて朝食が含まれ、トロピカルガーデンでお召し上がりいただけます。夜には、ご宿泊のお客様は当館のキッチンで作りたての夕食を事前予約いただけます。"
     },
     "facts": {
@@ -1277,7 +1277,7 @@
   "zh-CN": {
     "hero": {
       "eyebrow": "美食与餐饮 · DEVOCEAN Lodge",
-      "title": "含早餐。<span>晚餐为您精心准备。</span>",
+      "title": "含早餐。<br/><span>晚餐可按需为您准备。</span>",
       "lead": "在 DEVOCEAN Lodge 的每次入住均含早餐，于我们的热带花园供应。傍晚时分，住宿客人可提前预订由我们内部厨房新鲜制作的晚餐。"
     },
     "facts": {
@@ -1362,7 +1362,7 @@
   "ru": {
     "hero": {
       "eyebrow": "Питание и рестораны · DEVOCEAN Lodge",
-      "title": "Завтрак включён. <span>Ужин приготовим для вас.</span>",
+      "title": "Завтрак включён.<br/><span>Ужин приготовим для вас по запросу.</span>",
       "lead": "Каждое проживание в DEVOCEAN Lodge включает завтрак, который подаётся в нашем тропическом саду. Вечером гости, проживающие в лодже, могут заранее заказать свежеприготовленный ужин из нашей кухни."
     },
     "facts": {
