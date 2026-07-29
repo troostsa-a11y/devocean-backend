@@ -110,6 +110,17 @@ AI crawlers (ChatGPT, Perplexity, Gemini, etc.) cannot execute JavaScript, so al
 - `index.html` — `TouristDestination` block added alongside the existing `LodgingBusiness` schema.
 - `safari.html`, `comfort.html`, `cottage.html`, `chalet.html` — `FAQPage` JSON-LD (5 unit-specific Q&As each) + cross-link to `/ponta-do-ouro`.
 
+### Standalone static-page navigation & i18n
+
+- **Shared nav injector**: `public/js/shared-nav.js` injects the full two-tier header (region/language topbar + main nav) into every standalone HTML page (story, meals, accommodation, guide pages) via a single `<script src="/js/shared-nav.js">` at the top of `<body>`. It reads/writes the `?lang=` query param and reloads on language/region change. Nav labels are translated inline for all 22 languages (`T` table); region names use the localized `REGION_LABELS` table (mirrors `src/i18n/langs/*.js` `regions` — keep them in sync when adding a language). Language select width is 112px (sized to fit "Nederlands"); region select 140px.
+- **Static-page content i18n pattern** (used by `story.html` and `devocean-lodge-meals.html`): tag translatable elements with `data-i18n="key.path"` (add `data-i18n-html` only when the string contains inline HTML like `<strong>`/`<span>`/`<br/>`); per-page loader script `public/translations/<page>-i18n.js` (language detection: URL param → localStorage `site.lang` → browser language → IP country via `window.__CF_COUNTRY__` → region-aware English fallback) fetches `public/translations/<page>-translations.json` keyed by Hotelrunner locale code (17 languages: en-GB, en-US, pt-PT, pt-BR, nl-NL, fr-FR, it-IT, de-DE, es-ES, sv, pl, af-ZA, zu, sw, ja-JP, zh-CN, ru). Whole-object fallback: every key must exist in every language object. Loader script goes at the end of `<body>`.
+- **Meals page** (`devocean-lodge-meals.html` → `/devocean-lodge-meals`): fully translated via this pattern (`meals-i18n.js` + `meals-translations.json`). Dining wording is "in-house **restaurant**" (changed from "in-house kitchen") in page copy, meta/OG descriptions, FAQ JSON-LD, all 17 translations, and `src/lodgeFacts.js`; "the kitchen closes at 21:00"-type mentions intentionally still say "kitchen".
+
+### Header/nav behavior notes (React)
+
+- `Header` renders on every route including `/book-direct`; on `/book-direct` the "Online Booking" button is hidden (both topbar and mobile drawer — `isBookDirectPage` in `Header.jsx`) since the user is already in the booking flow.
+- The `#stay` section (`AccommodationsSection.jsx`) has no "Our Story" button — heading/blurb span full width; Our Story is reachable from the main nav only.
+
 **Static page template pattern** (follow when adding new pages):
 - Head: delayed GTM (`GTM-532W3HH2`), CookieYes (`f0a2da84090ecaa3b37f74af`), Trustindex richsnippet, Inter font via Google Fonts, inline CSS with `:root { --brand: #9e4b13; ... }`.
 - JSON-LD: `TouristAttraction` (or `TouristDestination`) + `FAQPage` as separate `<script type="application/ld+json">` blocks.
