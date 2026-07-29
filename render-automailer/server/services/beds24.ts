@@ -358,13 +358,22 @@ export class Beds24Service {
   }
 
   /**
-   * Deposit percentage for a specific offer: Last-minute and non-refundable
-   * rate plans are always paid in full at booking (100%), regardless of the
-   * arrival-date-based rule above. Every other offer type falls back to
-   * `getDepositPercentForArrival`.
+   * Deposit percentage for a specific offer:
+   *  - Last-minute (LM) and non-refundable (NR): 100% always — full prepayment.
+   *  - Semi-flexible (SF): always the normal deposit (typically 50%), never the
+   *    near-arrival uplift. The balance is due on arrival.
+   *  - Everything else: falls back to `getDepositPercentForArrival` (may be
+   *    uplifted to 100% when arrival is within the near-arrival window).
    */
   getDepositPercentForOffer(checkIn: string, type: OfferType): number {
     if (type === 'lastMinute' || type === 'nonRef') return 100;
+    if (type === 'semiFlex') {
+      // Semi-flexible always uses the normal deposit percentage regardless of
+      // how close the arrival date is — never subject to the near-arrival uplift.
+      return Math.min(100, Math.max(1, Math.round(
+        this.depositPolicy?.normalPercent ?? this.cfg.depositPercent
+      )));
+    }
     return this.getDepositPercentForArrival(checkIn);
   }
 
