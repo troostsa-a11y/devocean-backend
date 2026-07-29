@@ -56,6 +56,21 @@ function normalizeLangCode(langCode) {
 }
 
 // Comprehensive country-to-currency mapping (legal tender for each country)
+// Default display currency per region, used when the user manually selects a
+// region via the top-bar selector and has NOT explicitly picked a currency via
+// the CurrencyPicker. Gives an appropriate non-EUR default when someone in
+// Europe selects "Africa" (or any other region that isn't their IP region).
+// source="region" is used (not "user") so that IP detection can re-evaluate
+// on the next page visit if the visitor's country changes.
+const REGION_TO_CURRENCY = {
+  westEu:   'EUR',
+  eastEu:   'EUR',
+  americas: 'USD',
+  africa:   'USD',   // neutral; ZAR/MZN/etc. applied if IP confirms the continent
+  asia:     'USD',
+  oceania:  'AUD',
+};
+
 export const CC_TO_CURRENCY = {
   // Europe
   GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", 
@@ -831,14 +846,36 @@ export function useLocale() {
   };
 
   const setRegion = (newRegion) => {
-    if (SUPPORTED_REGIONS.includes(newRegion)) {
-      setRegionState(newRegion);
-      safeLocalStorage.setItem("site.region", newRegion);
-      safeLocalStorage.setItem("site.region.version", "3");
-      safeLocalStorage.setItem("site.region.source", "user"); // Mark as user-selected
-      
-      // Currency NEVER changes - it always stays as the IP-detected legal tender
-      // Users can change language/region, but currency is based on their physical location
+    if (!SUPPORTED_REGIONS.includes(newRegion)) return;
+    setRegionState(newRegion);
+    safeLocalStorage.setItem("site.region", newRegion);
+    safeLocalStorage.setItem("site.region.version", "3");
+    safeLocalStorage.setItem("site.region.source", "user");
+
+    // Update display currency to match the selected region — UNLESS the visitor
+    // has already made an explicit choice via the CurrencyPicker (source="user").
+    // source="region" is intentionally NOT "user": IP detection will re-evaluate
+    // on the next visit, so a Dutch user who clicked Africa by accident won't be
+    // stuck with USD forever.
+    const currencySource = safeLocalStorage.getItem("site.currency.source");
+    if (currencySource !== "user") {
+      const cc = getCountryCode();
+      const ccRegion = cc ? CC_TO_CONTINENT[cc] : null;
+
+      // If the visitor's IP country belongs to the newly selected region, use
+      // the precise per-country currency (e.g. ZA → ZAR, MZ → MZN).
+      // Otherwise fall back to the region-level default (e.g. Africa → USD).
+      const newCurrency = clampCur(
+        cc && ccRegion === newRegion && CC_TO_CURRENCY[cc]
+          ? CC_TO_CURRENCY[cc]
+          : REGION_TO_CURRENCY[newRegion] || 'USD'
+      );
+      if (newCurrency) {
+        setCurrencyState(newCurrency);
+        safeLocalStorage.setItem("site.currency", newCurrency);
+        safeLocalStorage.setItem("site.currency.source", "region");
+        safeLocalStorage.setItem("site.currency.country", cc || "");
+      }
     }
   };
 
