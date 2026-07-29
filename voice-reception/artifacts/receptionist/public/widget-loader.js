@@ -52,8 +52,9 @@
         // Panel is closed — blank it so the next open reloads with the new lang.
         textFrame.src = "";
       }
-      // Reload voice frame with new lang unless a call is active.
-      if (state !== "voice") {
+      // Only reload voice frame if it was already loaded; don't eagerly load it
+      // just because the language changed.
+      if (voiceFrame.src && state !== "voice") {
         voiceFrame.src = _embedUrl("/embed");
       }
     }
@@ -244,10 +245,13 @@
   // Text chat iframe (visible panel)
   var textFrame = mk("iframe", "dv-text-panel");
   textFrame.setAttribute("allow", "");
+  textFrame.setAttribute("title", "Chat with Marin");
 
-  // Voice audio iframe (invisible — audio + postMessage only)
+  // Voice audio iframe — src populated only when the user clicks the voice
+  // button (never pre-warmed), so it doesn't load on every page.
   var voiceFrame = mk("iframe", "dv-voice-frame");
   voiceFrame.setAttribute("allow", "microphone");
+  voiceFrame.setAttribute("title", "Voice conversation with Marin");
 
   // Tooltip label — appears to the left of the FAB on hover when idle
   var tooltip = mk("div", "dv-tooltip");
@@ -270,9 +274,24 @@
   }
   placeOptions();
 
+  // Build a minimal page context string for the base case (no MarinPanel).
+  // Used when the visitor opens text chat from the FAB on pages that don't
+  // inject richer booking context via window.devocean.ask().
+  function _basePageContext() {
+    var url = window.location.href;
+    var c   = _getCurrency();
+    return "Page: " + url +
+           "\nLanguage: " + _pageLang +
+           (c ? "\nDisplay currency: " + c : "");
+  }
+
   // --- State machine ---
   // States: "idle" | "expanded" | "text" | "voice"
   var state = "idle";
+
+  // Voice connection timeout handle.  Set when voice is initiated, cleared
+  // when the call connects, ends normally, or errors out.
+  var _voiceTimer = null;
 
   function setState(next) {
     state = next;
@@ -348,12 +367,18 @@
   // --- Option clicks ---
   textBtn.addEventListener("click", function (e) {
     e.stopPropagation();
-    setState("text");
+    // Go directly to text chat with at least the base page context so Marin
+    // knows where the visitor is.  Richer booking context is injected by
+    // MarinPanel on /book-direct and accommodation-detail pages.
+    window.devocean.ask({ pageContext: _basePageContext() });
   });
 
   voiceBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     setState("voice");
+    // Start connection timeout.  Resets when the iframe signals embedReady,
+    // clears when the call connects or ends.
+    _startVoiceTimer();
     if (!voiceFrame.src) {
       voiceFrame.src = _embedUrl("/embed");
     } else {
@@ -374,7 +399,30 @@
     else if (state === "voice") endVoiceCall();
   });
 
+  // Helper: fall back to text chat when voice fails or times out.
+  function _fallbackToText(reason) {
+    clearTimeout(_voiceTimer);
+    _voiceTimer = null;
+    setState("idle");
+    window.devocean.ask({
+      pageContext: _basePageContext(),
+      autoMessage: reason || "Voice didn't connect. How can I help you in text?"
+    });
+  }
+
+  // Helper: start (or restart) the voice connection timeout.
+  function _startVoiceTimer(ms) {
+    clearTimeout(_voiceTimer);
+    _voiceTimer = setTimeout(function () {
+      if (state === "voice") {
+        _fallbackToText("The voice call is taking too long to connect. I'll help you here in chat instead.");
+      }
+    }, ms || 15000);
+  }
+
   function endVoiceCall() {
+    clearTimeout(_voiceTimer);
+    _voiceTimer = null;
     postToVoice("devocean:disconnect");
     setState("idle");
   }
@@ -387,9 +435,25 @@
   window.addEventListener("message", function (evt) {
     if (!evt.data || typeof evt.data !== "object") return;
     if (evt.data.type === "devocean:embedReady" && state === "voice") {
+      // Iframe loaded — give 12 s for the WebRTC session to establish.
+      _startVoiceTimer(12000);
       postToVoice("devocean:connect");
     }
+    if (evt.data.type === "devocean:status") {
+      if (evt.data.status === "connected") {
+        // Call live — cancel the timeout.
+        clearTimeout(_voiceTimer);
+        _voiceTimer = null;
+      }
+      if (evt.data.status === "error" && state === "voice") {
+        // WebRTC error — offer text chat immediately instead of leaving the
+        // voice panel stuck on "Connection error" with no escape.
+        _fallbackToText("The voice call failed to connect. I'll help you here in text instead.");
+      }
+    }
     if (evt.data.type === "devocean:callEnded" && state === "voice") {
+      clearTimeout(_voiceTimer);
+      _voiceTimer = null;
       setState("idle");
     }
     if (evt.data.type === "devocean:closePanel") {
@@ -398,6 +462,9 @@
     // Log voice launch failures so they appear in browser devtools.
     if (evt.data.type === "devocean:voiceError") {
       console.error("[DEVOCEAN] Voice launch failed:", evt.data.error || "(no detail)");
+      if (state === "voice") {
+        _fallbackToText("The voice call failed to start. I'll help you here in text instead.");
+      }
     }
     // Text iframe signals it mounted and is ready to receive context.
     if (evt.data.type === "devocean:textEmbedReady") {
@@ -409,25 +476,9 @@
     }
   });
 
-  // Pre-warm voice iframe on first user interaction (scroll / mouse / touch / key).
-  // This keeps the bundle out of Lighthouse's eager-load window while still loading
-  // the iframe before the user reaches the FAB on a real device.
-  var _prewarm = false;
-  function _doPrewarm() {
-    if (_prewarm) return;
-    _prewarm = true;
-    window.removeEventListener("scroll",     _doPrewarm, { passive: true });
-    window.removeEventListener("mousemove",  _doPrewarm, { passive: true });
-    window.removeEventListener("touchstart", _doPrewarm, { passive: true });
-    window.removeEventListener("keydown",    _doPrewarm);
-    if (!voiceFrame.src) {
-      voiceFrame.src = _embedUrl("/embed");
-    }
-  }
-  window.addEventListener("scroll",     _doPrewarm, { passive: true });
-  window.addEventListener("mousemove",  _doPrewarm, { passive: true });
-  window.addEventListener("touchstart", _doPrewarm, { passive: true });
-  window.addEventListener("keydown",    _doPrewarm);
+  // Voice iframe src is set only on explicit voice-button click — no pre-warm.
+  // This means only one iframe (text) is ever loaded on pages where the visitor
+  // never opens voice, satisfying the "load on demand" requirement.
 
   // Pulse FAB after a few seconds to draw attention
   setTimeout(function () {

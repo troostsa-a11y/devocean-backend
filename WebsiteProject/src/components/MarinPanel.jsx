@@ -25,8 +25,10 @@ export default function MarinPanel({ context, autoMessage, label = 'Need help? A
   }, [autoOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function handleClick() {
-    // Open the FAB fan-out so the guest can choose text or voice.
-    window.devocean?.open();
+    // Go directly to text chat with any available page context.
+    // The fan-out (text vs voice choice) is reserved for the FAB itself;
+    // inline "Ask Marin" controls should never launch voice unexpectedly.
+    window.devocean?.ask({ pageContext: context, autoMessage });
   }
 
   return (
