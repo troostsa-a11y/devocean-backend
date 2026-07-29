@@ -562,9 +562,18 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
                       <p className="text-sm font-medium text-[#9e4b13] mb-2">{exp.requirements.level}</p>
                       {exp.requirements.details && (
                         <ul className="space-y-1 text-sm text-slate-600">
-                          {exp.requirements.details.map((detail, i) => (
-                            <li key={i}>• {detail}</li>
-                          ))}
+                          {exp.requirements.details.map((detail, i) => {
+                            const parts = detail.split('**');
+                            return (
+                              <li key={i}>
+                                {parts.length === 3 ? (
+                                  <>• <strong>{parts[1]}</strong>{parts[2]}</>
+                                ) : (
+                                  `• ${detail}`
+                                )}
+                              </li>
+                            );
+                          })}
                         </ul>
                       )}
                     </div>

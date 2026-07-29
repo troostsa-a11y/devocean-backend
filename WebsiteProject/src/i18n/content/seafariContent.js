@@ -13,7 +13,7 @@ export const SEAFARI_CONTENT = {
       "Whale sharks (October-March)",
       "Manta rays & sea turtles",
       "Pristine reef snorkeling",
-      "Marine biologist-led tours",
+      "Expert-guided ocean tours",
       "Research & conservation focus"
     ],
     pricingRange: "US$40-45 per person",

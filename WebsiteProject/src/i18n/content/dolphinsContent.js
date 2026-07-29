@@ -46,7 +46,7 @@ export const DOLPHINS_CONTENT = {
       "Swimming ability required",
       "Comfortable with snorkeling",
       "Ages: 5 to 80+ (weather permitting)",
-      "Pregnancy: Safe up to 6 months",
+      "Pregnancy: consult your doctor before booking",
       "No diving certification needed",
       "Minimum 6 people per trip (4 for retreats)"
     ],
@@ -145,7 +145,7 @@ export const DOLPHINS_CONTENT = {
       "Swimming ability required",
       "Comfortable with snorkelling",
       "Ages: 5 to 80+ (weather permitting)",
-      "Pregnancy: Safe up to 6 months",
+      "Pregnancy: consult your doctor before booking",
       "No diving certification needed",
       "Minimum 6 people per trip (4 for retreats)"
     ],
@@ -244,7 +244,7 @@ export const DOLPHINS_CONTENT = {
       "Swimming ability required",
       "Comfortable with snorkeling",
       "Ages: 5 to 80+ (weather permitting)",
-      "Pregnancy: Safe up to 6 months",
+      "Pregnancy: consult your doctor before booking",
       "No diving certification needed",
       "Minimum 6 people per trip (4 for retreats)"
     ],
@@ -1426,7 +1426,7 @@ export const DOLPHINS_CONTENT = {
       "Schwimmfähigkeit erforderlich",
       "Vertraut mit Schnorcheln",
       "Alter: 5 bis 80+ (wetterabhängig)",
-      "Schwangerschaft: Sicher bis 6 Monate",
+      "Schwangerschaft: Vor der Buchung bitte Arzt konsultieren",
       "Keine Tauchzertifizierung erforderlich",
       "Mindestens 6 Personen pro Fahrt (4 für Retreats)"
     ],
@@ -1723,7 +1723,7 @@ export const DOLPHINS_CONTENT = {
       "Simförmåga krävs",
       "Bekväm med snorkling",
       "Åldrar: 5 till 80+ (väder tillåter)",
-      "Graviditet: Säkert upp till 6 månader",
+      "Graviditet: Kontakta din läkare innan bokning",
       "Ingen dykcertifiering behövs",
       "Minst 6 personer per resa (4 för reträter)"
     ],
@@ -2020,7 +2020,7 @@ export const DOLPHINS_CONTENT = {
       "需要游泳能力",
       "熟悉浮潜",
       "年龄：5至80岁以上（天气允许）",
-      "怀孕：6个月内安全",
+      "怀孕：预订前请咨询医生",
       "不需要潜水证书",
       "每次至少6人（静修4人）"
     ],
@@ -2119,7 +2119,7 @@ export const DOLPHINS_CONTENT = {
       "水泳能力が必要",
       "シュノーケリングに慣れていること",
       "年齢：5歳から80歳以上（天候による）",
-      "妊娠：6ヶ月まで安全",
+      "妊娠：ご予約前に医師にご相談ください",
       "ダイビング認定は不要",
       "1回の旅行につき最低6名（リトリートは4名）"
     ],
@@ -2525,7 +2525,7 @@ export const DOLPHINS_CONTENT = {
         "Necesită capacitate de înot",
         "Confortabil cu snorkelingul",
         "Vârste: 5 până la 80+ (în funcție de vreme)",
-        "Sarcină: sigur până în luna a 6-a",
+        "Sarcină: consultați medicul înainte de rezervare",
         "Nu este necesară certificare de scufundări",
         "Minimum 6 persoane pe excursie (4 pentru retreaturi)"
       ],
@@ -2623,7 +2623,7 @@ export const DOLPHINS_CONTENT = {
         "Veština plivanja potrebna",
         "Komforno sa snorklingom",
         "Uzrasti: 5 do 80+ (zavisno od vremena)",
-        "Trudnoća: bezbedno do 6. meseca",
+        "Trudnoća: pre rezervacije konsultujte lekara",
         "Sertifikat za ronjenje nije potreban",
         "Minimum 6 osoba po izletu (4 za retreate)"
       ],
@@ -2721,7 +2721,7 @@ export const DOLPHINS_CONTENT = {
         "Veština plivanja potrebna",
         "Komforno sa snorkelingom",
         "Uzrasti: 5 do 80+ (zavisno od vrijemena)",
-        "Trudnoća: sigurano do 6. meseca",
+        "Trudnoća: prije rezervacije savjetujte se s liječnikom",
         "Sertifikat za ronjenje nije potreban",
         "Minimum 6 osoba po izletu (4 za retreate)"
       ],
@@ -2819,7 +2819,7 @@ export const DOLPHINS_CONTENT = {
       "Vyžadovány plavecké dovednosti",
       "Pohodlí se šnorchlováním",
       "Věk: 5 až 80+ (v závislosti na počasí)",
-      "Těhotenství: bezpečné do 6. měsíce",
+      "Těhotenství: před rezervací konzultujte lékaře",
       "Potápěčská certifikace není vyžadována",
       "Minimum 6 osob na výlet (4 pro retreat)"
     ],
@@ -2895,7 +2895,7 @@ export const DOLPHINS_CONTENT = {
       "Yüzme becerileri gerekli",
       "Şnorkelle rahatlık",
       "Yaş: 5\'ten 80+\'a (hava koşullarına bağlı)",
-      "Hamilelik: 6. aya kadar güvenli",
+      "Hamilelik: rezervasyondan önce doktorunuza danışın",
       "Dalış sertifikası gerekli değil",
       "Tur başına minimum 6 kişi (retreat için 4)"
     ],

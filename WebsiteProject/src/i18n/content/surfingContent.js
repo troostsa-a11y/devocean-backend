@@ -5,7 +5,7 @@ export const SURFING_CONTENT = {
   en: {
     title: "Surf Boards & Lessons",
     tagline: "Ride the iconic Ponta do Ouro point break",
-    overview: "Ponta do Ouro's classic right-hand point break can deliver epic rides of 100-200m, and up to 1km in perfect conditions - rivaling Jeffrey's Bay. The warm, crystal-clear waters and consistent swells make it ideal for surfers of all levels, from beginners learning on gentle beach breaks to experts carving the point.",
+    overview: "Ponta do Ouro's classic right-hand point break can deliver epic rides of 100-200m, and up to 1km in perfect conditions. The warm, crystal-clear waters and consistent swells make it ideal for surfers of all levels, from beginners learning on gentle beach breaks to experts carving the point.",
     highlights: [
       "Classic right-hand point break",
       "100-200m rides (up to 1km when perfect!)",
@@ -63,7 +63,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Check surf forecast before booking (Surfline, Magicseaweed)",
-      "Point break can rival J-Bay but needs perfect conditions",
+      "Best on firing south swell with west (offshore) wind — check forecast before travelling",
       "Bring backup boards & extra fins/leashes - limited shops",
       "Respect heavy rips - be patient with tides",
       "Soft-top longboards ideal for beginners on beach breaks",
@@ -91,7 +91,7 @@ export const SURFING_CONTENT = {
   'pt-BR': {
     title: "Pranchas de Surf e Aulas",
     tagline: "Surfe o icônico point break de Ponta do Ouro",
-    overview: "O clássico point break de direita de Ponta do Ouro pode entregar ondas épicas de 100-200m, e até 1km em condições perfeitas - rivalizando com Jeffrey's Bay. As águas quentes e cristalinas e ondulações consistentes tornam ideal para surfistas de todos os níveis, desde iniciantes aprendendo em ondas suaves até experts encaixando no point.",
+    overview: "O clássico point break de direita de Ponta do Ouro pode entregar ondas épicas de 100-200m, e até 1km em condições perfeitas. As águas quentes e cristalinas e ondulações consistentes tornam ideal para surfistas de todos os níveis, desde iniciantes aprendendo em ondas suaves até experts encaixando no point.",
     highlights: [
       "Clássico point break de direita",
       "Ondas de 100-200m (até 1km quando perfeito!)",
@@ -149,7 +149,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Verifique previsão de surf antes de reservar (Surfline, Magicseaweed)",
-      "Point break pode rivalizar J-Bay mas precisa de condições perfeitas",
+      "Melhor com ondulação sul e vento oeste (offshore) — consulte a previsão antes de viajar",
       "Traga pranchas reserva e quilhas/leashes extras - lojas limitadas",
       "Respeite correntes fortes - seja paciente com as marés",
       "Longboards soft-top ideais para iniciantes em ondas de praia",
@@ -177,7 +177,7 @@ export const SURFING_CONTENT = {
   'pt-PT': {
     title: "Pranchas de Surf e Aulas",
     tagline: "Surfe o icónico point break de Ponta do Ouro",
-    overview: "O clássico point break de direita de Ponta do Ouro pode entregar ondas épicas de 100-200m, e até 1km em condições perfeitas - rivalizando com Jeffrey's Bay. As águas quentes e cristalinas e ondulações consistentes tornam ideal para surfistas de todos os níveis, desde iniciantes a aprender em ondas suaves até experts a encaixar no point.",
+    overview: "O clássico point break de direita de Ponta do Ouro pode entregar ondas épicas de 100-200m, e até 1km em condições perfeitas. As águas quentes e cristalinas e ondulações consistentes tornam ideal para surfistas de todos os níveis, desde iniciantes a aprender em ondas suaves até experts a encaixar no point.",
     highlights: [
       "Clássico point break de direita",
       "Ondas de 100-200m (até 1km quando perfeito!)",
@@ -235,7 +235,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Verifique previsão de surf antes de reservar (Surfline, Magicseaweed)",
-      "Point break pode rivalizar J-Bay mas precisa de condições perfeitas",
+      "Melhor com ondulação sul e vento oeste (offshore) — consulte a previsão antes de viajar",
       "Traga pranchas reserva e quilhas/leashes extras - lojas limitadas",
       "Respeite correntes fortes - seja paciente com as marés",
       "Longboards soft-top ideais para iniciantes em ondas de praia",
@@ -263,7 +263,7 @@ export const SURFING_CONTENT = {
   it: {
     title: "Tavole da Surf e Lezioni",
     tagline: "Surfa l'iconico point break di Ponta do Ouro",
-    overview: "Il classico point break destro di Ponta do Ouro può offrire onde epiche di 100-200m, e fino a 1km in condizioni perfette - paragonabile a Jeffrey's Bay. Le acque calde e cristalline e le onde consistenti lo rendono ideale per surfisti di tutti i livelli, dai principianti che imparano su onde dolci agli esperti che carvano il point.",
+    overview: "Il classico point break destro di Ponta do Ouro può offrire onde epiche di 100-200m, e fino a 1km in condizioni perfette. Le acque calde e cristalline e le onde consistenti lo rendono ideale per surfisti di tutti i livelli, dai principianti che imparano su onde dolci agli esperti che carvano il point.",
     highlights: [
       "Classico point break destro",
       "Onde da 100-200m (fino a 1km quando perfetto!)",
@@ -321,7 +321,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Controlla le previsioni surf prima di prenotare (Surfline, Magicseaweed)",
-      "Il point break può competere con J-Bay ma richiede condizioni perfette",
+      "Migliore con swell sud e vento ovest (offshore) — controlla le previsioni prima di viaggiare",
       "Porta tavole di riserva e pinne/leash extra - negozi limitati",
       "Rispetta le forti correnti - abbi pazienza con le maree",
       "Longboard soft-top ideali per principianti sulle beach break",
@@ -349,7 +349,7 @@ export const SURFING_CONTENT = {
   pl: {
     title: "Deski Surfingowe i Lekcje",
     tagline: "Surfuj na ikonicznym point breaku Ponta do Ouro",
-    overview: "Klasyczny prawy point break Ponta do Ouro może dostarczyć epickie przejazdy 100-200m, a nawet do 1km w idealnych warunkach - porównywalny z Jeffrey's Bay. Ciepła, krystalicznie czysta woda i stały swell czynią to idealnym miejscem dla surferów na każdym poziomie, od początkujących uczących się na łagodnych falach po ekspertów rzeźbiących point.",
+    overview: "Klasyczny prawy point break Ponta do Ouro może dostarczyć epickie przejazdy 100-200m, a nawet do 1km w idealnych warunkach. Ciepła, krystalicznie czysta woda i stały swell czynią to idealnym miejscem dla surferów na każdym poziomie, od początkujących uczących się na łagodnych falach po ekspertów rzeźbiących point.",
     highlights: [
       "Klasyczny prawy point break",
       "Przejazdy 100-200m (do 1km gdy idealnie!)",
@@ -407,7 +407,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Sprawdź prognozę surfingu przed rezerwacją (Surfline, Magicseaweed)",
-      "Point break może rywalizować z J-Bay ale wymaga idealnych warunków",
+      "Najlepszy przy połudiowej fali i zachodnim wietrze (offshore) — sprawdź prognozę przed podróżą",
       "Zabierz zapasowe deski i dodatkowe stateczniki/leash - ograniczone sklepy",
       "Szanuj silne prądy - bądź cierpliwy z pływami",
       "Longboardy soft-top idealne dla początkujących na beach breakach",
@@ -435,7 +435,7 @@ export const SURFING_CONTENT = {
   ru: {
     title: "Доски для серфинга и уроки",
     tagline: "Катайтесь на культовом пойнт-брейке Понта-ду-Ору",
-    overview: "Классический правый пойнт-брейк Понта-ду-Ору может обеспечить эпические проезды 100-200м, и до 1км в идеальных условиях - сравнимо с Jeffrey's Bay. Теплая, кристально чистая вода и стабильные волны делают его идеальным для серферов всех уровней, от новичков, обучающихся на мягких волнах, до экспертов, режущих пойнт.",
+    overview: "Классический правый пойнт-брейк Понта-ду-Ору может обеспечить эпические проезды 100-200м, и до 1км в идеальных условиях. Теплая, кристально чистая вода и стабильные волны делают его идеальным для серферов всех уровней, от новичков, обучающихся на мягких волнах, до экспертов, режущих пойнт.",
     highlights: [
       "Классический правый пойнт-брейк",
       "Проезды 100-200м (до 1км в идеальных условиях!)",
@@ -493,7 +493,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Проверьте прогноз серфа перед бронированием (Surfline, Magicseaweed)",
-      "Пойнт-брейк может соперничать с J-Bay но требует идеальных условий",
+      "Лучшие сессии при южной зыби и западном ветру (офшор) — проверьте прогноз перед поездкой",
       "Возьмите запасные доски и лишние плавники/лиш - магазинов мало",
       "Уважайте сильные течения - будьте терпеливы с приливами",
       "Лонгборды софт-топ идеальны для начинающих на бич-брейках",
@@ -579,7 +579,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "予約前にサーフ予報をチェック（Surfline、Magicseaweed）",
-      "ポイントブレイクはJ-Bayに匹敵するがパーフェクトな条件が必要",
+      "南うねりと西風（オフショア）のときが最高 — 旅行前に予報を確認",
       "スペアボードと予備フィン/リーシュ持参 - 店舗が少ない",
       "強いカレントを尊重 - 潮に合わせて忍耐を",
       "ソフトトップロングボードは初心者のビーチブレイクに最適",
@@ -665,7 +665,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "预订前查看冲浪预报（Surfline、Magicseaweed）",
-      "点浪可与J-Bay媲美但需要完美条件",
+      "南向涌浪搭配西风（离岸风）时最佳 — 出发前查看预报",
       "携带备用板和额外鳍/脚绳 - 商店有限",
       "尊重强劲水流 - 对潮汐要有耐心",
       "软顶长板最适合初学者的海滩浪",
@@ -693,7 +693,7 @@ export const SURFING_CONTENT = {
   af: {
     title: "Branderplanke & Lesse",
     tagline: "Ry die ikoniese point break van Ponta do Ouro",
-    overview: "Ponta do Ouro se klassieke regterdraai point break kan epiese ritte van 100-200m lewer, en tot 1km in perfekte toestande - vergelykbaar met Jeffrey's Bay. Die warm, kristalhelder water en konsekwente deining maak dit ideaal vir branderplanryers van alle vlakke, van beginners wat op sagte golwe leer tot kenners wat die point carve.",
+    overview: "Ponta do Ouro se klassieke regterdraai point break kan epiese ritte van 100-200m lewer, en tot 1km in perfekte toestande. Die warm, kristalhelder water en konsekwente deining maak dit ideaal vir branderplanryers van alle vlakke, van beginners wat op sagte golwe leer tot kenners wat die point carve.",
     highlights: [
       "Klassieke regterdraai point break",
       "100-200m ritte (tot 1km wanneer perfek!)",
@@ -751,7 +751,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Kyk brandervoorspelling voor bespreking (Surfline, Magicseaweed)",
-      "Point break kan met J-Bay meeding maar benodig perfekte toestande",
+      "Beste by suidelike deining met westewind (offshore) — kyk die voorspelling na voor jy reis",
       "Bring rugsteun planke & ekstra vinne/leibande - beperkte winkels",
       "Respekteer sterk strome - wees geduldig met getye",
       "Sagtetop langplanke ideaal vir beginners op strandgolwe",
@@ -779,7 +779,7 @@ export const SURFING_CONTENT = {
   zu: {
     title: "Amabhodi Okugibela Amagagasi & Izifundo",
     tagline: "Gibela i-point break edumile yase-Ponta do Ouro",
-    overview: "I-point break yangakwesokudla yase-Ponta do Ouro ingaletha ukugibela okujabulisayo kwe-100-200m, kuze kufike ku-1km ezimweni ezinhle - ifana ne-Jeffrey's Bay. Amanzi ashisayo, acwebile namagagasi ajwayelekile akwenza kube kuhle kwabagibelayo bawo wonke amazinga, kusukela kubaqalayo abafunda kumagagasi athambile kuya kochwepheshile aba-carving i-point.",
+    overview: "I-point break yangakwesokudla yase-Ponta do Ouro ingaletha ukugibela okujabulisayo kwe-100-200m, kuze kufike ku-1km ezimweni ezinhle. Amanzi ashisayo, acwebile namagagasi ajwayelekile akwenza kube kuhle kwabagibelayo bawo wonke amazinga, kusukela kubaqalayo abafunda kumagagasi athambile kuya kochwepheshile aba-carving i-point.",
     highlights: [
       "I-point break yangakwesokudla ejwayelekile",
       "Ukugibela kwe-100-200m (kuze kufike ku-1km uma kuhle!)",
@@ -837,7 +837,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Bheka isibikezelo sokugibela ngaphambi kokubhuka (Surfline, Magicseaweed)",
-      "I-point break ingancintisana ne-J-Bay kodwa idinga izimo ezinhle",
+      "Ingcono kakhulu nge-swell yaseningizimu nomoya wasenshonalanga (offshore) — hlola isiromu ngaphambi kohambo",
       "Letha amabhodi okusekela & ama-fin/leash engeziwe - izitolo zincane",
       "Hlonipha imifudlana enamandla - lindela ngamagagasi",
       "Amabhodi athambile amade alungele abaqalayo kumagagasi asogwini",
@@ -865,7 +865,7 @@ export const SURFING_CONTENT = {
   sw: {
     title: "Mbao za Kuteleza na Masomo",
     tagline: "Panda mawimbi kwenye point break maarufu ya Ponta do Ouro",
-    overview: "Point break ya kulia ya kawaida ya Ponta do Ouro inaweza kutoa kupanda kwa mita 100-200, na hadi km 1 katika hali bora - inalinganishwa na Jeffrey's Bay. Maji ya joto, safi kama kioo na mawimbi ya kawaida yanafanya kuwa bora kwa wawindaji wa mawimbi wa viwango vyote, kutoka wanaoanza wanaojifunza kwenye mawimbi laini hadi wataalamu wanaokata point.",
+    overview: "Point break ya kulia ya kawaida ya Ponta do Ouro inaweza kutoa kupanda kwa mita 100-200, na hadi km 1 katika hali bora. Maji ya joto, safi kama kioo na mawimbi ya kawaida yanafanya kuwa bora kwa wawindaji wa mawimbi wa viwango vyote, kutoka wanaoanza wanaojifunza kwenye mawimbi laini hadi wataalamu wanaokata point.",
     highlights: [
       "Point break ya kulia ya kawaida",
       "Kupanda kwa mita 100-200 (hadi km 1 wakati wa hali bora!)",
@@ -923,7 +923,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Angalia utabiri wa mawimbi kabla ya kuweka nafasi (Surfline, Magicseaweed)",
-      "Point break inaweza kushindana na J-Bay lakini inahitaji hali bora",
+      "Bora zaidi na mawimbi ya kusini na upepo wa magharibi (offshore) — angalia utabiri kabla ya kusafiri",
       "Leta mbao za akiba na mapezi/kamba za ziada - maduka machache",
       "Heshimu mikondo mikali - kuwa mvumilivu na mawimbi",
       "Mbao ndefu laini ni bora kwa wanaoanza kwenye mawimbi ya ufukweni",
@@ -951,7 +951,7 @@ export const SURFING_CONTENT = {
   sv: {
     title: "Surfbrädor och Lektioner",
     tagline: "Surfa den ikoniska point break i Ponta do Ouro",
-    overview: "Den klassiska högervågen point break i Ponta do Ouro kan leverera episka åk på 100-200m, och upp till 1km under perfekta förhållanden - jämförbar med Jeffrey's Bay. Det varma, kristallklara vattnet och den konsekventa dyningen gör det idealiskt för surfare på alla nivåer, från nybörjare som lär sig på mjuka vågor till experter som carvar pointen.",
+    overview: "Den klassiska högervågen point break i Ponta do Ouro kan leverera episka åk på 100-200m, och upp till 1km under perfekta förhållanden. Det varma, kristallklara vattnet och den konsekventa dyningen gör det idealiskt för surfare på alla nivåer, från nybörjare som lär sig på mjuka vågor till experter som carvar pointen.",
     highlights: [
       "Klassisk högervänd point break",
       "Åk på 100-200m (upp till 1km när perfekt!)",
@@ -1009,7 +1009,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Kolla surfprognoser innan bokning (Surfline, Magicseaweed)",
-      "Point break kan konkurrera med J-Bay men kräver perfekta förhållanden",
+      "Bäst med södra dyning och västlig (offshore) vind — kolla prognosen innan du reser",
       "Ta med reservbrädor och extra fenor/leashes - begränsade butiker",
       "Respektera de starka strömmarna - ha tålamod med tidvattnet",
       "Soft-top longboards idealiska för nybörjare på strandvågor",
@@ -1037,7 +1037,7 @@ export const SURFING_CONTENT = {
   es: {
     title: "Tablas de Surf y Clases",
     tagline: "Surfee el icónico point break de Ponta do Ouro",
-    overview: "El clásico point break de derecha de Ponta do Ouro puede ofrecer olas épicas de 100-200m, y hasta 1km en condiciones perfectas - rivalizando con Jeffrey's Bay. Las aguas cálidas y cristalinas y el oleaje constante lo hacen ideal para surfistas de todos los niveles, desde principiantes aprendiendo en olas suaves hasta expertos haciendo carving en el point.",
+    overview: "El clásico point break de derecha de Ponta do Ouro puede ofrecer olas épicas de 100-200m, y hasta 1km en condiciones perfectas. Las aguas cálidas y cristalinas y el oleaje constante lo hacen ideal para surfistas de todos los niveles, desde principiantes aprendiendo en olas suaves hasta expertos haciendo carving en el point.",
     highlights: [
       "Clásico point break de derecha",
       "Olas de 100-200m (¡hasta 1km cuando perfecto!)",
@@ -1095,7 +1095,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Revise pronósticos de surf antes de reservar (Surfline, Magicseaweed)",
-      "El point break puede rivalizar con J-Bay pero requiere condiciones perfectas",
+      "Mejor con swell del sur y viento oeste (offshore) — consulta la previsión antes de viajar",
       "Traiga tablas de repuesto y quillas/leashes extra - tiendas limitadas",
       "Respete las corrientes fuertes - tenga paciencia con las mareas",
       "Longboards soft-top ideales para principiantes en beach breaks",
@@ -1123,7 +1123,7 @@ export const SURFING_CONTENT = {
   nl: {
     title: "Surfplanken en Lessen",
     tagline: "Surf de iconische point break van Ponta do Ouro",
-    overview: "De klassieke rechter point break van Ponta do Ouro kan epische ritten van 100-200m leveren, en tot 1km onder perfecte omstandigheden - vergelijkbaar met Jeffrey's Bay. Het warme, kristalheldere water en consistente deining maken het ideaal voor surfers van alle niveaus, van beginners die leren op zachte golven tot experts die de point carven.",
+    overview: "De klassieke rechter point break van Ponta do Ouro kan epische ritten van 100-200m leveren, en tot 1km onder perfecte omstandigheden. Het warme, kristalheldere water en consistente deining maken het ideaal voor surfers van alle niveaus, van beginners die leren op zachte golven tot experts die de point carven.",
     highlights: [
       "Klassieke rechter point break",
       "Ritten van 100-200m (tot 1km wanneer perfect!)",
@@ -1181,7 +1181,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Check surfvoorspellingen voor boeking (Surfline, Magicseaweed)",
-      "De point break kan concurreren met J-Bay maar vereist perfecte omstandigheden",
+      "Het beste bij zuidelijke deining en westelijke (offshore) wind — controleer de voorspelling voor je reist",
       "Neem reserveplanken en extra vinnen/leashes mee - beperkte winkels",
       "Respecteer de sterke stromingen - heb geduld met de getijden",
       "Soft-top longboards ideaal voor beginners op beach breaks",
@@ -1209,7 +1209,7 @@ export const SURFING_CONTENT = {
   de: {
     title: "Surfbretter und Unterricht",
     tagline: "Surfen Sie den legendären Point Break von Ponta do Ouro",
-    overview: "Der klassische rechte Point Break von Ponta do Ouro kann epische Rides von 100-200m liefern, und bis zu 1km bei perfekten Bedingungen - vergleichbar mit Jeffrey's Bay. Das warme, kristallklare Wasser und konstante Dünung machen es ideal für Surfer aller Niveaus, von Anfängern, die an sanften Wellen lernen, bis zu Experten, die den Point carven.",
+    overview: "Der klassische rechte Point Break von Ponta do Ouro kann epische Rides von 100-200m liefern, und bis zu 1km bei perfekten Bedingungen. Das warme, kristallklare Wasser und konstante Dünung machen es ideal für Surfer aller Niveaus, von Anfängern, die an sanften Wellen lernen, bis zu Experten, die den Point carven.",
     highlights: [
       "Klassischer rechter Point Break",
       "Rides von 100-200m (bis zu 1km wenn perfekt!)",
@@ -1267,7 +1267,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Prüfen Sie Surfvorhersagen vor der Buchung (Surfline, Magicseaweed)",
-      "Der Point Break kann mit J-Bay konkurrieren, braucht aber perfekte Bedingungen",
+      "Am besten bei südlichem Swell und Westwind (Offshore) — Prognose vor der Reise prüfen",
       "Bringen Sie Ersatzbretter und zusätzliche Finnen/Leashes mit - begrenzte Shops",
       "Respektieren Sie die starken Strömungen - haben Sie Geduld mit den Gezeiten",
       "Soft-top Longboards ideal für Anfänger an Beach Breaks",
@@ -1295,7 +1295,7 @@ export const SURFING_CONTENT = {
   fr: {
     title: "Planches de Surf et Cours",
     tagline: "Surfez l'iconique point break de Ponta do Ouro",
-    overview: "Le classique point break droitier de Ponta do Ouro peut offrir des rides épiques de 100-200m, et jusqu'à 1km dans des conditions parfaites - rivalisant avec Jeffrey's Bay. Les eaux chaudes et cristallines et les houles constantes le rendent idéal pour les surfeurs de tous niveaux, des débutants apprenant sur des beach breaks doux aux experts carving le point.",
+    overview: "Le classique point break droitier de Ponta do Ouro peut offrir des rides épiques de 100-200m, et jusqu'à 1km dans des conditions parfaites. Les eaux chaudes et cristallines et les houles constantes le rendent idéal pour les surfeurs de tous niveaux, des débutants apprenant sur des beach breaks doux aux experts carving le point.",
     highlights: [
       "Point break droitier classique",
       "Rides de 100-200m (jusqu'à 1km quand parfait !)",
@@ -1353,7 +1353,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Vérifiez les prévisions surf avant de réserver (Surfline, Magicseaweed)",
-      "Le point break peut rivaliser avec J-Bay mais nécessite des conditions parfaites",
+      "Meilleur avec une houle du sud et un vent d'ouest (offshore) — vérifiez les prévisions avant de voyager",
       "Apportez des planches de rechange et ailerons/leashes supplémentaires - magasins limités",
       "Respectez les forts courants - soyez patient avec les marées",
       "Longboards soft-top idéaux pour débutants sur beach breaks",
@@ -1381,7 +1381,7 @@ export const SURFING_CONTENT = {
   pt: {
     title: "Pranchas de Surf e Aulas",
     tagline: "Surfe o icônico point break de Ponta do Ouro",
-    overview: "O clássico point break de direita de Ponta do Ouro pode entregar ondas épicas de 100-200m, e até 1km em condições perfeitas - rivalizando com Jeffrey's Bay. As águas quentes e cristalinas e ondulações consistentes tornam ideal para surfistas de todos os níveis, desde iniciantes aprendendo em ondas suaves até experts encaixando no point.",
+    overview: "O clássico point break de direita de Ponta do Ouro pode entregar ondas épicas de 100-200m, e até 1km em condições perfeitas. As águas quentes e cristalinas e ondulações consistentes tornam ideal para surfistas de todos os níveis, desde iniciantes aprendendo em ondas suaves até experts encaixando no point.",
     highlights: [
       "Clássico point break de direita",
       "Ondas de 100-200m (até 1km quando perfeito!)",
@@ -1439,7 +1439,7 @@ export const SURFING_CONTENT = {
     ],
     tips: [
       "Verifique previsão de surf antes de reservar (Surfline, Magicseaweed)",
-      "Point break pode rivalizar J-Bay mas precisa de condições perfeitas",
+      "Melhor com ondulação sul e vento oeste (offshore) — consulte a previsão antes de viajar",
       "Traga pranchas reserva e quilhas/leashes extras - lojas limitadas",
       "Respeite correntes fortes - seja paciente com as marés",
       "Longboards soft-top ideais para iniciantes em ondas de praia",
@@ -1467,7 +1467,7 @@ export const SURFING_CONTENT = {
     ro: {
       title: "Plăci de Surf și Lecții",
       tagline: "Călărește iconicul point break din Ponta do Ouro",
-      overview: "Clasicul point break de dreapta din Ponta do Ouro poate oferi călătorii epice de 100-200m, și până la 1km în condiții perfecte - rivalizând cu Jeffrey's Bay. Apele calde, cristaline și valurile constante îl fac ideal pentru surferi de toate nivelurile, de la începătorii care învață pe valuri blânde până la experții care taie pe point.",
+      overview: "Clasicul point break de dreapta din Ponta do Ouro poate oferi călătorii epice de 100-200m, și până la 1km în condiții perfecte. Apele calde, cristaline și valurile constante îl fac ideal pentru surferi de toate nivelurile, de la începătorii care învață pe valuri blânde până la experții care taie pe point.",
       highlights: [
         "Point break clasic de dreapta",
         "Călătorii de 100-200m (până la 1km când e perfect!)",
@@ -1525,7 +1525,7 @@ export const SURFING_CONTENT = {
       ],
       tips: [
         "Verifică prognoza valurilor înainte de a rezerva (Surfline, Magicseaweed)",
-        "Point break-ul poate rivaliza cu J-Bay, dar are nevoie de condiții perfecte",
+        "Cel mai bun cu val din sud și vânt de vest (offshore) — verificați prognoza înainte de a călători",
         "Adu plăci de rezervă și quilluri/leash-uri suplimentare - magazine limitate",
         "Respectă curenții puternici - fii răbdător cu mareele",
         "Longboards soft-top sunt ideale pentru începători pe valurile de plajă",
@@ -1552,7 +1552,7 @@ export const SURFING_CONTENT = {
     sr: {
       title: "Surf daske i lekcije",
       tagline: "Jašite ikonski point break u Ponta do Ouro",
-      overview: "Klasični desni point break u Ponta do Ouro može da pruži epske vožnje od 100-200m, i do 1km u savršenim uslovima - ravan Jeffrey's Bay-u. Tople, kristalno čiste vode i konstantni talasi čine ga idealnim za surfere svih nivoa, od početnika koji uče na blagim talasima do eksperata koji režu na point-u.",
+      overview: "Klasični desni point break u Ponta do Ouro može da pruži epske vožnje od 100-200m, i do 1km u savršenim uslovima. Tople, kristalno čiste vode i konstantni talasi čine ga idealnim za surfere svih nivoa, od početnika koji uče na blagim talasima do eksperata koji režu na point-u.",
       highlights: [
         "Klasični desni point break",
         "Vožnje od 100-200m (do 1km kada je savršeno!)",
@@ -1610,7 +1610,7 @@ export const SURFING_CONTENT = {
       ],
       tips: [
         "Proverite prognozu talasa pre rezervacije (Surfline, Magicseaweed)",
-        "Point break može da rivališe J-Bay-u, ali treba savršene uslove",
+        "Najbolje s južnim valom i zapadnim (offshore) vjetrom — provjerite prognozu prije putovanja",
         "Donesite rezervne daske i dodatne lič-eve - prodavnice ograničene",
         "Poštujte jake struje - budite strpljivi sa plimom",
         "Soft-top longboards su idealni za početnike na talasima sa plaže",
@@ -1637,7 +1637,7 @@ export const SURFING_CONTENT = {
 hr: {
       title: "Surf daske i lekcije",
       tagline: "Jašite ikonski point break u Ponta do Ouro",
-      overview: "Klasični desni point break u Ponta do Ouro može da pruži epske vožnje od 100-200m, i do 1km u savršenim uslovima - ravan Jeffrey's Bay-u. Tople, kristalno čiste vode i konstantni talasi čine ga idealnim za surfere svih nivoa, od početnika koji uče na blagim talasima do eksperata koji režu na point-u.",
+      overview: "Klasični desni point break u Ponta do Ouro može da pruži epske vožnje od 100-200m, i do 1km u savršenim uslovima. Tople, kristalno čiste vode i konstantni talasi čine ga idealnim za surfere svih nivoa, od početnika koji uče na blagim talasima do eksperata koji režu na point-u.",
       highlights: [
         "Klasični desni point break",
         "Vožnje od 100-200m (do 1km kada je savršeno!)",
@@ -1695,7 +1695,7 @@ hr: {
       ],
       tips: [
         "Provjerite prognozu talasa pre rezervacije (Surfline, Magicseaweed)",
-        "Point break može da rivališe J-Bay-u, ali treba savršene uslove",
+        "Najbolje s južnim valom i zapadnim (offshore) vjetrom — provjerite prognozu prije putovanja",
         "Donesite rezervne daske i dodatne lič-eve - prodavnice ograničene",
         "Poštujte jake struje - budite strpljivi sa plimom",
         "Soft-top longboards su idealni za početnike na talasima sa plaže",
