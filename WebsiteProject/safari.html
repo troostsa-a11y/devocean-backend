@@ -128,21 +128,11 @@
   {
     "@context": "https://schema.org",
     "@type": "HotelRoom",
+    "@id": "https://devoceanlodge.com/safari#room",
     "name": "Standard Safari Tent",
     "url": "https://devoceanlodge.com/safari",
     "description": "12 m² canvas tent on a raised 3×6 m platform with twin or king beds, fan, mosquito mesh and a private terrace. Shared hot-water ablutions.",
-    "containedInPlace": {
-      "@type": "LodgingBusiness",
-      "@id": "https://devoceanlodge.com/#lodge",
-      "name": "DEVOCEAN Lodge",
-      "url": "https://devoceanlodge.com/",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ponta do Ouro",
-        "addressRegion": "Matutuíne, Província de Maputo",
-        "addressCountry": "MZ"
-      }
-    },
+    "containedInPlace": { "@id": "https://devoceanlodge.com/#lodge" },
     "bed": { "@type": "BedDetails", "typeOfBed": "Twin or King" },
     "occupancy": { "@type": "QuantitativeValue", "maxValue": 2 },
     "image": "https://devoceanlodge.com/photos/units/safari-tent.jpg",
