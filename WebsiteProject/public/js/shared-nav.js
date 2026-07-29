@@ -92,13 +92,12 @@
   var CSS = [
     /* Give body room for the fixed nav stack (~97 px); JS corrects this precisely */
     'body{padding-top:97px!important;}',
-    '.sn-stack{position:fixed;top:0;left:0;right:0;z-index:200;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}',
+    '.sn-stack{position:fixed;top:0;left:0;right:0;z-index:200;font-family:inherit;}',
     /* Topbar */
     '.sn-topbar{background:' + BRAND + ';color:#fff;border-bottom:1px solid #8a4211;}',
     '.sn-topbar-inner{max-width:1280px;margin:0 auto;padding:.5rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.875rem;gap:.5rem;}',
     '.sn-drops{display:flex;align-items:center;gap:.375rem;}',
-    /* Match React Header selects exactly: remove native arrow, add custom white chevron */
-    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem 1.5rem .25rem .5rem;color:#fff;font-size:.875rem;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'6\' viewBox=\'0 0 10 6\'%3E%3Cpath d=\'M1 1l4 4 4-4\' stroke=\'rgba(255,255,255,0.7)\' stroke-width=\'1.5\' fill=\'none\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .4rem center;}',
+    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem;color:#fff;font-size:.875rem;cursor:pointer;}',
     '.sn-sel option{background:#fff;color:#1e293b;}',
     '.sn-sel-region{width:140px;}',
     '.sn-sel-lang{width:93px;}',
