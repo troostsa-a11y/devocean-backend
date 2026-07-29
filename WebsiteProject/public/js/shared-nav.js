@@ -66,16 +66,43 @@
       }).join('');
   }
 
+  // ── translations ──────────────────────────────────────────────────────
+  var T = {
+    'af-ZA': {menu:'Kieslys',home:'Tuis',stay:'Verblyf',experiences:'Verken Ponta',gallery:'Galery',location:'Ligging',contact:'Kontak',food:'Kos',ourStory:'Ons Storie',bookNow:'Online bespreking'},
+    'cs':    {menu:'Menu',home:'Domů',stay:'Ubytování',experiences:'Prozkoumej Pontu',gallery:'Galerie',location:'Lokalita',contact:'Kontakt',food:'Jídlo',ourStory:'Náš příběh',bookNow:'Online rezervace'},
+    'de-DE': {menu:'Menü',home:'Startseite',stay:'Unterkünfte',experiences:'Erkunde Ponta',gallery:'Galerie',location:'Lage',contact:'Kontakt',food:'Essen',ourStory:'Unsere Geschichte',bookNow:'Online buchen'},
+    'en-GB': {menu:'Menu',home:'Home',stay:'Stay',experiences:'Explore Ponta',gallery:'Gallery',location:'Location',contact:'Contact',food:'Food',ourStory:'Our Story',bookNow:'Online Booking'},
+    'en-US': {menu:'Menu',home:'Home',stay:'Stay',experiences:'Explore Ponta',gallery:'Gallery',location:'Location',contact:'Contact',food:'Food',ourStory:'Our Story',bookNow:'Online Booking'},
+    'es-ES': {menu:'Menú',home:'Inicio',stay:'Alojamiento',experiences:'Explorar Ponta',gallery:'Galería',location:'Ubicación',contact:'Contacto',food:'Comida',ourStory:'Nuestra Historia',bookNow:'Reserva en línea'},
+    'fr-FR': {menu:'Menu',home:'Accueil',stay:'Séjour',experiences:'Explorer Ponta',gallery:'Galerie',location:'Localisation',contact:'Contact',food:'Cuisine',ourStory:'Notre Histoire',bookNow:'Réservation en ligne'},
+    'hr':    {menu:'Meni',home:'Početna',stay:'Smještaj',experiences:'Istraži Pontu',gallery:'Galerija',location:'Lokacija',contact:'Kontakt',food:'Hrana',ourStory:'Naša priča',bookNow:'Online rezervacija'},
+    'it-IT': {menu:'Menu',home:'Home',stay:'Alloggi',experiences:'Esplora Ponta',gallery:'Galleria',location:'Posizione',contact:'Contatti',food:'Cucina',ourStory:'La Nostra Storia',bookNow:'Prenota online'},
+    'ja-JP': {menu:'メニュー',home:'ホーム',stay:'宿泊',experiences:'Explore Ponta',gallery:'ギャラリー',location:'場所',contact:'連絡先',food:'食事',ourStory:'私たちの物語',bookNow:'オンライン予約'},
+    'nl-NL': {menu:'Menu',home:'Home',stay:'Verblijf',experiences:'Ontdek Ponta',gallery:'Galerij',location:'Locatie',contact:'Contact',food:'Eten',ourStory:'Ons Verhaal',bookNow:'Online boeken'},
+    'pl':    {menu:'Menu',home:'Strona główna',stay:'Pobyt',experiences:'Odkryj Ponta',gallery:'Galeria',location:'Lokalizacja',contact:'Kontakt',food:'Jedzenie',ourStory:'Nasza Historia',bookNow:'Rezerwacja online'},
+    'pt-BR': {menu:'Menu',home:'Início',stay:'Estadia',experiences:'Explorar Ponta',gallery:'Galeria',location:'Localização',contact:'Contacto',food:'Gastronomia',ourStory:'A Nossa História',bookNow:'Reserva online'},
+    'pt-PT': {menu:'Menu',home:'Início',stay:'Estadia',experiences:'Explorar Ponta',gallery:'Galeria',location:'Localização',contact:'Contacto',food:'Gastronomia',ourStory:'A Nossa História',bookNow:'Reserva online'},
+    'ro':    {menu:'Meniu',home:'Acasă',stay:'Cazare',experiences:'Explorați Ponta',gallery:'Galerie',location:'Locație',contact:'Contact',food:'Mâncare',ourStory:'Povestea noastră',bookNow:'Rezervare online'},
+    'ru':    {menu:'Меню',home:'Главная',stay:'Проживание',experiences:'Исследуй Понту',gallery:'Галерея',location:'Местоположение',contact:'Контакты',food:'Питание',ourStory:'Наша История',bookNow:'Онлайн-бронирование'},
+    'sr':    {menu:'Meni',home:'Početna',stay:'Smeštaj',experiences:'Istraži Pontu',gallery:'Galerija',location:'Lokacija',contact:'Kontakt',food:'Hrana',ourStory:'Naša priča',bookNow:'Online rezervacija'},
+    'sv':    {menu:'Meny',home:'Hem',stay:'Boende',experiences:'Utforska Ponta',gallery:'Galleri',location:'Plats',contact:'Kontakt',food:'Mat',ourStory:'Vår Berättelse',bookNow:'Boka online'},
+    'sw':    {menu:'Menyu',home:'Nyumbani',stay:'Kukaa',experiences:'Gundua Ponta',gallery:'Matunzio',location:'Mahali',contact:'Wasiliana nasi',food:'Chakula',ourStory:'Hadithi Yetu',bookNow:'Buki mtandaoni'},
+    'tr':    {menu:'Menü',home:'Ana Sayfa',stay:'Konaklama',experiences:"Ponta'yı Keşfet",gallery:'Galeri',location:'Konum',contact:'İletişim',food:'Yemek',ourStory:'Hikayemiz',bookNow:'Online rezervasyon'},
+    'zh-CN': {menu:'菜单',home:'首页',stay:'住宿',experiences:'探索Ponta',gallery:'图库',location:'位置',contact:'联系我们',food:'美食',ourStory:'我们的故事',bookNow:'在线预订'},
+    'zu':    {menu:'Imenyu',home:'Ikhaya',stay:'Ukuhlala',experiences:'Hlola iPonta',gallery:'Igalari',location:'Indawo',contact:'Xhumana nathi',food:'Ukudla',ourStory:'Indaba Yethu',bookNow:'Bhuka online'},
+  };
+  var t = T[lang] || T['en-GB'];
+
   // ── nav items ─────────────────────────────────────────────────────────
   var NAV = [
-    ['Home',          '/'],
-    ['Our Story',     '/story'],
-    ['Stay',          '/#stay'],
-    ['Food',          '/devocean-lodge-meals'],
-    ['Explore Ponta', '/#experiences'],
-    ['Gallery',       '/#gallery'],
-    ['Location',      '/#location'],
-    ['Contact',       '/#contact'],
+    [t.home,        '/'],
+    [t.ourStory,    '/story'],
+    [t.stay,        '/#stay'],
+    [t.food,        '/devocean-lodge-meals'],
+    [t.experiences, '/#experiences'],
+    [t.gallery,     '/#gallery'],
+    [t.location,    '/#location'],
+    [t.contact,     '/#contact'],
   ];
 
   var desktopItems = NAV.map(function (item) {
@@ -140,7 +167,7 @@
     +     '<select id="sn-region" class="sn-sel sn-sel-region" aria-label="Select region">' + regionOptions() + '</select>'
     +     '<select id="sn-lang" class="sn-sel sn-sel-lang" aria-label="Select language">' + langOptions() + '</select>'
     +   '</div>'
-    +   '<a href="' + bookUrl + '" class="sn-book-top">Online Booking</a>'
+    +   '<a href="' + bookUrl + '" class="sn-book-top">' + t.bookNow + '</a>'
     + '</div></div>'
     + '<div class="sn-header"><nav class="sn-nav" aria-label="Main navigation">'
     +   '<a href="' + withLang('/') + '" class="sn-logo">'
@@ -151,11 +178,11 @@
     +   '<div style="position:relative">'
     +     '<button id="sn-burger" class="sn-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="sn-drawer">'
     +       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>'
-    +       '<span>Menu</span>'
+    +       '<span>' + t.menu + '</span>'
     +     '</button>'
     +     '<div id="sn-drawer" class="sn-drawer sn-drawer--closed">'
     +       drawerItems
-    +       '<div class="sn-drawer-book-wrap"><a href="' + bookUrl + '" class="sn-drawer-book">Online Booking</a></div>'
+    +       '<div class="sn-drawer-book-wrap"><a href="' + bookUrl + '" class="sn-drawer-book">' + t.bookNow + '</a></div>'
     +     '</div>'
     +   '</div>'
     + '</nav></div>'
