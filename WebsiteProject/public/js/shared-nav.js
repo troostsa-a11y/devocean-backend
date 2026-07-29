@@ -127,7 +127,7 @@
     '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem;color:#fff;font-size:.875rem;cursor:pointer;}',
     '.sn-sel option{background:#fff;color:#1e293b;}',
     '.sn-sel-region{width:140px;}',
-    '.sn-sel-lang{width:93px;}',
+    '.sn-sel-lang{width:112px;}',
     '.sn-book-top{display:inline-flex;align-items:center;justify-content:center;padding:.375rem 1rem;border-radius:.5rem;border:1px solid #fff;color:#fff;font-weight:600;font-size:.875rem;text-decoration:none;white-space:nowrap;transition:background .15s;}',
     '.sn-book-top:hover{background:rgba(255,255,255,.1);}',
     /* Main header */
