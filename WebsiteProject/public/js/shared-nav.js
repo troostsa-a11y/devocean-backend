@@ -19,6 +19,32 @@
     oceania:  { label: 'Oceania',        langs: ['en-GB'] },
   };
 
+  // Localized region names (mirrors src/i18n/langs/*.js `regions`)
+  var REGION_LABELS = {
+    'af-ZA': { westEu: 'Wes-Europa', eastEu: 'Oos-Europa', asia: 'Asië', americas: 'Amerikas', africa: 'Afrika', oceania: 'Oseanië' },
+    'cs':    { westEu: 'Západní Evropa', eastEu: 'Východní Evropa', asia: 'Asie', americas: 'Amerika', africa: 'Afrika', oceania: 'Oceánie' },
+    'de-DE': { westEu: 'Westeuropa', eastEu: 'Osteuropa', asia: 'Asien', americas: 'Amerika', africa: 'Afrika', oceania: 'Ozeanien' },
+    'en-GB': { westEu: 'Western Europe', eastEu: 'Eastern Europe', asia: 'Asia', americas: 'Americas', africa: 'Africa', oceania: 'Oceania' },
+    'en-US': { westEu: 'Western Europe', eastEu: 'Eastern Europe', asia: 'Asia', americas: 'Americas', africa: 'Africa', oceania: 'Oceania' },
+    'es-ES': { westEu: 'Europa Occidental', eastEu: 'Europa Oriental', asia: 'Asia', americas: 'Américas', africa: 'África', oceania: 'Oceanía' },
+    'fr-FR': { westEu: 'Europe occidentale', eastEu: 'Europe orientale', asia: 'Asie', americas: 'Amériques', africa: 'Afrique', oceania: 'Océanie' },
+    'hr':    { westEu: 'Zapadna Europa', eastEu: 'Istočna Europa', asia: 'Azija', americas: 'Amerike', africa: 'Afrika', oceania: 'Oceanija' },
+    'it-IT': { westEu: 'Europa occidentale', eastEu: 'Europa orientale', asia: 'Asia', americas: 'Americhe', africa: 'Africa', oceania: 'Oceania' },
+    'ja-JP': { westEu: '西ヨーロッパ', eastEu: '東ヨーロッパ', asia: 'アジア', americas: 'アメリカ大陸', africa: 'アフリカ', oceania: 'オセアニア' },
+    'nl-NL': { westEu: 'West-Europa', eastEu: 'Oost-Europa', asia: 'Azië', americas: 'Amerika', africa: 'Afrika', oceania: 'Oceanië' },
+    'pl':    { westEu: 'Europa Zachodnia', eastEu: 'Europa Wschodnia', asia: 'Azja', americas: 'Ameryki', africa: 'Afryka', oceania: 'Oceania' },
+    'pt-BR': { westEu: 'Europa Ocidental', eastEu: 'Europa Oriental', asia: 'Ásia', americas: 'Américas', africa: 'África', oceania: 'Oceania' },
+    'pt-PT': { westEu: 'Europa Ocidental', eastEu: 'Europa Oriental', asia: 'Ásia', americas: 'Américas', africa: 'África', oceania: 'Oceânia' },
+    'ro':    { westEu: 'Europa de Vest', eastEu: 'Europa de Est', asia: 'Asia', americas: 'Americile', africa: 'Africa', oceania: 'Oceania' },
+    'ru':    { westEu: 'Западная Европа', eastEu: 'Восточная Европа', asia: 'Азия', americas: 'Америка', africa: 'Африка', oceania: 'Океания' },
+    'sr':    { westEu: 'Zapadna Evropa', eastEu: 'Istočna Evropa', asia: 'Azija', americas: 'Amerike', africa: 'Afrika', oceania: 'Okeanija' },
+    'sv':    { westEu: 'Västeuropa', eastEu: 'Östeuropa', asia: 'Asien', americas: 'Amerika', africa: 'Afrika', oceania: 'Oceanien' },
+    'sw':    { westEu: 'Ulaya Magharibi', eastEu: 'Ulaya Mashariki', asia: 'Asia', americas: 'Amerika', africa: 'Afrika', oceania: 'Oceania' },
+    'tr':    { westEu: 'Batı Avrupa', eastEu: 'Doğu Avrupa', asia: 'Asya', americas: 'Amerika', africa: 'Afrika', oceania: 'Okyanusya' },
+    'zh-CN': { westEu: '西欧', eastEu: '东欧', asia: '亚洲', americas: '美洲', africa: '非洲', oceania: '大洋洲' },
+    'zu':    { westEu: 'I-Western Europe', eastEu: 'I-Eastern Europe', asia: 'I-Asia', americas: 'I-America', africa: 'I-Afrika', oceania: 'I-Oceania' },
+  };
+
   var LANG_LABELS = [
     ['en-GB','English'],['en-US','English'],['pt-PT','Português'],['pt-BR','Português'],
     ['nl-NL','Nederlands'],['fr-FR','Français'],['it-IT','Italiano'],['de-DE','Deutsch'],
@@ -52,8 +78,9 @@
   // ── build option HTML ─────────────────────────────────────────────────
   function regionOptions() {
     return Object.keys(REGIONS).map(function (k) {
+      var labels = REGION_LABELS[lang] || REGION_LABELS['en-GB'];
       return '<option value="' + k + '"' + (k === region ? ' selected' : '') + '>'
-           + REGIONS[k].label + '</option>';
+           + (labels[k] || REGIONS[k].label) + '</option>';
     }).join('');
   }
 
