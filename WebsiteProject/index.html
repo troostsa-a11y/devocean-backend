@@ -1425,39 +1425,80 @@
   </style>
 
   <!-- Strip Trustindex schema injection: the floating-cert script injects an
-       Organization block (with wrong addressLocality "Lopes") and a competing
+       Organization block (with wrong addressLocality) and a competing
        aggregateRating. Our LodgingBusiness graph is authoritative.
-       Two-layer approach:
-         1. Patch document.head.appendChild / insertBefore to block injection
-            before the node ever enters the DOM (catches Google's Rich Results
-            Test extractor which reads the DOM state mid-render).
-         2. MutationObserver fallback for any other insertion point (body etc).
+       Three-layer approach:
+         1. Patch head.appendChild / insertBefore / insertAdjacentHTML to drop
+            matching nodes before they enter the DOM. For nodes appended empty
+            (createElement → append → textContent=…), a per-node MutationObserver
+            fires the moment content is set and removes the node immediately.
+         2. Document-wide MutationObserver watches all childList additions and
+            attaches per-node observers to any empty ld+json scripts that slip by.
+         3. Timed sweep (every 200 ms, for 6 s) + DOMContentLoaded sweep as a
+            final belt-and-suspenders safety net.
        Static JSON-LD blocks already in the HTML are never affected — they are
        parsed by the browser before this script runs. -->
   <script>
     (function () {
-      var STRIP_TYPES = { Organization: 1, ItemList: 1, AggregateRating: 1 };
-      function isThirdPartyLdJson(node) {
-        if (!node || node.nodeType !== 1 || node.tagName !== 'SCRIPT') return false;
-        if (node.type !== 'application/ld+json') return false;
-        try { return !!STRIP_TYPES[JSON.parse(node.textContent || '')['@type']]; }
-        catch (e) { return false; }
+      var STRIP = { Organization: 1, ItemList: 1, AggregateRating: 1 };
+
+      function isBadLd(node) {
+        if (!node || node.nodeType !== 1) return false;
+        if (node.tagName !== 'SCRIPT' || node.type !== 'application/ld+json') return false;
+        var t = (node.textContent || node.innerHTML || '').trim();
+        if (!t) return false;
+        try { return !!STRIP[JSON.parse(t)['@type']]; } catch (e) { return false; }
       }
-      // Layer 1: intercept before insertion so the node never reaches the DOM.
+
+      function watchEmpty(node) {
+        if (!node || node.nodeType !== 1) return;
+        if (node.tagName !== 'SCRIPT' || node.type !== 'application/ld+json') return;
+        new MutationObserver(function () { if (isBadLd(node)) node.remove(); })
+          .observe(node, { childList: true, characterData: true, subtree: true });
+      }
+
+      function sweep() {
+        document.querySelectorAll('script[type="application/ld+json"]').forEach(function (n) {
+          if (isBadLd(n)) n.remove();
+        });
+      }
+
+      // Layer 1: patch head insertion methods.
       var head = document.head || document.querySelector('head');
       if (head) {
-        var _ac = head.appendChild.bind(head);
-        var _ib = head.insertBefore.bind(head);
-        head.appendChild  = function (n) { return isThirdPartyLdJson(n) ? n : _ac(n); };
-        head.insertBefore = function (n, r) { return isThirdPartyLdJson(n) ? n : _ib(n, r); };
-      }
-      // Layer 2: MutationObserver fallback (body or late insertions).
-      var obs = new MutationObserver(function (muts) {
-        muts.forEach(function (m) {
-          m.addedNodes.forEach(function (n) { if (isThirdPartyLdJson(n)) n.remove(); });
+        ['appendChild', 'insertBefore'].forEach(function (m) {
+          var orig = head[m].bind(head);
+          head[m] = function (n, ref) {
+            if (isBadLd(n)) return n;
+            var r = (ref !== undefined) ? orig(n, ref) : orig(n);
+            watchEmpty(n);
+            return r;
+          };
         });
-      });
-      obs.observe(document.documentElement, { childList: true, subtree: true });
+        var _iah = head.insertAdjacentHTML.bind(head);
+        head.insertAdjacentHTML = function (pos, html) {
+          var tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          tmp.querySelectorAll('script[type="application/ld+json"]').forEach(function (s) {
+            if (isBadLd(s)) s.remove();
+          });
+          _iah(pos, tmp.innerHTML);
+        };
+      }
+
+      // Layer 2: document-wide childList observer.
+      new MutationObserver(function (muts) {
+        muts.forEach(function (m) {
+          m.addedNodes.forEach(function (n) {
+            if (isBadLd(n)) { n.remove(); return; }
+            watchEmpty(n);
+          });
+        });
+      }).observe(document.documentElement, { childList: true, subtree: true });
+
+      // Layer 3: timed sweeps for 6 s + DOMContentLoaded.
+      var c = 0, t = setInterval(function () { sweep(); if (++c >= 30) clearInterval(t); }, 200);
+      document.addEventListener('DOMContentLoaded', sweep);
     })();
   </script>
 
