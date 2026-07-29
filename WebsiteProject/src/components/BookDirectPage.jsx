@@ -1044,7 +1044,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         </>
       ) : (
         <>
-          {renderTopBar()}
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
             {renderNotices()}
 
