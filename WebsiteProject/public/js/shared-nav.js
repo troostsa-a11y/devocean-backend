@@ -97,7 +97,8 @@
     '.sn-topbar{background:' + BRAND + ';color:#fff;border-bottom:1px solid #8a4211;}',
     '.sn-topbar-inner{max-width:1280px;margin:0 auto;padding:.5rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.875rem;gap:.5rem;}',
     '.sn-drops{display:flex;align-items:center;gap:.375rem;}',
-    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem;color:#fff;font-size:.875rem;cursor:pointer;}',
+    /* Match React Header selects exactly: remove native arrow, add custom white chevron */
+    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem 1.5rem .25rem .5rem;color:#fff;font-size:.875rem;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'10\' height=\'6\' viewBox=\'0 0 10 6\'%3E%3Cpath d=\'M1 1l4 4 4-4\' stroke=\'rgba(255,255,255,0.7)\' stroke-width=\'1.5\' fill=\'none\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .4rem center;}',
     '.sn-sel option{background:#fff;color:#1e293b;}',
     '.sn-sel-region{width:140px;}',
     '.sn-sel-lang{width:93px;}',
@@ -112,7 +113,7 @@
     /* Desktop links */
     '.sn-links{display:none;list-style:none;margin:0;padding:0;gap:1rem;}',
     '@media(min-width:1024px){.sn-links{display:flex;align-items:center;}.sn-burger{display:none!important;}}',
-    '.sn-link{color:#334155;text-decoration:none;font-size:.875rem;white-space:nowrap;transition:color .15s;}',
+    '.sn-link{color:#334155;text-decoration:none;font-size:1rem;white-space:nowrap;transition:color .15s;}',
     '.sn-link:hover{color:' + BRAND + ';}',
     /* Burger */
     '.sn-burger{display:inline-flex;align-items:center;gap:.375rem;padding:.5rem .75rem;border-radius:.75rem;background:' + BRAND + ';color:#fff;border:none;cursor:pointer;font-size:.875rem;font-weight:600;transition:background .15s;}',
