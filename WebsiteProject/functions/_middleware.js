@@ -455,6 +455,19 @@ const STATIC_CONTENT_RE = /<div id="static-content">[\s\S]*?<\/div><!-- \/static
 const EMPTY_STATIC = '<div id="static-content" aria-hidden="true"></div><!-- /static-content -->';
 
 // ---------------------------------------------------------------------------
+// Private/transactional routes that must never be indexed.
+// These inject a noindex meta tag in addition to the robots.txt Disallow rules.
+// ---------------------------------------------------------------------------
+const NOINDEX_PATHS = new Set([
+  '/admin',
+  '/booking-confirmed',
+  '/gift-confirmed',
+  '/gift-canceled',
+  '/thankyou',
+  '/canceled',
+]);
+
+// ---------------------------------------------------------------------------
 
 export async function onRequest(context) {
   try {
@@ -609,6 +622,11 @@ export async function onRequest(context) {
 
         // Strip hreflang — we have no information about translated variants here
         html = html.replace(HREFLANG_BLOCK_RE, EMPTY_HREFLANG);
+
+        // Noindex — private/transactional routes must not appear in search results
+        if (NOINDEX_PATHS.has(pathname)) {
+          html = html.replace('</head>', '<meta name="robots" content="noindex,nofollow">\n</head>');
+        }
       }
     }
 

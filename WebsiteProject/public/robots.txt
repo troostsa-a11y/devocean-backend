@@ -17,7 +17,11 @@ Disallow: /thankyou.html
 Disallow: /thankyou
 Disallow: /canceled.html
 Disallow: /canceled
+Disallow: /booking-confirmed
 Disallow: /gift-confirmed
+Disallow: /gift-canceled
+# Admin panel — private, must not appear in search results.
+Disallow: /admin
 
 # Sitemap location
 Sitemap: https://devoceanlodge.com/sitemap.xml
@@ -47,6 +51,10 @@ Disallow: /thankyou.html
 Disallow: /thankyou
 Disallow: /canceled.html
 Disallow: /canceled
+Disallow: /booking-confirmed
+Disallow: /gift-confirmed
+Disallow: /gift-canceled
+Disallow: /admin
 Allow: /
 
 # BLOCKED — model-training / bulk-ingestion crawlers
