@@ -77,7 +77,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
     <>
       {/* Top bar — language/region dropdowns left, Book Now right */}
       <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-sm">
+        <div className="max-w-7xl mx-auto px-1.5 sm:px-4 py-2 flex items-center justify-between text-sm">
 
           {/* Left: continent + language selectors */}
           <div className="flex items-center gap-1.5">
@@ -85,7 +85,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={region}
               onChange={(e) => handleRegionChange(e.target.value)}
-              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[160px] text-white bg-transparent text-sm"
+              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[150px] sm:w-[160px] text-white bg-transparent text-sm"
               aria-label="Select region"
             >
               {Object.entries(regions).map(([key]) => (
