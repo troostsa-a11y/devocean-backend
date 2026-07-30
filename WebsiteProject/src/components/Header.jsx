@@ -81,7 +81,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
           {/* Left: continent + language selectors */}
           <div className="flex items-center gap-1.5">
-            <Globe2 size={16} className="shrink-0 opacity-80" />
+            <Globe2 size={16} className="hidden sm:block shrink-0 opacity-80" />
             <select
               value={region}
               onChange={(e) => handleRegionChange(e.target.value)}
