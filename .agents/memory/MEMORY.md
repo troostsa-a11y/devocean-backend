@@ -18,6 +18,7 @@
 - [gpt-realtime-2 session schema](gpt-realtime-2-session-schema.md) — audio config nested under session.audio.{input,output}; top-level voice/modalities/turn_detection all rejected; type:"realtime" required
 - [Agent-readiness CF Pages](agent-readiness-cf-pages.md) — isitagentready.com ceiling ~71 (Level 4) for static CF Pages; markdown negotiation in middleware, Content-Signal header, API catalog, Agent Skills, WebMCP; auth/MCP infra = only remaining gap
 - [Render Blueprint name+type match](render-blueprint-name-type.md) — both name AND type must match existing Render service or Blueprint silently creates a duplicate; current: Automailer(web) + Receptionist(web)
+- [CF Pages asset hash collision](cf-pages-hash-collision.md) — wrangler dedupes by filename only; old content under a colliding Vite hash persists silently; fix = trivial whitespace change to force a new hash
 - [Marin VAD response muting](marin-vad-response-muting.md) — mute on response.created; unmute ONLY after browser acks local playback drained (response.done ≠ playback finished, long responses lag); sessionGreetingSent guard
 - [In-app browser viewport quirk](in-app-browser-viewport-quirk.md) — FB/IG in-app browsers briefly report near-zero innerHeight on first paint, breaking fixed-position UI; verify Clarity device metadata before assuming a screenshot is a thumbnail artifact
 - [Hero carousel load race](hero-carousel-load-race.md) — gate on real DOM onLoad (not new Image()), eager loading for slides 1+, delayed prev fade-out eliminates crossfade bleed

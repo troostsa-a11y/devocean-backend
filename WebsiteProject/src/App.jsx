@@ -21,8 +21,8 @@ const BookDirectPage = lazy(() => import('./components/BookDirectPage'));
 const BookingConfirmedPage = lazy(() => import('./components/BookingConfirmedPage'));
 const GiftVouchersPage = lazy(() => import('./components/GiftVouchersPage'));
 const GiftConfirmedPage = lazy(() => import('./components/GiftConfirmedPage'));
-const StoryPage = lazy(() => import('./components/StoryPage'));
-const MealsPage = lazy(() => import('./components/MealsPage'));
+const StoryPage  = lazy(() => import('./components/StoryPage'));
+const MealsPage  = lazy(() => import('./components/MealsPage'));
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
