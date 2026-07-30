@@ -21,6 +21,8 @@ const BookDirectPage = lazy(() => import('./components/BookDirectPage'));
 const BookingConfirmedPage = lazy(() => import('./components/BookingConfirmedPage'));
 const GiftVouchersPage = lazy(() => import('./components/GiftVouchersPage'));
 const GiftConfirmedPage = lazy(() => import('./components/GiftConfirmedPage'));
+const StoryPage = lazy(() => import('./components/StoryPage'));
+const MealsPage = lazy(() => import('./components/MealsPage'));
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -254,6 +256,16 @@ export default function App() {
         </div>
       }>
       <Switch>
+        {/* Our Story page */}
+        <Route path="/story">
+          <StoryPage lang={lang} bookUrl={bookUrl} />
+        </Route>
+
+        {/* Meals & Dining page */}
+        <Route path="/devocean-lodge-meals">
+          <MealsPage lang={lang} bookUrl={bookUrl} />
+        </Route>
+
         {/* Admin panel (not linked from navigation - staff only) */}
         <Route path="/admin">
           <AdminPage />
