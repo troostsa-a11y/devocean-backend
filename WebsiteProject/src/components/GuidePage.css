@@ -1,0 +1,446 @@
+/* GuidePage — shared styles for all static guide pages.
+   Scoped under .guide-page to avoid clashing with Tailwind/global styles. */
+
+.guide-page {
+  background-color: #fffaf6;
+  min-height: 100vh;
+  padding-top: var(--stack-h);
+}
+
+.guide-page .wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 4rem;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+.guide-page .hero {
+  text-align: center;
+  padding: 1.5rem 0 2rem;
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.guide-page .eyebrow {
+  display: inline-block;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #d2691e;
+  background: linear-gradient(145deg, rgba(244,228,212,0.45), rgba(244,228,212,0.2));
+  border: 1px solid rgba(210,105,30,0.3);
+  border-radius: 8px;
+  padding: 0.5rem 1.1rem;
+  margin-bottom: 1.1rem;
+}
+
+.guide-page .hero h1 {
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.guide-page .hero h1 span { color: #9e4b13; }
+
+.guide-page .hero p {
+  font-size: 1.0625rem;
+  color: #6b7280;
+  line-height: 1.75;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ── Fact pills ───────────────────────────────────────────────────────── */
+.guide-page .facts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.guide-page .fact {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2937;
+  background: linear-gradient(145deg, rgba(244,228,212,0.35), rgba(244,228,212,0.15));
+  border: 1px solid rgba(210,105,30,0.25);
+  border-radius: 8px;
+  padding: 0.45rem 0.9rem;
+}
+
+.guide-page .fact-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #9e4b13;
+  flex-shrink: 0;
+}
+.guide-page .fact-dot.green  { background: #4a8c4a; }
+.guide-page .fact-dot.teal   { background: #0d7a7a; }
+.guide-page .fact-dot.blue   { background: #2563eb; }
+
+/* ── Divider ──────────────────────────────────────────────────────────── */
+.guide-page .divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2rem 0;
+}
+
+/* ── Sections ─────────────────────────────────────────────────────────── */
+.guide-page .section {
+  margin-bottom: 2.5rem;
+}
+
+.guide-page .section-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.guide-page .section-title::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 1.4rem;
+  background: #9e4b13;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.guide-page .badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #9e4b13;
+  background: rgba(158,75,19,0.1);
+  border-radius: 20px;
+  padding: 0.2rem 0.7rem;
+  vertical-align: middle;
+}
+
+.guide-page .section p {
+  color: #6b7280;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+  font-size: 0.9875rem;
+}
+
+.guide-page .section p:last-child { margin-bottom: 0; }
+.guide-page .section p strong    { color: #1f2937; }
+.guide-page .section a           { color: #9e4b13; font-weight: 600; }
+
+/* ── Answer box (yes/no quick answer) ────────────────────────────────── */
+.guide-page .answer-box {
+  background: linear-gradient(135deg, rgba(74,140,74,0.12), rgba(74,140,74,0.06));
+  border: 1px solid rgba(74,140,74,0.35);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1.25rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.guide-page .answer-box-check {
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.guide-page .answer-box p {
+  color: #1f2937 !important;
+  font-weight: 600;
+  margin: 0 !important;
+  font-size: 1rem !important;
+}
+
+/* ── Grid ─────────────────────────────────────────────────────────────── */
+.guide-page .grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.guide-page .grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 540px) {
+  .guide-page .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .guide-page .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 820px) {
+  .guide-page .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Cards ────────────────────────────────────────────────────────────── */
+.guide-page .card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.4rem;
+}
+
+.guide-page .card h3 {
+  font-size: 1.0rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.guide-page .card p {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.guide-page .card ul {
+  margin: 0.6rem 0 0;
+  padding-left: 1.1rem;
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.85;
+}
+
+.guide-page .card ul li strong { color: #1f2937; }
+
+/* ── Highlight box ────────────────────────────────────────────────────── */
+.guide-page .highlight-box {
+  background: linear-gradient(135deg, rgba(244,228,212,0.55), rgba(244,228,212,0.25));
+  border: 1px solid rgba(210,105,30,0.3);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.25rem 0;
+}
+
+.guide-page .highlight-box h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.guide-page .highlight-box p {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin-bottom: 0.5rem;
+}
+
+.guide-page .highlight-box p:last-child { margin-bottom: 0; }
+.guide-page .highlight-box strong       { color: #9e4b13; }
+
+/* ── Steps list ───────────────────────────────────────────────────────── */
+.guide-page .steps {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.guide-page .step {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.guide-page .step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #9e4b13;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.guide-page .step-text {
+  color: #4b5563;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.guide-page .step-text strong { color: #1f2937; }
+
+/* ── Bullet list ─────────────────────────────────────────────────────── */
+.guide-page .bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.guide-page .bullet-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #6b7280;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.guide-page .bullet-list li::before {
+  content: '·';
+  color: #9e4b13;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.guide-page .bullet-list li strong { color: #1f2937; }
+
+/* ── FAQ ──────────────────────────────────────────────────────────────── */
+.guide-page .faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.guide-page .faq-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+}
+
+.guide-page .faq-q {
+  font-size: 0.9875rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.45rem;
+}
+
+.guide-page .faq-a {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.75;
+}
+
+.guide-page .faq-a a { color: #9e4b13; }
+
+/* ── Related guides ───────────────────────────────────────────────────── */
+.guide-page .related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.guide-page .related-link {
+  font-size: 0.8375rem;
+  font-weight: 600;
+  color: #9e4b13;
+  text-decoration: none;
+  background: rgba(158,75,19,0.08);
+  border: 1px solid rgba(158,75,19,0.2);
+  border-radius: 8px;
+  padding: 0.4rem 0.85rem;
+  transition: background 0.2s;
+}
+
+.guide-page .related-link:hover { background: rgba(158,75,19,0.15); }
+
+/* ── CTA ──────────────────────────────────────────────────────────────── */
+.guide-page .cta {
+  background: linear-gradient(135deg, #9e4b13, #7a3a0e);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.guide-page .cta h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.65rem;
+}
+
+.guide-page .cta p {
+  color: rgba(255,255,255,0.88);
+  font-size: 0.9875rem;
+  max-width: 540px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.7;
+}
+
+.guide-page .btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.guide-page .gbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.65rem;
+  border-radius: 10px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.guide-page .gbtn:hover { opacity: 0.88; }
+.guide-page .gbtn-primary   { background: #fff; color: #9e4b13; }
+.guide-page .gbtn-secondary { background: rgba(255,255,255,0.18); color: #fff; border: 2px solid rgba(255,255,255,0.35); }
+.guide-page .gbtn-ask       { width: 44px; height: 44px; padding: 0; border-radius: 50%; background: #f97316; justify-content: center; box-shadow: 0 4px 14px rgba(249,115,22,0.4); }
+
+/* ── Footer ───────────────────────────────────────────────────────────── */
+.guide-page .page-footer {
+  background: #7a3a0e;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  padding: 1.4rem 1rem;
+  font-size: 0.85rem;
+}
+
+.guide-page .page-footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+.guide-page .page-footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .guide-page .wrap  { padding: 1rem 1rem 3rem; }
+  .guide-page .cta   { padding: 2rem 1.25rem; }
+  .guide-page .cta h2 { font-size: 1.35rem; }
+  .guide-page .btn-row { flex-direction: column; }
+  .guide-page .gbtn  { width: 100%; justify-content: center; }
+  .guide-page .gbtn-ask { width: 44px !important; }
+}

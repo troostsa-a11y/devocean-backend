@@ -143,6 +143,120 @@ const EXPERIENCE_META = {
 // ---------------------------------------------------------------------------
 const ROUTE_META = {
 
+  '/ponta-do-ouro': {
+    title: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge — Mozambique',
+    description: "Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, whale watching June–November, and proximity to Maputo National Park UNESCO site.",
+    ogTitle: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge',
+    ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Why Ponta do Ouro?</h1>
+  <p>A pristine coastal village at the southern tip of Mozambique, 13 km from the Kosi Bay border with South Africa. Gateway to 1,200+ marine species, ethical dolphin swims, humpback whale watching and the UNESCO-listed Maputo National Park.</p>
+  <h2>World-Class Marine Adventures</h2>
+  <p>The Ponta do Ouro Partial Marine Reserve is one of Southern Africa's most biodiverse marine protected areas. Year-round resident bottlenose dolphin pods, scuba diving from 10 m to 47 m, bull sharks, hammerheads, manta rays and humpback whales June–November.</p>
+  <h2>Wildlife Reserves at the Doorstep</h2>
+  <p>Maputo National Park (UNESCO) is 30 km north — elephants, hippos, giraffes, zebras and 526+ bird species. iSimangaliso Wetland Park is 25 minutes away across the border.</p>
+  <p><a href="/book-direct">Book direct at DEVOCEAN Lodge</a> · <a href="/ponta-do-ouro-accommodation">View accommodation</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/getting-to-ponta-do-ouro': {
+    title: 'Getting to Ponta do Ouro from Kosi Bay and Maputo | Travel Guide',
+    description: 'Complete guide to getting to Ponta do Ouro, Mozambique — via Kosi Bay border (13 km), from Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules explained.',
+    ogTitle: 'Getting to Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Via Kosi Bay border (13 km), from Maputo by road or transfer (120 km), or by public chapa. No 4×4 required to reach DEVOCEAN Lodge.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Getting to Ponta do Ouro from Kosi Bay and Maputo</h1>
+  <p>The most common route is via the Kosi Bay border crossing from South Africa — 13 km from the village on a largely tarred road. From Maputo it is approximately 120 km via the Maputo–Katembe Bridge. No 4×4 required to reach DEVOCEAN Lodge.</p>
+  <h2>From South Africa via the Kosi Bay Border</h2>
+  <p>The Kosi Bay border is open 08:00–17:00 daily. Shared chapas run from the border to the village throughout the day (20–30 min). DEVOCEAN Lodge is 150 m from the village transport terminal. Private transfers can be arranged.</p>
+  <h2>From Maputo by Road or Transfer</h2>
+  <p>Cross the Maputo–Katembe Bridge and follow the coastal road south. Allow approximately 2 hours. A standard car is sufficient.</p>
+  <p><a href="/book-direct">Book direct</a> · <a href="/ponta-do-ouro-without-4x4">Can I visit without a 4×4?</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/ponta-do-ouro-without-4x4': {
+    title: 'Visiting Ponta do Ouro Without a 4×4 | Complete Guide | DEVOCEAN Lodge',
+    description: 'Can you visit Ponta do Ouro without a 4×4? Yes. The main village road is tarred and a standard car gets you to DEVOCEAN Lodge. What is sandy, what is tarred, and how to get here without your own vehicle.',
+    ogTitle: 'Visiting Ponta do Ouro Without a 4×4 | DEVOCEAN Lodge',
+    ogDescription: 'Yes, you can visit without a 4×4. DEVOCEAN Lodge is on a navigable road. The main beach is walkable. Chapas and bakkie taxis cover everything else.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Visiting Ponta do Ouro Without a 4×4</h1>
+  <p>Yes, you can visit Ponta do Ouro without a 4×4. DEVOCEAN Lodge is on a navigable road in the village centre. A standard car or public transport handles the full journey from the Kosi Bay border. The main beach is walkable from the lodge.</p>
+  <h2>Road Conditions</h2>
+  <p>The 13 km from the Kosi Bay border to the village is largely tarred, with a few short sandy sections that a standard sedan handles comfortably in dry conditions (April–November). Malongane requires a 4×4 to drive, but local bakkie taxis run the route daily.</p>
+  <p><a href="/book-direct">Book direct</a> · <a href="/getting-to-ponta-do-ouro">Full getting-here guide</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/ponta-do-ouro-accommodation': {
+    title: 'Accommodation in Ponta do Ouro Near the Beach | DEVOCEAN Lodge',
+    description: 'DEVOCEAN Lodge sits in a lush tropical garden approximately 300 metres from the beach in Ponta do Ouro. Nine units across four accommodation types — safari tents, comfort tents, a garden cottage and a thatched chalet.',
+    ogTitle: 'Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Nine units across four types, 300 m from the beach. Safari tents, comfort tents, garden cottage and thatched chalet. Breakfast included. Book direct for best rates.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Accommodation in Ponta do Ouro Near the Beach</h1>
+  <p>DEVOCEAN Lodge is set in a lush tropical garden in the heart of Ponta do Ouro village, approximately 300 metres from the main beach. Nine units across four accommodation types — four Safari Tents, three Comfort Tents, a Garden Cottage and a Thatched Chalet.</p>
+  <ul>
+    <li><strong>Safari Tent</strong> (4 units) — Canvas tent on a raised platform. King or Twin, fan, shared bathroom, private terrace.</li>
+    <li><strong>Comfort Safari Tent</strong> (3 units) — Canvas tent with private en-suite thatched bathroom. King or Twin, private terrace.</li>
+    <li><strong>Garden Cottage</strong> (1 unit) — Roundavel with AC inverter, desk, dining table, private bathroom.</li>
+    <li><strong>Thatched Chalet</strong> (1 unit) — Secluded, AC inverter, private bathroom, private terrace.</li>
+  </ul>
+  <p>All units include breakfast daily, free WiFi, fresh linen and mosquito screening. <a href="/book-direct">Check live availability and book direct.</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/safari-tents-ponta-do-ouro': {
+    title: 'Safari Tents in Ponta do Ouro, Mozambique | DEVOCEAN Lodge',
+    description: "DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a more private Comfort Tent with en-suite bathroom. Breakfast included. Book direct.",
+    ogTitle: 'Safari Tents in Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Two canvas safari tents on raised wooden platforms in a tropical garden. Shared or en-suite bathroom, fan, private terrace. A few minutes from the Indian Ocean.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Safari Tents in Ponta do Ouro</h1>
+  <p>DEVOCEAN Lodge offers two safari tent options — a classic canvas Safari Tent on a raised 3×6 m wooden platform, and a Comfort Safari Tent with a private en-suite thatched bathroom. Both are a few minutes' walk from the Indian Ocean and the dive boats.</p>
+  <h2>Safari Tent</h2>
+  <p>12 m² canvas tent. King or Twin configuration, strong fan, private wooden terrace, mosquito mesh. Shared clean bathroom used only by safari tent guests.</p>
+  <h2>Comfort Safari Tent</h2>
+  <p>Same canvas experience with a private en-suite thatched bathroom. King or Twin, private terrace, fan, mosquito mesh.</p>
+  <p>Breakfast included in both. Ponta do Ouro is a malaria area — bring DEET and consult your doctor about prophylaxis. <a href="/book-direct">Check availability for both tents.</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/diving-dolphin-accommodation': {
+    title: 'Accommodation for Diving and Dolphin Swims in Ponta do Ouro | DEVOCEAN Lodge',
+    description: "DEVOCEAN Lodge is a few minutes from Ponta do Ouro's dive operators and dolphin swim centre. Dive sites 10 m–47 m, resident dolphin pods year-round, whale watching June–November.",
+    ogTitle: 'Dive Base Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
+    ogDescription: 'Walk to the dive boats, dolphin swims and whale-watching trips. Gear rinse on-site. Four accommodation types. Breakfast included. Book direct.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Accommodation for Diving and Dolphins in Ponta do Ouro</h1>
+  <p>DEVOCEAN Lodge is in the village centre, a short walk from every PADI dive operator and from The Dolphin Centre. Dive boats typically leave at 07:30–08:00 — proximity to the launch point changes your whole dive day.</p>
+  <h2>Dive Sites Around Ponta do Ouro</h2>
+  <ul>
+    <li><strong>Crèche</strong> — 10 m, dolphin interactions, ideal for beginners</li>
+    <li><strong>Pinnacles</strong> — 18–22 m, bull sharks, hammerheads, manta rays</li>
+    <li><strong>Atlantis</strong> — 47 m, advanced dive, exceptional pelagic species</li>
+  </ul>
+  <h2>Wild Dolphin Swims</h2>
+  <p>200+ resident Indo-Pacific bottlenose dolphins year-round. The Dolphin Centre operates ethical swims from Crèche reef. Suitable for confident swimmers — no diving certification required.</p>
+  <h2>Whale Watching — June to November</h2>
+  <p>Humpback whales migrate through Ponta do Ouro's waters June–November. August–October is the peak window for diving, dolphins and whales combined.</p>
+  <p><a href="/book-direct">Book your dive base</a> · <a href="/ponta-do-ouro-accommodation">View all accommodation</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
   '/book-direct': {
     title: 'Book Direct | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description: 'Book your stay at DEVOCEAN Lodge direct for the best available rate. No booking fees, no OTA markup. Instant confirmation. Safari tents, garden cottage and thatched chalet, Ponta do Ouro, Mozambique.',

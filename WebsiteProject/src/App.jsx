@@ -21,8 +21,14 @@ const BookDirectPage = lazy(() => import('./components/BookDirectPage'));
 const BookingConfirmedPage = lazy(() => import('./components/BookingConfirmedPage'));
 const GiftVouchersPage = lazy(() => import('./components/GiftVouchersPage'));
 const GiftConfirmedPage = lazy(() => import('./components/GiftConfirmedPage'));
-const StoryPage  = lazy(() => import('./components/StoryPage'));
-const MealsPage  = lazy(() => import('./components/MealsPage'));
+const StoryPage              = lazy(() => import('./components/StoryPage'));
+const MealsPage              = lazy(() => import('./components/MealsPage'));
+const PontaDoOuroPage        = lazy(() => import('./components/PontaDoOuroPage'));
+const GettingTherePage       = lazy(() => import('./components/GettingTherePage'));
+const WithoutFourByFourPage  = lazy(() => import('./components/WithoutFourByFourPage'));
+const AccommodationPage      = lazy(() => import('./components/AccommodationPage'));
+const SafariTentsPage        = lazy(() => import('./components/SafariTentsPage'));
+const DivingDolphinsPage     = lazy(() => import('./components/DivingDolphinsPage'));
 
 // Below-the-fold components (lazy loaded for better INP)
 const GallerySection = lazy(() => import('./components/GallerySection'));
@@ -264,6 +270,24 @@ export default function App() {
         {/* Meals & Dining page */}
         <Route path="/devocean-lodge-meals">
           <MealsPage lang={lang} bookUrl={bookUrl} />
+        </Route>
+        <Route path="/ponta-do-ouro">
+          <PontaDoOuroPage bookUrl={bookUrl} />
+        </Route>
+        <Route path="/getting-to-ponta-do-ouro">
+          <GettingTherePage bookUrl={bookUrl} />
+        </Route>
+        <Route path="/ponta-do-ouro-without-4x4">
+          <WithoutFourByFourPage bookUrl={bookUrl} />
+        </Route>
+        <Route path="/ponta-do-ouro-accommodation">
+          <AccommodationPage bookUrl={bookUrl} />
+        </Route>
+        <Route path="/safari-tents-ponta-do-ouro">
+          <SafariTentsPage bookUrl={bookUrl} />
+        </Route>
+        <Route path="/diving-dolphin-accommodation">
+          <DivingDolphinsPage bookUrl={bookUrl} />
         </Route>
 
         {/* Admin panel (not linked from navigation - staff only) */}
