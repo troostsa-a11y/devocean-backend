@@ -243,6 +243,46 @@ const ROUTE_META = {
 </div><!-- /static-content -->`,
   },
 
+  '/story': {
+    title: 'Our Story | DEVOCEAN Lodge',
+    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
+    ogTitle: 'Our Story | DEVOCEAN Lodge',
+    ogDescription: 'Family-run, community-focused and growing with purpose since 2015. Book direct to support local projects and enjoy a warm, effortless stay by the beach.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Adventure meets sustainability — Your stay makes a difference.</h1>
+  <p>Since 2015, DEVOCEAN Lodge has been family-run and community-focused in Ponta do Ouro, Mozambique. Book direct to support local projects and enjoy a warm, effortless stay by the beach.</p>
+  <h2>Today at DEVOCEAN Lodge</h2>
+  <p>We offer 9 unique accommodation options, blending adventure with comfort, while continually enhancing the guest experience together with our dedicated staff and the local community.</p>
+  <h2>Lake Sotiba Guest Farm</h2>
+  <p>Trusted by local leaders, we are developing a guest farm at Lake Sotiba — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.</p>
+  <h2>Your stay creates impact</h2>
+  <p>Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
+  <p><a href="/book-direct">Book your stay at DEVOCEAN Lodge.</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/devocean-lodge-meals': {
+    title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
+    description: 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
+    ogTitle: 'Meals at DEVOCEAN Lodge | Breakfast Included',
+    ogDescription: 'Breakfast included with every stay. Resident guests can pre-order freshly prepared dinners from our in-house restaurant in Ponta do Ouro, Mozambique.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Breakfast included. Dinner prepared for you on demand.</h1>
+  <p>Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house restaurant.</p>
+  <h2>Breakfast in the Garden</h2>
+  <p>Breakfast is included in your accommodation rate and is normally served between 08:30 and 11:00 in the tropical garden. Guests can choose from our breakfast menu, with both cooked and lighter options. Fresh Portuguese bread is served daily, accompanied by coffee, tea or hot chocolate. If you have an early dive or dolphin swim, an earlier or later breakfast can usually be arranged.</p>
+  <h2>Dinner at DEVOCEAN</h2>
+  <p>Our in-house restaurant prepares dinner exclusively for guests staying at the lodge. Please order in advance — latest order time is 20:00, and the kitchen closes at 21:00. Meals are prepared fresh to order using ingredients purchased daily.</p>
+  <h2>Dietary Requirements</h2>
+  <p>Please advise us of any vegetarian, vegan or other dietary requirements before arrival. Our kitchen is small and local supplies vary, but we will always be honest about what we can accommodate.</p>
+  <p><a href="/book-direct">Book a stay at DEVOCEAN Lodge — breakfast included.</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
 };
 
 // Routes that get the static block emptied entirely (transactional / private).
