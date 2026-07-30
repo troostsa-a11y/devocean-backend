@@ -91,7 +91,7 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
               alt="Sustainability Partnership"
               className="dl-hero-icon"
               loading="eager"
-              fetchPriority="high"
+              fetchpriority="high"
             />
             <div className="dl-eyebrow">
               {g(t, 'hero.eyebrow', 'Since 2015 • Ponta do Ouro')}

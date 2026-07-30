@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node start.js",
-    "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/ && cp ponta-do-ouro.html dist/ && cp ponta-do-ouro-accommodation.html dist/ && cp safari-tents-ponta-do-ouro.html dist/ && cp diving-dolphin-accommodation.html dist/ && cp getting-to-ponta-do-ouro.html dist/ && cp ponta-do-ouro-without-4x4.html dist/ && cp devocean-lodge-meals.html dist/",
+    "build": "vite build && cp -r functions dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/ && cp ponta-do-ouro.html dist/ && cp ponta-do-ouro-accommodation.html dist/ && cp safari-tents-ponta-do-ouro.html dist/ && cp diving-dolphin-accommodation.html dist/ && cp getting-to-ponta-do-ouro.html dist/ && cp ponta-do-ouro-without-4x4.html dist/",
     "preview": "vite preview",
     "deploy": "wrangler pages deploy dist"
   },
