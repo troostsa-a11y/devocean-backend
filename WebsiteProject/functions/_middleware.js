@@ -487,9 +487,16 @@ export async function onRequest(context) {
     let response = await context.next();
 
     // SPA fallback: no static file matched → serve index.html for React routing.
+    // Serve the shell not only for explicit text/html requests, but also for
+    // clients that send no Accept header or a wildcard (curl, uptime checkers,
+    // diagnostic tools, unusual crawlers) — otherwise they see false 404s on
+    // real SPA routes like /story. Asset-like paths (with extensions) still 404.
     if (response.status === 404) {
-      const accept = context.request.headers.get('accept') || '';
-      if (accept.includes('text/html')) {
+      const accept = (context.request.headers.get('accept') || '').trim();
+      const wantsHtml =
+        !isAssetPath &&
+        (accept === '' || accept.includes('text/html') || accept.includes('*/*'));
+      if (wantsHtml) {
         const rootUrl = new URL('/', context.request.url);
         response = await context.env.ASSETS.fetch(new Request(rootUrl, context.request));
       } else {
