@@ -619,6 +619,11 @@ export async function onRequest(context) {
     // search=yes   — allow all search engines
     // ai-input=yes — allow retrieval AI (Perplexity, ChatGPT, Claude)
     headers.set('Content-Signal', 'ai-train=no, search=yes, ai-input=yes');
+    // HTML must never be browser-cached: hashed /assets/* files carry the
+    // long-lived cache instead. Without this, Cloudflare's default
+    // max-age=14400 lets browsers keep a stale SPA shell (referencing old
+    // bundles) for up to 4 hours after every deploy.
+    headers.set('Cache-Control', 'no-cache, must-revalidate');
     return new Response(html, { status: response.status, headers });
 
   } catch (err) {
