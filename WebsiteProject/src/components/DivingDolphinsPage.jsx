@@ -1,26 +1,6 @@
 import { useEffect } from 'react';
 import './GuidePage.css';
 
-const JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Which dive operators are closest to DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Multiple PADI operators are based in the village, all within a short walk. Ask Marin (our AI receptionist) or our team for current operator recommendations when you book.' } },
-      { '@type': 'Question', name: 'What time do dive trips depart?', acceptedAnswer: { '@type': 'Answer', text: 'Most operators run two dives per day. The first dive typically departs around 07:30–08:00, with the second following mid-morning. Dolphin swims leave at a similar time.' } },
-      { '@type': 'Question', name: 'Are dolphin swims suitable for non-divers?', acceptedAnswer: { '@type': 'Answer', text: "Yes. Dolphin swims are conducted while snorkelling in shallow water at Crèche reef. You don't need to be a certified diver — confident swimmers are welcome." } },
-      { '@type': 'Question', name: 'What is the best time of year for diving in Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'April–November offers the best visibility (15–30 m). August–October adds whale season. December–March brings warmer water but occasionally reduced visibility. Dolphins are present year-round.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Accommodation for Diving and Dolphins', item: 'https://devoceanlodge.com/diving-dolphin-accommodation' },
-    ],
-  },
-];
 
 export default function DivingDolphinsPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
@@ -30,16 +10,6 @@ export default function DivingDolphinsPage({ bookUrl = '/book-direct' }) {
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/diving-dolphin-accommodation');
   }, []);
 
-  useEffect(() => {
-    const id = 'diving-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id; el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="guide-page">

@@ -1,39 +1,6 @@
 import { useEffect } from 'react';
 import './GuidePage.css';
 
-const JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'LodgingBusiness',
-    '@id': 'https://devoceanlodge.com/#lodge',
-    name: 'DEVOCEAN Lodge',
-    url: 'https://devoceanlodge.com',
-    description: 'Family-run eco-lodge in Ponta do Ouro, Southern Mozambique. Nine units across four accommodation types set in a lush tropical garden approximately 300 metres from the beach.',
-    address: { '@type': 'PostalAddress', addressLocality: 'Ponta do Ouro', addressCountry: 'MZ' },
-    amenityFeature: [
-      { '@type': 'LocationFeatureSpecification', name: 'Breakfast included', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'On-site parking', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'No 4×4 required', value: true },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'How far is DEVOCEAN Lodge from the beach?', acceptedAnswer: { '@type': 'Answer', text: 'The lodge is approximately 300 metres from the main beach — a few minutes\' walk through the village streets.' } },
-      { '@type': 'Question', name: 'Do I need a 4×4 to get to DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'No. DEVOCEAN Lodge is on a navigable road in the village centre. A standard car handles the route from the Kosi Bay border comfortably.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Accommodation in Ponta do Ouro', item: 'https://devoceanlodge.com/ponta-do-ouro-accommodation' },
-    ],
-  },
-];
 
 export default function AccommodationPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
@@ -43,16 +10,6 @@ export default function AccommodationPage({ bookUrl = '/book-direct' }) {
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro-accommodation');
   }, []);
 
-  useEffect(() => {
-    const id = 'accommodation-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id; el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="guide-page">

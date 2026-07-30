@@ -1,43 +1,6 @@
 import { useEffect, useState } from 'react';
 import './MealsPage.css';
 
-const MEALS_JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'LodgingBusiness',
-    '@id': 'https://devoceanlodge.com/#lodge',
-    name: 'DEVOCEAN Lodge',
-    url: 'https://devoceanlodge.com',
-    amenityFeature: [
-      { '@type': 'LocationFeatureSpecification', name: 'Breakfast included', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'Dinner by pre-order (resident guests)', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'Honesty bar', value: true },
-      { '@type': 'LocationFeatureSpecification', name: 'Filtered water fountain', value: true },
-    ],
-    servesCuisine: ['Mozambican', 'International'],
-    hasMenu: 'https://devoceanlodge.com/devocean-lodge-meals',
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Is breakfast included at DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Breakfast is included in the accommodation rate.' } },
-      { '@type': 'Question', name: 'What time is breakfast served?', acceptedAnswer: { '@type': 'Answer', text: 'Breakfast is normally served from 08:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, if you have an early dive or dolphin swim.' } },
-      { '@type': 'Question', name: 'Can I have dinner at DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Resident guests can order dinner from our in-house restaurant. Please order in advance and no later than 20:00. The kitchen closes at 21:00.' } },
-      { '@type': 'Question', name: 'Is the DEVOCEAN Lodge kitchen open to outside visitors?', acceptedAnswer: { '@type': 'Answer', text: 'No. Our meal service is reserved for guests staying at DEVOCEAN Lodge.' } },
-      { '@type': 'Question', name: 'Does DEVOCEAN Lodge serve lunch?', acceptedAnswer: { '@type': 'Answer', text: 'We do not offer regular lunch service. We are happy to suggest nearby cafés and restaurants based on what is currently open and what you would like to eat.' } },
-      { '@type': 'Question', name: 'Can DEVOCEAN Lodge accommodate dietary requirements?', acceptedAnswer: { '@type': 'Answer', text: 'Often, yes. Please advise us of any vegetarian, vegan or other dietary requirements before arrival so that we can confirm what can be prepared with the ingredients available locally. Our kitchen is small and local supplies vary, but we will always be honest about what we can accommodate.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Meals & Dining', item: 'https://devoceanlodge.com/devocean-lodge-meals' },
-    ],
-  },
-];
 
 /** Resolve a dot-path like "hero.title" against the translations object. */
 function g(t, path, fallback = '') {
@@ -70,18 +33,6 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
     if (canonical) canonical.setAttribute('href', 'https://devoceanlodge.com/devocean-lodge-meals');
   }, []);
 
-  // JSON-LD — injected once, removed on unmount
-  useEffect(() => {
-    const id = 'meals-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id;
-      el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(MEALS_JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="meals-page">

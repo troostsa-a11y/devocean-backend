@@ -1,36 +1,6 @@
 import { useEffect } from 'react';
 import './GuidePage.css';
 
-const JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'TouristDestination',
-    '@id': 'https://devoceanlodge.com/ponta-do-ouro#destination',
-    name: 'Ponta do Ouro',
-    description: 'Pristine coastal village at the southern tip of Mozambique. Marine reserve, resident dolphin pods, whale watching, scuba diving and proximity to Maputo National Park.',
-    url: 'https://devoceanlodge.com/ponta-do-ouro',
-    touristType: ['Scuba Diver', 'Wildlife Enthusiast', 'Beach Traveller', 'Adventure Traveller'],
-    geo: { '@type': 'GeoCoordinates', latitude: -26.837, longitude: 32.893 },
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'How do I get to Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'The most common route is via the Kosi Bay border crossing from South Africa — 13 km from the village. From Maputo it is approximately 120 km via the Maputo–Katembe Bridge and the coastal road.' } },
-      { '@type': 'Question', name: 'When is the best time to visit Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'April to November is the dry season with calmer seas and best diving visibility. August to October adds humpback whale watching to the mix. Dolphins are present year-round.' } },
-      { '@type': 'Question', name: 'Is Ponta do Ouro suitable for families?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The village is quiet and safe. DEVOCEAN Lodge accommodates families across all unit types. Dolphin swims, snorkelling and beach walks are family-friendly activities.' } },
-      { '@type': 'Question', name: 'What currency is used in Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'The local currency is the Mozambican Metical (MZN). South African Rand is widely accepted. USD and EUR can be exchanged locally. Card payments are limited — bring cash.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Ponta do Ouro Travel Guide', item: 'https://devoceanlodge.com/ponta-do-ouro' },
-    ],
-  },
-];
 
 export default function PontaDoOuroPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
@@ -40,16 +10,6 @@ export default function PontaDoOuroPage({ bookUrl = '/book-direct' }) {
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro');
   }, []);
 
-  useEffect(() => {
-    const id = 'ponta-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id; el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="guide-page">

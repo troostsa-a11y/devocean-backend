@@ -1,26 +1,6 @@
 import { useEffect } from 'react';
 import './GuidePage.css';
 
-const JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Do I need a visa to enter Mozambique at the Kosi Bay border?', acceptedAnswer: { '@type': 'Answer', text: 'Entry requirements depend on your nationality. Mozambique offers an online eVisa as well as visa-on-arrival at some crossings. Check the official Mozambique eVisa portal before travel.' } },
-      { '@type': 'Question', name: 'What are the Kosi Bay border opening hours?', acceptedAnswer: { '@type': 'Answer', text: 'The Kosi Bay border is listed as open 08:00–17:00 daily. Always verify current hours before travel. Allow time to clear before 17:00 on busy days.' } },
-      { '@type': 'Question', name: 'Can I take a normal car to Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The main route from Kosi Bay border to the village is navigable by standard vehicles. DEVOCEAN Lodge is on a tarred road. No 4×4 required.' } },
-      { '@type': 'Question', name: 'Is there public transport from the Kosi Bay border to Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Shared chapas run between the border and village throughout the day, departing when full. Journey takes 20–30 minutes. DEVOCEAN Lodge is 150 m from the village transport terminal.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Getting to Ponta do Ouro', item: 'https://devoceanlodge.com/getting-to-ponta-do-ouro' },
-    ],
-  },
-];
 
 export default function GettingTherePage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
@@ -30,16 +10,6 @@ export default function GettingTherePage({ bookUrl = '/book-direct' }) {
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/getting-to-ponta-do-ouro');
   }, []);
 
-  useEffect(() => {
-    const id = 'getting-there-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id; el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="guide-page">

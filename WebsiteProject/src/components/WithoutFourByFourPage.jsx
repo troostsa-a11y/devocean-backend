@@ -1,25 +1,6 @@
 import { useEffect } from 'react';
 import './GuidePage.css';
 
-const JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Is the road from the Kosi Bay border fully tarred?', acceptedAnswer: { '@type': 'Answer', text: 'It is largely tarred with some short sandy sections that can worsen after heavy rain. Under normal dry-season conditions (April–November), a standard sedan handles it comfortably.' } },
-      { '@type': 'Question', name: 'Can I reach the beach without a 4×4?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The main Ponta do Ouro beach is walkable from the lodge and from the village centre. No vehicle is needed to reach the beach on foot.' } },
-      { '@type': 'Question', name: 'Can I visit Malongane without a 4×4?', acceptedAnswer: { '@type': 'Answer', text: 'Malongane is reached via deep coastal sand — a 4×4 is required to drive there. However, local bakkie taxis run the route and are an inexpensive way to visit without your own 4×4.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Visiting Without a 4×4', item: 'https://devoceanlodge.com/ponta-do-ouro-without-4x4' },
-    ],
-  },
-];
 
 export default function WithoutFourByFourPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
@@ -29,16 +10,6 @@ export default function WithoutFourByFourPage({ bookUrl = '/book-direct' }) {
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro-without-4x4');
   }, []);
 
-  useEffect(() => {
-    const id = 'no4x4-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id; el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="guide-page">

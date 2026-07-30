@@ -1,25 +1,6 @@
 import { useEffect } from 'react';
 import './GuidePage.css';
 
-const JSONLD = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      { '@type': 'Question', name: 'Is it real camping or glamping?', acceptedAnswer: { '@type': 'Answer', text: 'Somewhere in between. Genuine canvas tent on a wooden platform — so the sounds, feel and connection to the outdoors are real. But with a proper bed, fresh linen, a private terrace and a well-maintained garden. The Comfort Tent adds an en-suite bathroom.' } },
-      { '@type': 'Question', name: 'What is the bathroom situation for the standard Safari Tent?', acceptedAnswer: { '@type': 'Answer', text: 'The standard Safari Tent uses a shared bathroom — clean, maintained, and used only by safari tent guests. The Comfort Safari Tent has its own private en-suite bathroom attached to the rear of the tent.' } },
-      { '@type': 'Question', name: 'Is Ponta do Ouro a malaria area?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Standard precautions apply: consult your doctor about prophylaxis before travel, and bring DEET insect repellent. The tents are fitted with mosquito-mesh windows and doors.' } },
-    ],
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' },
-      { '@type': 'ListItem', position: 2, name: 'Safari Tents in Ponta do Ouro', item: 'https://devoceanlodge.com/safari-tents-ponta-do-ouro' },
-    ],
-  },
-];
 
 export default function SafariTentsPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
@@ -29,16 +10,6 @@ export default function SafariTentsPage({ bookUrl = '/book-direct' }) {
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/safari-tents-ponta-do-ouro');
   }, []);
 
-  useEffect(() => {
-    const id = 'safari-tents-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id; el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   return (
     <div className="guide-page">

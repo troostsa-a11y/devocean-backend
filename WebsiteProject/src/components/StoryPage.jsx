@@ -1,32 +1,6 @@
 import { useEffect, useState } from 'react';
 import './StoryPage.css';
 
-const STORY_JSONLD = {
-  '@context': 'https://schema.org',
-  '@type': 'AboutPage',
-  name: 'Our Story | DEVOCEAN Lodge',
-  url: 'https://devoceanlodge.com/story',
-  description:
-    'Discover DEVOCEAN Lodge\'s journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.',
-  about: {
-    '@type': 'LodgingBusiness',
-    '@id': 'https://devoceanlodge.com/#lodge',
-    name: 'DEVOCEAN Lodge',
-    url: 'https://devoceanlodge.com/',
-    foundingDate: '2015',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Ponta do Ouro',
-      addressRegion: 'Matutuíne, Província de Maputo',
-      addressCountry: 'MZ',
-    },
-  },
-  publisher: {
-    '@type': 'Organization',
-    name: 'DEVOCEAN Lodge',
-    url: 'https://devoceanlodge.com/',
-  },
-};
 
 /** Resolve a dot-path like "hero.title" against the translations object. */
 function g(t, path, fallback = '') {
@@ -58,18 +32,6 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
     if (canonical) canonical.setAttribute('href', 'https://devoceanlodge.com/story');
   }, []);
 
-  // JSON-LD — injected once, removed on unmount
-  useEffect(() => {
-    const id = 'story-jsonld';
-    if (!document.getElementById(id)) {
-      const el = document.createElement('script');
-      el.id = id;
-      el.type = 'application/ld+json';
-      el.textContent = JSON.stringify(STORY_JSONLD);
-      document.head.appendChild(el);
-    }
-    return () => document.getElementById(id)?.remove();
-  }, []);
 
   // Mark hero overlay as seen when visitor navigates back to the homepage
   // (prevents the 5s intro animation for returning visitors)

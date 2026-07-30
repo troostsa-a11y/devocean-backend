@@ -148,6 +148,11 @@ const ROUTE_META = {
     description: "Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, whale watching June–November, and proximity to Maputo National Park UNESCO site.",
     ogTitle: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'TouristDestination', '@id': 'https://devoceanlodge.com/ponta-do-ouro#destination', name: 'Ponta do Ouro', description: 'Pristine coastal village at the southern tip of Mozambique. Marine reserve, resident dolphin pods, whale watching, scuba diving and proximity to Maputo National Park.', url: 'https://devoceanlodge.com/ponta-do-ouro', touristType: ['Scuba Diver', 'Wildlife Enthusiast', 'Beach Traveller', 'Adventure Traveller'], geo: { '@type': 'GeoCoordinates', latitude: -26.837, longitude: 32.893 } },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'How do I get to Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'The most common route is via the Kosi Bay border crossing from South Africa — 13 km from the village. From Maputo it is approximately 120 km via the Maputo–Katembe Bridge and the coastal road.' } }, { '@type': 'Question', name: 'When is the best time to visit Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'April to November is the dry season with calmer seas and best diving visibility. August to October adds humpback whale watching. Dolphins are present year-round.' } }, { '@type': 'Question', name: 'Is Ponta do Ouro suitable for families?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The village is quiet and safe. DEVOCEAN Lodge accommodates families across all unit types. Dolphin swims, snorkelling and beach walks are family-friendly activities.' } }, { '@type': 'Question', name: 'What currency is used in Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'The local currency is the Mozambican Metical (MZN). South African Rand is widely accepted. USD and EUR can be exchanged locally. Card payments are limited — bring cash.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Ponta do Ouro Travel Guide', item: 'https://devoceanlodge.com/ponta-do-ouro' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Why Ponta do Ouro?</h1>
@@ -166,6 +171,10 @@ const ROUTE_META = {
     description: 'Complete guide to getting to Ponta do Ouro, Mozambique — via Kosi Bay border (13 km), from Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules explained.',
     ogTitle: 'Getting to Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Via Kosi Bay border (13 km), from Maputo by road or transfer (120 km), or by public chapa. No 4×4 required to reach DEVOCEAN Lodge.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Do I need a visa to enter Mozambique at the Kosi Bay border?', acceptedAnswer: { '@type': 'Answer', text: 'Entry requirements depend on your nationality. Mozambique offers an online eVisa as well as visa-on-arrival at some crossings. Check the official Mozambique eVisa portal before travel.' } }, { '@type': 'Question', name: 'What are the Kosi Bay border opening hours?', acceptedAnswer: { '@type': 'Answer', text: 'The Kosi Bay border is listed as open 08:00–17:00 daily. Always verify current hours before travel. Allow time to clear before 17:00 on busy days.' } }, { '@type': 'Question', name: 'Can I take a normal car to Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The main route from Kosi Bay border to the village is navigable by standard vehicles. DEVOCEAN Lodge is on a tarred road. No 4×4 required.' } }, { '@type': 'Question', name: 'Is there public transport from the Kosi Bay border to Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Shared chapas run between the border and village throughout the day, departing when full. Journey takes 20–30 minutes. DEVOCEAN Lodge is 150 m from the village transport terminal.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Getting to Ponta do Ouro', item: 'https://devoceanlodge.com/getting-to-ponta-do-ouro' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Getting to Ponta do Ouro from Kosi Bay and Maputo</h1>
@@ -184,6 +193,10 @@ const ROUTE_META = {
     description: 'Can you visit Ponta do Ouro without a 4×4? Yes. The main village road is tarred and a standard car gets you to DEVOCEAN Lodge. What is sandy, what is tarred, and how to get here without your own vehicle.',
     ogTitle: 'Visiting Ponta do Ouro Without a 4×4 | DEVOCEAN Lodge',
     ogDescription: 'Yes, you can visit without a 4×4. DEVOCEAN Lodge is on a navigable road. The main beach is walkable. Chapas and bakkie taxis cover everything else.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Is the road from the Kosi Bay border fully tarred?', acceptedAnswer: { '@type': 'Answer', text: 'It is largely tarred with some short sandy sections that can worsen after heavy rain. Under normal dry-season conditions (April–November), a standard sedan handles it comfortably.' } }, { '@type': 'Question', name: 'Can I reach the beach without a 4×4?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. The main Ponta do Ouro beach is walkable from the lodge and from the village centre. No vehicle is needed to reach the beach on foot.' } }, { '@type': 'Question', name: 'Can I visit Malongane without a 4×4?', acceptedAnswer: { '@type': 'Answer', text: 'Malongane is reached via deep coastal sand — a 4×4 is required to drive there. However, local bakkie taxis run the route and are an inexpensive way to visit without your own 4×4.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Visiting Without a 4×4', item: 'https://devoceanlodge.com/ponta-do-ouro-without-4x4' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Visiting Ponta do Ouro Without a 4×4</h1>
@@ -200,6 +213,11 @@ const ROUTE_META = {
     description: 'DEVOCEAN Lodge sits in a lush tropical garden approximately 300 metres from the beach in Ponta do Ouro. Nine units across four accommodation types — safari tents, comfort tents, a garden cottage and a thatched chalet.',
     ogTitle: 'Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Nine units across four types, 300 m from the beach. Safari tents, comfort tents, garden cottage and thatched chalet. Breakfast included. Book direct for best rates.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'LodgingBusiness', '@id': 'https://devoceanlodge.com/#lodge', name: 'DEVOCEAN Lodge', url: 'https://devoceanlodge.com', description: 'Family-run eco-lodge in Ponta do Ouro, Southern Mozambique. Nine units across four accommodation types set in a lush tropical garden approximately 300 metres from the beach.', address: { '@type': 'PostalAddress', addressLocality: 'Ponta do Ouro', addressCountry: 'MZ' }, amenityFeature: [ { '@type': 'LocationFeatureSpecification', name: 'Breakfast included', value: true }, { '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true }, { '@type': 'LocationFeatureSpecification', name: 'On-site parking', value: true }, { '@type': 'LocationFeatureSpecification', name: 'No 4×4 required', value: true } ] },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'How far is DEVOCEAN Lodge from the beach?', acceptedAnswer: { '@type': 'Answer', text: "The lodge is approximately 300 metres from the main beach — a few minutes' walk through the village streets." } }, { '@type': 'Question', name: 'Do I need a 4×4 to get to DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'No. DEVOCEAN Lodge is on a navigable road in the village centre. A standard car handles the route from the Kosi Bay border comfortably.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Accommodation in Ponta do Ouro', item: 'https://devoceanlodge.com/ponta-do-ouro-accommodation' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Accommodation in Ponta do Ouro Near the Beach</h1>
@@ -220,6 +238,10 @@ const ROUTE_META = {
     description: "DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a more private Comfort Tent with en-suite bathroom. Breakfast included. Book direct.",
     ogTitle: 'Safari Tents in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Two canvas safari tents on raised wooden platforms in a tropical garden. Shared or en-suite bathroom, fan, private terrace. A few minutes from the Indian Ocean.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Is it real camping or glamping?', acceptedAnswer: { '@type': 'Answer', text: 'Somewhere in between. Genuine canvas tent on a wooden platform — so the sounds, feel and connection to the outdoors are real. But with a proper bed, fresh linen, a private terrace and a well-maintained garden. The Comfort Tent adds an en-suite bathroom.' } }, { '@type': 'Question', name: 'What is the bathroom situation for the standard Safari Tent?', acceptedAnswer: { '@type': 'Answer', text: 'The standard Safari Tent uses a shared bathroom — clean, maintained, and used only by safari tent guests. The Comfort Safari Tent has its own private en-suite bathroom attached to the rear of the tent.' } }, { '@type': 'Question', name: 'Is Ponta do Ouro a malaria area?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Standard precautions apply: consult your doctor about prophylaxis before travel, and bring DEET insect repellent. The tents are fitted with mosquito-mesh windows and doors.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Safari Tents in Ponta do Ouro', item: 'https://devoceanlodge.com/safari-tents-ponta-do-ouro' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Safari Tents in Ponta do Ouro</h1>
@@ -238,6 +260,10 @@ const ROUTE_META = {
     description: "DEVOCEAN Lodge is a few minutes from Ponta do Ouro's dive operators and dolphin swim centre. Dive sites 10 m–47 m, resident dolphin pods year-round, whale watching June–November.",
     ogTitle: 'Dive Base Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Walk to the dive boats, dolphin swims and whale-watching trips. Gear rinse on-site. Four accommodation types. Breakfast included. Book direct.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Which dive operators are closest to DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Multiple PADI operators are based in the village, all within a short walk. Ask our team for current operator recommendations when you book.' } }, { '@type': 'Question', name: 'What time do dive trips depart?', acceptedAnswer: { '@type': 'Answer', text: 'Most operators run two dives per day. The first dive typically departs around 07:30–08:00, with the second following mid-morning. Dolphin swims leave at a similar time.' } }, { '@type': 'Question', name: 'Are dolphin swims suitable for non-divers?', acceptedAnswer: { '@type': 'Answer', text: "Yes. Dolphin swims are conducted while snorkelling in shallow water at Crèche reef. You don't need to be a certified diver — confident swimmers are welcome." } }, { '@type': 'Question', name: 'What is the best time of year for diving in Ponta do Ouro?', acceptedAnswer: { '@type': 'Answer', text: 'April–November offers the best visibility (15–30 m). August–October adds whale season. December–March brings warmer water but occasionally reduced visibility. Dolphins are present year-round.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Accommodation for Diving and Dolphins', item: 'https://devoceanlodge.com/diving-dolphin-accommodation' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Accommodation for Diving and Dolphins in Ponta do Ouro</h1>
@@ -306,6 +332,10 @@ const ROUTE_META = {
     description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local community impact.",
     ogTitle: 'Our Story | DEVOCEAN Lodge',
     ogDescription: 'Family-run eco-lodge in Ponta do Ouro since 2015. Your stay supports sustainable development, local farming, and community projects in southern Mozambique.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'Our Story | DEVOCEAN Lodge', url: 'https://devoceanlodge.com/story', description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro.", about: { '@type': 'LodgingBusiness', '@id': 'https://devoceanlodge.com/#lodge', name: 'DEVOCEAN Lodge', url: 'https://devoceanlodge.com/', foundingDate: '2015', address: { '@type': 'PostalAddress', addressLocality: 'Ponta do Ouro', addressRegion: 'Matutuíne, Província de Maputo', addressCountry: 'MZ' } } },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Our Story', item: 'https://devoceanlodge.com/story' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Adventure meets sustainability — your stay makes a difference</h1>
@@ -382,6 +412,11 @@ const ROUTE_META = {
     description: 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
     ogTitle: 'Meals at DEVOCEAN Lodge | Breakfast Included',
     ogDescription: 'Breakfast included with every stay. Resident guests can pre-order freshly prepared dinners from our in-house restaurant in Ponta do Ouro, Mozambique.',
+    jsonLd: [
+      { '@context': 'https://schema.org', '@type': 'LodgingBusiness', '@id': 'https://devoceanlodge.com/#lodge', name: 'DEVOCEAN Lodge', url: 'https://devoceanlodge.com', amenityFeature: [ { '@type': 'LocationFeatureSpecification', name: 'Breakfast included', value: true }, { '@type': 'LocationFeatureSpecification', name: 'Dinner by pre-order (resident guests)', value: true }, { '@type': 'LocationFeatureSpecification', name: 'Honesty bar', value: true }, { '@type': 'LocationFeatureSpecification', name: 'Filtered water fountain', value: true } ], servesCuisine: ['Mozambican', 'International'], hasMenu: 'https://devoceanlodge.com/devocean-lodge-meals' },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Is breakfast included at DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Breakfast is included in the accommodation rate.' } }, { '@type': 'Question', name: 'What time is breakfast served?', acceptedAnswer: { '@type': 'Answer', text: 'Breakfast is normally served from 08:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, if you have an early dive or dolphin swim.' } }, { '@type': 'Question', name: 'Can I have dinner at DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Resident guests can order dinner from our in-house restaurant. Please order in advance and no later than 20:00. The kitchen closes at 21:00.' } }, { '@type': 'Question', name: 'Is the DEVOCEAN Lodge kitchen open to outside visitors?', acceptedAnswer: { '@type': 'Answer', text: 'No. Our meal service is reserved for guests staying at DEVOCEAN Lodge.' } }, { '@type': 'Question', name: 'Does DEVOCEAN Lodge serve lunch?', acceptedAnswer: { '@type': 'Answer', text: 'We do not offer regular lunch service. We are happy to suggest nearby cafés and restaurants based on what is currently open.' } }, { '@type': 'Question', name: 'Can DEVOCEAN Lodge accommodate dietary requirements?', acceptedAnswer: { '@type': 'Answer', text: 'Often, yes. Please advise us of any dietary requirements before arrival. Our kitchen is small and local supplies vary, but we will always be honest about what we can accommodate.' } } ] },
+      { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Meals & Dining', item: 'https://devoceanlodge.com/devocean-lodge-meals' } ] },
+    ],
     staticHtml: `<div id="static-content">
 <section>
   <h1>Breakfast included. Dinner prepared for you on demand.</h1>
@@ -545,6 +580,14 @@ export async function onRequest(context) {
           `$1${BASE_URL}${pathname}$2`
         );
         html = html.replace(STATIC_CONTENT_RE, route.staticHtml);
+
+        // Inline JSON-LD into <head> — served without JavaScript, visible to all crawlers
+        if (route.jsonLd?.length) {
+          const scripts = route.jsonLd
+            .map(ld => `<script type="application/ld+json">${JSON.stringify(ld)}</script>`)
+            .join('\n');
+          html = html.replace('</head>', `${scripts}\n</head>`);
+        }
 
         // Strip hreflang — no genuine translated variants for this route
         html = html.replace(HREFLANG_BLOCK_RE, EMPTY_HREFLANG);
