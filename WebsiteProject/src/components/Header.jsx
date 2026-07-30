@@ -85,7 +85,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={region}
               onChange={(e) => handleRegionChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[130px] text-white bg-transparent text-sm"
+              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[130px] text-white bg-transparent text-sm"
               aria-label="Select region"
             >
               {Object.entries(regions).map(([key]) => (
@@ -98,7 +98,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded px-2 py-1 w-[93px] text-white bg-transparent text-sm"
+              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[93px] text-white bg-transparent text-sm"
               aria-label="Select language"
             >
               {regions[region]?.languages.includes('en-US') && <option value="en-US" className="text-slate-800">English</option>}
