@@ -130,7 +130,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
           {!isBookDirectPage && (
             <a
               href={bookUrl}
-              className="inline-flex items-center justify-center px-4 py-1.5 rounded-lg border border-white text-white font-semibold text-sm whitespace-nowrap hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center px-2 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm rounded-lg border border-white text-white font-semibold whitespace-nowrap hover:bg-white/10 transition-colors"
               onClick={() => handleBookClick('topbar')}
             >
               {ui.contact.bookNow}
