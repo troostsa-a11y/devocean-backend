@@ -712,5 +712,215 @@
       "bookButton": "Book Your Stay",
       "viewButton": "View Accommodations"
     }
+  },
+  "cs": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Zpět na ubytování"
+    },
+    "hero": {
+      "eyebrow": "Od roku 2015 • Ponta do Ouro",
+      "title": "Dobrodružství se potkává s udržitelností",
+      "titleSpan": "Váš pobyt má smysl.",
+      "subtitle": "Rodinný podnik zaměřený na místní komunitu, který roste s jasným posláním. Rezervujte přímo a podpořte místní projekty — a užijte si vřelý, bezstarostný pobyt u pláže.",
+      "proofPoints": {
+        "support": "Přátelská místní podpora",
+        "booking": "Bezpečná a snadná rezervace",
+        "restaurant": "Snídaně v ceně · Večeře na objednávku"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "DEVOCEAN Lodge dnes",
+        "content": "Nabízíme <strong>9 jedinečných možností ubytování</strong>, které spojují dobrodružství s pohodlím, a společně s naším oddaným personálem a místní komunitou neustále zlepšujeme zážitek hostů."
+      },
+      "sotiba": {
+        "title": "Farma pro hosty u jezera Sotiba",
+        "content": "S důvěrou místních lídrů budujeme farmu pro hosty u <strong>jezera Sotiba</strong> — centrum praktických, udržitelných postupů v soběstačnosti a sdílení znalostí.",
+        "linkText": "Zobrazit plán farmy na Google Earth →"
+      },
+      "farm": {
+        "title": "Z naší půdy na váš talíř",
+        "content": "Vychutnejte si snídani v ceně každého pobytu a objednejte si předem čerstvě připravenou večeři z naší vlastní kuchyně."
+      },
+      "impact": {
+        "title": "Váš pobyt vytváří pozitivní dopad",
+        "content": "Každá rezervace podporuje udržitelný rozvoj a posiluje místní komunitu — a přibližuje naši vizi vzkvétajícího, ekologicky uvědomělého jižního Mosambiku."
+      }
+    },
+    "cta": {
+      "title": "Připraveni zažít DEVOCEAN?",
+      "subtitle": "Vyberte si ideální ubytování a začněte své udržitelné plážové dobrodružství.",
+      "bookButton": "Rezervovat pobyt",
+      "viewButton": "Zobrazit ubytování"
+    }
+  },
+  "hr": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Natrag na smještaj"
+    },
+    "hero": {
+      "eyebrow": "Od 2015. • Ponta do Ouro",
+      "title": "Avantura susreće održivost",
+      "titleSpan": "Vaš boravak čini razliku.",
+      "subtitle": "Obiteljski vođeno, usmjereno na zajednicu i raste s jasnom svrhom. Rezervirajte izravno i podržite lokalne projekte — te uživajte u toplom, bezbrižnom boravku uz plažu.",
+      "proofPoints": {
+        "support": "Prijateljska lokalna podrška",
+        "booking": "Sigurna rezervacija bez komplikacija",
+        "restaurant": "Doručak uključen · Večera uz prednarudžbu"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "DEVOCEAN Lodge danas",
+        "content": "Nudimo <strong>9 jedinstvenih mogućnosti smještaja</strong> koje spajaju avanturu i udobnost, dok zajedno s našim predanim osobljem i lokalnom zajednicom neprestano unapređujemo doživljaj gostiju."
+      },
+      "sotiba": {
+        "title": "Gostinska farma na jezeru Sotiba",
+        "content": "Uz povjerenje lokalnih čelnika razvijamo gostinsku farmu na <strong>jezeru Sotiba</strong> — središte praktičnih, održivih praksi samodostatnosti i dijeljenja znanja.",
+        "linkText": "Pogledajte plan farme na Google Earthu →"
+      },
+      "farm": {
+        "title": "S naše zemlje na vaš tanjur",
+        "content": "Uživajte u doručku uključenom u svaki boravak i unaprijed naručite svježe pripremljenu večeru iz naše kuhinje."
+      },
+      "impact": {
+        "title": "Vaš boravak stvara pozitivan učinak",
+        "content": "Svaka rezervacija podržava održivi razvoj i osnažuje lokalnu zajednicu — oživljavajući našu viziju procvata ekološki osviještenog juga Mozambika."
+      }
+    },
+    "cta": {
+      "title": "Spremni doživjeti DEVOCEAN?",
+      "subtitle": "Odaberite savršen smještaj i započnite svoju održivu avanturu na plaži.",
+      "bookButton": "Rezervirajte boravak",
+      "viewButton": "Pogledajte smještaj"
+    }
+  },
+  "ro": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Înapoi la cazare"
+    },
+    "hero": {
+      "eyebrow": "Din 2015 • Ponta do Ouro",
+      "title": "Aventura întâlnește sustenabilitatea",
+      "titleSpan": "Șederea ta face diferența.",
+      "subtitle": "Afacere de familie, orientată spre comunitate, care crește cu un scop clar. Rezervă direct pentru a susține proiectele locale — și bucură-te de o ședere caldă și lipsită de griji lângă plajă.",
+      "proofPoints": {
+        "support": "Asistență locală prietenoasă",
+        "booking": "Rezervare sigură, fără bătăi de cap",
+        "restaurant": "Mic dejun inclus · Cină la precomandă"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "DEVOCEAN Lodge astăzi",
+        "content": "Oferim <strong>9 opțiuni unice de cazare</strong>, îmbinând aventura cu confortul, în timp ce îmbunătățim continuu experiența oaspeților împreună cu personalul nostru dedicat și comunitatea locală."
+      },
+      "sotiba": {
+        "title": "Ferma pentru oaspeți de la Lacul Sotiba",
+        "content": "Cu încrederea liderilor locali, dezvoltăm o fermă pentru oaspeți la <strong>Lacul Sotiba</strong> — un centru de practici sustenabile, aplicate, de autosuficiență și schimb de cunoștințe.",
+        "linkText": "Vezi planul fermei pe Google Earth →"
+      },
+      "farm": {
+        "title": "De pe pământul nostru în farfuria ta",
+        "content": "Bucură-te de micul dejun inclus în fiecare ședere și precomandă o cină proaspăt pregătită din bucătăria noastră proprie."
+      },
+      "impact": {
+        "title": "Șederea ta creează impact",
+        "content": "Fiecare rezervare susține dezvoltarea durabilă și consolidează comunitatea locală — dând viață viziunii noastre despre un sud al Mozambicului înfloritor și eco-conștient."
+      }
+    },
+    "cta": {
+      "title": "Gata să descoperi DEVOCEAN?",
+      "subtitle": "Alege cazarea perfectă și începe-ți aventura sustenabilă la plajă.",
+      "bookButton": "Rezervă-ți șederea",
+      "viewButton": "Vezi opțiunile de cazare"
+    }
+  },
+  "sr": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Nazad na smeštaj"
+    },
+    "hero": {
+      "eyebrow": "Od 2015. • Ponta do Ouro",
+      "title": "Avantura susreće održivost",
+      "titleSpan": "Vaš boravak čini razliku.",
+      "subtitle": "Porodično vođeno, okrenuto zajednici i raste sa jasnom svrhom. Rezervišite direktno i podržite lokalne projekte — i uživajte u toplom, bezbrižnom boravku pored plaže.",
+      "proofPoints": {
+        "support": "Prijateljska lokalna podrška",
+        "booking": "Sigurna rezervacija bez komplikacija",
+        "restaurant": "Doručak uključen · Večera uz prethodnu narudžbinu"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "DEVOCEAN Lodge danas",
+        "content": "Nudimo <strong>9 jedinstvenih opcija smeštaja</strong> koje spajaju avanturu i udobnost, dok zajedno sa našim posvećenim osobljem i lokalnom zajednicom stalno unapređujemo doživljaj gostiju."
+      },
+      "sotiba": {
+        "title": "Gostinska farma na jezeru Sotiba",
+        "content": "Uz poverenje lokalnih lidera, razvijamo gostinsku farmu na <strong>jezeru Sotiba</strong> — centar praktičnih, održivih praksi samodovoljnosti i razmene znanja.",
+        "linkText": "Pogledajte plan farme na Google Earth-u →"
+      },
+      "farm": {
+        "title": "Sa naše zemlje na vaš tanjir",
+        "content": "Uživajte u doručku uključenom u svaki boravak i unapred naručite sveže pripremljenu večeru iz naše kuhinje."
+      },
+      "impact": {
+        "title": "Vaš boravak stvara pozitivan uticaj",
+        "content": "Svaka rezervacija podržava održivi razvoj i osnažuje lokalnu zajednicu — oživljavajući našu viziju procvata ekološki svesnog juga Mozambika."
+      }
+    },
+    "cta": {
+      "title": "Spremni da doživite DEVOCEAN?",
+      "subtitle": "Izaberite savršen smeštaj i započnite svoju održivu avanturu na plaži.",
+      "bookButton": "Rezervišite boravak",
+      "viewButton": "Pogledajte smeštaj"
+    }
+  },
+  "tr": {
+    "nav": {
+      "logo": "DEVOCEAN Lodge",
+      "backToAccommodations": "Konaklamalara geri dön"
+    },
+    "hero": {
+      "eyebrow": "2015'ten beri • Ponta do Ouro",
+      "title": "Macera sürdürülebilirlikle buluşuyor",
+      "titleSpan": "Konaklamanız fark yaratır.",
+      "subtitle": "Aile işletmesi, topluluk odaklı ve amaçla büyüyen bir yer. Yerel projeleri desteklemek için doğrudan rezervasyon yapın — ve plaj kenarında sıcak, zahmetsiz bir konaklamanın tadını çıkarın.",
+      "proofPoints": {
+        "support": "Samimi, yerel destek",
+        "booking": "Güvenli, zahmetsiz rezervasyon",
+        "restaurant": "Kahvaltı dahil · Akşam yemeği ön siparişle"
+      }
+    },
+    "cards": {
+      "today": {
+        "title": "Bugün DEVOCEAN Lodge",
+        "content": "Macerayı konforla harmanlayan <strong>9 benzersiz konaklama seçeneği</strong> sunuyor, özverili ekibimiz ve yerel toplulukla birlikte misafir deneyimini sürekli geliştiriyoruz."
+      },
+      "sotiba": {
+        "title": "Sotiba Gölü Misafir Çiftliği",
+        "content": "Yerel liderlerin güveniyle, <strong>Sotiba Gölü</strong>'nde bir misafir çiftliği geliştiriyoruz — kendi kendine yeterlilik ve bilgi paylaşımında uygulamalı, sürdürülebilir pratiklerin merkezi.",
+        "linkText": "Çiftlik planını Google Earth'te görüntüle →"
+      },
+      "farm": {
+        "title": "Toprağımızdan tabağınıza",
+        "content": "Her konaklamaya dahil olan kahvaltının tadını çıkarın ve kendi mutfağımızdan taze hazırlanan akşam yemeğini önceden sipariş edin."
+      },
+      "impact": {
+        "title": "Konaklamanız etki yaratır",
+        "content": "Her rezervasyon sürdürülebilir kalkınmayı destekler ve yerel topluluğu güçlendirir — gelişen, çevre bilincine sahip bir güney Mozambik vizyonumuzu hayata geçirir."
+      }
+    },
+    "cta": {
+      "title": "DEVOCEAN'ı deneyimlemeye hazır mısınız?",
+      "subtitle": "Size en uygun konaklamayı seçin ve sürdürülebilir plaj maceranıza başlayın.",
+      "bookButton": "Konaklamanızı ayırtın",
+      "viewButton": "Konaklamaları görüntüle"
+    }
   }
 }

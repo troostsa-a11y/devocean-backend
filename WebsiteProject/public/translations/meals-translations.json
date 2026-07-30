@@ -1443,5 +1443,430 @@
       "view": "Посмотреть варианты проживания",
       "ask": "Вопросы о питании или диетических потребностях? Спросите Marin"
     }
+  },
+  "cs": {
+    "hero": {
+      "eyebrow": "Jídlo a stravování · DEVOCEAN Lodge",
+      "title": "Snídaně v ceně.<br/><span>Večeře připravená na objednávku.</span>",
+      "lead": "Každý pobyt v DEVOCEAN Lodge zahrnuje snídani podávanou v naší tropické zahradě. Večer si mohou ubytovaní hosté předem objednat čerstvě připravenou večeři z naší vlastní restaurace."
+    },
+    "facts": {
+      "included": "Snídaně v ceně",
+      "served": "Podává se 08:30–11:00",
+      "flexible": "Dříve či později po domluvě",
+      "dinner": "Večeře na objednávku",
+      "residents": "Pouze pro ubytované hosty"
+    },
+    "breakfast": {
+      "title": "Snídaně v zahradě",
+      "badge": "V ceně",
+      "p1": "Snídaně je <strong>zahrnuta v ceně ubytování</strong> a obvykle se podává mezi 08:30 a 11:00 v tropické zahradě.",
+      "p2": "Hosté si mohou vybrat z našeho snídaňového menu, které nabízí teplé i lehčí varianty. Denně podáváme čerstvý portugalský chléb s kávou, čajem nebo horkou čokoládou.",
+      "boxTitle": "Ranní potápění nebo plavání s delfíny?",
+      "boxText": "Pokud vás čeká brzký odjezd, potápění, plavání s delfíny nebo jiná ranní aktivita, dejte nám prosím vědět předem. <strong>Dřívější či pozdější snídani lze obvykle zařídit</strong>."
+    },
+    "dinner": {
+      "title": "Večeře v DEVOCEAN",
+      "badge": "Na objednávku",
+      "p1": "Naše restaurace připravuje večeři <strong>výhradně pro hosty ubytované v lodge</strong>. Jídla vaříme na objednávku ze surovin nakupovaných čerstvých každý den, takže dostupná nabídka se může měnit.",
+      "p2": "Objednávejte prosím předem — nejlépe dříve během dne. <strong>Nejpozdější čas pro objednání večeře je 20:00</strong> a kuchyně zavírá ve 21:00.",
+      "p3": "Protože vaříme přesně pro hosty, kteří si objednali, můžeme se soustředit na čerstvost a kvalitu a zároveň předcházet zbytečnému plýtvání jídlem.",
+      "orderTitle": "Jak objednat",
+      "order1": "Sdělte nám svůj výběr večeře během dne",
+      "order2": "Nejpozdější čas objednávky: 20:00",
+      "order3": "Kuchyně zavírá: 21:00",
+      "order4": "Nabídka se může měnit podle denní dostupnosti na trhu",
+      "order5": "Připravováno čerstvě na objednávku — žádné pevné menu",
+      "residentsTitle": "Pouze pro ubytované hosty",
+      "residentsText": "Večeře je vyhrazena hostům ubytovaným v DEVOCEAN Lodge. Kuchyni nenabízíme externím návštěvníkům. Díky tomu se můžeme plně soustředit na čerstvost a kvalitu pro hosty v naší péči."
+    },
+    "drinks": {
+      "title": "Nápoje a zázemí pro hosty",
+      "intro": "Po celou dobu pobytu mají všichni hosté k dispozici:",
+      "hotTitle": "Teplé nápoje",
+      "hotText": "Káva, čaj a horká čokoláda jsou v lodge k dispozici po celý den.",
+      "sharedTitle": "Společné zázemí",
+      "shared1": "Společná lednice pro hosty",
+      "shared2": "Fontánka s filtrovanou vodou — doplňte si láhev kdykoli",
+      "shared3": "Bar na dobré slovo s výběrem chlazených nápojů"
+    },
+    "dietary": {
+      "title": "Dietní požadavky",
+      "p1": "Informujte nás prosím o <strong>vegetariánských, veganských či jiných dietních požadavcích</strong> před příjezdem, nebo co nejdříve během pobytu. Naše kuchyně je malá a místní zásobování se mění, ale vždy vám upřímně řekneme, co dokážeme zajistit.",
+      "p2": "Čím dříve to víme, tím lépe můžeme plánovat podle toho, co je v daný den místně dostupné."
+    },
+    "lunch": {
+      "title": "Oběd",
+      "p1": "DEVOCEAN Lodge nenabízí pravidelné obědy. V Ponta do Ouro je řada kaváren, plážových barů a restaurací v docházkové vzdálenosti od lodge. Rádi vám doporučíme podniky podle toho, <strong>co je právě otevřené a na co máte chuť</strong> — stačí se zeptat nás nebo Marin."
+    },
+    "faq": {
+      "title": "Časté dotazy",
+      "q1": "Je snídaně v ceně?",
+      "a1": "Ano. Snídaně je zahrnuta v ceně ubytování u všech pobytů.",
+      "q2": "V kolik hodin se podává snídaně?",
+      "a2": "Snídaně se obvykle podává od 08:30 do 11:00. Dřívější či pozdější podávání lze často zařídit na předchozí požádání — například kvůli brzkému potápění nebo plavání s delfíny.",
+      "q3": "Mohu večeřet v lodge?",
+      "a3": "Ano. Ubytovaní hosté si mohou objednat večeři z naší restaurace. Objednávejte prosím předem, nejpozději do 20:00. Kuchyně zavírá ve 21:00.",
+      "q4": "Je kuchyně otevřená i externím návštěvníkům?",
+      "a4": "Ne. Naše stravovací služby jsou vyhrazeny hostům ubytovaným v DEVOCEAN Lodge.",
+      "q5": "Podáváte obědy?",
+      "a5": "Pravidelné obědy nenabízíme. Rádi vám doporučíme blízké kavárny a restaurace podle toho, co je právě otevřené a na co máte chuť.",
+      "q6": "Dokážete vyhovět dietním požadavkům?",
+      "a6": "Často ano. Dejte nám prosím vědět předem, abychom mohli potvrdit, co lze připravit z místně dostupných surovin. Naše kuchyně je malá a zásobování se mění, ale vždy budeme upřímní ohledně toho, co dokážeme zajistit."
+    },
+    "guides": {
+      "title": "Další užitečné průvodce",
+      "link1": "Veškeré ubytování v DEVOCEAN Lodge",
+      "link2": "Jak se dostat do Ponta do Ouro",
+      "link3": "Návštěva bez 4×4",
+      "link4": "Cestovní průvodce Ponta do Ouro"
+    },
+    "cta": {
+      "title": "Pobyt se snídaní v ceně",
+      "text": "Aktuální ceny, dostupnost a možnosti ubytování najdete přímo na našem webu. Snídaně je zahrnuta v každém pobytu.",
+      "check": "Ověřit dostupnost →",
+      "view": "Zobrazit ubytování",
+      "ask": "Otázky ohledně jídla nebo diet? Zeptejte se Marin"
+    }
+  },
+  "hr": {
+    "hero": {
+      "eyebrow": "Hrana i objedi · DEVOCEAN Lodge",
+      "title": "Doručak uključen.<br/><span>Večera pripremljena na zahtjev.</span>",
+      "lead": "Svaki boravak u DEVOCEAN Lodgeu uključuje doručak, poslužen u našem tropskom vrtu. Navečer gosti lodgea mogu unaprijed naručiti svježe pripremljenu večeru iz našeg restorana."
+    },
+    "facts": {
+      "included": "Doručak uključen",
+      "served": "Poslužuje se 08:30–11:00",
+      "flexible": "Ranije ili kasnije po dogovoru",
+      "dinner": "Večera uz prednarudžbu",
+      "residents": "Samo za goste lodgea"
+    },
+    "breakfast": {
+      "title": "Doručak u vrtu",
+      "badge": "Uključeno",
+      "p1": "Doručak je <strong>uključen u cijenu smještaja</strong> i obično se poslužuje između 08:30 i 11:00 u tropskom vrtu.",
+      "p2": "Gosti mogu birati s našeg doručak-menija, s kuhanim i laganijim opcijama. Svježi portugalski kruh poslužuje se svakodnevno, uz kavu, čaj ili vruću čokoladu.",
+      "boxTitle": "Rano ronjenje ili plivanje s dupinima?",
+      "boxText": "Ako imate rani polazak, ronjenje, plivanje s dupinima ili drugu jutarnju aktivnost, javite nam unaprijed. <strong>Raniji ili kasniji doručak obično se može dogovoriti</strong>."
+    },
+    "dinner": {
+      "title": "Večera u DEVOCEAN-u",
+      "badge": "Prednarudžba",
+      "p1": "Naš restoran priprema večeru <strong>isključivo za goste koji borave u lodgeu</strong>. Jela se pripremaju po narudžbi od namirnica kupljenih svježih svaki dan, pa se dostupan izbor može mijenjati.",
+      "p2": "Molimo naručite unaprijed — po mogućnosti ranije tijekom dana. <strong>Najkasnije vrijeme za narudžbu večere je 20:00</strong>, a kuhinja se zatvara u 21:00.",
+      "p3": "Budući da kuhamo upravo za goste koji naruče, možemo se posvetiti svježini i kvaliteti te izbjeći nepotrebno bacanje hrane.",
+      "orderTitle": "Kako naručiti",
+      "order1": "Javite nam svoj izbor večere tijekom dana",
+      "order2": "Najkasnija narudžba: 20:00",
+      "order3": "Kuhinja se zatvara: 21:00",
+      "order4": "Izbor se mijenja ovisno o dnevnoj ponudi na tržnici",
+      "order5": "Pripremljeno svježe po narudžbi — bez fiksnog menija",
+      "residentsTitle": "Samo za goste lodgea",
+      "residentsText": "Večera je rezervirana za goste koji borave u DEVOCEAN Lodgeu. Kuhinju ne nudimo vanjskim posjetiteljima. To nam omogućuje potpunu posvećenost svježini i kvaliteti za naše goste."
+    },
+    "drinks": {
+      "title": "Pića i sadržaji za goste",
+      "intro": "Tijekom boravka svim je gostima dostupno sljedeće:",
+      "hotTitle": "Topli napici",
+      "hotText": "Kava, čaj i vruća čokolada dostupni su u lodgeu tijekom cijelog dana.",
+      "sharedTitle": "Zajednički sadržaji",
+      "shared1": "Zajednički hladnjak za goste",
+      "shared2": "Fontana s filtriranom vodom — napunite bocu u bilo koje vrijeme",
+      "shared3": "Bar na povjerenje s izborom hladnih pića"
+    },
+    "dietary": {
+      "title": "Prehrambene potrebe",
+      "p1": "Molimo recite nam za <strong>vegetarijanske, veganske ili druge prehrambene potrebe</strong> prije dolaska, ili što ranije tijekom boravka. Naša je kuhinja mala i lokalna opskrba varira, ali uvijek ćemo iskreno objasniti što možemo osigurati.",
+      "p2": "Što ranije znamo, to bolje možemo planirati prema onome što je taj dan lokalno dostupno."
+    },
+    "lunch": {
+      "title": "Ručak",
+      "p1": "DEVOCEAN Lodge nema redovnu uslugu ručka. Ponta do Ouro ima brojne kafiće, barove na plaži i restorane na pješačkoj udaljenosti od lodgea. Rado ćemo predložiti mjesta ovisno o tome <strong>što je trenutno otvoreno i što biste željeli jesti</strong> — samo pitajte nas ili Marin."
+    },
+    "faq": {
+      "title": "Česta pitanja",
+      "q1": "Je li doručak uključen?",
+      "a1": "Da. Doručak je uključen u cijenu smještaja za sve boravke.",
+      "q2": "U koliko se sati poslužuje doručak?",
+      "a2": "Doručak se obično poslužuje od 08:30 do 11:00. Ranije ili kasnije posluživanje često se može dogovoriti uz prethodnu najavu — primjerice za rano ronjenje ili plivanje s dupinima.",
+      "q3": "Mogu li večerati u lodgeu?",
+      "a3": "Da. Gosti lodgea mogu naručiti večeru iz našeg restorana. Molimo naručite unaprijed, najkasnije do 20:00. Kuhinja se zatvara u 21:00.",
+      "q4": "Je li kuhinja otvorena vanjskim posjetiteljima?",
+      "a4": "Ne. Naša usluga objeda rezervirana je za goste koji borave u DEVOCEAN Lodgeu.",
+      "q5": "Poslužujete li ručak?",
+      "a5": "Ne nudimo redovnu uslugu ručka. Rado ćemo predložiti obližnje kafiće i restorane ovisno o tome što je trenutno otvoreno i što biste željeli jesti.",
+      "q6": "Možete li udovoljiti prehrambenim potrebama?",
+      "a6": "Često da. Molimo javite nam unaprijed kako bismo potvrdili što se može pripremiti od lokalno dostupnih namirnica. Naša je kuhinja mala i opskrba varira, ali uvijek ćemo biti iskreni o tome što možemo osigurati."
+    },
+    "guides": {
+      "title": "Još korisnih vodiča",
+      "link1": "Sav smještaj u DEVOCEAN Lodgeu",
+      "link2": "Kako doći do Ponta do Ouro",
+      "link3": "Posjet bez 4×4",
+      "link4": "Turistički vodič za Ponta do Ouro"
+    },
+    "cta": {
+      "title": "Boravak s uključenim doručkom",
+      "text": "Provjerite aktualne cijene, dostupnost i mogućnosti smještaja izravno na našoj web stranici. Doručak je uključen u svaki boravak.",
+      "check": "Provjeri dostupnost →",
+      "view": "Pogledaj smještaj",
+      "ask": "Pitanja o obrocima ili prehrani? Pitajte Marin"
+    }
+  },
+  "ro": {
+    "hero": {
+      "eyebrow": "Mâncare și mese · DEVOCEAN Lodge",
+      "title": "Mic dejun inclus.<br/><span>Cină pregătită la cerere.</span>",
+      "lead": "Fiecare ședere la DEVOCEAN Lodge include micul dejun, servit în grădina noastră tropicală. Seara, oaspeții cazați pot precomanda o cină proaspăt pregătită din restaurantul nostru propriu."
+    },
+    "facts": {
+      "included": "Mic dejun inclus",
+      "served": "Servit 08:30–11:00",
+      "flexible": "Mai devreme sau mai târziu, la cerere",
+      "dinner": "Cină la precomandă",
+      "residents": "Doar pentru oaspeții cazați"
+    },
+    "breakfast": {
+      "title": "Mic dejun în grădină",
+      "badge": "Inclus",
+      "p1": "Micul dejun este <strong>inclus în tariful de cazare</strong> și se servește de regulă între 08:30 și 11:00 în grădina tropicală.",
+      "p2": "Oaspeții pot alege din meniul nostru de mic dejun, cu opțiuni gătite și mai ușoare. Pâine portugheză proaspătă se servește zilnic, alături de cafea, ceai sau ciocolată caldă.",
+      "boxTitle": "Scufundare matinală sau înot cu delfinii?",
+      "boxText": "Dacă aveți o plecare devreme, o scufundare, un înot cu delfinii sau altă activitate de dimineață, vă rugăm să ne anunțați din timp. <strong>Un mic dejun mai devreme sau mai târziu poate fi de obicei aranjat</strong>."
+    },
+    "dinner": {
+      "title": "Cina la DEVOCEAN",
+      "badge": "Precomandă",
+      "p1": "Restaurantul nostru pregătește cina <strong>exclusiv pentru oaspeții cazați la lodge</strong>. Mesele sunt pregătite la comandă din ingrediente cumpărate proaspete în fiecare zi, așa că opțiunile disponibile pot varia.",
+      "p2": "Vă rugăm să comandați din timp — de preferat mai devreme în cursul zilei. <strong>Ora limită pentru comanda cinei este 20:00</strong>, iar bucătăria se închide la 21:00.",
+      "p3": "Pentru că gătim exact pentru oaspeții care comandă, ne putem concentra pe prospețime și calitate, evitând risipa inutilă de alimente.",
+      "orderTitle": "Cum comandați",
+      "order1": "Spuneți-ne alegerea pentru cină în cursul zilei",
+      "order2": "Ora limită de comandă: 20:00",
+      "order3": "Bucătăria se închide: 21:00",
+      "order4": "Opțiunile pot varia în funcție de disponibilitatea zilnică din piață",
+      "order5": "Pregătit proaspăt la comandă — fără meniu fix",
+      "residentsTitle": "Doar pentru oaspeții cazați",
+      "residentsText": "Serviciul de cină este rezervat oaspeților cazați la DEVOCEAN Lodge. Nu oferim bucătăria vizitatorilor din afară. Astfel ne putem concentra pe deplin pe prospețime și calitate pentru oaspeții noștri."
+    },
+    "drinks": {
+      "title": "Băuturi și facilități pentru oaspeți",
+      "intro": "Pe toată durata șederii, toți oaspeții au la dispoziție:",
+      "hotTitle": "Băuturi calde",
+      "hotText": "Cafea, ceai și ciocolată caldă sunt disponibile la lodge pe tot parcursul zilei.",
+      "sharedTitle": "Facilități comune",
+      "shared1": "Frigider comun pentru oaspeți",
+      "shared2": "Fântână cu apă filtrată — reumpleți-vă sticla oricând",
+      "shared3": "Bar pe încredere cu o selecție de băuturi reci"
+    },
+    "dietary": {
+      "title": "Cerințe alimentare",
+      "p1": "Vă rugăm să ne spuneți despre orice <strong>cerințe vegetariene, vegane sau alte cerințe alimentare</strong> înainte de sosire, sau cât mai devreme în timpul șederii. Bucătăria noastră este mică și aprovizionarea locală variază, dar vă vom explica întotdeauna sincer ce putem pregăti.",
+      "p2": "Cu cât știm mai devreme, cu atât putem planifica mai bine în funcție de ce este disponibil local în ziua respectivă."
+    },
+    "lunch": {
+      "title": "Prânz",
+      "p1": "DEVOCEAN Lodge nu oferă un serviciu regulat de prânz. Ponta do Ouro are numeroase cafenele, baruri de plajă și restaurante la distanță de mers pe jos de lodge. Vă recomandăm cu plăcere locuri în funcție de <strong>ce este deschis în acel moment și ce ați dori să mâncați</strong> — întrebați-ne pe noi sau pe Marin."
+    },
+    "faq": {
+      "title": "Întrebări frecvente",
+      "q1": "Micul dejun este inclus?",
+      "a1": "Da. Micul dejun este inclus în tariful de cazare pentru toate șederile.",
+      "q2": "La ce oră se servește micul dejun?",
+      "a2": "Micul dejun se servește de regulă între 08:30 și 11:00. Servirea mai devreme sau mai târziu poate fi adesea aranjată la cerere prealabilă — de exemplu pentru o scufundare matinală sau un înot cu delfinii.",
+      "q3": "Pot lua cina la lodge?",
+      "a3": "Da. Oaspeții cazați pot comanda cina de la restaurantul nostru. Vă rugăm să comandați din timp, cel târziu până la 20:00. Bucătăria se închide la 21:00.",
+      "q4": "Bucătăria este deschisă vizitatorilor din afară?",
+      "a4": "Nu. Serviciul nostru de masă este rezervat oaspeților cazați la DEVOCEAN Lodge.",
+      "q5": "Serviți prânz?",
+      "a5": "Nu oferim un serviciu regulat de prânz. Vă recomandăm cu plăcere cafenele și restaurante din apropiere în funcție de ce este deschis și ce ați dori să mâncați.",
+      "q6": "Puteți acomoda cerințe alimentare?",
+      "a6": "Adesea, da. Vă rugăm să ne anunțați din timp pentru a confirma ce se poate pregăti din ingredientele disponibile local. Bucătăria noastră este mică și aprovizionarea variază, dar vom fi întotdeauna sinceri cu privire la ce putem pregăti."
+    },
+    "guides": {
+      "title": "Alte ghiduri utile",
+      "link1": "Toate opțiunile de cazare la DEVOCEAN Lodge",
+      "link2": "Cum ajungeți la Ponta do Ouro",
+      "link3": "Vizită fără 4×4",
+      "link4": "Ghid de călătorie Ponta do Ouro"
+    },
+    "cta": {
+      "title": "Ședere cu mic dejun inclus",
+      "text": "Verificați tarifele actuale, disponibilitatea și opțiunile de cazare direct pe site-ul nostru. Micul dejun este inclus în fiecare ședere.",
+      "check": "Verifică disponibilitatea →",
+      "view": "Vezi cazarea",
+      "ask": "Întrebări despre mese sau diete? Întrebați-o pe Marin"
+    }
+  },
+  "sr": {
+    "hero": {
+      "eyebrow": "Hrana i obroci · DEVOCEAN Lodge",
+      "title": "Doručak uključen.<br/><span>Večera pripremljena na zahtev.</span>",
+      "lead": "Svaki boravak u DEVOCEAN Lodge-u uključuje doručak, poslužen u našoj tropskoj bašti. Uveče gosti lodge-a mogu unapred naručiti sveže pripremljenu večeru iz našeg restorana."
+    },
+    "facts": {
+      "included": "Doručak uključen",
+      "served": "Služi se 08:30–11:00",
+      "flexible": "Ranije ili kasnije po dogovoru",
+      "dinner": "Večera uz prethodnu narudžbinu",
+      "residents": "Samo za goste lodge-a"
+    },
+    "breakfast": {
+      "title": "Doručak u bašti",
+      "badge": "Uključeno",
+      "p1": "Doručak je <strong>uključen u cenu smeštaja</strong> i obično se služi između 08:30 i 11:00 u tropskoj bašti.",
+      "p2": "Gosti mogu birati sa našeg menija za doručak, sa kuvanim i lakšim opcijama. Svež portugalski hleb služi se svakodnevno, uz kafu, čaj ili toplu čokoladu.",
+      "boxTitle": "Rano ronjenje ili plivanje sa delfinima?",
+      "boxText": "Ako imate rani polazak, ronjenje, plivanje sa delfinima ili drugu jutarnju aktivnost, javite nam unapred. <strong>Raniji ili kasniji doručak obično može da se dogovori</strong>."
+    },
+    "dinner": {
+      "title": "Večera u DEVOCEAN-u",
+      "badge": "Prethodna narudžbina",
+      "p1": "Naš restoran priprema večeru <strong>isključivo za goste koji borave u lodge-u</strong>. Jela se pripremaju po narudžbini od namirnica kupljenih svežih svakog dana, pa se dostupan izbor može menjati.",
+      "p2": "Molimo naručite unapred — po mogućstvu ranije tokom dana. <strong>Najkasnije vreme za narudžbinu večere je 20:00</strong>, a kuhinja se zatvara u 21:00.",
+      "p3": "Pošto kuvamo upravo za goste koji naruče, možemo da se posvetimo svežini i kvalitetu i izbegnemo nepotrebno bacanje hrane.",
+      "orderTitle": "Kako naručiti",
+      "order1": "Javite nam svoj izbor večere tokom dana",
+      "order2": "Najkasnija narudžbina: 20:00",
+      "order3": "Kuhinja se zatvara: 21:00",
+      "order4": "Izbor se menja u zavisnosti od dnevne ponude na pijaci",
+      "order5": "Pripremljeno sveže po narudžbini — bez fiksnog menija",
+      "residentsTitle": "Samo za goste lodge-a",
+      "residentsText": "Večera je rezervisana za goste koji borave u DEVOCEAN Lodge-u. Kuhinju ne nudimo spoljnim posetiocima. To nam omogućava potpunu posvećenost svežini i kvalitetu za naše goste."
+    },
+    "drinks": {
+      "title": "Pića i sadržaji za goste",
+      "intro": "Tokom boravka svim gostima je dostupno sledeće:",
+      "hotTitle": "Topli napici",
+      "hotText": "Kafa, čaj i topla čokolada dostupni su u lodge-u tokom celog dana.",
+      "sharedTitle": "Zajednički sadržaji",
+      "shared1": "Zajednički frižider za goste",
+      "shared2": "Česma sa filtriranom vodom — dopunite flašu u bilo koje vreme",
+      "shared3": "Bar na poverenje sa izborom hladnih pića"
+    },
+    "dietary": {
+      "title": "Ishrana i posebni zahtevi",
+      "p1": "Molimo recite nam za <strong>vegetarijanske, veganske ili druge zahteve u ishrani</strong> pre dolaska, ili što ranije tokom boravka. Naša kuhinja je mala i lokalno snabdevanje varira, ali ćemo uvek iskreno objasniti šta možemo da obezbedimo.",
+      "p2": "Što ranije znamo, to bolje možemo da planiramo prema onome što je tog dana lokalno dostupno."
+    },
+    "lunch": {
+      "title": "Ručak",
+      "p1": "DEVOCEAN Lodge nema redovnu uslugu ručka. Ponta do Ouro ima brojne kafiće, barove na plaži i restorane na pešačkoj udaljenosti od lodge-a. Rado ćemo predložiti mesta u zavisnosti od toga <strong>šta je trenutno otvoreno i šta biste želeli da jedete</strong> — samo pitajte nas ili Marin."
+    },
+    "faq": {
+      "title": "Česta pitanja",
+      "q1": "Da li je doručak uključen?",
+      "a1": "Da. Doručak je uključen u cenu smeštaja za sve boravke.",
+      "q2": "U koliko sati se služi doručak?",
+      "a2": "Doručak se obično služi od 08:30 do 11:00. Ranije ili kasnije služenje često može da se dogovori uz prethodnu najavu — na primer za rano ronjenje ili plivanje sa delfinima.",
+      "q3": "Mogu li da večeram u lodge-u?",
+      "a3": "Da. Gosti lodge-a mogu naručiti večeru iz našeg restorana. Molimo naručite unapred, najkasnije do 20:00. Kuhinja se zatvara u 21:00.",
+      "q4": "Da li je kuhinja otvorena spoljnim posetiocima?",
+      "a4": "Ne. Naša usluga obroka rezervisana je za goste koji borave u DEVOCEAN Lodge-u.",
+      "q5": "Da li služite ručak?",
+      "a5": "Ne nudimo redovnu uslugu ručka. Rado ćemo predložiti obližnje kafiće i restorane u zavisnosti od toga šta je trenutno otvoreno i šta biste želeli da jedete.",
+      "q6": "Možete li da izađete u susret zahtevima u ishrani?",
+      "a6": "Često da. Molimo javite nam unapred kako bismo potvrdili šta može da se pripremi od lokalno dostupnih namirnica. Naša kuhinja je mala i snabdevanje varira, ali ćemo uvek biti iskreni o tome šta možemo da obezbedimo."
+    },
+    "guides": {
+      "title": "Još korisnih vodiča",
+      "link1": "Sav smeštaj u DEVOCEAN Lodge-u",
+      "link2": "Kako doći do Ponta do Ouro",
+      "link3": "Poseta bez 4×4",
+      "link4": "Turistički vodič za Ponta do Ouro"
+    },
+    "cta": {
+      "title": "Boravak sa uključenim doručkom",
+      "text": "Proverite aktuelne cene, dostupnost i opcije smeštaja direktno na našem sajtu. Doručak je uključen u svaki boravak.",
+      "check": "Proveri dostupnost →",
+      "view": "Pogledaj smeštaj",
+      "ask": "Pitanja o obrocima ili ishrani? Pitajte Marin"
+    }
+  },
+  "tr": {
+    "hero": {
+      "eyebrow": "Yeme & İçme · DEVOCEAN Lodge",
+      "title": "Kahvaltı dahil.<br/><span>Akşam yemeği talep üzerine hazırlanır.</span>",
+      "lead": "DEVOCEAN Lodge'daki her konaklamaya, tropikal bahçemizde servis edilen kahvaltı dahildir. Akşamları, konaklayan misafirler kendi restoranımızdan taze hazırlanan akşam yemeğini önceden sipariş edebilir."
+    },
+    "facts": {
+      "included": "Kahvaltı dahil",
+      "served": "08:30–11:00 arası servis",
+      "flexible": "Anlaşmayla daha erken veya geç",
+      "dinner": "Akşam yemeği ön siparişle",
+      "residents": "Yalnızca konaklayan misafirler"
+    },
+    "breakfast": {
+      "title": "Bahçede Kahvaltı",
+      "badge": "Dahil",
+      "p1": "Kahvaltı <strong>konaklama ücretine dahildir</strong> ve genellikle 08:30 ile 11:00 arasında tropikal bahçede servis edilir.",
+      "p2": "Misafirler, hem pişmiş hem de daha hafif seçenekler sunan kahvaltı menümüzden seçim yapabilir. Taze Portekiz ekmeği her gün kahve, çay veya sıcak çikolata eşliğinde servis edilir.",
+      "boxTitle": "Erken dalış veya yunuslarla yüzme mi?",
+      "boxText": "Erken bir kalkışınız, dalış turunuz, yunuslarla yüzme veya başka bir sabah aktiviteniz varsa, lütfen önceden bize bildirin. <strong>Daha erken veya daha geç kahvaltı genellikle ayarlanabilir</strong>."
+    },
+    "dinner": {
+      "title": "DEVOCEAN'da Akşam Yemeği",
+      "badge": "Ön sipariş",
+      "p1": "Restoranımız akşam yemeğini <strong>yalnızca lodge'da konaklayan misafirler için</strong> hazırlar. Yemekler her gün taze alınan malzemelerle sipariş üzerine hazırlanır, bu nedenle mevcut seçenekler değişebilir.",
+      "p2": "Lütfen önceden sipariş verin — tercihen gün içinde erken saatlerde. <strong>Akşam yemeği siparişi için en geç saat 20:00</strong>, mutfak ise 21:00'de kapanır.",
+      "p3": "Yalnızca sipariş veren misafirler için pişirdiğimizden, tazeliğe ve kaliteye odaklanabilir, gereksiz gıda israfından kaçınabiliriz.",
+      "orderTitle": "Nasıl sipariş verilir",
+      "order1": "Gün içinde akşam yemeği tercihinizi bize bildirin",
+      "order2": "En geç sipariş saati: 20:00",
+      "order3": "Mutfak kapanışı: 21:00",
+      "order4": "Seçenekler günlük pazar durumuna göre değişebilir",
+      "order5": "Sipariş üzerine taze hazırlanır — sabit menü yok",
+      "residentsTitle": "Yalnızca konaklayan misafirler",
+      "residentsText": "Akşam yemeği servisi DEVOCEAN Lodge'da konaklayan misafirlere ayrılmıştır. Mutfağımızı dışarıdan gelen ziyaretçilere sunmuyoruz. Bu sayede tamamen misafirlerimiz için tazeliğe ve kaliteye odaklanabiliyoruz."
+    },
+    "drinks": {
+      "title": "İçecekler ve Misafir Olanakları",
+      "intro": "Konaklamanız boyunca tüm misafirlerin kullanımına açıktır:",
+      "hotTitle": "Sıcak içecekler",
+      "hotText": "Kahve, çay ve sıcak çikolata gün boyu lodge'da mevcuttur.",
+      "sharedTitle": "Ortak olanaklar",
+      "shared1": "Misafir kullanımına açık ortak buzdolabı",
+      "shared2": "Filtrelenmiş su çeşmesi — şişenizi istediğiniz zaman doldurun",
+      "shared3": "Soğuk içecek seçenekleriyle güven barı (honesty bar)"
+    },
+    "dietary": {
+      "title": "Beslenme Gereksinimleri",
+      "p1": "Lütfen <strong>vejetaryen, vegan veya diğer beslenme gereksinimlerinizi</strong> varıştan önce veya konaklamanız sırasında mümkün olan en erken zamanda bize bildirin. Mutfağımız küçüktür ve yerel tedarik değişkendir, ancak neyi sağlayabileceğimizi her zaman dürüstçe açıklarız.",
+      "p2": "Ne kadar erken bilirsek, o gün yerel olarak mevcut olana göre o kadar iyi plan yapabiliriz."
+    },
+    "lunch": {
+      "title": "Öğle Yemeği",
+      "p1": "DEVOCEAN Lodge düzenli öğle yemeği servisi sunmaz. Ponta do Ouro'da lodge'a yürüme mesafesinde çok sayıda kafe, plaj barı ve restoran vardır. <strong>O an açık olanlara ve ne yemek istediğinize</strong> göre size memnuniyetle yer öneririz — bize veya Marin'e sormanız yeterli."
+    },
+    "faq": {
+      "title": "Sıkça Sorulan Sorular",
+      "q1": "Kahvaltı dahil mi?",
+      "a1": "Evet. Kahvaltı tüm konaklamalarda konaklama ücretine dahildir.",
+      "q2": "Kahvaltı saat kaçta servis ediliyor?",
+      "a2": "Kahvaltı genellikle 08:30'dan 11:00'e kadar servis edilir. Önceden talep edildiğinde daha erken veya daha geç servis çoğunlukla ayarlanabilir — örneğin erken bir dalış veya yunuslarla yüzme kalkışı için.",
+      "q3": "Lodge'da akşam yemeği yiyebilir miyim?",
+      "a3": "Evet. Konaklayan misafirler restoranımızdan akşam yemeği sipariş edebilir. Lütfen önceden ve en geç 20:00'ye kadar sipariş verin. Mutfak 21:00'de kapanır.",
+      "q4": "Mutfak dışarıdan ziyaretçilere açık mı?",
+      "a4": "Hayır. Yemek servisimiz DEVOCEAN Lodge'da konaklayan misafirlere ayrılmıştır.",
+      "q5": "Öğle yemeği servisi var mı?",
+      "a5": "Düzenli öğle yemeği servisi sunmuyoruz. O an açık olanlara ve ne yemek istediğinize göre yakındaki kafe ve restoranları memnuniyetle öneririz.",
+      "q6": "Beslenme gereksinimlerini karşılayabiliyor musunuz?",
+      "a6": "Çoğu zaman evet. Yerel olarak mevcut malzemelerle neyin hazırlanabileceğini doğrulayabilmemiz için lütfen önceden bize bildirin. Mutfağımız küçüktür ve tedarik değişkendir, ancak neyi sağlayabileceğimiz konusunda her zaman dürüst oluruz."
+    },
+    "guides": {
+      "title": "Daha Fazla Faydalı Rehber",
+      "link1": "DEVOCEAN Lodge'daki tüm konaklamalar",
+      "link2": "Ponta do Ouro'ya ulaşım",
+      "link3": "4×4 olmadan ziyaret",
+      "link4": "Ponta do Ouro seyahat rehberi"
+    },
+    "cta": {
+      "title": "Kahvaltı Dahil Konaklama",
+      "text": "Güncel fiyatları, müsaitliği ve konaklama seçeneklerini doğrudan web sitemizden kontrol edin. Kahvaltı her konaklamaya dahildir.",
+      "check": "Müsaitliği Kontrol Et →",
+      "view": "Konaklamaları Görüntüle",
+      "ask": "Yemekler veya beslenme hakkında sorular mı var? Marin'e sorun"
+    }
   }
 }
