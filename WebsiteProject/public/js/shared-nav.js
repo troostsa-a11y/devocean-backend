@@ -57,9 +57,31 @@
   // ── current lang / region ─────────────────────────────────────────────
   var params = new URLSearchParams(window.location.search);
   var lang   = params.get('lang') || 'en-GB';
-  var region = 'westEu';
-  for (var k in REGIONS) {
-    if (REGIONS[k].langs.indexOf(lang) !== -1) { region = k; break; }
+
+  // Prefer the stored region (same key the SPA uses) when it supports the
+  // current language — deriving region from lang alone flips e.g. Asia back
+  // to Western Europe because both contain en-GB.
+  function readStoredRegion() {
+    try {
+      var r = window.localStorage.getItem('site.region');
+      if (r && REGIONS[r] && REGIONS[r].langs.indexOf(lang) !== -1) return r;
+    } catch (e) { /* private mode / blocked storage */ }
+    return null;
+  }
+  var region = readStoredRegion();
+  if (!region) {
+    region = 'westEu';
+    for (var k in REGIONS) {
+      if (REGIONS[k].langs.indexOf(lang) !== -1) { region = k; break; }
+    }
+  }
+
+  function storeRegion(r) {
+    try {
+      window.localStorage.setItem('site.region', r);
+      window.localStorage.setItem('site.region.version', '3');
+      window.localStorage.setItem('site.region.source', 'user');
+    } catch (e) { /* ignore */ }
   }
 
   // ── helpers ───────────────────────────────────────────────────────────
@@ -239,6 +261,7 @@
   document.getElementById('sn-region').addEventListener('change', function () {
     var r    = this.value;
     var avail = REGIONS[r].langs;
+    storeRegion(r);
     setLang(avail.indexOf(lang) !== -1 ? lang : avail[0]);
   });
 
