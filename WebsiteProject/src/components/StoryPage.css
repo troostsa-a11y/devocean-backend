@@ -22,7 +22,9 @@
 
 .story-page .dl-hero-icon {
   position: absolute;
-  left: -130px;
+  /* Fully outside the 800px text column — long titles (pl, cs, …) must never
+     run through the icon. Below 1280px there isn't room, so it stacks. */
+  left: -230px;
   top: 20px;
   width: 210px;
   height: 210px;
@@ -30,7 +32,7 @@
   filter: drop-shadow(0 3px 12px rgba(0,0,0,0.15));
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1279px) {
   .story-page .dl-hero-icon {
     position: static;
     margin: 0 auto 1.5rem;
