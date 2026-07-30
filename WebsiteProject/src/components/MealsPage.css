@@ -2,6 +2,7 @@
 .meals-page {
   background-color: #fffaf6;
   min-height: 100vh;
+  padding-top: var(--stack-h);
 }
 
 .meals-page .wrap {

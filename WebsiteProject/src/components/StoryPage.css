@@ -2,6 +2,7 @@
 .story-page {
   background-color: #fafafa;
   min-height: 100vh;
+  padding-top: var(--stack-h);
 }
 
 .story-page .dl-wrap {
