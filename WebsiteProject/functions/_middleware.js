@@ -383,6 +383,15 @@ const ROUTE_META = {
     staticHtml: '<div id="static-content" aria-hidden="true"></div><!-- /static-content -->',
   },
 
+  '/admin': {
+    title: 'Admin | DEVOCEAN Lodge',
+    description: 'DEVOCEAN Lodge admin area.',
+    ogTitle: 'Admin | DEVOCEAN Lodge',
+    ogDescription: 'DEVOCEAN Lodge admin area.',
+    noindex: true,
+    staticHtml: '<div id="static-content" aria-hidden="true"></div><!-- /static-content -->',
+  },
+
   '/story': {
     title: 'Our Story | DEVOCEAN Lodge',
     description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
