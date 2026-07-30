@@ -365,6 +365,24 @@ const ROUTE_META = {
 </div><!-- /static-content -->`,
   },
 
+  '/booking-confirmed': {
+    title: 'Booking Confirmed | DEVOCEAN Lodge',
+    description: 'Your booking at DEVOCEAN Lodge, Ponta do Ouro is confirmed.',
+    ogTitle: 'Booking Confirmed | DEVOCEAN Lodge',
+    ogDescription: 'Your booking at DEVOCEAN Lodge, Ponta do Ouro is confirmed.',
+    noindex: true,
+    staticHtml: '<div id="static-content" aria-hidden="true"></div><!-- /static-content -->',
+  },
+
+  '/gift-confirmed': {
+    title: 'Gift Voucher Purchase Confirmed | DEVOCEAN Lodge',
+    description: 'Your DEVOCEAN Lodge gift voucher purchase is confirmed.',
+    ogTitle: 'Gift Voucher Purchase Confirmed | DEVOCEAN Lodge',
+    ogDescription: 'Your DEVOCEAN Lodge gift voucher purchase is confirmed.',
+    noindex: true,
+    staticHtml: '<div id="static-content" aria-hidden="true"></div><!-- /static-content -->',
+  },
+
   '/story': {
     title: 'Our Story | DEVOCEAN Lodge',
     description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
@@ -569,6 +587,11 @@ export async function onRequest(context) {
 
         // Strip hreflang — no genuine translated variants for this route
         html = html.replace(HREFLANG_BLOCK_RE, EMPTY_HREFLANG);
+
+        // Noindex — transactional / confirmation pages should not be indexed
+        if (route.noindex) {
+          html = html.replace('</head>', '<meta name="robots" content="noindex">\n</head>');
+        }
 
       } else {
         // ── Unknown SPA route or transactional page ───────────────────────────
