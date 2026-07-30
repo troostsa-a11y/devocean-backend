@@ -392,26 +392,6 @@ const ROUTE_META = {
     staticHtml: '<div id="static-content" aria-hidden="true"></div><!-- /static-content -->',
   },
 
-  '/story': {
-    title: 'Our Story | DEVOCEAN Lodge',
-    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
-    ogTitle: 'Our Story | DEVOCEAN Lodge',
-    ogDescription: 'Family-run, community-focused and growing with purpose since 2015. Book direct to support local projects and enjoy a warm, effortless stay by the beach.',
-    staticHtml: `<div id="static-content">
-<section>
-  <h1>Adventure meets sustainability — Your stay makes a difference.</h1>
-  <p>Since 2015, DEVOCEAN Lodge has been family-run and community-focused in Ponta do Ouro, Mozambique. Book direct to support local projects and enjoy a warm, effortless stay by the beach.</p>
-  <h2>Today at DEVOCEAN Lodge</h2>
-  <p>We offer 9 unique accommodation options, blending adventure with comfort, while continually enhancing the guest experience together with our dedicated staff and the local community.</p>
-  <h2>Lake Sotiba Guest Farm</h2>
-  <p>Trusted by local leaders, we are developing a guest farm at Lake Sotiba — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.</p>
-  <h2>Your stay creates impact</h2>
-  <p>Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
-  <p><a href="/book-direct">Book your stay at DEVOCEAN Lodge.</a></p>
-</section>
-</div><!-- /static-content -->`,
-  },
-
   '/devocean-lodge-meals': {
     title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
     description: 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
