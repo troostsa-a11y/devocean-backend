@@ -202,7 +202,7 @@
     +     '<span>DEVOCEAN Lodge</span>'
     +   '</a>'
     +   '<ul class="sn-links">' + desktopItems + '</ul>'
-    +   '<div style="position:relative">'
+    +   '<div style="position:relative;margin-left:auto">'
     +     '<button id="sn-burger" class="sn-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="sn-drawer">'
     +       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>'
     +       '<span>' + t.menu + '</span>'
