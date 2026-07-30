@@ -187,6 +187,48 @@ const ROUTE_META = {
 </div><!-- /static-content -->`,
   },
 
+  '/story': {
+    title: 'Our Story | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
+    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local community impact.",
+    ogTitle: 'Our Story | DEVOCEAN Lodge',
+    ogDescription: 'Family-run eco-lodge in Ponta do Ouro since 2015. Your stay supports sustainable development, local farming, and community projects in southern Mozambique.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Adventure meets sustainability — your stay makes a difference</h1>
+  <p>DEVOCEAN Lodge has been welcoming guests to Ponta do Ouro since 2015. We are a family-run, community-focused eco-lodge with nine accommodation options, blending adventure with comfort while growing alongside our dedicated staff and the local community.</p>
+  <h2>Lake Sotiba Guest Farm</h2>
+  <p>Trusted by local leaders, we are developing a guest farm at Lake Sotiba — a hub for hands-on, sustainable practices in self-reliance and knowledge sharing.</p>
+  <h2>From our land to your plate</h2>
+  <p>Enjoy a breakfast included with every stay, and pre-order a freshly prepared dinner from our in-house kitchen. Our produce connects directly to local agriculture cooperatives.</p>
+  <h2>Your stay creates impact</h2>
+  <p>Every booking supports sustainable development and empowers the local community — bringing our vision of a flourishing, eco-conscious southern Mozambique to life.</p>
+  <p><a href="/book-direct">Book your stay at DEVOCEAN Lodge</a> · <a href="/#stay">View accommodations</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
+  '/devocean-lodge-meals': {
+    title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Dinner by Pre-Order',
+    description: 'Breakfast is included in every stay at DEVOCEAN Lodge, Ponta do Ouro. Resident guests can pre-order freshly prepared dinners from our in-house restaurant. Honesty bar and filtered water available.',
+    ogTitle: 'Meals & Dining | DEVOCEAN Lodge',
+    ogDescription: 'Breakfast included in every stay at DEVOCEAN Lodge, Ponta do Ouro. Resident guests can pre-order dinner from our in-house restaurant. Kitchen open to guests only.',
+    staticHtml: `<div id="static-content">
+<section>
+  <h1>Breakfast included. Dinner prepared for you on demand.</h1>
+  <p>Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden between 08:30 and 11:00. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house restaurant.</p>
+  <h2>Breakfast in the Garden</h2>
+  <p>Breakfast is included in your accommodation rate. Guests can choose from our breakfast menu, with both cooked and lighter options. Fresh Portuguese bread is served daily with coffee, tea or hot chocolate. If you have an early dive or dolphin swim, earlier service can usually be arranged on request.</p>
+  <h2>Dinner at DEVOCEAN</h2>
+  <p>Our kitchen prepares dinner exclusively for guests staying at the lodge. Meals are cooked fresh to order. Please order in advance — the latest time is 20:00 and the kitchen closes at 21:00. Dinner service is not available to outside visitors.</p>
+  <h2>Drinks and Guest Facilities</h2>
+  <p>Coffee, tea and hot chocolate are available throughout the day. Guests also have access to a shared refrigerator, a filtered-water fountain, and an honesty bar with cold drinks.</p>
+  <h2>Dietary Requirements</h2>
+  <p>Please advise us of any vegetarian, vegan or other dietary requirements before arrival. Our kitchen is small and local supplies vary, but we will always be honest about what we can accommodate.</p>
+  <p><a href="/book-direct">Check availability and rates</a> · <a href="/ponta-do-ouro-accommodation">View accommodation options</a></p>
+</section>
+</div><!-- /static-content -->`,
+  },
+
   '/gift-vouchers': {
     title: 'Gift Vouchers | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description: 'Give the gift of a stay at DEVOCEAN Lodge in Ponta do Ouro, Mozambique. Gift vouchers available for any accommodation type, valid for 12 months from purchase.',
