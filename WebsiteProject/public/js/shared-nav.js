@@ -171,6 +171,9 @@
     /* Burger */
     '.sn-burger{display:inline-flex;align-items:center;gap:.375rem;padding:.5rem .75rem;border-radius:.75rem;background:' + BRAND + ';color:#fff;border:none;cursor:pointer;font-size:.875rem;font-weight:600;transition:background .15s;}',
     '.sn-burger:hover{background:#8a4211;}',
+    '.sn-burger-label{display:none;}',
+    '@media(min-width:640px){.sn-burger-label{display:inline;}.sn-globe{display:block;}}',
+    '.sn-globe{display:none;}',
     /* Mobile drawer */
     '.sn-drawer{position:absolute;right:0;top:100%;margin-top:.5rem;width:256px;background:#fff;border:1px solid #e5e7eb;border-radius:.75rem;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);overflow:hidden;z-index:50;transform-origin:top right;transition:transform .2s,opacity .2s,visibility .2s;}',
     '.sn-drawer--closed{transform:scale(.95);opacity:0;pointer-events:none;visibility:hidden;}',
@@ -190,7 +193,7 @@
   var HTML = '<div class="sn-stack" id="sn-stack">'
     + '<div class="sn-topbar"><div class="sn-topbar-inner">'
     +   '<div class="sn-drops">'
-    +     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.8;flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+    +     '<svg class="sn-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.8;flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
     +     '<select id="sn-region" class="sn-sel sn-sel-region" aria-label="Select region">' + regionOptions() + '</select>'
     +     '<select id="sn-lang" class="sn-sel sn-sel-lang" aria-label="Select language">' + langOptions() + '</select>'
     +   '</div>'
@@ -205,7 +208,7 @@
     +   '<div style="position:relative;margin-left:auto">'
     +     '<button id="sn-burger" class="sn-burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="sn-drawer">'
     +       '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>'
-    +       '<span>' + t.menu + '</span>'
+    +       '<span class="sn-burger-label">' + t.menu + '</span>'
     +     '</button>'
     +     '<div id="sn-drawer" class="sn-drawer sn-drawer--closed">'
     +       drawerItems
