@@ -151,7 +151,7 @@
     '.sn-topbar{background:' + BRAND + ';color:#fff;border-bottom:1px solid #8a4211;}',
     '.sn-topbar-inner{max-width:1280px;margin:0 auto;padding:.5rem 1rem;display:flex;align-items:center;justify-content:space-between;font-size:.875rem;gap:.5rem;}',
     '.sn-drops{display:flex;align-items:center;gap:.375rem;}',
-    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem;color:#fff;font-size:.875rem;cursor:pointer;}',
+    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem .25rem .25rem;color:#fff;font-size:.875rem;cursor:pointer;}',
     '.sn-sel option{background:#fff;color:#1e293b;}',
     '.sn-sel-region{width:140px;}',
     '.sn-sel-lang{width:112px;}',
