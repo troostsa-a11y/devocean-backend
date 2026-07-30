@@ -13,7 +13,8 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
 
   // Load translations whenever lang changes
   useEffect(() => {
-    fetch('/translations/story-translations-template.json')
+    // __BUILD_ID__ is injected by Vite (define) — cache-busts after each deploy
+    fetch(`/translations/story-translations-template.json?v=${typeof __BUILD_ID__ !== 'undefined' ? __BUILD_ID__ : 'dev'}`)
       .then((r) => r.json())
       .then((data) => setT(data[lang] || data['en-GB']))
       .catch(() => {});

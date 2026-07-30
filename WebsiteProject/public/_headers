@@ -76,9 +76,10 @@
 /site.webmanifest
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
-# Translation JSON files (1 week — infrequently updated)
+# Translation files (stable URLs — must revalidate so deploys show fresh text
+# on first load; SPA fetches also append ?v=<build-id> to bust old cached copies)
 /translations/*
-  Cache-Control: public, max-age=604800, stale-while-revalidate=2592000
+  Cache-Control: public, max-age=0, must-revalidate
 
 # PDF downloads (1 day — may be updated)
 /downloads/*

@@ -4,12 +4,28 @@ import asyncCSS from './vite-plugin-async-css.js';
 import preloadEntry from './vite-plugin-preload-entry.js';
 import preloadRouteChunks from './vite-plugin-preload-route-chunks.js';
 import { rmSync, existsSync } from 'fs';
+import { execSync } from 'child_process';
 import { resolve } from 'path';
 
 // Single source of truth for the Mia voice-receptionist Render URL.
 // Change this one constant if the service URL ever moves (custom subdomain, etc.).
 // Used by injectMiaUrl() below to replace %%MIA_URL%% placeholders in index.html.
 const MIA_URL = 'https://mia-voice-receptionist.onrender.com';
+
+// Build identifier used to cache-bust runtime-fetched translation JSON files
+// (/translations/*.json have stable URLs, so browsers would otherwise keep an
+// old copy after a deploy). Injected as the __BUILD_ID__ global via `define`.
+// Prefer the git commit short hash; fall back to a timestamp.
+function computeBuildId() {
+  try {
+    return execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] })
+      .toString()
+      .trim();
+  } catch {
+    return String(Date.now());
+  }
+}
+const BUILD_ID = computeBuildId();
 
 // Replace %%MIA_URL%% placeholders in index.html with the MIA_URL constant above.
 // This runs in both dev (transformIndexHtml is called by the dev server) and build.
@@ -61,6 +77,11 @@ const moveScriptToBody = () => ({
 
 // Mobile-first config: 90% mobile traffic requires instant mobile LCP
 export default defineConfig({
+  define: {
+    // Cache-busting token appended to runtime translation JSON fetches
+    __BUILD_ID__: JSON.stringify(BUILD_ID),
+  },
+
   plugins: [
     react(),
     injectMiaUrl(), // Replace %%MIA_URL%% in index.html with the MIA_URL constant

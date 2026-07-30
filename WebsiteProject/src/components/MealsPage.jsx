@@ -14,7 +14,8 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   // Load translations whenever lang changes
   useEffect(() => {
     if (lang === 'en-GB') { setT(null); return; } // page is authored in en-GB
-    fetch('/translations/meals-translations.json')
+    // __BUILD_ID__ is injected by Vite (define) — cache-busts after each deploy
+    fetch(`/translations/meals-translations.json?v=${typeof __BUILD_ID__ !== 'undefined' ? __BUILD_ID__ : 'dev'}`)
       .then((r) => r.json())
       .then((data) => setT(data[lang] || null))
       .catch(() => {});
