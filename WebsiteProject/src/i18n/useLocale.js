@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
+import { loadTranslation } from './loadTranslation.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
 
 const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ro", "sr", "hr", "cs", "tr", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
@@ -497,7 +498,6 @@ function findRegionForLanguage(language) {
 // Now loads only the needed language file (~7KB) instead of all languages (152KB)
 async function loadTranslations(lang) {
   try {
-    const { loadTranslation } = await import('./loadTranslation.js');
     return await loadTranslation(lang);
   } catch (error) {
     console.error('Failed to load translations for:', lang, error);
