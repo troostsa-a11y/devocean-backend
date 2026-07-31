@@ -60,7 +60,7 @@ fi
 
 echo "▶ Verifying live site serves the new build (marker: $BUILD_MARKER)..."
 SMOKE_BASE="https://devoceanlodge.com"
-SMOKE_PATHS=("/" "/thankyou" "/canceled")
+SMOKE_PATHS=("/" "/story" "/book-direct")
 SMOKE_FAILED=0
 STALE_PATHS=()
 for path in "${SMOKE_PATHS[@]}"; do
