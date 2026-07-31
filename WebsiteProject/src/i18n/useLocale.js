@@ -841,11 +841,12 @@ export function useLocale() {
 
   useEffect(() => {
     document.documentElement.setAttribute("lang", lang);
-    // Clean-URL policy: canonical always points at the bare URL (no ?lang=).
-    const canonicalTag = document.querySelector('link[rel="canonical"]');
-    if (canonicalTag) {
-      canonicalTag.setAttribute('href', 'https://devoceanlodge.com/');
-    }
+    // NOTE: do NOT touch the canonical tag here. The server (Cloudflare Pages
+    // middleware) sets the correct canonical per route — including
+    // self-referencing ?lang= canonicals for hreflang language variants.
+    // Rewriting it client-side would collapse every variant back to the bare
+    // homepage URL and invalidate the hreflang cluster for Google (which
+    // indexes the rendered DOM). Page components own their own canonicals.
   }, [lang]);
 
   const setLang = (newLang) => {

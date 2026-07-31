@@ -451,7 +451,14 @@ const NOINDEX_PATHS = new Set([
 
 export async function onRequest(context) {
   try {
-    const { pathname } = new URL(context.request.url);
+    const { pathname, searchParams } = new URL(context.request.url);
+
+    // Valid ?lang= param → this request is a distinct hreflang variant.
+    // Its canonical must be SELF-referencing (canonical pointing at the bare
+    // URL would contradict hreflang and make Google ignore the whole cluster).
+    const rawLang = searchParams.get('lang') || '';
+    const langParam = HREFLANG_LANGS.some(l => l.param === rawLang) ? rawLang : null;
+    const langSuffix = langParam ? `?lang=${langParam}` : '';
 
     // Markdown Negotiation — serve llms.txt when agents request text/markdown
     // Satisfies the isitagentready.com "Markdown Negotiation" check.
@@ -520,7 +527,23 @@ export async function onRequest(context) {
     // Only applies when the SPA shell (index.html) is being served.
     // Static files (e.g. comfort.html) already have correct meta and are
     // never transformed here — they serve the correct content directly.
-    if (pathname !== '/') {
+    if (pathname === '/') {
+      // ── Homepage language variant (?lang=xx) ─────────────────────────────
+      // index.html ships canonical → bare "/" and the full hreflang block.
+      // On a valid variant URL the canonical must self-reference so the
+      // hreflang cluster stays valid (Lighthouse: "rel=canonical points to
+      // another hreflang location").
+      if (langSuffix) {
+        html = html.replace(
+          /(<link rel="canonical" href=")[^"]*(")/,
+          `$1${BASE_URL}/${langSuffix}$2`
+        );
+        html = html.replace(
+          /(<meta property="og:url" content=")[^"]*(")/,
+          `$1${BASE_URL}/${langSuffix}$2`
+        );
+      }
+    } else {
 
       const expMatch = pathname.match(/^\/experiences\/([a-z]+)$/);
       const expKey = expMatch ? expMatch[1] : null;
@@ -539,7 +562,7 @@ export async function onRequest(context) {
           );
           html = html.replace(
             /(<link rel="canonical" href=")[^"]*(")/,
-            `$1${pageUrl}$2`
+            `$1${pageUrl}${langSuffix}$2`
           );
           html = html.replace(
             /(<meta property="og:title" content=")[^"]*(")/,
@@ -551,7 +574,7 @@ export async function onRequest(context) {
           );
           html = html.replace(
             /(<meta property="og:url" content=")[^"]*(")/,
-            `$1${pageUrl}$2`
+            `$1${pageUrl}${langSuffix}$2`
           );
         }
 
