@@ -21,6 +21,16 @@ npm run build
 echo "▶ Removing dist/functions/ (source files must not reach Cloudflare as static assets)..."
 rm -rf dist/functions/
 
+# Per-deploy build marker. Injecting a unique comment into every HTML page:
+#  1. changes each file's content hash so wrangler can never "already uploaded"
+#     dedupe-skip a page (the Task 82 silent-stale-deploy failure mode), and
+#  2. gives the post-deploy smoke check below a string to verify on the live site.
+BUILD_MARKER="build-$(date -u +%Y%m%dT%H%M%SZ)-$RANDOM"
+echo "▶ Injecting build marker into HTML pages: $BUILD_MARKER"
+find dist -name '*.html' -print0 | while IFS= read -r -d '' f; do
+  printf '\n<!-- %s -->\n' "$BUILD_MARKER" >> "$f"
+done
+
 echo "▶ Setting ADMIN_API_KEY secret on Cloudflare Pages..."
 if [[ -n "$ADMIN_API_KEY" ]]; then
   echo "$ADMIN_API_KEY" | npx wrangler pages secret put ADMIN_API_KEY --project-name devocean-lodge
@@ -42,4 +52,42 @@ else
   npx wrangler pages deploy ./dist --branch main
 fi
 
-echo "✓ Done"
+if [[ "$1" == "--preview" ]]; then
+  echo "▶ Preview deploy — skipping production smoke check"
+  echo "✓ Done"
+  exit 0
+fi
+
+echo "▶ Verifying live site serves the new build (marker: $BUILD_MARKER)..."
+SMOKE_BASE="https://devoceanlodge.com"
+SMOKE_PATHS=("/" "/thankyou" "/canceled")
+SMOKE_FAILED=0
+for path in "${SMOKE_PATHS[@]}"; do
+  ok=0
+  # Edge propagation can lag a few seconds; retry briefly before failing.
+  for attempt in 1 2 3 4 5; do
+    # Accept: text/html is required: SPA routes 404 for non-HTML requests,
+    # and cache-busting query defeats any lingering edge/browser cache layer.
+    body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
+      "${SMOKE_BASE}${path}?smoke=$(date +%s)" 2>/dev/null || true)
+    if [[ "$body" == *"$BUILD_MARKER"* ]]; then
+      ok=1
+      break
+    fi
+    sleep 5
+  done
+  if [[ $ok -eq 1 ]]; then
+    echo "  ✓ ${path} serves new build"
+  else
+    echo "  ✗ ${path} is STALE — marker $BUILD_MARKER not found after retries"
+    SMOKE_FAILED=1
+  fi
+done
+
+if [[ $SMOKE_FAILED -ne 0 ]]; then
+  echo "✗ DEPLOY VERIFICATION FAILED: production is serving stale pages."
+  echo "  Wrangler may have dedupe-skipped uploads or the edge cache is stuck."
+  exit 1
+fi
+
+echo "✓ Done — live site verified on: ${SMOKE_PATHS[*]}"
