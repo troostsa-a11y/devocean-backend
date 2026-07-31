@@ -11,3 +11,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </ErrorBoundary>
   </React.StrictMode>,
 )
+
+// The #static-content SEO pre-render block (injected per-route by the CF Pages
+// middleware, visually hidden) duplicates the page's <h1> once React renders
+// its own. Rendering crawlers (Bing/Google execute JS) would otherwise see two
+// <h1> tags per page. Remove it as soon as the app has mounted — plain-HTML
+// crawlers still get the block in full from the initial response.
+document.getElementById('static-content')?.remove()
