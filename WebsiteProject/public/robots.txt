@@ -2,11 +2,9 @@
 # Updated: July 11, 2026
 
 # Content Signals (contentsignals.org / IETF draft-romm-aipref-contentsignals)
-# Also served as an HTTP response header in _middleware.js (dual placement per spec).
-# NOTE: Bing's robots.txt parser flags this as an unknown directive (1 validation
-# warning) but does NOT block crawling — verified via Bing URL Inspection. The
-# isitagentready.com agent-readiness checker requires it here to score this skill.
-Content-Signal: ai-train=no, search=yes, ai-input=yes
+# Served as an HTTP response header in _middleware.js — that is the canonical
+# delivery mechanism per spec. Not repeated here: non-standard directives in
+# robots.txt cause Bing validation errors without adding any crawl-policy value.
 
 # Allow all search engines
 User-agent: *
