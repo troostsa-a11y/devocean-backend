@@ -221,6 +221,24 @@ export function createBookingRouter(deps: {
     }
   }
 
+  // ─── Ops alert relay (deploy smoke check & other unattended failures) ─────
+  // Lets trusted scripts (e.g. WebsiteProject/deploy.sh post-deploy smoke
+  // check) send an ops email through the same alert transport used for the
+  // payment-no-booking alert, instead of failing only in a terminal.
+  router.post('/ops-alert', requireAdminKey, async (req, res) => {
+    const subject = typeof req.body?.subject === 'string' ? req.body.subject.trim() : '';
+    const rawLines = Array.isArray(req.body?.lines) ? req.body.lines : [];
+    const lines = rawLines
+      .filter((l: unknown): l is string => typeof l === 'string')
+      .map((l: string) => l.slice(0, 500))
+      .slice(0, 50);
+    if (!subject || lines.length === 0) {
+      return res.status(400).json({ error: 'subject and lines[] are required' });
+    }
+    await sendBookingAlert(subject.slice(0, 200), lines);
+    res.json({ ok: true, delivered: !!alertTransporter });
+  });
+
   // ─── Public config (deposit %, cancellation policy) ───────────────────────
   router.get('/config', requireAdminKey, (_req, res) => {
     const cfg = getBookingConfig();

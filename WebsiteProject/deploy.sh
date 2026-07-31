@@ -62,6 +62,7 @@ echo "▶ Verifying live site serves the new build (marker: $BUILD_MARKER)..."
 SMOKE_BASE="https://devoceanlodge.com"
 SMOKE_PATHS=("/" "/thankyou" "/canceled")
 SMOKE_FAILED=0
+STALE_PATHS=()
 for path in "${SMOKE_PATHS[@]}"; do
   ok=0
   # Edge propagation can lag a few seconds; retry briefly before failing.
@@ -81,12 +82,37 @@ for path in "${SMOKE_PATHS[@]}"; do
   else
     echo "  ✗ ${path} is STALE — marker $BUILD_MARKER not found after retries"
     SMOKE_FAILED=1
+    STALE_PATHS+=("$path")
   fi
 done
 
 if [[ $SMOKE_FAILED -ne 0 ]]; then
   echo "✗ DEPLOY VERIFICATION FAILED: production is serving stale pages."
   echo "  Wrangler may have dedupe-skipped uploads or the edge cache is stuck."
+
+  # Email an ops alert via the automailer's alert transport so a stale deploy
+  # is never missed even when nobody is watching this terminal. Best-effort:
+  # a failed alert must not mask the real exit-1 failure below.
+  AUTOMAILER_URL="${AUTOMAILER_URL:-https://devocean-automailer.onrender.com}"
+  if [[ -n "$ADMIN_API_KEY" ]]; then
+    echo "▶ Sending stale-deploy ops alert email..."
+    alert_lines=""
+    for path in "${STALE_PATHS[@]}"; do
+      alert_lines+="\"Stale path: ${SMOKE_BASE}${path}\","
+    done
+    alert_payload=$(printf '{"subject":"Stale deploy: devoceanlodge.com serving old build","lines":[%s"Missing build marker: %s","Deployed at: %s","Wrangler may have dedupe-skipped uploads or the edge cache is stuck.","Action: re-run deploy.sh or purge the Cloudflare cache, then verify the marker appears in view-source."]}' \
+      "$alert_lines" "$BUILD_MARKER" "$(date -u +%Y-%m-%dT%H:%M:%SZ)")
+    if curl -fsS -m 30 -X POST "${AUTOMAILER_URL}/api/booking/ops-alert" \
+      -H 'Content-Type: application/json' -H "x-admin-key: $ADMIN_API_KEY" \
+      -d "$alert_payload" >/dev/null 2>&1; then
+      echo "  ✓ Ops alert email sent"
+    else
+      echo "  ⚠ Ops alert email FAILED to send — stale deploy is only visible here"
+    fi
+  else
+    echo "  ⚠ ADMIN_API_KEY not set — cannot send stale-deploy ops alert email"
+  fi
+
   exit 1
 fi
 
