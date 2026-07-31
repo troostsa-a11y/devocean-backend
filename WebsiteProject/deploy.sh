@@ -60,13 +60,13 @@ fi
 
 echo "▶ Verifying live site serves the new build (marker: $BUILD_MARKER)..."
 SMOKE_BASE="https://devoceanlodge.com"
-SMOKE_PATHS=("/" "/story" "/book-direct")
+SMOKE_PATHS=("/" "/story" "/book-direct" "/thankyou" "/canceled")
 SMOKE_FAILED=0
 STALE_PATHS=()
 for path in "${SMOKE_PATHS[@]}"; do
   ok=0
   # Edge propagation can lag a few seconds; retry briefly before failing.
-  for attempt in 1 2 3 4 5; do
+  for attempt in 1 2 3 4 5 6 7 8 9 10; do
     # Accept: text/html is required: SPA routes 404 for non-HTML requests,
     # and cache-busting query defeats any lingering edge/browser cache layer.
     body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
@@ -75,7 +75,7 @@ for path in "${SMOKE_PATHS[@]}"; do
       ok=1
       break
     fi
-    sleep 5
+    sleep 10
   done
   if [[ $ok -eq 1 ]]; then
     echo "  ✓ ${path} serves new build"
