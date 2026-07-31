@@ -1423,7 +1423,79 @@
     .ti-popup-widget.active { 
       top: 112px !important; 
     }
+
+    /* Floating-certificate popup: constrain to viewport so the close button is
+       always reachable on small screens regardless of popup height.
+       Applied via JS below; the class is set on the popup's inner container. */
+    .ti-cert-popup-constrained {
+      max-height: calc(100svh - 130px) !important;
+      overflow-y: auto        !important;
+      /* Scrollbar always visible so users know they can scroll up to the X */
+      overscroll-behavior: contain;
+    }
   </style>
+
+  <script>
+    /* Trustindex cert-popup viewport fix.
+       When the floating "Entreprise de Confiance" badge is tapped, Trustindex
+       adds `ti-modal-opened` to <body> and `ti-active` to the popup container.
+       On small screens the popup can be taller than the viewport and the close
+       button (at the top of the popup) becomes unreachable.
+       This observer fires on every ti-active toggle, caps the popup height to
+       the available viewport height and scrolls it to the top so the X is the
+       first thing the user sees. */
+    (function () {
+      function fixCertPopup() {
+        // The cert popup widget is the one that became ti-active AND is not the
+        // bottom floating badge launcher itself (which is always visible).
+        var popups = document.querySelectorAll('[data-trustindex-widget].ti-active');
+        popups.forEach(function (el) {
+          el.classList.add('ti-cert-popup-constrained');
+          // Scroll to the top of the popup so the close button is visible.
+          el.scrollTop = 0;
+          // Also ensure it doesn't start above the fixed header.
+          var rect = el.getBoundingClientRect();
+          var headerH = 112; // matches the existing .ti-popup-widget.active fix
+          if (rect.top < headerH) {
+            el.style.top = headerH + 'px';
+            el.style.bottom = 'auto';
+          }
+        });
+      }
+
+      var observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (m) {
+          if (m.type === 'attributes' && m.attributeName === 'class') {
+            var el = m.target;
+            if (el.classList && el.classList.contains('ti-active')) {
+              // Small delay lets Trustindex finish positioning before we adjust.
+              setTimeout(fixCertPopup, 50);
+            }
+          }
+          if (m.type === 'childList') {
+            m.addedNodes.forEach(function (n) {
+              if (n.nodeType === 1 && n.getAttribute &&
+                  n.getAttribute('data-trustindex-widget') !== null) {
+                // Watch newly injected cert widgets for class changes.
+                observer.observe(n, { attributes: true, attributeFilter: ['class'] });
+              }
+            });
+          }
+        });
+      });
+
+      // Observe the whole document for Trustindex widget insertions and the body
+      // for the ti-modal-opened class (belt-and-suspenders for late-loaded scripts).
+      document.addEventListener('DOMContentLoaded', function () {
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['class'],
+        });
+      });
+    })();
+  </script>
 
   <!-- Strip Trustindex schema injection: the floating-cert script injects an
        Organization block (with wrong addressLocality) and a competing
