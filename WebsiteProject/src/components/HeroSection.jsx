@@ -22,13 +22,9 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
 
   const list = Array.isArray(images) ? images.filter(Boolean) : [];
 
-  const buildUrl = (path, hash = '') => {
-    const params = new URLSearchParams();
-    if (lang) params.set('lang', lang);
-    if (currency) params.set('currency', currency);
-    const queryString = params.toString();
-    return queryString ? `${path}?${queryString}${hash}` : `${path}${hash}`;
-  };
+  // Clean-URL policy: internal links are bare — language/currency come from
+  // the stored preferences (site.lang / site.currency), never from the URL.
+  const buildUrl = (path, hash = '') => `${path}${hash}`;
 
   // Helper: mount new slide indices only when genuinely adding — guards prevent
   // setMountedIndices from being called (and triggering a re-render) when the

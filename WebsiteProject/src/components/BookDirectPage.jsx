@@ -1903,7 +1903,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         <>
                           {before}
                           <a
-                            href={`https://devoceanlodge.com/legal/terms?lang=${encodeURIComponent(lang)}&newtab=1`}
+                            href={'https://devoceanlodge.com/legal/terms?newtab=1'}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="font-medium text-[#9e4b13] underline hover:text-[#854011]"

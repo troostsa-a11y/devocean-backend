@@ -1,6 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <script>
+  /* Clean-URL policy: honor ?lang= on arrival — persist it under the shared
+     site.lang key, then strip it from the address bar (history.replaceState).
+     Internal links are bare; language flows through localStorage. */
+  (function () {
+    try {
+      var qs = new URLSearchParams(window.location.search);
+      var raw = qs.get('lang');
+      if (raw === null) return;
+      var FULL = {en:'en-GB','en-us':'en-US','en-gb':'en-GB',pt:'pt-PT','pt-pt':'pt-PT','pt-br':'pt-BR',
+        nl:'nl-NL','nl-nl':'nl-NL',fr:'fr-FR','fr-fr':'fr-FR',it:'it-IT','it-it':'it-IT',de:'de-DE','de-de':'de-DE',
+        es:'es-ES','es-es':'es-ES',ja:'ja-JP','ja-jp':'ja-JP',zh:'zh-CN','zh-cn':'zh-CN',af:'af-ZA','af-za':'af-ZA',
+        sv:'sv',pl:'pl',ro:'ro',sr:'sr',hr:'hr',cs:'cs',tr:'tr',ru:'ru',zu:'zu',sw:'sw'};
+      var norm = FULL[String(raw).toLowerCase()] || null;
+      if (norm) {
+        try {
+          window.localStorage.setItem('site.lang', norm);
+          window.localStorage.setItem('site.lang_source', 'url');
+        } catch (e) { /* storage unavailable */ }
+      }
+      qs.delete('lang');
+      var clean = qs.toString();
+      window.history.replaceState(window.history.state, '',
+        window.location.pathname + (clean ? '?' + clean : '') + window.location.hash);
+    } catch (e) { /* ignore */ }
+  })();
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#9e4b13" />

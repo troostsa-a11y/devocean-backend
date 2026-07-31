@@ -144,7 +144,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a
-              href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : '#home'}
+              href={(isExperiencePage || isStandalonePage) ? '/#home' : '#home'}
               className="flex items-center gap-3 text-slate-800"
               onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#home')}
               data-testid="link-home-logo"
@@ -165,7 +165,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             {/* Home */}
             <li>
               <a
-                href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : '#home'}
+                href={(isExperiencePage || isStandalonePage) ? '/#home' : '#home'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
                 onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#home')}
               >
@@ -176,7 +176,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             {/* Our Story */}
             <li>
               <a
-                href={`/story?lang=${lang}`}
+                href={'/story'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
               >
                 {ui.stay?.ourStory || "Our Story"}
@@ -186,7 +186,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             {/* Stay */}
             <li>
               <a
-                href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#stay` : '#stay'}
+                href={(isExperiencePage || isStandalonePage) ? '/#stay' : '#stay'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
                 onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#stay')}
               >
@@ -197,7 +197,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             {/* Food */}
             <li>
               <a
-                href={`/devocean-lodge-meals?lang=${lang}`}
+                href={'/devocean-lodge-meals'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
               >
                 {ui.nav?.food || "Food"}
@@ -213,7 +213,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             ].map(([k, href]) => (
               <li key={k}>
                 <a
-                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
+                  href={(isExperiencePage || isStandalonePage) ? `/${href}` : href}
                   className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
                   onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, href)}
                 >
@@ -253,7 +253,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             >
               {/* Home */}
               <a
-                href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : "#home"}
+                href={(isExperiencePage || isStandalonePage) ? '/#home' : "#home"}
                 data-testid="link-mobile-home"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                 onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#home")}
@@ -264,7 +264,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
               {/* Our Story */}
               <a
-                href={`/story?lang=${lang}`}
+                href={'/story'}
                 data-testid="link-mobile-story"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                 onClick={() => setMenuOpen(false)}
@@ -275,7 +275,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
               {/* Stay */}
               <a
-                href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#stay` : "#stay"}
+                href={(isExperiencePage || isStandalonePage) ? '/#stay' : "#stay"}
                 data-testid="link-mobile-stay"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                 onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#stay")}
@@ -286,7 +286,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
 
               {/* Food */}
               <a
-                href={`/devocean-lodge-meals?lang=${lang}`}
+                href={'/devocean-lodge-meals'}
                 data-testid="link-mobile-food"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                 onClick={() => setMenuOpen(false)}
@@ -304,7 +304,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               ].map(([k, href]) => (
                 <a
                   key={k}
-                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}${href}` : href}
+                  href={(isExperiencePage || isStandalonePage) ? `/${href}` : href}
                   data-testid={`link-mobile-${k}`}
                   className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
                   onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}

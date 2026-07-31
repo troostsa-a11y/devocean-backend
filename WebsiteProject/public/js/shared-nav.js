@@ -2,7 +2,9 @@
  * shared-nav.js
  * Injects the full DEVOCEAN Lodge two-tier navigation header into any
  * standalone HTML page (story, meals, accommodation, guide pages).
- * Reads/writes ?lang= query param; reloads on language/region change.
+ * Clean-URL policy: honors ?lang= on arrival (persists it, then strips it
+ * from the address bar); all links are bare URLs and language changes are
+ * persisted to localStorage before reloading the clean URL.
  * Matches the React Header component exactly.
  */
 (function () {
@@ -55,8 +57,48 @@
   ];
 
   // ── current lang / region ─────────────────────────────────────────────
-  var params = new URLSearchParams(window.location.search);
-  var lang   = params.get('lang') || 'en-GB';
+  // Normalize short codes to the full locale codes the SPA stores.
+  var SHORT_TO_FULL = {
+    en: 'en-GB', pt: 'pt-BR', nl: 'nl-NL', fr: 'fr-FR', it: 'it-IT',
+    de: 'de-DE', es: 'es-ES', ja: 'ja-JP', zh: 'zh-CN', af: 'af-ZA',
+    'en-us': 'en-US', 'en-gb': 'en-GB', 'pt-pt': 'pt-PT', 'pt-br': 'pt-BR',
+  };
+  var KNOWN_LANGS = LANG_LABELS.map(function (p) { return p[0]; });
+  function normLang(raw) {
+    if (!raw) return null;
+    if (KNOWN_LANGS.indexOf(raw) !== -1) return raw;
+    var lower = String(raw).toLowerCase();
+    if (SHORT_TO_FULL[lower]) return SHORT_TO_FULL[lower];
+    for (var i = 0; i < KNOWN_LANGS.length; i++) {
+      if (KNOWN_LANGS[i].toLowerCase() === lower) return KNOWN_LANGS[i];
+    }
+    return null;
+  }
+
+  function readStoredLang() {
+    try { return normLang(window.localStorage.getItem('site.lang')); }
+    catch (e) { return null; }
+  }
+
+  var params  = new URLSearchParams(window.location.search);
+  var urlLang = normLang(params.get('lang'));
+  var lang    = urlLang || readStoredLang() || 'en-GB';
+
+  // Honor ?lang= on entry: persist it, then show the clean URL.
+  if (params.get('lang') !== null) {
+    if (urlLang) {
+      try {
+        window.localStorage.setItem('site.lang', urlLang);
+        window.localStorage.setItem('site.lang_source', 'url');
+      } catch (e) { /* ignore */ }
+    }
+    try {
+      params.delete('lang');
+      var qs = params.toString();
+      window.history.replaceState(window.history.state, '',
+        window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
+    } catch (e) { /* ignore */ }
+  }
 
   // Prefer the stored region (same key the SPA uses) when it supports the
   // current language — deriving region from lang alone flips e.g. Asia back
@@ -85,15 +127,21 @@
   }
 
   // ── helpers ───────────────────────────────────────────────────────────
+  // Clean-URL policy: internal links never carry ?lang= — language comes
+  // from the stored preference.
   function withLang(path) {
-    var u = new URL(path, window.location.origin);
-    u.searchParams.set('lang', lang);
-    return u.toString();
+    return new URL(path, window.location.origin).toString();
   }
 
   function setLang(newLang) {
+    try {
+      window.localStorage.setItem('site.lang', newLang);
+      window.localStorage.setItem('site.lang_source', 'user');
+      window.localStorage.setItem('site.lang.version', '2');
+    } catch (e) { /* ignore */ }
+    // Reload the clean URL so the page re-renders in the new language.
     var u = new URL(window.location.href);
-    u.searchParams.set('lang', newLang);
+    u.searchParams.delete('lang');
     window.location.href = u.toString();
   }
 

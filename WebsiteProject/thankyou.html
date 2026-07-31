@@ -224,7 +224,20 @@
     function detectSiteLanguage(){
       const qs = new URLSearchParams(location.search);
       const urlLang = qs.get('lang') || qs.get('locale');
-      if (urlLang){ safeSetItem('selectedLanguage', urlLang); return urlLang; }
+      if (urlLang){
+        safeSetItem('selectedLanguage', urlLang);
+        // Persist under the shared site.lang key so bare internal links keep the language
+        const FULL = {en:'en-GB',de:'de-DE',es:'es-ES',fr:'fr-FR',it:'it-IT',nl:'nl-NL',pt:'pt-PT',ru:'ru',zh:'zh-CN',sv:'sv',ja:'ja-JP'};
+        const base = (urlLang||'en').toLowerCase().split('-')[0];
+        if (FULL[base]){ safeSetItem('site.lang', FULL[base]); safeSetItem('site.lang_source', 'url'); }
+        // Clean-URL policy: language applied + persisted, now show the clean URL
+        try {
+          qs.delete('lang'); qs.delete('locale');
+          const cleanQs = qs.toString();
+          history.replaceState(history.state, '', location.pathname + (cleanQs ? '?' + cleanQs : '') + location.hash);
+        } catch(_){}
+        return urlLang;
+      }
       const saved = safeGetItem('selectedLanguage');
       if (saved) return saved;
       return navigator.language || 'en-GB';
@@ -445,11 +458,9 @@
         document.addEventListener('DOMContentLoaded', ()=>fill());
       }
 
-      // Legal links carry language
+      // Clean-URL policy: legal links are bare — language persists via site.lang
       window.setLegalLink = function(page){
-        const url = new URL(`https://devoceanlodge.com/legal/${page}.html`, location.origin);
-        url.searchParams.set('lang', code);
-        location.href = url.toString();
+        location.href = `https://devoceanlodge.com/legal/${page}.html`;
         return false;
       };
 
@@ -460,9 +471,7 @@
         if (canceled) return;
         secondsEl.textContent = String(secs);
         if (secs <= 0){
-          const dest = new URL("https://devoceanlodge.com/", location.origin);
-          dest.searchParams.set('lang', code);
-          location.href = dest.toString();
+          location.href = "https://devoceanlodge.com/";
           return;
         }
         secs -= 1;

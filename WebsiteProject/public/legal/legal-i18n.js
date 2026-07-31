@@ -153,6 +153,14 @@
         } else {
           lang = readLS("site.lang") || normLang(navigator.language);
         }
+        // Clean-URL policy: ?lang= applied + persisted, now show the clean URL
+        try {
+          var cleanParams = new URLSearchParams(window.location.search);
+          cleanParams.delete('lang');
+          var cleanQs = cleanParams.toString();
+          window.history.replaceState(window.history.state, '',
+            window.location.pathname + (cleanQs ? '?' + cleanQs : '') + window.location.hash);
+        } catch (_) { }
       } else {
         // Priority 2: Check localStorage
         lang = readLS("site.lang") || normLang(navigator.language);
@@ -189,12 +197,8 @@
     var updLbl = document.querySelector('[data-role="updated-label"]');
     if (updLbl && UI.updated) updLbl.textContent = UI.updated;
 
-    // Update back links to preserve language parameter
-    document.querySelectorAll('[data-role="back-link"]').forEach(function(backLink) {
-      if (backLink.tagName === 'A' && backLink.getAttribute('href') === '/') {
-        backLink.setAttribute('href', '/?lang=' + lang);
-      }
-    });
+    // Clean-URL policy: back links stay bare — language comes from the
+    // stored preference (site.lang), so no ?lang= is appended.
 
     // Titles
     var title = pageDict.title || "";

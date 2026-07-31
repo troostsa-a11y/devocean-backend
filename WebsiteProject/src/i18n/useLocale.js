@@ -823,14 +823,28 @@ export function useLocale() {
     };
   }, [lang]);
 
+  // Clean-URL policy: ?lang= is honored on entry (applied + persisted by the
+  // state initializers above), then removed from the address bar so every page
+  // has exactly one canonical URL. Runs once on mount, after all initializers
+  // (lang, currency, region) have already read the parameter.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('lang')) {
+        params.delete('lang');
+        const qs = params.toString();
+        const cleanUrl = window.location.pathname + (qs ? `?${qs}` : '') + window.location.hash;
+        window.history.replaceState(window.history.state, '', cleanUrl);
+      }
+    } catch (e) { /* ignore */ }
+  }, []);
+
   useEffect(() => {
     document.documentElement.setAttribute("lang", lang);
-    // Keep canonical self-referential so hreflang entries are respected by Google.
-    // Rule: each hreflang URL must canonicalize to itself, not to the base URL.
+    // Clean-URL policy: canonical always points at the bare URL (no ?lang=).
     const canonicalTag = document.querySelector('link[rel="canonical"]');
     if (canonicalTag) {
-      const base = 'https://devoceanlodge.com/';
-      canonicalTag.setAttribute('href', lang === 'en' ? base : `${base}?lang=${lang}`);
+      canonicalTag.setAttribute('href', 'https://devoceanlodge.com/');
     }
   }, [lang]);
 

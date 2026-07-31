@@ -29,40 +29,28 @@ function smartBack() {
     sessionStorage.removeItem('legalPageReferrer');
   }
   
-  // Get current language from localStorage to preserve it
-  let currentLang = null;
-  try {
-    currentLang = localStorage.getItem('site.lang');
-  } catch (_) {}
-  
-  // Helper to append/update lang parameter to URL
-  function addLangParam(url, lang) {
-    if (!lang) return url;
+  // Clean-URL policy: never append ?lang= to internal navigation — the
+  // language is persisted in localStorage (site.lang) and picked up there.
+  function stripLangParam(url) {
     try {
       const urlObj = new URL(url, window.location.origin);
-      // Always set lang param to current language (update if already present)
-      urlObj.searchParams.set('lang', lang);
+      urlObj.searchParams.delete('lang');
       return urlObj.toString();
     } catch (_) {
       return url;
     }
   }
-  
+
   // Check if there's browser history to go back to (internal navigation)
   if (window.history.length > 1 && referrer && referrer.indexOf(window.location.host) !== -1) {
-    // Same-site navigation - preserve language by appending to referrer URL
-    if (currentLang) {
-      window.location.href = addLangParam(referrer, currentLang);
-    } else {
-      window.history.back();
-    }
+    // Same-site navigation - go back to the clean referrer URL
+    window.location.href = stripLangParam(referrer);
   } else if (referrer) {
     // External referrer (like Hotelrunner) - redirect to referrer
     window.location.href = referrer;
   } else {
-    // No referrer - go to home page with language
-    const homeUrl = currentLang ? addLangParam('/', currentLang) : '/';
-    window.location.href = homeUrl;
+    // No referrer - go to home page (language comes from stored preference)
+    window.location.href = '/';
   }
 }
 

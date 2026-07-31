@@ -96,13 +96,9 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
     : baseExp;
   
   // Build a home URL carrying the visitor's language and currency
-  const buildHomeUrl = (hash = '') => {
-    const params = new URLSearchParams();
-    if (lang) params.set('lang', lang);
-    if (currency) params.set('currency', currency);
-    const queryString = params.toString();
-    return queryString ? `/?${queryString}${hash}` : `/${hash}`;
-  };
+  // Clean-URL policy: internal links are bare — language/currency come from
+  // the stored preferences (site.lang / site.currency), never from the URL.
+  const buildHomeUrl = (hash = '') => `/${hash}`;
 
   // Update SEO meta tags for each experience
   useEffect(() => {

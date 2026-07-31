@@ -20,13 +20,9 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
   }, [lang]);
 
 
-  const buildHomeUrl = (hash = '') => {
-    const params = new URLSearchParams();
-    if (lang) params.set('lang', lang);
-    if (currency) params.set('currency', currency);
-    const queryString = params.toString();
-    return queryString ? `/?${queryString}${hash}` : `/${hash}`;
-  };
+  // Clean-URL policy: internal links are bare — language/currency come from
+  // the stored preferences (site.lang / site.currency), never from the URL.
+  const buildHomeUrl = (hash = '') => `/${hash}`;
 
   useEffect(() => {
     const originalTitle = document.title;

@@ -45,7 +45,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
             chalet: '/chalet'
           };
           const basePath = detailPageMap[u.key];
-          const detailPageUrl = basePath ? `${basePath}?lang=${lang}` : null;
+          const detailPageUrl = basePath || null;
           const features = UNIT_FEATURES[u.key] || [];
           
           return (

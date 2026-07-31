@@ -51,7 +51,7 @@ export default function Footer({ units, experiences, ui, lang }) {
         {/* Brand / About */}
         <div>
           <a
-            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#home` : '#home'}
+            href={(isExperiencePage || isStandalonePage) ? '/#home' : '#home'}
             className="flex items-center gap-3 hover:text-white"
             onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#home')}
           >
@@ -69,7 +69,7 @@ export default function Footer({ units, experiences, ui, lang }) {
         {/* Stay */}
         <div>
           <a
-            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#stay` : '#stay'}
+            href={(isExperiencePage || isStandalonePage) ? '/#stay' : '#stay'}
             className="font-semibold hover:text-white"
             onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#stay')}
           >
@@ -80,7 +80,7 @@ export default function Footer({ units, experiences, ui, lang }) {
               <li key={u.key}>
                 <a
                   className="hover:text-white"
-                  href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#stay` : '#stay'}
+                  href={(isExperiencePage || isStandalonePage) ? '/#stay' : '#stay'}
                   onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#stay')}
                 >
                   {u.title}
@@ -93,7 +93,7 @@ export default function Footer({ units, experiences, ui, lang }) {
         {/* Experiences */}
         <div>
           <a
-            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#experiences` : '#experiences'}
+            href={(isExperiencePage || isStandalonePage) ? '/#experiences' : '#experiences'}
             className="font-semibold hover:text-white"
             onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#experiences')}
           >
@@ -146,7 +146,7 @@ export default function Footer({ units, experiences, ui, lang }) {
         {/* Contact */}
         <div>
           <a
-            href={(isExperiencePage || isStandalonePage) ? `/?lang=${lang}#contact` : '#contact'}
+            href={(isExperiencePage || isStandalonePage) ? '/#contact' : '#contact'}
             className="font-semibold hover:text-white"
             onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleAnchorNav(e, '#contact')}
           >
