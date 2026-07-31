@@ -101,6 +101,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                     <a
                       href={detailPageUrl}
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#9e4b13] text-[#9e4b13] bg-white text-sm font-semibold hover:bg-[#fff5eb] transition-colors"
+                      aria-label={`${ui.stay.moreDetails} – ${u.title}`}
                       data-testid={`link-details-${u.key}`}
                     >
                       <span>{ui.stay.moreDetails}</span>
