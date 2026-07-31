@@ -445,7 +445,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           discountCode: discountCode.trim() || undefined,
           voucher: voucherCode.trim() || undefined,
           gaClientId,
-          bedPreferences: Object.keys(bedType).length > 0 ? bedType : undefined,
+          // Send the EFFECTIVE preference for every room with a bed selector:
+          // the UI shows "King" pre-selected, so an untouched selector must
+          // still send 'king' — otherwise the Beds24 note silently omits the
+          // bed preference the guest saw as chosen.
+          bedPreferences: (() => {
+            const prefs = { ...bedType };
+            for (const cl of cartLines) {
+              if (prefs[cl.roomId]) continue;
+              const room = availableRooms.find((r) => r.roomId === cl.roomId);
+              const uk = room ? getUnitKey(room.name) : null;
+              if (uk === 'safari' || uk === 'comfort' || uk === 'chalet') prefs[cl.roomId] = 'king';
+            }
+            return Object.keys(prefs).length > 0 ? prefs : undefined;
+          })(),
           guest: {
             firstName: guest.firstName.trim(),
             lastName: guest.lastName.trim(),
