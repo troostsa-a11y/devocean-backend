@@ -31,7 +31,7 @@ app.use('/assets', express.static('./email_templates/assets'));
 // Environment validation
 function validateEnvironment() {
   const required = [
-    'DATABASE_URL',
+    'LODGE_DATABASE_URL',
     'MAIL_HOST',
     'MAIL_PORT',
     'IMAP_USER',
@@ -95,7 +95,7 @@ if (validateEnvironment()) {
     };
     
     emailService = new EmailAutomationService(
-      process.env.DATABASE_URL!,
+      process.env.LODGE_DATABASE_URL!,
       smtpConfig,
       imapConfig,
       taxiConfig,
@@ -127,8 +127,8 @@ if (validateEnvironment()) {
 
 // ─── Guest CRM database (works independently of full email service) ───────────
 let guestDb: DatabaseService | null = null;
-if (process.env.DATABASE_URL) {
-  guestDb = new DatabaseService(process.env.DATABASE_URL);
+if (process.env.LODGE_DATABASE_URL) {
+  guestDb = new DatabaseService(process.env.LODGE_DATABASE_URL);
   guestDb.initGuestsTable()
     .then(() => console.log('✅ Guests table ready'))
     .catch((err) => console.error('❌ Failed to create guests table:', err));

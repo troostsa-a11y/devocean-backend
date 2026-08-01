@@ -1,8 +1,8 @@
 import { defineConfig } from "drizzle-kit";
 import path from "path";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL, ensure the database is provisioned");
+if (!process.env.RECEPTION_DATABASE_URL) {
+  throw new Error("RECEPTION_DATABASE_URL, ensure the database is provisioned");
 }
 
 export default defineConfig({
@@ -10,6 +10,6 @@ export default defineConfig({
   out: path.join(__dirname, "./drizzle"),
   dialect: "postgresql",
   dbCredentials: {
-    url: process.env.DATABASE_URL,
+    url: process.env.RECEPTION_DATABASE_URL,
   },
 });

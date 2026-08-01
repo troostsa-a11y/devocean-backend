@@ -4,9 +4,9 @@ import * as schema from "./schema";
 
 const { Pool } = pg;
 
-if (!process.env.DATABASE_URL) {
+if (!process.env.RECEPTION_DATABASE_URL) {
   throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
+    "RECEPTION_DATABASE_URL must be set. Did you forget to provision a database?",
   );
 }
 
@@ -14,7 +14,7 @@ if (!process.env.DATABASE_URL) {
 // SSL config (it currently treats sslmode=require as verify-full, which sets
 // rejectUnauthorized:true and overrides the Pool-level ssl option).
 // We handle SSL explicitly via the ssl option below.
-const connectionString = process.env.DATABASE_URL.replace(
+const connectionString = process.env.RECEPTION_DATABASE_URL.replace(
   /([?&])sslmode=[^&]*/,
   (_, sep) => sep === "?" ? "" : sep,
 ).replace(/\?$/, "");
@@ -27,7 +27,7 @@ try {
     `[db] connecting → host=${u.hostname} port=${u.port || 5432} user=${u.username} db=${u.pathname.slice(1)}`,
   );
 } catch {
-  console.log("[db] DATABASE_URL could not be parsed for diagnostic log");
+  console.log("[db] RECEPTION_DATABASE_URL could not be parsed for diagnostic log");
 }
 
 export const pool = new Pool({
