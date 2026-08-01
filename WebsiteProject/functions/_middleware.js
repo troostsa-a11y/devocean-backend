@@ -145,7 +145,7 @@ const ROUTE_META = {
 
   '/ponta-do-ouro': {
     title: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge — Mozambique',
-    description: "Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, whale watching June–November, and proximity to Maputo National Park UNESCO site.",
+    description: "Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, and whale watching June–November.",
     ogTitle: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
     jsonLd: [
