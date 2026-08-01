@@ -128,6 +128,35 @@ AI crawlers (ChatGPT, Perplexity, Gemini, etc.) cannot execute JavaScript, so al
 - Sitemap: add to `public/sitemap.xml` with `<lastmod>` and `<priority>0.9</priority>`.
 - Cross-link: every experience page links back to `/ponta-do-ouro`; every accommodation page links to `/ponta-do-ouro`.
 
+## Google Ads → PostgreSQL (Lodge Supabase project)
+
+Google Ads Customer Match is connected to the **Lodge** Supabase project (not Reception) via a direct PostgreSQL data source. The connection syncs the `guests` table (`public` schema) to a Google Ads audience for Customer Match targeting.
+
+### Connection details (Google Ads → Data Manager → Connected products → PostgreSQL)
+- **Data source**: PostgreSQL
+- **Schema**: public
+- **Table**: guests
+- **Connection name**: guests
+- **Run schedule**: daily 19:00–20:00 GMT+2
+- **Mapped fields**: 2 (email + phone)
+- **Member list updates**: Add more customers
+
+### Credentials (from Lodge Supabase project, NOT Reception)
+The Lodge project holds the historical guest list. Reception is the live booking DB used by the automailer and Marin — **do not use Reception credentials here**.
+
+To find/reset credentials:
+1. [supabase.com](https://supabase.com) → open the **Lodge** project
+2. **Project Settings → Database** → copy the **pooler** connection string
+3. Hostname: `aws-0-[region].pooler.supabase.com`
+4. Port: `5432` (session pooler — do NOT use 6543 transaction pooler)
+5. Database: `postgres`
+6. Username: `postgres.[lodge-project-ref]` (pooler requires the project ref suffix)
+7. Password: from the Lodge project settings (reset there if forgotten — safe, Lodge is not used by any live service)
+
+> **Note**: the direct connection (`db.[ref].supabase.co`) does NOT work for Google Ads — only the **pooler** URL validates successfully. Error 4045 = wrong credentials or network block; error 4008 = table not found or wrong schema (confirm `guests` table exists in Lodge's `public` schema via Supabase SQL Editor).
+
+> **Pitfall**: this is the **Lodge** project password, not the Reception project password. Resetting Reception's password fixes the automailer/Marin DB connection (`DATABASE_URL` secret in Replit) but has no effect on this Google Ads connection. They are completely separate Supabase projects.
+
 ## Maintenance Guidelines
 
 - **Keep the hero asset lightweight**: any image replacing `hero01-mobile.webp` must stay under 15 KB compressed. The 5 s overlay delay is tuned to a ~1.5 s load on Slow 4G.
