@@ -491,7 +491,19 @@ export async function onRequest(context) {
       return Response.redirect(new URL('/', context.request.url).href, 302);
     }
 
-    let response = await context.next();
+    // Known SPA routes (guide pages, booking pages, etc.) must always be served
+    // from the SPA shell — never from a static file.  A stale pre-React
+    // standalone .html can survive in a CF Pages deployment if it was uploaded
+    // before the route was migrated to React; context.next() would happily serve
+    // it.  Fetching the root via ASSETS.fetch bypasses static-file lookup
+    // entirely and guarantees the React shell is always returned for these paths.
+    const isSpaRoute =
+      ROUTE_META[pathname] != null ||
+      /^\/experiences\/[a-z-]+$/.test(pathname);
+
+    let response = isSpaRoute
+      ? await context.env.ASSETS.fetch(new Request(new URL('/', context.request.url), context.request))
+      : await context.next();
 
     // SPA fallback: no static file matched → serve index.html for React routing.
     // Serve the shell not only for explicit text/html requests, but also for

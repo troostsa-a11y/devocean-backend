@@ -78,14 +78,46 @@ SMOKE_PATHS=(
 )
 SMOKE_FAILED=0
 STALE_PATHS=()
+
+# Guide pages that were once standalone HTML files (loaded /js/shared-nav.js).
+# These must be tested at the BARE URL — adding a ?query string bypasses
+# CF Pages' clean-URL static-file matching and causes a false pass (the SPA
+# shell is served for the query URL while the stale file still wins the clean
+# URL).  We also assert shared-nav.js is absent to catch the old format.
+GUIDE_PATHS=(
+  "/ponta-do-ouro-without-4x4"
+  "/ponta-do-ouro"
+  "/getting-to-ponta-do-ouro"
+  "/ponta-do-ouro-accommodation"
+  "/safari-tents-ponta-do-ouro"
+  "/devocean-lodge-meals"
+)
+
 for path in "${SMOKE_PATHS[@]}"; do
   ok=0
+  # Determine whether to use a cache-busting query string.
+  # Guide pages must be tested at the bare URL (see comment above).
+  is_guide=0
+  for gp in "${GUIDE_PATHS[@]}"; do
+    [[ "$path" == "$gp" ]] && is_guide=1 && break
+  done
+
   # Edge propagation can lag a few seconds; retry briefly before failing.
   for attempt in 1 2 3 4 5 6 7 8 9 10; do
-    # Accept: text/html is required: SPA routes 404 for non-HTML requests,
-    # and cache-busting query defeats any lingering edge/browser cache layer.
-    body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
-      "${SMOKE_BASE}${path}?smoke=$(date +%s)" 2>/dev/null || true)
+    if [[ $is_guide -eq 1 ]]; then
+      # Bare URL — no query string — so CF Pages' clean-URL file matching
+      # is exercised.  Cache-Control: no-cache asks edges not to serve stale.
+      body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
+        "${SMOKE_BASE}${path}" 2>/dev/null || true)
+      # Fail if old standalone format is detected (shared-nav.js present).
+      if [[ "$body" == *"shared-nav.js"* ]]; then
+        echo "  ✗ ${path} — old standalone HTML detected (shared-nav.js present)"
+        break
+      fi
+    else
+      body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
+        "${SMOKE_BASE}${path}?smoke=$(date +%s)" 2>/dev/null || true)
+    fi
     if [[ "$body" == *"$BUILD_MARKER"* ]]; then
       ok=1
       break
