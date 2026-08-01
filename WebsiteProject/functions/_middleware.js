@@ -168,7 +168,7 @@ const ROUTE_META = {
 
   '/getting-to-ponta-do-ouro': {
     title: 'Getting to Ponta do Ouro from Kosi Bay and Maputo | Travel Guide',
-    description: 'Complete guide to getting to Ponta do Ouro, Mozambique — via Kosi Bay border (13 km), from Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules explained.',
+    description: 'Getting to Ponta do Ouro: via Kosi Bay border (13 km) or Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules.',
     ogTitle: 'Getting to Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Via Kosi Bay border (13 km), from Maputo by road or transfer (120 km), or by public chapa. No 4×4 required to reach DEVOCEAN Lodge.',
     jsonLd: [
@@ -210,9 +210,9 @@ const ROUTE_META = {
 
   '/ponta-do-ouro-accommodation': {
     title: 'Accommodation in Ponta do Ouro Near the Beach | DEVOCEAN Lodge',
-    description: 'DEVOCEAN Lodge sits in a lush tropical garden approximately 300 metres from the beach in Ponta do Ouro. Nine units across four accommodation types — safari tents, comfort tents, a garden cottage and a thatched chalet.',
+    description: 'DEVOCEAN Lodge sits in a tropical garden 300 metres from the beach in Ponta do Ouro. Safari tents, comfort tents, garden cottage and thatched chalet.',
     ogTitle: 'Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
-    ogDescription: 'Nine units across four types, 300 m from the beach. Safari tents, comfort tents, garden cottage and thatched chalet. Breakfast included. Book direct for best rates.',
+    ogDescription: 'Nine units across four types, 300 m from the beach. Safari tents, comfort tents, garden cottage and thatched chalet. Breakfast included. Best rates direct.',
     jsonLd: [
       { '@context': 'https://schema.org', '@type': 'LodgingBusiness', '@id': 'https://devoceanlodge.com/#lodge', name: 'DEVOCEAN Lodge', url: 'https://devoceanlodge.com', description: 'Family-run eco-lodge in Ponta do Ouro, Southern Mozambique. Nine units across four accommodation types set in a lush tropical garden approximately 300 metres from the beach.', address: { '@type': 'PostalAddress', addressLocality: 'Ponta do Ouro', addressCountry: 'MZ' }, amenityFeature: [ { '@type': 'LocationFeatureSpecification', name: 'Breakfast included', value: true }, { '@type': 'LocationFeatureSpecification', name: 'Free WiFi', value: true }, { '@type': 'LocationFeatureSpecification', name: 'On-site parking', value: true }, { '@type': 'LocationFeatureSpecification', name: 'No 4×4 required', value: true } ] },
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'How far is DEVOCEAN Lodge from the beach?', acceptedAnswer: { '@type': 'Answer', text: "The lodge is approximately 300 metres from the main beach — a few minutes' walk through the village streets." } }, { '@type': 'Question', name: 'Do I need a 4×4 to get to DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'No. DEVOCEAN Lodge is on a navigable road in the village centre. A standard car handles the route from the Kosi Bay border comfortably.' } } ] },
@@ -235,7 +235,7 @@ const ROUTE_META = {
 
   '/safari-tents-ponta-do-ouro': {
     title: 'Safari Tents in Ponta do Ouro, Mozambique | DEVOCEAN Lodge',
-    description: "DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a more private Comfort Tent with en-suite bathroom. Breakfast included. Book direct.",
+    description: "DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a Comfort Tent with en-suite bathroom. Book direct.",
     ogTitle: 'Safari Tents in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Two canvas safari tents on raised wooden platforms in a tropical garden. Shared or en-suite bathroom, fan, private terrace. A few minutes from the Indian Ocean.',
     jsonLd: [
@@ -285,7 +285,7 @@ const ROUTE_META = {
 
   '/book-direct': {
     title: 'Book Direct | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
-    description: 'Book your stay at DEVOCEAN Lodge direct for the best available rate. No booking fees, no OTA markup. Instant confirmation. Safari tents, garden cottage and thatched chalet, Ponta do Ouro, Mozambique.',
+    description: 'Book direct at DEVOCEAN Lodge for the best rate. No booking fees, no OTA markup. Instant confirmation. Safari tents, cottage and chalet, Ponta do Ouro.',
     ogTitle: 'Book Direct | DEVOCEAN Lodge',
     ogDescription: 'Best-rate direct booking — no fees, instant confirmation. Nine units across four accommodation types in Ponta do Ouro, Mozambique.',
     staticHtml: `<div id="static-content">
