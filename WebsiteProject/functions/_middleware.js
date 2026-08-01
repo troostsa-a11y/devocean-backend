@@ -542,6 +542,12 @@ export async function onRequest(context) {
           /(<meta property="og:url" content=")[^"]*(")/,
           `$1${BASE_URL}/${langSuffix}$2`
         );
+        // Unique title per language variant — prevents duplicate-title warnings in
+        // Bing/Google Webmaster Tools when ?lang= URLs are crawled as separate pages.
+        html = html.replace(
+          /<title>([^<]*)<\/title>/,
+          (_, t) => `<title>${t} — ${rawLang.toUpperCase()}</title>`
+        );
       }
     } else {
 
@@ -555,7 +561,8 @@ export async function onRequest(context) {
         const meta = EXPERIENCE_META[expKey];
 
         if (meta) {
-          html = html.replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`);
+          const langTitle = langSuffix ? `${meta.title} — ${rawLang.toUpperCase()}` : meta.title;
+          html = html.replace(/<title>[^<]*<\/title>/, `<title>${langTitle}</title>`);
           html = html.replace(
             /<meta name="description"\s+content="[^"]*"/,
             `<meta name="description" content="${meta.description}"`
@@ -586,7 +593,8 @@ export async function onRequest(context) {
 
       } else if (route) {
         // ── Known booking/info route (English-only, no translated variants) ──
-        html = html.replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`);
+        const langTitle = langSuffix ? `${route.title} — ${rawLang.toUpperCase()}` : route.title;
+        html = html.replace(/<title>[^<]*<\/title>/, `<title>${langTitle}</title>`);
         html = html.replace(
           /<meta name="description"\s+content="[^"]*"/,
           `<meta name="description" content="${route.description}"`
