@@ -60,7 +60,22 @@ fi
 
 echo "▶ Verifying live site serves the new build (marker: $BUILD_MARKER)..."
 SMOKE_BASE="https://devoceanlodge.com"
-SMOKE_PATHS=("/" "/story" "/book-direct" "/thankyou" "/canceled")
+SMOKE_PATHS=(
+  "/"
+  "/story"
+  "/book-direct"
+  "/thankyou"
+  "/canceled"
+  # Guide pages — previously existed as standalone HTML files; verify they now
+  # serve the SPA shell (which carries the build marker) rather than a stale
+  # pre-React standalone page (which would not).
+  "/ponta-do-ouro-without-4x4"
+  "/ponta-do-ouro"
+  "/getting-to-ponta-do-ouro"
+  "/ponta-do-ouro-accommodation"
+  "/safari-tents-ponta-do-ouro"
+  "/devocean-lodge-meals"
+)
 SMOKE_FAILED=0
 STALE_PATHS=()
 for path in "${SMOKE_PATHS[@]}"; do
