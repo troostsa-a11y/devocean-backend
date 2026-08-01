@@ -539,9 +539,9 @@
        so there's no fractional-width band where React goes mobile but this stays desktop. */
     @media (max-width: 639.98px) {
       #hero-placeholder-content { padding-top: calc(var(--stack-h) - 1rem); }
-      /* Small phones: drop the large hero title (already shown in the header) and let
-         the subtitle take its top slot. Lockstep with React's `hidden sm:block` h1 +
-         `mt-14` mobile subtitle margin so the placeholder and React render identically. */
+      /* Small phones: drop the large hero title div and let the subtitle take
+         its top slot. Lockstep with React's sr-only (mobile) h1 + `mt-14`
+         mobile subtitle margin so the placeholder and React render identically. */
       #hero-title { display: none; }
       #hero-placeholder #hero-subtitle { margin-top: 8.5rem; }
     }
@@ -857,7 +857,7 @@
     </picture>
     <div style="position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.4); pointer-events: none;"></div>
     <div id="hero-placeholder-content" style="position: relative; z-index: 10; max-width: 80rem; margin: 0 auto; padding-left: 1rem; padding-right: 1rem; padding-bottom: 6rem; color: #ffffff; font-family: 'Inter', system-ui, -apple-system, sans-serif; box-sizing: border-box; width: 100%;">
-      <h1 id="hero-title" style="font-size: var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem)); font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</h1>
+      <div id="hero-title" style="font-size: var(--hero-h1-size, clamp(3.5rem, 14vw, 3.75rem)); font-weight: 700; max-width: 48rem; margin: 3.5rem 0 0 0; line-height: 1.25;">DEVOCEAN Lodge</div>
       <p id="hero-subtitle" style="font-size: 1.25rem; max-width: 54.5rem; font-weight: 600;">Ponta do Ouro, Mozambique</p>
     </div>
   </div>
@@ -869,6 +869,12 @@
        users. After React mounts, the MutationObserver below sets display:none.
        ────────────────────────────────────────────────────────────────────── -->
   <div id="static-content">
+    <!-- Page H1 for pre-JS crawlers. #hero-placeholder's title div is NOT an
+         <h1> so this is the only H1 in the static HTML. The MutationObserver
+         below sets display:none on this entire block the instant React mounts,
+         at which point React's own <h1> in HeroSection is already in the DOM —
+         so there is never more than one <h1> in the DOM at any time. -->
+    <h1>DEVOCEAN Lodge — Eco Beach Lodge in Ponta do Ouro, southern Mozambique</h1>
 
     <section>
       <h2>Stay with us</h2>
