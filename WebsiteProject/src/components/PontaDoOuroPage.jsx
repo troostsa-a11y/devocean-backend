@@ -6,7 +6,7 @@ export default function PontaDoOuroPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge — Mozambique';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, whale watching June–November, and proximity to Maputo National Park UNESCO site. Base yourself at DEVOCEAN Lodge.');
+      'Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, and whale watching June–November.');
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro');
   }, []);
 

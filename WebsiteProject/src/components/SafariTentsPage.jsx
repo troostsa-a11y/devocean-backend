@@ -6,7 +6,7 @@ export default function SafariTentsPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Safari Tents in Ponta do Ouro, Mozambique | DEVOCEAN Lodge';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a more private Comfort Tent with en-suite bathroom. Sleep under canvas in Southern Mozambique with breakfast included.');
+      'DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a Comfort Tent with en-suite bathroom. Book direct.');
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/safari-tents-ponta-do-ouro');
   }, []);
 

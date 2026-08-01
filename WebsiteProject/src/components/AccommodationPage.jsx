@@ -6,7 +6,7 @@ export default function AccommodationPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Accommodation in Ponta do Ouro Near the Beach | DEVOCEAN Lodge';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'DEVOCEAN Lodge sits in a lush tropical garden approximately 300 metres from the beach in Ponta do Ouro, Mozambique. Nine units across four accommodation types — safari tents, a garden cottage and a thatched chalet — with direct booking at best rates.');
+      'DEVOCEAN Lodge sits in a tropical garden 300 metres from the beach in Ponta do Ouro. Safari tents, comfort tents, garden cottage and thatched chalet.');
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro-accommodation');
   }, []);
 

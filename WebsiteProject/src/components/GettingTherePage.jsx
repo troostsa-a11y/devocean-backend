@@ -6,7 +6,7 @@ export default function GettingTherePage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Getting to Ponta do Ouro from Kosi Bay and Maputo | Travel Guide';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'Complete guide to getting to Ponta do Ouro, Mozambique — via Kosi Bay border (13 km), from Maputo (120 km), by transfer or public transport. Border hours, road conditions, rental car rules and chapa transport explained.');
+      'Getting to Ponta do Ouro: via Kosi Bay border (13 km) or Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules.');
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/getting-to-ponta-do-ouro');
   }, []);
 

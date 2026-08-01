@@ -6,7 +6,7 @@ export default function DivingDolphinsPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Accommodation for Diving and Dolphin Swims in Ponta do Ouro | DEVOCEAN Lodge';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'DEVOCEAN Lodge is a few minutes from Ponta do Ouro\'s dive operators and dolphin swim centre. Dive sites from 10 m to 47 m, resident dolphin pods year-round, whale watching June–November. The ideal base for underwater Mozambique.');
+      'DEVOCEAN Lodge is a few minutes from Ponta do Ouro\'s dive operators and dolphin swim centre. Dive sites 10 m–47 m, resident dolphin pods year-round, whale watching June–November.');
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/diving-dolphin-accommodation');
   }, []);
 
