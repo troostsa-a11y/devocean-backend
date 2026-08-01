@@ -542,11 +542,16 @@ export async function onRequest(context) {
           /(<meta property="og:url" content=")[^"]*(")/,
           `$1${BASE_URL}/${langSuffix}$2`
         );
-        // Unique title per language variant — prevents duplicate-title warnings in
-        // Bing/Google Webmaster Tools when ?lang= URLs are crawled as separate pages.
+        // Unique title + description per language variant — prevents duplicate-title/
+        // description warnings in Bing/Google Webmaster Tools when ?lang= URLs are
+        // crawled as separate pages.
         html = html.replace(
           /<title>([^<]*)<\/title>/,
           (_, t) => `<title>${t} — ${rawLang.toUpperCase()}</title>`
+        );
+        html = html.replace(
+          /(<meta name="description"\s+content=")([^"]*?)(")/,
+          (_, open, desc, close) => `${open}${desc} — ${rawLang.toUpperCase()}${close}`
         );
       }
     } else {
@@ -562,10 +567,11 @@ export async function onRequest(context) {
 
         if (meta) {
           const langTitle = langSuffix ? `${meta.title} — ${rawLang.toUpperCase()}` : meta.title;
+          const langDesc  = langSuffix ? `${meta.description} — ${rawLang.toUpperCase()}` : meta.description;
           html = html.replace(/<title>[^<]*<\/title>/, `<title>${langTitle}</title>`);
           html = html.replace(
             /<meta name="description"\s+content="[^"]*"/,
-            `<meta name="description" content="${meta.description}"`
+            `<meta name="description" content="${langDesc}"`
           );
           html = html.replace(
             /(<link rel="canonical" href=")[^"]*(")/,
@@ -594,10 +600,11 @@ export async function onRequest(context) {
       } else if (route) {
         // ── Known booking/info route (English-only, no translated variants) ──
         const langTitle = langSuffix ? `${route.title} — ${rawLang.toUpperCase()}` : route.title;
+        const langDesc  = langSuffix ? `${route.description} — ${rawLang.toUpperCase()}` : route.description;
         html = html.replace(/<title>[^<]*<\/title>/, `<title>${langTitle}</title>`);
         html = html.replace(
           /<meta name="description"\s+content="[^"]*"/,
-          `<meta name="description" content="${route.description}"`
+          `<meta name="description" content="${langDesc}"`
         );
         html = html.replace(
           /(<link rel="canonical" href=")[^"]*(")/,
