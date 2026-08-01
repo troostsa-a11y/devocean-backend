@@ -55,7 +55,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 - **DB**: Reception Supabase project (`RECEPTION_DATABASE_URL`, ref `rrtbnknothjiowvqxbjo`, eu-west-3) — separate from the Lodge/Automailer DB (`LODGE_DATABASE_URL`). Session pooler: `aws-0-eu-west-3.pooler.supabase.com`. Drizzle ORM schema in `lib/db/`; tables: `conversations`, `messages`, `bookings`, `integration_tokens`.
 - **Widget embed**: `widget-loader.js` (in `artifacts/receptionist/public/`) creates a floating mic button that opens an iframe pointing to `/embed` on the same origin. In `WebsiteProject/index.html`, the script src uses `%%MIA_URL%%` — replaced at Vite build time by the `MIA_URL` constant in `vite.config.js`.
 - **Browser mic**: acquired with `echoCancellation: true, noiseSuppression: true, channelCount: 1` in `useRealtimeSession.ts`. Audio piped via `ScriptProcessorNode` → PCM16 → base64 → WebSocket to relay.
-- **Dev**: `pnpm --filter @workspace/api-server run dev` from `voice-reception/` (runs esbuild + starts Express; needs `PORT` and `DATABASE_URL` set).
+- **Dev**: `pnpm --filter @workspace/api-server run dev` from `voice-reception/` (runs esbuild + starts Express; needs `PORT` and `RECEPTION_DATABASE_URL` set).
 
 ### Frontend
 - React 18 + TypeScript, Vite, Wouter routing, TanStack Query, shadcn/ui (New York), Tailwind CSS variables.

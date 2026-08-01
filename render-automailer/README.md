@@ -24,7 +24,7 @@ In the Render dashboard, go to **Environment** and add:
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `DATABASE_URL` | Supabase PostgreSQL connection string | `postgresql://user:pass@host:5432/db` |
+| `LODGE_DATABASE_URL` | Lodge Supabase project connection string (eu-west-1, ref fozgrzqwumnynpedpmth) | `postgresql://postgres.fozgrzqwumnynpedpmth:pass@aws-1-eu-west-1.pooler.supabase.com:5432/postgres` |
 | `MAIL_HOST` | SMTP/IMAP server hostname | `vm02-murphy.h4ahosting.com` |
 | `IMAP_USER` | Email account username | `reservations@devoceanlodge.com` |
 | `IMAP_PASSWORD` | Email account password | `your-password` |

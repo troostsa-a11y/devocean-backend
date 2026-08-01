@@ -139,7 +139,7 @@ The website, automation service, and voice receptionist are **separate deployabl
 - `artifacts/receptionist/` — React 19 + Vite admin dashboard / guest-facing widget.
 - `lib/` — shared internal packages: `db` (Drizzle schema + migrations), `api-spec`, `api-client-react`, `api-zod`, `integrations-openai-ai-server`/`-react`.
 
-### 4.2 Data model (dedicated Reception Supabase project, `DATABASE_URL`, separate from the Lodge/Automailer database; session pooler `aws-0-eu-west-3.pooler.supabase.com`)
+### 4.2 Data model (Reception Supabase project, `RECEPTION_DATABASE_URL`, ref `rrtbnknothjiowvqxbjo`, eu-west-3; separate from the Lodge/Automailer database `LODGE_DATABASE_URL`; session pooler `aws-0-eu-west-3.pooler.supabase.com`)
 - `conversations` — one row per voice/chat session.
 - `messages` — turn-by-turn transcript per conversation.
 - `bookings` — booking enquiries captured by Marin (distinct table from the Automailer `bookings` table — different database, different schema).
@@ -167,8 +167,8 @@ The website, automation service, and voice receptionist are **separate deployabl
 
 ### 5.1 Environment variables / secrets (names only — see `environment-secrets` tooling for values)
 - **Website (Cloudflare)**: `AUTOMAILER_URL` (`wrangler.toml`, public var), `ADMIN_API_KEY` (Cloudflare secret, uploaded by `deploy.sh`).
-- **Automailer (Render)**: `DATABASE_URL`, `MAIL_HOST`, `MAIL_PORT`, `SMTP_PORT`, `IMAP_HOST`, `IMAP_PORT`, `IMAP_USER`, `IMAP_PASSWORD`, `IMAP_TLS`, `IMAP_FROM_EMAIL`, `IMAP_FROM_NAME`, `ADMIN_EMAIL`, `BCC_EMAIL`, `TAXI_EMAIL`, `TAXI_WHATSAPP`, `TAXI_NAME`, `GA4_MEASUREMENT_ID`, `GA4_API_SECRET`, `BEDS24_REFRESH_TOKEN`, `BEDS24_PROP_ID`, `BEDS24_API_BASE`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, optional `DEPOSIT_PERCENT`, `CANCELLATION_POLICY_DAYS`, `BOOKING_CURRENCY`, `PUBLIC_SITE_URL`.
-- **Receptionist (Render)**: `DATABASE_URL`, `AI_INTEGRATIONS_OPENAI_API_KEY`, `AI_INTEGRATIONS_OPENAI_BASE_URL`, `OPENAI_REALTIME_MODEL`, `OPENAI_TEXT_MODEL`, `BEDS24_TOKEN`/`BEDS24_INVITE_CODE`, `BEDS24_PROPERTY_ID`, `LOG_LEVEL`, `NOTIFY_SMTP_HOST`, `NOTIFY_SMTP_PORT`, `NOTIFY_SMTP_USER`, `NOTIFY_SMTP_PASS`, `NOTIFY_EMAIL_FROM`, `NOTIFY_EMAIL_TO`, optional `MARIN_NOTIFY_WA_PHONE`/`MARIN_NOTIFY_WA_APIKEY`.
+- **Automailer (Render)**: `LODGE_DATABASE_URL` (Lodge Supabase project, eu-west-1), `MAIL_HOST`, `MAIL_PORT`, `SMTP_PORT`, `IMAP_HOST`, `IMAP_PORT`, `IMAP_USER`, `IMAP_PASSWORD`, `IMAP_TLS`, `IMAP_FROM_EMAIL`, `IMAP_FROM_NAME`, `ADMIN_EMAIL`, `BCC_EMAIL`, `TAXI_EMAIL`, `TAXI_WHATSAPP`, `TAXI_NAME`, `GA4_MEASUREMENT_ID`, `GA4_API_SECRET`, `BEDS24_REFRESH_TOKEN`, `BEDS24_PROP_ID`, `BEDS24_API_BASE`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, optional `DEPOSIT_PERCENT`, `CANCELLATION_POLICY_DAYS`, `BOOKING_CURRENCY`, `PUBLIC_SITE_URL`.
+- **Receptionist (Render)**: `RECEPTION_DATABASE_URL` (Reception Supabase project, eu-west-3), `AI_INTEGRATIONS_OPENAI_API_KEY`, `AI_INTEGRATIONS_OPENAI_BASE_URL`, `OPENAI_REALTIME_MODEL`, `OPENAI_TEXT_MODEL`, `BEDS24_TOKEN`/`BEDS24_INVITE_CODE`, `BEDS24_PROPERTY_ID`, `LOG_LEVEL`, `NOTIFY_SMTP_HOST`, `NOTIFY_SMTP_PORT`, `NOTIFY_SMTP_USER`, `NOTIFY_SMTP_PASS`, `NOTIFY_EMAIL_FROM`, `NOTIFY_EMAIL_TO`, optional `MARIN_NOTIFY_WA_PHONE`/`MARIN_NOTIFY_WA_APIKEY`.
 - Principle observed throughout: admin/API keys are passed as headers, never in URLs (avoids leaking into logs/browser history); the browser never holds the Beds24, Stripe secret, or admin keys directly.
 
 ### 5.2 External dependencies / integrations
