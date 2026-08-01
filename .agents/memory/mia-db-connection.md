@@ -3,9 +3,16 @@ name: Mia voice receptionist — database connection
 description: Supabase connection setup for mia-voice-receptionist Render service; pooler shard, dedicated DB, migration idempotency.
 ---
 
-## Dedicated Reception Supabase project
+## Two separate Supabase projects
 
-Mia uses its own Supabase project (ref `rrtbnknothjiowvqxbjo`, eu-west-3 Paris) — separate from the Lodge/automailer DB. Session pooler: `aws-0-eu-west-3.pooler.supabase.com:5432`. Tables: `conversations`, `messages`, `bookings`, `integration_tokens`.
+| Variable | Project ref | Region | Used by |
+|---|---|---|---|
+| `RECEPTION_DATABASE_URL` | `rrtbnknothjiowvqxbjo` | eu-west-3 (Paris) | Receptionist service (Marin) on Render + Replit local dev |
+| `LODGE_DATABASE_URL` | `fozgrzqwumnynpedpmth` | eu-west-1 | Automailer service on Render + Google Ads Customer Match |
+
+Resetting Reception's password has **no effect** on the Automailer or Google Ads (they use Lodge). Resetting Lodge's password has **no effect** on Marin (it uses Reception).
+
+Reception tables: `conversations`, `messages`, `bookings`, `integration_tokens`. Session pooler: `aws-0-eu-west-3.pooler.supabase.com:5432`.
 
 **Why:** Lodge DB collision with automailer's `bookings` table was an early workaround (see migration `0001_rename_mia_bookings` which reversed itself once the dedicated project was created). With a dedicated DB the schema uses the plain name `bookings`.
 

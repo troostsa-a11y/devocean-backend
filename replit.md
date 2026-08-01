@@ -52,7 +52,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
   - `NOTIFY_EMAIL_TO` — recipient (lodge owner personal email)
   - Dates in the email body are formatted as "11 July 2026" (not YYYY-MM-DD).
 - **Beds24**: read-only availability + pricing tool in `artifacts/api-server/src/beds24/`. Env: `BEDS24_TOKEN` (or `BEDS24_INVITE_CODE`), `BEDS24_PROPERTY_ID` (default `297012`).
-- **DB**: dedicated Reception Supabase project (`DATABASE_URL`) — separate from the Lodge/automailer DB. Session pooler: `aws-0-eu-west-3.pooler.supabase.com`. Drizzle ORM schema in `lib/db/`; tables: `conversations`, `messages`, `bookings`, `integration_tokens`.
+- **DB**: Reception Supabase project (`RECEPTION_DATABASE_URL`, ref `rrtbnknothjiowvqxbjo`, eu-west-3) — separate from the Lodge/Automailer DB (`LODGE_DATABASE_URL`). Session pooler: `aws-0-eu-west-3.pooler.supabase.com`. Drizzle ORM schema in `lib/db/`; tables: `conversations`, `messages`, `bookings`, `integration_tokens`.
 - **Widget embed**: `widget-loader.js` (in `artifacts/receptionist/public/`) creates a floating mic button that opens an iframe pointing to `/embed` on the same origin. In `WebsiteProject/index.html`, the script src uses `%%MIA_URL%%` — replaced at Vite build time by the `MIA_URL` constant in `vite.config.js`.
 - **Browser mic**: acquired with `echoCancellation: true, noiseSuppression: true, channelCount: 1` in `useRealtimeSession.ts`. Audio piped via `ScriptProcessorNode` → PCM16 → base64 → WebSocket to relay.
 - **Dev**: `pnpm --filter @workspace/api-server run dev` from `voice-reception/` (runs esbuild + starts Express; needs `PORT` and `DATABASE_URL` set).
@@ -74,7 +74,7 @@ Testing & deploying are done by the user, not the agent. The user prefers to run
 
 ## External Dependencies
 
-- **Database**: PostgreSQL via Supabase. `DATABASE_URL` (Render). Driver: `drizzle-orm/postgres-js` (direct connection — never goes through Supabase's PostgREST/anon or authenticated keys). Row Level Security is enabled on all 9 production tables (`bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`, `guests`, `booking_sessions`, `direct_bookings`, `coupon_codes`) as defense-in-depth; it doesn't affect the app itself since the direct connection bypasses RLS, but it blocks anon/authenticated access if the Supabase key were ever leaked.
+- **Database**: Two separate Supabase projects. `RECEPTION_DATABASE_URL` (ref `rrtbnknothjiowvqxbjo`, eu-west-3) — used by the Receptionist service (Marin) on Render and local dev. `LODGE_DATABASE_URL` (ref `fozgrzqwumnynpedpmth`, eu-west-1) — used by the Automailer service on Render and by Google Ads Customer Match. Driver: `drizzle-orm/postgres-js` (direct connection — never goes through Supabase's PostgREST/anon or authenticated keys). Row Level Security is enabled on all 9 production tables (`bookings`, `scheduled_emails`, `email_logs`, `email_check_logs`, `pending_cancellations`, `guests`, `booking_sessions`, `direct_bookings`, `coupon_codes`) as defense-in-depth; it doesn't affect the app itself since the direct connection bypasses RLS, but it blocks anon/authenticated access if the Supabase key were ever leaked.
 - **Email**: IMAP needs `MAIL_HOST`, `MAIL_PORT`, `IMAP_USER`, `IMAP_PASSWORD`; SMTP reuses the host. Optional taxi notify: `TAXI_EMAIL`, `TAXI_WHATSAPP`, `TAXI_NAME`.
 - **Beds24**: PMS — booking notifications parsed from email (and REST API, see Native Direct Booking).
 - **Cloudflare**: CF Pages hosts the website; CF Functions handle `/api/contact`, `/api/experience-inquiry`, and the `_middleware.js` pipeline. Security settings configured on the zone:
@@ -142,7 +142,7 @@ Google Ads Customer Match is connected to the **Lodge** Supabase project (not Re
 - **Member list updates**: Add more customers
 
 ### Credentials (from Lodge Supabase project, NOT Reception)
-The Lodge project holds the historical guest list. Reception is the live booking DB used by the automailer and Marin — **do not use Reception credentials here**.
+The Lodge project (`LODGE_DATABASE_URL`) holds the historical guest list and is also the Automailer's live DB. Reception (`RECEPTION_DATABASE_URL`) is used only by the Marin voice receptionist — **do not use Reception credentials here**.
 
 To find/reset credentials:
 1. [supabase.com](https://supabase.com) → open the **Lodge** project
@@ -155,7 +155,7 @@ To find/reset credentials:
 
 > **Note**: the direct connection (`db.[ref].supabase.co`) does NOT work for Google Ads — only the **pooler** URL validates successfully. Error 4045 = wrong credentials or network block; error 4008 = table not found or wrong schema (confirm `guests` table exists in Lodge's `public` schema via Supabase SQL Editor).
 
-> **Pitfall**: this is the **Lodge** project password, not the Reception project password. Resetting Reception's password fixes the automailer/Marin DB connection (`DATABASE_URL` secret in Replit) but has no effect on this Google Ads connection. They are completely separate Supabase projects.
+> **Pitfall**: these are **Lodge** project credentials (`LODGE_DATABASE_URL`), not Reception. Resetting Reception's password (`RECEPTION_DATABASE_URL`) fixes the Marin/Receptionist service but has zero effect on Google Ads or the Automailer. They are completely separate Supabase projects.
 
 ## Maintenance Guidelines
 
