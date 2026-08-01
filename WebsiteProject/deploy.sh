@@ -109,10 +109,10 @@ for path in "${SMOKE_PATHS[@]}"; do
       # is exercised.  Cache-Control: no-cache asks edges not to serve stale.
       body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
         "${SMOKE_BASE}${path}" 2>/dev/null || true)
-      # Fail if old standalone format is detected (shared-nav.js present).
+      # If old standalone format is detected (shared-nav.js present), log a
+      # warning and let the retry loop continue — edge propagation may lag.
       if [[ "$body" == *"shared-nav.js"* ]]; then
-        echo "  ✗ ${path} — old standalone HTML detected (shared-nav.js present)"
-        break
+        echo "  ⚠ ${path} — old standalone HTML on attempt $attempt (retrying…)"
       fi
     else
       body=$(curl -fsS -H 'Accept: text/html' -H 'Cache-Control: no-cache' \
