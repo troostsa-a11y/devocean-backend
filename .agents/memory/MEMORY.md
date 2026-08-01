@@ -20,6 +20,7 @@
 - [Render Blueprint name+type match](render-blueprint-name-type.md) — both name AND type must match existing Render service or Blueprint silently creates a duplicate; current: Automailer(web) + Receptionist(web)
 - [CF Pages HTML cache staleness](cf-pages-html-cache.md) — CF default max-age=14400 on HTML keeps stale SPA shell 4h at edge+browser after deploys; middleware must set no-cache on HTML; curl without Accept: text/html 404s on SPA routes
 - [CF Pages asset hash collision](cf-pages-hash-collision.md) — wrangler dedupes by filename only; old content under a colliding Vite hash persists silently; fix = trivial whitespace change to force a new hash
+- [CF Pages SPA route shadowing](cf-pages-spa-route-shadowing.md) — stale pre-React .html survives CF Pages deploys indefinitely; context.next() serves it; fix = ASSETS.fetch('/') for all ROUTE_META paths; ?smoke= query masks the bug in smoke checks
 - [Marin VAD response muting](marin-vad-response-muting.md) — mute on response.created; unmute ONLY after browser acks local playback drained (response.done ≠ playback finished, long responses lag); sessionGreetingSent guard
 - [In-app browser viewport quirk](in-app-browser-viewport-quirk.md) — FB/IG in-app browsers briefly report near-zero innerHeight on first paint, breaking fixed-position UI; verify Clarity device metadata before assuming a screenshot is a thumbnail artifact
 - [Hero carousel load race](hero-carousel-load-race.md) — gate on real DOM onLoad (not new Image()), eager loading for slides 1+, delayed prev fade-out eliminates crossfade bleed
