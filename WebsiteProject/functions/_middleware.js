@@ -308,7 +308,7 @@ const ROUTE_META = {
 
   '/why-ponta': {
     title: 'Why Ponta do Ouro? | DEVOCEAN Lodge — Mozambique',
-    description: "Discover why Ponta do Ouro is Southern Africa's most rewarding destination: marine reserve, year-round dolphins, humpback whale watching, big-game fishing, surfing and uncrowded beaches.",
+    description: 'Why visit Ponta do Ouro? Marine reserve, year-round dolphins, whale watching, big-game fishing, surfing and uncrowded beaches at the tip of Mozambique.',
     ogTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
     staticHtml: `<div id="static-content">
