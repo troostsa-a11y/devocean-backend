@@ -369,6 +369,33 @@ const META_DESCRIPTIONS = {
 };
 
 
+const META_TITLES = {
+  home: {
+    'en-US': 'DEVOCEAN Lodge | Eco Beach Accommodation, Ponta do Ouro, Mozambique',
+    'en-GB': 'DEVOCEAN Lodge | Eco Beach Accommodation, Ponta do Ouro, Mozambique',
+    'af-ZA': 'DEVOCEAN Lodge | Eko-strandverblyf, Ponta do Ouro, Mosambiek',
+    'de-DE': 'DEVOCEAN Lodge | Öko-Strandunterkunft, Ponta do Ouro, Mosambik',
+    'es-ES': 'DEVOCEAN Lodge | Alojamiento Ecológico en la Playa, Ponta do Ouro, Mozambique',
+    'fr-FR': 'DEVOCEAN Lodge | Hébergement Écologique en Bord de Mer, Ponta do Ouro, Mozambique',
+    'it-IT': 'DEVOCEAN Lodge | Alloggio Ecologico sulla Spiaggia, Ponta do Ouro, Mozambico',
+    'ja-JP': 'DEVOCEAN Lodge | エコビーチ宿泊施設、ポンタ・ド・オウロ、モザンビーク',
+    'nl-NL': 'DEVOCEAN Lodge | Eco Strandaccommodatie, Ponta do Ouro, Mozambique',
+    'pl': 'DEVOCEAN Lodge | Ekologiczne Zakwaterowanie na Plaży, Ponta do Ouro, Mozambik',
+    'ro': 'DEVOCEAN Lodge | Cazare Ecologică la Plajă, Ponta do Ouro, Mozambic',
+    'sr': 'DEVOCEAN Lodge | Ekološki Smeštaj na Plaži, Ponta do Ouro, Mozambik',
+    'hr': 'DEVOCEAN Lodge | Ekološki Smještaj na Plaži, Ponta do Ouro, Mozambik',
+    'cs': 'DEVOCEAN Lodge | Ekologické Ubytování na Pláži, Ponta do Ouro, Mosambik',
+    'tr': 'DEVOCEAN Lodge | Çevre Dostu Plaj Konaklaması, Ponta do Ouro, Mozambik',
+    'pt-BR': 'DEVOCEAN Lodge | Hospedagem Ecológica na Praia, Ponta do Ouro, Moçambique',
+    'pt-PT': 'DEVOCEAN Lodge | Alojamento Ecológico na Praia, Ponta do Ouro, Moçambique',
+    'ru': 'DEVOCEAN Lodge | Экологичное Размещение на Пляже, Понта-ду-Ору, Мозамбик',
+    'sv': 'DEVOCEAN Lodge | Eko Strandboende, Ponta do Ouro, Moçambique',
+    'sw': 'DEVOCEAN Lodge | Malazi ya Kirafiki Mazingira Pwanini, Ponta do Ouro, Msumbiji',
+    'zh-CN': 'DEVOCEAN Lodge | 环保海滨住宿，蓬塔杜奥罗，莫桑比克',
+    'zu': 'DEVOCEAN Lodge | Indawo Yokuhlala Enobungani Bemvelo Ogwini, Ponta do Ouro, Mozambique',
+  }
+};
+
 /**
  * Return the localised meta description string for the home page
  * without touching the DOM. Falls back to en-US if the requested lang
@@ -376,6 +403,15 @@ const META_DESCRIPTIONS = {
  */
 export function getHomeDescription(lang = 'en-US') {
   return META_DESCRIPTIONS.home[lang] || META_DESCRIPTIONS.home['en-US'] || '';
+}
+
+/**
+ * Return the localised OG/Twitter title string for the home page
+ * without touching the DOM. Falls back to en-US if the requested lang
+ * has no entry.
+ */
+export function getHomeTitle(lang = 'en-US') {
+  return META_TITLES.home[lang] || META_TITLES.home['en-US'] || '';
 }
 
 /**
