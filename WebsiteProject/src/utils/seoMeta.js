@@ -6,12 +6,8 @@
  * │  It sets title, description, canonical, OG *and* Twitter tags together, │
  * │  and restores them on unmount so SPA navigation stays correct.          │
  * │                                                                         │
- * │  DO NOT use the imperative helpers (updatePageTitle, updateTwitterCard)  │
- * │  for new pages — they are @deprecated.  Those helpers touch only one   │
- * │  tag at a time and silently leave OG/Twitter tags stale.               │
- * │                                                                         │
- * │  Quick grep to find any remaining callers:                              │
- * │    grep -r "updatePageTitle\|updateTwitterCard" src/                   │
+ * │  DO NOT use one-shot imperative helpers for new pages — always use      │
+ * │  `useSeoPage` so OG and Twitter tags are set and restored together.    │
  * └─────────────────────────────────────────────────────────────────────────┘
  *
  * useSeoPage — shared hook for simple page-level SEO.
@@ -378,17 +374,6 @@ export function getExperienceDescription(experienceKey, lang = 'en-US') {
   return expDescriptions[lang] || expDescriptions['en-US'] || '';
 }
 
-/**
- * @deprecated Use the `useSeoPage` hook instead.
- * This helper sets only document.title and silently leaves OG, Twitter, and
- * other meta tags untouched.  Any new page or migration must call `useSeoPage`.
- */
-export function updatePageTitle(title) {
-  if (title) {
-    document.title = title;
-  }
-}
-
 export function updateCanonical(url) {
   let tag = document.querySelector('link[rel="canonical"]');
   if (!tag) {
@@ -397,22 +382,4 @@ export function updateCanonical(url) {
     document.head.appendChild(tag);
   }
   tag.href = url;
-}
-
-/**
- * @deprecated Use the `useSeoPage` hook instead.
- * This helper sets only Twitter meta tags and silently leaves OG tags and
- * other meta untouched.  Any new page or migration must call `useSeoPage`.
- */
-export function updateTwitterCard({ title, description, image }) {
-  const updates = [
-    { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
-    { name: 'twitter:image', content: image },
-  ];
-  updates.forEach(({ name, content }) => {
-    if (!content) return;
-    const tag = document.querySelector(`meta[name="${name}"]`);
-    if (tag) tag.content = content;
-  });
 }
