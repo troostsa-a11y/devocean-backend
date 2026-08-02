@@ -77,6 +77,11 @@ const moveScriptToBody = () => ({
 
 // Mobile-first config: 90% mobile traffic requires instant mobile LCP
 export default defineConfig({
+  test: {
+    environment: 'happy-dom',
+    globals: true,
+    setupFiles: [],
+  },
   define: {
     // Cache-busting token appended to runtime translation JSON fetches
     __BUILD_ID__: JSON.stringify(BUILD_ID),
