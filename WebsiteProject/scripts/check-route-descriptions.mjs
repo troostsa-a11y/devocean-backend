@@ -122,8 +122,10 @@ function parseExperienceKeys(source) {
 }
 
 // ---------------------------------------------------------------------------
-// Parse EXPERIENCE_META keys and their description values from _middleware.js
-// Returns a Map of key → description (trimmed string, possibly empty).
+// Parse EXPERIENCE_META keys and their description/ogTitle/ogDescription values
+// from _middleware.js.
+// Returns a Map of key → { description, ogTitle, ogDescription }
+// where each value is a trimmed string or null if the field is absent.
 // ---------------------------------------------------------------------------
 function parseExperienceMeta(source) {
   const start = source.indexOf('const EXPERIENCE_META');
@@ -142,9 +144,8 @@ function parseExperienceMeta(source) {
   const block = source.slice(start, end);
 
   // Match top-level entry keys (bare identifiers like  diving: { … })
-  // and the description field within each entry's value block.
-  // Strategy: find each top-level key block, then look for `description:` inside.
-  const descriptions = new Map();
+  // Strategy: find each top-level key block, then look for the required fields inside.
+  const entries = new Map();
 
   // Top-level keys in an object literal: bare words (no quotes, no /) followed by colon
   // e.g.  "  diving: {"
@@ -164,18 +165,21 @@ function parseExperienceMeta(source) {
     }
     const valueBlock = block.slice(valueStart, vEnd);
 
-    // Extract description: 'some text' or description: "some text"
-    const descRe = /\bdescription\s*:\s*(['"])([\s\S]*?)\1/;
-    const dm = descRe.exec(valueBlock);
-    if (dm) {
-      descriptions.set(key, dm[2].trim());
-    } else {
-      // Key exists in EXPERIENCE_META but has no description field at all
-      descriptions.set(key, null);
+    // Helper: extract a named string field, returns trimmed string or null if absent.
+    function extractField(fieldName) {
+      const re = new RegExp(`\\b${fieldName}\\s*:\\s*(['"])([\\s\\S]*?)\\1`);
+      const m = re.exec(valueBlock);
+      return m ? m[2].trim() : null;
     }
+
+    entries.set(key, {
+      description:   extractField('description'),
+      ogTitle:       extractField('ogTitle'),
+      ogDescription: extractField('ogDescription'),
+    });
   }
 
-  return descriptions;
+  return entries;
 }
 
 // ---------------------------------------------------------------------------
@@ -227,31 +231,35 @@ if (missingRoutes.length > 0) {
 }
 
 // ---------------------------------------------------------------------------
-// Check 2: EXPERIENCE_META — every key has a non-empty description field
+// Check 2: EXPERIENCE_META — every key has non-empty description, ogTitle,
+//          and ogDescription fields
 // ---------------------------------------------------------------------------
 const experienceMeta = parseExperienceMeta(middlewareSrc);
-const missingExpDesc = [];
+const missingExpFields = [];
 
-for (const [key, desc] of experienceMeta) {
-  if (desc === null) {
-    missingExpDesc.push({ key, reason: 'description field is missing entirely' });
-  } else if (desc === '') {
-    missingExpDesc.push({ key, reason: 'description field is empty' });
+for (const [key, fields] of experienceMeta) {
+  for (const fieldName of ['description', 'ogTitle', 'ogDescription']) {
+    const value = fields[fieldName];
+    if (value === null) {
+      missingExpFields.push({ key, reason: `${fieldName} field is missing entirely` });
+    } else if (value === '') {
+      missingExpFields.push({ key, reason: `${fieldName} field is empty` });
+    }
   }
 }
 
-if (missingExpDesc.length > 0) {
-  console.error('\n[check-route-descriptions] ❌ EXPERIENCE_META — missing description fields:\n');
-  for (const { key, reason } of missingExpDesc) {
+if (missingExpFields.length > 0) {
+  console.error('\n[check-route-descriptions] ❌ EXPERIENCE_META — missing or empty required fields:\n');
+  for (const { key, reason } of missingExpFields) {
     console.error(`  • ${key}  (${reason})`);
   }
   console.error(
-    '\nAdd a non-empty description to each EXPERIENCE_META entry in WebsiteProject/functions/_middleware.js before building.\n'
+    '\nEach EXPERIENCE_META entry in WebsiteProject/functions/_middleware.js must have non-empty description, ogTitle, and ogDescription before building.\n'
   );
   errors = true;
 } else {
   console.log(
-    `[check-route-descriptions] ✅ All ${experienceMeta.size} EXPERIENCE_META keys have a non-empty description.`
+    `[check-route-descriptions] ✅ All ${experienceMeta.size} EXPERIENCE_META keys have non-empty description, ogTitle, and ogDescription.`
   );
 }
 
