@@ -341,3 +341,95 @@ describe('useSeoPage — OG/Twitter tags during experience page navigation', () 
     expect(canonicalHref()).toBeNull();
   });
 });
+
+// ─── description tag absent from the DOM ─────────────────────────────────────
+
+describe('useSeoPage — description meta tag absent from the DOM', () => {
+  beforeEach(() => {
+    clearMetaTags();
+    document.title = BASELINE_TITLE;
+  });
+
+  afterEach(() => {
+    clearMetaTags();
+  });
+
+  it('does not create a description tag when none existed before mount', () => {
+    // The HTML shell has no <meta name="description"> — this happens on pages
+    // that never had one in the static shell.  The guard in useSeoPage is:
+    //   if (description && metaDesc) metaDesc.content = description;
+    // so when metaDesc is null the hook must leave the DOM unchanged.
+    const { unmount } = render(
+      <SeoTestPage seoProps={{ title: 'Test Page', description: 'A description' }} />
+    );
+
+    const tag = document.querySelector('meta[name="description"]');
+    expect(tag).toBeNull();
+
+    unmount();
+  });
+
+  it('leaves the description tag absent after unmount (consistent absence)', () => {
+    // Mount with a description prop but no pre-existing tag; unmount and
+    // confirm the DOM is still clean — no phantom tag left behind.
+    const { unmount } = render(
+      <SeoTestPage seoProps={{ title: 'Test Page', description: 'A description' }} />
+    );
+
+    unmount();
+
+    const tag = document.querySelector('meta[name="description"]');
+    expect(tag).toBeNull();
+  });
+
+  it('sets the description on an existing tag when one is present', () => {
+    // Verify the positive path still works: when a tag exists the hook updates it.
+    const descTag = document.createElement('meta');
+    descTag.setAttribute('name', 'description');
+    descTag.content = 'Old description';
+    document.head.appendChild(descTag);
+
+    const { unmount } = render(
+      <SeoTestPage seoProps={{ title: 'Test Page', description: 'New description' }} />
+    );
+
+    expect(document.querySelector('meta[name="description"]').content).toBe('New description');
+
+    unmount();
+  });
+
+  it('restores the original description on unmount when a tag was present', () => {
+    // useSeoPage captures prevDesc on mount and writes it back on cleanup.
+    const descTag = document.createElement('meta');
+    descTag.setAttribute('name', 'description');
+    descTag.content = 'Original description';
+    document.head.appendChild(descTag);
+
+    const { unmount } = render(
+      <SeoTestPage seoProps={{ title: 'Test Page', description: 'Override description' }} />
+    );
+
+    expect(document.querySelector('meta[name="description"]').content).toBe('Override description');
+
+    unmount();
+
+    expect(document.querySelector('meta[name="description"]').content).toBe('Original description');
+  });
+
+  it('navigating away does not cause the description to go blank when no tag exists', () => {
+    // Regression guard: SPA navigation to a page without a description prop
+    // must not leave an empty or missing description on the next page that
+    // also has no pre-existing tag.  Both pages share the same absent-tag state.
+    const { rerender, unmount } = render(
+      <SeoTestPage seoProps={{ title: 'Page A', description: 'Page A description' }} />
+    );
+
+    // Simulate navigating to a page that passes no description
+    rerender(<SeoTestPage seoProps={{ title: 'Page B' }} />);
+
+    // Still no description tag in the DOM — not blank, just absent
+    expect(document.querySelector('meta[name="description"]')).toBeNull();
+
+    unmount();
+  });
+});
