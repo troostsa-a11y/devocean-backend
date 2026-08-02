@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
+import { useSeoPage, getPontaDoOuroTitle } from '../utils/seoMeta';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './GuidePage.css';
 
 
-export default function PontaDoOuroPage({ bookUrl = '/book-direct' }) {
-  useEffect(() => {
-    document.title = 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge — Mozambique';
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      ROUTE_DESCRIPTIONS['/ponta-do-ouro']);
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro');
-  }, []);
+export default function PontaDoOuroPage({ lang = 'en-GB', bookUrl = '/book-direct' }) {
+  const localTitle = getPontaDoOuroTitle(lang);
+  useSeoPage({
+    title: localTitle,
+    description: ROUTE_DESCRIPTIONS['/ponta-do-ouro'],
+    canonical: 'https://devoceanlodge.com/ponta-do-ouro',
+    ogTitle: localTitle,
+    ogDescription: ROUTE_DESCRIPTIONS['/ponta-do-ouro'],
+    ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+    ogUrl: 'https://devoceanlodge.com/ponta-do-ouro',
+    ogType: 'website',
+    twitterTitle: localTitle,
+    twitterDescription: ROUTE_DESCRIPTIONS['/ponta-do-ouro'],
+    twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+  });
 
 
   return (

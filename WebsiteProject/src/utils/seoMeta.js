@@ -393,7 +393,127 @@ const META_TITLES = {
     'sw': 'DEVOCEAN Lodge | Malazi ya Kirafiki Mazingira Pwanini, Ponta do Ouro, Msumbiji',
     'zh-CN': 'DEVOCEAN Lodge | 环保海滨住宿，蓬塔杜奥罗，莫桑比克',
     'zu': 'DEVOCEAN Lodge | Indawo Yokuhlala Enobungani Bemvelo Ogwini, Ponta do Ouro, Mozambique',
-  }
+  },
+  story: {
+    'en-US': 'Our Story | DEVOCEAN Lodge',
+    'en-GB': 'Our Story | DEVOCEAN Lodge',
+    'af-ZA': 'Ons Verhaal | DEVOCEAN Lodge',
+    'de-DE': 'Unsere Geschichte | DEVOCEAN Lodge',
+    'es-ES': 'Nuestra Historia | DEVOCEAN Lodge',
+    'fr-FR': 'Notre Histoire | DEVOCEAN Lodge',
+    'it-IT': 'La Nostra Storia | DEVOCEAN Lodge',
+    'ja-JP': '私たちのストーリー | DEVOCEAN Lodge',
+    'nl-NL': 'Ons Verhaal | DEVOCEAN Lodge',
+    'pl': 'Nasza Historia | DEVOCEAN Lodge',
+    'ro': 'Povestea Noastră | DEVOCEAN Lodge',
+    'sr': 'Naša Priča | DEVOCEAN Lodge',
+    'hr': 'Naša Priča | DEVOCEAN Lodge',
+    'cs': 'Náš Příběh | DEVOCEAN Lodge',
+    'tr': 'Hikayemiz | DEVOCEAN Lodge',
+    'pt-BR': 'Nossa História | DEVOCEAN Lodge',
+    'pt-PT': 'A Nossa História | DEVOCEAN Lodge',
+    'ru': 'Наша История | DEVOCEAN Lodge',
+    'sv': 'Vår Historia | DEVOCEAN Lodge',
+    'sw': 'Hadithi Yetu | DEVOCEAN Lodge',
+    'zh-CN': '我们的故事 | DEVOCEAN Lodge',
+    'zu': 'Indaba Yethu | DEVOCEAN Lodge',
+  },
+  meals: {
+    'en-US': 'Meals at DEVOCEAN Lodge | Breakfast & Guest Dinners',
+    'en-GB': 'Meals at DEVOCEAN Lodge | Breakfast & Guest Dinners',
+    'af-ZA': 'Maaltye by DEVOCEAN Lodge | Ontbyt en Gasdinee',
+    'de-DE': 'Mahlzeiten im DEVOCEAN Lodge | Frühstück & Abendessen',
+    'es-ES': 'Comidas en DEVOCEAN Lodge | Desayuno y Cenas para Huéspedes',
+    'fr-FR': 'Repas au DEVOCEAN Lodge | Petit-déjeuner & Dîners',
+    'it-IT': 'Pasti al DEVOCEAN Lodge | Colazione & Cene per Ospiti',
+    'ja-JP': 'DEVOCEAN Lodgeの食事 | 朝食＆ゲストディナー',
+    'nl-NL': 'Maaltijden bij DEVOCEAN Lodge | Ontbijt & Gastenavondeten',
+    'pl': 'Posiłki w DEVOCEAN Lodge | Śniadanie i Kolacje dla Gości',
+    'ro': 'Mese la DEVOCEAN Lodge | Mic Dejun & Cine pentru Oaspeți',
+    'sr': 'Obroci u DEVOCEAN Lodge | Doručak i Večere za Goste',
+    'hr': 'Obroci u DEVOCEAN Lodge | Doručak i Večere za Goste',
+    'cs': 'Stravování v DEVOCEAN Lodge | Snídaně a Večeře pro Hosty',
+    'tr': "DEVOCEAN Lodge'de Yemekler | Kahvaltı ve Misafir Akşam Yemekleri",
+    'pt-BR': 'Refeições no DEVOCEAN Lodge | Café da Manhã & Jantares',
+    'pt-PT': 'Refeições no DEVOCEAN Lodge | Pequeno-almoço & Jantares',
+    'ru': 'Питание в DEVOCEAN Lodge | Завтрак и Ужины для Гостей',
+    'sv': 'Måltider på DEVOCEAN Lodge | Frukost & Middagar',
+    'sw': 'Milo katika DEVOCEAN Lodge | Kiamsha Kinywa na Chakula cha Jioni',
+    'zh-CN': 'DEVOCEAN Lodge餐饮 | 早餐及晚餐',
+    'zu': 'Ukudla eDEVOCEAN Lodge | Isidlo Sakusasa & Izidlo Zakusihlwa',
+  },
+  pontaDoOuro: {
+    'en-US': 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge',
+    'en-GB': 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge',
+    'af-ZA': 'Ponta do Ouro Reisgids | DEVOCEAN Lodge',
+    'de-DE': 'Ponta do Ouro Reiseführer | DEVOCEAN Lodge',
+    'es-ES': 'Guía de Viaje de Ponta do Ouro | DEVOCEAN Lodge',
+    'fr-FR': 'Guide de Voyage Ponta do Ouro | DEVOCEAN Lodge',
+    'it-IT': 'Guida di Viaggio Ponta do Ouro | DEVOCEAN Lodge',
+    'ja-JP': 'ポンタ・ド・オウロ旅行ガイド | DEVOCEAN Lodge',
+    'nl-NL': 'Ponta do Ouro Reisgids | DEVOCEAN Lodge',
+    'pl': 'Przewodnik Turystyczny Ponta do Ouro | DEVOCEAN Lodge',
+    'ro': 'Ghid de Călătorie Ponta do Ouro | DEVOCEAN Lodge',
+    'sr': 'Turistički Vodič Ponta do Ouro | DEVOCEAN Lodge',
+    'hr': 'Turistički Vodič Ponta do Ouro | DEVOCEAN Lodge',
+    'cs': 'Průvodce Cestováním Ponta do Ouro | DEVOCEAN Lodge',
+    'tr': 'Ponta do Ouro Seyahat Rehberi | DEVOCEAN Lodge',
+    'pt-BR': 'Guia de Viagem de Ponta do Ouro | DEVOCEAN Lodge',
+    'pt-PT': 'Guia de Viagem de Ponta do Ouro | DEVOCEAN Lodge',
+    'ru': 'Путеводитель по Понта-ду-Ору | DEVOCEAN Lodge',
+    'sv': 'Reseguide Ponta do Ouro | DEVOCEAN Lodge',
+    'sw': 'Mwongozo wa Kusafiri Ponta do Ouro | DEVOCEAN Lodge',
+    'zh-CN': '蓬塔杜奥罗旅游指南 | DEVOCEAN Lodge',
+    'zu': 'Izikhokelo Zokuhamba ePonta do Ouro | DEVOCEAN Lodge',
+  },
+  gettingThere: {
+    'en-US': 'Getting to Ponta do Ouro | Travel Guide',
+    'en-GB': 'Getting to Ponta do Ouro | Travel Guide',
+    'af-ZA': 'Hoe om Ponta do Ouro te Bereik | Reisgids',
+    'de-DE': 'Anreise nach Ponta do Ouro | Reiseführer',
+    'es-ES': 'Cómo Llegar a Ponta do Ouro | Guía de Viaje',
+    'fr-FR': 'Comment Rejoindre Ponta do Ouro | Guide de Voyage',
+    'it-IT': 'Come Arrivare a Ponta do Ouro | Guida di Viaggio',
+    'ja-JP': 'ポンタ・ド・オウロへのアクセス | 旅行ガイド',
+    'nl-NL': 'Hoe naar Ponta do Ouro Reizen | Reisgids',
+    'pl': 'Jak Dotrzeć do Ponta do Ouro | Przewodnik',
+    'ro': 'Cum să Ajungi la Ponta do Ouro | Ghid de Călătorie',
+    'sr': 'Kako Doći do Ponta do Ouro | Turistički Vodič',
+    'hr': 'Kako Doći do Ponta do Ouro | Turistički Vodič',
+    'cs': 'Jak se Dostat do Ponta do Ouro | Průvodce',
+    'tr': "Ponta do Ouro'ya Nasıl Gidilir | Seyahat Rehberi",
+    'pt-BR': 'Como Chegar a Ponta do Ouro | Guia de Viagem',
+    'pt-PT': 'Como Chegar a Ponta do Ouro | Guia de Viagem',
+    'ru': 'Как добраться до Понта-ду-Ору | Путеводитель',
+    'sv': 'Hur man Tar sig till Ponta do Ouro | Reseguide',
+    'sw': 'Jinsi ya Kufika Ponta do Ouro | Mwongozo wa Safari',
+    'zh-CN': '如何前往蓬塔杜奥罗 | 旅游指南',
+    'zu': 'Ukufika ePonta do Ouro | Izikhokelo Zokuhamba',
+  },
+  withoutFourByFour: {
+    'en-US': 'Visiting Ponta do Ouro Without a 4×4 | DEVOCEAN Lodge',
+    'en-GB': 'Visiting Ponta do Ouro Without a 4×4 | DEVOCEAN Lodge',
+    'af-ZA': "Besoek Ponta do Ouro Sonder 'n 4×4 | DEVOCEAN Lodge",
+    'de-DE': 'Ponta do Ouro Ohne 4×4 Besuchen | DEVOCEAN Lodge',
+    'es-ES': 'Visitar Ponta do Ouro Sin 4×4 | DEVOCEAN Lodge',
+    'fr-FR': 'Visiter Ponta do Ouro Sans 4×4 | DEVOCEAN Lodge',
+    'it-IT': 'Visitare Ponta do Ouro Senza 4×4 | DEVOCEAN Lodge',
+    'ja-JP': '4×4なしでポンタ・ド・オウロを訪れる | DEVOCEAN Lodge',
+    'nl-NL': 'Ponta do Ouro Bezoeken Zonder 4×4 | DEVOCEAN Lodge',
+    'pl': 'Ponta do Ouro Bez 4×4 | DEVOCEAN Lodge',
+    'ro': 'Vizitând Ponta do Ouro Fără 4×4 | DEVOCEAN Lodge',
+    'sr': 'Poseta Ponta do Ouro Bez 4×4 | DEVOCEAN Lodge',
+    'hr': 'Posjet Ponta do Ouro Bez 4×4 | DEVOCEAN Lodge',
+    'cs': 'Návštěva Ponta do Ouro Bez 4×4 | DEVOCEAN Lodge',
+    'tr': '4×4 Olmadan Ponta do Ouro Ziyareti | DEVOCEAN Lodge',
+    'pt-BR': 'Visitar Ponta do Ouro Sem 4×4 | DEVOCEAN Lodge',
+    'pt-PT': 'Visitar Ponta do Ouro Sem 4×4 | DEVOCEAN Lodge',
+    'ru': 'Посещение Понта-ду-Ору Без 4×4 | DEVOCEAN Lodge',
+    'sv': 'Besöka Ponta do Ouro Utan 4×4 | DEVOCEAN Lodge',
+    'sw': 'Kutembelea Ponta do Ouro Bila 4×4 | DEVOCEAN Lodge',
+    'zh-CN': '无需4×4越野车游览蓬塔杜奥罗 | DEVOCEAN Lodge',
+    'zu': 'Ukuvakashela iPonta do Ouro Ngaphandle kwe-4×4 | DEVOCEAN Lodge',
+  },
 };
 
 /**
@@ -412,6 +532,31 @@ export function getHomeDescription(lang = 'en-US') {
  */
 export function getHomeTitle(lang = 'en-US') {
   return META_TITLES.home[lang] || META_TITLES.home['en-US'] || '';
+}
+
+/** Localised title for the Story page. Falls back to en-GB. */
+export function getStoryTitle(lang = 'en-GB') {
+  return META_TITLES.story[lang] || META_TITLES.story['en-GB'] || '';
+}
+
+/** Localised title for the Meals page. Falls back to en-GB. */
+export function getMealsTitle(lang = 'en-GB') {
+  return META_TITLES.meals[lang] || META_TITLES.meals['en-GB'] || '';
+}
+
+/** Localised title for the Ponta do Ouro guide page. Falls back to en-GB. */
+export function getPontaDoOuroTitle(lang = 'en-GB') {
+  return META_TITLES.pontaDoOuro[lang] || META_TITLES.pontaDoOuro['en-GB'] || '';
+}
+
+/** Localised title for the Getting There guide page. Falls back to en-GB. */
+export function getGettingThereTitle(lang = 'en-GB') {
+  return META_TITLES.gettingThere[lang] || META_TITLES.gettingThere['en-GB'] || '';
+}
+
+/** Localised title for the Without 4×4 guide page. Falls back to en-GB. */
+export function getWithoutFourByFourTitle(lang = 'en-GB') {
+  return META_TITLES.withoutFourByFour[lang] || META_TITLES.withoutFourByFour['en-GB'] || '';
 }
 
 /**

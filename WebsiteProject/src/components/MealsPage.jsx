@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSeoPage } from '../utils/seoMeta';
+import { useSeoPage, getMealsTitle } from '../utils/seoMeta';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './MealsPage.css';
 
@@ -25,16 +25,17 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
 
   // SEO — title + meta description
   // description MUST match ROUTE_META['/devocean-lodge-meals'].description in _middleware.js exactly
+  const localTitle = getMealsTitle(lang);
   useSeoPage({
-    title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
+    title: localTitle,
     description: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
     canonical: 'https://devoceanlodge.com/devocean-lodge-meals',
-    ogTitle: 'Meals at DEVOCEAN Lodge | Breakfast & Guest Dinners',
+    ogTitle: localTitle,
     ogDescription: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
     ogImage: 'https://devoceanlodge.com/photos/gallery/04-desktop.webp',
     ogUrl: 'https://devoceanlodge.com/devocean-lodge-meals',
     ogType: 'website',
-    twitterTitle: 'Meals at DEVOCEAN Lodge | Breakfast & Guest Dinners',
+    twitterTitle: localTitle,
     twitterDescription: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
     twitterImage: 'https://devoceanlodge.com/photos/gallery/04-desktop.webp',
   });

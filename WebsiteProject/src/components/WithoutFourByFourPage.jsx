@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
+import { useSeoPage, getWithoutFourByFourTitle } from '../utils/seoMeta';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './GuidePage.css';
 
 
-export default function WithoutFourByFourPage({ bookUrl = '/book-direct' }) {
-  useEffect(() => {
-    document.title = 'Visiting Ponta do Ouro Without a 4×4 | Complete Guide | DEVOCEAN Lodge';
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4']);
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro-without-4x4');
-  }, []);
+export default function WithoutFourByFourPage({ lang = 'en-GB', bookUrl = '/book-direct' }) {
+  const localTitle = getWithoutFourByFourTitle(lang);
+  useSeoPage({
+    title: localTitle,
+    description: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
+    canonical: 'https://devoceanlodge.com/ponta-do-ouro-without-4x4',
+    ogTitle: localTitle,
+    ogDescription: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
+    ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+    ogUrl: 'https://devoceanlodge.com/ponta-do-ouro-without-4x4',
+    ogType: 'website',
+    twitterTitle: localTitle,
+    twitterDescription: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
+    twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+  });
 
 
   return (

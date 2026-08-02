@@ -1,15 +1,23 @@
-import { useEffect } from 'react';
+import { useSeoPage, getGettingThereTitle } from '../utils/seoMeta';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './GuidePage.css';
 
 
-export default function GettingTherePage({ bookUrl = '/book-direct' }) {
-  useEffect(() => {
-    document.title = 'Getting to Ponta do Ouro from Kosi Bay and Maputo | Travel Guide';
-    document.querySelector('meta[name="description"]')?.setAttribute('content',
-      ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro']);
-    document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/getting-to-ponta-do-ouro');
-  }, []);
+export default function GettingTherePage({ lang = 'en-GB', bookUrl = '/book-direct' }) {
+  const localTitle = getGettingThereTitle(lang);
+  useSeoPage({
+    title: localTitle,
+    description: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
+    canonical: 'https://devoceanlodge.com/getting-to-ponta-do-ouro',
+    ogTitle: localTitle,
+    ogDescription: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
+    ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+    ogUrl: 'https://devoceanlodge.com/getting-to-ponta-do-ouro',
+    ogType: 'website',
+    twitterTitle: localTitle,
+    twitterDescription: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
+    twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+  });
 
 
   return (

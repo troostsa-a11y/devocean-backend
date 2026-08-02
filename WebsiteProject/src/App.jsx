@@ -280,13 +280,13 @@ export default function App() {
           <MealsPage lang={lang} bookUrl={bookUrl} />
         </Route>
         <Route path="/ponta-do-ouro">
-          <PontaDoOuroPage bookUrl={bookUrl} />
+          <PontaDoOuroPage lang={lang} bookUrl={bookUrl} />
         </Route>
         <Route path="/getting-to-ponta-do-ouro">
-          <GettingTherePage bookUrl={bookUrl} />
+          <GettingTherePage lang={lang} bookUrl={bookUrl} />
         </Route>
         <Route path="/ponta-do-ouro-without-4x4">
-          <WithoutFourByFourPage bookUrl={bookUrl} />
+          <WithoutFourByFourPage lang={lang} bookUrl={bookUrl} />
         </Route>
         <Route path="/ponta-do-ouro-accommodation">
           <AccommodationPage bookUrl={bookUrl} />
