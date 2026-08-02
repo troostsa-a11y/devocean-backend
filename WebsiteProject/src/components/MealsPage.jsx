@@ -29,6 +29,14 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
     title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
     description: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
     canonical: 'https://devoceanlodge.com/devocean-lodge-meals',
+    ogTitle: 'Meals at DEVOCEAN Lodge | Breakfast & Guest Dinners',
+    ogDescription: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
+    ogImage: 'https://devoceanlodge.com/photos/gallery/04-desktop.webp',
+    ogUrl: 'https://devoceanlodge.com/devocean-lodge-meals',
+    ogType: 'website',
+    twitterTitle: 'Meals at DEVOCEAN Lodge | Breakfast & Guest Dinners',
+    twitterDescription: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
+    twitterImage: 'https://devoceanlodge.com/photos/gallery/04-desktop.webp',
   });
 
 

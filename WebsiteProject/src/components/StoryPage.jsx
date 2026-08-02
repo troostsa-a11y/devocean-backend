@@ -28,6 +28,14 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
     title: 'Our Story | DEVOCEAN Lodge',
     description: ROUTE_DESCRIPTIONS['/story'],
     canonical: 'https://devoceanlodge.com/story',
+    ogTitle: 'Our Story | DEVOCEAN Lodge',
+    ogDescription: ROUTE_DESCRIPTIONS['/story'],
+    ogImage: 'https://devoceanlodge.com/images/sustainability-partnership.png',
+    ogUrl: 'https://devoceanlodge.com/story',
+    ogType: 'website',
+    twitterTitle: 'Our Story | DEVOCEAN Lodge',
+    twitterDescription: ROUTE_DESCRIPTIONS['/story'],
+    twitterImage: 'https://devoceanlodge.com/images/sustainability-partnership.png',
   });
 
 

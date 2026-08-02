@@ -199,8 +199,10 @@ export default function App() {
     description: homeDesc,
     ogTitle: homeTitle || undefined,
     ogDescription: homeDesc || undefined,
+    ogImage: isHomePage ? 'https://devoceanlodge.com/photos/hero01.jpg' : undefined,
     twitterTitle: homeTitle || undefined,
     twitterDescription: homeDesc || undefined,
+    twitterImage: isHomePage ? 'https://devoceanlodge.com/photos/hero01.jpg' : undefined,
   });
 
   // WebMCP — expose site tools to AI agents via the browser (progressive enhancement)
