@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSeoPage } from '../utils/seoMeta';
 import './StoryPage.css';
 
 
@@ -21,17 +22,12 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   }, [lang]);
 
   // SEO — title + meta description
-  useEffect(() => {
-    document.title = 'Our Story | DEVOCEAN Lodge';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta)
-      meta.setAttribute(
-        'content',
-        "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
-      );
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', 'https://devoceanlodge.com/story');
-  }, []);
+  // description MUST match ROUTE_META['/story'].description in _middleware.js exactly
+  useSeoPage({
+    title: 'Our Story | DEVOCEAN Lodge',
+    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
+    canonical: 'https://devoceanlodge.com/story',
+  });
 
 
   // Mark hero overlay as seen when visitor navigates back to the homepage

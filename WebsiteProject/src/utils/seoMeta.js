@@ -1,3 +1,41 @@
+/**
+ * useSeoPage — shared hook for simple page-level SEO.
+ *
+ * Sets document.title, meta[name="description"] and the canonical link on mount,
+ * and restores the previous values on unmount (SPA back-navigation).
+ *
+ * The `description` value MUST be identical to the corresponding ROUTE_META
+ * entry in functions/_middleware.js — they are the single source of truth for
+ * each page's description, injected into the static HTML before React hydrates.
+ * Keeping them in sync prevents Bing (and other crawlers) from seeing a
+ * mismatch between the static crawl and the live JS test.
+ *
+ * Rules:
+ *  - description ≤ 160 characters
+ *  - description must exactly match the middleware ROUTE_META.description string
+ */
+import { useEffect } from 'react';
+
+export function useSeoPage({ title, description, canonical }) {
+  useEffect(() => {
+    const prevTitle = document.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const prevDesc = metaDesc?.content || '';
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    const prevCanonical = canonicalTag?.href || '';
+
+    if (title) document.title = title;
+    if (description && metaDesc) metaDesc.content = description;
+    if (canonical) updateCanonical(canonical);
+
+    return () => {
+      document.title = prevTitle;
+      if (metaDesc) metaDesc.content = prevDesc;
+      if (prevCanonical) updateCanonical(prevCanonical);
+    };
+  }, [title, description, canonical]);
+}
+
 const META_DESCRIPTIONS = {
   home: {
     'en-US': 'Eco-friendly beach accommodation in Ponta do Ouro, Mozambique. Safari tents, cottage & chalet near the beach. Family-run hospitality and great value.',

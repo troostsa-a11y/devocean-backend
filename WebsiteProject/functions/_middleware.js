@@ -308,7 +308,7 @@ const ROUTE_META = {
 
   '/why-ponta': {
     title: 'Why Ponta do Ouro? | DEVOCEAN Lodge — Mozambique',
-    description: 'Why visit Ponta do Ouro? Marine reserve, year-round dolphins, whale watching, big-game fishing, surfing and uncrowded beaches at the tip of Mozambique.',
+    description: 'Why visit Ponta do Ouro? Marine reserve, wild dolphins, humpback whales, world-class diving, big-game fishing and uncrowded beaches in Southern Africa.',
     ogTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
     staticHtml: `<div id="static-content">
@@ -329,7 +329,7 @@ const ROUTE_META = {
 
   '/story': {
     title: 'Our Story | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
-    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local community impact.",
+    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
     ogTitle: 'Our Story | DEVOCEAN Lodge',
     ogDescription: 'Family-run eco-lodge in Ponta do Ouro since 2015. Your stay supports sustainable development, local farming, and community projects in southern Mozambique.',
     jsonLd: [

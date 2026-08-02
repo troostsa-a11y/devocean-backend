@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSeoPage } from '../utils/seoMeta';
 import './MealsPage.css';
 
 
@@ -22,17 +23,12 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   }, [lang]);
 
   // SEO — title + meta description
-  useEffect(() => {
-    document.title = 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners';
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta)
-      meta.setAttribute(
-        'content',
-        'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
-      );
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) canonical.setAttribute('href', 'https://devoceanlodge.com/devocean-lodge-meals');
-  }, []);
+  // description MUST match ROUTE_META['/devocean-lodge-meals'].description in _middleware.js exactly
+  useSeoPage({
+    title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
+    description: 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
+    canonical: 'https://devoceanlodge.com/devocean-lodge-meals',
+  });
 
 
   return (

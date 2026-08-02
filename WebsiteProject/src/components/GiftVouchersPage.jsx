@@ -575,7 +575,7 @@ export default function GiftVouchersPage({ lang }) {
     const metaDesc = document.querySelector('meta[name="description"]');
     const prevDesc = metaDesc?.content || '';
     document.title = 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
-    if (metaDesc) metaDesc.content = 'Give the gift of a beach escape at DEVOCEAN Lodge, Ponta do Ouro, Mozambique. Choose any USD amount, delivered by email, redeemable on direct bookings.';
+    if (metaDesc) metaDesc.content = 'Give the gift of a stay at DEVOCEAN Lodge in Ponta do Ouro, Mozambique. Gift vouchers available for any accommodation type, valid for 12 months from purchase.';
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;

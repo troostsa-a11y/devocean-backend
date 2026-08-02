@@ -122,7 +122,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const metaDesc = document.querySelector('meta[name="description"]');
     const prevDesc = metaDesc?.content || '';
     document.title = 'Book Direct | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
-    if (metaDesc) metaDesc.content = 'Book your stay directly at DEVOCEAN Lodge in Ponta do Ouro, Mozambique. Check live availability and get the best rate for safari tents, cottage or chalet. Instant confirmation, no booking fees.';
+    if (metaDesc) metaDesc.content = 'Book direct at DEVOCEAN Lodge for the best rate. No booking fees, no OTA markup. Instant confirmation. Safari tents, cottage and chalet, Ponta do Ouro.';
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;

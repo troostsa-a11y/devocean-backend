@@ -4,7 +4,7 @@
 export const WHY_PONTA_CONTENT = {
   en: {
     pageTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge - Mozambique',
-    metaDescription: 'Why visit Ponta do Ouro? Marine reserve, year-round dolphins, whale watching, big-game fishing, surfing and uncrowded beaches at the tip of Mozambique.',
+    metaDescription: 'Why visit Ponta do Ouro? Marine reserve, wild dolphins, humpback whales, world-class diving, big-game fishing and uncrowded beaches in Southern Africa.',
     ogTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge',
     ogDescription: 'Discover why Ponta do Ouro is the ultimate Mozambican paradise. Pristine beaches, world-class diving, wildlife reserves, and authentic local culture await.',
     heroSubtitle: 'A hidden gem where pristine beaches meet vibrant marine life and endless adventures',
