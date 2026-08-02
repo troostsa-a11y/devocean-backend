@@ -1,21 +1,21 @@
-import { useSeoPage, getGettingThereTitle } from '../utils/seoMeta';
-import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
+import { useSeoPage, getGettingThereTitle, getGettingThereDescription } from '../utils/seoMeta';
 import './GuidePage.css';
 
 
 export default function GettingTherePage({ lang = 'en-GB', bookUrl = '/book-direct' }) {
   const localTitle = getGettingThereTitle(lang);
+  const localDescription = getGettingThereDescription(lang);
   useSeoPage({
     title: localTitle,
-    description: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
+    description: localDescription,
     canonical: 'https://devoceanlodge.com/getting-to-ponta-do-ouro',
     ogTitle: localTitle,
-    ogDescription: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
+    ogDescription: localDescription,
     ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
     ogUrl: 'https://devoceanlodge.com/getting-to-ponta-do-ouro',
     ogType: 'website',
     twitterTitle: localTitle,
-    twitterDescription: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
+    twitterDescription: localDescription,
     twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
   });
 

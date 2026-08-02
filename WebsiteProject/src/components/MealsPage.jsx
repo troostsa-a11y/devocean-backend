@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSeoPage, getMealsTitle } from '../utils/seoMeta';
-import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
+import { useSeoPage, getMealsTitle, getMealsDescription } from '../utils/seoMeta';
 import './MealsPage.css';
 
 
@@ -26,17 +25,18 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   // SEO — title + meta description
   // description MUST match ROUTE_META['/devocean-lodge-meals'].description in _middleware.js exactly
   const localTitle = getMealsTitle(lang);
+  const localDescription = getMealsDescription(lang);
   useSeoPage({
     title: localTitle,
-    description: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
+    description: localDescription,
     canonical: 'https://devoceanlodge.com/devocean-lodge-meals',
     ogTitle: localTitle,
-    ogDescription: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
+    ogDescription: localDescription,
     ogImage: 'https://devoceanlodge.com/photos/gallery/04-desktop.webp',
     ogUrl: 'https://devoceanlodge.com/devocean-lodge-meals',
     ogType: 'website',
     twitterTitle: localTitle,
-    twitterDescription: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
+    twitterDescription: localDescription,
     twitterImage: 'https://devoceanlodge.com/photos/gallery/04-desktop.webp',
   });
 

@@ -1,21 +1,21 @@
-import { useSeoPage, getWithoutFourByFourTitle } from '../utils/seoMeta';
-import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
+import { useSeoPage, getWithoutFourByFourTitle, getWithoutFourByFourDescription } from '../utils/seoMeta';
 import './GuidePage.css';
 
 
 export default function WithoutFourByFourPage({ lang = 'en-GB', bookUrl = '/book-direct' }) {
   const localTitle = getWithoutFourByFourTitle(lang);
+  const localDescription = getWithoutFourByFourDescription(lang);
   useSeoPage({
     title: localTitle,
-    description: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
+    description: localDescription,
     canonical: 'https://devoceanlodge.com/ponta-do-ouro-without-4x4',
     ogTitle: localTitle,
-    ogDescription: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
+    ogDescription: localDescription,
     ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
     ogUrl: 'https://devoceanlodge.com/ponta-do-ouro-without-4x4',
     ogType: 'website',
     twitterTitle: localTitle,
-    twitterDescription: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
+    twitterDescription: localDescription,
     twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
   });
 

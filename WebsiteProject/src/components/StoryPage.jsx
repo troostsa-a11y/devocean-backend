@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSeoPage, getStoryTitle } from '../utils/seoMeta';
-import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
+import { useSeoPage, getStoryTitle, getStoryDescription } from '../utils/seoMeta';
 import './StoryPage.css';
 
 
@@ -25,17 +24,18 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   // SEO — title + meta description
   // description MUST match ROUTE_META['/story'].description in _middleware.js exactly
   const localTitle = getStoryTitle(lang);
+  const localDescription = getStoryDescription(lang);
   useSeoPage({
     title: localTitle,
-    description: ROUTE_DESCRIPTIONS['/story'],
+    description: localDescription,
     canonical: 'https://devoceanlodge.com/story',
     ogTitle: localTitle,
-    ogDescription: ROUTE_DESCRIPTIONS['/story'],
+    ogDescription: localDescription,
     ogImage: 'https://devoceanlodge.com/images/sustainability-partnership.png',
     ogUrl: 'https://devoceanlodge.com/story',
     ogType: 'website',
     twitterTitle: localTitle,
-    twitterDescription: ROUTE_DESCRIPTIONS['/story'],
+    twitterDescription: localDescription,
     twitterImage: 'https://devoceanlodge.com/images/sustainability-partnership.png',
   });
 

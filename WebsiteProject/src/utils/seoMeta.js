@@ -365,7 +365,127 @@ const META_DESCRIPTIONS = {
       'zh-CN': '蓬塔杜奥罗灯塔 - 莫桑比克南部的历史地标和观景点。全景海洋景观和摄影点。',
       'zu': 'Isibonakaliso sase-Ponta do Ouro - Indawo yomlando nombono omuhle eNingizimu yeMozambique. Ukubona ulwandle ngokuphelele.'
     }
-  }
+  },
+  story: {
+    'en-US': "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
+    'en-GB': "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
+    'af-ZA': 'Ontdek DEVOCEAN Lodge se reis sedert 2015. Familiegedrewe, gemeenskapsgefokus eco-lodge in Ponta do Ouro met planne vir volhoubare groei en plaaslike impak.',
+    'de-DE': 'Entdecken Sie die Geschichte von DEVOCEAN Lodge seit 2015. Familiengeführtes, gemeinschaftsorientiertes Öko-Lodge in Ponta do Ouro mit nachhaltigem Wachstum.',
+    'es-ES': 'Descubre el viaje de DEVOCEAN Lodge desde 2015. Eco-lodge familiar y comunitario en Ponta do Ouro con planes de crecimiento sostenible e impacto local.',
+    'fr-FR': "Découvrez le parcours de DEVOCEAN Lodge depuis 2015. Éco-lodge familial axé sur la communauté à Ponta do Ouro avec des projets de croissance durable.",
+    'it-IT': 'Scopri il percorso di DEVOCEAN Lodge dal 2015. Eco-lodge a conduzione familiare e orientato alla comunità a Ponta do Ouro, con crescita sostenibile.',
+    'ja-JP': '2015年以来のDEVOCEAN Lodgeの旅を発見。ポンタ・ド・オウロのファミリー経営・地域密着型エコロッジ。持続可能な成長と地域への貢献を目指す。',
+    'nl-NL': 'Ontdek de reis van DEVOCEAN Lodge sinds 2015. Familiebedrijf, gemeenschapsgericht eco-lodge in Ponta do Ouro met plannen voor duurzame groei.',
+    'pl': 'Odkryj historię DEVOCEAN Lodge od 2015 roku. Rodzinne, nastawione na społeczność eco-lodge w Ponta do Ouro z planami zrównoważonego rozwoju.',
+    'ro': 'Descoperiți călătoria DEVOCEAN Lodge din 2015. Eco-lodge familial axat pe comunitate în Ponta do Ouro, cu planuri de creștere durabilă și impact local.',
+    'sr': 'Otkrijte priču DEVOCEAN Lodge od 2015. Porodični, zajednici posvećen eco-lodge u Ponta do Ouro sa planovima za održivi razvoj i lokalni uticaj.',
+    'hr': 'Otkrijte priču DEVOCEAN Lodge od 2015. Obiteljski, zajednici posvećen eco-lodge u Ponta do Ouro s planovima za održivi razvoj i lokalni utjecaj.',
+    'cs': 'Objevte cestu DEVOCEAN Lodge od roku 2015. Rodinný, komunitně zaměřený eco-lodge v Ponta do Ouro s plány udržitelného rozvoje a místního dopadu.',
+    'tr': "DEVOCEAN Lodge'un 2015'ten bu yana yolculuğunu keşfedin. Ponta do Ouro'da aile işletmesi, toplum odaklı eco-lodge. Sürdürülebilir büyüme planları.",
+    'pt-BR': 'Descubra a jornada do DEVOCEAN Lodge desde 2015. Eco-lodge familiar e comunitário em Ponta do Ouro com planos de crescimento sustentável e impacto local.',
+    'pt-PT': 'Descubra a jornada do DEVOCEAN Lodge desde 2015. Eco-lodge familiar e comunitário em Ponta do Ouro com planos de crescimento sustentável e impacto local.',
+    'ru': 'Узнайте историю DEVOCEAN Lodge с 2015 года. Семейный эко-лодж в Понта-ду-Ору с фокусом на сообщество и планами устойчивого развития.',
+    'sv': 'Upptäck DEVOCEAN Lodges resa sedan 2015. Familjedriven, samhällsfokuserad eco-lodge i Ponta do Ouro med planer för hållbar tillväxt och lokalt inflytande.',
+    'sw': 'Gundua safari ya DEVOCEAN Lodge tangu 2015. Eco-lodge inayomilikiwa na familia, inayolenga jamii huko Ponta do Ouro na mipango ya ukuaji endelevu.',
+    'zh-CN': '探索DEVOCEAN Lodge自2015年以来的旅程。蓬塔杜奥罗家族经营、以社区为重的生态旅馆，致力于可持续发展与地方影响。',
+    'zu': 'Thola uhambo lweDEVOCEAN Lodge kusukela ngo-2015. I-eco-lodge eqhutshwa ngumndeni ePonta do Ouro, ekhuthaza umphakathi nokwanda okuqhubekayo.',
+  },
+  meals: {
+    'en-US': 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
+    'en-GB': 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
+    'af-ZA': 'Ontbyt is ingesluit by DEVOCEAN Lodge in Ponta do Ouro. Huisgaste kan ook vooraf vars bereide aandetes by ons restourant bestel.',
+    'de-DE': 'Das Frühstück ist im DEVOCEAN Lodge in Ponta do Ouro inbegriffen. Hausgäste können auch frisch zubereitete Abendessen vorbestellen.',
+    'es-ES': 'El desayuno está incluido en DEVOCEAN Lodge en Ponta do Ouro. Los huéspedes también pueden reservar cenas recién preparadas en nuestro restaurante.',
+    'fr-FR': 'Le petit-déjeuner est inclus au DEVOCEAN Lodge à Ponta do Ouro. Les résidents peuvent aussi commander des dîners frais préparés sur place.',
+    'it-IT': 'La colazione è inclusa al DEVOCEAN Lodge a Ponta do Ouro. Gli ospiti residenti possono anche prenotare cene fresche preparate nel nostro ristorante.',
+    'ja-JP': 'ポンタ・ド・オウロのDEVOCEAN Lodgeでは朝食が含まれます。宿泊ゲストはレストランで新鮮に調理された夕食を事前注文できます。',
+    'nl-NL': 'Ontbijt is inbegrepen bij DEVOCEAN Lodge in Ponta do Ouro. Hotelgasten kunnen ook vers bereide diners vooraf bestellen bij ons restaurant.',
+    'pl': 'Śniadanie jest wliczone w cenę w DEVOCEAN Lodge w Ponta do Ouro. Goście mogą też zamawiać świeżo przygotowane kolacje w naszej restauracji.',
+    'ro': 'Micul dejun este inclus la DEVOCEAN Lodge în Ponta do Ouro. Oaspeții rezidenți pot comanda și cine proaspăt pregătite la restaurantul nostru.',
+    'sr': 'Doručak je uključen u DEVOCEAN Lodge u Ponta do Ouro. Gosti mogu unapred naručiti svježe pripremljene večere iz našeg restorana.',
+    'hr': 'Doručak je uključen u DEVOCEAN Lodge u Ponta do Ouro. Gosti mogu unaprijed naručiti svježe pripremljene večere iz našeg restorana.',
+    'cs': 'Snídaně je zahrnuta v DEVOCEAN Lodge v Ponta do Ouro. Hosté mohou také předem objednat čerstvě připravené večeře z našeho restaurantu.',
+    'tr': "Kahvaltı DEVOCEAN Lodge'da Ponta do Ouro'da dahildir. Konaklayan misafirler restoranımızdan taze hazırlanmış akşam yemekleri de sipariş edebilir.",
+    'pt-BR': 'O café da manhã está incluído no DEVOCEAN Lodge em Ponta do Ouro. Hóspedes também podem pré-encomendar jantares frescos do nosso restaurante.',
+    'pt-PT': 'O pequeno-almoço está incluído no DEVOCEAN Lodge em Ponta do Ouro. Os hóspedes também podem pré-encomendar jantares frescos do restaurante.',
+    'ru': 'Завтрак включён в DEVOCEAN Lodge в Понта-ду-Ору. Проживающие гости могут заранее заказать свежеприготовленные ужины в нашем ресторане.',
+    'sv': 'Frukost ingår på DEVOCEAN Lodge i Ponta do Ouro. Boende gäster kan också förbeställa nylagad middag från vår restaurang.',
+    'sw': 'Kiamsha kinywa kimeingizwa katika DEVOCEAN Lodge huko Ponta do Ouro. Wageni wanaoishi wanaweza pia kuagiza mapema chakula cha jioni kilichoandaliwa safi.',
+    'zh-CN': '蓬塔杜奥罗DEVOCEAN Lodge含早餐。住宿客人还可提前预订餐厅新鲜烹制的晚餐。',
+    'zu': 'Isidlo sakusasa sifakiwe eDEVOCEAN Lodge ePonta do Ouro. Izivakashi eziqeqeshiwe zingaphinde ziodele izidlo zakusihlwa ezikhiqizwa ngokutsha.',
+  },
+  pontaDoOuro: {
+    'en-US': 'Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, and whale watching June–November.',
+    'en-GB': 'Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, and whale watching June–November.',
+    'af-ZA': 'Volledige reisgids na Ponta do Ouro, Mosambiek — ongerepte strande, 1 200+ mariene spesies, etiese dolfynswem en walvisbesigtiging Junie–November.',
+    'de-DE': 'Vollständiger Reiseführer nach Ponta do Ouro, Mosambik — unberührte Strände, 1.200+ Meeresarten, ethisches Delfinschwimmen, Walbeobachtung Jun.–Nov.',
+    'es-ES': 'Guía completa de viaje a Ponta do Ouro, Mozambique — playas vírgenes, 1.200+ especies marinas, nado ético con delfines y avistamiento de ballenas.',
+    'fr-FR': 'Guide de voyage complet pour Ponta do Ouro, Mozambique — plages vierges, 1 200+ espèces marines, nage éthique avec dauphins, baleines juin–novembre.',
+    'it-IT': 'Guida di viaggio completa per Ponta do Ouro, Mozambico — spiagge incontaminate, 1.200+ specie marine, nuoto etico con delfini, balene giu.–nov.',
+    'ja-JP': 'モザンビーク・ポンタ・ド・オウロ完全旅行ガイド。手つかずのビーチ、1,200種以上の海洋生物、倫理的なイルカ水泳、クジラ観察6月〜11月。',
+    'nl-NL': 'Complete reisgids naar Ponta do Ouro, Mozambique — ongerepte stranden, 1.200+ mariene soorten, ethisch dolfijnen zwemmen en walvissen jun.–nov.',
+    'pl': 'Kompletny przewodnik po Ponta do Ouro, Mozambik — dziewicze plaże, 1200+ gatunków morskich, etyczne pływanie z delfinami, obserwacja wielorybów.',
+    'ro': 'Ghid complet de călătorie în Ponta do Ouro, Mozambic — plaje curate, 1.200+ specii marine, înot etic cu delfini și observarea balenelor iun.–nov.',
+    'sr': 'Potpuni turistički vodič za Ponta do Ouro, Mozambik — netaknute plaže, 1.200+ morskih vrsta, etično plivanje s delfinima, posmatranje kitova jun–nov.',
+    'hr': 'Potpuni turistički vodič za Ponta do Ouro, Mozambik — netaknute plaže, 1.200+ morskih vrsta, etično plivanje s dupinima, promatranje kitova jun–nov.',
+    'cs': 'Kompletní průvodce cestování do Ponta do Ouro, Mosambik — nedotčené pláže, 1 200+ mořských druhů, etické plavání s delfíny, pozorování velryb.',
+    'tr': "Ponta do Ouro, Mozambik'e tam seyahat rehberi — el değmemiş plajlar, 1.200+ deniz türü, etik yunus yüzmesi ve haziran–kasım balina gözlemi.",
+    'pt-BR': 'Guia completo de viagem para Ponta do Ouro, Moçambique — praias intocadas, 1.200+ espécies marinhas, nado ético com golfinhos e baleias jun–nov.',
+    'pt-PT': 'Guia completo de viagem para Ponta do Ouro, Moçambique — praias intocadas, 1.200+ espécies marinhas, nado ético com golfinhos e baleias jun–nov.',
+    'ru': 'Полный путеводитель по Понта-ду-Ору, Мозамбик — нетронутые пляжи, 1200+ морских видов, этичное плавание с дельфинами, киты июнь–ноябрь.',
+    'sv': 'Komplett reseguide till Ponta do Ouro, Moçambique — orörda stränder, 1 200+ marina arter, etisk delfinsimning och valsafari juni–november.',
+    'sw': 'Mwongozo kamili wa safari ya Ponta do Ouro, Msumbiji — fukwe safi, 1,200+ viumbe vya bahari, kuogelea na pomboo, kuangalia nyangumi Jun–Nov.',
+    'zh-CN': '莫桑比克蓬塔杜奥罗完整旅游指南——原始海滩、1200+种海洋生物、合乎道德的海豚游泳及6月至11月观鲸活动。',
+    'zu': 'Incwadi ephelele yokuhamba ePonta do Ouro, Mozambique — izindlini ezisuluhiwe, izinhlobo zasolwandle eziyi-1,200+, ukubhukuda namadelephini, ukubona imikhozi Juni–Novemba.',
+  },
+  gettingThere: {
+    'en-US': 'Getting to Ponta do Ouro: via Kosi Bay border (13 km) or Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules.',
+    'en-GB': 'Getting to Ponta do Ouro: via Kosi Bay border (13 km) or Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules.',
+    'af-ZA': 'Hoe om Ponta do Ouro te bereik: via Kosi Bay-grens (13 km) of Maputo (120 km), per oordrag of openbare vervoer. Grensure, padtoestande en huurmotor.',
+    'de-DE': 'Nach Ponta do Ouro: über Kosi Bay-Grenze (13 km) oder Maputo (120 km), per Transfer oder ÖPNV. Grenzzeiten, Straßenzustand und Mietwagenregeln.',
+    'es-ES': 'Llegar a Ponta do Ouro: por la frontera de Kosi Bay (13 km) o Maputo (120 km), en traslado o transporte público. Horarios, condiciones de carretera.',
+    'fr-FR': 'Rejoindre Ponta do Ouro: via la frontière de Kosi Bay (13 km) ou Maputo (120 km), par transfert ou transport public. Horaires, état des routes.',
+    'it-IT': 'Arrivare a Ponta do Ouro: via frontiera Kosi Bay (13 km) o Maputo (120 km), con transfer o trasporto pubblico. Orari, condizioni stradali.',
+    'ja-JP': 'ポンタ・ド・オウロへのアクセス：コシベイ国境(13km)またはマプト(120km)経由。送迎または公共交通。国境時間、道路状況、レンタカー規則。',
+    'nl-NL': 'Naar Ponta do Ouro: via de Kosi Bay-grens (13 km) of Maputo (120 km), per transfer of OV. Grentijden, wegcondities en autohuurregels.',
+    'pl': 'Dojazd do Ponta do Ouro: przez przejście graniczne Kosi Bay (13 km) lub Maputo (120 km), transferem lub komunikacją publiczną. Godziny, drogi, wynajem.',
+    'ro': 'Ajungând la Ponta do Ouro: via granița Kosi Bay (13 km) sau Maputo (120 km), prin transfer sau transport public. Ore de frontieră, condiții drumuri.',
+    'sr': 'Dolazak do Ponta do Ouro: granica Kosi Bay (13 km) ili Maputo (120 km), transferom ili javnim prevozom. Radno vreme granice, stanje puteva.',
+    'hr': 'Dolazak do Ponta do Ouro: granica Kosi Bay (13 km) ili Maputo (120 km), transferom ili javnim prijevozom. Radno vrijeme granice, stanje cesta.',
+    'cs': 'Jak se dostat do Ponta do Ouro: přes přechod Kosi Bay (13 km) nebo Maputo (120 km), transferem nebo MHD. Časy hranic, stav silnic, pravidla pronájmu.',
+    'tr': "Ponta do Ouro'ya ulaşmak: Kosi Bay sınırı (13 km) veya Maputo (120 km) üzerinden, transfer veya toplu taşıma ile. Sınır saatleri, yol durumu.",
+    'pt-BR': 'Chegar a Ponta do Ouro: pela fronteira de Kosi Bay (13 km) ou Maputo (120 km), por transfer ou transporte público. Horários, condições de estrada.',
+    'pt-PT': 'Chegar a Ponta do Ouro: pela fronteira de Kosi Bay (13 km) ou Maputo (120 km), por transfer ou transporte público. Horários, condições de estrada.',
+    'ru': 'Добраться до Понта-ду-Ору: через границу Коси-Бей (13 км) или Мапуту (120 км), трансфером или общественным транспортом. Часы, дороги, аренда авто.',
+    'sv': 'Till Ponta do Ouro: via Kosi Bay-gränsen (13 km) eller Maputo (120 km), med transfer eller kollektivtrafik. Gränstider, vägförhållanden, biluthyrning.',
+    'sw': 'Kufika Ponta do Ouro: kupitia mpaka wa Kosi Bay (13 km) au Maputo (120 km), kwa transfer au usafiri wa umma. Masaa ya mpaka, hali ya barabara.',
+    'zh-CN': '前往蓬塔杜奥罗：经科西湾口岸(13公里)或马普托(120公里)，乘接送或公共交通。边境时间、路况及租车须知。',
+    'zu': 'Ukufika ePonta do Ouro: ngomnyango waseKosi Bay (13 km) noma iMaputo (120 km), ngokudluliselwa noma ngezimoto zomphakathi. Izikhathi zemingcele.',
+  },
+  withoutFourByFour: {
+    'en-US': 'Yes, you can visit Ponta do Ouro without a 4×4. DEVOCEAN Lodge sits on a tarred village road. What is sandy, what is tarred, and how to get here.',
+    'en-GB': 'Yes, you can visit Ponta do Ouro without a 4×4. DEVOCEAN Lodge sits on a tarred village road. What is sandy, what is tarred, and how to get here.',
+    'af-ZA': "Ja, jy kan Ponta do Ouro besoek sonder 'n 4×4. DEVOCEAN Lodge is op 'n geteerde dorpspad. Wat is sandpad, wat is geteerd en hoe om hier te kom.",
+    'de-DE': 'Ja, Ponta do Ouro ohne 4×4 ist möglich. DEVOCEAN Lodge liegt an einer asphaltierten Dorfstraße. Was ist sandig, was ist asphaltiert und wie Sie anreisen.',
+    'es-ES': 'Sí, puedes visitar Ponta do Ouro sin 4×4. DEVOCEAN Lodge está en una calle asfaltada. Qué es arenoso, qué está asfaltado y cómo llegar.',
+    'fr-FR': 'Oui, vous pouvez visiter Ponta do Ouro sans 4×4. DEVOCEAN Lodge est sur une route goudronnée. Ce qui est sableux, goudronné et comment y arriver.',
+    'it-IT': 'Sì, puoi visitare Ponta do Ouro senza un 4×4. DEVOCEAN Lodge si trova su una strada asfaltata. Cosa è sabbioso, cosa è asfaltato e come arrivare.',
+    'ja-JP': 'はい、4×4なしでポンタ・ド・オウロを訪れることができます。DEVOCEAN Lodgeは舗装された村道にあります。砂道と舗装道路の違い、アクセス方法を解説。',
+    'nl-NL': 'Ja, je kunt Ponta do Ouro bezoeken zonder 4×4. DEVOCEAN Lodge ligt op een geasfalteerde dorpsweg. Wat is zanderig, wat geasfalteerd en hoe hier te komen.',
+    'pl': 'Tak, możesz odwiedzić Ponta do Ouro bez 4×4. DEVOCEAN Lodge stoi przy asfaltowej drodze. Co jest piaszczyste, co asfaltowe i jak tu dotrzeć.',
+    'ro': 'Da, poți vizita Ponta do Ouro fără 4×4. DEVOCEAN Lodge se află pe o stradă asfaltată. Ce este nisipos, ce este asfaltat și cum să ajungi.',
+    'sr': 'Da, možete posetiti Ponta do Ouro bez 4×4. DEVOCEAN Lodge se nalazi na asfaltiranom seoskom putu. Šta je peščano, šta asfaltirano i kako doći.',
+    'hr': 'Da, možete posjetiti Ponta do Ouro bez 4×4. DEVOCEAN Lodge se nalazi na asfaltiranom seoskom putu. Što je pješčano, što asfaltirano i kako doći.',
+    'cs': 'Ano, Ponta do Ouro bez 4×4 je možné. DEVOCEAN Lodge stojí na asfaltové vesnické cestě. Co je písčité, co asfaltované a jak se sem dostat.',
+    'tr': "Evet, Ponta do Ouro'yu 4×4 olmadan ziyaret edebilirsiniz. DEVOCEAN Lodge asfaltlı bir köy yolundadır. Neyin kumlu, neyin asfaltlı ve nasıl gelineceği.",
+    'pt-BR': 'Sim, você pode visitar Ponta do Ouro sem 4×4. O DEVOCEAN Lodge fica numa estrada de aldeia asfaltada. O que é areia, o que é asfalto e como chegar.',
+    'pt-PT': 'Sim, pode visitar Ponta do Ouro sem 4×4. O DEVOCEAN Lodge fica numa estrada de aldeia alcatroada. O que é areia, o que é asfalto e como chegar.',
+    'ru': 'Да, можно посетить Понта-ду-Ору без 4×4. DEVOCEAN Lodge находится на асфальтированной деревенской дороге. Что песчаное, что асфальтированное, как добраться.',
+    'sv': 'Ja, du kan besöka Ponta do Ouro utan 4×4. DEVOCEAN Lodge ligger på en asfalterad byväg. Vad som är sandigt, vad som är asfalterat och hur du tar dig hit.',
+    'sw': 'Ndio, unaweza kutembelea Ponta do Ouro bila 4×4. DEVOCEAN Lodge iko barabara ya lami ya kijiji. Nini ni mchanga, nini ni lami na jinsi ya kufika hapa.',
+    'zh-CN': '是的，无需4×4越野车即可游览蓬塔杜奥罗。DEVOCEAN Lodge位于村内柏油路上。哪些是沙路，哪些是柏油路，以及如何前往。',
+    'zu': 'Yebo, ungavakashela iPonta do Ouro ngaphandle kwe-4×4. DEVOCEAN Lodge ihlala endleleni yesigodi esimboziwe. Okusayindini, okumboziwe nokufika lapha.',
+  },
 };
 
 
@@ -557,6 +677,31 @@ export function getGettingThereTitle(lang = 'en-GB') {
 /** Localised title for the Without 4×4 guide page. Falls back to en-GB. */
 export function getWithoutFourByFourTitle(lang = 'en-GB') {
   return META_TITLES.withoutFourByFour[lang] || META_TITLES.withoutFourByFour['en-GB'] || '';
+}
+
+/** Localised description for the Story page. Falls back to en-GB. */
+export function getStoryDescription(lang = 'en-GB') {
+  return META_DESCRIPTIONS.story[lang] || META_DESCRIPTIONS.story['en-GB'] || '';
+}
+
+/** Localised description for the Meals page. Falls back to en-GB. */
+export function getMealsDescription(lang = 'en-GB') {
+  return META_DESCRIPTIONS.meals[lang] || META_DESCRIPTIONS.meals['en-GB'] || '';
+}
+
+/** Localised description for the Ponta do Ouro guide page. Falls back to en-GB. */
+export function getPontaDoOuroDescription(lang = 'en-GB') {
+  return META_DESCRIPTIONS.pontaDoOuro[lang] || META_DESCRIPTIONS.pontaDoOuro['en-GB'] || '';
+}
+
+/** Localised description for the Getting There guide page. Falls back to en-GB. */
+export function getGettingThereDescription(lang = 'en-GB') {
+  return META_DESCRIPTIONS.gettingThere[lang] || META_DESCRIPTIONS.gettingThere['en-GB'] || '';
+}
+
+/** Localised description for the Without 4×4 guide page. Falls back to en-GB. */
+export function getWithoutFourByFourDescription(lang = 'en-GB') {
+  return META_DESCRIPTIONS.withoutFourByFour[lang] || META_DESCRIPTIONS.withoutFourByFour['en-GB'] || '';
 }
 
 /**
