@@ -150,7 +150,14 @@ export function useSeoPage({
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;
-      if (prevCanonical) updateCanonical(prevCanonical);
+      if (canonical) {
+        if (prevCanonical) {
+          updateCanonical(prevCanonical);
+        } else {
+          const tag = document.querySelector('link[rel="canonical"]');
+          if (tag) tag.remove();
+        }
+      }
       if (restoreOgTwitter) restoreOgTwitter();
     };
   }, [title, description, canonical, ogTitle, ogDescription, ogImage, ogUrl, ogType, twitterTitle, twitterDescription, twitterImage]);

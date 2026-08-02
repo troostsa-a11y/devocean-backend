@@ -312,9 +312,9 @@ describe('useSeoPage — OG/Twitter tags during experience page navigation', () 
     expect(canonicalHref()).toBe(BASELINE_CANONICAL);
   });
 
-  it('leaves a newly created canonical tag in place when no canonical existed before mount', () => {
-    // useSeoPage captures prevCanonical = '' (no tag) and only restores if
-    // prevCanonical is truthy; the created tag therefore stays in the DOM.
+  it('removes a newly created canonical tag on unmount when no canonical existed before mount', () => {
+    // useSeoPage captures prevCanonical = '' (no tag); on unmount it removes
+    // the tag it created rather than leaving it in the DOM.
     clearMetaTags(); // removes the seeded canonical too
 
     const { unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
@@ -322,7 +322,7 @@ describe('useSeoPage — OG/Twitter tags during experience page navigation', () 
 
     unmount();
 
-    // The tag was created from scratch; the hook does not remove it on unmount.
-    expect(canonicalHref()).toBe(DIVING_SEO.canonical);
+    // The tag was created from scratch; the hook removes it on unmount.
+    expect(canonicalHref()).toBeNull();
   });
 });
