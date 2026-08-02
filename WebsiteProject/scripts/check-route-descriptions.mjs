@@ -288,6 +288,71 @@ if (missingRoutes.length > 0) {
 }
 
 // ---------------------------------------------------------------------------
+// Parse ROUTE_META entries and extract their staticHtml values.
+// staticHtml uses a template-literal value, not a quoted string, so it needs
+// its own extractor.  Returns a Map of route key → staticHtml (trimmed string
+// or null if the field is absent entirely).
+// ---------------------------------------------------------------------------
+function parseRouteMetaStaticHtmlFields(source) {
+  const start = source.indexOf('const ROUTE_META');
+  if (start === -1) {
+    throw new Error('Could not find "const ROUTE_META" in _middleware.js');
+  }
+  let depth = 0;
+  let inBlock = false;
+  let end = start;
+  for (let i = start; i < source.length; i++) {
+    if (source[i] === '{') { depth++; inBlock = true; }
+    else if (source[i] === '}') { depth--; }
+    if (inBlock && depth === 0) { end = i + 1; break; }
+  }
+  const block = source.slice(start, end);
+
+  const entries = new Map();
+
+  // Top-level entry keys, e.g.  "  '/ponta-do-ouro': {"
+  const topKeyRe = /^\s{2}(['"])(\/.+?)\1\s*:\s*\{/gm;
+  let km;
+  while ((km = topKeyRe.exec(block)) !== null) {
+    const key = km[2];
+    // Slice out the value block for this key using brace counting.
+    const valueStart = km.index + km[0].length - 1;
+    let vDepth = 0;
+    let vInBlock = false;
+    let vEnd = valueStart;
+    for (let i = valueStart; i < block.length; i++) {
+      if (block[i] === '{') { vDepth++; vInBlock = true; }
+      else if (block[i] === '}') { vDepth--; }
+      if (vInBlock && vDepth === 0) { vEnd = i + 1; break; }
+    }
+    const valueBlock = block.slice(valueStart, vEnd);
+
+    // staticHtml uses a template literal — find `staticHtml:` then the backtick pair.
+    const fieldIdx = valueBlock.indexOf('staticHtml:');
+    if (fieldIdx === -1) {
+      entries.set(key, null);
+      continue;
+    }
+    const afterColon = valueBlock.slice(fieldIdx + 'staticHtml:'.length).trimStart();
+    if (!afterColon.startsWith('`')) {
+      // Unexpected format — treat as absent.
+      entries.set(key, null);
+      continue;
+    }
+    const inner = afterColon.slice(1);
+    // Find the closing backtick (these strings don't contain escaped backticks).
+    const closingIdx = inner.indexOf('`');
+    if (closingIdx === -1) {
+      entries.set(key, null);
+      continue;
+    }
+    entries.set(key, inner.slice(0, closingIdx).trim());
+  }
+
+  return entries;
+}
+
+// ---------------------------------------------------------------------------
 // Check 1b: ROUTE_META — every entry has non-empty ogTitle and ogDescription
 // ---------------------------------------------------------------------------
 const routeMetaOgFields  = parseRouteMetaOgFields(middlewareSrc);
@@ -316,6 +381,49 @@ if (missingRouteOg.length > 0) {
 } else {
   console.log(
     `[check-route-descriptions] ✅ All ${routeMetaOgFields.size} ROUTE_META entries have non-empty ogTitle and ogDescription.`
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Check 1c: ROUTE_META — every entry has a non-empty staticHtml field,
+// unless it is on the intentional allowlist of transactional/noindex pages
+// that serve an empty static block by design.
+// ---------------------------------------------------------------------------
+
+// Pages that intentionally serve an empty static block (transactional / private).
+// Must stay in sync with the STRIP_STATIC set in functions/_middleware.js.
+const STATIC_HTML_ALLOWLIST = new Set([
+  '/booking-confirmed',
+  '/gift-confirmed',
+  '/admin',
+]);
+
+const routeMetaStaticHtml = parseRouteMetaStaticHtmlFields(middlewareSrc);
+const missingStaticHtml = [];
+
+for (const [key, value] of routeMetaStaticHtml) {
+  if (STATIC_HTML_ALLOWLIST.has(key)) continue;
+  if (value === null) {
+    missingStaticHtml.push({ key, reason: 'staticHtml field is missing entirely' });
+  } else if (value === '') {
+    missingStaticHtml.push({ key, reason: 'staticHtml field is empty' });
+  }
+}
+
+if (missingStaticHtml.length > 0) {
+  console.error('\n[check-route-descriptions] ❌ ROUTE_META — missing or empty staticHtml fields:\n');
+  for (const { key, reason } of missingStaticHtml) {
+    console.error(`  • ${key}  (${reason})`);
+  }
+  console.error(
+    '\nEach ROUTE_META entry in WebsiteProject/functions/_middleware.js must have a non-empty staticHtml\n' +
+    'field before building. If this page intentionally serves an empty static block (e.g. a transactional\n' +
+    'or noindex page), add it to the STATIC_HTML_ALLOWLIST in scripts/check-route-descriptions.mjs.\n'
+  );
+  errors = true;
+} else {
+  console.log(
+    `[check-route-descriptions] ✅ All ${routeMetaStaticHtml.size} ROUTE_META entries have a non-empty staticHtml field (or are on the allowlist).`
   );
 }
 
