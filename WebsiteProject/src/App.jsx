@@ -192,7 +192,12 @@ export default function App() {
   // Update meta description for homepage based on language (SEO).
   // useSeoPage skips the update when description is null/undefined (non-home routes).
   const isHomePage = location === '/' || location.startsWith('/?');
-  useSeoPage({ description: isHomePage ? getHomeDescription(lang) : null });
+  const homeDesc = isHomePage ? getHomeDescription(lang) : null;
+  useSeoPage({
+    description: homeDesc,
+    ogDescription: homeDesc || undefined,
+    twitterDescription: homeDesc || undefined,
+  });
 
   // WebMCP — expose site tools to AI agents via the browser (progressive enhancement)
   // navigator.modelContext is experimental; this is a no-op in unsupporting browsers.
