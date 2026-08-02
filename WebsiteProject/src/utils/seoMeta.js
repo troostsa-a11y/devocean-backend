@@ -6,14 +6,12 @@
  * │  It sets title, description, canonical, OG *and* Twitter tags together, │
  * │  and restores them on unmount so SPA navigation stays correct.          │
  * │                                                                         │
- * │  DO NOT use the imperative helpers (updateMetaDescription,              │
- * │  updatePageTitle, updateTwitterCard) for new pages — they are           │
- * │  @deprecated.  Those helpers touch only one tag at a time and silently  │
- * │  leave OG/Twitter tags stale.                                           │
+ * │  DO NOT use the imperative helpers (updatePageTitle, updateTwitterCard)  │
+ * │  for new pages — they are @deprecated.  Those helpers touch only one   │
+ * │  tag at a time and silently leave OG/Twitter tags stale.               │
  * │                                                                         │
  * │  Quick grep to find any remaining callers:                              │
- * │    grep -r "updateMetaDescription\|updatePageTitle\|updateTwitterCard"  │
- * │         src/                                                            │
+ * │    grep -r "updatePageTitle\|updateTwitterCard" src/                   │
  * └─────────────────────────────────────────────────────────────────────────┘
  *
  * useSeoPage — shared hook for simple page-level SEO.
@@ -359,31 +357,14 @@ const META_DESCRIPTIONS = {
   }
 };
 
+
 /**
- * @deprecated Use the `useSeoPage` hook instead.
- * This helper sets only meta[name="description"] and silently leaves OG and
- * Twitter tags untouched.  Any new page or migration must call `useSeoPage`
- * which handles title, description, canonical, OG, and Twitter together and
- * restores all of them on unmount.
+ * Return the localised meta description string for the home page
+ * without touching the DOM. Falls back to en-US if the requested lang
+ * has no entry.
  */
-export function updateMetaDescription(page, lang = 'en-US', experienceKey = null) {
-  let description;
-  
-  if (page === 'home') {
-    description = META_DESCRIPTIONS.home[lang] || META_DESCRIPTIONS.home['en-US'];
-  } else if (page === 'experience' && experienceKey) {
-    const expDescriptions = META_DESCRIPTIONS.experiences[experienceKey];
-    if (expDescriptions) {
-      description = expDescriptions[lang] || expDescriptions['en-US'];
-    }
-  }
-  
-  if (description) {
-    const metaTag = document.querySelector('meta[name="description"]');
-    if (metaTag) {
-      metaTag.setAttribute('content', description);
-    }
-  }
+export function getHomeDescription(lang = 'en-US') {
+  return META_DESCRIPTIONS.home[lang] || META_DESCRIPTIONS.home['en-US'] || '';
 }
 
 /**

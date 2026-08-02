@@ -5,7 +5,7 @@ import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/loc
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
 import { safeLocalStorage, safeSessionStorage } from './utils/safeStorage';
-import { updateMetaDescription } from './utils/seoMeta';
+import { useSeoPage, getHomeDescription } from './utils/seoMeta';
 
 // Critical above-the-fold components (loaded immediately)
 import Header from './components/Header';
@@ -189,13 +189,10 @@ export default function App() {
   const units = useMemo(() => localizeUnits(lang), [lang, ui]);
   const experiences = useMemo(() => localizeExperiences(lang), [lang, ui]);
 
-  // Update meta description for homepage based on language (SEO)
-  useEffect(() => {
-    // Only update for homepage, not experience pages
-    if (location === '/' || location.startsWith('/?')) {
-      updateMetaDescription('home', lang);
-    }
-  }, [lang, location]);
+  // Update meta description for homepage based on language (SEO).
+  // useSeoPage skips the update when description is null/undefined (non-home routes).
+  const isHomePage = location === '/' || location.startsWith('/?');
+  useSeoPage({ description: isHomePage ? getHomeDescription(lang) : null });
 
   // WebMCP — expose site tools to AI agents via the browser (progressive enhancement)
   // navigator.modelContext is experimental; this is a no-op in unsupporting browsers.
