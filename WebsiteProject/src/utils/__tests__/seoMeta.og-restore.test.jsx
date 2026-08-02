@@ -46,6 +46,18 @@ function twitterContent(name) {
   return tag ? tag.content : null;
 }
 
+function seedCanonical(href) {
+  const tag = document.createElement('link');
+  tag.rel = 'canonical';
+  tag.href = href;
+  document.head.appendChild(tag);
+}
+
+function canonicalHref() {
+  const tag = document.querySelector('link[rel="canonical"]');
+  return tag ? tag.href : null;
+}
+
 function clearMetaTags() {
   document.querySelectorAll(
     'meta[property^="og:"], meta[name^="twitter:"], meta[name="description"], link[rel="canonical"]'
@@ -61,6 +73,7 @@ function SeoTestPage({ seoProps }) {
 
 // ─── fixtures ────────────────────────────────────────────────────────────────
 
+const BASELINE_CANONICAL = 'https://devoceanlodge.com/';
 const BASELINE_TITLE = 'DEVOCEAN Lodge';
 const BASELINE_OG = {
   'og:title':       'DEVOCEAN Lodge - Eco Beach Accommodation Mozambique',
@@ -111,6 +124,7 @@ describe('useSeoPage — OG/Twitter tags during experience page navigation', () 
     document.title = BASELINE_TITLE;
     Object.entries(BASELINE_OG).forEach(([prop, val]) => seedOgTag(prop, val));
     Object.entries(BASELINE_TWITTER).forEach(([name, val]) => seedTwitterTag(name, val));
+    seedCanonical(BASELINE_CANONICAL);
   });
 
   afterEach(() => {
@@ -244,5 +258,71 @@ describe('useSeoPage — OG/Twitter tags during experience page navigation', () 
     expect(ogContent('og:title')).toBeNull();
     expect(ogContent('og:image')).toBeNull();
     expect(ogContent('og:url')).toBeNull();
+  });
+
+  // ── 6. Canonical link — mount, navigate, restore ─────────────────────────
+
+  it('sets the canonical href correctly when the diving page first mounts', () => {
+    const { unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+
+    expect(canonicalHref()).toBe(DIVING_SEO.canonical);
+
+    unmount();
+  });
+
+  it('updates the canonical href when navigating from diving to dolphins (in-place re-render)', () => {
+    const { rerender, unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+    expect(canonicalHref()).toBe(DIVING_SEO.canonical);
+
+    rerender(<SeoTestPage seoProps={DOLPHINS_SEO} />);
+
+    expect(canonicalHref()).toBe(DOLPHINS_SEO.canonical);
+
+    unmount();
+  });
+
+  it('updates the canonical href correctly when navigating back from dolphins to diving', () => {
+    const { rerender, unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+    rerender(<SeoTestPage seoProps={DOLPHINS_SEO} />);
+
+    // Navigate back
+    rerender(<SeoTestPage seoProps={DIVING_SEO} />);
+
+    expect(canonicalHref()).toBe(DIVING_SEO.canonical);
+
+    unmount();
+  });
+
+  it('restores the canonical href to the baseline after the experience page unmounts', () => {
+    const { rerender, unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+    rerender(<SeoTestPage seoProps={DOLPHINS_SEO} />);
+
+    unmount();
+
+    expect(canonicalHref()).toBe(BASELINE_CANONICAL);
+  });
+
+  it('restores the canonical href to baseline after the full diving → dolphins → diving → unmount sequence', () => {
+    const { rerender, unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+    rerender(<SeoTestPage seoProps={DOLPHINS_SEO} />);
+    rerender(<SeoTestPage seoProps={DIVING_SEO} />);
+
+    unmount();
+
+    expect(canonicalHref()).toBe(BASELINE_CANONICAL);
+  });
+
+  it('leaves a newly created canonical tag in place when no canonical existed before mount', () => {
+    // useSeoPage captures prevCanonical = '' (no tag) and only restores if
+    // prevCanonical is truthy; the created tag therefore stays in the DOM.
+    clearMetaTags(); // removes the seeded canonical too
+
+    const { unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+    expect(canonicalHref()).toBe(DIVING_SEO.canonical);
+
+    unmount();
+
+    // The tag was created from scratch; the hook does not remove it on unmount.
+    expect(canonicalHref()).toBe(DIVING_SEO.canonical);
   });
 });
