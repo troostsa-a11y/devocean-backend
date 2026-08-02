@@ -1,4 +1,21 @@
 /**
+ * seoMeta.js — page-level SEO utilities
+ *
+ * ┌─────────────────────────────────────────────────────────────────────────┐
+ * │  NEW PAGES: use the `useSeoPage` hook (exported below).                 │
+ * │  It sets title, description, canonical, OG *and* Twitter tags together, │
+ * │  and restores them on unmount so SPA navigation stays correct.          │
+ * │                                                                         │
+ * │  DO NOT use the imperative helpers (updateMetaDescription,              │
+ * │  updatePageTitle, updateTwitterCard) for new pages — they are           │
+ * │  @deprecated.  Those helpers touch only one tag at a time and silently  │
+ * │  leave OG/Twitter tags stale.                                           │
+ * │                                                                         │
+ * │  Quick grep to find any remaining callers:                              │
+ * │    grep -r "updateMetaDescription\|updatePageTitle\|updateTwitterCard"  │
+ * │         src/                                                            │
+ * └─────────────────────────────────────────────────────────────────────────┘
+ *
  * useSeoPage — shared hook for simple page-level SEO.
  *
  * Sets document.title, meta[name="description"] and the canonical link on mount,
@@ -342,6 +359,13 @@ const META_DESCRIPTIONS = {
   }
 };
 
+/**
+ * @deprecated Use the `useSeoPage` hook instead.
+ * This helper sets only meta[name="description"] and silently leaves OG and
+ * Twitter tags untouched.  Any new page or migration must call `useSeoPage`
+ * which handles title, description, canonical, OG, and Twitter together and
+ * restores all of them on unmount.
+ */
 export function updateMetaDescription(page, lang = 'en-US', experienceKey = null) {
   let description;
   
@@ -373,6 +397,11 @@ export function getExperienceDescription(experienceKey, lang = 'en-US') {
   return expDescriptions[lang] || expDescriptions['en-US'] || '';
 }
 
+/**
+ * @deprecated Use the `useSeoPage` hook instead.
+ * This helper sets only document.title and silently leaves OG, Twitter, and
+ * other meta tags untouched.  Any new page or migration must call `useSeoPage`.
+ */
 export function updatePageTitle(title) {
   if (title) {
     document.title = title;
@@ -389,6 +418,11 @@ export function updateCanonical(url) {
   tag.href = url;
 }
 
+/**
+ * @deprecated Use the `useSeoPage` hook instead.
+ * This helper sets only Twitter meta tags and silently leaves OG tags and
+ * other meta untouched.  Any new page or migration must call `useSeoPage`.
+ */
 export function updateTwitterCard({ title, description, image }) {
   const updates = [
     { name: 'twitter:title', content: title },
