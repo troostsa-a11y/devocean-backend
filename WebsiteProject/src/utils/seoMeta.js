@@ -70,11 +70,16 @@ function captureAndSetOgTwitter({ ogTitle, ogDescription, ogImage, ogUrl, ogType
   ];
   twitterUpdates.forEach(({ name, content }) => {
     if (!content) return;
-    const tag = document.querySelector(`meta[name="${name}"]`);
+    let tag = document.querySelector(`meta[name="${name}"]`);
     if (tag) {
       prevTwitter[name] = tag.content;
-      tag.content = content;
+    } else {
+      tag = document.createElement('meta');
+      tag.setAttribute('name', name);
+      document.head.appendChild(tag);
+      createdTags.push(tag);
     }
+    tag.content = content;
   });
 
   return function restore() {
@@ -89,8 +94,11 @@ function captureAndSetOgTwitter({ ogTitle, ogDescription, ogImage, ogUrl, ogType
     });
     TWITTER_NAMES.forEach(name => {
       const tag = document.querySelector(`meta[name="${name}"]`);
-      if (tag && prevTwitter[name] !== undefined) {
+      if (!tag) return;
+      if (prevTwitter[name] !== undefined) {
         tag.content = prevTwitter[name];
+      } else if (createdTags.includes(tag)) {
+        tag.remove();
       }
     });
   };

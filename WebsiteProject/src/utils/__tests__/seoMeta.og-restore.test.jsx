@@ -260,6 +260,21 @@ describe('useSeoPage — OG/Twitter tags during experience page navigation', () 
     expect(ogContent('og:url')).toBeNull();
   });
 
+  it('removes Twitter tags that were created by the page when none existed before', () => {
+    clearMetaTags(); // No pre-existing OG/Twitter tags
+
+    const { unmount } = render(<SeoTestPage seoProps={DIVING_SEO} />);
+    expect(twitterContent('twitter:title')).toBe(DIVING_SEO.twitterTitle);
+    expect(twitterContent('twitter:description')).toBe(DIVING_SEO.twitterDescription);
+    expect(twitterContent('twitter:image')).toBe(DIVING_SEO.twitterImage);
+
+    unmount();
+
+    expect(twitterContent('twitter:title')).toBeNull();
+    expect(twitterContent('twitter:description')).toBeNull();
+    expect(twitterContent('twitter:image')).toBeNull();
+  });
+
   // ── 6. Canonical link — mount, navigate, restore ─────────────────────────
 
   it('sets the canonical href correctly when the diving page first mounts', () => {
