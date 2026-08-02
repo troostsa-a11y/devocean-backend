@@ -1,5 +1,6 @@
 import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
+import { useSeoPage } from '../utils/seoMeta';
 import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
@@ -117,18 +118,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [discountCode, setDiscountCode] = useState('');
   const [voucherCode, setVoucherCode] = useState('');
 
-  // SEO: unique title + description for the booking page
-  useEffect(() => {
-    const prevTitle = document.title;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDesc?.content || '';
-    document.title = 'Book Direct | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
-    if (metaDesc) metaDesc.content = ROUTE_DESCRIPTIONS['/book-direct'];
-    return () => {
-      document.title = prevTitle;
-      if (metaDesc) metaDesc.content = prevDesc;
-    };
-  }, []);
+  useSeoPage({
+    title: 'Book Direct | DEVOCEAN Lodge – Ponta do Ouro, Mozambique',
+    description: ROUTE_DESCRIPTIONS['/book-direct'],
+    canonical: 'https://devoceanlodge.com/book-direct',
+    ogTitle: 'Book Direct | DEVOCEAN Lodge – Ponta do Ouro, Mozambique',
+    ogDescription: ROUTE_DESCRIPTIONS['/book-direct'],
+    ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+    ogUrl: 'https://devoceanlodge.com/book-direct',
+    ogType: 'website',
+    twitterTitle: 'Book Direct | DEVOCEAN Lodge – Ponta do Ouro, Mozambique',
+    twitterDescription: ROUTE_DESCRIPTIONS['/book-direct'],
+    twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+  });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

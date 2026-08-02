@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Loader2, Gift, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
+import { useSeoPage } from '../utils/seoMeta';
 
 const DENOMINATIONS = [20, 50, 100, 200, 500];
 
@@ -570,18 +571,19 @@ const GIFT_STRINGS = {
 export default function GiftVouchersPage({ lang }) {
   const g = GIFT_STRINGS[(lang || 'en').split('-')[0]] || GIFT_STRINGS.en;
 
-  // SEO: unique title + description for the gift vouchers page
-  useEffect(() => {
-    const prevTitle = document.title;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDesc?.content || '';
-    document.title = 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
-    if (metaDesc) metaDesc.content = ROUTE_DESCRIPTIONS['/gift-vouchers'];
-    return () => {
-      document.title = prevTitle;
-      if (metaDesc) metaDesc.content = prevDesc;
-    };
-  }, []);
+  useSeoPage({
+    title: 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique',
+    description: ROUTE_DESCRIPTIONS['/gift-vouchers'],
+    canonical: 'https://devoceanlodge.com/gift-vouchers',
+    ogTitle: 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique',
+    ogDescription: ROUTE_DESCRIPTIONS['/gift-vouchers'],
+    ogImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+    ogUrl: 'https://devoceanlodge.com/gift-vouchers',
+    ogType: 'website',
+    twitterTitle: 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique',
+    twitterDescription: ROUTE_DESCRIPTIONS['/gift-vouchers'],
+    twitterImage: 'https://devoceanlodge.com/photos/hero01.jpg',
+  });
 
   const [amount, setAmount] = useState(100);
   const [purchaserName, setPurchaserName] = useState('');
