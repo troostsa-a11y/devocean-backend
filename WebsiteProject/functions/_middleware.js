@@ -1,3 +1,5 @@
+import { ROUTE_DESCRIPTIONS } from '../src/utils/routeDescriptions.js';
+
 /**
  * Cloudflare Pages Functions Middleware
  *
@@ -145,7 +147,7 @@ const ROUTE_META = {
 
   '/ponta-do-ouro': {
     title: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge — Mozambique',
-    description: "Complete travel guide to Ponta do Ouro, Mozambique — pristine beaches, 1,200+ marine species, ethical dolphin swims, and whale watching June–November.",
+    description: ROUTE_DESCRIPTIONS['/ponta-do-ouro'],
     ogTitle: 'Ponta do Ouro Travel Guide | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
     jsonLd: [
@@ -168,7 +170,7 @@ const ROUTE_META = {
 
   '/getting-to-ponta-do-ouro': {
     title: 'Getting to Ponta do Ouro from Kosi Bay and Maputo | Travel Guide',
-    description: 'Getting to Ponta do Ouro: via Kosi Bay border (13 km) or Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules.',
+    description: ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro'],
     ogTitle: 'Getting to Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Via Kosi Bay border (13 km), from Maputo by road or transfer (120 km), or by public chapa. No 4×4 required to reach DEVOCEAN Lodge.',
     jsonLd: [
@@ -190,7 +192,7 @@ const ROUTE_META = {
 
   '/ponta-do-ouro-without-4x4': {
     title: 'Visiting Ponta do Ouro Without a 4×4 | Complete Guide | DEVOCEAN Lodge',
-    description: 'Yes, you can visit Ponta do Ouro without a 4×4. DEVOCEAN Lodge sits on a tarred village road. What is sandy, what is tarred, and how to get here.',
+    description: ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4'],
     ogTitle: 'Visiting Ponta do Ouro Without a 4×4 | DEVOCEAN Lodge',
     ogDescription: 'Yes, you can visit Ponta do Ouro without a 4×4. DEVOCEAN Lodge sits on a tarred village road. What is sandy, what is tarred, and how to get here.',
     jsonLd: [
@@ -210,7 +212,7 @@ const ROUTE_META = {
 
   '/ponta-do-ouro-accommodation': {
     title: 'Accommodation in Ponta do Ouro Near the Beach | DEVOCEAN Lodge',
-    description: 'DEVOCEAN Lodge sits in a tropical garden 300 metres from the beach in Ponta do Ouro. Safari tents, comfort tents, garden cottage and thatched chalet.',
+    description: ROUTE_DESCRIPTIONS['/ponta-do-ouro-accommodation'],
     ogTitle: 'Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Nine units across four types, 300 m from the beach. Safari tents, comfort tents, garden cottage and thatched chalet. Breakfast included. Best rates direct.',
     jsonLd: [
@@ -235,7 +237,7 @@ const ROUTE_META = {
 
   '/safari-tents-ponta-do-ouro': {
     title: 'Safari Tents in Ponta do Ouro, Mozambique | DEVOCEAN Lodge',
-    description: "DEVOCEAN Lodge offers two safari tents in Ponta do Ouro — a classic canvas tent on a raised platform and a Comfort Tent with en-suite bathroom. Book direct.",
+    description: ROUTE_DESCRIPTIONS['/safari-tents-ponta-do-ouro'],
     ogTitle: 'Safari Tents in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Two canvas safari tents on raised wooden platforms in a tropical garden. Shared or en-suite bathroom, fan, private terrace. A few minutes from the Indian Ocean.',
     jsonLd: [
@@ -257,7 +259,7 @@ const ROUTE_META = {
 
   '/diving-dolphin-accommodation': {
     title: 'Accommodation for Diving and Dolphin Swims in Ponta do Ouro | DEVOCEAN Lodge',
-    description: "DEVOCEAN Lodge is a few minutes from Ponta do Ouro's dive operators and dolphin swim centre. Dive sites 10 m–47 m, resident dolphin pods year-round, whale watching June–November.",
+    description: ROUTE_DESCRIPTIONS['/diving-dolphin-accommodation'],
     ogTitle: 'Dive Base Accommodation in Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Walk to the dive boats, dolphin swims and whale-watching trips. Gear rinse on-site. Four accommodation types. Breakfast included. Book direct.',
     jsonLd: [
@@ -285,7 +287,7 @@ const ROUTE_META = {
 
   '/book-direct': {
     title: 'Book Direct | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
-    description: 'Book direct at DEVOCEAN Lodge for the best rate. No booking fees, no OTA markup. Instant confirmation. Safari tents, cottage and chalet, Ponta do Ouro.',
+    description: ROUTE_DESCRIPTIONS['/book-direct'],
     ogTitle: 'Book Direct | DEVOCEAN Lodge',
     ogDescription: 'Best-rate direct booking — no fees, instant confirmation. Nine units across four accommodation types in Ponta do Ouro, Mozambique.',
     staticHtml: `<div id="static-content">
@@ -308,7 +310,7 @@ const ROUTE_META = {
 
   '/why-ponta': {
     title: 'Why Ponta do Ouro? | DEVOCEAN Lodge — Mozambique',
-    description: 'Why visit Ponta do Ouro? Marine reserve, wild dolphins, humpback whales, world-class diving, big-game fishing and uncrowded beaches in Southern Africa.',
+    description: ROUTE_DESCRIPTIONS['/why-ponta'],
     ogTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
     staticHtml: `<div id="static-content">
@@ -329,7 +331,7 @@ const ROUTE_META = {
 
   '/story': {
     title: 'Our Story | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
-    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
+    description: ROUTE_DESCRIPTIONS['/story'],
     ogTitle: 'Our Story | DEVOCEAN Lodge',
     ogDescription: 'Family-run eco-lodge in Ponta do Ouro since 2015. Your stay supports sustainable development, local farming, and community projects in southern Mozambique.',
     jsonLd: [
@@ -353,7 +355,7 @@ const ROUTE_META = {
 
   '/gift-vouchers': {
     title: 'Gift Vouchers | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
-    description: 'Give the gift of a stay at DEVOCEAN Lodge in Ponta do Ouro, Mozambique. Gift vouchers available for any accommodation type, valid for 12 months from purchase.',
+    description: ROUTE_DESCRIPTIONS['/gift-vouchers'],
     ogTitle: 'Gift Vouchers | DEVOCEAN Lodge',
     ogDescription: 'Give the perfect gift — a stay at DEVOCEAN Lodge in Ponta do Ouro, Mozambique. Redeemable for any accommodation type.',
     staticHtml: `<div id="static-content">
@@ -367,7 +369,7 @@ const ROUTE_META = {
 
   '/booking-confirmed': {
     title: 'Booking Confirmed | DEVOCEAN Lodge',
-    description: 'Your booking at DEVOCEAN Lodge, Ponta do Ouro is confirmed.',
+    description: ROUTE_DESCRIPTIONS['/booking-confirmed'],
     ogTitle: 'Booking Confirmed | DEVOCEAN Lodge',
     ogDescription: 'Your booking at DEVOCEAN Lodge, Ponta do Ouro is confirmed.',
     noindex: true,
@@ -376,7 +378,7 @@ const ROUTE_META = {
 
   '/gift-confirmed': {
     title: 'Gift Voucher Purchase Confirmed | DEVOCEAN Lodge',
-    description: 'Your DEVOCEAN Lodge gift voucher purchase is confirmed.',
+    description: ROUTE_DESCRIPTIONS['/gift-confirmed'],
     ogTitle: 'Gift Voucher Purchase Confirmed | DEVOCEAN Lodge',
     ogDescription: 'Your DEVOCEAN Lodge gift voucher purchase is confirmed.',
     noindex: true,
@@ -385,7 +387,7 @@ const ROUTE_META = {
 
   '/admin': {
     title: 'Admin | DEVOCEAN Lodge',
-    description: 'DEVOCEAN Lodge admin area.',
+    description: ROUTE_DESCRIPTIONS['/admin'],
     ogTitle: 'Admin | DEVOCEAN Lodge',
     ogDescription: 'DEVOCEAN Lodge admin area.',
     noindex: true,
@@ -394,7 +396,7 @@ const ROUTE_META = {
 
   '/devocean-lodge-meals': {
     title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
-    description: 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
+    description: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
     ogTitle: 'Meals at DEVOCEAN Lodge | Breakfast Included',
     ogDescription: 'Breakfast included with every stay. Resident guests can pre-order freshly prepared dinners from our in-house restaurant in Ponta do Ouro, Mozambique.',
     jsonLd: [

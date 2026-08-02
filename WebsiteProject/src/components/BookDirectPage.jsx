@@ -1,4 +1,5 @@
 import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
+import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
@@ -122,7 +123,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const metaDesc = document.querySelector('meta[name="description"]');
     const prevDesc = metaDesc?.content || '';
     document.title = 'Book Direct | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
-    if (metaDesc) metaDesc.content = 'Book direct at DEVOCEAN Lodge for the best rate. No booking fees, no OTA markup. Instant confirmation. Safari tents, cottage and chalet, Ponta do Ouro.';
+    if (metaDesc) metaDesc.content = ROUTE_DESCRIPTIONS['/book-direct'];
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './GuidePage.css';
 
 
@@ -6,7 +7,7 @@ export default function WithoutFourByFourPage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Visiting Ponta do Ouro Without a 4×4 | Complete Guide | DEVOCEAN Lodge';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'Yes, you can visit Ponta do Ouro without a 4×4. DEVOCEAN Lodge sits on a tarred village road. What is sandy, what is tarred, and how to get here.');
+      ROUTE_DESCRIPTIONS['/ponta-do-ouro-without-4x4']);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/ponta-do-ouro-without-4x4');
   }, []);
 

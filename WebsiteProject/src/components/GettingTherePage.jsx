@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './GuidePage.css';
 
 
@@ -6,7 +7,7 @@ export default function GettingTherePage({ bookUrl = '/book-direct' }) {
   useEffect(() => {
     document.title = 'Getting to Ponta do Ouro from Kosi Bay and Maputo | Travel Guide';
     document.querySelector('meta[name="description"]')?.setAttribute('content',
-      'Getting to Ponta do Ouro: via Kosi Bay border (13 km) or Maputo (120 km), by transfer or public transport. Border hours, road conditions and rental car rules.');
+      ROUTE_DESCRIPTIONS['/getting-to-ponta-do-ouro']);
     document.querySelector('link[rel="canonical"]')?.setAttribute('href', 'https://devoceanlodge.com/getting-to-ponta-do-ouro');
   }, []);
 

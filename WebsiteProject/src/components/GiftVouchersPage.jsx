@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Loader2, Gift, CheckCircle2, ArrowLeft } from 'lucide-react';
+import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 
 const DENOMINATIONS = [20, 50, 100, 200, 500];
 
@@ -575,7 +576,7 @@ export default function GiftVouchersPage({ lang }) {
     const metaDesc = document.querySelector('meta[name="description"]');
     const prevDesc = metaDesc?.content || '';
     document.title = 'Gift Vouchers | DEVOCEAN Lodge – Ponta do Ouro, Mozambique';
-    if (metaDesc) metaDesc.content = 'Give the gift of a stay at DEVOCEAN Lodge in Ponta do Ouro, Mozambique. Gift vouchers available for any accommodation type, valid for 12 months from purchase.';
+    if (metaDesc) metaDesc.content = ROUTE_DESCRIPTIONS['/gift-vouchers'];
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;

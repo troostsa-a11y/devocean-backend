@@ -4,15 +4,15 @@
  * Sets document.title, meta[name="description"] and the canonical link on mount,
  * and restores the previous values on unmount (SPA back-navigation).
  *
- * The `description` value MUST be identical to the corresponding ROUTE_META
- * entry in functions/_middleware.js — they are the single source of truth for
- * each page's description, injected into the static HTML before React hydrates.
- * Keeping them in sync prevents Bing (and other crawlers) from seeing a
- * mismatch between the static crawl and the live JS test.
+ * The `description` value MUST be imported from
+ * src/utils/routeDescriptions.js (ROUTE_DESCRIPTIONS) — that file is the
+ * single source of truth for every page's English description string.
+ * functions/_middleware.js imports from the same file, so the static crawl
+ * and the live JS description are guaranteed identical with no manual sync.
  *
  * Rules:
  *  - description ≤ 160 characters
- *  - description must exactly match the middleware ROUTE_META.description string
+ *  - always use ROUTE_DESCRIPTIONS['/your-route'] — never hardcode the string
  */
 import { useEffect } from 'react';
 

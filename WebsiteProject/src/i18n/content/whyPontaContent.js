@@ -1,10 +1,13 @@
 // Why Ponta do Ouro page content translations
 // Structure follows existing content files pattern
+import { ROUTE_DESCRIPTIONS } from '../../utils/routeDescriptions.js';
 
 export const WHY_PONTA_CONTENT = {
   en: {
     pageTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge - Mozambique',
-    metaDescription: 'Why visit Ponta do Ouro? Marine reserve, wild dolphins, humpback whales, world-class diving, big-game fishing and uncrowded beaches in Southern Africa.',
+    // Must stay in sync with ROUTE_META in _middleware.js — imported from the
+    // single source of truth so it cannot drift.
+    metaDescription: ROUTE_DESCRIPTIONS['/why-ponta'],
     ogTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge',
     ogDescription: 'Discover why Ponta do Ouro is the ultimate Mozambican paradise. Pristine beaches, world-class diving, wildlife reserves, and authentic local culture await.',
     heroSubtitle: 'A hidden gem where pristine beaches meet vibrant marine life and endless adventures',

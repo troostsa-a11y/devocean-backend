@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSeoPage } from '../utils/seoMeta';
+import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './StoryPage.css';
 
 
@@ -25,7 +26,7 @@ export default function StoryPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   // description MUST match ROUTE_META['/story'].description in _middleware.js exactly
   useSeoPage({
     title: 'Our Story | DEVOCEAN Lodge',
-    description: "Discover DEVOCEAN Lodge's journey since 2015. Family-run, community-focused eco-lodge in Ponta do Ouro with plans for sustainable growth and local impact.",
+    description: ROUTE_DESCRIPTIONS['/story'],
     canonical: 'https://devoceanlodge.com/story',
   });
 

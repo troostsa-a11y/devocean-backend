@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSeoPage } from '../utils/seoMeta';
+import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import './MealsPage.css';
 
 
@@ -26,7 +27,7 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
   // description MUST match ROUTE_META['/devocean-lodge-meals'].description in _middleware.js exactly
   useSeoPage({
     title: 'Meals at DEVOCEAN Lodge | Breakfast Included & Guest Dinners',
-    description: 'Breakfast is included at DEVOCEAN Lodge in Ponta do Ouro. Resident guests can also pre-order freshly prepared dinners from our in-house restaurant.',
+    description: ROUTE_DESCRIPTIONS['/devocean-lodge-meals'],
     canonical: 'https://devoceanlodge.com/devocean-lodge-meals',
   });
 
