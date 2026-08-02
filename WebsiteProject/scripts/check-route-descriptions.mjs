@@ -59,6 +59,63 @@ function parseRouteMeta(source) {
 }
 
 // ---------------------------------------------------------------------------
+// Parse ROUTE_META entries and extract their ogTitle / ogDescription values.
+// Returns a Map of route key → { ogTitle, ogDescription }
+// where each value is a trimmed string or null if the field is absent.
+// ---------------------------------------------------------------------------
+function parseRouteMetaOgFields(source) {
+  const start = source.indexOf('const ROUTE_META');
+  if (start === -1) {
+    throw new Error('Could not find "const ROUTE_META" in _middleware.js');
+  }
+  // Walk forward to find the matching closing brace for ROUTE_META = { … };
+  let depth = 0;
+  let inBlock = false;
+  let end = start;
+  for (let i = start; i < source.length; i++) {
+    if (source[i] === '{') { depth++; inBlock = true; }
+    else if (source[i] === '}') { depth--; }
+    if (inBlock && depth === 0) { end = i + 1; break; }
+  }
+  const block = source.slice(start, end);
+
+  const entries = new Map();
+
+  // Top-level entry keys are quoted paths followed by a colon and opening brace,
+  // e.g.  "  '/ponta-do-ouro': {"
+  const topKeyRe = /^\s{2}(['"])(\/.+?)\1\s*:\s*\{/gm;
+  let km;
+  while ((km = topKeyRe.exec(block)) !== null) {
+    const key = km[2];
+    // Slice out the value block for this key using brace counting.
+    const valueStart = km.index + km[0].length - 1; // position of the opening '{'
+    let vDepth = 0;
+    let vInBlock = false;
+    let vEnd = valueStart;
+    for (let i = valueStart; i < block.length; i++) {
+      if (block[i] === '{') { vDepth++; vInBlock = true; }
+      else if (block[i] === '}') { vDepth--; }
+      if (vInBlock && vDepth === 0) { vEnd = i + 1; break; }
+    }
+    const valueBlock = block.slice(valueStart, vEnd);
+
+    // Helper: extract a named string field, returns trimmed string or null if absent.
+    function extractField(fieldName) {
+      const re = new RegExp(`\\b${fieldName}\\s*:\\s*(['"])([\\s\\S]*?)\\1`);
+      const m = re.exec(valueBlock);
+      return m ? m[2].trim() : null;
+    }
+
+    entries.set(key, {
+      ogTitle:       extractField('ogTitle'),
+      ogDescription: extractField('ogDescription'),
+    });
+  }
+
+  return entries;
+}
+
+// ---------------------------------------------------------------------------
 // Parse ROUTE_DESCRIPTIONS keys from routeDescriptions.js
 // We also check that the value is a non-empty string.
 // ---------------------------------------------------------------------------
@@ -227,6 +284,38 @@ if (missingRoutes.length > 0) {
 } else {
   console.log(
     `[check-route-descriptions] ✅ All ${routeMetaKeys.size} ROUTE_META keys have a description entry.`
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Check 1b: ROUTE_META — every entry has non-empty ogTitle and ogDescription
+// ---------------------------------------------------------------------------
+const routeMetaOgFields  = parseRouteMetaOgFields(middlewareSrc);
+const missingRouteOg = [];
+
+for (const [key, fields] of routeMetaOgFields) {
+  for (const fieldName of ['ogTitle', 'ogDescription']) {
+    const value = fields[fieldName];
+    if (value === null) {
+      missingRouteOg.push({ key, reason: `${fieldName} field is missing entirely` });
+    } else if (value === '') {
+      missingRouteOg.push({ key, reason: `${fieldName} field is empty` });
+    }
+  }
+}
+
+if (missingRouteOg.length > 0) {
+  console.error('\n[check-route-descriptions] ❌ ROUTE_META — missing or empty OG fields:\n');
+  for (const { key, reason } of missingRouteOg) {
+    console.error(`  • ${key}  (${reason})`);
+  }
+  console.error(
+    '\nEach ROUTE_META entry in WebsiteProject/functions/_middleware.js must have non-empty ogTitle and ogDescription before building.\n'
+  );
+  errors = true;
+} else {
+  console.log(
+    `[check-route-descriptions] ✅ All ${routeMetaOgFields.size} ROUTE_META entries have non-empty ogTitle and ogDescription.`
   );
 }
 
