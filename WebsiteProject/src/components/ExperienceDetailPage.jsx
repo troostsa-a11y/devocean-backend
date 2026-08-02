@@ -4,7 +4,7 @@ import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
-import { updateMetaDescription, updateCanonical, updateTwitterCard } from '../utils/seoMeta';
+import { useSeoPage, getExperienceDescription } from '../utils/seoMeta';
 import MarinPanel from './MarinPanel';
 
 // Dynamic content loaders - each experience content is loaded on demand
@@ -100,114 +100,23 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   // the stored preferences (site.lang / site.currency), never from the URL.
   const buildHomeUrl = (hash = '') => `/${hash}`;
 
-  // Update SEO meta tags for each experience
-  useEffect(() => {
-    if (!exp) return;
-
-    // Capture original values for restoration
-    const originalTitle = document.title;
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const originalDescription = metaDescription?.content || '';
-
-    // Capture original canonical
-    const canonicalTag = document.querySelector('link[rel="canonical"]');
-    const originalCanonical = canonicalTag?.href || '';
-
-    // Capture original Twitter values
-    const twitterNames = ['twitter:title', 'twitter:description', 'twitter:image'];
-    const originalTwitterValues = {};
-    twitterNames.forEach(name => {
-      const tag = document.querySelector(`meta[name="${name}"]`);
-      if (tag) originalTwitterValues[name] = tag.content;
-    });
-    
-    // Capture original OG tag values
-    const ogProperties = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
-    const originalOgValues = {};
-    const createdOgTags = [];
-    
-    ogProperties.forEach(property => {
-      const tag = document.querySelector(`meta[property="${property}"]`);
-      if (tag) {
-        originalOgValues[property] = tag.content;
-      }
-    });
-
-    // Update page title
-    document.title = `${exp.title} - DEVOCEAN Lodge | Ponta do Ouro, Mozambique`;
-
-    // Update meta description using SEO-optimized, language-specific descriptions
-    updateMetaDescription('experience', lang, experienceKey);
-
-    // Update canonical URL
-    const pageUrl = `https://devoceanlodge.com/experiences/${experienceKey}`;
-    updateCanonical(pageUrl);
-
-    // Update Open Graph tags
-    const heroImage = `https://devoceanlodge.com${exp.hero}`;
-    const ogTags = [
-      { property: 'og:title', content: `${exp.title} - DEVOCEAN Lodge` },
-      { property: 'og:description', content: exp.tagline },
-      { property: 'og:image', content: heroImage },
-      { property: 'og:url', content: pageUrl },
-      { property: 'og:type', content: 'website' }
-    ];
-
-    ogTags.forEach(({ property, content }) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
-        createdOgTags.push(tag); // Track newly created tags
-      }
-      tag.content = content;
-    });
-
-    // Update Twitter card to match OG
-    updateTwitterCard({
-      title: `${exp.title} - DEVOCEAN Lodge`,
-      description: exp.tagline,
-      image: heroImage,
-    });
-
-    // Cleanup: restore all original metadata when component unmounts
-    return () => {
-      // Restore title
-      document.title = originalTitle;
-      
-      // Restore meta description
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) {
-        if (originalDescription) {
-          metaDesc.content = originalDescription;
-        } else {
-          metaDesc.remove();
-        }
-      }
-
-      // Restore canonical
-      if (originalCanonical) updateCanonical(originalCanonical);
-
-      // Restore Twitter values
-      twitterNames.forEach(name => {
-        const tag = document.querySelector(`meta[name="${name}"]`);
-        if (tag && originalTwitterValues[name]) tag.content = originalTwitterValues[name];
-      });
-      
-      // Restore or remove OG tags
-      ogProperties.forEach(property => {
-        const tag = document.querySelector(`meta[property="${property}"]`);
-        if (tag) {
-          if (originalOgValues[property]) {
-            tag.content = originalOgValues[property];
-          } else if (createdOgTags.includes(tag)) {
-            tag.remove(); // Remove tags we created
-          }
-        }
-      });
-    };
-  }, [exp, experienceKey]);
+  // SEO meta tags for this experience page — delegated to the shared hook
+  const expPageUrl = exp ? `https://devoceanlodge.com/experiences/${experienceKey}` : undefined;
+  const expHeroImage = exp ? `https://devoceanlodge.com${exp.hero}` : undefined;
+  const expOgTitle = exp ? `${exp.title} - DEVOCEAN Lodge` : undefined;
+  useSeoPage({
+    title: exp ? `${exp.title} - DEVOCEAN Lodge | Ponta do Ouro, Mozambique` : undefined,
+    description: exp ? getExperienceDescription(experienceKey, lang) : undefined,
+    canonical: expPageUrl,
+    ogTitle: expOgTitle,
+    ogDescription: exp?.tagline,
+    ogImage: expHeroImage,
+    ogUrl: expPageUrl,
+    ogType: exp ? 'website' : undefined,
+    twitterTitle: expOgTitle,
+    twitterDescription: exp?.tagline,
+    twitterImage: expHeroImage,
+  });
 
   // Scroll to top on page load
   useEffect(() => {

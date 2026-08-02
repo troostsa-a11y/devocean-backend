@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react';
-import { updateCanonical, updateTwitterCard } from '../utils/seoMeta';
+import { useMemo } from 'react';
+import { useSeoPage } from '../utils/seoMeta';
 import { Link } from 'wouter';
 import { Waves, Fish, TreePine, Globe, Heart, ArrowRight, MapPin } from 'lucide-react';
 import Footer from './Footer';
@@ -24,96 +24,20 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
   // the stored preferences (site.lang / site.currency), never from the URL.
   const buildHomeUrl = (hash = '') => `/${hash}`;
 
-  useEffect(() => {
-    const originalTitle = document.title;
-    const metaDescription = document.querySelector('meta[name="description"]');
-    const originalDescription = metaDescription?.content || '';
-
-    // Capture original canonical
-    const canonicalTag = document.querySelector('link[rel="canonical"]');
-    const originalCanonical = canonicalTag?.href || '';
-
-    // Capture original Twitter values
-    const twitterNames = ['twitter:title', 'twitter:description', 'twitter:image'];
-    const originalTwitterValues = {};
-    twitterNames.forEach(name => {
-      const tag = document.querySelector(`meta[name="${name}"]`);
-      if (tag) originalTwitterValues[name] = tag.content;
-    });
-    
-    const ogProperties = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
-    const originalOgValues = {};
-    const createdOgTags = [];
-    
-    ogProperties.forEach(property => {
-      const tag = document.querySelector(`meta[property="${property}"]`);
-      if (tag) {
-        originalOgValues[property] = tag.content;
-      }
-    });
-
-    document.title = content.pageTitle;
-    if (metaDescription) {
-      metaDescription.content = content.metaDescription;
-    }
-
-    // Update canonical URL
-    updateCanonical('https://devoceanlodge.com/why-ponta');
-
-    const heroImage = 'https://devoceanlodge.com/photos/hero02.jpg';
-    const ogTags = [
-      { property: 'og:title', content: content.ogTitle },
-      { property: 'og:description', content: content.ogDescription },
-      { property: 'og:image', content: heroImage },
-      { property: 'og:url', content: 'https://devoceanlodge.com/why-ponta' },
-      { property: 'og:type', content: 'website' }
-    ];
-
-    ogTags.forEach(({ property, content: tagContent }) => {
-      let tag = document.querySelector(`meta[property="${property}"]`);
-      if (!tag) {
-        tag = document.createElement('meta');
-        tag.setAttribute('property', property);
-        document.head.appendChild(tag);
-        createdOgTags.push(tag);
-      }
-      tag.content = tagContent;
-    });
-
-    // Update Twitter card to match OG
-    updateTwitterCard({
-      title: content.ogTitle,
-      description: content.ogDescription,
-      image: heroImage,
-    });
-
-    return () => {
-      document.title = originalTitle;
-      if (metaDescription) {
-        metaDescription.content = originalDescription;
-      }
-
-      // Restore canonical
-      if (originalCanonical) updateCanonical(originalCanonical);
-
-      // Restore Twitter values
-      twitterNames.forEach(name => {
-        const tag = document.querySelector(`meta[name="${name}"]`);
-        if (tag && originalTwitterValues[name]) tag.content = originalTwitterValues[name];
-      });
-      
-      ogProperties.forEach(property => {
-        const tag = document.querySelector(`meta[property="${property}"]`);
-        if (tag) {
-          if (originalOgValues[property]) {
-            tag.content = originalOgValues[property];
-          } else if (createdOgTags.includes(tag)) {
-            tag.remove();
-          }
-        }
-      });
-    };
-  }, [content]);
+  const whyPontaHeroImage = 'https://devoceanlodge.com/photos/hero02.jpg';
+  useSeoPage({
+    title: content.pageTitle,
+    description: content.metaDescription,
+    canonical: 'https://devoceanlodge.com/why-ponta',
+    ogTitle: content.ogTitle,
+    ogDescription: content.ogDescription,
+    ogImage: whyPontaHeroImage,
+    ogUrl: 'https://devoceanlodge.com/why-ponta',
+    ogType: 'website',
+    twitterTitle: content.ogTitle,
+    twitterDescription: content.ogDescription,
+    twitterImage: whyPontaHeroImage,
+  });
 
   return (
     <>

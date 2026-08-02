@@ -16,7 +16,109 @@
  */
 import { useEffect } from 'react';
 
-export function useSeoPage({ title, description, canonical }) {
+const OG_PROPERTIES = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
+const TWITTER_NAMES = ['twitter:title', 'twitter:description', 'twitter:image'];
+
+/**
+ * Capture current OG/Twitter meta tag values and return a restore function.
+ * Tags that didn't exist before are removed on restore; existing tags are
+ * reset to their previous content.
+ */
+function captureAndSetOgTwitter({ ogTitle, ogDescription, ogImage, ogUrl, ogType, twitterTitle, twitterDescription, twitterImage }) {
+  const prevOg = {};
+  const prevTwitter = {};
+  const createdTags = [];
+
+  // Capture + set OG tags
+  const ogUpdates = [
+    { property: 'og:title',       content: ogTitle },
+    { property: 'og:description', content: ogDescription },
+    { property: 'og:image',       content: ogImage },
+    { property: 'og:url',         content: ogUrl },
+    { property: 'og:type',        content: ogType },
+  ];
+  ogUpdates.forEach(({ property, content }) => {
+    if (!content) return;
+    let tag = document.querySelector(`meta[property="${property}"]`);
+    if (tag) {
+      prevOg[property] = tag.content;
+    } else {
+      tag = document.createElement('meta');
+      tag.setAttribute('property', property);
+      document.head.appendChild(tag);
+      createdTags.push(tag);
+    }
+    tag.content = content;
+  });
+
+  // Capture + set Twitter tags
+  const twitterUpdates = [
+    { name: 'twitter:title',       content: twitterTitle },
+    { name: 'twitter:description', content: twitterDescription },
+    { name: 'twitter:image',       content: twitterImage },
+  ];
+  twitterUpdates.forEach(({ name, content }) => {
+    if (!content) return;
+    const tag = document.querySelector(`meta[name="${name}"]`);
+    if (tag) {
+      prevTwitter[name] = tag.content;
+      tag.content = content;
+    }
+  });
+
+  return function restore() {
+    OG_PROPERTIES.forEach(property => {
+      const tag = document.querySelector(`meta[property="${property}"]`);
+      if (!tag) return;
+      if (prevOg[property] !== undefined) {
+        tag.content = prevOg[property];
+      } else if (createdTags.includes(tag)) {
+        tag.remove();
+      }
+    });
+    TWITTER_NAMES.forEach(name => {
+      const tag = document.querySelector(`meta[name="${name}"]`);
+      if (tag && prevTwitter[name] !== undefined) {
+        tag.content = prevTwitter[name];
+      }
+    });
+  };
+}
+
+/**
+ * useSeoPage — shared hook for page-level SEO.
+ *
+ * Sets document.title, meta[name="description"], the canonical link, and
+ * optionally OG/Twitter meta tags on mount, and restores previous values on
+ * unmount (SPA back-navigation).
+ *
+ * The `description` value MUST be imported from
+ * src/utils/routeDescriptions.js (ROUTE_DESCRIPTIONS) — that file is the
+ * single source of truth for every page's English description string.
+ * functions/_middleware.js imports from the same file, so the static crawl
+ * and the live JS description are guaranteed identical with no manual sync.
+ *
+ * Rules:
+ *  - description ≤ 160 characters
+ *  - always use ROUTE_DESCRIPTIONS['/your-route'] — never hardcode the string
+ *
+ * Optional OG/Twitter params (all strings):
+ *   ogTitle, ogDescription, ogImage, ogUrl, ogType
+ *   twitterTitle, twitterDescription, twitterImage
+ */
+export function useSeoPage({
+  title,
+  description,
+  canonical,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogUrl,
+  ogType,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
+}) {
   useEffect(() => {
     const prevTitle = document.title;
     const metaDesc = document.querySelector('meta[name="description"]');
@@ -28,12 +130,19 @@ export function useSeoPage({ title, description, canonical }) {
     if (description && metaDesc) metaDesc.content = description;
     if (canonical) updateCanonical(canonical);
 
+    const hasOgTwitter = ogTitle || ogDescription || ogImage || ogUrl || ogType ||
+                         twitterTitle || twitterDescription || twitterImage;
+    const restoreOgTwitter = hasOgTwitter
+      ? captureAndSetOgTwitter({ ogTitle, ogDescription, ogImage, ogUrl, ogType, twitterTitle, twitterDescription, twitterImage })
+      : null;
+
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;
       if (prevCanonical) updateCanonical(prevCanonical);
+      if (restoreOgTwitter) restoreOgTwitter();
     };
-  }, [title, description, canonical]);
+  }, [title, description, canonical, ogTitle, ogDescription, ogImage, ogUrl, ogType, twitterTitle, twitterDescription, twitterImage]);
 }
 
 const META_DESCRIPTIONS = {
@@ -251,6 +360,17 @@ export function updateMetaDescription(page, lang = 'en-US', experienceKey = null
       metaTag.setAttribute('content', description);
     }
   }
+}
+
+/**
+ * Return the localised meta description string for an experience page
+ * without touching the DOM. Falls back to en-US if the requested lang
+ * has no entry.
+ */
+export function getExperienceDescription(experienceKey, lang = 'en-US') {
+  const expDescriptions = META_DESCRIPTIONS.experiences?.[experienceKey];
+  if (!expDescriptions) return '';
+  return expDescriptions[lang] || expDescriptions['en-US'] || '';
 }
 
 export function updatePageTitle(title) {
