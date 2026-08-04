@@ -31,8 +31,15 @@ const BUILD_ID = computeBuildId();
 // This runs in both dev (transformIndexHtml is called by the dev server) and build.
 const injectMiaUrl = () => ({
   name: 'inject-mia-url',
-  transformIndexHtml(html) {
-    return html.replaceAll('%%MIA_URL%%', MIA_URL);
+  transformIndexHtml: {
+    // 'pre' = run before Vite's own HTML asset scanner. Otherwise Vite sees
+    // the raw `%%MIA_URL%%/widget-loader.js` src, treats it as a local file,
+    // and warns it "can't be bundled without type=module". With the absolute
+    // https:// URL in place first, Vite correctly ignores it as external.
+    order: 'pre',
+    handler(html) {
+      return html.replaceAll('%%MIA_URL%%', MIA_URL);
+    }
   }
 });
 
