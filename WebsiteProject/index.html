@@ -647,6 +647,73 @@
     })();
   </script>
 
+  <!-- Static experience hero placeholder (/experiences/:key). Same rationale as
+       #bd-hero-placeholder: the experience hero <img> is the page's real LCP
+       element (60/70vh, not full-viewport, so Chrome's background-exclusion
+       heuristic doesn't apply), but ExperienceDetailPage is React.lazy()-loaded
+       so the <img> otherwise doesn't exist until the lazy chunk executes.
+       This paints the same hero image from raw HTML; ExperienceDetailPage
+       removes it via useLayoutEffect once the real hero renders.
+       Hidden by default; shown + image-preloaded only on experience routes by
+       the inline script below (runs in <head>, before <body> parses). -->
+  <style>
+    #exp-hero-placeholder {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 999;
+      background: #fffaf6;
+    }
+    #exp-hero-placeholder .exp-hero {
+      position: relative;
+      height: 60vh;
+      /* Dark fallback during image decode — same lesson as .bd-hero: never
+         let the near-white page background flash through the hero area. */
+      background-color: #000;
+    }
+    @media (min-width: 768px) {
+      #exp-hero-placeholder .exp-hero { height: 70vh; }
+    }
+    #exp-hero-placeholder .exp-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    #exp-hero-placeholder .exp-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.4) 50%, rgba(0,0,0,.6));
+    }
+  </style>
+  <script>
+    (function () {
+      var m = window.location.pathname.match(/^\/experiences\/(diving|dolphins|seafari|safari|fishing|surfing|lighthouse)$/);
+      if (!m) return;
+      // Start fetching the hero image immediately (before body parses).
+      var l = document.createElement('link');
+      l.rel = 'preload'; l.as = 'image';
+      l.href = '/photos/experiences/' + m[1] + '.webp';
+      l.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(l);
+      var s = document.createElement('style');
+      s.textContent = '#exp-hero-placeholder{display:block!important}';
+      document.head.appendChild(s);
+      // Bounded fail-safe: if React never mounts ExperienceDetailPage (e.g.
+      // locale/UI bootstrap stalls or fails), remove the overlay so the page
+      // underneath is never permanently covered. The normal removal path is
+      // ExperienceDetailPage's useLayoutEffect, which fires long before this.
+      setTimeout(function () {
+        var el = document.getElementById('exp-hero-placeholder');
+        if (el) el.remove();
+      }, 8000);
+    })();
+  </script>
+
   <style>
     /* iPad / medium-tablet range (768–1023px): shrink hero title from 3.75rem to 2.75rem
        so "DEVOCEAN Lodge" fits comfortably in one row. Applies to both placeholder h1
@@ -847,6 +914,24 @@
       <div class="bd-gradient"></div>
     </div>
   </div>
+
+  <!-- Static experience hero placeholder — shown only on /experiences/:key by
+       the head script; image src set by the inline script below, removed by
+       ExperienceDetailPage's useLayoutEffect. -->
+  <div id="exp-hero-placeholder">
+    <div class="exp-hero">
+      <img id="exp-hero-img" alt="" fetchpriority="high">
+      <div class="exp-gradient"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var m = window.location.pathname.match(/^\/experiences\/(diving|dolphins|seafari|safari|fishing|surfing|lighthouse)$/);
+      if (!m) return;
+      var img = document.getElementById('exp-hero-img');
+      if (img) img.src = '/photos/experiences/' + m[1] + '.webp';
+    })();
+  </script>
 
   <!-- Static hero image (displays instantly before React loads) -->
   <div id="hero-placeholder">

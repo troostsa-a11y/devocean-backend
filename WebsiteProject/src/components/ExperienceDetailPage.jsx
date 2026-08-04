@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useRoute, Link } from 'wouter';
 import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
@@ -122,6 +122,13 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [experienceKey]);
+
+  // Remove the static hero placeholder (index.html #exp-hero-placeholder) once
+  // the real hero has rendered. useLayoutEffect (not useEffect) so the removal
+  // happens before paint — no one-frame flash of placeholder + real hero.
+  useLayoutEffect(() => {
+    document.getElementById('exp-hero-placeholder')?.remove();
+  }, []);
 
 
   if (!exp) {

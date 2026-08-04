@@ -636,7 +636,17 @@ export async function onRequest(context) {
           /(<meta property="og:url" content=")[^"]*(")/,
           `$1${BASE_URL}${pathname}$2`
         );
-        html = html.replace(STATIC_CONTENT_RE, route.staticHtml);
+        // For routes with real pre-render content (guide pages), also unhide
+        // the block: the base index.html visually hides #static-content
+        // (1×1px clip pattern), which makes it invisible to LCP. On these
+        // routes there is no #hero-placeholder overlay covering it, so
+        // showing it gives the browser a real LCP candidate that paints
+        // straight from the HTML — before React mounts. The MutationObserver
+        // in index.html still hides it the instant React renders.
+        const unhideStyle = route.staticHtml.includes('aria-hidden')
+          ? ''
+          : '<style>#static-content{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;max-width:820px;margin:0 auto;padding:5.5rem 1.5rem 3rem;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#1f2937;line-height:1.6}#static-content h1{font-size:clamp(1.75rem,4.5vw,2.5rem);line-height:1.25;margin:0 0 1rem}body{background:#fffaf6}</style>';
+        html = html.replace(STATIC_CONTENT_RE, route.staticHtml + unhideStyle);
 
         // Inline JSON-LD into <head> — served without JavaScript, visible to all crawlers
         if (route.jsonLd?.length) {

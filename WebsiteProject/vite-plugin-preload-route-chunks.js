@@ -25,7 +25,7 @@ export default function preloadRouteChunks(routes) {
 
       const scripts = [];
 
-      for (const { path, chunkName } of routes) {
+      for (const { path, pathPrefix, chunkName } of routes) {
         const targetChunk = Object.values(ctx.bundle).find(
           (chunk) => chunk.type === 'chunk' && chunk.name === chunkName
         );
@@ -43,8 +43,11 @@ export default function preloadRouteChunks(routes) {
         if (!filesToPreload.length) continue;
 
         const hrefsJson = JSON.stringify(filesToPreload.map((f) => `/${f}`));
+        const cond = pathPrefix
+          ? `location.pathname.indexOf(${JSON.stringify(pathPrefix)})===0`
+          : `location.pathname===${JSON.stringify(path)}`;
         scripts.push(
-          `(function(){if(location.pathname===${JSON.stringify(path)}){` +
+          `(function(){if(${cond}){` +
             `${hrefsJson}.forEach(function(h){` +
             `var l=document.createElement('link');l.rel='modulepreload';l.crossOrigin='';l.href=h;` +
             `document.head.appendChild(l);` +

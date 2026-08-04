@@ -94,6 +94,7 @@ export default defineConfig({
     preloadEntry(), // Inject modulepreload for main entry to eliminate waterfall
     preloadRouteChunks([
       { path: '/book-direct', chunkName: 'BookDirectPage' },
+      { pathPrefix: '/experiences/', chunkName: 'ExperienceDetailPage' },
     ]), // Fetch lazy route chunks in parallel with the entry bundle instead of after it mounts
     moveScriptToBody(), // Keep entry script at bottom of body so static hero paints first
     cleanFunctionsFromDist(), // Remove dist/functions/ — wrangler bundles functions/ separately; raw sources in dist/ cause Error 1101
