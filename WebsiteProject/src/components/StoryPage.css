@@ -156,11 +156,15 @@
   border: none;
 }
 
-.story-page .dl-card-impact .dl-h2 {
+/* Both .dl-h2 and p selectors need the extra .dl-card class to beat
+   the .story-page .dl-card p { color:#6b7280 } rule that follows — same
+   2-class + 1-element specificity means declaration order decides, so we
+   add one class to win regardless of position in the sheet. */
+.story-page .dl-card.dl-card-impact .dl-h2 {
   color: white;
 }
 
-.story-page .dl-card-impact p {
+.story-page .dl-card.dl-card-impact p {
   color: #ffffff;
 }
 
@@ -188,7 +192,7 @@
   font-weight: 600;
 }
 
-.story-page .dl-card-impact strong {
+.story-page .dl-card.dl-card-impact strong {
   color: #ffffff;
   font-weight: 700;
 }
