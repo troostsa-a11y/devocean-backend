@@ -151,7 +151,8 @@
 }
 
 .story-page .dl-card-impact {
-  background: linear-gradient(135deg, #d2691e 0%, #6b8e23 100%);
+  /* Slightly darkened gradient so white body text meets WCAG AA contrast */
+  background: linear-gradient(135deg, #b85a15 0%, #55711c 100%);
   border: none;
 }
 
@@ -160,7 +161,7 @@
 }
 
 .story-page .dl-card-impact p {
-  color: #f4e4d4;
+  color: #ffffff;
 }
 
 .story-page .dl-h2 {
@@ -188,8 +189,8 @@
 }
 
 .story-page .dl-card-impact strong {
-  color: #f4e4d4;
-  font-weight: 600;
+  color: #ffffff;
+  font-weight: 700;
 }
 
 .story-page .dl-card a {
