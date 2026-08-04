@@ -650,7 +650,7 @@ export async function onRequest(context) {
         // rather than a visible re-layout flash.
         const unhideStyle = route.staticHtml.includes('aria-hidden')
           ? ''
-          : '<style>#static-content{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;max-width:820px;margin:0 auto;padding:8.25rem 1.5rem 3rem;font-family:\'Inter\',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;line-height:1.6}#static-content h1{font-size:clamp(1.75rem,4.5vw,2.75rem);font-weight:700;color:#1f2937;line-height:1.2;margin:0 0 1rem;text-align:center}#static-content h1+p{font-size:1.0625rem;color:#6b7280;line-height:1.75;max-width:700px;margin:0 auto 2rem;text-align:center}#static-content h2{font-size:1.5rem}body{background:#fffaf6}</style>';
+          : '<style>@font-face{font-family:\'Inter Fallback\';src:local(\'Arial\');size-adjust:107.4%;ascent-override:90.2%;descent-override:22.48%;line-gap-override:0%}#static-content{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;max-width:820px;margin:0 auto;padding:8.25rem 1.5rem 3rem;font-family:\'Inter\',\'Inter Fallback\',sans-serif;color:#1f2937;line-height:1.6}#static-content h1{font-size:clamp(1.75rem,4.5vw,2.75rem);font-weight:700;color:#1f2937;line-height:1.2;margin:0 0 1rem;text-align:center}#static-content h1+p{font-size:1.0625rem;color:#6b7280;line-height:1.75;max-width:700px;margin:0 auto 2rem;text-align:center}#static-content h2{font-size:1.5rem}body{background:#fffaf6}</style>';
         html = html.replace(STATIC_CONTENT_RE, route.staticHtml + unhideStyle);
 
         // Inline JSON-LD into <head> — served without JavaScript, visible to all crawlers
