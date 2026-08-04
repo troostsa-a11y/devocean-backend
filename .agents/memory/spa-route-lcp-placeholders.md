@@ -11,6 +11,8 @@ description: Why visually-hidden pre-render content is invisible to LCP, and the
 
 **Experience pages fix:** `#exp-hero-placeholder` — third instance of the static fixed-overlay placeholder pattern (after homepage `#hero-placeholder` and `#bd-hero-placeholder`). Head script gates on an allowlisted key regex, injects an image preload + display style; body script sets the img src; `ExperienceDetailPage` removes it via `useLayoutEffect`; an **8s fail-safe timeout removes it if React bootstrap stalls** (code review caught that a stalled locale/UI load would otherwise cover the page forever — any future fixed-overlay placeholder needs a bounded fail-safe, since removal owned solely by the target component is a liveness bug).
 
+**Static-phase font parity:** the unhide style must mimic the React page's hero (Inter stack, centered clamp() h1, gray lead) or the React handoff reads as a chaotic flash. Because Inter loads async (display=swap), the static phase paints in the system fallback and reflows when Inter lands — fix with a metric-matched `'Inter Fallback'` @font-face (`local('Arial')`, size-adjust:107.4%, ascent-override:90.2%, descent-override:22.48%). Never "fix" the flash by coloring text to match the background — that's classic cloaking on exactly the pages being tuned for Google.
+
 **Chunk preload:** `vite-plugin-preload-route-chunks` supports `pathPrefix` (e.g. `/experiences/`) alongside exact `path` matching for parameterised lazy routes.
 
 **Why:** 27 URLs flagged in GSC with mobile LCP > 2.5s (Aug 2026) — all lazy routes whose only pre-React content was invisible to LCP.
