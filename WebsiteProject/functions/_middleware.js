@@ -290,6 +290,12 @@ const ROUTE_META = {
     description: ROUTE_DESCRIPTIONS['/book-direct'],
     ogTitle: 'Book Direct | DEVOCEAN Lodge',
     ogDescription: 'Best-rate direct booking — no fees, instant confirmation. Nine units across four accommodation types in Ponta do Ouro, Mozambique.',
+    // No staticCss: the #bd-hero-placeholder (position:fixed; z-index:999)
+    // covers the entire viewport on /book-direct during the static phase, so
+    // #static-content is never visible to users — it is SEO content only.
+    // A body{background} rule would survive post-mount (the MutationObserver
+    // hides #static-content but does not remove the injected <style>) and
+    // cause overscroll/footer-gap leaks against the page's cream bg.
     staticHtml: `<div id="static-content">
 <section>
   <h1>Book Your Stay Direct at DEVOCEAN Lodge</h1>
@@ -313,6 +319,18 @@ const ROUTE_META = {
     description: ROUTE_DESCRIPTIONS['/why-ponta'],
     ogTitle: 'Why Ponta do Ouro? | DEVOCEAN Lodge',
     ogDescription: 'Pristine beaches, world-class diving, humpback whale watching, ethical dolphin swims and Maputo National Park — all within reach of DEVOCEAN Lodge.',
+    // The unhideStyle makes #static-content visible pre-mount on this route
+    // (no aria-hidden, no fixed overlay like #bd-hero-placeholder).  Without
+    // intervention the observer's display:none swap flips dark text on cream
+    // → white h1 on the React image hero.
+    //
+    // Fix (a): scope the dark styling to #static-content itself, not body.
+    //   position:fixed;inset:0 → full-viewport dark overlay (avoids the 820px
+    //   column leaving cream sides); padding reset to div, pushed to section.
+    //   The MutationObserver fires sc.style.display='none' when React mounts →
+    //   the fixed overlay disappears instantly, body background is untouched,
+    //   no post-mount leak.
+    staticCss: '#static-content{position:fixed;inset:0;max-width:none;margin:0;padding:0;background:#1b2d3d;overflow:hidden;z-index:10}#static-content section{max-width:820px;margin:0 auto;padding:8.25rem 1.5rem 3rem}#static-content h1{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.4)}#static-content h1+p{color:rgba(255,255,255,0.82)}',
     staticHtml: `<div id="static-content">
 <section>
   <h1>Why Ponta do Ouro?</h1>
@@ -408,9 +426,14 @@ const ROUTE_META = {
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: [ { '@type': 'Question', name: 'Is breakfast included at DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Breakfast is included in the accommodation rate.' } }, { '@type': 'Question', name: 'What time is breakfast served?', acceptedAnswer: { '@type': 'Answer', text: 'Breakfast is normally served from 08:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, if you have an early dive or dolphin swim.' } }, { '@type': 'Question', name: 'Can I have dinner at DEVOCEAN Lodge?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Resident guests can order dinner from our in-house restaurant. Please order in advance and no later than 20:00. The kitchen closes at 21:00.' } }, { '@type': 'Question', name: 'Is the DEVOCEAN Lodge kitchen open to outside visitors?', acceptedAnswer: { '@type': 'Answer', text: 'No. Our meal service is reserved for guests staying at DEVOCEAN Lodge.' } }, { '@type': 'Question', name: 'Does DEVOCEAN Lodge serve lunch?', acceptedAnswer: { '@type': 'Answer', text: 'We do not offer regular lunch service. We are happy to suggest nearby cafés and restaurants based on what is currently open.' } }, { '@type': 'Question', name: 'Can DEVOCEAN Lodge accommodate dietary requirements?', acceptedAnswer: { '@type': 'Answer', text: 'Often, yes. Please advise us of any dietary requirements before arrival. Our kitchen is small and local supplies vary, but we will always be honest about what we can accommodate.' } } ] },
       { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [ { '@type': 'ListItem', position: 1, name: 'DEVOCEAN Lodge', item: 'https://devoceanlodge.com/' }, { '@type': 'ListItem', position: 2, name: 'Meals & Dining', item: 'https://devoceanlodge.com/devocean-lodge-meals' } ] },
     ],
+    // The /devocean-lodge-meals React hero renders h1 with a <span> making the
+    // second sentence orange (#9e4b13) and uses a larger clamp range
+    // (2rem→3rem vs the generic 1.75rem→2.75rem).  Match both so the handoff
+    // doesn't flash an orange colour-change or a font-size jump.
+    staticCss: '#static-content h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15}',
     staticHtml: `<div id="static-content">
 <section>
-  <h1>Breakfast included. Dinner prepared for you on demand.</h1>
+  <h1>Breakfast included.<br/><span style="color:#9e4b13">Dinner prepared for you on demand.</span></h1>
   <p>Every stay at DEVOCEAN Lodge includes breakfast, served in our tropical garden. In the evening, resident guests can pre-order a freshly prepared dinner from our in-house restaurant.</p>
   <h2>Breakfast in the Garden</h2>
   <p>Breakfast is included in your accommodation rate and is normally served between 08:30 and 11:00 in the tropical garden. Guests can choose from our breakfast menu, with both cooked and lighter options. Fresh Portuguese bread is served daily, accompanied by coffee, tea or hot chocolate. If you have an early dive or dolphin swim, an earlier or later breakfast can usually be arranged.</p>
