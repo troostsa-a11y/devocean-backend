@@ -643,9 +643,14 @@ export async function onRequest(context) {
         // showing it gives the browser a real LCP candidate that paints
         // straight from the HTML — before React mounts. The MutationObserver
         // in index.html still hides it the instant React renders.
+        // The styling deliberately mirrors .guide-page .hero (GuidePage.css):
+        // same Inter font stack, centered h1 with the same clamp() size, and
+        // the same lead-paragraph treatment — so when React mounts and the
+        // observer swaps this block for the real page, the handoff is subtle
+        // rather than a visible re-layout flash.
         const unhideStyle = route.staticHtml.includes('aria-hidden')
           ? ''
-          : '<style>#static-content{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;max-width:820px;margin:0 auto;padding:5.5rem 1.5rem 3rem;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#1f2937;line-height:1.6}#static-content h1{font-size:clamp(1.75rem,4.5vw,2.5rem);line-height:1.25;margin:0 0 1rem}body{background:#fffaf6}</style>';
+          : '<style>#static-content{position:static;width:auto;height:auto;overflow:visible;clip:auto;clip-path:none;white-space:normal;max-width:820px;margin:0 auto;padding:8.25rem 1.5rem 3rem;font-family:\'Inter\',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1f2937;line-height:1.6}#static-content h1{font-size:clamp(1.75rem,4.5vw,2.75rem);font-weight:700;color:#1f2937;line-height:1.2;margin:0 0 1rem;text-align:center}#static-content h1+p{font-size:1.0625rem;color:#6b7280;line-height:1.75;max-width:700px;margin:0 auto 2rem;text-align:center}#static-content h2{font-size:1.5rem}body{background:#fffaf6}</style>';
         html = html.replace(STATIC_CONTENT_RE, route.staticHtml + unhideStyle);
 
         // Inline JSON-LD into <head> — served without JavaScript, visible to all crawlers
