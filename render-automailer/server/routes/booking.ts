@@ -256,6 +256,8 @@ export function createBookingRouter(deps: {
     const parsed = parseStay(req.body);
     if (parsed.error || !parsed.value) return res.status(400).json({ error: parsed.error });
     const stay = parsed.value;
+    const t0 = Date.now();
+    const tag = `${stay.checkIn}→${stay.checkOut} adults:${stay.adults}${stay.children ? ` children:${stay.children}` : ''}`;
 
     try {
       const result = await beds24.getAvailability(stay);
@@ -291,6 +293,7 @@ export function createBookingRouter(deps: {
         }),
       }));
 
+      console.log(`[BOOKING] availability ok ${tag} (${Date.now() - t0}ms)`);
       res.json({
         checkIn: result.checkIn,
         checkOut: result.checkOut,
@@ -305,7 +308,7 @@ export function createBookingRouter(deps: {
       });
     } catch (err: any) {
       const status = err instanceof Beds24Error ? err.status : 500;
-      console.error('[BOOKING] availability error:', err.message);
+      console.error(`[BOOKING] availability error ${tag} (${Date.now() - t0}ms):`, err.message);
       res.status(status).json({ error: 'Could not load availability. Please try again.' });
     }
   });
@@ -330,6 +333,8 @@ export function createBookingRouter(deps: {
     const adultsN = Math.max(1, Number(adults) || 1);
     const childrenN = Math.max(0, Number(children) || 0);
 
+    const t0 = Date.now();
+    const tag = `room:${roomId} from:${fromDate} nights:${nightsN} adults:${adultsN}`;
     try {
       const result = await beds24.findNearestAvailable({
         roomId,
@@ -338,10 +343,11 @@ export function createBookingRouter(deps: {
         adults: adultsN,
         children: childrenN,
       });
+      console.log(`[BOOKING] nearest-available ok ${tag} (${Date.now() - t0}ms)`);
       res.json(result);
     } catch (err: any) {
       const status = err instanceof Beds24Error ? err.status : 500;
-      console.error('[BOOKING] nearest-available error:', err.message);
+      console.error(`[BOOKING] nearest-available error ${tag} (${Date.now() - t0}ms):`, err.message);
       res.status(status).json({ error: 'Could not search for availability. Please try again.' });
     }
   });
@@ -414,12 +420,14 @@ export function createBookingRouter(deps: {
       .toISOString().slice(0, 10);
     const endDate = endRaw > maxEnd ? maxEnd : endRaw;
 
+    const t0 = Date.now();
     try {
       const result = await beds24.getPriceCalendar({ startDate, endDate });
+      console.log(`[BOOKING] calendar ok ${startDate}→${endDate} (${Date.now() - t0}ms)`);
       res.json(result);
     } catch (err: any) {
       const status = err instanceof Beds24Error ? err.status : 500;
-      console.error('[BOOKING] calendar error:', err.message);
+      console.error(`[BOOKING] calendar error ${startDate}→${endDate} (${Date.now() - t0}ms):`, err.message);
       res.status(status).json({ error: 'Could not load the rate calendar.' });
     }
   });
