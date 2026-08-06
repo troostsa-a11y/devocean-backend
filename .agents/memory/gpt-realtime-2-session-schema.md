@@ -33,6 +33,10 @@ Confirmed working payload (Jul 2026, via OpenAI support + live testing):
 - `session.modalities` → unknown_parameter
 - `session.voice` → unknown_parameter  
 - `session.turn_detection` → unknown_parameter (must be nested under audio.input)
+- `session.audio.input.turn_detection.interrupt_response` → unknown_parameter; causes every session to fail: relay sends session.ready before error arrives so the widget briefly shows "connected" then falls back to text with "voice call failed to connect"
+
+## Safe server_vad extra fields
+- `threshold`, `silence_duration_ms`, `prefix_padding_ms` — standard documented VAD params, confirmed not rejected
 
 ## Confirmed REQUIRED fields
 - `session.type` = `"realtime"` (for live voice) or `"transcription"` (for STT only)
