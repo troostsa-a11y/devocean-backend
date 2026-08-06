@@ -23,6 +23,8 @@ export async function onRequestGet(context) {
 
   const search = new URL(request.url).search; // includes leading "?" (or empty)
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const upstream = await fetch(`${automailerUrl}/api/booking/calendar${search}`, {
       method: 'GET',
@@ -30,13 +32,16 @@ export async function onRequestGet(context) {
         'x-admin-key': adminKey,
         'cf-ipcountry': request.headers.get('cf-ipcountry') || '',
       },
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
     const data = await upstream.text();
     return new Response(data || '{}', {
       status: upstream.status,
       headers: { 'Content-Type': 'application/json' },
     });
   } catch {
+    clearTimeout(timeout);
     return json({ error: 'Could not load the rate calendar.' }, 502);
   }
 }

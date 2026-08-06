@@ -27,6 +27,8 @@ export async function onRequestPost(context) {
     return json({ error: 'Invalid JSON' }, 400);
   }
 
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const upstream = await fetch(`${automailerUrl}/api/booking/checkout`, {
       method: 'POST',
@@ -36,13 +38,16 @@ export async function onRequestPost(context) {
         'cf-ipcountry': request.headers.get('cf-ipcountry') || '',
       },
       body: JSON.stringify(body),
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
     const data = await upstream.text();
     return new Response(data || '{}', {
       status: upstream.status,
       headers: { 'Content-Type': 'application/json' },
     });
   } catch {
+    clearTimeout(timeout);
     return json({ error: 'Could not start checkout. Please try again.' }, 502);
   }
 }

@@ -28,6 +28,12 @@ export async function onRequestPost(context) {
     return json({ error: 'Invalid JSON' }, 400);
   }
 
+  // 25 s timeout — CF Pages Functions have a 30 s wall-clock limit.
+  // Without this, a slow Beds24 response kills the Worker before the catch
+  // block runs, dropping the connection entirely and producing a browser-side
+  // "Load failed" / "Failed to fetch" instead of a readable error message.
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 25000);
   try {
     const upstream = await fetch(`${automailerUrl}/api/booking/availability`, {
       method: 'POST',
@@ -37,13 +43,16 @@ export async function onRequestPost(context) {
         'cf-ipcountry': request.headers.get('cf-ipcountry') || '',
       },
       body: JSON.stringify(body),
+      signal: controller.signal,
     });
+    clearTimeout(timeout);
     const data = await upstream.text();
     return new Response(data || '{}', {
       status: upstream.status,
       headers: { 'Content-Type': 'application/json' },
     });
   } catch {
+    clearTimeout(timeout);
     return json({ error: 'Could not load availability. Please try again.' }, 502);
   }
 }
