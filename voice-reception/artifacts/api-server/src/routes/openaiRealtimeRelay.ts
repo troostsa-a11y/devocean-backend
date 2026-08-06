@@ -148,7 +148,11 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
     threshold: 0.65,          // higher = less sensitive to ambient noise (default 0.5)
     silence_duration_ms: 600, // wait a bit longer before cutting off speech
     prefix_padding_ms: 300,
-    interrupt_response: false,
+    // NOTE: interrupt_response is NOT a valid field for gpt-realtime-2 —
+    // OpenAI returns unknown_parameter which cascades into "failed to connect".
+    // The VAD mute/unmute pattern (turn_detection:null on response.created,
+    // re-enabled via maybeUnmuteVad on response.done + playback drain) handles
+    // the race condition without needing interrupt_response.
   };
 
   openaiWs.on("open", async () => {
