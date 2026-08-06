@@ -153,6 +153,18 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Deployment version check — compare against `git log --oneline -1` to verify
+// a push has reached Render. RENDER_GIT_COMMIT is injected automatically by
+// Render on every deploy; it is undefined when running locally.
+app.get('/version', (req, res) => {
+  res.json({
+    service: 'Automailer',
+    commit: (process.env.RENDER_GIT_COMMIT ?? 'local').slice(0, 7),
+    commitFull: process.env.RENDER_GIT_COMMIT ?? null,
+    branch: process.env.RENDER_GIT_BRANCH ?? 'local',
+  });
+});
+
 // Admin API key authentication middleware
 function requireAdminKey(req: any, res: any, next: any) {
   const adminKey = process.env.ADMIN_API_KEY;
