@@ -19,4 +19,14 @@ description: Two coupled patterns required for stable gpt-realtime-2 relay: mute
 
 **Why:** Every `session.update` call (including VAD mute/unmute) triggers another `session.updated` event from OpenAI. Without the guard, each VAD update causes: `session.updated → response.create → response.created → session.update (mute) → session.updated → response.create → ...` — infinite loop, Marin never starts.
 
-**How to apply:** Declare `let sessionGreetingSent = false` in the relay handler scope. In the `session.updated` branch: `if (!sessionGreetingSent) { sessionGreetingSent = true; openaiWs.send(response.create); }`.
+**How to apply:** Declare `let sessionGreetingSent = false` in the relay handler scope. In the `session.updated` branch: send `turn_detection:null` first, THEN `response.create` — pre-muting before the greeting prevents a race where ambient mic noise (mic starts on `session.ready`, which arrives before `session.updated`) creates a VAD-triggered second response alongside the explicit greeting. Without the pre-mute, double welcome messages appear on slow/noisy connections.
+
+---
+
+## Mobile audio clipping (Samsung A23 / slow AudioContext start)
+
+**Rule:** In `playPCM16Chunk`, ensure the first chunk of each new response starts at least 120ms in the future (`MIN_LEAD = 0.12`): `const earliest = nextPlayTimeRef.current === 0 ? now + MIN_LEAD : nextPlayTimeRef.current`.
+
+**Why:** On slow-to-start mobile AudioContexts (mid-range Android), `AudioContext.currentTime` can be near-zero when the first delta arrives. `src.start(0)` lands in the browser's past and the browser silently drops that buffer — the first syllable of Marin's greeting is never played. A small look-ahead gives the context time to reach the scheduled play position.
+
+**How to apply:** Only apply the lead when `nextPlayTimeRef.current === 0` (i.e. first chunk after `stopPlayback()` resets it) — subsequent chunks chain off `nextPlayTimeRef` normally so no extra latency accumulates.
