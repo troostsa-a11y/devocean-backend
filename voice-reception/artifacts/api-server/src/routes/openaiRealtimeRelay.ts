@@ -215,6 +215,19 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
       // VAD mute/unmute session.update calls and must not trigger another greeting.
       if (!sessionGreetingSent) {
         sessionGreetingSent = true;
+        // Pre-mute VAD before triggering the greeting. The browser starts streaming
+        // mic audio as soon as it receives session.ready (sent at WS open, before
+        // this session.updated arrives). If VAD is still enabled when response.create
+        // fires, ambient mic noise in that brief window can trigger a speech_started
+        // → OpenAI auto-creates a second response alongside the explicit greeting,
+        // producing a double welcome message. Muting first closes this race entirely.
+        // response.created (which fires after response.create below) re-sends the
+        // mute and sets responseInFlight=true; maybeUnmuteVad re-enables after both
+        // response.done and the browser's playback-drained ack arrive.
+        openaiWs.send(JSON.stringify({
+          type: "session.update",
+          session: { type: "realtime", audio: { input: { turn_detection: null } } },
+        }));
         openaiWs.send(JSON.stringify({ type: "response.create" }));
       }
       return; // do not relay session.updated to browser

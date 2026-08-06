@@ -159,6 +159,13 @@ export function useRealtimeSession({
       if (audioCtx.state === "suspended") await audioCtx.resume();
 
       // ── PCM16 playback helper ──────────────────────────────────────────────
+      // MIN_LEAD: minimum look-ahead before the first chunk of each response.
+      // On slow-to-start mobile AudioContexts (e.g. Samsung mid-range) currentTime
+      // can be near-zero when the first delta arrives, causing `src.start(0)` to
+      // be in the browser's past → the first syllable is silently dropped.
+      // Scheduling 120 ms into the future ensures the context has time to start
+      // delivering audio before the play-head reaches the buffer.
+      const MIN_LEAD = 0.12; // seconds
       function playPCM16Chunk(b64: string) {
         const ctx = audioCtxRef.current;
         if (!ctx || ctx.state === "closed") return;
@@ -169,7 +176,10 @@ export function useRealtimeSession({
         src.buffer = buf;
         src.connect(ctx.destination);
         const now = ctx.currentTime;
-        const start = Math.max(now, nextPlayTimeRef.current);
+        // If this is the very first chunk of a new response (nextPlayTimeRef reset
+        // to 0 by stopPlayback), ensure it's at least MIN_LEAD seconds ahead.
+        const earliest = nextPlayTimeRef.current === 0 ? now + MIN_LEAD : nextPlayTimeRef.current;
+        const start = Math.max(now, earliest);
         src.start(start);
         nextPlayTimeRef.current = start + buf.duration;
         playingSourcesRef.current.push(src);
