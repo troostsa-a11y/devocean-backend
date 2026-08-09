@@ -593,9 +593,9 @@ export class Beds24Service {
     await this.loadProperty();
     const params = new URLSearchParams({
       propertyId: String(this.cfg.beds24PropId),
-      checkIn,
-      checkOut,
-      numAdult: '2',
+      arrival:    checkIn,
+      departure:  checkOut,
+      numAdult:   '2',
     });
     const json = await this.request(`/inventory/rooms/offers?${params.toString()}`);
     // Return raw data alongside our OFFER_PLANS for easy comparison.
