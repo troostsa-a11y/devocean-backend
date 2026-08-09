@@ -65,6 +65,14 @@ export const ROOM_RATES: Record<string, RoomRates> = {
 };
 
 // --------------------------------------------------------------------------
+// Schedule coverage window
+// --------------------------------------------------------------------------
+// Dates outside this window have no season data and return rate 0 (= no offers).
+// Extend SCHEDULE_END when new season data arrives.
+export const SCHEDULE_START = '2026-08-07';
+export const SCHEDULE_END   = '2028-01-15';
+
+// --------------------------------------------------------------------------
 // Season date ranges (annual, recurring)
 // --------------------------------------------------------------------------
 export interface SeasonRange {
@@ -192,6 +200,7 @@ export function getSeasonForDate(date: string): SeasonType {
  * Returns 0 if the room is not configured in ROOM_RATES.
  */
 export function getNightlyRate(roomId: string, date: string): number {
+  if (date < SCHEDULE_START || date > SCHEDULE_END) return 0; // outside known schedule
   const rates = ROOM_RATES[roomId];
   if (!rates) return 0;
   return rates.shoulder * SEASON_MULTIPLIERS[getSeasonForDate(date)];
