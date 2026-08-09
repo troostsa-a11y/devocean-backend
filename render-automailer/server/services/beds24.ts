@@ -175,6 +175,8 @@ interface CalEntry { numAvail: number | undefined; closed: boolean }
 // ─── Hardcoded offer plans ────────────────────────────────────────────────────
 // offerId must match the corresponding Beds24 rate-plan id (sent on booking creation).
 // Prices are computed locally in calcOffers(); the offerId is stored in Beds24 records only.
+// All six IDs verified against Beds24 /inventory/rooms/offers for property 297012:
+//   2=DIR-SF-OFR  3=DIR-NR-OFR  4=DIR-MS-OFR  5=DIR-WS-OFR  6=DIR-EB-OFR  7=DIR-LM-OFR
 const OFFER_PLANS = [
   { offerId: 2, offerName: 'Semi flexible',  type: 'semiFlex'   as OfferType, minStay: 1, maxStay: 28, offsetPercent:   0 },
   { offerId: 3, offerName: 'Non refundable', type: 'nonRef'     as OfferType, minStay: 1, maxStay: 28, offsetPercent:  -8 },
