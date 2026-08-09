@@ -129,8 +129,13 @@ function eachDateISO(start: string, end: string, cap = 800): string[] {
   return out;
 }
 
-/** Map a Beds24 offer code (e.g. "DIR-SF-OFR") to a normalised category. */
+/**
+ * Map a Beds24 offer/price-plan name to a normalised category.
+ * Handles both legacy offer codes ("DIR-SF-OFR") and display names
+ * returned by /inventory/prices ("Semi flexible", "Non refundable", …).
+ */
 function offerTypeFromName(name: string): OfferType {
+  // Code-based match (legacy offers endpoint: "DIR-SF-OFR" → "SF")
   const code = (String(name).split('-')[1] || '').toUpperCase();
   switch (code) {
     case 'SF': return 'semiFlex';
@@ -139,9 +144,49 @@ function offerTypeFromName(name: string): OfferType {
     case 'WS': return 'weekly';
     case 'EB': return 'earlyBird';
     case 'LM': return 'lastMinute';
-    default: return 'standard';
   }
+  // Display-name match (prices endpoint: "Semi flexible", "Minimum stay", …)
+  const n = String(name).toLowerCase().replace(/[\s\-_]/g, '');
+  if (n.includes('semiflex'))                             return 'semiFlex';
+  if (n.includes('nonrefund') || n.includes('nonref'))   return 'nonRef';
+  if (n.includes('minstay') || n.includes('minimumstay')) return 'minStay';
+  if (n.includes('weekly') || n.includes('weekstay'))    return 'weekly';
+  if (n.includes('earlybooker') || n.includes('earlybird') || n.includes('earlybook')) return 'earlyBird';
+  if (n.includes('lastminute') || n.includes('lastmin')) return 'lastMinute';
+  return 'standard';
 }
+
+// ─── Hardcoded advance-booking windows ───────────────────────────────────────
+// These are property-level policy constants, defined once here rather than
+// fetched per-request from Beds24. Update here if the lodge's policy changes.
+//   nonRef    → available up to 28 days before arrival
+//   earlyBird → must book at least 90 days before arrival
+//   lastMinute → 3 days or fewer before arrival (no minimum)
+const OFFER_ADVANCE_BOOKING: Partial<Record<OfferType, { minDays?: number; maxDays?: number }>> = {
+  nonRef:     { maxDays: 28 },
+  earlyBird:  { minDays: 90 },
+  lastMinute: { maxDays: 3  },
+};
+
+// ─── Per-offer price plan (read from /inventory/prices, kept in memory) ──────
+interface OfferPlan {
+  offerId: number;
+  offerName: string;    // raw Beds24 plan name (used for booking records)
+  type: OfferType;
+  minStay: number;
+  maxStay: number;
+  offsetPercent: number; // e.g. -10 means 10% cheaper than the master rate
+}
+
+interface RoomPriceInfo {
+  priceFor: number;    // base rate covers up to N persons
+  extraPerson: number; // $ per extra adult per night (above priceFor)
+  extraChild: number;  // $ per child per night
+  plans: OfferPlan[];  // bookable offer plans (master excluded)
+}
+
+// Per-date data returned by /inventory/rooms/calendar
+interface CalEntry { price1: number; numAvail: number | undefined; closed: boolean }
 
 export class Beds24Service {
   private cfg: BookingConfig;
@@ -157,6 +202,10 @@ export class Beds24Service {
 
   // Price-calendar cache, keyed by `${startDate}_${endDate}` (~30 min TTL).
   private calendarCache = new Map<string, { at: number; data: PriceCalendarResult }>();
+
+  // Per-room price plans, loaded from /inventory/prices (~30 min TTL).
+  private pricePlans = new Map<string, RoomPriceInfo>();
+  private pricesLoadedAt = 0;
 
   constructor(cfg: BookingConfig = getBookingConfig()) {
     this.cfg = cfg;
@@ -388,42 +437,217 @@ export class Beds24Service {
     return Math.round((basePrice + Number.EPSILON) * 100) / 100;
   }
 
-  // ─── Availability via the offers (rate-plan) endpoint ──────────────────────
+  // ─── Price plans (/inventory/prices, ~30 min cache) ─────────────────────────
 
   /**
-   * Fetch the Beds24 offers for every room of the property for the given stay.
+   * Load per-room price plans from Beds24's /inventory/prices endpoint and
+   * cache them. Each room has one master plan (the base rate for N persons) and
+   * several derived plans (same extra-person charges, % offset on the base).
    *
-   * NOTE: the offers endpoint must be called WITHOUT a roomId — passing roomId
-   * suppresses the `offers` array. We query once for all rooms and map by id.
+   * Only derived plans (linkedTo != null) become bookable offers; the master is
+   * the price calculation foundation and is excluded from the offer list.
    */
-  private async fetchOffers(stay: {
-    checkIn: string; checkOut: string; adults: number; children: number;
-  }): Promise<Record<string, Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>>> {
+  private async loadPrices(force = false): Promise<void> {
+    const fresh = this.pricesLoadedAt > 0 && Date.now() - this.pricesLoadedAt < 30 * 60_000;
+    if (!force && fresh && this.pricePlans.size > 0) return;
+
+    await this.loadProperty();
+    if (!this.rooms.length) return;
+
     const params = new URLSearchParams();
     params.set('propertyId', this.cfg.beds24PropId);
-    params.set('arrival', stay.checkIn);
-    params.set('departure', stay.checkOut);
-    params.set('numAdults', String(stay.adults));
-    params.set('numChildren', String(stay.children));
+    for (const room of this.rooms) params.append('roomId[]', room.roomId);
 
-    const json = await this.request(`/inventory/rooms/offers?${params.toString()}`);
-    const data: any[] = json?.data || [];
+    const json = await this.request(`/inventory/prices?${params.toString()}`);
+    const data: any[] = Array.isArray(json?.data) ? json.data : [];
 
-    const map: Record<string, Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>> = {};
-    for (const entry of data) {
-      const roomId = String(entry.roomId ?? entry.id);
-      const offers: any[] = Array.isArray(entry.offers) ? entry.offers : [];
-      map[roomId] = offers
-        .map((o) => ({
-          offerId: Number(o.offerId),
-          offerName: String(o.offerName ?? ''),
-          price: Number(o.price),
-          unitsAvailable: Number(o.unitsAvailable ?? o.unitsAvail ?? 1),
-        }))
-        .filter((o) => Number.isFinite(o.offerId) && Number.isFinite(o.price) && o.price > 0);
+    // Group plans by roomId.
+    const byRoom = new Map<string, any[]>();
+    for (const p of data) {
+      const rid = String(p?.roomId ?? p?.id ?? '');
+      // Some API shapes nest prices inside a "prices" array per room entry.
+      if (Array.isArray(p?.prices)) {
+        const roomId = String(p?.roomId ?? p?.id ?? rid);
+        if (!byRoom.has(roomId)) byRoom.set(roomId, []);
+        for (const sub of p.prices) byRoom.get(roomId)!.push({ ...sub, roomId });
+      } else if (rid) {
+        if (!byRoom.has(rid)) byRoom.set(rid, []);
+        byRoom.get(rid)!.push(p);
+      }
     }
-    return map;
+
+    this.pricePlans.clear();
+
+    for (const room of this.rooms) {
+      const plans = byRoom.get(room.roomId) ?? [];
+      if (!plans.length) continue;
+
+      // Master plan: no linkedTo (or linkedTo === 0/null/undefined). If none
+      // detected, use the plan with the smallest numeric id as the master.
+      const sorted = [...plans].sort((a, b) => Number(a.id ?? a.priceId ?? 0) - Number(b.id ?? b.priceId ?? 0));
+      const master = sorted.find(p =>
+        p.linkedTo == null || p.linkedTo === '' || Number(p.linkedTo) === 0
+      ) ?? sorted[0];
+
+      const priceFor  = Math.max(1, Number(master?.priceFor ?? master?.numPersons ?? 1) || 1);
+      const extraPerson = Math.max(0, Number(master?.extraPerson ?? master?.personPrice ?? 0) || 0);
+      const extraChild  = Math.max(0, Number(master?.extraChild  ?? master?.childPrice  ?? 0) || 0);
+
+      // Bookable offer plans = all plans except the master.
+      const masterId = master?.id ?? master?.priceId;
+      const offerPlans: OfferPlan[] = plans
+        .filter(p => (p.id ?? p.priceId) !== masterId)
+        .map(p => ({
+          offerId:       Number(p.offerId ?? p.offer ?? 0),
+          offerName:     String(p.name ?? p.offerName ?? ''),
+          type:          offerTypeFromName(String(p.name ?? p.offerName ?? '')),
+          minStay:       Math.max(1, Number(p.minimumStay ?? p.minStay ?? 1) || 1),
+          maxStay:       Math.max(1, Number(p.maximumStay ?? p.maxStay ?? 28) || 28),
+          offsetPercent: Number(p.offsetPercent ?? p.percentageOffset ?? 0) || 0,
+        }))
+        .filter(p => p.offerId > 0);
+
+      this.pricePlans.set(room.roomId, { priceFor, extraPerson, extraChild, plans: offerPlans });
+    }
+
+    this.pricesLoadedAt = Date.now();
   }
+
+  // ─── Calendar window fetch (shared by availability + findNearestAvailable) ──
+
+  /**
+   * Fetch per-date data (price1, numAvail, closed) for every room from the
+   * Beds24 calendar endpoint. Returns a Map keyed by roomId → date → CalEntry.
+   * Handles all three calendar shapes Beds24 may return: date-keyed object,
+   * per-day array, or inclusive { from, to } range array.
+   */
+  private async fetchCalendarWindow(
+    startDate: string,
+    endDate:   string,
+  ): Promise<Map<string, Map<string, CalEntry>>> {
+    const result = new Map<string, Map<string, CalEntry>>();
+    if (!this.rooms.length) return result;
+
+    const params = new URLSearchParams();
+    for (const room of this.rooms) params.append('roomId[]', room.roomId);
+    params.set('startDate', startDate);
+    params.set('endDate',   endDate);
+    params.set('includePrices',   'true');
+    params.set('includeNumAvail', 'true');
+
+    const json  = await this.request(`/inventory/rooms/calendar?${params.toString()}`);
+    const data: any[] = Array.isArray(json?.data) ? json.data : [];
+
+    for (const roomEntry of data) {
+      const roomId = String(roomEntry?.roomId ?? roomEntry?.id ?? '');
+      if (!roomId) continue;
+      const roomMap = new Map<string, CalEntry>();
+      result.set(roomId, roomMap);
+
+      const cal = roomEntry?.calendar;
+      if (!cal) continue;
+
+      const record = (date: string, entry: any) => {
+        if (!date || !ISO_DATE_RE.test(date)) return;
+        const price1   = Number(entry?.price1);
+        const numAvail = entry?.numAvail !== undefined ? Number(entry.numAvail) : undefined;
+        const closed   = entry?.closed === true;
+        roomMap.set(date, {
+          price1:   Number.isFinite(price1) && price1 > 0 ? price1 : 0,
+          numAvail,
+          closed,
+        });
+      };
+
+      if (Array.isArray(cal)) {
+        for (const e of cal) {
+          if (e?.date) {
+            record(String(e.date), e);
+          } else if (e?.from) {
+            for (const d of eachDateISO(String(e.from), String(e.to || e.from))) record(d, e);
+          }
+        }
+      } else if (typeof cal === 'object') {
+        for (const [date, e] of Object.entries(cal)) record(date, e as any);
+      }
+    }
+
+    return result;
+  }
+
+  // ─── Per-offer price computation from calendar data ───────────────────────
+
+  /**
+   * Build RoomOffer[] from pre-fetched calendar data for one room.
+   *
+   * Pricing: baseTotal = Σ price1 per night. Each offer type applies its own
+   * offsetPercent discount to the base, then the occupancy surcharge (extra
+   * adults above priceFor + children) is added at the master flat rate.
+   * This matches how Beds24 computes derived prices on the "linked plans" page.
+   *
+   * Offer filtering:
+   *   - nights must satisfy the plan's minStay / maxStay
+   *   - advance-booking windows from OFFER_ADVANCE_BOOKING are applied
+   *   - the room must have numAvail > 0 on every night of the stay
+   */
+  private calcOffers(
+    roomId:      string,
+    nights:      number,
+    nightlyData: CalEntry[],   // one entry per night in the stay, in order
+    adults:      number,
+    children:    number,
+    checkIn:     string,
+  ): { offers: RoomOffer[]; unitsAvailable: number } {
+    const info = this.pricePlans.get(roomId);
+    if (!info || !info.plans.length) return { offers: [], unitsAvailable: 0 };
+
+    // Check availability: every night must be open and have units.
+    if (nightlyData.some(e => e.closed)) return { offers: [], unitsAvailable: 0 };
+    const unitsAvailable = nightlyData.reduce<number>((min, e) => {
+      if (e.numAvail === undefined) return min;  // unknown → no constraint
+      return Math.min(min, e.numAvail);
+    }, Infinity);
+    if (Number.isFinite(unitsAvailable) && unitsAvailable <= 0) {
+      return { offers: [], unitsAvailable: 0 };
+    }
+    const finalUnits = Number.isFinite(unitsAvailable) ? Math.round(unitsAvailable) : 1;
+
+    const baseTotal = nightlyData.reduce((s, e) => s + e.price1, 0);
+    if (baseTotal <= 0) return { offers: [], unitsAvailable: 0 };
+
+    // Occupancy surcharge: adults above priceFor + all children, per night.
+    const extraAdults = Math.max(0, adults - info.priceFor);
+    const surcharge   = (extraAdults * info.extraPerson + children * info.extraChild) * nights;
+
+    const daysToArrival = nightsBetween(todayUTC(), checkIn);
+
+    const offers: RoomOffer[] = info.plans
+      .filter(plan => {
+        if (nights < plan.minStay || nights > plan.maxStay) return false;
+        const constraint = OFFER_ADVANCE_BOOKING[plan.type];
+        if (constraint?.minDays !== undefined && daysToArrival < constraint.minDays) return false;
+        if (constraint?.maxDays !== undefined && daysToArrival > constraint.maxDays) return false;
+        return true;
+      })
+      .map(plan => {
+        const discountedBase = baseTotal * (1 + plan.offsetPercent / 100);
+        const total          = this.toGuestPrice(discountedBase + surcharge);
+        return {
+          offerId:          plan.offerId,
+          offerName:        plan.offerName,
+          type:             plan.type,
+          refundable:       plan.type !== 'nonRef',
+          total,
+          unitsAvailable:   finalUnits,
+        };
+      })
+      .filter(o => o.total > 0)
+      .sort((a, b) => a.total - b.total);
+
+    return { offers, unitsAvailable: finalUnits };
+  }
+
+  // ─── Availability ─────────────────────────────────────────────────────────
 
   /**
    * The occupancy a single unit of this room would carry for the given party:
@@ -445,32 +669,19 @@ export class Beds24Service {
     return { adults: a, children: c };
   }
 
-  /** Map raw Beds24 offers → guest-facing RoomOffer[] (priced, sold-out dropped, cheapest first).
+  /**
+   * Availability + pricing for all rooms for a given stay.
    *
-   * NR (non-refundable) offers are included and shown as the cheaper option
-   * alongside SF (semi-flexible). Deposit for NR is 100% upfront (same as LM);
-   * the UI shows a "Rate conditions" link to the cancellation terms page.
+   * Two Beds24 calls total (both cached):
+   *  1. loadProperty()  — room metadata, deposit policy (~5 min TTL)
+   *  2. loadPrices()    — offer plans, extraPerson/extraChild per room (~30 min TTL)
+   * Then ONE live call:
+   *  3. fetchCalendarWindow(checkIn, lastNight) — price1 + numAvail per date
+   *
+   * Prices are computed locally from the calendar's master nightly rate (price1),
+   * each plan's offsetPercent, and the occupancy surcharge. No per-occupancy
+   * offers call is made.
    */
-  private priceOffers(
-    raw: Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>,
-  ): RoomOffer[] {
-    return raw
-      .filter((o) => o.unitsAvailable >= 1)
-      .map((o) => {
-        const type = offerTypeFromName(o.offerName);
-        return {
-          offerId: o.offerId,
-          offerName: o.offerName,
-          type,
-          refundable: type !== 'nonRef',
-          total: this.toGuestPrice(o.price),
-          unitsAvailable: o.unitsAvailable,
-        };
-      })
-      .filter((o) => o.total > 0)
-      .sort((a, b) => a.total - b.total);
-  }
-
   async getAvailability(input: {
     checkIn: string; checkOut: string; adults: number; children: number;
   }): Promise<AvailabilityResult> {
@@ -479,43 +690,34 @@ export class Beds24Service {
     if (nights === 0) throw new Beds24Error('Checkout must be after checkin', 400);
 
     await this.loadProperty();
+    await this.loadPrices();
 
-    // Price every room at the occupancy it would actually carry for this party
-    // (min(party, room capacity)). A room smaller than the whole party is still
-    // bookable — the cart splits guests across rooms — so availability is gated
-    // on offers EXISTING, not on a single room fitting everyone. Rooms that share
-    // the same per-unit occupancy are priced together with one offers call.
-    const occByRoom = new Map<string, { adults: number; children: number }>();
-    const distinct = new Map<string, { adults: number; children: number }>();
-    for (const room of this.rooms) {
-      const occ = this.displayOccupancy(room, adults, children);
-      occByRoom.set(room.roomId, occ);
-      distinct.set(`${occ.adults}_${occ.children}`, occ);
-    }
+    // Fetch calendar for every night in the stay (checkOut is NOT a sleep night).
+    const lastNight = new Date(new Date(`${checkOut}T00:00:00Z`).getTime() - 86_400_000)
+      .toISOString().slice(0, 10);
+    const calData = await this.fetchCalendarWindow(checkIn, lastNight);
 
-    const offerMaps = new Map<string, Record<string, Array<{ offerId: number; offerName: string; price: number; unitsAvailable: number }>>>();
-    for (const [key, occ] of distinct) {
-      offerMaps.set(
-        key,
-        await this.fetchOffers({ checkIn, checkOut, adults: occ.adults, children: occ.children }),
-      );
-    }
+    const stayDates = eachDateISO(checkIn, lastNight);
 
     const rooms: RoomOffers[] = this.rooms.map((room) => {
-      const occ = occByRoom.get(room.roomId)!;
-      const map = offerMaps.get(`${occ.adults}_${occ.children}`) || {};
-      const offers = this.priceOffers(map[room.roomId] || []);
+      const occ         = this.displayOccupancy(room, adults, children);
+      const roomCal     = calData.get(room.roomId) ?? new Map<string, CalEntry>();
+      const nightlyData = stayDates.map(d => roomCal.get(d) ?? { price1: 0, numAvail: 0, closed: true });
+
+      const { offers, unitsAvailable } = this.calcOffers(
+        room.roomId, nights, nightlyData, occ.adults, occ.children, checkIn,
+      );
       return {
-        roomId: room.roomId,
-        name: room.name,
-        maxPeople: room.maxPeople,
-        maxAdults: room.maxAdults,
-        maxChildren: room.maxChildren,
-        available: offers.length > 0,
+        roomId:         room.roomId,
+        name:           room.name,
+        maxPeople:      room.maxPeople,
+        maxAdults:      room.maxAdults,
+        maxChildren:    room.maxChildren,
+        available:      offers.length > 0,
         nights,
-        currency: this.currency,
+        currency:       this.currency,
         offers,
-        unitsAvailable: offers[0]?.unitsAvailable ?? 0,
+        unitsAvailable,
       };
     });
 
@@ -524,17 +726,31 @@ export class Beds24Service {
 
   /**
    * Priced offers per room for ONE specific occupancy — used by the cart quote
-   * to price each distinct per-leg occupancy. Same RoomOffer shape as
-   * getAvailability (toGuestPrice applied, sold-out offers dropped, cheapest first).
+   * to price each distinct per-leg occupancy. Same shape as getAvailability.
+   * Shares the same calendar fetch so parallel legs reuse the response.
    */
   async getPricedOffersByRoom(stay: {
     checkIn: string; checkOut: string; adults: number; children: number;
   }): Promise<Record<string, RoomOffer[]>> {
+    const { checkIn, checkOut, adults, children } = stay;
+    const nights = nightsBetween(checkIn, checkOut);
+    if (nights === 0) return {};
+
     await this.loadProperty();
-    const map = await this.fetchOffers(stay);
+    await this.loadPrices();
+
+    const lastNight = new Date(new Date(`${checkOut}T00:00:00Z`).getTime() - 86_400_000)
+      .toISOString().slice(0, 10);
+    const calData  = await this.fetchCalendarWindow(checkIn, lastNight);
+    const stayDates = eachDateISO(checkIn, lastNight);
+
     const out: Record<string, RoomOffer[]> = {};
     for (const room of this.rooms) {
-      out[room.roomId] = this.priceOffers(map[room.roomId] || []);
+      const roomCal     = calData.get(room.roomId) ?? new Map<string, CalEntry>();
+      const nightlyData = stayDates.map(d => roomCal.get(d) ?? { price1: 0, numAvail: 0, closed: true });
+      out[room.roomId]  = this.calcOffers(
+        room.roomId, nights, nightlyData, adults, children, checkIn,
+      ).offers;
     }
     return out;
   }
@@ -569,48 +785,19 @@ export class Beds24Service {
     await this.loadProperty();
     const prices: Record<string, number> = {};
 
-    if (this.rooms.length) {
-      const params = new URLSearchParams();
-      // Beds24 v2 expects the bracketed array key for repeated room ids.
-      for (const room of this.rooms) params.append('roomId[]', room.roomId);
-      params.set('startDate', startDate);
-      params.set('endDate', endDate);
-      params.set('includePrices', 'true');
-      params.set('includeNumAvail', 'true');
+    // Reuse fetchCalendarWindow so the calendar parsing logic lives in one place.
+    const calData = await this.fetchCalendarWindow(startDate, endDate);
 
-      const json = await this.request(`/inventory/rooms/calendar?${params.toString()}`);
-      const data: any[] = Array.isArray(json?.data) ? json.data : [];
-
-      // Record the cheapest positive price1 seen for a date across all rooms.
-      // Skip closed and sold-out (numAvail<=0) entries so the tier reflects the
-      // cheapest *bookable* rate, not a phantom price on an unavailable room.
-      // numAvail is only trusted when present (the from/to range shape may omit it).
-      const consider = (date: string, entry: any) => {
-        if (!date || !ISO_DATE_RE.test(date)) return;
-        if (entry?.closed === true) return;
-        if (entry?.numAvail !== undefined && Number(entry.numAvail) <= 0) return;
-        const p = Number(entry?.price1);
-        if (!Number.isFinite(p) || p <= 0) return;
+    // Record the cheapest positive price1 seen for a date across all rooms.
+    // Skip closed and sold-out entries so the tier reflects the cheapest
+    // *bookable* rate, not a phantom price on an unavailable room.
+    for (const roomMap of calData.values()) {
+      for (const [date, entry] of roomMap) {
+        if (entry.closed) continue;
+        if (entry.numAvail !== undefined && entry.numAvail <= 0) continue;
+        if (entry.price1 <= 0) continue;
         const prev = prices[date];
-        if (prev === undefined || p < prev) prices[date] = p;
-      };
-
-      // Defensive parse: `calendar` may be a date-keyed object, an array of
-      // per-day entries, or an array of inclusive { from, to } ranges.
-      for (const roomEntry of data) {
-        const cal = roomEntry?.calendar;
-        if (!cal) continue;
-        if (Array.isArray(cal)) {
-          for (const e of cal) {
-            if (e?.date) {
-              consider(String(e.date), e);
-            } else if (e?.from) {
-              for (const d of eachDateISO(String(e.from), String(e.to || e.from))) consider(d, e);
-            }
-          }
-        } else if (typeof cal === 'object') {
-          for (const [date, e] of Object.entries(cal)) consider(date, e);
-        }
+        if (prev === undefined || entry.price1 < prev) prices[date] = entry.price1;
       }
     }
 
@@ -720,12 +907,12 @@ export class Beds24Service {
   }
 
   /**
-   * Search forward from `fromDate` for the nearest check-in date at which the
-   * given room is available for `nights` nights. Probes in parallel batches of
-   * BATCH days, stopping on the first successful window.
+   * Search bidirectionally from `fromDate` for the nearest check-in date at
+   * which `roomId` has `nights` consecutive available nights.
    *
-   * Typical case (1–2 blocked nights in a long stay): resolves in 1–2 batches.
-   * Worst case (84-day horizon, 9 batches): all calls run in parallel per batch.
+   * Previous approach: up to 84 separate /inventory/rooms/offers calls.
+   * New approach: ONE /inventory/rooms/calendar call covering the full window,
+   * then a local scan — no per-date round trips.
    */
   async findNearestAvailable(params: {
     roomId: string;
@@ -734,73 +921,68 @@ export class Beds24Service {
     adults: number;
     children: number;
   }): Promise<{ found: true; checkIn: string; checkOut: string } | { found: false }> {
-    const { roomId, fromDate, nights, adults, children } = params;
+    const { roomId, fromDate, nights } = params;
     if (nights < 1) return { found: false };
 
     await this.loadProperty();
-
     const room = this.rooms.find((r) => r.roomId === roomId);
     if (!room) return { found: false };
 
-    // Use the same per-room occupancy capping as getAvailability.
-    const occ = this.displayOccupancy(room, adults, children);
+    const LOOKAHEAD = 84;  // 12 weeks forward
+    const LOOKBACK  = 21;  // 3 weeks back
 
     const shiftDate = (base: string, n: number): string => {
-      const d = new Date(base + 'T12:00:00Z');
+      const d = new Date(`${base}T12:00:00Z`);
       d.setUTCDate(d.getUTCDate() + n);
       return d.toISOString().slice(0, 10);
     };
 
-    const LOOKAHEAD = 84;   // 12 weeks forward
-    const LOOKBACK = 21;    // 3 weeks back (closer matches first)
-    const BATCH = 10;       // parallel calls per forward batch
+    const todayStr   = todayUTC();
+    const rawStart   = shiftDate(fromDate, -LOOKBACK);
+    const fetchStart = rawStart < todayStr ? todayStr : rawStart;
+    // Need LOOKAHEAD nights of check-ins plus (nights-1) more to complete the
+    // last window, so fetch to fromDate + LOOKAHEAD + nights.
+    const fetchEnd = shiftDate(fromDate, LOOKAHEAD + nights);
 
-    const probe = async (offset: number) => {
-      const ci = shiftDate(fromDate, offset);
-      const co = shiftDate(ci, nights);
-      try {
-        const map = await this.fetchOffers({ checkIn: ci, checkOut: co, adults: occ.adults, children: occ.children });
-        const offers = map[roomId] || [];
-        return { available: offers.some((o) => o.unitsAvailable >= 1), offset, checkIn: ci, checkOut: co };
-      } catch {
-        return { available: false, offset, checkIn: '', checkOut: '' };
+    // ONE calendar fetch for the entire search window.
+    const calData = await this.fetchCalendarWindow(fetchStart, fetchEnd);
+    const roomCal = calData.get(roomId) ?? new Map<string, CalEntry>();
+
+    // A window starting at `ci` is available iff every one of its `nights`
+    // nights has a positive price, is not closed, and has numAvail > 0.
+    const windowOk = (ci: string): boolean => {
+      for (let i = 0; i < nights; i++) {
+        const d = shiftDate(ci, i);
+        const e = roomCal.get(d);
+        if (!e || e.closed || e.price1 <= 0) return false;
+        if (e.numAvail !== undefined && e.numAvail <= 0) return false;
       }
+      return true;
     };
 
-    // Backward search: offsets -1 … -(min LOOKBACK, days since today)
-    // Cap at today so we never suggest a past check-in.
-    const todayStr = new Date().toISOString().slice(0, 10);
+    // Backward scan: offsets −1 … −maxBack (closest first).
     const daysFromToday = Math.round(
-      (new Date(fromDate + 'T12:00:00Z').getTime() - new Date(todayStr + 'T12:00:00Z').getTime()) / 86_400_000
+      (new Date(`${fromDate}T12:00:00Z`).getTime() -
+       new Date(`${todayStr}T12:00:00Z`).getTime()) / 86_400_000,
     );
     const maxBack = Math.min(LOOKBACK, Math.max(0, daysFromToday - 1));
-    const backOffsets = Array.from({ length: maxBack }, (_, i) => -(i + 1));
-    const backResultsAll = await Promise.all(backOffsets.map(probe));
-    // backResultsAll is ordered [-1, -2, -3, …]; .find() returns the first (closest) match.
-    const bestBack = backResultsAll.find((r) => r.available) ?? null;
-
-    // Forward search: offsets +1 … +LOOKAHEAD in batches of BATCH.
-    // Stop as soon as we find something closer than the best backward result.
-    let bestForward: { offset: number; checkIn: string; checkOut: string } | null = null;
-    for (let start = 1; start <= LOOKAHEAD; start += BATCH) {
-      const offsets = Array.from(
-        { length: Math.min(BATCH, LOOKAHEAD - start + 1) },
-        (_, i) => start + i,
-      );
-      const results = await Promise.all(offsets.map(probe));
-      const first = results.find((r) => r.available);
-      if (first) {
-        bestForward = { offset: first.offset, checkIn: first.checkIn, checkOut: first.checkOut };
-        break;
-      }
+    let bestBack: { checkIn: string; offset: number } | null = null;
+    for (let i = 1; i <= maxBack; i++) {
+      const ci = shiftDate(fromDate, -i);
+      if (windowOk(ci)) { bestBack = { checkIn: ci, offset: -i }; break; }
     }
 
-    // Return whichever direction is closest to the originally requested dates.
+    // Forward scan: offsets +1 … +LOOKAHEAD (closest first).
+    let bestForward: { checkIn: string; offset: number } | null = null;
+    for (let i = 1; i <= LOOKAHEAD; i++) {
+      const ci = shiftDate(fromDate, i);
+      if (windowOk(ci)) { bestForward = { checkIn: ci, offset: i }; break; }
+    }
+
     if (!bestBack && !bestForward) return { found: false };
-    if (bestBack && !bestForward) return { found: true, checkIn: bestBack.checkIn, checkOut: bestBack.checkOut };
-    if (!bestBack && bestForward) return { found: true, checkIn: bestForward.checkIn, checkOut: bestForward.checkOut };
-    // Both found — pick the one with the smaller absolute offset.
+    if (bestBack  && !bestForward) return { found: true, checkIn: bestBack.checkIn,    checkOut: shiftDate(bestBack.checkIn,    nights) };
+    if (!bestBack && bestForward)  return { found: true, checkIn: bestForward.checkIn, checkOut: shiftDate(bestForward.checkIn, nights) };
     const winner = Math.abs(bestBack!.offset) <= Math.abs(bestForward!.offset) ? bestBack! : bestForward!;
-    return { found: true, checkIn: winner.checkIn, checkOut: winner.checkOut };
+    return { found: true, checkIn: winner.checkIn, checkOut: shiftDate(winner.checkIn, nights) };
   }
 }
