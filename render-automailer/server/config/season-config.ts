@@ -75,14 +75,90 @@ export interface SeasonRange {
   to: string;
 }
 
-// ⚠️  TODO: fill in actual season dates.
+// Specific-year ranges (YYYY-MM-DD). Shoulder is the fallback — not listed here.
+// Source: operator season schedule, Aug 2026 – Jan 2028.
 export const SEASON_RANGES: SeasonRange[] = [
-  // Listed in priority order: first matching range wins.
-  // { type: 'peak',    from: '12-20', to: '01-05' },  // Christmas / New Year (wraps year)
-  // { type: 'high',    from: '07-01', to: '08-31' },
-  // { type: 'low',     from: '05-01', to: '06-30' },
-  // { type: 'special', from: '04-14', to: '04-21' },  // Easter (adjust annually)
-  // Shoulder is the fallback — no entry needed.
+  // ── 2026 ────────────────────────────────────────────────────────────────────
+  { type: 'high',    from: '2026-08-07', to: '2026-08-10' },
+  { type: 'low',     from: '2026-08-11', to: '2026-08-13' },
+  { type: 'low',     from: '2026-08-16', to: '2026-08-20' },
+  { type: 'low',     from: '2026-08-23', to: '2026-08-27' },
+  { type: 'low',     from: '2026-08-30', to: '2026-09-03' },
+  { type: 'high',    from: '2026-09-04', to: '2026-09-07' },
+  { type: 'low',     from: '2026-09-08', to: '2026-09-10' },
+  { type: 'low',     from: '2026-09-13', to: '2026-09-17' },
+  { type: 'low',     from: '2026-09-20', to: '2026-09-23' },
+  { type: 'high',    from: '2026-09-24', to: '2026-10-05' },
+  { type: 'low',     from: '2026-10-06', to: '2026-10-08' },
+  { type: 'low',     from: '2026-10-11', to: '2026-10-15' },
+  { type: 'low',     from: '2026-10-18', to: '2026-10-22' },
+  { type: 'low',     from: '2026-10-25', to: '2026-10-29' },
+  { type: 'special', from: '2026-11-01', to: '2026-11-05' },
+  { type: 'special', from: '2026-11-08', to: '2026-11-12' },
+  { type: 'special', from: '2026-11-15', to: '2026-11-19' },
+  { type: 'special', from: '2026-11-22', to: '2026-11-26' },
+  { type: 'special', from: '2026-11-29', to: '2026-11-30' },
+  { type: 'high',    from: '2026-12-10', to: '2026-12-19' },
+  { type: 'peak',    from: '2026-12-20', to: '2026-12-31' },
+
+  // ── 2027 ────────────────────────────────────────────────────────────────────
+  { type: 'peak',    from: '2027-01-01', to: '2027-01-05' },
+  { type: 'high',    from: '2027-01-06', to: '2027-01-12' },
+  { type: 'low',     from: '2027-01-13', to: '2027-01-14' },
+  { type: 'low',     from: '2027-01-17', to: '2027-01-21' },
+  { type: 'low',     from: '2027-01-24', to: '2027-01-28' },
+  { type: 'low',     from: '2027-01-31', to: '2027-01-31' },
+  { type: 'special', from: '2027-02-01', to: '2027-02-04' },
+  { type: 'special', from: '2027-02-07', to: '2027-02-11' },
+  { type: 'special', from: '2027-02-14', to: '2027-02-18' },
+  { type: 'special', from: '2027-02-21', to: '2027-02-25' },
+  { type: 'special', from: '2027-02-28', to: '2027-02-28' },
+  { type: 'high',    from: '2027-03-20', to: '2027-03-24' },
+  { type: 'peak',    from: '2027-03-25', to: '2027-03-29' },
+  { type: 'high',    from: '2027-03-30', to: '2027-04-05' },
+  { type: 'low',     from: '2027-04-06', to: '2027-04-08' },
+  { type: 'low',     from: '2027-04-11', to: '2027-04-15' },
+  { type: 'low',     from: '2027-04-18', to: '2027-04-22' },
+  { type: 'high',    from: '2027-04-24', to: '2027-04-27' },
+  { type: 'low',     from: '2027-04-28', to: '2027-04-29' },
+  { type: 'special', from: '2027-05-02', to: '2027-05-06' },
+  { type: 'special', from: '2027-05-09', to: '2027-05-13' },
+  { type: 'special', from: '2027-05-16', to: '2027-05-20' },
+  { type: 'special', from: '2027-05-23', to: '2027-05-27' },
+  { type: 'special', from: '2027-05-30', to: '2027-06-03' },
+  { type: 'special', from: '2027-06-06', to: '2027-06-10' },
+  { type: 'low',     from: '2027-06-13', to: '2027-06-14' },
+  { type: 'low',     from: '2027-06-17', to: '2027-06-17' },
+  { type: 'low',     from: '2027-06-20', to: '2027-06-24' },
+  { type: 'high',    from: '2027-06-25', to: '2027-07-19' },
+  { type: 'low',     from: '2027-07-20', to: '2027-07-22' },
+  { type: 'low',     from: '2027-07-25', to: '2027-07-29' },
+  { type: 'low',     from: '2027-08-01', to: '2027-08-05' },
+  { type: 'high',    from: '2027-08-06', to: '2027-08-09' },
+  { type: 'low',     from: '2027-08-10', to: '2027-08-12' },
+  { type: 'low',     from: '2027-08-15', to: '2027-08-19' },
+  { type: 'low',     from: '2027-08-22', to: '2027-08-26' },
+  { type: 'low',     from: '2027-08-29', to: '2027-09-02' },
+  { type: 'low',     from: '2027-09-05', to: '2027-09-09' },
+  { type: 'low',     from: '2027-09-12', to: '2027-09-16' },
+  { type: 'low',     from: '2027-09-19', to: '2027-09-22' },
+  { type: 'high',    from: '2027-09-23', to: '2027-10-04' },
+  { type: 'low',     from: '2027-10-05', to: '2027-10-07' },
+  { type: 'low',     from: '2027-10-10', to: '2027-10-14' },
+  { type: 'low',     from: '2027-10-17', to: '2027-10-21' },
+  { type: 'low',     from: '2027-10-24', to: '2027-10-28' },
+  { type: 'low',     from: '2027-10-31', to: '2027-10-31' },
+  { type: 'special', from: '2027-11-01', to: '2027-11-04' },
+  { type: 'special', from: '2027-11-07', to: '2027-11-11' },
+  { type: 'special', from: '2027-11-14', to: '2027-11-18' },
+  { type: 'special', from: '2027-11-21', to: '2027-11-25' },
+  { type: 'special', from: '2027-11-28', to: '2027-11-30' },
+  { type: 'high',    from: '2027-12-09', to: '2027-12-19' },
+  { type: 'peak',    from: '2027-12-20', to: '2027-12-31' },
+
+  // ── 2028 ────────────────────────────────────────────────────────────────────
+  { type: 'peak',    from: '2028-01-01', to: '2028-01-04' },
+  { type: 'high',    from: '2028-01-05', to: '2028-01-15' },
 ];
 
 // --------------------------------------------------------------------------
