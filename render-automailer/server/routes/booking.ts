@@ -250,6 +250,17 @@ export function createBookingRouter(deps: {
     });
   });
 
+  // ─── Diagnostic: raw Beds24 offer list vs our OFFER_PLANS (admin only) ────
+  router.get('/debug-offers', requireAdminKey, async (req, res) => {
+    const checkIn  = String(req.query.checkIn  || '2026-09-15');
+    const checkOut = String(req.query.checkOut || '2026-09-18');
+    try {
+      res.json(await beds24.debugOffers(checkIn, checkOut));
+    } catch (err: any) {
+      res.status(502).json({ error: err.message });
+    }
+  });
+
   // ─── Diagnostic: raw Beds24 calendar data (admin only) ───────────────────
   router.get('/debug-calendar', requireAdminKey, async (req, res) => {
     const start = String(req.query.start || '2026-08-20');

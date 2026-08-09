@@ -583,7 +583,32 @@ export class Beds24Service {
     return Number.isFinite(min) ? Math.max(0, Math.round(min)) : 1;
   }
 
-  // ─── Diagnostic ───────────────────────────────────────────────────────────
+  // ─── Diagnostics ──────────────────────────────────────────────────────────
+
+  /**
+   * Returns the raw offer list from Beds24 /inventory/rooms/offers for a date range.
+   * Used only by the admin /api/booking/debug-offers route to verify offerId mapping.
+   */
+  async debugOffers(checkIn: string, checkOut: string): Promise<any> {
+    await this.loadProperty();
+    const params = new URLSearchParams({
+      propertyId: String(this.cfg.beds24PropId),
+      checkIn,
+      checkOut,
+      numAdult: '2',
+    });
+    const json = await this.request(`/inventory/rooms/offers?${params.toString()}`);
+    // Return raw data alongside our OFFER_PLANS for easy comparison.
+    const ourPlans = [
+      { offerId: 2, offerName: 'Semi flexible',  type: 'semiFlex'   },
+      { offerId: 3, offerName: 'Non refundable', type: 'nonRef'     },
+      { offerId: 4, offerName: 'Minimum stay',   type: 'minStay'    },
+      { offerId: 5, offerName: 'Weekly stay',     type: 'weekly'     },
+      { offerId: 6, offerName: 'Early booker',   type: 'earlyBird'  },
+      { offerId: 7, offerName: 'Last minute',    type: 'lastMinute' },
+    ];
+    return { ourPlans, beds24Raw: json };
+  }
 
   /**
    * Returns raw calendar data from Beds24 for a date range.
