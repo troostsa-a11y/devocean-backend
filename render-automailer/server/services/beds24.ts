@@ -518,10 +518,19 @@ export class Beds24Service {
     const baseTotal = stayDates.reduce((s, d) => s + getNightlyRate(roomId, d), 0);
     if (baseTotal <= 0) return { offers: [], unitsAvailable: 0 }; // room not in season config
 
-    // Occupancy surcharge: extra adults (above 1-adult base) + all children.
-    // Rates are per-room (from season-config.ts ROOM_RATES).
-    const extraAdults = Math.max(0, adults - 1);
-    const surcharge   = (extraAdults * getExtraAdultRate(roomId) + children * getExtraChildRate(roomId)) * nights;
+    // Occupancy surcharge — billed by position, not by guest type:
+    //   Slot 1 (anyone):          included in base rate
+    //   Slot 2 (any age):         + extraAdult rate
+    //   Slot 3 (child 4–12yr):    + extraChild rate
+    //   Slot 3 (infant 0–3yr):    free — infants are never passed here
+    //
+    // `children` here is 4–12yr only; infants are stripped upstream and never
+    // reach getAvailability, so `totalBillable = adults + children` is correct.
+    const totalBillable = adults + children;
+    const surcharge = (
+      (totalBillable >= 2 ? getExtraAdultRate(roomId) : 0) +
+      (totalBillable >= 3 ? getExtraChildRate(roomId) : 0)
+    ) * nights;
 
     const daysToArrival = nightsBetween(todayUTC(), checkIn);
 
