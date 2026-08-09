@@ -250,6 +250,18 @@ export function createBookingRouter(deps: {
     });
   });
 
+  // ─── Diagnostic: raw Beds24 calendar data (admin only) ───────────────────
+  router.get('/debug-calendar', requireAdminKey, async (req, res) => {
+    const start = String(req.query.start || '2026-08-20');
+    const end   = String(req.query.end   || '2026-08-25');
+    try {
+      const result = await beds24.debugCalendar(start, end);
+      res.json(result);
+    } catch (err: any) {
+      res.status(502).json({ error: err.message });
+    }
+  });
+
   // ─── Availability + quote ──────────────────────────────────────────────────
   router.post('/availability', requireAdminKey, availabilityLimiter, async (req, res) => {
     if (!guardConfigured(res)) return;

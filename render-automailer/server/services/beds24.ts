@@ -21,7 +21,7 @@
  */
 
 import { getBookingConfig, round2, type BookingConfig } from '../config/booking-config';
-import { getNightlyRate, EXTRA_PERSON_RATE, EXTRA_CHILD_RATE, PRICE_FOR_PERSONS } from '../config/season-config';
+import { getNightlyRate, getExtraAdultRate, getExtraChildRate } from '../config/season-config';
 
 export interface Beds24Room {
   roomId: string;
@@ -451,6 +451,7 @@ export class Beds24Service {
     for (const room of this.rooms) params.append('roomId[]', room.roomId);
     params.set('startDate',       startDate);
     params.set('endDate',         endDate);
+    params.set('includePrices',   'true');   // keep for Beds24 compatibility even though we don't use price1
     params.set('includeNumAvail', 'true');
 
     const json = await this.request(`/inventory/rooms/calendar?${params.toString()}`);
@@ -517,9 +518,10 @@ export class Beds24Service {
     const baseTotal = stayDates.reduce((s, d) => s + getNightlyRate(roomId, d), 0);
     if (baseTotal <= 0) return { offers: [], unitsAvailable: 0 }; // room not in season config
 
-    // Occupancy surcharge: extra adults (above base coverage) + all children.
-    const extraAdults = Math.max(0, adults - PRICE_FOR_PERSONS);
-    const surcharge   = (extraAdults * EXTRA_PERSON_RATE + children * EXTRA_CHILD_RATE) * nights;
+    // Occupancy surcharge: extra adults (above 1-adult base) + all children.
+    // Rates are per-room (from season-config.ts ROOM_RATES).
+    const extraAdults = Math.max(0, adults - 1);
+    const surcharge   = (extraAdults * getExtraAdultRate(roomId) + children * getExtraChildRate(roomId)) * nights;
 
     const daysToArrival = nightsBetween(todayUTC(), checkIn);
 
@@ -549,15 +551,45 @@ export class Beds24Service {
     return { offers, unitsAvailable: numAvail };
   }
 
-  /** Extract the minimum available units across a set of dates from a room's calendar map. */
+  /**
+   * Extract the minimum available units across all stay dates from a room's calendar map.
+   *
+   * Beds24 calendar only stores EXPLICIT blocks/sold-out entries — dates with no
+   * calendar entry at all are implicitly open. So:
+   *   - No entry (!e)           → open (treat numAvail as unknown)
+   *   - entry.closed === true   → unavailable (return 0 immediately)
+   *   - entry.numAvail defined  → trust it; 0 = sold out
+   *   - entry.numAvail absent   → open, qty unknown (don't constrain min)
+   * If all dates are unknown-qty, return 1 (conservative: assume at least 1 unit).
+   */
   private minUnitsAvailable(roomCal: Map<string, CalEntry>, stayDates: string[]): number {
     let min = Infinity;
     for (const d of stayDates) {
       const e = roomCal.get(d);
-      if (!e || e.closed) return 0;
-      if (e.numAvail !== undefined) min = Math.min(min, e.numAvail);
+      if (e?.closed) return 0;                              // explicitly closed
+      if (e?.numAvail !== undefined) min = Math.min(min, e.numAvail); // explicit qty
+      // no entry or no numAvail field → date is implicitly open, no constraint
     }
-    return Number.isFinite(min) ? Math.round(min) : 1; // unknown numAvail → assume 1
+    // If any date had numAvail=0, min is 0. If all were unconstrained, min=Infinity → 1.
+    return Number.isFinite(min) ? Math.max(0, Math.round(min)) : 1;
+  }
+
+  // ─── Diagnostic ───────────────────────────────────────────────────────────
+
+  /**
+   * Returns raw calendar data from Beds24 for a date range.
+   * Used only by the admin /api/booking/debug-calendar route.
+   */
+  async debugCalendar(startDate: string, endDate: string): Promise<any> {
+    await this.loadProperty();
+    const calData = await this.fetchCalendarWindow(startDate, endDate);
+    const rooms = this.rooms.map(r => ({ roomId: r.roomId, name: r.name }));
+    const calendar: Record<string, any> = {};
+    for (const [roomId, roomMap] of calData) {
+      const entries = Object.fromEntries(roomMap);
+      calendar[roomId] = { totalEntries: roomMap.size, entries };
+    }
+    return { rooms, calendarRoomIds: [...calData.keys()], calendar };
   }
 
   // ─── Availability ─────────────────────────────────────────────────────────
@@ -844,15 +876,17 @@ export class Beds24Service {
     const calData = await this.fetchCalendarWindow(fetchStart, fetchEnd);
     const roomCal = calData.get(roomId) ?? new Map<string, CalEntry>();
 
-    // A window starting at `ci` is available iff every one of its `nights`
-    // nights is not closed, has numAvail > 0, and has a configured local rate.
+    // A window starting at `ci` is available iff every one of its `nights` nights:
+    //   - is not explicitly closed in the Beds24 calendar
+    //   - has numAvail > 0 when Beds24 specifies it (no entry = implicitly open)
+    //   - has a configured local rate (room is in season-config.ts ROOM_RATES)
     const windowOk = (ci: string): boolean => {
       for (let i = 0; i < nights; i++) {
         const d = shiftDate(ci, i);
         const e = roomCal.get(d);
-        if (!e || e.closed) return false;
-        if (e.numAvail !== undefined && e.numAvail <= 0) return false;
-        if (getNightlyRate(roomId, d) <= 0) return false; // room not in season config
+        if (e?.closed) return false;                                    // explicitly closed
+        if (e?.numAvail !== undefined && e.numAvail <= 0) return false; // sold out
+        if (getNightlyRate(roomId, d) <= 0) return false;               // room not in config
       }
       return true;
     };

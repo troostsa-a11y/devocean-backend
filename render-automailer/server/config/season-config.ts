@@ -5,13 +5,20 @@
  * All prices are computed locally from the settings in this file.
  *
  * ─── To update rates ────────────────────────────────────────────────────────
- * Change ROOM_SHOULDER_RATES (one master nightly rate per room, for 1 person).
- * All other season rates are derived automatically via SEASON_MULTIPLIERS.
+ * Change ROOM_RATES. Each room has:
+ *   shoulder   — nightly base rate for 1 adult in shoulder season (USD)
+ *   extraAdult — extra charge per additional adult per night
+ *   extraChild — extra charge per child (extra bed, 4–12yr) per night;
+ *                set to 0 if extra beds are not available for this room type
  *
  * ─── To update seasons ──────────────────────────────────────────────────────
  * Change SEASON_RANGES. Ranges are MM-DD (annual recurring). First match wins.
  * Ranges that wrap the year-end (e.g. 12-20 → 01-05) are supported natively.
  * For once-off dates (e.g. Easter), use full YYYY-MM-DD strings.
+ *
+ * ─── Season multipliers ─────────────────────────────────────────────────────
+ * Applied to the shoulder rate to derive the price for every other season.
+ * Change here if the relative pricing between seasons changes.
  *
  * ─── To update offer discounts / min-stay rules ─────────────────────────────
  * See OFFER_PLANS in beds24.ts.
@@ -31,28 +38,31 @@ export const SEASON_MULTIPLIERS: Record<SeasonType, number> = {
 };
 
 // --------------------------------------------------------------------------
-// Per-room master shoulder rate (USD/night, for PRICE_FOR_PERSONS persons)
-// Key = Beds24 roomId (string). Value = nightly rate in USD.
-// ⚠️  TODO: fill in actual shoulder rates — see README or ask admin.
+// Per-room rate configuration
+// Key = Beds24 roomId (string).
+// ⚠️  TODO: replace placeholder room IDs (SAFARI_ID etc.) with real Beds24 room IDs.
+//     Real IDs are visible in the Beds24 dashboard (Settings → Rooms) or in the
+//     /api/booking/availability response once the service is live.
 // --------------------------------------------------------------------------
-export const ROOM_SHOULDER_RATES: Record<string, number> = {
-  // 'BEDS24_ROOM_ID': RATE,   ← format
-  // Example (replace with real values):
-  // '620542': 80,    // Safari Tent - shared bathrooms
-  // '620543': 110,   // Thatched Chalet - AC
-};
+export interface RoomRates {
+  /** Nightly base rate for 1 adult in shoulder season (USD). */
+  shoulder: number;
+  /** Extra charge per additional adult per night (above 1 adult base). */
+  extraAdult: number;
+  /** Extra charge per child (4–12yr, extra bed) per night. 0 = not available. */
+  extraChild: number;
+}
 
-// --------------------------------------------------------------------------
-// Occupancy pricing constants
-// Base rate covers up to PRICE_FOR_PERSONS persons at no extra charge.
-// Each additional adult or child costs an extra flat fee per night.
-// --------------------------------------------------------------------------
-/** Number of persons the base rate includes (extra charged above this). */
-export const PRICE_FOR_PERSONS = 1;
-/** USD per extra adult per night (above PRICE_FOR_PERSONS). */
-export const EXTRA_PERSON_RATE = 27;
-/** USD per child per night. */
-export const EXTRA_CHILD_RATE  = 27;
+export const ROOM_RATES: Record<string, RoomRates> = {
+  // Four Safari Tents – shared bathrooms (Beds24 ID 620542)
+  '620542': { shoulder: 52, extraAdult: 27, extraChild: 27 },
+  // Three Comfort Safari Tents – private en-suite bathroom (Beds24 ID 620540)
+  '620540': { shoulder: 67, extraAdult: 32, extraChild: 32 },
+  // Garden Cottage – AC inverter, no extra bed (Beds24 ID 620541)
+  '620541': { shoulder: 82, extraAdult: 37, extraChild:  0 },
+  // Thatched Chalet – AC inverter (Beds24 ID 620543)
+  '620543': { shoulder: 91, extraAdult: 38, extraChild: 40 },
+};
 
 // --------------------------------------------------------------------------
 // Season date ranges (annual, recurring)
@@ -68,10 +78,10 @@ export interface SeasonRange {
 // ⚠️  TODO: fill in actual season dates.
 export const SEASON_RANGES: SeasonRange[] = [
   // Listed in priority order: first matching range wins.
-  // { type: 'peak',     from: '12-20', to: '01-05' },  // Christmas / New Year (wraps year)
-  // { type: 'high',     from: '07-01', to: '08-31' },
-  // { type: 'low',      from: '05-01', to: '06-30' },
-  // { type: 'special',  from: '04-14', to: '04-21' },  // Easter (adjust per year)
+  // { type: 'peak',    from: '12-20', to: '01-05' },  // Christmas / New Year (wraps year)
+  // { type: 'high',    from: '07-01', to: '08-31' },
+  // { type: 'low',     from: '05-01', to: '06-30' },
+  // { type: 'special', from: '04-14', to: '04-21' },  // Easter (adjust annually)
   // Shoulder is the fallback — no entry needed.
 ];
 
@@ -84,7 +94,6 @@ export const SEASON_RANGES: SeasonRange[] = [
  * Returns 'shoulder' if no range matches.
  */
 export function getSeasonForDate(date: string): SeasonType {
-  // Support both 'MM-DD' (annual recurring) and 'YYYY-MM-DD' (specific year).
   for (const range of SEASON_RANGES) {
     const isAnnual = range.from.length === 5; // MM-DD
     if (isAnnual) {
@@ -92,11 +101,10 @@ export function getSeasonForDate(date: string): SeasonType {
       if (range.from <= range.to) {
         if (md >= range.from && md <= range.to) return range.type;
       } else {
-        // Wrapping range (e.g. 12-20 → 01-05): matches if in [from, 12-31] OR [01-01, to]
+        // Wrapping range (e.g. 12-20 → 01-05)
         if (md >= range.from || md <= range.to) return range.type;
       }
     } else {
-      // Full YYYY-MM-DD range
       if (date >= range.from && date <= range.to) return range.type;
     }
   }
@@ -104,11 +112,26 @@ export function getSeasonForDate(date: string): SeasonType {
 }
 
 /**
- * Nightly master rate for a room on a given date.
- * Returns 0 if the room is not configured in ROOM_SHOULDER_RATES (→ no offers shown).
+ * Nightly master rate for a room on a given date (season-adjusted).
+ * Returns 0 if the room is not configured in ROOM_RATES.
  */
 export function getNightlyRate(roomId: string, date: string): number {
-  const shoulder = ROOM_SHOULDER_RATES[roomId];
-  if (!shoulder) return 0;
-  return shoulder * SEASON_MULTIPLIERS[getSeasonForDate(date)];
+  const rates = ROOM_RATES[roomId];
+  if (!rates) return 0;
+  return rates.shoulder * SEASON_MULTIPLIERS[getSeasonForDate(date)];
+}
+
+/**
+ * Extra adult charge per night for a room.
+ * Returns 0 if the room is not configured.
+ */
+export function getExtraAdultRate(roomId: string): number {
+  return ROOM_RATES[roomId]?.extraAdult ?? 0;
+}
+
+/**
+ * Extra child charge per night for a room (0 = extra beds not available).
+ */
+export function getExtraChildRate(roomId: string): number {
+  return ROOM_RATES[roomId]?.extraChild ?? 0;
 }
