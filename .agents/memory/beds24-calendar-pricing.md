@@ -30,14 +30,17 @@ offer total = round(baseTotal × (1 + offsetPercent/100) + surcharge)
 ```
 
 ## Offer plans (hardcoded in beds24.ts OFFER_PLANS)
-| offerId | name | type | minStay | offset |
+All offerId values verified against Beds24 /inventory/rooms/offers for property 297012.
+Plans 5-7 only appear when the query date range satisfies their booking-window constraints.
+
+| offerId | Beds24 code | type | minStay | offset |
 |---|---|---|---|---|
-| 2 | Semi flexible | semiFlex | 1 | 0% |
-| 3 | Non refundable | nonRef | 1 | −8% |
-| 4 | Minimum stay | minStay | 3 | −10% |
-| 5 | Weekly stay | weekly | 7 | −15% |
-| 6 | Early booker | earlyBird | 1 | −12% |
-| 7 | Last minute | lastMinute | 1 | −10% |
+| 2 | DIR-SF-OFR | semiFlex | 1 | 0% |
+| 3 | DIR-NR-OFR | nonRef | 1 | −8% |
+| 4 | DIR-MS-OFR | minStay | 3 | −10% |
+| 5 | DIR-WS-OFR | weekly | 7 | −15% |
+| 6 | DIR-EB-OFR | earlyBird | 1 | −12% |
+| 7 | DIR-LM-OFR | lastMinute | 1 | −10% |
 
 Advance-booking gates: nonRef ≤28d, earlyBird ≥90d, lastMinute ≤3d.
 
