@@ -1,5 +1,26 @@
-import { useEffect, useMemo, lazy, Suspense } from 'react';
-import { Route, Switch, useLocation } from 'wouter';
+import { useEffect, useMemo, lazy, Suspense, useTransition, useCallback } from 'react';
+import { Router, Route, Switch, useLocation } from 'wouter';
+import { useBrowserLocation } from 'wouter/use-browser-location';
+
+/**
+ * Custom Wouter location hook that wraps every navigate() call in
+ * React 18's startTransition. This keeps the *old* route content on screen
+ * while the new lazy chunk downloads, so the Suspense fallback (spinner) is
+ * never shown during in-app navigation — eliminating the "black on white
+ * between screens" flash that appears when chunks take >1 frame to load.
+ *
+ * First-load (direct URL visit) still shows the fallback normally because
+ * there is no previous route to keep on screen.
+ */
+function useTransitionLocation() {
+  const [location, navigate] = useBrowserLocation();
+  const [, startTransition] = useTransition();
+  const transitionNavigate = useCallback(
+    (to, opts) => startTransition(() => navigate(to, opts)),
+    [navigate] // eslint-disable-line react-hooks/exhaustive-deps
+  );
+  return [location, transitionNavigate];
+}
 import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
@@ -249,6 +270,7 @@ export default function App() {
   }, []);
 
   return (
+    <Router hook={useTransitionLocation}>
     <div className="min-h-screen flex flex-col bg-slate-50">
       {/* Header with topbar (fixed via CSS) - uses full UI if loaded, otherwise critical. */}
       <Header
@@ -261,13 +283,9 @@ export default function App() {
         bookUrl={bookUrl}
       />
 
+      {/* Outer Suspense: first-visit chunk loads only (in-app navigation stays on old route via startTransition) */}
       <Suspense fallback={
-        <div className="flex-1 flex items-center justify-center min-h-[50vh]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-            <p className="mt-4 text-slate-600">Loading...</p>
-          </div>
-        </div>
+        <div className="flex-1 min-h-[50vh] bg-slate-50" />
       }>
       <Switch>
         {/* Our Story page */}
@@ -326,12 +344,7 @@ export default function App() {
         {/* Route for Why Ponta do Ouro destination page */}
         <Route path="/why-ponta">
           {loading || !ui ? (
-            <div className="flex-1 flex items-center justify-center min-h-[50vh]">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-                <p className="mt-4 text-slate-600">Loading...</p>
-              </div>
-            </div>
+            <div className="flex-1 min-h-[50vh] bg-slate-50" />
           ) : (
             <WhyPontaPage
               units={units}
@@ -347,12 +360,7 @@ export default function App() {
         {/* Route for experience detail pages */}
         <Route path="/experiences/:key">
           {loading || !ui ? (
-            <div className="flex-1 flex items-center justify-center min-h-[50vh]">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-                <p className="mt-4 text-slate-600">Loading...</p>
-              </div>
-            </div>
+            <div className="flex-1 min-h-[50vh] bg-slate-50" />
           ) : (
             <ExperienceDetailPage
               units={units}
@@ -372,12 +380,7 @@ export default function App() {
           
           {/* Below-fold content - wait for full translations */}
           {loading || !ui ? (
-            <div className="flex-1 flex items-center justify-center min-h-[50vh]">
-              <div className="text-center">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#9e4b13] mx-auto"></div>
-                <p className="mt-4 text-slate-600">Loading...</p>
-              </div>
-            </div>
+            <div className="flex-1 min-h-[50vh] bg-slate-50" />
           ) : (
             <>
               <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
@@ -402,5 +405,6 @@ export default function App() {
       </Switch>
       </Suspense>
     </div>
+    </Router>
   );
 }
