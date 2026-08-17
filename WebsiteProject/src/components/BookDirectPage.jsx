@@ -1203,8 +1203,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                     ≈ {money(cardTotal, room.currency)}
                                   </p>
                                 )}
-                              </div>
-                              <div className="flex flex-wrap items-baseline gap-x-2 mt-0">
                                 <p className="text-sm text-slate-500">
                                   {fmt(t.perNightFrom, { nights: room.nights })}
                                 </p>
