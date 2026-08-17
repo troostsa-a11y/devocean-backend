@@ -485,9 +485,16 @@
     if (state === "idle") fab.classList.add("dv-attention");
   }, 4000);
 
-  // Auto-open voice if ?talk is in the URL (e.g. WhatsApp deep-link)
+  // Auto-open text chat if ?talk is in the URL (e.g. email / WhatsApp link).
+  // Text chat is used (not voice) because:
+  //   - voice requires mic permission and WebRTC, which fails silently in
+  //     email clients / Outlook previews, causing a fallback-to-text flow
+  //     that fires an autoMessage and produces a double greeting.
+  //   - Text chat shows the static greeting once, then waits for the visitor.
   if (new URLSearchParams(window.location.search).has("talk")) {
-    setTimeout(function () { voiceBtn.click(); }, 1000);
+    setTimeout(function () {
+      window.devocean.ask({ pageContext: _basePageContext() });
+    }, 1000);
   }
 
   // --- reCAPTCHA badge avoidance ---
