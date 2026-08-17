@@ -24,8 +24,17 @@ export function approxMoney(amount, currency) {
   }
 }
 
+// All recognised unit-type slugs. Any new room type must be added here first.
+export const UNIT_KEYS = ['safari', 'comfort', 'cottage', 'chalet'];
+
+// Subset of UNIT_KEYS whose rooms offer a king/twin bed-preference toggle.
+// Garden Cottage is intentionally absent — its bed layout is fixed.
+// If a new entry is added to UNIT_KEYS it must also appear here OR in the
+// BED_TOGGLE_NON_KEYS list; the unit test enforces this invariant.
+export const BED_TOGGLE_UNIT_KEYS = ['safari', 'comfort', 'chalet'];
+
 export function getUnitKey(name) {
-  return ['safari', 'comfort', 'cottage', 'chalet'].find((k) => (name || '').toLowerCase().includes(k));
+  return UNIT_KEYS.find((k) => (name || '').toLowerCase().includes(k));
 }
 
 // Sensible default per-room occupancy: fill the room toward the party,
@@ -33,7 +42,7 @@ export function getUnitKey(name) {
 // touched the per-room steppers.
 export function defaultRoomOccFor(room, effAdults, effChildren) {
   const uk = getUnitKey(room.name);
-  const isChildUnit = uk === 'safari' || uk === 'comfort' || uk === 'chalet';
+  const isChildUnit = BED_TOGGLE_UNIT_KEYS.includes(uk);
   // Beds24 reports maxChildren=0 for every unit; effective capacity is
   // unit-type-driven: safari/comfort/chalet sleep 2A+1C (=3); GC sleeps 2.
   const effMax = isChildUnit ? (room.maxAdults || 2) + 1 : (room.maxAdults || room.maxPeople || 2);
@@ -134,7 +143,7 @@ function RoomCard({
   // a strict 2-adult unit ("Sleeps 2"). The sleepsTotal>2 branch is a
   // fallback for any future larger unit (reframes the last adult slot).
   const sleepsTotal = room.maxAdults || room.maxPeople;
-  const childUnit = unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet';
+  const childUnit = BED_TOGGLE_UNIT_KEYS.includes(unitKey);
   // Effective total occupancy cap per unit (adults + children combined;
   // infants don't count — they sleep in cribs).
   const effectiveMaxPeople = childUnit ? (room.maxAdults || 2) + 1 : (room.maxAdults || room.maxPeople || 2);
@@ -231,7 +240,7 @@ function RoomCard({
               {fmt(t.unitsLeft, { count: units })}
             </span>
           </div>
-          {(unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet') && (
+          {BED_TOGGLE_UNIT_KEYS.includes(unitKey) && (
             <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
               <span className="text-xs text-slate-500 basis-full sm:basis-auto shrink-0">{getBedTypeLabel('bedPreference', lang)}</span>
               <div className="flex gap-1.5">

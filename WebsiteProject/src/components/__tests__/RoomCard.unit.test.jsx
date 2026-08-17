@@ -2,15 +2,17 @@
  * RoomCard.unit.test.jsx
  *
  * Regression tests that pin the two source-of-truth constants in RoomCard.jsx
- * that together guarantee Garden Cottage never receives a bed-preference:
+ * that together guarantee the bed-preference toggle is shown only for the
+ * correct room types:
  *
  *   1. getUnitKey('Garden Cottage') must return exactly 'cottage'.
  *      If a refactor renames / removes the 'cottage' key this fails immediately.
  *
- *   2. The bed-toggle render condition must NOT include 'cottage'.
- *      The condition is: unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet'
- *      Asserting it as a whitelist means any future addition of 'cottage' breaks
- *      this test before the broken payload ever reaches production.
+ *   2. UNIT_KEYS and BED_TOGGLE_UNIT_KEYS are imported directly from RoomCard
+ *      source (not hardcoded here), so the tests track the real constants.
+ *      Every key in UNIT_KEYS must appear in either BED_TOGGLE_UNIT_KEYS or
+ *      BED_TOGGLE_NON_KEYS — adding a new unit type without updating either
+ *      list will fail this test with a clear diagnostic message.
  *
  *   3. A rendered RoomCard for a Garden Cottage must contain no bed-type
  *      buttons (king / twin) — zero buttons with a /king|twin/i title attribute.
@@ -18,7 +20,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { getUnitKey } from '../RoomCard';
+import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS } from '../RoomCard';
 
 // ── Module mocks ──────────────────────────────────────────────────────────────
 
@@ -54,16 +56,12 @@ vi.mock('../../i18n/bookingStrings', () => ({
 // ── 1 & 2. Pure-function tests — no rendering needed ──────────────────────────
 
 /**
- * THE BED-TOGGLE WHITELIST.
- *
- * This constant mirrors the condition on RoomCard.jsx line 234:
- *   (unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet')
- *
- * It is declared explicitly here so that if a developer adds 'cottage' to
- * the real JSX condition they must also add it here, which will immediately
- * break the assertion below — preventing the bug from reaching production.
+ * Units that are intentionally excluded from the bed-preference toggle.
+ * Every key in UNIT_KEYS must appear in either BED_TOGGLE_UNIT_KEYS or here.
+ * If a developer adds a new unit type to UNIT_KEYS without updating either
+ * list, the cross-check test below will fail with a descriptive message.
  */
-const BED_TOGGLE_UNIT_KEYS = ['safari', 'comfort', 'chalet'];
+const BED_TOGGLE_NON_KEYS = ['cottage'];
 
 describe('getUnitKey — Garden Cottage slug', () => {
   it("returns 'cottage' for 'Garden Cottage'", () => {
@@ -96,16 +94,85 @@ describe('bed-toggle whitelist — cottage must be absent', () => {
   });
 
   it("BED_TOGGLE_UNIT_KEYS includes exactly safari, comfort, chalet", () => {
-    expect(BED_TOGGLE_UNIT_KEYS.sort()).toEqual(['chalet', 'comfort', 'safari']);
+    expect([...BED_TOGGLE_UNIT_KEYS].sort()).toEqual(['chalet', 'comfort', 'safari']);
   });
 
   it("getUnitKey('Garden Cottage') is not in BED_TOGGLE_UNIT_KEYS", () => {
     const unitKey = getUnitKey('Garden Cottage');
     expect(BED_TOGGLE_UNIT_KEYS).not.toContain(unitKey);
   });
+
+  /**
+   * CROSS-CHECK: every key in UNIT_KEYS must be explicitly accounted for.
+   *
+   * This test reads UNIT_KEYS and BED_TOGGLE_UNIT_KEYS directly from the
+   * RoomCard source. If a developer adds a new entry to UNIT_KEYS they MUST
+   * also add it to either BED_TOGGLE_UNIT_KEYS (toggle shown) or to
+   * BED_TOGGLE_NON_KEYS in this test file (toggle deliberately absent).
+   * Forgetting to do either will fail this test with a clear message naming
+   * the unaccounted key — before the omission reaches production.
+   */
+  it('every UNIT_KEY is accounted for in BED_TOGGLE_UNIT_KEYS or BED_TOGGLE_NON_KEYS', () => {
+    const accounted = new Set([...BED_TOGGLE_UNIT_KEYS, ...BED_TOGGLE_NON_KEYS]);
+    const unaccounted = UNIT_KEYS.filter((k) => !accounted.has(k));
+    expect(unaccounted, [
+      'New unit key(s) found in UNIT_KEYS that are not listed in',
+      'BED_TOGGLE_UNIT_KEYS (toggle shown) or BED_TOGGLE_NON_KEYS (toggle absent):',
+      unaccounted.join(', '),
+      '',
+      'Add the key to BED_TOGGLE_UNIT_KEYS in RoomCard.jsx if the new room type',
+      'should offer a king/twin preference, OR add it to BED_TOGGLE_NON_KEYS in',
+      'this test file if its bed layout is fixed.',
+    ].join('\n')).toHaveLength(0);
+  });
+
+  /**
+   * REVERSE-CHECK: BED_TOGGLE_UNIT_KEYS must not reference a key absent from UNIT_KEYS.
+   *
+   * Catches the case where a unit type is removed from UNIT_KEYS but its toggle
+   * entry is left behind as a stale reference.
+   */
+  it('every BED_TOGGLE_UNIT_KEY exists in UNIT_KEYS', () => {
+    const unitKeySet = new Set(UNIT_KEYS);
+    const stale = BED_TOGGLE_UNIT_KEYS.filter((k) => !unitKeySet.has(k));
+    expect(stale, [
+      'BED_TOGGLE_UNIT_KEYS references key(s) not present in UNIT_KEYS:',
+      stale.join(', '),
+      'Remove the stale entry from BED_TOGGLE_UNIT_KEYS in RoomCard.jsx.',
+    ].join('\n')).toHaveLength(0);
+  });
 });
 
-// ── 3. Render test — no bed-type buttons on a cottage card ────────────────────
+// ── 3. Checkout-sync test — the bedPreferences predicate matches the toggle ────
+
+/**
+ * The checkout default logic in BookDirectPage.jsx is:
+ *   if (BED_TOGGLE_UNIT_KEYS.includes(uk)) prefs[roomId] = 'king';
+ *
+ * Since both files now import the same exported constant, this test proves
+ * that the predicate produces 'king' for every BED_TOGGLE_UNIT_KEY and
+ * produces nothing for every BED_TOGGLE_NON_KEY — so a new unit added to
+ * UNIT_KEYS automatically drives the correct checkout behaviour once it is
+ * placed in the right list.
+ */
+describe('checkout bedPreferences sync — every toggle key defaults to king', () => {
+  for (const key of BED_TOGGLE_UNIT_KEYS) {
+    it(`BED_TOGGLE_UNIT_KEYS.includes(getUnitKey('${key} room')) is true → would default to king`, () => {
+      // Simulate a Beds24 room name that contains the unit key (e.g. 'safari room').
+      const resolved = getUnitKey(`${key} room`);
+      expect(BED_TOGGLE_UNIT_KEYS.includes(resolved)).toBe(true);
+    });
+  }
+
+  for (const key of BED_TOGGLE_NON_KEYS) {
+    it(`BED_TOGGLE_UNIT_KEYS.includes(getUnitKey('${key} room')) is false → no default pref`, () => {
+      const resolved = getUnitKey(`${key} room`);
+      expect(BED_TOGGLE_UNIT_KEYS.includes(resolved)).toBe(false);
+    });
+  }
+});
+
+// ── 4. Render test — no bed-type buttons on a cottage card ────────────────────
 
 /**
  * Minimal props for a Garden Cottage RoomCard.

@@ -10,7 +10,7 @@ import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
 import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
 import MarinPanel from './MarinPanel';
-import RoomCard, { money, approxMoney, getUnitKey, defaultRoomOccFor } from './RoomCard';
+import RoomCard, { money, approxMoney, getUnitKey, defaultRoomOccFor, BED_TOGGLE_UNIT_KEYS } from './RoomCard';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -419,7 +419,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               if (prefs[cl.roomId]) continue;
               const room = availableRooms.find((r) => r.roomId === cl.roomId);
               const uk = room ? getUnitKey(room.name) : null;
-              if (uk === 'safari' || uk === 'comfort' || uk === 'chalet') prefs[cl.roomId] = 'king';
+              if (BED_TOGGLE_UNIT_KEYS.includes(uk)) prefs[cl.roomId] = 'king';
             }
             return Object.keys(prefs).length > 0 ? prefs : undefined;
           })(),
@@ -579,7 +579,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const minUnitsNeeded = useMemo(() => {
     const maxCap = (availableRooms ?? []).reduce((best, r) => {
       const uk = getUnitKey(r.name);
-      const cap = (uk === 'safari' || uk === 'comfort' || uk === 'chalet')
+      const cap = BED_TOGGLE_UNIT_KEYS.includes(uk)
         ? (r.maxAdults || 2) + 1 : (r.maxAdults || r.maxPeople || 2);
       return Math.max(best, cap);
     }, 2);
@@ -637,7 +637,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       const current = (roomOccupancyRef.current[roomId] ?? []).slice(0, oldQty);
 
       const uk = getUnitKey(room.name);
-      const childUnit = uk === 'safari' || uk === 'comfort' || uk === 'chalet';
+      const childUnit = BED_TOGGLE_UNIT_KEYS.includes(uk);
       const maxA = room.maxAdults ?? 2;
       const maxP = childUnit ? maxA + 1 : (room.maxPeople ?? maxA);
 
