@@ -1241,7 +1241,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 ) : null;
                               })()}
                               {(unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet') && (
-                                <div className="mt-2 flex gap-1.5">
+                                <div className="mt-2 flex items-center gap-2">
+                                  <span className="text-xs text-slate-500 shrink-0">Bed preference:</span>
+                                  <div className="flex gap-1.5">
                                   {[
                                     { bt: 'king', label: getBedTypeLabel('king'), icon: <BedDouble className="h-4 w-4" /> },
                                     { bt: 'twin', label: getBedTypeLabel('twin'), icon: <span className="flex gap-0.5"><BedSingle className="h-4 w-4" /><BedSingle className="h-4 w-4" /></span> },
@@ -1253,7 +1255,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                         type="button"
                                         title={label}
                                         onClick={() => setBedType((prev) => ({ ...prev, [room.roomId]: bt }))}
-                                        className={`rounded-lg border p-1.5 transition-colors ${
+                                        className={`w-10 flex items-center justify-center rounded-lg border p-1.5 transition-colors ${
                                           active
                                             ? 'border-[#9e4b13] bg-[#9e4b13]/10 text-[#9e4b13]'
                                             : 'border-slate-200 text-slate-400 hover:border-slate-300'
@@ -1263,6 +1265,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                       </button>
                                     );
                                   })}
+                                  </div>
                                 </div>
                               )}
                               <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
