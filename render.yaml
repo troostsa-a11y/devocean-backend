@@ -114,3 +114,28 @@ services:
         sync: false
       - key: MARIN_NOTIFY_WA_APIKEY
         sync: false
+
+  # Cron job: ping the Receptionist API every 10 minutes to keep it warm.
+  # Even on paid plans a fresh deploy or restart cycle can leave the service cold;
+  # a steady heartbeat ensures sub-2s voice startup for the first visitor after any
+  # quiet period. Stays safely below Render's 15-minute inactivity threshold.
+  # After deploying, set RECEPTIONIST_URL in the Render dashboard to the external URL
+  # of the Receptionist service (e.g. https://receptionist-xxxx.onrender.com).
+  # No trailing slash.
+  - type: cron
+    name: Receptionist Keep-Alive
+    runtime: node
+    region: frankfurt
+    plan: starter
+    schedule: "*/10 * * * *"
+    buildCommand: echo 'keep-alive ping — no build needed'
+    startCommand: >-
+      node --input-type=module -e "
+        const url = process.env.RECEPTIONIST_URL + '/api/health';
+        fetch(url, { signal: AbortSignal.timeout(10000) })
+          .then(r => { console.log('keep-alive ping', r.status, url); process.exit(r.ok ? 0 : 1); })
+          .catch(e => { console.error('keep-alive ping failed:', e.message); process.exit(1); });
+      "
+    envVars:
+      - key: RECEPTIONIST_URL
+        sync: false
