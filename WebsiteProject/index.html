@@ -59,16 +59,18 @@
   <link rel="dns-prefetch" href="%%MIA_URL%%">
 
   <!-- Brand font: Inter. Loaded non-render-blocking (preload-as-style swap) so it
-       never delays the static hero LCP paint; display=swap shows the system-font
-       fallback instantly, then swaps to Inter once downloaded. -->
+       never delays the static hero LCP paint; display=optional loads from cache
+       only — no font-swap after first paint, eliminating font-swap CLS entirely.
+       Returning visitors get Inter; first-timers get the system-font stack which
+       is visually near-identical. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=optional"
     onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=optional">
   </noscript>
 
   <!-- CookieYes: loaded immediately after Consent Mode defaults so the banner
@@ -789,7 +791,15 @@
        React app after mount then hidden). Plain-HTML crawlers index it in full.
        ────────────────────────────────────────────────────────────────────── */
     #static-content {
-      position: relative;
+      /* Out of normal flow so hiding it later (MutationObserver) causes zero CLS.
+         position:absolute is indexed by Google's renderer; position:relative in
+         flow was the source of CLS=0.21 (hiding a large block shifts everything). */
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: -1;
+      pointer-events: none;
       max-width: 60rem;
       margin: 0 auto;
       padding: 2rem 1rem;
