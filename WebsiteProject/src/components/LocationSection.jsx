@@ -7,7 +7,9 @@ export default function LocationSection({ ui }) {
   const [showInteractiveMap, setShowInteractiveMap] = useState(false);
   const [staticMapFailed, setStaticMapFailed] = useState(false);
 
-  const staticMapUrl = `/api/static-map?lat=${MAP.lat}&lng=${MAP.lng}&zoom=${MAP.zoom}&width=896&height=320`;
+  const staticMapBase = `/api/static-map?lat=${MAP.lat}&lng=${MAP.lng}&zoom=${MAP.zoom}&width=640&height=320`;
+  const staticMapUrl = `${staticMapBase}&scale=1`;
+  const staticMapSrcSet = `${staticMapBase}&scale=1 1x, ${staticMapBase}&scale=2 2x`;
 
   return (
     <section id="location" className="bg-slate-50 border-y">
@@ -45,6 +47,8 @@ export default function LocationSection({ ui }) {
               ) : (
                 <img
                   src={staticMapUrl}
+                  srcSet={staticMapSrcSet}
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   alt="DEVOCEAN Lodge Location Map"
                   className="w-full h-80 object-cover"
                   loading="lazy"

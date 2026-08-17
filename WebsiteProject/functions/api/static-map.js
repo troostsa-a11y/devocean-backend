@@ -23,10 +23,12 @@ export async function onRequestGet({ request, env }) {
 
   let width = parseInt(url.searchParams.get('width'), 10);
   let height = parseInt(url.searchParams.get('height'), 10);
-  if (!Number.isFinite(width) || width <= 0) width = 896;
+  let scale = parseInt(url.searchParams.get('scale'), 10);
+  if (!Number.isFinite(width) || width <= 0) width = 640;
   if (!Number.isFinite(height) || height <= 0) height = 320;
-  width = Math.min(width, 1280);
-  height = Math.min(height, 1280);
+  if (scale !== 1 && scale !== 2) scale = 1;
+  width = Math.min(width, 640);   // Google Static Maps free-tier max
+  height = Math.min(height, 640);
 
   if (!lat || !lng) {
     return new Response(JSON.stringify({ error: 'Missing lat/lng parameters' }), {
@@ -44,7 +46,7 @@ export async function onRequestGet({ request, env }) {
     });
   }
 
-  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=${width}x${height}&scale=2&maptype=roadmap&markers=color:0x0EA5E9%7C${lat},${lng}&key=${apiKey}`;
+  const staticMapUrl = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=${zoom}&size=${width}x${height}&scale=${scale}&maptype=roadmap&markers=color:0x0EA5E9%7C${lat},${lng}&key=${apiKey}`;
 
   try {
     const upstream = await fetch(staticMapUrl, {
