@@ -12,6 +12,14 @@ const app: Express = express();
 app.use(
   pinoHttp({
     logger,
+    // Suppress Render's load-balancer health checks (every ~5 s) from logs.
+    // They are zero-overhead 200s that add no signal; real errors still surface
+    // because a non-2xx response bypasses this ignore function.
+    autoLogging: {
+      ignore: (req) =>
+        (req.url === "/api/health" || req.url === "/healthz") &&
+        req.method === "GET",
+    },
     serializers: {
       req(req) {
         return {
