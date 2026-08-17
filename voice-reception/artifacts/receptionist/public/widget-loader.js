@@ -410,6 +410,15 @@
     // the visitor to hear a second "Hello" on top of the static text bubble.
     postToVoice("devocean:disconnect");
     setState("idle");
+    // ORDERING CONTRACT: _basePageContext() is intentionally called AFTER
+    // setState("idle") above.  setState() has no effect on window.location or
+    // localStorage, so the order does not change what _basePageContext() reads —
+    // but the placement makes the intent explicit: we capture the live URL and
+    // display currency at the moment of fallback, not at the moment the voice
+    // call was initiated.  If the visitor navigated between pages during the
+    // failed call attempt, this ensures the injected page context reflects the
+    // page they are currently reading, not the one they were on when they tapped
+    // the voice button.
     window.devocean.ask({
       pageContext: _basePageContext(),
       autoMessage: reason || "Voice didn't connect. How can I help you in text?"
