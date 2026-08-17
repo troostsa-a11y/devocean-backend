@@ -50,8 +50,11 @@ const SUPPORTED_LANGS = [
   'sr', 'hr', 'cs', 'tr', 'ja', 'zh', 'ru', 'af', 'zu', 'sw',
 ];
 
-/** Must match TIER_KEYS inside DateRangePicker.jsx. */
-const TIER_KEYS = ['lowest', 'low', 'shoulder', 'high', 'peak'];
+/**
+ * Derived from RATE_TIER_STRINGS.en — stays in sync automatically when a new
+ * tier is added to the canonical source of truth.
+ */
+const TIER_KEYS = Object.keys(RATE_TIER_STRINGS.en.rateTiers);
 
 /**
  * Five strictly distinct prices — one per tier bucket.

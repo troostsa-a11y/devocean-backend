@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { DateTime, Info } from 'luxon';
+import { RATE_TIER_STRINGS } from '../i18n/bookingStrings.js';
 
 // Range date picker for /book-direct. Replaces the two native <input type="date">
 // fields with a single trigger that opens a dual-month calendar (one month on
@@ -44,14 +45,19 @@ function addDayISO(iso, n) {
 // stays readable on all of them. Tiers are derived live from the Beds24 price
 // map by RELATIVE comparison — there is no static season calendar.
 const TIER_TINTS = ['#dbeafe', '#dcfce7', '#fef9c3', '#ffedd5', '#fee2e2'];
-const TIER_KEYS = ['lowest', 'low', 'shoulder', 'high', 'peak'];
-const FALLBACK_TIER_LABELS = {
-  lowest: 'Lowest',
-  low: 'Low',
-  shoulder: 'Shoulder',
-  high: 'High',
-  peak: 'Peak',
-};
+
+// Centralised tint lookup used by both day-cell backgrounds and legend swatches.
+// Falls back to the last defined tint for any tier index beyond the palette so a
+// newly added tier always renders with a visible colour rather than `undefined`.
+function tierTint(i) {
+  return TIER_TINTS[i] ?? TIER_TINTS[TIER_TINTS.length - 1];
+}
+
+// Derived from RATE_TIER_STRINGS.en at import time so they stay in sync
+// automatically. Adding a new tier to RATE_TIER_STRINGS.en is the only change
+// needed — no manual update here required.
+const TIER_KEYS = Object.keys(RATE_TIER_STRINGS.en.rateTiers);
+const FALLBACK_TIER_LABELS = { ...RATE_TIER_STRINGS.en.rateTiers };
 
 function percentile(sortedAsc, q) {
   if (!sortedAsc.length) return 0;
@@ -59,15 +65,18 @@ function percentile(sortedAsc, q) {
   return sortedAsc[idx];
 }
 
-// Map an ISO→price object to ISO→tier (0..4). Strategy:
+// Map an ISO→price object to ISO→tier index. Strategy:
 //  • <2 distinct prices → no colouring (nothing to compare).
-//  • ≤5 distinct prices → map each sorted distinct value onto the 5 tiers,
-//    spread blue→red (matches a lodge's handful of seasonal rate levels).
-//  • >5 distinct prices → trim outliers to p5..p95, then 5 equal-width bands,
+//  • ≤tierCount distinct prices → map each sorted distinct value onto the tiers,
+//    spread lowest→highest (matches a lodge's handful of seasonal rate levels).
+//  • >tierCount distinct prices → trim outliers to p5..p95, then equal-width bands,
 //    clamping anything below/above into the lowest/highest tier.
 // Thresholds span the WHOLE supplied window so a date keeps the same colour
 // regardless of which months are currently visible.
+// Tier count is derived from TIER_KEYS.length so it stays in sync with the
+// canonical RATE_TIER_STRINGS.en source of truth.
 function computeTierByDate(priceByDate) {
+  const tierCount = TIER_KEYS.length;
   const entries = Object.entries(priceByDate || {}).filter(
     ([, p]) => Number.isFinite(p) && p > 0,
   );
@@ -78,9 +87,9 @@ function computeTierByDate(priceByDate) {
   if (unique.length < 2) return {};
 
   const out = {};
-  if (unique.length <= 5) {
+  if (unique.length <= tierCount) {
     const tierForValue = new Map(
-      unique.map((v, i) => [v, Math.round((i / (unique.length - 1)) * 4)]),
+      unique.map((v, i) => [v, Math.round((i / (unique.length - 1)) * (tierCount - 1))]),
     );
     for (const [iso, p] of entries) out[iso] = tierForValue.get(p);
     return out;
@@ -93,9 +102,9 @@ function computeTierByDate(priceByDate) {
   for (const [iso, p] of entries) {
     let tier = 0;
     if (span > 0) {
-      tier = Math.floor(((p - lo) / span) * 5);
+      tier = Math.floor(((p - lo) / span) * tierCount);
       if (tier < 0) tier = 0;
-      if (tier > 4) tier = 4;
+      if (tier > tierCount - 1) tier = tierCount - 1;
     }
     out[iso] = tier;
   }
@@ -248,7 +257,7 @@ export default function DateRangePicker({
             } else if (iso === today) {
               cls = 'text-slate-800 font-semibold rounded-lg ring-1 ring-inset ring-[#9e4b13]/40';
               if (tier != null) {
-                style = { backgroundColor: TIER_TINTS[tier] };
+                style = { backgroundColor: tierTint(tier) };
                 cls += ' hover:brightness-95';
               } else {
                 cls += ' hover:bg-slate-100';
@@ -257,7 +266,7 @@ export default function DateRangePicker({
               // Inline bg + brightness hover so the tint isn't overridden by a
               // hover:bg utility (which would replace the colour entirely).
               cls = 'text-slate-700 rounded-lg hover:brightness-95';
-              style = { backgroundColor: TIER_TINTS[tier] };
+              style = { backgroundColor: tierTint(tier) };
             }
 
             return (
@@ -379,11 +388,11 @@ export default function DateRangePicker({
             <span className="text-[11px] font-medium text-slate-500">
               {t.rateLegendTitle || 'Nightly rate'}
             </span>
-            {TIER_TINTS.map((tint, i) => (
-              <span key={i} className="inline-flex items-center gap-1 text-[11px] text-slate-600">
+            {TIER_KEYS.map((key, i) => (
+              <span key={key} className="inline-flex items-center gap-1 text-[11px] text-slate-600">
                 <span
                   className="inline-block h-3 w-3 rounded-sm border border-black/5"
-                  style={{ backgroundColor: tint }}
+                  style={{ backgroundColor: tierTint(i) }}
                 />
                 {tierLabels[i]}
               </span>
