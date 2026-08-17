@@ -339,6 +339,34 @@
   // visitor was attempting a voice call at the time the failure occurred.
   var _lastPageContext = null;
 
+  // Track the pathname at context-injection time so we can detect SPA
+  // navigations and drop stale room/booking context automatically.
+  var _lastPageContextPath = null;
+
+  // Clears _lastPageContext when the visitor navigates away from the page
+  // that originally injected it.  Called both from navigation event listeners
+  // and from the devocean:clearContext postMessage sent by MarinPanel on
+  // unmount.
+  function _clearPageContext() {
+    _lastPageContext     = null;
+    _lastPageContextPath = null;
+  }
+
+  // Listen for SPA client-side navigations (pushState/replaceState trigger
+  // popstate on modern browsers; hashchange covers hash-only SPA routers).
+  window.addEventListener("popstate", function () {
+    if (_lastPageContextPath !== null &&
+        window.location.pathname !== _lastPageContextPath) {
+      _clearPageContext();
+    }
+  });
+  window.addEventListener("hashchange", function () {
+    if (_lastPageContextPath !== null &&
+        window.location.pathname !== _lastPageContextPath) {
+      _clearPageContext();
+    }
+  });
+
   function postToText(payload) {
     try { textFrame.contentWindow.postMessage(payload, WIDGET_ORIGIN); } catch (_) {}
   }
@@ -354,7 +382,8 @@
       // can inject it when voice fails — even if the visitor never explicitly
       // opened text chat first.
       if (_pendingAsk.pageContext) {
-        _lastPageContext = _pendingAsk.pageContext;
+        _lastPageContext     = _pendingAsk.pageContext;
+        _lastPageContextPath = window.location.pathname;
       }
       setState("text");
       // If the text iframe already signalled readiness, dispatch immediately.
@@ -493,6 +522,12 @@
       if (state === "voice") {
         _fallbackToText("The voice call failed to start. I'll help you here in text instead.");
       }
+    }
+    // The hosting page (e.g. MarinPanel on unmount) sends this to tell the
+    // widget that the rich room/booking context it previously received is no
+    // longer relevant because the visitor has left that page.
+    if (evt.data.type === "devocean:clearContext") {
+      _clearPageContext();
     }
     // Text iframe signals it mounted and is ready to receive context.
     if (evt.data.type === "devocean:textEmbedReady") {

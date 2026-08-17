@@ -24,6 +24,16 @@ export default function MarinPanel({ context, autoMessage, label = 'Need help? A
     return () => clearTimeout(t);
   }, [autoOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // When this panel unmounts (visitor navigates away from the booking/detail
+  // page), tell widget-loader to discard the rich room/booking context it was
+  // given.  Without this, a subsequent voice fallback on a different page
+  // would receive stale room context via _lastPageContext.
+  useEffect(() => {
+    return () => {
+      window.postMessage({ type: 'devocean:clearContext' }, window.location.origin);
+    };
+  }, []);
+
   function handleClick() {
     // Go directly to text chat with any available page context.
     // The fan-out (text vs voice choice) is reserved for the FAB itself;
