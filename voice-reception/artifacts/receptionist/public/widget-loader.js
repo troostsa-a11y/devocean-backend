@@ -403,6 +403,12 @@
   function _fallbackToText(reason) {
     clearTimeout(_voiceTimer);
     _voiceTimer = null;
+    // Explicitly disconnect the voice iframe before switching to text.
+    // Without this, a cold-starting Render service can establish the WebSocket
+    // *after* the timeout fires: the relay then sends response.create and Marin
+    // speaks her audio greeting while the text panel is already open, causing
+    // the visitor to hear a second "Hello" on top of the static text bubble.
+    postToVoice("devocean:disconnect");
     setState("idle");
     window.devocean.ask({
       pageContext: _basePageContext(),
