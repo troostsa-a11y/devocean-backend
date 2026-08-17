@@ -1,0 +1,10 @@
+{
+  "name": "render-keepalive",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Receptionist keep-alive ping + alert script for the Render cron job.",
+  "dependencies": {
+    "nodemailer": "^9.0.3"
+  }
+}

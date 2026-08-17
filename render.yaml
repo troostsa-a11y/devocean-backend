@@ -119,8 +119,18 @@ services:
   # Even on paid plans a fresh deploy or restart cycle can leave the service cold;
   # a steady heartbeat ensures sub-2s voice startup for the first visitor after any
   # quiet period. Stays safely below Render's 15-minute inactivity threshold.
-  # After deploying, set RECEPTIONIST_URL in the Render dashboard to the external URL
-  # of the Receptionist service (e.g. https://receptionist-xxxx.onrender.com).
+  #
+  # On failure (non-2xx or network timeout) the job sends an alert email using
+  # the NOTIFY_SMTP_* credentials below, then exits 1 so Render also logs the
+  # failure in the cron job's own run history.
+  #
+  # Render dashboard uptime monitor (recommended in addition to this cron):
+  #   Dashboard → <Receptionist service> → Metrics → Uptime Monitors → Add Monitor
+  #   Path: /api/health  |  Interval: 1 min  |  Alert: your team email
+  # This gives sub-minute alerting independent of the keep-alive cron schedule.
+  #
+  # After deploying, set RECEPTIONIST_URL in the Render dashboard to the external
+  # URL of the Receptionist service (e.g. https://receptionist-xxxx.onrender.com).
   # No trailing slash.
   - type: cron
     name: Receptionist Keep-Alive
@@ -128,14 +138,24 @@ services:
     region: frankfurt
     plan: starter
     schedule: "*/10 * * * *"
-    buildCommand: echo 'keep-alive ping — no build needed'
-    startCommand: >-
-      node --input-type=module -e "
-        const url = process.env.RECEPTIONIST_URL + '/api/health';
-        fetch(url, { signal: AbortSignal.timeout(10000) })
-          .then(r => { console.log('keep-alive ping', r.status, url); process.exit(r.ok ? 0 : 1); })
-          .catch(e => { console.error('keep-alive ping failed:', e.message); process.exit(1); });
-      "
+    # Install nodemailer for the alert email, then run the ping script.
+    buildCommand: cd render-keepalive && npm install
+    startCommand: node render-keepalive/ping.mjs
     envVars:
       - key: RECEPTIONIST_URL
+        sync: false
+      # NOTIFY_SMTP_* — reuse the same SMTP credentials as the Receptionist service.
+      # Set all five for email alerts to fire on health-check failure; omit to
+      # disable email alerts (the cron will still exit 1 and log the failure).
+      - key: NOTIFY_SMTP_HOST
+        sync: false
+      - key: NOTIFY_SMTP_PORT
+        sync: false
+      - key: NOTIFY_SMTP_USER
+        sync: false
+      - key: NOTIFY_SMTP_PASS
+        sync: false
+      - key: NOTIFY_EMAIL_FROM
+        sync: false
+      - key: NOTIFY_EMAIL_TO
         sync: false
