@@ -1258,8 +1258,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 </span>
                               </div>
                               {(unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet') && (
-                                <div className="mt-2 flex items-center gap-2">
-                                  <span className="text-xs text-slate-500 shrink-0">{getBedTypeLabel('bedPreference')}</span>
+                                <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
+                                  <span className="text-xs text-slate-500 basis-full sm:basis-auto shrink-0">{getBedTypeLabel('bedPreference')}</span>
                                   <div className="flex gap-1.5">
                                   {[
                                     { bt: 'king', label: getBedTypeLabel('king'), icon: <BedDouble className="h-4 w-4" /> },
