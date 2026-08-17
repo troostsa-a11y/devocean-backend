@@ -1293,14 +1293,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 href={unitDetailUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="shrink-0 flex flex-col items-center gap-1 group"
+                                className="shrink-0 self-stretch flex flex-col items-center justify-between gap-1 group w-24"
                                 data-testid={`link-room-details-${room.roomId}`}
                               >
                                 <img
                                   src={unitImg}
                                   alt={displayName}
                                   loading="lazy"
-                                  className="h-20 w-20 rounded-lg object-cover border border-slate-200"
+                                  className="w-full flex-1 min-h-0 rounded-lg object-cover border border-slate-200"
                                 />
                                 <span className="inline-flex items-center gap-1 text-xs font-medium text-[#9e4b13] group-hover:underline">
                                   {t.details}
