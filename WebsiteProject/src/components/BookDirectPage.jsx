@@ -27,9 +27,12 @@ function addDays(dateStr, days) {
 }
 // Display a YYYY-MM-DD stay date as DD-MM-YYYY (the YYYY-MM-DD form stays the
 // canonical value sent to /availability and /checkout — this is display-only).
+const MONTH_ABBR = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
 function displayDate(dateStr) {
   const [y, m, d] = String(dateStr).split('-');
-  return y && m && d ? `${d}-${m}-${y}` : dateStr;
+  if (!y || !m || !d) return dateStr;
+  const month = MONTH_ABBR[parseInt(m, 10) - 1] ?? m;
+  return `${parseInt(d, 10)} ${month} ${y}`;
 }
 function money(amount, currency) {
   try {
