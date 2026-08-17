@@ -508,7 +508,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           }
           return { ...r, offers };
         })
-        .filter((r) => r && r.available),
+        .filter((r) => r && r.available)
+        .sort((a, b) => a.offers[0].total - b.offers[0].total),
     [availability],
   );
   const unavailableRooms = useMemo(
