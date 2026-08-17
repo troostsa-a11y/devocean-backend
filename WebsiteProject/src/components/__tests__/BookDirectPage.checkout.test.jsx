@@ -1106,3 +1106,169 @@ describe('checkout bedPreferences — Thatched Chalet', () => {
     expect(capturedChaletBody.bedPreferences[CHALET_ROOM_ID]).toBe('twin');
   });
 });
+
+// ── Comfort Tent: bed toggle default + explicit twin ──────────────────────────
+//
+// Comfort Tent (unitKey='comfort') has the same king/twin selector as Safari
+// Tent and Thatched Chalet.  The tests below confirm:
+//   1. No toggle touch  → bedPreferences: { [comfortRoomId]: 'king' }
+//   2. Toggle switched  → bedPreferences: { [comfortRoomId]: 'twin' }
+
+describe('checkout bedPreferences — Comfort Tent', () => {
+  const COMFORT_ROOM_ID = 'comfort-room-1';
+  const CHECK_IN_CT     = '2027-09-01';
+  const CHECK_OUT_CT    = '2027-09-03';
+
+  function makeComfortAvailability() {
+    return {
+      checkIn:                CHECK_IN_CT,
+      checkOut:               CHECK_OUT_CT,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      COMFORT_ROOM_ID,
+          name:        'Comfort Tent',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            {
+              offerId:        'offer-comfort-1',
+              total:          650,
+              type:           'semiFlex',
+              unitsAvailable: 2,
+              refundable:     true,
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeComfortQuote() {
+    return {
+      checkIn:        CHECK_IN_CT,
+      checkOut:       CHECK_OUT_CT,
+      nights:         2,
+      currency:       'USD',
+      rooms:          1,
+      lines: [
+        {
+          roomId:    COMFORT_ROOM_ID,
+          offerId:   'offer-comfort-1',
+          roomName:  'Comfort Tent',
+          qty:       1,
+          adults:    2,
+          children:  0,
+          infants:   0,
+          lineTotal: 650,
+        },
+      ],
+      total:          650,
+      depositPercent: 50,
+      deposit:        325,
+      balance:        325,
+    };
+  }
+
+  let capturedComfortBody;
+
+  beforeEach(() => {
+    capturedComfortBody = null;
+
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href:    '',
+        search:  `?checkIn=${CHECK_IN_CT}&checkOut=${CHECK_OUT_CT}`,
+        assign:  vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    global.fetch = vi.fn((url, init) => {
+      if (url.includes('/api/booking/availability'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeComfortAvailability()) });
+      if (url.includes('/api/booking/quote'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeComfortQuote()) });
+      if (url.includes('/api/booking/calendar'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      if (url.includes('/api/booking/checkout')) {
+        capturedComfortBody = JSON.parse(init.body);
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ url: 'https://checkout.stripe.com/mock-comfort' }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => window._locationBackup ?? location,
+    });
+  });
+
+  /**
+   * Render the page, add the comfort tent to the cart, optionally click the twin
+   * toggle, advance to the details step, fill guest info, and submit.
+   */
+  async function runComfortFlow({ bedChoice } = {}) {
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+
+    const incBtn = await waitFor(
+      () => screen.getByTestId(`button-inc-${COMFORT_ROOM_ID}`),
+      { timeout: 3000 },
+    );
+
+    await act(async () => { fireEvent.click(incBtn); });
+
+    if (bedChoice === 'twin') {
+      const twinBtn = screen.getByTitle(/twin/i);
+      await act(async () => { fireEvent.click(twinBtn); });
+    }
+
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+
+    await act(async () => { fireEvent.click(continueBtn); });
+
+    await waitFor(() => screen.getByTestId('input-first-name'));
+    fireEvent.change(screen.getByTestId('input-first-name'), { target: { value: 'Pat' } });
+    fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Guest' } });
+    fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'pat@example.com' } });
+    fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+27987654321' } });
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('button-checkout'));
+    });
+  }
+
+  it('sends bedPreferences: { [comfortRoomId]: "king" } when the guest never touches the toggle', async () => {
+    await runComfortFlow(); // no bedChoice → toggle untouched
+
+    expect(capturedComfortBody).not.toBeNull();
+    expect(capturedComfortBody.bedPreferences).toBeDefined();
+    expect(capturedComfortBody.bedPreferences[COMFORT_ROOM_ID]).toBe('king');
+  });
+
+  it('sends bedPreferences: { [comfortRoomId]: "twin" } when the guest switches to twin', async () => {
+    await runComfortFlow({ bedChoice: 'twin' });
+
+    expect(capturedComfortBody).not.toBeNull();
+    expect(capturedComfortBody.bedPreferences).toBeDefined();
+    expect(capturedComfortBody.bedPreferences[COMFORT_ROOM_ID]).toBe('twin');
+  });
+});
