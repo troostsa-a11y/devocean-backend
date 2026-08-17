@@ -1292,7 +1292,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                 href={unitDetailUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="shrink-0 self-stretch flex flex-col items-center justify-between gap-1 group w-48"
+                                className="shrink-0 self-stretch flex flex-col items-center justify-between gap-1 group w-28 sm:w-48"
                                 data-testid={`link-room-details-${room.roomId}`}
                               >
                                 <img
