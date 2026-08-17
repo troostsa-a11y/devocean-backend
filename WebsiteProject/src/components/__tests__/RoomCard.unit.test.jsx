@@ -20,7 +20,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS, UNIT_FEATURES } from '../RoomCard';
+import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS, UNIT_FEATURES, FEATURE_LABELS } from '../RoomCard';
 
 // ── Module mocks ──────────────────────────────────────────────────────────────
 
@@ -175,7 +175,42 @@ describe('UNIT_FEATURES sync — every UNIT_KEY has a features entry', () => {
   });
 });
 
-// ── 4. Checkout-sync test — the bedPreferences predicate matches the toggle ────
+// ── 4. FEATURE_LABELS coverage — every slug in UNIT_FEATURES has a label ────────
+
+/**
+ * CROSS-CHECK: every feature slug listed in any UNIT_FEATURES value must have
+ * a corresponding entry in FEATURE_LABELS.
+ *
+ * If a developer adds a new slug to UNIT_FEATURES (e.g. 'pool') but forgets to
+ * add a matching entry to FEATURE_LABELS, the badge silently falls back to
+ * displaying the raw slug key. This test names any missing slug before it ships.
+ */
+describe('FEATURE_LABELS coverage — every UNIT_FEATURES slug has a label', () => {
+  it('every slug referenced in UNIT_FEATURES values has an entry in FEATURE_LABELS', () => {
+    const allSlugs = [...new Set(Object.values(UNIT_FEATURES).flat())];
+    const missing = allSlugs.filter((slug) => !(slug in FEATURE_LABELS));
+    expect(missing, [
+      'Feature slug(s) found in UNIT_FEATURES that are missing from FEATURE_LABELS:',
+      missing.join(', '),
+      '',
+      'Add a corresponding entry to FEATURE_LABELS in RoomCard.jsx so the badge',
+      'displays a translated label instead of the raw slug key.',
+    ].join('\n')).toHaveLength(0);
+  });
+
+  it('every entry in FEATURE_LABELS is referenced by at least one UNIT_FEATURES value (no orphans)', () => {
+    const usedSlugs = new Set(Object.values(UNIT_FEATURES).flat());
+    const orphans = Object.keys(FEATURE_LABELS).filter((slug) => !usedSlugs.has(slug));
+    expect(orphans, [
+      'FEATURE_LABELS contains entry/entries not referenced by any UNIT_FEATURES value:',
+      orphans.join(', '),
+      'Remove the unused entry from FEATURE_LABELS in RoomCard.jsx, or add the',
+      'slug to the appropriate room type in UNIT_FEATURES.',
+    ].join('\n')).toHaveLength(0);
+  });
+});
+
+// ── 5. Checkout-sync test — the bedPreferences predicate matches the toggle ────
 
 /**
  * The checkout default logic in BookDirectPage.jsx is:

@@ -59,7 +59,7 @@ export const UNIT_FEATURES = {
   cottage: ['ac',      'ensuite', 'queen'],
   chalet:  ['ac',      'ensuite', 'secluded'],
 };
-const FEATURE_LABELS = {
+export const FEATURE_LABELS = {
   fan:      { en: 'Fan',         pt: 'Ventilador',    nl: 'Ventilator',        fr: 'Ventilateur',          it: 'Ventilatore',       de: 'Ventilator',      es: 'Ventilador',       af: 'Waaier',           sv: 'Fläkt',        pl: 'Wentylator',        ro: 'Ventilator',    sr: 'Ventilator',        hr: 'Ventilator',        cs: 'Ventilátor',      tr: 'Vantilatör', ja: 'ファン',    zh: '风扇',   ru: 'Вентилятор',         zu: 'Ifeni',               sw: 'Feni' },
   terrace:  { en: 'Terrace',     pt: 'Terraço',       nl: 'Terras',            fr: 'Terrasse',             it: 'Terrazza',          de: 'Terrasse',        es: 'Terraza',          af: 'Terras',           sv: 'Terrass',      pl: 'Taras',             ro: 'Terasă',        sr: 'Terasa',            hr: 'Terasa',            cs: 'Terasa',          tr: 'Teras',      ja: 'テラス',  zh: '露台',   ru: 'Терраса',            zu: 'Iterasi',             sw: 'Terasi' },
   shared:   { en: 'Shared Bath', pt: 'WC Partilhado', nl: 'Gedeelde Badkamer', fr: 'Salle de bain partagée', it: 'Bagno condiviso', de: 'Gemeinschaftsbad',es: 'Baño compartido',  af: 'Gedeelde Bad',     sv: 'Delat badrum', pl: 'Wspólna łazienka',  ro: 'Baie comună',   sr: 'Zajedničko kupatilo', hr: 'Zajedničko kupatilo', cs: 'Společná koupelna', tr: 'Ortak Banyo', ja: '共用バス', zh: '共用浴室', ru: 'Общая ванная',    zu: 'Ibhafu elabelwana',   sw: 'Bafu ya pamoja' },
