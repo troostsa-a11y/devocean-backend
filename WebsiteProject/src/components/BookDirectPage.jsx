@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import { useSeoPage } from '../utils/seoMeta';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ChevronDown, Menu, Plus, Minus, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle, BedDouble, BedSingle } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
@@ -1242,20 +1242,24 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               })()}
                               {(unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet') && (
                                 <div className="mt-2 flex gap-1.5">
-                                  {['king', 'twin'].map((bt) => {
+                                  {[
+                                    { bt: 'king', Icon: BedDouble },
+                                    { bt: 'twin', Icon: BedSingle },
+                                  ].map(({ bt, Icon }) => {
                                     const active = (bedType[room.roomId] || 'king') === bt;
                                     return (
                                       <button
                                         key={bt}
                                         type="button"
+                                        title={getBedTypeLabel(bt)}
                                         onClick={() => setBedType((prev) => ({ ...prev, [room.roomId]: bt }))}
-                                        className={`flex-1 rounded-lg border px-2.5 py-1.5 text-xs font-medium transition-colors ${
+                                        className={`rounded-lg border p-1.5 transition-colors ${
                                           active
                                             ? 'border-[#9e4b13] bg-[#9e4b13]/10 text-[#9e4b13]'
-                                            : 'border-slate-200 text-slate-500 hover:border-slate-300'
+                                            : 'border-slate-200 text-slate-400 hover:border-slate-300'
                                         }`}
                                       >
-                                        {getBedTypeLabel(bt)}
+                                        <Icon className="h-4 w-4" />
                                       </button>
                                     );
                                   })}
