@@ -12,7 +12,7 @@
  * core object by getBookingStrings() so the date-picker legend stays in sync.
  */
 
-const STRINGS = {
+export const STRINGS = {
   en: {
     title: 'Book your stay with us',
     cardTitle: 'Check rates & availability',
@@ -173,6 +173,7 @@ const STRINGS = {
     minUnitsNote: "Selecione um alojamento para 2 adultos.",
     unit: 'Unidade',
     moreUnitsNeeded: "Adicione mais {n} quarto(s) para o seu grupo.",
+    partyTooLargeForRate: "Alguns hóspedes não cabem em menos unidades. Por favor, mantenha o seu plano de tarifa atual ou reduza o tamanho do seu grupo.",
     amenitiesNote: 'O pequeno-almoço, Wi-Fi Starlink e estacionamento seguro estão incluídos.',
     sleeps: 'Até {count}',
     sleepsAdultsChildren: 'Até {adults} + {children}',
@@ -270,6 +271,7 @@ const STRINGS = {
     minUnitsNote: "Wählen Sie eine Unterkunft für 2 Erwachsene.",
     unit: 'Einheit',
     moreUnitsNeeded: "Fügen Sie {n} weitere Einheit(en) für Ihre Gruppe hinzu.",
+    partyTooLargeForRate: "Einige Gäste passen nicht in weniger Einheiten. Bitte behalten Sie Ihren aktuellen Tarifplan bei oder reduzieren Sie Ihre Reisegruppe.",
     amenitiesNote: 'Frühstück, Starlink-WLAN und sicheres Parken sind inbegriffen.',
     sleeps: 'Bis zu {count}',
     sleepsAdultsChildren: 'Bis zu {adults} + {children}',
@@ -367,6 +369,7 @@ const STRINGS = {
     minUnitsNote: "Sélectionnez un hébergement pour 2 adultes.",
     unit: 'Unité',
     moreUnitsNeeded: "Ajoutez {n} unité(s) de plus pour votre groupe.",
+    partyTooLargeForRate: "Certains hôtes ne peuvent être logés dans moins d'unités. Veuillez conserver votre plan tarifaire actuel ou réduire la taille de votre groupe.",
     amenitiesNote: 'Le petit-déjeuner, le Wi-Fi Starlink et le parking sécurisé sont inclus.',
     sleeps: 'Jusqu’à {count}',
     sleepsAdultsChildren: 'Jusqu’à {adults} + {children}',
@@ -464,6 +467,7 @@ const STRINGS = {
     minUnitsNote: "Seleccione un alojamiento para 2 adultos.",
     unit: 'Unidad',
     moreUnitsNeeded: "Añada {n} unidad(es) más para su grupo.",
+    partyTooLargeForRate: "Algunos huéspedes no pueden alojarse en menos unidades. Mantenga su plan de tarifas actual o reduzca el tamaño de su grupo.",
     amenitiesNote: 'El desayuno, el Wi-Fi Starlink y el aparcamiento seguro están incluidos.',
     sleeps: 'Hasta {count}',
     sleepsAdultsChildren: 'Hasta {adults} + {children}',
@@ -561,6 +565,7 @@ const STRINGS = {
     minUnitsNote: "Seleziona un alloggio per 2 adulti.",
     unit: 'Unità',
     moreUnitsNeeded: "Aggiunga altre {n} unità per il suo gruppo.",
+    partyTooLargeForRate: "Alcuni ospiti non possono essere sistemati in meno unità. Mantenga il piano tariffario attuale o riduca il numero di ospiti.",
     amenitiesNote: 'La colazione, il Wi-Fi Starlink e il parcheggio sicuro sono inclusi.',
     sleeps: 'Fino a {count}',
     sleepsAdultsChildren: 'Fino a {adults} + {children}',
@@ -658,6 +663,7 @@ const STRINGS = {
     minUnitsNote: "Selecteer een accommodatie voor 2 volwassenen.",
     unit: 'Eenheid',
     moreUnitsNeeded: "Voeg {n} meer eenheid(eden) toe voor uw gezelschap.",
+    partyTooLargeForRate: "Sommige gasten passen niet in minder eenheden. Houd uw huidige tariefplan of verklein uw reisgezelschap.",
     amenitiesNote: 'Ontbijt, Starlink Wi-Fi en veilig parkeren zijn inbegrepen.',
     sleeps: 'Maximaal {count}',
     sleepsAdultsChildren: 'Maximaal {adults} + {children}',
@@ -755,6 +761,7 @@ const STRINGS = {
     minUnitsNote: "Välj ett boende för 2 vuxna.",
     unit: 'Enhet',
     moreUnitsNeeded: "Lägg till {n} fler enhet(er) för ert sällskap.",
+    partyTooLargeForRate: "Vissa gäster får inte plats i färre enheter. Behåll din nuvarande prisklass eller minska sällskapets storlek.",
     amenitiesNote: "Frukost, Starlink Wi-Fi och säker parkering ingår.",
     sleeps: "Upp till {count}",
     sleepsAdultsChildren: "Upp till {adults} + {children}",
@@ -852,6 +859,7 @@ const STRINGS = {
     minUnitsNote: "Wybierz jedno zakwaterowanie dla 2 dorosłych.",
     unit: 'Jednostka',
     moreUnitsNeeded: "Dodaj {n} więcej jednostek dla swojej grupy.",
+    partyTooLargeForRate: "Niektórzy goście nie mieszczą się w mniejszej liczbie jednostek. Zachowaj aktualny plan taryfowy lub zmniejsz liczebność grupy.",
     amenitiesNote: "Śniadanie, Starlink Wi-Fi i bezpieczny parking są wliczone w cenę.",
     sleeps: "Do {count}",
     sleepsAdultsChildren: "Do {adults} + {children}",
@@ -949,6 +957,7 @@ const STRINGS = {
     minUnitsNote: "Selectați o cazare pentru 2 adulți.",
     unit: 'Unitate',
     moreUnitsNeeded: "Adăugați {n} unitate(ăți) pentru grupul dvs.",
+    partyTooLargeForRate: "Unii oaspeți nu pot fi cazați în mai puține unități. Vă rugăm să păstrați planul tarifar curent sau să reduceți numărul de persoane.",
     amenitiesNote: "Micul dejun, Wi-Fi Starlink și parcarea securizată sunt incluse.",
     sleeps: "Până la {count}",
     sleepsAdultsChildren: "Până la {adults} + {children}",
@@ -1046,6 +1055,7 @@ const STRINGS = {
     minUnitsNote: "Izaberite jedan smeštaj za 2 odrasle osobe.",
     unit: 'Jedinica',
     moreUnitsNeeded: "Dodajte još {n} jedinice za vaš tim.",
+    partyTooLargeForRate: "Neki gosti ne mogu biti smešteni u manje jedinica. Zadržite trenutni cenovni plan ili smanjite veličinu grupe.",
     amenitiesNote: "Doručak, Starlink Wi-Fi i bezbedno parkiranje su uključeni.",
     sleeps: "Do {count}",
     sleepsAdultsChildren: "Do {adults} + {children}",
@@ -1143,6 +1153,7 @@ const STRINGS = {
     minUnitsNote: "Odaberite jedan smještaj za 2 odrasle osobe.",
     unit: 'Jedinica',
     moreUnitsNeeded: "Dodajte još {n} jedinice za vašu grupu.",
+    partyTooLargeForRate: "Neki gosti ne mogu biti smješteni u manji broj jedinica. Zadržite trenutni cjenovni plan ili smanjite veličinu grupe.",
     amenitiesNote: "Doručak, Starlink Wi-Fi i sigurno parkiranje su uključeni.",
     sleeps: "Do {count}",
     sleepsAdultsChildren: "Do {adults} + {children}",
@@ -1240,6 +1251,7 @@ const STRINGS = {
     minUnitsNote: "Vyberte jedno ubytování pro 2 dospělé.",
     unit: 'Jednotka',
     moreUnitsNeeded: "Přidejte {n} další jednotku(y) pro vaši skupinu.",
+    partyTooLargeForRate: "Někteří hosté se nevejdou do menšího počtu jednotek. Zachovejte prosím svůj aktuální tarif nebo snižte počet osob ve skupině.",
     amenitiesNote: "Snídaně, Starlink Wi-Fi a bezpečné parkování jsou v ceně.",
     sleeps: "Až {count}",
     sleepsAdultsChildren: "Až {adults} + {children}",
@@ -1337,6 +1349,7 @@ const STRINGS = {
     minUnitsNote: "Her 2 yetişkin için bir konaklama seçin.",
     unit: 'Ünite',
     moreUnitsNeeded: "Grubunuz için {n} daha fazla birim ekleyin.",
+    partyTooLargeForRate: "Bazı misafirler daha az birime sığamıyor. Lütfen mevcut fiyat planınızı koruyun veya grup büyüklüğünüzü azaltın.",
     amenitiesNote: "Kahvaltı, Starlink Wi-Fi ve güvenli otopark dahildir.",
     sleeps: "{count} kişiye kadar",
     sleepsAdultsChildren: "{adults} + {children} kişiye kadar",
@@ -1434,6 +1447,7 @@ const STRINGS = {
     minUnitsNote: "大人2名につき1つの宿泊施設をお選びください。",
     unit: 'ユニット',
     moreUnitsNeeded: "グループに合わせてあと{n}部屋追加してください。",
+    partyTooLargeForRate: "一部のゲストはより少ない部屋数では収容できません。現在の料金プランを維持するか、グループの人数を減らしてください。",
     amenitiesNote: "朝食、Starlink Wi-Fi、安全な駐車場が含まれます。",
     sleeps: "最大{count}名",
     sleepsAdultsChildren: "最大 大人{adults}名＋子供{children}名",
@@ -1531,6 +1545,7 @@ const STRINGS = {
     minUnitsNote: "每2位成人请选择一间住宿。",
     unit: '间',
     moreUnitsNeeded: "请再添加{n}间以容纳您的一行人。",
+    partyTooLargeForRate: "部分房客无法在更少的单元中入住。请保持当前的价格方案，或减少入住人数。",
     amenitiesNote: "早餐、Starlink Wi-Fi及安全停车位均已包含。",
     sleeps: "最多可住 {count} 人",
     sleepsAdultsChildren: "最多可住 {adults} + {children} 人",
@@ -1628,6 +1643,7 @@ const STRINGS = {
     minUnitsNote: "Выберите один вариант размещения на 2 взрослых.",
     unit: 'Номер',
     moreUnitsNeeded: "Добавьте ещё {n} номер(а) для вашей группы.",
+    partyTooLargeForRate: "Некоторые гости не могут разместиться в меньшем количестве номеров. Пожалуйста, сохраните текущий тарифный план или уменьшите размер группы.",
     amenitiesNote: "Завтрак, Starlink Wi-Fi и безопасная парковка включены.",
     sleeps: "До {count} чел.",
     sleepsAdultsChildren: "До {adults} + {children}",
@@ -1725,6 +1741,7 @@ const STRINGS = {
     minUnitsNote: "Kies een akkommodasie vir 2 volwassenes.",
     unit: 'Eenheid',
     moreUnitsNeeded: "Voeg nog {n} eenheid(ede) by vir u geselskap.",
+    partyTooLargeForRate: "Sommige gaste kan nie in minder eenhede geakkommodeer word nie. Behou asseblief u huidige tariefplan of verminder die groepgrootte.",
     amenitiesNote: "Ontbyt, Starlink Wi-Fi en veilige parkering is ingesluit.",
     sleeps: "Tot {count}",
     sleepsAdultsChildren: "Tot {adults} + {children}",
@@ -1822,6 +1839,7 @@ const STRINGS = {
     minUnitsNote: "Khetha indawo yokuhlala eyodwa nge-2 abantu abadala.",
     unit: 'Igumbi',
     moreUnitsNeeded: "Engeza amanye ama-{n} agumbi egcekeni lakho.",
+    partyTooLargeForRate: "Abaninye izivakashi abanakuhlala ezindaweni ezimbalwa. Sicela ugcine uhlelo lwakho lwamanje lwerentu noma unciphise inani labantu beqembu.",
     amenitiesNote: "Ukudla kwasekuseni, i-Starlink Wi-Fi kanye nendawo yokupaka ephephile kufakiwe.",
     sleeps: "Kufikela ku-{count}",
     sleepsAdultsChildren: "Kufikela ku-{adults} + {children}",
@@ -1919,6 +1937,7 @@ const STRINGS = {
     minUnitsNote: "Chagua malazi moja kwa kila watu wazima 2.",
     unit: 'Kitengo',
     moreUnitsNeeded: "Ongeza {n} kitengo (vitengo) zaidi kwa kikundi chako.",
+    partyTooLargeForRate: "Baadhi ya wageni hawawezi kubeba katika vitengo vichache. Tafadhali endelea na mpango wako wa bei wa sasa au punguza ukubwa wa kikundi chako.",
     amenitiesNote: "Kifungua kinywa, Starlink Wi-Fi na maegesho salama yanajumuishwa.",
     sleeps: "Hadi {count}",
     sleepsAdultsChildren: "Hadi {adults} + {children}",
@@ -1956,7 +1975,7 @@ const STRINGS = {
   },
 };
 
-const CONFIRM_STRINGS = {
+export const CONFIRM_STRINGS = {
   en: {
     confirming: 'Confirming your booking…',
     confirmingNote: 'Please wait while we finalise your reservation. Do not close this page.',
@@ -2344,7 +2363,7 @@ const CONFIRM_STRINGS = {
 // for ALL 20 user-facing base languages. Overlaid onto the base object by
 // getBookingStrings() so DateRangePicker's t.rateTiers / t.rateLegendTitle
 // resolve in every language. Keys are baseLang() codes.
-const RATE_TIER_STRINGS = {
+export const RATE_TIER_STRINGS = {
   en: { rateLegendTitle: 'Nightly rate', rateTiers: { lowest: 'Lowest', low: 'Low', shoulder: 'Shoulder', high: 'High', peak: 'Peak' } },
   pt: { rateLegendTitle: 'Tarifa por noite', rateTiers: { lowest: 'Mais baixa', low: 'Baixa', shoulder: 'Média', high: 'Alta', peak: 'Máxima' } },
   de: { rateLegendTitle: 'Preis pro Nacht', rateTiers: { lowest: 'Niedrigste', low: 'Niedrig', shoulder: 'Mittel', high: 'Hoch', peak: 'Höchste' } },
@@ -2370,7 +2389,7 @@ const RATE_TIER_STRINGS = {
 // Terms & Conditions consent notice shown above the payment button. {terms} is
 // replaced by a link (label = termsLink) to the legal terms page. All 20 base
 // langs; EN fallback for any unexpected code (merged by getBookingStrings).
-const TERMS_STRINGS = {
+export const TERMS_STRINGS = {
   en: { termsAgree: 'By continuing your reservation, you accept our {terms}.', termsLink: 'Terms & Conditions' },
   pt: { termsAgree: 'Ao continuar a sua reserva, aceita os nossos {terms}.', termsLink: 'Termos e Condições' },
   de: { termsAgree: 'Mit der Fortsetzung Ihrer Reservierung akzeptieren Sie unsere {terms}.', termsLink: 'Allgemeinen Geschäftsbedingungen' },
