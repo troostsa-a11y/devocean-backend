@@ -332,8 +332,12 @@
   // Opens the text-chat panel with page-specific context. Called by
   // accommodation-detail pages and external controls that want a
   // context-primed Marin conversation without the user having to type.
-  var _textFrameReady = false;
-  var _pendingAsk     = null;
+  var _textFrameReady  = false;
+  var _pendingAsk      = null;
+  // Stores the most recently injected pageContext so _fallbackToText can
+  // carry rich room/booking context into the text panel even when the
+  // visitor was attempting a voice call at the time the failure occurred.
+  var _lastPageContext = null;
 
   function postToText(payload) {
     try { textFrame.contentWindow.postMessage(payload, WIDGET_ORIGIN); } catch (_) {}
@@ -346,6 +350,12 @@
     },
     ask: function (ctx) {
       _pendingAsk = ctx || {};
+      // Persist the richest pageContext we have seen so that _fallbackToText
+      // can inject it when voice fails — even if the visitor never explicitly
+      // opened text chat first.
+      if (_pendingAsk.pageContext) {
+        _lastPageContext = _pendingAsk.pageContext;
+      }
       setState("text");
       // If the text iframe already signalled readiness, dispatch immediately.
       if (_textFrameReady) {
@@ -420,7 +430,10 @@
     // page they are currently reading, not the one they were on when they tapped
     // the voice button.
     window.devocean.ask({
-      pageContext: _basePageContext(),
+      // Prefer the richest context captured so far (e.g. room/booking details
+      // injected by MarinPanel on /book-direct).  Fall back to the minimal base
+      // context (URL + lang + currency) only when nothing richer was stored.
+      pageContext: _lastPageContext || _basePageContext(),
       autoMessage: reason || "Voice didn't connect. How can I help you in text?"
     });
   }
