@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useMemo, useCallback, startTransition } from 'react';
+import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef, startTransition } from 'react';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import { useSeoPage } from '../utils/seoMeta';
 import { useLocation } from 'wouter';
@@ -100,6 +100,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [fxData, setFxData] = useState(null); // { base, rates } — display-only
   const [priceByDate, setPriceByDate] = useState({}); // iso→rate, drives picker tiers (display-only)
   const [nearestState, setNearestState] = useState({}); // roomId → {loading, checkIn, checkOut, error}
+
+  // Stable mutable refs so useCallback handlers can read the latest state
+  // without stale closures, without adding frequently-changing state to deps.
+  // Assigned inline (not in useEffect) so they're always current at call time.
+  const roomOccupancyRef = useRef(roomOccupancy);
+  roomOccupancyRef.current = roomOccupancy;
+  const cartRef = useRef(cart);
+  cartRef.current = cart;
+  const tRef = useRef(t);
+  tRef.current = t;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -604,11 +614,71 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   // Switch a room's selected rate plan; clamp any cart qty to the new offer's
   // availability (rate plans can have different unit counts).
+  //
+  // When the switch reduces qty (N → M), we must not silently drop children or
+  // infants that were assigned to the removed units.  Strategy:
+  //   1. Keep the surviving units (0..M-1) intact — their adult counts are the
+  //      guest's explicit choice and must not be touched.
+  //   2. Try to absorb any children/infants from each dropped unit (M..N-1)
+  //      into the surviving units' remaining capacity.
+  //   3. If they all fit → apply the switch with the merged occupancy.
+  //   4. If any child or infant cannot fit → block the switch entirely and show
+  //      an actionable error; the rate choice and cart are left unchanged.
   const setRoomRate = useCallback((roomId, offerId) => {
     const room = availableRooms.find((r) => r.roomId === roomId);
     const offer = room?.offers.find((o) => o.offerId === offerId);
     const units = offer?.unitsAvailable ?? 0;
-    setQuoteLoading(true); // urgent — gates the Continue button immediately
+    const oldQty = cartRef.current[roomId] ?? 0;
+
+    if (room && oldQty > units) {
+      // Qty will be clamped: check whether children/infants from the dropped
+      // units can be absorbed by the surviving ones without exceeding each
+      // unit's per-occupancy capacity.
+      const current = (roomOccupancyRef.current[roomId] ?? []).slice(0, oldQty);
+
+      const uk = getUnitKey(room.name);
+      const childUnit = uk === 'safari' || uk === 'comfort' || uk === 'chalet';
+      const maxA = room.maxAdults ?? 2;
+      const maxP = childUnit ? maxA + 1 : (room.maxPeople ?? maxA);
+
+      // Deep-copy surviving entries so redistribution mutations don't touch state.
+      const surviving = current.slice(0, units).map((u) => ({ ...u }));
+      const dropped   = current.slice(units);
+
+      let overflow = false;
+      for (const du of dropped) {
+        let exC = du.children ?? 0;
+        let exI = du.infants  ?? 0;
+        for (let i = 0; i < surviving.length && (exC > 0 || exI > 0); i++) {
+          const freeC = Math.max(0, maxP - surviving[i].adults - surviving[i].children - surviving[i].infants);
+          const fitC  = Math.min(exC, freeC);
+          surviving[i].children += fitC; exC -= fitC;
+          const freeI = Math.max(0, maxP - surviving[i].adults - surviving[i].children - surviving[i].infants);
+          const fitI  = Math.min(exI, freeI);
+          surviving[i].infants  += fitI; exI -= fitI;
+        }
+        if (exC > 0 || exI > 0) { overflow = true; break; }
+      }
+
+      if (overflow) {
+        // Block the rate switch: party doesn't fit in fewer units.
+        setError(tRef.current.partyTooLargeForRate ?? tRef.current.errorGeneric);
+        setQuoteLoading(false);
+        return;
+      }
+
+      // All children/infants fit → apply the switch with the merged occupancy.
+      setQuoteLoading(true);
+      startTransition(() => {
+        setRateChoice((c) => ({ ...c, [roomId]: offerId }));
+        setCart((c) => ({ ...c, [roomId]: units }));
+        setRoomOccupancy((prev) => ({ ...prev, [roomId]: surviving }));
+      });
+      return;
+    }
+
+    // No qty clamping needed: straightforward rate switch.
+    setQuoteLoading(true);
     startTransition(() => {
       setRateChoice((c) => ({ ...c, [roomId]: offerId }));
       setCart((c) => (c[roomId] && c[roomId] > units ? { ...c, [roomId]: units } : c));

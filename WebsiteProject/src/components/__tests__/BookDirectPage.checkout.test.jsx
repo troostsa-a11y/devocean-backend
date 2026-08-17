@@ -133,6 +133,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     soldOut:            'Sold out',
     moreUnitsNeeded:    'You need {n} more unit(s)',
     minUnitsNote:       'Min {n} unit(s) for {party}',
+    partyTooLargeForRate: 'Some guests cannot be accommodated in fewer units.',
     amenitiesNote:      'All rooms include breakfast',
     discountCodeLabel:  'Discount code',
     optional:           'Optional',
@@ -408,5 +409,274 @@ describe('checkout bedPreferences — integration', () => {
     expect(body).not.toBeNull();
     expect(body.bedPreferences).toBeDefined();
     expect(body.bedPreferences[SAFARI_ROOM_ID]).toBe('twin');
+  });
+});
+
+// ── occupancy + rate-switch integration test ──────────────────────────────────
+
+/**
+ * Regression: when a guest books 2 units with per-unit occupancy (children in
+ * the party) and then switches to a rate plan whose unitsAvailable=1,
+ * BookDirectPage's setRoomRate clamps cart qty 2→1 but does NOT trim
+ * roomOccupancy (it still holds 2 entries).  The cartLines memo must use
+ * .slice(0, qty) so only unit 0's occupancy reaches /checkout — never the
+ * stale unit 1 entry.
+ *
+ * This is a full component-level integration test: it renders BookDirectPage,
+ * drives the real setRoomRate / cartLines / checkout path through the UI,
+ * and asserts the actual /api/booking/checkout POST body.
+ */
+describe('checkout occupancy: multi-unit rate-switch with children', () => {
+  // Separate room/date constants so this suite is fully independent of the
+  // bedPreferences suite above — no shared state risk.
+  const ROOM_ID     = 'safari-room-rate-switch';
+  const CHECK_IN_RS  = '2027-10-01';
+  const CHECK_OUT_RS = '2027-10-03';
+
+  /**
+   * Room with two offers:
+   *   offer-nonref-rs  cheapest (nonRef)  → 2 units available (default active)
+   *   offer-flex-rs    semiFlex           → only 1 unit available
+   *
+   * Because the cheapest offer is nonRef, the availableRooms memo surfaces both
+   * offers in the RoomCard.  Switching to offer-flex-rs clamps qty 2 → 1.
+   */
+  function makeAvailabilityRS() {
+    return {
+      checkIn:                CHECK_IN_RS,
+      checkOut:               CHECK_OUT_RS,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      ROOM_ID,
+          name:        'Safari Tent',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            { offerId: 'offer-nonref-rs', total: 500, type: 'nonRef',   unitsAvailable: 2, refundable: false },
+            { offerId: 'offer-flex-rs',   total: 600, type: 'semiFlex', unitsAvailable: 1, refundable: true  },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeQuoteRS() {
+    return {
+      checkIn: CHECK_IN_RS, checkOut: CHECK_OUT_RS, nights: 2, currency: 'USD', rooms: 1,
+      lines: [{ roomId: ROOM_ID, offerId: 'offer-nonref-rs', roomName: 'Safari Tent', qty: 1, adults: 2, children: 1, infants: 0, lineTotal: 500 }],
+      total: 500, depositPercent: 50, deposit: 250, balance: 250,
+    };
+  }
+
+  let capturedCheckoutBody;
+
+  beforeEach(() => {
+    capturedCheckoutBody = null;
+
+    // infants=1 in URL: auto-search still fires (pChildren=0 so !pChildren=true),
+    // but setInfants(1) runs in useEffect → effInfants=1 → per-unit occ steppers
+    // appear without requiring child-age inputs.
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href:    '',
+        search:  `?checkIn=${CHECK_IN_RS}&checkOut=${CHECK_OUT_RS}&infants=1`,
+        assign:  vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    global.fetch = vi.fn((url, init) => {
+      if (url.includes('/api/booking/availability')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeAvailabilityRS()) });
+      }
+      if (url.includes('/api/booking/quote')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeQuoteRS()) });
+      }
+      if (url.includes('/api/booking/calendar')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      }
+      if (url.includes('/api/booking/checkout')) {
+        capturedCheckoutBody = JSON.parse(init.body);
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ url: 'https://checkout.stripe.com/mock' }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => window._locationBackup ?? location,
+    });
+  });
+
+  /**
+   * Shared setup: render the component, wait for auto-search to resolve to
+   * the results step, add 2 units, then wait for the per-unit occupancy steppers
+   * to appear.  Returns the + button so callers can reuse it if needed.
+   */
+  async function setupTwoUnits() {
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+
+    // Auto-search fires on mount: infants in URL don't block !pChildren check.
+    const incBtn = await waitFor(
+      () => screen.getByTestId(`button-inc-${ROOM_ID}`),
+      { timeout: 3000 },
+    );
+
+    await act(async () => { fireEvent.click(incBtn); });
+    await act(async () => { fireEvent.click(incBtn); });
+
+    // Both per-unit infants rows must be visible (effInfants=1 from URL param).
+    await waitFor(() => screen.getByTestId(`text-occ-${ROOM_ID}-0-infants`), { timeout: 3000 });
+    await waitFor(() => screen.getByTestId(`text-occ-${ROOM_ID}-1-infants`), { timeout: 3000 });
+
+    return incBtn;
+  }
+
+  /**
+   * Switch rate to offer-flex-rs (unitsAvailable=1), wait for qty counter to
+   * reach 1, then complete the checkout flow.  Only call this when the switch
+   * is expected to SUCCEED (no overflow).
+   */
+  async function switchAndCheckout() {
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-rate-${ROOM_ID}-offer-flex-rs`));
+    });
+
+    await waitFor(() => {
+      expect(screen.getByTestId(`text-qty-${ROOM_ID}`).textContent).toBe('1');
+    });
+    await waitFor(() => {
+      expect(screen.queryByTestId(`text-occ-${ROOM_ID}-1-infants`)).toBeNull();
+    });
+
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+    await act(async () => { fireEvent.click(continueBtn); });
+
+    await waitFor(() => screen.getByTestId('input-first-name'));
+    fireEvent.change(screen.getByTestId('input-first-name'), { target: { value: 'Alex' } });
+    fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Smith' } });
+    fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'alex@example.com' } });
+    fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+1234567890' } });
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('button-checkout'));
+    });
+  }
+
+  it('retained unit: infant on unit 0 is preserved in /checkout after rate-switch clamps qty 2→1', async () => {
+    await setupTwoUnits();
+
+    // Increment unit 0's infants → 1; unit 1 stays at 0.
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-occ-inc-${ROOM_ID}-0-infants`));
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId(`text-occ-${ROOM_ID}-0-infants`).textContent).toBe('1');
+      expect(screen.getByTestId(`text-occ-${ROOM_ID}-1-infants`).textContent).toBe('0');
+    });
+
+    await switchAndCheckout();
+
+    expect(capturedCheckoutBody).not.toBeNull();
+    expect(capturedCheckoutBody.rooms).toHaveLength(1);
+
+    const line = capturedCheckoutBody.rooms[0];
+    expect(line.roomId).toBe(ROOM_ID);
+    expect(line.offerId).toBe('offer-flex-rs');
+    expect(line.qty).toBe(1);
+    expect(line.adults).toBe(2);
+    expect(line.infants).toBe(1); // unit 0's infant retained
+  });
+
+  it('redistribution: infant on dropped unit 1 is consolidated into unit 0 — not silently lost', async () => {
+    await setupTwoUnits();
+
+    // Increment unit 1's infants → 1; unit 0 stays at infants=0.
+    // This is the bug path: unit 1 will be the one dropped when qty is clamped.
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-occ-inc-${ROOM_ID}-1-infants`));
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId(`text-occ-${ROOM_ID}-0-infants`).textContent).toBe('0');
+      expect(screen.getByTestId(`text-occ-${ROOM_ID}-1-infants`).textContent).toBe('1');
+    });
+
+    await switchAndCheckout();
+
+    // setRoomRate must have consolidated the dropped unit's infant back into
+    // unit 0 — if it only sliced without redistributing, infants would be 0.
+    expect(capturedCheckoutBody).not.toBeNull();
+    expect(capturedCheckoutBody.rooms).toHaveLength(1);
+
+    const line = capturedCheckoutBody.rooms[0];
+    expect(line.roomId).toBe(ROOM_ID);
+    expect(line.offerId).toBe('offer-flex-rs');
+    expect(line.qty).toBe(1);
+    expect(line.adults).toBe(2);
+    expect(line.infants).toBe(1); // infant consolidated from dropped unit 1 → unit 0
+  });
+
+  it('overflow: rate switch blocked when infant from dropped unit cannot fit — no checkout sent', async () => {
+    // This test verifies that when surviving unit 0 is already at max capacity
+    // (adults=2, infants=1 → 3 guests = maxP for safari childUnit), any infant
+    // from the dropped unit 1 has nowhere to go — setRoomRate must block the
+    // switch and show an error rather than silently truncating the party.
+    await setupTwoUnits();
+
+    // Fill unit 0 to capacity: {adults:2, infants:1} → maxP=3 → no room left.
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-occ-inc-${ROOM_ID}-0-infants`));
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId(`text-occ-${ROOM_ID}-0-infants`).textContent).toBe('1');
+    });
+
+    // Unit 1 also has an infant that needs somewhere to go after the rate switch.
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-occ-inc-${ROOM_ID}-1-infants`));
+    });
+    await waitFor(() => {
+      expect(screen.getByTestId(`text-occ-${ROOM_ID}-1-infants`).textContent).toBe('1');
+    });
+
+    // Attempt to switch rate → setRoomRate detects overflow, blocks the switch.
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-rate-${ROOM_ID}-offer-flex-rs`));
+    });
+
+    // Error message must appear; switch must NOT have been applied.
+    await waitFor(() => {
+      expect(screen.getByTestId('status-error').textContent).toContain(
+        'Some guests cannot be accommodated in fewer units.',
+      );
+    });
+
+    // Cart qty must stay at 2 — the rate change was rejected.
+    expect(screen.getByTestId(`text-qty-${ROOM_ID}`).textContent).toBe('2');
+
+    // Unit 1's occupancy block must still be visible (qty unchanged).
+    expect(screen.getByTestId(`text-occ-${ROOM_ID}-1-infants`).textContent).toBe('1');
+
+    // No /api/booking/checkout POST must have been issued.
+    expect(capturedCheckoutBody).toBeNull();
   });
 });

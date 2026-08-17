@@ -75,6 +75,7 @@ const STRINGS = {
     minUnitsNote: "Select one accommodation for 2 adults.",
     unit: 'Unit',
     moreUnitsNeeded: "Add {n} more unit(s) to fit your party.",
+    partyTooLargeForRate: "Some guests cannot be accommodated in fewer units. Please keep your current rate plan or reduce your party size.",
     amenitiesNote: 'Breakfast, Starlink Wi-Fi and secure parking are included.',
     sleeps: 'Sleeps {count}',
     sleepsAdultsChildren: 'Sleeps {adults} + {children}',
