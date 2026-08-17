@@ -1191,11 +1191,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         >
                           <div className="flex items-start gap-3 sm:gap-4">
                             <div className="flex-1 min-w-0">
-                              <h3 className="text-lg font-semibold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
+                              <h3 className="text-xl font-bold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
                                 {displayName}
                               </h3>
                               <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0 mt-0.5">
-                                <p className="text-xl font-bold text-slate-900" data-testid={`text-offer-total-${room.roomId}`}>
+                                <p className="text-lg font-semibold text-slate-700" data-testid={`text-offer-total-${room.roomId}`}>
                                   {showFx ? fxPrimary(cardTotal) : money(cardTotal, room.currency)}
                                 </p>
                                 {showFx && (
