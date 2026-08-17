@@ -1578,7 +1578,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </div>
 
                     {/* Live combined cart summary (debounced /api/booking/quote) — sticky right rail on desktop */}
-                    <div id="your-selection" className="lg:sticky lg:top-[calc(var(--stack-h)+1rem)]">
+                    <div id="your-selection" className="lg:sticky" style={{ top: 'calc(var(--stack-h) + 1rem)' }}>
                     {totalRooms > 0 ? (
                       <div
                         className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6 space-y-3"
