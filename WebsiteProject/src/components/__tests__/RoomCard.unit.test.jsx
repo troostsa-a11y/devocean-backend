@@ -208,6 +208,44 @@ describe('FEATURE_LABELS coverage — every UNIT_FEATURES slug has a label', () 
       'slug to the appropriate room type in UNIT_FEATURES.',
     ].join('\n')).toHaveLength(0);
   });
+
+  /**
+   * LANGUAGE COVERAGE CHECK: every slug in FEATURE_LABELS must have a
+   * translation for every supported base-language code.
+   *
+   * getRoomFeatureLabel falls back: lang → base → en → raw slug, so a missing
+   * key for a non-English locale causes the guest to silently see English text
+   * (or the raw slug if 'en' is also absent) rather than their own language.
+   * This test catches incomplete translation objects before they ship.
+   *
+   * CANONICAL_LANGS is the authoritative list of 20 base language codes that
+   * FEATURE_LABELS must cover. It is intentionally independent of FEATURE_LABELS
+   * itself so that removing a code from any slug cannot suppress the failure.
+   * Update this list whenever a new base language is added to the site.
+   */
+  it('every slug in FEATURE_LABELS has translations for all supported base-language codes', () => {
+    const CANONICAL_LANGS = [
+      'en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'af',
+      'sv', 'pl', 'ro', 'sr', 'hr', 'cs', 'tr',
+      'ja', 'zh', 'ru', 'zu', 'sw',
+    ];
+
+    const failures = [];
+    for (const [slug, translations] of Object.entries(FEATURE_LABELS)) {
+      const presentLangs = new Set(Object.keys(translations));
+      const missingLangs = CANONICAL_LANGS.filter((lang) => !presentLangs.has(lang));
+      if (missingLangs.length > 0) {
+        failures.push(`  "${slug}" is missing: ${missingLangs.join(', ')}`);
+      }
+    }
+
+    expect(failures, [
+      'The following FEATURE_LABELS slugs are missing one or more language translations.',
+      'Guests in those locales will fall back to English (or the raw slug key).',
+      'Add the missing keys to each slug in RoomCard.jsx:',
+      ...failures,
+    ].join('\n')).toHaveLength(0);
+  });
 });
 
 // ── 5. Checkout-sync test — the bedPreferences predicate matches the toggle ────
