@@ -1243,15 +1243,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               {(unitKey === 'safari' || unitKey === 'comfort' || unitKey === 'chalet') && (
                                 <div className="mt-2 flex gap-1.5">
                                   {[
-                                    { bt: 'king', Icon: BedDouble },
-                                    { bt: 'twin', Icon: BedSingle },
-                                  ].map(({ bt, Icon }) => {
+                                    { bt: 'king', label: getBedTypeLabel('king'), icon: <BedDouble className="h-4 w-4" /> },
+                                    { bt: 'twin', label: getBedTypeLabel('twin'), icon: <span className="flex gap-0.5"><BedSingle className="h-4 w-4" /><BedSingle className="h-4 w-4" /></span> },
+                                  ].map(({ bt, label, icon }) => {
                                     const active = (bedType[room.roomId] || 'king') === bt;
                                     return (
                                       <button
                                         key={bt}
                                         type="button"
-                                        title={getBedTypeLabel(bt)}
+                                        title={label}
                                         onClick={() => setBedType((prev) => ({ ...prev, [room.roomId]: bt }))}
                                         className={`rounded-lg border p-1.5 transition-colors ${
                                           active
@@ -1259,7 +1259,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                             : 'border-slate-200 text-slate-400 hover:border-slate-300'
                                         }`}
                                       >
-                                        <Icon className="h-4 w-4" />
+                                        {icon}
                                       </button>
                                     );
                                   })}
