@@ -20,7 +20,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS, UNIT_FEATURES, FEATURE_LABELS } from '../RoomCard';
+import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS, UNIT_FEATURES, FEATURE_LABELS, BED_TYPE_LABELS } from '../RoomCard';
 
 // ── Module mocks ──────────────────────────────────────────────────────────────
 
@@ -248,7 +248,58 @@ describe('FEATURE_LABELS coverage — every UNIT_FEATURES slug has a label', () 
   });
 });
 
-// ── 5. Checkout-sync test — the bedPreferences predicate matches the toggle ────
+// ── 5. BED_TYPE_LABELS language coverage ──────────────────────────────────────
+
+/**
+ * LANGUAGE COVERAGE CHECK: every key in BED_TYPE_LABELS must have a
+ * translation for every supported base-language code.
+ *
+ * getBedTypeLabel falls back: lang → base → en → raw type key, so a missing
+ * entry for a non-English locale causes the bed-preference button or its header
+ * to silently show English text (or the raw key if 'en' is also absent).
+ * This test catches incomplete translation objects before they ship.
+ *
+ * CANONICAL_LANGS is the same authoritative 20-code list used for FEATURE_LABELS.
+ * Update it whenever a new base language is added to the site.
+ */
+describe('BED_TYPE_LABELS language coverage — every key has all 20 base-language translations', () => {
+  const CANONICAL_LANGS = [
+    'en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'af',
+    'sv', 'pl', 'ro', 'sr', 'hr', 'cs', 'tr',
+    'ja', 'zh', 'ru', 'zu', 'sw',
+  ];
+
+  it('every key in BED_TYPE_LABELS has translations for all supported base-language codes', () => {
+    const failures = [];
+    for (const [key, translations] of Object.entries(BED_TYPE_LABELS)) {
+      const presentLangs = new Set(Object.keys(translations));
+      const missingLangs = CANONICAL_LANGS.filter((lang) => !presentLangs.has(lang));
+      if (missingLangs.length > 0) {
+        failures.push(`  "${key}" is missing: ${missingLangs.join(', ')}`);
+      }
+    }
+
+    expect(failures, [
+      'The following BED_TYPE_LABELS keys are missing one or more language translations.',
+      'Guests in those locales will see a blank bed-preference button or header.',
+      'Add the missing keys to each entry in BED_TYPE_LABELS in RoomCard.jsx:',
+      ...failures,
+    ].join('\n')).toHaveLength(0);
+  });
+
+  it('the reference key "king" exists and is used to derive the expected language set', () => {
+    expect(BED_TYPE_LABELS).toHaveProperty('king');
+    const referenceKeys = new Set(Object.keys(BED_TYPE_LABELS.king));
+    const missingFromCanonical = CANONICAL_LANGS.filter((lang) => !referenceKeys.has(lang));
+    expect(missingFromCanonical, [
+      'The reference key "king" in BED_TYPE_LABELS is itself missing canonical language(s):',
+      missingFromCanonical.join(', '),
+      'Update BED_TYPE_LABELS["king"] in RoomCard.jsx first.',
+    ].join('\n')).toHaveLength(0);
+  });
+});
+
+// ── 6. Checkout-sync test — the bedPreferences predicate matches the toggle ────
 
 /**
  * The checkout default logic in BookDirectPage.jsx is:

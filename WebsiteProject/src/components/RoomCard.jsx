@@ -74,7 +74,7 @@ function getRoomFeatureLabel(feature, lang) {
 }
 
 // Bed-type toggle labels (Safari Tent, Comfort Tent, Thatched Chalet only).
-const BED_TYPE_LABELS = {
+export const BED_TYPE_LABELS = {
   king:          { en: 'King bed',        pt: 'Cama de casal',          de: 'Doppelbett',            fr: 'Lit double',        es: 'Cama doble',        it: 'Letto matrimoniale',    nl: 'Tweepersoonsbed',        sv: 'Dubbelsäng',    pl: 'Łóżko podwójne',  ro: 'Pat dublu',       sr: 'Bračni krevet',  hr: 'Bračni krevet',  cs: 'Manželská postel', tr: 'Çift kişilik yatak', ja: 'キングベッド', zh: '大床',  ru: 'Двуспальная кровать',  zu: 'Umbhede omkhulu',  sw: 'Kitanda kikubwa',  af: 'Koningsbed'   },
   twin:          { en: 'Twin beds',       pt: 'Camas separadas',        de: 'Zwei Einzelbetten',     fr: 'Lits jumeaux',      es: 'Camas separadas',   it: 'Letti separati',        nl: 'Twee eenpersoonsbedden', sv: 'Enkelsängar',   pl: 'Łóżka oddzielne', ro: 'Paturi separate', sr: 'Odvojena kreveta', hr: 'Odvojena kreveta', cs: 'Oddělené postele', tr: 'İki ayrı yatak',  ja: 'ツインベッド',   zh: '双床', ru: 'Раздельные кровати',   zu: 'Imibhede emibili', sw: 'Vitanda viwili',   af: 'Tweelingsbed' },
   bedPreference: { en: 'Bed preference:', pt: 'Preferência de cama:',   de: 'Betttyp:',              fr: 'Type de lit\u00a0:', es: 'Tipo de cama:',     it: 'Tipo di letto:',        nl: 'Bedvoorkeur:',           sv: 'Sängtyp:',      pl: 'Rodzaj łóżka:',   ro: 'Tip pat:',        sr: 'Tip kreveta:',   hr: 'Vrsta kreveta:', cs: 'Typ postele:',     tr: 'Yatak tercihi:',     ja: 'ベッド:', zh: '床型:', ru: 'Тип кровати:',         zu: 'Ukhetha umbhede:', sw: 'Aina ya kitanda:', af: 'Bedvoorkeur:'  },
