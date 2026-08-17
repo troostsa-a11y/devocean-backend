@@ -680,3 +680,263 @@ describe('checkout occupancy: multi-unit rate-switch with children', () => {
     expect(capturedCheckoutBody).toBeNull();
   });
 });
+
+// ── Garden Cottage: no bed toggle → bedPreferences undefined ─────────────────
+//
+// Garden Cottage (unitKey='cottage') has no king/twin selector. The checkout
+// payload must NOT include a bedPreferences entry for it — not an empty object,
+// not a spurious 'king' value. The two tests below cover:
+//   1. Cottage booked alone          → bedPreferences is undefined
+//   2. Safari + Cottage in same cart → bedPreferences has ONLY the safari key
+
+describe('checkout bedPreferences — Garden Cottage edge cases', () => {
+  const COTTAGE_ROOM_ID = 'cottage-room-1';
+  const SAFARI_ROOM_ID2 = 'safari-room-2';
+  const CHECK_IN_GC  = '2027-07-01';
+  const CHECK_OUT_GC = '2027-07-03';
+
+  function makeCottageOnlyAvailability() {
+    return {
+      checkIn:                CHECK_IN_GC,
+      checkOut:               CHECK_OUT_GC,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      COTTAGE_ROOM_ID,
+          name:        'Garden Cottage',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            {
+              offerId:        'offer-cottage-1',
+              total:          500,
+              type:           'semiFlex',
+              unitsAvailable: 3,
+              refundable:     true,
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeCottageOnlyQuote() {
+    return {
+      checkIn:        CHECK_IN_GC,
+      checkOut:       CHECK_OUT_GC,
+      nights:         2,
+      currency:       'USD',
+      rooms:          1,
+      lines: [
+        {
+          roomId:    COTTAGE_ROOM_ID,
+          offerId:   'offer-cottage-1',
+          roomName:  'Garden Cottage',
+          qty:       1,
+          adults:    2,
+          children:  0,
+          infants:   0,
+          lineTotal: 500,
+        },
+      ],
+      total:          500,
+      depositPercent: 50,
+      deposit:        250,
+      balance:        250,
+    };
+  }
+
+  function makeMixedAvailability() {
+    return {
+      checkIn:                CHECK_IN_GC,
+      checkOut:               CHECK_OUT_GC,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      SAFARI_ROOM_ID2,
+          name:        'Safari Tent',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            {
+              offerId:        'offer-safari-2',
+              total:          600,
+              type:           'semiFlex',
+              unitsAvailable: 3,
+              refundable:     true,
+            },
+          ],
+        },
+        {
+          roomId:      COTTAGE_ROOM_ID,
+          name:        'Garden Cottage',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            {
+              offerId:        'offer-cottage-1',
+              total:          500,
+              type:           'semiFlex',
+              unitsAvailable: 3,
+              refundable:     true,
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeMixedQuote() {
+    return {
+      checkIn:        CHECK_IN_GC,
+      checkOut:       CHECK_OUT_GC,
+      nights:         2,
+      currency:       'USD',
+      rooms:          2,
+      lines: [
+        {
+          roomId:    SAFARI_ROOM_ID2,
+          offerId:   'offer-safari-2',
+          roomName:  'Safari Tent',
+          qty:       1,
+          adults:    2,
+          children:  0,
+          infants:   0,
+          lineTotal: 600,
+        },
+        {
+          roomId:    COTTAGE_ROOM_ID,
+          offerId:   'offer-cottage-1',
+          roomName:  'Garden Cottage',
+          qty:       1,
+          adults:    2,
+          children:  0,
+          infants:   0,
+          lineTotal: 500,
+        },
+      ],
+      total:          1100,
+      depositPercent: 50,
+      deposit:        550,
+      balance:        550,
+    };
+  }
+
+  let capturedGCBody;
+
+  beforeEach(() => {
+    capturedGCBody = null;
+
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href:    '',
+        search:  `?checkIn=${CHECK_IN_GC}&checkOut=${CHECK_OUT_GC}`,
+        assign:  vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => window._locationBackup ?? location,
+    });
+  });
+
+  /**
+   * Generic helper: render BookDirectPage with a custom fetch mock, add the
+   * specified room(s) to the cart, advance to the details step, fill guest info,
+   * and submit.  `roomIds` is an array of testId suffixes to click + for.
+   */
+  async function runGCFlow(availFn, quoteFn, roomIds) {
+    global.fetch = vi.fn((url, init) => {
+      if (url.includes('/api/booking/availability'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(availFn()) });
+      if (url.includes('/api/booking/quote'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(quoteFn()) });
+      if (url.includes('/api/booking/calendar'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      if (url.includes('/api/booking/checkout')) {
+        capturedGCBody = JSON.parse(init.body);
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ url: 'https://checkout.stripe.com/mock-gc' }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+
+    // Wait for the first room card to appear (auto-search resolves on mount).
+    await waitFor(
+      () => screen.getByTestId(`button-inc-${roomIds[0]}`),
+      { timeout: 3000 },
+    );
+
+    // Add each requested room to the cart.
+    for (const rid of roomIds) {
+      await act(async () => {
+        fireEvent.click(screen.getByTestId(`button-inc-${rid}`));
+      });
+    }
+
+    // Wait for the Continue button to enable (quote fetched).
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+
+    await act(async () => { fireEvent.click(continueBtn); });
+
+    await waitFor(() => screen.getByTestId('input-first-name'));
+    fireEvent.change(screen.getByTestId('input-first-name'), { target: { value: 'Jo' } });
+    fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Guest' } });
+    fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'jo@example.com' } });
+    fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+9876543210' } });
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('button-checkout'));
+    });
+  }
+
+  it('cottage alone: bedPreferences is undefined — no bed toggle for Garden Cottage', async () => {
+    await runGCFlow(makeCottageOnlyAvailability, makeCottageOnlyQuote, [COTTAGE_ROOM_ID]);
+
+    expect(capturedGCBody).not.toBeNull();
+    expect(capturedGCBody.bedPreferences).toBeUndefined();
+  });
+
+  it('safari + cottage: bedPreferences contains only the safari roomId', async () => {
+    await runGCFlow(makeMixedAvailability, makeMixedQuote, [SAFARI_ROOM_ID2, COTTAGE_ROOM_ID]);
+
+    expect(capturedGCBody).not.toBeNull();
+    // Safari gets the default 'king' preference.
+    expect(capturedGCBody.bedPreferences).toBeDefined();
+    expect(capturedGCBody.bedPreferences[SAFARI_ROOM_ID2]).toBe('king');
+    // Cottage must NOT appear — it has no bed toggle.
+    expect(capturedGCBody.bedPreferences[COTTAGE_ROOM_ID]).toBeUndefined();
+  });
+});
