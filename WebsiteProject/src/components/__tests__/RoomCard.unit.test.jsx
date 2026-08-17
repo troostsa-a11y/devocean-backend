@@ -20,7 +20,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS } from '../RoomCard';
+import { getUnitKey, UNIT_KEYS, BED_TOGGLE_UNIT_KEYS, UNIT_FEATURES } from '../RoomCard';
 
 // ── Module mocks ──────────────────────────────────────────────────────────────
 
@@ -143,7 +143,39 @@ describe('bed-toggle whitelist — cottage must be absent', () => {
   });
 });
 
-// ── 3. Checkout-sync test — the bedPreferences predicate matches the toggle ────
+// ── 3. UNIT_FEATURES sync — every UNIT_KEY must have a features entry ─────────
+
+/**
+ * CROSS-CHECK: every key in UNIT_KEYS must have a corresponding entry in UNIT_FEATURES.
+ *
+ * UNIT_FEATURES is a manual map — if a developer adds a new entry to UNIT_KEYS
+ * but forgets to add a matching entry to UNIT_FEATURES, the new room type
+ * silently shows no feature badges. This test makes that failure loud.
+ */
+describe('UNIT_FEATURES sync — every UNIT_KEY has a features entry', () => {
+  it('every key in UNIT_KEYS has an entry in UNIT_FEATURES', () => {
+    const missing = UNIT_KEYS.filter((k) => !(k in UNIT_FEATURES));
+    expect(missing, [
+      'Key(s) found in UNIT_KEYS that are missing from UNIT_FEATURES:',
+      missing.join(', '),
+      '',
+      'Add a corresponding entry to UNIT_FEATURES in RoomCard.jsx so the new',
+      'room type displays the correct feature badges on its booking card.',
+    ].join('\n')).toHaveLength(0);
+  });
+
+  it('every key in UNIT_FEATURES exists in UNIT_KEYS (no stale entries)', () => {
+    const unitKeySet = new Set(UNIT_KEYS);
+    const stale = Object.keys(UNIT_FEATURES).filter((k) => !unitKeySet.has(k));
+    expect(stale, [
+      'UNIT_FEATURES references key(s) not present in UNIT_KEYS:',
+      stale.join(', '),
+      'Remove the stale entry from UNIT_FEATURES in RoomCard.jsx.',
+    ].join('\n')).toHaveLength(0);
+  });
+});
+
+// ── 4. Checkout-sync test — the bedPreferences predicate matches the toggle ────
 
 /**
  * The checkout default logic in BookDirectPage.jsx is:

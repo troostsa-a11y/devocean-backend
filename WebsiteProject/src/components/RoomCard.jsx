@@ -53,7 +53,7 @@ export function defaultRoomOccFor(room, effAdults, effChildren) {
 }
 
 // Room feature badges — shown on booking cards to match the detail pages.
-const UNIT_FEATURES = {
+export const UNIT_FEATURES = {
   safari:  ['shared',  'terrace', 'fan'],
   comfort: ['ensuite', 'terrace', 'fan'],
   cottage: ['ac',      'ensuite', 'queen'],
