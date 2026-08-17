@@ -154,10 +154,12 @@ a:hover:not(.btn-cta):not(.btn-secondary):not(.button):not([role="button"]) {
   }
 }
 
-/* Never allow horizontal scroll due to form fields */
+/* Never allow horizontal scroll due to form fields.
+   Use clip (not hidden) so we don't create a new scroll container —
+   overflow-x: hidden on html/body breaks position: sticky. */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .contact-form,
