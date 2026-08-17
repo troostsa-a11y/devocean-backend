@@ -1075,7 +1075,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <ChevronLeft className="h-4 w-4" /> {t.back}
                 </button>
 
-                <p>
+                <div className="flex items-center justify-between gap-4">
                   <span
                     className="inline-flex items-start gap-2 rounded-full bg-slate-100 px-3.5 py-1.5 text-sm sm:text-base font-semibold text-slate-800"
                     data-testid="badge-selection-summary"
@@ -1086,18 +1086,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       <span className="font-medium">{availability.nights} {t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}</span>
                     </span>
                   </span>
-                </p>
 
-                {marinResultsContext && (
-                  <div className="flex justify-end">
+                  {marinResultsContext && (
                     <MarinPanel
                       context={marinResultsContext}
                       autoMessage="I need help choosing a room."
                       lang={lang}
                       currency={currency}
                     />
-                  </div>
-                )}
+                  )}
+                </div>
 
                 {availableRooms.length === 0 && unavailableRooms.length === 0 ? (
                   <div className="bg-white rounded-2xl border border-slate-200 p-6 text-center text-slate-600" data-testid="status-no-rooms">
