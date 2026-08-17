@@ -80,12 +80,18 @@
                   window.location.hostname.includes('replit.dev') ||
                   window.location.hostname.includes('repl.co');
       if (isDev) return;
-      var s = document.createElement('script');
-      s.id = 'cookieyes';
-      s.type = 'text/javascript';
-      s.async = true;
-      s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
-      document.head.appendChild(s);
+      // Delay CookieYes 2 s so it doesn't compete with first render or the
+      // user's first interaction. Consent Mode v2 defaults (denied for EU,
+      // granted elsewhere) are already set earlier in <head>, so no tracking
+      // fires before CookieYes initialises — GDPR compliance is maintained.
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.id = 'cookieyes';
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://cdn-cookieyes.com/client_data/f0a2da84090ecaa3b37f74af/script.js';
+        document.head.appendChild(s);
+      }, 2000);
     })();
   </script>
 

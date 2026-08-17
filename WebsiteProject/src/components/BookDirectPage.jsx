@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useMemo } from 'react';
+import { useState, useEffect, useLayoutEffect, useMemo, startTransition } from 'react';
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import { useSeoPage } from '../utils/seoMeta';
 import { useLocation } from 'wouter';
@@ -630,24 +630,26 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }, [availableRooms, effAdults, effChildren, effInfants]);
 
   function setRoomQty(roomId, qty) {
-    setQuoteLoading(true); // gate Continue until the debounced /quote settles
-    setCart((c) => {
-      const next = { ...c };
-      if (qty <= 0) delete next[roomId];
-      else next[roomId] = qty;
-      return next;
-    });
-    // Sync per-unit occupancy array length to the new qty
-    if (qty <= 0) {
-      setRoomOccupancy((prev) => { const next = { ...prev }; delete next[roomId]; return next; });
-    } else {
-      const room = availableRooms.find((r) => r.roomId === roomId);
-      const def = room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 };
-      setRoomOccupancy((prev) => {
-        const current = prev[roomId] ?? [];
-        return { ...prev, [roomId]: Array.from({ length: qty }, (_, i) => current[i] ?? { ...def }) };
+    setQuoteLoading(true); // urgent — gates the Continue button immediately
+    startTransition(() => {
+      setCart((c) => {
+        const next = { ...c };
+        if (qty <= 0) delete next[roomId];
+        else next[roomId] = qty;
+        return next;
       });
-    }
+      // Sync per-unit occupancy array length to the new qty
+      if (qty <= 0) {
+        setRoomOccupancy((prev) => { const next = { ...prev }; delete next[roomId]; return next; });
+      } else {
+        const room = availableRooms.find((r) => r.roomId === roomId);
+        const def = room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 };
+        setRoomOccupancy((prev) => {
+          const current = prev[roomId] ?? [];
+          return { ...prev, [roomId]: Array.from({ length: qty }, (_, i) => current[i] ?? { ...def }) };
+        });
+      }
+    });
   }
 
   // Switch a room's selected rate plan; clamp any cart qty to the new offer's
@@ -656,9 +658,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const room = availableRooms.find((r) => r.roomId === roomId);
     const offer = room?.offers.find((o) => o.offerId === offerId);
     const units = offer?.unitsAvailable ?? 0;
-    setQuoteLoading(true); // gate Continue until the debounced /quote settles
-    setRateChoice((c) => ({ ...c, [roomId]: offerId }));
-    setCart((c) => (c[roomId] && c[roomId] > units ? { ...c, [roomId]: units } : c));
+    setQuoteLoading(true); // urgent — gates the Continue button immediately
+    startTransition(() => {
+      setRateChoice((c) => ({ ...c, [roomId]: offerId }));
+      setCart((c) => (c[roomId] && c[roomId] > units ? { ...c, [roomId]: units } : c));
+    });
   }
 
   // Sensible default per-room occupancy: fill the room toward the party,
@@ -677,16 +681,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }
 
   function setRoomOcc(roomId, unitIdx, field, val) {
-    setQuoteLoading(true);
-    setRoomOccupancy((prev) => {
-      const room = availableRooms.find((r) => r.roomId === roomId);
-      const def = room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 };
-      const qty = cart[roomId] ?? 0;
-      const current = prev[roomId] ?? Array.from({ length: qty }, () => ({ ...def }));
-      const newArr = current.map((u, i) =>
-        i === unitIdx ? { ...u, [field]: Math.max(0, val) } : u
-      );
-      return { ...prev, [roomId]: newArr };
+    setQuoteLoading(true); // urgent — gates the Continue button immediately
+    startTransition(() => {
+      setRoomOccupancy((prev) => {
+        const room = availableRooms.find((r) => r.roomId === roomId);
+        const def = room ? defaultRoomOcc(room) : { adults: 0, children: 0, infants: 0 };
+        const qty = cart[roomId] ?? 0;
+        const current = prev[roomId] ?? Array.from({ length: qty }, () => ({ ...def }));
+        const newArr = current.map((u, i) =>
+          i === unitIdx ? { ...u, [field]: Math.max(0, val) } : u
+        );
+        return { ...prev, [roomId]: newArr };
+      });
     });
   }
 
@@ -732,19 +738,16 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         const data = await res.json();
         if (cancelled) return;
         if (!res.ok) {
-          setQuote(null);
-          setQuoteError(data?.error || t.errorGeneric);
+          startTransition(() => { setQuote(null); setQuoteError(data?.error || t.errorGeneric); });
         } else {
-          setQuote(data);
-          setQuoteError('');
+          startTransition(() => { setQuote(data); setQuoteError(''); });
         }
       } catch {
         if (!cancelled) {
-          setQuote(null);
-          setQuoteError(t.errorGeneric);
+          startTransition(() => { setQuote(null); setQuoteError(t.errorGeneric); });
         }
       } finally {
-        if (!cancelled) setQuoteLoading(false);
+        if (!cancelled) setQuoteLoading(false); // urgent — re-enables the Continue button
       }
     }, 400);
     return () => {
@@ -897,7 +900,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     lang={lang}
                     checkIn={checkIn}
                     checkOut={checkOut}
-                    onChange={(ci, co) => { setCheckIn(ci); setCheckOut(co); }}
+                    onChange={(ci, co) => { startTransition(() => { setCheckIn(ci); setCheckOut(co); }); }}
                     t={t}
                     priceByDate={priceByDate}
                   />
@@ -909,7 +912,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <div className="flex-1">
                       <select
                         value={adults}
-                        onChange={(e) => setAdults(parseInt(e.target.value, 10))}
+                        onChange={(e) => startTransition(() => setAdults(parseInt(e.target.value, 10)))}
                         className={INPUT_CLASS}
                         aria-label={t.adults}
                         data-testid="select-adults"
@@ -922,7 +925,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <div className="flex-1">
                       <select
                         value={children}
-                        onChange={(e) => handleChildrenChange(parseInt(e.target.value, 10))}
+                        onChange={(e) => startTransition(() => handleChildrenChange(parseInt(e.target.value, 10)))}
                         className={INPUT_CLASS}
                         aria-label={t.children}
                         data-testid="select-children"
@@ -935,7 +938,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <div className="flex-1">
                       <select
                         value={infants}
-                        onChange={(e) => handleInfantsChange(parseInt(e.target.value, 10))}
+                        onChange={(e) => startTransition(() => handleInfantsChange(parseInt(e.target.value, 10)))}
                         className={INPUT_CLASS}
                         aria-label={t.infants}
                         data-testid="select-infants"
