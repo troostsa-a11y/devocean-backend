@@ -940,3 +940,169 @@ describe('checkout bedPreferences — Garden Cottage edge cases', () => {
     expect(capturedGCBody.bedPreferences[COTTAGE_ROOM_ID]).toBeUndefined();
   });
 });
+
+// ── Thatched Chalet: bed toggle default + explicit twin ───────────────────────
+//
+// Thatched Chalet (unitKey='chalet') has the same king/twin selector as Safari
+// and Comfort tents.  The tests below confirm:
+//   1. No toggle touch  → bedPreferences: { [chaletRoomId]: 'king' }
+//   2. Toggle switched  → bedPreferences: { [chaletRoomId]: 'twin' }
+
+describe('checkout bedPreferences — Thatched Chalet', () => {
+  const CHALET_ROOM_ID  = 'chalet-room-1';
+  const CHECK_IN_CH     = '2027-08-01';
+  const CHECK_OUT_CH    = '2027-08-03';
+
+  function makeChaletAvailability() {
+    return {
+      checkIn:                CHECK_IN_CH,
+      checkOut:               CHECK_OUT_CH,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      CHALET_ROOM_ID,
+          name:        'Thatched Chalet',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            {
+              offerId:        'offer-chalet-1',
+              total:          700,
+              type:           'semiFlex',
+              unitsAvailable: 2,
+              refundable:     true,
+            },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeChaletQuote() {
+    return {
+      checkIn:        CHECK_IN_CH,
+      checkOut:       CHECK_OUT_CH,
+      nights:         2,
+      currency:       'USD',
+      rooms:          1,
+      lines: [
+        {
+          roomId:    CHALET_ROOM_ID,
+          offerId:   'offer-chalet-1',
+          roomName:  'Thatched Chalet',
+          qty:       1,
+          adults:    2,
+          children:  0,
+          infants:   0,
+          lineTotal: 700,
+        },
+      ],
+      total:          700,
+      depositPercent: 50,
+      deposit:        350,
+      balance:        350,
+    };
+  }
+
+  let capturedChaletBody;
+
+  beforeEach(() => {
+    capturedChaletBody = null;
+
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href:    '',
+        search:  `?checkIn=${CHECK_IN_CH}&checkOut=${CHECK_OUT_CH}`,
+        assign:  vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    global.fetch = vi.fn((url, init) => {
+      if (url.includes('/api/booking/availability'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeChaletAvailability()) });
+      if (url.includes('/api/booking/quote'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeChaletQuote()) });
+      if (url.includes('/api/booking/calendar'))
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      if (url.includes('/api/booking/checkout')) {
+        capturedChaletBody = JSON.parse(init.body);
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ url: 'https://checkout.stripe.com/mock-chalet' }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => window._locationBackup ?? location,
+    });
+  });
+
+  /**
+   * Render the page, add the chalet to the cart, optionally click the twin
+   * toggle, advance to the details step, fill guest info, and submit.
+   */
+  async function runChaletFlow({ bedChoice } = {}) {
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+
+    const incBtn = await waitFor(
+      () => screen.getByTestId(`button-inc-${CHALET_ROOM_ID}`),
+      { timeout: 3000 },
+    );
+
+    await act(async () => { fireEvent.click(incBtn); });
+
+    if (bedChoice === 'twin') {
+      const twinBtn = screen.getByTitle(/twin/i);
+      await act(async () => { fireEvent.click(twinBtn); });
+    }
+
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+
+    await act(async () => { fireEvent.click(continueBtn); });
+
+    await waitFor(() => screen.getByTestId('input-first-name'));
+    fireEvent.change(screen.getByTestId('input-first-name'), { target: { value: 'Sam' } });
+    fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Lodge' } });
+    fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'sam@example.com' } });
+    fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+27123456789' } });
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('button-checkout'));
+    });
+  }
+
+  it('sends bedPreferences: { [chaletRoomId]: "king" } when the guest never touches the toggle', async () => {
+    await runChaletFlow(); // no bedChoice → toggle untouched
+
+    expect(capturedChaletBody).not.toBeNull();
+    expect(capturedChaletBody.bedPreferences).toBeDefined();
+    expect(capturedChaletBody.bedPreferences[CHALET_ROOM_ID]).toBe('king');
+  });
+
+  it('sends bedPreferences: { [chaletRoomId]: "twin" } when the guest switches to twin', async () => {
+    await runChaletFlow({ bedChoice: 'twin' });
+
+    expect(capturedChaletBody).not.toBeNull();
+    expect(capturedChaletBody.bedPreferences).toBeDefined();
+    expect(capturedChaletBody.bedPreferences[CHALET_ROOM_ID]).toBe('twin');
+  });
+});
