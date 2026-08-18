@@ -105,6 +105,11 @@ export default function App() {
     const header = document.querySelector("header");
     if (!topbar || !header) return;
 
+    // Guard: set to true on cleanup so the rAF callback cannot write CSS
+    // variables after the component has unmounted or the effect has re-run.
+    let cancelled = false;
+    let rafId;
+
     // Cache previous values to avoid redundant CSS variable updates
     let cachedTopbarH = 0;
     let cachedHeaderH = 0;
@@ -126,8 +131,11 @@ export default function App() {
       cachedHeaderH = headerH;
       cachedStack = stack;
 
-      // Schedule CSS variable updates for next frame (async, non-blocking)
-      requestAnimationFrame(() => {
+      // Schedule CSS variable updates for next frame (async, non-blocking).
+      // Store the id so cleanup can cancel it if the component unmounts before
+      // the frame fires.
+      rafId = requestAnimationFrame(() => {
+        if (cancelled) return;
         document.documentElement.style.setProperty("--stack-h", `${stack}px`);
         document.documentElement.style.setProperty("--topbar-h", `${topbarH}px`);
         document.documentElement.style.setProperty("--header-h", `${headerH}px`);
@@ -149,7 +157,11 @@ export default function App() {
     const scheduleInitial = window.requestIdleCallback || ((cb) => setTimeout(cb, 0));
     scheduleInitial(updateStackHeight);
 
-    return () => observer.disconnect();
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
     // Re-run on route change so the observer re-initializes when the global
     // header re-appears (it is hidden on /book-direct). Without this, a deep
     // link to /book-direct → home could leave --stack-h on stale defaults.
