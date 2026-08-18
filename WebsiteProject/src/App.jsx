@@ -177,9 +177,17 @@ export default function App() {
   }, []);
 
   // --- Back/forward: clear data-nav-type marker (animation suppression) ---
-  // The @keyframes animation was removed so this listener is now a no-op visually,
-  // but the marker is kept so the CSS rule can be reinstated cheaply if needed.
+  // Also used by the scroll-to-top effect below to distinguish forward
+  // navigation (should scroll to top) from popstate / back-forward (should not).
   useEffect(() => {
+    // Tell the browser we manage scroll position ourselves — prevents it from
+    // restoring a saved scroll offset when navigating between SPA routes, which
+    // caused the food page (and other sub-pages) to appear half-scrolled on
+    // second visit.
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
     const handler = () => {
       document.documentElement.dataset.navType = 'popstate';
     };
@@ -191,8 +199,19 @@ export default function App() {
   // Also move keyboard focus to the new page's H1 so screen-reader and keyboard
   // users land on the right content without having to Tab through the header.
   useEffect(() => {
+    // Read the popstate marker BEFORE clearing it so we can decide whether to
+    // scroll to top. Popstate = browser back/forward; the browser (or a future
+    // manual restoration) handles the scroll position. Forward clicks = scroll top.
+    const isPopstate = document.documentElement.dataset.navType === 'popstate';
+
     // Clear back/forward marker set by the popstate listener above.
     delete document.documentElement.dataset.navType;
+
+    // Scroll to top on every forward SPA navigation (not back/forward, not
+    // homepage which has its own hero/hash handling).
+    if (!isPopstate && location !== '/') {
+      window.scrollTo(0, 0);
+    }
 
     // Focus management — skip homepage (hero manages its own focus) and
     // skip on the very first render (location hasn't changed yet).
