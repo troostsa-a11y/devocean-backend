@@ -301,25 +301,25 @@ export const UI = {
           "Twee eenpersoonsbedden (of king) met nachtkastjes en lampen",
           "Muggennet • krachtige ventilator • stopcontacten",
           "Privé terras met palmbladenstoelen",
-          "Gedeelde faciliteiten: warme/koude douches en toiletten"
+          "Safaritentgasten gebruiken gedeelde badkamervoorzieningen met aparte dames- en herensecties. Elke sectie heeft twee toiletten en twee douches."
         ],
       },
       comfort: {
         title: "Comforttent",
-        short: "Ruime upgrade tent met privé badkamer, twin/kingbed en terras.",
+        short: "Ruime upgrade tent met privé badkamer in aangrenzende rieten rondavel, twin/kingbed en terras.",
         details: [
           "Twin/kingbed opstelling met praktische verlichting",
           "Tafel, stoelen • terras (met stoelen)",
-          "Privé badkamer in rieten dak hut"
+          "Uw privébadkamer bevindt zich in een aangrenzende rieten rondavel, bereikbaar via de achterdeur van de tent door een korte privéverbinding."
         ],
       },
       cottage: {
         title: "Tuin Cottage",
-        short: "Ruime cottage met kingbed, inverter AC, bureau en eettafel, privé terras en hutten badkamer.",
+        short: "Ruime cottage met kingbed, inverter AC, bureau en eettafel, privé terras en en-suite badkamer in aangrenzende rieten rondavel.",
         details: [
           "Kingbed • bureau & eettafel",
           "Inverter airco (koelen/verwarmen) • dimbaar hoofdlicht",
-          "Hut badkamer (douche, wastafel, toilet)",
+          "Uw privé en-suite badkamer bevindt zich in een aangrenzende rieten rondavel, direct toegankelijk via de achterdeur van de slaapkamer.",
           "Houten dek met kampeerstoelen"
         ],
       },
@@ -328,7 +328,7 @@ export const UI = {
         short: "Rustig, romantisch klein chalet onder palmen. AC, privé badkamer, terras. Twin/king.",
         details: [
           "Rustige locatie onder palmen • airco",
-          "Privé badkamer (douche, wastafel, toilet)",
+          "En-suite badkamer (douche, wastafel, toilet)",
           "Twin/kingbed en nachtkastjes",
           "Privé terras met palmbladenstoelen"
         ],
@@ -436,25 +436,25 @@ export const UI = {
           "Deux lits simples (ou king) avec tables de chevet et lampes",
           "Moustiquaire • ventilateur puissant • prises électriques",
           "Terrasse privée avec chaises en feuilles de palmier",
-          "Installations partagées : douches chaudes/froides et toilettes"
+          "Les clients de la Tente Safari utilisent des sanitaires communs avec des sections séparées pour femmes et hommes. Chaque section dispose de deux toilettes et de deux douches."
         ],
       },
       comfort: {
         title: "Tente Confort",
-        short: "Tente spacieuse améliorée avec salle de bain privée, lit twin/king et terrasse.",
+        short: "Tente spacieuse améliorée avec salle de bain privée dans un rondavel en chaume attenant, lit twin/king et terrasse.",
         details: [
           "Configuration lit twin/king avec éclairage pratique",
           "Table, chaises • terrasse (avec chaises)",
-          "Salle de bain privée dans hutte au toit de chaume"
+          "Votre salle de bain privée se trouve dans un rondavel en chaume attenant, accessible depuis la porte arrière de la tente via une courte liaison privée."
         ],
       },
       cottage: {
         title: "Cottage de Jardin",
-        short: "Cottage spacieux avec lit king, climatisation inverter, bureau et table à manger, terrasse privée et salle de bain de hutte.",
+        short: "Cottage spacieux avec lit king, climatisation inverter, bureau et table à manger, terrasse privée et salle de bain en-suite dans un rondavel en chaume attenant.",
         details: [
           "Lit king • bureau et table à manger",
           "Climatisation inverter (refroidissement/chauffage) • éclairage principal dimmable",
-          "Salle de bain de hutte (douche, lavabo, toilettes)",
+          "Votre salle de bain privée en-suite se trouve dans un rondavel en chaume attenant, directement accessible par la porte arrière de la chambre.",
           "Terrasse en bois avec chaises de camping"
         ],
       },
@@ -463,7 +463,7 @@ export const UI = {
         short: "Petit chalet calme et romantique sous les palmiers. Climatisation, salle de bain privée, terrasse. Twin/king.",
         details: [
           "Emplacement calme sous les palmiers • climatisation",
-          "Salle de bain privée (douche, lavabo, toilettes)",
+          "Salle de bain en-suite (douche, lavabo, toilettes)",
           "Lit twin/king et tables de chevet",
           "Terrasse privée avec chaises en feuilles de palmier"
         ],
@@ -588,25 +588,25 @@ export const UI = {
           "Due letti singoli (o king) con comodini e lampade",
           "Zanzariera • ventilatore potente • prese elettriche",
           "Terrazza privata con sedie di foglie di palma",
-          "Servizi condivisi: docce calde/fredde e servizi igienici"
+          "Gli ospiti della Tenda Safari utilizzano servizi igienici condivisi con sezioni separate per donne e uomini. Ogni sezione dispone di due toilette e due docce."
         ],
       },
       comfort: {
         title: "Tenda Comfort",
-        short: "Tenda spaziosa migliorata con bagno privato, letto twin/king e terrazza.",
+        short: "Tenda spaziosa migliorata con bagno privato in un rondavel di paglia adiacente, letto twin/king e terrazza.",
         details: [
           "Configurazione letto twin/king con illuminazione pratica",
           "Tavolo, sedie • terrazza (con sedie)",
-          "Bagno privato in capanna con tetto di paglia"
+          "Il vostro bagno privato si trova in un rondavel di paglia adiacente, raggiungibile dalla porta posteriore della tenda tramite un breve collegamento privato."
         ],
       },
       cottage: {
         title: "Cottage da Giardino",
-        short: "Cottage spazioso con letto king, AC inverter, scrivania e tavolo da pranzo, terrazza privata e bagno capanna.",
+        short: "Cottage spazioso con letto king, AC inverter, scrivania e tavolo da pranzo, terrazza privata e bagno en-suite in un rondavel di paglia adiacente.",
         details: [
           "Letto king • scrivania e tavolo da pranzo",
           "AC inverter (raffreddamento/riscaldamento) • luce principale dimmerabile",
-          "Bagno capanna (doccia, lavandino, WC)",
+          "Il vostro bagno privato en-suite si trova in un rondavel di paglia adiacente, accessibile direttamente dalla porta posteriore della camera da letto.",
           "Terrazza in legno con sedie da campeggio"
         ],
       },
@@ -615,7 +615,7 @@ export const UI = {
         short: "Piccolo chalet tranquillo e romantico sotto le palme. AC, bagno privato, terrazza. Twin/king.",
         details: [
           "Posizione tranquilla sotto le palme • AC",
-          "Bagno privato (doccia, lavandino, WC)",
+          "Bagno en-suite (doccia, lavandino, WC)",
           "Letto twin/king e comodini",
           "Terrazza privata con sedie di foglie di palma"
         ],
@@ -700,25 +700,25 @@ export const UI = {
           "Zwei Einzelbetten (oder King) mit Nachttischen und Lampen",
           "Moskitonetz • leistungsstarker Ventilator • Steckdosen",
           "Private Terrasse mit Palmblatt-Stühlen",
-          "Gemeinschaftseinrichtungen: Warm-/Kaltduschen und Toiletten"
+          "Safari-Zeltgäste nutzen Gemeinschaftsbäder mit separaten Bereichen für Damen und Herren. Jeder Bereich verfügt über zwei Toiletten und zwei Duschen."
         ],
       },
       comfort: {
         title: "Komfort-Zelt",
-        short: "Geräumiges Upgrade-Zelt mit privatem Bad, Twin/Kingbett und Terrasse.",
+        short: "Geräumiges Upgrade-Zelt mit privatem Bad in einem angrenzenden Reetdach-Rondavel, Twin/Kingbett und Terrasse.",
         details: [
           "Twin/Kingbett-Anordnung mit praktischer Beleuchtung",
           "Tisch, Stühle • Terrasse (mit Stühlen)",
-          "Privates Bad in Strohdachhütte"
+          "Ihr privates Bad befindet sich in einem angrenzenden Reetdach-Rondavel, zugänglich von der Hintertür des Zeltes über eine kurze private Verbindung."
         ],
       },
       cottage: {
         title: "Garten-Cottage",
-        short: "Geräumiges Cottage mit Kingbett, Inverter-Klimaanlage, Schreibtisch und Esstisch, privater Terrasse und Hüttenbad.",
+        short: "Geräumiges Cottage mit Kingbett, Inverter-Klimaanlage, Schreibtisch und Esstisch, privater Terrasse und En-suite-Bad in einem angrenzenden Reetdach-Rondavel.",
         details: [
           "Kingbett • Schreibtisch & Esstisch",
           "Inverter-Klimaanlage (Kühlung/Heizung) • dimmbare Hauptbeleuchtung",
-          "Hüttenbad (Dusche, Waschbecken, WC)",
+          "Ihr privates En-suite-Bad befindet sich in einem angrenzenden Reetdach-Rondavel und ist direkt über die Hintertür des Schlafzimmers zugänglich.",
           "Holzdeck mit Campingstühlen"
         ],
       },
@@ -727,7 +727,7 @@ export const UI = {
         short: "Ruhiges, romantisches kleines Chalet unter Palmen. Klimaanlage, privates Bad, Terrasse. Twin/King.",
         details: [
           "Ruhige Lage unter Palmen • Klimaanlage",
-          "Privates Bad (Dusche, Waschbecken, WC)",
+          "En-suite-Bad (Dusche, Waschbecken, WC)",
           "Twin/Kingbett und Nachttische",
           "Private Terrasse mit Palmblatt-Stühlen"
         ],
@@ -812,25 +812,25 @@ export const UI = {
           "Dos camas individuales (o king) con mesitas y lámparas",
           "Mosquitera • ventilador potente • enchufes",
           "Terraza privada con sillas de hojas de palma",
-          "Instalaciones compartidas: duchas calientes/frías e inodoros"
+          "Los huéspedes de la Tienda Safari utilizan instalaciones de baño compartidas con secciones separadas para mujeres y hombres. Cada sección tiene dos inodoros y dos duchas."
         ],
       },
       comfort: {
         title: "Tienda Comfort",
-        short: "Tienda espaciosa mejorada con baño privado, cama twin/king y terraza.",
+        short: "Tienda espaciosa mejorada con baño privado en una cabaña de paja adyacente, cama twin/king y terraza.",
         details: [
           "Configuración de cama twin/king con iluminación práctica",
           "Mesa, sillas • terraza (con sillas)",
-          "Baño privado en cabaña con techo de paja"
+          "Su baño privado se encuentra en un rondavel de paja adyacente, al que se accede desde la puerta trasera de la tienda por una corta conexión privada."
         ],
       },
       cottage: {
         title: "Cottage de Jardín",
-        short: "Cottage espacioso con cama king, AC inverter, escritorio y mesa de comedor, terraza privada y baño de cabaña.",
+        short: "Cottage espacioso con cama king, AC inverter, escritorio y mesa de comedor, terraza privada y baño en-suite en un rondavel de paja adyacente.",
         details: [
           "Cama king • escritorio y mesa de comedor",
           "AC inverter (enfriamiento/calefacción) • luz principal regulable",
-          "Baño de cabaña (ducha, lavabo, inodoro)",
+          "Su baño privado en-suite se encuentra en un rondavel de paja adyacente, al que se accede directamente desde la puerta trasera del dormitorio.",
           "Terraza de madera con sillas de camping"
         ],
       },
@@ -839,7 +839,7 @@ export const UI = {
         short: "Pequeño chalet tranquilo y romántico bajo palmeras. AC, baño privado, terraza. Twin/king.",
         details: [
           "Ubicación tranquila bajo palmeras • AC",
-          "Baño privado (ducha, lavabo, inodoro)",
+          "Baño en-suite (ducha, lavabo, inodoro)",
           "Cama twin/king y mesitas",
           "Terraza privada con sillas de hojas de palma"
         ],
@@ -1068,25 +1068,25 @@ export const UI = {
         details: [
           "ツイン/キングベッド • ベッドサイドテーブル",
           "砂の上にココナッツマット • パティオチェア",
-          "共有施設：温冷シャワーとトイレ"
+          "サファリテントのお客様は共有バスルーム施設をご利用いただきます。女性用と男性用に分かれており、それぞれにシャワーが2つとトイレが2つあります。"
         ],
       },
       comfort: {
         title: "コンフォートテント",
-        short: "プライベートバスルーム、ツイン/キングベッド、パティオ付きの広々としたアップグレードテント。",
+        short: "隣接する茅葺きロンダベルにプライベートバスルームを備えた広々としたアップグレードテント。ツイン/キングベッドとパティオ付き。",
         details: [
           "ツイン/キングベッド • ベッドサイドテーブル",
           "テーブル、椅子 • パティオ（椅子付き）",
-          "茅葺き小屋内のプライベートバスルーム"
+          "プライベートバスルームは隣接する茅葺きロンダベルにあり、テントの後ろドアから短い専用通路を通ってアクセスできます。"
         ],
       },
       cottage: {
         title: "ガーデンコテージ",
-        short: "キングベッド、インバーターエアコン、デスク、ダイニングテーブル、プライベートパティオ、小屋のバスルーム付きの広々としたコテージ。",
+        short: "キングベッド、インバーターエアコン、デスク、ダイニングテーブル、プライベートパティオ、隣接する茅葺きロンダベルのエンスイートバスルーム付きの広々としたコテージ。",
         details: [
           "キングベッド • デスク＆ダイニングテーブル",
           "インバーターエアコン（冷暖房）• 調光可能なメインライト",
-          "小屋のバスルーム（シャワー、洗面台、トイレ）",
+          "プライベートエンスイートバスルームは隣接する茅葺きロンダベルにあり、寝室の後ろドアから直接アクセスできます。",
           "キャンプ用椅子付きの木製デッキ"
         ],
       },
@@ -1095,7 +1095,7 @@ export const UI = {
         short: "静かでロマンチックな小さなシャレー。エアコン、プライベートバスルーム、パティオ。ツイン/キング。",
         details: [
           "ヤシの木の下の静かな場所 • エアコン",
-          "プライベートバスルーム（シャワー、洗面台、トイレ）",
+          "エンスイートバスルーム（シャワー、洗面台、トイレ）",
           "ツイン/キングベッド＆ベッドサイドテーブル",
           "ヤシの葉チェア付きのプライベートパティオ"
         ],
@@ -1505,28 +1505,28 @@ export const L10N = {
           "Duas camas individuais (ou King) com mesas de cabeceira e candeeiros",
           "Rede mosquiteira • ventoinha potente • tomadas",
           "Terraço privado com cadeiras de folhas de palmeira",
-          "Instalações partilhadas: duches quente/frio e sanitários",
+          "Os hóspedes da Tenda Safari utilizam casas de banho partilhadas com secções separadas para senhoras e homens. Cada secção tem dois sanitários e dois duches.",
         ],
       },
       comfort: {
         title: "Tenda Conforto",
         short:
-          "Tenda de 12 m² com mais privacidade (paredes laterais/traseiras), terraço privado e casa de banho privativa sob teto de colmo.",
+          "Tenda de 12 m² com mais privacidade (paredes laterais/traseiras), terraço privado e casa de banho privativa em rondavel de colmo adjacente.",
         details: [
           "Configuração Twin/King com iluminação prática",
           "Rede mosquiteira • ventoinha potente • tomadas",
           "Terraço de madeira com cadeiras",
-          "Casa de banho privativa (duche, sanita, lavatório) sob teto de colmo",
+          "A sua casa de banho privativa está alojada num rondavel de colmo adjacente, acessível pela porta traseira da tenda através de uma ligação privada curta.",
         ],
       },
       cottage: {
         title: "Chalé Jardim",
         short:
-          "Chalé arejado com cama queen, AC Inverter for cooling & heating, secretária e mesa, terraço privado e casa de banho em rondavel.",
+          "Chalé arejado com cama queen, AC Inverter for cooling & heating, secretária e mesa, terraço privado e casa de banho en-suite em rondavel de colmo adjacente.",
         details: [
           "Cama queen • secretária e mesa de jantar",
           "AC Inverter for cooling & heating • luz regulável",
-          "Casa de banho em rondavel (duche, lavatório, sanita)",
+          "A sua casa de banho privativa en-suite está alojada num rondavel de colmo adjacente e é acessível diretamente pela porta traseira do quarto.",
           "Terraço de madeira com cadeiras",
         ],
       },
@@ -1536,7 +1536,7 @@ export const L10N = {
           "Pequeno chalé romântico entre palmeiras. AC Inverter for cooling & heating, casa de banho privada, terraço, Twin/King.",
         details: [
           "Ambiente tranquilo sob palmeiras • ar-condicionado",
-          "Casa de banho privativa (duche, lavatório, sanita)",
+          "Casa de banho en-suite (duche, lavatório, sanita)",
           "Camas Twin/King com mesas de cabeceira",
           "Terraço privado com cadeiras de palha",
         ],
@@ -1563,28 +1563,28 @@ export const L10N = {
           "Twee eenpersoonsbedden (of King) met nachtkastjes en lampen",
           "Muskietengaas • krachtige ventilator • stopcontacten",
           "Privéterras met stoelen van palmblad",
-          "Gedeelde douches (warm/koud) en toiletten",
+          "Safaritentgasten gebruiken gedeelde badkamervoorzieningen met aparte dames- en herensecties. Elke sectie heeft twee toiletten en twee douches.",
         ],
       },
       comfort: {
         title: "Comforttent",
         short:
-          "Verbeterde 12 m² tent met extra privacy (zij/achterwanden), privéterras en eigen badkamer onder rieten dak.",
+          "Verbeterde 12 m² tent met extra privacy (zij/achterwanden), privéterras en eigen badkamer in een aangrenzende rieten rondavel.",
         details: [
           "Twin/King opstelling met handige verlichting",
           "Muskietengaas • krachtige ventilator • stopcontacten",
           "Houten terras met stoelen",
-          "Eigen badkamer (douche, toilet, wastafel) onder rieten dak",
+          "Uw privébadkamer bevindt zich in een aangrenzende rieten rondavel, bereikbaar via de achterdeur van de tent door een korte privéverbinding.",
         ],
       },
       cottage: {
         title: "Tuincottage",
         short:
-          "Luchtige cottage met queensbed, AC Inverter for cooling & heating, bureau & eettafel, privéterras en badkamer in rondavel.",
+          "Luchtige cottage met queensbed, AC Inverter for cooling & heating, bureau & eettafel, privéterras en en-suite badkamer in een aangrenzende rieten rondavel.",
         details: [
           "Queensbed • bureau en eettafel",
           "AC Inverter for cooling & heating • dimbare hoofdverlichting",
-          "Badkamer in rondavel (douche, wastafel, toilet)",
+          "Uw privé en-suite badkamer bevindt zich in een aangrenzende rieten rondavel, direct toegankelijk via de achterdeur van de slaapkamer.",
           "Houten terras met kampeerstoelen",
         ],
       },
@@ -1594,7 +1594,7 @@ export const L10N = {
           "Afgelegen, romantisch tiny chalet onder palmen. AC Inverter for cooling & heating, privébadkamer, terras, Twin/King.",
         details: [
           "Rustige omgeving onder palmen • airconditioning",
-          "Privébadkamer (douche, wastafel, toilet)",
+          "En-suite badkamer (douche, wastafel, toilet)",
           "Twin/King bedden met nachtkastjes",
           "Privéterras met palmbladstoelen",
         ],
@@ -1621,28 +1621,28 @@ export const L10N = {
           "Deux lits simples (ou King) avec chevets et lampes",
           "Moustiquaire • ventilateur puissant • prises électriques",
           "Terrasse privée avec chaises en feuilles de palmier",
-          "Sanitaires partagés (douches chaudes/froides, toilettes)",
+          "Les clients de la Tente Safari utilisent des sanitaires communs avec des sections séparées pour femmes et hommes. Chaque section dispose de deux toilettes et de deux douches.",
         ],
       },
       comfort: {
         title: "Tente Confort",
         short:
-          "Tente 12 m² améliorée avec plus d'intimité (parois latérales/arrière), terrasse privée et salle de bain privative sous toit de chaume.",
+          "Tente 12 m² améliorée avec plus d'intimité (parois latérales/arrière), terrasse privée et salle de bain privative dans un rondavel en chaume attenant.",
         details: [
           "Configuration Twin/King avec éclairage pratique",
           "Moustiquaire • ventilateur puissant • prises",
           "Terrasse en bois avec chaises",
-          "Salle de bain privée (douche, WC, lavabo) sous toit de chaume",
+          "Votre salle de bain privée se trouve dans un rondavel en chaume attenant, accessible depuis la porte arrière de la tente via une courte liaison privée.",
         ],
       },
       cottage: {
         title: "Cottage Jardin",
         short:
-          "Cottage aéré avec lit queen, AC Inverter for cooling & heating, bureau & table à manger, terrasse privée et salle de bain dans rondavel.",
+          "Cottage aéré avec lit queen, AC Inverter for cooling & heating, bureau & table à manger, terrasse privée et salle de bain en-suite dans un rondavel en chaume attenant.",
         details: [
           "Lit queen • bureau et table à manger",
           "AC Inverter for cooling & heating inverter (chaud/froid) • éclairage tamisable",
-          "Salle de bain dans rondavel (douche, lavabo, WC)",
+          "Votre salle de bain privée en-suite se trouve dans un rondavel en chaume attenant, directement accessible par la porte arrière de la chambre.",
           "Terrasse en bois avec chaises de camping",
         ],
       },
@@ -1652,7 +1652,7 @@ export const L10N = {
           "Petit chalet romantique isolé sous les palmiers. AC Inverter for cooling & heating, salle de bain privée, terrasse, Twin/King.",
         details: [
           "Cadre tranquille sous les palmiers • climatisation",
-          "Salle de bain privée (douche, lavabo, WC)",
+          "Salle de bain en-suite (douche, lavabo, WC)",
           "Lits Twin/King avec chevets",
           "Terrasse privée avec chaises en feuilles de palmier",
         ],
@@ -1679,28 +1679,28 @@ export const L10N = {
           "Due letti singoli (o King) con comodini e lampade",
           "Zanzariera • ventilatore potente • prese",
           "Terrazza privata con sedie di foglie di palma",
-          "Bagni condivisi (docce calde/fredde, servizi igienici)",
+          "Gli ospiti della Tenda Safari utilizzano servizi igienici condivisi con sezioni separate per donne e uomini. Ogni sezione dispone di due toilette e due docce.",
         ],
       },
       comfort: {
         title: "Tenda Comfort",
         short:
-          "Tenda 12 m² migliorata con maggiore privacy (pareti laterali/posteriori), terrazza privata e bagno privato sotto tetto di paglia.",
+          "Tenda 12 m² migliorata con maggiore privacy (pareti laterali/posteriori), terrazza privata e bagno privato in un rondavel di paglia adiacente.",
         details: [
           "Configurazione Twin/King con illuminazione pratica",
           "Zanzariera • ventilatore potente • prese",
           "Terrazza in legno con sedie",
-          "Bagno privato (doccia, WC, lavabo) sotto tetto di paglia",
+          "Il vostro bagno privato si trova in un rondavel di paglia adiacente, raggiungibile dalla porta posteriore della tenda tramite un breve collegamento privato.",
         ],
       },
       cottage: {
         title: "Cottage Giardino",
         short:
-          "Cottage arioso con letto queen, AC Inverter for cooling & heating, scrivania e tavolo da pranzo, terrazza privata e bagno in rondavel.",
+          "Cottage arioso con letto queen, AC Inverter for cooling & heating, scrivania e tavolo da pranzo, terrazza privata e bagno en-suite in un rondavel di paglia adiacente.",
         details: [
           "Letto queen • scrivania e tavolo da pranzo",
           "AC Inverter for cooling & heating inverter (freddo/caldo) • luce dimmerabile",
-          "Bagno in rondavel (doccia, lavabo, WC)",
+          "Il vostro bagno privato en-suite si trova in un rondavel di paglia adiacente, accessibile direttamente dalla porta posteriore della camera da letto.",
           "Terrazza in legno con sedie da campeggio",
         ],
       },
@@ -1710,7 +1710,7 @@ export const L10N = {
           "Piccolo chalet romantico appartato sotto le palme. AC Inverter for cooling & heating, bagno privato, terrazza, Twin/King.",
         details: [
           "Ambiente tranquillo sotto le palme • aria condizionata",
-          "Bagno privato (doccia, lavabo, WC)",
+          "Bagno en-suite (doccia, lavabo, WC)",
           "Letti Twin/King con comodini",
           "Terrazza privata con sedie di foglie di palma",
         ],
@@ -1737,28 +1737,28 @@ export const L10N = {
           "Zwei Einzelbetten (oder King) mit Nachttischen und Lampen",
           "Moskitonetz • starker Ventilator • Steckdosen",
           "Private Terrasse mit Palmblatt-Stühlen",
-          "Gemeinschaftsbäder (warme/kalte Duschen, Toiletten)",
+          "Safari-Zeltgäste nutzen Gemeinschaftsbäder mit separaten Bereichen für Damen und Herren. Jeder Bereich verfügt über zwei Toiletten und zwei Duschen.",
         ],
       },
       comfort: {
         title: "Komfortzelt",
         short:
-          "Verbessertes 12 m² Zelt mit mehr Privatsphäre (Seiten-/Rückwände), privater Terrasse und eigenem Bad unter Reetdach.",
+          "Verbessertes 12 m² Zelt mit mehr Privatsphäre (Seiten-/Rückwände), privater Terrasse und eigenem Bad in einem angrenzenden Reetdach-Rondavel.",
         details: [
           "Twin/King-Aufstellung mit praktischer Beleuchtung",
           "Moskitonetz • starker Ventilator • Steckdosen",
           "Holzterrasse mit Stühlen",
-          "Eigenes Bad (Dusche, WC, Waschbecken) unter Reetdach",
+          "Ihr privates Bad befindet sich in einem angrenzenden Reetdach-Rondavel, zugänglich von der Hintertür des Zeltes über eine kurze private Verbindung.",
         ],
       },
       cottage: {
         title: "Garten-Cottage",
         short:
-          "Luftiges Cottage mit Queensbett, AC Inverter for cooling & heating (Inverter), Schreibtisch & Esstisch, privater Terrasse und Bad im Rondavel.",
+          "Luftiges Cottage mit Queensbett, AC Inverter for cooling & heating (Inverter), Schreibtisch & Esstisch, privater Terrasse und En-suite-Bad in einem angrenzenden Reetdach-Rondavel.",
         details: [
           "Queensbett • Schreibtisch und Esstisch",
           "Inverter-AC Inverter for cooling & heating (kühl/warm) • dimmbare Hauptbeleuchtung",
-          "Bad im Rondavel (Dusche, Waschbecken, WC)",
+          "Ihr privates En-suite-Bad befindet sich in einem angrenzenden Reetdach-Rondavel und ist direkt über die Hintertür des Schlafzimmers zugänglich.",
           "Holzterrasse mit Campingstühlen",
         ],
       },
@@ -1768,7 +1768,7 @@ export const L10N = {
           "Abgeschiedenes, romantisches Tiny-Chalet unter Palmen. AC Inverter for cooling & heating, eigenes Bad, Terrasse, Twin/King.",
         details: [
           "Ruhige Umgebung unter Palmen • Klimaanlage",
-          "Eigenes Bad (Dusche, Waschbecken, WC)",
+          "En-suite-Bad (Dusche, Waschbecken, WC)",
           "Twin/King-Betten mit Nachttischen",
           "Private Terrasse mit Palmblatt-Stühlen",
         ],
@@ -1795,28 +1795,28 @@ export const L10N = {
           "Dos camas individuales (o King) con mesitas de noche y lámparas",
           "Mosquitera • ventilador potente • enchufes",
           "Terraza privada con sillas de hojas de palma",
-          "Baños compartidos (duchas calientes/frías, aseos)",
+          "Los huéspedes de la Tienda Safari utilizan instalaciones de baño compartidas con secciones separadas para mujeres y hombres. Cada sección tiene dos inodoros y dos duchas.",
         ],
       },
       comfort: {
         title: "Tienda Confort",
         short:
-          "Tienda mejorada de 12 m² con más privacidad (paredes laterales/traseras), terraza privada y baño privado bajo techo de paja.",
+          "Tienda mejorada de 12 m² con más privacidad (paredes laterales/traseras), terraza privada y baño privado en un rondavel de paja adyacente.",
         details: [
           "Configuración Twin/King con iluminación práctica",
           "Mosquitera • ventilador potente • enchufes",
           "Terraza de madera con sillas",
-          "Baño privado (ducha, WC, lavabo) bajo techo de paja",
+          "Su baño privado se encuentra en un rondavel de paja adyacente, al que se accede desde la puerta trasera de la tienda por una corta conexión privada.",
         ],
       },
       cottage: {
         title: "Cottage Jardín",
         short:
-          "Cottage aireado con cama queen, AC Inverter for cooling & heating, escritorio y mesa, terraza privada y baño en rondavel.",
+          "Cottage aireado con cama queen, AC Inverter for cooling & heating, escritorio y mesa, terraza privada y baño en-suite en un rondavel de paja adyacente.",
         details: [
           "Cama queen • escritorio y mesa de comedor",
           "AC Inverter for cooling & heating inverter (frío/calor) • luz regulable",
-          "Baño en rondavel (ducha, lavabo, WC)",
+          "Su baño privado en-suite se encuentra en un rondavel de paja adyacente, al que se accede directamente desde la puerta trasera del dormitorio.",
           "Terraza de madera con sillas de camping",
         ],
       },
@@ -1826,7 +1826,7 @@ export const L10N = {
           "Pequeño chalet romántico aislado bajo palmeras. AC Inverter for cooling & heating, baño privado, terraza, Twin/King.",
         details: [
           "Entorno tranquilo bajo palmeras • aire acondicionado",
-          "Baño privado (ducha, lavabo, WC)",
+          "Baño en-suite (ducha, lavabo, WC)",
           "Camas Twin/King con mesitas de noche",
           "Terraza privada con sillas de hojas de palma",
         ],
@@ -1853,28 +1853,28 @@ export const L10N = {
           "Två enkelsängar (eller King) med sängbord och lampor",
           "Myggnät • kraftfull fläkt • eluttag",
           "Privat uteplats med palmblads-stolar",
-          "Delade badrum (varma/kalla duschar, toaletter)",
+          "Safaritältsgäster använder gemensamma badrumsanläggningar med separata dam- och herrsektioner. Varje sektion har två toaletter och två duschar.",
         ],
       },
       comfort: {
         title: "Komforttält",
         short:
-          "Förbättrat 12 m² tält med mer avskildhet (sido-/bak-väggar), privat uteplats och eget badrum under halmtak.",
+          "Förbättrat 12 m² tält med mer avskildhet (sido-/bak-väggar), privat uteplats och eget badrum i ett angränsande halmtaks-rondavel.",
         details: [
           "Twin/King-konfiguration med praktisk belysning",
           "Myggnät • kraftfull fläkt • eluttag",
           "Träterrass med stolar",
-          "Eget badrum (dusch, toalett, handfat) under halmtak",
+          "Ditt privata badrum finns i ett angränsande halmtaks-rondavel, nått via tältets bakdörr genom en kort privat förbindelse.",
         ],
       },
       cottage: {
         title: "Trädgårdsstuga",
         short:
-          "Luftig stuga med queen-säng, AC (inverter), skrivbord & matbord, privat uteplats och badrum i rondavel.",
+          "Luftig stuga med queen-säng, AC (inverter), skrivbord & matbord, privat uteplats och en-suite badrum i ett angränsande halmtaks-rondavel.",
         details: [
           "Queen-säng • skrivbord och matbord",
           "Inverter-AC (kyla/värme) • dimbar huvudbelysning",
-          "Badrum i rondavel (dusch, handfat, toalett)",
+          "Ditt privata en-suite badrum finns i ett angränsande halmtaks-rondavel och nås direkt via sovrummets bakdörr.",
           "Träterrass med campingstolar",
         ],
       },
@@ -1884,7 +1884,7 @@ export const L10N = {
           "Avskild, romantisk liten chalet under palmer. AC, eget badrum, uteplats, Twin/King.",
         details: [
           "Lugn miljö under palmer • luftkonditionering",
-          "Eget badrum (dusch, handfat, toalett)",
+          "En-suite badrum (dusch, handfat, toalett)",
           "Twin/King-sängar med sängbord",
           "Privat uteplats med palmblads-stolar",
         ],
@@ -1911,28 +1911,28 @@ export const L10N = {
           "Dwa pojedyncze łóżka (lub King) ze stolikami nocnymi i lampami",
           "Moskitiera • mocny wentylator • gniazdka elektryczne",
           "Prywatny taras z krzesłami z liści palmowych",
-          "Wspólne łazienki (ciepłe/zimne prysznice, toalety)",
+          "Goście Namiotu Safari korzystają ze wspólnych łazienek z oddzielnymi sekcjami dla kobiet i mężczyzn. Każda sekcja ma dwie toalety i dwa prysznice.",
         ],
       },
       comfort: {
         title: "Namiot Komfort",
         short:
-          "Ulepszony namiot 12 m² z większą prywatnością (ściany boczne/tylne), prywatny taras i prywatna łazienka pod strzechą.",
+          "Ulepszony namiot 12 m² z większą prywatnością (ściany boczne/tylne), prywatny taras i prywatna łazienka w przyległym krytym strzechą rondavelu.",
         details: [
           "Konfiguracja Twin/King z praktycznym oświetleniem",
           "Moskitiera • mocny wentylator • gniazdka",
           "Drewniany taras z krzesłami",
-          "Prywatna łazienka (prysznic, toaleta, umywalka) pod strzechą",
+          "Prywatna łazienka mieści się w przyległym krytym strzechą rondavelu, dostępnym od tylnych drzwi namiotu przez krótkie prywatne połączenie.",
         ],
       },
       cottage: {
         title: "Domek Ogrodowy",
         short:
-          "Przestronny domek z łóżkiem queen, klimatyzacja (inwerterowa), biurko i stół jadalny, prywatny taras i łazienka w rondavelu.",
+          "Przestronny domek z łóżkiem queen, klimatyzacja (inwerterowa), biurko i stół jadalny, prywatny taras i łazienka en-suite w przyległym krytym strzechą rondavelu.",
         details: [
           "Łóżko queen • biurko i stół jadalny",
           "Klimatyzacja inwerterowa (chłodzenie/grzanie) • przyciemniane oświetlenie główne",
-          "Łazienka w rondavelu (prysznic, umywalka, toaleta)",
+          "Prywatna łazienka en-suite mieści się w przyległym krytym strzechą rondavelu, dostępnym bezpośrednio przez tylne drzwi sypialni.",
           "Drewniany taras z krzesłami kempingowymi",
         ],
       },
@@ -1942,7 +1942,7 @@ export const L10N = {
           "Zaciszna, romantyczna mała chata pod palmami. Klimatyzacja, prywatna łazienka, taras, Twin/King.",
         details: [
           "Spokojna okolica pod palmami • klimatyzacja",
-          "Prywatna łazienka (prysznic, umywalka, toaleta)",
+          "Łazienka en-suite (prysznic, umywalka, toaleta)",
           "Łóżka Twin/King ze stolikami nocnymi",
           "Prywatny taras z krzesłami z liści palmowych",
         ],
@@ -1971,25 +1971,25 @@ export const L10N = {
         details: [
           "ツイン/クイーンベッド • ベッドサイドテーブル",
           "砂床にコイアマット • パティオチェア",
-          "敷地内の共有バスルーム（シャワー、トイレ、洗面台）",
+          "サファリテントのお客様は共有バスルーム施設をご利用いただきます。女性用と男性用に分かれており、それぞれにシャワーが2つとトイレが2つあります。",
         ],
       },
       comfort: {
         title: "コンフォートテント",
-        short: "プライベートバスルーム、ツイン/キングベッド、パティオを備えた広々としたアップグレードテント。",
+        short: "隣接する茅葺きロンダベルにプライベートバスルームを備えた広々としたアップグレードテント。ツイン/キングベッドとパティオ付き。",
         details: [
           "ツイン/キングベッド • ベッドサイドテーブル",
           "テーブル、椅子 • パティオ（椅子付き）",
-          "茅葺き屋根のロンダベルのプライベートバスルーム（シャワー、トイレ、洗面台）",
+          "プライベートバスルームは隣接する茅葺きロンダベルにあり、テントの後ろドアから短い専用通路を通ってアクセスできます。",
         ],
       },
       cottage: {
         title: "ガーデンコテージ",
-        short: "クイーンベッド、インバーターエアコン、デスク＆ダイニングテーブル、専用テラス＆ロンダベルバスルームを備えた広々としたコテージ。",
+        short: "クイーンベッド、インバーターエアコン、デスク＆ダイニングテーブル、専用テラス、隣接する茅葺きロンダベルのエンスイートバスルームを備えた広々としたコテージ。",
         details: [
           "クイーンベッド • デスク＆ダイニングテーブル",
           "インバーターエアコン（冷暖房）• 調光可能メイン照明",
-          "ロンダベルのバスルーム（シャワー、洗面台、トイレ）",
+          "プライベートエンスイートバスルームは隣接する茅葺きロンダベルにあり、寝室の後ろドアから直接アクセスできます。",
           "キャンプチェア付き木製デッキ",
         ],
       },
@@ -1998,7 +1998,7 @@ export const L10N = {
         short: "静かでロマンチックなヤシの木の下の小さなシャレー。エアコン、専用バスルーム、テラス付き。ツイン/キング。",
         details: [
           "ヤシの木の下の静かな場所 • エアコン",
-          "専用バスルーム（シャワー、洗面台、トイレ）",
+          "エンスイートバスルーム（シャワー、洗面台、トイレ）",
           "ツイン/キングベッド＆ベッドサイドテーブル",
           "ヤシの葉の椅子付き専用テラス",
         ],
@@ -2080,25 +2080,25 @@ export const L10N = {
         details: [
           "双床/大床 • 床头柜",
           "椰壳垫在沙地上 • 露台椅",
-          "场内共享浴室（淋浴、厕所、盥洗池）",
+          "Safari帐篷的宾客使用公共浴室设施，男女分区。每个区域设有两个卫生间和两个淋浴间。",
         ],
       },
       comfort: {
         title: "舒适帐篷",
-        short: "宽敞的升级帐篷，配有私人浴室、双床/特大床和露台。",
+        short: "宽敞的升级帐篷，配有毗邻茅草顶rondavel中的私人浴室、双床/特大床和露台。",
         details: [
           "双床/特大床 • 床头柜",
           "桌子、椅子 • 露台（带椅子）",
-          "茅草屋顶小屋内的私人浴室（淋浴、厕所、盥洗池）",
+          "您的私人浴室设于毗邻的茅草顶rondavel中，从帐篷后门经短暂的私人通道可达。",
         ],
       },
       cottage: {
         title: "花园别墅",
-        short: "宽敞的别墅，配有大床、变频空调、办公桌和餐桌、私人露台和小屋浴室。",
+        short: "宽敞的别墅，配有大床、变频空调、办公桌和餐桌、私人露台及毗邻茅草顶rondavel中的套间浴室。",
         details: [
           "大床 • 办公桌和餐桌",
           "变频空调（制冷/制热）• 可调光主灯",
-          "小屋浴室（淋浴、盥洗池、厕所）",
+          "您的私人套间浴室设于毗邻的茅草顶rondavel中，可直接从卧室后门进入。",
           "配有露营椅的木质平台",
         ],
       },
@@ -2107,7 +2107,7 @@ export const L10N = {
         short: "安静、浪漫的棕榈树下小木屋。配空调、私人浴室、露台。双床/特大床。",
         details: [
           "棕榈树下的安静位置 • 空调",
-          "私人浴室（淋浴、盥洗池、厕所）",
+          "套间浴室（淋浴、盥洗池、厕所）",
           "双床/特大床和床头柜",
           "配棕榈叶椅的私人露台",
         ],
@@ -2201,25 +2201,25 @@ export const L10N = {
         details: [
           "Двуспальные/большие кровати • прикроватные тумбочки",
           "Кокосовый коврик на песке • стулья для патио",
-          "Общая ванная комната на территории (душ, туалет, раковина)",
+          "Гости сафари-палатки пользуются общими ванными комнатами с отдельными секциями для женщин и мужчин. В каждой секции два туалета и два душа.",
         ],
       },
       comfort: {
         title: "Палатка Comfort",
-        short: "Просторная улучшенная палатка с отдельной ванной комнатой, двуспальными/king-size кроватями и патио.",
+        short: "Просторная улучшенная палатка с отдельной ванной комнатой в соседнем ронда́веле с соломенной крышей, двуспальными/king-size кроватями и патио.",
         details: [
           "Двуспальные/king-size кровати • прикроватные тумбочки",
           "Стол, стулья • патио (со стульями)",
-          "Отдельная ванная комната в хижине с соломенной крышей (душ, туалет, раковина)",
+          "Ваша отдельная ванная комната расположена в соседнем ронда́веле с соломенной крышей и доступна из задней двери палатки через короткий частный переход.",
         ],
       },
       cottage: {
         title: "Садовый коттедж",
-        short: "Просторный коттедж с большой кроватью, инверторным кондиционером, рабочим столом и обеденным столом, отдельной террасой и ванной комнатой в хижине.",
+        short: "Просторный коттедж с большой кроватью, инверторным кондиционером, рабочим столом и обеденным столом, отдельной террасой и ванной комнатой en-suite в соседнем ронда́веле с соломенной крышей.",
         details: [
           "Большая кровать • рабочий и обеденный столы",
           "Инверторный кондиционер (охлаждение/обогрев) • диммируемое основное освещение",
-          "Ванная комната в хижине (душ, раковина, туалет)",
+          "Ваша отдельная ванная комната en-suite расположена в соседнем ронда́веле с соломенной крышей и доступна непосредственно через заднюю дверь спальни.",
           "Деревянная терраса с походными стульями",
         ],
       },
@@ -2228,7 +2228,7 @@ export const L10N = {
         short: "Тихое, романтическое маленькое шале под пальмами. Кондиционер, отдельная ванная, терраса. Двуспальные/King-size.",
         details: [
           "Тихое расположение под пальмами • кондиционер",
-          "Отдельная ванная комната (душ, раковина, туалет)",
+          "Ванная комната en-suite (душ, раковина, туалет)",
           "Двуспальные/King-size кровати и прикроватные тумбочки",
           "Отдельная терраса со стульями из пальмовых листьев",
         ],
@@ -2317,26 +2317,26 @@ export const L10N = {
           "Twee enkelbeddens (of King) met bedkassies en lampe",
           "Muskietnet • kragtige waaier • kragpunte",
           "Privaat terras met palmblaarstoeie",
-          "Gedeelde fasiliteite: warm/koue storte en toilette",
+          "Safari Tent-gaste gebruik gedeelde badkamerfasiliteite met aparte afdelings vir dames en here. Elke afdeling het twee toilette en twee storte.",
         ],
       },
       comfort: {
         title: "Comfort Tent",
-        short: "12 m² tent met meer privaatheid (sy/agterkant wande), privaat terras en privaat badkamer onder riettdak.",
+        short: "12 m² tent met meer privaatheid (sy/agterkant wande), privaat terras en privaat badkamer in 'n aangrensende riettdak-rondavel.",
         details: [
           "Twin/King opstelling met praktiese beligting",
           "Muskietnet • kragtige waaier • kragpunte",
           "Houterras met stoeie",
-          "Privaat badkamer (stort, toilet, wasbak) onder riettdak",
+          "Jou privaat badkamer is geleë in 'n aangrensende riettdak-rondavel, bereikbaar via die agterdeur van die tent deur 'n kort privaat verbinding.",
         ],
       },
       cottage: {
         title: "Tuin Kothuis",
-        short: "Lug kothuis met queen bed, AC Inverter for cooling & heating, lessenaar en tafel, privaat terras en badkamer in rondavel.",
+        short: "Lug kothuis met queen bed, AC Inverter for cooling & heating, lessenaar en tafel, privaat terras en en-suite badkamer in 'n aangrensende riettdak-rondavel.",
         details: [
           "Queen bed • lessenaar en eet-tafel",
           "AC Inverter for cooling & heating • dimbare lig",
-          "Rondavel badkamer (stort, wasbak, toilet)",
+          "Jou privaat en-suite badkamer is geleë in 'n aangrensende riettdak-rondavel en word direk via die agterdeur van die slaapkamer bereik.",
           "Houterras met kampeerstoeie",
         ],
       },
@@ -2345,7 +2345,7 @@ export const L10N = {
         short: "Stil, romantiese klein chalet tussen palmbome. AC Inverter for cooling & heating, privaat badkamer, terras, Twin/King.",
         details: [
           "Rustige omgewing onder palmbome • lugversorging",
-          "Privaat badkamer (stort, wasbak, toilet)",
+          "En-suite badkamer (stort, wasbak, toilet)",
           "Twin/King beddens met bedkassies",
           "Privaat terras met palmblaarstoeie",
         ],
@@ -2371,26 +2371,26 @@ export const L10N = {
           "Imibhede emibili eyodwa (noma i-King) enezitebhili eziseceleni nezibane",
           "Inet ye-mosquito • isiphephetha-moya esinamandla • izintambo zikagesi",
           "Idekhi yangasese enezitulo zezintende zephamu",
-          "Izinsiza zokuhlanganyela: izihlambi ezishisayo/ezibandayo nezindlu zangasese",
+          "Izivakashi zeTende leSafari zisebenzisa izinsizakusebenza zegumbi lokugezela elabiwe enezigceme ezihlukene zabesifazane nabesilisa. Isigceme ngasinye sinezindlu zangasese ezimbili nezihlambi ezimbili.",
         ],
       },
       comfort: {
         title: "Itende Lokunethezeka",
-        short: "Itende elingu-12 m² elinokuvikeleka okwengeziwe (izindonga eziphuma emaceleni/ngemuva), idekhi yangasese kanye nendawo yokugezela yangasese ngaphansi kophahla lwezintende.",
+        short: "Itende elingu-12 m² elinokuvikeleka okwengeziwe (izindonga eziphuma emaceleni/ngemuva), idekhi yangasese kanye nendawo yokugezela yangasese endlini ye-rondavel enesihlangu setshani eseduze.",
         details: [
           "Ukusetshenziswa kwe-Twin/King ngezibane ezisebenzayo",
           "Inet ye-mosquito • isiphephetha-moya esinamandla • izintambo zikagesi",
           "Idekhi yokhuni enezitulo",
-          "Indawo yokugezela yangasese (ishawa, indlu yangasese, usinki) ngaphansi kophahla lwezintende",
+          "Indawo yakho yokugezela yangasese isendlini ye-rondavel enesihlangu setshani eseduze, efinyelelwa ngomnyango wangemuva wetende ngokuxhumana okufushane okuzimele.",
         ],
       },
       cottage: {
         title: "Indlu Yengadi",
-        short: "Indlu enomoya enombhede we-queen, i-AC Inverter for cooling & heating, ideski netafula, idekhi yangasese kanye nendawo yokugezela e-rondavel.",
+        short: "Indlu enomoya enombhede we-queen, i-AC Inverter for cooling & heating, ideski netafula, idekhi yangasese kanye nendawo yokugezela ye-en-suite endlini ye-rondavel enesihlangu setshani eseduze.",
         details: [
           "Umbhede we-queen • ideski netafula lokudlela",
           "AC Inverter for cooling & heating • ukukhanya okuyinhloko okungaguquki",
-          "Indawo yokugezela ye-rondavel (ishawa, usinki, indlu yangasese)",
+          "Indawo yakho yokugezela yangasese ye-en-suite isendlini ye-rondavel enesihlangu setshani eseduze, ifinyelelwa ngokuqondile ngomnyango wangemuva wendlela yobuhlala.",
           "Idekhi yokhuni enezitulo zokukhempela",
         ],
       },
@@ -2399,7 +2399,7 @@ export const L10N = {
         short: "I-chalet encane, yothando phakathi kwezihlahla zesundu. AC Inverter for cooling & heating, indawo yokugezela yangasese, idekhi, i-Twin/King.",
         details: [
           "Indawo enokuthula ngaphansi kwezihlahla zesundu • i-air conditioning",
-          "Indawo yokugezela yangasese (ishawa, usinki, indlu yangasese)",
+          "Indawo yokugezela ye-en-suite (ishawa, usinki, indlu yangasese)",
           "Imibhede ye-Twin/King enezitebhili eziseceleni",
           "Idekhi yangasese enezitulo zezintende zephamu",
         ],
@@ -2461,26 +2461,26 @@ export const L10N = {
           "Vitanda viwili vya mtu mmoja (au King) vyenye meza za pembeni na taa",
           "Neti ya mbu • feni yenye nguvu • vifaa vya umeme",
           "Dekhi ya faragha yenye viti vya majani ya michikichi",
-          "Vifaa vya pamoja: bafu za maji ya moto/baridi na vyoo",
+          "Wageni wa Hema la Safari hutumia vifaa vya bafu vya pamoja vyenye sehemu tofauti za wanawake na wanaume. Kila sehemu ina vyoo viwili na bafu mbili.",
         ],
       },
       comfort: {
         title: "Hema la Starehe",
-        short: "Hema la 12 m² lenye faragha zaidi (kuta za pembeni/nyuma), dekhi ya faragha na bafu ya faragha chini ya paa la nyasi.",
+        short: "Hema la 12 m² lenye faragha zaidi (kuta za pembeni/nyuma), dekhi ya faragha na bafu ya faragha katika rondavel ya nyasi iliyo karibu.",
         details: [
           "Mpangilio wa Twin/King na taa za kitendo",
           "Neti ya mbu • feni yenye nguvu • vifaa vya umeme",
           "Dekhi ya mbao yenye viti",
-          "Bafu ya faragha (shawa, choo, sinki) chini ya paa la nyasi",
+          "Bafu yako ya faragha ipo katika rondavel ya nyasi iliyo karibu, inayofikiwa kutoka mlangoni wa nyuma wa hema kupitia njia fupi ya faragha.",
         ],
       },
       cottage: {
         title: "Nyumba ya Bustani",
-        short: "Nyumba yenye hewa safi na kitanda cha queen, AC Inverter for cooling & heating, dawati na meza, dekhi ya faragha na bafu katika rondavel.",
+        short: "Nyumba yenye hewa safi na kitanda cha queen, AC Inverter for cooling & heating, dawati na meza, dekhi ya faragha na bafu ya en-suite katika rondavel ya nyasi iliyo karibu.",
         details: [
           "Kitanda cha queen • dawati na meza ya kulia",
           "AC Inverter for cooling & heating • taa ya msingi inayoweza kubadilishwa",
-          "Bafu ya rondavel (shawa, sinki, choo)",
+          "Bafu yako ya faragha ya en-suite ipo katika rondavel ya nyasi iliyo karibu, inayofikiwa moja kwa moja kupitia mlango wa nyuma wa chumba cha kulala.",
           "Dekhi ya mbao yenye viti vya kambi",
         ],
       },
@@ -2489,7 +2489,7 @@ export const L10N = {
         short: "Chalet ndogo, ya kimapenzi kati ya miti ya michikichi. AC Inverter for cooling & heating, bafu ya faragha, dekhi, Twin/King.",
         details: [
           "Mazingira ya amani chini ya miti ya michikichi • AC Inverter for cooling & heating",
-          "Bafu ya faragha (shawa, sinki, choo)",
+          "Bafu ya en-suite (shawa, sinki, choo)",
           "Vitanda vya Twin/King vyenye meza za pembeni",
           "Dekhi ya faragha yenye viti vya majani ya michikichi",
         ],
