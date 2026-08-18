@@ -2,13 +2,28 @@ import { useState, memo } from 'react';
 import { useLocation } from 'wouter';
 import { Menu, Globe2 } from 'lucide-react';
 
+// Preload lazy route chunks on hover/focus so the module is cached before the click.
+// These mirror the lazy() calls in App.jsx — same module path hits the same browser cache.
+const preloadStory = () => import('./StoryPage').catch(() => {});
+const preloadMeals = () => import('./MealsPage').catch(() => {});
+
 import { IMG } from '../data/content';
 import { trackBookingSession } from '../utils/analytics';
 import LazyImage from './LazyImage';
 
 function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
+
+  // SPA navigation — prevents full page reload for internal routes.
+  // navigate() goes through the Router's useTransitionLocation hook so
+  // startTransition activates and the old route stays on screen while
+  // the new chunk loads (no blank intermediate frame).
+  const handleSpaNav = (e, path) => {
+    e.preventDefault();
+    navigate(path);
+    setMenuOpen(false);
+  };
 
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
@@ -144,9 +159,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
         <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <a
-              href={(isExperiencePage || isStandalonePage) ? '/#home' : '#home'}
+              href={(isExperiencePage || isStandalonePage) ? '/' : '#home'}
               className="flex items-center gap-3 text-slate-800"
-              onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#home')}
+              onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNav(e, '/') : (e) => handleNavClick(e, '#home')}
               data-testid="link-home-logo"
             >
               <LazyImage
@@ -165,9 +180,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             {/* Home */}
             <li>
               <a
-                href={(isExperiencePage || isStandalonePage) ? '/#home' : '#home'}
+                href={(isExperiencePage || isStandalonePage) ? '/' : '#home'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
-                onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#home')}
+                onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNav(e, '/') : (e) => handleNavClick(e, '#home')}
               >
                 {ui.nav.home}
               </a>
@@ -178,6 +193,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               <a
                 href={'/story'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
+                onClick={(e) => handleSpaNav(e, '/story')}
+                onMouseEnter={preloadStory}
+                onFocus={preloadStory}
               >
                 {ui.stay?.ourStory || "Our Story"}
               </a>
@@ -199,6 +217,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               <a
                 href={'/devocean-lodge-meals'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
+                onClick={(e) => handleSpaNav(e, '/devocean-lodge-meals')}
+                onMouseEnter={preloadMeals}
+                onFocus={preloadMeals}
               >
                 {ui.nav?.food || "Food"}
               </a>
@@ -253,10 +274,10 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
             >
               {/* Home */}
               <a
-                href={(isExperiencePage || isStandalonePage) ? '/#home' : "#home"}
+                href={(isExperiencePage || isStandalonePage) ? '/' : "#home"}
                 data-testid="link-mobile-home"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#home")}
+                onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNav(e, '/') : (e) => handleNavClick(e, "#home")}
                 tabIndex={menuOpen ? 0 : -1}
               >
                 {ui.nav.home}
@@ -267,7 +288,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 href={'/story'}
                 data-testid="link-mobile-story"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleSpaNav(e, '/story')}
+                onMouseEnter={preloadStory}
+                onFocus={preloadStory}
                 tabIndex={menuOpen ? 0 : -1}
               >
                 {ui.stay?.ourStory || "Our Story"}
@@ -289,7 +312,9 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 href={'/devocean-lodge-meals'}
                 data-testid="link-mobile-food"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => handleSpaNav(e, '/devocean-lodge-meals')}
+                onMouseEnter={preloadMeals}
+                onFocus={preloadMeals}
                 tabIndex={menuOpen ? 0 : -1}
               >
                 {ui.nav?.food || "Food"}

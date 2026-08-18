@@ -45,6 +45,22 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
+/* Route transition fade-in — applied via key={location} wrapper in App.jsx.
+   Rerenders on every pathname change, keeping the animation crisp.
+   No blank frame: opacity starts at 0 but duration is only 150ms. */
+@keyframes routeFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.route-fade-in {
+  animation: routeFadeIn 150ms ease-out both;
+  /* Replicate the flex column layout the outer wrapper provides so the
+     Switch children receive the same layout context they had before. */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

@@ -287,6 +287,11 @@ export default function App() {
       <Suspense fallback={
         <div className="flex-1 min-h-[50vh] bg-slate-50" />
       }>
+      {/* key=location remounts this div on every pathname change, restarting the
+          CSS fade-in animation. Combined with startTransition (old route stays
+          visible during chunk download), this ensures no blank or unstyled frame
+          is ever shown between pages. */}
+      <div key={location} className="route-fade-in">
       <Switch>
         {/* Our Story page */}
         <Route path="/story">
@@ -403,6 +408,7 @@ export default function App() {
           )}
         </Route>
       </Switch>
+      </div>
       </Suspense>
     </div>
     </Router>
