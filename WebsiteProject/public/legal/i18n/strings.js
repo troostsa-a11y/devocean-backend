@@ -293,7 +293,7 @@
           },
           checkinCheckout: {
             title: "Check-in/Check-out",
-            body: "Check-in: 2:00 PM | Check-out: 11:00 AM. Early/late requests subject to availability."
+            body: "Check-in: 2:00 PM | Check-out: 10:00 AM. Early/late requests subject to availability."
           },
           groupBookings: {
             title: "Group Bookings",
@@ -829,7 +829,7 @@
           },
           checkinCheckout: {
             title: "Prijava / odjava",
-            body: "Prijava: 14:00 | Odjava: 11:00. Raniji ili kasniji termini zavise od raspoloživosti."
+            body: "Prijava: 14:00 | Odjava: 10:00. Raniji ili kasniji termini zavise od raspoloživosti."
           },
           groupBookings: {
             title: "Grupne rezervacije",
@@ -1365,7 +1365,7 @@
           },
           checkinCheckout: {
             title: "Prijava / odjava",
-            body: "Prijava: 14:00 | Odjava: 11:00. Raniji ili kasniji termini ovise o raspoloživosti."
+            body: "Prijava: 14:00 | Odjava: 10:00. Raniji ili kasniji termini ovise o raspoloživosti."
           },
           groupBookings: {
             title: "Grupne rezervacije",
@@ -1901,7 +1901,7 @@
           },
           checkinCheckout: {
             title: "Příjezd / odjezd",
-            body: "Příjezd: 14:00 | Odjezd: 11:00. Dřívější nebo pozdější časy podléhají dostupnosti."
+            body: "Příjezd: 14:00 | Odjezd: 10:00. Dřívější nebo pozdější časy podléhají dostupnosti."
           },
           groupBookings: {
             title: "Skupinové rezervace",
@@ -2437,7 +2437,7 @@
           },
           checkinCheckout: {
             title: "Giriş / Çıkış",
-            body: "Giriş: 14:00 | Çıkış: 11:00. Erken veya geç saatler müsaitliğe tabidir."
+            body: "Giriş: 14:00 | Çıkış: 10:00. Erken veya geç saatler müsaitliğe tabidir."
           },
           groupBookings: {
             title: "Grup Rezervasyonları",
@@ -2973,7 +2973,7 @@
           },
           checkinCheckout: {
             title: "Check-in / check-out",
-            body: "Check-in: 14:00 | Check-out: 11:00. Orele mai devreme sau mai târzii sunt sub rezerva disponibilității."
+            body: "Check-in: 14:00 | Check-out: 10:00. Orele mai devreme sau mai târzii sunt sub rezerva disponibilității."
           },
           groupBookings: {
             title: "Rezervări de grup",
@@ -3415,7 +3415,7 @@
           },
           checkinCheckout: {
             title: "Check-in/Check-out",
-            body: "Check-in: 14:00 Uhr | Check-out: 11:00 Uhr. Frühe/späte Anfragen vorbehaltlich Verfügbarkeit."
+            body: "Check-in: 14:00 Uhr | Check-out: 10:00 Uhr. Frühe/späte Anfragen vorbehaltlich Verfügbarkeit."
           },
           groupBookings: {
             title: "Gruppenbuchungen",
@@ -3951,7 +3951,7 @@
           },
           checkinCheckout: {
             title: "Inchecken/Uitchecken",
-            body: "Inchecken: 14:00 uur | Uitchecken: 11:00 uur. Vroege/late verzoeken afhankelijk van beschikbaarheid."
+            body: "Inchecken: 14:00 uur | Uitchecken: 10:00 uur. Vroege/late verzoeken afhankelijk van beschikbaarheid."
           },
           groupBookings: {
             title: "Groepsboekingen",
@@ -4489,7 +4489,7 @@
           },
           checkinCheckout: {
             title: "Check-in/Check-out",
-            body: "Check-in: 14:00 | Check-out: 11:00. Pedidos de check-in antecipado/tardio sujeitos a disponibilidade."
+            body: "Check-in: 14:00 | Check-out: 10:00. Pedidos de check-in antecipado/tardio sujeitos a disponibilidade."
           },
           groupBookings: {
             title: "Reservas de Grupo",
@@ -5112,7 +5112,7 @@
           },
           checkinCheckout: {
             title: "Enregistrement/Départ",
-            body: "Enregistrement : 14h00 | Départ : 11h00. Demandes anticipées/tardives sous réserve de disponibilité."
+            body: "Enregistrement : 14h00 | Départ : 10h00. Demandes anticipées/tardives sous réserve de disponibilité."
           },
           groupBookings: {
             title: "Réservations de Groupe",
@@ -5599,7 +5599,7 @@
           },
           checkinCheckout: {
             title: "Check-in/Check-out",
-            body: "Check-in: ore 14:00 | Check-out: ore 11:00. Richieste anticipate/tardive soggette a disponibilità."
+            body: "Check-in: ore 14:00 | Check-out: ore 10:00. Richieste anticipate/tardive soggette a disponibilità."
           },
           groupBookings: {
             title: "Prenotazioni di Gruppo",
@@ -6086,7 +6086,7 @@
           },
           checkinCheckout: {
             title: "Entrada/Salida",
-            body: "Entrada: 14:00 | Salida: 11:00. Solicitudes tempranas/tardías sujetas a disponibilidad."
+            body: "Entrada: 14:00 | Salida: 10:00. Solicitudes tempranas/tardías sujetas a disponibilidad."
           },
           groupBookings: {
             title: "Reservas de Grupo",
@@ -6632,7 +6632,7 @@
           },
           checkinCheckout: {
             title: "Incheckning/Utcheckning",
-            body: "Incheckning: 14:00 | Utcheckning: 11:00. Tidiga/sena förfrågningar är föremål för tillgänglighet."
+            body: "Incheckning: 14:00 | Utcheckning: 10:00. Tidiga/sena förfrågningar är föremål för tillgänglighet."
           },
           groupBookings: {
             title: "Gruppbokningar",
@@ -7169,7 +7169,7 @@
           },
           checkinCheckout: {
             title: 'Zameldowanie/wymeldowanie',
-            body: 'Zameldowanie: 14:00 | Wymeldowanie: 11:00. Wczesne/późne prośby podlegają dostępności.'
+            body: 'Zameldowanie: 14:00 | Wymeldowanie: 10:00. Wczesne/późne prośby podlegają dostępności.'
           },
           groupBookings: {
             title: 'Rezerwacje grupowe',
@@ -7668,7 +7668,7 @@
           },
           checkinCheckout: {
             title: 'チェックイン/チェックアウト',
-            body: 'チェックイン：午後2:00 | チェックアウト：午前11:00。早朝/遅朝のリクエストは利用可能性の対象。'
+            body: 'チェックイン：午後2:00 | チェックアウト：午前10:00。早朝/遅朝のリクエストは利用可能性の対象。'
           },
           groupBookings: {
             title: 'グループ予約',
@@ -8180,7 +8180,7 @@
           },
           checkinCheckout: {
             title: '入住/退房',
-            body: '入住：下午2:00 | 退房：上午11:00。提前/延迟请求视可用性而定。'
+            body: '入住：下午2:00 | 退房：上午10:00。提前/延迟请求视可用性而定。'
           },
           groupBookings: {
             title: '团体预订',
@@ -8690,7 +8690,7 @@
               },
               checkinCheckout: {
                 title: 'Заезд/Выезд',
-                body: 'Заезд: 14:00 | Выезд: 11:00. Запросы на ранний заезд или поздний выезд зависят от наличия.'
+                body: 'Заезд: 14:00 | Выезд: 10:00. Запросы на ранний заезд или поздний выезд зависят от наличия.'
               },
               groupBookings: {
                 title: 'Групповые бронирования',
@@ -9240,7 +9240,7 @@
             },
             checkinCheckout: {
               title: "In- en Uitklok",
-              body: "Inklok: 14:00 | Uitklok: 11:00. Versoeke vir vroeë inklok of laat uitklok is onderhewig aan beskikbaarheid."
+              body: "Inklok: 14:00 | Uitklok: 10:00. Versoeke vir vroeë inklok of laat uitklok is onderhewig aan beskikbaarheid."
             },
             groupBookings: {
               title: "Groepbesprekings",
@@ -9779,7 +9779,7 @@
             },
             checkinCheckout: {
               title: "Ukungena/Ukuphuma",
-              body: "Ukungena: 2:00 PM | Ukuphuma: 11:00 AM. Izicelo zangaphambi kwesikhathi/ezasekuqaleni zixhomeke ekutholakaleni."
+              body: "Ukungena: 2:00 PM | Ukuphuma: 10:00 AM. Izicelo zangaphambi kwesikhathi/ezasekuqaleni zixhomeke ekutholakaleni."
             },
             groupBookings: {
               title: "Ukubhuka kweqembu",
@@ -10305,7 +10305,7 @@
             },
             checkinCheckout: {
               title: "Kuingia/Kutoka",
-              body: "Kuingia: 2:00 PM | Kutoka: 11:00 AM. Maombi ya kuingia mapema au kutoka kwa kuchelewa yanategemea upatikanaji."
+              body: "Kuingia: 2:00 PM | Kutoka: 10:00 AM. Maombi ya kuingia mapema au kutoka kwa kuchelewa yanategemea upatikanaji."
             },
             groupBookings: {
               title: "Uwekaji Nafasi wa Kikundi",
