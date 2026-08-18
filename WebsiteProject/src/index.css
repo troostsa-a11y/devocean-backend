@@ -45,34 +45,15 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
-/* Route transition fade-in — applied via key={location} wrapper in App.jsx.
-   Rerenders on every pathname change, keeping the animation crisp.
-   No blank frame: opacity starts at 0 but duration is only 150ms. */
-@keyframes routeFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
+/* Route container — provides the flex column layout the outer shell expects.
+   No opacity animation: startTransition keeps the outgoing page visible until
+   the incoming chunk is ready, so there is never a blank body beneath the
+   header. An opacity:0 fade-in would itself create the blank it is meant to
+   hide, because Vite bundles CSS with its chunk (no unstyled flash to mask). */
 .route-fade-in {
-  animation: routeFadeIn 150ms ease-out both;
-  /* Replicate the flex column layout the outer wrapper provides so the
-     Switch children receive the same layout context they had before. */
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-/* Back/forward navigation: suppress the entrance animation so history
-   traversal feels instant (the content was already seen). Set by the
-   popstate listener in App.jsx via data-nav-type="popstate" on <html>. */
-[data-nav-type="popstate"] .route-fade-in {
-  animation: none;
-}
-
-/* Honour the OS-level "reduce motion" preference. */
-@media (prefers-reduced-motion: reduce) {
-  .route-fade-in {
-    animation: none;
-  }
 }
 
 /* Smooth scrolling */

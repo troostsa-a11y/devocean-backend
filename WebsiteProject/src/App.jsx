@@ -155,11 +155,18 @@ export default function App() {
     // link to /book-direct → home could leave --stack-h on stale defaults.
   }, [location]);
 
-  // --- Back/forward animation suppression ---
-  // Set data-nav-type="popstate" on <html> BEFORE the location state changes so
-  // the CSS rule [data-nav-type="popstate"] .route-fade-in { animation:none } is
-  // already active when the new route div mounts. Cleared immediately after the
-  // location effect runs so subsequent forward-navigations animate normally.
+  // Eagerly preload primary navigation route chunks at app mount so that cold
+  // Story ↔ Food navigation never suspends. With these modules cached before
+  // any user interaction, startTransition can swap routes instantly rather than
+  // waiting for a network fetch — eliminating the blank body beneath the header.
+  useEffect(() => {
+    import('./components/StoryPage').catch(() => {});
+    import('./components/MealsPage').catch(() => {});
+  }, []);
+
+  // --- Back/forward: clear data-nav-type marker (animation suppression) ---
+  // The @keyframes animation was removed so this listener is now a no-op visually,
+  // but the marker is kept so the CSS rule can be reinstated cheaply if needed.
   useEffect(() => {
     const handler = () => {
       document.documentElement.dataset.navType = 'popstate';
