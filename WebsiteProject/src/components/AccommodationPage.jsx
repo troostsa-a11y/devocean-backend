@@ -137,7 +137,7 @@ export default function AccommodationPage({ bookUrl = '/book-direct' }) {
                 ['Do I need a 4×4 to get to DEVOCEAN Lodge?', 'No. DEVOCEAN Lodge is on a navigable road in the village centre. A standard car handles the route from the Kosi Bay border comfortably. On-site parking is available.'],
                 ['Is DEVOCEAN Lodge suitable for families?', 'Yes. We accommodate families across all unit types. Children are welcome. Please mention family composition when booking so we can advise on the best unit configuration.'],
                 ['How do I get from the Kosi Bay border to the lodge?', 'Shared chapas run throughout the day from the border to the village (20–30 min, departing when full). DEVOCEAN Lodge is 150 m from the village transport terminal. We also arrange private transfers — ask Marin when booking.'],
-                ['Is breakfast included?', 'Yes. Breakfast is included in the accommodation rate for all stays and is served in the garden between 08:30 and 11:00.'],
+                ['Is breakfast included?', 'Yes. Breakfast is included in the accommodation rate for all stays and is served in the garden between 07:30 and 11:00.'],
                 ['Can I book direct without paying OTA fees?', 'Yes — book at devoceanlodge.com/book-direct for live availability and confirmed best rates. No OTA markup, instant confirmation.'],
               ].map(([q, a]) => (
                 <li key={q} className="faq-item">

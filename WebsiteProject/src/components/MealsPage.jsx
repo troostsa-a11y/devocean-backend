@@ -82,7 +82,7 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
           {/* Key facts */}
           <div className="facts" aria-label="Meal key facts">
             <div className="fact"><span className="fact-dot green" aria-hidden="true" /> <span>{g(t, 'facts.included', 'Breakfast included')}</span></div>
-            <div className="fact"><span className="fact-dot" aria-hidden="true" /> <span>{g(t, 'facts.served', 'Served 08:30–11:00')}</span></div>
+            <div className="fact"><span className="fact-dot" aria-hidden="true" /> <span>{g(t, 'facts.served', 'Served 07:30–11:00')}</span></div>
             <div className="fact"><span className="fact-dot teal" aria-hidden="true" /> <span>{g(t, 'facts.flexible', 'Earlier or later by arrangement')}</span></div>
             <div className="fact"><span className="fact-dot" aria-hidden="true" /> <span>{g(t, 'facts.dinner', 'Dinner by pre-order')}</span></div>
             <div className="fact"><span className="fact-dot teal" aria-hidden="true" /> <span>{g(t, 'facts.residents', 'Resident guests only')}</span></div>
@@ -96,7 +96,7 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
               <span>{g(t, 'breakfast.title', 'Breakfast in the Garden')}</span>
               <span className="badge">{g(t, 'breakfast.badge', 'Included')}</span>
             </h2>
-            <p dangerouslySetInnerHTML={{ __html: g(t, 'breakfast.p1', 'Breakfast is <strong>included in your accommodation rate</strong> and is normally served between 08:30 and 11:00 in the tropical garden.') }} />
+            <p dangerouslySetInnerHTML={{ __html: g(t, 'breakfast.p1', 'Breakfast is <strong>included in your accommodation rate</strong> and is normally served between 07:30 and 11:00 in the tropical garden.') }} />
             <p>{g(t, 'breakfast.p2', 'Guests can choose from our breakfast menu, with both cooked and lighter options. Fresh Portuguese bread is served daily, accompanied by coffee, tea or hot chocolate.')}</p>
             <div className="highlight-box">
               <h3>{g(t, 'breakfast.boxTitle', 'Early dive or dolphin swim?')}</h3>
@@ -172,7 +172,7 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
             <ul className="faq-list">
               {[
                 ['faq.q1', 'Is breakfast included?',                       'faq.a1', 'Yes. Breakfast is included in the accommodation rate for all stays.'],
-                ['faq.q2', 'What time is breakfast served?',               'faq.a2', 'Breakfast is normally served from 08:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, for an early dive or dolphin swim departure.'],
+                ['faq.q2', 'What time is breakfast served?',               'faq.a2', 'Breakfast is normally served from 07:30 until 11:00. Earlier or later service can often be arranged when requested beforehand — for example, for an early dive or dolphin swim departure.'],
                 ['faq.q3', 'Can I have dinner at the lodge?',              'faq.a3', 'Yes. Resident guests can order dinner from our in-house restaurant. Please order in advance and no later than 20:00. The kitchen closes at 21:00.'],
                 ['faq.q4', 'Is the kitchen open to outside visitors?',     'faq.a4', 'No. Our meal service is reserved for guests staying at DEVOCEAN Lodge.'],
                 ['faq.q5', 'Do you serve lunch?',                          'faq.a5', 'We do not offer regular lunch service. We are happy to suggest nearby cafés and restaurants based on what is currently open and what you would like to eat.'],

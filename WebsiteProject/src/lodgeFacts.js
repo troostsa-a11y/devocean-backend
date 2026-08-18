@@ -97,7 +97,7 @@ export const LOCATION = {
 export const MEALS = {
   breakfast: {
     included:    true,
-    description: 'Included in the accommodation rate. Served 08:30–11:00 in the tropical garden. Earlier/later times by arrangement.',
+    description: 'Included in the accommodation rate. Served 07:30–11:00 in the tropical garden. Earlier/later times by arrangement.',
   },
   dinner: {
     available:   true,
