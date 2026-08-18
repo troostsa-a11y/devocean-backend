@@ -61,6 +61,20 @@ textarea:focus-visible,
   flex-direction: column;
 }
 
+/* Back/forward navigation: suppress the entrance animation so history
+   traversal feels instant (the content was already seen). Set by the
+   popstate listener in App.jsx via data-nav-type="popstate" on <html>. */
+[data-nav-type="popstate"] .route-fade-in {
+  animation: none;
+}
+
+/* Honour the OS-level "reduce motion" preference. */
+@media (prefers-reduced-motion: reduce) {
+  .route-fade-in {
+    animation: none;
+  }
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

@@ -155,6 +155,44 @@ export default function App() {
     // link to /book-direct → home could leave --stack-h on stale defaults.
   }, [location]);
 
+  // --- Back/forward animation suppression ---
+  // Set data-nav-type="popstate" on <html> BEFORE the location state changes so
+  // the CSS rule [data-nav-type="popstate"] .route-fade-in { animation:none } is
+  // already active when the new route div mounts. Cleared immediately after the
+  // location effect runs so subsequent forward-navigations animate normally.
+  useEffect(() => {
+    const handler = () => {
+      document.documentElement.dataset.navType = 'popstate';
+    };
+    window.addEventListener('popstate', handler);
+    return () => window.removeEventListener('popstate', handler);
+  }, []);
+
+  // Clear the marker after each location change (runs after the new route paints).
+  // Also move keyboard focus to the new page's H1 so screen-reader and keyboard
+  // users land on the right content without having to Tab through the header.
+  useEffect(() => {
+    // Clear back/forward marker set by the popstate listener above.
+    delete document.documentElement.dataset.navType;
+
+    // Focus management — skip homepage (hero manages its own focus) and
+    // skip on the very first render (location hasn't changed yet).
+    if (location === '/') return;
+
+    // Two rAF frames: let React commit and the browser paint before we probe
+    // the new H1, otherwise we may grab the departing route's H1.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const h1 = document.querySelector('main h1, h1');
+        if (!h1) return;
+        if (!h1.hasAttribute('tabindex')) h1.setAttribute('tabindex', '-1');
+        // preventScroll: preserve the scroll position restored by the browser
+        // for back/forward; for forward navigation, scroll to top is expected.
+        h1.focus({ preventScroll: true });
+      });
+    });
+  }, [location]);
+
   // Handle hash navigation on route changes (immediate, with retry until element exists)
   useEffect(() => {
     const hash = window.location.hash.slice(1);

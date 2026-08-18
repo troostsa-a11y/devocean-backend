@@ -196,6 +196,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 onClick={(e) => handleSpaNav(e, '/story')}
                 onMouseEnter={preloadStory}
                 onFocus={preloadStory}
+                onTouchStart={preloadStory}
               >
                 {ui.stay?.ourStory || "Our Story"}
               </a>
@@ -220,6 +221,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 onClick={(e) => handleSpaNav(e, '/devocean-lodge-meals')}
                 onMouseEnter={preloadMeals}
                 onFocus={preloadMeals}
+                onTouchStart={preloadMeals}
               >
                 {ui.nav?.food || "Food"}
               </a>
@@ -291,6 +293,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 onClick={(e) => handleSpaNav(e, '/story')}
                 onMouseEnter={preloadStory}
                 onFocus={preloadStory}
+                onTouchStart={preloadStory}
                 tabIndex={menuOpen ? 0 : -1}
               >
                 {ui.stay?.ourStory || "Our Story"}
@@ -315,6 +318,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 onClick={(e) => handleSpaNav(e, '/devocean-lodge-meals')}
                 onMouseEnter={preloadMeals}
                 onFocus={preloadMeals}
+                onTouchStart={preloadMeals}
                 tabIndex={menuOpen ? 0 : -1}
               >
                 {ui.nav?.food || "Food"}
