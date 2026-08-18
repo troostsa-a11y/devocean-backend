@@ -4,14 +4,14 @@
 export const SAFARI_CONTENT = {
   en: {
     title: "Game Safaris",
-    tagline: "Bush adventures in Maputo Special Reserve",
+    tagline: "Bush adventures in Maputo National Park",
     overview: "Discover African wildlife just a short drive from Ponta do Ouro. Maputo National Park (formerly Maputo Special Reserve) offers classic game viewing with 450-500 coastal elephants, giraffes, zebras, hippos, crocodiles, and diverse antelope species across 1,718 km² of protected wilderness - a UNESCO World Heritage Site since 2025.",
     highlights: [
       "450-500 coastal elephants",
       "Giraffes, zebras & antelopes",
       "Hippos & crocodiles in wetlands",
       "Leopard, cheetah & spotted hyena",
-      "300+ bird species including flamingos",
+      "526+ bird species including flamingos",
       "4x4 game drives with expert guides",
       "UNESCO World Heritage Site (2025)",
       "Beach & bush combo possible"
@@ -35,7 +35,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4 game drive vehicle",
       "Professional guide/driver",
-      "Marine park entrance fees",
+      "National park entrance fees",
       "Binoculars for wildlife viewing",
       "Bottled water & snacks",
       "Hotel pickup from Ponta do Ouro",
@@ -90,7 +90,7 @@ export const SAFARI_CONTENT = {
       { species: "Hippos & Crocodiles", details: "Around lakes, wetlands & Maputo Bay" },
       { species: "Antelopes", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Predators", details: "Leopard, cheetah, spotted hyena (reintroduced 2023-24)" },
-      { species: "Birds", details: "300+ species - flamingos, wading birds, raptors" }
+      { species: "Birds", details: "526+ species - flamingos, wading birds, raptors" }
     ],
     brochure: {
       title: "Official Park Brochure",
@@ -102,14 +102,14 @@ export const SAFARI_CONTENT = {
 
   'pt-BR': {
     title: "Safáris Fotográficos",
-    tagline: "Aventuras no mato na Reserva Especial de Maputo",
+    tagline: "Aventuras no mato no Parque Nacional de Maputo",
     overview: "Descubra a vida selvagem africana a uma curta distância de Ponta do Ouro. O Parque Nacional de Maputo (antiga Reserva Especial de Maputo) oferece avistamento clássico de animais com 450-500 elefantes costeiros, girafas, zebras, hipopótamos, crocodilos e diversas espécies de antílopes em 1.718 km² de vida selvagem protegida - Patrimônio Mundial da UNESCO desde 2025.",
     highlights: [
       "450-500 elefantes costeiros",
       "Girafas, zebras e antílopes",
       "Hipopótamos e crocodilos nas zonas úmidas",
       "Leopardo, chita e hiena-malhada",
-      "Mais de 300 espécies de aves incluindo flamingos",
+      "Mais de 526 espécies de aves incluindo flamingos",
       "Game drives 4x4 com guias especializados",
       "Patrimônio Mundial da UNESCO (2025)",
       "Combinação praia e mato possível"
@@ -133,7 +133,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Veículo 4x4 para game drive",
       "Guia/motorista profissional",
-      "Taxas de entrada do parque marinho",
+      "Taxas de entrada do parque nacional",
       "Binóculos para observação de vida selvagem",
       "Água engarrafada e lanches",
       "Transfer do hotel em Ponta do Ouro",
@@ -188,7 +188,7 @@ export const SAFARI_CONTENT = {
       { species: "Hipopótamos e Crocodilos", details: "Ao redor de lagos, zonas úmidas e Baía de Maputo" },
       { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
       { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
-      { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
+      { species: "Aves", details: "526+ espécies - flamingos, aves aquáticas, rapinantes" }
     ],
     brochure: {
       title: "Brochura Oficial do Parque",
@@ -200,14 +200,14 @@ export const SAFARI_CONTENT = {
 
   'pt-PT': {
     title: "Safáris Fotográficos",
-    tagline: "Aventuras no mato na Reserva Especial de Maputo",
+    tagline: "Aventuras no mato no Parque Nacional de Maputo",
     overview: "Descubra a vida selvagem africana a uma curta distância de Ponta do Ouro. O Parque Nacional de Maputo (antiga Reserva Especial de Maputo) oferece avistamento clássico de animais com 450-500 elefantes costeiros, girafas, zebras, hipopótamos, crocodilos e diversas espécies de antílopes em 1.718 km² de vida selvagem protegida - Património Mundial da UNESCO desde 2025.",
     highlights: [
       "450-500 elefantes costeiros",
       "Girafas, zebras e antílopes",
       "Hipopótamos e crocodilos nas zonas húmidas",
       "Leopardo, chita e hiena-malhada",
-      "Mais de 300 espécies de aves incluindo flamingos",
+      "Mais de 526 espécies de aves incluindo flamingos",
       "Game drives 4x4 com guias especializados",
       "Património Mundial da UNESCO (2025)",
       "Combinação praia e mato possível"
@@ -231,7 +231,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Veículo 4x4 para game drive",
       "Guia/motorista profissional",
-      "Taxas de entrada do parque marinho",
+      "Taxas de entrada do parque nacional",
       "Binóculos para observação de vida selvagem",
       "Água engarrafada e lanches",
       "Transfer do hotel em Ponta do Ouro",
@@ -286,7 +286,7 @@ export const SAFARI_CONTENT = {
       { species: "Hipopótamos e Crocodilos", details: "Ao redor de lagos, zonas húmidas e Baía de Maputo" },
       { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
       { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
-      { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
+      { species: "Aves", details: "526+ espécies - flamingos, aves aquáticas, rapinantes" }
     ],
     brochure: {
       title: "Brochura Oficial do Parque",
@@ -298,14 +298,14 @@ export const SAFARI_CONTENT = {
 
   it: {
     title: "Safari Fotografici",
-    tagline: "Avventure nella savana nella Riserva Speciale di Maputo",
+    tagline: "Avventure nella savana nel Parco Nazionale di Maputo",
     overview: "Scopri la fauna africana a pochi minuti da Ponta do Ouro. Il Parco Nazionale di Maputo (ex Riserva Speciale di Maputo) offre classici avvistamenti di fauna selvatica con 450-500 elefanti costieri, giraffe, zebre, ippopotami, coccodrilli e diverse specie di antilopi su 1.718 km² di natura protetta - Patrimonio Mondiale UNESCO dal 2025.",
     highlights: [
       "450-500 elefanti costieri",
       "Giraffe, zebre e antilopi",
       "Ippopotami e coccodrilli nelle zone umide",
       "Leopardo, ghepardo e iena maculata",
-      "Oltre 300 specie di uccelli inclusi fenicotteri",
+      "Oltre 526 specie di uccelli inclusi fenicotteri",
       "Safari in 4x4 con guide esperte",
       "Patrimonio Mondiale UNESCO (2025)",
       "Combinazione spiaggia e savana possibile"
@@ -329,7 +329,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Veicolo 4x4 da safari",
       "Guida/autista professionale",
-      "Tasse del parco marino",
+      "Tasse del parco nazionale",
       "Binocoli per osservazione fauna",
       "Acqua in bottiglia e snack",
       "Transfer hotel da Ponta do Ouro",
@@ -384,7 +384,7 @@ export const SAFARI_CONTENT = {
       { species: "Ippopotami e Coccodrilli", details: "Intorno a laghi, zone umide e Baia di Maputo" },
       { species: "Antilopi", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Predatori", details: "Leopardo, ghepardo, iena maculata (reintrodotti 2023-24)" },
-      { species: "Uccelli", details: "300+ specie - fenicotteri, uccelli acquatici, rapaci" }
+      { species: "Uccelli", details: "526+ specie - fenicotteri, uccelli acquatici, rapaci" }
     ],
     brochure: {
       title: "Brochure Ufficiale del Parco",
@@ -396,14 +396,14 @@ export const SAFARI_CONTENT = {
 
   pl: {
     title: "Safari Fotograficzne",
-    tagline: "Przygody w buszu w Rezerwacie Specjalnym Maputo",
+    tagline: "Przygody w buszu w Parku Narodowym Maputo",
     overview: "Odkryj afrykańską dziką przyrodę zaledwie kilka minut od Ponta do Ouro. Park Narodowy Maputo (dawniej Rezerwat Specjalny Maputo) oferuje klasyczne obserwacje dzikiej przyrody z 450-500 słoniami nadbrzeżnymi, żyrafami, zebrami, hipopotamami, krokodylami i różnymi gatunkami antylop na 1 718 km² chronionej przyrody - Dziedzictwo Światowe UNESCO od 2025.",
     highlights: [
       "450-500 słoni nadbrzeżnych",
       "Żyrafy, zebry i antylopy",
       "Hipopotamy i krokodyle na terenach podmokłych",
       "Lampart, gepard i hiena cękowana",
-      "Ponad 300 gatunków ptaków w tym flamingi",
+      "Ponad 526 gatunków ptaków w tym flamingi",
       "Safari 4x4 z doświadczonymi przewodnikami",
       "Dziedzictwo Światowe UNESCO (2025)",
       "Możliwa kombinacja plaża-busz"
@@ -427,7 +427,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Pojazd safari 4x4",
       "Profesjonalny przewodnik/kierowca",
-      "Opłaty za park morski",
+      "Opłaty za park narodowy",
       "Lornetki do obserwacji dzikiej przyrody",
       "Woda butelkowana i przekąski",
       "Odbiór z hotelu w Ponta do Ouro",
@@ -482,7 +482,7 @@ export const SAFARI_CONTENT = {
       { species: "Hipopotamy i Krokodyle", details: "Wokół jezior, mokradeł i Zatoki Maputo" },
       { species: "Antylopy", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Drapieżniki", details: "Lampart, gepard, hiena cękowana (reintrodukowane 2023-24)" },
-      { species: "Ptaki", details: "300+ gatunków - flamingi, ptaki wodne, drapieżne" }
+      { species: "Ptaki", details: "526+ gatunków - flamingi, ptaki wodne, drapieżne" }
     ],
     brochure: {
       title: "Oficjalna Broszura Parku",
@@ -494,14 +494,14 @@ export const SAFARI_CONTENT = {
 
   ru: {
     title: "Фотосафари",
-    tagline: "Приключения в буше в Специальном заповеднике Мапуту",
+    tagline: "Приключения в буше в Национальном парке Мапуту",
     overview: "Откройте африканскую дикую природу в нескольких минутах от Понта-ду-Ору. Национальный парк Мапуту (ранее Специальный заповедник Мапуту) предлагает классические наблюдения за дикой природой с 450-500 прибрежными слонами, жирафами, зебрами, бегемотами, крокодилами и различными видами антилоп на 1 718 км² охраняемой природы - объект Всемирного наследия ЮНЕСКО с 2025 года.",
     highlights: [
       "450-500 прибрежных слонов",
       "Жирафы, зебры и антилопы",
       "Бегемоты и крокодилы во влажных угодьях",
       "Леопард, гепард и пятнистая гиена",
-      "300+ видов птиц, включая фламинго",
+      "526+ видов птиц, включая фламинго",
       "Сафари на 4x4 с опытными гидами",
       "Объект Всемирного наследия ЮНЕСКО (2025)",
       "Возможна комбинация пляж-буш"
@@ -525,7 +525,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Сафари-автомобиль 4x4",
       "Профессиональный гид/водитель",
-      "Сборы морского парка",
+      "Сборы национального парка",
       "Бинокли для наблюдения за дикой природой",
       "Бутилированная вода и закуски",
       "Трансфер от отеля из Понта-ду-Ору",
@@ -580,7 +580,7 @@ export const SAFARI_CONTENT = {
       { species: "Бегемоты и Крокодилы", details: "Вокруг озёр, болот и залива Мапуту" },
       { species: "Антилопы", details: "Тростниковая антилопа, импала, ньяла, канна, куду, водяной козёл, красный дукер" },
       { species: "Хищники", details: "Леопард, гепард, пятнистая гиена (реинтродуцированы 2023-24)" },
-      { species: "Птицы", details: "300+ видов - фламинго, водоплавающие птицы, хищные птицы" }
+      { species: "Птицы", details: "526+ видов - фламинго, водоплавающие птицы, хищные птицы" }
     ],
     brochure: {
       title: "Официальная Брошюра Парка",
@@ -592,14 +592,14 @@ export const SAFARI_CONTENT = {
 
   ja: {
     title: "フォトサファリ",
-    tagline: "マプト特別保護区でのブッシュアドベンチャー",
+    tagline: "マプト国立公園でのブッシュアドベンチャー",
     overview: "ポンタ・ド・オウロからわずか数分でアフリカの野生動物を発見。マプト国立公園（旧マプト特別保護区）では、1,718km²の保護された自然の中で、450-500頭の沿岸ゾウ、キリン、シマウマ、カバ、ワニ、様々なアンテロープ種を観察できる古典的なゲームドライブを提供しています - 2025年からユネスコ世界遺産。",
     highlights: [
       "450-500頭の沿岸ゾウ",
       "キリン、シマウマ、アンテロープ",
       "湿地帯のカバとワニ",
       "ヒョウ、チーター、ブチハイエナ",
-      "フラミンゴを含む300種以上の鳥類",
+      "フラミンゴを含む526種以上の鳥類",
       "経験豊富なガイドによる4x4サファリ",
       "ユネスコ世界遺産（2025年）",
       "ビーチとブッシュの組み合わせ可能"
@@ -623,7 +623,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4サファリ車両",
       "プロフェッショナルガイド/ドライバー",
-      "海洋公園料金",
+      "国立公園料金",
       "野生動物観察用双眼鏡",
       "ボトルウォーター＆軽食",
       "ポンタ・ド・オウロからホテル送迎",
@@ -678,7 +678,7 @@ export const SAFARI_CONTENT = {
       { species: "カバとワニ", details: "湖、湿地帯、マプト湾周辺に生息" },
       { species: "アンテロープ", details: "リードバック、インパラ、ニャラ、エランド、クドゥ、ウォーターバック、レッドダイカー" },
       { species: "捕食動物", details: "ヒョウ、チーター、ブチハイエナ（2023-24年に再導入）" },
-      { species: "鳥類", details: "300種以上 - フラミンゴ、水鳥、猛禽類" }
+      { species: "鳥類", details: "526種以上 - フラミンゴ、水鳥、猛禽類" }
     ],
     brochure: {
       title: "公式パークブロシュア",
@@ -690,14 +690,14 @@ export const SAFARI_CONTENT = {
 
   zh: {
     title: "摄影Safari",
-    tagline: "马普托特别保护区的丛林探险",
+    tagline: "马普托国家公园的丛林探险",
     overview: "从蓬塔多欧洲出发仅需几分钟即可发现非洲野生动物。马普托国家公园（原马普托特别保护区）提供经典的野生动物观赏，在1,718平方公里的保护自然区内有450-500头沿海大象、长颈鹿、斑马、河马、鳄鱼和各种羚羊 - 自2025年起成为联合国教科文组织世界遗产。",
     highlights: [
       "450-500头沿海大象",
       "长颈鹿、斑马和羚羊",
       "湿地的河马和鳄鱼",
       "豹、猎豹和斑点鬣狗",
-      "300+种鸟类包括火烈鸟",
+      "526+种鸟类包括火烈鸟",
       "经验丰富向导的4x4 Safari",
       "联合国教科文组织世界遗产（2025年）",
       "可结合海滩和丛林"
@@ -721,7 +721,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4 Safari车辆",
       "专业向导/司机",
-      "海洋公园费用",
+      "国家公园费用",
       "野生动物观察望远镜",
       "瓶装水和小食",
       "蓬塔多欧洲酒店接送",
@@ -776,7 +776,7 @@ export const SAFARI_CONTENT = {
       { species: "河马和鳄鱼", details: "在湖泊、湿地和马普托湾周围" },
       { species: "羚羊", details: "苇羚、黑斑羚、林羚、大羚羊、旋角羚、水羚、红色小羚羊" },
       { species: "掠食者", details: "豹、猎豹、斑点鬣狗（2023-24年重新引入）" },
-      { species: "鸟类", details: "300+种 - 火烈鸟、涉禽、猛禽" }
+      { species: "鸟类", details: "526+种 - 火烈鸟、涉禽、猛禽" }
     ],
     brochure: {
       title: "官方公园手册",
@@ -788,14 +788,14 @@ export const SAFARI_CONTENT = {
 
   af: {
     title: "Fotosafaris",
-    tagline: "Bosavonture in die Maputo Spesiale Reservaat",
+    tagline: "Bosavonture in die Maputo Nasionale Park",
     overview: "Ontdek Afrika se wildlewe net minute van Ponta do Ouro. Maputo Nasionale Park (voorheen Maputo Spesiale Reservaat) bied klassieke wildbesigtiging met 450-500 kusolifante, kameelperde, zebras, seekoeie, krokodille en verskeie wildsbokkesoorte oor 1,718 km² beskermde natuur - UNESCO Wêrelderfenisgebied sedert 2025.",
     highlights: [
       "450-500 kusolifante",
       "Kameelperde, zebras & wildsbokke",
       "Seekoeie & krokodille in vleilande",
       "Luiperd, jagluiperd & gevlekte hiëna",
-      "300+ voëlsoorte insluitend flaminks",
+      "526+ voëlsoorte insluitend flaminks",
       "4x4 safaris met ervare gidse",
       "UNESCO Wêrelderfenisgebied (2025)",
       "Strand-en-bos kombinasie moontlik"
@@ -819,7 +819,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4 safari voertuig",
       "Professionele gids/bestuurder",
-      "Marienpark gelde",
+      "Nasionaalpark gelde",
       "Verkykers vir wildbesigtiging",
       "Gebottelde water & versnaperinge",
       "Hotel afhaal vanaf Ponta do Ouro",
@@ -874,7 +874,7 @@ export const SAFARI_CONTENT = {
       { species: "Seekoeie & Krokodille", details: "Rondom mere, vleilande en Maputobaai" },
       { species: "Wildsbokke", details: "Rietbok, rooibok, njala, eland, koedoe, waterbok, rooiduiker" },
       { species: "Roofdiere", details: "Luiperd, jagluiperd, gevlekte hiëna (heringestel 2023-24)" },
-      { species: "Voëls", details: "300+ spesies - flaminks, waadvöels, roofvoëls" }
+      { species: "Voëls", details: "526+ spesies - flaminks, waadvöels, roofvoëls" }
     ],
     brochure: {
       title: "Amptelike Parkbrosjure",
@@ -886,14 +886,14 @@ export const SAFARI_CONTENT = {
 
   zu: {
     title: "Ama-Safari Wezithombe",
-    tagline: "Izinto zasehlathini e-Maputo Special Reserve",
+    tagline: "Izinto zasehlathini e-Maputo National Park",
     overview: "Thola izilwane zase-Afrika imizuzu nje ukusuka e-Ponta do Ouro. I-Maputo National Park (okwakuyaziwa nge-Maputo Special Reserve) inikeza ukubuka izilwane okujwayelekile nge-450-500 amahlengethwa asogwini, izindlulamithi, amadube, izimvubu, izingwenya nezinhlobo eziningi ze-antelope ku-1,718 km² yemvelo evikelwe - I-UNESCO World Heritage Site kusukela ngo-2025.",
     highlights: [
       "450-500 amahlengethwa asogwini",
       "Izindlulamithi, amadube & ama-antelope",
       "Izimvubu & izingwenya ezindaweni ezimanzi",
       "Ingwe, i-cheetah & i-spotted hyena",
-      "300+ izinhlobo zezinyoni kubandakanya ama-flamingo",
+      "526+ izinhlobo zezinyoni kubandakanya ama-flamingo",
       "Ama-safari e-4x4 nabaholi abanamava",
       "I-UNESCO World Heritage Site (2025)",
       "Ukuhlanganiswa kogwini nehlathi kunokwenzeka"
@@ -917,7 +917,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Isithuthuthu se-safari se-4x4",
       "Umshayeli/umholi ochwepheshile",
-      "Izindleko ze-marine park",
+      "Izindleko ze-national park",
       "Ama-binoculars okubuka izilwane",
       "Amanzi asebhodleleni nezidlo",
       "Ukuthathwa ehotela kusuka e-Ponta do Ouro",
@@ -972,7 +972,7 @@ export const SAFARI_CONTENT = {
       { species: "Izimvubu nezingwenya", details: "Eduze kwamachibi, izindawo ezinamanzi neMaputo Bay" },
       { species: "Amabhubesi", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Izilwane ezidla ezinye", details: "Ingwe, ingulule, impisi enezigqi (zafakwa kabusha ngo-2023-24)" },
-      { species: "Izinyoni", details: "Izinhlobo ezingaphezu kuka-300 - flamingos, izinyoni zamanzi, izinyoni ezidla inyama" }
+      { species: "Izinyoni", details: "Izinhlobo ezingaphezu kuka-526 - flamingos, izinyoni zamanzi, izinyoni ezidla inyama" }
     ],
     brochure: {
       title: "Incwajana Esemthethweni Yepaki",
@@ -984,14 +984,14 @@ export const SAFARI_CONTENT = {
 
   sw: {
     title: "Safari za Picha",
-    tagline: "Matukio ya porini katika Hifadhi Maalum ya Maputo",
+    tagline: "Matukio ya porini katika Hifadhi ya Taifa ya Maputo",
     overview: "Gundua wanyamapori wa Afrika dakika chache kutoka Ponta do Ouro. Hifadhi ya Taifa ya Maputo (zamani Hifadhi Maalum ya Maputo) inatoa uzoefu wa kawaida wa kutazama wanyamapori na tembo 450-500 wa pwani, twiga, punda milia, viboko, mamba na aina mbalimbali za swala katika km² 1,718 za asili iliyolindwa - Tovuti ya Urithi wa Dunia wa UNESCO tangu 2025.",
     highlights: [
       "Tembo 450-500 wa pwani",
       "Twiga, punda milia na swala",
       "Viboko na mamba katika maeneo ya maji",
       "Chui, duma na fisi wa madoa",
-      "Aina 300+ za ndege ikiwa ni pamoja na flamingo",
+      "Aina 526+ za ndege ikiwa ni pamoja na flamingo",
       "Safari za 4x4 na wasaidizi wenye uzoefu",
       "Tovuti ya Urithi wa Dunia wa UNESCO (2025)",
       "Mchanganyiko wa pwani na porini unawezekana"
@@ -1015,7 +1015,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Gari la safari la 4x4",
       "Msaidizi/dereva wa kitaalamu",
-      "Ada za hifadhi ya bahari",
+      "Ada za hifadhi ya taifa",
       "Darubini za kutazama wanyamapori",
       "Maji ya chupa na vitafunio",
       "Kuchukua hotelini kutoka Ponta do Ouro",
@@ -1070,7 +1070,7 @@ export const SAFARI_CONTENT = {
       { species: "Viboko na Mamba", details: "Karibu na maziwa, ardhi oevu na Ghuba ya Maputo" },
       { species: "Swala", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Wanyama wakali", details: "Chui, duma, fisi mwenye madoa (walirudishwa 2023-24)" },
-      { species: "Ndege", details: "Aina 300+ - flamingo, ndege wa majini, ndege wa kuwinda" }
+      { species: "Ndege", details: "Aina 526+ - flamingo, ndege wa majini, ndege wa kuwinda" }
     ],
     brochure: {
       title: "Brosha Rasmi ya Hifadhi",
@@ -1082,14 +1082,14 @@ export const SAFARI_CONTENT = {
 
   sv: {
     title: "Fotosafaris",
-    tagline: "Bushaventyr i Maputo Special Reservat",
+    tagline: "Bushaventyr i Maputo Nationalpark",
     overview: "Upptäck afrikanskt vilt bara minuter från Ponta do Ouro. Maputo Nationalpark (tidigare Maputo Special Reservat) erbjuder klassiska viltskådningar med 450-500 kustelefanter, giraffer, zebror, flodhästar, krokodiler och diverse antiloparter på 1 718 km² skyddad natur - UNESCO Världsarv sedan 2025.",
     highlights: [
       "450-500 kustelefanter",
       "Giraffer, zebror och antiloper",
       "Flodhästar och krokodiler i våtmarker",
       "Leopard, gepard och fläckig hyena",
-      "Över 300 fågelarter inklusive flamingor",
+      "Över 526 fågelarter inklusive flamingor",
       "4x4-safaris med erfarna guider",
       "UNESCO Världsarv (2025)",
       "Strand- och bushkombination möjlig"
@@ -1113,7 +1113,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4-safarifordon",
       "Professionell guide/förare",
-      "Marinparkavgifter",
+      "Nationalparksavgifter",
       "Kikare för viltskådning",
       "Flaskvatten och snacks",
       "Hotellhämtning från Ponta do Ouro",
@@ -1168,7 +1168,7 @@ export const SAFARI_CONTENT = {
       { species: "Flodhästar & Krokodiler", details: "Runt sjöar, våtmarker och Maputobukten" },
       { species: "Antiloper", details: "Vassbok, impala, nyala, eland, kudu, vattenbock, rödduiker" },
       { species: "Rovdjur", details: "Leopard, gepard, fläckig hyena (återintroducerade 2023-24)" },
-      { species: "Fåglar", details: "300+ arter - flamingor, vadarfåglar, rovfåglar" }
+      { species: "Fåglar", details: "526+ arter - flamingor, vadarfåglar, rovfåglar" }
     ],
     brochure: {
       title: "Officiell Parkbroschyr",
@@ -1180,14 +1180,14 @@ export const SAFARI_CONTENT = {
 
   es: {
     title: "Safaris Fotográficos",
-    tagline: "Aventuras en la sabana en la Reserva Especial de Maputo",
+    tagline: "Aventuras en la sabana en el Parque Nacional de Maputo",
     overview: "Descubra la vida salvaje africana a solo minutos de Ponta do Ouro. El Parque Nacional de Maputo (antigua Reserva Especial de Maputo) ofrece observación clásica de animales con 450-500 elefantes costeros, jirafas, cebras, hipopótamos, cocodrilos y diversas especies de antílopes en 1,718 km² de naturaleza protegida - Patrimonio Mundial de la UNESCO desde 2025.",
     highlights: [
       "450-500 elefantes costeros",
       "Jirafas, cebras y antílopes",
       "Hipopótamos y cocodrilos en humedales",
       "Leopardo, guepardo y hiena manchada",
-      "Más de 300 especies de aves incluyendo flamencos",
+      "Más de 526 especies de aves incluyendo flamencos",
       "Safaris en 4x4 con guías expertos",
       "Patrimonio Mundial UNESCO (2025)",
       "Combinación playa y sabana posible"
@@ -1211,7 +1211,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Vehículo 4x4 para safari",
       "Guía/conductor profesional",
-      "Tarifas del parque marino",
+      "Tarifas del parque nacional",
       "Binoculares para observación de fauna",
       "Agua embotellada y snacks",
       "Transfer hotel desde Ponta do Ouro",
@@ -1266,7 +1266,7 @@ export const SAFARI_CONTENT = {
       { species: "Hipopótamos y Cocodrilos", details: "Alrededor de lagos, humedales y la Bahía de Maputo" },
       { species: "Antílopes", details: "Reedbuck, impala, nyala, eland, kudu, waterbuck, red duiker" },
       { species: "Depredadores", details: "Leopardo, guepardo, hiena manchada (reintroducidos 2023-24)" },
-      { species: "Aves", details: "300+ especies - flamencos, aves zancudas, rapaces" }
+      { species: "Aves", details: "526+ especies - flamencos, aves zancudas, rapaces" }
     ],
     brochure: {
       title: "Folleto Oficial del Parque",
@@ -1278,14 +1278,14 @@ export const SAFARI_CONTENT = {
 
   nl: {
     title: "Foto-Safari's",
-    tagline: "Bush-avonturen in het Maputo Speciaal Reservaat",
+    tagline: "Bush-avonturen in het Maputo Nationaal Park",
     overview: "Ontdek Afrikaanse wildlife op slechts minuten van Ponta do Ouro. Het Maputo Nationaal Park (voorheen Maputo Speciaal Reservaat) biedt klassieke wildlifewaarnemingen met 450-500 kustolifanten, giraffen, zebra's, nijlpaarden, krokodillen en diverse antilopensoorten op 1.718 km² beschermde natuur - UNESCO Werelderfgoed sinds 2025.",
     highlights: [
       "450-500 kustolifanten",
       "Giraffen, zebra's en antilopen",
       "Nijlpaarden en krokodillen in wetlands",
       "Luipaard, cheetah en gevlekte hyena",
-      "Meer dan 300 vogelsoorten inclusief flamingo's",
+      "Meer dan 526 vogelsoorten inclusief flamingo's",
       "4x4-safari's met ervaren gidsen",
       "UNESCO Werelderfgoed (2025)",
       "Strand- en bushcombinatie mogelijk"
@@ -1309,7 +1309,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4-safarivoertuig",
       "Professionele gids/chauffeur",
-      "Marien parkkosten",
+      "Nationaal parkkosten",
       "Verrekijkers voor wildlife observatie",
       "Flessenwater en snacks",
       "Hoteltransfer vanuit Ponta do Ouro",
@@ -1364,7 +1364,7 @@ export const SAFARI_CONTENT = {
       { species: "Nijlpaarden & Krokodillen", details: "Rondom meren, wetlands en Maputo-baai" },
       { species: "Antilopen", details: "Rietbok, impala, nyala, eland, koedoe, waterbok, rood duiker" },
       { species: "Roofdieren", details: "Luipaard, cheetah, gevlekte hyena (geherintroduceerd 2023-24)" },
-      { species: "Vogels", details: "300+ soorten - flamingo's, waadvogels, roofvogels" }
+      { species: "Vogels", details: "526+ soorten - flamingo's, waadvogels, roofvogels" }
     ],
     brochure: {
       title: "Officiële Parkbrochure",
@@ -1376,14 +1376,14 @@ export const SAFARI_CONTENT = {
 
   de: {
     title: "Foto-Safaris",
-    tagline: "Busch-Abenteuer im Maputo-Spezialreservat",
+    tagline: "Busch-Abenteuer im Maputo-Nationalpark",
     overview: "Entdecken Sie afrikanische Wildtiere nur wenige Minuten von Ponta do Ouro entfernt. Der Maputo-Nationalpark (ehemals Maputo-Spezialreservat) bietet klassische Wildtierbeobachtung mit 450-500 Küstenelefanten, Giraffen, Zebras, Flusspferden, Krokodilen und verschiedenen Antilopenarten auf 1.718 km² geschützter Natur - UNESCO-Welterbe seit 2025.",
     highlights: [
       "450-500 Küstenelefanten",
       "Giraffen, Zebras und Antilopen",
       "Flusspferde und Krokodile in Feuchtgebieten",
       "Leopard, Gepard und Tüpfelhyäne",
-      "Über 300 Vogelarten einschließlich Flamingos",
+      "Über 526 Vogelarten einschließlich Flamingos",
       "4x4-Safaris mit erfahrenen Guides",
       "UNESCO-Welterbe (2025)",
       "Strand- und Busch-Kombination möglich"
@@ -1407,7 +1407,7 @@ export const SAFARI_CONTENT = {
     included: [
       "4x4-Safari-Fahrzeug",
       "Professioneller Guide/Fahrer",
-      "Marineparkgebühren",
+      "Nationalparkgebühren",
       "Ferngläser zur Wildbeobachtung",
       "Wasser in Flaschen und Snacks",
       "Hoteltransfer von Ponta do Ouro",
@@ -1462,7 +1462,7 @@ export const SAFARI_CONTENT = {
       { species: "Flusspferde & Krokodile", details: "An Seen, Feuchtgebieten und der Maputo-Bucht" },
       { species: "Antilopen", details: "Riedbock, Impala, Nyala, Elenantilope, Kudu, Wasserbock, Rotducker" },
       { species: "Raubtiere", details: "Leopard, Gepard, Tüpfelhyäne (2023-24 wiedereingeführt)" },
-      { species: "Vögel", details: "300+ Arten - Flamingos, Watvögel, Greifvögel" }
+      { species: "Vögel", details: "526+ Arten - Flamingos, Watvögel, Greifvögel" }
     ],
     brochure: {
       title: "Offizielle Parkbroschüre",
@@ -1474,14 +1474,14 @@ export const SAFARI_CONTENT = {
 
   fr: {
     title: "Safaris Photographiques",
-    tagline: "Aventures en brousse dans la Réserve Spéciale de Maputo",
+    tagline: "Aventures en brousse dans le Parc National de Maputo",
     overview: "Découvrez la faune africaine à quelques minutes de Ponta do Ouro. Le Parc National de Maputo (ancienne Réserve Spéciale de Maputo) offre une observation classique des animaux avec 450-500 éléphants côtiers, girafes, zèbres, hippopotames, crocodiles et diverses espèces d'antilopes sur 1 718 km² de nature protégée - Site du Patrimoine Mondial de l'UNESCO depuis 2025.",
     highlights: [
       "450-500 éléphants côtiers",
       "Girafes, zèbres et antilopes",
       "Hippopotames et crocodiles dans les zones humides",
       "Léopard, guépard et hyène tachetée",
-      "Plus de 300 espèces d'oiseaux dont flamants roses",
+      "Plus de 526 espèces d'oiseaux dont flamants roses",
       "Safaris en 4x4 avec guides experts",
       "Site du Patrimoine Mondial UNESCO (2025)",
       "Combinaison plage et brousse possible"
@@ -1505,7 +1505,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Véhicule 4x4 pour le safari",
       "Guide/chauffeur professionnel",
-      "Droits d'entrée du parc marin",
+      "Droits d'entrée du parc national",
       "Jumelles pour observation de la faune",
       "Eau en bouteille et collations",
       "Transfert hôtel depuis Ponta do Ouro",
@@ -1560,7 +1560,7 @@ export const SAFARI_CONTENT = {
       { species: "Hippopotames & Crocodiles", details: "Autour des lacs, zones humides et baie de Maputo" },
       { species: "Antilopes", details: "Cobe des roseaux, impala, nyala, éland, koudou, cobe à croissant, céphalophe rouge" },
       { species: "Prédateurs", details: "Léopard, guépard, hyène tachetée (réintroduits 2023-24)" },
-      { species: "Oiseaux", details: "300+ espèces - flamants roses, échassiers, rapaces" }
+      { species: "Oiseaux", details: "526+ espèces - flamants roses, échassiers, rapaces" }
     ],
     brochure: {
       title: "Brochure Officielle du Parc",
@@ -1572,14 +1572,14 @@ export const SAFARI_CONTENT = {
 
   pt: {
     title: "Safáris Fotográficos",
-    tagline: "Aventuras no mato na Reserva Especial de Maputo",
+    tagline: "Aventuras no mato no Parque Nacional de Maputo",
     overview: "Descubra a vida selvagem africana a uma curta distância de Ponta do Ouro. O Parque Nacional de Maputo (antiga Reserva Especial de Maputo) oferece avistamento clássico de animais com 450-500 elefantes costeiros, girafas, zebras, hipopótamos, crocodilos e diversas espécies de antílopes em 1.718 km² de vida selvagem protegida - Patrimônio Mundial da UNESCO desde 2025.",
     highlights: [
       "450-500 elefantes costeiros",
       "Girafas, zebras e antílopes",
       "Hipopótamos e crocodilos nas zonas úmidas",
       "Leopardo, chita e hiena-malhada",
-      "Mais de 300 espécies de aves incluindo flamingos",
+      "Mais de 526 espécies de aves incluindo flamingos",
       "Game drives 4x4 com guias especializados",
       "Patrimônio Mundial da UNESCO (2025)",
       "Combinação praia e mato possível"
@@ -1603,7 +1603,7 @@ export const SAFARI_CONTENT = {
     included: [
       "Veículo 4x4 para game drive",
       "Guia/motorista profissional",
-      "Taxas de entrada do parque marinho",
+      "Taxas de entrada do parque nacional",
       "Binóculos para observação de vida selvagem",
       "Água engarrafada e lanches",
       "Transfer do hotel em Ponta do Ouro",
@@ -1658,7 +1658,7 @@ export const SAFARI_CONTENT = {
       { species: "Hipopótamos e Crocodilos", details: "Ao redor de lagos, zonas úmidas e Baía de Maputo" },
       { species: "Antílopes", details: "Reedbuck, impala, niala, elande, kudu, waterbuck, red duiker" },
       { species: "Predadores", details: "Leopardo, chita, hiena-malhada (reintroduzidos 2023-24)" },
-      { species: "Aves", details: "300+ espécies - flamingos, aves aquáticas, rapinantes" }
+      { species: "Aves", details: "526+ espécies - flamingos, aves aquáticas, rapinantes" }
     ],
     brochure: {
       title: "Brochura Oficial do Parque",
@@ -1670,14 +1670,14 @@ export const SAFARI_CONTENT = {
 
     ro: {
       title: "Safari de Vânătoare Foto",
-      tagline: "Aventuri în savană în Rezervația Specială Maputo",
+      tagline: "Aventuri în savană în Parcul Național Maputo",
       overview: "Descoperă fauna sălbatică africană la doar o scurtă distanță de Ponta do Ouro. Parcul Național Maputo (fosta Rezervație Specială Maputo) oferă observare clasică a animalelor sălbatice cu 450-500 de elefanți de coastă, girafe, zebre, hipopotami, crocodili și diverse specii de antilope pe 1.718 km² de sălbăticie protejată - sit UNESCO din 2025.",
       highlights: [
         "450-500 de elefanți de coastă",
         "Girafe, zebre și antilope",
         "Hipopotami și crocodili în zonele umede",
         "Leoparzi, gheparzi și hiene pătate",
-        "Peste 300 de specii de păsări, inclusiv flamingo",
+        "Peste 526 de specii de păsări, inclusiv flamingo",
         "Game drives 4x4 cu ghizi experți",
         "Sit UNESCO Patrimoniu Mondial (2025)",
         "Combinație plajă și savană posibilă"
@@ -1701,7 +1701,7 @@ export const SAFARI_CONTENT = {
       included: [
         "Vehicul 4x4 pentru game drive",
         "Ghid/șofer profesionist",
-        "Taxe de intrare în parcul marin",
+        "Taxe de intrare în parcul național",
         "Binocluri pentru observarea faunei",
         "Apă îmbuteliată și gustări",
         "Preluare de la hotel din Ponta do Ouro",
@@ -1756,7 +1756,7 @@ export const SAFARI_CONTENT = {
         { species: "Hipopotami și crocodili", details: "În jurul lacurilor, zonelor umede și Golfului Maputo" },
         { species: "Antilope", details: "Reedbuck, impala, niala, eland, kudu, antilopa de apă, duiker roșu" },
         { species: "Prădători", details: "Leopard, ghepard, hienă pătată (reintrodusă 2023-24)" },
-        { species: "Păsări", details: "Peste 300 de specii - flamingo, păsări de țărm, răpitoare" }
+        { species: "Păsări", details: "Peste 526 de specii - flamingo, păsări de țărm, răpitoare" }
       ],
       brochure: {
         title: "Broșura oficială a parcului",
@@ -1768,14 +1768,14 @@ export const SAFARI_CONTENT = {
 
     sr: {
       title: "Foto-lov safari",
-      tagline: "Avanture u savani u Specijalnom rezervatu Maputo",
+      tagline: "Avanture u savani u Nacionalnom parku Maputo",
       overview: "Otkrijte afričku divlju floru i faunu na samo kratkoj vožnji od Ponta do Ouro. Nacionalni park Maputo (bivši Specijalni rezervat Maputo) nudi klasično posmatranje divljih životinja sa 450-500 obalskih slonova, žirafama, zebrama, nilskim konjima, krokodilima i raznim vrstama antilopa na 1.718 km² zaštićene divljine - UNESCO mesto od 2025.",
       highlights: [
         "450-500 obalskih slonova",
         "Žirafe, zebre i antilope",
         "Nilski konji i krokodili u vlažnim područjima",
         "Leopardi, gepardi i pegave hijene",
-        "Preko 300 vrsta ptica, uključujući flamingoe",
+        "Preko 526 vrsta ptica, uključujući flamingoe",
         "Game drives 4x4 sa stručnim vodičima",
         "UNESCO mesto svetske baštine (2025)",
         "Moguća kombinacija plaže i savane"
@@ -1799,7 +1799,7 @@ export const SAFARI_CONTENT = {
       included: [
         "Vozilo 4x4 za game drive",
         "Profesionalni vodič/vozač",
-        "Ulaznice za morski park",
+        "Ulaznice za nacionalni park",
         "Dvogled za posmatranje divljih životinja",
         "Flaširana voda i grickalice",
         "Preuzimanje iz hotela u Ponta do Ouro",
@@ -1854,7 +1854,7 @@ export const SAFARI_CONTENT = {
         { species: "Nilski konji i krokodili", details: "Oko jezera, vlažnih područja i Maputskog zaliva" },
         { species: "Antilope", details: "Reedbuck, impala, nyala, eland, kudu, vodena antilopa, crveni duiker" },
         { species: "Predatori", details: "Leopard, gepard, pegava hijena (reintrodukovana 2023-24)" },
-        { species: "Ptice", details: "Preko 300 vrsta - flamingoi, ptice obale, grabljivice" }
+        { species: "Ptice", details: "Preko 526 vrsta - flamingoi, ptice obale, grabljivice" }
       ],
       brochure: {
         title: "Zvanična brošura parka",
@@ -1865,14 +1865,14 @@ export const SAFARI_CONTENT = {
     },
 hr: {
       title: "Foto-lov safari",
-      tagline: "Avanture u savani u Specijalnom rezervatu Maputo",
+      tagline: "Avanture u savani u Nacionalnom parku Maputo",
       overview: "Otkrijte afričku divlju floru i faunu na samo kratkoj vožnji od Ponta do Ouro. Nacionalni park Maputo (bivši Specijalni rezervat Maputo) nudi klasično posmatranje divljih životinja sa 450-500 obalskih slonova, žirafama, zebrama, nilskim konjima, krokodilima i raznim vrstama antilopa na 1.718 km² zaštićene divljine - UNESCO mjesto od 2025.",
       highlights: [
         "450-500 obalskih slonova",
         "Žirafe, zebre i antilope",
         "Nilski konji i krokodili u vlažnim područjima",
         "Leopardi, gepardi i pegave hijene",
-        "Preko 300 vrsta ptica, uključujući flamingoe",
+        "Preko 526 vrsta ptica, uključujući flamingoe",
         "Game drives 4x4 sa stručnim vodičima",
         "UNESCO mjesto svetske baštine (2025)",
         "Moguća kombinacija plaže i savane"
@@ -1896,7 +1896,7 @@ hr: {
       included: [
         "Vozilo 4x4 za game drive",
         "Profesionalni vodič/vozač",
-        "Ulaznice za morski park",
+        "Ulaznice za nacionalni park",
         "Dvogled za posmatranje divljih životinja",
         "Flaširana voda i grickalice",
         "Preuzimanje iz hotela u Ponta do Ouro",
@@ -1951,7 +1951,7 @@ hr: {
         { species: "Nilski konji i krokodili", details: "Oko jezera, vlažnih područja i Maputskog zaliva" },
         { species: "Antilope", details: "Reedbuck, impala, nyala, eland, kudu, vodena antilopa, crveni duiker" },
         { species: "Predatori", details: "Leopard, gepard, pegava hijena (reintrodukovana 2023-24)" },
-        { species: "Ptice", details: "Preko 300 vrsta - flamingoi, ptice obale, grabljivice" }
+        { species: "Ptice", details: "Preko 526 vrsta - flamingoi, ptice obale, grabljivice" }
       ],
       brochure: {
         title: "Zvanična brošura parka",
