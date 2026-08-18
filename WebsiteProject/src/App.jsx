@@ -188,8 +188,15 @@ export default function App() {
 
     // Two rAF frames: let React commit and the browser paint before we probe
     // the new H1, otherwise we may grab the departing route's H1.
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
+    // The cleanup cancels both frames so a rapid location change (or unmount)
+    // between frames cannot call focus() on a detached element.
+    let cancelled = false;
+    let outerRafId;
+    let innerRafId;
+
+    outerRafId = requestAnimationFrame(() => {
+      innerRafId = requestAnimationFrame(() => {
+        if (cancelled) return;
         const h1 = document.querySelector('main h1, h1');
         if (!h1) return;
         if (!h1.hasAttribute('tabindex')) h1.setAttribute('tabindex', '-1');
@@ -198,6 +205,12 @@ export default function App() {
         h1.focus({ preventScroll: true });
       });
     });
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(outerRafId);
+      cancelAnimationFrame(innerRafId);
+    };
   }, [location]);
 
   // Handle hash navigation on route changes (immediate, with retry until element exists)
