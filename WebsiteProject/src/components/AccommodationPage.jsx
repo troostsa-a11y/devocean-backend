@@ -49,20 +49,20 @@ export default function AccommodationPage({ bookUrl = '/book-direct' }) {
             <div className="grid-2">
               <div className="card">
                 <h3>Safari Tent</h3>
-                <p><strong>King or Twin · Shared bathroom</strong></p>
-                <p>12 m² canvas tent on a raised 3×6 m wooden platform. Protective side and back walls, mosquito mesh windows, private terrace with views into the garden. Shared clean bathroom. The classic canvas safari experience.</p>
+                <p><strong>King or Twin · Shared ablutions</strong></p>
+                <p>12 m² canvas tent on a raised 3×6 m wooden platform. Protective side and back walls, mosquito mesh windows, private terrace with views into the garden. Safari Tent guests use a shared ablutions block with separate women's and men's sections — each with two showers and two toilets.</p>
                 <p style={{marginTop:'0.5rem'}}><a href="/experiences/safari">View full details →</a></p>
               </div>
               <div className="card">
                 <h3>Comfort Safari Tent</h3>
-                <p><strong>King or Twin · Private en-suite</strong></p>
-                <p>The canvas experience with added privacy and convenience. A thatched en-suite bathroom sits at the back of the tent. Private wooden terrace overlooking the garden, lit romantically at night.</p>
+                <p><strong>King or Twin · Private en-suite bathroom in adjoining thatched rondavel</strong></p>
+                <p>The canvas experience with added privacy and convenience. Your private bathroom is housed in an adjoining thatched rondavel, reached from the tent's rear door via a short private connection. Private wooden terrace overlooking the garden, lit romantically at night.</p>
                 <p style={{marginTop:'0.5rem'}}><a href="/experiences/safari">View full details →</a></p>
               </div>
               <div className="card">
                 <h3>Garden Cottage</h3>
-                <p><strong>AC Inverter · Private bathroom · Desk</strong></p>
-                <p>A charming roundavel with a red Roman-tiled roof and high white ceiling with dark wooden beams. AC inverter for cooling and heating. Dining table, desk, private terrace and garden views.</p>
+                <p><strong>AC Inverter · En-suite bathroom in adjoining thatched rondavel · Desk</strong></p>
+                <p>A solid-walled cottage with a red Roman-tiled roof and high white ceiling with dark wooden beams. AC inverter for cooling and heating. Dining table, desk, private terrace and garden views. Your private en-suite bathroom is housed in an adjoining thatched rondavel, accessed directly through the bedroom's rear door.</p>
               </div>
               <div className="card">
                 <h3>Thatched Chalet</h3>

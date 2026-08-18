@@ -62,7 +62,7 @@ export default function SafariTentsPage({ bookUrl = '/book-direct' }) {
               </div>
               <div className="card">
                 <h3>Comfort Safari Tent — More privacy, same charm</h3>
-                <p>All the soul of the canvas experience, with the added convenience of an en-suite bathroom and greater seclusion. The private thatched bathroom is attached to the back of the tent.</p>
+                <p>All the soul of the canvas experience, with the added convenience of a private bathroom and greater seclusion. Your private bathroom is housed in an adjoining thatched rondavel, reached from the tent's rear door via a short private connection.</p>
                 <ul>
                   <li>Spacious canvas tent on raised platform</li>
                   <li>King-size or twin bed configuration</li>
@@ -70,7 +70,7 @@ export default function SafariTentsPage({ bookUrl = '/book-direct' }) {
                   <li>Private wooden terrace, night-lit garden</li>
                   <li>Mosquito mesh windows and doors</li>
                   <li>Power points for device charging</li>
-                  <li>Private en-suite thatched bathroom</li>
+                  <li>Private en-suite bathroom in adjoining thatched rondavel</li>
                 </ul>
               </div>
             </div>
@@ -107,10 +107,10 @@ export default function SafariTentsPage({ bookUrl = '/book-direct' }) {
             <ul className="faq-list">
               {[
                 ['Is it real camping or glamping?', 'Somewhere in between. Genuine canvas tent on a wooden platform — so the sounds, feel and connection to the outdoors are real. But with a proper bed, fresh linen, a private terrace and a well-maintained garden. The Comfort Tent adds an en-suite bathroom.'],
-                ['What is the bathroom situation for the standard Safari Tent?', 'The standard Safari Tent uses a shared bathroom — clean, maintained, and used only by safari tent guests. The Comfort Safari Tent has its own private en-suite bathroom attached to the rear of the tent.'],
+                ['What is the bathroom situation for the standard Safari Tent?', 'Safari Tent guests use shared ablutions with separate women\'s and men\'s sections — each with two toilets and two showers, kept clean and maintained, and used only by safari tent guests. The Comfort Safari Tent has its own private bathroom in an adjoining thatched rondavel, reached from the tent\'s rear door via a short private connection.'],
                 ['Are there mosquitoes? Is Ponta do Ouro a malaria area?', 'Yes, Ponta do Ouro is in a malaria-risk zone. Standard precautions apply: consult your doctor about prophylaxis before travel, and bring DEET insect repellent. The tents are fitted with mosquito-mesh windows and doors.'],
                 ['How hot does it get inside the tent?', "Ponta do Ouro's coastal position and sea breeze keep temperatures comfortable. Both tents have strong fans. Canvas breathes better than solid walls. Most guests sleep comfortably year-round. If you're very heat-sensitive, the Garden Cottage and Thatched Chalet both have AC inverters."],
-                ["What's the difference between the Safari Tent and the Comfort Tent?", 'The Comfort Safari Tent has a private en-suite thatched bathroom (vs. shared bathroom for the standard tent) and offers slightly more privacy and seclusion. Both are canvas tents with a fan, private terrace, King/Twin beds and mosquito protection.'],
+                ["What's the difference between the Safari Tent and the Comfort Tent?", 'The Comfort Safari Tent has a private en-suite bathroom in an adjoining thatched rondavel (vs. shared ablutions for the standard tent) and offers slightly more privacy and seclusion. Both are canvas tents with a fan, private terrace, King/Twin beds and mosquito protection.'],
                 ['Can I book direct without paying OTA fees?', 'Yes — devoceanlodge.com/book-direct gives live availability and confirmed best rates for both tents.'],
               ].map(([q, a]) => (
                 <li key={q} className="faq-item">

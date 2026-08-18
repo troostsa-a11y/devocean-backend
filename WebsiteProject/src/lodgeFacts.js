@@ -44,7 +44,7 @@ export const INVENTORY = {
       ac:        false,
       maxAdults: 2,
       maxChildren: 1,
-      notes:     'En-suite bathroom under thatched roof.',
+      notes:     'En-suite bathroom in adjoining thatched rondavel.',
     },
     {
       id:        'cottage',
@@ -55,7 +55,7 @@ export const INVENTORY = {
       ac:        true,                 // inverter AC (heat + cool)
       maxAdults: 2,
       maxChildren: 1,
-      notes:     'Solid construction, desk/workspace, dining table, thatched roundavel.',
+      notes:     'Solid construction, desk/workspace, dining table; en-suite bathroom in adjoining thatched rondavel.',
     },
     {
       id:        'chalet',
