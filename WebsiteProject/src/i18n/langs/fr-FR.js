@@ -31,6 +31,7 @@ menu: "Menu",
       headline: "Explorer Ponta",
       blurb: "Aventures océanes et forestières à deux pas.",
       operators: "Opérateurs locaux de confiance :",
+      featured: "À la une",
       learnMore: "Explorer les sites de plongée, opérateurs et tarifs →"
     },
     units: {

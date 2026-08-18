@@ -1,6 +1,8 @@
 // Critical translations that load synchronously for immediate rendering
-// Includes navigation text and hero title/subtitle (English only for minimal bundle size)
-// Non-English languages use English fallback briefly until full translations load
+// Includes navigation text, hero title/subtitle, and below-fold section headlines.
+// All supported languages include stay/experiences keys so AccommodationsSection
+// and ExperiencesSection render in the correct language from the very first paint —
+// eliminating the English-placeholder flash for non-English visitors.
 export const CRITICAL_NAV = {
   "en-GB": {
     home: "Home",
@@ -15,7 +17,14 @@ export const CRITICAL_NAV = {
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.",
     heroDescription: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.",
-    heroExplore: "Explore the lodge"
+    heroExplore: "Explore the lodge",
+    stayHeadline: "Stay with us",
+    stayBlurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.",
+    stayMoreDetails: "More details",
+    experiencesHeadline: "Explore Ponta",
+    experiencesBlurb: "Ocean and forest adventures right on your doorstep.",
+    experiencesFeatured: "Featured",
+    experiencesLearnMore: "Explore dive sites, operators & pricing →"
   },
   "en-US": {
     home: "Home",
@@ -30,29 +39,50 @@ export const CRITICAL_NAV = {
     heroTitle: "DEVOCEAN Lodge",
     heroSubtitle: "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.",
     heroDescription: "Discover a unique UNESCO diving paradise, surrounded by nature reserves and unforgettable outdoor experiences.",
-    heroExplore: "Explore the lodge"
+    heroExplore: "Explore the lodge",
+    stayHeadline: "Stay with us",
+    stayBlurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.",
+    stayMoreDetails: "More details",
+    experiencesHeadline: "Explore Ponta",
+    experiencesBlurb: "Ocean and forest adventures right on your doorstep.",
+    experiencesFeatured: "Featured",
+    experiencesLearnMore: "Explore dive sites, operators & pricing →"
   },
   "pt-PT": {
     home: "Início",
-    stay: "Alojamento",
+    stay: "Estadia",
     experiences: "Experiências",
     todo: "O que fazer",
     gallery: "Galeria",
     location: "Localização",
-    contact: "Contato",
+    contact: "Contacto",
     bookNow: "Tarifas e disponibilidade",
-    heroCTA: "Verificar Disponibilidade"
+    heroCTA: "Verificar Disponibilidade",
+    stayHeadline: "Fique connosco",
+    stayBlurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.",
+    stayMoreDetails: "Mais detalhes",
+    experiencesHeadline: "Explorar Ponta",
+    experiencesBlurb: "Aventuras no oceano e na floresta mesmo à sua porta.",
+    experiencesFeatured: "Destaque",
+    experiencesLearnMore: "Explorar locais de mergulho, operadores e preços →"
   },
   "pt-BR": {
     home: "Início",
-    stay: "Alojamento",
+    stay: "Estadia",
     experiences: "Experiências",
     todo: "O que fazer",
     gallery: "Galeria",
     location: "Localização",
-    contact: "Contato",
+    contact: "Contacto",
     bookNow: "Tarifas e disponibilidade",
-    heroCTA: "Verificar Disponibilidade"
+    heroCTA: "Verificar Disponibilidade",
+    stayHeadline: "Fique connosco",
+    stayBlurb: "Escolha o seu estilo: tendas imersas na natureza ou chalés e cottage aconchegantes – tudo com hospitalidade familiar calorosa, como numa machamba local.",
+    stayMoreDetails: "Mais detalhes",
+    experiencesHeadline: "Explorar Ponta",
+    experiencesBlurb: "Aventuras no oceano e na floresta mesmo à sua porta.",
+    experiencesFeatured: "Destaque",
+    experiencesLearnMore: "Explorar locais de mergulho, operadores e preços →"
   },
   "nl-NL": {
     home: "Home",
@@ -63,7 +93,14 @@ export const CRITICAL_NAV = {
     location: "Locatie",
     contact: "Contact",
     bookNow: "Tarieven & Beschikbaarheid",
-    heroCTA: "Bekijk Beschikbaarheid"
+    heroCTA: "Bekijk Beschikbaarheid",
+    stayHeadline: "Verblijf bij ons",
+    stayBlurb: "Kies je stijl: natuur-tenten of knusse chalets en cottage – met warme, familiale gastvrijheid.",
+    stayMoreDetails: "Meer details",
+    experiencesHeadline: "Ontdek Ponta",
+    experiencesBlurb: "Zee- en bosavontuur naast de deur.",
+    experiencesFeatured: "Uitgelicht",
+    experiencesLearnMore: "Verken duiklocaties, aanbieders & prijzen →"
   },
   "fr-FR": {
     home: "Accueil",
@@ -74,7 +111,14 @@ export const CRITICAL_NAV = {
     location: "Localisation",
     contact: "Contact",
     bookNow: "Tarifs & Disponibilité",
-    heroCTA: "Vérifier la disponibilité"
+    heroCTA: "Vérifier la disponibilité",
+    stayHeadline: "Séjournez chez nous",
+    stayBlurb: "Tentes nature ou chalets/cottage confortables – avec une chaleureuse hospitalité familiale.",
+    stayMoreDetails: "Plus de détails",
+    experiencesHeadline: "Explorer Ponta",
+    experiencesBlurb: "Aventures océanes et forestières à deux pas.",
+    experiencesFeatured: "À la une",
+    experiencesLearnMore: "Explorer les sites de plongée, opérateurs et tarifs →"
   },
   "it-IT": {
     home: "Home",
@@ -85,7 +129,14 @@ export const CRITICAL_NAV = {
     location: "Posizione",
     contact: "Contatto",
     bookNow: "Tariffe & Disponibilità",
-    heroCTA: "Verifica disponibilità"
+    heroCTA: "Verifica disponibilità",
+    stayHeadline: "Soggiorna con noi",
+    stayBlurb: "Tende immerse nella natura o chalet/cottage accoglienti – con ospitalità familiare.",
+    stayMoreDetails: "Altri dettagli",
+    experiencesHeadline: "Esplora Ponta",
+    experiencesBlurb: "Avventure tra oceano e foresta a portata di mano.",
+    experiencesFeatured: "In evidenza",
+    experiencesLearnMore: "Esplora siti di immersione, operatori e prezzi →"
   },
   "de-DE": {
     home: "Startseite",
@@ -96,7 +147,14 @@ export const CRITICAL_NAV = {
     location: "Standort",
     contact: "Kontakt",
     bookNow: "Preise & Verfügbarkeit",
-    heroCTA: "Verfügbarkeit prüfen"
+    heroCTA: "Verfügbarkeit prüfen",
+    stayHeadline: "Bei uns übernachten",
+    stayBlurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.",
+    stayMoreDetails: "Mehr Details",
+    experiencesHeadline: "Erkunde Ponta",
+    experiencesBlurb: "Ozean- und Waldabenteuer direkt vor der Tür.",
+    experiencesFeatured: "Empfohlen",
+    experiencesLearnMore: "Tauchplätze, Anbieter & Preise entdecken →"
   },
   "es-ES": {
     home: "Inicio",
@@ -107,7 +165,14 @@ export const CRITICAL_NAV = {
     location: "Ubicación",
     contact: "Contacto",
     bookNow: "Tarifas & Disponibilidad",
-    heroCTA: "Verificar disponibilidad"
+    heroCTA: "Verificar disponibilidad",
+    stayHeadline: "Alójate con nosotros",
+    stayBlurb: "Tiendas en la naturaleza o chalets/cottage acogedores – con hospitalidad familiar.",
+    stayMoreDetails: "Más detalles",
+    experiencesHeadline: "Explorar Ponta",
+    experiencesBlurb: "Aventuras de océano y bosque a tu puerta.",
+    experiencesFeatured: "Destacado",
+    experiencesLearnMore: "Explorar sitios de buceo, operadores y precios →"
   },
   sv: {
     home: "Hem",
@@ -118,7 +183,14 @@ export const CRITICAL_NAV = {
     location: "Plats",
     contact: "Kontakt",
     bookNow: "Boka nu",
-    heroCTA: "Kontrollera tillgänglighet"
+    heroCTA: "Kontrollera tillgänglighet",
+    stayHeadline: "Bo hos oss",
+    stayBlurb: "Välj din stil: naturnära tält eller mysiga stugor – alla med varm, familjeägd gästfrihet.",
+    stayMoreDetails: "Mer information",
+    experiencesHeadline: "Utforska Ponta",
+    experiencesBlurb: "Havs- och skogsäventyr precis utanför dörren.",
+    experiencesFeatured: "Utvalda",
+    experiencesLearnMore: "Utforska dykplatser, arrangörer och priser →"
   },
   pl: {
     home: "Strona główna",
@@ -129,7 +201,14 @@ export const CRITICAL_NAV = {
     location: "Lokalizacja",
     contact: "Kontakt",
     bookNow: "Ceny i dostępność",
-    heroCTA: "Sprawdź dostępność"
+    heroCTA: "Sprawdź dostępność",
+    stayHeadline: "Zostań z nami",
+    stayBlurb: "Wybierz swój styl: namioty zanurzone w naturze lub przytulne domki i chata – wszystko z ciepłą, rodzinną gościnnością.",
+    stayMoreDetails: "Więcej szczegółów",
+    experiencesHeadline: "Odkryj Ponta",
+    experiencesBlurb: "Przygody nad oceanem i w lesie tuż za progiem.",
+    experiencesFeatured: "Polecane",
+    experiencesLearnMore: "Odkryj miejsca nurkowania, operatorów i ceny →"
   },
   ro: {
     home: "Acasă",
@@ -140,7 +219,14 @@ export const CRITICAL_NAV = {
     location: "Locație",
     contact: "Contact",
     bookNow: "Tarife și disponibilitate",
-    heroCTA: "Verificați disponibilitatea"
+    heroCTA: "Verificați disponibilitatea",
+    stayHeadline: "Stai cu noi",
+    stayBlurb: "Alege-ți stilul: corturi în mijlocul naturii sau cabane confortabile și o căsuță – toate cu ospitalitate caldă, de tip familial.",
+    stayMoreDetails: "Mai multe detalii",
+    experiencesHeadline: "Explorați Ponta",
+    experiencesBlurb: "Aventuri în ocean și pădure chiar la ușa ta.",
+    experiencesFeatured: "Recomandat",
+    experiencesLearnMore: "Explorează site-urile de scufundare, operatorii și prețurile →"
   },
   sr: {
     home: "Početna",
@@ -151,7 +237,14 @@ export const CRITICAL_NAV = {
     location: "Lokacija",
     contact: "Kontakt",
     bookNow: "Cene i dostupnost",
-    heroCTA: "Proverite dostupnost"
+    heroCTA: "Proverite dostupnost",
+    stayHeadline: "Ostanite kod nas",
+    stayBlurb: "Izaberite svoj stil: šatori usred prirode ili udobne kućice i vikendica – sve uz toplu, porodičnu gostoljubivost.",
+    stayMoreDetails: "Više detalja",
+    experiencesHeadline: "Istraži Pontu",
+    experiencesBlurb: "Avanture u okeanu i šumi pred vašim vratima.",
+    experiencesFeatured: "Izdvojeno",
+    experiencesLearnMore: "Istražite ronilačke lokacije, operatere i cene →"
   },
   hr: {
     home: "Početna",
@@ -162,7 +255,14 @@ export const CRITICAL_NAV = {
     location: "Lokacija",
     contact: "Kontakt",
     bookNow: "Cijene i dostupnost",
-    heroCTA: "Provjeri dostupnost"
+    heroCTA: "Provjeri dostupnost",
+    stayHeadline: "Ostanite kod nas",
+    stayBlurb: "Izaberite svoj stil: šatori usred prirode ili udobne kućice i vikendica – sve uz toplu, porodičnu gostoljubivost.",
+    stayMoreDetails: "Više detalja",
+    experiencesHeadline: "Istraži Pontu",
+    experiencesBlurb: "Avanture u oceanu i šumi pred vašim vratima.",
+    experiencesFeatured: "Izdvojeno",
+    experiencesLearnMore: "Istražite ronilačke lokacije, operatere i cene →"
   },
   cs: {
     home: "Domů",
@@ -173,7 +273,14 @@ export const CRITICAL_NAV = {
     location: "Lokalita",
     contact: "Kontakt",
     bookNow: "Ceny a dostupnost",
-    heroCTA: "Zkontrolovat dostupnost"
+    heroCTA: "Zkontrolovat dostupnost",
+    stayHeadline: "Zůstaňte u nás",
+    stayBlurb: "Vyberte si svůj styl: stany v přírodě nebo útulné chaty a chalupa – vše s vřelou rodinnou pohostinností.",
+    stayMoreDetails: "Více informací",
+    experiencesHeadline: "Prozkoumej Pontu",
+    experiencesBlurb: "Dobrodružství v oceánu a lese přímo za vašimi dveřmi.",
+    experiencesFeatured: "Vybrané",
+    experiencesLearnMore: "Prozkoumejte potápěčské lokality, operátory a ceny →"
   },
   tr: {
     home: "Ana Sayfa",
@@ -184,7 +291,14 @@ export const CRITICAL_NAV = {
     location: "Konum",
     contact: "İletişim",
     bookNow: "Fiyatlar ve Müsaitlik",
-    heroCTA: "Müsaitliği Kontrol Et"
+    heroCTA: "Müsaitliği Kontrol Et",
+    stayHeadline: "Bizimle Kalın",
+    stayBlurb: "Tarzınızı seçin: doğada çadırlar veya rahat şaleler ve kulübe – hepsi sıcak aile misafirperverliğiyle.",
+    stayMoreDetails: "Daha Fazla Bilgi",
+    experiencesHeadline: "Ponta'yı Keşfet",
+    experiencesBlurb: "Kapınızın hemen önünde okyanus ve orman maceraları.",
+    experiencesFeatured: "Öne Çıkanlar",
+    experiencesLearnMore: "Dalış noktalarını, operatörleri ve fiyatları keşfedin →"
   },
   "ja-JP": {
     home: "ホーム",
@@ -195,7 +309,14 @@ export const CRITICAL_NAV = {
     location: "場所",
     contact: "連絡先",
     bookNow: "料金 & 空室状況",
-    heroCTA: "空き状況を確認"
+    heroCTA: "空き状況を確認",
+    stayHeadline: "私たちと一緒に",
+    stayBlurb: "スタイルをお選びください：自然に囲まれたテント、居心地の良いチャレットやコテージ – すべてファミリーレートなホスピタリティ付き。",
+    stayMoreDetails: "詳細",
+    experiencesHeadline: "ポンタを探索",
+    experiencesBlurb: "玄関先でオーシャンとフォレストの冒険。",
+    experiencesFeatured: "おすすめ",
+    experiencesLearnMore: "ダイビングスポット、オペレーター、料金を探る →"
   },
   "zh-CN": {
     home: "首页",
@@ -206,7 +327,14 @@ export const CRITICAL_NAV = {
     location: "位置",
     contact: "联系我们",
     bookNow: "价格与空房情况",
-    heroCTA: "查看空房"
+    heroCTA: "查看空房",
+    stayHeadline: "与我们同住",
+    stayBlurb: "选择您的风格：融入自然的帐篷、舒适的小木屋或别墅 - 皆有温馨的家庭式款待。",
+    stayMoreDetails: "更多详情",
+    experiencesHeadline: "探索Ponta",
+    experiencesBlurb: "海洋与森林冒险就在您家门口。",
+    experiencesFeatured: "精选",
+    experiencesLearnMore: "探索潜水地点、运营商及价格 →"
   },
   ru: {
     home: "Главная",
@@ -217,7 +345,14 @@ export const CRITICAL_NAV = {
     location: "Местоположение",
     contact: "Контакты",
     bookNow: "Цены и наличие",
-    heroCTA: "Проверить доступность"
+    heroCTA: "Проверить доступность",
+    stayHeadline: "Оставайтесь с нами",
+    stayBlurb: "Выберите свой стиль: палатки в окружении природы или уютные шале и коттеджи — всё с теплым семейным гостеприимством.",
+    stayMoreDetails: "Подробнее",
+    experiencesHeadline: "Исследуй Понту",
+    experiencesBlurb: "Приключения на море и в лесу прямо у вашего порога.",
+    experiencesFeatured: "Рекомендуем",
+    experiencesLearnMore: "Исследуйте места для дайвинга, операторов и цены →"
   },
   "af-ZA": {
     home: "Tuis",
@@ -228,7 +363,14 @@ export const CRITICAL_NAV = {
     location: "Ligging",
     contact: "Kontak",
     bookNow: "Tariewe en beskikbaarheid",
-    heroCTA: "Kontroleer beskikbaarheid"
+    heroCTA: "Kontroleer beskikbaarheid",
+    stayHeadline: "Bly by ons",
+    stayBlurb: "Kies jou styl: tente omring deur natuur of knus chalets en kothuise — alles met warm gesinsgasvryheid.",
+    stayMoreDetails: "Meer besonderhede",
+    experiencesHeadline: "Verken Ponta",
+    experiencesBlurb: "See- en bosavonture reg voor jou deur.",
+    experiencesFeatured: "Gewild",
+    experiencesLearnMore: "Verken duikplekke, operateurs en pryse →"
   },
   zu: {
     home: "Ikhaya",
@@ -239,7 +381,14 @@ export const CRITICAL_NAV = {
     location: "Indawo",
     contact: "Xhumana nathi",
     bookNow: "Amanani kanye nokutholakala",
-    heroCTA: "Hlola ukutholakala"
+    heroCTA: "Hlola ukutholakala",
+    stayHeadline: "Hlala nathi",
+    stayBlurb: "Khetha isitayela sakho: amatende asendle, izindlu zokuphumula ezithokomele noma izindlu ezinkulu - konke kunokwamukelwa okufudumele komndeni.",
+    stayMoreDetails: "Imininingwane eyengeziwe",
+    experiencesHeadline: "Hlola iPonta",
+    experiencesBlurb: "Ukuhamba olwandle kanye nasehlathini kuseduze nomnyango wakho.",
+    experiencesFeatured: "Okugqamile",
+    experiencesLearnMore: "Hlola izindawo zokugxumeka, abahlinzeki namanani →"
   },
   sw: {
     home: "Nyumbani",
@@ -250,6 +399,13 @@ export const CRITICAL_NAV = {
     location: "Mahali",
     contact: "Wasiliana nasi",
     bookNow: "Weka nafasi sasa",
-    heroCTA: "Angalia upatikanaji"
+    heroCTA: "Angalia upatikanaji",
+    stayHeadline: "Kaa nasi",
+    stayBlurb: "Chagua mtindo wako: mahema ya porini, nyumba za kupumzika za starehe au nyumba kubwa - yote yakiwa na karibu ya joto ya familia.",
+    stayMoreDetails: "Maelezo zaidi",
+    experiencesHeadline: "Gundua Ponta",
+    experiencesBlurb: "Matukio ya baharini na msituni yapo karibu na mlango wako.",
+    experiencesFeatured: "Maarufu",
+    experiencesLearnMore: "Chunguza maeneo ya kupiga mbizi, watoa huduma na bei →"
   }
 };

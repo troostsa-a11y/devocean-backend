@@ -506,7 +506,7 @@ async function loadTranslations(lang) {
 }
 
 // Build minimal UI object with critical nav for instant rendering
-function getCriticalUI(lang) {
+export function getCriticalUI(lang) {
   // Use lang directly - critical nav keys now match Hotelrunner codes
   const nav = CRITICAL_NAV[lang] || CRITICAL_NAV["en-GB"];
   return {
@@ -556,15 +556,15 @@ function getCriticalUI(lang) {
       badge: "..." // Placeholder until full translations load
     },
     stay: {
-      headline: "Stay with us",
-      blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.",
-      moreDetails: "More details"
+      headline: nav.stayHeadline || "Stay with us",
+      blurb: nav.stayBlurb || "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.",
+      moreDetails: nav.stayMoreDetails || "More details"
     },
     experiences: {
-      headline: "Experiences",
-      blurb: "Ocean and forest adventures right on your doorstep.",
-      featured: "Featured",
-      learnMore: "Explore dive sites, operators & pricing →"
+      headline: nav.experiencesHeadline || "Explore Ponta",
+      blurb: nav.experiencesBlurb || "Ocean and forest adventures right on your doorstep.",
+      featured: nav.experiencesFeatured || "Featured",
+      learnMore: nav.experiencesLearnMore || "Explore dive sites, operators & pricing →"
     },
     galleryHeading: "Gallery",
     location: {

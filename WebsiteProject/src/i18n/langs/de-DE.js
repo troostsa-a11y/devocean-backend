@@ -5,7 +5,7 @@ menu: "Menü",
     nav: { home: "Startseite", stay: "Unterkünfte", experiences: "Erkunde Ponta", todo: "Was tun", gallery: "Galerie", location: "Lage", contact: "Kontakt", food: "Essen" },
     hero: { title: "DEVOCEAN Lodge", subtitle: "Umweltfreundlich wohnen nahe einem unberührten Strand in einem Abenteuerziel von Weltklasse.", description: "Entdecken Sie ein einzigartiges UNESCO-Tauchparadies, umgeben von Naturschutzgebieten und unvergesslichen Outdoor-Erlebnissen.", ctaPrimary: "Verfügbarkeit prüfen", ctaSecondary: "Lodge entdecken", badge: "Von Gästen geliebt: Komfort & Preis-Leistung", clickReviews: "Klicken Sie auf die Bewertungen!", whyPonta: "Warum Ponta do Ouro?", villageHighlights: "Highlights", goDiving: "Tauchen gehen" },
     stay: { headline: "Bei uns übernachten", blurb: "Naturzelte oder gemütliche Chalets & Cottage – mit herzlicher Gastfreundschaft.", moreDetails: "Mehr Details", ourStory: "Unsere Geschichte" },
-    experiences: { headline: "Erkunde Ponta", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:", learnMore: "Tauchplätze, Anbieter & Preise entdecken →" },
+    experiences: { headline: "Erkunde Ponta", blurb: "Ozean- und Waldabenteuer direkt vor der Tür.", operators: "Vertrauenswürdige lokale Anbieter:", featured: "Empfohlen", learnMore: "Tauchplätze, Anbieter & Preise entdecken →" },
     units: {
       safari: {
         title: "Safari-Zelt",
