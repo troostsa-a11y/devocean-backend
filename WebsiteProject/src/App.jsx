@@ -228,17 +228,21 @@ export default function App() {
     const maxAttempts = 20;
     
     const tryScroll = () => {
+      // Re-read the live hash on every attempt. If the user navigated to '/'
+      // without an anchor (e.g. clicked Back after visiting /#stay), the hash
+      // is now empty and we must not scroll to the stale captured target.
+      if (window.location.hash.slice(1) !== hash) return;
+
       const element = document.getElementById(hash);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return true;
+        return;
       }
       
       attempts++;
       if (attempts < maxAttempts) {
         requestAnimationFrame(tryScroll);
       }
-      return false;
     };
     
     // Start trying immediately

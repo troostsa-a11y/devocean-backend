@@ -274,4 +274,54 @@ describe('App — hash-scroll useEffect', () => {
       expect(scrollSpy).not.toHaveBeenCalled();
     }
   });
+
+  // ── Test 5: hash cleared before the retry rAF fires ──────────────────────
+  //
+  // Regression guard for a specific race:
+  //   1. SPA navigates /story → /#stay: effect fires, captures hash='stay',
+  //      schedules a rAF — but the rAF has NOT fired yet.
+  //   2. Before the rAF fires, the user navigates to '/' (no hash), clearing
+  //      window.location.hash. Because the Wouter pathname stays '/', the
+  //      hash-scroll useEffect dep (location) does NOT change and the effect
+  //      does NOT re-run. The pending rAF callback still holds hash='stay'.
+  //   3. The rAF fires. Without a live hash re-check, tryScroll finds #stay
+  //      in the DOM and scrolls — incorrectly, because the hash was cleared.
+  //
+  // The fix: tryScroll re-reads window.location.hash on every attempt and
+  // cancels if it no longer matches the originally captured value.
+
+  it('does NOT scroll to #stay when the hash is cleared before the rAF fires', async () => {
+    // ── Phase 1: render on /story ────────────────────────────────────────────
+    mockLocation = '/story';
+    setWindowLocation({ pathname: '/story', hash: '' });
+
+    let rerenderFn;
+    await act(async () => {
+      const result = render(<App />);
+      rerenderFn = result.rerender;
+    });
+
+    // ── Phase 2: navigate to /#stay — effect fires, rAF queued, NOT flushed ──
+    mockLocation = '/';
+    setWindowLocation({ pathname: '/', hash: '#stay' });
+
+    // Rerender so the location dep changes (→ '/') and the effect runs.
+    // Do NOT flush timers yet: tryScroll is queued in a rAF but hasn't fired.
+    await act(async () => { rerenderFn(<App />); });
+
+    // ── Phase 3: user navigates to '/' (no hash) BEFORE the rAF fires ────────
+    // Pathname stays '/' — Wouter's location dep doesn't change, so the effect
+    // does NOT re-run. The pending rAF still holds hash='stay' in its closure.
+    setWindowLocation({ pathname: '/', hash: '' });
+
+    // Spy on #stay — it is already in the DOM; the pending rAF will find it.
+    const stayEl = document.getElementById('stay');
+    expect(stayEl).toBeTruthy();
+    const scrollSpy = vi.spyOn(stayEl, 'scrollIntoView');
+
+    // ── Phase 4: flush — tryScroll fires but must bail because hash is gone ──
+    await act(async () => { vi.runAllTimers(); });
+
+    expect(scrollSpy).not.toHaveBeenCalled();
+  });
 });
