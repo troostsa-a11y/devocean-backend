@@ -82,7 +82,7 @@ export default function PontaDoOuroPage({ lang = 'en-GB', bookUrl = '/book-direc
 
           <section className="section" aria-labelledby="wildlife-title">
             <h2 className="section-title" id="wildlife-title">Wildlife Reserves at the Doorstep <span className="badge">Bush-to-beach</span></h2>
-            <p>Maputo National Park (formerly Maputo Special Reserve) is 30 km north of Ponta do Ouro and forms part of the UNESCO-listed Lubombo Transfrontier Conservation Area. The park shelters large herds of elephants, hippos, giraffes, zebras, blue wildebeest, nyala, kudu and over 526 bird species across savanna, dunes and mangroves.</p>
+            <p>Maputo National Park (formerly Maputo Special Reserve) is 30 km north of Ponta do Ouro and is part of the <a href="https://whc.unesco.org/en/list/914/" target="_blank" rel="noopener noreferrer">iSimangaliso Wetland Park – Maputo National Park</a> UNESCO World Heritage Site (2025). The park shelters large herds of elephants, hippos, giraffes, zebras, blue wildebeest, nyala, kudu and over 526 bird species across savanna, dunes and mangroves.</p>
             <div className="grid-2">
               <div className="card">
                 <h3>Maputo National Park — 30 km (UNESCO)</h3>

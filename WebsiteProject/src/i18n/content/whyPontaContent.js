@@ -14,7 +14,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Why Ponta do Ouro?',
     badgeLabel: 'Gateway to Maputo National Park',
     imageAlt: 'Ponta do Ouro coastline',
-    introText: 'Welcome to Ponta do Ouro, the gateway to Mozambique\'s first natural UNESCO World Heritage Site—Maputo National Park. This coastal paradise offers an unbeatable blend of relaxation, eco-tourism, and cultural immersion. Whether you\'re seeking thrilling dives, serene gardens like those at DEVOCEAN Lodge, or day trips to nearby wonders, here\'s why this destination should be on your travel list.',
+    introText: 'Welcome to Ponta do Ouro, the gateway to the iSimangaliso Wetland Park – Maputo National Park UNESCO World Heritage Site. This coastal paradise offers an unbeatable blend of relaxation, eco-tourism, and cultural immersion. Whether you\'re seeking thrilling dives, serene gardens like those at DEVOCEAN Lodge, or day trips to nearby wonders, here\'s why this destination should be on your travel list.',
     sections: [
       {
         id: 'beaches',
@@ -25,7 +25,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'World-Class Marine Adventures',
-        content: 'Dive into thriving reefs teeming with 1,200+ fish species, bull sharks, hammerheads, mantas, turtles, and resident dolphins. From June to November, spot migrating humpback whales, and enjoy ethical swims with wild dolphins. Protected by the UNESCO National Park, these experiences are sustainable and less crowded than other sites.',
+        content: 'Dive into thriving reefs teeming with 1,200+ fish species, bull sharks, hammerheads, mantas, turtles, and resident dolphins. From June to November, spot migrating humpback whales, and enjoy ethical swims with wild dolphins. Protected within the iSimangaliso Wetland Park – Maputo National Park UNESCO World Heritage Site,, these experiences are sustainable and less crowded than other sites.',
         extra: 'Explore underwater with sites from 10m at Crèche to 47m at Atlantis, or try snorkeling, surfing, and fishing for barracuda and kingfish.',
         highlight: '1,200+ fish species'
       },
@@ -65,7 +65,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Porquê Ponta do Ouro?',
     badgeLabel: 'Portal para o Parque Nacional do Maputo',
     imageAlt: 'Litoral de Ponta do Ouro',
-    introText: 'Bem-vindo a Ponta do Ouro, o portal para o primeiro Património Mundial Natural da UNESCO de Moçambique—o Parque Nacional do Maputo. Este paraíso costeiro oferece uma combinação imbatível de relaxamento, ecoturismo e imersão cultural. Quer procure mergulhos emocionantes, jardins serenos como os do DEVOCEAN Lodge, ou excursões a maravilhas próximas, eis por que este destino deve estar na sua lista de viagens.',
+    introText: 'Bem-vindo a Ponta do Ouro, o portal para o iSimangaliso Wetland Park – Maputo National Park, Patrimônio Mundial Natural da UNESCO. Este paraíso costeiro oferece uma combinação imbatível de relaxamento, ecoturismo e imersão cultural. Quer procure mergulhos emocionantes, jardins serenos como os do DEVOCEAN Lodge, ou excursões a maravilhas próximas, eis por que este destino deve estar na sua lista de viagens.',
     sections: [
       {
         id: 'beaches',
@@ -76,7 +76,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Aventuras Marinhas de Classe Mundial',
-        content: 'Mergulhe em recifes prósperos repletos de mais de 1.200 espécies de peixes, tubarões-touro, tubarões-martelo, mantas, tartarugas e golfinhos residentes. De junho a novembro, aviste baleias jubarte migratórias e desfrute de nados éticos com golfinhos selvagens. Protegidas pelo Parque Nacional da UNESCO, estas experiências são sustentáveis e menos lotadas do que outros locais.',
+        content: 'Mergulhe em recifes prósperos repletos de mais de 1.200 espécies de peixes, tubarões-touro, tubarões-martelo, mantas, tartarugas e golfinhos residentes. De junho a novembro, aviste baleias jubarte migratórias e desfrute de nados éticos com golfinhos selvagens. Protegidas pelo iSimangaliso Wetland Park – Maputo National Park, Patrimônio Mundial da UNESCO,, estas experiências são sustentáveis e menos lotadas do que outros locais.',
         extra: 'Explore o mundo subaquático com locais de mergulho desde 10m no Crèche até 47m no Atlantis, ou experimente snorkeling, surf e pesca de barracudas e xaréus.',
         highlight: 'Mais de 1.200 espécies de peixes'
       },
@@ -116,7 +116,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Pourquoi Ponta do Ouro ?',
     badgeLabel: 'Porte d\'entrée du Parc National de Maputo',
     imageAlt: 'Littoral de Ponta do Ouro',
-    introText: 'Bienvenue à Ponta do Ouro, la porte d\'entrée du premier site naturel du Patrimoine Mondial de l\'UNESCO au Mozambique — le Parc National de Maputo. Ce paradis côtier offre un mélange imbattable de détente, d\'écotourisme et d\'immersion culturelle. Que vous recherchiez des plongées palpitantes, des jardins sereins comme ceux du DEVOCEAN Lodge, ou des excursions vers des merveilles proches, voici pourquoi cette destination devrait figurer sur votre liste de voyages.',
+    introText: 'Bienvenue à Ponta do Ouro, la porte d\'entrée du iSimangaliso Wetland Park – Maputo National Park, Patrimoine Mondial de l\'UNESCO. Ce paradis côtier offre un mélange imbattable de détente, d\'écotourisme et d\'immersion culturelle. Que vous recherchiez des plongées palpitantes, des jardins sereins comme ceux du DEVOCEAN Lodge, ou des excursions vers des merveilles proches, voici pourquoi cette destination devrait figurer sur votre liste de voyages.',
     sections: [
       {
         id: 'beaches',
@@ -127,7 +127,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Aventures Marines de Classe Mondiale',
-        content: 'Plongez dans des récifs florissants regorgeant de plus de 1 200 espèces de poissons, requins-taureaux, requins-marteaux, raies manta, tortues et dauphins résidents. De juin à novembre, observez les baleines à bosse migratrices et profitez de nages éthiques avec les dauphins sauvages. Protégées par le Parc National UNESCO, ces expériences sont durables et moins fréquentées que d\'autres sites.',
+        content: 'Plongez dans des récifs florissants regorgeant de plus de 1 200 espèces de poissons, requins-taureaux, requins-marteaux, raies manta, tortues et dauphins résidents. De juin à novembre, observez les baleines à bosse migratrices et profitez de nages éthiques avec les dauphins sauvages. Protégées au sein de l\'iSimangaliso Wetland Park – Maputo National Park, Patrimoine Mondial de l\'UNESCO, ces expériences sont durables et moins fréquentées que d\'autres sites.',
         extra: 'Explorez le monde sous-marin avec des sites de plongée de 10m à Crèche jusqu\'à 47m à Atlantis, ou essayez le snorkeling, le surf et la pêche aux barracudas et carangues.',
         highlight: 'Plus de 1 200 espèces de poissons'
       },
@@ -167,7 +167,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Warum Ponta do Ouro?',
     badgeLabel: 'Tor zum Maputo-Nationalpark',
     imageAlt: 'Küste von Ponta do Ouro',
-    introText: 'Willkommen in Ponta do Ouro, dem Tor zu Mosambiks erstem natürlichen UNESCO-Weltkulturerbe — dem Maputo-Nationalpark. Dieses Küstenparadies bietet eine unschlagbare Mischung aus Entspannung, Ökotourismus und kulturellem Eintauchen. Ob Sie aufregende Tauchgänge, ruhige Gärten wie die der DEVOCEAN Lodge oder Ausflüge zu nahen Wundern suchen — hier erfahren Sie, warum dieses Reiseziel auf Ihrer Liste stehen sollte.',
+    introText: 'Willkommen in Ponta do Ouro, dem Tor zu dem iSimangaliso Wetland Park – Maputo National Park UNESCO-Welterbe. Dieses Küstenparadies bietet eine unschlagbare Mischung aus Entspannung, Ökotourismus und kulturellem Eintauchen. Ob Sie aufregende Tauchgänge, ruhige Gärten wie die der DEVOCEAN Lodge oder Ausflüge zu nahen Wundern suchen — hier erfahren Sie, warum dieses Reiseziel auf Ihrer Liste stehen sollte.',
     sections: [
       {
         id: 'beaches',
@@ -218,7 +218,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: '¿Por qué Ponta do Ouro?',
     badgeLabel: 'Puerta de entrada al Parque Nacional de Maputo',
     imageAlt: 'Costa de Ponta do Ouro',
-    introText: 'Bienvenido a Ponta do Ouro, la puerta de entrada al primer Patrimonio Natural de la Humanidad de la UNESCO en Mozambique — el Parque Nacional de Maputo. Este paraíso costero ofrece una combinación inigualable de relajación, ecoturismo e inmersión cultural. Ya sea que busque inmersiones emocionantes, jardines serenos como los de DEVOCEAN Lodge, o excursiones a maravillas cercanas, aquí le explicamos por qué este destino debe estar en su lista de viajes.',
+    introText: 'Bienvenido a Ponta do Ouro, la puerta de entrada al iSimangaliso Wetland Park – Maputo National Park, Patrimonio Natural de la Humanidad de la UNESCO. Este paraíso costero ofrece una combinación inigualable de relajación, ecoturismo e inmersión cultural. Ya sea que busque inmersiones emocionantes, jardines serenos como los de DEVOCEAN Lodge, o excursiones a maravillas cercanas, aquí le explicamos por qué este destino debe estar en su lista de viajes.',
     sections: [
       {
         id: 'beaches',
@@ -229,7 +229,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Aventuras Marinas de Clase Mundial',
-        content: 'Sumérjase en arrecifes prósperos repletos de más de 1.200 especies de peces, tiburones toro, tiburones martillo, mantas, tortugas y delfines residentes. De junio a noviembre, aviste ballenas jorobadas migratorias y disfrute de nados éticos con delfines salvajes. Protegidas por el Parque Nacional UNESCO, estas experiencias son sostenibles y menos concurridas que otros sitios.',
+        content: 'Sumérjase en arrecifes prósperos repletos de más de 1.200 especies de peces, tiburones toro, tiburones martillo, mantas, tortugas y delfines residentes. De junio a noviembre, aviste ballenas jorobadas migratorias y disfrute de nados éticos con delfines salvajes. Protegidas por el iSimangaliso Wetland Park – Maputo National Park, Patrimonio Mundial de la UNESCO,, estas experiencias son sostenibles y menos concurridas que otros sitios.',
         extra: 'Explore el mundo submarino con sitios de buceo desde 10m en Crèche hasta 47m en Atlantis, o pruebe snorkel, surf y pesca de barracudas y jureles.',
         highlight: 'Más de 1.200 especies de peces'
       },
@@ -269,7 +269,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Waarom Ponta do Ouro?',
     badgeLabel: 'Toegangspoort tot Maputo Nationaal Park',
     imageAlt: 'Kustlijn van Ponta do Ouro',
-    introText: 'Welkom in Ponta do Ouro, de toegangspoort tot Mozambiques eerste natuurlijke UNESCO-Werelderfgoedlocatie — het Maputo Nationaal Park. Dit kustparadijs biedt een onverslaanbare mix van ontspanning, ecotoerisme en culturele onderdompeling. Of u nu op zoek bent naar spannende duiken, serene tuinen zoals die van DEVOCEAN Lodge, of dagtrips naar nabijgelegen wonderen, hier ontdekt u waarom deze bestemming op uw reislijst moet staan.',
+    introText: 'Welkom in Ponta do Ouro, de toegangspoort tot het iSimangaliso Wetland Park – Maputo National Park UNESCO-Werelderfgoed. Dit kustparadijs biedt een onverslaanbare mix van ontspanning, ecotoerisme en culturele onderdompeling. Of u nu op zoek bent naar spannende duiken, serene tuinen zoals die van DEVOCEAN Lodge, of dagtrips naar nabijgelegen wonderen, hier ontdekt u waarom deze bestemming op uw reislijst moet staan.',
     sections: [
       {
         id: 'beaches',
@@ -280,7 +280,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Wereldklasse Zeeavonturen',
-        content: 'Duik in bloeiende riffen vol met meer dan 1.200 vissoorten, stierhaaien, hamerhaaien, manta\'s, schildpadden en residente dolfijnen. Van juni tot november kunt u trekkende bultrugwalvissen spotten en genieten van ethisch zwemmen met wilde dolfijnen. Beschermd door het UNESCO Nationaal Park zijn deze ervaringen duurzaam en minder druk dan andere locaties.',
+        content: 'Duik in bloeiende riffen vol met meer dan 1.200 vissoorten, stierhaaien, hamerhaaien, manta\'s, schildpadden en residente dolfijnen. Van juni tot november kunt u trekkende bultrugwalvissen spotten en genieten van ethisch zwemmen met wilde dolfijnen. Beschermd als deel van het iSimangaliso Wetland Park – Maputo National Park UNESCO-Werelderfgoed, zijn deze ervaringen duurzaam en minder druk dan andere locaties.',
         extra: 'Verken de onderwaterwereld met duiklocaties van 10m bij Crèche tot 47m bij Atlantis, of probeer snorkelen, surfen en vissen op barracuda\'s en horsmakrelen.',
         highlight: 'Meer dan 1.200 vissoorten'
       },
@@ -320,7 +320,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Perché Ponta do Ouro?',
     badgeLabel: 'Porta d\'accesso al Parco Nazionale di Maputo',
     imageAlt: 'Costa di Ponta do Ouro',
-    introText: 'Benvenuti a Ponta do Ouro, la porta d\'accesso al primo sito naturale Patrimonio dell\'Umanità UNESCO del Mozambico — il Parco Nazionale di Maputo. Questo paradiso costiero offre un mix imbattibile di relax, ecoturismo e immersione culturale. Che siate alla ricerca di immersioni emozionanti, giardini sereni come quelli del DEVOCEAN Lodge, o escursioni giornaliere verso meraviglie vicine, qui scoprirete perché questa destinazione merita un posto nella vostra lista di viaggi.',
+    introText: 'Benvenuti a Ponta do Ouro, la porta d\'accesso al iSimangaliso Wetland Park – Maputo National Park, Patrimonio dell\'Umanità UNESCO. Questo paradiso costiero offre un mix imbattibile di relax, ecoturismo e immersione culturale. Che siate alla ricerca di immersioni emozionanti, giardini sereni come quelli del DEVOCEAN Lodge, o escursioni giornaliere verso meraviglie vicine, qui scoprirete perché questa destinazione merita un posto nella vostra lista di viaggi.',
     sections: [
       {
         id: 'beaches',
@@ -371,7 +371,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Varför Ponta do Ouro?',
     badgeLabel: 'Porten till Maputo nationalpark',
     imageAlt: 'Ponta do Ouros kust',
-    introText: 'Välkommen till Ponta do Ouro, porten till Moçambiques första naturliga UNESCO-världsarv — Maputo nationalpark. Detta kustparadis erbjuder en oslagbar blandning av avkoppling, ekoturism och kulturell fördjupning. Oavsett om du söker spännande dyk, lugna trädgårdar som de vid DEVOCEAN Lodge, eller dagsutflykter till närliggande underverk, kommer du här att upptäcka varför denna destination borde finnas på din reslista.',
+    introText: 'Välkommen till Ponta do Ouro, porten till iSimangaliso Wetland Park – Maputo National Park UNESCO-världsarv. Detta kustparadis erbjuder en oslagbar blandning av avkoppling, ekoturism och kulturell fördjupning. Oavsett om du söker spännande dyk, lugna trädgårdar som de vid DEVOCEAN Lodge, eller dagsutflykter till närliggande underverk, kommer du här att upptäcka varför denna destination borde finnas på din reslista.',
     sections: [
       {
         id: 'beaches',
@@ -382,7 +382,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Marina Äventyr i Världsklass',
-        content: 'Dyk ner i blomstrande rev fyllda med över 1 200 fiskarter, tjurhajar, hammarhajar, mantarockor, sköldpaddor och bofasta delfiner. Från juni till november kan du spana efter migrerande knölvalar och njuta av etiskt simning med vilda delfiner. Skyddade av UNESCO:s nationalpark är dessa upplevelser hållbara och mindre trånga än andra platser.',
+        content: 'Dyk ner i blomstrande rev fyllda med över 1 200 fiskarter, tjurhajar, hammarhajar, mantarockor, sköldpaddor och bofasta delfiner. Från juni till november kan du spana efter migrerande knölvalar och njuta av etiskt simning med vilda delfiner. Skyddade av iSimangaliso Wetland Park – Maputo National Park UNESCO-världsarv, är dessa upplevelser hållbara och mindre trånga än andra platser.',
         extra: 'Utforska undervattensvärlden med dykplatser från 10m vid Crèche till 47m vid Atlantis, eller prova snorkling, surfing och fiske efter barracuda och guldmakrill.',
         highlight: 'Över 1 200 fiskarter'
       },
@@ -422,7 +422,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Dlaczego Ponta do Ouro?',
     badgeLabel: 'Brama do Parku Narodowego Maputo',
     imageAlt: 'Wybrzeże Ponta do Ouro',
-    introText: 'Witamy w Ponta do Ouro, bramie do pierwszego naturalnego obiektu światowego dziedzictwa UNESCO w Mozambiku — Parku Narodowego Maputo. Ten nadmorski raj oferuje niezrównane połączenie relaksu, ekoturystyki i zanurzenia w kulturze. Niezależnie od tego, czy szukasz ekscytujących nurkowań, spokojnych ogrodów jak te w DEVOCEAN Lodge, czy jednodniowych wycieczek do pobliskich cudów, tutaj odkryjesz, dlaczego ta destynacja powinna znaleźć się na Twojej liście podróży.',
+    introText: 'Witamy w Ponta do Ouro, bramie do iSimangaliso Wetland Park – Maputo National Park, obiektu światowego dziedzictwa UNESCO. Ten nadmorski raj oferuje niezrównane połączenie relaksu, ekoturystyki i zanurzenia w kulturze. Niezależnie od tego, czy szukasz ekscytujących nurkowań, spokojnych ogrodów jak te w DEVOCEAN Lodge, czy jednodniowych wycieczek do pobliskich cudów, tutaj odkryjesz, dlaczego ta destynacja powinna znaleźć się na Twojej liście podróży.',
     sections: [
       {
         id: 'beaches',
@@ -473,7 +473,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Почему Ponta do Ouro?',
     badgeLabel: 'Ворота в Национальный парк Мапуту',
     imageAlt: 'Побережье Ponta do Ouro',
-    introText: 'Добро пожаловать в Ponta do Ouro, ворота к первому природному объекту Всемирного наследия ЮНЕСКО в Мозамбике — Национальному парку Мапуту. Этот прибрежный рай предлагает непревзойденное сочетание отдыха, экотуризма и культурного погружения. Ищете ли вы захватывающий дайвинг, спокойные сады как в DEVOCEAN Lodge или однодневные поездки к близлежащим чудесам — здесь вы поймете, почему это направление должно быть в вашем списке путешествий.',
+    introText: 'Добро пожаловать в Ponta do Ouro, ворота к iSimangaliso Wetland Park – Maputo National Park, объекту Всемирного наследия ЮНЕСКО. Этот прибрежный рай предлагает непревзойденное сочетание отдыха, экотуризма и культурного погружения. Ищете ли вы захватывающий дайвинг, спокойные сады как в DEVOCEAN Lodge или однодневные поездки к близлежащим чудесам — здесь вы поймете, почему это направление должно быть в вашем списке путешествий.',
     sections: [
       {
         id: 'beaches',
@@ -524,7 +524,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'なぜPonta do Ouro？',
     badgeLabel: 'マプト国立公園への玄関口',
     imageAlt: 'Ponta do Ouroの海岸線',
-    introText: 'Ponta do Ouroへようこそ。モザンビーク初の自然世界遺産であるマプト国立公園への玄関口です。この海岸の楽園は、リラクゼーション、エコツーリズム、文化的没入の比類なき組み合わせを提供します。スリリングなダイビング、DEVOCEAN Lodgeのような静かな庭園、近隣の驚異への日帰り旅行をお探しでも、なぜこの目的地があなたの旅行リストに載るべきかをここで発見できます。',
+    introText: 'Ponta do Ouroへようこそ。iSimangaliso Wetland Park – Maputo National Park（ユネスコ世界遺産）への玄関口です。この海岸の楽園は、リラクゼーション、エコツーリズム、文化的没入の比類なき組み合わせを提供します。スリリングなダイビング、DEVOCEAN Lodgeのような静かな庭園、近隣の驚異への日帰り旅行をお探しでも、なぜこの目的地があなたの旅行リストに載るべきかをここで発見できます。',
     sections: [
       {
         id: 'beaches',
@@ -575,7 +575,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: '为什么选择蓬塔多奥罗？',
     badgeLabel: '马普托国家公园的门户',
     imageAlt: '蓬塔多奥罗海岸线',
-    introText: '欢迎来到蓬塔多奥罗，莫桑比克第一个自然世界遗产——马普托国家公园的门户。这个海滨天堂提供无与伦比的休闲、生态旅游和文化沉浸体验。无论您是寻找刺激的潜水、像DEVOCEAN Lodge那样宁静的花园，还是前往附近奇观的一日游，您都会在这里发现为什么这个目的地应该在您的旅行清单上。',
+    introText: '欢迎来到蓬塔多奥罗，iSimangaliso Wetland Park – Maputo National Park联合国教科文组织世界遗产的门户。这个海滨天堂提供无与伦比的休闲、生态旅游和文化沉浸体验。无论您是寻找刺激的潜水、像DEVOCEAN Lodge那样宁静的花园，还是前往附近奇观的一日游，您都会在这里发现为什么这个目的地应该在您的旅行清单上。',
     sections: [
       {
         id: 'beaches',
@@ -626,7 +626,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Hoekom Ponta do Ouro?',
     badgeLabel: 'Toegangspoort tot Maputo Nasionale Park',
     imageAlt: 'Ponta do Ouro kuslyn',
-    introText: 'Welkom by Ponta do Ouro, die toegangspoort tot Mosambiek se eerste natuurlike UNESCO-wêrelderfenisgebied — die Maputo Nasionale Park. Hierdie kusparadys bied \'n ongeëwenaarde mengsel van ontspanning, ekotoerisme en kulturele onderdompeling. Of jy nou opsoek is na opwindende duik, rustige tuine soos dié by DEVOCEAN Lodge, of dagreise na nabygeleë wonders, hier sal jy ontdek hoekom hierdie bestemming op jou reislys moet wees.',
+    introText: 'Welkom by Ponta do Ouro, die toegangspoort tot die iSimangaliso Wetland Park – Maputo National Park UNESCO-wêrelderfenisgebied. Hierdie kusparadys bied \'n ongeëwenaarde mengsel van ontspanning, ekotoerisme en kulturele onderdompeling. Of jy nou opsoek is na opwindende duik, rustige tuine soos dié by DEVOCEAN Lodge, of dagreise na nabygeleë wonders, hier sal jy ontdek hoekom hierdie bestemming op jou reislys moet wees.',
     sections: [
       {
         id: 'beaches',
@@ -637,7 +637,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Wêreldklas See-avonture',
-        content: 'Duik in florerende riwwe vol met meer as 1,200 visspesies, bulhaaie, hamerkophaaie, manta\'s, seeskilpaaie en inwonende dolfyne. Van Junie tot November kan jy trekkende boggelrugwalvisse waarneem en etiese swem met wilde dolfyne geniet. Beskerm deur die UNESCO Nasionale Park, is hierdie ervarings volhoubaar en minder druk as ander plekke.',
+        content: 'Duik in florerende riwwe vol met meer as 1,200 visspesies, bulhaaie, hamerkophaaie, manta\'s, seeskilpaaie en inwonende dolfyne. Van Junie tot November kan jy trekkende boggelrugwalvisse waarneem en etiese swem met wilde dolfyne geniet. Beskerm as deel van die iSimangaliso Wetland Park – Maputo National Park UNESCO-wêrelderfenisgebied,, is hierdie ervarings volhoubaar en minder druk as ander plekke.',
         extra: 'Verken die onderwaterwêreld met duikplekke van 10m by Crèche tot 47m by Atlantis, of probeer snorkel, branderplankry en hengel vir barracuda en koningvis.',
         highlight: 'Meer as 1,200 visspesies'
       },
@@ -677,7 +677,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Kungani iPonta do Ouro?',
     badgeLabel: 'Isango elikhulu le-Maputo National Park',
     imageAlt: 'Ugwini lwasePonta do Ouro',
-    introText: 'Siyakwamukela ePonta do Ouro, isango elikhulu endaweni yokuqala yemvelo yeNhlangano Yezizwe Ezihlangeneyo yeMozambique — iMaputo National Park. Le pharadisi yasogwini inikeza ingxube engenakulinganiswa yokuphumula, ezokuvakasha zemvelo kanye nokuzithiba kwamasiko. Noma ngabe ufuna ukuntsheza okujabulisayo, izingadi ezithulile njenge-DEVOCEAN Lodge, noma izinhambo zosuku eziyeni eziduze, lapha uzothola ukuthi kungani le ndawo kumele ibe ohlwini lwakho lokuphelelisa.',
+    introText: 'Siyakwamukela ePonta do Ouro, isango elikhulu endaweni yokuqala yemvelo ye-iSimangaliso Wetland Park – Maputo National Park, Indawo yeNhlangano Yezizwe Ezihlangeneyo yemvelo. Le pharadisi yasogwini inikeza ingxube engenakulinganiswa yokuphumula, ezokuvakasha zemvelo kanye nokuzithiba kwamasiko. Noma ngabe ufuna ukuntsheza okujabulisayo, izingadi ezithulile njenge-DEVOCEAN Lodge, noma izinhambo zosuku eziyeni eziduze, lapha uzothola ukuthi kungani le ndawo kumele ibe ohlwini lwakho lokuphelelisa.',
     sections: [
       {
         id: 'beaches',
@@ -688,7 +688,7 @@ export const WHY_PONTA_CONTENT = {
       {
         id: 'marine',
         title: 'Izinhambo Zasolwandle Ezisezingeni Lomhlaba',
-        content: 'Ntsheza emarifini aqhamayo agcwele izinhlobo zezinhlanzi ezingaphezu kuka-1,200, oshaka bebhubesi, oshaka abanezihloko ezinjengezando, amamanta, izimfudu namahhashi ahlala lapha. Kusukela kuJuni kuya kuNovemba, ungabona omikhomo abadlulayo futhi ujabulele ukubhukuda okusemthethweni namahhashi asendle. Ivikelwe yi-UNESCO National Park, lezi zinto ezihlangabezanayo ziyaqhubeka futhi azixinile njengezinye izindawo.',
+        content: 'Ntsheza emarifini aqhamayo agcwele izinhlobo zezinhlanzi ezingaphezu kuka-1,200, oshaka bebhubesi, oshaka abanezihloko ezinjengezando, amamanta, izimfudu namahhashi ahlala lapha. Kusukela kuJuni kuya kuNovemba, ungabona omikhomo abadlulayo futhi ujabulele ukubhukuda okusemthethweni namahhashi asendle. Ivikelwe yi-iSimangaliso Wetland Park – Maputo National Park UNESCO World Heritage Site,, lezi zinto ezihlangabezanayo ziyaqhubeka futhi azixinile njengezinye izindawo.',
         extra: 'Hlola umhlaba ongaphansi kwamanzi nezindawo zokuntsheza ukusuka ku-10m e-Crèche kuya ku-47m e-Atlantis, noma uzame ukudoba ngaphansi kwamanzi, ukugibela amagagasi nokudoba ibarracuda nejackfish.',
         highlight: 'Izinhlobo zezinhlanzi ezingaphezu kuka-1,200'
       },
@@ -728,7 +728,7 @@ export const WHY_PONTA_CONTENT = {
     heroTitle: 'Kwa nini Ponta do Ouro?',
     badgeLabel: 'Mlango wa Hifadhi ya Taifa ya Maputo',
     imageAlt: 'Ufukwe wa Ponta do Ouro',
-    introText: 'Karibu Ponta do Ouro, mlango wa eneo la kwanza la Urithi wa Asili wa UNESCO nchini Msumbiji — Hifadhi ya Taifa ya Maputo. Paradiso hii ya pwani inatoa mchanganyiko usio na kifani wa utulivu, utalii wa kiikolojia na kuzama katika utamaduni. Iwe unatafuta kupiga mbizi za kusisimua, bustani tulivu kama zile za DEVOCEAN Lodge, au safari za siku kuelekea maajabu ya karibu, hapa utagundua kwa nini marudio haya yanapaswa kuwa kwenye orodha yako ya safari.',
+    introText: 'Karibu Ponta do Ouro, mlango wa iSimangaliso Wetland Park – Maputo National Park, Urithi wa Asili wa UNESCO. Paradiso hii ya pwani inatoa mchanganyiko usio na kifani wa utulivu, utalii wa kiikolojia na kuzama katika utamaduni. Iwe unatafuta kupiga mbizi za kusisimua, bustani tulivu kama zile za DEVOCEAN Lodge, au safari za siku kuelekea maajabu ya karibu, hapa utagundua kwa nini marudio haya yanapaswa kuwa kwenye orodha yako ya safari.',
     sections: [
       {
         id: 'beaches',
@@ -779,7 +779,7 @@ export const WHY_PONTA_CONTENT = {
       heroTitle: 'De ce Ponta do Ouro?',
       badgeLabel: 'Poarta către Parcul Național Maputo',
       imageAlt: 'Coasta din Ponta do Ouro',
-      introText: 'Bun venit în Ponta do Ouro, poarta către primul sit natural Patrimoniu Mondial UNESCO al Mozambicului - Parcul Național Maputo. Acest paradis costier oferă o combinație imbatabilă de relaxare, ecoturism și imersiune culturală. Fie că ești în căutarea unor scufundări palpitante, a unor grădini liniștite ca cele de la DEVOCEAN Lodge, sau a unor excursii de o zi către minuni din apropiere, iată de ce această destinație ar trebui să fie pe lista ta de călătorii.',
+      introText: 'Bun venit în Ponta do Ouro, poarta către iSimangaliso Wetland Park – Maputo National Park, Patrimoniu Mondial UNESCO. Acest paradis costier oferă o combinație imbatabilă de relaxare, ecoturism și imersiune culturală. Fie că ești în căutarea unor scufundări palpitante, a unor grădini liniștite ca cele de la DEVOCEAN Lodge, sau a unor excursii de o zi către minuni din apropiere, iată de ce această destinație ar trebui să fie pe lista ta de călătorii.',
       sections: [
         {
           id: 'beaches',
@@ -790,7 +790,7 @@ export const WHY_PONTA_CONTENT = {
         {
           id: 'marine',
           title: 'Aventuri Marine de Clasă Mondială',
-          content: 'Scufundă-te în recife pline de viață cu peste 1.200 de specii de pești, rechini-tauri, rechini-ciocan, mante, țestoase și delfini rezidenți. Din iunie până în noiembrie, observă balenele cu cocoașă migratoare și bucură-te de înoturi etice cu delfini sălbatici. Protejate de Parcul Național UNESCO, aceste experiențe sunt sustenabile și mai puțin aglomerate decât alte locuri.',
+          content: 'Scufundă-te în recife pline de viață cu peste 1.200 de specii de pești, rechini-tauri, rechini-ciocan, mante, țestoase și delfini rezidenți. Din iunie până în noiembrie, observă balenele cu cocoașă migratoare și bucură-te de înoturi etice cu delfini sălbatici. Protejate ca parte din iSimangaliso Wetland Park – Maputo National Park, Patrimoniu Mondial UNESCO,, aceste experiențe sunt sustenabile și mai puțin aglomerate decât alte locuri.',
           extra: 'Explorează lumea subacvatică cu locuri de la 10m la Crèche până la 47m la Atlantis, sau încearcă snorkeling, surf și pescuit pentru baracuda și kingfish.',
           highlight: 'Peste 1.200 de specii de pești'
         },
@@ -830,7 +830,7 @@ export const WHY_PONTA_CONTENT = {
       heroTitle: 'Zašto Ponta do Ouro?',
       badgeLabel: 'Vrata Nacionalnog parka Maputo',
       imageAlt: 'Obala Ponta do Ouro',
-      introText: 'Dobrodošli u Ponta do Ouro, vrata prvog UNESCO mesta svetske prirodne baštine Mozambika - Nacionalnog parka Maputo. Ovaj obalski raj nudi neprevaziđenu kombinaciju opuštanja, ekoturizma i kulturnog uranjanja. Bilo da tražite uzbudljivo ronjenje, mirne bašte poput onih u DEVOCEAN Lodge-u, ili jednodnevne izlete do obližnjih čuda, evo zašto bi ova destinacija trebalo da bude na vašoj putničkoj listi.',
+      introText: 'Dobrodošli u Ponta do Ouro, vrata iSimangaliso Wetland Park – Maputo National Park, UNESCO svetske prirodne baštine. Ovaj obalski raj nudi neprevaziđenu kombinaciju opuštanja, ekoturizma i kulturnog uranjanja. Bilo da tražite uzbudljivo ronjenje, mirne bašte poput onih u DEVOCEAN Lodge-u, ili jednodnevne izlete do obližnjih čuda, evo zašto bi ova destinacija trebalo da bude na vašoj putničkoj listi.',
       sections: [
         {
           id: 'beaches',
@@ -841,7 +841,7 @@ export const WHY_PONTA_CONTENT = {
         {
           id: 'marine',
           title: 'Svetski poznate morske avanture',
-          content: 'Zaronite u grebene pune života sa preko 1.200 vrsta riba, morskim psima bika, čekićastim morskim psima, mantama, kornjačama i rezidentnim delfinima. Od juna do novembra, posmatrajte migrirajuće grbave kitove i uživajte u etičkom plivanju sa divljim delfinima. Zaštićeni UNESCO Nacionalnim parkom, ovi doživljaji su održivi i manje prenakrcani od drugih lokacija.',
+          content: 'Zaronite u grebene pune života sa preko 1.200 vrsta riba, morskim psima bika, čekićastim morskim psima, mantama, kornjačama i rezidentnim delfinima. Od juna do novembra, posmatrajte migrirajuće grbave kitove i uživajte u etičkom plivanju sa divljim delfinima. Zaštićeni u okviru iSimangaliso Wetland Park – Maputo National Park, UNESCO svetske baštine,, ovi doživljaji su održivi i manje prenakrcani od drugih lokacija.',
           extra: 'Istražite podvodni svet sa lokacijama od 10m kod Crèche-a do 47m kod Atlantisa, ili probajte snorkling, surf i ribolov za barakude i kingfish.',
           highlight: 'Preko 1.200 vrsta riba'
         },
@@ -881,7 +881,7 @@ export const WHY_PONTA_CONTENT = {
       heroTitle: 'Zašto Ponta do Ouro?',
       badgeLabel: 'Vrata Nacionalnog parka Maputo',
       imageAlt: 'Obala Ponta do Ouro',
-      introText: 'Dobrodošli u Ponta do Ouro, vrata prvog UNESCO mesta svetske prirodne baštine Mozambika - Nacionalnog parka Maputo. Ovaj obalski raj nudi neprevaziđenu kombinaciju opuštanja, ekoturizma i kulturnog uranjanja. Bilo da tražite uzbudljivo ronjenje, mirne bašte poput onih u DEVOCEAN Lodge-u, ili jednodnevne izlete do obližnjih čuda, evo zašto bi ova destinacija trebalo da bude na vašoj putničkoj listi.',
+      introText: 'Dobrodošli u Ponta do Ouro, vrata iSimangaliso Wetland Park – Maputo National Park, UNESCO svetske prirodne baštine. Ovaj obalski raj nudi neprevaziđenu kombinaciju opuštanja, ekoturizma i kulturnog uranjanja. Bilo da tražite uzbudljivo ronjenje, mirne bašte poput onih u DEVOCEAN Lodge-u, ili jednodnevne izlete do obližnjih čuda, evo zašto bi ova destinacija trebalo da bude na vašoj putničkoj listi.',
       sections: [
         {
           id: 'beaches',
@@ -892,7 +892,7 @@ export const WHY_PONTA_CONTENT = {
         {
           id: 'marine',
           title: 'Svetski poznate morske avanture',
-          content: 'Zaronite u grebene pune života sa preko 1.200 vrsta riba, morskim psima bika, čekićastim morskim psima, mantama, kornjačama i rezidentnim delfinima. Od juna do novembra, posmatrajte migrirajuće grbave kitove i uživajte u etičkom plivanju sa divljim delfinima. Zaštićeni UNESCO Nacionalnim parkom, ovi doživljaji su održivi i manje prenakrcani od drugih lokacija.',
+          content: 'Zaronite u grebene pune života sa preko 1.200 vrsta riba, morskim psima bika, čekićastim morskim psima, mantama, kornjačama i rezidentnim delfinima. Od juna do novembra, posmatrajte migrirajuće grbave kitove i uživajte u etičkom plivanju sa divljim delfinima. Zaštićeni u okviru iSimangaliso Wetland Park – Maputo National Park, UNESCO svetske baštine,, ovi doživljaji su održivi i manje prenakrcani od drugih lokacija.',
           extra: 'Istražite podvodni svet sa lokacijama od 10m kod Crèche-a do 47m kod Atlantisa, ili probajte snorkling, surf i ribolov za barakude i kingfish.',
           highlight: 'Preko 1.200 vrsta riba'
         },
@@ -932,7 +932,7 @@ export const WHY_PONTA_CONTENT = {
       heroTitle: 'Proč Ponta do Ouro?',
       badgeLabel: 'Brána Národního parku Maputo',
       imageAlt: 'Pobřeží Ponta do Ouro',
-      introText: 'Vítejte v Ponta do Ouro, bráně k prvnímu mosambickému přírodnímu dědictví UNESCO – Národnímu parku Maputo. Tento pobřežní ráj nabízí nepřekonatelnou kombinaci odpočinku, ekoturistiky a kulturního ponoru. Ať už hledáte vzrušující potápění, klidné zahrady jako v DEVOCEAN Lodge, nebo jednodenní výlety k blízkým divům, zde je důvod, proč by tato destinace měla být na vašem seznamu cest.',
+      introText: 'Vítejte v Ponta do Ouro, bráně k iSimangaliso Wetland Park – Maputo National Park, UNESCO přírodnímu dědictví. Tento pobřežní ráj nabízí nepřekonatelnou kombinaci odpočinku, ekoturistiky a kulturního ponoru. Ať už hledáte vzrušující potápění, klidné zahrady jako v DEVOCEAN Lodge, nebo jednodenní výlety k blízkým divům, zde je důvod, proč by tato destinace měla být na vašem seznamu cest.',
       sections: [
         {
           id: 'beaches',
@@ -983,7 +983,7 @@ export const WHY_PONTA_CONTENT = {
       heroTitle: 'Neden Ponta do Ouro?',
       badgeLabel: 'Maputo Milli Parkı\'nın Kapısı',
       imageAlt: 'Ponta do Ouro kıyısı',
-      introText: 'Mozambik\'in ilk UNESCO doğal mirası olan Maputo Milli Parkı\'nın kapısı Ponta do Ouro\'ya hoş geldiniz. Bu kıyı cenneti, dinlenme, ekoturizm ve kültürel daldırmanın eşsiz bir kombinasyonunu sunar. İster heyecan verici bir dalış arıyor olun, ister DEVOCEAN Lodge gibi sakin bahçeler ister yakındaki harikalara günlük geziler – işte bu destinasyonun seyahat listenizde olması gereken nedenler.',
+      introText: 'iSimangaliso Wetland Park – Maputo National Park UNESCO doğal mirasının kapısı Ponta do Ouro\'ya hoş geldiniz. Bu kıyı cenneti, dinlenme, ekoturizm ve kültürel daldırmanın eşsiz bir kombinasyonunu sunar. İster heyecan verici bir dalış arıyor olun, ister DEVOCEAN Lodge gibi sakin bahçeler ister yakındaki harikalara günlük geziler – işte bu destinasyonun seyahat listenizde olması gereken nedenler.',
       sections: [
         {
           id: 'beaches',

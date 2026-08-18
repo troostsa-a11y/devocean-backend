@@ -534,7 +534,7 @@ export const EXPERIENCE_DETAILS = {
     tagline: "Bush adventures in Maputo Special Reserve",
     hero: "/photos/experiences/safari.webp",
     
-    overview: "Discover African wildlife just a short drive from Ponta do Ouro. Maputo National Park (formerly Maputo Special Reserve) offers classic game viewing with 450-500 coastal elephants, giraffes, zebras, hippos, crocodiles, and diverse antelope species across 1,718 km² of protected wilderness - a UNESCO World Heritage Site since 2025.",
+    overview: "Discover African wildlife just a short drive from Ponta do Ouro. Maputo National Park (formerly Maputo Special Reserve) offers classic game viewing with 450-500 coastal elephants, giraffes, zebras, hippos, crocodiles, and diverse antelope species across 1,718 km² of protected wilderness - part of the iSimangaliso Wetland Park – Maputo National Park UNESCO World Heritage Site (2025).",
     
     highlights: [
       "450-500 coastal elephants",
@@ -543,7 +543,7 @@ export const EXPERIENCE_DETAILS = {
       "Leopard, cheetah & spotted hyena",
       "300+ bird species including flamingos",
       "4x4 game drives with expert guides",
-      "UNESCO World Heritage Site (2025)",
+      "iSimangaliso Wetland Park – Maputo National Park (UNESCO, 2025)",
       "Beach & bush combo possible"
     ],
     
