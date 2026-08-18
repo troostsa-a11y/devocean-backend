@@ -25,6 +25,16 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
     setMenuOpen(false);
   };
 
+  // SPA navigate to / then scroll to a section.
+  // navigate('/#section') issues a single history.pushState that retains the
+  // hash, so App.jsx's route-change useEffect reads window.location.hash and
+  // the tryScroll retry loop scrolls to the target — no full-page reload.
+  const handleSpaNavToSection = (e, sectionId) => {
+    e.preventDefault();
+    navigate(`/#${sectionId}`);
+    setMenuOpen(false);
+  };
+
   // Define regions with metadata (currency auto-assigned by IP, not selectable)
   const regions = {
     westEu: { name: 'Western Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'] },
@@ -207,7 +217,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
               <a
                 href={(isExperiencePage || isStandalonePage) ? '/#stay' : '#stay'}
                 className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
-                onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, '#stay')}
+                onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNavToSection(e, 'stay') : (e) => handleNavClick(e, '#stay')}
               >
                 {ui.nav.stay}
               </a>
@@ -238,7 +248,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 <a
                   href={(isExperiencePage || isStandalonePage) ? `/${href}` : href}
                   className="text-slate-700 hover:text-[#9e4b13] whitespace-nowrap"
-                  onClick={(isExperiencePage || isStandalonePage) ? undefined : (e) => handleNavClick(e, href)}
+                  onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNavToSection(e, href.slice(1)) : (e) => handleNavClick(e, href)}
                 >
                   {ui.nav[k]}
                 </a>
@@ -304,7 +314,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                 href={(isExperiencePage || isStandalonePage) ? '/#stay' : "#stay"}
                 data-testid="link-mobile-stay"
                 className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, "#stay")}
+                onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNavToSection(e, 'stay') : (e) => handleNavClick(e, "#stay")}
                 tabIndex={menuOpen ? 0 : -1}
               >
                 {ui.nav.stay}
@@ -336,7 +346,7 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
                   href={(isExperiencePage || isStandalonePage) ? `/${href}` : href}
                   data-testid={`link-mobile-${k}`}
                   className="block px-5 py-3 text-slate-700 hover:bg-[#fffaf6] border-b border-gray-100 transition-colors"
-                  onClick={(isExperiencePage || isStandalonePage) ? () => setMenuOpen(false) : (e) => handleNavClick(e, href)}
+                  onClick={(isExperiencePage || isStandalonePage) ? (e) => handleSpaNavToSection(e, href.slice(1)) : (e) => handleNavClick(e, href)}
                   tabIndex={menuOpen ? 0 : -1}
                 >
                   {ui.nav[k]}
