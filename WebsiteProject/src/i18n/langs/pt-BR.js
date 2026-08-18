@@ -100,21 +100,21 @@ export const L10N = {
     },
     comfort: {
       title: "Tenda Conforto",
-      short: "Tenda de 12 m² com mais privacidade (paredes laterais/traseiras), terraço privado e casa de banho privativa sob teto de colmo.",
+      short: "Tenda de 12 m² com mais privacidade (paredes laterais/traseiras), terraço privado e casa de banho privativa em rondavel de colmo adjacente.",
       details: [
         "Configuração One King or Twin beds com iluminação prática",
         "Rede mosquiteira • ventoinha potente • tomadas",
         "Terraço de madeira com cadeiras",
-        "Casa de banho privativa (duche, sanita, lavatório) sob teto de colmo",
+        "A sua casa de banho privativa está alojada num rondavel de colmo adjacente, acessível pela porta traseira da tenda através de uma ligação privada curta.",
       ],
     },
     cottage: {
       title: "Chalé Jardim",
-      short: "Chalé arejado com cama queen, AC Inverter for cooling & heating, secretária e mesa, terraço privado e casa de banho em rondavel.",
+      short: "Chalé arejado com cama queen, AC Inverter for cooling & heating, secretária e mesa, terraço privado e casa de banho en-suite em rondavel de colmo adjacente.",
       details: [
         "Cama queen • secretária e mesa de jantar",
         "AC Inverter for cooling & heating • luz regulável",
-        "Casa de banho em rondavel (duche, lavatório, sanita)",
+        "A sua casa de banho privativa en-suite está alojada num rondavel de colmo adjacente e é acessível diretamente pela porta traseira do quarto.",
         "Terraço de madeira com cadeiras",
       ],
     },
@@ -123,7 +123,7 @@ export const L10N = {
       short: "Pequeno chalé romântico entre palmeiras. AC Inverter for cooling & heating, casa de banho privada, terraço, One King or Twin beds.",
       details: [
         "Ambiente tranquilo sob palmeiras • ar-condicionado",
-        "Casa de banho privativa (duche, lavatório, sanita)",
+        "Casa de banho en-suite (duche, lavatório, sanita)",
         "Camas One King or Twin beds com mesas de cabeceira",
         "Terraço privado com cadeiras de palha",
       ],
