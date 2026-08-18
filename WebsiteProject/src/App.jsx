@@ -386,34 +386,26 @@ export default function App() {
 
         {/* Route for Why Ponta do Ouro destination page */}
         <Route path="/why-ponta">
-          {loading || !ui ? (
-            <div className="flex-1 min-h-[50vh] bg-slate-50" />
-          ) : (
-            <WhyPontaPage
-              units={units}
-              experiences={experiences}
-              ui={ui}
-              lang={lang}
-              currency={currency}
-              bookUrl={bookUrl}
-            />
-          )}
+          <WhyPontaPage
+            units={units}
+            experiences={experiences}
+            ui={ui || criticalUI}
+            lang={lang}
+            currency={currency}
+            bookUrl={bookUrl}
+          />
         </Route>
 
         {/* Route for experience detail pages */}
         <Route path="/experiences/:key">
-          {loading || !ui ? (
-            <div className="flex-1 min-h-[50vh] bg-slate-50" />
-          ) : (
-            <ExperienceDetailPage
-              units={units}
-              experiences={experiences}
-              ui={ui}
-              lang={lang}
-              currency={currency}
-              bookUrl={bookUrl}
-            />
-          )}
+          <ExperienceDetailPage
+            units={units}
+            experiences={experiences}
+            ui={ui || criticalUI}
+            lang={lang}
+            currency={currency}
+            bookUrl={bookUrl}
+          />
         </Route>
 
         {/* Route for homepage */}

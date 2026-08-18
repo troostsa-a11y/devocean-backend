@@ -606,8 +606,8 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
         </div>
       </div>
       
-      {/* Footer */}
-      <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
+      {/* Footer — deferred until full ui (including ui.footer) is available */}
+      {ui?.footer && <Footer units={units} experiences={experiences} ui={ui} lang={lang} />}
     </>
   );
 }

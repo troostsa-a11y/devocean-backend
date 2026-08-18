@@ -175,7 +175,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         </div>
       </div>
       
-      <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
+      {ui?.footer && <Footer units={units} experiences={experiences} ui={ui} lang={lang} />}
     </>
   );
 }
