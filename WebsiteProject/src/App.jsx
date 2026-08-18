@@ -248,11 +248,18 @@ export default function App() {
 
     if (!hash) return;
 
+    // Guard: set to true on cleanup so the rAF retry loop cannot call
+    // scrollIntoView after the component has unmounted or the effect has re-run.
+    let cancelled = false;
+    let rafId;
+
     // Retry scroll until element is found (max 20 attempts over 1 second)
     let attempts = 0;
     const maxAttempts = 20;
     
     const tryScroll = () => {
+      if (cancelled) return;
+
       // Re-read the live hash on every attempt. If the user navigated to '/'
       // without an anchor (e.g. clicked Back after visiting /#stay), the hash
       // is now empty and we must not scroll to the stale captured target.
@@ -266,12 +273,17 @@ export default function App() {
       
       attempts++;
       if (attempts < maxAttempts) {
-        requestAnimationFrame(tryScroll);
+        rafId = requestAnimationFrame(tryScroll);
       }
     };
     
     // Start trying immediately
-    requestAnimationFrame(tryScroll);
+    rafId = requestAnimationFrame(tryScroll);
+
+    return () => {
+      cancelled = true;
+      cancelAnimationFrame(rafId);
+    };
   }, [location]);
 
   // Memoize expensive computations to reduce re-renders
