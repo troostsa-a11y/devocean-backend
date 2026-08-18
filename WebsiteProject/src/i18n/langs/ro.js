@@ -88,6 +88,48 @@ export const UI = {
 }
 
 export const L10N = {
+  units: {
+    safari: {
+      title: "Cort Safari",
+      short: "Cort din pânză de 12 m² pe platformă de 3×6 m. Paturi twin sau king, ventilator, prize, plasă de țânțari, terasă privată. Băi comune.",
+      details: [
+        "Două paturi (sau King) cu noptiere și veiozi",
+        "Plasă de țânțari • ventilator puternic • prize electrice",
+        "Terasă privată cu scaune din frunze de palmier",
+        "Facilități comune: dușuri cald/rece și toalete — secțiuni separate pentru femei și bărbați, 2 toalete + 2 dușuri fiecare",
+      ],
+    },
+    comfort: {
+      title: "Cort Comfort",
+      short: "Cort 12 m² îmbunătățit cu intimitate sporită (pereți laterali/spate), terasă privată și baie privată într-un rondavel cu acoperiș de paie alăturat.",
+      details: [
+        "Configurație twin sau king cu iluminat practic",
+        "Plasă de țânțari • ventilator puternic • prize electrice",
+        "Terasă privată cu scaune",
+        "Baia ta privată se află într-un rondavel cu acoperiș de paie alăturat, accesibilă prin ușa din spate a cortului printr-o scurtă legătură privată.",
+      ],
+    },
+    cottage: {
+      title: "Căsuță cu Grădină",
+      short: "Căsuță spațioasă cu pat king, AC invertor, birou și masă de dining, terasă privată și baie en-suite într-un rondavel cu acoperiș de paie alăturat.",
+      details: [
+        "Pat king • birou și masă de dining",
+        "AC invertor • lumină reglabilă",
+        "Baia ta privată en-suite se află într-un rondavel cu acoperiș de paie alăturat, accesibilă direct prin ușa din spate a dormitorului.",
+        "Terasă privată cu scaune",
+      ],
+    },
+    chalet: {
+      title: "Cabană cu Acoperiș de Paie",
+      short: "Cabană romantică compactă sub palmieri. AC invertor, baie en-suite, terasă, paturi twin sau king.",
+      details: [
+        "Loc liniștit sub palmieri • aer condiționat",
+        "Baie en-suite (duș, chiuvetă, toaletă)",
+        "Paturi twin sau king cu noptiere",
+        "Terasă privată cu scaune din palmier",
+      ],
+    },
+  },
   experiences: {
     diving: { title: "Scufundări", desc: "Recife de coastă cu o viață marină bogată." },
     dolphins: { title: "Înot cu delfinii", desc: "Întâlniri etice cu delfinii rezidenți." },

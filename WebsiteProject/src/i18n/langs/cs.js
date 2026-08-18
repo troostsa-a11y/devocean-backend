@@ -89,6 +89,48 @@ export const UI = {
 }
 
 export const L10N = {
+  units: {
+    safari: {
+      title: "Safari Stan",
+      short: "Plátěný stan 12 m² na platformě 3×6 m. Dvoulůžko nebo King, ventilátor, zásuvky, moskytiéra, soukromá terasa. Sdílená sociální zařízení.",
+      details: [
+        "Dvě jednolůžka (nebo King) s nočními stolky a čtecími lampičkami",
+        "Moskytiéra • výkonný ventilátor • zásuvky",
+        "Soukromá terasa s palmovými křesly",
+        "Sdílená zařízení: teplé/studené sprchy a splachovací toalety — sekce pro ženy a muže, 2 toalety + 2 sprchy v každé",
+      ],
+    },
+    comfort: {
+      title: "Komfortní Stan",
+      short: "Upgradovaný stan 12 m² s větším soukromím (boční/zadní stěny), soukromou terasou a koupelnou v přilehlém doškém rondavelu.",
+      details: [
+        "Dvoulůžkové nebo King uspořádání s praktickým osvětlením",
+        "Moskytiéra • výkonný ventilátor • zásuvky",
+        "Soukromá terasa se židlemi",
+        "Vaše soukromá koupelna se nachází v přilehlém doškém rondavelu, dostupná zadními dveřmi stanu přes krátkou soukromou chodbu.",
+      ],
+    },
+    cottage: {
+      title: "Zahradní Chalupa",
+      short: "Prostorná chalupa s manželskou postelí, invertorovou klimatizací, pracovním a jídelním stolem, soukromou terasou a koupelnou en-suite v přilehlém doškém rondavelu.",
+      details: [
+        "Manželská postel • pracovní a jídelní stůl",
+        "Invertorová klimatizace • stmívatelné světlo",
+        "Vaše soukromá koupelna en-suite se nachází v přilehlém doškém rondavelu, přímo přístupná zadními dveřmi ložnice.",
+        "Soukromá terasa se židlemi",
+      ],
+    },
+    chalet: {
+      title: "Doškový Chalet",
+      short: "Romantický chalet pod palmami. Invertorová klimatizace, koupelna en-suite, terasa, dvoulůžko nebo King.",
+      details: [
+        "Klidné místo pod palmami • klimatizace",
+        "Koupelna en-suite (sprcha, umyvadlo, toaleta)",
+        "Dvoulůžka nebo King s nočními stolky",
+        "Soukromá terasa s palmovými křesly",
+      ],
+    },
+  },
   experiences: {
     diving: { title: "Potápění", desc: "Pobřežní útesy bohaté na mořský život." },
     dolphins: { title: "Plavání s delfíny", desc: "Etická setkání s rezidentními delfíny." },

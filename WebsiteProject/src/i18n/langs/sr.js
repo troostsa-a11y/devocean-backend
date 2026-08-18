@@ -89,6 +89,48 @@ export const UI = {
 }
 
 export const L10N = {
+  units: {
+    safari: {
+      title: "Safari Šator",
+      short: "Platneni šator 12 m² na platformi 3×6 m. Twin ili king kreveti, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
+      details: [
+        "Dva kreveta (ili King) s noćnim ormarićima i lampama za čitanje",
+        "Mreža protiv komaraca • snažan ventilator • utičnice",
+        "Privatna terasa sa palmovim stolicama",
+        "Zajednički objekti: topli/hladni tuševi i toaleti — odeljenja za žene i muškarce, 2 toaleta + 2 tuša svaki",
+      ],
+    },
+    comfort: {
+      title: "Comfort Šator",
+      short: "Unapređeni šator 12 m² s dodatnom privatnošću (bočni/zadnji zidovi), privatnom terasom i privatnim kupatilom u susednom rondavelu pod slamnatim krovom.",
+      details: [
+        "Twin ili king raspored s praktičnim osvetljenjem",
+        "Mreža protiv komaraca • snažan ventilator • utičnice",
+        "Privatna terasa sa stolicama",
+        "Vaše privatno kupatilo nalazi se u susednom rondavelu pod slamnatim krovom, dostupno zadnjim vratima šatora kroz kratku privatnu vezu.",
+      ],
+    },
+    cottage: {
+      title: "Vikendica sa Baštom",
+      short: "Prostrana vikendica s king krevetom, inverter klimom, radnim i trpezarijskim stolom, privatnom terasom i en-suite kupatilom u susednom rondavelu pod slamnatim krovom.",
+      details: [
+        "King krevet • radni i trpezarijski sto",
+        "Inverter klima • prigušivo svetlo",
+        "Vaše privatno en-suite kupatilo nalazi se u susednom rondavelu pod slamnatim krovom, direktno dostupno zadnjim vratima spavaće sobe.",
+        "Privatna terasa sa stolicama",
+      ],
+    },
+    chalet: {
+      title: "Kućica sa Slamnatim Krovom",
+      short: "Romantična kućica pod palmama. Inverter klima, en-suite kupatilo, terasa, twin ili king krevet.",
+      details: [
+        "Mirno mesto pod palmama • klima uređaj",
+        "En-suite kupatilo (tuš, umivaonik, toalet)",
+        "Twin ili king kreveti s noćnim ormarićima",
+        "Privatna terasa sa palmovim stolicama",
+      ],
+    },
+  },
   experiences: {
     diving: { title: "Ronjenje", desc: "Obalski grebeni sa bogatim morskim životom." },
     dolphins: { title: "Plivanje sa delfinima", desc: "Etički susreti sa rezidentnim delfinima." },

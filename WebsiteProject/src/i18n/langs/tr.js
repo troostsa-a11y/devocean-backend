@@ -90,6 +90,48 @@ export const UI = {
 }
 
 export const L10N = {
+  units: {
+    safari: {
+      title: "Safari Çadırı",
+      short: "3×6 m platform üzerinde 12 m² kanvas çadır. Twin veya king yataklar, fan, prizler, sivrisinek ağı, özel teras. Ortak banyolar.",
+      details: [
+        "İki ayrı yatak (veya King) komodinler ve okuma lambaları ile",
+        "Sivrisinek ağı • güçlü fan • elektrik prizleri",
+        "Palmiye yapraklı sandalyelerle özel teras",
+        "Ortak tesisler: sıcak/soğuk duşlar ve sifonlu tuvaletler — kadın ve erkek bölümleri, her biri 2 tuvalet + 2 duş",
+      ],
+    },
+    comfort: {
+      title: "Comfort Çadırı",
+      short: "Daha fazla mahremiyet (yan/arka duvarlar) sağlayan yükseltilmiş 12 m² çadır, özel teras ve bitişik sazdan çatılı rondavelde özel banyo.",
+      details: [
+        "Pratik aydınlatmalı twin veya king yatak düzeni",
+        "Sivrisinek ağı • güçlü fan • elektrik prizleri",
+        "Sandalyeli özel teras",
+        "Özel banyonuz, çadırın arka kapısından kısa bir özel geçişle ulaşılan bitişik sazdan çatılı rondavelde yer almaktadır.",
+      ],
+    },
+    cottage: {
+      title: "Bahçeli Kulübe",
+      short: "King yataklı, invertör klimatlı, çalışma ve yemek masalı, özel teraslı ve bitişik sazdan çatılı rondavelde en-suite banyolu geniş kulübe.",
+      details: [
+        "King yatak • çalışma masası ve yemek masası",
+        "İnvertör klima • kısılabilir ışık",
+        "Özel en-suite banyonuz, yatak odasının arka kapısından doğrudan erişilebilen bitişik sazdan çatılı rondavelde yer almaktadır.",
+        "Sandalyeli özel teras",
+      ],
+    },
+    chalet: {
+      title: "Sazdan Çatılı Şale",
+      short: "Palmiyeler altında romantik ve kompakt şale. İnvertör klima, en-suite banyo, teras, twin veya king yatak.",
+      details: [
+        "Palmiyeler altında huzurlu alan • klima",
+        "En-suite banyo (duş, lavabo, tuvalet)",
+        "Komodinli twin veya king yataklar",
+        "Palmiye sandalyeli özel teras",
+      ],
+    },
+  },
   experiences: {
     diving: { title: "Dalış", desc: "Deniz yaşamıyla zengin kıyı resifleri." },
     dolphins: { title: "Yunuslarla Yüzme", desc: "Yerel yunuslarla etik karşılaşmalar." },
