@@ -245,3 +245,93 @@ describe('App — hash-scroll rAF unmount guard', () => {
     expect(scrollSpy).not.toHaveBeenCalled();
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Hero-placeholder double-rAF unmount guard
+// ─────────────────────────────────────────────────────────────────────────────
+
+describe('App — hero-placeholder double-rAF unmount guard', () => {
+  let originalResizeObserver;
+
+  beforeEach(() => {
+    originalResizeObserver = global.ResizeObserver;
+    global.ResizeObserver = class {
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    };
+    mockLocation = '/';
+    setWindowLocation({ pathname: '/', hash: '' });
+  });
+
+  afterEach(() => {
+    global.ResizeObserver = originalResizeObserver;
+    vi.restoreAllMocks();
+    document.body.innerHTML = '';
+    mockLocation = '/';
+  });
+
+  // ── Test 4: unmount between the two rAF frames — style.display must NOT mutate
+  //
+  // Strategy: replace requestAnimationFrame with a manual queue so we can fire
+  // the outer frame (which schedules the inner frame) without firing the inner
+  // frame yet.  Unmounting between the two frames sets heroCancelled=true.
+  // Firing the inner frame afterwards must be a no-op due to the guard.
+
+  it('does not set heroPlaceholder.style.display="none" after unmount between the two rAF frames', async () => {
+    // Insert #hero-placeholder into DOM so the branch executes
+    const heroEl = document.createElement('div');
+    heroEl.id = 'hero-placeholder';
+    heroEl.style.display = '';
+    document.body.appendChild(heroEl);
+
+    // Make the "hero-seen" storage flag truthy so the double-rAF branch runs.
+    // The vi.mock factory returns a plain object — we can mutate getItem directly.
+    const storageModule = await import('../../utils/safeStorage');
+    const origSessionGetItem = storageModule.safeSessionStorage.getItem;
+    storageModule.safeSessionStorage.getItem = () => 'true';
+
+    // Install a manual rAF queue: captures callbacks by id so we can fire them
+    // one batch at a time (outer frame, then inner frame separately).
+    const rafQueue = new Map();
+    let rafIdCounter = 1;
+    const origRAF = globalThis.requestAnimationFrame;
+    const origCAF = globalThis.cancelAnimationFrame;
+    globalThis.requestAnimationFrame = vi.fn(cb => {
+      const id = rafIdCounter++;
+      rafQueue.set(id, cb);
+      return id;
+    });
+    globalThis.cancelAnimationFrame = vi.fn(id => rafQueue.delete(id));
+
+    let unmountFn;
+    await act(async () => {
+      const { unmount } = render(<App />);
+      unmountFn = unmount;
+    });
+
+    // First batch: fire every rAF queued during mount.
+    // This includes the outer hero-placeholder rAF, which schedules the inner one.
+    const firstBatch = [...rafQueue.entries()];
+    rafQueue.clear();
+    for (const [, cb] of firstBatch) cb(performance.now());
+
+    // The inner rAF is now in the queue. Unmount before it fires.
+    // Cleanup sets heroCancelled=true (and calls cancelAnimationFrame on the
+    // already-fired outer id, which is now a no-op via our mock).
+    unmountFn();
+
+    // Second batch: fire all remaining rAFs including the inner hero frame.
+    // The heroCancelled guard must prevent any mutation to heroEl.style.display.
+    const secondBatch = [...rafQueue.entries()];
+    rafQueue.clear();
+    for (const [, cb] of secondBatch) cb(performance.now());
+
+    expect(heroEl.style.display).not.toBe('none');
+
+    // Restore everything
+    globalThis.requestAnimationFrame = origRAF;
+    globalThis.cancelAnimationFrame = origCAF;
+    storageModule.safeSessionStorage.getItem = origSessionGetItem;
+  });
+});
