@@ -420,29 +420,23 @@ export default function App() {
           {/* Hero - always render immediately for LCP optimization */}
           <HeroSection images={HERO_IMAGES} ui={ui || criticalUI} bookUrl={bookUrl} lang={lang} currency={currency} />
           
-          {/* Below-fold content - wait for full translations */}
-          {loading || !ui ? (
-            <div className="flex-1 min-h-[50vh] bg-slate-50" />
-          ) : (
-            <>
-              <AccommodationsSection units={units} ui={ui} bookUrl={bookUrl} lang={lang} currency={currency} />
-              <ExperiencesSection experiences={experiences} ui={ui} lang={lang} />
+          {/* Below-fold content - render immediately with criticalUI fallback, upgrade when full translations arrive */}
+          <AccommodationsSection units={units} ui={ui || criticalUI} bookUrl={bookUrl} lang={lang} currency={currency} />
+          <ExperiencesSection experiences={experiences} ui={ui || criticalUI} lang={lang} />
 
-              {/* Lazy load below-the-fold sections for better INP performance */}
-              <Suspense fallback={<div className="min-h-[200px]" />}>
-                <GallerySection ui={ui} />
-                <LocationSection ui={ui} />
-                <ContactSection
-                  ui={ui}
-                  lang={lang}
-                  currency={currency}
-                  bookUrl={bookUrl}
-                  dateLocale={dateLocale}
-                />
-                <Footer units={units} experiences={experiences} ui={ui} lang={lang} />
-              </Suspense>
-            </>
-          )}
+          {/* Lazy load below-the-fold sections for better INP performance */}
+          <Suspense fallback={<div className="min-h-[200px]" />}>
+            <GallerySection ui={ui || criticalUI} />
+            <LocationSection ui={ui || criticalUI} />
+            <ContactSection
+              ui={ui || criticalUI}
+              lang={lang}
+              currency={currency}
+              bookUrl={bookUrl}
+              dateLocale={dateLocale}
+            />
+            <Footer units={units} experiences={experiences} ui={ui || criticalUI} lang={lang} />
+          </Suspense>
         </Route>
       </Switch>
       </div>

@@ -555,8 +555,63 @@ function getCriticalUI(lang) {
       ctaSecondary: nav.heroExplore || "Explore the lodge",
       badge: "..." // Placeholder until full translations load
     },
-    stay: { moreDetails: "..." },
-    form: { send: "..." }
+    stay: {
+      headline: "Stay with us",
+      blurb: "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.",
+      moreDetails: "More details"
+    },
+    experiences: {
+      headline: "Experiences",
+      blurb: "Ocean and forest adventures right on your doorstep.",
+      featured: "Featured",
+      learnMore: "Explore dive sites, operators & pricing →"
+    },
+    galleryHeading: "Gallery",
+    location: {
+      headline: "Location",
+      blurb: "Ponta do Ouro – Matutuíne District, Southern Mozambique.",
+      items: [
+        "Ponta do Ouro town, a short walk from the beach",
+        "15 min to Ponta Malongane • 25 min to Kosi Bay border",
+        "Secure parking • Local cafés & markets nearby",
+      ],
+      viewMap: "View Interactive Map",
+    },
+    contact: {
+      headline: "Contact & Booking",
+      blurb: "Questions, dates, special requests or group bookings – we're happy to help.",
+      call: "WhatsApp",
+      email: "Email",
+      directions: "Directions",
+      bookNow: "Online Booking"
+    },
+    form: {
+      name: "Name",
+      email: "Email",
+      stayLabel: "Interested in staying:",
+      checkin: "From",
+      checkout: "Until",
+      unitLabel: "My preferred unit is:",
+      units: [
+        "Safari Tent - shared bathroom",
+        "Comfort Tent - private bathroom",
+        "Garden Cottage - inverter AC",
+        "Thatched Chalet - inverter AC"
+      ],
+      message: "Message",
+      send: "Send",
+      consent: "By submitting you agree to be contacted about your inquiry.",
+      phName: "Your name",
+      phEmail: "your@email.com",
+      phDate: "dd/mm/yyyy",
+      phMsg: "Tell us more about your wishes...",
+      success: "Thank you! Your message has been sent. Check your email for a confirmation.",
+      sending: "Sending...",
+    },
+    footer: {
+      rights: "All rights reserved.",
+      desc: "Family-run eco-hospitality and community projects in Southern Mozambique.",
+    }
   };
 }
 
