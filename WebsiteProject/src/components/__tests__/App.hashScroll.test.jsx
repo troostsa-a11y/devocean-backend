@@ -275,6 +275,75 @@ describe('App — hash-scroll useEffect', () => {
     }
   });
 
+  // ── Test 6: element never appears — loop stops at maxAttempts ─────────────
+  //
+  // Regression guard: if the `if (attempts < maxAttempts)` guard were removed,
+  // tryScroll would schedule rAFs forever when the element is absent.
+  //
+  // Expected rAF budget when navigating to '/' with a non-existent hash:
+  //   • Focus-management effect: location === '/' → returns early → 0 rAFs
+  //   • Hero-placeholder branch: #hero-placeholder absent in jsdom → 0 rAFs
+  //   • tryScroll retry loop: 1 initial rAF + 19 recursive rAFs = 20 rAFs total
+  //     (the 20th callback sees attempts===20, fails `< maxAttempts`, and stops)
+  //
+  // The test installs the rAF spy BEFORE the navigation rerender so the initial
+  // `requestAnimationFrame(tryScroll)` call is counted, then asserts exactly 20
+  // rAFs were scheduled — proving the loop cannot exceed maxAttempts.
+
+  it('stops after maxAttempts and never calls scrollIntoView when element is absent', async () => {
+    // ── Phase 1: start on /story; drain all rAFs from the initial render ─────
+    mockLocation = '/story';
+    setWindowLocation({ pathname: '/story', hash: '' });
+
+    let rerenderFn;
+    await act(async () => {
+      const result = render(<App />);
+      rerenderFn = result.rerender;
+    });
+    await act(async () => { vi.runAllTimers(); });
+
+    // ── Install spies BEFORE the navigation rerender ─────────────────────────
+    // scrollIntoView spy — use vi.spyOn so restoreAllMocks() cleans it up.
+    const scrollSpy = vi.spyOn(Element.prototype, 'scrollIntoView');
+
+    // rAF spy — count every call, then delegate to the real implementation so
+    // fake timers can still advance the queue.
+    let rafCount = 0;
+    const origRaf = window.requestAnimationFrame.bind(window);
+    vi.spyOn(window, 'requestAnimationFrame').mockImplementation(cb => {
+      rafCount++;
+      return origRaf(cb);
+    });
+
+    // ── Phase 2: navigate to /#ghost (never in DOM) ──────────────────────────
+    mockLocation = '/';
+    setWindowLocation({ pathname: '/', hash: '#ghost' });
+
+    // Rerender so the location dep changes; the initial rAF is now captured.
+    await act(async () => { rerenderFn(<App />); });
+
+    expect(document.getElementById('ghost')).toBeNull();
+
+    // Drain every pending rAF callback.  If the loop were infinite this would
+    // recurse forever (or stack-overflow in a real browser); with fake timers
+    // it completes only because the loop terminates.
+    await act(async () => { vi.runAllTimers(); });
+
+    // ── Assertions ───────────────────────────────────────────────────────────
+
+    // 1. The loop must never have scrolled anything.
+    expect(scrollSpy).not.toHaveBeenCalled();
+
+    // 2. Exactly 20 rAFs scheduled: 1 initial + 19 recursive retries.
+    //    A regression removing or weakening the guard would change this number.
+    expect(rafCount).toBe(20);
+
+    // 3. No further rAFs after exhaustion — loop is truly stopped.
+    const countAfterDrain = rafCount;
+    await act(async () => { vi.advanceTimersByTime(5000); });
+    expect(rafCount).toBe(countAfterDrain);
+  });
+
   // ── Test 5: hash cleared before the retry rAF fires ──────────────────────
   //
   // Regression guard for a specific race:
