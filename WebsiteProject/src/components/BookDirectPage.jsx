@@ -1659,7 +1659,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
                     {/* Trustindex cert badge mounts here — adopted from the
                         floating widget Trustindex creates in <body> */}
-                    <div ref={tiCertRef} className="shrink-0" />
+                    <div ref={tiCertRef} className="flex-1 flex justify-center" />
                     {marinDetailsContext && (
                       <MarinPanel
                         context={marinDetailsContext}
