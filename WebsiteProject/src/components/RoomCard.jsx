@@ -177,6 +177,7 @@ function RoomCard({
     <div
       className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 sm:p-6"
       data-testid={`card-room-${room.roomId}`}
+      data-unit={unitKey || undefined}
     >
       <div className="flex items-start gap-3 sm:gap-4">
         <div className="flex-1 min-w-0">

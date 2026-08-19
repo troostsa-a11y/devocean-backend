@@ -118,6 +118,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const cartRef = useRef(cart);
   cartRef.current = cart;
   const tRef = useRef(t);
+  // Unit key from ?unit= (set by the unit detail pages' CTAs) — after results
+  // render, scroll to that unit's room card once so the guest returns to the
+  // room they were reading about.
+  const focusUnitRef = useRef(null);
   tRef.current = t;
 
   useEffect(() => {
@@ -133,6 +137,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     const pInfants  = params.get('infants')  ? Number(params.get('infants'))  : null;
     const pDiscount = params.get('discount') || '';
     const pCurrency = params.get('currency') || null;
+    const pUnit     = params.get('unit')     || null;
+    if (pUnit) focusUnitRef.current = pUnit;
 
     if (pCheckIn)           setCheckIn(pCheckIn);
     if (pCheckOut)          setCheckOut(pCheckOut);
@@ -226,6 +232,18 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (currency)            p.set('currency', currency);
     return p.toString();
   }, [lang, checkIn, checkOut, adults, children, infants, discountCode, currency]);
+
+  // One-shot scroll to the room card matching ?unit= once results are visible.
+  useEffect(() => {
+    if (step !== 'results' || !availability || !focusUnitRef.current) return;
+    const unit = focusUnitRef.current;
+    focusUnitRef.current = null;
+    // Wait a frame so the cards are in the DOM.
+    requestAnimationFrame(() => {
+      const el = document.querySelector(`[data-unit="${CSS.escape(unit)}"]`);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }, [step, availability]);
 
   // Lodge child policy: 0-3 stay free (excluded from the priced party), 4-12 are
   // charged as a child, 13+ are charged as an adult. The effective counts below
