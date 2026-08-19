@@ -46,3 +46,4 @@
 - [Clean-URL lang policy](clean-url-lang-policy.md) — ?lang= is entry-only: apply+persist to site.lang, then replaceState clean; all internal links bare; canonical bare
 - [Stable-URL runtime JSON caching](stable-url-json-cache.md) — /translations/*.json fetched at runtime need ?v=<build-id> (Vite define) AND max-age=0 headers; header changes alone can't bust copies already cached under the old TTL
 - [SPA experience headings](spa-experience-headings.md) — edge middleware must inject a route-specific static H1 for experience pages; React-only headings are invisible to no-JS crawlers
+- [User workflow preferences](user-workflow-preferences.md) — no automatic review-subagent passes and no unsolicited follow-up task proposals; user QA-tests manually and dislikes background agents
