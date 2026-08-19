@@ -1504,9 +1504,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       data-testid="card-review-proof"
                     >
                       <div className="flex items-center gap-0.5 text-yellow-500 shrink-0">
-                        {[...Array(5)].map((_, i) => (
+                        {[...Array(4)].map((_, i) => (
                           <Star key={i} size={14} fill="currentColor" />
                         ))}
+                        <span style={{ position: 'relative', display: 'inline-block', width: 14, height: 14 }}>
+                          <Star size={14} fill="none" stroke="currentColor" strokeWidth={2} />
+                          <span style={{ position: 'absolute', inset: 0, overflow: 'hidden', width: '50%' }}>
+                            <Star size={14} fill="currentColor" stroke="none" />
+                          </span>
+                        </span>
                       </div>
                       <div className="min-w-0 text-xs text-slate-600 leading-snug">
                         {/* Fallback covers a missing/partial translation object and
@@ -1516,7 +1522,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             ? ui.hero.badge
                             : 'Guests loved comfort & value'}
                         </span>
-                        <span className="text-slate-400"> · Google Reviews</span>
                       </div>
                     </div>
                     </div>
