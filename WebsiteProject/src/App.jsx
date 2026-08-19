@@ -299,9 +299,13 @@ export default function App() {
     let cancelled = false;
     let rafId;
 
-    // Retry scroll until element is found (max 20 attempts over 1 second)
+    // Below-the-fold sections are lazy-loaded. On a cold direct link such as
+    // /nl/#location, the browser tries the native anchor before React has
+    // mounted that section, so retry for a bounded five-second window.
+    // Keeping this finite protects navigation away from the homepage from a
+    // stale animation-frame loop.
     let attempts = 0;
-    const maxAttempts = 20;
+    const maxAttempts = 300;
     
     const tryScroll = () => {
       if (cancelled) return;

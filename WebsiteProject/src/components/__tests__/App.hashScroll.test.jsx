@@ -7,10 +7,12 @@
  * Covers:
  *   1. Normal path — scrollIntoView IS called when the target element exists
  *      and the component stays mounted.
- *   2. Unmount before scroll — component unmounts while the rAF retry loop is
+ *   2. A lazy section that mounts after the initial short retry window still
+ *      receives the requested hash scroll.
+ *   3. Unmount before scroll — component unmounts while the rAF retry loop is
  *      in-flight (target element not yet in DOM); scrollIntoView must NOT be
  *      called after unmount.
- *   3. Route change — effect cleanup fires (cancelled=true) before the next
+ *   4. Route change — effect cleanup fires (cancelled=true) before the next
  *      rAF; stale loop must not call scrollIntoView.
  */
 
@@ -185,7 +187,25 @@ describe('App — hash-scroll rAF unmount guard', () => {
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
   });
 
-  // ── Test 2: unmount before scroll — scrollIntoView must NOT fire ───────────
+  it('scrolls to a section that mounts after a lazy chunk finishes loading', async () => {
+    setWindowLocation({ pathname: '/nl/', hash: '#late-location' });
+    const scrollSpy = vi.fn();
+
+    await act(async () => { render(<App />); });
+
+    setTimeout(() => {
+      const lateSection = document.createElement('section');
+      lateSection.id = 'late-location';
+      lateSection.scrollIntoView = scrollSpy;
+      document.body.appendChild(lateSection);
+    }, 500);
+
+    await act(async () => { vi.advanceTimersByTime(600); });
+
+    expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+  });
+
+  // ── Test 3: unmount before scroll — scrollIntoView must NOT fire ───────────
   //
   // Mount with /#missing in the URL (no element with that id exists).
   // The loop will keep retrying via rAF. Unmount the component mid-flight —
