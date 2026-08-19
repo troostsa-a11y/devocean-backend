@@ -907,7 +907,7 @@
   </main>
 
   <!-- Dynamic Booking URL Script -->
-  <script src="/translations/accommodation-detail-i18n.js"></script>
+  <script src="/translations/accommodation-detail-i18n.js?v=2"></script>
   <script src="/js/gallery-lightbox.js?v=20260730" defer></script>
   <!-- Marin AI receptionist widget + contextual ask -->
   <script>
@@ -924,6 +924,24 @@
   function dvAsk() {
     window.devocean && window.devocean.open();
   }
+  </script>
+  <!-- Forward the incoming booking query string (checkIn/checkOut/guests/
+       discount/currency/lang) onto every /book-direct link, so a guest who
+       opened this page from the booking funnel returns with their search and
+       selected display currency intact. -->
+  <script>
+    (function () {
+      var KEYS = ['lang', 'checkIn', 'checkOut', 'adults', 'children', 'infants', 'discount', 'currency'];
+      var incoming = new URLSearchParams(window.location.search);
+      var fwd = new URLSearchParams();
+      KEYS.forEach(function (k) { var v = incoming.get(k); if (v) fwd.set(k, v); });
+      var qs = fwd.toString();
+      if (!qs) return;
+      document.querySelectorAll('a[href^="/book-direct"]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (href.indexOf('?') === -1) a.setAttribute('href', href + '?' + qs);
+      });
+    })();
   </script>
 </body>
 

@@ -652,9 +652,17 @@ async function applyTranslations(lang) {
     }
   }
 
-  // Point booking CTAs at the native direct-booking flow
+  // Point booking CTAs at the native direct-booking flow, preserving the
+  // booking-state query this page was opened with (from /book-direct's
+  // "Details" links) so the guest returns with their search and selected
+  // display currency intact. Allowlisted keys only.
+  const BOOKING_QS_KEYS = ['lang', 'checkIn', 'checkOut', 'adults', 'children', 'infants', 'discount', 'currency'];
+  const incoming = new URLSearchParams(window.location.search);
+  const fwd = new URLSearchParams();
+  BOOKING_QS_KEYS.forEach(k => { const v = incoming.get(k); if (v) fwd.set(k, v); });
+  const bookHref = fwd.toString() ? `/book-direct?${fwd.toString()}` : '/book-direct';
   document.querySelectorAll('a[data-testid="button-book-now"], a[data-testid="button-book-heading"]').forEach(link => {
-    link.href = "/book-direct";
+    link.href = bookHref;
   });
 
   // Update page language attribute

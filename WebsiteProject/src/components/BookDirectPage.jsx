@@ -218,9 +218,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (checkOut)            p.set('checkOut', checkOut);
     if (adults !== 2)        p.set('adults', String(adults));
     if (children > 0)        p.set('children', String(children));
+    if (infants > 0)         p.set('infants', String(infants));
     if (discountCode.trim()) p.set('discount', discountCode.trim());
+    // Preserve the selected display currency across the detail-page round trip
+    // (the static detail pages forward their query string back to /book-direct,
+    // whose mount effect restores ?currency via onCurrencyChange).
+    if (currency)            p.set('currency', currency);
     return p.toString();
-  }, [lang, checkIn, checkOut, adults, children, discountCode]);
+  }, [lang, checkIn, checkOut, adults, children, infants, discountCode, currency]);
 
   // Lodge child policy: 0-3 stay free (excluded from the priced party), 4-12 are
   // charged as a child, 13+ are charged as an adult. The effective counts below
