@@ -1,5 +1,7 @@
-import { CalendarCheck2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { CalendarCheck2, Loader2 } from 'lucide-react';
 import LazyImage from './LazyImage';
+import { getBookingStrings } from '../i18n/bookingStrings';
 
 // Key features for each accommodation type - helps users preview before clicking
 const UNIT_FEATURES = {
@@ -25,6 +27,17 @@ const getFeatureLabel = (feature, lang) => {
 };
 
 export default function AccommodationsSection({ units, ui, bookUrl, lang, currency }) {
+  // Immediate click feedback: the booking page is a separate navigation, so
+  // without this the button looks stalled between click and page load.
+  const [navigatingKey, setNavigatingKey] = useState(null);
+  const bookingT = getBookingStrings(lang);
+  // Reset the progress state when the page is restored from the back/forward
+  // cache — otherwise a "Checking availability…" spinner would persist after Back.
+  useEffect(() => {
+    const reset = () => setNavigatingKey(null);
+    window.addEventListener('pageshow', reset);
+    return () => window.removeEventListener('pageshow', reset);
+  }, []);
   return (
     <section id="stay" className="bg-slate-50 max-w-7xl mx-auto px-4 py-16">
       <div className="flex items-end justify-between gap-6">
@@ -109,9 +122,18 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                   )}
                   <a
                     href={bookUrl}
-                    className="btn-cta inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e4b13] text-white text-sm font-semibold hover:bg-[#8a4211] transition-colors"
+                    className={`btn-cta inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#9e4b13] text-white text-sm font-semibold transition-colors ${navigatingKey === u.key ? 'opacity-75 pointer-events-none cursor-wait' : 'hover:bg-[#8a4211]'}`}
                     data-testid={`button-book-${u.key}`}
-                    onClick={() => {
+                    aria-disabled={navigatingKey === u.key || undefined}
+                    aria-live="polite"
+                    onClick={(e) => {
+                      if (navigatingKey) { e.preventDefault(); return; }
+                      // Only lock the UI for a plain left-click that navigates this
+                      // tab; Ctrl/Cmd/Shift/middle-click opens a new tab and the
+                      // source page must stay interactive.
+                      const isPlainLeftClick =
+                        e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+                      if (isPlainLeftClick) setNavigatingKey(u.key);
                       if (window.dataLayer) {
                         window.dataLayer.push({
                           event: 'reservation_complete',
@@ -123,8 +145,10 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                       }
                     }}
                   >
-                    <CalendarCheck2 size={14} />
-                    Check Availability
+                    {navigatingKey === u.key
+                      ? <Loader2 size={14} className="animate-spin" />
+                      : <CalendarCheck2 size={14} />}
+                    {navigatingKey === u.key ? bookingT.searching : 'Check Availability'}
                   </a>
                 </div>
               </div>
