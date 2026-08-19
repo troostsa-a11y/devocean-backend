@@ -819,9 +819,17 @@
       // "/#experiences" from a "Back to Experiences" link). The visitor is
       // targeting that section, not the hero intro, so a 5 s full-screen
       // overlay would just cover the section they navigated to.
-      if ((path !== '/' && path !== '/index.html') || (hash && hash.length > 1)) {
+      var isHomePath = (path === '/' || path === '/index.html');
+      if (!isHomePath || (hash && hash.length > 1)) {
         var hideStyle = document.createElement('style');
-        hideStyle.textContent = '#hero-placeholder{display:none!important}';
+        // On the homepage (hash case) also hide the crawler-only
+        // #static-content shadow — with the overlay suppressed its raw text
+        // would flash until React mounts. On non-home routes the middleware
+        // owns #static-content (guide pages deliberately show a styled
+        // pre-render), so leave it untouched there.
+        hideStyle.textContent = isHomePath
+          ? '#hero-placeholder,#static-content{display:none!important}'
+          : '#hero-placeholder{display:none!important}';
         document.head.appendChild(hideStyle);
         return;
       }
@@ -835,7 +843,10 @@
             referrerUrl.origin === window.location.origin &&
             referrerUrl.pathname.indexOf('/legal/') === 0) {
           var referrerHideStyle = document.createElement('style');
-          referrerHideStyle.textContent = '#hero-placeholder{display:none!important}';
+          // Also hide the crawler-only #static-content shadow: with the
+          // overlay suppressed nothing covers it, so it would flash as a raw
+          // text page (the "in-between screen") until React mounts.
+          referrerHideStyle.textContent = '#hero-placeholder,#static-content{display:none!important}';
           document.head.appendChild(referrerHideStyle);
           return;
         }
@@ -862,7 +873,10 @@
       // brief full-screen flash when returning from /story or any other page.
       if (heroSeenThisSession || heroSeenEver) {
         var hideStyle = document.createElement('style');
-        hideStyle.textContent = '#hero-placeholder{display:none!important}';
+        // Hide the crawler-only #static-content shadow too — without the
+        // overlay covering it, its raw text is what paints until React
+        // mounts. No-JS crawlers never run this script, so they still see it.
+        hideStyle.textContent = '#hero-placeholder,#static-content{display:none!important}';
         document.head.appendChild(hideStyle);
         return;
       }

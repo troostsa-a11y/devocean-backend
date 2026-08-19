@@ -25,7 +25,7 @@ The `new Image()` objects used for cache-warming slides 1 & 2 must have **no** `
 
 ## Rule 4 — returning from static pages must skip the homepage overlay
 
-Static legal pages mark the hero handoff as seen on page load and before navigating to Home; the homepage also checks for a same-site legal referrer.
+Static legal pages mark the hero handoff as seen on page load and before navigating to Home; the homepage also checks for a same-site legal referrer. Crucially, whenever the homepage suppresses the overlay it must ALSO hide the crawler-only #static-content shadow — that block is position:absolute/z-index:-1 (not clipped) and shows as a raw-text page through the empty #root until React mounts. That raw-text flash, not the overlay itself, was the persistent "in-between screen". Do not hide #static-content on non-home routes: the middleware owns it there (guide pages deliberately unhide a styled pre-render as LCP).
 
 **Why:** A legal-page visitor is already on the site. Showing a homepage overlay on that navigation reads as a startup flash rather than useful loading feedback.
 

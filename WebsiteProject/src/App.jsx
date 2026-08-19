@@ -246,7 +246,10 @@ export default function App() {
   // Handle hash navigation on route changes (immediate, with retry until element exists)
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (location !== '/') return;
+    // '/index.html' is treated as the homepage by the head script (it can show
+    // the intro overlay), so the handoff must run there too or the overlay
+    // would never be dismissed on a direct /index.html load.
+    if (location !== '/' && location !== '/index.html') return;
 
     // Guard for the hero-placeholder handoff below. Set to true in cleanup so
     // late image events and animation frames cannot mutate a departed route.

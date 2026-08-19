@@ -3,12 +3,16 @@
   // Check for return URL in query parameter first (most reliable)
   const urlParams = new URLSearchParams(window.location.search);
   const returnUrl = urlParams.get('return') || urlParams.get('returnUrl') || urlParams.get('back');
-  
-  if (returnUrl) {
-    sessionStorage.setItem('legalPageReferrer', returnUrl);
-  } else if (document.referrer && !sessionStorage.getItem('legalPageReferrer')) {
-    sessionStorage.setItem('legalPageReferrer', document.referrer);
-  }
+
+  // Storage can throw in private/embedded browsers; a failure here must not
+  // stop the rest of this script (including markHeroHandoffSeen below).
+  try {
+    if (returnUrl) {
+      sessionStorage.setItem('legalPageReferrer', returnUrl);
+    } else if (document.referrer && !sessionStorage.getItem('legalPageReferrer')) {
+      sessionStorage.setItem('legalPageReferrer', document.referrer);
+    }
+  } catch (_) { }
 })();
 
 // A visitor leaving a legal page for the homepage has already been using the
