@@ -82,7 +82,7 @@ export default function LanguagePicker({ lang, onLangChange, className = '' }) {
   const filtered = query ? LOCALES.filter((l) => match(l, query)) : null;
 
   return (
-    <div ref={containerRef} className={`relative ${className}`}>
+    <div ref={containerRef} className={`relative w-56 max-w-[calc(100vw-1rem)] ${className}`}>
       {/* ── Trigger ──────────────────────────────────────────────────── */}
       <button
         type="button"
@@ -90,12 +90,11 @@ export default function LanguagePicker({ lang, onLangChange, className = '' }) {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label="Select language"
-        className="flex items-center gap-1.5 border border-white/40 rounded px-2 py-1
-                   text-white bg-transparent text-sm hover:bg-white/10 transition-colors
-                   max-w-[48vw]"
+         className="flex w-full items-center justify-between gap-1.5 border border-white/40 rounded px-2 py-1
+                    text-white bg-transparent text-sm hover:bg-white/10 transition-colors"
       >
         <Globe2 size={14} className="shrink-0 opacity-80" />
-        <span className="max-w-[130px] truncate">{current.label}</span>
+        <span className="min-w-0 flex-1 truncate">{current.label}</span>
         {/* chevron */}
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
              className={`shrink-0 opacity-60 transition-transform ml-0.5 ${open ? 'rotate-180' : ''}`}
@@ -110,7 +109,7 @@ export default function LanguagePicker({ lang, onLangChange, className = '' }) {
         <div
           role="listbox"
           aria-label="Language"
-          className="absolute left-0 top-[calc(100%+6px)] z-[300] w-56
+           className="absolute left-0 top-[calc(100%+6px)] z-[300] w-full
                      bg-white rounded-xl shadow-xl border border-slate-200
                      py-1 text-slate-800 text-sm"
         >
