@@ -219,6 +219,16 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         {/* CTA Buttons */}
         <div className="mt-[58px] [@media_(max-width:639.98px)_and_(max-height:700px)]:mt-[28px] sm:mt-[66px] [@media_(max-height:700px)_and_(min-width:640px)]:mt-[20px]">
           <div className="grid grid-cols-2 gap-x-3 gap-y-6 [@media_(max-width:639.98px)_and_(max-height:700px)]:gap-y-3 max-w-[25rem] sm:max-w-[28rem]">
+            {/* Explore Lodge */}
+            <a
+              href="#stay"
+              className="group btn-secondary w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2"
+              aria-label={ui.hero.ctaSecondary}
+              data-testid="button-explore-lodge"
+            >
+              <span className="sm:whitespace-nowrap">{ui.hero.ctaSecondary}</span>
+            </a>
+
             {/* Why Ponta do Ouro - Destination Page */}
             <Link
               href={buildUrl('/why-ponta')}
@@ -237,16 +247,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               <Anchor className="w-4 h-4 shrink-0" />
               <span className="sm:whitespace-nowrap">{ui.hero.goDiving || "Go Diving"}</span>
             </Link>
-
-            {/* Explore Lodge */}
-            <a
-              href="#stay"
-              className="group btn-secondary w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white bg-white/15 backdrop-blur-sm text-white shadow-xl transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2"
-              aria-label={ui.hero.ctaSecondary}
-              data-testid="button-explore-lodge"
-            >
-              <span className="sm:whitespace-nowrap">{ui.hero.ctaSecondary}</span>
-            </a>
 
             {/* Book Now */}
             <a
