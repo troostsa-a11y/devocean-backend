@@ -1039,7 +1039,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         data-testid="select-adults"
                       >
                         {[1, 2, 3, 4, 5, 6].map((n) => (
-                          <option key={n} value={n}>{n} · {t.adults}</option>
+                          <option key={n} value={n}>{n} · {n === 1 ? t.adult : t.adults}</option>
                         ))}
                       </select>
                     </div>
@@ -1212,7 +1212,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <Users className="h-4 w-4 shrink-0 mt-0.5" />
                     <span className="flex flex-col leading-snug">
                       <span>{displayDate(checkIn)} → {displayDate(checkOut)}</span>
-                      <span className="font-medium">{availability.nights} {t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}</span>
+                      <span className="font-medium">{availability.nights} {availability.nights === 1 ? t.night : t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}</span>
                     </span>
                   </span>
 
@@ -1235,7 +1235,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <div className="space-y-1 text-center">
                     {(() => {
                       const partyParts = [
-                        effAdults > 0 ? `${effAdults} ${t.adults.toLowerCase()}` : null,
+                        effAdults > 0 ? `${effAdults} ${effAdults === 1 ? t.adult : t.adults.toLowerCase()}` : null,
                         effChildren > 0 ? `${effChildren} ${t.children.toLowerCase()}` : null,
                         effInfants > 0 ? `${effInfants} ${t.infants.toLowerCase()}` : null,
                       ].filter(Boolean);
@@ -1447,7 +1447,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   {line.adults !== undefined && (
                                     <span className="block text-xs text-slate-400">
                                       {[
-                                        (line.adults ?? 0) > 0 ? `${line.adults} ${t.adults.toLowerCase()}` : null,
+                                        (line.adults ?? 0) > 0 ? `${line.adults} ${line.adults === 1 ? t.adult : t.adults.toLowerCase()}` : null,
                                         (line.children ?? 0) > 0 ? `${line.children} ${t.children.toLowerCase()}` : null,
                                         (line.infants ?? 0) > 0 ? `${line.infants} ${t.infants.toLowerCase()}` : null,
                                       ].filter(Boolean).join(' · ')}
@@ -1607,7 +1607,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="text-slate-600 text-sm">{displayDate(checkIn)} → {displayDate(checkOut)}</span>
                     <span className="text-slate-600 text-sm">
-                      {quote.nights} {t.nights} · {fmt(t.roomsCount, { count: quote.rooms })}
+                      {quote.nights} {quote.nights === 1 ? t.night : t.nights} · {quote.rooms === 1 ? t.roomCountOne : fmt(t.roomsCount, { count: quote.rooms })}
                     </span>
                   </div>
                   {quote.lines.map((line) => (
