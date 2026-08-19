@@ -229,25 +229,6 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
               <span className="sm:whitespace-nowrap">{ui.hero.ctaSecondary}</span>
             </a>
 
-            {/* Why Ponta do Ouro - Destination Page */}
-            <Link
-              href={buildUrl('/why-ponta')}
-              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2"
-              data-testid="link-why-ponta"
-            >
-              <span className="sm:whitespace-nowrap">{ui.hero.villageHighlights || "Village Highlights"}</span>
-            </Link>
-
-            {/* Go Diving */}
-            <Link
-              href={buildUrl('/experiences/diving')}
-              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2"
-              data-testid="link-go-diving"
-            >
-              <Anchor className="w-4 h-4 shrink-0" />
-              <span className="sm:whitespace-nowrap">{ui.hero.goDiving || "Go Diving"}</span>
-            </Link>
-
             {/* Book Now */}
             <a
               href={bookUrl}
@@ -266,6 +247,25 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
             >
               <span className="sm:whitespace-nowrap">{ui.hero.ctaPrimary}</span>
             </a>
+
+            {/* Why Ponta do Ouro - Destination Page */}
+            <Link
+              href={buildUrl('/why-ponta')}
+              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2"
+              data-testid="link-why-ponta"
+            >
+              <span className="sm:whitespace-nowrap">{ui.hero.villageHighlights || "Village Highlights"}</span>
+            </Link>
+
+            {/* Go Diving */}
+            <Link
+              href={buildUrl('/experiences/diving')}
+              className="group w-full sm:w-auto sm:min-w-[13rem] px-5 [@media_(max-width:639.98px)_and_(max-height:700px)]:px-3 py-3 [@media_(max-width:639.98px)_and_(max-height:700px)]:py-2 rounded-2xl border-2 border-white/60 bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center font-bold text-base [@media_(max-width:639.98px)_and_(max-height:700px)]:text-sm flex items-center justify-center gap-2"
+              data-testid="link-go-diving"
+            >
+              <Anchor className="w-4 h-4 shrink-0" />
+              <span className="sm:whitespace-nowrap">{ui.hero.goDiving || "Go Diving"}</span>
+            </Link>
           </div>
         </div>
         
