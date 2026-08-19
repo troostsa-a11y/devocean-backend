@@ -1379,15 +1379,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                   <span className="text-slate-700">
                                     {cl.qty} × {translateRoomName(room.name)}
                                   </span>
-                                  <span className="text-right">
-                                    <span className="font-semibold text-slate-700">
-                                      {showFx ? fxPrimary(offer.total * cl.qty) : money(offer.total * cl.qty, room.currency)}
-                                    </span>
-                                    {showFx && (
-                                      <span className="block text-xs text-slate-400">
-                                        ≈ {money(offer.total * cl.qty, room.currency)}
-                                      </span>
-                                    )}
+                                  <span className="font-semibold text-slate-700">
+                                    {showFx ? fxPrimary(offer.total * cl.qty) : money(offer.total * cl.qty, room.currency)}
                                   </span>
                                 </div>
                               );
@@ -1417,11 +1410,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                                     </span>
                                   )}
                                 </span>
-                                <span className="text-right">
-                                  <span className="font-semibold text-slate-700">{money(line.lineTotal, quote.currency)}</span>
-                                  {fxLine(line.lineTotal) && (
-                                    <span className="block text-xs text-slate-400">{fxLine(line.lineTotal)}</span>
-                                  )}
+                                <span className="font-semibold text-slate-700">
+                                  {showFx ? fxPrimary(line.lineTotal) : money(line.lineTotal, quote.currency)}
                                 </span>
                               </div>
                             ))}
@@ -1455,35 +1445,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             )}
                             <div className="border-t border-slate-100 pt-3 flex flex-wrap items-center justify-between gap-2 text-sm">
                               <span className="text-slate-500">{t.total}</span>
-                              <span className="text-right">
-                                <span className="font-semibold text-slate-700" data-testid="text-cart-total">
-                                  {showFx ? fxPrimary(quote.total) : money(quote.total, quote.currency)}
-                                </span>
-                                {showFx && (
-                                  <span className="block text-xs text-slate-400">≈ {money(quote.total, quote.currency)}</span>
-                                )}
+                              <span className="font-semibold text-slate-700" data-testid="text-cart-total">
+                                {showFx ? fxPrimary(quote.total) : money(quote.total, quote.currency)}
                               </span>
                             </div>
                             <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                               <span className="text-slate-500">{fmt(t.depositNow, { pct: quote.depositPercent })}</span>
-                              <span className="text-right">
-                                <span className="font-bold text-[#9e4b13]" data-testid="text-cart-deposit">
-                                  {showFx ? fxPrimary(quote.deposit) : money(quote.deposit, quote.currency)}
-                                </span>
-                                {showFx && (
-                                  <span className="block text-xs text-slate-400">≈ {money(quote.deposit, quote.currency)}</span>
-                                )}
+                              <span className="font-bold text-[#9e4b13]" data-testid="text-cart-deposit">
+                                {showFx ? fxPrimary(quote.deposit) : money(quote.deposit, quote.currency)}
                               </span>
                             </div>
                             <div className="flex flex-wrap items-center justify-between gap-2 text-sm">
                               <span className="text-slate-500">{t.balanceOnArrival}</span>
-                              <span className="text-right">
-                                <span className="font-semibold text-slate-700" data-testid="text-cart-balance">
-                                  {showFx ? fxPrimary(quote.balance) : money(quote.balance, quote.currency)}
-                                </span>
-                                {showFx && (
-                                  <span className="block text-xs text-slate-400">≈ {money(quote.balance, quote.currency)}</span>
-                                )}
+                              <span className="font-semibold text-slate-700" data-testid="text-cart-balance">
+                                {showFx ? fxPrimary(quote.balance) : money(quote.balance, quote.currency)}
                               </span>
                             </div>
                           </>
@@ -1502,15 +1477,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           {quoteLoading ? <Loader2 className="h-5 w-5 animate-spin" /> : <ShieldCheck className="h-5 w-5" />}
                           {t.continueToDetails}
                         </button>
-                        {showFx && (
-                          <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 space-y-1.5 text-xs text-slate-500" data-testid="text-fx-note">
-                            <p className="font-semibold text-slate-600">{t.priceInfoHeader}</p>
-                            <p className="flex items-start gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 mt-px shrink-0 text-green-500" /><span>{t.fxAllIn}</span></p>
-                            <p className="flex items-start gap-1.5"><Info className="h-3.5 w-3.5 mt-px shrink-0 text-blue-400" /><span>{fmt(t.fxApproxDisplay, { currency })}</span></p>
-                            <p className="flex items-start gap-1.5"><CreditCard className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxBankFee}</span></p>
-                            <p className="flex items-start gap-1.5"><MessageCircle className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxAltPayment}</span></p>
-                          </div>
-                        )}
                       </div>
                     ) : (
                       <div
@@ -1588,58 +1554,29 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           <span className="block text-xs text-slate-400">{rateLabelFor(line.roomId, line.offerId)}</span>
                         )}
                       </span>
-                      <span className="text-right">
-                        <span className="font-semibold text-slate-700">
-                          {showFx ? fxPrimary(line.lineTotal) : money(line.lineTotal, quote.currency)}
-                        </span>
-                        {showFx && (
-                          <span className="block text-xs text-slate-400">≈ {money(line.lineTotal, quote.currency)}</span>
-                        )}
+                      <span className="font-semibold text-slate-700">
+                        {showFx ? fxPrimary(line.lineTotal) : money(line.lineTotal, quote.currency)}
                       </span>
                     </div>
                   ))}
                   <div className="mt-3 flex flex-wrap items-center justify-between gap-2 text-sm border-t border-slate-100 pt-3">
                     <span className="text-slate-500">{t.total}</span>
-                    <span className="text-right">
-                      <span className="font-semibold text-slate-700">
-                        {showFx ? fxPrimary(quote.total) : money(quote.total, quote.currency)}
-                      </span>
-                      {showFx && (
-                        <span className="block text-xs text-slate-400">≈ {money(quote.total, quote.currency)}</span>
-                      )}
+                    <span className="font-semibold text-slate-700">
+                      {showFx ? fxPrimary(quote.total) : money(quote.total, quote.currency)}
                     </span>
                   </div>
                   <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
                     <span className="text-slate-500">{fmt(t.depositNow, { pct: quote.depositPercent })}</span>
-                    <span className="text-right">
-                      <span className="font-bold text-[#9e4b13]" data-testid="text-summary-deposit">
-                        {showFx ? fxPrimary(quote.deposit) : money(quote.deposit, quote.currency)}
-                      </span>
-                      {showFx && (
-                        <span className="block text-xs text-slate-400">≈ {money(quote.deposit, quote.currency)}</span>
-                      )}
+                    <span className="font-bold text-[#9e4b13]" data-testid="text-summary-deposit">
+                      {showFx ? fxPrimary(quote.deposit) : money(quote.deposit, quote.currency)}
                     </span>
                   </div>
                   <div className="mt-1 flex flex-wrap items-center justify-between gap-2 text-sm">
                     <span className="text-slate-500">{t.balanceOnArrival}</span>
-                    <span className="text-right">
-                      <span className="font-semibold text-slate-700">
-                        {showFx ? fxPrimary(quote.balance) : money(quote.balance, quote.currency)}
-                      </span>
-                      {showFx && (
-                        <span className="block text-xs text-slate-400">≈ {money(quote.balance, quote.currency)}</span>
-                      )}
+                    <span className="font-semibold text-slate-700">
+                      {showFx ? fxPrimary(quote.balance) : money(quote.balance, quote.currency)}
                     </span>
                   </div>
-                  {showFx && (
-                    <div className="mt-3 rounded-lg bg-slate-50 border border-slate-200 p-3 space-y-1.5 text-xs text-slate-500" data-testid="text-fx-note-summary">
-                      <p className="font-semibold text-slate-600">{t.priceInfoHeader}</p>
-                      <p className="flex items-start gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 mt-px shrink-0 text-green-500" /><span>{t.fxAllIn}</span></p>
-                      <p className="flex items-start gap-1.5"><Info className="h-3.5 w-3.5 mt-px shrink-0 text-blue-400" /><span>{fmt(t.fxApproxDisplay, { currency })}</span></p>
-                      <p className="flex items-start gap-1.5"><CreditCard className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxBankFee}</span></p>
-                      <p className="flex items-start gap-1.5"><MessageCircle className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxAltPayment}</span></p>
-                    </div>
-                  )}
                   {marinDetailsContext && (
                     <div className="mt-3 pt-3 border-t border-slate-100 flex justify-end">
                       <MarinPanel
@@ -1725,6 +1662,24 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       );
                     })()}
                   </p>
+
+                  {showFx && (
+                    <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 space-y-1.5 text-xs text-slate-500" data-testid="text-fx-note-payment">
+                      <p className="font-semibold text-slate-600">{t.priceInfoHeader}</p>
+                      <p className="flex items-start gap-1.5">
+                        <CreditCard className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" />
+                        <span>
+                          {fmt(t.fxApproxDisplay, { currency })}
+                          {' '}<span className="font-semibold text-slate-700">{money(quote.deposit, quote.currency)}</span>
+                          {quote.balance > 0 && (
+                            <> {t.balanceOnArrival}: <span className="font-semibold text-slate-700">{money(quote.balance, quote.currency)}</span></>
+                          )}
+                        </span>
+                      </p>
+                      <p className="flex items-start gap-1.5"><Info className="h-3.5 w-3.5 mt-px shrink-0 text-blue-400" /><span>{t.fxBankFee}</span></p>
+                      <p className="flex items-start gap-1.5"><MessageCircle className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxAltPayment}</span></p>
+                    </div>
+                  )}
 
                   <button
                     type="submit"

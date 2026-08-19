@@ -188,11 +188,6 @@ function RoomCard({
             <p className="text-lg font-semibold text-slate-700" data-testid={`text-offer-total-${room.roomId}`}>
               {showFx ? fxPrimary(cardTotal) : money(cardTotal, room.currency)}
             </p>
-            {showFx && (
-              <p className="text-xs text-slate-400" data-testid={`text-offer-total-fx-${room.roomId}`}>
-                ≈ {money(cardTotal, room.currency)}
-              </p>
-            )}
             <p className="text-sm text-slate-500">
               {fmt(perNightFromTemplate(t, room.nights), { nights: room.nights })}
             </p>
@@ -342,9 +337,6 @@ function RoomCard({
                         <span className="block text-sm font-semibold text-slate-900">
                           {showFx ? fxPrimary(o.total) : money(o.total, room.currency)}
                         </span>
-                        {showFx && (
-                          <span className="block text-xs text-slate-400">≈ {money(o.total, room.currency)}</span>
-                        )}
                         {room.nights > 1 && (
                           <span className="block text-xs text-slate-500">
                             {showFx
