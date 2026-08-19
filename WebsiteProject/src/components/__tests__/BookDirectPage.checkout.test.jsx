@@ -169,7 +169,13 @@ vi.mock('../../utils/localize', () => ({
 
 vi.mock('../CurrencyPicker',  () => ({ default: () => null }));
 vi.mock('../DateRangePicker', () => ({ default: () => null }));
-vi.mock('../MarinPanel',      () => ({ default: () => null }));
+// Capture the props MarinPanel receives so tests can assert on the page
+// context Marin reads (dates, room prices, totals). Rendered as null so it
+// stays invisible to the DOM assertions.
+const marinPanelProps = vi.hoisted(() => []);
+vi.mock('../MarinPanel',      () => ({
+  default: (props) => { marinPanelProps.push(props); return null; },
+}));
 
 // ── Import component under test ───────────────────────────────────────────────
 // Must come after vi.mock() calls; Vitest hoists them automatically.
@@ -1345,6 +1351,7 @@ describe('semi-flexible rate is the untouched default through quote and checkout
   beforeEach(() => {
     capturedQuoteBodies  = [];
     capturedCheckoutBody = null;
+    marinPanelProps.length = 0;
     originalLocationDescriptor = Object.getOwnPropertyDescriptor(window, 'location');
 
     Object.defineProperty(window, 'location', {
@@ -1444,5 +1451,48 @@ describe('semi-flexible rate is the untouched default through quote and checkout
     expect(capturedCheckoutBody.rooms[0].roomId).toBe(ROOM_ID);
     expect(capturedCheckoutBody.rooms[0].offerId).toBe(SEMIFLEX_ID);
     expect(capturedCheckoutBody.rooms[0].qty).toBe(1);
+  });
+
+  it('Marin page context quotes the semiFlex total, not the cheaper nonRef price', async () => {
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+
+    // Wait for the results step to render (room card visible).
+    await waitFor(
+      () => screen.getByTestId(`button-inc-${ROOM_ID}`),
+      { timeout: 3000 },
+    );
+
+    // The results-step MarinPanel must have been rendered with a context that
+    // lists the room at the semi-flexible (refundable) total — the same price
+    // the guest sees on the card — never the cheaper non-refundable one.
+    const resultsCtx = marinPanelProps
+      .map((p) => p.context)
+      .find((c) => c && c.includes('Available options:'));
+    expect(resultsCtx).toBeTruthy();
+    expect(resultsCtx).toContain('Safari Tent');
+    expect(resultsCtx).toContain(String(SEMIFLEX_TOTAL));
+    expect(resultsCtx).not.toContain(String(NONREF_TOTAL));
+
+    // Add a unit and continue so the pre-payment MarinPanel context is built
+    // from the quote — it must also carry the semiFlex totals.
+    fireEvent.click(screen.getByTestId(`button-inc-${ROOM_ID}`));
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+    marinPanelProps.length = 0;
+    await act(async () => { fireEvent.click(continueBtn); });
+    await waitFor(() => screen.getByTestId('input-first-name'));
+
+    const detailsCtx = marinPanelProps
+      .map((p) => p.context)
+      .find((c) => c && c.includes('pre-payment stage'));
+    expect(detailsCtx).toBeTruthy();
+    expect(detailsCtx).toContain(String(SEMIFLEX_TOTAL));
+    expect(detailsCtx).not.toContain(String(NONREF_TOTAL));
   });
 });
