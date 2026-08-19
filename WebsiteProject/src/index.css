@@ -45,6 +45,13 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
+/* App.jsx focuses route headings with tabindex="-1" for screen readers.
+   They are not interactive controls, so their programmatic focus should not
+   paint a large browser focus rectangle around the page title. */
+[data-route-focus-target]:focus {
+  outline: none;
+}
+
 /* Route container — provides the flex column layout the outer shell expects.
    No opacity animation: startTransition keeps the outgoing page visible until
    the incoming chunk is ready, so there is never a blank body beneath the

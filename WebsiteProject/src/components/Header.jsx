@@ -47,8 +47,9 @@ function Header({ ui, lang, currency, onLangChange, bookUrl }) {
 
   // Detect if we're on a standalone HTML page (not index.html)
   // These pages include: safari.html, comfort.html, cottage.html, chalet.html, story.html, etc.
-  const isBookDirectPage = typeof window !== 'undefined' &&
-    window.location.pathname.startsWith('/book-direct');
+  // useLocation is normalized by App's localized router hook, so this also
+  // matches locale-prefixed booking routes such as /fr/book-direct.
+  const isBookDirectPage = location === '/book-direct' || location.startsWith('/book-direct?');
   const isStandalonePage = typeof window !== 'undefined' &&
     window.location.pathname !== '/' &&
     window.location.pathname !== '/index.html' &&
@@ -101,7 +102,10 @@ function Header({ ui, lang, currency, onLangChange, bookUrl }) {
             <a
               href={bookUrl}
               className="inline-flex items-center justify-center px-2 py-1 text-xs sm:px-4 sm:py-1.5 sm:text-sm rounded-lg border border-white text-white font-semibold whitespace-nowrap hover:bg-white/10 transition-colors"
-              onClick={() => handleBookClick('topbar')}
+              onClick={(e) => {
+                handleBookClick('topbar');
+                handleSpaNav(e, bookUrl);
+              }}
             >
               {ui.contact.bookNow}
             </a>
@@ -305,9 +309,9 @@ function Header({ ui, lang, currency, onLangChange, bookUrl }) {
                   href={bookUrl}
                   data-testid="button-mobile-book-now"
                   className="block text-center btn-cta px-4 py-2.5 rounded-xl bg-[#9e4b13] text-white hover:bg-[#8a4211] transition-colors font-semibold shadow-md"
-                  onClick={() => {
-                    setMenuOpen(false);
+                  onClick={(e) => {
                     handleBookClick('mobile_nav_drawer');
+                    handleSpaNav(e, bookUrl);
                   }}
                   tabIndex={menuOpen ? 0 : -1}
                 >

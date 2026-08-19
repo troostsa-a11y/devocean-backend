@@ -643,7 +643,10 @@
        (before <body> parses) so there is zero risk of a flash on other pages. -->
   <script>
     (function () {
-      if (window.location.pathname === '/book-direct') {
+      var path = window.location.pathname.replace(/\/+$/, '') || '/';
+      // Match the default route and every stable locale route
+      // (/book-direct, /fr/book-direct, /pt-pt/book-direct, ...).
+      if (path === '/book-direct' || /^\/[a-z]{2}(?:-[a-z0-9]+)*\/book-direct$/.test(path)) {
         var s = document.createElement('style');
         s.textContent = '#bd-hero-placeholder{display:flex!important}';
         document.head.appendChild(s);

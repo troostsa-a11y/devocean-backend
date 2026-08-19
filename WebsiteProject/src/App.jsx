@@ -28,7 +28,19 @@ function useTransitionLocation() {
         const url = new URL(destination, window.location.origin);
         to = localizedUrl(url.pathname, currentLocale, url.search, url.hash);
       }
-      startTransition(() => navigate(to, opts));
+      // The homepage is part of the critical, eagerly-loaded bundle. Commit
+      // Home navigation urgently so a route such as /book-direct never remains
+      // visible for an extra transition frame while the homepage is ready.
+      // Lazy route navigation still uses startTransition to keep the outgoing
+      // page visible while its chunk downloads.
+      const destinationPath = typeof to === 'string'
+        ? stripLocalePrefix(new URL(to, window.location.origin).pathname)
+        : '';
+      if (destinationPath === '/') {
+        navigate(to, opts);
+      } else {
+        startTransition(() => navigate(to, opts));
+      }
     },
     [navigate]
   );
@@ -277,6 +289,10 @@ export default function App() {
         const h1 = document.querySelector('main h1, h1');
         if (!h1) return;
         if (!h1.hasAttribute('tabindex')) h1.setAttribute('tabindex', '-1');
+        // This tabindex=-1 heading is a screen-reader landing target, not a
+        // user-focusable control. Suppress the browser's large focus ring,
+        // which otherwise appears as an unexpected frame around page titles.
+        h1.setAttribute('data-route-focus-target', 'true');
         // preventScroll: preserve the scroll position restored by the browser
         // for back/forward; for forward navigation, scroll to top is expected.
         h1.focus({ preventScroll: true });

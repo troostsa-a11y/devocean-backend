@@ -27,3 +27,10 @@ English UK (`en-GB`) uses root paths (no prefix). All other locales use lowercas
 - SPA routes are matched after `stripLocalePrefix()` strips the prefix; no additional registration needed
 - Legacy `?lang=` links are redirected to the stable locale path by the middleware
 - The `html lang` attribute is set by the middleware on every response, not by React
+
+## Lazy-route placeholders
+Any static placeholder or head script that exists to cover a lazy SPA route must match both the root pathname and every stable locale-prefixed pathname. React's `stripLocalePrefix()` only runs after the initial HTML and head scripts have already executed.
+
+**Why:** A localized full navigation such as `/fr/book-direct` otherwise bypasses the root-only placeholder and briefly exposes the Suspense/background fallback before the lazy route mounts.
+
+**How to apply:** Keep root and locale-prefixed route matching together in the inline route guard, and make the mounted component remove the placeholder with `useLayoutEffect`.
