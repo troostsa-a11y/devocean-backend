@@ -42,6 +42,7 @@ import {
   stripLocalePrefix,
 } from './i18n/localeCatalog';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
+import { localizeInternalHref } from './utils/localizedLinks';
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
 import { useSeoPage, getHomeDescription, getHomeTitle } from './utils/seoMeta';
@@ -78,6 +79,29 @@ const Footer = lazy(() => import('./components/Footer'));
 export default function App() {
   const { lang, currency, region, setLang, setRegion, setCurrency, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
   const [location] = useLocation();
+
+  // Components use concise root-relative hrefs throughout the app. On a
+  // localized URL those would otherwise send visitors back to English. Keep
+  // the actual DOM hrefs locale-aware, including links added by lazy sections.
+  useEffect(() => {
+    const locale = localeFromPath(window.location.pathname);
+    if (!locale?.path) return undefined;
+
+    const rewriteLinks = () => {
+      document.querySelectorAll('a[href]').forEach((link) => {
+        const href = link.getAttribute('href');
+        const localizedHref = localizeInternalHref(href, locale.code);
+        if (localizedHref && localizedHref !== href) {
+          link.setAttribute('href', localizedHref);
+        }
+      });
+    };
+
+    rewriteLinks();
+    const observer = new MutationObserver(rewriteLinks);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [location, lang]);
 
   // Layout recalculation using ResizeObserver (avoids forced reflows during interactions)
   // Note: Initial values set in <head> to prevent CLS, this only handles actual size changes
