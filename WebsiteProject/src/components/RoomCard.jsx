@@ -210,12 +210,7 @@ function RoomCard({
                 ? (t.rateNoteSemiFlex
                     ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
                     : fmt(t.cancellationPolicy, { days: cancelDays }))
-                : <>
-                    {t.nonRefundable}
-                    {t.rateNoteNonRef
-                      ? ` \u00b7 ${t.rateNoteNonRef}`
-                      : (t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : '')}
-                  </>
+                : (t.rateNoteNonRef || t.depositFullNow || t.nonRefundable)
               }
             </p>
           )}
@@ -371,12 +366,7 @@ function RoomCard({
                       ? (t.rateNoteSemiFlex
                           ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
                           : fmt(t.cancellationPolicy, { days: cancelDays }))
-                      : <>
-                          {t.nonRefundable}
-                          {t.rateNoteNonRef
-                            ? ` \u00b7 ${t.rateNoteNonRef}`
-                            : (t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : '')}
-                        </>
+                      : (t.rateNoteNonRef || t.depositFullNow || t.nonRefundable)
                     }
                   </p>
                 </div>
