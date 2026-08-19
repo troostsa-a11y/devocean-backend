@@ -105,11 +105,17 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
     if (!trustindexRef.current) return;
 
     const loadTrustindex = () => {
-      if (trustindexRef.current && !trustindexRef.current.querySelector('script')) {
+      // Init-once guard: the loader script must only ever be appended once per
+      // page load. On client-route re-entry this component remounts with a
+      // fresh div, so a per-container check re-appends the script and
+      // re-initialises Trustindex (logged appendChild errors during route
+      // activity). Check the whole document instead.
+      if (trustindexRef.current && !document.querySelector('script[src*="cdn.trustindex.io/loader.js"]')) {
         const loadScript = () => {
           // Guard: component may have unmounted between scheduling and firing
           // (requestIdleCallback fires up to 2 s later; ref is null post-unmount).
-          if (!trustindexRef.current) return;
+          // Re-check the document too — a competing schedule may have run.
+          if (!trustindexRef.current || document.querySelector('script[src*="cdn.trustindex.io/loader.js"]')) return;
           const script = document.createElement('script');
           script.src = 'https://cdn.trustindex.io/loader.js?c8556c556ccd96056816d94c005';
           script.defer = true;
@@ -122,6 +128,10 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         } else {
           setTimeout(loadScript, 0);
         }
+      } else if (trustindexRef.current && window.Trustindex?.init) {
+        // Script already loaded (client-route re-entry): re-scan for the fresh
+        // container instead of appending a second loader script.
+        try { window.Trustindex.init(); } catch (e) { /* fail-soft: badge just stays absent */ }
       }
     };
 
