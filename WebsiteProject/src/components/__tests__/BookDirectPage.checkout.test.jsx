@@ -535,6 +535,13 @@ describe('checkout occupancy: multi-unit rate-switch with children', () => {
       { timeout: 3000 },
     );
 
+    // The refundable (semi-flexible) plan is the default now, but this suite
+    // tests the nonRef→flex rate-switch clamp, so explicitly select the
+    // non-refundable plan first (it has 2 units available).
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-rate-${ROOM_ID}-offer-nonref-rs`));
+    });
+
     await act(async () => { fireEvent.click(incBtn); });
     await act(async () => { fireEvent.click(incBtn); });
 

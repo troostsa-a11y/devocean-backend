@@ -120,7 +120,12 @@ function RoomCard({
 }) {
   const fxPrimary = (amount) => approxMoney(amount * fxRate, currency);
 
-  const offer = room.offers.find((o) => o.offerId === rateChoiceId) || room.offers[0];
+  // Default to the refundable (semi-flexible) plan when the guest hasn't
+  // chosen a rate yet — never preselect the non-refundable rate.
+  const offer =
+    room.offers.find((o) => o.offerId === rateChoiceId) ||
+    room.offers.find((o) => o.refundable) ||
+    room.offers[0];
   const units = offer.unitsAvailable || 0;
   const incDisabled = qty >= units || !canAddRoom;
   // Map the Beds24 room to its marketing unit page + main image
@@ -198,7 +203,7 @@ function RoomCard({
               </p>
             )}
           </div>
-          {room.offers.length === 1 && (!offer.refundable || freeCancellation) && (
+          {room.offers.length === 1 && (
             <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
               {offer.refundable
                 ? (t.rateNoteSemiFlex
@@ -303,60 +308,83 @@ function RoomCard({
             {t.chooseRate}
           </p>
           <div className="space-y-2" role="radiogroup" aria-label={t.chooseRate}>
-            {room.offers.map((o) => {
+            {room.offers.map((o, oIdx) => {
               const checked = o.offerId === offer.offerId;
+              const selectByOffset = (delta) => {
+                const n = room.offers.length;
+                const next = room.offers[(oIdx + delta + n) % n];
+                onRate(room.roomId, next.offerId);
+              };
               return (
-                <button
-                  type="button"
+                <div
                   key={o.offerId}
-                  role="radio"
-                  aria-checked={checked}
-                  onClick={() => onRate(room.roomId, o.offerId)}
-                  className={`w-full flex items-center justify-between gap-3 rounded-xl border px-3 py-2.5 text-left transition-colors ${checked ? 'border-[#9e4b13] bg-[#9e4b13]/5' : 'border-slate-200 hover:border-slate-300'}`}
-                  data-testid={`button-rate-${room.roomId}-${o.offerId}`}
+                  className={`rounded-xl border transition-colors ${checked ? 'border-[#9e4b13] bg-[#9e4b13]/5' : 'border-slate-200 hover:border-slate-300'}`}
                 >
-                  <span className="min-w-0">
-                    <span className="flex items-center gap-2">
-                      <span className={`h-4 w-4 shrink-0 rounded-full border flex items-center justify-center ${checked ? 'border-[#9e4b13]' : 'border-slate-300'}`}>
-                        {checked && <span className="h-2 w-2 rounded-full bg-[#9e4b13]" />}
+                  <button
+                    type="button"
+                    role="radio"
+                    aria-checked={checked}
+                    tabIndex={checked ? 0 : -1}
+                    onClick={() => onRate(room.roomId, o.offerId)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        selectByOffset(1);
+                      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        selectByOffset(-1);
+                      }
+                    }}
+                    className="w-full px-3 pt-2.5 text-left"
+                    data-testid={`button-rate-${room.roomId}-${o.offerId}`}
+                  >
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="flex items-center gap-2 min-w-0">
+                        <span className={`h-4 w-4 shrink-0 rounded-full border flex items-center justify-center ${checked ? 'border-[#9e4b13]' : 'border-slate-300'}`}>
+                          {checked && <span className="h-2 w-2 rounded-full bg-[#9e4b13]" />}
+                        </span>
+                        <span className="text-sm font-medium text-slate-800">{t.rate?.[o.type] || o.type}</span>
                       </span>
-                      <span className="text-sm font-medium text-slate-800">{t.rate?.[o.type] || o.type}</span>
+                      <span className="text-right shrink-0">
+                        <span className="block text-sm font-semibold text-slate-900">
+                          {showFx ? fxPrimary(o.total) : money(o.total, room.currency)}
+                        </span>
+                        {showFx && (
+                          <span className="block text-xs text-slate-400">≈ {money(o.total, room.currency)}</span>
+                        )}
+                        {room.nights > 1 && (
+                          <span className="block text-xs text-slate-500">
+                            {showFx
+                              ? `${fxPrimary(o.total / room.nights)} ${t.avgPerNight}`
+                              : `${money(o.total / room.nights, room.currency)} ${t.avgPerNight}`}
+                          </span>
+                        )}
+                      </span>
                     </span>
-                    {(!o.refundable || freeCancellation) && (
-                      <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
-                        {o.refundable
-                          ? (t.rateNoteSemiFlex
-                              ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
-                              : fmt(t.cancellationPolicy, { days: cancelDays }))
-                          : <>
-                              {t.nonRefundable}
-                              {t.rateNoteNonRef
-                                ? ` \u00b7 ${t.rateNoteNonRef}`
-                                : (t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : '')}
-                              {o.type === 'nonRef' && (
-                                <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms?newtab=1#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
-                              )}
-                            </>
-                        }
-                      </span>
-                    )}
-                  </span>
-                  <span className="text-right shrink-0">
-                    <span className="block text-sm font-semibold text-slate-900">
-                      {showFx ? fxPrimary(o.total) : money(o.total, room.currency)}
-                    </span>
-                    {showFx && (
-                      <span className="block text-xs text-slate-400">≈ {money(o.total, room.currency)}</span>
-                    )}
-                    {room.nights > 1 && (
-                      <span className="block text-xs text-slate-500">
-                        {showFx
-                          ? `${fxPrimary(o.total / room.nights)} ${t.avgPerNight}`
-                          : `${money(o.total / room.nights, room.currency)} ${t.avgPerNight}`}
-                      </span>
-                    )}
-                  </span>
-                </button>
+                  </button>
+                  {/* Deposit/cancellation summary — full width directly under the
+                      price, outside the radio button so the terms link isn't a
+                      nested interactive control. */}
+                  <p
+                    className={`px-3 pb-2.5 mt-1 text-xs pl-9 ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}
+                    data-testid={`text-rate-note-${room.roomId}-${o.offerId}`}
+                  >
+                    {o.refundable
+                      ? (t.rateNoteSemiFlex
+                          ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
+                          : fmt(t.cancellationPolicy, { days: cancelDays }))
+                      : <>
+                          {t.nonRefundable}
+                          {t.rateNoteNonRef
+                            ? ` \u00b7 ${t.rateNoteNonRef}`
+                            : (t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : '')}
+                          {o.type === 'nonRef' && (
+                            <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms?newtab=1#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
+                          )}
+                        </>
+                    }
+                  </p>
+                </div>
               );
             })}
           </div>

@@ -501,7 +501,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const maxRooms = availability?.maxRooms ?? 5;
 
   // Cart lines for /quote + /checkout: {roomId, offerId, qty}. offerId is the
-  // guest-chosen rate plan, defaulting to the cheapest (server re-prices; this
+  // guest-chosen rate plan, defaulting to the refundable (semi-flexible) plan
+  // so the non-refundable rate is never preselected (server re-prices; this
   // only picks the plan).
   const cartLines = useMemo(
     () =>
@@ -510,7 +511,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         .flatMap(([roomId, qty]) => {
           const room = availableRooms.find((r) => r.roomId === roomId);
           const offer = room
-            ? room.offers.find((o) => o.offerId === rateChoice[roomId]) || room.offers[0]
+            ? room.offers.find((o) => o.offerId === rateChoice[roomId]) ||
+              room.offers.find((o) => o.refundable) ||
+              room.offers[0]
             : null;
           // When the party includes children/infants, expand into individual unit
           // entries (qty=1 each) so the backend prices each unit at its actual occupancy.
@@ -550,7 +553,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (availableRooms.length > 0) {
       lines.push('Available options:');
       availableRooms.forEach((r) => {
-        const offer = r.offers[0];
+        // Match the guest-visible default: refundable (semi-flexible) plan first.
+        const offer = r.offers.find((o) => o.refundable) || r.offers[0];
         const price = offer ? money(offer.total, r.currency) : '—';
         const units = offer?.unitsAvailable ?? 0;
         lines.push(`- ${r.name}: ${price} total. ${units} unit${units !== 1 ? 's' : ''} available.`);
@@ -1312,7 +1316,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                               const room = availableRooms?.find((r) => r.roomId === cl.roomId);
                               if (!room) return null;
                               const offer =
-                                room.offers.find((o) => o.type === cl.rateType) ?? room.offers[0];
+                                room.offers.find((o) => o.offerId === cl.offerId) ??
+                                room.offers.find((o) => o.refundable) ??
+                                room.offers[0];
                               if (!offer) return null;
                               return (
                                 <div
