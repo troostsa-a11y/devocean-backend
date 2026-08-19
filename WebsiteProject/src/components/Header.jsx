@@ -1,7 +1,7 @@
 import { useState, memo } from 'react';
 import { useLocation } from 'wouter';
-import { Menu, Globe2 } from 'lucide-react';
-import { LOCALES } from '../i18n/localeCatalog.js';
+import { Menu } from 'lucide-react';
+import LanguagePicker from './LanguagePicker.jsx';
 
 // Preload lazy route chunks on hover/focus so the module is cached before the click.
 // These mirror the lazy() calls in App.jsx — same module path hits the same browser cache.
@@ -87,22 +87,8 @@ function Header({ ui, lang, currency, onLangChange, bookUrl }) {
       <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
         <div className="max-w-7xl mx-auto px-1.5 sm:px-4 py-2 flex items-center justify-between text-sm">
 
-          {/* Left: flat language selector — all supported locales, no region step */}
-          <div className="flex items-center gap-1.5">
-            <Globe2 size={16} className="hidden sm:block shrink-0 opacity-80" />
-            <select
-              value={lang}
-              onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[178px] max-w-[48vw] text-white bg-transparent text-sm"
-              aria-label="Select language"
-            >
-              {LOCALES.map((locale) => (
-                <option key={locale.code} value={locale.code} className="text-slate-800">
-                  {locale.label}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Left: searchable language picker */}
+          <LanguagePicker lang={lang} onLangChange={onLangChange} />
 
           {/* Right: Book Now (hidden on the booking page itself) */}
           {!isBookDirectPage && (

@@ -168,22 +168,75 @@
     window.location.href = u.toString();
   }
 
-  // ── build option HTML ─────────────────────────────────────────────────
-  function regionOptions() {
-    return Object.keys(REGIONS).map(function (k) {
-      var labels = REGION_LABELS[lang] || REGION_LABELS['en-GB'];
-      return '<option value="' + k + '"' + (k === region ? ' selected' : '') + '>'
-           + (labels[k] || REGIONS[k].label) + '</option>';
-    }).join('');
+  // ── language picker helpers ───────────────────────────────────────────
+  // Locales shown before the user types anything — common visitor profiles
+  // for a Mozambique ocean-lodge destination.
+  var PINNED_CODES = ['en-GB','pt-PT','de-DE','nl-NL','fr-FR','af-ZA','es-ES'];
+
+  function pickerMatch(pair, q) {
+    var low = q.toLowerCase();
+    return pair[0].toLowerCase().indexOf(low) !== -1
+        || pair[1].toLowerCase().indexOf(low) !== -1;
   }
 
-  function langOptions() {
-    return LANG_LABELS
-      .map(function (pair) {
-        return '<option value="' + pair[0] + '"' + (pair[0] === lang ? ' selected' : '') + '>'
-             + pair[1] + '</option>';
-      }).join('');
+  function buildPickerItem(code, label) {
+    var active = code === lang;
+    return '<button type="button" class="sn-lp-item' + (active ? ' sn-lp-item--active' : '') + '" data-code="' + code + '">'
+         + label
+         + (active ? '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>' : '')
+         + '</button>';
   }
+
+  function renderPickerList(query) {
+    var list = document.getElementById('sn-lp-list');
+    if (!list) return;
+    if (query) {
+      var filtered = LANG_LABELS.filter(function(p){ return pickerMatch(p, query); });
+      if (filtered.length === 0) {
+        list.innerHTML = '<p class="sn-lp-empty">No match</p>';
+      } else {
+        list.innerHTML = filtered.map(function(p){ return buildPickerItem(p[0], p[1]); }).join('');
+      }
+    } else {
+      var pinned = LANG_LABELS.filter(function(p){ return PINNED_CODES.indexOf(p[0]) !== -1; });
+      list.innerHTML = '<p class="sn-lp-heading">Common</p>'
+        + pinned.map(function(p){ return buildPickerItem(p[0], p[1]); }).join('')
+        + '<p class="sn-lp-hint">Type to search all ' + LANG_LABELS.length + ' languages</p>';
+    }
+    // Wire item clicks
+    list.querySelectorAll('.sn-lp-item').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        setLang(btn.getAttribute('data-code'));
+      });
+    });
+  }
+
+  var pickerOpen = false;
+
+  function openPicker() {
+    var panel = document.getElementById('sn-lp-panel');
+    var btn   = document.getElementById('sn-lp-btn');
+    if (!panel || !btn) return;
+    pickerOpen = true;
+    panel.classList.remove('sn-lp-panel--closed');
+    panel.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+    var inp = document.getElementById('sn-lp-search');
+    if (inp) { inp.value = ''; renderPickerList(''); setTimeout(function(){ inp.focus(); }, 0); }
+  }
+
+  function closePicker() {
+    var panel = document.getElementById('sn-lp-panel');
+    var btn   = document.getElementById('sn-lp-btn');
+    if (!panel) return;
+    pickerOpen = false;
+    panel.classList.add('sn-lp-panel--closed');
+    panel.setAttribute('aria-hidden', 'true');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  }
+
+  // Label for current lang
+  var currentLabel = (LANG_LABELS.find(function(p){ return p[0] === lang; }) || ['en-GB','English (UK)'])[1];
 
   // ── translations ──────────────────────────────────────────────────────
   var T = {
@@ -244,9 +297,28 @@
     '.sn-topbar-inner{max-width:1280px;margin:0 auto;padding:.5rem .375rem;display:flex;align-items:center;justify-content:space-between;font-size:.875rem;gap:.5rem;}',
     '@media(min-width:640px){.sn-topbar-inner{padding:.5rem 1rem;}}',
     '.sn-drops{display:flex;align-items:center;gap:.375rem;}',
-    '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem .25rem .25rem;color:#fff;font-size:.875rem;cursor:pointer;}',
-    '.sn-sel option{background:#fff;color:#1e293b;}',
-    '.sn-sel-lang{width:178px;max-width:48vw;}',
+    /* Language picker */
+    '.sn-lp{position:relative;}',
+    '.sn-lp-btn{display:inline-flex;align-items:center;gap:.375rem;background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .625rem;color:#fff;font-size:.875rem;cursor:pointer;white-space:nowrap;max-width:48vw;transition:background .15s;}',
+    '.sn-lp-btn:hover,.sn-lp-btn[aria-expanded="true"]{background:rgba(255,255,255,.1);}',
+    '.sn-lp-btn-label{overflow:hidden;text-overflow:ellipsis;max-width:130px;}',
+    '.sn-lp-chevron{opacity:.6;flex-shrink:0;transition:transform .15s;}',
+    '.sn-lp-btn[aria-expanded="true"] .sn-lp-chevron{transform:rotate(180deg);}',
+    '.sn-lp-panel{position:absolute;left:0;top:calc(100% + 6px);z-index:300;width:224px;background:#fff;border:1px solid #e2e8f0;border-radius:.75rem;box-shadow:0 20px 40px -8px rgba(0,0,0,.2);padding:.25rem 0;color:#1e293b;font-size:.875rem;}',
+    '.sn-lp-panel--closed{display:none;}',
+    '.sn-lp-search-wrap{padding:.375rem .5rem .25rem;}',
+    '.sn-lp-search-inner{display:flex;align-items:center;gap:.375rem;border:1px solid #e2e8f0;border-radius:.5rem;padding:.25rem .5rem;background:#f8fafc;}',
+    '.sn-lp-search-inner:focus-within{border-color:rgba(158,75,19,.5);box-shadow:0 0 0 2px rgba(158,75,19,.1);}',
+    '.sn-lp-search{flex:1;border:none;background:transparent;outline:none;font-size:.8125rem;color:#1e293b;min-width:0;}',
+    '.sn-lp-search::placeholder{color:#94a3b8;}',
+    '.sn-lp-list{max-height:240px;overflow-y:auto;padding:0 .25rem;}',
+    '.sn-lp-heading{padding:.375rem .625rem .125rem;font-size:.625rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;}',
+    '.sn-lp-hint{padding:.5rem .625rem;font-size:.6875rem;color:#94a3b8;border-top:1px solid #f1f5f9;margin-top:.25rem;}',
+    '.sn-lp-empty{padding:.5rem .625rem;font-size:.8125rem;color:#94a3b8;}',
+    '.sn-lp-item{display:flex;align-items:center;justify-content:space-between;width:100%;text-align:left;padding:.375rem .625rem;border:none;background:transparent;border-radius:.375rem;cursor:pointer;font-size:.8125rem;color:#334155;transition:background .1s;}',
+    '.sn-lp-item:hover{background:#f8fafc;}',
+    '.sn-lp-item--active{color:' + BRAND + ';font-weight:600;}',
+    '.sn-lp-item--active:hover{background:#fff8f5;}',
     '.sn-book-top{display:inline-flex;align-items:center;justify-content:center;padding:.25rem .5rem;border-radius:.5rem;border:1px solid #fff;color:#fff;font-weight:600;font-size:.75rem;text-decoration:none;white-space:nowrap;transition:background .15s;}',
     '@media(min-width:640px){.sn-book-top{padding:.375rem 1rem;font-size:.875rem;}}',
     '.sn-book-top:hover{background:rgba(255,255,255,.1);}',
@@ -286,8 +358,22 @@
   var HTML = '<div class="sn-stack" id="sn-stack">'
     + '<div class="sn-topbar"><div class="sn-topbar-inner">'
     +   '<div class="sn-drops">'
-    +     '<svg class="sn-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.8;flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
-    +     '<select id="sn-lang" class="sn-sel sn-sel-lang" aria-label="Select language">' + langOptions() + '</select>'
+    +     '<div class="sn-lp">'
+    +       '<button id="sn-lp-btn" type="button" class="sn-lp-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">'
+    +         '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;opacity:.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+    +         '<span class="sn-lp-btn-label">' + currentLabel + '</span>'
+    +         '<svg class="sn-lp-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    +       '</button>'
+    +       '<div id="sn-lp-panel" class="sn-lp-panel sn-lp-panel--closed" role="listbox" aria-label="Language" aria-hidden="true">'
+    +         '<div class="sn-lp-search-wrap">'
+    +           '<div class="sn-lp-search-inner">'
+    +             '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
+    +             '<input id="sn-lp-search" type="text" class="sn-lp-search" placeholder="Search languages…" aria-label="Search languages" autocomplete="off">'
+    +           '</div>'
+    +         '</div>'
+    +         '<div id="sn-lp-list" class="sn-lp-list"></div>'
+    +       '</div>'
+    +     '</div>'
     +   '</div>'
     +   '<a href="' + bookUrl + '" class="sn-book-top">' + t.bookNow + '</a>'
     + '</div></div>'
@@ -325,9 +411,32 @@
   setTimeout(applyPadding, 0);
   window.addEventListener('resize', applyPadding);
 
-  // ── events ────────────────────────────────────────────────────────────
-  document.getElementById('sn-lang').addEventListener('change', function () {
-    setLang(this.value);
+  // ── language picker events ────────────────────────────────────────────
+  renderPickerList('');   // populate default (pinned) list
+
+  var lpBtn = document.getElementById('sn-lp-btn');
+  var lpSearch = document.getElementById('sn-lp-search');
+
+  if (lpBtn) {
+    lpBtn.addEventListener('click', function () {
+      if (pickerOpen) { closePicker(); } else { openPicker(); }
+    });
+  }
+  if (lpSearch) {
+    lpSearch.addEventListener('input', function () {
+      renderPickerList(this.value);
+    });
+  }
+  // Close on outside click or Escape
+  document.addEventListener('mousedown', function (e) {
+    if (!pickerOpen) return;
+    var panel = document.getElementById('sn-lp-panel');
+    if (panel && !panel.contains(e.target) && lpBtn && !lpBtn.contains(e.target)) {
+      closePicker();
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && pickerOpen) closePicker();
   });
 
   var burger = document.getElementById('sn-burger');

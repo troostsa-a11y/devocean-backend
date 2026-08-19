@@ -1,5 +1,5 @@
-import { Mail, Globe2 } from 'lucide-react';
-import { LOCALES } from '../i18n/localeCatalog.js';
+import { Mail } from 'lucide-react';
+import LanguagePicker from './LanguagePicker.jsx';
 
 function WhatsAppIcon() {
   return (
@@ -73,22 +73,7 @@ export default function LanguageTopBar({
         </div>
 
         <div className="flex items-center gap-1.5">
-          {/* Language is selected directly. Region and display currency are
-              intentionally separate concepts, so choosing a language cannot
-              silently alter a guest's currency preference. */}
-          <Globe2 size={20} className="hidden sm:block" />
-          <select
-            value={lang}
-            onChange={(e) => onLangChange(e.target.value)}
-            className="border border-white/40 rounded px-2 py-1 w-[178px] max-w-[48vw] text-white"
-            aria-label="Select language"
-          >
-            {LOCALES.map((locale) => (
-              <option key={locale.code} value={locale.code}>
-                {locale.label}
-              </option>
-            ))}
-          </select>
+          <LanguagePicker lang={lang} onLangChange={onLangChange} />
         </div>
       </div>
     </div>
