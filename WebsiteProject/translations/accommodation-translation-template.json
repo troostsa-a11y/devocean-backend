@@ -217,7 +217,7 @@
   "de-DE": {
     "safari": {
       "eyebrow": "Safari-Zelt",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Safari-Zelt in Ponta do Ouro",
       "heroDescription": "Erleben Sie die perfekte Balance aus Komfort und Abenteuer. Auf einer geräumigen 3×6 m Plattform errichtet, verfügt dieses 12 m² große Canvas-Zelt über schützende Seiten- und Rückwände – die Ihnen Privatsphäre und Schutz bieten, während Sie der Natur nahe bleiben.",
       "sections": [
         {
@@ -275,7 +275,7 @@
     },
     "comfort": {
       "eyebrow": "Komfort-Zelt",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Komfort-Zelt in Ponta do Ouro",
       "heroDescription": "Für Gäste, die die naturverbundene Atmosphäre lieben, aber extra Abgeschiedenheit und Bequemlichkeit wünschen, ist das Komfort-Safari-Zelt eine Aufwertung zu unserem klassischen Canvas-Erlebnis.",
       "sections": [
         {
@@ -328,7 +328,7 @@
     },
     "cottage": {
       "eyebrow": "Garten-Cottage",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Garten-Cottage in Ponta do Ouro",
       "heroDescription": "Eingebettet in unseren üppigen tropischen Garten verbindet das Garten-Cottage rustikale Eleganz mit heimischem Komfort. Ein rotes Roman-Dach und eine hohe weiße Decke mit dunklen Holzbalken schaffen einen geräumigen, luftigen Rückzugsort voller Charakter.",
       "sections": [
         {
@@ -384,7 +384,7 @@
     },
     "chalet": {
       "eyebrow": "Gras-Dach-Chalet",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Gras-Dach-Chalet in Ponta do Ouro",
       "heroDescription": "Versteckt in einer abgeschiedenen Ecke des Grundstücks bietet das Gras-Dach-Chalet einen ruhigen, romantischen Rückzugsort. Beschattet von Palmen, Strelitzien, Akazien, Farnen und Indischen Mandelbäumen taucht es Sie in die Natur ein, ohne auf Komfort oder Privatsphäre zu verzichten.",
       "sections": [
         {
@@ -437,7 +437,7 @@
   "fr-FR": {
     "safari": {
       "eyebrow": "Tente Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tente Safari à Ponta do Ouro",
       "heroDescription": "Découvrez l'équilibre parfait entre confort et aventure. Installée sur une plateforme spacieuse de 3×6 m, cette tente en toile de 12 m² dispose de murs latéraux et arrière protecteurs – vous offrant intimité et abri tout en restant proche de la nature.",
       "sections": [
         {
@@ -495,7 +495,7 @@
     },
     "comfort": {
       "eyebrow": "Tente Confort",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tente Confort à Ponta do Ouro",
       "heroDescription": "Pour les invités qui aiment l'ambiance immergée dans la nature mais veulent plus d'isolement et de commodité, la Tente Safari Confort est une amélioration par rapport à notre expérience classique en toile.",
       "sections": [
         {
@@ -548,7 +548,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage de Jardin",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage de Jardin à Ponta do Ouro",
       "heroDescription": "Nichée dans notre jardin tropical luxuriant, le Cottage de Jardin combine élégance rustique avec confort familial. Un toit en tuiles romaines rouges et un haut plafond blanc avec des poutres en bois sombre créent un refuge spacieux et aéré plein de caractère.",
       "sections": [
         {
@@ -604,7 +604,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet au Toit de Chaume",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet au Toit de Chaume à Ponta do Ouro",
       "heroDescription": "Caché dans un coin isolé de la propriété, le Chalet au Toit de Chaume offre un refuge tranquille et romantique. Ombragé par des palmiers, des strelitzias, des acacias, des fougères et des amandiers indiens, il vous immerge dans la nature sans sacrifier confort ou intimité.",
       "sections": [
         {
@@ -657,7 +657,7 @@
   "es-ES": {
     "safari": {
       "eyebrow": "Tienda Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tienda Safari en Ponta do Ouro",
       "heroDescription": "Experimente el equilibrio perfecto entre comodidad y aventura. Ubicada en una plataforma espaciosa de 3×6 m, esta tienda de lona de 12 m² cuenta con paredes laterales y traseras protectoras, que le brindan privacidad y refugio mientras permanece cerca de la naturaleza.",
       "sections": [
         {
@@ -715,7 +715,7 @@
     },
     "comfort": {
       "eyebrow": "Tienda Comfort",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tienda Comfort en Ponta do Ouro",
       "heroDescription": "Para huéspedes que aman la vibra inmersa en la naturaleza pero quieren aislamiento extra y conveniencia, la Tienda Safari Comfort es una mejora de nuestra experiencia clásica en lona.",
       "sections": [
         {
@@ -768,7 +768,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage de Jardín",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage de Jardín en Ponta do Ouro",
       "heroDescription": "Ubicado en nuestro exuberante jardín tropical, el Cottage de Jardín combina elegancia rústica con comodidad hogareña. Un techo de tejas romanas rojas y un alto techo blanco con vigas de madera oscura crean un refugio espacioso y aireado lleno de carácter.",
       "sections": [
         {
@@ -824,7 +824,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet con Techo de Paja",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet con Techo de Paja en Ponta do Ouro",
       "heroDescription": "Escondido en una esquina aislada de la propiedad, el Chalet con Techo de Paja ofrece un refugio tranquilo y romántico. Sombrado por palmeras, strelitzias, acacias, helechos y árboles de almendra india, lo sumerge en la naturaleza sin sacrificar comodidad o privacidad.",
       "sections": [
         {
@@ -877,7 +877,7 @@
   "pt-PT": {
     "safari": {
       "eyebrow": "Tenda Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tenda Safari em Ponta do Ouro",
       "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Montada numa plataforma espaçosa de 3×6 m, esta tenda de lona de 12 m² tem paredes laterais e traseiras protetoras – proporcionando privacidade e abrigo enquanto permanece próximo da natureza.",
       "sections": [
         {
@@ -935,7 +935,7 @@
     },
     "comfort": {
       "eyebrow": "Tenda Conforto",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tenda Conforto em Ponta do Ouro",
       "heroDescription": "Para hóspedes que adoram a vibe imersa na natureza mas querem mais isolamento e conveniência, a Tenda Safari Conforto é uma atualização da nossa experiência clássica em lona.",
       "sections": [
         {
@@ -988,7 +988,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage de Jardim",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage de Jardim em Ponta do Ouro",
       "heroDescription": "Aninhado no nosso jardim tropical exuberante, o Cottage de Jardim combina elegância rústica com conforto caseiro. Um telhado de telhas romanas vermelhas e um teto alto branco com vigas de madeira escura criam um refúgio espaçoso e arejado cheio de caráter.",
       "sections": [
         {
@@ -1044,7 +1044,7 @@
     },
     "chalet": {
       "eyebrow": "Chalé com Telhado de Colmo",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalé com Telhado de Colmo em Ponta do Ouro",
       "heroDescription": "Escondido num canto isolado da propriedade, o Chalé com Telhado de Colmo oferece um refúgio tranquilo e romântico. Sombreado por palmeiras, strelitzias, acácias, fetos e árvores de amêndoa indiana, imerge-o na natureza sem sacrificar conforto ou privacidade.",
       "sections": [
         {
@@ -1097,7 +1097,7 @@
   "pt-BR": {
     "safari": {
       "eyebrow": "Tenda Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tenda Safari em Ponta do Ouro",
       "heroDescription": "Experimente o equilíbrio perfeito entre conforto e aventura. Montada em uma plataforma espaçosa de 3×6 m, esta tenda de lona de 12 m² tem paredes laterais e traseiras protetoras – proporcionando privacidade e abrigo enquanto permanece próximo da natureza.",
       "sections": [
         {
@@ -1155,7 +1155,7 @@
     },
     "comfort": {
       "eyebrow": "Tenda Conforto",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tenda Conforto em Ponta do Ouro",
       "heroDescription": "Para hóspedes que adoram a vibe imersa na natureza mas querem mais isolamento e conveniência, a Tenda Safari Conforto é uma atualização da nossa experiência clássica em lona.",
       "sections": [
         {
@@ -1208,7 +1208,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage de Jardim",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage de Jardim em Ponta do Ouro",
       "heroDescription": "Aninhado no nosso jardim tropical exuberante, o Cottage de Jardim combina elegância rústica com conforto caseiro. Um telhado de telhas romanas vermelhas e um teto alto branco com vigas de madeira escura criam um refúgio espaçoso e arejado cheio de caráter.",
       "sections": [
         {
@@ -1264,7 +1264,7 @@
     },
     "chalet": {
       "eyebrow": "Chalé com Telhado de Colmo",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalé com Telhado de Colmo em Ponta do Ouro",
       "heroDescription": "Escondido em um canto isolado da propriedade, o Chalé com Telhado de Colmo oferece um refúgio tranquilo e romântico. Sombreado por palmeiras, strelitzias, acácias, samambaias e árvores de amêndoa indiana, imerge você na natureza sem sacrificar conforto ou privacidade.",
       "sections": [
         {
@@ -1317,7 +1317,7 @@
   "it-IT": {
     "safari": {
       "eyebrow": "Tenda Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tenda Safari a Ponta do Ouro",
       "heroDescription": "Sperimenta il perfetto equilibrio tra comfort e avventura. Posizionata su una spaziosa piattaforma di 3×6 m, questa tenda in tela di 12 m² ha pareti laterali e posteriori protettive – offrendoti privacy e riparo mentre rimani vicino alla natura.",
       "sections": [
         {
@@ -1375,7 +1375,7 @@
     },
     "comfort": {
       "eyebrow": "Tenda Comfort",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Tenda Comfort a Ponta do Ouro",
       "heroDescription": "Per gli ospiti che amano l'atmosfera immersa nella natura ma vogliono maggiore isolamento e comodità, la Tenda Safari Comfort è un upgrade rispetto alla nostra esperienza classica in tela.",
       "sections": [
         {
@@ -1428,7 +1428,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage da Giardino",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage da Giardino a Ponta do Ouro",
       "heroDescription": "Nascosto nel nostro lussureggiante giardino tropicale, il Cottage da Giardino combina eleganza rustica con comfort casalingo. Un tetto di tegole romane rosse e un alto soffitto bianco con travi di legno scuro creano un rifugio spazioso e arioso pieno di carattere.",
       "sections": [
         {
@@ -1484,7 +1484,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet con Tetto di Paglia",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet con Tetto di Paglia a Ponta do Ouro",
       "heroDescription": "Nascosto in un angolo isolato della proprietà, lo Chalet con Tetto di Paglia offre un rifugio tranquillo e romantico. Ombreggiato da palme, strelitzie, acacie, felci e alberi di mandorlo indiano, ti immerge nella natura senza sacrificare comfort o privacy.",
       "sections": [
         {
@@ -1537,7 +1537,7 @@
   "sv": {
     "safari": {
       "eyebrow": "Safaritylt",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Safaritylt i Ponta do Ouro",
       "heroDescription": "Upplev den perfekta balansen mellan komfort och äventyr. Uppställd på en rymlig 3×6 m plattform, har detta 12 m² stora duktält skyddande sid- och bakväggar – som ger dig integritet och skydd medan du håller dig nära naturen.",
       "sections": [
         {
@@ -1595,7 +1595,7 @@
     },
     "comfort": {
       "eyebrow": "Komforttält",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Komforttält i Ponta do Ouro",
       "heroDescription": "För gäster som älskar den naturinbäddade stämningen men vill ha extra avskildhet och bekvämlighet, är Komfort Safaritylt en uppgradering av vår klassiska dukupplevelse.",
       "sections": [
         {
@@ -1648,7 +1648,7 @@
     },
     "cottage": {
       "eyebrow": "Trädgårdsstuga",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Trädgårdsstuga i Ponta do Ouro",
       "heroDescription": "Inbäddad i vår frodiga tropiska trädgård, kombinerar Trädgårdsstugan rustik elegans med hemtrevlig komfort. Ett rött romerskt tegeltak och högt vitt tak med mörka träbjälkar skapar en rymlig, luftig tillflyktsort full av karaktär.",
       "sections": [
         {
@@ -1704,7 +1704,7 @@
     },
     "chalet": {
       "eyebrow": "Grästak Chalet",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Grästak Chalet i Ponta do Ouro",
       "heroDescription": "Gömd i en avskild hörna av fastigheten, erbjuder Grästak Chalet en lugn, romantisk tillflyktsort. Skuggad av palmer, strelitzior, akacior, ormbunkar och indiska mandelträd, sänker det dig i naturen utan att offra komfort eller integritet.",
       "sections": [
         {
@@ -1977,7 +1977,7 @@
   "pl": {
     "safari": {
       "eyebrow": "Namiot Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Namiot Safari w Ponta do Ouro",
       "heroDescription": "Doświadcz idealnej równowagi między komfortem a przygodą. Ustawiony na przestronnej platformie 3×6 m, ten 12 m² namiot płócienny ma ochronne ściany boczne i tylne – zapewniając prywatność i schronienie, jednocześnie pozostając blisko natury.",
       "sections": [
         {
@@ -2035,7 +2035,7 @@
     },
     "comfort": {
       "eyebrow": "Namiot Komfort",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Namiot Komfort w Ponta do Ouro",
       "heroDescription": "Dla gości, którzy kochają zanurzoną w naturze atmosferę, ale chcą dodatkowej izolacji i wygody, Namiot Safari Komfort to ulepszenie naszej klasycznej płóciennej doświadczenia.",
       "sections": [
         {
@@ -2088,7 +2088,7 @@
     },
     "cottage": {
       "eyebrow": "Domek Ogrodowy",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Domek Ogrodowy w Ponta do Ouro",
       "heroDescription": "Zagnieżdżony w naszym bujnym tropikalnym ogrodzie, Domek Ogrodowy łączy rustykalną elegancję z domowym komfortem. Czerwony dach z rzymskich dachówek i wysoki biały sufit z ciemnymi drewnianymi belkami tworzą przestronny, przewiewny azyl pełen charakteru.",
       "sections": [
         {
@@ -2144,7 +2144,7 @@
     },
     "chalet": {
       "eyebrow": "Chata z Dachem ze Słomy",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chata z Dachem ze Słomy w Ponta do Ouro",
       "heroDescription": "Ukryta w odosobnionym kącie posiadłości, Chata z Dachem ze Słomy oferuje spokojny, romantyczny azyl. Zacieniona palmami, strelitziami, akacjami, paprociami i indyjskimi drzewami migdałowymi, zanurza cię w naturze bez rezygnacji z komfortu czy prywatności.",
       "sections": [
         {
@@ -2197,7 +2197,7 @@
   "zh-CN": {
     "safari": {
       "eyebrow": "游猎帐篷",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro的游猎帐篷",
       "heroDescription": "体验舒适与冒险的完美平衡。这个12平方米的帆布帐篷坐落于宽敞的3×6米平台上，带有防护性的侧墙和后墙——让您在亲近自然的同时享有私密与庇护。",
       "sections": [
         {
@@ -2255,7 +2255,7 @@
     },
     "comfort": {
       "eyebrow": "舒适帐篷",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro的舒适帐篷",
       "heroDescription": "专为喜爱沉浸于自然氛围但又希望获得更多清静与便利的客人设计，舒适游猎帐篷是我们经典帆布体验的升级版。",
       "sections": [
         {
@@ -2308,7 +2308,7 @@
     },
     "cottage": {
       "eyebrow": "花园小屋",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro的花园小屋",
       "heroDescription": "花园小屋隐匿于我们郁郁葱葱的热带花园中，将乡村的优雅与家庭的舒适融为一体。红色的罗马瓦屋顶、高高的白色天花板和深色木梁，共同营造出一个宽敞、通风且充满个性的休憩之所。",
       "sections": [
         {
@@ -2364,7 +2364,7 @@
     },
     "chalet": {
       "eyebrow": "茅草小屋",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro的茅草小屋",
       "heroDescription": "茅草小屋隐藏于物业内一个僻静的角落，提供宁静浪漫的休憩体验。掩映在棕榈树、鹤望兰、金合欢、蕨类植物和印度杏仁树的树荫下，让您沉浸于自然之中，同时不牺牲舒适与隐私。",
       "sections": [
         {
@@ -2417,7 +2417,7 @@
   "ja-JP": {
     "safari": {
       "eyebrow": "サファリテント",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "ポンタ・ド・オウロのサファリテント",
       "heroDescription": "快適さと冒険の完璧なバランスを体験してください。広々とした3×6mのプラットフォームに設置された12㎡のキャンバステントは、サイドウォールとバックウォールで保護され、自然に囲まれながらもプライバシーと遮蔽を確保します。",
       "sections": [
         {
@@ -2475,7 +2475,7 @@
     },
     "comfort": {
       "eyebrow": "コンフォートテント",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "ポンタ・ド・オウロのコンフォートテント",
       "heroDescription": "自然に囲まれた雰囲気を愛するながら、さらに静かで便利な環境を求めるゲストのために、コンフォートサファリテントは私たちのクラシックなキャンバス体験をアップグレードしたものです。",
       "sections": [
         {
@@ -2528,7 +2528,7 @@
     },
     "cottage": {
       "eyebrow": "ガーデンコテージ",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "ポンタ・ド・オウロのガーデンコテージ",
       "heroDescription": "緑豊かな熱帯庭園に佇むガーデンコテージは、素朴なエレガンスと家庭的な快適さを組み合わせています。赤いローマン瓦の屋根と、ダークウッドの梁が特徴的な高い白い天井が、個性あふれる広々として風通しの良い隠れ家を創り出しています。",
       "sections": [
         {
@@ -2584,7 +2584,7 @@
     },
     "chalet": {
       "eyebrow": "茅葺きシャレー",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "ポンタ・ド・オウロの茅葺きシャレー",
       "heroDescription": "敷地内のひっそりとした一角に隠れる茅葺きシャレーは、静かでロマンチックな隠れ家を提供します。ヤシ、ストレリチア、アカシア、シダ、モモタマナの木陰に囲まれ、快適さやプライバシーを犠牲にすることなく自然に浸ることができます。",
       "sections": [
         {
@@ -2637,7 +2637,7 @@
   "ru": {
     "safari": {
       "eyebrow": "Сафари-палатка",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Сафари-палатка в Понта-ду-Ору",
       "heroDescription": "Испытайте идеальный баланс комфорта и приключений. Установленная на просторной платформе 3×6 м, эта палатка площадью 12 м² имеет защитные боковые и заднюю стенки, обеспечивая уединение и укрытие, пока вы находитесь вблизи природы.",
       "sections": [
         {
@@ -2695,7 +2695,7 @@
     },
     "comfort": {
       "eyebrow": "Комфорт-палатка",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Комфорт-палатка в Понта-ду-Ору",
       "heroDescription": "Для гостей, которые любят атмосферу единения с природой, но хотят дополнительной уединенности и удобства, Comfort Safari Tent — это улучшенная версия нашего классического палаточного опыта.",
       "sections": [
         {
@@ -2748,7 +2748,7 @@
     },
     "cottage": {
       "eyebrow": "Садовый Коттедж",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Садовый Коттедж в Понта-ду-Ору",
       "heroDescription": "Расположенный в нашем пышном тропическом саду, Садовый Коттедж сочетает в себе деревенскую элегантность и домашний уют. Красная черепичная крыша в римском стиле и высокий белый потолок с темными деревянными балками создают просторное, наполненное воздухом и характером убежище.",
       "sections": [
         {
@@ -2804,7 +2804,7 @@
     },
     "chalet": {
       "eyebrow": "Шале с Соломенной Крышей",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Шале с Соломенной Крышей в Понта-ду-Ору",
       "heroDescription": "Спрятанное в уединенном уголке территории, Шале с Соломенной Крышей предлагает спокойный, романтический отдых. Укрытое в тени пальм, стрелиций, акаций, папоротников и терминалий каттапа, оно погружает вас в природу, не жертвуя комфортом или уединенностью.",
       "sections": [
         {
@@ -2857,7 +2857,7 @@
   "sw": {
     "safari": {
       "eyebrow": "Hema ya Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Hema ya Safari huko Ponta do Ouro",
       "heroDescription": "Pata usawa kamili wa starehe na msisimko. Hema hii ya canvas yenye ukubwa wa mita 12 imewekwa kwenye jukwaa kubwa la 3×6 m, na ina kuta za kingo na nyuma za kinga—kukupa faraja na ulinzi huku ukiwa karibu na asili.",
       "sections": [
         {
@@ -2915,7 +2915,7 @@
     },
     "comfort": {
       "eyebrow": "Hema ya Starehe",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Hema ya Starehe huko Ponta do Ouro",
       "heroDescription": "Kwa wageni wanaopenda mazingira ya kujazwa asilini lakini wakitaka faraja na urahisi wa ziada, Hema ya Starehe ya Safari ni boresho kwa uzoefu wetu wa kitamaduni wa canvas.",
       "sections": [
         {
@@ -2968,7 +2968,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage ya Bustani",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage ya Bustani huko Ponta do Ouro",
       "heroDescription": "Iliyojikita kwenye bustani yetu ya kitropiki iliyojaa mimea, Cottage ya Bustani inachanganya urembo wa kienyeji na starehe ya kaya. Paa nyekundu la matairi ya Kirumi na dari nyeupe ya juu yenye misumari ya mweusi huunda makao yenye nafasi, yenye hewa na tabia.",
       "sections": [
         {
@@ -3024,7 +3024,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet Yaenyekunyasi",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet Yaenyekunyasi huko Ponta do Ouro",
       "heroDescription": "Ilichomwa kwenye kona ya mali, Chalet Yaenyekunyasi inatoa mapumziko ya utulivu, ya kimapenzi. Ikiwa kwenye kivuli cha miti ya mnazi, strelitzia, acacia, fern, na miti ya Indian almond, inakuzamisha katika asili bila kukosa starehe wala faraja.",
       "sections": [
         {
@@ -3077,7 +3077,7 @@
   "zu": {
     "safari": {
       "eyebrow": "Ithende Yesafari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Ithende Yesafari ePonta do Ouro",
       "heroDescription": "Thola ukulinganisela okuphelele kokunethezeka ne-adventure. Lemu eliyi-12 m² canvas imiswe endaweni enkulu engu-3×6 m, inezindonga eziyisembozo ezingasemaceleni nangasemumva—ikunikeza ubumfihlo nendawo yokukhosela ngenkathi useduzane nemvelo.",
       "sections": [
         {
@@ -3135,7 +3135,7 @@
     },
     "comfort": {
       "eyebrow": "Ithende Lokunethezeka",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Ithende Lokunethezeka ePonta do Ouro",
       "heroDescription": "Ezivakashini ezithanda umoya wokugcwala imvelo kodwa ezifuna ukuzihlukanisa ngokwengeziwe nolula, i-Comfort Safari Tent iyathuthukiswa kwinjongo yethu yejwayelekile.",
       "sections": [
         {
@@ -3188,7 +3188,7 @@
     },
     "cottage": {
       "eyebrow": "Indlu Encane Yengadi",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Indlu Encane Yengadi ePonta do Ouro",
       "heroDescription": "Igxile engadini yethu ehlotyene yetroppiki, i-Garden Cottage ihlanganisa ubuhle bendawo nokunethezeka kwekhaya. Uphahla obomvu lwama-Roman tile nophahla oluphezulu olumhlophe olunemishayo yokhuni omnyama kudala indawo yokuhlala enenke, enomoya ngesimilo.",
       "sections": [
         {
@@ -3244,7 +3244,7 @@
     },
     "chalet": {
       "eyebrow": "I-Chalet Eneqabunga",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "I-Chalet Eneqabunga ePonta do Ouro",
       "heroDescription": "Eficwe ekhoneni elizimele lendawo, i-Thatched Chalet inikeza indawo yokuhlala enokuthula, eyisithandandaba. Emthunzini wesundu, i-strelitzia, i-acacia, ama-fern, nemithi ye-Indian almond, ikugqilaza emvelweni ngaphandle kokulahlekelwa ukunethezeka noma ubumfihlo.",
       "sections": [
         {
@@ -3355,7 +3355,7 @@
     },
     "comfort": {
       "eyebrow": "Gerief Tent",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Gerief Tent in Ponta do Ouro",
       "heroDescription": "Vir gaste wat die natuur-omringde vibe liefhet maar ekstra afsondering en gerief wil hê, is die Gerief Safari Tent 'n opgradering op ons klassieke doek ervaring.",
       "sections": [
         {
@@ -3408,7 +3408,7 @@
     },
     "cottage": {
       "eyebrow": "Tuin Cottage",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Tuin Cottage in Ponta do Ouro",
       "heroDescription": "Genestel in ons welige tropiese tuin, kombineer die Tuin Cottage rustieke elegansie met huislike gerief. 'n Rooi Romeinse teëldak en hoë wit plafon met donker houtbalke skep 'n ruim, lugtige toevlug vol karakter.",
       "sections": [
         {
@@ -3464,7 +3464,7 @@
     },
     "chalet": {
       "eyebrow": "Grasdak Chalet",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Grasdak Chalet in Ponta do Ouro",
       "heroDescription": "Versteek in 'n afgesonderde hoek van die eiendom, bied die Grasdak Chalet 'n rustige, romantiese toevlug. Beskadu deur palmbome, strelitzia, akasia, varings en Indiese amandelbome, dompel dit jou in die natuur sonder om gerief of privaatheid op te offer.",
       "sections": [
         {
@@ -3517,7 +3517,7 @@
   "nl-NL": {
     "safari": {
       "eyebrow": "Safaritent",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Safaritent in Ponta do Ouro",
       "heroDescription": "Ervaar de perfecte balans tussen comfort en avontuur. Geplaatst op een ruime 3×6 m platform, heeft deze 12 m² canvas tent beschermende zij- en achterwanden – die u privacy en beschutting bieden terwijl u dicht bij de natuur blijft.",
       "sections": [
         {
@@ -3575,7 +3575,7 @@
     },
     "comfort": {
       "eyebrow": "Comforttent",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Comforttent in Ponta do Ouro",
       "heroDescription": "Voor gasten die de natuur-omringde vibe waarderen maar extra afzondering en gemak willen, is de Comfort Safaritent een upgrade op onze klassieke canvas ervaring.",
       "sections": [
         {
@@ -3628,7 +3628,7 @@
     },
     "cottage": {
       "eyebrow": "Tuin Cottage",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Tuin Cottage in Ponta do Ouro",
       "heroDescription": "Genesteld in onze weelderige tropische tuin, combineert de Tuin Cottage rustieke elegantie met huiselijk comfort. Een rood Romeins tegel dak en hoog wit plafond met donkere houten balken creëren een ruime, luchtige toevlucht vol karakter.",
       "sections": [
         {
@@ -3684,7 +3684,7 @@
     },
     "chalet": {
       "eyebrow": "Rieten Chalet",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Rieten Chalet in Ponta do Ouro",
       "heroDescription": "Verborgen in een afgelegen hoek van het terrein, biedt het Rieten Chalet een rustige, romantische toevlucht. Beschaduwd door palmen, strelitzia, acacia, varens en Indiase amandelbomen, dompelt het u onder in de natuur zonder comfort of privacy op te offeren.",
       "sections": [
         {
@@ -3737,7 +3737,7 @@
   "sr": {
     "safari": {
       "eyebrow": "Safari šator",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Safari šator u Ponta do Ouro",
       "heroDescription": "Šator od platna od 12 m² na platformi 3×6 m. One King or Twin beds, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajednička kupatila.",
       "sections": [
         {
@@ -3794,7 +3794,7 @@
     },
     "comfort": {
       "eyebrow": "Comfort šator",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Comfort šator u Ponta do Ouro",
       "heroDescription": "Unapređen šator od 12 m² sa dodatnom privatnošću (bočni i zadnji zidovi), privatnom terasom i sopstvenim kupatilom pod krovom od slame.",
       "sections": [
         {
@@ -3845,7 +3845,7 @@
     },
     "cottage": {
       "eyebrow": "Vrtni Cottage",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Vrtni Cottage u Ponta do Ouro",
       "heroDescription": "Prozračan cottage sa Queen krevetom, klima uređajem (inverter), radnim stolom i trpezarijskim stolom, privatnom terasom i kupatilom u šarmantnom okruglom paviljonu.",
       "sections": [
         {
@@ -3899,7 +3899,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet sa krovom od slame",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet sa krovom od slame u Ponta do Ouro",
       "heroDescription": "Skroviti, romantični mali chalet pod palmama i strelicijama. Klima, privatno kupatilo, terasa, postavljanje One King or Twin beds kreveta.",
       "sections": [
         {
@@ -3952,7 +3952,7 @@
   "cs": {
     "safari": {
       "eyebrow": "Safari stan",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Safari stan v Ponta do Ouro",
       "heroDescription": "Plátěný stan o ploše 12 m² na podlaze 3×6 m. One King or Twin beds, ventilátor, zásuvky, moskytiéra, soukromá terasa. Sdílené koupelny.",
       "sections": [
         {
@@ -4009,7 +4009,7 @@
     },
     "comfort": {
       "eyebrow": "Comfort stan",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Comfort stan v Ponta do Ouro",
       "heroDescription": "Vylepšený stan o ploše 12 m² s extra soukromím (boční a zadní stěny), soukromou terasou a vlastní koupelnou pod doškovou střechou.",
       "sections": [
         {
@@ -4060,7 +4060,7 @@
     },
     "cottage": {
       "eyebrow": "Zahradní Cottage",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Zahradní Cottage v Ponta do Ouro",
       "heroDescription": "Vzdušný cottage s Queen postelí, klimatizací (inverter), pracovním stolem a jídelním stolem, soukromou terasou a koupelnou v půvabném kruhovém pavilonu.",
       "sections": [
         {
@@ -4114,7 +4114,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet s doškovou střechou",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet s doškovou střechou v Ponta do Ouro",
       "heroDescription": "Skrytý, romantický malý chalet pod palmami a strelíciemi. Klimatizace, soukromá koupelna, terasa, uspořádání One King or Twin beds.",
       "sections": [
         {
@@ -4167,7 +4167,7 @@
   "tr": {
     "safari": {
       "eyebrow": "Safari Çadırı",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro'da Safari Çadırı",
       "heroDescription": "3×6 m platform üzerinde 12 m² branda çadır. One King or Twin beds, vantilatör, prizler, sivrisinek teli, özel teras. Ortak duşlar.",
       "sections": [
         {
@@ -4224,7 +4224,7 @@
     },
     "comfort": {
       "eyebrow": "Comfort Çadırı",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro'da Comfort Çadırı",
       "heroDescription": "Ek mahremiyet (yan ve arka duvarlar), özel teras ve sazdan çatı altında kendi banyosu olan, geliştirilmiş 12 m² çadır.",
       "sections": [
         {
@@ -4275,7 +4275,7 @@
     },
     "cottage": {
       "eyebrow": "Bahçe Cottage'ı",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro'da Bahçe Cottage'ı",
       "heroDescription": "Queen yatak, klima (inverter), çalışma ve yemek masası, özel teras ve çekici bir yuvarlak köşkte banyosu olan ferah cottage.",
       "sections": [
         {
@@ -4329,7 +4329,7 @@
     },
     "chalet": {
       "eyebrow": "Sazdan Çatılı Chalet",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Ponta do Ouro'da Sazdan Çatılı Chalet",
       "heroDescription": "Palmiyeler ve strelitzialar altında, gizli, romantik küçük chalet. Klima, özel banyo, teras, One King or Twin beds yatak düzeni.",
       "sections": [
         {
@@ -4382,7 +4382,7 @@
   "hr": {
     "safari": {
       "eyebrow": "Safari šator",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Safari šator u Ponta do Ouro",
       "heroDescription": "Šator od platna od 12 m² na platformi 3×6 m. One King or Twin beds, ventilator, utičnice, mreža protiv komaraca, privatna terasa. Zajedničke kupaonice.",
       "sections": [
         {
@@ -4439,7 +4439,7 @@
     },
     "comfort": {
       "eyebrow": "Comfort šator",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Comfort šator u Ponta do Ouro",
       "heroDescription": "Unaprijeđen šator od 12 m² s dodatnom privatnošću (bočni i stražnji zidovi), privatnom terasom i vlastitom kupaonicom pod krovom od slame.",
       "sections": [
         {
@@ -4490,7 +4490,7 @@
     },
     "cottage": {
       "eyebrow": "Vrtni Cottage",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Vrtni Cottage u Ponta do Ouro",
       "heroDescription": "Prozračan cottage s Queen krevetom, klima uređajem (inverter), radnim stolom i blagovaonskim stolom, privatnom terasom i kupaonicom u šarmantnom okruglom paviljonu.",
       "sections": [
         {
@@ -4544,7 +4544,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet s krovom od slame",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet s krovom od slame u Ponta do Ouro",
       "heroDescription": "Skroviti, romantični mali chalet pod palmama i strelicijama. Klima, privatna kupaonica, terasa, postavljanje One King or Twin beds kreveta.",
       "sections": [
         {
@@ -4597,7 +4597,7 @@
   "ro": {
     "safari": {
       "eyebrow": "Cort Safari",
-      "heroTitle": "Safari Tent in Ponta do Ouro",
+      "heroTitle": "Cort Safari în Ponta do Ouro",
       "heroDescription": "Cort din pânză de 12 m² pe o platformă de 3×6 m. One King or Twin beds, ventilator, prize, plasă anti-țânțari, terasă privată. Băi comune.",
       "sections": [
         {
@@ -4654,7 +4654,7 @@
     },
     "comfort": {
       "eyebrow": "Cort Comfort",
-      "heroTitle": "Comfort Safari Tent in Ponta do Ouro",
+      "heroTitle": "Cort Comfort în Ponta do Ouro",
       "heroDescription": "Cort îmbunătățit de 12 m² cu intimitate suplimentară (pereți laterali și posterior), terasă privată și baie proprie sub un acoperiș de stuf.",
       "sections": [
         {
@@ -4705,7 +4705,7 @@
     },
     "cottage": {
       "eyebrow": "Cottage de Grădină",
-      "heroTitle": "Garden Cottage in Ponta do Ouro",
+      "heroTitle": "Cottage de Grădină în Ponta do Ouro",
       "heroDescription": "Cottage aerisit cu pat Queen, aer condiționat (inverter), birou și masă, terasă privată și baie într-un fermecător pavilion rotund.",
       "sections": [
         {
@@ -4759,7 +4759,7 @@
     },
     "chalet": {
       "eyebrow": "Chalet cu acoperiș de stuf",
-      "heroTitle": "Thatched Chalet in Ponta do Ouro",
+      "heroTitle": "Chalet cu acoperiș de stuf în Ponta do Ouro",
       "heroDescription": "Chalet mic, retras și romantic sub palmieri și strelitzia. Aer condiționat, baie privată, terasă, aranjare One King or Twin beds.",
       "sections": [
         {

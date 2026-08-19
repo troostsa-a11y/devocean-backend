@@ -452,7 +452,7 @@ function getHotelrunnerLocale(lang) {
 // Load full accommodation translations from JSON
 async function loadAccommodationTranslations(lang) {
   try {
-    const response = await fetch('/translations/accommodation-translation-template.json');
+    const response = await fetch('/translations/accommodation-translation-template.json?v=4');
     if (!response.ok) throw new Error('Failed to load accommodation translations');
     const data = await response.json();
     
@@ -527,6 +527,12 @@ async function applyTranslations(lang) {
         }
       }
       
+      // Keep the browser tab title in the selected language too — the H1
+      // (hero title) is the natural source; brand suffix stays constant.
+      if (titleText) {
+        document.title = `${titleText} | DEVOCEAN Lodge`;
+      }
+
       // Update hero tagline
       const taglineEl = document.querySelector('.dl-hero .dl-tagline');
       if (taglineEl && unitData.heroTagline) {
