@@ -826,6 +826,23 @@
         return;
       }
 
+      // A legal page is a standalone document, so its Home link may navigate
+      // before a click handler can persist the seen marker. Use the same-site
+      // referrer as a second, storage-independent guard.
+      try {
+        var referrerUrl = document.referrer ? new URL(document.referrer, window.location.origin) : null;
+        if (referrerUrl &&
+            referrerUrl.origin === window.location.origin &&
+            referrerUrl.pathname.indexOf('/legal/') === 0) {
+          var referrerHideStyle = document.createElement('style');
+          referrerHideStyle.textContent = '#hero-placeholder{display:none!important}';
+          document.head.appendChild(referrerHideStyle);
+          return;
+        }
+      } catch (e) {
+        // Ignore malformed or unavailable referrers and continue normally.
+      }
+
       // Check if user has already seen the hero
       // Use sessionStorage (persists during SPA navigation, clears on tab close)
       // and localStorage (persists across browser sessions)

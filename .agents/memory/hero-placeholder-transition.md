@@ -25,8 +25,8 @@ The `new Image()` objects used for cache-warming slides 1 & 2 must have **no** `
 
 ## Rule 4 — returning from static pages must skip the homepage overlay
 
-Static legal pages mark the hero handoff as seen before navigating to Home.
+Static legal pages mark the hero handoff as seen on page load and before navigating to Home; the homepage also checks for a same-site legal referrer.
 
 **Why:** A legal-page visitor is already on the site. Showing a homepage overlay on that navigation reads as a startup flash rather than useful loading feedback.
 
-**How to apply:** Any standalone/static page that links back to `/` or `/#…` should set the same seen marker before navigation, and its stable JavaScript URL must receive a new version query whenever that handler changes.
+**How to apply:** Any standalone/static page that links back to `/` or `/#…` should set the same seen marker on load and before navigation, and its stable JavaScript URL must receive a new version query whenever that handler changes.

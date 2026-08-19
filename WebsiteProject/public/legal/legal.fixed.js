@@ -29,6 +29,12 @@ document.addEventListener('click', function(event) {
   if (link) markHeroHandoffSeen();
 });
 
+// Visiting a legal page already counts as an established site visit. Mark it
+// immediately as well as on click so keyboard navigation, smartBack(), and
+// browsers that navigate before dispatching a click cannot show the homepage
+// intro on the way back.
+markHeroHandoffSeen();
+
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
   // If opened as a new tab (noopener links pass ?newtab=1), close this tab
