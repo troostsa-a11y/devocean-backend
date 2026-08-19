@@ -54,6 +54,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   };
   const [, navigate] = useLocation();
 
+  // Hide floating third-party widgets (Trustindex badge/popup) inside the
+  // booking funnel — the floating badge overlaps result-card imagery. Review
+  // proof is shown inline in the summary rail instead (see below). CSS rule
+  // lives in index.html (body.dv-hide-floating-widgets).
+  useEffect(() => {
+    document.body.classList.add('dv-hide-floating-widgets');
+    return () => document.body.classList.remove('dv-hide-floating-widgets');
+  }, []);
+
   const [step, setStep] = useState('search'); // search | results | details
   // Dates start unset — the guest picks them explicitly instead of landing on
   // a pre-filled 2-night quote for tomorrow, which (a) reads as "the price"
@@ -1450,6 +1459,29 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         {t.selectRoomsToContinue}
                       </div>
                     )}
+                    {/* Inline review proof — replaces the floating Trustindex
+                        badge, which is hidden in the booking funnel. Reuses the
+                        localized hero badge string (exists in all languages). */}
+                    <div
+                      className="mt-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 flex items-center gap-3"
+                      data-testid="card-review-proof"
+                    >
+                      <div className="flex items-center gap-0.5 text-yellow-500 shrink-0">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={14} fill="currentColor" />
+                        ))}
+                      </div>
+                      <div className="min-w-0 text-xs text-slate-600 leading-snug">
+                        {/* Fallback covers a missing/partial translation object and
+                            the critical-UI loading placeholder ("..."). */}
+                        <span className="font-medium text-slate-700">
+                          {(ui?.hero?.badge && ui.hero.badge !== '...')
+                            ? ui.hero.badge
+                            : 'Guests loved comfort & value'}
+                        </span>
+                        <span className="text-slate-400"> · Google Reviews</span>
+                      </div>
+                    </div>
                     </div>
                   </div>
                   </>

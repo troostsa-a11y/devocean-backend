@@ -1518,6 +1518,16 @@
     /* Floating-certificate popup: constrain to viewport so the close button is
        always reachable on small screens regardless of popup height.
        Applied via JS below; the class is set on the popup's inner container. */
+    /* Booking funnel: hide floating Trustindex widgets (badge launcher + popup).
+       The class is toggled on <body> by BookDirectPage; review proof is shown
+       inline in the booking summary rail instead, so the floating badge never
+       overlaps result-card imagery. */
+    body.dv-hide-floating-widgets [data-trustindex-widget],
+    body.dv-hide-floating-widgets .ti-popup-widget,
+    body.dv-hide-floating-widgets .ti-widget-fixed {
+      display: none !important;
+    }
+
     .ti-cert-popup-constrained {
       max-height: calc(100svh - 130px) !important;
       overflow-y: auto        !important;
