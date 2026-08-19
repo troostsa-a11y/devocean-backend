@@ -201,9 +201,14 @@ function RoomCard({
           {room.offers.length === 1 && (!offer.refundable || freeCancellation) && (
             <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
               {offer.refundable
-                ? fmt(t.cancellationPolicy, { days: cancelDays })
+                ? (t.rateNoteSemiFlex
+                    ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
+                    : fmt(t.cancellationPolicy, { days: cancelDays }))
                 : <>
-                    {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
+                    {t.nonRefundable}
+                    {t.rateNoteNonRef
+                      ? ` \u00b7 ${t.rateNoteNonRef}`
+                      : (t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : '')}
                     {offer.type === 'nonRef' && (
                       <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms?newtab=1#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
                     )}
@@ -320,9 +325,14 @@ function RoomCard({
                     {(!o.refundable || freeCancellation) && (
                       <span className={`mt-0.5 block text-xs ${o.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
                         {o.refundable
-                          ? fmt(t.cancellationPolicy, { days: cancelDays })
+                          ? (t.rateNoteSemiFlex
+                              ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
+                              : fmt(t.cancellationPolicy, { days: cancelDays }))
                           : <>
-                              {t.nonRefundable}{t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : ''}
+                              {t.nonRefundable}
+                              {t.rateNoteNonRef
+                                ? ` \u00b7 ${t.rateNoteNonRef}`
+                                : (t.depositFullNow ? ` \u00b7 ${t.depositFullNow}` : '')}
                               {o.type === 'nonRef' && (
                                 <>{' \u00b7 '}<a href="https://devoceanlodge.com/legal/terms?newtab=1#cancel" target="_blank" rel="noopener noreferrer" className="underline hover:no-underline">{t.rateConditions}</a></>
                               )}
