@@ -1,6 +1,7 @@
 import { useState, memo } from 'react';
 import { useLocation } from 'wouter';
 import { Menu, Globe2 } from 'lucide-react';
+import { LOCALES } from '../i18n/localeCatalog.js';
 
 // Preload lazy route chunks on hover/focus so the module is cached before the click.
 // These mirror the lazy() calls in App.jsx — same module path hits the same browser cache.
@@ -11,7 +12,7 @@ import { IMG } from '../data/content';
 import { trackBookingSession } from '../utils/analytics';
 import LazyImage from './LazyImage';
 
-function Header({ ui, lang, currency, region, onLangChange, onRegionChange, bookUrl }) {
+function Header({ ui, lang, currency, onLangChange, bookUrl }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location, navigate] = useLocation();
 
@@ -33,24 +34,6 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
     e.preventDefault();
     navigate(`/#${sectionId}`);
     setMenuOpen(false);
-  };
-
-  // Define regions with metadata (currency auto-assigned by IP, not selectable)
-  const regions = {
-    westEu: { name: 'Western Europe', languages: ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'] },
-    eastEu: { name: 'Eastern Europe', languages: ['pl', 'ro', 'sr', 'hr', 'cs'] },
-    asia: { name: 'Asia', languages: ['en-GB', 'ja-JP', 'zh-CN', 'ru', 'tr'] },
-    americas: { name: 'Americas', languages: ['en-US', 'pt-BR', 'es-ES', 'fr-FR'] },
-    africa: { name: 'Africa', languages: ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'] },
-    oceania: { name: 'Oceania', languages: ['en-GB'] }
-  };
-
-  const handleRegionChange = (newRegion) => {
-    onRegionChange(newRegion);
-    if (!regions[newRegion].languages.includes(lang)) {
-      const fallback = regions[newRegion].languages[0] || 'en-GB';
-      onLangChange(fallback);
-    }
   };
 
   // Detect if we're on an experience detail page - use Wouter's location
@@ -104,50 +87,20 @@ function Header({ ui, lang, currency, region, onLangChange, onRegionChange, book
       <div id="nav-stack" className="topbar bg-[#9e4b13] text-white border-b border-[#8a4211]">
         <div className="max-w-7xl mx-auto px-1.5 sm:px-4 py-2 flex items-center justify-between text-sm">
 
-          {/* Left: continent + language selectors */}
+          {/* Left: flat language selector — all supported locales, no region step */}
           <div className="flex items-center gap-1.5">
             <Globe2 size={16} className="hidden sm:block shrink-0 opacity-80" />
             <select
-              value={region}
-              onChange={(e) => handleRegionChange(e.target.value)}
-              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[150px] sm:w-[160px] text-white bg-transparent text-sm"
-              aria-label="Select region"
-            >
-              {Object.entries(regions).map(([key]) => (
-                <option key={key} value={key} className="text-slate-800">
-                  {ui.regions[key]}
-                </option>
-              ))}
-            </select>
-
-            <select
               value={lang}
               onChange={(e) => onLangChange(e.target.value)}
-              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[93px] text-white bg-transparent text-sm"
+              className="border border-white/40 rounded pl-1 pr-2 py-1 w-[178px] max-w-[48vw] text-white bg-transparent text-sm"
               aria-label="Select language"
             >
-              {regions[region]?.languages.includes('en-US') && <option value="en-US" className="text-slate-800">English</option>}
-              {regions[region]?.languages.includes('en-GB') && <option value="en-GB" className="text-slate-800">English</option>}
-              {regions[region]?.languages.includes('pt-PT') && <option value="pt-PT" className="text-slate-800">Português</option>}
-              {regions[region]?.languages.includes('pt-BR') && <option value="pt-BR" className="text-slate-800">Português</option>}
-              {regions[region]?.languages.includes('nl-NL') && <option value="nl-NL" className="text-slate-800">Nederlands</option>}
-              {regions[region]?.languages.includes('fr-FR') && <option value="fr-FR" className="text-slate-800">Français</option>}
-              {regions[region]?.languages.includes('it-IT') && <option value="it-IT" className="text-slate-800">Italiano</option>}
-              {regions[region]?.languages.includes('de-DE') && <option value="de-DE" className="text-slate-800">Deutsch</option>}
-              {regions[region]?.languages.includes('es-ES') && <option value="es-ES" className="text-slate-800">Español</option>}
-              {regions[region]?.languages.includes('sv')    && <option value="sv"    className="text-slate-800">Svenska</option>}
-              {regions[region]?.languages.includes('pl')    && <option value="pl"    className="text-slate-800">Polski</option>}
-              {regions[region]?.languages.includes('ro')    && <option value="ro"    className="text-slate-800">Română</option>}
-              {regions[region]?.languages.includes('sr')    && <option value="sr"    className="text-slate-800">Srpski</option>}
-              {regions[region]?.languages.includes('hr')    && <option value="hr"    className="text-slate-800">Hrvatski</option>}
-              {regions[region]?.languages.includes('cs')    && <option value="cs"    className="text-slate-800">Čeština</option>}
-              {regions[region]?.languages.includes('tr')    && <option value="tr"    className="text-slate-800">Türkçe</option>}
-              {regions[region]?.languages.includes('af-ZA') && <option value="af-ZA" className="text-slate-800">Afrikaans</option>}
-              {regions[region]?.languages.includes('zu')    && <option value="zu"    className="text-slate-800">isiZulu</option>}
-              {regions[region]?.languages.includes('sw')    && <option value="sw"    className="text-slate-800">Kiswahili</option>}
-              {regions[region]?.languages.includes('ru')    && <option value="ru"    className="text-slate-800">Русский</option>}
-              {regions[region]?.languages.includes('ja-JP') && <option value="ja-JP" className="text-slate-800">日本語</option>}
-              {regions[region]?.languages.includes('zh-CN') && <option value="zh-CN" className="text-slate-800">中文</option>}
+              {LOCALES.map((locale) => (
+                <option key={locale.code} value={locale.code} className="text-slate-800">
+                  {locale.label}
+                </option>
+              ))}
             </select>
           </div>
 

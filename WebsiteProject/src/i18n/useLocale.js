@@ -2,8 +2,15 @@ import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 import { loadTranslation } from './loadTranslation.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
+import {
+  DEFAULT_LOCALE,
+  LOCALES,
+  localeFromPath,
+  localizedUrl,
+  normalizeLocale,
+} from './localeCatalog.js';
 
-const SUPPORTED_LANGS = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ro", "sr", "hr", "cs", "tr", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw"];
+const SUPPORTED_LANGS = LOCALES.map(({ code }) => code);
 const SUPPORTED_REGIONS = ["westEu", "eastEu", "asia", "americas", "africa", "oceania"];
 
 // Language-to-region mapping (module-level constant)
@@ -25,35 +32,7 @@ function getUrlParam(name) {
 
 // Normalize short language codes to full locale codes
 function normalizeLangCode(langCode) {
-  if (!langCode) return null;
-  
-  // Mapping of short codes to preferred full locale codes
-  const SHORT_TO_FULL = {
-    'en': 'en-GB',
-    'pt': 'pt-BR',  // Default Portuguese to Brazilian
-    'nl': 'nl-NL',
-    'fr': 'fr-FR',
-    'it': 'it-IT',
-    'de': 'de-DE',
-    'es': 'es-ES',
-    'ja': 'ja-JP',
-    'zh': 'zh-CN',
-    'af': 'af-ZA'
-  };
-  
-  // If it's already a full code and supported, return it
-  if (SUPPORTED_LANGS.includes(langCode)) {
-    return langCode;
-  }
-  
-  // Try to normalize short code
-  const normalized = SHORT_TO_FULL[langCode.toLowerCase()];
-  if (normalized && SUPPORTED_LANGS.includes(normalized)) {
-    return normalized;
-  }
-  
-  // If no normalization found, return null (invalid code)
-  return null;
+  return normalizeLocale(langCode);
 }
 
 // Comprehensive country-to-currency mapping (legal tender for each country)
@@ -617,7 +596,17 @@ export function getCriticalUI(lang) {
 
 export function useLocale() {
   const [lang, setLangState] = useState(() => {
-    // Priority 1: URL parameter (for return from booking engine)
+    // A stable locale path is the public source of truth. This is intentionally
+    // checked before storage, browser, or legacy query-string preferences.
+    const pathLocale = localeFromPath(window.location.pathname);
+    if (pathLocale) {
+      safeLocalStorage.setItem("site.lang", pathLocale.code);
+      safeLocalStorage.setItem("site.lang_source", "url");
+      return pathLocale.code;
+    }
+
+    // Legacy ?lang= links remain valid entry points and are normalized to a
+    // stable locale path by the effect below.
     const urlLang = getUrlParam('lang');
     if (urlLang) {
       const normalized = normalizeLangCode(urlLang);
@@ -642,7 +631,7 @@ export function useLocale() {
     }
     
     // Priority 3: Auto-detect
-    return pickInitialLang();
+    return pickInitialLang() || DEFAULT_LOCALE;
   });
 
   // Currency - always based on current IP-detected country
@@ -878,18 +867,24 @@ export function useLocale() {
     };
   }, [lang]);
 
-  // Clean-URL policy: ?lang= is honored on entry (applied + persisted by the
-  // state initializers above), then removed from the address bar so every page
-  // has exactly one canonical URL. Runs once on mount, after all initializers
-  // (lang, currency, region) have already read the parameter.
+  // Legacy language-query links are an entry-only compatibility layer. Replace
+  // them with a real locale URL so the next request receives matching crawler
+  // metadata and initial HTML from the edge.
   useEffect(() => {
     try {
       const params = new URLSearchParams(window.location.search);
-      if (params.has('lang')) {
+      const queryLocale = normalizeLangCode(params.get('lang'));
+      if (queryLocale && params.has('lang') && !localeFromPath(window.location.pathname)) {
         params.delete('lang');
-        const qs = params.toString();
-        const cleanUrl = window.location.pathname + (qs ? `?${qs}` : '') + window.location.hash;
-        window.history.replaceState(window.history.state, '', cleanUrl);
+        const target = localizedUrl(
+          window.location.pathname,
+          queryLocale,
+          params.toString(),
+          window.location.hash,
+        );
+        if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== target) {
+          window.location.replace(target);
+        }
       }
     } catch (e) { /* ignore */ }
   }, []);
@@ -905,14 +900,28 @@ export function useLocale() {
   }, [lang]);
 
   const setLang = (newLang) => {
-    const normalized = normLang(newLang);
-    setLangState(normalized);
+    const normalized = normalizeLangCode(newLang);
+    if (!normalized) return;
     safeLocalStorage.setItem("site.lang", normalized);
     safeLocalStorage.setItem("site.lang_source", "user");
     safeLocalStorage.setItem("site.lang.version", "2"); // Mark with current version to prevent auto-detection override
-    document.documentElement.setAttribute("lang", normalized);
-    
-    // Don't change currency when language changes - currency is tied to region/location, not language
+
+    // A full navigation is deliberate: it makes the URL, edge-generated
+    // metadata, initial HTML, and hydrated interface change as one unit.
+    // Currency is intentionally absent from this operation and remains in its
+    // own persisted preference.
+    const target = localizedUrl(
+      window.location.pathname,
+      normalized,
+      window.location.search,
+      window.location.hash,
+    );
+    if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== target) {
+      window.location.assign(target);
+    } else {
+      setLangState(normalized);
+      document.documentElement.setAttribute("lang", normalized);
+    }
   };
 
   const setRegion = (newRegion) => {

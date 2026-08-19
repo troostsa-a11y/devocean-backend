@@ -13,15 +13,34 @@ import { useBrowserLocation } from 'wouter/use-browser-location';
  * there is no previous route to keep on screen.
  */
 function useTransitionLocation() {
-  const [location, navigate] = useBrowserLocation();
+  const [rawLocation, navigate] = useBrowserLocation();
   const [, startTransition] = useTransition();
   const transitionNavigate = useCallback(
-    (to, opts) => startTransition(() => navigate(to, opts)),
-    [navigate] // eslint-disable-line react-hooks/exhaustive-deps
+    (to, opts) => {
+      // Component links use concise root-relative paths. Keep those links in
+      // the visitor's current locale namespace without duplicating paths in
+      // every component.
+      if (typeof to === 'string' && !/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(to)) {
+        const currentLocale = localeFromPath(window.location.pathname)?.code || DEFAULT_LOCALE;
+        const destination = to.startsWith('#')
+          ? `${window.location.pathname}${to}`
+          : to;
+        const url = new URL(destination, window.location.origin);
+        to = localizedUrl(url.pathname, currentLocale, url.search, url.hash);
+      }
+      startTransition(() => navigate(to, opts));
+    },
+    [navigate]
   );
-  return [location, transitionNavigate];
+  return [stripLocalePrefix(rawLocation), transitionNavigate];
 }
 import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
+import {
+  DEFAULT_LOCALE,
+  localeFromPath,
+  localizedUrl,
+  stripLocalePrefix,
+} from './i18n/localeCatalog';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
@@ -59,43 +78,6 @@ const Footer = lazy(() => import('./components/Footer'));
 export default function App() {
   const { lang, currency, region, setLang, setRegion, setCurrency, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
   const [location] = useLocation();
-
-  // Handle Hotelrunner locale redirects (e.g., /af-ZA from booking engine)
-  useEffect(() => {
-    const path = window.location.pathname;
-    
-    // Only run redirects for locale paths, not root or other paths
-    if (path === '/' || path === '/index.html') {
-      return;
-    }
-    
-    // Currency is determined by IP detection in useLocale — do not include
-    // ?currency= in redirect targets. URL currency params are never read by
-    // the locale hook, so they only pollute history and shareable links.
-    const localeRedirects = {
-      '/af-ZA': '/?lang=af',
-      '/en-GB': '/?lang=en',
-      '/en-US': '/?lang=en-us',
-      '/pt-PT': '/?lang=pt-PT',
-      '/pt-BR': '/?lang=pt-BR',
-      '/nl-NL': '/?lang=nl',
-      '/fr-FR': '/?lang=fr',
-      '/it-IT': '/?lang=it',
-      '/de-DE': '/?lang=de',
-      '/es-ES': '/?lang=es',
-      '/sv-SE': '/?lang=sv',
-      '/pl-PL': '/?lang=pl',
-      '/ja-JP': '/?lang=ja',
-      '/zh-CN': '/?lang=zh',
-      '/ru-RU': '/?lang=ru',
-      '/zu-ZA': '/?lang=zu',
-      '/sw-TZ': '/?lang=sw',
-    };
-
-    if (localeRedirects[path]) {
-      window.location.replace(localeRedirects[path]);
-    }
-  }, []);
 
   // Layout recalculation using ResizeObserver (avoids forced reflows during interactions)
   // Note: Initial values set in <head> to prevent CLS, this only handles actual size changes
@@ -428,9 +410,7 @@ export default function App() {
         ui={ui || criticalUI}
         lang={lang}
         currency={currency}
-        region={region}
         onLangChange={setLang}
-        onRegionChange={setRegion}
         bookUrl={bookUrl}
       />
 

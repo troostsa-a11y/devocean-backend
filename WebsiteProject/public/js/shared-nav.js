@@ -2,9 +2,9 @@
  * shared-nav.js
  * Injects the full DEVOCEAN Lodge two-tier navigation header into any
  * standalone HTML page (story, meals, accommodation, guide pages).
- * Clean-URL policy: honors ?lang= on arrival (persists it, then strips it
- * from the address bar); all links are bare URLs and language changes are
- * persisted to localStorage before reloading the clean URL.
+ * Stable-locale policy: every public language has a dedicated URL prefix.
+ * Language changes navigate to that prefix; display currency stays in its
+ * separate stored preference and is never inferred from language choice.
  * Matches the React Header component exactly.
  */
 (function () {
@@ -48,13 +48,19 @@
   };
 
   var LANG_LABELS = [
-    ['en-GB','English'],['en-US','English'],['pt-PT','Português'],['pt-BR','Português'],
+    ['en-GB','English (UK)'],['en-US','English (US)'],['pt-PT','Português (Portugal)'],['pt-BR','Português (Brasil)'],
     ['nl-NL','Nederlands'],['fr-FR','Français'],['it-IT','Italiano'],['de-DE','Deutsch'],
     ['es-ES','Español'],['sv','Svenska'],['pl','Polski'],['ro','Română'],
     ['sr','Srpski'],['hr','Hrvatski'],['cs','Čeština'],['tr','Türkçe'],
     ['af-ZA','Afrikaans'],['zu','isiZulu'],['sw','Kiswahili'],['ru','Русский'],
-    ['ja-JP','日本語'],['zh-CN','中文'],
+    ['ja-JP','日本語'],['zh-CN','中文（简体）'],
   ];
+  var PATH_PREFIXES = {
+    'en-US':'en-us', 'pt-PT':'pt-pt', 'pt-BR':'pt-br', 'nl-NL':'nl',
+    'fr-FR':'fr', 'it-IT':'it', 'de-DE':'de', 'es-ES':'es', 'sv':'sv',
+    'pl':'pl', 'ro':'ro', 'sr':'sr', 'hr':'hr', 'cs':'cs', 'tr':'tr',
+    'ja-JP':'ja', 'zh-CN':'zh-hans', 'ru':'ru', 'af-ZA':'af', 'zu':'zu', 'sw':'sw'
+  };
 
   // ── current lang / region ─────────────────────────────────────────────
   // Normalize short codes to the full locale codes the SPA stores.
@@ -82,7 +88,8 @@
 
   var params  = new URLSearchParams(window.location.search);
   var urlLang = normLang(params.get('lang'));
-  var lang    = urlLang || readStoredLang() || 'en-GB';
+  var edgeLang = normLang(window.__DEVOCEAN_LOCALE__);
+  var lang    = edgeLang || urlLang || readStoredLang() || 'en-GB';
 
   // Honor ?lang= on entry: persist it, then show the clean URL.
   if (params.get('lang') !== null) {
@@ -127,10 +134,24 @@
   }
 
   // ── helpers ───────────────────────────────────────────────────────────
-  // Clean-URL policy: internal links never carry ?lang= — language comes
-  // from the stored preference.
+  function stripLocalePrefix(path) {
+    var clean = path.startsWith('/') ? path : '/' + path;
+    var first = clean.split('/')[1];
+    Object.keys(PATH_PREFIXES).forEach(function (code) {
+      if (PATH_PREFIXES[code] === first) clean = clean.slice(first.length + 1) || '/';
+    });
+    return clean;
+  }
+
+  function localePath(path, targetLang) {
+    var clean = stripLocalePrefix(path);
+    var prefix = PATH_PREFIXES[targetLang];
+    if (!prefix) return clean;
+    return clean === '/' ? '/' + prefix + '/' : '/' + prefix + clean;
+  }
+
   function withLang(path) {
-    return new URL(path, window.location.origin).toString();
+    return localePath(path, lang);
   }
 
   function setLang(newLang) {
@@ -139,9 +160,11 @@
       window.localStorage.setItem('site.lang_source', 'user');
       window.localStorage.setItem('site.lang.version', '2');
     } catch (e) { /* ignore */ }
-    // Reload the clean URL so the page re-renders in the new language.
+    // Reload the locale URL so edge metadata and visible content change
+    // together. Currency is intentionally untouched.
     var u = new URL(window.location.href);
     u.searchParams.delete('lang');
+    u.pathname = localePath(u.pathname, newLang);
     window.location.href = u.toString();
   }
 
@@ -156,7 +179,6 @@
 
   function langOptions() {
     return LANG_LABELS
-      .filter(function (pair) { return REGIONS[region].langs.indexOf(pair[0]) !== -1; })
       .map(function (pair) {
         return '<option value="' + pair[0] + '"' + (pair[0] === lang ? ' selected' : '') + '>'
              + pair[1] + '</option>';
@@ -224,9 +246,7 @@
     '.sn-drops{display:flex;align-items:center;gap:.375rem;}',
     '.sn-sel{background:transparent;border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:.25rem .5rem .25rem .25rem;color:#fff;font-size:.875rem;cursor:pointer;}',
     '.sn-sel option{background:#fff;color:#1e293b;}',
-    '.sn-sel-region{width:150px;}',
-    '.sn-sel-lang{width:93px;}',
-    '@media(min-width:640px){.sn-sel-region{width:160px;}.sn-sel-lang{width:112px;}}',
+    '.sn-sel-lang{width:178px;max-width:48vw;}',
     '.sn-book-top{display:inline-flex;align-items:center;justify-content:center;padding:.25rem .5rem;border-radius:.5rem;border:1px solid #fff;color:#fff;font-weight:600;font-size:.75rem;text-decoration:none;white-space:nowrap;transition:background .15s;}',
     '@media(min-width:640px){.sn-book-top{padding:.375rem 1rem;font-size:.875rem;}}',
     '.sn-book-top:hover{background:rgba(255,255,255,.1);}',
@@ -267,7 +287,6 @@
     + '<div class="sn-topbar"><div class="sn-topbar-inner">'
     +   '<div class="sn-drops">'
     +     '<svg class="sn-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.8;flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
-    +     '<select id="sn-region" class="sn-sel sn-sel-region" aria-label="Select region">' + regionOptions() + '</select>'
     +     '<select id="sn-lang" class="sn-sel sn-sel-lang" aria-label="Select language">' + langOptions() + '</select>'
     +   '</div>'
     +   '<a href="' + bookUrl + '" class="sn-book-top">' + t.bookNow + '</a>'
@@ -307,13 +326,6 @@
   window.addEventListener('resize', applyPadding);
 
   // ── events ────────────────────────────────────────────────────────────
-  document.getElementById('sn-region').addEventListener('change', function () {
-    var r    = this.value;
-    var avail = REGIONS[r].langs;
-    storeRegion(r);
-    setLang(avail.indexOf(lang) !== -1 ? lang : avail[0]);
-  });
-
   document.getElementById('sn-lang').addEventListener('change', function () {
     setLang(this.value);
   });

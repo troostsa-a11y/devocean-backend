@@ -43,6 +43,7 @@
 - [Receptionist admin auth pattern](receptionist-admin-auth.md) — all admin API calls must use customFetch (auto-injects Bearer); bare fetch() bypasses auth → 401; async Express routes need explicit try/catch or errors are silently swallowed
 - [CF AI Crawl Control noindex](cf-ai-crawl-noindex.md) — Training=Block makes CF serve X-Robots-Tag noindex to Googlebot only (invisible to curl); GSC phantom noindex → check AI Crawl Control first
 - [Stale prod after deploy](stale-deploy-layers.md) — 4 masking layers: CF Google tag gateway SW, Cache-everything rule, long-cached /js assets need ?v= + max-age=0, then local browser cache; curl first
+- [Stable locale URL architecture](stable-locale-urls.md) — /pt-pt/, /de/, /zh-hans/ etc; en-GB stays at root; setLang() does full navigation; edge injects __DEVOCEAN_LOCALE__ + html lang; sitemap generated in prebuild
 - [Clean-URL lang policy](clean-url-lang-policy.md) — ?lang= is entry-only: apply+persist to site.lang, then replaceState clean; all internal links bare; canonical bare
 - [Stable-URL runtime JSON caching](stable-url-json-cache.md) — /translations/*.json fetched at runtime need ?v=<build-id> (Vite define) AND max-age=0 headers; header changes alone can't bust copies already cached under the old TTL
 - [SPA experience headings](spa-experience-headings.md) — edge middleware must inject a route-specific static H1 for experience pages; React-only headings are invisible to no-JS crawlers

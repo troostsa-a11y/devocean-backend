@@ -1,4 +1,14 @@
 import { ROUTE_DESCRIPTIONS } from '../src/utils/routeDescriptions.js';
+import {
+  DEFAULT_LOCALE,
+  allHreflangPaths,
+  getLocale,
+  localeFromPath,
+  localizedPath,
+  localizedUrl,
+  normalizeLocale,
+  stripLocalePrefix,
+} from '../src/i18n/localeCatalog.js';
 
 /**
  * Cloudflare Pages Functions Middleware
@@ -30,49 +40,23 @@ import { ROUTE_DESCRIPTIONS } from '../src/utils/routeDescriptions.js';
 const BASE_URL = 'https://devoceanlodge.com';
 
 // ---------------------------------------------------------------------------
-// Hreflang: language code → URL ?lang= parameter mapping
-// Mirrors the homepage hreflang block in index.html exactly.
-// Only include a language here if the experience pages are fully translated
-// (title, meta description, H1, body copy, image labels).
+// Hreflang is built from the shared locale contract. Do not add a parallel
+// list here: locale paths, the language picker, canonicals, and alternates
+// must always use exactly the same set of values.
 // ---------------------------------------------------------------------------
-const HREFLANG_LANGS = [
-  { hreflang: 'pt-PT',   param: 'pt'    },
-  { hreflang: 'pt-BR',   param: 'pt-BR' },
-  { hreflang: 'de',      param: 'de'    },
-  { hreflang: 'fr',      param: 'fr'    },
-  { hreflang: 'es',      param: 'es'    },
-  { hreflang: 'it',      param: 'it'    },
-  { hreflang: 'nl',      param: 'nl'    },
-  { hreflang: 'sv',      param: 'sv'    },
-  { hreflang: 'pl',      param: 'pl'    },
-  { hreflang: 'af',      param: 'af'    },
-  { hreflang: 'zu',      param: 'zu'    },
-  { hreflang: 'sw',      param: 'sw'    },
-  { hreflang: 'ja',      param: 'ja'    },
-  { hreflang: 'zh-Hans', param: 'zh'    },
-  { hreflang: 'ru',      param: 'ru'    },
-  { hreflang: 'ro',      param: 'ro'    },
-  { hreflang: 'sr',      param: 'sr'    },
-  { hreflang: 'hr',      param: 'hr'    },
-  { hreflang: 'cs',      param: 'cs'    },
-  { hreflang: 'tr',      param: 'tr'    },
-];
-
 /**
  * Build a complete hreflang block for a fully-translated page.
- * pageUrl must be the canonical (language-neutral) URL, e.g.
- * "https://devoceanlodge.com/experiences/surfing".
+ * pathname is the language-neutral route, e.g. "/experiences/surfing".
  */
-function buildHreflang(pageUrl) {
+function buildHreflang(pathname) {
   const pad = (s, n) => s + ' '.repeat(Math.max(0, n - s.length));
   const lines = [
-    `  <!-- hreflang alternate links — all 22 translated language variants -->`,
-    `  <link rel="alternate" hreflang="x-default" href="${pageUrl}" />`,
-    `  <link rel="alternate" hreflang="en"         href="${pageUrl}" />`,
+    `  <!-- hreflang alternate links — stable locale URLs -->`,
+    `  <link rel="alternate" hreflang="x-default" href="${BASE_URL}${localizedPath(pathname, DEFAULT_LOCALE)}" />`,
   ];
-  for (const { hreflang, param } of HREFLANG_LANGS) {
+  for (const { hreflang, pathname: localePath } of allHreflangPaths(pathname)) {
     lines.push(
-      `  <link rel="alternate" hreflang="${pad(hreflang + '"', 11)} href="${pageUrl}?lang=${param}" />`
+      `  <link rel="alternate" hreflang="${pad(hreflang + '"', 11)} href="${BASE_URL}${localePath}" />`
     );
   }
   lines.push(`  <!-- /hreflang -->`);
@@ -499,18 +483,39 @@ const NOINDEX_PATHS = new Set([
   '/canceled',
 ]);
 
+const STATIC_UNIT_ROUTES = new Set(['/safari', '/comfort', '/cottage', '/chalet']);
+
 // ---------------------------------------------------------------------------
 
 export async function onRequest(context) {
   try {
-    const { pathname, searchParams } = new URL(context.request.url);
+    const requestUrl = new URL(context.request.url);
+    const requestPathname = requestUrl.pathname;
+    const requestLocale = localeFromPath(requestPathname);
+    const pathname = stripLocalePrefix(requestPathname);
+    const searchParams = requestUrl.searchParams;
 
-    // Valid ?lang= param → this request is a distinct hreflang variant.
-    // Its canonical must be SELF-referencing (canonical pointing at the bare
-    // URL would contradict hreflang and make Google ignore the whole cluster).
-    const rawLang = searchParams.get('lang') || '';
-    const langParam = HREFLANG_LANGS.some(l => l.param === rawLang) ? rawLang : null;
-    const langSuffix = langParam ? `?lang=${langParam}` : '';
+    // The historical ?lang= format remains an entry-only compatibility layer.
+    // Redirect it before rendering so search bots and shared links converge on
+    // one stable locale URL. All non-language parameters remain intact.
+    const legacyLocale = normalizeLocale(searchParams.get('lang'));
+    if (legacyLocale && !requestLocale) {
+      searchParams.delete('lang');
+      const target = localizedUrl(pathname, legacyLocale, searchParams.toString(), requestUrl.hash);
+      return Response.redirect(new URL(target, requestUrl).href, 302);
+    }
+
+    // Old HotelRunner return URLs used title-cased locale paths such as
+    // /pt-PT. Normalize them into the public route contract too.
+    if (!requestLocale && /^\/[a-z]{2}(?:-[A-Za-z]{2})?$/.test(requestPathname)) {
+      const oldLocale = normalizeLocale(requestPathname.slice(1));
+      if (oldLocale) {
+        return Response.redirect(new URL(localizedUrl('/', oldLocale, searchParams.toString(), requestUrl.hash), requestUrl).href, 302);
+      }
+    }
+
+    const locale = requestLocale || getLocale(DEFAULT_LOCALE);
+    const canonicalPath = localizedPath(pathname, locale.code);
 
     // Markdown Negotiation — serve llms.txt when agents request text/markdown
     // Satisfies the isitagentready.com "Markdown Negotiation" check.
@@ -552,8 +557,11 @@ export async function onRequest(context) {
     const isSpaRoute =
       ROUTE_META[pathname] != null ||
       /^\/experiences\/[a-z-]+$/.test(pathname);
+    const isStaticUnit = STATIC_UNIT_ROUTES.has(pathname);
 
-    let response = isSpaRoute
+    let response = isStaticUnit
+      ? await context.env.ASSETS.fetch(new Request(new URL(`${pathname}.html`, context.request.url), context.request))
+      : isSpaRoute
       ? await context.env.ASSETS.fetch(new Request(new URL('/', context.request.url), context.request))
       : await context.next();
 
@@ -591,40 +599,28 @@ export async function onRequest(context) {
     }
 
     // ── 1. Inject CF country for client-side currency detection ──────────────
-    const countryInjection = `<script>window.__CF_COUNTRY__="${countryCode}";</script>`;
+    const countryInjection = `<script>window.__CF_COUNTRY__="${countryCode}";window.__DEVOCEAN_LOCALE__="${locale.code}";</script>`;
     html = html.replace('<head>', `<head>${countryInjection}`);
+    html = html.replace(/<html\b[^>]*>/i, `<html lang="${locale.code}">`);
 
     // ── 2. Route-specific pre-render injection ───────────────────────────────
     // Only applies when the SPA shell (index.html) is being served.
     // Static files (e.g. comfort.html) already have correct meta and are
     // never transformed here — they serve the correct content directly.
-    if (pathname === '/') {
-      // ── Homepage language variant (?lang=xx) ─────────────────────────────
-      // index.html ships canonical → bare "/" and the full hreflang block.
-      // On a valid variant URL the canonical must self-reference so the
-      // hreflang cluster stays valid (Lighthouse: "rel=canonical points to
-      // another hreflang location").
-      if (langSuffix) {
-        html = html.replace(
-          /(<link rel="canonical" href=")[^"]*(")/,
-          `$1${BASE_URL}/${langSuffix}$2`
-        );
-        html = html.replace(
-          /(<meta property="og:url" content=")[^"]*(")/,
-          `$1${BASE_URL}/${langSuffix}$2`
-        );
-        // Unique title + description per language variant — prevents duplicate-title/
-        // description warnings in Bing/Google Webmaster Tools when ?lang= URLs are
-        // crawled as separate pages.
-        html = html.replace(
-          /<title>([^<]*)<\/title>/,
-          (_, t) => `<title>${t} — ${rawLang.toUpperCase()}</title>`
-        );
-        html = html.replace(
-          /(<meta name="description"\s+content=")([^"]*?)(")/,
-          (_, open, desc, close) => `${open}${desc} — ${rawLang.toUpperCase()}${close}`
-        );
-      }
+    if (isStaticUnit) {
+      // Serve the real unit document under its localized URL and rewrite the
+      // URL-bearing metadata before the client-side unit translation enhances
+      // the visible copy.
+      const canonical = `${BASE_URL}${canonicalPath}`;
+      html = html.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${canonical}$2`);
+      html = html.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${canonical}$2`);
+      html = html.replace(/\s*<link rel="alternate" hreflang="[^"]+"[^>]*>\s*/g, '\n');
+      html = html.replace('</head>', `${buildHreflang(pathname)}\n</head>`);
+    } else if (pathname === '/') {
+      const canonical = `${BASE_URL}${canonicalPath}`;
+      html = html.replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${canonical}$2`);
+      html = html.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${canonical}$2`);
+      html = html.replace(HREFLANG_BLOCK_RE, buildHreflang('/'));
     } else {
 
       const expMatch = pathname.match(/^\/experiences\/([a-z]+)$/);
@@ -633,20 +629,19 @@ export async function onRequest(context) {
 
       if (expKey && EXPERIENCE_KEYS.has(expKey)) {
         // ── Experience detail page (all 22 languages fully translated) ───────
-        const pageUrl = `${BASE_URL}/experiences/${expKey}`;
+        const pagePath = `/experiences/${expKey}`;
+        const pageUrl = `${BASE_URL}${pagePath}`;
         const meta = EXPERIENCE_META[expKey];
 
         if (meta) {
-          const langTitle = langSuffix ? `${meta.title} — ${rawLang.toUpperCase()}` : meta.title;
-          const langDesc  = langSuffix ? `${meta.description} — ${rawLang.toUpperCase()}` : meta.description;
-          html = html.replace(/<title>[^<]*<\/title>/, `<title>${langTitle}</title>`);
+          html = html.replace(/<title>[^<]*<\/title>/, `<title>${meta.title}</title>`);
           html = html.replace(
             /<meta name="description"\s+content="[^"]*"/,
-            `<meta name="description" content="${langDesc}"`
+            `<meta name="description" content="${meta.description}"`
           );
           html = html.replace(
             /(<link rel="canonical" href=")[^"]*(")/,
-            `$1${pageUrl}${langSuffix}$2`
+            `$1${BASE_URL}${canonicalPath}$2`
           );
           html = html.replace(
             /(<meta property="og:title" content=")[^"]*(")/,
@@ -658,7 +653,7 @@ export async function onRequest(context) {
           );
           html = html.replace(
             /(<meta property="og:url" content=")[^"]*(")/,
-            `$1${pageUrl}${langSuffix}$2`
+            `$1${BASE_URL}${canonicalPath}$2`
           );
         }
 
@@ -668,20 +663,18 @@ export async function onRequest(context) {
         html = html.replace(STATIC_CONTENT_RE, buildExperienceStaticHtml(meta));
 
         // Inject experience-specific hreflang (self-referential + all 22 langs)
-        html = html.replace(HREFLANG_BLOCK_RE, buildHreflang(pageUrl));
+        html = html.replace(HREFLANG_BLOCK_RE, buildHreflang(pagePath));
 
       } else if (route) {
         // ── Known booking/info route (English-only, no translated variants) ──
-        const langTitle = langSuffix ? `${route.title} — ${rawLang.toUpperCase()}` : route.title;
-        const langDesc  = langSuffix ? `${route.description} — ${rawLang.toUpperCase()}` : route.description;
-        html = html.replace(/<title>[^<]*<\/title>/, `<title>${langTitle}</title>`);
+        html = html.replace(/<title>[^<]*<\/title>/, `<title>${route.title}</title>`);
         html = html.replace(
           /<meta name="description"\s+content="[^"]*"/,
-          `<meta name="description" content="${langDesc}"`
+          `<meta name="description" content="${route.description}"`
         );
         html = html.replace(
           /(<link rel="canonical" href=")[^"]*(")/,
-          `$1${BASE_URL}${pathname}$2`
+          `$1${BASE_URL}${canonicalPath}$2`
         );
         html = html.replace(
           /(<meta property="og:title" content=")[^"]*(")/,
@@ -693,7 +686,7 @@ export async function onRequest(context) {
         );
         html = html.replace(
           /(<meta property="og:url" content=")[^"]*(")/,
-          `$1${BASE_URL}${pathname}$2`
+          `$1${BASE_URL}${canonicalPath}$2`
         );
         // For routes with real pre-render content (guide pages), also unhide
         // the block: the base index.html visually hides #static-content
@@ -720,8 +713,13 @@ export async function onRequest(context) {
           html = html.replace('</head>', `${scripts}\n</head>`);
         }
 
-        // Strip hreflang — no genuine translated variants for this route
-        html = html.replace(HREFLANG_BLOCK_RE, EMPTY_HREFLANG);
+        // Every public locale route shares the same contract. Transactional
+        // pages stay out of the cluster entirely; indexable pages receive the
+        // reciprocal set derived from the catalogue.
+        html = html.replace(
+          HREFLANG_BLOCK_RE,
+          route.noindex ? EMPTY_HREFLANG : buildHreflang(pathname),
+        );
 
         // Noindex — transactional / confirmation pages should not be indexed
         if (route.noindex) {

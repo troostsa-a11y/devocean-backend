@@ -5,6 +5,7 @@ import { createServer as createHttpServer } from 'http';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readFile, access } from 'fs/promises';
+import { LOCALES, localeFromPath } from './src/i18n/localeCatalog.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -692,6 +693,26 @@ for (const page of ['safari', 'comfort', 'cottage', 'chalet']) {
   });
 }
 
+// Development parity for the public locale URLs. Production serves these from
+// the Pages middleware; preview needs the same static unit document plus the
+// locale marker consumed by accommodation-detail-i18n.js.
+for (const locale of LOCALES.filter(({ path }) => path)) {
+  for (const page of ['safari', 'comfort', 'cottage', 'chalet']) {
+    app.get(`/${locale.path}/${page}`, async (_req, res, next) => {
+      try {
+        const html = await readFile(join(__dirname, `${page}.html`), 'utf-8');
+        res
+          .status(200)
+          .set('Content-Type', 'text/html')
+          .set('Cache-Control', 'no-store')
+          .send(html.replace('<head>', `<head><script>window.__DEVOCEAN_LOCALE__="${locale.code}";</script>`));
+      } catch (error) {
+        next(error);
+      }
+    });
+  }
+}
+
 // Start server
 const PORT = process.env.PORT || 5000;
 
@@ -741,7 +762,9 @@ app.use(async (req, res, next) => {
     const html = await vite.transformIndexHtml(req.originalUrl, template);
     const raw = String(req.headers['cf-ipcountry'] || '');
     const cc = /^[A-Za-z]{2}$/.test(raw) ? raw.toUpperCase() : '';
-    const injection = `<script>window.__CF_COUNTRY__="${cc}";</script>`;
+    const locale = localeFromPath(req.path);
+    const localeInjection = locale ? `window.__DEVOCEAN_LOCALE__="${locale.code}";` : '';
+    const injection = `<script>window.__CF_COUNTRY__="${cc}";${localeInjection}</script>`;
     res
       .status(200)
       .set('Content-Type', 'text/html')

@@ -359,7 +359,15 @@ function getUrlParam(name) {
 
 // Detect language
 function detectLanguage() {
-  // 1. Check URL parameter (for navigation from main site)
+  // 1. The edge sets this for stable locale URLs. It must win over a visitor's
+  // stored preference so /pt-pt/chalet always opens in Portuguese.
+  const edgeLocale = normLang(window.__DEVOCEAN_LOCALE__);
+  if (edgeLocale && SUPPORTED_LANGS.includes(edgeLocale)) {
+    localStorage.setItem('site.lang', edgeLocale);
+    return edgeLocale;
+  }
+
+  // 2. Check URL parameter (legacy navigation from the main site)
   const urlLang = getUrlParam('lang');
   if (urlLang) {
     const normalized = normLang(urlLang);
@@ -370,7 +378,7 @@ function detectLanguage() {
     }
   }
 
-  // 2. Check localStorage
+  // 3. Check localStorage
   const stored = localStorage.getItem('site.lang');
   if (stored && SUPPORTED_LANGS.includes(stored)) {
     return stored;
@@ -379,7 +387,7 @@ function detectLanguage() {
   // Get country code for IP-based fallback
   const countryCode = window.__CF_COUNTRY__ || null;
 
-  // 3. Check browser language preferences (loop through ALL preferences)
+  // 4. Check browser language preferences (loop through ALL preferences)
   const list = (navigator.languages && navigator.languages.length)
     ? navigator.languages
     : [navigator.language].filter(Boolean);
@@ -392,7 +400,7 @@ function detectLanguage() {
     if (SUPPORTED_LANGS.includes(normalized)) return normalized;
   }
 
-  // 4. Use IP-based country → language mapping
+  // 5. Use IP-based country → language mapping
   // This catches visitors with non-local browser settings (e.g., English browser in Japan)
   if (countryCode && CC_TO_LANGUAGE[countryCode]) {
     return CC_TO_LANGUAGE[countryCode];
