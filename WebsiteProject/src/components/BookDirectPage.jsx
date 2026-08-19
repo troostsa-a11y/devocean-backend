@@ -549,6 +549,30 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms;
 
+  // ── Informational currency conversion (display only) ──────────────────────
+  // The base/charged currency is the Beds24 property currency (availability
+  // currency); the rates below NEVER change what Stripe charges. We just show an
+  // approximate value in the visitor's local currency (the bar currency).
+  // Declared before the Marin context memos so Marin can quote the same
+  // approximate FX amounts the guest sees on the cards.
+  const baseCurrency =
+    availability?.currency || quote?.currency || availability?.rooms?.[0]?.currency || null;
+  // Bind cached rates to their base so a base-currency change can't render with
+  // stale rates before the effect refetches.
+  const fxRatesForBase = fxData && fxData.base === baseCurrency ? fxData.rates : null;
+  const showFx = !!(
+    currency &&
+    baseCurrency &&
+    currency !== baseCurrency &&
+    fxRatesForBase &&
+    fxRatesForBase[currency]
+  );
+  const fxLine = (amount) =>
+    showFx ? `≈ ${approxMoney(amount * fxRatesForBase[currency], currency)}` : null;
+  // Primary display value in the visitor's chosen/geolocated currency (no ≈ prefix).
+  const fxPrimary = (amount) =>
+    showFx ? approxMoney(amount * fxRatesForBase[currency], currency) : null;
+
   // Context strings passed to MarinPanel so Marin knows what the visitor is
   // currently looking at — dates, available rooms + prices, guest count, and
   // booking currency. Sent once with the auto-message on panel open.
@@ -573,10 +597,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       availableRooms.forEach((r) => {
         // Match the guest-visible default: refundable (semi-flexible) plan first.
         const offer = r.offers.find((o) => o.refundable) || r.offers[0];
-        const price = offer ? money(offer.total, r.currency) : '—';
+        // Mirror the card display: when an FX display currency is active the
+        // guest sees the approximate converted amount, so quote both.
+        const price = offer
+          ? showFx
+            ? `${money(offer.total, r.currency)} total (${fxLine(offer.total)})`
+            : `${money(offer.total, r.currency)} total`
+          : '— total';
         const units = offer?.unitsAvailable ?? 0;
-        lines.push(`- ${r.name}: ${price} total. ${units} unit${units !== 1 ? 's' : ''} available.`);
+        lines.push(`- ${r.name}: ${price}. ${units} unit${units !== 1 ? 's' : ''} available.`);
       });
+      if (showFx) {
+        lines.push('');
+        lines.push(`Note: all charges are made in ${baseCurrency}. ${currency} amounts are approximate display conversions only.`);
+      }
     }
     if (unavailableRooms.length > 0) {
       lines.push('');
@@ -584,7 +618,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       unavailableRooms.forEach((r) => lines.push(`- ${r.name}`));
     }
     return lines.join('\n');
-  }, [checkIn, checkOut, availability, adults, children, infants, availableRooms, unavailableRooms]);
+  }, [checkIn, checkOut, availability, adults, children, infants, availableRooms, unavailableRooms, showFx, fxRatesForBase, currency, baseCurrency]);
 
   const marinDetailsContext = useMemo(() => {
     if (!checkIn || !checkOut || !quote) return '';
@@ -600,14 +634,23 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       '',
       'Selected booking:',
     ];
+    // Mirror the on-page display: when an FX display currency is active the
+    // guest sees approximate converted amounts, so quote both.
+    const withFx = (amount) =>
+      showFx
+        ? `${money(amount, quote.currency)} (${fxLine(amount)})`
+        : money(amount, quote.currency);
     quote.lines.forEach((l) => {
-      lines.push(`- ${l.qty} × ${l.roomName}: ${money(l.lineTotal, quote.currency)}`);
+      lines.push(`- ${l.qty} × ${l.roomName}: ${withFx(l.lineTotal)}`);
     });
     const bookUrl = `https://devoceanlodge.com/book-direct?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}`;
-    lines.push(`Total: ${money(quote.total, quote.currency)}. Deposit required now: ${money(quote.deposit, quote.currency)}. Balance on arrival: ${money(quote.balance, quote.currency)}.`);
+    lines.push(`Total: ${withFx(quote.total)}. Deposit required now: ${withFx(quote.deposit)}. Balance on arrival: ${withFx(quote.balance)}.`);
+    if (showFx) {
+      lines.push(`Note: all charges are made in ${quote.currency}. ${currency} amounts are approximate display conversions only.`);
+    }
     lines.push(`Book-direct URL: ${bookUrl}`);
     return lines.join('\n');
-  }, [checkIn, checkOut, quote, adults, children, infants]);
+  }, [checkIn, checkOut, quote, adults, children, infants, showFx, fxRatesForBase, currency]);
 
   // Minimum units needed to fit the whole party in the most spacious available room type.
   // Falls back to capacity=2 per unit (the lodge default) when availableRooms is empty,
@@ -800,28 +843,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       clearTimeout(id);
     };
   }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t, discountCode, voucherCode]);
-
-  // ── Informational currency conversion (display only) ──────────────────────
-  // The base/charged currency is the Beds24 property currency (availability
-  // currency); the rates below NEVER change what Stripe charges. We just show an
-  // approximate value in the visitor's local currency (the bar currency).
-  const baseCurrency =
-    availability?.currency || quote?.currency || availability?.rooms?.[0]?.currency || null;
-  // Bind cached rates to their base so a base-currency change can't render with
-  // stale rates before the effect refetches.
-  const fxRatesForBase = fxData && fxData.base === baseCurrency ? fxData.rates : null;
-  const showFx = !!(
-    currency &&
-    baseCurrency &&
-    currency !== baseCurrency &&
-    fxRatesForBase &&
-    fxRatesForBase[currency]
-  );
-  const fxLine = (amount) =>
-    showFx ? `≈ ${approxMoney(amount * fxRatesForBase[currency], currency)}` : null;
-  // Primary display value in the visitor's chosen/geolocated currency (no ≈ prefix).
-  const fxPrimary = (amount) =>
-    showFx ? approxMoney(amount * fxRatesForBase[currency], currency) : null;
 
   useEffect(() => {
     if (!baseCurrency || !currency || currency === baseCurrency) {

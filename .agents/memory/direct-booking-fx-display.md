@@ -44,3 +44,5 @@ names localize via `Intl.DisplayNames`. Shown on all viewports incl. mobile: the
 booking top-bar brand text truncates (`min-w-0`/`truncate`) and the picker+menu group
 is `shrink-0` so the chip never overflows; the dropdown panel is
 `w-[calc(100vw-2rem)] max-w-[18rem]` right-anchored to fit any phone width.
+
+**Marin parity:** when an FX display currency is active, Marin's page context must quote both the charged base-currency amount and the approximate converted amount, plus an explicit charged-in-base-currency note — never base-currency-only.

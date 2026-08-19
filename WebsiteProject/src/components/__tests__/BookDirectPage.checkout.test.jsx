@@ -1496,3 +1496,148 @@ describe('semi-flexible rate is the untouched default through quote and checkout
     expect(detailsCtx).not.toContain(String(NONREF_TOTAL));
   });
 });
+
+describe('Marin context quotes FX display currency alongside charged USD', () => {
+  const ROOM_ID      = 'safari-room-fx';
+  const CHECK_IN_FX  = '2027-11-01';
+  const CHECK_OUT_FX = '2027-11-03';
+  const OFFER_ID     = 'offer-flex-fx';
+  const TOTAL        = 620;
+  const EUR_RATE     = 0.9; // 620 → €558, deposit 310 → €279
+
+  function makeAvailabilityFX() {
+    return {
+      checkIn:                CHECK_IN_FX,
+      checkOut:               CHECK_OUT_FX,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      ROOM_ID,
+          name:        'Safari Tent',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            { offerId: OFFER_ID, total: TOTAL, type: 'semiFlex', unitsAvailable: 3, refundable: true },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeQuoteFX() {
+    return {
+      checkIn: CHECK_IN_FX, checkOut: CHECK_OUT_FX, nights: 2, currency: 'USD', rooms: 1,
+      lines: [{
+        roomId: ROOM_ID, offerId: OFFER_ID, roomName: 'Safari Tent',
+        qty: 1, adults: 2, children: 0, infants: 0, lineTotal: TOTAL,
+      }],
+      total: TOTAL, depositPercent: 50, deposit: TOTAL / 2, balance: TOTAL / 2,
+    };
+  }
+
+  let originalLocationDescriptor;
+
+  beforeEach(() => {
+    marinPanelProps.length = 0;
+    localStorage.clear(); // fx_<base> cache must not leak between tests
+    originalLocationDescriptor = Object.getOwnPropertyDescriptor(window, 'location');
+
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href:    '',
+        search:  `?checkIn=${CHECK_IN_FX}&checkOut=${CHECK_OUT_FX}`,
+        assign:  vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    global.fetch = vi.fn((url) => {
+      if (url.includes('/api/booking/availability')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeAvailabilityFX()) });
+      }
+      if (url.includes('/api/booking/quote')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeQuoteFX()) });
+      }
+      if (url.includes('/api/booking/calendar')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      }
+      if (url.includes('/api/fx')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ rates: { EUR: EUR_RATE } }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    localStorage.clear();
+    if (originalLocationDescriptor) {
+      Object.defineProperty(window, 'location', originalLocationDescriptor);
+    } else {
+      delete window.location;
+    }
+  });
+
+  it('results + details contexts carry approx EUR amounts and a charged-in-USD note', async () => {
+    render(<BookDirectPage lang="en-GB" currency="EUR" />);
+
+    await waitFor(
+      () => screen.getByTestId(`button-inc-${ROOM_ID}`),
+      { timeout: 3000 },
+    );
+
+    // Wait until the FX rates have arrived and the results context re-renders
+    // with the approximate conversion (≈ marker) and the explicit USD note.
+    const resultsCtx = await waitFor(
+      () => {
+        const ctx = marinPanelProps
+          .map((p) => p.context)
+          .find((c) => c && c.includes('Available options:') && c.includes('≈'));
+        if (!ctx) throw new Error('FX results context not yet rendered');
+        return ctx;
+      },
+      { timeout: 3000 },
+    );
+    expect(resultsCtx).toContain(String(TOTAL));           // charged USD total
+    expect(resultsCtx).toContain(String(TOTAL * EUR_RATE)); // 558 approx EUR
+    expect(resultsCtx).toContain('all charges are made in USD');
+    expect(resultsCtx).toContain('EUR amounts are approximate');
+
+    // Continue to the details step and assert the pre-payment context too.
+    fireEvent.click(screen.getByTestId(`button-inc-${ROOM_ID}`));
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+    marinPanelProps.length = 0;
+    await act(async () => { fireEvent.click(continueBtn); });
+    await waitFor(() => screen.getByTestId('input-first-name'));
+
+    const detailsCtx = await waitFor(
+      () => {
+        const ctx = marinPanelProps
+          .map((p) => p.context)
+          .find((c) => c && c.includes('pre-payment stage') && c.includes('≈'));
+        if (!ctx) throw new Error('FX details context not yet rendered');
+        return ctx;
+      },
+      { timeout: 3000 },
+    );
+    expect(detailsCtx).toContain(String(TOTAL));            // charged USD total
+    expect(detailsCtx).toContain(String(TOTAL * EUR_RATE));  // approx EUR total
+    expect(detailsCtx).toContain(String((TOTAL / 2) * EUR_RATE)); // approx EUR deposit
+    expect(detailsCtx).toContain('all charges are made in USD');
+  });
+});
