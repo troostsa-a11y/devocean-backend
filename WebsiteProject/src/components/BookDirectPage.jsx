@@ -63,6 +63,51 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     return () => document.body.classList.remove('dv-hide-floating-widgets');
   }, []);
 
+  // Load the Trustindex cert badge and move it into the booking summary card.
+  // loader-cert.js creates a floating .ti-widget-fixed element in <body>;
+  // we intercept it via MutationObserver and relocate it into our container
+  // so it appears inline rather than as a floating overlay.
+  const tiCertRef = useRef(null);
+  useEffect(() => {
+    const SRC = 'https://cdn.trustindex.io/loader-cert.js?9f47635799f257217f56dbb5f2e';
+    const BADGE_ID = 'ti-cert-booking-badge';
+
+    function adoptBadge() {
+      if (!tiCertRef.current) return false;
+      // Trustindex creates elements with data-trustindex-widget or ti-widget-fixed
+      const el = document.querySelector(
+        `.ti-widget-fixed[data-widget-id="9f47635799f257217f56dbb5f2e"], ` +
+        `[data-trustindex-widget][data-widget-id="9f47635799f257217f56dbb5f2e"]`
+      ) || document.querySelector('.ti-widget-fixed:not(#' + BADGE_ID + ')');
+      if (!el || el.id === BADGE_ID) return false;
+      el.id = BADGE_ID;
+      // Remove fixed-positioning classes so it flows inline
+      el.classList.remove('ti-widget-fixed');
+      el.style.position = '';
+      el.style.cssText = '';
+      tiCertRef.current.appendChild(el);
+      return true;
+    }
+
+    // Watch for Trustindex to inject the badge
+    const obs = new MutationObserver(() => { if (adoptBadge()) obs.disconnect(); });
+    obs.observe(document.body, { childList: true, subtree: true });
+
+    // Load the script if not already present
+    if (!document.querySelector(`script[src="${SRC}"]`)) {
+      const s = document.createElement('script');
+      s.src = SRC;
+      s.async = true;
+      s.defer = true;
+      document.head.appendChild(s);
+    } else {
+      // Script already ran — badge may already exist
+      adoptBadge();
+    }
+
+    return () => obs.disconnect();
+  }, []);
+
   const [step, setStep] = useState('search'); // search | results | details
   // Dates start unset — the guest picks them explicitly instead of landing on
   // a pre-filled 2-night quote for tomorrow, which (a) reads as "the price"
@@ -1611,16 +1656,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       )}
                     </span>
                   </div>
-                  {marinDetailsContext && (
-                    <div className="mt-3 pt-3 border-t border-slate-100 flex justify-end">
+                  <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
+                    {/* Trustindex cert badge mounts here — adopted from the
+                        floating widget Trustindex creates in <body> */}
+                    <div ref={tiCertRef} className="shrink-0" />
+                    {marinDetailsContext && (
                       <MarinPanel
                         context={marinDetailsContext}
                         autoMessage="I have a question before I pay."
                         lang={lang}
                         currency={currency}
                       />
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </div>
 
                 <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-4">
