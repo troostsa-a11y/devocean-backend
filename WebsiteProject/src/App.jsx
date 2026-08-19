@@ -78,7 +78,11 @@ const Footer = lazy(() => import('./components/Footer'));
 
 export default function App() {
   const { lang, currency, region, setLang, setRegion, setCurrency, ui, criticalUI, loading, bookingLocale, dateLocale, countryCode } = useLocale();
-  const [location] = useLocation();
+  // App is rendered outside the localized child Router below, so this hook
+  // returns the browser's raw path (for example /pt-pt/). Normalize it here
+  // before route, hash-scroll, and scroll-restoration effects inspect it.
+  const [rawLocation] = useLocation();
+  const location = stripLocalePrefix(rawLocation);
 
   // Components use concise root-relative hrefs throughout the app. On a
   // localized URL those would otherwise send visitors back to English. Keep

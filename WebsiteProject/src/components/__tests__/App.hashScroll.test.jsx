@@ -187,6 +187,7 @@ describe('App — hash-scroll lazy-section guard', () => {
   });
 
   it('scrolls to a section that mounts after a lazy chunk finishes loading', async () => {
+    mockLocation = '/nl/';
     setWindowLocation({ pathname: '/nl/', hash: '#late-location' });
     const scrollSpy = vi.fn();
 
