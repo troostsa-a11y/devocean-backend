@@ -208,7 +208,7 @@ function RoomCard({
             <p className={`text-xs mt-1 ${offer.refundable ? 'text-emerald-600' : 'text-amber-600'}`}>
               {offer.refundable
                 ? (t.rateNoteSemiFlex
-                    ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
+                    ? fmt(t.rateNoteSemiFlex, { days: cancelDays })
                     : fmt(t.cancellationPolicy, { days: cancelDays }))
                 : (t.rateNoteNonRef || t.depositFullNow || t.nonRefundable)
               }
@@ -364,7 +364,7 @@ function RoomCard({
                   >
                     {o.refundable
                       ? (t.rateNoteSemiFlex
-                          ? fmt(t.rateNoteSemiFlex, { days: cancelDays, within: cancelDays - 1 })
+                          ? fmt(t.rateNoteSemiFlex, { days: cancelDays })
                           : fmt(t.cancellationPolicy, { days: cancelDays }))
                       : (t.rateNoteNonRef || t.depositFullNow || t.nonRefundable)
                     }

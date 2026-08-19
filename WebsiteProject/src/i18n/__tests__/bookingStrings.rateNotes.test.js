@@ -4,12 +4,12 @@ import { STRINGS, getBookingStrings, fmt } from '../bookingStrings';
 const LANGS = ['en','pt','de','fr','es','it','nl','sv','pl','ro','sr','hr','cs','tr','ja','zh','ru','af','zu','sw'];
 
 describe('rate-plan microcopy strings', () => {
-  it('every language defines rateNoteSemiFlex with exactly {days} and {within}', () => {
+  it('every language defines rateNoteSemiFlex with only the {days} placeholder', () => {
     for (const lang of LANGS) {
       const s = STRINGS[lang].rateNoteSemiFlex;
       expect(s, lang).toBeTruthy();
       const placeholders = [...s.matchAll(/\{(\w+)\}/g)].map((m) => m[1]).sort();
-      expect(placeholders, lang).toEqual(['days', 'within']);
+      expect([...new Set(placeholders)], lang).toEqual(['days']);
     }
   });
 
@@ -21,9 +21,9 @@ describe('rate-plan microcopy strings', () => {
     }
   });
 
-  it('adjacent boundary renders correctly (30+ refund / within 29 fee)', () => {
+  it('adjacent boundary renders correctly (30+ refund / less than 30 fee)', () => {
     const t = getBookingStrings('en');
-    const out = fmt(t.rateNoteSemiFlex, { days: 30, within: 29 });
-    expect(out).toBe('50% deposit to confirm · full refund 30+ days before arrival · 50% cancellation fee within 29 days');
+    const out = fmt(t.rateNoteSemiFlex, { days: 30 });
+    expect(out).toBe('50% deposit · full refund 30+ days before arrival · 50% cancellation fee less than 30 days');
   });
 });
