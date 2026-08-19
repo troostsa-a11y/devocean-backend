@@ -580,6 +580,13 @@ export async function onRequest(context) {
     const countryCode = context.request?.cf?.country || '';
     let html = await response.text();
 
+    // The homepage FAQPage JSON-LD block is homepage-only. Strip it from every
+    // other route at the source so pages that inject their own FAQPage (guide
+    // pages) never serve two FAQPage blocks, and off-topic pages carry none.
+    if (pathname !== '/') {
+      html = html.replace(/<script type="application\/ld\+json" id="ld-home-faq">[\s\S]*?<\/script>/, '');
+    }
+
     // ── 1. Inject CF country for client-side currency detection ──────────────
     const countryInjection = `<script>window.__CF_COUNTRY__="${countryCode}";</script>`;
     html = html.replace('<head>', `<head>${countryInjection}`);

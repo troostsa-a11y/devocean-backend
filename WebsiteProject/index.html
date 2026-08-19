@@ -1327,8 +1327,10 @@
   }
   </script>
 
-  <!-- FAQ (the questions travellers ask AI assistants) -->
-  <script type="application/ld+json">
+  <!-- FAQ (the questions travellers ask AI assistants). Homepage-only: the
+       edge middleware strips this block on every other route so pages that
+       inject their own FAQPage (guide pages) never carry two FAQPage blocks. -->
+  <script type="application/ld+json" id="ld-home-faq">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
