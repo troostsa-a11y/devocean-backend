@@ -776,23 +776,24 @@
     }
 
     /* ── Static pre-render shadow ──────────────────────────────────────────────
-       Sits in normal document flow after the fixed hero overlay.
-       Real users never see it (the overlay covers it; it's pushed below the
-       React app after mount then hidden). Plain-HTML crawlers index it in full.
-       ────────────────────────────────────────────────────────────────────── */
+       Crawler-only content. Visually clipped to 1×1px by default so real users
+       can NEVER see it — no dependence on the hero overlay covering it or on
+       any JS timing. Plain-HTML crawlers still index it in full (it stays in
+       the DOM, unhidden — clip is not display:none, so it is not treated as
+       hidden content). On guide routes the Cloudflare middleware injects an
+       unhide <style> that resets every property below (position/width/height/
+       overflow/clip/clip-path/white-space) to paint a styled pre-render.
+       Out of normal flow (position:absolute) so hiding/removing it causes
+       zero CLS. ─────────────────────────────────────────────────────────── */
     #static-content {
-      /* Out of normal flow so hiding it later (MutationObserver) causes zero CLS.
-         position:absolute is indexed by Google's renderer; position:relative in
-         flow was the source of CLS=0.21 (hiding a large block shifts everything). */
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: -1;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
       pointer-events: none;
-      max-width: 60rem;
-      margin: 0 auto;
-      padding: 2rem 1rem;
     }
     #static-content section { margin-bottom: 2rem; }
     #static-content h2 { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem; }
@@ -822,14 +823,9 @@
       var isHomePath = (path === '/' || path === '/index.html');
       if (!isHomePath || (hash && hash.length > 1)) {
         var hideStyle = document.createElement('style');
-        // On the homepage (hash case) also hide the crawler-only
-        // #static-content shadow — with the overlay suppressed its raw text
-        // would flash until React mounts. On non-home routes the middleware
-        // owns #static-content (guide pages deliberately show a styled
-        // pre-render), so leave it untouched there.
-        hideStyle.textContent = isHomePath
-          ? '#hero-placeholder,#static-content{display:none!important}'
-          : '#hero-placeholder{display:none!important}';
+        // The crawler-only #static-content shadow is clipped to 1×1px in
+        // base CSS, so it can never flash — no JS hiding needed here.
+        hideStyle.textContent = '#hero-placeholder{display:none!important}';
         document.head.appendChild(hideStyle);
         return;
       }
@@ -843,10 +839,9 @@
             referrerUrl.origin === window.location.origin &&
             referrerUrl.pathname.indexOf('/legal/') === 0) {
           var referrerHideStyle = document.createElement('style');
-          // Also hide the crawler-only #static-content shadow: with the
-          // overlay suppressed nothing covers it, so it would flash as a raw
-          // text page (the "in-between screen") until React mounts.
-          referrerHideStyle.textContent = '#hero-placeholder,#static-content{display:none!important}';
+          // #static-content is clipped to 1×1px in base CSS — only the hero
+          // overlay needs suppressing here.
+          referrerHideStyle.textContent = '#hero-placeholder{display:none!important}';
           document.head.appendChild(referrerHideStyle);
           return;
         }
@@ -873,10 +868,9 @@
       // brief full-screen flash when returning from /story or any other page.
       if (heroSeenThisSession || heroSeenEver) {
         var hideStyle = document.createElement('style');
-        // Hide the crawler-only #static-content shadow too — without the
-        // overlay covering it, its raw text is what paints until React
-        // mounts. No-JS crawlers never run this script, so they still see it.
-        hideStyle.textContent = '#hero-placeholder,#static-content{display:none!important}';
+        // #static-content is clipped to 1×1px in base CSS, so no raw-text
+        // flash is possible — only the hero overlay needs suppressing.
+        hideStyle.textContent = '#hero-placeholder{display:none!important}';
         document.head.appendChild(hideStyle);
         return;
       }
