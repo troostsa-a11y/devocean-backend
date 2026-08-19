@@ -22,7 +22,13 @@ function Header({ ui, lang, currency, onLangChange, bookUrl }) {
   // the new chunk loads (no blank intermediate frame).
   const handleSpaNav = (e, path) => {
     e.preventDefault();
+    const wasHomepage = location === '/';
     navigate(path);
+    // Wouter tracks pathname only. Returning Home from a section changes only
+    // the hash, so explicitly restore the top of the homepage in that case.
+    if (path === '/' && wasHomepage) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     setMenuOpen(false);
   };
 

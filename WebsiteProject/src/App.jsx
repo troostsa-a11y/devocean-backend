@@ -1,4 +1,4 @@
-import { useEffect, useMemo, lazy, Suspense, useTransition, useCallback } from 'react';
+import { useEffect, useMemo, useState, lazy, Suspense, useTransition, useCallback } from 'react';
 import { Router, Route, Switch, useLocation } from 'wouter';
 import { useBrowserLocation } from 'wouter/use-browser-location';
 
@@ -83,6 +83,26 @@ export default function App() {
   // before route, hash-scroll, and scroll-restoration effects inspect it.
   const [rawLocation] = useLocation();
   const location = stripLocalePrefix(rawLocation);
+  const [currentHash, setCurrentHash] = useState(
+    () => (typeof window === 'undefined' ? '' : window.location.hash)
+  );
+
+  // Wouter intentionally tracks pathname only. Hash-only navigation still
+  // needs to re-run the lazy-section scroll effect, including when the
+  // localized homepage remains at the same pathname.
+  useEffect(() => {
+    const syncHash = () => setCurrentHash(window.location.hash);
+    window.addEventListener('hashchange', syncHash);
+    window.addEventListener('pushState', syncHash);
+    window.addEventListener('replaceState', syncHash);
+    window.addEventListener('popstate', syncHash);
+    return () => {
+      window.removeEventListener('hashchange', syncHash);
+      window.removeEventListener('pushState', syncHash);
+      window.removeEventListener('replaceState', syncHash);
+      window.removeEventListener('popstate', syncHash);
+    };
+  }, []);
 
   // Components use concise root-relative hrefs throughout the app. On a
   // localized URL those would otherwise send visitors back to English. Keep
@@ -272,7 +292,7 @@ export default function App() {
 
   // Handle hash navigation on route changes (immediate, with retry until element exists)
   useEffect(() => {
-    const hash = window.location.hash.slice(1);
+    const hash = currentHash.slice(1);
     // '/index.html' is treated as the homepage by the head script (it can show
     // the intro overlay), so the handoff must run there too or the overlay
     // would never be dismissed on a direct /index.html load.
@@ -377,7 +397,7 @@ export default function App() {
       observer?.disconnect();
       clearTimeout(timeoutId);
     };
-  }, [location]);
+  }, [location, currentHash]);
 
   // Memoize expensive computations to reduce re-renders
   const bookUrl = useMemo(() => 

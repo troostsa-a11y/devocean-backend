@@ -205,6 +205,23 @@ describe('App — hash-scroll lazy-section guard', () => {
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
   });
 
+  it('responds to hash-only navigation on a localized homepage', async () => {
+    mockLocation = '/nl/';
+    setWindowLocation({ pathname: '/nl/', hash: '' });
+    const scrollSpy = vi.fn();
+    HTMLElement.prototype.scrollIntoView = scrollSpy;
+
+    await act(async () => { render(<App />); });
+
+    window.location.hash = '#location';
+    await act(async () => {
+      window.dispatchEvent(new Event('pushState'));
+      vi.runAllTimers();
+    });
+
+    expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+  });
+
   // ── Test 3: unmount before scroll — scrollIntoView must NOT fire ───────────
   //
   // Mount with /#missing in the URL (no element with that id exists).
