@@ -63,52 +63,51 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     return () => document.body.classList.remove('dv-hide-floating-widgets');
   }, []);
 
-  // Load the Trustindex cert badge and move it into the booking summary card.
-  // loader-cert.js creates a floating .ti-widget-fixed element in <body>;
-  // we intercept it via MutationObserver and relocate it into our container
-  // so it appears inline rather than as a floating overlay.
-  const tiCertRef = useRef(null);
+  const [step, setStep] = useState('search'); // search | results | details
+
+  // Trustindex cert badge — two-phase approach:
+  //   Phase 1 (mount): load the script + snapshot all current body children.
+  //   Phase 2 (details step active): adopt the new body child into our container.
+  // Splitting the phases fixes the timing issue where the badge is created before
+  // the details-step container div is in the DOM.
+  const tiCertRef   = useRef(null);
+  const tiBeforeRef = useRef(null);
+
   useEffect(() => {
+    tiBeforeRef.current = new Set(document.body.children);
     const SRC = 'https://cdn.trustindex.io/loader-cert.js?9f47635799f257217f56dbb5f2e';
-    const BADGE_ID = 'ti-cert-booking-badge';
-
-    function adoptBadge() {
-      if (!tiCertRef.current) return false;
-      // Trustindex creates elements with data-trustindex-widget or ti-widget-fixed
-      const el = document.querySelector(
-        `.ti-widget-fixed[data-widget-id="9f47635799f257217f56dbb5f2e"], ` +
-        `[data-trustindex-widget][data-widget-id="9f47635799f257217f56dbb5f2e"]`
-      ) || document.querySelector('.ti-widget-fixed:not(#' + BADGE_ID + ')');
-      if (!el || el.id === BADGE_ID) return false;
-      el.id = BADGE_ID;
-      // Remove fixed-positioning classes so it flows inline
-      el.classList.remove('ti-widget-fixed');
-      el.style.position = '';
-      el.style.cssText = '';
-      tiCertRef.current.appendChild(el);
-      return true;
-    }
-
-    // Watch for Trustindex to inject the badge
-    const obs = new MutationObserver(() => { if (adoptBadge()) obs.disconnect(); });
-    obs.observe(document.body, { childList: true, subtree: true });
-
-    // Load the script if not already present
     if (!document.querySelector(`script[src="${SRC}"]`)) {
       const s = document.createElement('script');
       s.src = SRC;
       s.async = true;
-      s.defer = true;
       document.head.appendChild(s);
-    } else {
-      // Script already ran — badge may already exist
-      adoptBadge();
     }
-
-    return () => obs.disconnect();
   }, []);
 
-  const [step, setStep] = useState('search'); // search | results | details
+  useEffect(() => {
+    if (step !== 'details') return;
+    const ATTR   = 'data-ti-adopted';
+    const SKIP   = new Set(['SCRIPT', 'STYLE', 'LINK', 'META', 'NOSCRIPT']);
+    const before = tiBeforeRef.current ?? new Set();
+    function adoptNew() {
+      if (!tiCertRef.current || tiCertRef.current.children.length > 0) return false;
+      const newEl = [...document.body.children].find(
+        el => !before.has(el) && !SKIP.has(el.tagName) && !el.hasAttribute(ATTR)
+      );
+      if (!newEl) return false;
+      newEl.setAttribute(ATTR, '1');
+      newEl.classList.remove('ti-widget-fixed', 'ti-popup-widget');
+      newEl.removeAttribute('data-trustindex-widget');
+      newEl.style.cssText = '';
+      tiCertRef.current.appendChild(newEl);
+      return true;
+    }
+    if (adoptNew()) return;
+    const poll    = setInterval(() => { if (adoptNew()) clearInterval(poll); }, 300);
+    const timeout = setTimeout(() => clearInterval(poll), 8000);
+    return () => { clearInterval(poll); clearTimeout(timeout); };
+  }, [step]);
+
   // Dates start unset — the guest picks them explicitly instead of landing on
   // a pre-filled 2-night quote for tomorrow, which (a) reads as "the price"
   // rather than "a 2-night price" at a glance, and (b) can show a discouraging
