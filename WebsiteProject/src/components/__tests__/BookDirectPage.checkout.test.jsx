@@ -1280,3 +1280,169 @@ describe('checkout bedPreferences — Comfort Tent', () => {
     expect(capturedComfortBody.bedPreferences[COMFORT_ROOM_ID]).toBe('twin');
   });
 });
+
+// ── Semi-flexible rate stays the default through /quote and /checkout ────────
+//
+// Regression guard for the refundable-by-default policy: when a room offers a
+// cheaper non-refundable plan AND a semi-flexible plan, and the guest never
+// touches the rate chooser, the semiFlex offerId must be the one sent to BOTH
+// /api/booking/quote and /api/booking/checkout, and the card must display the
+// semiFlex total (not the cheaper nonRef price). A refactor that reverts to
+// "cheapest offer wins" would fail all three assertions.
+
+describe('semi-flexible rate is the untouched default through quote and checkout', () => {
+  const ROOM_ID       = 'safari-room-semiflex-default';
+  const CHECK_IN_SF   = '2027-09-01';
+  const CHECK_OUT_SF  = '2027-09-03';
+  const NONREF_ID     = 'offer-nonref-sf';
+  const SEMIFLEX_ID   = 'offer-flex-sf';
+  const NONREF_TOTAL  = 500;
+  const SEMIFLEX_TOTAL = 620;
+
+  function makeAvailabilitySF() {
+    return {
+      checkIn:                CHECK_IN_SF,
+      checkOut:               CHECK_OUT_SF,
+      nights:                 2,
+      currency:               'USD',
+      cancellationPolicyDays: 30,
+      maxRooms:               5,
+      rooms: [
+        {
+          roomId:      ROOM_ID,
+          name:        'Safari Tent',
+          currency:    'USD',
+          nights:      2,
+          maxAdults:   2,
+          maxPeople:   2,
+          maxChildren: 0,
+          available:   true,
+          offers: [
+            // Cheapest offer is non-refundable — the old buggy default.
+            { offerId: NONREF_ID,   total: NONREF_TOTAL,   type: 'nonRef',   unitsAvailable: 3, refundable: false },
+            { offerId: SEMIFLEX_ID, total: SEMIFLEX_TOTAL, type: 'semiFlex', unitsAvailable: 3, refundable: true  },
+          ],
+        },
+      ],
+    };
+  }
+
+  function makeQuoteSF() {
+    return {
+      checkIn: CHECK_IN_SF, checkOut: CHECK_OUT_SF, nights: 2, currency: 'USD', rooms: 1,
+      lines: [{
+        roomId: ROOM_ID, offerId: SEMIFLEX_ID, roomName: 'Safari Tent',
+        qty: 1, adults: 2, children: 0, infants: 0, lineTotal: SEMIFLEX_TOTAL,
+      }],
+      total: SEMIFLEX_TOTAL, depositPercent: 50, deposit: SEMIFLEX_TOTAL / 2, balance: SEMIFLEX_TOTAL / 2,
+    };
+  }
+
+  let capturedQuoteBodies;
+  let capturedCheckoutBody;
+  let originalLocationDescriptor;
+
+  beforeEach(() => {
+    capturedQuoteBodies  = [];
+    capturedCheckoutBody = null;
+    originalLocationDescriptor = Object.getOwnPropertyDescriptor(window, 'location');
+
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href:    '',
+        search:  `?checkIn=${CHECK_IN_SF}&checkOut=${CHECK_OUT_SF}`,
+        assign:  vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    global.fetch = vi.fn((url, init) => {
+      if (url.includes('/api/booking/availability')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeAvailabilitySF()) });
+      }
+      if (url.includes('/api/booking/quote')) {
+        capturedQuoteBodies.push(JSON.parse(init.body));
+        return Promise.resolve({ ok: true, json: () => Promise.resolve(makeQuoteSF()) });
+      }
+      if (url.includes('/api/booking/calendar')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      }
+      if (url.includes('/api/booking/checkout')) {
+        capturedCheckoutBody = JSON.parse(init.body);
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ url: 'https://checkout.stripe.com/mock' }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    if (originalLocationDescriptor) {
+      Object.defineProperty(window, 'location', originalLocationDescriptor);
+    } else {
+      delete window.location;
+    }
+  });
+
+  it('untouched rate chooser: semiFlex offerId reaches /quote and /checkout, card shows semiFlex total', async () => {
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+
+    const incBtn = await waitFor(
+      () => screen.getByTestId(`button-inc-${ROOM_ID}`),
+      { timeout: 3000 },
+    );
+
+    // The card price must already show the semiFlex total (not the cheaper
+    // nonRef price) before the guest interacts with anything.
+    const priceEl = screen.getByTestId(`text-offer-total-${ROOM_ID}`);
+    expect(priceEl.textContent).toContain(String(SEMIFLEX_TOTAL));
+    expect(priceEl.textContent).not.toContain(String(NONREF_TOTAL));
+
+    // Add one unit — deliberately never touch the rate chooser.
+    await act(async () => { fireEvent.click(incBtn); });
+
+    // Wait for the debounced /quote to fire and the Continue button to enable.
+    const continueBtn = await waitFor(
+      () => {
+        const btn = screen.getByTestId('button-continue-details');
+        if (btn.disabled) throw new Error('button still disabled');
+        return btn;
+      },
+      { timeout: 3000 },
+    );
+
+    // /quote must have been called with the semiFlex offerId.
+    expect(capturedQuoteBodies.length).toBeGreaterThan(0);
+    for (const body of capturedQuoteBodies) {
+      expect(body.rooms).toHaveLength(1);
+      expect(body.rooms[0].roomId).toBe(ROOM_ID);
+      expect(body.rooms[0].offerId).toBe(SEMIFLEX_ID);
+    }
+
+    // Card price still reflects the semiFlex total after the quote resolves.
+    expect(
+      screen.getByTestId(`text-offer-total-${ROOM_ID}`).textContent,
+    ).toContain(String(SEMIFLEX_TOTAL));
+
+    // Continue → fill guest details → submit.
+    await act(async () => { fireEvent.click(continueBtn); });
+
+    await waitFor(() => screen.getByTestId('input-first-name'));
+    fireEvent.change(screen.getByTestId('input-first-name'), { target: { value: 'Sam' } });
+    fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Flex' } });
+    fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'sam@example.com' } });
+    fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+1234567890' } });
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('button-checkout'));
+    });
+
+    // /checkout must carry the semiFlex offerId too.
+    expect(capturedCheckoutBody).not.toBeNull();
+    expect(capturedCheckoutBody.rooms).toHaveLength(1);
+    expect(capturedCheckoutBody.rooms[0].roomId).toBe(ROOM_ID);
+    expect(capturedCheckoutBody.rooms[0].offerId).toBe(SEMIFLEX_ID);
+    expect(capturedCheckoutBody.rooms[0].qty).toBe(1);
+  });
+});
