@@ -26,7 +26,8 @@ export const STRINGS = {
     searching: 'Checking availability…',
     canceledNotice: 'Your payment was canceled. You can try again.',
     noRooms: 'No rooms are available for those dates. Please try different dates.',
-    perNightFrom: 'for {nights} night(s)',
+    perNightFromOne: 'for {nights} night',
+    perNightFrom: 'for {nights} nights',
     total: 'Total',
     depositNow: 'Deposit now ({pct}%)',
     balanceOnArrival: 'Balance on arrival',
@@ -124,7 +125,8 @@ export const STRINGS = {
     searching: 'A verificar disponibilidade…',
     canceledNotice: 'O seu pagamento foi cancelado. Pode tentar novamente.',
     noRooms: 'Não há quartos disponíveis para essas datas. Tente outras datas.',
-    perNightFrom: 'para {nights} noite(s)',
+    perNightFromOne: 'para {nights} noite',
+    perNightFrom: 'para {nights} noites',
     total: 'Total',
     depositNow: 'Depósito agora ({pct}%)',
     balanceOnArrival: 'Restante à chegada',
@@ -222,7 +224,8 @@ export const STRINGS = {
     searching: 'Verfügbarkeit wird geprüft…',
     canceledNotice: 'Ihre Zahlung wurde abgebrochen. Sie können es erneut versuchen.',
     noRooms: 'Für diese Daten sind keine Zimmer verfügbar. Bitte versuchen Sie andere Daten.',
-    perNightFrom: 'für {nights} Nacht/Nächte',
+    perNightFromOne: 'für {nights} Nacht',
+    perNightFrom: 'für {nights} Nächte',
     total: 'Gesamt',
     depositNow: 'Anzahlung jetzt ({pct}%)',
     balanceOnArrival: 'Restbetrag bei Ankunft',
@@ -320,7 +323,8 @@ export const STRINGS = {
     searching: 'Vérification des disponibilités…',
     canceledNotice: 'Votre paiement a été annulé. Vous pouvez réessayer.',
     noRooms: 'Aucune chambre disponible pour ces dates. Veuillez essayer d’autres dates.',
-    perNightFrom: 'pour {nights} nuit(s)',
+    perNightFromOne: 'pour {nights} nuit',
+    perNightFrom: 'pour {nights} nuits',
     total: 'Total',
     depositNow: 'Acompte maintenant ({pct}%)',
     balanceOnArrival: 'Solde à l’arrivée',
@@ -418,7 +422,8 @@ export const STRINGS = {
     searching: 'Comprobando disponibilidad…',
     canceledNotice: 'Su pago fue cancelado. Puede intentarlo de nuevo.',
     noRooms: 'No hay habitaciones disponibles para esas fechas. Pruebe otras fechas.',
-    perNightFrom: 'por {nights} noche(s)',
+    perNightFromOne: 'por {nights} noche',
+    perNightFrom: 'por {nights} noches',
     total: 'Total',
     depositNow: 'Depósito ahora ({pct}%)',
     balanceOnArrival: 'Resto a la llegada',
@@ -516,7 +521,8 @@ export const STRINGS = {
     searching: 'Verifica disponibilità in corso…',
     canceledNotice: 'Il pagamento è stato annullato. Puoi riprovare.',
     noRooms: 'Nessuna camera disponibile per queste date. Prova date diverse.',
-    perNightFrom: 'per {nights} notte/i',
+    perNightFromOne: 'per {nights} notte',
+    perNightFrom: 'per {nights} notti',
     total: 'Totale',
     depositNow: 'Acconto ora ({pct}%)',
     balanceOnArrival: 'Saldo all’arrivo',
@@ -614,7 +620,8 @@ export const STRINGS = {
     searching: 'Beschikbaarheid controleren…',
     canceledNotice: 'Uw betaling is geannuleerd. U kunt het opnieuw proberen.',
     noRooms: 'Geen kamers beschikbaar voor deze data. Probeer andere data.',
-    perNightFrom: 'voor {nights} nacht(en)',
+    perNightFromOne: 'voor {nights} nacht',
+    perNightFrom: 'voor {nights} nachten',
     total: 'Totaal',
     depositNow: 'Aanbetaling nu ({pct}%)',
     balanceOnArrival: 'Saldo bij aankomst',
@@ -712,7 +719,8 @@ export const STRINGS = {
     searching: "Kontrollerar tillgänglighet…",
     canceledNotice: "Din betalning avbröts. Du kan försöka igen.",
     noRooms: "Inga rum är tillgängliga för de datumen. Försök med andra datum.",
-    perNightFrom: "för {nights} natt/nätter",
+    perNightFromOne: "för {nights} natt",
+    perNightFrom: "för {nights} nätter",
     total: "Totalt",
     depositNow: "Handpenning nu ({pct}%)",
     balanceOnArrival: "Resten vid ankomst",
@@ -810,7 +818,9 @@ export const STRINGS = {
     searching: "Sprawdzanie dostępności…",
     canceledNotice: "Twoja płatność została anulowana. Możesz spróbować ponownie.",
     noRooms: "Brak dostępnych pokoi w tych terminach. Spróbuj innych dat.",
-    perNightFrom: "za {nights} noc(y)",
+    perNightFromOne: "za {nights} noc",
+    perNightFromFew: "za {nights} noce",
+    perNightFrom: "za {nights} nocy",
     total: "Razem",
     depositNow: "Zaliczka teraz ({pct}%)",
     balanceOnArrival: "Reszta przy przyjeździe",
@@ -908,7 +918,8 @@ export const STRINGS = {
     searching: "Se verifică disponibilitatea…",
     canceledNotice: "Plata ta a fost anulată. Poți încerca din nou.",
     noRooms: "Nu există camere disponibile pentru aceste date. Te rugăm să încerci alte date.",
-    perNightFrom: "pentru {nights} noapte/nopți",
+    perNightFromOne: "pentru {nights} noapte",
+    perNightFrom: "pentru {nights} nopți",
     total: "Total",
     depositNow: "Avans acum ({pct}%)",
     balanceOnArrival: "Restul la sosire",
@@ -1006,7 +1017,8 @@ export const STRINGS = {
     searching: "Provera dostupnosti…",
     canceledNotice: "Vaše plaćanje je otkazano. Možete pokušati ponovo.",
     noRooms: "Nema slobodnih soba za te datume. Pokušajte sa drugim datumima.",
-    perNightFrom: "za {nights} noć(i)",
+    perNightFromOne: "za {nights} noć",
+    perNightFrom: "za {nights} noći",
     total: "Ukupno",
     depositNow: "Depozit sada ({pct}%)",
     balanceOnArrival: "Ostatak po dolasku",
@@ -1104,7 +1116,8 @@ export const STRINGS = {
     searching: "Provjera dostupnosti…",
     canceledNotice: "Vaše plaćanje je otkazano. Možete pokušati ponovno.",
     noRooms: "Nema slobodnih soba za te datume. Pokušajte s drugim datumima.",
-    perNightFrom: "za {nights} noć(i)",
+    perNightFromOne: "za {nights} noć",
+    perNightFrom: "za {nights} noći",
     total: "Ukupno",
     depositNow: "Polog sada ({pct}%)",
     balanceOnArrival: "Ostatak po dolasku",
@@ -1202,7 +1215,9 @@ export const STRINGS = {
     searching: "Kontrola dostupnosti…",
     canceledNotice: "Vaše platba byla zrušena. Můžete to zkusit znovu.",
     noRooms: "Pro tyto termíny nejsou k dispozici žádné pokoje. Zkuste prosím jiné termíny.",
-    perNightFrom: "na {nights} noc(í)",
+    perNightFromOne: "na {nights} noc",
+    perNightFromFew: "na {nights} noci",
+    perNightFrom: "na {nights} nocí",
     total: "Celkem",
     depositNow: "Záloha nyní ({pct}%)",
     balanceOnArrival: "Doplatek při příjezdu",
@@ -1300,6 +1315,7 @@ export const STRINGS = {
     searching: "Müsaitlik kontrol ediliyor…",
     canceledNotice: "Ödemeniz iptal edildi. Tekrar deneyebilirsiniz.",
     noRooms: "Bu tarihler için müsait oda yok. Lütfen farklı tarihler deneyin.",
+    perNightFromOne: "{nights} gece için",
     perNightFrom: "{nights} gece için",
     total: "Toplam",
     depositNow: "Şimdi ön ödeme (%{pct})",
@@ -1398,6 +1414,7 @@ export const STRINGS = {
     searching: "空室状況を確認中…",
     canceledNotice: "お支払いがキャンセルされました。再度お試しいただけます。",
     noRooms: "その日程で空室はありません。別の日程をお試しください。",
+    perNightFromOne: "1泊分",
     perNightFrom: "{nights}泊分",
     total: "合計",
     depositNow: "今すぐデポジット（{pct}%）",
@@ -1496,6 +1513,7 @@ export const STRINGS = {
     searching: "正在查询空房…",
     canceledNotice: "您的付款已取消。您可以重试。",
     noRooms: "这些日期没有可预订的房间。请尝试其他日期。",
+    perNightFromOne: "共 1 晚",
     perNightFrom: "共 {nights} 晚",
     total: "总计",
     depositNow: "现付订金（{pct}%）",
@@ -1594,7 +1612,9 @@ export const STRINGS = {
     searching: "Проверяем наличие…",
     canceledNotice: "Ваш платёж был отменён. Вы можете попробовать снова.",
     noRooms: "На эти даты нет свободных номеров. Пожалуйста, выберите другие даты.",
-    perNightFrom: "за {nights} ночь(ей)",
+    perNightFromOne: "за {nights} ночь",
+    perNightFromFew: "за {nights} ночи",
+    perNightFrom: "за {nights} ночей",
     total: "Итого",
     depositNow: "Депозит сейчас ({pct}%)",
     balanceOnArrival: "Остаток по прибытии",
@@ -1692,7 +1712,8 @@ export const STRINGS = {
     searching: "Kontroleer beskikbaarheid…",
     canceledNotice: "Jou betaling is gekanselleer. Jy kan weer probeer.",
     noRooms: "Geen kamers is vir daardie datums beskikbaar nie. Probeer asseblief ander datums.",
-    perNightFrom: "vir {nights} nag(te)",
+    perNightFromOne: "vir {nights} nag",
+    perNightFrom: "vir {nights} nagte",
     total: "Totaal",
     depositNow: "Deposito nou ({pct}%)",
     balanceOnArrival: "Balans met aankoms",
@@ -1790,6 +1811,7 @@ export const STRINGS = {
     searching: "Sihlola ukutholakala…",
     canceledNotice: "Inkokhelo yakho ikhanseliwe. Ungazama futhi.",
     noRooms: "Awekho amagumbi atholakalayo kulezi zinsuku. Sicela uzame ezinye izinsuku.",
+    perNightFromOne: "ubusuku obubodwa",
     perNightFrom: "ubusuku obungu-{nights}",
     total: "Isamba",
     depositNow: "Idiphozithi manje ({pct}%)",
@@ -1888,6 +1910,7 @@ export const STRINGS = {
     searching: "Tunaangalia upatikanaji…",
     canceledNotice: "Malipo yako yameghairiwa. Unaweza kujaribu tena.",
     noRooms: "Hakuna vyumba vinavyopatikana kwa tarehe hizo. Tafadhali jaribu tarehe nyingine.",
+    perNightFromOne: "kwa usiku mmoja",
     perNightFrom: "kwa usiku {nights}",
     total: "Jumla",
     depositNow: "Amana sasa ({pct}%)",
@@ -2424,12 +2447,36 @@ export function getBookingStrings(lang) {
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
   const terms = TERMS_STRINGS[base] || TERMS_STRINGS.en;
-  return { ...core, ...tiers, ...terms };
+  // _lang: base language actually resolved (EN on fallback) — used by
+  // perNightFromTemplate to select the correct CLDR plural category.
+  return { ...core, ...tiers, ...terms, _lang: STRINGS[base] ? base : 'en' };
 }
 
 export function getConfirmStrings(lang) {
   const base = baseLang(lang);
   return CONFIRM_STRINGS[base] || CONFIRM_STRINGS.en;
+}
+
+/**
+ * Pick the naturally pluralised "for {nights} night(s)" template using the
+ * language's own CLDR plural rules (Intl.PluralRules):
+ * - category "one"  → perNightFromOne (all 20 langs; uses {nights} so e.g.
+ *   Russian 21 renders "за 21 ночь")
+ * - category "few"  → perNightFromFew when the language defines it (pl, cs, ru)
+ * - anything else   → perNightFrom
+ * Falls back to perNightFrom if a form is missing (e.g. partial test fixtures).
+ */
+export function perNightFromTemplate(t, nights) {
+  const n = Math.abs(Number(nights) || 0);
+  let cat = 'other';
+  try {
+    cat = new Intl.PluralRules(t._lang || 'en').select(n);
+  } catch {
+    cat = n === 1 ? 'one' : 'other';
+  }
+  if (cat === 'one' && t.perNightFromOne) return t.perNightFromOne;
+  if (cat === 'few' && t.perNightFromFew) return t.perNightFromFew;
+  return t.perNightFrom;
 }
 
 /** Replace {key} placeholders in a template string. */

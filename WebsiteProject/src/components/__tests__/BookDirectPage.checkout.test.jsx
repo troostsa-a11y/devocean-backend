@@ -153,6 +153,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     discountCodeApplied:'Code {code} applied',
     rate: { nonRef: 'Non-refundable', semiFlex: 'Semi-flexible' },
   }),
+  perNightFromTemplate: (t, n) => (n === 1 && t.perNightFromOne) || t.perNightFrom,
   fmt: (template, vars) =>
     String(template).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? ''),
 }));

@@ -49,6 +49,7 @@ vi.mock('lucide-react', () => {
 });
 
 vi.mock('../../i18n/bookingStrings', () => ({
+  perNightFromTemplate: (t, n) => (n === 1 && t.perNightFromOne) || t.perNightFrom,
   fmt: (template, vars) =>
     String(template).replace(/\{(\w+)\}/g, (_, k) => vars[k] ?? ''),
 }));

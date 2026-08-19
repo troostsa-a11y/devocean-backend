@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Users, Plus, Minus, ExternalLink, ChevronDown, BedDouble, BedSingle } from 'lucide-react';
-import { fmt } from '../i18n/bookingStrings';
+import { fmt, perNightFromTemplate } from '../i18n/bookingStrings';
 import { IMG } from '../data/content';
 
 // ── Shared helpers (module scope so identities are stable) ────────────────
@@ -188,7 +188,7 @@ function RoomCard({
               </p>
             )}
             <p className="text-sm text-slate-500">
-              {fmt(t.perNightFrom, { nights: room.nights })}
+              {fmt(perNightFromTemplate(t, room.nights), { nights: room.nights })}
             </p>
             {room.nights > 1 && (
               <p className="text-xs text-slate-500" data-testid={`text-offer-pernight-${room.roomId}`}>
