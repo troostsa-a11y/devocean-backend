@@ -175,7 +175,7 @@ export default function AccommodationPage({ bookUrl = '/book-direct' }) {
         </div>
       </main>
       <footer className="page-footer">
-        <p>&copy; 2026 <a href="/">DEVOCEAN Lodge</a>, Ponta do Ouro, Mozambique &mdash; <a href="/legal/privacy.html">Privacy</a> &middot; <a href="/legal/terms.html">Terms</a></p>
+        <p>&copy; 2026 <a href="/">DEVOCEAN Lodge</a>, Ponta do Ouro, Mozambique &mdash; <a href="/legal/privacy">Privacy</a> &middot; <a href="/legal/terms">Terms</a></p>
       </footer>
     </div>
   );

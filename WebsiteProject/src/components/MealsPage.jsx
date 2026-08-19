@@ -71,10 +71,12 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
 
           <div className="hero-img">
             <img
-              src="/photos/gallery/04-desktop.webp"
+              src="/photos/gallery/04-hero-1200.webp"
+              srcSet="/photos/gallery/04-hero-800.webp 800w, /photos/gallery/04-hero-1200.webp 1200w"
+              sizes="(max-width: 900px) 100vw, 900px"
               alt="Breakfast served in the garden at DEVOCEAN Lodge, Ponta do Ouro"
-              width="900"
-              height="394"
+              width="1200"
+              height="800"
               loading="eager"
             />
           </div>
@@ -228,7 +230,7 @@ export default function MealsPage({ lang = 'en-GB', bookUrl = '/book-direct' }) 
       <footer className="page-footer">
         <p>
           &copy; 2026 <a href="/">DEVOCEAN Lodge</a>, Ponta do Ouro, Mozambique &mdash;{' '}
-          <a href="/legal/privacy.html">Privacy</a> &middot; <a href="/legal/terms.html">Terms</a>
+          <a href="/legal/privacy">Privacy</a> &middot; <a href="/legal/terms">Terms</a>
         </p>
       </footer>
     </div>
