@@ -97,10 +97,27 @@ export default function App() {
       });
     };
 
+    const localizeClickedLink = (event) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+      const anchor = event.target instanceof Element ? event.target.closest('a[href]') : null;
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      const localizedHref = localizeInternalHref(href, locale.code);
+      if (localizedHref && localizedHref !== href) {
+        anchor.setAttribute('href', localizedHref);
+      }
+    };
+
     rewriteLinks();
     const observer = new MutationObserver(rewriteLinks);
     observer.observe(document.body, { childList: true, subtree: true });
-    return () => observer.disconnect();
+    document.addEventListener('click', localizeClickedLink, true);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('click', localizeClickedLink, true);
+    };
   }, [location, lang]);
 
   // Layout recalculation using ResizeObserver (avoids forced reflows during interactions)
