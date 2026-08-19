@@ -294,46 +294,43 @@ export default function App() {
       return cancelHeroHandoff;
     }
 
-    // Guard: set to true on cleanup so the rAF retry loop cannot call
-    // scrollIntoView after the component has unmounted or the effect has re-run.
+    // Lazy sections may finish mounting after the initial paint. Observe DOM
+    // additions instead of relying on animation-frame timing, then stop after a
+    // finite window so an invalid hash cannot leave background work running.
     let cancelled = false;
-    let rafId;
+    let timeoutId;
+    let observer;
 
-    // Below-the-fold sections are lazy-loaded. On a cold direct link such as
-    // /nl/#location, the browser tries the native anchor before React has
-    // mounted that section, so retry for a bounded five-second window.
-    // Keeping this finite protects navigation away from the homepage from a
-    // stale animation-frame loop.
-    let attempts = 0;
-    const maxAttempts = 300;
-    
-    const tryScroll = () => {
-      if (cancelled) return;
+    const scrollToHashTarget = () => {
+      if (cancelled) return false;
 
-      // Re-read the live hash on every attempt. If the user navigated to '/'
-      // without an anchor (e.g. clicked Back after visiting /#stay), the hash
-      // is now empty and we must not scroll to the stale captured target.
-      if (window.location.hash.slice(1) !== hash) return;
+      // Re-read the live hash so a route or hash change cannot scroll to a
+      // stale target while the lazy sections are still mounting.
+      if (window.location.hash.slice(1) !== hash) return false;
 
       const element = document.getElementById(hash);
       if (element) {
+        observer?.disconnect();
+        clearTimeout(timeoutId);
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
+        return true;
       }
-      
-      attempts++;
-      if (attempts < maxAttempts) {
-        rafId = requestAnimationFrame(tryScroll);
-      }
+      return false;
     };
-    
-    // Start trying immediately
-    rafId = requestAnimationFrame(tryScroll);
+
+    // Check the already-rendered sections first, then wait for a lazy section
+    // to be inserted. This is reliable across locales and refresh rates.
+    if (!scrollToHashTarget()) {
+      observer = new MutationObserver(scrollToHashTarget);
+      observer.observe(document.body, { childList: true, subtree: true });
+      timeoutId = window.setTimeout(() => observer?.disconnect(), 10_000);
+    }
 
     return () => {
       cancelHeroHandoff();
       cancelled = true;
-      cancelAnimationFrame(rafId);
+      observer?.disconnect();
+      clearTimeout(timeoutId);
     };
   }, [location]);
 

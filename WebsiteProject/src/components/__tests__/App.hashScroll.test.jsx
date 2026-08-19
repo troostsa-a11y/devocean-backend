@@ -1,19 +1,19 @@
 /**
  * App.hashScroll.test.jsx
  *
- * Confirms that the hash-scroll rAF retry loop in App.jsx cannot call
+ * Confirms that hash scrolling waits for lazy sections without calling
  * scrollIntoView after the component unmounts.
  *
  * Covers:
  *   1. Normal path — scrollIntoView IS called when the target element exists
  *      and the component stays mounted.
- *   2. A lazy section that mounts after the initial short retry window still
+ *   2. A lazy section that mounts after the initial render still
  *      receives the requested hash scroll.
- *   3. Unmount before scroll — component unmounts while the rAF retry loop is
+ *   3. Unmount before scroll — component unmounts while the observer is
  *      in-flight (target element not yet in DOM); scrollIntoView must NOT be
  *      called after unmount.
- *   4. Route change — effect cleanup fires (cancelled=true) before the next
- *      rAF; stale loop must not call scrollIntoView.
+ *   4. Route change — effect cleanup disconnects the observer before it can
+ *      scroll to a stale target.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
@@ -141,7 +141,7 @@ function setWindowLocation({ pathname = '/', hash = '' } = {}) {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-describe('App — hash-scroll rAF unmount guard', () => {
+describe('App — hash-scroll lazy-section guard', () => {
   let originalResizeObserver;
 
   beforeEach(() => {
@@ -168,20 +168,19 @@ describe('App — hash-scroll rAF unmount guard', () => {
   // ── Test 1: normal path — scrollIntoView fires when element exists ─────────
   //
   // Mount with /#stay in the URL. The #stay element is already in the DOM
-  // (rendered by the AccommodationsSection stub). Flush one rAF frame — the
-  // tryScroll callback finds the element and calls scrollIntoView.
+  // (rendered by the AccommodationsSection stub).
 
   it('calls scrollIntoView when the target element exists and the component stays mounted', async () => {
     const scrollSpy = vi.fn();
+    HTMLElement.prototype.scrollIntoView = scrollSpy;
 
     await act(async () => { render(<App />); });
 
-    // Attach the spy to the already-rendered #stay element
+    // The already-rendered #stay element is found during the initial effect.
     const stayEl = document.getElementById('stay');
     expect(stayEl).not.toBeNull();
-    stayEl.scrollIntoView = scrollSpy;
 
-    // Flush the rAF that kicks off tryScroll
+    // Flush the effect's timers.
     await act(async () => { vi.runAllTimers(); });
 
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
@@ -208,9 +207,8 @@ describe('App — hash-scroll rAF unmount guard', () => {
   // ── Test 3: unmount before scroll — scrollIntoView must NOT fire ───────────
   //
   // Mount with /#missing in the URL (no element with that id exists).
-  // The loop will keep retrying via rAF. Unmount the component mid-flight —
-  // the cleanup sets cancelled=true and calls cancelAnimationFrame.
-  // After flushing all pending timers/rAFs, scrollIntoView must not have been
+  // The observer stays active while the target is absent. Unmount the component
+  // mid-flight. After flushing pending timers, scrollIntoView must not have been
   // called on any element.
 
   it('does not call scrollIntoView after the component unmounts while retrying', async () => {
@@ -226,23 +224,21 @@ describe('App — hash-scroll rAF unmount guard', () => {
       unmountFn = result.unmount;
     });
 
-    // At this point a rAF has been queued for the first tryScroll attempt.
-    // Unmount BEFORE flushing — cleanup cancels the pending rAF.
+    // Unmount before a lazy target can mount.
     unmountFn();
 
-    // Flush all remaining rAFs/timers — cancelled guard must block any call
+    // Flush all remaining timers — cleanup must block any call.
     await act(async () => { vi.runAllTimers(); });
 
     expect(scrollSpy).not.toHaveBeenCalled();
   });
 
-  // ── Test 3: route change — stale loop must not call scrollIntoView ─────────
+  // ── Test 4: route change — stale observer must not call scrollIntoView ─────
   //
-  // Mount with /#missing in the URL. Navigate away before the rAF fires.
-  // React cleans up the old effect (cancelled=true, cancelAnimationFrame).
-  // Verify scrollIntoView is never called from the stale loop.
+  // Mount with /#missing in the URL. Navigate away before the target mounts.
+  // React cleans up the old effect before a stale observer can scroll.
 
-  it('does not call scrollIntoView from a stale rAF when a route change re-runs the effect', async () => {
+  it('does not call scrollIntoView from a stale observer when a route change re-runs the effect', async () => {
     setWindowLocation({ pathname: '/', hash: '#missing' });
 
     const scrollSpy = vi.fn();
