@@ -451,10 +451,7 @@
 
   <!-- Critical CSS for instant hero display (before React loads) -->
   <style>
-    /* Hero placeholder - non-blocking overlay */
-    @keyframes heroDismiss {
-      to { opacity: 0; pointer-events: none; }
-    }
+    /* Hero placeholder — immediate visual handoff while the React hero mounts. */
     #hero-placeholder {
       position: fixed;
       top: 0;
@@ -464,15 +461,13 @@
       z-index: 9999;
       background: #9e4b13;
       opacity: 1;
-      /* Compositor-thread fade — 5 s delay then 0.4 s fade, independent of JS load.
-         NOTE: the full-viewport hero <img> is NEVER an LCP candidate — Chrome excludes
-         full-viewport elements as "background" (it counts only toward FCP). The LCP
-         element is the static #hero-title text. The delay only keeps the intro visible
-         for perceived performance, not to make the image the LCP.
-         will-change promotes this element to its own GPU layer for smooth compositing. */
-      animation: heroDismiss 0.4s cubic-bezier(0.25, 1, 0.5, 1) 5s forwards;
+      /* No artificial startup delay: App.jsx fades this out when the actual
+         hero is ready, then removes it from the DOM. */
+      transition: opacity 220ms cubic-bezier(0.25, 1, 0.5, 1);
       will-change: opacity;
-      pointer-events: auto;
+      /* The static image should never prevent visitors interacting with the
+         real page while the visual handoff finishes. */
+      pointer-events: none;
     }
     #hero-placeholder picture {
       position: absolute;
@@ -769,11 +764,6 @@
       opacity: 0;
       pointer-events: none;
     }
-    /* When hero is active, prevent scrolling */
-    html.hero-active {
-      overflow: hidden;
-    }
-
     /* LCP: keep the CookieYes consent paragraph (a long IAB-TCF text block that
        paints late, ~9.7 s on Slow 4G) from outsizing the early static #hero-title
        and stealing the LCP. Type-only compaction — the consent copy is fully
@@ -815,7 +805,8 @@
     #static-content a  { color: #9e4b13; text-decoration: none; }
   </style>
 
-  <!-- Hero placeholder timer (shows for 5 seconds on first visit only) -->
+  <!-- Homepage hero handoff. The overlay is only allowed for a genuinely new
+       homepage visit; App.jsx fades it away as soon as the real hero is ready. -->
   <script>
     (function() {
       // The hero overlay is a homepage-only intro. On any other route (e.g.
@@ -859,43 +850,14 @@
         return;
       }
       
-      // Wait for DOM to be ready
-      function init() {
-        var placeholder = document.getElementById('hero-placeholder');
-        var root = document.getElementById('root');
-        
-        // First visit — show the hero opening sequence.
-        // Note: Content renders underneath, hero is just a visual overlay.
-        document.documentElement.classList.add('hero-active');
-        
-        // Mark hero as seen immediately (both session and persistent)
-        try {
-          sessionStorage.setItem('devocean-hero-seen', 'true');
-          localStorage.setItem('devocean-hero-seen', 'true');
-        } catch (e) {
-          // Storage unavailable - silent fail
-        }
-        
-        // CSS animation (heroDismiss, 5 s delay, 0.4 s fade) handles the visual fade on
-        // the compositor thread — independent of main-thread JS load.
-        // The 5 s delay keeps the intro visible for perceived performance. (The hero
-        // image only counts toward FCP — a full-viewport <img> is excluded from LCP —
-        // and the LCP element is the static #hero-title text.)
-        // This JS timeout only cleans up the DOM after the animation finishes.
-        setTimeout(function() {
-          if (placeholder) {
-            placeholder.style.display = 'none';
-          }
-          // hero-active intentionally NOT removed here — React's App.jsx useEffect
-          // removes it after first mount, keeping the dark background until content is ready.
-        }, 5500); // 5000 ms delay + 400 ms fade + 100 ms buffer
-      }
-      
-      // Run init when DOM is ready
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
+      // First visit — display the static hero only while React's matching hero
+      // mounts. The class is set immediately to avoid a background-colour flash.
+      document.documentElement.classList.add('hero-active');
+      try {
+        sessionStorage.setItem('devocean-hero-seen', 'true');
+        localStorage.setItem('devocean-hero-seen', 'true');
+      } catch (e) {
+        // Storage unavailable - the visual handoff still works for this visit.
       }
     })();
   </script>

@@ -25,7 +25,6 @@ import { useLocale, CC_TO_CURRENCY } from './i18n/useLocale';
 import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/localize';
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
-import { safeLocalStorage, safeSessionStorage } from './utils/safeStorage';
 import { useSeoPage, getHomeDescription, getHomeTitle } from './utils/seoMeta';
 
 // Critical above-the-fold components (loaded immediately)
@@ -249,34 +248,65 @@ export default function App() {
     const hash = window.location.hash.slice(1);
     if (location !== '/') return;
 
-    // Guard for the hero-placeholder double-rAF below. Set to true in cleanup
-    // so the inner rAF callback cannot mutate heroPlaceholder after unmount or
-    // effect re-run.
+    // Guard for the hero-placeholder handoff below. Set to true in cleanup so
+    // late image events and animation frames cannot mutate a departed route.
     let heroCancelled = false;
-    let heroRafId;
+    let outerHeroRafId;
+    let innerHeroRafId;
+    let heroFadeTimer;
+    let heroFallbackTimer;
+    let heroImage;
 
-    // Ensure hero placeholder stays hidden when navigating back to homepage.
-    // Double-rAF: give React's LCP <picture> (slide 0, decoding="async") two
-    // paint frames to finish decoding before we pull the placeholder. Without
-    // this, there can be a 1-frame gap where the placeholder is gone but the
-    // hero image hasn't been composited yet, briefly revealing the brand
-    // fallback bg-[#9e4b13] between the placeholder photo and the React photo.
+    // The static hero prevents a blank first paint. Replace it as soon as the
+    // React hero image is available, rather than keeping a fixed "startup"
+    // screen on top of an already-ready page.
     const heroPlaceholder = document.getElementById('hero-placeholder');
-    if (heroPlaceholder && (safeSessionStorage.getItem('devocean-hero-seen') || safeLocalStorage.getItem('devocean-hero-seen'))) {
-      heroRafId = requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
+    let heroDismissed = false;
+    const dismissHeroPlaceholder = () => {
+      if (!heroPlaceholder || heroCancelled || heroDismissed) return;
+      heroDismissed = true;
+      clearTimeout(heroFallbackTimer);
+
+      // Two paint frames ensure the real hero image has been composited before
+      // the static layer starts fading, avoiding a one-frame brand-colour flash.
+      outerHeroRafId = requestAnimationFrame(() => {
+        innerHeroRafId = requestAnimationFrame(() => {
           if (heroCancelled) return;
-          heroPlaceholder.style.display = 'none';
+          heroPlaceholder.classList.add('fade-out');
           document.documentElement.classList.remove('hero-active');
+          heroFadeTimer = window.setTimeout(() => {
+            if (!heroCancelled) heroPlaceholder.style.display = 'none';
+          }, 240);
         });
       });
+    };
+
+    if (heroPlaceholder) {
+      heroImage = document.querySelector('#home img[alt="Hero slide 1"]');
+      if (heroImage?.complete && heroImage.naturalWidth > 0) {
+        dismissHeroPlaceholder();
+      } else if (heroImage) {
+        heroImage.addEventListener('load', dismissHeroPlaceholder, { once: true });
+        heroImage.addEventListener('error', dismissHeroPlaceholder, { once: true });
+      }
+
+      // A failed or unusually slow image must never turn into a long startup
+      // screen. The static image remains useful up to this brief ceiling.
+      heroFallbackTimer = window.setTimeout(dismissHeroPlaceholder, 1200);
     }
 
+    const cancelHeroHandoff = () => {
+      heroCancelled = true;
+      clearTimeout(heroFallbackTimer);
+      clearTimeout(heroFadeTimer);
+      cancelAnimationFrame(outerHeroRafId);
+      cancelAnimationFrame(innerHeroRafId);
+      heroImage?.removeEventListener('load', dismissHeroPlaceholder);
+      heroImage?.removeEventListener('error', dismissHeroPlaceholder);
+    };
+
     if (!hash) {
-      return () => {
-        heroCancelled = true;
-        cancelAnimationFrame(heroRafId);
-      };
+      return cancelHeroHandoff;
     }
 
     // Guard: set to true on cleanup so the rAF retry loop cannot call
@@ -312,8 +342,7 @@ export default function App() {
     rafId = requestAnimationFrame(tryScroll);
 
     return () => {
-      heroCancelled = true;
-      cancelAnimationFrame(heroRafId);
+      cancelHeroHandoff();
       cancelled = true;
       cancelAnimationFrame(rafId);
     };

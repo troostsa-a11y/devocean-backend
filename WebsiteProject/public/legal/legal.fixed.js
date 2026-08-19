@@ -11,6 +11,24 @@
   }
 })();
 
+// A visitor leaving a legal page for the homepage has already been using the
+// site. Mark the homepage's visual handoff as seen before navigation so the
+// Home link never produces a second startup-style flash.
+function markHeroHandoffSeen() {
+  try {
+    sessionStorage.setItem('devocean-hero-seen', 'true');
+    localStorage.setItem('devocean-hero-seen', 'true');
+  } catch (_) {
+    // Storage can be unavailable in private or embedded browsers; the home
+    // page still performs its short, non-blocking image-ready handoff.
+  }
+}
+
+document.addEventListener('click', function(event) {
+  const link = event.target.closest && event.target.closest('a[href="/"], a[href^="/#"]');
+  if (link) markHeroHandoffSeen();
+});
+
 // Smart back button that handles external referrers (like Hotelrunner)
 function smartBack() {
   // If opened as a new tab (noopener links pass ?newtab=1), close this tab
@@ -50,6 +68,7 @@ function smartBack() {
     window.location.href = referrer;
   } else {
     // No referrer - go to home page (language comes from stored preference)
+    markHeroHandoffSeen();
     window.location.href = '/';
   }
 }
