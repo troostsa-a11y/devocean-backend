@@ -1477,6 +1477,15 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             <Loader2 className="h-4 w-4 animate-spin" /> {t.updatingPrice}
                           </p>
                         )}
+                        {showFx && (
+                          <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 space-y-1.5 text-xs text-slate-500" data-testid="text-fx-note">
+                            <p className="font-semibold text-slate-600">{t.priceInfoHeader}</p>
+                            <p className="flex items-start gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 mt-px shrink-0 text-green-500" /><span>{t.fxAllIn}</span></p>
+                            <p className="flex items-start gap-1.5"><Info className="h-3.5 w-3.5 mt-px shrink-0 text-blue-400" /><span>{fmt(t.fxApproxDisplay, { currency })}</span></p>
+                            <p className="flex items-start gap-1.5"><CreditCard className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxBankFee}</span></p>
+                            <p className="flex items-start gap-1.5"><MessageCircle className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxAltPayment}</span></p>
+                          </div>
+                        )}
                         <button
                           type="button"
                           onClick={() => { setStep('details'); setError(''); }}
