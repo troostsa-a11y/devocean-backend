@@ -585,7 +585,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       infants > 0 ? `${infants} infant${infants !== 1 ? 's' : ''}` : '',
     ].filter(Boolean);
     const guestStr = guestParts.length ? guestParts.join(', ') : '2 adults';
-    const bookUrl = `https://devoceanlodge.com/book-direct?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}`;
+    const baseQs = `checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}${currency ? `&currency=${currency}` : ''}`;
+    const bookUrl = `https://devoceanlodge.com/book-direct?${baseQs}`;
+    // English policy summaries for Marin (Marin replies in the guest's language).
+    const semiFlexPolicy = `50% deposit \u00b7 full refund ${cancelDays}+ days before arrival \u00b7 50% cancellation fee less than ${cancelDays} days`;
+    const nonRefPolicy = 'full payment due now \u00b7 no refund after the 24-hour grace period';
     const lines = [
       'Visitor is viewing availability results on the DEVOCEAN Lodge booking page.',
       `Check-in: ${checkIn}. Check-out: ${checkOut}. Nights: ${nights}. Guests: ${guestStr}.`,
@@ -595,21 +599,28 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (availableRooms.length > 0) {
       lines.push('Available options:');
       availableRooms.forEach((r) => {
-        // Match the guest-visible default: refundable (semi-flexible) plan first.
-        const offer = r.offers.find((o) => o.refundable) || r.offers[0];
-        // Mirror the card display: when an FX display currency is active the
-        // guest sees the approximate converted amount, so quote both.
-        const price = offer
-          ? showFx
-            ? `${money(offer.total, r.currency)} total (${fxLine(offer.total)})`
-            : `${money(offer.total, r.currency)} total`
-          : '— total';
-        const units = offer?.unitsAvailable ?? 0;
-        lines.push(`- ${r.name}: ${price}. ${units} unit${units !== 1 ? 's' : ''} available.`);
+        const units = (r.offers.find((o) => o.refundable) || r.offers[0])?.unitsAvailable ?? 0;
+        const unitKey = getUnitKey(r.name);
+        const deepLink = `https://devoceanlodge.com/book-direct?${baseQs}${unitKey ? `&unit=${unitKey}` : ''}`;
+        // One line per rate plan, named, with its policy summary. Lead with the
+        // guest's display currency when an FX display currency is active; the
+        // charged (base-currency) amount follows in parentheses.
+        const planLines = r.offers.map((o) => {
+          const planName = o.refundable ? 'Semi-flexible (refundable)' : 'Non-refundable';
+          const policy = o.refundable ? semiFlexPolicy : nonRefPolicy;
+          const price = showFx
+            ? `${fxLine(o.total)} total (${money(o.total, r.currency)} charged)`
+            : `${money(o.total, r.currency)} total`;
+          return `  - ${planName}: ${price}. Policy: ${policy}.`;
+        });
+        lines.push(`- ${r.name}: ${units} unit${units !== 1 ? 's' : ''} available.`);
+        lines.push(...planLines);
+        lines.push(`  - Continue with this option: ${deepLink}`);
       });
+      lines.push('');
+      lines.push('When comparing options, use one compact row per option: room + plan name, price, one-line policy, and its "Continue with this option" link.');
       if (showFx) {
-        lines.push('');
-        lines.push(`Note: all charges are made in ${baseCurrency}. ${currency} amounts are approximate display conversions only.`);
+        lines.push(`Lead with ${currency} amounts (what the guest sees on the page); mention that all charges are made in ${baseCurrency} and ${currency} amounts are approximate conversions.`);
       }
     }
     if (unavailableRooms.length > 0) {
@@ -618,7 +629,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       unavailableRooms.forEach((r) => lines.push(`- ${r.name}`));
     }
     return lines.join('\n');
-  }, [checkIn, checkOut, availability, adults, children, infants, availableRooms, unavailableRooms, showFx, fxRatesForBase, currency, baseCurrency]);
+  }, [checkIn, checkOut, availability, adults, children, infants, availableRooms, unavailableRooms, showFx, fxRatesForBase, currency, baseCurrency, cancelDays]);
 
   const marinDetailsContext = useMemo(() => {
     if (!checkIn || !checkOut || !quote) return '';

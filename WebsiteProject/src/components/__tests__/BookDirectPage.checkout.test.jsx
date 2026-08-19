@@ -1462,16 +1462,20 @@ describe('semi-flexible rate is the untouched default through quote and checkout
       { timeout: 3000 },
     );
 
-    // The results-step MarinPanel must have been rendered with a context that
-    // lists the room at the semi-flexible (refundable) total — the same price
-    // the guest sees on the card — never the cheaper non-refundable one.
+    // The results-step MarinPanel context now lists every rate plan by name
+    // with its price and a one-line policy summary, plus a per-room deep link
+    // that preserves dates/guests/currency and the unit key.
     const resultsCtx = marinPanelProps
       .map((p) => p.context)
       .find((c) => c && c.includes('Available options:'));
     expect(resultsCtx).toBeTruthy();
     expect(resultsCtx).toContain('Safari Tent');
+    expect(resultsCtx).toContain('Semi-flexible (refundable)');
+    expect(resultsCtx).toContain('Non-refundable');
     expect(resultsCtx).toContain(String(SEMIFLEX_TOTAL));
-    expect(resultsCtx).not.toContain(String(NONREF_TOTAL));
+    expect(resultsCtx).toContain(String(NONREF_TOTAL));
+    expect(resultsCtx).toContain('Policy: 50% deposit');
+    expect(resultsCtx).toMatch(/Continue with this option: https:\/\/devoceanlodge\.com\/book-direct\?[^\n]*&unit=safari/);
 
     // Add a unit and continue so the pre-payment MarinPanel context is built
     // from the quote — it must also carry the semiFlex totals.

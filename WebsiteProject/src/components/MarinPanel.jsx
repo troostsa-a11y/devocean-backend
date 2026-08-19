@@ -41,22 +41,21 @@ export default function MarinPanel({ context, autoMessage, label = 'Need help? A
     window.devocean?.ask({ pageContext: context, autoMessage });
   }
 
+  // Compact inline pill — intentionally NOT styled like the global floating
+  // orange FAB, so the site keeps a single primary chat launcher.
   return (
-    <span className="inline-flex items-center gap-3">
-      <span className={`text-sm ${labelClassName}`}>{label}</span>
-      <button
-        type="button"
-        onClick={handleClick}
-        aria-label={label}
-        className="inline-flex items-center justify-center rounded-full shadow-lg hover:brightness-110 hover:scale-105 transition-all duration-200"
-        style={{ width: 48, height: 48, background: '#f97316', border: 'none', cursor: 'pointer', flexShrink: 0 }}
-      >
-        {/* Chat icon — matches the floating FAB */}
-        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-          fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-      </button>
-    </span>
+    <button
+      type="button"
+      onClick={handleClick}
+      aria-label={label}
+      className={`inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm hover:border-orange-400 hover:text-orange-600 transition-colors ${labelClassName}`}
+      style={{ cursor: 'pointer' }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>{label}</span>
+    </button>
   );
 }
