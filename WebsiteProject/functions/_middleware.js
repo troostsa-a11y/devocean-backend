@@ -97,46 +97,66 @@ const EXPERIENCE_META = {
   diving: {
     title:         'Scuba Diving | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description:   'Scuba diving in Ponta do Ouro, Mozambique. Explore coral reefs, encounter dolphins and marine life. PADI certified dive centre. Book your dive adventure.',
+    h1:           'Scuba Diving in Ponta do Ouro, Mozambique',
     ogTitle:       'Scuba Diving Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Dive 20+ named sites — coral reefs, dolphins, whale sharks. PADI certified dive centre, Ponta do Ouro Marine Reserve.',
   },
   dolphins: {
     title:         'Swim with Dolphins | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description:   'Swim with wild dolphins in Ponta do Ouro, Mozambique. Ethical ocean safari encounters with bottlenose dolphins in their natural habitat.',
+    h1:           'Ethical Wild Dolphin Swims in Ponta do Ouro',
     ogTitle:       'Swim with Wild Dolphins | DEVOCEAN Lodge',
     ogDescription: 'Ethical ocean safaris with 200+ resident Indo-Pacific bottlenose dolphins in Ponta do Ouro Marine Reserve.',
   },
   seafari: {
     title:         'Ocean Seafari | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description:   'Ocean seafari in Ponta do Ouro, Mozambique. Whale watching, dolphins, and marine wildlife boat tours. Experience the Indian Ocean wonders.',
+    h1:           'Whale Watching and Ocean Safaris in Ponta do Ouro',
     ogTitle:       'Ocean Seafari Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Whale watching, dolphins and marine wildlife boat tours in the Ponta do Ouro Marine Reserve, Mozambique.',
   },
   safari: {
     title:         'African Wildlife Safari | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description:   'African wildlife safari near Ponta do Ouro, Mozambique. Day trips to Tembe Elephant Park and Maputo Special Reserve. See elephants, lions, and more.',
+    h1:           'Maputo National Park Game Safaris from Ponta do Ouro',
     ogTitle:       'Wildlife Safari Near Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Day safaris to Maputo National Park — elephants, hippos, giraffes, zebras — from DEVOCEAN Lodge, Ponta do Ouro.',
   },
   fishing: {
     title:         'Deep Sea Fishing | DEVOCEAN Lodge — Ponta do Ouro, Mozambique',
     description:   'Deep sea fishing charters in Ponta do Ouro, Mozambique. Catch marlin, sailfish, and tuna. Professional fishing boats and experienced crew.',
+    h1:           'Deep Sea and Beach Fishing in Ponta do Ouro',
     ogTitle:       'Deep Sea Fishing Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Black marlin, sailfish and yellowfin tuna fishing charters in the Mozambique Channel from Ponta do Ouro.',
   },
   surfing: {
     title:         'Surfing Ponta do Ouro | DEVOCEAN Lodge — Mozambique',
     description:   'Surfing lessons and rentals in Ponta do Ouro, Mozambique. Learn to surf on pristine beaches. Beginner-friendly waves and experienced instructors.',
+    h1:           'Surfing Lessons and Board Rentals in Ponta do Ouro',
     ogTitle:       'Surfing Ponta do Ouro | DEVOCEAN Lodge',
     ogDescription: 'Surf a classic right-hand point break in Ponta do Ouro. Lessons and board rentals for beginners and experienced surfers.',
   },
   lighthouse: {
     title:         'Ponta do Ouro Lighthouse | DEVOCEAN Lodge — Mozambique',
     description:   'Ponta do Ouro Lighthouse — historic landmark and scenic viewpoint in Southern Mozambique. Panoramic ocean views and photography spot.',
+    h1:           'Ponta do Ouro Lighthouse Walk and Ocean Viewpoint',
     ogTitle:       'Ponta do Ouro Lighthouse | DEVOCEAN Lodge',
     ogDescription: 'Historic lighthouse and panoramic viewpoint at the southern tip of Mozambique. Walking distance from DEVOCEAN Lodge.',
   },
 };
+
+// Experience routes are rendered by the React SPA for visitors, but this block
+// gives non-JavaScript crawlers the same concise, route-specific heading and
+// summary in the initial HTML response. main.jsx removes it at hydration, so
+// rendered pages still have a single H1.
+function buildExperienceStaticHtml(meta) {
+  return `<div id="static-content">
+<section>
+  <h1>${meta.h1}</h1>
+  <p>${meta.description}</p>
+</section>
+</div><!-- /static-content -->`;
+}
 
 // ---------------------------------------------------------------------------
 // Pre-render content per known booking/info SPA route.
@@ -632,8 +652,10 @@ export async function onRequest(context) {
           );
         }
 
-        // Strip homepage static-content block (experience renders via React)
-        html = html.replace(STATIC_CONTENT_RE, EMPTY_STATIC);
+        // Replace homepage content with the experience's own semantic heading
+        // and summary. This ensures every experience URL — including its
+        // language variants — has a meaningful H1 before JavaScript runs.
+        html = html.replace(STATIC_CONTENT_RE, buildExperienceStaticHtml(meta));
 
         // Inject experience-specific hreflang (self-referential + all 22 langs)
         html = html.replace(HREFLANG_BLOCK_RE, buildHreflang(pageUrl));
