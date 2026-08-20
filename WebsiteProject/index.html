@@ -1722,6 +1722,103 @@
     })();
   </script>
 
+  <!-- Keep the CookieYes revisit control clear of reCAPTCHA when both fixed
+       controls occupy the lower-left corner. CookieYes is loaded externally,
+       so this watches the live elements instead of assuming its dimensions. -->
+  <script>
+    (function () {
+      var GAP = 10;
+      var CLEARANCE_CLASS = 'dv-cookieyes-recaptcha-clearance';
+      var CLEARANCE_VARIABLE = '--dv-cookieyes-recaptcha-bottom';
+      var observedRevisit = null;
+      var observedBadge = null;
+      var resizeObserver = null;
+      var frame = 0;
+
+      function getRevisitControl() {
+        var tagged = document.querySelector('[data-cky-tag="revisit-consent"]');
+        if (!tagged) return null;
+        return tagged.closest('.cky-btn-revisit-wrapper') ||
+          tagged.parentElement ||
+          tagged;
+      }
+
+      function isVisible(element) {
+        if (!element) return false;
+        var style = window.getComputedStyle(element);
+        var rect = element.getBoundingClientRect();
+        return style.display !== 'none' &&
+          style.visibility !== 'hidden' &&
+          rect.width > 0 &&
+          rect.height > 0;
+      }
+
+      function resetPosition(element) {
+        if (!element) return;
+        element.classList.remove(CLEARANCE_CLASS);
+        element.style.removeProperty(CLEARANCE_VARIABLE);
+      }
+
+      function syncPosition() {
+        frame = 0;
+        var badge = document.querySelector('.grecaptcha-badge');
+        var revisit = getRevisitControl();
+
+        if (revisit !== observedRevisit || badge !== observedBadge) {
+          if (resizeObserver) resizeObserver.disconnect();
+          observedRevisit = revisit;
+          observedBadge = badge;
+          if (resizeObserver) {
+            if (revisit) resizeObserver.observe(revisit);
+            if (badge) resizeObserver.observe(badge);
+          }
+        }
+
+        resetPosition(revisit);
+        if (!isVisible(revisit) || !isVisible(badge)) return;
+
+        var badgeRect = badge.getBoundingClientRect();
+        var revisitRect = revisit.getBoundingClientRect();
+        var overlaps = badgeRect.left < revisitRect.right &&
+          badgeRect.right > revisitRect.left &&
+          badgeRect.top < revisitRect.bottom &&
+          badgeRect.bottom > revisitRect.top;
+        if (!overlaps) return;
+
+        var bottom = Math.max(
+          0,
+          Math.ceil(window.innerHeight - badgeRect.top + GAP),
+        );
+        revisit.style.setProperty(CLEARANCE_VARIABLE, bottom + 'px');
+        revisit.classList.add(CLEARANCE_CLASS);
+      }
+
+      function queueSync() {
+        if (frame) return;
+        if (window.requestAnimationFrame) {
+          frame = window.requestAnimationFrame(syncPosition);
+        } else {
+          frame = window.setTimeout(syncPosition, 0);
+        }
+      }
+
+      resizeObserver = 'ResizeObserver' in window
+        ? new ResizeObserver(queueSync)
+        : null;
+
+      new MutationObserver(queueSync).observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+      });
+      window.addEventListener('resize', queueSync, { passive: true });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', queueSync, { once: true });
+      } else {
+        queueSync();
+      }
+    })();
+  </script>
+
   <!-- React app entry — placed last so browser paints static hero before executing JS -->
   <script type="module" src="/src/main.jsx"></script>
 </body>

@@ -238,3 +238,10 @@ body {
 .grecaptcha-badge:hover {
   width: 256px !important;
 }
+
+/* CookieYes normally places its consent-revisit control in the lower-left
+   corner too. The inline observer in index.html adds this class only when the
+   live CookieYes control and reCAPTCHA badge actually overlap. */
+.dv-cookieyes-recaptcha-clearance {
+  bottom: var(--dv-cookieyes-recaptcha-bottom) !important;
+}
