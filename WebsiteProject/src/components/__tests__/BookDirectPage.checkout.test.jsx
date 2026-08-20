@@ -133,6 +133,10 @@ vi.mock('../../i18n/bookingStrings', () => ({
     soldOut:            'Sold out',
     moreUnitsNeeded:    'You need {n} more unit(s)',
     minUnitsNote:       'Min {n} unit(s) for {party}',
+    minUnitsSingle:     'Book one unit for single use',
+    minUnitsSingleWithChildren: 'Book one unit for single use and maximum of 2 children',
+    minUnitsAdults:     'Book one unit for a maximum of 2 adults',
+    minUnitsAdultsWithChild: 'Book one unit for a maximum of 2 adults + 1 infant/child',
     partyTooLargeForRate: 'Some guests cannot be accommodated in fewer units.',
     amenitiesNote:      'All rooms include breakfast',
     discountCodeLabel:  'Discount code',
@@ -168,7 +172,17 @@ vi.mock('../../utils/localize', () => ({
 }));
 
 vi.mock('../CurrencyPicker',  () => ({ default: () => null }));
-vi.mock('../DateRangePicker', () => ({ default: () => null }));
+vi.mock('../DateRangePicker', () => ({
+  default: ({ onChange }) => (
+    <button
+      type="button"
+      data-testid="mock-date-range"
+      onClick={() => onChange('2027-06-01', '2027-06-03')}
+    >
+      Set dates
+    </button>
+  ),
+}));
 // Capture the props MarinPanel receives so tests can assert on the page
 // context Marin reads (dates, room prices, totals). Rendered as null so it
 // stays invisible to the DOM assertions.
@@ -294,6 +308,46 @@ function setupFetchMock() {
   });
 
   return { getCheckoutBody: () => capturedBody };
+}
+
+function setBookingQuery({ adults, children = 0, infants = 0 }) {
+  const params = new URLSearchParams({
+    checkIn: CHECK_IN,
+    checkOut: CHECK_OUT,
+    adults: String(adults),
+  });
+  if (children > 0) params.set('children', String(children));
+  if (infants > 0) params.set('infants', String(infants));
+  const search = `?${params.toString()}`;
+  Object.defineProperty(window, 'location', {
+    configurable: true,
+    get: () => ({
+      href: '',
+      search,
+      assign: vi.fn(),
+      replace: vi.fn(),
+    }),
+  });
+  window.history.pushState({}, '', `/book-direct${search}`);
+}
+
+async function renderMinimumUnitsNotice({ adults, children = 0, infants = 0 }) {
+  setBookingQuery({ adults, children, infants });
+  const view = render(
+    <BookDirectPage
+      lang="en-GB"
+      currency="USD"
+    />,
+  );
+
+  if (children > 0) {
+    fireEvent.click(screen.getByTestId('mock-date-range'));
+    fireEvent.change(screen.getByTestId('select-child-age-0'), { target: { value: '5' } });
+    fireEvent.click(screen.getByTestId('button-search'));
+  }
+
+  const notice = await screen.findByTestId('notice-min-units');
+  return { notice, unmount: view.unmount };
 }
 
 /**
@@ -431,6 +485,26 @@ describe('checkout bedPreferences — integration', () => {
 
     expect(amenities.compareDocumentPosition(notice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(notice.parentElement.className).toContain('justify-start');
+  });
+
+  it.each([
+    [{ adults: 1 }, 'Book one unit for single use'],
+    [{ adults: 1, infants: 1 }, 'Book one unit for single use and maximum of 2 children'],
+    [{ adults: 2 }, 'Book one unit for a maximum of 2 adults'],
+    [{ adults: 3 }, 'Book one unit for a maximum of 2 adults'],
+    [{ adults: 2, infants: 1 }, 'Book one unit for a maximum of 2 adults + 1 infant/child'],
+  ])('shows the correct minimum-units message for %o', async (guestCounts, expected) => {
+    const { notice, unmount } = await renderMinimumUnitsNotice(guestCounts);
+
+    expect(notice.textContent).toContain(expected);
+    unmount();
+  });
+
+  it('uses the child branch for one adult with a child', async () => {
+    const { notice, unmount } = await renderMinimumUnitsNotice({ adults: 1, children: 1 });
+
+    expect(notice.textContent).toContain('Book one unit for single use and maximum of 2 children');
+    unmount();
   });
 });
 

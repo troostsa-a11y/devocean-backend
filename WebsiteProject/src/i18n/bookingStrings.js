@@ -2078,6 +2078,19 @@ export const STRINGS = {
   },
 };
 
+// Context-aware minimum-unit guidance is kept as a separate overlay so a new
+// English-only message does not make the 20-language core table incomplete.
+// Add translated locale entries here as they become available; missing
+// locales intentionally fall back to English in getBookingStrings().
+export const MIN_UNITS_STRINGS = {
+  en: {
+    minUnitsSingle: 'Book one unit for single use',
+    minUnitsSingleWithChildren: 'Book one unit for single use and maximum of 2 children',
+    minUnitsAdults: 'Book one unit for a maximum of 2 adults',
+    minUnitsAdultsWithChild: 'Book one unit for a maximum of 2 adults + 1 infant/child',
+  },
+};
+
 export const CONFIRM_STRINGS = {
   en: {
     confirming: 'Confirming your booking…',
@@ -2548,6 +2561,10 @@ function baseLang(lang) {
 export function getBookingStrings(lang) {
   const base = baseLang(lang);
   const core = STRINGS[base] || STRINGS.en;
+  // The context-aware minimum-unit copy is currently authored in English.
+  // Keep it available for every locale until translated entries are added,
+  // rather than allowing a missing key to render as undefined.
+  const minUnits = MIN_UNITS_STRINGS[base] || MIN_UNITS_STRINGS.en;
   // Overlay localised rate-tier labels (all 20 base langs). EN fallback for any
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
@@ -2555,7 +2572,7 @@ export function getBookingStrings(lang) {
   const marinHelp = MARIN_STRINGS[base] || MARIN_STRINGS.en;
   // _lang: base language actually resolved (EN on fallback) — used by
   // perNightFromTemplate to select the correct CLDR plural category.
-  return { ...core, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
+  return { ...core, ...minUnits, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
 }
 
 export function getConfirmStrings(lang) {
