@@ -359,6 +359,7 @@ const COTTAGE_ROOM = {
 const MINIMAL_T = {
   sleeps:               'Sleeps {count}',
   sleepsAdultsChildren: 'Sleeps {adults} + {children}',
+  sleepsAdultsChildrenCompact: 'Sleeps {adults}+{children}',
   singleUse:            'Single use',
   childOccupant:        '1 child',
   perNightFrom:         'for {nights} night(s)',

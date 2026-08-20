@@ -166,14 +166,14 @@ function RoomCard({
   if (singleGuest) {
     sleepsText = t.singleUse;
   } else if (childUnit && (partyChildren > 0 || partyInfants > 0)) {
-    sleepsText = fmt(t.sleepsAdultsChildren, {
+    sleepsText = fmt(t.sleepsAdultsChildrenCompact, {
       adults: sleepsTotal,
-      children: t.childOccupant,
+      children: 1,
     });
   } else if (sleepsTotal > 2) {
-    sleepsText = fmt(t.sleepsAdultsChildren, {
+    sleepsText = fmt(t.sleepsAdultsChildrenCompact, {
       adults: sleepsTotal - 1,
-      children: t.childOccupant,
+      children: 1,
     });
   } else {
     sleepsText = fmt(t.sleeps, { count: sleepsTotal });
@@ -228,7 +228,10 @@ function RoomCard({
             ) : null;
           })()}
           <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
-            <span className="inline-flex items-start gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-slate-600">
+            <span
+              className="inline-flex items-start gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-slate-600"
+              data-testid={`text-sleeps-${room.roomId}`}
+            >
               <Users className="h-3.5 w-3.5 mt-0.5 shrink-0" />
               {(() => {
                 const idx = sleepsText.indexOf(' (');

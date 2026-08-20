@@ -55,6 +55,7 @@ const T = {
   unitsLeft:            '{count} left',
   sleeps:               'Sleeps {count}',
   sleepsAdultsChildren: 'Sleeps {adults} + {children}',
+  sleepsAdultsChildrenCompact: 'Sleeps {adults}+{children}',
   singleUse:            'Single use',
   childOccupant:        '1 child',
   perNightFrom:         'for {nights} night(s)',
@@ -193,6 +194,43 @@ describe('room card media sizing', () => {
     expect(image.className).toBe(ROOM_CARD_IMAGE_CLASS);
     expect(image.className).toContain('aspect-[4/3]');
     expect(image.className).not.toContain('flex-1');
+  });
+});
+
+describe('capacity badge', () => {
+  it('uses the compact child-capacity format', () => {
+    const room = makeSafariRoom();
+    render(
+      <RoomCard
+        {...defaultProps(room, {
+          partyChildren: 1,
+          effChildren: 1,
+        })}
+      />,
+    );
+
+    expect(screen.getByTestId('text-sleeps-safari-1').textContent).toBe('Sleeps 2+1');
+  });
+
+  it('keeps single-use and adult-only capacity labels unchanged', () => {
+    const room = makeSafariRoom();
+    const { rerender } = render(
+      <RoomCard {...defaultProps(room, { partyAdults: 1 })} />,
+    );
+
+    expect(screen.getByTestId('text-sleeps-safari-1').textContent).toBe('Single use');
+
+    rerender(
+      <RoomCard
+        {...defaultProps({
+          ...room,
+          roomId: 'cottage-1',
+          name: 'Garden Cottage',
+        })}
+      />,
+    );
+
+    expect(screen.getByTestId('text-sleeps-cottage-1').textContent).toBe('Sleeps 2');
   });
 });
 

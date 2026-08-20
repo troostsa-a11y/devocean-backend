@@ -99,6 +99,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     unitsLeft:          '{count} left',
     sleeps:             'Sleeps {count}',
     sleepsAdultsChildren: 'Sleeps {adults} + {children}',
+    sleepsAdultsChildrenCompact: 'Sleeps {adults}+{children}',
     singleUse:          'Single use',
     childOccupant:      '1 child',
     perNightFrom:       'for {nights} night(s)',
