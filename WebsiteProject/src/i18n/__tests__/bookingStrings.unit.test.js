@@ -20,6 +20,8 @@
 import { describe, it, expect } from 'vitest';
 import {
   STRINGS,
+  MIN_UNITS_STRINGS,
+  getBookingStrings,
   CONFIRM_STRINGS,
   RATE_TIER_STRINGS,
   TERMS_STRINGS,
@@ -142,6 +144,23 @@ describe('bookingStrings — translation completeness', () => {
 
     it('every language has every key that English has', () => {
       assertAllLangsComplete('CONFIRM_STRINGS', CONFIRM_STRINGS);
+    });
+  });
+
+  describe('MIN_UNITS_STRINGS (guest-composition guidance)', () => {
+    it('has an entry for every supported language', () => {
+      assertAllLangsPresent('MIN_UNITS_STRINGS', MIN_UNITS_STRINGS);
+    });
+
+    it('every language has every key that English has', () => {
+      assertAllLangsComplete('MIN_UNITS_STRINGS', MIN_UNITS_STRINGS);
+    });
+
+    it('falls back to English guidance for an unavailable locale', () => {
+      const strings = getBookingStrings('xx-XX');
+      for (const key of Object.keys(MIN_UNITS_STRINGS.en)) {
+        expect(strings[key]).toBe(MIN_UNITS_STRINGS.en[key]);
+      }
     });
   });
 

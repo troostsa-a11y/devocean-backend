@@ -2078,16 +2078,130 @@ export const STRINGS = {
   },
 };
 
-// Context-aware minimum-unit guidance is kept as a separate overlay so a new
-// English-only message does not make the 20-language core table incomplete.
-// Add translated locale entries here as they become available; missing
-// locales intentionally fall back to English in getBookingStrings().
+// Context-aware minimum-unit guidance is kept as a separate overlay so these
+// messages can evolve independently from the 20-language core table. Every
+// supported locale has a translation; missing or unexpected locale codes still
+// fall back to English in getBookingStrings().
 export const MIN_UNITS_STRINGS = {
   en: {
     minUnitsSingle: 'Book one unit for single use',
     minUnitsSingleWithChildren: 'Book one unit for single use and maximum of 2 children',
     minUnitsAdults: 'Book one unit for a maximum of 2 adults',
     minUnitsAdultsWithChild: 'Book one unit for a maximum of 2 adults + 1 infant/child',
+  },
+  pt: {
+    minUnitsSingle: 'Reserve uma unidade para uso individual',
+    minUnitsSingleWithChildren: 'Reserve uma unidade para uso individual e no máximo 2 crianças',
+    minUnitsAdults: 'Reserve uma unidade para no máximo 2 adultos',
+    minUnitsAdultsWithChild: 'Reserve uma unidade para no máximo 2 adultos + 1 bebé/criança',
+  },
+  de: {
+    minUnitsSingle: 'Buchen Sie eine Einheit zur alleinigen Nutzung',
+    minUnitsSingleWithChildren: 'Buchen Sie eine Einheit zur alleinigen Nutzung und für maximal 2 Kinder',
+    minUnitsAdults: 'Buchen Sie eine Einheit für maximal 2 Erwachsene',
+    minUnitsAdultsWithChild: 'Buchen Sie eine Einheit für maximal 2 Erwachsene + 1 Kleinkind/Kind',
+  },
+  fr: {
+    minUnitsSingle: 'Réservez une unité pour une personne seule',
+    minUnitsSingleWithChildren: 'Réservez une unité pour une personne seule et au maximum 2 enfants',
+    minUnitsAdults: 'Réservez une unité pour 2 adultes maximum',
+    minUnitsAdultsWithChild: 'Réservez une unité pour 2 adultes maximum + 1 bébé/enfant',
+  },
+  es: {
+    minUnitsSingle: 'Reserve una unidad para uso individual',
+    minUnitsSingleWithChildren: 'Reserve una unidad para uso individual y un máximo de 2 niños',
+    minUnitsAdults: 'Reserve una unidad para un máximo de 2 adultos',
+    minUnitsAdultsWithChild: 'Reserve una unidad para un máximo de 2 adultos + 1 bebé/niño',
+  },
+  it: {
+    minUnitsSingle: "Prenoti un'unità per uso singolo",
+    minUnitsSingleWithChildren: "Prenoti un'unità per uso singolo e al massimo 2 bambini",
+    minUnitsAdults: "Prenoti un'unità per un massimo di 2 adulti",
+    minUnitsAdultsWithChild: "Prenoti un'unità per un massimo di 2 adulti + 1 neonato/bambino",
+  },
+  nl: {
+    minUnitsSingle: 'Boek één eenheid voor alleen gebruik',
+    minUnitsSingleWithChildren: 'Boek één eenheid voor alleen gebruik en maximaal 2 kinderen',
+    minUnitsAdults: 'Boek één eenheid voor maximaal 2 volwassenen',
+    minUnitsAdultsWithChild: 'Boek één eenheid voor maximaal 2 volwassenen + 1 baby/kind',
+  },
+  sv: {
+    minUnitsSingle: 'Boka en enhet för eget bruk',
+    minUnitsSingleWithChildren: 'Boka en enhet för eget bruk och högst 2 barn',
+    minUnitsAdults: 'Boka en enhet för högst 2 vuxna',
+    minUnitsAdultsWithChild: 'Boka en enhet för högst 2 vuxna + 1 spädbarn/barn',
+  },
+  pl: {
+    minUnitsSingle: 'Zarezerwuj jedną jednostkę na wyłączny użytek',
+    minUnitsSingleWithChildren: 'Zarezerwuj jedną jednostkę na wyłączny użytek i maksymalnie 2 dzieci',
+    minUnitsAdults: 'Zarezerwuj jedną jednostkę dla maksymalnie 2 dorosłych',
+    minUnitsAdultsWithChild: 'Zarezerwuj jedną jednostkę dla maksymalnie 2 dorosłych + 1 niemowlęcia/dziecka',
+  },
+  ro: {
+    minUnitsSingle: 'Rezervați o unitate pentru uz individual',
+    minUnitsSingleWithChildren: 'Rezervați o unitate pentru uz individual și maximum 2 copii',
+    minUnitsAdults: 'Rezervați o unitate pentru maximum 2 adulți',
+    minUnitsAdultsWithChild: 'Rezervați o unitate pentru maximum 2 adulți + 1 sugar/copil',
+  },
+  sr: {
+    minUnitsSingle: 'Rezervišite jednu jedinicu za sopstvenu upotrebu',
+    minUnitsSingleWithChildren: 'Rezervišite jednu jedinicu za sopstvenu upotrebu i najviše 2 deteta',
+    minUnitsAdults: 'Rezervišite jednu jedinicu za najviše 2 odrasle osobe',
+    minUnitsAdultsWithChild: 'Rezervišite jednu jedinicu za najviše 2 odrasle osobe + 1 beba/dete',
+  },
+  hr: {
+    minUnitsSingle: 'Rezervirajte jednu jedinicu za vlastitu upotrebu',
+    minUnitsSingleWithChildren: 'Rezervirajte jednu jedinicu za vlastitu upotrebu i najviše 2 djece',
+    minUnitsAdults: 'Rezervirajte jednu jedinicu za najviše 2 odrasle osobe',
+    minUnitsAdultsWithChild: 'Rezervirajte jednu jedinicu za najviše 2 odrasle osobe + 1 dojenče/dijete',
+  },
+  cs: {
+    minUnitsSingle: 'Rezervujte jednu jednotku pro jednu osobu',
+    minUnitsSingleWithChildren: 'Rezervujte jednu jednotku pro jednu osobu a nejvýše 2 děti',
+    minUnitsAdults: 'Rezervujte jednu jednotku pro nejvýše 2 dospělé osoby',
+    minUnitsAdultsWithChild: 'Rezervujte jednu jednotku pro nejvýše 2 dospělé osoby + 1 kojence/dítě',
+  },
+  tr: {
+    minUnitsSingle: 'Tek kullanım için bir birim rezerve edin',
+    minUnitsSingleWithChildren: 'Tek kullanım ve en fazla 2 çocuk için bir birim rezerve edin',
+    minUnitsAdults: 'En fazla 2 yetişkin için bir birim rezerve edin',
+    minUnitsAdultsWithChild: 'En fazla 2 yetişkin + 1 bebek/çocuk için bir birim rezerve edin',
+  },
+  ja: {
+    minUnitsSingle: '1名利用で1室を予約してください',
+    minUnitsSingleWithChildren: '1名利用、最大2名の子どもで1室を予約してください',
+    minUnitsAdults: '最大2名の大人で1室を予約してください',
+    minUnitsAdultsWithChild: '最大2名の大人 + 乳幼児/子ども1名で1室を予約してください',
+  },
+  zh: {
+    minUnitsSingle: '请预订一个单元供单人使用',
+    minUnitsSingleWithChildren: '请预订一个单元供单人及最多2名儿童使用',
+    minUnitsAdults: '请预订一个单元供最多2名成人使用',
+    minUnitsAdultsWithChild: '请预订一个单元供最多2名成人及1名婴儿/儿童使用',
+  },
+  ru: {
+    minUnitsSingle: 'Забронируйте один номер для одноместного размещения',
+    minUnitsSingleWithChildren: 'Забронируйте один номер для одноместного размещения и не более 2 детей',
+    minUnitsAdults: 'Забронируйте один номер не более чем для 2 взрослых',
+    minUnitsAdultsWithChild: 'Забронируйте один номер не более чем для 2 взрослых + 1 младенца/ребёнка',
+  },
+  af: {
+    minUnitsSingle: 'Bespreek een eenheid vir enkelgebruik',
+    minUnitsSingleWithChildren: 'Bespreek een eenheid vir enkelgebruik en hoogstens 2 kinders',
+    minUnitsAdults: 'Bespreek een eenheid vir hoogstens 2 volwassenes',
+    minUnitsAdultsWithChild: 'Bespreek een eenheid vir hoogstens 2 volwassenes + 1 baba/kind',
+  },
+  zu: {
+    minUnitsSingle: 'Bhukha indawo eyodwa ukuze isetshenziswe umuntu oyedwa',
+    minUnitsSingleWithChildren: 'Bhukha indawo eyodwa ukuze isetshenziswe umuntu oyedwa nezingane ezingafika kwezi-2',
+    minUnitsAdults: 'Bhukha indawo eyodwa yabantu abadala abangafika kwabangu-2',
+    minUnitsAdultsWithChild: 'Bhukha indawo eyodwa yabantu abadala abangafika kwabangu-2 + usana/ingane eyodwa',
+  },
+  sw: {
+    minUnitsSingle: 'Fanya nafasi ya kitengo kimoja kwa matumizi ya mtu mmoja',
+    minUnitsSingleWithChildren: 'Fanya nafasi ya kitengo kimoja kwa mtu mmoja na watoto wasiozidi 2',
+    minUnitsAdults: 'Fanya nafasi ya kitengo kimoja kwa watu wazima wasiozidi 2',
+    minUnitsAdultsWithChild: 'Fanya nafasi ya kitengo kimoja kwa watu wazima wasiozidi 2 + mtoto mchanga/mtoto 1',
   },
 };
 
@@ -2561,10 +2675,9 @@ function baseLang(lang) {
 export function getBookingStrings(lang) {
   const base = baseLang(lang);
   const core = STRINGS[base] || STRINGS.en;
-  // The context-aware minimum-unit copy is currently authored in English.
-  // Keep it available for every locale until translated entries are added,
-  // rather than allowing a missing key to render as undefined.
-  const minUnits = MIN_UNITS_STRINGS[base] || MIN_UNITS_STRINGS.en;
+  // Merge with English so unexpected locales and any future partially
+  // translated entries never allow a missing key to render as undefined.
+  const minUnits = { ...MIN_UNITS_STRINGS.en, ...(MIN_UNITS_STRINGS[base] || {}) };
   // Overlay localised rate-tier labels (all 20 base langs). EN fallback for any
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;

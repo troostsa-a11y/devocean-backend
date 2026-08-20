@@ -15,6 +15,10 @@ keys as `undefined` on the live page — it does NOT fall back to English per ke
 **How to apply:** when adding/renaming a booking string key, add it to ALL base lang objects
 (and `rate`'s 7 sub-keys). `RATE_TIER_STRINGS` is a separate overlay but also covers all 20.
 
+The context-aware guest-composition guidance uses a separate `MIN_UNITS_STRINGS` overlay
+that merges its English entry per key, so an unavailable or partial locale entry safely
+falls back to English without weakening the completeness requirement for the core tables.
+
 Stripe checkout `locale` (`toStripeLocale` in render-automailer `stripe-booking.ts`) maps only
 Stripe-supported locales; sr/af/zu/sw resolve to `'auto'` (Stripe's own default chrome) —
 acceptable, our page copy is still localized. Not a bug.
