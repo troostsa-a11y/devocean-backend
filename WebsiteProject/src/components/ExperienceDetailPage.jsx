@@ -4,6 +4,7 @@ import { EXPERIENCE_DETAILS } from '../data/experienceDetails';
 import Footer from './Footer';
 import ExperienceInquiryForm from './ExperienceInquiryForm';
 import { getExpText } from '../i18n/experiencePageTranslations';
+import { getBookingStrings } from '../i18n/bookingStrings';
 import { useSeoPage, getExperienceDescription } from '../utils/seoMeta';
 import MarinPanel from './MarinPanel';
 
@@ -599,7 +600,11 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               })()}
             </p>
             <div className="flex justify-center">
-              <MarinPanel context={`Experience page: ${exp.title}`} labelClassName="text-white/80" />
+              <MarinPanel
+                context={`Experience page: ${exp.title}`}
+                label={getBookingStrings(lang).marinHelp}
+                labelClassName="text-white/80"
+              />
             </div>
           </div>
 

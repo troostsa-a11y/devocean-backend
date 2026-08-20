@@ -2515,6 +2515,31 @@ export const TERMS_STRINGS = {
   sw: { termsAgree: 'Kwa kuendelea na uhifadhi wako, unakubali {terms} zetu.', termsLink: 'Sheria na Masharti' },
 };
 
+// Marin trigger label shown on inline help buttons. Kept separate because it
+// is shared by the booking flow and experience detail pages.
+export const MARIN_STRINGS = {
+  en: 'Need help? Ask Marin',
+  pt: 'Precisa de ajuda? Pergunte à Marin',
+  de: 'Brauchen Sie Hilfe? Fragen Sie Marin',
+  fr: 'Besoin d’aide ? Demandez à Marin',
+  es: '¿Necesita ayuda? Pregúntele a Marin',
+  it: 'Hai bisogno di aiuto? Chiedi a Marin',
+  nl: 'Hulp nodig? Vraag het aan Marin',
+  sv: 'Behöver du hjälp? Fråga Marin',
+  pl: 'Potrzebujesz pomocy? Zapytaj Marin',
+  ro: 'Ai nevoie de ajutor? Întreab-o pe Marin',
+  sr: 'Treba vam pomoć? Pitajte Marin',
+  hr: 'Trebate pomoć? Pitajte Marin',
+  cs: 'Potřebujete pomoc? Zeptejte se Marin',
+  tr: 'Yardıma mı ihtiyacınız var? Marin’e sorun',
+  ja: 'お困りですか？Marinに質問',
+  zh: '需要帮助？询问 Marin',
+  ru: 'Нужна помощь? Спросите Марин',
+  af: 'Hulp nodig? Vra vir Marin',
+  zu: 'Udinga usizo? Buza uMarin',
+  sw: 'Unahitaji msaada? Muulize Marin',
+};
+
 function baseLang(lang) {
   if (!lang) return 'en';
   return String(lang).toLowerCase().split('-')[0];
@@ -2527,9 +2552,10 @@ export function getBookingStrings(lang) {
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
   const terms = TERMS_STRINGS[base] || TERMS_STRINGS.en;
+  const marinHelp = MARIN_STRINGS[base] || MARIN_STRINGS.en;
   // _lang: base language actually resolved (EN on fallback) — used by
   // perNightFromTemplate to select the correct CLDR plural category.
-  return { ...core, ...tiers, ...terms, _lang: STRINGS[base] ? base : 'en' };
+  return { ...core, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
 }
 
 export function getConfirmStrings(lang) {

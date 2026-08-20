@@ -1,11 +1,12 @@
 /**
  * bookingStrings.unit.test.js
  *
- * Completeness guard for all four string tables in bookingStrings.js:
+ * Completeness guard for all five string tables in bookingStrings.js:
  *   STRINGS          – core booking UI copy
  *   CONFIRM_STRINGS  – post-payment confirmation page copy
  *   RATE_TIER_STRINGS – date-picker rate-legend labels
  *   TERMS_STRINGS    – terms & conditions consent notice
+ *   MARIN_STRINGS     – inline Marin help-button labels
  *
  * For each table the test derives the canonical key set from the `en` object
  * and asserts that every other language object contains every one of those keys
@@ -22,6 +23,7 @@ import {
   CONFIRM_STRINGS,
   RATE_TIER_STRINGS,
   TERMS_STRINGS,
+  MARIN_STRINGS,
 } from '../bookingStrings.js';
 
 /** The 20 base language codes that must be fully translated. */
@@ -160,6 +162,17 @@ describe('bookingStrings — translation completeness', () => {
 
     it('every language has every key that English has', () => {
       assertAllLangsComplete('TERMS_STRINGS', TERMS_STRINGS);
+    });
+  });
+
+  describe('MARIN_STRINGS (Marin help-button labels)', () => {
+    it('has an entry for every supported language', () => {
+      const absent = SUPPORTED_LANGS.filter(lang => !MARIN_STRINGS[lang]);
+      expect(absent).toHaveLength(0);
+    });
+
+    it('every language has a non-empty translated label', () => {
+      expect(Object.values(MARIN_STRINGS).every(label => typeof label === 'string' && label.trim())).toBe(true);
     });
   });
 });

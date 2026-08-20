@@ -1220,6 +1220,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <MarinPanel
                       context={marinResultsContext}
                       autoMessage="I need help choosing a room."
+                      label={t.marinHelp}
                       lang={lang}
                       currency={currency}
                     />
@@ -1663,6 +1664,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       <MarinPanel
                         context={marinDetailsContext}
                         autoMessage="I have a question before I pay."
+                        label={t.marinHelp}
                         lang={lang}
                         currency={currency}
                       />
