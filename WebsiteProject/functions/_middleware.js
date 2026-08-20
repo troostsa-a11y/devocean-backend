@@ -483,7 +483,17 @@ const NOINDEX_PATHS = new Set([
   '/canceled',
 ]);
 
-const STATIC_UNIT_ROUTES = new Set(['/safari', '/comfort', '/cottage', '/chalet']);
+// Cloudflare Pages canonicalizes *.html requests to their clean counterparts,
+// even when the request is made through ASSETS.fetch(). Fetching /safari.html
+// while rendering /safari therefore returns a 308 back to /safari, which the
+// middleware re-enters indefinitely. Keep the public route clean, but fetch a
+// neutral-extension asset copy for the edge-rendered document.
+export const STATIC_UNIT_ASSETS = new Map([
+  ['/safari', '/_unit-pages/safari.unit'],
+  ['/comfort', '/_unit-pages/comfort.unit'],
+  ['/cottage', '/_unit-pages/cottage.unit'],
+  ['/chalet', '/_unit-pages/chalet.unit'],
+]);
 
 // ---------------------------------------------------------------------------
 
@@ -557,13 +567,18 @@ export async function onRequest(context) {
     const isSpaRoute =
       ROUTE_META[pathname] != null ||
       /^\/experiences\/[a-z-]+$/.test(pathname);
-    const isStaticUnit = STATIC_UNIT_ROUTES.has(pathname);
+    const staticUnitAsset = STATIC_UNIT_ASSETS.get(pathname);
+    const isStaticUnit = Boolean(staticUnitAsset);
 
     let response = isStaticUnit
-      ? await context.env.ASSETS.fetch(new Request(new URL(`${pathname}.html`, context.request.url), context.request))
+      ? await context.env.ASSETS.fetch(new Request(new URL(staticUnitAsset, context.request.url), context.request))
       : isSpaRoute
       ? await context.env.ASSETS.fetch(new Request(new URL('/', context.request.url), context.request))
       : await context.next();
+
+    // A missing internal unit asset must remain a real 404. Falling through to
+    // the SPA fallback would hide a broken build by serving the homepage.
+    if (isStaticUnit && response.status !== 200) return response;
 
     // SPA fallback: no static file matched → serve index.html for React routing.
     // Serve the shell not only for explicit text/html requests, but also for
@@ -584,7 +599,10 @@ export async function onRequest(context) {
     }
 
     const contentType = response.headers.get('content-type') || '';
-    if (!contentType.includes('text/html')) {
+    // The internal .unit copies intentionally have no HTML extension, so
+    // Cloudflare may label them as text/plain. They are trusted build assets
+    // and still need the same edge HTML injection as the public document.
+    if (!isStaticUnit && !contentType.includes('text/html')) {
       return response;
     }
 
@@ -745,6 +763,9 @@ export async function onRequest(context) {
 
     const headers = new Headers(response.headers);
     headers.delete('content-length');
+    if (isStaticUnit) {
+      headers.set('content-type', 'text/html; charset=utf-8');
+    }
     // Content-Signal (contentsignals.org / IETF draft):
     // ai-train=no  — disallow bulk model-training crawlers (robots.txt too)
     // search=yes   — allow all search engines

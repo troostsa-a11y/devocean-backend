@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node start.js",
     "prebuild": "node scripts/generate-locale-sitemap.mjs && node scripts/check-route-descriptions.mjs",
-    "build": "vite build && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/",
+    "build": "vite build && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && mkdir -p dist/_unit-pages && cp safari.html dist/_unit-pages/safari.unit && cp comfort.html dist/_unit-pages/comfort.unit && cp cottage.html dist/_unit-pages/cottage.unit && cp chalet.html dist/_unit-pages/chalet.unit && cp thankyou.html dist/ && cp canceled.html dist/",
     "preview": "vite preview",
     "deploy": "wrangler pages deploy dist",
     "test": "vitest run"
