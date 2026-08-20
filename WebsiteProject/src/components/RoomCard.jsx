@@ -187,14 +187,17 @@ function RoomCard({
     >
       <div className="flex items-start gap-3 sm:gap-4">
         <div className="flex-1 min-w-0">
-          <h3 className="text-xl font-bold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
-            {displayName}
-          </h3>
-          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0 mt-0.5">
+          <div
+            className="mt-0.5 flex flex-wrap items-baseline gap-x-3 gap-y-0.5"
+            data-testid={`room-card-header-${room.roomId}`}
+          >
+            <h3 className="min-w-0 text-xl font-bold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
+              {displayName}
+            </h3>
             <p className="text-lg font-semibold text-slate-700" data-testid={`text-offer-total-${room.roomId}`}>
               {showFx ? fxPrimary(cardTotal) : money(cardTotal, room.currency)}
             </p>
-            <p className="text-sm text-slate-500">
+            <p className="text-sm text-slate-500" data-testid={`text-offer-nights-${room.roomId}`}>
               {fmt(perNightFromTemplate(t, room.nights), { nights: room.nights })}
             </p>
             {room.nights > 1 && (

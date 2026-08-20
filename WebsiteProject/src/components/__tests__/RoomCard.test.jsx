@@ -197,6 +197,21 @@ describe('room card media sizing', () => {
   });
 });
 
+describe('room card header', () => {
+  it('keeps the unit name, price, and stay length in a wrapping row', () => {
+    const room = makeSafariRoom();
+    render(<RoomCard {...defaultProps(room)} />);
+
+    const header = screen.getByTestId('room-card-header-safari-1');
+
+    expect(header.className).toContain('flex');
+    expect(header.className).toContain('flex-wrap');
+    expect(screen.getByTestId('text-room-name-safari-1').textContent).toBe('Safari Tent');
+    expect(screen.getByTestId('text-offer-total-safari-1').textContent).toContain('$400.00');
+    expect(screen.getByTestId('text-offer-nights-safari-1').textContent).toBe('for 2 night(s)');
+  });
+});
+
 describe('capacity badge', () => {
   it('uses the compact child-capacity format', () => {
     const room = makeSafariRoom();
