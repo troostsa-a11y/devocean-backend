@@ -512,6 +512,26 @@ describe('checkout bedPreferences — integration', () => {
     expect(notice.parentElement.className).toContain('justify-start');
   });
 
+  it('keeps the selection summary details inline with wrapping segments', async () => {
+    render(
+      <BookDirectPage
+        lang="en-GB"
+        currency="USD"
+      />,
+    );
+
+    const summary = await screen.findByTestId('badge-selection-summary');
+    const details = summary.querySelector('.min-w-0');
+    const detailSegments = details.querySelectorAll('.whitespace-nowrap');
+
+    expect(summary.textContent).toContain('1 Jun 2027 → 3 Jun 2027');
+    expect(summary.textContent).toContain('· 2 nights');
+    expect(summary.textContent).toContain('· 2 Guests');
+    expect(details.className).toContain('flex-wrap');
+    expect(details.className).toContain('min-w-0');
+    expect(detailSegments).toHaveLength(3);
+  });
+
   it.each([
     [{ adults: 1 }, 'Book one unit for single use'],
     [{ adults: 1, infants: 1 }, 'Book one unit for single use and maximum of 2 children'],

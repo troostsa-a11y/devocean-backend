@@ -1218,13 +1218,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                 <div className="flex items-center justify-between gap-4">
                   <span
-                    className="inline-flex items-start gap-2 rounded-full bg-slate-100 px-3.5 py-1.5 text-sm sm:text-base font-semibold text-slate-800"
+                    className="inline-flex max-w-full items-start gap-2 rounded-full bg-slate-100 px-3.5 py-1.5 text-sm sm:text-base font-semibold text-slate-800"
                     data-testid="badge-selection-summary"
                   >
                     <Users className="h-4 w-4 shrink-0 mt-0.5" />
-                    <span className="flex flex-col leading-snug">
-                      <span>{displayDate(checkIn)} → {displayDate(checkOut)}</span>
-                      <span className="font-medium">{availability.nights} {availability.nights === 1 ? t.night : t.nights} · {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}</span>
+                    <span className="min-w-0 flex-1 flex flex-wrap items-center gap-x-2 gap-y-1 leading-snug">
+                      <span className="whitespace-nowrap">{displayDate(checkIn)} → {displayDate(checkOut)}</span>
+                      <span className="whitespace-nowrap font-medium">· {availability.nights} {availability.nights === 1 ? t.night : t.nights}</span>
+                      <span className="whitespace-nowrap font-medium">· {adults + children + infants} {adults + children + infants === 1 ? t.guest : t.guests}</span>
                     </span>
                   </span>
 
