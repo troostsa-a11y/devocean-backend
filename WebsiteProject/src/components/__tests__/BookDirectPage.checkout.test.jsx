@@ -495,6 +495,12 @@ describe('checkout bedPreferences — integration', () => {
     expect(screen.getByTestId('amenities-badge-breakfast').textContent).toBe('Excellent Breakfast');
     expect(screen.getByTestId('amenities-badge-internet').textContent).toBe('Highspeed Internet');
     expect(screen.getByTestId('amenities-badge-parking').textContent).toBe('Secure Parking Spot');
+    for (const badgeId of ['amenities-badge-breakfast', 'amenities-badge-internet', 'amenities-badge-parking']) {
+      const className = screen.getByTestId(badgeId).className;
+      expect(className).toContain('bg-[#9e4b13]');
+      expect(className).toContain('text-white');
+    }
+    expect(screen.getByTestId('amenities-badge-all-rates').className).not.toContain('bg-[#9e4b13]');
     expect(amenities.compareDocumentPosition(notice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(notice.parentElement.className).toContain('justify-start');
   });

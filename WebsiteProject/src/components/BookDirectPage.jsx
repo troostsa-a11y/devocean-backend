@@ -1260,19 +1260,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         data-testid="amenities-badges-benefits-row"
                       >
                         <span
-                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                          className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
                           data-testid="amenities-badge-breakfast"
                         >
                           {t.amenitiesBreakfast}
                         </span>
                         <span
-                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                          className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
                           data-testid="amenities-badge-internet"
                         >
                           {t.amenitiesInternet}
                         </span>
                         <span
-                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                          className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
                           data-testid="amenities-badge-parking"
                         >
                           {t.amenitiesParking}
