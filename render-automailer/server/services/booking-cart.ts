@@ -183,6 +183,44 @@ function mergeLines(lines: CartLineInput[]): CartLineInput[] {
 }
 
 /**
+ * Rebuild the cart shape used by the payment/webhook recheck from the
+ * per-room occupancy persisted at checkout. Keeping occupancy on each line is
+ * important: re-running the automatic distributor can produce a different
+ * split (and can reject a booking when Beds24 reports no child capacity).
+ */
+export function buildCartLinesFromPersistedLegs(legs: DirectBookingLeg[]): CartLineInput[] {
+  const lineMap = new Map<string, CartLineInput>();
+  for (const leg of legs) {
+    const key = `${leg.roomId}__${leg.offerId ?? 'any'}__${leg.adults ?? ''}_${leg.children ?? ''}_${leg.infants ?? ''}`;
+    const existing = lineMap.get(key);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      lineMap.set(key, {
+        roomId: leg.roomId,
+        offerId: leg.offerId ?? null,
+        qty: 1,
+        adults: leg.adults,
+        children: leg.children,
+        infants: leg.infants ?? 0,
+      });
+    }
+  }
+  return Array.from(lineMap.values());
+}
+
+/** Whole-party infant count for webhook records, including legacy rows. */
+export function getPersistedInfantCount(
+  record: { numInfants?: number | null },
+  legs: DirectBookingLeg[],
+): number {
+  if (record.numInfants !== undefined && record.numInfants !== null) {
+    return Number(record.numInfants) || 0;
+  }
+  return legs.reduce((sum, leg) => sum + (Number(leg.infants) || 0), 0);
+}
+
+/**
  * Spread `adults` + `children` across `slots` (one slot = one physical room),
  * giving each slot at least one adult and respecting each room's adult/child/
  * total caps. Deterministic (front-loads the earliest rooms) so the same cart

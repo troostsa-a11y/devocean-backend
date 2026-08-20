@@ -29,7 +29,14 @@ import {
   splitDeposit,
   round2,
 } from '../config/booking-config';
-import { computeCartQuote, BookingCartError, type CartDiscountCode, type CartVoucher } from '../services/booking-cart';
+import {
+  computeCartQuote,
+  buildCartLinesFromPersistedLegs,
+  getPersistedInfantCount,
+  BookingCartError,
+  type CartDiscountCode,
+  type CartVoucher,
+} from '../services/booking-cart';
 import { generateVoucherCode, sendVoucherEmail } from '../services/gift-voucher';
 import type { DirectBookingLeg } from '../../shared/schema';
 
@@ -715,26 +722,6 @@ export function createBookingRouter(deps: {
     // on real sell-out / capacity loss, Beds24Error on transient upstream
     // failure) — the caller decides.
     async function recheckCartQuote(record: any, legs: DirectBookingLeg[]) {
-      const lineMap = new Map<string, {
-        roomId: string; offerId: number | null; qty: number;
-        adults?: number; children?: number; infants?: number;
-      }>();
-      for (const leg of legs) {
-        const key = `${leg.roomId}__${leg.offerId ?? 'any'}__${leg.adults ?? ''}_${leg.children ?? ''}_${leg.infants ?? ''}`;
-        const existing = lineMap.get(key);
-        if (existing) {
-          existing.qty += 1;
-        } else {
-          lineMap.set(key, {
-            roomId: leg.roomId,
-            offerId: leg.offerId ?? null,
-            qty: 1,
-            adults: leg.adults,
-            children: leg.children,
-            infants: leg.infants ?? 0,
-          });
-        }
-      }
       return computeCartQuote(
         beds24,
         {
@@ -742,10 +729,9 @@ export function createBookingRouter(deps: {
           checkOut: record.checkOutDate,
           adults: record.numAdults,
           children: record.numChildren,
-          infants: record.numInfants ??
-            legs.reduce((sum, leg) => sum + (Number(leg.infants) || 0), 0),
+          infants: getPersistedInfantCount(record, legs),
         },
-        Array.from(lineMap.values()),
+        buildCartLinesFromPersistedLegs(legs),
         cfg,
       );
     }
