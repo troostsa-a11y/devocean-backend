@@ -70,6 +70,10 @@
 
   var BTN_R   = 56;   // diameter — all three buttons are the same size
   var MARGIN  = 20;   // distance from screen edges
+  // Shared right-side anchor for every fixed widget surface. Keep this in one
+  // place so the FAB cannot drift between routes or become overridden by the
+  // host site's page-specific styles.
+  var FLOAT_RIGHT = MARGIN + "px";
   var GAP     = 10;   // gap between stacked buttons
   var PANEL_W = 360;  // text-chat panel width
   var PANEL_H = 480;  // text-chat panel height
@@ -103,7 +107,7 @@
   var style = document.createElement("style");
   style.textContent =
     "#dv-fab{" +
-      "position:fixed;bottom:" + MARGIN + "px;right:" + MARGIN + "px;" +
+      "position:fixed;bottom:" + MARGIN + "px;right:" + FLOAT_RIGHT + "!important;left:auto!important;" +
       "width:" + BTN_R + "px;height:" + BTN_R + "px;" +
       "border-radius:50%;background:" + ORANGE + ";" +
       "box-shadow:0 4px 20px rgba(249,115,22,.45);" +
@@ -122,7 +126,7 @@
     "#dv-fab.dv-voice-active:hover{background:" + RED_DARK + "!important;}" +
 
     ".dv-opt{" +
-      "position:fixed;right:" + MARGIN + "px;" +
+      "position:fixed;right:" + FLOAT_RIGHT + "!important;left:auto!important;" +
       "width:" + BTN_R + "px;height:" + BTN_R + "px;" +
       "border-radius:50%;border:none;cursor:pointer;" +
       "display:flex;align-items:center;justify-content:center;" +
@@ -140,7 +144,7 @@
     "#dv-text-panel{" +
       "position:fixed;" +
       "bottom:" + (MARGIN + BTN_R + 12) + "px;" +
-      "right:" + MARGIN + "px;" +
+      "right:" + FLOAT_RIGHT + "!important;left:auto!important;" +
       "width:" + PANEL_W + "px;height:" + PANEL_H + "px;" +
       "border:none;border-radius:16px;" +
       "box-shadow:0 8px 40px rgba(0,0,0,.18);" +
@@ -157,7 +161,7 @@
     "#dv-voice-frame{" +
       "position:fixed;" +
       "bottom:" + (MARGIN + BTN_R + 12) + "px;" +
-      "right:" + MARGIN + "px;" +
+      "right:" + FLOAT_RIGHT + "!important;left:auto!important;" +
       "width:" + PANEL_W + "px;height:300px;" +
       "border:none;border-radius:16px;" +
       "box-shadow:0 8px 40px rgba(0,0,0,.18);" +
@@ -170,8 +174,8 @@
     "#dv-voice-frame.dv-vis{opacity:1;transform:scale(1) translateY(0);pointer-events:auto;}" +
 
     "@media(max-width:420px){" +
-      "#dv-text-panel{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + MARGIN + "px;}" +
-      "#dv-voice-frame{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + MARGIN + "px;}" +
+      "#dv-text-panel{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + FLOAT_RIGHT + "!important;}" +
+      "#dv-voice-frame{width:calc(100vw - " + (MARGIN * 2) + "px);right:" + FLOAT_RIGHT + "!important;}" +
     "}" +
     "@media(max-height:560px){" +
       "#dv-text-panel{height:75vh;}" +
@@ -187,7 +191,7 @@
     "#dv-tooltip{" +
       "position:fixed;" +
       "bottom:" + (MARGIN + Math.round(BTN_R / 2) - 14) + "px;" +
-      "right:" + (MARGIN + BTN_R + 12) + "px;" +
+      "right:" + (MARGIN + BTN_R + 12) + "px!important;left:auto!important;" +
       "background:rgba(0,0,0,.72);" +
       "color:#fff;padding:8px 14px;border-radius:10px;" +
       "font-size:13px;font-family:system-ui,sans-serif;line-height:1.4;" +
