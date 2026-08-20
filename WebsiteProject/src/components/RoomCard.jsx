@@ -194,9 +194,18 @@ function RoomCard({
             <h3 className="min-w-0 text-xl font-bold text-slate-900" data-testid={`text-room-name-${room.roomId}`}>
               {displayName}
             </h3>
-            <p className="text-lg font-semibold text-slate-700" data-testid={`text-offer-total-${room.roomId}`}>
-              {showFx ? fxPrimary(cardTotal) : money(cardTotal, room.currency)}
-            </p>
+            <span className="inline-flex shrink-0 items-baseline gap-x-2">
+              <span
+                aria-hidden="true"
+                className="text-sm text-slate-400"
+                data-testid={`text-rate-separator-${room.roomId}`}
+              >
+                ·
+              </span>
+              <span className="text-lg font-semibold text-slate-700" data-testid={`text-offer-total-${room.roomId}`}>
+                {showFx ? fxPrimary(cardTotal) : money(cardTotal, room.currency)}
+              </span>
+            </span>
             <p className="text-sm text-slate-500" data-testid={`text-offer-nights-${room.roomId}`}>
               {fmt(perNightFromTemplate(t, room.nights), { nights: room.nights })}
             </p>

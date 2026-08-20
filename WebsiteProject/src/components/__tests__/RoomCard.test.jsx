@@ -207,7 +207,11 @@ describe('room card header', () => {
     expect(header.className).toContain('flex');
     expect(header.className).toContain('flex-wrap');
     expect(screen.getByTestId('text-room-name-safari-1').textContent).toBe('Safari Tent');
+    const separator = screen.getByTestId('text-rate-separator-safari-1');
+    expect(separator.textContent).toBe('·');
+    expect(separator.getAttribute('aria-hidden')).toBe('true');
     expect(screen.getByTestId('text-offer-total-safari-1').textContent).toContain('$400.00');
+    expect(separator.parentElement.contains(screen.getByTestId('text-offer-total-safari-1'))).toBe(true);
     expect(screen.getByTestId('text-offer-nights-safari-1').textContent).toBe('for 2 night(s)');
   });
 });
