@@ -337,7 +337,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     setError('');
     setCanceled(false);
     if (nights < 1) {
-      setError(t.errorGeneric);
+      setError(t.selectDates);
       return;
     }
     if (children > 0 && childAges.some((a) => a === '' || a == null)) {
@@ -345,7 +345,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       return;
     }
     if (infants > 0 && infantAges.some((a) => a === '' || a == null)) {
-      setError(t.provideChildAges);
+      setError(t.provideInfantAges);
       return;
     }
     setLoading(true);
@@ -1167,7 +1167,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   <div className="col-span-2 lg:col-span-1 lg:flex-none lg:ml-auto">
                     <button
                       type="submit"
-                      disabled={loading || nights < 1}
+                      disabled={loading}
                       className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-6 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
                       data-testid="button-search"
                     >

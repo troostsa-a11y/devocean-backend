@@ -151,6 +151,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     currencyFieldLabel: 'Currency',
     canceledNotice:     'Booking was cancelled',
     provideChildAges:   'Please provide child ages',
+    provideInfantAges:  'Please provide infant ages',
     childAgesLabel:     'Child ages',
     infantAgesLabel:    'Infant ages',
     childAgeHint:       'Ages matter for pricing',
@@ -588,6 +589,89 @@ describe('checkout bedPreferences — integration', () => {
 
     expect(notice.textContent).toContain('Book one unit for single use and maximum of 2 children');
     unmount();
+  });
+});
+
+describe('booking search validation warnings', () => {
+  let fetchMock;
+  let originalLocationDescriptor;
+
+  beforeEach(() => {
+    originalLocationDescriptor = Object.getOwnPropertyDescriptor(window, 'location');
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href: '',
+        search: '',
+        assign: vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    fetchMock = vi.fn((url) => Promise.resolve({
+      ok: true,
+      json: () => Promise.resolve(url.includes('/api/booking/calendar') ? { prices: {} } : {}),
+    }));
+    global.fetch = fetchMock;
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    if (originalLocationDescriptor) {
+      Object.defineProperty(window, 'location', originalLocationDescriptor);
+    }
+  });
+
+  function renderSearchForm() {
+    return render(
+      <BookDirectPage
+        lang="en-GB"
+        currency="USD"
+      />,
+    );
+  }
+
+  function availabilityCallCount() {
+    return fetchMock.mock.calls.filter(([url]) => url.includes('/api/booking/availability')).length;
+  }
+
+  it('warns when dates are missing and does not request availability', async () => {
+    renderSearchForm();
+
+    const button = screen.getByTestId('button-search');
+    expect(button.disabled).toBe(false);
+    await act(async () => { fireEvent.click(button); });
+
+    expect((await screen.findByTestId('status-error')).textContent).toContain('Select dates');
+    expect(availabilityCallCount()).toBe(0);
+  });
+
+  it('warns when a child age is missing and does not request availability', async () => {
+    renderSearchForm();
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('mock-date-range'));
+      fireEvent.change(screen.getByTestId('select-children'), { target: { value: '1' } });
+    });
+    await screen.findByTestId('select-child-age-0');
+    await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
+
+    expect((await screen.findByTestId('status-error')).textContent).toContain('Please provide child ages');
+    expect(availabilityCallCount()).toBe(0);
+  });
+
+  it('warns when an infant age is missing and does not request availability', async () => {
+    renderSearchForm();
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('mock-date-range'));
+      fireEvent.change(screen.getByTestId('select-infants'), { target: { value: '1' } });
+    });
+    await screen.findByTestId('select-infant-age-0');
+    await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
+
+    expect((await screen.findByTestId('status-error')).textContent).toContain('Please provide infant ages');
+    expect(availabilityCallCount()).toBe(0);
   });
 });
 
