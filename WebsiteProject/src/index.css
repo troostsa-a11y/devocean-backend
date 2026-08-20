@@ -223,14 +223,14 @@ body {
 }
 
 /* reCAPTCHA v3 Badge Positioning & Compact State */
-/* Positioned at bottom right */
+/* Positioned at bottom left so it stays clear of the floating chat control */
 /* Compact state: 70px wide, expands to 256px on hover */
 .grecaptcha-badge {
   width: 70px !important;
   overflow: hidden !important;
   transition: all 0.3s ease !important;
-  right: 0 !important;
-  left: auto !important;
+  left: 0 !important;
+  right: auto !important;
   bottom: 14px !important;
   z-index: 9999 !important;
 }
