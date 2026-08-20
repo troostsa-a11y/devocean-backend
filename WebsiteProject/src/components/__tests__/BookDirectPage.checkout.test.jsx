@@ -154,7 +154,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     childAgesLabel:     'Child ages',
     infantAgesLabel:    'Infant ages',
     childAgeHint:       'Ages matter for pricing',
-    infantAgeHint:      'Infants under 3',
+    infantAgeHint:      'Infants under 4',
     childAgeN:          'Child {n}',
     infantAgeN:         'Infant {n}',
     yearsOld:           '{count} years old',

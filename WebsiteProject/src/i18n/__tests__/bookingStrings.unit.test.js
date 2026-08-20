@@ -136,6 +136,13 @@ describe('bookingStrings — translation completeness', () => {
     it('every language has every key that English has', () => {
       assertAllLangsComplete('STRINGS', STRINGS);
     });
+
+    it('describes infants as free under age 4 in every supported language', () => {
+      const hints = SUPPORTED_LANGS.map((lang) => STRINGS[lang].infantAgeHint);
+
+      expect(hints.every((hint) => hint.includes('4'))).toBe(true);
+      expect(hints.some((hint) => hint.includes('3'))).toBe(false);
+    });
   });
 
   describe('CONFIRM_STRINGS (confirmation page copy)', () => {
