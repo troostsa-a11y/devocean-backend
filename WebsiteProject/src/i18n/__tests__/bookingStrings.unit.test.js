@@ -21,6 +21,7 @@ import { describe, it, expect } from 'vitest';
 import {
   STRINGS,
   MIN_UNITS_STRINGS,
+  AMENITIES_BADGE_STRINGS,
   getBookingStrings,
   CONFIRM_STRINGS,
   RATE_TIER_STRINGS,
@@ -160,6 +161,23 @@ describe('bookingStrings — translation completeness', () => {
       const strings = getBookingStrings('xx-XX');
       for (const key of Object.keys(MIN_UNITS_STRINGS.en)) {
         expect(strings[key]).toBe(MIN_UNITS_STRINGS.en[key]);
+      }
+    });
+  });
+
+  describe('AMENITIES_BADGE_STRINGS (included-benefit badges)', () => {
+    it('has an entry for every supported language', () => {
+      assertAllLangsPresent('AMENITIES_BADGE_STRINGS', AMENITIES_BADGE_STRINGS);
+    });
+
+    it('every language has every key that English has', () => {
+      assertAllLangsComplete('AMENITIES_BADGE_STRINGS', AMENITIES_BADGE_STRINGS);
+    });
+
+    it('falls back to English badges for an unavailable locale', () => {
+      const strings = getBookingStrings('xx-XX');
+      for (const key of Object.keys(AMENITIES_BADGE_STRINGS.en)) {
+        expect(strings[key]).toBe(AMENITIES_BADGE_STRINGS.en[key]);
       }
     });
   });

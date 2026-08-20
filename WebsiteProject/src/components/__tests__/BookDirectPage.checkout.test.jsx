@@ -139,6 +139,10 @@ vi.mock('../../i18n/bookingStrings', () => ({
     minUnitsAdultsWithChild: 'Book one unit for a maximum of 2 adults + 1 infant/child',
     partyTooLargeForRate: 'Some guests cannot be accommodated in fewer units.',
     amenitiesNote:      'All rooms include breakfast',
+    amenitiesAllRatesInclude: 'All rates include',
+    amenitiesBreakfast: 'Excellent Breakfast',
+    amenitiesInternet: 'Highspeed Internet',
+    amenitiesParking: 'Secure Parking Spot',
     discountCodeLabel:  'Discount code',
     optional:           'Optional',
     giftPromoTitle:     'Gift vouchers',
@@ -472,7 +476,7 @@ describe('checkout bedPreferences — integration', () => {
     expect(body.bedPreferences[SAFARI_ROOM_ID]).toBe('twin');
   });
 
-  it('places the amenities note before the left-aligned minimum-units notice', async () => {
+  it('renders the four amenities badges in two rows before the left-aligned minimum-units notice', async () => {
     render(
       <BookDirectPage
         lang="en-GB"
@@ -481,8 +485,16 @@ describe('checkout bedPreferences — integration', () => {
     );
 
     const amenities = await screen.findByTestId('text-amenities-note');
+    const topRow = screen.getByTestId('amenities-badges-top-row');
+    const benefitsRow = screen.getByTestId('amenities-badges-benefits-row');
     const notice = await screen.findByTestId('notice-min-units');
 
+    expect(topRow.children).toHaveLength(1);
+    expect(benefitsRow.children).toHaveLength(3);
+    expect(screen.getByTestId('amenities-badge-all-rates').textContent).toBe('All rates include');
+    expect(screen.getByTestId('amenities-badge-breakfast').textContent).toBe('Excellent Breakfast');
+    expect(screen.getByTestId('amenities-badge-internet').textContent).toBe('Highspeed Internet');
+    expect(screen.getByTestId('amenities-badge-parking').textContent).toBe('Secure Parking Spot');
     expect(amenities.compareDocumentPosition(notice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(notice.parentElement.className).toContain('justify-start');
   });

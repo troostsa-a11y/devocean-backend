@@ -2205,6 +2205,133 @@ export const MIN_UNITS_STRINGS = {
   },
 };
 
+// Included-benefit badges are kept in a focused overlay so the booking page
+// can present short, scannable labels without changing the existing core copy.
+// Every supported locale has all four labels; getBookingStrings() provides the
+// English fallback for unexpected locale codes.
+export const AMENITIES_BADGE_STRINGS = {
+  en: {
+    amenitiesAllRatesInclude: 'All rates include',
+    amenitiesBreakfast: 'Excellent Breakfast',
+    amenitiesInternet: 'Highspeed Internet',
+    amenitiesParking: 'Secure Parking Spot',
+  },
+  pt: {
+    amenitiesAllRatesInclude: 'Todas as tarifas incluem',
+    amenitiesBreakfast: 'Excelente pequeno-almoço',
+    amenitiesInternet: 'Internet de alta velocidade',
+    amenitiesParking: 'Lugar de estacionamento seguro',
+  },
+  de: {
+    amenitiesAllRatesInclude: 'Alle Preise beinhalten',
+    amenitiesBreakfast: 'Ausgezeichnetes Frühstück',
+    amenitiesInternet: 'Highspeed-Internet',
+    amenitiesParking: 'Sicherer Parkplatz',
+  },
+  fr: {
+    amenitiesAllRatesInclude: 'Tous les tarifs incluent',
+    amenitiesBreakfast: 'Excellent petit-déjeuner',
+    amenitiesInternet: 'Internet haut débit',
+    amenitiesParking: 'Place de parking sécurisée',
+  },
+  es: {
+    amenitiesAllRatesInclude: 'Todas las tarifas incluyen',
+    amenitiesBreakfast: 'Desayuno excelente',
+    amenitiesInternet: 'Internet de alta velocidad',
+    amenitiesParking: 'Plaza de aparcamiento segura',
+  },
+  it: {
+    amenitiesAllRatesInclude: 'Tutte le tariffe includono',
+    amenitiesBreakfast: 'Colazione eccellente',
+    amenitiesInternet: 'Internet ad alta velocità',
+    amenitiesParking: 'Posto auto sicuro',
+  },
+  nl: {
+    amenitiesAllRatesInclude: 'Alle tarieven zijn inclusief',
+    amenitiesBreakfast: 'Uitstekend ontbijt',
+    amenitiesInternet: 'Snel internet',
+    amenitiesParking: 'Veilige parkeerplaats',
+  },
+  sv: {
+    amenitiesAllRatesInclude: 'Alla priser inkluderar',
+    amenitiesBreakfast: 'Utmärkt frukost',
+    amenitiesInternet: 'Snabbt internet',
+    amenitiesParking: 'Säker parkeringsplats',
+  },
+  pl: {
+    amenitiesAllRatesInclude: 'Wszystkie ceny obejmują',
+    amenitiesBreakfast: 'Doskonałe śniadanie',
+    amenitiesInternet: 'Szybki internet',
+    amenitiesParking: 'Bezpieczne miejsce parkingowe',
+  },
+  ro: {
+    amenitiesAllRatesInclude: 'Toate tarifele includ',
+    amenitiesBreakfast: 'Mic dejun excelent',
+    amenitiesInternet: 'Internet de mare viteză',
+    amenitiesParking: 'Loc de parcare securizat',
+  },
+  sr: {
+    amenitiesAllRatesInclude: 'Sve cene uključuju',
+    amenitiesBreakfast: 'Odličan doručak',
+    amenitiesInternet: 'Brzi internet',
+    amenitiesParking: 'Bezbedno parking mesto',
+  },
+  hr: {
+    amenitiesAllRatesInclude: 'Sve cijene uključuju',
+    amenitiesBreakfast: 'Odličan doručak',
+    amenitiesInternet: 'Brzi internet',
+    amenitiesParking: 'Sigurno parkirno mjesto',
+  },
+  cs: {
+    amenitiesAllRatesInclude: 'Všechny ceny zahrnují',
+    amenitiesBreakfast: 'Vynikající snídaně',
+    amenitiesInternet: 'Vysokorychlostní internet',
+    amenitiesParking: 'Bezpečné parkovací místo',
+  },
+  tr: {
+    amenitiesAllRatesInclude: 'Tüm fiyatlara dahildir',
+    amenitiesBreakfast: 'Mükemmel kahvaltı',
+    amenitiesInternet: 'Yüksek hızlı internet',
+    amenitiesParking: 'Güvenli park yeri',
+  },
+  ja: {
+    amenitiesAllRatesInclude: 'すべての料金に含まれます',
+    amenitiesBreakfast: 'おいしい朝食',
+    amenitiesInternet: '高速インターネット',
+    amenitiesParking: '安全な駐車スペース',
+  },
+  zh: {
+    amenitiesAllRatesInclude: '所有房价均包含',
+    amenitiesBreakfast: '美味的早餐',
+    amenitiesInternet: '高速网络',
+    amenitiesParking: '安全停车位',
+  },
+  ru: {
+    amenitiesAllRatesInclude: 'Все тарифы включают',
+    amenitiesBreakfast: 'Отличный завтрак',
+    amenitiesInternet: 'Высокоскоростной интернет',
+    amenitiesParking: 'Безопасное парковочное место',
+  },
+  af: {
+    amenitiesAllRatesInclude: 'Alle tariewe sluit in',
+    amenitiesBreakfast: 'Uitstekende ontbyt',
+    amenitiesInternet: 'Hoëspoed-internet',
+    amenitiesParking: 'Veilige parkeerplek',
+  },
+  zu: {
+    amenitiesAllRatesInclude: 'Zonke izintengo zifaka',
+    amenitiesBreakfast: 'Isidlo sasekuseni esihle',
+    amenitiesInternet: 'I-inthanethi enesivinini esiphezulu',
+    amenitiesParking: 'Indawo yokupaka ephephile',
+  },
+  sw: {
+    amenitiesAllRatesInclude: 'Bei zote zinajumuisha',
+    amenitiesBreakfast: 'Kiamsha kinywa bora',
+    amenitiesInternet: 'Intaneti ya kasi',
+    amenitiesParking: 'Nafasi salama ya maegesho',
+  },
+};
+
 export const CONFIRM_STRINGS = {
   en: {
     confirming: 'Confirming your booking…',
@@ -2678,6 +2805,7 @@ export function getBookingStrings(lang) {
   // Merge with English so unexpected locales and any future partially
   // translated entries never allow a missing key to render as undefined.
   const minUnits = { ...MIN_UNITS_STRINGS.en, ...(MIN_UNITS_STRINGS[base] || {}) };
+  const amenities = { ...AMENITIES_BADGE_STRINGS.en, ...(AMENITIES_BADGE_STRINGS[base] || {}) };
   // Overlay localised rate-tier labels (all 20 base langs). EN fallback for any
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
@@ -2685,7 +2813,7 @@ export function getBookingStrings(lang) {
   const marinHelp = MARIN_STRINGS[base] || MARIN_STRINGS.en;
   // _lang: base language actually resolved (EN on fallback) — used by
   // perNightFromTemplate to select the correct CLDR plural category.
-  return { ...core, ...minUnits, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
+  return { ...core, ...minUnits, ...amenities, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
 }
 
 export function getConfirmStrings(lang) {

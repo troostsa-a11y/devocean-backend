@@ -1246,7 +1246,39 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 ) : (
                   <>
                   <div className="space-y-2">
-                    <p className="text-sm font-medium text-slate-600 text-center" data-testid="text-amenities-note">{t.amenitiesNote}</p>
+                    <div className="space-y-2 text-center" data-testid="text-amenities-note">
+                      <div className="flex justify-center" data-testid="amenities-badges-top-row">
+                        <span
+                          className="inline-flex items-center rounded-full border border-[#d6b36a] bg-[#fff8e7] px-3 py-1 text-xs font-semibold text-[#805d18]"
+                          data-testid="amenities-badge-all-rates"
+                        >
+                          {t.amenitiesAllRatesInclude}
+                        </span>
+                      </div>
+                      <div
+                        className="flex flex-wrap justify-center gap-2"
+                        data-testid="amenities-badges-benefits-row"
+                      >
+                        <span
+                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                          data-testid="amenities-badge-breakfast"
+                        >
+                          {t.amenitiesBreakfast}
+                        </span>
+                        <span
+                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                          data-testid="amenities-badge-internet"
+                        >
+                          {t.amenitiesInternet}
+                        </span>
+                        <span
+                          className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600"
+                          data-testid="amenities-badge-parking"
+                        >
+                          {t.amenitiesParking}
+                        </span>
+                      </div>
+                    </div>
                     <div className="flex justify-start">
                     {(() => {
                       const hasChildOrInfant = effChildren > 0 || effInfants > 0;
