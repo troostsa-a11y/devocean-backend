@@ -187,8 +187,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (pCheckIn)           setCheckIn(pCheckIn);
     if (pCheckOut)          setCheckOut(pCheckOut);
     if (pAdults != null)    setAdults(pAdults);
-    if (pChildren)          setChildren(pChildren);
-    if (pInfants != null)   setInfants(pInfants);
+    if (pChildren) {
+      setChildren(pChildren);
+      setChildAges(Array.from({ length: pChildren }, () => ''));
+    }
+    if (pInfants != null) {
+      setInfants(pInfants);
+      setInfantAges(Array.from({ length: pInfants }, () => ''));
+    }
     if (pDiscount)          setDiscountCode(pDiscount);
     // Restore display currency without overwriting a user's explicit earlier choice.
     if (pCurrency && onCurrencyChange) onCurrencyChange(pCurrency);
@@ -367,8 +373,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         if (checkOut)            sp.set('checkOut', checkOut);
         if (adults !== 2)        sp.set('adults', String(adults));
         if (children > 0)        sp.set('children', String(children));
+        if (infants > 0)         sp.set('infants', String(infants));
         if (discountCode.trim()) sp.set('discount', discountCode.trim());
         if (currency)            sp.set('currency', currency);
+        const unit = new URLSearchParams(window.location.search).get('unit');
+        if (unit)                sp.set('unit', unit);
         window.history.replaceState(null, '', `/book-direct?${sp.toString()}`);
       } catch (_) {}
     } catch (err) {
@@ -406,8 +415,11 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         sp.set('checkOut', newCheckOut);
         if (adults !== 2)        sp.set('adults', String(adults));
         if (children > 0)        sp.set('children', String(children));
+        if (infants > 0)         sp.set('infants', String(infants));
         if (discountCode.trim()) sp.set('discount', discountCode.trim());
         if (currency)            sp.set('currency', currency);
+        const unit = new URLSearchParams(window.location.search).get('unit');
+        if (unit)                sp.set('unit', unit);
         window.history.replaceState(null, '', `/book-direct?${sp.toString()}`);
       } catch (_) {}
     } catch (err) {

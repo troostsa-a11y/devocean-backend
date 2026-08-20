@@ -8,10 +8,11 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { cleanup, render, screen } from '@testing-library/react';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { createElement } from 'react';
 import AccommodationsSection from '../../components/AccommodationsSection';
+import BookDirectPage from '../../components/BookDirectPage';
 import { buildBookingUrl } from '../localize';
 
 const UNITS = [
@@ -160,5 +161,97 @@ describe('booking search comparison journey', () => {
     expect(
       document.querySelector('[data-accommodation-context-link]').getAttribute('href'),
     ).toBe('/#stay');
+  });
+
+  it('loads live availability with the handed-off search and focuses the selected unit', async () => {
+    const unit = 'chalet';
+    const availabilityRequests = [];
+    const onCurrencyChange = vi.fn();
+    const scrollIntoView = vi.fn();
+    const originalScrollIntoView = Element.prototype.scrollIntoView;
+    Element.prototype.scrollIntoView = scrollIntoView;
+
+    window.history.replaceState(
+      {},
+      '',
+      `/de/book-direct?${searchQuery}&unit=${unit}`,
+    );
+
+    vi.spyOn(globalThis, 'fetch').mockImplementation((url, init) => {
+      if (String(url).includes('/api/booking/availability')) {
+        availabilityRequests.push(JSON.parse(init.body));
+        return Promise.resolve({
+          ok: true,
+          json: async () => ({
+            checkIn: SEARCH.checkIn,
+            checkOut: SEARCH.checkOut,
+            nights: 4,
+            currency: 'USD',
+            cancellationPolicyDays: 30,
+            maxRooms: 5,
+            rooms: [{
+              roomId: 'chalet-live',
+              name: 'Thatched Chalet',
+              currency: 'USD',
+              nights: 4,
+              maxAdults: 4,
+              maxPeople: 4,
+              maxChildren: 2,
+              available: true,
+              offers: [{
+                offerId: 'chalet-flex',
+                total: 800,
+                type: 'semiFlex',
+                unitsAvailable: 2,
+                refundable: true,
+              }],
+            }],
+          }),
+        });
+      }
+      if (String(url).includes('/api/booking/calendar')) {
+        return Promise.resolve({ ok: true, json: async () => ({ prices: {} }) });
+      }
+      if (String(url).includes('/api/fx')) {
+        return Promise.resolve({ ok: true, json: async () => ({ base: 'USD', rates: { ZAR: 18 } }) });
+      }
+      return Promise.resolve({ ok: false, json: async () => ({}) });
+    });
+
+    try {
+      render(createElement(BookDirectPage, {
+        lang: 'de-DE',
+        currency: SEARCH.currency,
+        onCurrencyChange,
+      }));
+
+      expect(screen.getByTestId('select-adults').value).toBe(SEARCH.adults);
+      expect(screen.getByTestId('select-children').value).toBe(SEARCH.children);
+      expect(screen.getByTestId('select-infants').value).toBe(SEARCH.infants);
+      expect(screen.getByTestId('input-discount-code').value).toBe(SEARCH.discount);
+      expect(onCurrencyChange).toHaveBeenCalledWith(SEARCH.currency);
+
+      await act(async () => {
+        fireEvent.change(screen.getByTestId('select-child-age-0'), { target: { value: '8' } });
+        fireEvent.change(screen.getByTestId('select-infant-age-0'), { target: { value: '1' } });
+        fireEvent.click(screen.getByTestId('button-search'));
+      });
+
+      await waitFor(() => {
+        expect(screen.getByTestId('card-room-chalet-live')).toBeTruthy();
+      });
+      expect(availabilityRequests).toEqual([{
+        checkIn: SEARCH.checkIn,
+        checkOut: SEARCH.checkOut,
+        adults: 2,
+        children: 1,
+      }]);
+      expect(scrollIntoView).toHaveBeenCalled();
+      expect(window.location.search).toContain('infants=1');
+      expect(window.location.search).toContain('unit=chalet');
+    } finally {
+      Element.prototype.scrollIntoView = originalScrollIntoView;
+      vi.restoreAllMocks();
+    }
   });
 });
