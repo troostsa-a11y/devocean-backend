@@ -5,13 +5,17 @@ description: How explicit per-unit guest counts flow from UI steppers → cartLi
 
 ## The rule
 
-When the party has children or infants (`effChildren > 0 || effInfants > 0`), the booking UI expands each room in the cart into individual unit entries with explicit `adults/children/infants` fields. The backend detects these via `hasExplicitOcc = lines.some(l => l.adults !== undefined)` and prices each unit independently rather than running the auto-distributor.
+When a party includes children or infants, each booked unit carries its actual adult/child/infant split, and pricing follows that split rather than silently redistributing guests.
 
 **Why:** Beds24 per-person pricing means 2A in one room + 0A in another ≠ 1A in each room. The auto-distributor guaranteed ≥1 adult per room which misprice children-only units.
 
 For lodging capacity, infants count as physical occupants even though they remain excluded from chargeable Beds24 child pricing. Garden Cottage is a strict two-person unit; Safari, Comfort, and Chalet use a two-adult-plus-one-child/infant-slot policy.
 
 **Why:** A 2-adult + infant party must not be offered a single Garden Cottage or pass quote validation merely because infants are free in the rate calculation.
+
+Before Continue, explicit per-unit occupancy must also match the requested adult/child/infant counts exactly; room capacity alone is insufficient because a 2-adult Safari unit can physically hold a third infant/child.
+
+**Why:** Otherwise the results header can say “3 guests” while the reservation carries only the two adults shown in the unit steppers.
 
 ## offersForOccWithFloor pattern
 
@@ -23,24 +27,10 @@ Apply max(child rate, floor rate) per offer. This ensures a children-only unit i
 
 Units with `adults > 0` pass through `offersForOcc(a, c)` directly — no floor needed.
 
-## Condition consistency requirement
-
-Three places must use the SAME `(effChildren > 0 || effInfants > 0)` guard:
-1. **Frontend render** — `occArray != null` → per-unit steppers visible
-2. **cartLines useMemo** — takes the explicit-occupancy branch, emits `{adults, children, infants}` per line
-3. **Backend** — `hasExplicitOcc` detection (implicit: if frontend sends adults field, backend uses explicit path)
-
-If these conditions drift, steppers appear but cartLines takes the wrong branch (or vice versa) and changing occupancy has no effect on the quote.
-
 ## Rate-not-changing observation
 
 If the quote re-fires (loading spinner visible) but the price doesn't change, the cause is **Beds24 returning the same rate** for different occupancy — i.e., flat room rate for those dates, not per-person pricing. This is a Beds24 rate-plan config issue, not a code bug. The code correctly sends different `numAdults`/`numChildren` to Beds24 each time.
 
-## Key files
+## Children-only units
 
-- `render-automailer/server/services/booking-cart.ts` — `offersForOccWithFloor`, `hasExplicitOcc`, `distributeGuests`, `mergeLines`
-- `WebsiteProject/src/components/BookDirectPage.jsx` — `roomOccupancy` state, `setRoomOcc`, `cartLines` useMemo, `defaultRoomOcc`
-
-## normalizeLine: 0 adults allowed
-
-`normalizeLine` uses `Math.max(0, adults)` — 0-adult lines are valid (children-only unit). Do NOT change to `Math.max(1, ...)` — that would silently promote children-only units to 1-adult pricing before `offersForOccWithFloor` can apply the floor correctly.
+Children-only unit assignments are valid. They must still respect the lodge's minimum-rate policy, so a children-only rate should never undercut the comparable single-adult rate.

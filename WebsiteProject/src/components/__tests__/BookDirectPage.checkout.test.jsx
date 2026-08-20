@@ -1945,6 +1945,7 @@ describe('Marin context quotes FX display currency alongside charged USD', () =>
 
 describe('whole-party capacity protection', () => {
   const GARDEN_ROOM_ID = 'garden-capacity-room';
+  const SAFARI_ROOM_ID = 'safari-capacity-room';
   const GARDEN_CHECK_IN = '2027-11-01';
   const GARDEN_CHECK_OUT = '2027-11-03';
   let originalLocationDescriptor;
@@ -1972,6 +1973,31 @@ describe('whole-party capacity protection', () => {
           unitsAvailable,
         }],
       }],
+    };
+  }
+
+  function safariAvailability(unitsAvailable) {
+    return {
+      ...gardenAvailability(unitsAvailable),
+      rooms: [{
+        ...gardenAvailability(unitsAvailable).rooms[0],
+        roomId: SAFARI_ROOM_ID,
+        name: 'Safari Tent',
+        maxPeople: 3,
+      }],
+    };
+  }
+
+  function mixedAvailability() {
+    const garden = gardenAvailability(1).rooms[0];
+    const safari = {
+      ...safariAvailability(1).rooms[0],
+      roomId: SAFARI_ROOM_ID,
+      offerId: 'safari-capacity-offer',
+    };
+    return {
+      ...gardenAvailability(1),
+      rooms: [garden, safari],
     };
   }
 
@@ -2028,6 +2054,48 @@ describe('whole-party capacity protection', () => {
     });
   }
 
+  function setupSafariFetch(unitsAvailable) {
+    setBookingQuery({ adults: 2, infants: 1 });
+    global.fetch = vi.fn((url) => {
+      if (url.includes('/api/booking/availability')) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(safariAvailability(unitsAvailable)),
+        });
+      }
+      if (url.includes('/api/booking/quote')) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve({
+            checkIn: GARDEN_CHECK_IN,
+            checkOut: GARDEN_CHECK_OUT,
+            nights: 2,
+            currency: 'USD',
+            rooms: 1,
+            lines: [{
+              roomId: GARDEN_ROOM_ID,
+              offerId: 'garden-capacity-offer',
+              roomName: 'Safari Tent',
+              qty: 1,
+              adults: 2,
+              children: 0,
+              infants: 0,
+              lineTotal: 500,
+            }],
+            total: 500,
+            depositPercent: 50,
+            deposit: 250,
+            balance: 250,
+          }),
+        });
+      }
+      if (url.includes('/api/booking/calendar')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+  }
+
   it('does not present one available Garden Cottage for 2 adults plus an infant', async () => {
     setupGardenFetch(1);
     render(<BookDirectPage lang="en-GB" />);
@@ -2059,5 +2127,51 @@ describe('whole-party capacity protection', () => {
 
     expect(screen.getByTestId('text-validation-warning').textContent)
       .toContain('Not all guests are accommodated. Continue your booking.');
+  });
+
+  it('shows the capacity warning when a Safari unit still contains fewer guests than requested', async () => {
+    setupSafariFetch(1);
+    render(<BookDirectPage lang="en-GB" />);
+
+    const incButton = await waitFor(
+      () => screen.getByTestId(`button-inc-${SAFARI_ROOM_ID}`),
+      { timeout: 3000 },
+    );
+    await act(async () => { fireEvent.click(incButton); });
+
+    const continueButton = await waitFor(
+      () => {
+        const button = screen.getByTestId('button-continue-details');
+        if (button.disabled) throw new Error('quote still loading');
+        return button;
+      },
+      { timeout: 3000 },
+    );
+    await act(async () => { fireEvent.click(continueButton); });
+
+    expect(screen.getByTestId('text-validation-warning').textContent)
+      .toContain('Not all guests are accommodated. Continue your booking.');
+  });
+
+  it('keeps mixed room types visible when one of each can accommodate the party', async () => {
+    setBookingQuery({ adults: 3 });
+    global.fetch = vi.fn((url) => {
+      if (url.includes('/api/booking/availability')) {
+        return Promise.resolve({
+          ok: true,
+          json: () => Promise.resolve(mixedAvailability()),
+        });
+      }
+      if (url.includes('/api/booking/calendar')) {
+        return Promise.resolve({ ok: true, json: () => Promise.resolve({ prices: {} }) });
+      }
+      return Promise.resolve({ ok: false, json: () => Promise.resolve({}) });
+    });
+    render(<BookDirectPage lang="en-GB" />);
+
+    await waitFor(() => {
+      expect(screen.getByTestId(`button-inc-${GARDEN_ROOM_ID}`)).toBeTruthy();
+      expect(screen.getByTestId(`button-inc-${SAFARI_ROOM_ID}`)).toBeTruthy();
+    });
   });
 });

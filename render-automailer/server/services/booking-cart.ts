@@ -367,6 +367,31 @@ export async function computeCartQuote(
         displayDist.push({ adults: a, children: c, infants: inf });
       }
     }
+
+    const selectedTotals = displayDist.reduce(
+      (totals, occupancy) => ({
+        adults: totals.adults + occupancy.adults,
+        children: totals.children + occupancy.children,
+        infants: totals.infants + occupancy.infants,
+      }),
+      { adults: 0, children: 0, infants: 0 },
+    );
+    const requestedTotals = {
+      adults: stay.adults,
+      children: stay.children,
+      infants: stay.infants ?? 0,
+    };
+    if (
+      selectedTotals.adults !== requestedTotals.adults ||
+      selectedTotals.children !== requestedTotals.children ||
+      selectedTotals.infants !== requestedTotals.infants
+    ) {
+      throw new BookingCartError(
+        'The selected room occupancy must include exactly all requested guests.',
+        409,
+        'PARTY_TOO_LARGE',
+      );
+    }
   } else {
     dist = distributeGuests(slots, stay.adults, stay.children, stay.infants ?? 0);
     displayDist = dist.map((d) => ({ adults: d.adults, children: d.children, infants: d.infants ?? 0 }));

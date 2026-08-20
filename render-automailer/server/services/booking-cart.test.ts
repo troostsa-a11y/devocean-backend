@@ -42,6 +42,14 @@ const rooms: Beds24Room[] = [
     maxAdults: 2,
     maxChildren: 0,
   },
+  {
+    roomId: 'safari-tent',
+    name: 'Safari Tent',
+    qty: 5,
+    maxPeople: 3,
+    maxAdults: 2,
+    maxChildren: 0,
+  },
 ];
 
 function makeOffer(roomId: string, adults: number, children: number): RoomOffer {
@@ -147,4 +155,48 @@ test('rechecks persisted infant occupancy for a larger room and a multi-unit car
     { adults: 1, infants: 0 },
   ]);
   assert.equal(multiUnitQuote.infants, 1);
+});
+
+test('rejects explicit Safari occupancy that leaves a requested infant unassigned', async () => {
+  await assert.rejects(
+    computeCartQuote(
+      makeBeds24(),
+      stay,
+      [{
+        roomId: 'safari-tent',
+        offerId: 2,
+        qty: 1,
+        adults: 2,
+        children: 0,
+        infants: 0,
+      }],
+      cfg,
+    ),
+    (error: unknown) =>
+      error instanceof BookingCartError &&
+      error.code === 'PARTY_TOO_LARGE' &&
+      error.status === 409,
+  );
+});
+
+test('rejects explicit occupancy that adds guests beyond the requested party', async () => {
+  await assert.rejects(
+    computeCartQuote(
+      makeBeds24(),
+      stay,
+      [{
+        roomId: 'safari-tent',
+        offerId: 2,
+        qty: 2,
+        adults: 1,
+        children: 0,
+        infants: 1,
+      }],
+      cfg,
+    ),
+    (error: unknown) =>
+      error instanceof BookingCartError &&
+      error.code === 'PARTY_TOO_LARGE' &&
+      error.status === 409,
+  );
 });

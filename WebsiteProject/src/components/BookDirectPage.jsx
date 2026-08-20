@@ -589,8 +589,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   // offer so the guest can opt for a refundable plan (server re-prices the chosen
   // offerId regardless).
   const availableRooms = useMemo(
-    () =>
-      (availability?.rooms || [])
+    () => {
+      const roomCandidates = (availability?.rooms || [])
         .map((r) => {
           const priced = (Array.isArray(r.offers) ? r.offers : [])
             .filter((o) => Number.isFinite(o.total) && o.total > 0)
@@ -610,13 +610,54 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
             effChildren,
             effInfants,
           );
-          const capacityAvailable =
-            r.capacityAvailable !== false &&
-            offers.some((o) => (o.unitsAvailable ?? 0) >= requiredUnits);
-          return { ...r, offers, requiredUnits, capacityAvailable };
+          return {
+            ...r,
+            offers,
+            requiredUnits,
+            // The server's requiredUnits value describes this room type alone.
+            // Keep it as metadata; mixed carts can satisfy the party across
+            // different room types.
+            capacityAvailable: offers.some((o) => (o.unitsAvailable ?? 0) > 0),
+          };
         })
-        .filter((r) => r && r.available && r.capacityAvailable)
-        .sort((a, b) => a.offers[0].total - b.offers[0].total),
+        .filter((r) => r && r.available && r.capacityAvailable);
+
+      const partyTotal = effAdults + effChildren + effInfants;
+      const maxRoomsForSearch = availability?.maxRooms ?? 5;
+      const participatesInValidCombination = (targetRoomId) => {
+        const search = (index, adultCapacity, totalCapacity, roomCount, includesTarget) => {
+          if (adultCapacity >= effAdults && totalCapacity >= partyTotal && includesTarget) {
+            return true;
+          }
+          if (index >= roomCandidates.length || roomCount >= maxRoomsForSearch) {
+            return false;
+          }
+          const room = roomCandidates[index];
+          const maxUnits = Math.min(
+            maxRoomsForSearch - roomCount,
+            Math.max(...room.offers.map((o) => o.unitsAvailable ?? 0), 0),
+          );
+          const capacity = getRoomCapacity(room);
+          for (let qty = 0; qty <= maxUnits; qty++) {
+            if (search(
+              index + 1,
+              adultCapacity + capacity.maxAdults * qty,
+              totalCapacity + capacity.maxPeople * qty,
+              roomCount + qty,
+              includesTarget || (room.roomId === targetRoomId && qty > 0),
+            )) {
+              return true;
+            }
+          }
+          return false;
+        };
+        return search(0, 0, 0, 0, false);
+      };
+
+      return roomCandidates
+        .filter((r) => participatesInValidCombination(r.roomId))
+        .sort((a, b) => a.offers[0].total - b.offers[0].total);
+    },
     [availability, effAdults, effChildren, effInfants],
   );
   const unavailableRooms = useMemo(
@@ -678,9 +719,29 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       totalCapacity += capacity.maxPeople * qty;
       adultCapacity += capacity.maxAdults * qty;
     }
-    return adultCapacity >= effAdults &&
+    const capacityFits =
+      adultCapacity >= effAdults &&
       totalCapacity >= effAdults + effChildren + effInfants;
-  }, [cart, availableRooms, totalRooms, effAdults, effChildren, effInfants]);
+
+    // When children or infants are part of the search, the cart carries
+    // explicit per-unit occupancy. Capacity alone is not enough here:
+    // Safari/Comfort/Chalet can hold 2 adults + 1 child/infant, so a unit
+    // containing only the two adults would otherwise incorrectly pass.
+    if (!capacityFits || (effChildren === 0 && effInfants === 0)) {
+      return capacityFits;
+    }
+    const selectedOccupancy = cartLines.reduce(
+      (totals, line) => ({
+        adults: totals.adults + (Number(line.adults) || 0) * (line.qty || 1),
+        children: totals.children + (Number(line.children) || 0) * (line.qty || 1),
+        infants: totals.infants + (Number(line.infants) || 0) * (line.qty || 1),
+      }),
+      { adults: 0, children: 0, infants: 0 },
+    );
+    return selectedOccupancy.adults === effAdults &&
+      selectedOccupancy.children === effChildren &&
+      selectedOccupancy.infants === effInfants;
+  }, [cart, cartLines, availableRooms, totalRooms, effAdults, effChildren, effInfants]);
 
   // ── Informational currency conversion (display only) ──────────────────────
   // The base/charged currency is the Beds24 property currency (availability
