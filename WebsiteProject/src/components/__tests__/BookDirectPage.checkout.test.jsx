@@ -417,6 +417,21 @@ describe('checkout bedPreferences — integration', () => {
     expect(body.bedPreferences).toBeDefined();
     expect(body.bedPreferences[SAFARI_ROOM_ID]).toBe('twin');
   });
+
+  it('places the amenities note before the left-aligned minimum-units notice', async () => {
+    render(
+      <BookDirectPage
+        lang="en-GB"
+        currency="USD"
+      />,
+    );
+
+    const amenities = await screen.findByTestId('text-amenities-note');
+    const notice = await screen.findByTestId('notice-min-units');
+
+    expect(amenities.compareDocumentPosition(notice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(notice.parentElement.className).toContain('justify-start');
+  });
 });
 
 // ── occupancy + rate-switch integration test ──────────────────────────────────
