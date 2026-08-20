@@ -1367,8 +1367,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             {unitImg && (
                               <a
                                 href={unitDetailUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="shrink-0 flex flex-col items-center gap-1 group"
                                 data-testid={`link-unavail-details-${room.roomId}`}
                               >
