@@ -132,10 +132,15 @@ export function createBookingRouter(deps: {
   db: DatabaseService | null;
   requireAdminKey: RequestHandler;
   emailService?: EmailScheduler | null;
+  beds24?: Beds24Service;
+  constructWebhookEvent?: typeof constructWebhookEvent;
+  refundPaymentIntent?: typeof refundPaymentIntent;
 }): Router {
   const router = express.Router();
   const { db, requireAdminKey, emailService } = deps;
-  const beds24 = new Beds24Service();
+  const beds24 = deps.beds24 || new Beds24Service();
+  const verifyWebhookEvent = deps.constructWebhookEvent || constructWebhookEvent;
+  const refundPayment = deps.refundPaymentIntent || refundPaymentIntent;
 
   // ─── Best-effort ops alert (payment captured, no matching booking record) ──
   // This covers the one failure mode that leaves zero visible trace: Stripe
@@ -618,7 +623,7 @@ export function createBookingRouter(deps: {
     let event;
     try {
       const raw = (req as any).rawBody || req.body;
-      event = constructWebhookEvent(raw, req.headers['stripe-signature'] as string, cfg);
+      event = verifyWebhookEvent(raw, req.headers['stripe-signature'] as string, cfg);
     } catch (err: any) {
       console.error('[BOOKING] webhook signature error:', err.message);
       return res.status(400).json({ error: `Webhook Error: ${err.message}` });
@@ -748,7 +753,7 @@ export function createBookingRouter(deps: {
         throw new Error(`Sold-out refund pending, missing payment intent for ${record.sessionRef}`);
       }
       try {
-        await refundPaymentIntent(paymentIntentId, 'requested_by_customer', cfg);
+        await refundPayment(paymentIntentId, 'requested_by_customer', cfg);
       } catch (e: any) {
         console.error('[BOOKING] auto-refund failed:', e.message);
         await db!.updateDirectBooking(record.sessionRef, {
