@@ -543,8 +543,11 @@ describe('checkout bedPreferences — integration', () => {
       fireEvent.change(children, { target: { value: '1' } });
     });
 
-    expect(await screen.findByTestId('select-infant-age-0')).toBeTruthy();
-    expect(await screen.findByTestId('select-child-age-0')).toBeTruthy();
+    const infantAge = await screen.findByTestId('select-infant-age-0');
+    const childAge = await screen.findByTestId('select-child-age-0');
+    expect(infantAge).toBeTruthy();
+    expect(childAge).toBeTruthy();
+    expect(infantAge.compareDocumentPosition(childAge) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
   it('keeps the selection summary details inline with wrapping segments', async () => {
