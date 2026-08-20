@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect, useMemo, useCallback, useRef, sta
 import { ROUTE_DESCRIPTIONS } from '../utils/routeDescriptions.js';
 import { useSeoPage } from '../utils/seoMeta';
 import { useLocation } from 'wouter';
-import { CalendarCheck2, Users, Loader2, ShieldCheck, ChevronLeft, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
+import { CalendarCheck2, Users, Loader2, ShieldCheck, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
@@ -1198,10 +1198,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 <button
                   type="button"
                   onClick={() => { setStep('search'); setError(''); }}
-                  className="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900"
+                  className="inline-flex items-center rounded-lg bg-[#9e4b13] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#8a4211] focus:outline-none focus:ring-2 focus:ring-[#9e4b13]/40 focus:ring-offset-2"
                   data-testid="button-back-search"
                 >
-                  <ChevronLeft className="h-4 w-4" /> {t.back}
+                  {t.back}
                 </button>
 
                 <div className="flex items-center justify-between gap-4">
@@ -1595,10 +1595,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                 <button
                   type="button"
                   onClick={() => { setStep('results'); setError(''); }}
-                  className="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900"
+                  className="inline-flex items-center rounded-lg bg-[#9e4b13] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#8a4211] focus:outline-none focus:ring-2 focus:ring-[#9e4b13]/40 focus:ring-offset-2"
                   data-testid="button-back-results"
                 >
-                  <ChevronLeft className="h-4 w-4" /> {t.back}
+                  {t.back}
                 </button>
 
                 <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-6">
