@@ -10,7 +10,7 @@ import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
 import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
 import MarinPanel from './MarinPanel';
-import RoomCard, { money, approxMoney, getUnitKey, defaultRoomOccFor, BED_TOGGLE_UNIT_KEYS, ROOM_CARD_MEDIA_CLASS, ROOM_CARD_IMAGE_CLASS } from './RoomCard';
+import RoomCard, { money, approxMoney, getUnitKey, getRoomCapacity, requiredUnitsForParty, defaultRoomOccFor, BED_TOGGLE_UNIT_KEYS, ROOM_CARD_MEDIA_CLASS, ROOM_CARD_IMAGE_CLASS } from './RoomCard';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -404,7 +404,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       const res = await fetch('/api/booking/availability', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ checkIn, checkOut, adults: effAdults, children: effChildren }),
+        body: JSON.stringify({ checkIn, checkOut, adults: effAdults, children: effChildren, infants: effInfants }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || t.errorGeneric);
@@ -449,7 +449,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       const res = await fetch('/api/booking/availability', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ checkIn: newCheckIn, checkOut: newCheckOut, adults: effAdults, children: effChildren }),
+        body: JSON.stringify({ checkIn: newCheckIn, checkOut: newCheckOut, adults: effAdults, children: effChildren, infants: effInfants }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || t.errorGeneric);
@@ -495,6 +495,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           nights,
           adults: effAdults,
           children: effChildren,
+          infants: effInfants,
         }),
       });
       const data = await res.json();
@@ -545,6 +546,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           checkOut,
           adults: effAdults,
           children: effChildren,
+          infants: effInfants,
           discountCode: discountCode.trim() || undefined,
           voucher: voucherCode.trim() || undefined,
           gaClientId,
@@ -602,11 +604,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
             );
             if (semiFlex) offers.push(semiFlex);
           }
-          return { ...r, offers };
+          const requiredUnits = requiredUnitsForParty(
+            r,
+            effAdults,
+            effChildren,
+            effInfants,
+          );
+          const capacityAvailable =
+            r.capacityAvailable !== false &&
+            offers.some((o) => (o.unitsAvailable ?? 0) >= requiredUnits);
+          return { ...r, offers, requiredUnits, capacityAvailable };
         })
-        .filter((r) => r && r.available)
+        .filter((r) => r && r.available && r.capacityAvailable)
         .sort((a, b) => a.offers[0].total - b.offers[0].total),
-    [availability],
+    [availability, effAdults, effChildren, effInfants],
   );
   const unavailableRooms = useMemo(
     () => (availability?.rooms || []).filter((r) => !r.available),
@@ -643,7 +654,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           // When the party includes children/infants, expand into individual unit
           // entries (qty=1 each) so the backend prices each unit at its actual occupancy.
           if ((effChildren > 0 || effInfants > 0) && room) {
-            const occArr = roomOccupancy[roomId] ?? Array.from({ length: qty }, () => defaultRoomOccFor(room, effAdults, effChildren));
+            const occArr = roomOccupancy[roomId] ?? Array.from({ length: qty }, () => defaultRoomOccFor(room, effAdults, effChildren, effInfants));
             return occArr.slice(0, qty).map((occ) => ({
               roomId, offerId: offer?.offerId ?? null, qty: 1,
               adults: occ.adults, children: occ.children, infants: occ.infants ?? 0,
@@ -655,6 +666,21 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms;
+  const selectedPartyFits = useMemo(() => {
+    if (totalRooms < 1) return false;
+    let totalCapacity = 0;
+    let adultCapacity = 0;
+    for (const [roomId, qty] of Object.entries(cart)) {
+      if (!qty || qty < 1) continue;
+      const room = availableRooms.find((r) => r.roomId === roomId);
+      if (!room) return false;
+      const capacity = getRoomCapacity(room);
+      totalCapacity += capacity.maxPeople * qty;
+      adultCapacity += capacity.maxAdults * qty;
+    }
+    return adultCapacity >= effAdults &&
+      totalCapacity >= effAdults + effChildren + effInfants;
+  }, [cart, availableRooms, totalRooms, effAdults, effChildren, effInfants]);
 
   // ── Informational currency conversion (display only) ──────────────────────
   // The base/charged currency is the Beds24 property currency (availability
@@ -771,16 +797,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }, [checkIn, checkOut, quote, adults, children, infants, showFx, fxRatesForBase, currency]);
 
   // Minimum units needed to fit the whole party in the most spacious available room type.
-  // Falls back to capacity=2 per unit (the lodge default) when availableRooms is empty,
-  // so the note shows the correct count even when all units are unavailable for the dates.
+  // Falls back to one so the note stays harmless when every room is unavailable.
   const minUnitsNeeded = useMemo(() => {
-    const maxCap = (availableRooms ?? []).reduce((best, r) => {
-      const uk = getUnitKey(r.name);
-      const cap = BED_TOGGLE_UNIT_KEYS.includes(uk)
-        ? (r.maxAdults || 2) + 1 : (r.maxAdults || r.maxPeople || 2);
-      return Math.max(best, cap);
-    }, 2);
-    return Math.ceil((effAdults + effChildren + effInfants) / maxCap);
+    const needed = (availableRooms ?? []).map((r) =>
+      requiredUnitsForParty(r, effAdults, effChildren, effInfants),
+    );
+    return needed.length ? Math.min(...needed) : 1;
   }, [availableRooms, effAdults, effChildren, effInfants]);
 
   // Card interaction handlers — all wrapped in useCallback with minimal deps
@@ -800,7 +822,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         setRoomOccupancy((prev) => { const next = { ...prev }; delete next[roomId]; return next; });
       } else {
         const room = availableRooms.find((r) => r.roomId === roomId);
-        const def = room ? defaultRoomOccFor(room, effAdults, effChildren) : { adults: 0, children: 0, infants: 0 };
+        const def = room ? defaultRoomOccFor(room, effAdults, effChildren, effInfants) : { adults: 0, children: 0, infants: 0 };
         setRoomOccupancy((prev) => {
           const current = prev[roomId] ?? [];
           return { ...prev, [roomId]: Array.from({ length: qty }, (_, i) => current[i] ?? { ...def }) };
@@ -936,6 +958,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
             checkOut,
             adults: effAdults,
             children: effChildren,
+            infants: effInfants,
             rooms: cartLines,
             discountCode: discountCode.trim() || undefined,
             voucher: voucherCode.trim() || undefined,
@@ -1688,8 +1711,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         )}
                         <button
                           type="button"
-                          onClick={() => { setStep('details'); setError(''); }}
-                          disabled={!quote || quoteLoading || !!quoteError}
+                          onClick={(event) => {
+                            validationWarningTriggerRef.current = event.currentTarget;
+                            if (!selectedPartyFits) {
+                              setValidationWarning(
+                                t.notAllGuestsAccommodated ||
+                                'Not all guests are accommodated. Continue your booking.',
+                              );
+                              return;
+                            }
+                            if (!quote || quoteError) return;
+                            setStep('details');
+                            setError('');
+                          }}
+                          disabled={quoteLoading || totalRooms < 1 || (selectedPartyFits && (!quote || !!quoteError))}
                           className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-5 py-3 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
                           data-testid="button-continue-details"
                         >

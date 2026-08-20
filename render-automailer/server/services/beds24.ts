@@ -32,6 +32,34 @@ export interface Beds24Room {
   maxChildren: number;
 }
 
+const CHILD_SLOT_ROOM_NAMES = ['safari', 'comfort', 'chalet'];
+
+// Keep this policy aligned with the booking page: infants occupy physical
+// lodging space, while the Beds24 price calculation still treats them as free.
+export function getRoomCapacity(room: Pick<Beds24Room, 'name' | 'maxPeople' | 'maxAdults'>) {
+  const maxAdults = room.maxAdults > 0 ? room.maxAdults : (room.maxPeople || 2);
+  const isChildSlotRoom = CHILD_SLOT_ROOM_NAMES.some((key) =>
+    String(room.name || '').toLowerCase().includes(key),
+  );
+  const maxPeople = isChildSlotRoom ? maxAdults + 1 : (room.maxPeople || maxAdults);
+  return { maxAdults, maxPeople };
+}
+
+export function requiredUnitsForParty(
+  room: Pick<Beds24Room, 'name' | 'maxPeople' | 'maxAdults'>,
+  adults: number,
+  children: number,
+  infants = 0,
+) {
+  const { maxAdults, maxPeople } = getRoomCapacity(room);
+  const totalGuests = Math.max(0, adults) + Math.max(0, children) + Math.max(0, infants);
+  return Math.max(
+    Math.ceil(Math.max(0, adults) / maxAdults),
+    Math.ceil(totalGuests / maxPeople),
+    1,
+  );
+}
+
 /** Normalised rate-plan category derived from the Beds24 offer code. */
 export type OfferType =
   | 'standard'
@@ -58,6 +86,8 @@ export interface RoomOffers {
   maxAdults: number;
   maxChildren: number;
   available: boolean;
+  requiredUnits: number;
+  capacityAvailable: boolean;
   nights: number;
   currency: string;
   offers: RoomOffer[];
@@ -70,6 +100,7 @@ export interface AvailabilityResult {
   nights: number;
   adults: number;
   children: number;
+  infants: number;
   currency: string;
   rooms: RoomOffers[];
 }
@@ -662,9 +693,9 @@ export class Beds24Service {
    * multiplied by each OFFER_PLAN's offsetPercent, plus the occupancy surcharge.
    */
   async getAvailability(input: {
-    checkIn: string; checkOut: string; adults: number; children: number;
+    checkIn: string; checkOut: string; adults: number; children: number; infants?: number;
   }): Promise<AvailabilityResult> {
-    const { checkIn, checkOut, adults, children } = input;
+    const { checkIn, checkOut, adults, children, infants = 0 } = input;
     const nights = nightsBetween(checkIn, checkOut);
     if (nights === 0) throw new Beds24Error('Checkout must be after checkin', 400);
 
@@ -684,6 +715,7 @@ export class Beds24Service {
       const { offers, unitsAvailable } = this.calcOffers(
         room.roomId, nights, stayDates, numAvail, occ.adults, occ.children, checkIn,
       );
+      const requiredUnits = requiredUnitsForParty(room, adults, children, infants);
       return {
         roomId:         room.roomId,
         name:           room.name,
@@ -691,6 +723,8 @@ export class Beds24Service {
         maxAdults:      room.maxAdults,
         maxChildren:    room.maxChildren,
         available:      offers.length > 0,
+        requiredUnits,
+        capacityAvailable: offers.some((o) => o.unitsAvailable >= requiredUnits),
         nights,
         currency:       this.currency,
         offers,
@@ -698,7 +732,7 @@ export class Beds24Service {
       };
     });
 
-    return { checkIn, checkOut, nights, adults, children, currency: this.currency, rooms };
+    return { checkIn, checkOut, nights, adults, children, infants, currency: this.currency, rooms };
   }
 
   /**

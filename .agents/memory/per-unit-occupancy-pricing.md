@@ -9,6 +9,10 @@ When the party has children or infants (`effChildren > 0 || effInfants > 0`), th
 
 **Why:** Beds24 per-person pricing means 2A in one room + 0A in another ≠ 1A in each room. The auto-distributor guaranteed ≥1 adult per room which misprice children-only units.
 
+For lodging capacity, infants count as physical occupants even though they remain excluded from chargeable Beds24 child pricing. Garden Cottage is a strict two-person unit; Safari, Comfort, and Chalet use a two-adult-plus-one-child/infant-slot policy.
+
+**Why:** A 2-adult + infant party must not be offered a single Garden Cottage or pass quote validation merely because infants are free in the rate calculation.
+
 ## offersForOccWithFloor pattern
 
 For children-only units (`adults === 0`), fetch two Beds24 rates in parallel:

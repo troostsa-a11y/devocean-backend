@@ -245,6 +245,7 @@ describe('booking search comparison journey', () => {
         checkOut: SEARCH.checkOut,
         adults: 2,
         children: 1,
+        infants: 1,
       }]);
       expect(scrollIntoView).toHaveBeenCalled();
       expect(window.location.search).toContain('infants=1');

@@ -16,6 +16,7 @@
 import {
   Beds24Service,
   Beds24Error,
+  getRoomCapacity,
   type RoomOffer,
 } from './beds24';
 import {
@@ -96,6 +97,7 @@ export interface CartQuote {
   nights: number;
   adults: number;
   children: number;
+  infants: number;
   currency: string;
   depositPercent: number;
   cancellationPolicyDays: number;
@@ -193,11 +195,13 @@ export function distributeGuests(
   slots: SlotCap[],
   adults: number,
   children: number,
-): Array<{ adults: number; children: number }> {
+  infants = 0,
+): Array<{ adults: number; children: number; infants: number }> {
   const n = slots.length;
-  const assign = slots.map(() => ({ adults: 1, children: 0 })); // 1 adult per room
+  const assign = slots.map(() => ({ adults: 1, children: 0, infants: 0 })); // 1 adult per room
   let remAdults = adults - n;
   let remChildren = children;
+  let remInfants = infants;
 
   // Distribute the remaining adults, capped by maxAdults and maxPeople.
   for (let i = 0; i < n && remAdults > 0; i++) {
@@ -210,20 +214,28 @@ export function distributeGuests(
     remAdults -= add;
   }
 
-  // Then the children, capped by maxChildren and the room's remaining space.
+  // Then children and infants, sharing the room's remaining physical space.
   for (let i = 0; i < n && remChildren > 0; i++) {
     const room = slots[i];
-    const maxC = Number.isFinite(room.maxChildren) ? room.maxChildren : room.maxPeople;
     const used = assign[i].adults + assign[i].children;
-    const canAdd = Math.min(remChildren, maxC - assign[i].children, room.maxPeople - used);
+    const canAdd = Math.min(remChildren, room.maxPeople - used);
     const add = Math.max(0, canAdd);
     assign[i].children += add;
     remChildren -= add;
   }
 
-  if (remAdults > 0 || remChildren > 0) {
+  for (let i = 0; i < n && remInfants > 0; i++) {
+    const room = slots[i];
+    const used = assign[i].adults + assign[i].children + assign[i].infants;
+    const canAdd = Math.min(remInfants, room.maxPeople - used);
+    const add = Math.max(0, canAdd);
+    assign[i].infants += add;
+    remInfants -= add;
+  }
+
+  if (remAdults > 0 || remChildren > 0 || remInfants > 0) {
     throw new BookingCartError(
-      'The selected rooms cannot fit that mix of adults and children.',
+      'The selected rooms cannot fit that mix of adults, children, and infants.',
       409,
       'PARTY_TOO_LARGE',
     );
@@ -238,7 +250,7 @@ export function distributeGuests(
  */
 export async function computeCartQuote(
   beds24: Beds24Service,
-  stay: { checkIn: string; checkOut: string; adults: number; children: number },
+  stay: { checkIn: string; checkOut: string; adults: number; children: number; infants?: number },
   cartLines: any[],
   cfg: BookingConfig = getBookingConfig(),
   discountCode: CartDiscountCode | null = null,
@@ -268,21 +280,26 @@ export async function computeCartQuote(
   for (const l of lines) {
     const room = roomById.get(l.roomId);
     if (!room) throw new BookingCartError('One of the selected rooms no longer exists.', 404, 'ROOM_NOT_FOUND');
+    const capacity = getRoomCapacity(room);
     for (let i = 0; i < l.qty; i++) {
       slots.push({
         roomId: room.roomId,
-        maxPeople: room.maxPeople,
-        maxAdults: room.maxAdults,
+        maxPeople: capacity.maxPeople,
+        maxAdults: capacity.maxAdults,
         maxChildren: room.maxChildren,
         offerId: l.offerId,
       });
     }
   }
 
-  const party = stay.adults + stay.children;
+  const party = stay.adults + stay.children + (stay.infants ?? 0);
   const capSum = slots.reduce((s, sl) => s + sl.maxPeople, 0);
+  const adultCapSum = slots.reduce((s, sl) => s + sl.maxAdults, 0);
   if (capSum < party) {
     throw new BookingCartError(`The selected rooms hold up to ${capSum} guests.`, 409, 'PARTY_TOO_LARGE');
+  }
+  if (adultCapSum < stay.adults) {
+    throw new BookingCartError('The selected rooms cannot accommodate all adults.', 409, 'PARTY_TOO_LARGE');
   }
 
   // When the guest has specified per-room occupancy in the UI, honour it
@@ -313,8 +330,23 @@ export async function computeCartQuote(
       }
     }
   } else {
-    dist = distributeGuests(slots, stay.adults, stay.children);
+    dist = distributeGuests(slots, stay.adults, stay.children, stay.infants ?? 0);
     displayDist = dist.map((d) => ({ adults: d.adults, children: d.children, infants: d.infants ?? 0 }));
+  }
+
+  for (let i = 0; i < displayDist.length; i++) {
+    const occupancy = displayDist[i];
+    const slot = slots[i];
+    if (
+      occupancy.adults > slot.maxAdults ||
+      occupancy.adults + occupancy.children + occupancy.infants > slot.maxPeople
+    ) {
+      throw new BookingCartError(
+        'The selected rooms cannot fit that mix of adults, children, and infants.',
+        409,
+        'PARTY_TOO_LARGE',
+      );
+    }
   }
 
   // Price each leg at its assigned occupancy. Rooms sharing an occupancy reuse
@@ -335,7 +367,7 @@ export async function computeCartQuote(
   // unit is never charged less than single-adult occupancy. Units with adults > 0
   // pass through unchanged.
   const offersForOccWithFloor = async (a: number, c: number): Promise<Record<string, RoomOffer[]>> => {
-    if (a > 0) return offersForOcc(a, c);
+       if (a > 0) return offersForOcc(a, c);
     // Fetch children-only rate AND the 1-adult baseline in parallel (cache reused).
     const [childMap, floorMap] = await Promise.all([
       offersForOcc(0, c),
@@ -509,6 +541,7 @@ export async function computeCartQuote(
     nights,
     adults: stay.adults,
     children: stay.children,
+    infants: stay.infants ?? 0,
     currency,
     depositPercent,
     cancellationPolicyDays: beds24.getCancellationDays(),

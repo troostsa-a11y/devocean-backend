@@ -2285,6 +2285,29 @@ export const MIN_UNITS_STRINGS = {
   },
 };
 
+export const CAPACITY_STRINGS = {
+  en: { notAllGuestsAccommodated: 'Not all guests are accommodated. Continue your booking.' },
+  pt: { notAllGuestsAccommodated: 'Nem todos os hóspedes estão acomodados. Continue a sua reserva.' },
+  de: { notAllGuestsAccommodated: 'Nicht alle Gäste sind untergebracht. Setzen Sie Ihre Buchung fort.' },
+  fr: { notAllGuestsAccommodated: 'Tous les hôtes ne sont pas logés. Poursuivez votre réservation.' },
+  es: { notAllGuestsAccommodated: 'No todos los huéspedes están acomodados. Continúe con su reserva.' },
+  it: { notAllGuestsAccommodated: 'Non tutti gli ospiti sono sistemati. Continua la prenotazione.' },
+  nl: { notAllGuestsAccommodated: 'Niet alle gasten zijn ondergebracht. Ga door met uw boeking.' },
+  sv: { notAllGuestsAccommodated: 'Alla gäster får inte plats. Fortsätt med din bokning.' },
+  pl: { notAllGuestsAccommodated: 'Nie wszyscy goście są zakwaterowani. Kontynuuj rezerwację.' },
+  ro: { notAllGuestsAccommodated: 'Nu toți oaspeții sunt cazați. Continuați rezervarea.' },
+  sr: { notAllGuestsAccommodated: 'Nisu svi gosti smešteni. Nastavite rezervaciju.' },
+  hr: { notAllGuestsAccommodated: 'Nisu svi gosti smješteni. Nastavite rezervaciju.' },
+  cs: { notAllGuestsAccommodated: 'Ne všichni hosté jsou ubytováni. Pokračujte v rezervaci.' },
+  tr: { notAllGuestsAccommodated: 'Tüm misafirler konaklayamıyor. Rezervasyonunuza devam edin.' },
+  ja: { notAllGuestsAccommodated: 'すべてのゲストを収容できていません。予約を続行してください。' },
+  zh: { notAllGuestsAccommodated: '并非所有客人都有住宿安排。请继续您的预订。' },
+  ru: { notAllGuestsAccommodated: 'Не все гости размещены. Продолжите бронирование.' },
+  af: { notAllGuestsAccommodated: 'Nie alle gaste is geakkommodeer nie. Gaan voort met jou bespreking.' },
+  zu: { notAllGuestsAccommodated: 'Akuzona zonke izivakashi ezithole indawo. Qhubeka nokubhukha kwakho.' },
+  sw: { notAllGuestsAccommodated: 'Si wageni wote wamepata malazi. Endelea na uhifadhi wako.' },
+};
+
 // Included-benefit badges are kept in a focused overlay so the booking page
 // can present short, scannable labels without changing the existing core copy.
 // Every supported locale has all four labels; getBookingStrings() provides the
@@ -2885,6 +2908,7 @@ export function getBookingStrings(lang) {
   // Merge with English so unexpected locales and any future partially
   // translated entries never allow a missing key to render as undefined.
   const minUnits = { ...MIN_UNITS_STRINGS.en, ...(MIN_UNITS_STRINGS[base] || {}) };
+  const capacity = { ...CAPACITY_STRINGS.en, ...(CAPACITY_STRINGS[base] || {}) };
   const amenities = { ...AMENITIES_BADGE_STRINGS.en, ...(AMENITIES_BADGE_STRINGS[base] || {}) };
   // Overlay localised rate-tier labels (all 20 base langs). EN fallback for any
   // unexpected code.
@@ -2893,7 +2917,7 @@ export function getBookingStrings(lang) {
   const marinHelp = MARIN_STRINGS[base] || MARIN_STRINGS.en;
   // _lang: base language actually resolved (EN on fallback) — used by
   // perNightFromTemplate to select the correct CLDR plural category.
-  return { ...core, ...minUnits, ...amenities, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
+  return { ...core, ...minUnits, ...capacity, ...amenities, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
 }
 
 export function getConfirmStrings(lang) {

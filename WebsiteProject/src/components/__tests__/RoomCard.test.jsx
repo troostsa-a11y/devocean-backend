@@ -40,6 +40,8 @@ vi.mock('lucide-react', () => ({
 
 import RoomCard, {
   defaultRoomOccFor,
+  getRoomCapacity,
+  requiredUnitsForParty,
   ROOM_CARD_MEDIA_CLASS,
   ROOM_CARD_IMAGE_CLASS,
 } from '../RoomCard';
@@ -675,5 +677,28 @@ describe('React.memo isolation', () => {
     // Card 1 updates; card 2 is unchanged.
     expect(screen.getByTestId('text-qty-r1').textContent).toBe('1');
     expect(screen.getByTestId('text-qty-r2').textContent).toBe('0');
+  });
+});
+
+describe('whole-party lodging capacity', () => {
+  const gardenCottage = {
+    name: 'Garden Cottage',
+    maxAdults: 2,
+    maxPeople: 2,
+  };
+  const safariTent = {
+    name: 'Safari Tent',
+    maxAdults: 2,
+    maxPeople: 2,
+  };
+
+  it('requires two Garden Cottages for 2 adults plus an infant', () => {
+    expect(getRoomCapacity(gardenCottage)).toEqual({ maxAdults: 2, maxPeople: 2 });
+    expect(requiredUnitsForParty(gardenCottage, 2, 0, 1)).toBe(2);
+  });
+
+  it('keeps the child-slot room valid for 2 adults plus one infant', () => {
+    expect(getRoomCapacity(safariTent)).toEqual({ maxAdults: 2, maxPeople: 3 });
+    expect(requiredUnitsForParty(safariTent, 2, 0, 1)).toBe(1);
   });
 });

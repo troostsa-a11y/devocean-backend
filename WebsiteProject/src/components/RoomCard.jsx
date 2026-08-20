@@ -37,19 +37,45 @@ export function getUnitKey(name) {
   return UNIT_KEYS.find((k) => (name || '').toLowerCase().includes(k));
 }
 
+// Capacity policy used by the direct-booking UI. Infants occupy the same
+// physical space as a child for lodging purposes, even though they remain
+// excluded from Beds24's chargeable occupancy pricing.
+export function getRoomCapacity(room) {
+  const unitKey = getUnitKey(room?.name);
+  const maxAdults = room?.maxAdults > 0
+    ? room.maxAdults
+    : (room?.maxPeople || 2);
+  const maxPeople = BED_TOGGLE_UNIT_KEYS.includes(unitKey)
+    ? maxAdults + 1
+    : (room?.maxPeople || maxAdults);
+  return { maxAdults, maxPeople };
+}
+
+export function requiredUnitsForParty(room, adults, children, infants = 0) {
+  const { maxAdults, maxPeople } = getRoomCapacity(room);
+  const totalGuests = Math.max(0, adults) + Math.max(0, children) + Math.max(0, infants);
+  return Math.max(
+    Math.ceil(Math.max(0, adults) / maxAdults),
+    Math.ceil(totalGuests / maxPeople),
+    1,
+  );
+}
+
 // Sensible default per-room occupancy: fill the room toward the party,
 // respecting its adult/child/total caps. Used when the guest hasn't yet
 // touched the per-room steppers.
-export function defaultRoomOccFor(room, effAdults, effChildren) {
-  const uk = getUnitKey(room.name);
-  const isChildUnit = BED_TOGGLE_UNIT_KEYS.includes(uk);
-  // Beds24 reports maxChildren=0 for every unit; effective capacity is
-  // unit-type-driven: safari/comfort/chalet sleep 2A+1C (=3); GC sleeps 2.
-  const effMax = isChildUnit ? (room.maxAdults || 2) + 1 : (room.maxAdults || room.maxPeople || 2);
-  const maxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
+export function defaultRoomOccFor(room, effAdults, effChildren, effInfants = 0) {
+  const { maxAdults, maxPeople: effMax } = getRoomCapacity(room);
+  const maxA = maxAdults;
   const a = Math.min(effAdults, maxA);
   const c = Math.min(effChildren, effMax - a);
-  return { adults: Math.max(0, a), children: Math.max(0, c), infants: 0 };
+  return {
+    adults: Math.max(0, a),
+    children: Math.max(0, c),
+    // Keep infants out of the default priced occupancy; the capacity guard
+    // counts them separately without turning them into a chargeable child.
+    infants: 0,
+  };
 }
 
 // Room feature badges — shown on booking cards to match the detail pages.
@@ -146,7 +172,7 @@ function RoomCard({
   // Quote-derived total for this card; falls back to offer.total while no
   // quote exists yet (qty=0 or loading).
   const cardTotal = quotedTotal ?? offer.total;
-  const roomMaxA = room.maxAdults > 0 ? room.maxAdults : room.maxPeople;
+  const { maxAdults: roomMaxA, maxPeople: effectiveMaxPeople } = getRoomCapacity(room);
   // Capacity label. Beds24 reports maxAdults=2 / maxChildren=0 for
   // every unit, so the child slot is driven by unit TYPE, not the
   // Beds24 numbers: the Safari/Comfort tents + Chalet each take
@@ -155,9 +181,8 @@ function RoomCard({
   // fallback for any future larger unit (reframes the last adult slot).
   const sleepsTotal = room.maxAdults || room.maxPeople;
   const childUnit = BED_TOGGLE_UNIT_KEYS.includes(unitKey);
-  // Effective total occupancy cap per unit (adults + children combined;
-  // infants don't count — they sleep in cribs).
-  const effectiveMaxPeople = childUnit ? (room.maxAdults || 2) + 1 : (room.maxAdults || room.maxPeople || 2);
+  // Effective total occupancy cap per unit. Infants use this same physical
+  // capacity even though they remain free in the pricing calculation.
   // When the guest is searching for a single person, the room's
   // full capacity ("Sleeps 2 + 1 child") is misleading — show that
   // it's a single-occupancy ("single use") booking instead.

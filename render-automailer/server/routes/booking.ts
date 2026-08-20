@@ -77,6 +77,7 @@ interface StayInput {
   checkOut: string;
   adults: number;
   children: number;
+  infants: number;
 }
 
 function parseStay(body: any): { value?: StayInput; error?: string } {
@@ -85,6 +86,7 @@ function parseStay(body: any): { value?: StayInput; error?: string } {
   const checkOut = body?.checkOut;
   const adults = Number.parseInt(body?.adults, 10);
   const children = Number.parseInt(body?.children ?? 0, 10);
+  const infants = Number.parseInt(body?.infants ?? 0, 10);
 
   if (!isValidDate(checkIn) || !isValidDate(checkOut)) {
     return { error: 'Invalid check-in/check-out date (expected YYYY-MM-DD)' };
@@ -95,10 +97,11 @@ function parseStay(body: any): { value?: StayInput; error?: string } {
   if (nights > cfg.maxNights) return { error: `Maximum stay is ${cfg.maxNights} nights` };
   if (!Number.isFinite(adults) || adults < 1) return { error: 'At least one adult is required' };
   if (!Number.isFinite(children) || children < 0) return { error: 'Invalid children count' };
-  if (adults + children > cfg.maxGuests) {
+  if (!Number.isFinite(infants) || infants < 0) return { error: 'Invalid infants count' };
+  if (adults + children + infants > cfg.maxGuests) {
     return { error: `Maximum party size is ${cfg.maxGuests} guests` };
   }
-  return { value: { checkIn, checkOut, adults, children } };
+  return { value: { checkIn, checkOut, adults, children, infants } };
 }
 
 // Minimal structural type for the email automation service so the booking
@@ -296,6 +299,8 @@ export function createBookingRouter(deps: {
         maxAdults: r.maxAdults,
         maxChildren: r.maxChildren,
         available: r.available,
+        requiredUnits: r.requiredUnits,
+        capacityAvailable: r.capacityAvailable,
         unitsAvailable: r.unitsAvailable,
         nights: r.nights,
         currency: r.currency,
@@ -397,6 +402,7 @@ export function createBookingRouter(deps: {
         nights: quote.nights,
         adults: quote.adults,
         children: quote.children,
+        infants: quote.infants,
         currency: quote.currency,
         depositPercent: quote.depositPercent,
         cancellationPolicyDays: quote.cancellationPolicyDays,
@@ -736,6 +742,8 @@ export function createBookingRouter(deps: {
           checkOut: record.checkOutDate,
           adults: record.numAdults,
           children: record.numChildren,
+          infants: record.numInfants ??
+            legs.reduce((sum, leg) => sum + (Number(leg.infants) || 0), 0),
         },
         Array.from(lineMap.values()),
         cfg,
