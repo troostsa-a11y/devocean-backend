@@ -10,7 +10,7 @@ import CurrencyPicker from './CurrencyPicker';
 import DateRangePicker from './DateRangePicker';
 import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
 import MarinPanel from './MarinPanel';
-import RoomCard, { money, approxMoney, getUnitKey, defaultRoomOccFor, BED_TOGGLE_UNIT_KEYS } from './RoomCard';
+import RoomCard, { money, approxMoney, getUnitKey, defaultRoomOccFor, BED_TOGGLE_UNIT_KEYS, ROOM_CARD_MEDIA_CLASS, ROOM_CARD_IMAGE_CLASS } from './RoomCard';
 
 function todayStr() {
   return new Date().toISOString().slice(0, 10);
@@ -1367,14 +1367,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             {unitImg && (
                               <a
                                 href={unitDetailUrl}
-                                className="shrink-0 flex flex-col items-center gap-1 group"
+                                className={ROOM_CARD_MEDIA_CLASS}
                                 data-testid={`link-unavail-details-${room.roomId}`}
                               >
                                 <img
                                   src={unitImg}
                                   alt={displayName}
                                   loading="lazy"
-                                  className="h-20 w-20 rounded-lg object-cover border border-slate-200 grayscale"
+                                  className={`${ROOM_CARD_IMAGE_CLASS} grayscale`}
                                 />
                                 <span className="inline-flex items-center gap-1 text-xs font-medium text-[#9e4b13] group-hover:underline">
                                   {t.details}

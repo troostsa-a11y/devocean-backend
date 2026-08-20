@@ -38,7 +38,11 @@ vi.mock('lucide-react', () => ({
   BedSingle:   (props) => <span {...props} />,
 }));
 
-import RoomCard, { defaultRoomOccFor } from '../RoomCard';
+import RoomCard, {
+  defaultRoomOccFor,
+  ROOM_CARD_MEDIA_CLASS,
+  ROOM_CARD_IMAGE_CLASS,
+} from '../RoomCard';
 
 // ── Shared test fixtures ────────────────────────────────────────────────────
 
@@ -173,6 +177,22 @@ describe('qty stepper', () => {
     render(<RoomCard {...defaultProps(room, { qty: 2 })} />);
 
     expect(screen.getByTestId('text-qty-safari-1').textContent).toBe('2');
+  });
+});
+
+describe('room card media sizing', () => {
+  it('keeps the available-room image in a stable responsive slot', () => {
+    const room = makeSafariRoom();
+    render(<RoomCard {...defaultProps(room)} />);
+
+    const media = screen.getByTestId('link-room-details-safari-1');
+    const image = media.querySelector('img');
+
+    expect(media.className).toBe(ROOM_CARD_MEDIA_CLASS);
+    expect(media.className).not.toContain('self-stretch');
+    expect(image.className).toBe(ROOM_CARD_IMAGE_CLASS);
+    expect(image.className).toContain('aspect-[4/3]');
+    expect(image.className).not.toContain('flex-1');
   });
 });
 

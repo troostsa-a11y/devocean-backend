@@ -84,6 +84,12 @@ export function getBedTypeLabel(type, lang) {
   return BED_TYPE_LABELS[type]?.[lang] || BED_TYPE_LABELS[type]?.[base] || BED_TYPE_LABELS[type]?.en || type;
 }
 
+// Keep the media slot independent from the amount of copy in the room card.
+// Both available and unavailable cards use these classes so responsive text
+// wrapping cannot make one image grow taller than the other.
+export const ROOM_CARD_MEDIA_CLASS = 'shrink-0 flex flex-col items-center gap-1 group w-28 sm:w-48';
+export const ROOM_CARD_IMAGE_CLASS = 'w-full aspect-[4/3] rounded-lg object-cover border border-slate-200';
+
 // ── Memoized room card ─────────────────────────────────────────────────────
 // One available-room card on the /book-direct results step. Extracted from
 // BookDirectPage and wrapped in React.memo so a tap on one card (qty +/-,
@@ -271,14 +277,14 @@ function RoomCard({
         {unitImg && (
           <a
             href={unitDetailUrl}
-            className="shrink-0 self-stretch flex flex-col items-center justify-between gap-1 group w-28 sm:w-48"
+            className={ROOM_CARD_MEDIA_CLASS}
             data-testid={`link-room-details-${room.roomId}`}
           >
             <img
               src={unitImg}
               alt={displayName}
               loading="lazy"
-              className="w-full flex-1 min-h-0 rounded-lg object-cover border border-slate-200"
+              className={ROOM_CARD_IMAGE_CLASS}
             />
             <span className="inline-flex items-center gap-1 text-xs font-medium text-[#9e4b13] group-hover:underline">
               {t.details}
