@@ -513,6 +513,40 @@ describe('checkout bedPreferences — integration', () => {
     expect(notice.parentElement.className).toContain('justify-start');
   });
 
+  it('renders guest selectors in Adults, Infants, Children order while keeping age inputs linked', async () => {
+    Object.defineProperty(window, 'location', {
+      configurable: true,
+      get: () => ({
+        href: '',
+        search: '',
+        assign: vi.fn(),
+        replace: vi.fn(),
+      }),
+    });
+
+    render(
+      <BookDirectPage
+        lang="en-GB"
+        currency="USD"
+      />,
+    );
+
+    const adults = await screen.findByTestId('select-adults');
+    const infants = screen.getByTestId('select-infants');
+    const children = screen.getByTestId('select-children');
+
+    expect(adults.compareDocumentPosition(infants) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(infants.compareDocumentPosition(children) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+    await act(async () => {
+      fireEvent.change(infants, { target: { value: '1' } });
+      fireEvent.change(children, { target: { value: '1' } });
+    });
+
+    expect(await screen.findByTestId('select-infant-age-0')).toBeTruthy();
+    expect(await screen.findByTestId('select-child-age-0')).toBeTruthy();
+  });
+
   it('keeps the selection summary details inline with wrapping segments', async () => {
     render(
       <BookDirectPage

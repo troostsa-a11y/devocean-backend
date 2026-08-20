@@ -1057,19 +1057,6 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </div>
                     <div className="flex-1">
                       <select
-                        value={children}
-                        onChange={(e) => startTransition(() => handleChildrenChange(parseInt(e.target.value, 10)))}
-                        className={INPUT_CLASS}
-                        aria-label={t.children}
-                        data-testid="select-children"
-                      >
-                        {[0, 1, 2, 3, 4].map((n) => (
-                          <option key={n} value={n}>{n} · {t.children}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div className="flex-1">
-                      <select
                         value={infants}
                         onChange={(e) => startTransition(() => handleInfantsChange(parseInt(e.target.value, 10)))}
                         className={INPUT_CLASS}
@@ -1078,6 +1065,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       >
                         {[0, 1, 2, 3, 4].map((n) => (
                           <option key={n} value={n}>{n} · {t.infants}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="flex-1">
+                      <select
+                        value={children}
+                        onChange={(e) => startTransition(() => handleChildrenChange(parseInt(e.target.value, 10)))}
+                        className={INPUT_CLASS}
+                        aria-label={t.children}
+                        data-testid="select-children"
+                      >
+                        {[0, 1, 2, 3, 4].map((n) => (
+                          <option key={n} value={n}>{n} · {t.children}</option>
                         ))}
                       </select>
                     </div>
