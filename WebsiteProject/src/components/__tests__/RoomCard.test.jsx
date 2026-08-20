@@ -52,7 +52,7 @@ const T = {
   addRoom:              'Add room',
   removeRoom:           'Remove room',
   yourSelection:        'Your selection',
-  unitsLeft:            '{count} left',
+  unitsLeft:            '{count} units left',
   sleeps:               'Sleeps {count}',
   sleepsAdultsChildren: 'Sleeps {adults} + {children}',
   sleepsAdultsChildrenCompact: 'Sleeps {adults}+{children}',
@@ -213,6 +213,37 @@ describe('room card header', () => {
     expect(screen.getByTestId('text-offer-total-safari-1').textContent).toContain('$400.00');
     expect(separator.parentElement.contains(screen.getByTestId('text-offer-total-safari-1'))).toBe(true);
     expect(screen.getByTestId('text-offer-nights-safari-1').textContent).toBe('for 2 night(s)');
+  });
+});
+
+describe('room availability badge', () => {
+  it('shows explicit units wording below bed preference', () => {
+    const room = makeSafariRoom();
+    render(<RoomCard {...defaultProps(room)} />);
+
+    const bedPreference = screen.getByTestId('text-bed-preference-safari-1');
+    const units = screen.getByTestId('text-units-safari-1');
+
+    expect(units.textContent).toBe('3 units left');
+    expect(
+      bedPreference.compareDocumentPosition(units) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
+  });
+
+  it('keeps the availability badge below capacity for units without bed preference', () => {
+    const room = {
+      ...makeSafariRoom(),
+      roomId: 'cottage-1',
+      name: 'Garden Cottage',
+    };
+    render(<RoomCard {...defaultProps(room, { displayName: 'Garden Cottage' })} />);
+
+    const capacity = screen.getByTestId('text-sleeps-cottage-1');
+    const units = screen.getByTestId('text-units-cottage-1');
+
+    expect(
+      capacity.compareDocumentPosition(units) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 });
 

@@ -96,7 +96,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     addRoom:            'Add room',
     removeRoom:         'Remove room',
     yourSelection:      'Your selection',
-    unitsLeft:          '{count} left',
+    unitsLeft:          '{count} units left',
     sleeps:             'Sleeps {count}',
     sleepsAdultsChildren: 'Sleeps {adults} + {children}',
     sleepsAdultsChildrenCompact: 'Sleeps {adults}+{children}',

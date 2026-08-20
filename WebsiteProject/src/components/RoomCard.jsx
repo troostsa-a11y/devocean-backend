@@ -178,6 +178,14 @@ function RoomCard({
   } else {
     sleepsText = fmt(t.sleeps, { count: sleepsTotal });
   }
+  const unitsLeftBadge = (
+    <span
+      className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700"
+      data-testid={`text-units-${room.roomId}`}
+    >
+      {fmt(t.unitsLeft, { count: units })}
+    </span>
+  );
 
   return (
     <div
@@ -252,16 +260,15 @@ function RoomCard({
                 ) : sleepsText;
               })()}
             </span>
-            <span
-              className="inline-flex items-center rounded-full bg-emerald-50 px-2.5 py-1 text-emerald-700"
-              data-testid={`text-units-${room.roomId}`}
-            >
-              {fmt(t.unitsLeft, { count: units })}
-            </span>
           </div>
           {BED_TOGGLE_UNIT_KEYS.includes(unitKey) && (
             <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1">
-              <span className="text-xs text-slate-500 basis-full sm:basis-auto shrink-0">{getBedTypeLabel('bedPreference', lang)}</span>
+              <span
+                className="text-xs text-slate-500 basis-full sm:basis-auto shrink-0"
+                data-testid={`text-bed-preference-${room.roomId}`}
+              >
+                {getBedTypeLabel('bedPreference', lang)}
+              </span>
               <div className="flex gap-1.5">
               {[
                 { bt: 'king', label: getBedTypeLabel('king', lang), icon: <BedDouble className="h-4 w-4" /> },
@@ -287,6 +294,9 @@ function RoomCard({
               </div>
             </div>
           )}
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
+            {unitsLeftBadge}
+          </div>
         </div>
 
         {unitImg && (

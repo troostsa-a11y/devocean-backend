@@ -364,7 +364,7 @@ const MINIMAL_T = {
   childOccupant:        '1 child',
   perNightFrom:         'for {nights} night(s)',
   avgPerNight:          'avg/night',
-  unitsLeft:            '{count} left',
+  unitsLeft:            '{count} units left',
   rooms:                'Rooms',
   addRoom:              'Add room',
   removeRoom:           'Remove room',
