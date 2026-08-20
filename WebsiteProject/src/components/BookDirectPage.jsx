@@ -138,6 +138,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [validationWarning, setValidationWarning] = useState('');
   const [availability, setAvailability] = useState(null); // full availability response
   const [cart, setCart] = useState({}); // roomId → qty (per-type cart)
   const [rateChoice, setRateChoice] = useState({}); // roomId → offerId (chosen rate plan)
@@ -161,12 +162,60 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   roomOccupancyRef.current = roomOccupancy;
   const cartRef = useRef(cart);
   cartRef.current = cart;
+  const searchButtonRef = useRef(null);
+  const validationWarningCloseRef = useRef(null);
+  const validationWarningDialogRef = useRef(null);
+  const validationWarningTriggerRef = useRef(null);
+  const validationWarningWasOpenRef = useRef(false);
   const tRef = useRef(t);
   // Unit key from ?unit= (set by the unit detail pages' CTAs) — after results
   // render, scroll to that unit's room card once so the guest returns to the
   // room they were reading about.
   const focusUnitRef = useRef(null);
   tRef.current = t;
+
+  useEffect(() => {
+    if (!validationWarning) {
+      if (validationWarningWasOpenRef.current) {
+        validationWarningWasOpenRef.current = false;
+        validationWarningTriggerRef.current?.focus();
+      }
+      return undefined;
+    }
+
+    validationWarningWasOpenRef.current = true;
+    validationWarningCloseRef.current?.focus();
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setValidationWarning('');
+        return;
+      }
+      if (event.key !== 'Tab') return;
+
+      const dialog = validationWarningDialogRef.current;
+      if (!dialog) return;
+      const focusable = [...dialog.querySelectorAll(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )].filter((element) => element.getAttribute('aria-hidden') !== 'true');
+      if (focusable.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+      const activeIndex = focusable.indexOf(active);
+      const nextIndex = event.shiftKey
+        ? (activeIndex <= 0 ? focusable.length - 1 : activeIndex - 1)
+        : (activeIndex < 0 || activeIndex === focusable.length - 1 ? 0 : activeIndex + 1);
+      event.preventDefault();
+      focusable[nextIndex].focus();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [validationWarning]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -334,18 +383,20 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   async function handleSearch(e) {
     e?.preventDefault();
+    validationWarningTriggerRef.current = searchButtonRef.current;
     setError('');
+    setValidationWarning('');
     setCanceled(false);
     if (nights < 1) {
-      setError(t.selectDates);
+      setValidationWarning(t.selectDates);
       return;
     }
     if (children > 0 && childAges.some((a) => a === '' || a == null)) {
-      setError(t.provideChildAges);
+      setValidationWarning(t.provideChildAges);
       return;
     }
     if (infants > 0 && infantAges.some((a) => a === '' || a == null)) {
-      setError(t.provideInfantAges);
+      setValidationWarning(t.provideInfantAges);
       return;
     }
     setLoading(true);
@@ -975,8 +1026,63 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     );
   }
 
+  function renderValidationWarning() {
+    if (!validationWarning) return null;
+    return (
+      <div
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/45 px-4"
+        data-testid="booking-validation-warning-backdrop"
+      >
+        <div
+          className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-2xl"
+          ref={validationWarningDialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="booking-validation-warning-title"
+          aria-describedby="booking-validation-warning-text"
+          data-testid="booking-validation-warning"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <h2
+              id="booking-validation-warning-title"
+              className="text-lg font-bold text-slate-900"
+            >
+              {t.warningTitle}
+            </h2>
+            <button
+              ref={validationWarningCloseRef}
+              type="button"
+              onClick={() => setValidationWarning('')}
+              className="rounded-lg px-2 py-1 text-2xl leading-none text-slate-500 hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#9e4b13]/40"
+              aria-label={t.close}
+              data-testid="button-close-validation-warning"
+            >
+              ×
+            </button>
+          </div>
+          <p
+            id="booking-validation-warning-text"
+            className="mt-4 text-sm leading-6 text-slate-700"
+            data-testid="text-validation-warning"
+          >
+            {validationWarning}
+          </p>
+          <button
+            type="button"
+            onClick={() => setValidationWarning('')}
+            className="mt-6 w-full rounded-xl bg-[#9e4b13] px-4 py-2.5 font-semibold text-white hover:bg-[#854011] focus:outline-none focus:ring-2 focus:ring-[#9e4b13]/40 focus:ring-offset-2"
+            data-testid="button-dismiss-validation-warning"
+          >
+            {t.close}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <main className="flex-1 flex flex-col bg-slate-50 pt-[var(--stack-h)]">
+      {renderValidationWarning()}
       {step === 'search' ? (
         <>
           {/* Hero image as a full-height background; title + search card float over it */}
@@ -1168,6 +1274,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     <button
                       type="submit"
                       disabled={loading}
+                      ref={searchButtonRef}
                       className="w-full lg:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-6 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
                       data-testid="button-search"
                     >

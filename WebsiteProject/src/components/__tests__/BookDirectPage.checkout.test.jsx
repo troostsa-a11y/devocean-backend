@@ -84,6 +84,8 @@ vi.mock('../../i18n/bookingStrings', () => ({
     search:             'Check availability',
     searching:          'Searching...',
     selectDates:        'Select dates',
+    warningTitle:       'Booking details needed',
+    close:              'Close',
     guests:             'Guests',
     adults:             'Adults',
     children:           'Children',
@@ -642,7 +644,10 @@ describe('booking search validation warnings', () => {
     expect(button.disabled).toBe(false);
     await act(async () => { fireEvent.click(button); });
 
-    expect((await screen.findByTestId('status-error')).textContent).toContain('Select dates');
+    const warning = await screen.findByTestId('booking-validation-warning');
+    expect(warning.getAttribute('role')).toBe('dialog');
+    expect(warning.getAttribute('aria-describedby')).toBe('booking-validation-warning-text');
+    expect(screen.getByTestId('text-validation-warning').textContent).toContain('Select dates');
     expect(availabilityCallCount()).toBe(0);
   });
 
@@ -656,7 +661,8 @@ describe('booking search validation warnings', () => {
     await screen.findByTestId('select-child-age-0');
     await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
 
-    expect((await screen.findByTestId('status-error')).textContent).toContain('Please provide child ages');
+    expect(screen.getByTestId('booking-validation-warning')).toBeTruthy();
+    expect(screen.getByTestId('text-validation-warning').textContent).toContain('Please provide child ages');
     expect(availabilityCallCount()).toBe(0);
   });
 
@@ -670,8 +676,43 @@ describe('booking search validation warnings', () => {
     await screen.findByTestId('select-infant-age-0');
     await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
 
-    expect((await screen.findByTestId('status-error')).textContent).toContain('Please provide infant ages');
+    expect(screen.getByTestId('booking-validation-warning')).toBeTruthy();
+    expect(screen.getByTestId('text-validation-warning').textContent).toContain('Please provide infant ages');
     expect(availabilityCallCount()).toBe(0);
+  });
+
+  it('dismisses the warning and keeps the search form available', async () => {
+    renderSearchForm();
+
+    await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
+    await screen.findByTestId('booking-validation-warning');
+    const searchButton = screen.getByTestId('button-search');
+    await act(async () => { fireEvent.click(screen.getByTestId('button-dismiss-validation-warning')); });
+
+    expect(screen.queryByTestId('booking-validation-warning')).toBeNull();
+    expect(screen.getByTestId('button-search')).toBe(searchButton);
+    expect(document.activeElement).toBe(searchButton);
+  });
+
+  it('dismisses the warning with Escape', async () => {
+    renderSearchForm();
+
+    await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
+    await screen.findByTestId('booking-validation-warning');
+    const closeButton = screen.getByTestId('button-close-validation-warning');
+    const dismissButton = screen.getByTestId('button-dismiss-validation-warning');
+    expect(document.activeElement).toBe(closeButton);
+
+    await act(async () => { fireEvent.keyDown(window, { key: 'Tab' }); });
+    expect(document.activeElement).toBe(dismissButton);
+    await act(async () => { fireEvent.keyDown(window, { key: 'Tab', shiftKey: true }); });
+    expect(document.activeElement).toBe(closeButton);
+
+    const searchButton = screen.getByTestId('button-search');
+    await act(async () => { fireEvent.keyDown(window, { key: 'Escape' }); });
+
+    expect(screen.queryByTestId('booking-validation-warning')).toBeNull();
+    expect(document.activeElement).toBe(searchButton);
   });
 });
 
