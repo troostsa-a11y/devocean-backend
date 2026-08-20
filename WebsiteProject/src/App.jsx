@@ -418,7 +418,7 @@ export default function App() {
   // Memoize expensive computations to reduce re-renders
   const bookUrl = useMemo(() => 
     buildBookingUrl(bookingLocale, currency, countryCode, CC_TO_CURRENCY),
-    [bookingLocale, currency, countryCode]
+    [bookingLocale, currency, countryCode, location]
   );
   
   // Include 'ui' in dependencies to recompute after translations load (prevents race condition)

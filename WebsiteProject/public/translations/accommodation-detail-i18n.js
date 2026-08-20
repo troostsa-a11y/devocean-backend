@@ -682,6 +682,12 @@ async function applyTranslations(lang) {
       ? !bookingContext.hasBookingContext()
       : true;
   });
+  const accommodationsHref = bookingContext
+    ? bookingContext.buildAccommodationsUrl({ lang })
+    : '/#stay';
+  document.querySelectorAll('[data-accommodation-context-link]').forEach(link => {
+    link.href = accommodationsHref;
+  });
 
   // Update page language attribute
   document.documentElement.lang = lang;

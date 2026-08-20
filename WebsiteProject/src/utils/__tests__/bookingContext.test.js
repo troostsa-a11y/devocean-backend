@@ -66,6 +66,23 @@ describe('standalone booking context', () => {
     );
   });
 
+  it('keeps search state and locale when returning to the accommodation comparison', () => {
+    const context = installHelper(
+      '/pt-pt/safari?checkIn=2026-12-20&checkOut=2026-12-24&adults=2&children=1&infants=1&discount=SUMMER10&currency=EUR',
+      'pt-PT',
+    );
+
+    expect(context.buildAccommodationsUrl({ lang: 'pt-PT' })).toBe(
+      '/pt-pt/?checkIn=2026-12-20&checkOut=2026-12-24&adults=2&children=1&infants=1&discount=SUMMER10&currency=EUR#stay',
+    );
+  });
+
+  it('keeps the plain homepage comparison link without a booking search', () => {
+    const context = installHelper('/comfort?currency=MZN', 'en-GB');
+
+    expect(context.buildAccommodationsUrl({ lang: 'en-GB' })).toBe('/#stay');
+  });
+
   it('updates both desktop and mobile localized navigation links', () => {
     const context = installHelper(
       '/fr/safari?checkIn=2026-11-10&checkOut=2026-11-12&adults=2&children=0&currency=EUR',

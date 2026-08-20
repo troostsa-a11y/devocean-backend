@@ -67,10 +67,9 @@
     }
   }
 
-  function buildBookingUrl(options) {
-    options = options || {};
+  function copyBookingQuery(search) {
     var incoming = new URLSearchParams(
-      options.search == null ? window.location.search : options.search
+      search == null ? window.location.search : search
     );
     var outgoing = new URLSearchParams();
 
@@ -78,6 +77,18 @@
       var value = incoming.get(key);
       if (value) outgoing.set(key, value);
     });
+
+    return outgoing;
+  }
+
+  function localizedHomepagePath(lang) {
+    var prefix = localePrefix(lang);
+    return prefix ? '/' + prefix + '/' : '/';
+  }
+
+  function buildBookingUrl(options) {
+    options = options || {};
+    var outgoing = copyBookingQuery(options.search);
 
     if (!outgoing.get('currency')) {
       var storedCurrency = storedValue('site.currency');
@@ -94,6 +105,25 @@
     return bookingPath + (query ? '?' + query : '');
   }
 
+  function buildAccommodationsUrl(options) {
+    options = options || {};
+
+    // Keep direct detail-page visitors on the existing plain homepage link.
+    // Only a real booking search should add state to the comparison URL.
+    if (!hasBookingContext(options.search)) return '/#stay';
+
+    var outgoing = copyBookingQuery(options.search);
+    if (!outgoing.get('currency')) {
+      var storedCurrency = storedValue('site.currency');
+      if (storedCurrency) outgoing.set('currency', storedCurrency);
+    }
+
+    var lang = options.lang || window.__DEVOCEAN_LOCALE__ || 'en-GB';
+    var homepagePath = localizedHomepagePath(lang);
+    var query = outgoing.toString();
+    return homepagePath + (query ? '?' + query : '') + '#stay';
+  }
+
   function hasBookingContext(search) {
     var incoming = new URLSearchParams(
       search == null ? window.location.search : search
@@ -103,6 +133,7 @@
 
   window.devoceanBookingContext = {
     buildBookingUrl: buildBookingUrl,
+    buildAccommodationsUrl: buildAccommodationsUrl,
     hasBookingContext: hasBookingContext,
     unitFromPath: unitFromPath,
   };
