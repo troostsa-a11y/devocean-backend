@@ -1197,7 +1197,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         <label className={FIELD_LABEL_CLASS}>{t.infantAgesLabel}</label>
                         <div className="flex flex-wrap gap-2">
                           {infantAges.map((age, i) => (
-                            <div key={i} className="w-[150px]">
+                            <div key={i} className="w-full max-w-[320px]">
                               <select
                                 value={age}
                                 onChange={(e) => setInfantAge(i, e.target.value)}
@@ -1221,7 +1221,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         <label className={FIELD_LABEL_CLASS}>{t.childAgesLabel}</label>
                         <div className="flex flex-wrap gap-2">
                           {childAges.map((age, i) => (
-                            <div key={i} className="w-[150px]">
+                            <div key={i} className="w-full max-w-[320px]">
                               <select
                                 value={age}
                                 onChange={(e) => setChildAge(i, e.target.value)}
