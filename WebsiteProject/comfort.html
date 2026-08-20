@@ -273,6 +273,22 @@
       transform: translateX(-2px);
     }
 
+    .dl-back-booking {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      color: var(--brand);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .dl-back-booking:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* Main Container */
     .dl-wrap {
       max-width: 1100px;
@@ -777,6 +793,7 @@
 </head>
 
 <body>
+  <script src="/js/booking-context.js?v=20260820"></script>
   <script src="/js/shared-nav.js?v=20260730b"></script>
 
   <!-- Google Tag Manager (noscript) -->
@@ -789,6 +806,9 @@
 <!-- Main Content -->
   <main>
     <section class="dl-wrap" aria-label="Comfort Safari Tent at DEVOCEAN Lodge">
+      <a href="/book-direct" class="dl-back-booking" data-booking-context-link data-i18n="backToBooking" hidden>
+        Back to Booking
+      </a>
       <div class="dl-hero">
         <div class="dl-eyebrow">Comfort Tent</div>
         <h1 class="dl-title">Comfort Safari Tent in Ponta do Ouro</h1>

@@ -285,7 +285,12 @@
     return '<a class="sn-drawer-link" href="' + withLang(item[1]) + '">' + item[0] + '</a>';
   }).join('');
 
-  var bookUrl = withLang('/book-direct');
+  // Standalone unit pages may have been opened from the booking results. Use
+  // the shared context builder so desktop and mobile navigation return to the
+  // same locale-aware search instead of starting a fresh booking.
+  var bookUrl = window.devoceanBookingContext
+    ? window.devoceanBookingContext.buildBookingUrl({ lang: lang })
+    : withLang('/book-direct');
 
   // ── CSS ───────────────────────────────────────────────────────────────
   var CSS = [

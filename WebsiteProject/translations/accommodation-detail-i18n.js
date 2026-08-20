@@ -666,25 +666,21 @@ async function applyTranslations(lang) {
     }
   }
 
-  // Point booking CTAs at the native direct-booking flow, preserving the
-  // booking-state query this page was opened with (from /book-direct's
-  // "Details" links) so the guest returns with their search and selected
-  // display currency intact. Allowlisted keys only.
-  const BOOKING_QS_KEYS = ['lang', 'checkIn', 'checkOut', 'adults', 'children', 'infants', 'discount', 'currency'];
-  const incoming = new URLSearchParams(window.location.search);
-  const fwd = new URLSearchParams();
-  BOOKING_QS_KEYS.forEach(k => { const v = incoming.get(k); if (v) fwd.set(k, v); });
-  // Fall back to stored preferences for direct landings, and always tag the
-  // unit this page is about so /book-direct can focus the matching room card.
-  try {
-    if (!fwd.get('currency')) { const c = localStorage.getItem('site.currency'); if (c) fwd.set('currency', c); }
-    if (!fwd.get('lang')) { const l = localStorage.getItem('site.lang'); if (l) fwd.set('lang', l); }
-  } catch (e) {}
-  const unitKey = (window.location.pathname.replace(/\.html$/, '').replace(/^\//, '') || '').split('/')[0];
-  if (['safari', 'comfort', 'cottage', 'chalet'].includes(unitKey)) fwd.set('unit', unitKey);
-  const bookHref = `/book-direct?${fwd.toString()}`;
-  document.querySelectorAll('a[data-testid="button-book-now"], a[data-testid="button-book-heading"]').forEach(link => {
+  // Point every booking CTA, including the injected desktop/mobile navigation,
+  // at the same locale-aware direct-booking URL. The shared helper copies only
+  // booking search state and tags the current unit for the room-card focus.
+  const bookingContext = window.devoceanBookingContext;
+  const bookHref = bookingContext
+    ? bookingContext.buildBookingUrl({ lang })
+    : '/book-direct';
+  document.querySelectorAll('a[href*="/book-direct"]').forEach(link => {
     link.href = bookHref;
+  });
+  document.querySelectorAll('[data-booking-context-link]').forEach(link => {
+    link.href = bookHref;
+    link.hidden = bookingContext
+      ? !bookingContext.hasBookingContext()
+      : true;
   });
 
   // Update page language attribute
