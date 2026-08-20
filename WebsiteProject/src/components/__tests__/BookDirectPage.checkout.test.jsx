@@ -488,6 +488,8 @@ describe('checkout bedPreferences — integration', () => {
     const topRow = screen.getByTestId('amenities-badges-top-row');
     const benefitsRow = screen.getByTestId('amenities-badges-benefits-row');
     const notice = await screen.findByTestId('notice-min-units');
+    const resultsRoomArea = screen.getByTestId('booking-results-room-area');
+    const roomGrid = screen.getByTestId('booking-room-grid');
 
     expect(topRow.children).toHaveLength(1);
     expect(benefitsRow.children).toHaveLength(3);
@@ -501,7 +503,12 @@ describe('checkout bedPreferences — integration', () => {
       expect(className).toContain('text-white');
     }
     expect(screen.getByTestId('amenities-badge-all-rates').className).not.toContain('bg-[#9e4b13]');
+    expect(notice.className).toContain('px-3 py-1');
+    expect(notice.className).toContain('text-xs');
+    expect(notice.className).toContain('items-center');
+    expect(resultsRoomArea.className).toContain('space-y-1');
     expect(amenities.compareDocumentPosition(notice) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(notice.compareDocumentPosition(roomGrid) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     expect(notice.parentElement.className).toContain('justify-start');
   });
 

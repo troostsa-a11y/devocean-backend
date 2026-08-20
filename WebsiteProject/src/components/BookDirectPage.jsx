@@ -1245,61 +1245,62 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                   </div>
                 ) : (
                   <>
-                  <div className="space-y-2">
-                    <div className="space-y-2 text-center" data-testid="text-amenities-note">
-                      <div className="flex justify-center" data-testid="amenities-badges-top-row">
-                        <span
-                          className="inline-flex items-center rounded-full border border-[#d6b36a] bg-[#fff8e7] px-3 py-1 text-xs font-semibold text-[#805d18]"
-                          data-testid="amenities-badge-all-rates"
+                  <div className="space-y-1" data-testid="booking-results-room-area">
+                    <div className="space-y-2">
+                      <div className="space-y-2 text-center" data-testid="text-amenities-note">
+                        <div className="flex justify-center" data-testid="amenities-badges-top-row">
+                          <span
+                            className="inline-flex items-center rounded-full border border-[#d6b36a] bg-[#fff8e7] px-3 py-1 text-xs font-semibold text-[#805d18]"
+                            data-testid="amenities-badge-all-rates"
+                          >
+                            {t.amenitiesAllRatesInclude}
+                          </span>
+                        </div>
+                        <div
+                          className="flex flex-wrap justify-center gap-2"
+                          data-testid="amenities-badges-benefits-row"
                         >
-                          {t.amenitiesAllRatesInclude}
-                        </span>
+                          <span
+                            className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
+                            data-testid="amenities-badge-breakfast"
+                          >
+                            {t.amenitiesBreakfast}
+                          </span>
+                          <span
+                            className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
+                            data-testid="amenities-badge-internet"
+                          >
+                            {t.amenitiesInternet}
+                          </span>
+                          <span
+                            className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
+                            data-testid="amenities-badge-parking"
+                          >
+                            {t.amenitiesParking}
+                          </span>
+                        </div>
                       </div>
-                      <div
-                        className="flex flex-wrap justify-center gap-2"
-                        data-testid="amenities-badges-benefits-row"
-                      >
-                        <span
-                          className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
-                          data-testid="amenities-badge-breakfast"
-                        >
-                          {t.amenitiesBreakfast}
-                        </span>
-                        <span
-                          className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
-                          data-testid="amenities-badge-internet"
-                        >
-                          {t.amenitiesInternet}
-                        </span>
-                        <span
-                          className="inline-flex items-center rounded-full border border-[#9e4b13] bg-[#9e4b13] px-3 py-1 text-xs font-medium text-white"
-                          data-testid="amenities-badge-parking"
-                        >
-                          {t.amenitiesParking}
-                        </span>
+                      <div className="flex justify-start">
+                      {(() => {
+                        const hasChildOrInfant = effChildren > 0 || effInfants > 0;
+                        const message = effAdults <= 1
+                          ? (hasChildOrInfant ? t.minUnitsSingleWithChildren : t.minUnitsSingle)
+                          : (hasChildOrInfant ? t.minUnitsAdultsWithChild : t.minUnitsAdults);
+                        return (
+                          <p
+                            className="inline-flex items-center gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-1 text-xs leading-4 font-medium text-amber-800"
+                            data-testid="notice-min-units"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-shrink-0 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                            </svg>
+                            {message}
+                          </p>
+                        );
+                      })()}
                       </div>
                     </div>
-                    <div className="flex justify-start">
-                    {(() => {
-                      const hasChildOrInfant = effChildren > 0 || effInfants > 0;
-                      const message = effAdults <= 1
-                        ? (hasChildOrInfant ? t.minUnitsSingleWithChildren : t.minUnitsSingle)
-                        : (hasChildOrInfant ? t.minUnitsAdultsWithChild : t.minUnitsAdults);
-                      return (
-                        <p
-                          className="inline-flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2 text-sm font-medium text-amber-800"
-                          data-testid="notice-min-units"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mt-px flex-shrink-0 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-                          </svg>
-                          {message}
-                        </p>
-                      );
-                    })()}
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(28rem,1fr)_22rem] gap-6 items-start">
+                  <div className="grid grid-cols-1 lg:grid-cols-[minmax(28rem,1fr)_22rem] gap-6 items-start" data-testid="booking-room-grid">
                     <div className="space-y-4">
                     {availableRooms.map((room) => {
                       // Quote-derived total for this card: sum matching quote lines by
@@ -1625,6 +1626,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       </div>
                     </div>
                     </div>
+                  </div>
                   </div>
                   </>
                 )}
