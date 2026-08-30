@@ -130,15 +130,16 @@ AI crawlers (ChatGPT, Perplexity, Gemini, etc.) cannot execute JavaScript, so al
 
 ## Google Ads → PostgreSQL (Lodge Supabase project)
 
-Google Ads Customer Match is connected to the **Lodge** Supabase project (not Reception) via a direct PostgreSQL data source. The connection syncs the `guests` table (`public` schema) to a Google Ads audience for Customer Match targeting.
+Google Ads Customer Match is connected to the **Lodge** Supabase project (not Reception) via a direct PostgreSQL data source. Use the dedicated `google_ads_customer_match` view (`public` schema), not the raw `guests` table. The view exposes only normalized email/phone pairs for subscribed guests and avoids silent zero-row imports caused by nullable fields or connector filters.
 
 ### Connection details (Google Ads → Data Manager → Connected products → PostgreSQL)
 - **Data source**: PostgreSQL
 - **Schema**: public
-- **Table**: guests
+- **Table / view**: google_ads_customer_match
 - **Connection name**: guests
 - **Run schedule**: daily 19:00–20:00 GMT+2
 - **Mapped fields**: 2 (email + phone)
+- **Filter**: none — consent and identifier validity are enforced by the view
 - **Member list updates**: Add more customers
 
 ### Credentials (from Lodge Supabase project, NOT Reception)
