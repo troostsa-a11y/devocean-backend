@@ -133,6 +133,7 @@ AI crawlers (ChatGPT, Perplexity, Gemini, etc.) cannot execute JavaScript, so al
 Google Ads Customer Match is connected to the **Lodge** Supabase project (not Reception) via a direct PostgreSQL data source. The connection syncs the `guests` table (`public` schema) to a Google Ads audience for Customer Match targeting.
 
 ### Connection details (Google Ads → Data Manager → Connected products → PostgreSQL)
+- **Prerequisite**: Create the destination **Customer list** first in **Tools → Shared library → Audience manager → Your data segments** and complete its Customer Match consent/compliance acknowledgement. Google Ads does not warn during PostgreSQL connection setup when this prerequisite is missing; the connection can authorize and complete runs with `0 imported / 0 errors`.
 - **Data source**: PostgreSQL
 - **Schema**: public
 - **Table**: guests
