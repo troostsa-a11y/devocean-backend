@@ -148,7 +148,7 @@ The Lodge project (`LODGE_DATABASE_URL`) holds the historical guest list and is 
 To find/reset credentials:
 1. [supabase.com](https://supabase.com) → open the **Lodge** project
 2. **Project Settings → Database** → copy the **pooler** connection string
-3. Hostname: `aws-0-eu-west-1.pooler.supabase.com` — exact Lodge pooler host; `aws-1-eu-west-1.pooler.supabase.com` is wrong and can connect to the wrong pooler cluster
+3. Hostname: `aws-1-eu-west-1.pooler.supabase.com` — exact Lodge session-pooler host, confirmed by the project's historical connection logs and the successful August 23, 2026 Google Ads import
 4. Port: `5432` (session pooler — do NOT use 6543 transaction pooler)
 5. Database: `postgres`
 6. Username: `postgres.fozgrzqwumnynpedpmth` (exact Lodge pooler username; the project ref suffix is required)

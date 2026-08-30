@@ -50,4 +50,3 @@
 - [Stable-URL runtime JSON caching](stable-url-json-cache.md) — /translations/*.json fetched at runtime need ?v=<build-id> (Vite define) AND max-age=0 headers; header changes alone can't bust copies already cached under the old TTL
 - [SPA experience headings](spa-experience-headings.md) — edge middleware must inject a route-specific static H1 for experience pages; React-only headings are invisible to no-JS crawlers
 - [User workflow preferences](user-workflow-preferences.md) — no automatic review-subagent passes and no unsolicited follow-up task proposals; user QA-tests manually and dislikes background agents
-- [Google Ads postal-code imports](google-ads-postal-code.md) — PostgreSQL-to-Google Ads skips customer rows when postal/ZIP code is missing; collect and persist a real value
