@@ -19,6 +19,7 @@ export const bookings = pgTable("bookings", {
   guestEmail: text("guest_email").notNull(),
   guestLanguage: text("guest_language").notNull().default('EN'),
   guestCountry: text("guest_country"), // 2-letter country code
+  guestPostalCode: text("guest_postal_code"),
   
   // Booking dates
   checkInDate: timestamp("check_in_date", { mode: 'date' }).notNull(),
@@ -145,6 +146,7 @@ export const guests = pgTable("guests", {
   lastName: text("last_name"),
   phone: text("phone"),
   countryCode: text("country_code"),
+  postalCode: text("postal_code"),
   subscribed: boolean("subscribed").notNull().default(true),
   unsubscribedAt: timestamp("unsubscribed_at"),
   source: text("source").notNull().default('import'),
@@ -170,6 +172,7 @@ export const insertBookingSchema = z.object({
   guestEmail: z.string().email(),
   guestLanguage: z.string().default('EN'),
   guestCountry: z.string().length(2).optional(),
+  guestPostalCode: z.string().max(20).optional(),
   checkInDate: z.date(),
   checkOutDate: z.date(),
   status: z.enum(['active', 'cancelled', 'completed']).default('active'),
@@ -252,6 +255,7 @@ export const directBookings = pgTable("direct_bookings", {
   guestEmail: text("guest_email").notNull(),
   guestPhone: text("guest_phone"),
   guestCountry: text("guest_country"),
+  guestPostalCode: text("guest_postal_code"),
   guestLanguage: text("guest_language").notNull().default('EN'),
 
   // Money

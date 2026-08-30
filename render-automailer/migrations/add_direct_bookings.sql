@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS direct_bookings (
   guest_email              TEXT NOT NULL,
   guest_phone              TEXT,
   guest_country            TEXT,
+  guest_postal_code        TEXT,
   guest_language           TEXT NOT NULL DEFAULT 'EN',
 
   currency                 TEXT NOT NULL DEFAULT 'USD',

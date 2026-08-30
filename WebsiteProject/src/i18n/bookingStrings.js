@@ -2872,6 +2872,30 @@ export const TERMS_STRINGS = {
   sw: { termsAgree: 'Kwa kuendelea na uhifadhi wako, unakubali {terms} zetu.', termsLink: 'Sheria na Masharti' },
 };
 
+// Required by the Google Ads PostgreSQL customer-matching import.
+export const POSTAL_CODE_STRINGS = {
+  en: 'Postal / ZIP code',
+  pt: 'Código postal',
+  de: 'Postleitzahl',
+  fr: 'Code postal',
+  es: 'Código postal',
+  it: 'Codice postale',
+  nl: 'Postcode',
+  sv: 'Postnummer',
+  pl: 'Kod pocztowy',
+  ro: 'Cod poștal',
+  sr: 'Poštanski broj',
+  hr: 'Poštanski broj',
+  cs: 'PSČ',
+  tr: 'Posta kodu',
+  ja: '郵便番号',
+  zh: '邮政编码',
+  ru: 'Почтовый индекс',
+  af: 'Poskode',
+  zu: 'Ikhodi yeposi',
+  sw: 'Msimbo wa posta',
+};
+
 // Marin trigger label shown on inline help buttons. Kept separate because it
 // is shared by the booking flow and experience detail pages.
 export const MARIN_STRINGS = {
@@ -2914,10 +2938,11 @@ export function getBookingStrings(lang) {
   // unexpected code.
   const tiers = RATE_TIER_STRINGS[base] || RATE_TIER_STRINGS.en;
   const terms = TERMS_STRINGS[base] || TERMS_STRINGS.en;
+  const postalCode = POSTAL_CODE_STRINGS[base] || POSTAL_CODE_STRINGS.en;
   const marinHelp = MARIN_STRINGS[base] || MARIN_STRINGS.en;
   // _lang: base language actually resolved (EN on fallback) — used by
   // perNightFromTemplate to select the correct CLDR plural category.
-  return { ...core, ...minUnits, ...capacity, ...amenities, ...tiers, ...terms, marinHelp, _lang: STRINGS[base] ? base : 'en' };
+  return { ...core, ...minUnits, ...capacity, ...amenities, ...tiers, ...terms, postalCode, marinHelp, _lang: STRINGS[base] ? base : 'en' };
 }
 
 export function getConfirmStrings(lang) {

@@ -121,6 +121,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     lastName:           'Last name',
     email:              'Email',
     phone:              'Phone',
+     postalCode:         'Postal / ZIP code',
     termsAgree:         'I agree to {terms}.',
     termsLink:          'Terms',
     continue:           'Pay now',
@@ -421,6 +422,7 @@ async function runCheckoutFlow({ bedChoice } = {}) {
   fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Doe' } });
   fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'jane@example.com' } });
   fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+1234567890' } });
+  fireEvent.change(screen.getByTestId('input-postal-code'), { target: { value: '12345' } });
 
   // ── 7. Submit ─────────────────────────────────────────────────────────────
   await act(async () => {
@@ -467,6 +469,7 @@ describe('checkout bedPreferences — integration', () => {
 
     const body = fetchMock.getCheckoutBody();
     expect(body).not.toBeNull();
+    expect(body.guest.postalCode).toBe('12345');
     expect(body.bedPreferences).toBeDefined();
     expect(body.bedPreferences[SAFARI_ROOM_ID]).toBe('king');
   });
@@ -887,6 +890,7 @@ describe('checkout occupancy: multi-unit rate-switch with children', () => {
     fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Smith' } });
     fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'alex@example.com' } });
     fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+1234567890' } });
+    fireEvent.change(screen.getByTestId('input-postal-code'), { target: { value: '12345' } });
 
     await act(async () => {
       fireEvent.click(screen.getByTestId('button-checkout'));
@@ -1227,6 +1231,7 @@ describe('checkout bedPreferences — Garden Cottage edge cases', () => {
     fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Guest' } });
     fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'jo@example.com' } });
     fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+9876543210' } });
+    fireEvent.change(screen.getByTestId('input-postal-code'), { target: { value: '12345' } });
 
     await act(async () => {
       fireEvent.click(screen.getByTestId('button-checkout'));
@@ -1395,6 +1400,7 @@ describe('checkout bedPreferences — Thatched Chalet', () => {
     fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Lodge' } });
     fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'sam@example.com' } });
     fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+27123456789' } });
+    fireEvent.change(screen.getByTestId('input-postal-code'), { target: { value: '12345' } });
 
     await act(async () => {
       fireEvent.click(screen.getByTestId('button-checkout'));
@@ -1561,6 +1567,7 @@ describe('checkout bedPreferences — Comfort Tent', () => {
     fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Guest' } });
     fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'pat@example.com' } });
     fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+27987654321' } });
+    fireEvent.change(screen.getByTestId('input-postal-code'), { target: { value: '12345' } });
 
     await act(async () => {
       fireEvent.click(screen.getByTestId('button-checkout'));
@@ -1737,6 +1744,7 @@ describe('semi-flexible rate is the untouched default through quote and checkout
     fireEvent.change(screen.getByTestId('input-last-name'),  { target: { value: 'Flex' } });
     fireEvent.change(screen.getByTestId('input-email'),      { target: { value: 'sam@example.com' } });
     fireEvent.change(screen.getByTestId('input-phone'),      { target: { value: '+1234567890' } });
+    fireEvent.change(screen.getByTestId('input-postal-code'), { target: { value: '12345' } });
 
     await act(async () => {
       fireEvent.click(screen.getByTestId('button-checkout'));

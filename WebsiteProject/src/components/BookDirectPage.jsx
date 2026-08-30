@@ -149,7 +149,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   const [bedType, setBedType] = useState({}); // roomId → 'king' | 'twin'
 
-  const [guest, setGuest] = useState({ firstName: '', lastName: '', email: '', phone: '' });
+  const [guest, setGuest] = useState({ firstName: '', lastName: '', email: '', phone: '', postalCode: '' });
   const [canceled, setCanceled] = useState(false);
   const [fxData, setFxData] = useState(null); // { base, rates } — display-only
   const [priceByDate, setPriceByDate] = useState({}); // iso→rate, drives picker tiers (display-only)
@@ -527,6 +527,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     if (!guest.lastName.trim()) return setError(t.lastName + ' *');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guest.email.trim())) return setError(t.email + ' *');
     if (!guest.phone.trim()) return setError(t.phone + ' *');
+    if (!guest.postalCode.trim()) return setError(t.postalCode + ' *');
     setLoading(true);
     // Record the GA4 session for this booking (fallback heuristic) and capture
     // the exact client_id to thread through checkout → webhook → email-ingest so
@@ -569,6 +570,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
             lastName: guest.lastName.trim(),
             email: guest.email.trim(),
             phone: guest.phone.trim(),
+            postalCode: guest.postalCode.trim(),
             country: countryCode || '',
             language: lang,
           },
@@ -1972,6 +1974,19 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
                         data-testid="input-phone"
                         autoComplete="tel"
+                        required
+                      />
+                    </label>
+                    <label className="block">
+                      <span className="text-sm font-medium text-slate-700">{t.postalCode} *</span>
+                      <input
+                        type="text"
+                        value={guest.postalCode}
+                        onChange={(e) => setGuest({ ...guest, postalCode: e.target.value })}
+                        className="mt-1 w-full rounded-xl border border-slate-300 px-3 py-2.5 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none"
+                        data-testid="input-postal-code"
+                        autoComplete="postal-code"
+                        maxLength={20}
                         required
                       />
                     </label>

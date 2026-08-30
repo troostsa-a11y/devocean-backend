@@ -123,6 +123,7 @@ interface EmailScheduler {
     guestEmail: string;
     guestLanguage: string;
     guestCountry?: string;
+    guestPostalCode?: string;
     checkInDate: string;
     checkOutDate: string;
   }): Promise<{ booking: any; scheduledEmails: any[] }>;
@@ -501,6 +502,7 @@ export function createBookingRouter(deps: {
     const email = String(guest.email || '').trim().slice(0, 120);
     const phone = String(guest.phone || '').trim().slice(0, 40);
     const country = String(guest.country || '').trim().slice(0, 2).toUpperCase();
+    const postalCode = String(guest.postalCode || '').trim().slice(0, 20);
     const language = String(guest.language || 'EN').trim().slice(0, 5).toUpperCase();
 
     // GA4 attribution: the visitor's client_id (or "fb." fallback) captured
@@ -518,6 +520,7 @@ export function createBookingRouter(deps: {
       return res.status(400).json({ error: 'A valid email is required' });
     }
     if (!phone) return res.status(400).json({ error: 'Phone is required' });
+    if (!postalCode) return res.status(400).json({ error: 'Postal / ZIP code is required' });
 
     // Re-validate discount code + gift voucher at checkout time — either may have
     // been deactivated / redeemed between the last live quote and clicking "Pay".
@@ -570,6 +573,7 @@ export function createBookingRouter(deps: {
         guestEmail: email,
         guestPhone: phone || null,
         guestCountry: country || null,
+        guestPostalCode: postalCode,
         guestLanguage: language,
         gaClientId,
         currency: quote.currency,
@@ -696,6 +700,7 @@ export function createBookingRouter(deps: {
           guestEmail: record.guestEmail,
           guestLanguage: record.guestLanguage || 'EN',
           guestCountry: record.guestCountry || undefined,
+          guestPostalCode: record.guestPostalCode || undefined,
           checkInDate: record.checkInDate,
           checkOutDate: record.checkOutDate,
         });

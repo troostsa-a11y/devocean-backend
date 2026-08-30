@@ -373,6 +373,7 @@ export class EmailAutomationService {
     guestEmail: string;
     guestLanguage: string;
     guestCountry?: string;
+    guestPostalCode?: string;
     checkInDate: string;
     checkOutDate: string;
   }): Promise<{ booking: any; scheduledEmails: any[] }> {
@@ -390,6 +391,7 @@ export class EmailAutomationService {
       guestEmail: bookingData.guestEmail,
       guestLanguage: bookingData.guestLanguage || 'EN',
       guestCountry: bookingData.guestCountry,
+      guestPostalCode: bookingData.guestPostalCode,
       checkInDate: new Date(bookingData.checkInDate),
       checkOutDate: new Date(bookingData.checkOutDate),
       status: 'active',
@@ -605,6 +607,7 @@ export class EmailAutomationService {
         firstName,
         lastName,
         countryCode: booking.guestCountry ? String(booking.guestCountry).toUpperCase().slice(0, 2) : null,
+        postalCode: booking.guestPostalCode ? String(booking.guestPostalCode).trim().slice(0, 20) : null,
         subscribed: true,
         source: 'beds24',
         unsubscribeToken: crypto.randomUUID(),

@@ -516,6 +516,7 @@ export class DatabaseService {
         last_name   TEXT,
         phone       TEXT,
         country_code TEXT,
+        postal_code TEXT,
         subscribed  BOOLEAN NOT NULL DEFAULT TRUE,
         unsubscribed_at TIMESTAMP,
         source      TEXT NOT NULL DEFAULT 'import',
@@ -536,6 +537,7 @@ export class DatabaseService {
     await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS notes          TEXT`;
     await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS unsubscribed_at TIMESTAMP`;
     await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS country_code   TEXT`;
+    await this.client`ALTER TABLE guests ADD COLUMN IF NOT EXISTS postal_code    TEXT`;
     // Ensure the unique constraint on unsubscribe_token exists (safe to run repeatedly).
     await this.client`
       DO $$ BEGIN
@@ -574,6 +576,7 @@ export class DatabaseService {
             lastName: sql`CASE WHEN EXCLUDED.last_name IS NOT NULL AND EXCLUDED.last_name != '' THEN EXCLUDED.last_name ELSE guests.last_name END`,
             phone: sql`CASE WHEN (guests.phone IS NULL OR guests.phone = '') AND EXCLUDED.phone IS NOT NULL AND EXCLUDED.phone != '' THEN EXCLUDED.phone ELSE guests.phone END`,
             countryCode: sql`CASE WHEN guests.country_code IS NULL AND EXCLUDED.country_code IS NOT NULL THEN EXCLUDED.country_code ELSE guests.country_code END`,
+            postalCode: sql`CASE WHEN (guests.postal_code IS NULL OR guests.postal_code = '') AND EXCLUDED.postal_code IS NOT NULL AND EXCLUDED.postal_code != '' THEN EXCLUDED.postal_code ELSE guests.postal_code END`,
             totalSpent: sql`CASE WHEN EXCLUDED.total_spent IS NOT NULL AND (guests.total_spent IS NULL OR EXCLUDED.total_spent > guests.total_spent) THEN EXCLUDED.total_spent ELSE guests.total_spent END`,
             lastCheckin: sql`CASE WHEN EXCLUDED.last_checkin IS NOT NULL AND (guests.last_checkin IS NULL OR EXCLUDED.last_checkin > guests.last_checkin) THEN EXCLUDED.last_checkin ELSE guests.last_checkin END`,
             tags: sql`CASE WHEN EXCLUDED.tags IS NOT NULL THEN EXCLUDED.tags ELSE guests.tags END`,
@@ -742,6 +745,7 @@ export class DatabaseService {
         guest_email              TEXT NOT NULL,
         guest_phone              TEXT,
         guest_country            TEXT,
+        guest_postal_code        TEXT,
         guest_language           TEXT NOT NULL DEFAULT 'EN',
         currency                 TEXT NOT NULL DEFAULT 'USD',
         total_amount             DECIMAL(10,2) NOT NULL,
@@ -769,6 +773,10 @@ export class DatabaseService {
     // Idempotent upgrade for native-flow GA4 attribution.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS ga_client_id TEXT`;
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS ga4_conversion_fired_at TIMESTAMP`;
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS guest_postal_code TEXT`;
+    // The long-lived bookings table predates the native direct-booking flow.
+    // Keep its export shape compatible with the direct and guests tables.
+    await this.client`ALTER TABLE IF EXISTS bookings ADD COLUMN IF NOT EXISTS guest_postal_code TEXT`;
     // Idempotent upgrade for coupon/discount support.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS coupon_code TEXT`;
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS discount_amount DECIMAL(10,2)`;
