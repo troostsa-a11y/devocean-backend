@@ -17,6 +17,8 @@ interface TranslationCache {
   [emailType: string]: TemplateTranslations;
 }
 
+const MARIN_EMAIL_TYPES = new Set(['post_booking', 'pre_arrival', 'arrival']);
+
 export class EmailTemplateRenderer {
   private translationCache: TranslationCache;
   private templatesPath: string;
@@ -187,7 +189,14 @@ export class EmailTemplateRenderer {
       }
     }
 
-    const emailTranslations = t || translations['en-GB'];
+    const baseEmailTranslations = t || translations['en-GB'];
+    const marinTranslations = MARIN_EMAIL_TYPES.has(emailType)
+      ? this.loadTranslationsForType('marin')
+      : {};
+    const emailTranslations = {
+      ...baseEmailTranslations,
+      ...(marinTranslations[langCode] || marinTranslations['en-GB'] || {}),
+    };
     
     // Handle gendered greetings
     const gender = data.gender as 'male' | 'female' | 'other' | null | undefined;
