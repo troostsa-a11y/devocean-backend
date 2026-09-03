@@ -11,7 +11,6 @@ User-agent: *
 Allow: /
 # Conversion / post-booking pages must never be indexed or crawled —
 # bots hitting them would trigger phantom Google Ads / GA4 conversions.
-Disallow: /thankyou.html
 Disallow: /thankyou
 Disallow: /canceled.html
 Disallow: /canceled
@@ -45,7 +44,6 @@ User-agent: Perplexity-User
 User-agent: Claude-User
 User-agent: Claude-SearchBot
 User-agent: Claude-Web
-Disallow: /thankyou.html
 Disallow: /thankyou
 Disallow: /canceled.html
 Disallow: /canceled

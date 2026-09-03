@@ -747,7 +747,7 @@ app.use(async (req, res, next) => {
   const accept = req.headers.accept || '';
   if (!accept.includes('text/html')) return next();
   // Only handle SPA navigations (extensionless paths). Let Vite serve real
-  // static HTML files (/thankyou.html, /safari.html, ...).
+  // static HTML files (/safari.html, /comfort.html, ...).
   if (/\.[a-zA-Z0-9]+$/.test(req.path)) return next();
   try {
     // Dev parity with CF Pages pretty URLs: serve <path>.html if it exists
