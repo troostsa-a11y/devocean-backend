@@ -45,7 +45,7 @@ export default function WhyPontaPage({ units, experiences, ui, lang, currency, b
         {/* Hero Section */}
         <div className="relative h-[60vh] md:h-[70vh] overflow-hidden">
           <picture>
-            <source media="(max-width: 800px)" srcSet="/photos/hero02-mobile.webp" type="image/webp" />
+            <source media="(max-width: 800px)" srcSet="/photos/hero02-mobile-v2.webp" type="image/webp" />
             <source media="(min-width: 801px)" srcSet="/photos/hero02.webp" type="image/webp" />
             <img
               src="/photos/hero02.jpg"

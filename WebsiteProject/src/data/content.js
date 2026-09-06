@@ -84,7 +84,7 @@ export const HERO_IMAGES = [
     desktop: "/photos/hero02.jpg", 
     mobile: "/photos/hero02-mobile.jpg",
     desktopWebP: "/photos/hero02.webp",
-    mobileWebP: "/photos/hero02-mobile.webp",
+    mobileWebP: "/photos/hero02-mobile-v2.webp",
     desktopAvif: "/photos/hero02.avif",
     mobileObjectClass: "object-[75%_center] sm:object-[30%_center]"
   },
