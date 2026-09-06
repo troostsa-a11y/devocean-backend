@@ -57,7 +57,7 @@ import { localizeUnits, localizeExperiences, buildBookingUrl } from './utils/loc
 import { localizeInternalHref } from './utils/localizedLinks';
 import { HERO_IMAGES } from './data/content';
 import { throttle } from './utils/debounce';
-import { useSeoPage, getHomeDescription, getHomeTitle } from './utils/seoMeta';
+import { useHomeSeo } from './utils/homeSeo';
 
 // Critical above-the-fold components (loaded immediately)
 import Header from './components/Header';
@@ -428,18 +428,7 @@ export default function App() {
   // Update meta title/description for homepage based on language (SEO).
   // useSeoPage skips the update when description is null/undefined (non-home routes).
   const isHomePage = location === '/' || location.startsWith('/?');
-  const homeDesc = isHomePage ? getHomeDescription(lang) : null;
-  const homeTitle = isHomePage ? getHomeTitle(lang) : null;
-  useSeoPage({
-    title: homeTitle || undefined,
-    description: homeDesc,
-    ogTitle: homeTitle || undefined,
-    ogDescription: homeDesc || undefined,
-    ogImage: isHomePage ? 'https://devoceanlodge.com/photos/hero01.jpg' : undefined,
-    twitterTitle: homeTitle || undefined,
-    twitterDescription: homeDesc || undefined,
-    twitterImage: isHomePage ? 'https://devoceanlodge.com/photos/hero01.jpg' : undefined,
-  });
+  useHomeSeo(isHomePage, lang);
 
   // WebMCP — expose site tools to AI agents via the browser (progressive enhancement)
   // navigator.modelContext is experimental; this is a no-op in unsupporting browsers.

@@ -79,6 +79,21 @@ body {
   scroll-margin-top: 0 !important;
 }
 
+/*
+ * Skip style/layout/paint work for homepage sections until they approach the
+ * viewport. Chrome remembers the measured height after first rendering; the
+ * intrinsic fallback keeps the document stable before then.
+ */
+#stay,
+#experiences,
+#gallery,
+#location,
+#contact,
+footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}
+
 /* ------------------ Topbar (brown) ------------------ */
 .topbar {
   position: fixed;

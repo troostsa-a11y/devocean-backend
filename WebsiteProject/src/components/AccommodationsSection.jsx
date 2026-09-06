@@ -1,7 +1,20 @@
 import { useState, useEffect } from 'react';
 import { CalendarCheck2, Loader2 } from 'lucide-react';
 import LazyImage from './LazyImage';
-import { getBookingStrings } from '../i18n/bookingStrings';
+
+const SEARCHING_LABELS = {
+  'en-GB': 'Checking availability…', 'en-US': 'Checking availability…',
+  'pt-PT': 'A verificar disponibilidade…', 'pt-BR': 'A verificar disponibilidade…',
+  'de-DE': 'Verfügbarkeit wird geprüft…', 'fr-FR': 'Vérification des disponibilités…',
+  'es-ES': 'Comprobando disponibilidad…', 'it-IT': 'Verifica disponibilità in corso…',
+  'nl-NL': 'Beschikbaarheid controleren…', sv: 'Kontrollerar tillgänglighet…',
+  pl: 'Sprawdzanie dostępności…', ro: 'Se verifică disponibilitatea…',
+  sr: 'Provera dostupnosti…', hr: 'Provjera dostupnosti…',
+  cs: 'Kontrola dostupnosti…', tr: 'Müsaitlik kontrol ediliyor…',
+  'ja-JP': '空室状況を確認中…', 'zh-CN': '正在查询空房…',
+  ru: 'Проверяем наличие…', 'af-ZA': 'Kontroleer beskikbaarheid…',
+  zu: 'Sihlola ukutholakala…', sw: 'Tunaangalia upatikanaji…',
+};
 
 // Key features for each accommodation type - helps users preview before clicking
 const UNIT_FEATURES = {
@@ -30,7 +43,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
   // Immediate click feedback: the booking page is a separate navigation, so
   // without this the button looks stalled between click and page load.
   const [navigatingKey, setNavigatingKey] = useState(null);
-  const bookingT = getBookingStrings(lang);
+  const searchingLabel = SEARCHING_LABELS[lang] || SEARCHING_LABELS['en-GB'];
   // Reset the progress state when the page is restored from the back/forward
   // cache — otherwise a "Checking availability…" spinner would persist after Back.
   useEffect(() => {
@@ -148,7 +161,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                     {navigatingKey === u.key
                       ? <Loader2 size={14} className="animate-spin" />
                       : <CalendarCheck2 size={14} />}
-                    {navigatingKey === u.key ? bookingT.searching : 'Check Availability'}
+                    {navigatingKey === u.key ? searchingLabel : 'Check Availability'}
                   </a>
                 </div>
               </div>
