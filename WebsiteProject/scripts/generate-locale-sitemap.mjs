@@ -32,7 +32,9 @@ const LOCALIZED_ROUTES = [
 const xmlEscape = (value) => value.replace(/&/g, '&amp;');
 const urls = [
   ...LOCALIZED_ROUTES.flatMap((route) =>
-    LOCALES.map((locale) => `${BASE_URL}${localizedPath(route, locale.code)}`),
+    LOCALES
+      .filter((locale) => locale.indexable !== false)
+      .map((locale) => `${BASE_URL}${localizedPath(route, locale.code)}`),
   ),
   `${BASE_URL}/legal/privacy`,
   `${BASE_URL}/legal/cookies`,

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://devoceanlodge.com/</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/</loc></url>
   <url><loc>https://devoceanlodge.com/nl/</loc></url>
@@ -23,7 +22,6 @@
   <url><loc>https://devoceanlodge.com/zu/</loc></url>
   <url><loc>https://devoceanlodge.com/sw/</loc></url>
   <url><loc>https://devoceanlodge.com/story</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/story</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/story</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/story</loc></url>
   <url><loc>https://devoceanlodge.com/nl/story</loc></url>
@@ -45,7 +43,6 @@
   <url><loc>https://devoceanlodge.com/zu/story</loc></url>
   <url><loc>https://devoceanlodge.com/sw/story</loc></url>
   <url><loc>https://devoceanlodge.com/safari</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/safari</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/safari</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/safari</loc></url>
   <url><loc>https://devoceanlodge.com/nl/safari</loc></url>
@@ -67,7 +64,6 @@
   <url><loc>https://devoceanlodge.com/zu/safari</loc></url>
   <url><loc>https://devoceanlodge.com/sw/safari</loc></url>
   <url><loc>https://devoceanlodge.com/comfort</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/comfort</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/comfort</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/comfort</loc></url>
   <url><loc>https://devoceanlodge.com/nl/comfort</loc></url>
@@ -89,7 +85,6 @@
   <url><loc>https://devoceanlodge.com/zu/comfort</loc></url>
   <url><loc>https://devoceanlodge.com/sw/comfort</loc></url>
   <url><loc>https://devoceanlodge.com/cottage</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/cottage</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/cottage</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/cottage</loc></url>
   <url><loc>https://devoceanlodge.com/nl/cottage</loc></url>
@@ -111,7 +106,6 @@
   <url><loc>https://devoceanlodge.com/zu/cottage</loc></url>
   <url><loc>https://devoceanlodge.com/sw/cottage</loc></url>
   <url><loc>https://devoceanlodge.com/chalet</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/chalet</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/chalet</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/chalet</loc></url>
   <url><loc>https://devoceanlodge.com/nl/chalet</loc></url>
@@ -133,7 +127,6 @@
   <url><loc>https://devoceanlodge.com/zu/chalet</loc></url>
   <url><loc>https://devoceanlodge.com/sw/chalet</loc></url>
   <url><loc>https://devoceanlodge.com/experiences/dolphins</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/experiences/dolphins</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/experiences/dolphins</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/experiences/dolphins</loc></url>
   <url><loc>https://devoceanlodge.com/nl/experiences/dolphins</loc></url>
@@ -155,7 +148,6 @@
   <url><loc>https://devoceanlodge.com/zu/experiences/dolphins</loc></url>
   <url><loc>https://devoceanlodge.com/sw/experiences/dolphins</loc></url>
   <url><loc>https://devoceanlodge.com/experiences/diving</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/experiences/diving</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/experiences/diving</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/experiences/diving</loc></url>
   <url><loc>https://devoceanlodge.com/nl/experiences/diving</loc></url>
@@ -177,7 +169,6 @@
   <url><loc>https://devoceanlodge.com/zu/experiences/diving</loc></url>
   <url><loc>https://devoceanlodge.com/sw/experiences/diving</loc></url>
   <url><loc>https://devoceanlodge.com/experiences/seafari</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/experiences/seafari</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/experiences/seafari</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/experiences/seafari</loc></url>
   <url><loc>https://devoceanlodge.com/nl/experiences/seafari</loc></url>
@@ -199,7 +190,6 @@
   <url><loc>https://devoceanlodge.com/zu/experiences/seafari</loc></url>
   <url><loc>https://devoceanlodge.com/sw/experiences/seafari</loc></url>
   <url><loc>https://devoceanlodge.com/experiences/safari</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/experiences/safari</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/experiences/safari</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/experiences/safari</loc></url>
   <url><loc>https://devoceanlodge.com/nl/experiences/safari</loc></url>
@@ -221,7 +211,6 @@
   <url><loc>https://devoceanlodge.com/zu/experiences/safari</loc></url>
   <url><loc>https://devoceanlodge.com/sw/experiences/safari</loc></url>
   <url><loc>https://devoceanlodge.com/experiences/fishing</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/experiences/fishing</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/experiences/fishing</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/experiences/fishing</loc></url>
   <url><loc>https://devoceanlodge.com/nl/experiences/fishing</loc></url>
@@ -243,7 +232,6 @@
   <url><loc>https://devoceanlodge.com/zu/experiences/fishing</loc></url>
   <url><loc>https://devoceanlodge.com/sw/experiences/fishing</loc></url>
   <url><loc>https://devoceanlodge.com/experiences/surfing</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/experiences/surfing</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/experiences/surfing</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/experiences/surfing</loc></url>
   <url><loc>https://devoceanlodge.com/nl/experiences/surfing</loc></url>
@@ -265,7 +253,6 @@
   <url><loc>https://devoceanlodge.com/zu/experiences/surfing</loc></url>
   <url><loc>https://devoceanlodge.com/sw/experiences/surfing</loc></url>
   <url><loc>https://devoceanlodge.com/why-ponta</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/why-ponta</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/why-ponta</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/why-ponta</loc></url>
   <url><loc>https://devoceanlodge.com/nl/why-ponta</loc></url>
@@ -287,7 +274,6 @@
   <url><loc>https://devoceanlodge.com/zu/why-ponta</loc></url>
   <url><loc>https://devoceanlodge.com/sw/why-ponta</loc></url>
   <url><loc>https://devoceanlodge.com/ponta-do-ouro</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/nl/ponta-do-ouro</loc></url>
@@ -309,7 +295,6 @@
   <url><loc>https://devoceanlodge.com/zu/ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/sw/ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/ponta-do-ouro-accommodation</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/ponta-do-ouro-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/ponta-do-ouro-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/ponta-do-ouro-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/nl/ponta-do-ouro-accommodation</loc></url>
@@ -331,7 +316,6 @@
   <url><loc>https://devoceanlodge.com/zu/ponta-do-ouro-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/sw/ponta-do-ouro-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/safari-tents-ponta-do-ouro</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/safari-tents-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/safari-tents-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/safari-tents-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/nl/safari-tents-ponta-do-ouro</loc></url>
@@ -353,7 +337,6 @@
   <url><loc>https://devoceanlodge.com/zu/safari-tents-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/sw/safari-tents-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/diving-dolphin-accommodation</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/diving-dolphin-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/diving-dolphin-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/diving-dolphin-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/nl/diving-dolphin-accommodation</loc></url>
@@ -375,7 +358,6 @@
   <url><loc>https://devoceanlodge.com/zu/diving-dolphin-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/sw/diving-dolphin-accommodation</loc></url>
   <url><loc>https://devoceanlodge.com/getting-to-ponta-do-ouro</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/getting-to-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/getting-to-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/getting-to-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/nl/getting-to-ponta-do-ouro</loc></url>
@@ -397,7 +379,6 @@
   <url><loc>https://devoceanlodge.com/zu/getting-to-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/sw/getting-to-ponta-do-ouro</loc></url>
   <url><loc>https://devoceanlodge.com/ponta-do-ouro-without-4x4</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/ponta-do-ouro-without-4x4</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/ponta-do-ouro-without-4x4</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/ponta-do-ouro-without-4x4</loc></url>
   <url><loc>https://devoceanlodge.com/nl/ponta-do-ouro-without-4x4</loc></url>
@@ -419,7 +400,6 @@
   <url><loc>https://devoceanlodge.com/zu/ponta-do-ouro-without-4x4</loc></url>
   <url><loc>https://devoceanlodge.com/sw/ponta-do-ouro-without-4x4</loc></url>
   <url><loc>https://devoceanlodge.com/devocean-lodge-meals</loc></url>
-  <url><loc>https://devoceanlodge.com/en-us/devocean-lodge-meals</loc></url>
   <url><loc>https://devoceanlodge.com/pt-pt/devocean-lodge-meals</loc></url>
   <url><loc>https://devoceanlodge.com/pt-br/devocean-lodge-meals</loc></url>
   <url><loc>https://devoceanlodge.com/nl/devocean-lodge-meals</loc></url>

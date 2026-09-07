@@ -13,6 +13,7 @@ describe('public locale URL contract', () => {
   it('keeps historical English routes at the root and prefixes other locales', () => {
     expect(DEFAULT_LOCALE).toBe('en-GB');
     expect(localizedPath('/chalet', 'en-GB')).toBe('/chalet');
+    expect(localizedPath('/chalet', 'en-US')).toBe('/chalet');
     expect(localizedPath('/chalet', 'pt-PT')).toBe('/pt-pt/chalet');
     expect(localizedPath('/', 'zh-CN')).toBe('/zh-hans/');
   });
@@ -31,11 +32,13 @@ describe('public locale URL contract', () => {
     expect(normalizeLocale('not-a-locale')).toBeNull();
   });
 
-  it('produces one unique alternate URL per supported locale', () => {
+  it('produces one unique alternate URL per indexable locale', () => {
     const alternates = allHreflangPaths('/devocean-lodge-meals');
-    expect(alternates).toHaveLength(LOCALES.length);
-    expect(new Set(alternates.map(({ hreflang }) => hreflang)).size).toBe(LOCALES.length);
-    expect(new Set(alternates.map(({ pathname }) => pathname)).size).toBe(LOCALES.length);
+    const indexableLocales = LOCALES.filter(({ indexable }) => indexable !== false);
+    expect(alternates).toHaveLength(indexableLocales.length);
+    expect(new Set(alternates.map(({ hreflang }) => hreflang)).size).toBe(indexableLocales.length);
+    expect(new Set(alternates.map(({ pathname }) => pathname)).size).toBe(indexableLocales.length);
+    expect(alternates.some(({ code }) => code === 'en-US')).toBe(false);
     expect(alternates.find(({ code }) => code === 'pt-PT')?.pathname).toBe('/pt-pt/devocean-lodge-meals');
   });
 });

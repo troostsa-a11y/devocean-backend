@@ -1,7 +1,9 @@
 /**
  * The public locale contract for devoceanlodge.com.
  *
- * English (UK) keeps the historical root URLs. Every other locale gets a
+ * English uses the historical root URLs. US English remains a selectable
+ * visitor preference, but it is not a separate indexable URL because its
+ * content is substantially identical to UK English. Other locales get a
  * lowercase, shareable path prefix. This file deliberately has no React or
  * browser dependencies because Cloudflare Pages middleware imports it too.
  */
@@ -9,7 +11,7 @@ export const DEFAULT_LOCALE = 'en-GB';
 
 export const LOCALES = [
   { code: 'en-GB', path: '',        hreflang: 'en-GB',   label: 'English (UK)' },
-  { code: 'en-US', path: 'en-us',   hreflang: 'en-US',   label: 'English (US)' },
+  { code: 'en-US', path: '',        hreflang: 'en-US',   label: 'English (US)', indexable: false },
   { code: 'pt-PT', path: 'pt-pt',   hreflang: 'pt-PT',   label: 'Português (Portugal)' },
   { code: 'pt-BR', path: 'pt-br',   hreflang: 'pt-BR',   label: 'Português (Brasil)' },
   { code: 'nl-NL', path: 'nl',      hreflang: 'nl-NL',   label: 'Nederlands' },
@@ -96,7 +98,7 @@ export function localizedUrl(pathname, localeCode, search = '', hash = '') {
 }
 
 export function allHreflangPaths(pathname = '/') {
-  return LOCALES.map((locale) => ({
+  return LOCALES.filter((locale) => locale.indexable !== false).map((locale) => ({
     ...locale,
     pathname: localizedPath(pathname, locale.code),
   }));

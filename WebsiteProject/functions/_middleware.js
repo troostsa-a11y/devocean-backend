@@ -501,6 +501,18 @@ export async function onRequest(context) {
   try {
     const requestUrl = new URL(context.request.url);
     const requestPathname = requestUrl.pathname;
+
+    // US English is a display preference, not a separately indexable content
+    // variant. Its pages are substantially identical to root English, so Google
+    // consolidated them despite self-canonicals. Permanently redirect historical
+    // /en-us URLs to the equivalent root route and preserve query/hash values.
+    const enUsMatch = requestPathname.match(/^\/en-us(?:\/(.*))?$/i);
+    if (enUsMatch) {
+      const rootPath = enUsMatch[1] ? `/${enUsMatch[1]}` : '/';
+      const target = `${rootPath}${requestUrl.search}${requestUrl.hash}`;
+      return Response.redirect(new URL(target, requestUrl).href, 301);
+    }
+
     const requestLocale = localeFromPath(requestPathname);
     const pathname = stripLocalePrefix(requestPathname);
     const searchParams = requestUrl.searchParams;
