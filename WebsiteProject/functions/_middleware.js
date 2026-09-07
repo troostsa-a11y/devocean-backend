@@ -524,7 +524,7 @@ export async function onRequest(context) {
     if (legacyLocale && !requestLocale) {
       searchParams.delete('lang');
       const target = localizedUrl(pathname, legacyLocale, searchParams.toString(), requestUrl.hash);
-      return Response.redirect(new URL(target, requestUrl).href, 302);
+      return Response.redirect(new URL(target, requestUrl).href, 301);
     }
 
     // Old HotelRunner return URLs used title-cased locale paths such as
@@ -532,7 +532,7 @@ export async function onRequest(context) {
     if (!requestLocale && /^\/[a-z]{2}(?:-[A-Za-z]{2})?$/.test(requestPathname)) {
       const oldLocale = normalizeLocale(requestPathname.slice(1));
       if (oldLocale) {
-        return Response.redirect(new URL(localizedUrl('/', oldLocale, searchParams.toString(), requestUrl.hash), requestUrl).href, 302);
+        return Response.redirect(new URL(localizedUrl('/', oldLocale, searchParams.toString(), requestUrl.hash), requestUrl).href, 301);
       }
     }
 

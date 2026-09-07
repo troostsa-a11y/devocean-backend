@@ -59,7 +59,7 @@ describe('Cloudflare static unit routing', () => {
     const response = await onRequest(context);
     const location = response.headers.get('location');
 
-    expect(response.status).toBe(302);
+    expect(response.status).toBe(301);
     expect(location).toBe(
       'https://devoceanlodge.com/pt-pt/safari?checkIn=2026-09-15&checkOut=2026-09-18&adults=2&children=1&discount=SUMMER&currency=EUR',
     );
