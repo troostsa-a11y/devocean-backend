@@ -142,6 +142,13 @@
         scheduleWithIdle(loadGTM, 500);
         scheduleWithIdle(loadTracker, 900);
       }
+
+      // Always initialise GTM shortly after the critical render. Requiring an
+      // interaction (or waiting 15 seconds) made Google Tag Coverage scanners
+      // finish before the container loaded and also missed short, non-interactive
+      // visits. The idle callback keeps GTM outside the critical render while
+      // ensuring every published route is tagged.
+      scheduleWithIdle(loadGTM, 1500);
       
       function onFirstInteraction() {
         setTimeout(scheduleAllScripts, 0);
@@ -151,11 +158,8 @@
         window.addEventListener(e, onFirstInteraction, { once: true, passive: true });
       });
       
-      // No-interaction fallback. Real visitors trigger the load instantly
-      // via the click/keydown/touchstart listeners above; this only fires for
-      // visitors who never interact. Set to 15s so PageSpeed audits (which
-      // never interact and finish in ~10-12s) don't get billed for the GTM
-      // + Google Ads cascade in their TBT score.
+      // No-interaction fallback for the custom engagement tracker. GTM is
+      // already scheduled above; its loaded guard makes this call a no-op.
       setTimeout(scheduleAllScripts, 15000);
     })();
   </script>
