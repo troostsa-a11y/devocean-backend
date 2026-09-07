@@ -21,16 +21,6 @@ npm run build
 echo "▶ Removing dist/functions/ (source files must not reach Cloudflare as static assets)..."
 rm -rf dist/functions/
 
-# Per-deploy build marker. Injecting a unique comment into every HTML page:
-#  1. changes each file's content hash so wrangler can never "already uploaded"
-#     dedupe-skip a page (the Task 82 silent-stale-deploy failure mode), and
-#  2. gives the post-deploy smoke check below a string to verify on the live site.
-BUILD_MARKER="build-$(date -u +%Y%m%dT%H%M%SZ)-$RANDOM"
-echo "▶ Injecting build marker into HTML pages: $BUILD_MARKER"
-find dist -name '*.html' -print0 | while IFS= read -r -d '' f; do
-  printf '\n<!-- %s -->\n' "$BUILD_MARKER" >> "$f"
-done
-
 echo "▶ Setting ADMIN_API_KEY secret on Cloudflare Pages..."
 if [[ -n "$ADMIN_API_KEY" ]]; then
   echo "$ADMIN_API_KEY" | npx wrangler pages secret put ADMIN_API_KEY --project-name devocean-lodge
@@ -43,6 +33,25 @@ if [[ -n "$GOOGLE_MAPS_API_KEY" ]]; then
   echo "$GOOGLE_MAPS_API_KEY" | npx wrangler pages secret put GOOGLE_MAPS_API_KEY --project-name devocean-lodge
 else
   echo "⚠ GOOGLE_MAPS_API_KEY env var not set — skipping secret upload"
+fi
+
+# Per-deploy build marker. This must be the final operation on dist before
+# upload: another build can otherwise finish while secrets are syncing and
+# replace index.html after it was marked, causing a false stale-deploy failure.
+# Injecting a unique comment into every HTML page:
+#  1. changes each file's content hash so wrangler can never "already uploaded"
+#     dedupe-skip a page, and
+#  2. gives the post-deploy smoke check below a string to verify on the live site.
+BUILD_MARKER="build-$(date -u +%Y%m%dT%H%M%SZ)-$RANDOM"
+echo "▶ Injecting build marker into HTML pages: $BUILD_MARKER"
+find dist -name '*.html' -print0 | while IFS= read -r -d '' f; do
+  printf '\n<!-- %s -->\n' "$BUILD_MARKER" >> "$f"
+done
+
+if ! grep -Fq "$BUILD_MARKER" dist/index.html; then
+  echo "✗ DEPLOY ABORTED: dist/index.html lost its build marker before upload."
+  echo "  Another build may be writing to dist; wait for it to finish and retry."
+  exit 1
 fi
 
 echo "▶ Deploying to Cloudflare Pages..."
