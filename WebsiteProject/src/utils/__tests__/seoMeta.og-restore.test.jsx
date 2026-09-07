@@ -433,3 +433,49 @@ describe('useSeoPage — description meta tag absent from the DOM', () => {
     unmount();
   });
 });
+
+describe('useSeoPage — stable locale canonicals', () => {
+  beforeEach(() => {
+    clearMetaTags();
+    window.happyDOM.setURL('https://devoceanlodge.com/');
+    seedCanonical(BASELINE_CANONICAL);
+    seedOgTag('og:url', BASELINE_CANONICAL);
+  });
+
+  afterEach(() => {
+    clearMetaTags();
+    window.happyDOM.setURL('http://localhost/');
+  });
+
+  it('keeps the active locale prefix after React hydration', () => {
+    window.happyDOM.setURL('https://devoceanlodge.com/ja/ponta-do-ouro');
+
+    const { unmount } = render(
+      <SeoTestPage seoProps={{
+        canonical: 'https://devoceanlodge.com/ponta-do-ouro',
+        ogUrl: 'https://devoceanlodge.com/ponta-do-ouro',
+      }} />
+    );
+
+    expect(canonicalHref()).toBe('https://devoceanlodge.com/ja/ponta-do-ouro');
+    expect(ogContent('og:url')).toBe('https://devoceanlodge.com/ja/ponta-do-ouro');
+
+    unmount();
+  });
+
+  it('keeps query variants canonicalized to the clean root route', () => {
+    window.happyDOM.setURL('https://devoceanlodge.com/book-direct?unit=cottage');
+
+    const { unmount } = render(
+      <SeoTestPage seoProps={{
+        canonical: 'https://devoceanlodge.com/book-direct',
+        ogUrl: 'https://devoceanlodge.com/book-direct',
+      }} />
+    );
+
+    expect(canonicalHref()).toBe('https://devoceanlodge.com/book-direct');
+    expect(ogContent('og:url')).toBe('https://devoceanlodge.com/book-direct');
+
+    unmount();
+  });
+});

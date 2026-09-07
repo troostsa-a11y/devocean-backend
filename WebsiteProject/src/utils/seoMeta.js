@@ -26,9 +26,31 @@
  *  - always use ROUTE_DESCRIPTIONS['/your-route'] — never hardcode the string
  */
 import { useEffect } from 'react';
+import { localeFromPath, localizedPath } from '../i18n/localeCatalog.js';
 
 const OG_PROPERTIES = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type'];
 const TWITTER_NAMES = ['twitter:title', 'twitter:description', 'twitter:image'];
+
+/**
+ * Page components describe their canonical using the language-neutral route.
+ * Preserve the active locale prefix when the current page is a stable locale
+ * URL; otherwise hydration would replace the edge's self-canonical with the
+ * root English URL and Google would collapse translated pages as alternates.
+ */
+function canonicalForActiveLocale(value) {
+  if (!value || typeof window === 'undefined') return value;
+  try {
+    const url = new URL(value, window.location.origin);
+    if (url.origin !== window.location.origin) return value;
+    const locale = localeFromPath(window.location.pathname);
+    if (locale) url.pathname = localizedPath(url.pathname, locale.code);
+    url.search = '';
+    url.hash = '';
+    return url.href;
+  } catch {
+    return value;
+  }
+}
 
 /**
  * Capture current OG/Twitter meta tag values and return a restore function.
@@ -138,6 +160,9 @@ export function useSeoPage({
   twitterDescription,
   twitterImage,
 }) {
+  const resolvedCanonical = canonicalForActiveLocale(canonical);
+  const resolvedOgUrl = canonicalForActiveLocale(ogUrl);
+
   useEffect(() => {
     const prevTitle = document.title;
     const metaDesc = document.querySelector('meta[name="description"]');
@@ -147,18 +172,18 @@ export function useSeoPage({
 
     if (title) document.title = title;
     if (description && metaDesc) metaDesc.content = description;
-    if (canonical) updateCanonical(canonical);
+    if (resolvedCanonical) updateCanonical(resolvedCanonical);
 
     const hasOgTwitter = ogTitle || ogDescription || ogImage || ogUrl || ogType ||
                          twitterTitle || twitterDescription || twitterImage;
     const restoreOgTwitter = hasOgTwitter
-      ? captureAndSetOgTwitter({ ogTitle, ogDescription, ogImage, ogUrl, ogType, twitterTitle, twitterDescription, twitterImage })
+      ? captureAndSetOgTwitter({ ogTitle, ogDescription, ogImage, ogUrl: resolvedOgUrl, ogType, twitterTitle, twitterDescription, twitterImage })
       : null;
 
     return () => {
       document.title = prevTitle;
       if (metaDesc) metaDesc.content = prevDesc;
-      if (canonical) {
+      if (resolvedCanonical) {
         if (prevCanonical) {
           updateCanonical(prevCanonical);
         } else {
@@ -168,7 +193,7 @@ export function useSeoPage({
       }
       if (restoreOgTwitter) restoreOgTwitter();
     };
-  }, [title, description, canonical, ogTitle, ogDescription, ogImage, ogUrl, ogType, twitterTitle, twitterDescription, twitterImage]);
+  }, [title, description, resolvedCanonical, ogTitle, ogDescription, ogImage, resolvedOgUrl, ogType, twitterTitle, twitterDescription, twitterImage]);
 }
 
 const META_DESCRIPTIONS = {
