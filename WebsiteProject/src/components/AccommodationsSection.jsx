@@ -149,7 +149,7 @@ export default function AccommodationsSection({ units, ui, bookUrl, lang, curren
                       if (isPlainLeftClick) setNavigatingKey(u.key);
                       if (window.dataLayer) {
                         window.dataLayer.push({
-                          event: 'reservation_complete',
+                          event: 'reservation_initiated',
                           button_location: 'accommodation_card',
                           unit_key: u.key,
                           language: lang,

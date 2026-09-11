@@ -32,7 +32,8 @@ describe('AccommodationsSection Check Availability feedback', () => {
     expect(btn.textContent).toContain('Checking availability…');
     expect(btn.getAttribute("aria-disabled")).toBe("true");
     // analytics still fired
-    expect(window.dataLayer.some((e) => e.event === 'reservation_complete' && e.unit_key === 'safari')).toBe(true);
+    expect(window.dataLayer.some((e) => e.event === 'reservation_initiated' && e.button_location === 'accommodation_card' && e.unit_key === 'safari')).toBe(true);
+    expect(window.dataLayer.some((e) => e.event === 'reservation_complete')).toBe(false);
   });
 
   it('prevents further booking clicks while navigating', () => {
