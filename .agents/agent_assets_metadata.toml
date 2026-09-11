@@ -6,39 +6,60 @@ id = "VX34jnHrUYCycfABxpeEE"
 uri = "file://WebsiteProject/public/images/devocean_logo_trustindex_300.png"
 type = "image"
 title = "devocean_logo_trustindex_300.png"
+logical_id = "0e93f448-70d7-44aa-8fc3-aacf2948ea3b"
 
 [[outputs]]
 id = "y2l6aK4a6d4AMh56sJU2r"
 uri = "file://TECHNICAL_ASSET_DESCRIPTION.md"
 type = "text"
 title = "DEVOCEAN Lodge — Technical Asset Description"
+logical_id = "f7fa01ad-cdb2-4a71-91f4-b1949aa69704"
 
 [[outputs]]
 id = "SkGq5FyB2fRdswpArvPey"
 uri = "file://attached_assets/facebook_upload.csv"
 type = "table"
 title = "facebook_upload.csv — 3,168 guests in Facebook Custom Audience format"
+logical_id = "a97de6c6-fbc5-464e-93a2-19268cc83362"
 
 [[outputs]]
 id = "VGQNSzTI_6MWvbfibl5mf"
 uri = "file://business_broadcast_1.csv"
 type = "table"
 title = "business_broadcast_1.csv — 256 records"
+logical_id = "03a4b702-35dd-4191-a2a7-37e8920db0e3"
 
 [[outputs]]
 id = "zeJroawp6TyMlpy5pbmMl"
 uri = "file://business_broadcast_2.csv"
 type = "table"
 title = "business_broadcast_2.csv — 256 records"
+logical_id = "f12a9310-eadd-4a09-b920-6469849d02a8"
 
 [[outputs]]
 id = "2ULXtLpvFIOv0TZmr9FvB"
 uri = "file://business_broadcast_3.csv"
 type = "table"
 title = "business_broadcast_3.csv — 117 records"
+logical_id = "cc0288f1-eedd-49c5-ac31-6e0abec2beb0"
 
 [[outputs]]
 id = "7dh5TNztQ-oO83M59WCpV"
 uri = "file://business_broadcast_mz_1.csv"
 type = "table"
 title = "business_broadcast_mz_1.csv — 231 Mozambique (+258) contacts"
+logical_id = "aeb60aec-0870-4c0f-9c5a-f0d7c25cf7e9"
+
+[[outputs]]
+id = "mstcOd6Msrt5qxe1WCUr-"
+uri = "file://attached_assets/DEVOCEAN_Google_Technician_Briefing.docx"
+type = "word_document"
+title = "DEVOCEAN — Google Technician Briefing"
+description = "Updated Word briefing covering GA4, GTM, Google Ads, the reservation_initiated rename, purchase attribution, consent and acceptance tests."
+logical_id = "668816cb-94bc-473d-89af-e0b9416e0e55"
+content_hash = "sha256:8d5cb1db69d900421ec7aea543030d67c3be5497bb472c5d245e18541a2000fd"
+size = 5966
+mtime_ms = 1789131692656
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:8467bf21-63db-4d5a-9e41-c084beb5640b/668816cb-94bc-473d-89af-e0b9416e0e55/2043a8b3-183d-43c4-86e2-bcb69ff22efd"
+storage_version_token = "1789131704327243"
+content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
