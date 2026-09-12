@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback } from "react";
+import { voiceFailure } from "./voiceFailure";
 
 export type RealtimeStatus = "idle" | "connecting" | "connected" | "error";
 
@@ -67,6 +68,7 @@ export function useRealtimeSession({
   const miaFullRef = useRef("");
   const miaSpeakingRef = useRef(false);
   const guardRef = useRef(false);
+  const attemptRef = useRef(0);
 
   const cbRef = useRef({
     onUserSpeaking,
@@ -108,6 +110,7 @@ export function useRealtimeSession({
   }, []);
 
   const disconnect = useCallback(() => {
+    attemptRef.current++;
     processorRef.current?.disconnect();
     processorRef.current = null;
 
@@ -138,6 +141,8 @@ export function useRealtimeSession({
   const connect = useCallback(async (lang?: string) => {
     if (guardRef.current || wsRef.current) return;
     guardRef.current = true;
+    const attempt = ++attemptRef.current;
+    let stage: "microphone" | "audio" | "service" = "microphone";
 
     setStatus("connecting");
     setError(null);
@@ -151,12 +156,18 @@ export function useRealtimeSession({
       const stream = await navigator.mediaDevices.getUserMedia({
         audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 },
       });
+      if (attempt !== attemptRef.current) {
+        stream.getTracks().forEach(track => track.stop());
+        return;
+      }
       streamRef.current = stream;
 
+      stage = "audio";
       // AudioContext at 24 kHz — matches OpenAI Realtime PCM16 sample rate
       const audioCtx = new AudioContext({ sampleRate: 24000 });
       audioCtxRef.current = audioCtx;
       if (audioCtx.state === "suspended") await audioCtx.resume();
+      if (attempt !== attemptRef.current) return;
 
       // ── PCM16 playback helper ──────────────────────────────────────────────
       // MIN_LEAD: minimum look-ahead before the first chunk of each response.
@@ -200,18 +211,28 @@ export function useRealtimeSession({
       // Currency is always read from the URL param (set by widget-loader from site.currency localStorage).
       const urlCurrency = urlParams.get("currency");
       const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(resolvedLang)}${urlCurrency ? `&currency=${encodeURIComponent(urlCurrency)}` : ""}`;
+      stage = "service";
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 
+      const fail = (message: string) => {
+        if (wsRef.current !== ws) return;
+        cbRef.current.onError?.(message);
+        disconnect();
+        setError(message);
+        setStatus("error");
+      };
       ws.onerror = (e) => {
         console.error("[realtime] WebSocket error", e);
+        fail("[voice_connection_error] The browser could not connect to the voice service. Check your connection or try another network. You can continue here in text.");
       };
 
-      ws.onclose = () => {
-        if (wsRef.current === ws) disconnect();
+      ws.onclose = (event) => {
+        if (wsRef.current === ws) fail(`[voice_connection_closed:${event.code}] The voice connection closed unexpectedly. Please try Voice again, or continue here in text.`);
       };
 
       ws.onmessage = (evt) => {
+        if (wsRef.current !== ws || attempt !== attemptRef.current) return;
         let event: Record<string, unknown>;
         try {
           event = JSON.parse(evt.data as string) as Record<string, unknown>;
@@ -231,6 +252,7 @@ export function useRealtimeSession({
         switch (event.type as string) {
           // ── Session ready: relay has connected to OpenAI ─────────────────
           case "session.ready": {
+            try {
             const micSource = audioCtx.createMediaStreamSource(stream);
             const processor = audioCtx.createScriptProcessor(4096, 1, 1);
             processorRef.current = processor;
@@ -252,6 +274,9 @@ export function useRealtimeSession({
 
             setStatus("connected");
             cbRef.current.onConnected?.();
+            } catch (err) {
+              fail(voiceFailure(err, "audio"));
+            }
             break;
           }
 
@@ -308,27 +333,21 @@ export function useRealtimeSession({
             const errObj = event.error as Record<string, unknown> | undefined;
             const msg = (errObj?.message as string) ?? "Voice session error";
             console.error("[realtime] OpenAI error event:", event.error);
-            setError(msg);
-            setStatus("error");
-            cbRef.current.onError?.(msg);
-            disconnect();
+            const code = typeof errObj?.code === "string" && /^[a-z0-9_]{1,60}$/i.test(errObj.code)
+              ? errObj.code : "unspecified";
+            fail(voiceFailure(new Error(msg), "service").replace("[voice_service_error]", `[voice_service_error:${code}]`));
             break;
           }
         }
       };
 
     } catch (err) {
-      const msg = err instanceof Error ? err.message : "Failed to connect";
+      if (attempt !== attemptRef.current) return;
+      const msg = voiceFailure(err, stage);
+      cbRef.current.onError?.(msg);
+      disconnect();
       setError(msg);
       setStatus("error");
-      cbRef.current.onError?.(msg);
-      streamRef.current?.getTracks().forEach((t) => t.stop());
-      streamRef.current = null;
-      audioCtxRef.current?.close().catch(() => {});
-      audioCtxRef.current = null;
-      wsRef.current?.close();
-      wsRef.current = null;
-      guardRef.current = false;
     }
   }, [disconnect, setMiaSpeakingState, stopPlayback]);
 

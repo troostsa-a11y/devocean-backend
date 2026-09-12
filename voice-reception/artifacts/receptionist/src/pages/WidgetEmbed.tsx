@@ -152,6 +152,11 @@ export default function WidgetEmbed() {
         </div>
 
         {/* Error detail */}
+        {isConnecting && (
+          <div style={{ fontSize: 12, textAlign: "center", padding: "0 16px", color: "#64748b" }}>
+            Please allow microphone access if your browser asks. You can end the call and use text instead.
+          </div>
+        )}
         {isError && error && (
           <div style={{ fontSize: 11, color: "#ef4444", textAlign: "center", maxWidth: 220, lineHeight: 1.45 }}>
             {error}
@@ -166,7 +171,7 @@ export default function WidgetEmbed() {
         )}
 
         {/* Standalone-only: start call button */}
-        {isStandalone && isIdle && (
+        {isStandalone && (isIdle || isError) && (
           <button
             type="button"
             onClick={() => connectRef.current()}

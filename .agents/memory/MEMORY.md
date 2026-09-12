@@ -50,5 +50,6 @@
 - [Stable-URL runtime JSON caching](stable-url-json-cache.md) — /translations/*.json fetched at runtime need ?v=<build-id> (Vite define) AND max-age=0 headers; header changes alone can't bust copies already cached under the old TTL
 - [SPA experience headings](spa-experience-headings.md) — edge middleware must inject a route-specific static H1 for experience pages; React-only headings are invisible to no-JS crawlers
 - [User workflow preferences](user-workflow-preferences.md) — no automatic review-subagent passes and no unsolicited follow-up task proposals; user QA-tests manually and dislikes background agents
+- [Voice fallback diagnostics](voice-fallback-diagnostics.md) — automatic Guest entries need safe failure categories; a working relay does not prove browser microphone access works.
 - [Customer Match booking focus](customer-match-booking-focus.md) — optimize complete address identifiers for future direct bookings; Beds24 records may rely on email and phone
 - [SiteMinder replacement gate](siteminder-replacement-gate.md) — Direct Booking API stops at quotes; do not replace Beds24 until reservation writes and event delivery are proven

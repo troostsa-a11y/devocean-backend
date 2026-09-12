@@ -467,7 +467,8 @@
       // injected by MarinPanel on /book-direct).  Fall back to the minimal base
       // context (URL + lang + currency) only when nothing richer was stored.
       pageContext: _lastPageContext || _basePageContext(),
-      autoMessage: reason || "Voice didn't connect. How can I help you in text?"
+      autoMessage: "[Automatic voice fallback — not written by the guest] " +
+        (reason || "Voice didn't connect. You can continue here in text.")
     });
   }
 
@@ -476,9 +477,9 @@
     clearTimeout(_voiceTimer);
     _voiceTimer = setTimeout(function () {
       if (state === "voice") {
-        _fallbackToText("The voice call is taking too long to connect. I'll help you here in chat instead.");
+        _fallbackToText("[voice_start_timeout] Voice did not start in time. If a microphone prompt appeared, please allow access before trying Voice again. Otherwise check your connection. You can continue here in text.");
       }
-    }, ms || 15000);
+    }, ms || 45000);
   }
 
   function endVoiceCall() {
@@ -495,9 +496,12 @@
   // Messages from the voice iframe
   window.addEventListener("message", function (evt) {
     if (!evt.data || typeof evt.data !== "object") return;
+    // Only our voice iframe may drive call state or supply failure diagnostics.
+    if (/^devocean:(embedReady|status|callEnded|voiceError|closePanel)$/.test(evt.data.type) &&
+        (evt.origin !== WIDGET_ORIGIN || evt.source !== voiceFrame.contentWindow)) return;
     if (evt.data.type === "devocean:embedReady" && state === "voice") {
-      // Iframe loaded — give 12 s for the WebRTC session to establish.
-      _startVoiceTimer(12000);
+      // Allow time for the microphone permission prompt and relay connection.
+      _startVoiceTimer(45000);
       postToVoice("devocean:connect");
     }
     if (evt.data.type === "devocean:status") {
@@ -509,7 +513,10 @@
       if (evt.data.status === "error" && state === "voice") {
         // WebRTC error — offer text chat immediately instead of leaving the
         // voice panel stuck on "Connection error" with no escape.
-        _fallbackToText("The voice call failed to connect. I'll help you here in text instead.");
+        var detail = typeof evt.data.message === "string" ? evt.data.message : "";
+        _fallbackToText(/^\[(microphone_|audio_|voice_)/.test(detail)
+          ? detail.slice(0, 500)
+          : "[voice_error] Voice could not start. Please check microphone permission and try again, or continue here in text.");
       }
     }
     if (evt.data.type === "devocean:callEnded" && state === "voice") {
