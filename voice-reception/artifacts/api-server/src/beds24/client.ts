@@ -40,6 +40,10 @@ export interface RoomOffer {
   totalPrice?: number;
   perPersonPerNight?: number;
   currency?: string;
+  maxAdults?: number;
+  maxPeople?: number;
+  requiredUnits?: number;
+  capacityAvailable?: boolean;
 }
 
 export interface AvailabilityResult {
@@ -47,6 +51,8 @@ export interface AvailabilityResult {
   checkOut: string;
   nights: number;
   numAdults: number;
+  numChildren?: number;
+  numInfants?: number;
   offers: RoomOffer[];
 }
 
@@ -62,6 +68,10 @@ interface BookingEngineRoom {
   available: boolean;
   unitsAvailable: number;
   currency: string;
+  maxAdults: number;
+  maxPeople: number;
+  requiredUnits: number;
+  capacityAvailable: boolean;
   offers: Array<{ total: number; unitsAvailable: number }>;
 }
 
@@ -88,11 +98,14 @@ export async function checkAvailability(
   checkOut: string,
   numAdults = 2,
   numChildren = 0,
+  numInfants = 0,
 ): Promise<AvailabilityResult> {
   const automailerUrl = process.env.AUTOMAILER_URL?.replace(/\/+$/, "");
   const adminKey = process.env.ADMIN_API_KEY;
   if (!automailerUrl || !adminKey) throw new Beds24NotConfiguredError();
 
+  let data!: BookingEngineAvailability;
+  for (let attempt = 0; attempt < 2; attempt++) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
@@ -109,31 +122,32 @@ export async function checkAvailability(
         checkOut,
         adults: numAdults,
         children: numChildren,
+        infants: numInfants,
       }),
       signal: controller.signal,
     });
+  if (!res.ok) {
+    throw new Beds24ApiError(
+      res.status,
+      `Booking engine /availability failed (${res.status})`,
+    );
+  }
+  data = (await res.json()) as BookingEngineAvailability;
+  if (!Array.isArray(data.rooms)) throw new Error("Invalid availability response");
+  break;
   } catch (err: any) {
-    clearTimeout(timer);
-    if (err?.name === "AbortError") {
-      throw new Beds24ApiError(
-        504,
-        `Booking engine availability timed out after ${FETCH_TIMEOUT_MS}ms`,
-      );
+    const transient = err?.name === "AbortError" || err instanceof TypeError ||
+      (err instanceof Beds24ApiError && [502, 503, 504].includes(err.status));
+    if (attempt === 0 && transient) {
+      logger.warn({ status: err.status, errorType: err.name }, "Retrying availability lookup");
+      continue;
     }
+    if (err?.name === "AbortError") throw new Beds24ApiError(504, "Availability timed out");
     throw err;
   } finally {
     clearTimeout(timer);
   }
-
-  if (!res.ok) {
-    const body = await res.text().catch(() => "");
-    throw new Beds24ApiError(
-      res.status,
-      `Booking engine /availability failed (${res.status}): ${body.slice(0, 200)}`,
-    );
   }
-
-  const data = (await res.json()) as BookingEngineAvailability;
 
   logger.info(
     { checkIn, checkOut, numAdults, numChildren, rooms: data.rooms?.length ?? 0 },
@@ -157,10 +171,14 @@ export async function checkAvailability(
           ? Math.round((totalPrice / nights / numAdults) * 100) / 100
           : undefined,
       currency: room.currency ?? data.currency,
+      maxAdults: room.maxAdults,
+      maxPeople: room.maxPeople,
+      requiredUnits: room.requiredUnits,
+      capacityAvailable: room.capacityAvailable,
     };
   });
 
-  return { checkIn, checkOut, nights, numAdults, offers };
+  return { checkIn, checkOut, nights, numAdults, numChildren, numInfants, offers };
 }
 
 /** Compact, model-friendly summary of an availability result. */

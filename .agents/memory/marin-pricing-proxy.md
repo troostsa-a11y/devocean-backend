@@ -15,3 +15,17 @@ Marin's `check_availability` tool calls `${AUTOMAILER_URL}/api/booking/availabil
 
 ## Related stale-type fix
 `voice-reception/lib/api-zod/` is a `composite: true` project. When `src/generated/api.ts` is updated, `dist/*.d.ts` must be regenerated via `npx tsc -p tsconfig.json` from within that directory before `typecheck` on dependents will see the new fields.
+
+## Group pricing boundary
+Group availability suggestions are not group quotes. Do not multiply the
+availability endpoint's per-unit display rate by group size or divide it by
+the whole party. Exact multi-unit pricing requires a guest allocation and cart quote.
+
+**Why:** The legacy probes calculated totals for more units of a type than were
+in stock and treated a missing remainder rate as zero. Families also need infant
+capacity counted even where infants have no charge.
+
+**How to apply:** Preserve booking-engine capacity metadata, suggest only
+stock-respecting combinations, and qualify these as pending allocation/rate
+verification in direct booking. Never equate insufficient group capacity with
+the entire lodge being sold out.
