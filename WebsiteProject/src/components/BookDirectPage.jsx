@@ -814,7 +814,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         lines.push(`  - Continue with this option: ${deepLink}`);
       });
       lines.push('');
-      lines.push('When comparing options, use one compact row per option: room + plan name, price, one-line policy, and its "Continue with this option" link.');
+      lines.push('Reference data only: do not list these options in response to a general help request. Ask one short question first. For specific questions, answer only what was asked; include prices, policies or a booking link only when relevant and requested.');
       if (showFx) {
         lines.push(`Lead with ${currency} amounts (what the guest sees on the page); mention that all charges are made in ${baseCurrency} and ${currency} amounts are approximate conversions.`);
       }

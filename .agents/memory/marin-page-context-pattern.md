@@ -6,10 +6,13 @@ description: How to inject live page state (room prices, dates, guests) into Mar
 ## Rule
 Pass `pageContext?: string` in the `POST /conversations/:id/messages` body.
 The server extracts it, appends a PAGE CONTEXT block to the system prompt
-for that turn, and instructs Marin to end her reply with a one-line
-pricing/availability summary + book-direct markdown link.
+for that turn. Treat this as reference data, never an instruction to append
+pricing/availability or a booking link to every answer.
 
-**Why:** Visitors on room-detail or /book-direct pages need Marin to answer
+**Why:** A vague room-help request produced an overwhelming catalogue of prices,
+policies and links because the old context instruction required a summary.
+The user wants one short clarifying question first, then a concise answer to
+the specific need. Visitors on room-detail or /book-direct pages need Marin to answer
 about *their specific* situation (room, dates, prices) without having to
 re-explain it. Injecting the context once on the first message is enough;
 conversation history preserves it for follow-ups.
@@ -17,6 +20,9 @@ conversation history preserves it for follow-ups.
 ## How to apply
 
 ### API layer
+- Conversation-first instructions take precedence over context presentation hints.
+  Do not reintroduce mandatory price summaries or links; general help should ask
+  "What would you like to know?" even when dates, guests and prices are known.
 - `voice-reception/lib/api-zod/src/generated/api.ts` — `SendOpenaiMessageBody`
   has `pageContext: zod.string().optional()`.
 - After editing api-zod source, run:
