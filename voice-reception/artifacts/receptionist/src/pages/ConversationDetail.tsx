@@ -8,6 +8,7 @@ import { VoiceWidget } from "@/components/VoiceWidget";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { MessageContent } from "@/components/MessageContent";
 import { getStoredToken } from "@/lib/auth";
 import {
   AlertDialog,
@@ -299,11 +300,11 @@ export default function ConversationDetail() {
                       )}
                     </div>
                     <p className="text-foreground leading-relaxed">
-                      {showTranslated ? translated : msg.content}
+                      <MessageContent text={showTranslated ? translated : msg.content} assistant={msg.role !== "user"} />
                     </p>
                     {showTranslated && (
                       <p className="text-xs text-muted-foreground mt-1.5 italic leading-relaxed border-t border-border/50 pt-1.5">
-                        {msg.content}
+                        <MessageContent text={msg.content} assistant={msg.role !== "user"} />
                       </p>
                     )}
                   </div>

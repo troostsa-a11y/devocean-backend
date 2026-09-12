@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Loader2, Send } from "lucide-react";
+import { MessageContent } from "@/components/MessageContent";
 
 interface Message {
   role: "user" | "assistant";
@@ -35,69 +36,6 @@ const CHAT_STRINGS: Record<string, ChatStrings> = {
   sw: { greeting: "Habari! Mimi ni Marin, mtumishi wa mapokezi wa mtandaoni wa DEVOCEAN Lodge. Ninaweza kukusaidia vipi?", subtitle: "Mtumishi wa mapokezi", placeholder: "Andika ujumbe…" },
 };
 
-/**
- * Lightweight inline markdown renderer — handles the subset Marin uses:
- *   **bold**, [text](url) links, and newlines.
- * Returns an array of React nodes safe to embed in a <span> or <p>.
- */
-function renderMarkdown(text: string): React.ReactNode[] {
-  // Strip LLM-emitted backslash escapes before currency symbols (e.g. \$ → $).
-  text = text.replace(/\\(\$)/g, "$1");
-  // Split on bold (**...**) and links ([text](url)) tokens.
-  const TOKEN = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
-  const parts = text.split(TOKEN);
-  const nodes: React.ReactNode[] = [];
-
-  parts.forEach((part, i) => {
-    // Bold
-    if (part.startsWith("**") && part.endsWith("**")) {
-      nodes.push(<strong key={i}>{part.slice(2, -2)}</strong>);
-      return;
-    }
-    // Link [label](href)
-    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (linkMatch) {
-      const [, label, href] = linkMatch;
-      const fullHref = /^https?:\/\//i.test(href) ? href : `https://${href}`;
-      // "Continue with this option" deep-links back to /book-direct — the user
-      // is already there, so just close the panel instead of opening a new tab.
-      if (fullHref.includes("/book-direct")) {
-        nodes.push(
-          <button
-            key={i}
-            type="button"
-            onClick={() => window.parent.postMessage({ type: "devocean:closePanel" }, "*")}
-            className="mt-1 inline-flex items-center justify-center px-4 py-2 rounded-xl text-sm font-semibold text-white transition-all hover:brightness-110 active:scale-95"
-            style={{ background: "#f97316", border: "none", cursor: "pointer" }}
-          >
-            {label}
-          </button>,
-        );
-        return;
-      }
-      nodes.push(
-        <a
-          key={i}
-          href={fullHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="underline underline-offset-2 text-primary hover:opacity-80"
-        >
-          {label}
-        </a>,
-      );
-      return;
-    }
-    // Plain text — preserve newlines as <br>
-    const lines = part.split("\n");
-    lines.forEach((line, j) => {
-      if (j > 0) nodes.push(<br key={`${i}-br-${j}`} />);
-      if (line) nodes.push(<span key={`${i}-t-${j}`}>{line}</span>);
-    });
-  });
-
-  return nodes;
-}
 
 function TypingDots() {
   return (
@@ -341,7 +279,7 @@ export default function TextChatEmbed() {
                 M
               </div>
               <div className="max-w-[82%] bg-card border rounded-2xl rounded-bl-sm px-3 py-2 text-sm text-foreground leading-snug">
-                {msg.content ? renderMarkdown(msg.content) : msg.streaming ? <TypingDots /> : null}
+                {msg.content ? <MessageContent text={msg.content} /> : msg.streaming ? <TypingDots /> : null}
               </div>
             </div>
           ),

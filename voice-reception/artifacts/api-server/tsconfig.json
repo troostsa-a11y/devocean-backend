@@ -8,6 +8,7 @@
     "types": ["node"]
   },
   "include": ["src"],
+  "exclude": ["src/messageContent.test.ts", "src/voiceFailure.test.ts"],
   "references": [
     {
       "path": "../../lib/db"
