@@ -770,6 +770,7 @@ app.post('/api/gift-voucher/checkout', requireAdminKey, async (req: any, res: an
     return res.status(400).json({ error: 'A valid email address is required.' });
   }
   if (!purchaserName) return res.status(400).json({ error: 'Your name is required.' });
+  if (!guestDb) return res.status(503).json({ error: 'Voucher checkout temporarily unavailable.' });
 
   try {
     const { createGiftVoucherCheckoutSession } = await import('./server/services/stripe-booking');
@@ -788,10 +789,16 @@ app.post('/api/gift-voucher/checkout', requireAdminKey, async (req: any, res: an
 
 // ─── Gift voucher confirm (poll after Stripe redirect) ───────────────────
 app.get('/api/gift-voucher/confirm/:sessionId', requireAdminKey, async (req: any, res: any) => {
+  res.set('Cache-Control', 'no-store');
   if (!guestDb) return res.status(503).json({ error: 'Database not available' });
   try {
-    const voucher = await guestDb.getGiftVoucherByStripeSession(String(req.params.sessionId));
+    let voucher = await guestDb.getGiftVoucherByStripeSession(String(req.params.sessionId));
     if (!voucher) return res.status(404).json({ error: 'Voucher not found' });
+    if (voucher.status === 'pending') {
+      const { reconcileVoucher } = await import('./server/services/gift-voucher-lifecycle');
+      await reconcileVoucher(guestDb, String(req.params.sessionId));
+      voucher = await guestDb.getGiftVoucherByStripeSession(String(req.params.sessionId));
+    }
     res.json({
       status: voucher.status,
       code: (voucher.status === 'active' || voucher.status === 'redeemed') ? voucher.code : null,
@@ -826,10 +833,29 @@ app.get('/api/gift-voucher/validate', requireAdminKey, async (req: any, res: any
 
 // ─── Admin: list all gift vouchers ───────────────────────────────────────────
 app.get('/api/admin/gift-vouchers', requireAdminKey, async (req: any, res: any) => {
+  res.set('Cache-Control', 'no-store');
   if (!guestDb) return res.status(503).json({ error: 'Database not initialised' });
   try {
+    const before = await guestDb.listAllGiftVouchers();
+    const pending = before.filter(v => v.status === 'pending');
+    const { reconcileVoucher } = await import('./server/services/gift-voucher-lifecycle');
+    // Bound work per refresh. Lookup failures stay pending, never guessed unpaid.
+    let unverified = Math.max(0, pending.length - 12);
+    const queue = pending.slice(0, 12);
+    await Promise.all(Array.from({ length: 4 }, async () => {
+      while (queue.length) {
+        const voucher = queue.shift()!;
+        try {
+          if (!voucher.stripeSessionId) throw new Error('No checkout session');
+          await reconcileVoucher(guestDb, voucher.stripeSessionId);
+        } catch {
+          unverified++;
+          console.warn('[GIFT_VOUCHER] Stripe reconciliation unavailable for voucher', voucher.id);
+        }
+      }
+    }));
     const vouchers = await guestDb.listAllGiftVouchers();
-    res.json({ vouchers });
+    res.json({ vouchers, warning: unverified ? `${unverified} checkout(s) could not be verified with Stripe on this refresh. Their status has not been guessed; refresh again or check Stripe.` : null });
   } catch (err: any) {
     console.error('[ADMIN] list gift vouchers error:', err.message);
     res.status(500).json({ error: 'Could not load gift vouchers' });

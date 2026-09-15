@@ -30,9 +30,16 @@ export default function GiftConfirmedPage({ lang }) {
         if (!ok) {
           setErrorMsg(data.error || 'Could not load confirmation.');
           setStatus('error');
-        } else {
+        } else if (['active', 'redeemed'].includes(data.status) && data.code) {
           setVoucher(data);
           setStatus('success');
+        } else {
+          setErrorMsg(data.status === 'checkout_expired'
+            ? 'This checkout expired without a confirmed payment. No voucher was issued.'
+            : data.status === 'failed'
+              ? 'Payment was unsuccessful. No voucher was issued.'
+              : 'Payment has not been confirmed yet. No voucher has been issued. Please check again shortly; do not pay again if your bank shows a charge.');
+          setStatus('error');
         }
       })
       .catch(() => {
@@ -58,6 +65,9 @@ export default function GiftConfirmedPage({ lang }) {
         {status === 'error' && (
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
             <p className="text-red-600 text-sm mb-4" data-testid="text-error">{errorMsg}</p>
+            <button type="button" onClick={() => window.location.reload()} className="block mx-auto mb-4 text-sm text-[#9e4b13] underline">
+              Check again
+            </button>
             <a
               href="/gift-vouchers"
               className="text-sm text-[#9e4b13] hover:underline"
@@ -72,11 +82,11 @@ export default function GiftConfirmedPage({ lang }) {
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 mb-4">
               <CheckCircle2 className="h-8 w-8 text-emerald-600" />
             </div>
-            <h1 className="text-2xl font-bold text-slate-900 mb-2">Gift voucher sent!</h1>
+            <h1 className="text-2xl font-bold text-slate-900 mb-2">Your gift voucher is ready!</h1>
             <p className="text-slate-500 text-sm mb-6">
               {voucher.recipientName
-                ? `A $${Number(voucher.amountUsd ?? 0).toFixed(2)} USD gift voucher has been emailed to ${voucher.purchaserName || 'you'}. Recipient: ${voucher.recipientName}.`
-                : `A $${Number(voucher.amountUsd ?? 0).toFixed(2)} USD gift voucher has been sent by email.`}
+                ? `Your $${Number(voucher.amountUsd ?? 0).toFixed(2)} USD gift voucher is below. Recipient: ${voucher.recipientName}. Keep a copy of the code.`
+                : `Your $${Number(voucher.amountUsd ?? 0).toFixed(2)} USD gift voucher is below. Keep a copy of the code.`}
             </p>
 
             {voucher.code && (

@@ -1093,10 +1093,11 @@ function DiscountCodesTab({ apiUrl, apiKey }) {
   );
 }
 
-function GiftVouchersTab({ apiUrl, apiKey }) {
+export function GiftVouchersTab({ apiUrl, apiKey }) {
   const [vouchers, setVouchers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [fetchError, setFetchError] = useState(null);
+  const [verificationWarning, setVerificationWarning] = useState(null);
 
   const load = async () => {
     setLoading(true);
@@ -1111,6 +1112,7 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
       }
       const data = await res.json();
       setVouchers(data.vouchers || []);
+      setVerificationWarning(data.warning || null);
     } catch (err) {
       setFetchError(err.message);
     } finally {
@@ -1125,6 +1127,8 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
     redeemed: 'bg-blue-100 text-blue-700 border border-blue-200',
     pending:  'bg-amber-100 text-amber-700 border border-amber-200',
     expired:  'bg-slate-100 text-slate-500 border border-slate-200',
+    checkout_expired: 'bg-slate-100 text-slate-500 border border-slate-200',
+    failed: 'bg-red-100 text-red-700 border border-red-200',
   };
 
   const fmt = (iso) => iso ? new Date(iso).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
@@ -1135,7 +1139,7 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
         <div className="flex items-center justify-between mb-3">
           <div>
             <h2 className="text-sm font-semibold text-slate-900">Gift Vouchers</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Vouchers purchased through the website. Status updates automatically when redeemed at checkout.</p>
+            <p className="text-xs text-slate-500 mt-0.5">Includes unpaid checkout attempts, not just purchases. Refresh checks awaiting-payment entries against Stripe. A code is issued only after verified payment.</p>
           </div>
           <button
             onClick={load}
@@ -1148,6 +1152,7 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
           </button>
         </div>
 
+        {verificationWarning && <p role="status" className="text-xs text-amber-800 bg-amber-50 p-3 mb-3 rounded">{verificationWarning}</p>}
         {loading && !vouchers ? (
           <div className="flex items-center justify-center py-10 text-slate-400">
             <Loader2 className="w-5 h-5 animate-spin mr-2" />
@@ -1173,11 +1178,11 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
               <tbody className="divide-y divide-slate-50">
                 {vouchers.map((v) => (
                   <tr key={v.id} className="hover:bg-slate-50 transition-colors">
-                    <td className="py-2.5 px-2 font-mono font-semibold text-slate-800 whitespace-nowrap">{v.code ?? <span className="text-slate-400 italic">pending</span>}</td>
+                    <td className="py-2.5 px-2 font-mono font-semibold text-slate-800 whitespace-nowrap">{v.code ?? <span className="text-slate-400 italic">Not issued</span>}</td>
                     <td className="py-2.5 px-2 whitespace-nowrap font-medium">${Number(v.amountUsd).toFixed(2)}</td>
                     <td className="py-2.5 px-2">
                       <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium capitalize ${STATUS_STYLES[v.status] ?? STATUS_STYLES.pending}`}>
-                        {v.status}
+                        {({ pending: 'Awaiting payment', checkout_expired: 'Checkout expired — unpaid', failed: 'Payment failed' })[v.status] || v.status}
                       </span>
                     </td>
                     <td className="py-2.5 px-2 text-slate-600 max-w-[160px]">
@@ -1185,7 +1190,7 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
                       <div className="truncate text-slate-400">{v.purchaserEmail}</div>
                     </td>
                     <td className="py-2.5 px-2 text-slate-600">{v.recipientName || '—'}</td>
-                    <td className="py-2.5 px-2 whitespace-nowrap text-slate-600">{fmt(v.expiresAt)}</td>
+                    <td className="py-2.5 px-2 whitespace-nowrap text-slate-600">{v.code ? fmt(v.expiresAt) : '—'}</td>
                     <td className="py-2.5 px-2 whitespace-nowrap text-slate-400">{fmt(v.createdAt)}</td>
                     <td className="py-2.5 px-2 whitespace-nowrap text-slate-400">{fmt(v.redeemedAt)}</td>
                   </tr>
@@ -1196,7 +1201,7 @@ function GiftVouchersTab({ apiUrl, apiKey }) {
         )}
 
         {vouchers && vouchers.length > 0 && (
-          <p className="text-xs text-slate-400 mt-3">{vouchers.length} voucher{vouchers.length !== 1 ? 's' : ''} total · {vouchers.filter(v => v.status === 'active').length} active</p>
+          <p className="text-xs text-slate-400 mt-3">{vouchers.length} checkout record{vouchers.length !== 1 ? 's' : ''} · {vouchers.filter(v => v.code).length} vouchers issued · {vouchers.filter(v => v.status === 'active').length} active</p>
         )}
       </div>
     </div>

@@ -52,5 +52,6 @@
 - [User workflow preferences](user-workflow-preferences.md) — no automatic review-subagent passes and no unsolicited follow-up task proposals; user QA-tests manually and dislikes background agents
 - [Voice fallback diagnostics](voice-fallback-diagnostics.md) — automatic Guest entries need safe failure categories; a working relay does not prove browser microphone access works.
 - [Transcript rendering](transcript-rendering.md) — format historical replies at display time; frontend tests must resolve matching React and react-dom versions.
+- [Gift voucher verification](gift-voucher-payment-verification.md) — a checkout can exist without a payment attempt; reconcile historical pending records against Stripe, never their age.
 - [Customer Match booking focus](customer-match-booking-focus.md) — optimize complete address identifiers for future direct bookings; Beds24 records may rely on email and phone
 - [SiteMinder replacement gate](siteminder-replacement-gate.md) — Direct Booking API stops at quotes; do not replace Beds24 until reservation writes and event delivery are proven

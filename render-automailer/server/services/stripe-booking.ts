@@ -134,6 +134,10 @@ export function constructWebhookEvent(
   return stripe.webhooks.constructEvent(rawBody, signature, cfg.stripeWebhookSecret);
 }
 
+export async function retrieveGiftVoucherSession(id: string) {
+  return getStripe(getBookingConfig()).checkout.sessions.retrieve(id, {}, { timeout: 8000, maxNetworkRetries: 0 });
+}
+
 export interface GiftVoucherCheckoutInput {
   amount: number;           // USD, one of [20, 50, 100, 200, 500]
   purchaserEmail: string;

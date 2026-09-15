@@ -950,8 +950,10 @@ export class DatabaseService {
   ): Promise<GiftVoucher | undefined> {
     const [row] = await this.db
       .update(giftVouchers)
-      .set({ code: code.toUpperCase(), status: 'active', stripePaymentIntentId: paymentIntentId })
-      .where(and(eq(giftVouchers.stripeSessionId, stripeSessionId), eq(giftVouchers.status, 'pending')))
+      .set({ code: code.toUpperCase(), status: 'active', stripePaymentIntentId: paymentIntentId,
+        expiresAt: new Date(new Date().setFullYear(new Date().getFullYear() + 1)) })
+      .where(and(eq(giftVouchers.stripeSessionId, stripeSessionId),
+        or(eq(giftVouchers.status, 'pending'), eq(giftVouchers.status, 'checkout_expired'), eq(giftVouchers.status, 'failed'))))
       .returning();
     return row;
   }
@@ -961,6 +963,11 @@ export class DatabaseService {
       .update(giftVouchers)
       .set({ status: 'redeemed', redeemedAt: new Date(), redeemedBookingId: bookingId })
       .where(eq(giftVouchers.code, code.toUpperCase()));
+  }
+
+  async closeUnpaidGiftVoucher(sessionId: string, status: 'checkout_expired' | 'failed'): Promise<void> {
+    await this.db.update(giftVouchers).set({ status })
+      .where(and(eq(giftVouchers.stripeSessionId, sessionId), eq(giftVouchers.status, 'pending')));
   }
 
   async listAllGiftVouchers(): Promise<GiftVoucher[]> {

@@ -17,6 +17,7 @@ import express, { type Router, type RequestHandler } from 'express';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import type { DatabaseService } from '../services/database';
+import { applyVoucherSession } from '../services/gift-voucher-lifecycle';
 import { Beds24Service, Beds24Error } from '../services/beds24';
 import {
   createDepositCheckoutSession,
@@ -37,7 +38,6 @@ import {
   type CartDiscountCode,
   type CartVoucher,
 } from '../services/booking-cart';
-import { generateVoucherCode, sendVoucherEmail } from '../services/gift-voucher';
 import type { DirectBookingLeg } from '../../shared/schema';
 
 // ─── tiny in-memory rate limiter (per IP, sliding window) ────────────────────
@@ -636,13 +636,15 @@ export function createBookingRouter(deps: {
     // Acknowledge fast; do the work but never throw back to Stripe past a 200
     // once the signature is valid (avoids endless retries on transient errors).
     try {
-      if (event.type === 'checkout.session.completed') {
-        const session = event.data.object as any;
-        if (session?.metadata?.type === 'gift_voucher') {
-          await handleGiftVoucherCompleted(session);
-        } else {
-          await handleCheckoutCompleted(session);
+      if ((event.data.object as any)?.metadata?.type === 'gift_voucher') {
+        if (!db) throw new Error('Voucher database unavailable');
+        if (['checkout.session.completed', 'checkout.session.async_payment_succeeded',
+          'checkout.session.expired', 'checkout.session.async_payment_failed'].includes(event.type)) {
+          await applyVoucherSession(db, event.data.object, event.type === 'checkout.session.async_payment_failed');
         }
+      } else if (event.type === 'checkout.session.completed') {
+        const session = event.data.object as any;
+        await handleCheckoutCompleted(session);
       } else if (event.type === 'checkout.session.expired') {
         await handleSessionExpired(event.data.object as any);
       } else if (event.type === 'checkout.session.async_payment_failed') {
@@ -922,41 +924,6 @@ export function createBookingRouter(deps: {
       // Schedule the guest emails once; a failure here throws so Stripe retries
       // and the confirmed-retry branch re-attempts scheduling without re-creating.
       await scheduleGuestEmails(record, legs);
-    }
-
-    async function handleGiftVoucherCompleted(session: any) {
-      if (!db) return;
-      const stripeSessionId = session.id;
-      const paymentIntentId = typeof session.payment_intent === 'string' ? session.payment_intent : null;
-      const amountUsd = parseFloat(session?.metadata?.amount || '0');
-      if (!amountUsd || amountUsd <= 0) {
-        console.error('[GIFT_VOUCHER] webhook: invalid amount in metadata', session.metadata);
-        return;
-      }
-      const code = generateVoucherCode();
-      const voucher = await db.activateGiftVoucher(stripeSessionId, code, paymentIntentId);
-      if (!voucher) {
-        // May already have been activated on a previous webhook delivery.
-        const existing = await db.getGiftVoucherByStripeSession(stripeSessionId);
-        if (existing?.status === 'active') {
-          console.log('[GIFT_VOUCHER] already activated, idempotent ack', stripeSessionId);
-          return;
-        }
-        console.error('[GIFT_VOUCHER] could not activate voucher for session', stripeSessionId);
-        return;
-      }
-      const siteUrl = process.env.PUBLIC_SITE_URL || 'https://devoceanlodge.com';
-      sendVoucherEmail({
-        to: voucher.purchaserEmail,
-        purchaserName: voucher.purchaserName || 'Guest',
-        recipientName: voucher.recipientName || undefined,
-        message: voucher.message || undefined,
-        code: voucher.code!,
-        amountUsd: parseFloat(String(voucher.amountUsd)),
-        expiresAt: new Date(voucher.expiresAt),
-        siteUrl,
-      }).catch((err: any) => console.error('[GIFT_VOUCHER] email send error:', err.message));
-      console.log('[GIFT_VOUCHER] activated', code, `$${amountUsd}`, 'for', voucher.purchaserEmail);
     }
 
     async function handleSessionExpired(session: any) {

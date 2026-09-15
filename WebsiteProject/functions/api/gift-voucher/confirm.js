@@ -29,7 +29,7 @@ export async function onRequestGet(context) {
     const data = await upstream.text();
     return new Response(data || '{}', {
       status: upstream.status,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
     });
   } catch {
     return json({ error: 'Could not fetch confirmation. Please try again.' }, 502);
@@ -39,6 +39,6 @@ export async function onRequestGet(context) {
 function json(obj, status) {
   return new Response(JSON.stringify(obj), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
   });
 }
