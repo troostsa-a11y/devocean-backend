@@ -37,6 +37,8 @@ describe('Cloudflare static unit routing', () => {
   });
 
   it.each([
+    ['/experiences/diving?lang=ja', '/ja/experiences/diving'],
+    ['/experiences/fishing?lang=ja&currency=USD', '/ja/experiences/fishing?currency=USD'],
     ['/chalet.html?lang=fr-FR', '/fr/chalet'],
     ['/fr/chalet.html?unit=chalet&currency=EUR', '/fr/chalet?unit=chalet&currency=EUR'],
     ['/safari.html?lang=zh', '/zh-hans/safari'],

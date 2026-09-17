@@ -32,6 +32,10 @@ describe('public locale URL contract', () => {
     expect(normalizeLocale('not-a-locale')).toBeNull();
   });
 
+  it.each(LOCALES.filter(locale => locale.path))('accepts the public short code $path', (locale) => {
+    expect(normalizeLocale(locale.path)).toBe(locale.code);
+  });
+
   it('produces one unique alternate URL per indexable locale', () => {
     const alternates = allHreflangPaths('/devocean-lodge-meals');
     const indexableLocales = LOCALES.filter(({ indexable }) => indexable !== false);
