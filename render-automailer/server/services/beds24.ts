@@ -4,26 +4,28 @@
  * Responsibilities:
  *  - Exchange the long-life refresh token for short-lived access tokens (cached).
  *  - Read room types + commercial policy for the configured property.
- *  - Produce an availability + pricing quote for a stay using the Beds24 *offers*
- *    (rate-plan) endpoint, using the offer's base price as-is (rounded the same
- *    way Beds24 rounds). The property's `bookingPageMultiplier` is a Beds24-side
- *    OTA rate-parity tool (used to mark rates up on other channels) and must
- *    NOT be re-applied on top of the offer price here — doing so double-charges
- *    the guest on the direct-booking channel.
+ *  - Enforce live Beds24 calendar stock, stay limits and arrival/departure rules.
+ *  - Calculate prices locally from season-config + offer plans, retaining the
+ *    existing rounding and occupancy surcharges. Beds24 prices/multipliers
+ *    are not inputs to the local price calculation.
  *  - Mirror the property's deposit + cancellation rules (deposit %, near-arrival
  *    and exceptional-period overrides) so the deposit taken matches Beds24.
  *  - Re-check availability immediately before confirming (double-booking guard).
  *  - Create a confirmed booking after payment is verified.
  *
- * IMPORTANT: prices/availability are always read live from Beds24 and never
- * trusted from the browser. The HTTP shapes below follow the Beds24 v2 docs;
+ * IMPORTANT: availability/restrictions are read live from Beds24; prices are
+ * recalculated server-side, never trusted from the browser. Shapes follow v2 docs;
  * parsing is defensive because the live payloads can carry extra fields.
  */
 
 import { getBookingConfig, round2, type BookingConfig } from '../config/booking-config';
 import { getNightlyRate, getExtraAdultRate, getExtraChildRate } from '../config/season-config';
+import {
+  calendarUnitsForStay, parseCalendarEntry, stayLimit,
+  type CalendarEntry, type RoomRestrictions,
+} from './booking-calendar';
 
-export interface Beds24Room {
+export interface Beds24Room extends RoomRestrictions {
   roomId: string;
   name: string;
   qty: number;
@@ -200,8 +202,8 @@ const OFFER_ADVANCE_BOOKING: Partial<Record<OfferType, { minDays?: number; maxDa
   lastMinute: { maxDays: 3  },
 };
 
-// Per-date data returned by /inventory/rooms/calendar (availability only; pricing is local)
-interface CalEntry { numAvail: number | undefined; closed: boolean }
+// Calendar availability + restrictions; all pricing remains local.
+type CalEntry = CalendarEntry;
 
 // ─── Hardcoded offer plans ────────────────────────────────────────────────────
 // offerId must match the corresponding Beds24 rate-plan id (sent on booking creation).
@@ -222,6 +224,7 @@ export class Beds24Service {
   private accessToken: string | null = null;
   private tokenExpiresAt = 0; // epoch ms
   private currency: string;
+  private exceptionIsBlackout = false;
 
   // Property cache (refreshed lazily, ~5 min TTL).
   private propertyLoadedAt = 0;
@@ -345,16 +348,33 @@ export class Beds24Service {
         : 'twoDecimals';
 
     this.depositPolicy = this.parseDepositPolicy(property);
+    this.exceptionIsBlackout = property?.bookingRules?.bookingExceptionalType === 'blackoutPeriod';
 
     const roomTypes: any[] = property?.roomTypes || property?.rooms || [];
-    this.rooms = roomTypes.map((r) => ({
-      roomId: String(r.id ?? r.roomId),
-      name: String(r.name ?? `Room ${r.id ?? ''}`).trim(),
-      qty: Number(r.qty ?? r.quantity ?? 1),
-      maxPeople: Number(r.maxPeople ?? r.maxGuests ?? (Number(r.maxAdult ?? 2) + Number(r.maxChildren ?? 0))),
-      maxAdults: Number(r.maxAdult ?? r.maxAdults ?? r.maxPeople ?? 2),
-      maxChildren: Number(r.maxChildren ?? r.maxChild ?? 0),
-    }));
+    this.rooms = roomTypes.map((r) => {
+      if (r.restrictionStrategy != null &&
+          !['firstNight', 'stayThrough'].includes(r.restrictionStrategy)) {
+        throw new Beds24Error('Unknown Beds24 room restriction strategy', 502);
+      }
+      let minStay: number | undefined;
+      let maxStay: number | undefined;
+      try {
+        minStay = stayLimit(r.minStay);
+        maxStay = stayLimit(r.maxStay);
+      } catch {
+        throw new Beds24Error('Invalid Beds24 room stay restrictions', 502);
+      }
+      return {
+        roomId: String(r.id ?? r.roomId),
+        name: String(r.name ?? `Room ${r.id ?? ''}`).trim(),
+        qty: Number(r.qty ?? r.quantity ?? 1),
+        maxPeople: Number(r.maxPeople ?? r.maxGuests ?? (Number(r.maxAdult ?? 2) + Number(r.maxChildren ?? 0))),
+        maxAdults: Number(r.maxAdult ?? r.maxAdults ?? r.maxPeople ?? 2),
+        maxChildren: Number(r.maxChildren ?? r.maxChild ?? 0),
+        minStay, maxStay,
+        restrictionStrategy: r.restrictionStrategy ?? 'stayThrough',
+      };
+    });
 
     this.propertyLoadedAt = Date.now();
   }
@@ -466,7 +486,7 @@ export class Beds24Service {
   // ─── Calendar window fetch (availability data from Beds24) ──────────────────
 
   /**
-   * Fetch per-date availability data (numAvail, closed) for every room from
+   * Fetch per-date availability and restrictions for every room from
    * the Beds24 calendar endpoint. Pricing is NOT read from Beds24 — it is
    * computed locally from season-config.ts.
    *
@@ -486,6 +506,9 @@ export class Beds24Service {
     params.set('endDate',         endDate);
     params.set('includePrices',   'true');   // keep for Beds24 compatibility even though we don't use price1
     params.set('includeNumAvail', 'true');
+    params.set('includeMinStay',  'true');
+    params.set('includeMaxStay',  'true');
+    params.set('includeOverride', 'true');
 
     const json = await this.request(`/inventory/rooms/calendar?${params.toString()}`);
     const data: any[] = Array.isArray(json?.data) ? json.data : [];
@@ -501,9 +524,11 @@ export class Beds24Service {
 
       const record = (date: string, entry: any) => {
         if (!date || !ISO_DATE_RE.test(date)) return;
-        const numAvail = entry?.numAvail !== undefined ? Number(entry.numAvail) : undefined;
-        const closed   = entry?.closed === true;
-        roomMap.set(date, { numAvail, closed });
+        try {
+          roomMap.set(date, parseCalendarEntry(entry));
+        } catch {
+          throw new Beds24Error('Invalid Beds24 calendar restrictions', 502);
+        }
       };
 
       if (Array.isArray(cal)) {
@@ -593,27 +618,14 @@ export class Beds24Service {
     return { offers, unitsAvailable: numAvail };
   }
 
-  /**
-   * Extract the minimum available units across all stay dates from a room's calendar map.
-   *
-   * Beds24 calendar only stores EXPLICIT blocks/sold-out entries — dates with no
-   * calendar entry at all are implicitly open. So:
-   *   - No entry (!e)           → open (treat numAvail as unknown)
-   *   - entry.closed === true   → unavailable (return 0 immediately)
-   *   - entry.numAvail defined  → trust it; 0 = sold out
-   *   - entry.numAvail absent   → open, qty unknown (don't constrain min)
-   * If all dates are unknown-qty, return 1 (conservative: assume at least 1 unit).
-   */
-  private minUnitsAvailable(roomCal: Map<string, CalEntry>, stayDates: string[]): number {
-    let min = Infinity;
-    for (const d of stayDates) {
-      const e = roomCal.get(d);
-      if (e?.closed) return 0;                              // explicitly closed
-      if (e?.numAvail !== undefined) min = Math.min(min, e.numAvail); // explicit qty
-      // no entry or no numAvail field → date is implicitly open, no constraint
+  private bookableUnits(
+    roomCal: Map<string, CalEntry>, stayDates: string[], checkOut: string, room: Beds24Room,
+  ): number {
+    try {
+      return calendarUnitsForStay(roomCal, stayDates, checkOut, room, this.exceptionIsBlackout);
+    } catch {
+      throw new Beds24Error('Incomplete or invalid Beds24 calendar restrictions; please retry', 502);
     }
-    // If any date had numAvail=0, min is 0. If all were unconstrained, min=Infinity → 1.
-    return Number.isFinite(min) ? Math.max(0, Math.round(min)) : 1;
   }
 
   // ─── Diagnostics ──────────────────────────────────────────────────────────
@@ -701,16 +713,16 @@ export class Beds24Service {
 
     await this.loadProperty();
 
-    // Fetch calendar for every night in the stay (checkOut is NOT a sleep night).
+    // Include departure restrictions, but never price/count checkout as a night.
     const lastNight = new Date(new Date(`${checkOut}T00:00:00Z`).getTime() - 86_400_000)
       .toISOString().slice(0, 10);
-    const calData   = await this.fetchCalendarWindow(checkIn, lastNight);
+    const calData   = await this.fetchCalendarWindow(checkIn, checkOut);
     const stayDates = eachDateISO(checkIn, lastNight);
 
     const rooms: RoomOffers[] = this.rooms.map((room) => {
       const occ      = this.displayOccupancy(room, adults, children);
       const roomCal  = calData.get(room.roomId) ?? new Map<string, CalEntry>();
-      const numAvail = this.minUnitsAvailable(roomCal, stayDates);
+      const numAvail = this.bookableUnits(roomCal, stayDates, checkOut, room);
 
       const { offers, unitsAvailable } = this.calcOffers(
         room.roomId, nights, stayDates, numAvail, occ.adults, occ.children, checkIn,
@@ -750,13 +762,13 @@ export class Beds24Service {
 
     const lastNight = new Date(new Date(`${checkOut}T00:00:00Z`).getTime() - 86_400_000)
       .toISOString().slice(0, 10);
-    const calData   = await this.fetchCalendarWindow(checkIn, lastNight);
+    const calData   = await this.fetchCalendarWindow(checkIn, checkOut);
     const stayDates = eachDateISO(checkIn, lastNight);
 
     const out: Record<string, RoomOffer[]> = {};
     for (const room of this.rooms) {
       const roomCal  = calData.get(room.roomId) ?? new Map<string, CalEntry>();
-      const numAvail = this.minUnitsAvailable(roomCal, stayDates);
+      const numAvail = this.bookableUnits(roomCal, stayDates, checkOut, room);
       out[room.roomId] = this.calcOffers(
         room.roomId, nights, stayDates, numAvail, adults, children, checkIn,
       ).offers;

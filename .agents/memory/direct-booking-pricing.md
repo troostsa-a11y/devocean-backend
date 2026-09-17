@@ -1,20 +1,17 @@
 ---
-name: Direct-booking offers pricing
-description: How the native /book-direct flow prices stays (raw Beds24 offer price, no markup), and the deposit policy rules.
+name: Direct-booking pricing authority
+description: Preserve local pricing when enforcing Beds24 restrictions; distinguish restriction failures from upstream errors.
 ---
 
-# Direct-booking pricing = raw Beds24 offer price, no markup
+# Preserve local pricing while enforcing Beds24 restrictions
 
-The native `/book-direct` flow (Beds24 REST + Stripe deposit) charges the offer's **base** price as-is — the property's `bookingPageMultiplier` (e.g. `*1.10`) must NOT be re-applied on top of it.
+The owner's explicit requirement is to keep locally calculated prices and rate-plan rules while enforcing Beds24's calendar restrictions at search, checkout and final confirmation. Do not switch back to Beds24 offer prices as a shortcut for enforcing restrictions.
 
-**Rule:** guest-facing total = offer **base** total, rounded per the property `priceRounding` (`nearestOne` → `Math.round`, else 2dp).
+**Why:** Local rate-plan minimums alone allowed a short stay despite a stricter minimum set in the Beds24 calendar. The correction concerns booking eligibility, not the source or amount of guest prices.
 
-**Why (corrected 2026-07-08):** `bookingPageMultiplier` is a Beds24-side OTA rate-parity tool the lodge owner uses to mark rates up on *other* channels — it is not meant to be reapplied on the direct-booking channel. An earlier version of this code multiplied the offer price by it to match the (now-removed) Beds24 iframe, which itself applied the multiplier — that reasoning no longer applies since the iframe is gone, and doing so was overcharging direct-booking guests by the multiplier amount. Confirmed via a real guest complaint: charged total implied the raw Beds24 rate × 1.10, rounded to nearest dollar.
+**How to apply:** Treat room/calendar restrictions and local plan eligibility as cumulative requirements. Keep season rates, surcharges, rounding and deposits unchanged for eligible stays. Fetch the departure date for no-check-out rules, without treating it as an occupied or chargeable night. Unreadable/incomplete restriction data is an upstream failure, not proof that a paid booking must be refunded.
 
-**How to apply:**
-- Price from `GET /inventory/rooms/offers?propertyId=&arrival=&departure=&numAdults=&numChildren=` **without** `roomId` — passing `roomId` suppresses the `offers[]` array. Each `data[]` entry is a room; each `offers[]` entry is a rate plan (`offerId`, `offerName`, `price` = whole-stay base total, `unitsAvailable`).
-- Offer code → type is parsed from the suffix in `offerName` (e.g. `DIR-SF-OFR`→SF=semiFlex, NR=nonRef, MS=minStay, WS=weekly, EB=earlyBird, LM=lastMinute). `refundable = type !== 'nonRef'`.
-- Currency/rounding/policy come from `GET /properties?id=&includeAllRooms=true`, cached ~5 min in `loadProperty()`. Do not resurrect a multiplier lookup here without re-confirming with the lodge owner first.
+Historical guidance to price from raw Beds24 offers is superseded. The no-extra-OTA-multiplier decision remains: the booking-page multiplier was intended for other channels, not a direct-booking surcharge.
 
 # Deposit policy (mirrors Beds24)
 
