@@ -37,6 +37,10 @@ describe('Cloudflare static unit routing', () => {
   });
 
   it.each([
+    ['/booking', '/book-direct'],
+    ['/bv3/deals', '/book-direct'],
+    ['/bv3/search?currency=USD', '/book-direct?currency=USD'],
+    ['/booking?lang=ja&adults=2', '/ja/book-direct?adults=2'],
     ['/experiences/diving?lang=ja', '/ja/experiences/diving'],
     ['/experiences/fishing?lang=ja&currency=USD', '/ja/experiences/fishing?currency=USD'],
     ['/chalet.html?lang=fr-FR', '/fr/chalet'],
@@ -51,6 +55,14 @@ describe('Cloudflare static unit routing', () => {
     expect(response.status).toBe(301);
     expect(response.headers.get('location')).toBe(`https://devoceanlodge.com${target}`);
     expect(context.assetFetch).not.toHaveBeenCalled();
+  });
+
+  it('sends the old www booking URL directly to the canonical booking host', async () => {
+    const context = makeContext('/bv3/deals');
+    context.request = new Request('https://www.devoceanlodge.com/bv3/deals?currency=USD');
+    const response = await onRequest(context);
+    expect(response.status).toBe(301);
+    expect(response.headers.get('location')).toBe('https://devoceanlodge.com/book-direct?currency=USD');
   });
 
   it('does not turn a missing asset into the homepage', async () => {

@@ -517,6 +517,16 @@ export async function onRequest(context) {
     const pathname = stripLocalePrefix(requestPathname);
     const searchParams = requestUrl.searchParams;
 
+    // Retired booking-engine entry points are not homepage aliases.
+    // Preserve useful query parameters and route old www links to the same
+    // canonical booking destination as the rest of the site.
+    if (/^\/(?:booking|bv3\/(?:deals|search))\/?$/i.test(pathname)) {
+      const targetLocale = requestLocale?.code || normalizeLocale(searchParams.get('lang')) || DEFAULT_LOCALE;
+      searchParams.delete('lang');
+      return Response.redirect(new URL(localizedUrl('/book-direct', targetLocale,
+        searchParams.toString(), requestUrl.hash), BASE_URL).href, 301);
+    }
+
     // Stack-frame references are not documents. Pages' SPA fallback otherwise
     // turns /assets/file.js:8:35407 into a 200 homepage (a soft 404).
     if (/\.(?:m?js|css)(?::|%3a)\d+(?:(?::|%3a)\d+)?$/i.test(pathname)) {
