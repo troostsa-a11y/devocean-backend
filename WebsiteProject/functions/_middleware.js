@@ -517,6 +517,36 @@ export async function onRequest(context) {
     const pathname = stripLocalePrefix(requestPathname);
     const searchParams = requestUrl.searchParams;
 
+    // Stack-frame references are not documents. Pages' SPA fallback otherwise
+    // turns /assets/file.js:8:35407 into a 200 homepage (a soft 404).
+    if (/\.(?:m?js|css)(?::|%3a)\d+(?:(?::|%3a)\d+)?$/i.test(pathname)) {
+      return new Response('Not found', {
+        status: 404,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache' },
+      });
+    }
+
+    // Normalize legacy unit filenames before ?lang= so a French chalet link
+    // goes straight to /fr/chalet, never the nonexistent /fr/chalet.html.
+    const unitHtml = pathname.match(/^\/(safari|comfort|cottage|chalet)\.html$/i);
+    if (unitHtml) {
+      const targetLocale = requestLocale?.code || normalizeLocale(searchParams.get('lang')) || DEFAULT_LOCALE;
+      searchParams.delete('lang');
+      return Response.redirect(new URL(localizedUrl(`/${unitHtml[1].toLowerCase()}`, targetLocale,
+        searchParams.toString(), requestUrl.hash), requestUrl).href, 301);
+    }
+
+    // Legal documents have no translated route variants. Keep their existing
+    // root URLs instead of serving the homepage under a locale-prefixed path.
+    const legalPage = pathname.match(/^\/legal\/(privacy|cookies|terms|gdpr|cric)(?:\.html)?$/i);
+    if (legalPage && (requestLocale || searchParams.has('lang'))) {
+      const name = ['gdpr', 'cric'].includes(legalPage[1].toLowerCase())
+        ? legalPage[1].toUpperCase() : legalPage[1].toLowerCase();
+      searchParams.delete('lang');
+      const query = searchParams.toString();
+      return Response.redirect(new URL(`/legal/${name}${query ? `?${query}` : ''}${requestUrl.hash}`, requestUrl).href, 301);
+    }
+
     // The historical ?lang= format remains an entry-only compatibility layer.
     // Redirect it before rendering so search bots and shared links converge on
     // one stable locale URL. All non-language parameters remain intact.
@@ -542,7 +572,8 @@ export async function onRequest(context) {
     // Markdown Negotiation — serve llms.txt when agents request text/markdown
     // Satisfies the isitagentready.com "Markdown Negotiation" check.
     const acceptHeader = context.request.headers.get('accept') || '';
-    const isAssetPath = /\.(js|css|json|png|jpg|jpeg|webp|svg|ico|woff2?|ttf|txt|xml|pdf)$/i.test(pathname);
+    const isAssetPath = pathname.startsWith('/assets/') ||
+      /\.(js|css|json|png|jpg|jpeg|webp|svg|ico|woff2?|ttf|txt|xml|pdf)$/i.test(pathname);
     if (acceptHeader.includes('text/markdown') && !isAssetPath) {
       const llmsUrl = new URL('/llms.txt', context.request.url);
       const llmsResp = await fetch(llmsUrl.href);

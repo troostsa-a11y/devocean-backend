@@ -27,6 +27,48 @@ function makeContext(path) {
 }
 
 describe('Cloudflare static unit routing', () => {
+  it.each(['/assets/index-CI53A5uz.js:8:35407', '/assets/index-CI53A5uz.js:2:6184',
+    '/assets/file.js%3A8%3A35407'])('returns a real 404 for stack-frame URL %s', async (path) => {
+    const context = makeContext(path);
+    const response = await onRequest(context);
+    expect(response.status).toBe(404);
+    expect(context.assetFetch).not.toHaveBeenCalled();
+    expect(context.next).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ['/chalet.html?lang=fr-FR', '/fr/chalet'],
+    ['/fr/chalet.html?unit=chalet&currency=EUR', '/fr/chalet?unit=chalet&currency=EUR'],
+    ['/safari.html?lang=zh', '/zh-hans/safari'],
+    ['/de/legal/privacy', '/legal/privacy'],
+    ['/legal/privacy?lang=de', '/legal/privacy'],
+    ['/fr/legal/gdpr.html', '/legal/GDPR'],
+  ])('redirects %s directly to the real document', async (path, target) => {
+    const context = makeContext(path);
+    const response = await onRequest(context);
+    expect(response.status).toBe(301);
+    expect(response.headers.get('location')).toBe(`https://devoceanlodge.com${target}`);
+    expect(context.assetFetch).not.toHaveBeenCalled();
+  });
+
+  it('does not turn a missing asset into the homepage', async () => {
+    const context = makeContext('/assets/unknown-resource');
+    context.next.mockResolvedValue(new Response('Not found', { status: 404 }));
+    const response = await onRequest(context);
+    expect(response.status).toBe(404);
+    expect(context.assetFetch).not.toHaveBeenCalled();
+  });
+
+  it('leaves existing JavaScript assets crawlable', async () => {
+    const context = makeContext('/assets/real.js');
+    context.next.mockResolvedValue(new Response('console.log("ok")', {
+      headers: { 'content-type': 'application/javascript' },
+    }));
+    const response = await onRequest(context);
+    expect(response.status).toBe(200);
+    expect(await response.text()).toContain('console.log');
+  });
+
   it.each(UNIT_ROUTES)('renders %s from a non-canonical internal asset path', async (pathname) => {
     const context = makeContext(`${pathname}?checkIn=2026-09-15&checkOut=2026-09-18&adults=2&currency=USD`);
 
