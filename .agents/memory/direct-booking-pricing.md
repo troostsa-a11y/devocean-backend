@@ -13,6 +13,14 @@ The owner's explicit requirement is to keep locally calculated prices and rate-p
 
 Historical guidance to price from raw Beds24 offers is superseded. The no-extra-OTA-multiplier decision remains: the booking-page multiplier was intended for other channels, not a direct-booking surcharge.
 
+## Owner clarification: stay-through versus arrival
+
+The owner accepted the stay-through interpretation after checking a nearest-date suggestion; do not silently switch to arrival-only rules to produce a closer result.
+
+**Why:** The apparent search error was a misunderstanding of occupied-night restrictions, not permission to relax them. Checkout-day minimums do not apply, but checkout prohibitions still do.
+
+**How to apply:** Refer to `docs/booking-minimum-stay.md` for the plain-language explanation and December examples. Confirm current Beds24 settings before treating an expected date as bookable.
+
 # Deposit policy (mirrors Beds24)
 
 - Normal arrival: **50%** deposit now, balance on arrival.

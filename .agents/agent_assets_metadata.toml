@@ -63,3 +63,17 @@ mtime_ms = 1789131692656
 storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:8467bf21-63db-4d5a-9e41-c084beb5640b/668816cb-94bc-473d-89af-e0b9416e0e55/2043a8b3-183d-43c4-86e2-bcb69ff22efd"
 storage_version_token = "1789131704327243"
 content_type = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+
+[[outputs]]
+id = "RM7kJc4By9LrFbgy6g1L-"
+uri = "file://docs/booking-minimum-stay.md"
+type = "text"
+title = "Beds24 minimum-stay rules"
+description = "A plain-language reminder of Stay Through, the checkout-day exception, and December booking examples."
+logical_id = "24f5e597-42c1-4c1c-9a5e-e8e86dc74315"
+content_hash = "sha256:d9c6d3ddcabe9f314dd7f1cd15f39fc1c157b7253bb4653835b997fa90b1e575"
+size = 2463
+mtime_ms = 1789705532408
+storage_uri = "gcs://replit-rams-assets-spock/rams/assets/repl:8467bf21-63db-4d5a-9e41-c084beb5640b/24f5e597-42c1-4c1c-9a5e-e8e86dc74315/1549ce12-d4e4-4bfb-ba36-10bc745aec7a"
+storage_version_token = "1789705540280790"
+content_type = "text/markdown"
