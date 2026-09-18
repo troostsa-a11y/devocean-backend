@@ -931,9 +931,10 @@ export class Beds24Service {
     nights: number;
     adults: number;
     children: number;
+    infants?: number;
   }): Promise<{ found: true; checkIn: string; checkOut: string } | { found: false }> {
     const { roomId, fromDate, nights } = params;
-    if (nights < 1) return { found: false };
+    if (!Number.isInteger(nights) || nights < 1) return { found: false };
 
     await this.loadProperty();
     const room = this.rooms.find((r) => r.roomId === roomId);
@@ -959,19 +960,19 @@ export class Beds24Service {
     const calData = await this.fetchCalendarWindow(fetchStart, fetchEnd);
     const roomCal = calData.get(roomId) ?? new Map<string, CalEntry>();
 
-    // A window starting at `ci` is available iff every one of its `nights` nights:
-    //   - is not explicitly closed in the Beds24 calendar
-    //   - has numAvail > 0 when Beds24 specifies it (no entry = implicitly open)
-    //   - has a configured local rate (room is in season-config.ts ROOM_RATES)
+    const occ = this.displayOccupancy(room, params.adults, params.children);
+    const requiredUnits = requiredUnitsForParty(room, params.adults, params.children, params.infants ?? 0);
+
+    // Same eligibility as getAvailability, reusing the single fetched window.
+    // Include departure restrictions and local offer rules, not merely stock.
     const windowOk = (ci: string): boolean => {
-      for (let i = 0; i < nights; i++) {
-        const d = shiftDate(ci, i);
-        const e = roomCal.get(d);
-        if (e?.closed) return false;                                    // explicitly closed
-        if (e?.numAvail !== undefined && e.numAvail <= 0) return false; // sold out
-        if (getNightlyRate(roomId, d) <= 0) return false;               // room not in config
-      }
-      return true;
+      const checkOut = shiftDate(ci, nights);
+      const stayDates = eachDateISO(ci, shiftDate(checkOut, -1));
+      const units = this.bookableUnits(roomCal, stayDates, checkOut, room);
+      if (units < requiredUnits) return false;
+      return this.calcOffers(
+        roomId, nights, stayDates, units, occ.adults, occ.children, ci,
+      ).offers.some(offer => offer.unitsAvailable >= requiredUnits);
     };
 
     // Backward scan: offsets −1 … −maxBack (closest first).

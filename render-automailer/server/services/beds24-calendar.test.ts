@@ -181,14 +181,83 @@ test('maximum stay uses the configured restriction strategy too', async () => {
   }
 });
 
-test('nearest-date search can skip restricted dates and find a later valid stay', async () => {
-  const { service, state } = fixture();
-  for (const d of dates('2026-12-28', '2026-12-31')) {
+test('actual nearest-date search skips Dec 27–30 and preserves closest-first/tie behaviour', async () => {
+  const { service, state, requests } = fixture();
+  for (const d of dates('2026-12-27', '2026-12-31')) {
     state.overrides[d] = { minStay: 7 };
   }
-  assert.equal((await service.getAvailability(stay)).rooms[0].available, false);
-  const later = { ...stay, checkIn: '2027-01-01', checkOut: '2027-01-04' };
-  assert.equal((await service.getAvailability(later)).rooms[0].available, true);
+  const nearest = await service.findNearestAvailable({
+    roomId: line.roomId, fromDate: stay.checkIn, nights: 3, adults: 2, children: 0,
+  });
+  assert.deepEqual(nearest, { found: true, checkIn: '2026-12-24', checkOut: '2026-12-27' });
+  assert.equal(requests.filter(r => r.pathname === '/inventory/rooms/calendar').length, 1);
+  if (!nearest.found) assert.fail('Expected an eligible alternative');
+  assert.equal((await service.getAvailability({ ...stay, ...nearest })).rooms[0].available, true);
+});
+
+test('nearest-date search returns no result when every window violates minimum or maximum stay', async () => {
+  for (const limits of [{ minStay: 7 }, { maxStay: 2 }]) {
+    const { service, state } = fixture();
+    Object.assign(state, limits);
+    assert.deepEqual(await service.findNearestAvailable({
+      roomId: line.roomId, fromDate: stay.checkIn, nights: 3, adults: 2, children: 0,
+    }), { found: false });
+  }
+});
+
+test('nearest-date search cannot offer a stay longer than the local rate plans allow', async () => {
+  const { service, state } = fixture();
+  state.maxStay = 365;
+  assert.deepEqual(await service.findNearestAvailable({
+    roomId: line.roomId, fromDate: stay.checkIn, nights: 29, adults: 2, children: 0,
+  }), { found: false });
+});
+
+test('nearest-date search applies checkout and arrival overrides on both sides', async () => {
+  const { service, state } = fixture();
+  state.overrides['2026-12-30'] = { override: 'noCheckOut' }; // blocks Dec 27–30
+  state.overrides['2026-12-29'] = { override: 'noCheckIn' }; // blocks Dec 29–Jan 1
+  const nearest = await service.findNearestAvailable({
+    roomId: line.roomId, fromDate: stay.checkIn, nights: 3, adults: 2, children: 0,
+  });
+  assert.deepEqual(nearest, { found: true, checkIn: '2026-12-26', checkOut: '2026-12-29' });
+});
+
+test('nearest-date search honours room strategy for interior-night limits', async () => {
+  for (const strategy of ['firstNight', 'stayThrough']) {
+    const { service, state } = fixture();
+    state.room.restrictionStrategy = strategy;
+    state.overrides['2026-12-28'] = { minStay: 7 };
+    const nearest = await service.findNearestAvailable({
+      roomId: line.roomId, fromDate: stay.checkIn, nights: 3, adults: 2, children: 0,
+    });
+    assert.deepEqual(nearest, strategy === 'firstNight'
+      ? { found: true, checkIn: '2026-12-27', checkOut: '2026-12-30' }
+      : { found: true, checkIn: '2026-12-29', checkOut: '2027-01-01' });
+  }
+});
+
+test('nearest-date search propagates incomplete calendar errors instead of offering dates', async () => {
+  const { service } = fixture();
+  const request = (service as any).request;
+  (service as any).request = async (path: string) => {
+    const result = await request(path);
+    if (path.startsWith('/inventory/')) {
+      result.data[0].calendar = result.data[0].calendar.filter((e: any) => e.from !== '2026-12-30');
+    }
+    return result;
+  };
+  await assert.rejects(service.findNearestAvailable({
+    roomId: line.roomId, fromDate: stay.checkIn, nights: 3, adults: 2, children: 0,
+  }), e => e instanceof Beds24Error);
+});
+
+test('nearest-date search requires sufficient units for the entire party, including infants', async () => {
+  const { service, state } = fixture();
+  for (const d of dates('2026-12-07', '2027-03-25')) state.overrides[d] = { numAvail: 1 };
+  assert.deepEqual(await service.findNearestAvailable({
+    roomId: line.roomId, fromDate: stay.checkIn, nights: 3, adults: 2, children: 0, infants: 2,
+  }), { found: false });
 });
 
 test('maximum stay, sold-out dates and legacy closed dates block all offers', async () => {

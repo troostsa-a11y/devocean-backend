@@ -181,7 +181,7 @@ export function createBookingRouter(deps: {
   const quoteLimiter = makeRateLimiter(40, 60_000);        // 40/min/IP (debounced live cart)
   const checkoutLimiter = makeRateLimiter(10, 60_000);     // 10/min/IP
   const calendarLimiter = makeRateLimiter(20, 60_000);     // 20/min/IP
-  const nearestAvailLimiter = makeRateLimiter(6, 60_000);  //  6/min/IP (each call fans out ~10 Beds24 requests)
+  const nearestAvailLimiter = makeRateLimiter(6, 60_000);  // 6/min/IP; each call scans one calendar window
 
   function guardConfigured(res: any): boolean {
     if (!isBookingConfigured()) {
@@ -359,7 +359,7 @@ export function createBookingRouter(deps: {
   // room that is sold-out for the guest's requested dates.
   router.post('/nearest-available', requireAdminKey, nearestAvailLimiter, async (req, res) => {
     if (!guardConfigured(res)) return;
-    const { roomId, fromDate, nights, adults, children } = req.body || {};
+    const { roomId, fromDate, nights, adults, children, infants } = req.body || {};
 
     if (!roomId || typeof roomId !== 'string') {
       return res.status(400).json({ error: 'roomId is required' });
@@ -368,11 +368,12 @@ export function createBookingRouter(deps: {
       return res.status(400).json({ error: 'fromDate is required (YYYY-MM-DD)' });
     }
     const nightsN = Number(nights);
-    if (!Number.isFinite(nightsN) || nightsN < 1 || nightsN > 365) {
+    if (!Number.isInteger(nightsN) || nightsN < 1 || nightsN > 365) {
       return res.status(400).json({ error: 'nights must be between 1 and 365' });
     }
     const adultsN = Math.max(1, Number(adults) || 1);
     const childrenN = Math.max(0, Number(children) || 0);
+    const infantsN = Math.max(0, Number(infants) || 0);
 
     const t0 = Date.now();
     const tag = `room:${roomId} from:${fromDate} nights:${nightsN} adults:${adultsN}`;
@@ -383,6 +384,7 @@ export function createBookingRouter(deps: {
         nights: nightsN,
         adults: adultsN,
         children: childrenN,
+        infants: infantsN,
       });
       console.log(`[BOOKING] nearest-available ok ${tag} (${Date.now() - t0}ms)`);
       res.json(result);
