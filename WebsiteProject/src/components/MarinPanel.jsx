@@ -14,7 +14,7 @@ import { useEffect } from 'react';
  *   label       – button label (default "Need help? Ask Marin")
  *   autoOpen    – if true, open the panel automatically on mount
  */
-export default function MarinPanel({ context, autoMessage, label = 'Need help? Ask Marin', autoOpen = false, labelClassName = 'text-gray-500' }) {
+export default function MarinPanel({ context, autoMessage, label = 'Need help? Ask Marin', autoOpen = false }) {
   useEffect(() => {
     if (!autoOpen) return;
     // Give widget-loader a tick to initialise before firing.
@@ -48,7 +48,7 @@ export default function MarinPanel({ context, autoMessage, label = 'Need help? A
       type="button"
       onClick={handleClick}
       aria-label={label}
-      className={`inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm hover:border-orange-400 hover:text-orange-600 transition-colors ${labelClassName}`}
+      className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm text-slate-700 hover:border-orange-400 hover:text-orange-800 transition-colors"
       style={{ cursor: 'pointer' }}
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"

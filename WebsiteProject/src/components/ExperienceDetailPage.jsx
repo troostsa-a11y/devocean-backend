@@ -603,7 +603,6 @@ export default function ExperienceDetailPage({ units, experiences, ui, lang, cur
               <MarinPanel
                 context={`Experience page: ${exp.title}`}
                 label={getBookingStrings(lang).marinHelp}
-                labelClassName="text-white/80"
               />
             </div>
           </div>
