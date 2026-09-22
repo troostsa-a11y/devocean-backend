@@ -11,11 +11,57 @@ function money(amount, currency) {
   }
 }
 
+/**
+ * Build the ecommerce payload consumed by GTM on a genuinely confirmed stay.
+ * The server-side GA4 Measurement Protocol event uses the same transaction_id,
+ * so GA4 can deduplicate the browser and server purchase signals.
+ */
+export function buildBookingCompleteEvent(result, sessionRef) {
+  const total = Number(result?.total);
+  if (!sessionRef || !Number.isFinite(total) || total < 0) return null;
+
+  const currency = String(result?.currency || 'USD').toUpperCase();
+  const legs = Array.isArray(result?.legs) && result.legs.length > 0
+    ? result.legs
+    : [{
+        beds24BookingId: result?.beds24BookingId,
+        roomName: result?.roomName,
+        total,
+        adults: result?.adults,
+        children: result?.children,
+      }];
+
+  return {
+    event: 'booking_complete',
+    transaction_id: `direct_${sessionRef}`,
+    value: Number(total.toFixed(2)),
+    currency,
+    deposit: Number.isFinite(Number(result?.deposit))
+      ? Number(Number(result.deposit).toFixed(2))
+      : undefined,
+    booking_reference: result?.beds24BookingId || undefined,
+    check_in: result?.checkIn || undefined,
+    check_out: result?.checkOut || undefined,
+    items: legs.map((leg, index) => ({
+      item_id: leg?.beds24BookingId
+        ? String(leg.beds24BookingId)
+        : `room_${index + 1}`,
+      item_name: leg?.roomName || 'Accommodation',
+      item_category: 'Accommodation',
+      price: Number.isFinite(Number(leg?.total))
+        ? Number(Number(leg.total).toFixed(2))
+        : undefined,
+      quantity: 1,
+    })),
+  };
+}
+
 export default function BookingConfirmedPage({ lang = 'en-GB' }) {
   const t = useMemo(() => getConfirmStrings(lang), [lang]);
   const [result, setResult] = useState(null);
   const [phase, setPhase] = useState('loading'); // loading | confirmed | refunded | failed | pending
   const pollRef = useRef(null);
+  const bookingEventFiredRef = useRef(false);
 
   useEffect(() => {
     const ref = new URLSearchParams(window.location.search).get('ref');
@@ -34,7 +80,17 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
         const data = await res.json();
         if (res.ok) {
           setResult(data);
-          if (data.status === 'confirmed') return finish('confirmed');
+          if (data.status === 'confirmed') {
+            if (!bookingEventFiredRef.current) {
+              const bookingEvent = buildBookingCompleteEvent(data, ref);
+              if (bookingEvent) {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(bookingEvent);
+                bookingEventFiredRef.current = true;
+              }
+            }
+            return finish('confirmed');
+          }
           if (data.status === 'sold_out_refunded') return finish('refunded');
           if (data.status === 'failed') return finish('failed');
         }
