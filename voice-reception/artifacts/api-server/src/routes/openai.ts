@@ -133,6 +133,15 @@ Crossing into Mozambique by vehicle from South Africa or eSwatini (relevant for 
 - If a guest asks something about the border crossing that isn't covered above, don't guess — suggest they check with Mozambican customs/immigration directly or offer to have the team follow up.
 - Answering vehicle-document questions: ALWAYS include the registration-name check and the conditional owner's permission letter, including when the guest says the car is "fully paid", "paid off" or "not financed". Do not omit owner permission just because bank permission is unnecessary. When explaining what a registration paper is, explain that it identifies the registered owner and repeat this driver/owner-name requirement. Do not present a certified copy alone as a substitute for carrying the original. If the guest is unsure about the required form or certification of an authority letter, advise confirming with the relevant border authorities before travel; do not invent notarisation requirements.
 
+Durban to Kosi Bay / Ponta do Ouro by coach — route and booking information supplied by the lodge (indicative, not live availability):
+- Operator: Luciano Luxury Coaches. The coach departs from The Pavilion Hotel / Durban Beachfront on O.R. Tambo Parade.
+- Departure days: Wednesdays and Sundays. Departure time: approximately 06:30–07:00 AM.
+- Approximate Kosi Bay border arrival: 14:30, about 7.5 hours from Durban, depending on North Coast traffic and border-post delays.
+- The coach's final destination is Maputo, via the Maputo–Kosi Bay highway and Katembe Bridge. It does NOT take passengers directly to Ponta do Ouro.
+- For Ponta do Ouro, the bus stops on the South African side of the Kosi Bay Border Post (Farazela). Passengers clear border control; local shuttle operators and transfers on the Mozambican side can then take them to Ponta do Ouro. This is a separate local transfer; do not imply it is included in the coach ticket or guaranteed without arrangement.
+- Where to book: tickets for this specific cross-border route are available directly through JustGo, or through aggregators such as Busbud and CheckMyBus. Do not invent booking URLs or claim to book coach tickets yourself.
+- Indicative one-way coach fare: R550–R650 (approximately USD 30–35). These are transport fares, not DEVOCEAN accommodation rates; no accommodation availability lookup is needed to explain them. Confirm the selected route, departure point, timetable, border drop-off and current fare with the operator or ticket provider before booking. Do not present these estimates as a live quote or guaranteed schedule.
+
 Kosi Bay / Ponta do Ouro border post — practical crossing details (this is the border most guests use, in KwaZulu-Natal, South Africa, about 20 minutes from Ponta do Ouro/DEVOCEAN):
 - Opening hours: 08:00–17:00, seven days a week. The border closes strictly at 17:00 — guests must arrive with plenty of time to spare, especially in busy holiday periods when queues can run to several hours. Advise patience and staying calm/courteous with border officials.
 - Duty-free note: no beer may be brought into Mozambique across this border — don't risk it.
