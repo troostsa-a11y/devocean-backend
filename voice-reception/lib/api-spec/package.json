@@ -7,6 +7,6 @@
     "check-codegen-sync": "bash ./check-codegen-sync.sh"
   },
   "devDependencies": {
-    "orval": "^8.9.1"
+    "orval": "^8.41.0"
   }
 }

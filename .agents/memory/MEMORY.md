@@ -59,3 +59,4 @@
 - [Gift voucher verification](gift-voucher-payment-verification.md) — a checkout can exist without a payment attempt; reconcile historical pending records against Stripe, never their age.
 - [Customer Match booking focus](customer-match-booking-focus.md) — optimize complete address identifiers for future direct bookings; Beds24 records may rely on email and phone
 - [SiteMinder replacement gate](siteminder-replacement-gate.md) — Direct Booking API stops at quotes; do not replace Beds24 until reservation writes and event delivery are proven
+- [Generator version inference](generator-version-inference.md) — pnpm catalog dependencies can defeat generator version detection; keep generated clients on the consumer library majors.
