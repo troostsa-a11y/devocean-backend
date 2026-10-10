@@ -52,6 +52,7 @@
 - [Stable-URL runtime JSON caching](stable-url-json-cache.md) — /translations/*.json fetched at runtime need ?v=<build-id> (Vite define) AND max-age=0 headers; header changes alone can't bust copies already cached under the old TTL
 - [SPA experience headings](spa-experience-headings.md) — edge middleware must inject a route-specific static H1 for experience pages; React-only headings are invisible to no-JS crawlers
 - [User workflow preferences](user-workflow-preferences.md) — no automatic review-subagent passes and no unsolicited follow-up task proposals; user QA-tests manually and dislikes background agents
+- [Automatic language policy](automatic-language-policy.md) — prefer supported browser languages over IP-country language; avoid unnecessary Chrome translation prompts.
 - [Voice fallback diagnostics](voice-fallback-diagnostics.md) — automatic Guest entries need safe failure categories; a working relay does not prove browser microphone access works.
 - [Transcript rendering](transcript-rendering.md) — format historical replies at display time; frontend tests must resolve matching React and react-dom versions.
 - [Gift voucher verification](gift-voucher-payment-verification.md) — a checkout can exist without a payment attempt; reconcile historical pending records against Stripe, never their age.
