@@ -8,6 +8,8 @@ We retain the true upstream version and apply a local depth guard:
 
 - npm projects apply `WebsiteProject/scripts/patch-braces.cjs` on installation.
   Unexpected package versions or source changes fail installation.
+  A root install also patches an existing independent website dependency tree,
+  because the root preview runs that website rather than the root's dependencies.
 - The reception pnpm workspace applies its committed native package patch.
 - Brace and parenthesis parsing is limited to 127 nested blocks. Recursive
   AST walkers and array helpers stop above depth 128 with a controlled

@@ -115,3 +115,33 @@ test('npm install hooks and pnpm native patch remain enabled', () => {
   assert.match(workspace, /patchedDependencies:\n  braces@3\.0\.3: patches\/braces@3\.0\.3\.patch/);
   assert.match(lock, /braces: 3\.0\.3\(patch_hash=[a-f0-9]+\)/);
 });
+
+test('root installation also patches an independently installed website tree', () => {
+  const temp = mkdtempSync(join(tmpdir(), 'braces-install-'));
+  try {
+    // Use pristine source so the test proves both trees are patched, not just
+    // that already-patched packages survive a repeated installation.
+    for (const tree of ['node_modules', 'WebsiteProject/node_modules']) {
+      const directory = join(temp, tree, 'braces');
+      cpSync(dirname(npmBraces), directory, { recursive: true });
+      for (const [file, replacements] of Object.entries(edits)) {
+        const filename = join(directory, file);
+        let source = readFileSync(filename, 'utf8');
+        for (const [before, after] of replacements) source = source.replace(after, before);
+        writeFileSync(filename, source);
+      }
+    }
+    const result = spawnSync(process.execPath, [
+      new URL('WebsiteProject/scripts/patch-braces.cjs', root).pathname,
+    ], { cwd: temp, encoding: 'utf8', timeout: 10000 });
+    assert.equal(result.status, 0, result.stderr);
+    for (const tree of ['node_modules', 'WebsiteProject/node_modules']) {
+      for (const [file, replacements] of Object.entries(edits)) {
+        const source = readFileSync(join(temp, tree, 'braces', file), 'utf8');
+        for (const [, patched] of replacements) assert.ok(source.includes(patched), `${tree}/${file}`);
+      }
+    }
+  } finally {
+    rmSync(temp, { recursive: true, force: true });
+  }
+});

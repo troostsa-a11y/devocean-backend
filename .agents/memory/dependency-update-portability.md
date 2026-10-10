@@ -49,3 +49,9 @@ For local security patches, verify both unified-diff validity and the installed 
 **Why:** pnpm can finish a frozen install with a malformed patch without applying every intended change. Node's ancestor resolution can also accidentally test the root npm dependency instead of the workspace's patched copy.
 
 **How to apply:** Check the patch with `git apply --check` against pristine source, assert that every guard is installed, and resolve the dependency from its locked pnpm patch identity or its real consumer.
+
+A pnpm frozen install can reuse an unpatched cached package even under its patched store identity.
+
+**Why:** A regular frozen install created the expected patch-hash directory but its files still lacked the committed guards. A forced frozen reinstall applied them correctly.
+
+**How to apply:** If a valid committed patch is missing from installed source after a frozen install, force a whole-workspace frozen reinstall and rerun installed-source and attack checks; do not assume the patch-hash directory proves the mitigation is present.

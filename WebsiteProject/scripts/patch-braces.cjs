@@ -79,5 +79,15 @@ function patchTree(root) {
 
 module.exports = { edits, patchPackage, patchTree };
 if (require.main === module) {
-  patchTree(path.resolve(process.argv[2] || 'node_modules'));
+  const roots = process.argv[2]
+    ? [path.resolve(process.argv[2])]
+    : [
+        path.resolve('node_modules'),
+        // The root preview starts the independently installed website. Its
+        // dependency tree must also be protected after a root-only install.
+        ...(fs.existsSync(path.resolve('WebsiteProject/node_modules'))
+          ? [path.resolve('WebsiteProject/node_modules')]
+          : []),
+      ];
+  for (const root of roots) patchTree(root);
 }
