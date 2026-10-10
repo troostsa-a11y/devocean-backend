@@ -11,7 +11,7 @@
  * module initialisation time — exactly the scenario we want to prove.
  */
 
-import { describe, it, expect, vi, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, cleanup } from '@testing-library/react';
 
 // ── Module mocks (hoisted) ────────────────────────────────────────────────────
@@ -42,7 +42,17 @@ vi.mock('lucide-react', () => ({
 // Import AFTER mocks so the component sees the 6-tier RATE_TIER_STRINGS.
 import DateRangePicker from '../DateRangePicker';
 
-afterEach(() => { cleanup(); });
+beforeEach(() => {
+  // Keep the September fixtures in the future so this colour test does not
+  // accidentally test the intentionally uncoloured, disabled past-date state.
+  vi.useFakeTimers({ toFake: ['Date'] });
+  vi.setSystemTime(new Date('2026-08-31T12:00:00.000Z'));
+});
+
+afterEach(() => {
+  cleanup();
+  vi.useRealTimers();
+});
 
 // ── Fixtures ─────────────────────────────────────────────────────────────────
 
