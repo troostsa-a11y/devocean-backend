@@ -29,7 +29,7 @@
     "imap-simple": "^6.0.0",
     "lucide-react": "^0.460.0",
     "luxon": "^3.7.2",
-    "mailparser": "^3.9.8",
+    "mailparser": "^3.9.38",
     "node-cron": "^4.2.1",
     "nodemailer": "^8.0.7",
     "pg": "^8.16.3",
