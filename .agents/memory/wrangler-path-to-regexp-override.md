@@ -37,3 +37,16 @@ falls back to `npm install`. A stale lockfile is the only state that makes
 **How to apply:** after editing the override, regenerate the lockfile with a real
 `cd WebsiteProject && npm install` whenever a tooling path allows it, then commit
 it and verify `npm ls path-to-regexp` shows express on 0.1.x and wrangler on 6.3.0.
+
+## Narrow dependency reinstalls
+
+When using the root package installer to apply a transitive override, reinstall
+the parent at its exact currently locked version, not a caret range. The installer
+requires at least one package; an empty package list cannot refresh the tree.
+
+**Why:** reinstalling a parent with a caret range can upgrade that parent and
+its other dependencies, expanding an otherwise narrow security patch.
+
+**How to apply:** read the parent's locked version first, request that exact
+version, and verify the final manifest and lockfile diff contains only intended
+changes.

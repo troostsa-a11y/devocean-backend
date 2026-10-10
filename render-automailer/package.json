@@ -30,6 +30,9 @@
     "typescript": "^5.5.0",
     "zod": "^4.1.12"
   },
+  "overrides": {
+    "proxy-addr": "^2.0.8"
+  },
   "engines": {
     "node": ">=18.0.0"
   }
