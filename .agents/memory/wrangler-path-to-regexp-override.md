@@ -23,20 +23,17 @@ there returns nothing; there is no nested copy). So the `node_modules` copy of
 path-to-regexp is never loaded by wrangler at runtime. The conflict still matters
 for `npm audit`/`npm ci` correctness and future wrangler versions, so scope it.
 
-**Tooling constraint when reconciling the lockfile:** `WebsiteProject/` is an
-independent npm project (root `package.json` has no `workspaces`), so the
-packager tool — which only acts on the workspace root — cannot regenerate
-`WebsiteProject/package-lock.json`, and bash blocks every `npm install` variant.
-When a lockfile goes stale after an overrides change and you cannot regenerate it
-in-tool, deleting it is safer than leaving it stale: this project deploys via
-`bash deploy.sh` (local build + `wrangler pages deploy ./dist`, no install step),
-and Cloudflare's git builder runs `npm ci` only when a lockfile exists, else
-falls back to `npm install`. A stale lockfile is the only state that makes
-`npm ci` fail on the override mismatch.
+**Tooling constraint when reconciling independent npm projects:** The package
+installer acts on the workspace root, not on independent subprojects.
+Preserve subproject lockfiles instead of deleting them to get around that limitation.
 
-**How to apply:** after editing the override, regenerate the lockfile with a real
-`cd WebsiteProject && npm install` whenever a tooling path allows it, then commit
-it and verify `npm ls path-to-regexp` shows express on 0.1.x and wrangler on 6.3.0.
+**Why:** Removing a lockfile allows unrelated dependency changes at deployment
+and weakens the reproducibility of a narrowly scoped security update.
+The shell permits `npm ci` for clean-install validation in the independent website project.
+
+**How to apply:** Synchronize affected lockfile metadata with trusted package-manager
+output, preserve unrelated resolutions, and verify with a clean `npm ci`.
+Check `npm ls` to confirm that overrides resolve the intended dependency tree.
 
 ## Narrow dependency reinstalls
 
