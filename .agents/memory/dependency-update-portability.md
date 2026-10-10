@@ -19,3 +19,9 @@ Check narrowly targeted pnpm updates for unrelated override and peer-resolution 
 **Why:** A recursive transitive update can also re-resolve existing range-based overrides, upgrading unrelated packages and rewriting their peer snapshots.
 
 **How to apply:** Inspect the entire lockfile diff, preserve unrelated resolutions, and verify the resulting lockfile with a frozen install before testing.
+
+Do not use the project's DOM emulators as the sole evidence for sanitizer browser compatibility.
+
+**Why:** Happy DOM discarded benign content during DOMPurify smoke tests, while the installed jsdom could not start because its expected Undici internals were absent. The actual legal-page browser preview rendered normally.
+
+**How to apply:** Check the browser-rendered page and CDN integrity independently. If sanitizer assertions fail only in an emulator, investigate the emulator rather than changing sanitizer configuration or weakening assertions.
