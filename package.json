@@ -9,6 +9,7 @@
     "test:nanoid-security": "node --test scripts/nanoid-security.test.mjs",
     "test:qs-security": "node --test scripts/qs-security.test.mjs",
     "test:postcss-security": "node --test scripts/postcss-security.test.mjs",
+    "test:babel-security": "node --test scripts/babel-security.test.mjs",
     "dev": "node start.js",
     "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/",
     "preview": "vite preview",
@@ -60,6 +61,7 @@
     "wrangler": "^4.95.0"
   },
   "overrides": {
+    "@babel/core": "7.29.7",
     "sharp": "$sharp",
     "browserslist": "4.28.7",
     "brace-expansion": "^2.1.7",
