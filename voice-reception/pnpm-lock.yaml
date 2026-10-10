@@ -156,6 +156,11 @@ overrides:
   '@esbuild-kit/esm-loader': npm:tsx@^4.21.0
   esbuild: 0.27.3
 
+patchedDependencies:
+  braces@3.0.3:
+    hash: 649a9adfe848f9c2ccbd62263e6408234bf2278fd165308c969fe73e92d2519a
+    path: patches/braces@3.0.3.patch
+
 importers:
 
   .:
@@ -4634,7 +4639,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  braces@3.0.3:
+  braces@3.0.3(patch_hash=649a9adfe848f9c2ccbd62263e6408234bf2278fd165308c969fe73e92d2519a):
     dependencies:
       fill-range: 7.1.1
 
@@ -5139,7 +5144,7 @@ snapshots:
 
   micromatch@4.0.8:
     dependencies:
-      braces: 3.0.3
+      braces: 3.0.3(patch_hash=649a9adfe848f9c2ccbd62263e6408234bf2278fd165308c969fe73e92d2519a)
       picomatch: 2.3.2
 
   mime-db@1.54.0: {}

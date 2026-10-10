@@ -31,3 +31,9 @@ Do not use the project's DOM emulators as the sole evidence for sanitizer browse
 **Why:** Happy DOM discarded benign content during DOMPurify smoke tests, while the installed jsdom could not start because its expected Undici internals were absent. The actual legal-page browser preview rendered normally.
 
 **How to apply:** Check the browser-rendered page and CDN integrity independently. If sanitizer assertions fail only in an emulator, investigate the emulator rather than changing sanitizer configuration or weakening assertions.
+
+For local security patches, verify both unified-diff validity and the installed patched source, then run the attack regression against the actual consumer's dependency.
+
+**Why:** pnpm can finish a frozen install with a malformed patch without applying every intended change. Node's ancestor resolution can also accidentally test the root npm dependency instead of the workspace's patched copy.
+
+**How to apply:** Check the patch with `git apply --check` against pristine source, assert that every guard is installed, and resolve the dependency from its locked pnpm patch identity or its real consumer.

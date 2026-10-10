@@ -68,6 +68,10 @@ catalog:
 
 autoInstallPeers: false
 
+# GHSA-vfj7-8cjw-p6xm has no upstream patched release.
+patchedDependencies:
+  braces@3.0.3: patches/braces@3.0.3.patch
+
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
