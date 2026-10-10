@@ -13,3 +13,9 @@ For security updates, preserve the workspace's minimum release age when an older
 **Why:** A same-day latest release may be blocked by pnpm even though an eligible patch release contains all required fixes. Disabling the safety rule is unnecessary in that case.
 
 **How to apply:** Check advisory fixed-version ranges and publication dates, then choose the newest eligible patched release rather than adding a release-age exception.
+
+Check narrowly targeted pnpm updates for unrelated override and peer-resolution changes.
+
+**Why:** A recursive transitive update can also re-resolve existing range-based overrides, upgrading unrelated packages and rewriting their peer snapshots.
+
+**How to apply:** Inspect the entire lockfile diff, preserve unrelated resolutions, and verify the resulting lockfile with a frozen install before testing.
