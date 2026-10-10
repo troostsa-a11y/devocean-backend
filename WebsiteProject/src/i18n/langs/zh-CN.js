@@ -18,6 +18,7 @@ menu: "菜单",
       ],
     },
     gallery: { headline: "图库" },
+    galleryHeading: "图库",
     location: {
       headline: "位置", blurb: "蓬塔多奥罗 – 莫桑比克南部马图图伊内区。",
       items: [

@@ -1,7 +1,9 @@
+import { CRITICAL_SECTION_UI } from './criticalSections.generated.js';
+
 // Critical translations that load synchronously for immediate rendering
 // Includes navigation text, hero title/subtitle, and below-fold section headlines.
-// All supported languages include stay/experiences keys so AccommodationsSection
-// and ExperiencesSection render in the correct language from the very first paint —
+// All supported languages include the lazy-section headlines so the homepage
+// sections render in the correct language from the very first paint —
 // eliminating the English-placeholder flash for non-English visitors.
 export const CRITICAL_NAV = {
   "en-GB": {
@@ -409,3 +411,13 @@ export const CRITICAL_NAV = {
     experiencesLearnMore: "Chunguza maeneo ya kupiga mbizi, watoa huduma na bei →"
   }
 };
+
+// Reuse the same source as the full translations. Only the headlines go in
+// CRITICAL_NAV, which is also serialized into the pre-hydration HTML script.
+for (const [lang, ui] of Object.entries(CRITICAL_SECTION_UI)) {
+  Object.assign(CRITICAL_NAV[lang], {
+    galleryHeading: ui.galleryHeading,
+    locationHeadline: ui.location.headline,
+    contactHeadline: ui.contact.headline,
+  });
+}

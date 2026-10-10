@@ -14,10 +14,13 @@
  *      called after unmount.
  *   4. Route change — effect cleanup disconnects the observer before it can
  *      scroll to a stale target.
+ *   5. Unknown hashes stop DOM lookups at the 10-second deadline, including
+ *      localized homepages and targets inserted after expiry.
+ *   6. Finding a target or unmounting cancels the pending deadline.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, act } from '@testing-library/react';
+import { render, act, cleanup } from '@testing-library/react';
 
 // ── Wouter mocks ──────────────────────────────────────────────────────────────
 
@@ -158,6 +161,7 @@ describe('App — hash-scroll lazy-section guard', () => {
   });
 
   afterEach(() => {
+    cleanup();
     global.ResizeObserver = originalResizeObserver;
     vi.useRealTimers();
     vi.restoreAllMocks();
@@ -205,6 +209,80 @@ describe('App — hash-scroll lazy-section guard', () => {
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
   });
 
+  it.each(['/', '/de/'])(
+    '%s: stops observing a missing anchor at 10 seconds and ignores later DOM mutations',
+    async pathname => {
+      const targetId = 'nonexistent-id';
+      mockLocation = pathname;
+      setWindowLocation({ pathname, hash: `#${targetId}` });
+      const scrollSpy = vi.fn();
+      HTMLElement.prototype.scrollIntoView = scrollSpy;
+      const lookupSpy = vi.spyOn(document, 'getElementById');
+      const observeSpy = vi.spyOn(MutationObserver.prototype, 'observe');
+      const disconnectSpy = vi.spyOn(MutationObserver.prototype, 'disconnect');
+      const targetLookups = () => lookupSpy.mock.calls.filter(([id]) => id === targetId).length;
+
+      await act(async () => { render(<App />); });
+      expect(observeSpy).toHaveBeenCalledWith(document.body, { childList: true, subtree: true });
+
+      await act(async () => { vi.advanceTimersByTime(9_999); });
+      expect(disconnectSpy).not.toHaveBeenCalled();
+
+      // Prove the observer is actually active, rather than merely asserting
+      // that a test double never called anything.
+      const beforeMutation = targetLookups();
+      await act(async () => {
+        document.body.appendChild(document.createElement('aside'));
+      });
+      expect(targetLookups()).toBeGreaterThan(beforeMutation);
+
+      await act(async () => { vi.advanceTimersByTime(1); });
+      expect(disconnectSpy).toHaveBeenCalledTimes(1);
+      const atExpiry = targetLookups();
+
+      // Even the formerly missing target must not restart scrolling once
+      // the finite wait has ended.
+      await act(async () => {
+        const target = document.createElement('section');
+        target.id = targetId;
+        document.body.appendChild(target);
+      });
+      await act(async () => {
+        vi.advanceTimersByTime(30_000);
+        document.body.appendChild(document.createElement('aside'));
+      });
+
+      expect(targetLookups()).toBe(atExpiry);
+      expect(scrollSpy).not.toHaveBeenCalled();
+      expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    },
+  );
+
+  it('finds a target just before the deadline and cancels the expiry timer', async () => {
+    setWindowLocation({ hash: '#last-moment-section' });
+    const scrollSpy = vi.fn();
+    const disconnectSpy = vi.spyOn(MutationObserver.prototype, 'disconnect');
+
+    await act(async () => { render(<App />); });
+    await act(async () => { vi.advanceTimersByTime(9_999); });
+    expect(disconnectSpy).not.toHaveBeenCalled();
+
+    await act(async () => {
+      const target = document.createElement('section');
+      target.id = 'last-moment-section';
+      target.scrollIntoView = scrollSpy;
+      document.body.appendChild(target);
+    });
+
+    expect(scrollSpy).toHaveBeenCalledExactlyOnceWith({ behavior: 'smooth', block: 'start' });
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+
+    // If the timeout was not cleared, it would disconnect a second time.
+    await act(async () => { vi.advanceTimersByTime(20_000); });
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    expect(scrollSpy).toHaveBeenCalledTimes(1);
+  });
+
   it('responds to hash-only navigation on a localized homepage', async () => {
     mockLocation = '/nl/';
     setWindowLocation({ pathname: '/nl/', hash: '' });
@@ -235,6 +313,9 @@ describe('App — hash-scroll lazy-section guard', () => {
     // Spy on scrollIntoView at the prototype level so we catch any element
     const scrollSpy = vi.fn();
     HTMLElement.prototype.scrollIntoView = scrollSpy;
+    const disconnectSpy = vi.spyOn(MutationObserver.prototype, 'disconnect');
+    const lookupSpy = vi.spyOn(document, 'getElementById');
+    const targetLookups = () => lookupSpy.mock.calls.filter(([id]) => id === 'missing').length;
 
     let unmountFn;
     await act(async () => {
@@ -243,12 +324,21 @@ describe('App — hash-scroll lazy-section guard', () => {
     });
 
     // Unmount before a lazy target can mount.
-    unmountFn();
+    await act(async () => { unmountFn(); });
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    const atUnmount = targetLookups();
 
     // Flush all remaining timers — cleanup must block any call.
-    await act(async () => { vi.runAllTimers(); });
+    await act(async () => {
+      vi.runAllTimers();
+      const target = document.createElement('section');
+      target.id = 'missing';
+      document.body.appendChild(target);
+    });
 
     expect(scrollSpy).not.toHaveBeenCalled();
+    expect(disconnectSpy).toHaveBeenCalledTimes(1);
+    expect(targetLookups()).toBe(atUnmount);
   });
 
   // ── Test 4: route change — stale observer must not call scrollIntoView ─────
@@ -268,12 +358,12 @@ describe('App — hash-scroll lazy-section guard', () => {
       rerenderFn = result.rerender;
     });
 
-    // Change location before flushing rAFs — React cleans up the old effect
+    // Change location before the target mounts — React cleans up the old effect.
     mockLocation = '/story';
     setWindowLocation({ pathname: '/story', hash: '' });
     await act(async () => { rerenderFn(<App />); });
 
-    // Flush everything — stale rAF's cancelled guard must prevent scrollIntoView
+    // Flush everything — observer cleanup must prevent a stale scroll.
     await act(async () => { vi.runAllTimers(); });
 
     expect(scrollSpy).not.toHaveBeenCalled();

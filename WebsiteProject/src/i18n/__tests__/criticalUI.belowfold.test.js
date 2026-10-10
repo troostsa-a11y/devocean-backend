@@ -6,9 +6,8 @@
  * Verifies:
  * 1. CRITICAL_NAV carries all required below-fold keys for every supported language.
  * 2. Non-English locales use genuinely translated strings (not English copies).
- * 3. getCriticalUI() correctly maps CRITICAL_NAV values into the stay/experiences
- *    shape consumed by AccommodationsSection and ExperiencesSection, exercising
- *    the actual exported mapper function.
+ * 3. getCriticalUI() correctly maps the synchronous translations into every
+ *    lazy section, including contact form and footer legal labels.
  *
  * "Done" for Task #162: non-English visitors see the correct translated
  * headline from the very first synchronous render — no network round-trip
@@ -18,16 +17,10 @@
 import { describe, it, expect } from 'vitest';
 import { CRITICAL_NAV } from '../critical.js';
 import { getCriticalUI } from '../useLocale.js';
+import { LOCALES } from '../localeCatalog.js';
 
-// ── canonical language list (must stay in sync with SUPPORTED_LANGS in useLocale.js) ──
-const ALL_LANGS = [
-  'en-GB', 'en-US',
-  'pt-PT', 'pt-BR',
-  'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv', 'pl',
-  'ro', 'sr', 'hr', 'cs', 'tr',
-  'ja-JP', 'zh-CN', 'ru',
-  'af-ZA', 'zu', 'sw',
-];
+const ALL_LANGS = LOCALES.map(({ code }) => code);
+const FULL_UI_MODULES = import.meta.glob('../langs/*.js', { eager: true, import: 'UI' });
 
 // Keys that every CRITICAL_NAV entry must carry for below-fold rendering.
 // experiencesFeatured is used by ExperiencesSection as a visible badge label.
@@ -39,6 +32,9 @@ const REQUIRED_BELOW_FOLD_KEYS = [
   'experiencesBlurb',
   'experiencesFeatured',
   'experiencesLearnMore',
+  'galleryHeading',
+  'locationHeadline',
+  'contactHeadline',
 ];
 
 // ─── CRITICAL_NAV completeness ────────────────────────────────────────────────
@@ -208,4 +204,53 @@ describe('getCriticalUI() — every locale returns a complete stay + experiences
       expect(ui.experiences.learnMore.trim()).not.toBe('');
     });
   }
+});
+
+describe('getCriticalUI() — lazy sections match their full translations before loading', () => {
+  const sectionKeys = ['galleryHeading', 'location', 'contact', 'form', 'footer', 'legal'];
+
+  it.each(ALL_LANGS)('%s: first-paint copy matches the asynchronous UI exactly', lang => {
+    const fullUI = FULL_UI_MODULES[`../langs/${lang}.js`];
+    const criticalUI = getCriticalUI(lang);
+
+    for (const key of sectionKeys) {
+      expect(criticalUI[key], `${lang}: ${key}`).toEqual(fullUI[key]);
+    }
+    expect(criticalUI.galleryHeading.trim()).not.toBe('');
+    expect(criticalUI.location.items.length).toBeGreaterThan(0);
+    expect(criticalUI.form.units.length).toBeGreaterThan(0);
+  });
+
+  it.each(['pt-PT', 'de-DE'])('%s: no English heading, blurb, form or copyright fallback', lang => {
+    const ui = getCriticalUI(lang);
+    const english = getCriticalUI('en-GB');
+
+    for (const value of [
+      'galleryHeading',
+      'location.headline',
+      'location.blurb',
+      'location.viewMap',
+      'contact.headline',
+      'contact.blurb',
+      'contact.directions',
+      'contact.bookNow',
+      'form.stayLabel',
+      'form.send',
+      'form.consent',
+      'footer.rights',
+      'footer.desc',
+      'legal.privacy',
+    ]) {
+      const atPath = (object) => value.split('.').reduce((current, key) => current[key], object);
+      expect(atPath(ui), `${lang}: ${value}`).not.toBe(atPath(english));
+    }
+  });
+
+  it('uses complete English sections for an unsupported locale', () => {
+    const ui = getCriticalUI('xx-UNKNOWN');
+    const english = FULL_UI_MODULES['../langs/en-GB.js'];
+    for (const key of sectionKeys) {
+      expect(ui[key]).toEqual(english[key]);
+    }
+  });
 });

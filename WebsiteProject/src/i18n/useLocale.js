@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
+import { CRITICAL_SECTION_UI } from './criticalSections.generated.js';
 import { loadTranslation } from './loadTranslation.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
 import { resolveVisitorLanguage } from './visitorLanguage.js';
@@ -253,6 +254,7 @@ async function loadTranslations(lang) {
 export function getCriticalUI(lang) {
   // Use lang directly - critical nav keys now match Hotelrunner codes
   const nav = CRITICAL_NAV[lang] || CRITICAL_NAV["en-GB"];
+  const sections = CRITICAL_SECTION_UI[lang] || CRITICAL_SECTION_UI["en-GB"];
   return {
     menu: nav.menu || "Menu",
     regions: {
@@ -271,9 +273,6 @@ export function getCriticalUI(lang) {
       gallery: nav.gallery,
       location: nav.location,
       contact: nav.contact
-    },
-    contact: {
-      bookNow: nav.bookNow
     },
     // English currency fallbacks to prevent flash when full translations load
     currencies: {
@@ -310,52 +309,18 @@ export function getCriticalUI(lang) {
       featured: nav.experiencesFeatured || "Featured",
       learnMore: nav.experiencesLearnMore || "Explore dive sites, operators & pricing →"
     },
-    galleryHeading: "Gallery",
+    galleryHeading: nav.galleryHeading,
     location: {
-      headline: "Location",
-      blurb: "Ponta do Ouro – Matutuíne District, Southern Mozambique.",
-      items: [
-        "Ponta do Ouro town, a short walk from the beach",
-        "15 min to Ponta Malongane • 25 min to Kosi Bay border",
-        "Secure parking • Local cafés & markets nearby",
-      ],
-      viewMap: "View Interactive Map",
+      ...sections.location,
+      headline: nav.locationHeadline,
     },
     contact: {
-      headline: "Contact & Booking",
-      blurb: "Questions, dates, special requests or group bookings – we're happy to help.",
-      call: "WhatsApp",
-      email: "Email",
-      directions: "Directions",
-      bookNow: "Online Booking"
+      ...sections.contact,
+      headline: nav.contactHeadline,
     },
-    form: {
-      name: "Name",
-      email: "Email",
-      stayLabel: "Interested in staying:",
-      checkin: "From",
-      checkout: "Until",
-      unitLabel: "My preferred unit is:",
-      units: [
-        "Safari Tent - shared bathroom",
-        "Comfort Tent - private bathroom",
-        "Garden Cottage - inverter AC",
-        "Thatched Chalet - inverter AC"
-      ],
-      message: "Message",
-      send: "Send",
-      consent: "By submitting you agree to be contacted about your inquiry.",
-      phName: "Your name",
-      phEmail: "your@email.com",
-      phDate: "dd/mm/yyyy",
-      phMsg: "Tell us more about your wishes...",
-      success: "Thank you! Your message has been sent. Check your email for a confirmation.",
-      sending: "Sending...",
-    },
-    footer: {
-      rights: "All rights reserved.",
-      desc: "Family-run eco-hospitality and community projects in Southern Mozambique.",
-    }
+    form: sections.form,
+    footer: sections.footer,
+    legal: sections.legal,
   };
 }
 
