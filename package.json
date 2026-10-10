@@ -55,6 +55,7 @@
     "wrangler": "^4.95.0"
   },
   "overrides": {
+    "browserslist": "4.28.7",
     "brace-expansion": "^2.0.3",
     "esbuild": "^0.25.0",
     "minimatch": "^9.0.6",
