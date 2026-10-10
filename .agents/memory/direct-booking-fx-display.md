@@ -46,3 +46,13 @@ is `shrink-0` so the chip never overflows; the dropdown panel is
 `w-[calc(100vw-2rem)] max-w-[18rem]` right-anchored to fit any phone width.
 
 **Marin parity:** when an FX display currency is active, Marin's page context must quote both the charged base-currency amount and the approximate converted amount, plus an explicit charged-in-base-currency note — never base-currency-only.
+
+## Stripe's separate currency localization
+
+Website FX estimates and Stripe's card-payment currency selection are separate controls. Submitting base-currency prices does not guarantee that Checkout offers only that currency.
+
+**Why:** Stripe Adaptive Pricing can offer a local payment currency while reporting the original integration amount and currency in its events. Defining manual prices for selected currencies overrides localization for those currencies but does not block other automatically localized currencies.
+
+**How to apply:** A strict payment-currency policy needs explicit control over Stripe localization, not just a website currency filter. Any new non-base-currency charge must use server-calculated, locked amounts with consistent payment verification and refund accounting; never reuse a client FX estimate. Check fresh Checkout Sessions after changes, because disabling localization does not remove it from already-converted sessions.
+
+Stripe lists MZN as a supported presentment currency in its [currency documentation](https://docs.stripe.com/currencies). A reported MZN payment failure is not proof of universal Stripe rejection; check the specific account, payment method and issuer error before naming the cause.
