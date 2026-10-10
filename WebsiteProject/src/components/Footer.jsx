@@ -2,9 +2,11 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { useLocation, Link } from 'wouter';
 import { IMG, EMAIL, PHONE } from '../data/content';
 import LazyImage from './LazyImage';
+import { getGuideLabels } from '../i18n/guideLabels.js';
 
 export default function Footer({ units, experiences, ui, lang }) {
   const [location] = useLocation();
+  const guides = getGuideLabels(lang);
   
   // Detect if we're on an experience detail page
   const isExperiencePage = location.startsWith('/experiences/');
@@ -171,12 +173,12 @@ export default function Footer({ units, experiences, ui, lang }) {
 
         {/* Practical Guides */}
         <div>
-          <div className="font-semibold">{ui?.guides?.heading ?? "Practical Guides"}</div>
+          <div className="font-semibold">{guides.heading}</div>
           <ul className="mt-2 space-y-1 text-sm text-slate-400">
-            <li><a className="hover:text-white" href="/getting-to-ponta-do-ouro">Getting Here</a></li>
-            <li><a className="hover:text-white" href="/ponta-do-ouro-without-4x4">No 4×4 Needed</a></li>
-            <li><a className="hover:text-white" href="/ponta-do-ouro-accommodation">Accommodation Guide</a></li>
-            <li><a className="hover:text-white" href="/devocean-lodge-meals">Meals &amp; Dining</a></li>
+            <li><a className="hover:text-white" href="/getting-to-ponta-do-ouro">{guides.gettingHere}</a></li>
+            <li><a className="hover:text-white" href="/ponta-do-ouro-without-4x4">{guides.without4x4}</a></li>
+            <li><a className="hover:text-white" href="/ponta-do-ouro-accommodation">{guides.accommodation}</a></li>
+            <li><a className="hover:text-white" href="/devocean-lodge-meals">{guides.meals}</a></li>
             <li><a className="hover:text-white" href="/ponta-do-ouro">Ponta do Ouro</a></li>
           </ul>
         </div>

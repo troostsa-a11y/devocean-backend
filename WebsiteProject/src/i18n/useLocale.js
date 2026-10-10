@@ -256,49 +256,14 @@ export function getCriticalUI(lang) {
   const nav = CRITICAL_NAV[lang] || CRITICAL_NAV["en-GB"];
   const sections = CRITICAL_SECTION_UI[lang] || CRITICAL_SECTION_UI["en-GB"];
   return {
-    menu: nav.menu || "Menu",
-    regions: {
-      westEu: "Western Europe",
-      eastEu: "Eastern Europe",
-      asia: "Asia",
-      americas: "Americas",
-      africa: "Africa",
-      oceania: "Oceania"
-    },
-    nav: {
-      home: nav.home,
-      stay: nav.stay,
-      experiences: nav.experiences,
-      todo: nav.todo,
-      gallery: nav.gallery,
-      location: nav.location,
-      contact: nav.contact
-    },
-    // English currency fallbacks to prevent flash when full translations load
-    currencies: {
-      USD: "US-Dollar",
-      JPY: "Yen",
-      CNY: "RMB",
-      RUB: "Ruble",
-      MZN: "Meticais",
-      ZAR: "Rand",
-      TZS: "TZ Shilling",
-      KES: "KE Shilling",
-      EUR: "Euro",
-      GBP: "GB-Pound",
-      SEK: "Krona",
-      PLN: "Zloty"
-    },
+    menu: sections.menu,
+    regions: sections.regions,
+    nav: sections.nav,
+    currencies: sections.currencies,
     // Critical hero text for LCP optimization - renders immediately for fast paint
-    hero: { 
-      title: nav.heroTitle || "DEVOCEAN Lodge",
-      subtitle: nav.heroSubtitle || "Eco-friendly stays near an unspoiled beach in a world-class adventure destination.",
-      description: nav.heroDescription || null,
-      ctaPrimary: nav.heroCTA || "Check Availability",
-      ctaSecondary: nav.heroExplore || "Explore the lodge",
-      badge: "..." // Placeholder until full translations load
-    },
+    hero: sections.hero,
     stay: {
+      ourStory: sections.stay.ourStory,
       headline: nav.stayHeadline || "Stay with us",
       blurb: nav.stayBlurb || "Choose your style: nature-immersed tents or cozy chalets and cottage – all with warm, family-run hospitality.",
       moreDetails: nav.stayMoreDetails || "More details"

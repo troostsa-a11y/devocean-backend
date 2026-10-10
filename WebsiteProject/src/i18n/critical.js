@@ -412,10 +412,17 @@ export const CRITICAL_NAV = {
   }
 };
 
-// Reuse the same source as the full translations. Only the headlines go in
-// CRITICAL_NAV, which is also serialized into the pre-hydration HTML script.
+// Reuse the full translations for navigation and hero copy as well as section
+// headings. Keep the larger section objects out of the pre-hydration nav script.
 for (const [lang, ui] of Object.entries(CRITICAL_SECTION_UI)) {
   Object.assign(CRITICAL_NAV[lang], {
+    ...ui.nav,
+    menu: ui.menu,
+    heroTitle: ui.hero.title,
+    heroSubtitle: ui.hero.subtitle,
+    heroDescription: ui.hero.description,
+    heroCTA: ui.hero.ctaPrimary,
+    heroExplore: ui.hero.ctaSecondary,
     galleryHeading: ui.galleryHeading,
     locationHeadline: ui.location.headline,
     contactHeadline: ui.contact.headline,

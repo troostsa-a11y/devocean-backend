@@ -3,12 +3,16 @@ import { LOCALES } from '../src/i18n/localeCatalog.js';
 
 // Keep first-paint copy identical to the asynchronously loaded translations,
 // without importing every complete language module into the initial bundle.
-const SECTION_KEYS = ['galleryHeading', 'location', 'contact', 'form', 'footer', 'legal'];
+const SECTION_KEYS = [
+  'menu', 'regions', 'currencies', 'nav', 'hero',
+  'galleryHeading', 'location', 'contact', 'form', 'footer', 'legal',
+];
 const sections = {};
 
 for (const { code } of LOCALES) {
   const { UI } = await import(new URL(`../src/i18n/langs/${code}.js`, import.meta.url));
   const selected = Object.fromEntries(SECTION_KEYS.map(key => [key, UI[key]]));
+  selected.stay = { ourStory: UI.stay?.ourStory };
 
   for (const key of SECTION_KEYS) {
     if (!selected[key] || (typeof selected[key] === 'string' && !selected[key].trim())) {
@@ -16,6 +20,10 @@ for (const { code } of LOCALES) {
     }
   }
   for (const [section, keys] of [
+    ['regions', ['westEu', 'eastEu', 'asia', 'americas', 'africa', 'oceania']],
+    ['nav', ['home', 'stay', 'experiences', 'todo', 'gallery', 'location', 'contact', 'food']],
+    ['hero', ['title', 'subtitle', 'description', 'ctaPrimary', 'ctaSecondary', 'badge', 'clickReviews', 'villageHighlights', 'goDiving']],
+    ['stay', ['ourStory']],
     ['location', ['headline', 'blurb', 'viewMap']],
     ['contact', ['headline', 'blurb', 'call', 'email', 'directions', 'bookNow']],
     ['form', ['name', 'email', 'stayLabel', 'checkin', 'checkout', 'unitLabel', 'message', 'send', 'consent']],
