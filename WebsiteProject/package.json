@@ -58,7 +58,7 @@
   },
   "overrides": {
     "browserslist": "4.28.7",
-    "brace-expansion": "^2.0.3",
+    "brace-expansion": "^2.1.7",
     "esbuild": "^0.25.0",
     "minimatch": "^9.0.6",
     "express": {
