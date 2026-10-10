@@ -8,6 +8,7 @@
     "test:braces-security": "node --test scripts/braces-security.test.mjs",
     "test:nanoid-security": "node --test scripts/nanoid-security.test.mjs",
     "test:qs-security": "node --test scripts/qs-security.test.mjs",
+    "test:body-parser-security": "node --test scripts/body-parser-security.test.mjs",
     "test:postcss-security": "node --test scripts/postcss-security.test.mjs",
     "test:babel-security": "node --test scripts/babel-security.test.mjs",
     "dev": "node start.js",
@@ -61,6 +62,9 @@
     "wrangler": "^4.95.0"
   },
   "overrides": {
+    "express": {
+      "body-parser": "1.20.6"
+    },
     "@babel/core": "7.29.7",
     "sharp": "$sharp",
     "browserslist": "4.28.7",

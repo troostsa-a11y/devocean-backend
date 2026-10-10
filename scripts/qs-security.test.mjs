@@ -32,7 +32,7 @@ test('every independently deployed project enforces patched qs on fresh installs
     assert.equal(manifest.overrides.qs, '6.16.0', directory);
   }
   assert.match(readFileSync(new URL('voice-reception/pnpm-workspace.yaml', root), 'utf8'),
-    /overrides:\n  "qs": "6\.16\.0"/);
+    /overrides:\n(?:  .*\n)*  "qs": "6\.16\.0"/);
 });
 
 for (const [name, directory] of consumers) {
