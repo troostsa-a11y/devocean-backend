@@ -5,6 +5,6 @@
   "type": "module",
   "description": "Receptionist keep-alive ping + alert script for the Render cron job.",
   "dependencies": {
-    "nodemailer": "^9.0.3"
+    "nodemailer": "~10.0.16"
   }
 }

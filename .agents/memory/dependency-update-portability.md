@@ -7,3 +7,9 @@ Dependency updates must leave committed lockfiles usable outside Replit and rema
 **Why:** The package installer can write private Replit registry tarball URLs into lockfiles. A patch-level parent update can also raise the Node minimum through a transitive dependency, even when the parent package's own engine declaration does not change.
 
 **How to apply:** After installation, check changed tarball URLs and use public npm URLs with unchanged integrity hashes for externally deployed packages. Compare transitive engine requirements with the deployment's pinned Node version, not just the workspace runtime.
+
+For security updates, preserve the workspace's minimum release age when an older eligible release already fixes every requested advisory.
+
+**Why:** A same-day latest release may be blocked by pnpm even though an eligible patch release contains all required fixes. Disabling the safety rule is unnecessary in that case.
+
+**How to apply:** Check advisory fixed-version ranges and publication dates, then choose the newest eligible patched release rather than adding a release-age exception.

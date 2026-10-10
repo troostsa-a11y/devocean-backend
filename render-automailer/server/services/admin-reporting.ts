@@ -62,7 +62,7 @@ interface SMTPConfig {
 }
 
 export class AdminReportingService {
-  private transporter: nodemailer.Transporter;
+  private transporter: ReturnType<typeof nodemailer.createTransport>;
   private db: DatabaseService;
   private adminEmail: string;
   private fromEmail: string;
