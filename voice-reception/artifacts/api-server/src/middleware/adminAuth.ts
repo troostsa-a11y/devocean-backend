@@ -1,4 +1,5 @@
 import { type Request, type Response, type NextFunction } from "express";
+import { isAdminAuthorization } from "../security/secrets";
 
 export function adminAuth(req: Request, res: Response, next: NextFunction): void {
   const adminKey = process.env.ADMIN_API_KEY;
@@ -8,14 +9,7 @@ export function adminAuth(req: Request, res: Response, next: NextFunction): void
     return;
   }
 
-  const auth = req.headers.authorization;
-  if (!auth?.startsWith("Bearer ")) {
-    res.status(401).json({ error: "Unauthorized" });
-    return;
-  }
-
-  const token = auth.slice(7);
-  if (token !== adminKey) {
+  if (!isAdminAuthorization(req.headers.authorization)) {
     res.status(401).json({ error: "Unauthorized" });
     return;
   }

@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { secretsEqual } from "../security/secrets";
+import { limitLogin } from "../security/conversations";
 
 const router = Router();
 
-router.post("/", (req, res) => {
-  const { password } = req.body as { password?: string };
+router.post("/", limitLogin, (req, res) => {
+  const password: unknown = req.body?.password;
   const adminKey = process.env.ADMIN_API_KEY;
 
   if (!adminKey) {
@@ -11,7 +13,7 @@ router.post("/", (req, res) => {
     return;
   }
 
-  if (!password || password !== adminKey) {
+  if (!secretsEqual(password, adminKey)) {
     res.status(401).json({ error: "Invalid password" });
     return;
   }

@@ -16,6 +16,8 @@ tags:
     description: Booking enquiry management
   - name: stats
     description: Dashboard statistics
+security:
+  - AdminBearer: []
 paths:
   /healthz:
     get:
@@ -49,6 +51,8 @@ paths:
       operationId: createOpenaiConversation
       tags: [openai]
       summary: Create a new conversation
+      description: Rate-limited widget bootstrap. Keep the returned private capability in browser memory; it authorizes only this conversation for 24 hours.
+      security: []
       requestBody:
         required: true
         content:
@@ -61,7 +65,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/OpenaiConversation"
+                $ref: "#/components/schemas/OpenaiConversationCreated"
+        "403":
+          description: Widget origin not allowed
+        "429":
+          description: Conversation creation quota exceeded
 
   /openai/conversations/{id}:
     get:
@@ -158,12 +166,16 @@ paths:
       operationId: sendOpenaiMessage
       tags: [openai]
       summary: Send a text message and receive a streaming text response
+      description: Guests use the opaque publicId and X-Conversation-Token. Only authenticated staff may use a numeric id. Authorization is checked before history is read or messages are saved.
+      security:
+        - ConversationToken: []
+        - AdminBearer: []
       parameters:
         - name: id
           in: path
           required: true
           schema:
-            type: integer
+            type: string
       requestBody:
         required: true
         content:
@@ -175,6 +187,10 @@ paths:
           description: SSE stream of assistant text chunks
           content:
             text/event-stream: {}
+        "401":
+          description: Missing, incorrect, expired or cross-conversation credential
+        "429":
+          description: Usage or concurrency quota exceeded
 
   /openai/conversations/{id}/voice-messages:
     post:
@@ -183,13 +199,17 @@ paths:
       summary: Send audio and receive a streaming voice response
       description: |
         This endpoint is for gpt-audio speech-to-speech flows.
-        It accepts base64-encoded audio input and streams back transcript and audio events.
+        It accepts base64 PCM WAV audio (at most 2 MB / 45 seconds).
+        Guests use publicId and X-Conversation-Token; numeric ids require staff authorization.
+      security:
+        - ConversationToken: []
+        - AdminBearer: []
       parameters:
         - name: id
           in: path
           required: true
           schema:
-            type: integer
+            type: string
       requestBody:
         required: true
         content:
@@ -201,6 +221,10 @@ paths:
           description: SSE stream of transcript and audio chunks
           content:
             text/event-stream: {}
+        "401":
+          description: Missing, incorrect, expired or cross-conversation credential
+        "429":
+          description: Usage or concurrency quota exceeded
 
   /bookings:
     get:
@@ -292,6 +316,14 @@ paths:
                 $ref: "#/components/schemas/DashboardStats"
 
 components:
+  securitySchemes:
+    AdminBearer:
+      type: http
+      scheme: bearer
+    ConversationToken:
+      type: apiKey
+      in: header
+      name: X-Conversation-Token
   schemas:
     HealthStatus:
       type: object
@@ -327,8 +359,27 @@ components:
       properties:
         title:
           type: string
+          minLength: 1
+          maxLength: 120
       required:
         - title
+
+    OpenaiConversationCreated:
+      allOf:
+        - $ref: "#/components/schemas/OpenaiConversation"
+        - type: object
+          properties:
+            publicId:
+              type: string
+              format: uuid
+            conversationToken:
+              type: string
+              minLength: 43
+              maxLength: 43
+              pattern: "^[A-Za-z0-9_-]{43}$"
+          required:
+            - publicId
+            - conversationToken
 
     OpenaiMessage:
       type: object
@@ -356,13 +407,19 @@ components:
       properties:
         content:
           type: string
+          minLength: 1
+          maxLength: 4000
         lang:
           type: string
+          maxLength: 35
+          pattern: "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8}){0,3}$"
         currency:
           type: string
+          pattern: "^[A-Za-z]{3}$"
           description: ISO 4217 display currency preference (e.g. USD, EUR)
         pageContext:
           type: string
+          maxLength: 4000
           description: >
             Optional page-context string injected by the website so Marin can
             give a specific, data-aware answer (e.g. available rooms + prices
@@ -375,7 +432,9 @@ components:
       properties:
         audio:
           type: string
-          description: Base64-encoded audio data
+          minLength: 60
+          maxLength: 2796204
+          description: Base64-encoded PCM WAV audio, at most 2 MB / 45 seconds
       required:
         - audio
 

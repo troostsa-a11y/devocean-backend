@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import {
   useRealtimeSession,
+  createGuestConversation, conversationHeaders, guestRequestError, type GuestConversation,
   type RealtimeStatus,
 } from "@workspace/integrations-openai-ai-react/audio";
-import { useCreateOpenaiConversation } from "@workspace/api-client-react";
+import { getStoredToken } from "@/lib/auth";
 import { Mic, PhoneOff, Loader2, AlertCircle, CloudOff, Radio } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -31,26 +32,28 @@ export function VoiceWidget({ conversationId, onConversationCreated, iconOnly = 
   const [userSpeaking, setUserSpeaking] = useState(false);
   const [miaSpeaking, setMiaSpeaking] = useState(false);
 
-  const createConv = useCreateOpenaiConversation();
   const abortRef = useRef<AbortController | null>(null);
-  const activeConversationIdRef = useRef<number | undefined>(conversationId);
+  const guestConversationRef = useRef<GuestConversation | null>(null);
 
   useEffect(() => {
-    activeConversationIdRef.current = conversationId;
+    guestConversationRef.current = null;
   }, [conversationId]);
 
-  const ensureConversation = useCallback(async (): Promise<number> => {
-    let id = activeConversationIdRef.current;
-    if (!id) {
-      const newConv = await createConv.mutateAsync({
-        data: { title: "Voice Widget Session" },
-      });
-      id = newConv.id;
-      activeConversationIdRef.current = id;
-      onConversationCreated?.(id);
+  const ensureConversation = useCallback(async (signal: AbortSignal) => {
+    if (conversationId) {
+      const token = getStoredToken();
+      if (!token) throw new Error("Please sign in again to use this staff conversation.");
+      return { identifier: String(conversationId), headers: {
+        "Content-Type": "application/json", Authorization: `Bearer ${token}`,
+      } };
     }
-    return id;
-  }, [createConv, onConversationCreated]);
+    if (!guestConversationRef.current) {
+      guestConversationRef.current = await createGuestConversation("Voice Widget Session", signal);
+      onConversationCreated?.(guestConversationRef.current.id);
+    }
+    const conversation = guestConversationRef.current;
+    return { identifier: conversation.publicId, headers: conversationHeaders(conversation) };
+  }, [conversationId, onConversationCreated]);
 
   const session = useRealtimeSession({
     onUserSpeaking: (speaking) => {
@@ -95,16 +98,17 @@ export function VoiceWidget({ conversationId, onConversationCreated, iconOnly = 
     abortRef.current = controller;
 
     try {
-      const id = await ensureConversation();
+      const { identifier, headers } = await ensureConversation(controller.signal);
 
-      const response = await fetch(`/api/openai/conversations/${id}/messages`, {
+      const response = await fetch(`/api/openai/conversations/${identifier}/messages`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers,
         body: JSON.stringify({ content: question }),
         signal: controller.signal,
       });
 
-      if (!response.ok || !response.body) {
+      if (!response.ok) throw await guestRequestError(response);
+      if (!response.body) {
         throw new Error("Failed to send question.");
       }
 

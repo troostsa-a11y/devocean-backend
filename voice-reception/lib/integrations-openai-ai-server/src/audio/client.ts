@@ -21,6 +21,8 @@ if (!process.env.AI_INTEGRATIONS_OPENAI_API_KEY) {
 export const openai = new OpenAI({
   apiKey: process.env.AI_INTEGRATIONS_OPENAI_API_KEY,
   baseURL: process.env.AI_INTEGRATIONS_OPENAI_BASE_URL,
+  timeout: 30_000,
+  maxRetries: 0,
 });
 
 /**
@@ -183,7 +185,8 @@ export async function voiceChatStream(
   voice: "alloy" | "echo" | "fable" | "onyx" | "nova" | "shimmer" = "alloy",
   inputFormat: OpenAIAudioInputFormat = "wav",
   systemPrompt?: string,
-  history: { role: "user" | "assistant"; content: string }[] = []
+  history: { role: "user" | "assistant"; content: string }[] = [],
+  options: { signal?: AbortSignal } = {},
 ): Promise<AsyncIterable<{ type: "transcript" | "audio"; data: string }>> {
   const audioBase64 = audioBuffer.toString("base64");
 
@@ -206,8 +209,9 @@ export async function voiceChatStream(
     modalities: ["text", "audio"],
     audio: { voice, format: "pcm16" },
     messages: messages as any,
+    max_completion_tokens: 1024,
     stream: true,
-  });
+  }, options);
 
   return (async function* () {
     for await (const chunk of stream) {
@@ -241,6 +245,7 @@ export async function voiceChatStreamWithTools(
   history: { role: "user" | "assistant"; content: string }[],
   tools: any[],
   executeTool: (name: string, argsJson: string) => Promise<string>,
+  options: { signal?: AbortSignal } = {},
 ): Promise<AsyncIterable<{ type: "transcript" | "audio"; data: string }>> {
   const audioBase64 = audioBuffer.toString("base64");
 
@@ -254,21 +259,23 @@ export async function voiceChatStreamWithTools(
     ],
   });
 
-  const createStream = () =>
+  const createStream = (withTools: boolean) =>
     openai.chat.completions.create({
       model: AUDIO_MODEL,
       modalities: ["text", "audio"],
       audio: { voice, format: "pcm16" },
       messages: messages as any,
-      tools: tools as any,
+      ...(withTools ? { tools: tools as any, parallel_tool_calls: false } : {}),
+      max_completion_tokens: 1024,
       stream: true,
-    });
+    }, options);
 
   // Eager first request: surfaces "tools not supported" errors to the caller.
-  let stream = await createStream();
+  let stream = await createStream(true);
 
   return (async function* () {
     let guard = 0;
+    let toolsExecuted = 0;
     while (true) {
       guard++;
       const toolCalls: Record<number, { id: string; name: string; args: string }> = {};
@@ -297,7 +304,7 @@ export async function voiceChatStreamWithTools(
       }
 
       const calls = Object.values(toolCalls);
-      if (calls.length === 0 || guard > 3) break;
+      if (calls.length === 0 || guard >= 3 || options.signal?.aborted) break;
 
       messages.push({
         role: "assistant",
@@ -309,11 +316,12 @@ export async function voiceChatStreamWithTools(
         })),
       });
       for (const c of calls) {
-        const result = await executeTool(c.name, c.args);
+        const result = ++toolsExecuted <= 4
+          ? await executeTool(c.name, c.args) : JSON.stringify({ error: "tool_limit_reached" });
         messages.push({ role: "tool", tool_call_id: c.id, content: result });
       }
 
-      stream = await createStream();
+      stream = await createStream(guard < 2 && toolsExecuted < 4);
     }
   })();
 }

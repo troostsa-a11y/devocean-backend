@@ -6,8 +6,14 @@ import cors from "cors";
 import pinoHttp from "pino-http";
 import router from "./routes";
 import { logger } from "./lib/logger";
+import { allowedOrigins, originAllowed, trustedProxies } from "./security/origins";
+import { ingressGuard } from "./security/ingress";
+import { openaiAccess } from "./security/openaiAccess";
 
 const app: Express = express();
+app.disable("x-powered-by");
+app.set("trust proxy", trustedProxies());
+const origins = allowedOrigins(); // Fail startup on unsafe origin configuration.
 
 app.use(
   pinoHttp({
@@ -36,12 +42,48 @@ app.use(
     },
   }),
 );
-app.use(cors());
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true, limit: "50mb" }));
+app.use("/api", ingressGuard(), (req, res, next) => {
+  res.setHeader("Cache-Control", "no-store");
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  if (req.headers.origin && !originAllowed(req.headers.origin)) {
+    res.status(403).json({ error: "Origin not allowed" });
+    return;
+  }
+  next();
+});
+app.use("/api", cors({
+  origin: (origin, callback) => callback(null, !!origin && origins.has(origin)),
+  methods: ["GET", "POST", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Conversation-Token"],
+  exposedHeaders: ["Retry-After"],
+  credentials: false,
+  maxAge: 600,
+}));
+app.use("/api/openai", openaiAccess);
+const normalJson = express.json({ limit: "32kb", inflate: false });
+const audioJson = express.json({ limit: "3mb", inflate: false });
+app.use("/api", (req, res, next) => {
+  const legacyAudio = req.method === "POST" && /^\/openai\/conversations\/[^/]+\/voice-messages$/.test(req.path);
+  (legacyAudio ? audioJson : normalJson)(req, res, next);
+});
+app.use("/api", express.urlencoded({ extended: false, limit: "8kb", parameterLimit: 20, inflate: false }));
 
 // API routes
 app.use("/api", router);
+app.use("/api", (_req, res) => { res.status(404).json({ error: "Not found" }); });
+app.use((err: { status?: number; type?: string }, _req: Request, res: Response, next: NextFunction) => {
+  if (res.headersSent) return next(err);
+  const status = err.status === 413 ? 413 : err.status === 400 ? 400 : err.status === 415 ? 415 : 500;
+  res.status(status).json({
+    error: status === 413 ? "Request body too large" : status === 400 ? "Invalid request body" :
+      status === 415 ? "Unsupported request encoding" : "Request could not be completed",
+  });
+});
+app.use((_req, res, next) => {
+  const frameOrigins = [...origins].join(" ");
+  res.setHeader("Content-Security-Policy", `frame-ancestors 'self' ${frameOrigins}`);
+  next();
+});
 
 // Serve the receptionist Vite build (static frontend + widget-loader.js + /embed)
 // Compiled output: voice-reception/artifacts/api-server/dist/index.mjs

@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { voiceFailure } from "./voiceFailure";
+import { createGuestConversation, GuestApiError } from "./guestConversation";
 
 export type RealtimeStatus = "idle" | "connecting" | "connected" | "error";
 
@@ -69,6 +70,7 @@ export function useRealtimeSession({
   const miaSpeakingRef = useRef(false);
   const guardRef = useRef(false);
   const attemptRef = useRef(0);
+  const authAbortRef = useRef<AbortController | null>(null);
 
   const cbRef = useRef({
     onUserSpeaking,
@@ -111,6 +113,8 @@ export function useRealtimeSession({
 
   const disconnect = useCallback(() => {
     attemptRef.current++;
+    authAbortRef.current?.abort();
+    authAbortRef.current = null;
     processorRef.current?.disconnect();
     processorRef.current = null;
 
@@ -212,9 +216,15 @@ export function useRealtimeSession({
         .replace(/_/g, "-");
       // Currency is always read from the URL param (set by widget-loader from site.currency localStorage).
       const urlCurrency = urlParams.get("currency");
-      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(resolvedLang)}${urlCurrency ? `&currency=${encodeURIComponent(urlCurrency)}` : ""}`;
       stage = "service";
-      const ws = new WebSocket(wsUrl);
+      const authController = new AbortController();
+      authAbortRef.current = authController;
+      const conversation = await createGuestConversation(
+        `Voice session — ${new Date().toISOString().slice(0, 10)}`, authController.signal,
+      );
+      if (attempt !== attemptRef.current) return;
+      const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?conversationId=${encodeURIComponent(conversation.publicId)}&lang=${encodeURIComponent(resolvedLang)}${urlCurrency ? `&currency=${encodeURIComponent(urlCurrency)}` : ""}`;
+      const ws = new WebSocket(wsUrl, ["marin-v1", `conversation.${conversation.conversationToken}`]);
       wsRef.current = ws;
 
       const fail = (message: string) => {
@@ -345,7 +355,8 @@ export function useRealtimeSession({
 
     } catch (err) {
       if (attempt !== attemptRef.current) return;
-      const msg = voiceFailure(err, stage);
+      const msg = err instanceof GuestApiError && err.status === 429
+        ? `[voice_rate_limited] ${err.message}` : voiceFailure(err, stage);
       cbRef.current.onError?.(msg);
       disconnect();
       setError(msg);

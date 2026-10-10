@@ -7,7 +7,9 @@ if (!process.env.RECEPTION_DATABASE_URL) {
 
 export default defineConfig({
   schema: path.join(__dirname, "./src/schema/index.ts"),
-  out: path.join(__dirname, "./drizzle"),
+  // drizzle-kit prepends "./" when opening snapshots; an absolute out path
+  // becomes ".//home/..." and cannot be read.
+  out: path.relative(process.cwd(), path.join(__dirname, "./drizzle")) || ".",
   dialect: "postgresql",
   dbCredentials: {
     url: process.env.RECEPTION_DATABASE_URL,

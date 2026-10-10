@@ -61,6 +61,12 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      # Only private reverse-proxy peers may supply forwarded client addresses.
+      # Do not use `true`, a hop count, or 0.0.0.0/0 for proxy trust.
+      - key: RECEPTION_TRUSTED_PROXIES
+        value: "loopback,linklocal,uniquelocal"
+      # Additional widget/custom domains, if needed, must be exact HTTPS origins.
+      # Built-in allow-list includes the lodge and existing receptionist hosts.
       # Render sets PORT automatically for web services — do not set it here.
       # Required: Reception Supabase project (eu-west-3, ref rrtbnknothjiowvqxbjo).
       # Separate from the Lodge/automailer DB (LODGE_DATABASE_URL on the Automailer service).

@@ -44,3 +44,7 @@ export { useVoiceRecorder, type RecordingState } from "./useVoiceRecorder";
 export { useAudioPlayback, type PlaybackState } from "./useAudioPlayback";
 export { useVoiceStream } from "./useVoiceStream";
 export { useRealtimeSession, type RealtimeStatus, type UseRealtimeSessionOptions } from "./useRealtimeSession";
+export {
+  createGuestConversation, conversationHeaders, guestRequestError, GuestApiError,
+  trustedParentMessage, type GuestConversation,
+} from "./guestConversation";

@@ -1,9 +1,11 @@
 import WebSocket from "ws";
 import { buildSystemPrompt } from "./openai.js";
-import { lodgeTools, runTool } from "../beds24/tool.js";
+import { lodgeTools, runTool, type ToolContext } from "../beds24/tool.js";
 import { logger } from "../lib/logger.js";
 import { db, withDbRetry } from "@workspace/db";
-import { conversations, messages } from "@workspace/db";
+import { messages } from "@workspace/db";
+import { MAX_COMPLETION_TOKENS, REALTIME_DURATION_MS } from "../security/abuse";
+import { validateRelayMessage, RelayBudget } from "../security/relayMessages";
 
 const REALTIME_MODEL = () =>
   process.env.OPENAI_REALTIME_MODEL ?? "gpt-realtime-2";
@@ -23,7 +25,7 @@ const API_KEY = () => process.env.AI_INTEGRATIONS_OPENAI_API_KEY ?? "";
  *   - Mia's assistant turns (role: "assistant") ARE stored after each
  *     response.done event for quality-control purposes.
  */
-export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: string): void {
+export function handleRealtimeWs(clientWs: WebSocket, lang: string, currency: string | undefined, context: ToolContext): void {
   const model = REALTIME_MODEL();
   const apiKey = API_KEY();
 
@@ -36,11 +38,24 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
   const openaiWs = new WebSocket(
     `wss://api.openai.com/v1/realtime?model=${encodeURIComponent(model)}`,
     {
+      handshakeTimeout: 10_000,
+      maxPayload: 256 * 1024,
+      perMessageDeflate: false,
       headers: {
         Authorization: `Bearer ${apiKey}`,
       },
     },
   );
+  const controller = new AbortController();
+  const toolContext = { ...context, signal: controller.signal };
+  const conversationId = context.conversationId;
+  const budget = new RelayBudget();
+  let responses = 0;
+  let toolsExecuted = 0;
+  const lifetime = setTimeout(() => {
+    stop(1008, "Voice session time limit reached");
+  }, REALTIME_DURATION_MS);
+  lifetime.unref();
 
   // call_id → function name (populated from response.output_item.added)
   const pendingTools = new Map<string, string>();
@@ -53,7 +68,6 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
   }));
 
   // ── Quality-control: save Mia's assistant turns to DB ─────────────────────
-  let conversationId: number | null = null;
   // Accumulates the text delta for the current Mia response
   let miaTranscriptBuffer = "";
   // Guard: only fire the opening response.create on the first session.updated.
@@ -80,6 +94,16 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
   let playbackDrained = true;
   let unmuteFallbackTimer: NodeJS.Timeout | null = null;
 
+  function stop(code: number, reason: string): void {
+    controller.abort();
+    clearTimeout(lifetime);
+    clearUnmuteFallbackTimer();
+    if (clientWs.readyState === WebSocket.OPEN) clientWs.close(code, reason);
+    // A hostile browser may ignore the close frame. Stop billing immediately,
+    // rather than waiting for the WebSocket closing-handshake timeout.
+    openaiWs.terminate();
+  }
+
   function clearUnmuteFallbackTimer(): void {
     if (unmuteFallbackTimer) {
       clearTimeout(unmuteFallbackTimer);
@@ -99,20 +123,6 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
         type: "session.update",
         session: { type: "realtime", audio: { input: { turn_detection: SERVER_VAD } } },
       }));
-    }
-  }
-
-  async function initConversation(): Promise<void> {
-    try {
-      const date = new Date().toISOString().slice(0, 10);
-      const [conv] = await db
-        .insert(conversations)
-        .values({ title: `Voice session — ${date}` })
-        .returning();
-      conversationId = conv.id;
-      logger.info({ conversationId }, "Realtime relay: DB conversation created");
-    } catch (err) {
-      logger.warn({ err }, "Realtime relay: could not create DB conversation (non-fatal)");
     }
   }
 
@@ -158,9 +168,6 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
   openaiWs.on("open", async () => {
     logger.info({ model }, "Realtime relay: OpenAI WS open");
 
-    // Create DB record (best-effort, must not block the session setup)
-    void initConversation();
-
     const sessionUpdate = {
       type: "session.update",
       session: {
@@ -172,6 +179,8 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
         },
         tools: realtimeTools,
         tool_choice: "auto",
+        max_output_tokens: MAX_COMPLETION_TOKENS,
+        parallel_tool_calls: false,
       },
     };
     logger.info(
@@ -239,6 +248,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
     // has confirmed local playback fully drained (client.mia_playback_done,
     // handled in the client-message listener below). See maybeUnmuteVad().
     if (evtType === "response.created") {
+      if (++responses > 30) { stop(1008, "Voice response limit reached"); return; }
       responseInFlight = true;
       playbackDrained = false;
       clearUnmuteFallbackTimer();
@@ -295,13 +305,14 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
       const argsJson = (event.arguments as string | undefined) ?? "{}";
       pendingTools.delete(callId);
 
-      if (!name) {
+      if (!name || ++toolsExecuted > 12) {
         logger.warn({ callId }, "Realtime relay: unknown call_id, skipping tool");
+        stop(1008, "Voice tool limit reached");
         return;
       }
 
       try {
-        const output = await runTool(name, argsJson, conversationId);
+        const output = await runTool(name, argsJson, toolContext);
 
         if (openaiWs.readyState === WebSocket.OPEN) {
           openaiWs.send(
@@ -326,7 +337,7 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
     // NOTE: user audio transcript events (conversation.item.input_audio_transcription.*)
     // are relayed to the browser but deliberately NOT stored in the database.
     if (evtType === "response.output_audio_transcript.delta" && event.delta) {
-      miaTranscriptBuffer += event.delta as string;
+      miaTranscriptBuffer = (miaTranscriptBuffer + String(event.delta)).slice(0, 8000);
       // fall through — still relay to browser for live UI
     }
 
@@ -346,10 +357,10 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
       clientWs.send(
         JSON.stringify({
           type: "error",
-          error: { message: `OpenAI connection error: ${(err as Error).message}` },
+          error: { message: "The voice service is temporarily unavailable. Please try again." },
         }),
       );
-      clientWs.close();
+      stop(1011, "Voice service unavailable");
     }
   });
 
@@ -361,21 +372,22 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
 
   // ── Browser connection lifecycle ───────────────────────────────────────────
 
-  clientWs.on("message", (data) => {
+  clientWs.on("message", (data, binary) => {
+    if (controller.signal.aborted) return;
     const raw = data.toString();
+    const parsed = validateRelayMessage(raw, binary);
+    if (!parsed || !budget.accept(Buffer.byteLength(raw))) {
+      stop(1008, "Invalid or excessive voice input");
+      return;
+    }
 
     // Client-local signal only — never forward to OpenAI. Sent by the browser
     // once it has actually finished playing all queued Marin audio for the
     // current turn (not just when OpenAI finished generating it).
-    try {
-      const parsed = JSON.parse(raw) as { type?: string };
-      if (parsed.type === "client.mia_playback_done") {
-        playbackDrained = true;
-        maybeUnmuteVad();
-        return;
-      }
-    } catch {
-      // Not JSON (shouldn't happen for our protocol) — fall through and relay as-is
+    if (parsed.type === "client.mia_playback_done") {
+      playbackDrained = true;
+      maybeUnmuteVad();
+      return;
     }
 
     if (openaiWs.readyState === WebSocket.OPEN) {
@@ -384,13 +396,16 @@ export function handleRealtimeWs(clientWs: WebSocket, lang = "en", currency?: st
   });
 
   clientWs.on("close", () => {
+    controller.abort();
+    clearTimeout(lifetime);
+    clearUnmuteFallbackTimer();
     flushMiaTranscript(); // save any partial on clean disconnect too
-    if (openaiWs.readyState !== WebSocket.CLOSED) openaiWs.close();
+    openaiWs.terminate();
     pendingTools.clear();
   });
 
   clientWs.on("error", (err) => {
     logger.error({ err }, "Realtime relay: client WS error");
-    if (openaiWs.readyState !== WebSocket.CLOSED) openaiWs.close();
+    stop(1011, "Voice connection error");
   });
 }

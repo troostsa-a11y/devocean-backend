@@ -31,11 +31,23 @@ export const ListOpenaiConversationsResponse = zod.array(ListOpenaiConversations
 
 
 /**
+ * Rate-limited widget bootstrap. Keep the returned private capability in browser memory; it authorizes only this conversation for 24 hours.
  * @summary Create a new conversation
  */
+export const createOpenaiConversationBodyTitleMax = 120;
+
+
+
 export const CreateOpenaiConversationBody = zod.object({
-  "title": zod.string()
+  "title": zod.string().min(1).max(createOpenaiConversationBodyTitleMax)
 })
+
+export const createOpenaiConversationResponseTwoConversationTokenMin = 43;
+export const createOpenaiConversationResponseTwoConversationTokenMax = 43;
+
+
+export const createOpenaiConversationResponseTwoConversationTokenRegExp = new RegExp('^[A-Za-z0-9_-]{43}$');
+
 
 export const CreateOpenaiConversationResponse = zod.object({
   "id": zod.number().int(),
@@ -43,7 +55,10 @@ export const CreateOpenaiConversationResponse = zod.object({
   "createdAt": zod.coerce.date(),
   "messageCount": zod.number().int(),
   "bookingCount": zod.number().int()
-})
+}).and(zod.object({
+  "publicId": zod.string().uuid(),
+  "conversationToken": zod.string().min(createOpenaiConversationResponseTwoConversationTokenMin).max(createOpenaiConversationResponseTwoConversationTokenMax).regex(createOpenaiConversationResponseTwoConversationTokenRegExp)
+}))
 
 
 /**
@@ -117,17 +132,29 @@ export const ListOpenaiMessagesResponse = zod.array(ListOpenaiMessagesResponseIt
 
 
 /**
+ * Guests use the opaque publicId and X-Conversation-Token. Only authenticated staff may use a numeric id. Authorization is checked before history is read or messages are saved.
  * @summary Send a text message and receive a streaming text response
  */
 export const SendOpenaiMessageParams = zod.object({
-  "id": zod.coerce.number().int()
+  "id": zod.coerce.string()
 })
 
+export const sendOpenaiMessageBodyContentMax = 4000;
+
+export const sendOpenaiMessageBodyLangMax = 35;
+
+
+export const sendOpenaiMessageBodyLangRegExp = new RegExp('^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8}){0,3}$');
+export const sendOpenaiMessageBodyCurrencyRegExp = new RegExp('^[A-Za-z]{3}$');
+export const sendOpenaiMessageBodyPageContextMax = 4000;
+
+
+
 export const SendOpenaiMessageBody = zod.object({
-  "content": zod.string(),
-  "lang": zod.string().optional(),
-  "currency": zod.string().optional().describe('ISO 4217 display currency preference (e.g. USD, EUR)'),
-  "pageContext": zod.string().optional().describe('Optional page-context string injected by the website so Marin can give a specific, data-aware answer (e.g. available rooms + prices on the booking page, or room details on a detail page).\n')
+  "content": zod.string().min(1).max(sendOpenaiMessageBodyContentMax),
+  "lang": zod.string().max(sendOpenaiMessageBodyLangMax).regex(sendOpenaiMessageBodyLangRegExp).optional(),
+  "currency": zod.string().regex(sendOpenaiMessageBodyCurrencyRegExp).optional().describe('ISO 4217 display currency preference (e.g. USD, EUR)'),
+  "pageContext": zod.string().max(sendOpenaiMessageBodyPageContextMax).optional().describe('Optional page-context string injected by the website so Marin can give a specific, data-aware answer (e.g. available rooms + prices on the booking page, or room details on a detail page).\n')
 })
 
 export const SendOpenaiMessageResponse = zod.unknown()
@@ -135,15 +162,21 @@ export const SendOpenaiMessageResponse = zod.unknown()
 
 /**
  * This endpoint is for gpt-audio speech-to-speech flows.
- * It accepts base64-encoded audio input and streams back transcript and audio events.
+ * It accepts base64 PCM WAV audio (at most 2 MB / 45 seconds).
+ * Guests use publicId and X-Conversation-Token; numeric ids require staff authorization.
  * @summary Send audio and receive a streaming voice response
  */
 export const SendOpenaiVoiceMessageParams = zod.object({
-  "id": zod.coerce.number().int()
+  "id": zod.coerce.string()
 })
 
+export const sendOpenaiVoiceMessageBodyAudioMin = 60;
+export const sendOpenaiVoiceMessageBodyAudioMax = 2796204;
+
+
+
 export const SendOpenaiVoiceMessageBody = zod.object({
-  "audio": zod.string().describe('Base64-encoded audio data')
+  "audio": zod.string().min(sendOpenaiVoiceMessageBodyAudioMin).max(sendOpenaiVoiceMessageBodyAudioMax).describe('Base64-encoded PCM WAV audio, at most 2 MB / 45 seconds')
 })
 
 export const SendOpenaiVoiceMessageResponse = zod.unknown()

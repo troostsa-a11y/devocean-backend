@@ -6,9 +6,7 @@ import {
   GetOpenaiConversationParams,
   DeleteOpenaiConversationParams,
   ListOpenaiMessagesParams,
-  SendOpenaiMessageParams,
   SendOpenaiMessageBody,
-  SendOpenaiVoiceMessageParams,
   SendOpenaiVoiceMessageBody,
   CreateOpenaiConversationBody,
 } from "@workspace/api-zod";
@@ -20,6 +18,11 @@ import {
   UnsupportedAudioFormatError,
 } from "@workspace/integrations-openai-ai-server/audio";
 import { lodgeTools, runTool } from "../beds24/tool";
+import { newConversationCredential } from "../security/conversations";
+import { clientAddress } from "../security/origins";
+import { boundedHistory } from "../security/aiWork";
+import { MAX_COMPLETION_TOKENS, MAX_HISTORY_MESSAGES, MAX_MODEL_ROUNDS, MAX_TOOLS_PER_TURN } from "../security/abuse";
+import { validateVoiceAudio } from "../security/audio";
 
 const router = Router();
 
@@ -303,10 +306,14 @@ router.post("/conversations", async (req, res) => {
     res.status(400).json({ error: "Invalid request body" });
     return;
   }
+  const credential = newConversationCredential();
   const [created] = await withDbRetry(() =>
-    db.insert(conversations).values({ title: parsed.data.title }).returning(),
+    db.insert(conversations).values({ title: parsed.data.title, accessTokenHash: credential.hash }).returning({
+      id: conversations.id, publicId: conversations.publicId,
+      title: conversations.title, createdAt: conversations.createdAt,
+    }),
   );
-  res.status(201).json(created);
+  res.status(201).json({ ...created, conversationToken: credential.token, messageCount: 0, bookingCount: 0 });
 });
 
 // Get conversation with messages
@@ -317,7 +324,7 @@ router.get("/conversations/:id", async (req, res) => {
     return;
   }
   const [conversation] = await db
-    .select()
+    .select({ id: conversations.id, title: conversations.title, createdAt: conversations.createdAt })
     .from(conversations)
     .where(eq(conversations.id, parsed.data.id));
   if (!conversation) {
@@ -453,15 +460,14 @@ router.get("/conversations/:id/messages", async (req, res) => {
 
 // Send text message (SSE stream)
 router.post("/conversations/:id/messages", async (req, res) => {
-  const paramParsed = SendOpenaiMessageParams.safeParse({ id: Number(req.params.id) });
   const bodyParsed = SendOpenaiMessageBody.safeParse(req.body);
-  if (!paramParsed.success || !bodyParsed.success) {
+  if (!bodyParsed.success || !bodyParsed.data.content.trim()) {
     res.status(400).json({ error: "Invalid request" });
     return;
   }
 
-  const conversationId = paramParsed.data.id;
-  const userContent = bodyParsed.data.content;
+  const conversationId = res.locals.conversationId as number;
+  const userContent = bodyParsed.data.content.trim();
 
   // Save user message
   await withDbRetry(() =>
@@ -472,21 +478,10 @@ router.post("/conversations/:id/messages", async (req, res) => {
     }),
   );
 
-  // Build chat history — wrapped so a transient DB timeout doesn't crash the
-  // request before the OpenAI stream starts; falls back to empty history so
-  // Mia can still answer even when the DB is briefly unavailable.
-  let history: (typeof messages.$inferSelect)[] = [];
-  try {
-    history = await withDbRetry(() =>
-      db
-        .select()
-        .from(messages)
-        .where(eq(messages.conversationId, conversationId))
-        .orderBy(messages.createdAt),
-    );
-  } catch (err) {
-    req.log.warn({ err }, "History read failed after retries — continuing with empty history");
-  }
+  const history = boundedHistory((await withDbRetry(() =>
+    db.select().from(messages).where(eq(messages.conversationId, conversationId))
+      .orderBy(desc(messages.createdAt), desc(messages.id)).limit(MAX_HISTORY_MESSAGES),
+  )).reverse());
 
   const lang = bodyParsed.data.lang;
   const currency = bodyParsed.data.currency;
@@ -500,22 +495,25 @@ router.post("/conversations/:id/messages", async (req, res) => {
   ];
 
   res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Cache-Control", "no-store");
   res.setHeader("Connection", "keep-alive");
 
   let fullResponse = "";
   // Tool-calling loop: stream tokens, and if Mia calls a tool (e.g. live
   // availability), run it, feed the result back, and continue until she answers.
-  let guard = 0;
-  while (true) {
-    guard++;
+  let toolsUsed = 0;
+  const signal = res.locals.aiSignal as AbortSignal;
+  const toolContext = { conversationId, ip: clientAddress(req), signal };
+  try {
+  for (let round = 0; round < MAX_MODEL_ROUNDS && !signal.aborted; round++) {
     const stream = await openai.chat.completions.create({
       model: TEXT_MODEL,
-      max_completion_tokens: 8192,
+      max_completion_tokens: MAX_COMPLETION_TOKENS,
       messages: chatMessages as any,
-      tools: lodgeTools as any,
+      ...(round < MAX_MODEL_ROUNDS - 1 && toolsUsed < MAX_TOOLS_PER_TURN
+        ? { tools: lodgeTools as any, parallel_tool_calls: false } : {}),
       stream: true,
-    });
+    }, { signal, timeout: 60_000, maxRetries: 0 });
 
     const toolCalls: Record<number, { id: string; name: string; args: string }> = {};
     let assistantContent = "";
@@ -539,7 +537,7 @@ router.post("/conversations/:id/messages", async (req, res) => {
     }
 
     const calls = Object.values(toolCalls);
-    if (calls.length === 0 || guard > 3) break;
+    if (calls.length === 0) break;
 
     chatMessages.push({
       role: "assistant",
@@ -551,10 +549,18 @@ router.post("/conversations/:id/messages", async (req, res) => {
       })),
     });
     for (const c of calls) {
-      const result = await runTool(c.name, c.args, conversationId);
+      const result = ++toolsUsed <= MAX_TOOLS_PER_TURN
+        ? await runTool(c.name, c.args, toolContext)
+        : JSON.stringify({ error: "tool_limit", note: "Please answer with the information already available." });
       chatMessages.push({ role: "tool", tool_call_id: c.id, content: result });
     }
   }
+  } catch {
+    if (!signal.aborted && !res.destroyed) {
+      res.write(`data: ${JSON.stringify({ error: "The chat service is temporarily unavailable. Please try again." })}\n\n`);
+    }
+  }
+  if (signal.aborted || res.destroyed) return;
 
   // Save assistant message — best-effort; if all retries fail we emit a
   // recoverable SSE error event so the frontend can surface a notice rather
@@ -580,16 +586,19 @@ router.post("/conversations/:id/messages", async (req, res) => {
 
 // Send voice message (SSE stream — speech-to-speech)
 router.post("/conversations/:id/voice-messages", async (req, res) => {
-  const paramParsed = SendOpenaiVoiceMessageParams.safeParse({ id: Number(req.params.id) });
   const bodyParsed = SendOpenaiVoiceMessageBody.safeParse(req.body);
-  if (!paramParsed.success || !bodyParsed.success) {
+  if (!bodyParsed.success) {
     res.status(400).json({ error: "Invalid request" });
     return;
   }
 
-  const conversationId = paramParsed.data.id;
+  const conversationId = res.locals.conversationId as number;
   const audioBase64 = bodyParsed.data.audio;
-  const audioBuffer = Buffer.from(audioBase64, "base64");
+  const audioBuffer = validateVoiceAudio(audioBase64);
+  if (!audioBuffer) {
+    res.status(400).json({ error: "Send valid PCM WAV audio, at most 45 seconds and 2 MB." });
+    return;
+  }
 
   let buffer: Buffer;
   let format: "wav" | "mp3";
@@ -606,22 +615,10 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
     throw err;
   }
 
-  // Load prior conversation so voice-Mia has continuity and lodge context.
-  // Wrapped with withDbRetry so a transient DB timeout doesn't crash the voice
-  // call before the OpenAI stream starts; falls back to empty history so Mia
-  // can still respond even when the DB is briefly unavailable.
-  let history: (typeof messages.$inferSelect)[] = [];
-  try {
-    history = await withDbRetry(() =>
-      db
-        .select()
-        .from(messages)
-        .where(eq(messages.conversationId, conversationId))
-        .orderBy(messages.createdAt),
-    );
-  } catch (err) {
-    req.log.warn({ err }, "Voice history read failed after retries — continuing with empty history");
-  }
+  const history = boundedHistory((await withDbRetry(() =>
+    db.select().from(messages).where(eq(messages.conversationId, conversationId))
+      .orderBy(desc(messages.createdAt), desc(messages.id)).limit(MAX_HISTORY_MESSAGES),
+  )).reverse());
 
   const voiceHistory = history.map((m) => ({
     role: m.role as "user" | "assistant",
@@ -629,7 +626,7 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
   }));
 
   res.setHeader("Content-Type", "text/event-stream");
-  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Cache-Control", "no-store");
   res.setHeader("Connection", "keep-alive");
 
   // Prefer the tool-calling voice loop so Mia can quote live availability by
@@ -638,6 +635,8 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
   // error event instead of letting the exception reach Express's default error
   // handler (which would send HTML 404 before any res.write() commits the stream).
   let stream: AsyncIterable<{ type: "transcript" | "audio"; data: string }>;
+  const signal = res.locals.aiSignal as AbortSignal;
+  const toolContext = { conversationId, ip: clientAddress(req), signal };
   try {
     try {
       stream = await voiceChatStreamWithTools(
@@ -647,19 +646,23 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
         buildSystemPrompt(),
         voiceHistory,
         lodgeTools,
-        runTool
+        (name, args) => runTool(name, args, toolContext),
+        { signal },
       );
     } catch (err) {
+      if (signal.aborted) return;
       req.log.warn({ err }, "gpt-audio tool calling unavailable; falling back to plain voice stream");
       stream = await voiceChatStream(
         buffer,
         "alloy",
         format,
         buildSystemPrompt(),
-        voiceHistory
+        voiceHistory,
+        { signal },
       );
     }
   } catch (err) {
+    if (signal.aborted) return;
     req.log.error({ err }, "Voice call failed — both tool-calling and plain voice stream unavailable");
     res.write(`data: ${JSON.stringify({ error: "Voice service is temporarily unavailable. Please try again shortly." })}\n\n`);
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
@@ -669,11 +672,17 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
 
   let assistantTranscript = "";
 
+  try {
   for await (const event of stream) {
+    if (signal.aborted || res.destroyed) return;
     if (event.type === "transcript") {
       assistantTranscript += event.data;
     }
     res.write(`data: ${JSON.stringify(event)}\n\n`);
+  }
+  } catch {
+    if (signal.aborted || res.destroyed) return;
+    res.write(`data: ${JSON.stringify({ error: "Voice service is temporarily unavailable. Please try again." })}\n\n`);
   }
 
   if (assistantTranscript) {
@@ -698,92 +707,17 @@ router.post("/conversations/:id/voice-messages", async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// OpenAI Realtime API — WebRTC ephemeral session token
+// Retired WebRTC transport. The active widget uses the bounded server relay.
 // ---------------------------------------------------------------------------
 
-/**
- * POST /api/openai/realtime/session
- *
- * Creates a short-lived ephemeral token for the browser to establish a WebRTC
- * connection directly with OpenAI's Realtime API.  The server injects the
- * system prompt and tool definitions so the browser never needs the real key.
- *
- * Model is configured via OPENAI_REALTIME_MODEL (default: gpt-realtime-1.5).
- * Check https://platform.openai.com/docs/models for the current API model ID.
- */
-router.post("/realtime/session", async (req, res) => {
-  const realtimeModel =
-    process.env.OPENAI_REALTIME_MODEL ?? "gpt-realtime-1.5";
-
-  const baseUrl = (
-    process.env.AI_INTEGRATIONS_OPENAI_BASE_URL ?? "https://api.openai.com/v1"
-  ).replace(/\/$/, "");
-
-  const realtimeTools = lodgeTools.map((t) => ({
-    type: "function" as const,
-    name: t.function.name,
-    description: t.function.description,
-    parameters: t.function.parameters,
-  }));
-
-  const sessionRes = await fetch(`${baseUrl}/realtime/sessions`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.AI_INTEGRATIONS_OPENAI_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: realtimeModel,
-      voice: "alloy",
-      instructions: buildSystemPrompt(),
-      tools: realtimeTools,
-      tool_choice: "auto",
-    }),
-  });
-
-  if (!sessionRes.ok) {
-    const detail = await sessionRes.text();
-    req.log.error(
-      { status: sessionRes.status, detail },
-      "Realtime session creation failed",
-    );
-    res.status(sessionRes.status).json({
-      error: "Failed to create realtime session",
-      detail,
-    });
-    return;
-  }
-
-  const data = (await sessionRes.json()) as {
-    client_secret?: { value: string };
-  };
-  if (!data.client_secret?.value) {
-    res.status(500).json({ error: "No client_secret in realtime session response" });
-    return;
-  }
-
-  res.json({ clientSecret: data.client_secret.value, model: realtimeModel });
+// Staff-authenticated tombstones: no ephemeral OpenAI credentials are issued.
+router.post("/realtime/session", (_req, res) => {
+  res.status(410).json({ error: "Use the authenticated server-side voice relay" });
 });
 
-/**
- * POST /api/openai/realtime/execute-tool
- *
- * Executes a Beds24/currency tool call on behalf of the browser.  The browser
- * receives a function_call event on the WebRTC data channel, POSTs here, and
- * forwards the returned output back to OpenAI.
- */
-router.post("/realtime/execute-tool", async (req, res) => {
-  const { name, arguments: argsJson, conversationId } = req.body as {
-    name?: string;
-    arguments?: string;
-    conversationId?: number;
-  };
-  if (!name) {
-    res.status(400).json({ error: "Missing tool name" });
-    return;
-  }
-  const output = await runTool(name, argsJson ?? "{}", conversationId ?? null);
-  res.json({ output });
+// Guest tools are dispatched only from model-issued calls on an owned session.
+router.post("/realtime/execute-tool", (_req, res) => {
+  res.status(410).json({ error: "Tool execution is available only inside the server-side conversation" });
 });
 
 export default router;

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useRealtimeSession } from "@workspace/integrations-openai-ai-react/audio";
+import { useRealtimeSession, trustedParentMessage } from "@workspace/integrations-openai-ai-react/audio";
 import { Mic, PhoneOff, Loader2, AlertCircle, Radio } from "lucide-react";
 
 const FONT =
@@ -47,6 +47,7 @@ export default function WidgetEmbed() {
     window.parent.postMessage({ type: "devocean:embedReady" }, "*");
 
     function onMessage(evt: MessageEvent) {
+      if (!trustedParentMessage(evt)) return;
       if (!evt.data || typeof evt.data !== "object") return;
       // lang + currency are already encoded in the iframe URL and picked up by
       // useRealtimeSession.connect() from window.location.search — no need to

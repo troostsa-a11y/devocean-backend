@@ -59,24 +59,26 @@ The automation service performs expensive work: IMAP connections, parsing large 
 
 The main privilege boundary is between the public internet and booking-management capabilities. Only authenticated admin requests should create, modify, cancel, or manually trigger booking automation. The website must not let a public user turn a normal inquiry form into an arbitrary outbound mail-sending feature by editing client-submitted fields, and admin credentials must stay out of URLs so they cannot be passively copied into logs and browser artifacts.
 
-## Voice Reception API (Mia AI receptionist) — added component
+## Voice Reception API (Mia / Marin AI receptionist)
 
-A newer production component lives in `voice-reception/artifacts/api-server` (Express + WebSocket, deployed autoscale, visibility `public`, primary URL `code-optimizer-troostsa.replit.app`). It powers the embeddable "Mia" AI voice/text receptionist widget backed by OpenAI (chat, transcription, Realtime), Beds24 availability, and a PostgreSQL store of `conversations`, `messages`, and `bookings`.
+The public Express/WebSocket component in `voice-reception/artifacts/api-server` powers the lodge's embedded voice/text receptionist. It uses OpenAI, the existing direct-booking availability proxy, FX/weather services, and the dedicated Reception PostgreSQL database. Public deployment and autoscaling mean browser restrictions and process-local counters alone are insufficient.
 
 ### Trust boundaries (this component)
-- **Public widget ↔ API:** `POST /api/openai/conversations`, `POST /api/openai/conversations/:id/messages`, `.../voice-messages`, and all `POST /api/openai/realtime/*` plus the `/api/openai/realtime/ws` WebSocket are intentionally unauthenticated. All input is untrusted; conversations have no per-user binding today.
-- **Admin ↔ API:** `/api/openai/conversations` listing/read/delete, `/api/bookings/*`, `/api/stats` require `adminAuth` (static `ADMIN_API_KEY` bearer token). `/api/auth` validates the same secret as a password.
-- **API ↔ OpenAI / Beds24 / FX / SMTP / CallMeBot WhatsApp:** server-side tool execution (`runTool`) can write bookings and send operator email + WhatsApp notifications.
+- **Guest ↔ own conversation:** creation issues an opaque UUID and a 256-bit private capability. Only the capability hash is stored. Every message/audio request and WebSocket upgrade checks that capability against the specified conversation before history, mutation, audio parsing, or billable work. Capabilities expire after 24 hours and stay in browser memory. Historical conversations without a capability remain staff-only.
+- **Staff ↔ API:** listings, reads, deletes, translations, bookings and stats require the existing admin bearer secret. Numeric conversation IDs are internal staff identifiers, never guest authorization. Admin password/key comparisons hash to fixed-length buffers and use `timingSafeEqual`; login attempts are throttled.
+- **Browser ↔ widget host:** exact CORS/Origin allow-list and a `frame-ancestors` policy limit browser calls and iframe embedding. Realtime requires an approved Origin and a private WebSocket subprotocol; credentials are not sent in URLs or echoed in the selected protocol. Forwarded IPs are accepted only from configured trusted proxy networks.
+- **API ↔ model tools / SMTP / WhatsApp:** tools are server-only, allow-listed, strictly validated and bound to the gateway-authorized conversation. The unused direct WebRTC session and tool-execution endpoints are closed (unauthenticated callers are rejected; staff receive 410). Enquiries and notifications share per-conversation, IP and global quotas, with bounded outbound timeouts and an unverified-input label for staff.
 
 ### Scan anchors (this component)
-- **Entry points:** `voice-reception/artifacts/api-server/src/routes/index.ts` (public/admin split), `routes/openai.ts`, `routes/openaiRealtimeRelay.ts`, `routes/bookings.ts`, `routes/stats.ts`, `routes/auth.ts`.
-- **Auth:** `middleware/adminAuth.ts` (single static key; non-constant-time compare).
-- **Tool/side-effect sink:** `beds24/tool.ts` (`runTool`, `save_booking_enquiry`, `notifyEmail`, `notifyWhatsApp`).
-- **Config concerns:** wildcard CORS and 50MB body limits in `src/app.ts`; no rate limiting anywhere.
+- **Entry points:** `security/openaiAccess.ts`, `security/realtimeGateway.ts`, `routes/openai.ts`, `routes/openaiRealtimeRelay.ts`, admin route middleware and `routes/auth.ts`.
+- **Auth:** `security/conversations.ts` and `security/secrets.ts`; only creation responses include the raw guest capability. Management responses omit hashes/tokens and API responses are `no-store`.
+- **Abuse controls:** shared atomic PostgreSQL quota upserts and expiring concurrency leases in `security/abuse.ts`, with RLS enabled on their tables. Failed protection/ownership lookups fail closed with 503. Local pre-parser/upgrade flood guards bound abuse of the protection queries themselves.
+- **Resource bounds:** 32 KB normal JSON / 8 KB forms; authenticated recorded audio only, 3 MB JSON and 2 MB / 45-second PCM WAV. HTTP AI work ends after 60 seconds; at most three model rounds, four tool calls, 1,024 output tokens per round and 40 messages / 24,000 characters of history. Realtime is capped at five minutes, 30 responses, 12 tool calls, 32 KB client frames and paced audio. Browser commands cannot change prompts/models/tools or fabricate tool results. Paid upstream sockets terminate on disconnect or policy failure.
 - **Dev-only:** `voice-reception/artifacts/mockup-sandbox` (design canvas, preview `/__mockup`) is dev-only unless proven reachable.
 
-### Required guarantees
-- Conversation message/voice endpoints MUST bind a caller to the specific conversation (unguessable token) before reading history or appending messages; sequential ids MUST NOT grant cross-guest access.
-- Tool execution reachable from public endpoints MUST be constrained (allowed tools, validated/clamped args) and MUST NOT let anonymous callers inject bookings or trigger operator notifications at will.
-- Public, billable AI endpoints MUST be rate-limited and body-size-bounded.
-- Admin secrets MUST be compared in constant time; CORS SHOULD be restricted to known widget origins.
+### Residual risks and operational constraints
+- Anonymous guest access is intentional. Non-browser scripts can forge Origin and create their own capabilities; these are object-ownership tokens, not human verification. Shared global quotas bound wallet exposure but attackers can exhaust a budget and temporarily deny legitimate guests service. Network-scale floods still require host/edge defenses.
+- A stolen capability grants access to its one conversation until expiry. XSS on a trusted widget host or compromise of the database/admin secret remains outside this capability boundary.
+- Do not replace shared quotas/leases with process-local limits on autoscale. Protection tables and ownership columns must be migrated before serving the new widget; startup migrations are additive and old staff IDs remain intact.
+- Register any additional widget/API host as an exact HTTPS origin through `RECEPTION_ALLOWED_ORIGINS`. Configure `RECEPTION_TRUSTED_PROXIES` for actual trusted peers, never a blanket trust flag or hop count. Incorrect proxy configuration may conservatively group guests under one proxy IP.
+- SMTP and WhatsApp are bounded, unverified enquiry notifications, not confirmed reservations. RLS on the protection tables guards anonymous database access; the backend database role must retain its normal direct-connection privileges.

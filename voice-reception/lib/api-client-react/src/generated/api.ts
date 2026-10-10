@@ -30,6 +30,7 @@ import type {
   DashboardStats,
   HealthStatus,
   OpenaiConversation,
+  OpenaiConversationCreated,
   OpenaiConversationInput,
   OpenaiConversationWithMessages,
   OpenaiError,
@@ -277,9 +278,10 @@ export const getCreateOpenaiConversationUrl = () => {
 }
 
 /**
+ * Rate-limited widget bootstrap. Keep the returned private capability in browser memory; it authorizes only this conversation for 24 hours.
  * @summary Create a new conversation
  */
-export const createOpenaiConversation = async (openaiConversationInput: OpenaiConversationInput, options?: Parameters<typeof customFetch>[1]): Promise<OpenaiConversation> => {
+export const createOpenaiConversation = async (openaiConversationInput: OpenaiConversationInput, options?: Parameters<typeof customFetch>[1]): Promise<OpenaiConversationCreated> => {
 
     const getHeaders = (h?: NonNullable<RequestInit['headers']>): Record<string, string | readonly string[]> => {
     if (!h) return {};
@@ -295,7 +297,7 @@ export const createOpenaiConversation = async (openaiConversationInput: OpenaiCo
     }
     return headers;
   };
-return customFetch<OpenaiConversation>(getCreateOpenaiConversationUrl(),
+return customFetch<OpenaiConversationCreated>(getCreateOpenaiConversationUrl(),
   {
     ...options,
     method: 'POST',
@@ -310,7 +312,7 @@ return customFetch<OpenaiConversation>(getCreateOpenaiConversationUrl(),
 
 export const getCreateOpenaiConversationMutationKey = () => ['createOpenaiConversation'] as const;
 
-export const getCreateOpenaiConversationMutationOptions = <TError = ErrorType<unknown>,
+export const getCreateOpenaiConversationMutationOptions = <TError = ErrorType<void>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createOpenaiConversation>>, TError,CreateOpenaiConversationMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
 ): UseMutationOptions<Awaited<ReturnType<typeof createOpenaiConversation>>, TError,CreateOpenaiConversationMutationVariables, TContext> => {
 
@@ -339,13 +341,13 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
 
     export type CreateOpenaiConversationMutationResult = NonNullable<Awaited<ReturnType<typeof createOpenaiConversation>>>
     export type CreateOpenaiConversationMutationBody = BodyType<OpenaiConversationInput>
-    export type CreateOpenaiConversationMutationError = ErrorType<unknown>
+    export type CreateOpenaiConversationMutationError = ErrorType<void>
     export type CreateOpenaiConversationMutationVariables = {data: BodyType<OpenaiConversationInput>}
 
     /**
  * @summary Create a new conversation
  */
-export const useCreateOpenaiConversation = <TError = ErrorType<unknown>,
+export const useCreateOpenaiConversation = <TError = ErrorType<void>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createOpenaiConversation>>, TError,CreateOpenaiConversationMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient): UseMutationResult<
         Awaited<ReturnType<typeof createOpenaiConversation>>,
@@ -733,7 +735,7 @@ export function useListOpenaiMessages<TData = Awaited<ReturnType<typeof listOpen
 
 
 
-export const getSendOpenaiMessageUrl = (id: number,) => {
+export const getSendOpenaiMessageUrl = (id: string,) => {
 
 
 
@@ -742,9 +744,10 @@ export const getSendOpenaiMessageUrl = (id: number,) => {
 }
 
 /**
+ * Guests use the opaque publicId and X-Conversation-Token. Only authenticated staff may use a numeric id. Authorization is checked before history is read or messages are saved.
  * @summary Send a text message and receive a streaming text response
  */
-export const sendOpenaiMessage = async (id: number,
+export const sendOpenaiMessage = async (id: string,
     openaiMessageInput: OpenaiMessageInput, options?: Parameters<typeof customFetch>[1]): Promise<unknown> => {
 
     const getHeaders = (h?: NonNullable<RequestInit['headers']>): Record<string, string | readonly string[]> => {
@@ -776,7 +779,7 @@ return customFetch<unknown>(getSendOpenaiMessageUrl(id),
 
 export const getSendOpenaiMessageMutationKey = () => ['sendOpenaiMessage'] as const;
 
-export const getSendOpenaiMessageMutationOptions = <TError = ErrorType<unknown>,
+export const getSendOpenaiMessageMutationOptions = <TError = ErrorType<void>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof sendOpenaiMessage>>, TError,SendOpenaiMessageMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
 ): UseMutationOptions<Awaited<ReturnType<typeof sendOpenaiMessage>>, TError,SendOpenaiMessageMutationVariables, TContext> => {
 
@@ -805,13 +808,13 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
 
     export type SendOpenaiMessageMutationResult = NonNullable<Awaited<ReturnType<typeof sendOpenaiMessage>>>
     export type SendOpenaiMessageMutationBody = BodyType<OpenaiMessageInput>
-    export type SendOpenaiMessageMutationError = ErrorType<unknown>
-    export type SendOpenaiMessageMutationVariables = {id: number;data: BodyType<OpenaiMessageInput>}
+    export type SendOpenaiMessageMutationError = ErrorType<void>
+    export type SendOpenaiMessageMutationVariables = {id: string;data: BodyType<OpenaiMessageInput>}
 
     /**
  * @summary Send a text message and receive a streaming text response
  */
-export const useSendOpenaiMessage = <TError = ErrorType<unknown>,
+export const useSendOpenaiMessage = <TError = ErrorType<void>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof sendOpenaiMessage>>, TError,SendOpenaiMessageMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient): UseMutationResult<
         Awaited<ReturnType<typeof sendOpenaiMessage>>,
@@ -822,7 +825,7 @@ export const useSendOpenaiMessage = <TError = ErrorType<unknown>,
       return useMutation(getSendOpenaiMessageMutationOptions(options), queryClient);
     }
 
-export const getSendOpenaiVoiceMessageUrl = (id: number,) => {
+export const getSendOpenaiVoiceMessageUrl = (id: string,) => {
 
 
 
@@ -832,10 +835,11 @@ export const getSendOpenaiVoiceMessageUrl = (id: number,) => {
 
 /**
  * This endpoint is for gpt-audio speech-to-speech flows.
- * It accepts base64-encoded audio input and streams back transcript and audio events.
+ * It accepts base64 PCM WAV audio (at most 2 MB / 45 seconds).
+ * Guests use publicId and X-Conversation-Token; numeric ids require staff authorization.
  * @summary Send audio and receive a streaming voice response
  */
-export const sendOpenaiVoiceMessage = async (id: number,
+export const sendOpenaiVoiceMessage = async (id: string,
     openaiVoiceMessageInput: OpenaiVoiceMessageInput, options?: Parameters<typeof customFetch>[1]): Promise<unknown> => {
 
     const getHeaders = (h?: NonNullable<RequestInit['headers']>): Record<string, string | readonly string[]> => {
@@ -867,7 +871,7 @@ return customFetch<unknown>(getSendOpenaiVoiceMessageUrl(id),
 
 export const getSendOpenaiVoiceMessageMutationKey = () => ['sendOpenaiVoiceMessage'] as const;
 
-export const getSendOpenaiVoiceMessageMutationOptions = <TError = ErrorType<unknown>,
+export const getSendOpenaiVoiceMessageMutationOptions = <TError = ErrorType<void>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof sendOpenaiVoiceMessage>>, TError,SendOpenaiVoiceMessageMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
 ): UseMutationOptions<Awaited<ReturnType<typeof sendOpenaiVoiceMessage>>, TError,SendOpenaiVoiceMessageMutationVariables, TContext> => {
 
@@ -896,13 +900,13 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
 
     export type SendOpenaiVoiceMessageMutationResult = NonNullable<Awaited<ReturnType<typeof sendOpenaiVoiceMessage>>>
     export type SendOpenaiVoiceMessageMutationBody = BodyType<OpenaiVoiceMessageInput>
-    export type SendOpenaiVoiceMessageMutationError = ErrorType<unknown>
-    export type SendOpenaiVoiceMessageMutationVariables = {id: number;data: BodyType<OpenaiVoiceMessageInput>}
+    export type SendOpenaiVoiceMessageMutationError = ErrorType<void>
+    export type SendOpenaiVoiceMessageMutationVariables = {id: string;data: BodyType<OpenaiVoiceMessageInput>}
 
     /**
  * @summary Send audio and receive a streaming voice response
  */
-export const useSendOpenaiVoiceMessage = <TError = ErrorType<unknown>,
+export const useSendOpenaiVoiceMessage = <TError = ErrorType<void>,
     TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof sendOpenaiVoiceMessage>>, TError,SendOpenaiVoiceMessageMutationVariables, TContext>, request?: SecondParameter<typeof customFetch>}
  , queryClient?: QueryClient): UseMutationResult<
         Awaited<ReturnType<typeof sendOpenaiVoiceMessage>>,

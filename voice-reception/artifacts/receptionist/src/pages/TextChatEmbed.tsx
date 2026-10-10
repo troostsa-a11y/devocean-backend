@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Loader2, Send } from "lucide-react";
 import { MessageContent } from "@/components/MessageContent";
+import {
+  createGuestConversation, conversationHeaders, guestRequestError, GuestApiError,
+  trustedParentMessage, type GuestConversation,
+} from "@workspace/integrations-openai-ai-react/audio";
 
 interface Message {
   role: "user" | "assistant";
@@ -62,7 +66,8 @@ export default function TextChatEmbed() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [conversationId, setConversationId] = useState<number | null>(null);
+  const conversationRef = useRef<GuestConversation | null>(null);
+  const sendingRef = useRef(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -82,25 +87,19 @@ export default function TextChatEmbed() {
     el.style.height = Math.min(el.scrollHeight, 120) + "px";
   };
 
-  const ensureConversation = useCallback(async (): Promise<number> => {
-    if (conversationId) return conversationId;
-    const res = await fetch("/api/openai/conversations", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "Text Chat" }),
-    });
-    if (!res.ok) throw new Error("Failed to create conversation");
-    const data = await res.json();
-    setConversationId(data.id);
-    return data.id;
-  }, [conversationId]);
+  const ensureConversation = useCallback(async (signal: AbortSignal): Promise<GuestConversation> => {
+    if (!conversationRef.current) conversationRef.current = await createGuestConversation("Text Chat", signal);
+    return conversationRef.current;
+  }, []);
+  useEffect(() => () => abortRef.current?.abort(), []);
 
   // sendMessage accepts an optional overrideContent for programmatic sends
   // (devocean:ask auto-message). When overrideContent is provided the input
   // field is not cleared — it was never touched by the user.
   const sendMessage = useCallback(async (overrideContent?: string) => {
     const content = overrideContent ?? input.trim();
-    if (!content || loading) return;
+    if (!content || content.length > 4000 || sendingRef.current) return;
+    sendingRef.current = true;
 
     if (!overrideContent) {
       setInput("");
@@ -121,7 +120,7 @@ export default function TextChatEmbed() {
     abortRef.current = controller;
 
     try {
-      const convId = await ensureConversation();
+      const conversation = await ensureConversation(controller.signal);
 
       setMessages((prev) => [
         ...prev,
@@ -129,10 +128,10 @@ export default function TextChatEmbed() {
       ]);
 
       const res = await fetch(
-        `/api/openai/conversations/${convId}/messages`,
+        `/api/openai/conversations/${conversation.publicId}/messages`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: conversationHeaders(conversation),
           body: JSON.stringify({
             content,
             lang,
@@ -143,7 +142,8 @@ export default function TextChatEmbed() {
         },
       );
 
-      if (!res.ok || !res.body) throw new Error("Request failed");
+      if (!res.ok) throw await guestRequestError(res);
+      if (!res.body) throw new Error("Request failed");
 
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
@@ -158,8 +158,10 @@ export default function TextChatEmbed() {
         buffer = lines.pop() ?? "";
         for (const line of lines) {
           if (!line.startsWith("data: ")) continue;
-          try {
-            const payload = JSON.parse(line.slice(6));
+          let payload;
+          try { payload = JSON.parse(line.slice(6)); } catch { continue; }
+          if (payload.error) throw new Error(String(payload.error));
+          {
             if (payload.content) {
               assistantText += payload.content;
               setMessages((prev) => {
@@ -170,7 +172,6 @@ export default function TextChatEmbed() {
                 return next;
               });
             }
-          } catch {
           }
         }
       }
@@ -193,11 +194,12 @@ export default function TextChatEmbed() {
           ...next,
           {
             role: "assistant",
-            content: "Sorry, something went wrong. Please try again.",
+            content: err instanceof GuestApiError ? err.message : "Sorry, something went wrong. Please try again.",
           },
         ];
       });
     } finally {
+      sendingRef.current = false;
       setLoading(false);
       textareaRef.current?.focus();
     }
@@ -213,12 +215,14 @@ export default function TextChatEmbed() {
     window.parent.postMessage({ type: "devocean:textEmbedReady" }, "*");
 
     function onMessage(evt: MessageEvent) {
+      if (!trustedParentMessage(evt)) return;
       if (!evt.data || typeof evt.data !== "object") return;
       if (evt.data.type === "devocean:ask") {
-        if (evt.data.pageContext) {
-          pageContextRef.current = evt.data.pageContext as string;
+        if (typeof evt.data.pageContext === "string" && evt.data.pageContext.length <= 4000) {
+          pageContextRef.current = evt.data.pageContext;
         }
-        const autoMsg = (evt.data.autoMessage as string) || "";
+        const autoMsg = typeof evt.data.autoMessage === "string" && evt.data.autoMessage.length <= 4000
+          ? evt.data.autoMessage : "";
         if (autoMsg) {
           // Small delay ensures the component is settled before injecting.
           setTimeout(() => sendMessageRef.current(autoMsg), 80);

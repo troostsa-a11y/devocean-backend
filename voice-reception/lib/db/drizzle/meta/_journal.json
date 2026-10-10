@@ -15,6 +15,13 @@
       "when": 1782827000000,
       "tag": "0001_rename_mia_bookings",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791645583929,
+      "tag": "0002_jittery_hobgoblin",
+      "breakpoints": true
     }
   ]
 }

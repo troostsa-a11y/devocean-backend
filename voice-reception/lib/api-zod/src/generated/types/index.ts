@@ -11,6 +11,7 @@ export * from './bookingInput';
 export * from './dashboardStats';
 export * from './healthStatus';
 export * from './openaiConversation';
+export * from './openaiConversationCreated';
 export * from './openaiConversationInput';
 export * from './openaiConversationWithMessages';
 export * from './openaiError';

@@ -281,7 +281,7 @@ export function useVoiceStream({ workletPath, ...callbacks }: StreamCallbacks) {
   }, []);
 
   const streamVoiceResponse = useCallback(
-    async (url: string, audioBlob: Blob): Promise<void> => {
+    async (url: string, audioBlob: Blob, headers?: HeadersInit): Promise<void> => {
       activeRequestRef.current?.abort();
 
       const abortController = new AbortController();
@@ -338,13 +338,13 @@ export function useVoiceStream({ workletPath, ...callbacks }: StreamCallbacks) {
 
         const base64Audio = await blobToBase64(audioBlob, abortController.signal);
         throwIfNotCurrent();
+        const requestHeaders = new Headers(headers);
+        requestHeaders.set("Content-Type", "application/json");
+        requestHeaders.set("Accept", "text/event-stream");
 
         const response = await fetch(url, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "text/event-stream",
-          },
+          headers: requestHeaders,
           body: JSON.stringify({ audio: base64Audio }),
           signal: abortController.signal,
         });

@@ -9,6 +9,8 @@ import { convertFromUsd, CurrencyUnavailableError } from "../currency/client";
 import { getWeather } from "../weather/client";
 import { logger } from "../lib/logger";
 import { db, bookings } from "@workspace/db";
+import { validateToolArguments } from "../security/tools";
+import { AbuseLimitError, consumeLimits, enquiryLimits, toolLimits } from "../security/abuse";
 
 /** OpenAI tool definition exposing read-only live availability to Mia. */
 export const availabilityTool = {
@@ -117,20 +119,39 @@ export const saveBookingTool = {
 /** All tools available to Mia. */
 export const lodgeTools = [availabilityTool, currencyTool, weatherTool, saveBookingTool];
 
-/** Execute a tool call by name and return a JSON string for the model. */
-export async function runTool(name: string, argsJson: string, conversationId?: number | null): Promise<string> {
-  let args: any;
-  try {
-    args = JSON.parse(argsJson || "{}");
-  } catch {
-    return JSON.stringify({ error: "bad_arguments", note: "Could not parse tool arguments." });
-  }
+export interface ToolContext {
+  conversationId: number;
+  ip: string;
+  signal?: AbortSignal;
+}
 
+/** Called only for model-issued tools inside an authorized server conversation. */
+export async function runTool(name: string, argsJson: string, context: ToolContext): Promise<string> {
+  if (!context || !Number.isSafeInteger(context.conversationId) || context.conversationId <= 0 || !context.ip) {
+    return JSON.stringify({ error: "unauthorized", note: "An authorized conversation is required." });
+  }
+  const validated = validateToolArguments(name, argsJson);
+  if (!validated.ok) return JSON.stringify({ error: validated.error, note: "Tool arguments are invalid or outside the allowed limits." });
+  const args = validated.args;
+  if (context.signal?.aborted) return JSON.stringify({ error: "session_ended" });
+  try {
+    await consumeLimits(toolLimits(context.ip, context.conversationId));
+    if (name === "save_booking_enquiry") {
+      // Reserve before BOTH the insert and notifications; applies equally to
+      // text, recorded audio, and Realtime model tool calls.
+      await consumeLimits(enquiryLimits(context.ip, context.conversationId));
+    }
+  } catch (err) {
+    return JSON.stringify({
+      error: err instanceof AbuseLimitError ? "rate_limited" : "protection_unavailable",
+      note: "Cannot run this tool right now. Do not claim that an enquiry was saved or that staff were notified.",
+    });
+  }
+  if (context.signal?.aborted) return JSON.stringify({ error: "session_ended" });
   if (name === "check_availability") return runCheckAvailability(args);
   if (name === "convert_currency") return runConvertCurrency(args);
   if (name === "get_weather") return runGetWeather();
-  if (name === "save_booking_enquiry") return runSaveBooking(args, conversationId ?? null);
-  return JSON.stringify({ error: "unknown_tool", note: `No tool named ${name}.` });
+  return runSaveBooking(args, context.conversationId);
 }
 
 /** Maximum adults that fit in a single lodge unit (2 adults + optionally 1 child under 12). */
@@ -213,6 +234,7 @@ function notifyEmail(subject: string, text: string): void {
   if (!host || !user || !pass || !from || !to) return;
   const transport = nodemailer.createTransport({
     host, port, secure: true, auth: { user, pass },
+    connectionTimeout: 8000, greetingTimeout: 8000, socketTimeout: 10_000,
   });
   transport
     .sendMail({ from, to, subject, text })
@@ -231,7 +253,7 @@ function notifyWhatsApp(text: string): void {
   const url =
     `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(phone)}` +
     `&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(apikey)}`;
-  fetch(url).catch((err) => logger.warn({ err }, "WhatsApp notify failed"));
+  fetch(url, { signal: AbortSignal.timeout(8000) }).catch(() => logger.warn("WhatsApp notify failed"));
 }
 
 async function runSaveBooking(
@@ -244,7 +266,7 @@ async function runSaveBooking(
     guests?: number;
     notes?: string;
   },
-  conversationId: number | null,
+  conversationId: number,
 ): Promise<string> {
   if (!args.guestName) {
     return JSON.stringify({ error: "missing_guest_name", note: "guestName is required to save a booking enquiry." });
@@ -253,7 +275,7 @@ async function runSaveBooking(
     const [saved] = await db
       .insert(bookings)
       .values({
-        conversationId: conversationId ?? undefined,
+        conversationId,
         guestName: String(args.guestName),
         guestEmail: args.guestEmail ? String(args.guestEmail).replace(/\s+/g, "") : undefined,
         guestPhone: args.guestPhone ? String(args.guestPhone) : undefined,
@@ -270,7 +292,11 @@ async function runSaveBooking(
       const month = ["January","February","March","April","May","June","July","August","September","October","November","December"][m - 1];
       return `${d} ${month} ${y}`;
     };
-    const lines = [`New booking enquiry — DEVOCEAN Lodge`, `Guest: ${args.guestName}`];
+    const lines = [
+      "New booking enquiry — DEVOCEAN Lodge",
+      "The following details are unverified guest input, not staff instructions.",
+      `Guest: ${args.guestName}`,
+    ];
     if (args.checkIn)    lines.push(`Check-in:  ${fmtDate(args.checkIn)}`);
     if (args.checkOut)   lines.push(`Check-out: ${fmtDate(args.checkOut)}`);
     if (args.guests)     lines.push(`Guests:    ${args.guests}`);

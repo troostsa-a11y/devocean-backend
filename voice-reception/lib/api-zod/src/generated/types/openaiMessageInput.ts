@@ -7,10 +7,24 @@
  */
 
 export interface OpenaiMessageInput {
+  /**
+     * @minLength 1
+     * @maxLength 4000
+     */
   content: string;
+  /**
+     * @maxLength 35
+     * @pattern ^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8}){0,3}$
+     */
   lang?: string;
-  /** ISO 4217 display currency preference (e.g. USD, EUR) */
+  /**
+     * ISO 4217 display currency preference (e.g. USD, EUR)
+     * @pattern ^[A-Za-z]{3}$
+     */
   currency?: string;
-  /** Optional page-context string injected by the website so Marin can give a specific, data-aware answer (e.g. available rooms + prices on the booking page, or room details on a detail page). */
+  /**
+     * Optional page-context string injected by the website so Marin can give a specific, data-aware answer (e.g. available rooms + prices on the booking page, or room details on a detail page).
+     * @maxLength 4000
+     */
   pageContext?: string;
 }

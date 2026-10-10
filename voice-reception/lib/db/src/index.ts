@@ -33,6 +33,10 @@ try {
 export const pool = new Pool({
   connectionString,
   ssl: { rejectUnauthorized: false },
+  max: 10,
+  connectionTimeoutMillis: 5000,
+  statement_timeout: 5000,
+  query_timeout: 6000,
 });
 export const db = drizzle(pool, { schema });
 

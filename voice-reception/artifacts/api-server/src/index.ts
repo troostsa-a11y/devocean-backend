@@ -1,10 +1,10 @@
 import { createServer } from "node:http";
-import { WebSocketServer } from "ws";
 import app from "./app.js";
 import { logger } from "./lib/logger.js";
 import { setReady, setFailed } from "./lib/readiness.js";
 import { runMigrations } from "./migrate.js";
-import { handleRealtimeWs } from "./routes/openaiRealtimeRelay.js";
+import { attachRealtimeGateway } from "./security/realtimeGateway.js";
+import { cleanupAbuseState } from "./security/abuse.js";
 
 const rawPort = process.env["PORT"];
 
@@ -22,22 +22,11 @@ if (Number.isNaN(port) || port <= 0) {
 
 // Use createServer so we can intercept WebSocket upgrade events
 const server = createServer(app);
+server.headersTimeout = 10_000;
+server.requestTimeout = 30_000;
 
 // WebSocket relay: browser ↔ this server ↔ OpenAI Realtime API
-const wss = new WebSocketServer({ noServer: true });
-
-server.on("upgrade", (req, socket, head) => {
-  if (req.url?.startsWith("/api/openai/realtime/ws")) {
-    wss.handleUpgrade(req, socket, head, (ws) => {
-      const params = new URL(req.url!, "http://x").searchParams;
-      const lang = params.get("lang") ?? "en";
-      const currency = params.get("currency") ?? undefined;
-      handleRealtimeWs(ws, lang, currency);
-    });
-  } else {
-    socket.destroy();
-  }
-});
+attachRealtimeGateway(server);
 
 server.on("error", (err) => {
   logger.error({ err }, "Server error");
@@ -51,6 +40,11 @@ server.listen(port, () => {
 runMigrations()
   .then(() => {
     setReady();
+    void cleanupAbuseState().catch(() => logger.warn("Abuse state cleanup temporarily unavailable"));
+    const cleanup = setInterval(() => {
+      void cleanupAbuseState().catch(() => logger.warn("Abuse state cleanup temporarily unavailable"));
+    }, 60 * 60_000);
+    cleanup.unref();
     logger.info("Migrations complete — server is ready");
   })
   .catch((err) => {

@@ -7,6 +7,10 @@
  */
 
 export interface OpenaiVoiceMessageInput {
-  /** Base64-encoded audio data */
+  /**
+     * Base64-encoded PCM WAV audio, at most 2 MB / 45 seconds
+     * @minLength 60
+     * @maxLength 2796204
+     */
   audio: string;
 }
