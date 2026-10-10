@@ -81,6 +81,7 @@ onlyBuiltDependencies:
 overrides:
   "qs": "6.16.0"
   "postcss": "8.5.29"
+  "postcss-selector-parser": "7.1.6"
   "browserslist": "4.28.7"
   "proxy-addr": "^2.0.8"
   # replit uses linux-x64 only, we can exclude all other platforms

@@ -38,6 +38,12 @@ Do not use the project's DOM emulators as the sole evidence for sanitizer browse
 
 **How to apply:** Check the browser-rendered page and CDN integrity independently. If sanitizer assertions fail only in an emulator, investigate the emulator rather than changing sanitizer configuration or weakening assertions.
 
+Selector-parser security fixes may require crossing the major-version range used by Tailwind consumers.
+
+**Why:** The legacy 6.x patch fixes recursive serialization, but the flat-selector CPU-exhaustion fix is available only in 7.1.6 or later.
+
+**How to apply:** Check all requested advisories before selecting a legacy patch. When overriding a consumer's major range, verify representative selectors and production CSS builds as well as attack regressions.
+
 For local security patches, verify both unified-diff validity and the installed patched source, then run the attack regression against the actual consumer's dependency.
 
 **Why:** pnpm can finish a frozen install with a malformed patch without applying every intended change. Node's ancestor resolution can also accidentally test the root npm dependency instead of the workspace's patched copy.
