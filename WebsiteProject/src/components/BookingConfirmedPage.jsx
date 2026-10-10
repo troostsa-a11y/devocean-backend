@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { Link } from 'wouter';
 import { CheckCircle2, Loader2, XCircle, RotateCcw } from 'lucide-react';
 import { getConfirmStrings, fmt } from '../i18n/bookingStrings';
+import { getPaymentStrings } from '../i18n/paymentStrings';
 
 function money(amount, currency) {
   try {
@@ -58,6 +59,7 @@ export function buildBookingCompleteEvent(result, sessionRef) {
 
 export default function BookingConfirmedPage({ lang = 'en-GB' }) {
   const t = useMemo(() => getConfirmStrings(lang), [lang]);
+  const paymentStrings = useMemo(() => getPaymentStrings(lang), [lang]);
   const [result, setResult] = useState(null);
   const [phase, setPhase] = useState('loading'); // loading | confirmed | refunded | failed | pending
   const pollRef = useRef(null);
@@ -80,6 +82,7 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
         const data = await res.json();
         if (res.ok) {
           setResult(data);
+          if (data.paymentStatus === 'review_required') return finish('review');
           if (data.status === 'confirmed') {
             if (!bookingEventFiredRef.current) {
               const bookingEvent = buildBookingCompleteEvent(data, ref);
@@ -148,7 +151,11 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
                     testId="text-confirmed-discount"
                   />
                 )}
-                <Row label={t.depositPaid} value={money(result.deposit, result.currency)} />
+                <Row
+                  label={t.depositPaid}
+                  value={money(result.payment?.deposit ?? result.deposit, result.payment?.currency || result.currency)}
+                  testId="text-deposit-paid"
+                />
                 <Row label={t.balanceDue} value={money(result.balanceDue, result.currency)} />
               </div>
 
@@ -187,6 +194,16 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
                 className="mt-7 inline-flex items-center justify-center rounded-xl bg-slate-200 px-6 py-3 text-slate-800 font-semibold hover:bg-slate-300 transition-colors"
                 data-testid="link-home"
               >
+                {t.backHome}
+              </Link>
+            </div>
+          )}
+          {phase === 'review' && (
+            <div data-testid="status-payment-review">
+              <XCircle className="h-14 w-14 text-amber-500 mx-auto" />
+              <h1 className="mt-5 text-2xl font-bold text-slate-900">{paymentStrings.reviewTitle}</h1>
+              <p className="mt-2 text-slate-600">{paymentStrings.reviewMsg}</p>
+              <Link href="/#contact" className="mt-7 inline-flex rounded-xl bg-slate-200 px-6 py-3 text-slate-800 font-semibold" data-testid="link-contact">
                 {t.backHome}
               </Link>
             </div>

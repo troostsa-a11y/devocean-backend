@@ -43,6 +43,7 @@ type BookingRecord = {
   guestEmail: string;
   guestLanguage: string;
   currency: string;
+  depositAmount: string;
   legs: Array<{
     roomId: string;
     roomName: string;
@@ -74,6 +75,7 @@ function makeRecord(): BookingRecord {
     guestEmail: 'guest@example.test',
     guestLanguage: 'EN',
     currency: 'USD',
+    depositAmount: '50.00',
     legs: [{
       roomId: 'garden-cottage',
       roomName: 'Garden Cottage',
@@ -139,6 +141,10 @@ function makeSignedEvent() {
     object: 'checkout.session',
     metadata: { sessionRef: 'booking-ref-sold-out', type: 'lodge_deposit' },
     payment_intent: 'pi_test_sold_out',
+    mode: 'payment',
+    payment_status: 'paid',
+    currency: 'usd',
+    amount_total: 5000,
   };
   const payload = JSON.stringify({
     id: 'evt_test_sold_out',

@@ -21,7 +21,7 @@ export interface BookingConfig {
   // Commercial policy
   depositPercent: number;        // % of total taken now (balance on arrival)
   cancellationPolicyDays: number; // free cancellation up to N days before arrival
-  currency: string;              // ISO 4217, used for Stripe + quotes
+  currency: string;              // ISO 4217 property/base ledger currency
 
   // Guest-facing
   publicSiteUrl: string;         // used to build Stripe success/cancel URLs

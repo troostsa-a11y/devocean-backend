@@ -9,12 +9,9 @@
 
 import Stripe from 'stripe';
 import { getBookingConfig, type BookingConfig } from '../config/booking-config';
-
-// Currencies Stripe treats as zero-decimal (amount already in major units).
-const ZERO_DECIMAL = new Set([
-  'BIF', 'CLP', 'DJF', 'GNF', 'JPY', 'KMF', 'KRW', 'MGA', 'PYG', 'RWF',
-  'UGX', 'VND', 'VUV', 'XAF', 'XOF', 'XPF',
-]);
+import type { DirectBookingPaymentQuote } from '../../shared/schema';
+import { PAYMENT_CURRENCIES, toMinorUnits } from './booking-payment';
+export { toMinorUnits } from './booking-payment';
 
 let stripeClient: Stripe | null = null;
 
@@ -34,14 +31,6 @@ function getStripe(cfg: BookingConfig): Stripe {
     });
   }
   return stripeClient;
-}
-
-/** Convert a major-unit amount to Stripe's smallest currency unit. */
-export function toMinorUnits(amount: number, currency: string): number {
-  if (ZERO_DECIMAL.has(currency.toUpperCase())) {
-    return Math.round(amount);
-  }
-  return Math.round(amount * 100);
 }
 
 // Stripe Checkout `locale` is an enum with exact, case-sensitive values. Map
@@ -77,6 +66,62 @@ export interface CheckoutInput {
   balanceDue: number;
   guestEmail: string;
   locale?: string;
+  paymentQuote?: DirectBookingPaymentQuote;
+}
+
+export function buildDepositCheckoutParams(
+  input: CheckoutInput,
+  cfg: BookingConfig,
+): Stripe.Checkout.SessionCreateParams {
+  const payment = input.paymentQuote;
+  const currency = (payment?.currency || input.currency).toUpperCase();
+  if (!PAYMENT_CURRENCIES.includes(currency as any)) {
+    throw new Error('Unsupported booking payment currency');
+  }
+  if (payment && (payment.baseCurrency !== input.currency.toUpperCase() ||
+      toMinorUnits(payment.baseDeposit, input.currency) !== toMinorUnits(input.depositAmount, input.currency))) {
+    throw new Error('Payment quote does not match the booking deposit');
+  }
+  const amount = payment?.depositMinor ?? toMinorUnits(input.depositAmount, input.currency);
+  if (!Number.isSafeInteger(amount) || amount < 0) throw new Error('Invalid payment amount');
+  const metadata = {
+    sessionRef: input.sessionRef, kind: 'lodge_deposit',
+    baseCurrency: input.currency.toUpperCase(),
+    baseDeposit: input.depositAmount.toFixed(2),
+    paymentCurrency: currency,
+    paymentDepositMinor: String(amount),
+    exchangeRate: String(payment?.exchangeRate || 1),
+  };
+  return {
+    mode: 'payment',
+    currency: currency.toLowerCase(),
+    adaptive_pricing: { enabled: false },
+    customer_email: input.guestEmail,
+    line_items: [
+      {
+        quantity: 1,
+        price_data: {
+          currency: currency.toLowerCase(),
+          unit_amount: amount,
+          product_data: {
+            name: `Deposit — ${input.roomName}`,
+            description:
+              `Stay ${input.checkIn} → ${input.checkOut}. ` +
+              `Deposit credits ${input.depositAmount.toFixed(2)} ${input.currency.toUpperCase()} towards your stay. ` +
+              `Balance of ${input.balanceDue} ${input.currency.toUpperCase()} due on arrival.`,
+          },
+        },
+      },
+    ],
+    payment_intent_data: {
+      metadata,
+    },
+    metadata,
+    success_url: `${cfg.publicSiteUrl}/booking-confirmed?ref=${encodeURIComponent(input.sessionRef)}`,
+    cancel_url: `${cfg.publicSiteUrl}/book-direct?canceled=1`,
+    expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 min hold
+    locale: toStripeLocale(input.locale) as any,
+  };
 }
 
 export async function createDepositCheckoutSession(
@@ -84,35 +129,7 @@ export async function createDepositCheckoutSession(
   cfg: BookingConfig = getBookingConfig(),
 ): Promise<{ url: string; stripeSessionId: string }> {
   const stripe = getStripe(cfg);
-  const currency = input.currency.toLowerCase();
-
-  const session = await stripe.checkout.sessions.create({
-    mode: 'payment',
-    customer_email: input.guestEmail,
-    line_items: [
-      {
-        quantity: 1,
-        price_data: {
-          currency,
-          unit_amount: toMinorUnits(input.depositAmount, input.currency),
-          product_data: {
-            name: `Deposit — ${input.roomName}`,
-            description:
-              `Stay ${input.checkIn} → ${input.checkOut}. ` +
-              `Balance of ${input.balanceDue} ${input.currency.toUpperCase()} due on arrival.`,
-          },
-        },
-      },
-    ],
-    payment_intent_data: {
-      metadata: { sessionRef: input.sessionRef, kind: 'lodge_deposit' },
-    },
-    metadata: { sessionRef: input.sessionRef, kind: 'lodge_deposit' },
-    success_url: `${cfg.publicSiteUrl}/booking-confirmed?ref=${encodeURIComponent(input.sessionRef)}`,
-    cancel_url: `${cfg.publicSiteUrl}/book-direct?canceled=1`,
-    expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 min hold
-    locale: toStripeLocale(input.locale) as any,
-  });
+  const session = await stripe.checkout.sessions.create(buildDepositCheckoutParams(input, cfg));
 
   if (!session.url) throw new Error('Stripe did not return a checkout URL');
   return { url: session.url, stripeSessionId: session.id };
@@ -158,6 +175,7 @@ export async function createGiftVoucherCheckoutSession(
 
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
+    adaptive_pricing: { enabled: false },
     customer_email: input.purchaserEmail,
     line_items: [
       {

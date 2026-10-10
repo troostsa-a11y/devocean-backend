@@ -128,6 +128,19 @@ describe('first-paint language bootstrap', () => {
     expect(values.get('site.currency.source')).toBe('user');
   });
 
+  it('bootstraps browser currency before IP even on standalone pages', () => {
+    const { values } = bootstrap({ path: '/de/safari', browser: ['de-CH'], country: 'MZ' });
+    expect(values.get('site.currency')).toBe('CHF');
+    expect(values.get('site.currency.source')).toBe('browser');
+    expect(values.get('site.currency.country')).toBe('CH');
+  });
+
+  it('uses IP currency for a bare browser language and USD without IP', () => {
+    expect(bootstrap({ browser: ['de'] }).values.get('site.currency')).toBe('MZN');
+    expect(bootstrap({ browser: ['de'], country: '' }).values.get('site.currency')).toBe('USD');
+    expect(bootstrap({ browser: ['de'], country: 'XX' }).values.get('site.currency')).toBe('USD');
+  });
+
   it('falls back to IP when the browser preference is unsupported', () => {
     const { window } = bootstrap({ browser: ['ar'] });
     expect(window.location.replace).toHaveBeenCalledWith('/pt-br/');

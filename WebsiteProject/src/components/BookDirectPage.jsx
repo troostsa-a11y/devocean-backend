@@ -4,9 +4,11 @@ import { useSeoPage } from '../utils/seoMeta';
 import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
+import { getPaymentStrings } from '../i18n/paymentStrings';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
 import CurrencyPicker from './CurrencyPicker';
+import BookingPaymentNotice from './BookingPaymentNotice';
 import DateRangePicker from './DateRangePicker';
 import { trackBookingSession, getBookingAttributionId } from '../utils/analytics';
 import MarinPanel from './MarinPanel';
@@ -42,6 +44,7 @@ const FIELD_LABEL_CLASS =
 
 export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency, region, onLangChange, onRegionChange, onCurrencyChange }) {
   const t = useMemo(() => getBookingStrings(lang), [lang]);
+  const paymentStrings = useMemo(() => getPaymentStrings(lang), [lang]);
   // Beds24 returns room names in plain English only (they live in the Beds24
   // property config, not this codebase) — reuse the same accommodation-name
   // translations as the marketing unit pages so guests see a localized name
@@ -146,6 +149,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const [quote, setQuote] = useState(null); // live combined quote (from /api/booking/quote)
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState('');
+  const quotedCurrencyRef = useRef(null);
 
   const [bedType, setBedType] = useState({}); // roomId → 'king' | 'twin'
 
@@ -523,6 +527,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     e?.preventDefault();
     setError('');
     if (cartLines.length === 0) return setError(t.selectRoomsToContinue);
+    if (quoteLoading || !quote || quoteError || quotedCurrencyRef.current !== currency) {
+      return setError(quoteError || t.updatingPrice);
+    }
     if (!guest.firstName.trim()) return setError(t.firstName + ' *');
     if (!guest.lastName.trim()) return setError(t.lastName + ' *');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guest.email.trim())) return setError(t.email + ' *');
@@ -551,6 +558,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
           discountCode: discountCode.trim() || undefined,
           voucher: voucherCode.trim() || undefined,
           gaClientId,
+          // Preference only: never submit a client FX rate or converted amount.
+          preferredCurrency: currency,
           // Send the EFFECTIVE preference for every room with a bed selector:
           // the UI shows "King" pre-selected, so an untouched selector must
           // still send 'king' — otherwise the Beds24 note silently omits the
@@ -577,7 +586,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         }),
       });
       const data = await res.json();
-      if (!res.ok || !data?.url) throw new Error(data?.error || t.errorGeneric);
+      if (!res.ok || !data?.url) throw new Error(
+        data?.code === 'PAYMENT_FX_UNAVAILABLE' ? paymentStrings.fxUnavailable : data?.error || t.errorGeneric,
+      );
       window.location.href = data.url; // redirect to Stripe Checkout
     } catch (err) {
       setError(err.message || t.errorGeneric);
@@ -746,8 +757,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   }, [cart, cartLines, availableRooms, totalRooms, effAdults, effChildren, effInfants]);
 
   // ── Informational currency conversion (display only) ──────────────────────
-  // The base/charged currency is the Beds24 property currency (availability
-  // currency); the rates below NEVER change what Stripe charges. We just show an
+  // The base currency is the property pricing/arrival-balance currency. These
+  // client rates NEVER set the Stripe charge; the backend quotes that separately.
+  // We just show an
   // approximate value in the visitor's local currency (the bar currency).
   // Declared before the Marin context memos so Marin can quote the same
   // approximate FX amounts the guest sees on the cards.
@@ -800,12 +812,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         const deepLink = `https://devoceanlodge.com/book-direct?${baseQs}${unitKey ? `&unit=${unitKey}` : ''}`;
         // One line per rate plan, named, with its policy summary. Lead with the
         // guest's display currency when an FX display currency is active; the
-        // charged (base-currency) amount follows in parentheses.
+        // authoritative property-currency price follows in parentheses.
         const planLines = r.offers.map((o) => {
           const planName = o.refundable ? 'Semi-flexible (refundable)' : 'Non-refundable';
           const policy = o.refundable ? semiFlexPolicy : nonRefPolicy;
           const price = showFx
-            ? `${fxLine(o.total)} total (${money(o.total, r.currency)} charged)`
+            ? `${fxLine(o.total)} total (${money(o.total, r.currency)} base price)`
             : `${money(o.total, r.currency)} total`;
           return `  - ${planName}: ${price}. Policy: ${policy}.`;
         });
@@ -816,8 +828,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       lines.push('');
       lines.push('Reference data only: do not list these options in response to a general help request. Ask one short question first. For specific questions, answer only what was asked; include prices, policies or a booking link only when relevant and requested.');
       if (showFx) {
-        lines.push(`Lead with ${currency} amounts (what the guest sees on the page); mention that all charges are made in ${baseCurrency} and ${currency} amounts are approximate conversions.`);
+        lines.push(`Lead with ${currency} amounts (what the guest sees on the page); ${currency} amounts are approximate conversions, not locked payment quotes.`);
       }
+      const paymentCurrency = ['USD', 'EUR', 'ZAR'].includes(currency) ? currency : 'USD';
+      lines.push(`Online Stripe deposits are paid in ${paymentCurrency}. USD is the default; EUR or ZAR are used only when selected as the reservation's display currency. Other display currencies, including MZN, pay in USD. Any remaining arrival balance stays in ${baseCurrency}. The final card amount is calculated server-side and shown at Stripe before payment; never invent a locked FX quote.`);
     }
     if (unavailableRooms.length > 0) {
       lines.push('');
@@ -852,12 +866,21 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     });
     const bookUrl = `https://devoceanlodge.com/book-direct?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}`;
     lines.push(`Total: ${withFx(quote.total)}. Deposit required now: ${withFx(quote.deposit)}. Balance on arrival: ${withFx(quote.balance)}.`);
-    if (showFx) {
-      lines.push(`Note: all charges are made in ${quote.currency}. ${currency} amounts are approximate display conversions only.`);
+    if (quoteLoading || quoteError || quotedCurrencyRef.current !== currency) {
+      lines.push(`The guest's currency selection is ${currency}; the payment quote is being refreshed or unavailable. Do not quote a previous card amount or currency as current. Any arrival balance stays in ${quote.currency}.`);
+    } else {
+      const paymentCurrency = quote.payment?.currency || quote.currency;
+      lines.push(`Stripe deposit payment currency: ${paymentCurrency}. Any remaining balance is due on arrival in ${quote.currency}.`);
+      if (quote.payment) {
+        lines.push(`Estimated card deposit: ${money(quote.payment.deposit, paymentCurrency)}. Final amount is locked server-side at checkout and shown at Stripe before payment.`);
+      }
+      if (showFx) {
+        lines.push(`Base booking prices stay in ${quote.currency}; ${currency} display conversions are approximate. Do not describe the card payment as ${quote.currency} when its payment quote is in ${paymentCurrency}.`);
+      }
     }
     lines.push(`Book-direct URL: ${bookUrl}`);
     return lines.join('\n');
-  }, [checkIn, checkOut, quote, adults, children, infants, showFx, fxRatesForBase, currency]);
+  }, [checkIn, checkOut, quote, quoteLoading, quoteError, adults, children, infants, showFx, fxRatesForBase, currency]);
 
   // Minimum units needed to fit the whole party in the most spacious available room type.
   // Falls back to one so the note stays harmless when every room is unavailable.
@@ -1002,7 +1025,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
   // Debounced live quote whenever the cart (or stay) changes on the results step.
   useEffect(() => {
-    if (step !== 'results') return;
+    if (step !== 'results' && step !== 'details') return;
+    // Entering guest details does not invalidate a just-computed quote.
+    // A currency change there does, and must disable Pay until re-quoted.
+    if (step === 'details' && quote && quotedCurrencyRef.current === currency) return;
     if (cartLines.length === 0) {
       setQuote(null);
       setQuoteError('');
@@ -1025,18 +1051,25 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
             rooms: cartLines,
             discountCode: discountCode.trim() || undefined,
             voucher: voucherCode.trim() || undefined,
+            preferredCurrency: currency,
           }),
         });
         const data = await res.json();
         if (cancelled) return;
         if (!res.ok) {
-          startTransition(() => { setQuote(null); setQuoteError(data?.error || t.errorGeneric); });
+          if (step !== 'details') setQuote(null);
+          setQuoteError(data?.code === 'PAYMENT_FX_UNAVAILABLE' ? paymentStrings.fxUnavailable : data?.error || t.errorGeneric);
         } else {
-          startTransition(() => { setQuote(data); setQuoteError(''); });
+          quotedCurrencyRef.current = currency;
+          // Quote and readiness must commit together. A deferred price update
+          // could otherwise re-enable Pay while the previous charge is visible.
+          setQuote(data);
+          setQuoteError('');
         }
       } catch {
         if (!cancelled) {
-          startTransition(() => { setQuote(null); setQuoteError(t.errorGeneric); });
+          if (step !== 'details') setQuote(null);
+          setQuoteError(t.errorGeneric);
         }
       } finally {
         if (!cancelled) setQuoteLoading(false); // urgent — re-enables the Continue button
@@ -1046,7 +1079,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       cancelled = true;
       clearTimeout(id);
     };
-  }, [cartLines, checkIn, checkOut, effAdults, effChildren, step, t, discountCode, voucherCode]);
+  }, [cartLines, checkIn, checkOut, effAdults, effChildren, effInfants, step, t, discountCode, voucherCode, currency]);
 
   useEffect(() => {
     if (!baseCurrency || !currency || currency === baseCurrency) {
@@ -1767,10 +1800,13 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           <div className="rounded-lg bg-slate-50 border border-slate-200 p-3 space-y-1.5 text-xs text-slate-500" data-testid="text-fx-note">
                             <p className="font-semibold text-slate-600">{t.priceInfoHeader}</p>
                             <p className="flex items-start gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 mt-px shrink-0 text-green-500" /><span>{t.fxAllIn}</span></p>
-                            <p className="flex items-start gap-1.5"><Info className="h-3.5 w-3.5 mt-px shrink-0 text-blue-400" /><span>{fmt(t.fxApproxDisplay, { currency })}</span></p>
+                            <p className="flex items-start gap-1.5"><Info className="h-3.5 w-3.5 mt-px shrink-0 text-blue-400" /><span>{fmt(paymentStrings.displayEstimate, { currency })}</span></p>
                             <p className="flex items-start gap-1.5"><CreditCard className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxBankFee}</span></p>
                             <p className="flex items-start gap-1.5"><MessageCircle className="h-3.5 w-3.5 mt-px shrink-0 text-slate-400" /><span>{t.fxAltPayment}</span></p>
                           </div>
+                        )}
+                        {quote && !quoteLoading && !quoteError && (
+                          <BookingPaymentNotice payment={quote.payment} baseCurrency={quote.currency} balance={quote.balance} lang={lang} />
                         )}
                         <button
                           type="button"
@@ -1910,6 +1946,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                       )}
                     </span>
                   </div>
+                  {quoteError ? <p role="alert" className="text-sm text-red-600">{quoteError}</p> :
+                    quoteLoading ? <p className="text-xs text-slate-500">{t.updatingPrice}</p> :
+                      <BookingPaymentNotice payment={quote.payment} baseCurrency={quote.currency} balance={quote.balance} lang={lang} />}
                   <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between gap-3">
                     {/* Trustindex cert badge mounts here — adopted from the
                         floating widget Trustindex creates in <body> */}
@@ -2015,7 +2054,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
 
                   <button
                     type="submit"
-                    disabled={loading}
+                    disabled={loading || quoteLoading || !quote || !!quoteError || quotedCurrencyRef.current !== currency}
                     className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-5 py-3 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
                     data-testid="button-checkout"
                   >

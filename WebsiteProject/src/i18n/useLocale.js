@@ -3,6 +3,8 @@ import { CRITICAL_NAV } from './critical.js';
 import { loadTranslation } from './loadTranslation.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
 import { resolveVisitorLanguage } from './visitorLanguage.js';
+import { resolveVisitorCurrency } from './visitorCurrency.js';
+export { CC_TO_CURRENCY } from './visitorCurrency.js';
 import {
   DEFAULT_LOCALE,
   localeFromPath,
@@ -23,64 +25,6 @@ function getUrlParam(name) {
 function normalizeLangCode(langCode) {
   return normalizeLocale(langCode);
 }
-
-// Comprehensive country-to-currency mapping (legal tender for each country)
-// Default display currency per region, used when the user manually selects a
-// region via the top-bar selector and has NOT explicitly picked a currency via
-// the CurrencyPicker. Gives an appropriate non-EUR default when someone in
-// Europe selects "Africa" (or any other region that isn't their IP region).
-// source="region" is used (not "user") so that IP detection can re-evaluate
-// on the next page visit if the visitor's country changes.
-const REGION_TO_CURRENCY = {
-  westEu:   'EUR',
-  eastEu:   'EUR',
-  americas: 'USD',
-  africa:   'USD',   // neutral; ZAR/MZN/etc. applied if IP confirms the continent
-  asia:     'USD',
-  oceania:  'AUD',
-};
-
-export const CC_TO_CURRENCY = {
-  // Europe
-  GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", 
-  DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", AT: "EUR",
-  FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK",
-  DK: "DKK", CH: "CHF", CZ: "CZK", HU: "HUF", RO: "RON",
-  RS: "RSD", HR: "EUR", SI: "EUR", BA: "BAM", BG: "BGN",
-  SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR",
-  CY: "EUR", LU: "EUR", IS: "ISK", LI: "CHF", MC: "EUR",
-  UA: "UAH", BY: "BYN", MD: "MDL", AL: "ALL", MK: "MKD",
-  ME: "EUR", XK: "EUR", AD: "EUR", SM: "EUR", VA: "EUR",
-  
-  // Africa
-  ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX",
-  ZW: "USD", BW: "BWP", NA: "NAD", EG: "EGP", MA: "MAD",
-  SZ: "SZL", RE: "EUR", MU: "MUR", SC: "SCR", LS: "LSL",
-  ZM: "ZMW", MW: "MWK", AO: "AOA", GH: "GHS", NG: "NGN", 
-  ET: "ETB", SD: "SDG", DZ: "DZD", TN: "TND", LY: "LYD", 
-  SN: "XOF", CI: "XOF", CM: "XAF", RW: "RWF", BI: "BIF", 
-  SO: "SOS", DJ: "DJF",
-  
-  // Americas
-  US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS",
-  CL: "CLP", CO: "COP", PE: "PEN", VE: "VES", EC: "USD",
-  UY: "UYU", PY: "PYG", BO: "BOB", CR: "CRC", PA: "PAB",
-  GT: "GTQ", HN: "HNL", SV: "USD", NI: "NIO", CU: "CUP",
-  DO: "DOP", HT: "HTG", JM: "JMD", TT: "TTD", BB: "BBD",
-  
-  // Asia & Middle East
-  CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB",
-  SG: "SGD", MY: "MYR", ID: "IDR", PH: "PHP", VN: "VND",
-  AE: "AED", SA: "SAR", QA: "QAR", KW: "KWD", BH: "BHD",
-  OM: "OMR", IL: "ILS", JO: "JOD", LB: "LBP", TR: "TRY",
-  PK: "PKR", BD: "BDT", LK: "LKR", NP: "NPR", MM: "MMK",
-  KH: "KHR", LA: "LAK", MN: "MNT", KZ: "KZT", UZ: "UZS",
-  RU: "RUB",
-  
-  // Oceania
-  AU: "AUD", NZ: "NZD", FJ: "FJD", PG: "PGK", NC: "XPF",
-  PF: "XPF", WS: "WST", TO: "TOP", VU: "VUV", SB: "SBD",
-};
 
 // Map country codes to continents (comprehensive)
 const CC_TO_CONTINENT = {
@@ -255,16 +199,18 @@ function pickInitialLang() {
 }
 
 function pickInitialCurrency() {
-  // Auto-assign currency based on Cloudflare IP country detection
-  // No manual selection allowed - currency is determined by visitor's location
-  const cc = getCountryCode();
-  
-  if (cc && CC_TO_CURRENCY[cc]) {
-    return CC_TO_CURRENCY[cc];
-  }
-  
-  // Default to USD (Hotelrunner base currency) if country detection fails
-  return "USD";
+  const selected = resolveVisitorCurrency({
+    storedCurrency: safeLocalStorage.getItem('site.currency'),
+    storedSource: safeLocalStorage.getItem('site.currency.source'),
+    storedCountry: safeLocalStorage.getItem('site.currency.country'),
+    browserLanguages: navigator.languages?.length
+      ? navigator.languages : [navigator.language].filter(Boolean),
+    countryCode: getCountryCode(),
+  });
+  safeLocalStorage.setItem('site.currency', selected.currency);
+  safeLocalStorage.setItem('site.currency.source', selected.source);
+  safeLocalStorage.setItem('site.currency.country', selected.country || '');
+  return selected.currency;
 }
 
 function pickInitialRegion() {
@@ -449,50 +395,9 @@ export function useLocale() {
     return pickInitialLang() || DEFAULT_LOCALE;
   });
 
-  // Currency - always based on current IP-detected country
-  // Updates automatically if user's location changes (e.g., traveling)
-  const [currency, setCurrencyState] = useState(() => {
-    // Manual override wins: if the visitor explicitly picked a display currency
-    // (via the /book-direct country picker) honor it and skip IP auto-detection.
-    // Display-only — Stripe always charges the Beds24 base currency.
-    const overrideSource = safeLocalStorage.getItem("site.currency.source");
-    const overrideCurrency = clampCur(safeLocalStorage.getItem("site.currency"));
-    if (overrideSource === "user" && overrideCurrency) {
-      return overrideCurrency;
-    }
-
-    // Otherwise auto-detect from the visitor's IP-based country (Cloudflare).
-    // URL parameters are ignored to ensure currency always matches visitor's actual location
-    const cc = getCountryCode();
-    const ipCurrency = pickInitialCurrency(); // Current IP-based currency
-    const storedCurrency = safeLocalStorage.getItem("site.currency");
-    const storedCountry = safeLocalStorage.getItem("site.currency.country");
-    
-    // If IP country changed, update to new currency
-    if (cc && storedCountry && cc !== storedCountry) {
-      safeLocalStorage.setItem("site.currency", ipCurrency);
-      safeLocalStorage.setItem("site.currency.country", cc);
-      return ipCurrency;
-    }
-    
-    // If we have IP currency and it differs from stored, update it
-    // This fixes wrong cached currencies (e.g., region defaults like ZAR instead of country currency MZN)
-    if (ipCurrency && storedCurrency && ipCurrency !== storedCurrency) {
-      safeLocalStorage.setItem("site.currency", ipCurrency);
-      safeLocalStorage.setItem("site.currency.country", cc || "unknown");
-      return ipCurrency;
-    }
-    
-    // Use stored currency if it matches current IP
-    if (storedCurrency && storedCurrency.length === 3) {
-      return storedCurrency;
-    }
-    
-    // Priority 3: Auto-detect from IP
-    safeLocalStorage.setItem("site.currency", ipCurrency);
-    safeLocalStorage.setItem("site.currency.country", cc || "unknown");
-    return ipCurrency;
-  });
+  // Manual choice → explicit browser currency/region → IP → USD.
+  // Re-evaluate automatic choices on each visit; cached IP guesses cannot win.
+  const [currency, setCurrencyState] = useState(pickInitialCurrency);
 
   const [region, setRegionState] = useState(() => {
     const stored = safeLocalStorage.getItem("site.region");
@@ -520,7 +425,7 @@ export function useLocale() {
     setCriticalUI(getCriticalUI(lang));
   }, [lang]);
 
-  // Region/currency remain IP-aware; language has already been resolved before
+  // Region remains IP-aware; language/currency have already been resolved before
   // first paint and is never re-selected by a deferred country lookup.
   useEffect(() => {
     // Use requestIdleCallback to defer heavy detection logic to idle time
@@ -644,36 +549,12 @@ export function useLocale() {
     safeLocalStorage.setItem("site.region.version", "3");
     safeLocalStorage.setItem("site.region.source", "user");
 
-    // Update display currency to match the selected region — UNLESS the visitor
-    // has already made an explicit choice via the CurrencyPicker (source="user").
-    // source="region" is intentionally NOT "user": IP detection will re-evaluate
-    // on the next visit, so a Dutch user who clicked Africa by accident won't be
-    // stuck with USD forever.
-    const currencySource = safeLocalStorage.getItem("site.currency.source");
-    if (currencySource !== "user") {
-      const cc = getCountryCode();
-      const ccRegion = cc ? CC_TO_CONTINENT[cc] : null;
-
-      // If the visitor's IP country belongs to the newly selected region, use
-      // the precise per-country currency (e.g. ZA → ZAR, MZ → MZN).
-      // Otherwise fall back to the region-level default (e.g. Africa → USD).
-      const newCurrency = clampCur(
-        cc && ccRegion === newRegion && CC_TO_CURRENCY[cc]
-          ? CC_TO_CURRENCY[cc]
-          : REGION_TO_CURRENCY[newRegion] || 'USD'
-      );
-      if (newCurrency) {
-        setCurrencyState(newCurrency);
-        safeLocalStorage.setItem("site.currency", newCurrency);
-        safeLocalStorage.setItem("site.currency.source", "region");
-        safeLocalStorage.setItem("site.currency.country", cc || "");
-      }
-    }
+    // Region/language controls do not constitute a currency preference.
   };
 
   // Manual display-currency override (set via the /book-direct country picker).
-  // Persisted with source="user" so the IP-based initializer above never
-  // clobbers it. Display-only: the Stripe charge always uses the base currency.
+  // Persisted with source="user" so browser/IP detection never clobbers it.
+  // Only this preference (not any client FX amount) may be sent to checkout.
   const setCurrency = (newCurrency, country) => {
     const c = clampCur(newCurrency);
     if (!c) return;
@@ -702,7 +583,7 @@ export function useLocale() {
   
   return {
     lang,
-    currency, // IP-detected by default; user-overridable via setCurrency (display only)
+    currency, // manual preference → browser region → IP → USD
     region,
     setLang,
     setRegion,

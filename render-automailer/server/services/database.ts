@@ -783,6 +783,7 @@ export class DatabaseService {
     // Idempotent upgrade for gift voucher support.
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS voucher_code TEXT`;
     await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS voucher_discount DECIMAL(10,2)`;
+    await this.client`ALTER TABLE direct_bookings ADD COLUMN IF NOT EXISTS payment_quote JSONB`;
     await this.client`
       CREATE INDEX IF NOT EXISTS idx_direct_bookings_attribution
         ON direct_bookings (lower(guest_email), check_in_date, status, created_at)

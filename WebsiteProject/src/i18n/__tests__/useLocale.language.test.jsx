@@ -26,7 +26,7 @@ afterEach(() => {
 });
 
 describe('language stays independent of country, currency and region', () => {
-  it('keeps German while using Mozambique geography and currency, including after idle work', async () => {
+  it('keeps German and browser-derived EUR while retaining Mozambique geography, including after idle work', async () => {
     localStorage.setItem('cf.country', 'DE');
     localStorage.setItem('cf.country.ts', String(Date.now()));
     localStorage.setItem('site.region', 'westEu');
@@ -37,7 +37,8 @@ describe('language stays independent of country, currency and region', () => {
     expect(result.current.lang).toBe('de-DE');
     expect(result.current.countryCode).toBe('MZ');
     expect(result.current.region).toBe('africa');
-    expect(result.current.currency).toBe('MZN');
+    expect(result.current.currency).toBe('EUR');
+    expect(localStorage.getItem('site.currency.source')).toBe('browser');
     expect(localStorage.getItem('site.lang_source')).toBe('browser');
   });
 
@@ -52,5 +53,20 @@ describe('language stays independent of country, currency and region', () => {
     expect(result.current.currency).toBe('USD');
     expect(result.current.countryCode).toBe('MZ');
     expect(result.current.region).toBe('africa');
+  });
+
+  it('uses IP currency when the browser has only a bare language', async () => {
+    vi.stubGlobal('navigator', { languages: ['de'], language: 'de' });
+    const { result } = renderHook(() => useLocale());
+    await act(async () => { vi.advanceTimersByTime(250); });
+    expect(result.current.lang).toBe('de-DE');
+    expect(result.current.currency).toBe('MZN');
+  });
+
+  it('does not change browser currency when a region is selected', async () => {
+    const { result } = renderHook(() => useLocale());
+    await act(async () => { result.current.setRegion('americas'); });
+    expect(result.current.currency).toBe('EUR');
+    expect(result.current.region).toBe('americas');
   });
 });

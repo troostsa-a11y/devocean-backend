@@ -264,6 +264,9 @@ export const directBookings = pgTable("direct_bookings", {
   depositAmount: decimal("deposit_amount", { precision: 10, scale: 2 }).notNull(),
   balanceDue: decimal("balance_due", { precision: 10, scale: 2 }).notNull(),
   depositPercent: integer("deposit_percent").notNull().default(30),
+  // Locked Stripe charge, separate from the property-currency booking ledger.
+  // NULL on sessions created before explicit payment-currency selection.
+  paymentQuote: jsonb("payment_quote").$type<DirectBookingPaymentQuote>(),
 
   // Coupon (optional). `discountAmount` is the whole-cart amount already
   // subtracted from `totalAmount` above (totalAmount is NET, post-discount).
@@ -319,6 +322,19 @@ export interface DirectBookingLeg {
 
 export type DirectBooking = typeof directBookings.$inferSelect;
 export type InsertDirectBooking = typeof directBookings.$inferInsert;
+
+export type BookingPaymentCurrency = 'USD' | 'EUR' | 'ZAR';
+
+export interface DirectBookingPaymentQuote {
+  baseCurrency: string;
+  baseDeposit: number;
+  currency: BookingPaymentCurrency;
+  deposit: number;
+  depositMinor: number;
+  exchangeRate: number;
+  quotedAt: string;
+  rateUpdatedAt: string | null;
+}
 
 /**
  * Reusable phrase-discount codes (NOT Beds24's One-Time-Use Voucher Codes,

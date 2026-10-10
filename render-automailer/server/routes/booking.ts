@@ -39,6 +39,7 @@ import {
   type CartVoucher,
 } from '../services/booking-cart';
 import type { DirectBookingLeg } from '../../shared/schema';
+import { quoteBookingPayment, validateBookingPayment, PaymentQuoteError } from '../services/booking-payment';
 
 // ─── tiny in-memory rate limiter (per IP, sliding window) ────────────────────
 function makeRateLimiter(maxRequests: number, windowMs: number): RequestHandler {
@@ -136,12 +137,16 @@ export function createBookingRouter(deps: {
   beds24?: Beds24Service;
   constructWebhookEvent?: typeof constructWebhookEvent;
   refundPaymentIntent?: typeof refundPaymentIntent;
+  createCheckoutSession?: typeof createDepositCheckoutSession;
+  quotePayment?: typeof quoteBookingPayment;
 }): Router {
   const router = express.Router();
   const { db, requireAdminKey, emailService } = deps;
   const beds24 = deps.beds24 || new Beds24Service();
   const verifyWebhookEvent = deps.constructWebhookEvent || constructWebhookEvent;
   const refundPayment = deps.refundPaymentIntent || refundPaymentIntent;
+  const createCheckout = deps.createCheckoutSession || createDepositCheckoutSession;
+  const quotePayment = deps.quotePayment || quoteBookingPayment;
 
   // ─── Best-effort ops alert (payment captured, no matching booking record) ──
   // This covers the one failure mode that leaves zero visible trace: Stripe
@@ -411,6 +416,7 @@ export function createBookingRouter(deps: {
 
     try {
       const quote = await computeCartQuote(beds24, stay, cartLines, getBookingConfig(), discountCode, voucher);
+      const payment = await quotePayment(quote, req.body?.preferredCurrency);
       res.json({
         checkIn: quote.checkIn,
         checkOut: quote.checkOut,
@@ -431,16 +437,18 @@ export function createBookingRouter(deps: {
         total: quote.total,
         deposit: quote.deposit,
         balance: quote.balance,
+        payment,
         rooms: quote.rooms,
         lines: quote.lines,
       });
     } catch (err: any) {
       const isCart = err instanceof BookingCartError;
-      const status = isCart ? err.status : err instanceof Beds24Error ? err.status : 500;
+      const status = isCart ? err.status :
+        err instanceof Beds24Error || err instanceof PaymentQuoteError ? err.status : 500;
       if (!isCart) console.error('[BOOKING] quote error:', err.message);
       res.status(status).json({
-        error: isCart ? err.message : 'Could not price your selection. Please try again.',
-        code: isCart ? err.code : undefined,
+        error: isCart || err instanceof PaymentQuoteError ? err.message : 'Could not price your selection. Please try again.',
+        code: isCart || err instanceof PaymentQuoteError ? err.code : undefined,
       });
     }
   });
@@ -541,6 +549,9 @@ export function createBookingRouter(deps: {
       // discount) server-side from fresh Beds24 offers. Client amounts are never
       // trusted — only roomId/offerId/qty/discountCode/voucher select WHAT to price.
       const quote = await computeCartQuote(beds24, stay, cartLines, cfg, discountCode, voucher);
+      // The browser supplies only a currency preference, never an FX rate or
+      // charge amount. Lock the fresh server conversion before creating Stripe.
+      const paymentQuote = await quotePayment(quote, req.body?.preferredCurrency);
 
       // Annotate each leg with the guest's bed-type preference (King/Twin).
       for (const leg of quote.legs) {
@@ -583,6 +594,7 @@ export function createBookingRouter(deps: {
         depositAmount: quote.deposit.toFixed(2),
         balanceDue: quote.balance.toFixed(2),
         depositPercent: quote.depositPercent,
+        paymentQuote,
         couponCode: quote.discountCode,
         discountAmount: quote.discount > 0 ? quote.discount.toFixed(2) : null,
         voucherCode: quote.voucherCode,
@@ -594,7 +606,7 @@ export function createBookingRouter(deps: {
       console.log(`[BOOKING] checkout: row created ${sessionRef} (${Date.now() - t0}ms)`);
 
       const tStripe = Date.now();
-      const { url, stripeSessionId } = await createDepositCheckoutSession({
+      const { url, stripeSessionId } = await createCheckout({
         sessionRef,
         depositAmount: quote.deposit,
         currency: quote.currency,
@@ -604,6 +616,7 @@ export function createBookingRouter(deps: {
         balanceDue: quote.balance,
         guestEmail: email,
         locale: language.toLowerCase(),
+        paymentQuote,
       }, cfg);
       console.log(
         `[BOOKING] checkout: stripe session ok ${sessionRef} (stripe ${Date.now() - tStripe}ms)`,
@@ -611,14 +624,15 @@ export function createBookingRouter(deps: {
 
       await db!.updateDirectBooking(sessionRef, { stripeSessionId });
 
-      res.json({ url, sessionRef });
+      res.json({ url, sessionRef, payment: paymentQuote });
     } catch (err: any) {
       const isCart = err instanceof BookingCartError;
-      const status = isCart ? err.status : err instanceof Beds24Error ? err.status : 500;
+      const status = isCart ? err.status :
+        err instanceof Beds24Error || err instanceof PaymentQuoteError ? err.status : 500;
       if (!isCart) console.error('[BOOKING] checkout error:', err.message);
       res.status(status).json({
-        error: isCart ? err.message : 'Could not start checkout. Please try again.',
-        code: isCart ? err.code : undefined,
+        error: isCart || err instanceof PaymentQuoteError ? err.message : 'Could not start checkout. Please try again.',
+        code: isCart || err instanceof PaymentQuoteError ? err.code : undefined,
       });
     }
   });
@@ -644,7 +658,8 @@ export function createBookingRouter(deps: {
           'checkout.session.expired', 'checkout.session.async_payment_failed'].includes(event.type)) {
           await applyVoucherSession(db, event.data.object, event.type === 'checkout.session.async_payment_failed');
         }
-      } else if (event.type === 'checkout.session.completed') {
+      } else if (event.type === 'checkout.session.completed' ||
+                 event.type === 'checkout.session.async_payment_succeeded') {
         const session = event.data.object as any;
         await handleCheckoutCompleted(session);
       } else if (event.type === 'checkout.session.expired') {
@@ -805,6 +820,25 @@ export function createBookingRouter(deps: {
         return;
       }
       if (record0.status === 'sold_out_refunded') return; // already refunded, nothing to do
+      // Delayed methods complete Checkout before money is captured; their
+      // async_payment_succeeded event is the booking's payment authority.
+      if (session.payment_status === 'unpaid') return;
+      const paymentError = validateBookingPayment(session, record0);
+      if (paymentError) {
+        if (record0.paymentStatus !== 'review_required') {
+          await sendBookingAlert('Booking payment requires review', [
+            `Booking reference: ${record0.sessionRef}`,
+            `Stripe checkout session: ${session.id}`,
+            paymentError,
+            'No new Beds24 booking or refund was initiated.',
+          ]);
+        }
+        await db.updateDirectBooking(record0.sessionRef, {
+          paymentStatus: 'review_required',
+          errorMessage: paymentError.slice(0, 500),
+        });
+        throw new Error(paymentError);
+      }
 
       // Already fully confirmed: a prior delivery created the Beds24 bookings.
       // Skip re-creation (avoids duplicates) and just (re)schedule emails.
@@ -968,6 +1002,7 @@ export function createBookingRouter(deps: {
       currency: record.currency,
       total: Number(record.totalAmount),
       deposit: Number(record.depositAmount),
+      payment: record.paymentQuote || null,
       balanceDue: Number(record.balanceDue),
       discountCode: record.couponCode || null,
       discount: record.discountAmount ? Number(record.discountAmount) : 0,

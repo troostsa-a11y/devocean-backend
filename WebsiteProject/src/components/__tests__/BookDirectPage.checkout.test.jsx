@@ -369,11 +369,11 @@ async function renderMinimumUnitsNotice({ adults, children = 0, infants = 0 }) {
  *   6. Navigate to the Details step.
  *   7. Fill in guest info and submit.
  */
-async function runCheckoutFlow({ bedChoice } = {}) {
+async function runCheckoutFlow({ bedChoice, currency = 'USD' } = {}) {
   render(
     <BookDirectPage
       lang="en-GB"
-      currency="USD"
+      currency={currency}
     />,
   );
 
@@ -1806,7 +1806,26 @@ describe('semi-flexible rate is the untouched default through quote and checkout
   });
 });
 
-describe('Marin context quotes FX display currency alongside charged USD', () => {
+describe('checkout forwards only a currency preference, not browser payment amounts', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    setBookingQuery({ adults: 2 });
+  });
+  afterEach(() => { cleanup(); });
+
+  it.each(['USD', 'EUR', 'ZAR', 'MZN'])('forwards %s for authoritative server selection', async (currency) => {
+    const capture = setupFetchMock();
+    await runCheckoutFlow({ currency });
+    await waitFor(() => expect(capture.getCheckoutBody()).not.toBeNull());
+    const body = capture.getCheckoutBody();
+    expect(body.preferredCurrency).toBe(currency);
+    for (const key of ['payment', 'paymentQuote', 'deposit', 'depositMinor', 'exchangeRate', 'fxRate']) {
+      expect(body).not.toHaveProperty(key);
+    }
+  });
+});
+
+describe('Marin context separates FX display estimates, card currency and arrival balance', () => {
   const ROOM_ID      = 'safari-room-fx';
   const CHECK_IN_FX  = '2027-11-01';
   const CHECK_OUT_FX = '2027-11-03';
@@ -1848,6 +1867,12 @@ describe('Marin context quotes FX display currency alongside charged USD', () =>
         qty: 1, adults: 2, children: 0, infants: 0, lineTotal: TOTAL,
       }],
       total: TOTAL, depositPercent: 50, deposit: TOTAL / 2, balance: TOTAL / 2,
+      payment: {
+        baseCurrency: 'USD', baseDeposit: TOTAL / 2,
+        currency: 'EUR', deposit: TOTAL / 2 * EUR_RATE,
+        depositMinor: Math.round(TOTAL / 2 * EUR_RATE * 100),
+        exchangeRate: EUR_RATE,
+      },
     };
   }
 
@@ -1895,7 +1920,7 @@ describe('Marin context quotes FX display currency alongside charged USD', () =>
     }
   });
 
-  it('results + details contexts carry approx EUR amounts and a charged-in-USD note', async () => {
+  it('results + details contexts carry approx EUR amounts, EUR card currency and USD arrival balance', async () => {
     render(<BookDirectPage lang="en-GB" currency="EUR" />);
 
     await waitFor(
@@ -1917,7 +1942,7 @@ describe('Marin context quotes FX display currency alongside charged USD', () =>
     );
     expect(resultsCtx).toContain(String(TOTAL));           // charged USD total
     expect(resultsCtx).toContain(String(TOTAL * EUR_RATE)); // 558 approx EUR
-    expect(resultsCtx).toContain('all charges are made in USD');
+    expect(resultsCtx).toContain('Online Stripe deposits are paid in EUR');
     expect(resultsCtx).toContain('EUR amounts are approximate');
 
     // Continue to the details step and assert the pre-payment context too.
@@ -1947,7 +1972,9 @@ describe('Marin context quotes FX display currency alongside charged USD', () =>
     expect(detailsCtx).toContain(String(TOTAL));            // charged USD total
     expect(detailsCtx).toContain(String(TOTAL * EUR_RATE));  // approx EUR total
     expect(detailsCtx).toContain(String((TOTAL / 2) * EUR_RATE)); // approx EUR deposit
-    expect(detailsCtx).toContain('all charges are made in USD');
+    expect(detailsCtx).toContain('Stripe deposit payment currency: EUR');
+    expect(detailsCtx).toContain('balance is due on arrival in USD');
+    expect(detailsCtx).toContain('EUR display conversions are approximate');
   });
 });
 

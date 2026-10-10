@@ -1,5 +1,6 @@
 import { LOCALES } from './localeCatalog.js';
 import { COUNTRY_LANGUAGES, resolveVisitorLanguage } from './visitorLanguage.js';
+import { CC_TO_CURRENCY, resolveVisitorCurrency } from './visitorCurrency.js';
 
 // Only routes with native language-aware UI may negotiate a locale URL.
 // Legal documents, staff pages, APIs and unknown paths are deliberately absent.
@@ -14,7 +15,7 @@ const LOCALE_DOCUMENTS = [
 ];
 
 // No outer references: this runs before React and on standalone HTML pages.
-function initializeVisitorLocale(resolve, locales, countries, documentPaths) {
+function initializeVisitorLocale(resolve, resolveCurrency, locales, countries, currencies, documentPaths) {
   const storage = {
     get(key) { try { return localStorage.getItem(key); } catch { return null; } },
     set(key, value) { try { localStorage.setItem(key, value); } catch { /* preferences can be unavailable */ } },
@@ -102,6 +103,16 @@ function initializeVisitorLocale(resolve, locales, countries, documentPaths) {
     get basePath() { return operations.getBasePath(window.location.pathname); },
   };
   window.setSiteLocale = operations.setSiteLocale;
+  const selectedCurrency = resolveCurrency({
+    storedCurrency: storage.get('site.currency'),
+    storedSource: storage.get('site.currency.source'),
+    storedCountry: storage.get('site.currency.country'),
+    browserLanguages: preferences.browserLanguages,
+    countryCode: preferences.countryCode,
+  }, currencies);
+  storage.set('site.currency', selectedCurrency.currency);
+  storage.set('site.currency.source', selectedCurrency.source);
+  storage.set('site.currency.country', selectedCurrency.country || '');
   if (!canLocalize) return;
 
   if (entryLanguage) {
@@ -136,9 +147,9 @@ function initializeVisitorLocale(resolve, locales, countries, documentPaths) {
 }
 
 export function localeBootstrapScript() {
-  const data = [LOCALES, COUNTRY_LANGUAGES, LOCALE_DOCUMENTS]
+  const data = [LOCALES, COUNTRY_LANGUAGES, CC_TO_CURRENCY, LOCALE_DOCUMENTS]
     .map((value) => JSON.stringify(value).replace(/</g, '\\u003c'));
-  return `<script id="devocean-locale-bootstrap">(${initializeVisitorLocale.toString()})(${resolveVisitorLanguage.toString()},${data.join(',')});</script>`;
+  return `<script id="devocean-locale-bootstrap">(${initializeVisitorLocale.toString()})(${resolveVisitorLanguage.toString()},${resolveVisitorCurrency.toString()},${data.join(',')});</script>`;
 }
 
 export function injectLocaleBootstrap(html) {
