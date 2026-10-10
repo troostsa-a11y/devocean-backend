@@ -58,3 +58,25 @@ The automation service performs expensive work: IMAP connections, parsing large 
 ### Elevation of Privilege
 
 The main privilege boundary is between the public internet and booking-management capabilities. Only authenticated admin requests should create, modify, cancel, or manually trigger booking automation. The website must not let a public user turn a normal inquiry form into an arbitrary outbound mail-sending feature by editing client-submitted fields, and admin credentials must stay out of URLs so they cannot be passively copied into logs and browser artifacts.
+
+## Voice Reception API (Mia AI receptionist) — added component
+
+A newer production component lives in `voice-reception/artifacts/api-server` (Express + WebSocket, deployed autoscale, visibility `public`, primary URL `code-optimizer-troostsa.replit.app`). It powers the embeddable "Mia" AI voice/text receptionist widget backed by OpenAI (chat, transcription, Realtime), Beds24 availability, and a PostgreSQL store of `conversations`, `messages`, and `bookings`.
+
+### Trust boundaries (this component)
+- **Public widget ↔ API:** `POST /api/openai/conversations`, `POST /api/openai/conversations/:id/messages`, `.../voice-messages`, and all `POST /api/openai/realtime/*` plus the `/api/openai/realtime/ws` WebSocket are intentionally unauthenticated. All input is untrusted; conversations have no per-user binding today.
+- **Admin ↔ API:** `/api/openai/conversations` listing/read/delete, `/api/bookings/*`, `/api/stats` require `adminAuth` (static `ADMIN_API_KEY` bearer token). `/api/auth` validates the same secret as a password.
+- **API ↔ OpenAI / Beds24 / FX / SMTP / CallMeBot WhatsApp:** server-side tool execution (`runTool`) can write bookings and send operator email + WhatsApp notifications.
+
+### Scan anchors (this component)
+- **Entry points:** `voice-reception/artifacts/api-server/src/routes/index.ts` (public/admin split), `routes/openai.ts`, `routes/openaiRealtimeRelay.ts`, `routes/bookings.ts`, `routes/stats.ts`, `routes/auth.ts`.
+- **Auth:** `middleware/adminAuth.ts` (single static key; non-constant-time compare).
+- **Tool/side-effect sink:** `beds24/tool.ts` (`runTool`, `save_booking_enquiry`, `notifyEmail`, `notifyWhatsApp`).
+- **Config concerns:** wildcard CORS and 50MB body limits in `src/app.ts`; no rate limiting anywhere.
+- **Dev-only:** `voice-reception/artifacts/mockup-sandbox` (design canvas, preview `/__mockup`) is dev-only unless proven reachable.
+
+### Required guarantees
+- Conversation message/voice endpoints MUST bind a caller to the specific conversation (unguessable token) before reading history or appending messages; sequential ids MUST NOT grant cross-guest access.
+- Tool execution reachable from public endpoints MUST be constrained (allowed tools, validated/clamped args) and MUST NOT let anonymous callers inject bookings or trigger operator notifications at will.
+- Public, billable AI endpoints MUST be rate-limited and body-size-bounded.
+- Admin secrets MUST be compared in constant time; CORS SHOULD be restricted to known widget origins.
