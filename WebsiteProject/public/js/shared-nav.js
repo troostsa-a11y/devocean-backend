@@ -56,7 +56,7 @@
     ['ja-JP','日本語'],['zh-CN','中文（简体）'],
   ];
   var PATH_PREFIXES = {
-    'en-US':'en-us', 'pt-PT':'pt-pt', 'pt-BR':'pt-br', 'nl-NL':'nl',
+    'pt-PT':'pt-pt', 'pt-BR':'pt-br', 'nl-NL':'nl',
     'fr-FR':'fr', 'it-IT':'it', 'de-DE':'de', 'es-ES':'es', 'sv':'sv',
     'pl':'pl', 'ro':'ro', 'sr':'sr', 'hr':'hr', 'cs':'cs', 'tr':'tr',
     'ja-JP':'ja', 'zh-CN':'zh-hans', 'ru':'ru', 'af-ZA':'af', 'zu':'zu', 'sw':'sw'
@@ -71,6 +71,9 @@
   };
   var KNOWN_LANGS = LANG_LABELS.map(function (p) { return p[0]; });
   function normLang(raw) {
+    if (window.__DEVOCEAN_LOCALE_API__) {
+      return window.__DEVOCEAN_LOCALE_API__.normalizeLanguage(raw);
+    }
     if (!raw) return null;
     if (KNOWN_LANGS.indexOf(raw) !== -1) return raw;
     var lower = String(raw).toLowerCase();
@@ -158,8 +161,10 @@
     try {
       window.localStorage.setItem('site.lang', newLang);
       window.localStorage.setItem('site.lang_source', 'user');
-      window.localStorage.setItem('site.lang.version', '2');
     } catch (e) { /* ignore */ }
+    if (window.__DEVOCEAN_LOCALE_API__) {
+      window.__DEVOCEAN_LOCALE_API__.rememberLanguage(newLang);
+    }
     // Reload the locale URL so edge metadata and visible content change
     // together. Currency is intentionally untouched.
     var u = new URL(window.location.href);

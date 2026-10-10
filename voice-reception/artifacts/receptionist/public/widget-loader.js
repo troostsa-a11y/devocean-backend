@@ -2,7 +2,7 @@
   "use strict";
 
   // Do not inject the widget on checkout / confirmation pages.
-  var _path = window.location.pathname;
+  var _path = (window.__DEVOCEAN_LOCALE_API__ && window.__DEVOCEAN_LOCALE_API__.basePath) || window.location.pathname;
   if (
     _path.startsWith("/booking-confirmed") ||
     _path.startsWith("/canceled")
@@ -19,9 +19,8 @@
     : window.location.origin;
 
   // Detect active language from <html lang="…">, fall back to navigator.
-  var _pageLang = (document.documentElement.lang || navigator.language || "en")
-    .split("-")[0]
-    .toLowerCase();
+  // Keep the full locale: pt-PT/pt-BR and en-GB/en-US are distinct choices.
+  var _pageLang = document.documentElement.lang || navigator.language || "en-GB";
 
   // Read display currency from site.currency localStorage key — fresh on each
   // call so a currency change before the next open is always picked up.
@@ -38,13 +37,11 @@
   }
 
   new MutationObserver(function () {
-    var newLang = (document.documentElement.lang || navigator.language || "en")
-      .split("-")[0]
-      .toLowerCase();
+    var newLang = document.documentElement.lang || navigator.language || "en-GB";
     if (newLang !== _pageLang) {
       _pageLang = newLang;
       // Update tooltip label to match new language (tooltip var is hoisted)
-      if (tooltip) tooltip.textContent = TOOLTIP_LABELS[_pageLang] || TOOLTIP_LABELS.en;
+      if (tooltip) tooltip.textContent = TOOLTIP_LABELS[_pageLang.split("-")[0].toLowerCase()] || TOOLTIP_LABELS.en;
       if (state === "text") {
         // Panel is currently open — reload it immediately with the new lang.
         textFrame.src = _embedUrl("/embed-text");
@@ -259,7 +256,7 @@
 
   // Tooltip label — appears to the left of the FAB on hover when idle
   var tooltip = mk("div", "dv-tooltip");
-  tooltip.textContent = TOOLTIP_LABELS[_pageLang] || TOOLTIP_LABELS.en;
+  tooltip.textContent = TOOLTIP_LABELS[_pageLang.split("-")[0].toLowerCase()] || TOOLTIP_LABELS.en;
 
   fab.addEventListener("mouseenter", function () {
     if (state === "idle") tooltip.classList.add("dv-vis");

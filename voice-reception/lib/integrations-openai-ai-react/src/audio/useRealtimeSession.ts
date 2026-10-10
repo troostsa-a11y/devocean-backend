@@ -206,8 +206,10 @@ export function useRealtimeSession({
       // current), then URL param (set at iframe load), then navigator.language.
       const urlParams = new URLSearchParams(window.location.search);
       const urlLang = urlParams.get("lang");
-      const resolvedLang = (lang || urlLang || navigator.language || "en")
-        .toLowerCase().split("-")[0];
+      // Preserve regional variants selected on the website all the way to
+      // the relay's language-lock instructions.
+      const resolvedLang = (lang || urlLang || navigator.language || "en-GB")
+        .replace(/_/g, "-");
       // Currency is always read from the URL param (set by widget-loader from site.currency localStorage).
       const urlCurrency = urlParams.get("currency");
       const wsUrl = `${proto}//${window.location.host}/api/openai/realtime/ws?lang=${encodeURIComponent(resolvedLang)}${urlCurrency ? `&currency=${encodeURIComponent(urlCurrency)}` : ""}`;

@@ -2,6 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <script>
+      // Set the embed's declared language before its localized greeting paints.
+      // The parent supplies the selected website locale, not its IP-country guess.
+      (function () {
+        var lang = new URLSearchParams(window.location.search).get("lang");
+        if (lang) lang = lang.replace(/_/g, "-");
+        if (lang && /^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(lang)) {
+          document.documentElement.lang = lang.replace(/_/g, "-");
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
     <title>DEVOCEAN Receptionist</title>
     <meta name="description" content="DEVOCEAN Receptionist — built on Replit. Update this description to reflect the app." />

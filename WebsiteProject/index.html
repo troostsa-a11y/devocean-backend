@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="google" content="notranslate" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#9e4b13" />
   <title>DEVOCEAN Lodge | Eco Beach Stays in Ponta do Ouro</title>
@@ -1099,7 +1100,7 @@
   <!-- Localize hero placeholder text before display -->
   <script>
     (function() {
-      // Hero translations for all 17 languages
+      // Match the resolved language before the first visible hero paint.
       var heroTranslations = {
         'af-ZA': { title: 'DEVOCEAN Lodge', subtitle: "Omgewingsvriendelike verblyf naby 'n ongerepte strand in 'n wêreldklas-avontuurbestemming." },
         'de-DE': { title: 'DEVOCEAN Lodge', subtitle: 'Umweltfreundlich wohnen nahe einem unberührten Strand in einem Abenteuerziel von Weltklasse.' },
@@ -1116,51 +1117,16 @@
         'ru': { title: 'DEVOCEAN Lodge', subtitle: 'Экологичный отдых рядом с нетронутым пляжем в месте для приключений мирового класса.' },
         'sv': { title: 'DEVOCEAN Lodge', subtitle: 'Miljövänligt boende nära en orörd strand i en äventyrsdestination i världsklass.' },
         'sw': { title: 'DEVOCEAN Lodge', subtitle: 'Malazi rafiki kwa mazingira karibu na ufukwe usioguswa, katika eneo la matukio na safari za kipekee la kiwango cha dunia.' },
+        'ro': { title: 'DEVOCEAN Lodge', subtitle: 'Cazări ecologice lângă o plajă nealterată, într-o destinație de aventură de clasă mondială.' },
+        'sr': { title: 'DEVOCEAN Lodge', subtitle: 'Ekološki smeštaj blizu netaknute plaže, na destinaciji za avanture svetske klase.' },
+        'hr': { title: 'DEVOCEAN Lodge', subtitle: 'Ekološki smještaj blizu netaknute plaže, na odredištu za avanture svjetske klase.' },
+        'cs': { title: 'DEVOCEAN Lodge', subtitle: 'Ekologické ubytování poblíž nedotčené pláže v dobrodružné destinaci světové úrovně.' },
+        'tr': { title: 'DEVOCEAN Lodge', subtitle: 'Dünya çapında bir macera destinasyonunda, el değmemiş bir plajın yakınında çevre dostu konaklama.' },
         'zh-CN': { title: 'DEVOCEAN Lodge', subtitle: '在世界级探险胜地，享受邻近原始海滩的环保住宿。' },
         'zu': { title: 'DEVOCEAN Lodge', subtitle: 'Izindawo zokuhlala ezihambisana nemvelo eduze kolwandle olungakathintwa, endaweni yomhlaba wonke yezokuzijabulisa nokuzidela.' }
       };
 
-      // Country code to language mapping (matches main site logic)
-      var CC_TO_LANGUAGE = {
-        US: "en-US", GB: "en-GB", IE: "en-GB", AU: "en-GB", NZ: "en-GB", CA: "en-GB", 
-        ZA: "en-GB", NA: "en-GB", ZW: "en-GB", BW: "en-GB", NG: "en-GB", GH: "en-GB", ZM: "en-GB", MW: "en-GB", 
-        SZ: "en-GB", LS: "en-GB", MU: "en-GB", SC: "en-GB", JM: "en-GB", TT: "en-GB", 
-        BB: "en-GB", FJ: "en-GB", PG: "en-GB", SB: "en-GB", VU: "en-GB",
-        PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
-        NL: "nl-NL", BE: "nl-NL", SR: "nl-NL",
-        FR: "fr-FR", MC: "fr-FR", LU: "fr-FR", CH: "fr-FR", RE: "fr-FR", 
-        SN: "fr-FR", CI: "fr-FR", CM: "fr-FR", DJ: "fr-FR", NC: "fr-FR", PF: "fr-FR",
-        IT: "it-IT", SM: "it-IT", VA: "it-IT",
-        DE: "de-DE", AT: "de-DE", LI: "de-DE",
-        ES: "es-ES", MX: "es-ES", AR: "es-ES", CO: "es-ES", PE: "es-ES", VE: "es-ES",
-        CL: "es-ES", EC: "es-ES", GT: "es-ES", CU: "es-ES", BO: "es-ES", DO: "es-ES",
-        HN: "es-ES", PY: "es-ES", SV: "es-ES", NI: "es-ES", CR: "es-ES", PA: "es-ES",
-        UY: "es-ES", GQ: "es-ES",
-        SE: "sv", FI: "sv",
-        PL: "pl",
-        JP: "ja-JP",
-        CN: "zh-CN", HK: "zh-CN", TW: "zh-CN", SG: "zh-CN",
-        RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
-        KE: "sw", TZ: "sw", UG: "sw"
-      };
-
-      var detectedLang = null;
-
-      // Priority 1: Use Cloudflare IP geolocation (same logic as main site)
-      if (window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
-        var countryCode = String(window.__CF_COUNTRY__).toUpperCase();
-        detectedLang = CC_TO_LANGUAGE[countryCode] || null;
-      }
-
-      // Priority 2: Fall back to stored language preference
-      if (!detectedLang) {
-        detectedLang = localStorage.getItem('site.lang');
-      }
-
-      // Priority 3: Default to British English
-      if (!detectedLang) {
-        detectedLang = 'en-GB';
-      }
+      var detectedLang = window.__DEVOCEAN_LOCALE__ || document.documentElement.lang || 'en-GB';
       
       // LCP Optimization: Skip text replacement for English (already in HTML)
       // This eliminates ~420ms render delay for majority of visitors
@@ -1391,137 +1357,8 @@
   }
   </script>
 
-  <!-- Locale initializer (moved to end for mobile FCP optimization) -->
-  <script>
-    (function () {
-      try {
-        var SUPPORTED = ["en", "pt", "nl", "fr", "it", "de", "es", "ptmz"];
-        var src = localStorage.getItem("site.lang_source") || "auto";
-        var curr = localStorage.getItem("site.currency") || null;
-        var lang = localStorage.getItem("site.lang") || null;
-
-        function normLang(nav) {
-          nav = String(nav || "en").toLowerCase();
-          var base = nav.split("-")[0];
-          if (base === "pt" && /-mz$/i.test(nav)) base = "ptmz";
-          if (base === "pt-pt" || base === "pt-br") base = "pt";
-          if (SUPPORTED.indexOf(base) === -1) base = "en";
-          return base;
-        }
-        function inferCurrency(langNow) {
-          if (window.__CF_COUNTRY__) {
-            var CC2CUR = {
-              GB: "GBP", IE: "EUR", NL: "EUR", BE: "EUR", FR: "EUR", DE: "EUR", IT: "EUR", ES: "EUR", PT: "EUR", 
-              AT: "EUR", FI: "EUR", SE: "SEK", PL: "PLN", GR: "EUR", NO: "NOK", DK: "DKK", CH: "CHF", CZ: "CZK", 
-              HU: "HUF", RO: "RON", HR: "EUR", SI: "EUR", SK: "EUR", EE: "EUR", LV: "EUR", LT: "EUR", MT: "EUR", CY: "EUR",
-              ZA: "ZAR", MZ: "MZN", KE: "KES", TZ: "TZS", UG: "UGX", ZW: "USD", BW: "BWP", NA: "NAD", 
-              EG: "EGP", MA: "MAD", AO: "AOA", GH: "GHS", NG: "NGN",
-              US: "USD", CA: "CAD", MX: "MXN", BR: "BRL", AR: "ARS", CL: "CLP", CO: "COP", PE: "PEN",
-              CN: "CNY", JP: "JPY", KR: "KRW", IN: "INR", TH: "THB", SG: "SGD", MY: "MYR", ID: "IDR", 
-              PH: "PHP", VN: "VND", AE: "AED", SA: "SAR", RU: "RUB",
-              AU: "AUD", NZ: "NZD"
-            };
-            var cc = String(window.__CF_COUNTRY__).toUpperCase();
-            if (CC2CUR[cc]) return CC2CUR[cc];
-          }
-          var list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language].filter(Boolean);
-          var HINT = { "de": "EUR", "nl": "EUR", "fr": "EUR", "it": "EUR", "es": "EUR", "en-gb": "GBP", "en-us": "USD", "en-za": "ZAR" };
-          var first = (list[0] || "").toLowerCase();
-          var firstBase = first.split('-')[0];
-          return HINT[first] || HINT[firstBase] || (langNow === "ptmz" ? "MZN" : "USD");
-        }
-
-        if (!localStorage.getItem("site.lang_source")) {
-          localStorage.setItem("site.lang_source", "auto");
-          src = "auto";
-        }
-
-        if (src === "auto") {
-          var detectedLang = null;
-          if (window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
-            var CC2LANG = {
-              US: "en", GB: "en", IE: "en", AU: "en", NZ: "en", CA: "en",
-              ZA: "en", NA: "en", ZW: "en", BW: "en", NG: "en", GH: "en",
-              PT: "pt", BR: "pt", MZ: "pt", AO: "pt",
-              NL: "nl", BE: "nl",
-              FR: "fr", MC: "fr", LU: "fr", CH: "fr", RE: "fr",
-              IT: "it", SM: "it", VA: "it",
-              DE: "de", AT: "de", LI: "de",
-              ES: "es", MX: "es", AR: "es", CO: "es", PE: "es", VE: "es",
-              CL: "es", EC: "es", GT: "es", CU: "es", BO: "es", DO: "es",
-              SE: "sv", FI: "sv",
-              PL: "pl",
-              JP: "ja", CN: "zh", RU: "ru"
-            };
-            var cc = String(window.__CF_COUNTRY__).toUpperCase();
-            detectedLang = CC2LANG[cc] || null;
-          }
-          if (!detectedLang) {
-            detectedLang = normLang(navigator.language);
-          }
-          localStorage.setItem("site.lang", detectedLang);
-          localStorage.setItem("site.currency", inferCurrency(detectedLang));
-          lang = detectedLang;
-          curr = localStorage.getItem("site.currency");
-        } else {
-          if (!lang) {
-            lang = normLang(navigator.language);
-            localStorage.setItem("site.lang", lang);
-          }
-          if (!curr) {
-            curr = inferCurrency(lang);
-            localStorage.setItem("site.currency", curr);
-          }
-        }
-        document.documentElement.setAttribute("lang", lang || "en");
-      } catch (e) { }
-    })();
-  </script>
-
-  <!-- Global locale setter -->
-  <script>
-    (function () {
-      if (window.setSiteLocale) return;
-      function normLang(s) {
-        s = String(s || '').toLowerCase().replace('_', '-');
-        if (s === 'pt-mz') s = 'ptmz';
-        if (s === 'pt-pt' || s === 'pt-br') s = 'pt';
-        if (/^[a-z]{2}-[a-z]{2}$/.test(s)) s = s.slice(0, 2);
-        return s || 'en';
-      }
-      function clampCur(c) {
-        if (!c) return null;
-        c = String(c).toUpperCase().replace(/[^A-Z]/g, '');
-        return c.length === 3 ? c : null;
-      }
-      function setPrefCookies(lang, currency) {
-        var host = location.hostname;
-        var isLocal = (host === "localhost") || (host === "127.0.0.1") || /^\d+\.\d+\.\d+\.\d+$/.test(host);
-        var domainPart = isLocal ? "" : ";domain=.devoceanlodge.com";
-        var securePart = location.protocol === "https:" ? ";Secure" : "";
-        var base = ";max-age=31536000;path=/;SameSite=Lax" + domainPart + securePart;
-        if (lang) document.cookie = "lang=" + lang + base;
-        if (currency) document.cookie = "currency=" + currency + base;
-      }
-      window.setSiteLocale = function setSiteLocale({ lang, currency } = {}) {
-        var L, C;
-        try {
-          L = lang ? normLang(lang) : (localStorage.getItem('site.lang') || 'en');
-          C = currency ? clampCur(currency) : (localStorage.getItem('site.currency') || 'USD');
-        } catch (e) {
-          L = lang ? normLang(lang) : 'en';
-          C = currency ? clampCur(currency) : 'USD';
-        }
-        try {
-          localStorage.setItem('site.lang', L);
-          localStorage.setItem('site.currency', C || 'USD');
-          localStorage.setItem('site.lang_source', 'user');
-          document.documentElement.setAttribute('lang', L);
-        } catch { }
-        setPrefCookies(L, C || 'USD');
-      };
-    })();
-  </script>
+  <!-- Language initialization and setSiteLocale run once, in the head, using
+       the shared browser-first resolver injected by Vite/Pages middleware. -->
 
   <!-- Trustindex modal fix: push popup below fixed header (per Trustindex support) -->
   <style>

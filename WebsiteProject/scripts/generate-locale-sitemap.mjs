@@ -19,6 +19,7 @@ const LOCALIZED_ROUTES = [
   '/experiences/safari',
   '/experiences/fishing',
   '/experiences/surfing',
+  '/experiences/lighthouse',
   '/why-ponta',
   '/ponta-do-ouro',
   '/ponta-do-ouro-accommodation',

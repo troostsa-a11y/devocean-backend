@@ -2,26 +2,15 @@ import { useState, useEffect, useMemo } from 'react';
 import { CRITICAL_NAV } from './critical.js';
 import { loadTranslation } from './loadTranslation.js';
 import { safeLocalStorage } from '../utils/safeStorage.js';
+import { resolveVisitorLanguage } from './visitorLanguage.js';
 import {
   DEFAULT_LOCALE,
-  LOCALES,
   localeFromPath,
   localizedUrl,
   normalizeLocale,
 } from './localeCatalog.js';
 
-const SUPPORTED_LANGS = LOCALES.map(({ code }) => code);
 const SUPPORTED_REGIONS = ["westEu", "eastEu", "asia", "americas", "africa", "oceania"];
-
-// Language-to-region mapping (module-level constant)
-const LANGUAGE_TO_REGION = {
-  'westEu': ['en-GB', 'pt-PT', 'nl-NL', 'fr-FR', 'it-IT', 'de-DE', 'es-ES', 'sv'],
-  'eastEu': ['pl', 'ro', 'sr', 'hr', 'cs'],
-  'asia': ['en-GB', 'ja-JP', 'zh-CN', 'ru', 'tr'],
-  'americas': ['en-US', 'pt-BR', 'es-ES', 'fr-FR'],
-  'africa': ['en-GB', 'fr-FR', 'pt-BR', 'af-ZA', 'zu', 'sw'],
-  'oceania': ['en-GB']
-};
 
 // Helper to get URL parameters
 function getUrlParam(name) {
@@ -140,70 +129,6 @@ const CC_TO_CONTINENT = {
   PF: "oceania", WS: "oceania", TO: "oceania", VU: "oceania", SB: "oceania",
 };
 
-// Map country codes to primary language (IP-based fallback)
-const CC_TO_LANGUAGE = {
-  // English-speaking countries
-  US: "en-US", GB: "en-GB", IE: "en-GB", AU: "en-GB", NZ: "en-GB", CA: "en-GB", 
-  ZA: "en-GB", NA: "en-GB", ZW: "en-GB", BW: "en-GB", NG: "en-GB", GH: "en-GB", ZM: "en-GB", MW: "en-GB", 
-  SZ: "en-GB", LS: "en-GB", MU: "en-GB", SC: "en-GB", JM: "en-GB", TT: "en-GB", 
-  BB: "en-GB", FJ: "en-GB", PG: "en-GB", SB: "en-GB", VU: "en-GB",
-  
-  // Portuguese-speaking countries
-  PT: "pt-PT", BR: "pt-BR", MZ: "pt-BR", AO: "pt-BR",
-  
-  // Dutch-speaking countries
-  NL: "nl-NL", BE: "nl-NL", SR: "nl-NL",
-  
-  // French-speaking countries  
-  FR: "fr-FR", MC: "fr-FR", LU: "fr-FR", CH: "fr-FR", RE: "fr-FR", 
-  SN: "fr-FR", CI: "fr-FR", CM: "fr-FR", DJ: "fr-FR", NC: "fr-FR", PF: "fr-FR",
-  
-  // Italian-speaking countries
-  IT: "it-IT", SM: "it-IT", VA: "it-IT",
-  
-  // German-speaking countries
-  DE: "de-DE", AT: "de-DE", LI: "de-DE",
-  
-  // Spanish-speaking countries
-  ES: "es-ES", MX: "es-ES", AR: "es-ES", CO: "es-ES", PE: "es-ES", VE: "es-ES",
-  CL: "es-ES", EC: "es-ES", GT: "es-ES", CU: "es-ES", BO: "es-ES", DO: "es-ES",
-  HN: "es-ES", PY: "es-ES", SV: "es-ES", NI: "es-ES", CR: "es-ES", PA: "es-ES",
-  UY: "es-ES", GQ: "es-ES",
-  
-  // Swedish-speaking countries
-  SE: "sv", FI: "sv",
-  
-  // Polish-speaking countries
-  PL: "pl",
-
-  // Romanian-speaking countries
-  RO: "ro", MD: "ro",
-
-  // Serbian-speaking countries
-  RS: "sr", ME: "sr", BA: "sr",
-
-  // Croatian-speaking countries
-  HR: "hr",
-
-  // Czech-speaking countries
-  CZ: "cs",
-
-  // Turkish-speaking countries
-  TR: "tr",
-  
-  // Japanese-speaking countries
-  JP: "ja-JP",
-  
-  // Chinese-speaking countries/regions
-  CN: "zh-CN", HK: "zh-CN", TW: "zh-CN", SG: "zh-CN",
-  
-  // Russian-speaking countries
-  RU: "ru", BY: "ru", KZ: "ru", UA: "ru", UZ: "ru", KG: "ru",
-  
-  // Swahili-speaking countries
-  KE: "sw", TZ: "sw", UG: "sw",
-};
-
 // Meridian-based continent detection using GMT offsets
 const CONTINENT_MERIDIANS = {
   americas: { base: -5, min: -11, max: -3 },
@@ -237,38 +162,6 @@ export const DATE_LANG_BY_LANG = {
   "fr-FR": "fr-FR", "it-IT": "it-IT", "de-DE": "de-DE", "es-ES": "es-ES", "sv": "sv-SE", "pl": "pl-PL", "ro": "ro-RO", "sr": "sr-RS", "hr": "hr-HR", "cs": "cs-CZ", "tr": "tr-TR", "ja-JP": "ja-JP", "zh-CN": "zh-CN", "ru": "ru-RU", "af-ZA": "af-ZA", "zu": "en-GB", "sw": "sw-KE",
 };
 
-function normLang(raw) {
-  if (!raw) return "en-GB";
-  let s = String(raw).toLowerCase();
-  
-  // Preserve full Hotelrunner locale codes with proper capitalization
-  if (s === "en-gb" || s === "en") return "en-GB";
-  if (s === "en-us") return "en-US";
-  if (s === "pt-pt") return "pt-PT";
-  if (s === "pt-br") return "pt-BR";
-  if (s === "pt-mz") return "pt-BR"; // Mozambique uses Brazilian variant
-  if (s === "nl-nl" || s === "nl") return "nl-NL";
-  if (s === "fr-fr" || s === "fr") return "fr-FR";
-  if (s === "it-it" || s === "it") return "it-IT";
-  if (s === "de-de" || s === "de") return "de-DE";
-  if (s === "es-es" || s === "es") return "es-ES";
-  if (s === "ja-jp" || s === "ja") return "ja-JP";
-  if (s === "zh-cn" || s === "zh") return "zh-CN";
-  if (s === "af-za" || s === "af") return "af-ZA";
-  if (s === "sv") return "sv";
-  if (s === "pl") return "pl";
-  if (s === "ro") return "ro";
-  if (s === "sr" || s === "sr-rs" || s === "sr-latn" || s === "sr-latn-rs") return "sr";
-  if (s === "hr" || s === "hr-hr" || s === "hr-ba") return "hr";
-  if (s === "cs" || s === "cs-cz" || s === "cz") return "cs";
-  if (s === "tr" || s === "tr-tr" || s === "tr-cy") return "tr";
-  if (s === "ru") return "ru";
-  if (s === "zu") return "zu";
-  if (s === "sw") return "sw";
-  
-  return "en-GB";
-}
-
 function clampCur(cur) {
   if (!cur) return null;
   const c = String(cur).toUpperCase().replace(/[^A-Z]/g, "");
@@ -282,7 +175,17 @@ function getCountryCode() {
   const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
   
   try {
-    // Check cache first (instant return)
+    // The current edge signal wins over yesterday's cached country (travel,
+    // VPN changes, etc.). Language selection never changes this country.
+    const edgeCountry = typeof window !== 'undefined'
+      ? String(window.__CF_COUNTRY__ || '').toUpperCase() : '';
+    if (/^[A-Z]{2}$/.test(edgeCountry)) {
+      safeLocalStorage.setItem(CACHE_KEY, edgeCountry);
+      safeLocalStorage.setItem(CACHE_TIMESTAMP_KEY, String(Date.now()));
+      return edgeCountry;
+    }
+
+    // Reuse the cache only when no current edge signal is available.
     const cached = safeLocalStorage.getItem(CACHE_KEY);
     const cachedTime = safeLocalStorage.getItem(CACHE_TIMESTAMP_KEY);
     
@@ -291,15 +194,6 @@ function getCountryCode() {
       if (age < CACHE_TTL) {
         return cached; // Instant return from cache
       }
-    }
-    
-    // Use Cloudflare's IP-based country detection (production only)
-    if (typeof window !== 'undefined' && window.__CF_COUNTRY__ && window.__CF_COUNTRY__ !== '') {
-      const country = window.__CF_COUNTRY__;
-      // Update cache
-      safeLocalStorage.setItem(CACHE_KEY, country);
-      safeLocalStorage.setItem(CACHE_TIMESTAMP_KEY, String(Date.now()));
-      return country;
     }
     
     // Return cached value even if expired (better than null)
@@ -346,72 +240,18 @@ function getTimezoneContinent() {
 }
 
 function pickInitialLang() {
-  // URL override takes highest priority (booking engine return)
-  const urlLang = getUrlParam('lang');
-  if (urlLang) {
-    const normalized = normalizeLangCode(urlLang);
-    if (normalized) {
-      return normalized;
-    }
-  }
-
-  // Check if user manually selected language (vs auto-detection)
-  const langSource = safeLocalStorage.getItem("site.lang_source");
-  const stored = safeLocalStorage.getItem("site.lang");
-  
-  // CRITICAL: If user manually selected language, ALWAYS respect it (even without version)
-  // This prevents language reset after visiting booking pages
-  if (langSource === "user" && stored) {
-    const normalized = normalizeLangCode(stored);
-    if (normalized) {
-      return normalized;
-    }
-  }
-
-  // Priority: Use Cloudflare IP geolocation (same as hero placeholder)
-  const cc = getCountryCode();
-  if (cc && CC_TO_LANGUAGE[cc]) {
-    return CC_TO_LANGUAGE[cc];
-  }
-
-  // Fallback to stored language (auto-detected previously, but normalize it)
-  if (stored) {
-    const normalized = normalizeLangCode(stored);
-    if (normalized) {
-      return normalized;
-    }
-  }
-
-  // Fallback to browser language
-  const list = (navigator.languages && navigator.languages.length)
-    ? navigator.languages
-    : [navigator.language].filter(Boolean);
-
-  for (const l of list) {
-    const lower = String(l || "").toLowerCase();
-    const normalized = normLang(lower);
-    if (SUPPORTED_LANGS.includes(normalized)) return normalized;
-  }
-
-  // Final fallback to UK English
-  return "en-GB";
-}
-
-// Deferred lang detection (runs after render in useEffect)
-function detectLangFromIP() {
-  const cc = getCountryCode();
-  
-  // Use IP-based country → language mapping
-  if (cc && CC_TO_LANGUAGE[cc]) {
-    return CC_TO_LANGUAGE[cc];
-  }
-
-  // Fallback: Americas → US English, others → UK English
-  const continent = cc ? CC_TO_CONTINENT[cc] : null;
-  if (continent === "americas") {
-    return "en-US";
-  }
-  return "en-GB";
+  const selected = resolveVisitorLanguage({
+    pathname: window.location.pathname,
+    queryLanguage: getUrlParam('lang'),
+    storedLanguage: safeLocalStorage.getItem('site.lang'),
+    storedSource: safeLocalStorage.getItem('site.lang_source'),
+    browserLanguages: navigator.languages?.length
+      ? navigator.languages : [navigator.language].filter(Boolean),
+    countryCode: getCountryCode(),
+  });
+  safeLocalStorage.setItem('site.lang', selected.lang);
+  safeLocalStorage.setItem('site.lang_source', selected.source);
+  return selected.lang;
 }
 
 function pickInitialCurrency() {
@@ -428,17 +268,9 @@ function pickInitialCurrency() {
 }
 
 function pickInitialRegion() {
-  // Fast path: Return stored region immediately (no detection)
-  const saved = safeLocalStorage.getItem("site.region");
-  const savedVersion = safeLocalStorage.getItem("site.region.version");
-  
-  // Version 3: West/East Europe split (May 2026)
-  if (saved && SUPPORTED_REGIONS.includes(saved) && savedVersion === "3") {
-    return saved;
-  }
-  
-  // Fallback to West Europe (defer IP-based detection to useEffect)
-  return "westEu";
+  // Country injection is already available; no network lookup or deferred
+  // language/region migration is needed.
+  return detectRegionFromIP();
 }
 
 // Deferred region detection (runs after render in useEffect)
@@ -458,19 +290,6 @@ function detectRegionFromIP() {
   
   // Final fallback to West Europe as default
   return "westEu";
-}
-
-// Find compatible region for a language (module-level helper)
-function findRegionForLanguage(language) {
-  // Find first region that supports this language
-  for (const [regionKey, languages] of Object.entries(LANGUAGE_TO_REGION)) {
-    if (languages.includes(language)) {
-      return regionKey;
-    }
-  }
-  
-  // Fallback to IP-detected region or westEu
-  return detectRegionFromIP();
 }
 
 // Dynamically load translations for a specific language
@@ -600,8 +419,10 @@ export function useLocale() {
     // checked before storage, browser, or legacy query-string preferences.
     const pathLocale = localeFromPath(window.location.pathname);
     if (pathLocale) {
+      const manualChoice = safeLocalStorage.getItem('site.lang_source') === 'user' &&
+        normalizeLangCode(safeLocalStorage.getItem('site.lang')) === pathLocale.code;
       safeLocalStorage.setItem("site.lang", pathLocale.code);
-      safeLocalStorage.setItem("site.lang_source", "url");
+      safeLocalStorage.setItem("site.lang_source", manualChoice ? "user" : "url");
       return pathLocale.code;
     }
 
@@ -617,17 +438,11 @@ export function useLocale() {
       }
     }
     
-    // Priority 2: localStorage (MUST normalize in case old short codes are stored)
-    const stored = safeLocalStorage.getItem("site.lang");
-    if (stored) {
-      const normalized = normalizeLangCode(stored);
-      if (normalized) {
-        // Update localStorage with normalized value to prevent future issues
-        if (normalized !== stored) {
-          safeLocalStorage.setItem("site.lang", normalized);
-        }
-        return normalized;
-      }
+    // Match the resolver that ran before first paint. Cached automatic guesses
+    // must not outrank the browser, and idle IP detection must not replace it.
+    if (window.__DEVOCEAN_LOCALE_BOOTSTRAPPED__) {
+      const initial = normalizeLangCode(window.__DEVOCEAN_LOCALE__);
+      if (initial) return initial;
     }
     
     // Priority 3: Auto-detect
@@ -680,50 +495,18 @@ export function useLocale() {
   });
 
   const [region, setRegionState] = useState(() => {
-    // Check if language was set via URL parameter
-    const urlLang = getUrlParam('lang');
-    if (urlLang) {
-      const normalized = normalizeLangCode(urlLang);
-      if (normalized) {
-        // Check if existing stored region already supports this language
-        const storedRegion = safeLocalStorage.getItem("site.region");
-        if (storedRegion && SUPPORTED_REGIONS.includes(storedRegion)) {
-          const storedRegionLanguages = LANGUAGE_TO_REGION[storedRegion] || [];
-          if (storedRegionLanguages.includes(normalized)) {
-            // Existing region supports this language - keep it!
-            return storedRegion;
-          }
-        }
-        
-        // Existing region doesn't support this language, find compatible one
-        const compatibleRegion = findRegionForLanguage(normalized);
-        if (compatibleRegion) {
-          safeLocalStorage.setItem("site.region", compatibleRegion);
-          safeLocalStorage.setItem("site.region.version", "3");
-          safeLocalStorage.setItem("site.region.source", "auto"); // Auto-set based on language
-          return compatibleRegion;
-        }
-      }
-    }
-    
-    // Only trust localStorage if it has the correct version (IP-based)
     const stored = safeLocalStorage.getItem("site.region");
-    const version = safeLocalStorage.getItem("site.region.version");
-    
-    if (stored && SUPPORTED_REGIONS.includes(stored) && version === "3") {
+    if (stored && SUPPORTED_REGIONS.includes(stored) &&
+        safeLocalStorage.getItem('site.region.source') === 'user') {
       return stored;
     }
-    
-    // Clear old cached value and detect fresh
-    if (stored && version !== "3") {
-      safeLocalStorage.removeItem("site.region");
-      safeLocalStorage.removeItem("site.region.version");
-      // Clear source too so the lang/region compatibility effect can re-align
-      // mismatched language/region after the West/East-EU split (May 2026).
-      safeLocalStorage.removeItem("site.region.source");
-    }
-    
-    return pickInitialRegion();
+    // Geography must not be inferred from the chosen language. Re-evaluate
+    // automatic region against the current country, not a cached language group.
+    const detected = pickInitialRegion();
+    safeLocalStorage.setItem('site.region', detected);
+    safeLocalStorage.setItem('site.region.version', '3');
+    safeLocalStorage.setItem('site.region.source', 'auto');
+    return detected;
   });
 
   // Initialize with critical nav for header (immediate render)
@@ -737,85 +520,15 @@ export function useLocale() {
     setCriticalUI(getCriticalUI(lang));
   }, [lang]);
 
-  // Ensure region is compatible with current language
-  useEffect(() => {
-    const regionSource = safeLocalStorage.getItem("site.region.source");
-    
-    // Only auto-adjust region if it wasn't manually selected by user
-    if (regionSource === "user") {
-      return; // User manually selected region, don't override
-    }
-    
-    const currentRegionLanguages = LANGUAGE_TO_REGION[region] || [];
-    
-    // If current language is not in current region, find compatible region
-    if (!currentRegionLanguages.includes(lang)) {
-      const compatibleRegion = findRegionForLanguage(lang);
-      if (compatibleRegion && compatibleRegion !== region) {
-        setRegionState(compatibleRegion);
-        safeLocalStorage.setItem("site.region", compatibleRegion);
-        safeLocalStorage.setItem("site.region.version", "3");
-        safeLocalStorage.setItem("site.region.source", "auto");
-      }
-    }
-  }, [lang, region]); // Removed findRegionForLanguage from dependencies to prevent infinite loop
-
-  // Deferred IP-based detection (runs during idle time for better INP)
+  // Region/currency remain IP-aware; language has already been resolved before
+  // first paint and is never re-selected by a deferred country lookup.
   useEffect(() => {
     // Use requestIdleCallback to defer heavy detection logic to idle time
     // This prevents blocking the main thread during initial render/hydration
     const scheduleDetection = () => {
       const callback = () => {
-        const hasStoredLang = safeLocalStorage.getItem("site.lang");
         const hasStoredRegion = safeLocalStorage.getItem("site.region");
-        const langSource = safeLocalStorage.getItem("site.lang_source");
-        const langVersion = safeLocalStorage.getItem("site.lang.version");
-        
-        // Version 2: Force IP-based re-detection (Nov 2025 - fix language detection)
-        const CURRENT_VERSION = "2";
-        
-        // CRITICAL: Always skip if user has manually selected language or came from booking engine
-        // This prevents overriding user preferences during navigation
-        if (langSource === "user" || langSource === "url") {
-          // Set version flag even for user-selected languages to prevent re-detection
-          if (langVersion !== CURRENT_VERSION) {
-            safeLocalStorage.setItem("site.lang.version", CURRENT_VERSION);
-          }
-          return;
-        }
-        
-        // Force re-detection if version is old or missing (only for auto-detected languages)
-        if (langVersion !== CURRENT_VERSION) {
-          const detectedLang = detectLangFromIP();
-          const detectedRegion = detectRegionFromIP();
-          
-          if (detectedLang && detectedLang !== lang) {
-            setLangState(detectedLang);
-            safeLocalStorage.setItem("site.lang", detectedLang);
-            safeLocalStorage.setItem("site.lang_source", "auto");
-            safeLocalStorage.setItem("site.lang.version", CURRENT_VERSION);
-          }
-          
-          if (detectedRegion && detectedRegion !== region) {
-            setRegionState(detectedRegion);
-            safeLocalStorage.setItem("site.region", detectedRegion);
-            safeLocalStorage.setItem("site.region.version", "3");
-          }
-          return;
-        }
-        
-        // Skip if we already have stored preferences with correct version
-        if (hasStoredLang && hasStoredRegion) return;
-        
-        // Detect language from IP if not stored
-        if (!hasStoredLang) {
-          const detectedLang = detectLangFromIP();
-          if (detectedLang && detectedLang !== lang) {
-            setLangState(detectedLang);
-            safeLocalStorage.setItem("site.lang", detectedLang);
-            safeLocalStorage.setItem("site.lang_source", "ip");
-          }
-        }
+        if (safeLocalStorage.getItem('site.region.source') === 'user') return;
         
         // Detect region from IP if not stored
         if (!hasStoredRegion) {
@@ -904,7 +617,7 @@ export function useLocale() {
     if (!normalized) return;
     safeLocalStorage.setItem("site.lang", normalized);
     safeLocalStorage.setItem("site.lang_source", "user");
-    safeLocalStorage.setItem("site.lang.version", "2"); // Mark with current version to prevent auto-detection override
+    window.__DEVOCEAN_LOCALE_API__?.rememberLanguage(normalized);
 
     // A full navigation is deliberate: it makes the URL, edge-generated
     // metadata, initial HTML, and hydrated interface change as one unit.

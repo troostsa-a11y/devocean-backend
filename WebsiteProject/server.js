@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { readFile, access } from 'fs/promises';
 import { LOCALES, localeFromPath } from './src/i18n/localeCatalog.js';
+import { injectLocaleBootstrap } from './src/i18n/localeBootstrap.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -687,9 +688,17 @@ app.get('/api/fx', async (req, res) => {
 // intercepts extensionless paths. Production (CF Pages) finds these as static
 // assets via context.next(); dev needs an explicit route.
 for (const page of ['safari', 'comfort', 'cottage', 'chalet']) {
-  app.get(`/${page}`, (_req, res) => {
-    res.set('Cache-Control', 'no-store');
-    res.sendFile(join(__dirname, `${page}.html`));
+  app.get(`/${page}`, async (req, res, next) => {
+    try {
+      const html = await readFile(join(__dirname, `${page}.html`), 'utf-8');
+      const raw = String(req.headers['cf-ipcountry'] || '');
+      const cc = /^[A-Za-z]{2}$/.test(raw) ? raw.toUpperCase() : '';
+      const bootstrap = `<script>window.__CF_COUNTRY__="${cc}";window.__DEVOCEAN_LOCALE__="en-GB";</script>`;
+      res.set('Content-Type', 'text/html').set('Cache-Control', 'no-store')
+        .send(injectLocaleBootstrap(html).replace('<head>', `<head>${bootstrap}`));
+    } catch (error) {
+      next(error);
+    }
   });
 }
 
@@ -698,14 +707,19 @@ for (const page of ['safari', 'comfort', 'cottage', 'chalet']) {
 // locale marker consumed by accommodation-detail-i18n.js.
 for (const locale of LOCALES.filter(({ path }) => path)) {
   for (const page of ['safari', 'comfort', 'cottage', 'chalet']) {
-    app.get(`/${locale.path}/${page}`, async (_req, res, next) => {
+    app.get(`/${locale.path}/${page}`, async (req, res, next) => {
       try {
         const html = await readFile(join(__dirname, `${page}.html`), 'utf-8');
+        const raw = String(req.headers['cf-ipcountry'] || '');
+        const cc = /^[A-Za-z]{2}$/.test(raw) ? raw.toUpperCase() : '';
+        const bootstrap = `<script>window.__CF_COUNTRY__="${cc}";window.__DEVOCEAN_LOCALE__="${locale.code}";</script>`;
         res
           .status(200)
           .set('Content-Type', 'text/html')
           .set('Cache-Control', 'no-store')
-          .send(html.replace('<head>', `<head><script>window.__DEVOCEAN_LOCALE__="${locale.code}";</script>`));
+          .send(injectLocaleBootstrap(html)
+            .replace(/<html\b[^>]*>/i, `<html lang="${locale.code}">`)
+            .replace('<head>', `<head>${bootstrap}`));
       } catch (error) {
         next(error);
       }

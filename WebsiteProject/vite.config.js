@@ -6,6 +6,7 @@ import preloadRouteChunks from './vite-plugin-preload-route-chunks.js';
 import { rmSync, existsSync } from 'fs';
 import { execSync } from 'child_process';
 import { resolve } from 'path';
+import { injectLocaleBootstrap } from './src/i18n/localeBootstrap.js';
 
 // Single source of truth for the Mia voice-receptionist Render URL.
 // Change this one constant if the service URL ever moves (custom subdomain, etc.).
@@ -38,7 +39,7 @@ const injectMiaUrl = () => ({
     // https:// URL in place first, Vite correctly ignores it as external.
     order: 'pre',
     handler(html) {
-      return html.replaceAll('%%MIA_URL%%', MIA_URL);
+      return injectLocaleBootstrap(html.replaceAll('%%MIA_URL%%', MIA_URL));
     }
   }
 });

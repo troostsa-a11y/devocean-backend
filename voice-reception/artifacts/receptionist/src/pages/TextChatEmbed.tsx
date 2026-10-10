@@ -55,7 +55,9 @@ export default function TextChatEmbed() {
   const _params = new URLSearchParams(window.location.search);
   const lang = _params.get("lang") ?? "en";
   const currency = _params.get("currency") ?? undefined;
-  const c = CHAT_STRINGS[lang] ?? CHAT_STRINGS.en;
+  // Keep the full locale in API requests, while shared UI copy is keyed by
+  // language. A native de-DE/pt-PT/etc. must not show the English greeting.
+  const c = CHAT_STRINGS[lang.toLowerCase().replace(/_/g, "-").split("-")[0]] ?? CHAT_STRINGS.en;
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");

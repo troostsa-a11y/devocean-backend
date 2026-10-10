@@ -1,4 +1,5 @@
 import { ROUTE_DESCRIPTIONS } from '../src/utils/routeDescriptions.js';
+import { injectLocaleBootstrap } from '../src/i18n/localeBootstrap.js';
 import {
   DEFAULT_LOCALE,
   allHreflangPaths,
@@ -497,6 +498,15 @@ export const STATIC_UNIT_ASSETS = new Map([
 
 // ---------------------------------------------------------------------------
 
+function explicitLocaleRedirect(target, locale) {
+  const headers = new Headers({ Location: target, 'Cache-Control': 'no-store' });
+  headers.append('Set-Cookie', `dv_lang=${encodeURIComponent(locale)}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`);
+  // One-use, short-lived signal: the redirected request must not lose an
+  // explicit English choice to an older localStorage preference.
+  headers.append('Set-Cookie', `dv_lang_entry=${encodeURIComponent(locale)}; Max-Age=60; Path=/; SameSite=Lax; Secure`);
+  return new Response(null, { status: 301, headers });
+}
+
 export async function onRequest(context) {
   try {
     const requestUrl = new URL(context.request.url);
@@ -510,7 +520,7 @@ export async function onRequest(context) {
     if (enUsMatch) {
       const rootPath = enUsMatch[1] ? `/${enUsMatch[1]}` : '/';
       const target = `${rootPath}${requestUrl.search}${requestUrl.hash}`;
-      return Response.redirect(new URL(target, requestUrl).href, 301);
+      return explicitLocaleRedirect(new URL(target, requestUrl).href, 'en-US');
     }
 
     const requestLocale = localeFromPath(requestPathname);
@@ -564,7 +574,9 @@ export async function onRequest(context) {
     if (legacyLocale && !requestLocale) {
       searchParams.delete('lang');
       const target = localizedUrl(pathname, legacyLocale, searchParams.toString(), requestUrl.hash);
-      return Response.redirect(new URL(target, requestUrl).href, 301);
+      // English has no URL prefix. Keep an explicit ?lang=en choice when the
+      // browser would otherwise auto-select a different language at the root.
+      return explicitLocaleRedirect(new URL(target, requestUrl).href, legacyLocale);
     }
 
     // Old HotelRunner return URLs used title-cased locale paths such as
@@ -572,7 +584,10 @@ export async function onRequest(context) {
     if (!requestLocale && /^\/[a-z]{2}(?:-[A-Za-z]{2})?$/.test(requestPathname)) {
       const oldLocale = normalizeLocale(requestPathname.slice(1));
       if (oldLocale) {
-        return Response.redirect(new URL(localizedUrl('/', oldLocale, searchParams.toString(), requestUrl.hash), requestUrl).href, 301);
+        return explicitLocaleRedirect(
+          new URL(localizedUrl('/', oldLocale, searchParams.toString(), requestUrl.hash), requestUrl).href,
+          oldLocale,
+        );
       }
     }
 
@@ -671,6 +686,7 @@ export async function onRequest(context) {
 
     // ── 1. Inject CF country for client-side currency detection ──────────────
     const countryInjection = `<script>window.__CF_COUNTRY__="${countryCode}";window.__DEVOCEAN_LOCALE__="${locale.code}";</script>`;
+    html = injectLocaleBootstrap(html);
     html = html.replace('<head>', `<head>${countryInjection}`);
     html = html.replace(/<html\b[^>]*>/i, `<html lang="${locale.code}">`);
 

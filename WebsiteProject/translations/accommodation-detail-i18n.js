@@ -317,7 +317,10 @@ const TRANSLATIONS = {
 
 // Normalize language code to Hotelrunner locale format
 function normLang(raw) {
-  if (!raw) return "en-GB";
+  if (window.__DEVOCEAN_LOCALE_API__) {
+    return window.__DEVOCEAN_LOCALE_API__.normalizeLanguage(raw);
+  }
+  if (!raw) return null;
   let s = String(raw).toLowerCase();
   
   // Preserve full Hotelrunner locale codes with proper capitalization
@@ -348,7 +351,15 @@ function normLang(raw) {
   if (s === "ro" || s.startsWith("ro-")) return "ro";
   if (s === "mo" || s.startsWith("mo-")) return "ro";
 
-  return "en-GB";
+  return null;
+}
+
+function readAccommodationPreference(key) {
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+
+function writeAccommodationPreference(key, value) {
+  try { localStorage.setItem(key, value); } catch { /* optional preference storage */ }
 }
 
 // Get URL parameter
@@ -359,11 +370,15 @@ function getUrlParam(name) {
 
 // Detect language
 function detectLanguage() {
+  if (window.__DEVOCEAN_LOCALE_BOOTSTRAPPED__ &&
+      SUPPORTED_LANGS.includes(window.__DEVOCEAN_LOCALE__)) {
+    return window.__DEVOCEAN_LOCALE__;
+  }
   // 1. The edge sets this for stable locale URLs. It must win over a visitor's
   // stored preference so /pt-pt/chalet always opens in Portuguese.
   const edgeLocale = normLang(window.__DEVOCEAN_LOCALE__);
   if (edgeLocale && SUPPORTED_LANGS.includes(edgeLocale)) {
-    localStorage.setItem('site.lang', edgeLocale);
+    writeAccommodationPreference('site.lang', edgeLocale);
     return edgeLocale;
   }
 
@@ -373,13 +388,13 @@ function detectLanguage() {
     const normalized = normLang(urlLang);
     if (SUPPORTED_LANGS.includes(normalized)) {
       // Store in localStorage for consistency
-      localStorage.setItem('site.lang', normalized);
+      writeAccommodationPreference('site.lang', normalized);
       return normalized;
     }
   }
 
   // 3. Check localStorage
-  const stored = localStorage.getItem('site.lang');
+  const stored = readAccommodationPreference('site.lang');
   if (stored && SUPPORTED_LANGS.includes(stored)) {
     return stored;
   }
@@ -418,8 +433,8 @@ function detectLanguage() {
 // Detect currency
 function detectCurrency() {
   // 1. Check localStorage
-  const stored = localStorage.getItem('site.currency');
-  if (stored) {
+  const stored = readAccommodationPreference('site.currency');
+  if (stored && readAccommodationPreference('site.currency.source') === 'user') {
     return stored;
   }
 
@@ -429,6 +444,7 @@ function detectCurrency() {
     return CC_TO_CURRENCY[countryCode];
   }
 
+  if (stored) return stored;
   // 3. Default to USD
   return 'USD';
 }
@@ -684,7 +700,8 @@ async function applyTranslations(lang) {
   });
 
   // Update page language attribute
-  document.documentElement.lang = lang;
+  document.documentElement.lang = window.__DEVOCEAN_LOCALE_BOOTSTRAPPED__
+    ? window.__DEVOCEAN_LOCALE__ : lang;
 }
 
 // Initialize on page load - handle both loading and already-loaded states
