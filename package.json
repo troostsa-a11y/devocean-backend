@@ -6,6 +6,7 @@
   "scripts": {
     "postinstall": "node WebsiteProject/scripts/patch-braces.cjs",
     "test:braces-security": "node --test scripts/braces-security.test.mjs",
+    "test:nanoid-security": "node --test scripts/nanoid-security.test.mjs",
     "dev": "node start.js",
     "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/",
     "preview": "vite preview",

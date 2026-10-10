@@ -14,6 +14,12 @@ For security updates, preserve the workspace's minimum release age when an older
 
 **How to apply:** Check advisory fixed-version ranges and publication dates, then choose the newest eligible patched release rather than adding a release-age exception.
 
+An advisory can remain in the installed dependency tree after committed lockfiles already contain its fix.
+
+**Why:** Independent website and pnpm installations can retain older packages after another dependency update changes their lockfiles.
+
+**How to apply:** Compare installed consumer-resolved versions with lockfiles before updating manifests. Refresh stale trees with clean or frozen installs, and run attack regressions against the actual installed copies.
+
 Check narrowly targeted pnpm updates for unrelated override and peer-resolution changes.
 
 **Why:** A recursive transitive update can also re-resolve existing range-based overrides, upgrading unrelated packages and rewriting their peer snapshots.
