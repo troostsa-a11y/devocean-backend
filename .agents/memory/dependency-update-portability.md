@@ -20,6 +20,12 @@ Check narrowly targeted pnpm updates for unrelated override and peer-resolution 
 
 **How to apply:** Inspect the entire lockfile diff, preserve unrelated resolutions, and verify the resulting lockfile with a frozen install before testing.
 
+Verify the advisory's attack scenarios directly rather than relying solely on its first-patched-version label.
+
+**Why:** A release marked fixed for the PostCSS source-map advisory blocked directory traversal but still disclosed absolute-path maps when the input filename was omitted.
+
+**How to apply:** Exercise the described edge cases against the installed release. If a partial fix remains, choose an eligible newer patch and verify again.
+
 Do not use the project's DOM emulators as the sole evidence for sanitizer browser compatibility.
 
 **Why:** Happy DOM discarded benign content during DOMPurify smoke tests, while the installed jsdom could not start because its expected Undici internals were absent. The actual legal-page browser preview rendered normally.
