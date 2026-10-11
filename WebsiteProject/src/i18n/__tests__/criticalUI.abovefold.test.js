@@ -40,6 +40,11 @@ describe('first-render header and hero translations', () => {
     },
   );
 
+  it('uses "Ga duiken" on the Dutch diving button before and after translations load', () => {
+    expect(getCriticalUI('nl-NL').hero.goDiving).toBe('Ga duiken');
+    expect(FULL_UI_MODULES['../langs/nl-NL.js'].hero.goDiving).toBe('Ga duiken');
+  });
+
   it('keeps complete English fallbacks for an unsupported locale', () => {
     const fallback = getCriticalUI('xx-UNKNOWN');
     const english = getCriticalUI('en-GB');
