@@ -33,12 +33,15 @@ export default function LocationSection({ ui }) {
             <a href="/ponta-do-ouro" className="text-[#9e4b13] hover:underline">Destination guide</a>
           </p>
         </div>
-        <div className="rounded-2xl overflow-hidden border shadow relative">
+        <div
+          className="min-h-[20rem] rounded-2xl overflow-hidden border shadow relative"
+          data-testid="location-map-frame"
+        >
           {!showInteractiveMap ? (
             <>
               {staticMapFailed ? (
                 <div
-                  className="w-full h-80 flex flex-col items-center justify-between py-10 bg-gradient-to-br from-sky-100 via-slate-100 to-emerald-50"
+                  className="absolute inset-0 w-full h-full flex flex-col items-center justify-between py-10 bg-gradient-to-br from-sky-100 via-slate-100 to-emerald-50"
                   data-testid="img-location-map-placeholder"
                 >
                   <MapPin size={36} className="text-sky-500/70" />
@@ -50,7 +53,7 @@ export default function LocationSection({ ui }) {
                   srcSet={staticMapSrcSet}
                   sizes="(min-width: 768px) 50vw, 100vw"
                   alt="DEVOCEAN Lodge Location Map"
-                  className="w-full h-80 object-cover"
+                  className="absolute inset-0 block w-full h-full object-cover"
                   loading="lazy"
                   onError={() => setStaticMapFailed(true)}
                   data-testid="img-location-map"
@@ -71,7 +74,7 @@ export default function LocationSection({ ui }) {
             <iframe
               title="DEVOCEAN Lodge Map"
               src={mapEmbed(MAP.lat, MAP.lng, MAP.zoom)}
-              className="w-full h-80"
+              className="absolute inset-0 block w-full h-full border-0"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
