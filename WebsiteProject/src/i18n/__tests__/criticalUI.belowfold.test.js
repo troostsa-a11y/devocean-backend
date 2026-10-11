@@ -26,9 +26,10 @@ describe('Dutch contact wording', () => {
   it.each([
     ['initial render', () => getCriticalUI('nl-NL')],
     ['loaded translation', () => FULL_UI_MODULES['../langs/nl-NL.js']],
-  ])('%s: uses all four requested wording corrections', (_, getUI) => {
+  ])('%s: uses the requested Dutch contact wording', (_, getUI) => {
     const ui = getUI();
     expect(ui.contact.headline).toBe('Contact & Wensen');
+    expect(ui.contact.formHint).toBe('Dit formulier is voor groepsaanvragen, transfers of speciale verzoeken.');
     expect(ui.location.howToFind.steps[0]).toBe('Rij het dorp binnen via de nieuwe geasfalteerde weg.');
     expect(ui.location.howToFind.steps[1]).toBe('Passeer de plaatselijke markt aan de linkerkant en rij omhoog de kleine heuvel op.');
     expect(ui.location.howToFind.transport).toBe('De afstand tussen het Lodge en de halte van het Openbaar Vervoer is een korte wandeling van slechts 150 meter.');

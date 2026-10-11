@@ -83,7 +83,7 @@ menu: "Menu",
         transport: "De afstand tussen het Lodge en de halte van het Openbaar Vervoer is een korte wandeling van slechts 150 meter.",
       },
     },
-    contact: { headline: "Contact & Wensen", blurb: "Voor directe beschikbaarheid en gegarandeerde prijzen klikt u op de knop Online boeken bovenaan de pagina.", formHint: "Dit formulier is voor groepen, transfers of speciale verzoeken.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Online boeken" },
+    contact: { headline: "Contact & Wensen", blurb: "Voor directe beschikbaarheid en gegarandeerde prijzen klikt u op de knop Online boeken bovenaan de pagina.", formHint: "Dit formulier is voor groepsaanvragen, transfers of speciale verzoeken.", call: "WhatsApp", email: "E-mail", directions: "Route", bookNow: "Online boeken" },
     form: {
       name: "Naam", email: "E-mail", stayLabel: "Geïnteresseerd in verblijf:", checkin: "Van", checkout: "Tot",
       unitLabel: "Mijn voorkeur gaat uit naar:",
