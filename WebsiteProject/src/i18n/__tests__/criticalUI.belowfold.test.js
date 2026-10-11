@@ -22,6 +22,19 @@ import { LOCALES } from '../localeCatalog.js';
 const ALL_LANGS = LOCALES.map(({ code }) => code);
 const FULL_UI_MODULES = import.meta.glob('../langs/*.js', { eager: true, import: 'UI' });
 
+describe('Dutch contact wording', () => {
+  it.each([
+    ['initial render', () => getCriticalUI('nl-NL')],
+    ['loaded translation', () => FULL_UI_MODULES['../langs/nl-NL.js']],
+  ])('%s: uses all four requested wording corrections', (_, getUI) => {
+    const ui = getUI();
+    expect(ui.contact.headline).toBe('Contact & Wensen');
+    expect(ui.location.howToFind.steps[0]).toBe('Rij het dorp binnen via de nieuwe geasfalteerde weg.');
+    expect(ui.location.howToFind.steps[1]).toBe('Passeer de plaatselijke markt aan de linkerkant en rij omhoog de kleine heuvel op.');
+    expect(ui.location.howToFind.transport).toBe('De afstand tussen het Lodge en de halte van het Openbaar Vervoer is een korte wandeling van slechts 150 meter.');
+  });
+});
+
 // Keys that every CRITICAL_NAV entry must carry for below-fold rendering.
 // experiencesFeatured is used by ExperiencesSection as a visible badge label.
 const REQUIRED_BELOW_FOLD_KEYS = [
