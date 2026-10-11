@@ -26,6 +26,7 @@ import { render, act, cleanup } from '@testing-library/react';
 
 const mockNavigate = vi.fn();
 let mockLocation = '/';
+let mockLoading = false;
 
 vi.mock('wouter', () => ({
   useLocation: () => [mockLocation, mockNavigate],
@@ -54,7 +55,7 @@ vi.mock('../../i18n/useLocale', () => ({
     setCurrency: vi.fn(),
     ui: { nav: {}, stay: {}, contact: {}, regions: {} },
     criticalUI: { nav: {}, stay: {}, contact: {}, regions: {} },
-    loading: false,
+    loading: mockLoading,
     bookingLocale: 'en',
     dateLocale: 'en-GB',
     countryCode: 'ZZ',
@@ -156,6 +157,7 @@ describe('App — hash-scroll lazy-section guard', () => {
       disconnect() {}
     };
     vi.useFakeTimers();
+    mockLoading = false;
     mockLocation = '/';
     setWindowLocation({ pathname: '/', hash: '#stay' });
   });
@@ -166,6 +168,10 @@ describe('App — hash-scroll lazy-section guard', () => {
     vi.useRealTimers();
     vi.restoreAllMocks();
     document.body.innerHTML = '';
+    delete document.documentElement.dataset.anchorNavigation;
+    for (const name of ['--topbar-h', '--header-h', '--stack-h']) {
+      document.documentElement.style.removeProperty(name);
+    }
     mockLocation = '/';
   });
 
@@ -298,6 +304,91 @@ describe('App — hash-scroll lazy-section guard', () => {
     });
 
     expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+  });
+
+  it.each([
+    ['/', 'location'],
+    ['/', 'contact'],
+    ['/de/', 'location'],
+    ['/de/', 'contact'],
+    ['/pt-pt/', 'location'],
+    ['/pt-pt/', 'contact'],
+    ['/zh-hans/', 'location'],
+    ['/zh-hans/', 'contact'],
+  ])('%s#%s: realigns the preserved section after the translated layout is ready', async (pathname, id) => {
+    mockLocation = pathname;
+    mockLoading = true;
+    setWindowLocation({ pathname, hash: `#${id}` });
+    const scrollSpy = vi.fn();
+    HTMLElement.prototype.scrollIntoView = scrollSpy;
+
+    let rerender;
+    await act(async () => { ({ rerender } = render(<App />)); });
+    expect(scrollSpy).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+    expect(document.documentElement.dataset.anchorNavigation).toBe(id);
+
+    // The translated navigation can be taller than the initial CSS defaults.
+    Object.defineProperty(document.querySelector('.topbar'), 'offsetHeight', { configurable: true, value: 48 });
+    Object.defineProperty(document.querySelector('header'), 'offsetHeight', { configurable: true, value: 72 });
+    scrollSpy.mockClear();
+    mockLoading = false;
+    await act(async () => { rerender(<App />); });
+
+    expect(scrollSpy).toHaveBeenCalledExactlyOnceWith({ behavior: 'instant', block: 'start' });
+    expect(scrollSpy.mock.contexts[0]).toBe(document.getElementById(id));
+    expect(document.documentElement.style.getPropertyValue('--stack-h')).toBe('120px');
+    expect(document.documentElement.style.getPropertyValue('--topbar-h')).toBe('48px');
+    expect(document.documentElement.style.getPropertyValue('--header-h')).toBe('72px');
+  });
+
+  it.each(['wheel', 'touchmove', 'pointerdown', 'keydown'])(
+    '%s: does not pull the visitor back when translations finish after an interaction',
+    async event => {
+      mockLoading = true;
+      setWindowLocation({ hash: '#contact' });
+      const scrollSpy = vi.fn();
+      HTMLElement.prototype.scrollIntoView = scrollSpy;
+      let rerender;
+      await act(async () => { ({ rerender } = render(<App />)); });
+      expect(scrollSpy).toHaveBeenCalled();
+      window.dispatchEvent(new Event(event));
+      scrollSpy.mockClear();
+
+      mockLoading = false;
+      await act(async () => { rerender(<App />); });
+      expect(scrollSpy).not.toHaveBeenCalled();
+    },
+  );
+
+  it('does not restart an expired missing-target wait when translations finish', async () => {
+    mockLoading = true;
+    setWindowLocation({ hash: '#missing' });
+    const lookupSpy = vi.spyOn(document, 'getElementById');
+    const targetLookups = () => lookupSpy.mock.calls.filter(([id]) => id === 'missing').length;
+    const observeSpy = vi.spyOn(MutationObserver.prototype, 'observe');
+    let rerender;
+    await act(async () => { ({ rerender } = render(<App />)); });
+    await act(async () => { vi.advanceTimersByTime(10_000); });
+    const atExpiry = targetLookups();
+    const observersAtExpiry = observeSpy.mock.calls.length;
+
+    mockLoading = false;
+    await act(async () => { rerender(<App />); });
+    expect(targetLookups()).toBe(atExpiry);
+    expect(observeSpy.mock.calls.length).toBe(observersAtExpiry);
+  });
+
+  it('clears the full-layout anchor marker after navigating away', async () => {
+    setWindowLocation({ hash: '#location' });
+    HTMLElement.prototype.scrollIntoView = vi.fn();
+    let rerender;
+    await act(async () => { ({ rerender } = render(<App />)); });
+    expect(document.documentElement.dataset.anchorNavigation).toBe('location');
+
+    mockLocation = '/story';
+    setWindowLocation({ pathname: '/story' });
+    await act(async () => { rerender(<App />); });
+    expect(document.documentElement.dataset.anchorNavigation).toBeUndefined();
   });
 
   // ── Test 3: unmount before scroll — scrollIntoView must NOT fire ───────────

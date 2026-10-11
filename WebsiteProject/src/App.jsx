@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState, lazy, Suspense, useTransition, useCallback } from 'react';
+import { useEffect, useMemo, useState, useRef, lazy, Suspense, useTransition, useCallback } from 'react';
+import { scrollToAnchor } from './utils/scrollToAnchor.js';
 import { Router, Route, Switch, useLocation } from 'wouter';
 import { useBrowserLocation } from 'wouter/use-browser-location';
 
@@ -98,6 +99,8 @@ export default function App() {
   const [currentHash, setCurrentHash] = useState(
     () => (typeof window === 'undefined' ? '' : window.location.hash)
   );
+  const alignedHashRef = useRef(null);
+  const previousLoadingRef = useRef(loading);
 
   // Wouter intentionally tracks pathname only. Hash-only navigation still
   // needs to re-run the lazy-section scroll effect, including when the
@@ -389,11 +392,10 @@ export default function App() {
       // stale target while the lazy sections are still mounting.
       if (window.location.hash.slice(1) !== hash) return false;
 
-      const element = document.getElementById(hash);
-      if (element) {
+      if (scrollToAnchor(hash)) {
+        alignedHashRef.current = currentHash;
         observer?.disconnect();
         clearTimeout(timeoutId);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return true;
       }
       return false;
@@ -407,13 +409,47 @@ export default function App() {
       timeoutId = window.setTimeout(() => observer?.disconnect(), 10_000);
     }
 
-    return () => {
-      cancelHeroHandoff();
+    // A pending translation must not pull a visitor back after they have
+    // started scrolling, using the keyboard, or interacting with the form.
+    const stopPendingAlignment = () => {
       cancelled = true;
+      alignedHashRef.current = null;
       observer?.disconnect();
       clearTimeout(timeoutId);
     };
+    const interactionEvents = ['wheel', 'touchmove', 'pointerdown', 'keydown'];
+    interactionEvents.forEach(event => {
+      window.addEventListener(event, stopPendingAlignment, { passive: true });
+    });
+
+    return () => {
+      cancelHeroHandoff();
+      cancelled = true;
+      alignedHashRef.current = null;
+      delete document.documentElement.dataset.anchorNavigation;
+      observer?.disconnect();
+      clearTimeout(timeoutId);
+      interactionEvents.forEach(event => {
+        window.removeEventListener(event, stopPendingAlignment);
+      });
+    };
   }, [location, currentHash]);
+
+  // A language change reloads the locale URL with the same hash. The first
+  // scroll can precede translated accommodation/experience content and the
+  // final header measurements. Correct an already-found target after that
+  // commit, without restarting expired lazy-target waits or replaying the
+  // smooth animation. Menu clicks keep their normal smooth scrolling.
+  useEffect(() => {
+    const translationsJustLoaded = previousLoadingRef.current && !loading;
+    previousLoadingRef.current = loading;
+    if (!translationsJustLoaded ||
+        (location !== '/' && location !== '/index.html') ||
+        !currentHash || window.location.hash !== currentHash ||
+        alignedHashRef.current !== currentHash) return;
+
+    scrollToAnchor(currentHash.slice(1), 'instant');
+  }, [loading, location, currentHash]);
 
   // Memoize expensive computations to reduce re-renders
   const bookUrl = useMemo(() => 

@@ -1,5 +1,5 @@
 - [Between-screens flash](between-screens-flash.md) — startTransition+Wouter custom hook keeps old route visible while lazy chunk loads; Suspense fallback = blank slate-50 div, no text
-- [Localized anchor navigation](localized-anchor-navigation.md) — lazy homepage anchors must observe DOM mounting, not rely on a short rAF polling window
+- [Localized anchor navigation](localized-anchor-navigation.md) — wait for mounting and stable translated layout; preserve the section below the header without overriding manual scrolling.
 - [Hero overlay LCP](hero-overlay-lcp.md) — full-viewport hero <img> is FCP-only, never LCP; LCP=late IAB-TCF CookieYes <p>; in-code hero-enlarge+font-compact FAILED live; real lever is CookieYes TCF config, not code
 - [Mobile menu pattern](mobile-menu-pattern.md) — always-in-DOM + CSS transform/opacity > mount/unmount for pre-hydration responsiveness and INP
 - [GA4 attribution architecture](ga4-attribution.md) — server-side purchase via one attributeBooking() helper called from BOTH createManualBooking (native, single fire point) and IMAP loop; exact direct cid or lang+country fallback

@@ -94,6 +94,14 @@ footer {
   contain-intrinsic-size: auto 720px;
 }
 
+/* A section link (including one preserved by language switching) must use the
+   real heights above it. Otherwise skipped sections expand after scrolling and
+   move Location/Contact away from the fixed header. Keep the optimization for
+   ordinary homepage visits, but not while restoring a section destination. */
+html[data-anchor-navigation] :is(#stay, #experiences, #gallery, #location, #contact, footer) {
+  content-visibility: visible;
+}
+
 /* ------------------ Topbar (brown) ------------------ */
 .topbar {
   position: fixed;
