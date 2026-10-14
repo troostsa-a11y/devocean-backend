@@ -831,7 +831,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         lines.push(`Lead with ${currency} amounts (what the guest sees on the page); ${currency} amounts are approximate conversions, not locked payment quotes.`);
       }
       const paymentCurrency = ['USD', 'EUR', 'ZAR'].includes(currency) ? currency : 'USD';
-      lines.push(`Online Stripe deposits are paid in ${paymentCurrency}. USD is the default; EUR or ZAR are used only when selected as the reservation's display currency. Other display currencies, including MZN, pay in USD. Any remaining arrival balance stays in ${baseCurrency}. The final card amount is calculated server-side and shown at Stripe before payment; never invent a locked FX quote.`);
+      lines.push(`Online Stripe deposits are paid in ${paymentCurrency}. USD is the default; EUR or ZAR are used only when selected as the reservation's display currency. Other display currencies, including MZN, pay in USD. Arrival balances are quoted in ${baseCurrency}. ${getPaymentStrings('en-GB').balanceCurrency} The final card amount is calculated server-side and shown at Stripe before payment; never invent a locked FX quote.`);
     }
     if (unavailableRooms.length > 0) {
       lines.push('');
@@ -866,11 +866,12 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     });
     const bookUrl = `https://devoceanlodge.com/book-direct?checkIn=${checkIn}&checkOut=${checkOut}&adults=${adults}${children > 0 ? `&children=${children}` : ''}${infants > 0 ? `&infants=${infants}` : ''}`;
     lines.push(`Total: ${withFx(quote.total)}. Deposit required now: ${withFx(quote.deposit)}. Balance on arrival: ${withFx(quote.balance)}.`);
+    if (quote.balance > 0) lines.push(getPaymentStrings('en-GB').balanceCurrency);
     if (quoteLoading || quoteError || quotedCurrencyRef.current !== currency) {
-      lines.push(`The guest's currency selection is ${currency}; the payment quote is being refreshed or unavailable. Do not quote a previous card amount or currency as current. Any arrival balance stays in ${quote.currency}.`);
+      lines.push(`The guest's currency selection is ${currency}; the payment quote is being refreshed or unavailable. Do not quote a previous card amount or currency as current. Arrival balances are quoted in ${quote.currency}.`);
     } else {
       const paymentCurrency = quote.payment?.currency || quote.currency;
-      lines.push(`Stripe deposit payment currency: ${paymentCurrency}. Any remaining balance is due on arrival in ${quote.currency}.`);
+      lines.push(`Stripe deposit payment currency: ${paymentCurrency}. Arrival balances are quoted in ${quote.currency}.`);
       if (quote.payment) {
         lines.push(`Estimated card deposit: ${money(quote.payment.deposit, paymentCurrency)}. Final amount is locked server-side at checkout and shown at Stripe before payment.`);
       }

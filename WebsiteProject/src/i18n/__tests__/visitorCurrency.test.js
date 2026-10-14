@@ -73,7 +73,8 @@ describe('payment notices cover every website language', () => {
       'paymentEstimate', 'reviewMsg', 'reviewTitle',
     ]);
     expect(strings.checkoutCurrency).toContain('{currency}');
-    expect(strings.balanceCurrency).toContain('{currency}');
+    expect(strings.balanceCurrency).not.toContain('{currency}');
+    for (const currency of ['MZN', 'ZAR', 'USD']) expect(strings.balanceCurrency).toContain(currency);
     expect(strings.paymentEstimate).toContain('{amount}');
     if (!lang.startsWith('en')) expect(strings).not.toEqual(getPaymentStrings('en-GB'));
   });

@@ -1,6 +1,6 @@
 ---
 name: Direct-booking FX display
-description: Owner-approved browser/manual currency priority and strict USD/EUR/ZAR booking-payment policy
+description: Owner-approved currency priority, online USD/EUR/ZAR charges, and arrival card/cash payment options
 ---
 
 ## Display priority
@@ -16,11 +16,11 @@ IP-only guess, especially when travelling.
 **How to apply:** preserve deliberate overrides across visits and use explicit
 regional browser tags, never an inferred region derived from the chosen language.
 
-## Strict booking-payment policy
+## Online booking-payment policy
 
 **Rule:** USD is the default/fallback payment currency. EUR or ZAR are permitted
 only when they match the chosen website currency. MZN and all other currencies
-may remain display estimates but must pay in USD. Native property prices,
+may remain display estimates but online deposits must pay in USD. Native property prices,
 deposit credits, arrival balance, vouchers and revenue attribution stay in the
 property's base currency. Gift vouchers remain USD-only.
 
@@ -35,6 +35,14 @@ not current FX. A failed FX lookup must be explicit, not a silent currency switc
 **Marin parity:** distinguish base prices, approximate display amounts, actual
 card-payment currency and the arrival balance. Do not claim all charges are USD
 when an EUR/ZAR payment has been quoted.
+
+## Arrival payment options
+
+**Rule:** The owner clarified: "Any remaining balance is due on arrival and can be paid by card or cash (MZN, ZAR or USD)."
+
+**Why:** Quoting the arrival balance in the property's base currency does not mean only USD is accepted; that wording misled guests.
+
+**How to apply:** Keep guest-facing arrival explanations and Marin's payment guidance consistent with these options. Preserve base-currency accounting and the separate online Stripe currency restrictions; arrival cash acceptance does not authorize MZN online charges.
 
 ## Stripe's separate currency localization
 

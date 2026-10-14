@@ -18,7 +18,7 @@ export default function BookingPaymentNotice({ payment, baseCurrency, balance, l
         {fmt(t.checkoutCurrency, { currency: paymentCurrency })}
       </p>
       {estimate && <p>{fmt(t.paymentEstimate, { amount: `≈ ${estimate}` })}</p>}
-      {balance > 0 && <p>{fmt(t.balanceCurrency, { currency: baseCurrency || 'USD' })}</p>}
+      {balance > 0 && <p>{t.balanceCurrency}</p>}
     </div>
   );
 }

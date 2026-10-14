@@ -1780,6 +1780,7 @@ describe('semi-flexible rate is the untouched default through quote and checkout
     expect(resultsCtx).toContain(String(SEMIFLEX_TOTAL));
     expect(resultsCtx).toContain(String(NONREF_TOTAL));
     expect(resultsCtx).toContain('Policy: 50% deposit');
+    expect(resultsCtx).toContain('Any remaining balance is due on arrival and can be paid by card or cash (MZN, ZAR or USD).');
     expect(resultsCtx).toMatch(/Continue with this option: https:\/\/devoceanlodge\.com\/book-direct\?[^\n]*&unit=safari/);
 
     // Add a unit and continue so the pre-payment MarinPanel context is built
@@ -1803,6 +1804,7 @@ describe('semi-flexible rate is the untouched default through quote and checkout
     expect(detailsCtx).toBeTruthy();
     expect(detailsCtx).toContain(String(SEMIFLEX_TOTAL));
     expect(detailsCtx).not.toContain(String(NONREF_TOTAL));
+    expect(detailsCtx).toContain('Any remaining balance is due on arrival and can be paid by card or cash (MZN, ZAR or USD).');
   });
 });
 
@@ -1973,7 +1975,9 @@ describe('Marin context separates FX display estimates, card currency and arriva
     expect(detailsCtx).toContain(String(TOTAL * EUR_RATE));  // approx EUR total
     expect(detailsCtx).toContain(String((TOTAL / 2) * EUR_RATE)); // approx EUR deposit
     expect(detailsCtx).toContain('Stripe deposit payment currency: EUR');
-    expect(detailsCtx).toContain('balance is due on arrival in USD');
+    expect(detailsCtx).toContain('Arrival balances are quoted in USD');
+    expect(detailsCtx).toContain('Any remaining balance is due on arrival and can be paid by card or cash (MZN, ZAR or USD).');
+    expect(detailsCtx).not.toContain('balance is due on arrival in USD');
     expect(detailsCtx).toContain('EUR display conversions are approximate');
   });
 });
