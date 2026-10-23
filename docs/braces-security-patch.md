@@ -1,7 +1,7 @@
 # braces stack-exhaustion mitigation
 
 GHSA-vfj7-8cjw-p6xm affects all published `braces` versions through 3.0.3.
-On 2026-10-10, the npm latest release is still 3.0.3 and the advisory lists
+On 2026-10-23, the npm latest release is still 3.0.3 and the advisory lists
 no patched release. Upgrading micromatch does not remove this dependency.
 
 We retain the true upstream version and apply a local depth guard:
@@ -25,3 +25,8 @@ Run `npm run test:braces-security` after installs. Version-only dependency
 scanners may still report 3.0.3: this is a local mitigation, not an upstream
 upgrade. Replace both patch mechanisms with an official fixed release once
 one is available, and keep the regression tests.
+
+The tests check both the patched pnpm store files and the copy resolved by
+installed micromatch consumers. If restored `node_modules` contains an
+unpatched copy or stale links, run `cd voice-reception && pnpm install
+--frozen-lockfile --force` to reapply the committed patch, then rerun the tests.

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, cpSync, rmSync, writeFileSync } from 'node:fs';
+import { readFileSync, readdirSync, realpathSync, mkdtempSync, cpSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { createRequire } from 'node:module';
@@ -20,6 +20,25 @@ const packages = [
   ['website npm', websiteRequire.resolve('braces')],
   ['reception pnpm', new URL(`braces@3.0.3_patch_hash=${patchHash}/node_modules/braces/index.js`, pnpmStore).pathname],
 ];
+
+test('reception micromatch consumers resolve the locked patched braces copy', () => {
+  // A patched store directory alone is not enough: stale consumer symlinks
+  // can still point at an unpatched package after restoring node_modules.
+  const consumers = readdirSync(pnpmStore).filter(name => name.startsWith('micromatch@'));
+  assert.ok(consumers.length > 0, 'Expected an installed micromatch consumer');
+  const expected = realpathSync(packages[2][1]);
+  for (const consumer of consumers) {
+    const consumerRequire = createRequire(new URL(`${consumer}/node_modules/micromatch/package.json`, pnpmStore));
+    const entry = consumerRequire.resolve('braces');
+    assert.equal(realpathSync(entry), expected, `${consumer} must use the patched dependency`);
+    const braces = consumerRequire('braces');
+    assert.deepEqual(braces.expand('src/{a,b}.js'), ['src/a.js', 'src/b.js']);
+    assert.throws(
+      () => braces.compile('{'.repeat(4000) + 'a,b' + '}'.repeat(4000)),
+      error => error instanceof SyntaxError && /braces nesting exceeds safety limit/.test(error.message),
+    );
+  }
+});
 
 for (const [name, entry] of packages) {
   test(`${name}: installed source includes every mitigation`, () => {
