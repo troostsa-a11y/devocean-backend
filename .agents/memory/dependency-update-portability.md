@@ -26,6 +26,18 @@ Check narrowly targeted pnpm updates for unrelated override and peer-resolution 
 
 **How to apply:** Inspect the entire lockfile diff, preserve unrelated resolutions, and verify the resulting lockfile with a frozen install before testing.
 
+A direct Vite update does not necessarily update the Vite copy consumed by Vitest.
+
+**Why:** pnpm can retain an older Vite resolution under Vitest while updating the frontend importers, and can also upgrade optional peers unrelated to the requested security fix.
+
+**How to apply:** Check every Vite package and snapshot in the lockfile, resolve Vite from each actual consumer, and preserve unrelated peer versions.
+
+Do not reconstruct large lockfiles from unchecked shell callback output.
+
+**Why:** Large output can be bounded even when the callback result does not signal truncation; accepting that output as complete can silently discard the beginning of a file.
+
+**How to apply:** Use file reads or bounded chunks and verify the complete byte count before writing a reconstructed file; confirm the final lockfile with a frozen install.
+
 Verify the advisory's attack scenarios directly rather than relying solely on its first-patched-version label.
 
 **Why:** A release marked fixed for the PostCSS source-map advisory blocked directory traversal but still disclosed absolute-path maps when the input filename was omitted.

@@ -12,6 +12,7 @@
     "test:postcss-security": "node --test scripts/postcss-security.test.mjs",
     "test:babel-security": "node --test scripts/babel-security.test.mjs",
     "test:dompurify-security": "node --test scripts/dompurify-security.test.mjs",
+    "test:vite-security": "node --test scripts/vite-security.test.mjs",
     "dev": "node start.js",
     "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/",
     "preview": "vite preview",
@@ -59,7 +60,7 @@
     "baseline-browser-mapping": "^2.9.19",
     "postcss": "^8.5.29",
     "tailwindcss": "^3.4.10",
-    "vite": "^7.3.6",
+    "vite": "^7.3.7",
     "wrangler": "^4.95.0"
   },
   "overrides": {
