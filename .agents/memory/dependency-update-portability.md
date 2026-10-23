@@ -38,6 +38,12 @@ Do not use the project's DOM emulators as the sole evidence for sanitizer browse
 
 **How to apply:** Check the browser-rendered page and CDN integrity independently. If sanitizer assertions fail only in an emulator, investigate the emulator rather than changing sanitizer configuration or weakening assertions.
 
+Sanitizer attack tests need benign positive controls separate from expression-bearing text nodes.
+
+**Why:** Safe-for-template rules can intentionally strip from an expression opener to the end of its text node. Requiring that node's suffix to survive mislabels defensive behavior as a failure; accepting completely empty output can instead hide a parser problem.
+
+**How to apply:** Assert that independent safe elements survive alongside the attack being removed. Split both opening and closing delimiters across nodes when testing post-normalization protection, so per-node stripping cannot make the regression pass accidentally.
+
 Selector-parser security fixes may require crossing the major-version range used by Tailwind consumers.
 
 **Why:** The legacy 6.x patch fixes recursive serialization, but the flat-selector CPU-exhaustion fix is available only in 7.1.6 or later.
