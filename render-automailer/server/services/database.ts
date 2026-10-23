@@ -939,6 +939,7 @@ export class DatabaseService {
       .where(and(
         eq(giftVouchers.code, code.trim().toUpperCase()),
         eq(giftVouchers.status, 'active'),
+        this.voucherHasNoOtherBooking(),
       ))
       .limit(1);
     return row;
@@ -959,11 +960,59 @@ export class DatabaseService {
     return row;
   }
 
-  async redeemGiftVoucher(code: string, bookingId: number): Promise<void> {
-    await this.db
+  /**
+   * Older confirmed/partially-created bookings may predate voucher consumption.
+   * They must not turn an apparently active voucher into new spendable credit.
+   */
+  private voucherHasNoOtherBooking(bookingId?: number) {
+    return sql`NOT EXISTS (
+      SELECT 1 FROM ${directBookings}
+      WHERE upper(${directBookings.voucherCode}) = ${giftVouchers.code}
+        AND ${directBookings.voucherDiscount} > 0
+        AND (${directBookings.status} = 'confirmed' OR ${directBookings.beds24BookingId} IS NOT NULL)
+        ${bookingId === undefined ? sql`` : sql`AND ${directBookings.id} <> ${bookingId}`}
+    )`;
+  }
+
+  /** Atomically spend credit for a verified payment; retries of its owner are safe. */
+  async redeemGiftVoucher(code: string, bookingId: number): Promise<boolean> {
+    if (!Number.isSafeInteger(bookingId) || bookingId < 1) {
+      throw new Error('A persisted direct booking is required to redeem a voucher');
+    }
+    const rows = await this.db
       .update(giftVouchers)
-      .set({ status: 'redeemed', redeemedAt: new Date(), redeemedBookingId: bookingId })
-      .where(eq(giftVouchers.code, code.toUpperCase()));
+      .set({
+        status: 'redeemed',
+        redeemedAt: sql`COALESCE(${giftVouchers.redeemedAt}, NOW())`,
+        redeemedBookingId: bookingId,
+      })
+      .where(and(
+        eq(giftVouchers.code, code.trim().toUpperCase()),
+        this.voucherHasNoOtherBooking(bookingId),
+        or(
+          and(eq(giftVouchers.status, 'active'), gte(giftVouchers.expiresAt, new Date())),
+          and(eq(giftVouchers.status, 'redeemed'), eq(giftVouchers.redeemedBookingId, bookingId)),
+        ),
+      ))
+      .returning({ id: giftVouchers.id });
+    return rows.length > 0;
+  }
+
+  /** Restore credit only to the fully-refunded owner, never to a fulfilled stay. */
+  async releaseGiftVoucherRedemption(code: string, bookingId: number): Promise<void> {
+    await this.db.update(giftVouchers)
+      .set({ status: 'active', redeemedAt: null, redeemedBookingId: null })
+      .where(and(
+        eq(giftVouchers.code, code.trim().toUpperCase()),
+        eq(giftVouchers.status, 'redeemed'),
+        eq(giftVouchers.redeemedBookingId, bookingId),
+        this.voucherHasNoOtherBooking(),
+        sql`EXISTS (
+          SELECT 1 FROM ${directBookings}
+          WHERE ${directBookings.id} = ${bookingId}
+            AND ${directBookings.paymentStatus} = 'refunded'
+        )`,
+      ));
   }
 
   async closeUnpaidGiftVoucher(sessionId: string, status: 'checkout_expired' | 'failed'): Promise<void> {
@@ -1102,6 +1151,7 @@ export class DatabaseService {
           stripe_payment_intent_id = COALESCE(${paymentIntentId}, stripe_payment_intent_id),
           updated_at = NOW()
       WHERE session_ref = ${sessionRef}
+        AND payment_status <> 'refunded'
         AND (
           status IN ('pending', 'failed', 'sold_out_refund_pending')
           OR (status = 'processing' AND updated_at < NOW() - INTERVAL '2 minutes')

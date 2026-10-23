@@ -139,6 +139,7 @@ export function createBookingRouter(deps: {
   refundPaymentIntent?: typeof refundPaymentIntent;
   createCheckoutSession?: typeof createDepositCheckoutSession;
   quotePayment?: typeof quoteBookingPayment;
+  sendBookingAlert?: (subject: string, lines: string[]) => Promise<void>;
 }): Router {
   const router = express.Router();
   const { db, requireAdminKey, emailService } = deps;
@@ -155,7 +156,7 @@ export function createBookingRouter(deps: {
   // attempt throw back into the webhook handler — Stripe's retry/ack logic
   // must depend only on the booking work succeeding, not on this notification.
   const alertTransporter =
-    process.env.MAIL_HOST && process.env.IMAP_USER && process.env.IMAP_PASSWORD
+    !deps.sendBookingAlert && process.env.MAIL_HOST && process.env.IMAP_USER && process.env.IMAP_PASSWORD
       ? nodemailer.createTransport({
           host: process.env.MAIL_HOST,
           port: parseInt(process.env.SMTP_PORT || '465'),
@@ -165,6 +166,14 @@ export function createBookingRouter(deps: {
       : null;
 
   async function sendBookingAlert(subject: string, lines: string[]): Promise<void> {
+    if (deps.sendBookingAlert) {
+      try {
+        await deps.sendBookingAlert(subject, lines);
+      } catch (e: any) {
+        console.error('[BOOKING] failed to send alert email:', e.message);
+      }
+      return;
+    }
     const body = lines.join('\n');
     if (!alertTransporter) {
       console.error('[BOOKING] alert email NOT sent (SMTP not configured):', subject, '|', body);
@@ -534,10 +543,13 @@ export function createBookingRouter(deps: {
 
     // Re-validate discount code + gift voucher at checkout time — either may have
     // been deactivated / redeemed between the last live quote and clicking "Pay".
-    const [{ discountCode }, { voucher }] = await Promise.all([
+    const [{ discountCode }, { voucher, voucherError }] = await Promise.all([
       resolveDiscountCode(req.body?.discountCode),
       resolveVoucher(req.body?.voucher),
     ]);
+    if (voucherError) {
+      return res.status(409).json({ error: voucherError, code: 'VOUCHER_UNAVAILABLE' });
+    }
 
     const cfg = getBookingConfig();
     const t0 = Date.now();
@@ -765,34 +777,53 @@ export function createBookingRouter(deps: {
       );
     }
 
-    async function refundSoldOut(record: any, paymentIntentId: string | undefined) {
-      // The refunded state must only be recorded if Stripe actually refunds;
-      // otherwise the guest stays charged while our record says "refunded".
-      if (!paymentIntentId) {
+    async function restoreRefundedVoucher(record: any) {
+      if (record.voucherCode && Number(record.voucherDiscount) > 0 &&
+          !legsFromRecord(record).some(leg => leg.beds24BookingId)) {
+        await db!.releaseGiftVoucherRedemption(record.voucherCode, record.id);
+      }
+    }
+
+    async function refundUnfulfillableBooking(
+      record: any, paymentIntentId: string | undefined, voucherRejected = false,
+    ) {
+      const cause = voucherRejected ? 'Gift voucher is no longer available' : 'Room sold out';
+      const pendingStatus = voucherRejected ? 'failed' : 'sold_out_refund_pending';
+      // A paid checkout becomes refunded only after Stripe succeeds. A checkout
+      // fully covered by credit has no card payment to refund.
+      const noPaymentRequired = Number(record.depositAmount) === 0;
+      if (!paymentIntentId && !noPaymentRequired) {
         await db!.updateDirectBooking(record.sessionRef, {
-          status: 'sold_out_refund_pending',
+          status: pendingStatus,
           paymentStatus: 'refund_pending',
-          errorMessage: 'Room sold out before confirmation; refund pending (no payment intent on event).',
+          errorMessage: `${cause} before confirmation; refund pending (no payment intent on event).`,
         });
-        throw new Error(`Sold-out refund pending, missing payment intent for ${record.sessionRef}`);
+        throw new Error(`Refund pending, missing payment intent for ${record.sessionRef}`);
       }
       try {
-        await refundPayment(paymentIntentId, 'requested_by_customer', cfg);
+        if (!noPaymentRequired) await refundPayment(paymentIntentId!, 'requested_by_customer', cfg);
       } catch (e: any) {
         console.error('[BOOKING] auto-refund failed:', e.message);
         await db!.updateDirectBooking(record.sessionRef, {
-          status: 'sold_out_refund_pending',
+          status: pendingStatus,
           paymentStatus: 'refund_pending',
-          errorMessage: `Room sold out; auto-refund failed: ${e.message}`.slice(0, 500),
+          errorMessage: `${cause}; auto-refund failed: ${e.message}`.slice(0, 500),
         });
         throw e; // let Stripe retry the webhook so the refund can self-heal
       }
       await db!.updateDirectBooking(record.sessionRef, {
-        status: 'sold_out_refunded',
+        status: voucherRejected ? 'failed' : 'sold_out_refunded',
         paymentStatus: 'refunded',
-        errorMessage: 'Room sold out before confirmation; deposit refunded.',
+        errorMessage: noPaymentRequired
+          ? `${cause} before confirmation; no card payment was required.`
+          : voucherRejected
+            ? `${cause}; payment refunded.`
+            : 'Room sold out before confirmation; deposit refunded.',
       });
-      console.warn('[BOOKING] sold out after payment, refunded:', record.sessionRef);
+      // Do this after persisting the refund. If cleanup fails, the terminal retry
+      // branch below can restore the owner's credit without refunding twice.
+      await restoreRefundedVoucher(record);
+      console.warn('[BOOKING] checkout could not be fulfilled:', record.sessionRef, cause);
     }
 
     async function handleCheckoutCompleted(session: any) {
@@ -819,7 +850,10 @@ export function createBookingRouter(deps: {
         ]);
         return;
       }
-      if (record0.status === 'sold_out_refunded') return; // already refunded, nothing to do
+      if (record0.status === 'sold_out_refunded' || record0.paymentStatus === 'refunded') {
+        await restoreRefundedVoucher(record0);
+        return;
+      }
       // Delayed methods complete Checkout before money is captured; their
       // async_payment_succeeded event is the booking's payment authority.
       if (session.payment_status === 'unpaid') return;
@@ -878,7 +912,7 @@ export function createBookingRouter(deps: {
           fresh = await recheckCartQuote(record, legs);
         } catch (e: any) {
           if (e instanceof BookingCartError) {
-            await refundSoldOut(record, paymentIntentId);
+            await refundUnfulfillableBooking(record, paymentIntentId);
             return;
           }
           console.error('[BOOKING] webhook re-quote failed (will retry):', e.message);
@@ -895,6 +929,37 @@ export function createBookingRouter(deps: {
               `checkout ${storedTotal.toFixed(2)} vs fresh ${fresh.total.toFixed(2)} ${record.currency}; ` +
               `honoring checkout price.`,
           );
+        }
+      }
+
+      // Consume credit BEFORE creating any room. A conditional database UPDATE
+      // gives only one booking ownership, while the same booking may retry.
+      if (record.voucherCode && Number(record.voucherDiscount) > 0) {
+        let redeemed: boolean;
+        try {
+          redeemed = await db.redeemGiftVoucher(record.voucherCode, record.id);
+        } catch (e: any) {
+          await db.updateDirectBooking(record.sessionRef, {
+            status: 'failed',
+            errorMessage: `Voucher verification failed; retry required: ${e.message}`.slice(0, 500),
+          });
+          throw e; // Storage failures are not evidence of invalid credit.
+        }
+        if (!redeemed) {
+          if (anyCreated) {
+            await db.updateDirectBooking(record.sessionRef, {
+              status: 'failed',
+              paymentStatus: 'review_required',
+              errorMessage: 'Voucher conflict on a partially-created booking; manual review required.',
+            });
+            await sendBookingAlert('Voucher conflict on a partially-created booking', [
+              `Booking reference: ${record.sessionRef}`,
+              'No further rooms or automatic refund were created. Review the existing Beds24 rooms.',
+            ]);
+            throw new Error('Voucher conflict on a partially-created booking');
+          }
+          await refundUnfulfillableBooking(record, paymentIntentId, true);
+          return;
         }
       }
 

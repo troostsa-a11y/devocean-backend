@@ -380,6 +380,8 @@ export const giftVouchers = pgTable("gift_vouchers", {
   stripePaymentIntentId: text("stripe_payment_intent_id"),
   expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
   redeemedAt: timestamp("redeemed_at", { withTimezone: true }),
+  // Internal direct_bookings.id: ownership is established before Beds24 writes,
+  // so another checkout cannot spend the credit while confirmation is in flight.
   redeemedBookingId: integer("redeemed_booking_id"),
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
 });

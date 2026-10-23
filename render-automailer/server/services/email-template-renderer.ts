@@ -19,6 +19,17 @@ interface TranslationCache {
 
 const MARIN_EMAIL_TYPES = new Set(['post_booking', 'pre_arrival', 'arrival']);
 
+const DATA_ENTITIES: Record<string, string> = {
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  '{': '&#123;', '}': '&#125;',
+};
+
+function escapeEmailData(value: unknown): string {
+  // Data is text, never template markup. Braces must also remain opaque to
+  // subsequent passes through the nested translation-placeholder renderer.
+  return String(value).replace(/[&<>"'{}]/g, character => DATA_ENTITIES[character]);
+}
+
 export class EmailTemplateRenderer {
   private translationCache: TranslationCache;
   private templatesPath: string;
@@ -215,7 +226,7 @@ export class EmailTemplateRenderer {
     
     // Add all data keys
     for (const [key, value] of Object.entries(data)) {
-      allReplacements[key] = String(value);
+      allReplacements[key] = escapeEmailData(value);
     }
     
     // Add language code

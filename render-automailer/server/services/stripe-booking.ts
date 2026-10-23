@@ -207,12 +207,15 @@ export async function createGiftVoucherCheckoutSession(
   return { url: session.url, stripeSessionId: session.id };
 }
 
-/** Refund a payment intent in full (used when a room sold out before confirmation). */
+/** Refund an unfulfillable checkout in full, safely across webhook retries. */
 export async function refundPaymentIntent(
   paymentIntentId: string,
   reason: 'requested_by_customer' | 'duplicate' | 'fraudulent' = 'requested_by_customer',
   cfg: BookingConfig = getBookingConfig(),
 ): Promise<void> {
   const stripe = getStripe(cfg);
-  await stripe.refunds.create({ payment_intent: paymentIntentId, reason });
+  await stripe.refunds.create(
+    { payment_intent: paymentIntentId, reason },
+    { idempotencyKey: `booking-full-refund:${paymentIntentId}` },
+  );
 }
