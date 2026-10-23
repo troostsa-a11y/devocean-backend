@@ -13,6 +13,7 @@
     "test:babel-security": "node --test scripts/babel-security.test.mjs",
     "test:dompurify-security": "node --test scripts/dompurify-security.test.mjs",
     "test:vite-security": "node --test scripts/vite-security.test.mjs",
+    "test:vitest-mocker-security": "node --test scripts/vitest-mocker-security.test.mjs",
     "dev": "node start.js",
     "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/",
     "preview": "vite preview",

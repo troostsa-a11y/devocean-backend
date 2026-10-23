@@ -87,6 +87,7 @@ describe("Realtime upgrade authorization before a paid relay", () => {
     const closed = new Promise<number>((resolve) => ws.once("close", (code) => resolve(code)));
     ws.send("x".repeat(33 * 1024));
     expect(await closed).toBe(1009);
-    expect(state.release).toHaveBeenCalled();
+    // The client's close event can precede the server's cleanup callback.
+    await vi.waitFor(() => expect(state.release).toHaveBeenCalled());
   });
 });

@@ -26,6 +26,12 @@ Check narrowly targeted pnpm updates for unrelated override and peer-resolution 
 
 **How to apply:** Inspect the entire lockfile diff, preserve unrelated resolutions, and verify the resulting lockfile with a frozen install before testing.
 
+Preserving unrelated lockfile resolutions still requires matching the new release's published metadata exactly.
+
+**Why:** Even a patch release can change an optional peer from an exact version to a range; globally replacing version strings can create metadata that differs from the registry.
+
+**How to apply:** Compare dependency and peer declarations with the actual new package metadata, not only its version and integrity. Verify both package managers can install their committed lockfiles.
+
 A direct Vite update does not necessarily update the Vite copy consumed by Vitest.
 
 **Why:** pnpm can retain an older Vite resolution under Vitest while updating the frontend importers, and can also upgrade optional peers unrelated to the requested security fix.
