@@ -6,6 +6,7 @@ import crypto from 'crypto';
 import { EmailAutomationService } from './server/services/email-automation';
 import { DatabaseService } from './server/services/database';
 import { createBookingRouter } from './server/routes/booking';
+import { createVoucherCheckoutHandler } from './server/routes/gift-voucher-checkout';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -755,37 +756,13 @@ app.post('/api/admin/discount-codes/:code/activate', requireAdminKey, async (req
 });
 
 // ─── Gift voucher checkout (create Stripe session for purchaser) ──────────
-app.post('/api/gift-voucher/checkout', requireAdminKey, async (req: any, res: any) => {
-  const VALID_AMOUNTS = [20, 50, 100, 200, 500];
-  const amount = Number(req.body?.amount);
-  const purchaserEmail = String(req.body?.purchaserEmail || '').trim();
-  const purchaserName = String(req.body?.purchaserName || '').trim();
-  const recipientName = String(req.body?.recipientName || '').trim() || undefined;
-  const message = String(req.body?.message || '').trim().slice(0, 500) || undefined;
-
-  if (!VALID_AMOUNTS.includes(amount)) {
-    return res.status(400).json({ error: 'Invalid amount. Choose $20, $50, $100, $200, or $500.' });
-  }
-  if (!purchaserEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(purchaserEmail)) {
-    return res.status(400).json({ error: 'A valid email address is required.' });
-  }
-  if (!purchaserName) return res.status(400).json({ error: 'Your name is required.' });
-  if (!guestDb) return res.status(503).json({ error: 'Voucher checkout temporarily unavailable.' });
-
-  try {
+app.post('/api/gift-voucher/checkout', requireAdminKey, createVoucherCheckoutHandler({
+  database: () => guestDb,
+  createSession: async (input) => {
     const { createGiftVoucherCheckoutSession } = await import('./server/services/stripe-booking');
-    const { url, stripeSessionId } = await createGiftVoucherCheckoutSession({
-      amount, purchaserEmail, purchaserName, recipientName, message,
-    });
-    if (guestDb) {
-      await guestDb.createGiftVoucher({ amountUsd: amount, purchaserEmail, purchaserName, recipientName, message, stripeSessionId });
-    }
-    res.json({ url });
-  } catch (err: any) {
-    console.error('[GIFT_VOUCHER] checkout error:', err.message);
-    res.status(500).json({ error: 'Could not create checkout. Please try again.' });
-  }
-});
+    return createGiftVoucherCheckoutSession(input);
+  },
+}));
 
 // ─── Gift voucher confirm (poll after Stripe redirect) ───────────────────
 app.get('/api/gift-voucher/confirm/:sessionId', requireAdminKey, async (req: any, res: any) => {

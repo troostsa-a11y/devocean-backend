@@ -26,24 +26,15 @@ export interface VoucherEmailOpts {
   siteUrl: string;
 }
 
-export async function sendVoucherEmail(opts: VoucherEmailOpts): Promise<void> {
-  const host = process.env.MAIL_HOST;
-  const portRaw = parseInt(process.env.MAIL_PORT || '465', 10);
-  const user = process.env.IMAP_USER;
-  const pass = process.env.IMAP_PASSWORD;
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+  }[char]!));
+}
 
-  if (!host || !user || !pass) {
-    console.warn('[GIFT_VOUCHER] SMTP not configured — skipping voucher email');
-    return;
-  }
-
-  const transporter = nodemailer.createTransport({
-    host,
-    port: portRaw,
-    secure: portRaw === 465,
-    auth: { user, pass },
-  });
-
+// Escape at delivery time as well as validating new checkout inputs: existing
+// pending vouchers may contain markup submitted before checkout was hardened.
+export function renderVoucherEmail(opts: VoucherEmailOpts): string {
   const expiryStr = opts.expiresAt.toLocaleDateString('en-GB', {
     day: 'numeric',
     month: 'long',
@@ -52,13 +43,13 @@ export async function sendVoucherEmail(opts: VoucherEmailOpts): Promise<void> {
 
   const recipientLine = opts.recipientName
     ? `<p style="margin:0 0 12px;color:#444;font-family:sans-serif;font-size:15px">
-         This voucher is for <strong>${opts.recipientName}</strong>.
+         This voucher is for <strong>${escapeHtml(opts.recipientName)}</strong>.
        </p>`
     : '';
 
   const messageLine = opts.message
     ? `<blockquote style="border-left:3px solid #9e4b13;margin:12px 0 20px;padding:8px 16px;color:#555;font-style:italic;font-family:Georgia,serif">
-         ${opts.message}
+         ${escapeHtml(opts.message)}
        </blockquote>`
     : '';
 
@@ -72,7 +63,7 @@ export async function sendVoucherEmail(opts: VoucherEmailOpts): Promise<void> {
       <p style="margin:6px 0 0;color:rgba(255,255,255,.85);font-size:13px;font-family:sans-serif;text-transform:uppercase;letter-spacing:1px">Gift Voucher</p>
     </div>
     <div style="padding:36px 40px">
-      <p style="margin:0 0 16px;font-size:16px;color:#1a1a1a">Dear ${opts.purchaserName},</p>
+      <p style="margin:0 0 16px;font-size:16px;color:#1a1a1a">Dear ${escapeHtml(opts.purchaserName)},</p>
       <p style="margin:0 0 20px;color:#444;line-height:1.6;font-family:sans-serif;font-size:15px">
         Thank you for your purchase. Your DEVOCEAN Lodge gift voucher for
         <strong>$${opts.amountUsd} USD</strong> is ready to use.
@@ -103,10 +94,26 @@ export async function sendVoucherEmail(opts: VoucherEmailOpts): Promise<void> {
 </body>
 </html>`;
 
+  return html;
+}
+
+export async function sendVoucherEmail(opts: VoucherEmailOpts): Promise<void> {
+  const host = process.env.MAIL_HOST;
+  const portRaw = parseInt(process.env.MAIL_PORT || '465', 10);
+  const user = process.env.IMAP_USER;
+  const pass = process.env.IMAP_PASSWORD;
+
+  if (!host || !user || !pass) {
+    console.warn('[GIFT_VOUCHER] SMTP not configured — skipping voucher email');
+    return;
+  }
+  const transporter = nodemailer.createTransport({
+    host, port: portRaw, secure: portRaw === 465, auth: { user, pass },
+  });
   await transporter.sendMail({
     from: `"DEVOCEAN Lodge" <${user}>`,
     to: opts.to,
     subject: `Your DEVOCEAN Lodge Gift Voucher — $${opts.amountUsd}`,
-    html,
+    html: renderVoucherEmail(opts),
   });
 }

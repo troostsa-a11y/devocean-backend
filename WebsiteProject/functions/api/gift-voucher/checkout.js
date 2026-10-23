@@ -26,13 +26,21 @@ export async function onRequestPost(context) {
       headers: {
         'Content-Type': 'application/json',
         'x-admin-key': adminKey,
+        // CF supplies this header. Never forward a caller's x-voucher-client-ip
+        // or X-Forwarded-For; the backend trusts this only after admin-key auth.
+        'x-voucher-client-ip': request.headers.get('CF-Connecting-IP') || 'unknown',
       },
       body: JSON.stringify(body),
     });
     const data = await upstream.text();
     return new Response(data || '{}', {
       status: upstream.status,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-store',
+        ...(upstream.headers.has('Retry-After')
+          ? { 'Retry-After': upstream.headers.get('Retry-After') } : {}),
+      },
     });
   } catch {
     return json({ error: 'Could not start checkout. Please try again.' }, 502);
@@ -42,6 +50,6 @@ export async function onRequestPost(context) {
 function json(obj, status) {
   return new Response(JSON.stringify(obj), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
   });
 }

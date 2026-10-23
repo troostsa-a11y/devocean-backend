@@ -518,9 +518,11 @@ export async function onRequest(context) {
     // /en-us URLs to the equivalent root route and preserve query/hash values.
     const enUsMatch = requestPathname.match(/^\/en-us(?:\/(.*))?$/i);
     if (enUsMatch) {
-      const rootPath = enUsMatch[1] ? `/${enUsMatch[1]}` : '/';
-      const target = `${rootPath}${requestUrl.search}${requestUrl.hash}`;
-      return explicitLocaleRedirect(new URL(target, requestUrl).href, 'en-US');
+      // Assign a pathname on the existing URL, never resolve user text as a
+      // relative URL: leading slashes/backslashes can otherwise replace its host.
+      const target = new URL(requestUrl);
+      target.pathname = `/${enUsMatch[1] || ''}`.replace(/^[\\/]+/, '/');
+      return explicitLocaleRedirect(target.href, 'en-US');
     }
 
     const requestLocale = localeFromPath(requestPathname);

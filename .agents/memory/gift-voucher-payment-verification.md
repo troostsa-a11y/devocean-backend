@@ -24,3 +24,15 @@ payments of those existing guests is a separate operational decision.
 **How to apply:** Count fulfilled or partially-created stays as spent credit for
 new booking attempts. Leave historical cancellations, extra charges and financial
 reconciliation to explicit operator review.
+
+Checkout abuse limits must aggregate across the public site's edge instances.
+The single-process automailer can use bounded in-memory counters without adding
+a CAPTCHA or a new infrastructure dependency.
+
+**Why:** The costly actions happen before payment, and isolate-local counters
+would let an attacker multiply their allowance by reaching different edge
+instances. Backend memory is a minimal patch, not a durable distributed quota.
+
+**How to apply:** If the automailer is scaled to multiple processes, or limits
+must survive restarts, move counters to shared storage. Do not move the only
+limiter to Pages or trust a visitor-supplied identity header at the public proxy.

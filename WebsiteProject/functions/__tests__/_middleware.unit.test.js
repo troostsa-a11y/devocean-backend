@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { describe, expect, it, vi } from 'vitest';
 import { onRequest, STATIC_UNIT_ASSETS } from '../_middleware.js';
 
@@ -25,6 +26,28 @@ function makeContext(path) {
     assetFetch,
   };
 }
+
+describe('legacy English redirects stay on origin', () => {
+  it.each([
+    ['/en-us', '/'],
+    ['/en-us/', '/'],
+    ['/EN-US/story?campaign=gift#details', '/story?campaign=gift#details'],
+    ['/en-us//attacker.example', '/attacker.example'],
+    ['/en-us///attacker.example', '/attacker.example'],
+    ['/en-us/\\attacker.example', '/attacker.example'],
+    ['/en-us/%5Cattacker.example', '/%5Cattacker.example'],
+    ['/en-us/%2F%2Fattacker.example', '/%2F%2Fattacker.example'],
+    ['/en-us//attacker.example?next=https://evil.example', '/attacker.example?next=https://evil.example'],
+  ])('safely redirects %s', async (path, expected) => {
+    const response = await onRequest(makeContext(path));
+    expect(response.status).toBe(301);
+    const target = new URL(response.headers.get('Location'));
+    expect(target.origin).toBe('https://devoceanlodge.com');
+    expect(target.href).toBe(`https://devoceanlodge.com${expected}`);
+    expect(response.headers.get('Set-Cookie')).toContain('dv_lang=en-US');
+    expect(response.headers.get('Cache-Control')).toBe('no-store');
+  });
+});
 
 describe('Cloudflare static unit routing', () => {
   it.each(['/assets/index-CI53A5uz.js:8:35407', '/assets/index-CI53A5uz.js:2:6184',
