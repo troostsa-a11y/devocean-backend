@@ -2,7 +2,13 @@
 name: Stale prod HTML/JS after deploy — layer checklist
 description: Ordered causes when devoceanlodge.com shows old UI after a deploy
 ---
-When prod shows a pre-deploy UI, check in this order (all bit us on July 30, 2026):
+Before diagnosing cache staleness, distinguish HTML routes from intentional redirects and retired URLs.
+
+**Why:** A healthy redirect has no HTML build marker. Blindly following redirects can also produce a false pass if an incorrect homepage destination happens to serve the new build.
+
+**How to apply:** Verify the expected status, same-origin destination and required state before checking the destination's HTML marker. Keep guide checks on bare URLs; cache-busting queries can hide stale static-file routing. Do not rebuild or purge caches just because a redirect's own response has no marker.
+
+When prod actually shows a pre-deploy UI, check in this order:
 1. **Cloudflare "Google tag gateway"** — injects a `/nik2/` service worker that serves stale full-page HTML. Disable in CF dashboard; verify the SW URL 404s.
 2. **CF "Cache everything" zone rule** — overrides middleware headers; HTML must be `DYNAMIC`/`no-cache` via curl.
 3. **Long-cached runtime assets fetched by URL** — e.g. `/js/shared-nav.js` (static room pages' menu) had `max-age=604800` + SWR. Fix = `?v=<date>` on the script ref AND `max-age=0, must-revalidate` in `_headers`; header changes alone can't bust already-cached copies.
