@@ -17,6 +17,7 @@
     "test:vitest-mocker-security": "node --test scripts/vitest-mocker-security.test.mjs",
     "test:zod-security": "node --test scripts/zod-security.test.mjs",
     "test:undici-security": "node --test scripts/undici-security.test.mjs",
+    "test:fast-uri-security": "node --test scripts/fast-uri-security.test.mjs",
     "dev": "node start.js",
     "build": "vite build && cp -r functions dist/ && cp story.html dist/ && cp safari.html dist/ && cp comfort.html dist/ && cp cottage.html dist/ && cp chalet.html dist/ && cp thankyou.html dist/ && cp canceled.html dist/",
     "preview": "vite preview",
