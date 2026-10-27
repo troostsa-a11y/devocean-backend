@@ -4,7 +4,7 @@ description: How locale-prefixed URLs work across edge, React SPA, standalone HT
 ---
 
 ## Rule
-Every public language variant lives at a stable URL prefix (e.g. `/pt-pt/`, `/de/`, `/zh-hans/`). English UK stays at the root. Language selection triggers a full navigation to the new locale URL — never just a localStorage write — so URL, edge metadata, initial HTML, and hydrated UI change together. Currency is completely separate and is never touched by language selection.
+Indexable translated variants live at stable URL prefixes (e.g. `/pt-pt/`, `/de/`, `/zh-hans/`). English UK and US share root routes; US English is a display preference, not a separate indexable variant. Language selection triggers a full navigation to the locale URL — never just a localStorage write — so URL, edge metadata, initial HTML, and hydrated UI change together. Currency is completely separate and is never touched by language selection.
 
 **Why:** Google requires distinct URLs per hreflang variant to index translations independently. Same-page client-only switching only delivers the translated experience to JS-enabled crawlers (which Google does run, but at a delay). Stable URLs allow edge rendering of correct canonical, Open Graph, and hreflang metadata before JS loads.
 
@@ -19,7 +19,7 @@ Every public language variant lives at a stable URL prefix (e.g. `/pt-pt/`, `/de
 - `src/i18n/__tests__/localeCatalog.test.js` — contract tests for localizedPath, stripLocalePrefix, normalizeLocale, allHreflangPaths
 
 ## Default locale
-English UK (`en-GB`) uses root paths (no prefix). All other locales use lowercase path segments, e.g. `pt-pt`, `zh-hans` (not `zh-CN`).
+English UK (`en-GB`) is the default. Both English variants use root paths; historical `/en-us` links normalize to root while preserving the explicit US English preference. Translated variants use lowercase path segments, e.g. `pt-pt`, `zh-hans` (not `zh-CN`).
 
 ## How to apply
 - Any new public route must be added to `LOCALIZED_ROUTES` in `generate-locale-sitemap.mjs`
