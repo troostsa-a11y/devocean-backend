@@ -44,3 +44,20 @@ as an inability to access live availability.
 the distinction between an omitted year and an explicit year until server-side
 resolution, handle December/January rollover, and separate input-validation
 feedback from genuine connection failures.
+
+## Offer a nearest-available-date search
+
+When the preferred stay or room type is unavailable, Marin should ask,
+"Would you like me to check for the nearest available date?", naturally
+translated into the guest's language, and wait for agreement before searching.
+An explicit request for nearby dates also supplies agreement.
+
+**Why:** The user requested the same alternative-date capability as the direct
+booking page, with a conversational offer rather than an automatic search.
+
+**How to apply:** Share the booking engine's search instead of creating a
+separate scan or inventing dates. Preserve the stay length, adult/child/infant
+counts and room preference. Verify suggestions against fresh availability
+before presenting them, and never describe an incomplete search as sold out
+or a partially checked alternative as the nearest across the whole lodge.
+Group-capacity suggestions still are not confirmed group quotes.

@@ -34,6 +34,7 @@ export class Beds24ApiError extends Error {
 }
 
 export interface RoomOffer {
+  roomId?: string;
   roomName: string;
   available: boolean;
   unitsAvailable?: number;
@@ -64,6 +65,7 @@ function nightsBetween(checkIn: string, checkOut: string): number {
 
 /** Shape of the booking engine's /api/booking/availability response. */
 interface BookingEngineRoom {
+  roomId: string;
   name: string;
   available: boolean;
   unitsAvailable: number;
@@ -85,6 +87,48 @@ interface BookingEngineAvailability {
   rooms: BookingEngineRoom[];
 }
 
+/** Shared authenticated transport; callers never connect to Beds24 directly. */
+async function bookingEngineRequest(
+  path: "availability" | "nearest-available",
+  body: Record<string, unknown>,
+  signal?: AbortSignal,
+): Promise<unknown> {
+  const automailerUrl = process.env.AUTOMAILER_URL?.replace(/\/+$/, "");
+  const adminKey = process.env.ADMIN_API_KEY;
+  if (!automailerUrl || !adminKey) throw new Beds24NotConfiguredError();
+
+  for (let attempt = 0; attempt < 2; attempt++) {
+    signal?.throwIfAborted();
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+    try {
+      const res = await fetch(`${automailerUrl}/api/booking/${path}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-admin-key": adminKey },
+        body: JSON.stringify(body),
+        signal: signal ? AbortSignal.any([signal, controller.signal]) : controller.signal,
+      });
+      if (!res.ok) {
+        throw new Beds24ApiError(res.status, `Booking engine /${path} failed (${res.status})`);
+      }
+      return await res.json();
+    } catch (err: any) {
+      if (signal?.aborted) throw err;
+      const transient = err?.name === "AbortError" || err instanceof TypeError ||
+        (err instanceof Beds24ApiError && [502, 503, 504].includes(err.status));
+      if (attempt === 0 && transient) {
+        logger.warn({ path, status: err.status, errorType: err.name }, "Retrying availability lookup");
+        continue;
+      }
+      if (err?.name === "AbortError") throw new Beds24ApiError(504, "Availability timed out");
+      throw err;
+    } finally {
+      clearTimeout(timer);
+    }
+  }
+  throw new Error("Availability request did not complete");
+}
+
 /**
  * Fetch availability + pricing via the booking engine.
  *
@@ -99,55 +143,12 @@ export async function checkAvailability(
   numAdults = 2,
   numChildren = 0,
   numInfants = 0,
+  signal?: AbortSignal,
 ): Promise<AvailabilityResult> {
-  const automailerUrl = process.env.AUTOMAILER_URL?.replace(/\/+$/, "");
-  const adminKey = process.env.ADMIN_API_KEY;
-  if (!automailerUrl || !adminKey) throw new Beds24NotConfiguredError();
-
-  let data!: BookingEngineAvailability;
-  for (let attempt = 0; attempt < 2; attempt++) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-
-  let res: Response;
-  try {
-    res = await fetch(`${automailerUrl}/api/booking/availability`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-admin-key": adminKey,
-      },
-      body: JSON.stringify({
-        checkIn,
-        checkOut,
-        adults: numAdults,
-        children: numChildren,
-        infants: numInfants,
-      }),
-      signal: controller.signal,
-    });
-  if (!res.ok) {
-    throw new Beds24ApiError(
-      res.status,
-      `Booking engine /availability failed (${res.status})`,
-    );
-  }
-  data = (await res.json()) as BookingEngineAvailability;
+  const data = await bookingEngineRequest("availability", {
+    checkIn, checkOut, adults: numAdults, children: numChildren, infants: numInfants,
+  }, signal) as BookingEngineAvailability;
   if (!Array.isArray(data.rooms)) throw new Error("Invalid availability response");
-  break;
-  } catch (err: any) {
-    const transient = err?.name === "AbortError" || err instanceof TypeError ||
-      (err instanceof Beds24ApiError && [502, 503, 504].includes(err.status));
-    if (attempt === 0 && transient) {
-      logger.warn({ status: err.status, errorType: err.name }, "Retrying availability lookup");
-      continue;
-    }
-    if (err?.name === "AbortError") throw new Beds24ApiError(504, "Availability timed out");
-    throw err;
-  } finally {
-    clearTimeout(timer);
-  }
-  }
 
   logger.info(
     { checkIn, checkOut, numAdults, numChildren, rooms: data.rooms?.length ?? 0 },
@@ -162,6 +163,7 @@ export async function checkAvailability(
     const cheapest = room.offers?.[0];
     const totalPrice = cheapest != null ? Number(cheapest.total) : undefined;
     return {
+      roomId: room.roomId,
       roomName: room.name,
       available: room.available,
       unitsAvailable: room.unitsAvailable,
@@ -181,6 +183,41 @@ export async function checkAvailability(
   return { checkIn, checkOut, nights, numAdults, numChildren, numInfants, offers };
 }
 
+export interface NearestDateRequest {
+  roomId: string;
+  fromDate: string;
+  nights: number;
+  adults: number;
+  children: number;
+  infants: number;
+}
+
+export type NearestDateResult =
+  | { found: true; checkIn: string; checkOut: string }
+  | { found: false };
+
+/** The exact read-only search used by the book-direct page. */
+export async function findNearestAvailable(
+  request: NearestDateRequest,
+  signal?: AbortSignal,
+): Promise<NearestDateResult> {
+  const data = await bookingEngineRequest("nearest-available", { ...request }, signal) as Partial<{
+    found: boolean; checkIn: string; checkOut: string;
+  }> | null;
+  if (data?.found === false) return { found: false };
+  if (data?.found !== true || typeof data.checkIn !== "string" || typeof data.checkOut !== "string" ||
+      !/^\d{4}-\d{2}-\d{2}$/.test(data.checkIn) || !/^\d{4}-\d{2}-\d{2}$/.test(data.checkOut) ||
+      !Number.isFinite(Date.parse(data.checkIn)) || !Number.isFinite(Date.parse(data.checkOut)) ||
+      new Date(`${data.checkIn}T00:00:00Z`).toISOString().slice(0, 10) !== data.checkIn ||
+      new Date(`${data.checkOut}T00:00:00Z`).toISOString().slice(0, 10) !== data.checkOut ||
+      nightsBetween(data.checkIn, data.checkOut) !== request.nights) {
+    throw new Error("Invalid nearest-availability response");
+  }
+  return { found: true, checkIn: data.checkIn, checkOut: data.checkOut };
+}
+
+export const NEAREST_DATE_QUESTION = "Would you like me to check for the nearest available date?";
+
 /** Compact, model-friendly summary of an availability result. */
 export function formatAvailabilityForModel(result: AvailabilityResult): string {
   const available = result.offers.filter((o) => o.available);
@@ -190,8 +227,13 @@ export function formatAvailabilityForModel(result: AvailabilityResult): string {
       checkOut: result.checkOut,
       nights: result.nights,
       numAdults: result.numAdults,
+      numChildren: result.numChildren ?? 0,
+      numInfants: result.numInfants ?? 0,
       anyAvailable: false,
-      note: "No rooms available for these exact dates.",
+      followUpQuestion: NEAREST_DATE_QUESTION,
+      note: "No rooms available for these exact dates. Ask followUpQuestion naturally in the guest's language, " +
+        "then STOP and wait for their reply. Only call check_nearest_availability if the guest agrees. " +
+        "Keep the same stay length, guest counts and any room preference; do not search automatically.",
     });
   }
   return JSON.stringify({
@@ -207,6 +249,7 @@ export function formatAvailabilityForModel(result: AvailabilityResult): string {
       perPersonPerNight: o.perPersonPerNight,
       currency: o.currency,
     })),
+    unavailableRooms: result.offers.filter((o) => !o.available).map((o) => o.roomName),
     note:
       "Prices are live from the booking engine — identical to what the guest sees on /book-direct. " +
       "Quote totalPrice as the EXACT whole-stay total; do NOT recalculate or adjust it. " +

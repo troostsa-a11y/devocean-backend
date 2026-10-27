@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
 import { formatGroupAvailability } from "./group";
 import { getLodgeToday } from "./dates";
+import { nearestAvailabilityTool, runNearestAvailability } from "./nearest";
 import {
   checkAvailability,
   formatAvailabilityForModel,
@@ -132,7 +133,7 @@ export const saveBookingTool = {
 };
 
 /** All tools available to Mia. */
-export const lodgeTools = [availabilityTool, currencyTool, weatherTool, saveBookingTool];
+export const lodgeTools = [availabilityTool, nearestAvailabilityTool, currencyTool, weatherTool, saveBookingTool];
 
 export interface ToolContext {
   conversationId: number;
@@ -148,9 +149,10 @@ export async function runTool(name: string, argsJson: string, context: ToolConte
   const validated = validateToolArguments(name, argsJson);
   if (!validated.ok) return JSON.stringify({
     error: validated.error,
-    note: name === "check_availability"
+    note: name === "check_availability" || name === "check_nearest_availability"
       ? "The requested dates or guest counts are invalid or outside the allowed limits. " +
         "Check the dates and party size; stays must be 1–60 nights. Use MM-DD when no year was given. " +
+        "For a nearest-date search, ask for and wait for the guest's agreement before calling with guestAgreed=true. " +
         "Ask for clarification if needed. Invalid input does NOT mean live availability is unavailable."
       : "Tool arguments are invalid or outside the allowed limits.",
   });
@@ -171,6 +173,7 @@ export async function runTool(name: string, argsJson: string, context: ToolConte
   }
   if (context.signal?.aborted) return JSON.stringify({ error: "session_ended" });
   if (name === "check_availability") return runCheckAvailability(args, context.conversationId);
+  if (name === "check_nearest_availability") return runNearestAvailability(args, context);
   if (name === "convert_currency") return runConvertCurrency(args);
   if (name === "get_weather") return runGetWeather();
   return runSaveBooking(args, context.conversationId);

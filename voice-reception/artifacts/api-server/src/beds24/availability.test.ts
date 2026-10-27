@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 vi.mock("../lib/logger", () => ({ logger: { info: vi.fn(), warn: vi.fn() } }));
-import { checkAvailability } from "./client";
+import { checkAvailability, findNearestAvailable } from "./client";
 import { formatGroupAvailability } from "./group";
 
 afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); vi.useRealTimers(); });
@@ -80,5 +80,40 @@ describe("Availability transport", () => {
   it("rejects malformed responses rather than reporting sold out", async () => {
     setupFetch().mockResolvedValue(new Response('{"error":"unavailable"}'));
     await expect(checkAvailability("2026-09-25", "2026-09-27")).rejects.toThrow("Invalid availability");
+  });
+});
+
+describe("Nearest-date transport uses the booking-page API", () => {
+  const request = {
+    roomId: "test-room", fromDate: "2026-11-10", nights: 2, adults: 3, children: 1, infants: 1,
+  };
+  it("forwards the exact search contract and validates the returned stay length", async () => {
+    const fetch = setupFetch().mockResolvedValue(new Response(JSON.stringify({
+      found: true, checkIn: "2026-11-09", checkOut: "2026-11-11",
+    })));
+    expect(await findNearestAvailable(request)).toMatchObject({ found: true, checkIn: "2026-11-09" });
+    expect(fetch.mock.calls[0][0]).toBe("https://booking.test/api/booking/nearest-available");
+    expect(JSON.parse(fetch.mock.calls[0][1].body)).toEqual(request);
+    expect(fetch.mock.calls[0][1].headers["x-admin-key"]).toBe("test-only");
+  });
+  it.each([
+    { found: true, checkIn: "2026-02-30", checkOut: "2026-03-04" },
+    { found: true, checkIn: "2026-11-09", checkOut: "2026-11-12" },
+    { error: "unavailable" },
+    null,
+  ])("rejects malformed nearest-date data instead of offering it: %j", async (body) => {
+    setupFetch().mockResolvedValue(new Response(JSON.stringify(body)));
+    await expect(findNearestAvailable(request)).rejects.toThrow("Invalid nearest-availability");
+  });
+  it("does not retry a rate limit or turn it into no availability", async () => {
+    const fetch = setupFetch().mockResolvedValue(new Response("", { status: 429 }));
+    await expect(findNearestAvailable(request)).rejects.toMatchObject({ status: 429 });
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+  it("does not start a request for an already ended conversation", async () => {
+    const fetch = setupFetch();
+    const controller = new AbortController(); controller.abort();
+    await expect(findNearestAvailable(request, controller.signal)).rejects.toMatchObject({ name: "AbortError" });
+    expect(fetch).not.toHaveBeenCalled();
   });
 });

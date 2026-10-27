@@ -18,7 +18,7 @@ vi.mock("../lib/logger", () => ({ logger: { info: vi.fn(), warn: vi.fn(), error:
 vi.mock("nodemailer", () => ({ default: {
   createTransport: () => ({ sendMail: state.sendMail, close: state.transportClose }),
 } }));
-import { runTool } from "../beds24/tool";
+import { lodgeTools, runTool } from "../beds24/tool";
 import { AbuseLimitError } from "./abuse";
 import { logger } from "../lib/logger";
 
@@ -145,5 +145,42 @@ describe("availability dates and truthful failure messages", () => {
     expect(logger.error).toHaveBeenCalledWith(expect.objectContaining({
       conversationId: 101, reason: "not_configured",
     }), "Availability connection is not configured");
+  });
+});
+
+describe("nearest-date tool authorization and guest agreement", () => {
+  const context = { conversationId: 101, ip: "198.51.100.1" };
+  const args = { checkIn: "2027-07-22", checkOut: "2027-07-24", guestAgreed: true };
+  const call = (input: Record<string, unknown>, ctx = context) =>
+    runTool("check_nearest_availability", JSON.stringify(input), ctx).then(JSON.parse);
+  it("registers the tool in the shared text and voice tool list", () => {
+    expect(lodgeTools.some((tool) => tool.function.name === "check_nearest_availability")).toBe(true);
+  });
+  it("requires an authorized conversation before any search", async () => {
+    expect(JSON.parse(await runTool("check_nearest_availability", JSON.stringify(args), undefined as any)).error)
+      .toBe("unauthorized");
+    expect(state.notify).not.toHaveBeenCalled(); expect(state.quota).not.toHaveBeenCalled();
+  });
+  it("rejects a search without agreement before consuming quotas or calling the engine", async () => {
+    expect((await call({ ...args, guestAgreed: false })).error).toBe("bad_arguments");
+    expect(state.notify).not.toHaveBeenCalled(); expect(state.quota).not.toHaveBeenCalled();
+  });
+  it("uses the existing shared tool quota and never creates an enquiry", async () => {
+    state.quota.mockRejectedValueOnce(new AbuseLimitError());
+    expect((await call(args)).error).toBe("rate_limited");
+    expect(state.notify).not.toHaveBeenCalled();
+    expect(state.insert).not.toHaveBeenCalled(); expect(state.sendMail).not.toHaveBeenCalled();
+  });
+  it("offers the question on a normal sold-out lookup without automatically searching", async () => {
+    vi.stubEnv("AUTOMAILER_URL", "https://booking.example.test");
+    vi.stubEnv("ADMIN_API_KEY", "test-only-key");
+    state.notify.mockResolvedValue(new Response('{"nights":2,"rooms":[]}'));
+    const soldOut = JSON.parse(await runTool("check_availability", JSON.stringify({
+      checkIn: args.checkIn, checkOut: args.checkOut,
+    }), context));
+    expect(soldOut.followUpQuestion).toBe("Would you like me to check for the nearest available date?");
+    expect(state.notify).toHaveBeenCalledTimes(1);
+    expect(state.notify.mock.calls[0][0]).toBe("https://booking.example.test/api/booking/availability");
+    expect(state.insert).not.toHaveBeenCalled(); expect(state.sendMail).not.toHaveBeenCalled();
   });
 });

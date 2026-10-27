@@ -1,6 +1,7 @@
 import { z } from "zod/v4";
 import { normalizeCurrency } from "../currency/client";
 import { isAvailabilityDate, resolveAvailabilityDates } from "../beds24/dates";
+import { NEAREST_ROOM_TYPES } from "../beds24/nearest";
 
 const singleLine = (max: number) => z.string().trim().min(1).max(max).regex(/^[^\u0000-\u001f\u007f]+$/);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
@@ -14,21 +15,30 @@ const dateRange = (value: { checkIn: string; checkOut: string }) => {
 const optional = <T extends z.ZodType>(schema: T) =>
   z.preprocess((value) => value === "" || value === null ? undefined : value, schema.optional());
 
+const stayArguments = z.strictObject({
+  checkIn: z.string().refine(isAvailabilityDate),
+  checkOut: z.string().refine(isAvailabilityDate),
+  numAdults: z.number().int().min(1).max(30).default(2),
+  numChildren: z.number().int().min(0).max(30).default(0),
+  numInfants: z.number().int().min(0).max(30).default(0),
+});
+function resolveStay<T extends { checkIn: string; checkOut: string }>(value: T, context: z.RefinementCtx) {
+  const dates = resolveAvailabilityDates(value.checkIn, value.checkOut);
+  if (!dates) {
+    context.addIssue({ code: "custom", message: "Invalid booking dates" });
+    return z.NEVER;
+  }
+  return { ...value, ...dates };
+}
+const validParty = (value: { numAdults: number; numChildren: number; numInfants: number }) =>
+  value.numAdults + value.numChildren + value.numInfants <= 60;
+
 export const toolArgumentSchemas = {
-  check_availability: z.strictObject({
-    checkIn: z.string().refine(isAvailabilityDate),
-    checkOut: z.string().refine(isAvailabilityDate),
-    numAdults: z.number().int().min(1).max(30).default(2),
-    numChildren: z.number().int().min(0).max(30).default(0),
-    numInfants: z.number().int().min(0).max(30).default(0),
-  }).transform((value, context) => {
-    const dates = resolveAvailabilityDates(value.checkIn, value.checkOut);
-    if (!dates) {
-      context.addIssue({ code: "custom", message: "Invalid booking dates" });
-      return z.NEVER;
-    }
-    return { ...value, ...dates };
-  }).refine(dateRange).refine((value) => value.numAdults + value.numChildren + value.numInfants <= 60),
+  check_availability: stayArguments.transform(resolveStay).refine(dateRange).refine(validParty),
+  check_nearest_availability: stayArguments.extend({
+    roomType: z.enum(NEAREST_ROOM_TYPES).default("any"),
+    guestAgreed: z.literal(true),
+  }).transform(resolveStay).refine(dateRange).refine(validParty),
   convert_currency: z.strictObject({
     amountUsd: z.number().finite().min(0).max(1_000_000),
     targetCurrency: singleLine(32).refine((value) => /^[A-Z]{3}$/.test(normalizeCurrency(value))),

@@ -1,4 +1,4 @@
-import type { AvailabilityResult } from "./client";
+import { NEAREST_DATE_QUESTION, type AvailabilityResult } from "./client";
 
 /** Stock-aware suggestions, not quotes: mixed occupancies require a cart quote. */
 export function formatGroupAvailability(result: AvailabilityResult): string {
@@ -29,6 +29,7 @@ export function formatGroupAvailability(result: AvailabilityResult): string {
     adults, children: result.numChildren ?? 0, infants: result.numInfants ?? 0,
     anyAvailable: rooms.length > 0,
     groupCapacityPossible: combinations.length > 0,
+    ...(!combinations.length ? { followUpQuestion: NEAREST_DATE_QUESTION } : {}),
     suggestedCombinations: combinations.slice(0, 3),
     rooms: rooms.map(r => ({
       room: r.roomName, unitsAvailable: r.unitsAvailable,
@@ -39,6 +40,10 @@ export function formatGroupAvailability(result: AvailabilityResult): string {
       "Individual adult/child/infant allocation and rates must be checked in /book-direct before confirmation. " +
       "Do not invent, multiply or sum per-unit prices into a group total. " +
       "If groupCapacityPossible is false, do not claim the whole lodge is sold out: say a suitable combination could not be verified. " +
-      "Answer concisely with at most one suitable combination; do not recite all rooms or policies.",
+      "Answer concisely with at most one suitable combination; do not recite all rooms or policies." +
+      (!combinations.length
+        ? " Ask followUpQuestion in the guest's language, then STOP and wait for agreement before calling " +
+          "check_nearest_availability. Keep the same stay length, guest counts and room preference."
+        : ""),
   });
 }
