@@ -7,6 +7,7 @@ import { dirname, join } from 'path';
 import { readFile, access } from 'fs/promises';
 import { LOCALES, localeFromPath } from './src/i18n/localeCatalog.js';
 import { injectLocaleBootstrap } from './src/i18n/localeBootstrap.js';
+import { getLegacyLocaleRedirect } from './functions/_middleware.js';
 import { onRequestGet as getStaticMap } from './functions/api/static-map.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -662,6 +663,23 @@ app.get('/api/fx', async (req, res) => {
     res.set('Cache-Control', 'public, max-age=300');
     res.json({ base, rates: {} });
   }
+});
+
+// Mirror the bounded Pages compatibility adapter before serving public pages.
+// Use a placeholder origin and return a relative Location so neither request
+// text nor proxy scheme/host headers can supply an external redirect target.
+app.use((req, res, next) => {
+  if (req.method !== 'GET' && req.method !== 'HEAD') return next();
+  const url = new URL('https://preview.invalid');
+  url.pathname = req.path;
+  const queryIndex = req.originalUrl.indexOf('?');
+  url.search = queryIndex < 0 ? '' : req.originalUrl.slice(queryIndex);
+  const redirect = getLegacyLocaleRedirect(url);
+  if (!redirect) return next();
+  const target = new URL(redirect.headers.get('Location'));
+  res.set('Cache-Control', redirect.headers.get('Cache-Control'));
+  res.setHeader('Set-Cookie', redirect.headers.getSetCookie());
+  return res.redirect(redirect.status, `${target.pathname}${target.search}${target.hash}`);
 });
 
 // Serve standalone accommodation detail pages before the SPA middleware

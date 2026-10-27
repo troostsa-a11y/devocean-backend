@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, expect, it, vi } from 'vitest';
-import { onRequest, STATIC_UNIT_ASSETS } from '../_middleware.js';
+import { getLegacyLocaleRedirect, onRequest, STATIC_UNIT_ASSETS } from '../_middleware.js';
 
 const UNIT_ROUTES = [...STATIC_UNIT_ASSETS.keys()];
 const UNIT_HTML = `<!doctype html>
@@ -63,10 +63,10 @@ describe('Cloudflare static unit routing', () => {
     ['/booking', '/book-direct'],
     ['/bv3/deals', '/book-direct'],
     ['/bv3/search?currency=USD', '/book-direct?currency=USD'],
-    ['/booking?lang=ja&adults=2', '/book-direct?adults=2'],
-    ['/chalet.html?lang=fr-FR', '/chalet'],
+    ['/booking?lang=ja&adults=2', '/ja/book-direct?adults=2'],
+    ['/chalet.html?lang=fr-FR', '/fr/chalet'],
     ['/fr/chalet.html?unit=chalet&currency=EUR', '/fr/chalet?unit=chalet&currency=EUR'],
-    ['/safari.html?lang=zh', '/safari'],
+    ['/safari.html?lang=zh', '/zh-hans/safari'],
     ['/de/legal/privacy', '/legal/privacy'],
     ['/fr/legal/gdpr.html', '/legal/GDPR'],
   ])('redirects %s directly to the real document', async (path, target) => {
@@ -129,14 +129,14 @@ describe('Cloudflare static unit routing', () => {
       .toBe('/_unit-pages/safari.unit');
   });
 
-  it('ignores retired language queries rather than redirecting the document', async () => {
+  it('redirects an incoming language query without losing any booking context', async () => {
     const context = makeContext('/safari?lang=pt-PT&checkIn=2026-09-15&checkOut=2026-09-18&adults=2&children=1&discount=SUMMER&currency=EUR');
 
     const response = await onRequest(context);
-    expect(response.status).toBe(200);
-    expect(response.headers.get('location')).toBeNull();
-    expect(await response.text()).toContain('window.__DEVOCEAN_LOCALE__="en-GB"');
-    expect(context.assetFetch).toHaveBeenCalledOnce();
+    expect(response.status).toBe(301);
+    expect(response.headers.get('location')).toBe('https://devoceanlodge.com/pt-pt/safari?checkIn=2026-09-15&checkOut=2026-09-18&adults=2&children=1&discount=SUMMER&currency=EUR');
+    expect(context.assetFetch).not.toHaveBeenCalled();
+    expect(context.next).not.toHaveBeenCalled();
   });
 
   it.each([
@@ -156,13 +156,77 @@ describe('Cloudflare static unit routing', () => {
   });
 
   it.each([
-    '/experiences/diving?lang=ja',
     '/de/experiences/fishing?lang=ja&currency=USD',
-  ])('keeps current experience URLs unchanged despite a retired language query: %s', async path => {
+    '/pt-pt/safari?lang=fr',
+  ])('keeps an explicit locale path authoritative over a conflicting old query: %s', async path => {
     const context = makeContext(path);
     const response = await onRequest(context);
     expect(response.status).toBe(200);
     expect(response.headers.get('location')).toBeNull();
     expect(context.assetFetch).toHaveBeenCalledOnce();
   });
+});
+
+describe('bounded inbound language-query compatibility', () => {
+  it.each([
+    ['/?lang=fr', '/fr/'],
+    ['/story?lang=de', '/de/story'],
+    ['/devocean-lodge-meals?lang=pt-BR', '/pt-br/devocean-lodge-meals'],
+    ['/ponta-do-ouro?lang=nl', '/nl/ponta-do-ouro'],
+    ['/experiences/diving?lang=ja', '/ja/experiences/diving'],
+    ['/book-direct?lang=de-DE&currency=ZAR#rooms', '/de/book-direct?currency=ZAR#rooms'],
+    ['//book-direct?lang=en', '/book-direct'],
+    ['/book-direct?lang=en&return_url=%2F%2Fattacker.example', '/book-direct?return_url=%2F%2Fattacker.example'],
+  ])('redirects %s only to a registered document on the same origin', async (path, expected) => {
+    const context = makeContext(path);
+    const response = await onRequest(context);
+    expect(response.status).toBe(301);
+    const target = new URL(response.headers.get('location'));
+    expect(target.origin).toBe('https://devoceanlodge.com');
+    expect(target.href).toBe(`https://devoceanlodge.com${expected}`);
+    expect(target.searchParams.has('lang')).toBe(false);
+    expect(response.headers.get('cache-control')).toBe('no-store');
+    expect(context.assetFetch).not.toHaveBeenCalled();
+    expect(context.next).not.toHaveBeenCalled();
+  });
+
+  it.each(['en-GB', 'en-US'])('hands off the explicit %s preference on root English URLs', async locale => {
+    const response = await onRequest(makeContext(`/?lang=${locale}&currency=EUR`));
+    expect(response.status).toBe(301);
+    expect(response.headers.get('location')).toBe('https://devoceanlodge.com/?currency=EUR');
+    const cookies = response.headers.getSetCookie();
+    expect(cookies).toHaveLength(2);
+    expect(cookies[0]).toContain(`dv_lang=${locale};`);
+    expect(cookies[1]).toContain(`dv_lang_entry=${locale}; Max-Age=60;`);
+    expect(cookies.every(cookie => cookie.includes('SameSite=Lax; Secure'))).toBe(true);
+    expect(cookies.some(cookie => cookie.includes('currency'))).toBe(false);
+  });
+
+  it.each([
+    '/api/booking/availability?lang=de',
+    '/text-embed?lang=de',
+    '/booking-confirmed?lang=de&ref=example',
+    '/gift-confirmed?lang=de',
+    '/thankyou?lang=de',
+    '/canceled?lang=de',
+    '/legal/privacy?lang=de',
+    '/assets/app.js?lang=de',
+    '/unknown?lang=de',
+    '/constructor?lang=de',
+    '/__proto__?lang=de',
+    '//attacker.example?lang=en',
+    '/%2F%2Fattacker.example?lang=en',
+    '/experiences/unknown?lang=de',
+  ])('does not apply website compatibility to %s', path => {
+    expect(getLegacyLocaleRedirect(`https://devoceanlodge.com${path}`)).toBeNull();
+  });
+
+  it.each(['not-a-locale', 'https://attacker.example', '//attacker.example', '__proto__', 'constructor'])(
+    'rejects the unsupported language value %s',
+    value => {
+      const url = new URL('https://devoceanlodge.com/book-direct');
+      url.searchParams.set('lang', value);
+      expect(getLegacyLocaleRedirect(url)).toBeNull();
+    },
+  );
 });

@@ -507,6 +507,35 @@ function explicitLocaleRedirect(target, locale) {
   return new Response(null, { status: 301, headers });
 }
 
+// Compatibility for observed incoming links, not a second language-selection
+// system. Only registered public documents can opt into the old query format.
+// API/embed/payment-return contracts and explicit locale paths stay untouched.
+export function getLegacyLocaleRedirect(input) {
+  const incoming = new URL(input);
+  if (localeFromPath(incoming.pathname)) return null;
+  const locale = normalizeLocale(incoming.searchParams.get('lang'));
+  // The legacy alias table is a plain object: reject inherited object members,
+  // as well as unknown or URL-shaped values, rather than treating them as codes.
+  if (typeof locale !== 'string') return null;
+
+  let pathname = stripLocalePrefix(incoming.pathname).replace(/\/+$/, '') || '/';
+  const unitHtml = pathname.match(/^\/(safari|comfort|cottage|chalet)\.html$/i);
+  if (unitHtml) pathname = `/${unitHtml[1].toLowerCase()}`;
+  if (/^\/(?:booking|bv3\/(?:deals|search))$/i.test(pathname)) pathname = '/book-direct';
+
+  const isPublicDocument = pathname === '/' ||
+    STATIC_UNIT_ASSETS.has(pathname) || Object.hasOwn(ROUTE_META, pathname) ||
+    (pathname.startsWith('/experiences/') && EXPERIENCE_KEYS.has(pathname.slice('/experiences/'.length)));
+  if (!isPublicDocument || NOINDEX_PATHS.has(pathname)) return null;
+
+  // Assign only a registered pathname on a copy of the incoming URL. Never
+  // resolve user-controlled path/query text as a destination or authority.
+  const target = new URL(incoming);
+  target.pathname = localizedPath(pathname, locale);
+  target.searchParams.delete('lang');
+  return explicitLocaleRedirect(target.href, locale);
+}
+
 export async function onRequest(context) {
   try {
     const requestUrl = new URL(context.request.url);
@@ -540,6 +569,9 @@ export async function onRequest(context) {
         headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
       });
     }
+
+    const legacyLocaleRedirect = getLegacyLocaleRedirect(requestUrl);
+    if (legacyLocaleRedirect) return legacyLocaleRedirect;
 
     // Retired booking-engine entry points are not homepage aliases.
     // Preserve useful query parameters and route old www links to the same

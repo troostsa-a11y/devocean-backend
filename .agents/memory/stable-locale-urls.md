@@ -8,24 +8,11 @@ Indexable translated variants live at stable URL prefixes (e.g. `/pt-pt/`, `/de/
 
 **Why:** Google requires distinct URLs per hreflang variant to index translations independently. Same-page client-only switching only delivers the translated experience to JS-enabled crawlers (which Google does run, but at a delay). Stable URLs allow edge rendering of correct canonical, Open Graph, and hreflang metadata before JS loads.
 
-## Key files
-- `src/i18n/localeCatalog.js` — single source of truth: LOCALES array, PATH_PREFIXES, `localizedPath()`, `stripLocalePrefix()`, `localeFromPath()`, `allHreflangPaths()`
-- `functions/_middleware.js` — edge: detects locale prefix, serves static unit pages at locale paths, injects `window.__DEVOCEAN_LOCALE__` and `html lang`, rewrites canonical/OG URL/hreflang
-- `src/i18n/useLocale.js` → `setLang()` calls `localizedUrl()` and does `window.location.assign()`
-- `src/components/Header.jsx` — flat `LOCALES.map` selector, no region step
-- `public/js/shared-nav.js` — same flat selector for standalone HTML pages; `setLang()` calls `localePath()` and sets `window.location.href`
-- `public/translations/accommodation-detail-i18n.js` + `translations/accommodation-detail-i18n.js` — reads `window.__DEVOCEAN_LOCALE__` first, before localStorage or URL param
-- `scripts/generate-locale-sitemap.mjs` — runs in `prebuild`; generates 445 canonical locale URLs into `public/sitemap.xml`
-- `src/i18n/__tests__/localeCatalog.test.js` — contract tests for localizedPath, stripLocalePrefix, normalizeLocale, allHreflangPaths
-
 ## Default locale
 English UK (`en-GB`) is the default. Both English variants use root paths; historical `/en-us` links normalize to root while preserving the explicit US English preference. Translated variants use lowercase path segments, e.g. `pt-pt`, `zh-hans` (not `zh-CN`).
 
 ## How to apply
-- Any new public route must be added to `LOCALIZED_ROUTES` in `generate-locale-sitemap.mjs`
-- Accommodation static unit routes additionally need an entry in `STATIC_UNIT_ROUTES` in `_middleware.js`
-- SPA routes are matched after `stripLocalePrefix()` strips the prefix; no additional registration needed
-- Public `?lang=` language selection is retired; use locale paths rather than restoring the old query fallback
+- Generate locale-path links; incoming old public `?lang=` links use a bounded server-side adapter, not per-page query fallbacks
 - The `html lang` attribute is set by the middleware on every response, not by React
 
 ## Lazy-route placeholders
