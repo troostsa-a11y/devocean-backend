@@ -5,9 +5,9 @@ import test from 'node:test';
 
 const root = new URL('../', import.meta.url);
 const consumers = [
-  ['root', './'],
-  ['website', 'WebsiteProject/'],
-  ['reception', 'voice-reception/artifacts/api-server/'],
+  ['root', './', '6.16.0'],
+  ['website', 'WebsiteProject/', '6.16.0'],
+  ['reception', 'voice-reception/artifacts/api-server/', '6.16.1'],
 ];
 const workspaceLock = readFileSync(new URL('voice-reception/pnpm-lock.yaml', root), 'utf8');
 
@@ -23,7 +23,7 @@ test('all npm and pnpm locks exclude the five reported qs findings', () => {
   }
   const versions = [...workspaceLock.matchAll(/^  qs@([^:]+):/gm)].map(match => match[1]);
   assert.ok(versions.length);
-  assert.ok(versions.every(version => version === '6.16.0'));
+  assert.ok(versions.every(version => version === '6.16.1'));
 });
 
 test('every independently deployed project enforces patched qs on fresh installs', () => {
@@ -32,10 +32,10 @@ test('every independently deployed project enforces patched qs on fresh installs
     assert.equal(manifest.overrides.qs, '6.16.0', directory);
   }
   assert.match(readFileSync(new URL('voice-reception/pnpm-workspace.yaml', root), 'utf8'),
-    /overrides:\n(?:  .*\n)*  "qs": "6\.16\.0"/);
+    /overrides:\n(?:  .*\n)*  "qs": "6\.16\.1"/);
 });
 
-for (const [name, directory] of consumers) {
+for (const [name, directory, version] of consumers) {
   const projectRequire = createRequire(new URL(`${directory}package.json`, root));
   const expressRequire = createRequire(projectRequire.resolve('express'));
   const bodyParserRequire = createRequire(expressRequire.resolve('body-parser'));
@@ -44,7 +44,7 @@ for (const [name, directory] of consumers) {
     const qs = require('qs');
 
     test(`${name}/${parent}: actual consumer resolves patched qs`, () => {
-      assert.equal(require('qs/package.json').version, '6.16.0');
+      assert.equal(require('qs/package.json').version, version);
     });
 
     test(`${name}/${parent}: hostile constructor.isBuffer no longer crashes stringify`, () => {

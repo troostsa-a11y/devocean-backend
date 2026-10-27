@@ -79,9 +79,9 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 overrides:
-  "express>body-parser": "2.3.0"
+  "express>body-parser": "2.4.0"
   "@babel/core": "7.29.7"
-  "qs": "6.16.0"
+  "qs": "6.16.1"
   "postcss": "8.5.29"
   "postcss-selector-parser": "7.1.6"
   "browserslist": "4.28.7"

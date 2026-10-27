@@ -1,31 +1,34 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
 const root = new URL('../', import.meta.url);
 const consumers = [
-  ['root', './', '1.20.6'],
-  ['website', 'WebsiteProject/', '1.20.6'],
-  ['reception', 'voice-reception/artifacts/api-server/', '2.3.0'],
+  ['root', './', '1.20.9'],
+  ['website', 'WebsiteProject/', '1.20.9'],
+  ['automailer', 'render-automailer/', '1.20.9'],
+  ['reception', 'voice-reception/artifacts/api-server/', '2.4.0'],
 ];
 
-test('lockfiles and deployment manifests exclude GHSA-v422-hmwv-36x6', () => {
+test('lockfiles and deployment manifests exclude both body-parser advisories', () => {
   for (const directory of ['./', 'WebsiteProject/']) {
     const lock = JSON.parse(readFileSync(new URL(`${directory}package-lock.json`, root)));
     const parsers = Object.entries(lock.packages).filter(([path]) => /(^|\/)node_modules\/body-parser$/.test(path));
     assert.ok(parsers.length);
     for (const [path, metadata] of parsers) {
-      assert.equal(metadata.version, '1.20.6', `${directory}${path}`);
+      assert.equal(metadata.version, '1.20.9', `${directory}${path}`);
       assert.ok(metadata.resolved.startsWith('https://registry.npmjs.org/'));
     }
   }
   const lock = readFileSync(new URL('voice-reception/pnpm-lock.yaml', root), 'utf8');
   const versions = [...lock.matchAll(/^  body-parser@([^:]+):/gm)].map(match => match[1]);
-  assert.deepEqual([...new Set(versions)], ['2.3.0']);
+  assert.deepEqual([...new Set(versions)], ['2.4.0']);
   for (const directory of ['./', 'WebsiteProject/', 'render-automailer/']) {
     const manifest = JSON.parse(readFileSync(new URL(`${directory}package.json`, root)));
-    assert.equal(manifest.overrides.express['body-parser'], '1.20.6');
+    assert.equal(manifest.overrides.express['body-parser'], '1.20.9');
   }
 });
 
@@ -37,6 +40,18 @@ for (const [name, directory, version] of consumers) {
 
   test(`${name}: consumer loads the patched body-parser`, () => {
     assert.equal(expressRequire('body-parser/package.json').version, version);
+  });
+
+  test(`${name}: compressed requests cannot crash the process via GHSA-27r3-jxmh-p828`, () => {
+    // An isolated process must survive without an uncaughtException handler.
+    // A strict deadline also prevents a broken stream cleanup from hanging CI.
+    const result = spawnSync(process.execPath, [
+      fileURLToPath(new URL('./fixtures/body-parser-compression.mjs', import.meta.url)),
+      directory,
+    ], { encoding: 'utf8', timeout: 12000 });
+    assert.equal(result.error, undefined, result.error?.message);
+    assert.equal(result.status, 0, result.stderr || result.stdout);
+    assert.match(result.stdout, /compression regressions passed/);
   });
 
   for (const kind of ['json', 'urlencoded', 'text', 'raw']) {

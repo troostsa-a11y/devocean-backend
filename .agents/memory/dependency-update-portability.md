@@ -79,3 +79,9 @@ A pnpm frozen install can reuse an unpatched cached package even under its patch
 **Why:** A regular frozen install created the expected patch-hash directory but its files still lacked the committed guards. A forced frozen reinstall applied them correctly.
 
 **How to apply:** If a valid committed patch is missing from installed source after a frozen install, force a whole-workspace frozen reinstall and rerun installed-source and attack checks; do not assume the patch-hash directory proves the mitigation is present.
+
+For streaming-parser regressions, a successful HTTP response is not proof that the server survives the request.
+
+**Why:** A decompressor can finish a valid frame and allow a response before later input triggers a fatal, unhandled stream error. An exception handler in the test process can conceal that failure mode.
+
+**How to apply:** Exercise real HTTP chunk boundaries in an isolated child without an uncaught-exception handler, verify a subsequent health request, and bound both network and child-process timeouts.
