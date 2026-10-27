@@ -5,7 +5,7 @@ import {
   PAYMENT_CURRENCIES, PaymentQuoteError, quoteBookingPayment,
   selectPaymentCurrency, validateBookingPayment,
 } from './booking-payment';
-import { buildDepositCheckoutParams } from './stripe-booking';
+import { buildDepositCheckoutParams, buildGiftVoucherCheckoutParams, toStripeLocale } from './stripe-booking';
 import type { BookingConfig } from '../config/booking-config';
 
 const loadRates = async (base: string) => ({
@@ -111,4 +111,52 @@ test('fully voucher-funded bookings accept verified zero-value completion, not u
     id: 'cs_zero', mode: 'payment', payment_status: 'no_payment_required',
     currency: 'usd', amount_total: 0,
   }, record), null);
+});
+
+const websiteLocales: Record<string, string> = {
+  'en-GB': '', 'en-US': '', 'pt-PT': '/pt-pt', 'pt-BR': '/pt-br',
+  'nl-NL': '/nl', 'fr-FR': '/fr', 'it-IT': '/it', 'de-DE': '/de', 'es-ES': '/es',
+  sv: '/sv', pl: '/pl', ro: '/ro', sr: '/sr', hr: '/hr', cs: '/cs', tr: '/tr',
+  'ja-JP': '/ja', 'zh-CN': '/zh-hans', ru: '/ru', 'af-ZA': '/af', zu: '/zu', sw: '/sw',
+};
+
+for (const [locale, prefix] of Object.entries(websiteLocales)) {
+  test(`booking and voucher returns preserve ${locale} without changing Stripe identifiers`, () => {
+    const booking = buildDepositCheckoutParams({
+      sessionRef: 'reference /?&', currency: 'USD', depositAmount: 50,
+      balanceDue: 50, roomName: 'Test room', checkIn: '2027-01-10',
+      checkOut: '2027-01-12', guestEmail: 'guest@example.test', locale,
+    }, { ...cfg, publicSiteUrl: 'https://example.test/' });
+    const gift = buildGiftVoucherCheckoutParams({
+      amount: 100, purchaserEmail: 'guest@example.test', purchaserName: 'Test purchaser', locale,
+    }, cfg);
+    const success = new URL(booking.success_url!);
+    expectSameOrigin(success);
+    assert.equal(success.pathname, `${prefix}/booking-confirmed`);
+    assert.equal(success.searchParams.get('ref'), 'reference /?&');
+    assert.equal(booking.cancel_url, `https://example.test${prefix}/book-direct?canceled=1`);
+    assert.equal(gift.success_url, `https://example.test${prefix}/gift-confirmed?session_id={CHECKOUT_SESSION_ID}`);
+    assert.equal(gift.cancel_url, `https://example.test${prefix}/gift-vouchers?canceled=1`);
+    assert.equal(gift.line_items![0].price_data!.currency, 'usd');
+    assert.deepEqual(gift.adaptive_pricing, { enabled: false });
+    for (const url of [booking.success_url!, booking.cancel_url!, gift.success_url!, gift.cancel_url!]) {
+      assert.equal(new URL(url).searchParams.has('lang'), false);
+      assert.equal(new URL(url).searchParams.has('locale'), false);
+    }
+  });
+}
+
+function expectSameOrigin(url: URL) {
+  assert.equal(url.origin, 'https://example.test');
+}
+
+test('unsupported language values cannot become checkout URLs or invalid Stripe locale objects', () => {
+  for (const locale of ['__proto__', 'constructor', '//attacker.example', 'https://attacker.example', 'unsupported']) {
+    const gift = buildGiftVoucherCheckoutParams({
+      amount: 20, purchaserEmail: 'guest@example.test', purchaserName: 'Test', locale,
+    }, cfg);
+    assert.equal(gift.success_url, 'https://example.test/gift-confirmed?session_id={CHECKOUT_SESSION_ID}');
+    assert.equal(toStripeLocale(locale), 'auto');
+  }
+  assert.equal(toStripeLocale('pt_BR'), 'pt-BR');
 });

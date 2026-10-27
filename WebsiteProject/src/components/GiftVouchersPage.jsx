@@ -607,6 +607,7 @@ export default function GiftVouchersPage({ lang }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           amount,
+          locale: lang,
           purchaserName: purchaserName.trim(),
           purchaserEmail: purchaserEmail.trim(),
           recipientName: recipientName.trim() || undefined,

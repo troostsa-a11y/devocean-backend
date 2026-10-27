@@ -3,6 +3,23 @@ import assert from 'node:assert/strict';
 import { createVoucherCheckoutHandler, createVoucherCheckoutLimiter } from './gift-voucher-checkout';
 
 const valid = { amount: 20, purchaserName: 'Guest', purchaserEmail: 'guest@example.com' };
+
+test('voucher locale reaches Checkout without adding it to the voucher accounting record', async () => {
+  const h = harness();
+  const response = await h.request({ ...valid, locale: ' pt-BR ' }, '192.0.2.1');
+  assert.equal(response.statusCode, 200);
+  assert.equal(h.sessions[0].locale, 'pt-BR');
+  assert.equal(Object.prototype.hasOwnProperty.call(h.rows[0], 'locale'), false);
+});
+
+test('malformed locale input never reaches Stripe or creates a pending voucher', async () => {
+  for (const locale of [{}, [], 'x'.repeat(36)]) {
+    const h = harness();
+    assert.equal((await h.request({ ...valid, locale })).statusCode, 400);
+    assert.equal(h.sessions.length, 0);
+    assert.equal(h.rows.length, 0);
+  }
+});
 function harness(options: { createSession?: any; database?: any; limit?: any } = {}) {
   const sessions: any[] = [];
   const rows: any[] = [];

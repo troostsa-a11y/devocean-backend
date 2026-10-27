@@ -205,10 +205,9 @@ describe('bounded inbound language-query compatibility', () => {
   it.each([
     '/api/booking/availability?lang=de',
     '/text-embed?lang=de',
-    '/booking-confirmed?lang=de&ref=example',
-    '/gift-confirmed?lang=de',
+    '/booking-confirmed?ref=example',
+    '/gift-confirmed?session_id=example',
     '/thankyou?lang=de',
-    '/canceled?lang=de',
     '/legal/privacy?lang=de',
     '/assets/app.js?lang=de',
     '/unknown?lang=de',
@@ -228,5 +227,52 @@ describe('bounded inbound language-query compatibility', () => {
       url.searchParams.set('lang', value);
       expect(getLegacyLocaleRedirect(url)).toBeNull();
     },
+  );
+});
+
+describe('payment-return language migration preserves transaction identifiers', () => {
+  it.each([
+    ['/booking-confirmed?lang=fr&ref=booking-123', '/fr/booking-confirmed?ref=booking-123'],
+    ['/gift-confirmed?locale=pt-BR&session_id=cs_test_123', '/pt-br/gift-confirmed?session_id=cs_test_123'],
+  ])('canonicalizes only the language on %s', async (path, expected) => {
+    const response = await onRequest(makeContext(path));
+    expect(response.status).toBe(301);
+    expect(response.headers.get('location')).toBe(`https://devoceanlodge.com${expected}`);
+    expect(response.headers.get('cache-control')).toBe('no-store');
+  });
+
+  it.each([
+    ['/canceled', '/book-direct?canceled=1'],
+    ['/canceled.html?locale=de', '/de/book-direct?canceled=1'],
+    ['/canceled?lang=pt-BR&ref=retained&currency=MZN&adults=2#status',
+      '/pt-br/book-direct?ref=retained&currency=MZN&adults=2&canceled=1#status'],
+    ['/de/canceled?locale=ja&session_id=retained', '/de/book-direct?session_id=retained&canceled=1'],
+    ['/en-us/canceled.html?lang=fr', '/book-direct?canceled=1'],
+    ['/canceled?locale=__proto__&return_url=%2F%2Fattacker.example',
+      '/book-direct?return_url=%2F%2Fattacker.example&canceled=1'],
+    ['//canceled?lang=nl', '/nl/book-direct?canceled=1'],
+  ])('opens the native cancellation state from %s', async (path, expected) => {
+    const context = makeContext(path);
+    const response = await onRequest(context);
+    expect(response.status).toBe(303);
+    const target = new URL(response.headers.get('location'));
+    expect(target.origin).toBe('https://devoceanlodge.com');
+    expect(target.href).toBe(`https://devoceanlodge.com${expected}`);
+    expect(target.searchParams.has('lang')).toBe(false);
+    expect(target.searchParams.has('locale')).toBe(false);
+    expect(response.headers.get('cache-control')).toBe('no-store');
+    expect(context.assetFetch).not.toHaveBeenCalled();
+    expect(context.next).not.toHaveBeenCalled();
+  });
+
+  it('preserves explicit US English on a historical cancellation path', async () => {
+    const response = await onRequest(makeContext('/en-us/canceled?lang=fr'));
+    expect(response.headers.get('set-cookie')).toContain('dv_lang_entry=en-US');
+  });
+
+  it.each(['/embed?lang=de', '/embed-text?lang=pt-BR&currency=EUR',
+    '/api/openai/realtime/ws?conversationId=conversation-123&lang=de&currency=EUR'])(
+    'never treats Marin transport parameters as website navigation: %s',
+    path => expect(getLegacyLocaleRedirect(`https://devoceanlodge.com${path}`)).toBeNull(),
   );
 });

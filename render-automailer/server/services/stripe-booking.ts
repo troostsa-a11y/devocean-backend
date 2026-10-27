@@ -50,10 +50,26 @@ const STRIPE_LOCALE_EXACT: Record<string, string> = {
 
 export function toStripeLocale(raw?: string): string {
   if (!raw) return 'auto';
-  const lower = String(raw).trim().toLowerCase();
-  if (STRIPE_LOCALE_EXACT[lower]) return STRIPE_LOCALE_EXACT[lower];
+  const lower = String(raw).trim().toLowerCase().replace(/_/g, '-');
+  if (Object.prototype.hasOwnProperty.call(STRIPE_LOCALE_EXACT, lower)) return STRIPE_LOCALE_EXACT[lower];
   const base = lower.split('-')[0];
-  return STRIPE_LOCALE_BY_BASE[base] || 'auto';
+  return Object.prototype.hasOwnProperty.call(STRIPE_LOCALE_BY_BASE, base) ? STRIPE_LOCALE_BY_BASE[base] : 'auto';
+}
+
+// Website locales and Stripe's UI locales are different contracts: the site
+// supports languages (e.g. Afrikaans/Zulu) that Checkout itself does not.
+const WEBSITE_LANGUAGES = new Set([
+  'en', 'pt', 'nl', 'fr', 'it', 'de', 'es', 'sv', 'pl', 'ro',
+  'sr', 'hr', 'cs', 'tr', 'ja', 'zh', 'ru', 'af', 'zu', 'sw',
+]);
+
+function checkoutSitePath(pathname: string, rawLocale?: string): string {
+  const locale = String(rawLocale || '').trim().toLowerCase().replace(/_/g, '-');
+  const base = locale.split('-')[0];
+  if (base === 'en' || !WEBSITE_LANGUAGES.has(base)) return pathname;
+  const prefix = base === 'pt' ? (locale === 'pt-br' ? 'pt-br' : 'pt-pt')
+    : base === 'zh' ? 'zh-hans' : base;
+  return `/${prefix}${pathname}`;
 }
 
 export interface CheckoutInput {
@@ -92,6 +108,7 @@ export function buildDepositCheckoutParams(
     paymentDepositMinor: String(amount),
     exchangeRate: String(payment?.exchangeRate || 1),
   };
+  const siteUrl = cfg.publicSiteUrl.replace(/\/+$/, '');
   return {
     mode: 'payment',
     currency: currency.toLowerCase(),
@@ -117,8 +134,8 @@ export function buildDepositCheckoutParams(
       metadata,
     },
     metadata,
-    success_url: `${cfg.publicSiteUrl}/booking-confirmed?ref=${encodeURIComponent(input.sessionRef)}`,
-    cancel_url: `${cfg.publicSiteUrl}/book-direct?canceled=1`,
+    success_url: `${siteUrl}${checkoutSitePath('/booking-confirmed', input.locale)}?ref=${encodeURIComponent(input.sessionRef)}`,
+    cancel_url: `${siteUrl}${checkoutSitePath('/book-direct', input.locale)}?canceled=1`,
     expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 min hold
     locale: toStripeLocale(input.locale) as any,
   };
@@ -161,19 +178,19 @@ export interface GiftVoucherCheckoutInput {
   purchaserName: string;
   recipientName?: string;
   message?: string;
+  locale?: string;
 }
 
-export async function createGiftVoucherCheckoutSession(
+export function buildGiftVoucherCheckoutParams(
   input: GiftVoucherCheckoutInput,
-  cfg: BookingConfig = getBookingConfig(),
-): Promise<{ url: string; stripeSessionId: string }> {
-  const stripe = getStripe(cfg);
-
+  cfg: BookingConfig,
+): Stripe.Checkout.SessionCreateParams {
   const description = input.recipientName
     ? `For ${input.recipientName} · Redeemable at DEVOCEAN Lodge, Ponta do Ouro`
     : 'Redeemable at DEVOCEAN Lodge, Ponta do Ouro';
 
-  const session = await stripe.checkout.sessions.create({
+  const siteUrl = cfg.publicSiteUrl.replace(/\/+$/, '');
+  return {
     mode: 'payment',
     adaptive_pricing: { enabled: false },
     customer_email: input.purchaserEmail,
@@ -198,11 +215,19 @@ export async function createGiftVoucherCheckoutSession(
       recipient_name: input.recipientName || '',
       message: (input.message || '').slice(0, 500),
     },
-    success_url: `${cfg.publicSiteUrl}/gift-confirmed?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${cfg.publicSiteUrl}/gift-vouchers?canceled=1`,
+    success_url: `${siteUrl}${checkoutSitePath('/gift-confirmed', input.locale)}?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${siteUrl}${checkoutSitePath('/gift-vouchers', input.locale)}?canceled=1`,
     expires_at: Math.floor(Date.now() / 1000) + 60 * 60, // 1 hour
-  });
+    locale: toStripeLocale(input.locale) as any,
+  };
+}
 
+export async function createGiftVoucherCheckoutSession(
+  input: GiftVoucherCheckoutInput,
+  cfg: BookingConfig = getBookingConfig(),
+): Promise<{ url: string; stripeSessionId: string }> {
+  const stripe = getStripe(cfg);
+  const session = await stripe.checkout.sessions.create(buildGiftVoucherCheckoutParams(input, cfg));
   if (!session.url) throw new Error('Stripe did not return a checkout URL');
   return { url: session.url, stripeSessionId: session.id };
 }

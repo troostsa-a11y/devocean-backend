@@ -7,7 +7,7 @@ import { dirname, join } from 'path';
 import { readFile, access } from 'fs/promises';
 import { LOCALES, localeFromPath } from './src/i18n/localeCatalog.js';
 import { injectLocaleBootstrap } from './src/i18n/localeBootstrap.js';
-import { getLegacyLocaleRedirect } from './functions/_middleware.js';
+import { getLegacyLocaleRedirect, isRetiredBookingReturnPath } from './functions/_middleware.js';
 import { onRequestGet as getStaticMap } from './functions/api/static-map.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -674,6 +674,10 @@ app.use((req, res, next) => {
   url.pathname = req.path;
   const queryIndex = req.originalUrl.indexOf('?');
   url.search = queryIndex < 0 ? '' : req.originalUrl.slice(queryIndex);
+  if (isRetiredBookingReturnPath(req.path)) {
+    return res.status(410).set('Cache-Control', 'no-store').type('text/plain')
+      .send('This booking return page has been retired. Please use /book-direct.');
+  }
   const redirect = getLegacyLocaleRedirect(url);
   if (!redirect) return next();
   const target = new URL(redirect.headers.get('Location'));

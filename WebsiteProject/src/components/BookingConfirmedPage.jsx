@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import { CheckCircle2, Loader2, XCircle, RotateCcw } from 'lucide-react';
 import { getConfirmStrings, fmt } from '../i18n/bookingStrings';
 import { getPaymentStrings } from '../i18n/paymentStrings';
+import { localizedUrl } from '../i18n/localeCatalog';
 
 function money(amount, currency) {
   try {
@@ -160,7 +161,7 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
               </div>
 
               <Link
-                href="/"
+                href={localizedUrl('/', lang)}
                 className="mt-7 inline-flex items-center justify-center rounded-xl bg-[#9e4b13] px-6 py-3 text-white font-semibold hover:bg-[#854011] transition-colors"
                 data-testid="link-home"
               >
@@ -175,7 +176,7 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
               <h1 className="mt-5 text-2xl font-bold text-slate-900">{t.refundedTitle}</h1>
               <p className="mt-2 text-slate-600">{t.refundedMsg}</p>
               <Link
-                href="/book-direct"
+                href={localizedUrl('/book-direct', lang)}
                 className="mt-7 inline-flex items-center justify-center rounded-xl bg-[#9e4b13] px-6 py-3 text-white font-semibold hover:bg-[#854011] transition-colors"
                 data-testid="link-book-again"
               >
@@ -190,7 +191,7 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
               <h1 className="mt-5 text-2xl font-bold text-slate-900">{t.failedTitle}</h1>
               <p className="mt-2 text-slate-600">{t.failedMsg}</p>
               <Link
-                href="/"
+                href={localizedUrl('/', lang)}
                 className="mt-7 inline-flex items-center justify-center rounded-xl bg-slate-200 px-6 py-3 text-slate-800 font-semibold hover:bg-slate-300 transition-colors"
                 data-testid="link-home"
               >
@@ -203,7 +204,7 @@ export default function BookingConfirmedPage({ lang = 'en-GB' }) {
               <XCircle className="h-14 w-14 text-amber-500 mx-auto" />
               <h1 className="mt-5 text-2xl font-bold text-slate-900">{paymentStrings.reviewTitle}</h1>
               <p className="mt-2 text-slate-600">{paymentStrings.reviewMsg}</p>
-              <Link href="/#contact" className="mt-7 inline-flex rounded-xl bg-slate-200 px-6 py-3 text-slate-800 font-semibold" data-testid="link-contact">
+              <Link href={localizedUrl('/', lang, '', '#contact')} className="mt-7 inline-flex rounded-xl bg-slate-200 px-6 py-3 text-slate-800 font-semibold" data-testid="link-contact">
                 {t.backHome}
               </Link>
             </div>

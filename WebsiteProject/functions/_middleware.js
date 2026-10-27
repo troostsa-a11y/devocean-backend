@@ -498,27 +498,52 @@ export const STATIC_UNIT_ASSETS = new Map([
 
 // ---------------------------------------------------------------------------
 
-function explicitLocaleRedirect(target, locale) {
+function explicitLocaleRedirect(target, locale, status = 301) {
   const headers = new Headers({ Location: target, 'Cache-Control': 'no-store' });
   headers.append('Set-Cookie', `dv_lang=${encodeURIComponent(locale)}; Max-Age=31536000; Path=/; SameSite=Lax; Secure`);
   // One-use, short-lived signal: the redirected request must not lose an
   // explicit English choice to an older localStorage preference.
   headers.append('Set-Cookie', `dv_lang_entry=${encodeURIComponent(locale)}; Max-Age=60; Path=/; SameSite=Lax; Secure`);
-  return new Response(null, { status: 301, headers });
+  return new Response(null, { status, headers });
+}
+
+export function isRetiredBookingReturnPath(pathname) {
+  const decoded = stripLocalePrefix(String(pathname)).replace(
+    /%[0-9a-f]{2}/gi, byte => String.fromCharCode(Number.parseInt(byte.slice(1), 16)),
+  );
+  const retiredPath = stripLocalePrefix(decoded).replace(/^\/en-us(?=\/)/i, '');
+  return /^\/back(?:\.html)?\/?$/i.test(retiredPath);
 }
 
 // Compatibility for observed incoming links, not a second language-selection
 // system. Only registered public documents can opt into the old query format.
-// API/embed/payment-return contracts and explicit locale paths stay untouched.
+// API/embed/transaction identifiers stay untouched. Old cancellation documents
+// are aliases of the current native cancellation screen, not separate UIs.
 export function getLegacyLocaleRedirect(input) {
   const incoming = new URL(input);
-  if (localeFromPath(incoming.pathname)) return null;
-  const locale = normalizeLocale(incoming.searchParams.get('lang'));
+  const pathLocale = localeFromPath(incoming.pathname);
+  let pathname = stripLocalePrefix(incoming.pathname).replace(/\/+$/, '') || '/';
+  const enUsCancellation = /^\/en-us\/+canceled(?:\.html)?$/i.test(pathname);
+  if (/^\/canceled(?:\.html)?$/i.test(pathname) || enUsCancellation) {
+    const hint = enUsCancellation ? 'en-US' : pathLocale?.code ||
+      normalizeLocale(incoming.searchParams.get('lang') || incoming.searchParams.get('locale'));
+    const locale = typeof hint === 'string' ? hint : null;
+    const target = new URL(incoming);
+    target.pathname = localizedPath('/book-direct', locale || DEFAULT_LOCALE);
+    target.searchParams.delete('lang');
+    target.searchParams.delete('locale');
+    target.searchParams.set('canceled', '1');
+    return locale ? explicitLocaleRedirect(target.href, locale, 303)
+      : new Response(null, { status: 303, headers: { Location: target.href, 'Cache-Control': 'no-store' } });
+  }
+  if (pathLocale) return null;
+  const paymentReturn = pathname === '/booking-confirmed' || pathname === '/gift-confirmed';
+  const locale = normalizeLocale(incoming.searchParams.get('lang') ||
+    (paymentReturn ? incoming.searchParams.get('locale') : null));
   // The legacy alias table is a plain object: reject inherited object members,
   // as well as unknown or URL-shaped values, rather than treating them as codes.
   if (typeof locale !== 'string') return null;
 
-  let pathname = stripLocalePrefix(incoming.pathname).replace(/\/+$/, '') || '/';
   const unitHtml = pathname.match(/^\/(safari|comfort|cottage|chalet)\.html$/i);
   if (unitHtml) pathname = `/${unitHtml[1].toLowerCase()}`;
   if (/^\/(?:booking|bv3\/(?:deals|search))$/i.test(pathname)) pathname = '/book-direct';
@@ -526,13 +551,14 @@ export function getLegacyLocaleRedirect(input) {
   const isPublicDocument = pathname === '/' ||
     STATIC_UNIT_ASSETS.has(pathname) || Object.hasOwn(ROUTE_META, pathname) ||
     (pathname.startsWith('/experiences/') && EXPERIENCE_KEYS.has(pathname.slice('/experiences/'.length)));
-  if (!isPublicDocument || NOINDEX_PATHS.has(pathname)) return null;
+  if (!isPublicDocument || (NOINDEX_PATHS.has(pathname) && !paymentReturn)) return null;
 
   // Assign only a registered pathname on a copy of the incoming URL. Never
   // resolve user-controlled path/query text as a destination or authority.
   const target = new URL(incoming);
   target.pathname = localizedPath(pathname, locale);
   target.searchParams.delete('lang');
+  if (paymentReturn) target.searchParams.delete('locale');
   return explicitLocaleRedirect(target.href, locale);
 }
 
@@ -540,6 +566,8 @@ export async function onRequest(context) {
   try {
     const requestUrl = new URL(context.request.url);
     const requestPathname = requestUrl.pathname;
+    const legacyLocaleRedirect = getLegacyLocaleRedirect(requestUrl);
+    if (legacyLocaleRedirect) return legacyLocaleRedirect;
 
     // US English is a display preference, not a separately indexable content
     // variant. Its pages are substantially identical to root English, so Google
@@ -560,18 +588,12 @@ export async function onRequest(context) {
 
     // The unused HotelRunner return document accepted arbitrary return_url
     // destinations. Retire the URL too, so stale static assets cannot serve it.
-    const retiredReturnPath = stripLocalePrefix(pathname.replace(
-      /%[0-9a-f]{2}/gi, byte => String.fromCharCode(Number.parseInt(byte.slice(1), 16)),
-    ));
-    if (/^\/back(?:\.html)?\/?$/i.test(retiredReturnPath)) {
+    if (isRetiredBookingReturnPath(pathname)) {
       return new Response('This booking return page has been retired. Please use /book-direct.', {
         status: 410,
         headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
       });
     }
-
-    const legacyLocaleRedirect = getLegacyLocaleRedirect(requestUrl);
-    if (legacyLocaleRedirect) return legacyLocaleRedirect;
 
     // Retired booking-engine entry points are not homepage aliases.
     // Preserve useful query parameters and route old www links to the same

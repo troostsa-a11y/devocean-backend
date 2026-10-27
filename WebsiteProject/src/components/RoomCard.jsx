@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { Users, Plus, Minus, ExternalLink, ChevronDown, BedDouble, BedSingle } from 'lucide-react';
 import { fmt, perNightFromTemplate } from '../i18n/bookingStrings';
 import { IMG } from '../data/content';
+import { localizedUrl } from '../i18n/localeCatalog';
 
 // ── Shared helpers (module scope so identities are stable) ────────────────
 export function money(amount, currency) {
@@ -164,7 +165,7 @@ function RoomCard({
   // by matching the room name against the four unit slugs.
   const unitKey = getUnitKey(room.name);
   const unitImg = unitKey ? IMG.units[unitKey] : null;
-  const unitDetailUrl = unitKey ? `/${unitKey}?${detailQueryString}` : null;
+  const unitDetailUrl = unitKey ? localizedUrl(`/${unitKey}`, lang, detailQueryString) : null;
   // Per-unit occupancy array: one entry per booked unit, shown when party has children/infants.
   const occArray = (effChildren > 0 || effInfants > 0)
     ? (occupancy ?? Array.from({ length: qty }, () => defaultRoomOccFor(room, effAdults, effChildren)))

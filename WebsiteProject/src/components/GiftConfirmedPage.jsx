@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CheckCircle2, Loader2, Gift, ArrowLeft } from 'lucide-react';
+import { localizedUrl } from '../i18n/localeCatalog';
 
 export default function GiftConfirmedPage({ lang }) {
   const [status, setStatus] = useState('loading'); // loading | success | error
@@ -69,7 +70,7 @@ export default function GiftConfirmedPage({ lang }) {
               Check again
             </button>
             <a
-              href="/gift-vouchers"
+              href={localizedUrl('/gift-vouchers', lang)}
               className="text-sm text-[#9e4b13] hover:underline"
             >
               Return to gift vouchers
@@ -105,19 +106,19 @@ export default function GiftConfirmedPage({ lang }) {
             )}
 
             <div className="text-sm text-slate-500 leading-relaxed mb-6">
-              <p>The recipient can enter this code in the <strong>Gift voucher code</strong> field on the <a href="/book-direct" className="text-[#9e4b13] hover:underline">Book Direct</a> page.</p>
+              <p>The recipient can enter this code in the <strong>Gift voucher code</strong> field on the <a href={localizedUrl('/book-direct', lang)} className="text-[#9e4b13] hover:underline">Book Direct</a> page.</p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
-                href="/book-direct"
+                href={localizedUrl('/book-direct', lang)}
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-5 py-2.5 text-white font-semibold hover:bg-[#854011] transition-colors text-sm"
                 data-testid="link-book-direct"
               >
                 Book a stay
               </a>
               <a
-                href="/gift-vouchers"
+                href={localizedUrl('/gift-vouchers', lang)}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-5 py-2.5 text-slate-700 font-semibold hover:bg-slate-50 transition-colors text-sm"
                 data-testid="link-buy-another"
               >

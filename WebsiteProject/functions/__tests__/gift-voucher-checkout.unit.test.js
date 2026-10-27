@@ -12,6 +12,15 @@ function context(headers = {}, body = JSON.stringify({ amount: 20, purchaserName
 }
 afterEach(() => vi.unstubAllGlobals());
 
+it('preserves the current website locale through the voucher checkout proxy', async () => {
+  const fetch = vi.fn().mockResolvedValue(new Response(JSON.stringify({ url: 'https://checkout.example/test' })));
+  vi.stubGlobal('fetch', fetch);
+  const body = JSON.stringify({ amount: 20, purchaserName: 'Test', purchaserEmail: 'guest@example.test', locale: 'pt-BR' });
+  const response = await onRequestPost(context({ origin: 'https://devoceanlodge.com', 'sec-fetch-site': 'same-origin' }, body));
+  expect(response.status).toBe(200);
+  expect(JSON.parse(fetch.mock.calls[0][1].body).locale).toBe('pt-BR');
+});
+
 describe('public voucher checkout proxy', () => {
   it('overwrites forged identity headers with the Cloudflare client address', async () => {
     const fetchMock = vi.fn(async () => new Response('{"url":"https://checkout.stripe.com/test"}'));

@@ -43,6 +43,7 @@ interface CheckoutInput {
   purchaserName: string;
   recipientName?: string;
   message?: string;
+  locale?: string;
 }
 
 interface CheckoutDependencies {
@@ -61,7 +62,7 @@ export function createVoucherCheckoutHandler(deps: CheckoutDependencies) {
     if (!body || typeof body !== 'object' || Array.isArray(body)) {
       return res.status(400).json({ error: 'Invalid voucher details.' });
     }
-    const { amount, purchaserEmail, purchaserName, recipientName, message } = body;
+    const { amount, purchaserEmail, purchaserName, recipientName, message, locale } = body;
     if (typeof amount !== 'number' || ![20, 50, 100, 200, 500].includes(amount)) {
       return res.status(400).json({ error: 'Invalid amount. Choose $20, $50, $100, $200, or $500.' });
     }
@@ -74,6 +75,9 @@ export function createVoucherCheckoutHandler(deps: CheckoutDependencies) {
         (recipientName != null && (typeof recipientName !== 'string' || recipientName.length > 200)) ||
         (message != null && (typeof message !== 'string' || message.length > 500))) {
       return res.status(400).json({ error: 'Provide a name (up to 200 characters) and an optional message (up to 500 characters).' });
+    }
+    if (locale != null && (typeof locale !== 'string' || locale.length > 35)) {
+      return res.status(400).json({ error: 'Invalid checkout language.' });
     }
     const db = deps.database();
     if (!db) return res.status(503).json({ error: 'Voucher checkout temporarily unavailable.' });
@@ -93,6 +97,7 @@ export function createVoucherCheckoutHandler(deps: CheckoutDependencies) {
         amount, purchaserEmail: purchaserEmail.trim(), purchaserName: purchaserName.trim(),
         recipientName: recipientName?.trim() || undefined,
         message: message?.trim() || undefined,
+        ...(typeof locale === 'string' && locale.trim() ? { locale: locale.trim() } : {}),
       };
       const { url, stripeSessionId } = await deps.createSession(input);
       await db.createGiftVoucher({

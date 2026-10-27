@@ -5,6 +5,7 @@ import { useLocation } from 'wouter';
 import { CalendarCheck2, Users, Loader2, ShieldCheck, ExternalLink, Star, CheckCircle2, Info, CreditCard, MessageCircle } from 'lucide-react';
 import { getBookingStrings, fmt } from '../i18n/bookingStrings';
 import { getPaymentStrings } from '../i18n/paymentStrings';
+import { localizedUrl } from '../i18n/localeCatalog';
 import { HERO_IMAGES, IMG } from '../data/content';
 import { localizeUnits } from '../utils/localize';
 import CurrencyPicker from './CurrencyPicker';
@@ -322,7 +323,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   // Query-string fragment appended to room-detail page links so the visitor
   // can return to /book-direct with the same search already loaded.
   const detailQueryString = useMemo(() => {
-    const p = new URLSearchParams({ lang });
+    const p = new URLSearchParams();
     if (checkIn)             p.set('checkIn', checkIn);
     if (checkOut)            p.set('checkOut', checkOut);
     if (adults !== 2)        p.set('adults', String(adults));
@@ -334,7 +335,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     // whose mount effect restores ?currency via onCurrencyChange).
     if (currency)            p.set('currency', currency);
     return p.toString();
-  }, [lang, checkIn, checkOut, adults, children, infants, discountCode, currency]);
+  }, [checkIn, checkOut, adults, children, infants, discountCode, currency]);
 
   // One-shot scroll to the room card matching ?unit= once results are visible.
   useEffect(() => {
@@ -1576,7 +1577,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     {unavailableRooms.map((room) => {
                       const unitKey = getUnitKey(room.name);
                       const unitImg = unitKey ? IMG.units[unitKey] : null;
-                      const unitDetailUrl = unitKey ? `/${unitKey}?${detailQueryString}` : null;
+                      const unitDetailUrl = unitKey ? localizedUrl(`/${unitKey}`, lang, detailQueryString) : null;
                       const displayName = translateRoomName(room.name);
                       const ns = nearestState[room.roomId] || {};
                       return (
