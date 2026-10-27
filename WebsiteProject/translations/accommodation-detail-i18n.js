@@ -362,12 +362,6 @@ function writeAccommodationPreference(key, value) {
   try { localStorage.setItem(key, value); } catch { /* optional preference storage */ }
 }
 
-// Get URL parameter
-function getUrlParam(name) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-
 // Detect language
 function detectLanguage() {
   if (window.__DEVOCEAN_LOCALE_BOOTSTRAPPED__ &&
@@ -382,18 +376,7 @@ function detectLanguage() {
     return edgeLocale;
   }
 
-  // 2. Check URL parameter (legacy navigation from the main site)
-  const urlLang = getUrlParam('lang');
-  if (urlLang) {
-    const normalized = normLang(urlLang);
-    if (SUPPORTED_LANGS.includes(normalized)) {
-      // Store in localStorage for consistency
-      writeAccommodationPreference('site.lang', normalized);
-      return normalized;
-    }
-  }
-
-  // 3. Check localStorage
+  // Check localStorage
   const stored = readAccommodationPreference('site.lang');
   if (stored && SUPPORTED_LANGS.includes(stored)) {
     return stored;

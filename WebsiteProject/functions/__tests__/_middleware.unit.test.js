@@ -63,14 +63,11 @@ describe('Cloudflare static unit routing', () => {
     ['/booking', '/book-direct'],
     ['/bv3/deals', '/book-direct'],
     ['/bv3/search?currency=USD', '/book-direct?currency=USD'],
-    ['/booking?lang=ja&adults=2', '/ja/book-direct?adults=2'],
-    ['/experiences/diving?lang=ja', '/ja/experiences/diving'],
-    ['/experiences/fishing?lang=ja&currency=USD', '/ja/experiences/fishing?currency=USD'],
-    ['/chalet.html?lang=fr-FR', '/fr/chalet'],
+    ['/booking?lang=ja&adults=2', '/book-direct?adults=2'],
+    ['/chalet.html?lang=fr-FR', '/chalet'],
     ['/fr/chalet.html?unit=chalet&currency=EUR', '/fr/chalet?unit=chalet&currency=EUR'],
-    ['/safari.html?lang=zh', '/zh-hans/safari'],
+    ['/safari.html?lang=zh', '/safari'],
     ['/de/legal/privacy', '/legal/privacy'],
-    ['/legal/privacy?lang=de', '/legal/privacy'],
     ['/fr/legal/gdpr.html', '/legal/GDPR'],
   ])('redirects %s directly to the real document', async (path, target) => {
     const context = makeContext(path);
@@ -132,16 +129,40 @@ describe('Cloudflare static unit routing', () => {
       .toBe('/_unit-pages/safari.unit');
   });
 
-  it('normalizes legacy lang links once while preserving booking parameters', async () => {
+  it('ignores retired language queries rather than redirecting the document', async () => {
     const context = makeContext('/safari?lang=pt-PT&checkIn=2026-09-15&checkOut=2026-09-18&adults=2&children=1&discount=SUMMER&currency=EUR');
 
     const response = await onRequest(context);
-    const location = response.headers.get('location');
+    expect(response.status).toBe(200);
+    expect(response.headers.get('location')).toBeNull();
+    expect(await response.text()).toContain('window.__DEVOCEAN_LOCALE__="en-GB"');
+    expect(context.assetFetch).toHaveBeenCalledOnce();
+  });
 
-    expect(response.status).toBe(301);
-    expect(location).toBe(
-      'https://devoceanlodge.com/pt-pt/safari?checkIn=2026-09-15&checkOut=2026-09-18&adults=2&children=1&discount=SUMMER&currency=EUR',
-    );
+  it.each([
+    '/back?return_url=https://attacker.example',
+    '/back.html?return_url=https%3A%2F%2Fattacker.example',
+    '/de/back.html?return_url=//attacker.example',
+    '/%62ack%2ehtml?return_url=https://attacker.example',
+    '/de/%62ack.html?return_url=https://attacker.example',
+  ])('retires the unused booking return URL %s without fetching stale assets', async path => {
+    const context = makeContext(path);
+    const response = await onRequest(context);
+    expect(response.status).toBe(410);
+    expect(response.headers.get('location')).toBeNull();
+    expect(response.headers.get('cache-control')).toBe('no-store');
     expect(context.assetFetch).not.toHaveBeenCalled();
+    expect(context.next).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    '/experiences/diving?lang=ja',
+    '/de/experiences/fishing?lang=ja&currency=USD',
+  ])('keeps current experience URLs unchanged despite a retired language query: %s', async path => {
+    const context = makeContext(path);
+    const response = await onRequest(context);
+    expect(response.status).toBe(200);
+    expect(response.headers.get('location')).toBeNull();
+    expect(context.assetFetch).toHaveBeenCalledOnce();
   });
 });

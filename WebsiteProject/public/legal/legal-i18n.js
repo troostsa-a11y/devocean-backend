@@ -128,45 +128,10 @@
     try { document.documentElement.setAttribute("lang", lang || "en-GB"); } catch (_) { }
   })();
 
-  // Get URL parameter
-  function getUrlParam(name) {
-    try {
-      var params = new URLSearchParams(window.location.search);
-      return params.get(name);
-    } catch (_) {
-      return null;
-    }
-  }
-
   /* ---------- hydration ---------- */
   onReady(function () {
     try {
-      // Priority 1: Check URL parameter (for navigation with ?lang=)
-      var urlLang = getUrlParam('lang');
-      var lang;
-      if (urlLang) {
-        lang = normLang(urlLang);
-        var SUPPORTED = ["en-GB", "en-US", "pt-PT", "pt-BR", "nl-NL", "fr-FR", "it-IT", "de-DE", "es-ES", "sv", "pl", "ja-JP", "zh-CN", "ru", "af-ZA", "zu", "sw", "sr", "hr", "cs", "tr", "ro"];
-        if (SUPPORTED.indexOf(lang) !== -1) {
-          // Store in localStorage for consistency
-          writeLS("site.lang", lang);
-        } else {
-          lang = readLS("site.lang") || normLang(navigator.language);
-        }
-        // Clean-URL policy: ?lang= applied + persisted, now show the clean URL
-        try {
-          var cleanParams = new URLSearchParams(window.location.search);
-          cleanParams.delete('lang');
-          var cleanQs = cleanParams.toString();
-          window.history.replaceState(window.history.state, '',
-            window.location.pathname + (cleanQs ? '?' + cleanQs : '') + window.location.hash);
-        } catch (_) { }
-      } else {
-        // Priority 2: Check localStorage
-        lang = readLS("site.lang") || normLang(navigator.language);
-      }
-
-      console.log('Legal page detected language:', lang, 'URL param:', urlLang);
+      var lang = readLS("site.lang") || normLang(navigator.language);
       
       // Update HTML lang attribute to match detected language
       try { document.documentElement.setAttribute("lang", lang || "en-GB"); } catch (_) { }

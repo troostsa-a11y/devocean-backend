@@ -75,7 +75,6 @@ function initializeVisitorLocale(resolve, resolveCurrency, locales, countries, c
   const storedSource = storage.get('site.lang_source');
   const preferences = {
     pathname: window.location.pathname,
-    queryLanguage: params.get('lang'),
     // A just-redirected explicit choice outranks an older saved preference.
     storedLanguage: entryLanguage || (storedSource === 'user' ? storedLanguage : cookieLanguage),
     storedSource: entryLanguage || storedSource === 'user' || cookieLanguage ? 'user' : null,
@@ -85,9 +84,6 @@ function initializeVisitorLocale(resolve, resolveCurrency, locales, countries, c
   const selected = isCrawler
     ? { lang: pathLocale?.code || locales[0].code, source: 'url' }
     : resolve(preferences, locales, countries);
-  const explicitQuery = preferences.queryLanguage && resolve(
-    { queryLanguage: preferences.queryLanguage }, locales, countries,
-  ).source === 'url';
   // A language URL wins, but visiting the chosen URL must not erase an
   // existing manual preference (including English's unprefixed URL).
   const remembered = resolve({
@@ -120,12 +116,6 @@ function initializeVisitorLocale(resolve, resolveCurrency, locales, countries, c
     try {
       document.cookie = `dv_lang_entry=; Max-Age=0; Path=/; SameSite=Lax${window.location.protocol === 'https:' ? '; Secure' : ''}`;
     } catch { /* short-lived entry cookie will expire even if clearing fails */ }
-  }
-  if (explicitQuery && !pathLocale) {
-    // English has no prefix, so retain its explicit choice across clean URLs.
-    selected.source = 'user';
-    operations.rememberLanguage(selected.lang);
-    params.delete('lang');
   }
   window.__DEVOCEAN_LOCALE__ = selected.lang;
   window.__DEVOCEAN_LOCALE_SOURCE__ = selected.source;
@@ -168,13 +158,10 @@ export function injectLocaleBootstrap(html) {
   // These assets keep stable filenames, so old browser/edge caches need a new
   // request URL too. Covers both script tags and inline widget-loader imports.
   output = output.replace(
-    /(\/js\/shared-nav\.js)(?:\?[^"'<>\s]*)?/g,
-    '$1?v=20261010-browser-first',
+    /(\/(?:js\/shared-nav|translations\/(?:accommodation-detail|story|meals)-i18n|legal\/legal-i18n)\.js)(?:\?[^"'<>\s]*)?/g,
+    '$1?v=20261027-locale-paths',
   ).replace(
     /(\/widget-loader\.js)(?:\?[^"'<>\s]*)?/g,
-    '$1?v=20261010-browser-first',
-  ).replace(
-    /(\/translations\/accommodation-detail-i18n\.js)(?:\?[^"'<>\s]*)?/g,
     '$1?v=20261010-browser-first',
   );
   return output;

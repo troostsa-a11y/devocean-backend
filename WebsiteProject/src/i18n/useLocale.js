@@ -16,12 +16,6 @@ import {
 const SUPPORTED_REGIONS = ["westEu", "eastEu", "asia", "americas", "africa", "oceania"];
 
 // Helper to get URL parameters
-function getUrlParam(name) {
-  if (typeof window === 'undefined') return null;
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-
 // Normalize short language codes to full locale codes
 function normalizeLangCode(langCode) {
   return normalizeLocale(langCode);
@@ -187,7 +181,6 @@ function getTimezoneContinent() {
 function pickInitialLang() {
   const selected = resolveVisitorLanguage({
     pathname: window.location.pathname,
-    queryLanguage: getUrlParam('lang'),
     storedLanguage: safeLocalStorage.getItem('site.lang'),
     storedSource: safeLocalStorage.getItem('site.lang_source'),
     browserLanguages: navigator.languages?.length
@@ -292,7 +285,7 @@ export function getCriticalUI(lang) {
 export function useLocale() {
   const [lang, setLangState] = useState(() => {
     // A stable locale path is the public source of truth. This is intentionally
-    // checked before storage, browser, or legacy query-string preferences.
+    // checked before storage or automatic browser/country preferences.
     const pathLocale = localeFromPath(window.location.pathname);
     if (pathLocale) {
       const manualChoice = safeLocalStorage.getItem('site.lang_source') === 'user' &&
@@ -302,18 +295,6 @@ export function useLocale() {
       return pathLocale.code;
     }
 
-    // Legacy ?lang= links remain valid entry points and are normalized to a
-    // stable locale path by the effect below.
-    const urlLang = getUrlParam('lang');
-    if (urlLang) {
-      const normalized = normalizeLangCode(urlLang);
-      if (normalized) {
-        safeLocalStorage.setItem("site.lang", normalized);
-        safeLocalStorage.setItem("site.lang_source", "url");
-        return normalized;
-      }
-    }
-    
     // Match the resolver that ran before first paint. Cached automatic guesses
     // must not outrank the browser, and idle IP detection must not replace it.
     if (window.__DEVOCEAN_LOCALE_BOOTSTRAPPED__) {
@@ -414,31 +395,6 @@ export function useLocale() {
       cancelled = true;
     };
   }, [lang]);
-
-  // Legacy language-query links are an entry-only compatibility layer. Replace
-  // them with a real locale URL so the next request receives matching crawler
-  // metadata and initial HTML from the edge.
-  useEffect(() => {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const queryLocale = normalizeLangCode(params.get('lang'));
-      if (queryLocale && params.has('lang') && !localeFromPath(window.location.pathname)) {
-        params.delete('lang');
-        const target = localizedUrl(
-          window.location.pathname,
-          queryLocale,
-          params.toString(),
-          window.location.hash,
-        );
-        if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== target) {
-          const destination = new URL(target, window.location.origin);
-          if (destination.origin === window.location.origin) {
-            window.location.replace(destination.href);
-          }
-        }
-      }
-    } catch (e) { /* ignore */ }
-  }, []);
 
   useEffect(() => {
     document.documentElement.setAttribute("lang", lang);

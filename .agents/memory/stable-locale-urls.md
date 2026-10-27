@@ -25,7 +25,7 @@ English UK (`en-GB`) is the default. Both English variants use root paths; histo
 - Any new public route must be added to `LOCALIZED_ROUTES` in `generate-locale-sitemap.mjs`
 - Accommodation static unit routes additionally need an entry in `STATIC_UNIT_ROUTES` in `_middleware.js`
 - SPA routes are matched after `stripLocalePrefix()` strips the prefix; no additional registration needed
-- Legacy `?lang=` links are redirected to the stable locale path by the middleware
+- Public `?lang=` language selection is retired; use locale paths rather than restoring the old query fallback
 - The `html lang` attribute is set by the middleware on every response, not by React
 
 ## Lazy-route placeholders

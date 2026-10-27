@@ -529,11 +529,23 @@ export async function onRequest(context) {
     const pathname = stripLocalePrefix(requestPathname);
     const searchParams = requestUrl.searchParams;
 
+    // The unused HotelRunner return document accepted arbitrary return_url
+    // destinations. Retire the URL too, so stale static assets cannot serve it.
+    const retiredReturnPath = stripLocalePrefix(pathname.replace(
+      /%[0-9a-f]{2}/gi, byte => String.fromCharCode(Number.parseInt(byte.slice(1), 16)),
+    ));
+    if (/^\/back(?:\.html)?\/?$/i.test(retiredReturnPath)) {
+      return new Response('This booking return page has been retired. Please use /book-direct.', {
+        status: 410,
+        headers: { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' },
+      });
+    }
+
     // Retired booking-engine entry points are not homepage aliases.
     // Preserve useful query parameters and route old www links to the same
     // canonical booking destination as the rest of the site.
     if (/^\/(?:booking|bv3\/(?:deals|search))\/?$/i.test(pathname)) {
-      const targetLocale = requestLocale?.code || normalizeLocale(searchParams.get('lang')) || DEFAULT_LOCALE;
+      const targetLocale = requestLocale?.code || DEFAULT_LOCALE;
       searchParams.delete('lang');
       return Response.redirect(new URL(localizedUrl('/book-direct', targetLocale,
         searchParams.toString(), requestUrl.hash), BASE_URL).href, 301);
@@ -548,11 +560,10 @@ export async function onRequest(context) {
       });
     }
 
-    // Normalize legacy unit filenames before ?lang= so a French chalet link
-    // goes straight to /fr/chalet, never the nonexistent /fr/chalet.html.
+    // Normalize unit filenames without changing the language from their URL.
     const unitHtml = pathname.match(/^\/(safari|comfort|cottage|chalet)\.html$/i);
     if (unitHtml) {
-      const targetLocale = requestLocale?.code || normalizeLocale(searchParams.get('lang')) || DEFAULT_LOCALE;
+      const targetLocale = requestLocale?.code || DEFAULT_LOCALE;
       searchParams.delete('lang');
       return Response.redirect(new URL(localizedUrl(`/${unitHtml[1].toLowerCase()}`, targetLocale,
         searchParams.toString(), requestUrl.hash), requestUrl).href, 301);
@@ -561,24 +572,12 @@ export async function onRequest(context) {
     // Legal documents have no translated route variants. Keep their existing
     // root URLs instead of serving the homepage under a locale-prefixed path.
     const legalPage = pathname.match(/^\/legal\/(privacy|cookies|terms|gdpr|cric)(?:\.html)?$/i);
-    if (legalPage && (requestLocale || searchParams.has('lang'))) {
+    if (legalPage && requestLocale) {
       const name = ['gdpr', 'cric'].includes(legalPage[1].toLowerCase())
         ? legalPage[1].toUpperCase() : legalPage[1].toLowerCase();
       searchParams.delete('lang');
       const query = searchParams.toString();
       return Response.redirect(new URL(`/legal/${name}${query ? `?${query}` : ''}${requestUrl.hash}`, requestUrl).href, 301);
-    }
-
-    // The historical ?lang= format remains an entry-only compatibility layer.
-    // Redirect it before rendering so search bots and shared links converge on
-    // one stable locale URL. All non-language parameters remain intact.
-    const legacyLocale = normalizeLocale(searchParams.get('lang'));
-    if (legacyLocale && !requestLocale) {
-      searchParams.delete('lang');
-      const target = localizedUrl(pathname, legacyLocale, searchParams.toString(), requestUrl.hash);
-      // English has no URL prefix. Keep an explicit ?lang=en choice when the
-      // browser would otherwise auto-select a different language at the root.
-      return explicitLocaleRedirect(new URL(target, requestUrl).href, legacyLocale);
     }
 
     // Old HotelRunner return URLs used title-cased locale paths such as

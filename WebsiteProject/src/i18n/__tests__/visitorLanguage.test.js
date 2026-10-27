@@ -37,7 +37,7 @@ describe('browser-first language preference', () => {
       .toEqual({ lang: code, source: 'browser' });
   });
 
-  it('honors a language URL ahead of query, manual choice, browser and country', () => {
+  it('honors a language path ahead of manual choice, browser and country', () => {
     expect(resolveVisitorLanguage({
       pathname: '/fr/book-direct', queryLanguage: 'ja', storedLanguage: 'pt-BR',
       storedSource: 'user', browserLanguages: ['de-DE'], countryCode: 'MZ',
@@ -73,6 +73,26 @@ describe('browser-first language preference', () => {
 });
 
 describe('first-paint language bootstrap', () => {
+  it('does not accept a retired query preference in the shared resolver', () => {
+    expect(resolveVisitorLanguage({
+      queryLanguage: 'ja', browserLanguages: ['de-DE'], countryCode: 'MZ',
+    })).toEqual({ lang: 'de-DE', source: 'browser' });
+    expect(resolveVisitorLanguage({
+      queryLanguage: 'ja', storedLanguage: 'fr-FR', storedSource: 'user',
+      browserLanguages: ['de-DE'], countryCode: 'MZ',
+    })).toEqual({ lang: 'fr-FR', source: 'user' });
+  });
+
+  it('cache-busts every changed standalone language loader', () => {
+    for (const path of [
+      '/js/shared-nav.js', '/translations/accommodation-detail-i18n.js',
+      '/translations/story-i18n.js', '/translations/meals-i18n.js', '/legal/legal-i18n.js',
+    ]) {
+      expect(injectLocaleBootstrap(`<head></head><script src="${path}?v=old"></script>`))
+        .toContain(`${path}?v=20261027-locale-paths"`);
+    }
+  });
+
   it('selects browser language before IP and navigates to its stable URL', () => {
     const { window, document, values } = bootstrap();
     expect(document.documentElement.lang).toBe('de-DE');
@@ -156,22 +176,22 @@ describe('first-paint language bootstrap', () => {
     expect(window.location.replace).not.toHaveBeenCalled();
   });
 
-  it('lets a fresh explicit English redirect override older manual German', async () => {
+  it('preserves the English-path cookie handoff independently of retired query links', async () => {
     const response = await onRequest({
-      request: new Request('https://devoceanlodge.com/?lang=en-GB&ref=demo', {
+      request: new Request('https://devoceanlodge.com/en-us/?ref=demo', {
         headers: { accept: 'text/html' },
       }),
     });
     expect(response.status).toBe(301);
     expect(response.headers.get('location')).toBe('https://devoceanlodge.com/?ref=demo');
-    expect(response.headers.get('set-cookie')).toContain('dv_lang_entry=en-GB');
+    expect(response.headers.get('set-cookie')).toContain('dv_lang_entry=en-US');
     const { window, document, values } = bootstrap({
-      cookie: 'dv_lang=en-GB; dv_lang_entry=en-GB', search: '?ref=demo',
+      cookie: 'dv_lang=en-US; dv_lang_entry=en-US', search: '?ref=demo',
       stored: { 'site.lang': 'de-DE', 'site.lang_source': 'user' },
     });
     expect(window.location.replace).not.toHaveBeenCalled();
-    expect(document.documentElement.lang).toBe('en-GB');
-    expect(values.get('site.lang')).toBe('en-GB');
+    expect(document.documentElement.lang).toBe('en-US');
+    expect(values.get('site.lang')).toBe('en-US');
     expect(values.get('site.lang_source')).toBe('user');
     expect(document.cookie).toContain('dv_lang_entry=; Max-Age=0');
   });
@@ -185,11 +205,12 @@ describe('first-paint language bootstrap', () => {
     expect(bootstrap({ path: '/experiences/lighthouse' }).window.location.replace)
       .toHaveBeenCalledWith('/de/experiences/lighthouse');
   });
-  it('remembers and cleans an explicit English query choice', () => {
+  it('ignores a retired English query rather than changing the browser language or making it manual', () => {
     const { window, document, values } = bootstrap({ search: '?lang=en-GB&ref=demo' });
-    expect(window.location.replace).toHaveBeenCalledWith('/?ref=demo');
-    expect(document.cookie).toContain('dv_lang=en-GB');
-    expect(values.get('site.lang_source')).toBe('user');
+    expect(window.location.replace).toHaveBeenCalledWith('/de/?lang=en-GB&ref=demo');
+    expect(document.documentElement.lang).toBe('de-DE');
+    expect(document.cookie).toBe('');
+    expect(values.get('site.lang_source')).toBe('browser');
   });
 
   it('does not create a manual choice from an unsupported query', () => {
@@ -225,9 +246,9 @@ describe('first-paint language bootstrap', () => {
       '<script>var src="https://reception.example/widget-loader.js";</script>' +
       '<script src="/translations/accommodation-detail-i18n.js?v=4"></script>';
     const result = injectLocaleBootstrap(injectLocaleBootstrap(html));
-    expect(result).toContain('/js/shared-nav.js?v=20261010-browser-first"');
+    expect(result).toContain('/js/shared-nav.js?v=20261027-locale-paths"');
     expect(result).toContain('/widget-loader.js?v=20261010-browser-first"');
-    expect(result).toContain('/translations/accommodation-detail-i18n.js?v=20261010-browser-first"');
+    expect(result).toContain('/translations/accommodation-detail-i18n.js?v=20261027-locale-paths"');
     expect(result).not.toContain('browser-first?v=');
   });
 });

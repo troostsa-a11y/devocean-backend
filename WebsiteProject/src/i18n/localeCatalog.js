@@ -63,7 +63,7 @@ const LEGACY_CODES = {
 export function normalizeLocale(value) {
   if (!value) return null;
   const key = String(value).trim().toLowerCase();
-  // Public short path codes also appear in historical ?lang= links (e.g. ja).
+  // Accept public short path codes as well as full locale codes.
   return BY_CODE.get(key)?.code || LEGACY_CODES[key] || BY_PATH.get(key)?.code || null;
 }
 

@@ -89,26 +89,8 @@
     catch (e) { return null; }
   }
 
-  var params  = new URLSearchParams(window.location.search);
-  var urlLang = normLang(params.get('lang'));
   var edgeLang = normLang(window.__DEVOCEAN_LOCALE__);
-  var lang    = edgeLang || urlLang || readStoredLang() || 'en-GB';
-
-  // Honor ?lang= on entry: persist it, then show the clean URL.
-  if (params.get('lang') !== null) {
-    if (urlLang) {
-      try {
-        window.localStorage.setItem('site.lang', urlLang);
-        window.localStorage.setItem('site.lang_source', 'url');
-      } catch (e) { /* ignore */ }
-    }
-    try {
-      params.delete('lang');
-      var qs = params.toString();
-      window.history.replaceState(window.history.state, '',
-        window.location.pathname + (qs ? '?' + qs : '') + window.location.hash);
-    } catch (e) { /* ignore */ }
-  }
+  var lang    = edgeLang || readStoredLang() || 'en-GB';
 
   // Prefer the stored region (same key the SPA uses) when it supports the
   // current language — deriving region from lang alone flips e.g. Asia back

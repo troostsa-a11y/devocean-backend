@@ -941,25 +941,28 @@
   }
   </script>
   <!-- Forward the incoming booking query string (checkIn/checkOut/guests/
-       discount/currency/lang) onto every /book-direct link, so a guest who
+       discount/currency) onto each localized booking link, so a guest who
        opened this page from the booking funnel returns with their search and
        selected display currency intact. -->
   <script>
     (function () {
-      var KEYS = ['lang', 'checkIn', 'checkOut', 'adults', 'children', 'infants', 'discount', 'currency'];
+      var KEYS = ['checkIn', 'checkOut', 'adults', 'children', 'infants', 'discount', 'currency'];
       var incoming = new URLSearchParams(window.location.search);
       var fwd = new URLSearchParams();
       KEYS.forEach(function (k) { var v = incoming.get(k); if (v) fwd.set(k, v); });
       // Fall back to the visitor's stored preferences for direct landings.
       try {
         if (!fwd.get('currency')) { var c = localStorage.getItem('site.currency'); if (c) fwd.set('currency', c); }
-        if (!fwd.get('lang')) { var l = localStorage.getItem('site.lang'); if (l) fwd.set('lang', l); }
       } catch (e) {}
       fwd.set('unit', 'chalet');
-      var qs = fwd.toString();
+      var bookingUrl = new URL(window.location.origin);
+      bookingUrl.pathname = window.location.pathname
+        .replace(/\/(?:safari|comfort|cottage|chalet)(?:\.html)?\/?$/i, '/book-direct')
+        .replace(/^\/+/, '/');
+      bookingUrl.search = fwd.toString();
       document.querySelectorAll('a[href^="/book-direct"]').forEach(function (a) {
         var href = a.getAttribute('href');
-        if (href.indexOf('?') === -1) a.setAttribute('href', href + '?' + qs);
+        if (href.indexOf('?') === -1) a.setAttribute('href', bookingUrl.href);
       });
     })();
   </script>

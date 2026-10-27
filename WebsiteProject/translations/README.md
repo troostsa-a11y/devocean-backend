@@ -8,7 +8,7 @@ The story.html page now has a complete dynamic translation system that automatic
 ### Language Detection Priority
 The system uses the same multi-tier language-detection approach used across the site:
 
-1. **URL Parameter** - `?lang=XX` overrides all other settings
+1. **Locale URL** - The shared bootstrap resolves the current language path, such as `/de/story`; public `?lang=` language selection has been retired
 2. **localStorage** - User-selected language persisted with protection flags (`site.lang_source="user"` and `site.lang.version="2"`)
 3. **Browser Language** - Detects browser language preferences (navigator.language)
 4. **Fallback** - Defaults to English if no match found

@@ -52,9 +52,6 @@ export function resolveVisitorLanguage(
   const pathLocale = locales.find((locale) => locale.path && locale.path === firstSegment);
   if (pathLocale) return { lang: pathLocale.code, source: 'url' };
 
-  const queryLocale = codes.normalize(preferences.queryLanguage);
-  if (queryLocale) return { lang: queryLocale, source: 'url' };
-
   const manualLocale = preferences.storedSource === 'user' && codes.normalize(preferences.storedLanguage);
   if (manualLocale) return { lang: manualLocale, source: 'user' };
 

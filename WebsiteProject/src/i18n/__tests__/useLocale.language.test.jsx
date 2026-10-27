@@ -31,29 +31,37 @@ describe('language stays independent of country, currency and region', () => {
     '//attacker.example/path',
     '/\\attacker.example/path',
     '/de/..//attacker.example/path',
-  ])('legacy English query cannot redirect hostile path %s off site', async pathname => {
+  ])('retired language queries do not select a language or redirect hostile path %s', async pathname => {
     const url = new URL(window.location.href);
     url.pathname = pathname;
     url.search = '?lang=en&utm_source=mail';
     url.hash = '#contact';
     window.history.replaceState(null, '', url.href);
     const replace = vi.spyOn(window.location, 'replace').mockImplementation(() => {});
-    renderHook(() => useLocale());
+    const { result } = renderHook(() => useLocale());
     await act(async () => {});
-    expect(replace).toHaveBeenCalledOnce();
-    const destination = new URL(replace.mock.calls[0][0], window.location.origin);
-    expect(destination.origin).toBe(window.location.origin);
-    expect(destination.search).toBe('?utm_source=mail');
-    expect(destination.hash).toBe('#contact');
+    expect(replace).not.toHaveBeenCalled();
+    expect(result.current.lang).toBe('de-DE');
+    expect(localStorage.getItem('site.lang_source')).toBe('browser');
   });
 
-  it('legacy locale links preserve ordinary route, query and anchor navigation', async () => {
+  it('ignores a retired query-language choice without changing other URL data', async () => {
     window.history.replaceState(null, '', '/experiences/diving?lang=pt&utm_source=mail#inquiry');
     const replace = vi.spyOn(window.location, 'replace').mockImplementation(() => {});
     const { result } = renderHook(() => useLocale());
     await act(async () => {});
+    expect(result.current.lang).toBe('de-DE');
+    expect(replace).not.toHaveBeenCalled();
+    expect(window.location.search).toBe('?lang=pt&utm_source=mail');
+    expect(window.location.hash).toBe('#inquiry');
+  });
+
+  it('still honors the current locale path ahead of browser and retired query preferences', async () => {
+    window.history.replaceState(null, '', '/pt-pt/experiences/diving?lang=ja&utm_source=mail#inquiry');
+    const { result } = renderHook(() => useLocale());
+    await act(async () => {});
     expect(result.current.lang).toBe('pt-PT');
-    expect(replace).toHaveBeenCalledWith(`${window.location.origin}/pt-pt/experiences/diving?utm_source=mail#inquiry`);
+    expect(localStorage.getItem('site.lang_source')).toBe('url');
   });
 
   it('manual language navigation also stays same origin on double-slash paths', async () => {

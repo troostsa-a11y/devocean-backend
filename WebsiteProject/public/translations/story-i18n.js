@@ -253,30 +253,11 @@ function normLang(raw) {
 }
 
 /**
- * Get URL parameter by name
- */
-function getUrlParam(name) {
-  const params = new URLSearchParams(window.location.search);
-  return params.get(name);
-}
-
-/**
  * Pick initial language using multi-tier detection
- * Priority: URL parameter → localStorage → browser language → IP-based country mapping → region-aware English fallback
+ * Priority: resolved/stored preference → browser language → IP → English fallback
  */
 function pickInitialLang() {
-  // Priority 1: Check URL parameter (for navigation from main site)
-  const urlLang = getUrlParam('lang');
-  if (urlLang) {
-    const normalized = normLang(urlLang);
-    if (SUPPORTED_LANGS.includes(normalized)) {
-      // Store in localStorage for consistency
-      localStorage.setItem("site.lang", normalized);
-      return normalized;
-    }
-  }
-
-  // Priority 2: Check localStorage
+  // Check the preference resolved by the locale bootstrap.
   const stored = localStorage.getItem("site.lang");
   if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
 

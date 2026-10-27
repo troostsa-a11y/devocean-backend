@@ -67,23 +67,8 @@
     return "en-GB";
   }
 
-  function getUrlParam(name) {
-    const params = new URLSearchParams(window.location.search);
-    return params.get(name);
-  }
-
   function pickInitialLang() {
-    // Priority 1: URL parameter
-    const urlLang = getUrlParam('lang');
-    if (urlLang) {
-      const normalized = normLang(urlLang);
-      if (SUPPORTED_LANGS.includes(normalized)) {
-        localStorage.setItem("site.lang", normalized);
-        return normalized;
-      }
-    }
-
-    // Priority 2: localStorage
+    // Use the preference resolved by the locale bootstrap.
     const stored = localStorage.getItem("site.lang");
     if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
 
