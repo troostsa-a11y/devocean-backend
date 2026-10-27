@@ -10,7 +10,7 @@ vi.mock("@workspace/db", async () => ({
     return { returning: async () => [{ id: 7 }] };
   } }) },
 }));
-afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); });
+afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); vi.useRealTimers(); });
 vi.mock("./abuse", async (original) => ({
   ...await original<typeof import("./abuse")>(), consumeLimits: state.quota,
 }));
@@ -20,6 +20,7 @@ vi.mock("nodemailer", () => ({ default: {
 } }));
 import { runTool } from "../beds24/tool";
 import { AbuseLimitError } from "./abuse";
+import { logger } from "../lib/logger";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -64,5 +65,85 @@ describe("booking and notification tool boundary", () => {
     const controller = new AbortController(); controller.abort();
     expect(JSON.parse(await runTool("save_booking_enquiry", args, { ...context, signal: controller.signal })).error).toBe("session_ended");
     expect(state.quota).not.toHaveBeenCalled(); expect(state.insert).not.toHaveBeenCalled();
+  });
+});
+
+describe("availability dates and truthful failure messages", () => {
+  const context = { conversationId: 101, ip: "198.51.100.1" };
+  const upcoming = { checkIn: "2027-07-22", checkOut: "2027-07-24" };
+  const call = (args: Record<string, unknown>) =>
+    runTool("check_availability", JSON.stringify(args), context).then(JSON.parse);
+
+  beforeEach(() => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date("2026-10-27T10:00:00Z"));
+    vi.stubEnv("AUTOMAILER_URL", "https://booking.example.test");
+    vi.stubEnv("ADMIN_API_KEY", "test-only-booking-key");
+    state.notify.mockResolvedValue(new Response(JSON.stringify({
+      rooms: [], nights: 2, currency: "USD",
+    })));
+  });
+
+  it.each([
+    [{ checkIn: "07-22", checkOut: "07-24", numAdults: 5 }, "2027-07-22", "2027-07-24", 5],
+    [{ checkIn: "02-27", checkOut: "03-05", numAdults: 3 }, "2027-02-27", "2027-03-05", 3],
+  ])("resolves the reported yearless request before reaching the booking engine: %j", async (args, checkIn, checkOut, adults) => {
+    const result = await call(args);
+    expect(result.error).toBeUndefined();
+    expect(state.notify).toHaveBeenCalledTimes(1);
+    expect(JSON.parse(state.notify.mock.calls[0][1].body)).toEqual({
+      checkIn, checkOut, adults, children: 0, infants: 0,
+    });
+    expect(state.insert).not.toHaveBeenCalled();
+    expect(state.sendMail).not.toHaveBeenCalled();
+  });
+
+  it("clarifies an explicitly past year without rewriting it or contacting the engine", async () => {
+    const result = await call({ checkIn: "2026-07-22", checkOut: "2026-07-24" });
+    expect(result).toMatchObject({
+      error: "past_dates", checkIn: "2026-07-22", checkOut: "2026-07-24", today: "2026-10-27",
+    });
+    expect(result.note).toContain("never silently change an explicit year");
+    expect(state.notify).not.toHaveBeenCalled();
+    expect(logger.warn).toHaveBeenCalledWith(expect.objectContaining({
+      conversationId: 101, reason: "past_dates", checkIn: "2026-07-22",
+    }), "Availability request rejected");
+  });
+
+  it("does not mislabel malformed dates as an availability outage", async () => {
+    const result = await call({ checkIn: "02-30", checkOut: "03-02" });
+    expect(result.error).toBe("bad_arguments");
+    expect(result.note).toContain("Invalid input does NOT mean live availability is unavailable");
+    expect(state.quota).not.toHaveBeenCalled();
+    expect(state.notify).not.toHaveBeenCalled();
+  });
+
+  it.each([400, 422])("labels a booking-engine %s as rejected input, not a lost connection", async (status) => {
+    state.notify.mockResolvedValue(new Response('{"error":"Invalid stay"}', { status }));
+    const result = await call(upcoming);
+    expect(result.error).toBe("invalid_stay");
+    expect(result.note).toContain("Do NOT describe a rejected request as an outage");
+    expect(state.notify).toHaveBeenCalledTimes(1);
+    expect(logger.warn).toHaveBeenCalledWith(expect.objectContaining({
+      conversationId: 101, reason: "invalid_stay", status, ...upcoming,
+    }), "Availability request rejected");
+  });
+
+  it("still reports a real upstream failure honestly after the bounded retry", async () => {
+    state.notify.mockResolvedValue(new Response("", { status: 503 }));
+    expect((await call(upcoming)).error).toBe("availability_lookup_failed");
+    expect(state.notify).toHaveBeenCalledTimes(2);
+    expect(logger.error).toHaveBeenCalledWith(expect.objectContaining({
+      conversationId: 101, ...upcoming,
+    }), "check_availability tool failed");
+  });
+
+  it("keeps a missing connection distinct from invalid dates", async () => {
+    vi.stubEnv("AUTOMAILER_URL", "");
+    expect((await call(upcoming)).error).toBe("live_availability_unavailable");
+    expect(state.notify).not.toHaveBeenCalled();
+    expect(logger.error).toHaveBeenCalledWith(expect.objectContaining({
+      conversationId: 101, reason: "not_configured",
+    }), "Availability connection is not configured");
   });
 });

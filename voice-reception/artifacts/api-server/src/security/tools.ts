@@ -1,5 +1,6 @@
 import { z } from "zod/v4";
 import { normalizeCurrency } from "../currency/client";
+import { isAvailabilityDate, resolveAvailabilityDates } from "../beds24/dates";
 
 const singleLine = (max: number) => z.string().trim().min(1).max(max).regex(/^[^\u0000-\u001f\u007f]+$/);
 const date = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
@@ -15,10 +16,18 @@ const optional = <T extends z.ZodType>(schema: T) =>
 
 export const toolArgumentSchemas = {
   check_availability: z.strictObject({
-    checkIn: date, checkOut: date,
+    checkIn: z.string().refine(isAvailabilityDate),
+    checkOut: z.string().refine(isAvailabilityDate),
     numAdults: z.number().int().min(1).max(30).default(2),
     numChildren: z.number().int().min(0).max(30).default(0),
     numInfants: z.number().int().min(0).max(30).default(0),
+  }).transform((value, context) => {
+    const dates = resolveAvailabilityDates(value.checkIn, value.checkOut);
+    if (!dates) {
+      context.addIssue({ code: "custom", message: "Invalid booking dates" });
+      return z.NEVER;
+    }
+    return { ...value, ...dates };
   }).refine(dateRange).refine((value) => value.numAdults + value.numChildren + value.numInfants <= 60),
   convert_currency: z.strictObject({
     amountUsd: z.number().finite().min(0).max(1_000_000),

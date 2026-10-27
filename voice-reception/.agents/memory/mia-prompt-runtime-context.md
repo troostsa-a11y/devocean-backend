@@ -9,7 +9,7 @@ description: Why Mia's system prompt must inject today's date, and how pronuncia
 Mia's system prompt must include the current date, computed **per request** in the
 lodge's timezone (`Africa/Maputo`, CAT/UTC+2) via `Intl.DateTimeFormat`. Without it,
 the model only knows the year and cannot turn "next weekend" / "tomorrow" into the
-`YYYY-MM-DD` check-in/check-out the Beds24 `check_availability` tool needs — so it
+resolved check-in/check-out dates the live availability tool needs — so it
 silently fails to quote availability.
 
 **Why:** A guest asking "availability for next weekend" got no answer because the

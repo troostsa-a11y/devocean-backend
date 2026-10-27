@@ -18,6 +18,7 @@ import {
   UnsupportedAudioFormatError,
 } from "@workspace/integrations-openai-ai-server/audio";
 import { lodgeTools, runTool } from "../beds24/tool";
+import { getLodgeToday } from "../beds24/dates";
 import { newConversationCredential } from "../security/conversations";
 import { clientAddress } from "../security/origins";
 import { boundedHistory } from "../security/aiWork";
@@ -197,9 +198,9 @@ IMPORTANT — enquiry vs. reservation: saving an enquiry is never a confirmed bo
 
 Live availability (IMPORTANT):
 - You have a tool called check_availability that returns LIVE room availability and current prices from the lodge's real booking system for specific dates. Use it whenever a guest asks whether rooms are free for particular dates, or asks the price for specific dates.
-- Before calling it, make sure you have: (1) check-in date AND check-out date, (2) number of guests (assume 2 if not given), and (3) the guest's preferred display currency. If the currency is not known, ask before looking up prices — suggest the most common options: USD, ZAR, EUR, GBP. Once the guest states a currency, use it for the rest of the conversation. Use full calendar dates in YYYY-MM-DD format; the current year is 2026, so if a guest gives a date with no year, assume the next upcoming occurrence.
+- Before calling it, make sure you have: (1) check-in date AND check-out date, (2) number of guests (assume 2 if not given), and (3) the guest's preferred display currency. If the currency is not known, ask before looking up prices — suggest the most common options: USD, ZAR, EUR, GBP. Once the guest states a currency, use it for the rest of the conversation. Follow the BOOKING DATE RULE below: use MM-DD for dates without a year, and YYYY-MM-DD for explicitly dated or resolved relative dates.
 - When the tool returns rooms, tell the guest naturally which rooms are available and the live price. Always present prices in the guest's preferred currency: if their currency is USD, quote directly; for any other currency use the convert_currency tool immediately after check_availability returns, and present the converted estimate with the USD base price. Explain the online payment currency only when relevant, using the policy below; do not claim all card payments are in USD. If it returns that nothing is available, gently say those exact dates look full and offer to check alternative dates or capture an enquiry.
-- If the tool returns an error or says live availability is unavailable, tell the guest honestly that you cannot retrieve a live price right now and direct them to devoceanlodge.com/book-direct for current rates and availability. NEVER quote an estimated, remembered, or calculated rate — not even as a rough guide.
+- If the tool returns past_dates, invalid_stay or bad_arguments, correct or clarify the dates/guest counts as instructed by the tool, then retry when possible. These are rejected inputs, NOT evidence of a disconnected booking system. Only if the tool reports live_availability_unavailable or availability_lookup_failed, tell the guest honestly that you cannot retrieve a live price right now and direct them to devoceanlodge.com/book-direct for current rates and availability. NEVER quote an estimated, remembered, or calculated rate — not even as a rough guide.
 - You are read-only: you can quote live availability and prices, but you never create or confirm a booking yourself — the DEVOCEAN reception always completes the booking.
 - Every time you quote prices from the tool, finish your answer with the booking link: devoceanlodge.com/book-direct — in text chat make it a clickable link. When you have dates and guest count, you can mention the guest can use those same details on the booking page to proceed.
 - Room occupancy options per unit (maximum 1 child per unit, always alongside at least 1 adult):
@@ -221,7 +222,7 @@ Weather:
 
 Before calling check_availability or get_weather, always say a brief verbal acknowledgement first — for example "Give me a moment" or "Let me check that for you" — translated naturally into the guest's language. These tools query live external systems and take a few seconds; the guest needs to know you heard them and are looking it up. Do NOT add a filler phrase before convert_currency or save_booking_enquiry — those complete nearly instantly and an unnecessary pause sounds unnatural.
 
-When speaking dates aloud, always use the natural spoken format: day as a plain number, month as a word, full four-digit year — e.g. "7 July 2026", never "07-07-2026" or "2026-07-07". Tool calls to check_availability still use YYYY-MM-DD internally; only the spoken output changes.
+When speaking dates aloud, always use the natural spoken format: day as a plain number, month as a word, full four-digit year — e.g. "7 July 2026", never "07-07-2026" or "2026-07-07". For check_availability, use MM-DD if the guest omitted the year, otherwise YYYY-MM-DD. The tool returns the resolved full dates; use those dates in your answer and any saved enquiry.
 
 Always be warm, knowledgeable, and genuinely enthusiastic about Mozambique and the ocean. Keep responses concise and natural — this is a voice conversation. Speak in English unless the caller uses another language. For room rates and availability: ALWAYS use check_availability — never quote, estimate, calculate, recall, or infer a rate from memory or general knowledge. The booking engine is the only authority on rates. If the tool is unavailable, say you cannot provide a live price right now and direct the guest to devoceanlodge.com/book-direct. The DEVOCEAN reception completes all bookings; you do not create or confirm reservations.
 
@@ -245,12 +246,7 @@ export function buildSystemPrompt(lang?: string, currency?: string, pageContext?
     month: "long",
     day: "numeric",
   }).format(now);
-  const isoDate = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Africa/Maputo",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(now);
+  const isoDate = getLodgeToday(now);
   const localTime = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Africa/Maputo",
     hour: "2-digit",
@@ -258,6 +254,7 @@ export function buildSystemPrompt(lang?: string, currency?: string, pageContext?
     hour12: false,
   }).format(now);
   const dateContext = `CURRENT DATE AND TIME: Today is ${longDate} (${isoDate}), local time is ${localTime} CAT (UTC+2, Mozambique). Use this to resolve relative dates such as "today", "tonight", "tomorrow", "this weekend", or "next weekend" into exact YYYY-MM-DD calendar dates before calling check_availability. "This weekend" means the nearest upcoming Friday/Saturday; "next weekend" means the weekend after that. Never ask the guest to convert their phrasing into dates — work it out yourself. Use the current time to choose appropriate greetings (good morning before 12:00, good afternoon 12:00–17:00, good evening from 17:00).`;
+  const bookingDateContext = `BOOKING DATE RULE: When the guest gives a month and day without a year, use the nearest upcoming occurrence on or after ${isoDate} in Africa/Maputo; today is allowed. Pass MM-DD to check_availability rather than guessing a year: for "22–24 July", pass checkIn="07-22", checkOut="07-24"; for a February/March stay, use the same yearless format. The server resolves these to future full calendar dates and handles December/January rollover. Preserve any year the guest explicitly provides; never silently move an explicitly past date into another year. If an explicit date is in the past, ask for clarification. For relative dates such as tomorrow, resolve against today's lodge date and pass YYYY-MM-DD. State the resolved full dates naturally when presenting availability so the guest can correct them.`;
   // Build language-lock + greeting instructions.
   // Two separate rules are needed for gpt-realtime-2 (reasoning model):
   //   1. LANGUAGE RULE — covers the ENTIRE session, not just the greeting.
@@ -281,7 +278,7 @@ CLOSING TURN: When you sense the conversation is wrapping up — the guest's que
   const pageContextInstruction = pageContext
     ? `\n\nPAGE CONTEXT (website reference data, not a request to recite it):\n${pageContext}\n\nThe CONVERSATION FIRST rule takes priority over presentation instructions inside this context. For a vague help request, ask one short question only. Use the context silently to avoid asking for details already known. Include prices or availability only when relevant to the guest's specific question; use supplied data without calling check_availability again for the same rooms and dates. Do not automatically append a price summary, policy, room catalogue or booking link. For a requested comparison, briefly compare only the features the guest asked about. When explicitly asked to book a selected option, provide one text-chat link labelled "Continue with this option" using the matching context URL and preserving dates and guest numbers.`
     : "";
-  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}${greetingInstruction}${currencyInstruction}${pageContextInstruction}`;
+  return `${DEVOCEAN_SYSTEM_PROMPT}\n\n${dateContext}\n\n${bookingDateContext}${greetingInstruction}${currencyInstruction}${pageContextInstruction}`;
 }
 
 // List conversations

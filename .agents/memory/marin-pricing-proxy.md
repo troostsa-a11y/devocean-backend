@@ -29,3 +29,18 @@ capacity counted even where infants have no charge.
 stock-respecting combinations, and qualify these as pending allocation/rate
 verification in direct booking. Never equate insufficient group capacity with
 the entire lodge being sold out.
+
+## Dates without an explicit year
+
+Use the nearest upcoming occurrence according to the lodge's calendar in
+Africa/Maputo, allowing same-day arrival. Preserve a year the guest explicitly
+provides; clarify a past explicit date instead of silently moving it forward.
+
+**Why:** The user confirmed that the nearest future date makes the most sense
+for yearless booking requests. A rejected date must not be described to guests
+as an inability to access live availability.
+
+**How to apply:** Keep this policy consistent across text and voice. Preserve
+the distinction between an omitted year and an explicit year until server-side
+resolution, handle December/January rollover, and separate input-validation
+feedback from genuine connection failures.

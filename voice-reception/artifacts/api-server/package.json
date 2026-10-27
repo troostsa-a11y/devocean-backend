@@ -8,7 +8,7 @@
     "build": "node ./build.mjs",
     "start": "node --enable-source-maps ./dist/index.mjs",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run src/migrate.test.ts src/fast-copy.test.ts src/security"
+    "test": "vitest run src/migrate.test.ts src/fast-copy.test.ts src/security src/beds24"
   },
   "dependencies": {
     "@workspace/api-zod": "workspace:*",

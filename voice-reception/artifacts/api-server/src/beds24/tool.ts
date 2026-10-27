@@ -1,8 +1,10 @@
 import nodemailer from "nodemailer";
 import { formatGroupAvailability } from "./group";
+import { getLodgeToday } from "./dates";
 import {
   checkAvailability,
   formatAvailabilityForModel,
+  Beds24ApiError,
   Beds24NotConfiguredError,
 } from "./client";
 import { convertFromUsd, CurrencyUnavailableError } from "../currency/client";
@@ -25,8 +27,21 @@ export const availabilityTool = {
     parameters: {
       type: "object",
       properties: {
-        checkIn: { type: "string", description: "Check-in date in YYYY-MM-DD format" },
-        checkOut: { type: "string", description: "Check-out date in YYYY-MM-DD format" },
+        checkIn: {
+          type: "string",
+          pattern: "^(?:[0-9]{4}-)?[0-9]{2}-[0-9]{2}$",
+          description:
+            "Use MM-DD when the guest did not give a year; the server selects the nearest " +
+            "upcoming date in Mozambique, including today. Use YYYY-MM-DD for an explicitly " +
+            "stated year or a resolved relative date such as tomorrow. Never invent a past year.",
+        },
+        checkOut: {
+          type: "string",
+          pattern: "^(?:[0-9]{4}-)?[0-9]{2}-[0-9]{2}$",
+          description:
+            "Use MM-DD when the guest did not give a year; the server resolves this after " +
+            "check-in, rolling into the next year if necessary. Otherwise use YYYY-MM-DD.",
+        },
         numAdults: {
           type: "integer",
           description: "Number of adults sharing. Defaults to 2 if unknown.",
@@ -131,7 +146,14 @@ export async function runTool(name: string, argsJson: string, context: ToolConte
     return JSON.stringify({ error: "unauthorized", note: "An authorized conversation is required." });
   }
   const validated = validateToolArguments(name, argsJson);
-  if (!validated.ok) return JSON.stringify({ error: validated.error, note: "Tool arguments are invalid or outside the allowed limits." });
+  if (!validated.ok) return JSON.stringify({
+    error: validated.error,
+    note: name === "check_availability"
+      ? "The requested dates or guest counts are invalid or outside the allowed limits. " +
+        "Check the dates and party size; stays must be 1–60 nights. Use MM-DD when no year was given. " +
+        "Ask for clarification if needed. Invalid input does NOT mean live availability is unavailable."
+      : "Tool arguments are invalid or outside the allowed limits.",
+  });
   const args = validated.args;
   if (context.signal?.aborted) return JSON.stringify({ error: "session_ended" });
   try {
@@ -148,7 +170,7 @@ export async function runTool(name: string, argsJson: string, context: ToolConte
     });
   }
   if (context.signal?.aborted) return JSON.stringify({ error: "session_ended" });
-  if (name === "check_availability") return runCheckAvailability(args);
+  if (name === "check_availability") return runCheckAvailability(args, context.conversationId);
   if (name === "convert_currency") return runConvertCurrency(args);
   if (name === "get_weather") return runGetWeather();
   return runSaveBooking(args, context.conversationId);
@@ -163,7 +185,7 @@ async function runCheckAvailability(args: {
   numAdults?: number;
   numChildren?: number;
   numInfants?: number;
-}): Promise<string> {
+}, conversationId: number): Promise<string> {
   if (!args.checkIn || !args.checkOut) {
     return JSON.stringify({
       error: "missing_dates",
@@ -176,6 +198,21 @@ async function runCheckAvailability(args: {
   const numInfants = args.numInfants ? Number(args.numInfants) : 0;
   const checkIn = String(args.checkIn);
   const checkOut = String(args.checkOut);
+  const today = getLodgeToday();
+  const diagnostic = { conversationId, checkIn, checkOut, numAdults, numChildren, numInfants };
+  if (checkIn < today) {
+    logger.warn({ ...diagnostic, reason: "past_dates" }, "Availability request rejected");
+    return JSON.stringify({
+      error: "past_dates",
+      checkIn,
+      checkOut,
+      today,
+      note: "These dates are in the past, not a connection failure. If the guest omitted the year, " +
+        "retry using MM-DD so the server selects the nearest upcoming occurrence. If the guest " +
+        "explicitly stated a past year, ask them to clarify; never silently change an explicit year. " +
+        "Do NOT say live availability is unavailable.",
+    });
+  }
 
   try {
     const result = await checkAvailability(checkIn, checkOut, numAdults, numChildren, numInfants);
@@ -185,12 +222,24 @@ async function runCheckAvailability(args: {
     return formatAvailabilityForModel(result);
   } catch (err) {
     if (err instanceof Beds24NotConfiguredError) {
+      logger.error({ ...diagnostic, reason: "not_configured" }, "Availability connection is not configured");
       return JSON.stringify({
         error: "live_availability_unavailable",
         note: "Live availability is not connected right now. Do NOT quote any rate from memory or estimation. Tell the guest you cannot retrieve a live price and direct them to devoceanlodge.com/book-direct.",
       });
     }
-    logger.error({ err }, "check_availability tool failed");
+    if (err instanceof Beds24ApiError && [400, 422].includes(err.status)) {
+      logger.warn({ ...diagnostic, status: err.status, reason: "invalid_stay" }, "Availability request rejected");
+      return JSON.stringify({
+        error: "invalid_stay",
+        checkIn,
+        checkOut,
+        note: "The booking engine rejected these dates or guest counts. Check the stay details " +
+          "and ask the guest to clarify if needed. Do NOT describe a rejected request as an " +
+          "outage or say live availability is unavailable.",
+      });
+    }
+    logger.error({ err, ...diagnostic }, "check_availability tool failed");
     return JSON.stringify({
       error: "availability_lookup_failed",
       note: "Could not reach the live booking system. Do NOT quote any rate from memory or estimation. Tell the guest you cannot retrieve a live price and direct them to devoceanlodge.com/book-direct.",
