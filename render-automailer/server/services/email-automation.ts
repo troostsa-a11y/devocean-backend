@@ -53,6 +53,7 @@ export class EmailAutomationService {
   private modificationHandler: ModificationHandler;
   private adminReporting?: AdminReportingService;
   private imapConfig: EmailConfig;
+  private emailCheckInProgress = false;
   private cronJob?: cron.ScheduledTask;
   private emailSenderJob?: cron.ScheduledTask;
   private dailyReportJob?: cron.ScheduledTask;
@@ -185,6 +186,12 @@ export class EmailAutomationService {
    * Main email check workflow
    */
   private async runEmailCheck(): Promise<void> {
+    // Scheduled and manual checks share the same resource budget.
+    if (this.emailCheckInProgress) {
+      console.log('Email check already in progress; skipping overlapping check');
+      return;
+    }
+    this.emailCheckInProgress = true;
     const startTime = Date.now();
     let emailsFound = 0;
     let emailsProcessed = 0;
@@ -200,15 +207,7 @@ export class EmailAutomationService {
       // Step 2: Process each email
       for (const message of messages) {
         try {
-          const parts = message.parts;
-          let emailContent = '';
-
-          // Combine all parts to get full email content
-          for (const part of parts) {
-            if (part.which === '') {
-              emailContent += part.body;
-            }
-          }
+          const emailContent = message.parts[0].body;
 
           // Validate sender authenticity before any state-changing operations.
           // Two-layer check:
@@ -220,7 +219,11 @@ export class EmailAutomationService {
           // Fail closed: if either layer fails (including missing auth headers)
           // the email is skipped entirely — no cancellation, modification, or
           // booking logic is executed.
-          const parsedHeaders = await simpleParser(emailContent, {
+          // Authenticate using only the header block, without MIME-decoding
+          // untrusted bodies or attachments a second time.
+          const headerEnd = emailContent.search(/\r?\n\r?\n/);
+          if (headerEnd < 0) throw new Error('Email is missing its header separator');
+          const parsedHeaders = await simpleParser(emailContent.slice(0, headerEnd) + '\r\n\r\n', {
             skipHtmlToText: true,
             skipImageLinks: true,
             skipTextToHtml: true,
@@ -343,6 +346,8 @@ export class EmailAutomationService {
         errorMessage: error instanceof Error ? error.message : 'Unknown error',
         durationMs,
       });
+    } finally {
+      this.emailCheckInProgress = false;
     }
   }
 

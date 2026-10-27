@@ -75,6 +75,29 @@ The service runs continuously and:
    - Daily report at 14:00 CAT (12:00 UTC)
    - Weekly report at 08:00 CAT Monday
 
+## Mailbox ingestion limits
+
+Each email check scans at most 200 mailbox entries (metadata only), downloads at
+most 25 unread messages, and retains at most 8 MiB of raw mail. Each full RFC822
+message, including attachments, must fit within 2 MiB. A stream byte counter
+enforces this even if the server reports an incorrect message size. Each FETCH
+has a 15-second deadline; a batch stops starting new downloads after 60 seconds.
+Manual and scheduled checks cannot overlap.
+
+The scan checks the 100 most recent messages and advances a separate 100-message
+window through the mailbox, wrapping at the end. A backlog is processed over
+multiple checks without waiting through read-mail history for recent arrivals.
+The recent window can use at most 12 downloads, 4 MiB, and half the batch's
+download-start time budget; the remaining capacity is reserved for the rotating
+historical window. This ensures ordinary messages left unread cannot monopolize
+the batch. The historical scan includes recent entries too, so every mailbox
+entry is eventually considered even if recent mail stays unread.
+Oversized or invalid-size messages are logged
+and skipped without downloading their bodies or changing their read status.
+Operators should inspect skipped messages in the mailbox. The cursor resets
+after a process restart or mailbox UIDVALIDITY change; unprocessed messages stay
+unread and are not deleted. Sender authentication still runs before booking changes.
+
 ## Health Check
 
 The service exposes a health endpoint at `GET /health` (on the internal port).

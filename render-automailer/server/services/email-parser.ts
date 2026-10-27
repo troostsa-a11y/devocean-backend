@@ -1,5 +1,6 @@
 import imaps from 'imap-simple';
 import { simpleParser } from 'mailparser';
+import { fetchUnreadBatch, type IngestedMessage } from './imap-ingestion';
 import * as fs from 'fs';
 import type { InsertBooking } from '../../shared/schema';
 
@@ -27,6 +28,7 @@ interface ParsedBooking {
 }
 
 export class EmailParser {
+  private static mailboxScans = new Map<string, { uidValidity: number; nextSequence: number }>();
   /**
    * Parse a Beds24 booking notification email
    */
@@ -749,10 +751,11 @@ export class EmailParser {
     user: string;
     password: string;
     tls: boolean;
-  }): Promise<any[]> {
+  }): Promise<IngestedMessage[]> {
+    let connection: any;
     try {
       console.log(`Connecting to IMAP server: ${config.host}:${config.port}`);
-      const connection = await imaps.connect({
+      connection = await imaps.connect({
         imap: {
           user: config.user,
           password: config.password,
@@ -764,25 +767,22 @@ export class EmailParser {
           socketTimeout: 30000, // Add socket timeout
         },
       });
+      // imap-simple forwards connection errors as EventEmitter errors.
+      connection.on('error', (error: Error) => console.error('IMAP connection error:', error.message));
       console.log('✅ IMAP connection established');
 
-      await connection.openBox('INBOX');
-
-      // Search for unread emails
-      const searchCriteria = ['UNSEEN'];
-      const fetchOptions = {
-        bodies: ['HEADER', 'TEXT', ''],
-        markSeen: false, // Don't mark as read automatically
-      };
-
-      const messages = await connection.search(searchCriteria, fetchOptions);
-
-      await connection.end();
-
+      const box = await connection.openBox('INBOX');
+      const key = JSON.stringify([config.host, config.port, config.user]);
+      const scan = this.mailboxScans.get(key);
+      const nextSequence = scan?.uidValidity === box.uidvalidity ? scan.nextSequence : 1;
+      const { messages, nextSequence: next } = await fetchUnreadBatch(connection, box.messages.total, nextSequence);
+      this.mailboxScans.set(key, { uidValidity: box.uidvalidity, nextSequence: next });
       return messages;
     } catch (error) {
       console.error('Error fetching emails:', error);
       throw error;
+    } finally {
+      connection?.end();
     }
   }
 
