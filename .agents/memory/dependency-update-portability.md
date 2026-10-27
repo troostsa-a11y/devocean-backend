@@ -97,3 +97,9 @@ For streaming-parser regressions, a successful HTTP response is not proof that t
 **Why:** A decompressor can finish a valid frame and allow a response before later input triggers a fatal, unhandled stream error. An exception handler in the test process can conceal that failure mode.
 
 **How to apply:** Exercise real HTTP chunk boundaries in an isolated child without an uncaught-exception handler, verify a subsequent health request, and bound both network and child-process timeouts.
+
+Isolated asynchronous regression tests need an explicit completion marker as well as a zero exit status.
+
+**Why:** Node can exit successfully while an awaited promise is unresolved if no active handles remain, producing a false pass before all assertions run.
+
+**How to apply:** Emit a success marker only after the final assertion and require it in the parent, alongside exit-status and timeout checks.
