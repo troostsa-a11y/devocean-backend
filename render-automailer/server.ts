@@ -8,6 +8,7 @@ import { DatabaseService } from './server/services/database';
 import { createBookingRouter } from './server/routes/booking';
 import { createVoucherCheckoutHandler } from './server/routes/gift-voucher-checkout';
 import { createInquiryQuotaHandler } from './server/routes/inquiry-quota';
+import { isImapTlsEnabled } from './server/services/imap-security';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -93,7 +94,7 @@ if (validateEnvironment()) {
       port: parseInt(process.env.IMAP_PORT || '993'),
       user: process.env.IMAP_USER!,
       password: process.env.IMAP_PASSWORD!,
-      tls: process.env.IMAP_TLS === 'ssl' || process.env.IMAP_TLS === 'true',
+      tls: isImapTlsEnabled(process.env.IMAP_TLS),
     };
     
     emailService = new EmailAutomationService(

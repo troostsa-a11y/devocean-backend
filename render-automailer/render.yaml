@@ -27,6 +27,7 @@ services:
       - key: IMAP_PASSWORD
         sync: false
       - key: IMAP_TLS
+        # Optional: the application defaults to TLS when omitted.
         sync: false
       - key: IMAP_FROM_EMAIL
         sync: false

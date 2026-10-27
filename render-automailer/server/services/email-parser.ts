@@ -750,7 +750,7 @@ export class EmailParser {
     port: number;
     user: string;
     password: string;
-    tls: boolean;
+    tls?: boolean;
   }): Promise<IngestedMessage[]> {
     let connection: any;
     try {
@@ -761,7 +761,7 @@ export class EmailParser {
           password: config.password,
           host: config.host,
           port: config.port,
-          tls: config.tls,
+          tls: config.tls !== false,
           authTimeout: 30000, // Increased from 10s to 30s
           connTimeout: 30000, // Add connection timeout
           socketTimeout: 30000, // Add socket timeout
@@ -794,7 +794,7 @@ export class EmailParser {
     port: number;
     user: string;
     password: string;
-    tls: boolean;
+    tls?: boolean;
   }, uid: number): Promise<void> {
     try {
       const connection = await imaps.connect({
@@ -803,7 +803,7 @@ export class EmailParser {
           password: config.password,
           host: config.host,
           port: config.port,
-          tls: config.tls,
+          tls: config.tls !== false,
           authTimeout: 30000, // Increased from 10s to 30s
           connTimeout: 30000, // Add connection timeout
           socketTimeout: 30000, // Add socket timeout

@@ -37,7 +37,7 @@ In the Render dashboard, go to **Environment** and add:
 | `SMTP_PORT` | `465` | SMTP port for sending |
 | `IMAP_HOST` | Same as MAIL_HOST | IMAP server (if different from SMTP) |
 | `IMAP_PORT` | `993` | IMAP port |
-| `IMAP_TLS` | `ssl` | TLS mode (`ssl` or `true`) |
+| `IMAP_TLS` | `ssl` | Implicit TLS enabled by default (`ssl` or `true`); only explicit `false` disables it |
 | `IMAP_FROM_EMAIL` | `booking@devoceanlodge.com` | Sender email address |
 | `IMAP_FROM_NAME` | `DEVOCEAN Lodge Bookings` | Sender display name |
 | `ADMIN_EMAIL` | `admin@devoceanlodge.com` | Admin report recipient |
@@ -45,6 +45,13 @@ In the Render dashboard, go to **Environment** and add:
 | `TAXI_EMAIL` | - | Taxi company notification email |
 | `TAXI_WHATSAPP` | - | Taxi company WhatsApp number |
 | `TAXI_NAME` | `Taxi Company` | Taxi company name |
+
+TLS remains enabled when `IMAP_TLS` is unset, blank, or unrecognized. Values are
+case-insensitive and surrounding whitespace is ignored. Certificate validation
+uses Node's secure defaults. Do not use `IMAP_TLS=false` on an untrusted network:
+it disables implicit TLS and may expose mailbox credentials and booking messages.
+The default port `993` requires implicit TLS; changing `IMAP_PORT` alone does not
+disable TLS.
 
 ### 3. Deploy
 
