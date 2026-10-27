@@ -8,6 +8,7 @@
     "test:braces-security": "node --test scripts/braces-security.test.mjs",
     "test:nanoid-security": "node --test scripts/nanoid-security.test.mjs",
     "test:qs-security": "node --test scripts/qs-security.test.mjs",
+    "test:nodemailer-security": "node --test scripts/nodemailer-security.test.mjs",
     "test:body-parser-security": "node --test scripts/body-parser-security.test.mjs",
     "test:postcss-security": "node --test scripts/postcss-security.test.mjs",
     "test:babel-security": "node --test scripts/babel-security.test.mjs",
@@ -41,7 +42,7 @@
     "luxon": "^3.7.2",
     "mailparser": "^3.9.38",
     "node-cron": "^4.2.1",
-    "nodemailer": "~10.0.16",
+    "nodemailer": "~10.2.1",
     "pg": "^8.16.3",
     "postgres": "^3.4.7",
     "react": "^18.3.1",
@@ -65,6 +66,7 @@
     "wrangler": "^4.95.0"
   },
   "overrides": {
+    "nodemailer": "$nodemailer",
     "express": {
       "body-parser": "1.20.6"
     },
