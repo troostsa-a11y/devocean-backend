@@ -28,7 +28,7 @@
     "stripe": "^17.7.0",
     "tsx": "^4.19.0",
     "typescript": "^5.5.0",
-    "zod": "^4.1.12"
+    "zod": "^4.6.7"
   },
   "overrides": {
     "nodemailer": "$nodemailer",

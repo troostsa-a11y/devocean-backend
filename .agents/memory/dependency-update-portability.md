@@ -8,6 +8,12 @@ Dependency updates must leave committed lockfiles usable outside Replit and rema
 
 **How to apply:** After installation, check changed tarball URLs and use public npm URLs with unchanged integrity hashes for externally deployed packages. Compare transitive engine requirements with the deployment's pinned Node version, not just the workspace runtime.
 
+Validate npm override compatibility after a clean install, not only an incremental update.
+
+**Why:** npm can hoist an aliased loader out of its parent's override scope. An incremental dependency tree can appear valid while a clean install flags the loader's build dependency as invalid.
+
+**How to apply:** Scope the alias's own build dependency explicitly, keep unrelated build tools on their existing versions, and run both clean installs and `npm ls` against each independent npm project.
+
 For security updates, preserve the workspace's minimum release age when an older eligible release already fixes every requested advisory.
 
 **Why:** A same-day latest release may be blocked by pnpm even though an eligible patch release contains all required fixes. Disabling the safety rule is unnecessary in that case.
@@ -25,6 +31,12 @@ Check narrowly targeted pnpm updates for unrelated override and peer-resolution 
 **Why:** A recursive transitive update can also re-resolve existing range-based overrides, upgrading unrelated packages and rewriting their peer snapshots.
 
 **How to apply:** Inspect the entire lockfile diff, preserve unrelated resolutions, and verify the resulting lockfile with a frozen install before testing.
+
+After adding an override for a catalog dependency, pnpm's recursive update may need an ordinary workspace install before its lockfile is frozen-installable.
+
+**Why:** The update can retain catalog importer specifiers even though the override makes pnpm expect the overridden range. It can also rewrite workspace YAML and remove explanatory comments.
+
+**How to apply:** Resolve with a whole-workspace install, preserve the workspace's safety comments and unrelated resolutions, and then verify a frozen install. Do not change consumer manifests merely to match the intermediate lockfile.
 
 Preserving unrelated lockfile resolutions still requires matching the new release's published metadata exactly.
 

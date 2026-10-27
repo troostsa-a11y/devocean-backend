@@ -21,11 +21,11 @@ export const HealthCheckResponse = zod.object({
  * @summary List all conversations
  */
 export const ListOpenaiConversationsResponseItem = zod.object({
-  "id": zod.number().int(),
+  "id": zod.int(),
   "title": zod.string(),
   "createdAt": zod.coerce.date(),
-  "messageCount": zod.number().int(),
-  "bookingCount": zod.number().int()
+  "messageCount": zod.int(),
+  "bookingCount": zod.int()
 })
 export const ListOpenaiConversationsResponse = zod.array(ListOpenaiConversationsResponseItem)
 
@@ -50,13 +50,13 @@ export const createOpenaiConversationResponseTwoConversationTokenRegExp = new Re
 
 
 export const CreateOpenaiConversationResponse = zod.object({
-  "id": zod.number().int(),
+  "id": zod.int(),
   "title": zod.string(),
   "createdAt": zod.coerce.date(),
-  "messageCount": zod.number().int(),
-  "bookingCount": zod.number().int()
+  "messageCount": zod.int(),
+  "bookingCount": zod.int()
 }).and(zod.object({
-  "publicId": zod.string().uuid(),
+  "publicId": zod.uuid(),
   "conversationToken": zod.string().min(createOpenaiConversationResponseTwoConversationTokenMin).max(createOpenaiConversationResponseTwoConversationTokenMax).regex(createOpenaiConversationResponseTwoConversationTokenRegExp)
 }))
 
@@ -69,12 +69,12 @@ export const GetOpenaiConversationParams = zod.object({
 })
 
 export const GetOpenaiConversationResponse = zod.object({
-  "id": zod.number().int(),
+  "id": zod.int(),
   "title": zod.string(),
   "createdAt": zod.coerce.date(),
   "messages": zod.array(zod.object({
-  "id": zod.number().int(),
-  "conversationId": zod.number().int(),
+  "id": zod.int(),
+  "conversationId": zod.int(),
   "role": zod.string(),
   "content": zod.string(),
   "createdAt": zod.coerce.date()
@@ -100,14 +100,14 @@ export const ListConversationBookingsParams = zod.object({
 })
 
 export const ListConversationBookingsResponseItem = zod.object({
-  "id": zod.number().int(),
-  "conversationId": zod.number().int().nullable(),
+  "id": zod.int(),
+  "conversationId": zod.int().nullable(),
   "guestName": zod.string(),
   "guestEmail": zod.string().nullish(),
   "guestPhone": zod.string().nullish(),
   "checkIn": zod.string().nullish(),
   "checkOut": zod.string().nullish(),
-  "guests": zod.number().int().nullish(),
+  "guests": zod.int().nullish(),
   "notes": zod.string().nullish(),
   "createdAt": zod.coerce.date()
 })
@@ -122,8 +122,8 @@ export const ListOpenaiMessagesParams = zod.object({
 })
 
 export const ListOpenaiMessagesResponseItem = zod.object({
-  "id": zod.number().int(),
-  "conversationId": zod.number().int(),
+  "id": zod.int(),
+  "conversationId": zod.int(),
   "role": zod.string(),
   "content": zod.string(),
   "createdAt": zod.coerce.date()
@@ -186,14 +186,14 @@ export const SendOpenaiVoiceMessageResponse = zod.unknown()
  * @summary List all booking enquiries
  */
 export const ListBookingsResponseItem = zod.object({
-  "id": zod.number().int(),
-  "conversationId": zod.number().int().nullable(),
+  "id": zod.int(),
+  "conversationId": zod.int().nullable(),
   "guestName": zod.string(),
   "guestEmail": zod.string().nullish(),
   "guestPhone": zod.string().nullish(),
   "checkIn": zod.string().nullish(),
   "checkOut": zod.string().nullish(),
-  "guests": zod.number().int().nullish(),
+  "guests": zod.int().nullish(),
   "notes": zod.string().nullish(),
   "createdAt": zod.coerce.date()
 })
@@ -204,25 +204,25 @@ export const ListBookingsResponse = zod.array(ListBookingsResponseItem)
  * @summary Create a new booking enquiry
  */
 export const CreateBookingBody = zod.object({
-  "conversationId": zod.number().int().nullish(),
+  "conversationId": zod.int().nullish(),
   "guestName": zod.string(),
   "guestEmail": zod.string().nullish(),
   "guestPhone": zod.string().nullish(),
   "checkIn": zod.string().nullish(),
   "checkOut": zod.string().nullish(),
-  "guests": zod.number().int().nullish(),
+  "guests": zod.int().nullish(),
   "notes": zod.string().nullish()
 })
 
 export const CreateBookingResponse = zod.object({
-  "id": zod.number().int(),
-  "conversationId": zod.number().int().nullable(),
+  "id": zod.int(),
+  "conversationId": zod.int().nullable(),
   "guestName": zod.string(),
   "guestEmail": zod.string().nullish(),
   "guestPhone": zod.string().nullish(),
   "checkIn": zod.string().nullish(),
   "checkOut": zod.string().nullish(),
-  "guests": zod.number().int().nullish(),
+  "guests": zod.int().nullish(),
   "notes": zod.string().nullish(),
   "createdAt": zod.coerce.date()
 })
@@ -236,14 +236,14 @@ export const GetBookingParams = zod.object({
 })
 
 export const GetBookingResponse = zod.object({
-  "id": zod.number().int(),
-  "conversationId": zod.number().int().nullable(),
+  "id": zod.int(),
+  "conversationId": zod.int().nullable(),
   "guestName": zod.string(),
   "guestEmail": zod.string().nullish(),
   "guestPhone": zod.string().nullish(),
   "checkIn": zod.string().nullish(),
   "checkOut": zod.string().nullish(),
-  "guests": zod.number().int().nullish(),
+  "guests": zod.int().nullish(),
   "notes": zod.string().nullish(),
   "createdAt": zod.coerce.date()
 })
@@ -263,10 +263,10 @@ export const DeleteBookingResponse = zod.void()
  * @summary Get dashboard statistics
  */
 export const GetDashboardStatsResponse = zod.object({
-  "totalConversations": zod.number().int(),
-  "totalBookings": zod.number().int(),
-  "conversationsThisWeek": zod.number().int(),
-  "bookingsThisWeek": zod.number().int()
+  "totalConversations": zod.int(),
+  "totalBookings": zod.int(),
+  "conversationsThisWeek": zod.int(),
+  "bookingsThisWeek": zod.int()
 })
 
 
