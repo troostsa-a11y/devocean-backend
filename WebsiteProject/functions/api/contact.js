@@ -11,6 +11,7 @@
  */
 
 import { verifyCaptcha } from '../_lib/captcha.js';
+import { reserveInquirySend } from '../_lib/inquiry-quota.js';
 
 // Security: Remove CR/LF from header fields to prevent email header injection
 const sanitizeHeader = (str) => String(str).replace(/[\r\n<>]/g, '').trim();
@@ -232,13 +233,18 @@ export async function onRequestPost(context) {
     const sanitizedCurrency = currency ? sanitizeHeader(currency).slice(0, 10) : '';
 
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/;
     if (!emailRegex.test(sanitizedEmail)) {
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
+
+    const quotaError = await reserveInquirySend({
+      request, env, email: sanitizedEmail, corsHeaders,
+    });
+    if (quotaError) return quotaError;
 
     // Format dates for display (ISO format: YYYY-MM-DD → readable format)
     const formatDate = (isoDate) => {

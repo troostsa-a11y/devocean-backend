@@ -431,7 +431,10 @@ export function useLocale() {
           window.location.hash,
         );
         if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== target) {
-          window.location.replace(target);
+          const destination = new URL(target, window.location.origin);
+          if (destination.origin === window.location.origin) {
+            window.location.replace(destination.href);
+          }
         }
       }
     } catch (e) { /* ignore */ }
@@ -465,7 +468,10 @@ export function useLocale() {
       window.location.hash,
     );
     if (`${window.location.pathname}${window.location.search}${window.location.hash}` !== target) {
-      window.location.assign(target);
+      const destination = new URL(target, window.location.origin);
+      if (destination.origin === window.location.origin) {
+        window.location.assign(destination.href);
+      }
     } else {
       setLangState(normalized);
       document.documentElement.setAttribute("lang", normalized);

@@ -1,5 +1,6 @@
 import { drizzle } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
+import { createInquiryQuota } from './inquiry-quota';
 import { bookings, scheduledEmails, emailLogs, emailCheckLogs, pendingCancellations, guests, bookingSessions, directBookings, couponCodes, giftVouchers } from '../../shared/schema';
 import type { InsertBooking, InsertScheduledEmail, Booking, ScheduledEmail, Guest, InsertGuest, BookingSession, InsertBookingSession, DirectBooking, InsertDirectBooking, DiscountCode, InsertDiscountCode, GiftVoucher, InsertGiftVoucher } from '../../shared/schema';
 import { eq, and, lte, gte, isNull, isNotNull, ne, sql, or, ilike, count, desc } from 'drizzle-orm';
@@ -12,10 +13,12 @@ import { eq, and, lte, gte, isNull, isNotNull, ne, sql, or, ilike, count, desc }
 export class DatabaseService {
   private db: ReturnType<typeof drizzle>;
   private client: ReturnType<typeof postgres>;
+  readonly reserveInquirySend: ReturnType<typeof createInquiryQuota>;
 
   constructor(connectionString: string) {
     this.client = postgres(connectionString);
     this.db = drizzle(this.client);
+    this.reserveInquirySend = createInquiryQuota(this.client);
   }
 
   /**

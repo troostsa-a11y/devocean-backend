@@ -62,3 +62,4 @@
 - [Generator version inference](generator-version-inference.md) — pnpm catalog dependencies can defeat generator version detection; keep generated clients on the consumer library majors.
 - [Dependency update portability](dependency-update-portability.md) — package installs can write private registry URLs; check lockfile portability and deployed Node compatibility.
 - [Public map abuse controls](public-map-abuse-controls.md) — preserve anonymous brochure access; constrain paid previews rather than adding login or CAPTCHA.
+- [Public inquiry quota authority](public-inquiry-quotas.md) — share durable send quotas across public forms; deploy the backend quota authority before edge enforcement.

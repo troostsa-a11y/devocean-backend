@@ -7,6 +7,7 @@ import { EmailAutomationService } from './server/services/email-automation';
 import { DatabaseService } from './server/services/database';
 import { createBookingRouter } from './server/routes/booking';
 import { createVoucherCheckoutHandler } from './server/routes/gift-voucher-checkout';
+import { createInquiryQuotaHandler } from './server/routes/inquiry-quota';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -180,6 +181,8 @@ function requireAdminKey(req: any, res: any, next: any) {
 
   next();
 }
+
+app.post('/api/inquiry/reserve', requireAdminKey, createInquiryQuotaHandler(() => guestDb));
 
 // Admin: Create a manual booking and schedule all emails
 app.post('/api/admin/booking', requireAdminKey, async (req, res) => {

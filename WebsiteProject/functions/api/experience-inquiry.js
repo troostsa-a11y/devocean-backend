@@ -10,6 +10,7 @@
  */
 
 import { verifyCaptcha } from '../_lib/captcha.js';
+import { reserveInquirySend } from '../_lib/inquiry-quota.js';
 
 // Server-side allowlist: only these operator names may receive lodge-branded mail.
 // Adding or changing a recipient requires a code deploy — client input cannot override this.
@@ -149,13 +150,19 @@ export async function onRequestPost(context) {
     }
 
     // Email validation (guest address only — operator address comes from the allowlist)
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@,;<>]+@[^\s@,;<>]+\.[^\s@,;<>]+$/;
     if (!emailRegex.test(sanitizedEmail)) {
       return new Response(JSON.stringify({ error: 'Invalid email address' }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
+
+    const quotaError = await reserveInquirySend({
+      request, env, email: sanitizedEmail,
+      operatorEmail: resolvedOperatorEmail, corsHeaders,
+    });
+    if (quotaError) return quotaError;
 
     // Google Translate link
     const messageForTranslation = `From: ${sanitizedName}\nEmail: ${sanitizedEmail}\nDates: ${sanitizedDates || 'Not specified'}\nGuests: ${sanitizedGuests}\n\nMessage:\n${sanitizedMessage}`;

@@ -78,11 +78,22 @@ export function localeFromPath(pathname = '/') {
 }
 
 export function stripLocalePrefix(pathname = '/') {
-  const path = pathname.startsWith('/') ? pathname : `/${pathname}`;
+  const path = sameOriginPath(pathname);
   const locale = localeFromPath(path);
   if (!locale) return path;
   const remainder = path.slice(locale.path.length + 1);
-  return remainder || '/';
+  return sameOriginPath(remainder || '/');
+}
+
+// URL parsers treat both //host and /\host as external authorities. Normalize
+// dot segments first, then enforce exactly one leading slash, including after
+// removing a locale prefix. Encoded path characters remain encoded.
+function sameOriginPath(pathname) {
+  const input = String(pathname);
+  if (/[\u0000-\u0020\u007f]/.test(input)) return '/';
+  const path = `/${input.replace(/\\/g, '/').replace(/^\/+/, '')}`;
+  const normalized = new URL(path, 'https://locale.invalid').pathname;
+  return `/${normalized.replace(/^\/+/, '')}`;
 }
 
 export function localizedPath(pathname = '/', localeCode = DEFAULT_LOCALE) {

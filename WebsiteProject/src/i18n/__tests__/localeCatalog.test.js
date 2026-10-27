@@ -5,11 +5,33 @@ import {
   allHreflangPaths,
   localeFromPath,
   localizedPath,
+  localizedUrl,
   normalizeLocale,
   stripLocalePrefix,
 } from '../localeCatalog.js';
 
 describe('public locale URL contract', () => {
+  it.each([
+    '//attacker.example/path', '///attacker.example/path',
+    '/\\attacker.example/path', '\\\\attacker.example/path',
+    '/de//attacker.example/path', '/de/..//attacker.example/path',
+    '/%2e%2e//attacker.example/path', '/\t/attacker.example',
+  ])('keeps hostile path %s on the lodge origin for every locale', (path) => {
+    for (const locale of LOCALES) {
+      const target = localizedUrl(path, locale.code, 'campaign=test', '#contact');
+      expect(target.startsWith('//')).toBe(false);
+      expect(new URL(target, 'https://devoceanlodge.com').origin).toBe('https://devoceanlodge.com');
+    }
+  });
+
+  it('preserves legitimate routes, other query parameters, anchors and encoded characters', () => {
+    expect(localizedUrl('/de/experiences/diving', 'en', '?utm_source=email', '#inquiry'))
+      .toBe('/experiences/diving?utm_source=email#inquiry');
+    expect(localizedUrl('/book-direct', 'pt', 'adults=2', 'rooms'))
+      .toBe('/pt-pt/book-direct?adults=2#rooms');
+    expect(localizedPath('/%2Fexample', 'en')).toBe('/%2Fexample');
+  });
+
   it('keeps historical English routes at the root and prefixes other locales', () => {
     expect(DEFAULT_LOCALE).toBe('en-GB');
     expect(localizedPath('/chalet', 'en-GB')).toBe('/chalet');
