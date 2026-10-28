@@ -5,19 +5,19 @@ import test from 'node:test';
 
 const root = new URL('../', import.meta.url);
 const consumers = [
-  ['root', './', '6.16.0'],
-  ['website', 'WebsiteProject/', '6.16.0'],
+  ['root', './', '6.16.1'],
+  ['website', 'WebsiteProject/', '6.16.1'],
   ['reception', 'voice-reception/artifacts/api-server/', '6.16.1'],
 ];
 const workspaceLock = readFileSync(new URL('voice-reception/pnpm-lock.yaml', root), 'utf8');
 
-test('all npm and pnpm locks exclude the five reported qs findings', () => {
+test('all npm and pnpm locks exclude vulnerable qs releases', () => {
   for (const directory of ['./', 'WebsiteProject/']) {
     const lock = JSON.parse(readFileSync(new URL(`${directory}package-lock.json`, root)));
     const entries = Object.entries(lock.packages).filter(([path]) => /(^|\/)node_modules\/qs$/.test(path));
     assert.ok(entries.length);
     for (const [path, metadata] of entries) {
-      assert.equal(metadata.version, '6.16.0', `${directory}${path}`);
+      assert.equal(metadata.version, '6.16.1', `${directory}${path}`);
       assert.ok(metadata.resolved.startsWith('https://registry.npmjs.org/'));
     }
   }
@@ -29,7 +29,7 @@ test('all npm and pnpm locks exclude the five reported qs findings', () => {
 test('every independently deployed project enforces patched qs on fresh installs', () => {
   for (const directory of ['./', 'WebsiteProject/', 'render-automailer/']) {
     const manifest = JSON.parse(readFileSync(new URL(`${directory}package.json`, root)));
-    assert.equal(manifest.overrides.qs, '6.16.0', directory);
+    assert.equal(manifest.overrides.qs, '6.16.1', directory);
   }
   assert.match(readFileSync(new URL('voice-reception/pnpm-workspace.yaml', root), 'utf8'),
     /overrides:\n(?:  .*\n)*  "qs": "6\.16\.1"/);
@@ -55,6 +55,22 @@ for (const [name, directory, version] of consumers) {
       }
       assert.doesNotThrow(() => qs.stringify(JSON.parse('{"a":{"constructor":{"isBuffer":"x"}}}')));
       assert.equal(qs.stringify({ value: Buffer.from('hello') }), 'value=hello');
+    });
+
+    test(`${name}/${parent}: GHSA-6pq8-jhm2-2vcw hostile comma elements cannot crash stringify`, () => {
+      const inputs = [
+        JSON.parse('{"a":[{"toString":"x"}]}'),
+        { a: [Object.create(null)] },
+        qs.parse('a[0][toString]=x', { plainObjects: true }),
+      ];
+      for (const encodeValuesOnly of [false, true]) {
+        const options = { arrayFormat: 'comma', encodeValuesOnly };
+        for (const input of inputs) {
+          assert.doesNotThrow(() => qs.stringify(input, options));
+        }
+        assert.equal(qs.stringify({ a: ['x', 'y'] }, options),
+          encodeValuesOnly ? 'a=x,y' : 'a=x%2Cy');
+      }
     });
 
     test(`${name}/${parent}: comma serialization accepts null and undefined`, () => {
