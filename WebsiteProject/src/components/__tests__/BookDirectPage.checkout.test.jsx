@@ -142,6 +142,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     minUnitsAdults:     'Book one unit for a maximum of 2 adults',
     minUnitsAdultsWithChild: 'Book one unit for a maximum of 2 adults + 1 infant/child',
     partyTooLargeForRate: 'Some guests cannot be accommodated in fewer units.',
+    guestAllocationWarning: 'Assign exactly the requested number of guests to the selected units before continuing.',
     amenitiesNote:      'All rooms include breakfast',
     amenitiesAllRatesInclude: 'All rates include',
     amenitiesBreakfast: 'Excellent Breakfast',
@@ -1213,6 +1214,15 @@ describe('checkout bedPreferences — Garden Cottage edge cases', () => {
         fireEvent.click(screen.getByTestId(`button-inc-${rid}`));
       });
     }
+    // A two-adult party choosing two room types explicitly assigns one adult
+    // to each, rather than relying on the server's old automatic distribution.
+    if (roomIds.length === 2) {
+      for (const rid of roomIds) {
+        await act(async () => {
+          fireEvent.click(screen.getByTestId(`button-occ-dec-${rid}-0-adults`));
+        });
+      }
+    }
 
     // Wait for the Continue button to enable (quote fetched).
     const continueBtn = await waitFor(
@@ -2189,7 +2199,7 @@ describe('whole-party capacity protection', () => {
     await act(async () => { fireEvent.click(continueButton); });
 
     expect(screen.getByTestId('text-validation-warning').textContent)
-      .toContain('Not all guests are accommodated. Continue your booking.');
+      .toContain('Assign exactly the requested number of guests to the selected units before continuing.');
   });
 
   it('keeps mixed room types visible when one of each can accommodate the party', async () => {
@@ -2212,5 +2222,142 @@ describe('whole-party capacity protection', () => {
       expect(screen.getByTestId(`button-inc-${GARDEN_ROOM_ID}`)).toBeTruthy();
       expect(screen.getByTestId(`button-inc-${SAFARI_ROOM_ID}`)).toBeTruthy();
     });
+  });
+});
+
+describe('adult-only per-unit allocation', () => {
+  const COTTAGE_ID = 'adult-allocation-cottage';
+  let originalLocationDescriptor;
+  let checkoutBody;
+  const quoteCalls = () => global.fetch.mock.calls
+    .filter(([url]) => url.includes('/api/booking/quote'))
+    .map(([, init]) => JSON.parse(init.body));
+
+  beforeEach(() => {
+    originalLocationDescriptor = Object.getOwnPropertyDescriptor(window, 'location');
+    setBookingQuery({ adults: 6 });
+    checkoutBody = null;
+    global.fetch = vi.fn(async (url, init) => {
+      if (url.includes('/api/booking/availability')) {
+        const data = makeAvailabilityResponse();
+        data.rooms[0].offers[0].unitsAvailable = 5;
+        data.rooms.push({
+          ...data.rooms[0], roomId: COTTAGE_ID, name: 'Garden Cottage',
+          offers: [{ ...data.rooms[0].offers[0], unitsAvailable: 1 }],
+        });
+        return { ok: true, json: async () => data };
+      }
+      if (url.includes('/api/booking/quote')) {
+        const body = JSON.parse(init.body);
+        const lines = body.rooms.map((line) => ({
+          ...line,
+          roomName: line.roomId === COTTAGE_ID ? 'Garden Cottage' : 'Safari Tent',
+          lineTotal: line.adults * 100,
+        }));
+        const total = lines.reduce((sum, line) => sum + line.lineTotal, 0);
+        return { ok: true, json: async () => ({
+          ...makeQuoteResponse(), rooms: lines.length, lines, total,
+          deposit: total / 2, balance: total / 2,
+        }) };
+      }
+      if (url.includes('/api/booking/checkout')) {
+        checkoutBody = JSON.parse(init.body);
+        // Never navigate to a real payment page, even in the mocked test.
+        return { ok: false, json: async () => ({ error: 'Mock checkout only' }) };
+      }
+      if (url.includes('/api/booking/calendar')) {
+        return { ok: true, json: async () => ({ prices: {} }) };
+      }
+      return { ok: false, json: async () => ({}) };
+    });
+  });
+  afterEach(() => {
+    cleanup();
+    vi.restoreAllMocks();
+    Object.defineProperty(window, 'location', originalLocationDescriptor);
+  });
+
+  async function addSafariUnits(count) {
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+    const add = await screen.findByTestId(`button-inc-${SAFARI_ROOM_ID}`);
+    for (let index = 0; index < count; index++) {
+      await act(async () => { fireEvent.click(add); });
+    }
+  }
+  async function submitGuestDetails() {
+    await waitFor(() => expect(screen.getByTestId('button-continue-details').disabled).toBe(false));
+    await act(async () => { fireEvent.click(screen.getByTestId('button-continue-details')); });
+    await screen.findByTestId('input-first-name');
+    for (const [field, value] of Object.entries({
+      'first-name': 'Test', 'last-name': 'Guest', email: 'test@example.com',
+      phone: '+1234567890', 'postal-code': '12345',
+    })) {
+      fireEvent.change(screen.getByTestId(`input-${field}`), { target: { value } });
+    }
+    await act(async () => { fireEvent.click(screen.getByTestId('button-checkout')); });
+  }
+  async function assertBlocked() {
+    await act(async () => { fireEvent.click(screen.getByTestId('button-continue-details')); });
+    expect(screen.getByTestId('booking-validation-warning')).toBeTruthy();
+    expect(screen.queryByTestId('input-first-name')).toBeNull();
+    expect(checkoutBody).toBeNull();
+  }
+
+  it('assigns six adults to three doubles and sends the exact allocations to quote and checkout', async () => {
+    await addSafariUnits(3);
+    for (let index = 0; index < 3; index++) {
+      expect(screen.getByTestId(`text-occ-${SAFARI_ROOM_ID}-${index}-adults`).textContent).toBe('2');
+      expect(screen.queryByTestId(`text-occ-${SAFARI_ROOM_ID}-${index}-children`)).toBeNull();
+    }
+    expect(screen.getByTestId('text-allocated-adults').textContent).toContain('6 / 6');
+    expect(screen.queryByTestId('text-guest-allocation-warning')).toBeNull();
+    await submitGuestDetails();
+    expect(quoteCalls().at(-1).rooms.map((line) => line.adults)).toEqual([2, 2, 2]);
+    expect(checkoutBody).toMatchObject({ adults: 6, children: 0, infants: 0 });
+    expect(checkoutBody.rooms).toHaveLength(3);
+    expect(checkoutBody.rooms.every((line) => line.qty === 1 && line.adults === 2)).toBe(true);
+  });
+
+  it('warns and blocks five assigned adults even when the selected units have capacity for six', async () => {
+    await addSafariUnits(3);
+    await screen.findByTestId('text-cart-total');
+    const previousQuotes = quoteCalls().length;
+    await act(async () => {
+      fireEvent.click(screen.getByTestId(`button-occ-dec-${SAFARI_ROOM_ID}-1-adults`));
+    });
+    expect(screen.getByTestId('text-allocated-adults').textContent).toContain('5 / 6');
+    expect(screen.getByTestId('text-guest-allocation-warning').textContent).toContain('Assign exactly');
+    expect(screen.queryByTestId('text-cart-total')).toBeNull();
+    await assertBlocked();
+    expect(quoteCalls()).toHaveLength(previousQuotes);
+  });
+
+  it('blocks excess adults, then preserves a 1+1+2+2 split across mixed room types', async () => {
+    await addSafariUnits(3);
+    await act(async () => { fireEvent.click(screen.getByTestId(`button-inc-${COTTAGE_ID}`)); });
+    expect(screen.getByTestId('text-allocated-adults').textContent).toContain('8 / 6');
+    await assertBlocked();
+    await act(async () => { fireEvent.click(screen.getByTestId('button-dismiss-validation-warning')); });
+    for (const index of [0, 1]) {
+      await act(async () => {
+        fireEvent.click(screen.getByTestId(`button-occ-dec-${SAFARI_ROOM_ID}-${index}-adults`));
+      });
+    }
+    expect(screen.getByTestId('text-allocated-adults').textContent).toContain('6 / 6');
+    expect(screen.queryByTestId('text-guest-allocation-warning')).toBeNull();
+    await submitGuestDetails();
+    expect(quoteCalls().at(-1).rooms.map((line) => line.adults)).toEqual([1, 1, 2, 2]);
+    expect(checkoutBody.rooms.map((line) => line.adults)).toEqual([1, 1, 2, 2]);
+    expect(checkoutBody.rooms.at(-1)).toMatchObject({ roomId: COTTAGE_ID, adults: 2, qty: 1 });
+  });
+
+  it('invalidates the previous quote when removing a unit leaves adults unassigned', async () => {
+    await addSafariUnits(3);
+    await screen.findByTestId('text-cart-total');
+    await act(async () => { fireEvent.click(screen.getByTestId(`button-dec-${SAFARI_ROOM_ID}`)); });
+    expect(screen.getByTestId('text-allocated-adults').textContent).toContain('4 / 6');
+    expect(screen.queryByTestId(`text-occ-${SAFARI_ROOM_ID}-2-adults`)).toBeNull();
+    expect(screen.queryByTestId('text-cart-total')).toBeNull();
+    await assertBlocked();
   });
 });

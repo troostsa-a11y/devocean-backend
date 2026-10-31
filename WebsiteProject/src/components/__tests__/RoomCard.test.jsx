@@ -5,7 +5,7 @@
  * component work correctly after the speed-refactor extraction:
  *   - qty +/- steppers call onQty, respect unitsAvailable and maxRooms caps
  *   - rate-plan toggle calls onRate; + button is disabled when new offer is sold out
- *   - per-unit occupancy steppers appear only with children/infants & qty > 0,
+ *   - per-unit occupancy steppers appear for every selected unit,
  *     and their inc/dec buttons call onOcc and respect per-unit caps
  *   - bed-type toggle defaults to 'king' and calls onBedType on switch
  *   - a tap on one card does NOT re-render sibling cards (memo isolation)
@@ -375,12 +375,24 @@ describe('rate-plan toggle', () => {
 describe('occupancy steppers', () => {
   const room = makeSafariRoom(); // childUnit = true (safari)
 
-  it('occupancy steppers are NOT rendered when effChildren=0 and effInfants=0', () => {
+  it('adult occupancy steppers are rendered for adult-only bookings', () => {
     render(<RoomCard {...defaultProps(room, { qty: 1, effChildren: 0, effInfants: 0 })} />);
 
-    // No occ stepper data-testids should exist
-    expect(screen.queryByTestId('text-occ-safari-1-0-adults')).toBeNull();
+    // Adults can be assigned without inventing children or infants.
+    expect(screen.getByTestId('text-occ-safari-1-0-adults').textContent).toBe('2');
     expect(screen.queryByTestId('text-occ-safari-1-0-children')).toBeNull();
+  });
+
+  it('does not allow an empty adult-only unit or an adult count over its capacity', () => {
+    const { rerender } = render(<RoomCard {...defaultProps(room, {
+      qty: 1, effChildren: 0, effInfants: 0, occupancy: [{ adults: 1, children: 0, infants: 0 }],
+    })} />);
+    expect(screen.getByTestId('button-occ-dec-safari-1-0-adults').disabled).toBe(true);
+    expect(screen.getByTestId('button-occ-inc-safari-1-0-adults').disabled).toBe(false);
+    rerender(<RoomCard {...defaultProps(room, {
+      qty: 1, effChildren: 0, effInfants: 0, occupancy: [{ adults: 2, children: 0, infants: 0 }],
+    })} />);
+    expect(screen.getByTestId('button-occ-inc-safari-1-0-adults').disabled).toBe(true);
   });
 
   it('occupancy steppers are NOT rendered when qty=0 even if children are in the party', () => {

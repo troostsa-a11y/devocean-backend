@@ -528,6 +528,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     e?.preventDefault();
     setError('');
     if (cartLines.length === 0) return setError(t.selectRoomsToContinue);
+    if (!selectedPartyFits) return setError(allocationWarning);
     if (quoteLoading || !quote || quoteError || quotedCurrencyRef.current !== currency) {
       return setError(quoteError || t.updatingPrice);
     }
@@ -691,7 +692,8 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   const freeCancellation = daysToArrival >= cancelDays;
   const maxRooms = availability?.maxRooms ?? 5;
 
-  // Cart lines for /quote + /checkout: {roomId, offerId, qty}. offerId is the
+  // Cart lines for /quote + /checkout include each unit's explicit occupancy.
+  // offerId is the
   // guest-chosen rate plan, defaulting to the refundable (semi-flexible) plan
   // so the non-refundable rate is never preselected (server re-prices; this
   // only picks the plan).
@@ -706,9 +708,9 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
               room.offers.find((o) => o.refundable) ||
               room.offers[0]
             : null;
-          // When the party includes children/infants, expand into individual unit
-          // entries (qty=1 each) so the backend prices each unit at its actual occupancy.
-          if ((effChildren > 0 || effInfants > 0) && room) {
+          // Always expand into individual units so adult-only bookings retain
+          // the selected split too; never fall back to automatic redistribution.
+          if (room) {
             const occArr = roomOccupancy[roomId] ?? Array.from({ length: qty }, () => defaultRoomOccFor(room, effAdults, effChildren, effInfants));
             return occArr.slice(0, qty).map((occ) => ({
               roomId, offerId: offer?.offerId ?? null, qty: 1,
@@ -721,7 +723,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   );
   const totalRooms = useMemo(() => cartLines.reduce((s, l) => s + l.qty, 0), [cartLines]);
   const canAddRoom = totalRooms < maxRooms;
-  const selectedPartyFits = useMemo(() => {
+  const selectedRoomCapacityFits = useMemo(() => {
     if (totalRooms < 1) return false;
     let totalCapacity = 0;
     let adultCapacity = 0;
@@ -733,29 +735,29 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       totalCapacity += capacity.maxPeople * qty;
       adultCapacity += capacity.maxAdults * qty;
     }
-    const capacityFits =
+    return (
       adultCapacity >= effAdults &&
-      totalCapacity >= effAdults + effChildren + effInfants;
-
-    // When children or infants are part of the search, the cart carries
-    // explicit per-unit occupancy. Capacity alone is not enough here:
-    // Safari/Comfort/Chalet can hold 2 adults + 1 child/infant, so a unit
-    // containing only the two adults would otherwise incorrectly pass.
-    if (!capacityFits || (effChildren === 0 && effInfants === 0)) {
-      return capacityFits;
-    }
-    const selectedOccupancy = cartLines.reduce(
+      totalCapacity >= effAdults + effChildren + effInfants
+    );
+  }, [cart, availableRooms, totalRooms, effAdults, effChildren, effInfants]);
+  const selectedOccupancy = useMemo(
+    () => cartLines.reduce(
       (totals, line) => ({
         adults: totals.adults + (Number(line.adults) || 0) * (line.qty || 1),
         children: totals.children + (Number(line.children) || 0) * (line.qty || 1),
         infants: totals.infants + (Number(line.infants) || 0) * (line.qty || 1),
       }),
       { adults: 0, children: 0, infants: 0 },
-    );
-    return selectedOccupancy.adults === effAdults &&
-      selectedOccupancy.children === effChildren &&
-      selectedOccupancy.infants === effInfants;
-  }, [cart, cartLines, availableRooms, totalRooms, effAdults, effChildren, effInfants]);
+    ),
+    [cartLines],
+  );
+  const allGuestsAllocated = selectedOccupancy.adults === effAdults &&
+    selectedOccupancy.children === effChildren &&
+    selectedOccupancy.infants === effInfants;
+  const selectedPartyFits = selectedRoomCapacityFits && allGuestsAllocated;
+  const allocationWarning = selectedRoomCapacityFits
+    ? t.guestAllocationWarning
+    : t.notAllGuestsAccommodated || 'Not all guests are accommodated. Continue your booking.';
 
   // ── Informational currency conversion (display only) ──────────────────────
   // The base currency is the property pricing/arrival-balance currency. These
@@ -917,7 +919,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
         });
       }
     });
-  }, [availableRooms, effAdults, effChildren]);
+  }, [availableRooms, effAdults, effChildren, effInfants]);
 
   // Switch a room's selected rate plan; clamp any cart qty to the new offer's
   // availability (rate plans can have different unit counts).
@@ -1028,6 +1030,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
   // Debounced live quote whenever the cart (or stay) changes on the results step.
   useEffect(() => {
     if (step !== 'results' && step !== 'details') return;
+    // An incomplete/excess allocation is not a priceable reservation. Do not
+    // send it upstream or leave a previous valid quote available for payment.
+    if (!selectedPartyFits) {
+      setQuote(null);
+      setQuoteError('');
+      setQuoteLoading(false);
+      return;
+    }
     // Entering guest details does not invalidate a just-computed quote.
     // A currency change there does, and must disable Pay until re-quoted.
     if (step === 'details' && quote && quotedCurrencyRef.current === currency) return;
@@ -1081,7 +1091,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
       cancelled = true;
       clearTimeout(id);
     };
-  }, [cartLines, checkIn, checkOut, effAdults, effChildren, effInfants, step, t, discountCode, voucherCode, currency]);
+  }, [cartLines, selectedPartyFits, checkIn, checkOut, effAdults, effChildren, effInfants, step, t, discountCode, voucherCode, currency]);
 
   useEffect(() => {
     if (!baseCurrency || !currency || currency === baseCurrency) {
@@ -1681,7 +1691,36 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             {fmt(t.moreUnitsNeeded, { n: minUnitsNeeded - totalRooms })}
                           </p>
                         )}
-                        {quoteError ? (
+                        <div
+                          className="rounded-lg border border-slate-200 bg-slate-50 p-3 space-y-1 text-sm text-slate-600"
+                          role="status"
+                          aria-live="polite"
+                          data-testid="guest-allocation-summary"
+                        >
+                          {[
+                            { field: 'adults', label: t.adults, requested: effAdults },
+                            { field: 'children', label: t.children, requested: effChildren },
+                            { field: 'infants', label: t.infants, requested: effInfants },
+                          ].filter(({ field, requested }) => requested > 0 || selectedOccupancy[field] > 0)
+                            .map(({ field, label, requested }) => (
+                              <p key={field} className="flex justify-between gap-2">
+                                <span>{label}</span>
+                                <span className="font-semibold" data-testid={`text-allocated-${field}`}>
+                                  {selectedOccupancy[field]} / {requested}
+                                </span>
+                              </p>
+                            ))}
+                        </div>
+                        {!selectedPartyFits ? (
+                          <p
+                            id="booking-guest-allocation-warning"
+                            role="alert"
+                            className="text-sm text-amber-700"
+                            data-testid="text-guest-allocation-warning"
+                          >
+                            {allocationWarning}
+                          </p>
+                        ) : quoteError ? (
                           <>
                             {cartLines.map((cl, i) => {
                               const room = availableRooms?.find((r) => r.roomId === cl.roomId);
@@ -1815,10 +1854,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                           onClick={(event) => {
                             validationWarningTriggerRef.current = event.currentTarget;
                             if (!selectedPartyFits) {
-                              setValidationWarning(
-                                t.notAllGuestsAccommodated ||
-                                'Not all guests are accommodated. Continue your booking.',
-                              );
+                              setValidationWarning(allocationWarning);
                               return;
                             }
                             if (!quote || quoteError) return;
@@ -1826,6 +1862,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                             setError('');
                           }}
                           disabled={quoteLoading || totalRooms < 1 || (selectedPartyFits && (!quote || !!quoteError))}
+                          aria-describedby={!selectedPartyFits ? 'booking-guest-allocation-warning' : undefined}
                           className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#9e4b13] px-5 py-3 text-white font-semibold hover:bg-[#854011] transition-colors disabled:opacity-60"
                           data-testid="button-continue-details"
                         >

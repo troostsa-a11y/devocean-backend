@@ -21,6 +21,7 @@ import { describe, it, expect } from 'vitest';
 import {
   STRINGS,
   MIN_UNITS_STRINGS,
+  CAPACITY_STRINGS,
   AMENITIES_BADGE_STRINGS,
   getBookingStrings,
   CONFIRM_STRINGS,
@@ -34,6 +35,14 @@ const SUPPORTED_LANGS = [
   'en', 'pt', 'de', 'fr', 'es', 'it', 'nl', 'sv', 'pl', 'ro',
   'sr', 'hr', 'cs', 'tr', 'ja', 'zh', 'ru', 'af', 'zu', 'sw',
 ];
+
+describe('guest allocation warning translations', () => {
+  it.each(SUPPORTED_LANGS)('provides the allocation warning in %s without relying on fallback', (lang) => {
+    expect(CAPACITY_STRINGS[lang].guestAllocationWarning).toEqual(expect.any(String));
+    expect(CAPACITY_STRINGS[lang].guestAllocationWarning.length).toBeGreaterThan(15);
+    expect(getBookingStrings(lang).guestAllocationWarning).toBe(CAPACITY_STRINGS[lang].guestAllocationWarning);
+  });
+});
 
 /**
  * Recursively collect all leaf key paths from an object.

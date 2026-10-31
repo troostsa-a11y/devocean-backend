@@ -5,17 +5,21 @@ description: How explicit per-unit guest counts flow from UI steppers → cartLi
 
 ## The rule
 
-When a party includes children or infants, each booked unit carries its actual adult/child/infant split, and pricing follows that split rather than silently redistributing guests.
+Every booking, including adult-only parties, must let the guest assign the actual adult/child/infant split to each unit. Pricing follows that split rather than silently redistributing guests.
 
 **Why:** Beds24 per-person pricing means 2A in one room + 0A in another ≠ 1A in each room. The auto-distributor guaranteed ≥1 adult per room which misprice children-only units.
+
+The user also explicitly requires adult-only groups to control their split, with a warning before they can continue if any adults are unassigned. This rule must not become conditional on children or infants again.
+
+**How to apply:** Keep room editing, quote/payment requests and pre-Continue validation consistent for every party. Match each guest-category total exactly; both missing and excess allocations must prevent progression.
 
 For lodging capacity, infants count as physical occupants even though they remain excluded from chargeable Beds24 child pricing. Garden Cottage is a strict two-person unit; Safari, Comfort, and Chalet use a two-adult-plus-one-child/infant-slot policy.
 
 **Why:** A 2-adult + infant party must not be offered a single Garden Cottage or pass quote validation merely because infants are free in the rate calculation.
 
-Before Continue, explicit per-unit occupancy must also match the requested adult/child/infant counts exactly; room capacity alone is insufficient because a 2-adult Safari unit can physically hold a third infant/child.
+Before Continue, explicit per-unit occupancy must also match the requested adult/child/infant counts exactly; room capacity alone is insufficient even for adult-only bookings.
 
-**Why:** Otherwise the results header can say “3 guests” while the reservation carries only the two adults shown in the unit steppers.
+**Why:** Otherwise a six-adult party could pass the room-capacity check while only five adults are assigned, or the results header can say “3 guests” while the reservation carries only two adults.
 
 ## offersForOccWithFloor pattern
 

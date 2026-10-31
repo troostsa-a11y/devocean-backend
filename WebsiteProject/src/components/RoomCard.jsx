@@ -166,10 +166,9 @@ function RoomCard({
   const unitKey = getUnitKey(room.name);
   const unitImg = unitKey ? IMG.units[unitKey] : null;
   const unitDetailUrl = unitKey ? localizedUrl(`/${unitKey}`, lang, detailQueryString) : null;
-  // Per-unit occupancy array: one entry per booked unit, shown when party has children/infants.
-  const occArray = (effChildren > 0 || effInfants > 0)
-    ? (occupancy ?? Array.from({ length: qty }, () => defaultRoomOccFor(room, effAdults, effChildren)))
-    : null;
+  // Every selected unit has explicit occupancy, including adult-only bookings.
+  const occArray = occupancy ??
+    Array.from({ length: qty }, () => defaultRoomOccFor(room, effAdults, effChildren, effInfants));
   // Quote-derived total for this card; falls back to offer.total while no
   // quote exists yet (qty=0 or loading).
   const cardTotal = quotedTotal ?? offer.total;
@@ -469,8 +468,8 @@ function RoomCard({
         </div>
       )}
 
-      {/* Per-unit occupancy — only shown when party includes children/infants */}
-      {occArray && qty > 0 && (
+      {/* Per-unit occupancy — one editable allocation for every selected unit */}
+      {qty > 0 && (
         <div className="mt-3 border-t border-slate-100 pt-3 space-y-3">
           {occArray.slice(0, qty).map((occ, unitIdx) => (
             <div key={unitIdx}>
@@ -484,16 +483,16 @@ function RoomCard({
                   field: 'adults',
                   label: t.adults,
                   val: occ.adults,
-                  min: 0,
+                  min: effChildren > 0 || effInfants > 0 ? 0 : 1,
                   max: Math.min(roomMaxA, effectiveMaxPeople - occ.children - (occ.infants ?? 0)),
                 },
-                {
+                ...(effChildren > 0 ? [{
                   field: 'children',
                   label: t.children,
                   val: occ.children,
                   min: 0,
                   max: Math.min(effectiveMaxPeople, effectiveMaxPeople - occ.adults - (occ.infants ?? 0)),
-                },
+                }] : []),
                 ...(effInfants > 0 ? [{
                   field: 'infants',
                   label: t.infants,

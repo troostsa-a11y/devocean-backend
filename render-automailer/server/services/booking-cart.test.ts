@@ -200,3 +200,30 @@ test('rejects explicit occupancy that adds guests beyond the requested party', a
       error.status === 409,
   );
 });
+
+const sixAdults = {
+  checkIn: '2027-06-01', checkOut: '2027-06-03', adults: 6, children: 0, infants: 0,
+};
+
+test('preserves an explicit 1+1+2+2 adult split instead of automatically redistributing it', async () => {
+  const quote = await computeCartQuote(makeBeds24(), sixAdults, [
+    { roomId: 'safari-tent', offerId: 2, qty: 1, adults: 1, children: 0, infants: 0 },
+    { roomId: 'safari-tent', offerId: 2, qty: 1, adults: 1, children: 0, infants: 0 },
+    { roomId: 'garden-cottage', offerId: 2, qty: 1, adults: 2, children: 0, infants: 0 },
+    { roomId: 'garden-suite', offerId: 2, qty: 1, adults: 2, children: 0, infants: 0 },
+  ], cfg);
+  assert.deepEqual(quote.legs.map((unit) => unit.adults), [1, 1, 2, 2]);
+  assert.equal(quote.legs.reduce((sum, unit) => sum + unit.adults, 0), 6);
+});
+
+for (const counts of [[1, 2, 2], [2, 2, 2, 2]]) {
+  test(`rejects ${counts.reduce((sum, n) => sum + n, 0)} allocated adults for a six-adult reservation`, async () => {
+    await assert.rejects(
+      computeCartQuote(makeBeds24(), sixAdults, counts.map((adults) => ({
+        roomId: 'safari-tent', offerId: 2, qty: 1, adults, children: 0, infants: 0,
+      })), cfg),
+      (error: unknown) => error instanceof BookingCartError &&
+        error.status === 409 && error.message.includes('exactly all requested guests'),
+    );
+  });
+}
