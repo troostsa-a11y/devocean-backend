@@ -24,6 +24,7 @@ import {
   CAPACITY_STRINGS,
   AMENITIES_BADGE_STRINGS,
   getBookingStrings,
+  fmt,
   CONFIRM_STRINGS,
   RATE_TIER_STRINGS,
   TERMS_STRINGS,
@@ -41,6 +42,16 @@ describe('guest allocation warning translations', () => {
     expect(CAPACITY_STRINGS[lang].guestAllocationWarning).toEqual(expect.any(String));
     expect(CAPACITY_STRINGS[lang].guestAllocationWarning.length).toBeGreaterThan(15);
     expect(getBookingStrings(lang).guestAllocationWarning).toBe(CAPACITY_STRINGS[lang].guestAllocationWarning);
+  });
+});
+
+describe('adult reservation limit translations', () => {
+  it.each(SUPPORTED_LANGS)('provides localized split-reservation guidance in %s', (lang) => {
+    const template = STRINGS[lang].adultLimitNotice;
+    expect(template).toEqual(expect.any(String));
+    expect(template.match(/\{max\}/g)).toHaveLength(2);
+    expect(fmt(getBookingStrings(lang).adultLimitNotice, { max: 8 })).not.toContain('{max}');
+    if (lang !== 'en') expect(template).not.toBe(STRINGS.en.adultLimitNotice);
   });
 });
 

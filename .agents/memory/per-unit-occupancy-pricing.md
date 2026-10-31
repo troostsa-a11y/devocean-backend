@@ -15,7 +15,9 @@ The user also explicitly requires adult-only groups to control their split, with
 
 Self-service reservations should support up to eight adults, without increasing the adult capacity of an individual unit or bypassing exact allocation.
 
-**Why:** The user explicitly requested an eight-adult reservation limit; a larger party still needs enough units for every adult.
+For larger groups, tell guests to split their booking into separate reservations of at most eight adults each, rather than silently reducing the party or treating eight as a per-unit limit.
+
+**Why:** The user explicitly requested an eight-adult reservation limit and split-reservation guidance for larger groups; a larger party still needs enough units for every adult.
 
 For lodging capacity, infants count as physical occupants even though they remain excluded from chargeable Beds24 child pricing. Garden Cottage is a strict two-person unit; Safari, Comfort, and Chalet use a two-adult-plus-one-child/infant-slot policy.
 

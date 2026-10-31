@@ -88,6 +88,7 @@ vi.mock('../../i18n/bookingStrings', () => ({
     close:              'Close',
     guests:             'Guests',
     adults:             'Adults',
+    adultLimitNotice:   'More than {max} adults? Please split your booking into separate reservations, with a maximum of {max} adults per reservation.',
     children:           'Children',
     infants:            'Infants',
     nights:             'nights',
@@ -640,6 +641,48 @@ describe('booking search validation warnings', () => {
   function availabilityCallCount() {
     return fetchMock.mock.calls.filter(([url]) => url.includes('/api/booking/availability')).length;
   }
+
+  it('explains how to split larger groups when eight adults are selected', async () => {
+    renderSearchForm();
+    expect(screen.queryByTestId('text-adult-limit-notice')).toBeNull();
+
+    await act(async () => {
+      fireEvent.change(screen.getByTestId('select-adults'), { target: { value: '8' } });
+    });
+    expect(screen.getByTestId('text-adult-limit-notice').textContent)
+      .toContain('separate reservations, with a maximum of 8 adults per reservation');
+    expect(screen.getByTestId('select-adults').getAttribute('aria-describedby'))
+      .toBe('booking-adult-limit-notice');
+
+    await act(async () => {
+      fireEvent.change(screen.getByTestId('select-adults'), { target: { value: '7' } });
+    });
+    expect(screen.queryByTestId('text-adult-limit-notice')).toBeNull();
+  });
+
+  it.each([9, 12])('asks an incoming %i-adult request to split instead of auto-searching or dropping guests', async (adults) => {
+    setBookingQuery({ adults });
+    renderSearchForm();
+
+    expect(screen.getByTestId('select-adults').value).toBe(String(adults));
+    expect(screen.getByTestId('select-adults').getAttribute('aria-invalid')).toBe('true');
+    expect(screen.getByTestId('text-adult-limit-notice').getAttribute('role')).toBe('alert');
+    expect(availabilityCallCount()).toBe(0);
+
+    await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
+    expect(screen.getByTestId('text-validation-warning').textContent)
+      .toContain('separate reservations, with a maximum of 8 adults per reservation');
+    expect(availabilityCallCount()).toBe(0);
+
+    await act(async () => {
+      fireEvent.click(screen.getByTestId('button-dismiss-validation-warning'));
+      fireEvent.change(screen.getByTestId('select-adults'), { target: { value: '8' } });
+    });
+    await act(async () => { fireEvent.click(screen.getByTestId('button-search')); });
+    await waitFor(() => expect(availabilityCallCount()).toBe(1));
+    const [, request] = fetchMock.mock.calls.find(([url]) => url.includes('/api/booking/availability'));
+    expect(JSON.parse(request.body).adults).toBe(8);
+  });
 
   it('warns when dates are missing and does not request availability', async () => {
     renderSearchForm();

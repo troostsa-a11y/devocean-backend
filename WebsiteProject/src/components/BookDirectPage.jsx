@@ -42,6 +42,7 @@ const INPUT_CLASS =
   'w-full rounded-xl border border-slate-300 px-3 py-2.5 bg-white text-slate-900 focus:border-[#9e4b13] focus:ring-1 focus:ring-[#9e4b13] outline-none';
 const FIELD_LABEL_CLASS =
   'block text-[11px] font-semibold uppercase tracking-wide text-slate-500 mb-1';
+const MAX_ADULTS_PER_RESERVATION = 8;
 
 export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, currency, region, onLangChange, onRegionChange, onCurrencyChange }) {
   const t = useMemo(() => getBookingStrings(lang), [lang]);
@@ -253,6 +254,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     // Restore display currency without overwriting a user's explicit earlier choice.
     if (pCurrency && onCurrencyChange) onCurrencyChange(pCurrency);
 
+    // Keep oversized incoming requests on the form so guests can split the
+    // booking themselves; never silently drop adults or search above the limit.
+    if (pAdults > MAX_ADULTS_PER_RESERVATION) return;
+
     // Auto-search when dates are in the URL and no child ages are needed.
     // If children > 0 the visitor must confirm child ages first, so just
     // pre-fill the form and let them press "Check availability" themselves.
@@ -392,6 +397,10 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
     setError('');
     setValidationWarning('');
     setCanceled(false);
+    if (effAdults > MAX_ADULTS_PER_RESERVATION) {
+      setValidationWarning(fmt(t.adultLimitNotice, { max: MAX_ADULTS_PER_RESERVATION }));
+      return;
+    }
     if (nights < 1) {
       setValidationWarning(t.selectDates);
       return;
@@ -1285,9 +1294,14 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         onChange={(e) => startTransition(() => setAdults(parseInt(e.target.value, 10)))}
                         className={INPUT_CLASS}
                         aria-label={t.adults}
+                        aria-describedby={adults >= MAX_ADULTS_PER_RESERVATION ? 'booking-adult-limit-notice' : undefined}
+                        aria-invalid={adults > MAX_ADULTS_PER_RESERVATION || undefined}
                         data-testid="select-adults"
                       >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                        {adults > MAX_ADULTS_PER_RESERVATION && (
+                          <option value={adults} disabled>{adults} · {t.adults}</option>
+                        )}
+                        {Array.from({ length: MAX_ADULTS_PER_RESERVATION }, (_, i) => i + 1).map((n) => (
                           <option key={n} value={n}>{n} · {n === 1 ? t.adult : t.adults}</option>
                         ))}
                       </select>
@@ -1320,6 +1334,17 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                     </div>
                   </div>
                 </div>
+
+                {adults >= MAX_ADULTS_PER_RESERVATION && (
+                  <p
+                    id="booking-adult-limit-notice"
+                    role={adults > MAX_ADULTS_PER_RESERVATION ? 'alert' : undefined}
+                    className="w-full text-sm leading-5 text-slate-600"
+                    data-testid="text-adult-limit-notice"
+                  >
+                    {fmt(t.adultLimitNotice, { max: MAX_ADULTS_PER_RESERVATION })}
+                  </p>
+                )}
 
                 {(children > 0 || infants > 0) && (
                   <div className="w-full flex flex-col gap-4">
