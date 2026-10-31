@@ -13,6 +13,10 @@ The user also explicitly requires adult-only groups to control their split, with
 
 **How to apply:** Keep room editing, quote/payment requests and pre-Continue validation consistent for every party. Match each guest-category total exactly; both missing and excess allocations must prevent progression.
 
+Self-service reservations should support up to eight adults, without increasing the adult capacity of an individual unit or bypassing exact allocation.
+
+**Why:** The user explicitly requested an eight-adult reservation limit; a larger party still needs enough units for every adult.
+
 For lodging capacity, infants count as physical occupants even though they remain excluded from chargeable Beds24 child pricing. Garden Cottage is a strict two-person unit; Safari, Comfort, and Chalet use a two-adult-plus-one-child/infant-slot policy.
 
 **Why:** A 2-adult + infant party must not be offered a single Garden Cottage or pass quote validation merely because infants are free in the rate calculation.

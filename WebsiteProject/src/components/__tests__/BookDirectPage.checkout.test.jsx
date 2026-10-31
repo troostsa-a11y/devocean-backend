@@ -2318,6 +2318,36 @@ describe('adult-only per-unit allocation', () => {
     expect(checkoutBody.rooms.every((line) => line.qty === 1 && line.adults === 2)).toBe(true);
   });
 
+  it.each([7, 8])('supports %i adults through search, explicit allocation, quote and checkout', async (adults) => {
+    setBookingQuery({ adults });
+    render(<BookDirectPage lang="en-GB" currency="USD" />);
+    // Check the selector on the search step, before auto-search replaces it
+    // with the room-selection results.
+    const selector = screen.getByTestId('select-adults');
+    expect(Array.from(selector.options, (option) => option.value))
+      .toEqual(['1', '2', '3', '4', '5', '6', '7', '8']);
+    expect(selector.value).toBe(String(adults));
+    const add = await screen.findByTestId(`button-inc-${SAFARI_ROOM_ID}`);
+    for (let index = 0; index < 4; index++) {
+      await act(async () => { fireEvent.click(add); });
+    }
+    if (adults === 7) {
+      await act(async () => {
+        fireEvent.click(screen.getByTestId(`button-occ-dec-${SAFARI_ROOM_ID}-3-adults`));
+      });
+    }
+    expect(screen.getByTestId('text-allocated-adults').textContent).toContain(`${adults} / ${adults}`);
+    await submitGuestDetails();
+    const availabilityCall = global.fetch.mock.calls
+      .find(([url]) => url.includes('/api/booking/availability'));
+    expect(JSON.parse(availabilityCall[1].body).adults).toBe(adults);
+    expect(quoteCalls().at(-1).adults).toBe(adults);
+    expect(checkoutBody.adults).toBe(adults);
+    expect(checkoutBody.rooms).toHaveLength(4);
+    expect(checkoutBody.rooms.reduce((sum, line) => sum + line.adults, 0)).toBe(adults);
+    expect(checkoutBody.rooms.every((line) => line.qty === 1 && line.adults <= 2)).toBe(true);
+  });
+
   it('warns and blocks five assigned adults even when the selected units have capacity for six', async () => {
     await addSafariUnits(3);
     await screen.findByTestId('text-cart-total');

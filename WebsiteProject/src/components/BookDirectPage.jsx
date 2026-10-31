@@ -1287,7 +1287,7 @@ export default function BookDirectPage({ lang = 'en-GB', countryCode, ui, curren
                         aria-label={t.adults}
                         data-testid="select-adults"
                       >
-                        {[1, 2, 3, 4, 5, 6].map((n) => (
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                           <option key={n} value={n}>{n} · {n === 1 ? t.adult : t.adults}</option>
                         ))}
                       </select>

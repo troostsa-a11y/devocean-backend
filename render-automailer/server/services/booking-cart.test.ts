@@ -205,6 +205,15 @@ const sixAdults = {
   checkIn: '2027-06-01', checkOut: '2027-06-03', adults: 6, children: 0, infants: 0,
 };
 
+test('accepts eight adults allocated to four two-adult units', async () => {
+  const quote = await computeCartQuote(makeBeds24(), { ...sixAdults, adults: 8 }, [
+    { roomId: 'safari-tent', offerId: 2, qty: 4, adults: 2, children: 0, infants: 0 },
+  ], { ...cfg, maxRooms: 5 });
+  assert.equal(quote.legs.length, 4);
+  assert.equal(quote.legs.reduce((sum, unit) => sum + unit.adults, 0), 8);
+  assert.ok(quote.legs.every((unit) => unit.adults === 2));
+});
+
 test('preserves an explicit 1+1+2+2 adult split instead of automatically redistributing it', async () => {
   const quote = await computeCartQuote(makeBeds24(), sixAdults, [
     { roomId: 'safari-tent', offerId: 2, qty: 1, adults: 1, children: 0, infants: 0 },
