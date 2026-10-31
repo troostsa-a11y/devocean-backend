@@ -9,6 +9,7 @@ import { createBookingRouter } from './server/routes/booking';
 import { createVoucherCheckoutHandler } from './server/routes/gift-voucher-checkout';
 import { createInquiryQuotaHandler } from './server/routes/inquiry-quota';
 import { isImapTlsEnabled } from './server/services/imap-security';
+import { requireAdminKey } from './server/security/admin-auth';
 
 /**
  * DEVOCEAN Lodge Email Automation Server
@@ -167,21 +168,6 @@ app.get('/version', (req, res) => {
     branch: process.env.RENDER_GIT_BRANCH ?? 'local',
   });
 });
-
-// Admin API key authentication middleware
-function requireAdminKey(req: any, res: any, next: any) {
-  const adminKey = process.env.ADMIN_API_KEY;
-  if (!adminKey) {
-    return res.status(503).json({ error: 'Admin API key not configured on server' });
-  }
-
-  const providedKey = req.headers['x-admin-key'];
-  if (!providedKey || providedKey !== adminKey) {
-    return res.status(401).json({ error: 'Invalid or missing admin API key' });
-  }
-
-  next();
-}
 
 app.post('/api/inquiry/reserve', requireAdminKey, createInquiryQuotaHandler(() => guestDb));
 
