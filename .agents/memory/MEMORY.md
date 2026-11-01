@@ -41,6 +41,7 @@
 - [Agentic booking roadmap](agentic-booking-roadmap.md) — 4-phase plan; Phase 1 (Beds24 write tool + Stripe Payment Link) is close; MCP next; OAuth only when a partner asks
 - [Marin page-context injection](marin-page-context-pattern.md) — pass pageContext in message body; api-zod rebuild required after schema change (project-ref dist/); TextChatEmbed auto-sends via devocean:ask postMessage; MarinPanel for /book-direct; dvAsk() + widget-loader on static detail pages
 - [Marin availability policy](marin-pricing-proxy.md) — canonical prices and nearest-date search; yearless dates mean the next occurrence; ask before searching alternatives.
+- [Marin park transport](marin-park-transport.md) — domestic chapa routes are not Kosi Bay border trips; include 4x4 access and a confirmed game-drive reservation.
 - [Webhook recheck occupancy stripping](webhook-recheckquote-occupancy.md) — recheckCartQuote must preserve per-leg adults/children/infants; stripping them triggers distributeGuests→PARTY_TOO_LARGE (Beds24 maxChildren=0) → false sold_out refund on every booking with children
 - [Receptionist admin auth pattern](receptionist-admin-auth.md) — all admin API calls must use customFetch (auto-injects Bearer); bare fetch() bypasses auth → 401; async Express routes need explicit try/catch or errors are silently swallowed
 - [CF AI Crawl Control noindex](cf-ai-crawl-noindex.md) — Training=Block makes CF serve X-Robots-Tag noindex to Googlebot only (invisible to curl); GSC phantom noindex → check AI Crawl Control first
