@@ -28,11 +28,7 @@ interface ReportData {
     arrival: number;
     post_departure: number;
     cancellation: number;
-    transfer_notification: number;
   };
-  
-  // Transfer notifications
-  transferNotificationsSent: number;
   
   // Email checks
   emailChecksPerformed: number;
@@ -170,9 +166,7 @@ export class AdminReportingService {
         arrival: 0,
         post_departure: 0,
         cancellation: 0,
-        transfer_notification: 0,
       },
-      transferNotificationsSent: stats.transferNotificationsSent || 0,
       emailChecksPerformed: stats.emailChecksPerformed || 0,
       emailChecksSuccessful: stats.emailChecksSuccessful || 0,
       emailChecksFailed: stats.emailChecksFailed || 0,
@@ -260,7 +254,6 @@ export class AdminReportingService {
             <tr><td>Arrival Reminders</td><td>${data.emailsByType.arrival}</td></tr>
             <tr><td>Post-Departure Thank You</td><td>${data.emailsByType.post_departure}</td></tr>
             <tr><td>Cancellation Confirmations</td><td>${data.emailsByType.cancellation}</td></tr>
-            <tr><td>Transfer Notifications</td><td>${data.emailsByType.transfer_notification}</td></tr>
           </tbody>
         </table>
       </div>
@@ -395,11 +388,6 @@ export class AdminReportingService {
           <div class="value">${data.totalCancellations}</div>
           <div class="label">This week</div>
         </div>
-        <div class="stat-card">
-          <h3>Transfers</h3>
-          <div class="value">${data.transferNotificationsSent}</div>
-          <div class="label">Taxi notifications</div>
-        </div>
       </div>
 
       <div class="section">
@@ -452,7 +440,6 @@ export class AdminReportingService {
             <tr><td>Arrival Reminders</td><td>${data.emailsByType.arrival}</td></tr>
             <tr><td>Post-Departure Thank You</td><td>${data.emailsByType.post_departure}</td></tr>
             <tr><td>Cancellation Confirmations</td><td>${data.emailsByType.cancellation}</td></tr>
-            <tr><td>Transfer Notifications (Taxi)</td><td>${data.emailsByType.transfer_notification}</td></tr>
           </tbody>
         </table>
       </div>
