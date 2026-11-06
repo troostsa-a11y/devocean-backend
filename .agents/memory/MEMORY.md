@@ -65,3 +65,4 @@
 - [Public inquiry quota authority](public-inquiry-quotas.md) — share durable send quotas across public forms; deploy the backend quota authority before edge enforcement.
 - [Mailbox safety policy](mailbox-safety-policy.md) — leave oversized booking mail for operator inspection; bounded historical scanning must not delay recent arrivals.
 - [Linked-secret visibility](linked-secret-visibility.md) — missing secret metadata alone does not establish that an Account Secret is unlinked; confirm the app link before recreating a duplicate.
+- [KAYAK Travel Award](property-awards.md) — owner-confirmed award and official badge destination; no award year or ranking supplied.
