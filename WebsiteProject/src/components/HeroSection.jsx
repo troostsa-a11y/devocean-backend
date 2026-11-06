@@ -271,7 +271,7 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
         
       </div>
 
-      {/* Stars, badge and Trustindex widget. In-flow (static) by default, so it
+      {/* Stars, reviews and award. In-flow (static) by default, so it
           always sits directly below the CTA grid's actual rendered height —
           it can never overlap the buttons regardless of viewport height,
           button-label wrapping, or translation string length. (Previously
@@ -288,15 +288,34 @@ export default function HeroSection({ images = [], ui, bookUrl, lang, currency }
           landscape phones (e.g. 667x375, 932x430 — width >= 640px but just as
           short as a portrait phone) into the desktop path and reintroduce
           the bug. */}
-      <div className="relative [@media_(min-width:640px)_and_(min-height:701px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:701px)]:mt-0 [@media_(min-width:640px)_and_(min-height:701px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:701px)]:left-0 [@media_(min-width:640px)_and_(min-height:701px)]:right-0 z-10 max-w-7xl mx-auto px-4">
+      <div className="relative [@media_(min-width:640px)_and_(min-height:701px)]:absolute mt-6 [@media_(min-width:640px)_and_(min-height:701px)]:mt-0 [@media_(min-width:640px)_and_(min-height:701px)]:bottom-10 [@media_(min-width:640px)_and_(min-height:701px)]:left-0 [@media_(min-width:640px)_and_(min-height:701px)]:right-0 z-10 max-w-7xl mx-auto px-4 pb-6 [@media_(min-width:640px)_and_(min-height:701px)]:pb-0">
         <div className="flex items-center gap-1 text-yellow-300">
           {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
         </div>
         <div className="text-white/90 text-sm sm:text-base mt-1">{ui.hero.badge}</div>
         <div className="text-white/60 text-xs mt-0.5">{ui.hero.clickReviews}</div>
-        {/* min-h reserves space for the async-loaded Trustindex badge so it
-            doesn't shift content when the script mounts (CLS guard). */}
-        <div ref={trustindexRef} className="mt-3 sm:min-h-[90px]" />
+        <div className="mt-3 flex flex-wrap items-center gap-4 sm:gap-5">
+          {/* Reserve the review badge's footprint before its script loads so
+              the neighbouring award doesn't move or rewrap on arrival. */}
+          <div ref={trustindexRef} className="w-[250px] max-w-full shrink-0 min-h-[90px]" />
+          <a
+            href="https://www.kayak.com/Ponta-d-Ouro-Hotels-Devocean-Resorts.2320616.ksp"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+            data-testid="link-kayak-travel-awards"
+          >
+            <img
+              src="https://content.r9cdn.net/seo-res/badges/v5/LIGHT_MEDIUM_TRAVEL_AWARDS.png"
+              alt="KAYAK Travel Awards"
+              width={90}
+              height={90}
+              loading="lazy"
+              decoding="async"
+              className="block h-[90px] w-[90px] object-contain"
+            />
+          </a>
+        </div>
       </div>
 
     </section>
